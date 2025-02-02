@@ -1,0 +1,684 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <!-- 반응형 웹을 위한 뷰포트 설정 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ApuDa 암검진 시스템</title>
+  <!-- Google Fonts (Montserrat) -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* 전체 텍스트 25% 확대 (html 기본) */
+    html { font-size: 125%; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #f0f2f5, #d9e2ec);
+      color: #333;
+      line-height: 1.6;
+    }
+    /* 컨테이너 – 카드 형태, position:relative (워터마크 배경용) */
+    .container {
+      position: relative;
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      overflow: hidden;
+    }
+    /* 상단 헤더 텍스트 (페이지2,3에만 표시) – 기존보다 30% 크게, 파란색 볼드체 */
+    .header-watermark {
+      text-align: center;
+      color: #007BFF;
+      font-weight: bold;
+      opacity: 0.5;
+      margin-bottom: 10px;
+    }
+    .header-watermark .wm-subtitle { font-size: 1.95em; margin: 0; }
+    .header-watermark .wm-title { font-size: 2.6em; margin: 0; }
+    /* 페이지 구역 */
+    .page-section { display: none; padding: 20px 0; }
+    .page-section.active { display: block; }
+    h1, h2, h3 { margin-bottom: 15px; position: relative; z-index: 1; }
+    /* 기본 선택 버튼 스타일 – 텍스트 크기 1em (기존 1.3em보다 25% 줄임) */
+    .select-btn, .btn { font-size: 1em; }
+    .select-btn {
+      padding: 10px 14px; margin: 6px;
+      border: 1px solid #007BFF; border-radius: 4px;
+      cursor: pointer; background-color: #fff;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+      word-break: break-word;
+    }
+    .select-btn:hover { transform: scale(1.03); }
+    /* 선택 시: 파란 배경, 흰색 글씨 */
+    .select-btn.selected { background-color: #007BFF; color: #fff; }
+    /* 내비게이션 버튼 – 기본 흰색 배경, 파란 테두리, 클릭 시 파란 배경/흰색 글씨 */
+    .btn {
+      padding: 12px 24px; margin: 10px;
+      cursor: pointer; border: 1px solid #007BFF; border-radius: 4px;
+      background-color: #fff; color: #007BFF;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+      word-break: break-word;
+    }
+    .btn:hover { background-color: #007BFF; color: #fff; transform: scale(1.02); }
+    .btn:disabled { background-color: #ccc; cursor: not-allowed; }
+    /* 결과 페이지 – 타로 카드 느낌 디자인 (각 카드에 종이 질감 배경 적용) */
+    .info-card {
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin: 20px 0;
+      text-align: left;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      /* 기본 pastel 배경 + 종이 질감 패턴 */
+      background: linear-gradient(135deg, #fff, #fdfdfd),
+                  url("https://www.transparenttextures.com/patterns/old-mathematics.png");
+      background-blend-mode: multiply;
+      position: relative;
+      z-index: 1;
+    }
+    /* info-card 각각의 색상 */
+    .card-orange { background-color: #FFECB3; }
+    .card-blue { background-color: #E3F2FD; }
+    .card-green { background-color: #C8E6C9; }
+    table {
+      width: 100%; border-collapse: collapse; margin-top: 10px;
+      font-size: 1em;
+    }
+    table, th, td { border: 1px solid #aaa; }
+    th, td { padding: 10px; text-align: center; word-break: break-word; }
+    /* 결과 페이지 – 전체 텍스트 20% 축소 */
+    .result-container { font-size: 0.8em; }
+    /* 결과 페이지 제목 – 파란 버튼 스타일 (배경 #007BFF, 흰색 볼드 텍스트) */
+    .result-title {
+      background-color: #007BFF;
+      color: #fff;
+      font-weight: bold;
+      padding: 10px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    /* Footer – 모든 페이지에 네이버 카페 로고 포함 */
+    .footer {
+      margin-top: 30px; text-align: center; font-size: 0.9em;
+      color: #555; position: relative; z-index: 1;
+    }
+    .footer img { width: 300px; max-width: 100%; }
+    /* 반응형 미디어 쿼리 */
+    @media (max-width: 768px) {
+      .container { padding: 10px; max-width: 95%; }
+      .select-btn { padding: 8px 12px; margin: 4px; }
+      .btn { padding: 10px 20px; margin: 8px; }
+      table, th, td { font-size: 1em; }
+    }
+  </style>
+</head>
+<body>
+  <!-- =======================
+       1. 전역 변수 및 CSV 데이터 로드
+  ======================= -->
+  <script>
+    // 전역 변수
+    let selectedAge = "";
+    let selectedGender = "";
+    let maleSymptoms = [];
+    let femaleSymptoms = [];
+    let selectedSymptoms = [];
+    let currentSymptomPage = 1;
+
+    // CSV 파일 주소 (남성 CSV 최신 내용 반영)
+    const csvUrls = {
+      "남성": "https://raw.githubusercontent.com/Mespital/apuda-data/main/male50.csv",
+      "여성": "https://raw.githubusercontent.com/Mespital/apuda-data/main/female50.csv"
+    };
+
+    // CSV 파서 함수 (헤더: 번호,증상,위험질환,검진제안,암 설명)
+    function parseCSVData(csvText) {
+      const lines = csvText.trim().split("\n");
+      const result = [];
+      for (let i = 1; i < lines.length; i++) {
+        const fields = lines[i].split(",");
+        if (fields.length < 5) continue;
+        result.push({
+          id: fields[0].trim(),
+          symptom: fields[1].trim(),
+          riskDisease: fields[2].trim(),
+          examSuggestion: fields[3].trim(),
+          cancerDesc: fields.slice(4).join(",").trim()
+        });
+      }
+      return result;
+    }
+
+    // CSV 데이터 fetch
+    fetch(csvUrls["남성"])
+      .then(response => response.text())
+      .then(text => { maleSymptoms = parseCSVData(text); })
+      .catch(err => console.error("남성 CSV 로드 에러:", err));
+      
+    fetch(csvUrls["여성"])
+      .then(response => response.text())
+      .then(text => { femaleSymptoms = parseCSVData(text); })
+      .catch(err => console.error("여성 CSV 로드 에러:", err));
+
+    // 현재 성별에 따른 증상 배열 반환
+    function getCurrentSymptoms() {
+      return (selectedGender === "남성") ? maleSymptoms : femaleSymptoms;
+    }
+
+    // 국가 암검진 가이드라인 – 항상 디폴트 내용 노출
+    const screeningGuidelinesHTML = `
+      <h2>✅ 국가 암 검진 대상 및 항목</h2>
+      <table>
+        <tr>
+          <th>암 종류</th>
+          <th>검진 대상 (나이 기준)</th>
+          <th>검진 주기</th>
+          <th>검진 방법</th>
+          <th>비고</th>
+        </tr>
+        <tr>
+          <td>위암</td>
+          <td>만 40세 이상 남녀</td>
+          <td>2년마다</td>
+          <td>위내시경 (또는 위장조영검사)</td>
+          <td>위내시경이 선호됨</td>
+        </tr>
+        <tr>
+          <td>대장암</td>
+          <td>만 50세 이상 남녀</td>
+          <td>1년마다</td>
+          <td>분변잠혈검사 (양성 시 대장내시경)</td>
+          <td>고위험군은 대장내시경 권장</td>
+        </tr>
+        <tr>
+          <td>간암</td>
+          <td>만 40세 이상 고위험군</td>
+          <td>6개월마다</td>
+          <td>간 초음파 검사, 간암 표지자 검사(AFP)</td>
+          <td>B형/C형 간염, 간경변증 등 고위험군 해당</td>
+        </tr>
+        <tr>
+          <td>유방암</td>
+          <td>만 40세 이상 여성</td>
+          <td>2년마다</td>
+          <td>유방 촬영술(맘모그램)</td>
+          <td>필요 시 유방 초음파 추가</td>
+        </tr>
+        <tr>
+          <td>자궁경부암</td>
+          <td>만 20세 이상 여성</td>
+          <td>2년마다</td>
+          <td>자궁경부 세포검사 (Pap smear)</td>
+          <td>HPV 검사 병행 가능</td>
+        </tr>
+        <tr>
+          <td>폐암 (고위험군)</td>
+          <td>만 54~74세, 30갑년 이상 흡연자</td>
+          <td>2년마다</td>
+          <td>저선량 흉부 CT</td>
+          <td>폐암 고위험군에 한함</td>
+        </tr>
+      </table>
+    `;
+  </script>
+
+  <!-- =======================
+       2. 페이지 이동 및 필수 항목 검증
+  ======================= -->
+  <script>
+    function showPage(pageId) {
+      document.querySelectorAll('.page-section').forEach(pg => pg.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+    }
+    function goToPage2() {
+      // 첫 페이지 "검사 시작" 버튼은 바로 페이지2로 이동
+      showPage('page2');
+    }
+    function goToSymptomPage(pageNumber) {
+      // 페이지2(연령/성별) 검증
+      if (!selectedAge || !selectedGender) {
+        alert("해당 항목을 선택해 주세요");
+        return;
+      }
+      currentSymptomPage = pageNumber;
+      renderSymptomPage();
+      showPage('page3');
+    }
+    function nextSymptomPage() {
+      // 증상 선택 페이지 검증: 현재 페이지 내에서 최소 하나 선택되어야 함
+      if (!validateSymptomPage()) {
+        alert("해당 항목을 선택해 주세요");
+        return;
+      }
+      if (currentSymptomPage < 5) {
+        currentSymptomPage++;
+        renderSymptomPage();
+      } else {
+        renderResultsPage();
+        showPage('page8');
+      }
+    }
+    function previousSymptomPage() {
+      if (currentSymptomPage === 1) {
+        showPage('page2');
+      } else {
+        currentSymptomPage--;
+        renderSymptomPage();
+      }
+    }
+    function restart() {
+      // 결과 페이지 "다시 검사" 버튼: 첫 페이지로 돌아감
+      selectedAge = "";
+      selectedGender = "";
+      selectedSymptoms = [];
+      currentSymptomPage = 1;
+      document.querySelectorAll('.select-btn').forEach(btn => btn.classList.remove('selected'));
+      showPage('page1');
+    }
+    // 현재 증상 페이지에서 최소 한 항목 선택 검증 (일반 증상 또는 "해당 증상 없음" 선택)
+    function validateSymptomPage() {
+      const symptoms = getCurrentSymptoms();
+      const startIdx = (currentSymptomPage - 1) * 10;
+      const endIdx = currentSymptomPage * 10;
+      const currentSlice = symptoms.slice(startIdx, endIdx);
+      if (selectedSymptoms.some(s => s.id === "None" + currentSymptomPage)) {
+        return true;
+      }
+      return currentSlice.some(sym => selectedSymptoms.some(s => s.id === sym.id));
+    }
+  </script>
+
+  <!-- =======================
+       3. 각종 버튼 선택 로직
+  ======================= -->
+  <script>
+    // 연령 및 성별 선택 버튼 – 기본 스타일 그대로, 클릭 시 selected 클래스만 추가
+    function toggleSelection(target, type, value) {
+      document.querySelectorAll(`.select-btn[data-type="${type}"]`).forEach(btn => {
+        btn.classList.remove('selected');
+      });
+      target.classList.add('selected');
+      if (type === "age") selectedAge = value;
+      if (type === "gender") selectedGender = value;
+    }
+    // 증상 선택 – 일반 증상 버튼과 "해당 증상 없음" 버튼 구분
+    function toggleSymptomSelection(symptomObj, btnElement) {
+      // 다른 증상 버튼 클릭 시 "해당 증상 없음" 선택 제거 (가짜 선택 객체)
+      selectedSymptoms = selectedSymptoms.filter(item => !item.id.startsWith("None"));
+      const exists = selectedSymptoms.find(item => item.id === symptomObj.id);
+      if (exists) {
+        selectedSymptoms = selectedSymptoms.filter(item => item.id !== symptomObj.id);
+        btnElement.classList.remove('selected');
+      } else {
+        selectedSymptoms.push(symptomObj);
+        btnElement.classList.add('selected');
+      }
+      renderSymptomPage(); // 변경된 선택 상태를 즉시 반영
+    }
+    // "해당 증상 없음" 버튼 – 토글 방식으로 작동하도록 수정
+    function clearCurrentPageSelections() {
+      const noneId = "None" + currentSymptomPage;
+      const isNoneSelected = selectedSymptoms.some(item => item.id === noneId);
+      
+      if (isNoneSelected) {
+        // 이미 선택되어 있다면 해제
+        selectedSymptoms = selectedSymptoms.filter(item => item.id !== noneId);
+      } else {
+        // 현재 페이지의 다른 증상 선택들을 제거한 후 "해당 증상 없음" 선택 추가
+        const start = (currentSymptomPage - 1) * 10 + 1;
+        const end = currentSymptomPage * 10;
+        selectedSymptoms = selectedSymptoms.filter(item => {
+          const num = parseInt(item.id);
+          return isNaN(num) || num < start || num > end;
+        });
+        const noneObj = { id: noneId, symptom: "해당 증상 없음", riskDisease: "없음", examSuggestion: "없음", cancerDesc: "없음" };
+        selectedSymptoms.push(noneObj);
+      }
+      renderSymptomPage();
+    }
+  </script>
+
+  <!-- =======================
+       4. 증상 선택 페이지 동적 렌더링
+  ======================= -->
+  <script>
+    function renderSymptomPage() {
+      // 페이지 상단 제목: "남성 증상 선택 X" 또는 "여성 증상 선택 X"
+      const heading = document.getElementById("symptom-heading");
+      heading.textContent = (selectedGender === "남성" ? "남성" : "여성") + " 증상 선택 " + currentSymptomPage;
+      const container = document.getElementById("symptom-container");
+      container.innerHTML = "";
+      const symptoms = getCurrentSymptoms();
+      if (!symptoms || symptoms.length === 0) {
+        container.innerHTML = "<p>증상 데이터를 불러오는 중입니다. 잠시만 기다려주세요.</p>";
+        return;
+      }
+      const startIdx = (currentSymptomPage - 1) * 10;
+      const endIdx = currentSymptomPage * 10;
+      const currentSlice = symptoms.slice(startIdx, endIdx);
+      currentSlice.forEach(sym => {
+        const btn = document.createElement("button");
+        btn.className = "select-btn";
+        btn.textContent = sym.id + ". " + sym.symptom;
+        if (selectedSymptoms.find(item => item.id === sym.id)) {
+          btn.classList.add("selected");
+        }
+        btn.onclick = function() { toggleSymptomSelection(sym, btn); };
+        container.appendChild(btn);
+      });
+      // "해당 증상 없음" 버튼
+      const clearBtn = document.createElement("button");
+      clearBtn.className = "select-btn";
+      clearBtn.textContent = "해당 증상 없음";
+      if (selectedSymptoms.some(item => item.id === "None" + currentSymptomPage)) {
+        clearBtn.classList.add("selected");
+      }
+      clearBtn.onclick = clearCurrentPageSelections;
+      container.appendChild(clearBtn);
+      document.getElementById("symptom-page-num").textContent = "페이지 " + currentSymptomPage + " / 5";
+    }
+  </script>
+
+  <!-- =======================
+       5. 결과 페이지 렌더링 함수
+  ======================= -->
+  <script>
+    // 암 설명 파싱 함수: "Lung Cancer (C34) - 폐에서 발생하는 악성 종양"
+    function parseCancerDesc(desc) {
+      const regex = /(.+?)\s*\((.+?)\)\s*-\s*(.+)/;
+      const match = desc.match(regex);
+      if (match) {
+        return { englishName: match[1].trim(), code: match[2].trim(), simpleDesc: match[3].trim() };
+      } else {
+        return { englishName: "", code: "", simpleDesc: desc };
+      }
+    }
+    function renderResultsPage() {
+      // 🔮 위험 질환 분석 (주황색 카드)
+      const riskMap = {};
+      selectedSymptoms.forEach(sym => {
+        const disease = sym.riskDisease;
+        if (!riskMap[disease]) {
+          riskMap[disease] = { count: 0, cancerDesc: sym.cancerDesc };
+        }
+        riskMap[disease].count++;
+      });
+      let riskArray = [];
+      for (const disease in riskMap) {
+        riskArray.push({ disease: disease, count: riskMap[disease].count, cancerDesc: riskMap[disease].cancerDesc });
+      }
+      riskArray.sort((a, b) => b.count - a.count);
+      function getRiskStars(count) {
+        if (count >= 4) return "⭐⭐⭐+";
+        else if (count === 3) return "⭐⭐⭐";
+        else if (count === 2) return "⭐⭐";
+        else return "⭐";
+      }
+      let riskHtml = `<h2>🔮 위험 질환 분석</h2>
+        <table>
+          <tr>
+            <th>위험 질환</th>
+            <th>위험도</th>
+            <th>영문명</th>
+            <th>상병코드</th>
+            <th>간단한 설명</th>
+          </tr>`;
+      riskArray.forEach(item => {
+        const stars = getRiskStars(item.count);
+        const parsed = parseCancerDesc(item.cancerDesc);
+        const rowStyle = (item.count >= 2) ? ' style="background-color: #b3e5fc;"' : "";
+        riskHtml += `<tr${rowStyle}>
+          <td>${item.disease}</td>
+          <td>${stars}</td>
+          <td>${parsed.englishName}</td>
+          <td>${parsed.code}</td>
+          <td>${parsed.simpleDesc}</td>
+        </tr>`;
+      });
+      riskHtml += "</table>";
+      document.getElementById("result-risk").innerHTML = riskHtml;
+      
+      // 🃏 검진 제안 (파란색 카드)
+      const examMap = {};
+      selectedSymptoms.forEach(sym => {
+        const key = sym.symptom + "|" + sym.riskDisease + "|" + sym.examSuggestion;
+        examMap[key] = sym;
+      });
+      let examHtml = `<h2>🃏 검진 제안</h2>
+        <table>
+          <tr>
+            <th>증상</th>
+            <th>위험 질환</th>
+            <th>검진 제안</th>
+          </tr>`;
+      Object.values(examMap).forEach(sym => {
+        examHtml += `<tr>
+          <td>${sym.symptom}</td>
+          <td>${sym.riskDisease}</td>
+          <td>${sym.examSuggestion}</td>
+        </tr>`;
+      });
+      examHtml += "</table>";
+      document.getElementById("result-exam").innerHTML = examHtml;
+      
+      // ✨ 국가 암검진 가이드라인 (녹색 카드) + 추가 정보 영역
+      document.getElementById("result-guideline").innerHTML = screeningGuidelinesHTML +
+      `<div class="extra-info" style="margin-top:20px; text-align:center;">
+         <p style="font-size:1.3em;">암에 대한 보다 자세한 정보는<br>ApuDa 웹앱에서 확인하세요</p>
+         <a href="https://apuda.softr.app/" target="_blank">
+           <img src="https://blog.kakaocdn.net/dn/QKUIH/btsLWuUGHPl/scNTqkbHpWf23q7KkvBjm0/img.webp" alt="ApuDa 앱" style="max-width:35%; height:auto; border-radius:8px;">
+         </a>
+       </div>`;
+    }
+  </script>
+  
+  <!-- =======================
+       6. HTML 페이지 구성
+  ======================= -->
+  
+  <!-- [1] 첫 화면 (서비스 소개 및 검사 시작) -->
+  <div id="page1" class="page-section active">
+    <div class="container">
+      <!-- 첫 화면: 워터마크 없음 -->
+      <img src="https://blog.kakaocdn.net/dn/cDBIAl/btsL3lQEM39/N7WW1vH17Tl6BLEP5EfnKk/img.jpg" alt="ApuDa 로고" style="width:200px; margin-bottom:20px; position: relative; z-index: 1;">
+      <h1 style="position: relative; z-index: 1;">ApuDa 암검진</h1>
+      <button class="btn blue-btn" onclick="goToPage2()" style="position: relative; z-index: 1;">검사 시작</button>
+    </div>
+    <div class="footer">
+      <p>© ApuDa</p>
+      <a href="https://cafe.naver.com/2ndpart" target="_blank">
+        <img src="https://blog.kakaocdn.net/dn/bdLgDL/btsL1XDn7FF/Dlkt2Ek2lH4R9HIVVX6oEk/img.jpg" alt="네이버 카페 로고">
+      </a>
+    </div>
+  </div>
+  
+  <!-- [2] 연령 및 성별 선택 페이지 -->
+  <div id="page2" class="page-section">
+    <div class="container">
+      <!-- 상단 헤더 텍스트 -->
+      <div class="header-watermark">
+        <div class="wm-subtitle">아프지만 다행이다</div>
+        <div class="wm-title">ApuDa</div>
+      </div>
+      <h2>연령 및 성별 선택</h2>
+      <h3>연령대</h3>
+      <div class="select-grid">
+        <button class="select-btn" data-type="age" onclick="toggleSelection(this,'age','10대')">10대</button>
+        <button class="select-btn" data-type="age" onclick="toggleSelection(this,'age','20대')">20대</button>
+        <button class="select-btn" data-type="age" onclick="toggleSelection(this,'age','30대')">30대</button>
+        <button class="select-btn" data-type="age" onclick="toggleSelection(this,'age','40대')">40대</button>
+        <button class="select-btn" data-type="age" onclick="toggleSelection(this,'age','50대')">50대</button>
+        <button class="select-btn" data-type="age" onclick="toggleSelection(this,'age','60대')">60대</button>
+        <button class="select-btn" data-type="age" onclick="toggleSelection(this,'age','70대 이상')">70대 이상</button>
+      </div>
+      <h3>성별</h3>
+      <div class="select-grid">
+        <button class="select-btn" data-type="gender" onclick="toggleSelection(this,'gender','남성')">남성</button>
+        <button class="select-btn" data-type="gender" onclick="toggleSelection(this,'gender','여성')">여성</button>
+      </div>
+      <button class="btn blue-btn" onclick="if(!selectedAge || !selectedGender){alert('해당 항목을 선택해 주세요');} else { goToSymptomPage(1); }">다음</button>
+    </div>
+    <div class="footer">
+      <p>© ApuDa</p>
+      <a href="https://cafe.naver.com/2ndpart" target="_blank">
+        <img src="https://blog.kakaocdn.net/dn/bdLgDL/btsL1XDn7FF/Dlkt2Ek2lH4R9HIVVX6oEk/img.jpg" alt="네이버 카페 로고">
+      </a>
+    </div>
+  </div>
+  
+  <!-- [3] 증상 선택 페이지 (5페이지 구성) -->
+  <div id="page3" class="page-section">
+    <div class="container">
+      <!-- 상단 헤더 텍스트 -->
+      <div class="header-watermark">
+        <div class="wm-subtitle">아프지만 다행이다</div>
+        <div class="wm-title">ApuDa</div>
+      </div>
+      <!-- 증상 선택 제목: "남성 증상 선택 X" 또는 "여성 증상 선택 X" -->
+      <h2 id="symptom-heading"></h2>
+      <p id="symptom-page-num">페이지 1 / 5</p>
+      <div id="symptom-container">
+        <!-- 증상 버튼들이 동적으로 삽입됨 -->
+      </div>
+      <div>
+        <button class="btn blue-btn" onclick="previousSymptomPage()"><- 이전</button>
+        <button class="btn blue-btn" onclick="nextSymptomPage()">다음</button>
+      </div>
+    </div>
+    <div class="footer">
+      <p>© ApuDa</p>
+      <a href="https://cafe.naver.com/2ndpart" target="_blank">
+        <img src="https://blog.kakaocdn.net/dn/bdLgDL/btsL1XDn7FF/Dlkt2Ek2lH4R9HIVVX6oEk/img.jpg" alt="네이버 카페 로고">
+      </a>
+    </div>
+  </div>
+  
+  <!-- [4] 결과 페이지 -->
+  <div id="page8" class="page-section">
+    <div class="container result-container">
+      <!-- 결과 페이지 제목 – 파란 버튼 스타일 -->
+      <h1 class="result-title">ApuDa 검진결과</h1>
+      <!-- 위험 질환 분석 (주황색 카드) -->
+      <div class="info-card card-orange" id="result-risk">
+        <!-- 위험 질환 분석 테이블 렌더 -->
+      </div>
+      <!-- 검진 제안 (파란색 카드) -->
+      <div class="info-card card-blue" id="result-exam">
+        <!-- 검진 제안 테이블 렌더 -->
+      </div>
+      <!-- 국가 암검진 가이드라인 (녹색 카드) + 추가 정보 영역 -->
+      <div class="info-card card-green" id="result-guideline">
+        <!-- 국가 암검진 가이드라인 및 추가 정보 렌더 -->
+      </div>
+      <button class="btn blue-btn" onclick="restart()">다시 검사</button>
+    </div>
+    <div class="footer">
+      <p>© ApuDa</p>
+      <a href="https://cafe.naver.com/2ndpart" target="_blank">
+        <img src="https://blog.kakaocdn.net/dn/bdLgDL/btsL1XDn7FF/Dlkt2Ek2lH4R9HIVVX6oEk/img.jpg" alt="네이버 카페 로고">
+      </a>
+    </div>
+  </div>
+  
+  <!-- =======================
+       7. 결과 페이지 렌더링 함수 (중복 정의 제거를 위해 마지막 스크립트는 그대로 유지)
+  ======================= -->
+  <script>
+    // 암 설명 파싱 함수: "Lung Cancer (C34) - 폐에서 발생하는 악성 종양"
+    function parseCancerDesc(desc) {
+      const regex = /(.+?)\s*\((.+?)\)\s*-\s*(.+)/;
+      const match = desc.match(regex);
+      if (match) {
+        return { englishName: match[1].trim(), code: match[2].trim(), simpleDesc: match[3].trim() };
+      } else {
+        return { englishName: "", code: "", simpleDesc: desc };
+      }
+    }
+    function renderResultsPage() {
+      // 🔮 위험 질환 분석 (주황색 카드)
+      const riskMap = {};
+      selectedSymptoms.forEach(sym => {
+        const disease = sym.riskDisease;
+        if (!riskMap[disease]) {
+          riskMap[disease] = { count: 0, cancerDesc: sym.cancerDesc };
+        }
+        riskMap[disease].count++;
+      });
+      let riskArray = [];
+      for (const disease in riskMap) {
+        riskArray.push({ disease: disease, count: riskMap[disease].count, cancerDesc: riskMap[disease].cancerDesc });
+      }
+      riskArray.sort((a, b) => b.count - a.count);
+      function getRiskStars(count) {
+        if (count >= 4) return "⭐⭐⭐+";
+        else if (count === 3) return "⭐⭐⭐";
+        else if (count === 2) return "⭐⭐";
+        else return "⭐";
+      }
+      let riskHtml = `<h2>🔮 위험 질환 분석</h2>
+        <table>
+          <tr>
+            <th>위험 질환</th>
+            <th>위험도</th>
+            <th>영문명</th>
+            <th>상병코드</th>
+            <th>간단한 설명</th>
+          </tr>`;
+      riskArray.forEach(item => {
+        const stars = getRiskStars(item.count);
+        const parsed = parseCancerDesc(item.cancerDesc);
+        const rowStyle = (item.count >= 2) ? ' style="background-color: #b3e5fc;"' : "";
+        riskHtml += `<tr${rowStyle}>
+          <td>${item.disease}</td>
+          <td>${stars}</td>
+          <td>${parsed.englishName}</td>
+          <td>${parsed.code}</td>
+          <td>${parsed.simpleDesc}</td>
+        </tr>`;
+      });
+      riskHtml += "</table>";
+      document.getElementById("result-risk").innerHTML = riskHtml;
+      
+      // 🃏 검진 제안 (파란색 카드)
+      const examMap = {};
+      selectedSymptoms.forEach(sym => {
+        const key = sym.symptom + "|" + sym.riskDisease + "|" + sym.examSuggestion;
+        examMap[key] = sym;
+      });
+      let examHtml = `<h2>🃏 검진 제안</h2>
+        <table>
+          <tr>
+            <th>증상</th>
+            <th>위험 질환</th>
+            <th>검진 제안</th>
+          </tr>`;
+      Object.values(examMap).forEach(sym => {
+        examHtml += `<tr>
+          <td>${sym.symptom}</td>
+          <td>${sym.riskDisease}</td>
+          <td>${sym.examSuggestion}</td>
+        </tr>`;
+      });
+      examHtml += "</table>";
+      document.getElementById("result-exam").innerHTML = examHtml;
+      
+      // ✨ 국가 암검진 가이드라인 (녹색 카드) + 추가 정보 영역
+      document.getElementById("result-guideline").innerHTML = screeningGuidelinesHTML +
+      `<div class="extra-info" style="margin-top:20px; text-align:center;">
+         <p style="font-size:1.3em;">암에 대한 보다 자세한 정보는<br>ApuDa 웹앱에서 확인하세요</p>
+         <a href="https://apuda.softr.app/" target="_blank">
+           <img src="https://blog.kakaocdn.net/dn/QKUIH/btsLWuUGHPl/scNTqkbHpWf23q7KkvBjm0/img.webp" alt="ApuDa 앱" style="max-width:35%; height:auto; border-radius:8px;">
+         </a>
+       </div>`;
+    }
+  </script>
+</body>
+</html>
