@@ -18,7 +18,7 @@ export default async function LabsPage() {
   const supabase = await createClient();
   const { data: labs } = await supabase
     .from("labs")
-    .select("id,test_name,value_numeric,value_text,unit,measured_at,source")
+    .select("id,canonical_code,test_name,value_numeric,value_text,unit,measured_at,source")
     .eq("profile_id", profile.id)
     .order("measured_at", { ascending: false })
     .limit(60);
@@ -31,7 +31,7 @@ export default async function LabsPage() {
   for (const lab of labs ?? []) {
     if (lab.value_numeric === null) continue;
 
-    const key = lab.test_name.trim().toLowerCase();
+    const key = lab.canonical_code || lab.test_name.trim().toLowerCase();
     const current = trendMap.get(key) ?? {
       name: lab.test_name,
       unit: lab.unit,
