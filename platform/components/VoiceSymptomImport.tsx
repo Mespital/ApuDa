@@ -29,7 +29,13 @@ async function pollJob(jobId: string) {
   throw new Error("처리 시간이 길어지고 있습니다. 잠시 후 다시 시도해주세요.");
 }
 
-export default function VoiceSymptomImport({ profileId }: { profileId: string }) {
+export default function VoiceSymptomImport({
+  profileId,
+  enabled = true
+}: {
+  profileId: string;
+  enabled?: boolean;
+}) {
   const recorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
   const [recording, setRecording] = useState(false);
@@ -141,6 +147,14 @@ export default function VoiceSymptomImport({ profileId }: { profileId: string })
     }
 
     setSaving(false);
+  }
+
+  if (!enabled) {
+    return (
+      <div className="notice">
+        음성 기록은 AI 입력 서버 연결 후 활성화됩니다. 지금은 아래의 직접 기록 기능을 사용할 수 있습니다.
+      </div>
+    );
   }
 
   return (
