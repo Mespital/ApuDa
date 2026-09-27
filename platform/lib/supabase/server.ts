@@ -3,10 +3,10 @@ import { cookies } from "next/headers";
 import { getSupabaseConfig } from "./config";
 
 export async function createClient() {
-  const { url, anonKey } = getSupabaseConfig();
+  const { url, publishableKey } = getSupabaseConfig();
   const cookieStore = await cookies();
 
-  return createServerClient(url, anonKey, {
+  return createServerClient(url, publishableKey, {
     cookies: {
       getAll() {
         return cookieStore.getAll();
@@ -17,8 +17,8 @@ export async function createClient() {
             cookieStore.set(name, value, options)
           );
         } catch {
-          // Server Components may not be allowed to write cookies.
-          // Middleware refreshes auth sessions.
+          // Server Components cannot always write cookies.
+          // proxy.ts refreshes the browser session.
         }
       }
     }
