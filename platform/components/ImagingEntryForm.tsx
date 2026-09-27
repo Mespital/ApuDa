@@ -3,7 +3,16 @@
 import { FormEvent, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 
-export default function ImagingEntryForm({ profileId }: { profileId: string }) {
+type ConditionOption = { id: string; name: string };
+
+export default function ImagingEntryForm({
+  profileId,
+  conditions = []
+}: {
+  profileId: string;
+  conditions?: ConditionOption[];
+}) {
+  const [conditionId, setConditionId] = useState("");
   const [modality, setModality] = useState("CT");
   const [bodyPart, setBodyPart] = useState("");
   const [studyDate, setStudyDate] = useState("");
@@ -20,6 +29,7 @@ export default function ImagingEntryForm({ profileId }: { profileId: string }) {
     const supabase = createClient();
     const { error } = await supabase.from("imaging").insert({
       profile_id: profileId,
+      condition_id: conditionId || null,
       modality,
       body_part: bodyPart.trim() || null,
       study_date: studyDate,
@@ -39,6 +49,17 @@ export default function ImagingEntryForm({ profileId }: { profileId: string }) {
 
   return (
     <form className="healthForm" onSubmit={submit}>
+      {conditions.length > 0 && (
+        <label>
+          연결할 질환
+          <select value={conditionId} onChange={(e) => setConditionId(e.target.value)}>
+            <option value="">선택하지 않음</option>
+            {conditions.map((condition) => (
+              <option value={condition.id} key={condition.id}>{condition.name}</option>
+            ))}
+          </select>
+        </label>
+      )}
       <div className="twoCol">
         <label>
           검사 종류
