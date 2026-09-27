@@ -4,26 +4,50 @@ from typing import Any
 
 from .parsers import parse_lab_text, parse_symptom_text
 
+_whisper_model: Any | None = None
+_ocr_engine: Any | None = None
+
+
 def _safe_delete(path: str) -> None:
     try:
         Path(path).unlink(missing_ok=True)
     except Exception:
         pass
 
-def run_stt_job(path: str) -> dict[str, Any]:
-    try:
+
+def _get_whisper_model():
+    global _whisper_model
+    if _whisper_model is None:
         from faster_whisper import WhisperModel
 
-        model_name = os.getenv("WHISPER_MODEL", "small")
-        compute_type = os.getenv("WHISPER_COMPUTE_TYPE", "int8")
+        _whisper_model = WhisperModel(
+            os.getenv("WHISPER_MODEL", "small"),
+            device="cpu",
+            compute_type=os.getenv("WHISPER_COMPUTE_TYPE", "int8"),
+            cpu_threads=int(os.getenv("WHISPER_CPU_THREADS", "2")),
+        )
+    return _whisper_model
+
+
+def _get_ocr_engine():
+    global _ocr_engine
+    if _ocr_engine is None:
+        from paddleocr import PaddleOCR
+
+        _ocr_engine = PaddleOCR(
+            lang="korean",
+            use_doc_orientation_classify=False,
+            use_doc_unwarping=False,
+            use_textline_orientation=False,
+        )
+    return _ocr_engine
+
+
+def run_stt_job(path: str) -> dict[str, Any]:
+    try:
+        model = _get_whisper_model()
         beam_size = int(os.getenv("WHISPER_BEAM_SIZE", "2"))
 
-        model = WhisperModel(
-            model_name,
-            device="cpu",
-            compute_type=compute_type,
-            cpu_threads=2,
-        )
         segments, info = model.transcribe(
             path,
             language="ko",
@@ -40,17 +64,10 @@ def run_stt_job(path: str) -> dict[str, Any]:
     finally:
         _safe_delete(path)
 
+
 def run_ocr_job(path: str) -> dict[str, Any]:
     try:
-        from paddleocr import PaddleOCR
-
-        ocr = PaddleOCR(
-            lang="korean",
-            use_doc_orientation_classify=False,
-            use_doc_unwarping=False,
-            use_textline_orientation=False,
-        )
-
+        ocr = _get_ocr_engine()
         lines: list[str] = []
 
         try:
