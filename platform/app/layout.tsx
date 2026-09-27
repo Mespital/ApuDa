@@ -2,9 +2,14 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "ApuDa — 내 건강의 흐름을 기억합니다",
+  title: {
+    default: "My ApuDa | 내 건강의 흐름을 정리해요",
+    template: "%s | My ApuDa"
+  },
   description:
-    "검사, 증상, 치료, 진료 준비를 하나의 흐름으로 연결하는 ApuDa Health OS"
+    "검사, 증상, 치료, 복약, 영상검사와 다음 진료 준비를 한곳에 정리하는 ApuDa 개인 건강관리 공간입니다.",
+  applicationName: "My ApuDa",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://apuda-health-os-beta.netlify.app")
 };
 
 export default function RootLayout({
