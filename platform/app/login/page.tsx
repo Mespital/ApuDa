@@ -102,6 +102,10 @@ export default function LoginPage() {
 
         {message && <p className="formMessage">{message}</p>}
 
+        {mode === "login" && (
+          <a className="textLink" href="/forgot-password">비밀번호를 잊으셨나요?</a>
+        )}
+
         <button
           className="textButton"
           type="button"
