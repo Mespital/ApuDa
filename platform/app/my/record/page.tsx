@@ -5,13 +5,13 @@ const choices = [
     href: "/my/labs",
     icon: "▤",
     title: "검사결과",
-    description: "검사명과 결과를 직접 기록해요. 사진 OCR은 AI 입력 서버 연결 후 추가됩니다."
+    description: "검사지를 사진으로 읽거나 검사명과 결과를 직접 기록해요."
   },
   {
     href: "/my/symptoms",
     icon: "●",
     title: "오늘 상태",
-    description: "통증, 피로, 손발저림 같은 증상을 짧게 남겨요."
+    description: "말로 기록하거나 통증, 피로, 손발저림 같은 증상을 직접 남겨요."
   },
   {
     href: "/my/medications",
