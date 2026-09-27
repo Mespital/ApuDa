@@ -1669,3 +1669,17 @@ a {
     grid-template-columns: 1fr;
   }
 }
+
+
+.textLink {
+  display: inline-block;
+  margin-top: 14px;
+  color: var(--apuda-blue);
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.textLink:hover {
+  text-decoration: underline;
+}
