@@ -45,16 +45,19 @@ export default function VoiceSymptomImport({ profileId }: { profileId: string })
 
     try {
       const form = new FormData();
-      form.append("file", new File([blob], "voice.webm", { type: blob.type || "audio/webm" }));\n      form.append("profileId", profileId);
+      form.append("file", new File([blob], "voice.webm", { type: blob.type || "audio/webm" }));
+      form.append("profileId", profileId);
 
       const response = await fetch("/api/ai/stt", { method: "POST", body: form });
       const body = await response.json();
 
       if (!response.ok) {
         throw new Error(
-          body?.error === "ai_input_not_configured"
-            ? "VPS AI 입력 서버 연결 후 음성 기록이 활성화됩니다."
-            : body?.error || "음성을 전송하지 못했습니다."
+          body?.error === "ai_consent_required"
+            ? "음성 기록을 사용하려면 프로필의 AI 보조 입력 동의가 필요합니다."
+            : body?.error === "ai_service_unavailable"
+              ? "VPS AI 입력 서버가 아직 연결되지 않았습니다."
+              : body?.error || "음성을 전송하지 못했습니다."
         );
       }
 
