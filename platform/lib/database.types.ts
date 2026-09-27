@@ -203,6 +203,63 @@ export type Database = {
           },
         ]
       }
+      imaging: {
+        Row: {
+          body_part: string | null
+          condition_id: string | null
+          confirmed_by_user: boolean
+          created_at: string
+          id: string
+          modality: string
+          profile_id: string
+          response_category: string | null
+          source: string
+          study_date: string
+          summary: string | null
+        }
+        Insert: {
+          body_part?: string | null
+          condition_id?: string | null
+          confirmed_by_user?: boolean
+          created_at?: string
+          id?: string
+          modality: string
+          profile_id: string
+          response_category?: string | null
+          source?: string
+          study_date: string
+          summary?: string | null
+        }
+        Update: {
+          body_part?: string | null
+          condition_id?: string | null
+          confirmed_by_user?: boolean
+          created_at?: string
+          id?: string
+          modality?: string
+          profile_id?: string
+          response_category?: string | null
+          source?: string
+          study_date?: string
+          summary?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "imaging_condition_id_fkey"
+            columns: ["condition_id"]
+            isOneToOne: false
+            referencedRelation: "conditions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "imaging_profile_id_fkey"
+            columns: ["profile_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       labs: {
         Row: {
           canonical_code: string | null
