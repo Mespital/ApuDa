@@ -1403,3 +1403,67 @@ a {
     margin: 16mm;
   }
 }
+
+
+.settingCard {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 22px;
+}
+
+.settingCard h3 {
+  margin: 7px 0 8px;
+}
+
+.settingAction {
+  display: grid;
+  justify-items: end;
+  gap: 10px;
+}
+
+.positivePill {
+  background: #e8f7f3;
+  color: #24715f;
+}
+
+.consentCheck {
+  display: flex !important;
+  grid-template-columns: none !important;
+  align-items: flex-start;
+  gap: 12px !important;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+}
+
+.consentCheck input {
+  width: 20px !important;
+  min-height: 20px !important;
+  height: 20px;
+  flex: 0 0 auto;
+  margin-top: 2px;
+}
+
+.consentCheck span {
+  display: grid;
+  gap: 5px;
+}
+
+.consentCheck small {
+  color: var(--muted);
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+@media (max-width: 640px) {
+  .settingCard {
+    flex-direction: column;
+  }
+
+  .settingAction {
+    width: 100%;
+    justify-items: stretch;
+  }
+}
