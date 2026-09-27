@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ApuDaTalkPanel from "@/components/ApuDaTalkPanel";
 import { redirect } from "next/navigation";
 import { getActiveProfile } from "@/lib/active-profile";
 import { createClient } from "@/lib/supabase/server";
@@ -156,6 +157,15 @@ export default async function ApuDaAIPage() {
             ))}
           </div>
         )}
+      </section>
+
+      <section className="section">
+        <p className="eyebrow">APUDA TALK</p>
+        <h3>내 기록을 바탕으로 질문하기</h3>
+        <p className="mutedText">
+          기본 모드에서는 기록을 로컬 규칙으로 정리하고, 서버에 외부 AI 제공자가 명시적으로 설정된 경우에만 별도 선택 동의 후 생성형 AI를 사용합니다.
+        </p>
+        <ApuDaTalkPanel profileId={profile.id} />
       </section>
 
       <section className="section softSection">
