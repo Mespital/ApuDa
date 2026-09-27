@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import VisitQuestionForm from "@/components/VisitQuestionForm";
 import { getActiveProfile } from "@/lib/active-profile";
 import { createClient } from "@/lib/supabase/server";
 
@@ -12,46 +13,59 @@ export default async function VisitPrepPage() {
   const since = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString();
   const now = new Date().toISOString();
 
-  const [symptomsResult, labsResult, treatmentsResult, appointmentResult, medicationsResult] =
-    await Promise.all([
-      supabase
-        .from("symptom_logs")
-        .select("id,symptom_name,severity,note,recorded_at")
-        .eq("profile_id", profile.id)
-        .gte("recorded_at", since)
-        .order("recorded_at", { ascending: false }),
-      supabase
-        .from("labs")
-        .select("id,test_name,value_numeric,value_text,unit,measured_at")
-        .eq("profile_id", profile.id)
-        .order("measured_at", { ascending: false })
-        .limit(8),
-      supabase
-        .from("treatments")
-        .select("id,name,cycle_label,treatment_type,started_on")
-        .eq("profile_id", profile.id)
-        .order("started_on", { ascending: false })
-        .limit(3),
-      supabase
-        .from("appointments")
-        .select("id,title,hospital_name,department,scheduled_at")
-        .eq("profile_id", profile.id)
-        .gte("scheduled_at", now)
-        .order("scheduled_at", { ascending: true })
-        .limit(1),
-      supabase
-        .from("medications")
-        .select("id,name,dose_text,frequency_text,route")
-        .eq("profile_id", profile.id)
-        .eq("active", true)
-        .order("created_at", { ascending: false })
-    ]);
+  const [
+    symptomsResult,
+    labsResult,
+    treatmentsResult,
+    appointmentResult,
+    medicationsResult,
+    questionsResult
+  ] = await Promise.all([
+    supabase
+      .from("symptom_logs")
+      .select("id,symptom_name,severity,note,recorded_at")
+      .eq("profile_id", profile.id)
+      .gte("recorded_at", since)
+      .order("recorded_at", { ascending: false }),
+    supabase
+      .from("labs")
+      .select("id,test_name,value_numeric,value_text,unit,measured_at")
+      .eq("profile_id", profile.id)
+      .order("measured_at", { ascending: false })
+      .limit(8),
+    supabase
+      .from("treatments")
+      .select("id,name,cycle_label,treatment_type,started_on")
+      .eq("profile_id", profile.id)
+      .order("started_on", { ascending: false })
+      .limit(3),
+    supabase
+      .from("appointments")
+      .select("id,title,hospital_name,department,scheduled_at")
+      .eq("profile_id", profile.id)
+      .gte("scheduled_at", now)
+      .order("scheduled_at", { ascending: true })
+      .limit(1),
+    supabase
+      .from("medications")
+      .select("id,name,dose_text,frequency_text,route")
+      .eq("profile_id", profile.id)
+      .eq("active", true)
+      .order("created_at", { ascending: false }),
+    supabase
+      .from("visit_questions")
+      .select("id,question,status,created_at")
+      .eq("profile_id", profile.id)
+      .eq("status", "open")
+      .order("created_at", { ascending: true })
+  ]);
 
   const symptoms = symptomsResult.data ?? [];
   const labs = labsResult.data ?? [];
   const treatments = treatmentsResult.data ?? [];
   const appointment = appointmentResult.data?.[0];
   const medications = medicationsResult.data ?? [];
+  const savedQuestions = questionsResult.data ?? [];
 
   const symptomCounts = new Map<string, { count: number; maxSeverity: number }>();
   for (const item of symptoms) {
@@ -62,20 +76,22 @@ export default async function VisitPrepPage() {
     });
   }
 
-  const questions: string[] = [];
+  const suggestedQuestions: string[] = [];
   for (const [name, info] of symptomCounts) {
     if (info.maxSeverity >= 2) {
-      questions.push(`${name} 증상이 반복되거나 일상에 영향을 주고 있는데 어떤 점을 확인하면 좋을까요?`);
+      suggestedQuestions.push(
+        `${name} 증상이 반복되거나 일상에 영향을 주고 있는데 어떤 점을 확인하면 좋을까요?`
+      );
     }
   }
   if (treatments.length) {
-    questions.push("현재 치료의 다음 단계와 예정된 평가 시점을 확인하고 싶습니다.");
+    suggestedQuestions.push("현재 치료의 다음 단계와 예정된 평가 시점을 확인하고 싶습니다.");
   }
   if (labs.length) {
-    questions.push("최근 검사결과 중 치료나 일상관리와 관련해 특히 확인해야 할 항목이 있을까요?");
+    suggestedQuestions.push("최근 검사결과 중 치료나 일상관리와 관련해 특히 확인해야 할 항목이 있을까요?");
   }
   if (medications.length) {
-    questions.push("현재 복용 중인 약을 계속 같은 방식으로 복용하면 되는지 확인하고 싶습니다.");
+    suggestedQuestions.push("현재 복용 중인 약을 계속 같은 방식으로 복용하면 되는지 확인하고 싶습니다.");
   }
 
   return (
@@ -90,7 +106,12 @@ export default async function VisitPrepPage() {
         <section className="visitHero">
           <span>다음 일정</span>
           <strong>{appointment.title}</strong>
-          <p>{new Date(appointment.scheduled_at).toLocaleString("ko-KR", { dateStyle: "full", timeStyle: "short" })}</p>
+          <p>
+            {new Date(appointment.scheduled_at).toLocaleString("ko-KR", {
+              dateStyle: "full",
+              timeStyle: "short"
+            })}
+          </p>
           <small>{appointment.hospital_name ?? ""} {appointment.department ?? ""}</small>
         </section>
       )}
@@ -103,7 +124,9 @@ export default async function VisitPrepPage() {
         ) : (
           <div className="chipList">
             {[...symptomCounts.entries()].map(([name, info]) => (
-              <span className="infoChip" key={name}>{name} · {info.count}회 · 최대 {info.maxSeverity}</span>
+              <span className="infoChip" key={name}>
+                {name} · {info.count}회 · 최대 {info.maxSeverity}
+              </span>
             ))}
           </div>
         )}
@@ -137,7 +160,9 @@ export default async function VisitPrepPage() {
         ) : (
           <div className="chipList">
             {treatments.map((item) => (
-              <span className="infoChip" key={item.id}>{item.name} {item.cycle_label ?? ""}</span>
+              <span className="infoChip" key={item.id}>
+                {item.name} {item.cycle_label ?? ""}
+              </span>
             ))}
           </div>
         )}
@@ -154,7 +179,11 @@ export default async function VisitPrepPage() {
               <article className="dataRow" key={item.id}>
                 <div>
                   <strong>{item.name}</strong>
-                  <small>{[item.dose_text, item.frequency_text, item.route].filter(Boolean).join(" · ")}</small>
+                  <small>
+                    {[item.dose_text, item.frequency_text, item.route]
+                      .filter(Boolean)
+                      .join(" · ")}
+                  </small>
                 </div>
               </article>
             ))}
@@ -163,18 +192,50 @@ export default async function VisitPrepPage() {
       </section>
 
       <section className="section softSection">
-        <p className="eyebrow">QUESTIONS</p>
-        <h3>의료진과 확인해볼 질문</h3>
-        {!questions.length ? (
-          <p className="mutedText">기록을 추가하면 상황에 맞는 질문 준비를 도와드립니다.</p>
+        <p className="eyebrow">SUGGESTED QUESTIONS</p>
+        <h3>기록을 보고 준비한 질문</h3>
+        {!suggestedQuestions.length ? (
+          <p className="mutedText">
+            기록을 추가하면 상황에 맞는 질문 준비를 도와드립니다.
+          </p>
         ) : (
           <ol className="questionList">
-            {questions.slice(0, 6).map((question) => <li key={question}>{question}</li>)}
+            {suggestedQuestions.slice(0, 6).map((question) => (
+              <li key={question}>{question}</li>
+            ))}
           </ol>
         )}
         <p className="safetyNote">
           이 질문은 진단이나 처방이 아니라 의료진과의 상담을 준비하기 위한 참고용입니다.
         </p>
+      </section>
+
+      <section className="section">
+        <p className="eyebrow">MY QUESTIONS</p>
+        <h3>내가 꼭 물어볼 질문</h3>
+
+        {savedQuestions.length > 0 && (
+          <ol className="questionList savedQuestions">
+            {savedQuestions.map((item) => (
+              <li key={item.id}>{item.question}</li>
+            ))}
+          </ol>
+        )}
+
+        <VisitQuestionForm profileId={profile.id} />
+      </section>
+
+      <section className="section summaryCta">
+        <div>
+          <p className="eyebrow">ONE-PAGE SUMMARY</p>
+          <h3>진료실에서 바로 볼 한 장 요약</h3>
+          <p className="mutedText">
+            증상·검사·치료·복약·질문을 한 장으로 정리해 인쇄하거나 PDF로 저장할 수 있습니다.
+          </p>
+        </div>
+        <Link className="primaryLink" href="/my/visit-summary">
+          한 장 요약 열기
+        </Link>
       </section>
 
       <div className="buttonRow leftButtons">
