@@ -55,9 +55,14 @@ export default async function ProfilesPage() {
         <p className="mutedText">
           현재 프로필의 건강정보 처리 상태와 검사사진·음성 AI 보조 입력 동의를 관리합니다.
         </p>
-        <Link className="secondaryLink compactLink" href="/my/settings/privacy">
-          설정 열기
-        </Link>
+        <div className="buttonRow leftButtons">
+          <Link className="secondaryLink compactLink" href="/my/settings/privacy">
+            개인정보·AI 설정
+          </Link>
+          <Link className="secondaryLink compactLink" href="/my/settings/data">
+            내 데이터 관리
+          </Link>
+        </div>
       </section>
 
       <div className="buttonRow leftButtons">
