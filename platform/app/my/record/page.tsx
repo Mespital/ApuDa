@@ -36,6 +36,12 @@ const choices = [
     icon: "◎",
     title: "바이오마커",
     description: "HER2, PD-L1, EGFR 같은 병리·분자검사 결과를 정리해요."
+  },
+  {
+    href: "/my/imaging",
+    icon: "◫",
+    title: "영상검사",
+    description: "CT·MRI·PET 검사와 판독 결과를 치료 여정에 남겨요."
   }
 ];
 
