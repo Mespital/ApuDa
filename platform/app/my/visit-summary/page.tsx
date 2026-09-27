@@ -12,7 +12,7 @@ export default async function VisitSummaryPage() {
   const since = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString();
   const now = new Date().toISOString();
 
-  const [symptomsResult, labsResult, treatmentsResult, medicationsResult, appointmentResult, questionsResult] =
+  const [symptomsResult, labsResult, treatmentsResult, medicationsResult, appointmentResult, questionsResult, biomarkersResult] =
     await Promise.all([
       supabase
         .from("symptom_logs")
@@ -50,7 +50,13 @@ export default async function VisitSummaryPage() {
         .select("id,question,status,created_at")
         .eq("profile_id", profile.id)
         .eq("status", "open")
-        .order("created_at", { ascending: true })
+        .order("created_at", { ascending: true }),
+      supabase
+        .from("biomarkers")
+        .select("id,name,result_text,result_numeric,unit,tested_on")
+        .eq("profile_id", profile.id)
+        .order("tested_on", { ascending: false, nullsFirst: false })
+        .limit(10)
     ]);
 
   const symptoms = symptomsResult.data ?? [];
@@ -59,6 +65,7 @@ export default async function VisitSummaryPage() {
   const medications = medicationsResult.data ?? [];
   const appointment = appointmentResult.data?.[0];
   const questions = questionsResult.data ?? [];
+  const biomarkers = biomarkersResult.data ?? [];
 
   const symptomMap = new Map<string, { count: number; maxSeverity: number; notes: string[] }>();
   for (const row of symptoms) {
@@ -135,6 +142,21 @@ export default async function VisitSummaryPage() {
           <ul>
             {treatments.map((item) => (
               <li key={item.id}>{item.name} {item.cycle_label ?? ""}</li>
+            ))}
+          </ul>
+        )}
+      </section>
+
+      <section className="printSection">
+        <h2>바이오마커</h2>
+        {!biomarkers.length ? (
+          <p>기록 없음</p>
+        ) : (
+          <ul>
+            {biomarkers.map((item) => (
+              <li key={item.id}>
+                <strong>{item.name}</strong> · {item.result_text ?? item.result_numeric ?? "-"} {item.unit ?? ""}
+              </li>
             ))}
           </ul>
         )}
