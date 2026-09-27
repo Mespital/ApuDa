@@ -1,0 +1,24 @@
+# Example reverse proxy for the ApuDa AI Input API.
+# Point ai.apuda.app DNS to the VPS before enabling this site.
+
+ai.apuda.app {
+  encode zstd gzip
+
+  reverse_proxy 127.0.0.1:8000
+
+  header {
+    -Server
+    X-Content-Type-Options "nosniff"
+    X-Frame-Options "DENY"
+    Referrer-Policy "no-referrer"
+  }
+
+  log {
+    output file /var/log/caddy/apuda-ai-access.log
+    format json
+  }
+}
+
+# Important:
+# Do not log request bodies, OCR output, transcripts, lab values, symptoms,
+# names or other health information at the application layer.
