@@ -23,7 +23,16 @@ const commonBiomarkers = [
   "PR"
 ];
 
-export default function BiomarkerEntryForm({ profileId }: { profileId: string }) {
+type ConditionOption = { id: string; name: string };
+
+export default function BiomarkerEntryForm({
+  profileId,
+  conditions = []
+}: {
+  profileId: string;
+  conditions?: ConditionOption[];
+}) {
+  const [conditionId, setConditionId] = useState("");
   const [name, setName] = useState("");
   const [resultText, setResultText] = useState("");
   const [testedOn, setTestedOn] = useState("");
@@ -39,6 +48,7 @@ export default function BiomarkerEntryForm({ profileId }: { profileId: string })
     const supabase = createClient();
     const { error } = await supabase.from("biomarkers").insert({
       profile_id: profileId,
+      condition_id: conditionId || null,
       name: name.trim(),
       result_text: resultText.trim() || null,
       tested_on: testedOn || null,
@@ -56,6 +66,17 @@ export default function BiomarkerEntryForm({ profileId }: { profileId: string })
 
   return (
     <form className="healthForm" onSubmit={submit}>
+      {conditions.length > 0 && (
+        <label>
+          연결할 질환
+          <select value={conditionId} onChange={(e) => setConditionId(e.target.value)}>
+            <option value="">선택하지 않음</option>
+            {conditions.map((condition) => (
+              <option value={condition.id} key={condition.id}>{condition.name}</option>
+            ))}
+          </select>
+        </label>
+      )}
       <label>
         바이오마커
         <input
