@@ -49,6 +49,17 @@ export default async function ProfilesPage() {
         </div>
       </section>
 
+      <section className="section">
+        <p className="eyebrow">SETTINGS</p>
+        <h3>개인정보와 AI 설정</h3>
+        <p className="mutedText">
+          현재 프로필의 건강정보 처리 상태와 검사사진·음성 AI 보조 입력 동의를 관리합니다.
+        </p>
+        <Link className="secondaryLink compactLink" href="/my/settings/privacy">
+          설정 열기
+        </Link>
+      </section>
+
       <div className="buttonRow leftButtons">
         <Link className="primaryLink" href="/onboarding">＋ 가족 프로필 추가</Link>
         <LogoutButton />
