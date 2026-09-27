@@ -970,3 +970,72 @@ a {
     width: 100%;
   }
 }
+
+
+.consentCheck {
+  display: grid !important;
+  grid-template-columns: 22px 1fr;
+  align-items: start;
+  gap: 10px !important;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #f9fbff;
+  font-weight: 600 !important;
+  line-height: 1.55;
+}
+
+.consentCheck input {
+  width: 20px;
+  min-height: 20px;
+  height: 20px;
+  margin: 2px 0 0;
+}
+
+.consentCheck a {
+  color: var(--apuda-blue);
+  font-weight: 800;
+}
+
+.legalShell {
+  width: min(100%, 820px);
+  margin: 0 auto;
+  padding: 48px 20px 80px;
+}
+
+.legalCard {
+  display: grid;
+  gap: 4px;
+  margin: 26px 0;
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: #fff;
+}
+
+.legalCard h2 {
+  margin: 22px 0 6px;
+  color: var(--navy);
+  font-size: 20px;
+}
+
+.legalCard h2:first-child {
+  margin-top: 0;
+}
+
+.legalCard p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+@media (max-width: 560px) {
+  .legalShell {
+    padding: 28px 16px 72px;
+  }
+
+  .legalCard {
+    padding: 22px 18px;
+    border-radius: 22px;
+  }
+}
