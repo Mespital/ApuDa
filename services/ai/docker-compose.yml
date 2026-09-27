@@ -1,0 +1,45 @@
+services:
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis-data:/data
+    networks:
+      - apuda-ai
+
+  api:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    depends_on:
+      - redis
+    volumes:
+      - ai-tmp:/data/tmp
+      - ai-models:/root/.cache
+    ports:
+      - "127.0.0.1:8000:8000"
+    networks:
+      - apuda-ai
+
+  worker:
+    build: .
+    restart: unless-stopped
+    command: ["python", "worker.py"]
+    env_file: .env
+    depends_on:
+      - redis
+    volumes:
+      - ai-tmp:/data/tmp
+      - ai-models:/root/.cache
+    networks:
+      - apuda-ai
+
+volumes:
+  redis-data:
+  ai-tmp:
+  ai-models:
+
+networks:
+  apuda-ai:
+    driver: bridge
