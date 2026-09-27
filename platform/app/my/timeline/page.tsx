@@ -83,7 +83,7 @@ export default async function TimelinePage() {
         <section className="section">
           <p className="eyebrow">TREATMENT</p>
           <h3>치료 추가</h3>
-          <TreatmentEntryForm profileId={profile.id} />
+          <TreatmentEntryForm profileId={profile.id} conditions={(conditionResult.data ?? []).map(({ id, name }) => ({ id, name }))} />
         </section>
       </div>
 
