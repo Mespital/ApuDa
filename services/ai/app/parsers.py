@@ -27,7 +27,7 @@ def parse_symptom_text(text: str) -> dict[str, Any]:
                 item["change"] = "better"
 
             if canonical == "설사":
-                match = re.search(r"설사[^0-9]{0,8}(\d+)\s*번", normalized)
+                match = re.search(r"설사[^0-9]{0,8}(d+)s*번", normalized)
                 if match:
                     item["count_value"] = int(match.group(1))
 
@@ -41,8 +41,11 @@ def parse_symptom_text(text: str) -> dict[str, Any]:
     }
 
 LAB_LINE = re.compile(
-    r"(?P<name>[A-Za-z][A-Za-z0-9+\-./ ]{0,30}|[가-힣]{2,20})\s*[:=]?\s*"
-    r"(?P<value>-?\d+(?:\.\d+)?)\s*"
+    r"^s*"
+    r"(?P<name>[A-Za-z0-9가-힣][A-Za-z0-9가-힣+-./()% ]{0,40}?)"
+    r"s*(?::|=|s)s*"
+    r"(?P<value>-?d+(?:.d+)?)"
+    r"(?:s+|$)"
     r"(?P<unit>[A-Za-z%µμ/^0-9.]+(?:/[A-Za-z0-9µμ^]+)?)?"
 )
 
