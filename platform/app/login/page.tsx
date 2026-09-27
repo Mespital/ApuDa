@@ -18,27 +18,32 @@ export default function LoginPage() {
     event.preventDefault();
 
     if (!configured) {
-      setMessage("Supabase 연결 후 로그인 기능을 사용할 수 있습니다.");
+      setMessage("Supabase 환경변수 연결이 필요합니다.");
       return;
     }
 
     setLoading(true);
     setMessage("");
-
     const supabase = createClient();
 
     if (mode === "signup") {
-      const { error } = await supabase.auth.signUp({ email, password });
+      const redirectTo = `${window.location.origin}/auth/callback?next=/onboarding`;
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: { emailRedirectTo: redirectTo }
+      });
+
       if (error) {
         setMessage(error.message);
+      } else if (data.session) {
+        router.push("/onboarding");
+        router.refresh();
       } else {
-        setMessage("가입 요청이 완료되었습니다. 이메일 확인이 필요한 설정일 수 있습니다.");
+        setMessage("가입 요청이 완료되었습니다. 이메일 인증 링크를 확인해 주세요.");
       }
     } else {
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password
-      });
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
 
       if (error) {
         setMessage(error.message);
@@ -56,14 +61,11 @@ export default function LoginPage() {
       <section className="authCard">
         <p className="eyebrow">APUDA ID</p>
         <h1>{mode === "login" ? "다시 만나서 반가워요." : "ApuDa를 시작해요."}</h1>
-        <p className="authLead">
-          하나의 ApuDa ID로 내 건강기록과 가족 프로필을 관리합니다.
-        </p>
+        <p className="authLead">하나의 ApuDa ID로 내 건강기록과 가족 프로필을 관리합니다.</p>
 
         {!configured && (
           <div className="notice">
-            현재 개발환경에는 Supabase 키가 연결되지 않았습니다. UI와 DB
-            구조는 준비되어 있으며 키 연결 후 인증이 활성화됩니다.
+            현재 환경에는 Supabase 연결정보가 없습니다. 배포 환경변수를 연결하면 인증이 활성화됩니다.
           </div>
         )}
 
