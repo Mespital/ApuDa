@@ -1,51 +1,39 @@
 import { redirect } from "next/navigation";
 import LabEntryForm from "@/components/LabEntryForm";
+import { getActiveProfile } from "@/lib/active-profile";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { createClient } from "@/lib/supabase/server";
 
 export default async function LabsPage() {
   if (!isSupabaseConfigured()) {
-    return (
-      <main className="shell">
-        <p className="eyebrow">LAB RECORDS</p>
-        <h1 className="pageTitle">검사결과</h1>
-        <p className="heroCopy">Supabase 연결 후 실제 검사결과 저장 기능이 활성화됩니다.</p>
-      </main>
-    );
+    return <main className="shell"><h1 className="pageTitle">검사결과</h1><p>Supabase 연결이 필요합니다.</p></main>;
   }
 
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const { user, profile } = await getActiveProfile();
   if (!user) redirect("/login");
+  if (!profile) redirect("/onboarding");
 
-  const { data: profiles } = await supabase
-    .from("profiles")
-    .select("id")
-    .order("created_at", { ascending: true })
-    .limit(1);
-
-  if (!profiles?.length) redirect("/onboarding");
-  const profileId = profiles[0].id;
-
+  const supabase = await createClient();
   const { data: labs } = await supabase
     .from("labs")
     .select("id,test_name,value_numeric,value_text,unit,measured_at")
-    .eq("profile_id", profileId)
+    .eq("profile_id", profile.id)
     .order("measured_at", { ascending: false })
-    .limit(20);
+    .limit(30);
 
   return (
     <main className="shell">
-      <p className="eyebrow">LAB RECORDS</p>
+      <p className="eyebrow">LAB RECORDS · {profile.display_name}</p>
       <h1 className="pageTitle">검사결과</h1>
       <p className="heroCopy">
-        검사결과를 기록하고 이전 값과 함께 확인합니다. 숫자의 상승·하락만으로 치료효과를 단정하지 않습니다.
+        검사결과를 기록하고 이전 값과 함께 확인합니다. 숫자의 상승·하락만으로
+        치료효과를 단정하지 않습니다.
       </p>
 
       <section className="section">
         <p className="eyebrow">ADD RESULT</p>
         <h3>검사결과 직접 입력</h3>
-        <LabEntryForm profileId={profileId} />
+        <LabEntryForm profileId={profile.id} />
       </section>
 
       <section className="section">
