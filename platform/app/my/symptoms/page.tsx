@@ -1,42 +1,29 @@
 import { redirect } from "next/navigation";
 import SymptomEntryForm from "@/components/SymptomEntryForm";
+import { getActiveProfile } from "@/lib/active-profile";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { createClient } from "@/lib/supabase/server";
 
 export default async function SymptomsPage() {
   if (!isSupabaseConfigured()) {
-    return (
-      <main className="shell">
-        <p className="eyebrow">TODAY CONDITION</p>
-        <h1 className="pageTitle">오늘 상태</h1>
-        <p className="heroCopy">Supabase 연결 후 실제 증상 저장 기능이 활성화됩니다.</p>
-      </main>
-    );
+    return <main className="shell"><h1 className="pageTitle">오늘 상태</h1><p>Supabase 연결이 필요합니다.</p></main>;
   }
 
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const { user, profile } = await getActiveProfile();
   if (!user) redirect("/login");
+  if (!profile) redirect("/onboarding");
 
-  const { data: profiles } = await supabase
-    .from("profiles")
-    .select("id")
-    .order("created_at", { ascending: true })
-    .limit(1);
-
-  if (!profiles?.length) redirect("/onboarding");
-  const profileId = profiles[0].id;
-
+  const supabase = await createClient();
   const { data: logs } = await supabase
     .from("symptom_logs")
     .select("id,symptom_name,severity,note,recorded_at")
-    .eq("profile_id", profileId)
+    .eq("profile_id", profile.id)
     .order("recorded_at", { ascending: false })
-    .limit(20);
+    .limit(30);
 
   return (
     <main className="shell">
-      <p className="eyebrow">TODAY CONDITION</p>
+      <p className="eyebrow">TODAY CONDITION · {profile.display_name}</p>
       <h1 className="pageTitle">오늘 상태</h1>
       <p className="heroCopy">
         불편한 점을 짧게 기록해두면 다음 진료 전에 증상의 흐름을 다시 확인할 수 있습니다.
@@ -45,7 +32,7 @@ export default async function SymptomsPage() {
       <section className="section">
         <p className="eyebrow">QUICK LOG</p>
         <h3>오늘 증상 기록</h3>
-        <SymptomEntryForm profileId={profileId} />
+        <SymptomEntryForm profileId={profile.id} />
       </section>
 
       <section className="section">
