@@ -30,6 +30,12 @@ const choices = [
     icon: "↗",
     title: "질환·치료",
     description: "진단과 치료 과정을 시간순으로 정리해요."
+  },
+  {
+    href: "/my/biomarkers",
+    icon: "◎",
+    title: "바이오마커",
+    description: "HER2, PD-L1, EGFR 같은 병리·분자검사 결과를 정리해요."
   }
 ];
 
