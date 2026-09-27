@@ -10,6 +10,13 @@ export type TalkContext = {
     unit: string | null;
     tested_on: string | null;
   }>;
+  imaging: Array<{
+    modality: string;
+    body_part: string | null;
+    study_date: string;
+    summary: string | null;
+    response_category: string | null;
+  }>;
   medications: Array<{ name: string; dose_text: string | null; frequency_text: string | null }>;
   labs: Array<{
     test_name: string;
@@ -37,12 +44,16 @@ function mockAnswer(context: TalkContext, question: string) {
   const biomarkerNames = context.biomarkers
     .slice(0, 5)
     .map((item) => `${item.name} ${item.result_text ?? item.result_numeric ?? ""}`.trim());
+  const recentImaging = context.imaging[0];
 
   const contextLines = [
     symptomNames.length ? `최근 기록된 증상: ${symptomNames.slice(0, 4).join(", ")}` : null,
     labNames.length ? `최근 기록된 검사: ${labNames.slice(0, 5).join(", ")}` : null,
     treatment ? `현재 기록된 치료: ${treatment.name} ${treatment.cycle_label ?? ""}`.trim() : null,
     biomarkerNames.length ? `등록된 바이오마커: ${biomarkerNames.join(", ")}` : null,
+    recentImaging
+      ? `최근 영상검사: ${recentImaging.modality} ${recentImaging.body_part ?? ""} ${recentImaging.response_category ?? ""}`.trim()
+      : null,
     context.next_appointment ? `다음 일정: ${context.next_appointment.title}` : null
   ].filter(Boolean);
 
