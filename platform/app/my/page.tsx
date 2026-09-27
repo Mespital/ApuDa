@@ -5,6 +5,16 @@ import { getActiveProfile } from "@/lib/active-profile";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { createClient } from "@/lib/supabase/server";
 
+function formatDday(iso: string) {
+  const now = new Date();
+  const target = new Date(iso);
+  const start = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+  const end = new Date(target.getFullYear(), target.getMonth(), target.getDate()).getTime();
+  const days = Math.round((end - start) / 86400000);
+  if (days === 0) return "D-DAY";
+  return days > 0 ? `D-${days}` : `D+${Math.abs(days)}`;
+}
+
 export default async function MyApuDaPage() {
   if (!isSupabaseConfigured()) {
     return (
@@ -84,7 +94,9 @@ export default async function MyApuDaPage() {
           차근차근 정리해요.
         </h2>
         <p className="heroCopy">
-          검사, 증상, 치료와 다음 진료를 한곳에 모아 다음 행동을 준비합니다.
+          {nextAppointment
+            ? `다음 일정까지 ${formatDday(nextAppointment.scheduled_at)}예요. 검사, 증상, 치료 기록을 한곳에 모아 준비합니다.`
+            : "검사, 증상, 치료와 다음 진료를 한곳에 모아 다음 행동을 준비합니다."}
         </p>
         <Link className="primaryLink" href="/my/record">＋ 기록하기</Link>
       </section>
@@ -93,11 +105,13 @@ export default async function MyApuDaPage() {
         <Link href="/my/appointments" className="metricCard">
           <span>다음 일정</span>
           <strong>
-            {nextAppointment
-              ? new Date(nextAppointment.scheduled_at).toLocaleDateString("ko-KR")
-              : "등록하기"}
+            {nextAppointment ? formatDday(nextAppointment.scheduled_at) : "등록하기"}
           </strong>
-          <small>{nextAppointment?.title ?? "병원 일정을 기록해두세요."}</small>
+          <small>
+            {nextAppointment
+              ? `${nextAppointment.title} · ${new Date(nextAppointment.scheduled_at).toLocaleDateString("ko-KR")}`
+              : "병원 일정을 기록해두세요."}
+          </small>
         </Link>
 
         <Link href="/my/symptoms" className="metricCard">
