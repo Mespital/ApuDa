@@ -1128,3 +1128,147 @@ a {
     justify-content: center;
   }
 }
+
+
+.importBox {
+  display: grid;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.uploadButton {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  border: 1px dashed #a9c0e6;
+  border-radius: 17px;
+  background: #f7faff;
+  color: var(--apuda-blue);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.uploadButton input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.reviewBox {
+  display: grid;
+  gap: 16px;
+  padding: 18px;
+  border: 1px solid #d7e4f7;
+  border-radius: 20px;
+  background: #f9fbff;
+}
+
+.reviewBox h4 {
+  margin: 6px 0 0;
+  color: var(--navy);
+  font-size: 18px;
+}
+
+.reviewList,
+.voiceReviewList {
+  display: grid;
+  gap: 10px;
+}
+
+.reviewRow {
+  display: grid;
+  grid-template-columns: 1.5fr 0.8fr 0.8fr;
+  gap: 8px;
+}
+
+.reviewRow input,
+.voiceReviewRow select {
+  min-height: 46px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: #fff;
+  color: var(--text);
+  font: inherit;
+}
+
+.voiceReviewRow {
+  display: grid;
+  grid-template-columns: 1fr minmax(180px, 0.8fr);
+  gap: 12px;
+  align-items: center;
+}
+
+.checkLabel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--navy);
+  font-weight: 800;
+}
+
+.checkLabel input {
+  width: 18px;
+  height: 18px;
+}
+
+.transcriptBox {
+  padding: 16px;
+  border-radius: 17px;
+  background: var(--apuda-blue-soft);
+  color: #315686;
+}
+
+.transcriptBox p:last-child {
+  margin: 8px 0 0;
+  line-height: 1.65;
+}
+
+.detailsBox {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.detailsBox summary {
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.detailsBox pre {
+  max-height: 180px;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  padding: 12px;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.dangerButton {
+  min-height: 54px;
+  width: fit-content;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 18px;
+  background: #9f3341;
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  .reviewRow,
+  .voiceReviewRow {
+    grid-template-columns: 1fr;
+  }
+
+  .uploadButton,
+  .dangerButton {
+    width: 100%;
+  }
+}
