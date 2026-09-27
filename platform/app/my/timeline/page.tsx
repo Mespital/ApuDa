@@ -21,7 +21,7 @@ export default async function TimelinePage() {
   const [conditionResult, treatmentResult] = await Promise.all([
     supabase
       .from("conditions")
-      .select("id,name,diagnosed_on,notes")
+      .select("id,name,diagnosed_on,stage,histology,hospital_name,department,notes")
       .eq("profile_id", profile.id)
       .order("diagnosed_on", { ascending: false }),
     supabase
@@ -37,7 +37,12 @@ export default async function TimelinePage() {
       date: item.diagnosed_on,
       label: "진단",
       title: item.name,
-      note: item.notes
+      note: [
+        item.stage,
+        item.histology,
+        [item.hospital_name, item.department].filter(Boolean).join(" · "),
+        item.notes
+      ].filter(Boolean).join(" · ") || null
     })),
     ...(treatmentResult.data ?? []).map((item) => ({
       key: `treatment-${item.id}`,
