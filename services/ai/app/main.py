@@ -19,10 +19,15 @@ TEMP_DIR.mkdir(parents=True, exist_ok=True)
 MAX_UPLOAD_BYTES = int(os.getenv("MAX_UPLOAD_BYTES", str(15 * 1024 * 1024)))
 REDIS_URL = os.getenv("REDIS_URL", "redis://redis:6379/0")
 
-redis = Redis.from_url(REDIS_URL)
+redis = Redis.from_url(
+    REDIS_URL,
+    socket_connect_timeout=2,
+    socket_timeout=2,
+    health_check_interval=30,
+)
 queue = Queue("apuda-ai", connection=redis, default_timeout=600)
 
-app = FastAPI(title="ApuDa AI Input API", version="0.2.0")
+app = FastAPI(title="ApuDa AI Input API", version="0.2.1")
 
 origins = [x.strip() for x in os.getenv("ALLOWED_ORIGINS", "").split(",") if x.strip()]
 if origins:
@@ -73,7 +78,11 @@ def enqueue_owned_job(function, path: str, owner: str):
 
 @app.get("/health")
 def health() -> dict[str, str]:
-    return {"status": "ok"}
+    try:
+        redis.ping()
+    except Exception:
+        raise HTTPException(status_code=503, detail="Redis unavailable")
+    return {"status": "ok", "queue": "ok"}
 
 @app.post("/api/v1/ocr", dependencies=[Depends(verify_api_key)])
 async def create_ocr_job(
