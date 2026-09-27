@@ -66,8 +66,10 @@ button {
 }
 
 .profileButton {
+  display: grid;
   width: 48px;
   height: 48px;
+  place-items: center;
   border: 1px solid var(--line);
   border-radius: 16px;
   background: var(--card);
@@ -222,5 +224,268 @@ button {
 
   .cardIcon {
     margin-bottom: 0;
+  }
+}
+
+
+a {
+  color: inherit;
+}
+
+.pageTitle {
+  margin: 10px 0 18px;
+  color: var(--navy);
+  font-size: clamp(32px, 6vw, 52px);
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+}
+
+.compactHero {
+  padding-top: 0;
+}
+
+.linkButton,
+.primaryLink,
+.cardLink {
+  text-decoration: none;
+}
+
+.primaryLink {
+  display: inline-flex;
+  min-height: 50px;
+  align-items: center;
+  padding: 0 20px;
+  border-radius: 16px;
+  background: var(--apuda-blue);
+  color: #fff;
+  font-weight: 800;
+}
+
+.cardLink {
+  transition: transform 160ms ease, border-color 160ms ease;
+}
+
+.cardLink:hover {
+  transform: translateY(-2px);
+  border-color: #cad9ef;
+}
+
+.authShell {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 28px 18px;
+}
+
+.authCard {
+  width: min(100%, 520px);
+  padding: 34px;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 20px 60px rgba(20, 33, 61, 0.08);
+}
+
+.authCard h1 {
+  margin: 10px 0 12px;
+  color: var(--navy);
+  font-size: clamp(30px, 6vw, 44px);
+  letter-spacing: -0.04em;
+}
+
+.authLead {
+  margin: 0 0 24px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.notice {
+  margin-bottom: 20px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: var(--apuda-blue-soft);
+  color: #315686;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.authForm {
+  display: grid;
+  gap: 16px;
+}
+
+.authForm label {
+  display: grid;
+  gap: 8px;
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.authForm input,
+.authForm select {
+  width: 100%;
+  min-height: 50px;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: #fff;
+  padding: 0 14px;
+  color: var(--text);
+  font: inherit;
+  outline: none;
+}
+
+.authForm input:focus,
+.authForm select:focus {
+  border-color: #aac5f4;
+  box-shadow: 0 0 0 4px rgba(47, 111, 228, 0.08);
+}
+
+.wideButton {
+  width: 100%;
+  margin-top: 4px;
+}
+
+.textButton {
+  width: 100%;
+  margin-top: 14px;
+  border: 0;
+  background: transparent;
+  color: var(--apuda-blue);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.formMessage {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.emptyState {
+  display: grid;
+  justify-items: center;
+  padding: 30px 10px;
+  text-align: center;
+}
+
+.largeIcon {
+  display: grid;
+  width: 64px;
+  height: 64px;
+  place-items: center;
+  margin-bottom: 16px;
+  border-radius: 20px;
+  background: var(--apuda-blue-soft);
+  color: var(--apuda-blue);
+  font-size: 26px;
+  font-weight: 900;
+}
+
+.emptyState h3 {
+  margin: 0 0 8px;
+}
+
+.emptyState p {
+  margin: 0 0 22px;
+  color: var(--muted);
+}
+
+.buttonRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.secondaryButton {
+  min-height: 54px;
+  padding: 0 22px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fff;
+  color: var(--navy);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.safetyNote {
+  margin: 14px 4px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.timeline {
+  position: relative;
+}
+
+.timelineItem {
+  position: relative;
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 14px;
+  padding: 0 0 28px;
+}
+
+.timelineItem:last-child {
+  padding-bottom: 0;
+}
+
+.timelineItem::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 18px;
+  bottom: -2px;
+  width: 2px;
+  background: var(--line);
+}
+
+.timelineItem:last-child::before {
+  display: none;
+}
+
+.timelineDot {
+  width: 16px;
+  height: 16px;
+  margin-top: 4px;
+  border: 4px solid var(--apuda-blue-soft);
+  border-radius: 50%;
+  background: var(--apuda-blue);
+  z-index: 1;
+}
+
+.timelineDate {
+  margin: 0 0 6px;
+  color: var(--apuda-blue);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.timelineItem h3 {
+  margin: 0 0 7px;
+  font-size: 18px;
+}
+
+.timelineItem p:last-child {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 560px) {
+  .authCard {
+    padding: 26px 20px;
+    border-radius: 22px;
+  }
+
+  .buttonRow {
+    width: 100%;
+  }
+
+  .buttonRow > button {
+    width: 100%;
   }
 }
