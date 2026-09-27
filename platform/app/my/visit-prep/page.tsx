@@ -20,7 +20,8 @@ export default async function VisitPrepPage() {
     appointmentResult,
     medicationsResult,
     questionsResult,
-    biomarkersResult
+    biomarkersResult,
+    imagingResult
   ] = await Promise.all([
     supabase
       .from("symptom_logs")
@@ -64,7 +65,13 @@ export default async function VisitPrepPage() {
       .select("id,name,result_text,result_numeric,unit,tested_on")
       .eq("profile_id", profile.id)
       .order("tested_on", { ascending: false, nullsFirst: false })
-      .limit(10)
+      .limit(10),
+    supabase
+      .from("imaging")
+      .select("id,modality,body_part,study_date,summary,response_category")
+      .eq("profile_id", profile.id)
+      .order("study_date", { ascending: false })
+      .limit(5)
   ]);
 
   const symptoms = symptomsResult.data ?? [];
@@ -74,6 +81,7 @@ export default async function VisitPrepPage() {
   const medications = medicationsResult.data ?? [];
   const savedQuestions = questionsResult.data ?? [];
   const biomarkers = biomarkersResult.data ?? [];
+  const imaging = imagingResult.data ?? [];
 
   const symptomCounts = new Map<string, { count: number; maxSeverity: number }>();
   for (const item of symptoms) {
@@ -103,6 +111,9 @@ export default async function VisitPrepPage() {
   }
   if (biomarkers.length) {
     suggestedQuestions.push("등록된 바이오마커 결과가 현재 치료 선택이나 추적 계획에서 어떤 의미인지 확인하고 싶습니다.");
+  }
+  if (imaging.length) {
+    suggestedQuestions.push("최근 영상검사 결과와 다음 영상평가 계획을 함께 확인하고 싶습니다.");
   }
 
   return (
@@ -174,6 +185,27 @@ export default async function VisitPrepPage() {
               <span className="infoChip" key={item.id}>
                 {item.name} {item.cycle_label ?? ""}
               </span>
+            ))}
+          </div>
+        )}
+      </section>
+
+      <section className="section">
+        <p className="eyebrow">IMAGING</p>
+        <h3>최근 영상검사</h3>
+        {!imaging.length ? (
+          <p className="mutedText">등록된 영상검사 결과가 없습니다.</p>
+        ) : (
+          <div className="dataList">
+            {imaging.map((item) => (
+              <article className="dataRow" key={item.id}>
+                <div>
+                  <strong>{item.modality} {item.body_part ?? ""}</strong>
+                  <small>{new Date(item.study_date).toLocaleDateString("ko-KR")}</small>
+                  {item.summary && <small>{item.summary}</small>}
+                </div>
+                {item.response_category && <span className="statusPill">{item.response_category}</span>}
+              </article>
             ))}
           </div>
         )}
@@ -270,6 +302,7 @@ export default async function VisitPrepPage() {
         <Link className="secondaryLink" href="/my/labs">검사 추가</Link>
         <Link className="secondaryLink" href="/my/medications">복약 관리</Link>
         <Link className="secondaryLink" href="/my/biomarkers">바이오마커</Link>
+        <Link className="secondaryLink" href="/my/imaging">영상검사</Link>
         <Link className="secondaryLink" href="/my/appointments">일정 관리</Link>
       </div>
     </main>
