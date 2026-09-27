@@ -31,6 +31,17 @@ class ParserTests(unittest.TestCase):
         self.assertEqual(rows[0]["value"], 5.3)
         self.assertEqual(rows[0]["unit"], "ng/mL")
 
+    def test_lab_name_with_numbers(self):
+        result = parse_lab_text(
+            "CA19-9 35 U/mL\n25-OH Vitamin D 31 ng/mL"
+        )
+
+        rows = result["labs"]
+        self.assertEqual(rows[0]["test_name"], "CA19-9")
+        self.assertEqual(rows[0]["value"], 35.0)
+        self.assertEqual(rows[1]["test_name"], "25-OH Vitamin D")
+        self.assertEqual(rows[1]["value"], 31.0)
+
 
 if __name__ == "__main__":
     unittest.main()
