@@ -15,6 +15,9 @@ export default async function SymptomsPage() {
   if (!profile) redirect("/onboarding");
 
   const supabase = await createClient();
+  const aiInputConfigured = Boolean(
+    process.env.AI_API_BASE_URL && process.env.APUDA_AI_API_KEY
+  );
   const { data: logs } = await supabase
     .from("symptom_logs")
     .select("id,symptom_name,severity,note,recorded_at,source")
@@ -36,7 +39,7 @@ export default async function SymptomsPage() {
         <p className="mutedText">
           짧게 말하면 음성을 글로 바꾸고 증상 후보를 정리합니다. 저장 전 불편한 정도와 내용을 직접 확인합니다.
         </p>
-        <VoiceSymptomImport profileId={profile.id} />
+        <VoiceSymptomImport profileId={profile.id} enabled={aiInputConfigured} />
       </section>
 
       <section className="section">
