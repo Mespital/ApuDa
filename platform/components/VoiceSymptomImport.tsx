@@ -45,7 +45,7 @@ export default function VoiceSymptomImport({ profileId }: { profileId: string })
 
     try {
       const form = new FormData();
-      form.append("file", new File([blob], "voice.webm", { type: blob.type || "audio/webm" }));
+      form.append("file", new File([blob], "voice.webm", { type: blob.type || "audio/webm" }));\n      form.append("profileId", profileId);
 
       const response = await fetch("/api/ai/stt", { method: "POST", body: form });
       const body = await response.json();
