@@ -1,38 +1,57 @@
 import Link from "next/link";
 
+const choices = [
+  {
+    href: "/my/labs",
+    icon: "▤",
+    title: "검사결과",
+    description: "검사명과 결과를 직접 기록해요. 사진 OCR은 AI 입력 서버 연결 후 추가됩니다."
+  },
+  {
+    href: "/my/symptoms",
+    icon: "●",
+    title: "오늘 상태",
+    description: "통증, 피로, 손발저림 같은 증상을 짧게 남겨요."
+  },
+  {
+    href: "/my/medications",
+    icon: "Rx",
+    title: "복약",
+    description: "현재 복용 중인 약과 용량을 정리해요."
+  },
+  {
+    href: "/my/appointments",
+    icon: "□",
+    title: "병원 일정",
+    description: "외래, 검사, 치료 일정을 추가해요."
+  },
+  {
+    href: "/my/timeline",
+    icon: "↗",
+    title: "질환·치료",
+    description: "진단과 치료 과정을 시간순으로 정리해요."
+  }
+];
+
 export default function RecordPage() {
   return (
     <main className="shell">
       <p className="eyebrow">QUICK RECORD</p>
-      <h1 className="pageTitle">어떻게 기록할까요?</h1>
+      <h1 className="pageTitle">무엇을 기록할까요?</h1>
       <p className="heroCopy">
-        가장 편한 방법 하나만 고르면 됩니다. 저장 전에는 항상 내용을 다시 확인합니다.
+        지금 필요한 것 하나만 선택하면 됩니다. ApuDa는 기록을 모아 다음 진료 준비에 다시 활용합니다.
       </p>
 
       <section className="recordChoices">
-        <Link className="recordChoice" href="/my/labs">
-          <div className="recordChoiceIcon">▤</div>
-          <div>
-            <h2>사진으로</h2>
-            <p>검사결과를 찍어서 기록해요.</p>
-          </div>
-        </Link>
-
-        <Link className="recordChoice" href="/my/symptoms">
-          <div className="recordChoiceIcon">●</div>
-          <div>
-            <h2>말로</h2>
-            <p>오늘 상태를 편하게 말해주세요.</p>
-          </div>
-        </Link>
-
-        <Link className="recordChoice" href="/my/symptoms">
-          <div className="recordChoiceIcon">⌨</div>
-          <div>
-            <h2>직접 입력</h2>
-            <p>검사나 증상을 직접 기록할게요.</p>
-          </div>
-        </Link>
+        {choices.map((choice) => (
+          <Link className="recordChoice" href={choice.href} key={choice.href}>
+            <div className="recordChoiceIcon">{choice.icon}</div>
+            <div>
+              <h2>{choice.title}</h2>
+              <p>{choice.description}</p>
+            </div>
+          </Link>
+        ))}
       </section>
     </main>
   );
