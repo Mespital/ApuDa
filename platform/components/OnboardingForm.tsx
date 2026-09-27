@@ -62,6 +62,11 @@ export default function OnboardingForm({
       .single();
 
     if (error || !data) {
+      if (!isAdditional && error?.code === "23505") {
+        router.push("/my");
+        router.refresh();
+        return;
+      }
       setMessage(error?.message ?? "프로필을 만들지 못했습니다.");
       setSaving(false);
       return;
