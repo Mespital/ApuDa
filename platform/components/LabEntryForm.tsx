@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
+import { commonLabNames, normalizeLabName } from "@/lib/medical-dictionary";
 
 export default function LabEntryForm({ profileId }: { profileId: string }) {
   const [testName, setTestName] = useState("");
@@ -17,12 +18,14 @@ export default function LabEntryForm({ profileId }: { profileId: string }) {
     setMessage("");
 
     const supabase = createClient();
+    const normalized = normalizeLabName(testName);
     const numericValue = Number(value);
     const isNumeric = value.trim() !== "" && Number.isFinite(numericValue);
 
     const { error } = await supabase.from("labs").insert({
       profile_id: profileId,
-      test_name: testName.trim(),
+      canonical_code: normalized.canonicalCode,
+      test_name: normalized.displayName,
       value_numeric: isNumeric ? numericValue : null,
       value_text: isNumeric ? null : value.trim(),
       unit: unit.trim() || null,
@@ -49,7 +52,10 @@ export default function LabEntryForm({ profileId }: { profileId: string }) {
     <form className="healthForm" onSubmit={submit}>
       <label>
         검사명
-        <input value={testName} onChange={(e) => setTestName(e.target.value)} required placeholder="예: CEA, Hb, AST" />
+        <input list="common-lab-list" value={testName} onChange={(e) => setTestName(e.target.value)} required placeholder="예: CEA, Hb, AST" />
+        <datalist id="common-lab-list">
+          {commonLabNames.map((name) => <option value={name} key={name} />)}
+        </datalist>
       </label>
 
       <div className="twoCol">
