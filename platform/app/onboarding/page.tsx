@@ -6,7 +6,8 @@ import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 
-const CONSENT_VERSION = "health-data-2026-09-27-v1";
+const HEALTH_CONSENT_VERSION = "health-data-2026-09-27-v1";
+const AI_CONSENT_VERSION = "ai-input-2026-09-27-v1";
 
 export default function OnboardingPage() {
   const router = useRouter();
@@ -14,7 +15,8 @@ export default function OnboardingPage() {
   const [birthYear, setBirthYear] = useState("");
   const [sexAtBirth, setSexAtBirth] = useState("");
   const [relationship, setRelationship] = useState("self");
-  const [consented, setConsented] = useState(false);
+  const [healthConsented, setHealthConsented] = useState(false);
+  const [aiConsented, setAiConsented] = useState(false);
   const [message, setMessage] = useState("");
   const [saving, setSaving] = useState(false);
 
@@ -26,7 +28,7 @@ export default function OnboardingPage() {
       return;
     }
 
-    if (!consented) {
+    if (!healthConsented) {
       setMessage("건강정보 저장 및 처리 동의를 확인해 주세요.");
       return;
     }
@@ -61,12 +63,22 @@ export default function OnboardingPage() {
       return;
     }
 
-    const { error: consentError } = await supabase.from("consents").insert({
-      profile_id: data.id,
-      consent_type: "health_data_processing",
-      version: CONSENT_VERSION,
-      granted: true
-    });
+    const { error: consentError } = await supabase.from("consents").insert([
+      {
+        profile_id: data.id,
+        consent_type: "health_data_processing",
+        version: HEALTH_CONSENT_VERSION,
+        granted: true,
+        granted_at: new Date().toISOString()
+      },
+      {
+        profile_id: data.id,
+        consent_type: "ai_assisted_processing",
+        version: AI_CONSENT_VERSION,
+        granted: aiConsented,
+        granted_at: new Date().toISOString()
+      }
+    ]);
 
     if (consentError) {
       await supabase.from("profiles").delete().eq("id", data.id);
@@ -144,18 +156,39 @@ export default function OnboardingPage() {
           <label className="consentCheck">
             <input
               type="checkbox"
-              checked={consented}
-              onChange={(event) => setConsented(event.target.checked)}
+              checked={healthConsented}
+              onChange={(event) => setHealthConsented(event.target.checked)}
               required
             />
             <span>
-              본인 또는 관리 권한이 있는 가족의 건강정보를 ApuDa에 저장·처리하는 데 동의합니다.
-              {" "}
-              <Link href="/privacy" target="_blank">처리 안내 보기</Link>
+              <strong>건강정보 저장 및 처리에 동의합니다. (필수)</strong>
+              <small>
+                본인 또는 관리 권한이 있는 가족의 검사·증상·치료·복약·일정 기록을
+                ApuDa 기능 제공을 위해 저장·처리합니다.
+              </small>
             </span>
           </label>
 
-          <button className="primaryButton wideButton" disabled={saving || !consented}>
+          <label className="consentCheck">
+            <input
+              type="checkbox"
+              checked={aiConsented}
+              onChange={(event) => setAiConsented(event.target.checked)}
+            />
+            <span>
+              <strong>AI 보조 입력 처리에 동의합니다. (선택)</strong>
+              <small>
+                검사사진 OCR과 음성 STT 사용 시 원본 파일을 일시 처리합니다.
+                인식 결과는 사용자가 확인하기 전 건강기록으로 저장하지 않습니다.
+              </small>
+            </span>
+          </label>
+
+          <p className="safetyNote">
+            <Link href="/privacy" target="_blank">건강정보 처리 안내 보기</Link>
+          </p>
+
+          <button className="primaryButton wideButton" disabled={saving || !healthConsented}>
             {saving ? "만드는 중..." : "프로필 만들기"}
           </button>
         </form>
