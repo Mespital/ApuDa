@@ -28,6 +28,9 @@ class ParserTests(unittest.TestCase):
         rows = result["labs"]
         self.assertEqual(len(rows), 3)
         self.assertEqual(rows[0]["test_name"], "CEA")
+        self.assertEqual(rows[0]["canonical_code"], "LAB_CEA")
+        self.assertEqual(rows[1]["test_name"], "Hb")
+        self.assertEqual(rows[1]["canonical_code"], "LAB_HEMOGLOBIN")
         self.assertEqual(rows[0]["value"], 5.3)
         self.assertEqual(rows[0]["unit"], "ng/mL")
 
@@ -38,6 +41,7 @@ class ParserTests(unittest.TestCase):
 
         rows = result["labs"]
         self.assertEqual(rows[0]["test_name"], "CA19-9")
+        self.assertEqual(rows[0]["canonical_code"], "LAB_CA19_9")
         self.assertEqual(rows[0]["value"], 35.0)
         self.assertEqual(rows[1]["test_name"], "25-OH Vitamin D")
         self.assertEqual(rows[1]["value"], 31.0)
