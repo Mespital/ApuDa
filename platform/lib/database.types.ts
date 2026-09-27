@@ -187,6 +187,66 @@ export type Database = {
           },
         ]
       }
+      medications: {
+        Row: {
+          active: boolean
+          condition_id: string | null
+          created_at: string
+          dose_text: string | null
+          ended_on: string | null
+          frequency_text: string | null
+          id: string
+          name: string
+          notes: string | null
+          profile_id: string
+          route: string | null
+          started_on: string | null
+        }
+        Insert: {
+          active?: boolean
+          condition_id?: string | null
+          created_at?: string
+          dose_text?: string | null
+          ended_on?: string | null
+          frequency_text?: string | null
+          id?: string
+          name: string
+          notes?: string | null
+          profile_id: string
+          route?: string | null
+          started_on?: string | null
+        }
+        Update: {
+          active?: boolean
+          condition_id?: string | null
+          created_at?: string
+          dose_text?: string | null
+          ended_on?: string | null
+          frequency_text?: string | null
+          id?: string
+          name?: string
+          notes?: string | null
+          profile_id?: string
+          route?: string | null
+          started_on?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "medications_condition_id_fkey"
+            columns: ["condition_id"]
+            isOneToOne: false
+            referencedRelation: "conditions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "medications_profile_id_fkey"
+            columns: ["profile_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           birth_year: number | null
