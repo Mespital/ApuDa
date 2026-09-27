@@ -489,3 +489,131 @@ a {
     width: 100%;
   }
 }
+
+
+.leftButtons {
+  justify-content: flex-start;
+}
+
+.secondaryLink {
+  display: inline-flex;
+  min-height: 50px;
+  align-items: center;
+  padding: 0 20px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+  color: var(--navy);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.bottomNav {
+  position: fixed;
+  z-index: 30;
+  left: 50%;
+  bottom: 14px;
+  display: grid;
+  width: min(calc(100% - 24px), 620px);
+  grid-template-columns: repeat(5, 1fr);
+  transform: translateX(-50%);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 16px 50px rgba(20, 33, 61, 0.12);
+  backdrop-filter: blur(16px);
+}
+
+.bottomNav a {
+  display: grid;
+  min-height: 62px;
+  place-items: center;
+  align-content: center;
+  gap: 4px;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.bottomNav span {
+  color: var(--navy);
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.bottomNav small {
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.bottomNav .recordNav span {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--apuda-blue);
+  color: #fff;
+}
+
+.recordChoices {
+  display: grid;
+  gap: 14px;
+}
+
+.recordChoice {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 18px;
+  align-items: center;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: #fff;
+  text-decoration: none;
+  transition: transform 160ms ease, border-color 160ms ease;
+}
+
+.recordChoice:hover {
+  transform: translateY(-2px);
+  border-color: #cad9ef;
+}
+
+.recordChoiceIcon {
+  display: grid;
+  width: 58px;
+  height: 58px;
+  place-items: center;
+  border-radius: 18px;
+  background: var(--apuda-blue-soft);
+  color: var(--apuda-blue);
+  font-size: 21px;
+  font-weight: 900;
+}
+
+.recordChoice h2 {
+  margin: 0 0 6px;
+  color: var(--navy);
+  font-size: 20px;
+}
+
+.recordChoice p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+@media (max-width: 560px) {
+  .bottomNav {
+    bottom: 8px;
+  }
+
+  .recordChoice {
+    grid-template-columns: 54px 1fr;
+    padding: 18px;
+  }
+
+  .recordChoiceIcon {
+    width: 50px;
+    height: 50px;
+  }
+}
