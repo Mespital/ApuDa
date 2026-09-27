@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 import { createClient } from "@/lib/supabase/server";
+import { isSupabaseConfigured } from "@/lib/supabase/config";
 
 export type ActiveProfile = {
   id: string;
@@ -9,6 +10,10 @@ export type ActiveProfile = {
 };
 
 export async function getActiveProfile() {
+  if (!isSupabaseConfigured()) {
+    return { user: null, profile: null, profiles: [] as ActiveProfile[] };
+  }
+
   const supabase = await createClient();
   const {
     data: { user }
@@ -18,10 +23,14 @@ export async function getActiveProfile() {
     return { user: null, profile: null, profiles: [] as ActiveProfile[] };
   }
 
-  const { data } = await supabase
+  const { data, error } = await supabase
     .from("profiles")
     .select("id,display_name,relationship_to_user,profile_type")
     .order("created_at", { ascending: true });
+
+  if (error) {
+    throw new Error(error.message);
+  }
 
   const profiles = (data ?? []) as ActiveProfile[];
   if (!profiles.length) {
