@@ -3,7 +3,16 @@
 import { FormEvent, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 
-export default function MedicationEntryForm({ profileId }: { profileId: string }) {
+type ConditionOption = { id: string; name: string };
+
+export default function MedicationEntryForm({
+  profileId,
+  conditions = []
+}: {
+  profileId: string;
+  conditions?: ConditionOption[];
+}) {
+  const [conditionId, setConditionId] = useState("");
   const [name, setName] = useState("");
   const [dose, setDose] = useState("");
   const [frequency, setFrequency] = useState("");
@@ -21,6 +30,7 @@ export default function MedicationEntryForm({ profileId }: { profileId: string }
     const supabase = createClient();
     const { error } = await supabase.from("medications").insert({
       profile_id: profileId,
+      condition_id: conditionId || null,
       name: name.trim(),
       dose_text: dose.trim() || null,
       frequency_text: frequency.trim() || null,
@@ -41,6 +51,17 @@ export default function MedicationEntryForm({ profileId }: { profileId: string }
 
   return (
     <form className="healthForm" onSubmit={submit}>
+      {conditions.length > 0 && (
+        <label>
+          연결할 질환
+          <select value={conditionId} onChange={(e) => setConditionId(e.target.value)}>
+            <option value="">선택하지 않음 / 공통</option>
+            {conditions.map((condition) => (
+              <option value={condition.id} key={condition.id}>{condition.name}</option>
+            ))}
+          </select>
+        </label>
+      )}
       <label>
         약 이름
         <input required value={name} onChange={(e) => setName(e.target.value)} placeholder="예: 아픽사반, 메트포르민" />
