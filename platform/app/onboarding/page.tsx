@@ -144,9 +144,9 @@ export default function OnboardingPage() {
           </label>
 
           <label>
-            출생 시 성별
+            성별
             <select value={sexAtBirth} onChange={(event) => setSexAtBirth(event.target.value)}>
-              <option value="">선택하지 않음</option>
+              <option value="">선택 안 함</option>
               <option value="male">남성</option>
               <option value="female">여성</option>
               <option value="other">기타 / 직접 관리</option>
