@@ -9,12 +9,20 @@ export default async function BiomarkersPage() {
   if (!profile) redirect("/onboarding");
 
   const supabase = await createClient();
-  const { data: biomarkers } = await supabase
+  const [{ data: biomarkers }, { data: conditions }] = await Promise.all([
+    supabase
     .from("biomarkers")
     .select("id,name,result_text,result_numeric,unit,tested_on,notes")
     .eq("profile_id", profile.id)
     .order("tested_on", { ascending: false, nullsFirst: false })
-    .order("created_at", { ascending: false });
+    .order("created_at", { ascending: false }),
+    supabase
+      .from("conditions")
+      .select("id,name")
+      .eq("profile_id", profile.id)
+      .eq("status", "active")
+      .order("created_at", { ascending: true })
+  ]);
 
   return (
     <main className="shell">
@@ -27,7 +35,7 @@ export default async function BiomarkersPage() {
       <section className="section">
         <p className="eyebrow">ADD BIOMARKER</p>
         <h3>결과 추가</h3>
-        <BiomarkerEntryForm profileId={profile.id} />
+        <BiomarkerEntryForm profileId={profile.id} conditions={conditions ?? []} />
       </section>
 
       <section className="section">
