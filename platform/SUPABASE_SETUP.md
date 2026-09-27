@@ -1,50 +1,113 @@
 # Supabase Setup for My ApuDa
 
-## Goal
+## Current connected development project
 
-Enable ApuDa ID, profile storage and Row Level Security for the development branch.
+The connected Supabase project is the ApuDa development database in Seoul region.
 
-## Required environment variables
+Current Health OS migrations are already applied there. The repository keeps reproducible SQL under:
 
-Copy `.env.example` to `.env.local` and set:
+`platform/supabase/migrations/`
+
+Migration order:
+
+1. `202609270001_health_os_core.sql`
+2. `202609270002_health_os_security_hardening.sql`
+3. `202609270003_health_os_medications.sql`
+4. `202609270004_health_os_least_privilege_grants.sql`
+
+## Environment variables
+
+Copy `.env.example` to `.env.local`.
 
 ```bash
 NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
 SUPABASE_SECRET_KEY=
 ```
 
-The public URL and publishable key can be used by the app. Keep `SUPABASE_SECRET_KEY` server-only and do not expose it to the browser.
+Use `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` when the project exposes a publishable key. The current project may use the legacy anon key, in which case set `NEXT_PUBLIC_SUPABASE_ANON_KEY` instead.
 
-Never commit real keys.
+Do not set both unless there is a deliberate migration plan. Never commit actual keys.
 
-## Development setup order
+`SUPABASE_SECRET_KEY` is server-only and is not required by the current browser CRUD flows.
 
-1. Connect the existing ApuDa Supabase project or a dedicated development project.
-2. Run:
-   `supabase/migrations/202609270001_health_os_core.sql`
-3. Enable Email/Password authentication.
-4. Configure local redirect URL:
-   `http://localhost:3000/auth/callback`
-5. Add the preview deployment callback URL when a preview host exists.
-6. Put the project URL and publishable key in `.env.local`.
-7. Run the app and test:
-   signup → login → onboarding → /my.
+## Auth
 
-## RLS
+The app currently supports Email/Password authentication.
 
-The migration enables Row Level Security on:
+Required callback pattern:
+
+```text
+http://localhost:3000/auth/callback
+https://<preview-host>/auth/callback
+https://<production-host>/auth/callback
+```
+
+Add only real preview/production URLs after those deployments exist.
+
+## Health OS tables
 
 - profiles
 - conditions
 - treatments
+- medications
 - labs
 - symptom_logs
 - appointments
 - consents
 
-A signed-in user can only manage rows attached to profiles they own.
+## Access control
+
+Row Level Security is enabled on health-data tables.
+
+A signed-in user can only access data belonging to a profile owned by their own account. Anonymous table access is revoked.
+
+The authenticated role is intentionally limited to:
+
+- SELECT
+- INSERT
+- UPDATE
+- DELETE
+
+Broad privileges such as TRUNCATE, TRIGGER and REFERENCES are not required by the app and are removed by the least-privilege migration.
+
+## Consent
+
+Profile onboarding records explicit health-data processing consent in `consents`.
+
+Current beta consent version:
+
+`health-data-2026-09-27-v1`
+
+This is a product/engineering consent record, not a substitute for final jurisdiction-specific legal review before public production launch.
+
+## Local smoke test
+
+```text
+signup
+→ email confirmation if enabled
+→ onboarding
+→ health-data consent
+→ create profile
+→ /my
+→ add lab
+→ add symptom
+→ add condition/treatment
+→ add medication
+→ add appointment
+→ visit preparation
+→ profile switch
+```
+
+Photo OCR and voice STT additionally require the ApuDa AI Input Service.
 
 ## Production warning
 
-Do not apply a development migration to a production database until schema review, backup, consent/privacy review and a rollback plan are complete.
+Do not point the new platform at a production domain or production user population until:
+
+1. preview deployment passes smoke tests,
+2. Auth callback URLs are verified,
+3. privacy/legal text is finalized for the operating jurisdiction,
+4. backup and rollback procedures are documented,
+5. the actual apuda.app production source/deployment path is confirmed.
