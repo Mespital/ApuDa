@@ -5,9 +5,9 @@ export default function MyLayout({ children }: { children: React.ReactNode }) {
     <>
       {children}
 
-      <Link className="aiFab" href="/my/ai" aria-label="ApuDa AI 열기">
+      <Link className="aiFab" href="/my/ai" aria-label="ApuDa Talk 열기">
         <span>✦</span>
-        <b>ApuDa AI</b>
+        <b>ApuDa Talk</b>
       </Link>
 
       <nav className="bottomNav" aria-label="My ApuDa navigation">
