@@ -19,7 +19,8 @@ export default async function VisitPrepPage() {
     treatmentsResult,
     appointmentResult,
     medicationsResult,
-    questionsResult
+    questionsResult,
+    biomarkersResult
   ] = await Promise.all([
     supabase
       .from("symptom_logs")
@@ -57,7 +58,13 @@ export default async function VisitPrepPage() {
       .select("id,question,status,created_at")
       .eq("profile_id", profile.id)
       .eq("status", "open")
-      .order("created_at", { ascending: true })
+      .order("created_at", { ascending: true }),
+    supabase
+      .from("biomarkers")
+      .select("id,name,result_text,result_numeric,unit,tested_on")
+      .eq("profile_id", profile.id)
+      .order("tested_on", { ascending: false, nullsFirst: false })
+      .limit(10)
   ]);
 
   const symptoms = symptomsResult.data ?? [];
@@ -66,6 +73,7 @@ export default async function VisitPrepPage() {
   const appointment = appointmentResult.data?.[0];
   const medications = medicationsResult.data ?? [];
   const savedQuestions = questionsResult.data ?? [];
+  const biomarkers = biomarkersResult.data ?? [];
 
   const symptomCounts = new Map<string, { count: number; maxSeverity: number }>();
   for (const item of symptoms) {
@@ -92,6 +100,9 @@ export default async function VisitPrepPage() {
   }
   if (medications.length) {
     suggestedQuestions.push("현재 복용 중인 약을 계속 같은 방식으로 복용하면 되는지 확인하고 싶습니다.");
+  }
+  if (biomarkers.length) {
+    suggestedQuestions.push("등록된 바이오마커 결과가 현재 치료 선택이나 추적 계획에서 어떤 의미인지 확인하고 싶습니다.");
   }
 
   return (
@@ -162,6 +173,22 @@ export default async function VisitPrepPage() {
             {treatments.map((item) => (
               <span className="infoChip" key={item.id}>
                 {item.name} {item.cycle_label ?? ""}
+              </span>
+            ))}
+          </div>
+        )}
+      </section>
+
+      <section className="section">
+        <p className="eyebrow">BIOMARKERS</p>
+        <h3>바이오마커</h3>
+        {!biomarkers.length ? (
+          <p className="mutedText">등록된 바이오마커 결과가 없습니다.</p>
+        ) : (
+          <div className="chipList">
+            {biomarkers.map((item) => (
+              <span className="infoChip" key={item.id}>
+                {item.name} · {item.result_text ?? item.result_numeric ?? "-"} {item.unit ?? ""}
               </span>
             ))}
           </div>
@@ -242,6 +269,7 @@ export default async function VisitPrepPage() {
         <Link className="secondaryLink" href="/my/symptoms">증상 추가</Link>
         <Link className="secondaryLink" href="/my/labs">검사 추가</Link>
         <Link className="secondaryLink" href="/my/medications">복약 관리</Link>
+        <Link className="secondaryLink" href="/my/biomarkers">바이오마커</Link>
         <Link className="secondaryLink" href="/my/appointments">일정 관리</Link>
       </div>
     </main>
