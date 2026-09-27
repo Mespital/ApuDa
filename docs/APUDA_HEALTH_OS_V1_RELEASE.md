@@ -23,6 +23,7 @@ The legacy cancer-screening assets at the repository root remain untouched.
 
 - Email/password sign-up and login
 - Email confirmation callback
+- forgot-password / password-reset flow
 - Self/family human profiles
 - Active-profile switching
 - Profile-scoped Row Level Security
@@ -47,6 +48,9 @@ The legacy cancer-screening assets at the repository root remain untouched.
 - Symptoms with patient-friendly 0–4 severity
 - Appointments
 - Biomarkers
+- CT / MRI / PET and other imaging records
+- reported CR / PR / SD / PD / NE labels (record-only; never auto-inferred)
+- condition-linked treatment / medication / biomarker / imaging records
 - Treatment timeline
 - Quick record menu
 
@@ -94,6 +98,7 @@ Current Health OS tables:
 - `symptom_logs`
 - `appointments`
 - `biomarkers`
+- `imaging`
 - `consents`
 - `visit_questions`
 
