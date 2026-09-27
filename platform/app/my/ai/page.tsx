@@ -67,10 +67,10 @@ export default async function ApuDaAIPage() {
 
   return (
     <main className="shell">
-      <p className="eyebrow">APUDA AI · {profile.display_name}</p>
+      <p className="eyebrow">APUDA TALK · {profile.display_name}</p>
       <h1 className="pageTitle">내 기록을 한눈에 정리해요.</h1>
       <p className="heroCopy">
-        ApuDa AI는 진단을 대신하지 않고, 내가 남긴 건강기록을 다시 찾기 쉽게
+        ApuDa Talk는 진단을 대신하지 않고, 내가 남긴 건강기록을 다시 찾기 쉽게
         정리하고 다음 진료에서 확인할 내용을 준비하는 Care Navigation에
         집중합니다.
       </p>
@@ -186,7 +186,7 @@ export default async function ApuDaAIPage() {
       </section>
 
       <p className="safetyNote">
-        ApuDa AI는 진단·처방·약 중단·용량 변경 또는 치료효과 판정을 지시하지 않습니다.
+        ApuDa Talk는 진단·처방·약 중단·용량 변경 또는 치료효과 판정을 지시하지 않습니다.
       </p>
     </main>
   );
