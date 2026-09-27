@@ -11,8 +11,8 @@ export default function HomePage() {
     <main className="shell">
       <header className="topbar">
         <div>
-          <p className="eyebrow">ApuDa PATIENT CARE OS</p>
-          <h1>ApuDa</h1>
+          <p className="eyebrow">아프지만, 다행이다.</p>
+          <h1>My ApuDa</h1>
         </div>
         <Link className="profileButton linkButton" href="/login" aria-label="ApuDa ID">
           MY
