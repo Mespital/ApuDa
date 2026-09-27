@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import LabEntryForm from "@/components/LabEntryForm";
-import PhotoLabInput from "@/components/PhotoLabInput";
+import LabPhotoImport from "@/components/LabPhotoImport";
 import { getActiveProfile } from "@/lib/active-profile";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { createClient } from "@/lib/supabase/server";
@@ -17,7 +17,7 @@ export default async function LabsPage() {
   const supabase = await createClient();
   const { data: labs } = await supabase
     .from("labs")
-    .select("id,test_name,value_numeric,value_text,unit,measured_at")
+    .select("id,test_name,value_numeric,value_text,unit,measured_at,source")
     .eq("profile_id", profile.id)
     .order("measured_at", { ascending: false })
     .limit(30);
@@ -27,17 +27,17 @@ export default async function LabsPage() {
       <p className="eyebrow">LAB RECORDS · {profile.display_name}</p>
       <h1 className="pageTitle">검사결과</h1>
       <p className="heroCopy">
-        검사지를 사진으로 읽거나 직접 입력하고, 이전 결과와 함께 확인합니다.
+        검사결과를 사진으로 불러오거나 직접 입력하고, 이전 값과 함께 확인합니다.
         숫자의 상승·하락만으로 치료효과를 단정하지 않습니다.
       </p>
 
       <section className="section">
         <p className="eyebrow">PHOTO INPUT</p>
-        <h3>검사지 사진으로 기록</h3>
+        <h3>사진으로 기록</h3>
         <p className="mutedText">
-          사진에서 찾은 결과는 바로 저장하지 않고, 사용자가 확인·수정한 뒤에만 저장합니다.
+          검사지를 촬영하면 OCR이 검사명·수치·단위를 찾아줍니다. 자동 인식 결과는 저장 전 반드시 확인합니다.
         </p>
-        <PhotoLabInput profileId={profile.id} />
+        <LabPhotoImport profileId={profile.id} />
       </section>
 
       <section className="section">
@@ -61,7 +61,10 @@ export default async function LabsPage() {
               <article className="dataRow" key={lab.id}>
                 <div>
                   <strong>{lab.test_name}</strong>
-                  <small>{new Date(lab.measured_at).toLocaleDateString("ko-KR")}</small>
+                  <small>
+                    {new Date(lab.measured_at).toLocaleDateString("ko-KR")}
+                    {lab.source ? ` · ${lab.source === "ocr" ? "사진 인식" : "직접 입력"}` : ""}
+                  </small>
                 </div>
                 <b>{lab.value_numeric ?? lab.value_text ?? "-"} {lab.unit ?? ""}</b>
               </article>
