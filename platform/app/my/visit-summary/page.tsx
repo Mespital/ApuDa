@@ -12,7 +12,7 @@ export default async function VisitSummaryPage() {
   const since = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString();
   const now = new Date().toISOString();
 
-  const [symptomsResult, labsResult, treatmentsResult, medicationsResult, appointmentResult, questionsResult, biomarkersResult] =
+  const [symptomsResult, labsResult, treatmentsResult, medicationsResult, appointmentResult, questionsResult, biomarkersResult, imagingResult] =
     await Promise.all([
       supabase
         .from("symptom_logs")
@@ -56,7 +56,13 @@ export default async function VisitSummaryPage() {
         .select("id,name,result_text,result_numeric,unit,tested_on")
         .eq("profile_id", profile.id)
         .order("tested_on", { ascending: false, nullsFirst: false })
-        .limit(10)
+        .limit(10),
+      supabase
+        .from("imaging")
+        .select("id,modality,body_part,study_date,summary,response_category")
+        .eq("profile_id", profile.id)
+        .order("study_date", { ascending: false })
+        .limit(5)
     ]);
 
   const symptoms = symptomsResult.data ?? [];
@@ -66,6 +72,7 @@ export default async function VisitSummaryPage() {
   const appointment = appointmentResult.data?.[0];
   const questions = questionsResult.data ?? [];
   const biomarkers = biomarkersResult.data ?? [];
+  const imaging = imagingResult.data ?? [];
 
   const symptomMap = new Map<string, { count: number; maxSeverity: number; notes: string[] }>();
   for (const row of symptoms) {
@@ -142,6 +149,23 @@ export default async function VisitSummaryPage() {
           <ul>
             {treatments.map((item) => (
               <li key={item.id}>{item.name} {item.cycle_label ?? ""}</li>
+            ))}
+          </ul>
+        )}
+      </section>
+
+      <section className="printSection">
+        <h2>최근 영상검사</h2>
+        {!imaging.length ? (
+          <p>기록 없음</p>
+        ) : (
+          <ul>
+            {imaging.map((item) => (
+              <li key={item.id}>
+                <strong>{item.modality} {item.body_part ?? ""}</strong> · {new Date(item.study_date).toLocaleDateString("ko-KR")}
+                {item.response_category ? ` · ${item.response_category}` : ""}
+                {item.summary ? ` · ${item.summary}` : ""}
+              </li>
             ))}
           </ul>
         )}
