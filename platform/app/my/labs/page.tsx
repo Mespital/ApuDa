@@ -16,6 +16,9 @@ export default async function LabsPage() {
   if (!profile) redirect("/onboarding");
 
   const supabase = await createClient();
+  const aiInputConfigured = Boolean(
+    process.env.AI_API_BASE_URL && process.env.APUDA_AI_API_KEY
+  );
   const { data: labs } = await supabase
     .from("labs")
     .select("id,canonical_code,test_name,value_numeric,value_text,unit,measured_at,source")
@@ -87,7 +90,7 @@ export default async function LabsPage() {
         <p className="mutedText">
           검사지를 촬영하면 OCR이 검사명·수치·단위를 찾아줍니다. 자동 인식 결과는 저장 전 반드시 확인합니다.
         </p>
-        <LabPhotoImport profileId={profile.id} />
+        <LabPhotoImport profileId={profile.id} enabled={aiInputConfigured} />
       </section>
 
       <section className="section">
