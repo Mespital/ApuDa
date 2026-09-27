@@ -1,4 +1,5 @@
 import os
+import secrets
 import uuid
 from pathlib import Path
 
@@ -11,7 +12,7 @@ from rq.job import Job
 
 from .jobs import run_ocr_job, run_stt_job
 from .parsers import parse_lab_text, parse_symptom_text
-from .security import verify_api_key
+from .security import require_owner_token, verify_api_key
 
 TEMP_DIR = Path(os.getenv("AI_TEMP_DIR", "/data/tmp"))
 TEMP_DIR.mkdir(parents=True, exist_ok=True)
@@ -21,7 +22,7 @@ REDIS_URL = os.getenv("REDIS_URL", "redis://redis:6379/0")
 redis = Redis.from_url(REDIS_URL)
 queue = Queue("apuda-ai", connection=redis, default_timeout=600)
 
-app = FastAPI(title="ApuDa AI Input API", version="0.1.0")
+app = FastAPI(title="ApuDa AI Input API", version="0.2.0")
 
 origins = [x.strip() for x in os.getenv("ALLOWED_ORIGINS", "").split(",") if x.strip()]
 if origins:
@@ -30,7 +31,11 @@ if origins:
         allow_origins=origins,
         allow_credentials=True,
         allow_methods=["GET", "POST"],
-        allow_headers=["Content-Type", "X-ApuDa-AI-Key"],
+        allow_headers=[
+            "Content-Type",
+            "X-ApuDa-AI-Key",
+            "X-ApuDa-Owner",
+        ],
     )
 
 class TextPayload(BaseModel):
@@ -52,20 +57,40 @@ async def save_upload(upload: UploadFile) -> str:
 
     return str(target)
 
+def enqueue_owned_job(function, path: str, owner: str):
+    try:
+        return queue.enqueue(
+            function,
+            path,
+            job_timeout=600,
+            result_ttl=900,
+            failure_ttl=900,
+            meta={"owner": owner},
+        )
+    except Exception:
+        Path(path).unlink(missing_ok=True)
+        raise HTTPException(status_code=503, detail="Queue unavailable")
+
 @app.get("/health")
 def health() -> dict[str, str]:
     return {"status": "ok"}
 
 @app.post("/api/v1/ocr", dependencies=[Depends(verify_api_key)])
-async def create_ocr_job(file: UploadFile = File(...)):
+async def create_ocr_job(
+    file: UploadFile = File(...),
+    owner: str = Depends(require_owner_token),
+):
     path = await save_upload(file)
-    job = queue.enqueue(run_ocr_job, path, job_timeout=600, result_ttl=900)
+    job = enqueue_owned_job(run_ocr_job, path, owner)
     return {"job_id": job.id, "status": "queued"}
 
 @app.post("/api/v1/stt", dependencies=[Depends(verify_api_key)])
-async def create_stt_job(file: UploadFile = File(...)):
+async def create_stt_job(
+    file: UploadFile = File(...),
+    owner: str = Depends(require_owner_token),
+):
     path = await save_upload(file)
-    job = queue.enqueue(run_stt_job, path, job_timeout=600, result_ttl=900)
+    job = enqueue_owned_job(run_stt_job, path, owner)
     return {"job_id": job.id, "status": "queued"}
 
 @app.post("/api/v1/parse/lab", dependencies=[Depends(verify_api_key)])
@@ -77,10 +102,17 @@ def parse_symptom(payload: TextPayload):
     return parse_symptom_text(payload.text)
 
 @app.get("/api/v1/jobs/{job_id}", dependencies=[Depends(verify_api_key)])
-def get_job(job_id: str):
+def get_job(
+    job_id: str,
+    owner: str = Depends(require_owner_token),
+):
     try:
         job = Job.fetch(job_id, connection=redis)
     except Exception:
+        raise HTTPException(status_code=404, detail="Job not found")
+
+    stored_owner = str(job.meta.get("owner", ""))
+    if not stored_owner or not secrets.compare_digest(stored_owner, owner):
         raise HTTPException(status_code=404, detail="Job not found")
 
     response = {"job_id": job.id, "status": job.get_status(refresh=True)}
