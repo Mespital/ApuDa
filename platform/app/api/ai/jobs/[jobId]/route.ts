@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { forwardAIRequest } from "@/lib/ai/server";
+import { forwardAIRequest, getAIOwnerToken } from "@/lib/ai/server";
 import { createClient } from "@/lib/supabase/server";
 
 export async function GET(
@@ -19,7 +19,12 @@ export async function GET(
 
   try {
     const upstream = await forwardAIRequest(
-      `/api/v1/jobs/${encodeURIComponent(jobId)}`
+      `/api/v1/jobs/${encodeURIComponent(jobId)}`,
+      {
+        headers: {
+          "X-ApuDa-Owner": getAIOwnerToken(user.id)
+        }
+      }
     );
 
     const body = await upstream.text();
