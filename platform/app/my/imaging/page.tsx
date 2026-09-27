@@ -17,11 +17,19 @@ export default async function ImagingPage() {
   if (!profile) redirect("/onboarding");
 
   const supabase = await createClient();
-  const { data: imaging } = await supabase
+  const [{ data: imaging }, { data: conditions }] = await Promise.all([
+    supabase
     .from("imaging")
     .select("id,modality,body_part,study_date,summary,response_category")
     .eq("profile_id", profile.id)
-    .order("study_date", { ascending: false });
+    .order("study_date", { ascending: false }),
+    supabase
+      .from("conditions")
+      .select("id,name")
+      .eq("profile_id", profile.id)
+      .eq("status", "active")
+      .order("created_at", { ascending: true })
+  ]);
 
   return (
     <main className="shell">
@@ -34,7 +42,7 @@ export default async function ImagingPage() {
       <section className="section">
         <p className="eyebrow">ADD IMAGING</p>
         <h3>영상검사 기록 추가</h3>
-        <ImagingEntryForm profileId={profile.id} />
+        <ImagingEntryForm profileId={profile.id} conditions={conditions ?? []} />
       </section>
 
       <section className="section">
