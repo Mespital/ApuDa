@@ -7,7 +7,7 @@ on:
       - ".github/workflows/ai-service-ci.yml"
   push:
     branches:
-      - "feature/apuda-health-os-v1"
+      - "main"
     paths:
       - "services/ai/**"
       - ".github/workflows/ai-service-ci.yml"
@@ -28,7 +28,12 @@ jobs:
           python-version: "3.12"
 
       - name: Syntax check
-        run: python -m compileall -q app worker.py
+        run: python -m compileall -q app worker.py tests
 
       - name: Parser unit tests
         run: PYTHONPATH=. python -m unittest discover -s tests -v
+
+      - name: Validate Docker Compose
+        run: |
+          cp .env.example .env
+          docker compose config -q
