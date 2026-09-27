@@ -34,7 +34,8 @@ export async function GET(
     symptoms,
     appointments,
     consents,
-    visitQuestions
+    visitQuestions,
+    biomarkers
   ] = await Promise.all([
     supabase.from("conditions").select("*").eq("profile_id", profileId),
     supabase.from("treatments").select("*").eq("profile_id", profileId),
@@ -43,7 +44,8 @@ export async function GET(
     supabase.from("symptom_logs").select("*").eq("profile_id", profileId),
     supabase.from("appointments").select("*").eq("profile_id", profileId),
     supabase.from("consents").select("*").eq("profile_id", profileId),
-    supabase.from("visit_questions").select("*").eq("profile_id", profileId)
+    supabase.from("visit_questions").select("*").eq("profile_id", profileId),
+    supabase.from("biomarkers").select("*").eq("profile_id", profileId)
   ]);
 
   const payload = {
@@ -57,7 +59,8 @@ export async function GET(
     symptom_logs: symptoms.data ?? [],
     appointments: appointments.data ?? [],
     consents: consents.data ?? [],
-    visit_questions: visitQuestions.data ?? []
+    visit_questions: visitQuestions.data ?? [],
+    biomarkers: biomarkers.data ?? []
   };
 
   return new NextResponse(JSON.stringify(payload, null, 2), {
