@@ -12,7 +12,7 @@ export default async function VisitPrepPage() {
   const since = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString();
   const now = new Date().toISOString();
 
-  const [symptomsResult, labsResult, treatmentsResult, appointmentResult] =
+  const [symptomsResult, labsResult, treatmentsResult, appointmentResult, medicationsResult] =
     await Promise.all([
       supabase
         .from("symptom_logs")
@@ -38,13 +38,20 @@ export default async function VisitPrepPage() {
         .eq("profile_id", profile.id)
         .gte("scheduled_at", now)
         .order("scheduled_at", { ascending: true })
-        .limit(1)
+        .limit(1),
+      supabase
+        .from("medications")
+        .select("id,name,dose_text,frequency_text,route")
+        .eq("profile_id", profile.id)
+        .eq("active", true)
+        .order("created_at", { ascending: false })
     ]);
 
   const symptoms = symptomsResult.data ?? [];
   const labs = labsResult.data ?? [];
   const treatments = treatmentsResult.data ?? [];
   const appointment = appointmentResult.data?.[0];
+  const medications = medicationsResult.data ?? [];
 
   const symptomCounts = new Map<string, { count: number; maxSeverity: number }>();
   for (const item of symptoms) {
@@ -66,6 +73,9 @@ export default async function VisitPrepPage() {
   }
   if (labs.length) {
     questions.push("최근 검사결과 중 치료나 일상관리와 관련해 특히 확인해야 할 항목이 있을까요?");
+  }
+  if (medications.length) {
+    questions.push("현재 복용 중인 약을 계속 같은 방식으로 복용하면 되는지 확인하고 싶습니다.");
   }
 
   return (
@@ -133,6 +143,25 @@ export default async function VisitPrepPage() {
         )}
       </section>
 
+      <section className="section">
+        <p className="eyebrow">MEDICATIONS</p>
+        <h3>현재 복약</h3>
+        {!medications.length ? (
+          <p className="mutedText">복약 기록이 없습니다.</p>
+        ) : (
+          <div className="dataList">
+            {medications.map((item) => (
+              <article className="dataRow" key={item.id}>
+                <div>
+                  <strong>{item.name}</strong>
+                  <small>{[item.dose_text, item.frequency_text, item.route].filter(Boolean).join(" · ")}</small>
+                </div>
+              </article>
+            ))}
+          </div>
+        )}
+      </section>
+
       <section className="section softSection">
         <p className="eyebrow">QUESTIONS</p>
         <h3>의료진과 확인해볼 질문</h3>
@@ -151,6 +180,7 @@ export default async function VisitPrepPage() {
       <div className="buttonRow leftButtons">
         <Link className="secondaryLink" href="/my/symptoms">증상 추가</Link>
         <Link className="secondaryLink" href="/my/labs">검사 추가</Link>
+        <Link className="secondaryLink" href="/my/medications">복약 관리</Link>
         <Link className="secondaryLink" href="/my/appointments">일정 관리</Link>
       </div>
     </main>
