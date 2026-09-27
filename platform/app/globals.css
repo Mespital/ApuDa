@@ -617,3 +617,224 @@ a {
     height: 50px;
   }
 }
+
+
+.profileSelect {
+  min-width: 180px;
+  min-height: 46px;
+  margin-top: 6px;
+  padding: 0 40px 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: #fff;
+  color: var(--navy);
+  font: inherit;
+  font-weight: 800;
+}
+
+.healthForm {
+  display: grid;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.healthForm label {
+  display: grid;
+  gap: 8px;
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.healthForm input,
+.healthForm select,
+.healthForm textarea {
+  width: 100%;
+  min-height: 50px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: #fff;
+  color: var(--text);
+  font: inherit;
+  outline: none;
+  resize: vertical;
+}
+
+.healthForm input:focus,
+.healthForm select:focus,
+.healthForm textarea:focus {
+  border-color: #aac5f4;
+  box-shadow: 0 0 0 4px rgba(47, 111, 228, 0.08);
+}
+
+.twoCol {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.twoPanel {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.dataList {
+  display: grid;
+  margin-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.dataRow {
+  display: flex;
+  min-height: 72px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 15px 2px;
+  border-bottom: 1px solid var(--line);
+}
+
+.dataRow > div {
+  display: grid;
+  gap: 4px;
+}
+
+.dataRow strong,
+.dataRow b {
+  color: var(--navy);
+}
+
+.dataRow small {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.mutedText {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.inlineLink {
+  color: var(--apuda-blue);
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 12px 0 28px;
+}
+
+.metricCard {
+  display: grid;
+  min-height: 138px;
+  align-content: space-between;
+  gap: 6px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: #fff;
+  text-decoration: none;
+}
+
+.metricCard span {
+  color: var(--apuda-blue);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.metricCard strong {
+  overflow-wrap: anywhere;
+  color: var(--navy);
+  font-size: 20px;
+}
+
+.metricCard small {
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.compactLink {
+  margin-top: 18px;
+}
+
+.visitHero {
+  display: grid;
+  gap: 6px;
+  margin: 10px 0 28px;
+  padding: 24px;
+  border-radius: 26px;
+  background: linear-gradient(135deg, var(--apuda-blue), #5d91ea);
+  color: #fff;
+  box-shadow: 0 18px 45px rgba(47, 111, 228, 0.2);
+}
+
+.visitHero span,
+.visitHero small {
+  opacity: 0.85;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.visitHero strong {
+  font-size: 25px;
+}
+
+.visitHero p {
+  margin: 2px 0 0;
+}
+
+.chipList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 18px;
+}
+
+.infoChip {
+  padding: 9px 12px;
+  border: 1px solid #d7e4f7;
+  border-radius: 999px;
+  background: #f7faff;
+  color: #315686;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.questionList {
+  display: grid;
+  gap: 12px;
+  padding-left: 22px;
+  color: var(--text);
+  line-height: 1.65;
+}
+
+@media (max-width: 720px) {
+  .twoCol,
+  .twoPanel,
+  .metricsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .metricCard {
+    min-height: 112px;
+  }
+
+  .dataRow {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .profileSelect {
+    min-width: 150px;
+    max-width: 220px;
+  }
+}
