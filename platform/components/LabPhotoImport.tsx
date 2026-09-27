@@ -4,7 +4,9 @@ import { useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 
 type ParsedLab = {
+  canonical_code?: string | null;
   test_name: string;
+  raw_name?: string;
   value: number;
   unit: string | null;
 };
@@ -95,6 +97,7 @@ export default function LabPhotoImport({ profileId }: { profileId: string }) {
     const { error } = await supabase.from("labs").insert(
       items.map((item) => ({
         profile_id: profileId,
+        canonical_code: item.canonical_code ?? null,
         test_name: item.test_name.trim(),
         value_numeric: Number(item.value),
         unit: item.unit?.trim() || null,
