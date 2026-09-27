@@ -41,7 +41,6 @@ export async function POST(request: Request) {
     .select("granted")
     .eq("profile_id", profileId)
     .eq("consent_type", "ai_assisted_processing")
-    .eq("granted", true)
     .order("granted_at", { ascending: false })
     .limit(1)
     .maybeSingle();
