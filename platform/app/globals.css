@@ -1080,3 +1080,51 @@ a {
     grid-template-columns: 1fr;
   }
 }
+
+
+.aiFab {
+  position: fixed;
+  z-index: 31;
+  right: max(18px, calc((100vw - 920px) / 2 + 18px));
+  bottom: 92px;
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px;
+  border: 1px solid #cfe0fa;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--apuda-blue);
+  text-decoration: none;
+  box-shadow: 0 12px 34px rgba(20, 33, 61, 0.14);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.aiFab span {
+  display: grid;
+  width: 26px;
+  height: 26px;
+  place-items: center;
+  border-radius: 9px;
+  background: var(--apuda-blue-soft);
+  font-size: 14px;
+}
+
+@media (max-width: 620px) {
+  .aiFab {
+    right: 14px;
+    bottom: 82px;
+  }
+
+  .aiFab b {
+    display: none;
+  }
+
+  .aiFab {
+    width: 48px;
+    padding: 0;
+    justify-content: center;
+  }
+}
