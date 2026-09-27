@@ -4,16 +4,18 @@ on:
   pull_request:
     paths:
       - "platform/**"
+      - "services/ai/**"
       - ".github/workflows/platform-ci.yml"
   push:
     branches:
       - "feature/apuda-health-os-v1"
     paths:
       - "platform/**"
+      - "services/ai/**"
       - ".github/workflows/platform-ci.yml"
 
 jobs:
-  build:
+  platform:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -37,3 +39,25 @@ jobs:
 
       - name: Build
         run: npm run build
+
+  ai-service:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: services/ai
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Python syntax check
+        run: python -m compileall -q app worker.py
+
+      - name: Validate Docker Compose
+        run: |
+          cp .env.example .env
+          docker compose config -q
