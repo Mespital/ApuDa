@@ -59,7 +59,7 @@ export async function POST(request: Request) {
   const since = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString();
   const now = new Date().toISOString();
 
-  const [conditions, treatments, medications, labs, symptoms, appointment] =
+  const [conditions, treatments, medications, labs, symptoms, appointment, biomarkers] =
     await Promise.all([
       supabase
         .from("conditions")
@@ -98,12 +98,19 @@ export async function POST(request: Request) {
         .eq("profile_id", profileId)
         .gte("scheduled_at", now)
         .order("scheduled_at", { ascending: true })
-        .limit(1)
+        .limit(1),
+      supabase
+        .from("biomarkers")
+        .select("name,result_text,result_numeric,unit,tested_on")
+        .eq("profile_id", profileId)
+        .order("tested_on", { ascending: false, nullsFirst: false })
+        .limit(10)
     ]);
 
   const context: TalkContext = {
     conditions: conditions.data ?? [],
     treatments: treatments.data ?? [],
+    biomarkers: biomarkers.data ?? [],
     medications: medications.data ?? [],
     labs: labs.data ?? [],
     symptoms: symptoms.data ?? [],
