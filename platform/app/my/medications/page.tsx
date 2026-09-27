@@ -9,12 +9,20 @@ export default async function MedicationsPage() {
   if (!profile) redirect("/onboarding");
 
   const supabase = await createClient();
-  const { data: medications } = await supabase
+  const [{ data: medications }, { data: conditions }] = await Promise.all([
+    supabase
     .from("medications")
     .select("id,name,dose_text,frequency_text,route,started_on,active,notes")
     .eq("profile_id", profile.id)
     .order("active", { ascending: false })
-    .order("created_at", { ascending: false });
+    .order("created_at", { ascending: false }),
+    supabase
+      .from("conditions")
+      .select("id,name")
+      .eq("profile_id", profile.id)
+      .eq("status", "active")
+      .order("created_at", { ascending: true })
+  ]);
 
   return (
     <main className="shell">
@@ -27,7 +35,7 @@ export default async function MedicationsPage() {
       <section className="section">
         <p className="eyebrow">ADD MEDICATION</p>
         <h3>약 추가</h3>
-        <MedicationEntryForm profileId={profile.id} />
+        <MedicationEntryForm profileId={profile.id} conditions={conditions ?? []} />
       </section>
 
       <section className="section">
