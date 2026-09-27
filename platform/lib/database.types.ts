@@ -58,35 +58,104 @@ export type Database = {
           },
         ]
       }
-      conditions: {
+      biomarkers: {
         Row: {
-          code: string | null
+          canonical_code: string | null
+          condition_id: string | null
           created_at: string
-          diagnosed_on: string | null
           id: string
           name: string
           notes: string | null
           profile_id: string
+          result_numeric: number | null
+          result_text: string | null
+          tested_on: string | null
+          unit: string | null
+        }
+        Insert: {
+          canonical_code?: string | null
+          condition_id?: string | null
+          created_at?: string
+          id?: string
+          name: string
+          notes?: string | null
+          profile_id: string
+          result_numeric?: number | null
+          result_text?: string | null
+          tested_on?: string | null
+          unit?: string | null
+        }
+        Update: {
+          canonical_code?: string | null
+          condition_id?: string | null
+          created_at?: string
+          id?: string
+          name?: string
+          notes?: string | null
+          profile_id?: string
+          result_numeric?: number | null
+          result_text?: string | null
+          tested_on?: string | null
+          unit?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "biomarkers_condition_id_fkey"
+            columns: ["condition_id"]
+            isOneToOne: false
+            referencedRelation: "conditions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "biomarkers_profile_id_fkey"
+            columns: ["profile_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      conditions: {
+        Row: {
+          code: string | null
+          created_at: string
+          department: string | null
+          diagnosed_on: string | null
+          histology: string | null
+          hospital_name: string | null
+          id: string
+          name: string
+          notes: string | null
+          profile_id: string
+          stage: string | null
           status: string
         }
         Insert: {
           code?: string | null
           created_at?: string
+          department?: string | null
           diagnosed_on?: string | null
+          histology?: string | null
+          hospital_name?: string | null
           id?: string
           name: string
           notes?: string | null
           profile_id: string
+          stage?: string | null
           status?: string
         }
         Update: {
           code?: string | null
           created_at?: string
+          department?: string | null
           diagnosed_on?: string | null
+          histology?: string | null
+          hospital_name?: string | null
           id?: string
           name?: string
           notes?: string | null
           profile_id?: string
+          stage?: string | null
           status?: string
         }
         Relationships: [
