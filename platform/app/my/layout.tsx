@@ -4,6 +4,12 @@ export default function MyLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       {children}
+
+      <Link className="aiFab" href="/my/ai" aria-label="ApuDa AI 열기">
+        <span>✦</span>
+        <b>ApuDa AI</b>
+      </Link>
+
       <nav className="bottomNav" aria-label="My ApuDa navigation">
         <Link href="/my"><span>⌂</span><small>오늘</small></Link>
         <Link href="/my/record" className="recordNav"><span>＋</span><small>기록</small></Link>
