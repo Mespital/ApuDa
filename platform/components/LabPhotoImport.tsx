@@ -47,7 +47,7 @@ export default function LabPhotoImport({ profileId }: { profileId: string }) {
 
     try {
       const form = new FormData();
-      form.append("file", file);
+      form.append("file", file);\n      form.append("profileId", profileId);
 
       const response = await fetch("/api/ai/ocr", { method: "POST", body: form });
       const body = await response.json();
