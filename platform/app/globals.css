@@ -1272,3 +1272,134 @@ a {
     width: 100%;
   }
 }
+
+
+.savedQuestions {
+  margin-bottom: 20px;
+}
+
+.summaryCta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.printShell {
+  width: min(100%, 880px);
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+  color: #202938;
+  background: #fff;
+}
+
+.printHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid #14213d;
+}
+
+.printHeader h1 {
+  margin: 8px 0 6px;
+  color: #14213d;
+  font-size: 30px;
+  letter-spacing: -0.035em;
+}
+
+.printHeader p {
+  margin: 0;
+  color: #6b778c;
+}
+
+.printSection {
+  padding: 20px 0;
+  border-bottom: 1px solid #dfe5ec;
+}
+
+.printSection h2 {
+  margin: 0 0 12px;
+  color: #14213d;
+  font-size: 18px;
+}
+
+.printSection p,
+.printSection li {
+  line-height: 1.6;
+}
+
+.printSection ul,
+.printSection ol {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.summaryTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.summaryTable th,
+.summaryTable td {
+  padding: 10px 8px;
+  border-bottom: 1px solid #e5e9ef;
+  text-align: left;
+}
+
+.summaryTable th {
+  color: #14213d;
+  font-size: 12px;
+}
+
+.printFooter {
+  padding-top: 22px;
+  color: #6b778c;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.printFooter strong {
+  color: #2f6fe4;
+  font-size: 16px;
+}
+
+@media (max-width: 720px) {
+  .summaryCta,
+  .printHeader {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .printShell {
+    padding: 24px 18px 80px;
+  }
+}
+
+@media print {
+  body {
+    background: #fff !important;
+  }
+
+  .bottomNav,
+  .noPrint {
+    display: none !important;
+  }
+
+  .printShell {
+    width: 100%;
+    max-width: none;
+    padding: 0;
+  }
+
+  .printSection {
+    break-inside: avoid;
+  }
+
+  @page {
+    size: A4;
+    margin: 16mm;
+  }
+}
