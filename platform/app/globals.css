@@ -1467,3 +1467,32 @@ a {
     justify-items: stretch;
   }
 }
+
+
+.dataControls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-top: 18px;
+}
+
+.dangerOutlineButton {
+  min-height: 50px;
+  padding: 0 18px;
+  border: 1px solid #dba7ae;
+  border-radius: 16px;
+  background: #fff;
+  color: #923746;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.dangerOutlineButton:hover {
+  background: #fff6f7;
+}
+
+.dangerOutlineButton:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
