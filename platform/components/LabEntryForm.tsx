@@ -17,13 +17,14 @@ export default function LabEntryForm({ profileId }: { profileId: string }) {
     setMessage("");
 
     const supabase = createClient();
-    const numeric = value.trim() === "" ? null : Number(value);
+    const numericValue = Number(value);
+    const isNumeric = value.trim() !== "" && Number.isFinite(numericValue);
 
     const { error } = await supabase.from("labs").insert({
       profile_id: profileId,
       test_name: testName.trim(),
-      value_numeric: Number.isFinite(numeric) ? numeric : null,
-      value_text: Number.isFinite(numeric) ? null : value.trim(),
+      value_numeric: isNumeric ? numericValue : null,
+      value_text: isNumeric ? null : value.trim(),
       unit: unit.trim() || null,
       measured_at: measuredAt ? new Date(measuredAt).toISOString() : new Date().toISOString(),
       source: "manual",
@@ -54,7 +55,7 @@ export default function LabEntryForm({ profileId }: { profileId: string }) {
       <div className="twoCol">
         <label>
           결과
-          <input value={value} onChange={(e) => setValue(e.target.value)} required placeholder="예: 5.3" />
+          <input value={value} onChange={(e) => setValue(e.target.value)} required placeholder="예: 5.3 또는 Negative" />
         </label>
         <label>
           단위
