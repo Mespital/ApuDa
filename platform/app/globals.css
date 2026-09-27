@@ -1496,3 +1496,99 @@ a {
   cursor: wait;
   opacity: 0.65;
 }
+
+
+.talkPanel {
+  display: grid;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.talkMessages {
+  display: grid;
+  gap: 10px;
+  min-height: 180px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #f8faff;
+}
+
+.talkWelcome {
+  align-self: center;
+  text-align: center;
+  color: var(--muted);
+}
+
+.talkWelcome strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--navy);
+}
+
+.talkWelcome p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.talkBubble {
+  max-width: min(88%, 620px);
+  padding: 13px 15px;
+  border-radius: 17px;
+  white-space: pre-wrap;
+  line-height: 1.65;
+}
+
+.userBubble {
+  justify-self: end;
+  background: var(--apuda-blue);
+  color: #fff;
+  border-bottom-right-radius: 6px;
+}
+
+.assistantBubble {
+  justify-self: start;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--text);
+  border-bottom-left-radius: 6px;
+}
+
+.talkComposer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: end;
+}
+
+.talkComposer textarea {
+  width: 100%;
+  min-height: 82px;
+  padding: 13px 14px;
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  background: #fff;
+  color: var(--text);
+  font: inherit;
+  resize: vertical;
+}
+
+.talkComposer textarea:focus {
+  outline: none;
+  border-color: #aac5f4;
+  box-shadow: 0 0 0 4px rgba(47, 111, 228, 0.08);
+}
+
+@media (max-width: 640px) {
+  .talkComposer {
+    grid-template-columns: 1fr;
+  }
+
+  .talkComposer .primaryButton {
+    width: 100%;
+  }
+
+  .talkBubble {
+    max-width: 94%;
+  }
+}
