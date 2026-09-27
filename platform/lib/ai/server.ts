@@ -1,3 +1,5 @@
+import { createHmac } from "node:crypto";
+
 export function getAIServiceConfig() {
   const baseUrl = process.env.AI_API_BASE_URL;
   const apiKey = process.env.APUDA_AI_API_KEY;
@@ -10,6 +12,14 @@ export function getAIServiceConfig() {
     baseUrl: baseUrl.replace(/\/$/, ""),
     apiKey
   };
+}
+
+export function getAIOwnerToken(userId: string) {
+  const { apiKey } = getAIServiceConfig();
+
+  return createHmac("sha256", apiKey)
+    .update(`apuda-ai-owner:v1:${userId}`)
+    .digest("hex");
 }
 
 export async function forwardAIRequest(
