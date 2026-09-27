@@ -46,7 +46,7 @@ export default function HomePage() {
             <p className="eyebrow">TODAY</p>
             <h3>오늘은 이것만 확인해 주세요</h3>
           </div>
-          <span className="statusPill">Health OS v1</span>
+          <span className="statusPill">Beta</span>
         </div>
 
         <div className="actionGrid">
