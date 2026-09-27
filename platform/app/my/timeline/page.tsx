@@ -18,7 +18,7 @@ export default async function TimelinePage() {
   if (!profile) redirect("/onboarding");
 
   const supabase = await createClient();
-  const [conditionResult, treatmentResult] = await Promise.all([
+  const [conditionResult, treatmentResult, imagingResult] = await Promise.all([
     supabase
       .from("conditions")
       .select("id,name,diagnosed_on,stage,histology,hospital_name,department,notes")
@@ -28,7 +28,12 @@ export default async function TimelinePage() {
       .from("treatments")
       .select("id,name,treatment_type,cycle_label,started_on,notes")
       .eq("profile_id", profile.id)
-      .order("started_on", { ascending: false })
+      .order("started_on", { ascending: false }),
+    supabase
+      .from("imaging")
+      .select("id,modality,body_part,study_date,summary,response_category")
+      .eq("profile_id", profile.id)
+      .order("study_date", { ascending: false })
   ]);
 
   const events: TimelineEvent[] = [
@@ -50,6 +55,13 @@ export default async function TimelinePage() {
       label: item.cycle_label || "치료",
       title: item.name,
       note: item.notes || item.treatment_type
+    })),
+    ...(imagingResult.data ?? []).map((item) => ({
+      key: `imaging-${item.id}`,
+      date: item.study_date,
+      label: item.response_category ? `영상 · ${item.response_category}` : "영상검사",
+      title: `${item.modality} ${item.body_part ?? ""}`.trim(),
+      note: item.summary || (item.response_category ? `보고된 반응평가: ${item.response_category}` : null)
     }))
   ].sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
 
