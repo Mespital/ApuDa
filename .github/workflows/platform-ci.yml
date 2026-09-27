@@ -55,7 +55,10 @@ jobs:
           python-version: "3.12"
 
       - name: Python syntax check
-        run: python -m compileall -q app worker.py
+        run: python -m compileall -q app worker.py tests
+
+      - name: Parser unit tests
+        run: python -m unittest discover -s tests -p "test_*.py"
 
       - name: Validate Docker Compose
         run: |
