@@ -66,7 +66,7 @@ export default async function ProfilesPage() {
       </section>
 
       <div className="buttonRow leftButtons">
-        <Link className="primaryLink" href="/onboarding">＋ 가족 프로필 추가</Link>
+        <Link className="primaryLink" href="/onboarding?mode=add">＋ 가족 프로필 추가</Link>
         <LogoutButton />
       </div>
     </main>
