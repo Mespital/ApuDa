@@ -35,7 +35,13 @@ async function pollJob(jobId: string): Promise<JobResult> {
   throw new Error("처리 시간이 길어지고 있습니다. 잠시 후 다시 시도해주세요.");
 }
 
-export default function LabPhotoImport({ profileId }: { profileId: string }) {
+export default function LabPhotoImport({
+  profileId,
+  enabled = true
+}: {
+  profileId: string;
+  enabled?: boolean;
+}) {
   const [items, setItems] = useState<ParsedLab[]>([]);
   const [sourceText, setSourceText] = useState("");
   const [message, setMessage] = useState("");
@@ -113,6 +119,14 @@ export default function LabPhotoImport({ profileId }: { profileId: string }) {
       window.location.reload();
     }
     setSaving(false);
+  }
+
+  if (!enabled) {
+    return (
+      <div className="notice">
+        사진 인식은 AI 입력 서버 연결 후 활성화됩니다. 지금은 아래의 직접 입력 기능을 사용할 수 있습니다.
+      </div>
+    );
   }
 
   return (
