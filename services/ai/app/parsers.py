@@ -1,6 +1,8 @@
 import re
 from typing import Any
 
+from .medical_dictionary import normalize_lab_name
+
 SYMPTOM_ALIASES = {
     "손발저림": ["손발저림", "손발 저림", "저려", "저림"],
     "설사": ["설사"],
@@ -55,8 +57,12 @@ def parse_lab_text(text: str) -> dict[str, Any]:
         match = LAB_LINE.search(line.strip())
         if not match:
             continue
+        raw_name = match.group("name").strip()
+        normalized = normalize_lab_name(raw_name)
         rows.append({
-            "test_name": match.group("name").strip(),
+            "canonical_code": normalized["canonical_code"],
+            "test_name": normalized["display_name"],
+            "raw_name": raw_name,
             "value": float(match.group("value")),
             "unit": (match.group("unit") or "").strip() or None,
         })
