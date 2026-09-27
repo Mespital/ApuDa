@@ -62,6 +62,9 @@ export default async function ProfilesPage() {
           <Link className="secondaryLink compactLink" href="/my/settings/data">
             내 데이터 관리
           </Link>
+          <Link className="secondaryLink compactLink" href="/my/settings/system">
+            기능 연결 상태
+          </Link>
         </div>
       </section>
 
