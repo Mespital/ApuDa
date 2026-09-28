@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import BiomarkerEntryForm from "@/components/BiomarkerEntryForm";
+import RecordDeleteButton from "@/components/RecordDeleteButton";
 import { getActiveProfile } from "@/lib/active-profile";
 import { createClient } from "@/lib/supabase/server";
 
@@ -54,9 +55,10 @@ export default async function BiomarkersPage() {
                   </small>
                   {item.notes && <small>{item.notes}</small>}
                 </div>
-                <b>
-                  {item.result_text ?? item.result_numeric ?? "-"} {item.unit ?? ""}
-                </b>
+                <div className="rowActions">
+                  <b>{item.result_text ?? item.result_numeric ?? "-"} {item.unit ?? ""}</b>
+                  <RecordDeleteButton entity="biomarker" id={item.id} />
+                </div>
               </article>
             ))}
           </div>
