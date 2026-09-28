@@ -56,6 +56,9 @@ export default async function ProfilesPage() {
           현재 프로필의 건강정보 처리 상태와 검사사진·음성 AI 보조 입력 동의를 관리합니다.
         </p>
         <div className="buttonRow leftButtons">
+          <Link className="secondaryLink compactLink" href="/my/profiles/edit">
+            현재 프로필 수정
+          </Link>
           <Link className="secondaryLink compactLink" href="/my/settings/privacy">
             개인정보·AI 설정
           </Link>
