@@ -23,9 +23,12 @@ The legacy cancer-screening assets at the repository root remain untouched.
 
 - Email/password sign-up and login
 - Email confirmation callback
+- email confirmation resend flow
 - forgot-password / password-reset flow
 - Self/family human profiles
 - Active-profile switching
+- active-profile editing
+- duplicate self-profile protection at both route and database levels
 - Profile-scoped Row Level Security
 - Health-data consent at onboarding
 - Separate optional consent for local OCR/STT AI input
@@ -53,6 +56,9 @@ The legacy cancer-screening assets at the repository root remain untouched.
 - condition-linked treatment / medication / biomarker / imaging records
 - Treatment timeline
 - Quick record menu
+- per-record delete controls for labs, symptoms, medications, appointments, biomarkers, imaging, conditions and treatments
+- medication active/inactive status management
+- runtime feature-status screen
 
 ### Visit Preparation
 
@@ -207,20 +213,22 @@ Keep the PR unmerged if either CI workflow is red.
 
 ---
 
-## 5. Remaining external connections before a real private preview
+## 5. Preview runtime status
 
-These require access outside the repository/database connector.
+### A. Web preview host — connected
 
-### A. Web preview host
+Current beta host:
 
-The hosting project must point its root directory to:
+`https://my-apuda-beta.netlify.app`
+
+The Netlify project points its base directory to:
 
 `platform`
 
-Required environment variables:
+Current required environment variables:
 
 ```bash
-NEXT_PUBLIC_APP_URL=https://<preview-host>
+NEXT_PUBLIC_APP_URL=https://my-apuda-beta.netlify.app
 
 NEXT_PUBLIC_SUPABASE_URL=<project-url>
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=<publishable-key>
@@ -237,15 +245,16 @@ APUDA_AI_API_KEY=<server-only shared secret>
 
 Never expose `APUDA_AI_API_KEY`, `OPENAI_API_KEY` or a Supabase secret/service key as `NEXT_PUBLIC_*`.
 
-### B. Supabase Auth URL
+### B. Supabase Auth URL — connected
 
-Add:
+Configured beta values:
 
-`https://<preview-host>/auth/callback`
+- Site URL: `https://my-apuda-beta.netlify.app`
+- Redirect URL: `https://my-apuda-beta.netlify.app/auth/callback`
 
-to the project's allowed authentication redirect URLs.
+Email/password signup, email confirmation and first profile creation have been observed working in the beta runtime.
 
-### C. VPS terminal access
+### C. VPS AI input runtime — still pending
 
 Deploy `services/ai` on the authorized VPS:
 
@@ -326,13 +335,13 @@ Do **not** replace current `apuda.app` until all are true:
 - ApuDa Talk mock + optional external provider architecture
 - CI
 
-### Still blocked on external runtime access
+### Still blocked or incomplete in external runtime
 
-- preview deployment URL
-- hosting environment variables
-- Supabase Auth preview redirect registration
-- actual VPS deployment
-- real OCR/STT benchmark
-- browser E2E smoke test
+- actual VPS OCR/STT deployment
+- `ai.apuda.app` DNS + TLS reverse proxy
+- Netlify `AI_API_BASE_URL` + `APUDA_AI_API_KEY` connection
+- real OCR/STT benchmark on the 2-vCPU VPS
+- full browser E2E smoke test across every health-record module
+- production privacy/terms/compliance review
 
 Those external-runtime items must be completed before production merge/cutover.
