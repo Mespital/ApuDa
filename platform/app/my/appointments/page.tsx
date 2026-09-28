@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import AppointmentEntryForm from "@/components/AppointmentEntryForm";
+import RecordDeleteButton from "@/components/RecordDeleteButton";
 import { getActiveProfile } from "@/lib/active-profile";
 import { createClient } from "@/lib/supabase/server";
 
@@ -41,7 +42,10 @@ export default async function AppointmentsPage() {
                   <small>{item.hospital_name ?? ""} {item.department ?? ""}</small>
                   {item.notes && <small>{item.notes}</small>}
                 </div>
-                <b>{new Date(item.scheduled_at).toLocaleString("ko-KR", { dateStyle: "medium", timeStyle: "short" })}</b>
+                <div className="rowActions">
+                  <b>{new Date(item.scheduled_at).toLocaleString("ko-KR", { dateStyle: "medium", timeStyle: "short" })}</b>
+                  <RecordDeleteButton entity="appointment" id={item.id} />
+                </div>
               </article>
             ))}
           </div>
