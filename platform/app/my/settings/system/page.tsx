@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getActiveProfile } from "@/lib/active-profile";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
+import { checkAIInputService } from "@/lib/ai/server";
 
 function Status({
   ok,
@@ -17,15 +18,16 @@ function Status({
   );
 }
 
+export const dynamic = "force-dynamic";
+
 export default async function SystemSettingsPage() {
   const { user, profile } = await getActiveProfile();
   if (!user) redirect("/login");
   if (!profile) redirect("/onboarding");
 
   const supabaseReady = isSupabaseConfigured();
-  const aiInputReady = Boolean(
-    process.env.AI_API_BASE_URL && process.env.APUDA_AI_API_KEY
-  );
+  const aiInputStatus = await checkAIInputService();
+  const aiInputReady = aiInputStatus === "healthy";
   const talkProvider = process.env.AI_PROVIDER ?? "mock";
   const externalTalkReady =
     talkProvider === "openai" &&
@@ -77,7 +79,10 @@ export default async function SystemSettingsPage() {
               연결 전에도 직접 입력 기능은 정상 사용할 수 있습니다.
             </p>
           </div>
-          <Status ok={aiInputReady} label="VPS 연결 필요" />
+          <Status
+            ok={aiInputReady}
+            label={aiInputStatus === "unavailable" ? "연결 오류" : "VPS 연결 필요"}
+          />
         </div>
       </section>
 
@@ -87,7 +92,9 @@ export default async function SystemSettingsPage() {
         <p className="mutedText">
           {aiInputReady
             ? "검사사진과 음성 입력까지 실제 환경에서 테스트해 주세요."
-            : "나머지 건강기록·진료준비 기능은 그대로 사용할 수 있고, OCR/STT만 VPS 연결 후 켜집니다."}
+            : aiInputStatus === "unavailable"
+              ? "VPS 설정은 감지되지만 현재 AI 입력 서버에 연결할 수 없습니다. 서버 상태와 HTTPS 주소를 확인해 주세요."
+              : "나머지 건강기록·진료준비 기능은 그대로 사용할 수 있고, OCR/STT만 VPS 연결 후 켜집니다."}
         </p>
         <div className="buttonRow leftButtons">
           <Link className="primaryLink compactLink" href="/my/record">기록 기능 테스트</Link>
