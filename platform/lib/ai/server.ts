@@ -37,3 +37,20 @@ export async function forwardAIRequest(
     cache: "no-store"
   });
 }
+
+
+export async function checkAIInputService() {
+  if (!process.env.AI_API_BASE_URL || !process.env.APUDA_AI_API_KEY) {
+    return "not_configured" as const;
+  }
+
+  try {
+    const response = await forwardAIRequest("/health", {
+      method: "GET",
+      signal: AbortSignal.timeout(4000)
+    });
+    return response.ok ? ("healthy" as const) : ("unavailable" as const);
+  } catch {
+    return "unavailable" as const;
+  }
+}
