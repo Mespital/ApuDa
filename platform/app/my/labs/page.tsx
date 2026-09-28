@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import LabEntryForm from "@/components/LabEntryForm";
 import LabPhotoImport from "@/components/LabPhotoImport";
 import LabTrendCard from "@/components/LabTrendCard";
+import RecordDeleteButton from "@/components/RecordDeleteButton";
 import { getActiveProfile } from "@/lib/active-profile";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { createClient } from "@/lib/supabase/server";
@@ -119,7 +120,10 @@ export default async function LabsPage() {
                     {lab.source ? ` · ${lab.source === "ocr" ? "사진 인식" : "직접 입력"}` : ""}
                   </small>
                 </div>
-                <b>{lab.value_numeric ?? lab.value_text ?? "-"} {lab.unit ?? ""}</b>
+                <div className="rowActions">
+                  <b>{lab.value_numeric ?? lab.value_text ?? "-"} {lab.unit ?? ""}</b>
+                  <RecordDeleteButton entity="lab" id={lab.id} />
+                </div>
               </article>
             ))}
           </div>
