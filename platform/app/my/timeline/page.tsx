@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import ConditionEntryForm from "@/components/ConditionEntryForm";
 import TreatmentEntryForm from "@/components/TreatmentEntryForm";
+import RecordDeleteButton from "@/components/RecordDeleteButton";
 import { getActiveProfile } from "@/lib/active-profile";
 import { createClient } from "@/lib/supabase/server";
 
@@ -10,6 +11,8 @@ type TimelineEvent = {
   label: string;
   title: string;
   note: string | null;
+  entity: "condition" | "treatment" | "imaging";
+  id: string;
 };
 
 export default async function TimelinePage() {
@@ -39,6 +42,8 @@ export default async function TimelinePage() {
   const events: TimelineEvent[] = [
     ...(conditionResult.data ?? []).map((item) => ({
       key: `condition-${item.id}`,
+      id: item.id,
+      entity: "condition" as const,
       date: item.diagnosed_on,
       label: "진단",
       title: item.name,
@@ -51,6 +56,8 @@ export default async function TimelinePage() {
     })),
     ...(treatmentResult.data ?? []).map((item) => ({
       key: `treatment-${item.id}`,
+      id: item.id,
+      entity: "treatment" as const,
       date: item.started_on,
       label: item.cycle_label || "치료",
       title: item.name,
@@ -58,6 +65,8 @@ export default async function TimelinePage() {
     })),
     ...(imagingResult.data ?? []).map((item) => ({
       key: `imaging-${item.id}`,
+      id: item.id,
+      entity: "imaging" as const,
       date: item.study_date,
       label: item.response_category ? `영상 · ${item.response_category}` : "영상검사",
       title: `${item.modality} ${item.body_part ?? ""}`.trim(),
@@ -102,6 +111,7 @@ export default async function TimelinePage() {
                 </p>
                 <h3>{event.title}</h3>
                 <p>{event.note || event.label}</p>
+                <RecordDeleteButton entity={event.entity} id={event.id} />
               </div>
             </article>
           ))
