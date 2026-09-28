@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import ImagingEntryForm from "@/components/ImagingEntryForm";
+import RecordDeleteButton from "@/components/RecordDeleteButton";
 import { getActiveProfile } from "@/lib/active-profile";
 import { createClient } from "@/lib/supabase/server";
 
@@ -59,11 +60,14 @@ export default async function ImagingPage() {
                   <small>{new Date(item.study_date).toLocaleDateString("ko-KR")}</small>
                   {item.summary && <small>{item.summary}</small>}
                 </div>
-                {item.response_category && (
-                  <span className="statusPill">
-                    {item.response_category} · {responseLabels[item.response_category] ?? item.response_category}
-                  </span>
-                )}
+                <div className="rowActions">
+                  {item.response_category && (
+                    <span className="statusPill">
+                      {item.response_category} · {responseLabels[item.response_category] ?? item.response_category}
+                    </span>
+                  )}
+                  <RecordDeleteButton entity="imaging" id={item.id} />
+                </div>
               </article>
             ))}
           </div>
