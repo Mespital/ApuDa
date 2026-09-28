@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import SymptomEntryForm from "@/components/SymptomEntryForm";
 import VoiceSymptomImport from "@/components/VoiceSymptomImport";
+import RecordDeleteButton from "@/components/RecordDeleteButton";
 import { getActiveProfile } from "@/lib/active-profile";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { createClient } from "@/lib/supabase/server";
@@ -69,6 +70,7 @@ export default async function SymptomsPage() {
                   </small>
                   {log.note && <small>{log.note}</small>}
                 </div>
+                <RecordDeleteButton entity="symptom" id={log.id} />
               </article>
             ))}
           </div>
