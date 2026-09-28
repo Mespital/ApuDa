@@ -12,6 +12,8 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [signupPending, setSignupPending] = useState(false);
+  const [resending, setResending] = useState(false);
   const configured = isSupabaseConfigured();
 
   async function submit(event: FormEvent<HTMLFormElement>) {
@@ -40,6 +42,7 @@ export default function LoginPage() {
         router.push("/onboarding");
         router.refresh();
       } else {
+        setSignupPending(true);
         setMessage("가입 요청이 완료되었습니다. 이메일 인증 링크를 확인해 주세요.");
       }
     } else {
@@ -54,6 +57,24 @@ export default function LoginPage() {
     }
 
     setLoading(false);
+  }
+
+  async function resendConfirmation() {
+    if (!email || !configured) return;
+    setResending(true);
+    const supabase = createClient();
+    const redirectTo = `${window.location.origin}/auth/callback?next=/onboarding`;
+    const { error } = await supabase.auth.resend({
+      type: "signup",
+      email,
+      options: { emailRedirectTo: redirectTo }
+    });
+    setMessage(
+      error
+        ? error.message
+        : "인증 메일을 다시 보냈습니다. 스팸함도 함께 확인해 주세요."
+    );
+    setResending(false);
   }
 
   return (
@@ -101,6 +122,17 @@ export default function LoginPage() {
         </form>
 
         {message && <p className="formMessage">{message}</p>}
+
+        {mode === "signup" && signupPending && (
+          <button
+            className="textButton"
+            type="button"
+            disabled={resending}
+            onClick={() => void resendConfirmation()}
+          >
+            {resending ? "다시 보내는 중..." : "인증 메일 다시 보내기"}
+          </button>
+        )}
 
         {mode === "login" && (
           <a className="textLink" href="/forgot-password">비밀번호를 잊으셨나요?</a>
