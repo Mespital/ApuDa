@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import MedicationEntryForm from "@/components/MedicationEntryForm";
+import RecordDeleteButton from "@/components/RecordDeleteButton";
 import { getActiveProfile } from "@/lib/active-profile";
 import { createClient } from "@/lib/supabase/server";
 
@@ -54,7 +55,10 @@ export default async function MedicationsPage() {
                   </small>
                   {item.notes && <small>{item.notes}</small>}
                 </div>
-                <span className="statusPill">{item.active ? "복용 중" : "종료"}</span>
+                <div className="rowActions">
+                  <span className="statusPill">{item.active ? "복용 중" : "종료"}</span>
+                  <RecordDeleteButton entity="medication" id={item.id} />
+                </div>
               </article>
             ))}
           </div>
