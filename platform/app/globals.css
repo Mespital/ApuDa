@@ -5152,3 +5152,272 @@ a {
     transform: none !important;
   }
 }
+
+
+/* My ApuDa v7 — state-based desktop/tablet/mobile layout */
+.calmDesktopNav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  margin-right: 10px;
+  padding: 4px;
+  border: 1px solid #e7ebf1;
+  border-radius: 14px;
+  background: rgba(255,255,255,.78);
+}
+
+.calmDesktopNav a {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  border-radius: 10px;
+  color: #68758b;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: background 150ms ease, color 150ms ease;
+}
+
+.calmDesktopNav a:hover,
+.calmDesktopNav a:focus-visible {
+  background: #f3f7fd;
+  color: #2f6fe4;
+}
+
+.calmHero.isEmptyHero {
+  grid-template-columns: 1fr;
+  min-height: 0;
+}
+
+.calmHero.isEmptyHero .calmTodayCard {
+  display: none;
+}
+
+.calmHero.isEmptyHero .calmHeroMain {
+  max-width: 720px;
+}
+
+.calmHero.isEmptyHero h1 {
+  max-width: 640px;
+}
+
+.calmOnboardingPanel {
+  display: grid;
+  grid-template-columns: auto minmax(0,1fr) auto;
+  gap: 18px;
+  align-items: center;
+  margin-top: 22px;
+  padding: 22px;
+  border: 1px solid #e4e9f0;
+  border-radius: 24px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.98), rgba(249,252,255,.98));
+  box-shadow: 0 6px 22px rgba(25,40,70,.03);
+}
+
+.calmOnboardingIcon {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border-radius: 15px;
+  background: #edf4ff;
+  color: #4676c9;
+}
+
+.calmOnboardingIcon svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.calmOnboardingCopy h2 {
+  margin: 4px 0 6px;
+  color: var(--calm-text);
+  font-size: 20px;
+  letter-spacing: -.03em;
+}
+
+.calmOnboardingCopy > p:last-child {
+  max-width: 610px;
+  margin: 0;
+  color: var(--calm-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.calmOnboardingActions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(110px,1fr));
+  gap: 8px;
+}
+
+.calmOnboardingActions a {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  border: 1px solid #dfe6ef;
+  border-radius: 12px;
+  background: #fff;
+  color: #395f9f;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform 150ms ease, background 150ms ease;
+}
+
+.calmOnboardingActions a:hover {
+  transform: translateY(-1px);
+  background: #f6f9fe;
+}
+
+.calmEmptyState.compact {
+  min-height: 88px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.calmVisitPanel.noAppointment {
+  background: #fbfcfe;
+}
+
+.calmVisitPanel.noAppointment .calmVisitIcon {
+  background: #f2f5f9;
+  color: #6f7f95;
+}
+
+.calmVisitPanel.noAppointment .calmVisitButton {
+  border: 1px solid #dfe5ed;
+  background: #fff;
+  color: #48658f;
+}
+
+.calmVisitPanel.hasAppointment .calmVisitButton {
+  background: #2f6fe4;
+  color: #fff;
+}
+
+/* Desktop product mode: top navigation, no mobile dock/FAB */
+@media (min-width: 1024px) {
+  .dashboardShell.calmHome {
+    width: min(100%, 1040px);
+    padding-bottom: 56px;
+  }
+
+  .bottomNav,
+  .aiFabDock {
+    display: none !important;
+  }
+
+  .calmTopbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    margin-bottom: 14px;
+    padding: 10px 0 8px;
+    background:
+      linear-gradient(to bottom, rgba(251,252,254,.96) 75%, rgba(251,252,254,0));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .calmHero {
+    min-height: 260px;
+  }
+
+  .calmHero.isEmptyHero {
+    min-height: 238px;
+    padding-right: 44px;
+  }
+
+  .calmHero h1 {
+    font-size: clamp(38px, 4vw, 44px);
+  }
+
+  .calmSection {
+    margin-top: 22px;
+  }
+
+  .calmQuickSurface {
+    padding: 4px;
+  }
+
+  .calmQuickCard {
+    min-height: 70px;
+    padding: 12px 14px;
+  }
+
+  .calmQuickCard small {
+    font-size: 11px;
+  }
+
+  .calmContentGrid {
+    grid-template-columns: minmax(0, 1.45fr) minmax(300px, .55fr);
+  }
+}
+
+/* Tablet keeps dock/FAB and changes to stacked focus flow */
+@media (max-width: 1023px) {
+  .calmDesktopNav {
+    display: none;
+  }
+
+  .calmHero.isEmptyHero .calmTodayCard {
+    display: none;
+  }
+
+  .calmOnboardingPanel {
+    grid-template-columns: auto 1fr;
+  }
+
+  .calmOnboardingActions {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(4, minmax(0,1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .calmOnboardingPanel {
+    grid-template-columns: 1fr;
+    gap: 13px;
+    padding: 18px 16px;
+  }
+
+  .calmOnboardingIcon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .calmOnboardingActions {
+    grid-column: auto;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+}
+
+@media (max-width: 430px) {
+  .calmOnboardingPanel {
+    margin-top: 16px;
+    border-radius: 20px;
+  }
+
+  .calmOnboardingCopy h2 {
+    font-size: 18px;
+  }
+
+  .calmOnboardingCopy > p:last-child {
+    font-size: 12px;
+  }
+
+  .calmOnboardingActions {
+    grid-template-columns: 1fr 1fr;
+  }
+}

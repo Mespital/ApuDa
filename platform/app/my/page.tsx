@@ -130,6 +130,7 @@ export default async function MyApuDaPage() {
   const recentSymptoms = symptomsResult.data ?? [];
   const currentTreatment = treatmentsResult.data?.[0];
   const hasTodayOverview = Boolean(nextAppointment || recentSymptoms.length || currentTreatment);
+  const hasAnyHealthData = Boolean(hasTodayOverview || latestLabs.length);
 
   return (
     <main className="shell dashboardShell calmHome">
@@ -142,6 +143,13 @@ export default async function MyApuDaPage() {
           <ProfileSwitcher profiles={profiles} activeId={profile.id} />
         </div>
 
+        <nav className="calmDesktopNav" aria-label="My ApuDa 주요 메뉴">
+          <Link href="/my">오늘</Link>
+          <Link href="/my/record">기록</Link>
+          <Link href="/my/timeline">분석</Link>
+          <Link href="/my/visit-prep">진료 준비</Link>
+        </nav>
+
         <Link className="calmProfileButton" href="/my/profiles" aria-label="프로필 관리">
           <span>{profile.display_name.slice(0, 1)}</span>
           <div>
@@ -151,7 +159,7 @@ export default async function MyApuDaPage() {
         </Link>
       </header>
 
-      <section className="calmHero">
+      <section className={`calmHero ${hasAnyHealthData ? "" : "isEmptyHero"}`}>
         <div className="calmHeroMain">
           <div className="calmDatePill">
             <span className="calmDateDot" />
@@ -177,7 +185,7 @@ export default async function MyApuDaPage() {
           </div>
         </div>
 
-        <aside className={`calmTodayCard ${hasTodayOverview ? "" : "isEmpty"}`}>
+        <aside className={`calmTodayCard ${hasTodayOverview ? "" : "isEmpty"}`} aria-label="오늘 한눈에">
           <p className="eyebrow">오늘 한눈에</p>
           {hasTodayOverview ? (
             <div className="calmTodayList">
@@ -289,65 +297,87 @@ export default async function MyApuDaPage() {
         </div>
       </section>
 
-      <section className="calmContentGrid">
-        <div className="calmPanel calmLabsPanel">
-          <div className="calmPanelHeader">
-            <div>
-              <p className="eyebrow">최근 검사</p>
-              <h2>최근 검사</h2>
+      {hasAnyHealthData ? (
+        <section className="calmContentGrid">
+          <div className="calmPanel calmLabsPanel">
+            <div className="calmPanelHeader">
+              <div>
+                <p className="eyebrow">최근 검사</p>
+                <h2>최근 검사</h2>
+              </div>
+              <Link href="/my/labs">전체 보기</Link>
             </div>
-            <Link href="/my/labs">전체 보기</Link>
+
+            {!latestLabs.length ? (
+              <div className="calmEmptyState compact">
+                <span><HealthIcon name="lab" /></span>
+                <div>
+                  <strong>아직 등록된 검사결과가 없어요.</strong>
+                  <p>검사지를 사진으로 올리거나 직접 입력해 날짜순으로 정리할 수 있어요.</p>
+                </div>
+                <Link href="/my/labs">검사 결과 올리기</Link>
+              </div>
+            ) : (
+              <div className="calmLabList">
+                {latestLabs.map((lab) => (
+                  <article key={lab.id}>
+                    <div>
+                      <strong>{lab.test_name}</strong>
+                      <small>{new Date(lab.measured_at).toLocaleDateString("ko-KR")}</small>
+                    </div>
+                    <b>{formatValue(lab.value_numeric ?? lab.value_text, lab.unit)}</b>
+                  </article>
+                ))}
+              </div>
+            )}
           </div>
 
-          {!latestLabs.length ? (
-            <div className="calmEmptyState">
-              <span><HealthIcon name="lab" /></span>
-              <div>
-                <strong>아직 등록된 검사결과가 없어요.</strong>
-                <p>검사지를 사진으로 올리거나 직접 입력해 날짜순으로 정리할 수 있어요.</p>
+          <aside className={`calmPanel calmVisitPanel ${nextAppointment ? "hasAppointment" : "noAppointment"}`}>
+            <span className="calmVisitIcon"><HealthIcon name="calendar" /></span>
+            <p className="eyebrow">진료 준비</p>
+            <h2>
+              {nextAppointment
+                ? `${formatDday(nextAppointment.scheduled_at)}, 진료 준비를 시작해볼까요?`
+                : "다음 진료를 미리 준비해볼까요?"}
+            </h2>
+            <p>
+              {nextAppointment
+                ? "최근 기록과 질문을 한곳에 모아 진료 전에 빠르게 확인하세요."
+                : "병원 일정이 생기면 최근 기록과 질문을 모아 진료 준비를 도와드려요."}
+            </p>
+            {nextAppointment && (
+              <div className="calmVisitMeta">
+                <strong>{nextAppointment.title}</strong>
+                <span>
+                  {new Date(nextAppointment.scheduled_at).toLocaleDateString("ko-KR")}
+                  {nextAppointment.department ? ` · ${nextAppointment.department}` : ""}
+                </span>
               </div>
-              <Link href="/my/labs">검사 결과 올리기</Link>
-            </div>
-          ) : (
-            <div className="calmLabList">
-              {latestLabs.map((lab) => (
-                <article key={lab.id}>
-                  <div>
-                    <strong>{lab.test_name}</strong>
-                    <small>{new Date(lab.measured_at).toLocaleDateString("ko-KR")}</small>
-                  </div>
-                  <b>{formatValue(lab.value_numeric ?? lab.value_text, lab.unit)}</b>
-                </article>
-              ))}
-            </div>
-          )}
-        </div>
-
-        <aside className="calmPanel calmVisitPanel">
-          <span className="calmVisitIcon"><HealthIcon name="calendar" /></span>
-          <p className="eyebrow">진료 준비</p>
-          <h2>
-            {nextAppointment
-              ? `${formatDday(nextAppointment.scheduled_at)}, 진료 준비를 시작해볼까요?`
-              : "다음 진료를 미리 준비해볼까요?"}
-          </h2>
-          <p>
-            최근 기록과 질문을 한곳에 모아 진료 전에 빠르게 확인하세요.
-          </p>
-          {nextAppointment && (
-            <div className="calmVisitMeta">
-              <strong>{nextAppointment.title}</strong>
-              <span>
-                {new Date(nextAppointment.scheduled_at).toLocaleDateString("ko-KR")}
-                {nextAppointment.department ? ` · ${nextAppointment.department}` : ""}
-              </span>
-            </div>
-          )}
-          <Link className="calmVisitButton" href="/my/visit-prep">
-            진료 준비 시작
-          </Link>
-        </aside>
-      </section>
+            )}
+            <Link className="calmVisitButton" href="/my/visit-prep">
+              {nextAppointment ? "진료 준비 시작" : "진료 준비 둘러보기"}
+            </Link>
+          </aside>
+        </section>
+      ) : (
+        <section className="calmOnboardingPanel" aria-label="첫 기록 시작">
+          <div className="calmOnboardingIcon"><HealthIcon name="lab" /></div>
+          <div className="calmOnboardingCopy">
+            <p className="eyebrow">첫 기록 시작</p>
+            <h2>한 가지 기록부터 시작하면 충분해요.</h2>
+            <p>
+              검사결과, 오늘 상태, 복약, 병원 일정 중 지금 가장 필요한 것 하나만 남겨보세요.
+              기록이 쌓이면 최근 변화와 다음 진료 준비가 자동으로 정리됩니다.
+            </p>
+          </div>
+          <div className="calmOnboardingActions">
+            <Link href="/my/labs">검사결과</Link>
+            <Link href="/my/symptoms">오늘 상태</Link>
+            <Link href="/my/medications">복약</Link>
+            <Link href="/my/appointments">병원 일정</Link>
+          </div>
+        </section>
+      )}
 
    </main>
   );
