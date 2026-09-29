@@ -1,0 +1,55 @@
+name: ApuDa Release Package
+
+on:
+  push:
+    branches:
+      - "feature/apuda-health-os-v1"
+  workflow_dispatch:
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare release manifest
+        run: |
+          mkdir -p release
+          cat > release/RELEASE_INFO.txt <<EOF
+          ApuDa Health OS V1 Beta
+          Commit: $GITHUB_SHA
+          Branch: $GITHUB_REF_NAME
+          Generated: $(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          
+          Included:
+          - platform/      Next.js My ApuDa Health OS
+          - services/ai/   FastAPI + Redis + OCR/STT worker
+          - docs/          release and production integration docs
+          - .github/workflows/ CI definitions
+          
+          Secrets are intentionally NOT included.
+          Configure .env files from the provided .env.example templates.
+          EOF
+
+      - name: Build source package
+        run: |
+          mkdir -p release/ApuDa-HealthOS-V1
+          cp -R platform release/ApuDa-HealthOS-V1/platform
+          cp -R services release/ApuDa-HealthOS-V1/services
+          cp -R docs release/ApuDa-HealthOS-V1/docs
+          mkdir -p release/ApuDa-HealthOS-V1/.github
+          cp -R .github/workflows release/ApuDa-HealthOS-V1/.github/workflows
+          cp release/RELEASE_INFO.txt release/ApuDa-HealthOS-V1/RELEASE_INFO.txt
+          find release/ApuDa-HealthOS-V1 -name ".env" -delete
+          find release/ApuDa-HealthOS-V1 -name ".env.local" -delete
+          find release/ApuDa-HealthOS-V1 -name "node_modules" -type d -prune -exec rm -rf {} +
+
+      - name: Upload package
+        uses: actions/upload-artifact@v4
+        with:
+          name: ApuDa-HealthOS-V1-Beta
+          path: release/ApuDa-HealthOS-V1
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 6
