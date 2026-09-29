@@ -4553,3 +4553,175 @@ a {
     font-size: 12px;
   }
 }
+
+
+/* My ApuDa landing v2 */
+.landingHome {
+  max-width: 980px;
+  padding-bottom: 56px;
+}
+
+.landingHome .topbar {
+  margin-bottom: 34px;
+}
+
+.landingHome .topbar h1 {
+  font-size: 24px;
+  letter-spacing: -.03em;
+}
+
+.landingHero {
+  max-width: 720px;
+  padding: 4px 0 34px;
+}
+
+.landingHero h2 {
+  margin: 10px 0 16px;
+  font-size: clamp(42px, 6vw, 54px);
+  line-height: 1.08;
+  letter-spacing: -.045em;
+}
+
+.landingHero .heroCopy {
+  max-width: 590px;
+  margin-bottom: 24px;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.landingHome .primaryLink,
+.landingHome .secondaryLink {
+  min-height: 48px;
+  border-radius: 15px;
+}
+
+.landingActionSection {
+  margin-top: 18px;
+  padding: 24px;
+  border-radius: 24px;
+  box-shadow: 0 6px 20px rgba(25,40,70,.025);
+}
+
+.landingActionSection .sectionHeading {
+  margin-bottom: 16px;
+}
+
+.landingActionSection .sectionHeading h3 {
+  font-size: 21px;
+}
+
+.landingActionSection .actionGrid {
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid #e7ebf1;
+  border-radius: 20px;
+  background: #fff;
+}
+
+.landingActionSection .card {
+  min-height: 132px;
+  padding: 18px;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.landingActionSection .card + .card {
+  border-left: 1px solid #edf0f4;
+}
+
+.landingActionSection .card:hover {
+  transform: none;
+  background: #fbfdff;
+}
+
+.landingActionSection .cardIcon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 18px;
+  border-radius: 13px;
+}
+
+.landingActionSection .cardIcon svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.landingActionSection .card h4 {
+  font-size: 16px;
+}
+
+.landingActionSection .card p {
+  font-size: 13px;
+}
+
+.landingPrinciple {
+  margin-top: 18px;
+  padding: 22px 24px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #eef8f4, #f7faff);
+  box-shadow: none;
+}
+
+.landingPrinciple h3 {
+  font-size: 20px;
+}
+
+.landingPrinciple > p:last-child {
+  max-width: 760px;
+  font-size: 13px;
+}
+
+@media (max-width: 720px) {
+  .landingHome {
+    padding-bottom: 40px;
+  }
+
+  .landingHome .topbar {
+    margin-bottom: 24px;
+  }
+
+  .landingHero {
+    padding-bottom: 24px;
+  }
+
+  .landingHero h2 {
+    font-size: clamp(34px, 9vw, 42px);
+  }
+
+  .landingHero .heroCopy {
+    font-size: 14px;
+  }
+
+  .landingActionSection {
+    padding: 18px 16px;
+  }
+
+  .landingActionSection .actionGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .landingActionSection .card {
+    min-height: 92px;
+    grid-template-columns: 44px 1fr;
+    gap: 12px;
+  }
+
+  .landingActionSection .card + .card {
+    border-left: 0;
+    border-top: 1px solid #edf0f4;
+  }
+
+  .landingActionSection .cardIcon {
+    margin-bottom: 0;
+  }
+
+  .landingPrinciple {
+    padding: 20px 18px;
+  }
+}
