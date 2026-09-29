@@ -8,7 +8,7 @@ import { isSupabaseConfigured } from "@/lib/supabase/config";
 
 const HEALTH_CONSENT_VERSION = "health-data-2026-09-27-v1";
 const AI_CONSENT_VERSION = "ai-input-2026-09-27-v1";
-const DEFAULT_NICKNAMES = ["다행이다.", "아프다.", "ApuDa"] as const;
+const DEFAULT_NICKNAMES = ["아프다", "다행이다", "ApuDa"] as const;
 
 export default function OnboardingForm({
   isAdditional = false
