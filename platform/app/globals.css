@@ -4145,3 +4145,583 @@ a {
     display: none;
   }
 }
+
+
+/* My ApuDa calm home v5 — expert review polish */
+.calmHero {
+  grid-template-columns: minmax(0, 1.35fr) minmax(250px, .65fr);
+  gap: 22px;
+  padding: 26px 28px;
+  border-radius: 28px;
+  box-shadow: 0 18px 48px rgba(30, 50, 85, .07);
+}
+
+.calmHero h1 {
+  max-width: 610px;
+  margin: 15px 0 11px;
+  font-size: clamp(36px, 4.7vw, 50px);
+  line-height: 1.08;
+  letter-spacing: -.045em;
+}
+
+.calmHeroMain > p {
+  max-width: 560px;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.calmTodayCard {
+  padding: 16px;
+  border-radius: 20px;
+  box-shadow: none;
+}
+
+.calmMiniIcon svg,
+.calmQuickIcon svg,
+.calmVisitIcon svg,
+.calmEmptyState > span svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.calmTodayList small {
+  font-size: 11px;
+}
+
+.calmSection {
+  margin-top: 24px;
+}
+
+.calmSectionHeader h2,
+.calmPanelHeader h2 {
+  font-size: 21px;
+}
+
+.calmSectionHeader > div > p:last-child {
+  font-size: 13px;
+}
+
+.calmQuickSurface {
+  padding: 8px;
+  border: 1px solid rgba(225, 228, 234, .96);
+  border-radius: 24px;
+  background: rgba(255,255,255,.8);
+  box-shadow: 0 6px 20px rgba(25,40,70,.025);
+}
+
+.calmQuickGrid {
+  gap: 0;
+}
+
+.calmQuickCard {
+  min-height: 78px;
+  padding: 14px 15px;
+  border: 0;
+  border-radius: 16px;
+  box-shadow: none;
+  background: transparent;
+}
+
+.calmQuickCard:hover {
+  transform: none;
+  border-color: transparent;
+  background: rgba(247,250,255,.9);
+  box-shadow: none;
+}
+
+.calmQuickCard + .calmQuickCard {
+  border-left: 1px solid #edf0f4;
+}
+
+.calmQuickIcon {
+  width: 40px;
+  height: 40px;
+}
+
+.calmQuickCard strong {
+  font-size: 13px;
+}
+
+.calmQuickCard small {
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.calmContentGrid {
+  grid-template-columns: minmax(0, 1.55fr) minmax(255px, .45fr);
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.calmPanel {
+  padding: 21px;
+  border-radius: 24px;
+  box-shadow: 0 6px 20px rgba(25,40,70,.03);
+}
+
+.calmEmptyState {
+  min-height: 104px;
+  padding: 14px 15px;
+  border-style: solid;
+  border-color: #e5eaf1;
+  border-radius: 17px;
+  background: #fbfdff;
+}
+
+.calmEmptyState > span {
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+}
+
+.calmEmptyState strong {
+  font-size: 14px;
+}
+
+.calmEmptyState p {
+  font-size: 12.5px;
+}
+
+.calmEmptyState > a {
+  min-height: 40px;
+  font-size: 12px;
+}
+
+.calmVisitPanel {
+  min-height: 0;
+  padding: 20px;
+}
+
+.calmVisitIcon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 12px;
+  border-radius: 13px;
+}
+
+.calmVisitPanel h2 {
+  margin: 6px 0 8px;
+  font-size: 19px;
+}
+
+.calmVisitPanel > p:not(.eyebrow) {
+  font-size: 12.5px;
+}
+
+.calmVisitMeta {
+  margin-top: 13px;
+}
+
+.calmVisitButton {
+  width: 100%;
+  min-height: 42px;
+  margin-top: 16px;
+  box-shadow: none;
+}
+
+.calmMobileSummary {
+  display: none;
+}
+
+.calmHome .eyebrow {
+  font-size: 10.5px;
+}
+
+@media (max-width: 860px) {
+  .calmHero {
+    grid-template-columns: 1fr;
+  }
+
+  .calmTodayCard {
+    display: none;
+  }
+
+  .calmMobileSummary {
+    display: block;
+    margin-top: 12px;
+    padding: 14px 14px 12px;
+    border: 1px solid #e6eaf0;
+    border-radius: 20px;
+    background: rgba(255,255,255,.88);
+    box-shadow: 0 6px 20px rgba(25,40,70,.025);
+  }
+
+  .calmMobileSummary > p {
+    margin: 0 0 10px;
+    color: #66738a;
+    font-size: 11px;
+    font-weight: 800;
+  }
+
+  .calmMobileSummary > div {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+  }
+
+  .calmMobileSummary a {
+    display: grid;
+    gap: 4px;
+    min-width: 0;
+    padding: 2px 12px;
+    text-decoration: none;
+    border-right: 1px solid #edf0f4;
+  }
+
+  .calmMobileSummary a:first-child {
+    padding-left: 2px;
+  }
+
+  .calmMobileSummary a:last-child {
+    padding-right: 2px;
+    border-right: 0;
+  }
+
+  .calmMobileSummary small {
+    color: #8a94a3;
+    font-size: 11px;
+  }
+
+  .calmMobileSummary strong {
+    overflow: hidden;
+    color: var(--calm-text);
+    font-size: 13px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .calmQuickGrid {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+
+  .calmQuickCard + .calmQuickCard {
+    border-left: 0;
+  }
+
+  .calmQuickCard:nth-child(odd) {
+    border-right: 1px solid #edf0f4;
+  }
+
+  .calmQuickCard:nth-child(n+3) {
+    border-top: 1px solid #edf0f4;
+  }
+}
+
+@media (max-width: 620px) {
+  .calmHome {
+    padding-bottom: calc(118px + env(safe-area-inset-bottom));
+  }
+
+  .calmTopbar {
+    margin-bottom: 10px;
+  }
+
+  .calmHero {
+    padding: 18px 16px 17px;
+    border-radius: 22px;
+  }
+
+  .calmHero h1 {
+    max-width: 320px;
+    margin: 12px 0 9px;
+    font-size: clamp(28px, 8.2vw, 34px);
+  }
+
+  .calmHeroMain > p {
+    max-width: 330px;
+    font-size: 13px;
+    line-height: 1.58;
+  }
+
+  .calmHeroActions {
+    margin-top: 14px;
+  }
+
+  .calmPrimaryAction,
+  .calmSecondaryAction {
+    min-height: 45px;
+    font-size: 12px;
+  }
+
+  .calmMobileSummary {
+    margin-top: 10px;
+    padding: 13px 12px 11px;
+    border-radius: 18px;
+  }
+
+  .calmMobileSummary a {
+    padding-left: 9px;
+    padding-right: 9px;
+  }
+
+  .calmMobileSummary small {
+    font-size: 10.5px;
+  }
+
+  .calmMobileSummary strong {
+    font-size: 12.5px;
+  }
+
+  .calmSection {
+    margin-top: 20px;
+  }
+
+  .calmSectionHeader h2,
+  .calmPanelHeader h2 {
+    font-size: 19px;
+  }
+
+  .calmQuickSurface {
+    padding: 6px;
+    border-radius: 20px;
+  }
+
+  .calmQuickCard {
+    min-height: 74px;
+    padding: 11px 10px;
+  }
+
+  .calmQuickCard small {
+    display: block;
+    font-size: 11.5px;
+  }
+
+  .calmContentGrid {
+    margin-top: 18px;
+  }
+
+  .calmPanel {
+    padding: 16px 14px;
+    border-radius: 20px;
+  }
+
+  .calmEmptyState {
+    padding: 12px;
+  }
+
+  .calmEmptyState p {
+    font-size: 12px;
+  }
+
+  .calmVisitPanel {
+    padding: 16px 14px;
+  }
+
+  .calmVisitButton {
+    margin-top: 14px;
+  }
+
+  .aiFabDock,
+  .calmHome + .aiFabDock {
+    right: max(14px, env(safe-area-inset-right));
+    bottom: calc(88px + env(safe-area-inset-bottom));
+  }
+
+  .aiFabDock .aiFab {
+    width: 50px;
+    height: 50px;
+    min-height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 8px 24px rgba(31,46,72,.13);
+  }
+
+  .aiFabDismiss {
+    top: -8px;
+    right: -6px;
+  }
+}
+
+@media (max-width: 390px) {
+  .calmQuickCard {
+    min-height: 70px;
+  }
+
+  .calmQuickCard small {
+    display: none;
+  }
+
+  .calmMobileSummary a {
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+
+  .calmMobileSummary strong {
+    font-size: 12px;
+  }
+}
+
+
+/* My ApuDa landing v2 */
+.landingHome {
+  max-width: 980px;
+  padding-bottom: 56px;
+}
+
+.landingHome .topbar {
+  margin-bottom: 34px;
+}
+
+.landingHome .topbar h1 {
+  font-size: 24px;
+  letter-spacing: -.03em;
+}
+
+.landingHero {
+  max-width: 720px;
+  padding: 4px 0 34px;
+}
+
+.landingHero h2 {
+  margin: 10px 0 16px;
+  font-size: clamp(42px, 6vw, 54px);
+  line-height: 1.08;
+  letter-spacing: -.045em;
+}
+
+.landingHero .heroCopy {
+  max-width: 590px;
+  margin-bottom: 24px;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.landingHome .primaryLink,
+.landingHome .secondaryLink {
+  min-height: 48px;
+  border-radius: 15px;
+}
+
+.landingActionSection {
+  margin-top: 18px;
+  padding: 24px;
+  border-radius: 24px;
+  box-shadow: 0 6px 20px rgba(25,40,70,.025);
+}
+
+.landingActionSection .sectionHeading {
+  margin-bottom: 16px;
+}
+
+.landingActionSection .sectionHeading h3 {
+  font-size: 21px;
+}
+
+.landingActionSection .actionGrid {
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid #e7ebf1;
+  border-radius: 20px;
+  background: #fff;
+}
+
+.landingActionSection .card {
+  min-height: 132px;
+  padding: 18px;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.landingActionSection .card + .card {
+  border-left: 1px solid #edf0f4;
+}
+
+.landingActionSection .card:hover {
+  transform: none;
+  background: #fbfdff;
+}
+
+.landingActionSection .cardIcon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 18px;
+  border-radius: 13px;
+}
+
+.landingActionSection .cardIcon svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.landingActionSection .card h4 {
+  font-size: 16px;
+}
+
+.landingActionSection .card p {
+  font-size: 13px;
+}
+
+.landingPrinciple {
+  margin-top: 18px;
+  padding: 22px 24px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #eef8f4, #f7faff);
+  box-shadow: none;
+}
+
+.landingPrinciple h3 {
+  font-size: 20px;
+}
+
+.landingPrinciple > p:last-child {
+  max-width: 760px;
+  font-size: 13px;
+}
+
+@media (max-width: 720px) {
+  .landingHome {
+    padding-bottom: 40px;
+  }
+
+  .landingHome .topbar {
+    margin-bottom: 24px;
+  }
+
+  .landingHero {
+    padding-bottom: 24px;
+  }
+
+  .landingHero h2 {
+    font-size: clamp(34px, 9vw, 42px);
+  }
+
+  .landingHero .heroCopy {
+    font-size: 14px;
+  }
+
+  .landingActionSection {
+    padding: 18px 16px;
+  }
+
+  .landingActionSection .actionGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .landingActionSection .card {
+    min-height: 92px;
+    grid-template-columns: 44px 1fr;
+    gap: 12px;
+  }
+
+  .landingActionSection .card + .card {
+    border-left: 0;
+    border-top: 1px solid #edf0f4;
+  }
+
+  .landingActionSection .cardIcon {
+    margin-bottom: 0;
+  }
+
+  .landingPrinciple {
+    padding: 20px 18px;
+  }
+}
