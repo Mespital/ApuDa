@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 
 type Message = {
   role: "user" | "assistant";
@@ -25,6 +25,23 @@ export default function ApuDaTalkPanel({
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const messagesRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const container = messagesRef.current;
+    if (!container) return;
+    container.scrollTo({
+      top: container.scrollHeight,
+      behavior: "smooth"
+    });
+  }, [messages, loading]);
+
+  function clearConversation() {
+    if (loading) return;
+    setMessages([]);
+    setMessage("");
+    setQuestion("");
+  }
 
   async function sendQuestion(rawQuestion: string) {
     const trimmed = rawQuestion.trim();
@@ -73,7 +90,16 @@ export default function ApuDaTalkPanel({
 
   return (
     <div className={compact ? "talkPanel compactTalkPanel" : "talkPanel"}>
-      <div className="talkMessages" aria-live="polite">
+      {messages.length > 0 && (
+        <div className="talkToolbar">
+          <span>현재 프로필 기록 기준</span>
+          <button type="button" disabled={loading} onClick={clearConversation}>
+            새 대화
+          </button>
+        </div>
+      )}
+
+      <div className="talkMessages" aria-live="polite" ref={messagesRef}>
         {messages.length === 0 && (
           <div className="talkWelcome">
             <span className="talkWelcomeIcon">✦</span>
