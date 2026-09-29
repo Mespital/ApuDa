@@ -12,13 +12,21 @@ function formatDday(iso: string) {
   const start = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
   const end = new Date(target.getFullYear(), target.getMonth(), target.getDate()).getTime();
   const days = Math.round((end - start) / 86400000);
-  if (days === 0) return "D-DAY";
+  if (days === 0) return "오늘";
   return days > 0 ? `D-${days}` : `D+${Math.abs(days)}`;
 }
 
 function formatValue(value: number | string | null, unit?: string | null) {
   if (value === null || value === "") return "-";
   return `${value}${unit ? " " + unit : ""}`;
+}
+
+function formatToday() {
+  return new Intl.DateTimeFormat("ko-KR", {
+    month: "long",
+    day: "numeric",
+    weekday: "short"
+  }).format(new Date());
 }
 
 export default async function MyApuDaPage() {
@@ -29,8 +37,7 @@ export default async function MyApuDaPage() {
           <p className="eyebrow">MY APUDA · SETUP</p>
           <h1 className="pageTitle">ApuDa Health OS</h1>
           <p className="heroCopy">
-            Supabase 환경변수를 연결하면 ApuDa ID와 실제 건강기록 기능이
-            활성화됩니다.
+            Supabase 환경변수를 연결하면 ApuDa ID와 실제 건강기록 기능이 활성화됩니다.
           </p>
           <Link className="primaryLink" href="/login">ApuDa ID 화면 보기</Link>
         </section>
@@ -80,166 +87,155 @@ export default async function MyApuDaPage() {
   const latestLab = latestLabs[0];
   const recentSymptoms = symptomsResult.data ?? [];
   const currentTreatment = treatmentsResult.data?.[0];
-  const symptomNames = [...new Set(recentSymptoms.map((item) => item.symptom_name))].slice(0, 3);
-  const maxSeverity = recentSymptoms.reduce(
-    (max, item) => Math.max(max, item.severity ?? 0),
-    0
-  );
+  const symptomNames = [...new Set(recentSymptoms.map((item) => item.symptom_name))].slice(0, 2);
 
   return (
-    <main className="shell dashboardShell">
-      <header className="dashboardTopbar">
-        <div className="brandProfile">
-          <p className="eyebrow">MY APUDA</p>
+    <main className="shell dashboardShell calmHome">
+      <header className="calmTopbar">
+        <div className="calmBrand">
+          <div>
+            <p className="eyebrow">MY APUDA</p>
+            <strong>내 건강 기록</strong>
+          </div>
           <ProfileSwitcher profiles={profiles} activeId={profile.id} />
         </div>
 
-        <Link className="profileAvatarButton" href="/my/profiles" aria-label="프로필 관리">
+        <Link className="calmProfileButton" href="/my/profiles" aria-label="프로필 관리">
           <span>{profile.display_name.slice(0, 1)}</span>
-          <small>MY</small>
+          <div>
+            <small>프로필</small>
+            <b>{profile.display_name}</b>
+          </div>
         </Link>
       </header>
 
-      <section className="dashboardHero">
-        <div className="dashboardHeroCopy">
-          <p className="eyebrow">TODAY</p>
+      <section className="calmHero">
+        <div className="calmHeroMain">
+          <div className="calmDatePill">
+            <span className="calmDateDot" />
+            {formatToday()}
+          </div>
           <h1>
-            {profile.display_name}님의 건강 흐름을
+            {profile.display_name}님,
             <br />
-            한눈에 정리해요.
+            오늘 필요한 것만 천천히 챙겨요.
           </h1>
           <p>
-            기록을 모으고, 변화를 확인하고, 다음 진료에서 필요한 질문까지 준비합니다.
+            기록은 완벽하지 않아도 괜찮아요. 검사·증상·복약·일정을 조금씩 모아두면
+            다음 진료 때 훨씬 편해집니다.
           </p>
+          <div className="calmHeroActions">
+            <Link className="calmPrimaryAction" href="/my/record">
+              <span>＋</span>
+              기록 남기기
+            </Link>
+            <ApuDaTalkOpenButton className="calmSecondaryAction">
+              <span>✦</span>
+              ApuDa에게 물어보기
+            </ApuDaTalkOpenButton>
+          </div>
         </div>
 
-        <div className="heroActions">
-          <Link className="primaryLink dashboardPrimary" href="/my/record">
-            <span>＋</span> 기록하기
-          </Link>
-          <ApuDaTalkOpenButton className="secondaryLink dashboardSecondary talkOpenControl">
-            <span>✦</span> ApuDa Talk
-          </ApuDaTalkOpenButton>
-          <Link className="secondaryLink dashboardSecondary" href="/my/visit-prep">
-            진료 준비
-          </Link>
-        </div>
+        <aside className="calmTodayCard">
+          <p className="eyebrow">오늘 한눈에</p>
+          <div className="calmTodayList">
+            <Link href="/my/appointments">
+              <span className="calmMiniIcon">□</span>
+              <div>
+                <small>다음 일정</small>
+                <strong>{nextAppointment ? formatDday(nextAppointment.scheduled_at) : "아직 없어요"}</strong>
+              </div>
+              <b>›</b>
+            </Link>
+            <Link href="/my/symptoms">
+              <span className="calmMiniIcon">●</span>
+              <div>
+                <small>최근 14일 증상</small>
+                <strong>{recentSymptoms.length ? `${recentSymptoms.length}건` : "아직 없어요"}</strong>
+              </div>
+              <b>›</b>
+            </Link>
+            <Link href="/my/timeline">
+              <span className="calmMiniIcon">↗</span>
+              <div>
+                <small>현재 치료</small>
+                <strong>{currentTreatment?.cycle_label || currentTreatment?.name || "아직 없어요"}</strong>
+              </div>
+              <b>›</b>
+            </Link>
+          </div>
+        </aside>
       </section>
 
-      <section className="dashboardMetrics" aria-label="건강 요약">
-        <Link href="/my/appointments" className="metricCardV2">
-          <div className="metricTopline">
-            <span className="metricIcon">□</span>
-            <small>다음 일정</small>
-          </div>
-          <strong>{nextAppointment ? formatDday(nextAppointment.scheduled_at) : "일정 없음"}</strong>
-          <p>
-            {nextAppointment
-              ? `${nextAppointment.title} · ${new Date(nextAppointment.scheduled_at).toLocaleDateString("ko-KR")}`
-              : "외래·검사·치료 일정을 추가해보세요."}
-          </p>
-        </Link>
-
-        <Link href="/my/symptoms" className="metricCardV2">
-          <div className="metricTopline">
-            <span className="metricIcon">●</span>
-            <small>최근 14일 증상</small>
-          </div>
-          <strong>{recentSymptoms.length ? `${recentSymptoms.length}건` : "기록 없음"}</strong>
-          <p>
-            {symptomNames.length
-              ? `${symptomNames.join(" · ")}${recentSymptoms.length ? ` · 최대 ${maxSeverity}/4` : ""}`
-              : "오늘 상태를 남기면 흐름을 볼 수 있어요."}
-          </p>
-        </Link>
-
-        <Link href="/my/timeline" className="metricCardV2">
-          <div className="metricTopline">
-            <span className="metricIcon">↗</span>
-            <small>현재 치료</small>
-          </div>
-          <strong>{currentTreatment?.cycle_label || currentTreatment?.name || "미등록"}</strong>
-          <p>{currentTreatment?.name ?? "치료 여정을 추가하면 타임라인에 연결됩니다."}</p>
-        </Link>
-
-        <Link href="/my/labs" className="metricCardV2">
-          <div className="metricTopline">
-            <span className="metricIcon">▤</span>
-            <small>최근 검사</small>
-          </div>
-          <strong>{latestLab ? formatValue(latestLab.value_numeric ?? latestLab.value_text, latestLab.unit) : "기록 없음"}</strong>
-          <p>
-            {latestLab
-              ? `${latestLab.test_name} · ${new Date(latestLab.measured_at).toLocaleDateString("ko-KR")}`
-              : "검사지를 등록하면 최근 결과가 보여요."}
-          </p>
-        </Link>
-      </section>
-
-      <section className="quickActionSection">
-        <div className="sectionHeading dashboardSectionHeading">
+      <section className="calmSection">
+        <div className="calmSectionHeader">
           <div>
-            <p className="eyebrow">QUICK ACTION</p>
-            <h2>바로 기록하기</h2>
+            <p className="eyebrow">QUICK RECORD</p>
+            <h2>바로 남길 수 있어요.</h2>
+            <p>지금 필요한 기록 하나만 골라 시작해보세요.</p>
           </div>
-          <Link className="inlineLink" href="/my/record">전체 기록</Link>
+          <Link href="/my/record">전체 기록 보기</Link>
         </div>
 
-        <div className="quickActionGrid">
-          <Link href="/my/labs" className="quickActionCard">
-            <span>▤</span>
+        <div className="calmQuickGrid">
+          <Link href="/my/labs" className="calmQuickCard labQuick">
+            <span className="calmQuickIcon">▤</span>
             <div>
               <strong>검사결과</strong>
-              <small>사진 또는 직접 입력</small>
+              <small>사진으로 올리거나 직접 입력</small>
             </div>
+            <b>›</b>
           </Link>
-          <Link href="/my/symptoms" className="quickActionCard">
-            <span>●</span>
+          <Link href="/my/symptoms" className="calmQuickCard symptomQuick">
+            <span className="calmQuickIcon">●</span>
             <div>
               <strong>오늘 상태</strong>
-              <small>증상과 불편 정도 기록</small>
+              <small>몸의 변화를 짧게 기록</small>
             </div>
+            <b>›</b>
           </Link>
-          <Link href="/my/medications" className="quickActionCard">
-            <span>Rx</span>
+          <Link href="/my/medications" className="calmQuickCard medicationQuick">
+            <span className="calmQuickIcon">Rx</span>
             <div>
               <strong>복약</strong>
-              <small>약 이름과 복용법 정리</small>
+              <small>복용 중인 약을 한곳에</small>
             </div>
+            <b>›</b>
           </Link>
-          <Link href="/my/appointments" className="quickActionCard">
-            <span>□</span>
+          <Link href="/my/appointments" className="calmQuickCard appointmentQuick">
+            <span className="calmQuickIcon">□</span>
             <div>
               <strong>병원 일정</strong>
-              <small>외래·검사·치료 등록</small>
+              <small>외래·검사·치료 일정 저장</small>
             </div>
+            <b>›</b>
           </Link>
         </div>
       </section>
 
-      <div className="homeContentGrid">
-        <section className="section homePrimarySection">
-          <div className="sectionHeading">
+      <section className="calmContentGrid">
+        <div className="calmPanel calmLabsPanel">
+          <div className="calmPanelHeader">
             <div>
               <p className="eyebrow">RECENT LABS</p>
-              <h3>최근 검사</h3>
+              <h2>최근 검사</h2>
             </div>
-            <Link className="inlineLink" href="/my/labs">전체 보기</Link>
+            <Link href="/my/labs">전체 보기</Link>
           </div>
 
           {!latestLabs.length ? (
-            <div className="emptyPanel">
-              <span className="emptyPanelIcon">▤</span>
+            <div className="calmEmptyState">
+              <span>▤</span>
               <div>
-                <strong>아직 검사결과가 없어요.</strong>
-                <p>검사지를 업로드하거나 직접 입력하면 날짜순으로 정리됩니다.</p>
+                <strong>아직 등록된 검사결과가 없어요.</strong>
+                <p>검사지를 사진으로 올리면 날짜순으로 차곡차곡 정리해드릴게요.</p>
               </div>
-              <Link className="secondaryLink" href="/my/labs">검사 등록</Link>
+              <Link href="/my/labs">검사 결과 올리기</Link>
             </div>
           ) : (
-            <div className="dataList dashboardDataList">
+            <div className="calmLabList">
               {latestLabs.map((lab) => (
-                <article className="dataRow" key={lab.id}>
+                <article key={lab.id}>
                   <div>
                     <strong>{lab.test_name}</strong>
                     <small>{new Date(lab.measured_at).toLocaleDateString("ko-KR")}</small>
@@ -249,39 +245,48 @@ export default async function MyApuDaPage() {
               ))}
             </div>
           )}
-        </section>
-
-        <section className="section talkTeaserSection">
-          <div className="talkTeaserIcon">✦</div>
-          <p className="eyebrow">APUDA TALK</p>
-          <h3>기록을 질문으로 바꿔보세요.</h3>
-          <p>
-            최근 검사·증상·치료·복약을 바탕으로 다음 진료에서 확인할 내용을 정리합니다.
-          </p>
-          <div className="talkTeaserPrompts">
-            <span>최근 검사 요약</span>
-            <span>증상 흐름 정리</span>
-            <span>진료 질문 만들기</span>
-          </div>
-          <ApuDaTalkOpenButton className="primaryLink compactLink talkOpenControl">
-            ApuDa Talk 열기
-          </ApuDaTalkOpenButton>
-        </section>
-      </div>
-
-      <section className="section visitPrepBanner">
-        <div>
-          <p className="eyebrow">VISIT PREPARATION</p>
-          <h3>
-            {nextAppointment
-              ? `${formatDday(nextAppointment.scheduled_at)} · 다음 진료를 준비할 시간이에요.`
-              : "다음 진료 전에 기록을 한 장으로 정리하세요."}
-          </h3>
-          <p>
-            최근 증상·검사·치료·복약·일정을 모아 의료진과 확인할 질문을 준비합니다.
-          </p>
         </div>
-        <Link className="primaryLink" href="/my/visit-prep">진료 준비 시작</Link>
+
+        <aside className="calmPanel calmVisitPanel">
+          <span className="calmVisitIcon">✓</span>
+          <p className="eyebrow">NEXT VISIT</p>
+          <h2>
+            {nextAppointment
+              ? `${formatDday(nextAppointment.scheduled_at)}, 진료 준비를 시작해볼까요?`
+              : "다음 진료 전에 미리 정리해둘까요?"}
+          </h2>
+          <p>
+            최근 기록을 한 장에 모으고 의료진에게 꼭 물어볼 내용을 미리 챙겨드려요.
+          </p>
+          {nextAppointment && (
+            <div className="calmVisitMeta">
+              <strong>{nextAppointment.title}</strong>
+              <span>
+                {new Date(nextAppointment.scheduled_at).toLocaleDateString("ko-KR")}
+                {nextAppointment.department ? ` · ${nextAppointment.department}` : ""}
+              </span>
+            </div>
+          )}
+          <Link className="calmVisitButton" href="/my/visit-prep">
+            진료 준비 시작
+          </Link>
+        </aside>
+      </section>
+
+      <section className="calmAssistCard">
+        <div className="calmAssistCopy">
+          <span className="calmAssistIcon">✦</span>
+          <div>
+            <p className="eyebrow">APUDA TALK</p>
+            <h2>기록을 보고 궁금한 게 생겼나요?</h2>
+            <p>
+              최근 검사·증상·치료·복약을 바탕으로 이해하기 쉽게 같이 정리해드릴게요.
+            </p>
+          </div>
+        </div>
+        <ApuDaTalkOpenButton className="calmAssistButton">
+          질문하기
+        </ApuDaTalkOpenButton>
       </section>
     </main>
   );
