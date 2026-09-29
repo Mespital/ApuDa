@@ -4,11 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const items = [
-  { href: "/my", label: "오늘", icon: "home", exact: true, tone: "blue" },
-  { href: "/my/record", label: "기록", icon: "plus", accent: true, tone: "blue" },
-  { href: "/my/journal", label: "일기", icon: "journal", tone: "lilac" },
-  { href: "/my/timeline", label: "분석", icon: "trend", tone: "mint" },
-  { href: "/my/visit-prep", label: "진료", icon: "check", tone: "peach" }
+  { href: "/my", label: "오늘", icon: "home", exact: true, accent: false, tone: "blue" },
+  { href: "/my/record", label: "기록", icon: "plus", exact: false, accent: true, tone: "blue" },
+  { href: "/my/journal", label: "일기", icon: "journal", exact: false, accent: false, tone: "lilac" },
+  { href: "/my/timeline", label: "분석", icon: "trend", exact: false, accent: false, tone: "mint" },
+  { href: "/my/visit-prep", label: "진료", icon: "check", exact: false, accent: false, tone: "peach" }
 ] as const;
 
 function NavIcon({ name }: { name: (typeof items)[number]["icon"] }) {
