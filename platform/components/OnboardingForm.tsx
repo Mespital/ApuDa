@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 
 const HEALTH_CONSENT_VERSION = "health-data-2026-09-27-v1";
 const AI_CONSENT_VERSION = "ai-input-2026-09-27-v1";
+const DEFAULT_NICKNAMES = ["다행이다.", "아프다.", "ApuDa"] as const;
 
 export default function OnboardingForm({
   isAdditional = false
@@ -23,6 +24,14 @@ export default function OnboardingForm({
   const [aiConsented, setAiConsented] = useState(false);
   const [message, setMessage] = useState("");
   const [saving, setSaving] = useState(false);
+
+  useEffect(() => {
+    if (!isAdditional && !displayName) {
+      const nickname =
+        DEFAULT_NICKNAMES[Math.floor(Math.random() * DEFAULT_NICKNAMES.length)];
+      setDisplayName(nickname);
+    }
+  }, [isAdditional, displayName]);
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -140,7 +149,7 @@ export default function OnboardingForm({
               required
               value={displayName}
               onChange={(event) => setDisplayName(event.target.value)}
-              placeholder="예: 김아프다"
+              placeholder={isAdditional ? "예: 엄마, 아빠" : "닉네임을 입력하세요"}
             />
           </label>
 
