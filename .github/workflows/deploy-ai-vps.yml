@@ -1,0 +1,90 @@
+name: Deploy ApuDa AI to VPS
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: apuda-ai-vps-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: apuda-ai-vps
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate required secrets
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+          APUDA_AI_API_KEY: ${{ secrets.APUDA_AI_API_KEY }}
+        run: |
+          set -euo pipefail
+          test -n "$VPS_HOST"
+          test -n "$VPS_USER"
+          test -n "$VPS_SSH_KEY"
+          test -n "$APUDA_AI_API_KEY"
+
+      - name: Configure SSH
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+        run: |
+          set -euo pipefail
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H "$VPS_HOST" >> ~/.ssh/known_hosts
+
+      - name: Build deployment environment file
+        env:
+          APUDA_AI_API_KEY: ${{ secrets.APUDA_AI_API_KEY }}
+        run: |
+          set -euo pipefail
+          cat > services/ai/.env <<EOF
+          APUDA_AI_API_KEY=$APUDA_AI_API_KEY
+          REDIS_URL=redis://redis:6379/0
+          AI_TEMP_DIR=/data/tmp
+          WHISPER_MODEL=small
+          WHISPER_COMPUTE_TYPE=int8
+          WHISPER_CPU_THREADS=2
+          WHISPER_BEAM_SIZE=2
+          ALLOWED_ORIGINS=https://my.apuda.app,https://my-apuda-beta.netlify.app,https://apuda.app
+          MAX_UPLOAD_BYTES=15728640
+          EOF
+          chmod 600 services/ai/.env
+
+      - name: Sync AI service
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+        run: |
+          set -euo pipefail
+          ssh "$VPS_USER@$VPS_HOST" 'mkdir -p /srv/apuda-ai'
+          rsync -az --delete             --exclude '__pycache__'             --exclude '.pytest_cache'             services/ai/ "$VPS_USER@$VPS_HOST:/srv/apuda-ai/"
+
+      - name: Deploy containers
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+        run: |
+          set -euo pipefail
+          ssh "$VPS_USER@$VPS_HOST" '
+            set -euo pipefail
+            cd /srv/apuda-ai
+            chmod 600 .env
+            chmod +x deploy-vps.sh
+            ./deploy-vps.sh
+          '
+
+      - name: Verify localhost health
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+        run: |
+          set -euo pipefail
+          ssh "$VPS_USER@$VPS_HOST" 'curl -fsS http://127.0.0.1:8000/health'
