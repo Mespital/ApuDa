@@ -8,7 +8,8 @@ const items = [
   { href: "/my/record", label: "기록", icon: "plus", exact: false, accent: true, tone: "blue" },
   { href: "/my/journal", label: "일기", icon: "journal", exact: false, accent: false, tone: "lilac" },
   { href: "/my/timeline", label: "분석", icon: "trend", exact: false, accent: false, tone: "mint" },
-  { href: "/my/visit-prep", label: "진료", icon: "check", exact: false, accent: false, tone: "peach" }
+  { href: "/my/visit-prep", label: "진료", icon: "check", exact: false, accent: false, tone: "peach" },
+  { href: "https://apuda.app", label: "ApuDa", icon: "portal", exact: false, accent: false, tone: "brand", external: true }
 ] as const;
 
 function NavIcon({ name }: { name: (typeof items)[number]["icon"] }) {
@@ -44,6 +45,12 @@ function NavIcon({ name }: { name: (typeof items)[number]["icon"] }) {
           <circle cx="12" cy="12" r="9" />
         </>
       )}
+      {name === "portal" && (
+        <>
+          <path d="M5 5h14v14H5z" />
+          <path d="M9 15 15 9M11 9h4v4" />
+        </>
+      )}
     </svg>
   );
 }
@@ -54,9 +61,25 @@ export default function MyBottomNav() {
   return (
     <nav className="bottomNav" aria-label="My ApuDa 주요 네비게이션">
       {items.map((item) => {
-        const active = item.exact
-          ? pathname === item.href
-          : pathname === item.href || pathname.startsWith(item.href + "/");
+        const active = item.external
+          ? false
+          : item.exact
+            ? pathname === item.href
+            : pathname === item.href || pathname.startsWith(item.href + "/");
+
+        if (item.external) {
+          return (
+            <a
+              href={item.href}
+              key={item.href}
+              className={`navTone-${item.tone}`}
+              aria-label="ApuDa 홈페이지로 이동"
+            >
+              <span className="bottomNavIcon"><NavIcon name={item.icon} /></span>
+              <small>{item.label}</small>
+            </a>
+          );
+        }
 
         return (
           <Link
