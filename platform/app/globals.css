@@ -7285,3 +7285,33 @@ a {
     height: 38px;
   }
 }
+
+
+/* Netlify deploy-preview toolbar overlap guard */
+@media (max-width: 760px) {
+  html.netlifyPreviewHost .bottomNav {
+    bottom: calc(58px + env(safe-area-inset-bottom)) !important;
+  }
+
+  html.netlifyPreviewHost .aiFabDock,
+  html.netlifyPreviewHost .calmHome + .aiFabDock {
+    bottom: calc(146px + env(safe-area-inset-bottom)) !important;
+  }
+
+  html.netlifyPreviewHost .dashboardShell.calmHome,
+  html.netlifyPreviewHost .journalPage,
+  html.netlifyPreviewHost .shell {
+    padding-bottom: calc(164px + env(safe-area-inset-bottom)) !important;
+  }
+}
+
+@media (max-width: 430px) {
+  html.netlifyPreviewHost .bottomNav {
+    bottom: calc(56px + env(safe-area-inset-bottom)) !important;
+  }
+
+  html.netlifyPreviewHost .aiFabDock,
+  html.netlifyPreviewHost .calmHome + .aiFabDock {
+    bottom: calc(140px + env(safe-area-inset-bottom)) !important;
+  }
+}
