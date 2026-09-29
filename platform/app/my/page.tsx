@@ -29,6 +29,49 @@ function formatToday() {
   }).format(new Date());
 }
 
+function HealthIcon({ name }: { name: "lab" | "symptom" | "medication" | "calendar" | "treatment" }) {
+  const paths = {
+    lab: (
+      <>
+        <path d="M7 3h10v4H7z" />
+        <path d="M8 7v13h8V7" />
+        <path d="M10 11h4M10 15h4" />
+      </>
+    ),
+    symptom: (
+      <>
+        <path d="M12 21s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 11c0 5.65-7 10-7 10Z" />
+        <path d="M8.5 12h2l1-2 1.5 4 1-2h1.5" />
+      </>
+    ),
+    medication: (
+      <>
+        <path d="M9 4h6a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3Z" />
+        <path d="M9 4V2h6v2M9 12h6M12 9v6" />
+      </>
+    ),
+    calendar: (
+      <>
+        <rect x="4" y="5" width="16" height="15" rx="2" />
+        <path d="M8 3v4M16 3v4M4 9h16M8 13h3M13 13h3M8 16h3" />
+      </>
+    ),
+    treatment: (
+      <>
+        <path d="M5 12h4l2-4 3 8 2-4h3" />
+        <circle cx="12" cy="12" r="9" />
+      </>
+    )
+  };
+
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      {paths[name]}
+    </svg>
+  );
+}
+
+
 export default async function MyApuDaPage() {
   if (!isSupabaseConfigured()) {
     return (
@@ -121,7 +164,7 @@ export default async function MyApuDaPage() {
             오늘 필요한 기록만 챙겨요.
           </h1>
           <p>
-            검사·증상·복약·일정을 한곳에 모아두고, 다음 진료 전에 쉽게 꺼내보세요.
+            검사·증상·복약·일정을 한곳에 모아 다음 진료를 더 편하게 준비하세요.
           </p>
           <div className="calmHeroActions">
             <Link className="calmPrimaryAction" href="/my/record">
@@ -139,7 +182,7 @@ export default async function MyApuDaPage() {
           <p className="eyebrow">오늘 한눈에</p>
           <div className="calmTodayList">
             <Link href="/my/appointments">
-              <span className="calmMiniIcon">□</span>
+              <span className="calmMiniIcon"><HealthIcon name="calendar" /></span>
               <div>
                 <small>다음 일정</small>
                 <strong>{nextAppointment ? formatDday(nextAppointment.scheduled_at) : "아직 없어요"}</strong>
@@ -147,7 +190,7 @@ export default async function MyApuDaPage() {
               <b>›</b>
             </Link>
             <Link href="/my/symptoms">
-              <span className="calmMiniIcon">●</span>
+              <span className="calmMiniIcon"><HealthIcon name="symptom" /></span>
               <div>
                 <small>최근 14일 증상</small>
                 <strong>{recentSymptoms.length ? `${recentSymptoms.length}건` : "아직 없어요"}</strong>
@@ -155,7 +198,7 @@ export default async function MyApuDaPage() {
               <b>›</b>
             </Link>
             <Link href="/my/timeline">
-              <span className="calmMiniIcon">↗</span>
+              <span className="calmMiniIcon"><HealthIcon name="treatment" /></span>
               <div>
                 <small>현재 치료</small>
                 <strong>{currentTreatment?.cycle_label || currentTreatment?.name || "아직 없어요"}</strong>
@@ -166,19 +209,38 @@ export default async function MyApuDaPage() {
         </aside>
       </section>
 
+      <section className="calmMobileSummary" aria-label="오늘 한눈에">
+        <p>오늘 한눈에</p>
+        <div>
+          <Link href="/my/appointments">
+            <small>다음 일정</small>
+            <strong>{nextAppointment ? formatDday(nextAppointment.scheduled_at) : "없음"}</strong>
+          </Link>
+          <Link href="/my/symptoms">
+            <small>최근 증상</small>
+            <strong>{recentSymptoms.length ? `${recentSymptoms.length}건` : "없음"}</strong>
+          </Link>
+          <Link href="/my/timeline">
+            <small>현재 치료</small>
+            <strong>{currentTreatment?.cycle_label || currentTreatment?.name || "없음"}</strong>
+          </Link>
+        </div>
+      </section>
+
       <section className="calmSection">
         <div className="calmSectionHeader">
           <div>
-            <p className="eyebrow">QUICK RECORD</p>
-            <h2>바로 남길 수 있어요.</h2>
-            <p>지금 필요한 기록 하나만 골라 시작해보세요.</p>
+            <p className="eyebrow">빠른 기록</p>
+            <h2>필요한 기록을 바로 남겨요.</h2>
+            <p>검사·증상·복약·일정을 한곳에서 시작하세요.</p>
           </div>
           <Link href="/my/record">전체 기록 보기</Link>
         </div>
 
-        <div className="calmQuickGrid">
+        <div className="calmQuickSurface">
+          <div className="calmQuickGrid">
           <Link href="/my/labs" className="calmQuickCard labQuick">
-            <span className="calmQuickIcon">▤</span>
+            <span className="calmQuickIcon"><HealthIcon name="lab" /></span>
             <div>
               <strong>검사결과</strong>
               <small>사진으로 올리거나 직접 입력</small>
@@ -186,7 +248,7 @@ export default async function MyApuDaPage() {
             <b>›</b>
           </Link>
           <Link href="/my/symptoms" className="calmQuickCard symptomQuick">
-            <span className="calmQuickIcon">●</span>
+            <span className="calmQuickIcon"><HealthIcon name="symptom" /></span>
             <div>
               <strong>오늘 상태</strong>
               <small>몸의 변화를 짧게 기록</small>
@@ -194,7 +256,7 @@ export default async function MyApuDaPage() {
             <b>›</b>
           </Link>
           <Link href="/my/medications" className="calmQuickCard medicationQuick">
-            <span className="calmQuickIcon">Rx</span>
+            <span className="calmQuickIcon"><HealthIcon name="medication" /></span>
             <div>
               <strong>복약</strong>
               <small>복용 중인 약을 한곳에</small>
@@ -202,13 +264,14 @@ export default async function MyApuDaPage() {
             <b>›</b>
           </Link>
           <Link href="/my/appointments" className="calmQuickCard appointmentQuick">
-            <span className="calmQuickIcon">□</span>
+            <span className="calmQuickIcon"><HealthIcon name="calendar" /></span>
             <div>
               <strong>병원 일정</strong>
               <small>외래·검사·치료 일정 저장</small>
             </div>
             <b>›</b>
           </Link>
+          </div>
         </div>
       </section>
 
@@ -216,7 +279,7 @@ export default async function MyApuDaPage() {
         <div className="calmPanel calmLabsPanel">
           <div className="calmPanelHeader">
             <div>
-              <p className="eyebrow">RECENT LABS</p>
+              <p className="eyebrow">최근 검사</p>
               <h2>최근 검사</h2>
             </div>
             <Link href="/my/labs">전체 보기</Link>
@@ -224,10 +287,10 @@ export default async function MyApuDaPage() {
 
           {!latestLabs.length ? (
             <div className="calmEmptyState">
-              <span>▤</span>
+              <span><HealthIcon name="lab" /></span>
               <div>
                 <strong>아직 등록된 검사결과가 없어요.</strong>
-                <p>검사지를 사진으로 올리면 날짜순으로 차곡차곡 정리해드릴게요.</p>
+                <p>검사지를 사진으로 올리거나 직접 입력해 날짜순으로 정리할 수 있어요.</p>
               </div>
               <Link href="/my/labs">검사 결과 올리기</Link>
             </div>
@@ -247,15 +310,15 @@ export default async function MyApuDaPage() {
         </div>
 
         <aside className="calmPanel calmVisitPanel">
-          <span className="calmVisitIcon">✓</span>
-          <p className="eyebrow">NEXT VISIT</p>
+          <span className="calmVisitIcon"><HealthIcon name="calendar" /></span>
+          <p className="eyebrow">진료 준비</p>
           <h2>
             {nextAppointment
               ? `${formatDday(nextAppointment.scheduled_at)}, 진료 준비를 시작해볼까요?`
-              : "다음 진료 전에 미리 정리해둘까요?"}
+              : "다음 진료를 미리 준비해볼까요?"}
           </h2>
           <p>
-            최근 기록을 한 장에 모으고 의료진에게 꼭 물어볼 내용을 미리 챙겨드려요.
+            최근 기록과 질문을 한곳에 모아 진료 전에 빠르게 확인하세요.
           </p>
           {nextAppointment && (
             <div className="calmVisitMeta">
@@ -272,21 +335,6 @@ export default async function MyApuDaPage() {
         </aside>
       </section>
 
-      <section className="calmAssistCard">
-        <div className="calmAssistCopy">
-          <span className="calmAssistIcon">✦</span>
-          <div>
-            <p className="eyebrow">APUDA TALK</p>
-            <h2>기록을 보고 궁금한 게 생겼나요?</h2>
-            <p>
-              최근 검사·증상·치료·복약을 바탕으로 이해하기 쉽게 같이 정리해드릴게요.
-            </p>
-          </div>
-        </div>
-        <ApuDaTalkOpenButton className="calmAssistButton">
-          질문하기
-        </ApuDaTalkOpenButton>
-      </section>
-    </main>
+   </main>
   );
 }
