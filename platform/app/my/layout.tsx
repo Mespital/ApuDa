@@ -35,6 +35,17 @@ export default async function MyLayout({ children }: { children: React.ReactNode
 
       {profile && <ApuDaTalkLauncher profileId={profile.id} />}
       <MyBottomNav />
+
+      <footer className="myMobileFooter" aria-label="My ApuDa 하단 정보">
+        <a className="myMobileFooterBrand" href="https://apuda.app">
+          <strong>ApuDa</strong>
+          <span>아프지만, 다행이다.</span>
+        </a>
+        <nav className="myMobileFooterLinks" aria-label="하단 링크">
+          <a href="https://apuda.app">홈</a>
+          <Link href="/my/settings/privacy">개인정보</Link>
+        </nav>
+      </footer>
     </div>
   );
 }
