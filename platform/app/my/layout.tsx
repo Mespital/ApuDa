@@ -1,22 +1,15 @@
-import Link from "next/link";
+import ApuDaTalkLauncher from "@/components/ApuDaTalkLauncher";
+import MyBottomNav from "@/components/MyBottomNav";
+import { getActiveProfile } from "@/lib/active-profile";
 
-export default function MyLayout({ children }: { children: React.ReactNode }) {
+export default async function MyLayout({ children }: { children: React.ReactNode }) {
+  const { profile } = await getActiveProfile();
+
   return (
     <>
       {children}
-
-      <Link className="aiFab" href="/my/ai" aria-label="ApuDa Talk 열기">
-        <span>✦</span>
-        <b>ApuDa Talk</b>
-      </Link>
-
-      <nav className="bottomNav" aria-label="My ApuDa navigation">
-        <Link href="/my"><span>⌂</span><small>오늘</small></Link>
-        <Link href="/my/record" className="recordNav"><span>＋</span><small>기록</small></Link>
-        <Link href="/my/timeline"><span>↗</span><small>건강</small></Link>
-        <Link href="/my/visit-prep"><span>✓</span><small>진료준비</small></Link>
-        <Link href="/my/profiles"><span>MY</span><small>프로필</small></Link>
-      </nav>
+      {profile && <ApuDaTalkLauncher profileId={profile.id} />}
+      <MyBottomNav />
     </>
   );
 }
