@@ -4725,3 +4725,430 @@ a {
     padding: 20px 18px;
   }
 }
+
+
+/* My ApuDa v6 — responsive focus & motion polish */
+.calmHome {
+  --focus-ease: cubic-bezier(.2,.8,.2,1);
+}
+
+.calmHero {
+  padding: 24px 26px;
+  transition: box-shadow 220ms var(--focus-ease), transform 220ms var(--focus-ease);
+}
+
+.calmHero:hover {
+  box-shadow: 0 20px 54px rgba(30,50,85,.085);
+}
+
+.calmHero h1 {
+  max-width: 570px;
+  font-size: clamp(34px, 4.35vw, 46px);
+}
+
+.calmTodayCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
+  transition: border-color 180ms var(--focus-ease), background 180ms var(--focus-ease);
+}
+
+.calmTodayCard.isEmpty {
+  justify-content: flex-start;
+}
+
+.calmTodayEmpty {
+  display: grid;
+  justify-items: start;
+  gap: 8px;
+  padding: 14px 4px 2px;
+}
+
+.calmTodayEmpty > span {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 14px;
+  background: #f1f5fb;
+  color: #5279c7;
+}
+
+.calmTodayEmpty > span svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.calmTodayEmpty strong {
+  margin-top: 2px;
+  color: var(--calm-text);
+  font-size: 14px;
+}
+
+.calmTodayEmpty p {
+  margin: 0;
+  color: var(--calm-muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.calmTodayEmpty a {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  margin-top: 3px;
+  padding: 0 12px;
+  border: 1px solid #dce5f1;
+  border-radius: 11px;
+  background: #fff;
+  color: #426ab8;
+  font-size: 11.5px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.calmTodayList > a,
+.calmQuickCard,
+.calmSectionHeader > a,
+.calmPanelHeader > a {
+  transition:
+    background 160ms var(--focus-ease),
+    color 160ms var(--focus-ease),
+    transform 160ms var(--focus-ease);
+}
+
+.calmTodayList > a:hover {
+  transform: translateX(2px);
+}
+
+.calmQuickCard:hover {
+  transform: translateY(-2px);
+  background: #f7faff;
+}
+
+.calmQuickCard:hover .calmQuickIcon {
+  transform: scale(1.05);
+}
+
+.calmQuickIcon {
+  transition: transform 160ms var(--focus-ease);
+}
+
+.calmSectionHeader > a:hover,
+.calmPanelHeader > a:hover {
+  color: #2f6fe4;
+}
+
+.calmEmptyState {
+  border-color: transparent;
+  background: linear-gradient(135deg, #fbfdff, #fff);
+}
+
+.calmLabsPanel {
+  border-color: #e4e8ef;
+}
+
+.calmContentGrid {
+  align-items: stretch;
+}
+
+.calmVisitPanel {
+  justify-content: center;
+}
+
+.calmMobileEmpty {
+  display: block;
+  padding: 2px 0 1px;
+  color: #476db7;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+/* Floating Talk: a quiet utility, not a competing CTA */
+.aiFabDock,
+.calmHome + .aiFabDock {
+  right: max(18px, calc((100vw - 1040px) / 2 + 18px));
+  bottom: 82px;
+}
+
+.aiFabDock .aiFab {
+  width: 50px;
+  min-width: 50px;
+  height: 50px;
+  min-height: 50px;
+  padding: 0;
+  border-radius: 50%;
+  box-shadow: 0 8px 24px rgba(31,46,72,.12);
+  transition:
+    transform 180ms var(--focus-ease),
+    box-shadow 180ms var(--focus-ease),
+    background 180ms var(--focus-ease);
+}
+
+.aiFabDock .aiFab b {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.aiFabDock .aiFab span {
+  font-size: 17px;
+}
+
+.aiFabDock .aiFab:hover,
+.aiFabDock .aiFab:focus-visible {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 12px 28px rgba(31,46,72,.16);
+}
+
+/* Bottom navigation stays useful without dominating the page */
+.bottomNav {
+  width: min(calc(100% - 40px), 560px);
+  min-height: 62px;
+  bottom: 10px;
+  border-radius: 22px;
+  box-shadow: 0 10px 32px rgba(25,40,70,.09);
+}
+
+.bottomNav > a {
+  min-height: 56px;
+}
+
+.bottomNav > a > span {
+  transform: scale(.92);
+}
+
+.bottomNav > a > small {
+  font-size: 10px;
+}
+
+.bottomNav .recordNav > span {
+  width: 34px;
+  height: 34px;
+}
+
+/* Tablet: focus on hero, then actions; content stacks naturally */
+@media (max-width: 980px) {
+  .dashboardShell.calmHome {
+    width: min(100%, 860px);
+  }
+
+  .calmHero {
+    grid-template-columns: minmax(0, 1.25fr) minmax(225px, .75fr);
+    gap: 18px;
+  }
+
+  .calmHero h1 {
+    font-size: clamp(33px, 5vw, 43px);
+  }
+
+  .calmQuickCard small {
+    font-size: 11.5px;
+  }
+
+  .calmContentGrid {
+    grid-template-columns: 1.35fr .65fr;
+  }
+}
+
+/* Small tablet / large phone: linear focus flow */
+@media (max-width: 760px) {
+  .calmHero {
+    grid-template-columns: 1fr;
+    padding: 20px 18px;
+  }
+
+  .calmTodayCard {
+    display: none;
+  }
+
+  .calmMobileSummary {
+    display: block;
+  }
+
+  .calmQuickGrid {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+
+  .calmContentGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .calmVisitPanel {
+    min-height: 0;
+  }
+
+  .bottomNav {
+    width: min(calc(100% - 24px), 540px);
+  }
+}
+
+/* Mobile: stronger visual order, fewer competing elements */
+@media (max-width: 620px) {
+  .calmHome {
+    padding-bottom: calc(112px + env(safe-area-inset-bottom));
+  }
+
+  .calmHero {
+    padding: 17px 15px 16px;
+  }
+
+  .calmHero h1 {
+    max-width: 310px;
+    font-size: clamp(27px, 8vw, 32px);
+  }
+
+  .calmHeroActions {
+    grid-template-columns: minmax(0,1.08fr) minmax(0,.92fr);
+  }
+
+  .calmMobileSummary {
+    border-radius: 16px;
+    box-shadow: none;
+  }
+
+  .calmMobileSummary.isEmpty {
+    padding-bottom: 12px;
+  }
+
+  .calmQuickSurface {
+    padding: 5px;
+  }
+
+  .calmQuickCard {
+    min-height: 70px;
+  }
+
+  .calmQuickCard strong {
+    font-size: 12.5px;
+  }
+
+  .calmQuickCard small {
+    font-size: 11px;
+  }
+
+  .calmEmptyState {
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+  }
+
+  .calmEmptyState > a {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  .bottomNav {
+    width: calc(100% - 20px);
+    min-height: 60px;
+    bottom: max(7px, env(safe-area-inset-bottom));
+    border-radius: 20px;
+  }
+
+  .bottomNav > a {
+    min-height: 54px;
+  }
+
+  .aiFabDock,
+  .calmHome + .aiFabDock {
+    right: max(13px, env(safe-area-inset-right));
+    bottom: calc(78px + env(safe-area-inset-bottom));
+  }
+
+  .aiFabDock .aiFab {
+    width: 48px;
+    min-width: 48px;
+    height: 48px;
+    min-height: 48px;
+  }
+}
+
+@media (max-width: 430px) {
+  .calmTopbar {
+    gap: 8px;
+  }
+
+  .calmBrand .profileSelect {
+    width: min(50vw, 168px);
+  }
+
+  .calmHeroActions {
+    grid-template-columns: 1fr;
+  }
+
+  .calmPrimaryAction,
+  .calmSecondaryAction {
+    width: 100%;
+  }
+
+  .calmMobileSummary > div {
+    grid-template-columns: repeat(3, minmax(0,1fr));
+  }
+
+  .calmMobileSummary a {
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+
+  .calmQuickGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .calmQuickCard:nth-child(odd),
+  .calmQuickCard + .calmQuickCard {
+    border-right: 0;
+    border-left: 0;
+  }
+
+  .calmQuickCard:nth-child(n+2) {
+    border-top: 1px solid #edf0f4;
+  }
+
+  .calmQuickCard small {
+    display: block;
+  }
+}
+
+@media (max-width: 375px) {
+  .calmHome {
+    padding-left: max(11px, env(safe-area-inset-left));
+    padding-right: max(11px, env(safe-area-inset-right));
+  }
+
+  .calmHero h1 {
+    font-size: 27px;
+  }
+
+  .calmMobileSummary small {
+    font-size: 10px;
+  }
+
+  .calmMobileSummary strong {
+    font-size: 11.5px;
+  }
+
+  .bottomNav > a > small {
+    font-size: 9.5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .calmHero,
+  .calmTodayList > a,
+  .calmQuickCard,
+  .calmQuickIcon,
+  .aiFabDock .aiFab {
+    transition: none !important;
+    transform: none !important;
+  }
+}
