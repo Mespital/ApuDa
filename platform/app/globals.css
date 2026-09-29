@@ -7315,3 +7315,163 @@ a {
     bottom: calc(140px + env(safe-area-inset-bottom)) !important;
   }
 }
+
+
+/* My ApuDa v13 — mobile footer + stacked dock */
+.myMobileFooter {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .myMobileFooter {
+    position: fixed;
+    z-index: 56;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    min-height: calc(52px + env(safe-area-inset-bottom));
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding:
+      8px
+      max(14px, env(safe-area-inset-right))
+      calc(8px + env(safe-area-inset-bottom))
+      max(14px, env(safe-area-inset-left));
+    border-top: 1px solid #d7e2f1;
+    background: #eef5ff;
+    box-shadow: 0 -6px 18px rgba(34, 62, 102, .055);
+  }
+
+  .myMobileFooterBrand {
+    display: inline-flex;
+    min-width: 0;
+    align-items: baseline;
+    gap: 8px;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .myMobileFooterBrand strong {
+    color: #2367ef;
+    font-size: 16px;
+    font-weight: 950;
+    letter-spacing: -.045em;
+  }
+
+  .myMobileFooterBrand span {
+    overflow: hidden;
+    color: #78869a;
+    font-size: 9.5px;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .myMobileFooterLinks {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .myMobileFooterLinks a {
+    min-height: 30px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 8px;
+    border-radius: 9px;
+    color: #60718a;
+    font-size: 9.5px;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .myMobileFooterLinks a:hover,
+  .myMobileFooterLinks a:focus-visible {
+    background: #e1ecfb;
+    color: #2367ef;
+  }
+
+  .bottomNav {
+    z-index: 64;
+    bottom: calc(60px + env(safe-area-inset-bottom)) !important;
+  }
+
+  .aiFabDock,
+  .calmHome + .aiFabDock {
+    z-index: 66;
+    bottom: calc(146px + env(safe-area-inset-bottom)) !important;
+  }
+
+  .dashboardShell.calmHome,
+  .journalPage,
+  .shell {
+    padding-bottom: calc(190px + env(safe-area-inset-bottom)) !important;
+  }
+
+  html.netlifyPreviewHost .bottomNav {
+    bottom: calc(60px + env(safe-area-inset-bottom)) !important;
+  }
+
+  html.netlifyPreviewHost .aiFabDock,
+  html.netlifyPreviewHost .calmHome + .aiFabDock {
+    bottom: calc(146px + env(safe-area-inset-bottom)) !important;
+  }
+
+  html.netlifyPreviewHost .dashboardShell.calmHome,
+  html.netlifyPreviewHost .journalPage,
+  html.netlifyPreviewHost .shell {
+    padding-bottom: calc(190px + env(safe-area-inset-bottom)) !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .myMobileFooter {
+    min-height: calc(50px + env(safe-area-inset-bottom));
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .myMobileFooterBrand span {
+    display: none;
+  }
+
+  .myMobileFooterBrand strong {
+    font-size: 15px;
+  }
+
+  .myMobileFooterLinks {
+    gap: 4px;
+  }
+
+  .myMobileFooterLinks a {
+    padding: 0 6px;
+    font-size: 9px;
+  }
+
+  .bottomNav {
+    bottom: calc(57px + env(safe-area-inset-bottom)) !important;
+  }
+
+  .aiFabDock,
+  .calmHome + .aiFabDock {
+    bottom: calc(139px + env(safe-area-inset-bottom)) !important;
+  }
+
+  .dashboardShell.calmHome,
+  .journalPage,
+  .shell {
+    padding-bottom: calc(182px + env(safe-area-inset-bottom)) !important;
+  }
+
+  html.netlifyPreviewHost .bottomNav {
+    bottom: calc(57px + env(safe-area-inset-bottom)) !important;
+  }
+
+  html.netlifyPreviewHost .aiFabDock,
+  html.netlifyPreviewHost .calmHome + .aiFabDock {
+    bottom: calc(139px + env(safe-area-inset-bottom)) !important;
+  }
+}
