@@ -53,7 +53,7 @@ jobs:
           WHISPER_COMPUTE_TYPE=int8
           WHISPER_CPU_THREADS=2
           WHISPER_BEAM_SIZE=2
-          ALLOWED_ORIGINS=https://my-apuda-beta.netlify.app,https://apuda.app
+          ALLOWED_ORIGINS=https://my.apuda.app,https://my-apuda-beta.netlify.app,https://apuda.app
           MAX_UPLOAD_BYTES=15728640
           EOF
           chmod 600 services/ai/.env
