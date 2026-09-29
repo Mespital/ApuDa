@@ -3,6 +3,7 @@ import ApuDaTalkLauncher from "@/components/ApuDaTalkLauncher";
 import MyBottomNav from "@/components/MyBottomNav";
 import ProfileSwitcher from "@/components/ProfileSwitcher";
 import ProfileAccountMenu from "@/components/ProfileAccountMenu";
+import NetlifyPreviewOffset from "@/components/NetlifyPreviewOffset";
 import { getActiveProfile } from "@/lib/active-profile";
 
 export default async function MyLayout({ children }: { children: React.ReactNode }) {
@@ -10,6 +11,7 @@ export default async function MyLayout({ children }: { children: React.ReactNode
 
   return (
     <div className="myAppFrame">
+      <NetlifyPreviewOffset />
       {profile && (
         <header className="myGlobalHeader">
           <div className="myGlobalHeaderInner">
