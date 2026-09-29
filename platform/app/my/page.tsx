@@ -152,7 +152,7 @@ export default async function MyApuDaPage() {
         </div>
 
         <nav className="calmDesktopNav" aria-label="My ApuDa 주요 메뉴">
-          <Link href="/my">오늘</Link>
+          <Link className="active" href="/my">오늘</Link>
           <Link href="/my/record">기록</Link>
           <Link href="/my/timeline">분석</Link>
           <Link href="/my/visit-prep">진료 준비</Link>
