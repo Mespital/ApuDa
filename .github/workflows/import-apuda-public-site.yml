@@ -47,7 +47,6 @@ jobs:
             "readme_deploy.txt"
             "mobile_comp_test.png"
             "testcrop_560.png"
-            "netlify.toml"
             "robots.txt"
             "testcrop_640.png"
             "testcrop_600.png"
