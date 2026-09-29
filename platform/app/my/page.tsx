@@ -385,10 +385,26 @@ export default async function MyApuDaPage() {
             </p>
           </div>
           <div className="calmOnboardingActions">
-            <Link href="/my/labs">검사결과</Link>
-            <Link href="/my/symptoms">오늘 상태</Link>
-            <Link href="/my/medications">복약</Link>
-            <Link href="/my/appointments">병원 일정</Link>
+            <Link className="startAction labStart" href="/my/labs">
+              <span><HealthIcon name="lab" /></span>
+              <div><strong>검사결과</strong><small>사진·직접 입력</small></div>
+              <b>›</b>
+            </Link>
+            <Link className="startAction symptomStart" href="/my/symptoms">
+              <span><HealthIcon name="symptom" /></span>
+              <div><strong>오늘 상태</strong><small>증상·컨디션</small></div>
+              <b>›</b>
+            </Link>
+            <Link className="startAction medicationStart" href="/my/medications">
+              <span><HealthIcon name="medication" /></span>
+              <div><strong>복약</strong><small>복용 중인 약</small></div>
+              <b>›</b>
+            </Link>
+            <Link className="startAction appointmentStart" href="/my/appointments">
+              <span><HealthIcon name="calendar" /></span>
+              <div><strong>병원 일정</strong><small>외래·검사·치료</small></div>
+              <b>›</b>
+            </Link>
           </div>
         </section>
       )}

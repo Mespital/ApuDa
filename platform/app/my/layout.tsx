@@ -8,14 +8,14 @@ export default async function MyLayout({ children }: { children: React.ReactNode
   const { profile, profiles } = await getActiveProfile();
 
   return (
-    <>
+    <div className="myAppFrame">
       {profile && (
         <header className="myGlobalHeader">
           <div className="myGlobalHeaderInner">
             <Link className="myHomeBrand" href="/my" aria-label="My ApuDa 홈으로 이동">
-              <span className="myHomeBrandMark" aria-hidden="true">A</span>
-              <span>
-                <small>MY APUDA</small>
+              <span className="myHomeWordmark">ApuDa</span>
+              <span className="myHomeBrandMeta">
+                <small>MY HEALTH</small>
                 <strong>내 건강 기록</strong>
               </span>
             </Link>
@@ -33,9 +33,11 @@ export default async function MyLayout({ children }: { children: React.ReactNode
           </div>
         </header>
       )}
-      {children}
+
+      <div className="myAppContent">{children}</div>
+
       {profile && <ApuDaTalkLauncher profileId={profile.id} />}
       <MyBottomNav />
-    </>
+    </div>
   );
 }
