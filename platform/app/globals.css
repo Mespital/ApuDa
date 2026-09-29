@@ -5853,3 +5853,452 @@ a {
     transform: none !important;
   }
 }
+
+
+/* My ApuDa v9 — global navigation + colorful affordance */
+.myGlobalHeader {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  padding: 10px 18px 8px;
+  background: linear-gradient(to bottom, rgba(248,250,253,.97) 78%, rgba(248,250,253,0));
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.myGlobalHeaderInner {
+  display: flex;
+  width: min(100%, 1040px);
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 0 auto;
+}
+
+.myHomeBrand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.myHomeBrandMark {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 13px;
+  background: linear-gradient(145deg, #2f6fe4, #5a88eb);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 900;
+  box-shadow: 0 8px 20px rgba(47,111,228,.18);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.myHomeBrand:hover .myHomeBrandMark,
+.myHomeBrand:focus-visible .myHomeBrandMark {
+  transform: translateY(-2px) rotate(-2deg);
+  box-shadow: 0 12px 24px rgba(47,111,228,.24);
+}
+
+.myHomeBrand > span:last-child {
+  display: grid;
+  gap: 1px;
+}
+
+.myHomeBrand small {
+  color: #4774d0;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+
+.myHomeBrand strong {
+  color: var(--calm-text);
+  font-size: 16px;
+  letter-spacing: -.025em;
+}
+
+.myGlobalHeaderTools {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.myGlobalHeaderTools .profileSelect {
+  min-height: 42px;
+  border-radius: 13px;
+}
+
+.myGlobalProfile {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px 4px 5px;
+  border: 1px solid #e3e7ee;
+  border-radius: 999px;
+  background: rgba(255,255,255,.88);
+  color: inherit;
+  text-decoration: none;
+  transition: transform 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.myGlobalProfile:hover {
+  transform: translateY(-1px);
+  border-color: #ccd8e9;
+  box-shadow: 0 8px 20px rgba(25,40,70,.055);
+}
+
+.myGlobalProfile > span {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 50%;
+  background: #edf4ff;
+  color: #2f6fe4;
+  font-weight: 900;
+}
+
+.myGlobalProfile > div {
+  display: grid;
+  gap: 0;
+}
+
+.myGlobalProfile small {
+  color: #9aa3b0;
+  font-size: 9px;
+  font-weight: 750;
+}
+
+.myGlobalProfile b {
+  color: var(--calm-text);
+  font-size: 11px;
+}
+
+/* persistent dock on every breakpoint */
+.bottomNav {
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  width: min(calc(100% - 28px), 600px);
+  min-height: 64px;
+  bottom: max(10px, env(safe-area-inset-bottom));
+  padding: 5px 7px;
+  border: 1px solid rgba(220,226,236,.9);
+  border-radius: 23px;
+  background: rgba(255,255,255,.94);
+  box-shadow: 0 14px 38px rgba(29,44,70,.12);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.bottomNav > a {
+  position: relative;
+  display: grid;
+  min-height: 52px;
+  place-items: center;
+  align-content: center;
+  gap: 3px;
+  border-radius: 15px;
+  color: #758196;
+  text-decoration: none;
+  transition:
+    transform 150ms ease,
+    background 150ms ease,
+    color 150ms ease;
+}
+
+.bottomNav > a:hover,
+.bottomNav > a:focus-visible {
+  transform: translateY(-2px);
+  background: var(--nav-soft, #f4f7fb);
+  color: var(--nav-color, #49698f);
+}
+
+.bottomNavIcon {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border-radius: 10px;
+  transition: transform 150ms ease, background 150ms ease;
+}
+
+.bottomNavIcon svg {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.bottomNav > a:hover .bottomNavIcon {
+  transform: scale(1.06);
+}
+
+.bottomNav > a > small {
+  font-size: 9.5px;
+  font-weight: 800;
+}
+
+.bottomNav > a.activeNav {
+  background: var(--nav-soft);
+  color: var(--nav-color);
+}
+
+.bottomNav > a.activeNav::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  width: 24px;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--nav-color);
+}
+
+.bottomNav > a.activeNav .bottomNavIcon {
+  background: rgba(255,255,255,.72);
+}
+
+.navTone-blue {
+  --nav-color: #2f6fe4;
+  --nav-soft: #edf4ff;
+}
+
+.navTone-lilac {
+  --nav-color: #7b5fd6;
+  --nav-soft: #f3efff;
+}
+
+.navTone-mint {
+  --nav-color: #2d8a75;
+  --nav-soft: #eaf7f2;
+}
+
+.navTone-peach {
+  --nav-color: #cc6e3c;
+  --nav-soft: #fff0e7;
+}
+
+.bottomNav .recordNav .bottomNavIcon {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  background: #2f6fe4;
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(47,111,228,.18);
+}
+
+.bottomNav .recordNav.activeNav .bottomNavIcon {
+  background: #2f6fe4;
+}
+
+/* make action categories inviting and distinct */
+.calmOnboardingActions a,
+.calmQuickCard {
+  position: relative;
+  overflow: hidden;
+}
+
+.calmOnboardingActions a:nth-child(1),
+.calmQuickCard.labQuick {
+  --action-color: #4e7ee7;
+  --action-soft: #eef4ff;
+}
+
+.calmOnboardingActions a:nth-child(2),
+.calmQuickCard.symptomQuick {
+  --action-color: #2d8a75;
+  --action-soft: #eaf7f2;
+}
+
+.calmOnboardingActions a:nth-child(3),
+.calmQuickCard.medicationQuick {
+  --action-color: #7b5fd6;
+  --action-soft: #f3efff;
+}
+
+.calmOnboardingActions a:nth-child(4),
+.calmQuickCard.appointmentQuick {
+  --action-color: #cc6e3c;
+  --action-soft: #fff0e7;
+}
+
+.calmOnboardingActions a {
+  border-color: color-mix(in srgb, var(--action-color) 22%, #e4e8ef);
+  color: var(--action-color);
+}
+
+.calmOnboardingActions a:hover,
+.calmOnboardingActions a:focus-visible {
+  transform: translateY(-2px);
+  background: var(--action-soft);
+  border-color: color-mix(in srgb, var(--action-color) 38%, #dce2ea);
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--action-color) 10%, transparent);
+}
+
+.calmQuickCard:hover,
+.calmQuickCard:focus-visible {
+  background: var(--action-soft);
+  color: var(--action-color);
+}
+
+.calmQuickCard:hover b,
+.calmQuickCard:focus-visible b {
+  transform: translateX(3px);
+  color: var(--action-color);
+}
+
+.calmQuickCard > b {
+  transition: transform 150ms ease, color 150ms ease;
+}
+
+.calmQuickCard .calmQuickIcon {
+  color: var(--action-color);
+  background: var(--action-soft);
+}
+
+/* journal category colors */
+.journalTags button:nth-child(1) {
+  --tag-color: #2d8a75;
+  --tag-soft: #eaf7f2;
+}
+.journalTags button:nth-child(2) {
+  --tag-color: #7b5fd6;
+  --tag-soft: #f3efff;
+}
+.journalTags button:nth-child(3) {
+  --tag-color: #cc6e3c;
+  --tag-soft: #fff0e7;
+}
+.journalTags button:nth-child(4) {
+  --tag-color: #4e7ee7;
+  --tag-soft: #eef4ff;
+}
+.journalTags button:nth-child(5) {
+  --tag-color: #a5752e;
+  --tag-soft: #fff7df;
+}
+
+.journalTags button:hover {
+  border-color: color-mix(in srgb, var(--tag-color) 35%, #dfe5ec);
+  background: var(--tag-soft);
+  color: var(--tag-color);
+}
+
+.journalTags button.selected {
+  border-color: color-mix(in srgb, var(--tag-color) 35%, #dfe5ec);
+  background: var(--tag-soft);
+  color: var(--tag-color);
+}
+
+/* reserve breathing room for the persistent dock */
+.dashboardShell.calmHome,
+.journalPage,
+.shell {
+  padding-bottom: max(108px, calc(92px + env(safe-area-inset-bottom)));
+}
+
+@media (min-width: 1024px) {
+  .dashboardShell.calmHome {
+    padding-bottom: 112px;
+  }
+
+  .calmDesktopNav {
+    display: none !important;
+  }
+
+  .aiFabDock {
+    right: max(22px, calc((100vw - 1040px) / 2 - 4px));
+    bottom: 86px;
+  }
+}
+
+@media (max-width: 760px) {
+  .myGlobalHeader {
+    padding: 8px 12px 6px;
+  }
+
+  .myHomeBrandMark {
+    width: 34px;
+    height: 34px;
+    border-radius: 11px;
+    font-size: 16px;
+  }
+
+  .myHomeBrand small {
+    display: none;
+  }
+
+  .myHomeBrand strong {
+    font-size: 14px;
+  }
+
+  .myGlobalProfile {
+    padding-right: 7px;
+  }
+
+  .myGlobalProfile > div {
+    display: none;
+  }
+
+  .myGlobalHeaderTools .profileSelect {
+    max-width: 170px;
+  }
+
+  .bottomNav {
+    width: calc(100% - 18px);
+    min-height: 61px;
+    padding: 4px 5px;
+    border-radius: 21px;
+  }
+
+  .bottomNav > a {
+    min-height: 51px;
+  }
+}
+
+@media (max-width: 430px) {
+  .myGlobalHeaderInner {
+    gap: 8px;
+  }
+
+  .myHomeBrand {
+    gap: 7px;
+  }
+
+  .myHomeBrand strong {
+    display: none;
+  }
+
+  .myGlobalHeaderTools {
+    gap: 6px;
+    min-width: 0;
+  }
+
+  .myGlobalHeaderTools .profileSelect {
+    width: min(47vw, 158px);
+    min-width: 0;
+  }
+
+  .bottomNav > a > small {
+    font-size: 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .myHomeBrandMark,
+  .myGlobalProfile,
+  .bottomNav > a,
+  .bottomNavIcon,
+  .calmOnboardingActions a,
+  .calmQuickCard > b {
+    transition: none !important;
+    transform: none !important;
+  }
+}
