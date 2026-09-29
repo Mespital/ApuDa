@@ -127,10 +127,9 @@ export default async function MyApuDaPage() {
 
   const nextAppointment = appointmentsResult.data?.[0];
   const latestLabs = labsResult.data ?? [];
-  const latestLab = latestLabs[0];
   const recentSymptoms = symptomsResult.data ?? [];
   const currentTreatment = treatmentsResult.data?.[0];
-  const symptomNames = [...new Set(recentSymptoms.map((item) => item.symptom_name))].slice(0, 2);
+  const hasTodayOverview = Boolean(nextAppointment || recentSymptoms.length || currentTreatment);
 
   return (
     <main className="shell dashboardShell calmHome">
@@ -178,53 +177,68 @@ export default async function MyApuDaPage() {
           </div>
         </div>
 
-        <aside className="calmTodayCard">
+        <aside className={`calmTodayCard ${hasTodayOverview ? "" : "isEmpty"}`}>
           <p className="eyebrow">오늘 한눈에</p>
-          <div className="calmTodayList">
-            <Link href="/my/appointments">
-              <span className="calmMiniIcon"><HealthIcon name="calendar" /></span>
-              <div>
-                <small>다음 일정</small>
-                <strong>{nextAppointment ? formatDday(nextAppointment.scheduled_at) : "아직 없어요"}</strong>
-              </div>
-              <b>›</b>
-            </Link>
-            <Link href="/my/symptoms">
-              <span className="calmMiniIcon"><HealthIcon name="symptom" /></span>
-              <div>
-                <small>최근 14일 증상</small>
-                <strong>{recentSymptoms.length ? `${recentSymptoms.length}건` : "아직 없어요"}</strong>
-              </div>
-              <b>›</b>
-            </Link>
-            <Link href="/my/timeline">
-              <span className="calmMiniIcon"><HealthIcon name="treatment" /></span>
-              <div>
-                <small>현재 치료</small>
-                <strong>{currentTreatment?.cycle_label || currentTreatment?.name || "아직 없어요"}</strong>
-              </div>
-              <b>›</b>
-            </Link>
-          </div>
+          {hasTodayOverview ? (
+            <div className="calmTodayList">
+              <Link href="/my/appointments">
+                <span className="calmMiniIcon"><HealthIcon name="calendar" /></span>
+                <div>
+                  <small>다음 일정</small>
+                  <strong>{nextAppointment ? formatDday(nextAppointment.scheduled_at) : "없음"}</strong>
+                </div>
+                <b>›</b>
+              </Link>
+              <Link href="/my/symptoms">
+                <span className="calmMiniIcon"><HealthIcon name="symptom" /></span>
+                <div>
+                  <small>최근 14일 증상</small>
+                  <strong>{recentSymptoms.length ? `${recentSymptoms.length}건` : "없음"}</strong>
+                </div>
+                <b>›</b>
+              </Link>
+              <Link href="/my/timeline">
+                <span className="calmMiniIcon"><HealthIcon name="treatment" /></span>
+                <div>
+                  <small>현재 치료</small>
+                  <strong>{currentTreatment?.cycle_label || currentTreatment?.name || "없음"}</strong>
+                </div>
+                <b>›</b>
+              </Link>
+            </div>
+          ) : (
+            <div className="calmTodayEmpty">
+              <span><HealthIcon name="treatment" /></span>
+              <strong>아직 모인 기록이 없어요.</strong>
+              <p>첫 기록을 남기면 일정·증상·치료 흐름을 여기에서 바로 확인할 수 있어요.</p>
+              <Link href="/my/record">첫 기록 남기기</Link>
+            </div>
+          )}
         </aside>
       </section>
 
-      <section className="calmMobileSummary" aria-label="오늘 한눈에">
+      <section className={`calmMobileSummary ${hasTodayOverview ? "" : "isEmpty"}`} aria-label="오늘 한눈에">
         <p>오늘 한눈에</p>
-        <div>
-          <Link href="/my/appointments">
-            <small>다음 일정</small>
-            <strong>{nextAppointment ? formatDday(nextAppointment.scheduled_at) : "없음"}</strong>
+        {hasTodayOverview ? (
+          <div>
+            <Link href="/my/appointments">
+              <small>다음 일정</small>
+              <strong>{nextAppointment ? formatDday(nextAppointment.scheduled_at) : "없음"}</strong>
+            </Link>
+            <Link href="/my/symptoms">
+              <small>최근 증상</small>
+              <strong>{recentSymptoms.length ? `${recentSymptoms.length}건` : "없음"}</strong>
+            </Link>
+            <Link href="/my/timeline">
+              <small>현재 치료</small>
+              <strong>{currentTreatment?.cycle_label || currentTreatment?.name || "없음"}</strong>
+            </Link>
+          </div>
+        ) : (
+          <Link className="calmMobileEmpty" href="/my/record">
+            아직 기록이 없어요 · 첫 기록 남기기
           </Link>
-          <Link href="/my/symptoms">
-            <small>최근 증상</small>
-            <strong>{recentSymptoms.length ? `${recentSymptoms.length}건` : "없음"}</strong>
-          </Link>
-          <Link href="/my/timeline">
-            <small>현재 치료</small>
-            <strong>{currentTreatment?.cycle_label || currentTreatment?.name || "없음"}</strong>
-          </Link>
-        </div>
+        )}
       </section>
 
       <section className="calmSection">
