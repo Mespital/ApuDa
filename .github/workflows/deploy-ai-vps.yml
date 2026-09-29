@@ -13,8 +13,10 @@ jobs:
     environment: apuda-ai-vps
 
     steps:
-      - name: Checkout
+      - name: Checkout deployment source
         uses: actions/checkout@v4
+        with:
+          ref: feature/apuda-health-os-v1
 
       - name: Validate required secrets
         env:
