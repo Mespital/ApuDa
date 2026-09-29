@@ -8,6 +8,15 @@ export default function ApuDaTalkLauncher({ profileId }: { profileId: string }) 
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
+    function openTalk() {
+      setOpen(true);
+    }
+
+    window.addEventListener("apuda:talk-open", openTalk);
+    return () => window.removeEventListener("apuda:talk-open", openTalk);
+  }, []);
+
+  useEffect(() => {
     if (!open) return;
 
     const previousOverflow = document.body.style.overflow;
