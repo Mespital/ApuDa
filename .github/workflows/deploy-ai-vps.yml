@@ -41,7 +41,9 @@ jobs:
           install -m 700 -d ~/.ssh
           printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
-          ssh-keygen -y -f ~/.ssh/id_ed25519 >/dev/null
+          ssh-keygen -y -f ~/.ssh/id_ed25519 > ~/.ssh/id_ed25519.pub
+          echo "GitHub VPS_SSH_KEY fingerprint:"
+          ssh-keygen -lf ~/.ssh/id_ed25519.pub
           ssh-keyscan -H "$VPS_HOST" >> ~/.ssh/known_hosts
           cat > ~/.ssh/config <<EOF
           Host apuda-vps
