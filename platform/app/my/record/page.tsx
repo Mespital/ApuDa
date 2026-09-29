@@ -2,6 +2,12 @@ import Link from "next/link";
 
 const choices = [
   {
+    href: "/my/journal",
+    icon: "✦",
+    title: "오늘 한 줄",
+    description: "몸 상태나 마음에 남은 것을 짧게 기록해요."
+  },
+  {
     href: "/my/labs",
     icon: "▤",
     title: "검사결과",

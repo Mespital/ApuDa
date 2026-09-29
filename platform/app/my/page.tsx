@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import ProfileSwitcher from "@/components/ProfileSwitcher";
 import ApuDaTalkOpenButton from "@/components/ApuDaTalkOpenButton";
+import TodayJournalComposer from "@/components/TodayJournalComposer";
 import { getActiveProfile } from "@/lib/active-profile";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { createClient } from "@/lib/supabase/server";
@@ -96,7 +97,7 @@ export default async function MyApuDaPage() {
   const since = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString();
   const now = new Date().toISOString();
 
-  const [appointmentsResult, labsResult, symptomsResult, treatmentsResult] =
+  const [appointmentsResult, labsResult, symptomsResult, treatmentsResult, journalResult] =
     await Promise.all([
       supabase
         .from("appointments")
@@ -122,15 +123,22 @@ export default async function MyApuDaPage() {
         .select("id,name,cycle_label,treatment_type,started_on")
         .eq("profile_id", profile.id)
         .order("started_on", { ascending: false })
-        .limit(1)
+        .limit(1),
+      supabase
+        .from("journal_entries")
+        .select("id,body,tags,recorded_at")
+        .eq("profile_id", profile.id)
+        .order("recorded_at", { ascending: false })
+        .limit(3)
     ]);
 
   const nextAppointment = appointmentsResult.data?.[0];
   const latestLabs = labsResult.data ?? [];
   const recentSymptoms = symptomsResult.data ?? [];
   const currentTreatment = treatmentsResult.data?.[0];
+  const recentJournal = journalResult.data ?? [];
   const hasTodayOverview = Boolean(nextAppointment || recentSymptoms.length || currentTreatment);
-  const hasAnyHealthData = Boolean(hasTodayOverview || latestLabs.length);
+  const hasStructuredHealthData = Boolean(hasTodayOverview || latestLabs.length);
 
   return (
     <main className="shell dashboardShell calmHome">
@@ -144,7 +152,7 @@ export default async function MyApuDaPage() {
         </div>
 
         <nav className="calmDesktopNav" aria-label="My ApuDa 주요 메뉴">
-          <Link href="/my">오늘</Link>
+          <Link className="active" href="/my">오늘</Link>
           <Link href="/my/record">기록</Link>
           <Link href="/my/timeline">분석</Link>
           <Link href="/my/visit-prep">진료 준비</Link>
@@ -159,7 +167,7 @@ export default async function MyApuDaPage() {
         </Link>
       </header>
 
-      <section className={`calmHero ${hasAnyHealthData ? "" : "isEmptyHero"}`}>
+      <section className={`calmHero ${hasStructuredHealthData ? "" : "isEmptyHero"}`}>
         <div className="calmHeroMain">
           <div className="calmDatePill">
             <span className="calmDateDot" />
@@ -225,9 +233,9 @@ export default async function MyApuDaPage() {
         </aside>
       </section>
 
-      <section className={`calmMobileSummary ${hasTodayOverview ? "" : "isEmpty"}`} aria-label="오늘 한눈에">
-        <p>오늘 한눈에</p>
-        {hasTodayOverview ? (
+      {hasTodayOverview && (
+        <section className="calmMobileSummary" aria-label="오늘 한눈에">
+          <p>오늘 한눈에</p>
           <div>
             <Link href="/my/appointments">
               <small>다음 일정</small>
@@ -242,15 +250,46 @@ export default async function MyApuDaPage() {
               <strong>{currentTreatment?.cycle_label || currentTreatment?.name || "없음"}</strong>
             </Link>
           </div>
-        ) : (
-          <Link className="calmMobileEmpty" href="/my/record">
-            아직 기록이 없어요 · 첫 기록 남기기
-          </Link>
+        </section>
+      )}
+
+      <section className="journalHomeSection">
+        <TodayJournalComposer profileId={profile.id} />
+
+        {recentJournal.length > 0 && (
+          <div className="journalRecent">
+            <div className="journalRecentHeader">
+              <div>
+                <p className="eyebrow">지난 기록</p>
+                <h2>최근에 남긴 한 줄</h2>
+              </div>
+              <Link href="/my/journal">모두 보기</Link>
+            </div>
+            <div className="journalRecentList">
+              {recentJournal.map((entry) => (
+                <Link href="/my/journal" className="journalRecentItem" key={entry.id}>
+                  <time>
+                    {new Date(entry.recorded_at).toLocaleDateString("ko-KR", {
+                      month: "long",
+                      day: "numeric"
+                    })}
+                  </time>
+                  <p>{entry.body}</p>
+                  {entry.tags.length > 0 && (
+                    <div>
+                      {entry.tags.slice(0, 2).map((tag) => <span key={tag}>{tag}</span>)}
+                    </div>
+                  )}
+                </Link>
+              ))}
+            </div>
+          </div>
         )}
       </section>
 
-      <section className="calmSection">
-        <div className="calmSectionHeader">
+      {hasStructuredHealthData && (
+        <section className="calmSection">
+          <div className="calmSectionHeader">
           <div>
             <p className="eyebrow">빠른 기록</p>
             <h2>필요한 기록을 바로 남겨요.</h2>
@@ -295,9 +334,10 @@ export default async function MyApuDaPage() {
           </Link>
           </div>
         </div>
-      </section>
+        </section>
+      )}
 
-      {hasAnyHealthData ? (
+      {hasStructuredHealthData ? (
         <section className="calmContentGrid">
           <div className="calmPanel calmLabsPanel">
             <div className="calmPanelHeader">

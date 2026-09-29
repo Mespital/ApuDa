@@ -260,6 +260,41 @@ export type Database = {
           },
         ]
       }
+      journal_entries: {
+        Row: {
+          body: string
+          created_at: string
+          id: string
+          profile_id: string
+          recorded_at: string
+          tags: string[]
+        }
+        Insert: {
+          body: string
+          created_at?: string
+          id?: string
+          profile_id: string
+          recorded_at?: string
+          tags?: string[]
+        }
+        Update: {
+          body?: string
+          created_at?: string
+          id?: string
+          profile_id?: string
+          recorded_at?: string
+          tags?: string[]
+        }
+        Relationships: [
+          {
+            foreignKeyName: "journal_entries_profile_id_fkey"
+            columns: ["profile_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       labs: {
         Row: {
           canonical_code: string | null

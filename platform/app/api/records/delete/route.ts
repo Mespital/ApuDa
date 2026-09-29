@@ -10,7 +10,8 @@ const tableByEntity = {
   appointment: "appointments",
   biomarker: "biomarkers",
   imaging: "imaging",
-  visit_question: "visit_questions"
+  visit_question: "visit_questions",
+  journal: "journal_entries"
 } as const;
 
 type Entity = keyof typeof tableByEntity;
