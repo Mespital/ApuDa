@@ -2526,3 +2526,96 @@ a {
     justify-content: center;
   }
 }
+
+
+/* Dismissible ApuDa Talk launcher */
+.aiFabDock {
+  position: fixed;
+  z-index: 31;
+  right: max(18px, calc((100vw - 920px) / 2 + 18px));
+  bottom: 92px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.aiFabDock .aiFab {
+  position: relative;
+  right: auto;
+  bottom: auto;
+}
+
+.aiFabDismiss {
+  position: absolute;
+  z-index: 2;
+  top: -9px;
+  right: -9px;
+  display: grid;
+  width: 26px;
+  height: 26px;
+  place-items: center;
+  padding: 0;
+  border: 1px solid #d6dfec;
+  border-radius: 999px;
+  background: #fff;
+  color: #51627a;
+  box-shadow: 0 7px 20px rgba(20, 33, 61, 0.16);
+  cursor: pointer;
+  font: inherit;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.82);
+  transition:
+    opacity 140ms ease,
+    transform 140ms ease,
+    background 140ms ease,
+    color 140ms ease;
+}
+
+.aiFabDismiss:hover,
+.aiFabDismiss:focus-visible {
+  background: #f4f7fb;
+  color: var(--navy);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .aiFabDock:hover .aiFabDismiss,
+  .aiFabDock:focus-within .aiFabDismiss {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .aiFabDismiss {
+    top: -10px;
+    right: -8px;
+    width: 24px;
+    height: 24px;
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 620px) {
+  .aiFabDock {
+    right: 14px;
+    bottom: 82px;
+  }
+
+  .aiFabDock .aiFab {
+    width: 48px;
+    min-height: 48px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .aiFabDock .aiFab b {
+    display: none;
+  }
+}

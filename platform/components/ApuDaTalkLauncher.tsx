@@ -4,10 +4,15 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import ApuDaTalkPanel from "@/components/ApuDaTalkPanel";
 
+const DISMISS_KEY = "apuda-talk-launcher-dismissed";
+
 export default function ApuDaTalkLauncher({ profileId }: { profileId: string }) {
   const [open, setOpen] = useState(false);
+  const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
+    setDismissed(window.sessionStorage.getItem(DISMISS_KEY) === "1");
+
     function openTalk() {
       setOpen(true);
     }
@@ -33,18 +38,38 @@ export default function ApuDaTalkLauncher({ profileId }: { profileId: string }) 
     };
   }, [open]);
 
+  function dismissLauncher() {
+    setOpen(false);
+    setDismissed(true);
+    window.sessionStorage.setItem(DISMISS_KEY, "1");
+  }
+
   return (
     <>
-      <button
-        type="button"
-        className="aiFab"
-        aria-label="ApuDa Talk 열기"
-        aria-expanded={open}
-        onClick={() => setOpen(true)}
-      >
-        <span>✦</span>
-        <b>ApuDa Talk</b>
-      </button>
+      {!dismissed && (
+        <div className="aiFabDock">
+          <button
+            type="button"
+            className="aiFab"
+            aria-label="ApuDa Talk 열기"
+            aria-expanded={open}
+            onClick={() => setOpen(true)}
+          >
+            <span>✦</span>
+            <b>ApuDa Talk</b>
+          </button>
+
+          <button
+            type="button"
+            className="aiFabDismiss"
+            aria-label="ApuDa Talk 버튼 숨기기"
+            title="ApuDa Talk 버튼 숨기기"
+            onClick={dismissLauncher}
+          >
+            ×
+          </button>
+        </div>
+      )}
 
       {open && (
         <div className="talkOverlay" role="presentation" onMouseDown={() => setOpen(false)}>
