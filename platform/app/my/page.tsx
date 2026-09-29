@@ -118,11 +118,10 @@ export default async function MyApuDaPage() {
           <h1>
             {profile.display_name}님,
             <br />
-            오늘 필요한 것만 천천히 챙겨요.
+            오늘 필요한 기록만 챙겨요.
           </h1>
           <p>
-            기록은 완벽하지 않아도 괜찮아요. 검사·증상·복약·일정을 조금씩 모아두면
-            다음 진료 때 훨씬 편해집니다.
+            검사·증상·복약·일정을 한곳에 모아두고, 다음 진료 전에 쉽게 꺼내보세요.
           </p>
           <div className="calmHeroActions">
             <Link className="calmPrimaryAction" href="/my/record">
