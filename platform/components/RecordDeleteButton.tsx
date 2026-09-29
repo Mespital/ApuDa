@@ -11,7 +11,8 @@ type RecordEntity =
   | "appointment"
   | "biomarker"
   | "imaging"
-  | "visit_question";
+  | "visit_question"
+  | "journal";
 
 export default function RecordDeleteButton({
   entity,
