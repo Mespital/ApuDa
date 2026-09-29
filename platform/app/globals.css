@@ -6917,3 +6917,155 @@ a {
     transform: none !important;
   }
 }
+
+
+/* My ApuDa v11 — solid header + dock clarity */
+.myGlobalHeader {
+  background: #eef5ff !important;
+  border-bottom: 1px solid #d5e1f2 !important;
+  box-shadow: 0 6px 18px rgba(34, 62, 102, .07) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.myGlobalHeaderInner {
+  min-height: 50px;
+}
+
+.myAppContent {
+  position: relative;
+  z-index: 1;
+}
+
+.dashboardShell.calmHome {
+  padding-top: 22px;
+}
+
+.myHomeWordmark {
+  text-shadow: none;
+}
+
+.myHomeBrand:hover .myHomeWordmark,
+.myHomeBrand:focus-visible .myHomeWordmark {
+  text-shadow: none;
+}
+
+.myGlobalHeaderTools .profileSelect,
+.myGlobalProfile {
+  background: #fff !important;
+  border-color: #cfdced !important;
+}
+
+.bottomNav {
+  background: #ffffff !important;
+  border-color: #ccd9ea !important;
+  box-shadow:
+    0 18px 44px rgba(28, 54, 92, .16),
+    0 3px 10px rgba(28, 54, 92, .06) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.bottomNav > a {
+  color: #617087;
+}
+
+.bottomNav > a.activeNav {
+  background: var(--nav-soft) !important;
+}
+
+.bottomNavIcon {
+  background: #f6f8fc;
+  box-shadow: inset 0 0 0 1px rgba(84, 106, 138, .06);
+}
+
+.bottomNav > a.activeNav .bottomNavIcon {
+  background: #fff !important;
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--nav-color) 18%, transparent),
+    0 5px 14px color-mix(in srgb, var(--nav-color) 12%, transparent);
+}
+
+.bottomNav .recordNav .bottomNavIcon,
+.bottomNav .recordNav.activeNav .bottomNavIcon {
+  background: linear-gradient(145deg, #2367ef, #3d7cf1) !important;
+  color: #fff !important;
+  box-shadow: 0 10px 22px rgba(35,103,239,.24) !important;
+}
+
+.aiFabDock {
+  z-index: 65;
+}
+
+.aiFabDock .aiFab {
+  background: #fff !important;
+  border-color: #cdd9e9 !important;
+}
+
+@media (min-width: 1024px) {
+  .myGlobalHeader {
+    padding-top: 12px;
+    padding-bottom: 10px;
+  }
+
+  .dashboardShell.calmHome {
+    padding-top: 24px;
+  }
+
+  .bottomNav {
+    bottom: 14px;
+  }
+
+  .aiFabDock {
+    bottom: 104px;
+  }
+}
+
+@media (max-width: 760px) {
+  .myGlobalHeader {
+    padding: max(10px, env(safe-area-inset-top)) 12px 9px !important;
+    background: #eef5ff !important;
+    border-bottom-color: #d2deef !important;
+    box-shadow: 0 5px 14px rgba(34, 62, 102, .075) !important;
+  }
+
+  .myGlobalHeaderInner {
+    min-height: 46px;
+  }
+
+  .dashboardShell.calmHome {
+    padding-top: 14px;
+  }
+
+  .bottomNav {
+    background: #fff !important;
+    border-color: #cbd8e9 !important;
+  }
+
+  .aiFabDock,
+  .calmHome + .aiFabDock {
+    right: max(14px, env(safe-area-inset-right));
+    bottom: calc(94px + env(safe-area-inset-bottom));
+  }
+}
+
+@media (max-width: 430px) {
+  .myGlobalHeader {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  .myGlobalHeaderTools .profileSelect {
+    min-height: 42px;
+  }
+
+  .bottomNav {
+    bottom: max(6px, env(safe-area-inset-bottom));
+  }
+
+  .aiFabDock,
+  .calmHome + .aiFabDock {
+    right: 12px;
+    bottom: calc(92px + env(safe-area-inset-bottom));
+  }
+}
