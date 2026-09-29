@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Validate required secrets
         env:
@@ -32,13 +32,30 @@ jobs:
       - name: Configure SSH
         env:
           VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
           VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
         run: |
           set -euo pipefail
           install -m 700 -d ~/.ssh
           printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
+          ssh-keygen -y -f ~/.ssh/id_ed25519 >/dev/null
           ssh-keyscan -H "$VPS_HOST" >> ~/.ssh/known_hosts
+          cat > ~/.ssh/config <<EOF
+          Host apuda-vps
+            HostName $VPS_HOST
+            User $VPS_USER
+            IdentityFile ~/.ssh/id_ed25519
+            IdentitiesOnly yes
+            BatchMode yes
+            StrictHostKeyChecking yes
+          EOF
+          chmod 600 ~/.ssh/config
+
+      - name: Verify SSH authentication
+        run: |
+          set -euo pipefail
+          ssh apuda-vps 'printf "SSH authentication OK\n"'
 
       - name: Build deployment environment file
         env:
@@ -64,8 +81,12 @@ jobs:
           VPS_USER: ${{ secrets.VPS_USER }}
         run: |
           set -euo pipefail
-          ssh "$VPS_USER@$VPS_HOST" 'mkdir -p /srv/apuda-ai'
-          rsync -az --delete             --exclude '__pycache__'             --exclude '.pytest_cache'             services/ai/ "$VPS_USER@$VPS_HOST:/srv/apuda-ai/"
+          ssh apuda-vps 'mkdir -p /srv/apuda-ai'
+          rsync -az --delete \
+            --exclude '__pycache__' \
+            --exclude '.pytest_cache' \
+            -e ssh \
+            services/ai/ apuda-vps:/srv/apuda-ai/
 
       - name: Deploy containers
         env:
@@ -73,7 +94,7 @@ jobs:
           VPS_USER: ${{ secrets.VPS_USER }}
         run: |
           set -euo pipefail
-          ssh "$VPS_USER@$VPS_HOST" '
+          ssh apuda-vps '
             set -euo pipefail
             cd /srv/apuda-ai
             chmod 600 .env
@@ -87,4 +108,4 @@ jobs:
           VPS_USER: ${{ secrets.VPS_USER }}
         run: |
           set -euo pipefail
-          ssh "$VPS_USER@$VPS_HOST" 'curl -fsS http://127.0.0.1:8000/health'
+          ssh apuda-vps 'curl -fsS http://127.0.0.1:8000/health'
