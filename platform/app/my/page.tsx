@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import ProfileSwitcher from "@/components/ProfileSwitcher";
+import ApuDaTalkOpenButton from "@/components/ApuDaTalkOpenButton";
 import { getActiveProfile } from "@/lib/active-profile";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { createClient } from "@/lib/supabase/server";
@@ -116,9 +117,9 @@ export default async function MyApuDaPage() {
           <Link className="primaryLink dashboardPrimary" href="/my/record">
             <span>＋</span> 기록하기
           </Link>
-          <Link className="secondaryLink dashboardSecondary" href="/my/ai">
+          <ApuDaTalkOpenButton className="secondaryLink dashboardSecondary talkOpenControl">
             <span>✦</span> ApuDa Talk
-          </Link>
+          </ApuDaTalkOpenButton>
           <Link className="secondaryLink dashboardSecondary" href="/my/visit-prep">
             진료 준비
           </Link>
@@ -262,7 +263,9 @@ export default async function MyApuDaPage() {
             <span>증상 흐름 정리</span>
             <span>진료 질문 만들기</span>
           </div>
-          <Link className="primaryLink compactLink" href="/my/ai">ApuDa Talk 열기</Link>
+          <ApuDaTalkOpenButton className="primaryLink compactLink talkOpenControl">
+            ApuDa Talk 열기
+          </ApuDaTalkOpenButton>
         </section>
       </div>
 
