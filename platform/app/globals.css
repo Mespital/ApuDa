@@ -6302,3 +6302,618 @@ a {
     transform: none !important;
   }
 }
+
+
+/* My ApuDa v10 — branded app shell */
+.myAppFrame {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 86% 8%, rgba(91, 145, 244, .20), transparent 26rem),
+    radial-gradient(circle at 6% 48%, rgba(178, 221, 239, .18), transparent 24rem),
+    linear-gradient(180deg, #eef5ff 0%, #f6f9fd 30%, #f8fafc 100%);
+}
+
+.myAppContent {
+  min-height: calc(100vh - 72px);
+}
+
+.myGlobalHeader {
+  padding: 13px 20px 10px;
+  background: rgba(239, 246, 255, .82);
+  border-bottom: 1px solid rgba(204, 219, 239, .55);
+  box-shadow: 0 8px 24px rgba(47, 80, 130, .035);
+}
+
+.myGlobalHeaderInner {
+  width: min(100%, 1120px);
+}
+
+.myHomeBrand {
+  gap: 14px;
+}
+
+.myHomeWordmark {
+  display: inline-block;
+  color: #2367ef;
+  font-size: 30px;
+  line-height: .95;
+  font-weight: 950;
+  letter-spacing: -.055em;
+  text-shadow: 0 7px 18px rgba(35,103,239,.10);
+  transition: transform 160ms ease, text-shadow 160ms ease;
+}
+
+.myHomeBrand:hover .myHomeWordmark,
+.myHomeBrand:focus-visible .myHomeWordmark {
+  transform: translateY(-2px);
+  text-shadow: 0 10px 22px rgba(35,103,239,.18);
+}
+
+.myHomeBrandMeta {
+  display: grid;
+  gap: 1px;
+  padding-left: 12px;
+  border-left: 1px solid rgba(69,102,151,.16);
+}
+
+.myHomeBrandMeta small {
+  color: #6480ad;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .16em;
+}
+
+.myHomeBrandMeta strong {
+  color: #14233f;
+  font-size: 14px;
+  letter-spacing: -.02em;
+}
+
+.myGlobalHeaderTools .profileSelect {
+  min-height: 46px;
+  padding-left: 15px;
+  border: 1px solid rgba(189,205,227,.8);
+  border-radius: 16px;
+  background: rgba(255,255,255,.9);
+  box-shadow: 0 6px 16px rgba(38,68,111,.045);
+  font-weight: 800;
+}
+
+.myGlobalProfile {
+  min-height: 48px;
+  padding: 5px 14px 5px 6px;
+  border-color: rgba(189,205,227,.72);
+  background: rgba(255,255,255,.92);
+  box-shadow: 0 7px 18px rgba(39,67,107,.045);
+}
+
+.myGlobalProfile > span {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(145deg, #edf4ff, #dce9ff);
+  color: #2367ef;
+  box-shadow: inset 0 0 0 1px rgba(35,103,239,.06);
+}
+
+.dashboardShell.calmHome {
+  width: min(100%, 1120px);
+  padding-top: 18px;
+}
+
+/* Hero: closer to apuda.app visual identity */
+.calmHero {
+  overflow: hidden;
+  min-height: 286px;
+  padding: 30px 32px;
+  border: 1px solid rgba(191,208,232,.72);
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 92% 14%, rgba(71,124,232,.20), transparent 16rem),
+    radial-gradient(circle at 78% 104%, rgba(255,208,159,.24), transparent 17rem),
+    linear-gradient(135deg, rgba(255,255,255,.98), rgba(249,252,255,.96));
+  box-shadow:
+    0 24px 58px rgba(31,57,96,.095),
+    inset 0 1px 0 rgba(255,255,255,.9);
+}
+
+.calmHero::before {
+  content: "";
+  position: absolute;
+  right: -74px;
+  bottom: -88px;
+  width: 260px;
+  height: 260px;
+  border: 1px solid rgba(35,103,239,.10);
+  border-radius: 50%;
+  background: rgba(255,255,255,.38);
+}
+
+.calmHero::after {
+  content: "A+";
+  position: absolute;
+  right: 58px;
+  top: 46px;
+  display: grid;
+  width: 86px;
+  height: 86px;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.72);
+  border-radius: 25px;
+  background: linear-gradient(145deg, rgba(35,103,239,.94), rgba(79,129,239,.82));
+  color: #fff;
+  font-size: 28px;
+  font-weight: 950;
+  letter-spacing: -.04em;
+  box-shadow: 0 18px 34px rgba(35,103,239,.22);
+  transform: rotate(3deg);
+}
+
+.calmHero:not(.isEmptyHero)::after {
+  display: none;
+}
+
+.calmHeroMain {
+  position: relative;
+  z-index: 2;
+}
+
+.calmHero h1 {
+  max-width: 640px;
+  margin-top: 16px;
+  color: #122441;
+  font-size: clamp(40px, 4.5vw, 52px);
+  line-height: 1.06;
+  letter-spacing: -.052em;
+}
+
+.calmHeroMain > p {
+  max-width: 590px;
+  color: #64738a;
+  font-size: 14px;
+  line-height: 1.68;
+}
+
+.calmDatePill {
+  min-height: 30px;
+  padding: 0 11px;
+  border-color: rgba(121,151,194,.28);
+  background: rgba(255,255,255,.82);
+  color: #526984;
+  box-shadow: 0 4px 12px rgba(49,77,116,.035);
+}
+
+.calmPrimaryAction,
+.calmSecondaryAction {
+  min-height: 50px;
+  border-radius: 15px;
+  font-size: 12.5px;
+}
+
+.calmPrimaryAction {
+  background: linear-gradient(135deg, #2367ef, #3478f4);
+  box-shadow: 0 12px 24px rgba(35,103,239,.22);
+}
+
+.calmPrimaryAction:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 29px rgba(35,103,239,.27);
+}
+
+.calmSecondaryAction {
+  border-color: rgba(165,185,214,.55);
+  background: rgba(255,255,255,.88);
+  box-shadow: 0 7px 18px rgba(38,66,107,.05);
+}
+
+.calmSecondaryAction:hover {
+  transform: translateY(-2px);
+  border-color: rgba(35,103,239,.28);
+  color: #2367ef;
+}
+
+/* Journal = main daily engagement card */
+.journalHomeSection {
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.journalComposer {
+  padding: 23px 24px;
+  border-color: rgba(184,202,228,.74);
+  border-radius: 27px;
+  background:
+    radial-gradient(circle at 92% 0%, rgba(83,139,241,.17), transparent 17rem),
+    linear-gradient(145deg, rgba(255,255,255,.98), rgba(248,252,255,.98));
+  box-shadow: 0 16px 38px rgba(42,70,111,.07);
+}
+
+.journalComposer::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: 0;
+  width: 4px;
+  height: 46px;
+  border-radius: 0 8px 8px 0;
+  background: linear-gradient(#2367ef, #6aa0ff);
+}
+
+.journalComposerHeader h2 {
+  color: #142440;
+  font-size: 23px;
+}
+
+.journalComposer textarea {
+  min-height: 72px;
+  border-radius: 18px;
+  border-color: rgba(190,205,226,.78);
+  background: rgba(255,255,255,.96);
+  box-shadow: inset 0 1px 1px rgba(38,66,105,.025);
+}
+
+.journalComposer textarea:hover {
+  border-color: rgba(123,155,202,.6);
+}
+
+.journalComposer textarea:focus {
+  min-height: 124px;
+  border-color: rgba(35,103,239,.5);
+  box-shadow:
+    0 0 0 4px rgba(35,103,239,.08),
+    0 10px 22px rgba(35,103,239,.055);
+}
+
+.journalSaveButton {
+  min-width: 108px;
+  min-height: 42px;
+  border-radius: 13px;
+  background: linear-gradient(135deg, #2367ef, #3e7cf0);
+  box-shadow: 0 9px 20px rgba(35,103,239,.20);
+}
+
+/* First-record card becomes a colorful app launcher */
+.calmOnboardingPanel {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  margin-top: 18px;
+  padding: 22px;
+  border-color: rgba(193,209,231,.72);
+  border-radius: 27px;
+  background: rgba(255,255,255,.92);
+  box-shadow: 0 14px 34px rgba(40,66,103,.055);
+}
+
+.calmOnboardingIcon {
+  display: none;
+}
+
+.calmOnboardingCopy {
+  max-width: 720px;
+}
+
+.calmOnboardingCopy h2 {
+  margin-top: 5px;
+  font-size: 22px;
+}
+
+.calmOnboardingCopy > p:last-child {
+  max-width: 760px;
+  font-size: 12.5px;
+}
+
+.calmOnboardingActions {
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 10px;
+}
+
+.calmOnboardingActions .startAction {
+  display: grid;
+  grid-template-columns: auto minmax(0,1fr) auto;
+  gap: 10px;
+  min-height: 78px;
+  align-items: center;
+  justify-content: initial;
+  padding: 12px 13px;
+  border-radius: 18px;
+  text-align: left;
+  box-shadow: 0 5px 14px rgba(31,58,95,.035);
+}
+
+.startAction > span {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border-radius: 14px;
+  background: rgba(255,255,255,.75);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.55);
+}
+
+.startAction > span svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.85;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.startAction > div {
+  display: grid;
+  gap: 2px;
+}
+
+.startAction > div strong {
+  font-size: 13px;
+}
+
+.startAction > div small {
+  opacity: .72;
+  font-size: 10.5px;
+  font-weight: 700;
+}
+
+.startAction > b {
+  font-size: 19px;
+  transition: transform 150ms ease;
+}
+
+.startAction:hover > b,
+.startAction:focus-visible > b {
+  transform: translateX(4px);
+}
+
+/* Stronger category surfaces */
+.labStart {
+  background: linear-gradient(145deg, #eef5ff, #f8fbff) !important;
+  border-color: rgba(78,126,231,.22) !important;
+}
+.symptomStart {
+  background: linear-gradient(145deg, #eaf8f3, #f8fcfa) !important;
+  border-color: rgba(45,138,117,.22) !important;
+}
+.medicationStart {
+  background: linear-gradient(145deg, #f4efff, #fbf9ff) !important;
+  border-color: rgba(123,95,214,.22) !important;
+}
+.appointmentStart {
+  background: linear-gradient(145deg, #fff0e7, #fffaf7) !important;
+  border-color: rgba(204,110,60,.22) !important;
+}
+
+/* App dock: larger, clearer, more tactile */
+.bottomNav {
+  width: min(calc(100% - 32px), 680px);
+  min-height: 78px;
+  padding: 7px 9px;
+  border: 1px solid rgba(184,201,226,.78);
+  border-radius: 27px;
+  background: rgba(250,252,255,.95);
+  box-shadow:
+    0 20px 48px rgba(28,54,92,.16),
+    0 2px 8px rgba(28,54,92,.05);
+}
+
+.bottomNav > a {
+  min-height: 62px;
+  gap: 4px;
+  border-radius: 18px;
+}
+
+.bottomNavIcon {
+  width: 38px;
+  height: 38px;
+  border-radius: 13px;
+}
+
+.bottomNavIcon svg {
+  width: 25px;
+  height: 25px;
+  stroke-width: 1.9;
+}
+
+.bottomNav > a > small {
+  font-size: 10.5px;
+  letter-spacing: -.01em;
+}
+
+.bottomNav > a.activeNav {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px color-mix(in srgb, var(--nav-color) 14%, transparent);
+}
+
+.bottomNav > a.activeNav::before {
+  top: -7px;
+  width: 32px;
+  height: 4px;
+}
+
+.bottomNav > a.activeNav .bottomNavIcon {
+  transform: scale(1.08);
+  background: rgba(255,255,255,.88);
+}
+
+.bottomNav .recordNav .bottomNavIcon {
+  width: 46px;
+  height: 46px;
+  border-radius: 15px;
+  background: linear-gradient(145deg, #2367ef, #3d7cf1);
+  box-shadow: 0 10px 22px rgba(35,103,239,.24);
+}
+
+.bottomNav .recordNav .bottomNavIcon svg {
+  width: 27px;
+  height: 27px;
+}
+
+/* ApuDa Talk should feel like an app assistant */
+.aiFabDock .aiFab {
+  width: 54px;
+  min-width: 54px;
+  height: 54px;
+  min-height: 54px;
+  border: 1px solid rgba(184,201,226,.8);
+  background: linear-gradient(145deg, #ffffff, #edf5ff);
+  color: #2367ef;
+  box-shadow: 0 13px 28px rgba(30,58,99,.13);
+}
+
+/* cards inside populated state */
+.calmQuickSurface,
+.calmPanel,
+.journalRecent {
+  border-color: rgba(190,206,228,.70);
+  background: rgba(255,255,255,.92);
+  box-shadow: 0 12px 30px rgba(38,65,102,.05);
+}
+
+.calmQuickCard {
+  border-radius: 16px;
+}
+
+.calmQuickCard:hover,
+.calmQuickCard:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--action-color) 10%, transparent);
+}
+
+/* mobile app shell */
+@media (max-width: 760px) {
+  .myGlobalHeader {
+    padding: max(8px, env(safe-area-inset-top)) 12px 7px;
+  }
+
+  .myHomeWordmark {
+    font-size: 24px;
+  }
+
+  .myHomeBrandMeta {
+    display: none;
+  }
+
+  .dashboardShell.calmHome {
+    padding-top: 11px;
+  }
+
+  .calmHero {
+    min-height: 0;
+    padding: 20px 17px 19px;
+    border-radius: 24px;
+  }
+
+  .calmHero::after {
+    right: 18px;
+    top: 24px;
+    width: 58px;
+    height: 58px;
+    border-radius: 18px;
+    font-size: 20px;
+    opacity: .9;
+  }
+
+  .calmHero.isEmptyHero h1 {
+    max-width: calc(100% - 48px);
+  }
+
+  .journalComposer {
+    padding: 18px 15px;
+    border-radius: 22px;
+  }
+
+  .calmOnboardingPanel {
+    padding: 17px 14px;
+    border-radius: 22px;
+  }
+
+  .calmOnboardingActions {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+
+  .calmOnboardingActions .startAction {
+    min-height: 72px;
+    padding: 10px;
+  }
+
+  .startAction > span {
+    width: 39px;
+    height: 39px;
+  }
+
+  .bottomNav {
+    width: calc(100% - 18px);
+    min-height: 72px;
+    padding: 6px 6px max(6px, env(safe-area-inset-bottom));
+    border-radius: 24px;
+  }
+
+  .bottomNav > a {
+    min-height: 58px;
+  }
+
+  .bottomNavIcon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .bottomNavIcon svg {
+    width: 23px;
+    height: 23px;
+  }
+
+  .bottomNav .recordNav .bottomNavIcon {
+    width: 43px;
+    height: 43px;
+  }
+
+  .bottomNav > a > small {
+    font-size: 10px;
+  }
+
+  .aiFabDock,
+  .calmHome + .aiFabDock {
+    bottom: calc(88px + env(safe-area-inset-bottom));
+  }
+}
+
+@media (max-width: 430px) {
+  .myGlobalHeaderTools .profileSelect {
+    width: min(51vw, 165px);
+  }
+
+  .myGlobalProfile {
+    display: none;
+  }
+
+  .calmHero::after {
+    display: none;
+  }
+
+  .calmHero.isEmptyHero h1 {
+    max-width: 100%;
+  }
+
+  .calmOnboardingActions .startAction {
+    grid-template-columns: auto minmax(0,1fr);
+  }
+
+  .startAction > b {
+    display: none;
+  }
+
+  .bottomNav {
+    width: calc(100% - 12px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .myHomeWordmark,
+  .calmPrimaryAction,
+  .calmSecondaryAction,
+  .startAction > b,
+  .bottomNav > a,
+  .bottomNavIcon {
+    transition: none !important;
+    transform: none !important;
+  }
+}
