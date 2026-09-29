@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import ProfileSwitcher from "@/components/ProfileSwitcher";
 import ApuDaTalkOpenButton from "@/components/ApuDaTalkOpenButton";
 import TodayJournalComposer from "@/components/TodayJournalComposer";
 import { getActiveProfile } from "@/lib/active-profile";
@@ -142,31 +141,6 @@ export default async function MyApuDaPage() {
 
   return (
     <main className="shell dashboardShell calmHome">
-      <header className="calmTopbar">
-        <div className="calmBrand">
-          <div>
-            <p className="eyebrow">MY APUDA</p>
-            <strong>내 건강 기록</strong>
-          </div>
-          <ProfileSwitcher profiles={profiles} activeId={profile.id} />
-        </div>
-
-        <nav className="calmDesktopNav" aria-label="My ApuDa 주요 메뉴">
-          <Link className="active" href="/my">오늘</Link>
-          <Link href="/my/record">기록</Link>
-          <Link href="/my/timeline">분석</Link>
-          <Link href="/my/visit-prep">진료 준비</Link>
-        </nav>
-
-        <Link className="calmProfileButton" href="/my/profiles" aria-label="프로필 관리">
-          <span>{profile.display_name.slice(0, 1)}</span>
-          <div>
-            <small>프로필</small>
-            <b>{profile.display_name}</b>
-          </div>
-        </Link>
-      </header>
-
       <section className={`calmHero ${hasStructuredHealthData ? "" : "isEmptyHero"}`}>
         <div className="calmHeroMain">
           <div className="calmDatePill">
