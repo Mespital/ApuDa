@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-10-04T00:33:27.164341+09:00",
+  "generated_at": "2026-10-04T00:42:13.190679+09:00",
   "service_key_connected": true,
   "sources": [
     {
@@ -9,13 +9,13 @@
       "name": "의약품 제품 허가정보",
       "source_url": "https://www.data.go.kr/data/15095677/openapi.do",
       "status": "auth_error",
-      "checked_at": "2026-10-04T00:33:23.358123+09:00",
+      "checked_at": "2026-10-04T00:42:09.680165+09:00",
       "records": [],
       "http_status": 403,
       "gateway_code": null,
       "gateway_message": null,
       "gateway_body": "{ \"OpenAPI_ServiceResponse\": { \"cmmMsgHeader\": { \"errMsg\": \"SERVICE_KEY_IS_NOT_REGISTERED_ERROR\", \"returnAuthMsg\": \"등록되지 않은 서비스키\", \"returnReasonCode\": \"30\" } } }",
-      "key_variant_attempt": 2,
+      "key_variant_attempt": 1,
       "error": "{ \"OpenAPI_ServiceResponse\": { \"cmmMsgHeader\": { \"errMsg\": \"SERVICE_KEY_IS_NOT_REGISTERED_ERROR\", \"returnAuthMsg\": \"등록되지 않은 서비스키\", \"returnReasonCode\": \"30\" } } }",
       "note": "키 형식(Encoding/Decoding)은 자동 보정했습니다. 계속 실패하면 공공데이터포털의 해당 API 활용승인에 연결된 서비스키인지 확인해야 합니다."
     },
@@ -25,7 +25,7 @@
       "name": "의약품 공급부족 정보",
       "source_url": "https://www.data.go.kr/data/15056886/openapi.do",
       "status": "key_available",
-      "checked_at": "2026-10-04T00:33:23.857698+09:00",
+      "checked_at": "2026-10-04T00:42:09.992765+09:00",
       "note": "공공데이터 인증키가 등록되어 있습니다. 해당 API 활용신청 승인 후 실제 조회 연결을 검증합니다."
     },
     {
@@ -34,7 +34,7 @@
       "name": "약가기준정보조회서비스",
       "source_url": "https://www.data.go.kr/data/15054445/openapi.do",
       "status": "key_available",
-      "checked_at": "2026-10-04T00:33:23.857720+09:00",
+      "checked_at": "2026-10-04T00:42:09.992786+09:00",
       "note": "공공데이터 인증키가 등록되어 있습니다. 해당 API 활용신청 승인 후 실제 조회 연결을 검증합니다."
     },
     {
@@ -43,7 +43,7 @@
       "name": "통계로 보는 암",
       "source_url": "https://edu.cancer.go.kr/lay1/S1T654C656/contents.do",
       "status": "ok",
-      "checked_at": "2026-10-04T00:33:23.857726+09:00",
+      "checked_at": "2026-10-04T00:42:09.992792+09:00",
       "latest_year": 2023,
       "note": "국가암정보센터 공식 통계 페이지 원문을 기준으로 연결합니다. 수치는 원문 표를 우선 확인합니다.",
       "page_title": "홈 >통계로 보는 암>유병률>암종별 암유병률",
@@ -278,7 +278,7 @@
       "name": "암환자 생활백서",
       "source_url": "https://cancer.go.kr/lay1/S1T523C850/contents.do",
       "status": "ok",
-      "checked_at": "2026-10-04T00:33:25.483986+09:00",
+      "checked_at": "2026-10-04T00:42:11.693431+09:00",
       "latest_year": null,
       "note": "국가암정보센터 원문을 직접 연결하며, ApuDa에서는 원문을 변형 복제하지 않습니다.",
       "page_title": "홈 >암정보 나눔터>국가암지식정보센터 OPEN API"
