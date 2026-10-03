@@ -20,6 +20,10 @@
   </div>
   <div class="period-summary" id="periodSummary">오늘의 핵심 뉴스를 불러오는 중입니다.</div>
   <div class="period-grid" id="periodGrid"><div class="newsroom-empty">핵심 뉴스를 불러오는 중입니다.</div></div>
+  <div class="period-trends-wrap">
+    <div class="period-trends-head"><b>기간별 핵심 흐름</b><span id="periodTrendNote">주요 기사에서 반복되는 산업 흐름</span></div>
+    <div class="period-trends" id="periodTrends"></div>
+  </div>
 </section>
 
 <section class="section">
@@ -67,17 +71,42 @@ function periodCard(n){
   const img=n.thumbnail_url||n.image_url||'';
   const pubs=(n.publishers||[]).join(' · ')||'ApuDa';
   const summary=(n.summary&&n.summary[0])||n.importance||'';
+  const u=primaryUrl(n);
   const thumb=img?'<div class="period-thumb"><img src="'+esc(img)+'" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.closest(\'.period-card\').classList.remove(\'has-thumb\');this.parentNode.remove()"></div>':'';
-  const cls='period-card'+(img?' has-thumb':'');
-  return '<article class="'+cls+'">'+thumb+'<div class="period-body"><div class="period-meta"><span class="period-rank">'+esc(n.period_rank||n.rank||'')+'</span><span>'+esc(pubs)+'</span><span>'+esc(formatPublished(n.published_at,n.published_at_verified))+'</span></div><h3>'+esc(n.title)+'</h3><p>'+esc(summary)+'</p><div class="source-links">'+sourceButtons(n)+'</div></div></article>';
+  const cls='period-card'+(img?' has-thumb':'')+(u?' is-clickable':'');
+  return '<article class="'+cls+'"'+(u?' data-url="'+esc(u)+'" role="link" tabindex="0" aria-label="'+esc(n.title)+' 원문 열기"':'')+'>'+thumb+'<div class="period-body"><div class="period-meta"><span class="period-rank">'+esc(n.period_rank||n.rank||'')+'</span><span>'+esc(pubs)+'</span><span>'+esc(formatPublished(n.published_at,n.published_at_verified))+'</span></div><h3>'+esc(n.title)+'</h3><p>'+esc(summary)+'</p><div class="source-links">'+sourceButtons(n)+'</div></div></article>';
+}
+function deriveClientTrends(items){
+  const groups=[
+    ['정책·급여',['정책','급여','약가','수가','복지부','식약처','규제']],
+    ['신약·임상',['허가','임상','3상','2상','신약']],
+    ['투자·사업개발',['기술수출','라이선스','투자','m&a','인수','합병']],
+    ['의료현장',['병원','약국']],
+    ['디지털헬스',['ai','디지털헬스','플랫폼','비대면']],
+    ['항암·정밀의료',['항암','암','종양','egfr','her2','pd-l1','brca','adc','car-t']]
+  ];
+  return groups.map(([title,keys])=>{
+    const count=(items||[]).filter(n=>keys.some(k=>([n.title,...(n.category||[]),...(n.summary||[])].join(' ').toLowerCase().includes(k.toLowerCase())))||(title==='항암·정밀의료'&&n.oncology?.is_oncology)).length;
+    return {title,count,change:count+'건의 핵심 기사에서 확인',implication:'반복 노출되는 주요 산업 흐름'};
+  }).filter(x=>x.count).sort((a,b)=>b.count-a.count).slice(0,4);
+}
+function wirePeriodCards(){
+  document.querySelectorAll('.period-card.is-clickable').forEach(card=>{
+    const open=()=>window.open(card.dataset.url,'_blank','noopener');
+    card.addEventListener('click',e=>{if(e.target.closest('a'))return;open();});
+    card.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&!e.target.closest('a')){e.preventDefault();open();}});
+  });
 }
 function renderPeriod(){
   const p=periodData?.periods?.[currentPeriod];
-  const grid=document.getElementById('periodGrid'),summary=document.getElementById('periodSummary');
-  if(!p){summary.textContent='기간별 핵심뉴스 데이터를 준비 중입니다.';grid.innerHTML='<div class="newsroom-empty">데이터가 아직 없습니다.</div>';return;}
+  const grid=document.getElementById('periodGrid'),summary=document.getElementById('periodSummary'),trendBox=document.getElementById('periodTrends');
+  if(!p){summary.textContent='기간별 핵심뉴스 데이터를 준비 중입니다.';grid.innerHTML='<div class="newsroom-empty">데이터가 아직 없습니다.</div>';trendBox.innerHTML='';return;}
   summary.textContent=p.description||'';
   const items=p.items||[];
   grid.innerHTML=items.length?items.map(periodCard).join(''):'<div class="newsroom-empty">이 기간에 표시할 핵심 뉴스가 없습니다.</div>';
+  wirePeriodCards();
+  const trends=(p.trends&&p.trends.length?p.trends:deriveClientTrends(items));
+  trendBox.innerHTML=trends.length?trends.map(t=>'<div class="period-trend"><span class="trend-count">'+esc(t.count||'')+'</span><div><b>'+esc(t.title)+'</b><small>'+esc(t.change||'')+'</small><p>'+esc(t.implication||'')+'</p></div></div>').join(''):'<div class="period-trend-empty">핵심 흐름은 기사 누적 후 자동으로 표시됩니다.</div>';
 }
 function setupPeriodTabs(){
   document.querySelectorAll('#periodTabs button').forEach(btn=>btn.onclick=()=>{
@@ -128,9 +157,9 @@ async function loadPeriod(){
   }catch(e){
     const top=(currentDaily?.top_news||[]);
     periodData={periods:{
-      today:{description:'오늘의 핵심 뉴스',items:top.slice(0,5)},
-      week:{description:'현재 누적 데이터 기준 최근 7일 핵심 뉴스',items:top.slice(0,5)},
-      month:{description:'현재 누적 데이터 기준 최근 30일 핵심 뉴스',items:top.slice(0,6)}
+      today:{description:'오늘의 핵심 뉴스',items:top.slice(0,5),trends:deriveClientTrends(top.slice(0,5))},
+      week:{description:'현재 누적 데이터 기준 최근 7일 핵심 뉴스',items:top.slice(0,5),trends:deriveClientTrends(top.slice(0,5))},
+      month:{description:'현재 누적 데이터 기준 최근 30일 핵심 뉴스',items:top.slice(0,6),trends:deriveClientTrends(top.slice(0,6))}
     }};
   }
   renderPeriod();
