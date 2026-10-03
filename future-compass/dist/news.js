@@ -12,4 +12,4 @@ try{const saved=JSON.parse(localStorage.getItem('future-compass-v2')||'{}');save
 function saveProgress(){try{localStorage.setItem('future-compass-v2',JSON.stringify({subjects:[...chosenSubjects],activities:[...chosenActivities],completed:[...completed],route}))}catch{}}
 document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.hasAttribute('data-news-refresh'))refreshNews();if(b.dataset.newsFilter){newsFilter=b.dataset.newsFilter;render()}if(b.dataset.newsDomain){page='career';activeDomain=domains.some(d=>d.id===b.dataset.newsDomain)?b.dataset.newsDomain:'ai';render();document.querySelector('#domain-detail')?.scrollIntoView({behavior:'smooth',block:'start'})}if(b.dataset.domain&&activeDomain)document.querySelector('#domain-detail')?.scrollIntoView({behavior:'smooth',block:'start'});if(b.dataset.subject||b.dataset.activity||b.dataset.route)saveProgress()});
 document.addEventListener('change',e=>{if(e.target.matches('[data-check]'))saveProgress()});
-render();refreshNews();
+render();connectionStatus();refreshNews();
