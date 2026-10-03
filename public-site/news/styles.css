@@ -342,3 +342,5 @@ a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 32px));m
   .nccn-card{min-height:104px;padding:12px}
   .official-notice-card{padding:13px}
 }
+
+.status-key_available{background:#EAF3FF;color:#1855D8}

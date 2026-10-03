@@ -23,7 +23,13 @@ fi
 
 CRON_CMD="APUDA_NEWS_ENV_FILE=$ENV_FILE $TARGET/publish.sh >> $LOG_DIR/news.log 2>&1"
 (
-  crontab -l 2>/dev/null | grep -v 'APUDA_NEWS_ENV_FILE=.*apuda-news' | grep -v 'apuda-news/publish.sh' || true
+  crontab -l 2>/dev/null | grep -v '^CRON_TZ=Asia/Seoul
+  echo "3 9 * * * $CRON_CMD"
+) | crontab -
+
+echo "Installed user cron:"
+crontab -l
+ | grep -v 'APUDA_NEWS_ENV_FILE=.*apuda-news' | grep -v 'apuda-news/publish.sh' || true
   echo 'CRON_TZ=Asia/Seoul'
   echo "3 9 * * * $CRON_CMD"
 ) | crontab -
