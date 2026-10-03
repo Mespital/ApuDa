@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-10-03T18:04:46.193569+09:00",
+  "window": {
+    "start": "2026-10-02T09:00:00+09:00",
+    "end": "2026-10-03T09:00:00+09:00"
+  },
+  "sources": {
+    "데일리팜": {
+      "candidates": 80,
+      "in_window_verified": 1
+    },
+    "의학신문": {
+      "candidates": 80,
+      "in_window_verified": 17
+    },
+    "메디파나뉴스": {
+      "candidates": 80,
+      "in_window_verified": 19
+    },
+    "약사공론": {
+      "candidates": 80,
+      "in_window_verified": 23
+    }
+  },
+  "merged_count": 58,
+  "top_count": 5,
+  "oncology_30d_count": 11,
+  "week_highlight_count": 5,
+  "month_highlight_count": 5
+}

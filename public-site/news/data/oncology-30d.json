@@ -1,0 +1,676 @@
+{
+  "version": "1.0",
+  "generated_at": "2026-10-03T18:04:46.190786+09:00",
+  "window": {
+    "start": "2026-09-03T09:00:00+09:00",
+    "end": "2026-10-03T09:00:00+09:00",
+    "days": 30,
+    "timezone": "Asia/Seoul"
+  },
+  "cancer_types": [
+    "유방암",
+    "폐암",
+    "위암",
+    "대장암",
+    "갑상선암",
+    "신장암",
+    "전립선암",
+    "췌장암",
+    "담도암",
+    "간암",
+    "림프종",
+    "자궁경부암"
+  ],
+  "items": [
+    {
+      "rank": null,
+      "canonical_issue": "오스코텍, 레이저티닙 다음은 '항내성'…퍼스트인클래스로 승부 - 메디파나뉴스",
+      "title": "오스코텍, 레이저티닙 다음은 '항내성'…퍼스트인클래스로 승부 - 메디파나뉴스",
+      "category": [
+        "산업"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-03T06:03:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "오스코텍이 레이저티닙 이후 신약개발의 무게중심을 패스트팔로워에서 퍼스트인클래스로 옮긴다. 새로운 타깃과 치료 가설을 먼저 검증해 초기 기술이전 기회를 찾겠다는 전략이다. 항내성 항암제 발굴 플랫폼 'ACART'가 이를 실행할 핵심 연구축이다. 새로운 내성 타깃과 후보물질을 발굴하고, 선두 과제인 'OCT",
+        "글자크기 설정 가 가 기사의 본문 내용은 이 글자크기로 변경됩니다.",
+        "사진=강희재 기자 오스코텍이 레이저티닙 이후 신약개발의 무게중심을 패스트팔로워에서 퍼스트인클래스로 옮긴다."
+      ],
+      "importance": "산업 중요도 규칙 기반 자동 선별 기사입니다. 편집 분석 문구는 후속 AI 검수 단계에서 보강합니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=418713"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=418713"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/418713_325963_3212.png",
+      "score": 0,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": null,
+        "industry_summary": null
+      },
+      "freshness": "today",
+      "age_days": 0
+    },
+    {
+      "rank": null,
+      "canonical_issue": "진행성에서 수술 전후까지…'키트루다', 방광암 치료 영역 확대 - 메디파나뉴스",
+      "title": "진행성에서 수술 전후까지…'키트루다', 방광암 치료 영역 확대 - 메디파나뉴스",
+      "category": [
+        "급여",
+        "허가"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-03T06:01:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "한국MSD가 방광암 분야에서 '키트루다(펨브롤리주맙)'의 치료 영역을 확장하고 있다. 백금 기반 항암화학요법 이후 진행된 요로상피암에서 출발해 진행성 질환의 1차 치료와 비근육침습성 방광암, 근육침습성 방광암의 수술 전후 치료까지 임상 근거를 축적하며 치료 선택지가 넓어졌다. 김수정 한국MSD 의학부 전",
+        "글자크기 설정 가 가 기사의 본문 내용은 이 글자크기로 변경됩니다.",
+        "사진=조해진 기자 한국MSD가 방광암 분야에서 '키트루다(펨브롤리주맙)'의 치료 영역을 확장하고 있다."
+      ],
+      "importance": "산업 중요도 규칙 기반 자동 선별 기사입니다. 편집 분석 문구는 후속 AI 검수 단계에서 보강합니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=418714"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=418714"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/418714_325961_5610.jpg",
+      "score": 46,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "폐암"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": "허가 관련",
+        "reimbursement_status": "급여 관련",
+        "patient_summary": null,
+        "industry_summary": null
+      },
+      "freshness": "today",
+      "age_days": 0
+    },
+    {
+      "rank": null,
+      "canonical_issue": "바이오시밀러 비교 유효성 임상, 품질·PK 근거로 필요성 가른다 - 약사공론",
+      "title": "바이오시밀러 비교 유효성 임상, 품질·PK 근거로 필요성 가른다 - 약사공론",
+      "category": [
+        "수가",
+        "식약처",
+        "허가",
+        "ai"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-10-03T05:50:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "식품의약품안전처가 동등생물의약품(바이오시밀러) 허가심사에서 비교 유효성 임상시험의 필요성을 품질과 약동학, 안전성·면역원성 등을 종합해 판단하는 기준을 구체화했다",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "식품의약품안전처는 바이오시밀러 허가 시 비교 유효성 임상시험 필요성을 품질, 약동학, 안전성 등을 종합해 판단하는 기준을 구체화했습니다."
+      ],
+      "importance": "산업 중요도 규칙 기반 자동 선별 기사입니다. 편집 분석 문구는 후속 AI 검수 단계에서 보강합니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=545510"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545510"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/545510_450586_2649.jpg",
+      "score": 70,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [
+          "ADC"
+        ],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": "허가 관련",
+        "reimbursement_status": null,
+        "patient_summary": null,
+        "industry_summary": null
+      },
+      "freshness": "today",
+      "age_days": 0
+    },
+    {
+      "rank": null,
+      "canonical_issue": "백신 넘어 치료제로…노바티스, 中 mRNA에 78억달러 베팅 - 메디파나뉴스",
+      "title": "백신 넘어 치료제로…노바티스, 中 mRNA에 78억달러 베팅 - 메디파나뉴스",
+      "category": [
+        "허가",
+        "라이선스"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-02T20:41:57+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "노바티스가 중국 바이오기업의 mRNA 기술에 최대 약 78억달러를 베팅한다. 코로나19 백신으로 대중화된 mRNA 기술을 자가면역질환 치료에 활용해 B세포를 제거하는 새로운 치료전략을 확보하기 위해서다. 중국 아보젠 바이오사이언스(Abogen Biosciences)는 2일 빅파마 노바티스와 mRNA 기반",
+        "글자크기 설정 가 가 기사의 본문 내용은 이 글자크기로 변경됩니다.",
+        "ChatGPT 이미지 노바티스가 중국 바이오기업의 mRNA 기술에 최대 약 78억달러를 베팅한다."
+      ],
+      "importance": "산업 중요도 규칙 기반 자동 선별 기사입니다. 편집 분석 문구는 후속 AI 검수 단계에서 보강합니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=418706"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=418706"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/418706_325950_2921.png",
+      "score": 27,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": "허가 관련",
+        "reimbursement_status": null,
+        "patient_summary": null,
+        "industry_summary": null
+      },
+      "freshness": "7d",
+      "age_days": 1
+    },
+    {
+      "rank": null,
+      "canonical_issue": "수술만으론 부족했던 방광암…'키트루다' 병용 새 선택지 - 메디파나뉴스",
+      "title": "수술만으론 부족했던 방광암…'키트루다' 병용 새 선택지 - 메디파나뉴스",
+      "category": [
+        "허가",
+        "3상",
+        "병원"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-02T12:11:13+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "시스플라틴 기반 항암화학요법이 어려운 근육침습성 방광암(MIBC) 환자에게 '키트루다(펨브롤리주맙)'와 엔포투맙 베도틴 병용요법이 새로운 수술 전후 치료 선택지로 제시됐다. 한국MSD는 2일 JW메리어트호텔 서울에서 '키트루다 근육침습성 방광암 수술 전후 보조요법 허가 기념 기자간담회'를 개최하고, 이번",
+        "글자크기 설정 가 가 기사의 본문 내용은 이 글자크기로 변경됩니다.",
+        "사진=조해진 기자 시스플라틴 기반 항암화학요법이 어려운 근육침습성 방광암(MIBC) 환자에게 '키트루다(펨브롤리주맙)'와 엔포투맙 베도틴 병용요법이 새로운 수술 전후 치료 선택지로 제시됐다."
+      ],
+      "importance": "산업 중요도 규칙 기반 자동 선별 기사입니다. 편집 분석 문구는 후속 AI 검수 단계에서 보강합니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=418678"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=418678"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/418678_325899_259.jpg",
+      "score": 54,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": "3",
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": "허가 관련",
+        "reimbursement_status": null,
+        "patient_summary": null,
+        "industry_summary": null
+      },
+      "freshness": "7d",
+      "age_days": 1
+    },
+    {
+      "rank": 4,
+      "canonical_issue": "'방광암' 수술 전후 치료, 키트루다-파드셉으로 선택지 확대 - 약사공론",
+      "title": "'방광암' 수술 전후 치료, 키트루다-파드셉으로 선택지 확대 - 약사공론",
+      "category": [
+        "식약처",
+        "허가",
+        "3상",
+        "병원",
+        "ai"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-10-02T12:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "고령 인구 비중이 높은 근육침습성 방광암 치료 영역에서 새로운 전신 치료 옵션이 본격적인 도입을 앞두고 있다. 한국MSD는 2일 JW메리어트호텔에서 면역항암제 키",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "'방광암' 수술 전후 치료, 키트루다-파드셉으로 선택지 확대 한국MSD는 고령층에 많은 근육침습성 방광암 치료를 위해 키트루다와 엔포투맙 베도틴 병용요법의 허가를 기념하는 기자간담회를 개최했습니다."
+      ],
+      "importance": "산업 중요도 규칙 기반 자동 선별 기사입니다. 편집 분석 문구는 후속 AI 검수 단계에서 보강합니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=545430"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545430"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/545430_450553_624.jpg",
+      "score": 82,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": "3",
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": "허가 관련",
+        "reimbursement_status": null,
+        "patient_summary": null,
+        "industry_summary": null
+      },
+      "freshness": "7d",
+      "age_days": 1
+    },
+    {
+      "rank": null,
+      "canonical_issue": "냉장 여드름 크림도 원외등록…약국 관리 품목 늘어난다 - 약사공론",
+      "title": "냉장 여드름 크림도 원외등록…약국 관리 품목 늘어난다 - 약사공론",
+      "category": [
+        "급여",
+        "합병",
+        "병원",
+        "약국",
+        "ai"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-10-02T12:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "냉장 보관이 필요한 여드름 크림과 고함량 주사제가 일부 상급종합병원의 원외처방 목록에 추가됐다. 분할·분쇄가 금지된 정제와 병 단위 처방 품목도 포함돼 약국에서",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "일부 상급종합병원 원외처방 목록에 냉장 보관이 필요한 여드름 크림과 고함량 주사제가 추가되었으며, 분할·분쇄 금지 정제와 병 단위 처방 품목도 포함되어 약국에서 관리할 약이 늘어날 전망입니다."
+      ],
+      "importance": "산업 중요도 규칙 기반 자동 선별 기사입니다. 편집 분석 문구는 후속 AI 검수 단계에서 보강합니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=545448"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545448"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/545448_450565_479.jpg",
+      "score": 72,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": "급여 관련",
+        "patient_summary": null,
+        "industry_summary": null
+      },
+      "freshness": "7d",
+      "age_days": 1
+    },
+    {
+      "rank": null,
+      "canonical_issue": "폐경 호르몬치료, 우려 넘어 맞춤으로…'페모스톤' 주목 - 메디파나뉴스",
+      "title": "폐경 호르몬치료, 우려 넘어 맞춤으로…'페모스톤' 주목 - 메디파나뉴스",
+      "category": [
+        "병원"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-02T11:50:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "'폐경(Menopause)'은 여성의 생애 과정에서 겪는 중요한 전환기다. 폐경 증상이 심한 경우에는 '폐경 호르몬치료(MHT)'를 통해 증상을 완화할 수 있는데, 최근에는 환자 개인의 증상과 위험요인을 살펴 자신에게 맞는 치료를 선택하는 접근이 강조되고 있다. 김성훈 서울아산병원 산부인과 교수는 메디파",
+        "글자크기 설정 가 가 기사의 본문 내용은 이 글자크기로 변경됩니다.",
+        "사진=메디파나뉴스 '폐경(Menopause)'은 여성의 생애 과정에서 겪는 중요한 전환기다."
+      ],
+      "importance": "산업 중요도 규칙 기반 자동 선별 기사입니다. 편집 분석 문구는 후속 AI 검수 단계에서 보강합니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=418638"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=418638"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/418638_325857_4721.jpg",
+      "score": 14,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "유방암"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": null,
+        "industry_summary": null
+      },
+      "freshness": "7d",
+      "age_days": 1
+    },
+    {
+      "rank": 5,
+      "canonical_issue": "거래는 줄고 판돈은 커졌다…글로벌 빅파마 계약 역대 최대 - 메디파나뉴스",
+      "title": "거래는 줄고 판돈은 커졌다…글로벌 빅파마 계약 역대 최대 - 메디파나뉴스",
+      "category": [
+        "m&a",
+        "인수",
+        "합병",
+        "투자",
+        "ai"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-02T11:12:42+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "글로벌 바이오제약산업 계약 규모가 지난해 전년 대비 27% 늘며 최고치를 기록했다. 계약 건수는 18% 줄었지만 소수의 대형 전략적 거래가 전체 계약 규모 확대를 이끈 것으로 나타났다. 2일 한국바이오협회 '글로벌 바이오제약산업 주요거래 현황'에 따르면, 지난해 글로벌 바이오제약산업 계약 규모는 2926",
+        "글자크기 설정 가 가 기사의 본문 내용은 이 글자크기로 변경됩니다.",
+        "AI 생성 이미지(ChatGPT) 글로벌 바이오제약산업 계약 규모가 지난해 전년 대비 27% 늘며 최고치를 기록했다."
+      ],
+      "importance": "산업 중요도 규칙 기반 자동 선별 기사입니다. 편집 분석 문구는 후속 AI 검수 단계에서 보강합니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=418662"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=418662"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/418662_325882_4949.png",
+      "score": 78,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [
+          "ADC"
+        ],
+        "biomarkers": [
+          "PD-L1"
+        ],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": null,
+        "industry_summary": null
+      },
+      "freshness": "7d",
+      "age_days": 1
+    },
+    {
+      "rank": null,
+      "canonical_issue": "위암·폐암·요로상피암·식도암 치료 지형 변한다 - 의학신문",
+      "title": "위암·폐암·요로상피암·식도암 치료 지형 변한다 - 의학신문",
+      "category": [
+        "급여",
+        "복지부",
+        "허가",
+        "병원"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-02T10:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=김상일 기자]국내 난치성 암 치료 현장의 패러다임을 바꿀 다국적 제약사들의 혁신 항암제 5종이 2026년 10월 1일을 기점으로 일제히 건강보",
+        "[의학신문·일간보사=김상일 기자]국내 난치성 암 치료 현장의 패러다임을 바꿀 다국적 제약사들의 혁신 항암제 5종이 2026년 10월 1일을 기점으로 일제히 건강보험 급여 울타리 안으로 들어왔다.",
+        "그동안 표적치료 옵션이 부재하거나 화학요법 외에 마땅한 대안이 없어 수천만 원에 달하는 치료비를 부담해야 했던 전이성 위암, 요로상피암, 비소세포폐암, 식도암 환자들의 경제적 부담이 크게 줄어드는 동시에, 바이오마커 기반의 맞춤형 정밀 항암 치료가 본격적인 대중화 국면에 접어들었다."
+      ],
+      "importance": "산업 중요도 규칙 기반 자동 선별 기사입니다. 편집 분석 문구는 후속 AI 검수 단계에서 보강합니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3013214"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013214"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3013214_414082_828.jpg",
+      "score": 76,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "폐암",
+          "위암"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [
+          "ADC"
+        ],
+        "biomarkers": [
+          "EGFR",
+          "HER2",
+          "PD-L1",
+          "CLDN18.2"
+        ],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": "허가 관련",
+        "reimbursement_status": "급여 관련",
+        "patient_summary": null,
+        "industry_summary": null
+      },
+      "freshness": "7d",
+      "age_days": 1
+    },
+    {
+      "rank": null,
+      "canonical_issue": "임신중지의약품 \"허가와 함께 건강보험·지원 검토해야 한다\" - 약사공론",
+      "title": "임신중지의약품 \"허가와 함께 건강보험·지원 검토해야 한다\" - 약사공론",
+      "category": [
+        "급여",
+        "허가",
+        "병원",
+        "ai"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-10-02T09:17:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "정부가 2027년 1분기를 목표로 임신중지약 도입을 추진하고 있지만 국내 약값과 건강보험 적용 여부는 아직 정해지지 않았다. 국회 보건복지위원회 더불어민주당 전진",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "임신중지의약품 \"허가와 함께 건강보험·지원 검토해야 한다\" 정부가 2027년 1분기까지 임신중지약 도입을 추진하지만, 약값과 건강보험 적용 여부는 미정입니다."
+      ],
+      "importance": "산업 중요도 규칙 기반 자동 선별 기사입니다. 편집 분석 문구는 후속 AI 검수 단계에서 보강합니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=545406"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545406"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/545406_450531_3230.png",
+      "score": 49,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": "허가 관련",
+        "reimbursement_status": "급여 관련",
+        "patient_summary": null,
+        "industry_summary": null
+      },
+      "freshness": "7d",
+      "age_days": 1
+    }
+  ]
+}
