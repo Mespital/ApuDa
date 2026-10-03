@@ -61,19 +61,26 @@ def main():
     repo=Path(os.getenv("APUDA_REPO_DIR",".")).resolve()
     outdir=repo/"public-site"/"news"/"data";outdir.mkdir(parents=True,exist_ok=True)
     prev_path=outdir/"nccn-monitor.json"
+    history_path=outdir/"nccn-history.json"
     prev={}
+    history=[]
     if prev_path.exists():
         try:
             p=json.loads(prev_path.read_text(encoding="utf-8"))
             prev={x.get("cancer"):x for x in p.get("items",[])}
         except Exception:pass
+    if history_path.exists():
+        try:
+            history=json.loads(history_path.read_text(encoding="utf-8")).get("items",[])
+        except Exception:history=[]
     s=requests.Session();s.headers.update({"User-Agent":UA,"Accept-Language":"en-US,en;q=0.9"})
     now=datetime.now(TZ);items=[]
     try:anchors=discover(s);category_ok=True
     except Exception:anchors=[];category_ok=False
     for cancer,aliases in GUIDES:
         label,url=find_link(anchors,aliases)
-        item={"cancer":cancer,"status":"not_found","version":None,"previous_version":prev.get(cancer,{}).get("version"),"updated":False,"checked_at":now.isoformat(),"official_url":url or CATEGORY_URL,"source":"NCCN","note":"공개 페이지의 버전 메타데이터만 확인하며 가이드라인 본문은 저장·재배포하지 않습니다."}
+        prev_item=prev.get(cancer,{})
+        item={"cancer":cancer,"status":"not_found","version":None,"previous_version":prev_item.get("version"),"updated":False,"checked_at":now.isoformat(),"last_changed_at":prev_item.get("last_changed_at"),"official_url":url or CATEGORY_URL,"source":"NCCN","note":"공개 페이지의 버전 메타데이터만 확인하며 가이드라인 본문은 저장·재배포하지 않습니다."}
         if url:
             try:
                 ver,h=fetch_detail(s,url)
@@ -81,13 +88,28 @@ def main():
                 item["status"]="ok" if ver else "version_not_exposed"
                 pv=item["previous_version"]
                 item["updated"]=bool(ver and pv and ver!=pv)
+                if item["updated"]:
+                    item["last_changed_at"]=now.isoformat()
+                    event={
+                        "cancer":cancer,
+                        "previous_version":pv,
+                        "current_version":ver,
+                        "detected_at":now.isoformat(),
+                        "official_url":url,
+                        "source":"NCCN"
+                    }
+                    key=f"{cancer}|{pv}|{ver}"
+                    if not any(f"{e.get('cancer')}|{e.get('previous_version')}|{e.get('current_version')}"==key for e in history):
+                        history.insert(0,event)
             except Exception:
                 item["status"]="unavailable"
         elif not category_ok:
             item["status"]="category_unavailable"
         items.append(item)
-    payload={"version":"1.0","generated_at":now.isoformat(),"category_url":CATEGORY_URL,"items":items,"copyright_policy":"NCCN 원문/PDF/알고리즘을 복제하지 않고 공개 버전 정보와 공식 링크만 모니터링합니다."}
+    payload={"version":"1.1","generated_at":now.isoformat(),"category_url":CATEGORY_URL,"items":items,"copyright_policy":"NCCN 원문/PDF/알고리즘을 복제하지 않고 공개 버전 정보와 공식 링크만 모니터링합니다."}
     prev_path.write_text(json.dumps(payload,ensure_ascii=False,indent=2),encoding="utf-8")
-    print(json.dumps({"nccn_guides":len(items),"updates":sum(1 for x in items if x["updated"])},ensure_ascii=False))
+    history_payload={"version":"1.0","generated_at":now.isoformat(),"items":history[:100],"copyright_policy":payload["copyright_policy"]}
+    history_path.write_text(json.dumps(history_payload,ensure_ascii=False,indent=2),encoding="utf-8")
+    print(json.dumps({"nccn_guides":len(items),"updates":sum(1 for x in items if x["updated"]),"history_events":len(history_payload["items"])},ensure_ascii=False))
 
 if __name__=="__main__":main()
