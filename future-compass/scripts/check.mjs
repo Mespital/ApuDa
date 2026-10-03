@@ -5,12 +5,13 @@ import assert from 'node:assert/strict';
 const root=path.resolve(path.dirname(new URL(import.meta.url).pathname),'..');
 const html=fs.readFileSync(path.join(root,'dist/index.html'),'utf8');
 const events={};const content={innerHTML:'',scrollIntoView(){}};const storage=new Map();
-const sandbox={console,URL,AbortController,AbortSignal,Intl,Date,Set,Promise,localStorage:{getItem:k=>storage.get(k),setItem:(k,v)=>storage.set(k,v)},window:{scrollY:0,scrollTo(){},addEventListener(){}},document:{querySelector:()=>content,querySelectorAll:()=>[],addEventListener:(name,fn)=>(events[name]??=[]).push(fn)},fetch:async()=>({ok:true,json:async()=>JSON.parse(fs.readFileSync(path.join(root,'dist/news.json'),'utf8'))})};
+let popup=null;let nextTimer=0;const timers=new Map();
+const sandbox={setTimeout:(fn,ms)=>{timers.set(++nextTimer,{fn,ms});return nextTimer},clearTimeout:id=>timers.delete(id),setInterval:()=>++nextTimer,clearInterval(){},sessionStorage:{getItem:()=>null,setItem(){}},console,URL,AbortController,AbortSignal,Intl,Date,Set,Promise,localStorage:{getItem:k=>storage.get(k),setItem:(k,v)=>storage.set(k,v)},window:{scrollY:0,scrollTo(){},addEventListener(){}},document:{body:{appendChild:node=>{popup=node}},createElement:()=>({innerHTML:"",setAttribute(){},addEventListener(){},remove(){popup=null}}),querySelector:selector=>selector==="#seungjun-cheer"?popup:content,querySelectorAll:()=>[],addEventListener:(name,fn)=>(events[name]??=[]).push(fn)},fetch:async()=>({ok:true,json:async()=>JSON.parse(fs.readFileSync(path.join(root,'dist/news.json'),'utf8'))})};
 vm.createContext(sandbox);
 vm.runInContext(html.match(/<script>([\s\S]*?)<\/script>/)[1],sandbox);
 for(const file of ['explore.js','shell.js','news.js'])vm.runInContext(fs.readFileSync(path.join(root,'dist',file),'utf8'),sandbox);
 const run=code=>vm.runInContext(code,sandbox);
-assert.match(content.innerHTML,/나의 미래 탐험/);
+assert.match(content.innerHTML,/승준이의 미래 아지트/);
 for(const page of ['home','future','life','career','plan','research','explore','news']){run(`page=${JSON.stringify(page)};render()`);assert.ok(content.innerHTML.length>150);assert.doesNotMatch(content.innerHTML,/undefined/)}
 run("page='explore';route='self';chosenSubjects.add('수학');chosenActivities.add('만들기');activeDomain='robots';render();saveProgress()");
 assert.match(content.innerHTML,/기계|로봇/);assert.equal((content.innerHTML.match(/id="domain-detail"/g)||[]).length,1);
@@ -20,4 +21,5 @@ assert.match(content.innerHTML,/&lt;img/);assert.doesNotMatch(content.innerHTML,
 assert.equal(run("safeArticleURL('javascript:alert(1)')"),null);
 assert.equal(run("safeArticleURL('https://openai.com.evil.test/')"),null);
 assert.equal(run("validateNews({articles:[{title:'bad',url:'https://evil.test',published_at:'2026-10-01'}]}).articles.length"),0);
-console.log('PASS: 8 screens, interest matching, full-width detail, saved choices, feed URL/content validation.');
+run('showCheer(true)');assert.match(popup.innerHTML,/흰둥이/);assert.ok([...timers.values()].some(t=>t.ms===7000));run('hideCheer()');assert.equal(popup,null);storage.set('compass-cheer-off','1');run('showCheer()');assert.equal(popup,null);run('showCheer(true)');assert.match(popup.innerHTML,/짱구/);run('hideCheer()');
+console.log('PASS: personalized home, encouragement timing and opt-out, 8 screens, interest matching, full-width detail, saved choices, feed URL/content validation.');
