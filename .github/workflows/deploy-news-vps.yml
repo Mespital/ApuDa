@@ -68,6 +68,7 @@ jobs:
       - name: Write protected environment
         env:
           APUDA_NEWS_GITHUB_TOKEN: ${{ secrets.APUDA_NEWS_GITHUB_TOKEN }}
+          DATA_GO_KR_SERVICE_KEY: ${{ secrets.DATA_GO_KR_SERVICE_KEY }}
         run: |
           set -euo pipefail
           printf 'APUDA_GITHUB_TOKEN=%s\nAPUDA_GITHUB_REPO=Mespital/ApuDa\nAPUDA_NEWS_BRANCH=main\nAPUDA_REPO_DIR=$HOME/apuda-repo\nDATA_GO_KR_SERVICE_KEY=%s\n' "$APUDA_NEWS_GITHUB_TOKEN" "$DATA_GO_KR_SERVICE_KEY" > /tmp/news.env
