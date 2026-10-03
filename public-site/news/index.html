@@ -32,7 +32,15 @@
 </section>
 
 <section class="section official-notice-section">
-  <div class="section-head"><div><h2>공식 공문 · 허가 · 안전성</h2><p>식약처 공식 문서와 첨부파일을 최근순으로 확인합니다.</p></div><span class="official-updated" id="noticeUpdated">공식자료 확인 중</span></div>
+  <div class="section-head"><div><h2>공식 공문 · 허가 · 급여 · 안전성</h2><p>식약처와 건강보험심사평가원의 공식 문서를 최근순으로 확인합니다.</p></div><span class="official-updated" id="noticeUpdated">공식자료 확인 중</span></div>
+  <div class="notice-filters" id="noticeFilters">
+    <button type="button" class="on" data-notice-filter="전체">전체</button>
+    <button type="button" data-notice-filter="식품의약품안전처">식약처</button>
+    <button type="button" data-notice-filter="건강보험심사평가원">심평원</button>
+    <button type="button" data-notice-filter="급여">급여·약제</button>
+    <button type="button" data-notice-filter="안전성">안전성</button>
+    <button type="button" data-notice-filter="고시">고시</button>
+  </div>
   <div class="official-notice-list" id="officialNoticeList"><div class="newsroom-empty">공식 공문을 불러오는 중입니다.</div></div>
 </section>
 
@@ -65,7 +73,7 @@ const OUTLET_HOME={
 const esc=s=>String(s??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const qs=new URLSearchParams(location.search);
 const requestedDate=qs.get('date');
-let currentPeriod='today',periodData=null,currentDaily=null;
+let currentPeriod='today',periodData=null,currentDaily=null,officialNotices=[],activeNoticeFilter='전체';
 const issueDigestLimits={today:3,week:3,month:3};
 
 function primaryUrl(n){return Array.isArray(n?.source_urls)&&n.source_urls.length?n.source_urls[0]:'';}
@@ -218,19 +226,41 @@ function formatDateOnly(v){
   try{return new Date(v).toLocaleDateString('ko-KR',{year:'numeric',month:'numeric',day:'numeric'});}
   catch{return '';}
 }
+function noticeMatches(n,filter){
+  if(filter==='전체')return true;
+  if(filter==='식품의약품안전처'||filter==='건강보험심사평가원')return n.agency===filter;
+  const t=[n.category,n.document_type,n.title,n.related_basis,n.summary].filter(Boolean).join(' ');
+  return t.includes(filter);
+}
+function renderOfficialNotices(){
+  const box=document.getElementById('officialNoticeList');
+  const filtered=officialNotices.filter(n=>noticeMatches(n,activeNoticeFilter)).slice(0,14);
+  box.innerHTML=filtered.length?filtered.map(n=>{
+    const atts=(n.attachments||[]).slice(0,3).map(a=>'<a class="attachment-chip" href="'+esc(a.url)+'" target="_blank" rel="noopener noreferrer">'+esc(a.label||'첨부파일')+' ↗</a>').join('');
+    const summary=n.summary?'<p class="official-notice-summary">'+esc(n.summary)+'</p>':'';
+    return '<article class="official-notice-card"><div class="official-notice-meta"><span>'+esc(n.agency)+'</span><span class="notice-type">'+esc(n.category||n.document_type)+'</span><time>'+esc(formatDateOnly(n.published_at))+'</time></div><h3><a href="'+esc(n.url)+'" target="_blank" rel="noopener noreferrer">'+esc(n.title)+'</a></h3>'+summary+'<div class="official-notice-actions"><a class="source-chip" href="'+esc(n.url)+'" target="_blank" rel="noopener noreferrer">공식 원문 ↗</a>'+atts+'</div></article>';
+  }).join(''):'<div class="newsroom-empty">선택한 조건의 최근 30일 공식 문서가 없습니다.</div>';
+}
+function setupNoticeFilters(){
+  document.querySelectorAll('[data-notice-filter]').forEach(btn=>btn.onclick=()=>{
+    activeNoticeFilter=btn.dataset.noticeFilter;
+    document.querySelectorAll('[data-notice-filter]').forEach(b=>b.classList.toggle('on',b===btn));
+    renderOfficialNotices();
+  });
+}
 async function loadOfficialNotices(){
-  const box=document.getElementById('officialNoticeList'),updated=document.getElementById('noticeUpdated');
+  const updated=document.getElementById('noticeUpdated');
   try{
-    const data=await fetch('/news/data/official-notices.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()});
-    updated.textContent='최근 30일 · '+(data.items||[]).length+'건';
-    const items=(data.items||[]).slice(0,10);
-    box.innerHTML=items.length?items.map(n=>{
-      const atts=(n.attachments||[]).slice(0,3).map(a=>'<a class="attachment-chip" href="'+esc(a.url)+'" target="_blank" rel="noopener noreferrer">'+esc(a.label||'첨부파일')+' ↗</a>').join('');
-      return '<article class="official-notice-card"><div class="official-notice-meta"><span>'+esc(n.agency)+'</span><span class="notice-type">'+esc(n.category||n.document_type)+'</span><time>'+esc(formatDateOnly(n.published_at))+'</time></div><h3><a href="'+esc(n.url)+'" target="_blank" rel="noopener noreferrer">'+esc(n.title)+'</a></h3><div class="official-notice-actions"><a class="source-chip" href="'+esc(n.url)+'" target="_blank" rel="noopener noreferrer">공식 원문 ↗</a>'+atts+'</div></article>';
-    }).join(''):'<div class="newsroom-empty">최근 30일 내 조건에 맞는 공식 공문이 없습니다.</div>';
+    const [mfds,hira]=await Promise.all([
+      fetch('/news/data/official-notices.json',{cache:'no-store'}).then(r=>r.ok?r.json():({items:[]})),
+      fetch('/news/data/hira-updates.json',{cache:'no-store'}).then(r=>r.ok?r.json():({items:[]}))
+    ]);
+    officialNotices=[...(mfds.items||[]),...(hira.items||[])].sort((a,b)=>String(b.published_at||'').localeCompare(String(a.published_at||'')));
+    updated.textContent='최근 30일 · '+officialNotices.length+'건';
+    renderOfficialNotices();
   }catch(e){
     updated.textContent='공식자료 준비 중';
-    box.innerHTML='<div class="newsroom-empty">공식 공문 데이터가 준비되면 자동 표시됩니다.</div>';
+    document.getElementById('officialNoticeList').innerHTML='<div class="newsroom-empty">공식 공문 데이터가 준비되면 자동 표시됩니다.</div>';
   }
 }
 
@@ -244,6 +274,7 @@ async function loadArchive(){
 }
 async function load(){
   setupPeriodTabs();
+  setupNoticeFilters();
   try{
     let path;
     if(requestedDate) path='/news/data/'+encodeURIComponent(requestedDate)+'.json';
