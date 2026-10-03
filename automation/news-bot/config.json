@@ -10,23 +10,46 @@
   "sources": [
     {
       "publisher": "데일리팜",
-      "domains": ["dailypharm.com", "www.dailypharm.com"],
-      "entry_urls": ["https://www.dailypharm.com/"]
+      "domains": [
+        "dailypharm.com",
+        "www.dailypharm.com"
+      ],
+      "entry_urls": [
+        "https://www.dailypharm.com/"
+      ]
     },
     {
       "publisher": "의학신문",
-      "domains": ["bosa.co.kr", "www.bosa.co.kr"],
-      "entry_urls": ["https://www.bosa.co.kr/"]
+      "domains": [
+        "bosa.co.kr",
+        "www.bosa.co.kr"
+      ],
+      "entry_urls": [
+        "https://www.bosa.co.kr/"
+      ]
     },
     {
       "publisher": "메디파나뉴스",
-      "domains": ["medipana.com", "www.medipana.com"],
-      "entry_urls": ["https://www.medipana.com/"]
+      "domains": [
+        "medipana.com",
+        "www.medipana.com"
+      ],
+      "entry_urls": [
+        "https://www.medipana.com/"
+      ]
     },
     {
       "publisher": "약사공론",
-      "domains": ["kpanews.co.kr", "www.kpanews.co.kr", "svc.kpanews.co.kr", "svc2.kpanews.co.kr"],
-      "entry_urls": ["https://www.kpanews.co.kr/", "https://svc2.kpanews.co.kr/"]
+      "domains": [
+        "kpanews.co.kr",
+        "www.kpanews.co.kr",
+        "svc.kpanews.co.kr",
+        "svc2.kpanews.co.kr"
+      ],
+      "entry_urls": [
+        "https://www.kpanews.co.kr/",
+        "https://svc2.kpanews.co.kr/"
+      ]
     }
   ],
   "priority_keywords": {
@@ -64,9 +87,38 @@
     "봉사": -10
   },
   "oncology_keywords": [
-    "암", "항암", "종양", "면역항암", "표적치료", "adc", "car-t", "bite",
-    "egfr", "alk", "ros1", "braf", "her2", "pd-l1", "brca", "cldn18.2",
-    "폐암", "유방암", "위암", "대장암", "췌장암", "간암", "담도암",
-    "전립선암", "자궁경부암", "림프종", "백혈병", "다발골수종"
+    "암",
+    "항암",
+    "종양",
+    "면역항암",
+    "표적치료",
+    "adc",
+    "car-t",
+    "bite",
+    "egfr",
+    "alk",
+    "ros1",
+    "braf",
+    "her2",
+    "pd-l1",
+    "brca",
+    "cldn18.2",
+    "폐암",
+    "유방암",
+    "위암",
+    "대장암",
+    "췌장암",
+    "간암",
+    "담도암",
+    "전립선암",
+    "자궁경부암",
+    "림프종",
+    "백혈병",
+    "다발골수종",
+    "갑상선암",
+    "신장암",
+    "난소암",
+    "난관암",
+    "일차 복막암"
   ]
 }

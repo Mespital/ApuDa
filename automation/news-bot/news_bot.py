@@ -156,7 +156,7 @@ def oncology_meta(a, keywords):
     text=(" ".join([a.title,a.description,a.body_excerpt])).lower()
     hits=[k for k in keywords if k.lower() in text]
     if not hits: return None
-    cancers=[k for k in ["폐암","유방암","위암","대장암","췌장암","간암","담도암","전립선암","자궁경부암","림프종","백혈병","다발골수종"] if k in text]
+    cancers=[k for k in ["유방암","폐암","위암","대장암","갑상선암","신장암","전립선암","췌장암","담도암","간암","림프종","자궁경부암","난소암","난관암","일차 복막암","백혈병","다발골수종"] if k in text]
     biomarkers=[k.upper() for k in ["egfr","alk","ros1","braf","her2","pd-l1","brca","cldn18.2"] if k in text]
     return {
         "is_oncology": True,

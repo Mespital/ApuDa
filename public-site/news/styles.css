@@ -16,3 +16,33 @@ a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 32px));m
 .note{font-size:12px;color:var(--muted);line-height:1.65;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin-top:16px}
 @media(max-width:860px){.nav{height:auto;min-height:64px;padding:10px 0;align-items:flex-start}.navlinks{gap:4px}.navlinks a{padding:7px 9px}.hero{padding-top:40px}.grid{grid-template-columns:1fr}.cols{grid-template-columns:1fr}.brief{padding:20px}.section-head{align-items:flex-start;flex-direction:column}}
 @media(max-width:520px){.wrap{width:min(100% - 22px,1120px)}.brand small{display:none}.navlinks a{font-size:12px}.hero p{font-size:15px}.card{padding:18px}.panel{padding:18px}}
+/* Oncology newsroom */
+.oncology-tags{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 0}
+.oncology-tags button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 13px;font:inherit;font-size:12px;font-weight:850;color:var(--muted);cursor:pointer;white-space:nowrap}
+.oncology-tags button.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.oncology-toolbar{display:flex;justify-content:space-between;align-items:end;gap:14px;margin-bottom:16px}
+.oncology-count{font-size:12px;color:var(--muted);font-weight:800}
+.oncology-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.newsroom-card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 10px 28px rgba(16,42,67,.05);transition:.2s}
+.newsroom-card:hover{transform:translateY(-3px);border-color:#BFD3F0;box-shadow:0 16px 34px rgba(36,107,254,.1)}
+.newsroom-thumb{aspect-ratio:16/9;background:linear-gradient(135deg,#E6F0FF,#F7FAFF);display:grid;place-items:center;overflow:hidden}
+.newsroom-thumb img{width:100%;height:100%;object-fit:cover}
+.newsroom-thumb.fallback::before{content:'APUDA ONCOLOGY';font-size:12px;letter-spacing:.12em;font-weight:950;color:var(--blue)}
+.newsroom-body{padding:18px;display:flex;flex-direction:column;gap:9px;flex:1}
+.newsroom-meta{display:flex;gap:7px;flex-wrap:wrap;align-items:center;font-size:11px;color:var(--muted);font-weight:800}
+.newsroom-badge{background:var(--sky);color:var(--blue2);padding:4px 7px;border-radius:999px}
+.newsroom-card h3{margin:0;font-size:19px;line-height:1.4}
+.newsroom-summary{margin:0;color:#43566A;font-size:13px;line-height:1.65}
+.newsroom-foot{margin-top:auto;padding-top:12px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;align-items:center}
+.newsroom-foot span{font-size:11px;color:var(--muted)}
+.newsroom-foot em{font-style:normal;color:var(--blue);font-size:12px;font-weight:900}
+.newsroom-empty{grid-column:1/-1;background:#fff;border:1px dashed var(--line);border-radius:18px;padding:28px;text-align:center;color:var(--muted);font-size:13px;line-height:1.7}
+@media(max-width:900px){.oncology-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){
+  .oncology-tags{flex-wrap:nowrap;overflow-x:auto;padding-bottom:8px;scrollbar-width:none}
+  .oncology-tags::-webkit-scrollbar{display:none}
+  .oncology-grid{grid-template-columns:1fr}
+  .oncology-toolbar{align-items:flex-start;flex-direction:column}
+  .newsroom-card h3{font-size:17px}
+  .hero{padding-top:34px}
+}
