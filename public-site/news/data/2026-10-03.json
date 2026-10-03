@@ -1,0 +1,97 @@
+{
+  "version": "1.0",
+  "report_date": "2026-10-03",
+  "collection_window": {
+    "start": "2026-10-02T09:00:00+09:00",
+    "end": "2026-10-03T09:00:00+09:00",
+    "timezone": "Asia/Seoul"
+  },
+  "sources": ["데일리팜","의학신문","메디파나뉴스","약사공론"],
+  "briefing": "희귀질환 신약의 급여 접근성을 앞당기려는 ‘100일 신속등재’ 시범사업이 대상 선정 단계부터 지연되며 실행력이 시험대에 올랐다. 동시에 오페브·린파자 등 주요 치료제는 급여 확대 약가협상에 진입했고, 제약·바이오 업계에서는 RSU·RSA 기반 장기 주식보상이 확산되고 있다.",
+  "top_news": [
+    {
+      "rank": 1,
+      "canonical_issue": "희귀질환 100일 신속등재 시범사업",
+      "title": "희귀질환 ‘100일 신속등재’ 대상 선정 지연",
+      "category": ["정책","급여","희귀질환"],
+      "publishers": ["메디파나뉴스"],
+      "published_at": "2026-10-02T12:11:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "기존 급여 등재 약 240일에서 최대 100일 이내로 단축하는 것이 목표",
+        "13개 제약사·14개 약제가 신청했고 최종 5개 이내 선정 예정",
+        "A8 조정 최저가 90% 수준 선등재 후 RWE 기반 사후평가"
+      ],
+      "importance": "희귀질환 환자 접근성 개선의 핵심 제도인 만큼 실제 100일 목표의 실행력과 예측 가능한 운영이 중요하다.",
+      "source_urls": [],
+      "oncology": null
+    },
+    {
+      "rank": 2,
+      "canonical_issue": "오페브·린파자 등 급여확대 약가협상",
+      "title": "오페브·린파자 등 급여확대 약가협상 진입",
+      "category": ["급여","약가","환자접근성"],
+      "publishers": ["데일리팜"],
+      "published_at": "2026-10-02T12:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "오페브 특발성폐섬유증 급여 확대 협상",
+        "린파자 베바시주맙 병용 유지요법 급여 확대 협상",
+        "빠르면 11~12월 등재 가능성"
+      ],
+      "importance": "임상적 가치가 실제 환자 접근성으로 연결되는 마지막 관문이 약가협상이다.",
+      "source_urls": [],
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": ["난소암","난관암","일차 복막암"],
+        "drug_generic": ["올라파립"],
+        "drug_brand": ["린파자"],
+        "targets": ["PARP"],
+        "mechanism": ["PARP inhibitor"],
+        "biomarkers": ["BRCA/HRD 관련"],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": "유지요법",
+        "endpoints": {"orr":null,"pfs":null,"os":null,"hr":null,"grade3plus_ae":null},
+        "approval_status": "허가 적응증 보유",
+        "reimbursement_status": "급여 확대 약가협상",
+        "patient_summary": "해당 적응증과 환자 조건에 따라 실제 급여 적용 여부가 달라질 수 있다.",
+        "industry_summary": "급여 확대 여부가 PARP 억제제의 실제 치료 접근성과 시장 침투에 직접 영향을 줄 수 있다."
+      }
+    },
+    {
+      "rank": 3,
+      "canonical_issue": "제약바이오 RSU RSA 장기보상 확산",
+      "title": "제약·바이오 RSU·RSA 장기보상 확산",
+      "category": ["산업","인재","경영"],
+      "publishers": ["메디파나뉴스"],
+      "published_at": "2026-10-03T08:30:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "주요 상장 제약·바이오·지주사 16곳 도입",
+        "근속·주가·KPI 조건을 결합한 장기 보상구조 확대",
+        "R&D 핵심인력 유지와 장기 기업가치 연계"
+      ],
+      "importance": "인재 경쟁이 단순 연봉에서 장기 지분보상 중심으로 이동하는 흐름이다.",
+      "source_urls": [],
+      "oncology": null
+    }
+  ],
+  "trends": [
+    {"title":"급여 접근성","change":"신속등재와 약가협상이 동시에 핵심 이슈로 부상","implication":"Time-to-Reimbursement가 혁신약의 실제 경쟁력을 좌우"},
+    {"title":"약가 협상","change":"임상적 가치 이후 실제 환자 접근성의 마지막 단계가 부각","implication":"시장성과 환자 부담 모두에 직접 영향"},
+    {"title":"인재 경쟁","change":"RSU·RSA 기반 장기보상 확산","implication":"R&D 핵심인력 유지와 장기 기업가치 연계 강화"}
+  ],
+  "outlet_status": [
+    {"publisher":"데일리팜","items":[{"title":"오페브·린파자 등 급여확대 약가협상","published_at":"2026-10-02T12:00:00+09:00","verified":true}]},
+    {"publisher":"의학신문","items":[]},
+    {"publisher":"메디파나뉴스","items":[{"title":"희귀질환 100일 신속등재 대상 선정 지연","published_at":"2026-10-02T12:11:00+09:00","verified":true},{"title":"제약·바이오 RSU·RSA 장기보상 확산","published_at":"2026-10-03T08:30:00+09:00","verified":true}]},
+    {"publisher":"약사공론","items":[]}
+  ],
+  "insight": "신약의 경쟁력은 허가만으로 완성되지 않고, 급여 등재 속도와 약가협상, 그리고 이를 지속할 R&D 인재 확보까지 연결돼야 산업 경쟁력과 환자 접근성이 함께 높아진다.",
+  "infographic": {
+    "image_path": null,
+    "generated_at": null,
+    "template_version": "news-card-v1"
+  }
+}
