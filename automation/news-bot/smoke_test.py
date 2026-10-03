@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-import json,re,sys
+import json,re,sys,os
 from pathlib import Path
 
-repo=Path(__file__).resolve().parents[2]
+repo=Path(os.getenv("APUDA_REPO_DIR",Path.cwd())).resolve()
 data=repo/"public-site"/"news"/"data"
 errors=[]
 warnings=[]
