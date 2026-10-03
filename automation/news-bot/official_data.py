@@ -125,9 +125,9 @@ def static_api_source(src, key):
         "agency": src["agency"],
         "name": src["name"],
         "source_url": src["portal_url"],
-        "status": "ready" if key else "key_required",
+        "status": "key_available" if key else "key_required",
         "checked_at": datetime.now(TZ).isoformat(),
-        "note": "공공데이터 인증키가 연결되면 구조화 데이터 조회에 사용합니다." if not key else "공공데이터 인증키가 등록되어 있습니다."
+        "note": "공공데이터 인증키가 등록되어 있습니다. 해당 API 활용신청 승인 후 실제 조회 연결을 검증합니다." if key else "공공데이터포털 활용신청 및 인증키 등록이 필요합니다."
     }
 
 def main():
@@ -162,7 +162,14 @@ def main():
     outdir=repo/"public-site"/"news"/"data"
     outdir.mkdir(parents=True,exist_ok=True)
     (outdir/"official-data.json").write_text(json.dumps(out,ensure_ascii=False,indent=2),encoding="utf-8")
-    print(json.dumps({"official_sources":len(results),"service_key_connected":bool(key)},ensure_ascii=False))
+    mfds = next((x for x in results if x.get("id")=="mfds_drug_approval"), {})
+    print(json.dumps({
+        "official_sources":len(results),
+        "service_key_connected":bool(key),
+        "mfds_approval_status":mfds.get("status"),
+        "mfds_approval_records":len(mfds.get("records") or []),
+        "mfds_approval_error":mfds.get("error")
+    },ensure_ascii=False))
 
 if __name__ == "__main__":
     main()
