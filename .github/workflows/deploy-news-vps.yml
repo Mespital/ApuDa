@@ -2,6 +2,11 @@ name: Deploy ApuDa News Bot to VPS
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'automation/news-bot/**'
+      - '.github/workflows/deploy-news-vps.yml'
 
 concurrency:
   group: apuda-news-vps-production
