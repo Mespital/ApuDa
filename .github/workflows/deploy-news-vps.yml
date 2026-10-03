@@ -94,7 +94,7 @@ jobs:
       - name: Dry-run collector
         run: |
           set -euo pipefail
-          ssh apuda-vps 'cd ~/apuda-repo && ~/apuda-news/.venv/bin/python ~/apuda-news/news_bot.py --repo-root ~/apuda-repo && APUDA_REPO_DIR=~/apuda-repo ~/apuda-news/.venv/bin/python ~/apuda-news/official_data.py'
+          ssh apuda-vps 'cd ~/apuda-repo && ~/apuda-news/.venv/bin/python ~/apuda-news/news_bot.py --repo-root ~/apuda-repo && APUDA_REPO_DIR=~/apuda-repo ~/apuda-news/.venv/bin/python ~/apuda-news/official_data.py && APUDA_REPO_DIR=~/apuda-repo ~/apuda-news/.venv/bin/python ~/apuda-news/official_notices.py && APUDA_REPO_DIR=~/apuda-repo ~/apuda-news/.venv/bin/python ~/apuda-news/nccn_monitor.py'
 
       - name: Show cron
         run: |
