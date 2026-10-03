@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import json, os, re
+from urllib.parse import unquote
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -73,6 +74,36 @@ def fetch_official_web(session, src):
         result["error"] = clean(e)[:180]
     return result
 
+def _safe_gateway_message(resp, key_candidates):
+    raw=clean(resp.text)[:800]
+    for k in key_candidates:
+        if k:
+            raw=raw.replace(k,"***")
+    code=None
+    message=None
+    try:
+        data=resp.json()
+        header=data.get("header") or (data.get("response") or {}).get("header") or {}
+        code=header.get("resultCode") or data.get("resultCode")
+        message=header.get("resultMsg") or data.get("resultMsg") or data.get("message")
+    except Exception:
+        pass
+    if not code:
+        m=re.search(r"<(?:resultCode|returnReasonCode)>([^<]+)</",resp.text,re.I)
+        if m: code=clean(m.group(1))
+    if not message:
+        m=re.search(r"<(?:resultMsg|returnAuthMsg|message)>([^<]+)</",resp.text,re.I)
+        if m: message=clean(m.group(1))
+    return code,message,raw
+
+def _service_key_candidates(key):
+    raw=clean(key)
+    vals=[]
+    for v in (unquote(unquote(raw)),unquote(raw),raw):
+        if v and v not in vals:
+            vals.append(v)
+    return vals
+
 def fetch_mfds_approval(session, key):
     result = {
         "id": "mfds_drug_approval",
@@ -86,37 +117,89 @@ def fetch_mfds_approval(session, key):
     if not key:
         result["note"] = "DATA_GO_KR_SERVICE_KEY 등록 후 식약처 공식 OpenAPI가 자동 연결됩니다."
         return result
-    try:
-        r = session.get(MFDS_APPROVAL_ENDPOINT, params={
-            "serviceKey": key.strip(),
-            "pageNo": 1,
-            "numOfRows": 100,
-            "type": "json"
-        }, timeout=25)
-        r.raise_for_status()
-        data = r.json()
-        items = response_items(data)
-        rows=[]
-        for x in items:
-            if not isinstance(x, dict): continue
-            rows.append({
-                "item_seq": x.get("ITEM_SEQ"),
-                "item_name": x.get("ITEM_NAME"),
-                "company": x.get("ENTP_NAME"),
-                "main_ingredient": x.get("MAIN_ITEM_INGR"),
-                "permit_date": x.get("ITEM_PERMIT_DATE"),
-                "rare_drug_yn": x.get("RARE_DRUG_YN"),
-                "newdrug_class_name": x.get("NEWDRUG_CLASS_NAME"),
-                "atc_code": x.get("ATC_CODE"),
-                "edi_code": x.get("EDI_CODE")
-            })
-        rows.sort(key=lambda x: str(x.get("permit_date") or ""), reverse=True)
-        result["records"] = rows[:30]
-        result["status"] = "ok"
-        result["note"] = "식약처 공식 의약품 허가 OpenAPI 연결 상태입니다. 허가 상세 확인은 품목기준코드 기준으로 후속 조회합니다."
-    except Exception as e:
-        result["error"] = clean(e)[:240]
-        result["note"] = "공공데이터포털 활용신청 승인 상태와 Decoding 인증키를 확인해 주세요."
+
+    candidates=_service_key_candidates(key)
+    last_diag={}
+    for idx,candidate in enumerate(candidates,1):
+        try:
+            r = session.get(MFDS_APPROVAL_ENDPOINT, params={
+                "serviceKey": candidate,
+                "pageNo": 1,
+                "numOfRows": 30,
+                "type": "json"
+            }, timeout=25)
+
+            if r.status_code != 200:
+                code,msg,body=_safe_gateway_message(r,candidates)
+                last_diag={
+                    "http_status":r.status_code,
+                    "gateway_code":code,
+                    "gateway_message":msg,
+                    "gateway_body":body,
+                    "key_variant_attempt":idx
+                }
+                if r.status_code in (401,403):
+                    continue
+                r.raise_for_status()
+
+            try:
+                data = r.json()
+            except Exception:
+                code,msg,body=_safe_gateway_message(r,candidates)
+                last_diag={
+                    "http_status":r.status_code,
+                    "gateway_code":code,
+                    "gateway_message":msg,
+                    "gateway_body":body,
+                    "key_variant_attempt":idx
+                }
+                continue
+
+            header=data.get("header") or (data.get("response") or {}).get("header") or {}
+            result_code=str(header.get("resultCode") or data.get("resultCode") or "")
+            result_msg=clean(header.get("resultMsg") or data.get("resultMsg") or "")
+            if result_code and result_code not in ("00","0"):
+                last_diag={
+                    "http_status":r.status_code,
+                    "gateway_code":result_code,
+                    "gateway_message":result_msg,
+                    "key_variant_attempt":idx
+                }
+                continue
+
+            items = response_items(data)
+            rows=[]
+            for x in items:
+                if not isinstance(x, dict): continue
+                rows.append({
+                    "item_seq": x.get("ITEM_SEQ"),
+                    "item_name": x.get("ITEM_NAME"),
+                    "company": x.get("ENTP_NAME"),
+                    "main_ingredient": x.get("MAIN_ITEM_INGR"),
+                    "permit_date": x.get("ITEM_PERMIT_DATE"),
+                    "rare_drug_yn": x.get("RARE_DRUG_YN"),
+                    "newdrug_class_name": x.get("NEWDRUG_CLASS_NAME"),
+                    "atc_code": x.get("ATC_CODE"),
+                    "edi_code": x.get("EDI_CODE")
+                })
+            rows.sort(key=lambda x: str(x.get("permit_date") or ""), reverse=True)
+            result["records"] = rows[:30]
+            result["status"] = "ok"
+            result["http_status"] = r.status_code
+            result["key_variant_used"] = idx
+            result["note"] = "식약처 공식 의약품 허가 OpenAPI 연결 상태입니다. 허가 상세 확인은 품목기준코드 기준으로 후속 조회합니다."
+            return result
+        except Exception as e:
+            last_diag={"exception":clean(e)[:240],"key_variant_attempt":idx}
+
+    result.update(last_diag)
+    result["error"] = last_diag.get("gateway_message") or last_diag.get("gateway_body") or last_diag.get("exception") or "MFDS API authentication failed"
+    code=clean(last_diag.get("gateway_code"))
+    if code in ("20","30","31") or "SERVICE_" in str(result["error"]):
+        result["status"]="auth_error"
+    elif last_diag.get("http_status")==403:
+        result["status"]="forbidden"
+    result["note"] = "키 형식(Encoding/Decoding)은 자동 보정했습니다. 계속 실패하면 공공데이터포털의 해당 API 활용승인에 연결된 서비스키인지 확인해야 합니다."
     return result
 
 def static_api_source(src, key):
@@ -168,7 +251,11 @@ def main():
         "service_key_connected":bool(key),
         "mfds_approval_status":mfds.get("status"),
         "mfds_approval_records":len(mfds.get("records") or []),
-        "mfds_approval_error":mfds.get("error")
+        "mfds_approval_error":mfds.get("error"),
+        "mfds_http_status":mfds.get("http_status"),
+        "mfds_gateway_code":mfds.get("gateway_code"),
+        "mfds_gateway_message":mfds.get("gateway_message"),
+        "mfds_key_variant_used":mfds.get("key_variant_used") or mfds.get("key_variant_attempt")
     },ensure_ascii=False))
 
 if __name__ == "__main__":
