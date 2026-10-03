@@ -29,6 +29,7 @@ jobs:
           VPS_USER: ${{ secrets.VPS_USER }}
           VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
           APUDA_NEWS_GITHUB_TOKEN: ${{ secrets.APUDA_NEWS_GITHUB_TOKEN }}
+          DATA_GO_KR_SERVICE_KEY: ${{ secrets.DATA_GO_KR_SERVICE_KEY }}
         run: |
           set -euo pipefail
           test -n "$VPS_HOST"
@@ -69,7 +70,7 @@ jobs:
           APUDA_NEWS_GITHUB_TOKEN: ${{ secrets.APUDA_NEWS_GITHUB_TOKEN }}
         run: |
           set -euo pipefail
-          printf 'APUDA_GITHUB_TOKEN=%s\nAPUDA_GITHUB_REPO=Mespital/ApuDa\nAPUDA_NEWS_BRANCH=main\nAPUDA_REPO_DIR=$HOME/apuda-repo\n' "$APUDA_NEWS_GITHUB_TOKEN" > /tmp/news.env
+          printf 'APUDA_GITHUB_TOKEN=%s\nAPUDA_GITHUB_REPO=Mespital/ApuDa\nAPUDA_NEWS_BRANCH=main\nAPUDA_REPO_DIR=$HOME/apuda-repo\nDATA_GO_KR_SERVICE_KEY=%s\n' "$APUDA_NEWS_GITHUB_TOKEN" "$DATA_GO_KR_SERVICE_KEY" > /tmp/news.env
           chmod 600 /tmp/news.env
           ssh apuda-vps 'mkdir -p ~/.config/apuda && chmod 700 ~/.config/apuda'
           scp /tmp/news.env apuda-vps:~/.config/apuda/news.env
@@ -83,7 +84,7 @@ jobs:
       - name: Dry-run collector
         run: |
           set -euo pipefail
-          ssh apuda-vps 'cd ~/apuda-repo && ~/apuda-news/.venv/bin/python ~/apuda-news/news_bot.py --repo-root ~/apuda-repo'
+          ssh apuda-vps 'cd ~/apuda-repo && ~/apuda-news/.venv/bin/python ~/apuda-news/news_bot.py --repo-root ~/apuda-repo && APUDA_REPO_DIR=~/apuda-repo ~/apuda-news/.venv/bin/python ~/apuda-news/official_data.py'
 
       - name: Show cron
         run: |
