@@ -344,3 +344,5 @@ a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 32px));m
 }
 
 .status-key_available{background:#EAF3FF;color:#1855D8}
+
+.status-auth_error,.status-forbidden,.status-error{background:#FFF0EE;color:#B2372B}
