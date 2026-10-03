@@ -248,3 +248,35 @@ a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 32px));m
   .period-trend{padding:11px}
   .period-trend p{display:none}
 }
+
+/* Bottom period issue digest */
+.issue-digest-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.issue-column{background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 10px 28px rgba(16,42,67,.04)}
+.issue-column-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding-bottom:13px;border-bottom:1px solid var(--line)}
+.issue-kicker{display:block;color:var(--blue);font-size:10px;font-weight:950;letter-spacing:.12em}
+.issue-column h3{margin:4px 0 0;font-size:19px;color:var(--navy)}
+.issue-total{flex:0 0 auto;display:inline-flex;padding:5px 8px;border-radius:999px;background:var(--sky);color:var(--blue2);font-size:10px;font-weight:900}
+.issue-list{display:grid}
+.issue-item{display:grid;grid-template-columns:30px minmax(0,1fr) 18px;gap:10px;align-items:start;padding:13px 0;border-bottom:1px solid #EDF2F7}
+.issue-item:last-child{border-bottom:0}
+.issue-item:not(.disabled):hover .issue-copy b{color:var(--blue2)}
+.issue-item:not(.disabled):hover .issue-arrow{transform:translateX(2px)}
+.issue-no{display:grid;place-items:center;width:28px;height:28px;border-radius:9px;background:#EEF5FF;color:var(--blue);font-size:11px;font-weight:950}
+.issue-copy{min-width:0}
+.issue-meta{display:block;margin-bottom:4px;color:var(--muted);font-size:9.5px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.issue-copy b{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;font-size:13px;line-height:1.45;color:var(--ink);transition:.2s}
+.issue-arrow{color:var(--blue);font-weight:950;transition:.2s}
+.issue-empty{padding:20px 4px;color:var(--muted);font-size:12px;line-height:1.6}
+.issue-more{width:100%;margin-top:10px;border:1px solid var(--line);background:#F8FBFF;color:var(--blue2);border-radius:12px;padding:9px 12px;font:inherit;font-size:11px;font-weight:900;cursor:pointer}
+.issue-more:hover{background:var(--sky)}
+@media(max-width:900px){
+  .issue-digest-grid{grid-template-columns:1fr}
+  .issue-column{padding:16px}
+}
+@media(max-width:620px){
+  .issue-column{padding:14px;border-radius:17px}
+  .issue-column h3{font-size:17px}
+  .issue-item{grid-template-columns:28px minmax(0,1fr) 16px;gap:9px;padding:11px 0}
+  .issue-no{width:26px;height:26px}
+  .issue-copy b{font-size:12.5px}
+}

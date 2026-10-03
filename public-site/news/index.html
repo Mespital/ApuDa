@@ -38,6 +38,13 @@
 
 <div class="insight"><b>한 줄 인사이트</b><p id="insightText">최신 분석을 불러오는 중입니다.</p></div>
 
+<section class="section issue-digest-section">
+  <div class="section-head"><div><h2>기간별 주요 이슈</h2><p>오늘 · 한 주 · 한 달의 핵심 이슈를 한 번에 비교해보세요.</p></div></div>
+  <div class="issue-digest-grid" id="issueDigestGrid">
+    <div class="newsroom-empty">기간별 주요 이슈를 불러오는 중입니다.</div>
+  </div>
+</section>
+
 <section class="section"><div class="section-head"><h2>지난 브리핑</h2><p>날짜를 누르면 해당 날짜 브리핑을 불러옵니다.</p></div><div class="archive" id="archiveList"><div class="newsroom-empty">지난 브리핑을 불러오는 중입니다.</div></div></section>
 </main>
 
@@ -54,6 +61,7 @@ const esc=s=>String(s??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'
 const qs=new URLSearchParams(location.search);
 const requestedDate=qs.get('date');
 let currentPeriod='today',periodData=null,currentDaily=null;
+const issueDigestLimits={today:3,week:3,month:3};
 
 function primaryUrl(n){return Array.isArray(n?.source_urls)&&n.source_urls.length?n.source_urls[0]:'';}
 function formatPublished(v,verified){
@@ -115,6 +123,42 @@ function setupPeriodTabs(){
     renderPeriod();
   });
 }
+function issueItem(n,index){
+  const u=primaryUrl(n);
+  const publisher=(n.publishers||[])[0]||'ApuDa';
+  const category=(n.category||[])[0]||'핵심 이슈';
+  const inner='<span class="issue-no">'+(index+1)+'</span><span class="issue-copy"><span class="issue-meta">'+esc(category)+' · '+esc(publisher)+' · '+esc(formatPublished(n.published_at,n.published_at_verified))+'</span><b>'+esc(n.title)+'</b></span><span class="issue-arrow">→</span>';
+  return u?'<a class="issue-item" href="'+esc(u)+'" target="_blank" rel="noopener noreferrer">'+inner+'</a>':'<div class="issue-item disabled">'+inner+'</div>';
+}
+function issueColumn(key,title,subtitle){
+  const p=periodData?.periods?.[key]||{};
+  const all=p.items||[];
+  const limit=issueDigestLimits[key]||3;
+  const visible=all.slice(0,limit);
+  const canExpand=all.length>3;
+  return '<section class="issue-column"><div class="issue-column-head"><div><span class="issue-kicker">'+esc(subtitle)+'</span><h3>'+esc(title)+'</h3></div><span class="issue-total">'+all.length+'건</span></div>'+
+    '<div class="issue-list">'+(visible.length?visible.map(issueItem).join(''):'<div class="issue-empty">표시할 주요 이슈가 아직 없습니다.</div>')+'</div>'+
+    (canExpand?'<button class="issue-more" type="button" data-issue-period="'+key+'">'+(limit>3?'3개만 보기':'5개 보기')+'</button>':'')+'</section>';
+}
+function renderIssueDigest(){
+  const box=document.getElementById('issueDigestGrid');
+  if(!box)return;
+  if(!periodData?.periods){
+    box.innerHTML='<div class="newsroom-empty">기간별 주요 이슈 데이터를 준비 중입니다.</div>';
+    return;
+  }
+  box.innerHTML=[
+    issueColumn('today','오늘의 주요 이슈','TODAY'),
+    issueColumn('week','한 주간 주요 이슈','7 DAYS'),
+    issueColumn('month','한 달간 주요 이슈','30 DAYS')
+  ].join('');
+  box.querySelectorAll('.issue-more').forEach(btn=>btn.onclick=()=>{
+    const key=btn.dataset.issuePeriod;
+    issueDigestLimits[key]=issueDigestLimits[key]>3?3:5;
+    renderIssueDigest();
+  });
+}
+
 function renderMediaHub(outlets){
   const byName=Object.fromEntries((outlets||[]).map(o=>[o.publisher,o]));
   document.getElementById('mediaHub').innerHTML=Object.keys(OUTLET_HOME).map(name=>{
@@ -163,6 +207,7 @@ async function loadPeriod(){
     }};
   }
   renderPeriod();
+  renderIssueDigest();
 }
 async function loadArchive(){
   const box=document.getElementById('archiveList');
