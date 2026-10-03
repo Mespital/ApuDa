@@ -1,0 +1,421 @@
+{
+  "version": "1.0",
+  "generated_at": "2026-10-03T16:50:00+09:00",
+  "as_of": "2026-10-03T09:00:00+09:00",
+  "periods": {
+    "today": {
+      "label": "오늘",
+      "description": "전일 09:00 초과 ~ 당일 09:00 미만 핵심 뉴스",
+      "items": [
+        {
+          "rank": 1,
+          "canonical_issue": "희귀질환 100일 신속등재 시범사업",
+          "title": "희귀질환 ‘100일 신속등재’ 대상 선정 지연",
+          "category": [
+            "정책",
+            "급여",
+            "희귀질환"
+          ],
+          "publishers": [
+            "메디파나뉴스"
+          ],
+          "published_at": "2026-10-02T12:11:00+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "기존 급여 등재 약 240일에서 최대 100일 이내로 단축하는 것이 목표",
+            "13개 제약사·14개 약제가 신청했고 최종 5개 이내 선정 예정",
+            "A8 조정 최저가 90% 수준 선등재 후 RWE 기반 사후평가"
+          ],
+          "importance": "희귀질환 환자 접근성 개선의 핵심 제도인 만큼 실제 100일 목표의 실행력과 예측 가능한 운영이 중요하다.",
+          "source_urls": [
+            "https://www.medipana.com/news/articleView.html?idxno=418637"
+          ],
+          "oncology": null,
+          "source_links": [
+            {
+              "publisher": "메디파나뉴스",
+              "url": "https://www.medipana.com/news/articleView.html?idxno=418637"
+            }
+          ],
+          "period_rank": 1
+        },
+        {
+          "rank": 2,
+          "canonical_issue": "오페브·린파자 등 급여확대 약가협상",
+          "title": "오페브·린파자 등 급여확대 약가협상 진입",
+          "category": [
+            "급여",
+            "약가",
+            "환자접근성"
+          ],
+          "publishers": [
+            "데일리팜"
+          ],
+          "published_at": "2026-10-02T12:00:00+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "오페브 특발성폐섬유증 급여 확대 협상",
+            "린파자 베바시주맙 병용 유지요법 급여 확대 협상",
+            "빠르면 11~12월 등재 가능성"
+          ],
+          "importance": "임상적 가치가 실제 환자 접근성으로 연결되는 마지막 관문이 약가협상이다.",
+          "source_urls": [
+            "https://dailypharm.com/user/news/343053"
+          ],
+          "oncology": {
+            "is_oncology": true,
+            "cancer_types": [
+              "난소암",
+              "난관암",
+              "일차 복막암"
+            ],
+            "drug_generic": [
+              "올라파립"
+            ],
+            "drug_brand": [
+              "린파자"
+            ],
+            "targets": [
+              "PARP"
+            ],
+            "mechanism": [
+              "PARP inhibitor"
+            ],
+            "biomarkers": [
+              "BRCA/HRD 관련"
+            ],
+            "trial_name": null,
+            "phase": null,
+            "line_of_therapy": "유지요법",
+            "endpoints": {
+              "orr": null,
+              "pfs": null,
+              "os": null,
+              "hr": null,
+              "grade3plus_ae": null
+            },
+            "approval_status": "허가 적응증 보유",
+            "reimbursement_status": "급여 확대 약가협상",
+            "patient_summary": "해당 적응증과 환자 조건에 따라 실제 급여 적용 여부가 달라질 수 있다.",
+            "industry_summary": "급여 확대 여부가 PARP 억제제의 실제 치료 접근성과 시장 침투에 직접 영향을 줄 수 있다."
+          },
+          "source_links": [
+            {
+              "publisher": "데일리팜",
+              "url": "https://dailypharm.com/user/news/343053"
+            }
+          ],
+          "period_rank": 2
+        },
+        {
+          "rank": 3,
+          "canonical_issue": "제약바이오 RSU RSA 장기보상 확산",
+          "title": "제약·바이오 RSU·RSA 장기보상 확산",
+          "category": [
+            "산업",
+            "인재",
+            "경영"
+          ],
+          "publishers": [
+            "메디파나뉴스"
+          ],
+          "published_at": "2026-10-03T08:00:00+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "주요 상장 제약·바이오·지주사 16곳 도입",
+            "근속·주가·KPI 조건을 결합한 장기 보상구조 확대",
+            "R&D 핵심인력 유지와 장기 기업가치 연계"
+          ],
+          "importance": "인재 경쟁이 단순 연봉에서 장기 지분보상 중심으로 이동하는 흐름이다.",
+          "source_urls": [
+            "https://www.medipana.com/news/articleView.html?idxno=418612"
+          ],
+          "oncology": null,
+          "source_links": [
+            {
+              "publisher": "메디파나뉴스",
+              "url": "https://www.medipana.com/news/articleView.html?idxno=418612"
+            }
+          ],
+          "period_rank": 3
+        }
+      ]
+    },
+    "week": {
+      "label": "최근 7일",
+      "description": "현재 누적 데이터 기준 최근 7일 핵심 뉴스 · 매일 자동 누적",
+      "items": [
+        {
+          "rank": 1,
+          "canonical_issue": "희귀질환 100일 신속등재 시범사업",
+          "title": "희귀질환 ‘100일 신속등재’ 대상 선정 지연",
+          "category": [
+            "정책",
+            "급여",
+            "희귀질환"
+          ],
+          "publishers": [
+            "메디파나뉴스"
+          ],
+          "published_at": "2026-10-02T12:11:00+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "기존 급여 등재 약 240일에서 최대 100일 이내로 단축하는 것이 목표",
+            "13개 제약사·14개 약제가 신청했고 최종 5개 이내 선정 예정",
+            "A8 조정 최저가 90% 수준 선등재 후 RWE 기반 사후평가"
+          ],
+          "importance": "희귀질환 환자 접근성 개선의 핵심 제도인 만큼 실제 100일 목표의 실행력과 예측 가능한 운영이 중요하다.",
+          "source_urls": [
+            "https://www.medipana.com/news/articleView.html?idxno=418637"
+          ],
+          "oncology": null,
+          "source_links": [
+            {
+              "publisher": "메디파나뉴스",
+              "url": "https://www.medipana.com/news/articleView.html?idxno=418637"
+            }
+          ],
+          "period_rank": 1
+        },
+        {
+          "rank": 2,
+          "canonical_issue": "오페브·린파자 등 급여확대 약가협상",
+          "title": "오페브·린파자 등 급여확대 약가협상 진입",
+          "category": [
+            "급여",
+            "약가",
+            "환자접근성"
+          ],
+          "publishers": [
+            "데일리팜"
+          ],
+          "published_at": "2026-10-02T12:00:00+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "오페브 특발성폐섬유증 급여 확대 협상",
+            "린파자 베바시주맙 병용 유지요법 급여 확대 협상",
+            "빠르면 11~12월 등재 가능성"
+          ],
+          "importance": "임상적 가치가 실제 환자 접근성으로 연결되는 마지막 관문이 약가협상이다.",
+          "source_urls": [
+            "https://dailypharm.com/user/news/343053"
+          ],
+          "oncology": {
+            "is_oncology": true,
+            "cancer_types": [
+              "난소암",
+              "난관암",
+              "일차 복막암"
+            ],
+            "drug_generic": [
+              "올라파립"
+            ],
+            "drug_brand": [
+              "린파자"
+            ],
+            "targets": [
+              "PARP"
+            ],
+            "mechanism": [
+              "PARP inhibitor"
+            ],
+            "biomarkers": [
+              "BRCA/HRD 관련"
+            ],
+            "trial_name": null,
+            "phase": null,
+            "line_of_therapy": "유지요법",
+            "endpoints": {
+              "orr": null,
+              "pfs": null,
+              "os": null,
+              "hr": null,
+              "grade3plus_ae": null
+            },
+            "approval_status": "허가 적응증 보유",
+            "reimbursement_status": "급여 확대 약가협상",
+            "patient_summary": "해당 적응증과 환자 조건에 따라 실제 급여 적용 여부가 달라질 수 있다.",
+            "industry_summary": "급여 확대 여부가 PARP 억제제의 실제 치료 접근성과 시장 침투에 직접 영향을 줄 수 있다."
+          },
+          "source_links": [
+            {
+              "publisher": "데일리팜",
+              "url": "https://dailypharm.com/user/news/343053"
+            }
+          ],
+          "period_rank": 2
+        },
+        {
+          "rank": 3,
+          "canonical_issue": "제약바이오 RSU RSA 장기보상 확산",
+          "title": "제약·바이오 RSU·RSA 장기보상 확산",
+          "category": [
+            "산업",
+            "인재",
+            "경영"
+          ],
+          "publishers": [
+            "메디파나뉴스"
+          ],
+          "published_at": "2026-10-03T08:00:00+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "주요 상장 제약·바이오·지주사 16곳 도입",
+            "근속·주가·KPI 조건을 결합한 장기 보상구조 확대",
+            "R&D 핵심인력 유지와 장기 기업가치 연계"
+          ],
+          "importance": "인재 경쟁이 단순 연봉에서 장기 지분보상 중심으로 이동하는 흐름이다.",
+          "source_urls": [
+            "https://www.medipana.com/news/articleView.html?idxno=418612"
+          ],
+          "oncology": null,
+          "source_links": [
+            {
+              "publisher": "메디파나뉴스",
+              "url": "https://www.medipana.com/news/articleView.html?idxno=418612"
+            }
+          ],
+          "period_rank": 3
+        }
+      ]
+    },
+    "month": {
+      "label": "최근 30일",
+      "description": "현재 누적 데이터 기준 최근 30일 핵심 뉴스 · 매일 자동 누적",
+      "items": [
+        {
+          "rank": 1,
+          "canonical_issue": "희귀질환 100일 신속등재 시범사업",
+          "title": "희귀질환 ‘100일 신속등재’ 대상 선정 지연",
+          "category": [
+            "정책",
+            "급여",
+            "희귀질환"
+          ],
+          "publishers": [
+            "메디파나뉴스"
+          ],
+          "published_at": "2026-10-02T12:11:00+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "기존 급여 등재 약 240일에서 최대 100일 이내로 단축하는 것이 목표",
+            "13개 제약사·14개 약제가 신청했고 최종 5개 이내 선정 예정",
+            "A8 조정 최저가 90% 수준 선등재 후 RWE 기반 사후평가"
+          ],
+          "importance": "희귀질환 환자 접근성 개선의 핵심 제도인 만큼 실제 100일 목표의 실행력과 예측 가능한 운영이 중요하다.",
+          "source_urls": [
+            "https://www.medipana.com/news/articleView.html?idxno=418637"
+          ],
+          "oncology": null,
+          "source_links": [
+            {
+              "publisher": "메디파나뉴스",
+              "url": "https://www.medipana.com/news/articleView.html?idxno=418637"
+            }
+          ],
+          "period_rank": 1
+        },
+        {
+          "rank": 2,
+          "canonical_issue": "오페브·린파자 등 급여확대 약가협상",
+          "title": "오페브·린파자 등 급여확대 약가협상 진입",
+          "category": [
+            "급여",
+            "약가",
+            "환자접근성"
+          ],
+          "publishers": [
+            "데일리팜"
+          ],
+          "published_at": "2026-10-02T12:00:00+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "오페브 특발성폐섬유증 급여 확대 협상",
+            "린파자 베바시주맙 병용 유지요법 급여 확대 협상",
+            "빠르면 11~12월 등재 가능성"
+          ],
+          "importance": "임상적 가치가 실제 환자 접근성으로 연결되는 마지막 관문이 약가협상이다.",
+          "source_urls": [
+            "https://dailypharm.com/user/news/343053"
+          ],
+          "oncology": {
+            "is_oncology": true,
+            "cancer_types": [
+              "난소암",
+              "난관암",
+              "일차 복막암"
+            ],
+            "drug_generic": [
+              "올라파립"
+            ],
+            "drug_brand": [
+              "린파자"
+            ],
+            "targets": [
+              "PARP"
+            ],
+            "mechanism": [
+              "PARP inhibitor"
+            ],
+            "biomarkers": [
+              "BRCA/HRD 관련"
+            ],
+            "trial_name": null,
+            "phase": null,
+            "line_of_therapy": "유지요법",
+            "endpoints": {
+              "orr": null,
+              "pfs": null,
+              "os": null,
+              "hr": null,
+              "grade3plus_ae": null
+            },
+            "approval_status": "허가 적응증 보유",
+            "reimbursement_status": "급여 확대 약가협상",
+            "patient_summary": "해당 적응증과 환자 조건에 따라 실제 급여 적용 여부가 달라질 수 있다.",
+            "industry_summary": "급여 확대 여부가 PARP 억제제의 실제 치료 접근성과 시장 침투에 직접 영향을 줄 수 있다."
+          },
+          "source_links": [
+            {
+              "publisher": "데일리팜",
+              "url": "https://dailypharm.com/user/news/343053"
+            }
+          ],
+          "period_rank": 2
+        },
+        {
+          "rank": 3,
+          "canonical_issue": "제약바이오 RSU RSA 장기보상 확산",
+          "title": "제약·바이오 RSU·RSA 장기보상 확산",
+          "category": [
+            "산업",
+            "인재",
+            "경영"
+          ],
+          "publishers": [
+            "메디파나뉴스"
+          ],
+          "published_at": "2026-10-03T08:00:00+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "주요 상장 제약·바이오·지주사 16곳 도입",
+            "근속·주가·KPI 조건을 결합한 장기 보상구조 확대",
+            "R&D 핵심인력 유지와 장기 기업가치 연계"
+          ],
+          "importance": "인재 경쟁이 단순 연봉에서 장기 지분보상 중심으로 이동하는 흐름이다.",
+          "source_urls": [
+            "https://www.medipana.com/news/articleView.html?idxno=418612"
+          ],
+          "oncology": null,
+          "source_links": [
+            {
+              "publisher": "메디파나뉴스",
+              "url": "https://www.medipana.com/news/articleView.html?idxno=418612"
+            }
+          ],
+          "period_rank": 3
+        }
+      ]
+    }
+  }
+}
