@@ -1,0 +1,32 @@
+name: Future Compass HTTPS readiness
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/future-compass-https.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    environment: apuda-ai-vps
+    timeout-minutes: 5
+    steps:
+      - name: Check app, Caddy and selected hostname
+        env:
+          VPS_HOST: ${{ secrets.FUTURE_VPS_HOST || secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.FUTURE_VPS_USER || secrets.VPS_USER }}
+          VPS_SSH_KEY: ${{ secrets.FUTURE_VPS_SSH_KEY || secrets.VPS_SSH_KEY }}
+        run: |
+          set -euo pipefail
+          test -n "$VPS_HOST"
+          test -n "$VPS_USER"
+          test -n "$VPS_SSH_KEY"
+          [[ "$VPS_HOST" =~ ^[a-zA-Z0-9.-]+$ ]]
+          [[ "$VPS_USER" =~ ^[a-zA-Z0-9_-]+$ ]]
+          work=$(mktemp -d)
+          trap 'rm -rf "$work"' EXIT
+          printf '%s\n' "$VPS_SSH_KEY" > "$work/key"
+          chmod 600 "$work/key"
+          ssh-keyscan -T 10 -H "$VPS_HOST" > "$work/known_hosts"
+          ssh -i "$work/key" -o BatchMode=yes -o StrictHostKeyChecking=yes -o "UserKnownHostsFile=$work/known_hosts" "$VPS_USER@$VPS_HOST" 'set -eu; echo APP_HEALTH; curl -fsS http://127.0.0.1:8092/health; echo; echo CADDY_SERVICE; systemctl is-active caddy; echo CADDY_CONFIG; test -r /etc/caddy/Caddyfile && echo readable; if test -w /etc/caddy/Caddyfile; then echo writable; elif sudo -n test -w /etc/caddy/Caddyfile 2>/dev/null; then echo sudo_writable; else echo read_only; fi; echo DOMAIN_RECORD; getent ahostsv4 future.apuda.app || true; echo BASELINE_RECORD; getent ahostsv4 ai.apuda.app || true; echo SITE_NAMES; sed -n "/^[a-zA-Z0-9].*{[[:space:]]*$/p" /etc/caddy/Caddyfile'
