@@ -56,10 +56,11 @@ function latestPerCancer(){
 }
 function card(n){
   const u=primaryUrl(n),tag=(cancersOf(n)[0]||'항암'),pub=(n.publishers||[]).join(' · ')||'ApuDa',img=n.thumbnail_url||n.image_url||'';
-  const imgHtml=img?'<div class="newsroom-thumb"><img src="'+esc(img)+'" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add(\'fallback\');this.remove()"></div>':'<div class="newsroom-thumb fallback"></div>';
+  const imgHtml=img?'<div class="newsroom-thumb"><img src="'+esc(img)+'" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.closest(\'.newsroom-card\').classList.remove(\'has-thumb\');this.parentNode.remove()"></div>':'';
   const summary=(n.summary&&n.summary[0])||n.importance||'';
   const body='<div class="newsroom-body"><div class="newsroom-meta"><span class="newsroom-badge">'+esc(tag)+'</span><span class="freshness '+freshClass(n)+'">'+freshText(n)+'</span><span>'+esc(pub)+'</span></div><h3>'+esc(n.title)+'</h3><p class="newsroom-summary">'+esc(summary)+'</p><div class="newsroom-foot"><span>'+esc(formatTime(n.published_at,n.published_at_verified))+'</span><em>'+(u?'원문 보기 →':'원문 링크 확인 중')+'</em></div></div>';
-  return u?'<a class="newsroom-card" href="'+esc(u)+'" target="_blank" rel="noopener noreferrer">'+imgHtml+body+'</a>':'<article class="newsroom-card">'+imgHtml+body+'</article>';
+  const cls='newsroom-card'+(img?' has-thumb':'');
+  return u?'<a class="'+cls+'" href="'+esc(u)+'" target="_blank" rel="noopener noreferrer">'+imgHtml+body+'</a>':'<article class="'+cls+'">'+imgHtml+body+'</article>';
 }
 function render(){
   let filtered;
