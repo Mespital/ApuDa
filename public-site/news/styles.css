@@ -225,3 +225,26 @@ a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 32px));m
     min-height:118px;
   }
 }
+
+/* Clickable period cards + trend summaries */
+.period-card.is-clickable{cursor:pointer;transition:transform .2s,border-color .2s,box-shadow .2s}
+.period-card.is-clickable:hover{transform:translateY(-3px);border-color:#BFD3F0;box-shadow:0 16px 34px rgba(36,107,254,.1)}
+.period-card.is-clickable:focus{outline:3px solid rgba(36,107,254,.2);outline-offset:2px}
+.period-card.is-clickable:hover h3{color:var(--blue2)}
+.period-trends-wrap{margin-top:20px;padding:18px;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.76)}
+.period-trends-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.period-trends-head b{font-size:16px;color:var(--navy)}
+.period-trends-head span{font-size:11px;color:var(--muted)}
+.period-trends{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.period-trend{display:flex;gap:10px;align-items:flex-start;padding:13px;border:1px solid #E2EBF5;border-radius:15px;background:#fff}
+.trend-count{display:grid;place-items:center;min-width:30px;height:30px;border-radius:10px;background:var(--sky);color:var(--blue2);font-size:12px;font-weight:950}
+.period-trend div{min-width:0}.period-trend b{display:block;font-size:13px;color:var(--navy)}.period-trend small{display:block;margin-top:3px;font-size:10px;color:var(--muted);line-height:1.4}.period-trend p{margin:6px 0 0;font-size:11px;line-height:1.45;color:#43566A}
+.period-trend-empty{grid-column:1/-1;padding:12px;color:var(--muted);font-size:12px}
+@media(max-width:900px){.period-trends{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){
+  .period-trends-wrap{margin-top:14px;padding:13px;border-radius:16px}
+  .period-trends-head{align-items:flex-start;flex-direction:column;gap:3px}
+  .period-trends{grid-template-columns:1fr;gap:8px}
+  .period-trend{padding:11px}
+  .period-trend p{display:none}
+}
