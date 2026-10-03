@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-10-03T14:48:15.660531+00:00",
-  "last_success_at": "2026-10-03T14:48:15.660531+00:00",
+  "checked_at": "2026-10-03T15:26:52.472024+00:00",
+  "last_success_at": "2026-10-03T15:26:52.472024+00:00",
   "failures": [],
   "articles": [
     {
@@ -243,5 +243,14 @@
       "category": "안전·보안",
       "domain": "security"
     }
-  ]
+  ],
+  "school": {
+    "name": "서초고등학교",
+    "grade": 1,
+    "checked_at": "2026-10-03T15:26:52.472024+00:00",
+    "homepage": "https://seocho.sen.hs.kr/",
+    "events": [],
+    "status": "key_required",
+    "message": "학교 일정 자동 수집은 NEIS_API_KEY 설정 후 시작합니다. 인증키 없는 샘플 일정은 표시하지 않습니다."
+  }
 }
