@@ -46,3 +46,13 @@ a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 32px));m
   .newsroom-card h3{font-size:17px}
   .hero{padding-top:34px}
 }
+
+.freshness{display:inline-flex;align-items:center;padding:4px 7px;border-radius:999px;font-size:10px;font-weight:950}
+.fresh-today{background:#E8F8F0;color:#087A53}
+.fresh-week{background:#EAF3FF;color:#1855D8}
+.fresh-month{background:#EEF1F5;color:#586779}
+.newsroom-empty b{color:var(--navy)}
+@media(max-width:620px){
+  .freshness{font-size:9.5px}
+  .newsroom-meta{gap:5px}
+}
