@@ -25,7 +25,11 @@ async function load(){
  cards.push(card('오늘의 브리핑',latest?'정상':'확인 필요',latest?('최신 보고일 '+latest.latest):'latest.json 없음',run?.generated_at,'/news/'));
  const offSources=official?.sources||[];
  const mfdsApproval=offSources.find(x=>x.id==='mfds_drug_approval');
+ const mfdsSupply=offSources.find(x=>x.id==='mfds_supply_shortage');
+ const hiraPrice=offSources.find(x=>x.id==='hira_drug_price');
  cards.push(card('식약처 허가 API',mfdsApproval?.status==='ok'?'정상':'확인 필요',mfdsApproval?.status==='ok'?('허가정보 '+(mfdsApproval.records||[]).length+'건 확인'):(mfdsApproval?.error_message||mfdsApproval?.note||'연결 상태 확인 필요'),official?.generated_at,mfdsApproval?.source_url));
+ cards.push(card('식약처 공급부족 API',mfdsSupply?.status==='ok'?'정상':'확인 필요',mfdsSupply?.status==='ok'?('공급부족 '+(mfdsSupply.records||[]).length+'건 확인'):(mfdsSupply?.note||'활용신청·연결 확인 필요'),official?.generated_at,mfdsSupply?.source_url));
+ cards.push(card('심평원 약가 API',hiraPrice?.status==='ok'?'정상':'확인 필요',hiraPrice?.status==='ok'?('약가정보 '+(hiraPrice.records||[]).length+'건 확인'):(hiraPrice?.note||'활용신청·연결 확인 필요'),official?.generated_at,hiraPrice?.source_url));
  cards.push(card('식약처 공식 공문',mfds?'정상':'확인 필요',mfds?('최근 30일 '+(mfds.items||[]).length+'건'):'데이터 파일 없음',mfds?.generated_at,mfds?.sources?.[0]?.url));
  cards.push(card('심평원 보험인정기준',hira?.status==='ok'?'정상':'확인 필요',hira?.status==='ok'?('최근 30일 '+(hira.items||[]).length+'건'):(hira?.error||'첫 수집 대기'),hira?.generated_at,hira?.source?.url));
  const nitems=nccn?.items||[];
