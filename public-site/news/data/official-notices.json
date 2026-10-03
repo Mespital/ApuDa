@@ -1,8 +1,29 @@
 {
   "version": "1.0",
-  "generated_at": "2026-10-03T22:35:00+09:00",
+  "generated_at": "2026-10-04T00:13:58.932784+09:00",
   "window_days": 30,
-  "items": [],
+  "items": [
+    {
+      "agency": "식품의약품안전처",
+      "document_type": "제개정고시",
+      "category": "고시",
+      "title": "「대한민국약전외한약(생약)규격집」 일부개정고시(식품의약품안전처고시 제2026-68호, 2026.9.30.)",
+      "published_at": "2026-09-30T00:00:00+09:00",
+      "url": "https://www.mfds.go.kr/brd/m_207/view.do?seq=15197&srchFr=&srchTo=&srchWord=&srchTp=&itm_seq_1=0&itm_seq_2=0&multi_itm_seq=0&company_cd=&company_nm=&page=1",
+      "attachments": [],
+      "source_list_url": "https://www.mfds.go.kr/brd/m_207/list.do"
+    },
+    {
+      "agency": "식품의약품안전처",
+      "document_type": "제개정고시",
+      "category": "안전성",
+      "title": "「의료기기 부작용 등 안전성 정보 관리에 관한 규정」일부개정고시(식품의약품안전처고시 제2026-67호, 2026.9.22.)",
+      "published_at": "2026-09-22T00:00:00+09:00",
+      "url": "https://www.mfds.go.kr/brd/m_207/view.do?seq=15196&srchFr=&srchTo=&srchWord=&srchTp=&itm_seq_1=0&itm_seq_2=0&multi_itm_seq=0&company_cd=&company_nm=&page=1",
+      "attachments": [],
+      "source_list_url": "https://www.mfds.go.kr/brd/m_207/list.do"
+    }
+  ],
   "sources": [
     {
       "agency": "식품의약품안전처",
@@ -25,5 +46,5 @@
       "url": "https://www.mfds.go.kr/brd/m_545/list.do"
     }
   ],
-  "note": "첫 VPS 자동수집 후 최근 30일 공식 공문과 첨부파일이 자동 표시됩니다."
+  "note": "공식기관 원문과 첨부파일 링크를 제공하며, 문서 내용 자체는 ApuDa가 임의로 변경해 재게시하지 않습니다."
 }

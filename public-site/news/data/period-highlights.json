@@ -1,6 +1,6 @@
 {
-  "version": "1.0",
-  "generated_at": "2026-10-03T18:04:46.192451+09:00",
+  "version": "1.1",
+  "generated_at": "2026-10-04T00:13:54.770357+09:00",
   "as_of": "2026-10-03T09:00:00+09:00",
   "periods": {
     "today": {
@@ -166,7 +166,14 @@
             },
             "approval_status": "허가 관련",
             "reimbursement_status": null,
-            "patient_summary": null,
+            "patient_summary": "치료제의 허가 범위나 사용 가능성과 관련된 소식입니다. 국내 실제 사용은 식약처 허가사항을 확인해야 합니다.",
+            "patient_relevance_score": 96,
+            "patient_relevance_labels": [
+              "허가",
+              "안전성",
+              "임상결과",
+              "가이드라인"
+            ],
             "industry_summary": null
           }
         },
@@ -227,9 +234,55 @@
             },
             "approval_status": null,
             "reimbursement_status": null,
-            "patient_summary": null,
+            "patient_summary": "검사 결과에 따라 치료 선택이 달라질 수 있는 정밀의료 관련 정보입니다.",
+            "patient_relevance_score": 20,
+            "patient_relevance_labels": [
+              "바이오마커"
+            ],
             "industry_summary": null
           }
+        }
+      ],
+      "trends": [
+        {
+          "title": "디지털헬스",
+          "count": 5,
+          "change": "5건의 주요 이슈에서 반복적으로 확인",
+          "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
+          "examples": [
+            "삼일제약이 5년 전 찜한 골관절염 신약…美·英 이어 유럽 허가 심사 - 메디파나뉴스",
+            "유한양행, '유한페라미비르주' 허가…독감 주사제 시장 진출 - 메디파나뉴스"
+          ]
+        },
+        {
+          "title": "신약·임상",
+          "count": 4,
+          "change": "4건의 주요 이슈에서 반복적으로 확인",
+          "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
+          "examples": [
+            "삼일제약이 5년 전 찜한 골관절염 신약…美·英 이어 유럽 허가 심사 - 메디파나뉴스",
+            "유한양행, '유한페라미비르주' 허가…독감 주사제 시장 진출 - 메디파나뉴스"
+          ]
+        },
+        {
+          "title": "정책·급여",
+          "count": 3,
+          "change": "3건의 주요 이슈에서 반복적으로 확인",
+          "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
+          "examples": [
+            "삼일제약이 5년 전 찜한 골관절염 신약…美·英 이어 유럽 허가 심사 - 메디파나뉴스",
+            "유한양행, '유한페라미비르주' 허가…독감 주사제 시장 진출 - 메디파나뉴스"
+          ]
+        },
+        {
+          "title": "의료현장",
+          "count": 2,
+          "change": "2건의 주요 이슈에서 반복적으로 확인",
+          "implication": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름",
+          "examples": [
+            "삼일제약이 5년 전 찜한 골관절염 신약…美·英 이어 유럽 허가 심사 - 메디파나뉴스",
+            "'방광암' 수술 전후 치료, 키트루다-파드셉으로 선택지 확대 - 약사공론"
+          ]
         }
       ]
     },
@@ -402,7 +455,14 @@
             },
             "approval_status": "허가 관련",
             "reimbursement_status": null,
-            "patient_summary": null,
+            "patient_summary": "치료제의 허가 범위나 사용 가능성과 관련된 소식입니다. 국내 실제 사용은 식약처 허가사항을 확인해야 합니다.",
+            "patient_relevance_score": 96,
+            "patient_relevance_labels": [
+              "허가",
+              "안전성",
+              "임상결과",
+              "가이드라인"
+            ],
             "industry_summary": null
           },
           "report_date": "2026-10-03",
@@ -465,11 +525,57 @@
             },
             "approval_status": null,
             "reimbursement_status": null,
-            "patient_summary": null,
+            "patient_summary": "검사 결과에 따라 치료 선택이 달라질 수 있는 정밀의료 관련 정보입니다.",
+            "patient_relevance_score": 20,
+            "patient_relevance_labels": [
+              "바이오마커"
+            ],
             "industry_summary": null
           },
           "report_date": "2026-10-03",
           "period_rank": 5
+        }
+      ],
+      "trends": [
+        {
+          "title": "디지털헬스",
+          "count": 5,
+          "change": "5건의 주요 이슈에서 반복적으로 확인",
+          "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
+          "examples": [
+            "삼일제약이 5년 전 찜한 골관절염 신약…美·英 이어 유럽 허가 심사 - 메디파나뉴스",
+            "유한양행, '유한페라미비르주' 허가…독감 주사제 시장 진출 - 메디파나뉴스"
+          ]
+        },
+        {
+          "title": "신약·임상",
+          "count": 4,
+          "change": "4건의 주요 이슈에서 반복적으로 확인",
+          "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
+          "examples": [
+            "삼일제약이 5년 전 찜한 골관절염 신약…美·英 이어 유럽 허가 심사 - 메디파나뉴스",
+            "유한양행, '유한페라미비르주' 허가…독감 주사제 시장 진출 - 메디파나뉴스"
+          ]
+        },
+        {
+          "title": "정책·급여",
+          "count": 3,
+          "change": "3건의 주요 이슈에서 반복적으로 확인",
+          "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
+          "examples": [
+            "삼일제약이 5년 전 찜한 골관절염 신약…美·英 이어 유럽 허가 심사 - 메디파나뉴스",
+            "유한양행, '유한페라미비르주' 허가…독감 주사제 시장 진출 - 메디파나뉴스"
+          ]
+        },
+        {
+          "title": "의료현장",
+          "count": 2,
+          "change": "2건의 주요 이슈에서 반복적으로 확인",
+          "implication": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름",
+          "examples": [
+            "삼일제약이 5년 전 찜한 골관절염 신약…美·英 이어 유럽 허가 심사 - 메디파나뉴스",
+            "'방광암' 수술 전후 치료, 키트루다-파드셉으로 선택지 확대 - 약사공론"
+          ]
         }
       ]
     },
@@ -642,7 +748,14 @@
             },
             "approval_status": "허가 관련",
             "reimbursement_status": null,
-            "patient_summary": null,
+            "patient_summary": "치료제의 허가 범위나 사용 가능성과 관련된 소식입니다. 국내 실제 사용은 식약처 허가사항을 확인해야 합니다.",
+            "patient_relevance_score": 96,
+            "patient_relevance_labels": [
+              "허가",
+              "안전성",
+              "임상결과",
+              "가이드라인"
+            ],
             "industry_summary": null
           },
           "report_date": "2026-10-03",
@@ -705,11 +818,67 @@
             },
             "approval_status": null,
             "reimbursement_status": null,
-            "patient_summary": null,
+            "patient_summary": "검사 결과에 따라 치료 선택이 달라질 수 있는 정밀의료 관련 정보입니다.",
+            "patient_relevance_score": 20,
+            "patient_relevance_labels": [
+              "바이오마커"
+            ],
             "industry_summary": null
           },
           "report_date": "2026-10-03",
           "period_rank": 5
+        }
+      ],
+      "trends": [
+        {
+          "title": "디지털헬스",
+          "count": 5,
+          "change": "5건의 주요 이슈에서 반복적으로 확인",
+          "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
+          "examples": [
+            "삼일제약이 5년 전 찜한 골관절염 신약…美·英 이어 유럽 허가 심사 - 메디파나뉴스",
+            "유한양행, '유한페라미비르주' 허가…독감 주사제 시장 진출 - 메디파나뉴스"
+          ]
+        },
+        {
+          "title": "신약·임상",
+          "count": 4,
+          "change": "4건의 주요 이슈에서 반복적으로 확인",
+          "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
+          "examples": [
+            "삼일제약이 5년 전 찜한 골관절염 신약…美·英 이어 유럽 허가 심사 - 메디파나뉴스",
+            "유한양행, '유한페라미비르주' 허가…독감 주사제 시장 진출 - 메디파나뉴스"
+          ]
+        },
+        {
+          "title": "정책·급여",
+          "count": 3,
+          "change": "3건의 주요 이슈에서 반복적으로 확인",
+          "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
+          "examples": [
+            "삼일제약이 5년 전 찜한 골관절염 신약…美·英 이어 유럽 허가 심사 - 메디파나뉴스",
+            "유한양행, '유한페라미비르주' 허가…독감 주사제 시장 진출 - 메디파나뉴스"
+          ]
+        },
+        {
+          "title": "의료현장",
+          "count": 2,
+          "change": "2건의 주요 이슈에서 반복적으로 확인",
+          "implication": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름",
+          "examples": [
+            "삼일제약이 5년 전 찜한 골관절염 신약…美·英 이어 유럽 허가 심사 - 메디파나뉴스",
+            "'방광암' 수술 전후 치료, 키트루다-파드셉으로 선택지 확대 - 약사공론"
+          ]
+        },
+        {
+          "title": "투자·사업개발",
+          "count": 2,
+          "change": "2건의 주요 이슈에서 반복적으로 확인",
+          "implication": "자본과 파이프라인 확보 경쟁이 사업전략의 핵심이 되는 흐름",
+          "examples": [
+            "P-CAB '파도' 개발하는 대원제약, '보노' 제네릭 허가 왜? - 약사공론",
+            "거래는 줄고 판돈은 커졌다…글로벌 빅파마 계약 역대 최대 - 메디파나뉴스"
+          ]
         }
       ]
     }

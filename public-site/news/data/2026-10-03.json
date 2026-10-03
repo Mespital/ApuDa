@@ -173,7 +173,14 @@
         },
         "approval_status": "허가 관련",
         "reimbursement_status": null,
-        "patient_summary": null,
+        "patient_summary": "치료제의 허가 범위나 사용 가능성과 관련된 소식입니다. 국내 실제 사용은 식약처 허가사항을 확인해야 합니다.",
+        "patient_relevance_score": 96,
+        "patient_relevance_labels": [
+          "허가",
+          "안전성",
+          "임상결과",
+          "가이드라인"
+        ],
         "industry_summary": null
       }
     },
@@ -234,7 +241,11 @@
         },
         "approval_status": null,
         "reimbursement_status": null,
-        "patient_summary": null,
+        "patient_summary": "검사 결과에 따라 치료 선택이 달라질 수 있는 정밀의료 관련 정보입니다.",
+        "patient_relevance_score": 20,
+        "patient_relevance_labels": [
+          "바이오마커"
+        ],
         "industry_summary": null
       }
     }
