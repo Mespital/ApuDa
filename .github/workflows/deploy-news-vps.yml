@@ -64,12 +64,13 @@ jobs:
           APUDA_NEWS_GITHUB_TOKEN: ${{ secrets.APUDA_NEWS_GITHUB_TOKEN }}
         run: |
           set -euo pipefail
-          printf 'APUDA_GITHUB_TOKEN=%q\nAPUDA_GITHUB_REPO=Mespital/ApuDa\nAPUDA_NEWS_BRANCH=main\nAPUDA_REPO_DIR=/srv/apuda-repo\n' "$APUDA_NEWS_GITHUB_TOKEN" > /tmp/news.env
+          printf 'APUDA_GITHUB_TOKEN=%s\nAPUDA_GITHUB_REPO=Mespital/ApuDa\nAPUDA_NEWS_BRANCH=main\nAPUDA_REPO_DIR=$HOME/apuda-repo\n' "$APUDA_NEWS_GITHUB_TOKEN" > /tmp/news.env
           chmod 600 /tmp/news.env
-          scp /tmp/news.env apuda-vps:/tmp/news.env
-          ssh apuda-vps 'sudo mkdir -p /etc/apuda && sudo mv /tmp/news.env /etc/apuda/news.env && sudo chmod 600 /etc/apuda/news.env'
+          ssh apuda-vps 'mkdir -p ~/.config/apuda && chmod 700 ~/.config/apuda'
+          scp /tmp/news.env apuda-vps:~/.config/apuda/news.env
+          ssh apuda-vps 'chmod 600 ~/.config/apuda/news.env'
 
-      - name: Install systemd timer
+      - name: Install user cron
         run: |
           set -euo pipefail
           ssh apuda-vps 'cd /tmp/apuda-news-deploy && chmod +x install-vps.sh publish.sh news_bot.py && ./install-vps.sh'
@@ -77,8 +78,8 @@ jobs:
       - name: Dry-run collector
         run: |
           set -euo pipefail
-          ssh apuda-vps 'cd /srv/apuda-repo && /srv/apuda-news/.venv/bin/python /srv/apuda-news/news_bot.py --repo-root /srv/apuda-repo'
+          ssh apuda-vps 'cd ~/apuda-repo && ~/apuda-news/.venv/bin/python ~/apuda-news/news_bot.py --repo-root ~/apuda-repo'
 
-      - name: Show timer
+      - name: Show cron
         run: |
-          ssh apuda-vps 'systemctl status apuda-news.timer --no-pager && systemctl list-timers apuda-news.timer --no-pager'
+          ssh apuda-vps 'crontab -l'
