@@ -172,9 +172,33 @@ def oncology_meta(a, keywords):
         "endpoints": {"orr":None,"pfs":None,"os":None,"hr":None,"grade3plus_ae":None},
         "approval_status": "허가 관련" if "허가" in text else None,
         "reimbursement_status": "급여 관련" if "급여" in text else None,
-        "patient_summary": None,
+        "patient_summary": patient_relevance_meta(a)["patient_summary"],
+        "patient_relevance_score": patient_relevance_meta(a)["score"],
+        "patient_relevance_labels": patient_relevance_meta(a)["labels"],
         "industry_summary": None
     }
+
+def patient_relevance_meta(a):
+    text=(" ".join([a.title,a.description,a.body_excerpt])).lower()
+    score=0
+    labels=[]
+    rules=[
+        (["급여","약가","보험"],28,"급여·접근성","보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다."),
+        (["허가","식약처","mfds","fda","ema"],24,"허가","치료제의 허가 범위나 사용 가능성과 관련된 소식입니다. 국내 실제 사용은 식약처 허가사항을 확인해야 합니다."),
+        (["안전성","부작용","회수","판매중지"],26,"안전성","치료 중 안전성과 관련된 정보입니다. 복용·투여 변경은 담당 의료진과 상의해야 합니다."),
+        (["3상","phase 3","pfs","os","orr"],20,"임상결과","향후 치료 선택이나 표준치료 논의에 영향을 줄 수 있는 임상 결과입니다."),
+        (["egfr","alk","her2","pd-l1","brca","cldn18.2","바이오마커"],20,"바이오마커","검사 결과에 따라 치료 선택이 달라질 수 있는 정밀의료 관련 정보입니다."),
+        (["가이드라인","nccn","권고"],18,"가이드라인","치료 순서나 검사·선택 기준과 관련된 권고 변화입니다. 국내 허가·급여와는 별도로 확인해야 합니다."),
+        (["지원","산정특례","의료비"],18,"지원제도","환자 부담이나 지원제도와 관련된 정보입니다. 대상 조건을 공식 안내에서 확인해야 합니다.")
+    ]
+    summary=None
+    for keys,pts,label,msg in rules:
+        if any(k in text for k in keys):
+            score+=pts;labels.append(label)
+            if summary is None: summary=msg
+    if any(k in text for k in ["m&a","인수","합병","실적","주가","투자"]): score-=8
+    if any(k in text for k in ["암","항암","종양"]): score+=8
+    return {"score":max(score,0),"labels":list(dict.fromkeys(labels)),"patient_summary":summary or "치료와 직접 관련된 정보인지 기사 원문과 공식 자료를 함께 확인해 주세요."}
 
 def norm_title(s):
     s=re.sub(r"[^0-9a-zA-Z가-힣 ]"," ",s.lower())
@@ -299,7 +323,7 @@ def make_oncology_archive(merged, outdir, end, tz, days=30):
         fresh,age=freshness_label(n["published_at"],end,tz)
         n["freshness"]=fresh
         n["age_days"]=age
-    items.sort(key=lambda n:(n.get("published_at") or "",int(n.get("score") or 0)),reverse=True)
+    items.sort(key=lambda n:(int((n.get("oncology") or {}).get("patient_relevance_score") or 0),n.get("published_at") or "",int(n.get("score") or 0)),reverse=True)
     return {
         "version":"1.0",
         "generated_at":datetime.now(tz).isoformat(),
