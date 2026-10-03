@@ -266,7 +266,7 @@ def load_existing_oncology(outdir, cutoff, end, tz):
         except Exception:
             continue
         for n in daily.get("top_news",[]):
-            if n.get("oncology",{}).get("is_oncology") and n.get("published_at_verified") and n.get("published_at"):
+            if (n.get("oncology") or {}).get("is_oncology") and n.get("published_at_verified") and n.get("published_at"):
                 try:
                     dt=dtparser.parse(n["published_at"]).astimezone(tz)
                 except Exception:
