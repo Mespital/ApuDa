@@ -94,12 +94,17 @@ jobs:
       - name: Validate collector syntax and environment
         run: |
           set -euo pipefail
-          ssh apuda-vps 'set -a; . ~/.config/apuda/news.env; set +a; test -n "$APUDA_GITHUB_TOKEN"; test -n "$APUDA_REPO_DIR"; ~/apuda-news/.venv/bin/python -m py_compile ~/apuda-news/news_bot.py ~/apuda-news/official_data.py ~/apuda-news/official_notices.py ~/apuda-news/hira_updates.py ~/apuda-news/nccn_monitor.py'
+          ssh apuda-vps 'set -a; . ~/.config/apuda/news.env; set +a; test -n "$APUDA_GITHUB_TOKEN"; test -n "$APUDA_REPO_DIR"; ~/apuda-news/.venv/bin/python -m py_compile ~/apuda-news/news_bot.py ~/apuda-news/official_data.py ~/apuda-news/official_notices.py ~/apuda-news/hira_updates.py ~/apuda-news/nccn_monitor.py ~/apuda-news/smoke_test.py'
 
       - name: Publish refreshed data
         run: |
           set -euo pipefail
           ssh apuda-vps 'APUDA_NEWS_ENV_FILE=$HOME/.config/apuda/news.env $HOME/apuda-news/publish.sh'
+
+      - name: Validate published news data contract
+        run: |
+          set -euo pipefail
+          ssh apuda-vps 'cd ~/apuda-repo && ~/apuda-news/.venv/bin/python ~/apuda-news/smoke_test.py'
 
       - name: Report data source health
         run: |
