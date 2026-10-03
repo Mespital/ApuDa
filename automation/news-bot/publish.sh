@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 : "${APUDA_REPO_DIR:=/srv/apuda-repo}"
 : "${APUDA_GITHUB_REPO:=Mespital/ApuDa}"
 : "${APUDA_NEWS_BRANCH:=main}"
@@ -11,7 +12,7 @@ git fetch origin "$APUDA_NEWS_BRANCH"
 git checkout "$APUDA_NEWS_BRANCH"
 git reset --hard "origin/$APUDA_NEWS_BRANCH"
 
-python3 automation/news-bot/news_bot.py --repo-root "$APUDA_REPO_DIR"
+"$SCRIPT_DIR/.venv/bin/python" "$SCRIPT_DIR/news_bot.py" --repo-root "$APUDA_REPO_DIR"
 
 if git diff --quiet -- public-site/news/data; then
   echo "No news data changes."
