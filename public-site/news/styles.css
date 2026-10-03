@@ -382,3 +382,17 @@ a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 32px));m
   .notice-filters::-webkit-scrollbar{display:none}
   .notice-filters button{white-space:nowrap}
 }
+
+/* Data operations status dashboard */
+.status-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.status-card{display:flex;flex-direction:column;min-height:160px;padding:17px;border:1px solid var(--line);border-radius:18px;background:#fff}
+.status-card-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.status-card-top span{font-size:11px;font-weight:900;color:var(--muted)}
+.status-card-top em{font-style:normal;padding:4px 8px;border-radius:999px;font-size:10px;font-weight:950}
+.status-ok-card .status-card-top em{background:#E8F8F0;color:#087A53}
+.status-warn-card .status-card-top em{background:#FFF0EE;color:#B2372B}
+.status-card h3{margin:13px 0 7px;font-size:16px;line-height:1.45;color:var(--navy)}
+.status-card p{margin:0;color:var(--muted);font-size:11px;line-height:1.5}
+.status-card>a{margin-top:auto;padding-top:13px;color:var(--blue);font-size:10.5px;font-weight:900}
+@media(max-width:900px){.status-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.status-grid{grid-template-columns:1fr}.status-card{min-height:135px;padding:14px}}
