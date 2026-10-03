@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-04T01:09:21.551331+09:00",
+  "generated_at": "2026-10-04T01:12:52.965159+09:00",
   "window": {
     "start": "2026-10-02T09:00:00+09:00",
     "end": "2026-10-03T09:00:00+09:00"
@@ -11,7 +11,7 @@
     },
     "의학신문": {
       "candidates": 80,
-      "in_window_verified": 16
+      "in_window_verified": 17
     },
     "메디파나뉴스": {
       "candidates": 80,
@@ -22,7 +22,7 @@
       "in_window_verified": 23
     }
   },
-  "merged_count": 57,
+  "merged_count": 58,
   "top_count": 5,
   "oncology_30d_count": 11,
   "week_highlight_count": 5,

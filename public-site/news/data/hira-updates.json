@@ -1,37 +1,75 @@
 {
-  "version": "1.0",
-  "generated_at": "2026-10-04T01:09:37.581899+09:00",
+  "version": "1.1",
+  "generated_at": "2026-10-04T01:13:07.782859+09:00",
   "window_days": 30,
   "status": "ok",
   "items": [
     {
       "agency": "건강보험심사평가원",
-      "document_type": "보험인정기준",
-      "category": "항암 급여",
-      "classification": "고시",
-      "related_basis": "고시 제2026-196호(행위)",
-      "title": "나567나 면역조직(세포) 화학검사 Level Ⅱ의 수가산정방법",
+      "document_type": "공식 고시·공지",
+      "category": "급여·약제",
+      "department": "선별급여평가부",
+      "title": "[행위 및 치료재료] 고시 제2026-200호 「선별급여 지정 및 실시 등에 관한 기준」 일부개정 새글",
       "published_at": "2026-10-01T00:00:00+09:00",
-      "url": "https://www.hira.or.kr/rc/insu/insuadtcrtr/InsuAdtCrtrList.do?pgmid=HIRAA030069000400#none",
-      "attachments": [
-        {
-          "label": "새창으로 다운로드 열기",
-          "url": "https://www.hira.or.kr/images/isms.pdf"
-        },
-        {
-          "label": "새창으로 다운로드 열기",
-          "url": "https://www.hira.or.kr/images/ISO27001_27701.pdf"
-        }
-      ],
-      "summary": "국민이 의료기관을 이용할 경우 의료행위, 약제, 치료재료 에 대해 건강보험을 적용 받을 수 있는 기준을 말합니다.보험인정기준에서 급여기준 및 심사지침을 카테고리 별로 검색할 수 있습니다. ※ 공개심의사례는 진료심사평가위원회 심의를 거친 사례로, 동일·유사사례 심사에 활용(참고)할 수 있음을 알려드립니다.",
-      "oncology_related": true,
-      "source_list_url": "https://www.hira.or.kr/rc/insu/insuadtcrtr/InsuAdtCrtrList.do?pgmid=HIRAA030069000400"
+      "url": "https://www.hira.or.kr/bbsDummy.do?brdBltNo=12295&brdScnBltNo=4&pgmid=HIRAA020002000100",
+      "detail_link_verified": true,
+      "attachments": [],
+      "summary": "[ 행위 및 치료재료 ] 고시 제 2026-200 호 「 선별급여 지정 및 실시 등에 관한 기준 」 일부개정",
+      "oncology_related": false,
+      "source_list_url": "https://www.hira.or.kr/bbsDummy.do?pgmid=HIRAA020002000100",
+      "criteria_url": "https://www.hira.or.kr/rc/insu/insuadtcrtr/InsuAdtCrtrList.do?pgmid=HIRAA030069000400"
+    },
+    {
+      "agency": "건강보험심사평가원",
+      "document_type": "공식 고시·공지",
+      "category": "급여·약제",
+      "department": "위원회심사부",
+      "title": "(보건복지부 고시 2026-197호, 9.29.) 「임상연구의 요양급여 적용에 관한 기준」 일부개정 새글",
+      "published_at": "2026-10-01T00:00:00+09:00",
+      "url": "https://www.hira.or.kr/bbsDummy.do?brdBltNo=12290&brdScnBltNo=4&pgmid=HIRAA020002000100",
+      "detail_link_verified": true,
+      "attachments": [],
+      "summary": "「국민건강보험 요양급여의 기준에 관한 규칙」 제5조제2항 및 별표 1 제1호 자목에 따른 「임상연구의 요양급여 적용에 관한 기준」(보건복지부 고시 제2025-41호, 2025.2.28.)」을 다음과 같이 개정·발령합니다.",
+      "oncology_related": false,
+      "source_list_url": "https://www.hira.or.kr/bbsDummy.do?pgmid=HIRAA020002000100",
+      "criteria_url": "https://www.hira.or.kr/rc/insu/insuadtcrtr/InsuAdtCrtrList.do?pgmid=HIRAA030069000400"
+    },
+    {
+      "agency": "건강보험심사평가원",
+      "document_type": "공식 고시·공지",
+      "category": "급여·약제",
+      "department": "치료재료등재부",
+      "title": "[치료재료] 고시 제2026-199호 「요양급여의 적용기준 및 방법에 관한 세부사항」일부개정 새글",
+      "published_at": "2026-10-01T00:00:00+09:00",
+      "url": "https://www.hira.or.kr/bbsDummy.do?brdBltNo=12289&brdScnBltNo=4&pgmid=HIRAA020002000100",
+      "detail_link_verified": true,
+      "attachments": [],
+      "summary": "「국민건강보험법」제 41 조제 3 항 및 제 4 항 , 「국민건강보험법 시행령」제 19 조제 1 항 관련 별표 2 및 「국민건강보험 요양급여의 기준에 관한 규칙」제 5 조제 2 항에 의한 「요양급여의적용기준 및 방법에 관한 세부사항 」을 다음과 같이 개정ㆍ발령합니다 .",
+      "oncology_related": false,
+      "source_list_url": "https://www.hira.or.kr/bbsDummy.do?pgmid=HIRAA020002000100",
+      "criteria_url": "https://www.hira.or.kr/rc/insu/insuadtcrtr/InsuAdtCrtrList.do?pgmid=HIRAA030069000400"
+    },
+    {
+      "agency": "건강보험심사평가원",
+      "document_type": "공식 고시·공지",
+      "category": "급여·약제",
+      "department": "의료행위평가부",
+      "title": "[행위] 고시 제2026-205호 「요양급여의 적용기준 및 방법에 관한 세부사항」 일부개정 새글",
+      "published_at": "2026-10-01T00:00:00+09:00",
+      "url": "https://www.hira.or.kr/bbsDummy.do?brdBltNo=12287&brdScnBltNo=4&pgmid=HIRAA020002000100",
+      "detail_link_verified": true,
+      "attachments": [],
+      "summary": "「 국민건강보험법 」 제 41 조제 3 항 및 제 4 항 , 「 국민건강보험법 시행령 」 제 19 조제 1 항 관련 별표 2 및 「 국민건강보험 요양급여의 기준에 관한 규칙 」 제 5 조제 2 항에 의한 「 요양급여의 적용기준 및 방법에 관한 세부사항을 다음과 같이 개정 · 발령합니다 .",
+      "oncology_related": false,
+      "source_list_url": "https://www.hira.or.kr/bbsDummy.do?pgmid=HIRAA020002000100",
+      "criteria_url": "https://www.hira.or.kr/rc/insu/insuadtcrtr/InsuAdtCrtrList.do?pgmid=HIRAA030069000400"
     }
   ],
   "source": {
     "agency": "건강보험심사평가원",
-    "name": "보험인정기준",
-    "url": "https://www.hira.or.kr/rc/insu/insuadtcrtr/InsuAdtCrtrList.do?pgmid=HIRAA030069000400"
+    "name": "공지사항·보험인정기준",
+    "url": "https://www.hira.or.kr/bbsDummy.do?pgmid=HIRAA020002000100",
+    "criteria_url": "https://www.hira.or.kr/rc/insu/insuadtcrtr/InsuAdtCrtrList.do?pgmid=HIRAA030069000400"
   },
-  "note": "심평원 공식 보험인정기준에서 약제·급여 및 항암 관련 최신 고시를 연결합니다."
+  "note": "심평원 공식 공지사항과 보험인정기준에서 약제·급여 및 항암 관련 최신 고시를 연결합니다."
 }
