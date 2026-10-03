@@ -11,6 +11,11 @@
   <div class="oncology-grid" id="oncologyGrid"><div class="newsroom-empty">최신 항암 뉴스를 불러오는 중입니다.</div></div>
 </section>
 
+<section class="section patient-official-section">
+  <div class="section-head"><div><h2>환자에게 중요한 공식 업데이트</h2><p>국내 급여·항암 기준·안전성처럼 치료 접근성과 직접 관련된 공식자료를 우선 보여줍니다.</p></div><span class="official-updated" id="patientOfficialUpdated">공식자료 확인 중</span></div>
+  <div class="patient-official-grid" id="patientOfficialGrid"><div class="newsroom-empty">환자 관련 공식 업데이트를 불러오는 중입니다.</div></div>
+</section>
+
 <section class="section official-data-section">
   <div class="section-head"><div><h2>공식 데이터 · 근거 자료</h2><p>뉴스와 별도로 식약처·심평원·국가암정보센터 원문을 직접 확인할 수 있습니다.</p></div><span class="official-updated" id="officialUpdated">공식자료 확인 중</span></div>
   <div class="official-source-grid" id="officialSourceGrid"><div class="newsroom-empty">공식 데이터 연결 상태를 확인하는 중입니다.</div></div>
@@ -133,6 +138,36 @@ function render(){
   grid.innerHTML=filtered.map(card).join('');
   wireOncologyCards();
 }
+function patientOfficialCard(n){
+  const agency=n.agency||'공식기관';
+  const type=n.category||n.document_type||'공식자료';
+  const date=n.published_at?new Date(n.published_at).toLocaleDateString('ko-KR'):'';
+  const summary=n.summary||(
+    type.includes('급여')?'치료 접근성과 건강보험 적용에 영향을 줄 수 있는 공식 기준입니다.':
+    type.includes('안전성')?'치료 중 안전성 확인에 필요한 공식 자료입니다.':
+    '치료와 관련된 공식 업데이트입니다.'
+  );
+  const atts=(n.attachments||[]).slice(0,2).map(a=>'<a class="patient-official-attachment" href="'+esc(a.url)+'" target="_blank" rel="noopener noreferrer">'+esc(a.label||'첨부')+' ↗</a>').join('');
+  return '<article class="patient-official-card"><div class="patient-official-meta"><span>'+esc(agency)+'</span><em>'+esc(type)+'</em><time>'+esc(date)+'</time></div><h3><a href="'+esc(n.url)+'" target="_blank" rel="noopener noreferrer">'+esc(n.title)+'</a></h3><p>'+esc(summary)+'</p><div class="patient-official-actions"><a href="'+esc(n.url)+'" target="_blank" rel="noopener noreferrer">공식 원문 ↗</a>'+atts+'</div></article>';
+}
+async function loadPatientOfficialUpdates(){
+  const box=document.getElementById('patientOfficialGrid'),updated=document.getElementById('patientOfficialUpdated');
+  try{
+    const [hira,mfds]=await Promise.all([
+      fetch('/news/data/hira-updates.json',{cache:'no-store'}).then(r=>r.ok?r.json():({items:[]})),
+      fetch('/news/data/official-notices.json',{cache:'no-store'}).then(r=>r.ok?r.json():({items:[]}))
+    ]);
+    const h=(hira.items||[]).filter(x=>x.oncology_related||String(x.category||'').includes('급여'));
+    const m=(mfds.items||[]).filter(x=>/안전성|의약품|항암|허가|회수|공급/.test([x.category,x.title].join(' ')));
+    const all=[...h,...m].sort((a,b)=>String(b.published_at||'').localeCompare(String(a.published_at||''))).slice(0,6);
+    updated.textContent='최근 30일 · '+all.length+'건';
+    box.innerHTML=all.length?all.map(patientOfficialCard).join(''):'<div class="newsroom-empty">최근 30일 내 환자 치료에 직접 관련된 공식 업데이트가 없습니다.</div>';
+  }catch(e){
+    updated.textContent='공식자료 준비 중';
+    box.innerHTML='<div class="newsroom-empty">공식 업데이트 데이터가 준비되면 자동 표시됩니다.</div>';
+  }
+}
+
 function setupFacets(){
   document.querySelectorAll('[data-topic]').forEach(b=>b.onclick=()=>{activeFacet=b.dataset.topic;render();});
   document.querySelectorAll('[data-facet]').forEach(b=>b.onclick=()=>{activeFacet=b.dataset.facet;render();});
@@ -213,5 +248,5 @@ async function load(){
   }
   render();
 }
-renderTags();setupFacets();loadOfficialData();loadNccnMonitor();load();
+renderTags();setupFacets();loadPatientOfficialUpdates();loadOfficialData();loadNccnMonitor();load();
 </script></body></html>

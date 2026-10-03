@@ -398,3 +398,18 @@ a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 32px));m
 @media(max-width:620px){.status-grid{grid-template-columns:1fr}.status-card{min-height:135px;padding:14px}}
 
 .footer-status-link{display:inline-block;margin-top:8px;color:var(--blue);font-size:10.5px;font-weight:850}.footer-status-link:hover{text-decoration:underline}
+
+/* Patient-focused official oncology updates */
+.patient-official-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.patient-official-card{display:flex;flex-direction:column;min-height:190px;padding:16px;border:1px solid var(--line);border-radius:18px;background:#fff}
+.patient-official-meta{display:flex;gap:6px;align-items:center;flex-wrap:wrap;color:var(--muted);font-size:9.5px;font-weight:850}
+.patient-official-meta em{font-style:normal;padding:4px 7px;border-radius:999px;background:#EEF5FF;color:var(--blue2)}
+.patient-official-card h3{margin:10px 0 7px;font-size:15px;line-height:1.45}
+.patient-official-card h3 a:hover{color:var(--blue)}
+.patient-official-card p{margin:0;color:#52677A;font-size:11px;line-height:1.55;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+.patient-official-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:12px}
+.patient-official-actions>a{display:inline-flex;padding:6px 8px;border-radius:999px;background:#F4F8FD;color:var(--blue2);font-size:9.5px;font-weight:900}
+.patient-official-actions>a:hover{background:var(--blue);color:#fff}
+.patient-official-attachment{background:#F4F6F8!important;color:#53677B!important}
+@media(max-width:900px){.patient-official-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.patient-official-grid{grid-template-columns:1fr}.patient-official-card{min-height:160px;padding:14px}}
