@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "generated_at": "2026-10-04T00:42:13.190679+09:00",
   "service_key_connected": true,
   "sources": [
@@ -12,12 +12,10 @@
       "checked_at": "2026-10-04T00:42:09.680165+09:00",
       "records": [],
       "http_status": 403,
-      "gateway_code": null,
-      "gateway_message": null,
-      "gateway_body": "{ \"OpenAPI_ServiceResponse\": { \"cmmMsgHeader\": { \"errMsg\": \"SERVICE_KEY_IS_NOT_REGISTERED_ERROR\", \"returnAuthMsg\": \"등록되지 않은 서비스키\", \"returnReasonCode\": \"30\" } } }",
-      "key_variant_attempt": 1,
-      "error": "{ \"OpenAPI_ServiceResponse\": { \"cmmMsgHeader\": { \"errMsg\": \"SERVICE_KEY_IS_NOT_REGISTERED_ERROR\", \"returnAuthMsg\": \"등록되지 않은 서비스키\", \"returnReasonCode\": \"30\" } } }",
-      "note": "키 형식(Encoding/Decoding)은 자동 보정했습니다. 계속 실패하면 공공데이터포털의 해당 API 활용승인에 연결된 서비스키인지 확인해야 합니다."
+      "note": "GitHub Secret은 정상 전달되고 있습니다. 공공데이터포털에서 이 활용신청에 연결된 서비스키를 다시 확인해야 합니다.",
+      "error_code": "30",
+      "error_name": "SERVICE_KEY_IS_NOT_REGISTERED_ERROR",
+      "error_message": "등록되지 않은 서비스키"
     },
     {
       "id": "mfds_supply_shortage",
@@ -293,5 +291,13 @@
       "보건복지부·질병관리청 등 공식기관"
     ],
     "display_rule": "공식 출처·기준일·원문 링크를 함께 표시하고, 기사 요약과 공식 사실을 분리합니다."
+  },
+  "source_health": {
+    "total": 5,
+    "status_counts": {
+      "auth_error": 1,
+      "key_available": 2,
+      "ok": 2
+    }
   }
 }
