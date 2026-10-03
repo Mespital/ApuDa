@@ -15,7 +15,9 @@ CRITERIA_URL="https://www.hira.or.kr/rc/insu/insuadtcrtr/InsuAdtCrtrList.do?pgmi
 
 ONCOLOGY_TERMS=[
   "항암","암","종양","백혈병","림프종","골수종","유방","폐","위암","대장","직장","간암","췌장","담도","신장","전립선",
-  "자궁경부","HER2","EGFR","PD-L1","BRCA","CLDN","ALK","CAR-T","면역항암","표적치료","IDH1","복강내 온열 항암"
+  "자궁경부","HER2","EGFR","PD-L1","BRCA","CLDN","ALK","CAR-T","면역항암","표적치료","IDH1","복강내 온열 항암",
+  "[421]","[429]","항악성종양제","종양용약","Ruxolitinib","자카비","Pembrolizumab","키트루다","Nivolumab","옵디보",
+  "Trastuzumab","엔허투","Olaparib","린파자","Osimertinib","타그리소"
 ]
 PHARMA_TERMS=["[약제]","약제","의약품","급여","약가","요양급여","고가의약품","신약","등재"]
 CANDIDATE_TERMS=["[약제]","고시","급여","약제","신약","항암","암","요양급여"]
