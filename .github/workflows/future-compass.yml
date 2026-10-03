@@ -39,7 +39,7 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.FUTURE_NETLIFY_SITE_ID }}
         run: |
           if [ -z "$NETLIFY_AUTH_TOKEN" ] || [ -z "$NETLIFY_SITE_ID" ]; then
-            echo 'Netlify pending: add NETLIFY_AUTH_TOKEN and FUTURE_NETLIFY_SITE_ID.' >> "$GITHUB_STEP_SUMMARY"
+            echo 'Netlify Git integration handles code deploys; the app reads the latest daily feed from GitHub. Optional CLI deployment needs NETLIFY_AUTH_TOKEN and FUTURE_NETLIFY_SITE_ID.' >> "$GITHUB_STEP_SUMMARY"
             exit 0
           fi
           cd future-compass
@@ -51,6 +51,8 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main # Include the news commit created by the update job.
       - name: Deploy dedicated Future Compass service
         env:
           VPS_HOST: ${{ secrets.FUTURE_VPS_HOST || secrets.VPS_HOST }}
