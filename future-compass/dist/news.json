@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-10-03T15:55:07.620337+00:00",
-  "last_success_at": "2026-10-03T15:55:07.620337+00:00",
+  "checked_at": "2026-10-03T16:11:31.422032+00:00",
+  "last_success_at": "2026-10-03T16:11:31.422032+00:00",
   "failures": [],
   "articles": [
     {
@@ -247,7 +247,7 @@
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-03T15:55:07.620337+00:00",
+    "checked_at": "2026-10-03T16:11:31.422032+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [],
     "status": "key_required",
