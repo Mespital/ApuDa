@@ -1,0 +1,29 @@
+{
+  "version": "1.0",
+  "generated_at": "2026-10-03T22:35:00+09:00",
+  "window_days": 30,
+  "items": [],
+  "sources": [
+    {
+      "agency": "식품의약품안전처",
+      "type": "행정예고",
+      "url": "https://www.mfds.go.kr/brd/m_209/list.do?Data_stts_gubun=C9999"
+    },
+    {
+      "agency": "식품의약품안전처",
+      "type": "제개정고시",
+      "url": "https://www.mfds.go.kr/brd/m_207/list.do"
+    },
+    {
+      "agency": "식품의약품안전처",
+      "type": "공지",
+      "url": "https://www.mfds.go.kr/brd/m_74/list.do?Data_stts_gubun=C9999"
+    },
+    {
+      "agency": "식품의약품안전처",
+      "type": "안전성서한",
+      "url": "https://www.mfds.go.kr/brd/m_545/list.do"
+    }
+  ],
+  "note": "첫 VPS 자동수집 후 최근 30일 공식 공문과 첨부파일이 자동 표시됩니다."
+}
