@@ -322,7 +322,7 @@ def make_report(items,cfg,start,end):
     outlet_status=[]
     for s in cfg["sources"]:
         arr=[a for a in items if s["publisher"] in a.publisher]
-        outlet_status.append({"publisher":s["publisher"],"items":[{"title":a.title,"published_at":a.published_at,"verified":a.published_at_verified} for a in arr[:8]]})
+        outlet_status.append({"publisher":s["publisher"],"items":[{"title":a.title,"published_at":a.published_at,"verified":a.published_at_verified,"source_url":getattr(a,"_all_urls",[a.url])[0] if getattr(a,"_all_urls",[a.url]) else a.url} for a in arr[:8]]})
     return {
         "version":"1.1",
         "report_date":end.strftime("%Y-%m-%d"),
@@ -375,6 +375,15 @@ def main():
     (outdir/"latest.json").write_text(json.dumps({"latest":date,"path":f"/news/data/{date}.json"},ensure_ascii=False,indent=2),encoding="utf-8")
     oncology_archive=make_oncology_archive(merged,outdir,end,tz,days=30)
     (outdir/"oncology-30d.json").write_text(json.dumps(oncology_archive,ensure_ascii=False,indent=2),encoding="utf-8")
+    archive_items=[]
+    for p in sorted(outdir.glob("20??-??-??.json"),reverse=True):
+        try:
+            d=load_json(p)
+            top_titles=[n.get("title","") for n in d.get("top_news",[])[:2] if n.get("title")]
+            archive_items.append({"date":d.get("report_date") or p.stem,"title":" · ".join(top_titles) or "ApuDa 오늘의 뉴스 브리핑","path":f"/news/data/{p.name}"})
+        except Exception:
+            pass
+    (outdir/"archive-index.json").write_text(json.dumps({"generated_at":datetime.now(tz).isoformat(),"items":archive_items[:60]},ensure_ascii=False,indent=2),encoding="utf-8")
     runlog={"generated_at":datetime.now(tz).isoformat(),"window":{"start":start.isoformat(),"end":end.isoformat()},"sources":stats,"merged_count":len(merged),"top_count":len(report["top_news"]),"oncology_30d_count":len(oncology_archive["items"])}
     (outdir/"last-run.json").write_text(json.dumps(runlog,ensure_ascii=False,indent=2),encoding="utf-8")
     print(json.dumps(runlog,ensure_ascii=False))
