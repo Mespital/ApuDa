@@ -92,14 +92,18 @@ def _redact_secrets(value, key_candidates):
     return text
 
 def _safe_gateway_message(resp, key_candidates):
-    raw=_redact_secrets(resp.text,key_candidates)[:800]
     code=None
     message=None
+    error_name=None
     try:
         data=resp.json()
-        header=data.get("header") or (data.get("response") or {}).get("header") or {}
-        code=header.get("resultCode") or data.get("resultCode")
-        message=header.get("resultMsg") or data.get("resultMsg") or data.get("message")
+        header=(data.get("header")
+                or (data.get("response") or {}).get("header")
+                or (data.get("OpenAPI_ServiceResponse") or {}).get("cmmMsgHeader")
+                or {})
+        code=header.get("resultCode") or header.get("returnReasonCode") or data.get("resultCode")
+        message=header.get("resultMsg") or header.get("returnAuthMsg") or data.get("resultMsg") or data.get("message")
+        error_name=header.get("errMsg")
     except Exception:
         pass
     if not code:
@@ -108,7 +112,10 @@ def _safe_gateway_message(resp, key_candidates):
     if not message:
         m=re.search(r"<(?:resultMsg|returnAuthMsg|message)>([^<]+)</",resp.text,re.I)
         if m: message=clean(m.group(1))
-    return code,message,raw
+    if not error_name:
+        m=re.search(r"<errMsg>([^<]+)</",resp.text,re.I)
+        if m: error_name=clean(m.group(1))
+    return clean(code),clean(message),clean(error_name)
 
 def _service_key_candidates(key):
     raw=clean(key)
@@ -144,12 +151,12 @@ def fetch_mfds_approval(session, key):
             }, timeout=25)
 
             if r.status_code != 200:
-                code,msg,body=_safe_gateway_message(r,candidates)
+                code,msg,error_name=_safe_gateway_message(r,candidates)
                 last_diag={
                     "http_status":r.status_code,
                     "gateway_code":code,
                     "gateway_message":msg,
-                    "gateway_body":body,
+                    "gateway_error":error_name,
                     "key_variant_attempt":idx
                 }
                 if r.status_code in (401,403):
@@ -159,12 +166,12 @@ def fetch_mfds_approval(session, key):
             try:
                 data = r.json()
             except Exception:
-                code,msg,body=_safe_gateway_message(r,candidates)
+                code,msg,error_name=_safe_gateway_message(r,candidates)
                 last_diag={
                     "http_status":r.status_code,
                     "gateway_code":code,
                     "gateway_message":msg,
-                    "gateway_body":body,
+                    "gateway_error":error_name,
                     "key_variant_attempt":idx
                 }
                 continue
@@ -207,13 +214,30 @@ def fetch_mfds_approval(session, key):
             last_diag={"exception":_redact_secrets(e,candidates)[:240],"key_variant_attempt":idx}
 
     result.update(last_diag)
-    result["error"] = last_diag.get("gateway_message") or last_diag.get("gateway_body") or last_diag.get("exception") or "MFDS API authentication failed"
     code=clean(last_diag.get("gateway_code"))
-    if code in ("20","30","31") or "SERVICE_" in str(result["error"]):
+    error_name=clean(last_diag.get("gateway_error"))
+    message=clean(last_diag.get("gateway_message"))
+    result["error_code"]=code or None
+    result["error_name"]=error_name or None
+    result["error_message"]=message or None
+    result.pop("exception",None)
+    result.pop("gateway_error",None)
+    result.pop("gateway_message",None)
+    result.pop("gateway_code",None)
+    if code in ("20","30","31") or "SERVICE_" in error_name:
         result["status"]="auth_error"
     elif last_diag.get("http_status")==403:
         result["status"]="forbidden"
-    result["note"] = "키 형식(Encoding/Decoding)은 자동 보정했습니다. 계속 실패하면 공공데이터포털의 해당 API 활용승인에 연결된 서비스키인지 확인해야 합니다."
+    else:
+        result["status"]="error"
+    if code=="30" or error_name=="SERVICE_KEY_IS_NOT_REGISTERED_ERROR":
+        result["note"]="공공데이터포털에서 이 활용신청에 연결된 서비스키를 다시 확인해야 합니다. 현재 GitHub Secret은 전달되고 있지만 API 게이트웨이가 해당 키를 등록된 키로 인정하지 않고 있습니다."
+    elif code=="20":
+        result["note"]="해당 API의 활용신청·승인 또는 접근 권한을 확인해야 합니다."
+    elif code=="31":
+        result["note"]="공공데이터 인증키 사용기한이 만료되었습니다. 이용기간 연장 또는 새 키가 필요합니다."
+    else:
+        result["note"]="식약처 API 연결을 다시 확인하고 있습니다. 공식 원문 링크는 계속 이용할 수 있습니다."
     return result
 
 def static_api_source(src, key):
@@ -245,10 +269,14 @@ def main():
         else:
             results.append(static_api_source(src,key))
 
+    status_counts={}
+    for item in results:
+        status_counts[item.get("status","unknown")]=status_counts.get(item.get("status","unknown"),0)+1
     out={
-        "version":"1.0",
+        "version":"1.1",
         "generated_at":datetime.now(TZ).isoformat(),
         "service_key_connected":bool(key),
+        "source_health":{"total":len(results),"status_counts":status_counts},
         "sources":results,
         "usage_policy":{
             "clinical_decision":"공식 자료는 근거 확인용이며 개인의 진단·치료 결정을 대체하지 않습니다.",
@@ -265,10 +293,10 @@ def main():
         "service_key_connected":bool(key),
         "mfds_approval_status":mfds.get("status"),
         "mfds_approval_records":len(mfds.get("records") or []),
-        "mfds_approval_error":mfds.get("error"),
         "mfds_http_status":mfds.get("http_status"),
-        "mfds_gateway_code":mfds.get("gateway_code"),
-        "mfds_gateway_message":mfds.get("gateway_message"),
+        "mfds_error_code":mfds.get("error_code"),
+        "mfds_error_name":mfds.get("error_name"),
+        "mfds_error_message":mfds.get("error_message"),
         "mfds_key_variant_used":mfds.get("key_variant_used") or mfds.get("key_variant_attempt")
     },ensure_ascii=False))
 
