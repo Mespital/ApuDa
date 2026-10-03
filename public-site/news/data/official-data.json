@@ -1,0 +1,67 @@
+{
+  "version": "1.0",
+  "generated_at": "2026-10-03T22:29:00+09:00",
+  "service_key_connected": false,
+  "sources": [
+    {
+      "id": "mfds_drug_approval",
+      "agency": "식품의약품안전처",
+      "name": "의약품 제품 허가정보",
+      "source_url": "https://www.data.go.kr/data/15095677/openapi.do",
+      "status": "key_required",
+      "checked_at": "2026-10-03T22:29:00+09:00",
+      "latest_year": null,
+      "note": "공공데이터포털 인증키를 연결하면 허가일자·제품명·주성분·희귀의약품 여부를 구조화해 자동 확인합니다."
+    },
+    {
+      "id": "mfds_supply_shortage",
+      "agency": "식품의약품안전처",
+      "name": "의약품 공급부족 정보",
+      "source_url": "https://www.data.go.kr/data/15056886/openapi.do",
+      "status": "key_required",
+      "checked_at": "2026-10-03T22:29:00+09:00",
+      "latest_year": null,
+      "note": "공급부족 사유·환자치료 영향·정상화 계획을 공식 자료와 연결합니다."
+    },
+    {
+      "id": "hira_drug_price",
+      "agency": "건강보험심사평가원",
+      "name": "약가기준정보조회서비스",
+      "source_url": "https://www.data.go.kr/data/15054445/openapi.do",
+      "status": "key_required",
+      "checked_at": "2026-10-03T22:29:00+09:00",
+      "latest_year": null,
+      "note": "급여구분·상한가·적용시작일·보험코드를 공식 약가 마스터와 연결합니다."
+    },
+    {
+      "id": "ncc_cancer_stats",
+      "agency": "국립암센터 국가암정보센터",
+      "name": "통계로 보는 암",
+      "source_url": "https://edu.cancer.go.kr/lay1/S1T654C656/contents.do",
+      "status": "ok",
+      "checked_at": "2026-10-03T22:29:00+09:00",
+      "latest_year": 2023,
+      "note": "국가암정보센터가 공개한 최신 암유병 통계 원문을 직접 연결합니다."
+    },
+    {
+      "id": "ncc_living_guide",
+      "agency": "국립암센터 국가암정보센터",
+      "name": "암환자 생활백서",
+      "source_url": "https://cancer.go.kr/lay1/S1T523C850/contents.do",
+      "status": "ok",
+      "checked_at": "2026-10-03T22:29:00+09:00",
+      "latest_year": null,
+      "note": "식생활·운동·증상관리·치료 후 생활 등 공식 환자 정보 원문을 연결합니다."
+    }
+  ],
+  "usage_policy": {
+    "clinical_decision": "공식 자료는 근거 확인용이며 개인의 진단·치료 결정을 대체하지 않습니다.",
+    "source_priority": [
+      "식품의약품안전처",
+      "건강보험심사평가원",
+      "국립암센터 국가암정보센터",
+      "보건복지부·질병관리청 등 공식기관"
+    ],
+    "display_rule": "공식 출처·기준일·원문 링크를 함께 표시하고, 기사 요약과 공식 사실을 분리합니다."
+  }
+}
