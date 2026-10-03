@@ -126,6 +126,7 @@ function setupFacets(){
 function statusLabel(s){
   if(s==='ok')return '연결됨';
   if(s==='ready')return '연결 준비';
+  if(s==='key_available')return '키 등록됨';
   if(s==='key_required')return 'API 키 필요';
   return '확인 필요';
 }
