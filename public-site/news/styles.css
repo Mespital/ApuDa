@@ -151,3 +151,77 @@ a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 32px));m
   .period-thumb{height:96px}
   .newsroom-thumb{height:100px}
 }
+
+/* News density polish v2 */
+.period-card h3,.newsroom-card h3{
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  overflow:hidden;
+}
+.period-card p,.newsroom-summary{
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:3;
+  overflow:hidden;
+}
+.period-card:not(.has-thumb) .period-body,
+.newsroom-card:not(.has-thumb) .newsroom-body{
+  padding-top:18px;
+}
+.period-card:focus-within,.newsroom-card:focus-visible,.media-card:focus-visible,.source-chip:focus-visible{
+  outline:3px solid rgba(36,107,254,.18);
+  outline-offset:2px;
+}
+@media(max-width:620px){
+  .period-grid,.oncology-grid{gap:11px}
+  .period-card.has-thumb,.newsroom-card.has-thumb{
+    display:grid;
+    grid-template-columns:112px minmax(0,1fr);
+    align-items:stretch;
+  }
+  .period-card.has-thumb .period-thumb,
+  .newsroom-card.has-thumb .newsroom-thumb{
+    width:112px;
+    height:100%;
+    min-height:124px;
+    max-height:none;
+    border-radius:0;
+  }
+  .period-card.has-thumb .period-thumb img,
+  .newsroom-card.has-thumb .newsroom-thumb img{
+    height:100%;
+    min-height:124px;
+  }
+  .period-body,.newsroom-body{padding:12px 13px}
+  .period-card h3,.newsroom-card h3{
+    font-size:15px;
+    line-height:1.34;
+    margin:7px 0 5px;
+  }
+  .period-card p,.newsroom-summary{
+    font-size:11.5px;
+    line-height:1.5;
+    -webkit-line-clamp:2;
+  }
+  .period-meta,.newsroom-meta{font-size:9.5px}
+  .source-links{margin-top:8px;padding-top:8px}
+  .source-chip{padding:5px 8px;font-size:9.5px}
+  .newsroom-foot{padding-top:8px;margin-top:8px}
+  .newsroom-foot span,.newsroom-foot em{font-size:10px}
+  .period-summary{padding:10px 12px;font-size:12px}
+}
+@media(max-width:390px){
+  .period-card.has-thumb,.newsroom-card.has-thumb{
+    grid-template-columns:96px minmax(0,1fr);
+  }
+  .period-card.has-thumb .period-thumb,
+  .newsroom-card.has-thumb .newsroom-thumb{
+    width:96px;
+    min-height:118px;
+  }
+  .period-card.has-thumb .period-thumb img,
+  .newsroom-card.has-thumb .newsroom-thumb img{
+    min-height:118px;
+  }
+}
