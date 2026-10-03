@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import json, os, re
-from urllib.parse import unquote
+from urllib.parse import unquote, quote
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -56,7 +56,11 @@ def fetch_official_web(session, src):
         text = clean(soup.get_text(" ", strip=True))
         years = [int(y) for y in re.findall(r"20\d{2}", text)]
         plausible = [y for y in years if 2000 <= y <= datetime.now(TZ).year]
-        result["latest_year"] = max(plausible) if plausible else None
+        if src["id"] == "ncc_cancer_stats":
+            stat_years=[int(y) for y in re.findall(r"(20\d{2})년\s*순위",text)]
+            result["latest_year"] = max(stat_years) if stat_years else (max(plausible) if plausible else None)
+        else:
+            result["latest_year"] = None
         result["page_title"] = clean(soup.title.get_text() if soup.title else src["name"])
         result["status"] = "ok"
         if src["id"] == "ncc_cancer_stats":
@@ -74,11 +78,21 @@ def fetch_official_web(session, src):
         result["error"] = clean(e)[:180]
     return result
 
-def _safe_gateway_message(resp, key_candidates):
-    raw=clean(resp.text)[:800]
+def _redact_secrets(value, key_candidates):
+    text=clean(value)
+    variants=[]
     for k in key_candidates:
-        if k:
-            raw=raw.replace(k,"***")
+        if not k: continue
+        for v in (k,unquote(k),unquote(unquote(k)),quote(k,safe=""),quote(unquote(k),safe="")):
+            if v and v not in variants:
+                variants.append(v)
+    for v in sorted(variants,key=len,reverse=True):
+        text=text.replace(v,"***")
+    text=re.sub(r"(serviceKey=)[^&\s]+",r"\1***",text,flags=re.I)
+    return text
+
+def _safe_gateway_message(resp, key_candidates):
+    raw=_redact_secrets(resp.text,key_candidates)[:800]
     code=None
     message=None
     try:
@@ -190,7 +204,7 @@ def fetch_mfds_approval(session, key):
             result["note"] = "식약처 공식 의약품 허가 OpenAPI 연결 상태입니다. 허가 상세 확인은 품목기준코드 기준으로 후속 조회합니다."
             return result
         except Exception as e:
-            last_diag={"exception":clean(e)[:240],"key_variant_attempt":idx}
+            last_diag={"exception":_redact_secrets(e,candidates)[:240],"key_variant_attempt":idx}
 
     result.update(last_diag)
     result["error"] = last_diag.get("gateway_message") or last_diag.get("gateway_body") or last_diag.get("exception") or "MFDS API authentication failed"
