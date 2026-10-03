@@ -68,3 +68,44 @@ a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 32px));m
   .card-link{font-size:11px}
   .archive a{align-items:flex-start}
 }
+
+/* News period hub */
+.period-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 14px}
+.period-tabs button{border:1px solid var(--line);background:#fff;color:var(--muted);padding:10px 16px;border-radius:999px;font:inherit;font-size:13px;font-weight:900;cursor:pointer}
+.period-tabs button.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.period-summary{margin-bottom:14px;padding:12px 15px;border-radius:14px;background:#EEF5FF;color:#365270;font-size:13px;font-weight:800}
+.period-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.period-card{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 10px 28px rgba(16,42,67,.05)}
+.period-thumb{aspect-ratio:16/8.5;background:linear-gradient(135deg,#E8F1FF,#F8FBFF);display:grid;place-items:center;overflow:hidden}
+.period-thumb img{width:100%;height:100%;object-fit:cover}
+.period-thumb.fallback::before{content:'ApuDa NEWS';font-size:12px;font-weight:950;letter-spacing:.14em;color:var(--blue)}
+.period-body{padding:17px}
+.period-meta{display:flex;gap:7px;flex-wrap:wrap;align-items:center;color:var(--muted);font-size:10.5px;font-weight:800}
+.period-rank{display:inline-grid;place-items:center;min-width:25px;height:25px;padding:0 7px;border-radius:999px;background:var(--blue);color:#fff}
+.period-card h3{margin:10px 0 8px;font-size:18px;line-height:1.4}
+.period-card p{margin:0;color:#4C6075;font-size:13px;line-height:1.6}
+.source-links{display:flex;gap:6px;flex-wrap:wrap;margin-top:13px;padding-top:12px;border-top:1px solid var(--line)}
+.source-chip{display:inline-flex;align-items:center;padding:6px 9px;border-radius:999px;background:var(--sky);color:var(--blue2);font-size:10.5px;font-weight:900}
+.source-chip:hover{background:var(--blue);color:#fff}
+.source-chip.disabled{background:#F1F3F6;color:#8A97A6}
+.media-hub{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.media-card{display:flex;align-items:center;gap:11px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;transition:.2s}
+.media-card:hover{transform:translateY(-2px);border-color:#BFD3F0;box-shadow:0 10px 24px rgba(36,107,254,.08)}
+.media-icon{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--sky);font-size:18px}
+.media-card span:nth-child(2){min-width:0;display:flex;flex-direction:column;gap:3px}
+.media-card b{font-size:14px}.media-card small{font-size:10px;color:var(--muted);line-height:1.4}
+.media-card em{margin-left:auto;font-style:normal;color:var(--blue);font-weight:950}
+.outlet-head a{font-size:14px;font-weight:950;color:var(--navy)}
+.outlet-head a:hover{color:var(--blue)}
+@media(max-width:900px){
+  .period-grid{grid-template-columns:repeat(2,1fr)}
+  .media-hub{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:620px){
+  .period-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .period-tabs::-webkit-scrollbar{display:none}
+  .period-grid{grid-template-columns:1fr}
+  .media-hub{grid-template-columns:1fr 1fr}
+  .media-card{padding:13px}
+  .media-card small{display:none}
+}
