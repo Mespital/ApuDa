@@ -2,7 +2,14 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-: "${APUDA_REPO_DIR:=/srv/apuda-repo}"
+ENV_FILE="${APUDA_NEWS_ENV_FILE:-$HOME/.config/apuda/news.env}"
+if [ -f "$ENV_FILE" ]; then
+  set -a
+  . "$ENV_FILE"
+  set +a
+fi
+
+: "${APUDA_REPO_DIR:=$HOME/apuda-repo}"
 : "${APUDA_GITHUB_REPO:=Mespital/ApuDa}"
 : "${APUDA_NEWS_BRANCH:=main}"
 : "${APUDA_GITHUB_TOKEN:?APUDA_GITHUB_TOKEN is required}"
