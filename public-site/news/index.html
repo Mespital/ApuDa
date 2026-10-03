@@ -31,6 +31,11 @@
   <div class="media-hub" id="mediaHub"></div>
 </section>
 
+<section class="section official-notice-section">
+  <div class="section-head"><div><h2>공식 공문 · 허가 · 안전성</h2><p>식약처 공식 문서와 첨부파일을 최근순으로 확인합니다.</p></div><span class="official-updated" id="noticeUpdated">공식자료 확인 중</span></div>
+  <div class="official-notice-list" id="officialNoticeList"><div class="newsroom-empty">공식 공문을 불러오는 중입니다.</div></div>
+</section>
+
 <section class="section cols">
   <div class="panel"><h3>매체별 주요 뉴스</h3><div class="list" id="outletList"><div class="row"><span>불러오는 중입니다.</span></div></div></div>
   <div class="panel"><h3>업계 공통 흐름</h3><div class="list" id="trendList"><div class="row"><span>불러오는 중입니다.</span></div></div></div>
@@ -209,6 +214,26 @@ async function loadPeriod(){
   renderPeriod();
   renderIssueDigest();
 }
+function formatDateOnly(v){
+  try{return new Date(v).toLocaleDateString('ko-KR',{year:'numeric',month:'numeric',day:'numeric'});}
+  catch{return '';}
+}
+async function loadOfficialNotices(){
+  const box=document.getElementById('officialNoticeList'),updated=document.getElementById('noticeUpdated');
+  try{
+    const data=await fetch('/news/data/official-notices.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()});
+    updated.textContent='최근 30일 · '+(data.items||[]).length+'건';
+    const items=(data.items||[]).slice(0,10);
+    box.innerHTML=items.length?items.map(n=>{
+      const atts=(n.attachments||[]).slice(0,3).map(a=>'<a class="attachment-chip" href="'+esc(a.url)+'" target="_blank" rel="noopener noreferrer">'+esc(a.label||'첨부파일')+' ↗</a>').join('');
+      return '<article class="official-notice-card"><div class="official-notice-meta"><span>'+esc(n.agency)+'</span><span class="notice-type">'+esc(n.category||n.document_type)+'</span><time>'+esc(formatDateOnly(n.published_at))+'</time></div><h3><a href="'+esc(n.url)+'" target="_blank" rel="noopener noreferrer">'+esc(n.title)+'</a></h3><div class="official-notice-actions"><a class="source-chip" href="'+esc(n.url)+'" target="_blank" rel="noopener noreferrer">공식 원문 ↗</a>'+atts+'</div></article>';
+    }).join(''):'<div class="newsroom-empty">최근 30일 내 조건에 맞는 공식 공문이 없습니다.</div>';
+  }catch(e){
+    updated.textContent='공식자료 준비 중';
+    box.innerHTML='<div class="newsroom-empty">공식 공문 데이터가 준비되면 자동 표시됩니다.</div>';
+  }
+}
+
 async function loadArchive(){
   const box=document.getElementById('archiveList');
   try{
@@ -232,6 +257,7 @@ async function load(){
     document.getElementById('briefingText').textContent='브리핑 데이터를 불러오지 못했습니다.';
   }
   await loadPeriod();
+  loadOfficialNotices();
   loadArchive();
 }
 load();
