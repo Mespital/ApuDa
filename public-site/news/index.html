@@ -1,85 +1,163 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ApuDa 오늘의 뉴스 브리핑</title><meta name="description" content="의료·제약·바이오·급여·규제·항암제 주요 뉴스를 ApuDa가 매일 분석합니다."><link rel="stylesheet" href="/news/styles.css"></head><body>
 <header class="topbar"><div class="wrap nav"><a class="brand" href="/">ApuDa<small>아프지만, 다행이다.</small></a><nav class="navlinks"><a class="on" href="/news/">오늘의 브리핑</a><a href="/news/oncology/">항암제 뉴스</a><a href="/">ApuDa 홈</a></nav></div></header>
+
 <main class="wrap">
-<section class="hero"><div class="eyebrow">APUDA HEALTHCARE INTELLIGENCE</div><h1>오늘의 뉴스 브리핑</h1><p>의료정책·급여·신약·임상·제약·바이오·병원·약국 이슈를 단순 나열하지 않고, 산업적 중요도와 환자 접근성 관점에서 분석합니다.</p><div class="meta" id="briefingMeta"><span class="chip">불러오는 중</span></div></section>
+<section class="hero">
+  <div class="eyebrow">APUDA HEALTHCARE INTELLIGENCE</div>
+  <h1>오늘의 뉴스 브리핑</h1>
+  <p>오늘·최근 7일·최근 30일 핵심 이슈를 나눠 보고, 각 기사와 뉴스 매체 홈페이지까지 바로 이동할 수 있습니다.</p>
+  <div class="meta" id="briefingMeta"><span class="chip">불러오는 중</span></div>
+</section>
+
 <section class="brief"><h2>오늘의 핵심 브리핑</h2><p id="briefingText">최신 브리핑을 불러오는 중입니다.</p></section>
 
-<section class="section"><div class="section-head"><h2>오늘의 핵심 TOP 3</h2><p>카드를 누르면 해당 기사 원문으로 이동합니다</p></div><div class="grid" id="topNewsGrid"><div class="newsroom-empty">뉴스를 불러오는 중입니다.</div></div></section>
+<section class="section period-section">
+  <div class="section-head"><div><h2>핵심 뉴스 한눈에</h2><p>기간을 선택하면 중요도와 최신성을 함께 반영한 뉴스가 표시됩니다.</p></div></div>
+  <div class="period-tabs" id="periodTabs">
+    <button class="on" data-period="today">오늘</button>
+    <button data-period="week">최근 7일</button>
+    <button data-period="month">최근 30일</button>
+  </div>
+  <div class="period-summary" id="periodSummary">오늘의 핵심 뉴스를 불러오는 중입니다.</div>
+  <div class="period-grid" id="periodGrid"><div class="newsroom-empty">핵심 뉴스를 불러오는 중입니다.</div></div>
+</section>
+
+<section class="section">
+  <div class="section-head"><h2>뉴스 매체 바로가기</h2><p>매체명을 누르면 각 뉴스 사이트로 이동합니다.</p></div>
+  <div class="media-hub" id="mediaHub"></div>
+</section>
 
 <section class="section cols">
-<div class="panel"><h3>매체별 주요 뉴스</h3><div class="list" id="outletList"><div class="row"><span>불러오는 중입니다.</span></div></div></div>
-<div class="panel"><h3>업계 공통 흐름</h3><div class="list" id="trendList"><div class="row"><span>불러오는 중입니다.</span></div></div></div>
+  <div class="panel"><h3>매체별 주요 뉴스</h3><div class="list" id="outletList"><div class="row"><span>불러오는 중입니다.</span></div></div></div>
+  <div class="panel"><h3>업계 공통 흐름</h3><div class="list" id="trendList"><div class="row"><span>불러오는 중입니다.</span></div></div></div>
 </section>
 
 <div class="insight"><b>한 줄 인사이트</b><p id="insightText">최신 분석을 불러오는 중입니다.</p></div>
 
-<section class="section"><div class="section-head"><h2>지난 브리핑</h2><p>날짜를 누르면 해당 날짜 브리핑을 불러옵니다</p></div><div class="archive" id="archiveList"><div class="newsroom-empty">지난 브리핑을 불러오는 중입니다.</div></div></section>
-</main><footer class="footer"><div class="wrap"><b>ApuDa</b>아프지만, 다행이다.<br>의료정보는 일반적인 정보 제공 목적이며 개인의 진단·치료를 대체하지 않습니다.</div></footer>
+<section class="section"><div class="section-head"><h2>지난 브리핑</h2><p>날짜를 누르면 해당 날짜 브리핑을 불러옵니다.</p></div><div class="archive" id="archiveList"><div class="newsroom-empty">지난 브리핑을 불러오는 중입니다.</div></div></section>
+</main>
+
+<footer class="footer"><div class="wrap"><b>ApuDa</b>아프지만, 다행이다.<br>의료정보는 일반적인 정보 제공 목적이며 개인의 진단·치료를 대체하지 않습니다.</div></footer>
 
 <script>
+const OUTLET_HOME={
+  '데일리팜':'https://www.dailypharm.com/',
+  '의학신문':'https://www.bosa.co.kr/',
+  '메디파나뉴스':'https://www.medipana.com/',
+  '약사공론':'https://www.kpanews.co.kr/'
+};
 const esc=s=>String(s??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const qs=new URLSearchParams(location.search);
 const requestedDate=qs.get('date');
+let currentPeriod='today',periodData=null,currentDaily=null;
+
 function primaryUrl(n){return Array.isArray(n?.source_urls)&&n.source_urls.length?n.source_urls[0]:'';}
 function formatPublished(v,verified){
- if(!verified||!v)return '게시시간 확인 필요';
- try{return new Date(v).toLocaleString('ko-KR',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit',hour12:false});}
- catch{return '게시시간 확인 필요';}
+  if(!verified||!v)return '게시시간 확인 필요';
+  try{return new Date(v).toLocaleString('ko-KR',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit',hour12:false});}
+  catch{return '게시시간 확인 필요';}
 }
-function topCard(n){
- const u=primaryUrl(n),pub=(n.publishers||[]).join(' · ')||'ApuDa',cats=(n.category||[]).slice(0,3).join(' · ');
- const bullets=(n.summary||[]).slice(0,3).map(x=>'<li>'+esc(x)+'</li>').join('');
- const inner='<span class="rank">'+esc(n.rank||'')+'</span><h3>'+esc(n.title)+'</h3><div class="source">'+esc(pub)+' · '+esc(formatPublished(n.published_at,n.published_at_verified))+(cats?' · '+esc(cats):'')+'</div><ul class="bullets">'+bullets+'</ul><div class="point"><b>중요 포인트</b><br>'+esc(n.importance||'')+'</div><div class="card-link">'+(u?'원문 기사 보기 →':'원문 링크 확인 중')+'</div>';
- return u?'<a class="card card-clickable" href="'+esc(u)+'" target="_blank" rel="noopener noreferrer">'+inner+'</a>':'<article class="card">'+inner+'</article>';
+function sourceButtons(n){
+  let links=Array.isArray(n?.source_links)?n.source_links:[];
+  if(!links.length && primaryUrl(n)) links=[{publisher:(n.publishers||[])[0]||'원문',url:primaryUrl(n)}];
+  if(!links.length)return '<span class="source-chip disabled">원문 링크 확인 중</span>';
+  return links.map(x=>'<a class="source-chip" href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">'+esc(x.publisher||'원문')+' ↗</a>').join('');
 }
-function render(data){
- document.title='ApuDa 오늘의 뉴스 브리핑 · '+esc(data.report_date||'');
- document.getElementById('briefingMeta').innerHTML=
-   '<span class="chip">보고일 '+esc(data.report_date||'')+'</span>'+
-   '<span class="chip">전일 09:00 → 당일 09:00</span>'+
-   '<span class="chip">'+esc((data.sources||[]).join(' · '))+'</span>';
- document.getElementById('briefingText').textContent=data.briefing||'';
- const top=(data.top_news||[]).slice(0,3);
- document.getElementById('topNewsGrid').innerHTML=top.length?top.map(topCard).join(''):'<div class="newsroom-empty">이 날짜에는 주요 뉴스가 없습니다.</div>';
+function periodCard(n){
+  const img=n.thumbnail_url||n.image_url||'';
+  const pubs=(n.publishers||[]).join(' · ')||'ApuDa';
+  const summary=(n.summary&&n.summary[0])||n.importance||'';
+  const thumb=img?'<div class="period-thumb"><img src="'+esc(img)+'" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add(\'fallback\');this.remove()"></div>':'<div class="period-thumb fallback"></div>';
+  return '<article class="period-card">'+thumb+'<div class="period-body"><div class="period-meta"><span class="period-rank">'+esc(n.period_rank||n.rank||'')+'</span><span>'+esc(pubs)+'</span><span>'+esc(formatPublished(n.published_at,n.published_at_verified))+'</span></div><h3>'+esc(n.title)+'</h3><p>'+esc(summary)+'</p><div class="source-links">'+sourceButtons(n)+'</div></div></article>';
+}
+function renderPeriod(){
+  const p=periodData?.periods?.[currentPeriod];
+  const grid=document.getElementById('periodGrid'),summary=document.getElementById('periodSummary');
+  if(!p){summary.textContent='기간별 핵심뉴스 데이터를 준비 중입니다.';grid.innerHTML='<div class="newsroom-empty">데이터가 아직 없습니다.</div>';return;}
+  summary.textContent=p.description||'';
+  const items=p.items||[];
+  grid.innerHTML=items.length?items.map(periodCard).join(''):'<div class="newsroom-empty">이 기간에 표시할 핵심 뉴스가 없습니다.</div>';
+}
+function setupPeriodTabs(){
+  document.querySelectorAll('#periodTabs button').forEach(btn=>btn.onclick=()=>{
+    currentPeriod=btn.dataset.period;
+    document.querySelectorAll('#periodTabs button').forEach(b=>b.classList.toggle('on',b===btn));
+    renderPeriod();
+  });
+}
+function renderMediaHub(outlets){
+  const byName=Object.fromEntries((outlets||[]).map(o=>[o.publisher,o]));
+  document.getElementById('mediaHub').innerHTML=Object.keys(OUTLET_HOME).map(name=>{
+    const o=byName[name]||{};
+    const home=o.homepage_url||OUTLET_HOME[name];
+    const count=(o.items||[]).length;
+    return '<a class="media-card" href="'+esc(home)+'" target="_blank" rel="noopener noreferrer"><span class="media-icon">📰</span><span><b>'+esc(name)+'</b><small>'+count+'개 주요 기사 · 사이트 바로가기</small></span><em>↗</em></a>';
+  }).join('');
+}
+function renderDaily(data){
+  currentDaily=data;
+  document.title='ApuDa 오늘의 뉴스 브리핑 · '+esc(data.report_date||'');
+  document.getElementById('briefingMeta').innerHTML=
+    '<span class="chip">보고일 '+esc(data.report_date||'')+'</span>'+
+    '<span class="chip">전일 09:00 → 당일 09:00</span>'+
+    '<span class="chip">'+esc((data.sources||[]).join(' · '))+'</span>';
+  document.getElementById('briefingText').textContent=data.briefing||'';
 
- const outlets=data.outlet_status||[];
- document.getElementById('outletList').innerHTML=outlets.map(o=>{
-   const items=o.items||[];
-   if(!items.length)return '<div class="row"><b>'+esc(o.publisher)+'</b><span>전일 09:00~당일 09:00 주요 신규 기사 없음</span></div>';
-   const links=items.slice(0,4).map(x=>{
-     const label=esc(x.title)+' · '+esc(formatPublished(x.published_at,x.verified));
-     return x.source_url?'<a class="outlet-link" href="'+esc(x.source_url)+'" target="_blank" rel="noopener noreferrer">'+label+' →</a>':'<span>'+label+'</span>';
-   }).join('');
-   return '<div class="row"><b>'+esc(o.publisher)+'</b><div class="outlet-items">'+links+'</div></div>';
- }).join('');
+  const outlets=data.outlet_status||[];
+  renderMediaHub(outlets);
+  document.getElementById('outletList').innerHTML=outlets.map(o=>{
+    const home=o.homepage_url||OUTLET_HOME[o.publisher]||'#';
+    const items=o.items||[];
+    const header='<div class="outlet-head"><a href="'+esc(home)+'" target="_blank" rel="noopener noreferrer">'+esc(o.publisher)+' ↗</a></div>';
+    if(!items.length)return '<div class="row">'+header+'<span>전일 09:00~당일 09:00 주요 신규 기사 없음</span></div>';
+    const links=items.slice(0,4).map(x=>{
+      const label=esc(x.title)+' · '+esc(formatPublished(x.published_at,x.verified));
+      return x.source_url?'<a class="outlet-link" href="'+esc(x.source_url)+'" target="_blank" rel="noopener noreferrer">'+label+' →</a>':'<span>'+label+'</span>';
+    }).join('');
+    return '<div class="row">'+header+'<div class="outlet-items">'+links+'</div></div>';
+  }).join('');
 
- const trends=data.trends||[];
- document.getElementById('trendList').innerHTML=trends.length?trends.map(t=>'<div class="row"><b>'+esc(t.title)+'</b><span>'+esc(t.change||'')+'</span>'+(t.implication?'<span class="trend-implication">'+esc(t.implication)+'</span>':'')+'</div>').join(''):'<div class="row"><span>오늘의 공통 흐름 분석 준비 중입니다.</span></div>';
- document.getElementById('insightText').textContent=data.insight||'';
+  const trends=data.trends||[];
+  document.getElementById('trendList').innerHTML=trends.length?trends.map(t=>'<div class="row"><b>'+esc(t.title)+'</b><span>'+esc(t.change||'')+'</span>'+(t.implication?'<span class="trend-implication">'+esc(t.implication)+'</span>':'')+'</div>').join(''):'<div class="row"><span>오늘의 공통 흐름 분석 준비 중입니다.</span></div>';
+  document.getElementById('insightText').textContent=data.insight||'';
+}
+async function loadPeriod(){
+  try{
+    periodData=await fetch('/news/data/period-highlights.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()});
+  }catch(e){
+    const top=(currentDaily?.top_news||[]);
+    periodData={periods:{
+      today:{description:'오늘의 핵심 뉴스',items:top.slice(0,5)},
+      week:{description:'현재 누적 데이터 기준 최근 7일 핵심 뉴스',items:top.slice(0,5)},
+      month:{description:'현재 누적 데이터 기준 최근 30일 핵심 뉴스',items:top.slice(0,6)}
+    }};
+  }
+  renderPeriod();
 }
 async function loadArchive(){
- const box=document.getElementById('archiveList');
- try{
-   const idx=await fetch('/news/data/archive-index.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()});
-   const items=(idx.items||[]).slice(0,30);
-   box.innerHTML=items.length?items.map(x=>'<a href="/news/?date='+encodeURIComponent(x.date)+'"><div><time>'+esc(x.date)+'</time><strong> '+esc(x.title||'ApuDa 오늘의 뉴스 브리핑')+'</strong></div><em>읽기 →</em></a>').join(''):'<div class="newsroom-empty">아직 지난 브리핑이 없습니다.</div>';
- }catch(e){box.innerHTML='<div class="newsroom-empty">지난 브리핑 목록을 준비 중입니다.</div>';}
+  const box=document.getElementById('archiveList');
+  try{
+    const idx=await fetch('/news/data/archive-index.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()});
+    const items=(idx.items||[]).slice(0,30);
+    box.innerHTML=items.length?items.map(x=>'<a href="/news/?date='+encodeURIComponent(x.date)+'"><div><time>'+esc(x.date)+'</time><strong> '+esc(x.title||'ApuDa 오늘의 뉴스 브리핑')+'</strong></div><em>읽기 →</em></a>').join(''):'<div class="newsroom-empty">아직 지난 브리핑이 없습니다.</div>';
+  }catch(e){box.innerHTML='<div class="newsroom-empty">지난 브리핑 목록을 준비 중입니다.</div>';}
 }
 async function load(){
- try{
-   let path;
-   if(requestedDate) path='/news/data/'+encodeURIComponent(requestedDate)+'.json';
-   else{
-     const latest=await fetch('/news/data/latest.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()});
-     path=latest.path;
-   }
-   const data=await fetch(path,{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()});
-   render(data);
- }catch(e){
-   document.getElementById('briefingText').textContent='브리핑 데이터를 불러오지 못했습니다.';
-   document.getElementById('topNewsGrid').innerHTML='<div class="newsroom-empty">요청한 브리핑을 찾을 수 없습니다.</div>';
- }
- loadArchive();
+  setupPeriodTabs();
+  try{
+    let path;
+    if(requestedDate) path='/news/data/'+encodeURIComponent(requestedDate)+'.json';
+    else{
+      const latest=await fetch('/news/data/latest.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()});
+      path=latest.path;
+    }
+    const data=await fetch(path,{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()});
+    renderDaily(data);
+  }catch(e){
+    document.getElementById('briefingText').textContent='브리핑 데이터를 불러오지 못했습니다.';
+  }
+  await loadPeriod();
+  loadArchive();
 }
 load();
 </script></body></html>
