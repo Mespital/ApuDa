@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import json, re
+import json, re, os
 from datetime import datetime, timedelta
 from pathlib import Path
 from urllib.parse import urljoin
@@ -88,7 +88,7 @@ def collect(session,source,cutoff):
     return items
 
 def main():
-    repo=Path(__file__).resolve().parents[2]
+    repo=Path(os.getenv("APUDA_REPO_DIR",".")).resolve()
     outdir=repo/"public-site"/"news"/"data";outdir.mkdir(parents=True,exist_ok=True)
     now=datetime.now(TZ);cutoff=now-timedelta(days=30)
     s=requests.Session();s.headers.update({"User-Agent":UA,"Accept-Language":"ko-KR,ko;q=0.9"})
