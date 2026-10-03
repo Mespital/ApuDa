@@ -1,0 +1,247 @@
+{
+  "checked_at": "2026-10-03T06:48:38.700389+00:00",
+  "last_success_at": "2026-10-03T06:48:38.700389+00:00",
+  "failures": [],
+  "articles": [
+    {
+      "title": "A model guide for the GPT-6 family",
+      "url": "https://openai.com/index/practical-guide-building-gpt-6",
+      "source": "OpenAI",
+      "published_at": "2026-10-02T16:15:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "The latest AI news we announced in September 2026",
+      "url": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-september-2026/",
+      "source": "Google",
+      "published_at": "2026-10-02T15:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Chatham scales its capital markets expertise with OpenAI",
+      "url": "https://openai.com/index/chatham-financial",
+      "source": "OpenAI",
+      "published_at": "2026-10-02T00:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Our Project Suncatcher prototype satellite is in orbit.",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-research/project-suncatcher-prototype/",
+      "source": "Google",
+      "published_at": "2026-10-01T23:30:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "The eternal complement",
+      "url": "https://openai.com/index/the-eternal-complement",
+      "source": "OpenAI",
+      "published_at": "2026-10-01T17:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Guided Vision in Gemini Live: built for accessibility",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/guided-vision-gemini-live/",
+      "source": "Google",
+      "published_at": "2026-10-01T16:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "1,400 educators joined our Badge-a-thon: Day of AI Learning.",
+      "url": "https://blog.google/products-and-platforms/products/education/ai-educator-series-badge-a-thon/",
+      "source": "Google",
+      "published_at": "2026-10-01T16:00:00+00:00",
+      "category": "교육·생활",
+      "domain": "education"
+    },
+    {
+      "title": "How Albertsons Companies is reimagining retail from the inside out",
+      "url": "https://openai.com/index/albertsons-reimagining-retail",
+      "source": "OpenAI",
+      "published_at": "2026-10-01T16:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "The Den frees up 10-15 hours a week to grow with ChatGPT Work",
+      "url": "https://openai.com/index/the-den-family-social",
+      "source": "OpenAI",
+      "published_at": "2026-10-01T00:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Google's AI ranks #1 for predicting flu hospitalizations.",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-research/google-science-ai-flu-forecasts/",
+      "source": "Google",
+      "published_at": "2026-09-30T21:30:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Gemini 4 Argon: our next era of frontier intelligence",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",
+      "source": "Google",
+      "published_at": "2026-09-30T20:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Supporting AI readiness in higher education",
+      "url": "https://blog.google/company-news/outreach-and-initiatives/google-org/educause-2026/",
+      "source": "Google",
+      "published_at": "2026-09-30T16:43:00+00:00",
+      "category": "교육·생활",
+      "domain": "education"
+    },
+    {
+      "title": "Let skills in Gemini tackle your most repetitive tasks",
+      "url": "https://blog.google/products-and-platforms/products/gemini/automate-tasks-with-skills/",
+      "source": "Google",
+      "published_at": "2026-09-30T16:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "We’re introducing SynthID Bio, bringing our watermarking technology to synthetic biology.",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/synthid-bio/",
+      "source": "Google",
+      "published_at": "2026-09-30T15:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Disrupting a coordinated model-distillation campaign",
+      "url": "https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign",
+      "source": "OpenAI",
+      "published_at": "2026-09-30T10:30:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Helping small businesses put AI to work",
+      "url": "https://openai.com/index/helping-small-businesses-put-ai-to-work",
+      "source": "OpenAI",
+      "published_at": "2026-09-30T10:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Experience two artists’ perspectives on philosophy, science, and AI",
+      "url": "https://blog.google/company-news/outreach-and-initiatives/arts-culture/las-art-foundation-ai-residency/",
+      "source": "Google",
+      "published_at": "2026-09-29T16:00:00+00:00",
+      "category": "과학·환경",
+      "domain": "energy"
+    },
+    {
+      "title": "DevDay 2026 Recap",
+      "url": "https://openai.com/index/devday-2026-recap",
+      "source": "OpenAI",
+      "published_at": "2026-09-29T10:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Introducing GPT-6.1 Sol",
+      "url": "https://openai.com/index/introducing-gpt-6-1-sol",
+      "source": "OpenAI",
+      "published_at": "2026-09-29T10:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Introducing dots",
+      "url": "https://openai.com/index/introducing-dots",
+      "source": "OpenAI",
+      "published_at": "2026-09-29T00:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Watch the winning trailer from the Future Vision XPRIZE, The Gifted.",
+      "url": "https://blog.google/innovation-and-ai/technology/ai/winner-future-vision-xprize/",
+      "source": "Google",
+      "published_at": "2026-09-28T19:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "How we will do better for Australia",
+      "url": "https://openai.com/index/how-we-will-do-better-for-australia",
+      "source": "OpenAI",
+      "published_at": "2026-09-28T19:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Towards safety cases for frontier AI training",
+      "url": "https://openai.com/index/towards-safety-cases-for-frontier-ai-training",
+      "source": "OpenAI",
+      "published_at": "2026-09-28T19:00:00+00:00",
+      "category": "안전·보안",
+      "domain": "security"
+    },
+    {
+      "title": "The Lenfest Institute grows landmark program with expanded OpenAI support",
+      "url": "https://openai.com/index/lenfest-ai-collaborative-expansion",
+      "source": "OpenAI",
+      "published_at": "2026-09-28T07:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Basis completes a tax workbook 2x faster with GPT-6 Astra",
+      "url": "https://openai.com/index/basis-tax-workbook-with-astra",
+      "source": "OpenAI",
+      "published_at": "2026-09-28T00:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Are you a Codex Original?",
+      "url": "https://openai.com/form/codex-originals",
+      "source": "OpenAI",
+      "published_at": "2026-09-28T00:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Proaction boosts sales 60% and saves 75+ hours with Codex",
+      "url": "https://openai.com/index/proaction",
+      "source": "OpenAI",
+      "published_at": "2026-09-25T19:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Two years of OpenAI Academy",
+      "url": "https://openai.com/index/two-years-of-openai-academy",
+      "source": "OpenAI",
+      "published_at": "2026-09-23T16:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "OpenAI extends cyber access to Ukraine for civilian defense",
+      "url": "https://openai.com/index/openai-extends-cyber-access-to-ukraine-for-civilian-defense",
+      "source": "OpenAI",
+      "published_at": "2026-09-23T13:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Sam Altman’s remarks at the United Nations Security Council",
+      "url": "https://openai.com/index/sam-altman-un-security-council-remarks",
+      "source": "OpenAI",
+      "published_at": "2026-09-23T12:00:00+00:00",
+      "category": "안전·보안",
+      "domain": "security"
+    }
+  ]
+}

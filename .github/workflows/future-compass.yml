@@ -1,0 +1,54 @@
+name: Future Compass daily news and deploy
+on:
+  push:
+    branches: [main]
+    paths: ['future-compass/**', '.github/workflows/future-compass.yml']
+  schedule:
+    - cron: '0 22 * * *' # 07:00 Asia/Seoul, following day
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: future-compass-production
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Collect official AI headlines
+        run: python future-compass/scripts/update_news.py
+      - name: Check site
+        run: node future-compass/scripts/check.mjs
+      - name: Save daily feed
+        run: |
+          git config user.name 'future-compass-bot'
+          git config user.email 'future-compass-bot@users.noreply.github.com'
+          git add future-compass/dist/news.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'chore(compass): refresh official AI news'
+            git push
+          fi
+      - name: Deploy Netlify when connected
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.FUTURE_NETLIFY_SITE_ID }}
+        run: |
+          if [ -z "$NETLIFY_AUTH_TOKEN" ] || [ -z "$NETLIFY_SITE_ID" ]; then
+            echo 'Netlify pending: add NETLIFY_AUTH_TOKEN and FUTURE_NETLIFY_SITE_ID.' >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          cd future-compass
+          npx --yes netlify-cli@23 deploy --prod --dir=dist
+      - name: Deploy isolated VPS copy when enabled
+        if: vars.FUTURE_VPS_ENABLED == 'true'
+        env:
+          VPS_HOST: ${{ secrets.FUTURE_VPS_HOST }}
+          VPS_USER: ${{ secrets.FUTURE_VPS_USER }}
+          VPS_SSH_KEY: ${{ secrets.FUTURE_VPS_SSH_KEY }}
+          VPS_KNOWN_HOSTS: ${{ secrets.FUTURE_VPS_KNOWN_HOSTS }}
+        run: bash future-compass/ops/deploy-vps.sh

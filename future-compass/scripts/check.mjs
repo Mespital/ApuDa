@@ -1,0 +1,23 @@
+import fs from 'node:fs';
+import vm from 'node:vm';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+const root=path.resolve(path.dirname(new URL(import.meta.url).pathname),'..');
+const html=fs.readFileSync(path.join(root,'dist/index.html'),'utf8');
+const events={};const content={innerHTML:'',scrollIntoView(){}};const storage=new Map();
+const sandbox={console,URL,AbortController,AbortSignal,Intl,Date,Set,Promise,localStorage:{getItem:k=>storage.get(k),setItem:(k,v)=>storage.set(k,v)},window:{scrollY:0,scrollTo(){},addEventListener(){}},document:{querySelector:()=>content,querySelectorAll:()=>[],addEventListener:(name,fn)=>(events[name]??=[]).push(fn)},fetch:async()=>({ok:true,json:async()=>JSON.parse(fs.readFileSync(path.join(root,'dist/news.json'),'utf8'))})};
+vm.createContext(sandbox);
+vm.runInContext(html.match(/<script>([\s\S]*?)<\/script>/)[1],sandbox);
+for(const file of ['explore.js','news.js'])vm.runInContext(fs.readFileSync(path.join(root,'dist',file),'utf8'),sandbox);
+const run=code=>vm.runInContext(code,sandbox);
+assert.match(content.innerHTML,/미래와 나의 관심/);
+for(const page of ['future','life','career','plan','research','explore','news']){run(`page=${JSON.stringify(page)};render()`);assert.ok(content.innerHTML.length>150);assert.doesNotMatch(content.innerHTML,/undefined/)}
+run("page='explore';route='self';chosenSubjects.add('수학');chosenActivities.add('만들기');activeDomain='robots';render();saveProgress()");
+assert.match(content.innerHTML,/기계|로봇/);assert.equal((content.innerHTML.match(/id="domain-detail"/g)||[]).length,1);
+assert.ok(storage.get('future-compass-v2').includes('수학'));
+run("newsData={last_success_at:new Date().toISOString(),failures:[],articles:[{title:'<img src=x onerror=1>',url:'https://openai.com/news/test',source:'OpenAI',published_at:new Date().toISOString(),category:'AI·컴퓨팅',domain:'ai'}]};page='news';render()");
+assert.match(content.innerHTML,/&lt;img/);assert.doesNotMatch(content.innerHTML,/<img src=x/);
+assert.equal(run("safeArticleURL('javascript:alert(1)')"),null);
+assert.equal(run("safeArticleURL('https://openai.com.evil.test/')"),null);
+assert.equal(run("validateNews({articles:[{title:'bad',url:'https://evil.test',published_at:'2026-10-01'}]}).articles.length"),0);
+console.log('PASS: 7 screens, interest matching, full-width detail, saved choices, feed URL/content validation.');
