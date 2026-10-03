@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import json,re,hashlib
+import json,re,hashlib,os
 from datetime import datetime
 from pathlib import Path
 from urllib.parse import urljoin
@@ -58,7 +58,7 @@ def fetch_detail(session,url):
     return ver,hashlib.sha256(public_meta.encode()).hexdigest()[:16]
 
 def main():
-    repo=Path(__file__).resolve().parents[2]
+    repo=Path(os.getenv("APUDA_REPO_DIR",".")).resolve()
     outdir=repo/"public-site"/"news"/"data";outdir.mkdir(parents=True,exist_ok=True)
     prev_path=outdir/"nccn-monitor.json"
     prev={}
