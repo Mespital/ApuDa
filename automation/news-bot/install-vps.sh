@@ -8,8 +8,8 @@ ENV_FILE="$HOME/.config/apuda/news.env"
 LOG_DIR="$HOME/.local/state/apuda-news"
 
 mkdir -p "$TARGET" "$HOME/.config/apuda" "$LOG_DIR"
-cp "$SRC_DIR"/news_bot.py "$SRC_DIR"/config.json "$SRC_DIR"/requirements.txt "$SRC_DIR"/publish.sh "$TARGET"/
-chmod +x "$TARGET/news_bot.py" "$TARGET/publish.sh"
+cp "$SRC_DIR"/news_bot.py "$SRC_DIR"/official_data.py "$SRC_DIR"/official_sources.json "$SRC_DIR"/config.json "$SRC_DIR"/requirements.txt "$SRC_DIR"/publish.sh "$TARGET"/
+chmod +x "$TARGET/news_bot.py" "$TARGET/official_data.py" "$TARGET/publish.sh"
 
 if [ ! -d "$TARGET/.venv" ]; then
   python3 -m venv "$TARGET/.venv"
