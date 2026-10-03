@@ -309,3 +309,36 @@ a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 32px));m
   .official-data-section .section-head{align-items:flex-start;flex-direction:column}
   .facet-chips{gap:6px}
 }
+
+/* Official notices */
+.official-notice-list{display:grid;gap:10px}
+.official-notice-card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:15px 17px}
+.official-notice-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:10px;font-weight:850}
+.notice-type{padding:4px 7px;border-radius:999px;background:#EEF5FF;color:var(--blue2)}
+.official-notice-card h3{margin:9px 0 0;font-size:15px;line-height:1.45}
+.official-notice-card h3 a:hover{color:var(--blue)}
+.official-notice-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px;padding-top:10px;border-top:1px solid var(--line)}
+.attachment-chip{display:inline-flex;padding:6px 8px;border-radius:999px;background:#F4F6F8;color:#53677B;font-size:10px;font-weight:850}
+.attachment-chip:hover{background:#E9EEF4;color:var(--navy)}
+/* Patient relevance */
+.patient-meaning{margin-top:10px;padding:10px 11px;border-radius:12px;background:#F4F9FF;border:1px solid #DCEBFF}
+.patient-meaning b{display:block;margin-bottom:4px;color:var(--blue2);font-size:10.5px}
+.patient-meaning span{display:block;color:#43566A;font-size:11px;line-height:1.5}
+.patient-meaning small{display:block;margin-top:5px;color:var(--muted);font-size:9.5px}
+/* NCCN monitor */
+.nccn-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.nccn-card{display:flex;flex-direction:column;min-height:112px;padding:14px;border:1px solid var(--line);border-radius:16px;background:#fff;transition:.2s}
+.nccn-card:hover{transform:translateY(-2px);border-color:#BFD3F0}
+.nccn-card>div{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.nccn-card span{font-size:11px;font-weight:900;color:var(--muted)}
+.nccn-card em{font-style:normal;padding:3px 6px;border-radius:999px;background:#E8F8F0;color:#087A53;font-size:9px;font-weight:950}
+.nccn-card b{margin-top:11px;color:var(--navy);font-size:14px}
+.nccn-card small{margin-top:auto;padding-top:8px;color:var(--blue);font-size:9.5px}
+.nccn-card.changed{border-color:#A9DFC7;background:#F6FCF9}
+.nccn-note{margin-top:12px}
+@media(max-width:900px){.nccn-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:620px){
+  .nccn-grid{grid-template-columns:repeat(2,1fr)}
+  .nccn-card{min-height:104px;padding:12px}
+  .official-notice-card{padding:13px}
+}
