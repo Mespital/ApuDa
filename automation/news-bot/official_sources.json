@@ -1,0 +1,85 @@
+{
+  "version": "1.0",
+  "sources": [
+    {
+      "id": "mfds_drug_approval",
+      "agency": "식품의약품안전처",
+      "name": "의약품 제품 허가정보",
+      "kind": "openapi",
+      "portal_url": "https://www.data.go.kr/data/15095677/openapi.do",
+      "official_url": "https://data.mfds.go.kr/",
+      "refresh": "실시간",
+      "usage": [
+        "허가일자",
+        "제품명",
+        "주성분",
+        "희귀의약품 여부",
+        "허가상태"
+      ],
+      "requires_service_key": true
+    },
+    {
+      "id": "mfds_supply_shortage",
+      "agency": "식품의약품안전처",
+      "name": "의약품 공급부족 정보",
+      "kind": "openapi",
+      "portal_url": "https://www.data.go.kr/data/15056886/openapi.do",
+      "official_url": "https://data.mfds.go.kr/",
+      "refresh": "실시간",
+      "usage": [
+        "공급부족",
+        "환자치료 영향",
+        "정상화 계획",
+        "정상화 예상일"
+      ],
+      "requires_service_key": true
+    },
+    {
+      "id": "hira_drug_price",
+      "agency": "건강보험심사평가원",
+      "name": "약가기준정보조회서비스",
+      "kind": "openapi",
+      "portal_url": "https://www.data.go.kr/data/15054445/openapi.do",
+      "official_url": "https://opendata.hira.or.kr/",
+      "refresh": "공식 마스터 기준",
+      "usage": [
+        "급여구분",
+        "상한가",
+        "적용시작일",
+        "보험코드"
+      ],
+      "requires_service_key": true
+    },
+    {
+      "id": "ncc_cancer_stats",
+      "agency": "국립암센터 국가암정보센터",
+      "name": "통계로 보는 암",
+      "kind": "official_web",
+      "portal_url": "https://edu.cancer.go.kr/lay1/S1T654C656/contents.do",
+      "official_url": "https://www.cancer.go.kr/",
+      "refresh": "공표자료 기준",
+      "usage": [
+        "암종별 유병률",
+        "성별 암유병 현황",
+        "국가암등록통계"
+      ],
+      "requires_service_key": false
+    },
+    {
+      "id": "ncc_living_guide",
+      "agency": "국립암센터 국가암정보센터",
+      "name": "암환자 생활백서",
+      "kind": "official_web",
+      "portal_url": "https://www.data.go.kr/data/15122227/openapi.do",
+      "official_url": "https://cancer.go.kr/lay1/S1T523C850/contents.do",
+      "refresh": "국가암정보센터 게시 기준",
+      "usage": [
+        "식생활",
+        "운동",
+        "증상관리",
+        "치료 후 생활"
+      ],
+      "requires_service_key": false
+    }
+  ]
+}
