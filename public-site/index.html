@@ -594,7 +594,9 @@
        desc:'같은 길을 걸어본 사람의 경험은 때로 정보만큼 큰 힘이 됩니다. 환자·보호자와 함께 이야기하세요.',
        stats:[['7,550+','카페 회원'],['3,700+','정보 글']],
        links:[['ApuDa 카페 가기','https://cafe.naver.com/2ndpart'],
-              ['블로그 보기','https://blog.naver.com/apuda_korea']]}
+              ['블로그 보기','https://blog.naver.com/apuda_korea'],
+              ['항암제·암 뉴스','/news/oncology/'],
+              ['제약·헬스케어 뉴스','/news/']]}
   };
 
   var frame=document.getElementById('frame'), spot=document.getElementById('spot'),
@@ -965,7 +967,8 @@
         return '<div><b>'+s[0]+'</b><small>'+s[1]+'</small></div>'}).join('')+'</div>'+
       '<div class="p-links">'+d.links.map(function(l){
         if(l[2]) return '<div class="soon">'+l[0]+'<span>'+l[2]+'</span></div>';
-        var ext = l[1].charAt(0)==='#' ? '' : ' target="_blank" rel="noopener"';
+        var internal = l[1].charAt(0)==='/' || l[1].charAt(0)==='#';
+        var ext = internal ? '' : ' target="_blank" rel="noopener"';
         return '<a href="'+l[1]+'"'+ext+'>'+l[0]+'<span>→</span></a>';
       }).join('')+'</div>'+
       '<div class="p-scroll-tip">세부창 클릭: 목록 스크롤 · 건물 클릭: 층 이동</div>';
