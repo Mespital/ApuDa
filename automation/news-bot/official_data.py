@@ -15,6 +15,10 @@ MFDS_APPROVAL_ENDPOINT = os.getenv(
     "MFDS_APPROVAL_ENDPOINT",
     "https://apis.data.go.kr/1471000/DrugPrdtPrmsnInfoService07/getDrugPrdtPrmsnInq07"
 )
+MFDS_SUPPLY_ENDPOINT = os.getenv(
+    "MFDS_SUPPLY_ENDPOINT",
+    "https://apis.data.go.kr/1471000/MdcinSuplyLackService03/getMdcinSuplyLackList01"
+)
 
 CANCERS = ["유방암","폐암","위암","대장암","갑상선암","신장암","전립선암","췌장암","담도암","간암","림프종","자궁경부암"]
 
@@ -240,6 +244,87 @@ def fetch_mfds_approval(session, key):
         result["note"]="식약처 API 연결을 다시 확인하고 있습니다. 공식 원문 링크는 계속 이용할 수 있습니다."
     return result
 
+def _pick(d,*keys):
+    for k in keys:
+        if k in d and d.get(k) not in (None,""):
+            return d.get(k)
+    lower={str(k).lower():v for k,v in d.items()}
+    for k in keys:
+        v=lower.get(str(k).lower())
+        if v not in (None,""): return v
+    return None
+
+def fetch_mfds_supply_shortage(session,key):
+    result={
+        "id":"mfds_supply_shortage",
+        "agency":"식품의약품안전처",
+        "name":"의약품 공급부족 정보",
+        "source_url":"https://www.data.go.kr/data/15056886/openapi.do",
+        "status":"key_required" if not key else "error",
+        "checked_at":datetime.now(TZ).isoformat(),
+        "records":[]
+    }
+    if not key:
+        result["note"]="공공데이터포털 활용신청과 서비스키 등록 후 자동 연결됩니다."
+        return result
+    candidates=_service_key_candidates(key);last={}
+    for idx,candidate in enumerate(candidates,1):
+        try:
+            r=session.get(MFDS_SUPPLY_ENDPOINT,params={
+                "serviceKey":candidate,"pageNo":1,"numOfRows":50,"type":"json"
+            },timeout=25)
+            if r.status_code!=200:
+                code,msg,error_name=_safe_gateway_message(r,candidates)
+                last={"http_status":r.status_code,"error_code":code or None,"error_message":msg or None,"error_name":error_name or None,"key_variant_attempt":idx}
+                if r.status_code in (401,403):continue
+                r.raise_for_status()
+            try:data=r.json()
+            except Exception:
+                code,msg,error_name=_safe_gateway_message(r,candidates)
+                last={"http_status":r.status_code,"error_code":code or None,"error_message":msg or None,"error_name":error_name or None,"key_variant_attempt":idx}
+                continue
+            header=data.get("header") or (data.get("response") or {}).get("header") or {}
+            rc=clean(header.get("resultCode") or data.get("resultCode"))
+            rm=clean(header.get("resultMsg") or data.get("resultMsg"))
+            if rc and rc not in ("0","00"):
+                last={"http_status":r.status_code,"error_code":rc,"error_message":rm,"key_variant_attempt":idx}
+                continue
+            rows=[]
+            for x in response_items(data):
+                if not isinstance(x,dict):continue
+                rows.append({
+                    "company":_pick(x,"ENTP_NAME","ENTP_NM","entpName","companyName"),
+                    "item_name":_pick(x,"ITEM_NAME","ITEM_NM","itemName","PRDLST_NM"),
+                    "shortage_expected_date":_pick(x,"SUPLY_LACK_PRDCT_DATE","SUPPLY_LACK_EXPECT_DATE","LACK_PREDICT_DATE","lackPredictDate"),
+                    "shortage_reason":_pick(x,"SUPLY_LACK_RSN","SUPPLY_LACK_REASON","LACK_REASON","lackReason"),
+                    "last_supply_date":_pick(x,"LAST_PRDCT_IMP_SUPLY_DATE","LAST_SUPPLY_DATE","lastSupplyDate"),
+                    "stock_reference_date":_pick(x,"STOCK_QTY_STDR_DATE","STOCK_DATE","stockDate"),
+                    "stock_qty":_pick(x,"STOCK_QTY","stockQty"),
+                    "patient_impact":_pick(x,"PATIENT_TRTMT_INFLU","PATIENT_TREAT_IMPACT","patientImpact"),
+                    "normalization_plan":_pick(x,"SUPLY_NORMAL_PLAN","NORMALIZATION_PLAN","normalizationPlan"),
+                    "normalization_expected_date":_pick(x,"SUPLY_NORMAL_PRDCT_DATE","NORMALIZATION_EXPECT_DATE","normalizationExpectedDate")
+                })
+            result["records"]=rows[:50]
+            result["status"]="ok"
+            result["http_status"]=r.status_code
+            result["key_variant_used"]=idx
+            result["note"]="식약처 공식 의약품 공급부족 OpenAPI 연결 상태입니다. 공급부족·환자영향·정상화 계획을 확인합니다."
+            return result
+        except Exception as e:
+            last={"error_message":_redact_secrets(e,candidates)[:220],"key_variant_attempt":idx}
+    result.update(last)
+    code=clean(result.get("error_code"));name=clean(result.get("error_name"))
+    if code in ("20","30","31") or "SERVICE_" in name:
+        result["status"]="auth_error"
+    elif result.get("http_status")==403:
+        result["status"]="forbidden"
+    else:
+        result["status"]="error"
+    if code=="20": result["note"]="의약품 공급부족 API 활용신청 또는 접근권한 확인이 필요합니다."
+    elif code=="30" or name=="SERVICE_KEY_IS_NOT_REGISTERED_ERROR": result["note"]="이 API에 연결된 서비스키를 공공데이터포털에서 다시 확인해야 합니다."
+    else: result["note"]="의약품 공급부족 API 연결 상태를 확인해야 합니다."
+    return result
+
 def static_api_source(src, key):
     return {
         "id": src["id"],
@@ -264,6 +349,8 @@ def main():
     for src in registry["sources"]:
         if src["id"] == "mfds_drug_approval":
             results.append(fetch_mfds_approval(s,key))
+        elif src["id"] == "mfds_supply_shortage":
+            results.append(fetch_mfds_supply_shortage(s,key))
         elif src["kind"] == "official_web":
             results.append(fetch_official_web(s,src))
         else:
@@ -288,6 +375,7 @@ def main():
     outdir.mkdir(parents=True,exist_ok=True)
     (outdir/"official-data.json").write_text(json.dumps(out,ensure_ascii=False,indent=2),encoding="utf-8")
     mfds = next((x for x in results if x.get("id")=="mfds_drug_approval"), {})
+    supply = next((x for x in results if x.get("id")=="mfds_supply_shortage"), {})
     print(json.dumps({
         "official_sources":len(results),
         "service_key_connected":bool(key),
@@ -297,7 +385,9 @@ def main():
         "mfds_error_code":mfds.get("error_code"),
         "mfds_error_name":mfds.get("error_name"),
         "mfds_error_message":mfds.get("error_message"),
-        "mfds_key_variant_used":mfds.get("key_variant_used") or mfds.get("key_variant_attempt")
+        "mfds_key_variant_used":mfds.get("key_variant_used") or mfds.get("key_variant_attempt"),
+        "mfds_supply_status":supply.get("status"),
+        "mfds_supply_records":len(supply.get("records") or [])
     },ensure_ascii=False))
 
 if __name__ == "__main__":
