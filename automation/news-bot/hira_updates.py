@@ -91,52 +91,82 @@ def detail_meta(session,url):
 def collect():
     s=requests.Session();s.headers.update({"User-Agent":UA,"Accept-Language":"ko-KR,ko;q=0.9"})
     now=datetime.now(TZ);cutoff=now-timedelta(days=30)
-    r=s.get(NOTICE_URL,timeout=25);r.raise_for_status()
-    soup=BeautifulSoup(r.text,"html.parser")
     items=[];seen=set()
 
-    rows=soup.select("table tbody tr") or soup.select("tr")
-    for tr in rows:
-        cells=[clean(x.get_text(" ",strip=True)) for x in tr.select("th,td")]
-        if len(cells)<4:continue
-        joined=" | ".join(cells)
-        dt=parse_date(joined)
-        if not dt or dt<cutoff:continue
+    # HIRA notice board is paginated. Scan several recent pages so month-end
+    # pharmaceutical notices are not pushed off page 1 by multiple same-day notices.
+    for page in range(1,5):
+        url=NOTICE_URL + ("&pageIndex="+str(page) if page>1 else "")
+        r=s.get(url,timeout=25);r.raise_for_status()
+        soup=BeautifulSoup(r.text,"html.parser")
+        rows=soup.select("table tbody tr") or soup.select("tr")
+        page_had_recent=False
 
-        title=cells[1] if len(cells)>1 else ""
-        dept=cells[2] if len(cells)>2 else ""
-        if not title or not any(k.lower() in (title+" "+dept).lower() for k in CANDIDATE_TERMS):
-            continue
+        for tr in rows:
+            cells=[clean(x.get_text(" ",strip=True)) for x in tr.select("th,td")]
+            if len(cells)<4:continue
+            joined=" | ".join(cells)
+            dt=parse_date(joined)
+            if not dt:continue
+            if dt<cutoff:continue
+            page_had_recent=True
 
-        bid=detail_id_from_row(tr)
-        url=(f"https://www.hira.or.kr/bbsDummy.do?brdBltNo={bid}&brdScnBltNo=4&pgmid=HIRAA020002000100" if bid else NOTICE_URL)
-        dedupe_key=bid or (title+"|"+dt.date().isoformat())
-        if dedupe_key in seen:continue
-        seen.add(dedupe_key)
+            title=cells[1] if len(cells)>1 else ""
+            dept=cells[2] if len(cells)>2 else ""
+            if not title or not any(k.lower() in (title+" "+dept).lower() for k in CANDIDATE_TERMS):
+                continue
 
-        meta=detail_meta(s,url)
-        text=" ".join([title,dept,meta.get("summary",""),meta.get("detail_title","")])
-        is_pharma=any(k.lower() in text.lower() for k in PHARMA_TERMS)
-        is_oncology=any(k.lower() in text.lower() for k in ONCOLOGY_TERMS)
-        if not (is_pharma or is_oncology):continue
+            bid=detail_id_from_row(tr)
+            detail_url=(f"https://www.hira.or.kr/bbsDummy.do?brdBltNo={bid}&brdScnBltNo=4&pgmid=HIRAA020002000100" if bid else url)
+            dedupe_key=bid or (title+"|"+dt.date().isoformat())
+            if dedupe_key in seen:continue
+            seen.add(dedupe_key)
 
-        category="항암 급여" if is_oncology else "급여·약제"
-        items.append({
-          "agency":"건강보험심사평가원",
-          "document_type":"공식 고시·공지",
-          "category":category,
-          "department":dept,
-          "title":title,
-          "published_at":dt.isoformat(),
-          "url":url,
-          "detail_link_verified":bool(bid),
-          "attachments":meta["attachments"],
-          "summary":meta["summary"],
-          "oncology_related":is_oncology,
-          "source_list_url":NOTICE_URL,
-          "criteria_url":CRITERIA_URL
-        })
-        if len(items)>=40:break
+            meta=detail_meta(s,detail_url)
+            text=" ".join([title,dept,meta.get("summary",""),meta.get("detail_title","")])
+            low=text.lower()
+            is_pharma=any(k.lower() in low for k in PHARMA_TERMS)
+            is_oncology=any(k.lower() in low for k in ONCOLOGY_TERMS)
+            is_clinical="임상연구" in text
+            is_material="치료재료" in text
+            is_selective="선별급여" in text
+            if not (is_pharma or is_oncology or is_clinical or is_material or is_selective):
+                continue
+
+            if is_oncology:
+                category="항암 급여"
+            elif "[약제]" in title or "약제" in dept or "신약" in dept:
+                category="약제·급여"
+            elif is_clinical:
+                category="임상연구 급여"
+            elif is_material:
+                category="치료재료"
+            elif is_selective:
+                category="선별급여"
+            else:
+                category="건강보험 기준"
+
+            items.append({
+              "agency":"건강보험심사평가원",
+              "document_type":"공식 고시·공지",
+              "category":category,
+              "department":dept,
+              "title":title,
+              "published_at":dt.isoformat(),
+              "url":detail_url,
+              "detail_link_verified":bool(bid),
+              "attachments":meta["attachments"],
+              "summary":meta["summary"],
+              "oncology_related":is_oncology,
+              "source_list_url":NOTICE_URL,
+              "criteria_url":CRITERIA_URL
+            })
+            if len(items)>=60:break
+
+        if len(items)>=60:break
+        if not page_had_recent:
+            break
+
     items.sort(key=lambda x:x["published_at"],reverse=True)
     return items
 
