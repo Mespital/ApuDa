@@ -1,15 +1,47 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ApuDa Oncology News</title><meta name="description" content="항암제 허가·급여·임상·바이오마커·가이드라인 변화를 ApuDa가 정리합니다."><link rel="stylesheet" href="/news/styles.css"></head><body>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ApuDa 항암제 뉴스</title><meta name="description" content="항암제 허가·급여·임상·바이오마커·가이드라인 변화를 암종별로 보여줍니다."><link rel="stylesheet" href="/news/styles.css"></head><body>
 <header class="topbar"><div class="wrap nav"><a class="brand" href="/">ApuDa<small>아프지만, 다행이다.</small></a><nav class="navlinks"><a href="/news/">오늘의 브리핑</a><a class="on" href="/news/oncology/">항암제 뉴스</a><a href="/">ApuDa 홈</a></nav></div></header>
 <main class="wrap">
-<section class="hero"><div class="eyebrow">APUDA ONCOLOGY INTELLIGENCE</div><h1>항암제 뉴스</h1><p>허가·급여·임상·바이오마커·가이드라인 변화를 암종과 치료라인 기준으로 구조화해 보여줍니다. 환자·보호자가 이해하기 쉬운 설명과 업계 관점의 의미를 함께 제공합니다.</p>
-<div class="tags"><span class="tag on">전체</span><span class="tag">폐암</span><span class="tag">유방암</span><span class="tag">위암</span><span class="tag">대장암</span><span class="tag">간암</span><span class="tag">췌장암</span><span class="tag">전립선암</span><span class="tag">혈액암</span></div></section>
-<section class="brief"><h2>Oncology Focus</h2><p>앞으로 항암 관련 기사는 일반 뉴스 DB 안에서 <b>oncology</b> 태그로 자동 분류하고, 암종·약물명·기전(MOA)·바이오마커·임상 단계·ORR/PFS/OS·허가·급여 상태를 구조화해 이 페이지에 자동 노출합니다.</p></section>
-<section class="section"><div class="section-head"><h2>주요 항암 업데이트</h2><p>샘플 레이아웃 · 자동화 전 단계</p></div><div class="grid">
-<article class="card"><span class="rank">폐암</span><h3>임델트라, 소세포폐암 2차 치료 생존개선</h3><div class="source">DLL3×CD3 BiTE · DeLLphi-304 3상</div><ul class="bullets"><li>OS 13.6개월 vs 8.3개월</li><li>사망위험 40% 감소</li><li>국내 급여 접근성 추적 필요</li></ul><div class="point"><b>환자에게 의미</b><br>치료 선택지가 늘어날 가능성이 있지만 실제 사용 가능 여부는 급여 조건과 환자 상태에 따라 달라집니다.</div></article>
-<article class="card"><span class="rank">폐암</span><h3>EGFR Exon20 치료 접근성 변화</h3><div class="source">표적치료 · 급여</div><ul class="bullets"><li>바이오마커 기반 치료선택</li><li>허가 → 급여 → 실제 접근성 연결</li><li>분자진단의 중요성 확대</li></ul><div class="point"><b>산업적 의미</b><br>정밀항암 시장은 약물 경쟁뿐 아니라 진단·급여·치료경로 전체의 경쟁으로 확대되고 있습니다.</div></article>
-<article class="card"><span class="rank">공통</span><h3>항암 뉴스 자동 태깅 준비</h3><div class="source">ApuDa 데이터 구조</div><ul class="bullets"><li>암종 / 약물 / 표적 / 기전</li><li>Phase / ORR / PFS / OS / HR</li><li>FDA·EMA·MFDS / 국내 급여</li></ul><div class="point"><b>다음 단계</b><br>VPS 수집기가 이 구조의 JSON을 만들면 페이지가 매일 자동 업데이트되도록 연결합니다.</div></article>
-</div></section>
+<section class="hero"><div class="eyebrow">APUDA ONCOLOGY INTELLIGENCE</div><h1>항암제 뉴스</h1><p>허가·급여·임상·바이오마커·가이드라인 변화를 암종과 치료라인 기준으로 구조화해 보여줍니다. 뉴스 카드를 누르면 원문 기사로 이동합니다.</p>
+<div class="oncology-tags" id="oncologyTags" aria-label="암종 필터"></div></section>
+
+<section class="brief"><h2>Oncology Focus</h2><p>항암 관련 기사는 일반 뉴스 DB에서 자동 분류하고, 암종·약물명·기전(MOA)·바이오마커·임상 단계·ORR/PFS/OS·허가·급여 상태를 구조화해 보여줍니다.</p></section>
+
+<section class="section">
+  <div class="oncology-toolbar"><div><h2 style="margin:0">주요 항암 업데이트</h2><p style="margin:6px 0 0;color:var(--muted);font-size:13px">최신 수집 데이터 기준</p></div><div class="oncology-count" id="oncologyCount">불러오는 중</div></div>
+  <div class="oncology-grid" id="oncologyGrid"><div class="newsroom-empty">최신 항암 뉴스를 불러오는 중입니다.</div></div>
+</section>
+
 <section class="section cols"><div class="panel"><h3>항암 뉴스 우선순위</h3><div class="list"><div class="row"><b>국내 급여 신규·확대</b><span>환자 접근성에 직접 영향</span></div><div class="row"><b>MFDS·FDA·EMA 허가</b><span>치료선택지와 시장구조 변화</span></div><div class="row"><b>3상 OS/PFS 결과</b><span>표준치료 변화 가능성 평가</span></div><div class="row"><b>바이오마커·가이드라인</b><span>환자 선별 및 치료경로 변화</span></div></div></div>
-<div class="panel"><h3>향후 필터</h3><div class="list"><div class="row"><b>치료라인</b><span>1L · 2L · 3L+</span></div><div class="row"><b>기전</b><span>면역항암제 · ADC · TKI · CAR-T · BiTE</span></div><div class="row"><b>바이오마커</b><span>EGFR · ALK · HER2 · PD-L1 · BRCA · CLDN18.2</span></div><div class="row"><b>상태</b><span>임상 · 허가 · 급여 · 가이드라인</span></div></div></div></section>
+<div class="panel"><h3>분류 기준</h3><div class="list"><div class="row"><b>치료라인</b><span>1L · 2L · 3L+</span></div><div class="row"><b>기전</b><span>면역항암제 · ADC · TKI · CAR-T · BiTE</span></div><div class="row"><b>바이오마커</b><span>EGFR · ALK · HER2 · PD-L1 · BRCA · CLDN18.2</span></div><div class="row"><b>상태</b><span>임상 · 허가 · 급여 · 가이드라인</span></div></div></div></section>
 <div class="note">치료 가능 여부는 암종, 병기, 바이오마커, 이전 치료, 전신상태 등에 따라 달라집니다. 이 페이지의 정보는 진료를 대체하지 않으며 담당 의료진과의 상담이 필요합니다.</div>
-</main><footer class="footer"><div class="wrap"><b>ApuDa</b>아프지만, 다행이다.</div></footer></body></html>
+</main><footer class="footer"><div class="wrap"><b>ApuDa</b>아프지만, 다행이다.</div></footer>
+<script>
+const CANCERS=['전체','유방암','폐암','위암','대장암','갑상선암','신장암','전립선암','췌장암','담도암','간암','림프종','자궁경부암'];
+let stories=[],active='전체';
+const tags=document.getElementById('oncologyTags'),grid=document.getElementById('oncologyGrid'),count=document.getElementById('oncologyCount');
+const esc=s=>String(s??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+function renderTags(){tags.innerHTML=CANCERS.map(c=>'<button type="button" data-cancer="'+esc(c)+'" class="'+(c===active?'on':'')+'">'+esc(c)+'</button>').join('');tags.querySelectorAll('button').forEach(b=>b.onclick=()=>{active=b.dataset.cancer;renderTags();render();});}
+function cancersOf(n){return n?.oncology?.cancer_types||[];}
+function formatTime(v,verified){if(!verified||!v)return '게시시간 확인 필요';try{return new Date(v).toLocaleString('ko-KR',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit',hour12:false});}catch{return '게시시간 확인 필요';}}
+function primaryUrl(n){return Array.isArray(n.source_urls)&&n.source_urls.length?n.source_urls[0]:'';}
+function render(){
+ const filtered=stories.filter(n=>active==='전체'||cancersOf(n).includes(active));
+ count.textContent=filtered.length+'건';
+ if(!filtered.length){grid.innerHTML='<div class="newsroom-empty">'+esc(active)+' 관련 최신 항암 뉴스가 아직 없습니다.<br>새 기사가 수집되면 자동으로 이 영역에 표시됩니다.</div>';return;}
+ grid.innerHTML=filtered.map(n=>{
+  const u=primaryUrl(n),tag=(cancersOf(n)[0]||'항암'),pub=(n.publishers||[]).join(' · ')||'ApuDa',img=n.thumbnail_url||n.image_url||'';
+  const imgHtml=img?'<div class="newsroom-thumb"><img src="'+esc(img)+'" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add(\'fallback\');this.remove()"></div>':'<div class="newsroom-thumb fallback"></div>';
+  const body='<div class="newsroom-body"><div class="newsroom-meta"><span class="newsroom-badge">'+esc(tag)+'</span><span>'+esc(pub)+'</span><span>'+esc(formatTime(n.published_at,n.published_at_verified))+'</span></div><h3>'+esc(n.title)+'</h3><p class="newsroom-summary">'+esc((n.summary&&n.summary[0])||n.importance||'')+'</p><div class="newsroom-foot"><span>'+esc((n.category||[]).slice(0,3).join(' · '))+'</span><em>'+(u?'원문 보기 →':'원문 링크 확인 중')+'</em></div></div>';
+  return u?'<a class="newsroom-card" href="'+esc(u)+'" target="_blank" rel="noopener noreferrer">'+imgHtml+body+'</a>':'<article class="newsroom-card">'+imgHtml+body+'</article>';
+ }).join('');
+}
+async function load(){
+ try{
+  const latest=await fetch('/news/data/latest.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()});
+  const data=await fetch(latest.path,{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()});
+  stories=(data.top_news||[]).filter(n=>n.oncology&&n.oncology.is_oncology);
+ }catch(e){stories=[];}
+ render();
+}
+renderTags();load();
+</script></body></html>
