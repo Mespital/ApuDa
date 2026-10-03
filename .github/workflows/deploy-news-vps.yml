@@ -1,0 +1,84 @@
+name: Deploy ApuDa News Bot to VPS
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: apuda-news-vps-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: apuda-ai-vps
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v5
+        with:
+          ref: main
+
+      - name: Validate required secrets
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+          APUDA_NEWS_GITHUB_TOKEN: ${{ secrets.APUDA_NEWS_GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          test -n "$VPS_HOST"
+          test -n "$VPS_USER"
+          test -n "$VPS_SSH_KEY"
+          test -n "$APUDA_NEWS_GITHUB_TOKEN"
+
+      - name: Configure SSH
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+        run: |
+          set -euo pipefail
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H "$VPS_HOST" >> ~/.ssh/known_hosts
+          cat > ~/.ssh/config <<EOF
+          Host apuda-vps
+            HostName $VPS_HOST
+            User $VPS_USER
+            IdentityFile ~/.ssh/id_ed25519
+            IdentitiesOnly yes
+            BatchMode yes
+            StrictHostKeyChecking yes
+          EOF
+          chmod 600 ~/.ssh/config
+
+      - name: Sync news bot
+        run: |
+          set -euo pipefail
+          ssh apuda-vps 'mkdir -p /tmp/apuda-news-deploy'
+          rsync -az --delete -e ssh automation/news-bot/ apuda-vps:/tmp/apuda-news-deploy/
+
+      - name: Write protected environment
+        env:
+          APUDA_NEWS_GITHUB_TOKEN: ${{ secrets.APUDA_NEWS_GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          printf 'APUDA_GITHUB_TOKEN=%q\nAPUDA_GITHUB_REPO=Mespital/ApuDa\nAPUDA_NEWS_BRANCH=main\nAPUDA_REPO_DIR=/srv/apuda-repo\n' "$APUDA_NEWS_GITHUB_TOKEN" > /tmp/news.env
+          chmod 600 /tmp/news.env
+          scp /tmp/news.env apuda-vps:/tmp/news.env
+          ssh apuda-vps 'sudo mkdir -p /etc/apuda && sudo mv /tmp/news.env /etc/apuda/news.env && sudo chmod 600 /etc/apuda/news.env'
+
+      - name: Install systemd timer
+        run: |
+          set -euo pipefail
+          ssh apuda-vps 'cd /tmp/apuda-news-deploy && chmod +x install-vps.sh publish.sh news_bot.py && ./install-vps.sh'
+
+      - name: Dry-run collector
+        run: |
+          set -euo pipefail
+          ssh apuda-vps 'cd /srv/apuda-repo && /srv/apuda-news/.venv/bin/python /srv/apuda-news/news_bot.py --repo-root /srv/apuda-repo'
+
+      - name: Show timer
+        run: |
+          ssh apuda-vps 'systemctl status apuda-news.timer --no-pager && systemctl list-timers apuda-news.timer --no-pager'
