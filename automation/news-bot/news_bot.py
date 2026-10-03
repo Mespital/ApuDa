@@ -204,6 +204,101 @@ def dedupe(items):
         out.append(lead)
     return out
 
+def article_to_news(a, rank=None):
+    pubs=[x.strip() for x in a.publisher.split(" · ")]
+    pts=[]
+    if a.description: pts.append(a.description[:170])
+    if a.body_excerpt:
+        sentences=re.split(r"(?<=[.!?다])\s+",a.body_excerpt)
+        for s in sentences:
+            s=clean_text(s)
+            if len(s)>35 and s not in pts:
+                pts.append(s[:180])
+            if len(pts)>=3: break
+    return {
+        "rank": rank,
+        "canonical_issue": a.title,
+        "title": a.title,
+        "category": a.categories or ["산업"],
+        "publishers": pubs,
+        "published_at": a.published_at,
+        "published_at_verified": a.published_at_verified,
+        "summary": pts[:3] or [a.title],
+        "importance": "산업 중요도 규칙 기반 자동 선별 기사입니다. 편집 분석 문구는 후속 AI 검수 단계에서 보강합니다.",
+        "source_urls": getattr(a,"_all_urls",[a.url]),
+        "thumbnail_url": a.image_url,
+        "score": a.score,
+        "oncology": a.oncology
+    }
+
+def freshness_label(published_at, end, tz):
+    try:
+        dt=dtparser.parse(published_at).astimezone(tz)
+    except Exception:
+        return "30d", 30
+    days=max(0,(end.date()-dt.date()).days)
+    if days==0: return "today",days
+    if days<=7: return "7d",days
+    return "30d",days
+
+def load_existing_oncology(outdir, cutoff, end, tz):
+    items=[]
+    archive_path=outdir/"oncology-30d.json"
+    if archive_path.exists():
+        try:
+            prev=load_json(archive_path)
+            items.extend(prev.get("items",[]))
+        except Exception:
+            pass
+    # Rebuild from any dated daily JSON already stored in the repo.
+    for p in sorted(outdir.glob("20??-??-??.json")):
+        try:
+            daily=load_json(p)
+        except Exception:
+            continue
+        for n in daily.get("top_news",[]):
+            if n.get("oncology",{}).get("is_oncology") and n.get("published_at_verified") and n.get("published_at"):
+                try:
+                    dt=dtparser.parse(n["published_at"]).astimezone(tz)
+                except Exception:
+                    continue
+                if cutoff < dt < end:
+                    items.append(n)
+    return items
+
+def make_oncology_archive(merged, outdir, end, tz, days=30):
+    cutoff=end-timedelta(days=days)
+    candidates=load_existing_oncology(outdir,cutoff,end,tz)
+    for a in merged:
+        if a.oncology and a.oncology.get("is_oncology") and a.published_at_verified and a.published_at:
+            candidates.append(article_to_news(a))
+    dedup={}
+    for n in candidates:
+        if not n.get("published_at_verified") or not n.get("published_at"): continue
+        try:
+            dt=dtparser.parse(n["published_at"]).astimezone(tz)
+        except Exception:
+            continue
+        if not (cutoff < dt < end): continue
+        urls=n.get("source_urls") or []
+        key=(urls[0] if urls else clean_text(n.get("title","")).lower())
+        cur=dedup.get(key)
+        if cur is None or int(n.get("score") or 0)>int(cur.get("score") or 0):
+            dedup[key]=n
+    items=list(dedup.values())
+    for n in items:
+        fresh,age=freshness_label(n["published_at"],end,tz)
+        n["freshness"]=fresh
+        n["age_days"]=age
+    items.sort(key=lambda n:(n.get("published_at") or "",int(n.get("score") or 0)),reverse=True)
+    return {
+        "version":"1.0",
+        "generated_at":datetime.now(tz).isoformat(),
+        "window":{"start":cutoff.isoformat(),"end":end.isoformat(),"days":days,"timezone":"Asia/Seoul"},
+        "cancer_types":["유방암","폐암","위암","대장암","갑상선암","신장암","전립선암","췌장암","담도암","간암","림프종","자궁경부암"],
+        "items":items
+    }
+
 def make_report(items,cfg,start,end):
     top=sorted(items,key=lambda x:(x.score,x.published_at or ""),reverse=True)[:cfg["top_n"]]
     def summary_points(a):
@@ -219,21 +314,9 @@ def make_report(items,cfg,start,end):
         return pts[:3] or [a.title]
     top_news=[]
     for i,a in enumerate(top,1):
-        pubs=[x.strip() for x in a.publisher.split(" · ")]
-        top_news.append({
-            "rank":i,
-            "canonical_issue":a.title,
-            "title":a.title,
-            "category":a.categories or ["산업"],
-            "publishers":pubs,
-            "published_at":a.published_at,
-            "published_at_verified":a.published_at_verified,
-            "summary":summary_points(a),
-            "importance":"산업 중요도 규칙 기반 자동 선별 기사입니다. 편집 분석 문구는 후속 AI 검수 단계에서 보강합니다.",
-            "source_urls":getattr(a,"_all_urls",[a.url]),
-            "thumbnail_url":a.image_url,
-            "oncology":a.oncology
-        })
+        item=article_to_news(a,rank=i)
+        item.pop("score",None)
+        top_news.append(item)
     lead_titles=[x["title"] for x in top_news[:3]]
     briefing=" · ".join(lead_titles) if lead_titles else "수집구간 내 게시시각 검증 주요 기사가 없습니다."
     outlet_status=[]
@@ -290,7 +373,9 @@ def main():
     date=report["report_date"]
     (outdir/f"{date}.json").write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding="utf-8")
     (outdir/"latest.json").write_text(json.dumps({"latest":date,"path":f"/news/data/{date}.json"},ensure_ascii=False,indent=2),encoding="utf-8")
-    runlog={"generated_at":datetime.now(tz).isoformat(),"window":{"start":start.isoformat(),"end":end.isoformat()},"sources":stats,"merged_count":len(merged),"top_count":len(report["top_news"])}
+    oncology_archive=make_oncology_archive(merged,outdir,end,tz,days=30)
+    (outdir/"oncology-30d.json").write_text(json.dumps(oncology_archive,ensure_ascii=False,indent=2),encoding="utf-8")
+    runlog={"generated_at":datetime.now(tz).isoformat(),"window":{"start":start.isoformat(),"end":end.isoformat()},"sources":stats,"merged_count":len(merged),"top_count":len(report["top_news"]),"oncology_30d_count":len(oncology_archive["items"])}
     (outdir/"last-run.json").write_text(json.dumps(runlog,ensure_ascii=False,indent=2),encoding="utf-8")
     print(json.dumps(runlog,ensure_ascii=False))
 
