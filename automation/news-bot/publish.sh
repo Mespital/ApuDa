@@ -20,6 +20,7 @@ git checkout "$APUDA_NEWS_BRANCH"
 git reset --hard "origin/$APUDA_NEWS_BRANCH"
 
 "$SCRIPT_DIR/.venv/bin/python" "$SCRIPT_DIR/news_bot.py" --repo-root "$APUDA_REPO_DIR"
+"$SCRIPT_DIR/.venv/bin/python" "$SCRIPT_DIR/official_data.py"
 
 if git diff --quiet -- public-site/news/data; then
   echo "No news data changes."
