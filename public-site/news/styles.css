@@ -280,3 +280,32 @@ a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 32px));m
   .issue-no{width:26px;height:26px}
   .issue-copy b{font-size:12.5px}
 }
+
+/* Official oncology evidence layer */
+.official-data-section{margin-top:26px}
+.official-updated{font-size:11px;color:var(--muted);font-weight:800}
+.official-source-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.official-source-card{display:flex;flex-direction:column;min-height:170px;padding:17px;border:1px solid var(--line);border-radius:18px;background:#fff;transition:.2s}
+.official-source-card:hover{transform:translateY(-2px);border-color:#BFD3F0;box-shadow:0 10px 24px rgba(36,107,254,.08)}
+.official-source-top{display:flex;align-items:center;justify-content:space-between;gap:8px;color:var(--blue2);font-size:10px;font-weight:900}
+.official-status{font-style:normal;padding:4px 7px;border-radius:999px;background:#EEF1F5;color:#647386}
+.status-ok{background:#E8F8F0;color:#087A53}.status-ready{background:#EAF3FF;color:#1855D8}.status-key_required{background:#FFF5DF;color:#946100}
+.official-source-card h3{margin:11px 0 7px;font-size:16px;color:var(--navy)}
+.official-source-card p{margin:0;color:#53677B;font-size:11.5px;line-height:1.55}
+.official-source-foot{display:flex;justify-content:space-between;gap:10px;margin-top:auto;padding-top:12px;color:var(--muted);font-size:10px}
+.official-source-foot b{color:var(--blue);font-size:10.5px}
+.priority-actions{display:grid;gap:9px}
+.priority-actions button{display:flex;flex-direction:column;align-items:flex-start;gap:4px;width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:14px;background:#fff;text-align:left;font:inherit;cursor:pointer}
+.priority-actions button:hover,.priority-actions button.on{background:#EEF5FF;border-color:#BCD2F3}
+.priority-actions b{font-size:14px;color:var(--navy)}.priority-actions span{font-size:11px;color:var(--muted)}
+.facet-group{padding:11px 0;border-bottom:1px solid var(--line)}.facet-group:first-of-type{padding-top:0}.facet-group>b{display:block;margin-bottom:8px;font-size:13px;color:var(--navy)}
+.facet-chips{display:flex;flex-wrap:wrap;gap:7px}.facet-chips button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 10px;font:inherit;font-size:10.5px;font-weight:850;color:#4D6175;cursor:pointer}
+.facet-chips button:hover,.facet-chips button.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.facet-reset{margin-top:12px;border:0;background:none;color:var(--blue);font:inherit;font-size:11px;font-weight:900;cursor:pointer}
+@media(max-width:900px){.official-source-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){
+  .official-source-grid{grid-template-columns:1fr}
+  .official-source-card{min-height:145px;padding:14px}
+  .official-data-section .section-head{align-items:flex-start;flex-direction:column}
+  .facet-chips{gap:6px}
+}
