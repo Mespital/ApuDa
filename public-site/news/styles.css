@@ -396,3 +396,5 @@ a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 32px));m
 .status-card>a{margin-top:auto;padding-top:13px;color:var(--blue);font-size:10.5px;font-weight:900}
 @media(max-width:900px){.status-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:620px){.status-grid{grid-template-columns:1fr}.status-card{min-height:135px;padding:14px}}
+
+.footer-status-link{display:inline-block;margin-top:8px;color:var(--blue);font-size:10.5px;font-weight:850}.footer-status-link:hover{text-decoration:underline}
