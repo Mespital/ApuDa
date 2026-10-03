@@ -101,6 +101,34 @@ jobs:
           set -euo pipefail
           ssh apuda-vps 'APUDA_NEWS_ENV_FILE=$HOME/.config/apuda/news.env $HOME/apuda-news/publish.sh'
 
+      - name: Report data source health
+        run: |
+          set -euo pipefail
+          ssh apuda-vps 'python3 - <<'"'"'PY'"'"'
+          import json
+          from pathlib import Path
+          root=Path.home()/"apuda-repo"/"public-site"/"news"/"data"
+          def load(name):
+              try:return json.loads((root/name).read_text(encoding="utf-8"))
+              except Exception:return {}
+          off=load("official-data.json")
+          hira=load("hira-updates.json")
+          nccn=load("nccn-monitor.json")
+          mfds=next((x for x in off.get("sources",[]) if x.get("id")=="mfds_drug_approval"),{})
+          if mfds.get("status")=="ok":
+              print("::notice title=MFDS API::의약품 허가정보 API 연결 정상")
+          else:
+              print("::warning title=MFDS API::허가정보 API 확인 필요 - "+str(mfds.get("error_name") or mfds.get("error_message") or mfds.get("status") or "unknown"))
+          if hira.get("status")=="ok":
+              print("::notice title=HIRA::보험인정기준 수집 "+str(len(hira.get("items",[])))+"건")
+          else:
+              print("::warning title=HIRA::보험인정기준 수집 상태 "+str(hira.get("status") or "unknown"))
+          items=nccn.get("items",[])
+          ok=sum(1 for x in items if x.get("status")=="ok")
+          level="notice" if ok==12 else "warning"
+          print(f"::{level} title=NCCN::12개 암종 중 {ok}개 공개 버전 확인")
+          PY'
+
       - name: Show cron
         run: |
           ssh apuda-vps 'crontab -l'
