@@ -199,8 +199,16 @@ def dedupe(items):
         lead=max(g,key=lambda x:x.score)
         pubs=list(dict.fromkeys(x.publisher for x in g))
         urls=list(dict.fromkeys(x.url for x in g))
+        source_links=[]
+        seen_links=set()
+        for x in g:
+            key=(x.publisher,x.url)
+            if key in seen_links: continue
+            seen_links.add(key)
+            source_links.append({"publisher":x.publisher,"url":x.url})
         lead.publisher=" · ".join(pubs)
         lead._all_urls=urls
+        lead._source_links=source_links
         out.append(lead)
     return out
 
@@ -226,6 +234,7 @@ def article_to_news(a, rank=None):
         "summary": pts[:3] or [a.title],
         "importance": "산업 중요도 규칙 기반 자동 선별 기사입니다. 편집 분석 문구는 후속 AI 검수 단계에서 보강합니다.",
         "source_urls": getattr(a,"_all_urls",[a.url]),
+        "source_links": getattr(a,"_source_links",[{"publisher":a.publisher,"url":a.url}]),
         "thumbnail_url": a.image_url,
         "score": a.score,
         "oncology": a.oncology
@@ -315,14 +324,13 @@ def make_report(items,cfg,start,end):
     top_news=[]
     for i,a in enumerate(top,1):
         item=article_to_news(a,rank=i)
-        item.pop("score",None)
         top_news.append(item)
     lead_titles=[x["title"] for x in top_news[:3]]
     briefing=" · ".join(lead_titles) if lead_titles else "수집구간 내 게시시각 검증 주요 기사가 없습니다."
     outlet_status=[]
     for s in cfg["sources"]:
         arr=[a for a in items if s["publisher"] in a.publisher]
-        outlet_status.append({"publisher":s["publisher"],"items":[{"title":a.title,"published_at":a.published_at,"verified":a.published_at_verified,"source_url":getattr(a,"_all_urls",[a.url])[0] if getattr(a,"_all_urls",[a.url]) else a.url} for a in arr[:8]]})
+        outlet_status.append({"publisher":s["publisher"],"homepage_url":(s.get("entry_urls") or [""])[0],"items":[{"title":a.title,"published_at":a.published_at,"verified":a.published_at_verified,"source_url":getattr(a,"_all_urls",[a.url])[0] if getattr(a,"_all_urls",[a.url]) else a.url} for a in arr[:8]]})
     return {
         "version":"1.1",
         "report_date":end.strftime("%Y-%m-%d"),
@@ -334,6 +342,74 @@ def make_report(items,cfg,start,end):
         "outlet_status":outlet_status,
         "insight":"자동 수집·시간검증·중복통합 단계가 완료된 데이터입니다. 게시 전 분석 문구 QA를 권장합니다.",
         "infographic":{"image_path":None,"generated_at":None,"template_version":"news-card-v1"}
+    }
+
+def _news_key(n):
+    links=n.get("source_urls") or []
+    if links: return links[0]
+    return clean_text(n.get("canonical_issue") or n.get("title") or "").lower()
+
+def _news_date(n,tz):
+    raw=n.get("published_at")
+    if raw:
+        try: return dtparser.parse(raw).astimezone(tz)
+        except Exception: pass
+    return None
+
+def build_period_highlights(outdir,end,tz):
+    cutoff30=end-timedelta(days=30)
+    all_items=[]
+    for p in sorted(outdir.glob("20??-??-??.json"),reverse=True):
+        try:
+            d=load_json(p)
+        except Exception:
+            continue
+        report_date=d.get("report_date") or p.stem
+        for n in d.get("top_news",[]):
+            item=dict(n)
+            item["report_date"]=report_date
+            dt=_news_date(item,tz)
+            if dt and cutoff30 < dt < end:
+                all_items.append(item)
+
+    def select(days,limit):
+        cutoff=end-timedelta(days=days)
+        best={}
+        for n in all_items:
+            dt=_news_date(n,tz)
+            if not dt or not (cutoff < dt < end): continue
+            key=_news_key(n)
+            age=max(0,(end.date()-dt.date()).days)
+            score=int(n.get("score") or 0)
+            rank=int(n.get("rank") or 99)
+            period_score=score + max(0,6-rank)*12 + max(0,days-age)
+            cur=best.get(key)
+            if cur is None or period_score>cur["_period_score"]:
+                item=dict(n)
+                item["_period_score"]=period_score
+                best[key]=item
+        items=sorted(best.values(),key=lambda n:(n["_period_score"],n.get("published_at") or ""),reverse=True)[:limit]
+        for i,n in enumerate(items,1):
+            n.pop("_period_score",None)
+            n["period_rank"]=i
+        return items
+
+    today_path=outdir/f"{end.strftime('%Y-%m-%d')}.json"
+    today=[]
+    if today_path.exists():
+        try:
+            today=load_json(today_path).get("top_news",[])[:5]
+        except Exception:
+            today=[]
+    return {
+        "version":"1.0",
+        "generated_at":datetime.now(tz).isoformat(),
+        "as_of":end.isoformat(),
+        "periods":{
+            "today":{"label":"오늘","description":"전일 09:00 초과 ~ 당일 09:00 미만","items":today},
+            "week":{"label":"최근 7일","description":"최근 7일 핵심 이슈","items":select(7,5)},
+            "month":{"label":"최근 30일","description":"최근 30일 핵심 이슈","items":select(30,6)}
+        }
     }
 
 def main():
@@ -384,7 +460,9 @@ def main():
         except Exception:
             pass
     (outdir/"archive-index.json").write_text(json.dumps({"generated_at":datetime.now(tz).isoformat(),"items":archive_items[:60]},ensure_ascii=False,indent=2),encoding="utf-8")
-    runlog={"generated_at":datetime.now(tz).isoformat(),"window":{"start":start.isoformat(),"end":end.isoformat()},"sources":stats,"merged_count":len(merged),"top_count":len(report["top_news"]),"oncology_30d_count":len(oncology_archive["items"])}
+    period_highlights=build_period_highlights(outdir,end,tz)
+    (outdir/"period-highlights.json").write_text(json.dumps(period_highlights,ensure_ascii=False,indent=2),encoding="utf-8")
+    runlog={"generated_at":datetime.now(tz).isoformat(),"window":{"start":start.isoformat(),"end":end.isoformat()},"sources":stats,"merged_count":len(merged),"top_count":len(report["top_news"]),"oncology_30d_count":len(oncology_archive["items"]),"week_highlight_count":len(period_highlights["periods"]["week"]["items"]),"month_highlight_count":len(period_highlights["periods"]["month"]["items"])}
     (outdir/"last-run.json").write_text(json.dumps(runlog,ensure_ascii=False,indent=2),encoding="utf-8")
     print(json.dumps(runlog,ensure_ascii=False))
 
