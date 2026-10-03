@@ -224,6 +224,17 @@
   .p-link-copy{display:flex;flex-direction:column;gap:3px;min-width:0}
   .p-link-copy b{font-size:16px;line-height:1.2;font-weight:950;color:var(--ink)}
   .p-link-copy small{font-size:11px;line-height:1.35;font-weight:700;color:var(--muted)}
+  .p-link-section{margin:4px 2px -1px;color:var(--muted);font-size:10px;font-weight:950;letter-spacing:.12em}
+  .sheet.floor-1 .p-link-icon{background:#EEF6FF}
+  .sheet.floor-2 .p-link-icon{background:#F5F0FF}
+  .sheet.floor-3 .p-link-icon{background:#EEFBF6}
+  .sheet.floor-4 .p-link-icon{background:#FFF7EA}
+  .sheet.floor-5 .p-link-icon{background:#EEF4FF}
+  .sheet.floor-2 .p-links{gap:8px}
+  .sheet.floor-2 .p-links a{min-height:62px;padding:11px 14px}
+  .sheet.floor-2 .p-link-icon{width:38px;height:38px;border-radius:12px;font-size:18px}
+  .sheet.floor-2 .p-link-copy b{font-size:14px}
+  .sheet.floor-2 .p-link-copy small{font-size:10px}
   .p-link-arrow{flex:0 0 auto;color:var(--blue);font-size:18px;font-weight:950}
   .p-links a:hover .p-link-copy b{color:var(--blue-700)}
   .p-links .soon{opacity:.6}.p-links .soon .p-link-arrow{font-size:11px;color:var(--muted)}
@@ -317,7 +328,12 @@
     #panel p{font-size:13.5px;line-height:1.75}
     .p-stats b{font-size:27px}
     .p-stats small{font-size:11px}
-    .p-links a,.p-links .soon{font-size:15px;padding:16px 18px}
+    .p-links a,.p-links .soon{padding:12px 14px}
+    .p-link-icon{width:38px;height:38px;border-radius:12px;font-size:18px}
+    .p-link-copy b{font-size:14px}
+    .p-link-copy small{font-size:10px}
+    .sheet.floor-2 .p-links a{min-height:58px;padding:9px 11px}
+    .sheet.floor-2 .p-link-copy b{font-size:13px}
     .p-links .soon span{font-size:11px}
     .p-scroll-tip{font-size:10px}
     #btnUp,#btnDown{display:none}
@@ -593,32 +609,32 @@
     1:{fl:'1F', kicker:'CHECK · 확인센터', title:'진단 전이라면,\n위험도와 검진부터.',
        desc:'생활 습관과 주요 위험 요인으로 암 위험 관련 정보를 살펴보고, 기본 검진 외에 어떤 선택 항목을 고려할지 정리합니다.',
        stats:[['3분','간편 체크'],['무료','가입 불필요']],
-       links:[['암 위험도 체크','https://apuda-cancercheck.netlify.app/'],
-              ['건강검진 선택 항목','https://apuda-check.netlify.app/']]},
+       links:[['암 위험도 체크','https://apuda-cancercheck.netlify.app/',null,'생활습관과 주요 위험요인을 빠르게 확인','🧭'],
+              ['건강검진 선택 항목','https://apuda-check.netlify.app/',null,'기본검진 외 추가로 고려할 항목 정리','🩺']]},
     2:{fl:'2F', kicker:'LIBRARY · 암 정보 서재', title:'진단 첫 30일,\n내 암종부터 이해하기.',
        desc:'《암 진단 첫 30일》 12종과 4컷 만화로 검사·병기·치료 정보를 차근차근 이해합니다.',
        stats:[['12종','암종별 가이드'],['4컷','만화 암 정보']],
-       links:[['4컷 만화로 쉽게 이해되는 암 정보','https://product.kyobobook.co.kr/detail/S000219012641'],
-              ['유방암 첫 30일','https://apuda-breast.netlify.app/'],
-              ['폐암 첫 30일','https://apuda-lung.netlify.app/'],
-              ['위암 첫 30일','https://apuda-stomach.netlify.app/'],
-              ['대장암 첫 30일','https://apuda-colorectal.netlify.app/'],
-              ['갑상선암 첫 30일','https://apuda-thyroid.netlify.app'],
-              ['신장암 첫 30일','https://apuda-kidney.netlify.app'],
-              ['전립선암 첫 30일','https://apuda-prostate.netlify.app'],
-              ['췌장암 첫 30일','https://apuda-pancreatic.netlify.app'],
-              ['담도암 첫 30일','https://apuda-biliary.netlify.app/'],
-              ['간암 첫 30일','https://apuda-liver.netlify.app'],
-              ['림프종 첫 30일','https://apuda-lymphoma.netlify.app'],
-              ['자궁경부암 첫 30일','https://apud-cervical.netlify.app']]},
+       links:[['4컷 만화로 쉽게 이해되는 암 정보','https://product.kyobobook.co.kr/detail/S000219012641',null,'검사·병기·치료를 그림으로 쉽게 이해','📚'],
+              ['유방암 첫 30일','https://apuda-breast.netlify.app/',null,'진단 후 꼭 알아야 할 검사·치료 흐름','🎀'],
+              ['폐암 첫 30일','https://apuda-lung.netlify.app/',null,'유전자검사부터 치료선택까지 한눈에','🫁'],
+              ['위암 첫 30일','https://apuda-stomach.netlify.app/',null,'수술·병리·항암치료 흐름 이해하기','🍽️'],
+              ['대장암 첫 30일','https://apuda-colorectal.netlify.app/',null,'병기·수술·항암치료 핵심 정리','🧬'],
+              ['갑상선암 첫 30일','https://apuda-thyroid.netlify.app',null,'수술과 추적관리의 기본 흐름','🦋'],
+              ['신장암 첫 30일','https://apuda-kidney.netlify.app',null,'수술·표적·면역치료의 큰 그림','🫘'],
+              ['전립선암 첫 30일','https://apuda-prostate.netlify.app',null,'PSA·병기·호르몬치료 이해하기','🔵'],
+              ['췌장암 첫 30일','https://apuda-pancreatic.netlify.app',null,'수술 가능성·항암치료 순서 이해','🧪'],
+              ['담도암 첫 30일','https://apuda-biliary.netlify.app/',null,'병기·유전자검사·전신치료 정리','🟡'],
+              ['간암 첫 30일','https://apuda-liver.netlify.app',null,'간기능과 병기를 함께 보는 치료 흐름','🟤'],
+              ['림프종 첫 30일','https://apuda-lymphoma.netlify.app',null,'아형·병기·항암치료 과정 이해','🧫'],
+              ['자궁경부암 첫 30일','https://apud-cervical.netlify.app',null,'병기·수술·방사선·항암치료 정리','🌸']]},
     3:{fl:'3F', kicker:'CARE · 치료·부작용 관리', title:'참지 말고,\n확인하고 지원받기.',
        desc:'치료 중 나타나는 불편을 확인하고 산정특례·의료비 등 받을 수 있는 지원 제도를 함께 살펴봅니다.',
        stats:[['산정특례','본인부담 5%'],['의료비','지원 안내']],
-       links:[['암 환자 지원 정보','https://apuda-support.netlify.app/']]},
+       links:[['암 환자 지원 정보','https://apuda-support.netlify.app/',null,'산정특례·의료비·지원제도를 한곳에서','🤝']]},
     4:{fl:'4F', kicker:'COMPANION · 치료 동행', title:'오늘 할 일만,\n차근차근.',
        desc:'치료 일정과 확인할 사항, 의료진에게 물어볼 질문을 오늘의 할 일처럼 하나씩 정리합니다.',
        stats:[['30일','치료 캘린더'],['PWA','설치형 앱']],
-       links:[['암 치료 동행 열기','/care/']]},
+       links:[['암 치료 동행 열기','/care/',null,'오늘의 일정·질문·체크리스트를 차근차근','📅']]},
     5:{fl:'5F', kicker:'TOGETHER · 암 커뮤니티', title:'함께 이겨내요,\n혼자가 아니에요.',
        desc:'같은 길을 걸어본 사람의 경험은 때로 정보만큼 큰 힘이 됩니다. 환자·보호자와 함께 이야기하세요.',
        stats:[['7,550+','카페 회원'],['3,700+','정보 글']],
@@ -1005,13 +1021,16 @@
 
   function render(f){
     var d=DATA[f];
+    sheet.className='sheet floor-'+f;
     sheet.innerHTML =
       '<span class="p-fl"><b>'+d.fl+'</b>'+d.kicker+'</span>'+
       '<h2>'+d.title.replace(/\n/g,'<br>')+'</h2>'+
       '<p>'+d.desc+'</p>'+
       '<div class="p-stats">'+d.stats.map(function(s){
         return '<div><b>'+s[0]+'</b><small>'+s[1]+'</small></div>'}).join('')+'</div>'+
-      '<div class="p-links">'+d.links.map(renderLink).join('')+'</div>'+
+      '<div class="p-links">'+(f===2
+        ? renderLink(d.links[0])+'<div class="p-link-section">암종별 첫 30일 가이드</div>'+d.links.slice(1).map(renderLink).join('')
+        : d.links.map(renderLink).join(''))+'</div>'+
       (f===5?'<section class="community-news" aria-label="오늘의 뉴스 미리보기">'+
         '<div class="community-news-head"><b>오늘의 뉴스 브리핑</b><a href="/news/">전체보기 →</a></div>'+
         '<div class="community-news-list" id="communityNewsList"><div class="community-news-empty">오늘의 주요 뉴스를 불러오는 중입니다.</div></div>'+
