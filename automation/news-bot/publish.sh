@@ -21,6 +21,8 @@ git reset --hard "origin/$APUDA_NEWS_BRANCH"
 
 "$SCRIPT_DIR/.venv/bin/python" "$SCRIPT_DIR/news_bot.py" --repo-root "$APUDA_REPO_DIR"
 "$SCRIPT_DIR/.venv/bin/python" "$SCRIPT_DIR/official_data.py"
+"$SCRIPT_DIR/.venv/bin/python" "$SCRIPT_DIR/official_notices.py"
+"$SCRIPT_DIR/.venv/bin/python" "$SCRIPT_DIR/nccn_monitor.py"
 
 if git diff --quiet -- public-site/news/data; then
   echo "No news data changes."
