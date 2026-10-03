@@ -4,7 +4,7 @@ on:
     branches: [main]
     paths: ['future-compass/**', '.github/workflows/future-compass.yml']
   schedule:
-    - cron: '0 22 * * *' # 07:00 Asia/Seoul, following day
+    - cron: '0 */2 * * *' # Every 2 hours; schedules can be delayed
   workflow_dispatch:
 permissions:
   contents: write
@@ -20,7 +20,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Collect official AI headlines
+      - name: Collect official AI and learning headlines
+        env:
+          NEIS_API_KEY: ${{ secrets.NEIS_API_KEY }}
         run: python future-compass/scripts/update_news.py
       - name: Check site
         run: node future-compass/scripts/check.mjs

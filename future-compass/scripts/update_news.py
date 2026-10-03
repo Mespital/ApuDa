@@ -13,7 +13,7 @@ import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]
 FEEDS = [('Google', 'https://blog.google/rss/'), ('OpenAI', 'https://openai.com/news/rss.xml')]
 HOSTS = {'openai.com', 'blog.google', 'deepmind.google', 'www.anthropic.com'}
-AI_WORDS = re.compile(r'\b(ai|artificial intelligence|gemini|deepmind|machine learning|robot|llm|alphafold|generative)\b', re.I)
+AI_WORDS = re.compile(r'\b(ai|artificial intelligence|gemini|deepmind|machine learning|robot|llm|alphafold|generative|education|learning|classroom|student|study|teacher)\b', re.I)
 
 def classify(title):
     low = title.lower()
@@ -49,6 +49,40 @@ def parse_feed(raw, source, now):
         result.append(dict(title=title[:350], url=url, source=source, published_at=published.isoformat(), category=category, domain=domain))
     return result
 
+
+def school_data(now, previous):
+    key = os.environ.get('NEIS_API_KEY', '').strip()
+    base = dict(name='서초고등학교', grade=1, checked_at=now.isoformat(),
+                homepage='https://seocho.sen.hs.kr/', events=[])
+    if not key:
+        return dict(base, status='key_required', message='학교 일정 자동 수집은 NEIS_API_KEY 설정 후 시작합니다. 인증키 없는 샘플 일정은 표시하지 않습니다.')
+    try:
+        today = now.astimezone(dt.timezone(dt.timedelta(hours=9))).date()
+        params = dict(KEY=key, Type='json', ATPT_OFCDC_SC_CODE='B10',
+                      SD_SCHUL_CODE='7010087', AA_FROM_YMD=today.strftime('%Y%m%d'),
+                      AA_TO_YMD=(today+dt.timedelta(days=90)).strftime('%Y%m%d'), pSize=1000)
+        req = urllib.request.Request('https://open.neis.go.kr/hub/SchoolSchedule?'+urllib.parse.urlencode(params))
+        with urllib.request.urlopen(req, timeout=25) as response:
+            data = json.loads(response.read(2000000))
+        blocks = data.get('SchoolSchedule')
+        if not blocks:
+            if data.get('RESULT', {}).get('CODE') == 'INFO-200':
+                return dict(base, status='ok', message='현재 공개된 일정이 없습니다.', last_success_at=now.isoformat())
+            raise ValueError('NEIS response')
+        rows = next((b['row'] for b in blocks if 'row' in b), [])
+        events = []
+        for r in rows:
+            if r.get('SCHUL_NM') != '서초고등학교' or r.get('ONE_GRADE_EVENT_YN') != 'Y': continue
+            date = dt.datetime.strptime(r['AA_YMD'], '%Y%m%d').date().isoformat()
+            events.append(dict(date=date, title=str(r.get('EVENT_NM',''))[:200]))
+        return dict(base, status='ok', events=events, last_success_at=now.isoformat(),
+                    message='나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요.')
+    except Exception:
+        old = previous.get('school', {})
+        return dict(base, status='error', events=old.get('events', []),
+                    last_success_at=old.get('last_success_at'),
+                    message='학교 일정 수집 실패. 이전 일정은 유지하며 학교 공지 확인이 필요합니다.')
+
 def main():
     dest = ROOT / 'dist/news.json'
     previous = json.loads(dest.read_text()) if dest.exists() else {'articles': []}
@@ -67,7 +101,7 @@ def main():
     unique = {a['url']: a for a in previous.get('articles', [])}
     unique.update({a['url']: a for a in found})
     articles = sorted(unique.values(), key=lambda a:a['published_at'], reverse=True)[:30]
-    result = dict(checked_at=now.isoformat(), last_success_at=now.isoformat() if successes else previous.get('last_success_at'), failures=failures, articles=articles)
+    result = dict(checked_at=now.isoformat(), last_success_at=now.isoformat() if successes else previous.get('last_success_at'), failures=failures, articles=articles, school=school_data(now, previous))
     temporary = dest.with_suffix('.json.tmp')
     temporary.write_text(json.dumps(result, ensure_ascii=False, indent=2)+'\n')
     os.replace(temporary, dest)
