@@ -1,0 +1,20 @@
+services:
+  web:
+    image: caddy:2.10.2-alpine
+    restart: unless-stopped
+    ports:
+      - '127.0.0.1:8092:8080'
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./:/srv/compass:ro
+    read_only: true
+    tmpfs:
+      - /data
+      - /config
+    mem_limit: 96m
+    cpus: 0.5
+    healthcheck:
+      test: ['CMD', 'wget', '-q', '-O', '-', 'http://127.0.0.1:8080/health']
+      interval: 30s
+      timeout: 5s
+      retries: 3
