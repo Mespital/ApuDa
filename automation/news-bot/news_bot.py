@@ -356,6 +356,42 @@ def _news_date(n,tz):
         except Exception: pass
     return None
 
+def derive_period_trends(items, limit=4):
+    themes=[
+        ("정책·급여",["정책","급여","약가","수가","식약처","복지부","질병청","규제"],"제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름"),
+        ("신약·임상",["허가","임상","3상","2상","신약","fda","ema","mfds"],"허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름"),
+        ("투자·사업개발",["기술수출","라이선스","license","m&a","인수","합병","투자","r&d"],"자본과 파이프라인 확보 경쟁이 사업전략의 핵심이 되는 흐름"),
+        ("의료현장",["병원","약국","의료기관"],"병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름"),
+        ("공급·유통",["품절","공급","유통"],"의약품 공급 안정성과 유통 대응이 현장 리스크로 부각되는 흐름"),
+        ("디지털헬스",["ai","디지털헬스","플랫폼","비대면"],"AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름"),
+        ("항암·정밀의료",["항암","암","종양","egfr","her2","pd-l1","brca","adc","car-t","bite"],"바이오마커·기전 중심 정밀의료 경쟁이 치료전략을 세분화하는 흐름")
+    ]
+    scored=[]
+    for title,keywords,implication in themes:
+        count=0
+        weight=0
+        examples=[]
+        for n in items:
+            text=(" ".join([n.get("title","")," ".join(n.get("category") or [])," ".join(n.get("summary") or [])])).lower()
+            oncology=(n.get("oncology") or {}).get("is_oncology")
+            hit=any(k.lower() in text for k in keywords) or (title=="항암·정밀의료" and oncology)
+            if hit:
+                count+=1
+                weight+=int(n.get("score") or 0)+max(0,6-int(n.get("rank") or 6))
+                if len(examples)<2 and n.get("title"): examples.append(n["title"])
+        if count:
+            scored.append({
+                "title":title,
+                "count":count,
+                "change":f"{count}건의 주요 이슈에서 반복적으로 확인",
+                "implication":implication,
+                "examples":examples,
+                "_weight":weight
+            })
+    scored.sort(key=lambda x:(x["count"],x["_weight"]),reverse=True)
+    for x in scored: x.pop("_weight",None)
+    return scored[:limit]
+
 def build_period_highlights(outdir,end,tz):
     cutoff30=end-timedelta(days=30)
     all_items=[]
@@ -401,14 +437,16 @@ def build_period_highlights(outdir,end,tz):
             today=load_json(today_path).get("top_news",[])[:5]
         except Exception:
             today=[]
+    week=select(7,5)
+    month=select(30,6)
     return {
-        "version":"1.0",
+        "version":"1.1",
         "generated_at":datetime.now(tz).isoformat(),
         "as_of":end.isoformat(),
         "periods":{
-            "today":{"label":"오늘","description":"전일 09:00 초과 ~ 당일 09:00 미만","items":today},
-            "week":{"label":"최근 7일","description":"최근 7일 핵심 이슈","items":select(7,5)},
-            "month":{"label":"최근 30일","description":"최근 30일 핵심 이슈","items":select(30,6)}
+            "today":{"label":"오늘","description":"전일 09:00 초과 ~ 당일 09:00 미만","items":today,"trends":derive_period_trends(today,4)},
+            "week":{"label":"최근 7일","description":"최근 7일 핵심 이슈","items":week,"trends":derive_period_trends(week,4)},
+            "month":{"label":"최근 30일","description":"최근 30일 핵심 이슈","items":month,"trends":derive_period_trends(month,5)}
         }
     }
 
