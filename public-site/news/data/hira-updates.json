@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "generated_at": "2026-10-04T00:55:00+09:00",
+  "window_days": 30,
+  "status": "pending_first_check",
+  "items": [],
+  "source": {
+    "agency": "건강보험심사평가원",
+    "name": "보험인정기준",
+    "url": "https://www.hira.or.kr/rc/insu/insuadtcrtr/InsuAdtCrtrList.do?pgmid=HIRAA030069000400"
+  },
+  "note": "첫 VPS 자동수집 후 최근 30일 약제·급여 및 항암 관련 보험인정기준이 자동 표시됩니다."
+}
