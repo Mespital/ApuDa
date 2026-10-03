@@ -11,8 +11,8 @@
       "status": "error",
       "checked_at": "2026-10-04T00:13:55.017704+09:00",
       "records": [],
-      "error": "403 Client Error: Forbidden for url: https://apis.data.go.kr/1471000/DrugPrdtPrmsnInfoService07/getDrugPrdtPrmsnInq07?serviceKey=dDx01qczEd26RAo9X48DBgwzWjjikgmvfaZ2wUtxzktTL7bgYFPT4ewaIinE9XHD9K78KaTPiKmQZKDdtr31Wg%253D%253D&pageNo=1&numOf",
-      "note": "공공데이터포털 활용신청 승인 상태와 Decoding 인증키를 확인해 주세요."
+      "error": "인증 요청 실패 - 서비스키 형식 또는 활용승인 상태 재확인 필요",
+      "note": "민감한 인증정보는 저장하지 않습니다. 다음 자동 검증에서 연결 상태를 다시 확인합니다."
     },
     {
       "id": "mfds_supply_shortage",
@@ -39,7 +39,7 @@
       "source_url": "https://edu.cancer.go.kr/lay1/S1T654C656/contents.do",
       "status": "ok",
       "checked_at": "2026-10-04T00:13:55.329652+09:00",
-      "latest_year": 2026,
+      "latest_year": 2023,
       "note": "국가암정보센터 공식 통계 페이지 원문을 기준으로 연결합니다. 수치는 원문 표를 우선 확인합니다.",
       "page_title": "홈 >통계로 보는 암>유병률>암종별 암유병률",
       "matched_rows": [
