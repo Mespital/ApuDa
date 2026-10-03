@@ -67,8 +67,9 @@ function periodCard(n){
   const img=n.thumbnail_url||n.image_url||'';
   const pubs=(n.publishers||[]).join(' · ')||'ApuDa';
   const summary=(n.summary&&n.summary[0])||n.importance||'';
-  const thumb=img?'<div class="period-thumb"><img src="'+esc(img)+'" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add(\'fallback\');this.remove()"></div>':'<div class="period-thumb fallback"></div>';
-  return '<article class="period-card">'+thumb+'<div class="period-body"><div class="period-meta"><span class="period-rank">'+esc(n.period_rank||n.rank||'')+'</span><span>'+esc(pubs)+'</span><span>'+esc(formatPublished(n.published_at,n.published_at_verified))+'</span></div><h3>'+esc(n.title)+'</h3><p>'+esc(summary)+'</p><div class="source-links">'+sourceButtons(n)+'</div></div></article>';
+  const thumb=img?'<div class="period-thumb"><img src="'+esc(img)+'" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.closest(\'.period-card\').classList.remove(\'has-thumb\');this.parentNode.remove()"></div>':'';
+  const cls='period-card'+(img?' has-thumb':'');
+  return '<article class="'+cls+'">'+thumb+'<div class="period-body"><div class="period-meta"><span class="period-rank">'+esc(n.period_rank||n.rank||'')+'</span><span>'+esc(pubs)+'</span><span>'+esc(formatPublished(n.published_at,n.published_at_verified))+'</span></div><h3>'+esc(n.title)+'</h3><p>'+esc(summary)+'</p><div class="source-links">'+sourceButtons(n)+'</div></div></article>';
 }
 function renderPeriod(){
   const p=periodData?.periods?.[currentPeriod];
