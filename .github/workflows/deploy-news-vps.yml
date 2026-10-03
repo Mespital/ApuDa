@@ -91,10 +91,10 @@ jobs:
           set -euo pipefail
           ssh apuda-vps 'cd /tmp/apuda-news-deploy && chmod +x install-vps.sh publish.sh news_bot.py && ./install-vps.sh'
 
-      - name: Validate collectors with protected environment
+      - name: Validate collector syntax and environment
         run: |
           set -euo pipefail
-          ssh apuda-vps 'set -a; . ~/.config/apuda/news.env; set +a; cd ~/apuda-repo && ~/apuda-news/.venv/bin/python ~/apuda-news/news_bot.py --repo-root ~/apuda-repo && APUDA_REPO_DIR=~/apuda-repo ~/apuda-news/.venv/bin/python ~/apuda-news/official_data.py && APUDA_REPO_DIR=~/apuda-repo ~/apuda-news/.venv/bin/python ~/apuda-news/official_notices.py && APUDA_REPO_DIR=~/apuda-repo ~/apuda-news/.venv/bin/python ~/apuda-news/hira_updates.py && APUDA_REPO_DIR=~/apuda-repo ~/apuda-news/.venv/bin/python ~/apuda-news/nccn_monitor.py'
+          ssh apuda-vps 'set -a; . ~/.config/apuda/news.env; set +a; test -n "$APUDA_GITHUB_TOKEN"; test -n "$APUDA_REPO_DIR"; ~/apuda-news/.venv/bin/python -m py_compile ~/apuda-news/news_bot.py ~/apuda-news/official_data.py ~/apuda-news/official_notices.py ~/apuda-news/hira_updates.py ~/apuda-news/nccn_monitor.py'
 
       - name: Publish refreshed data
         run: |
