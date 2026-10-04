@@ -27,3 +27,12 @@
  .shiro-consent input{width:20px;height:20px}
  .shiro-launch[aria-expanded=true]{visibility:hidden}
 }
+
+/* Small Shiro launcher with a temporary invitation. */
+.shiro-launch{width:58px;height:58px;min-height:58px;padding:4px;border-radius:50%;bottom:22px;right:18px;gap:0;background:#fff}
+.shiro-launch img{width:46px;height:46px;border-radius:50%}
+.shiro-question{position:absolute;right:-2px;top:-3px;width:22px;height:22px;display:grid;place-items:center;border-radius:50%;background:#7254d7;color:#fff;font:800 15px/1 system-ui;border:2px solid white}
+.shiro-hint{position:fixed;z-index:71;right:18px;bottom:92px;max-width:calc(100vw - 36px);padding:10px 15px;background:#fff;color:#574282;border:1px solid #e0d6ee;border-radius:16px 16px 4px 16px;box-shadow:0 6px 20px #47336d18;font:600 14px/1.5 system-ui;pointer-events:none}
+.shiro-hint[hidden]{display:none}
+.shiro-panel{bottom:92px;height:min(590px,calc(100dvh - 115px))}
+@media(max-width:600px){.shiro-launch{width:54px;height:54px;min-height:54px;right:14px;bottom:calc(20px + env(safe-area-inset-bottom,0px));padding:4px}.shiro-launch img{width:42px;height:42px}.shiro-hint{right:14px;bottom:calc(84px + env(safe-area-inset-bottom,0px))}.shiro-panel{bottom:auto}.shiro-toast{bottom:calc(84px + env(safe-area-inset-bottom,0px))}}
