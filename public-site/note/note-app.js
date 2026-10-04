@@ -468,6 +468,7 @@ function greet(){
   if(chat.length){var sep=document.createElement('div');sep.className='small muted';sep.style.textAlign='center';sep.textContent='— 이전 대화 —';$('#thread').appendChild(sep)}
   renderAll();greet();
   var q=new URLSearchParams(location.search);if(q.get('tab'))tab(q.get('tab'));
+  var say=q.get('say');if(say!==null){history.replaceState(null,'',location.pathname+location.hash);if(/[:：]\s*$/.test(say)||say.trim().length<3)prefill(say);else setTimeout(function(){sendText(say)},120)}
   if(location.hash==='#sos')openSheet('sos');
   setTimeout(function(){window.scrollTo(0,document.body.scrollHeight)},60);
 })();

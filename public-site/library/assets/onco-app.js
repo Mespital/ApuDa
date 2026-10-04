@@ -16,7 +16,7 @@ function markerTags(list,link){return list.map(function(m){var x=MK[m];if(!x)ret
 function fmtDate(s){if(!s)return '';var d=new Date(s);if(isNaN(d))return String(s).slice(0,10);return d.getFullYear()+'.'+String(d.getMonth()+1).padStart(2,'0')+'.'+String(d.getDate()).padStart(2,'0')}
 
 /* ── header ── */
-var NAV=[['map','/library/treatment-map/','🗺️ 치료결정 지도'],['drugs','/library/drugs/','💊 Drug Hub'],['biomarkers','/library/biomarkers/','🧬 바이오마커']];
+var NAV=[['map','/library/treatment-map/','🗺️ 치료결정 지도'],['drugs','/library/drugs/','💊 Drug Hub'],['biomarkers','/library/biomarkers/','🧬 바이오마커'],['about','/about/','💡 소개']];
 $('#top').innerHTML='<a class="brand" href="/">ApuDa<small>아프지만, 다행이다.</small></a>'+
   '<nav class="nav">'+NAV.map(function(n){return '<a href="'+n[1]+'"'+(n[0]===PAGE?' class="on"':'')+'>'+n[2]+'</a>'}).join('')+'</nav>'+
   '<a class="back" href="/#floor-2">2F 서재로</a>';

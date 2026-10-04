@@ -535,6 +535,8 @@
   #famPop .ds{margin:7px 0 0;font-size:14px;color:var(--muted);line-height:1.6}
   #famPop .go{display:inline-block;margin-top:10px;font-size:13px;font-weight:800;color:var(--blue)}
   #famPop .foot{padding:0 22px 20px;font-size:12px;color:var(--muted);line-height:1.65}
+  .guide-about{display:inline-flex;margin-top:12px;padding:8px 12px;border-radius:12px;background:#fff;border:1px solid var(--line);color:var(--blue);font-size:13px;font-weight:900;text-decoration:none}
+  .guide-about:hover{border-color:#a9c4ea}
 </style>
 </head>
 <body>
@@ -562,6 +564,7 @@
       <span class="guide-eyebrow">PATIENT &amp; FAMILY COMPANION</span>
       <h1>ApuDa<span>환자와 보호자를<br>돕습니다.</span></h1>
       <p>암 위험도 확인부터 진단 첫 30일, 치료·부작용 관리와 커뮤니티까지 필요한 길을 한 번에 연결합니다.</p>
+      <a class="guide-about" href="/about/">💡 ApuDa.app 소개 · 사용법 →</a>
     </div>
     <nav class="guide-services" id="guideServices" aria-label="층별 서비스 바로가기"></nav>
   </aside>
@@ -1420,5 +1423,6 @@
   document.addEventListener("keydown", function(e){ if(e.key==="Escape" && !pop.hidden) close(); });
 })();
 </script>
+<script src="/assets/apuda-bot.js" data-context="home" defer></script>
 </body>
 </html>

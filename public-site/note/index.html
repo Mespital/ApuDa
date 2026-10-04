@@ -129,6 +129,7 @@ label{display:block;font-size:.78em;font-weight:900;color:#3b4a60;margin:10px 0 
 <div class="app">
 <header class="top">
   <div class="logo"><i>A</i><div><b>암환자 노트</b><small>ApuDa · 말하듯 쓰면 정리돼요</small></div></div>
+  <button class="tbtn" onclick="window.ApudaBot&&ApudaBot.open()" aria-label="ApuDa 길잡이 — 다른 층으로 이동">🧭</button>
   <button class="tbtn" id="fontBtn" aria-label="글자 크기">가<span style="font-size:1.25em">가</span></button>
   <button class="tbtn" onclick="openSheet('settings')" aria-label="내 정보와 설정">⚙︎</button>
   <button class="sos" onclick="openSheet('sos')">🚨 응급</button>
@@ -248,5 +249,6 @@ label{display:block;font-size:.78em;font-weight:900;color:#3b4a60;margin:10px 0 
 <script src="note-app.js"></script>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <script src="apuda-backup.js" defer></script>
+<script src="/assets/apuda-bot.js" data-context="note" data-launcher="none" defer></script>
 </body>
 </html>

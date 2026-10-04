@@ -46,3 +46,13 @@ ApuDa Total Netlify 배포본
   /library/biomarkers/     바이오마커 Navigator — 28개 지표, 검사방법→이유→결과해석→관련 약물→뉴스
 - 콘텐츠 원본: /library/assets/onco-data.js (약물·바이오마커·치료지도 수정은 이 파일만 고치면 됨)
 - 국내 허가·급여 여부는 단정하지 않고 의약품안전나라·심평원 확인 안내로 처리
+
+[2026-10-04 3차 — 통합 길잡이 + 소개 페이지]
+- /assets/apuda-bot.js : 모든 페이지 공용 "ApuDa 길잡이" (Shadow DOM, 외부 의존성 없음)
+  페이지별 모드: home·about·mini·faq·drugs·biomarkers·map·note·news (경로로 자동 판단)
+  기능: 전체 메뉴/층별 이동, 암종→책·FAQ·지도·약·검사 연결, 약·바이오마커 이름 인식,
+        체온·증상·일정 문장 → 암환자 노트로 바로 기록(/note/?say=), 위기(109)·응급(119) 최우선
+- /about/ : ApuDa.app 소개 · 층별 안내 · 사용법 · FAQ
+- 외부 사이트(1F 위험도·건강검진, 3F 지원, care/pet/farm)에도 아래 한 줄을 </body> 앞에 넣으면 같은 길잡이가 뜸:
+  <script src="https://apuda.app/assets/apuda-bot.js" data-context="cancercheck" defer></script>
+  data-context 값: cancercheck | checkup | support | care | pet | farm
