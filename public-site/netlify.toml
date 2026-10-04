@@ -27,6 +27,12 @@
   force = true
 
 [[redirects]]
+  from = "/support/*"
+  to = "https://apuda-support.netlify.app/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/care/*"
   to = "https://apudacare.netlify.app/:splat"
   status = 200

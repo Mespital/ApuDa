@@ -56,3 +56,11 @@ ApuDa Total Netlify 배포본
 - 외부 사이트(1F 위험도·건강검진, 3F 지원, care/pet/farm)에도 아래 한 줄을 </body> 앞에 넣으면 같은 길잡이가 뜸:
   <script src="https://apuda.app/assets/apuda-bot.js" data-context="cancercheck" defer></script>
   data-context 값: cancercheck | checkup | support | care | pet | farm
+
+[2026-10-04 4차 — 1층 외 외부 사이트 길잡이]
+- netlify/edge-functions/apuda-bot-inject.js : /care/*, /pet/*, /farm/*, /support/* 로 열리는 외부 앱 HTML의
+  </body> 앞에 길잡이를 자동 삽입(원본 사이트 수정 불필요, 실패 시 원본 그대로 전달)
+- 3F 지원 정보: /support/* → apuda-support.netlify.app 프록시 추가, 홈·소개의 3F 링크를 /support/ 로 변경
+- 길잡이 맞춤 모드: 3F 지원(산정특례·의료비 지원·서류·상담처), Care(치료 중 예방접종·열), pet(반려동물 응급 신호),
+  farm(가축 이상·전염병 의심 신고 1588-9060)
+- 5F 네이버 카페, 2F 교보문고(4컷 만화)는 외부 플랫폼이라 삽입 불가

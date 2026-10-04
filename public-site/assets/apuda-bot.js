@@ -24,7 +24,7 @@ var SITES=[
  {id:'drugs',fl:'2F',ico:'💊',name:'항암제 Drug Hub',url:'/library/drugs/',desc:'약 기전·부작용·공급상태·최근 뉴스',kw:['항암제','약정보','약이름','부작용','공급부족','품절','표적치료제','면역항암제','drug']},
  {id:'markers',fl:'2F',ico:'🧬',name:'바이오마커 Navigator',url:'/library/biomarkers/',desc:'왜 이 검사를 하는지, 결과와 치료의 연결',kw:['바이오마커','유전자검사','유전자','ngs','변이','표지자','검사결과','결과지']},
  {id:'comic',fl:'2F',ico:'🖼️',name:'4컷 만화 암 정보',url:'https://product.kyobobook.co.kr/detail/S000219012641',ext:1,desc:'검사·병기·치료를 그림으로 쉽게',kw:['만화','4컷','그림으로']},
- {id:'support',fl:'3F',ico:'🤝',name:'암 환자 지원 정보',url:'https://apuda-support.netlify.app/',ext:1,desc:'산정특례·의료비·지원제도',kw:['산정특례','의료비','지원','지원금','치료비','비용','돈','보험','재난적','본인부담','장애','복지','휴직']},
+ {id:'support',fl:'3F',ico:'🤝',name:'암 환자 지원 정보',url:'/support/',desc:'산정특례·의료비·지원제도',kw:['산정특례','의료비','지원','지원금','치료비','비용','돈','보험','재난적','본인부담','장애','복지','휴직']},
  {id:'note',fl:'4F',ico:'📘',name:'암환자 노트',url:'/note/',desc:'말하듯 쓰면 정리 · 위험 신호 안내 · 진료요약',kw:['노트','기록','일지','체온','증상기록','일정','복약','약기록','진료요약','다이어리','수첩']},
  {id:'care',fl:'4F',ico:'🩹',name:'ApuDa Care (일상 건강)',url:'/care/',desc:'일반질환·예방접종·생활 건강',kw:['케어','감기','예방접종','백신','일반질환','생활건강']},
  {id:'cafe',fl:'5F',ico:'💬',name:'ApuDa 카페 (커뮤니티)',url:'https://cafe.naver.com/2ndpart',ext:1,desc:'환자·보호자 경험 나누기',kw:['카페','커뮤니티','후기','경험','모임','소통','다른환자','이야기']},
@@ -40,7 +40,7 @@ var CANCER=[['breast','유방암',['유방']],['lung','폐암',['폐']],['stomac
 /* ── 페이지별 설정 ── */
 function detect(){
   if(DS.context)return DS.context;var p=location.pathname,h=location.host;
-  if(/cancercheck/.test(h))return 'cancercheck';if(/apuda-check/.test(h))return 'checkup';if(/support/.test(h))return 'support';
+  if(/cancercheck/.test(h))return 'cancercheck';if(/apuda-check/.test(h))return 'checkup';if(/support/.test(h)||/^\/support/.test(p))return 'support';
   if(/^\/note/.test(p))return 'note';if(/\/library\/mini/.test(p))return 'mini';if(/\/library\/faq/.test(p))return 'faq';
   if(/\/library\/drugs/.test(p))return 'drugs';if(/\/library\/biomarkers/.test(p))return 'biomarkers';if(/treatment-map/.test(p))return 'map';
   if(/^\/news/.test(p))return 'news';if(/^\/about/.test(p))return 'about';if(/^\/care/.test(p))return 'care';if(/^\/pet/.test(p))return 'pet';if(/^\/farm/.test(p))return 'farm';
@@ -60,10 +60,10 @@ var CONF={
  news:{t:'뉴스 도우미',g:'뉴스에 나온 약이나 검사가 궁금하면 이름을 써 주세요. Drug Hub·바이오마커로 연결해 드려요.',chips:[['🎗️ 항암제 뉴스','항암제 뉴스'],['💊 약 찾아보기','항암제'],['🧬 검사 찾아보기','바이오마커']]},
  cancercheck:{t:'ApuDa 길잡이',g:'위험도 결과는 <b>진단이 아니에요</b>. 결과가 걱정되면 검진 항목을 확인하고 가까운 의료기관과 상의하세요.',chips:[['🩺 건강검진 선택 항목','건강검진'],['📚 암종별 정보','암종 고르기'],['🏢 ApuDa 홈','홈']]},
  checkup:{t:'ApuDa 길잡이',g:'검진 항목은 나이·가족력·생활습관에 따라 달라요. 국가검진 대상인지 먼저 확인하세요.',chips:[['🧭 암 위험도 체크','위험도'],['📚 암종별 정보','암종 고르기'],['🏢 ApuDa 홈','홈']]},
- support:{t:'ApuDa 길잡이',g:'지원제도는 자주 바뀌어요. 정확한 조건은 병원 사회사업실·건강보험공단에 확인하세요.',chips:[['📘 비용·서류 기록','노트'],['💬 다른 환자 경험','카페'],['🏢 ApuDa 홈','홈']]},
- care:{t:'ApuDa 길잡이',g:'일상 건강은 Care에서, 암 치료 기록은 <b>암환자 노트</b>에서 관리하세요.',chips:[['📘 암환자 노트','노트'],['🏢 ApuDa 홈','홈']]},
- pet:{t:'ApuDa 길잡이',g:'ApuDa 패밀리의 다른 서비스로도 이동할 수 있어요.',chips:[['🏢 ApuDa 홈','홈'],['💡 ApuDa 소개','ApuDa 소개']]},
- farm:{t:'ApuDa 길잡이',g:'ApuDa 패밀리의 다른 서비스로도 이동할 수 있어요.',chips:[['🏢 ApuDa 홈','홈'],['💡 ApuDa 소개','ApuDa 소개']]}
+ support:{t:'3F 지원 도우미',g:'<b>3F 나에게 맞는 지원</b>이에요. 암 진단 후 받을 수 있는 대표 제도를 쉽게 알려드리고, 필요한 서류는 노트에 적어 두게 도와드려요.',chips:[['🧾 산정특례란?','산정특례란'],['💰 의료비 지원 종류','의료비 지원 종류'],['📝 준비할 서류','준비할 서류'],['🏥 누구에게 물어보나','지원 상담처'],['💬 다른 환자 경험','카페'],['🏢 ApuDa 홈','홈']]},
+ care:{t:'Care 도우미',g:'<b>ApuDa Care</b>는 일상 건강·예방 정보예요. 암 치료 중이라면 같은 증상도 기준이 달라요 — 치료 기록과 위험 신호는 <b>암환자 노트</b>에서 확인하세요.',chips:[['💉 치료 중 예방접종','치료 중 예방접종'],['🤒 감기·열이 나요','치료 중 열'],['📘 암환자 노트','노트'],['📚 암 정보 서재','서재'],['🏢 ApuDa 홈','홈']]},
+ pet:{t:'ApuDa.pet 도우미',g:'<b>ApuDa.pet</b> — 반려동물 건강 라인이에요. 급해 보이는 증상이면 먼저 동물병원에 연락하세요.',chips:[['🚨 반려동물 응급 신호','반려동물 응급'],['🐄 ApuDa.farm','팜'],['💡 ApuDa 패밀리','패밀리'],['🏢 ApuDa 홈','홈']]},
+ farm:{t:'ApuDa.farm 도우미',g:'<b>ApuDa.farm</b> — 축산 동물 건강 라인이에요. 여러 마리가 동시에 아프거나 폐사가 있으면 바로 신고하세요.',chips:[['🚨 가축 이상·신고','가축 신고'],['🐾 ApuDa.pet','펫'],['💡 ApuDa 패밀리','패밀리'],['🏢 ApuDa 홈','홈']]}
 };
 var C=CONF[CTX]||CONF.home;
 
@@ -95,12 +95,13 @@ function reply(raw){
   var t=String(raw||'').trim(),n=norm(t),cc=curCancer(),out=[];
   if(!t)return [{h:'무엇을 도와드릴까요?'}];
   if(CRISIS.some(function(k){return n.indexOf(k)>=0}))return [{c:'red',h:'<b>지금 많이 힘드시군요. 혼자 견디지 않으셔도 돼요.</b><p>자살예방 상담전화 <b>109</b>는 24시간 무료로 바로 연결돼요. 가까운 사람에게 "지금 같이 있어 달라"고 말해 주세요. 몸이 위급하면 119가 먼저예요.</p><div class="links"><a class="go p red" href="tel:109">📞 109 지금 전화</a><a class="go" href="tel:119">🚑 119</a></div>'}];
-  var tm=t.match(/(3[89]|4[0-2])(?:\.\d)?\s*(?:도|℃)|(?:열|체온)\s*(3[89](?:\.\d)?|4[0-2](?:\.\d)?)/);
-  if(EMERG.some(function(k){return n.indexOf(k)>=0})||(tm&&+(tm[2]||tm[0].match(/[\d.]+/)[0])>=38))
+  var tm=t.match(/(3[89]|4[0-2])(?:\.\d)?\s*(?:도|℃)|(?:열|체온)\s*(3[89](?:\.\d)?|4[0-2](?:\.\d)?)/)||(/열|체온|온도/.test(t)&&t.match(/()(3[89]\.\d|4[0-2]\.\d)/));
+  var animal=(CTX==='pet'||CTX==='farm')&&/숨|경련|쓰러|피|토|설사|안\s*먹|못\s*먹|폐사|열/.test(t)?(CTX==='pet'?'반려동물 응급':'가축 신고'):null;
+  if(!animal&&(EMERG.some(function(k){return n.indexOf(k)>=0})||(tm&&+(tm[2]||tm[0].match(/[\d.]+/)[0])>=38)))
     out.push({c:'red',h:'<b>급한 증상일 수 있어요.</b><ul><li>38.0℃ 이상 열·심한 오한 (특히 항암 중)</li><li>숨이 몹시 참·가슴 통증·의식 저하·경련</li><li>멈추지 않는 출혈·혈변·검은 변</li></ul>해당되면 <b>치료병원에 지금 연락</b>하세요. 숨쉬기 힘들거나 의식이 처지면 119가 우선이에요. 해열제로 먼저 내리지 마세요.<div class="links"><a class="go p red" href="tel:119">🚑 119</a>'+link('/note/#sos','🚨 응급 판단 체크리스트')+'</div>'});
   /* 노트에 기록할 만한 말 */
   var noteLike=/(체온|열)\s*\d|\d\s*(도|℃)|통증\s*\d|\d\s*점|설사|구토|토했|밥\s*(반|조금|못)|식사|몸무게|체중|(질문|물어볼)\s*[:：]|^약\s*[:：]|(오전|오후)?\s*\d{1,2}\s*시.*(항암|검사|외래|진료|CT|MRI)|(다음\s*주|내일|모레|\d+\s*월\s*\d+\s*일).*(항암|검사|외래|진료|CT|MRI|채혈)/i.test(t);
-  if(noteLike){
+  if(noteLike&&!animal){
     if(CTX==='note'&&typeof window.sendText==='function'){out.push({h:'노트에 바로 기록할게요.<div class="links"><button class="go p" data-note="'+esc(t)+'">📘 노트에 기록</button></div>'})}
     else out.push({h:'이 내용은 <b>암환자 노트</b>에 기록해 두면 위험 신호 안내와 진료요약까지 자동으로 정리돼요.<div class="links">'+link('/note/?say='+encodeURIComponent(t),'📘 노트에 기록하기',true)+(/설사|구토|토했|변비|입안|저림|피곤|통증/.test(t)&&!/\d/.test(t)?link('/note/?say='+encodeURIComponent(t.replace(/심해요|심해|있어요|있어/,'')+' 어떻게 해요'),'💡 대처법 보기'):'')+'</div>'});
     return out;
@@ -125,10 +126,28 @@ function reply(raw){
    '결과지 읽는 법':function(){return [{h:'<b>검사 결과지 볼 때</b><ol><li>검사 이름(EGFR, HER2…)과 결과(양성/음성, 수치)를 그대로 적어 두기</li><li>바이오마커 페이지에서 그 검사의 "결과는 치료와 어떻게 연결되나요?" 확인</li><li>모르는 표현은 노트에 질문으로 저장해 진료 때 확인</li></ol><p class="sm">결과 해석과 치료 결정은 담당 의료진이 해요.</p>'}]},
    '응급':function(){return [{c:'red',h:'<b>지금 병원에 연락해야 하는지</b> 체크리스트로 확인해 보세요. 숨쉬기 힘들거나 의식이 처지면 바로 119.<div class="links">'+link('/note/#sos','🚨 응급 판단 열기',true)+'<a class="go red" href="tel:119">🚑 119</a></div>'}]},
    '노트':function(){return [{h:siteCard(SITE.note)}]},'치료비 지원':function(){return [{h:siteCard(SITE.support)+'<p class="sm">조건은 자주 바뀌어요. 병원 사회사업실에서 최종 확인하세요.</p>'}]},
-   '홈':function(){return [{h:siteCard(SITE.home)}]},'카페':function(){return [{h:siteCard(SITE.cafe)}]},'건강검진':function(){return [{h:siteCard(SITE.checkup)}]},'위험도':function(){return [{h:siteCard(SITE.cancercheck)}]},
+   '홈':function(){return [{h:siteCard(SITE.home)}]},
+   '서재':function(){return [{h:siteCard(SITE.library)}]},'팜':function(){return [{h:siteCard(SITE.farm)}]},'펫':function(){return [{h:siteCard(SITE.pet)}]},
+   '패밀리':function(){return [{h:'<b>ApuDa 패밀리</b> — 같은 원칙(쉽게·무료·진단 대신 다음 할 일)으로 만든 건강 라인이에요.'+siteCard(SITE.home)+siteCard(SITE.care)+siteCard(SITE.pet)+siteCard(SITE.farm)}]},
+   '산정특례란':function(){return [{h:'<b>산정특례(암)</b><ul><li>암 확진 후 병원에서 <b>등록 신청</b>을 하면, 건강보험 적용 진료비의 본인부담이 <b>5%</b>로 줄어요.</li><li>적용 기간은 보통 <b>5년</b>이고, 재발·전이 등으로 계속 치료가 필요하면 재등록할 수 있어요.</li><li><b>확진 후 30일 안에</b> 신청하면 확진일부터 적용돼요. 늦으면 신청일부터라 서두르는 게 좋아요.</li><li>비급여 항목(일부 신약·상급병실·간병 등)은 해당되지 않아요.</li></ul><p class="sm">신청은 진료 병원 원무과에서 대신 해 주는 경우가 많아요. 최종 조건은 국민건강보험공단(1577-1000)에 확인하세요.</p><div class="links">'+link('/note/?say='+encodeURIComponent('질문: 산정특례 등록됐는지 원무과에 확인'),'📘 노트에 확인할 일로 저장')+'</div>'}]},
+   '의료비 지원 종류':function(){return [{h:'<b>대표적인 의료비 부담 줄이는 제도</b><ul><li><b>산정특례</b> — 본인부담 5%</li><li><b>본인부담상한제</b> — 1년 본인부담금이 소득 구간별 상한을 넘으면 돌려받음</li><li><b>재난적의료비 지원</b> — 소득 대비 의료비가 과도할 때 일부 지원(소득·재산 기준)</li><li><b>국가 암환자 의료비 지원사업</b> — 의료급여수급자·차상위 등 대상, 보건소 신청</li><li><b>실손·암보험</b> — 가입한 보험의 진단비·실손 청구</li></ul><p class="sm">제도 조건은 해마다 바뀌어요. 병원 <b>사회사업실(의료사회복지팀)</b>, 보건소, 건강보험공단에서 내 조건을 확인하세요.</p>'}]},
+   '준비할 서류':function(){return [{h:'<b>자주 필요한 서류</b><ul><li>진단서(질병분류코드 포함) · 조직검사 결과지</li><li>진료비 영수증·세부내역서 (보험 청구·상한제용)</li><li>입·퇴원 확인서, 통원확인서</li><li>소득·재산 확인 서류 (지원사업 신청 시)</li></ul><p class="sm">한 번 갈 때 여러 장 떼 두면 편해요. 필요한 서류는 노트에 적어 두세요.</p><div class="links">'+link('/note/?say='+encodeURIComponent('질문: 진단서·세부내역서 몇 부 필요한지 원무과 확인'),'📘 노트에 서류 체크 저장',true)+'</div>'}]},
+   '지원 상담처':function(){return [{h:'<b>어디에 물어보면 되나요?</b><ul><li><b>병원 사회사업실(의료사회복지팀)</b> — 내 상황에 맞는 지원 연결, 가장 먼저 추천</li><li><b>병원 원무과</b> — 산정특례 등록, 서류 발급</li><li><b>국민건강보험공단 1577-1000</b> — 산정특례·본인부담상한제</li><li><b>주소지 보건소</b> — 국가 암환자 의료비 지원사업</li><li><b>보건복지상담센터 129</b> — 복지 제도 전반</li></ul><div class="links"><a class="go" href="tel:15771000">📞 건강보험공단</a><a class="go" href="tel:129">📞 129</a></div>'}]},
+   '치료 중 예방접종':function(){return [{h:'<b>암 치료 중 예방접종</b><ul><li>항암·면역억제 치료 중에는 <b>생백신</b>(대상포진 생백신, MMR, 수두 등)은 보통 피해요.</li><li>인플루엔자(독감) 불활성화 백신 등은 권장되는 경우가 많지만 <b>시기</b>는 치료 일정에 맞춰 정해요.</li><li>가족의 접종도 환자 보호에 도움이 돼요.</li></ul><p class="sm">접종 전 반드시 담당 의료진에게 물어보세요.</p><div class="links">'+link('/note/?say='+encodeURIComponent('질문: 이번 독감 백신 언제 맞으면 되나요?'),'📘 질문으로 저장',true)+'</div>'}]},
+   '치료 중 열':function(){return [{c:'red',h:'<b>항암·면역·표적치료 중이라면 일반 감기와 기준이 달라요.</b><p>38.0℃ 이상이면 해열제로 먼저 내리지 말고 <b>치료병원에 바로 연락</b>하세요. 치료 중이 아니라면 Care의 일반 안내를 보세요.</p><div class="links">'+link('/note/#sos','🚨 응급 판단',true)+link('/note/?say='+encodeURIComponent('체온 '),'📘 체온 기록')+'</div>'}]},
+   '반려동물 응급':function(){return [{c:'red',h:'<b>바로 동물병원에 연락할 신호</b><ul><li>숨쉬기 힘들어하거나 잇몸이 창백·파랗게 변함</li><li>경련, 쓰러짐, 의식이 흐림</li><li>계속 토하거나 피 섞인 구토·설사</li><li>배가 부풀고 헛구역질(특히 대형견)</li><li>소변을 못 봄(특히 수컷 고양이)</li><li>중독 의심(초콜릿·포도·양파·약·살충제 등)</li></ul><p class="sm">야간엔 24시 동물병원을 찾으세요. 사람 약을 임의로 먹이지 마세요.</p>'}]},
+   '가축 신고':function(){return [{c:'red',h:'<b>가축 이상 시</b><ul><li>여러 마리가 동시에 고열·식욕부진·폐사 → <b>가축전염병 의심 신고 1588-9060</b></li><li>개별 개체 이상 → 담당 수의사·공수의 상담</li><li>신고 전 이동·출하를 멈추고 출입을 통제하세요.</li></ul><div class="links"><a class="go p red" href="tel:15889060">📞 1588-9060 신고</a></div>'}]},'카페':function(){return [{h:siteCard(SITE.cafe)}]},'건강검진':function(){return [{h:siteCard(SITE.checkup)}]},'위험도':function(){return [{h:siteCard(SITE.cancercheck)}]},
    '항암제 뉴스':function(){return [{h:siteCard(SITE.oncnews)}]},'항암제':function(){return [{h:siteCard(SITE.drugs)+'<p class="sm">약 이름을 바로 써 주셔도 돼요. 예) 키트루다</p>'}]},'바이오마커':function(){return [{h:siteCard(SITE.markers)}]},'치료결정 지도':function(){return [{h:siteCard(SITE.map)}]}
   };
+  if(animal)return cmd[animal]();
   if(cmd[t])return cmd[t]();
+  if(CTX==='support'&&/산정|특례|5%|본인부담/.test(t))return cmd['산정특례란']();
+  if(/지원|의료비|치료비|비용|돈|보험|상한제|재난적/.test(t)&&CTX==='support')return cmd['의료비 지원 종류']();
+  if(/서류|진단서|영수증|세부내역/.test(t))return cmd['준비할 서류']();
+  if(/예방접종|백신|접종/.test(t))return cmd['치료 중 예방접종']();
+  if(/누구(한테|에게)|어디(에|서)?\s*(물어|상담|문의|신청)|상담처|사회사업실|사회복지|원무과/.test(t))return cmd['지원 상담처']();
+  if(/패밀리|family/i.test(t))return cmd['패밀리']();
+  if(CTX==='care'&&/열|감기|몸살/.test(t))return cmd['치료 중 열']();
   if(/소개|어떤\s*곳|뭐\s*하는|apuda\s*(가|는|란)|아프다\s*(가|는|란)/i.test(t))return cmd['ApuDa 소개']();
   if(/전체\s*메뉴|메뉴|어디로|어디\s*있|층별|사이트\s*맵|바로\s*가기/.test(t))return cmd['전체 메뉴']();
   if(/다운로드|다운|pdf|코드/i.test(t))return cmd['다운로드 방법']();
