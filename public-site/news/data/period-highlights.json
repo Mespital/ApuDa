@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-10-04T11:19:59.561295+09:00",
+  "generated_at": "2026-10-04T11:24:56.929228+09:00",
   "as_of": "2026-10-04T09:00:00+09:00",
   "periods": {
     "today": {
@@ -40,35 +40,7 @@
           ],
           "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/418723_325975_3237.png",
           "score": 86,
-          "oncology": {
-            "is_oncology": true,
-            "cancer_types": [],
-            "drug_generic": [],
-            "drug_brand": [],
-            "targets": [],
-            "mechanism": [
-              "ADC"
-            ],
-            "biomarkers": [],
-            "trial_name": null,
-            "phase": "3",
-            "line_of_therapy": null,
-            "endpoints": {
-              "orr": null,
-              "pfs": null,
-              "os": null,
-              "hr": null,
-              "grade3plus_ae": null
-            },
-            "approval_status": null,
-            "reimbursement_status": null,
-            "patient_summary": "향후 치료 선택이나 표준치료 논의에 영향을 줄 수 있는 임상 결과입니다.",
-            "patient_relevance_score": 20,
-            "patient_relevance_labels": [
-              "임상결과"
-            ],
-            "industry_summary": null
-          }
+          "oncology": null
         },
         {
           "rank": 2,
@@ -101,36 +73,7 @@
           ],
           "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/418718_325969_3646.png",
           "score": 46,
-          "oncology": {
-            "is_oncology": true,
-            "cancer_types": [
-              "전립선암"
-            ],
-            "drug_generic": [],
-            "drug_brand": [],
-            "targets": [],
-            "mechanism": [],
-            "biomarkers": [],
-            "trial_name": null,
-            "phase": null,
-            "line_of_therapy": null,
-            "endpoints": {
-              "orr": null,
-              "pfs": null,
-              "os": null,
-              "hr": null,
-              "grade3plus_ae": null
-            },
-            "approval_status": "허가 관련",
-            "reimbursement_status": null,
-            "patient_summary": "치료제의 허가 범위나 사용 가능성과 관련된 소식입니다. 국내 실제 사용은 식약처 허가사항을 확인해야 합니다.",
-            "patient_relevance_score": 42,
-            "patient_relevance_labels": [
-              "허가",
-              "지원제도"
-            ],
-            "industry_summary": null
-          }
+          "oncology": null
         },
         {
           "rank": 3,
@@ -181,16 +124,6 @@
           "count": 3,
           "change": "3건의 주요 이슈에서 반복적으로 확인",
           "implication": "자본과 파이프라인 확보 경쟁이 사업전략의 핵심이 되는 흐름",
-          "examples": [
-            "[제약공시 책갈피] 10월 1주차 - 동아제약·JW중외제약·일동제약 外 - 메디파나뉴스",
-            "바이엘도 미국행 신공장…22억달러 들여 '원료부터 완제품까지' - 메디파나뉴스"
-          ]
-        },
-        {
-          "title": "항암·정밀의료",
-          "count": 2,
-          "change": "2건의 주요 이슈에서 반복적으로 확인",
-          "implication": "바이오마커·기전 중심 정밀의료 경쟁이 치료전략을 세분화하는 흐름",
           "examples": [
             "[제약공시 책갈피] 10월 1주차 - 동아제약·JW중외제약·일동제약 外 - 메디파나뉴스",
             "바이엘도 미국행 신공장…22억달러 들여 '원료부터 완제품까지' - 메디파나뉴스"
@@ -282,35 +215,7 @@
           ],
           "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/418723_325975_3237.png",
           "score": 86,
-          "oncology": {
-            "is_oncology": true,
-            "cancer_types": [],
-            "drug_generic": [],
-            "drug_brand": [],
-            "targets": [],
-            "mechanism": [
-              "ADC"
-            ],
-            "biomarkers": [],
-            "trial_name": null,
-            "phase": "3",
-            "line_of_therapy": null,
-            "endpoints": {
-              "orr": null,
-              "pfs": null,
-              "os": null,
-              "hr": null,
-              "grade3plus_ae": null
-            },
-            "approval_status": null,
-            "reimbursement_status": null,
-            "patient_summary": "향후 치료 선택이나 표준치료 논의에 영향을 줄 수 있는 임상 결과입니다.",
-            "patient_relevance_score": 20,
-            "patient_relevance_labels": [
-              "임상결과"
-            ],
-            "industry_summary": null
-          },
+          "oncology": null,
           "report_date": "2026-10-04",
           "period_rank": 2
         },
@@ -573,35 +478,7 @@
           ],
           "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/418723_325975_3237.png",
           "score": 86,
-          "oncology": {
-            "is_oncology": true,
-            "cancer_types": [],
-            "drug_generic": [],
-            "drug_brand": [],
-            "targets": [],
-            "mechanism": [
-              "ADC"
-            ],
-            "biomarkers": [],
-            "trial_name": null,
-            "phase": "3",
-            "line_of_therapy": null,
-            "endpoints": {
-              "orr": null,
-              "pfs": null,
-              "os": null,
-              "hr": null,
-              "grade3plus_ae": null
-            },
-            "approval_status": null,
-            "reimbursement_status": null,
-            "patient_summary": "향후 치료 선택이나 표준치료 논의에 영향을 줄 수 있는 임상 결과입니다.",
-            "patient_relevance_score": 20,
-            "patient_relevance_labels": [
-              "임상결과"
-            ],
-            "industry_summary": null
-          },
+          "oncology": null,
           "report_date": "2026-10-04",
           "period_rank": 2
         },
@@ -776,36 +653,7 @@
           ],
           "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/418718_325969_3646.png",
           "score": 46,
-          "oncology": {
-            "is_oncology": true,
-            "cancer_types": [
-              "전립선암"
-            ],
-            "drug_generic": [],
-            "drug_brand": [],
-            "targets": [],
-            "mechanism": [],
-            "biomarkers": [],
-            "trial_name": null,
-            "phase": null,
-            "line_of_therapy": null,
-            "endpoints": {
-              "orr": null,
-              "pfs": null,
-              "os": null,
-              "hr": null,
-              "grade3plus_ae": null
-            },
-            "approval_status": "허가 관련",
-            "reimbursement_status": null,
-            "patient_summary": "치료제의 허가 범위나 사용 가능성과 관련된 소식입니다. 국내 실제 사용은 식약처 허가사항을 확인해야 합니다.",
-            "patient_relevance_score": 42,
-            "patient_relevance_labels": [
-              "허가",
-              "지원제도"
-            ],
-            "industry_summary": null
-          },
+          "oncology": null,
           "report_date": "2026-10-04",
           "period_rank": 6
         }
@@ -852,12 +700,12 @@
           ]
         },
         {
-          "title": "항암·정밀의료",
-          "count": 3,
-          "change": "3건의 주요 이슈에서 반복적으로 확인",
-          "implication": "바이오마커·기전 중심 정밀의료 경쟁이 치료전략을 세분화하는 흐름",
+          "title": "의료현장",
+          "count": 2,
+          "change": "2건의 주요 이슈에서 반복적으로 확인",
+          "implication": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름",
           "examples": [
-            "[제약공시 책갈피] 10월 1주차 - 동아제약·JW중외제약·일동제약 外 - 메디파나뉴스",
+            "삼일제약이 5년 전 찜한 골관절염 신약…美·英 이어 유럽 허가 심사 - 메디파나뉴스",
             "'방광암' 수술 전후 치료, 키트루다-파드셉으로 선택지 확대 - 약사공론"
           ]
         }

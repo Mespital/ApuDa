@@ -1,13 +1,17 @@
 {
-  "version": "1.1",
-  "generated_at": "2026-10-04T11:20:05.785051+09:00",
+  "version": "1.2",
+  "generated_at": "2026-10-04T11:25:01.199854+09:00",
   "service_key_connected": true,
+  "credential_routes": {
+    "mfds_drug_approval": "shared",
+    "mfds_supply_shortage": "shared",
+    "hira_drug_price": "shared"
+  },
   "source_health": {
     "total": 5,
     "status_counts": {
       "auth_error": 1,
-      "mapping_review": 1,
-      "ok": 3
+      "ok": 4
     }
   },
   "sources": [
@@ -17,7 +21,7 @@
       "name": "의약품 제품 허가정보",
       "source_url": "https://www.data.go.kr/data/15095677/openapi.do",
       "status": "auth_error",
-      "checked_at": "2026-10-04T11:19:59.828487+09:00",
+      "checked_at": "2026-10-04T11:24:57.153494+09:00",
       "records": [],
       "http_status": 403,
       "key_variant_attempt": 1,
@@ -31,15 +35,15 @@
       "agency": "식품의약품안전처",
       "name": "의약품 공급부족 정보",
       "source_url": "https://www.data.go.kr/data/15056886/openapi.do",
-      "status": "mapping_review",
-      "checked_at": "2026-10-04T11:20:00.163867+09:00",
+      "status": "ok",
+      "checked_at": "2026-10-04T11:24:57.458951+09:00",
       "records": [
         {
-          "company": null,
-          "item_name": null,
+          "company": "하나제약(주)",
+          "item_name": "하나염산페치딘주사",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20121129",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -47,11 +51,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "제일약품(주)",
+          "item_name": "카베닌제이주500밀리그램",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20120926",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -59,11 +63,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "협진무약(주)",
+          "item_name": "협진폴리엘가정(돼지비장가수분해분말)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20130128",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -71,11 +75,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "한국화이자제약(주)",
+          "item_name": "에락시스주100밀리그램(아니둘라펀진과당혼합물)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20120730",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -83,11 +87,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "(주)유한양행",
+          "item_name": "유한카나마이신황산염주 (군납명:주사용카나마이신황산염1g, 수출명:칸시드주1g)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20130114",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -95,11 +99,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "한국화이자제약(주)",
+          "item_name": "에스트라시트캅셀140밀리그람(에스트라머스틴인산나트륨)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20120730",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -107,11 +111,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "한국엠에스디(유)",
+          "item_name": "티모프틱엑스이0.25%점안액(말레인산티몰롤)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20121226",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -119,11 +123,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "한국엠에스디(유)",
+          "item_name": "티모프틱0.5%점안액(티몰롤말레산염)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20121205",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -131,11 +135,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "한국엠에스디(유)",
+          "item_name": "프로디악스-23(폐렴구균백신)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20121211",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -143,11 +147,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "한국엠에스디(유)",
+          "item_name": "오베스틴질좌제(에스트리올)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20121217",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -155,11 +159,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "한국엠에스디(유)",
+          "item_name": "에론바주사 150마이크로그램(코리폴리트로핀 알파, 유전자재조합)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20120707",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -167,11 +171,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "한국엠에스디(유)",
+          "item_name": "티모프틱엑스이0.5%점안액(말레인산티몰롤)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20130402",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -179,11 +183,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "대한적십자사",
+          "item_name": "메갈로텍주(항싸이토메갈로바이러스인면역글로불린)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20100604",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -191,11 +195,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "(주)녹십자",
+          "item_name": "녹십자-파이브리노겐주(건조사람피브리노겐)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20121204",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -203,11 +207,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "일양약품(주)",
+          "item_name": "보나링에이정(디멘히드리네이트)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20130318",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -215,11 +219,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "일양약품(주)",
+          "item_name": "보나링에이정(디멘히드리네이트)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20130318",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -227,11 +231,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "한국엠에스디(유)",
+          "item_name": "티모프틱0.5%점안액(티몰롤말레산염)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20130225",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -239,11 +243,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "대한적십자사",
+          "item_name": "메갈로텍주(항싸이토메갈로바이러스인면역글로불린)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20111004",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -251,11 +255,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "대한적십자사",
+          "item_name": "펜타글로빈주10mL(IgM고함유사람면역글로불린)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20111004",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -263,11 +267,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "대한적십자사",
+          "item_name": "펜타글로빈주100mL(IgM고함유사람면역글로불린)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20111004",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -275,11 +279,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "(주)글락소스미스클라인",
+          "item_name": "님벡스주(시스아트라쿠륨베실산염)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20130712",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -287,11 +291,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "한국메나리니(주)",
+          "item_name": "사이프린캡슐(트리엔틴염산염)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20130731",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -299,11 +303,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "한국노바티스(주)",
+          "item_name": "다이나써크서방캡슐(이스라디핀)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20130830",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -311,11 +315,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "삼일제약(주)",
+          "item_name": "글립타이드정200밀리그람(설글리코타이드)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20130816",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -323,11 +327,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "삼일제약(주)",
+          "item_name": "포리부틴드라이시럽(트리메부틴)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20130816",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -335,11 +339,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "삼일제약(주)",
+          "item_name": "자이로릭정(알로푸리놀)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20130816",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -347,11 +351,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "(주)한국얀센",
+          "item_name": "리보스틴점안액(레보카바스틴염산염)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20130807",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -359,11 +363,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "한국엠에스디(유)",
+          "item_name": "온코타이스주(비씨지StrainTice)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20130925",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -371,11 +375,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "한국노바티스(주)",
+          "item_name": "다이나써크서방캡슐(이스라디핀)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20131014",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -383,11 +387,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "고려제약(주)",
+          "item_name": "리다민캅셀(염산리다미딘)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20140113",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -395,11 +399,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "(주)한국로슈",
+          "item_name": "타미플루캡슐75밀리그램(인산오셀타미비르)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20140203",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -407,11 +411,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "한국엠에스디(유)",
+          "item_name": "온코타이스주(비씨지StrainTice)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20130924",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -419,11 +423,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "(주)삼오제약",
+          "item_name": "페데아주(이부프로펜)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20131001",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -431,11 +435,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "(주)녹십자",
+          "item_name": "녹십자-파이브리노겐주(건조사람피브리노겐)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20130610",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -443,11 +447,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "제이더블유중외제약(주)",
+          "item_name": "라보파서방캡슐(염산리토드린)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20131126",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -455,11 +459,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "(주)한국로슈",
+          "item_name": "타미플루캡슐45밀리그램(인산오셀타미비르)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20140204",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -467,11 +471,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "(주)한국로슈",
+          "item_name": "타미플루캡슐30밀리그램(인산오셀타미비르)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20140203",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -479,11 +483,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "한올바이오파마(주)",
+          "item_name": "한올마이신주120만단위(벤자틴페니실린G수화물)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20140829",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -491,11 +495,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "(유)한국비엠에스제약",
+          "item_name": "바이에타펜주5마이크로그램(엑세나타이드)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20140320",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -503,11 +507,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "(유)한국비엠에스제약",
+          "item_name": "바이에타펜주10마이크로그램(엑세나타이드)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20140320",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -515,11 +519,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "한국노바티스(주)",
+          "item_name": "프로류킨주(알데스류킨, 유전자재조합)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20141027",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -527,11 +531,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "바이엘코리아(주)",
+          "item_name": "조피고주(라듐-223염화물)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20140915",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -539,11 +543,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "호스피라코리아(주)",
+          "item_name": "이수푸렐주(이소프로테레놀염산염)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20141107",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -551,11 +555,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "(주)글락소스미스클라인",
+          "item_name": "보트리엔트정400밀리그램(파조파닙염산염)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20130414",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -563,11 +567,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "한국메나리니(주)",
+          "item_name": "엘리델크림1%(피메크로리무스)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20140930",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -575,11 +579,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "하나제약(주)",
+          "item_name": "하나페노바르비탈정",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20141021",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -587,11 +591,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "한국엠에스디(유)",
+          "item_name": "온코타이스주(비씨지StrainTice)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20140620",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -599,11 +603,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "(주)글락소스미스클라인",
+          "item_name": "하브릭스주(A형간염백신)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20141006",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -611,11 +615,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "한올바이오파마(주)",
+          "item_name": "가나피드정(염산이토프리드)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20150301",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -623,11 +627,11 @@
           "normalization_expected_date": null
         },
         {
-          "company": null,
-          "item_name": null,
+          "company": "제이텍바이오젠",
+          "item_name": "차코도트현탁액(약용탄)",
           "shortage_expected_date": null,
           "shortage_reason": null,
-          "last_supply_date": null,
+          "last_supply_date": "20150508",
           "stock_reference_date": null,
           "stock_qty": null,
           "patient_impact": null,
@@ -638,10 +642,32 @@
       "http_status": 200,
       "key_variant_used": 1,
       "response_field_keys": [
-        "item"
+        "BIZRNO",
+        "DEPT_RECEIPT_NO",
+        "EDI_CODE",
+        "ENTP_NAME",
+        "ENTP_NO",
+        "ENTP_SEQ",
+        "EXAM_RESULT_TIME",
+        "INV_QTY",
+        "INV_QTY_DATE",
+        "ITEM_NAME",
+        "ITEM_SEQ",
+        "LAST_SUPPLY_DATE",
+        "LAST_SUPPLY_FLAG",
+        "OPEN_AGREE_YN_NM",
+        "REPORT_ADDR",
+        "REPORT_DATE",
+        "REPORT_PGS_CODE",
+        "SHORT_SUPPLY_EXPT_DATE",
+        "SHORT_SUPPLY_REASON",
+        "SHORT_SUPPLY_REPORT_SEQ",
+        "SUPPLY_PLAN",
+        "SUPPLY_PLAN_DATE",
+        "TREATMENT_INFU"
       ],
-      "mapped_records": 0,
-      "note": "API 응답은 정상이나 필드명이 현재 매핑과 달라 자동 필드 매핑을 점검 중입니다."
+      "mapped_records": 50,
+      "note": "식약처 공식 의약품 공급부족 OpenAPI 연결 상태입니다. 공급부족·환자영향·정상화 계획을 확인합니다."
     },
     {
       "id": "hira_drug_price",
@@ -649,7 +675,7 @@
       "name": "약가기준정보조회서비스",
       "source_url": "https://www.data.go.kr/data/15054445/openapi.do",
       "status": "ok",
-      "checked_at": "2026-10-04T11:20:00.598391+09:00",
+      "checked_at": "2026-10-04T11:24:57.877513+09:00",
       "records": [],
       "http_status": 200,
       "key_variant_used": 1,
@@ -662,7 +688,7 @@
       "name": "통계로 보는 암",
       "source_url": "https://edu.cancer.go.kr/lay1/S1T654C656/contents.do",
       "status": "ok",
-      "checked_at": "2026-10-04T11:20:00.700936+09:00",
+      "checked_at": "2026-10-04T11:24:57.976095+09:00",
       "latest_year": 2023,
       "note": "국가암정보센터 공식 통계 페이지 원문을 기준으로 연결합니다. 수치는 원문 표를 우선 확인합니다.",
       "page_title": "홈 >통계로 보는 암>유병률>암종별 암유병률",
@@ -897,7 +923,7 @@
       "name": "암환자 생활백서",
       "source_url": "https://cancer.go.kr/lay1/S1T523C850/contents.do",
       "status": "ok",
-      "checked_at": "2026-10-04T11:20:03.589621+09:00",
+      "checked_at": "2026-10-04T11:24:59.593397+09:00",
       "latest_year": null,
       "note": "국가암정보센터 원문을 직접 연결하며, ApuDa에서는 원문을 변형 복제하지 않습니다.",
       "page_title": "홈 >암정보 나눔터>국가암지식정보센터 OPEN API"
