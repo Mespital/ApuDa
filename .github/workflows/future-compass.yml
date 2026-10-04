@@ -44,6 +44,7 @@ jobs:
           git add future-compass/dist/news.json future-compass/dist/school.json
           if ! git diff --cached --quiet; then
             git commit -m 'chore(compass): refresh official AI news and school data'
+            git pull --rebase -X theirs origin main
             git push
           fi
       - name: Deploy Netlify when connected

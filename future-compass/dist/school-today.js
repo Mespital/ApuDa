@@ -49,7 +49,8 @@
     var myClass = lsGet(CLASS_KEY) || '';
     if (myClass && classNames.indexOf(myClass) < 0) myClass = '';
     var ttHtml;
-    if (!classNames.length) ttHtml = '<p class="st-muted">이번 주 시간표가 아직 공개되지 않았어. 공부방 시간표에 직접 적어 둬도 돼.</p>';
+    if (!data.keyed) ttHtml = '<p class="st-muted">시간표는 나이스 인증키를 연결하면 반별로 보여. 지금은 공부방 시간표에 직접 적어 둬.</p>';
+    else if (!classNames.length) ttHtml = '<p class="st-muted">이번 주 시간표가 아직 공개되지 않았어. 공부방 시간표에 직접 적어 둬도 돼.</p>';
     else {
       var sel = '<label class="st-class">반 <select data-st-class>' + '<option value="">선택</option>' + classNames.map(function (c) { return '<option ' + (c === myClass ? 'selected' : '') + ' value="' + esc(c) + '">' + esc(c) + '반</option>'; }).join('') + '</select></label>';
       if (!myClass) ttHtml = sel + '<p class="st-muted">내 반을 고르면 오늘 시간표가 보여. 한 번만 고르면 기억할게.</p>';
@@ -63,7 +64,7 @@
     }
     // 학사일정
     var events = (data.schedule || []).filter(function (e) { return e.date >= today; }).slice(0, 5);
-    var evHtml = events.length ? '<ul class="st-ev">' + events.map(function (e) { return '<li><b>' + esc(dayLabel(e.date)) + '</b> ' + esc(e.title) + ' <span class="st-dday">' + dday(e.date) + '</span></li>'; }).join('') + '</ul>'
+    var evHtml = events.length ? '<ul class="st-ev">' + events.map(function (e) { return '<li><b>' + esc(dayLabel(e.date)) + '</b> ' + esc(e.title) + ' <span class="st-dday">' + dday(e.date) + '</span></li>'; }).join('') + '</ul>' + (data.keyed ? '' : '<p class="st-muted">가까운 일정 일부만 보여. 전체는 학교 공지 확인.</p>')
       : '<p class="st-muted">앞으로 60일 안에 ' + esc(info.grade) + '학년 일정이 아직 없어.</p>';
     var updated = data.last_success_at ? new Date(data.last_success_at).toLocaleString('ko-KR', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : '';
     box.innerHTML = head +
