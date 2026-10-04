@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f9ff">
+<meta name="description" content="ApuDa 암 진단 첫 30일 MINI 무료 웹북">
+<title>ApuDa 암 진단 첫 30일 MINI</title>
+<style>
+:root{--navy:#0b2746;--blue:#246bfe;--line:#dce8f5;--muted:#677b90;--bg:#f4f8fd;--card:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#f8fbff,#eef5fc);color:var(--navy);font-family:Pretendard,"Noto Sans KR","Apple SD Gothic Neo",Arial,sans-serif}
+a{color:inherit;text-decoration:none}.top{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.brand{font-weight:950;color:var(--blue);font-size:22px}.brand small{display:block;font-size:9px;color:#6d8094;letter-spacing:.02em}
+.actions{display:flex;gap:7px}.btn{border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:12px;padding:9px 12px;font-weight:900;cursor:pointer;font-size:12px}.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}.btn:disabled{opacity:.55;cursor:wait}
+.wrap{width:min(1100px,94vw);margin:22px auto 70px}.hero{display:grid;grid-template-columns:150px minmax(0,1fr);gap:22px;align-items:center;padding:22px;border:1px solid var(--line);border-radius:24px;background:#fff;box-shadow:0 12px 32px rgba(27,77,128,.07)}
+.cover{aspect-ratio:240/340;border-radius:12px;background-image:url('../../assets/books/apuda-mini-series-sprite.webp');background-size:600% 200%;background-position:var(--bx) var(--by);box-shadow:0 13px 28px rgba(20,70,125,.16);border:1px solid #cfe0f2}
+.kicker{color:var(--blue);font-size:11px;font-weight:950;letter-spacing:.12em}.hero h1{font-size:clamp(28px,4vw,48px);line-height:1.08;margin:7px 0 9px;letter-spacing:-.04em}.hero p{margin:0;color:var(--muted);line-height:1.65;font-size:13px}.meta{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}.pill{padding:6px 9px;border-radius:999px;background:#eef5ff;color:#245b9b;font-size:10px;font-weight:900}
+.reader{margin-top:18px;display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:16px;align-items:start}.pages{display:grid;gap:14px}.page{position:relative;background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px 30px;box-shadow:0 10px 28px rgba(27,77,128,.05);overflow:hidden}.page:before{content:"ApuDa";position:absolute;right:22px;top:18px;color:#e9f2ff;font-weight:950;font-size:44px;pointer-events:none}.page-no{position:relative;z-index:1;display:inline-flex;margin-bottom:14px;padding:4px 8px;border-radius:999px;background:#eef5ff;color:var(--blue);font-size:10px;font-weight:950}.page pre{position:relative;z-index:1;margin:0;white-space:pre-wrap;word-break:keep-all;overflow-wrap:anywhere;font-family:inherit;font-size:13px;line-height:1.72;color:#1a3653}
+.toc{position:sticky;top:78px;padding:15px;border:1px solid var(--line);border-radius:18px;background:#fff}.toc b{display:block;font-size:13px;margin-bottom:8px}.toc button{display:flex;width:100%;justify-content:space-between;gap:8px;border:0;background:transparent;color:#536a80;padding:7px 4px;cursor:pointer;text-align:left;font-size:10px}.toc button:hover{color:var(--blue)}.notice{margin-top:16px;padding:12px 14px;border-radius:14px;background:#eef6ff;color:#516a82;font-size:10.5px;line-height:1.6}
+.download-modal{position:fixed;inset:0;display:none;place-items:center;z-index:80;background:rgba(5,28,54,.45);padding:18px}.download-modal.on{display:grid}.download-card{width:min(430px,94vw);padding:22px;border-radius:22px;background:#fff;box-shadow:0 30px 80px rgba(2,22,44,.28)}.download-card h2{margin:0 0 7px;font-size:21px}.download-card p{margin:0 0 15px;color:var(--muted);font-size:12px;line-height:1.55}.code-row{display:flex;gap:8px}.code-row input{min-width:0;flex:1;border:1px solid #cfddec;border-radius:12px;padding:11px 12px;font-size:14px;outline:none}.code-row input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(36,107,254,.1)}.error{min-height:18px;margin-top:7px;color:#c23535;font-size:10px;font-weight:800}.modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:12px}
+#pdfSource{position:fixed;left:-200vw;top:0;width:794px;background:#fff}.pdf-sheet{width:794px;min-height:1123px;padding:58px 62px 54px;background:#fff;color:#102b47;page-break-after:always}.pdf-sheet h4{margin:0 0 16px;color:#246bfe;font-size:11px}.pdf-sheet pre{margin:0;white-space:pre-wrap;word-break:keep-all;font-family:"Noto Sans KR","Apple SD Gothic Neo",Arial,sans-serif;font-size:12px;line-height:1.6}
+@media(max-width:760px){.top{padding:10px 12px}.brand{font-size:20px}.actions .btn:first-child{display:none}.wrap{margin-top:14px}.hero{grid-template-columns:92px 1fr;padding:15px;gap:14px;border-radius:18px}.hero h1{font-size:27px}.reader{grid-template-columns:1fr}.toc{position:static;order:-1;display:none}.page{padding:22px 18px;border-radius:16px}.page pre{font-size:12px;line-height:1.67}.cover{border-radius:9px}}
+@media print{.top,.toc,.hero,.notice{display:none!important}.wrap{width:100%;margin:0}.reader{display:block}.pages{gap:0}.page{box-shadow:none;border:0;border-radius:0;page-break-after:always;min-height:100vh}.page:before{display:none}}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="/"><span>ApuDa</span><small>아프지만, 다행이다.</small></a>
+  <div class="actions"><button class="btn" id="backBtn">2F 서재로</button><button class="btn primary" id="downloadBtn">PDF 다운로드</button></div>
+</header>
+<main class="wrap">
+  <section class="hero">
+    <div class="cover" id="cover"></div>
+    <div><span class="kicker">ApuDa 「암 진단 첫 30일」 MINI SERIES</span><h1 id="bookTitle">불러오는 중</h1><p>처음 진단받은 환자와 보호자를 위한 핵심 정리 · 질문 · 행동 가이드입니다. 웹에서는 무료로 읽을 수 있습니다.</p><div class="meta"><span class="pill">무료 웹 열람</span><span class="pill">21 PAGE</span><span class="pill">환자·보호자용</span></div></div>
+  </section>
+  <section class="reader">
+    <div class="pages" id="pages"><div class="page"><pre>책 내용을 불러오는 중입니다.</pre></div></div>
+    <aside class="toc"><b>페이지 이동</b><div id="toc"></div><div class="notice">이 자료는 환자교육용이며 개인의 진단·처방·예후 판단을 대신하지 않습니다. 실제 치료는 담당 의료진과 상의하세요.</div></aside>
+  </section>
+</main>
+
+<div class="download-modal" id="downloadModal" role="dialog" aria-modal="true" aria-labelledby="downloadTitle">
+  <div class="download-card">
+    <h2 id="downloadTitle">무료 배포판 다운로드</h2>
+    <p>다운로드 코드를 입력하면 현재 웹북을 PDF 파일로 저장할 수 있습니다.</p>
+    <div class="code-row"><input id="downloadCode" type="password" autocomplete="off" placeholder="다운로드 코드"><button class="btn primary" id="verifyBtn">확인</button></div>
+    <div class="error" id="codeError"></div>
+    <div class="modal-actions"><button class="btn" id="cancelDownload">취소</button></div>
+  </div>
+</div>
+<div id="pdfSource" aria-hidden="true"></div>
+
+<script>
+(function(){
+  var ORDER=['breast','lung','stomach','colorectal','thyroid','kidney','prostate','pancreas','biliary','liver','lymphoma','cervical'];
+  var params=new URLSearchParams(location.search);
+  var slug=params.get('cancer')||'breast';
+  if(ORDER.indexOf(slug)<0) slug='breast';
+  var idx=ORDER.indexOf(slug), col=idx%6, row=idx<6?0:1;
+  var bx=[0,20,40,60,80,100][col], by=row*100;
+  document.getElementById('cover').style.setProperty('--bx',bx+'%');
+  document.getElementById('cover').style.setProperty('--by',by+'%');
+
+  var data=null;
+  function esc(s){return String(s==null?'':s).replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})}
+  function render(d){
+    data=d; document.title='ApuDa '+d.name+' 진단 첫 30일 MINI';
+    document.getElementById('bookTitle').textContent=d.name+' 진단 첫 30일';
+    var pages=document.getElementById('pages'),toc=document.getElementById('toc'),pdf=document.getElementById('pdfSource');
+    pages.innerHTML=d.pages.map(function(t,i){return '<article class="page" id="p'+(i+1)+'"><span class="page-no">'+(i+1)+' / '+d.page_count+'</span><pre>'+esc(t)+'</pre></article>'}).join('');
+    toc.innerHTML=d.pages.map(function(t,i){var first=(t.split('\n').find(function(x){return x.trim()})||('PAGE '+(i+1))).replace(/MINI SERIES[^\n]*/,'').trim();return '<button data-page="'+(i+1)+'"><span>'+(i+1)+'. '+esc(first.slice(0,22))+'</span><span>→</span></button>'}).join('');
+    toc.querySelectorAll('button').forEach(function(b){b.onclick=function(){document.getElementById('p'+b.dataset.page).scrollIntoView({behavior:'smooth',block:'start'})}});
+    pdf.innerHTML=d.pages.map(function(t,i){return '<section class="pdf-sheet"><h4>ApuDa · '+esc(d.name)+' 진단 첫 30일 MINI · '+(i+1)+'/'+d.page_count+'</h4><pre>'+esc(t)+'</pre></section>'}).join('');
+    if(location.hash==='#download') setTimeout(openDownload,300);
+  }
+  fetch('./data/'+slug+'.json',{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(render).catch(function(){document.getElementById('pages').innerHTML='<div class="page"><pre>웹북 데이터를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.</pre></div>'});
+
+  var modal=document.getElementById('downloadModal'),code=document.getElementById('downloadCode'),err=document.getElementById('codeError'),verify=document.getElementById('verifyBtn');
+  function openDownload(){modal.classList.add('on');err.textContent='';code.value='';setTimeout(function(){code.focus()},50)}
+  function closeDownload(){modal.classList.remove('on')}
+  document.getElementById('downloadBtn').onclick=openDownload;
+  document.getElementById('cancelDownload').onclick=closeDownload;
+  document.getElementById('backBtn').onclick=function(){location.href='/#floor-2'};
+  modal.addEventListener('click',function(e){if(e.target===modal)closeDownload()});
+  code.addEventListener('keydown',function(e){if(e.key==='Enter')verify.click()});
+
+  async function sha256(text){
+    var buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(text));
+    return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
+  }
+  verify.onclick=async function(){
+    if(!data)return;
+    verify.disabled=true; verify.textContent='확인 중';
+    try{
+      var h=await sha256(code.value.trim());
+      if(h!=='0ed8d8c2cab6877cee51f967f42838fbcff06e96cb61bcd3153f3d7975d7596f'){
+        err.textContent='다운로드 코드가 맞지 않습니다.'; return;
+      }
+      err.style.color='#1b7a50';err.textContent='인증되었습니다. PDF를 만드는 중입니다…';
+      var filename='ApuDa_암진단첫30일_'+data.name+'_MINI_무료배포판.pdf';
+      if(window.html2pdf){
+        await html2pdf().set({
+          margin:0,
+          filename:filename,
+          image:{type:'jpeg',quality:.92},
+          html2canvas:{scale:1.35,useCORS:true,letterRendering:true},
+          jsPDF:{unit:'px',format:[794,1123],orientation:'portrait'},
+          pagebreak:{mode:['css','legacy'],after:'.pdf-sheet'}
+        }).from(document.getElementById('pdfSource')).save();
+        closeDownload();
+      }else{
+        err.textContent='PDF 생성 모듈을 불러오지 못했습니다. 인쇄창에서 “PDF로 저장”을 선택해 주세요.';
+        setTimeout(function(){closeDownload();window.print()},900);
+      }
+    }catch(e){
+      err.textContent='PDF 생성에 실패했습니다. 인쇄창에서 “PDF로 저장”을 선택해 주세요.';
+      setTimeout(function(){closeDownload();window.print()},900);
+    }finally{
+      verify.disabled=false; verify.textContent='확인';
+    }
+  };
+})();
+</script>
+</body>
+</html>

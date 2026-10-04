@@ -318,7 +318,7 @@
   .floor2-library-head b{display:block;color:var(--navy);font-size:17px;font-weight:950}
   .floor2-library-head span{color:var(--muted);font-size:10px;font-weight:800}
   .mini-series-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
-  .mini-book{display:block;min-width:0;color:var(--ink);transition:.22s var(--ease)}
+  .mini-book{display:block;min-width:0;color:var(--ink);transition:.22s var(--ease);border:0;background:transparent;padding:0;text-align:left;cursor:pointer;width:100%}
   .mini-book:hover{transform:translateY(-4px)}
   .mini-book-art{display:block;aspect-ratio:240/340;border-radius:9px;background-image:url('assets/books/apuda-mini-series-sprite.webp');
     background-size:600% 200%;background-position:var(--bx) var(--by);background-repeat:no-repeat;
@@ -342,6 +342,33 @@
   .floor2-service.soon{opacity:.72}
   .floor2-service.soon::after{content:'준비 중';margin-left:auto;padding:3px 6px;border-radius:999px;background:#F2F5F8;color:#78899A;font-size:8px;font-weight:900}
   .floor2-note{margin-top:12px;padding:11px 12px;border-radius:14px;background:#EEF6FF;color:#4E6680;font-size:10px;line-height:1.55}
+  .book-choice-backdrop{position:fixed;inset:0;z-index:120;display:grid;place-items:center;padding:18px;background:rgba(4,27,51,.48);backdrop-filter:blur(8px)}
+  .book-choice-card{position:relative;width:min(720px,94vw);max-height:90svh;overflow:auto;padding:24px;border:1px solid #DCE8F5;border-radius:26px;background:#fff;box-shadow:0 34px 90px rgba(4,27,51,.30)}
+  .book-choice-x{position:absolute;right:14px;top:14px;width:38px;height:38px;border:0;border-radius:50%;background:#EFF5FC;color:#334E68;font-size:22px;cursor:pointer}
+  .book-choice-head{display:grid;grid-template-columns:92px minmax(0,1fr);gap:16px;align-items:center;padding-right:44px}
+  .book-choice-cover{aspect-ratio:240/340;border-radius:9px;background-image:url('assets/books/apuda-mini-series-sprite.webp');background-size:600% 200%;background-position:var(--bx) var(--by);box-shadow:0 10px 24px rgba(19,68,126,.16);border:1px solid #CFE0F2}
+  .book-choice-kicker{display:block;color:var(--blue);font-size:9px;font-weight:950;letter-spacing:.11em}
+  .book-choice-head h3{margin:5px 0 4px;color:var(--navy);font-size:24px;letter-spacing:-.03em}
+  .book-choice-head p{margin:0;color:var(--muted);font-size:11px;line-height:1.55}
+  .book-choice-list{display:grid;gap:10px;margin-top:18px}
+  .book-choice-item{display:grid;grid-template-columns:42px minmax(0,1fr) auto;gap:12px;align-items:center;padding:14px;border:1px solid var(--line);border-radius:16px;background:#fff}
+  .book-choice-num{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:#EEF5FF;color:var(--blue);font-size:14px;font-weight:950}
+  .book-choice-copy b{display:block;color:var(--navy);font-size:13px;font-weight:950}
+  .book-choice-copy small{display:block;margin-top:4px;color:var(--muted);font-size:9.5px;line-height:1.45}
+  .book-choice-actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+  .book-choice-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:8px 10px;border:1px solid #C9D9EB;border-radius:10px;background:#fff;color:var(--blue);font-size:9.5px;font-weight:950}
+  .book-choice-actions a.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+  .book-choice-item.full{background:#FBFDFF}
+  .book-choice-note{margin-top:12px;padding:10px 12px;border-radius:12px;background:#F2F7FD;color:#5B7085;font-size:9.5px;line-height:1.5}
+  @media(max-width:620px){
+    .book-choice-card{padding:18px;border-radius:22px}
+    .book-choice-head{grid-template-columns:74px 1fr;gap:12px}
+    .book-choice-head h3{font-size:20px}
+    .book-choice-item{grid-template-columns:38px minmax(0,1fr);padding:12px}
+    .book-choice-num{width:38px;height:38px}
+    .book-choice-actions{grid-column:1/-1;justify-content:stretch}
+    .book-choice-actions a{flex:1}
+  }
   @media (max-width:1099px) and (min-width:861px){
     #panel.floor-2-expanded{width:min(900px,82vw);min-width:min(700px,94vw)}
     .floor2-layout{grid-template-columns:minmax(0,1fr) 220px}
@@ -1079,6 +1106,29 @@
       '<span class="p-link-arrow">→</span></a>';
   }
 
+  var BOOK_SLUGS=['breast','lung','stomach','colorectal','thyroid','kidney','prostate','pancreas','biliary','liver','lymphoma','cervical'];
+
+  function openBookChoice(i){
+    var d=DATA[2], l=d.links[i+1], slug=BOOK_SLUGS[i]||'breast';
+    var name=String(l[0]||'').replace(/ 첫 30일$/,'');
+    var col=i%6, row=i<6?0:1, bx=[0,20,40,60,80,100][col], by=row*100;
+    var old=document.getElementById('bookChoiceModal'); if(old) old.remove();
+    var root=document.createElement('div'); root.id='bookChoiceModal'; root.className='book-choice-backdrop';
+    root.innerHTML='<section class="book-choice-card" role="dialog" aria-modal="true" aria-label="'+esc(name)+' 자료 선택">'+
+      '<button class="book-choice-x" type="button" aria-label="닫기">×</button>'+
+      '<div class="book-choice-head"><div class="book-choice-cover" style="--bx:'+bx+'%;--by:'+by+'%"></div><div><span class="book-choice-kicker">ApuDa 암종별 가이드</span><h3>'+esc(name)+'</h3><p>원하는 자료를 선택하세요. 무료 MINI는 웹에서 바로 읽을 수 있고 PDF 저장은 다운로드 코드가 필요합니다.</p></div></div>'+
+      '<div class="book-choice-list">'+
+        '<div class="book-choice-item"><span class="book-choice-num">1</span><span class="book-choice-copy"><b>암 진단 후 첫 30일 · '+esc(name)+' MINI</b><small>무료 배포판 · 21페이지 · 웹에서 바로 읽기</small></span><span class="book-choice-actions"><a class="primary" href="/library/mini/?cancer='+slug+'">웹에서 보기</a><a href="/library/mini/?cancer='+slug+'#download">PDF 다운로드</a></span></div>'+
+        '<div class="book-choice-item"><span class="book-choice-num">2</span><span class="book-choice-copy"><b>'+esc(name)+' FAQ</b><small>환자·보호자가 진료실에서 자주 확인하는 질문</small></span><span class="book-choice-actions"><a href="/library/faq/?cancer='+slug+'">FAQ 보기</a></span></div>'+
+        '<div class="book-choice-item full"><span class="book-choice-num">3</span><span class="book-choice-copy"><b>암 진단 후 첫 30일 · '+esc(name)+' 완전판</b><small>MINI보다 더 깊게 검사·병기·치료 흐름을 확인하는 상세 가이드</small></span><span class="book-choice-actions"><a href="'+esc(l[1])+'" target="_blank" rel="noopener">완전판 보기 ↗</a></span></div>'+
+      '</div><div class="book-choice-note">무료 MINI 웹 열람은 코드 없이 가능합니다. PDF 다운로드 버튼은 별도 코드 인증 후 작동합니다.</div></section>';
+    document.body.appendChild(root);
+    var close=function(){root.remove()};
+    root.querySelector('.book-choice-x').onclick=close;
+    root.addEventListener('click',function(e){if(e.target===root)close()});
+    document.addEventListener('keydown',function escOnce(e){if(e.key==='Escape'){close();document.removeEventListener('keydown',escOnce)}},{once:true});
+  }
+
   function renderBookShelf(d){
     var books=d.links.slice(1);
     var pos=[
@@ -1088,15 +1138,15 @@
     var bookHtml=books.map(function(l,i){
       var name=String(l[0]||'').replace(/ 첫 30일$/,'');
       var p=pos[i]||[0,0];
-      return '<a class="mini-book" href="'+esc(l[1])+'" target="_blank" rel="noopener" aria-label="'+esc(l[0])+' 보기">'+
+      return '<button type="button" class="mini-book" data-book="'+i+'" aria-label="'+esc(l[0])+' 자료 선택">'+
         '<span class="mini-book-art" style="--bx:'+p[0]+'%;--by:'+p[1]+'%"></span>'+
-        '<span class="mini-book-meta"><span class="mini-book-vol">'+(i+1)+'</span><span class="mini-book-name">'+esc(name)+'</span></span></a>';
+        '<span class="mini-book-meta"><span class="mini-book-vol">'+(i+1)+'</span><span class="mini-book-name">'+esc(name)+'</span></span></button>';
     }).join('');
     return '<span class="p-fl"><b>'+d.fl+'</b>'+d.kicker+'</span>'+
       '<div class="floor2-intro"><div><h2>'+d.title.replace(/\n/g,'<br>')+'</h2><p>'+d.desc+'</p></div>'+
       '<div class="p-stats">'+d.stats.map(function(s){return '<div><b>'+s[0]+'</b><small>'+s[1]+'</small></div>'}).join('')+'</div></div>'+
       '<div class="floor2-layout">'+
-        '<section class="floor2-library"><div class="floor2-library-head"><div><b>ApuDa 「암 진단 첫 30일」 MINI SERIES</b><span>표지를 눌러 암종별 가이드를 바로 엽니다.</span></div><span>Vol. 01–12</span></div>'+
+        '<section class="floor2-library"><div class="floor2-library-head"><div><b>ApuDa 「암 진단 첫 30일」 MINI SERIES</b><span>표지를 누르면 MINI · FAQ · 완전판 중에서 선택할 수 있습니다.</span></div><span>Vol. 01–12</span></div>'+
         '<div class="mini-series-grid">'+bookHtml+'</div></section>'+
         '<aside class="floor2-side"><div class="floor2-side-head"><b>더 깊게 이해하기</b><span>암종을 이해한 뒤 필요한 다음 정보로 이어집니다.</span></div>'+
         '<a class="floor2-service" href="'+esc(d.links[0][1])+'" target="_blank" rel="noopener"><span class="floor2-service-icon">📚</span><span class="floor2-service-copy"><b>4컷 만화 암 정보</b><small>검사·병기·치료를 그림으로 쉽게</small></span></a>'+
@@ -1113,6 +1163,7 @@
     sheet.className='sheet floor-'+f;
     if(f===2){
       sheet.innerHTML=renderBookShelf(d);
+      sheet.querySelectorAll('.mini-book').forEach(function(b){b.onclick=function(){openBookChoice(+b.dataset.book)}});
       sheet.scrollTop=0;
       return;
     }
