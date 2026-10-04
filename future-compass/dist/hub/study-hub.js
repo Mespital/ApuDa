@@ -146,6 +146,9 @@
     var $ = function (r) { return root.querySelector('[data-role="' + r + '"]'); };
 
     var state = { kind: "all", subject: "all", sites: [], posts: [], showAll: false };
+    var GI = (global.FC_SCHOOL && global.FC_SCHOOL.info) ? global.FC_SCHOOL.info() : { grade: 1, semester: 2, key: "1-2" };
+    var G = String(o.grade || GI.grade), GKEY = o.gradeKey || GI.key;
+    function pickOf(s) { return s.picks && s.picks[G] ? s.picks[G] : (s.pick ? { rank: s.pick, reason: s.pickReason } : null); }
 
     loadData(o.dataBase).then(function (data) {
       state.sites = data.sites.sites;
@@ -162,7 +165,7 @@
       return '<article class="sh-site' + (pick ? ' sh-pick' : '') + '" id="site-' + esc(s.id) + '">' +
         '<div class="sh-row"><div><h3>' + esc(s.name) + '</h3><div class="sh-url">' + esc(host) + '</div></div>' +
         '<a class="sh-go" href="' + esc(s.url) + '" target="_blank" rel="noopener">열기 →</a></div>' +
-        (pick && s.pickReason ? '<p class="sh-pick-why"><b>' + esc(o.pickLabel) + '</b> ' + esc(s.pickReason) + '</p>' : '') +
+        (pick && pickOf(s) ? '<p class="sh-pick-why"><b>' + esc(o.pickLabel) + '</b> ' + esc(pickOf(s).reason) + '</p>' : '') +
         '<div class="sh-tags"><span class="sh-tag ' + (s.price === "free" ? "free" : "pay") + '">' + (s.price === "free" ? "무료" : "일부 유료") + '</span>' +
         '<span class="sh-tag">' + esc(s.login) + '</span>' +
         s.kinds.map(function (k) { return '<span class="sh-tag">' + esc(k) + '</span>'; }).join("") + '</div>' +
@@ -175,8 +178,8 @@
       var g = $("sites");
       var list = state.sites.filter(function (s) { return state.kind === "all" || s.kinds.indexOf(state.kind) > -1; });
       if (!list.length) { g.innerHTML = '<p class="sh-empty">이 용도에 맞는 사이트가 없어.</p>'; return; }
-      var picks = list.filter(function (s) { return s.pick; }).sort(function (x, y) { return (x.pick || 99) - (y.pick || 99); });
-      var rest = list.filter(function (s) { return !s.pick; });
+      var picks = list.filter(function (s) { return pickOf(s); }).sort(function (x, y) { return pickOf(x).rank - pickOf(y).rank; });
+      var rest = list.filter(function (s) { return !pickOf(s); });
       var html = '';
       if (picks.length) {
         html += '<div class="sh-span sh-pick-head"><h3>⭐ ' + esc(o.pickTitle) + '</h3><p>' + esc(o.pickLede) + '</p></div>';
@@ -200,6 +203,7 @@
     }
 
     function renderRoutes(data) {
+      if (data && data.sets) { data = data.sets[GKEY] || data.sets[G + "-2"] || data.sets[G + "-1"] || data.sets[Object.keys(data.sets)[0]]; }
       $("routes-title").textContent = data.target + " 대비 순서";
       var byId = {}; state.sites.forEach(function (s) { byId[s.id] = s; });
       $("routes").innerHTML = data.routes.map(function (r) {

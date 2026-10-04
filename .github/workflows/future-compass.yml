@@ -24,6 +24,10 @@ jobs:
         env:
           NEIS_API_KEY: ${{ secrets.NEIS_API_KEY }}
         run: python future-compass/scripts/update_news.py
+      - name: Collect Seocho HS schedule, meals and timetable (grade auto by date)
+        env:
+          NEIS_API_KEY: ${{ secrets.NEIS_API_KEY }}
+        run: python future-compass/scripts/update_school.py
       - name: Check site
         run: |
           node future-compass/scripts/check.mjs
@@ -37,9 +41,9 @@ jobs:
         run: |
           git config user.name 'future-compass-bot'
           git config user.email 'future-compass-bot@users.noreply.github.com'
-          git add future-compass/dist/news.json
+          git add future-compass/dist/news.json future-compass/dist/school.json
           if ! git diff --cached --quiet; then
-            git commit -m 'chore(compass): refresh official AI news'
+            git commit -m 'chore(compass): refresh official AI news and school data'
             git push
           fi
       - name: Deploy Netlify when connected

@@ -1,0 +1,28 @@
+{
+  "school": {
+    "name": "서초고등학교",
+    "short": "서초고",
+    "entry_year": 2026,
+    "atpt": "B10",
+    "code": "7010087",
+    "homepage": "https://seocho.sen.hs.kr/"
+  },
+  "checked_at": "2026-10-04T15:00:59.445089+00:00",
+  "keyed": false,
+  "school_year": 2026,
+  "grade": 1,
+  "raw_grade": 1,
+  "semester": 2,
+  "phase": "school",
+  "schedule": [],
+  "meals": [],
+  "timetable": {
+    "classes": {}
+  },
+  "status": {
+    "schedule": "error: URLError",
+    "meals": "error: URLError",
+    "timetable": "error: URLError"
+  },
+  "last_success_at": null
+}
