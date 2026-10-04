@@ -425,7 +425,10 @@ def main():
     here = Path(__file__).resolve().parent
     repo = Path(os.getenv("APUDA_REPO_DIR", ".")).resolve()
     registry = load_json(here / "official_sources.json")
-    key = os.getenv("DATA_GO_KR_SERVICE_KEY", "").strip()
+    shared_key = os.getenv("DATA_GO_KR_SERVICE_KEY", "").strip()
+    approval_key = os.getenv("MFDS_APPROVAL_SERVICE_KEY", "").strip() or shared_key
+    supply_key = os.getenv("MFDS_SUPPLY_SERVICE_KEY", "").strip() or shared_key
+    hira_price_key = os.getenv("HIRA_PRICE_SERVICE_KEY", "").strip() or shared_key
 
     s = requests.Session()
     s.headers.update({"User-Agent": UA, "Accept-Language": "ko-KR,ko;q=0.9"})
@@ -433,23 +436,28 @@ def main():
     results=[]
     for src in registry["sources"]:
         if src["id"] == "mfds_drug_approval":
-            results.append(fetch_mfds_approval(s,key))
+            results.append(fetch_mfds_approval(s,approval_key))
         elif src["id"] == "mfds_supply_shortage":
-            results.append(fetch_mfds_supply_shortage(s,key))
+            results.append(fetch_mfds_supply_shortage(s,supply_key))
         elif src["id"] == "hira_drug_price":
-            results.append(fetch_hira_drug_price(s,key))
+            results.append(fetch_hira_drug_price(s,hira_price_key))
         elif src["kind"] == "official_web":
             results.append(fetch_official_web(s,src))
         else:
-            results.append(static_api_source(src,key))
+            results.append(static_api_source(src,shared_key))
 
     status_counts={}
     for item in results:
         status_counts[item.get("status","unknown")]=status_counts.get(item.get("status","unknown"),0)+1
     out={
-        "version":"1.1",
+        "version":"1.2",
         "generated_at":datetime.now(TZ).isoformat(),
-        "service_key_connected":bool(key),
+        "service_key_connected":bool(shared_key),
+        "credential_routes":{
+            "mfds_drug_approval":"dedicated" if os.getenv("MFDS_APPROVAL_SERVICE_KEY","").strip() else "shared",
+            "mfds_supply_shortage":"dedicated" if os.getenv("MFDS_SUPPLY_SERVICE_KEY","").strip() else "shared",
+            "hira_drug_price":"dedicated" if os.getenv("HIRA_PRICE_SERVICE_KEY","").strip() else "shared"
+        },
         "source_health":{"total":len(results),"status_counts":status_counts},
         "sources":results,
         "usage_policy":{
@@ -465,7 +473,7 @@ def main():
     supply = next((x for x in results if x.get("id")=="mfds_supply_shortage"), {})
     print(json.dumps({
         "official_sources":len(results),
-        "service_key_connected":bool(key),
+        "service_key_connected":bool(shared_key),
         "mfds_approval_status":mfds.get("status"),
         "mfds_approval_records":len(mfds.get("records") or []),
         "mfds_http_status":mfds.get("http_status"),
