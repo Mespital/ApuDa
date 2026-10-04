@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-10-04T11:31:54.980428+09:00",
+  "generated_at": "2026-10-04T11:35:11.799396+09:00",
   "window_days": 30,
   "items": [
     {
@@ -10,7 +10,20 @@
       "title": "「대한민국약전외한약(생약)규격집」 일부개정고시(식품의약품안전처고시 제2026-68호, 2026.9.30.)",
       "published_at": "2026-09-30T00:00:00+09:00",
       "url": "https://www.mfds.go.kr/brd/m_207/view.do?seq=15197&srchFr=&srchTo=&srchWord=&srchTp=&itm_seq_1=0&itm_seq_2=0&multi_itm_seq=0&company_cd=&company_nm=&page=1",
-      "attachments": [],
+      "attachments": [
+        {
+          "label": "다운받기",
+          "url": "https://www.mfds.go.kr/brd/m_207/down.do?brd_id=data0008&seq=15197&data_tp=A&file_seq=1"
+        },
+        {
+          "label": "다운받기",
+          "url": "https://www.mfds.go.kr/brd/m_207/down.do?brd_id=data0008&seq=15197&data_tp=A&file_seq=2"
+        },
+        {
+          "label": "다운받기",
+          "url": "https://www.mfds.go.kr/brd/m_207/down.do?brd_id=data0008&seq=15197&data_tp=A&file_seq=3"
+        }
+      ],
       "source_list_url": "https://www.mfds.go.kr/brd/m_207/list.do"
     },
     {
@@ -20,7 +33,24 @@
       "title": "「의료기기 부작용 등 안전성 정보 관리에 관한 규정」일부개정고시(식품의약품안전처고시 제2026-67호, 2026.9.22.)",
       "published_at": "2026-09-22T00:00:00+09:00",
       "url": "https://www.mfds.go.kr/brd/m_207/view.do?seq=15196&srchFr=&srchTo=&srchWord=&srchTp=&itm_seq_1=0&itm_seq_2=0&multi_itm_seq=0&company_cd=&company_nm=&page=1",
-      "attachments": [],
+      "attachments": [
+        {
+          "label": "다운받기",
+          "url": "https://www.mfds.go.kr/brd/m_207/down.do?brd_id=data0008&seq=15196&data_tp=A&file_seq=1"
+        },
+        {
+          "label": "다운받기",
+          "url": "https://www.mfds.go.kr/brd/m_207/down.do?brd_id=data0008&seq=15196&data_tp=A&file_seq=2"
+        },
+        {
+          "label": "다운받기",
+          "url": "https://www.mfds.go.kr/brd/m_207/down.do?brd_id=data0008&seq=15196&data_tp=A&file_seq=3"
+        },
+        {
+          "label": "다운받기",
+          "url": "https://www.mfds.go.kr/brd/m_207/down.do?brd_id=data0008&seq=15196&data_tp=A&file_seq=4"
+        }
+      ],
       "source_list_url": "https://www.mfds.go.kr/brd/m_207/list.do"
     }
   ],
