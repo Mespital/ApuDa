@@ -70,7 +70,7 @@ def year_rows(today, g):
     if 'rows' not in _year_rows:
         start = dt.date(g['school_year'], 3, 1)
         end = dt.date(g['school_year'] + 1, 2, 28)
-        _year_rows['rows'] = neis('SchoolSchedule', AA_FROM_YMD=ymd(max(start, today - dt.timedelta(days=7))), AA_TO_YMD=ymd(end))
+        _year_rows['rows'] = neis('SchoolSchedule', AA_FROM_YMD=ymd(max(start, today)), AA_TO_YMD=ymd(end))
     return _year_rows['rows']
 
 
