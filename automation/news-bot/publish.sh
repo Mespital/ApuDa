@@ -24,8 +24,9 @@ git reset --hard "origin/$APUDA_NEWS_BRANCH"
 "$SCRIPT_DIR/.venv/bin/python" "$SCRIPT_DIR/official_notices.py"
 "$SCRIPT_DIR/.venv/bin/python" "$SCRIPT_DIR/hira_updates.py"
 "$SCRIPT_DIR/.venv/bin/python" "$SCRIPT_DIR/nccn_monitor.py"
+"$SCRIPT_DIR/.venv/bin/python" "$SCRIPT_DIR/drug_archive.py"
 
-mapfile -t CHANGED_FILES < <(git status --porcelain -- public-site/news/data | awk '{print substr($0,4)}')
+mapfile -t CHANGED_FILES < <(git status --porcelain -- public-site/news/data public-site/news/downloads | awk '{print substr($0,4)}')
 if [ "${#CHANGED_FILES[@]}" -eq 0 ]; then
   echo "No news data changes."
   exit 0
