@@ -287,6 +287,7 @@
   #pager button.on{background:var(--warm);border-color:var(--warm);color:#fff;
     box-shadow:0 0 20px rgba(227,154,46,.55)}
   body.open #pager{visibility:hidden}
+  body.open #siteFooter{visibility:hidden}
 
   #hint{position:fixed;z-index:45;left:50%;bottom:max(18px,env(safe-area-inset-bottom));
     transform:translateX(-50%);font-size:11px;letter-spacing:.16em;font-weight:850;color:var(--blue);
@@ -317,17 +318,24 @@
   .floor2-library-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:14px}
   .floor2-library-head b{display:block;color:var(--navy);font-size:17px;font-weight:950}
   .floor2-library-head span{color:var(--muted);font-size:10px;font-weight:800}
-  .mini-series-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+  .mini-series-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px 12px}
+  .mini-book-badge{position:absolute;left:6px;top:6px;padding:3px 6px;border-radius:999px;background:#FF3D7F;color:#fff;font-size:8px;font-weight:950;letter-spacing:.02em;box-shadow:0 3px 8px rgba(255,61,127,.3)}
+  .mini-book-badge.hot{background:var(--blue);box-shadow:0 3px 8px rgba(36,107,254,.3)}
+  .mini-book-tags{display:block;margin-top:2px;padding-left:26px;color:#7A8DA2;font-size:8.5px;font-weight:800;letter-spacing:.02em}
+  .mini-book-go{margin-left:auto;color:var(--blue);font-size:11px;font-weight:950}
+  .mini-book:focus-visible .mini-book-art{outline:3px solid rgba(36,107,254,.45);outline-offset:2px}
+  .mini-book:hover .mini-book-art{transform:scale(1.02)}
+  .mini-book-art{transition:transform .22s var(--ease),box-shadow .22s var(--ease)}
   .mini-book{display:block;min-width:0;color:var(--ink);transition:.22s var(--ease);border:0;background:transparent;padding:0;text-align:left;cursor:pointer;width:100%}
-  .mini-book:hover{transform:translateY(-4px)}
-  .mini-book-art{display:block;aspect-ratio:240/340;border-radius:9px;background-image:url('assets/books/apuda-mini-series-sprite.webp');
-    background-size:600% 200%;background-position:var(--bx) var(--by);background-repeat:no-repeat;
+  .mini-book:hover{transform:translateY(-3px)}
+  .mini-book-art{display:block;aspect-ratio:240/340;border-radius:9px;background-color:#EAF2FB;background-image:var(--cover);
+    background-size:cover;background-position:center;background-repeat:no-repeat;position:relative;
     box-shadow:0 9px 18px rgba(19,68,126,.12);border:1px solid rgba(182,205,231,.7);overflow:hidden}
   .mini-book:hover .mini-book-art{box-shadow:0 13px 28px rgba(36,107,254,.19);border-color:#AFC9EA}
   .mini-book-meta{display:flex;align-items:center;gap:6px;margin-top:7px;min-width:0}
   .mini-book-vol{display:grid;place-items:center;flex:0 0 auto;width:20px;height:20px;border-radius:50%;background:#fff;
     border:1px solid #BCD2EF;color:var(--blue);font-size:9px;font-weight:950}
-  .mini-book-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--navy);font-size:10px;font-weight:950}
+  .mini-book-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--navy);font-size:11.5px;font-weight:950}
   .floor2-side{display:flex;flex-direction:column;gap:9px}
   .floor2-side-head{padding:3px 2px 7px}
   .floor2-side-head b{display:block;color:var(--navy);font-size:16px;font-weight:950}
@@ -346,7 +354,7 @@
   .book-choice-card{position:relative;width:min(720px,94vw);max-height:90svh;overflow:auto;padding:24px;border:1px solid #DCE8F5;border-radius:26px;background:#fff;box-shadow:0 34px 90px rgba(4,27,51,.30)}
   .book-choice-x{position:absolute;right:14px;top:14px;width:38px;height:38px;border:0;border-radius:50%;background:#EFF5FC;color:#334E68;font-size:22px;cursor:pointer}
   .book-choice-head{display:grid;grid-template-columns:92px minmax(0,1fr);gap:16px;align-items:center;padding-right:44px}
-  .book-choice-cover{aspect-ratio:240/340;border-radius:9px;background-image:url('assets/books/apuda-mini-series-sprite.webp');background-size:600% 200%;background-position:var(--bx) var(--by);box-shadow:0 10px 24px rgba(19,68,126,.16);border:1px solid #CFE0F2}
+  .book-choice-cover{aspect-ratio:240/340;border-radius:9px;background-color:#EAF2FB;background-image:var(--cover);background-size:cover;background-position:center;box-shadow:0 10px 24px rgba(19,68,126,.16);border:1px solid #CFE0F2}
   .book-choice-kicker{display:block;color:var(--blue);font-size:9px;font-weight:950;letter-spacing:.11em}
   .book-choice-head h3{margin:5px 0 4px;color:var(--navy);font-size:24px;letter-spacing:-.03em}
   .book-choice-head p{margin:0;color:var(--muted);font-size:11px;line-height:1.55}
@@ -384,6 +392,38 @@
     .floor2-side{display:grid;grid-template-columns:1fr 1fr}
     .floor2-side-head,.floor2-note{grid-column:1/-1}
   }
+  /* 2F v2 — 데스크톱 전체화면 서재 + 자동 맞춤 그리드 */
+  .book-choice-item.soon{background:#FBFDFF}
+  .full-soon{display:flex;align-items:center;gap:9px}
+  .full-thumb{display:block;width:40px;aspect-ratio:240/340;border-radius:5px;background:#EAF2FB var(--cover) center/cover no-repeat;border:1px solid #CFE0F2;filter:grayscale(.15) opacity(.85)}
+  .soon-badge{display:inline-flex;align-items:center;min-height:30px;padding:6px 11px;border-radius:999px;background:#F2F5F8;color:#6B7D90;font-size:10px;font-weight:950;white-space:nowrap}
+  .book-more{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+  .book-more span{color:var(--muted);font-size:10px;font-weight:900;align-self:center;margin-right:2px}
+  .book-more a{padding:7px 10px;border-radius:999px;background:#EEF5FF;color:var(--blue);font-size:10px;font-weight:950}
+  .book-more a:hover{background:#DDEBFF}
+  .floor2-service-copy b em{font-style:normal;margin-left:5px;padding:2px 5px;border-radius:999px;background:#E9F8EF;color:#1B7A50;font-size:8px;vertical-align:1px}
+  @media (min-width:861px){
+    #panel.floor-2-expanded{width:min(1720px,96vw);min-width:0;right:2vw}
+    #panel.floor-2-expanded .sheet{height:92svh;max-height:92svh;padding:24px 28px 14px;overflow:hidden}
+    #panel.floor-2-expanded .floor2-intro{grid-template-columns:minmax(0,1fr) auto;gap:16px;padding-right:56px}
+    #panel.floor-2-expanded .floor2-intro h2{margin-top:12px;font-size:clamp(24px,2vw,32px)}
+    #panel.floor-2-expanded .floor2-intro h2 br{display:none}
+    #panel.floor-2-expanded .floor2-intro p{margin-top:6px;font-size:13px;line-height:1.6}
+    #panel.floor-2-expanded .floor2-intro .p-stats{min-width:220px}
+    #panel.floor-2-expanded .floor2-intro .p-stats div{padding:10px 13px}
+    #panel.floor-2-expanded .floor2-intro .p-stats b{font-size:21px}
+    .floor-2 .floor2-layout{flex:1;min-height:0;margin-top:14px;grid-template-columns:minmax(0,1fr) clamp(240px,17vw,290px)}
+    .floor-2 .floor2-library{display:flex;flex-direction:column;min-height:0;padding:16px 18px}
+    .floor-2 .mini-series-grid{flex:1;min-height:0;align-content:center;justify-content:center}
+    .floor-2 .floor2-side{min-height:0;overflow:auto}
+    .floor-2 .p-scroll-tip{margin-top:8px}
+    #panel.floor-2-expanded{top:calc(50% + 26px)}
+    #panel.floor-2-expanded .sheet{height:calc(100svh - 92px);max-height:calc(100svh - 92px)}
+    body.f2wide #btnUp,body.f2wide #btnDown,body.f2wide #hint{opacity:0!important;pointer-events:none!important;visibility:hidden}
+    body.f2wide .account-dock{opacity:1}
+  }
+  @media (max-width:860px) and (min-width:641px){ .mini-series-grid{grid-template-columns:repeat(3,minmax(0,1fr))} }
+  @media (max-width:640px){ .mini-series-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 12px} .mini-book-name{font-size:12.5px} }
   @media (max-width:480px){
     .mini-series-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
     .floor2-side{grid-template-columns:1fr}
@@ -1107,21 +1147,37 @@
   }
 
   var BOOK_SLUGS=['breast','lung','stomach','colorectal','thyroid','kidney','prostate','pancreas','biliary','liver','lymphoma','cervical'];
+  var BOOK_BADGES={breast:'NEW',lung:'인기'};
+  var BOOK_INTRO={
+    breast:'유방암 진단 직후 꼭 알아야 할 ER·PR·HER2, 병기, 수술·약물치료 순서를 단계별로 확인하세요.',
+    lung:'폐암 진단 직후 꼭 알아야 할 조직형, 유전자검사, 병기, 치료선택 흐름을 단계별로 확인하세요.',
+    stomach:'위암 진단 직후 꼭 알아야 할 검사, 수술, 병리, 항암치료 정보를 단계별로 확인하세요.',
+    colorectal:'대장암 진단 직후 꼭 알아야 할 병기, 수술, 항암치료 핵심을 단계별로 확인하세요.',
+    thyroid:'갑상선암 진단 직후 꼭 알아야 할 수술 준비와 수술 후 추적관리 흐름을 단계별로 확인하세요.',
+    kidney:'신장암 진단 직후 꼭 알아야 할 수술, 표적치료, 면역치료의 큰 그림을 단계별로 확인하세요.',
+    prostate:'전립선암 진단 직후 꼭 알아야 할 PSA, 병기, 호르몬치료 정보를 단계별로 확인하세요.',
+    pancreas:'췌장암 진단 직후 꼭 알아야 할 수술 가능성과 항암치료 순서를 단계별로 확인하세요.',
+    biliary:'담도암 진단 직후 꼭 알아야 할 병기, 유전자검사, 전신치료 정보를 단계별로 확인하세요.',
+    liver:'간암 진단 직후 꼭 알아야 할 간기능과 병기를 함께 보는 치료 흐름을 단계별로 확인하세요.',
+    lymphoma:'림프종 진단 직후 꼭 알아야 할 조직형(아형), 병기, 항암치료 흐름을 단계별로 확인하세요.',
+    cervical:'자궁경부암 진단 직후 꼭 알아야 할 병기, 수술, 방사선·항암치료 정보를 단계별로 확인하세요.'
+  };
+  function bookName(l){return String(l[0]||'').replace(/ 첫 30일$/,'')}
 
   function openBookChoice(i){
     var d=DATA[2], l=d.links[i+1], slug=BOOK_SLUGS[i]||'breast';
-    var name=String(l[0]||'').replace(/ 첫 30일$/,'');
-    var col=i%6, row=i<6?0:1, bx=[0,20,40,60,80,100][col], by=row*100;
+    var name=bookName(l);
     var old=document.getElementById('bookChoiceModal'); if(old) old.remove();
     var root=document.createElement('div'); root.id='bookChoiceModal'; root.className='book-choice-backdrop';
     root.innerHTML='<section class="book-choice-card" role="dialog" aria-modal="true" aria-label="'+esc(name)+' 자료 선택">'+
       '<button class="book-choice-x" type="button" aria-label="닫기">×</button>'+
-      '<div class="book-choice-head"><div class="book-choice-cover" style="--bx:'+bx+'%;--by:'+by+'%"></div><div><span class="book-choice-kicker">ApuDa 암종별 가이드</span><h3>'+esc(name)+'</h3><p>원하는 자료를 선택하세요. 무료 MINI는 웹에서 바로 읽을 수 있고 PDF 저장은 다운로드 코드가 필요합니다.</p></div></div>'+
+      '<div class="book-choice-head"><div class="book-choice-cover" style="--cover:url(\'assets/books/'+slug+'.webp\')"></div><div><span class="book-choice-kicker">ApuDa 암종별 가이드북 · Vol. '+(i+1)+'</span><h3>'+esc(name)+'</h3><p>'+esc(BOOK_INTRO[slug]||'')+'</p></div></div>'+
       '<div class="book-choice-list">'+
-        '<div class="book-choice-item"><span class="book-choice-num">1</span><span class="book-choice-copy"><b>암 진단 후 첫 30일 · '+esc(name)+' MINI</b><small>무료 배포판 · 21페이지 · 웹에서 바로 읽기</small></span><span class="book-choice-actions"><a class="primary" href="/library/mini/?cancer='+slug+'">웹에서 보기</a><a href="/library/mini/?cancer='+slug+'#download">PDF 다운로드</a></span></div>'+
+        '<div class="book-choice-item"><span class="book-choice-num">1</span><span class="book-choice-copy"><b>암진단 후 첫 30일 - '+esc(name)+'</b><small>무료 배포판(MINI) · 웹에서 바로 읽기 · PDF는 다운로드 코드 필요</small></span><span class="book-choice-actions"><a class="primary" href="/library/mini/?cancer='+slug+'">웹에서 보기</a><a href="/library/mini/?cancer='+slug+'#download">⬇ 다운로드</a></span></div>'+
         '<div class="book-choice-item"><span class="book-choice-num">2</span><span class="book-choice-copy"><b>'+esc(name)+' FAQ</b><small>환자·보호자가 진료실에서 자주 확인하는 질문</small></span><span class="book-choice-actions"><a href="/library/faq/?cancer='+slug+'">FAQ 보기</a></span></div>'+
-        '<div class="book-choice-item full"><span class="book-choice-num">3</span><span class="book-choice-copy"><b>암 진단 후 첫 30일 · '+esc(name)+' 완전판</b><small>MINI보다 더 깊게 검사·병기·치료 흐름을 확인하는 상세 가이드</small></span><span class="book-choice-actions"><a href="'+esc(l[1])+'" target="_blank" rel="noopener">완전판 보기 ↗</a></span></div>'+
-      '</div><div class="book-choice-note">무료 MINI 웹 열람은 코드 없이 가능합니다. PDF 다운로드 버튼은 별도 코드 인증 후 작동합니다.</div></section>';
+        '<div class="book-choice-item full soon"><span class="book-choice-num">3</span><span class="book-choice-copy"><b>암진단 후 첫 30일 완전판 - '+esc(name)+'</b><small>준비중입니다.</small></span><span class="book-choice-actions full-soon"><span class="full-thumb" style="--cover:url(\'assets/books/'+slug+'.webp\')"></span><span class="soon-badge">준비중입니다</span></span></div>'+
+      '</div><div class="book-choice-note">무료 MINI 웹 열람은 코드 없이 가능합니다. 다운로드는 Instagram 구독자에게 안내된 다운로드 코드를 입력해야 작동합니다.</div>'+
+      '<div class="book-more"><span>'+esc(name)+' 더 알아보기</span><a href="/library/treatment-map/?cancer='+slug+'">🗺️ 치료결정 지도</a><a href="/library/drugs/?cancer='+slug+'">💊 관련 항암제</a><a href="/library/biomarkers/?cancer='+slug+'">🧬 관련 바이오마커</a></div></section>';
     document.body.appendChild(root);
     var close=function(){root.remove()};
     root.querySelector('.book-choice-x').onclick=close;
@@ -1129,41 +1185,51 @@
     document.addEventListener('keydown',function escOnce(e){if(e.key==='Escape'){close();document.removeEventListener('keydown',escOnce)}},{once:true});
   }
 
+  function fitShelf(){
+    var g=sheet.querySelector('.mini-series-grid'); if(!g) return;
+    if(matchMedia('(max-width:860px)').matches){ g.style.gridTemplateColumns=''; return; }
+    var W=g.clientWidth, H=g.clientHeight, gap=14, meta=46, R=340/240, best=0, bc=6;
+    if(W<200||H<200) return;
+    [3,4,6,12].forEach(function(c){
+      var r=Math.ceil(12/c), wW=(W-gap*(c-1))/c, wH=((H-gap*(r-1))/r-meta)/R, w=Math.min(wW,wH);
+      if(w>best){best=w;bc=c}
+    });
+    g.style.gridTemplateColumns='repeat('+bc+','+Math.floor(best)+'px)';
+  }
+
   function renderBookShelf(d){
     var books=d.links.slice(1);
-    var pos=[
-      [0,0],[20,0],[40,0],[60,0],[80,0],[100,0],
-      [0,100],[20,100],[40,100],[60,100],[80,100],[100,100]
-    ];
     var bookHtml=books.map(function(l,i){
-      var name=String(l[0]||'').replace(/ 첫 30일$/,'');
-      var p=pos[i]||[0,0];
-      return '<button type="button" class="mini-book" data-book="'+i+'" aria-label="'+esc(l[0])+' 자료 선택">'+
-        '<span class="mini-book-art" style="--bx:'+p[0]+'%;--by:'+p[1]+'%"></span>'+
-        '<span class="mini-book-meta"><span class="mini-book-vol">'+(i+1)+'</span><span class="mini-book-name">'+esc(name)+'</span></span></button>';
+      var name=bookName(l), slug=BOOK_SLUGS[i]||'breast', badge=BOOK_BADGES[slug];
+      return '<button type="button" class="mini-book" data-book="'+i+'" aria-label="'+esc(name)+' 가이드북 자료 선택">'+
+        '<span class="mini-book-art" style="--cover:url(\'assets/books/'+slug+'.webp\')">'+(badge?'<span class="mini-book-badge'+(badge==='인기'?' hot':'')+'">'+badge+'</span>':'')+'</span>'+
+        '<span class="mini-book-meta"><span class="mini-book-vol">'+(i+1)+'</span><span class="mini-book-name">'+esc(name)+'</span><span class="mini-book-go">→</span></span>'+
+        '<span class="mini-book-tags">MINI · FAQ · 완전판</span></button>';
     }).join('');
     return '<span class="p-fl"><b>'+d.fl+'</b>'+d.kicker+'</span>'+
-      '<div class="floor2-intro"><div><h2>'+d.title.replace(/\n/g,'<br>')+'</h2><p>'+d.desc+'</p></div>'+
+      '<div class="floor2-intro"><div><h2>'+d.title.replace(/\n/g,'&nbsp;<br>')+'</h2><p>'+d.desc+'</p></div>'+
       '<div class="p-stats">'+d.stats.map(function(s){return '<div><b>'+s[0]+'</b><small>'+s[1]+'</small></div>'}).join('')+'</div></div>'+
       '<div class="floor2-layout">'+
-        '<section class="floor2-library"><div class="floor2-library-head"><div><b>ApuDa 「암 진단 첫 30일」 MINI SERIES</b><span>표지를 누르면 MINI · FAQ · 완전판 중에서 선택할 수 있습니다.</span></div><span>Vol. 01–12</span></div>'+
+        '<section class="floor2-library"><div class="floor2-library-head"><div><b>암종별 가이드북</b><span>암종을 선택하면 첫 30일 가이드, FAQ, 완전판 자료로 이동할 수 있습니다.</span></div><span>Vol. 01–12</span></div>'+
         '<div class="mini-series-grid">'+bookHtml+'</div></section>'+
         '<aside class="floor2-side"><div class="floor2-side-head"><b>더 깊게 이해하기</b><span>암종을 이해한 뒤 필요한 다음 정보로 이어집니다.</span></div>'+
         '<a class="floor2-service" href="'+esc(d.links[0][1])+'" target="_blank" rel="noopener"><span class="floor2-service-icon">📚</span><span class="floor2-service-copy"><b>4컷 만화 암 정보</b><small>검사·병기·치료를 그림으로 쉽게</small></span></a>'+
-        '<div class="floor2-service soon"><span class="floor2-service-icon">🗺️</span><span class="floor2-service-copy"><b>치료결정 지도</b><small>왜 사람마다 치료가 다른지 이해</small></span></div>'+
-        '<div class="floor2-service soon"><span class="floor2-service-icon">💊</span><span class="floor2-service-copy"><b>항암제 Drug Hub</b><small>약물·기전·관련 암종을 한곳에</small></span></div>'+
-        '<div class="floor2-service soon"><span class="floor2-service-icon">🧬</span><span class="floor2-service-copy"><b>바이오마커 Navigator</b><small>검사 결과와 치료 선택의 연결</small></span></div>'+
-        '<div class="floor2-note">2F는 <b>“내 암을 이해하는 층”</b>입니다. 치료 가능 여부나 실제 급여·공급 상태는 3F 치료 접근 영역과 연결해 보여줄 예정입니다.</div></aside>'+
+        '<a class="floor2-service" href="/library/treatment-map/"><span class="floor2-service-icon">🗺️</span><span class="floor2-service-copy"><b>치료결정 지도<em>NEW</em></b><small>왜 사람마다 치료가 다른지 12암종별로 이해</small></span></a>'+
+        '<a class="floor2-service" href="/library/drugs/"><span class="floor2-service-icon">💊</span><span class="floor2-service-copy"><b>항암제 Drug Hub<em>NEW</em></b><small>약물·기전·암종·공급상태·최근 뉴스를 한곳에</small></span></a>'+
+        '<a class="floor2-service" href="/library/biomarkers/"><span class="floor2-service-icon">🧬</span><span class="floor2-service-copy"><b>바이오마커 Navigator<em>NEW</em></b><small>왜 이 검사를 하는지, 결과가 치료와 어떻게 연결되는지</small></span></a>'+
+        '<div class="floor2-note">2F는 <b>“내 암을 이해하는 층”</b>입니다. 모든 자료는 환자교육용이며, 실제 치료 선택은 담당 의료진과 상의하세요.</div></aside>'+
       '</div><div class="p-scroll-tip">책 표지 클릭: 암종별 가이드 · 건물 클릭: 층 이동</div>';
   }
 
   function render(f){
     var d=DATA[f];
     panel.classList.toggle('floor-2-expanded',f===2);
+    document.body.classList.toggle('f2wide',f===2);
     sheet.className='sheet floor-'+f;
     if(f===2){
       sheet.innerHTML=renderBookShelf(d);
       sheet.querySelectorAll('.mini-book').forEach(function(b){b.onclick=function(){openBookChoice(+b.dataset.book)}});
+      requestAnimationFrame(fitShelf); setTimeout(fitShelf,800);
       sheet.scrollTop=0;
       return;
     }
@@ -1276,7 +1342,7 @@
     setInteractionMode('building');
     hideConnector(true);
     panel.setAttribute('aria-hidden','true');
-    panel.classList.remove('floor-2-expanded');
+    panel.classList.remove('floor-2-expanded'); document.body.classList.remove('f2wide');
     pagerBtns.forEach(function(b){ b.classList.remove('on'); });
     Object.keys(wallCards).forEach(function(k){ wallCards[k].classList.remove('active','preview'); });
     Object.keys(wallLabels).forEach(function(k){ wallLabels[k].classList.remove('active'); });
@@ -1335,7 +1401,8 @@
   },{passive:false});
   addEventListener('resize',function(){
     if(cur) open(cur); else if(connectorFloor) showConnector(connectorFloor,connectorPinned,true);
-  });
+  });  var hm=/^#floor-([1-5])$/.exec(location.hash);
+  if(hm) setTimeout(function(){ try{ open(+hm[1]); history.replaceState(null,'',location.pathname); }catch(e){} },400);
 })();
 </script>
 

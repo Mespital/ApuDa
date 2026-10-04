@@ -45,3 +45,14 @@
   to = "https://apuda-care.netlify.app/:splat"
   status = 200
   force = true
+
+[[headers]]
+  for = "/assets/books/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/library/mini/pdf/*"
+  [headers.values]
+    Content-Type = "application/octet-stream"
+    X-Robots-Tag = "noindex"
