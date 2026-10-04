@@ -40,9 +40,21 @@ cancers=[x.get("cancer") for x in nitems]
 if len(nitems)!=12: errors.append(f"NCCN monitor expected 12 cancers, got {len(nitems)}")
 if len(set(cancers))!=len(cancers): errors.append("NCCN monitor has duplicate cancer entries")
 for x in nitems:
-    u=str(x.get("official_url") or "")
-    if not u.startswith("https://www.nccn.org/"):
-        errors.append(f"NCCN non-official URL for {x.get('cancer')}: {u}")
+    urls=[
+        str(x.get("patient_url") or ""),
+        str(x.get("clinical_url") or ""),
+        str(x.get("updates_url") or "")
+    ]
+    present=[u for u in urls if u]
+    if not present:
+        errors.append(f"NCCN official link missing for {x.get('cancer')}")
+    for u in present:
+        if not u.startswith("https://www.nccn.org/"):
+            errors.append(f"NCCN non-official URL for {x.get('cancer')}: {u}")
+if nccn.get("policy_mode")=="link_only_patient_first":
+    if not str(nccn.get("patient_url") or "").startswith("https://www.nccn.org/"):
+        errors.append("NCCN patient-first policy has no official patient URL")
+
 
 hira=load("hira-updates.json",required=False)
 for x in hira.get("items") or []:
