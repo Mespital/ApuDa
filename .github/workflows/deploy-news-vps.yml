@@ -120,14 +120,26 @@ jobs:
           hira=load("hira-updates.json")
           nccn=load("nccn-monitor.json")
           mfds=next((x for x in off.get("sources",[]) if x.get("id")=="mfds_drug_approval"),{})
+          supply=next((x for x in off.get("sources",[]) if x.get("id")=="mfds_supply_shortage"),{})
+          price=next((x for x in off.get("sources",[]) if x.get("id")=="hira_drug_price"),{})
           if mfds.get("status")=="ok":
-              print("::notice title=MFDS API::의약품 허가정보 API 연결 정상")
+              print("::notice title=MFDS 허가 API::연결 정상 · "+str(len(mfds.get("records",[])))+"건")
           else:
-              print("::warning title=MFDS API::허가정보 API 확인 필요 - "+str(mfds.get("error_name") or mfds.get("error_message") or mfds.get("status") or "unknown"))
+              print("::warning title=MFDS 허가 API::확인 필요 - "+str(mfds.get("error_name") or mfds.get("error_message") or mfds.get("status") or "unknown"))
+          if supply.get("status")=="ok":
+              print("::notice title=MFDS 공급부족 API::연결 정상 · "+str(len(supply.get("records",[])))+"건")
+          elif supply.get("status")=="mapping_review":
+              print("::warning title=MFDS 공급부족 API::응답 정상 · 필드 매핑 확인 필요")
+          else:
+              print("::warning title=MFDS 공급부족 API::"+str(supply.get("status") or "unknown"))
+          if price.get("status")=="ok":
+              print("::notice title=HIRA 약가 API::연결 정상 · "+str(len(price.get("records",[])))+"건")
+          else:
+              print("::warning title=HIRA 약가 API::"+str(price.get("status") or "unknown"))
           if hira.get("status")=="ok":
-              print("::notice title=HIRA::보험인정기준 수집 "+str(len(hira.get("items",[])))+"건")
+              print("::notice title=HIRA 공문::보험인정기준 수집 "+str(len(hira.get("items",[])))+"건")
           else:
-              print("::warning title=HIRA::보험인정기준 수집 상태 "+str(hira.get("status") or "unknown"))
+              print("::warning title=HIRA 공문::보험인정기준 수집 상태 "+str(hira.get("status") or "unknown"))
           items=nccn.get("items",[])
           ok=sum(1 for x in items if x.get("status")=="ok")
           level="notice" if ok==12 else "warning"
