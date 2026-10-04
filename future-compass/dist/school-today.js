@@ -31,7 +31,10 @@
       box.innerHTML = '<div class="st-head"><h2>🎓 졸업 축하해!</h2></div><p class="st-muted">고등학교 과정이 끝났어. 학교 정보 자동 수집은 멈췄어.</p>';
       return;
     }
-    var head = '<div class="st-head"><h2>🏫 오늘의 학교</h2><span class="st-badge">' + esc(info.labelLong) + '</span></div>';
+    var CAL = window.FC_CAL;
+    var off = CAL ? CAL.offDay(today) : null;
+    var head = '<div class="st-head"><h2>🏫 오늘의 학교</h2><span class="st-badge">' + esc(info.labelLong) + '</span></div>' +
+      (off ? '<p class="st-off">🌿 오늘은 <b>' + esc(off.name) + '</b>' + (off.weekend ? '' : '(' + esc(off.kind) + ')') + '이라 수업이 없어. 다음 등교일은 ' + esc(dayLabel(CAL.nextSchoolDay(today))) + '.</p>' : '');
     if (!data) {
       box.innerHTML = head + '<p class="st-muted">학교 정보를 불러오지 못했어. <a href="' + esc(cfg.homepage) + '" target="_blank" rel="noopener">학교 홈페이지에서 확인하기 ↗</a></p>';
       return;
@@ -56,16 +59,23 @@
       if (!myClass) ttHtml = sel + '<p class="st-muted">내 반을 고르면 오늘 시간표가 보여. 한 번만 고르면 기억할게.</p>';
       else {
         var days = classes[myClass]; var periods = days[today];
-        var dayKeys = Object.keys(days).filter(function (d) { return d >= today; });
-        var showDay = periods ? today : dayKeys[0];
+        var dayKeys = Object.keys(days).filter(function (d) { return d >= today && (!CAL || CAL.isSchoolDay(d)); });
+        var showDay = periods && !off ? today : dayKeys[0];
         var list = showDay ? days[showDay] : null;
         ttHtml = sel + (list ? '<p class="st-sub">' + (showDay === today ? '오늘' : esc(dayLabel(showDay))) + ' 시간표</p><ol class="st-tt">' + list.map(function (s) { return '<li>' + (esc(s) || '—') + '</li>'; }).join('') + '</ol>' : '<p class="st-muted">이번 주 남은 수업이 없어.</p>');
       }
     }
     // 학사일정
-    var events = (data.schedule || []).filter(function (e) { return e.date >= today; }).slice(0, 5);
-    var evHtml = events.length ? '<ul class="st-ev">' + events.map(function (e) { return '<li><b>' + esc(dayLabel(e.date)) + '</b> ' + esc(e.title) + ' <span class="st-dday">' + dday(e.date) + '</span></li>'; }).join('') + '</ul>' + (data.keyed ? '' : '<p class="st-muted">가까운 일정 일부만 보여. 전체는 학교 공지 확인.</p>')
+    var events = (data.schedule || []).filter(function (e) { return e.date >= today; }).slice(0, 6);
+    var evHtml = events.length ? '<ul class="st-ev">' + events.map(function (e) {
+        var o = CAL ? CAL.offDay(e.date) : null, isOff = e.off || /공휴일|휴업|방학|개교기념/.test(e.title);
+        var clash = !isOff && o && !o.weekend;
+        return '<li' + (isOff ? ' class="st-is-off"' : '') + '><b>' + esc(dayLabel(e.date)) + '</b> ' + (isOff ? '🌿 ' : '') + esc(e.title) + ' <span class="st-dday">' + dday(e.date) + '</span>' +
+          (clash ? '<br><span class="st-clash">⚠ ' + esc(o.name) + '과 겹쳐. 실제 날짜는 학교 공지 확인</span>' : '') + '</li>';
+      }).join('') + '</ul>' + (data.keyed ? '' : '<p class="st-muted">가까운 일정 일부만 보여. 전체는 학교 공지 확인.</p>')
       : '<p class="st-muted">앞으로 60일 안에 ' + esc(info.grade) + '학년 일정이 아직 없어.</p>';
+    var rest = CAL ? CAL.upcoming(CAL.add(today, 1), 75).slice(0, 4) : [];
+    if (rest.length) evHtml += '<p class="st-rest"><b>다가오는 쉬는 날</b> ' + rest.map(function (r) { return esc(dayLabel(r.date)) + ' ' + esc(r.name); }).join(' · ') + '</p>';
     var updated = data.last_success_at ? new Date(data.last_success_at).toLocaleString('ko-KR', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : '';
     box.innerHTML = head +
       '<div class="st-grid">' +
@@ -97,9 +107,11 @@
     '.st-ev{margin:0;padding:0;list-style:none;display:grid;gap:6px;font-size:14px}.st-ev b{color:#5b3fd6;margin-right:4px}.st-dday{font-size:12px;color:#b4475a;font-weight:700}' +
     '.st-class{font-size:13px;display:inline-flex;gap:6px;align-items:center}.st-class select{font:inherit;padding:4px 8px;border-radius:8px;border:1px solid #d9d0ee}' +
     '.st-muted{color:#667085;font-size:13.5px;margin:4px 0}.st-foot{margin:12px 0 0;font-size:12px;color:#8a839a}.st-card a::after{content:none!important}' +
+    '.st-off{margin:10px 0 0;padding:10px 12px;border-radius:12px;background:#eaf6ef;color:#1f5c40;font-size:14px}.st-is-off{color:#2f7a52}.st-clash{font-size:12px;color:#b4475a;font-weight:700}.st-rest{margin:10px 0 0;font-size:12.5px;color:#4a5568;line-height:1.6}.st-rest b{color:#2f7a52;margin-right:4px}' +
     '@media(max-width:760px){.st-grid{grid-template-columns:1fr}}' +
-    '@media(prefers-color-scheme:dark){.st-card{background:#1c1a29;border-color:#2e2b41;color:#ecebf5}}';
+    '@media(prefers-color-scheme:dark){.st-card{background:#1c1a29;border-color:#2e2b41;color:#ecebf5}.st-off{background:#1f3329;color:#bfe6cf}.st-rest{color:#b9b4c9}}';
   document.head.appendChild(css);
+  if (window.FC_CAL) window.FC_CAL.onUpdate(function () { document.querySelectorAll('#school-today[data-st]').forEach(function (b) { if (data) render(b); }); });
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mountAll); else mountAll();
   new MutationObserver(mountAll).observe(document.documentElement, { childList: true, subtree: true });
 })();

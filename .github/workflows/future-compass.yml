@@ -27,6 +27,7 @@ jobs:
       - name: Collect Seocho HS schedule, meals and timetable (grade auto by date)
         env:
           NEIS_API_KEY: ${{ secrets.NEIS_API_KEY }}
+          DATA_GO_KR_KEY: ${{ secrets.DATA_GO_KR_KEY }}
         run: python future-compass/scripts/update_school.py
       - name: Check site
         run: |
