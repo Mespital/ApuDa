@@ -25,7 +25,10 @@ jobs:
           NEIS_API_KEY: ${{ secrets.NEIS_API_KEY }}
         run: python future-compass/scripts/update_news.py
       - name: Check site
-        run: node future-compass/scripts/check.mjs
+        run: |
+          node future-compass/scripts/check.mjs
+          node future-compass/scripts/check-know-me.cjs
+          node future-compass/scripts/check-shiro.cjs
       - name: Save daily feed
         run: |
           git config user.name 'future-compass-bot'
