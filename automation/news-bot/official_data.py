@@ -289,26 +289,33 @@ def fetch_mfds_supply_shortage(session,key):
             if rc and rc not in ("0","00"):
                 last={"http_status":r.status_code,"error_code":rc,"error_message":rm,"key_variant_attempt":idx}
                 continue
+            raw_items=[x for x in response_items(data) if isinstance(x,dict)]
             rows=[]
-            for x in response_items(data):
-                if not isinstance(x,dict):continue
+            for x in raw_items:
                 rows.append({
-                    "company":_pick(x,"ENTP_NAME","ENTP_NM","entpName","companyName"),
-                    "item_name":_pick(x,"ITEM_NAME","ITEM_NM","itemName","PRDLST_NM"),
-                    "shortage_expected_date":_pick(x,"SUPLY_LACK_PRDCT_DATE","SUPPLY_LACK_EXPECT_DATE","LACK_PREDICT_DATE","lackPredictDate"),
-                    "shortage_reason":_pick(x,"SUPLY_LACK_RSN","SUPPLY_LACK_REASON","LACK_REASON","lackReason"),
-                    "last_supply_date":_pick(x,"LAST_PRDCT_IMP_SUPLY_DATE","LAST_SUPPLY_DATE","lastSupplyDate"),
-                    "stock_reference_date":_pick(x,"STOCK_QTY_STDR_DATE","STOCK_DATE","stockDate"),
-                    "stock_qty":_pick(x,"STOCK_QTY","stockQty"),
-                    "patient_impact":_pick(x,"PATIENT_TRTMT_INFLU","PATIENT_TREAT_IMPACT","patientImpact"),
-                    "normalization_plan":_pick(x,"SUPLY_NORMAL_PLAN","NORMALIZATION_PLAN","normalizationPlan"),
-                    "normalization_expected_date":_pick(x,"SUPLY_NORMAL_PRDCT_DATE","NORMALIZATION_EXPECT_DATE","normalizationExpectedDate")
+                    "company":_pick(x,"ENTP_NAME","ENTP_NM","entpName","companyName","ENTRPS_NM","ENTRPSNM"),
+                    "item_name":_pick(x,"ITEM_NAME","ITEM_NM","itemName","PRDLST_NM","ITEMNM","PRDUCT_NM","PRDCT_NM"),
+                    "shortage_expected_date":_pick(x,"SUPLY_LACK_PRDCT_DATE","SUPPLY_LACK_EXPECT_DATE","LACK_PREDICT_DATE","lackPredictDate","SUPLY_LACK_OCRN_PRDCT_DATE","SUPLYLACKOCRNPRDCTDE"),
+                    "shortage_reason":_pick(x,"SUPLY_LACK_RSN","SUPPLY_LACK_REASON","LACK_REASON","lackReason","SUPLY_LACK_CAUSE","SUPLYLACKRSN"),
+                    "last_supply_date":_pick(x,"LAST_PRDCT_IMP_SUPLY_DATE","LAST_SUPPLY_DATE","lastSupplyDate","LAST_PRDCTN_IMPRT_SUPLY_DATE"),
+                    "stock_reference_date":_pick(x,"STOCK_QTY_STDR_DATE","STOCK_DATE","stockDate","SELF_STOCK_QTY_STDR_DATE"),
+                    "stock_qty":_pick(x,"STOCK_QTY","stockQty","SELF_STOCK_QTY"),
+                    "patient_impact":_pick(x,"PATIENT_TRTMT_INFLU","PATIENT_TREAT_IMPACT","patientImpact","PATIENT_TREATMENT_EFFECT","PTNT_TRTMT_INFLU"),
+                    "normalization_plan":_pick(x,"SUPLY_NORMAL_PLAN","NORMALIZATION_PLAN","normalizationPlan","SUPLY_NORMALIZATION_PLAN","SUPLY_NMLZTN_PRMT_PLAN"),
+                    "normalization_expected_date":_pick(x,"SUPLY_NORMAL_PRDCT_DATE","NORMALIZATION_EXPECT_DATE","normalizationExpectedDate","SUPLY_NMLZTN_EXPECT_DATE")
                 })
             result["records"]=rows[:50]
-            result["status"]="ok"
             result["http_status"]=r.status_code
             result["key_variant_used"]=idx
-            result["note"]="식약처 공식 의약품 공급부족 OpenAPI 연결 상태입니다. 공급부족·환자영향·정상화 계획을 확인합니다."
+            result["response_field_keys"]=sorted(list(raw_items[0].keys()))[:80] if raw_items else []
+            meaningful=sum(1 for row in rows if row.get("item_name") or row.get("company") or row.get("shortage_reason"))
+            result["mapped_records"]=meaningful
+            if raw_items and meaningful==0:
+                result["status"]="mapping_review"
+                result["note"]="API 응답은 정상이나 필드명이 현재 매핑과 달라 자동 필드 매핑을 점검 중입니다."
+            else:
+                result["status"]="ok"
+                result["note"]="식약처 공식 의약품 공급부족 OpenAPI 연결 상태입니다. 공급부족·환자영향·정상화 계획을 확인합니다."
             return result
         except Exception as e:
             last={"error_message":_redact_secrets(e,candidates)[:220],"key_variant_attempt":idx}
