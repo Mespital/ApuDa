@@ -1,12 +1,26 @@
 :8080 {
-  respond /health "{\"status\":\"ok\",\"app\":\"future-compass\"}" 200
   root * /srv/compass/current
   encode zstd gzip
   header {
     X-Content-Type-Options nosniff
-    Referrer-Policy strict-origin-when-cross-origin
+    Referrer-Policy same-origin
+    X-Frame-Options DENY
+    Cache-Control "no-store"
   }
-  @fresh path /sw.js /news.json /index.html /
-  header @fresh Cache-Control "no-cache"
-  file_server
+  handle /health {
+    reverse_proxy auth:8081
+  }
+  handle /api/* {
+    reverse_proxy auth:8081
+  }
+  @public path /login.html /auth.js /auth.css /sw.js /shiro-letter.jpg /app-icon.svg /app-icon-192.png /app-icon-512.png /share-cover-v2.jpg
+  handle @public {
+    file_server
+  }
+  handle {
+    forward_auth auth:8081 {
+      uri /verify
+    }
+    file_server
+  }
 }

@@ -1,7 +1,35 @@
 services:
+  auth:
+    image: python:3.13-slim
+    user: "${COMPASS_UID:?set COMPASS_UID}:${COMPASS_GID:?set COMPASS_GID}"
+    command: ['python', '-u', '/app/server.py']
+    working_dir: /app
+    restart: unless-stopped
+    environment:
+      COMPASS_ORIGIN: https://future.apuda.app
+      COMPASS_DATA: /data
+    volumes:
+      - ./auth:/app:ro
+      - ./private:/data
+    read_only: true
+    tmpfs:
+      - /tmp
+    mem_limit: 192m
+    cpus: 0.75
+    security_opt:
+      - no-new-privileges:true
+    cap_drop: [ALL]
+    healthcheck:
+      test: ['CMD', 'python', '-c', "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8081/health', timeout=3)"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
   web:
     image: caddy:2.10.2-alpine
     restart: unless-stopped
+    depends_on:
+      auth:
+        condition: service_healthy
     ports:
       - '127.0.0.1:8092:8080'
     volumes:

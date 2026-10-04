@@ -31,6 +31,8 @@ jobs:
           node future-compass/scripts/check-shiro.cjs
           node future-compass/scripts/check-study-plus.cjs
           node future-compass/scripts/check-study-device.cjs
+          python future-compass/auth/test_auth.py
+          docker run --rm -v "$PWD/future-compass/ops/Caddyfile:/etc/caddy/Caddyfile:ro" caddy:2.10.2-alpine caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile
       - name: Save daily feed
         run: |
           git config user.name 'future-compass-bot'
