@@ -314,14 +314,14 @@ def fetch_mfds_supply_shortage(session,key):
                 rows.append({
                     "company":_pick(x,"ENTP_NAME","ENTP_NM","entpName","companyName","ENTRPS_NM","ENTRPSNM"),
                     "item_name":_pick(x,"ITEM_NAME","ITEM_NM","itemName","PRDLST_NM","ITEMNM","PRDUCT_NM","PRDCT_NM"),
-                    "shortage_expected_date":_pick(x,"SUPLY_LACK_PRDCT_DATE","SUPPLY_LACK_EXPECT_DATE","LACK_PREDICT_DATE","lackPredictDate","SUPLY_LACK_OCRN_PRDCT_DATE","SUPLYLACKOCRNPRDCTDE"),
-                    "shortage_reason":_pick(x,"SUPLY_LACK_RSN","SUPPLY_LACK_REASON","LACK_REASON","lackReason","SUPLY_LACK_CAUSE","SUPLYLACKRSN"),
+                    "shortage_expected_date":_pick(x,"SHORT_SUPPLY_EXPT_DATE","SUPLY_LACK_PRDCT_DATE","SUPPLY_LACK_EXPECT_DATE","LACK_PREDICT_DATE","lackPredictDate","SUPLY_LACK_OCRN_PRDCT_DATE","SUPLYLACKOCRNPRDCTDE"),
+                    "shortage_reason":_pick(x,"SHORT_SUPPLY_REASON","SUPLY_LACK_RSN","SUPPLY_LACK_REASON","LACK_REASON","lackReason","SUPLY_LACK_CAUSE","SUPLYLACKRSN"),
                     "last_supply_date":_pick(x,"LAST_PRDCT_IMP_SUPLY_DATE","LAST_SUPPLY_DATE","lastSupplyDate","LAST_PRDCTN_IMPRT_SUPLY_DATE"),
-                    "stock_reference_date":_pick(x,"STOCK_QTY_STDR_DATE","STOCK_DATE","stockDate","SELF_STOCK_QTY_STDR_DATE"),
-                    "stock_qty":_pick(x,"STOCK_QTY","stockQty","SELF_STOCK_QTY"),
-                    "patient_impact":_pick(x,"PATIENT_TRTMT_INFLU","PATIENT_TREAT_IMPACT","patientImpact","PATIENT_TREATMENT_EFFECT","PTNT_TRTMT_INFLU"),
-                    "normalization_plan":_pick(x,"SUPLY_NORMAL_PLAN","NORMALIZATION_PLAN","normalizationPlan","SUPLY_NORMALIZATION_PLAN","SUPLY_NMLZTN_PRMT_PLAN"),
-                    "normalization_expected_date":_pick(x,"SUPLY_NORMAL_PRDCT_DATE","NORMALIZATION_EXPECT_DATE","normalizationExpectedDate","SUPLY_NMLZTN_EXPECT_DATE")
+                    "stock_reference_date":_pick(x,"INV_QTY_DATE","STOCK_QTY_STDR_DATE","STOCK_DATE","stockDate","SELF_STOCK_QTY_STDR_DATE"),
+                    "stock_qty":_pick(x,"INV_QTY","STOCK_QTY","stockQty","SELF_STOCK_QTY"),
+                    "patient_impact":_pick(x,"TREATMENT_INFU","PATIENT_TRTMT_INFLU","PATIENT_TREAT_IMPACT","patientImpact","PATIENT_TREATMENT_EFFECT","PTNT_TRTMT_INFLU"),
+                    "normalization_plan":_pick(x,"SUPPLY_PLAN","SUPLY_NORMAL_PLAN","NORMALIZATION_PLAN","normalizationPlan","SUPLY_NORMALIZATION_PLAN","SUPLY_NMLZTN_PRMT_PLAN"),
+                    "normalization_expected_date":_pick(x,"SUPPLY_PLAN_DATE","SUPLY_NORMAL_PRDCT_DATE","NORMALIZATION_EXPECT_DATE","normalizationExpectedDate","SUPLY_NMLZTN_EXPECT_DATE")
                 })
             result["records"]=rows[:50]
             result["http_status"]=r.status_code
