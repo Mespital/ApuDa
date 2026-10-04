@@ -1,6 +1,6 @@
 {
   "version": "1.2",
-  "generated_at": "2026-10-04T11:38:32.464545+09:00",
+  "generated_at": "2026-10-04T12:25:10.526661+09:00",
   "service_key_connected": true,
   "credential_routes": {
     "mfds_drug_approval": "shared",
@@ -21,7 +21,7 @@
       "name": "의약품 제품 허가정보",
       "source_url": "https://www.data.go.kr/data/15095677/openapi.do",
       "status": "auth_error",
-      "checked_at": "2026-10-04T11:38:27.794629+09:00",
+      "checked_at": "2026-10-04T12:25:05.307506+09:00",
       "records": [],
       "http_status": 403,
       "key_variant_attempt": 1,
@@ -36,7 +36,7 @@
       "name": "의약품 공급부족 정보",
       "source_url": "https://www.data.go.kr/data/15056886/openapi.do",
       "status": "ok",
-      "checked_at": "2026-10-04T11:38:28.172031+09:00",
+      "checked_at": "2026-10-04T12:25:05.713805+09:00",
       "records": [
         {
           "report_date": "20261001",
@@ -776,7 +776,7 @@
       "name": "약가기준정보조회서비스",
       "source_url": "https://www.data.go.kr/data/15054445/openapi.do",
       "status": "ok",
-      "checked_at": "2026-10-04T11:38:29.069334+09:00",
+      "checked_at": "2026-10-04T12:25:06.872981+09:00",
       "records": [],
       "http_status": 200,
       "key_variant_used": 1,
@@ -789,7 +789,7 @@
       "name": "통계로 보는 암",
       "source_url": "https://edu.cancer.go.kr/lay1/S1T654C656/contents.do",
       "status": "ok",
-      "checked_at": "2026-10-04T11:38:29.167350+09:00",
+      "checked_at": "2026-10-04T12:25:06.979719+09:00",
       "latest_year": 2023,
       "note": "국가암정보센터 공식 통계 페이지 원문을 기준으로 연결합니다. 수치는 원문 표를 우선 확인합니다.",
       "page_title": "홈 >통계로 보는 암>유병률>암종별 암유병률",
@@ -1024,7 +1024,7 @@
       "name": "암환자 생활백서",
       "source_url": "https://cancer.go.kr/lay1/S1T523C850/contents.do",
       "status": "ok",
-      "checked_at": "2026-10-04T11:38:30.802816+09:00",
+      "checked_at": "2026-10-04T12:25:08.737806+09:00",
       "latest_year": null,
       "note": "국가암정보센터 원문을 직접 연결하며, ApuDa에서는 원문을 변형 복제하지 않습니다.",
       "page_title": "홈 >암정보 나눔터>국가암지식정보센터 OPEN API"
