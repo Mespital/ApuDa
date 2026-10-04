@@ -33,15 +33,24 @@
 
 <section class="section drug-brief-section">
   <div class="section-head">
-    <div><h2>공식 의약품 브리핑</h2><p>식약처 허가와 공급부족 정보를 기사처럼 읽기 쉽게 정리합니다.</p></div>
+    <div><h2>공식 의약품 브리핑</h2><p>신규 허가와 공급 이슈를 일간·주간·월간으로 정리하고 전체 목록은 Excel로 제공합니다.</p></div>
     <span class="official-updated" id="drugBriefUpdated">공식 데이터 확인 중</span>
   </div>
   <div class="drug-brief-tabs" id="drugBriefTabs">
-    <button type="button" class="on" data-drug-brief="approval">신규 허가</button>
-    <button type="button" data-drug-brief="supply">공급 이슈</button>
+    <button type="button" class="on" data-drug-brief="approval">허가 의약품</button>
+    <button type="button" data-drug-brief="supply">공급 이슈 의약품</button>
   </div>
+  <div class="drug-period-row">
+    <div class="drug-period-tabs" id="drugPeriodTabs">
+      <button type="button" class="on" data-drug-period="today">오늘</button>
+      <button type="button" data-drug-period="7d">최근 7일</button>
+      <button type="button" data-drug-period="30d">최근 30일</button>
+    </div>
+    <div class="drug-downloads" id="drugDownloads"></div>
+  </div>
+  <div class="drug-period-summary" id="drugPeriodSummary">공식 의약품 데이터를 불러오는 중입니다.</div>
   <div class="drug-newspaper" id="drugBriefGrid"><div class="newsroom-empty">의약품 브리핑을 불러오는 중입니다.</div></div>
-  <p class="drug-brief-source">공식 출처: 식품의약품안전처 공공데이터 · 의료진 상담과 공식 허가사항 확인을 대체하지 않습니다.</p>
+  <p class="drug-brief-source">공식 출처: 식품의약품안전처 공공데이터 · Excel 파일에는 오늘/최근 7일/최근 30일/전체 목록 시트가 포함됩니다.</p>
 </section>
 
 <section class="section official-notice-section">
@@ -86,7 +95,7 @@ const OUTLET_HOME={
 const esc=s=>String(s??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const qs=new URLSearchParams(location.search);
 const requestedDate=qs.get('date');
-let currentPeriod='today',periodData=null,currentDaily=null,officialNotices=[],activeNoticeFilter='전체',officialDrugData=null,activeDrugBrief='approval';
+let currentPeriod='today',periodData=null,currentDaily=null,officialNotices=[],activeNoticeFilter='전체',officialDrugData=null,activeDrugBrief='approval',activeDrugPeriod='today';
 const issueDigestLimits={today:3,week:3,month:3};
 
 function primaryUrl(n){return Array.isArray(n?.source_urls)&&n.source_urls.length?n.source_urls[0]:'';}
@@ -255,40 +264,50 @@ function trimText(v,n=150){
   return s.length>n?s.slice(0,n).trim()+'…':s;
 }
 function approvalArticle(x){
-  const rare=String(x.rare_drug_yn||'').toUpperCase()==='Y';
-  const ingredient=x.main_ingredient?'<p class="drug-detail"><b>주성분</b> '+esc(trimText(x.main_ingredient,80))+'</p>':'';
-  const cls=x.newdrug_class_name?'<span class="drug-tag">'+esc(x.newdrug_class_name)+'</span>':'';
-  return '<article class="drug-paper-card approval"><div class="drug-paper-top"><span>MFDS APPROVAL</span><time>'+esc(fmtOfficialDate(x.permit_date))+'</time></div><h3>'+esc(x.item_name||'의약품 허가')+'</h3><p class="drug-deck">'+esc(x.company||'제조·수입사 정보 확인')+'의 의약품이 식품의약품안전처 허가정보에 반영됐습니다.</p>'+ingredient+'<div class="drug-paper-foot">'+(rare?'<span class="drug-tag rare">희귀의약품</span>':'')+cls+'<span>품목기준코드 '+esc(x.item_seq||'-')+'</span></div></article>';
+  const rare=String(x['희귀의약품']||'').toUpperCase()==='Y';
+  const ingredient=x['주성분']?'<p class="drug-detail"><b>주성분</b> '+esc(trimText(x['주성분'],90))+'</p>':'';
+  const cls=x['신약분류']?'<span class="drug-tag">'+esc(x['신약분류'])+'</span>':'';
+  return '<article class="drug-paper-card approval"><div class="drug-paper-top"><span>MFDS APPROVAL</span><time>'+esc(fmtOfficialDate(x['허가일']))+'</time></div><h3>'+esc(x['품목명']||'의약품 허가')+'</h3><p class="drug-deck">'+esc(x['업체명']||'제조·수입사 정보 확인')+'의 의약품이 식품의약품안전처 허가정보에 반영됐습니다.</p>'+ingredient+'<div class="drug-paper-foot">'+(rare?'<span class="drug-tag rare">희귀의약품</span>':'')+cls+(x['전문/일반']?'<span>'+esc(x['전문/일반'])+'</span>':'')+'<span>품목기준코드 '+esc(x['품목기준코드']||'-')+'</span></div></article>';
 }
 function supplyArticle(x){
-  const impact=x.patient_impact?trimText(x.patient_impact,170):'환자 치료 영향은 식약처 공식 자료에서 확인이 필요합니다.';
-  const normal=x.normalization_expected_date?'공급 정상화 예상 '+fmtOfficialDate(x.normalization_expected_date):'정상화 일정 확인 중';
-  return '<article class="drug-paper-card supply"><div class="drug-paper-top"><span>SUPPLY WATCH</span><time>'+esc(fmtOfficialDate(x.report_date))+'</time></div><h3>'+esc(x.item_name||'의약품 공급 이슈')+'</h3><p class="drug-deck">'+esc(x.company||'')+(x.company?' · ':'')+esc(trimText(x.shortage_reason||'공급 부족 가능성이 공식 자료에 보고됐습니다.',150))+'</p><div class="drug-impact"><b>환자 치료 영향</b><p>'+esc(impact)+'</p></div><div class="drug-paper-foot"><span>'+esc(normal)+'</span>'+(x.stock_qty?'<span>공식 재고 '+esc(x.stock_qty)+'</span>':'')+'</div></article>';
+  const impact=x['환자치료영향']?trimText(x['환자치료영향'],180):'환자 치료 영향은 식약처 공식 자료에서 확인이 필요합니다.';
+  const normal=x['정상화예상일']?'공급 정상화 예상 '+fmtOfficialDate(x['정상화예상일']):'정상화 일정 확인 중';
+  return '<article class="drug-paper-card supply"><div class="drug-paper-top"><span>SUPPLY WATCH</span><time>'+esc(fmtOfficialDate(x['신고일']))+'</time></div><h3>'+esc(x['품목명']||'의약품 공급 이슈')+'</h3><p class="drug-deck">'+esc(x['업체명']||'')+(x['업체명']?' · ':'')+esc(trimText(x['공급부족사유']||'공급 부족 가능성이 공식 자료에 보고됐습니다.',160))+'</p><div class="drug-impact"><b>환자 치료 영향</b><p>'+esc(impact)+'</p></div><div class="drug-paper-foot"><span>'+esc(normal)+'</span>'+(x['재고량']?'<span>공식 재고 '+esc(x['재고량'])+'</span>':'')+'</div></article>';
+}
+function drugPeriodLabel(){
+  return activeDrugPeriod==='today'?'오늘':activeDrugPeriod==='7d'?'최근 7일':'최근 30일';
 }
 function renderDrugBrief(){
   const box=document.getElementById('drugBriefGrid');
+  const summary=document.getElementById('drugPeriodSummary');
+  const downloads=document.getElementById('drugDownloads');
   if(!box)return;
-  const src=(officialDrugData?.sources||[]);
-  const source=src.find(x=>x.id===(activeDrugBrief==='approval'?'mfds_drug_approval':'mfds_supply_shortage'));
-  const items=(source?.records||[]).slice(0,6);
-  box.innerHTML=items.length?items.map(activeDrugBrief==='approval'?approvalArticle:supplyArticle).join(''):'<div class="newsroom-empty">표시할 공식 의약품 데이터가 아직 없습니다.</div>';
+  const section=officialDrugData?.[activeDrugBrief]||{};
+  const period=section.periods?.[activeDrugPeriod]||{count:0,items:[]};
+  const items=(period.items||[]).slice(0,9);
+  box.innerHTML=items.length?items.map(activeDrugBrief==='approval'?approvalArticle:supplyArticle).join(''):'<div class="newsroom-empty">'+drugPeriodLabel()+'에 표시할 공식 의약품 데이터가 없습니다.</div>';
+  const typeLabel=activeDrugBrief==='approval'?'허가':'공급 이슈';
+  summary.innerHTML='<b>'+drugPeriodLabel()+' '+typeLabel+' '+Number(period.count||0).toLocaleString()+'건</b><span> · 전체 '+Number(section.exported_count||0).toLocaleString()+'건</span>';
+  const dl=section.downloads||{};
+  downloads.innerHTML=(dl.xlsx?'<a href="'+esc(dl.xlsx)+'" class="drug-download primary" download>전체 Excel ↓</a>':'')+(dl.csv?'<a href="'+esc(dl.csv)+'" class="drug-download" download>CSV ↓</a>':'');
   document.querySelectorAll('[data-drug-brief]').forEach(b=>b.classList.toggle('on',b.dataset.drugBrief===activeDrugBrief));
+  document.querySelectorAll('[data-drug-period]').forEach(b=>b.classList.toggle('on',b.dataset.drugPeriod===activeDrugPeriod));
 }
 function setupDrugBrief(){
   document.querySelectorAll('[data-drug-brief]').forEach(btn=>btn.onclick=()=>{activeDrugBrief=btn.dataset.drugBrief;renderDrugBrief();});
+  document.querySelectorAll('[data-drug-period]').forEach(btn=>btn.onclick=()=>{activeDrugPeriod=btn.dataset.drugPeriod;renderDrugBrief();});
 }
 async function loadDrugBrief(){
   const updated=document.getElementById('drugBriefUpdated');
   try{
-    officialDrugData=await fetch('/news/data/official-data.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()});
-    const src=officialDrugData.sources||[];
-    const a=src.find(x=>x.id==='mfds_drug_approval');
-    const s=src.find(x=>x.id==='mfds_supply_shortage');
-    updated.textContent='허가 '+((a?.records||[]).length)+'건 · 공급 '+((s?.records||[]).length)+'건';
+    officialDrugData=await fetch('/news/data/drug-archive.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()});
+    const a=officialDrugData.approval||{},s=officialDrugData.supply||{};
+    updated.textContent='전체 허가 '+Number(a.exported_count||0).toLocaleString()+'건 · 공급 이슈 '+Number(s.exported_count||0).toLocaleString()+'건';
     renderDrugBrief();
   }catch(e){
     updated.textContent='공식 데이터 준비 중';
-    document.getElementById('drugBriefGrid').innerHTML='<div class="newsroom-empty">공식 의약품 데이터를 준비 중입니다.</div>';
+    document.getElementById('drugPeriodSummary').textContent='전체 의약품 데이터 파일을 생성하는 중입니다.';
+    document.getElementById('drugBriefGrid').innerHTML='<div class="newsroom-empty">공식 의약품 아카이브가 준비되면 자동 표시됩니다.</div>';
   }
 }
 
