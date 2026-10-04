@@ -80,6 +80,36 @@ def build_paid(text):
     return tidy(text)
 
 
+TEASER_PREFIX = "> 📘 **완전판에서 이어집니다** — "
+
+
+def merge_teasers(text):
+    """연달아 붙은 안내 상자(사이에 빈 줄·주석만 있는 경우)를 한 상자로 합친다."""
+    out, run = [], []
+
+    def flush():
+        if len(run) == 1:
+            out.append(TEASER_PREFIX + run[0])
+        elif run:
+            out.append("> 📘 **완전판에서 이어집니다**")
+            out.extend(f"> - {t}" for t in run)
+        if run:
+            out.append("")
+        run.clear()
+
+    for line in text.split("\n"):
+        stripped = line.strip()
+        if stripped.startswith(TEASER_PREFIX):
+            run.append(stripped[len(TEASER_PREFIX):])
+        elif run and (not stripped or COMMENT_RE.fullmatch(stripped + "\n") or stripped.startswith("<!--")):
+            continue
+        else:
+            flush()
+            out.append(line)
+    flush()
+    return "\n".join(out)
+
+
 def build_free(text):
     teasers = []
 
@@ -91,6 +121,7 @@ def build_free(text):
         return ""
 
     text = PAID_RE.sub(cut, text)
+    text = merge_teasers(text)
     text = FREE_RE.sub(lambda m: m.group(1), text)
     if TEASER_SLOT in text:
         seen, items = set(), []
