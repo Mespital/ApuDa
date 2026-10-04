@@ -81,6 +81,9 @@ jobs:
         env:
           APUDA_NEWS_GITHUB_TOKEN: ${{ secrets.APUDA_NEWS_GITHUB_TOKEN }}
           DATA_GO_KR_SERVICE_KEY: ${{ secrets.DATA_GO_KR_SERVICE_KEY }}
+          MFDS_APPROVAL_SERVICE_KEY: ${{ secrets.MFDS_APPROVAL_SERVICE_KEY }}
+          MFDS_SUPPLY_SERVICE_KEY: ${{ secrets.MFDS_SUPPLY_SERVICE_KEY }}
+          HIRA_PRICE_SERVICE_KEY: ${{ secrets.HIRA_PRICE_SERVICE_KEY }}
         run: |
           set -euo pipefail
           printf 'APUDA_GITHUB_TOKEN=%s\nAPUDA_GITHUB_REPO=Mespital/ApuDa\nAPUDA_NEWS_BRANCH=main\nAPUDA_REPO_DIR=$HOME/apuda-repo\nDATA_GO_KR_SERVICE_KEY=%s\nMFDS_APPROVAL_SERVICE_KEY=%s\nMFDS_SUPPLY_SERVICE_KEY=%s\nHIRA_PRICE_SERVICE_KEY=%s\n' "$APUDA_NEWS_GITHUB_TOKEN" "$DATA_GO_KR_SERVICE_KEY" "${MFDS_APPROVAL_SERVICE_KEY:-}" "${MFDS_SUPPLY_SERVICE_KEY:-}" "${HIRA_PRICE_SERVICE_KEY:-}" > /tmp/news.env
@@ -97,7 +100,7 @@ jobs:
       - name: Validate collector syntax and environment
         run: |
           set -euo pipefail
-          ssh apuda-vps 'set -a; . ~/.config/apuda/news.env; set +a; test -n "$APUDA_GITHUB_TOKEN"; test -n "$APUDA_REPO_DIR"; ~/apuda-news/.venv/bin/python -m py_compile ~/apuda-news/news_bot.py ~/apuda-news/official_data.py ~/apuda-news/official_notices.py ~/apuda-news/hira_updates.py ~/apuda-news/nccn_monitor.py ~/apuda-news/smoke_test.py'
+          ssh apuda-vps 'set -a; . ~/.config/apuda/news.env; set +a; test -n "$APUDA_GITHUB_TOKEN"; test -n "$APUDA_REPO_DIR"; ~/apuda-news/.venv/bin/python -m py_compile ~/apuda-news/news_bot.py ~/apuda-news/official_data.py ~/apuda-news/official_notices.py ~/apuda-news/hira_updates.py ~/apuda-news/nccn_monitor.py ~/apuda-news/drug_archive.py ~/apuda-news/smoke_test.py'
 
       - name: Publish refreshed data
         run: |
@@ -144,9 +147,19 @@ jobs:
           else:
               print("::warning title=HIRA 공문::보험인정기준 수집 상태 "+str(hira.get("status") or "unknown"))
           items=nccn.get("items",[])
-          ok=sum(1 for x in items if x.get("status")=="ok")
-          level="notice" if ok==12 else "warning"
-          print(f"::{level} title=NCCN::12개 암종 중 {ok}개 공개 버전 확인")
+          if nccn.get("policy_mode")=="link_only_patient_first":
+              linked=sum(1 for x in items if x.get("status")=="link_only_policy" and str(x.get("patient_url") or "").startswith("https://www.nccn.org/"))
+              level="notice" if linked==12 else "warning"
+              print(f"::{level} title=NCCN::환자용 공식 링크 {linked}/12 · 버전 자동수집 중단(정책 준수)")
+          else:
+              ok=sum(1 for x in items if x.get("status")=="ok")
+              level="notice" if ok==12 else "warning"
+              print(f"::{level} title=NCCN::12개 암종 중 {ok}개 공개 버전 확인")
+          archive=load("drug-archive.json")
+          if archive:
+              a=archive.get("approval",{})
+              s=archive.get("supply",{})
+              print("::notice title=의약품 Excel::허가 "+str(a.get("exported_count",0))+"건 · 공급이슈 "+str(s.get("exported_count",0))+"건 전체 파일 생성")
           PY'
 
       - name: Show cron
