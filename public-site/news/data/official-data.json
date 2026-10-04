@@ -1,6 +1,6 @@
 {
   "version": "1.2",
-  "generated_at": "2026-10-04T12:32:15.010812+09:00",
+  "generated_at": "2026-10-04T12:35:16.912386+09:00",
   "service_key_connected": true,
   "credential_routes": {
     "mfds_drug_approval": "shared",
@@ -10,8 +10,7 @@
   "source_health": {
     "total": 5,
     "status_counts": {
-      "auth_error": 1,
-      "ok": 4
+      "ok": 5
     }
   },
   "sources": [
@@ -20,15 +19,343 @@
       "agency": "식품의약품안전처",
       "name": "의약품 제품 허가정보",
       "source_url": "https://www.data.go.kr/data/15095677/openapi.do",
-      "status": "auth_error",
-      "checked_at": "2026-10-04T12:32:10.411198+09:00",
-      "records": [],
-      "http_status": 403,
-      "key_variant_attempt": 1,
-      "error_code": "30",
-      "error_name": "SERVICE_KEY_IS_NOT_REGISTERED_ERROR",
-      "error_message": "등록되지 않은 서비스키",
-      "note": "공공데이터포털에서 이 활용신청에 연결된 서비스키를 다시 확인해야 합니다. 현재 GitHub Secret은 전달되고 있지만 API 게이트웨이가 해당 키를 등록된 키로 인정하지 않고 있습니다."
+      "status": "ok",
+      "checked_at": "2026-10-04T12:35:11.721519+09:00",
+      "records": [
+        {
+          "item_seq": "196300025",
+          "item_name": "옥시톤주사액5아이유(옥시토신)",
+          "company": "(주)유한양행",
+          "main_ingredient": null,
+          "permit_date": "19631011",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": "642101271"
+        },
+        {
+          "item_seq": "196300035",
+          "item_name": "아주디곡신주사액",
+          "company": "아주약품(주)",
+          "main_ingredient": null,
+          "permit_date": "19630827",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": "654000881"
+        },
+        {
+          "item_seq": "196300001",
+          "item_name": "디고신정(디곡신)",
+          "company": "에이치케이이노엔(주)",
+          "main_ingredient": null,
+          "permit_date": "19630516",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": "640000090"
+        },
+        {
+          "item_seq": "196200034",
+          "item_name": "삐콤정",
+          "company": "(주)유한양행",
+          "main_ingredient": null,
+          "permit_date": "19620823",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": null
+        },
+        {
+          "item_seq": "196200032",
+          "item_name": "유한짓정100mg(이소니아지드)(군납명:이소니아지드정케이.피100밀리그람)",
+          "company": "(주)유한양행",
+          "main_ingredient": null,
+          "permit_date": "19620119",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": "642101930"
+        },
+        {
+          "item_seq": "196100002",
+          "item_name": "종근당황산스트렙토마이신주(스트렙토마이신황산염)",
+          "company": "(주)종근당",
+          "main_ingredient": null,
+          "permit_date": "19611228",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": "643303331"
+        },
+        {
+          "item_seq": "196100007",
+          "item_name": "중외주사용수",
+          "company": "제이더블유중외제약(주)",
+          "main_ingredient": null,
+          "permit_date": "19610802",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": "644903371,644903382"
+        },
+        {
+          "item_seq": "196100008",
+          "item_name": "중외생리식염주사액(수출명: 0.9% Sodium Chloride Inj.)",
+          "company": "제이더블유중외제약(주)",
+          "main_ingredient": null,
+          "permit_date": "19610802",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": "644902691"
+        },
+        {
+          "item_seq": "196000011",
+          "item_name": "페니라민정(클로르페니라민말레산염)",
+          "company": "(주)유한양행",
+          "main_ingredient": null,
+          "permit_date": "19601010",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": "642102570"
+        },
+        {
+          "item_seq": "196000010",
+          "item_name": "페니라민주사(클로르페니라민말레산염)",
+          "company": "(주)유한양행",
+          "main_ingredient": null,
+          "permit_date": "19600721",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": "642102581"
+        },
+        {
+          "item_seq": "196000001",
+          "item_name": "테라싸이클린캅셀250밀리그람(염산테트라싸이클린)",
+          "company": "(주)종근당",
+          "main_ingredient": null,
+          "permit_date": "19600614",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": "643303740"
+        },
+        {
+          "item_seq": "196000008",
+          "item_name": "다이크로짇정(히드로클로로티아지드)",
+          "company": "(주)유한양행",
+          "main_ingredient": null,
+          "permit_date": "19600420",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": "642100160"
+        },
+        {
+          "item_seq": "195900034",
+          "item_name": "신신티눈고(살리실산반창고)(수출명:SINSINCORNPLASTER)",
+          "company": "신신제약(주)",
+          "main_ingredient": null,
+          "permit_date": "19591201",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": null
+        },
+        {
+          "item_seq": "195900045",
+          "item_name": "자모",
+          "company": "씨에이치디제약주식회사",
+          "main_ingredient": null,
+          "permit_date": "19590420",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": null
+        },
+        {
+          "item_seq": "195900043",
+          "item_name": "아네모정",
+          "company": "삼진제약(주)",
+          "main_ingredient": null,
+          "permit_date": "19590113",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": null
+        },
+        {
+          "item_seq": "195800020",
+          "item_name": "마구내신주사액<황산마그네슘수화물>",
+          "company": "대원제약(주)",
+          "main_ingredient": null,
+          "permit_date": "19581208",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": "671801531"
+        },
+        {
+          "item_seq": "195700009",
+          "item_name": "대한멸균생리식염수(생리식염주사액)",
+          "company": "대한약품공업(주)",
+          "main_ingredient": null,
+          "permit_date": "19570824",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": "645100561,645100562,645100563,645100571,645100572,645100581,645100582,645100591,645100601,645100611,645100621,645100622,645100623,645103821"
+        },
+        {
+          "item_seq": "195700004",
+          "item_name": "대한포도당주사액(10%)",
+          "company": "대한약품공업(주)",
+          "main_ingredient": null,
+          "permit_date": "19570614",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": "645100922,645100932"
+        },
+        {
+          "item_seq": "195700008",
+          "item_name": "대한포도당주사액(20%)",
+          "company": "대한약품공업(주)",
+          "main_ingredient": null,
+          "permit_date": "19570614",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": "645100954"
+        },
+        {
+          "item_seq": "195700010",
+          "item_name": "대한포도당주사액(5%)",
+          "company": "대한약품공업(주)",
+          "main_ingredient": null,
+          "permit_date": "19570614",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": "645100961,645100962,645100971,645100972,645100973,645100981,645100982,645100991,645100992,645101001,645101002,645104551"
+        },
+        {
+          "item_seq": "195700007",
+          "item_name": "대한멸균증류수(주사용수)",
+          "company": "대한약품공업(주)",
+          "main_ingredient": null,
+          "permit_date": "19570611",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": "645100631,645100632,645100643"
+        },
+        {
+          "item_seq": "195700014",
+          "item_name": "제일포도당주사액",
+          "company": "(주)제일제약",
+          "main_ingredient": null,
+          "permit_date": "19570429",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": "650500861"
+        },
+        {
+          "item_seq": "195700015",
+          "item_name": "안나카주사액20%(제일벤조산나트륨카페인주)(수출용)",
+          "company": "(주)제일제약",
+          "main_ingredient": null,
+          "permit_date": "19570427",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": null
+        },
+        {
+          "item_seq": "195700016",
+          "item_name": "안나카주사액10%(제일벤조산나트륨카페인주)(수출용)",
+          "company": "(주)제일제약",
+          "main_ingredient": null,
+          "permit_date": "19570427",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": null
+        },
+        {
+          "item_seq": "195700013",
+          "item_name": "제일에페드린염산염주사액4%",
+          "company": "(주)제일제약",
+          "main_ingredient": null,
+          "permit_date": "19570426",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": "650500461"
+        },
+        {
+          "item_seq": "195700020",
+          "item_name": "활명수",
+          "company": "동화약품(주)",
+          "main_ingredient": null,
+          "permit_date": "19570131",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": null
+        },
+        {
+          "item_seq": "195600004",
+          "item_name": "중외20%포도당주사액",
+          "company": "제이더블유중외제약(주)",
+          "main_ingredient": null,
+          "permit_date": "19561129",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": "644902021,644902042"
+        },
+        {
+          "item_seq": "195600006",
+          "item_name": "중외50%포도당주사액",
+          "company": "제이더블유중외제약(주)",
+          "main_ingredient": null,
+          "permit_date": "19561128",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": "644902282,644902292,644914991"
+        },
+        {
+          "item_seq": "195500006",
+          "item_name": "중외5%포도당주사액",
+          "company": "제이더블유중외제약(주)",
+          "main_ingredient": null,
+          "permit_date": "19550413",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": "644902232,644902233,644902241,644902243,644902252,644902262,644902272"
+        },
+        {
+          "item_seq": "195500005",
+          "item_name": "중외5%포도당생리식염액(수출명:5%DextroseinnormalsalineInj.)",
+          "company": "제이더블유중외제약(주)",
+          "main_ingredient": null,
+          "permit_date": "19550412",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": "644902212,644902220"
+        }
+      ],
+      "http_status": 200,
+      "key_variant_used": 1,
+      "note": "식약처 공식 의약품 허가 OpenAPI 연결 상태입니다. 허가 상세 확인은 품목기준코드 기준으로 후속 조회합니다."
     },
     {
       "id": "mfds_supply_shortage",
@@ -36,7 +363,7 @@
       "name": "의약품 공급부족 정보",
       "source_url": "https://www.data.go.kr/data/15056886/openapi.do",
       "status": "ok",
-      "checked_at": "2026-10-04T12:32:10.721415+09:00",
+      "checked_at": "2026-10-04T12:35:12.553454+09:00",
       "records": [
         {
           "report_date": "20261001",
@@ -776,7 +1103,7 @@
       "name": "약가기준정보조회서비스",
       "source_url": "https://www.data.go.kr/data/15054445/openapi.do",
       "status": "ok",
-      "checked_at": "2026-10-04T12:32:11.691807+09:00",
+      "checked_at": "2026-10-04T12:35:13.460109+09:00",
       "records": [],
       "http_status": 200,
       "key_variant_used": 1,
@@ -789,7 +1116,7 @@
       "name": "통계로 보는 암",
       "source_url": "https://edu.cancer.go.kr/lay1/S1T654C656/contents.do",
       "status": "ok",
-      "checked_at": "2026-10-04T12:32:11.792019+09:00",
+      "checked_at": "2026-10-04T12:35:13.607050+09:00",
       "latest_year": 2023,
       "note": "국가암정보센터 공식 통계 페이지 원문을 기준으로 연결합니다. 수치는 원문 표를 우선 확인합니다.",
       "page_title": "홈 >통계로 보는 암>유병률>암종별 암유병률",
@@ -1024,7 +1351,7 @@
       "name": "암환자 생활백서",
       "source_url": "https://cancer.go.kr/lay1/S1T523C850/contents.do",
       "status": "ok",
-      "checked_at": "2026-10-04T12:32:13.420644+09:00",
+      "checked_at": "2026-10-04T12:35:15.248697+09:00",
       "latest_year": null,
       "note": "국가암정보센터 원문을 직접 연결하며, ApuDa에서는 원문을 변형 복제하지 않습니다.",
       "page_title": "홈 >암정보 나눔터>국가암지식정보센터 OPEN API"
