@@ -44,14 +44,27 @@ def detail_attachments(session,url):
     try:
         r=session.get(url,timeout=15); r.raise_for_status()
         soup=BeautifulSoup(r.text,"html.parser")
-        out=[]
+        out=[];seen=set()
         for a in soup.select("a[href]"):
             href=urljoin(r.url,a.get("href"))
             label=clean(a.get_text(" ",strip=True))
-            low=href.lower().split("?")[0]
-            if low.endswith(ATTACH_EXT) or any(x in label.lower() for x in ATTACH_EXT):
-                out.append({"label":label or "첨부파일","url":href})
-            if len(out)>=6:break
+            low=href.lower()
+            path=low.split("?")[0]
+            is_file=(
+                path.endswith(ATTACH_EXT)
+                or any(x in label.lower() for x in ATTACH_EXT)
+                or "/down.do" in low
+                or "download.do" in low
+                or ("file_seq=" in low and "data_tp=" in low)
+            )
+            if not is_file or href in seen: continue
+            # Keep only attachments from the same official MFDS host.
+            if "mfds.go.kr" not in low: continue
+            seen.add(href)
+            pretty=label or "첨부파일"
+            pretty=re.sub(r"^(다운로드|첨부파일)\s*[:：-]?\s*","",pretty,flags=re.I) or "첨부파일"
+            out.append({"label":pretty[:120],"url":href})
+            if len(out)>=8:break
         return out
     except Exception:return []
 
