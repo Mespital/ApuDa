@@ -13,7 +13,7 @@ export default async (request, context) => {
     if (!ctx) return res;
     html = await res.text();
     if (!html.includes('apuda-bot.js')) {
-      const tag = `<script src="/assets/apuda-bot.js" data-context="${ctx}" defer></script>`;
+      const tag = `<script src="/assets/apuda-bot.js" data-context="${ctx}" data-pos="left" defer></script>`;
       html = /<\/body>/i.test(html) ? html.replace(/<\/body>(?![\s\S]*<\/body>)/i, tag + '</body>') : html + tag;
     }
     const headers = new Headers(res.headers);
