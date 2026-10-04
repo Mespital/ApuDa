@@ -1,6 +1,8 @@
 {
-  "version": "1.0",
-  "generated_at": "2026-10-04T12:25:32.935250+09:00",
+  "version": "2.0",
+  "generated_at": "2026-10-04T12:08:00+09:00",
   "items": [],
-  "copyright_policy": "NCCN 원문/PDF/알고리즘을 복제하지 않고 공개 버전 정보와 공식 링크만 모니터링합니다."
+  "policy_mode": "link_only_patient_first",
+  "note": "NCCN 버전 변경 자동 추적은 권리정책 확인 전까지 중단했습니다. 최신 변경사항은 NCCN 공식 업데이트 페이지에서 확인합니다.",
+  "updates_url": "https://www.nccn.org/updates"
 }

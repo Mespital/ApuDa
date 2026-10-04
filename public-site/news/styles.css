@@ -424,3 +424,15 @@ a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 32px));m
 .recommended-api-card em{margin-top:auto;padding-top:12px;color:var(--blue);font-style:normal;font-size:10.5px;font-weight:900}
 @media(max-width:900px){.recommended-api-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:620px){.recommended-api-grid{grid-template-columns:1fr}.recommended-api-card{min-height:145px;padding:14px}}
+
+/* NCCN policy-safe patient-first links */
+.nccn-link-card{cursor:default}
+.nccn-link-card:hover{transform:none;border-color:var(--line)}
+.nccn-link-card small{color:var(--muted);line-height:1.45}
+.nccn-actions{display:grid;gap:7px;margin-top:12px}
+.nccn-actions a{display:flex;align-items:center;justify-content:center;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--blue2);font-size:10px;font-weight:900;text-align:center}
+.nccn-actions a:hover{background:#F2F7FF;border-color:#BFD3F0}
+.nccn-actions .nccn-primary{background:var(--blue);border-color:var(--blue);color:#fff}
+.nccn-actions .nccn-primary:hover{background:var(--blue2)}
+.nccn-note b{color:var(--navy)}
+.nccn-note small{color:var(--muted)}
