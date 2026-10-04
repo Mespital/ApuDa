@@ -158,7 +158,10 @@ function supplyOfficialItems(official){
   const src=(official?.sources||[]).find(x=>x.id==='mfds_supply_shortage');
   if(!src||src.status!=='ok')return [];
   const cutoff=Date.now()-365*24*60*60*1000;
-  return (src.records||[]).map(r=>{
+  return (src.records||[]).filter(r=>{
+    const t=[r.item_name,r.shortage_reason,r.patient_impact,r.normalization_plan].join(' ').toLowerCase();
+    return /항암|암환자|암 치료|종양|화학요법|cyclophosphamide|시클로포스파미드|메토트렉세이트|플루오로우라실|독소루비신|빈크리스틴/.test(t);
+  }).map(r=>{
     const report=compactDate(r.report_date||r.shortage_expected_date);
     const ts=report?new Date(report+'T00:00:00+09:00').getTime():0;
     const details=[
