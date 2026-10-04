@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1467e8">
+<meta name="description" content="말하듯 쓰면 정리되는 ApuDa 암환자 노트 — 체온·증상·일정·약·질문을 노트봇으로 기록하고 진료요약 한 장으로 보여주세요.">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+<title>ApuDa 암환자 노트</title>
+<style>
+:root{--blue:#1467e8;--blue2:#0d4fb9;--sky:#eef5ff;--ink:#14213a;--muted:#5d6b80;--line:#e2e8f1;--bg:#f4f7fb;--card:#fff;
+--red:#d92d20;--redbg:#fff1f0;--amber:#b54708;--amberbg:#fff7e6;--green:#087a55;--greenbg:#ecfdf3;--fs:17px;--tab:64px}
+html.big{--fs:20px}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Pretendard","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-size:var(--fs);line-height:1.6;-webkit-tap-highlight-color:transparent}
+button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer}
+a{color:var(--blue2)}
+.app{max-width:680px;margin:0 auto;min-height:100dvh;position:relative}
+/* header */
+.top{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:8px;padding:max(10px,env(safe-area-inset-top)) 14px 10px;background:rgba(244,247,251,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:9px;flex:1;min-width:0}
+.logo i{width:38px;height:38px;border-radius:12px;background:linear-gradient(140deg,var(--blue),#5aa6ff);display:grid;place-items:center;color:#fff;font-style:normal;font-weight:900;font-size:17px;flex:0 0 auto}
+.logo b{display:block;font-size:1.02em;letter-spacing:-.03em;line-height:1.2}.logo small{display:block;font-size:.66em;color:var(--muted);font-weight:700}
+.tbtn{border:1px solid var(--line);background:#fff;border-radius:12px;min-width:44px;height:44px;padding:0 10px;font-weight:900;font-size:.82em}
+.sos{border:0;background:var(--red);color:#fff;border-radius:12px;height:44px;padding:0 13px;font-weight:900;font-size:.86em;box-shadow:0 6px 16px rgba(217,45,32,.3)}
+main{padding:14px 14px calc(var(--tab) + 150px)}
+.view{display:none}.view.on{display:block}
+h2{font-size:1.25em;margin:4px 2px 12px;letter-spacing:-.03em}
+h3{font-size:1.02em;margin:0 0 8px;letter-spacing:-.02em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;margin-bottom:12px;box-shadow:0 4px 14px rgba(30,55,90,.04)}
+.muted{color:var(--muted)}.small{font-size:.8em}
+.row{display:flex;align-items:center;gap:10px}.between{justify-content:space-between}
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:999px;font-size:.72em;font-weight:900;background:var(--sky);color:var(--blue2)}
+.pill.red{background:var(--redbg);color:var(--red)}.pill.amber{background:var(--amberbg);color:var(--amber)}.pill.green{background:var(--greenbg);color:var(--green)}.pill.gray{background:#eef1f5;color:#5d6b80}
+.btn{border:0;border-radius:14px;min-height:48px;padding:0 16px;font-weight:900;font-size:.9em;display:inline-flex;align-items:center;justify-content:center;gap:6px;text-decoration:none}
+.btn.primary{background:var(--blue);color:#fff}.btn.soft{background:var(--sky);color:var(--blue2)}.btn.line{background:#fff;border:1px solid var(--line);color:var(--ink)}
+.btn.red{background:var(--red);color:#fff}.btn.sm{min-height:38px;padding:0 12px;font-size:.78em;border-radius:11px}.btn.block{width:100%}
+.empty{padding:18px;text-align:center;color:var(--muted);border:1.5px dashed #cfd8e5;border-radius:16px;font-size:.88em}
+input,select,textarea{width:100%;border:1.5px solid #d6dee9;border-radius:13px;background:#fff;padding:11px 12px;outline:none;min-height:48px}
+input:focus,textarea:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(20,103,232,.12)}
+label{display:block;font-size:.78em;font-weight:900;color:#3b4a60;margin:10px 0 5px}
+/* today summary */
+.hello{font-size:1.28em;font-weight:900;letter-spacing:-.04em;line-height:1.35;margin:4px 2px 12px}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:12px}
+.tile{background:#fff;border:1px solid var(--line);border-radius:16px;padding:11px 11px 10px;text-align:left;min-height:92px}
+.tile small{display:block;color:var(--muted);font-size:.68em;font-weight:900}
+.tile b{display:block;font-size:.92em;line-height:1.35;margin-top:4px;letter-spacing:-.02em;word-break:keep-all}
+.callrow{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+/* chat */
+.thread{display:flex;flex-direction:column;gap:10px}
+.msg{max-width:88%;padding:11px 14px;border-radius:18px;font-size:.92em;line-height:1.6;word-break:keep-all;overflow-wrap:anywhere}
+.msg.me{align-self:flex-end;background:var(--blue);color:#fff;border-bottom-right-radius:6px}
+.msg.bot{align-self:flex-start;background:#fff;border:1px solid var(--line);border-bottom-left-radius:6px}
+.msg.bot.red{background:var(--redbg);border-color:#fecaca}.msg.bot.amber{background:var(--amberbg);border-color:#fde3a7}
+.msg ul,.msg ol{margin:6px 0 2px;padding-left:20px}.msg p{margin:6px 0}
+.msg .saved{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.msg .saved span{padding:3px 8px;border-radius:8px;background:var(--greenbg);color:var(--green);font-size:.8em;font-weight:900}
+.acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.acts button,.acts a{border:1px solid #cfdcf0;background:#fff;color:var(--blue2);border-radius:11px;min-height:38px;padding:0 11px;font-weight:900;font-size:.8em;display:inline-flex;align-items:center;text-decoration:none}
+.acts .undo{color:#5d6b80;border-color:var(--line)}
+.acts .danger{background:var(--red);color:#fff;border-color:var(--red)}
+.qr{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.qr button{border:0;background:var(--sky);color:var(--blue2);border-radius:999px;min-height:40px;padding:0 13px;font-weight:900;font-size:.82em}
+.composer{position:fixed;left:0;right:0;bottom:var(--tab);z-index:35;padding:8px 12px 10px;background:linear-gradient(transparent,var(--bg) 22%)}
+.composer .in{max-width:656px;margin:0 auto}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px 2px 8px}.chips::-webkit-scrollbar{display:none}
+.chips button{flex:0 0 auto;border:1px solid var(--line);background:#fff;border-radius:999px;min-height:40px;padding:0 13px;font-weight:900;font-size:.8em;color:#2c3e57;box-shadow:0 2px 8px rgba(30,55,90,.06)}
+.inbar{display:flex;gap:8px;align-items:flex-end;background:#fff;border:1.5px solid #cdd9ea;border-radius:20px;padding:6px 6px 6px 14px;box-shadow:0 8px 24px rgba(30,55,90,.12)}
+.inbar textarea{border:0;box-shadow:none;padding:9px 0;min-height:44px;max-height:120px;resize:none;line-height:1.45}
+.inbar .send{flex:0 0 auto;width:48px;height:48px;border-radius:15px;border:0;background:var(--blue);color:#fff;font-size:1.15em;font-weight:900}
+.inbar .mic{flex:0 0 auto;width:44px;height:48px;border-radius:15px;border:0;background:var(--sky);color:var(--blue2);font-size:1.1em}
+.inbar .mic.rec{background:var(--red);color:#fff}
+/* tabs */
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:45;height:calc(var(--tab) + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom);background:#fff;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr)}
+.tabs button{border:0;background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;font-size:.7em;font-weight:900;color:#7a8799}
+.tabs button span{font-size:1.45em;line-height:1}
+.tabs button.on{color:var(--blue)}
+/* lists */
+.item{padding:12px 0;border-top:1px solid var(--line)}.item:first-of-type{border-top:0}
+.item h4{margin:4px 0 2px;font-size:.98em;letter-spacing:-.02em}
+.item .meta{font-size:.8em;color:var(--muted)}
+.item.done h4{text-decoration:line-through;color:#8a96a8}
+.addline{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;margin-top:10px}
+.addline.three{grid-template-columns:150px minmax(0,1fr) auto}
+.seg{display:flex;gap:6px;margin-bottom:12px}.seg button{flex:1;border:1px solid var(--line);background:#fff;border-radius:12px;min-height:44px;font-weight:900;font-size:.82em;color:#4a5a70}.seg button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+/* chart */
+.chart{width:100%;height:150px;display:block}
+.legend{display:flex;gap:14px;font-size:.74em;font-weight:900;color:var(--muted);margin-top:6px}.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+.logrow{display:grid;grid-template-columns:92px 1fr auto;gap:10px;align-items:start;padding:11px 0;border-top:1px solid var(--line);font-size:.86em}
+.logrow:first-child{border-top:0}
+.logrow b{font-size:.92em}
+.range{display:flex;align-items:center;gap:12px}.range input{padding:0;min-height:36px;border:0;box-shadow:none}
+.range output{font-size:1.5em;font-weight:900;min-width:36px;text-align:center}
+/* summary */
+.sum h3{display:flex;align-items:center;gap:8px;font-size:.95em;margin:0 0 8px;color:#253650}
+.sum table{width:100%;border-collapse:collapse;font-size:.84em}
+.sum th,.sum td{text-align:left;padding:7px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+.sum th{color:var(--muted);font-weight:900;white-space:nowrap;width:30%}
+.sum td.warn{color:var(--red);font-weight:900}
+.sumhead{background:linear-gradient(135deg,#0f5bce,#3b8cf6);color:#fff;border:0}
+.sumhead .muted{color:rgba(255,255,255,.85)}
+/* sheets */
+.sheet{position:fixed;inset:0;z-index:60;display:none;background:rgba(10,22,40,.5);align-items:flex-end;justify-content:center}
+.sheet.open{display:flex}
+.sheet .panel{width:100%;max-width:680px;max-height:94dvh;overflow:auto;background:var(--bg);border-radius:24px 24px 0 0;padding:16px 14px calc(20px + env(safe-area-inset-bottom))}
+.sheet .grab{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.sheet .grab h2{margin:0}
+.sos-calls{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.sos-calls .btn{min-height:58px;font-size:.95em}
+.chk{display:flex;gap:12px;align-items:flex-start;padding:12px;border:1.5px solid var(--line);border-radius:14px;background:#fff;margin-bottom:8px;cursor:pointer}
+.chk input{width:24px;height:24px;min-height:0;flex:0 0 auto;margin-top:2px;accent-color:var(--red)}
+.chk b{display:block;font-size:.92em;line-height:1.4}.chk small{display:block;color:var(--muted);font-size:.76em;line-height:1.45;margin-top:2px}
+.chk:has(input:checked){border-color:var(--red);background:var(--redbg)}
+.result{border-radius:16px;padding:14px;margin:12px 0;font-size:.9em}
+.result.red{background:var(--red);color:#fff}.result.amber{background:var(--amberbg);border:1px solid #fde3a7;color:#7a2e0e}.result.none{background:#fff;border:1px solid var(--line);color:var(--muted)}
+.note-foot{font-size:.74em;color:var(--muted);line-height:1.6;padding:6px 4px}
+.toast{position:fixed;left:50%;bottom:calc(var(--tab) + 120px);transform:translateX(-50%);background:#14213a;color:#fff;padding:10px 16px;border-radius:12px;font-size:.84em;font-weight:800;z-index:90;opacity:0;transition:.2s;pointer-events:none}
+.toast.on{opacity:1}
+@media print{
+  .top,.tabs,.composer,.noprint,.sheet{display:none!important}
+  main{padding:0}.view{display:none!important}#v-summary{display:block!important}
+  body{background:#fff;font-size:12px}.card{box-shadow:none;break-inside:avoid}.sumhead{background:#fff;color:#000;border:1px solid #000}.sumhead .muted{color:#333}
+}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top">
+  <div class="logo"><i>A</i><div><b>암환자 노트</b><small>ApuDa · 말하듯 쓰면 정리돼요</small></div></div>
+  <button class="tbtn" id="fontBtn" aria-label="글자 크기">가<span style="font-size:1.25em">가</span></button>
+  <button class="tbtn" onclick="openSheet('settings')" aria-label="내 정보와 설정">⚙︎</button>
+  <button class="sos" onclick="openSheet('sos')">🚨 응급</button>
+</header>
+
+<main>
+<!-- 오늘(노트봇) -->
+<section class="view on" id="v-today">
+  <div class="hello" id="hello"></div>
+  <div class="tiles" id="tiles"></div>
+  <div class="callrow" id="callrow"></div>
+  <div class="thread" id="thread" aria-live="polite"></div>
+</section>
+
+<!-- 일정·약·질문 -->
+<section class="view" id="v-plan">
+  <h2>일정 · 약 · 질문</h2>
+  <div class="seg" id="planSeg"><button data-p="sched" class="on">📅 일정</button><button data-p="meds">💊 약</button><button data-p="qs">❓ 질문</button></div>
+  <div id="planBody"></div>
+</section>
+
+<!-- 기록 -->
+<section class="view" id="v-log">
+  <h2>몸 상태 기록</h2>
+  <div class="card"><div class="row between"><h3>최근 14일 흐름</h3><span class="small muted" id="chartNote"></span></div><div id="chart"></div>
+    <div class="legend"><span><i style="background:#d92d20"></i>체온(℃)</span><span><i style="background:#1467e8"></i>통증(0–10)</span><span><i style="background:#8fb8f5"></i>식사량</span></div></div>
+  <div class="card"><h3>마음 온도계 <span class="small muted">0(편안) ~ 10(매우 힘듦)</span></h3>
+    <div class="range"><input type="range" min="0" max="10" step="1" id="distress"><output id="distressOut">0</output><button class="btn soft sm" onclick="saveDistress()">기록</button></div>
+    <div id="distressAdvice" class="small" style="margin-top:6px"></div></div>
+  <div class="card"><div class="row between"><h3>날짜별 기록</h3><button class="btn soft sm" onclick="tab('today');prefill('체온 ')">+ 기록</button></div><div id="logList"></div></div>
+</section>
+
+<!-- 진료요약 -->
+<section class="view sum" id="v-summary">
+  <div class="row between noprint" style="margin-bottom:10px"><h2 style="margin:0">진료요약 한 장</h2><div class="row"><button class="btn line sm" onclick="window.print()">🖨 인쇄·PDF</button></div></div>
+  <p class="small muted noprint" style="margin:-4px 2px 12px">진료실에서 이 화면을 의료진에게 그대로 보여주세요.</p>
+  <div id="summary"></div>
+</section>
+</main>
+
+<div class="composer" id="composer">
+  <div class="in">
+    <div class="chips" id="chips">
+      <button data-c="temp">🌡️ 체온</button><button data-c="pain">😣 통증</button><button data-c="meal">🍚 식사</button>
+      <button data-c="sched">📅 일정</button><button data-c="med">💊 약</button><button data-c="q">❓ 질문 메모</button>
+      <button data-c="sym">🤒 증상 상담</button><button data-c="help">💡 사용법</button>
+    </div>
+    <form class="inbar" id="inbar" autocomplete="off">
+      <textarea id="input" rows="1" placeholder="예) 열 37.8 / 통증 5점 / 다음주 화 10시 항암" aria-label="노트봇에게 쓰기"></textarea>
+      <button type="button" class="mic" id="mic" aria-label="음성 입력" hidden>🎤</button>
+      <button class="send" aria-label="보내기">↑</button>
+    </form>
+  </div>
+</div>
+
+<nav class="tabs" id="tabs">
+  <button data-t="today" class="on"><span>💬</span>오늘</button>
+  <button data-t="plan"><span>📅</span>일정·약</button>
+  <button data-t="log"><span>📈</span>기록</button>
+  <button data-t="summary"><span>📄</span>진료요약</button>
+</nav>
+</div>
+
+<!-- 응급 시트 -->
+<div class="sheet" id="sh-sos" onclick="if(event.target===this)closeSheet()">
+<div class="panel">
+  <div class="grab"><h2>지금 병원에 연락해야 하나요?</h2><button class="tbtn" onclick="closeSheet()">닫기</button></div>
+  <div class="sos-calls" id="sosCalls"></div>
+  <div id="triageResult" class="result none">해당하는 항목을 눌러 보세요.</div>
+  <div class="card" style="border-color:#fecaca">
+    <h3 style="color:var(--red)">하나라도 있으면 지금 바로 연락</h3>
+    <div id="redList"></div>
+  </div>
+  <div class="card">
+    <h3 style="color:var(--amber)">오늘 안에 의료진 상담</h3>
+    <div id="amberList"></div>
+  </div>
+  <p class="note-foot">병원이 따로 알려준 기준이 있으면 그 기준이 우선입니다. 해열제로 열을 먼저 내리지 말고 병원에 먼저 연락하세요. 숨쉬기 힘들거나 의식이 처지면 119가 우선입니다. 이 화면은 진단을 대신하지 않습니다.</p>
+</div></div>
+
+<!-- 설정 시트 -->
+<div class="sheet" id="sh-settings" onclick="if(event.target===this)closeSheet()">
+<div class="panel">
+  <div class="grab"><h2>내 정보 · 설정</h2><button class="tbtn" onclick="closeSheet()">닫기</button></div>
+  <form class="card" id="profileForm">
+    <h3>내 치료 정보 <span class="small muted">모르면 비워두세요</span></h3>
+    <label>이름(호칭)</label><input name="name" placeholder="예) 김OO">
+    <label>암종 · 병기</label><div class="row"><input name="cancer" placeholder="예) 폐암"><input name="stage" placeholder="예) 3기 / 확인 중"></div>
+    <label>현재 치료</label><input name="treatment" placeholder="예) 항암(4주 간격) / 표적치료제">
+    <label>치료 병원</label><input name="hospital" placeholder="예) OO대학교병원 종양내과">
+    <label>병원 연락처(주간)</label><input name="dayPhone" inputmode="tel" placeholder="예) 02-1234-5678">
+    <label>야간·응급 연락처</label><input name="nightPhone" inputmode="tel" placeholder="예) 응급실 02-1234-0000">
+    <label>알레르기 · 바이오마커 · 기타</label><input name="biomarkers" placeholder="예) 페니실린 알레르기, EGFR 양성">
+    <button class="btn primary block" style="margin-top:14px">저장</button>
+  </form>
+  <div class="card">
+    <h3>기록 보관</h3>
+    <p class="small muted" style="margin:0 0 10px">기록은 이 기기 안에만 저장되고 아프다 서버로 전송되지 않습니다. 폰을 바꾸기 전에 파일로 내려받아 두세요.</p>
+    <div class="row" style="flex-wrap:wrap"><button class="btn soft sm" onclick="exportData()">⬇ 백업 파일 받기</button><label class="btn line sm" style="margin:0">⬆ 백업 불러오기<input type="file" accept="application/json" hidden onchange="importData(this)"></label></div>
+    <div id="apuda-backup-panel" style="margin-top:12px"></div>
+  </div>
+  <div class="card">
+    <h3>함께 보는 가족</h3>
+    <p class="small muted" style="margin:0">보호자가 대신 기록해도 됩니다. 같은 기기에서 쓰거나, 백업 파일을 보호자 폰에서 불러오면 같은 기록을 볼 수 있어요.</p>
+  </div>
+  <div class="card">
+    <h3>모두 지우기</h3>
+    <p class="small muted" style="margin:0 0 10px">공용 기기라면 사용 후 지워 주세요. 되돌릴 수 없습니다.</p>
+    <button class="btn line sm" style="color:var(--red)" onclick="resetAll()">모든 기록 삭제</button>
+  </div>
+  <p class="note-foot">ApuDa 암환자 노트 v3.0 · 이 노트는 기록과 정리를 돕는 도구이며 진단·처방·약 용량을 판단하지 않습니다. 치료 결정은 담당 의료진과 상의하세요. · <a href="/">ApuDa 홈</a></p>
+</div></div>
+
+<div class="toast" id="toast"></div>
+
+<script src="note-kb.js"></script>
+<script src="note-app.js"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="apuda-backup.js" defer></script>
+</body>
+</html>

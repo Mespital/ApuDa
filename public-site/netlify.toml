@@ -33,18 +33,16 @@
   force = true
 
 
-# ApuDa Note — cancer treatment notebook (separate from general ApuDa Care)
-[[redirects]]
-  from = "/note"
-  to = "/note/"
-  status = 301
-  force = true
+# ApuDa 암환자 노트 v3 — public-site/note/ 에서 직접 서비스 (기존 외부 프록시 제거)
+[[headers]]
+  for = "/note/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"
 
-[[redirects]]
-  from = "/note/*"
-  to = "https://apuda-care.netlify.app/:splat"
-  status = 200
-  force = true
+[[headers]]
+  for = "/note/index.html"
+  [headers.values]
+    Cache-Control = "no-cache"
 
 [[headers]]
   for = "/assets/books/*"
