@@ -94,8 +94,9 @@ function card(n){
   const cancer=cancersOf(n)[0]||'';
   const guide=nccnByCancer[cancer];
   const evidence='<div class="evidence-links">'+
-    (guide?'<a href="'+esc(guide.official_url)+'" target="_blank" rel="noopener noreferrer" class="evidence-chip">NCCN '+esc(guide.version||'최신')+' ↗</a>':'')+
-    '<a href="https://www.data.go.kr/data/15095677/openapi.do" target="_blank" rel="noopener noreferrer" class="evidence-chip">식약처 허가정보 ↗</a>'+
+    (guide?'<a href="'+esc(guide.official_url)+'" target="_blank" rel="noopener noreferrer" class="evidence-chip">NCCN 공개 버전 '+esc(guide.version||'확인')+' ↗</a>':'')+
+    '<a href="https://www.data.go.kr/data/15095677/openapi.do" target="_blank" rel="noopener noreferrer" class="evidence-chip">식약처 공식 조회 ↗</a>'+
+    (labels.some(x=>String(x).includes('급여'))?'<a href="https://www.hira.or.kr/rc/insu/insuadtcrtr/InsuAdtCrtrList.do?pgmid=HIRAA030069000400" target="_blank" rel="noopener noreferrer" class="evidence-chip">심평원 급여기준 조회 ↗</a>':'')+
     '</div>';
   const body='<div class="newsroom-body"><div class="newsroom-meta"><span class="newsroom-badge">'+esc(tag)+'</span><span class="freshness '+freshClass(n)+'">'+freshText(n)+'</span><span>'+esc(pub)+'</span></div><h3>'+esc(n.title)+'</h3><p class="newsroom-summary">'+esc(summary)+'</p>'+(patient?'<div class="patient-meaning"><b>환자에게 의미</b><span>'+esc(patient)+'</span>'+(labels.length?'<small>'+esc(labels.join(' · '))+'</small>':'')+'</div>':'')+evidence+'<div class="newsroom-foot"><span>'+esc(formatTime(n.published_at,n.published_at_verified))+'</span><em>'+(u?'뉴스 원문 보기 →':'뉴스 원문 링크 확인 중')+'</em></div></div>';
   const cls='newsroom-card'+(img?' has-thumb':'')+(u?' card-openable':'');
