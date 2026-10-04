@@ -475,3 +475,33 @@ a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 32px));m
   .nccn-patient-ref{grid-template-columns:1fr;padding:16px;border-radius:16px}
   .nccn-patient-cta{width:100%}
 }
+
+/* Official drug brief — newspaper-like editorial treatment */
+.drug-brief-section{margin-top:28px}
+.drug-brief-tabs{display:flex;gap:8px;margin:0 0 14px}
+.drug-brief-tabs button{border:1px solid var(--line);background:#fff;color:#53677B;border-radius:999px;padding:8px 13px;font:inherit;font-size:11px;font-weight:900;cursor:pointer}
+.drug-brief-tabs button.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.drug-newspaper{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.drug-paper-card{position:relative;display:flex;flex-direction:column;min-height:245px;padding:18px 18px 16px;border:1px solid #DCE5EE;border-radius:2px;background:#fff;box-shadow:0 8px 24px rgba(16,42,67,.035)}
+.drug-paper-card:before{content:"";position:absolute;left:18px;right:18px;top:52px;border-top:1px solid #DCE5EE}
+.drug-paper-top{display:flex;justify-content:space-between;gap:10px;align-items:center;padding-bottom:18px;color:#607386;font-size:9.5px;font-weight:900;letter-spacing:.08em}
+.drug-paper-top span{color:var(--blue2)}
+.drug-paper-card.supply .drug-paper-top span{color:#A06000}
+.drug-paper-card h3{margin:15px 0 8px;color:var(--navy);font-size:19px;line-height:1.35;letter-spacing:-.02em}
+.drug-deck{margin:0;color:#465B70;font-size:12px;line-height:1.65}
+.drug-detail{margin:12px 0 0;padding-top:10px;border-top:1px solid #EDF2F7;color:#607386;font-size:10.5px;line-height:1.55}
+.drug-detail b{color:var(--navy)}
+.drug-impact{margin:12px 0 0;padding:11px 12px;background:#F7FAFD;border-left:3px solid #D0DFEF}
+.drug-impact b{display:block;margin-bottom:4px;color:var(--navy);font-size:10px}
+.drug-impact p{margin:0;color:#53677B;font-size:10.5px;line-height:1.55}
+.drug-paper-foot{display:flex;flex-wrap:wrap;gap:6px 9px;align-items:center;margin-top:auto;padding-top:14px;color:#738395;font-size:9.5px}
+.drug-tag{display:inline-flex;padding:4px 7px;border-radius:999px;background:#EEF5FF;color:var(--blue2);font-weight:900}
+.drug-tag.rare{background:#FFF2E1;color:#9B5A00}
+.drug-brief-source{margin:10px 0 0;color:var(--muted);font-size:10px;line-height:1.5}
+@media(max-width:900px){.drug-newspaper{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){
+  .drug-newspaper{grid-template-columns:1fr;gap:10px}
+  .drug-paper-card{min-height:0;padding:16px;border-radius:14px}
+  .drug-paper-card:before{left:16px;right:16px}
+  .drug-paper-card h3{font-size:17px}
+}
