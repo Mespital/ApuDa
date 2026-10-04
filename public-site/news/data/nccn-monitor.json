@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "generated_at": "2026-10-04T12:08:00+09:00",
+  "generated_at": "2026-10-04T12:32:38.400643+09:00",
   "policy_mode": "link_only_patient_first",
   "patient_url": "https://www.nccn.org/patientguidelines",
   "clinical_url": "https://www.nccn.org/guidelines/category_1",
@@ -12,12 +12,12 @@
       "version": null,
       "previous_version": null,
       "updated": false,
-      "checked_at": "2026-10-04T12:08:00+09:00",
+      "checked_at": "2026-10-04T12:32:38.400643+09:00",
       "patient_url": "https://www.nccn.org/patientguidelines",
       "clinical_url": "https://www.nccn.org/guidelines/category_1",
       "updates_url": "https://www.nccn.org/updates",
       "source": "NCCN",
-      "note": "환자용 공식 페이지를 기본 링크로 제공하며, NCCN 가이드라인 콘텐츠는 자동 수집·저장·요약·재배포하지 않습니다."
+      "note": "환자용 공식 페이지를 기본 링크로 제공하며, NCCN 가이드라인 본문·PDF·알고리즘·표·그림·변경내용을 자동 수집하거나 저장·요약·재배포하지 않습니다."
     },
     {
       "cancer": "폐암",
@@ -25,12 +25,12 @@
       "version": null,
       "previous_version": null,
       "updated": false,
-      "checked_at": "2026-10-04T12:08:00+09:00",
+      "checked_at": "2026-10-04T12:32:38.400643+09:00",
       "patient_url": "https://www.nccn.org/patientguidelines",
       "clinical_url": "https://www.nccn.org/guidelines/category_1",
       "updates_url": "https://www.nccn.org/updates",
       "source": "NCCN",
-      "note": "환자용 공식 페이지를 기본 링크로 제공하며, NCCN 가이드라인 콘텐츠는 자동 수집·저장·요약·재배포하지 않습니다."
+      "note": "환자용 공식 페이지를 기본 링크로 제공하며, NCCN 가이드라인 본문·PDF·알고리즘·표·그림·변경내용을 자동 수집하거나 저장·요약·재배포하지 않습니다."
     },
     {
       "cancer": "위암",
@@ -38,12 +38,12 @@
       "version": null,
       "previous_version": null,
       "updated": false,
-      "checked_at": "2026-10-04T12:08:00+09:00",
+      "checked_at": "2026-10-04T12:32:38.400643+09:00",
       "patient_url": "https://www.nccn.org/patientguidelines",
       "clinical_url": "https://www.nccn.org/guidelines/category_1",
       "updates_url": "https://www.nccn.org/updates",
       "source": "NCCN",
-      "note": "환자용 공식 페이지를 기본 링크로 제공하며, NCCN 가이드라인 콘텐츠는 자동 수집·저장·요약·재배포하지 않습니다."
+      "note": "환자용 공식 페이지를 기본 링크로 제공하며, NCCN 가이드라인 본문·PDF·알고리즘·표·그림·변경내용을 자동 수집하거나 저장·요약·재배포하지 않습니다."
     },
     {
       "cancer": "대장암",
@@ -51,12 +51,12 @@
       "version": null,
       "previous_version": null,
       "updated": false,
-      "checked_at": "2026-10-04T12:08:00+09:00",
+      "checked_at": "2026-10-04T12:32:38.400643+09:00",
       "patient_url": "https://www.nccn.org/patientguidelines",
       "clinical_url": "https://www.nccn.org/guidelines/category_1",
       "updates_url": "https://www.nccn.org/updates",
       "source": "NCCN",
-      "note": "환자용 공식 페이지를 기본 링크로 제공하며, NCCN 가이드라인 콘텐츠는 자동 수집·저장·요약·재배포하지 않습니다."
+      "note": "환자용 공식 페이지를 기본 링크로 제공하며, NCCN 가이드라인 본문·PDF·알고리즘·표·그림·변경내용을 자동 수집하거나 저장·요약·재배포하지 않습니다."
     },
     {
       "cancer": "갑상선암",
@@ -64,12 +64,12 @@
       "version": null,
       "previous_version": null,
       "updated": false,
-      "checked_at": "2026-10-04T12:08:00+09:00",
+      "checked_at": "2026-10-04T12:32:38.400643+09:00",
       "patient_url": "https://www.nccn.org/patientguidelines",
       "clinical_url": "https://www.nccn.org/guidelines/category_1",
       "updates_url": "https://www.nccn.org/updates",
       "source": "NCCN",
-      "note": "환자용 공식 페이지를 기본 링크로 제공하며, NCCN 가이드라인 콘텐츠는 자동 수집·저장·요약·재배포하지 않습니다."
+      "note": "환자용 공식 페이지를 기본 링크로 제공하며, NCCN 가이드라인 본문·PDF·알고리즘·표·그림·변경내용을 자동 수집하거나 저장·요약·재배포하지 않습니다."
     },
     {
       "cancer": "신장암",
@@ -77,12 +77,12 @@
       "version": null,
       "previous_version": null,
       "updated": false,
-      "checked_at": "2026-10-04T12:08:00+09:00",
+      "checked_at": "2026-10-04T12:32:38.400643+09:00",
       "patient_url": "https://www.nccn.org/patientguidelines",
       "clinical_url": "https://www.nccn.org/guidelines/category_1",
       "updates_url": "https://www.nccn.org/updates",
       "source": "NCCN",
-      "note": "환자용 공식 페이지를 기본 링크로 제공하며, NCCN 가이드라인 콘텐츠는 자동 수집·저장·요약·재배포하지 않습니다."
+      "note": "환자용 공식 페이지를 기본 링크로 제공하며, NCCN 가이드라인 본문·PDF·알고리즘·표·그림·변경내용을 자동 수집하거나 저장·요약·재배포하지 않습니다."
     },
     {
       "cancer": "전립선암",
@@ -90,12 +90,12 @@
       "version": null,
       "previous_version": null,
       "updated": false,
-      "checked_at": "2026-10-04T12:08:00+09:00",
+      "checked_at": "2026-10-04T12:32:38.400643+09:00",
       "patient_url": "https://www.nccn.org/patientguidelines",
       "clinical_url": "https://www.nccn.org/guidelines/category_1",
       "updates_url": "https://www.nccn.org/updates",
       "source": "NCCN",
-      "note": "환자용 공식 페이지를 기본 링크로 제공하며, NCCN 가이드라인 콘텐츠는 자동 수집·저장·요약·재배포하지 않습니다."
+      "note": "환자용 공식 페이지를 기본 링크로 제공하며, NCCN 가이드라인 본문·PDF·알고리즘·표·그림·변경내용을 자동 수집하거나 저장·요약·재배포하지 않습니다."
     },
     {
       "cancer": "췌장암",
@@ -103,12 +103,12 @@
       "version": null,
       "previous_version": null,
       "updated": false,
-      "checked_at": "2026-10-04T12:08:00+09:00",
+      "checked_at": "2026-10-04T12:32:38.400643+09:00",
       "patient_url": "https://www.nccn.org/patientguidelines",
       "clinical_url": "https://www.nccn.org/guidelines/category_1",
       "updates_url": "https://www.nccn.org/updates",
       "source": "NCCN",
-      "note": "환자용 공식 페이지를 기본 링크로 제공하며, NCCN 가이드라인 콘텐츠는 자동 수집·저장·요약·재배포하지 않습니다."
+      "note": "환자용 공식 페이지를 기본 링크로 제공하며, NCCN 가이드라인 본문·PDF·알고리즘·표·그림·변경내용을 자동 수집하거나 저장·요약·재배포하지 않습니다."
     },
     {
       "cancer": "담도암",
@@ -116,12 +116,12 @@
       "version": null,
       "previous_version": null,
       "updated": false,
-      "checked_at": "2026-10-04T12:08:00+09:00",
+      "checked_at": "2026-10-04T12:32:38.400643+09:00",
       "patient_url": "https://www.nccn.org/patientguidelines",
       "clinical_url": "https://www.nccn.org/guidelines/category_1",
       "updates_url": "https://www.nccn.org/updates",
       "source": "NCCN",
-      "note": "환자용 공식 페이지를 기본 링크로 제공하며, NCCN 가이드라인 콘텐츠는 자동 수집·저장·요약·재배포하지 않습니다."
+      "note": "환자용 공식 페이지를 기본 링크로 제공하며, NCCN 가이드라인 본문·PDF·알고리즘·표·그림·변경내용을 자동 수집하거나 저장·요약·재배포하지 않습니다."
     },
     {
       "cancer": "간암",
@@ -129,12 +129,12 @@
       "version": null,
       "previous_version": null,
       "updated": false,
-      "checked_at": "2026-10-04T12:08:00+09:00",
+      "checked_at": "2026-10-04T12:32:38.400643+09:00",
       "patient_url": "https://www.nccn.org/patientguidelines",
       "clinical_url": "https://www.nccn.org/guidelines/category_1",
       "updates_url": "https://www.nccn.org/updates",
       "source": "NCCN",
-      "note": "환자용 공식 페이지를 기본 링크로 제공하며, NCCN 가이드라인 콘텐츠는 자동 수집·저장·요약·재배포하지 않습니다."
+      "note": "환자용 공식 페이지를 기본 링크로 제공하며, NCCN 가이드라인 본문·PDF·알고리즘·표·그림·변경내용을 자동 수집하거나 저장·요약·재배포하지 않습니다."
     },
     {
       "cancer": "림프종",
@@ -142,12 +142,12 @@
       "version": null,
       "previous_version": null,
       "updated": false,
-      "checked_at": "2026-10-04T12:08:00+09:00",
+      "checked_at": "2026-10-04T12:32:38.400643+09:00",
       "patient_url": "https://www.nccn.org/patientguidelines",
       "clinical_url": "https://www.nccn.org/guidelines/category_1",
       "updates_url": "https://www.nccn.org/updates",
       "source": "NCCN",
-      "note": "환자용 공식 페이지를 기본 링크로 제공하며, NCCN 가이드라인 콘텐츠는 자동 수집·저장·요약·재배포하지 않습니다."
+      "note": "환자용 공식 페이지를 기본 링크로 제공하며, NCCN 가이드라인 본문·PDF·알고리즘·표·그림·변경내용을 자동 수집하거나 저장·요약·재배포하지 않습니다."
     },
     {
       "cancer": "자궁경부암",
@@ -155,15 +155,15 @@
       "version": null,
       "previous_version": null,
       "updated": false,
-      "checked_at": "2026-10-04T12:08:00+09:00",
+      "checked_at": "2026-10-04T12:32:38.400643+09:00",
       "patient_url": "https://www.nccn.org/patientguidelines",
       "clinical_url": "https://www.nccn.org/guidelines/category_1",
       "updates_url": "https://www.nccn.org/updates",
       "source": "NCCN",
-      "note": "환자용 공식 페이지를 기본 링크로 제공하며, NCCN 가이드라인 콘텐츠는 자동 수집·저장·요약·재배포하지 않습니다."
+      "note": "환자용 공식 페이지를 기본 링크로 제공하며, NCCN 가이드라인 본문·PDF·알고리즘·표·그림·변경내용을 자동 수집하거나 저장·요약·재배포하지 않습니다."
     }
   ],
   "copyright_policy": "NCCN 콘텐츠 재사용 권한이 별도로 확인되기 전까지 ApuDa는 환자용 공식 페이지와 전문가용 공식 페이지 링크만 제공합니다.",
-  "trademark_notice": "ApuDa는 NCCN과 제휴·후원 관계가 아닙니다.",
-  "automation_policy": "NCCN 가이드라인 본문/PDF/알고리즘/도표를 자동 수집하거나 AI 처리하지 않습니다."
+  "trademark_notice": "ApuDa는 NCCN과 제휴·후원 관계가 아닙니다. NCCN 관련 명칭은 공식 자료의 출처를 식별하기 위한 용도로만 사용합니다.",
+  "automation_policy": "NCCN 가이드라인 본문/PDF/알고리즘/도표를 자동 수집하거나 AI 처리하지 않습니다. 최신 버전과 변경사항은 NCCN 공식 사이트에서 확인하도록 안내합니다."
 }
