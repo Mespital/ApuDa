@@ -51,7 +51,7 @@ function curCancer(){var q=new URLSearchParams(location.search).get('cancer');re
 var CONF={
  home:{t:'ApuDa 길잡이',g:'안녕하세요, <b>ApuDa 길잡이</b>예요. 지금 필요한 것을 말씀하시면 맞는 층으로 바로 안내해 드려요.',chips:[['🎗️ 내 암종 정보','암종 고르기'],['📖 진단 첫 30일 책','첫 30일 책'],['📘 체온·증상 기록','노트'],['💰 치료비 지원','치료비 지원'],['🚨 응급 증상','응급'],['💡 ApuDa 소개','ApuDa 소개']]},
  about:{t:'ApuDa 길잡이',g:'궁금한 서비스를 말씀하시면 사용법을 알려드리고 바로 데려다 드려요.',chips:[['🏢 층별 안내','전체 메뉴'],['🎗️ 내 암종 정보','암종 고르기'],['📘 노트 사용법','노트 사용법'],['💊 약 찾기','항암제']]},
- mini:{t:'무료 웹북 도우미',g:function(){var c=curCancer();return '<b>'+(c?c[1]+' ':'')+'첫 30일 웹북</b>을 보고 계세요. 왼쪽(모바일은 위) 목차로 이동하고, PDF는 상단 <b>⬇ 다운로드</b>에서 코드를 넣으면 받을 수 있어요.'},chips:[['⬇ 다운로드 방법','다운로드 방법'],['❓ 이 암 FAQ','이 암 FAQ'],['🗺️ 이 암 치료결정 지도','이 암 치료지도'],['💊 관련 항암제','이 암 약'],['📚 다른 암종 책','다른 암종 책']]},
+ mini:{t:'무료 웹북 도우미',g:function(){var c=curCancer();return '<b>'+(c?c[1]+' ':'')+'첫 30일 웹북</b>을 보고 계세요. 앞부분은 무료 미리보기예요. <b>책 전체</b>는 인스타그램 @apuda.app 팔로우 → “30일” 댓글 → DM 코드로 받을 수 있어요.'},chips:[['⬇ 다운로드 방법','다운로드 방법'],['❓ 이 암 FAQ','이 암 FAQ'],['🗺️ 이 암 치료결정 지도','이 암 치료지도'],['💊 관련 항암제','이 암 약'],['📚 다른 암종 책','다른 암종 책']]},
  faq:{t:'FAQ 도우미',g:'질문을 눌러 펼쳐 보세요. 진료 때 물어볼 질문은 <b>노트에 저장</b>해 두면 진료요약에 모여요.',chips:[['📖 첫 30일 책 읽기','이 암 책'],['🗺️ 치료결정 지도','이 암 치료지도'],['📘 질문 노트에 저장','질문 저장 방법']]},
  drugs:{t:'Drug Hub 도우미',g:'<b>약 이름을 그대로</b> 써 주세요(상품명·성분명 모두 OK). 기전·부작용·공급상태·뉴스를 바로 보여드려요.',chips:[['🔎 예: 키트루다','키트루다'],['📦 공급부족 표시란?','공급부족이란'],['🧬 바이오마커 보기','바이오마커'],['📘 내 약 노트에 기록','약 기록 방법']]},
  biomarkers:{t:'바이오마커 도우미',g:'검사 이름(EGFR, HER2, PD-L1, MSI…)을 쓰시면 그 검사가 왜 필요한지와 관련 약으로 연결해 드려요.',chips:[['🔎 예: HER2','HER2'],['📄 결과지 읽는 법','결과지 읽는 법'],['🗺️ 치료결정 지도','치료결정 지도']]},
@@ -88,7 +88,7 @@ function cancerCard(c){var s=c[0],n=c[1];return '<b>'+n+'</b> 관련해서 이�
 function cancerPicker(){return '어떤 암종을 볼까요?<div class="qr">'+CANCER.map(function(c){return q(c[1])}).join('')+'</div>'}
 function menu(){var groups=[['1F 확인센터',['cancercheck','checkup']],['2F 암 정보 서재',['library','map','drugs','markers','comic']],['3F 지원',['support']],['4F 치료 동행',['note','care']],['5F 커뮤니티',['cafe']],['뉴스',['news','oncnews']],['ApuDa 패밀리·계정',['pet','farm','my']],['안내',['home','about']]];
   return '<b>ApuDa 전체 메뉴</b>'+groups.map(function(g){return '<div class="grp">'+g[0]+'</div>'+g[1].map(function(id){return siteCard(SITE[id])}).join('')}).join('')}
-var ABOUT='<b>ApuDa.app — 아프지만, 다행이다.</b><p>암 진단 전 위험도 확인부터 진단 첫 30일, 치료 중 기록, 비용 지원, 커뮤니티까지 <b>환자와 보호자가 다음에 할 일</b>을 한 건물 안에서 찾도록 만든 무료 서비스예요.</p><ul><li><b>1F</b> 암 위험도·건강검진</li><li><b>2F</b> 암종별 첫 30일 책·FAQ·치료결정 지도·Drug Hub·바이오마커</li><li><b>3F</b> 산정특례·의료비 지원</li><li><b>4F</b> 암환자 노트(기록·진료요약)</li><li><b>5F</b> 환자·보호자 카페</li></ul><p class="sm">모든 정보는 환자교육용이며 진단·처방을 대신하지 않아요.</p><div class="links">'+link('/about/','자세한 소개·사용법',true)+'</div>';
+var ABOUT='<b>ApuDa.app — 아프지만, 다행이다.</b><p>암 진단 전 위험도 확인부터 진단 첫 30일, 치료 중 기록, 비용 지원, 커뮤니티까지 <b>환자와 보호자가 다음에 할 일</b>을 한 건물 안에서 찾도록 만든 무료 서비스예요.</p><ul><li><b>1F</b> 암 위험도·건강검진</li><li><b>2F</b> 암종별 첫 30일 책(미리보기·전체 PDF)·FAQ·치료결정 지도·Drug Hub·바이오마커</li><li><b>3F</b> 산정특례·의료비 지원</li><li><b>4F</b> 암환자 노트(기록·진료요약)</li><li><b>5F</b> 환자·보호자 카페</li></ul><p class="sm">모든 정보는 환자교육용이며 진단·처방을 대신하지 않아요.</p><div class="links">'+link('/about/','자세한 소개·사용법',true)+'</div>';
 var NOTE_HOW='<b>암환자 노트 사용법</b><ol><li>아래 입력창에 말하듯 쓰기 — "열 37.8 통증 3점", "다음주 화 10시 항암 3차", "약: 젤로다 아침저녁 3알", "질문: 운동해도 되나요?"</li><li>잘못 저장되면 <b>↩ 되돌리기</b></li><li>위험 신호(38℃·혈변·통증 7점↑)는 바로 연락 안내가 떠요</li><li>진료 갈 땐 <b>진료요약</b> 탭을 의료진에게 보여주기</li><li>⚙︎에서 병원 번호를 넣어두면 🚨 응급 화면에서 바로 전화</li></ol><p class="sm">기록은 이 기기 안에만 저장돼요. 폰을 바꾸기 전엔 ⚙︎ → 백업 파일 받기.</p>';
 
 function reply(raw){
@@ -115,7 +115,7 @@ function reply(raw){
    '전체 메뉴':function(){return [{h:menu()}]},
    'ApuDa 소개':function(){return [{h:ABOUT}]},
    '노트 사용법':function(){return [{h:NOTE_HOW+(CTX==='note'?'':'<div class="links">'+link('/note/','📘 노트 열기',true)+'</div>')}]},
-   '다운로드 방법':function(){return [{h:'<b>PDF 받는 방법</b><ol><li>웹북 상단 <b>⬇ 다운로드</b> 또는 표지 옆 <b>PDF 다운로드</b> 누르기</li><li>Instagram 구독자에게 안내된 <b>다운로드 코드</b> 입력 (대소문자 상관없어요)</li><li>권당 약 8MB라 휴대폰은 잠시 기다려 주세요</li></ol><p class="sm">웹에서 읽기는 코드 없이 무료예요. 코드는 ApuDa 인스타그램에서 확인할 수 있어요.</p>'+(CTX==='mini'?'<div class="links"><button class="go p" data-click="#downloadBtn">⬇ 다운로드 창 열기</button></div>':'')}]},
+   '다운로드 방법':function(){return [{h:'<b>책 전체(PDF) 무료로 받는 법</b><ol><li>인스타그램 <b>@apuda.app</b> 팔로우</li><li>팔로워 1000명 기념 이벤트 게시물에 <b>“30일”</b> 댓글</li><li>DM으로 <b>다운로드 코드</b> 자동 발송 (최대 24시간, 코드 하나로 12종 모두)</li><li>2F 서재에서 암종 선택 → <b>⬇ 다운로드</b> → 코드 입력</li></ol><p class="sm">웹에서는 앞부분(약 1/3)을 코드 없이 미리 볼 수 있어요.</p><div class="links"><a class="go p" href="https://www.instagram.com/apuda.app/" target="_blank" rel="noopener">📷 @apuda.app 열기 ↗</a>'+(CTX==='mini'?'<button class="go" data-click="#downloadBtn">⬇ 코드 입력하기</button>':link('/#floor-2','📚 2F 서재'))+'</div>'}]},
    '이 암 FAQ':function(){return cc?[{h:link('/library/faq/?cancer='+cc[0],'❓ '+cc[1]+' FAQ 열기',true)}]:[{h:cancerPicker()}]},
    '이 암 치료지도':function(){return cc?[{h:link('/library/treatment-map/?cancer='+cc[0],'🗺️ '+cc[1]+' 치료결정 지도',true)}]:[{h:link('/library/treatment-map/','🗺️ 치료결정 지도 열기',true)}]},
    '이 암 약':function(){return cc?[{h:link('/library/drugs/?cancer='+cc[0],'💊 '+cc[1]+' 관련 항암제',true)}]:[{h:link('/library/drugs/','💊 Drug Hub 열기',true)}]},

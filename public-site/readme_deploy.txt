@@ -69,3 +69,11 @@ ApuDa Total Netlify 배포본
 - /risk/* → apuda-cancercheck.netlify.app, /checkup/* → apuda-check.netlify.app 프록시 + 길잡이 자동 삽입
 - 홈·소개·길잡이의 1F 링크를 /risk/, /checkup/ 로 변경
 - 맞춤 모드: 위험도(결과 해석·가족력·생활습관), 건강검진(국가암검진 대상·추가 검사 고르는 법·바로 진료 신호)
+
+[2026-10-05 — 첫 30일 웹북 미리보기 전환]
+- library/mini/data/*.json: 본문을 앞 1/3(7쪽)만 남김(웹 데이터 자체를 줄여 전체 노출 방지),
+  preview_count·pdf_pages·faq(질문 목록 사전 추출) 필드 추가 — FAQ 페이지는 faq 필드 사용
+- 웹북 끝에 "책 전체를 무료로 받는 방법" 4단계: @apuda.app 팔로우 → 이벤트 게시물 "30일" 댓글
+  → DM 코드(최대 24시간) → 2F 서재에서 다운로드·코드 입력. 인스타 열기/코드 입력 버튼 포함
+- 홈 책 팝업·소개 페이지·길잡이 문구를 "미리보기 + 코드로 전체 PDF"로 통일
+- 원본 전체 텍스트가 다시 필요하면 git 이력(이 커밋 이전)의 data/*.json 사용

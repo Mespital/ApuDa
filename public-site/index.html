@@ -1176,10 +1176,10 @@
       '<button class="book-choice-x" type="button" aria-label="닫기">×</button>'+
       '<div class="book-choice-head"><div class="book-choice-cover" style="--cover:url(\'assets/books/'+slug+'.webp\')"></div><div><span class="book-choice-kicker">ApuDa 암종별 가이드북 · Vol. '+(i+1)+'</span><h3>'+esc(name)+'</h3><p>'+esc(BOOK_INTRO[slug]||'')+'</p></div></div>'+
       '<div class="book-choice-list">'+
-        '<div class="book-choice-item"><span class="book-choice-num">1</span><span class="book-choice-copy"><b>암진단 후 첫 30일 - '+esc(name)+'</b><small>무료 배포판(MINI) · 웹에서 바로 읽기 · PDF는 다운로드 코드 필요</small></span><span class="book-choice-actions"><a class="primary" href="/library/mini/?cancer='+slug+'">웹에서 보기</a><a href="/library/mini/?cancer='+slug+'#download">⬇ 다운로드</a></span></div>'+
+        '<div class="book-choice-item"><span class="book-choice-num">1</span><span class="book-choice-copy"><b>암진단 후 첫 30일 - '+esc(name)+'</b><small>앞부분 무료 미리보기 · 책 전체(PDF)는 다운로드 코드</small></span><span class="book-choice-actions"><a class="primary" href="/library/mini/?cancer='+slug+'">미리보기</a><a href="/library/mini/?cancer='+slug+'#download">⬇ 다운로드</a></span></div>'+
         '<div class="book-choice-item"><span class="book-choice-num">2</span><span class="book-choice-copy"><b>'+esc(name)+' FAQ</b><small>환자·보호자가 진료실에서 자주 확인하는 질문</small></span><span class="book-choice-actions"><a href="/library/faq/?cancer='+slug+'">FAQ 보기</a></span></div>'+
         '<div class="book-choice-item full soon"><span class="book-choice-num">3</span><span class="book-choice-copy"><b>암진단 후 첫 30일 완전판 - '+esc(name)+'</b><small>준비중입니다.</small></span><span class="book-choice-actions full-soon"><span class="full-thumb" style="--cover:url(\'assets/books/'+slug+'.webp\')"></span><span class="soon-badge">준비중입니다</span></span></div>'+
-      '</div><div class="book-choice-note">무료 MINI 웹 열람은 코드 없이 가능합니다. 다운로드는 Instagram 구독자에게 안내된 다운로드 코드를 입력해야 작동합니다.</div>'+
+      '</div><div class="book-choice-note">앞부분은 코드 없이 미리 볼 수 있어요. 책 전체는 인스타그램 <b>@apuda.app</b> 팔로우 → 이벤트 게시물에 “30일” 댓글 → DM으로 받은 코드를 입력하면 다운로드돼요.</div>'+
       '<div class="book-more"><span>'+esc(name)+' 더 알아보기</span><a href="/library/treatment-map/?cancer='+slug+'">🗺️ 치료결정 지도</a><a href="/library/drugs/?cancer='+slug+'">💊 관련 항암제</a><a href="/library/biomarkers/?cancer='+slug+'">🧬 관련 바이오마커</a></div></section>';
     document.body.appendChild(root);
     var close=function(){root.remove()};

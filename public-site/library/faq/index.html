@@ -30,7 +30,7 @@
  }
  fetch('../mini/data/'+slug+'.json',{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){
    document.title='ApuDa '+d.name+' FAQ';document.getElementById('title').textContent=d.name+' FAQ';
-   var qs=questions(d.pages||[]),root=document.getElementById('faq');
+   var qs=(d.faq&&d.faq.length)?d.faq:questions(d.pages||[]),root=document.getElementById('faq');
    if(!qs.length){root.innerHTML='<div class="q"><button><span class="num">!</span><span class="qt">'+esc(d.name)+' FAQ 상세 답변을 준비 중입니다.</span></button></div>';return}
    root.innerHTML=qs.map(function(q,i){return '<article class="q"><button type="button"><span class="num">'+(i+1)+'</span><span class="qt">'+esc(q)+'</span></button><div class="answer">이 질문은 환자의 병기·병리·바이오마커·치료 단계에 따라 답이 달라질 수 있습니다. 현재 MINI 가이드와 진료기록을 함께 확인한 뒤 담당 의료진에게 질문해 주세요.</div></article>'}).join('');
    root.querySelectorAll('.q button').forEach(function(b){b.onclick=function(){b.parentNode.classList.toggle('on')}});
