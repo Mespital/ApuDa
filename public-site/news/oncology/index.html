@@ -1,13 +1,17 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ApuDa 항암제 뉴스</title><meta name="description" content="항암제 허가·급여·임상·바이오마커·가이드라인 변화를 암종별로 보여줍니다."><link rel="stylesheet" href="/news/styles.css"></head><body>
 <header class="topbar"><div class="wrap nav"><a class="brand" href="/">ApuDa<small>아프지만, 다행이다.</small></a><nav class="navlinks"><a href="/news/">오늘의 브리핑</a><a class="on" href="/news/oncology/">항암제 뉴스</a><a href="/">ApuDa 홈</a></nav></div></header>
 <main class="wrap">
-<section class="hero"><div class="eyebrow">APUDA ONCOLOGY INTELLIGENCE</div><h1>항암제 뉴스</h1><p>허가·급여·임상·바이오마커·가이드라인 변화를 암종과 치료라인 기준으로 구조화해 보여줍니다. 뉴스 카드를 누르면 원문 기사로 이동합니다.</p>
+<section class="hero"><div class="eyebrow">APUDA ONCOLOGY INTELLIGENCE</div><h1>항암제 뉴스</h1><p>허가·급여·임상·바이오마커·가이드라인 변화를 암종과 주요 변화 기준으로 보기 쉽게 보여줍니다. 뉴스 카드를 누르면 원문 기사로 이동합니다.</p>
 <div class="oncology-tags" id="oncologyTags" aria-label="암종 필터"></div></section>
 
 <section class="brief"><h2>Oncology Focus</h2><p><b>오늘 기사 우선</b>으로 보여주고, 해당 암종에 오늘 뉴스가 없으면 <b>최근 7일 → 최근 30일</b> 순으로 보완합니다. 각 암종은 최근 30일 기사 중 최대 3건까지 표시하며, 기사 날짜와 최신성 배지를 함께 보여줍니다.</p></section>
 
-<section class="section">
-  <div class="oncology-toolbar"><div><h2 style="margin:0">주요 항암 업데이트</h2><p style="margin:6px 0 0;color:var(--muted);font-size:13px">최근 30일 · 암종별 최신 3건</p></div><div class="oncology-count" id="oncologyCount">불러오는 중</div></div>
+<section class="section" id="oncologyNewsSection">
+  <div class="oncology-toolbar"><div><h2 style="margin:0">주요 항암 업데이트</h2><p style="margin:6px 0 0;color:var(--muted);font-size:13px">최근 30일 · 환자에게 영향이 큰 변화 우선</p></div><div class="oncology-count" id="oncologyCount">불러오는 중</div></div>
+  <div class="oncology-quick-filter" aria-label="항암 뉴스 빠른 필터">
+    <span class="quick-filter-label">빠르게 보기</span>
+    <div class="quick-filter-chips" id="oncologyQuickFilters"></div>
+  </div>
   <div class="oncology-grid" id="oncologyGrid"><div class="newsroom-empty">최신 항암 뉴스를 불러오는 중입니다.</div></div>
 </section>
 
@@ -26,31 +30,23 @@
   <small>ApuDa는 NCCN과 제휴·후원 관계가 없으며, NCCN 콘텐츠를 복제·저장·재배포하지 않습니다.</small>
 </section>
 
-<section class="section cols">
-  <div class="panel"><h3>항암 뉴스 우선순위</h3><div class="priority-actions">
-    <button type="button" data-topic="reimbursement"><b>국내 급여 신규·확대</b><span>환자 접근성에 직접 영향</span></button>
-    <button type="button" data-topic="approval"><b>MFDS·FDA·EMA 허가</b><span>치료선택지와 시장구조 변화</span></button>
-    <button type="button" data-topic="phase3"><b>3상 OS/PFS 결과</b><span>표준치료 변화 가능성 평가</span></button>
-    <button type="button" data-topic="biomarker"><b>바이오마커·가이드라인</b><span>환자 선별 및 치료경로 변화</span></button>
-  </div></div>
-  <div class="panel"><h3>분류 기준</h3>
-    <div class="facet-group"><b>치료라인</b><div class="facet-chips"><button data-facet="1L">1L</button><button data-facet="2L">2L</button><button data-facet="3L+">3L+</button></div></div>
-    <div class="facet-group"><b>기전</b><div class="facet-chips"><button data-facet="면역항암제">면역항암제</button><button data-facet="ADC">ADC</button><button data-facet="TKI">TKI</button><button data-facet="CAR-T">CAR-T</button><button data-facet="BiTE">BiTE</button></div></div>
-    <div class="facet-group"><b>바이오마커</b><div class="facet-chips"><button data-facet="EGFR">EGFR</button><button data-facet="ALK">ALK</button><button data-facet="HER2">HER2</button><button data-facet="PD-L1">PD-L1</button><button data-facet="BRCA">BRCA</button><button data-facet="CLDN18.2">CLDN18.2</button></div></div>
-    <div class="facet-group"><b>상태</b><div class="facet-chips"><button data-facet="임상">임상</button><button data-facet="허가">허가</button><button data-facet="급여">급여</button><button data-facet="가이드라인">가이드라인</button></div></div>
-    <button class="facet-reset" type="button" id="facetReset">필터 초기화</button>
-  </div>
-</section>
 <div class="note">치료 가능 여부는 암종, 병기, 바이오마커, 이전 치료, 전신상태 등에 따라 달라집니다. 이 페이지의 정보는 진료를 대체하지 않으며 담당 의료진과의 상담이 필요합니다.</div>
 </main><footer class="footer"><div class="wrap"><b>ApuDa</b>아프지만, 다행이다.</div></footer>
 <script>
 const CANCERS=['전체','유방암','폐암','위암','대장암','갑상선암','신장암','전립선암','췌장암','담도암','간암','림프종','자궁경부암'];
+const QUICK_FILTERS=[
+  {id:'',label:'전체'},
+  {id:'reimbursement',label:'급여·접근성'},
+  {id:'approval',label:'허가'},
+  {id:'trial',label:'임상결과'},
+  {id:'biomarker',label:'바이오마커'}
+];
 let stories=[],active='전체',activeFacet='';
-const tags=document.getElementById('oncologyTags'),grid=document.getElementById('oncologyGrid'),count=document.getElementById('oncologyCount');
+const tags=document.getElementById('oncologyTags'),grid=document.getElementById('oncologyGrid'),count=document.getElementById('oncologyCount'),quickFilters=document.getElementById('oncologyQuickFilters');
 const esc=s=>String(s??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 function renderTags(){
   tags.innerHTML=CANCERS.map(c=>'<button type="button" data-cancer="'+esc(c)+'" class="'+(c===active?'on':'')+'">'+esc(c)+'</button>').join('');
-  tags.querySelectorAll('button').forEach(b=>b.onclick=()=>{active=b.dataset.cancer;renderTags();render();});
+  tags.querySelectorAll('button').forEach(b=>b.onclick=()=>{active=b.dataset.cancer;activeFacet='';renderTags();render();document.getElementById('oncologyNewsSection')?.scrollIntoView({behavior:'smooth',block:'start'});});
 }
 function cancersOf(n){return n?.oncology?.cancer_types||[];}
 function primaryUrl(n){return Array.isArray(n.source_urls)&&n.source_urls.length?n.source_urls[0]:'';}
@@ -107,13 +103,26 @@ function matchesFacet(n,facet){
   if(!facet)return true;
   const t=storyText(n);
   const map={
-    reimbursement:['급여','약가','reimbursement'],
+    reimbursement:['급여','약가','reimbursement','보험','접근성'],
     approval:['허가','mfds','fda','ema','식약처','approval'],
-    phase3:['3상','phase 3','pfs','os'],
-    biomarker:['egfr','alk','her2','pd-l1','brca','cldn18.2','바이오마커','가이드라인']
+    trial:['임상','1상','2상','3상','phase','pfs','os','orr','생존'],
+    biomarker:['egfr','alk','her2','pd-l1','brca','cldn18.2','바이오마커','유전자','변이']
   };
   const keys=map[facet]||[facet.toLowerCase()];
   return keys.some(k=>t.includes(k.toLowerCase()));
+}
+function renderQuickFilters(){
+  if(!quickFilters)return;
+  const cancerBase=active==='전체'?stories:stories.filter(n=>cancersOf(n).includes(active));
+  quickFilters.innerHTML=QUICK_FILTERS.map(f=>{
+    const n=f.id?cancerBase.filter(x=>matchesFacet(x,f.id)).length:cancerBase.length;
+    return '<button type="button" data-quick-filter="'+esc(f.id)+'" class="'+(activeFacet===f.id?'on':'')+'"><span>'+esc(f.label)+'</span><em>'+n+'</em></button>';
+  }).join('');
+  quickFilters.querySelectorAll('button').forEach(btn=>btn.onclick=()=>{
+    activeFacet=btn.dataset.quickFilter||'';
+    render();
+    document.getElementById('oncologyNewsSection')?.scrollIntoView({behavior:'smooth',block:'start'});
+  });
 }
 function render(){
   let base=active==='전체'?stories:stories.filter(n=>cancersOf(n).includes(active));
@@ -121,7 +130,7 @@ function render(){
   let filtered=(active==='전체'&&!activeFacet)?latestPerCancer():base.slice(0,12);
   const label=[active!=='전체'?active:'',activeFacet||''].filter(Boolean).join(' · ');
   count.textContent=(label?label+' · ':'')+'최근 30일 '+base.length+'건';
-  document.querySelectorAll('[data-topic],[data-facet]').forEach(b=>b.classList.toggle('on',b.dataset.topic===activeFacet||b.dataset.facet===activeFacet));
+  renderQuickFilters();
   if(!filtered.length){
     grid.innerHTML='<div class="newsroom-empty"><b>'+esc(label||active)+'</b> 조건의 최근 30일 주요 업데이트가 없습니다.<br>다른 필터를 선택해 주세요.</div>';
     return;
@@ -194,11 +203,6 @@ async function loadPatientOfficialUpdates(){
   }
 }
 
-function setupFacets(){
-  document.querySelectorAll('[data-topic]').forEach(b=>b.onclick=()=>{activeFacet=b.dataset.topic;render();});
-  document.querySelectorAll('[data-facet]').forEach(b=>b.onclick=()=>{activeFacet=b.dataset.facet;render();});
-  document.getElementById('facetReset').onclick=()=>{activeFacet='';render();};
-}
 async function load(){
   try{
     const data=await fetch('/news/data/oncology-30d.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()});
@@ -217,5 +221,5 @@ async function load(){
   }
   render();
 }
-renderTags();setupFacets();loadPatientOfficialUpdates();load();
+renderTags();renderQuickFilters();loadPatientOfficialUpdates();load();
 </script></body></html>
