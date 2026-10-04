@@ -150,18 +150,50 @@ function patientOfficialCard(n){
   const atts=(n.attachments||[]).slice(0,2).map(a=>'<a class="patient-official-attachment" href="'+esc(a.url)+'" target="_blank" rel="noopener noreferrer">'+esc(a.label||'첨부')+' ↗</a>').join('');
   return '<article class="patient-official-card"><div class="patient-official-meta"><span>'+esc(agency)+'</span><em>'+esc(type)+'</em><time>'+esc(date)+'</time></div><h3><a href="'+esc(n.url)+'" target="_blank" rel="noopener noreferrer">'+esc(n.title)+'</a></h3><p>'+esc(summary)+'</p><div class="patient-official-actions"><a href="'+esc(n.url)+'" target="_blank" rel="noopener noreferrer">공식 원문 ↗</a>'+atts+'</div></article>';
 }
+function compactDate(v){
+  const s=String(v||'').replace(/[^0-9]/g,'');
+  return s.length>=8?s.slice(0,4)+'-'+s.slice(4,6)+'-'+s.slice(6,8):'';
+}
+function supplyOfficialItems(official){
+  const src=(official?.sources||[]).find(x=>x.id==='mfds_supply_shortage');
+  if(!src||src.status!=='ok')return [];
+  const cutoff=Date.now()-365*24*60*60*1000;
+  return (src.records||[]).map(r=>{
+    const report=compactDate(r.report_date||r.shortage_expected_date);
+    const ts=report?new Date(report+'T00:00:00+09:00').getTime():0;
+    const details=[
+      r.shortage_reason?('부족 사유: '+r.shortage_reason):'',
+      r.patient_impact?('환자치료 영향: '+r.patient_impact):'',
+      r.normalization_plan?('정상화 계획: '+r.normalization_plan):'',
+      r.normalization_expected_date?('예상일: '+compactDate(r.normalization_expected_date)):''
+    ].filter(Boolean).join(' · ');
+    return {
+      agency:'식품의약품안전처',
+      category:'공급부족',
+      document_type:'공급부족',
+      title:(r.item_name||'의약품')+' 공급부족 정보',
+      published_at:report?report+'T00:00:00+09:00':null,
+      url:src.source_url,
+      summary:details||'식약처 의약품 공급부족 공식 데이터입니다.',
+      attachments:[],
+      _ts:ts
+    };
+  }).filter(x=>x._ts>=cutoff).sort((a,b)=>b._ts-a._ts).slice(0,4);
+}
 async function loadPatientOfficialUpdates(){
   const box=document.getElementById('patientOfficialGrid'),updated=document.getElementById('patientOfficialUpdated');
   try{
-    const [hira,mfds]=await Promise.all([
+    const [hira,mfds,official]=await Promise.all([
       fetch('/news/data/hira-updates.json',{cache:'no-store'}).then(r=>r.ok?r.json():({items:[]})),
-      fetch('/news/data/official-notices.json',{cache:'no-store'}).then(r=>r.ok?r.json():({items:[]}))
+      fetch('/news/data/official-notices.json',{cache:'no-store'}).then(r=>r.ok?r.json():({items:[]})),
+      fetch('/news/data/official-data.json',{cache:'no-store'}).then(r=>r.ok?r.json():({sources:[]}))
     ]);
     const h=(hira.items||[]).filter(x=>x.oncology_related||String(x.category||'').includes('급여'));
     const m=(mfds.items||[]).filter(x=>/안전성|의약품|항암|허가|회수|공급/.test([x.category,x.title].join(' ')));
-    const all=[...h,...m].sort((a,b)=>String(b.published_at||'').localeCompare(String(a.published_at||''))).slice(0,6);
-    updated.textContent='최근 30일 · '+all.length+'건';
-    box.innerHTML=all.length?all.map(patientOfficialCard).join(''):'<div class="newsroom-empty">최근 30일 내 환자 치료에 직접 관련된 공식 업데이트가 없습니다.</div>';
+    const supply=supplyOfficialItems(official);
+    const all=[...h,...m,...supply].sort((a,b)=>String(b.published_at||'').localeCompare(String(a.published_at||''))).slice(0,8);
+    updated.textContent='최신 공식자료 · '+all.length+'건';
+    box.innerHTML=all.length?all.map(patientOfficialCard).join(''):'<div class="newsroom-empty">최근 환자 치료에 직접 관련된 공식 업데이트가 없습니다.</div>';
   }catch(e){
     updated.textContent='공식자료 준비 중';
     box.innerHTML='<div class="newsroom-empty">공식 업데이트 데이터가 준비되면 자동 표시됩니다.</div>';
