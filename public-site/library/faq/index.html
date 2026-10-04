@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f9ff">
+<title>ApuDa 암종별 FAQ</title>
+<style>
+:root{--navy:#0b2746;--blue:#246bfe;--line:#dce8f5;--muted:#677b90;--bg:#f4f8fd}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#f8fbff,#eef5fc);color:var(--navy);font-family:Pretendard,"Noto Sans KR","Apple SD Gothic Neo",Arial,sans-serif}.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:12px 18px;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}.brand{font-size:22px;font-weight:950;color:var(--blue);text-decoration:none}.back{border:1px solid var(--line);background:#fff;border-radius:12px;padding:9px 12px;color:var(--navy);font-weight:900;cursor:pointer}.wrap{width:min(820px,92vw);margin:28px auto 70px}.hero{padding:22px;border:1px solid var(--line);border-radius:22px;background:#fff}.kicker{color:var(--blue);font-size:10px;font-weight:950;letter-spacing:.12em}.hero h1{margin:7px 0 8px;font-size:clamp(28px,5vw,44px);letter-spacing:-.04em}.hero p{margin:0;color:var(--muted);font-size:12px;line-height:1.65}.faq{display:grid;gap:10px;margin-top:16px}.q{border:1px solid var(--line);border-radius:16px;background:#fff;overflow:hidden}.q button{display:flex;width:100%;align-items:flex-start;gap:11px;border:0;background:#fff;padding:16px;text-align:left;color:var(--navy);cursor:pointer}.num{display:grid;place-items:center;flex:0 0 28px;height:28px;border-radius:9px;background:#eef5ff;color:var(--blue);font-size:10px;font-weight:950}.qt{font-size:13px;font-weight:900;line-height:1.45}.answer{display:none;padding:0 16px 16px 55px;color:#5d7185;font-size:11px;line-height:1.65}.q.on .answer{display:block}.note{margin-top:16px;padding:14px;border-radius:14px;background:#eef6ff;color:#526a81;font-size:10.5px;line-height:1.6}
+</style>
+</head>
+<body>
+<header class="top"><a class="brand" href="/">ApuDa</a><button class="back" onclick="history.length>1?history.back():location.href='/'">2F 서재로</button></header>
+<main class="wrap">
+<section class="hero"><span class="kicker">ApuDa CANCER FAQ</span><h1 id="title">암 FAQ</h1><p>MINI 가이드에서 환자·보호자가 진료실에서 많이 확인하는 질문을 모았습니다. 답변은 개인 상황에 따라 달라질 수 있어 상세 설명은 담당 의료진과 확인하세요.</p></section>
+<div class="faq" id="faq"><div class="q"><button><span class="num">…</span><span class="qt">FAQ를 불러오는 중입니다.</span></button></div></div>
+<div class="note">이 FAQ는 교육용 질문 가이드입니다. 응급 증상, 약 중단·변경, 치료 결정은 온라인 정보만으로 판단하지 말고 치료기관과 상의하세요.</div>
+</main>
+<script>
+(function(){
+ var allowed=['breast','lung','stomach','colorectal','thyroid','kidney','prostate','pancreas','biliary','liver','lymphoma','cervical'];
+ var slug=new URLSearchParams(location.search).get('cancer')||'breast'; if(allowed.indexOf(slug)<0)slug='breast';
+ function esc(s){return String(s||'').replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})}
+ function questions(pages){
+   var candidates=pages.filter(function(p){return /QUESTIONS|10가지|물어볼|질문/.test(p)}).join('\n');
+   var out=[],seen={};
+   var re=/(?:^|\n)\s*(10|[1-9])[\.\)]\s*([^\n]+)/g,m;
+   while((m=re.exec(candidates))&&out.length<10){var q=m[2].replace(/\s+/g,' ').trim();if(q&&!seen[q]){seen[q]=1;out.push(q)}}
+   return out;
+ }
+ fetch('../mini/data/'+slug+'.json',{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){
+   document.title='ApuDa '+d.name+' FAQ';document.getElementById('title').textContent=d.name+' FAQ';
+   var qs=questions(d.pages||[]),root=document.getElementById('faq');
+   if(!qs.length){root.innerHTML='<div class="q"><button><span class="num">!</span><span class="qt">'+esc(d.name)+' FAQ 상세 답변을 준비 중입니다.</span></button></div>';return}
+   root.innerHTML=qs.map(function(q,i){return '<article class="q"><button type="button"><span class="num">'+(i+1)+'</span><span class="qt">'+esc(q)+'</span></button><div class="answer">이 질문은 환자의 병기·병리·바이오마커·치료 단계에 따라 답이 달라질 수 있습니다. 현재 MINI 가이드와 진료기록을 함께 확인한 뒤 담당 의료진에게 질문해 주세요.</div></article>'}).join('');
+   root.querySelectorAll('.q button').forEach(function(b){b.onclick=function(){b.parentNode.classList.toggle('on')}});
+ }).catch(function(){document.getElementById('faq').innerHTML='<div class="q"><button><span class="num">!</span><span class="qt">FAQ 데이터를 불러오지 못했습니다.</span></button></div>'});
+})();
+</script>
+</body></html>
