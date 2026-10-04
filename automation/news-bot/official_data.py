@@ -224,23 +224,45 @@ def fetch_mfds_approval(session, key):
                 }
                 continue
 
-            items = response_items(data)
-            rows=[]
-            for x in items:
-                if not isinstance(x, dict): continue
-                rows.append({
-                    "item_seq": x.get("ITEM_SEQ"),
-                    "item_name": x.get("ITEM_NAME"),
-                    "company": x.get("ENTP_NAME"),
-                    "main_ingredient": x.get("MAIN_ITEM_INGR"),
-                    "permit_date": x.get("ITEM_PERMIT_DATE"),
-                    "rare_drug_yn": x.get("RARE_DRUG_YN"),
-                    "newdrug_class_name": x.get("NEWDRUG_CLASS_NAME"),
-                    "atc_code": x.get("ATC_CODE"),
-                    "edi_code": x.get("EDI_CODE")
-                })
-            rows.sort(key=lambda x: str(x.get("permit_date") or ""), reverse=True)
-            result["records"] = rows[:30]
+            raw_items=[x for x in response_items(data) if isinstance(x,dict)]
+            total=response_total_count(data)
+            page_size=100
+            # 목록이 과거 허가부터 반환되는 경우를 대비해 마지막 페이지(및 직전 페이지)도 읽어 최신 허가를 확보한다.
+            if total>30:
+                last_page=max(1,(total+page_size-1)//page_size)
+                pages=sorted(set([last_page,max(1,last_page-1)]))
+                for p in pages:
+                    try:
+                        rr=session.get(MFDS_APPROVAL_ENDPOINT,params={
+                            "serviceKey":candidate,
+                            "pageNo":p,
+                            "numOfRows":page_size,
+                            "type":"json"
+                        },timeout=25)
+                        if rr.status_code==200:
+                            dd=rr.json()
+                            raw_items.extend([x for x in response_items(dd) if isinstance(x,dict)])
+                    except Exception:
+                        pass
+            rows=[];seen=set()
+            for x in raw_items:
+                row={
+                    "item_seq": _pick(x,"ITEM_SEQ","itemSeq"),
+                    "item_name": _pick(x,"ITEM_NAME","itemName"),
+                    "company": _pick(x,"ENTP_NAME","entpName"),
+                    "main_ingredient": _pick(x,"MAIN_ITEM_INGR","mainItemIngr"),
+                    "permit_date": _pick(x,"ITEM_PERMIT_DATE","itemPermitDate"),
+                    "rare_drug_yn": _pick(x,"RARE_DRUG_YN","rareDrugYn"),
+                    "newdrug_class_name": _pick(x,"NEWDRUG_CLASS_NAME","newdrugClassName"),
+                    "atc_code": _pick(x,"ATC_CODE","atcCode"),
+                    "edi_code": _pick(x,"EDI_CODE","ediCode")
+                }
+                k=(row.get("item_seq"),row.get("item_name"),row.get("permit_date"))
+                if k in seen: continue
+                seen.add(k);rows.append(row)
+            rows.sort(key=lambda x:_date_sort_value(x.get("permit_date")), reverse=True)
+            result["records"] = rows[:50]
+            result["total_count"] = total
             result["status"] = "ok"
             result["http_status"] = r.status_code
             result["key_variant_used"] = idx
