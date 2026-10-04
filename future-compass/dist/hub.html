@@ -1,0 +1,32 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#24604a"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="app-icon-192.png"><link rel="stylesheet" href="pin-gate.css"><script src="pin-gate.js"></script>
+<title>학습 사이트 · 미래 나침반</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="hub/study-hub.css">
+<style>
+body{margin:0;background:#fbfcfd}
+.hub-top{max-width:1080px;margin:0 auto;padding:16px 16px 0;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.hub-top a{font:600 13.5px "IBM Plex Sans KR",system-ui,sans-serif;color:#5b6b77;text-decoration:none;padding:7px 12px;border-radius:999px;background:#fff;border:1px solid #d3dde6}
+.hub-top a[aria-current="page"]{background:#24604a;border-color:#24604a;color:#fff}
+.hub-top a:focus-visible{outline:2px solid #ffe45c;outline-offset:2px}
+.hub-top .pin-tools{margin-left:auto}
+@media (prefers-color-scheme:dark){body{background:#16201c}.hub-top a{background:#1b2722;border-color:#2d3d36;color:#9fb0a7}}
+</style>
+</head><body>
+<nav class="hub-top" aria-label="미래 나침반 메뉴"><a href="./">홈</a><a href="study.html">공부방</a><a href="hub.html" aria-current="page">학습 사이트</a><a href="future.html">미래 예측</a><a href="./#career-lab">진로 찾기</a></nav>
+<div id="study-hub"></div>
+<script src="hub/study-hub-data.js"></script>
+<script src="hub/study-hub.js"></script>
+<script>
+StudyHub.mount({
+  el: "#study-hub",
+  dataBase: "hub/",
+  storage: StudyHub.localStorageAdapter("fc_hub_posts"),
+  eyebrow: "고1 2학기 · 공부할 때 바로 가는 곳",
+  titleA: "학습", titleB: "사이트 모음",
+  lede: "교과서, 기출, 모의고사, 수학·과학 시뮬레이션까지. 지금 필요한 걸 골라서 바로 들어가.",
+  footer: "사이트 정보는 2026년 10월 기준이야. 회원가입이나 유료 범위는 바뀔 수 있어."
+});
+</script>
+<script src="shiro-help.js"></script>
+</body></html>
