@@ -304,6 +304,65 @@
   #curtain b{font-size:38px;font-weight:950;color:var(--blue);letter-spacing:-.06em}
   #curtain small{display:block;margin-top:8px;font-size:10px;letter-spacing:.3em;color:var(--muted);text-align:center}
 
+  /* 2F — 암 진단 첫 30일 MINI SERIES 확장 패널 */
+  #panel.floor-2-expanded{width:min(1020px,67vw);min-width:min(760px,95vw);right:max(1.8vw,18px)}
+  #panel.floor-2-expanded .sheet{padding:30px 28px 24px;max-height:90svh;border-radius:28px}
+  .floor2-intro{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:end}
+  .floor2-intro .p-stats{margin-top:0;min-width:250px}
+  .floor2-intro .p-stats div{padding:14px 15px}
+  .floor2-intro .p-stats b{font-size:26px}
+  .floor2-intro .p-stats small{font-size:11px}
+  .floor2-layout{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:20px;margin-top:22px}
+  .floor2-library{min-width:0;padding:18px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,#FBFDFF,#F3F7FC)}
+  .floor2-library-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:14px}
+  .floor2-library-head b{display:block;color:var(--navy);font-size:17px;font-weight:950}
+  .floor2-library-head span{color:var(--muted);font-size:10px;font-weight:800}
+  .mini-series-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+  .mini-book{display:block;min-width:0;color:var(--ink);transition:.22s var(--ease)}
+  .mini-book:hover{transform:translateY(-4px)}
+  .mini-book-art{display:block;aspect-ratio:240/340;border-radius:9px;background-image:url('assets/books/apuda-mini-series-sprite.webp');
+    background-size:600% 200%;background-position:var(--bx) var(--by);background-repeat:no-repeat;
+    box-shadow:0 9px 18px rgba(19,68,126,.12);border:1px solid rgba(182,205,231,.7);overflow:hidden}
+  .mini-book:hover .mini-book-art{box-shadow:0 13px 28px rgba(36,107,254,.19);border-color:#AFC9EA}
+  .mini-book-meta{display:flex;align-items:center;gap:6px;margin-top:7px;min-width:0}
+  .mini-book-vol{display:grid;place-items:center;flex:0 0 auto;width:20px;height:20px;border-radius:50%;background:#fff;
+    border:1px solid #BCD2EF;color:var(--blue);font-size:9px;font-weight:950}
+  .mini-book-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--navy);font-size:10px;font-weight:950}
+  .floor2-side{display:flex;flex-direction:column;gap:9px}
+  .floor2-side-head{padding:3px 2px 7px}
+  .floor2-side-head b{display:block;color:var(--navy);font-size:16px;font-weight:950}
+  .floor2-side-head span{display:block;margin-top:4px;color:var(--muted);font-size:10px;line-height:1.45}
+  .floor2-service{display:flex;align-items:center;gap:11px;min-height:64px;padding:11px 12px;border:1px solid var(--line);
+    border-radius:16px;background:#fff;transition:.2s var(--ease)}
+  a.floor2-service:hover{transform:translateY(-2px);border-color:#AFC9EA;box-shadow:0 8px 18px rgba(36,107,254,.08)}
+  .floor2-service-icon{display:grid;place-items:center;flex:0 0 auto;width:38px;height:38px;border-radius:12px;background:#EEF5FF;font-size:18px}
+  .floor2-service-copy{min-width:0}
+  .floor2-service-copy b{display:block;color:var(--navy);font-size:12px;font-weight:950}
+  .floor2-service-copy small{display:block;margin-top:3px;color:var(--muted);font-size:9px;line-height:1.35}
+  .floor2-service.soon{opacity:.72}
+  .floor2-service.soon::after{content:'준비 중';margin-left:auto;padding:3px 6px;border-radius:999px;background:#F2F5F8;color:#78899A;font-size:8px;font-weight:900}
+  .floor2-note{margin-top:12px;padding:11px 12px;border-radius:14px;background:#EEF6FF;color:#4E6680;font-size:10px;line-height:1.55}
+  @media (max-width:1099px) and (min-width:861px){
+    #panel.floor-2-expanded{width:min(900px,82vw);min-width:min(700px,94vw)}
+    .floor2-layout{grid-template-columns:minmax(0,1fr) 220px}
+    .mini-series-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+  }
+  @media (max-width:860px){
+    #panel.floor-2-expanded{width:94vw;min-width:0;right:auto;left:50%;top:50%}
+    #panel.floor-2-expanded .sheet{max-height:88svh;padding:22px 18px calc(22px + env(safe-area-inset-bottom));border-radius:24px}
+    .floor2-intro{grid-template-columns:1fr}
+    .floor2-intro .p-stats{min-width:0}
+    .floor2-layout{grid-template-columns:1fr;gap:14px}
+    .mini-series-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+    .floor2-side{display:grid;grid-template-columns:1fr 1fr}
+    .floor2-side-head,.floor2-note{grid-column:1/-1}
+  }
+  @media (max-width:480px){
+    .mini-series-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .floor2-side{grid-template-columns:1fr}
+    .floor2-side-head,.floor2-note{grid-column:auto}
+  }
+
   @media (min-width:1100px){
     #stage{grid-template-columns:minmax(340px,430px) minmax(420px,760px);gap:clamp(18px,2.5vw,42px);
       padding:clamp(18px,2.5vw,42px);place-items:center stretch}
@@ -611,8 +670,8 @@
        stats:[['3분','간편 체크'],['무료','가입 불필요']],
        links:[['암 위험도 체크','https://apuda-cancercheck.netlify.app/',null,'생활습관과 주요 위험요인을 빠르게 확인','🧭'],
               ['건강검진 선택 항목','https://apuda-check.netlify.app/',null,'기본검진 외 추가로 고려할 항목 정리','🩺']]},
-    2:{fl:'2F', kicker:'LIBRARY · 암 정보 서재', title:'진단 첫 30일,\n내 암종부터 이해하기.',
-       desc:'《암 진단 첫 30일》 12종과 4컷 만화로 검사·병기·치료 정보를 차근차근 이해합니다.',
+    2:{fl:'2F', kicker:'LIBRARY · 암종별 이해', title:'진단 첫 30일,\n내 암종부터 이해하기.',
+       desc:'《암 진단 첫 30일》 12종의 실제 표지와 함께 검사·병기·치료 흐름을 암종별로 차근차근 이해합니다.',
        stats:[['12종','암종별 가이드'],['4컷','만화 암 정보']],
        links:[['4컷 만화로 쉽게 이해되는 암 정보','https://product.kyobobook.co.kr/detail/S000219012641',null,'검사·병기·치료를 그림으로 쉽게 이해','📚'],
               ['유방암 첫 30일','https://apuda-breast.netlify.app/',null,'진단 후 꼭 알아야 할 검사·치료 흐름','🎀'],
@@ -1019,9 +1078,43 @@
       '<span class="p-link-arrow">→</span></a>';
   }
 
+  function renderBookShelf(d){
+    var books=d.links.slice(1);
+    var pos=[
+      [0,0],[20,0],[40,0],[60,0],[80,0],[100,0],
+      [0,100],[20,100],[40,100],[60,100],[80,100],[100,100]
+    ];
+    var bookHtml=books.map(function(l,i){
+      var name=String(l[0]||'').replace(/ 첫 30일$/,'');
+      var p=pos[i]||[0,0];
+      return '<a class="mini-book" href="'+esc(l[1])+'" target="_blank" rel="noopener" aria-label="'+esc(l[0])+' 보기">'+
+        '<span class="mini-book-art" style="--bx:'+p[0]+'%;--by:'+p[1]+'%"></span>'+
+        '<span class="mini-book-meta"><span class="mini-book-vol">'+(i+1)+'</span><span class="mini-book-name">'+esc(name)+'</span></span></a>';
+    }).join('');
+    return '<span class="p-fl"><b>'+d.fl+'</b>'+d.kicker+'</span>'+
+      '<div class="floor2-intro"><div><h2>'+d.title.replace(/\n/g,'<br>')+'</h2><p>'+d.desc+'</p></div>'+
+      '<div class="p-stats">'+d.stats.map(function(s){return '<div><b>'+s[0]+'</b><small>'+s[1]+'</small></div>'}).join('')+'</div></div>'+
+      '<div class="floor2-layout">'+
+        '<section class="floor2-library"><div class="floor2-library-head"><div><b>ApuDa 「암 진단 첫 30일」 MINI SERIES</b><span>표지를 눌러 암종별 가이드를 바로 엽니다.</span></div><span>Vol. 01–12</span></div>'+
+        '<div class="mini-series-grid">'+bookHtml+'</div></section>'+
+        '<aside class="floor2-side"><div class="floor2-side-head"><b>더 깊게 이해하기</b><span>암종을 이해한 뒤 필요한 다음 정보로 이어집니다.</span></div>'+
+        '<a class="floor2-service" href="'+esc(d.links[0][1])+'" target="_blank" rel="noopener"><span class="floor2-service-icon">📚</span><span class="floor2-service-copy"><b>4컷 만화 암 정보</b><small>검사·병기·치료를 그림으로 쉽게</small></span></a>'+
+        '<div class="floor2-service soon"><span class="floor2-service-icon">🗺️</span><span class="floor2-service-copy"><b>치료결정 지도</b><small>왜 사람마다 치료가 다른지 이해</small></span></div>'+
+        '<div class="floor2-service soon"><span class="floor2-service-icon">💊</span><span class="floor2-service-copy"><b>항암제 Drug Hub</b><small>약물·기전·관련 암종을 한곳에</small></span></div>'+
+        '<div class="floor2-service soon"><span class="floor2-service-icon">🧬</span><span class="floor2-service-copy"><b>바이오마커 Navigator</b><small>검사 결과와 치료 선택의 연결</small></span></div>'+
+        '<div class="floor2-note">2F는 <b>“내 암을 이해하는 층”</b>입니다. 치료 가능 여부나 실제 급여·공급 상태는 3F 치료 접근 영역과 연결해 보여줄 예정입니다.</div></aside>'+
+      '</div><div class="p-scroll-tip">책 표지 클릭: 암종별 가이드 · 건물 클릭: 층 이동</div>';
+  }
+
   function render(f){
     var d=DATA[f];
+    panel.classList.toggle('floor-2-expanded',f===2);
     sheet.className='sheet floor-'+f;
+    if(f===2){
+      sheet.innerHTML=renderBookShelf(d);
+      sheet.scrollTop=0;
+      return;
+    }
     sheet.innerHTML =
       '<span class="p-fl"><b>'+d.fl+'</b>'+d.kicker+'</span>'+
       '<h2>'+d.title.replace(/\n/g,'<br>')+'</h2>'+
@@ -1131,6 +1224,7 @@
     setInteractionMode('building');
     hideConnector(true);
     panel.setAttribute('aria-hidden','true');
+    panel.classList.remove('floor-2-expanded');
     pagerBtns.forEach(function(b){ b.classList.remove('on'); });
     Object.keys(wallCards).forEach(function(k){ wallCards[k].classList.remove('active','preview'); });
     Object.keys(wallLabels).forEach(function(k){ wallLabels[k].classList.remove('active'); });
