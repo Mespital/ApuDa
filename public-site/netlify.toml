@@ -31,3 +31,17 @@
   to = "https://apudacare.netlify.app/:splat"
   status = 200
   force = true
+
+
+# ApuDa Note — cancer treatment notebook (separate from general ApuDa Care)
+[[redirects]]
+  from = "/note"
+  to = "/note/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/note/*"
+  to = "https://apuda-care.netlify.app/:splat"
+  status = 200
+  force = true
