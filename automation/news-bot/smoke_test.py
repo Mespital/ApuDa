@@ -72,6 +72,21 @@ for x in notices.get("items") or []:
     if u and "mfds.go.kr" not in u:
         errors.append(f"MFDS notice non-official URL: {u}")
 
+archive=load("drug-archive.json",required=False)
+if archive:
+    for section in ("approval","supply"):
+        item=archive.get(section) or {}
+        for key in ("xlsx","csv"):
+            u=str((item.get("downloads") or {}).get(key) or "")
+            if u:
+                target=repo/"public-site"/u.lstrip("/")
+                if not target.exists():
+                    errors.append(f"drug archive download missing: {u}")
+        periods=item.get("periods") or {}
+        for p in ("today","7d","30d"):
+            if p not in periods:
+                errors.append(f"drug archive period missing: {section}.{p}")
+
 onc=load("oncology-30d.json",required=False)
 for x in onc.get("items") or []:
     if not (x.get("oncology") or {}).get("is_oncology"):
@@ -88,7 +103,9 @@ print(json.dumps({
         "nccn_guides":len(nitems),
         "hira_items":len(hira.get("items") or []),
         "mfds_notices":len(notices.get("items") or []),
-        "oncology_items":len(onc.get("items") or [])
+        "oncology_items":len(onc.get("items") or []),
+        "drug_approval_exported":(archive.get("approval") or {}).get("exported_count",0) if archive else 0,
+        "drug_supply_exported":(archive.get("supply") or {}).get("exported_count",0) if archive else 0
     }
 },ensure_ascii=False,indent=2))
 if errors: sys.exit(1)
