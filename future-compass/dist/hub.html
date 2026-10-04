@@ -10,6 +10,7 @@ body{margin:0;background:#fbfcfd}
 .hub-top a[aria-current="page"]{background:#24604a;border-color:#24604a;color:#fff}
 .hub-top a:focus-visible{outline:2px solid #ffe45c;outline-offset:2px}
 .hub-top .pin-tools{margin-left:auto}
+@media (max-width:760px){.shiro-hint{display:none!important}}
 @media (prefers-color-scheme:dark){body{background:#16201c}.hub-top a{background:#1b2722;border-color:#2d3d36;color:#9fb0a7}}
 </style>
 </head><body>
@@ -22,7 +23,8 @@ StudyHub.mount({
   el: "#study-hub",
   dataBase: "hub/",
   storage: StudyHub.localStorageAdapter("fc_hub_posts"),
-  eyebrow: "고1 2학기 · 공부할 때 바로 가는 곳",
+  eyebrow: "서초고 1학년 · 2학기 맞춤",
+  pickTitle: "서초고 1학년 추천 사이트", pickLede: "지금(2학기 기말·학력평가·고2 과목 선택 시기)에 가장 자주 쓸 6곳이야.", pickLabel: "왜 추천?",
   titleA: "학습", titleB: "사이트 모음",
   lede: "교과서·인강·기출부터 고2 과목 선택, 독서·코딩까지. 지금 필요한 걸 골라서 바로 들어가.",
   footer: "사이트 정보는 2026년 10월 기준이야. 회원가입이나 유료 범위는 바뀔 수 있어."
