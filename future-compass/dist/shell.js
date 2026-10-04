@@ -10,6 +10,7 @@ window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installProm
 window.addEventListener('appinstalled',()=>{installPrompt=null;announce('홈 화면에 추가했어요. 아이콘으로 다시 만나세요!')});
 function connectionStatus(){const e=document.querySelector('#connection-status');if(e)e.textContent=typeof navigator!=='undefined'&&navigator.onLine===false?'오프라인 · 저장된 탐색':'나의 탐험 공간'}
 window.addEventListener('online',()=>{connectionStatus();if(typeof refreshNews==='function')refreshNews()});window.addEventListener('offline',connectionStatus);
+if(typeof navigator!=='undefined'&&'serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').then(reg=>{reg.addEventListener('updatefound',()=>{const worker=reg.installing;worker?.addEventListener('statechange',()=>{if(worker.state==='installed'&&navigator.serviceWorker.controller)announce('새 버전이 준비됐어요. 앱을 다시 열면 적용돼요.')})})}).catch(()=>{});}
 page='home';
 
 const cheerMessages=[

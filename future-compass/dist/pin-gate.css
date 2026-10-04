@@ -1,0 +1,39 @@
+/* 4자리 비밀번호 잠금 화면 */
+html.pin-locked body > *:not(#pin-gate){display:none!important}
+html.pin-locked body{overflow:hidden}
+#pin-gate{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:20px 16px;background:linear-gradient(150deg,#2a2463,#4b38b8);font-family:"Noto Sans KR","Apple SD Gothic Neo",system-ui,sans-serif;color:#1d1b2e}
+.pin-card{width:100%;max-width:340px;background:#fff;border-radius:24px;padding:28px 22px 20px;display:flex;flex-direction:column;align-items:center;gap:10px;box-shadow:0 20px 60px #0004}
+.pin-logo{width:48px;height:48px;border-radius:14px;background:#5b3fd6;display:grid;place-items:center}
+.pin-brand{margin:0;font-size:13px;font-weight:700;color:#5b3fd6;letter-spacing:.04em}
+.pin-title{margin:0;font-size:19px;line-height:1.4;text-align:center;text-wrap:balance}
+.pin-dots{display:flex;gap:14px;margin:8px 0 2px}
+.pin-dots i{width:16px;height:16px;border-radius:50%;border:2px solid #5b3fd6;background:transparent;transition:background .12s}
+.pin-dots i.on{background:#5b3fd6}
+.pin-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.pin-input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.pin-msg{margin:0;min-height:22px;font-size:13.5px;color:#5e5a76;text-align:center}
+.pin-pad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;margin-top:4px}
+.pin-pad button{height:58px;border:0;border-radius:16px;background:#f1eefb;color:#1d1b2e;font:600 22px/1 "IBM Plex Mono",ui-monospace,monospace;cursor:pointer;touch-action:manipulation}
+.pin-pad button:active{background:#ddd5fa}
+.pin-pad button:focus-visible,.pin-forgot:focus-visible,.pin-confirm button:focus-visible{outline:3px solid #f4c95d;outline-offset:2px}
+.pin-wait .pin-pad{opacity:.4;pointer-events:none}
+.pin-forgot{margin-top:6px;border:0;background:none;color:#5e5a76;font-size:13px;text-decoration:underline;cursor:pointer;padding:8px}
+.pin-confirm{width:100%;background:#fbe6ea;border-radius:14px;padding:14px;font-size:13.5px;line-height:1.6}
+.pin-confirm p{margin:0 0 10px}
+.pin-confirm-row{display:flex;gap:8px}
+.pin-confirm-row button{flex:1;min-height:42px;border:0;border-radius:10px;font:600 13.5px system-ui;cursor:pointer}
+.pin-cancel{background:#fff;color:#1d1b2e}
+.pin-reset{background:#b4475a;color:#fff}
+.pin-shake{animation:pinshake .35s}
+@keyframes pinshake{20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
+@media (prefers-reduced-motion:reduce){.pin-shake{animation:none}}
+.pin-lock-btn{border:1px solid #ddd5f0;background:#fff;color:#5b3fd6;border-radius:999px;padding:6px 12px;font:600 12.5px system-ui;cursor:pointer;white-space:nowrap}
+.pin-tools{display:inline-flex;gap:6px;align-items:center}
+.sidebar .pin-tools{position:absolute;top:22px;right:24px}
+.sidebar{position:relative}
+.wrap > header .brand .pin-tools{margin-left:auto}
+.pin-lock-float{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));right:12px;z-index:60}
+.pin-toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:1001;background:#2a2463;color:#fff;padding:12px 18px;border-radius:14px;font:500 14px system-ui;max-width:90vw;text-align:center}
+@media (max-width:760px){.sidebar .pin-tools{top:14px;right:16px}.pin-change-btn{font-size:0!important;padding:6px 9px!important}.pin-change-btn::before{content:"🔑";font-size:13px}}
+.pin-cancel-change{border:0;background:none;color:#5b3fd6;font-size:13px;font-weight:600;cursor:pointer;padding:8px}
+body > main > header .pin-tools,body > header .pin-tools{margin-left:8px}

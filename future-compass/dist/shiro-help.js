@@ -1,7 +1,7 @@
 /* Local help chatbot. Only the explicit feedback form sends to FormSubmit. */
 (()=>{'use strict';
 const mail='apuda.co.kr@gmail.com',endpoint='https://formsubmit.co/ajax/'+mail;
-const menus={review:['🔁 오답·질문 모음','study.html#review'],dates:['🧩 시험·수행평가 준비','study.html#dates'],focus:['🌱 과목별 공부 시작','study.html#focus'],study:['📚 나의 공부방','study.html'],quiz:['✨ 나 알아보기','know-me.html'],explore:['🧭 기존 관심 탐색기','/#career-lab'],future:['🔮 미래의 변화','/#shiro-future'],life:['🏠 달라지는 생활','/#shiro-life'],career:['🎓 직업과 대학','/#shiro-career'],plan:['📚 나의 준비계획','/#shiro-plan'],news:['📰 AI·학습·서초고 소식','/#shiro-news'],research:['📖 설명과 근거','/#shiro-research'],install:['📱 앱으로 사용','/#shiro-install'],home:['🏡 탐험 홈','/']};
+const menus={review:['🔁 오답·질문 모음','study.html#review'],dates:['🧩 시험·수행평가 준비','study.html#dates'],focus:['🌱 과목별 공부 시작','study.html#focus'],study:['📚 나의 공부방','study.html'],quiz:['✨ 나 알아보기','know-me.html'],explore:['🧭 기존 관심 탐색기','./#career-lab'],future:['🔮 미래 예측','future.html'],life:['🏠 달라지는 생활','./#shiro-life'],career:['🎓 직업과 대학','./#shiro-career'],plan:['📚 나의 준비계획','./#shiro-plan'],news:['📰 AI·학습·서초고 소식','./#shiro-news'],research:['📖 설명과 근거','./#shiro-research'],install:['📱 앱으로 사용','./#shiro-install'],home:['🏡 탐험 홈','./']};
 const faqs=[
 {keys:['시작','사용법','사용방법','어떻게','도움','처음'],text:'🐶 처음이면 이 순서로 해봐!\n① 나 알아보기: 24가지 질문으로 좋아하는 활동 찾기\n② 기존 관심 탐색기: 과목·활동을 고르고 직업 비교하기\n③ 준비계획: 작은 체험을 해보고 체크하기\n정답은 없어. 오늘 마음에 드는 것부터 시작하자!',links:['quiz','explore','plan']},
 {keys:['백업','파일저장','기기에저장','불러오기','복원'],text:'💾 공부방 위쪽의 내 기기에 백업 저장을 누르면 학습 기록을 파일로 받을 수 있어. 다른 기기에서는 불러오기로 가져와! 진로 탐색 답변은 이 파일에 포함되지 않아. 잘못 불러왔다면 저장 도움말의 직전 복원 취소를 눌러줘.',links:['study']},
