@@ -60,6 +60,19 @@ def response_items(data):
             flat.append(x)
     return flat
 
+def response_total_count(data):
+    if not isinstance(data,dict): return 0
+    body=data.get("body")
+    if body is None and isinstance(data.get("response"),dict):
+        body=data["response"].get("body")
+    if not isinstance(body,dict): return 0
+    try:return int(body.get("totalCount") or body.get("total_count") or 0)
+    except:return 0
+
+def _date_sort_value(v):
+    s=re.sub(r"[^0-9]","",clean(v))
+    return s[:14] if s else ""
+
 def fetch_official_web(session, src):
     url = src["official_url"] if src["id"] == "ncc_living_guide" else src["portal_url"]
     result = {
@@ -289,9 +302,9 @@ def fetch_mfds_supply_shortage(session,key):
     candidates=_service_key_candidates(key);last={}
     for idx,candidate in enumerate(candidates,1):
         try:
-            r=session.get(MFDS_SUPPLY_ENDPOINT,params={
-                "serviceKey":candidate,"pageNo":1,"numOfRows":50,"type":"json"
-            },timeout=25)
+            page_size=100
+            params={"serviceKey":candidate,"pageNo":1,"numOfRows":page_size,"type":"json"}
+            r=session.get(MFDS_SUPPLY_ENDPOINT,params=params,timeout=25)
             if r.status_code!=200:
                 code,msg,error_name=_safe_gateway_message(r,candidates)
                 last={"http_status":r.status_code,"error_code":code or None,"error_message":msg or None,"error_name":error_name or None,"key_variant_attempt":idx}
@@ -308,12 +321,28 @@ def fetch_mfds_supply_shortage(session,key):
             if rc and rc not in ("0","00"):
                 last={"http_status":r.status_code,"error_code":rc,"error_message":rm,"key_variant_attempt":idx}
                 continue
+
             raw_items=[x for x in response_items(data) if isinstance(x,dict)]
+            total=response_total_count(data)
+            # If the API is ordered oldest-first, also read the final page and combine.
+            if total>page_size:
+                last_page=max(1,(total+page_size-1)//page_size)
+                try:
+                    rr=session.get(MFDS_SUPPLY_ENDPOINT,params={**params,"pageNo":last_page},timeout=25)
+                    if rr.status_code==200:
+                        dd=rr.json()
+                        raw_items.extend([x for x in response_items(dd) if isinstance(x,dict)])
+                except Exception:
+                    pass
+
             rows=[]
+            seen=set()
             for x in raw_items:
-                rows.append({
+                row={
+                    "report_date":_pick(x,"REPORT_DATE","reportDate"),
                     "company":_pick(x,"ENTP_NAME","ENTP_NM","entpName","companyName","ENTRPS_NM","ENTRPSNM"),
                     "item_name":_pick(x,"ITEM_NAME","ITEM_NM","itemName","PRDLST_NM","ITEMNM","PRDUCT_NM","PRDCT_NM"),
+                    "edi_code":_pick(x,"EDI_CODE","ediCode"),
                     "shortage_expected_date":_pick(x,"SHORT_SUPPLY_EXPT_DATE","SUPLY_LACK_PRDCT_DATE","SUPPLY_LACK_EXPECT_DATE","LACK_PREDICT_DATE","lackPredictDate","SUPLY_LACK_OCRN_PRDCT_DATE","SUPLYLACKOCRNPRDCTDE"),
                     "shortage_reason":_pick(x,"SHORT_SUPPLY_REASON","SUPLY_LACK_RSN","SUPPLY_LACK_REASON","LACK_REASON","lackReason","SUPLY_LACK_CAUSE","SUPLYLACKRSN"),
                     "last_supply_date":_pick(x,"LAST_PRDCT_IMP_SUPLY_DATE","LAST_SUPPLY_DATE","lastSupplyDate","LAST_PRDCTN_IMPRT_SUPLY_DATE"),
@@ -322,8 +351,14 @@ def fetch_mfds_supply_shortage(session,key):
                     "patient_impact":_pick(x,"TREATMENT_INFU","PATIENT_TRTMT_INFLU","PATIENT_TREAT_IMPACT","patientImpact","PATIENT_TREATMENT_EFFECT","PTNT_TRTMT_INFLU"),
                     "normalization_plan":_pick(x,"SUPPLY_PLAN","SUPLY_NORMAL_PLAN","NORMALIZATION_PLAN","normalizationPlan","SUPLY_NORMALIZATION_PLAN","SUPLY_NMLZTN_PRMT_PLAN"),
                     "normalization_expected_date":_pick(x,"SUPPLY_PLAN_DATE","SUPLY_NORMAL_PRDCT_DATE","NORMALIZATION_EXPECT_DATE","normalizationExpectedDate","SUPLY_NMLZTN_EXPECT_DATE")
-                })
+                }
+                key=(row.get("item_name"),row.get("report_date"),row.get("company"))
+                if key in seen: continue
+                seen.add(key);rows.append(row)
+
+            rows.sort(key=lambda x:(_date_sort_value(x.get("report_date")),_date_sort_value(x.get("shortage_expected_date"))),reverse=True)
             result["records"]=rows[:50]
+            result["total_count"]=total
             result["http_status"]=r.status_code
             result["key_variant_used"]=idx
             result["response_field_keys"]=sorted(list(raw_items[0].keys()))[:80] if raw_items else []
@@ -334,7 +369,7 @@ def fetch_mfds_supply_shortage(session,key):
                 result["note"]="API 응답은 정상이나 필드명이 현재 매핑과 달라 자동 필드 매핑을 점검 중입니다."
             else:
                 result["status"]="ok"
-                result["note"]="식약처 공식 의약품 공급부족 OpenAPI 연결 상태입니다. 공급부족·환자영향·정상화 계획을 확인합니다."
+                result["note"]="식약처 공식 의약품 공급부족 OpenAPI 연결 상태입니다. 최신 신고일 기준으로 공급부족·환자영향·정상화 계획을 확인합니다."
             return result
         except Exception as e:
             last={"error_message":_redact_secrets(e,candidates)[:220],"key_variant_attempt":idx}
