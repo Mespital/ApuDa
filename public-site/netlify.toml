@@ -27,6 +27,18 @@
   force = true
 
 [[redirects]]
+  from = "/risk/*"
+  to = "https://apuda-cancercheck.netlify.app/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/checkup/*"
+  to = "https://apuda-check.netlify.app/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/support/*"
   to = "https://apuda-support.netlify.app/:splat"
   status = 200

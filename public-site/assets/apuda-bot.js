@@ -17,8 +17,8 @@ function A(p){return /^https?:/.test(p)?p:BASE+p}
 var SITES=[
  {id:'home',fl:'',ico:'🏢',name:'ApuDa 홈 (5층 빌딩)',url:'/',desc:'층을 눌러 필요한 서비스로 이동',kw:['홈','처음','메인','빌딩','첫화면']},
  {id:'about',fl:'',ico:'💡',name:'ApuDa 소개·사용법',url:'/about/',desc:'ApuDa.app이 무엇인지, 층별로 무엇을 하는지',kw:['소개','사용법','어떤곳','뭐하는','apuda가','아프다가','이용방법','도움말']},
- {id:'cancercheck',fl:'1F',ico:'🧭',name:'암 위험도 체크',url:'https://apuda-cancercheck.netlify.app/',ext:1,desc:'생활습관과 주요 위험요인을 3분 만에 확인',kw:['위험도','위험요인','가능성','자가진단','암일까','걸릴','예방']},
- {id:'checkup',fl:'1F',ico:'🩺',name:'건강검진 선택 항목',url:'https://apuda-check.netlify.app/',ext:1,desc:'기본검진 외 추가로 고려할 검사 정리',kw:['검진','건강검진','종합검진','선택항목','추가검사','국가검진','내시경검사']},
+ {id:'cancercheck',fl:'1F',ico:'🧭',name:'암 위험도 체크',url:'/risk/',desc:'생활습관과 주요 위험요인을 3분 만에 확인',kw:['위험도','위험요인','가능성','자가진단','암일까','걸릴','예방']},
+ {id:'checkup',fl:'1F',ico:'🩺',name:'건강검진 선택 항목',url:'/checkup/',desc:'기본검진 외 추가로 고려할 검사 정리',kw:['검진','건강검진','종합검진','선택항목','추가검사','국가검진','내시경검사']},
  {id:'library',fl:'2F',ico:'📚',name:'암 정보 서재 (12종 가이드북)',url:'/#floor-2',desc:'암종별 첫 30일 책·FAQ·완전판',kw:['서재','가이드북','책','첫30일','첫 30일','미니','웹북','도서']},
  {id:'map',fl:'2F',ico:'🗺️',name:'치료결정 지도',url:'/library/treatment-map/',desc:'왜 사람마다 치료가 다른지, 암종별 6단계',kw:['치료결정','치료지도','치료순서','치료과정','병기','어떤치료','치료방법']},
  {id:'drugs',fl:'2F',ico:'💊',name:'항암제 Drug Hub',url:'/library/drugs/',desc:'약 기전·부작용·공급상태·최근 뉴스',kw:['항암제','약정보','약이름','부작용','공급부족','품절','표적치료제','면역항암제','drug']},
@@ -40,7 +40,7 @@ var CANCER=[['breast','유방암',['유방']],['lung','폐암',['폐']],['stomac
 /* ── 페이지별 설정 ── */
 function detect(){
   if(DS.context)return DS.context;var p=location.pathname,h=location.host;
-  if(/cancercheck/.test(h))return 'cancercheck';if(/apuda-check/.test(h))return 'checkup';if(/support/.test(h)||/^\/support/.test(p))return 'support';
+  if(/cancercheck/.test(h)||/^\/risk/.test(p))return 'cancercheck';if(/apuda-check/.test(h)||/^\/checkup/.test(p))return 'checkup';if(/support/.test(h)||/^\/support/.test(p))return 'support';
   if(/^\/note/.test(p))return 'note';if(/\/library\/mini/.test(p))return 'mini';if(/\/library\/faq/.test(p))return 'faq';
   if(/\/library\/drugs/.test(p))return 'drugs';if(/\/library\/biomarkers/.test(p))return 'biomarkers';if(/treatment-map/.test(p))return 'map';
   if(/^\/news/.test(p))return 'news';if(/^\/about/.test(p))return 'about';if(/^\/care/.test(p))return 'care';if(/^\/pet/.test(p))return 'pet';if(/^\/farm/.test(p))return 'farm';
@@ -58,8 +58,8 @@ var CONF={
  map:{t:'치료결정 지도 도우미',g:'위쪽 표지를 눌러 암종을 바꿀 수 있어요. 오른쪽 <b>진료실 질문 3가지</b>는 노트에 저장해 진료 때 꺼내 보세요.',chips:[['🎗️ 암종 바꾸기','암종 고르기'],['💊 이 암 관련 약','이 암 약'],['📘 질문 노트에 저장','질문 저장 방법']]},
  note:{t:'ApuDa 길잡이',g:'노트 기록은 아래 입력창(노트봇)에 쓰시면 돼요. 저는 <b>다른 층·서비스로 이동</b>과 사용법을 도와드려요.',chips:[['📘 노트 사용법','노트 사용법'],['🚨 응급 판단','응급'],['🎗️ 내 암종 정보','암종 고르기'],['🏢 다른 층으로','전체 메뉴']]},
  news:{t:'뉴스 도우미',g:'뉴스에 나온 약이나 검사가 궁금하면 이름을 써 주세요. Drug Hub·바이오마커로 연결해 드려요.',chips:[['🎗️ 항암제 뉴스','항암제 뉴스'],['💊 약 찾아보기','항암제'],['🧬 검사 찾아보기','바이오마커']]},
- cancercheck:{t:'ApuDa 길잡이',g:'위험도 결과는 <b>진단이 아니에요</b>. 결과가 걱정되면 검진 항목을 확인하고 가까운 의료기관과 상의하세요.',chips:[['🩺 건강검진 선택 항목','건강검진'],['📚 암종별 정보','암종 고르기'],['🏢 ApuDa 홈','홈']]},
- checkup:{t:'ApuDa 길잡이',g:'검진 항목은 나이·가족력·생활습관에 따라 달라요. 국가검진 대상인지 먼저 확인하세요.',chips:[['🧭 암 위험도 체크','위험도'],['📚 암종별 정보','암종 고르기'],['🏢 ApuDa 홈','홈']]},
+ cancercheck:{t:'1F 위험도 도우미',g:'<b>1F 암 위험도 체크</b>예요. 결과는 <b>진단이 아니라</b> 생활습관·가족력을 돌아보는 참고용이에요. 걱정되는 결과가 나오면 검진으로 확인하세요.',chips:[['📊 결과 어떻게 봐요?','위험도 결과 해석'],['🧬 가족력이 있어요','가족력'],['🥗 위험 낮추는 습관','위험 낮추는 습관'],['🩺 나라 암검진 대상','국가암검진'],['🩺 추가 검진 항목','건강검진'],['🏢 ApuDa 홈','홈']]},
+ checkup:{t:'1F 건강검진 도우미',g:'<b>1F 건강검진 선택 항목</b>이에요. 먼저 <b>국가암검진 대상</b>인지 확인하고, 나이·가족력·증상에 따라 추가 검사를 의사와 상의하세요.',chips:[['🩺 국가암검진 대상','국가암검진'],['➕ 추가 검사 고르는 법','추가 검사 고르는 법'],['🚩 검진 기다리면 안 되는 증상','검진보다 진료'],['🧭 암 위험도 체크','위험도'],['🏢 ApuDa 홈','홈']]},
  support:{t:'3F 지원 도우미',g:'<b>3F 나에게 맞는 지원</b>이에요. 암 진단 후 받을 수 있는 대표 제도를 쉽게 알려드리고, 필요한 서류는 노트에 적어 두게 도와드려요.',chips:[['🧾 산정특례란?','산정특례란'],['💰 의료비 지원 종류','의료비 지원 종류'],['📝 준비할 서류','준비할 서류'],['🏥 누구에게 물어보나','지원 상담처'],['💬 다른 환자 경험','카페'],['🏢 ApuDa 홈','홈']]},
  care:{t:'Care 도우미',g:'<b>ApuDa Care</b>는 일상 건강·예방 정보예요. 암 치료 중이라면 같은 증상도 기준이 달라요 — 치료 기록과 위험 신호는 <b>암환자 노트</b>에서 확인하세요.',chips:[['💉 치료 중 예방접종','치료 중 예방접종'],['🤒 감기·열이 나요','치료 중 열'],['📘 암환자 노트','노트'],['📚 암 정보 서재','서재'],['🏢 ApuDa 홈','홈']]},
  pet:{t:'ApuDa.pet 도우미',g:'<b>ApuDa.pet</b> — 반려동물 건강 라인이에요. 급해 보이는 증상이면 먼저 동물병원에 연락하세요.',chips:[['🚨 반려동물 응급 신호','반려동물 응급'],['🐄 ApuDa.farm','팜'],['💡 ApuDa 패밀리','패밀리'],['🏢 ApuDa 홈','홈']]},
@@ -127,6 +127,12 @@ function reply(raw){
    '응급':function(){return [{c:'red',h:'<b>지금 병원에 연락해야 하는지</b> 체크리스트로 확인해 보세요. 숨쉬기 힘들거나 의식이 처지면 바로 119.<div class="links">'+link('/note/#sos','🚨 응급 판단 열기',true)+'<a class="go red" href="tel:119">🚑 119</a></div>'}]},
    '노트':function(){return [{h:siteCard(SITE.note)}]},'치료비 지원':function(){return [{h:siteCard(SITE.support)+'<p class="sm">조건은 자주 바뀌어요. 병원 사회사업실에서 최종 확인하세요.</p>'}]},
    '홈':function(){return [{h:siteCard(SITE.home)}]},
+   '위험도 결과 해석':function(){return [{h:'<b>위험도 결과 보는 법</b><ul><li>점수는 생활습관·가족력 같은 <b>위험요인이 얼마나 많은지</b>를 보여줄 뿐, 암이 있는지 없는지는 알 수 없어요.</li><li>점수가 높으면 → 바꿀 수 있는 습관(흡연·음주·체중·운동)부터, 그리고 <b>정해진 검진을 빠짐없이</b>.</li><li>점수가 낮아도 → 증상이 있으면 검진을 기다리지 말고 진료를 받으세요.</li></ul><div class="qr">'+q('🩺 국가암검진 대상','국가암검진')+q('🚩 바로 진료가 필요한 증상','검진보다 진료')+'</div>'}]},
+   '가족력':function(){return [{h:'<b>가족력이 있다면</b><ul><li>부모·형제·자녀 중 누가, <b>몇 살에</b>, 어떤 암이었는지 적어 두세요. 진료 때 가장 중요한 정보예요.</li><li>젊은 나이(대략 50세 전) 진단, 같은 암이 여러 명, 유방·난소·대장·자궁내막암이 한 집안에 반복되면 <b>유전상담</b>을 고려해요.</li><li>대장암 가족력은 대장내시경 시작 나이를 앞당기기도 해요.</li></ul><p class="sm">검진 시기는 의사와 상의해서 정하세요.</p>'}]},
+   '위험 낮추는 습관':function(){return [{h:'<b>암 위험을 낮추는 습관</b><ul><li>금연 — 가장 효과가 큰 한 가지</li><li>술은 줄일수록 좋아요(한두 잔도 위험이 늘어요)</li><li>적정 체중, 주 150분 이상 걷기 같은 활동</li><li>채소·과일·통곡물, 가공육·탄 음식 줄이기</li><li>B형간염·HPV 예방접종, 정해진 암검진</li></ul>'}]},
+   '국가암검진':function(){return [{h:'<b>국가암검진 대상 (2026년 기준 요약)</b><ul><li><b>위암</b> 만 40세 이상 · 2년마다 · 위내시경</li><li><b>대장암</b> 만 50세 이상 · 1년마다 · 분변잠혈검사(양성이면 대장내시경)</li><li><b>간암</b> 만 40세 이상 고위험군(B·C형간염, 간경변 등) · 6개월마다 · 초음파+혈액검사</li><li><b>유방암</b> 만 40세 이상 여성 · 2년마다 · 유방촬영</li><li><b>자궁경부암</b> 만 20세 이상 여성 · 2년마다 · 세포검사</li><li><b>폐암</b> 만 54~74세 고위험 흡연자(30갑년 이상) · 2년마다 · 저선량 CT</li></ul><p class="sm">대상 여부·연도는 국민건강보험공단(1577-1000) 또는 "The건강보험" 앱에서 확인하세요.</p>'}]},
+   '추가 검사 고르는 법':function(){return [{h:'<b>추가 검사, 이렇게 고르세요</b><ol><li>국가검진에 포함된 검사부터 빠짐없이</li><li>가족력·과거 병력이 있는 장기 위주로 추가</li><li>증상이 있으면 "검진"이 아니라 "진료"로 확인</li><li>비싼 검사가 꼭 좋은 건 아니에요 — 방사선 노출·위양성도 고려</li></ol><p class="sm">최종 선택은 검진 의사와 상의하세요.</p>'}]},
+   '검진보다 진료':function(){return [{c:'red',h:'<b>검진 날짜를 기다리지 말고 진료받아야 할 신호</b><ul><li>이유 없는 체중 감소(6개월에 5% 이상)</li><li>혈변·검은 변, 피 섞인 가래·소변</li><li>삼킬 때 걸림, 계속되는 소화불량</li><li>만져지는 멍울(유방·목·겨드랑이)</li><li>3주 넘게 지속되는 기침·쉰 목소리</li><li>폐경 후 질출혈</li></ul><p class="sm">대부분 암이 아니어도, 확인은 빨리 받는 게 좋아요.</p>'}]},
    '서재':function(){return [{h:siteCard(SITE.library)}]},'팜':function(){return [{h:siteCard(SITE.farm)}]},'펫':function(){return [{h:siteCard(SITE.pet)}]},
    '패밀리':function(){return [{h:'<b>ApuDa 패밀리</b> — 같은 원칙(쉽게·무료·진단 대신 다음 할 일)으로 만든 건강 라인이에요.'+siteCard(SITE.home)+siteCard(SITE.care)+siteCard(SITE.pet)+siteCard(SITE.farm)}]},
    '산정특례란':function(){return [{h:'<b>산정특례(암)</b><ul><li>암 확진 후 병원에서 <b>등록 신청</b>을 하면, 건강보험 적용 진료비의 본인부담이 <b>5%</b>로 줄어요.</li><li>적용 기간은 보통 <b>5년</b>이고, 재발·전이 등으로 계속 치료가 필요하면 재등록할 수 있어요.</li><li><b>확진 후 30일 안에</b> 신청하면 확진일부터 적용돼요. 늦으면 신청일부터라 서두르는 게 좋아요.</li><li>비급여 항목(일부 신약·상급병실·간병 등)은 해당되지 않아요.</li></ul><p class="sm">신청은 진료 병원 원무과에서 대신 해 주는 경우가 많아요. 최종 조건은 국민건강보험공단(1577-1000)에 확인하세요.</p><div class="links">'+link('/note/?say='+encodeURIComponent('질문: 산정특례 등록됐는지 원무과에 확인'),'📘 노트에 확인할 일로 저장')+'</div>'}]},
@@ -145,6 +151,9 @@ function reply(raw){
   if(/지원|의료비|치료비|비용|돈|보험|상한제|재난적/.test(t)&&CTX==='support')return cmd['의료비 지원 종류']();
   if(/서류|진단서|영수증|세부내역/.test(t))return cmd['준비할 서류']();
   if(/예방접종|백신|접종/.test(t))return cmd['치료 중 예방접종']();
+  if(/국가\s*(암)?검진|검진\s*대상|몇\s*살부터|무료\s*검진/.test(t))return cmd['국가암검진']();
+  if(/가족력|유전/.test(t)&&CTX==='cancercheck')return cmd['가족력']();
+  if(/점수|결과|위험도\s*(높|낮)/.test(t)&&CTX==='cancercheck')return cmd['위험도 결과 해석']();
   if(/누구(한테|에게)|어디(에|서)?\s*(물어|상담|문의|신청)|상담처|사회사업실|사회복지|원무과/.test(t))return cmd['지원 상담처']();
   if(/패밀리|family/i.test(t))return cmd['패밀리']();
   if(CTX==='care'&&/열|감기|몸살/.test(t))return cmd['치료 중 열']();

@@ -1,6 +1,6 @@
-// ApuDa 길잡이 자동 삽입 — apuda.app을 거쳐 열리는 외부 앱(/care, /pet, /farm, /support)에
+// ApuDa 길잡이 자동 삽입 — apuda.app을 거쳐 열리는 외부 앱(/care, /pet, /farm, /support, /risk, /checkup)에
 // 원본 사이트를 고치지 않고 </body> 앞에 길잡이 스크립트를 넣는다. 실패하면 원본 그대로 돌려준다.
-const CTX = { care: 'care', pet: 'pet', farm: 'farm', support: 'support' };
+const CTX = { care: 'care', pet: 'pet', farm: 'farm', support: 'support', risk: 'cancercheck', checkup: 'checkup' };
 
 export default async (request, context) => {
   const res = await context.next();
@@ -28,5 +28,5 @@ export default async (request, context) => {
 };
 
 export const config = {
-  path: ['/care/*', '/pet/*', '/farm/*', '/support/*']
+  path: ['/care/*', '/pet/*', '/farm/*', '/support/*', '/risk/*', '/checkup/*']
 };
