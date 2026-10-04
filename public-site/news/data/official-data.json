@@ -1,13 +1,14 @@
 {
   "version": "1.1",
-  "generated_at": "2026-10-04T01:24:42.800358+09:00",
+  "generated_at": "2026-10-04T11:16:46.670610+09:00",
   "service_key_connected": true,
   "source_health": {
     "total": 5,
     "status_counts": {
       "auth_error": 1,
-      "ok": 3,
-      "key_available": 1
+      "mapping_review": 1,
+      "key_available": 1,
+      "ok": 2
     }
   },
   "sources": [
@@ -17,7 +18,7 @@
       "name": "의약품 제품 허가정보",
       "source_url": "https://www.data.go.kr/data/15095677/openapi.do",
       "status": "auth_error",
-      "checked_at": "2026-10-04T01:24:38.681478+09:00",
+      "checked_at": "2026-10-04T11:16:41.829199+09:00",
       "records": [],
       "http_status": 403,
       "key_variant_attempt": 1,
@@ -31,8 +32,8 @@
       "agency": "식품의약품안전처",
       "name": "의약품 공급부족 정보",
       "source_url": "https://www.data.go.kr/data/15056886/openapi.do",
-      "status": "ok",
-      "checked_at": "2026-10-04T01:24:38.997966+09:00",
+      "status": "mapping_review",
+      "checked_at": "2026-10-04T11:16:42.242663+09:00",
       "records": [
         {
           "company": null,
@@ -637,7 +638,11 @@
       ],
       "http_status": 200,
       "key_variant_used": 1,
-      "note": "식약처 공식 의약품 공급부족 OpenAPI 연결 상태입니다. 공급부족·환자영향·정상화 계획을 확인합니다."
+      "response_field_keys": [
+        "item"
+      ],
+      "mapped_records": 0,
+      "note": "API 응답은 정상이나 필드명이 현재 매핑과 달라 자동 필드 매핑을 점검 중입니다."
     },
     {
       "id": "hira_drug_price",
@@ -645,7 +650,7 @@
       "name": "약가기준정보조회서비스",
       "source_url": "https://www.data.go.kr/data/15054445/openapi.do",
       "status": "key_available",
-      "checked_at": "2026-10-04T01:24:39.467658+09:00",
+      "checked_at": "2026-10-04T11:16:42.700548+09:00",
       "note": "공공데이터 인증키가 등록되어 있습니다. 해당 API 활용신청 승인 후 실제 조회 연결을 검증합니다."
     },
     {
@@ -654,7 +659,7 @@
       "name": "통계로 보는 암",
       "source_url": "https://edu.cancer.go.kr/lay1/S1T654C656/contents.do",
       "status": "ok",
-      "checked_at": "2026-10-04T01:24:39.467696+09:00",
+      "checked_at": "2026-10-04T11:16:42.700576+09:00",
       "latest_year": 2023,
       "note": "국가암정보센터 공식 통계 페이지 원문을 기준으로 연결합니다. 수치는 원문 표를 우선 확인합니다.",
       "page_title": "홈 >통계로 보는 암>유병률>암종별 암유병률",
@@ -889,7 +894,7 @@
       "name": "암환자 생활백서",
       "source_url": "https://cancer.go.kr/lay1/S1T523C850/contents.do",
       "status": "ok",
-      "checked_at": "2026-10-04T01:24:41.149916+09:00",
+      "checked_at": "2026-10-04T11:16:44.838303+09:00",
       "latest_year": null,
       "note": "국가암정보센터 원문을 직접 연결하며, ApuDa에서는 원문을 변형 복제하지 않습니다.",
       "page_title": "홈 >암정보 나눔터>국가암지식정보센터 OPEN API"
