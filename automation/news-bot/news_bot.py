@@ -263,27 +263,59 @@ def dedupe(items):
         out.append(lead)
     return out
 
+def clean_display_title(title):
+    t=clean_text(title)
+    t=re.sub(r"\s*[-|·]\s*(메디파나뉴스|데일리팜|의학신문|약사공론)\s*$","",t,flags=re.I)
+    return t
+
+def _useful_sentence(s):
+    s=clean_text(s)
+    if len(s)<30: return False
+    bad=[
+        "글자크기 설정","기사의 본문 내용은","무단전재","재배포 금지",
+        "copyright","저작권자","로그인","회원가입","chatgpt 이미지"
+    ]
+    return not any(x.lower() in s.lower() for x in bad)
+
+def industry_importance_text(a):
+    text=(" ".join([a.title or "",a.description or "",a.body_excerpt or ""])).lower()
+    if any(k in text for k in ["급여","약가","수가","보험"]):
+        return "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다."
+    if any(k in text for k in ["식약처","허가","fda","ema"]):
+        return "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다."
+    if any(k in text for k in ["3상","phase 3","pfs","os","orr"]):
+        return "주요 임상 결과는 향후 허가·가이드라인·표준치료 변화 가능성을 평가하는 근거가 됩니다."
+    if any(k in text for k in ["기술수출","라이선스","license","m&a","인수","합병"]):
+        return "대형 사업개발 거래는 파이프라인 가치와 기업 포트폴리오, 국내외 경쟁구도에 영향을 줍니다."
+    if any(k in text for k in ["투자","공장","생산시설","cdmo"]):
+        return "생산·투자 확대는 공급망 안정성과 글로벌 사업 확장, 중장기 생산능력 경쟁과 연결됩니다."
+    if any(k in text for k in ["병원","약국","의료기관"]):
+        return "의료기관·약국 현장의 변화는 진료 흐름과 환자 경험, 의약품 사용 환경에 직접 영향을 줍니다."
+    return "시장·정책·연구개발 흐름을 보여주는 주요 산업 이슈로 후속 정책과 사업 변화 확인이 필요합니다."
+
 def article_to_news(a, rank=None):
     pubs=[x.strip() for x in a.publisher.split(" · ")]
     pts=[]
-    if a.description: pts.append(a.description[:170])
+    if a.description and _useful_sentence(a.description):
+        pts.append(clean_text(a.description)[:170])
     if a.body_excerpt:
         sentences=re.split(r"(?<=[.!?다])\s+",a.body_excerpt)
         for s in sentences:
             s=clean_text(s)
-            if len(s)>35 and s not in pts:
+            if _useful_sentence(s) and s not in pts:
                 pts.append(s[:180])
             if len(pts)>=3: break
+    display_title=clean_display_title(a.title)
     return {
         "rank": rank,
         "canonical_issue": a.title,
-        "title": a.title,
+        "title": display_title,
         "category": a.categories or ["산업"],
         "publishers": pubs,
         "published_at": a.published_at,
         "published_at_verified": a.published_at_verified,
-        "summary": pts[:3] or [a.title],
-        "importance": "산업 중요도 규칙 기반 자동 선별 기사입니다. 편집 분석 문구는 후속 AI 검수 단계에서 보강합니다.",
+        "summary": pts[:3] or [display_title],
+        "importance": industry_importance_text(a),
         "source_urls": getattr(a,"_all_urls",[a.url]),
         "source_links": getattr(a,"_source_links",[{"publisher":a.publisher,"url":a.url}]),
         "thumbnail_url": a.image_url,
@@ -361,37 +393,51 @@ def make_oncology_archive(merged, outdir, end, tz, days=30):
 
 def make_report(items,cfg,start,end):
     top=sorted(items,key=lambda x:(x.score,x.published_at or ""),reverse=True)[:cfg["top_n"]]
-    def summary_points(a):
-        pts=[]
-        if a.description: pts.append(a.description[:170])
-        if a.body_excerpt:
-            sentences=re.split(r"(?<=[.!?다])\s+",a.body_excerpt)
-            for s in sentences:
-                s=clean_text(s)
-                if len(s)>35 and s not in pts:
-                    pts.append(s[:180])
-                if len(pts)>=3: break
-        return pts[:3] or [a.title]
-    top_news=[]
-    for i,a in enumerate(top,1):
-        item=article_to_news(a,rank=i)
-        top_news.append(item)
-    lead_titles=[x["title"] for x in top_news[:3]]
-    briefing=" · ".join(lead_titles) if lead_titles else "수집구간 내 게시시각 검증 주요 기사가 없습니다."
+    top_news=[article_to_news(a,rank=i) for i,a in enumerate(top,1)]
+    trends=derive_period_trends(top_news,4) if top_news else []
+
+    if top_news:
+        lead=top_news[0]
+        briefing=f"{lead['title']}가 오늘 가장 중요한 이슈로 부각됐습니다."
+        if len(top_news)>=2:
+            briefing+=f" 이어 {top_news[1]['title']}도 주요 변화로 확인됐습니다."
+        if trends:
+            names=" · ".join(t["title"] for t in trends[:2])
+            briefing+=f" 전체적으로는 {names} 흐름이 두드러집니다."
+    else:
+        briefing="수집구간 내 게시시각이 확인된 주요 산업 이슈가 제한적이었습니다."
+
     outlet_status=[]
     for s in cfg["sources"]:
         arr=[a for a in items if s["publisher"] in a.publisher]
-        outlet_status.append({"publisher":s["publisher"],"homepage_url":(s.get("entry_urls") or [""])[0],"items":[{"title":a.title,"published_at":a.published_at,"verified":a.published_at_verified,"source_url":getattr(a,"_all_urls",[a.url])[0] if getattr(a,"_all_urls",[a.url]) else a.url} for a in arr[:8]]})
+        outlet_status.append({
+            "publisher":s["publisher"],
+            "homepage_url":(s.get("entry_urls") or [""])[0],
+            "items":[{
+                "title":clean_display_title(a.title),
+                "published_at":a.published_at,
+                "verified":a.published_at_verified,
+                "source_url":getattr(a,"_all_urls",[a.url])[0] if getattr(a,"_all_urls",[a.url]) else a.url
+            } for a in arr[:8]]
+        })
+
+    if trends:
+        insight=trends[0]["implication"]
+        if len(trends)>1:
+            insight+=f" 동시에 {trends[1]['title']} 흐름도 함께 확인돼 단일 이슈보다 복합적인 산업 변화로 보는 것이 적절합니다."
+    else:
+        insight="개별 기사보다 정책·허가·급여·임상·투자 흐름이 실제 시장과 환자 접근성에 미치는 영향을 함께 확인할 필요가 있습니다."
+
     return {
-        "version":"1.1",
+        "version":"1.2",
         "report_date":end.strftime("%Y-%m-%d"),
         "collection_window":{"start":start.isoformat(),"end":end.isoformat(),"timezone":"Asia/Seoul"},
         "sources":[s["publisher"] for s in cfg["sources"]],
         "briefing":briefing,
         "top_news":top_news,
-        "trends":[],
+        "trends":trends,
         "outlet_status":outlet_status,
-        "insight":"자동 수집·시간검증·중복통합 단계가 완료된 데이터입니다. 게시 전 분석 문구 QA를 권장합니다.",
+        "insight":insight,
         "infographic":{"image_path":None,"generated_at":None,"template_version":"news-card-v1"}
     }
 
