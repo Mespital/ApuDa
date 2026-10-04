@@ -40,10 +40,25 @@ def response_items(data):
     if not isinstance(body, dict): return []
     items = body.get("items") or []
     if isinstance(items, dict):
-        if "item" in items: items = items["item"]
-        else: items = [items]
-    if isinstance(items, dict): items = [items]
-    return items if isinstance(items, list) else []
+        items = items.get("item", items)
+    if isinstance(items, dict):
+        items = [items]
+    if not isinstance(items, list):
+        return []
+    # Some data.go APIs wrap the real list as [{"item":[...]}].
+    flat=[]
+    for x in items:
+        if isinstance(x,dict) and "item" in x and len(x)==1:
+            nested=x.get("item")
+            if isinstance(nested,list):
+                flat.extend(nested)
+            elif isinstance(nested,dict):
+                flat.append(nested)
+            else:
+                flat.append(x)
+        else:
+            flat.append(x)
+    return flat
 
 def fetch_official_web(session, src):
     url = src["official_url"] if src["id"] == "ncc_living_guide" else src["portal_url"]
