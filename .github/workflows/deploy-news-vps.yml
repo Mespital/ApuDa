@@ -30,6 +30,9 @@ jobs:
           VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
           APUDA_NEWS_GITHUB_TOKEN: ${{ secrets.APUDA_NEWS_GITHUB_TOKEN }}
           DATA_GO_KR_SERVICE_KEY: ${{ secrets.DATA_GO_KR_SERVICE_KEY }}
+          MFDS_APPROVAL_SERVICE_KEY: ${{ secrets.MFDS_APPROVAL_SERVICE_KEY }}
+          MFDS_SUPPLY_SERVICE_KEY: ${{ secrets.MFDS_SUPPLY_SERVICE_KEY }}
+          HIRA_PRICE_SERVICE_KEY: ${{ secrets.HIRA_PRICE_SERVICE_KEY }}
         run: |
           set -euo pipefail
           test -n "$VPS_HOST"
@@ -80,7 +83,7 @@ jobs:
           DATA_GO_KR_SERVICE_KEY: ${{ secrets.DATA_GO_KR_SERVICE_KEY }}
         run: |
           set -euo pipefail
-          printf 'APUDA_GITHUB_TOKEN=%s\nAPUDA_GITHUB_REPO=Mespital/ApuDa\nAPUDA_NEWS_BRANCH=main\nAPUDA_REPO_DIR=$HOME/apuda-repo\nDATA_GO_KR_SERVICE_KEY=%s\n' "$APUDA_NEWS_GITHUB_TOKEN" "$DATA_GO_KR_SERVICE_KEY" > /tmp/news.env
+          printf 'APUDA_GITHUB_TOKEN=%s\nAPUDA_GITHUB_REPO=Mespital/ApuDa\nAPUDA_NEWS_BRANCH=main\nAPUDA_REPO_DIR=$HOME/apuda-repo\nDATA_GO_KR_SERVICE_KEY=%s\nMFDS_APPROVAL_SERVICE_KEY=%s\nMFDS_SUPPLY_SERVICE_KEY=%s\nHIRA_PRICE_SERVICE_KEY=%s\n' "$APUDA_NEWS_GITHUB_TOKEN" "$DATA_GO_KR_SERVICE_KEY" "$MFDS_APPROVAL_SERVICE_KEY" "$MFDS_SUPPLY_SERVICE_KEY" "$HIRA_PRICE_SERVICE_KEY" > /tmp/news.env
           chmod 600 /tmp/news.env
           ssh apuda-vps 'mkdir -p ~/.config/apuda && chmod 700 ~/.config/apuda'
           scp /tmp/news.env apuda-vps:~/.config/apuda/news.env
