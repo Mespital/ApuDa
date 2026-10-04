@@ -18,6 +18,7 @@
 | `유료판/` | 빌드 결과: 완전판 12종 |
 | `무료판/` | 빌드 결과: MINI 12종 |
 | `tools/build.py` | 소스 → 완전판·무료판 빌드 |
+| `tools/pdf.py` · `pdf/무료판/` | 배포용 A5 PDF 변환기와 무료판 PDF 12종 |
 
 ## 유료판과 무료판을 나누는 원칙
 
@@ -52,6 +53,11 @@
 python3 tools/build.py        # 12종 전체
 python3 tools/build.py 12     # 12권만
 python3 tools/report_round1.py
+
+# 배포용 PDF(A5). 한글 글꼴 파일 경로를 FONT로 지정(예: Noto Sans KR 가변 글꼴)
+pip install markdown
+FONT=/경로/NotoSansKR.ttf python3 tools/pdf.py          # 무료판 12종 → pdf/무료판/
+FONT=/경로/NotoSansKR.ttf python3 tools/pdf.py paid     # 완전판 12종 → pdf/유료판/
 ```
 
 빌드는 PAID 마커 짝과 치환 안 된 변수를 검사하고, 문제가 있으면 중단합니다.
