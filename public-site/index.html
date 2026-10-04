@@ -1120,7 +1120,7 @@
       '<div class="book-choice-list">'+
         '<div class="book-choice-item"><span class="book-choice-num">1</span><span class="book-choice-copy"><b>암 진단 후 첫 30일 · '+esc(name)+' MINI</b><small>무료 배포판 · 21페이지 · 웹에서 바로 읽기</small></span><span class="book-choice-actions"><a class="primary" href="/library/mini/?cancer='+slug+'">웹에서 보기</a><a href="/library/mini/?cancer='+slug+'#download">PDF 다운로드</a></span></div>'+
         '<div class="book-choice-item"><span class="book-choice-num">2</span><span class="book-choice-copy"><b>'+esc(name)+' FAQ</b><small>환자·보호자가 진료실에서 자주 확인하는 질문</small></span><span class="book-choice-actions"><a href="/library/faq/?cancer='+slug+'">FAQ 보기</a></span></div>'+
-        '<div class="book-choice-item full"><span class="book-choice-num">3</span><span class="book-choice-copy"><b>암 진단 후 첫 30일 · '+esc(name)+' 상세판</b><small>검사·병기·치료 흐름을 더 자세히 보는 웹 가이드</small></span><span class="book-choice-actions"><a href="'+esc(l[1])+'" target="_blank" rel="noopener">상세판 보기 ↗</a></span></div>'+
+        '<div class="book-choice-item full"><span class="book-choice-num">3</span><span class="book-choice-copy"><b>암 진단 후 첫 30일 · '+esc(name)+' 완전판</b><small>MINI보다 더 깊게 검사·병기·치료 흐름을 확인하는 상세 가이드</small></span><span class="book-choice-actions"><a href="'+esc(l[1])+'" target="_blank" rel="noopener">완전판 보기 ↗</a></span></div>'+
       '</div><div class="book-choice-note">무료 MINI 웹 열람은 코드 없이 가능합니다. PDF 다운로드 버튼은 별도 코드 인증 후 작동합니다.</div></section>';
     document.body.appendChild(root);
     var close=function(){root.remove()};
@@ -1146,7 +1146,7 @@
       '<div class="floor2-intro"><div><h2>'+d.title.replace(/\n/g,'<br>')+'</h2><p>'+d.desc+'</p></div>'+
       '<div class="p-stats">'+d.stats.map(function(s){return '<div><b>'+s[0]+'</b><small>'+s[1]+'</small></div>'}).join('')+'</div></div>'+
       '<div class="floor2-layout">'+
-        '<section class="floor2-library"><div class="floor2-library-head"><div><b>ApuDa 「암 진단 첫 30일」 MINI SERIES</b><span>표지를 누르면 MINI · FAQ · 상세판 중에서 선택할 수 있습니다.</span></div><span>Vol. 01–12</span></div>'+
+        '<section class="floor2-library"><div class="floor2-library-head"><div><b>ApuDa 「암 진단 첫 30일」 MINI SERIES</b><span>표지를 누르면 MINI · FAQ · 완전판 중에서 선택할 수 있습니다.</span></div><span>Vol. 01–12</span></div>'+
         '<div class="mini-series-grid">'+bookHtml+'</div></section>'+
         '<aside class="floor2-side"><div class="floor2-side-head"><b>더 깊게 이해하기</b><span>암종을 이해한 뒤 필요한 다음 정보로 이어집니다.</span></div>'+
         '<a class="floor2-service" href="'+esc(d.links[0][1])+'" target="_blank" rel="noopener"><span class="floor2-service-icon">📚</span><span class="floor2-service-copy"><b>4컷 만화 암 정보</b><small>검사·병기·치료를 그림으로 쉽게</small></span></a>'+
