@@ -520,3 +520,22 @@ a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 32px));m
   .oncology-quick-filter{align-items:flex-start;flex-direction:column;gap:7px;margin:10px 0 13px;padding:10px}
   .quick-filter-chips{width:100%}
 }
+
+/* Drug approval / supply period controls */
+.drug-period-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:10px 0 8px}
+.drug-period-tabs{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none}
+.drug-period-tabs::-webkit-scrollbar{display:none}
+.drug-period-tabs button{flex:0 0 auto;border:1px solid var(--line);background:#fff;color:#53677B;border-radius:999px;padding:7px 11px;font:inherit;font-size:10.5px;font-weight:900;cursor:pointer}
+.drug-period-tabs button.on{background:#EEF5FF;border-color:#BFD3F0;color:var(--blue2)}
+.drug-downloads{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+.drug-download{display:inline-flex;align-items:center;justify-content:center;padding:8px 11px;border:1px solid #CAD8E8;border-radius:10px;background:#fff;color:var(--blue2);font-size:10.5px;font-weight:900}
+.drug-download:hover{background:#F2F7FF}
+.drug-download.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+.drug-period-summary{display:flex;align-items:center;gap:3px;margin:0 0 13px;color:#607386;font-size:11px}
+.drug-period-summary b{color:var(--navy);font-size:12px}
+@media(max-width:620px){
+  .drug-period-row{align-items:flex-start;flex-direction:column}
+  .drug-period-tabs{width:100%}
+  .drug-downloads{width:100%;justify-content:flex-start}
+  .drug-download{flex:1 1 auto}
+}
