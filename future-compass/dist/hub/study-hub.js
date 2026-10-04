@@ -135,7 +135,8 @@
       eyebrow: "고1 2학기 · 무료 학습 사이트 모음",
       titleA: "우리집", titleB: "공부방",
       lede: "고1이 내신과 학력평가를 준비할 때 바로 들어갈 사이트를 용도별로 모은 링크북이에요.",
-      footer: "사이트 정보는 2026년 10월 기준이에요. 이용 조건(회원가입, 유료 범위)은 바뀔 수 있으니 처음 쓸 때 한 번 확인해 주세요."
+      footer: "사이트 정보는 2026년 10월 기준이에요. 이용 조건(회원가입, 유료 범위)은 바뀔 수 있으니 처음 쓸 때 한 번 확인해 주세요.",
+      pickTitle: "먼저 볼 추천 사이트", pickLede: "지금 시기에 가장 자주 쓸 곳부터 골랐어.", pickLabel: "추천 이유:"
     }, options || {});
 
     var root = typeof o.el === "string" ? document.querySelector(o.el) : o.el;
@@ -144,7 +145,7 @@
     root.innerHTML = shell(o);
     var $ = function (r) { return root.querySelector('[data-role="' + r + '"]'); };
 
-    var state = { kind: "all", subject: "all", sites: [], posts: [] };
+    var state = { kind: "all", subject: "all", sites: [], posts: [], showAll: false };
 
     loadData(o.dataBase).then(function (data) {
       state.sites = data.sites.sites;
@@ -156,22 +157,46 @@
       console.error("[StudyHub]", err);
     });
 
+    function siteCard(s, pick) {
+      var host = s.url.replace(/^https?:\/\//, "").split("/")[0];
+      return '<article class="sh-site' + (pick ? ' sh-pick' : '') + '" id="site-' + esc(s.id) + '">' +
+        '<div class="sh-row"><div><h3>' + esc(s.name) + '</h3><div class="sh-url">' + esc(host) + '</div></div>' +
+        '<a class="sh-go" href="' + esc(s.url) + '" target="_blank" rel="noopener">열기 →</a></div>' +
+        (pick && s.pickReason ? '<p class="sh-pick-why"><b>' + esc(o.pickLabel) + '</b> ' + esc(s.pickReason) + '</p>' : '') +
+        '<div class="sh-tags"><span class="sh-tag ' + (s.price === "free" ? "free" : "pay") + '">' + (s.price === "free" ? "무료" : "일부 유료") + '</span>' +
+        '<span class="sh-tag">' + esc(s.login) + '</span>' +
+        s.kinds.map(function (k) { return '<span class="sh-tag">' + esc(k) + '</span>'; }).join("") + '</div>' +
+        '<p class="sh-use">' + esc(s.use) + '</p>' +
+        '<p class="sh-tip"><b>활용:</b> ' + esc(s.tip) + '</p>' +
+      '</article>';
+    }
+
     function renderSites() {
-      var list = state.sites.filter(function (s) { return state.kind === "all" || s.kinds.indexOf(state.kind) > -1; });
       var g = $("sites");
+      var list = state.sites.filter(function (s) { return state.kind === "all" || s.kinds.indexOf(state.kind) > -1; });
       if (!list.length) { g.innerHTML = '<p class="sh-empty">이 용도에 맞는 사이트가 없어.</p>'; return; }
-      g.innerHTML = list.map(function (s) {
-        var host = s.url.replace(/^https?:\/\//, "").split("/")[0];
-        return '<article class="sh-site" id="site-' + esc(s.id) + '">' +
-          '<div class="sh-row"><div><h3>' + esc(s.name) + '</h3><div class="sh-url">' + esc(host) + '</div></div>' +
-          '<a class="sh-go" href="' + esc(s.url) + '" target="_blank" rel="noopener">열기 →</a></div>' +
-          '<div class="sh-tags"><span class="sh-tag ' + (s.price === "free" ? "free" : "pay") + '">' + (s.price === "free" ? "무료" : "일부 유료") + '</span>' +
-          '<span class="sh-tag">' + esc(s.login) + '</span>' +
-          s.kinds.map(function (k) { return '<span class="sh-tag">' + esc(k) + '</span>'; }).join("") + '</div>' +
-          '<p class="sh-use">' + esc(s.use) + '</p>' +
-          '<p class="sh-tip"><b>활용:</b> ' + esc(s.tip) + '</p>' +
-        '</article>';
-      }).join("");
+      var picks = list.filter(function (s) { return s.pick; }).sort(function (x, y) { return (x.pick || 99) - (y.pick || 99); });
+      var rest = list.filter(function (s) { return !s.pick; });
+      var html = '';
+      if (picks.length) {
+        html += '<div class="sh-span sh-pick-head"><h3>⭐ ' + esc(o.pickTitle) + '</h3><p>' + esc(o.pickLede) + '</p></div>';
+        html += picks.map(function (s) { return siteCard(s, true); }).join('');
+      }
+      if (rest.length) {
+        var open = state.showAll || state.kind !== "all";
+        if (open) {
+          if (picks.length) html += '<div class="sh-span sh-rest-head"><h3>다른 사이트 ' + rest.length + '곳</h3></div>';
+          html += rest.map(function (s) { return siteCard(s, false); }).join('');
+        }
+        if (state.kind === "all") html += '<div class="sh-span sh-more-row"><button type="button" class="sh-more" data-role="more" aria-expanded="' + open + '">' + (open ? '추천만 보기 ↑' : '사이트 ' + rest.length + '곳 더보기 ↓') + '</button></div>';
+      }
+      g.innerHTML = html;
+      var more = g.querySelector('[data-role="more"]');
+      if (more) more.onclick = function () {
+        state.showAll = !state.showAll; renderSites();
+        var target = state.showAll ? g.querySelector('.sh-rest-head') : g.querySelector('.sh-pick-head');
+        if (target && target.scrollIntoView) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      };
     }
 
     function renderRoutes(data) {
