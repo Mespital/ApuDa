@@ -188,8 +188,15 @@ def oncology_meta(a, keywords):
         return None
 
     text=(" ".join([a.title,a.description,a.body_excerpt])).lower()
-    cancers=[k for k in ["유방암","폐암","위암","대장암","갑상선암","신장암","전립선암","췌장암","담도암","간암","림프종","자궁경부암","난소암","난관암","일차 복막암","백혈병","다발골수종"] if k in text]
-    biomarkers=[k.upper() for k in ["egfr","alk","ros1","braf","her2","pd-l1","brca","cldn18.2"] if k in text]
+    lead=lead_text.lower()
+    cancer_terms=["유방암","폐암","위암","대장암","갑상선암","신장암","전립선암","췌장암","담도암","간암","림프종","자궁경부암","난소암","난관암","일차 복막암","백혈병","다발골수종","방광암","요로상피암","식도암","자궁내막암","자궁체부암","두경부암","뇌종양","골수종"]
+    cancers=[k for k in cancer_terms if k in lead]
+    # Only use body-derived cancer type when the title/description did not identify one.
+    if not cancers:
+        cancers=[k for k in cancer_terms if k in text]
+    biomarkers=[k.upper() for k in ["egfr","alk","ros1","braf","her2","pd-l1","brca","cldn18.2"] if k in lead]
+    if not biomarkers:
+        biomarkers=[k.upper() for k in ["egfr","alk","ros1","braf","her2","pd-l1","brca","cldn18.2"] if k in text]
     return {
         "is_oncology": True,
         "cancer_types": cancers,
