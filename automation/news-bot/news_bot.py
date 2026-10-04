@@ -138,18 +138,29 @@ def parse_article(session, source, url, tz):
     return Article(source["publisher"],title,r.url,published.isoformat() if published else None,bool(published),desc,image,body)
 
 def score_article(a, cfg):
-    text=(" ".join([a.title,a.description,a.body_excerpt])).lower()
+    lead=(" ".join([a.title or "",a.description or ""])).lower()
+    body=(a.body_excerpt or "").lower()
     score=0
     cats=[]
+    body_hits=[]
     for k,v in cfg["priority_keywords"].items():
-        if k.lower() in text:
+        kl=k.lower()
+        if kl in lead:
             score += int(v)
             cats.append(k)
+        elif kl in body:
+            # Body-only mentions are weaker evidence of the article's main topic.
+            score += max(1,round(int(v)*0.30))
+            body_hits.append(k)
     for k,v in cfg["downrank_keywords"].items():
-        if k.lower() in text: score += int(v)
-    if any(x in text for x in ["억원","억달러","조원","환자","개월","%","hr ","os ","pfs "]): score += 4
+        kl=k.lower()
+        if kl in lead: score += int(v)
+        elif kl in body: score += round(int(v)*0.30)
+    all_text=lead+" "+body
+    if any(x in lead for x in ["억원","억달러","조원","환자","개월","%","hr ","os ","pfs "]): score += 4
+    elif any(x in body for x in ["억원","억달러","조원","환자","개월","%","hr ","os ","pfs "]): score += 1
     a.score=score
-    a.categories=list(dict.fromkeys(cats))[:6] or ["산업"]
+    a.categories=list(dict.fromkeys(cats or body_hits))[:6] or ["산업"]
     return a
 
 def _oncology_signal(text):
@@ -278,19 +289,29 @@ def _useful_sentence(s):
     return not any(x.lower() in s.lower() for x in bad)
 
 def industry_importance_text(a):
-    text=(" ".join([a.title or "",a.description or "",a.body_excerpt or ""])).lower()
-    if any(k in text for k in ["급여","약가","수가","보험"]):
+    lead=(" ".join([a.title or "",a.description or ""])).lower()
+    body=(a.body_excerpt or "").lower()
+    def has(text,keys): return any(k in text for k in keys)
+    # Determine the article's main subject from title/description first.
+    if has(lead,["급여","약가","수가","보험"]):
         return "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다."
-    if any(k in text for k in ["식약처","허가","fda","ema"]):
-        return "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다."
-    if any(k in text for k in ["3상","phase 3","pfs","os","orr"]):
-        return "주요 임상 결과는 향후 허가·가이드라인·표준치료 변화 가능성을 평가하는 근거가 됩니다."
-    if any(k in text for k in ["기술수출","라이선스","license","m&a","인수","합병"]):
-        return "대형 사업개발 거래는 파이프라인 가치와 기업 포트폴리오, 국내외 경쟁구도에 영향을 줍니다."
-    if any(k in text for k in ["투자","공장","생산시설","cdmo"]):
+    if has(lead,["기술수출","라이선스","license","m&a","인수","합병","흡수합병"]):
+        return "사업개발·구조개편은 파이프라인 가치와 자본 배분, 기업 경쟁구도에 직접 영향을 주는 변화입니다."
+    if has(lead,["투자","공장","생산시설","생산능력","cdmo"]):
         return "생산·투자 확대는 공급망 안정성과 글로벌 사업 확장, 중장기 생산능력 경쟁과 연결됩니다."
-    if any(k in text for k in ["병원","약국","의료기관"]):
+    if has(lead,["식약처","허가","fda","ema"]):
+        return "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다."
+    if has(lead,["3상","phase 3","pfs","os","orr"]):
+        return "주요 임상 결과는 향후 허가·가이드라인·표준치료 변화 가능성을 평가하는 근거가 됩니다."
+    if has(lead,["병원","약국","의료기관"]):
         return "의료기관·약국 현장의 변화는 진료 흐름과 환자 경험, 의약품 사용 환경에 직접 영향을 줍니다."
+    if has(lead,["품절","공급부족","공급"]):
+        return "공급 변화는 의약품 접근성과 의료현장 재고 운영, 대체치료 준비에 영향을 줄 수 있습니다."
+    # Only fall back to body text when the headline/description is not decisive.
+    if has(body,["급여","약가","수가"]):
+        return "기사에서 급여·약가 이슈가 함께 확인돼 시장 접근성과 환자 부담 변화를 후속 확인할 필요가 있습니다."
+    if has(body,["인수","합병","투자","기술수출","라이선스"]):
+        return "기사에서 사업개발·투자 변화가 함께 확인돼 기업 포트폴리오와 경쟁구도 영향을 살펴볼 필요가 있습니다."
     return "시장·정책·연구개발 흐름을 보여주는 주요 산업 이슈로 후속 정책과 사업 변화 확인이 필요합니다."
 
 def article_to_news(a, rank=None):
