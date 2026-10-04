@@ -1,0 +1,101 @@
+/* =========================================================
+   우리집 공부방 (study-hub) 스타일
+   - 모든 규칙이 #study-hub 안쪽에만 적용돼서 기존 사이트 CSS와 충돌하지 않음
+   - 색은 아래 변수만 바꾸면 기존 사이트 톤에 맞출 수 있음
+   ========================================================= */
+#study-hub{
+  --sh-paper:#fbfcfd; --sh-grid:#e3ebf3; --sh-ink:#1d2a33; --sh-muted:#5b6b77; --sh-line:#d3dde6;
+  --sh-card:#ffffff; --sh-accent:#24604a; --sh-accent-ink:#ffffff; --sh-hl:#ffe45c; --sh-hl-ink:#1d2a33;
+  --sh-tag:#eef3f6; --sh-warn:#a33a2a; --sh-radius:10px;
+  --sh-f-display:"Do Hyeon","IBM Plex Sans KR",system-ui,sans-serif;
+  --sh-f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --sh-f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+
+  background-color:var(--sh-paper);
+  background-image:linear-gradient(var(--sh-grid) 1px,transparent 1px),linear-gradient(90deg,var(--sh-grid) 1px,transparent 1px);
+  background-size:24px 24px;
+  color:var(--sh-ink); font-family:var(--sh-f-body); font-size:15px; line-height:1.6;
+}
+@media (prefers-color-scheme:dark){
+  #study-hub:not([data-theme="light"]){
+    --sh-paper:#16201c; --sh-grid:#1e2b26; --sh-ink:#e9efe9; --sh-muted:#9fb0a7; --sh-line:#2d3d36;
+    --sh-card:#1b2722; --sh-accent:#3f9b77; --sh-accent-ink:#0f1714; --sh-hl:#e8cf45; --sh-hl-ink:#14140c;
+    --sh-tag:#24332d; --sh-warn:#ff8f7a; color-scheme:dark;
+  }
+}
+#study-hub[data-theme="dark"]{
+  --sh-paper:#16201c; --sh-grid:#1e2b26; --sh-ink:#e9efe9; --sh-muted:#9fb0a7; --sh-line:#2d3d36;
+  --sh-card:#1b2722; --sh-accent:#3f9b77; --sh-accent-ink:#0f1714; --sh-hl:#e8cf45; --sh-hl-ink:#14140c;
+  --sh-tag:#24332d; --sh-warn:#ff8f7a; color-scheme:dark;
+}
+#study-hub *{box-sizing:border-box}
+#study-hub .sh-wrap{max-width:1080px;margin:0 auto;padding-inline:16px;padding-block:28px 64px;display:grid;gap:48px}
+#study-hub h1,#study-hub h2,#study-hub h3{font-family:var(--sh-f-display);font-weight:400;text-wrap:balance;margin:0;color:var(--sh-ink)}
+#study-hub h1{font-size:clamp(2.2rem,6vw,3.4rem);line-height:1.1}
+#study-hub h2{font-size:1.75rem}
+#study-hub h3{font-size:1.25rem}
+#study-hub .sh-hl{background:linear-gradient(transparent 55%,var(--sh-hl) 55%);padding:0 .1em}
+#study-hub .sh-lede{max-width:62ch;color:var(--sh-muted);margin:10px 0 0}
+#study-hub .sh-eyebrow{font-size:.78rem;letter-spacing:.08em;color:var(--sh-accent);font-weight:700}
+#study-hub .sh-top{display:grid;gap:14px}
+#study-hub .sh-quick{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+#study-hub .sh-quick a{font-size:.85rem;padding:6px 12px;border:1px solid var(--sh-line);background:var(--sh-card);border-radius:999px;color:var(--sh-ink);text-decoration:none}
+#study-hub .sh-quick a:hover{border-color:var(--sh-accent)}
+#study-hub section{display:grid;gap:18px}
+#study-hub .sh-sec-head p{margin:4px 0 0;color:var(--sh-muted);max-width:60ch}
+
+/* 필터 칩 */
+#study-hub .sh-chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+#study-hub .sh-chip{font:inherit;font-size:.85rem;padding:5px 12px;border-radius:999px;border:1px solid var(--sh-line);background:var(--sh-card);color:var(--sh-ink);cursor:pointer}
+#study-hub .sh-chip[aria-pressed="true"]{background:var(--sh-accent);border-color:var(--sh-accent);color:var(--sh-accent-ink)}
+#study-hub :focus-visible{outline:2px solid var(--sh-hl);outline-offset:2px}
+
+/* 사이트 카드 */
+#study-hub .sh-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+@media (max-width:360px){#study-hub .sh-grid{grid-template-columns:1fr}}
+#study-hub .sh-site{background:var(--sh-card);border:1px solid var(--sh-line);border-radius:var(--sh-radius);padding:18px;display:grid;gap:10px;align-content:start;min-width:0}
+#study-hub .sh-row{display:flex;justify-content:space-between;align-items:start;gap:10px}
+#study-hub .sh-url{font-family:var(--sh-f-mono);font-size:.78rem;color:var(--sh-muted);word-break:break-all}
+#study-hub .sh-tags{display:flex;flex-wrap:wrap;gap:5px}
+#study-hub .sh-tag{font-size:.74rem;padding:2px 8px;border-radius:4px;background:var(--sh-tag);color:var(--sh-ink)}
+#study-hub .sh-tag.free{background:var(--sh-accent);color:var(--sh-accent-ink)}
+#study-hub .sh-tag.pay{border:1px solid var(--sh-warn);color:var(--sh-warn);background:transparent}
+#study-hub .sh-site p{margin:0}
+#study-hub .sh-use{font-size:.88rem}
+#study-hub .sh-tip{font-size:.85rem;color:var(--sh-muted);border-top:1px dashed var(--sh-line);padding-top:8px}
+#study-hub .sh-tip b{color:var(--sh-ink)}
+#study-hub .sh-go{display:inline-flex;gap:6px;font-size:.88rem;font-weight:700;color:var(--sh-accent);text-decoration:none;white-space:nowrap}
+#study-hub .sh-go:hover{text-decoration:underline}
+#study-hub .sh-empty{color:var(--sh-muted);padding:12px 0}
+
+/* 대비 순서 */
+#study-hub .sh-routes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+#study-hub .sh-route{background:var(--sh-card);border:1px solid var(--sh-line);border-radius:var(--sh-radius);padding:18px;display:grid;gap:8px;align-content:start}
+#study-hub .sh-route ol{margin:0;padding-left:1.2em;display:grid;gap:6px;font-size:.9rem}
+#study-hub .sh-route .sh-when{font-size:.8rem;color:var(--sh-muted)}
+#study-hub .sh-route a{color:var(--sh-accent);font-size:.78rem;margin-left:4px}
+
+/* 자료 보드 */
+#study-hub .sh-board{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:760px){#study-hub .sh-board{grid-template-columns:1fr}}
+#study-hub .sh-form{background:var(--sh-accent);color:var(--sh-accent-ink);border-radius:var(--sh-radius);padding:18px;display:grid;gap:10px}
+#study-hub .sh-form h3{color:var(--sh-accent-ink)}
+#study-hub .sh-form label{display:grid;gap:4px;font-size:.82rem}
+#study-hub .sh-form input,#study-hub .sh-form select,#study-hub .sh-form textarea{font:inherit;font-size:.9rem;padding:8px 10px;border-radius:6px;border:1px solid transparent;background:var(--sh-paper);color:var(--sh-ink);width:100%}
+#study-hub .sh-form textarea{min-height:64px;resize:vertical}
+#study-hub .sh-two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+#study-hub .sh-btn{font:inherit;font-weight:700;padding:9px 14px;border-radius:6px;border:0;background:var(--sh-hl);color:var(--sh-hl-ink);cursor:pointer}
+#study-hub .sh-btn:disabled{opacity:.5;cursor:not-allowed}
+#study-hub .sh-note{font-size:.78rem;opacity:.9;margin:0}
+#study-hub .sh-msg{font-size:.82rem;min-height:1.2em;margin:0}
+#study-hub .sh-posts{display:grid;gap:10px;min-width:0}
+#study-hub .sh-post{background:var(--sh-card);border:1px solid var(--sh-line);border-radius:var(--sh-radius);padding:14px 16px;display:grid;gap:6px;min-width:0}
+#study-hub .sh-post a.sh-t{font-weight:700;color:var(--sh-ink);text-decoration:none;word-break:break-word}
+#study-hub .sh-post a.sh-t:hover{text-decoration:underline}
+#study-hub .sh-post .sh-meta{font-size:.78rem;color:var(--sh-muted)}
+#study-hub .sh-post p{margin:0;font-size:.88rem;white-space:pre-wrap;word-break:break-word}
+#study-hub .sh-del{font:inherit;font-size:.78rem;background:none;border:1px solid var(--sh-line);color:var(--sh-muted);border-radius:4px;padding:2px 8px;cursor:pointer;white-space:nowrap}
+#study-hub .sh-del.confirm{border-color:var(--sh-warn);color:var(--sh-warn)}
+#study-hub .sh-board-empty{border:2px dashed var(--sh-line);border-radius:var(--sh-radius);padding:22px;color:var(--sh-muted);background:var(--sh-card)}
+#study-hub .sh-footer{font-size:.8rem;color:var(--sh-muted);border-top:1px solid var(--sh-line);padding-top:14px}
+@media (prefers-reduced-motion:reduce){#study-hub *{transition:none!important}}

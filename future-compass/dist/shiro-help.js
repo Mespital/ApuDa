@@ -1,7 +1,7 @@
 /* Local help chatbot. Only the explicit feedback form sends to FormSubmit. */
 (()=>{'use strict';
 const mail='apuda.co.kr@gmail.com',endpoint='https://formsubmit.co/ajax/'+mail;
-const menus={review:['🔁 오답·질문 모음','study.html#review'],dates:['🧩 시험·수행평가 준비','study.html#dates'],focus:['🌱 과목별 공부 시작','study.html#focus'],study:['📚 나의 공부방','study.html'],quiz:['✨ 나 알아보기','know-me.html'],explore:['🧭 기존 관심 탐색기','./#career-lab'],future:['🔮 미래 예측','future.html'],life:['🏠 달라지는 생활','./#shiro-life'],career:['🎓 직업과 대학','./#shiro-career'],plan:['📚 나의 준비계획','./#shiro-plan'],news:['📰 AI·학습·서초고 소식','./#shiro-news'],research:['📖 설명과 근거','./#shiro-research'],install:['📱 앱으로 사용','./#shiro-install'],home:['🏡 탐험 홈','./']};
+const menus={review:['🔁 오답·질문 모음','study.html#review'],dates:['🧩 시험·수행평가 준비','study.html#dates'],focus:['🌱 과목별 공부 시작','study.html#focus'],study:['📚 나의 공부방','study.html'],hub:['🔗 학습 사이트 모음','hub.html'],quiz:['✨ 나 알아보기','know-me.html'],explore:['🧭 기존 관심 탐색기','./#career-lab'],future:['🔮 미래 예측','future.html'],life:['🏠 달라지는 생활','./#shiro-life'],career:['🎓 직업과 대학','./#shiro-career'],plan:['📚 나의 준비계획','./#shiro-plan'],news:['📰 AI·학습·서초고 소식','./#shiro-news'],research:['📖 설명과 근거','./#shiro-research'],install:['📱 앱으로 사용','./#shiro-install'],home:['🏡 탐험 홈','./']};
 const faqs=[
 {keys:['시작','사용법','사용방법','어떻게','도움','처음'],text:'🐶 처음이면 이 순서로 해봐!\n① 나 알아보기: 24가지 질문으로 좋아하는 활동 찾기\n② 기존 관심 탐색기: 과목·활동을 고르고 직업 비교하기\n③ 준비계획: 작은 체험을 해보고 체크하기\n정답은 없어. 오늘 마음에 드는 것부터 시작하자!',links:['quiz','explore','plan']},
 {keys:['백업','파일저장','기기에저장','불러오기','복원'],text:'💾 공부방 위쪽의 내 기기에 백업 저장을 누르면 학습 기록을 파일로 받을 수 있어. 다른 기기에서는 불러오기로 가져와! 진로 탐색 답변은 이 파일에 포함되지 않아. 잘못 불러왔다면 저장 도움말의 직전 복원 취소를 눌러줘.',links:['study']},
@@ -9,6 +9,7 @@ const faqs=[
 {keys:['오답','재도전','틀린','선생님께','질문모음'],text:'🔁 복습에 메모를 넣으면 틀린 이유와 다음 복습일을 정할 수 있어. 답을 가리고 다시 풀어본 뒤 혼자 해결·힌트로 해결·아직 어려움을 골라줘. 선생님께 물어볼 질문도 아래에서 모을 수 있어!',links:['review']},
 {keys:['수행평가','시험준비','시험범위'],text:'🧩 시험·과제를 등록하고 아래의 준비 나누기를 열어봐. 단원·페이지를 한 줄씩 넣거나 기본 단계를 쓸 수 있어. 수행평가는 학교의 채점 기준과 제출 형식도 적어줘!',links:['dates']},
 {keys:['공부시작','과목별','10분','공부하기싫'],text:'🌱 집중 화면에서 오늘 목표 한 가지를 정해봐. 10·40·80분 학습 구성 중 고르고, 아래 과목별 공부 시작법을 열면 설명→연습→확인 순서가 보여. 타이머 시간은 따로 선택해줘!',links:['focus']},
+{keys:['학습사이트','사이트','기출','모의고사','교과서','에듀넷','족보','지오지브라','phet','kmooc'],text:'🔗 학습 사이트 모음에 교과서, 내신 기출, 모의고사, 수학·과학 시뮬레이션 사이트 9곳을 모아놨어. 용도를 누르면 맞는 곳만 보여. 도움 된 링크는 내 자료 모음에 저장해 둬!',links:['hub','study']},
 {keys:['시간표','공부방','시험','과제','수행평가','집중','복습','수업'],text:'📚 공부방에서 우리 반 시간표와 준비물을 입력하고, 시험·과제 날짜를 챙겨봐. 오늘 할 일, 10·25·40분 집중 타이머와 복습 메모도 있어! 입력 기록은 지금 브라우저에 저장돼. 다른 기기로 자동 동기화되지는 않아.',links:['study']},
 {keys:['흰둥이','챗봇','ai챗','인공지능'],text:'🐾 나는 이 홈페이지 사용법과 메뉴를 안내하는 흰둥이야. 미리 준비한 안내로 답하고, 대화는 외부 AI로 보내지 않아. 자유로운 진로 상담이 필요하면 질문 보내기로 운영자에게 남겨줘!',links:['quiz','explore']},
 {keys:['질문검사','mbti','성향','취향','나알아','24','검사','적성'],text:'✨ 나 알아보기는 24개 질문으로 지금 끌리는 활동을 살펴봐. 약 5–7분 예상이고, 경험이 없으면 모르겠어를 골라도 돼. 정식 적성검사는 아니야. 결과는 직접 체험하면서 다시 살펴보자!',links:['quiz']},

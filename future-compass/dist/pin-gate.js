@@ -205,7 +205,7 @@
     c.type = 'button'; c.className = 'pin-lock-btn pin-change-btn'; c.setAttribute('aria-label', '비밀번호 바꾸기'); c.textContent = '🔑 번호 바꾸기';
     c.addEventListener('click', function () { if (document.getElementById('pin-gate')) return; changing = true; root.classList.add('pin-locked'); build('unlock'); });
     var wrap = document.createElement('span'); wrap.className = 'pin-tools'; wrap.appendChild(c); wrap.appendChild(b);
-    var host = document.querySelector('.sidebar') || document.querySelector('body > main > header') || document.querySelector('body > header') || document.querySelector('.wrap > header .brand');
+    var host = document.querySelector('.hub-top') || document.querySelector('.sidebar') || document.querySelector('body > main > header') || document.querySelector('body > header') || document.querySelector('.wrap > header .brand');
     if (host) host.appendChild(wrap); else { wrap.classList.add('pin-lock-float'); document.body.appendChild(wrap); }
   }
   function addLockButtonWhenReady() {
