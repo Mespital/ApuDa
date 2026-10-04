@@ -27,7 +27,7 @@ ApuDa Total Netlify 배포본
   2) {암종} FAQ
   3) 암진단 후 첫 30일 완전판 - {암종}
 - 무료 MINI 웹북(/library/mini/?cancer={slug}): 코드 없이 웹 열람
-- 다운로드: 코드 ApuDa1000 입력 시에만 PDF 저장
+- 다운로드: 코드 apuda1000 입력 시에만 PDF 저장
   PDF는 library/mini/pdf/{slug}.bin 에 AES-256-GCM 암호화 상태로 저장 → 코드 없이는 파일을 직접 받아도 열 수 없음
   PDF 구성: 표지 1p + 본문 21p (A4)
 - /#floor-2 로 접속하면 2층 패널 자동 오픈 (웹북·FAQ의 "2F 서재로" 버튼)

@@ -104,15 +104,15 @@ a{color:inherit;text-decoration:none}.top{position:sticky;top:0;z-index:20;displ
     return new Blob([await crypto.subtle.decrypt({name:'AES-GCM',iv:iv},key,ct)],{type:'application/pdf'});
   }
   verify.onclick=async function(){
-    var v=code.value.trim(); if(!v){err.textContent='다운로드 코드를 입력해 주세요.';return}
+    var v=code.value.trim().toLowerCase(); if(!v){err.textContent='다운로드 코드를 입력해 주세요.';return}
     verify.disabled=true; verify.textContent='확인 중'; err.style.color=''; err.textContent='';
     try{
       var h=await sha256(v);
-      if(h!=='0ed8d8c2cab6877cee51f967f42838fbcff06e96cb61bcd3153f3d7975d7596f'){ err.textContent='다운로드 코드가 맞지 않습니다.'; return; }
-      err.style.color='#1b7a50'; err.textContent='인증되었습니다. PDF를 준비하는 중입니다…';
+      if(h!=='b35e7199a444b485664663ff6938503f6fe255b7d096756b9475c5b1f389434b'){ err.textContent='다운로드 코드가 맞지 않습니다.'; return; }
+      err.style.color='#1b7a50'; err.textContent='인증되었습니다. PDF(약 8MB)를 받는 중입니다…';
       var blob=await decryptPdf(v);
       var name=(data&&data.name)||slug;
-      saveBlob(blob,'ApuDa_암진단후첫30일_'+name+'_MINI_무료배포판.pdf');
+      saveBlob(blob,'ApuDa_'+String(idx+1).padStart(2,'0')+'_'+name+'_진단첫30일_무료배포판.pdf');
       err.textContent='다운로드를 시작했습니다.';
       setTimeout(closeDownload,900);
     }catch(e){
