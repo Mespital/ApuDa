@@ -13,7 +13,7 @@ UA = "ApuDaOfficialData/1.0 (+https://apuda.app/news/)"
 
 MFDS_APPROVAL_ENDPOINT = os.getenv(
     "MFDS_APPROVAL_ENDPOINT",
-    "https://apis.data.go.kr/1471000/DrugPrdtPrmsnInfoService07/getDrugPrdtPrmsnInq07"
+    "https://apis.data.go.kr/1471000/DrugPrdtPrmsnInfoService08/getDrugPrdtPrmsnInq08"
 )
 MFDS_SUPPLY_ENDPOINT = os.getenv(
     "MFDS_SUPPLY_ENDPOINT",
