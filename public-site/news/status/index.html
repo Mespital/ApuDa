@@ -42,7 +42,7 @@ async function load(){
 
  const actions=[];
  if(mfdsApproval?.status==='auth_error'){
-   actions.push('<div class="row"><b>식약처 허가 API</b><span>현재 키는 VPS까지 전달됐지만 이 활용신청에서 등록된 키로 인정되지 않습니다. 공공데이터포털에서 개인/프로젝트 서비스키 선택과 활용신청 연결을 재확인하세요.</span></div>');
+   actions.push('<div class="row"><b>식약처 허가 API</b><span>현재 공용 키는 VPS까지 전달됐지만 이 활용신청에서 등록된 키로 인정되지 않습니다. 공공데이터포털에서 이 승인 건에 연결된 키를 확인한 뒤 GitHub Secret <b>MFDS_APPROVAL_SERVICE_KEY</b>로 별도 등록하면 공급부족용 키와 분리해 사용할 수 있습니다.</span></div>');
  }
  if(mfdsSupply?.status==='mapping_review'){
    actions.push('<div class="row"><b>식약처 공급부족 API</b><span>API 응답은 정상이며 실제 응답 필드명을 자동 점검 중입니다. 다음 배포에서 필드 매핑을 교정합니다.</span></div>');
