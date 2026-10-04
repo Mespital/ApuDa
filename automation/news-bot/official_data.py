@@ -19,6 +19,10 @@ MFDS_SUPPLY_ENDPOINT = os.getenv(
     "MFDS_SUPPLY_ENDPOINT",
     "https://apis.data.go.kr/1471000/MdcinSuplyLackService03/getMdcinSuplyLackList01"
 )
+HIRA_PRICE_ENDPOINT = os.getenv(
+    "HIRA_PRICE_ENDPOINT",
+    "https://apis.data.go.kr/B551182/dgamtCrtrInfoService1.2/getDgamtList"
+)
 
 CANCERS = ["유방암","폐암","위암","대장암","갑상선암","신장암","전립선암","췌장암","담도암","간암","림프종","자궁경부암"]
 
@@ -332,6 +336,80 @@ def fetch_mfds_supply_shortage(session,key):
     else: result["note"]="의약품 공급부족 API 연결 상태를 확인해야 합니다."
     return result
 
+def fetch_hira_drug_price(session,key):
+    result={
+        "id":"hira_drug_price",
+        "agency":"건강보험심사평가원",
+        "name":"약가기준정보조회서비스",
+        "source_url":"https://www.data.go.kr/data/15054445/openapi.do",
+        "status":"key_required" if not key else "error",
+        "checked_at":datetime.now(TZ).isoformat(),
+        "records":[]
+    }
+    if not key:
+        result["note"]="공공데이터포털 활용신청과 서비스키 등록 후 자동 연결됩니다."
+        return result
+    candidates=_service_key_candidates(key);last={}
+    for idx,candidate in enumerate(candidates,1):
+        try:
+            r=session.get(HIRA_PRICE_ENDPOINT,params={
+                "ServiceKey":candidate,"pageNo":1,"numOfRows":30,"_type":"json"
+            },timeout=25)
+            if r.status_code!=200:
+                code,msg,error_name=_safe_gateway_message(r,candidates)
+                last={"http_status":r.status_code,"error_code":code or None,"error_message":msg or None,"error_name":error_name or None,"key_variant_attempt":idx}
+                if r.status_code in (401,403): continue
+                r.raise_for_status()
+            try:data=r.json()
+            except Exception:
+                code,msg,error_name=_safe_gateway_message(r,candidates)
+                last={"http_status":r.status_code,"error_code":code or None,"error_message":msg or None,"error_name":error_name or None,"key_variant_attempt":idx}
+                continue
+            header=(data.get("response") or {}).get("header") or data.get("header") or {}
+            rc=clean(header.get("resultCode") or data.get("resultCode"))
+            rm=clean(header.get("resultMsg") or data.get("resultMsg"))
+            if rc and rc not in ("0","00"):
+                last={"http_status":r.status_code,"error_code":rc,"error_message":rm,"key_variant_attempt":idx}
+                continue
+            rows=[]
+            for x in response_items(data):
+                if not isinstance(x,dict): continue
+                rows.append({
+                    "product_code":_pick(x,"mdsCd","MDS_CD","mds_cd"),
+                    "item_name":_pick(x,"itmNm","ITEM_NAME","itemName"),
+                    "manufacturer":_pick(x,"mnfEntpNm","manufacturer","ENTP_NAME"),
+                    "max_price":_pick(x,"mxCprc","maxPrice"),
+                    "pay_type":_pick(x,"payTpNm","payType"),
+                    "rx_otc":_pick(x,"spcGnlTpNm","spcGnlTp"),
+                    "route":_pick(x,"injcPthNm","route"),
+                    "ingredient_code":_pick(x,"gnlNmCd","ingredientCode"),
+                    "unit":_pick(x,"unit","UNIT"),
+                    "spec_name":_pick(x,"nomNm","specName"),
+                    "effective_date":_pick(x,"adtStaDd","effectiveDate")
+                })
+            result["records"]=rows[:30]
+            result["http_status"]=r.status_code
+            result["key_variant_used"]=idx
+            meaningful=sum(1 for row in rows if row.get("item_name") or row.get("product_code"))
+            result["mapped_records"]=meaningful
+            result["status"]="ok" if meaningful or not rows else "mapping_review"
+            result["note"]="심평원 공식 약가기준 OpenAPI 연결 상태입니다. 급여구분·상한가·적용일을 확인합니다." if result["status"]=="ok" else "API 응답은 정상이나 필드 매핑을 점검 중입니다."
+            return result
+        except Exception as e:
+            last={"error_message":_redact_secrets(e,candidates)[:220],"key_variant_attempt":idx}
+    result.update(last)
+    code=clean(result.get("error_code"));name=clean(result.get("error_name"))
+    if code in ("20","30","31") or "SERVICE_" in name:
+        result["status"]="auth_error"
+    elif result.get("http_status")==403:
+        result["status"]="forbidden"
+    else:
+        result["status"]="error"
+    if code=="20": result["note"]="심평원 약가기준 API 활용신청 또는 접근권한 확인이 필요합니다."
+    elif code=="30" or name=="SERVICE_KEY_IS_NOT_REGISTERED_ERROR": result["note"]="심평원 약가기준 API에 연결된 서비스키를 공공데이터포털에서 다시 확인해야 합니다."
+    else: result["note"]="심평원 약가기준 API 연결 상태를 확인해야 합니다."
+    return result
+
 def static_api_source(src, key):
     return {
         "id": src["id"],
@@ -358,6 +436,8 @@ def main():
             results.append(fetch_mfds_approval(s,key))
         elif src["id"] == "mfds_supply_shortage":
             results.append(fetch_mfds_supply_shortage(s,key))
+        elif src["id"] == "hira_drug_price":
+            results.append(fetch_hira_drug_price(s,key))
         elif src["kind"] == "official_web":
             results.append(fetch_official_web(s,src))
         else:
@@ -394,7 +474,9 @@ def main():
         "mfds_error_message":mfds.get("error_message"),
         "mfds_key_variant_used":mfds.get("key_variant_used") or mfds.get("key_variant_attempt"),
         "mfds_supply_status":supply.get("status"),
-        "mfds_supply_records":len(supply.get("records") or [])
+        "mfds_supply_records":len(supply.get("records") or []),
+        "hira_price_status":next((x for x in results if x.get("id")=="hira_drug_price"),{}).get("status"),
+        "hira_price_records":len(next((x for x in results if x.get("id")=="hira_drug_price"),{}).get("records") or [])
     },ensure_ascii=False))
 
 if __name__ == "__main__":
