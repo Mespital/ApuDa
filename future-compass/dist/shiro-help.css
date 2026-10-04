@@ -36,3 +36,7 @@
 .shiro-hint[hidden]{display:none}
 .shiro-panel{bottom:92px;height:min(590px,calc(100dvh - 115px))}
 @media(max-width:600px){.shiro-launch{width:54px;height:54px;min-height:54px;right:14px;bottom:calc(20px + env(safe-area-inset-bottom,0px));padding:4px}.shiro-launch img{width:42px;height:42px}.shiro-hint{right:14px;bottom:calc(84px + env(safe-area-inset-bottom,0px))}.shiro-panel{bottom:auto}.shiro-toast{bottom:calc(84px + env(safe-area-inset-bottom,0px))}}
+
+.shiro-launch{bottom:80px}
+.shiro-hint{bottom:148px}
+@media(max-width:600px){.shiro-launch{bottom:calc(76px + env(safe-area-inset-bottom,0px))}.shiro-hint{bottom:calc(140px + env(safe-area-inset-bottom,0px))}}
