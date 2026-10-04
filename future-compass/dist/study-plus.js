@@ -26,5 +26,7 @@ document.addEventListener('change',e=>{const t=e.target;if(t.dataset.step){const
 document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.hasAttribute('data-today-task'))document.querySelector('#task')?.focus();if(b.dataset.mode){plus.mode=Number(b.dataset.mode);commit()}if(b.dataset.carry||b.dataset.finish){const x=state.tasks.find(x=>x.id===(b.dataset.carry||b.dataset.finish));if(x){if(b.dataset.carry)x.date=today();else x.done=true;save();render()}}if(b.dataset.template){const x=state.dates.find(x=>x.id===b.dataset.template);if(!x)return;plus.exams[x.id]={rubric:plus.exams[x.id]?.rubric||'',steps:(x.kind==='시험'?['시험 범위 확인','개념·대표 문제','오답 다시 풀기','서술형·시간 연습','핵심 정리']:['주제 결정','자료·출처 확인','초안 만들기','연습·검토','제출 확인']).map(title=>({title,done:false}))};commit('기본 단계를 넣었어. 필요한 세부 내용도 추가해봐.')}if(b.dataset.result){const x=state.reviews.find(x=>x.id===b.dataset.id);if(!x)return;plus.reviews[x.id]=nextReview(reviewMeta(x),b.dataset.result);commit('다음 복습: '+plus.reviews[x.id].due+' 🐾')}});
 // Timetable auto-save stays immediate; rebuild the course list only when opened.
 document.addEventListener('toggle',e=>{if(e.target.id==='course-panel'&&e.target.open){const node=document.createElement('div');node.innerHTML=coursePanel();const fresh=node.firstElementChild;e.target.innerHTML=fresh.innerHTML}},true);
+window.studyPlusBridge={snapshot:()=>JSON.parse(JSON.stringify(plus)),restore:restorePlus,replace:value=>{plus=restorePlus(JSON.stringify(value))}};
 render();
 })();
+

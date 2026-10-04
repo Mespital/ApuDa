@@ -30,6 +30,7 @@ jobs:
           node future-compass/scripts/check-know-me.cjs
           node future-compass/scripts/check-shiro.cjs
           node future-compass/scripts/check-study-plus.cjs
+          node future-compass/scripts/check-study-device.cjs
       - name: Save daily feed
         run: |
           git config user.name 'future-compass-bot'
