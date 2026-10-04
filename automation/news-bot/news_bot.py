@@ -152,10 +152,31 @@ def score_article(a, cfg):
     a.categories=list(dict.fromkeys(cats))[:6] or ["산업"]
     return a
 
+def _oncology_signal(text):
+    t=clean_text(text).lower()
+    cancer_terms=[
+        "폐암","유방암","위암","대장암","췌장암","간암","담도암","전립선암","자궁경부암",
+        "림프종","백혈병","다발골수종","갑상선암","신장암","난소암","난관암","일차 복막암"
+    ]
+    strong_terms=[
+        "항암","종양","면역항암","표적치료","car-t","bite","adc","nccn",
+        "egfr","alk","ros1","braf","her2","pd-l1","brca","cldn18.2"
+    ]
+    explicit=[k for k in cancer_terms if k in t]
+    strong=[k for k in strong_terms if k in t]
+    # Generic '암' alone is only accepted in treatment/diagnostic context.
+    generic = ("암" in t and any(k in t for k in ["치료","신약","임상","항암","환자","진단","수술","방사선","바이오마커","가이드라인","급여","허가"]))
+    return explicit,strong,generic
+
 def oncology_meta(a, keywords):
+    # Patient-facing oncology news requires an oncology signal in title/description.
+    # Full-body incidental mentions (e.g. company portfolio articles) are not enough.
+    lead_text=" ".join([a.title or "",a.description or ""])
+    explicit,strong,generic=_oncology_signal(lead_text)
+    if not (explicit or strong or generic):
+        return None
+
     text=(" ".join([a.title,a.description,a.body_excerpt])).lower()
-    hits=[k for k in keywords if k.lower() in text]
-    if not hits: return None
     cancers=[k for k in ["유방암","폐암","위암","대장암","갑상선암","신장암","전립선암","췌장암","담도암","간암","림프종","자궁경부암","난소암","난관암","일차 복막암","백혈병","다발골수종"] if k in text]
     biomarkers=[k.upper() for k in ["egfr","alk","ros1","braf","her2","pd-l1","brca","cldn18.2"] if k in text]
     return {
@@ -177,6 +198,12 @@ def oncology_meta(a, keywords):
         "patient_relevance_labels": patient_relevance_meta(a)["labels"],
         "industry_summary": None
     }
+
+def oncology_archive_plausible(n):
+    title=clean_text(n.get("title",""))
+    summary=" ".join(n.get("summary") or [])
+    explicit,strong,generic=_oncology_signal(title+" "+summary)
+    return bool(explicit or strong or generic)
 
 def patient_relevance_meta(a):
     text=(" ".join([a.title,a.description,a.body_excerpt])).lower()
@@ -318,7 +345,7 @@ def make_oncology_archive(merged, outdir, end, tz, days=30):
         cur=dedup.get(key)
         if cur is None or int(n.get("score") or 0)>int(cur.get("score") or 0):
             dedup[key]=n
-    items=list(dedup.values())
+    items=[n for n in dedup.values() if oncology_archive_plausible(n)]
     for n in items:
         fresh,age=freshness_label(n["published_at"],end,tz)
         n["freshness"]=fresh
