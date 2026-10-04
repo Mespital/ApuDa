@@ -7,15 +7,36 @@
     "code": "7010087",
     "homepage": "https://seocho.sen.hs.kr/"
   },
-  "checked_at": "2026-10-04T23:47:06.762150+00:00",
+  "checked_at": "2026-10-04T23:49:21.119880+00:00",
   "keyed": false,
   "school_year": 2026,
   "grade": 1,
   "raw_grade": 1,
   "semester": 2,
   "phase": "school",
-  "schedule": [],
-  "closures": [],
+  "schedule": [
+    {
+      "date": "2026-10-05",
+      "title": "중간고사(1학년)"
+    },
+    {
+      "date": "2026-10-05",
+      "title": "대체공휴일",
+      "off": true
+    },
+    {
+      "date": "2026-10-06",
+      "title": "중간고사(1학년)"
+    }
+  ],
+  "closures": [
+    {
+      "date": "2026-10-05",
+      "name": "대체공휴일",
+      "kind": "공휴일",
+      "source": "학교"
+    }
+  ],
   "meals": [
     {
       "date": "2026-10-12",
@@ -122,5 +143,5 @@
     "meals": "ok",
     "timetable": "ok"
   },
-  "last_success_at": "2026-10-04T23:47:06.762150+00:00"
+  "last_success_at": "2026-10-04T23:49:21.119880+00:00"
 }
