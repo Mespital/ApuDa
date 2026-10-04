@@ -14,7 +14,7 @@
     <a class="recommended-api-card" href="https://www.data.go.kr/data/15047819/openapi.do" target="_blank" rel="noopener noreferrer"><span>건강보험심사평가원</span><h3>의약품사용정보</h3><p>성분·ATC별 실제 급여의약품 사용량으로 산업·시장 흐름 보강</p><em>산업 분석 우선순위 5 ↗</em></a>
   </div>
 </section>
-<section class="section"><div class="panel"><h3>점검 기준</h3><div class="list"><div class="row"><b>정상</b><span>최근 생성 파일이 있고 공식 연결 응답이 정상</span></div><div class="row"><b>확인 필요</b><span>키·권한·외부기관 응답 또는 수집결과를 점검해야 함</span></div><div class="row"><b>저작권 보호</b><span>NCCN은 공개 버전 메타데이터와 공식 링크만 추적하며 원문/PDF는 복제하지 않음</span></div></div></div></section>
+<section class="section"><div class="panel"><h3>점검 기준</h3><div class="list"><div class="row"><b>정상</b><span>최근 생성 파일이 있고 공식 연결 응답이 정상</span></div><div class="row"><b>확인 필요</b><span>키·권한·외부기관 응답 또는 수집결과를 점검해야 함</span></div><div class="row"><b>저작권·이용정책 보호</b><span>NCCN은 환자용·전문가용 공식 링크만 제공하며, 가이드라인 본문/PDF/알고리즘/도표·변경내용을 자동수집·저장·AI 처리·재배포하지 않음</span></div></div></div></section>
 </main>
 <footer class="footer"><div class="wrap"><b>ApuDa</b>News Data Operations</div></footer>
 <script>
@@ -44,8 +44,8 @@ async function load(){
  cards.push(card('식약처 공식 공문',mfds?'정상':'확인 필요',mfds?('최근 30일 '+(mfds.items||[]).length+'건'):'데이터 파일 없음',mfds?.generated_at,mfds?.sources?.[0]?.url));
  cards.push(card('심평원 보험인정기준',hira?.status==='ok'?'정상':'확인 필요',hira?.status==='ok'?('최근 30일 '+(hira.items||[]).length+'건'):(hira?.error||'첫 수집 대기'),hira?.generated_at,hira?.source?.url));
  const nitems=nccn?.items||[];
- const nok=nitems.filter(x=>x.status==='ok').length;
- cards.push(card('NCCN 모니터',nok===12?'정상':'확인 필요',nitems.length?('12개 암종 중 '+nok+'개 버전 확인'):'데이터 없음',nccn?.generated_at,nccn?.category_url));
+ const nlink=nitems.filter(x=>x.status==='link_only_policy').length;
+ cards.push(card('NCCN 공식 링크 정책',nlink===12?'정상':'확인 필요',nitems.length?('12개 암종 · 환자용 링크 우선 · 콘텐츠 자동수집 중단'):'데이터 없음',nccn?.generated_at,nccn?.patient_url||nccn?.clinical_url));
  const sourceOk=offSources.filter(x=>x.status==='ok').length;
  cards.push(card('공식 근거 소스',sourceOk>=2?'정상':'확인 필요',offSources.length?('총 '+offSources.length+'개 소스 · 정상 '+sourceOk+'개'):'데이터 없음',official?.generated_at,'/news/oncology/'));
  document.getElementById('statusGrid').innerHTML=cards.join('');
