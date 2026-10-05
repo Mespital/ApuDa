@@ -14,6 +14,7 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
+    environment: apuda-ai-vps # NEIS_API_KEY·DATA_GO_KR_KEY가 이 환경 비밀값에 있음
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
@@ -29,7 +30,6 @@ jobs:
           NEIS_API_KEY: ${{ secrets.NEIS_API_KEY }}
           DATA_GO_KR_KEY: ${{ secrets.DATA_GO_KR_KEY }}
           SEEN_NEIS: ${{ secrets.NEIS_API_KEY != '' }}
-          SEEN_VPS: ${{ secrets.VPS_SSH_KEY != '' }}
           SEEN_DATA: ${{ secrets.DATA_GO_KR_KEY != '' }}
         run: python future-compass/scripts/update_school.py
       - name: Check site
