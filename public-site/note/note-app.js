@@ -6,7 +6,7 @@
 var KEY='apuda_cancer_care_v1', CHAT_KEY='apuda_note_chat_v1', FONT_KEY='apuda_note_font';
 var KB=window.NOTE_KB;
 var defaultState={profile:{name:'',cancer:'',stage:'',treatment:'',goal:'',cycle:'',hospital:'',dayPhone:'',nightPhone:'',biomarkers:''},
-  roadmap:[],meds:[],logs:[],questions:[],supports:[],distress:[],triage:{items:[],at:0},distressValue:0,meta:{lastBackup:''}};
+  roadmap:[],meds:[],logs:[],labs:[],questions:[],supports:[],distress:[],triage:{items:[],at:0},distressValue:0,meta:{lastBackup:''}};
 function clone(o){return JSON.parse(JSON.stringify(o))}
 function validBackup(d){
   if(!d||typeof d!=='object'||Array.isArray(d))return false;
@@ -20,7 +20,7 @@ function load(){
   try{var x=JSON.parse(localStorage.getItem(KEY));if(!x)return clone(defaultState);
     if(!validBackup(x)){localStorage.setItem(KEY+'_corrupt',localStorage.getItem(KEY));return clone(defaultState)}
     var s=Object.assign(clone(defaultState),x);s.profile=Object.assign(clone(defaultState.profile),x.profile||{});
-    if(!s.triage||!Array.isArray(s.triage.items))s.triage={items:[],at:0};return s}catch(e){return clone(defaultState)}
+    if(!s.triage||!Array.isArray(s.triage.items))s.triage={items:[],at:0};if(!Array.isArray(s.labs))s.labs=[];return s}catch(e){return clone(defaultState)}
 }
 var state=load();
 function save(){localStorage.setItem(KEY,JSON.stringify(state));renderAll()}
@@ -30,6 +30,11 @@ function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2
 function pad(n){return String(n).padStart(2,'0')}
 function ymd(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())}
 function today(){return ymd(new Date())}
+var CHEMO_RE=/항암|키모|주사\s*치료|투약/;
+function chemoDates(){return state.roadmap.filter(function(r){return CHEMO_RE.test(r.title||'')&&r.date<=today()&&(r.status==='done'||r.date<=today())}).map(function(r){return r.date}).sort()}
+function chemoDay(onDate){var d=onDate||today(),last=null;chemoDates().forEach(function(x){if(x<=d)last=x});if(!last)return null;var n=Math.round((new Date(d+'T00:00:00')-new Date(last+'T00:00:00'))/864e5);return n<=35?{n:n,date:last}:null}
+function dTag(onDate){var c=chemoDay(onDate);return c?'항암 D+'+c.n:''}
+function inNadir(onDate){var c=chemoDay(onDate);return !!(c&&c.n>=7&&c.n<=14)}
 var WD=['일','월','화','수','목','금','토'];
 function fmt(s){if(!s)return '-';var d=new Date(s+'T00:00:00');return (d.getMonth()+1)+'월 '+d.getDate()+'일('+WD[d.getDay()]+')'}
 function dday(s){var a=new Date(today()+'T00:00:00'),b=new Date(s+'T00:00:00');var n=Math.round((b-a)/864e5);return n===0?'오늘':n===1?'내일':n===2?'모레':n>0?n+'일 후':(-n)+'일 전'}
@@ -151,6 +156,39 @@ function interpret(raw){
     out.saved.push('약 · '+name+(dose?' '+dose:'')+(sch?' · '+sch.trim():''));out.handled=true;out.undo=true;
     out.notes.push('복용량·시간은 처방전 그대로인지 한 번 더 확인해 주세요. 약 조절은 의료진과 상의하세요.');return out}
 
+  /* 3.5) 항암 받은 날 기록 */
+  if(/항암|키모/.test(t)&&/(맞았|맞음|받았|받음|했어|했음|끝났|끝남|하고\s*왔|다녀왔|시작했)/.test(t)&&!/물어|질문|\?/.test(t)){
+    var cdt=(parseDate(t)||{}).date||today();if(cdt>today())cdt=today();
+    var cyc=(t.match(/(\d{1,2})\s*(?:차|회차|사이클|번째)/)||[])[1];
+    var ttl='항암'+(cyc?' '+cyc+'차':'');
+    var ex=state.roadmap.find(function(r){return r.date===cdt&&CHEMO_RE.test(r.title||'')});
+    if(ex){ex.status='done';if(cyc&&!/차/.test(ex.title))ex.title=ttl}else state.roadmap.push({id:uid(),date:cdt,time:'',type:'치료',title:ttl,memo:'',status:'done',createdAt:Date.now()});
+    out.saved.push('항암 받은 날 · '+fmt(cdt)+(cyc?' · '+cyc+'차':''));out.handled=true;out.undo=true;
+    out.notes.push('이제 오늘 탭에 "항암 후 며칠째"가 표시돼요. 많은 항암제는 7~14일째 백혈구가 가장 낮아져 감염에 약해지니, 그 시기엔 체온을 하루 2번 재 두세요(약마다 시기는 달라요).');
+    return out}
+
+  /* 3.6) 혈액검사 수치 */
+  var lab={},lm,labNote='';
+  function num(x){return parseFloat(String(x).replace(/,/g,''))}
+  if((lm=t.match(/(?:호중구|ANC|anc)\s*(?:수치)?\s*(?:가|는|이|:)?\s*([\d,.]+)\s*(만|천)?/i))){var v=num(lm[1])*(lm[2]==='만'?10000:lm[2]==='천'?1000:1);if(v<30)v=v*1000;lab.anc=Math.round(v)}
+  if((lm=t.match(/(?:백혈구|WBC|wbc)\s*(?:수치)?\s*(?:가|는|이|:)?\s*([\d,.]+)\s*(만|천)?/i))){var v2=num(lm[1])*(lm[2]==='만'?10000:lm[2]==='천'?1000:1);if(v2<100)v2=v2*1000;lab.wbc=Math.round(v2)}
+  if((lm=t.match(/(?:혈소판|PLT|plt)\s*(?:수치)?\s*(?:가|는|이|:)?\s*([\d,.]+)\s*(만|천)?/i))){var v3=num(lm[1])*(lm[2]==='만'?10000:lm[2]==='천'?1000:1);if(v3<1000)v3=v3*1000;lab.plt=Math.round(v3)}
+  if((lm=t.match(/(?:혈색소|헤모글로빈|Hb|HB|hb|빈혈\s*수치)\s*(?:가|는|이|:)?\s*(\d{1,2}(?:\.\d)?)/)))lab.hb=+lm[1];
+  if(!Object.keys(lab).length&&/(백혈구|호중구|혈소판|혈색소|피\s*수치|혈액\s*수치)/.test(t)&&/(낮|떨어|부족|높)/.test(t)){labNote=t}
+  if(Object.keys(lab).length||labNote){
+    var ldt=(parseDate(t)||{}).date||today();if(ldt>today())ldt=today();
+    var LB=state.labs.find(function(x){return x.date===ldt});if(!LB){LB={id:uid(),date:ldt,wbc:'',anc:'',hb:'',plt:'',note:'',createdAt:Date.now()};state.labs.push(LB)}
+    var LBL={wbc:['백혈구','/µL'],anc:['호중구','/µL'],hb:['혈색소','g/dL'],plt:['혈소판','/µL']};
+    Object.keys(lab).forEach(function(k){LB[k]=String(lab[k]);out.saved.push(LBL[k][0]+' '+Number(lab[k]).toLocaleString()+' '+LBL[k][1])});
+    if(labNote){LB.note=[LB.note,labNote].filter(Boolean).join(' / ');out.saved.push('검사 메모 · '+labNote.slice(0,30))}
+    state.labs.sort(function(a,b){return b.date.localeCompare(a.date)});
+    if(ldt!==today())out.saved.push('('+fmt(ldt)+' 검사)');
+    out.handled=true;out.undo=true;
+    if(('anc' in lab&&lab.anc<1000)||/호중구|백혈구/.test(labNote)&&/낮|떨어|부족/.test(labNote))out.alerts.push('lowAnc');
+    if('plt' in lab&&lab.plt<50000)out.alerts.push('lowPlt');
+    out.notes.push('수치는 들은 그대로 기록만 해요. 의미와 치료 조정은 담당 의료진이 판단해요. 단위가 다르면 결과지 그대로 다시 적어 주세요.');
+    return out}
+
   /* 4) 일정 */
   var pd=parseDate(t), ptm=parseTime(t);
   var schedLike=SCHED_KW.test(t)&&!/체온|열\s*\d|통증\s*\d|설사\s*\d|구토\s*\d|먹었|했어|했다|받았|다녀왔/.test(t);
@@ -202,7 +240,7 @@ function interpret(raw){
     out.handled=true;out.undo=true;
     /* 안전 판단 */
     var T=+L.temp,P=+L.pain;
-    if('temp' in rec){if(T>=38)out.alerts.push('fever');else if(T>=37.5)out.alerts.push('lowfever')}
+    if('temp' in rec){if(T>=38){out.alerts.push('fever');if(inNadir(logDate))out.alerts.push('nadirFever')}else if(T>=37.5)out.alerts.push('lowfever')}
     if('bowel' in rec&&L.bowel==='혈변·검은변')out.alerts.push('blood');
     if('pain' in rec&&P>=7)out.alerts.push('pain7');
     if(('diarrhea' in rec||'vomit' in rec)&&(+L.diarrhea>=4||+L.vomit>=3))out.alerts.push('gi');
@@ -237,6 +275,9 @@ function callBtns(){var p=state.profile,h='';
   return h+'<a href="tel:119">🚑 119</a>'}
 var ALERT={
   fever:['red','<b>체온이 38.0℃ 이상입니다.</b><br>항암·면역·표적치료 중이라면 밤이든 주말이든 <b>지금 치료병원에 연락</b>하세요. 해열제로 먼저 내리지 마세요.',true],
+  lowAnc:['amber','<b>호중구(백혈구)가 낮다고 기록됐어요.</b> 감염에 특히 약한 시기예요. 손 씻기·사람 많은 곳 피하기, 체온은 하루 2번 이상 재고 <b>38.0℃면 해열제 먹기 전에 바로 병원에 연락</b>하세요.',true],
+  lowPlt:['amber','<b>혈소판이 낮다고 기록됐어요.</b> 멍이 잘 들고 피가 잘 날 수 있어요. 코피·잇몸 출혈이 멈추지 않거나 검은 변이 보이면 바로 연락하세요.',false],
+  nadirFever:['red','<b>지금은 항암 후 백혈구가 낮아지기 쉬운 시기(D+7~14)입니다.</b> 이 시기의 열은 특히 빨리 확인해야 해요. 기다리지 말고 지금 연락하세요.',true],
   lowfever:['amber','37.5℃ 이상입니다. <b>1시간 뒤 같은 부위로 다시 재서</b> 알려 주세요. 오한이 있거나 38.0℃가 되면 바로 병원에 연락하세요.',false],
   blood:['red','<b>혈변·검은 변은 출혈 신호일 수 있습니다.</b> 지금 치료병원이나 응급실에 연락하세요.',true],
   pain7:['red','<b>통증 7점 이상입니다.</b> 처방받은 진통제로 조절되지 않으면 지금 치료병원에 연락해 지침을 받으세요.',true],
@@ -304,6 +345,7 @@ var QUICK={
   meal:['오늘 식사는 평소와 비교해 어느 정도 드셨어요?',[['거의 못 먹음','식사 거의 못 먹음'],['조금(¼)','식사 조금 먹음'],['절반','식사 반 먹음'],['대부분(¾)','식사 대부분 먹음'],['평소만큼','식사 다 먹음']]],
   sched:['일정을 말하듯 써 주세요.<br><span class="small muted">예) 다음주 화요일 오전 10시 항암 3차 · 10월 20일 CT · 모레 2시 외래</span>',[]],
   med:['약 이름과 먹는 시간을 써 주세요.<br><span class="small muted">예) 약: 젤로다 아침저녁 3알 · 진통제 중단</span>',[]],
+  lab:['혈액검사 결과지의 수치를 적어 주세요.<br><span class="small muted">예) 호중구 800, 혈소판 9만, 혈색소 10.2 · 백혈구 수치 낮대</span>',[]],
   q:['진료 때 물어볼 것을 써 주세요. 진료요약에 모아 둘게요.<br><span class="small muted">예) 질문: 항암 중 운동해도 되나요? · 꼭 질문: CT 결과</span>',[]],
   sym:['어떤 증상이 걱정되세요?',KB.TOPICS.filter(function(x){return x.cat==='증상'||x.cat==='마음'}).map(function(x){return [x.q,x.q]})],
   help:null
@@ -312,7 +354,7 @@ document.querySelectorAll('#chips button').forEach(function(b){b.onclick=functio
   var k=b.dataset.c;if(k==='help'){sendText('사용법');return}
   var q=QUICK[k];var html=q[0]+(q[1].length?'<div class="qr">'+q[1].map(function(x){return '<button type="button" data-s="'+esc(x[1])+'">'+esc(x[0])+'</button>'}).join('')+'</div>':'');
   addMsg('bot',html,'',false);
-  if(k==='sched')prefill('');if(k==='med')prefill('약: ');if(k==='q')prefill('질문: ');
+  if(k==='sched')prefill('');if(k==='med')prefill('약: ');if(k==='q')prefill('질문: ');if(k==='lab')prefill('');
   scrollBottom();
 }});
 $('#thread').addEventListener('click',function(e){var b=e.target.closest('.qr button');if(!b)return;b.parentNode.querySelectorAll('button').forEach(function(x){x.disabled=true;x.style.opacity=x===b?1:.4});sendText(b.dataset.s)});
@@ -334,6 +376,8 @@ function renderHome(){
   var pb=document.getElementById('phoneBar');if(pb)pb.hidden=!!(state.profile.dayPhone||state.profile.nightPhone);
   var p=state.profile,h=new Date().getHours();
   $('#hello').innerHTML=(p.name?esc(p.name)+'님, ':'')+(h<11?'좋은 아침이에요.':h<18?'오늘 하루 어떠세요?':'오늘 하루 고생 많으셨어요.')+'<br><span style="font-size:.72em;color:var(--muted);font-weight:800">오늘 몸 상태를 한 줄로 알려 주세요.</span>';
+  var cd=chemoDay(),cb=$('#chemoBar');
+  if(cd){var nd=cd.n>=7&&cd.n<=14;cb.innerHTML='<div class="chemobar'+(nd?' nadir':'')+'"><b>항암 D+'+cd.n+'</b><span>'+(nd?'백혈구가 낮아지기 쉬운 시기예요. 체온을 하루 2번 재고, <u>38.0℃ 이상이면 해열제 먹기 전에 바로 병원에 연락</u>하세요.':'마지막 항암 '+fmt(cd.date)+(cd.n<7?' · 7~14일째는 백혈구가 낮아지기 쉬워요(약마다 다름).':''))+'</span></div>'}else cb.innerHTML='';
   var up=upcoming()[0], tl=state.logs.find(function(x){return x.date===today()}), hq=state.questions.filter(function(q){return !q.answer}).length;
   $('#tiles').innerHTML=
    '<button class="tile" onclick="tab(\'plan\')"><small>📅 다음 일정</small><b>'+(up?dday(up.date)+' · '+esc(up.title.slice(0,14)):'없음')+'</b></button>'+
@@ -397,7 +441,9 @@ function renderLog(){
   $('#chart').innerHTML=has?svg:'<div class="empty">기록이 쌓이면 그래프가 그려져요.</div>';
   $('#chartNote').textContent=days[0].slice(5).replace('-','/')+' ~ 오늘';
   var a=state.logs.slice().sort(function(a,b){return b.date.localeCompare(a.date)});
-  $('#logList').innerHTML=a.length?a.slice(0,30).map(function(l){return '<div class="logrow"><b'+(isWarn(l)?' style="color:var(--red)"':'')+'>'+fmt(l.date)+'</b><div>'+logLine(l)+'</div><button class="btn line sm" onclick="delItem(\'logs\',\''+l.id+'\')">삭제</button></div>'}).join(''):'<div class="empty">아직 기록이 없어요. 오늘 탭에서 "열 36.8 통증 2점"처럼 써 보세요.</div>';
+  $('#logList').innerHTML=a.length?a.slice(0,30).map(function(l){return '<div class="logrow"><b'+(isWarn(l)?' style="color:var(--red)"':'')+'>'+fmt(l.date)+(dTag(l.date)?'<br><span class="pill'+(inNadir(l.date)?' red':'')+'">'+dTag(l.date).replace('항암 ','')+'</span>':'')+'</b><div>'+logLine(l)+'</div><button class="btn line sm" onclick="delItem(\'logs\',\''+l.id+'\')">삭제</button></div>'}).join(''):'<div class="empty">아직 기록이 없어요. 오늘 탭에서 "열 36.8 통증 2점"처럼 써 보세요.</div>';
+  $('#labList').innerHTML=labTable(state.labs.slice(0,10),true);
+  var lf=document.querySelector('.labform [name=date]');if(lf&&!lf.value)lf.value=today();
   var dv=state.distress[0];$('#distress').value=dv?dv.score:state.distressValue||0;distressUI();
 }
 function distressUI(){var s=+$('#distress').value;$('#distressOut').textContent=s;var el=$('#distressAdvice');
@@ -405,6 +451,15 @@ function distressUI(){var s=+$('#distress').value;$('#distressOut').textContent=
 $('#distress').addEventListener('input',distressUI);
 window.saveDistress=function(){var s=+$('#distress').value;state.distress.unshift({id:uid(),date:today(),score:s});state.distressValue=s;save();toast('마음 온도계 '+s+'점 기록')};
 
+function nf(v){return v===''||v==null?'-':(+v).toLocaleString('ko-KR')}
+function labTable(arr,del){if(!arr.length)return '<div class="empty">아직 수치 기록이 없어요.</div>';
+  return '<table class="labtbl"><tr><th>날짜</th><th>백혈구</th><th>호중구</th><th>혈색소</th><th>혈소판</th>'+(del?'<th></th>':'')+'</tr>'+arr.map(function(x){
+    return '<tr><td style="white-space:nowrap">'+(+x.date.slice(5,7))+'/'+(+x.date.slice(8))+(dTag(x.date)?'<br><span class="small muted">'+dTag(x.date).replace('항암 ','')+'</span>':'')+'</td><td>'+nf(x.wbc)+'</td><td'+(x.anc!==''&&x.anc!=null&&+x.anc<1000?' class="lo"':'')+'>'+nf(x.anc)+'</td><td>'+(x.hb===''||x.hb==null?'-':x.hb)+'</td><td'+(x.plt!==''&&x.plt!=null&&+x.plt<50000?' class="lo"':'')+'>'+nf(x.plt)+'</td>'+(del?'<td><button class="btn line sm" aria-label="삭제" style="min-width:40px;padding:0 8px" onclick="delItem(\'labs\',\''+x.id+'\')">✕</button></td>':'')+'</tr>'+(x.note?'<tr><td colspan="'+(del?6:5)+'" class="small muted" style="text-align:left;border-top:0;padding-top:0">'+esc(x.note)+'</td></tr>':'')}).join('')+'</table>'}
+window.addLab=function(e){e.preventDefault();var f=e.target;function n(v,k){v=String(v||'').replace(/,/g,'').trim();if(v==='')return '';var x=parseFloat(v);if(isNaN(x))return '';if(k==='anc'&&x<30)x*=1000;if(k==='wbc'&&x<100)x*=1000;if(k==='plt'&&x<1000)x*=1000;return k==='hb'?x:Math.round(x)}
+  var r={id:uid(),date:f.date.value||today(),wbc:n(f.wbc.value,'wbc'),anc:n(f.anc.value,'anc'),hb:n(f.hb.value,'hb'),plt:n(f.plt.value,'plt'),note:f.note.value.trim()};
+  if(r.wbc===''&&r.anc===''&&r.hb===''&&r.plt===''&&!r.note){toast('수치를 하나 이상 적어 주세요');return}
+  state.labs.unshift(r);state.labs.sort(function(a,b){return b.date.localeCompare(a.date)});save();toast('검사 수치를 저장했어요');
+  if((r.anc!==''&&r.anc<1000)||(r.plt!==''&&r.plt<50000))toast('낮은 수치예요. 발열·출혈에 특히 주의하고 병원 안내를 따르세요')};
 function renderSummary(){
   var p=state.profile,up=upcoming().slice(0,4),act=state.meds.filter(function(m){return m.active==='yes'});
   var since=new Date();since.setDate(since.getDate()-14);var s14=ymd(since);
@@ -417,6 +472,9 @@ function renderSummary(){
   var dv=state.distress[0];
   var flags=logs.filter(isWarn);
   var h='<div class="card sumhead"><div class="row between" style="align-items:flex-start"><div><div style="font-size:1.25em;font-weight:900">'+esc(p.name||'이름 미입력')+'</div><div class="muted small">'+esc([p.cancer,p.stage].filter(Boolean).join(' · ')||'암종·병기 미입력')+' · '+esc(p.treatment||'현재 치료 미입력')+'</div><div class="muted small">'+esc(p.hospital||'')+(p.biomarkers?' · '+esc(p.biomarkers):'')+'</div></div><div class="small muted" style="text-align:right">작성 '+fmt(today())+'<br>ApuDa 암환자 노트</div></div></div>';
+  var cd=chemoDay(),cds=chemoDates();
+  if(cds.length)h+='<div class="card"><h3>💉 항암 일정</h3><table><tr><th>최근 항암</th><td>'+fmt(cds[cds.length-1])+(cd?' (오늘 D+'+cd.n+')':'')+'</td></tr>'+(cds.length>1?'<tr><th>이전 항암</th><td>'+cds.slice(-4,-1).reverse().map(fmt).join(', ')+'</td></tr>':'')+'</table></div>';
+  if(state.labs.length)h+='<div class="card"><h3>🩸 최근 혈액검사</h3>'+labTable(state.labs.slice(0,3),false)+'</div>';
   h+='<div class="card"><h3>🩺 최근 2주 몸 상태</h3>'+(logs.length?'<table><tr><th>체온</th><td'+(temps.some(function(v){return v>=38})?' class="warn"':'')+'>'+(temps.length?'최고 '+Math.max.apply(null,temps).toFixed(1)+'℃ · '+temps.length+'회 측정'+(temps.filter(function(v){return v>=38}).length?' · 38℃ 이상 '+temps.filter(function(v){return v>=38}).length+'회':''):'기록 없음')+'</td></tr>'+
     '<tr><th>통증</th><td'+(pains.some(function(v){return v>=7})?' class="warn"':'')+'>'+(pains.length?'평균 '+(pains.reduce(function(a,b){return a+b},0)/pains.length).toFixed(1)+' · 최고 '+Math.max.apply(null,pains)+'/10':'기록 없음')+'</td></tr>'+
     '<tr><th>식사량</th><td>'+(meals.length?'평균 '+Math.round(meals.reduce(function(a,b){return a+b},0)/meals.length)+'% (평소 대비)':'기록 없음')+'</td></tr>'+

@@ -47,6 +47,9 @@ label{display:block;font-size:.78em;font-weight:900;color:#3b4a60;margin:10px 0 
 .tile{background:#fff;border:1px solid var(--line);border-radius:16px;padding:11px 11px 10px;text-align:left;min-height:92px}
 .tile small{display:block;color:var(--muted);font-size:.68em;font-weight:900}
 .tile b{display:block;font-size:.92em;line-height:1.35;margin-top:4px;letter-spacing:-.02em;word-break:keep-all}
+.chemobar{display:flex;gap:10px;align-items:center;border-radius:14px;padding:10px 12px;margin:-4px 0 10px;font-size:.86em;font-weight:800;line-height:1.45;background:var(--sky);color:var(--blue2)}.chemobar b{font-size:1.15em;white-space:nowrap}.chemobar.nadir{background:var(--redbg);color:var(--red)}
+.labtbl{width:100%;border-collapse:collapse;font-size:.86em}.labtbl th,.labtbl td{padding:7px 4px;border-top:1px solid var(--line);text-align:center}.labtbl th{color:var(--muted);font-size:.86em;border-top:0;white-space:nowrap;padding:6px 2px}.labtbl td{white-space:nowrap}.labtbl td.lo{color:var(--red);font-weight:900}
+.labform{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:10px}.labform input{min-width:0}.labform .wide{grid-column:span 2}
 .callrow{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
 /* chat */
 .thread{display:flex;flex-direction:column;gap:10px}
@@ -145,6 +148,7 @@ label{display:block;font-size:.78em;font-weight:900;color:#3b4a60;margin:10px 0 
 <!-- 오늘(노트봇) -->
 <section class="view on" id="v-today">
   <div class="hello" id="hello"></div>
+  <div id="chemoBar"></div>
   <div class="tiles" id="tiles"></div>
   <div class="callrow" id="callrow"></div>
   <div class="thread" id="thread" aria-live="polite"></div>
@@ -165,6 +169,9 @@ label{display:block;font-size:.78em;font-weight:900;color:#3b4a60;margin:10px 0 
   <div class="card"><h3>마음 온도계 <span class="small muted">0(편안) ~ 10(매우 힘듦)</span></h3>
     <div class="range"><input type="range" min="0" max="10" step="1" id="distress"><output id="distressOut">0</output><button class="btn soft sm" onclick="saveDistress()">기록</button></div>
     <div id="distressAdvice" class="small" style="margin-top:6px"></div></div>
+  <div class="card"><div class="row between"><h3>🩸 혈액검사 수치</h3><span class="small muted">결과지 보고 적어 두기</span></div><div id="labList"></div>
+    <form class="labform" onsubmit="addLab(event)"><input type="date" name="date" class="wide" required><input name="wbc" inputmode="decimal" placeholder="백혈구"><input name="anc" inputmode="decimal" placeholder="호중구"><input name="hb" inputmode="decimal" placeholder="혈색소"><input name="plt" inputmode="decimal" placeholder="혈소판"><input name="note" class="wide" placeholder="메모(예: 수치 낮대)"><button class="btn primary sm wide">추가</button></form>
+    <p class="small muted" style="margin:8px 0 0">💬 오늘 탭에서 "호중구 800, 혈소판 9만"처럼 써도 돼요. 수치의 의미는 담당 의료진이 판단합니다.</p></div>
   <div class="card"><div class="row between"><h3>날짜별 기록</h3><button class="btn soft sm" onclick="tab('today');prefill('체온 ')">+ 기록</button></div><div id="logList"></div></div>
 </section>
 
@@ -180,7 +187,7 @@ label{display:block;font-size:.78em;font-weight:900;color:#3b4a60;margin:10px 0 
   <div class="in">
     <div class="chips" id="chips">
       <button data-c="temp">🌡️ 체온</button><button data-c="pain">😣 통증</button><button data-c="meal">🍚 식사</button>
-      <button data-c="sched">📅 일정</button><button data-c="med">💊 약</button><button data-c="q">❓ 질문 메모</button>
+      <button data-c="sched">📅 일정</button><button data-c="med">💊 약</button><button data-c="lab">🩸 검사 수치</button><button data-c="q">❓ 질문 메모</button>
       <button data-c="sym">🤒 증상 상담</button><button data-c="help">💡 사용법</button>
     </div>
     <form class="inbar" id="inbar" autocomplete="off">
