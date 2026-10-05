@@ -1,8 +1,104 @@
 {
-  "checked_at": "2026-10-05T14:56:08.104247+00:00",
-  "last_success_at": "2026-10-05T14:56:08.104247+00:00",
+  "checked_at": "2026-10-05T22:24:22.957757+00:00",
+  "last_success_at": "2026-10-05T22:24:22.957757+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "I use technology to give students a voice and become critical digital citizens.",
+      "url": "https://blog.google/products-and-platforms/products/education/teacher-voices-sweden/",
+      "source": "Google",
+      "published_at": "2026-10-05T16:00:00+00:00",
+      "category": "교육·생활",
+      "domain": "education"
+    },
+    {
+      "title": "Technology helps my students balance big creative ideas with tight deadlines.",
+      "url": "https://blog.google/products-and-platforms/products/education/media-teacher-gemini/",
+      "source": "Google",
+      "published_at": "2026-10-05T16:00:00+00:00",
+      "category": "교육·생활",
+      "domain": "education"
+    },
+    {
+      "title": "Here’s how I use technology to bring science to life in my classroom.",
+      "url": "https://blog.google/products-and-platforms/products/education/science-teacher-gemini/",
+      "source": "Google",
+      "published_at": "2026-10-05T16:00:00+00:00",
+      "category": "교육·생활",
+      "domain": "education"
+    },
+    {
+      "title": "World Teachers’ Day 2026",
+      "url": "https://blog.google/products-and-platforms/products/education/world-teachers-day-2026/",
+      "source": "Google",
+      "published_at": "2026-10-05T16:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "I teach my students that in the AI era, critical thinking comes first.",
+      "url": "https://blog.google/products-and-platforms/products/education/teacher-stories-gemini-middle-school/",
+      "source": "Google",
+      "published_at": "2026-10-05T16:00:00+00:00",
+      "category": "교육·생활",
+      "domain": "education"
+    },
+    {
+      "title": "My eighth-grade students built our school newscast from scratch with Gemini.",
+      "url": "https://blog.google/products-and-platforms/products/education/gemini-student-newscast/",
+      "source": "Google",
+      "published_at": "2026-10-05T16:00:00+00:00",
+      "category": "교육·생활",
+      "domain": "education"
+    },
+    {
+      "title": "My students use Gemini to brainstorm creative ideas.",
+      "url": "https://blog.google/products-and-platforms/products/education/teacher-voices-gemini-creativity/",
+      "source": "Google",
+      "published_at": "2026-10-05T16:00:00+00:00",
+      "category": "교육·생활",
+      "domain": "education"
+    },
+    {
+      "title": "Technology is helping my fellow math teachers trade weekend prep for personalized learning.",
+      "url": "https://blog.google/products-and-platforms/products/education/education-officer-gemini/",
+      "source": "Google",
+      "published_at": "2026-10-05T16:00:00+00:00",
+      "category": "교육·생활",
+      "domain": "education"
+    },
+    {
+      "title": "Gemini helps me bring hands-on learning into the classroom.",
+      "url": "https://blog.google/products-and-platforms/products/education/english-teacher-gemini/",
+      "source": "Google",
+      "published_at": "2026-10-05T16:00:00+00:00",
+      "category": "교육·생활",
+      "domain": "education"
+    },
+    {
+      "title": "I replaced traditional coding tests with real conversations about how my students solve problems using AI.",
+      "url": "https://blog.google/products-and-platforms/products/education/gemini-google-colab/",
+      "source": "Google",
+      "published_at": "2026-10-05T16:00:00+00:00",
+      "category": "교육·생활",
+      "domain": "education"
+    },
+    {
+      "title": "Gemini helps me give a voice to students who cannot write.",
+      "url": "https://blog.google/products-and-platforms/products/education/special-education-gemini/",
+      "source": "Google",
+      "published_at": "2026-10-05T16:00:00+00:00",
+      "category": "교육·생활",
+      "domain": "education"
+    },
+    {
+      "title": "Our approach to EU text provenance rules",
+      "url": "https://openai.com/index/eu-text-provenance",
+      "source": "OpenAI",
+      "published_at": "2026-10-05T15:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "Building advertising for the way people use AI",
       "url": "https://openai.com/index/new-chatgpt-ads-format-and-measurement",
@@ -146,118 +242,14 @@
       "published_at": "2026-09-30T10:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Experience two artists’ perspectives on philosophy, science, and AI",
-      "url": "https://blog.google/company-news/outreach-and-initiatives/arts-culture/las-art-foundation-ai-residency/",
-      "source": "Google",
-      "published_at": "2026-09-29T16:00:00+00:00",
-      "category": "과학·환경",
-      "domain": "energy"
-    },
-    {
-      "title": "DevDay 2026 Recap",
-      "url": "https://openai.com/index/devday-2026-recap",
-      "source": "OpenAI",
-      "published_at": "2026-09-29T10:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Introducing GPT-6.1 Sol",
-      "url": "https://openai.com/index/introducing-gpt-6-1-sol",
-      "source": "OpenAI",
-      "published_at": "2026-09-29T10:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Introducing dots",
-      "url": "https://openai.com/index/introducing-dots",
-      "source": "OpenAI",
-      "published_at": "2026-09-29T00:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Watch the winning trailer from the Future Vision XPRIZE, The Gifted.",
-      "url": "https://blog.google/innovation-and-ai/technology/ai/winner-future-vision-xprize/",
-      "source": "Google",
-      "published_at": "2026-09-28T19:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "How we will do better for Australia",
-      "url": "https://openai.com/index/how-we-will-do-better-for-australia",
-      "source": "OpenAI",
-      "published_at": "2026-09-28T19:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Towards safety cases for frontier AI training",
-      "url": "https://openai.com/index/towards-safety-cases-for-frontier-ai-training",
-      "source": "OpenAI",
-      "published_at": "2026-09-28T19:00:00+00:00",
-      "category": "안전·보안",
-      "domain": "security"
-    },
-    {
-      "title": "The Lenfest Institute grows landmark program with expanded OpenAI support",
-      "url": "https://openai.com/index/lenfest-ai-collaborative-expansion",
-      "source": "OpenAI",
-      "published_at": "2026-09-28T07:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Basis completes a tax workbook 2x faster with GPT-6 Astra",
-      "url": "https://openai.com/index/basis-tax-workbook-with-astra",
-      "source": "OpenAI",
-      "published_at": "2026-09-28T00:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Are you a Codex Original?",
-      "url": "https://openai.com/form/codex-originals",
-      "source": "OpenAI",
-      "published_at": "2026-09-28T00:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Proaction boosts sales 60% and saves 75+ hours with Codex",
-      "url": "https://openai.com/index/proaction",
-      "source": "OpenAI",
-      "published_at": "2026-09-25T19:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Two years of OpenAI Academy",
-      "url": "https://openai.com/index/two-years-of-openai-academy",
-      "source": "OpenAI",
-      "published_at": "2026-09-23T16:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-05T14:56:08.104247+00:00",
+    "checked_at": "2026-10-05T22:24:22.957757+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
-      {
-        "date": "2026-10-05",
-        "title": "중간고사(1학년)"
-      },
-      {
-        "date": "2026-10-05",
-        "title": "대체공휴일"
-      },
       {
         "date": "2026-10-06",
         "title": "중간고사(1학년)"
@@ -460,7 +452,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-05T14:56:08.104247+00:00",
+    "last_success_at": "2026-10-05T22:24:22.957757+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
