@@ -42,7 +42,9 @@
     const soon = state.dates.filter(x => !x.done && gap(x.date) >= 0 && gap(x.date) <= 7);
     return uniq(subjectsOf(d)).map(s => {
       const c = courses[s] || {}, exam = soon.find(x => x.subject && (x.subject.includes(s) || s.includes(x.subject)));
-      return { s, unit: c.unit || '', pages: c.pages || '', book: c.book || '', tip: tipFor(s), light: NO_PREP.test(s), exam };
+      const cur = typeof FC_CURRICULUM !== 'undefined' ? FC_CURRICULUM.lookup(s) : null;
+      const next = cur && c.unit ? FC_CURRICULUM.nextAfter(s, c.unit) : null;
+      return { s, unit: c.unit || '', pages: c.pages || '', book: c.book || '', tip: tipFor(s), light: NO_PREP.test(s), exam, cur, next };
     });
   }
   function prepDone(d) { const v = lsGet(PREV_KEY, {}); return Array.isArray(v[d]) ? v[d] : []; }
@@ -63,7 +65,7 @@
     return `<section class="card wk-prep"${compact ? ' data-prep-compact' : ''}><div class="section-title"><h2>📘 ${esc(when)} ${esc(label(nd))} 예습</h2><span class="badge">${real.length ? '약 ' + mins + '분' : '가볍게'}</span></div>
       <p class="muted">다음 등교일 시간표 기준이야${skipped}. 과목마다 10분이면 충분해.</p>
       ${examDay.length ? `<p class="wk-warn">📝 그날 학교 일정: ${esc(examDay.join(', '))}. 예습보다 시험 과목 마무리가 먼저야.</p>` : ''}
-      ${items.length ? items.map(x => `<label class="wk-prep-item${x.light ? ' light' : ''}"><input type="checkbox" data-prep="${esc(nd)}" data-subject="${esc(x.s)}" ${done.includes(x.s) ? 'checked' : ''}><span><b>${esc(x.s)}${teachers[x.s] ? ` <small>${esc(teachers[x.s])} 선생님</small>` : ''}</b>${x.unit ? ` · ${esc(x.unit)}` : ''}${x.pages ? ` <small>(${esc(x.pages)})</small>` : ''}<small>${x.exam ? '🧩 ' + esc(x.exam.title) + ' D-' + gap(x.exam.date) + ' · 범위 복습을 먼저 해봐' : esc(x.tip)}</small></span></label>`).join('') : '<p class="muted">그날 시간표가 비어 있어.</p>'}
+      ${items.length ? items.map(x => `<label class="wk-prep-item${x.light ? ' light' : ''}"><input type="checkbox" data-prep="${esc(nd)}" data-subject="${esc(x.s)}" ${done.includes(x.s) ? 'checked' : ''}><span><b>${esc(x.s)}${teachers[x.s] ? ` <small>${esc(teachers[x.s])} 선생님</small>` : ''}</b>${x.unit ? ` · ${esc(x.unit)}` : x.cur ? ` <small>${esc(x.cur.course)}</small>` : ''}${x.pages ? ` <small>(${esc(x.pages)})</small>` : ''}<small>${x.exam ? '🧩 ' + esc(x.exam.title) + ' D-' + gap(x.exam.date) + ' · 범위 복습을 먼저 해봐' : esc(x.tip)}</small>${!x.exam && x.next ? `<small class="wk-next">다음 단원 미리 보기: ${esc(x.next)}</small>` : ''}${!x.unit && x.cur && x.cur.flat.length && !x.light ? `<small class="wk-next">시간표 탭에서 지금 배우는 단원을 고르면 다음 단원을 알려줄게</small>` : ''}</span></label>`).join('') : '<p class="muted">그날 시간표가 비어 있어.</p>'}
       ${bag ? `<p class="wk-bag">🎒 준비물: ${esc(bag)}</p>` : ''}
       ${!Object.keys(plusData().courses || {}).length ? '<p class="muted">시간표 탭에서 과목별 단원·페이지를 적으면 예습 범위가 더 정확해져.</p>' : ''}</section>`;
   }
@@ -294,6 +296,7 @@
     const t = e.target;
     if (t.dataset.prep) { setPrep(t.dataset.prep, t.dataset.subject, t.checked); const all = document.querySelectorAll('[data-prep="' + t.dataset.prep + '"]'); if ([...all].every(x => x.checked || x.closest('.light'))) notice('예습 끝! 내일 수업이 훨씬 잘 들릴 거야 🐾'); }
     if (t.matches('[data-tt-image]') && t.files[0]) ocr(t.files[0]);
+    if (t.matches('form[data-plus="course"] select[name="unit"]')) { const box = t.form.querySelector('.unit-custom'); if (box) { box.hidden = t.value !== '__custom'; if (!box.hidden) box.querySelector('input')?.focus(); } }
   });
   document.addEventListener('input', e => { const k = e.target.dataset.draft; if (k && draft) { const [i, j] = k.split('-').map(Number); draft[i][j] = e.target.value.slice(0, 40); } });
   document.addEventListener('click', e => {
@@ -334,7 +337,7 @@
   .wk-nav{display:inline-flex;gap:4px}.wk-nav button{padding:4px 10px}
   .wk-warn{background:#fff6e5;border-radius:12px;padding:10px 12px;font-size:13.5px}
   .wk-prep-item{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid #f0ebf8}.wk-prep-item input{margin-top:4px;width:18px;height:18px}
-  .wk-prep-item span{display:grid;gap:2px}.wk-prep-item small{color:#667085}.wk-prep-item.light{opacity:.7}.wk-note{font-size:12px;color:#8a839a}.wk-bag{margin:8px 0 0;font-size:13.5px}
+  .wk-prep-item span{display:grid;gap:2px}.wk-prep-item small{color:#667085}.wk-prep-item.light{opacity:.7}.wk-note{font-size:12px;color:#8a839a}.wk-bag{margin:8px 0 0;font-size:13.5px}.wk-next{color:#5b3fd6!important}
   .wk-up-ways{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}.wk-file{cursor:pointer;display:inline-flex;align-items:center;padding:9px 14px;border-radius:12px;background:#5b3fd6;color:#fff;font-weight:700;font-size:14px}
   .wk-neis{display:inline-flex;gap:6px;align-items:center;font-size:14px}[data-tt-paste] textarea{width:100%;box-sizing:border-box;font:13px/1.5 ui-monospace,monospace}
   .wk-status{font-size:13px;color:#5b3fd6;min-height:1em;margin:4px 0}
