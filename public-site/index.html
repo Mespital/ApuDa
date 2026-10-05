@@ -1207,13 +1207,13 @@
       return '<button type="button" class="mini-book" data-book="'+i+'" aria-label="'+esc(name)+' 가이드북 자료 선택">'+
         '<span class="mini-book-art" style="--cover:url(\'assets/books/'+slug+'.webp\')">'+(badge?'<span class="mini-book-badge'+(badge==='인기'?' hot':'')+'">'+badge+'</span>':'')+'</span>'+
         '<span class="mini-book-meta"><span class="mini-book-vol">'+(i+1)+'</span><span class="mini-book-name">'+esc(name)+'</span><span class="mini-book-go">→</span></span>'+
-        '<span class="mini-book-tags">MINI · FAQ · 완전판</span></button>';
+        '<span class="mini-book-tags">MINI · FAQ · 완전판(준비중)</span></button>';
     }).join('');
     return '<span class="p-fl"><b>'+d.fl+'</b>'+d.kicker+'</span>'+
       '<div class="floor2-intro"><div><h2>'+d.title.replace(/\n/g,'&nbsp;<br>')+'</h2><p>'+d.desc+'</p></div>'+
       '<div class="p-stats">'+d.stats.map(function(s){return '<div><b>'+s[0]+'</b><small>'+s[1]+'</small></div>'}).join('')+'</div></div>'+
       '<div class="floor2-layout">'+
-        '<section class="floor2-library"><div class="floor2-library-head"><div><b>암종별 가이드북</b><span>암종을 선택하면 첫 30일 가이드, FAQ, 완전판 자료로 이동할 수 있습니다.</span></div><span>Vol. 01–12</span></div>'+
+        '<section class="floor2-library"><div class="floor2-library-head"><div><b>암종별 가이드북</b><span>암종을 선택하면 첫 30일 MINI 가이드와 FAQ로 이동할 수 있습니다(완전판은 준비 중).</span></div><span>Vol. 01–12</span></div>'+
         '<div class="mini-series-grid">'+bookHtml+'</div></section>'+
         '<aside class="floor2-side"><div class="floor2-side-head"><b>더 깊게 이해하기</b><span>암종을 이해한 뒤 필요한 다음 정보로 이어집니다.</span></div>'+
         '<a class="floor2-service" href="'+esc(d.links[0][1])+'" target="_blank" rel="noopener"><span class="floor2-service-icon">📚</span><span class="floor2-service-copy"><b>4컷 만화 암 정보</b><small>검사·병기·치료를 그림으로 쉽게</small></span></a>'+
