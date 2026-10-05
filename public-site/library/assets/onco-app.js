@@ -213,7 +213,7 @@ function pageMap(){
       '<div class="sec"><h4>진료실 질문 3가지</h4><ol class="qlist">'+M.qs.map(function(q){return '<li>'+esc(q)+'</li>'}).join('')+'</ol></div>'+
       '<div class="sec"><h4>관련 바이오마커</h4><div class="tags">'+markerTags(mks.map(function(m){return m.id}),true)+'</div></div>'+
       '<div class="sec"><h4>관련 약물 <a href="/library/drugs/?cancer='+cur+'" style="margin-left:auto;color:var(--blue);font-size:11px">Drug Hub에서 전체 보기 →</a></h4>'+Object.keys(O.TYPES).filter(function(t){return byType[t]}).map(function(t){return '<div class="drug-group"><b>'+esc(O.TYPES[t].label)+'</b><div class="tags">'+byType[t].map(function(d){return '<a class="tag" href="/library/drugs/?id='+d.id+'">'+esc(d.ko.replace(/\(.*\)/,''))+'</a>'}).join('')+'</div></div>'}).join('')+'</div>'+
-      '<div class="sec"><h4>'+esc(name)+' 더 읽기</h4><div class="mini-links"><a href="/library/mini/?cancer='+cur+'">📖 암진단 후 첫 30일 - '+esc(name)+' (무료)<i>→</i></a><a href="/library/faq/?cancer='+cur+'">❓ '+esc(name)+' FAQ<i>→</i></a></div></div></section></aside></div>';
+      '<div class="sec"><h4>'+esc(name)+' 더 읽기</h4><div class="mini-links"><a href="/library/mini/?cancer='+cur+'">📖 '+esc(name)+' 진단 첫 30일 (무료)<i>→</i></a><a href="/library/faq/?cancer='+cur+'">❓ '+esc(name)+' FAQ<i>→</i></a></div></div></section></aside></div>';
     document.title=name+' 치료결정 지도 | ApuDa';
     if(scroll){var t=$('#map').getBoundingClientRect().top+scrollY-130;scrollTo({top:t,behavior:'smooth'})}
   }

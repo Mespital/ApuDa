@@ -85,7 +85,7 @@ function link(url,label,primary){var ext=/^https?:/.test(url)&&url.indexOf(locat
 function siteCard(s){return '<div class="site"><div class="si">'+s.ico+'</div><div class="sb"><b>'+(s.fl?'<em>'+s.fl+'</em> ':'')+esc(s.name)+'</b><small>'+esc(s.desc)+'</small></div>'+link(s.url,'열기')+'</div>'}
 function q(label,text){return '<button class="qb" data-say="'+esc(text||label)+'">'+esc(label)+'</button>'}
 function cancerCard(c){var s=c[0],n=c[1];return '<b>'+n+'</b> 관련해서 이렇게 볼 수 있어요.<div class="links">'+
-  link('/library/mini/?cancer='+s,'📖 암진단 후 첫 30일 - '+n,true)+link('/library/faq/?cancer='+s,'❓ '+n+' FAQ')+link('/library/treatment-map/?cancer='+s,'🗺️ '+n+' 치료결정 지도')+link('/library/drugs/?cancer='+s,'💊 '+n+' 관련 항암제')+link('/library/biomarkers/?cancer='+s,'🧬 '+n+' 관련 바이오마커')+link('/library/regimens/?cancer='+s,'💉 '+n+' 항암 요법 가이드')+'</div>'}
+  link('/library/mini/?cancer='+s,'📖 '+n+' 진단 첫 30일',true)+link('/library/faq/?cancer='+s,'❓ '+n+' FAQ')+link('/library/treatment-map/?cancer='+s,'🗺️ '+n+' 치료결정 지도')+link('/library/drugs/?cancer='+s,'💊 '+n+' 관련 항암제')+link('/library/biomarkers/?cancer='+s,'🧬 '+n+' 관련 바이오마커')+link('/library/regimens/?cancer='+s,'💉 '+n+' 항암 요법 가이드')+'</div>'}
 function cancerPicker(){return '어떤 암종을 볼까요?<div class="qr">'+CANCER.map(function(c){return q(c[1])}).join('')+'</div>'}
 function menu(){var groups=[['1F 확인센터',['cancercheck','checkup']],['2F 암 정보 서재',['library','map','drugs','markers','comic']],['3F 지원',['support']],['4F 치료 동행',['note','care']],['5F 커뮤니티',['cafe']],['뉴스',['news','oncnews']],['ApuDa 패밀리·계정',['pet','farm','my']],['안내',['home','about']]];
   return '<b>ApuDa 전체 메뉴</b>'+groups.map(function(g){return '<div class="grp">'+g[0]+'</div>'+g[1].map(function(id){return siteCard(SITE[id])}).join('')}).join('')}
@@ -111,7 +111,7 @@ function reply(raw){
   /* 맥락 명령 */
   var cmd={
    '암종 고르기':function(){return [{h:cancerPicker()}]},
-   '첫 30일 책':function(){return [{h:'12개 암종 <b>「암진단 후 첫 30일」</b> 무료 웹북이 있어요. 암종을 고르세요.<div class="qr">'+CANCER.map(function(c){return '<a class="qb" href="'+A('/library/mini/?cancer='+c[0])+'">'+c[1]+'</a>'}).join('')+'</div><div class="links">'+link('/#floor-2','📚 2F 서재 전체 보기')+'</div>'}]},
+   '첫 30일 책':function(){return [{h:'12개 암종 <b>「암 진단 첫 30일」</b> 무료 웹북이 있어요. 암종을 고르세요.<div class="qr">'+CANCER.map(function(c){return '<a class="qb" href="'+A('/library/mini/?cancer='+c[0])+'">'+c[1]+'</a>'}).join('')+'</div><div class="links">'+link('/#floor-2','📚 2F 서재 전체 보기')+'</div>'}]},
    '다른 암종 책':function(){return cmd['첫 30일 책']()},
    '전체 메뉴':function(){return [{h:menu()}]},
    'ApuDa 소개':function(){return [{h:ABOUT}]},
@@ -120,7 +120,7 @@ function reply(raw){
    '이 암 FAQ':function(){return cc?[{h:link('/library/faq/?cancer='+cc[0],'❓ '+cc[1]+' FAQ 열기',true)}]:[{h:cancerPicker()}]},
    '이 암 치료지도':function(){return cc?[{h:link('/library/treatment-map/?cancer='+cc[0],'🗺️ '+cc[1]+' 치료결정 지도',true)}]:[{h:link('/library/treatment-map/','🗺️ 치료결정 지도 열기',true)}]},
    '이 암 약':function(){return cc?[{h:link('/library/drugs/?cancer='+cc[0],'💊 '+cc[1]+' 관련 항암제',true)}]:[{h:link('/library/drugs/','💊 Drug Hub 열기',true)}]},
-   '이 암 책':function(){return cc?[{h:link('/library/mini/?cancer='+cc[0],'📖 암진단 후 첫 30일 - '+cc[1],true)}]:cmd['첫 30일 책']()},
+   '이 암 책':function(){return cc?[{h:link('/library/mini/?cancer='+cc[0],'📖 '+cc[1]+' 진단 첫 30일',true)}]:cmd['첫 30일 책']()},
    '질문 저장 방법':function(){return [{h:'노트에 <b>"질문: 궁금한 내용"</b>이라고 쓰면 진료요약의 "오늘 꼭 물어볼 것"에 모여요. 아래 버튼을 누르면 바로 써 둘 수 있어요.<div class="links">'+link('/note/?say='+encodeURIComponent('질문: '),'📘 노트에 질문 쓰기',true)+'</div>'}]},
    '약 기록 방법':function(){return [{h:'노트에 <b>"약: 약이름 먹는 시간 개수"</b>로 쓰면 복용 중인 약 목록에 들어가요. 예) 약: 젤로다 아침저녁 3알<div class="links">'+link('/note/?say='+encodeURIComponent('약: '),'📘 노트에 약 기록',true)+'</div>'}]},
    '공급부족이란':function(){return [{h:'<b>공급 표시</b>는 식약처에 신고된 공급중단·부족 보고를 약 이름으로 찾아 보여주는 거예요. 빨강은 정상화 예정일이 아직 안 지난 신고, 주황은 최근 3년 내 이력이에요.<p class="sm">공급 소식이 있어도 <b>치료 일정이나 약을 임의로 바꾸지 말고</b> 치료기관에 확인하세요.</p>'}]},

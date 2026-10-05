@@ -83,7 +83,7 @@ a{color:inherit;text-decoration:none}.top{position:sticky;top:0;z-index:20;displ
   function getBookHTML(d,pv,total,pdfp){
     return '<div class="lockfade"></div><section class="getbook" id="getbook">'+
       '<span class="lk">🔒 미리보기는 여기까지예요 (앞부분 약 1/3)</span>'+
-      '<h2>「암진단 후 첫 30일 - '+esc(d.name)+'」<br><span>책 전체를 무료로 받는 방법</span></h2>'+
+      '<h2>「'+esc(d.name)+' 진단 첫 30일」<br><span>책 전체를 무료로 받는 방법</span></h2>'+
       '<p>뒷부분에는 치료 흐름, 진료실 질문, 생활관리, 핵심 체크리스트가 이어집니다. 인스타그램 팔로워 1000명 달성 기념으로 <b>12종 전체를 무료</b>로 드려요.</p>'+
       '<div class="steps">'+
         '<div class="stp ig"><i>1</i><div><b>ApuDa 인스타그램 팔로우</b><small>@apuda.app 계정을 팔로우해 주세요.</small></div></div>'+
@@ -92,14 +92,14 @@ a{color:inherit;text-decoration:none}.top{position:sticky;top:0;z-index:20;displ
         '<div class="stp"><i>4</i><div><b>apuda.app 2F 암 정보 서재에서 다운로드</b><small>원하는 암종 선택 → <strong>⬇ 다운로드</strong> → 코드 입력 → PDF('+pdfp+'쪽) 저장</small></div></div>'+
       '</div>'+
       '<div class="gb-act"><a class="ig" href="https://www.instagram.com/apuda.app/" target="_blank" rel="noopener">📷 인스타그램 @apuda.app 열기</a><button class="p" id="gbDownload" type="button">⬇ 코드 입력하고 PDF 받기</button><a href="/#floor-2">📚 다른 암종 보기</a></div>'+
-      '<div class="gb-note">이미 코드를 받으셨다면 바로 <b>⬇ 코드 입력하고 PDF 받기</b>를 누르세요. 코드는 대소문자를 구분하지 않아요. 휴대폰에서는 파일(약 8MB) 저장에 몇 초 걸릴 수 있어요.<br>이 책은 환자교육용이며 개인의 진단·처방을 대신하지 않습니다.</div>'+
+      '<div class="gb-note">이미 코드를 받으셨다면 바로 <b>⬇ 코드 입력하고 PDF 받기</b>를 누르세요. 코드는 대소문자를 구분하지 않아요. 휴대폰에서는 파일(약 '+(d.file_mb||7)+'MB) 저장에 몇 초 걸릴 수 있어요. <b>인스타그램 앱 안에서 저장이 안 되면</b> 오른쪽 위 ⋯ → ‘외부 브라우저(Safari·Chrome)로 열기’ 후 다시 받아 주세요.<br>이벤트 기간·조건은 @apuda.app 이벤트 게시물 공지를 따릅니다. 이 이벤트는 Instagram(Meta)이 후원·보증·운영하지 않습니다.<br>이 책은 환자교육용이며 개인의 진단·처방을 대신하지 않습니다.</div>'+
     '</section>';
   }
   function render(d){
-    data=d; document.title='암진단 후 첫 30일 - '+d.name+' 미리보기 | ApuDa';
-    document.getElementById('bookTitle').textContent='암진단 후 첫 30일 - '+d.name;
+    data=d; document.title=d.name+' 진단 첫 30일 미리보기 | ApuDa';
+    document.getElementById('bookTitle').textContent=d.name+' 진단 첫 30일';
     var pv=d.preview_count||d.pages.length,total=d.page_count||pv,pdfp=d.pdf_pages||total;
-    document.getElementById('pageCount').textContent='앞부분 1/3 미리보기 · 책 전체 PDF '+pdfp+'쪽';
+    document.getElementById('pageCount').textContent='앞부분 1/3 미리보기 · 책 전체 PDF '+pdfp+'쪽'+(d.edition?' · '+d.edition:'');
     var pages=document.getElementById('pages'),toc=document.getElementById('toc');
     pages.innerHTML=d.pages.map(function(t,i){return '<article class="page" id="p'+(i+1)+'"><span class="page-no">미리보기 '+(i+1)+' / '+pv+'</span><pre>'+esc(t)+'</pre></article>'}).join('')+getBookHTML(d,pv,total,pdfp);
     toc.innerHTML=d.pages.map(function(t,i){var first=(t.split('\n').map(function(x){return x.trim()}).find(function(x){return x&&!/^ApuDa|MINI SERIES|아프지만|^\d+\s*\/\s*\d+$/.test(x)})||('PAGE '+(i+1)));return '<button data-page="'+(i+1)+'"><span>'+(i+1)+'. '+esc(first.slice(0,22))+'</span><span>→</span></button>'}).join('');
@@ -143,10 +143,10 @@ a{color:inherit;text-decoration:none}.top{position:sticky;top:0;z-index:20;displ
     try{
       var h=await sha256(v);
       if(h!=='b35e7199a444b485664663ff6938503f6fe255b7d096756b9475c5b1f389434b'){ err.textContent='다운로드 코드가 맞지 않습니다.'; return; }
-      err.style.color='#1b7a50'; err.textContent='인증되었습니다. PDF(약 8MB)를 받는 중입니다…';
+      err.style.color='#1b7a50'; err.textContent='인증되었습니다. PDF(약 '+((data&&data.file_mb)||7)+'MB)를 받는 중입니다…';
       var blob=await decryptPdf(v);
       var name=(data&&data.name)||slug;
-      saveBlob(blob,'ApuDa_'+String(idx+1).padStart(2,'0')+'_'+name+'_진단첫30일_무료배포판.pdf');
+      saveBlob(blob,'ApuDa_'+String(idx+1).padStart(2,'0')+'_'+name+'_진단첫30일_무료배포판_v3.2.pdf');
       err.textContent='다운로드를 시작했습니다.';
       setTimeout(closeDownload,900);
     }catch(e){
