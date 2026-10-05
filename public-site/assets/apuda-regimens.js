@@ -128,6 +128,11 @@ function isLatin(k){return /^[a-z0-9\-]+$/.test(k)}
 function hasKey(raw,tight,k){k=String(k).toLowerCase();if(isLatin(k)){return new RegExp('(^|[^a-z0-9])'+k.replace(/[-]/g,'\\-')+'(?![a-z0-9])').test(raw)}var kk=k.replace(/\s+/g,'');if(kk.length<2)return false;
   if(kk==='시스'||kk==='카보'||kk==='젬')return new RegExp(kk+'(?![가-힣])').test(raw)||tight.indexOf(kk+'플')>=0||(kk==='젬'&&/젬(자|시|씨|아)/.test(tight));return tight.indexOf(kk)>=0}
 /* 문장 속 요법 후보 — 구성 약 조합 + 요법 별명 + 암종 문맥으로 점수 */
+/* 요법별 맞춤 기록 항목과 펌프 여부, 병용 약 → 병용 카드 */
+var TRACK={bp:['bev','tki-liver','sutent','tki-kidney','pembro-axi','atezobev','ramu'],waist:['atezobev','stride','tki-liver'],weight:['ffx','gnp','gem','ccrt-hn','capox','sox','s1','fp'],numb:['folfox','capox','sox','ffx','carbo-pac','wpac','doce','tc','gnp','kn522','tchp','rchop','ramu','pem-plat'],sleep:['rchop'],rt:['ccrt','ccrt-hn','crt-rectal'],mouth:['ccrt-hn','fp']};
+var PUMP=['folfox','folfiri','ffx','fp'];
+var COMBO={bev:'bev',cetux:'egfrab',nivo:'io',pembro:'io',atezo:'io',durva:'io',trastu:'her2',pertu:'her2',phesgo:'her2'};
+function tracks(id){var o=[];for(var k in TRACK)if(TRACK[k].indexOf(id)>=0)o.push(k);return o}
 var DRUGSET={};for(var _d in DRUG)DRUG[_d].forEach(function(k){DRUGSET[String(k).toLowerCase().replace(/\s+/g,'')]=1});
 var PRIO={'cdk':6,'cdk-abema':6};
 function findAll(text,ctxCancer){var raw=String(text||'').toLowerCase();
@@ -148,12 +153,12 @@ function findAll(text,ctxCancer){var raw=String(text||'').toLowerCase();
     if(!inter&&!al)return;
     if(ctx&&r.cancers[0]===ctx)sc+=8;else if(ctx&&r.cancers.indexOf(ctx)<0)sc-=4;
     sc+=PRIO[r.id]||0;
-    Object.keys(used).forEach(function(x){names.push(DRUG[x][0])});out.push({r:r,score:sc,drugs:names})});
+    Object.keys(used).forEach(function(x){names.push(DRUG[x][0])});out.push({r:r,score:sc,drugs:names,keys:Object.keys(used),found:Object.keys(found)})});
   out.sort(function(a,b){return b.score-a.score});return out}
 function find(text,ctx){var a=findAll(text,ctx);return a.length?a[0].r:null}
 function findSure(text,ctx){var a=findAll(text,ctx);if(!a.length)return {r:null,list:[]};var nc=normCancer(ctx||'')||normCancer(text);var amb=(a.length>1&&a[0].score-a[1].score<3)||(nc&&CANCERS.indexOf(nc)>=0&&a[0].r.cancers.indexOf(nc)<0);return {r:amb?null:a[0].r,top:a[0],list:a.slice(0,4),amb:amb}}
 
 /* 주기 안 오늘의 안내 */
 function tip(r,n){var tl=(r&&r.tl)||GEN,hit=[];tl.forEach(function(x){if(n>=x[0]&&n<=x[1])hit.push(x[2])});return hit}
-window.APUDA_RX={genTL:genTL,NOTICE:NOTICE,NOTICE_SHORT:NOTICE_SHORT,NOTICE_FULL:NOTICE_FULL,normCancer:normCancer,findAll:findAll,findSure:findSure,DRUG:DRUG,COMP:COMP,SOURCES:SOURCES,RX:RX,S:S,GEN:GEN,CANCERS:CANCERS,byId:byId,forCancer:forCancer,find:find,tip:tip,version:'1.3'};
+window.APUDA_RX={tracks:tracks,PUMP:PUMP,COMBO:COMBO,genTL:genTL,NOTICE:NOTICE,NOTICE_SHORT:NOTICE_SHORT,NOTICE_FULL:NOTICE_FULL,normCancer:normCancer,findAll:findAll,findSure:findSure,DRUG:DRUG,COMP:COMP,SOURCES:SOURCES,RX:RX,S:S,GEN:GEN,CANCERS:CANCERS,byId:byId,forCancer:forCancer,find:find,tip:tip,version:'1.3'};
 })();
