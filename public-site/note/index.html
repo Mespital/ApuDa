@@ -19,7 +19,7 @@ button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer}
 a{color:var(--blue2)}
 .app{max-width:680px;margin:0 auto;min-height:100dvh;position:relative}
 /* header */
-.top{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:8px;padding:max(10px,env(safe-area-inset-top)) 14px 10px;background:rgba(244,247,251,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top{position:sticky;top:0;z-index:40;display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:max(10px,env(safe-area-inset-top)) 14px 10px;background:rgba(244,247,251,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .logo{display:flex;align-items:center;gap:9px;flex:1;min-width:0}
 .logo i{width:38px;height:38px;border-radius:12px;background:linear-gradient(140deg,var(--blue),#5aa6ff);display:grid;place-items:center;color:#fff;font-style:normal;font-weight:900;font-size:17px;flex:0 0 auto}
 .logo b{display:block;font-size:1.02em;letter-spacing:-.03em;line-height:1.2}.logo small{display:block;font-size:.66em;color:var(--muted);font-weight:700}
@@ -123,6 +123,10 @@ label{display:block;font-size:.78em;font-weight:900;color:#3b4a60;margin:10px 0 
   main{padding:0}.view{display:none!important}#v-summary{display:block!important}
   body{background:#fff;font-size:12px}.card{box-shadow:none;break-inside:avoid}.sumhead{background:#fff;color:#000;border:1px solid #000}.sumhead .muted{color:#333}
 }
+.phonebar{flex:0 0 100%;display:flex;align-items:center;gap:10px;margin:4px 0 0;padding:8px 12px;border-radius:12px;border:1px solid #fde3a7;background:#fff7e6;border-bottom:1px solid #fde3a7;color:#7a2e0e;font-size:.82em;line-height:1.45}
+.phonebar[hidden]{display:none}
+@media(max-width:430px){.logo small{display:none}.logo b{white-space:nowrap}.top{gap:6px}.tbtn{min-width:42px;padding:0 8px}.sos{padding:0 10px}}
+.phonebar span{flex:1}.phonebar button{flex:0 0 auto;border:0;background:var(--amber);color:#fff;border-radius:11px;min-height:40px;padding:0 14px;font-weight:900;font-size:.9em}
 </style>
 </head>
 <body>
@@ -133,7 +137,9 @@ label{display:block;font-size:.78em;font-weight:900;color:#3b4a60;margin:10px 0 
   <button class="tbtn" id="fontBtn" aria-label="글자 크기">가<span style="font-size:1.25em">가</span></button>
   <button class="tbtn" onclick="openSheet('settings')" aria-label="내 정보와 설정">⚙︎</button>
   <button class="sos" onclick="openSheet('sos')">🚨 응급</button>
+  <div class="phonebar" id="phoneBar" hidden><span>📞 <b>치료병원 번호</b>를 등록해 두면 열이 날 때 바로 전화할 수 있어요.</span><button type="button" onclick="openSheet('settings')">등록</button></div>
 </header>
+
 
 <main>
 <!-- 오늘(노트봇) -->

@@ -167,7 +167,8 @@ function interpret(raw){
 
   /* 5) 몸 상태 기록 */
   var logDate=(pd&&pd.date<=today())?pd.date:today(), rec={}, m;
-  if((m=t.match(/(?:체온|열|온도|미열)\s*(?:이|은|는|:|가)?\s*(3[4-9](?:\.\d)?|4[0-2](?:\.\d)?)/))||(m=t.match(/(3[5-9]\.\d|4[0-2]\.\d|3[5-9]|4[0-2])\s*(?:도|℃|°)/))||(m=t.match(/(?:^|\s)(3[5-9]\.\d|4[0-2]\.\d)(?![\d.]|\s*(?:kg|킬로|%|점))/i)))rec.temp=m[1];
+  if((m=t.match(/(3[4-9]|4[0-2])\s*도\s*([0-9])\s*부/)))rec.temp=m[1]+'.'+m[2];
+  else if((m=t.match(/(?:체온|열|온도|미열)\s*(?:이|은|는|:|가)?\s*(3[4-9](?:\.\d)?|4[0-2](?:\.\d)?)/))||(m=t.match(/(3[5-9]\.\d|4[0-2]\.\d|3[5-9]|4[0-2])\s*(?:도|℃|°)/))||(m=t.match(/(?:^|\s)(3[5-9]\.\d|4[0-2]\.\d)(?![\d.]|\s*(?:kg|킬로|%|점))/i)))rec.temp=m[1];
   if((m=t.match(/(?:통증|아파|아픔|아프|통)\D{0,6}?(\d{1,2})\s*(?:점|\/\s*10)/))||(m=t.match(/(?:통증)\s*(?:이|은|는|:)?\s*(\d{1,2})(?!\s*(?:번|회|시|일|kg))/)))if(+m[1]<=10)rec.pain=m[1];
   if(/안\s*아파|통증\s*(없|0)/.test(t))rec.pain='0';
   if((m=t.match(/(?:체중|몸무게)\s*(?:이|은|는|:)?\s*(\d{2,3}(?:\.\d)?)/))||(m=t.match(/(\d{2,3}(?:\.\d)?)\s*(?:kg|킬로)/i)))rec.weight=m[1];
@@ -178,9 +179,10 @@ function interpret(raw){
   if((m=t.match(/(?:물|수분)\s*(?:을|를)?\s*(\d{3,4})\s*(?:ml|mL|cc|미리)?/)))rec.water=m[1];
   else if((m=t.match(/물\s*(\d{1,2})\s*(?:컵|잔)/)))rec.water=String(m[1]*200);
   if((m=t.match(/(\d{3,6})\s*걸음/)))rec.steps=m[1];
-  if((m=t.match(/설사\D{0,4}(\d{1,2})\s*(?:번|회)/)))rec.diarrhea=m[1];else if(/설사/.test(t)&&!/설사\s*(없|안)/.test(t))rec.diarrhea=rec.diarrhea||'1';
-  if((m=t.match(/(?:구토|토했|토함|토)\D{0,4}(\d{1,2})\s*(?:번|회)/)))rec.vomit=m[1];else if(/구토|토했|토함/.test(t))rec.vomit='1';
-  if(/혈변|검은\s*변|변에\s*피|짜장\s*같은\s*변/.test(t))rec.bowel='혈변·검은변';else if(/변비/.test(t))rec.bowel='변비';
+  var cntN={};
+  if((m=t.match(/설사\D{0,4}(\d{1,2})\s*(?:번|회)/))||(m=t.match(/설사\s*(\d{1,2})(?![\d.]|\s*(?:일|시|분|%|점|kg))/))){rec.diarrhea=m[1];cntN.diarrhea=1}else if(/설사/.test(t)&&!/설사\s*(없|안)/.test(t))rec.diarrhea=rec.diarrhea||'1';
+  if((m=t.match(/(?:구토|토했|토함|토)\D{0,4}(\d{1,2})\s*(?:번|회)/))||(m=t.match(/구토\s*(\d{1,2})(?![\d.]|\s*(?:일|시|분|%|점|kg))/))){rec.vomit=m[1];cntN.vomit=1}else if(/구토|토했|토함/.test(t))rec.vomit='1';
+  if(/혈변|피똥|검은\s*변|변에\s*피|변에서\s*피|피\s*섞인\s*(대)?변|짜장\s*같은\s*(대)?변|(변|똥|대변)\s*(이|가|은|색이)?\s*(까맣|까매|까만|검|시커|검정|새까)|(까만|까맣고|검은|시커먼|검정|새까만)\s*(색\s*)?(대변|변|똥)/.test(t))rec.bowel='혈변·검은변';else if(/변비/.test(t))rec.bowel='변비';
   var distress=null;if((m=t.match(/(?:기분|마음|불안|우울|스트레스|힘듦|괴로움)\D{0,5}(\d{1,2})\s*점/))&&+m[1]<=10)distress=+m[1];
   var sx=[];[['오한',/오한|으슬/],['기침',/기침/],['숨참',/숨\s*차|숨이\s*차/],['입안 염증',/입안|입\s*안이|구내염/],['손발 저림',/저림|저려/],['발진',/발진|두드러기/],['부종',/부종|붓/],['피로',/피곤|피로|기운\s*없/],['메스꺼움',/메스|울렁|구역/],['어지럼',/어지/],['불면',/잠\s*(을\s*)?못|불면/],['출혈',/코피|잇몸\s*피|멍/]].forEach(function(s){if(s[1].test(t))sx.push(s[0])});
   if(Object.keys(rec).length||sx.length||distress!=null||/^메모\s*[:：]?/.test(t)){
@@ -188,7 +190,9 @@ function interpret(raw){
     if(!L){L={id:uid(),date:logDate,temp:'',weight:'',pain:'',meal:'',water:'',steps:'',bowel:'',note:'',createdAt:Date.now()};state.logs.push(L)}
     var LBL2={temp:['체온','℃'],pain:['통증','/10'],weight:['체중','kg'],meal:['식사','%'],water:['수분','mL'],steps:['걸음',''],diarrhea:['설사','회'],vomit:['구토','회'],bowel:['배변','']};
     Object.keys(rec).forEach(function(k){
-      if(k==='diarrhea'||k==='vomit'){var cnt=new RegExp((k==='diarrhea'?'설사':'(?:구토|토)')+'\\D{0,4}\\d{1,2}\\s*(?:번|회)').test(t);L[k]=String(cnt?Math.max(+rec[k],+L[k]||0):(+L[k]||0)+1)}else L[k]=rec[k];
+      if(k==='diarrhea'||k==='vomit'){var old=+L[k]||0;
+        if(cntN[k]){L[k]=String(+rec[k]);if(old>0&&old!==+rec[k]&&!/총/.test(t))out.cards.push({kind:'cntAsk',k:k,old:old,n:+rec[k]})}
+        else L[k]=String(old+1)}else L[k]=rec[k];
       out.saved.push(LBL2[k][0]+' '+L[k]+LBL2[k][1])});
     var memoTxt=t.replace(/^메모\s*[:：]?\s*/,'');
     if(sx.length||/^메모/.test(t)){var stamp=new Date();var line=pad(stamp.getHours())+':'+pad(stamp.getMinutes())+' '+memoTxt;L.note=[L.note,line].filter(Boolean).join(' / ').slice(-600);if(sx.length)out.saved.push('증상 · '+sx.join(', '));else out.saved.push('메모');}
@@ -229,7 +233,7 @@ function linkBtns(links){return (links||[]).map(function(l){return '<button type
 function callBtns(){var p=state.profile,h='';
   if(p.dayPhone)h+='<a href="'+tel(p.dayPhone)+'" class="danger">📞 병원 '+esc(p.dayPhone)+'</a>';
   if(p.nightPhone)h+='<a href="'+tel(p.nightPhone)+'" class="danger">📞 야간·응급 '+esc(p.nightPhone)+'</a>';
-  if(!p.dayPhone&&!p.nightPhone)h+='<button type="button" onclick="openSheet(\'settings\')">병원 연락처 등록</button>';
+  if(!p.dayPhone&&!p.nightPhone)h+='<button type="button" onclick="openSheet(\'settings\')">📞 치료병원 번호 등록</button><a href="https://www.e-gen.or.kr/egen/search_emergency_room.do" target="_blank" rel="noopener">🏥 가까운 응급실</a>';
   return h+'<a href="tel:119">🚑 119</a>'}
 var ALERT={
   fever:['red','<b>체온이 38.0℃ 이상입니다.</b><br>항암·면역·표적치료 중이라면 밤이든 주말이든 <b>지금 치료병원에 연락</b>하세요. 해열제로 먼저 내리지 마세요.',true],
@@ -264,6 +268,7 @@ function botHTML(o,raw){
     if(c.kind==='medList'){var act=state.meds.filter(function(m){return m.active==='yes'});parts.push({cls:'',html:act.length?'<b>복용 중인 약</b><ul>'+act.map(function(m){return '<li>'+esc(m.name)+' '+esc(m.dose||'')+(m.schedule?' · '+esc(m.schedule):'')+'</li>'}).join('')+'</ul>':'등록된 약이 없어요. "약: 타그리소 아침 1알"처럼 알려 주세요.'})}
     if(c.kind==='goSummary'){parts.push({cls:'',html:'진료요약을 열게요.<div class="acts"><button type="button" onclick="tab(\'summary\')">📄 진료요약 보기</button></div>'})}
     if(c.kind==='recent'){var l=state.logs[0];parts.push({cls:'',html:l?'<b>'+fmt(l.date)+' 기록</b><br>'+logLine(l):'아직 기록이 없어요.'})}
+    if(c.kind==='cntAsk'){var nm=c.k==='diarrhea'?'설사':'구토';parts.push({cls:'',html:'오늘 '+nm+'를 이미 <b>'+c.old+'회</b> 기록해 두셨어요. 지금 <b>오늘 총 '+c.n+'회</b>로 저장했어요. 앞 기록에 더한 횟수라면 아래를 눌러 주세요.<div class="qr"><button type="button" data-s="'+nm+' 총 '+(c.old+c.n)+'회">더해서 총 '+(c.old+c.n)+'회</button><button type="button" data-s="'+nm+' 총 '+c.n+'회">총 '+c.n+'회가 맞아요</button></div>'})}
     if(c.kind==='askMed'){parts.push({cls:'',html:'약 이름을 함께 알려 주세요. 예) "약: 젤로다 아침저녁 3알" (처방전·약봉투에 적힌 이름 그대로)'})}
   });
   if(!parts.length)parts.push({cls:'',html:'알겠어요.'});
@@ -326,6 +331,7 @@ function upcoming(){return state.roadmap.filter(function(x){return x.status!=='d
 function logLine(l){var a=[];if(l.temp)a.push('체온 '+l.temp+'℃');if(l.pain!=='')a.push('통증 '+l.pain+'/10');if(l.meal!=='')a.push('식사 '+l.meal+'%');if(l.weight)a.push('체중 '+l.weight+'kg');if(l.water)a.push('수분 '+l.water+'mL');if(+l.diarrhea)a.push('설사 '+l.diarrhea+'회');if(+l.vomit)a.push('구토 '+l.vomit+'회');if(l.bowel)a.push(l.bowel);if(l.steps)a.push(l.steps+'걸음');return esc(a.join(' · ')||'수치 없음')+(l.note?'<br><span class="small muted">'+esc(l.note)+'</span>':'')}
 function isWarn(l){return +l.temp>=38||(l.pain!==''&&+l.pain>=7)||l.bowel==='혈변·검은변'||+l.diarrhea>=4||+l.vomit>=3}
 function renderHome(){
+  var pb=document.getElementById('phoneBar');if(pb)pb.hidden=!!(state.profile.dayPhone||state.profile.nightPhone);
   var p=state.profile,h=new Date().getHours();
   $('#hello').innerHTML=(p.name?esc(p.name)+'님, ':'')+(h<11?'좋은 아침이에요.':h<18?'오늘 하루 어떠세요?':'오늘 하루 고생 많으셨어요.')+'<br><span style="font-size:.72em;color:var(--muted);font-weight:800">오늘 몸 상태를 한 줄로 알려 주세요.</span>';
   var up=upcoming()[0], tl=state.logs.find(function(x){return x.date===today()}), hq=state.questions.filter(function(q){return !q.answer}).length;
