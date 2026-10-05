@@ -209,7 +209,7 @@ root.innerHTML='<style>'+CSS+'</style>'+
  (DS.launcher==='none'?'':'<button class="fab'+(left?' left':'')+'" aria-label="ApuDa 길잡이 열기"><span>🧭</span><b>'+(CTX==='home'?'무엇을 도와드릴까요?':'길잡이')+'</b></button>')+
  '<section class="pn'+(left?' left':'')+'" role="dialog" aria-label="ApuDa 길잡이"><div class="hd"><i>A</i><div><b>'+esc(C.t)+'</b><small>ApuDa.app · 어디든 안내해 드려요</small></div><button class="m" data-say="전체 메뉴">전체 메뉴</button><button class="x" aria-label="닫기">✕</button></div>'+
  '<div class="th" aria-live="polite"></div><div class="ch">'+C.chips.map(function(c){return '<button data-say="'+esc(c[1])+'">'+esc(c[0])+'</button>'}).join('')+'</div>'+
- '<form><input placeholder="예) 폐암 정보 · 키트루다 · 치료비 지원" aria-label="길잡이에게 묻기" enterkeyhint="send"><button aria-label="보내기">↑</button></form><div class="ft">진단·처방을 대신하지 않아요 · 입력 내용은 저장·전송되지 않아요</div></section>';
+ '<form><input placeholder="예) 폐암 정보 · 키트루다 · 치료비 지원" aria-label="길잡이에게 묻기" enterkeyhint="send"><button aria-label="보내기">↑</button></form><div class="ft">참고용 일반 정보예요 · 진료·진단·처방을 대신하지 않아요 · 입력 내용은 저장·전송되지 않아요 · 응급 시 119</div></section>';
 var pn=root.querySelector('.pn'),th=root.querySelector('.th'),inp=root.querySelector('input'),started=false;
 function add(cls,h){var d=document.createElement('div');d.className='mg '+cls;d.innerHTML=h;th.appendChild(d);th.scrollTop=th.scrollHeight;return d}
 function say(text,silentUser){if(!silentUser)add('me',esc(text));var go=function(){reply(text).forEach(function(r){add('bt'+(r.c?' '+r.c:''),r.h)})};if(!ONC&&/[a-z가-힣]/i.test(text))loadOnc().then(go);else go()}

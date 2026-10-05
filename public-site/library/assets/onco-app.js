@@ -20,7 +20,7 @@ var NAV=[['map','/library/treatment-map/','🗺️ 치료결정 지도'],['drugs
 $('#top').innerHTML='<a class="brand" href="/">ApuDa<small>아프지만, 다행이다.</small></a>'+
   '<nav class="nav">'+NAV.map(function(n){return '<a href="'+n[1]+'"'+(n[0]===PAGE?' class="on"':'')+'>'+n[2]+'</a>'}).join('')+'</nav>'+
   '<a class="back" href="/#floor-2">2F 서재로</a>';
-$('#foot').innerHTML='<b>ApuDa는 치료를 결정하지 않습니다.</b> 이 페이지는 “왜 사람마다 치료가 달라지는지”를 이해하도록 돕는 환자교육용 자료이며, 개인의 진단·처방·예후 판단을 대신하지 않습니다. 국내 허가·급여 조건은 적응증과 치료 단계마다 다르고 수시로 바뀌므로 실제 사용 가능 여부는 담당 의료진과 <a href="https://nedrug.mfds.go.kr" target="_blank" rel="noopener">식약처 의약품안전나라</a>·<a href="https://www.hira.or.kr" target="_blank" rel="noopener">건강보험심사평가원</a>에서 확인하세요.<br>'+esc(O.BASIS);
+$('#foot').innerHTML='<b>ApuDa는 치료를 결정하지 않습니다.</b> [안내] 이 정보는 일반적인 건강 정보를 알기 쉽게 정리한 참고 자료이며, 의사의 진료·진단·처방을 대신하지 않습니다. 치료 일정·용량·검사·부작용 대처는 환자의 상태와 의료기관에 따라 다르므로 담당 의료진의 판단과 안내를 따르세요. 이 페이지는 “왜 사람마다 치료가 달라지는지”를 이해하도록 돕는 환자교육용 자료이며, 개인의 진단·처방·예후 판단을 대신하지 않습니다. 국내 허가·급여 조건은 적응증과 치료 단계마다 다르고 수시로 바뀌므로 실제 사용 가능 여부는 담당 의료진과 <a href="https://nedrug.mfds.go.kr" target="_blank" rel="noopener">식약처 의약품안전나라</a>·<a href="https://www.hira.or.kr" target="_blank" rel="noopener">건강보험심사평가원</a>에서 확인하세요.<br>'+esc(O.BASIS);
 
 /* ── live data (뉴스·공급부족) ── */
 var NEWS=null, SUPPLY=null, SUPPLY_ASOF='';

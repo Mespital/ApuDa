@@ -37,6 +37,9 @@ function myRx(){if(!RXDB||!state.profile.regimen)return null;var r=RXDB.byId(sta
   if(r.opts){var oi=state.profile.rxOpt,o=(oi!=null)?r.opts[oi]:null;if(!o)return Object.assign({},r,{cycle:0,oral:null,_needOpt:true});return Object.assign({},r,o,{_opt:o.label})}return r}
 function startsOf(rx,ds){var st=[],cur=null,dz=rx.days||[1];ds.forEach(function(x){var o=cur?dayDiff(cur,x):0;
   var same=cur&&o<rx.cycle-3&&dz.some(function(dd){return dd>1&&Math.abs(o-(dd-1))<=3});if(!cur||!same){cur=x;st.push(x)}});return st}
+function setRegimen(id){if(state.profile.regimen!==id){state.profile.regimen=id;state.profile.rxOpt=null}}
+function rxCtx(){return state.profile.cancer||''}
+function NS(){return RXDB?'<p class="nshort">ⓘ '+esc(RXDB.NOTICE_SHORT)+'</p>':''}
 function isInj(rx){return !!(rx&&rx.type==='호르몬'&&rx.opts)}
 function dayDiff(a,b){return Math.round((new Date(b+'T00:00:00')-new Date(a+'T00:00:00'))/864e5)}
 function addDays(s,n){var d=new Date(s+'T00:00:00');d.setDate(d.getDate()+n);return ymd(d)}
@@ -49,7 +52,7 @@ function dTag(onDate){var c=cday(onDate);return c?dLbl(c):''}
 function nadirOf(){var rx=myRx();return rx?rx.nadir:[7,14]}
 function inNadir(onDate){var c=cday(onDate),nd=nadirOf();return !!(c&&nd&&c.n>=nd[0]&&c.n<=nd[1])}
 function lastChemo(){var ds=chemoDates();return ds.length?ds[ds.length-1]:''}
-function cycleTxt(r){if(!r)return '';if(r._needOpt&&r.opts)return '간격 선택 필요 ('+r.opts.map(function(o){return o.label}).join(' / ')+')';if(r._opt&&!r.oral)return r._opt;if(r.oral&&r.cycle)return r.oral.on+'일 복용 · '+r.oral.off+'일 휴약 ('+r.cycle+'일 주기)';if(!r.cycle)return '매일 또는 정해진 간격';var d=r.days||[1];return (r.cycle%7===0?(r.cycle/7)+'주':r.cycle+'일')+' 간격'+(d.length>1?' · '+d.join('·')+'일째 투여':'')}
+function cycleTxt(r){if(!r)return '';if(r.once)return '대개 1회 치료';if(r._needOpt&&r.opts)return '간격 선택 필요 ('+r.opts.map(function(o){return o.label}).join(' / ')+')';if(r._opt&&!r.oral)return r._opt;if(r.oral&&r.cycle)return r.oral.on+'일 복용 · '+r.oral.off+'일 휴약 ('+r.cycle+'일 주기)';if(!r.cycle)return '매일 또는 정해진 간격';var d=r.days||[1];return (r.cycle%7===0?(r.cycle/7)+'주':r.cycle+'일')+' 간격'+(d.length>1?' · '+d.join('·')+'일째 투여':'')}
 /* 주기 계산: 같은 주기 안의 투여(1·8·15일 등)를 묶고 다음 투여 예상일을 낸다 */
 function cycleInfo(){var rx=myRx(),ds=chemoDates();if(!rx||!rx.cycle||!ds.length)return null;
   var starts=startsOf(rx,ds);
@@ -157,7 +160,7 @@ function interpret(raw){
   if((pm=t.match(/알레르기\s*[:：은는]?\s*(.{2,30})$/)))prof.biomarkers=[state.profile.biomarkers,'알레르기 '+pm[1].trim()].filter(Boolean).join(', ');
   var pk=Object.keys(prof);
   if(pk.length){pk.forEach(function(k){state.profile[k]=prof[k]});
-    if(prof.treatment&&RXDB){var prx=RXDB.find(prof.treatment);if(prx){state.profile.regimen=prx.id;out.cards.push({kind:'rxInfo',id:prx.id})}}
+    if(prof.treatment&&RXDB){var prs=RXDB.findSure(prof.treatment,rxCtx());if(prs.r)out.cards.push({kind:'rxInfo',id:prs.r.id,basis:prs.top.drugs});else if(prs.amb)out.cards.push({kind:'rxPick',ids:prs.list.map(function(x){return x.r.id})})}
     var LBL={name:'이름',cancer:'암종',stage:'병기',hospital:'병원',dayPhone:'병원 전화',nightPhone:'야간·응급 전화',treatment:'현재 치료',biomarkers:'알레르기·기타'};
     pk.forEach(function(k){out.saved.push(LBL[k]+' · '+prof[k])});out.handled=true;out.undo=true;return out}
 
@@ -184,23 +187,24 @@ function interpret(raw){
     if(name.length<2){out.cards.push({kind:'askMed'});out.handled=true;return out}
     var type=/진통|마약|패치|옥시|모르핀|타이레놀|트라마/.test(name)?'통증약':/구토|멀미|온단|아킨지오|에멘드/.test(name)?'구토 예방약':/스테로이드|덱사|소론도/.test(name)?'스테로이드':/항암|타그리소|렉라자|입랜스|키스칼리|버제니오|젤로다|티에스원|론서프|타목시펜|페마라|아리미덱스|자이티가|엑스탄디|얼리다|뉴베카|린파자/.test(name)?'항암·표적·호르몬제':'기타';
     state.meds.unshift({id:uid(),name:name,dose:dose,schedule:sch.trim(),purpose:'',type:type,active:'yes',memo:today()+' 시작',createdAt:Date.now()});
-    var mrx=RXDB&&RXDB.find(t);if(mrx&&!state.profile.regimen){state.profile.regimen=mrx.id;out.saved.push('항암 요법 · '+mrx.name);out.cards.push({kind:'rxInfo',id:mrx.id})}
+    var mrs=RXDB?RXDB.findSure(t,rxCtx()):{r:null};if(mrs.r&&!state.profile.regimen)out.cards.push({kind:'rxInfo',id:mrs.r.id,basis:mrs.top.drugs});
     out.saved.push('약 · '+name+(dose?' '+dose:'')+(sch?' · '+sch.trim():''));out.handled=true;out.undo=true;
     out.notes.push('복용량·시간은 처방전 그대로인지 한 번 더 확인해 주세요. 약 조절은 의료진과 상의하세요.');return out}
 
   /* 3.4) 항암 요법 등록·조회 */
-  var rxHit=RXDB?RXDB.find(t):null, doneRe=/(맞았|맞음|받았|받음|했어|했음|끝났|끝남|하고\s*왔|다녀왔|시작했)/;
+  var rxS=RXDB?RXDB.findSure(t,rxCtx()):{r:null,list:[]},rxHit=rxS.r||(rxS.amb&&rxS.list[0]?rxS.list[0].r:null), doneRe=/(맞았|맞음|받았|받음|했어|했음|끝났|끝남|하고\s*왔|다녀왔|시작했)/;
   if(rxHit&&!doneRe.test(t)&&!/체온|열\s*\d|통증|아파|설사|구토|저림|저려|숨|먹었|식사|밥|\d+\s*(점|도|회|번)/.test(t)){
     var reg=/요법|항암\s*(은|는|제|이)|치료\s*(는|은|중)|맞고\s*있|하고\s*있|쓰고\s*있|먹고\s*있|받고\s*있|등록|(이야|예요|이에요|입니다|해요|중)\s*$/.test(t);
     var ask=/부작용|주의|관리|뭐야|뭐예요|어때|알려|언제|정보|\?/.test(t);
-    if(reg&&(!ask||!state.profile.regimen)){state.profile.regimen=rxHit.id;out.saved.push('항암 요법 · '+rxHit.name);out.undo=true;
+    if(rxS.amb){out.cards.push({kind:'rxPick',ids:rxS.list.map(function(x){return x.r.id})});out.handled=true;return out}
+    if(reg&&(!ask||!state.profile.regimen)){setRegimen(rxHit.id);out.saved.push('항암 요법 · '+rxHit.name);out.undo=true;
       out.notes.push('이제 항암 받은 날을 알려 주시면 다음 항암 예상일과 시기별 주의사항을 이 요법에 맞춰 보여드려요.')}
-    out.cards.push({kind:'rxInfo',id:rxHit.id});out.handled=true;return out}
+    out.cards.push({kind:'rxInfo',id:rxHit.id,basis:rxS.top&&rxS.top.drugs});out.handled=true;return out}
 
   /* 3.5) 항암 받은 날 기록 */
   var injDone=rxHit&&isInj(rxHit)&&/주사/.test(t);
   if((/항암|키모/.test(t)||injDone||rxHit&&rxHit.type!=='호르몬'&&!/먹었|먹기/.test(t))&&doneRe.test(t)&&!/물어|질문|\?/.test(t)){
-    if(rxHit&&state.profile.regimen!==rxHit.id){state.profile.regimen=rxHit.id;out.saved.push('항암 요법 · '+rxHit.name)}
+    if(rxS.r&&state.profile.regimen!==rxS.r.id){setRegimen(rxS.r.id);out.saved.push('항암 요법 · '+rxS.r.name)}else if(rxS.amb&&!state.profile.regimen)out.cards.push({kind:'rxPick',ids:rxS.list.map(function(x){return x.r.id})});
     var cdt=(parseDate(t)||{}).date||today();if(cdt>today())cdt=today();
     var cyc=(t.match(/(\d{1,2})\s*(?:차|회차|사이클|번째)/)||[])[1];
     var ttl=(injDone?'호르몬 주사':'항암')+(cyc?' '+cyc+'차':'');
@@ -340,11 +344,12 @@ function linkBtns(links){return (links||[]).map(function(l){return '<button type
 function callBtns(){var p=state.profile,h='';
   if(p.dayPhone)h+='<a href="'+tel(p.dayPhone)+'" class="danger">📞 평일 낮 상담 '+esc(p.dayPhone)+'</a>';
   if(p.nightPhone)h+='<a href="'+tel(p.nightPhone)+'" class="danger">🌙 밤·주말 응급실 '+esc(p.nightPhone)+'</a>';
-  if(!p.dayPhone&&!p.nightPhone)h+='<button type="button" onclick="openSheet(\'settings\')">📞 치료병원 번호 등록</button><a href="https://www.e-gen.or.kr/egen/search_emergency_room.do" target="_blank" rel="noopener">🏥 가까운 응급실</a>';
+  if(!p.dayPhone&&!p.nightPhone)h+='<button type="button" onclick="openSheet(\'settings\')">📞 치료병원 번호 등록</button>';
+  h+='<a href="https://www.e-gen.or.kr/egen/search_emergency_room.do" target="_blank" rel="noopener">🏥 가까운 응급실</a>';
   return h+'<a href="tel:119">🚑 119</a>'}
-function routeHTML(){var lc=lastChemo();return '<div class="route"><b>🧭 어디로 연락하나요?</b><ol><li><b>평일 낮</b> — 항암 주사실·외래 간호사 상담 전화</li><li><b>밤·주말·공휴일</b> — 치료받는 병원 응급실로 전화하거나 바로 가기</li><li><b>숨이 많이 차거나 의식이 흐리면</b> — 119</li></ol>응급실에서는 "항암 치료 중이고'+(lc?' 마지막 항암은 '+mdTxt(lc):'')+'"이라고 먼저 말하고, 진료요약 화면을 보여 주세요.</div>'}
+function routeHTML(noBtn){var lc=lastChemo(),rx=myRx(),cancerTx=rx&&(rx.type==='호르몬'||rx.once)?'암 치료':'항암 치료';return '<div class="route"><b>🧭 어디로 연락하나요?</b><ol><li><b>평일 낮</b> — 치료 병원 항암 상담 전화(외래 간호사)</li><li><b>밤·주말·공휴일</b> — 치료 병원 응급실. <b>치료 병원이 멀면(1시간 이상) 가까운 응급실</b>로 먼저 가세요.</li><li><b>숨이 많이 차거나 가슴이 아프거나 의식이 흐리면</b> — 바로 119. 어디로 가야 할지 모를 때도 119에서 응급 상담을 받을 수 있어요.</li></ol>응급실에서는 "'+cancerTx+' 중이고'+(rx?' 요법은 '+esc(rx.ko)+','+'':'')+(lc?' 마지막 치료는 '+mdTxt(lc):'')+'"이라고 먼저 말하고, 진료요약 화면을 보여 주세요.'+(noBtn?'':'<div class="acts"><a href="https://www.e-gen.or.kr/egen/search_emergency_room.do" target="_blank" rel="noopener">🏥 가까운 응급실 찾기</a><a href="tel:119">🚑 119</a></div>')+'</div>'}
 var ALERT={
-  fever:['red',function(){return '<b>체온이 38.0℃ 이상입니다.</b><br>항암·면역·표적치료 중이라면 밤이든 주말이든 <b>지금 치료병원에 연락</b>하세요. 해열제로 먼저 내리지 마세요.'+routeHTML()},true],
+  fever:['red',function(){return '<b>체온이 38.0℃ 이상입니다.</b><br>항암·면역·표적치료 중이라면 밤이든 주말이든 <b>지금 치료병원에 연락</b>하세요. 해열제로 먼저 내리지 마세요.'+routeHTML(true)},true],
   lowAnc:['amber','<b>호중구(백혈구)가 낮다고 기록됐어요.</b> 감염에 특히 약한 시기예요. 손 씻기·사람 많은 곳 피하기, 체온은 하루 2번 이상 재고 <b>38.0℃ 이상이면 해열제 먹기 전에 바로 병원에 연락</b>하세요.',true],
   lowPlt:['amber','<b>혈소판이 낮다고 기록됐어요.</b> 멍이 잘 들고 피가 잘 날 수 있어요. 코피·잇몸 출혈이 멈추지 않거나 검은 변이 보이면 바로 연락하세요.',false],
   nadirFever:['red',function(){var rx=myRx(),c=cday();return '<b>지금은 '+(rx?esc(rx.ko)+' 후 ':'항암 후 ')+'면역력(백혈구)이 낮아지기 쉬운 시기'+(c?'('+dLbl(c)+')':'')+'예요.</b> 이 시기의 열은 특히 빨리 확인해야 해요. 기다리지 말고 지금 연락하세요.'},true],
@@ -372,19 +377,20 @@ function botHTML(o,raw){
   }
   var reds=o.alerts.filter(function(a){return ALERT[a][0]==='red'}),ambs=o.alerts.filter(function(a){return ALERT[a][0]==='amber'});
   function atx(a){var v=ALERT[a][1];return typeof v==='function'?v():v}
-  if(reds.length)parts.push({cls:'red',html:reds.map(atx).join('<br><br>')+'<div class="acts">'+callBtns()+'<button type="button" onclick="tab(\'summary\')">📄 진료요약 보기</button></div>'});
-  if(ambs.length)parts.push({cls:'amber',html:ambs.map(atx).join('<br><br>')+(ambs.some(function(a){return ALERT[a][2]})||ambs.indexOf('askSOS')>=0?'<div class="acts">'+callBtns()+'<button type="button" onclick="openSheet(\'sos\')">응급 판단</button></div>':'')});
+  if(reds.length)parts.push({cls:'red',html:reds.map(atx).join('<br><br>')+'<div class="acts">'+callBtns()+'<button type="button" onclick="tab(\'summary\')">📄 진료요약 보기</button></div><p class="nshort">ⓘ 기록한 값으로 알려 드리는 참고용 안내예요. 몸 상태가 걱정되면 수치와 상관없이 의료진에게 연락하세요.</p>'});
+  if(ambs.length)parts.push({cls:'amber',html:ambs.map(atx).join('<br><br>')+(ambs.some(function(a){return ALERT[a][2]})||ambs.indexOf('askSOS')>=0?'<div class="acts">'+callBtns()+'<button type="button" onclick="openSheet(\'sos\')">응급 판단</button></div>':'')+'<p class="nshort">ⓘ 기록한 값으로 알려 드리는 참고용 안내예요. 몸 상태가 걱정되면 의료진에게 연락하세요.</p>'});
   o.cards.forEach(function(c){
-    if(c.kind==='topic'){var tp=c.topic;parts.push({cls:tp.urgent?'red':'',html:'<b>'+esc(tp.q||tp.title)+'</b><div>'+tp.body+'</div><div class="acts">'+linkBtns(tp.links)+'</div><p class="small muted" style="margin:8px 0 0">일반 안내입니다. 내 상황은 담당 의료진과 확인하세요.</p>'})}
+    if(c.kind==='topic'){var tp=c.topic;parts.push({cls:tp.urgent?'red':'',html:'<b>'+esc(tp.q||tp.title)+'</b><div>'+tp.body+'</div><div class="acts">'+linkBtns(tp.links)+'</div>'+NS()+''})}
     if(c.kind==='fallback')parts.push({cls:'',html:'제가 정확히 이해하지 못했어요. 이렇게 써 보세요.<ul><li>열 37.8 / 통증 5점 / 밥 반 먹음</li><li>다음주 화요일 10시 항암 3차</li><li>타그리소 아침 1알 시작</li><li>질문: 운동해도 되나요?</li></ul><div class="acts"><button type="button" onclick="saveAsMemo(this)" data-t="'+esc(c.text)+'">📝 이대로 메모로 저장</button><button type="button" onclick="saveAsQ(this)" data-t="'+esc(c.text)+'">❓ 질문으로 저장</button></div>'});
     if(c.kind==='nextSched'){var up=upcoming();parts.push({cls:'',html:up.length?'<b>다가오는 일정</b><ul>'+up.slice(0,5).map(function(x){return '<li>'+fmt(x.date)+(x.time?' '+x.time:'')+' · '+esc(x.title)+' <span class="small muted">('+dday(x.date)+')</span></li>'}).join('')+'</ul>':'예정된 일정이 없어요. "10월 20일 오전 9시 CT"처럼 알려 주세요.'})}
     if(c.kind==='medList'){var act=state.meds.filter(function(m){return m.active==='yes'});parts.push({cls:'',html:act.length?'<b>복용 중인 약</b><ul>'+act.map(function(m){return '<li>'+esc(m.name)+' '+esc(m.dose||'')+(m.schedule?' · '+esc(m.schedule):'')+'</li>'}).join('')+'</ul>':'등록된 약이 없어요. "약: 타그리소 아침 1알"처럼 알려 주세요.'})}
     if(c.kind==='goSummary'){parts.push({cls:'',html:'진료요약을 열게요.<div class="acts"><button type="button" onclick="tab(\'summary\')">📄 진료요약 보기</button></div>'})}
     if(c.kind==='recent'){var l=state.logs[0];parts.push({cls:'',html:l?'<b>'+fmt(l.date)+' 기록</b><br>'+logLine(l):'아직 기록이 없어요.'})}
     if(c.kind==='cntAsk'){var nm=c.k==='diarrhea'?'설사':'구토';parts.push({cls:'',html:'오늘 '+nm+'를 이미 <b>'+c.old+'회</b> 기록해 두셨어요. 지금 <b>오늘 총 '+c.n+'회</b>로 저장했어요. 앞 기록에 더한 횟수라면 아래를 눌러 주세요.<div class="qr"><button type="button" data-s="'+nm+' 총 '+(c.old+c.n)+'회">더해서 총 '+(c.old+c.n)+'회</button><button type="button" data-s="'+nm+' 총 '+c.n+'회">총 '+c.n+'회가 맞아요</button></div>'})}
-    if(c.kind==='rxInfo'&&RXDB){var r=RXDB.byId(c.id);if(r){var mine=state.profile.regimen===r.id;parts.push({cls:'',html:'<b>💉 '+esc(r.name)+'</b> <span class="small muted">'+esc(r.ko)+'</span><div class="small" style="margin:4px 0">'+esc(r.how)+'<br>주기: '+esc(cycleTxt(r))+' · 백혈구 저하 시기: '+(r.nadir?'D+'+r.nadir[0]+'~'+r.nadir[1]+' 무렵':'뚜렷하지 않음')+'</div><ul>'+r.se.slice(0,4).map(function(x){return '<li><b>'+esc(x.t)+'</b> — '+esc(x.care)+'</li>'}).join('')+'</ul>'+(r.pre?'<p class="small" style="margin:6px 0 0">📌 '+esc(r.pre)+'</p>':'')+'<div class="acts">'+(mine?'':'<button type="button" onclick="setRx(\''+r.id+'\')">✓ 내 요법으로 등록</button>')+(mine?'<button type="button" onclick="planTab=\'chemo\';rxPick=true;renderPlan();tab(\'plan\')">다른 요법 고르기</button>':'')+(mine&&r.opts?r.opts.map(function(o,i){return '<button type="button" onclick="setRxOpt('+i+')">'+(state.profile.rxOpt===i?'✓ ':'')+esc(o.label)+'</button>'}).join(''):'')+'<button type="button" onclick="planTab=\'chemo\';renderPlan();tab(\'plan\')">💉 부작용·연락 기준 전체</button></div><p class="small" style="margin:8px 0 0;color:var(--amber);font-weight:800">⚠️ '+esc(RXDB.NOTICE)+'</p>'})}}
-    if(c.kind==='nextChemo'){var ci=cycleInfo();if(ci)parts.push({cls:'',html:'<b>📅 다음 항암 예상: '+fmt(ci.next)+'</b> <span class="small muted">('+dday(ci.next)+')</span><br>'+ci.nextNo+'차'+(ci.nextDay>1?' '+ci.nextDay+'일째 투여':'')+' · '+esc(ci.rx.ko)+' '+esc(cycleTxt(ci.rx))+' 기준<p class="small muted" style="margin:6px 0 0">참고용 예상일이에요. 실제 날짜는 병원 예약과 의료진 안내를 따르세요. 혈액검사 결과나 컨디션에 따라 미뤄질 수 있어요.</p><div class="qr"><button type="button" data-s="'+mdTxt(ci.next)+' 항암 '+ci.nextNo+'차'+(ci.nextDay>1?' '+ci.nextDay+'일째':'')+' (예상)">📅 일정에 넣기</button><button type="button" data-s="다음 일정 알려줘">예약 날짜가 따로 있어요</button></div>'})}
-    if(c.kind==='askOpt'){var r2=myRx();if(r2&&r2.opts)parts.push({cls:'',html:'<b>투여 간격을 골라 주세요.</b> 병원에서 안내받은 간격을 고르면 다음 예상일을 계산해 드려요.<div class="acts">'+r2.opts.map(function(o,i){return '<button type="button" onclick="setRxOpt('+i+')">'+esc(o.label)+'</button>'}).join('')+'</div>'})}
+    if(c.kind==='rxPick'&&RXDB){parts.push({cls:'',html:'<b>어떤 요법인지 하나만 골라 주세요.</b><br><span class="small muted">비슷한 요법이 여러 개라 제가 정하지 않았어요. 처방전·안내문의 요법 이름과 맞는 것을 고르세요.</span><div class="acts">'+c.ids.map(function(id){var r=RXDB.byId(id);return r?'<button type="button" onclick="setRx(\''+id+'\')">'+esc(r.name)+'</button>':''}).join('')+'<button type="button" onclick="planTab=\'chemo\';rxPick=true;renderPlan();tab(\'plan\')">목록에서 고르기</button></div>'+NS()})}
+    if(c.kind==='rxInfo'&&RXDB){var r=RXDB.byId(c.id);if(r){var mine=state.profile.regimen===r.id;parts.push({cls:'',html:(c.basis&&c.basis.length?'<div class="basis">이렇게 알아들었어요: '+esc(c.basis.join(' + '))+' → <b>'+esc(r.ko)+'</b></div>':'')+'<b>💉 '+esc(r.name)+'</b> <span class="small muted">'+esc(r.ko)+'</span><div class="small" style="margin:4px 0">'+esc(r.how)+'<br>주기: '+esc(cycleTxt(r))+' · 백혈구 저하 시기: '+(r.type==='호르몬'||r.once?'해당 없음':r.nadir?'D+'+r.nadir[0]+'~'+r.nadir[1]+' 무렵':'뚜렷하지 않음(열은 언제든 바로 연락)')+'</div><ul>'+r.se.slice(0,4).map(function(x){return '<li><b>'+esc(x.t)+'</b> — '+esc(x.care)+'</li>'}).join('')+'</ul>'+(r.pre?'<p class="small" style="margin:6px 0 0">📌 '+esc(r.pre)+'</p>':'')+'<div class="acts">'+(mine?'':'<button type="button" onclick="setRx(\''+r.id+'\')">✓ 내 요법으로 등록</button>')+(mine?'<button type="button" onclick="planTab=\'chemo\';rxPick=true;renderPlan();tab(\'plan\')">다른 요법 고르기</button>':'')+(mine&&r.opts?r.opts.map(function(o,i){return '<button type="button" onclick="setRxOpt('+i+')">'+(state.profile.rxOpt===i?'✓ ':'')+esc(o.label)+'</button>'}).join(''):'')+'<button type="button" onclick="planTab=\'chemo\';renderPlan();tab(\'plan\')">💉 부작용·연락 기준 전체</button></div>'+NS()})}}
+    if(c.kind==='nextChemo'){var ci=cycleInfo();if(ci)parts.push({cls:'',html:'<b>📅 다음 항암 예상: '+fmt(ci.next)+'</b> <span class="small muted">('+dday(ci.next)+')</span><br>'+ci.nextNo+'차'+(ci.nextDay>1?' '+ci.nextDay+'일째 투여':'')+' · '+esc(ci.rx.ko)+' '+esc(cycleTxt(ci.rx))+' 기준<p class="small muted" style="margin:6px 0 0">입력한 날짜로 계산한 참고용 예상일이에요. 실제 날짜는 병원 예약과 의료진 안내를 따르세요. 혈액검사 결과나 컨디션에 따라 미뤄지는 건 흔한 일이고, 치료가 잘못되고 있다는 뜻이 아니에요.</p><div class="qr"><button type="button" data-s="'+mdTxt(ci.next)+' 항암 '+ci.nextNo+'차'+(ci.nextDay>1?' '+ci.nextDay+'일째':'')+' (예상)">📅 일정에 넣기</button><button type="button" data-s="다음 일정 알려줘">예약 날짜가 따로 있어요</button></div>'+NS()})}
+    if(c.kind==='askOpt'){var r2=myRx();if(r2&&r2.opts)parts.push({cls:'',html:'<b>투여 간격을 골라 주세요.</b> 병원에서 안내받은 간격을 고르면 다음 예상일을 계산해 드려요.<div class="acts">'+r2.opts.map(function(o,i){return '<button type="button" onclick="setRxOpt('+i+')">'+esc(o.label)+'</button>'}).join('')+'</div>'+NS()})}
     if(c.kind==='askRx'){var opts=RXDB?RXDB.forCancer(state.profile.cancer).slice(0,6):[];parts.push({cls:'',html:'어떤 <b>항암 요법</b>인지 알려 주시면 다음 항암 예상일과 시기별 주의사항을 맞춰 드려요. 요법 이름은 처방전·안내문이나 의료진께 확인할 수 있어요.'+(opts.length?'<div class="qr">'+opts.map(function(r){return '<button type="button" data-s="내 항암 요법은 '+esc(r.ko)+'">'+esc(r.ko)+'</button>'}).join('')+'</div>':'')+'<div class="acts"><button type="button" onclick="planTab=\'chemo\';renderPlan();tab(\'plan\')">💉 목록에서 고르기</button></div>'})}
     if(c.kind==='painAsk'){parts.push({cls:'',html:'<b>'+(c.site?esc(c.site)+' ':'')+'통증이 어느 정도인가요?</b><br><span class="small muted">0 = 안 아픔 · 10 = 상상할 수 있는 가장 심한 통증</span><div class="qr">'+[0,1,2,3,4,5,6,7,8,9,10].map(function(i){return '<button type="button" data-s="통증 '+i+'점'+(c.site?' '+esc(c.site):'')+'">'+i+'</button>'}).join('')+'</div>'})}
     if(c.kind==='stopUnknown'){parts.push({cls:'',html:'복용 중인 약 목록에서 해당 약을 찾지 못했어요. 약 이름을 처방전 그대로 알려 주시거나, 이대로 메모로 남길 수 있어요.<div class="acts"><button type="button" onclick="saveAsMemo(this)" data-t="'+esc(c.text)+'">📝 메모로 저장</button><button type="button" onclick="planTab=\'meds\';renderPlan();tab(\'plan\')">💊 약 목록 보기</button></div><p class="small muted" style="margin:8px 0 0">처방약을 스스로 끊기 전에는 의료진과 상의하세요.</p>'})}
@@ -411,7 +417,7 @@ function sendText(text){
 window.sendText=sendText;
 function undoLast(btn){if(!lastSnapshot){toast('되돌릴 기록이 없어요');return}state=JSON.parse(lastSnapshot);lastSnapshot=null;save();btn.closest('.msg').querySelector('b').textContent='되돌렸어요 ↩';btn.remove();toast('방금 기록을 취소했어요');chat[chat.length-1]&&saveChat()}
 window.undoLast=undoLast;
-window.showTopic=function(id){var tp=KB.TOPICS.find(function(x){return x.id===id});if(!tp)return;addMsg('bot','<b>'+esc(tp.q||tp.title)+'</b><div>'+tp.body+'</div><div class="acts">'+linkBtns(tp.links)+'</div><p class="small muted" style="margin:8px 0 0">일반 안내입니다. 내 상황은 담당 의료진과 확인하세요.</p>','',true);scrollBottom()};
+window.showTopic=function(id){var tp=KB.TOPICS.find(function(x){return x.id===id});if(!tp)return;addMsg('bot','<b>'+esc(tp.q||tp.title)+'</b><div>'+tp.body+'</div><div class="acts">'+linkBtns(tp.links)+'</div>'+NS()+'','',true);scrollBottom()};
 window.setRxOpt=function(i){state.profile.rxOpt=i;save();var r=myRx();toast((r&&r._opt?r._opt:'간격')+'으로 맞췄어요')};
 window.setRx=function(id){state.profile.regimen=id;state.profile.rxOpt=null;rxPick=false;save();var r=RXDB&&RXDB.byId(id);toast((r?r.ko:'요법')+' 등록했어요')};
 window.pickRx=function(){rxPick=true;renderPlan()};
@@ -462,10 +468,12 @@ function renderHome(){
   var cd=cday(),cb=$('#chemoBar'),rx=myRx(),ci=cycleInfo(),bh='';
   var upc=upcoming().filter(function(r){return CHEMO_RE.test(r.title||'')})[0],ud=upc?dayDiff(today(),upc.date):99;
   var go='onclick="planTab=\'chemo\';renderPlan();tab(\'plan\')" role="button" tabindex="0"';
-  if(upc&&ud>=0&&ud<=1&&!/예상/.test(upc.title)){bh='<div class="chemobar" '+go+'><b>'+(ud===0?'오늘':'내일')+' '+(/호르몬/.test(upc.title)?'주사':'항암')+'</b><span>'+esc(upc.title)+(upc.time?' '+upc.time:'')+'<br>체온·컨디션을 기록하고 물어볼 것을 정리해 두세요. 채혈 시간도 확인하세요.</span></div>'}
+  var tlog=state.logs.find(function(x){return x.date===today()});
+  if(tlog&&+tlog.temp>=38){bh='<div class="chemobar fever" role="alert"><b>🌡️ 오늘 '+esc(tlog.temp)+'℃</b><span>38.0℃ 이상이 기록됐어요. 아직 연락 전이라면 <u>해열제 먹기 전에 지금 병원에 연락</u>하세요.<details class="rt"><summary>어디로 연락하나요? 응급실에서 할 말</summary>'+routeHTML(true)+'</details><span class="acts" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px">'+callBtns()+'</span></span></div>'}
+  else if(upc&&ud>=0&&ud<=1&&!/예상/.test(upc.title)){bh='<div class="chemobar" '+go+'><b>'+(ud===0?'오늘':'내일')+' '+(/호르몬/.test(upc.title)?'주사':'항암')+'</b><span>'+esc(upc.title)+(upc.time?' '+upc.time:'')+'<br>체온·컨디션을 기록하고 물어볼 것을 정리해 두세요. 채혈 시간도 확인하세요.</span></div>'}
   else if(cd){var nd=inNadir(),tips=RXDB?RXDB.tip(rx,cd.n):[],ol=oralLbl(ci);
     if(nd)tips=['🛡️ 몸을 지키는 기간이에요. 면역력(백혈구)이 잠시 낮아질 수 있으니 체온을 하루 2번 재 두세요. <u>38.0℃ 이상이면 해열제 먹기 전에 바로 병원에 연락</u>하세요.'];else tips=tips.map(esc);
-    bh='<div class="chemobar'+(nd?' nadir':'')+'" '+go+'><b>'+dLbl(cd)+'</b><span>'+(rx?'<small style="display:block;font-weight:900;opacity:.85">'+esc(rx.ko)+(ci?' · '+ci.no+'차':'')+(ol?' · '+ol:'')+'</small>':'')+(tips.join(' ')||'마지막 항암 '+fmt(cd.date))+(ci&&!ci.booked&&!nd&&cd.n>=3?'<small style="display:block;margin-top:2px">다음 '+(isInj(rx)?'주사':'항암')+' 예상 '+fmt(ci.next)+' (참고용)</small>':'')+(rx&&rx._needOpt?'<small style="display:block;margin-top:2px">투여 간격을 고르면 다음 예상일이 나와요 →</small>':'')+'</span></div>'}
+    bh='<div class="chemobar'+(nd?' nadir':'')+'" '+go+'><b>'+dLbl(cd)+'<em class="ref">참고용</em></b><span>'+(rx?'<small style="display:block;font-weight:900;opacity:.85">'+esc(rx.ko)+(ci?' · '+ci.no+'차':'')+(ol?' · '+ol:'')+'</small>':'')+(tips.join(' ')||'마지막 항암 '+fmt(cd.date))+(ci&&!ci.booked&&!nd&&cd.n>=3?'<small style="display:block;margin-top:2px">다음 '+(isInj(rx)?'주사':'항암')+' 예상 '+fmt(ci.next)+' (참고용)</small>':'')+(rx&&rx._needOpt?'<small style="display:block;margin-top:2px">투여 간격을 고르면 다음 예상일이 나와요 →</small>':'')+'</span></div>'}
   cb.innerHTML=bh;
   /* 주 1회 가벼운 제안: 백업 · 마음 온도계 */
   var nz=$('#nudge');if(nz){var nd2={};try{nd2=JSON.parse(localStorage.getItem('apuda_note_nudge')||'{}')}catch(e){}
@@ -513,18 +521,18 @@ function renderChemo(){
   if(!RXDB)return '<div class="card"><div class="empty">요법 정보를 불러오지 못했어요.</div></div>';
   var rx=myRx(),h='';
   if(!rx||rxPick){
-    var cs=rxCancerSel||RXDB.CANCERS.find(function(c){return String(state.profile.cancer||'').indexOf(c)>=0})||'폐암';
+    var nc=RXDB.normCancer(state.profile.cancer),cs=rxCancerSel||(RXDB.CANCERS.indexOf(nc)>=0?nc:'')||'폐암';
     var list=RXDB.RX.filter(function(r){return r.cancers.indexOf(cs)>=0});
-    h='<div class="rxnotice">⚠️ '+esc(RXDB.NOTICE)+'</div><div class="card"><h3>💉 내 항암 요법 '+(rx?'바꾸기':'등록')+'</h3><p class="small muted" style="margin:0 0 10px">등록하면 다음 항암 예상일, 주기 안 시기별 주의사항, 부작용 관리법과 연락 기준을 맞춰 보여드려요.</p>'+
+    h='<div class="rxnotice" role="note">'+esc(RXDB.NOTICE)+'</div><div class="card"><h3>💉 내 항암 요법 '+(rx?'바꾸기':'등록')+'</h3><p class="small muted" style="margin:0 0 10px">등록하면 다음 항암 예상일, 주기 안 시기별 주의사항, 부작용 관리법과 연락 기준을 맞춰 보여드려요.</p>'+
       '<select id="rxCancer" onchange="rxCancerSel=this.value;renderPlan()" aria-label="암종 선택">'+RXDB.CANCERS.map(function(c){return '<option'+(c===cs?' selected':'')+'>'+c+'</option>'}).join('')+'</select>'+
       list.map(function(r){return '<div class="item"><div class="row between"><span class="pill'+(r.type==='면역'?' green':r.type==='세포독성'?' red':r.type==='호르몬'?' gray':'')+'">'+esc(r.type)+'</span><button class="btn primary sm" onclick="setRx(\''+r.id+'\')">등록</button></div><h4>'+esc(r.name)+'</h4><div class="meta">'+esc(r.ko)+' · '+esc(cycleTxt(r))+'</div></div>'}).join('')+
       (rx?'<button class="btn line sm" style="margin-top:10px" onclick="rxPick=false;renderPlan()">취소</button>':'')+
       '<p class="small muted" style="margin:10px 0 0">목록에 없으면 노트봇에 "내 항암은 ○○"처럼 써 주세요. 요법 이름은 처방전·안내문이나 의료진께 확인할 수 있어요.</p></div>';
     return h}
   var ci=cycleInfo(),cd=cday();
-  h='<div class="rxnotice">⚠️ '+esc(RXDB.NOTICE)+'</div>';
+  h='<div class="rxnotice" role="note">'+esc(RXDB.NOTICE)+'</div>';
   h+='<div class="card"><div class="row between"><span class="pill red">내 항암 요법</span><button class="btn line sm" onclick="pickRx()">바꾸기</button></div><h3 style="margin:8px 0 2px">'+esc(rx.name)+'</h3><div class="small muted">'+esc(rx.ko)+' · '+esc(rx.type)+'</div>'+
-    '<table class="kv"><tr><th>투여</th><td>'+esc(rx.how)+'</td></tr><tr><th>주기</th><td>'+esc(cycleTxt(rx))+'</td></tr><tr><th>백혈구 저하</th><td>'+(rx.nadir?'대개 D+'+rx.nadir[0]+'~'+rx.nadir[1]+' 무렵 (사람·회차마다 달라요)':'뚜렷한 시기 없음 — 특정 시기가 없을 뿐, 열은 언제든 바로 연락')+'</td></tr></table>'+
+    '<table class="kv"><tr><th>투여</th><td>'+esc(rx.how)+'</td></tr><tr><th>주기</th><td>'+esc(cycleTxt(rx))+'</td></tr><tr><th>백혈구 저하</th><td>'+(rx.type==='호르몬'||rx.once?'해당 없음 (항암제가 아니에요)':rx.nadir?'대개 D+'+rx.nadir[0]+'~'+rx.nadir[1]+' 무렵 (사람·회차마다 달라요)':'뚜렷한 시기 없음 — 특정 시기가 없을 뿐, 열은 언제든 바로 연락')+'</td></tr></table>'+
     (rx.opts?'<div class="optrow"><b>병원에서 안내받은 투여 간격</b><div class="row" style="flex-wrap:wrap;gap:6px;margin-top:6px">'+rx.opts.map(function(o,i){return '<button class="btn '+(state.profile.rxOpt===i?'primary':'line')+' sm" onclick="setRxOpt('+i+')" aria-pressed="'+(state.profile.rxOpt===i)+'">'+esc(o.label)+'</button>'}).join('')+'</div></div>':'')+'</div>';
   if(rx.cycle&&ci&&ci.t>=0&&ci.t<=rx.cycle+14){
     var T=rx.cycle,seg='',days=rx.days||[1];
@@ -536,9 +544,9 @@ function renderChemo(){
       '<div class="item" style="margin-top:8px"><h4>📅 다음 항암</h4><div class="meta">'+(ci.booked?'예약됨 · '+fmt(ci.booked.date)+(ci.booked.time?' '+ci.booked.time:'')+' · '+esc(ci.booked.title):'참고용 예상 '+fmt(ci.next)+' ('+dday(ci.next)+') · '+ci.nextNo+'차'+(ci.nextDay>1?' '+ci.nextDay+'일째':'')+'<br><button class="btn soft sm" style="margin-top:6px" onclick="addNextChemo()">일정에 넣기</button>')+'</div></div></div>';
   }else if(rx._needOpt){h+='<div class="card"><h3>이번 주기</h3><p class="small muted" style="margin:0">위에서 병원에서 안내받은 투여 간격을 고르면 주기 그림과 다음 예상일이 나와요.</p></div>'}else if(rx.cycle){h+='<div class="card"><h3>이번 주기</h3><p class="small muted" style="margin:0">항암 받은 날을 알려 주시면 주기 그림과 다음 항암 예상일이 나와요.<br>예) "오늘 항암 3차 맞았어" · "10월 1일 항암 맞았어"</p></div>'}
   h+='<div class="card"><h3>부작용 관리와 연락 기준</h3>'+rx.se.map(function(x){return '<div class="item"><h4>'+esc(x.t)+'</h4><div class="small">'+esc(x.care)+'</div>'+(x.call?'<div class="small" style="color:var(--red);font-weight:800;margin-top:4px">📞 '+esc(x.call)+'</div>':'')+'</div>'}).join('')+
-    '<div class="item"><h4>항상 바로 연락</h4><div class="small" style="color:var(--red);font-weight:800">38.0℃ 이상 열·오한 · 숨참 · 가슴 통증 · 멈추지 않는 출혈 · 물도 못 마실 만큼 토함 · 의식 변화</div>'+routeHTML()+'</div></div>';
+    NS()+'<div class="item"><h4>항상 바로 연락</h4><div class="small" style="color:var(--red);font-weight:800">38.0℃ 이상 열·오한 · 숨참 · 가슴 통증 · 멈추지 않는 출혈 · 물도 못 마실 만큼 토함 · 의식 변화</div>'+routeHTML()+'</div></div>';
   if(rx.pre)h+='<div class="card"><h3>📌 꼭 챙길 것</h3><p style="margin:0">'+esc(rx.pre)+'</p></div>';
-  h+='<p class="note-foot">'+esc(RXDB.NOTICE)+' 의약품 허가정보·공개 임상자료를 참고해 정리했으며 진단·처방을 대신하지 않습니다. · <a href="/library/regimens/">암종별 요법 전체·참고자료 보기</a></p>';
+  h+='<p class="note-foot">'+esc(RXDB.NOTICE_FULL)+' 의약품 허가정보·공개 자료를 참고해 정리했어요. · <a href="/library/regimens/">암종별 요법 전체·참고자료 보기</a></p>';
   return h}
 window.addNextChemo=function(){var ci=cycleInfo();if(!ci)return;state.roadmap.push({id:uid(),date:ci.next,time:'',type:'치료',title:(isInj(ci.rx)?'호르몬 주사 ':'항암 ')+ci.nextNo+'차'+(ci.nextDay>1?' '+ci.nextDay+'일째':'')+' (예상)',memo:'병원 예약 확인 필요',status:'planned',createdAt:Date.now()});save();toast('다음 항암 예상일을 일정에 넣었어요')};
 function schedItem(x){var done=x.status==='done';return '<div class="item'+(done?' done':'')+'"><div class="row between"><span class="pill '+(done?'gray':x.type==='치료'?'red':x.type==='검사'?'amber':'')+'">'+esc(x.type||'일정')+' · '+(done?'완료':dday(x.date))+'</span><span class="row" style="gap:6px"><button class="btn soft sm" onclick="toggleSched(\''+x.id+'\')">'+(done?'되살리기':'완료')+'</button><button class="btn line sm" onclick="delItem(\'roadmap\',\''+x.id+'\')">삭제</button></span></div><h4>'+esc(x.title)+'</h4><div class="meta">'+fmt(x.date)+(x.time?' '+x.time:'')+(x.memo?' · '+esc(x.memo):'')+'</div></div>'}
@@ -616,7 +624,7 @@ function renderSummary(){
   h+='<div class="card"><h3>💊 복용 중인 약</h3>'+(act.length?'<table>'+act.map(function(m){return '<tr><th>'+esc(m.name)+'</th><td>'+esc([m.dose,m.schedule].filter(Boolean).join(' · ')||'-')+'</td></tr>'}).join('')+'</table>':'<div class="empty">등록된 약 없음</div>')+'</div>';
   h+='<div class="card"><h3>❓ 오늘 꼭 물어볼 것</h3>'+(qs.length?'<ol style="margin:0;padding-left:20px">'+qs.map(function(q){return '<li style="margin:4px 0">'+(q.priority==='high'?'<b>':'')+esc(q.question)+(q.priority==='high'?'</b>':'')+'</li>'}).join('')+'</ol>':'<div class="empty">적어둔 질문 없음</div>')+'</div>';
   h+='<div class="card"><h3>📅 다음 일정</h3>'+(up.length?'<table>'+up.map(function(x){return '<tr><th>'+fmt(x.date)+(x.time?' '+x.time:'')+'</th><td>'+esc(x.title)+'</td></tr>'}).join('')+'</table>':'<div class="empty">예정 일정 없음</div>')+'</div>';
-  h+='<p class="note-foot">환자·보호자가 직접 기록한 내용입니다. 진단·처방 판단은 의료진이 합니다.</p>';
+  h+='<p class="note-foot">환자·보호자가 직접 기록한 내용입니다. '+(RXDB?esc(RXDB.NOTICE_SHORT):'진단·처방 판단은 의료진이 합니다.')+'</p>';
   $('#summary').innerHTML=h;
 }
 
@@ -629,7 +637,7 @@ function renderSOS(){
   c+=p.dayPhone?'<a class="btn red" href="'+tel(p.dayPhone)+'">📞 치료병원</a>':'<button class="btn line" onclick="openSheet(\'settings\')">병원 번호 등록</button>';
   c+=p.nightPhone?'<a class="btn red" href="'+tel(p.nightPhone)+'">🌙 야간·응급</a>':'<a class="btn line" href="https://www.e-gen.or.kr/egen/search_emergency_room.do" target="_blank" rel="noopener">🏥 가까운 응급실</a>';
   c+='<a class="btn red" href="tel:119">🚑 119</a><a class="btn line" href="tel:109">💙 109 마음 위기</a>';
-  $('#sosCalls').innerHTML=c+routeHTML();$('#redList').innerHTML=chkHTML(RED,'red');$('#amberList').innerHTML=chkHTML(AMB,'amber');triage(true);
+  $('#sosCalls').innerHTML=c+routeHTML(true);$('#redList').innerHTML=chkHTML(RED,'red');$('#amberList').innerHTML=chkHTML(AMB,'amber');triage(true);
 }
 function triage(silent){
   var boxes=[].slice.call(document.querySelectorAll('#sh-sos [data-level]'));

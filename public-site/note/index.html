@@ -52,6 +52,13 @@ label{display:block;font-size:.78em;font-weight:900;color:#3b4a60;margin:10px 0 
 .labform{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:10px}.labform input{min-width:0}.labform .wide{grid-column:span 2}
 .chemobar[role=button]{cursor:pointer}
 .rxnotice{background:var(--amberbg);color:#7a2e0e;border-radius:14px;padding:10px 12px;margin-bottom:12px;font-size:.84em;font-weight:800;line-height:1.5}
+.nshort{margin:8px 0 0;font-size:13px;line-height:1.5;color:#5d6b80;font-weight:600}
+.basis{font-size:.86em;background:var(--sky);color:var(--blue2);border-radius:10px;padding:6px 10px;margin-bottom:8px;font-weight:700}
+.chemobar.fever{background:var(--redbg);color:var(--red);border:2px solid #f3a29a;align-items:flex-start;cursor:default}.chemobar.fever .route{color:var(--ink)}
+.chemobar em.ref{display:block;font-style:normal;font-size:11px;font-weight:800;opacity:.75;margin-top:2px}
+.route .acts{margin-top:6px}
+.chemobar details.rt{margin-top:6px;color:var(--ink)}.chemobar details.rt summary{cursor:pointer;font-weight:900;min-height:40px;display:flex;align-items:center;color:var(--red)}
+.legalbox{font-size:.88em;line-height:1.6}.legalbox ul{margin:6px 0;padding-left:18px}
 .nudge{border:1px dashed var(--line);background:#fff;border-radius:14px;padding:10px 12px;margin:-2px 0 10px;font-size:.84em;font-weight:700;display:grid;gap:8px}.nudge .row{gap:6px}
 table.kv{width:100%;border-collapse:collapse;margin-top:10px;font-size:.86em}table.kv th{width:84px;text-align:left;color:var(--muted);font-weight:900;vertical-align:top;padding:7px 6px 7px 0;border-top:1px solid var(--line)}table.kv td{padding:7px 0;border-top:1px solid var(--line);line-height:1.5}
 .cyc{display:flex;gap:2px;margin-top:10px}.cyc i{flex:1;height:26px;border-radius:4px;background:#eef1f5;position:relative;border:1px solid #dfe5ee}
@@ -267,7 +274,11 @@ table.kv{width:100%;border-collapse:collapse;margin-top:10px;font-size:.86em}tab
     <p class="small muted" style="margin:0 0 10px">공용 기기라면 사용 후 지워 주세요. 되돌릴 수 없습니다.</p>
     <button class="btn line sm" style="color:var(--red)" onclick="resetAll()">모든 기록 삭제</button>
   </div>
-  <p class="note-foot">ApuDa 암환자 노트 v3.5 · 이 노트는 기록과 정리를 돕는 도구이며 진단·처방·약 용량을 판단하지 않습니다. 치료 결정은 담당 의료진과 상의하세요. · <a href="/">ApuDa 홈</a></p>
+  <div class="card legalbox"><h3>이 노트가 하는 일 · 하지 않는 일</h3>
+    <b>하는 일</b><ul><li>몸 상태·일정·약·질문을 기록하고 진료요약으로 정리해요.</li><li>기록한 값과 입력한 날짜를 바탕으로 일반적인 참고 안내(연락 기준, 참고용 예상일)를 보여 줘요.</li></ul>
+    <b>하지 않는 일</b><ul><li>질병을 진단·치료·예측하거나 약 용량·치료 일정을 정하지 않아요.</li><li>응급 상황을 판단하거나 의료진의 연락을 대신하지 않아요. 걱정되면 수치와 상관없이 의료진에게 연락하세요.</li><li>기록을 아프다 서버로 보내지 않아요(이 기기 안에만 저장, 구글 드라이브 백업은 직접 연결했을 때만).</li></ul>
+    <p class="nshort" style="margin-top:6px">[안내] 이 노트의 모든 정보는 일반적인 건강 정보를 알기 쉽게 정리한 참고 자료이며, 의사의 진료·진단·처방을 대신하지 않습니다. 치료 일정·용량·검사·부작용 대처는 환자의 상태와 의료기관에 따라 다르므로 담당 의료진의 판단과 안내를 따르세요. ApuDa는 이 정보를 근거로 한 개별 의료 판단이나 그 결과에 대해 책임을 지지 않습니다. 응급 상황에는 즉시 119 또는 가까운 응급실을 이용하세요.</p></div>
+  <p class="note-foot">ApuDa 암환자 노트 v3.6 · <a href="/">ApuDa 홈</a></p>
 </div></div>
 
 <div class="toast" id="toast"></div>
