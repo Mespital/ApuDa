@@ -47,14 +47,21 @@ label{display:block;font-size:.78em;font-weight:900;color:#3b4a60;margin:10px 0 
 .tile{background:#fff;border:1px solid var(--line);border-radius:16px;padding:11px 11px 10px;text-align:left;min-height:92px}
 .tile small{display:block;color:var(--muted);font-size:.78em;font-weight:900}
 .tile b{display:block;font-size:.92em;line-height:1.35;margin-top:4px;letter-spacing:-.02em;word-break:keep-all}
-.chemobar{display:flex;gap:10px;align-items:center;border-radius:14px;padding:10px 12px;margin:-4px 0 10px;font-size:.86em;font-weight:800;line-height:1.45;background:var(--sky);color:var(--blue2)}.chemobar b{font-size:1.15em;white-space:nowrap}.chemobar.nadir{background:var(--redbg);color:var(--red)}.chemobar small{font-size:.92em}
+.chemobar{display:flex;gap:10px;align-items:center;border-radius:14px;padding:10px 12px;margin:-4px 0 10px;font-size:.86em;font-weight:800;line-height:1.45;background:var(--sky);color:var(--blue2)}.chemobar b{font-size:1.15em;white-space:nowrap}.chemobar.nadir{background:#fff1e6;color:#7a2e0e;border:1px solid #f7c99e}.chemobar small{font-size:.92em}
 .labtbl{width:100%;border-collapse:collapse;font-size:.86em}.labtbl th,.labtbl td{padding:7px 4px;border-top:1px solid var(--line);text-align:center}.labtbl th{color:var(--muted);font-size:.86em;border-top:0;white-space:nowrap;padding:6px 2px}.labtbl td{white-space:nowrap}.labtbl td.lo{color:var(--red);font-weight:900}
 .labform{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:10px}.labform input{min-width:0}.labform .wide{grid-column:span 2}
 .chemobar[role=button]{cursor:pointer}
 .rxnotice{background:var(--amberbg);color:#7a2e0e;border-radius:14px;padding:10px 12px;margin-bottom:12px;font-size:.84em;font-weight:800;line-height:1.5}
 .nudge{border:1px dashed var(--line);background:#fff;border-radius:14px;padding:10px 12px;margin:-2px 0 10px;font-size:.84em;font-weight:700;display:grid;gap:8px}.nudge .row{gap:6px}
 table.kv{width:100%;border-collapse:collapse;margin-top:10px;font-size:.86em}table.kv th{width:84px;text-align:left;color:var(--muted);font-weight:900;vertical-align:top;padding:7px 6px 7px 0;border-top:1px solid var(--line)}table.kv td{padding:7px 0;border-top:1px solid var(--line);line-height:1.5}
-.cyc{display:flex;gap:2px;margin-top:10px}.cyc i{flex:1;height:22px;border-radius:4px;background:#eef1f5;position:relative}.cyc i.nd{background:#f6c9c4}.cyc i.dose{background:#1467e8}.cyc i.now{outline:3px solid #111;outline-offset:1px;z-index:1}
+.cyc{display:flex;gap:2px;margin-top:10px}.cyc i{flex:1;height:26px;border-radius:4px;background:#eef1f5;position:relative;border:1px solid #dfe5ee}
+.cyc i.nd{background:repeating-linear-gradient(45deg,#e98a80 0 3px,#fde7e4 3px 7px);border-color:#e98a80}
+.cyc i.dose{background:#0b4fc0;border-color:#0b4fc0}.cyc i.dose.nd{background:repeating-linear-gradient(45deg,#0b4fc0 0 3px,#7fa6e6 3px 7px)}
+.cyc i.now{outline:3px solid #111;outline-offset:1px;z-index:1}.cyc i span{position:absolute;top:-19px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:900;white-space:nowrap;font-style:normal;color:#111}
+.cyc{margin-top:26px}.cycsum{margin:8px 0 0;font-weight:800;font-size:.9em}
+.legend i.lg-dose{background:#0b4fc0}.legend i.lg-nd{background:repeating-linear-gradient(45deg,#e98a80 0 2px,#fde7e4 2px 4px);border:1px solid #e98a80}.legend i.lg-now{background:#fff;outline:2px solid #111}
+.route{margin-top:10px;background:#fff;border:1px solid #f3c1bb;border-radius:12px;padding:10px 12px;font-size:.95em;color:var(--ink);font-weight:600;line-height:1.55}.route ol{margin:6px 0;padding-left:20px}.route li{margin:2px 0}
+.optrow{margin-top:12px;padding-top:10px;border-top:1px solid var(--line);font-size:.9em}
 #rxCancer{width:100%;min-height:44px;border:1px solid var(--line);border-radius:12px;padding:0 10px;font:inherit;font-weight:800;background:#fff;margin-bottom:4px}
 .callrow{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
 /* chat */
@@ -240,8 +247,8 @@ table.kv{width:100%;border-collapse:collapse;margin-top:10px;font-size:.86em}tab
     <label>암종 · 병기</label><div class="row"><input name="cancer" placeholder="예) 폐암"><input name="stage" placeholder="예) 3기 / 확인 중"></div>
     <label>현재 치료</label><input name="treatment" placeholder="예) 항암(4주 간격) / 표적치료제">
     <label>치료 병원</label><input name="hospital" placeholder="예) OO대학교병원 종양내과">
-    <label>병원 연락처(주간)</label><input name="dayPhone" inputmode="tel" placeholder="예) 02-1234-5678">
-    <label>야간·응급 연락처</label><input name="nightPhone" inputmode="tel" placeholder="예) 응급실 02-1234-0000">
+    <label>항암 상담·외래 전화 (평일 낮)</label><input name="dayPhone" inputmode="tel" placeholder="예) 02-1234-5678">
+    <label>밤·주말 연락처 (치료 병원 응급실)</label><input name="nightPhone" inputmode="tel" placeholder="예) 응급실 02-1234-0000">
     <label>알레르기 · 바이오마커 · 기타</label><input name="biomarkers" placeholder="예) 페니실린 알레르기, EGFR 양성">
     <button class="btn primary block" style="margin-top:14px">저장</button>
   </form>
@@ -260,7 +267,7 @@ table.kv{width:100%;border-collapse:collapse;margin-top:10px;font-size:.86em}tab
     <p class="small muted" style="margin:0 0 10px">공용 기기라면 사용 후 지워 주세요. 되돌릴 수 없습니다.</p>
     <button class="btn line sm" style="color:var(--red)" onclick="resetAll()">모든 기록 삭제</button>
   </div>
-  <p class="note-foot">ApuDa 암환자 노트 v3.4 · 이 노트는 기록과 정리를 돕는 도구이며 진단·처방·약 용량을 판단하지 않습니다. 치료 결정은 담당 의료진과 상의하세요. · <a href="/">ApuDa 홈</a></p>
+  <p class="note-foot">ApuDa 암환자 노트 v3.5 · 이 노트는 기록과 정리를 돕는 도구이며 진단·처방·약 용량을 판단하지 않습니다. 치료 결정은 담당 의료진과 상의하세요. · <a href="/">ApuDa 홈</a></p>
 </div></div>
 
 <div class="toast" id="toast"></div>

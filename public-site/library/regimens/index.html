@@ -19,7 +19,7 @@ a{color:var(--blue2)}
 .top .in{max-width:1080px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:10px}
 .logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink);font-weight:900}
 .logo i{width:32px;height:32px;border-radius:10px;background:var(--blue);color:#fff;display:grid;place-items:center;font-style:normal}
-.top .sp{flex:1}.top a.b{border:1px solid var(--line);background:#fff;border-radius:10px;padding:7px 11px;font-weight:800;font-size:14px;text-decoration:none;color:var(--ink)}
+.top .sp{flex:1}.top a.b{border:1px solid var(--line);background:#fff;border-radius:10px;padding:0 12px;min-height:44px;display:inline-flex;align-items:center;font-weight:800;font-size:14px;text-decoration:none;color:var(--ink)}
 .wrap{max-width:1080px;margin:0 auto;padding:18px 16px 80px}
 h1{font-size:clamp(24px,5vw,34px);letter-spacing:-.04em;line-height:1.25;margin:10px 0 6px}
 .lead{color:var(--muted);margin:0 0 14px}
@@ -40,9 +40,11 @@ h1{font-size:clamp(24px,5vw,34px);letter-spacing:-.04em;line-height:1.25;margin:
 .pill{display:inline-flex;padding:3px 10px;border-radius:999px;font-size:13px;font-weight:900;background:var(--sky);color:var(--blue2)}
 .pill.red{background:var(--redbg);color:var(--red)}.pill.green{background:var(--greenbg);color:var(--green)}.pill.gray{background:#eef1f5;color:#4a5a70}
 table{width:100%;border-collapse:collapse;margin:10px 0 4px;font-size:14px}th{width:92px;text-align:left;vertical-align:top;color:var(--muted);padding:7px 8px 7px 0;border-top:1px solid var(--line)}td{padding:7px 0;border-top:1px solid var(--line)}
-.cyc{display:flex;gap:2px;margin:10px 0 2px}.cyc i{flex:1;height:16px;border-radius:3px;background:#eef1f5}.cyc i.d{background:var(--blue)}.cyc i.n{background:#f6c9c4}
+.cyc{display:flex;gap:2px;margin:10px 0 2px}.cyc i{flex:1;height:18px;border-radius:3px;background:#eef1f5;border:1px solid #dfe5ee}.cyc i.d{background:#0b4fc0;border-color:#0b4fc0}.cyc i.n{background:repeating-linear-gradient(45deg,#e98a80 0 3px,#fde7e4 3px 7px);border-color:#e98a80}.cyc i.d.n{background:repeating-linear-gradient(45deg,#0b4fc0 0 3px,#7fa6e6 3px 7px)}.cycsum{font-size:14px;font-weight:800;margin:6px 0 2px}
+.route{background:#fff;border:1px solid #f3c1bb;border-radius:14px;padding:12px 14px;font-size:14px;margin-bottom:16px}.route ol{margin:6px 0 4px;padding-left:20px}
+details summary{list-style:none;background:var(--sky);border-radius:10px;padding:0 12px;min-height:46px}details summary::-webkit-details-marker{display:none}details summary::after{content:'펼치기 ▾';margin-left:auto;font-size:14px;color:var(--muted);font-weight:700}details[open] summary::after{content:'접기 ▴'}
 .lg{font-size:13px;color:var(--muted);display:flex;gap:12px;flex-wrap:wrap}.lg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px}
-details{margin-top:10px;border-top:1px solid var(--line);padding-top:8px}summary{cursor:pointer;font-weight:900;color:var(--blue2);min-height:36px;display:flex;align-items:center}
+details{margin-top:10px;border-top:1px solid var(--line);padding-top:8px}summary{cursor:pointer;font-weight:900;color:var(--blue2);min-height:46px;display:flex;align-items:center}
 .se{padding:8px 0;border-top:1px dashed var(--line);font-size:14px}.se:first-of-type{border-top:0}.se b{display:block}.se .c{color:var(--red);font-weight:800;margin-top:2px}
 .tl{font-size:14px;margin:6px 0 0;padding-left:18px}.tl li{margin:3px 0}
 .pre{background:var(--sky);border-radius:12px;padding:9px 11px;font-size:14px;margin-top:10px}
@@ -58,6 +60,7 @@ details{margin-top:10px;border-top:1px solid var(--line);padding-top:8px}summary
   <h1>항암 요법별 관리 가이드</h1>
   <p class="lead">12암종 대표 항암 요법의 <b>주기 · 백혈구가 낮아지는 시기 · 시기별 주의사항 · 부작용 관리 · 병원에 연락할 기준</b>을 정리했어요.</p>
   <div class="notice" role="note">⚠️ <b>이 내용은 참고용입니다.</b> 이해를 돕기 위한 일반적인 정보이며, 실제 치료 일정·용량·검사·부작용 대처는 환자마다 다릅니다. <b>반드시 담당 의료진의 치료 방침과 안내를 따르세요.</b> 항암 중 <b>38.0℃ 이상 열</b>이 나면 해열제 먹기 전에 바로 치료병원에 연락하세요.</div>
+  <div class="route"><b>🧭 열이 나거나 급할 때 어디로 연락하나요?</b><ol><li><b>평일 낮</b> — 항암 주사실·외래 간호사 상담 전화</li><li><b>밤·주말·공휴일</b> — 치료받는 병원 응급실로 전화하거나 바로 가기</li><li><b>숨이 많이 차거나 가슴이 아프거나 의식이 흐리면</b> — 119</li></ol>응급실에서는 "항암 치료 중이고 마지막 항암은 ○월 ○일"이라고 먼저 말하세요. 아래 표에 "뚜렷한 시기 없음"이라고 적힌 요법도, 열은 언제든 똑같이 응급이에요.</div>
   <section class="phase"><h2>세포독성 항암 한 주기의 흐름 (대표적인 3주 주기)</h2><div class="ph" id="gen"></div></section>
   <div class="tabs" id="tabs" role="tablist"></div>
   <div class="grid" id="list"></div>
@@ -70,15 +73,16 @@ details{margin-top:10px;border-top:1px solid var(--line);padding-top:8px}summary
 (function(){
 var R=window.APUDA_RX,SL={lung:'폐암',breast:'유방암',stomach:'위암',colorectal:'대장암',liver:'간암',pancreas:'췌장암',biliary:'담도암',thyroid:'갑상선암',prostate:'전립선암',kidney:'신장암',cervical:'자궁경부암',lymphoma:'림프종'};
 function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]})}
-function cyc(r){if(r.oral&&r.cycle)return r.oral.on+'일 복용 · '+r.oral.off+'일 휴약 ('+r.cycle+'일 주기)';if(!r.cycle)return '매일 또는 정해진 간격';var d=r.days||[1];return (r.cycle%7===0?(r.cycle/7)+'주':r.cycle+'일')+' 간격'+(d.length>1?' · '+d.join('·')+'일째 투여':'')}
+function cyc(r){if(r.opts)return r.opts.map(function(o){return o.label}).join(' / ')+' (병원 안내에 따라)';if(r.oral&&r.cycle)return r.oral.on+'일 복용 · '+r.oral.off+'일 휴약 ('+r.cycle+'일 주기)';if(!r.cycle)return '매일 또는 정해진 간격';var d=r.days||[1];return (r.cycle%7===0?(r.cycle/7)+'주':r.cycle+'일')+' 간격'+(d.length>1?' · '+d.join('·')+'일째 투여':'')}
 document.getElementById('gen').innerHTML=R.GEN.map(function(g){return '<div'+(g[0]===7?' class="n"':'')+'><b>D+'+g[0]+(g[1]>30?' ~ 다음 주기':'~'+g[1])+'</b>'+esc(g[2])+'</div>'}).join('');
 var q=new URLSearchParams(location.search).get('cancer')||'',cur=SL[q]||(R.CANCERS.indexOf(q)>=0?q:'폐암');
 function tabs(){document.getElementById('tabs').innerHTML=R.CANCERS.map(function(c){return '<button role="tab" aria-selected="'+(c===cur)+'" class="'+(c===cur?'on':'')+'" data-c="'+c+'">'+c+'</button>'}).join('')}
 function card(r){
-  var bar='';if(r.cycle&&r.cycle<=42){var dz=r.days||[1];for(var d=0;d<r.cycle;d++){var c=(dz.indexOf(d+1)>=0||r.oral&&d<r.oral.on)?'d':(r.nadir&&d>=r.nadir[0]&&d<=r.nadir[1])?'n':'';bar+='<i class="'+c+'"></i>'}}
-  return '<article class="rx"><span class="pill'+(r.type==='면역'?' green':r.type==='세포독성'?' red':r.type==='호르몬'?' gray':'')+'">'+esc(r.type)+'</span><h3>'+esc(r.name)+'</h3><div class="ko">'+esc(r.ko)+'</div>'+
-  '<table><tr><th>투여</th><td>'+esc(r.how)+'</td></tr><tr><th>주기</th><td>'+esc(cyc(r))+'</td></tr><tr><th>백혈구 저하</th><td>'+(r.nadir?'대개 D+'+r.nadir[0]+'~'+r.nadir[1]+' 무렵':'뚜렷한 시기 없음 (38.0℃면 똑같이 연락)')+'</td></tr></table>'+
-  (bar?'<div class="cyc" aria-hidden="true">'+bar+'</div><div class="lg"><span><i style="background:#1467e8"></i>투여·복용</span><span><i style="background:#f6c9c4"></i>백혈구 낮아지기 쉬움</span></div>':'')+
+  var bar='',sum='';if(r.cycle&&r.cycle<=42&&!r.opts){var dz=r.days||[1];for(var d=0;d<r.cycle;d++){var c=[];if(dz.indexOf(d+1)>=0||r.oral&&d<r.oral.on)c.push('d');if(r.nadir&&d>=r.nadir[0]&&d<=r.nadir[1])c.push('n');bar+='<i class="'+c.join(' ')+'"></i>'}
+    sum=(r.oral?r.oral.on+'일 복용 → '+r.oral.off+'일 휴약':dz.map(function(x){return x+'일째'}).join('·')+' 투여')+(r.nadir?' → '+(r.nadir[0]+1)+'~'+(r.nadir[1]+1)+'일째 면역력 낮아지기 쉬움':'')+' → '+(r.cycle+1)+'일째 다음 주기'}
+  return '<article class="rx"><span class="pill'+(r.type==='면역'?' green':r.type==='세포독성'?' red':r.type==='ADC'?' red':r.type==='호르몬'?' gray':'')+'">'+esc(r.type)+'</span><h3>'+esc(r.name)+'</h3><div class="ko">'+esc(r.ko)+'</div>'+
+  '<table><tr><th>투여</th><td>'+esc(r.how)+'</td></tr><tr><th>주기</th><td>'+esc(cyc(r))+'</td></tr><tr><th>백혈구 저하</th><td>'+(r.nadir?'대개 D+'+r.nadir[0]+'~'+r.nadir[1]+' 무렵':'뚜렷한 시기 없음 — 특정 시기가 없을 뿐, 38.0℃ 이상이면 언제든 바로 연락')+'</td></tr></table>'+
+  (bar?'<div class="cyc" role="img" aria-label="'+esc(sum)+'">'+bar+'</div><p class="cycsum">'+esc(sum)+'</p><div class="lg" aria-hidden="true"><span><i style="background:#0b4fc0"></i>투여·복용(진한 칸)</span><span><i style="background:repeating-linear-gradient(45deg,#e98a80 0 2px,#fde7e4 2px 4px)"></i>면역력 낮아지기 쉬움(빗금)</span></div>':'')+
   '<details><summary>시기별 주의사항</summary><ul class="tl">'+r.tl.map(function(x){return '<li><b>'+(x[1]>=99?'D+'+x[0]+' 이후':'D+'+x[0]+'~'+x[1])+'</b> '+esc(x[2])+'</li>'}).join('')+'</ul></details>'+
   '<details><summary>부작용 관리와 연락 기준 ('+r.se.length+')</summary>'+r.se.map(function(s){return '<div class="se"><b>'+esc(s.t)+'</b>'+esc(s.care)+(s.call?'<div class="c">📞 '+esc(s.call)+'</div>':'')+'</div>'}).join('')+'</details>'+
   (r.pre?'<div class="pre">📌 '+esc(r.pre)+'</div>':'')+'<div class="cnote">참고용 정보예요. 실제 치료는 담당 의료진 안내를 따르세요.</div></article>'}
