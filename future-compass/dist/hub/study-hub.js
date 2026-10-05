@@ -72,9 +72,9 @@
         '<span class="sh-eyebrow">' + esc(opts.eyebrow) + '</span>' +
         '<h1>' + esc(opts.titleA) + ' <span class="sh-hl">' + esc(opts.titleB) + '</span></h1>' +
         '<p class="sh-lede">' + esc(opts.lede) + '</p>' +
-        '<nav class="sh-quick" aria-label="바로가기">' +
-          '<a href="#sh-sites">사이트 고르기</a><a href="#sh-routes">시험 대비 순서</a>' +
-          (opts.board ? '<a href="#sh-board">내 자료 모음</a>' : '') +
+        '<nav class="sh-quick sh-tabs" role="tablist" aria-label="학습 사이트 메뉴">' +
+          '<a href="#sh-sites" role="tab" aria-selected="true">추천 사이트</a><a href="#sh-routes" role="tab" aria-selected="false">시험 대비 순서</a>' +
+          (opts.board ? '<a href="#sh-board" role="tab" aria-selected="false">내 링크</a>' : '') +
         '</nav>' +
       '</header>' +
       '<section id="sh-sites">' +
@@ -82,12 +82,12 @@
         '<div class="sh-chips" data-role="kind-filter" role="group" aria-label="용도"></div>' +
         '<div class="sh-grid" data-role="sites"></div>' +
       '</section>' +
-      '<section id="sh-routes">' +
+      '<section id="sh-routes" hidden>' +
         '<div class="sh-sec-head"><h2 data-role="routes-title">대비 순서</h2><p>시험 전에 어떤 사이트를 어떤 순서로 쓰면 좋은지 정리했어.</p></div>' +
         '<div class="sh-routes" data-role="routes"></div>' +
       '</section>' +
       (opts.board ?
-      '<section id="sh-board">' +
+      '<section id="sh-board" hidden>' +
         '<div class="sh-sec-head"><h2>내 자료 모음</h2><p>도움 된 링크를 여기 모아 둬. 이 기기에만 저장돼.</p></div>' +
         '<div class="sh-board">' +
           '<form class="sh-form" data-role="form" novalidate>' +
@@ -143,6 +143,12 @@
     if (!root) { console.error("[StudyHub] 마운트할 요소를 찾지 못했어요:", o.el); return; }
     if (!root.id) root.id = "study-hub";
     root.innerHTML = shell(o);
+    function showTab(id) {
+      root.querySelectorAll('.sh-tabs a').forEach(function (a) { a.setAttribute('aria-selected', String(a.getAttribute('href') === '#' + id)); });
+      ['sh-sites', 'sh-routes', 'sh-board'].forEach(function (k) { var sec = root.querySelector('#' + k); if (sec) sec.hidden = k !== id; });
+    }
+    root.querySelector('.sh-tabs').addEventListener('click', function (e) { var a = e.target.closest('a'); if (!a) return; e.preventDefault(); showTab(a.getAttribute('href').slice(1)); });
+    if (/^#sh-(routes|board)$/.test(location.hash)) showTab(location.hash.slice(1));
     var $ = function (r) { return root.querySelector('[data-role="' + r + '"]'); };
 
     var state = { kind: "all", subject: "all", sites: [], posts: [], showAll: false };
@@ -169,8 +175,8 @@
         '<div class="sh-tags"><span class="sh-tag ' + (s.price === "free" ? "free" : "pay") + '">' + (s.price === "free" ? "무료" : "일부 유료") + '</span>' +
         '<span class="sh-tag">' + esc(s.login) + '</span>' +
         s.kinds.map(function (k) { return '<span class="sh-tag">' + esc(k) + '</span>'; }).join("") + '</div>' +
-        '<p class="sh-use">' + esc(s.use) + '</p>' +
-        '<p class="sh-tip"><b>활용:</b> ' + esc(s.tip) + '</p>' +
+        '<details class="sh-more-info"><summary>어떻게 쓸까?</summary><p class="sh-use">' + esc(s.use) + '</p>' +
+        '<p class="sh-tip"><b>활용:</b> ' + esc(s.tip) + '</p></details>' +
       '</article>';
     }
 

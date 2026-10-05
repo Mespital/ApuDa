@@ -54,20 +54,22 @@
     for (const k of Object.keys(v)) if (k < addDays(today(), -14)) delete v[k];
     lsSet(PREV_KEY, v);
   }
-  function prepCard(compact) {
+  function prepCard() {
     if (!hasTable()) return '';
-    const nd = nextSchoolDay(today()), items = prepItems(nd), done = prepDone(nd);
+    const nd = nextSchoolDay(today()), items = prepItems(nd), done = prepDone(nd), teachers = lsGet(TEACHER_KEY, {}) || {};
     const examDay = CAL() ? CAL().schoolEvents(nd).filter(t => /고사|시험|평가/.test(t)) : [];
     const real = items.filter(x => !x.light), mins = Math.min(60, real.length * 10);
-    const when = gap(nd) === 1 ? '내일' : gap(nd) === 0 ? '오늘' : label(nd);
-    const skipped = gap(nd) > 1 ? ' <span class="wk-note">(' + esc(uniq([...Array(gap(nd) - 1)].map((_, i) => addDays(today(), i + 1)).map(offDay).filter(o => o && !o.weekend).map(o => o.name)).join(', ') || '주말') + ' 지나고)</span>' : '';
-    const bag = state.bags[rowOf(nd)] || '', teachers = lsGet(TEACHER_KEY, {}) || {};
-    return `<section class="card wk-prep"${compact ? ' data-prep-compact' : ''}><div class="section-title"><h2>📘 ${esc(when)} ${esc(label(nd))} 예습</h2><span class="badge">${real.length ? '약 ' + mins + '분' : '가볍게'}</span></div>
-      <p class="muted">다음 등교일 시간표 기준이야${skipped}. 과목마다 10분이면 충분해.</p>
-      ${examDay.length ? `<p class="wk-warn">📝 그날 학교 일정: ${esc(examDay.join(', '))}. 예습보다 시험 과목 마무리가 먼저야.</p>` : ''}
-      ${items.length ? items.map(x => `<label class="wk-prep-item${x.light ? ' light' : ''}"><input type="checkbox" data-prep="${esc(nd)}" data-subject="${esc(x.s)}" ${done.includes(x.s) ? 'checked' : ''}><span><b>${esc(x.s)}${teachers[x.s] ? ` <small>${esc(teachers[x.s])} 선생님</small>` : ''}</b>${x.unit ? ` · ${esc(x.unit)}` : x.cur ? ` <small>${esc(x.cur.course)}</small>` : ''}${x.pages ? ` <small>(${esc(x.pages)})</small>` : ''}<small>${x.exam ? '🧩 ' + esc(x.exam.title) + ' D-' + gap(x.exam.date) + ' · 범위 복습을 먼저 해봐' : esc(x.tip)}</small>${!x.exam && x.next ? `<small class="wk-next">다음 단원 미리 보기: ${esc(x.next)}</small>` : ''}${!x.unit && x.cur && x.cur.flat.length && !x.light ? `<small class="wk-next">시간표 탭에서 지금 배우는 단원을 고르면 다음 단원을 알려줄게</small>` : ''}</span></label>`).join('') : '<p class="muted">그날 시간표가 비어 있어.</p>'}
-      ${bag ? `<p class="wk-bag">🎒 준비물: ${esc(bag)}</p>` : ''}
-      ${!Object.keys(plusData().courses || {}).length ? '<p class="muted">시간표 탭에서 과목별 단원·페이지를 적으면 예습 범위가 더 정확해져.</p>' : ''}</section>`;
+    const when = gap(nd) === 1 ? '내일' : label(nd);
+    const bag = state.bags[rowOf(nd)] || '';
+    const needUnit = real.some(x => x.cur && x.cur.flat.length && !x.unit);
+    const row = x => `<label class="wk-prep-item${x.light ? ' light' : ''}"><input type="checkbox" data-prep="${esc(nd)}" data-subject="${esc(x.s)}" ${done.includes(x.s) ? 'checked' : ''}><span><b>${esc(x.s)}${teachers[x.s] ? ` <small>${esc(teachers[x.s])}</small>` : ''}</b><small>${
+      x.light ? '준비물만 확인' : x.exam ? '🧩 ' + esc(x.exam.title) + ' D-' + gap(x.exam.date) + ' → 범위 복습 먼저' : x.next ? '다음 단원 훑어보기: ' + esc(x.next.split(' › ').pop()) : esc(x.tip)}</small></span></label>`;
+    const list = real.map(row).join('') + (items.some(x => x.light) ? `<p class="wk-light">${items.filter(x => x.light).map(x => esc(x.s)).join(' · ')}: 준비물만 챙기기</p>` : '');
+    return `<section class="card wk-prep"><div class="section-title"><h2>📘 ${esc(when)} 예습</h2><span class="badge">${examDay.length ? '시험날' : real.length ? '약 ' + mins + '분' : '가볍게'}</span></div>
+      ${gap(nd) > 1 ? `<p class="muted">${esc(label(nd))} 수업 기준</p>` : ''}
+      ${examDay.length ? `<p class="wk-warn">📝 ${esc(examDay[0])}. 예습보다 시험 과목 마무리가 먼저야.</p><details class="wk-fold-in"><summary>그래도 예습 목록 보기</summary>${list}</details>` : list || '<p class="muted">그날 시간표가 비어 있어.</p>'}
+      ${bag ? `<p class="wk-bag">🎒 ${esc(bag)}</p>` : ''}
+      ${needUnit ? '<p class="wk-hint">📖 과목별로 지금 배우는 단원을 고르면 "다음 단원"까지 알려줘. <button data-go-course>단원 고르기</button></p>' : ''}</section>`;
   }
 
   /* ---------- 이번 주 ---------- */
@@ -100,7 +102,6 @@
       <p class="muted">수업일 ${schoolDays}일${offs.some(o => o && !o.weekend) ? ' · 쉬는 날 ' + offs.filter(o => o && !o.weekend).map((o, i) => esc(o.name)).join(', ') : ''}${dueAll.length ? ' · 마감 ' + dueAll.length + '개' : ''}</p>
       ${hasTable() ? '' : '<p class="wk-warn">시간표를 먼저 올려줘. 그러면 요일별 수업과 예습이 자동으로 채워져. <button data-go="table">시간표 올리기 →</button></p>'}
       <div class="wk-grid">${cards}</div></section>
-      ${weekOffset === 0 ? prepCard(false) : ''}
       <details class="card"><summary>🌿 쉬는 날 직접 추가 (재량휴업일·임시공휴일 등)</summary>
         <p class="muted">법정 공휴일·대체공휴일은 2029년까지 들어 있어. 학교 공지로 받은 재량휴업일이나 새로 생긴 임시공휴일만 여기 넣어.</p>
         <form data-offday><label>날짜<input type="date" name="date" required min="${today()}"></label><label>이름<input name="name" maxlength="30" placeholder="예: 재량휴업일"></label><button class="primary">추가</button></form>
@@ -284,13 +285,49 @@
     } catch (e) { ocrBusy = false; setStatus('사진 읽기에 실패했어. 인터넷 연결을 확인하거나 붙여넣기를 써줘.'); }
   }
 
+  /* ---------- 오늘 탭 정리: 학교 한 줄 → 오늘 할 3개 → 오늘 수업 → 예습 → 할 일 → 나머지 ---------- */
+  let openCourse = false;
+  function arrangeToday() {
+    const next = root.querySelector('.next-card'), grid = root.querySelector('.grid');
+    const strip = document.createElement('section'); strip.id = 'school-today'; strip.setAttribute('data-compact', ''); strip.className = 'today-strip';
+    root.insertAdjacentElement('afterbegin', strip);
+    if (next) strip.insertAdjacentElement('afterend', next);
+    let anchor = next || strip;
+    if (grid) {
+      const [lessonCard, taskCard] = grid.children;
+      if (lessonCard) {
+        const rows = [...lessonCard.querySelectorAll('.row')];
+        if (rows.length) {
+          const chips = rows.map(r => { const [n, sbj] = r.children; return `<li><b>${esc(n.textContent.replace('교시', ''))}</b>${esc(sbj.textContent)}</li>`; }).join('');
+          rows.forEach(r => r.remove()); lessonCard.querySelector('p.muted')?.remove();
+          lessonCard.querySelector('h2')?.insertAdjacentHTML('afterend', `<ul class="lesson-chips">${chips}</ul>`);
+        }
+        anchor.insertAdjacentElement('afterend', lessonCard); anchor = lessonCard;
+      }
+      if (hasTable()) { anchor.insertAdjacentHTML('afterend', prepCard()); anchor = anchor.nextElementSibling; }
+      if (taskCard) { anchor.insertAdjacentElement('afterend', taskCard); anchor = taskCard; }
+      grid.remove();
+    }
+    const weekCard = [...root.querySelectorAll('section.card')].find(c => /이번 주 챙길 것/.test(c.querySelector('h2')?.textContent || ''));
+    if (weekCard) {
+      const n = weekCard.querySelectorAll('.row').length, d = document.createElement('details'); d.className = 'card wk-fold';
+      d.innerHTML = `<summary>📌 이번 주 챙길 것 ${n ? '(' + n + ')' : ''}</summary>`; weekCard.querySelector('h2')?.remove();
+      while (weekCard.firstChild) d.appendChild(weekCard.firstChild);
+      weekCard.replaceWith(d);
+    }
+  }
+
   /* ---------- 연결 ---------- */
   const prevRender = render;
   render = function () {
     if (tab === 'week') { prevRender(); root.innerHTML = weekView(); return; }
     prevRender();
-    if (tab === 'today' && hasTable()) { const html = prepCard(true); const anchor = root.querySelector('.next-card'); anchor ? anchor.insertAdjacentHTML('afterend', html) : root.insertAdjacentHTML('afterbegin', html); }
-    if (tab === 'table') root.insertAdjacentHTML('afterbegin', uploadPanel());
+    if (tab === 'today') arrangeToday();
+    if (tab === 'table') {
+      root.insertAdjacentHTML('afterbegin', hasTable() && !draft && !ocrBusy ? `<details class="card wk-fold"><summary>📤 시간표 다시 올리기</summary>${uploadPanel().replace('<section class="card wk-upload">', '<section class="wk-upload">')}</details>` : uploadPanel());
+      const cp = root.querySelector('#course-panel');
+      if (cp) { const s0 = cp.querySelector('summary'); if (s0) s0.textContent = '📖 과목별 단원 고르기 (예습이 정확해져)'; root.insertBefore(cp, root.querySelector('.card:not(.wk-fold):not(.wk-upload)') || null); if (openCourse) { cp.open = true; openCourse = false; setTimeout(() => cp.scrollIntoView({ block: 'start' }), 30); } }
+    }
   };
   document.addEventListener('change', e => {
     const t = e.target;
@@ -301,6 +338,7 @@
   document.addEventListener('input', e => { const k = e.target.dataset.draft; if (k && draft) { const [i, j] = k.split('-').map(Number); draft[i][j] = e.target.value.slice(0, 40); } });
   document.addEventListener('click', e => {
     const b = e.target.closest('button'); if (!b) return;
+    if (b.hasAttribute('data-go-course')) { openCourse = true; tab = 'table'; history.replaceState(null, '', '#table'); render(); window.scrollTo(0, 0); return; }
     if (b.dataset.week !== undefined) { const v = Number(b.dataset.week); weekOffset = v === 0 ? 0 : Math.max(-4, Math.min(20, weekOffset + v)); render(); }
     if (b.hasAttribute('data-tt-paste-open')) { const box = document.querySelector('[data-tt-paste]'); if (box) { box.hidden = !box.hidden; box.querySelector('textarea')?.focus(); } }
     if (b.hasAttribute('data-tt-parse')) { const g = parseTable(document.querySelector('[data-tt-text]')?.value); if (!g) { notice('표 모양을 못 찾았어. 요일이나 교시별로 줄을 나눠서 붙여줘.'); return; } draft = g; render(); }
@@ -337,7 +375,7 @@
   .wk-nav{display:inline-flex;gap:4px}.wk-nav button{padding:4px 10px}
   .wk-warn{background:#fff6e5;border-radius:12px;padding:10px 12px;font-size:13.5px}
   .wk-prep-item{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid #f0ebf8}.wk-prep-item input{margin-top:4px;width:18px;height:18px}
-  .wk-prep-item span{display:grid;gap:2px}.wk-prep-item small{color:#667085}.wk-prep-item.light{opacity:.7}.wk-note{font-size:12px;color:#8a839a}.wk-bag{margin:8px 0 0;font-size:13.5px}.wk-next{color:#5b3fd6!important}
+  .wk-prep-item span{display:grid;gap:2px}.wk-prep-item small{color:#667085}.wk-prep-item.light{opacity:.7}.wk-note{font-size:12px;color:#8a839a}.wk-bag{margin:8px 0 0;font-size:13.5px}.wk-next{color:#5b3fd6!important}.wk-light{margin:8px 0 0;font-size:13px;color:#8a839a}.wk-hint{margin:12px 0 0;font-size:13.5px;background:#f6f3ff;border-radius:12px;padding:10px 12px}.wk-hint button{min-height:34px;padding:4px 10px;margin-left:4px}.wk-fold-in summary{cursor:pointer;font-size:13.5px;color:#6250ce;margin:6px 0}.wk-prep-item{padding:7px 0}
   .wk-up-ways{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}.wk-file{cursor:pointer;display:inline-flex;align-items:center;padding:9px 14px;border-radius:12px;background:#5b3fd6;color:#fff;font-weight:700;font-size:14px}
   .wk-neis{display:inline-flex;gap:6px;align-items:center;font-size:14px}[data-tt-paste] textarea{width:100%;box-sizing:border-box;font:13px/1.5 ui-monospace,monospace}
   .wk-status{font-size:13px;color:#5b3fd6;min-height:1em;margin:4px 0}

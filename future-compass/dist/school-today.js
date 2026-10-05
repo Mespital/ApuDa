@@ -23,7 +23,24 @@
     return loading;
   }
 
+  function groupEvents(list) {             // 같은 일정이 며칠 이어지면 한 줄로
+    var out = [];
+    list.forEach(function (e) {
+      var last = out[out.length - 1];
+      if (last && last.title === e.title && !!last.off === !!e.off && Math.round((Date.parse(e.date) - Date.parse(last.end)) / 86400000) <= 3) last.end = e.date;
+      else out.push({ date: e.date, end: e.date, title: e.title, off: e.off });
+    });
+    return out;
+  }
+  function ownLessons(day) {               // 공부방에 올린 내 시간표
+    try {
+      var st = JSON.parse(localStorage.getItem('compass-study-v1') || '{}'), w = new Date(day + 'T12:00:00Z').getUTCDay() - 1;
+      var row = st.table && st.table[w]; if (!row) return null;
+      var a = row.slice(); while (a.length && !a[a.length - 1]) a.pop(); return a.some(Boolean) ? a : null;
+    } catch (e) { return null; }
+  }
   function render(box) {
+    var compact = box.hasAttribute('data-compact');
     var info = window.FC_SCHOOL ? window.FC_SCHOOL.info() : { labelLong: '우리 학교', grade: 1, phase: 'school' };
     var cfg = window.FC_SCHOOL ? window.FC_SCHOOL.config : { homepage: 'https://seocho.sen.hs.kr/', shortName: '학교' };
     var today = todayKST();
@@ -51,8 +68,9 @@
     var classNames = Object.keys(classes);
     var myClass = lsGet(CLASS_KEY) || '';
     if (myClass && classNames.indexOf(myClass) < 0) myClass = '';
-    var ttHtml;
-    if (!data.keyed) ttHtml = '<p class="st-muted">시간표는 나이스 인증키를 연결하면 반별로 보여. 지금은 공부방 시간표에 직접 적어 둬.</p>';
+    var ttHtml, own = ownLessons(off ? (CAL ? CAL.nextSchoolDay(today) : today) : today);
+    if (own && !myClass) ttHtml = '<p class="st-sub">' + (off ? esc(dayLabel(CAL.nextSchoolDay(today))) + ' 수업' : '오늘 수업') + '</p><ol class="st-tt">' + own.map(function (x) { return '<li>' + (esc(x) || '—') + '</li>'; }).join('') + '</ol>';
+    else if (!data.keyed) ttHtml = '<p class="st-muted">시간표는 나이스 인증키를 연결하면 반별로 보여. 지금은 공부방 시간표에 직접 적어 둬.</p>';
     else if (!classNames.length) ttHtml = '<p class="st-muted">이번 주 시간표가 아직 공개되지 않았어. 공부방 시간표에 직접 적어 둬도 돼.</p>';
     else {
       var sel = '<label class="st-class">반 <select data-st-class>' + '<option value="">선택</option>' + classNames.map(function (c) { return '<option ' + (c === myClass ? 'selected' : '') + ' value="' + esc(c) + '">' + esc(c) + '반</option>'; }).join('') + '</select></label>';
@@ -66,17 +84,26 @@
       }
     }
     // 학사일정
-    var events = (data.schedule || []).filter(function (e) { return e.date >= today; }).slice(0, 6);
+    var events = groupEvents((data.schedule || []).filter(function (e) { return e.date >= today; })).slice(0, compact ? 3 : 5);
     var evHtml = events.length ? '<ul class="st-ev">' + events.map(function (e) {
         var o = CAL ? CAL.offDay(e.date) : null, isOff = e.off || /공휴일|휴업|방학|개교기념/.test(e.title);
         var clash = !isOff && o && !o.weekend;
-        return '<li' + (isOff ? ' class="st-is-off"' : '') + '><b>' + esc(dayLabel(e.date)) + '</b> ' + (isOff ? '🌿 ' : '') + esc(e.title) + ' <span class="st-dday">' + dday(e.date) + '</span>' +
+        var when = e.end && e.end !== e.date ? dayLabel(e.date) + '~' + dayLabel(e.end) : dayLabel(e.date);
+        if (e.end && e.end !== e.date && e.date <= today) when = '~' + dayLabel(e.end);
+        return '<li' + (isOff ? ' class="st-is-off"' : '') + '><b>' + esc(when) + '</b> ' + (isOff ? '🌿 ' : '') + esc(e.title) + ' <span class="st-dday">' + dday(e.date) + '</span>' +
           (clash ? '<br><span class="st-clash">⚠ ' + esc(o.name) + '과 겹쳐. 실제 날짜는 학교 공지 확인</span>' : '') + '</li>';
       }).join('') + '</ul>' + (data.keyed ? '' : '<p class="st-muted">가까운 일정 일부만 보여. 전체는 학교 공지 확인.</p>')
       : '<p class="st-muted">앞으로 60일 안에 ' + esc(info.grade) + '학년 일정이 아직 없어.</p>';
-    var rest = CAL ? CAL.upcoming(CAL.add(today, 1), 75).slice(0, 4) : [];
+    var rest = CAL ? CAL.upcoming(CAL.add(today, 1), 75).slice(0, 3) : [];
     if (rest.length) evHtml += '<p class="st-rest"><b>다가오는 쉬는 날</b> ' + rest.map(function (r) { return esc(dayLabel(r.date)) + ' ' + esc(r.name); }).join(' · ') + '</p>';
     var updated = data.last_success_at ? new Date(data.last_success_at).toLocaleString('ko-KR', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : '';
+    if (compact) {
+      var mealLine = todayMeals.length ? todayMeals[0].dishes.slice(0, 4).map(esc).join(' · ') : nextMeal ? esc(dayLabel(nextMeal.date)) + ' ' + nextMeal.dishes.slice(0, 3).map(esc).join(' · ') : '정보 없음';
+      box.innerHTML = (off ? '<p class="st-off">🌿 오늘은 <b>' + esc(off.name) + '</b>' + (off.weekend ? '' : '이라 수업 없어') + '. 다음 등교 ' + esc(dayLabel(CAL.nextSchoolDay(today))) + '</p>' : '') +
+        '<p class="st-line">🍚 ' + mealLine + '</p>' + evHtml.replace('<p class="st-rest">', '<p class="st-rest" hidden>') +
+        '<p class="st-foot"><a href="./">학교 정보 자세히</a> · 시험 날짜는 학교 공지가 우선</p>';
+      return;
+    }
     box.innerHTML = head +
       '<div class="st-grid">' +
         '<div class="st-col"><h3>🍚 급식</h3>' + mealHtml + '</div>' +
@@ -106,6 +133,7 @@
     '.st-tt{margin:4px 0 0;padding-left:1.4em;font-size:14px;display:grid;gap:2px}.st-sub{margin:6px 0 0;font-size:12.5px;color:#667085}' +
     '.st-ev{margin:0;padding:0;list-style:none;display:grid;gap:6px;font-size:14px}.st-ev b{color:#5b3fd6;margin-right:4px}.st-dday{font-size:12px;color:#b4475a;font-weight:700}' +
     '.st-class{font-size:13px;display:inline-flex;gap:6px;align-items:center}.st-class select{font:inherit;padding:4px 8px;border-radius:8px;border:1px solid #d9d0ee}' +
+    '.st-card[data-compact]{padding:14px 16px;margin:0 0 14px}.st-line{margin:8px 0 6px;font-size:14px}.st-card[data-compact] .st-ev{gap:4px}.st-card[data-compact] .st-off{margin:0 0 6px}' +
     '.st-muted{color:#667085;font-size:13.5px;margin:4px 0}.st-foot{margin:12px 0 0;font-size:12px;color:#8a839a}.st-card a::after{content:none!important}' +
     '.st-off{margin:10px 0 0;padding:10px 12px;border-radius:12px;background:#eaf6ef;color:#1f5c40;font-size:14px}.st-is-off{color:#2f7a52}.st-clash{font-size:12px;color:#b4475a;font-weight:700}.st-rest{margin:10px 0 0;font-size:12.5px;color:#4a5568;line-height:1.6}.st-rest b{color:#2f7a52;margin-right:4px}' +
     '@media(max-width:760px){.st-grid{grid-template-columns:1fr}}' +
