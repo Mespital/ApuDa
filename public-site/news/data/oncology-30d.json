@@ -1,9 +1,9 @@
 {
   "version": "1.0",
-  "generated_at": "2026-10-04T18:04:44.977696+09:00",
+  "generated_at": "2026-10-05T18:05:04.674991+09:00",
   "window": {
-    "start": "2026-09-04T09:00:00+09:00",
-    "end": "2026-10-04T09:00:00+09:00",
+    "start": "2026-09-05T09:00:00+09:00",
+    "end": "2026-10-05T09:00:00+09:00",
     "days": 30,
     "timezone": "Asia/Seoul"
   },
@@ -22,6 +22,67 @@
     "자궁경부암"
   ],
   "items": [
+    {
+      "rank": 3,
+      "canonical_issue": "[초점] 같은 CDMO, 돈 붓는 곳은 달랐다…삼성·SK·롯데 '3색 승부' - 메디파나뉴스",
+      "title": "[초점] 같은 CDMO, 돈 붓는 곳은 달랐다…삼성·SK·롯데 '3색 승부'",
+      "category": [
+        "수가",
+        "m&a",
+        "인수"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-05T05:55:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "국내 대형 의약품 위탁개발생산(CDMO) 기업들의 경쟁무대가 항체의약품을 넘어 펩타이드와 항체약물접합체(ADC) 등 차세대 모달리티로 빠르게 넓어지고 있다. 특히 삼성바이오로직스와 SK팜테코가 서로 다른 분야에서 성장했음에도 최근 펩타이드에서 접점을 만들고 있다는 점이 눈에 띈다. 삼성바이오로직스가 세계",
+        "특히 삼성바이오로직스와 SK팜테코가 서로 다른 분야에서 성장했음에도 최근 펩타이드에서 접점을 만들고 있다는 점이 눈에 띈다.",
+        "삼성바이오로직스가 세계 최대 수준의 항체 생산능력을 기반으로 펩타이드 사업을 새롭게 추가하는 방식이라면 SK팜테코는 저분자 의약품과 화학합성에서 축적한 역량을 펩타이드로 확대하고 있다."
+      ],
+      "importance": "생산·투자 확대는 공급망 안정성과 글로벌 사업 확장, 중장기 생산능력 경쟁과 연결됩니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=418734"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=418734"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/418734_325987_4017.png",
+      "score": 18,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [
+          "ADC"
+        ],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": "치료와 직접 관련된 정보인지 기사 원문과 공식 자료를 함께 확인해 주세요.",
+        "patient_relevance_score": 0,
+        "patient_relevance_labels": [],
+        "industry_summary": null
+      },
+      "freshness": "today",
+      "age_days": 0
+    },
     {
       "rank": null,
       "canonical_issue": "오스코텍, 레이저티닙 다음은 '항내성'…퍼스트인클래스로 승부 - 메디파나뉴스",
@@ -75,7 +136,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
     },
     {
       "rank": null,
@@ -133,7 +194,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
     },
     {
       "rank": null,
@@ -190,7 +251,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 2
+      "age_days": 3
     },
     {
       "rank": 4,
@@ -249,7 +310,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 2
+      "age_days": 3
     },
     {
       "rank": null,
@@ -317,7 +378,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 2
+      "age_days": 3
     }
   ]
 }
