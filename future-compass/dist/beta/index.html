@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>학교나침반 베타 · 우리 아이 학교 일정, 빨간 날까지</title>
+<meta name="description" content="학교 이름만 고르면 급식·학사일정·공휴일과 휴업일을 한 화면에. 고등학생 학부모를 위한 학교 일정 도우미 베타.">
+<meta name="theme-color" content="#1B2A4A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="beta.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="./">학교나침반 <span>베타</span></a>
+  <a class="top-link" href="#join">대기자 신청</a>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-text">
+      <h1 id="hero-title">우리 아이 학교 일정,<br>빨간 날까지 알아서.</h1>
+      <p class="lede">학교 이름만 고르면 급식, 학사일정, 공휴일·대체공휴일, 학교 휴업일을 한 화면에 모아 드려요. 학년이 바뀌는 3월에는 알아서 다음 학년으로 넘어갑니다.</p>
+    </div>
+    <div class="week" id="week" aria-label="이번 주 달력"></div>
+  </section>
+
+  <section class="try" aria-labelledby="try-title">
+    <h2 id="try-title">지금 우리 학교로 확인해 보세요</h2>
+    <form class="pick" id="pick" autocomplete="off">
+      <label class="field grow"><span>학교 이름</span>
+        <input id="q" name="q" type="search" placeholder="예: 서초고" minlength="2" maxlength="20" required aria-describedby="q-help">
+      </label>
+      <label class="field"><span>학년</span>
+        <select id="grade" name="grade"><option value="1">1학년</option><option value="2">2학년</option><option value="3">3학년</option></select>
+      </label>
+      <button class="btn" type="submit">학교 찾기</button>
+      <p id="q-help" class="help">전국 고등학교를 나이스(교육정보 개방포털)에서 찾아요.</p>
+    </form>
+    <ul class="results" id="results" aria-live="polite"></ul>
+    <div class="board" id="board" aria-live="polite" hidden></div>
+  </section>
+
+  <section class="what" aria-labelledby="what-title">
+    <h2 id="what-title">베타에서 함께 만들 기능</h2>
+    <dl class="timetable">
+      <div><dt>매일</dt><dd><b>오늘의 학교</b>급식, 학년별 학사일정, 다가오는 쉬는 날을 한 장으로.</dd></div>
+      <div><dt>매주</dt><dd><b>주간 스케줄</b>시간표를 사진으로 올리면 월~금 수업과 저녁 예습 과목을 정리해요. 공휴일은 자동으로 빠집니다.</dd></div>
+      <div><dt>시험 전</dt><dd><b>시험 기간 플래너</b>중간·기말 날짜가 잡히면 과목별로 공부 분량을 나눠 드려요.</dd></div>
+      <div><dt>고1 2학기</dt><dd><b>과목 선택 도우미</b>진로 관심사에 맞는 고2·고3 선택 과목 조합을 함께 살펴봐요.</dd></div>
+      <div><dt>부모님</dt><dd><b>주간 요약</b>다음 주 쉬는 날과 시험·수행평가 D-day를 일요일 저녁에 한 번에.</dd></div>
+    </dl>
+  </section>
+
+  <section class="join" id="join" aria-labelledby="join-title">
+    <h2 id="join-title">베타 대기자 신청</h2>
+    <p class="lede">먼저 써 볼 가족을 모시고 있어요. 열리면 이메일로 알려 드립니다.</p>
+    <form id="join-form" novalidate>
+      <label class="field"><span>이메일</span><input name="email" type="email" required maxlength="120" placeholder="parent@example.com"></label>
+      <div class="row2">
+        <label class="field"><span>신청하시는 분</span><select name="role"><option>학부모</option><option>학원·공부방</option><option>교사</option><option>기타</option></select></label>
+        <label class="field"><span>자녀 학년</span><select name="grade"><option>고1</option><option>고2</option><option>고3</option><option>중3</option><option>기타</option></select></label>
+      </div>
+      <label class="field"><span>학교 <small>(선택)</small></span><input name="school" maxlength="40" placeholder="위에서 학교를 고르면 자동으로 채워져요"></label>
+      <input type="hidden" name="schoolCode">
+      <label class="field"><span>가장 필요한 기능 <small>(선택)</small></span><textarea name="wish" rows="3" maxlength="300" placeholder="예: 수행평가 마감을 놓치지 않게 알려 주면 좋겠어요"></textarea></label>
+      <label class="hp" aria-hidden="true">웹사이트<input name="website" tabindex="-1" autocomplete="off"></label>
+      <label class="check"><input type="checkbox" name="adult" required> 보호자(만 19세 이상) 또는 교육기관 담당자입니다.</label>
+      <label class="check"><input type="checkbox" name="agree" required> 개인정보 수집·이용에 동의합니다.
+        <details><summary>내용 보기</summary>
+          <p>수집 항목: 이메일, 신청 구분, 자녀 학년, 학교(선택), 바라는 점(선택)<br>이용 목적: 베타 오픈 안내와 기능 의견 수렴<br>보유 기간: 베타 종료 후 즉시 파기(최대 1년)<br>동의하지 않으셔도 체험 화면은 그대로 쓰실 수 있어요.</p>
+        </details>
+      </label>
+      <button class="btn" type="submit">대기자 신청하기</button>
+      <p class="form-msg" id="join-msg" role="status"></p>
+    </form>
+  </section>
+</main>
+
+<footer class="foot">
+  <p>학교 정보 출처: 나이스 교육정보 개방포털. 공휴일: 관공서의 공휴일에 관한 규정 기준(임시공휴일은 지정 후 반영). 시험·행사 날짜는 학교 공지가 우선입니다.</p>
+  <p>학교나침반 베타 · 운영 ApuDa</p>
+</footer>
+
+<script src="../holidays-kr.js"></script>
+<script src="beta.js"></script>
+</body>
+</html>
