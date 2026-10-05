@@ -203,7 +203,7 @@ def main():
     except Exception as e:
         status['special_days'] = 'error: ' + type(e).__name__
     result['status'] = status
-    result['secrets_seen'] = {k: os.environ.get('SEEN_' + k, '?') for k in ('NEIS', 'VPS', 'DATA')}  # 값 아님, 있음/없음만
+    result['secrets_seen'] = {k: os.environ.get('SEEN_' + k, '?') for k in ('NEIS', 'DATA')}  # 값 아님, 있음/없음만
     if any(v == 'ok' for v in status.values()):
         result['last_success_at'] = now.isoformat()
     else:
