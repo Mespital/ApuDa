@@ -22,6 +22,7 @@ var SITES=[
  {id:'library',fl:'2F',ico:'📚',name:'암 정보 서재 (12종 가이드북)',url:'/#floor-2',desc:'암종별 첫 30일 책·FAQ·완전판',kw:['서재','가이드북','책','첫30일','첫 30일','미니','웹북','도서']},
  {id:'map',fl:'2F',ico:'🗺️',name:'치료결정 지도',url:'/library/treatment-map/',desc:'왜 사람마다 치료가 다른지, 암종별 6단계',kw:['치료결정','치료지도','치료순서','치료과정','병기','어떤치료','치료방법']},
  {id:'drugs',fl:'2F',ico:'💊',name:'항암제 Drug Hub',url:'/library/drugs/',desc:'약 기전·부작용·공급상태·최근 뉴스',kw:['항암제','약정보','약이름','부작용','공급부족','품절','표적치료제','면역항암제','drug']},
+ {id:'regimens',fl:'2F',ico:'💉',name:'항암 요법별 관리 가이드',url:'/library/regimens/',desc:'주기·백혈구 낮은 시기·부작용 관리·연락 기준',kw:['항암요법','요법','폴폭스','folfox','젤록스','폴피리녹스','r-chop','알촙','항암주기','주기','다음항암','항암일정','nadir','호중구감소','부작용관리','며칠째']},
  {id:'markers',fl:'2F',ico:'🧬',name:'바이오마커 Navigator',url:'/library/biomarkers/',desc:'왜 이 검사를 하는지, 결과와 치료의 연결',kw:['바이오마커','유전자검사','유전자','ngs','변이','표지자','검사결과','결과지']},
  {id:'comic',fl:'2F',ico:'🖼️',name:'4컷 만화 암 정보',url:'https://product.kyobobook.co.kr/detail/S000219012641',ext:1,desc:'검사·병기·치료를 그림으로 쉽게',kw:['만화','4컷','그림으로']},
  {id:'support',fl:'3F',ico:'🤝',name:'암 환자 지원 정보',url:'/support/',desc:'산정특례·의료비·지원제도',kw:['산정특례','의료비','지원','지원금','치료비','비용','돈','보험','재난적','본인부담','장애','복지','휴직']},
@@ -84,7 +85,7 @@ function link(url,label,primary){var ext=/^https?:/.test(url)&&url.indexOf(locat
 function siteCard(s){return '<div class="site"><div class="si">'+s.ico+'</div><div class="sb"><b>'+(s.fl?'<em>'+s.fl+'</em> ':'')+esc(s.name)+'</b><small>'+esc(s.desc)+'</small></div>'+link(s.url,'열기')+'</div>'}
 function q(label,text){return '<button class="qb" data-say="'+esc(text||label)+'">'+esc(label)+'</button>'}
 function cancerCard(c){var s=c[0],n=c[1];return '<b>'+n+'</b> 관련해서 이렇게 볼 수 있어요.<div class="links">'+
-  link('/library/mini/?cancer='+s,'📖 암진단 후 첫 30일 - '+n,true)+link('/library/faq/?cancer='+s,'❓ '+n+' FAQ')+link('/library/treatment-map/?cancer='+s,'🗺️ '+n+' 치료결정 지도')+link('/library/drugs/?cancer='+s,'💊 '+n+' 관련 항암제')+link('/library/biomarkers/?cancer='+s,'🧬 '+n+' 관련 바이오마커')+'</div>'}
+  link('/library/mini/?cancer='+s,'📖 암진단 후 첫 30일 - '+n,true)+link('/library/faq/?cancer='+s,'❓ '+n+' FAQ')+link('/library/treatment-map/?cancer='+s,'🗺️ '+n+' 치료결정 지도')+link('/library/drugs/?cancer='+s,'💊 '+n+' 관련 항암제')+link('/library/biomarkers/?cancer='+s,'🧬 '+n+' 관련 바이오마커')+link('/library/regimens/?cancer='+s,'💉 '+n+' 항암 요법 가이드')+'</div>'}
 function cancerPicker(){return '어떤 암종을 볼까요?<div class="qr">'+CANCER.map(function(c){return q(c[1])}).join('')+'</div>'}
 function menu(){var groups=[['1F 확인센터',['cancercheck','checkup']],['2F 암 정보 서재',['library','map','drugs','markers','comic']],['3F 지원',['support']],['4F 치료 동행',['note','care']],['5F 커뮤니티',['cafe']],['뉴스',['news','oncnews']],['ApuDa 패밀리·계정',['pet','farm','my']],['안내',['home','about']]];
   return '<b>ApuDa 전체 메뉴</b>'+groups.map(function(g){return '<div class="grp">'+g[0]+'</div>'+g[1].map(function(id){return siteCard(SITE[id])}).join('')}).join('')}

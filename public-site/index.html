@@ -1180,7 +1180,7 @@
         '<div class="book-choice-item"><span class="book-choice-num">2</span><span class="book-choice-copy"><b>'+esc(name)+' FAQ</b><small>환자·보호자가 진료실에서 자주 확인하는 질문</small></span><span class="book-choice-actions"><a href="/library/faq/?cancer='+slug+'">FAQ 보기</a></span></div>'+
         '<div class="book-choice-item full soon"><span class="book-choice-num">3</span><span class="book-choice-copy"><b>암진단 후 첫 30일 완전판 - '+esc(name)+'</b><small>준비중입니다.</small></span><span class="book-choice-actions full-soon"><span class="full-thumb" style="--cover:url(\'assets/books/'+slug+'.webp\')"></span><span class="soon-badge">준비중입니다</span></span></div>'+
       '</div><div class="book-choice-note">앞부분은 코드 없이 미리 볼 수 있어요. 책 전체는 인스타그램 <b>@apuda.app</b> 팔로우 → 이벤트 게시물에 “30일” 댓글 → DM으로 받은 코드를 입력하면 다운로드돼요.</div>'+
-      '<div class="book-more"><span>'+esc(name)+' 더 알아보기</span><a href="/library/treatment-map/?cancer='+slug+'">🗺️ 치료결정 지도</a><a href="/library/drugs/?cancer='+slug+'">💊 관련 항암제</a><a href="/library/biomarkers/?cancer='+slug+'">🧬 관련 바이오마커</a></div></section>';
+      '<div class="book-more"><span>'+esc(name)+' 더 알아보기</span><a href="/library/treatment-map/?cancer='+slug+'">🗺️ 치료결정 지도</a><a href="/library/drugs/?cancer='+slug+'">💊 관련 항암제</a><a href="/library/biomarkers/?cancer='+slug+'">🧬 관련 바이오마커</a><a href="/library/regimens/?cancer='+slug+'">💉 항암 요법 가이드</a></div></section>';
     document.body.appendChild(root);
     var close=function(){root.remove()};
     root.querySelector('.book-choice-x').onclick=close;
@@ -1219,6 +1219,7 @@
         '<a class="floor2-service" href="'+esc(d.links[0][1])+'" target="_blank" rel="noopener"><span class="floor2-service-icon">📚</span><span class="floor2-service-copy"><b>4컷 만화 암 정보</b><small>검사·병기·치료를 그림으로 쉽게</small></span></a>'+
         '<a class="floor2-service" href="/library/treatment-map/"><span class="floor2-service-icon">🗺️</span><span class="floor2-service-copy"><b>치료결정 지도<em>NEW</em></b><small>왜 사람마다 치료가 다른지 12암종별로 이해</small></span></a>'+
         '<a class="floor2-service" href="/library/drugs/"><span class="floor2-service-icon">💊</span><span class="floor2-service-copy"><b>항암제 Drug Hub<em>NEW</em></b><small>약물·기전·암종·공급상태·최근 뉴스를 한곳에</small></span></a>'+
+        '<a class="floor2-service" href="/library/regimens/"><span class="floor2-service-icon">💉</span><span class="floor2-service-copy"><b>항암 요법별 관리 가이드<em>NEW</em></b><small>주기·백혈구 낮은 시기·부작용 관리·연락 기준</small></span></a>'+
         '<a class="floor2-service" href="/library/biomarkers/"><span class="floor2-service-icon">🧬</span><span class="floor2-service-copy"><b>바이오마커 Navigator<em>NEW</em></b><small>왜 이 검사를 하는지, 결과가 치료와 어떻게 연결되는지</small></span></a>'+
         '<div class="floor2-note">2F는 <b>“내 암을 이해하는 층”</b>입니다. 모든 자료는 환자교육용이며, 실제 치료 선택은 담당 의료진과 상의하세요.</div></aside>'+
       '</div><div class="p-scroll-tip">책 표지 클릭: 암종별 가이드 · 건물 클릭: 층 이동</div>';

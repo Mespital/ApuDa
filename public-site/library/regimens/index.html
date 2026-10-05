@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f9ff">
+<title>항암 요법별 관리 가이드 · ApuDa</title>
+<meta name="description" content="12암종 대표 항암 요법의 주기, 백혈구가 낮아지는 시기, 시기별 주의사항, 부작용 관리와 병원에 연락할 기준을 한눈에">
+<meta property="og:title" content="항암 요법별 관리 가이드 · ApuDa">
+<meta property="og:description" content="12암종 대표 항암 요법의 주기·시기별 주의사항·부작용 관리·연락 기준">
+<meta property="og:image" content="/og.jpg">
+<link rel="icon" href="/favicon-32.png">
+<style>
+:root{--bg:#f6f9ff;--ink:#14213d;--muted:#66758c;--line:#e3e9f3;--blue:#1467e8;--blue2:#0b4fc0;--sky:#eaf2ff;--red:#d92d20;--redbg:#fdecea;--amber:#b54708;--amberbg:#fff4e0;--green:#067647;--greenbg:#e7f6ee}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Pretendard","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-size:16px;line-height:1.65}
+a{color:var(--blue2)}
+.top{position:sticky;top:0;z-index:5;background:rgba(246,249,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .in{max-width:1080px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:10px}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink);font-weight:900}
+.logo i{width:32px;height:32px;border-radius:10px;background:var(--blue);color:#fff;display:grid;place-items:center;font-style:normal}
+.top .sp{flex:1}.top a.b{border:1px solid var(--line);background:#fff;border-radius:10px;padding:7px 11px;font-weight:800;font-size:14px;text-decoration:none;color:var(--ink)}
+.wrap{max-width:1080px;margin:0 auto;padding:18px 16px 80px}
+h1{font-size:clamp(24px,5vw,34px);letter-spacing:-.04em;line-height:1.25;margin:10px 0 6px}
+.lead{color:var(--muted);margin:0 0 14px}
+.notice{background:var(--amberbg);color:#7a2e0e;border-radius:14px;padding:12px 14px;font-size:14px;margin-bottom:16px}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding:2px 0 10px;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:0 0 auto;border:1px solid var(--line);background:#fff;border-radius:999px;min-height:42px;padding:0 15px;font:inherit;font-weight:900;font-size:15px;color:#33445e;cursor:pointer}
+.tabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.phase{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 16px;margin-bottom:16px}
+.phase h2{font-size:17px;margin:0 0 8px}
+.ph{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.ph div{border-radius:12px;padding:10px;background:var(--sky);font-size:14px}.ph div b{display:block;font-size:14px}.ph div.n{background:var(--redbg)}
+@media(max-width:720px){.ph{grid-template-columns:1fr 1fr}}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media(max-width:820px){.grid{grid-template-columns:1fr}}
+.rx{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:0 4px 18px rgba(30,55,90,.05)}
+.rx h3{margin:6px 0 2px;font-size:18px;letter-spacing:-.02em;line-height:1.35}
+.rx .ko{color:var(--muted);font-size:14px;font-weight:700}
+.pill{display:inline-flex;padding:3px 10px;border-radius:999px;font-size:13px;font-weight:900;background:var(--sky);color:var(--blue2)}
+.pill.red{background:var(--redbg);color:var(--red)}.pill.green{background:var(--greenbg);color:var(--green)}.pill.gray{background:#eef1f5;color:#4a5a70}
+table{width:100%;border-collapse:collapse;margin:10px 0 4px;font-size:14px}th{width:92px;text-align:left;vertical-align:top;color:var(--muted);padding:7px 8px 7px 0;border-top:1px solid var(--line)}td{padding:7px 0;border-top:1px solid var(--line)}
+.cyc{display:flex;gap:2px;margin:10px 0 2px}.cyc i{flex:1;height:16px;border-radius:3px;background:#eef1f5}.cyc i.d{background:var(--blue)}.cyc i.n{background:#f6c9c4}
+.lg{font-size:13px;color:var(--muted);display:flex;gap:12px;flex-wrap:wrap}.lg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+details{margin-top:10px;border-top:1px solid var(--line);padding-top:8px}summary{cursor:pointer;font-weight:900;color:var(--blue2);min-height:36px;display:flex;align-items:center}
+.se{padding:8px 0;border-top:1px dashed var(--line);font-size:14px}.se:first-of-type{border-top:0}.se b{display:block}.se .c{color:var(--red);font-weight:800;margin-top:2px}
+.tl{font-size:14px;margin:6px 0 0;padding-left:18px}.tl li{margin:3px 0}
+.pre{background:var(--sky);border-radius:12px;padding:9px 11px;font-size:14px;margin-top:10px}
+.cta{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}.cta a{background:var(--blue);color:#fff;border-radius:12px;padding:11px 16px;font-weight:900;text-decoration:none}.cta a.l{background:#fff;color:var(--blue2);border:1px solid var(--line)}
+.foot{font-size:13px;color:var(--muted);margin-top:26px;line-height:1.7}
+</style>
+</head>
+<body>
+<header class="top"><div class="in"><a class="logo" href="/"><i>A</i>ApuDa</a><span class="sp"></span><a class="b" href="/library/drugs/">💊 Drug Hub</a><a class="b" href="/note/">📘 노트</a></div></header>
+<main class="wrap">
+  <div class="pill red">2F · 항암 치료 동행</div>
+  <h1>항암 요법별 관리 가이드</h1>
+  <p class="lead">12암종 대표 항암 요법의 <b>주기 · 백혈구가 낮아지는 시기 · 시기별 주의사항 · 부작용 관리 · 병원에 연락할 기준</b>을 정리했어요.</p>
+  <div class="notice">⚠️ 일반적인 일정이에요. 실제 용량·일정·검사 기준은 환자와 병원마다 다르며 <b>담당 의료진 안내가 항상 우선</b>입니다. 항암 중 <b>38.0℃ 이상 열</b>이 나면 해열제 먹기 전에 바로 치료병원에 연락하세요.</div>
+  <section class="phase"><h2>세포독성 항암 한 주기의 흐름 (대표적인 3주 주기)</h2><div class="ph" id="gen"></div></section>
+  <div class="tabs" id="tabs" role="tablist"></div>
+  <div class="grid" id="list"></div>
+  <div class="cta"><a href="/note/">📘 암환자 노트에 내 요법 등록하기</a><a class="l" href="/library/drugs/">💊 항암제 Drug Hub</a><a class="l" href="/library/treatment-map/">🗺️ 치료결정 지도</a></div>
+  <p class="foot">ApuDa 항암 요법 가이드 v1.0 · 2026-10-05 · 가상 종양내과 감수 패널(종양내과·혈액종양·종양 전문간호사·종양약제) 검토본이며 실제 전문의 감수 전 단계입니다. 용량 정보는 의도적으로 싣지 않았습니다. 이 자료는 환자교육용이며 진단·처방을 대신하지 않습니다.</p>
+</main>
+<script src="/assets/apuda-regimens.js"></script>
+<script>
+(function(){
+var R=window.APUDA_RX,SL={lung:'폐암',breast:'유방암',stomach:'위암',colorectal:'대장암',liver:'간암',pancreas:'췌장암',biliary:'담도암',thyroid:'갑상선암',prostate:'전립선암',kidney:'신장암',cervical:'자궁경부암',lymphoma:'림프종'};
+function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]})}
+function cyc(r){if(r.oral&&r.cycle)return r.oral.on+'일 복용 · '+r.oral.off+'일 휴약 ('+r.cycle+'일 주기)';if(!r.cycle)return '매일 또는 정해진 간격';var d=r.days||[1];return (r.cycle%7===0?(r.cycle/7)+'주':r.cycle+'일')+' 간격'+(d.length>1?' · '+d.join('·')+'일째 투여':'')}
+document.getElementById('gen').innerHTML=R.GEN.map(function(g){return '<div'+(g[0]===7?' class="n"':'')+'><b>D+'+g[0]+(g[1]>30?' ~ 다음 주기':'~'+g[1])+'</b>'+esc(g[2])+'</div>'}).join('');
+var q=new URLSearchParams(location.search).get('cancer')||'',cur=SL[q]||(R.CANCERS.indexOf(q)>=0?q:'폐암');
+function tabs(){document.getElementById('tabs').innerHTML=R.CANCERS.map(function(c){return '<button role="tab" aria-selected="'+(c===cur)+'" class="'+(c===cur?'on':'')+'" data-c="'+c+'">'+c+'</button>'}).join('')}
+function card(r){
+  var bar='';if(r.cycle&&r.cycle<=42){var dz=r.days||[1];for(var d=0;d<r.cycle;d++){var c=(dz.indexOf(d+1)>=0||r.oral&&d<r.oral.on)?'d':(r.nadir&&d>=r.nadir[0]&&d<=r.nadir[1])?'n':'';bar+='<i class="'+c+'"></i>'}}
+  return '<article class="rx"><span class="pill'+(r.type==='면역'?' green':r.type==='세포독성'?' red':r.type==='호르몬'?' gray':'')+'">'+esc(r.type)+'</span><h3>'+esc(r.name)+'</h3><div class="ko">'+esc(r.ko)+'</div>'+
+  '<table><tr><th>투여</th><td>'+esc(r.how)+'</td></tr><tr><th>주기</th><td>'+esc(cyc(r))+'</td></tr><tr><th>백혈구 저하</th><td>'+(r.nadir?'대개 D+'+r.nadir[0]+'~'+r.nadir[1]+' 무렵':'뚜렷한 시기 없음 (38.0℃면 똑같이 연락)')+'</td></tr></table>'+
+  (bar?'<div class="cyc" aria-hidden="true">'+bar+'</div><div class="lg"><span><i style="background:#1467e8"></i>투여·복용</span><span><i style="background:#f6c9c4"></i>백혈구 낮아지기 쉬움</span></div>':'')+
+  '<details><summary>시기별 주의사항</summary><ul class="tl">'+r.tl.map(function(x){return '<li><b>'+(x[1]>=99?'D+'+x[0]+' 이후':'D+'+x[0]+'~'+x[1])+'</b> '+esc(x[2])+'</li>'}).join('')+'</ul></details>'+
+  '<details><summary>부작용 관리와 연락 기준 ('+r.se.length+')</summary>'+r.se.map(function(s){return '<div class="se"><b>'+esc(s.t)+'</b>'+esc(s.care)+(s.call?'<div class="c">📞 '+esc(s.call)+'</div>':'')+'</div>'}).join('')+'</details>'+
+  (r.pre?'<div class="pre">📌 '+esc(r.pre)+'</div>':'')+'</article>'}
+function list(){var a=R.RX.filter(function(r){return r.cancers.indexOf(cur)>=0}).sort(function(a,b){return (a.cancers[0]===cur?0:1)-(b.cancers[0]===cur?0:1)});document.getElementById('list').innerHTML=a.map(card).join('')}
+document.getElementById('tabs').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;cur=b.dataset.c;tabs();list();var s=Object.keys(SL).find(function(k){return SL[k]===cur});history.replaceState(null,'','?cancer='+(s||cur))});
+tabs();list();
+})();
+</script>
+<script src="/assets/apuda-bot.js" data-context="drugs" defer></script>
+</body>
+</html>
