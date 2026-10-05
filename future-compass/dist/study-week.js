@@ -23,7 +23,10 @@
 
   /* ---------- 예습 ---------- */
   const NO_PREP = /체육|음악|미술|창체|창의|자율|동아리|봉사|진로활동|스포츠|조회|종례/;
-  function tipFor(s) {
+  const ABBR_TIP = { 공국: '국어', 공수: '수학', 공영: '영어', 통사: '통합사회', 통과: '통합과학', 한사: '한국사', 과탐: '과학탐구실험', 기가: '기술가정' };
+  function tipFor(raw) {
+    const base = String(raw).replace(/[A-D1-4]$/, ''), s = (ABBR_TIP[base] ?? '') || raw;
+    if (/^진로/.test(raw)) return '진로 활동 준비물·과제만 확인';
     if (NO_PREP.test(s)) return '준비물만 확인';
     if (/국어|문학|독서|화법|작문|언어/.test(s)) return '다음 본문 한 번 소리 내 읽고, 모르는 낱말 3개 표시';
     if (/수학|미적|기하|확률|통계/.test(s)) return '다음 차시 개념 박스 읽고 예제 1개 직접 풀어보기';
@@ -56,11 +59,11 @@
     const real = items.filter(x => !x.light), mins = Math.min(60, real.length * 10);
     const when = gap(nd) === 1 ? '내일' : gap(nd) === 0 ? '오늘' : label(nd);
     const skipped = gap(nd) > 1 ? ' <span class="wk-note">(' + esc(uniq([...Array(gap(nd) - 1)].map((_, i) => addDays(today(), i + 1)).map(offDay).filter(o => o && !o.weekend).map(o => o.name)).join(', ') || '주말') + ' 지나고)</span>' : '';
-    const bag = state.bags[rowOf(nd)] || '';
+    const bag = state.bags[rowOf(nd)] || '', teachers = lsGet(TEACHER_KEY, {}) || {};
     return `<section class="card wk-prep"${compact ? ' data-prep-compact' : ''}><div class="section-title"><h2>📘 ${esc(when)} ${esc(label(nd))} 예습</h2><span class="badge">${real.length ? '약 ' + mins + '분' : '가볍게'}</span></div>
       <p class="muted">다음 등교일 시간표 기준이야${skipped}. 과목마다 10분이면 충분해.</p>
       ${examDay.length ? `<p class="wk-warn">📝 그날 학교 일정: ${esc(examDay.join(', '))}. 예습보다 시험 과목 마무리가 먼저야.</p>` : ''}
-      ${items.length ? items.map(x => `<label class="wk-prep-item${x.light ? ' light' : ''}"><input type="checkbox" data-prep="${esc(nd)}" data-subject="${esc(x.s)}" ${done.includes(x.s) ? 'checked' : ''}><span><b>${esc(x.s)}</b>${x.unit ? ` · ${esc(x.unit)}` : ''}${x.pages ? ` <small>(${esc(x.pages)})</small>` : ''}<small>${x.exam ? '🧩 ' + esc(x.exam.title) + ' D-' + gap(x.exam.date) + ' · 범위 복습을 먼저 해봐' : esc(x.tip)}</small></span></label>`).join('') : '<p class="muted">그날 시간표가 비어 있어.</p>'}
+      ${items.length ? items.map(x => `<label class="wk-prep-item${x.light ? ' light' : ''}"><input type="checkbox" data-prep="${esc(nd)}" data-subject="${esc(x.s)}" ${done.includes(x.s) ? 'checked' : ''}><span><b>${esc(x.s)}${teachers[x.s] ? ` <small>${esc(teachers[x.s])} 선생님</small>` : ''}</b>${x.unit ? ` · ${esc(x.unit)}` : ''}${x.pages ? ` <small>(${esc(x.pages)})</small>` : ''}<small>${x.exam ? '🧩 ' + esc(x.exam.title) + ' D-' + gap(x.exam.date) + ' · 범위 복습을 먼저 해봐' : esc(x.tip)}</small></span></label>`).join('') : '<p class="muted">그날 시간표가 비어 있어.</p>'}
       ${bag ? `<p class="wk-bag">🎒 준비물: ${esc(bag)}</p>` : ''}
       ${!Object.keys(plusData().courses || {}).length ? '<p class="muted">시간표 탭에서 과목별 단원·페이지를 적으면 예습 범위가 더 정확해져.</p>' : ''}</section>`;
   }
@@ -105,11 +108,41 @@
 
   /* ---------- 시간표 올리기 ---------- */
   const KNOWN = ['국어', '수학', '영어', '통합사회', '통합과학', '한국사', '과학탐구실험', '정보', '체육', '음악', '미술', '기술가정', '한문', '일본어', '중국어', '창체', '자율', '동아리', '진로', '공통국어', '공통수학', '공통영어', '통합사회1', '통합사회2', '통합과학1', '통합과학2', '한국사1', '한국사2', '과학탐구실험1', '과학탐구실험2', '공통국어1', '공통국어2', '공통수학1', '공통수학2', '공통영어1', '공통영어2'];
+  // 학교 시간표 줄임말(과목 이름은 학교 표기 그대로 저장하고, 예습 팁만 원래 과목으로 연결)
+  const ABBR = { 공국: '국어', 공수: '수학', 공영: '영어', 통사: '통합사회', 통과: '통합과학', 한사: '한국사', 과탐: '과학탐구실험', 기가: '기술가정', 생설: '', 진로: '', 창체: '', 정보: '정보' };
+  const BASES = [...new Set([...KNOWN, ...Object.keys(ABBR)])];
+  const TEACHER_KEY = 'fc_teachers_v1';
+  let draftTeachers = {};
   const DAY_RE = /^(월|화|수|목|금)(요일)?$/;
+  function snapSubject(raw) {
+    const t = String(raw || '').replace(/\s+/g, '').replace(/[^가-힣A-Za-z0-9]/g, '');
+    if (!t) return '';
+    if (/^[월화수목금](요일)?$/.test(t) || /^\d+(교시)?\d*$/.test(t) || /^교시$/.test(t)) return t;
+    const OCRSUF = { 스: 'A', 쓰: 'A', 시: 'A', '^': 'A', '&': 'A', 8: 'B', ㅇ: 'C', 0: 'D', O: 'D', o: 'D', ')': 'D' };
+    const raw2 = String(raw || '').replace(/\s+/g, '');
+    if (raw2.length >= 3 && OCRSUF[raw2.slice(-1)] && BASES.some(k => k.length === 2 && lev(raw2.slice(0, -1), k) <= 1) && !KNOWN.includes(raw2)) return snapSubject(raw2.slice(0, -1)) + OCRSUF[raw2.slice(-1)];
+    const m = t.match(/^(.*?[가-힣])([A-Da-d1-4])?$/); if (!m) return t.slice(0, 40);
+    const base = m[1], suf = (m[2] || '').toUpperCase();
+    if (BASES.includes(base)) return base + suf;
+    let best = '', bd = 9; for (const k of BASES) { const d = lev(base, k); if (d < bd) { bd = d; best = k; } }
+    return (bd <= (best.length <= 2 ? 1 : Math.floor(best.length / 3)) ? best : base) + suf;
+  }
+  // "공영A 오가영" / "공영A\n오가영" → {s:'공영A', t:'오가영'}
+  function splitCell(raw) {
+    const pm = String(raw || '').trim().match(/^(.+?)\s*[(（]\s*([가-힣]{2,4})\s*[)）]$/);   // 공영A(오가영)
+    if (pm) return { s: snapSubject(pm[1]), t: pm[2] };
+    const parts = String(raw || '').split(/[\n\r]+|\s+/).map(x => x.trim()).filter(Boolean);
+    if (!parts.length) return { s: '', t: '' };
+    if (parts.length >= 2 && /^[가-힣]{2,4}$/.test(parts[parts.length - 1])) {
+      const subj = parts.slice(0, -1).join(''), last = parts[parts.length - 1], snapped = snapSubject(subj);
+      if (!BASES.includes(last) && !BASES.includes(subj + last) && snapped) return { s: snapped, t: last };
+    }
+    return { s: snapSubject(parts.join('')), t: '' };
+  }
   function cleanCell(t) {
-    t = String(t || '').replace(/^\s*\d+\s*(교시)?[.)]?\s*/, '').replace(/[|_~`'"“”‘’]/g, '').trim();
-    if (/^\d+(교시)?$/.test(t) || DAY_RE.test(t) || /^교시$/.test(t)) return '';
-    return t.slice(0, 40);
+    t = String(t || '').replace(/\(\s*\d{1,2}:\d{2}\s*\)/g, '').replace(/^\s*\d+\s*(교시)?[.)]?\s*/, '').replace(/[|_~`'"“”‘’]/g, '').trim();
+    if (/^\d+(교시)?\d*$/.test(t) || DAY_RE.test(t) || /^교시$/.test(t)) return '';
+    return t.slice(0, 60);
   }
   function mergeTokens(tokens) {
     const out = [];
@@ -126,13 +159,16 @@
     return parts;
   }
   function parseTable(text) {
+    draftTeachers = {};
+    text = String(text || '').replace(/"([^"]*)"/g, (_, x) => x.replace(/\s*\n\s*/g, ' '));
+    const put = (grid, d, j, raw) => { const c = splitCell(raw); grid[d][j] = c.s; if (c.s && c.t) draftTeachers[c.s] = c.t; };
     const lines = String(text || '').split(/\r?\n/).map(l => l.replace(/[^\S\t\n]+/g, m => m.length > 1 ? '  ' : ' ').replace(/^ +| +$/g, '').replace(/^\t+(?=[월화수목금])/, '')).filter(l => /[가-힣A-Za-z]/.test(l));
     const grid = Array.from({ length: 5 }, () => Array(7).fill(''));
     if (!lines.length) return null;
     // 1) 줄마다 요일로 시작: "월 국어 수학 ..."
     const byDay = lines.filter(l => /^(월|화|수|목|금)(요일)?[\s:：\t]/.test(l));
     if (byDay.length >= 3) {
-      byDay.forEach(l => { const d = '월화수목금'.indexOf(l[0]); const cells = splitLine(l.replace(/^(월|화|수|목|금)(요일)?[\s:：]*/, '')).map(cleanCell).filter(Boolean); cells.slice(0, 7).forEach((c, j) => grid[d][j] = c); });
+      byDay.forEach(l => { const d = '월화수목금'.indexOf(l[0]); const cells = splitLine(l.replace(/^(월|화|수|목|금)(요일)?[\s:：]*/, '')).map(cleanCell).filter(Boolean); cells.slice(0, 7).forEach((c, j) => put(grid, d, j, c)); });
       return grid;
     }
     // 2) 머리줄이 요일, 이후 줄이 교시
@@ -145,7 +181,7 @@
       if (cells[0] === '' && (cells.length > 5 || /^\s*\d/.test(l))) cells = cells.slice(1);
       if (!l.includes('\t')) cells = cells.filter(Boolean);
       if (cells.filter(Boolean).length < (l.includes('\t') || /^\s*\d/.test(l) ? 1 : 2)) continue;
-      cells.slice(0, 5).forEach((c, d) => grid[d][p] = c);
+      cells.slice(0, 5).forEach((c, d) => put(grid, d, p, c));
       p++;
     }
     return grid.some(r => r.some(Boolean)) ? grid : null;
@@ -168,7 +204,7 @@
       </div>
       <div data-tt-paste hidden><textarea data-tt-text rows="6" placeholder="엑셀·한글·카톡에서 시간표를 복사해 붙여넣어.&#10;예)&#10;    월   화   수   목   금&#10;1  국어  수학  영어  ...&#10;또는&#10;월 국어 수학 영어 통합사회 ..."></textarea><button data-tt-parse class="primary">읽기</button></div>
       <p class="wk-status" data-tt-status>${ocrBusy ? '사진에서 글자를 읽는 중…' : ''}</p>
-      ${draft ? `<div class="wk-draft"><p><b>읽은 시간표</b> · 틀린 칸은 바로 고쳐줘</p><div class="wk-draft-grid"><span></span>${days.map(d => `<b>${d}</b>`).join('')}${[0, 1, 2, 3, 4, 5, 6].map(j => `<b>${j + 1}</b>${[0, 1, 2, 3, 4].map(i => `<input data-draft="${i}-${j}" value="${esc(draft[i][j])}" maxlength="40" aria-label="${days[i]} ${j + 1}교시">`).join('')}`).join('')}</div>
+      ${draft ? `<div class="wk-draft"><p><b>읽은 시간표</b> · 틀린 칸은 바로 고쳐줘${Object.keys(draftTeachers).length ? ` <small class="muted">(과목별 선생님 이름도 같이 저장돼)</small>` : ''}</p><div class="wk-draft-grid"><span></span>${days.map(d => `<b>${d}</b>`).join('')}${[0, 1, 2, 3, 4, 5, 6].map(j => `<b>${j + 1}</b>${[0, 1, 2, 3, 4].map(i => `<input data-draft="${i}-${j}" value="${esc(draft[i][j])}" maxlength="40" aria-label="${days[i]} ${j + 1}교시">`).join('')}`).join('')}</div>
         <p><button class="primary" data-tt-apply>이 시간표로 적용</button> <button data-tt-cancel>취소</button></p></div>` : ''}
     </section>`;
   }
@@ -177,25 +213,28 @@
   const J = 'https://cdn.jsdelivr.net/npm/';
   const OCR = { lib: J + 'tesseract.js@5.1.1/dist/tesseract.min.js', worker: J + 'tesseract.js@5.1.1/dist/worker.min.js', core: J + 'tesseract.js-core@5.1.1', lang: J + '@tesseract.js-data/kor@1.0.0/4.0.0_best_int' };
   function lev(a, b) { const m = a.length, n = b.length, d = Array.from({ length: m + 1 }, (_, i) => [i, ...Array(n).fill(0)]); for (let j = 1; j <= n; j++) d[0][j] = j; for (let i = 1; i <= m; i++) for (let j = 1; j <= n; j++) d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)); return d[m][n]; }
-  function snap(t) {
-    t = String(t || '').replace(/[^가-힣A-Za-z0-9ⅠⅡ·]/g, '');
-    if (!t) return '';
-    if (/^[월화수목금](요일)?$/.test(t) || /^\d+(교시)?$/.test(t)) return t;
-    let best = '', bd = 9; for (const k of KNOWN) { const d = lev(t, k); if (d < bd) { bd = d; best = k; } }
-    return bd <= Math.max(1, Math.floor(best.length / 3)) ? best : (/[가-힣]{2,}/.test(t) ? t : '');
-  }
   async function imageCanvas(file) {
     const bmp = await createImageBitmap(file); const scale = Math.min(3, Math.max(1, 1800 / bmp.width));
     const c = document.createElement('canvas'); c.width = Math.round(bmp.width * scale); c.height = Math.round(bmp.height * scale);
     const x = c.getContext('2d', { willReadFrequently: true }); x.drawImage(bmp, 0, 0, c.width, c.height);
     const img = x.getImageData(0, 0, c.width, c.height), px = img.data; let sum = 0;
-    for (let i = 0; i < px.length; i += 4) { const g = px[i] * .299 + px[i + 1] * .587 + px[i + 2] * .114; px[i] = g; sum += g; }
-    const thr = Math.min(200, (sum / (px.length / 4)) * .78);
-    for (let i = 0; i < px.length; i += 4) { const v = px[i] < thr ? 0 : 255; px[i] = px[i + 1] = px[i + 2] = v; px[i + 3] = 255; }
-    x.putImageData(img, 0, 0); return { c, x, img };
+    for (let i = 0; i < px.length; i += 4) { const g = px[i] * .299 + px[i + 1] * .587 + px[i + 2] * .114; px[i] = px[i + 1] = px[i + 2] = g; px[i + 3] = 255; sum += g; }
+    x.putImageData(img, 0, 0);                                        // 글자 읽기는 회색조로
+    const thr = Math.min(200, (sum / (px.length / 4)) * .78), bin = new Uint8Array(c.width * c.height);
+    for (let i = 0, k = 0; i < px.length; i += 4, k++) bin[k] = px[i] < thr ? 1 : 0;   // 표 선·글줄 찾기는 흑백으로
+    return { c, x, bin };
   }
-  function gridLines(img, w, h) {
-    const px = img.data, dark = (X, Y) => px[(Y * w + X) * 4] === 0;
+  function textBands(bin, w, left, top, width, height) {
+    const bands = []; let start = -1;
+    for (let y = top; y < top + height; y++) {
+      let n = 0; for (let X = left; X < left + width; X++) n += bin[y * w + X];
+      if (n > 1 && start < 0) start = y; else if (n <= 1 && start >= 0) { if (y - start > 5) bands.push([start, y]); start = -1; }
+    }
+    if (start >= 0 && top + height - start > 5) bands.push([start, top + height]);
+    return bands;
+  }
+  function gridLines(bin, w, h) {
+    const dark = (X, Y) => bin[Y * w + X] === 1;
     const rowsL = [], colsL = [];
     for (let y = 0; y < h; y++) { let n = 0; for (let X = 0; X < w; X++) if (dark(X, y)) n++; if (n > w * .5) rowsL.push(y); }
     for (let X = 0; X < w; X++) { let n = 0; for (let y = 0; y < h; y++) if (dark(X, y)) n++; if (n > h * .5) colsL.push(X); }
@@ -206,30 +245,36 @@
     if (ocrBusy) return; ocrBusy = true; setStatus('사진에서 글자를 읽는 중… (처음엔 30초쯤 걸려)');
     try {
       await loadScript(OCR.lib);
-      const { c, img } = await imageCanvas(file);
+      const { c, bin } = await imageCanvas(file);
       const worker = await Tesseract.createWorker('kor', 1, { workerPath: OCR.worker, corePath: OCR.core, langPath: OCR.lang });
-      const { rows, cols } = gridLines(img, c.width, c.height);
+      const { rows, cols } = gridLines(bin, c.width, c.height);
+      if (cols.length && cols[cols.length - 1][1] < c.width - 12) cols.push([c.width - 1, c.width - 1]);
       let text = '';
       if (rows.length >= 4 && cols.length >= 5) {            // 표 선이 보이면 칸마다 따로 읽기
         await worker.setParameters({ tessedit_pageseg_mode: '7' });
-        const lines = [], total = (rows.length - 1) * (cols.length - 1); let done = 0;
-        for (let r = 0; r < rows.length - 1; r++) {
+        const r0 = rows.length - 1 >= 8 ? 1 : 0, k0 = cols.length - 1 >= 6 ? 1 : 0;   // 머리줄(요일)·교시 칸 건너뛰기
+        const lines = [], total = (rows.length - 1 - r0) * (cols.length - 1 - k0); let done = 0;
+        for (let r = r0; r < rows.length - 1; r++) {
           const cells = [];
-          for (let k = 0; k < cols.length - 1; k++) {
+          for (let k = k0; k < cols.length - 1; k++) {
             const left = cols[k][1] + 3, top = rows[r][1] + 3, width = cols[k + 1][0] - left - 3, height = rows[r + 1][0] - top - 3;
-            let t = '';
-            if (width > 8 && height > 8) { const { data } = await worker.recognize(c, { rectangle: { left, top, width, height } }); t = data.text.trim(); }
-            cells.push(snap(t)); setStatus('칸 읽는 중… ' + Math.round(++done / total * 100) + '%');
+            const parts = [];
+            if (width > 8 && height > 8) for (const [y0, y1] of textBands(bin, c.width, left, top, width, height).slice(0, 3)) {
+              const { data } = await worker.recognize(c, { rectangle: { left, top: Math.max(0, y0 - 4), width, height: Math.min(c.height - y0, y1 - y0 + 8) } });
+              const tx = data.text.replace(/\s+/g, ' ').trim(); if (/[가-힣]/.test(tx)) parts.push(tx.replace(/\s+/g, ''));
+            }
+            cells.push(parts.join(' ')); setStatus('칸 읽는 중… ' + Math.round(++done / total * 100) + '%');
           }
-          lines.push(cells.join('\t'));
+          lines.push(cells.slice(0, 5).join('\t'));   // 월~금 5칸만 (오른쪽 여백 칸 제외)
         }
         text = lines.join('\n');
       } else {                                               // 선이 없으면 통째로 읽기
         await worker.setParameters({ tessedit_pageseg_mode: '6', preserve_interword_spaces: '1' });
         const { data } = await worker.recognize(c);
-        text = data.text.split('\n').map(l => l.split(/\s+/).map(snap).join('  ')).join('\n');
+        text = data.text;
       }
       await worker.terminate();
+      window.__ttOcrText = text;                              // 확인용(화면에는 안 보임)
       const g = parseTable(text);
       draft = g || Array.from({ length: 5 }, () => Array(7).fill(''));
       ocrBusy = false; render();
@@ -261,6 +306,8 @@
     if (b.hasAttribute('data-tt-apply') && draft) {
       if (hasTable() && !confirm('지금 시간표를 새 시간표로 바꿀까? (준비물 메모는 그대로야)')) return;
       state.table = draft.map(r => r.map(s => String(s || '').trim().slice(0, 40))); draft = null;
+      const used = new Set(state.table.flat().filter(Boolean)), keep = {}; for (const [k, v] of Object.entries(draftTeachers)) if (used.has(k)) keep[k] = String(v).slice(0, 10);
+      if (Object.keys(keep).length) lsSet(TEACHER_KEY, keep);
       if (save()) { notice('시간표 적용 완료! 이번 주 탭에서 주간 스케줄과 예습을 확인해봐.'); tab = 'week'; history.replaceState(null, '', '#week'); render(); }
     }
     if (b.dataset.offdayDel && CAL()) { CAL().removeOwn(b.dataset.offdayDel); }
