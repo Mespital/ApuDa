@@ -66,9 +66,16 @@
         '</div>' +
         '<button type="button" class="pin-forgot">비밀번호를 잊었어요</button>' +
         '<button type="button" class="pin-cancel-change" hidden>바꾸지 않고 돌아가기</button>' +
-        '<div class="pin-confirm" hidden>' +
-          '<p><b>처음부터 다시 시작할까?</b><br>비밀번호와 이 기기에 저장된 미래 나침반 기록(공부방·진로 탐색·계획)이 모두 지워져.</p>' +
-          '<div class="pin-confirm-row"><button type="button" class="pin-cancel">취소</button><button type="button" class="pin-reset">기록 지우고 다시 시작</button></div>' +
+        '<div class="pin-confirm pin-recover" hidden>' +
+          '<p><b>보호자 메일로 복구 코드를 보낼게.</b><br>코드를 넣으면 새 비밀번호를 정할 수 있어. 공부 기록은 그대로 남아.</p>' +
+          '<button type="button" class="pin-rec-send">📧 복구 코드 보내기</button>' +
+          '<div class="pin-rec-code" hidden><label class="pin-sr" for="pin-rec-input">복구 코드 6자리</label><input id="pin-rec-input" class="pin-rec-input" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="one-time-code" placeholder="코드 6자리"><button type="button" class="pin-rec-check">확인</button></div>' +
+          '<p class="pin-rec-status" role="status" aria-live="polite"></p>' +
+          '<button type="button" class="pin-cancel">비밀번호 화면으로 돌아가기</button>' +
+          '<details class="pin-last"><summary>메일을 받을 수 없을 때</summary>' +
+            '<p>비밀번호와 이 기기의 기록(공부방·진로 탐색·계획)이 모두 지워져. 백업 파일이 있으면 다시 시작한 뒤 공부방 ⋯ 저장 → 백업 불러오기로 되살릴 수 있어.</p>' +
+            '<button type="button" class="pin-reset">기록 지우고 처음부터</button>' +
+          '</details>' +
         '</div>' +
       '</div>';
     document.body.appendChild(gate);
@@ -94,13 +101,16 @@
       sync(); if (entered.length === 4) submit();
     });
     document.addEventListener('keydown', function (e) {
-      if (!gate.isConnected || document.activeElement === input) return;
+      if (!gate.isConnected || document.activeElement === input || (document.activeElement && /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)) || !confirmBox.hidden) return;
       if (/^[0-9]$/.test(e.key) && entered.length < 4 && !busy) { entered += e.key; sync(); if (entered.length === 4) submit(); }
       else if (e.key === 'Backspace') { entered = entered.slice(0, -1); sync(); }
     });
-    forgotEl.addEventListener('click', function () { confirmBox.hidden = false; forgotEl.hidden = true; });
-    gate.querySelector('.pin-cancel').addEventListener('click', function () { confirmBox.hidden = true; forgotEl.hidden = false; });
-    gate.querySelector('.pin-reset').addEventListener('click', resetAll);
+    forgotEl.addEventListener('click', function () { confirmBox.hidden = false; forgotEl.hidden = true; gate.querySelector('.pin-card').classList.add('pin-recovering'); titleEl.textContent = '비밀번호 찾기'; msgEl.textContent = ''; });
+    gate.querySelector('.pin-cancel').addEventListener('click', function () { confirmBox.hidden = true; forgotEl.hidden = false; gate.querySelector('.pin-card').classList.remove('pin-recovering'); showMode(); });
+    gate.querySelector('.pin-reset').addEventListener('click', function () { if (confirm('정말 이 기기의 기록을 모두 지울까? 되돌릴 수 없어.')) resetAll(); });
+    gate.querySelector('.pin-rec-send').addEventListener('click', sendCode);
+    gate.querySelector('.pin-rec-check').addEventListener('click', checkCode);
+    gate.querySelector('.pin-rec-input').addEventListener('input', function (e) { e.target.value = e.target.value.replace(/\D/g, '').slice(0, 6); if (e.target.value.length === 6) checkCode(); });
 
     gate.querySelector('.pin-cancel-change').addEventListener('click', function () { changing = false; gate.remove(); root.classList.remove('pin-locked'); });
     mode = (typeof startMode === 'string' && startMode) || (readStored() ? 'unlock' : 'setup1');
@@ -116,10 +126,10 @@
   function showMode(extra) {
     entered = ''; sync();
     forgotEl.hidden = mode !== 'unlock';
-    if (mode === 'setup1') { titleEl.textContent = '사용할 비밀번호 4자리를 정해줘'; msgEl.textContent = extra || '이 기기에서만 쓰는 비밀번호야.'; }
+    if (mode === 'setup1') { titleEl.textContent = '사용할 비밀번호 4자리를 정해줘'; msgEl.textContent = extra || '잊어버려도 보호자 메일로 되찾을 수 있어.'; }
     if (mode === 'setup2') { titleEl.textContent = '한 번 더 입력해줘'; msgEl.textContent = extra || '같은 숫자 4자리를 다시 눌러줘.'; }
     if (mode === 'unlock') { titleEl.textContent = changing ? '지금 쓰는 비밀번호를 입력해줘' : '비밀번호 4자리를 입력해줘'; msgEl.textContent = extra || (changing ? '확인되면 새 번호를 정할 수 있어.' : ''); }
-    if (mode === 'setup1' && changing) titleEl.textContent = '새 비밀번호 4자리를 정해줘';
+    if (mode === 'setup1' && (changing || recovering)) titleEl.textContent = '새 비밀번호 4자리를 정해줘';
     if (changing) forgotEl.hidden = true;
     checkLock();
   }
@@ -155,7 +165,7 @@
           busy = false; mode = 'setup1'; showMode('저장하지 못했어. 브라우저의 사이트 데이터 저장이 꺼져 있는지 확인해줘.'); return;
         }
         lsDel(FAIL_KEY);
-        busy = false; var wasChanging = changing; changing = false; unlock(wasChanging ? '새 비밀번호로 바꿨어.' : '비밀번호를 저장했어. 다음부터 이 번호로 들어오면 돼.');
+        busy = false; var wasChanging = changing || recovering; changing = false; recovering = false; unlock(wasChanging ? '새 비밀번호로 바꿨어. 기록은 그대로야.' : '비밀번호를 저장했어. 다음부터 이 번호로 들어오면 돼.');
       });
       return;
     }
@@ -173,6 +183,53 @@
         shake('비밀번호가 달라. (' + f.n + '/' + MAX_FAIL + ')');
       });
     }
+  }
+
+  /* ---------- 보호자 메일 복구 ---------- */
+  var recovering = false;
+  var REC_MSG = {
+    not_configured: '메일 복구가 아직 연결되지 않았어. 보호자에게 말해줘.',
+    too_many_hour: '코드를 너무 자주 요청했어. 1시간 뒤에 다시 해줘.',
+    too_many_day: '오늘은 코드를 더 보낼 수 없어. 내일 다시 해줘.',
+    mail_failed: '메일을 보내지 못했어. 잠시 뒤 다시 해줘.',
+    expired: '코드가 없거나 시간이 지났어. 코드를 다시 받아줘.',
+    locked: '여러 번 틀려서 코드가 막혔어. 코드를 다시 받아줘.',
+    bad_code: '코드 6자리를 입력해줘.',
+    network: '인터넷 연결을 확인하고 다시 해줘.'
+  };
+  function deviceId() {
+    var id = lsGet('fc-device-id');
+    if (!id || !/^[a-f0-9]{16,64}$/.test(id)) { id = newSalt() + newSalt(); if (!/^[a-f0-9]{16,64}$/.test(id)) id = fallbackHash(String(Math.random()) + Date.now()).replace(/[^a-f0-9]/g, '').padEnd(16, '0').slice(0, 32); lsSet('fc-device-id', id); }
+    return id;
+  }
+  function recApi(payload) {
+    return fetch('/api/pin-recovery', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) })
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { j._ok = r.ok; return j; }); })
+      .catch(function () { return { _ok: false, error: 'network' }; });
+  }
+  function recStatus(t, ok) { var el = gate.querySelector('.pin-rec-status'); el.textContent = t; el.classList.toggle('ok', !!ok); }
+  function sendCode() {
+    var b = gate.querySelector('.pin-rec-send'); b.disabled = true; recStatus('보내는 중…');
+    recApi({ action: 'send', device: deviceId() }).then(function (j) {
+      b.disabled = false;
+      if (!j._ok) { recStatus(REC_MSG[j.error] || '보내지 못했어. 잠시 뒤 다시 해줘.'); return; }
+      b.textContent = '코드 다시 보내기';
+      gate.querySelector('.pin-rec-code').hidden = false;
+      recStatus((j.to ? j.to + '로 ' : '보호자 메일로 ') + '코드를 보냈어. ' + (j.minutes || 15) + '분 안에 입력해줘.', true);
+      setTimeout(function () { try { gate.querySelector('.pin-rec-input').focus(); } catch (e) {} }, 30);
+    });
+  }
+  function checkCode() {
+    var inp = gate.querySelector('.pin-rec-input'), code = inp.value;
+    if (!/^\d{6}$/.test(code)) { recStatus(REC_MSG.bad_code); return; }
+    if (busy) return; busy = true; recStatus('확인하는 중…');
+    recApi({ action: 'verify', device: deviceId(), code: code }).then(function (j) {
+      busy = false;
+      if (!j._ok) { inp.value = ''; recStatus(j.error === 'wrong_code' ? '코드가 달라. (남은 기회 ' + (j.left != null ? j.left : '?') + '번)' : (REC_MSG[j.error] || '확인하지 못했어.')); return; }
+      recovering = true; lsDel(FAIL_KEY);
+      confirmBox.hidden = true; gate.querySelector('.pin-card').classList.remove('pin-recovering');
+      mode = 'setup1'; showMode('확인됐어. 기록은 그대로야. 새 비밀번호를 정해줘.'); titleEl.textContent = '새 비밀번호 4자리를 정해줘';
+    });
   }
 
   function unlock(notice) {
