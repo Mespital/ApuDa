@@ -62,8 +62,8 @@
     const when = gap(nd) === 1 ? '내일' : label(nd);
     const bag = state.bags[rowOf(nd)] || '';
     const needUnit = real.some(x => x.cur && x.cur.flat.length && !x.unit);
-    const row = x => `<label class="wk-prep-item${x.light ? ' light' : ''}"><input type="checkbox" data-prep="${esc(nd)}" data-subject="${esc(x.s)}" ${done.includes(x.s) ? 'checked' : ''}><span><b>${esc(x.s)}${teachers[x.s] ? ` <small>${esc(teachers[x.s])}</small>` : ''}</b><small>${
-      x.light ? '준비물만 확인' : x.exam ? '🧩 ' + esc(x.exam.title) + ' D-' + gap(x.exam.date) + ' → 범위 복습 먼저' : x.next ? '다음 단원 훑어보기: ' + esc(x.next.split(' › ').pop()) : esc(x.tip)}</small></span></label>`;
+    const row = x => `<label class="wk-prep-item${x.light ? ' light' : ''}"><input type="checkbox" data-prep="${esc(nd)}" data-subject="${esc(x.s)}" ${done.includes(x.s) ? 'checked' : ''}><span><b>${esc(x.s)}${teachers[x.s] ? ` <small>${esc(teachers[x.s])}</small>` : ''}${x.cur && x.cur.book && !x.light ? ` <small class="wk-book">${esc(x.cur.book.split(' + ')[0])}</small>` : ''}</b><small>${
+      x.light ? '준비물만 확인' : x.exam ? '🧩 ' + esc(x.exam.title) + ' D-' + gap(x.exam.date) + ' → 범위 복습 먼저' : x.next ? '다음: ' + esc(x.next.split(' › ').pop()) + (x.cur && x.cur.extra ? ' · ' + esc(x.cur.extra) : '') : esc(x.tip)}</small></span></label>`;
     const list = real.map(row).join('') + (items.some(x => x.light) ? `<p class="wk-light">${items.filter(x => x.light).map(x => esc(x.s)).join(' · ')}: 준비물만 챙기기</p>` : '');
     return `<section class="card wk-prep"><div class="section-title"><h2>📘 ${esc(when)} 예습</h2><span class="badge">${examDay.length ? '시험날' : real.length ? '약 ' + mins + '분' : '가볍게'}</span></div>
       ${gap(nd) > 1 ? `<p class="muted">${esc(label(nd))} 수업 기준</p>` : ''}
@@ -375,7 +375,7 @@
   .wk-nav{display:inline-flex;gap:4px}.wk-nav button{padding:4px 10px}
   .wk-warn{background:#fff6e5;border-radius:12px;padding:10px 12px;font-size:13.5px}
   .wk-prep-item{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid #f0ebf8}.wk-prep-item input{margin-top:4px;width:18px;height:18px}
-  .wk-prep-item span{display:grid;gap:2px}.wk-prep-item small{color:#667085}.wk-prep-item.light{opacity:.7}.wk-note{font-size:12px;color:#8a839a}.wk-bag{margin:8px 0 0;font-size:13.5px}.wk-next{color:#5b3fd6!important}.wk-light{margin:8px 0 0;font-size:13px;color:#8a839a}.wk-hint{margin:12px 0 0;font-size:13.5px;background:#f6f3ff;border-radius:12px;padding:10px 12px}.wk-hint button{min-height:34px;padding:4px 10px;margin-left:4px}.wk-fold-in summary{cursor:pointer;font-size:13.5px;color:#6250ce;margin:6px 0}.wk-prep-item{padding:7px 0}
+  .wk-prep-item span{display:grid;gap:2px}.wk-prep-item small{color:#667085}.wk-prep-item.light{opacity:.7}.wk-note{font-size:12px;color:#8a839a}.wk-bag{margin:8px 0 0;font-size:13.5px}.wk-next{color:#5b3fd6!important}.wk-book{color:#2f7a52}.wk-light{margin:8px 0 0;font-size:13px;color:#8a839a}.wk-hint{margin:12px 0 0;font-size:13.5px;background:#f6f3ff;border-radius:12px;padding:10px 12px}.wk-hint button{min-height:34px;padding:4px 10px;margin-left:4px}.wk-fold-in summary{cursor:pointer;font-size:13.5px;color:#6250ce;margin:6px 0}.wk-prep-item{padding:7px 0}
   .wk-up-ways{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}.wk-file{cursor:pointer;display:inline-flex;align-items:center;padding:9px 14px;border-radius:12px;background:#5b3fd6;color:#fff;font-weight:700;font-size:14px}
   .wk-neis{display:inline-flex;gap:6px;align-items:center;font-size:14px}[data-tt-paste] textarea{width:100%;box-sizing:border-box;font:13px/1.5 ui-monospace,monospace}
   .wk-status{font-size:13px;color:#5b3fd6;min-height:1em;margin:4px 0}
