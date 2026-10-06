@@ -43,7 +43,7 @@
     // 서초고 채택 교과서(2026, 학교 시험 출제 작품·학원 분석 자료로 확인): 국어 미래엔(신유식), 영어 YBM(박준언)
     국어: {
       1: { course: '공통국어1', book: '미래엔 공통국어1 (신유식)', units: [], byPublisher: true },
-      2: { course: '공통국어2', book: '미래엔 공통국어2 (신유식)', units: [
+      2: { course: '공통국어2', book: '미래엔 공통국어2 (신유식)', unitsFor: '신유식', units: [
         U('1. 한국 문학의 길', ['(1) 옛 노래 감상하기: 제망매가·속미인곡', '(2) 고전 소설 감상하기: 춘향전', '(3) 현대 시 감상하기: 수라', '(4) 현대 소설 감상하기: 아홉 켤레의 구두로 남은 사내']),
         U('2. 문제 해결의 지혜', ['(1) 논증하는 글 쓰기', '(2) 지혜롭게 협상하기']),
         U('3. 국어의 어제와 오늘', ['(1) 변화하는 국어의 모습: 중세 국어', '(2) 한글 맞춤법과 오늘날의 국어생활']),
@@ -52,12 +52,25 @@
     },
     영어: {
       1: { course: '공통영어1', book: 'YBM 공통영어1 (박준언) + EBS 올림포스', units: [], byPublisher: true },
-      2: { course: '공통영어2', book: 'YBM 공통영어2 (박준언) + EBS 올림포스', extra: '올림포스 지문·고1 학평 지문도 시험에 나와', units: [
+      2: { course: '공통영어2', book: 'YBM 공통영어2 (박준언) + EBS 올림포스', unitsFor: '박준언', extra: '올림포스 지문·고1 학평 지문도 시험에 나와', units: [
         U('Lesson 1. Be Digitally Smart!', ['Reading: Warning: Fake News Alert!', 'Further Reading: Breaking Out of the Echo Chamber']),
         U('Lesson 2. Urgent Call From Earth', ['Reading: Dry', 'Further Reading: Hunger Stones']),
         U('Lesson 3. Rise Above Challenges', ['Reading: Resilience: The Power to Overcome', 'Further Reading: Growth Mindset']),
         U('Lesson 4. Creative Ideas for a Better World', ['Reading: Science for All', 'Further Reading: Helping Hands'])] }
     }
+  };
+  // 교과서 후보 — 서초고 사용 가능성 높은 순(2026-10 조사). 국어·영어 1순위는 학교 시험·학원 분석으로 유력,
+  // 통합사회 1순위는 서초고 교사가 집필진에 포함된 근거의 추정, 나머지는 추천순(채택 미확인).
+  var B = function (pub, author, tag) { return { pub: pub, author: author, tag: tag || '', name: pub + ' · ' + author }; };
+  var SCI = [B('비상교육', '심규철', '추천순'), B('미래엔', '오현선'), B('천재교과서', '신영준'), B('지학사', '전상학'), B('동아출판', '김호련')];
+  var BOOKS = {
+    국어: [B('미래엔', '신유식', '유력'), B('비상교육', '박영민'), B('비상교육', '강호영'), B('지학사', '김철회'), B('천재교과서', '김종철'), B('천재교과서', '김수학'), B('동아출판', '최두호'), B('창비교육', '최원식'), B('해냄에듀', '임광찬')],
+    수학: [B('비상교육', '김원경', '추천순'), B('미래엔', '황선욱'), B('천재교과서', '홍진곤'), B('동아출판', '고호경'), B('지학사', '장경윤'), B('YBM', '류희찬'), B('천재교과서', '전인태'), B('마타에듀', '정두섭')],
+    영어: [B('YBM', '박준언', '유력'), B('YBM', '김은형'), B('NE능률', '민병천'), B('NE능률', '오선영'), B('미래엔', '김성연'), B('천재교과서', '강상구'), B('천재교과서', '조수경'), B('비상교육', '홍민표'), B('지학사', '신상근'), B('동아출판', '이병민')],
+    통합사회: [B('지학사', '안재섭', '추정 1순위'), B('비상교육', '이영호'), B('미래엔', '정창우'), B('천재교과서', '박윤경'), B('동아출판', '구정화'), B('창비교육', '조철기'), B('아침나라', '조지욱'), B('리베르스쿨', '박병기')],
+    통합과학: SCI,
+    한국사: [B('비상교육', '도면회', '추천순'), B('미래엔', '강승호'), B('지학사', '최병택'), B('천재교과서', '정요근'), B('동아출판', '노대환'), B('해냄에듀', '조한경'), B('씨마스', '신주백'), B('리베르스쿨', '김보림')],
+    과학탐구실험: SCI
   };
   // 학교 줄임말 → 과목
   var ALIAS = { 공수: '수학', 수학: '수학', 공통수학: '수학', 통사: '통합사회', 통합사회: '통합사회', 통과: '통합과학', 통합과학: '통합과학',
@@ -66,18 +79,22 @@
     var n = String(name || '').replace(/\s+/g, '').replace(/[A-D]$/, '').replace(/[12]$/, '');
     return ALIAS[n] || null;
   }
-  function lookup(name, grade, semester) {
+  function lookup(name, grade, semester, opts) {
+    opts = opts || {};
     var info = g.FC_SCHOOL ? g.FC_SCHOOL.info() : { grade: 1, semester: 2 };
     var gr = grade || info.grade, sem = semester || info.semester;
     if (gr !== 1) return null;                       // 고2·고3은 선택과목이라 학교마다 달라서 제공하지 않음
     var b = baseOf(name); if (!b || !DATA[b]) return null;
     var d = DATA[b][sem]; if (!d) return null;
-    var flat = [];
-    d.units.forEach(function (u) { if (u.subs.length) u.subs.forEach(function (s) { flat.push(u.title + ' › ' + s); }); else flat.push(u.title); });
-    return { subject: b, course: d.course, book: d.book || '', extra: d.extra || '', units: d.units, flat: flat, byPublisher: !!d.byPublisher && !flat.length };
+    var flat = [], chosen = String(opts.book || '');
+    var unitsOk = !d.unitsFor || !chosen || chosen.indexOf(d.unitsFor) >= 0;   // 국어·영어 단원은 해당 교과서일 때만
+    if (unitsOk) d.units.forEach(function (u) { if (u.subs.length) u.subs.forEach(function (s) { flat.push(u.title + ' › ' + s); }); else flat.push(u.title); });
+    var books = (BOOKS[b] || []).slice();
+    if (opts.prefer) { var i = -1; books.forEach(function (x, k) { if (String(opts.prefer).indexOf(x.author) >= 0) i = k; }); if (i > 0) books.unshift(books.splice(i, 1)[0]); }
+    return { subject: b, course: d.course, book: d.book || '', extra: d.extra || '', units: unitsOk ? d.units : [], flat: flat, books: books, byPublisher: (!!d.byPublisher || !unitsOk) && !flat.length };
   }
-  function nextAfter(name, current) {
-    var c = lookup(name); if (!c || !current) return null;
+  function nextAfter(name, current, book) {
+    var c = lookup(name, null, null, { book: book }); if (!c || !current) return null;
     var cur = String(current).replace(/\s+/g, ''), i = -1;
     for (var k = 0; k < c.flat.length; k++) { var f = c.flat[k].replace(/\s+/g, ''); if (f === cur || f.split('›').pop() === cur) { i = k; break; } }
     return i >= 0 && i + 1 < c.flat.length ? c.flat[i + 1] : null;

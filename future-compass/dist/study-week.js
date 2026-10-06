@@ -42,9 +42,10 @@
     const soon = state.dates.filter(x => !x.done && gap(x.date) >= 0 && gap(x.date) <= 7);
     return uniq(subjectsOf(d)).map(s => {
       const c = courses[s] || {}, exam = soon.find(x => x.subject && (x.subject.includes(s) || s.includes(x.subject)));
-      const cur = typeof FC_CURRICULUM !== 'undefined' ? FC_CURRICULUM.lookup(s) : null;
-      const next = cur && c.unit ? FC_CURRICULUM.nextAfter(s, c.unit) : null;
-      return { s, unit: c.unit || '', pages: c.pages || '', book: c.book || '', tip: tipFor(s), light: NO_PREP.test(s), exam, cur, next };
+      const cur = typeof FC_CURRICULUM !== 'undefined' ? FC_CURRICULUM.lookup(s, null, null, { book: c.book }) : null;
+      const next = cur && c.unit ? FC_CURRICULUM.nextAfter(s, c.unit, c.book) : null;
+      const bookLabel = c.book ? c.book : cur && cur.books && cur.books[0] && /유력/.test(cur.books[0].tag) ? cur.books[0].name : '';
+      return { s, unit: c.unit || '', pages: c.pages || '', book: bookLabel, tip: tipFor(s), light: NO_PREP.test(s), exam, cur, next };
     });
   }
   function prepDone(d) { const v = lsGet(PREV_KEY, {}); return Array.isArray(v[d]) ? v[d] : []; }
@@ -62,7 +63,7 @@
     const when = gap(nd) === 1 ? '내일' : label(nd);
     const bag = state.bags[rowOf(nd)] || '';
     const needUnit = real.some(x => x.cur && x.cur.flat.length && !x.unit);
-    const row = x => `<label class="wk-prep-item${x.light ? ' light' : ''}"><input type="checkbox" data-prep="${esc(nd)}" data-subject="${esc(x.s)}" ${done.includes(x.s) ? 'checked' : ''}><span><b>${esc(x.s)}${teachers[x.s] ? ` <small>${esc(teachers[x.s])}</small>` : ''}${x.cur && x.cur.book && !x.light ? ` <small class="wk-book">${esc(x.cur.book.split(' + ')[0])}</small>` : ''}</b><small>${
+    const row = x => `<label class="wk-prep-item${x.light ? ' light' : ''}"><input type="checkbox" data-prep="${esc(nd)}" data-subject="${esc(x.s)}" ${done.includes(x.s) ? 'checked' : ''}><span><b>${esc(x.s)}${teachers[x.s] ? ` <small>${esc(teachers[x.s])}</small>` : ''}${x.book && !x.light ? ` <small class="wk-book">${esc(x.book)}</small>` : ''}</b><small>${
       x.light ? '준비물만 확인' : x.exam ? '🧩 ' + esc(x.exam.title) + ' D-' + gap(x.exam.date) + ' → 범위 복습 먼저' : x.next ? '다음: ' + esc(x.next.split(' › ').pop()) + (x.cur && x.cur.extra ? ' · ' + esc(x.cur.extra) : '') : esc(x.tip)}</small></span></label>`;
     const list = real.map(row).join('') + (items.some(x => x.light) ? `<p class="wk-light">${items.filter(x => x.light).map(x => esc(x.s)).join(' · ')}: 준비물만 챙기기</p>` : '');
     return `<section class="card wk-prep"><div class="section-title"><h2>📘 ${esc(when)} 예습</h2><span class="badge">${examDay.length ? '시험날' : real.length ? '약 ' + mins + '분' : '가볍게'}</span></div>
@@ -333,6 +334,7 @@
     const t = e.target;
     if (t.dataset.prep) { setPrep(t.dataset.prep, t.dataset.subject, t.checked); const all = document.querySelectorAll('[data-prep="' + t.dataset.prep + '"]'); if ([...all].every(x => x.checked || x.closest('.light'))) notice('예습 끝! 내일 수업이 훨씬 잘 들릴 거야 🐾'); }
     if (t.matches('[data-tt-image]') && t.files[0]) ocr(t.files[0]);
+    if (t.matches('form[data-plus="course"] select[name="book"]')) { const box = t.form.querySelector('.book-custom'); if (box) { box.hidden = t.value !== '__custom'; if (!box.hidden) box.querySelector('input')?.focus(); } }
     if (t.matches('form[data-plus="course"] select[name="unit"]')) { const box = t.form.querySelector('.unit-custom'); if (box) { box.hidden = t.value !== '__custom'; if (!box.hidden) box.querySelector('input')?.focus(); } }
   });
   document.addEventListener('input', e => { const k = e.target.dataset.draft; if (k && draft) { const [i, j] = k.split('-').map(Number); draft[i][j] = e.target.value.slice(0, 40); } });
