@@ -1,0 +1,9 @@
+{
+  "name": "future-compass",
+  "private": true,
+  "type": "module",
+  "description": "미래 나침반 + 학교나침반 베타 (Netlify functions)",
+  "dependencies": {
+    "@netlify/blobs": "^11.1.3"
+  }
+}
