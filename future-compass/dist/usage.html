@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>사용 현황 · 미래 나침반</title>
+<style>
+:root{--ink:#2b2840;--muted:#6f6a85;--line:#e6e1f3;--bg:#f6f4fc;--card:#fff;--bar:#7764ef;--bar2:#c9bff8;--we:#f0ecfb}
+@media(prefers-color-scheme:dark){:root{--ink:#ecebf5;--muted:#a9a4bf;--line:#2e2b41;--bg:#15131f;--card:#1e1b2b;--bar:#9b8cff;--bar2:#4a427a;--we:#24203a}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,-apple-system,"Apple SD Gothic Neo",sans-serif}
+main{max-width:860px;margin:0 auto;padding:20px 16px 60px}h1{font-size:22px;margin:4px 0 2px}h2{font-size:16px;margin:0 0 12px}
+.muted{color:var(--muted);font-size:13px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin:12px 0}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stat b{display:block;font-size:24px}.stat span{font-size:12.5px;color:var(--muted)}
+.bars{display:flex;align-items:flex-end;gap:3px;height:140px;border-bottom:1px solid var(--line);padding-top:8px}
+.bars div{flex:1;background:var(--bar);border-radius:4px 4px 0 0;min-height:2px;position:relative}.bars div.zero{background:var(--line)}
+.bars div.we::after{content:"";position:absolute;inset:auto 0 -6px 0;height:3px;background:#e0a3ad;border-radius:2px}
+.xlab{display:flex;gap:3px;font-size:10px;color:var(--muted);margin-top:8px}.xlab span{flex:1;text-align:center}
+.hours{display:grid;grid-template-columns:repeat(24,1fr);gap:2px}.hours div{height:26px;border-radius:4px;background:var(--bar)}.hl{display:grid;grid-template-columns:repeat(24,1fr);font-size:9.5px;color:var(--muted);text-align:center;margin-top:4px}
+.rank{list-style:none;margin:0;padding:0;display:grid;gap:7px}.rank li{display:grid;grid-template-columns:150px 1fr 48px;gap:8px;align-items:center;font-size:14px}
+.rank i{display:block;height:10px;background:var(--bar2);border-radius:6px}.rank em{font-style:normal;text-align:right;color:var(--muted);font-size:13px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+form{display:flex;gap:8px;flex-wrap:wrap}input{flex:1;min-width:200px;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+button{font:600 14px system-ui;padding:10px 14px;border-radius:10px;border:0;background:var(--bar);color:#fff;cursor:pointer}button.ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+.seg{display:flex;gap:6px;margin:8px 0}.seg button{background:transparent;color:var(--ink);border:1px solid var(--line)}.seg button[aria-pressed=true]{background:var(--bar);color:#fff;border-color:var(--bar)}
+@media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.rank li{grid-template-columns:120px 1fr 40px}}
+</style></head>
+<body><main>
+<h1>📊 사용 현황</h1>
+<p class="muted">보호자만 보는 화면이야. 어떤 화면을 얼마나 봤는지, 어떤 기능을 썼는지만 모아. 할 일·메모 같은 내용은 수집하지 않아.</p>
+<div id="login" class="card" hidden>
+  <h2>관리자 토큰</h2>
+  <form id="f"><input id="t" type="password" autocomplete="off" placeholder="Netlify 환경변수 FC_ADMIN_TOKEN 값" required><button>보기</button></form>
+  <p class="muted">이 기기는 자동으로 통계에서 빠져(내가 본 기록이 섞이지 않게).</p>
+  <p id="err" class="muted" style="color:#b4475a"></p>
+</div>
+<div id="dash" hidden>
+  <div class="seg" role="group" aria-label="기간"><button data-n="7">7일</button><button data-n="30" aria-pressed="true">30일</button><button data-n="90">90일</button><span style="flex:1"></span><button class="ghost" id="logout">토큰 지우기</button></div>
+  <div class="card stats" id="stats"></div>
+  <div class="card"><h2>날짜별 사용 시간(분)</h2><div class="bars" id="bars"></div><div class="xlab" id="xlab"></div><p class="muted">분홍 밑줄은 주말. 화면을 켜 두고 2분 넘게 손대지 않은 시간은 빼고 셌어.</p></div>
+  <div class="card"><h2>주로 쓰는 시간대</h2><div class="hours" id="hours"></div><div class="hl"></div></div>
+  <div class="grid2">
+    <div class="card"><h2>머문 시간 · 화면별</h2><ul class="rank" id="pages"></ul></div>
+    <div class="card"><h2>많이 연 화면</h2><ul class="rank" id="views"></ul></div>
+  </div>
+  <div class="card"><h2>많이 쓴 기능</h2><ul class="rank" id="acts"></ul></div>
+  <p class="muted" id="foot"></p>
+</div>
+</main>
+<script>
+(function(){'use strict';
+var KEY='fc-admin-token', N=30, $=function(s){return document.querySelector(s)};
+try{localStorage.setItem('fc-usage-optout','1')}catch(e){}
+document.querySelector('.hl').innerHTML=Array.from({length:24},function(_,h){return '<span>'+(h%3===0?h:'')+'</span>'}).join('');
+var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})};
+var PAGE={home:'홈',study:'공부방',hub:'학습 사이트',future:'미래 예측','know-me':'나 알아보기'};
+var VIEW={'study':'공부방','study:today':'공부방 · 오늘','study:week':'공부방 · 이번 주','study:table':'공부방 · 시간표','study:dates':'공부방 · 시험·과제','study:focus':'공부방 · 집중','study:review':'공부방 · 복습','hub:sites':'학습 사이트 · 추천','hub:routes':'학습 사이트 · 시험 대비','hub:board':'학습 사이트 · 내 링크','home':'홈','home:career-lab':'홈 · 진로 찾기','home:news':'홈 · 소식','future':'미래 예측','know-me':'나 알아보기'};
+var ACT={prep_done:'예습 체크',prep_undo:'예습 체크 해제',check_tasks:'할 일 완료',check_dates:'시험·과제 완료',check_reviews:'복습 완료',save_tasks:'할 일 추가',save_dates:'시험·과제 추가',save_reviews:'복습 메모 추가',save_course:'단원 저장',save_exam:'시험 계획 저장',save_review:'복습 설정 저장',save_goal:'목표 저장',save_reflection:'공부 소감 기록',save_question:'질문 기록',save_answer:'질문 답 기록',save_offday:'쉬는 날 추가',save_hub_link:'링크 저장',timer:'집중 타이머',timer_set:'타이머 시간 선택',review_alone:'혼자 해결',review_hint:'힌트로 해결',review_hard:'아직 어려움',timetable_apply:'시간표 적용',timetable_photo:'시간표 사진',timetable_paste:'시간표 붙여넣기',timetable_neis:'나이스 시간표',class_pick:'반 선택',week_move:'주 넘기기',course_pick_open:'단원 고르기 열기',task_carry:'지난 할 일 오늘로',exam_template:'시험 단계 넣기',hub_more:'사이트 더보기',backup:'백업 저장',restore:'백업 불러오기',home_to_study:'홈 → 공부방',home_to_hub:'홈 → 학습 사이트',lock:'잠그기',pin_forgot:'비밀번호 찾기'};
+function label(n,map){if(map[n])return map[n];if(/^tab:/.test(n))return '탭 · '+(VIEW['study:'+n.slice(4)]||n.slice(4)).replace('공부방 · ','');if(/^site:/.test(n))return '사이트 열기 · '+n.slice(5);if(/^hub_tab:/.test(n))return '학습 사이트 탭 · '+n.slice(8);if(/^home_path:/.test(n))return '홈 → '+n.slice(10);return n}
+function rank(el,obj,map,unit){var a=Object.entries(obj).sort(function(x,y){return y[1]-x[1]}).slice(0,10),max=a.length?a[0][1]:1;el.innerHTML=a.length?a.map(function(e){return '<li><span>'+esc(label(e[0],map))+'</span><i style="width:'+Math.max(4,e[1]/max*100)+'%"></i><em>'+(Math.round(e[1]*10)/10)+unit+'</em></li>'}).join(''):'<li class="muted">아직 기록이 없어.</li>'}
+function add(a,b){Object.keys(b||{}).forEach(function(k){a[k]=(a[k]||0)+b[k]});return a}
+function ago(iso){if(!iso)return '없음';var m=Math.round((Date.now()-Date.parse(iso))/60000);return m<1?'방금':m<60?m+'분 전':m<1440?Math.round(m/60)+'시간 전':Math.round(m/1440)+'일 전'}
+function render(days){
+  var used=days.filter(function(d){return (d.minutes||0)>0||(d.sessions||0)>0}),tot=days.reduce(function(s,d){return s+(d.minutes||0)},0),last=days.map(function(d){return d.last}).filter(Boolean).sort().pop();
+  $('#stats').innerHTML='<div class="stat"><b>'+used.length+'<small style="font-size:14px">/'+days.length+'일</small></b><span>들어온 날</span></div><div class="stat"><b>'+Math.round(tot)+'분</b><span>총 사용 시간</span></div><div class="stat"><b>'+(used.length?Math.round(tot/used.length):0)+'분</b><span>들어온 날 평균</span></div><div class="stat"><b>'+ago(last)+'</b><span>마지막 사용</span></div>';
+  var max=Math.max(1,Math.max.apply(null,days.map(function(d){return d.minutes||0})));
+  $('#bars').innerHTML=days.map(function(d){var w=new Date(d.day+'T12:00:00Z').getUTCDay(),m=d.minutes||0;return '<div class="'+(m?'':'zero ')+(w===0||w===6?'we':'')+'" style="height:'+(m/max*100)+'%" title="'+d.day+' · '+m+'분 · 들어온 횟수 '+(d.sessions||0)+'"></div>'}).join('');
+  var step=Math.ceil(days.length/10);$('#xlab').innerHTML=days.map(function(d,i){return '<span>'+(i%step===0?d.day.slice(5).replace('-','/'):'')+'</span>'}).join('');
+  var hrs={};days.forEach(function(d){add(hrs,d.hours)});var hm=Math.max(1,Math.max.apply(null,Object.values(hrs).concat(0)));
+  $('#hours').innerHTML=Array.from({length:24},function(_,h){var v=hrs[h]||0;return '<div style="opacity:'+(v?.15+.85*v/hm:.06)+'" title="'+h+'시 · '+Math.round(v)+'분"></div>'}).join('');
+  rank($('#pages'),days.reduce(function(a,d){return add(a,d.pages)},{}),PAGE,'분');
+  rank($('#views'),days.reduce(function(a,d){return add(a,d.views)},{}),VIEW,'회');
+  rank($('#acts'),days.reduce(function(a,d){return add(a,d.acts)},{}),ACT,'회');
+  var devs={};days.forEach(function(d){Object.assign(devs,d.devices||{})});
+  $('#foot').textContent='기록된 기기 '+Object.keys(devs).length+'대 · 시간은 한국 시간 기준 · 화면을 열 때마다 새로 불러와.';
+}
+function load(){
+  var t='';try{t=localStorage.getItem(KEY)||''}catch(e){}
+  if(!t){$('#login').hidden=false;$('#dash').hidden=true;return}
+  fetch('/api/usage?days='+N,{headers:{authorization:'Bearer '+t}}).then(function(r){return r.json().then(function(j){return{ok:r.ok,status:r.status,j:j}})}).then(function(x){
+    if(!x.ok){try{localStorage.removeItem(KEY)}catch(e){}$('#login').hidden=false;$('#dash').hidden=true;$('#err').textContent=x.status===401?'토큰이 맞지 않아.':x.j.error==='not_configured'?'Netlify에 FC_ADMIN_TOKEN이 아직 없어.':'불러오지 못했어.';return}
+    $('#login').hidden=true;$('#dash').hidden=false;render(x.j.days||[]);
+  }).catch(function(){$('#err').textContent='인터넷 연결을 확인해줘.';$('#login').hidden=false});
+}
+$('#f').addEventListener('submit',function(e){e.preventDefault();try{localStorage.setItem(KEY,$('#t').value.trim())}catch(err){}load()});
+$('#logout').addEventListener('click',function(){try{localStorage.removeItem(KEY)}catch(e){}load()});
+document.querySelectorAll('.seg [data-n]').forEach(function(b){b.addEventListener('click',function(){N=Number(b.dataset.n);document.querySelectorAll('.seg [data-n]').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});load()})});
+load();
+})();
+</script>
+</body></html>
