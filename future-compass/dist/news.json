@@ -1,8 +1,16 @@
 {
-  "checked_at": "2026-10-06T19:21:45.744616+00:00",
-  "last_success_at": "2026-10-06T19:21:45.744616+00:00",
+  "checked_at": "2026-10-06T23:40:33.015081+00:00",
+  "last_success_at": "2026-10-06T23:40:33.015081+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "Ask a Scientist: How are researchers using AI to help pregnant women access ultrasounds?",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-research/blind-sweep-ultrasounds-ai/",
+      "source": "Google",
+      "published_at": "2026-10-06T18:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "Producers can now vibe code their own music production tools using Google Flow Music.",
       "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/create-music-production-plugins-google-flow/",
@@ -40,6 +48,22 @@
       "url": "https://blog.google/company-news/outreach-and-initiatives/entrepreneurs/gemini-startup-forum-2026/",
       "source": "Google",
       "published_at": "2026-10-06T14:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "How Jump Trading is scaling quant research with ChatGPT",
+      "url": "https://openai.com/index/jump-trading",
+      "source": "OpenAI",
+      "published_at": "2026-10-06T12:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Sharing AI progress in mathematics",
+      "url": "https://openai.com/index/sharing-ai-progress-in-mathematics",
+      "source": "OpenAI",
+      "published_at": "2026-10-06T12:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
     },
@@ -218,36 +242,12 @@
       "published_at": "2026-10-01T16:00:00+00:00",
       "category": "교육·생활",
       "domain": "education"
-    },
-    {
-      "title": "How Albertsons Companies is reimagining retail from the inside out",
-      "url": "https://openai.com/index/albertsons-reimagining-retail",
-      "source": "OpenAI",
-      "published_at": "2026-10-01T16:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "The Den frees up 10-15 hours a week to grow with ChatGPT Work",
-      "url": "https://openai.com/index/the-den-family-social",
-      "source": "OpenAI",
-      "published_at": "2026-10-01T00:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Google's AI ranks #1 for predicting flu hospitalizations.",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/google-research/google-science-ai-flu-forecasts/",
-      "source": "Google",
-      "published_at": "2026-09-30T21:30:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-06T19:21:45.744616+00:00",
+    "checked_at": "2026-10-06T23:40:33.015081+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -452,7 +452,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-06T19:21:45.744616+00:00",
+    "last_success_at": "2026-10-06T23:40:33.015081+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
