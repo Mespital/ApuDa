@@ -1,8 +1,56 @@
 {
-  "checked_at": "2026-10-06T13:04:20.395485+00:00",
-  "last_success_at": "2026-10-06T13:04:20.395485+00:00",
+  "checked_at": "2026-10-06T19:21:45.744616+00:00",
+  "last_success_at": "2026-10-06T19:21:45.744616+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "Producers can now vibe code their own music production tools using Google Flow Music.",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/create-music-production-plugins-google-flow/",
+      "source": "Google",
+      "published_at": "2026-10-06T16:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "EmbeddingGemma 2: an open, lightweight multimodal embedding model",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2/",
+      "source": "Google",
+      "published_at": "2026-10-06T16:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Atlassian and OpenAI expand partnership to turn enterprise knowledge into action",
+      "url": "https://openai.com/index/atlassian-partnership",
+      "source": "OpenAI",
+      "published_at": "2026-10-06T16:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Making global public health more proactive with Google Earth AI",
+      "url": "https://blog.google/innovation-and-ai/technology/health/google-earth-ai/",
+      "source": "Google",
+      "published_at": "2026-10-06T15:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "More than 100 startups joining our Google for Startups Gemini Startup Forum",
+      "url": "https://blog.google/company-news/outreach-and-initiatives/entrepreneurs/gemini-startup-forum-2026/",
+      "source": "Google",
+      "published_at": "2026-10-06T14:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Advancing computer use with Ironclad",
+      "url": "https://openai.com/index/advancing-computer-use-with-ironclad",
+      "source": "OpenAI",
+      "published_at": "2026-10-06T10:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "I use technology to give students a voice and become critical digital citizens.",
       "url": "https://blog.google/products-and-platforms/products/education/teacher-voices-sweden/",
@@ -194,66 +242,14 @@
       "published_at": "2026-09-30T21:30:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Gemini 4 Argon: our next era of frontier intelligence",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",
-      "source": "Google",
-      "published_at": "2026-09-30T20:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Supporting AI readiness in higher education",
-      "url": "https://blog.google/company-news/outreach-and-initiatives/google-org/educause-2026/",
-      "source": "Google",
-      "published_at": "2026-09-30T16:43:00+00:00",
-      "category": "교육·생활",
-      "domain": "education"
-    },
-    {
-      "title": "Let skills in Gemini tackle your most repetitive tasks",
-      "url": "https://blog.google/products-and-platforms/products/gemini/automate-tasks-with-skills/",
-      "source": "Google",
-      "published_at": "2026-09-30T16:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "We’re introducing SynthID Bio, bringing our watermarking technology to synthetic biology.",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/synthid-bio/",
-      "source": "Google",
-      "published_at": "2026-09-30T15:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Disrupting a coordinated model-distillation campaign",
-      "url": "https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign",
-      "source": "OpenAI",
-      "published_at": "2026-09-30T10:30:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Helping small businesses put AI to work",
-      "url": "https://openai.com/index/helping-small-businesses-put-ai-to-work",
-      "source": "OpenAI",
-      "published_at": "2026-09-30T10:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-06T13:04:20.395485+00:00",
+    "checked_at": "2026-10-06T19:21:45.744616+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
-      {
-        "date": "2026-10-06",
-        "title": "중간고사(1학년)"
-      },
       {
         "date": "2026-10-07",
         "title": "중간고사(1학년)"
@@ -449,10 +445,14 @@
       {
         "date": "2027-01-02",
         "title": "토요휴업일"
+      },
+      {
+        "date": "2027-01-05",
+        "title": "종업식"
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-06T13:04:20.395485+00:00",
+    "last_success_at": "2026-10-06T19:21:45.744616+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
