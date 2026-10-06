@@ -1,9 +1,9 @@
 {
   "version": "1.0",
-  "generated_at": "2026-10-05T23:46:58.684134+09:00",
+  "generated_at": "2026-10-06T18:04:58.341579+09:00",
   "window": {
-    "start": "2026-09-05T09:00:00+09:00",
-    "end": "2026-10-05T09:00:00+09:00",
+    "start": "2026-09-06T09:00:00+09:00",
+    "end": "2026-10-06T09:00:00+09:00",
     "days": 30,
     "timezone": "Asia/Seoul"
   },
@@ -22,6 +22,72 @@
     "자궁경부암"
   ],
   "items": [
+    {
+      "rank": null,
+      "canonical_issue": "ADC 경쟁, 신약 후보 넘어 AI·생산까지…국산 ‘마법탄환’ 상용화는 아직 - 약사공론",
+      "title": "ADC 경쟁, 신약 후보 넘어 AI·생산까지…국산 ‘마법탄환’ 상용화는 아직",
+      "category": [
+        "ai"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-10-06T05:53:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "항체약물접합체(ADC)를 둘러싼 국내 제약·바이오업계의 경쟁이 신약 후보물질 개발을 넘어 항체 설계와 링커·페이로드 기술, 위탁개발생산(CDMO)까지 빠르게 확장",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "생산·투자 확대는 공급망 안정성과 글로벌 사업 확장, 중장기 생산능력 경쟁과 연결됩니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=545530"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545530"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/545530_450598_3629.jpg",
+      "score": 21,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [
+          "ADC"
+        ],
+        "biomarkers": [
+          "HER2"
+        ],
+        "trial_name": null,
+        "phase": "3",
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": "허가 관련",
+        "reimbursement_status": null,
+        "patient_summary": "치료제의 허가 범위나 사용 가능성과 관련된 소식입니다. 국내 실제 사용은 식약처 허가사항을 확인해야 합니다.",
+        "patient_relevance_score": 98,
+        "patient_relevance_labels": [
+          "허가",
+          "안전성",
+          "임상결과",
+          "바이오마커"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "today",
+      "age_days": 0
+    },
     {
       "rank": 3,
       "canonical_issue": "[초점] 같은 CDMO, 돈 붓는 곳은 달랐다…삼성·SK·롯데 '3색 승부' - 메디파나뉴스",
@@ -80,8 +146,8 @@
         "patient_relevance_labels": [],
         "industry_summary": null
       },
-      "freshness": "today",
-      "age_days": 0
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -136,7 +202,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 2
+      "age_days": 3
     },
     {
       "rank": null,
@@ -194,7 +260,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 2
+      "age_days": 3
     },
     {
       "rank": null,
@@ -251,7 +317,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     },
     {
       "rank": 4,
@@ -310,7 +376,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     },
     {
       "rank": null,
@@ -378,7 +444,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     }
   ]
 }

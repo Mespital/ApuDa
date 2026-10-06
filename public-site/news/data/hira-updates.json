@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-10-05T23:47:15.032986+09:00",
+  "generated_at": "2026-10-06T18:05:17.632785+09:00",
   "window_days": 30,
   "status": "ok",
   "items": [
@@ -129,7 +129,7 @@
       "document_type": "공식 고시·공지",
       "category": "건강보험 기준",
       "department": "포괄수가운영부",
-      "title": "[질병군] 고시 제2026-191호 「건강보험 행위 급여·비급여 목록표 및 급여 상대가치점수」 일부개정 새글",
+      "title": "[질병군] 고시 제2026-191호 「건강보험 행위 급여·비급여 목록표 및 급여 상대가치점수」 일부개정",
       "published_at": "2026-09-29T00:00:00+09:00",
       "url": "https://www.hira.or.kr/bbsDummy.do?brdBltNo=12279&brdScnBltNo=4&pgmid=HIRAA020002000100",
       "detail_link_verified": true,
@@ -144,7 +144,7 @@
       "document_type": "공식 고시·공지",
       "category": "건강보험 기준",
       "department": "자율점검부",
-      "title": "「한방 급여 약제 구입·청구 불일치」자율점검 운영안내 새글",
+      "title": "「한방 급여 약제 구입·청구 불일치」자율점검 운영안내",
       "published_at": "2026-09-29T00:00:00+09:00",
       "url": "https://www.hira.or.kr/bbsDummy.do?brdBltNo=12277&brdScnBltNo=4&pgmid=HIRAA020002000100",
       "detail_link_verified": true,
