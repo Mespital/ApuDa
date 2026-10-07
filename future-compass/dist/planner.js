@@ -365,6 +365,35 @@
     }
   };
   var jumpTo = '';
+  /* ---------- 시작 화면: 힐링 그림 + 오늘의 핵심만 ---------- */
+  var SOFT = ['아직 몰라도 괜찮아. 네 속도로 하나씩.', '오늘은 A 하나만 해도 충분해.', '쉬는 것도 계획이야. 대신 시작은 10분만.', '어제보다 한 걸음이면 돼.', '모르는 걸 찾은 날이 제일 많이 배운 날이야.', '천천히 해도 결국 다 쌓여.', '잘하고 있어. 오늘도 조금만.'];
+  function heroCard() {
+    var t = today(), h = new Date(Date.now() + 9 * 3600000).getUTCHours(), parent = isParent(), name = parent ? '승준이' : '승준아';
+    var exN = examName(t), L = todays(), undone = L.filter(function (x) { return !x.t.done; }), doneN = L.length - undone.length;
+    var hello = parent ? (h < 12 ? '좋은 아침이에요, 엄마 ☀️' : h < 21 ? '승준이 오늘 이렇게 해요' : '오늘도 수고 많았어요 🌙')
+      : h >= 21 || h < 5 ? '잠옷 입을 시간 🌙 오늘도 수고했어' : h < 11 ? '좋은 아침, ' + name + ' ☀️' : h < 17 ? '오후도 힘내, ' + name : '저녁이야, 하나씩 해볼까';
+    var core = [];
+    if (exN) core.push('📝 오늘 ' + exN + ' — 시험 화이팅!');
+    if (undone[0]) core.push('🥇 ' + undone[0].label + ' ' + undone[0].t.title);
+    else if (L.length) core.push('✅ 오늘 할 일 ' + L.length + '개 다 해냈어!');
+    else if (!exN) core.push('✏️ 오늘 할 일 하나만 정해볼까?');
+    var now = h * 60 + new Date(Date.now() + 9 * 3600000).getUTCMinutes();
+    var ac = (typeof FC_ACADEMY !== 'undefined' ? FC_ACADEMY.forDay(t) : []).filter(function (a) { var m = toMin(a.start); return m == null || m > now; })[0];
+    if (ac) core.push('🏫 ' + (ac.start ? ac.start + ' ' : '') + ac.name + (ac.homework && !ac.hwDone ? ' · 숙제 체크' : ''));
+    var ex = upcomingExams().filter(function (x) { return x.date > t; })[0], nx = nextExamDay(t);
+    if (core.length < 3 && nx && gap(nx) <= 7) core.push('📚 다음 시험 ' + dlabel(nx) + (P.examDays[nx] && P.examDays[nx].length ? ' · ' + P.examDays[nx].join('·') : ''));
+    else if (core.length < 3 && ex) core.push('📝 ' + ex.title + ' D-' + gap(ex.date));
+    var ag = dueAgain().length; if (core.length < 3 && ag) core.push('🔁 다시 보기 ' + ag + '개 (10분씩)');
+    var night = h >= 21 || h < 5, closed = !!P.days[t];
+    var btn = parent ? '' : undone[0] && !night ? '<button type="button" class="primary hero-go" data-pl-play="' + esc(undone[0].t.id) + '">▶ ' + esc(undone[0].label) + ' 바로 시작</button>'
+      : night && !closed ? '<button type="button" class="primary hero-go" data-hero-close>🌙 하루 마무리 30초</button>'
+      : !L.length && !exN ? '<button type="button" class="primary hero-go" data-hero-add>할 일 적기</button>' : '';
+    var soft = P.mission && (!parent || P.share.mission) ? '🧭 ' + P.mission : SOFT[(Number(t.slice(8)) + Number(t.slice(5, 7))) % SOFT.length];
+    return '<section class="hero-heal' + (night ? ' night' : '') + '"><div class="hero-img" role="img" aria-label="잠옷 입고 쉬는 그림"></div><div class="hero-body">' +
+      '<span class="hero-tag">🌱 ' + esc(hello) + '</span><h1 class="hero-title">오늘의 핵심' + (L.length ? ' <small>' + doneN + '/' + L.length + '</small>' : '') + '</h1>' +
+      '<ul class="hero-core">' + core.slice(0, 3).map(function (c) { return '<li>' + esc(c) + '</li>'; }).join('') + '</ul>' +
+      '<p class="hero-soft">' + esc(soft) + '</p>' + btn + '</div></section>';
+  }
   function enhanceToday() {
     var root = document.getElementById('content');
     var form = root.querySelector('form[data-form="tasks"]'), card = form && form.closest('section');
@@ -384,8 +413,8 @@
     } else {
       var ep2 = examPrepCard(), pc2 = root.querySelector('.wk-prep'); if (ep2 && pc2) pc2.insertAdjacentHTML('beforebegin', ep2);   // 시험 전 며칠은 예습 위에 시험 대비
     }
-    var m = missionLine(); if (m) root.insertAdjacentHTML('afterbegin', m);
     var wz = wizardCard(); if (wz) root.insertAdjacentHTML('afterbegin', wz);
+    root.insertAdjacentHTML('afterbegin', heroCard());   // 맨 위: 힐링 그림 + 오늘의 핵심 (다짐은 여기 한 줄로)
     var rc = root.querySelector('.rt-card'), cc = closeCard();
     if (cc) { if (rc) rc.insertAdjacentHTML('beforebegin', cc); else root.insertAdjacentHTML('beforeend', cc); }
   }
@@ -484,6 +513,8 @@
       q.p = nx; rerender(); return;
     }
     if (d.plMore) { openMore = openMore === d.plMore ? '' : d.plMore; render(); return; }
+    if (b.hasAttribute('data-hero-close')) { var cc0 = document.querySelector('.pl-close'); if (cc0) { cc0.scrollIntoView({ behavior: 'smooth', block: 'start' }); var i0 = cc0.querySelector('input'); if (i0) setTimeout(function () { i0.focus({ preventScroll: true }); }, 400); } return; }
+    if (b.hasAttribute('data-hero-add')) { var ai = document.querySelector('.pl-add input'); if (ai) { ai.scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(function () { ai.focus({ preventScroll: true }); }, 400); } return; }
     if (d.plExEdit) { exEdit = d.plExEdit; exSel = (P.examDays[exEdit] || []).slice(); render(); return; }
     if (d.plExs) { var ix2 = exSel.indexOf(d.plExs); if (ix2 >= 0) exSel.splice(ix2, 1); else exSel.push(d.plExs); render(); return; }
     if (b.hasAttribute('data-pl-ex-add')) { var oi = document.querySelector('[data-pl-ex-other]'), ov = oi && oi.value.trim().slice(0, 20); if (ov && exSel.indexOf(ov) < 0) exSel.push(ov); render(); return; }
@@ -638,6 +669,12 @@
   css.textContent += '.pl-examday{background:linear-gradient(135deg,#fff3e0,#ffe9ef)!important}.pl-ex-badge{display:inline-block;font-size:12.5px;font-weight:800;color:#b4475a;background:#fff;border-radius:999px;padding:4px 10px}.pl-examday h2{font-size:24px!important;margin:8px 0 10px!important}' +
     '.pl-ex-list{list-style:none;margin:0 0 10px;padding:0;display:grid;gap:6px}.pl-ex-list li{background:#fff;border-radius:12px;padding:10px 12px;font-size:16px;font-weight:600}.pl-ex-list b{color:#b4475a;margin-right:6px;font-size:13px}' +
     '.pl-ex-tips{list-style:none;margin:6px 0 8px;padding:0;display:grid;gap:4px;font-size:13.5px;color:#5a4a55}.pl-ex-next{margin-top:8px;padding:10px 12px;background:#ffffffb3;border-radius:12px;font-size:14px}.pl-ex-btns{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0}.pl-ex-btns button{min-height:36px!important;padding:4px 12px!important;font-size:13px}.pl-ex-pick{margin:8px 0}';
+  css.textContent += '.hero-heal{border-radius:24px;overflow:hidden;background:linear-gradient(160deg,#f7f1ff,#fff6ee);margin:2px 0 14px;box-shadow:0 2px 10px rgba(60,40,120,.06)}' +
+    '.hero-img{aspect-ratio:16/8.2;background:#e9e2ff url(cozy-study-sm.webp) center 35%/cover no-repeat}.hero-heal.night .hero-img{filter:saturate(.95) brightness(.92)}' +
+    '.hero-body{padding:14px 18px 18px}.hero-tag{display:inline-block;font-size:13px;font-weight:700;color:#6a55c9;background:#efe9ff;border-radius:10px;padding:5px 10px}' +
+    '.hero-title{font-size:24px;font-weight:800;margin:10px 0 8px;letter-spacing:-.02em}.hero-title small{font-size:14px;color:#8a879a;font-weight:700;margin-left:4px}' +
+    '.hero-core{list-style:none;margin:0;padding:0;display:grid;gap:6px}.hero-core li{background:#ffffffc9;border-radius:12px;padding:9px 12px;font-size:15px;font-weight:600;line-height:1.4}' +
+    '.hero-soft{margin:10px 2px 0;font-size:14px;color:#6b6880}.hero-go{width:100%;margin-top:12px;min-height:48px!important;font-size:15.5px;border-radius:14px!important}';
   document.head.appendChild(css);
   window.FC_PLANNER = { get: function () { return P; }, KEY: KEY, todays: todays, exams: upcomingExams, portions: examPortions, again: dueAgain, free: freeTime, planned: planned, examName: examName, examDays: function () { return P.examDays; }, nextExamDay: nextExamDay, est: function (id) { return est(P.pri[id]); }, subjOf: subjOf, todayRow: todayRow };
   render();   // 첫 화면에도 플래너 반영

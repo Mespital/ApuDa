@@ -53,3 +53,8 @@ body > main > header .pin-tools,body > header .pin-tools{margin-left:8px}
 .pin-who .pin-logo,.pin-who .pin-brand{display:none}
 .pin-who-chip{display:inline-flex;align-items:center;gap:4px;padding:2px 10px 2px 4px!important}.pin-who-chip svg{display:block}
 @media (max-width:760px){.pin-who-chip span{font-size:12px}}
+
+#pin-gate{overflow-y:auto}
+.pin-hero{width:calc(100% + 44px);margin:-28px -22px 2px;aspect-ratio:16/7;background:#e9e2ff url(cozy-study-sm.webp) center 32%/cover no-repeat;border-radius:24px 24px 0 0}
+.pin-card:has(.pin-hero) .pin-logo{display:none}
+@media (max-height:700px){.pin-hero{aspect-ratio:16/5}.pin-pad button{height:50px}}
