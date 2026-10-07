@@ -212,8 +212,8 @@
       </div>
       <div data-tt-paste hidden><textarea data-tt-text rows="6" placeholder="엑셀·한글·카톡에서 시간표를 복사해 붙여넣어.&#10;예)&#10;    월   화   수   목   금&#10;1  국어  수학  영어  ...&#10;또는&#10;월 국어 수학 영어 통합사회 ..."></textarea><button data-tt-parse class="primary">읽기</button></div>
       <p class="wk-status" data-tt-status>${ocrBusy ? '사진에서 글자를 읽는 중…' : ''}</p>
-      ${draft ? `<div class="wk-draft"><p><b>읽은 시간표</b> · 틀린 칸은 바로 고쳐줘${Object.keys(draftTeachers).length ? ` <small class="muted">(과목별 선생님 이름도 같이 저장돼)</small>` : ''}</p><div class="wk-draft-grid"><span></span>${days.map(d => `<b>${d}</b>`).join('')}${[0, 1, 2, 3, 4, 5, 6].map(j => `<b>${j + 1}</b>${[0, 1, 2, 3, 4].map(i => `<input data-draft="${i}-${j}" value="${esc(draft[i][j])}" maxlength="40" aria-label="${days[i]} ${j + 1}교시">`).join('')}`).join('')}</div>
-        <p><button class="primary" data-tt-apply>이 시간표로 적용</button> <button data-tt-cancel>취소</button></p></div>` : ''}
+      ${draft ? `<div class="wk-draft"><p><b>이렇게 읽었어. 맞아?</b> · 틀린 칸은 눌러서 바로 고쳐줘${Object.keys(draftTeachers).length ? ` <small class="muted">(과목별 선생님 이름도 같이 저장돼)</small>` : ''}</p><div class="wk-draft-grid"><span></span>${days.map(d => `<b>${d}</b>`).join('')}${[0, 1, 2, 3, 4, 5, 6].map(j => `<b>${j + 1}</b>${[0, 1, 2, 3, 4].map(i => `<input data-draft="${i}-${j}" value="${esc(draft[i][j])}" maxlength="40" aria-label="${days[i]} ${j + 1}교시">`).join('')}`).join('')}</div>
+        <p><button class="primary" data-tt-apply>맞아요, 저장</button> <button data-tt-cancel>다시 할래</button></p></div>` : ''}
     </section>`;
   }
   function setStatus(t) { const el = document.querySelector('[data-tt-status]'); if (el) el.textContent = t; }

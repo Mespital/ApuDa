@@ -90,10 +90,12 @@
     var hot = d.deadlines.filter(function (x) { return x.dday <= 2; });
     if (hot.length) ev += grp('⏰ 마감 임박', hot.map(function (x) { return li((x.dday === 0 ? '오늘 ' : 'D-' + x.dday + ' ') + (x.kind ? x.kind + ' · ' : '') + x.title, false, ro); }));
     if (d.prep.exam) ev += grp('🧩 내일 시험 마무리', [li('내일 볼 과목 오답·핵심 개념 다시 보기', false, ro), li('일찍 자기 — 시험 기간엔 잠이 점수야', false, ro)]);
-    if (d.review.length && !d.off && !d.examToday) ev += grp('🔁 오늘 배운 것 복습 (과목당 10분)', d.review.map(function (s) { return li(s + ' · 오늘 필기 다시 보고 핵심 3줄 정리', false, ro); }));
+    var prepSubs = d.prep.exam ? [] : d.prep.items.map(function (p) { return p.subject; });   // 오늘 복습·내일 예습 과목이 겹치면 한 줄로 (중복처럼 보이지 않게)
+    var revOnly = d.review.filter(function (s) { return prepSubs.indexOf(s) < 0; });
+    if (revOnly.length && !d.off && !d.examToday) ev += grp('🔁 오늘 배운 것 복습 (과목당 10분)', revOnly.map(function (s) { return li(s + ' · 오늘 필기 다시 보고 핵심 3줄 정리', false, ro); }));
     if (d.redo.length) ev += grp('💡 다시 풀 문제 ' + d.redo.length + '개', Object.entries(d.redo.reduce(function (a, r) { a[r.subject] = (a[r.subject] || 0) + 1; return a; }, {})).map(function (e) { return li(e[0] + ' · ' + e[1] + '개 (복습 탭)', false, ro); }));
-    if (d.prep.items.length) ev += grp('📘 ' + (gap(d.prep.date, d.date) === 1 ? '내일' : d.prep.label) + ' 예습' + (d.prep.exam ? ' — ' + d.prep.exam + ' 날이라 시험 과목 마무리가 먼저' : ''),
-      d.prep.exam ? [] : d.prep.items.map(function (p) { return li(p.subject + (p.target ? ' · ' + p.target : '') + (p.teacher ? ' (' + p.teacher + ')' : ''), p.done, ro); }));
+    if (d.prep.items.length) ev += grp('📘 ' + (gap(d.prep.date, d.date) === 1 ? '내일' : d.prep.label) + (revOnly.length < d.review.length ? ' 예습 (오늘 복습 같이)' : ' 예습') + (d.prep.exam ? ' — ' + d.prep.exam + ' 날이라 시험 과목 마무리가 먼저' : ''),
+      d.prep.exam ? [] : d.prep.items.map(function (p) { var both = !d.off && !d.examToday && d.review.indexOf(p.subject) >= 0; return li(p.subject + (both ? ' · 오늘 복습 + ' : ' · ') + (p.target || '예습') + (p.teacher ? ' (' + p.teacher + ')' : ''), p.done, ro); }));
     if (d.tasks.length) ev += grp('✅ 할 일', d.tasks.map(function (t) { return li((t.carried ? '(지난) ' : '') + t.title, t.done, ro); }));
     h += '<section class="tv-block"><h2><span class="tv-time">' + esc(d.endTime ? '저녁' : '') + '</span>🌙 오늘 공부</h2>' + (ev || '<p class="tv-muted">오늘은 따로 챙길 게 없어. 쉬어도 돼 🌿</p>') + '</section>';
     // 다가오는 학교 일정
