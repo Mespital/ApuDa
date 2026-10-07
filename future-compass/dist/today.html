@@ -13,10 +13,14 @@ main{max-width:720px;margin:0 auto;padding:14px 16px 60px}.top{display:flex;alig
 <div id="today-view"><p style="color:#8a839a">불러오는 중…</p></div>
 <p class="note">이 화면(수업·학원·할 일·예습 목록)은 보호자도 볼 수 있어. 메모와 복습 노트 내용은 보내지 않아.</p>
 </main>
-<script src="school-config.js"></script><script src="holidays-kr.js"></script><script src="curriculum-kr.js"></script><script src="today-view.js"></script>
+<script src="school-config.js"></script><script src="holidays-kr.js"></script><script src="curriculum-kr.js"></script><script src="today-view.js"></script><script src="route.js"></script>
 <script>
 (function(){
-  function draw(){ document.getElementById('today-view').innerHTML = TodayView.render(TodayView.collect()); }
+  function draw(){
+    var d = new Date(Date.now() + 9 * 3600000).toISOString().slice(0, 10), box = document.getElementById('today-view');
+    box.innerHTML = TodayView.render(TodayView.collect());
+    if (window.FC_ROUTE) { var rc = FC_ROUTE.card(d, { quiet: true }); if (rc) { box.insertAdjacentHTML('beforeend', rc); setTimeout(function(){ FC_ROUTE.mount(d); }, 50); } }
+  }
   function go(){ TodayView.loadSchool().then(function(){ draw(); TodayView.sync(); }); }
   if (window.FC_CAL) FC_CAL.onUpdate(function(){ draw(); });
   if (document.documentElement.classList.contains('pin-locked')) window.addEventListener('pin-unlocked', go); else go();

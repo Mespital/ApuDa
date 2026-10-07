@@ -102,13 +102,16 @@
     return `<section class="card"><div class="section-title"><h2>📅 ${weekOffset === 0 ? '이번 주' : weekOffset === 1 ? '다음 주' : weekOffset === -1 ? '지난주' : md(days5[0]) + ' 주'} <small class="muted">${md(days5[0])}~${md(days5[4])}</small></h2>
       <span class="wk-nav"><button data-week="-1" aria-label="이전 주">◀</button><button data-week="0">이번 주</button><button data-week="1" aria-label="다음 주">▶</button></span></div>
       <p class="muted">수업일 ${schoolDays}일${offs.some(o => o && !o.weekend) ? ' · 쉬는 날 ' + offs.filter(o => o && !o.weekend).map((o, i) => esc(o.name)).join(', ') : ''}${dueAll.length ? ' · 마감 ' + dueAll.length + '개' : ''}</p>
-      ${hasTable() ? '' : '<p class="wk-warn">시간표를 먼저 올려줘. 그러면 요일별 수업과 예습이 자동으로 채워져. <button data-go="table">시간표 올리기 →</button></p>'}
+      ${hasTable() ? '' : '<p class="wk-warn">시간표를 먼저 올려줘. 그러면 요일별 수업과 예습이 자동으로 채워져. <button data-go="settings">⚙️ 설정에서 시간표 올리기 →</button></p>'}
       <div class="wk-grid">${cards}</div>${(() => { if (!(typeof FC_ACADEMY !== 'undefined')) return ''; const sat = addDays(days5[4], 1), sun = addDays(days5[4], 2), w = [sat, sun].map(x => [x, FC_ACADEMY.forDay(x)]).filter(([, a]) => a.length); return w.length ? `<p class="wk-weekend">주말 학원 · ${w.map(([x, a]) => esc(label(x)) + ' ' + a.map(y => esc((y.start || '') + ' ' + y.name)).join(', ')).join(' / ')}</p>` : ''; })()}</section>
-      <details class="card"><summary>🌿 쉬는 날 직접 추가 (재량휴업일·임시공휴일 등)</summary>
-        <p class="muted">법정 공휴일·대체공휴일은 2029년까지 들어 있어. 학교 공지로 받은 재량휴업일이나 새로 생긴 임시공휴일만 여기 넣어.</p>
+      <p class="muted wk-offlink">다가오는 쉬는 날: ${CAL() ? CAL().upcoming(today(), 120).slice(0, 4).map(x => esc(label(x.date) + ' ' + x.name)).join(' · ') || '없음' : ''} · 재량휴업일 추가는 <button class="linkish" data-go="settings">⚙️ 설정</button></p>`;
+  }
+  function offdayPanel() {
+    const own = CAL() ? CAL().ownList().filter(x => x.date >= today()) : [];
+    return `<section class="card" id="offday-panel"><h2>🌿 쉬는 날 추가</h2>
+        <p class="muted">법정 공휴일·대체공휴일과 학교 휴업일(나이스)은 자동이야. 학교 공지로 받은 재량휴업일이나 새로 생긴 임시공휴일만 여기 넣어.</p>
         <form data-offday><label>날짜<input type="date" name="date" required min="${today()}"></label><label>이름<input name="name" maxlength="30" placeholder="예: 재량휴업일"></label><button class="primary">추가</button></form>
-        ${own.length ? own.map(x => `<div class="row"><span>${esc(label(x.date))} ${esc(x.name)}</span><button class="delete" data-offday-del="${esc(x.date)}" aria-label="삭제">×</button></div>`).join('') : ''}
-        <p class="muted">다가오는 쉬는 날: ${CAL() ? CAL().upcoming(today(), 120).slice(0, 6).map(x => esc(label(x.date) + ' ' + x.name)).join(' · ') || '없음' : ''}</p></details>`;
+        ${own.length ? own.map(x => `<div class="row"><span>${esc(label(x.date))} ${esc(x.name)}</span><button class="delete" data-offday-del="${esc(x.date)}" aria-label="삭제">×</button></div>`).join('') : ''}</section>`;
   }
 
   /* ---------- 시간표 올리기 ---------- */
@@ -198,14 +201,14 @@
     return grid.some(r => r.some(Boolean)) ? grid : null;
   }
   function uploadPanel() {
-    const classes = school?.keyed ? Object.keys(school?.timetable?.classes || {}) : [];
-    const myClass = (() => { try { return localStorage.getItem('fc_school_class') || ''; } catch { return ''; } })();
+    const myClass = (typeof FC_SCHOOL !== 'undefined' && FC_SCHOOL.config.classNo) || '';
+    const neisOk = !!(school?.keyed && school?.timetable?.classes?.[myClass]);
     return `<section class="card wk-upload"><div class="section-title"><h2>📤 시간표 올리기</h2><span class="badge">한 번이면 주간·예습 자동</span></div>
       <p class="muted">사진·캡처를 올리거나, 표를 복사해 붙여넣어. 읽은 결과를 아래에서 고친 다음 적용하면 돼.</p>
       <div class="wk-up-ways">
         <label class="wk-file">📷 사진·캡처로 올리기<input type="file" accept="image/*" data-tt-image hidden></label>
         <button data-tt-paste-open>📋 붙여넣기</button>
-        ${classes.length ? `<span class="wk-neis">🏫 나이스 <select data-tt-class>${classes.map(c => `<option ${c === myClass ? 'selected' : ''} value="${esc(c)}">${esc(c)}반</option>`).join('')}</select><button data-tt-neis>불러오기</button></span>` : ''}
+        ${neisOk ? `<button data-tt-neis>🏫 나이스에서 ${esc(myClass)}반 시간표 불러오기</button>` : ''}
       </div>
       <div data-tt-paste hidden><textarea data-tt-text rows="6" placeholder="엑셀·한글·카톡에서 시간표를 복사해 붙여넣어.&#10;예)&#10;    월   화   수   목   금&#10;1  국어  수학  영어  ...&#10;또는&#10;월 국어 수학 영어 통합사회 ..."></textarea><button data-tt-parse class="primary">읽기</button></div>
       <p class="wk-status" data-tt-status>${ocrBusy ? '사진에서 글자를 읽는 중…' : ''}</p>
@@ -310,6 +313,7 @@
         anchor.insertAdjacentElement('afterend', lessonCard); anchor = lessonCard;
       }
       if (hasTable()) { anchor.insertAdjacentHTML('afterend', prepCard()); anchor = anchor.nextElementSibling; }
+      if (typeof FC_ROUTE !== 'undefined') { const rc = FC_ROUTE.card(today(), { quiet: true }); if (rc) { anchor.insertAdjacentHTML('afterend', rc); anchor = anchor.nextElementSibling; setTimeout(() => FC_ROUTE.mount(today()), 50); } }
       if (taskCard) { anchor.insertAdjacentElement('afterend', taskCard); anchor = taskCard; }
       grid.remove();
     }
@@ -322,18 +326,49 @@
     }
   }
 
+  /* ---------- 시간표 보기(읽기 전용) ---------- */
+  function timetableView() {
+    if (!hasTable()) return '<section class="card"><h2>🗓️ 시간표</h2><p class="muted">아직 시간표가 없어.</p><button data-go="settings" class="primary">⚙️ 설정에서 시간표 올리기</button></section>';
+    const times = (typeof FC_SCHOOL !== 'undefined' && FC_SCHOOL.config.periods) || [], teachers = lsGet(TEACHER_KEY, {}) || {};
+    const n = Math.max(...state.table.map(r => { let k = r.length; while (k && !r[k - 1]) k--; return k; }));
+    const tw = wdOf(today()) - 1, ac = typeof FC_ACADEMY !== 'undefined' ? FC_ACADEMY.list() : [];
+    const head = '<tr><th></th>' + days.map((d, i) => `<th class="${i === tw ? 'now' : ''}">${d}</th>`).join('') + '</tr>';
+    const rows = [...Array(n)].map((_, j) => `<tr><th><b>${j + 1}</b><small>${esc(times[j] || '')}</small></th>` + [0, 1, 2, 3, 4].map(i => { const s = state.table[i][j] || ''; return `<td class="${i === tw ? 'now' : ''}">${esc(s)}${s && teachers[s] ? `<small>${esc(teachers[s])}</small>` : ''}</td>`; }).join('') + '</tr>').join('');
+    const acRow = ac.length ? '<tr class="ac"><th>학원</th>' + [1, 2, 3, 4, 5].map(w => `<td>${ac.filter(a => a.days.includes(w)).map(a => `<span>${esc(a.start || '')} ${esc(a.name)}</span>`).join('')}</td>`).join('') + '</tr>' : '';
+    const weekend = ac.filter(a => a.days.includes(6) || a.days.includes(0));
+    return `<section class="card tt-view"><div class="section-title"><h2>🗓️ 시간표</h2><button data-go="settings">⚙️ 바꾸기</button></div>
+      <div class="tt-scroll"><table class="tt">${head}${rows}${acRow}</table></div>
+      ${weekend.length ? `<p class="muted">주말 학원 · ${weekend.map(a => esc(a.when ? a.name : FC_ACADEMY.when(a) + ' ' + a.name)).join(', ')}</p>` : ''}</section>`;
+  }
+
+  /* ---------- 설정: 시간표·교재·학원·이동·쉬는 날·가족·보안 ---------- */
+  function settingsView() {
+    const editor = root.querySelector('section.card .days')?.closest('section'), cp = root.querySelector('#course-panel');
+    root.innerHTML = `<section class="card set-head"><h2>⚙️ 설정</h2><p class="muted">여기서 바꾸면 가족 공유로 연결된 기기에 모두 반영돼.</p>
+      <nav class="set-jump">${[['set-tt', '시간표'], ['course-panel', '교과서·단원'], ['academy-panel', '학원'], ['route-settings', '이동 장소'], ['offday-panel', '쉬는 날'], ['set-family', '가족·보안']].map(([id, t]) => `<a href="#${id}" data-jump="${id}">${t}</a>`).join('')}</nav></section>`;
+    const tt = document.createElement('div'); tt.id = 'set-tt';
+    tt.innerHTML = hasTable() && !draft && !ocrBusy ? `<details class="card wk-fold"><summary>📤 시간표 다시 올리기 (사진·붙여넣기·나이스)</summary>${uploadPanel().replace('<section class="card wk-upload">', '<section class="wk-upload">')}</details>` : uploadPanel();
+    root.appendChild(tt);
+    if (editor) { const h = editor.querySelector('h2'); if (h) h.textContent = '✏️ 시간표 직접 고치기'; root.appendChild(editor); }
+    if (cp) { const s0 = cp.querySelector('summary'); if (s0) s0.textContent = '📖 교과서·단원 고르기 (예습이 정확해져)'; root.appendChild(cp); if (openCourse) { cp.open = true; openCourse = false; setTimeout(() => cp.scrollIntoView({ block: 'start' }), 30); } }
+    if (typeof FC_ACADEMY !== 'undefined') root.insertAdjacentHTML('beforeend', FC_ACADEMY.panel());
+    if (typeof FC_ROUTE !== 'undefined') root.insertAdjacentHTML('beforeend', FC_ROUTE.settingsPanel());
+    root.insertAdjacentHTML('beforeend', offdayPanel());
+    const fam = typeof FamilySync !== 'undefined' && FamilySync.joined(), role = fam ? (FamilySync.role() === 'parent' ? '엄마' : '승준') : '';
+    root.insertAdjacentHTML('beforeend', `<section class="card" id="set-family"><h2>👨‍👩‍👧 가족·보안</h2>
+      <p>${fam ? `✅ 가족 공유 중 · 이 기기: <b>${role}</b>` : '이 기기는 아직 가족 공유에 연결 안 됐어.'}</p>
+      <div class="actions">${fam ? '' : '<button data-set-act="family">👨‍👩‍👧 가족 공유 연결</button>'}<button data-set-act="pin">🔑 비밀번호·복구 질문 바꾸기</button><button data-set-act="backup">💾 백업 저장</button><button data-set-act="restore">📂 백업 불러오기</button></div></section>`);
+    document.querySelectorAll('nav button').forEach(b => b.classList.toggle('active', b.dataset.go === 'settings'));
+  }
+
   /* ---------- 연결 ---------- */
   const prevRender = render;
   render = function () {
     if (tab === 'week') { prevRender(); root.innerHTML = weekView(); return; }
+    if (tab === 'settings') { tab = 'table'; prevRender(); tab = 'settings'; settingsView(); return; }
     prevRender();
     if (tab === 'today') arrangeToday();
-    if (tab === 'table') {
-      root.insertAdjacentHTML('afterbegin', hasTable() && !draft && !ocrBusy ? `<details class="card wk-fold"><summary>📤 시간표 다시 올리기</summary>${uploadPanel().replace('<section class="card wk-upload">', '<section class="wk-upload">')}</details>` : uploadPanel());
-      if (typeof FC_ACADEMY !== 'undefined') root.insertAdjacentHTML('beforeend', FC_ACADEMY.panel());
-      const cp = root.querySelector('#course-panel');
-      if (cp) { const s0 = cp.querySelector('summary'); if (s0) s0.textContent = '📖 과목별 단원 고르기 (예습이 정확해져)'; root.insertBefore(cp, root.querySelector('.card:not(.wk-fold):not(.wk-upload)') || null); if (openCourse) { cp.open = true; openCourse = false; setTimeout(() => cp.scrollIntoView({ block: 'start' }), 30); } }
-    }
+    if (tab === 'table') root.innerHTML = timetableView();
   };
   document.addEventListener('change', e => {
     const t = e.target;
@@ -345,11 +380,18 @@
   document.addEventListener('input', e => { const k = e.target.dataset.draft; if (k && draft) { const [i, j] = k.split('-').map(Number); draft[i][j] = e.target.value.slice(0, 40); } });
   document.addEventListener('click', e => {
     const b = e.target.closest('button'); if (!b) return;
-    if (b.hasAttribute('data-go-course')) { openCourse = true; tab = 'table'; history.replaceState(null, '', '#table'); render(); window.scrollTo(0, 0); return; }
+    if (b.hasAttribute('data-go-course')) { openCourse = true; tab = 'settings'; history.replaceState(null, '', '#settings'); render(); window.scrollTo(0, 0); return; }
+    if (b.dataset.setAct) {
+      const k = b.dataset.setAct;
+      if (k === 'family' || k === 'pin') { const t = [...document.querySelectorAll('.pin-tools button')].find(x => k === 'family' ? /가족/.test(x.textContent) : /번호/.test(x.textContent)); if (t) t.click(); }
+      if (k === 'backup') document.getElementById('study-backup')?.click();
+      if (k === 'restore') document.getElementById('study-restore')?.click();
+      return;
+    }
     if (b.dataset.week !== undefined) { const v = Number(b.dataset.week); weekOffset = v === 0 ? 0 : Math.max(-4, Math.min(20, weekOffset + v)); render(); }
     if (b.hasAttribute('data-tt-paste-open')) { const box = document.querySelector('[data-tt-paste]'); if (box) { box.hidden = !box.hidden; box.querySelector('textarea')?.focus(); } }
     if (b.hasAttribute('data-tt-parse')) { const g = parseTable(document.querySelector('[data-tt-text]')?.value); if (!g) { notice('표 모양을 못 찾았어. 요일이나 교시별로 줄을 나눠서 붙여줘.'); return; } draft = g; render(); }
-    if (b.hasAttribute('data-tt-neis')) { const c = document.querySelector('[data-tt-class]')?.value; const g = fromNeis(c); if (!g) { notice('이번 주 나이스 시간표가 아직 없어.'); return; } try { localStorage.setItem('fc_school_class', c); } catch {} draft = g; render(); }
+    if (b.hasAttribute('data-tt-neis')) { const c = (typeof FC_SCHOOL !== 'undefined' && FC_SCHOOL.config.classNo) || ''; const g = fromNeis(c); if (!g) { notice('이번 주 나이스 시간표가 아직 없어.'); return; } try { localStorage.setItem('fc_school_class', c); } catch {} draft = g; render(); }
     if (b.hasAttribute('data-tt-cancel')) { draft = null; render(); }
     if (b.hasAttribute('data-tt-apply') && draft) {
       if (hasTable() && !confirm('지금 시간표를 새 시간표로 바꿀까? (준비물 메모는 그대로야)')) return;
@@ -382,7 +424,7 @@
   .wk-nav{display:inline-flex;gap:4px}.wk-nav button{padding:4px 10px}
   .wk-warn{background:#fff6e5;border-radius:12px;padding:10px 12px;font-size:13.5px}
   .wk-prep-item{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid #f0ebf8}.wk-prep-item input{margin-top:4px;width:18px;height:18px}
-  .wk-prep-item span{display:grid;gap:2px}.wk-prep-item small{color:#667085}.wk-prep-item.light{opacity:.7}.wk-note{font-size:12px;color:#8a839a}.wk-bag{margin:8px 0 0;font-size:13.5px}.wk-next{color:#5b3fd6!important}.wk-book{color:#2f7a52}.wk-ac{margin:6px 0 0;font-size:12.5px;color:#1f6b5a;font-weight:700}.wk-weekend{margin:10px 0 0;font-size:13px;color:#1f6b5a}.wk-ac-today{margin:8px 0 0;font-size:14px;color:#1f6b5a;font-weight:700}.wk-glance{display:block;margin:0 0 12px;padding:12px 14px;border-radius:16px;background:#2b2160;color:#fff!important;font-weight:700}.wk-glance small{display:block;font-weight:500;opacity:.8;font-size:12.5px}.wk-light{margin:8px 0 0;font-size:13px;color:#8a839a}.wk-hint{margin:12px 0 0;font-size:13.5px;background:#f6f3ff;border-radius:12px;padding:10px 12px}.wk-hint button{min-height:34px;padding:4px 10px;margin-left:4px}.wk-fold-in summary{cursor:pointer;font-size:13.5px;color:#6250ce;margin:6px 0}.wk-prep-item{padding:7px 0}
+  .wk-prep-item span{display:grid;gap:2px}.wk-prep-item small{color:#667085}.wk-prep-item.light{opacity:.7}.wk-note{font-size:12px;color:#8a839a}.wk-bag{margin:8px 0 0;font-size:13.5px}.wk-next{color:#5b3fd6!important}.wk-book{color:#2f7a52}.wk-ac{margin:6px 0 0;font-size:12.5px;color:#1f6b5a;font-weight:700}.wk-weekend{margin:10px 0 0;font-size:13px;color:#1f6b5a}.wk-ac-today{margin:8px 0 0;font-size:14px;color:#1f6b5a;font-weight:700}.wk-glance{display:block;margin:0 0 12px;padding:12px 14px;border-radius:16px;background:#2b2160;color:#fff!important;font-weight:700}.wk-glance small{display:block;font-weight:500;opacity:.8;font-size:12.5px}.tt-scroll{overflow-x:auto}.tt{width:100%;border-collapse:collapse;font-size:13.5px;min-width:330px}.tt th,.tt td{border:1px solid #ebe6f5;padding:6px 4px;text-align:center;vertical-align:middle}.tt th small,.tt td small{display:block;font-size:10.5px;color:#8a839a;font-weight:400}.tt thead th,.tt tr:first-child th{background:#f6f3ff}.tt .now{background:#efe9ff}.tt tr.ac td span{display:block;font-size:11.5px;color:#1f6b5a;font-weight:700}.set-jump{display:flex;flex-wrap:wrap;gap:6px}.set-jump a{font-size:13px;padding:6px 10px;border-radius:999px;background:#f3efff;color:#5b3fd6;text-decoration:none}.linkish{background:none;border:0;min-height:0;padding:0;color:#6250ce;text-decoration:underline;font:inherit;cursor:pointer}.wk-light{margin:8px 0 0;font-size:13px;color:#8a839a}.wk-hint{margin:12px 0 0;font-size:13.5px;background:#f6f3ff;border-radius:12px;padding:10px 12px}.wk-hint button{min-height:34px;padding:4px 10px;margin-left:4px}.wk-fold-in summary{cursor:pointer;font-size:13.5px;color:#6250ce;margin:6px 0}.wk-prep-item{padding:7px 0}
   .wk-up-ways{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}.wk-file{cursor:pointer;display:inline-flex;align-items:center;padding:9px 14px;border-radius:12px;background:#5b3fd6;color:#fff;font-weight:700;font-size:14px}
   .wk-neis{display:inline-flex;gap:6px;align-items:center;font-size:14px}[data-tt-paste] textarea{width:100%;box-sizing:border-box;font:13px/1.5 ui-monospace,monospace}
   .wk-status{font-size:13px;color:#5b3fd6;min-height:1em;margin:4px 0}

@@ -66,22 +66,17 @@
     // 시간표
     var classes = (data.timetable && data.timetable.classes) || {};
     var classNames = Object.keys(classes);
-    var myClass = lsGet(CLASS_KEY) || '';
-    if (myClass && classNames.indexOf(myClass) < 0) myClass = '';
+    var myClass = String((typeof FC_SCHOOL !== 'undefined' && FC_SCHOOL.config && FC_SCHOOL.config.classNo) || '1');
+    if (classNames.indexOf(myClass) < 0) myClass = '';
     var ttHtml, own = ownLessons(off ? (CAL ? CAL.nextSchoolDay(today) : today) : today);
-    if (own && !myClass) ttHtml = '<p class="st-sub">' + (off ? esc(dayLabel(CAL.nextSchoolDay(today))) + ' 수업' : '오늘 수업') + '</p><ol class="st-tt">' + own.map(function (x) { return '<li>' + (esc(x) || '—') + '</li>'; }).join('') + '</ol>';
-    else if (!data.keyed) ttHtml = '<p class="st-muted">시간표는 나이스 인증키를 연결하면 반별로 보여. 지금은 공부방 시간표에 직접 적어 둬.</p>';
-    else if (!classNames.length) ttHtml = '<p class="st-muted">이번 주 시간표가 아직 공개되지 않았어. 공부방 시간표에 직접 적어 둬도 돼.</p>';
+    if (own) ttHtml = '<p class="st-sub">' + (off ? esc(dayLabel(CAL.nextSchoolDay(today))) + ' 수업' : '오늘 수업') + '</p><ol class="st-tt">' + own.map(function (x) { return '<li>' + (esc(x) || '—') + '</li>'; }).join('') + '</ol>';
+    else if (!myClass) ttHtml = '<p class="st-muted">이번 주 시간표가 아직 없어. ⚙️ 설정에서 시간표를 넣어 둬.</p>';
     else {
-      var sel = '<label class="st-class">반 <select data-st-class>' + '<option value="">선택</option>' + classNames.map(function (c) { return '<option ' + (c === myClass ? 'selected' : '') + ' value="' + esc(c) + '">' + esc(c) + '반</option>'; }).join('') + '</select></label>';
-      if (!myClass) ttHtml = sel + '<p class="st-muted">내 반을 고르면 오늘 시간표가 보여. 한 번만 고르면 기억할게.</p>';
-      else {
-        var days = classes[myClass]; var periods = days[today];
-        var dayKeys = Object.keys(days).filter(function (d) { return d >= today && (!CAL || CAL.isSchoolDay(d)); });
-        var showDay = periods && !off ? today : dayKeys[0];
-        var list = showDay ? days[showDay] : null;
-        ttHtml = sel + (list ? '<p class="st-sub">' + (showDay === today ? '오늘' : esc(dayLabel(showDay))) + ' 시간표</p><ol class="st-tt">' + list.map(function (s) { return '<li>' + (esc(s) || '—') + '</li>'; }).join('') + '</ol>' : '<p class="st-muted">이번 주 남은 수업이 없어.</p>');
-      }
+      var days = classes[myClass]; var periods = days[today];
+      var dayKeys = Object.keys(days).filter(function (d) { return d >= today && (!CAL || CAL.isSchoolDay(d)); });
+      var showDay = periods && !off ? today : dayKeys[0];
+      var list = showDay ? days[showDay] : null;
+      ttHtml = list ? '<p class="st-sub">' + (showDay === today ? '오늘' : esc(dayLabel(showDay))) + ' 시간표</p><ol class="st-tt">' + list.map(function (s) { return '<li>' + (esc(s) || '—') + '</li>'; }).join('') + '</ol>' : '<p class="st-muted">이번 주 남은 수업이 없어.</p>';
     }
     // 학사일정
     var events = groupEvents((data.schedule || []).filter(function (e) { return e.date >= today; })).slice(0, compact ? 3 : 5);
@@ -119,11 +114,6 @@
     boxes.forEach(function (b) { b.setAttribute('data-st', '1'); b.classList.add('st-card'); b.innerHTML = '<p class="st-muted">학교 정보를 불러오는 중…</p>'; });
     load().then(function () { document.querySelectorAll('#school-today[data-st]').forEach(render); });
   }
-  document.addEventListener('change', function (e) {
-    if (!e.target.matches || !e.target.matches('[data-st-class]')) return;
-    lsSet(CLASS_KEY, e.target.value);
-    document.querySelectorAll('#school-today[data-st]').forEach(render);
-  });
   var css = document.createElement('style');
   css.textContent = '.st-card{background:#fff;border:1px solid #e4daf4;border-radius:22px;padding:20px 22px;margin:18px 0;color:#293152}' +
     '.st-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.st-head h2{margin:0;font-size:20px}' +

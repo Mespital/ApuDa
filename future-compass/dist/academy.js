@@ -13,7 +13,8 @@
       days: days.filter(function (d, i) { return days.indexOf(d) === i; }).sort(),
       start: T.test(x.start) ? x.start : '', end: T.test(x.end) ? x.end : '',
       book: String(x.book || '').slice(0, 60), progress: String(x.progress || '').slice(0, 80), homework: String(x.homework || '').slice(0, 120),
-      hwDone: !!x.hwDone
+      hwDone: !!x.hwDone,
+      addr: String(x.addr || '').slice(0, 120), lat: Number.isFinite(+x.lat) && x.lat !== '' && x.lat != null ? +x.lat : null, lng: Number.isFinite(+x.lng) && x.lng !== '' && x.lng != null ? +x.lng : null
     };
   }
   function list() { try { var v = JSON.parse(localStorage.getItem(KEY) || '[]'); return Array.isArray(v) ? v.map(clean).filter(function (x) { return x && x.name; }).slice(0, 20) : []; } catch (e) { return []; } }
@@ -36,6 +37,7 @@
         '<div class="ac-row"><label>학원 이름<input name="name" required maxlength="30" value="' + esc(e.name) + '" placeholder="예: ○○수학"></label><label>과목<input name="subject" maxlength="20" value="' + esc(e.subject) + '" placeholder="예: 수학"></label></div>' +
         '<fieldset class="ac-days"><legend>요일</legend>' + [1, 2, 3, 4, 5, 6, 0].map(function (d) { return '<label><input type="checkbox" name="day" value="' + d + '" ' + ((e.days || []).indexOf(d) >= 0 ? 'checked' : '') + '>' + WD[d] + '</label>'; }).join('') + '</fieldset>' +
         '<div class="ac-row"><label>시작<input type="time" name="start" value="' + esc(e.start) + '"></label><label>끝<input type="time" name="end" value="' + esc(e.end) + '"></label></div>' +
+        '<label>학원 주소 <small class="muted">(이동 동선·길찾기용)</small><input name="addr" maxlength="120" value="' + esc(e.addr) + '" placeholder="예: 서울 서초구 서초대로 ○○"></label>' +
         '<label>교재<input name="book" maxlength="60" value="' + esc(e.book) + '" placeholder="예: 쎈 공통수학2"></label>' +
         '<label>지금 진도<input name="progress" maxlength="80" value="' + esc(e.progress) + '" placeholder="예: 원의 방정식 p.120까지"></label>' +
         '<label>다음 수업까지 숙제<input name="homework" maxlength="120" value="' + esc(e.homework) + '" placeholder="예: 유형 3~5 풀기"></label>' +
@@ -46,11 +48,19 @@
   document.addEventListener('submit', function (ev) {
     var f = ev.target; if (!f.matches || !f.matches('[data-ac-form]')) return; ev.preventDefault();
     var d = new FormData(f), arr = list(), id = f.getAttribute('data-id');
-    var item = clean({ id: id || '', name: d.get('name'), subject: d.get('subject'), days: d.getAll('day').map(Number), start: d.get('start'), end: d.get('end'), book: d.get('book'), progress: d.get('progress'), homework: d.get('homework') });
+    var prev = id ? list().filter(function (x) { return x.id === id; })[0] : null, addr = String(d.get('addr') || '').trim();
+    var item = clean({ id: id || '', name: d.get('name'), subject: d.get('subject'), days: d.getAll('day').map(Number), start: d.get('start'), end: d.get('end'), book: d.get('book'), progress: d.get('progress'), homework: d.get('homework'), addr: addr,
+      lat: prev && prev.addr === addr ? prev.lat : null, lng: prev && prev.addr === addr ? prev.lng : null });
     if (!item.name) return;
     if (!item.days.length && typeof notice === 'function') notice('요일을 하나 이상 골라줘. 오늘·이번 주 화면에 나오려면 필요해.');
     if (id) { arr = arr.map(function (a) { if (a.id !== id) return a; item.hwDone = a.homework === item.homework ? a.hwDone : false; return item; }); } else arr.push(item);
-    if (save(arr)) { editing = null; if (typeof notice === 'function') notice('학원 정보를 저장했어 🐾'); rerender(); }
+    if (save(arr)) {
+      editing = null; if (typeof notice === 'function') notice('학원 정보를 저장했어 🐾'); rerender();
+      if (item.addr && item.lat == null && g.FC_ROUTE) g.FC_ROUTE.geocode(item.addr).then(function (p) {
+        if (!p) { if (typeof notice === 'function') notice('주소로 위치를 못 찾았어. 도로명 주소로 다시 적어줘.'); return; }
+        save(list().map(function (x) { if (x.id === item.id) { x.lat = p.lat; x.lng = p.lng; } return x; })); rerender();
+      });
+    }
   });
   document.addEventListener('click', function (ev) {
     var b = ev.target.closest && ev.target.closest('button'); if (!b) return;
