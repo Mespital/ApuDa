@@ -1,13 +1,45 @@
 {
-  "checked_at": "2026-10-07T12:58:58.400020+00:00",
-  "last_success_at": "2026-10-07T12:58:58.400020+00:00",
+  "checked_at": "2026-10-07T18:49:00.395771+00:00",
+  "last_success_at": "2026-10-07T18:49:00.395771+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "We're making it easier to identify AI-generated content globally.",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/synth-id-ai-content/",
+      "source": "Google",
+      "published_at": "2026-10-07T14:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "Introducing Playground: Create and play custom games",
       "url": "https://blog.google/innovation-and-ai/technology/ai/playground-experimental-gaming-platform/",
       "source": "Google",
       "published_at": "2026-10-07T12:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Helping teens learn, plan, and shape the future of AI",
+      "url": "https://openai.com/index/teens-learn-and-plan",
+      "source": "OpenAI",
+      "published_at": "2026-10-07T12:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Radisson Hotel Group brings hotel discovery into ChatGPT",
+      "url": "https://openai.com/index/radisson",
+      "source": "OpenAI",
+      "published_at": "2026-10-07T07:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "GPT-6 and Intelligent UI for everyone",
+      "url": "https://openai.com/index/gpt-6-for-everyone",
+      "source": "OpenAI",
+      "published_at": "2026-10-07T00:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
     },
@@ -210,50 +242,14 @@
       "published_at": "2026-10-02T15:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Chatham scales its capital markets expertise with OpenAI",
-      "url": "https://openai.com/index/chatham-financial",
-      "source": "OpenAI",
-      "published_at": "2026-10-02T00:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Our Project Suncatcher prototype satellite is in orbit.",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/google-research/project-suncatcher-prototype/",
-      "source": "Google",
-      "published_at": "2026-10-01T23:30:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "The eternal complement",
-      "url": "https://openai.com/index/the-eternal-complement",
-      "source": "OpenAI",
-      "published_at": "2026-10-01T17:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Guided Vision in Gemini Live: built for accessibility",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/guided-vision-gemini-live/",
-      "source": "Google",
-      "published_at": "2026-10-01T16:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-07T12:58:58.400020+00:00",
+    "checked_at": "2026-10-07T18:49:00.395771+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
-      {
-        "date": "2026-10-07",
-        "title": "중간고사(1학년)"
-      },
       {
         "date": "2026-10-08",
         "title": "중간고사(1학년)"
@@ -452,7 +448,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-07T12:58:58.400020+00:00",
+    "last_success_at": "2026-10-07T18:49:00.395771+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
