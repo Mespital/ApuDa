@@ -67,7 +67,7 @@
         '</div>' +
         '<button type="button" class="pin-forgot">비밀번호를 잊었어요</button>' +
         '<button type="button" class="pin-family" hidden>👨‍👩‍👧 가족 비밀번호로 들어가기</button>' +
-        '<div class="pin-role" hidden><div class="pin-who-row">' + ['child', 'parent'].map(function (r) { return '<button type="button" data-role="' + r + '">' + (window.FC_CHAR ? FC_CHAR.svg(r, 92) : (r === 'parent' ? '👩' : '🧒')) + '<b>' + (r === 'parent' ? '엄마' : '승준') + '</b></button>'; }).join('') + '</div><p class="pin-who-note">사용 시간은 승준으로 들어왔을 때만 세.</p></div>' +
+        '<div class="pin-role" hidden><div class="pin-who-row">' + ['child', 'parent'].map(function (r) { return '<button type="button" data-role="' + r + '">' + (window.FC_CHAR ? FC_CHAR.svg(r, 92) : (r === 'parent' ? '👩' : '🧒')) + '<b>' + (r === 'parent' ? '엄마로 들어가기' : '승준으로 들어가기') + '</b></button>'; }).join('') + '</div></div>' +
         '<button type="button" class="pin-cancel-change" hidden>바꾸지 않고 돌아가기</button>' +
         '<div class="pin-qa-setup" hidden><p><b>비밀번호를 잊었을 때 쓸 질문을 정해둘래?</b><br>나만 아는 답이면 메일 없이도 바로 찾을 수 있어. (선택)</p>' +
           '<label>질문<select class="pin-qa-sel">' + QUESTIONS.map(function (q) { return '<option>' + q + '</option>'; }).join('') + '<option value="__custom">직접 적기</option></select></label>' +
@@ -123,7 +123,7 @@
     gate.querySelectorAll('.pin-role [data-role]').forEach(function (b) { b.addEventListener('click', function () {
       var r = b.getAttribute('data-role'); setWho(r);
       if (window.FamilySync && whoFamily) FamilySync.start(true);
-      var n = (whoNotice ? whoNotice + ' ' : '') + (r === 'parent' ? '엄마, 반가워요 💜' : '승준, 오늘도 화이팅 🐾'); changing = false; recovering = false; whoNotice = ''; whoFamily = false; reallyUnlock(n);
+      var n = (whoNotice ? whoNotice + ' ' : '') + (r === 'parent' ? '엄마로 들어왔어요 💜' : '승준, 오늘도 화이팅 🐾'); changing = false; recovering = false; whoNotice = ''; whoFamily = false; reallyUnlock(n);
     }); });
     gate.querySelector('.pin-rec-mail-open').addEventListener('click', function () { gate.querySelector('.pin-rec-mail').hidden = false; gate.querySelector('.pin-rec-qa').hidden = true; recStatus(''); });
     gate.querySelector('.pin-rec-qa-open').addEventListener('click', function () {
@@ -201,7 +201,7 @@
         var salt = newSalt();
         hashPin(pin, salt).then(function (h) {
           lsSet(PIN_KEY, JSON.stringify({ salt: salt, hash: h, v: 1, family: true, at: new Date().toISOString() })); lsDel(FAIL_KEY);
-          changing = false; showWho('가족 공유로 연결했어. 이제 이 비밀번호로 들어오면 돼.', true);
+          changing = false; showWho('가족 공유 연결 완료. 다음부터 이 비밀번호로 들어오면 돼.', true);
         });
       });
       return;
@@ -325,7 +325,7 @@
     });
   }
 
-  /* ---------- 누가 들어왔어? (승준 / 엄마) ---------- */
+  /* ---------- 승준으로 / 엄마로 들어가기 ---------- */
   var whoNotice = '', whoFamily = false;
   function getWho() { var w = lsGet(WHO_KEY); if (w === 'child' || w === 'parent') return w; var f = window.FamilySync && FamilySync.role(); return f === 'child' || f === 'parent' ? f : ''; }
   function setWho(r) {
@@ -337,7 +337,7 @@
     whoNotice = notice || ''; whoFamily = !!family;
     var card = gate.querySelector('.pin-card'); card.classList.add('pin-recovering', 'pin-who');
     ['.pin-forgot', '.pin-family', '.pin-qa-setup', '.pin-cancel-change', '.pin-confirm'].forEach(function (q) { var e = gate.querySelector(q); if (e) e.hidden = true; });
-    titleEl.textContent = '누가 들어왔어?'; msgEl.textContent = notice || '';
+    titleEl.textContent = '승준 공부관리 방'; msgEl.textContent = notice || '';
     var box = gate.querySelector('.pin-role'); box.hidden = false;
     var last = getWho(); box.querySelectorAll('[data-role]').forEach(function (b) { b.classList.toggle('last', b.getAttribute('data-role') === last); });
   }
