@@ -73,8 +73,9 @@
         '<path d="M53 79 Q60 85 67 79" fill="none" stroke="#c2525e" stroke-width="2.4" stroke-linecap="round"/>' +
       '</g>';
   }
-  function svg(role, size) {
+  function svg(role, size, raw) {
     size = size || 96;
+    if (!raw && custom(role)) return avatar(role, size);
     var label = role === 'parent' ? '엄마 캐릭터' : '승준 캐릭터';
     return '<svg class="fc-char" width="' + size + '" height="' + Math.round(size * 140 / 120) + '" viewBox="0 0 120 140" role="img" aria-label="' + label + '">' + (role === 'parent' ? parent() : child()) + '</svg>';
   }
@@ -82,10 +83,27 @@
   var AV = 'fc_avatar_v1';
   function avMap() { try { var v = JSON.parse(localStorage.getItem(AV) || '{}'); return v && typeof v === 'object' ? v : {}; } catch (e) { return {}; } }
   function custom(role) { var u = avMap()[role === 'parent' ? 'parent' : 'child']; return typeof u === 'string' && /^data:image\/(png|jpeg|webp|gif);base64,/.test(u) ? u : ''; }
-  function avatar(role, size) {
+  /* 고른 그림을 움직이는 SVG로 감싸기: 콩콩 뛰기 + 살짝 흔들기 + 그림자 (+ 엄마는 하트, 승준은 반짝이) */
+  var AV_STYLE = '<style>' +
+    '.fca-hop{animation:fcaHop 1.9s cubic-bezier(.3,.7,.4,1) infinite;transform-origin:60px 134px}' +
+    '.fca-sway{animation:fcaSway 3.8s ease-in-out infinite;transform-origin:60px 134px}' +
+    '.fca-shadow{animation:fcaShadow 1.9s cubic-bezier(.3,.7,.4,1) infinite;transform-origin:60px 135px}' +
+    '.fca-spark{animation:fcaSpark 2.2s ease-in-out infinite;transform-box:fill-box;transform-origin:center}.fca-spark.s2{animation-delay:1.1s}' +
+    '@keyframes fcaHop{0%,100%{transform:translateY(0) scale(1,1)}30%{transform:translateY(-7px) scale(.98,1.02)}52%{transform:translateY(0) scale(1.03,.97)}64%{transform:translateY(0) scale(1,1)}}' +
+    '@keyframes fcaSway{0%,100%{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}' +
+    '@keyframes fcaShadow{0%,100%{transform:scaleX(1);opacity:.18}30%{transform:scaleX(.8);opacity:.1}52%{transform:scaleX(1.05);opacity:.2}}' +
+    '@keyframes fcaSpark{0%,100%{opacity:0;transform:scale(.4)}50%{opacity:1;transform:scale(1)}}' +
+    '@media (prefers-reduced-motion:reduce){.fca-hop,.fca-sway,.fca-shadow,.fca-spark{animation:none}}</style>';
+  function avatar(role, size, opts) {
     size = size || 96; var u = custom(role);
     if (!u) return svg(role, size);
-    return '<img class="fc-char fc-av" src="' + u + '" width="' + size + '" height="' + Math.round(size * 140 / 120) + '" alt="' + (role === 'parent' ? '엄마' : '승준') + '" style="object-fit:contain">';
+    var small = size < 40 || (opts && opts.still), h = Math.round(size * 140 / 120), label = role === 'parent' ? '엄마' : '승준';
+    var deco = small ? '' : role === 'parent'
+      ? heart(102, 30, .6) + heart(18, 44, .45, 'h2')
+      : '<path class="fca-spark" d="M104 22l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#f4c95d"/><path class="fca-spark s2" d="M16 40l1.5 3.5 3.5 1.5-3.5 1.5-1.5 3.5-1.5-3.5-3.5-1.5 3.5-1.5z" fill="#8fd3ff"/>';
+    return '<svg class="fc-char fc-av" width="' + size + '" height="' + h + '" viewBox="0 0 120 140" role="img" aria-label="' + label + '">' + (small ? '' : AV_STYLE + STYLE) +
+      (small ? '' : '<ellipse class="fca-shadow" cx="60" cy="135" rx="30" ry="4" fill="#2a2060"/>') + deco +
+      '<g class="' + (small ? '' : 'fca-sway') + '"><g class="' + (small ? '' : 'fca-hop') + '"><image href="' + u + '" x="4" y="4" width="112" height="130" preserveAspectRatio="xMidYMax meet"/></g></g></svg>';
   }
   function setAvatar(role, url) { var m = avMap(); if (url) m[role] = url; else delete m[role]; try { localStorage.setItem(AV, JSON.stringify(m)); return true; } catch (e) { return false; } }
   g.FC_CHAR = { svg: svg, avatar: avatar, custom: custom, setAvatar: setAvatar, KEY: AV, name: function (r) { return r === 'parent' ? '엄마' : '승준'; } };
