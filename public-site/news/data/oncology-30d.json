@@ -1,9 +1,9 @@
 {
   "version": "1.0",
-  "generated_at": "2026-10-06T18:04:58.341579+09:00",
+  "generated_at": "2026-10-07T18:04:54.029694+09:00",
   "window": {
-    "start": "2026-09-06T09:00:00+09:00",
-    "end": "2026-10-06T09:00:00+09:00",
+    "start": "2026-09-07T09:00:00+09:00",
+    "end": "2026-10-07T09:00:00+09:00",
     "days": 30,
     "timezone": "Asia/Seoul"
   },
@@ -85,6 +85,69 @@
         ],
         "industry_summary": null
       },
+      "freshness": "7d",
+      "age_days": 1
+    },
+    {
+      "rank": 2,
+      "canonical_issue": "삼진제약, 암·백신·CNS로 사업 다각화…'AR1001' 3상 분수령 - 메디파나뉴스",
+      "title": "삼진제약, 암·백신·CNS로 사업 다각화…'AR1001' 3상 분수령",
+      "category": [
+        "3상",
+        "임상 3상"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-07T06:02:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "삼진제약이 항암제와 백신, 중추신경계(CNS) 치료제로 사업영역을 넓히면서 외형 성장을 꾀하고 있다. 항암 분야에서는 전담 조직과 신규 품목을 추가했으며, 백신은 판매와 공동개발 협력을 추진하고 있다. CNS 분야에서는 뇌전증 치료제를 보강한 데 이어 오는 11월 아리바이오에서 개발 중인 알츠하이머병 신",
+        "사진=최인환 기자 삼진제약이 항암제와 백신, 중추신경계(CNS) 치료제로 사업영역을 넓히면서 외형 성장을 꾀하고 있다.",
+        "항암 분야에서는 전담 조직과 신규 품목을 추가했으며, 백신은 판매와 공동개발 협력을 추진하고 있다."
+      ],
+      "importance": "주요 임상 결과는 향후 허가·가이드라인·표준치료 변화 가능성을 평가하는 근거가 됩니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=418845"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=418845"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/418845_326108_2956.jpg",
+      "score": 58,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "유방암"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": "3",
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
+        "patient_relevance_score": 48,
+        "patient_relevance_labels": [
+          "급여·접근성",
+          "임상결과"
+        ],
+        "industry_summary": null
+      },
       "freshness": "today",
       "age_days": 0
     },
@@ -147,7 +210,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
     },
     {
       "rank": null,
@@ -202,7 +265,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     },
     {
       "rank": null,
@@ -260,7 +323,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     },
     {
       "rank": null,
@@ -317,7 +380,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": 4,
@@ -376,7 +439,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": null,
@@ -444,7 +507,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     }
   ]
 }

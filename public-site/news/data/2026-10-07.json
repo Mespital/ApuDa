@@ -1,0 +1,430 @@
+{
+  "version": "1.2",
+  "report_date": "2026-10-07",
+  "collection_window": {
+    "start": "2026-10-06T09:00:00+09:00",
+    "end": "2026-10-07T09:00:00+09:00",
+    "timezone": "Asia/Seoul"
+  },
+  "sources": [
+    "데일리팜",
+    "의학신문",
+    "메디파나뉴스",
+    "약사공론"
+  ],
+  "briefing": "기술 팔고 해외기업·자산 확보…APAC 빅딜서 K바이오 '양방향'가 오늘 가장 중요한 이슈로 부각됐습니다. 이어 삼진제약, 암·백신·CNS로 사업 다각화…'AR1001' 3상 분수령도 주요 변화로 확인됐습니다. 전체적으로는 디지털헬스 · 정책·급여 흐름이 두드러집니다.",
+  "top_news": [
+    {
+      "rank": 1,
+      "canonical_issue": "기술 팔고 해외기업·자산 확보…APAC 빅딜서 K바이오 '양방향' - 메디파나뉴스",
+      "title": "기술 팔고 해외기업·자산 확보…APAC 빅딜서 K바이오 '양방향'",
+      "category": [
+        "기술수출",
+        "인수"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-06T12:05:12+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "국내 제약·바이오기업들이 올해 아시아·태평양 주요 바이오제약 거래에서 기술을 수출하는 동시에 해외 기업과 자산 확보에도 나섰다. 영향력 있는 거래 10건 가운데 한국 기업 관련 거래 3건이 포함됐으며, 한미약품은 기술수출, 삼성바이오로직스와 SK바이오팜은 각각 기업 인수 추진과 해외 자산 도입으로 이름을",
+        "AI 생성 이미지(ChatGPT) 국내 제약·바이오기업들이 올해 아시아·태평양 주요 바이오제약 거래에서 기술을 수출하는 동시에 해외 기업과 자산 확보에도 나섰다.",
+        "영향력 있는 거래 10건 가운데 한국 기업 관련 거래 3건이 포함됐으며, 한미약품은 기술수출, 삼성바이오로직스와 SK바이오팜은 각각 기업 인수 추진과 해외 자산 도입으로 이름을 올렸다."
+      ],
+      "importance": "사업개발·구조개편은 파이프라인 가치와 자본 배분, 기업 경쟁구도에 직접 영향을 주는 변화입니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=418789"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=418789"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/418789_326050_2432.png",
+      "score": 68,
+      "oncology": null
+    },
+    {
+      "rank": 2,
+      "canonical_issue": "삼진제약, 암·백신·CNS로 사업 다각화…'AR1001' 3상 분수령 - 메디파나뉴스",
+      "title": "삼진제약, 암·백신·CNS로 사업 다각화…'AR1001' 3상 분수령",
+      "category": [
+        "3상",
+        "임상 3상"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-07T06:02:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "삼진제약이 항암제와 백신, 중추신경계(CNS) 치료제로 사업영역을 넓히면서 외형 성장을 꾀하고 있다. 항암 분야에서는 전담 조직과 신규 품목을 추가했으며, 백신은 판매와 공동개발 협력을 추진하고 있다. CNS 분야에서는 뇌전증 치료제를 보강한 데 이어 오는 11월 아리바이오에서 개발 중인 알츠하이머병 신",
+        "사진=최인환 기자 삼진제약이 항암제와 백신, 중추신경계(CNS) 치료제로 사업영역을 넓히면서 외형 성장을 꾀하고 있다.",
+        "항암 분야에서는 전담 조직과 신규 품목을 추가했으며, 백신은 판매와 공동개발 협력을 추진하고 있다."
+      ],
+      "importance": "주요 임상 결과는 향후 허가·가이드라인·표준치료 변화 가능성을 평가하는 근거가 됩니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=418845"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=418845"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/418845_326108_2956.jpg",
+      "score": 58,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "유방암"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": "3",
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
+        "patient_relevance_score": 48,
+        "patient_relevance_labels": [
+          "급여·접근성",
+          "임상결과"
+        ],
+        "industry_summary": null
+      }
+    },
+    {
+      "rank": 3,
+      "canonical_issue": "9월 품절 상위권 '물갈이'…울트라셋·나조넥스 급부상 - 약사공론",
+      "title": "9월 품절 상위권 '물갈이'…울트라셋·나조넥스 급부상",
+      "category": [
+        "수가",
+        "약국",
+        "품절"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-10-07T05:50:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "약국가의 의약품 수급 불안 품목이 한 달 사이 크게 바뀌었다. 8월 품절입고알림 신청 1위였던 마그밀정의 신청 건수가 크게 감소한 사이 울트라셋정과 나조넥스나잘스",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=545705"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545705"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/545705_450706_4446.png",
+      "score": 42,
+      "oncology": null
+    },
+    {
+      "rank": 4,
+      "canonical_issue": "약국 이름에 '창고·마트·최대' 금지…오남용 조장 광고 퇴출 - 메디파나뉴스",
+      "title": "약국 이름에 '창고·마트·최대' 금지…오남용 조장 광고 퇴출",
+      "category": [
+        "복지부",
+        "약국"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-06T17:22:49+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "앞으로 약국 간판이나 광고에서 '창고', '마트', '할인', '최대'와 같이 의약품 오남용을 부추기거나 소비자를 현혹할 수 있는 표현들이 전면 금지된다. 보건복지부는 약국의 본래 기능을 왜곡하고 소비자가 오인하게 만들거나 의약품의 과다소비를 유도할 우려가 있는 명칭, 표시, 광고의 구체적 기준을 마련하",
+        "사진=이정수 기자 앞으로 약국 간판이나 광고에서 '창고', '마트', '할인', '최대'와 같이 의약품 오남용을 부추기거나 소비자를 현혹할 수 있는 표현들이 전면 금지된다.",
+        "보건복지부는 약국의 본래 기능을 왜곡하고 소비자가 오인하게 만들거나 의약품의 과다소비를 유도할 우려가 있는 명칭, 표시, 광고의 구체적 기준을 마련하기 위해 '약사법 시행규칙' 개정을 추진한다고 6일 밝혔다."
+      ],
+      "importance": "의료기관·약국 현장의 변화는 진료 흐름과 환자 경험, 의약품 사용 환경에 직접 영향을 줍니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=418837"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=418837"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/418837_326101_2236.jpg",
+      "score": 40,
+      "oncology": null
+    },
+    {
+      "rank": 5,
+      "canonical_issue": "비대면진료 결국 '의료쇼핑'?…약사 98.7% \"도입 취지 변질\" - 약사공론",
+      "title": "비대면진료 결국 '의료쇼핑'?…약사 98.7% \"도입 취지 변질\"",
+      "category": [
+        "급여"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-10-06T13:36:43+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "비대면진료가 의료취약계층의 접근성을 높인다는 당초 취지와 달리 탈모·다이어트·여드름 등 비급여 진료와 젊은층의 편의성 중심으로 이용되고 있다는 현장 약사들의 평가",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=545630"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545630"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/545630_450650_3938.png",
+      "score": 39,
+      "oncology": null
+    }
+  ],
+  "trends": [
+    {
+      "title": "디지털헬스",
+      "count": 3,
+      "change": "3건의 주요 이슈에서 반복적으로 확인",
+      "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
+      "examples": [
+        "기술 팔고 해외기업·자산 확보…APAC 빅딜서 K바이오 '양방향'",
+        "9월 품절 상위권 '물갈이'…울트라셋·나조넥스 급부상"
+      ]
+    },
+    {
+      "title": "정책·급여",
+      "count": 3,
+      "change": "3건의 주요 이슈에서 반복적으로 확인",
+      "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
+      "examples": [
+        "9월 품절 상위권 '물갈이'…울트라셋·나조넥스 급부상",
+        "약국 이름에 '창고·마트·최대' 금지…오남용 조장 광고 퇴출"
+      ]
+    },
+    {
+      "title": "의료현장",
+      "count": 2,
+      "change": "2건의 주요 이슈에서 반복적으로 확인",
+      "implication": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름",
+      "examples": [
+        "9월 품절 상위권 '물갈이'…울트라셋·나조넥스 급부상",
+        "약국 이름에 '창고·마트·최대' 금지…오남용 조장 광고 퇴출"
+      ]
+    },
+    {
+      "title": "투자·사업개발",
+      "count": 1,
+      "change": "1건의 주요 이슈에서 반복적으로 확인",
+      "implication": "자본과 파이프라인 확보 경쟁이 사업전략의 핵심이 되는 흐름",
+      "examples": [
+        "기술 팔고 해외기업·자산 확보…APAC 빅딜서 K바이오 '양방향'"
+      ]
+    }
+  ],
+  "outlet_status": [
+    {
+      "publisher": "데일리팜",
+      "homepage_url": "https://www.dailypharm.com/",
+      "items": [
+        {
+          "title": "[데일리팜]CSO 리베이트, 국감 이슈화…제약사 연대책임 강화 기류",
+          "published_at": "2026-10-07T06:00:59+09:00",
+          "verified": true,
+          "source_url": "https://www.dailypharm.com/user/news/343133"
+        }
+      ]
+    },
+    {
+      "publisher": "의학신문",
+      "homepage_url": "https://www.bosa.co.kr/",
+      "items": [
+        {
+          "title": "대한의학회 60년…소통과 대안으로 미래 의료 준비해야",
+          "published_at": "2026-10-06T16:56:17+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013384"
+        },
+        {
+          "title": "“의학회, 교육·연구 지킬 정책 역량 강화해야”",
+          "published_at": "2026-10-07T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013399"
+        },
+        {
+          "title": "'창고형 약국' 이름 못 쓴다…'할인·특가·저렴' 광고도 제한",
+          "published_at": "2026-10-06T16:59:06+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013386"
+        },
+        {
+          "title": "지방 국립대병원 금융부채 1.6조 육박",
+          "published_at": "2026-10-06T16:27:54+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013370"
+        },
+        {
+          "title": "소아응급센터 압수수색 논란...의료계 “수사절차 개선해야”",
+          "published_at": "2026-10-06T12:45:12+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013354"
+        },
+        {
+          "title": "증상 관리 넘어 ‘질환 기전’ 겨냥…희귀·난치질환 치료 패러다임 바뀐다",
+          "published_at": "2026-10-07T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013000"
+        },
+        {
+          "title": "응급실 압수수색, 의료계 분노 들불처럼 번진다",
+          "published_at": "2026-10-06T10:34:40+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013333"
+        },
+        {
+          "title": "전공의 현장평가, 전문의 시험 응시요건 연계 제안",
+          "published_at": "2026-10-07T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013398"
+        }
+      ]
+    },
+    {
+      "publisher": "메디파나뉴스",
+      "homepage_url": "https://www.medipana.com/",
+      "items": [
+        {
+          "title": "기술 팔고 해외기업·자산 확보…APAC 빅딜서 K바이오 '양방향'",
+          "published_at": "2026-10-06T12:05:12+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=418789"
+        },
+        {
+          "title": "삼진제약, 암·백신·CNS로 사업 다각화…'AR1001' 3상 분수령",
+          "published_at": "2026-10-07T06:02:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=418845"
+        },
+        {
+          "title": "약국 이름에 '창고·마트·최대' 금지…오남용 조장 광고 퇴출",
+          "published_at": "2026-10-06T17:22:49+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=418837"
+        },
+        {
+          "title": "[기획] 신약은 추격, 디지털헬스는 선도…새 승부처 주목",
+          "published_at": "2026-10-07T06:04:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=418826"
+        },
+        {
+          "title": "휴텍스 GMP 취소 효력 정지…생산 재개 길 열려",
+          "published_at": "2026-10-06T18:05:22+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=418841"
+        },
+        {
+          "title": "소아응급센터 압수수색에 병원계 우려…\"필수의료 위축\"",
+          "published_at": "2026-10-06T12:03:05+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=418816"
+        },
+        {
+          "title": "지역 소아의료 지킨 20년…강두철 원장 첫 에세이 출간",
+          "published_at": "2026-10-06T10:40:39+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=418798"
+        },
+        {
+          "title": "건강서울페스티벌, '시민 축제'로…약사 역할·의약품 안전 공유",
+          "published_at": "2026-10-07T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=418842"
+        }
+      ]
+    },
+    {
+      "publisher": "약사공론",
+      "homepage_url": "https://www.kpanews.co.kr/",
+      "items": [
+        {
+          "title": "9월 품절 상위권 '물갈이'…울트라셋·나조넥스 급부상",
+          "published_at": "2026-10-07T05:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545705"
+        },
+        {
+          "title": "비대면진료 결국 '의료쇼핑'?…약사 98.7% \"도입 취지 변질\"",
+          "published_at": "2026-10-06T13:36:43+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545630"
+        },
+        {
+          "title": "[데스크칼럼] 중기부는 답해야 한다 \"책임은 누가 지는가\"",
+          "published_at": "2026-10-07T05:52:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545674"
+        },
+        {
+          "title": "안전상비약 판매업소 97% 기준 위반…'품목 확대보다 관리부터'",
+          "published_at": "2026-10-07T05:55:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545685"
+        },
+        {
+          "title": "EU, 하수 속 잔류의약품 처리비 제약사에 부과",
+          "published_at": "2026-10-07T05:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545571"
+        },
+        {
+          "title": "\"질책보다 중요한 3가지\", 약국 직원 실수 바로잡기",
+          "published_at": "2026-10-07T05:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545649"
+        },
+        {
+          "title": "'제일 큰·마트' 약국명 정비 본격화…약사회 세부기준 협의",
+          "published_at": "2026-10-07T05:54:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545680"
+        },
+        {
+          "title": "약사회 “사설 플랫폼, 약배송 안전기준 거론할 자격 없다”",
+          "published_at": "2026-10-07T05:53:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545688"
+        }
+      ]
+    }
+  ],
+  "insight": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름 동시에 정책·급여 흐름도 함께 확인돼 단일 이슈보다 복합적인 산업 변화로 보는 것이 적절합니다.",
+  "infographic": {
+    "image_path": null,
+    "generated_at": null,
+    "template_version": "news-card-v1"
+  }
+}

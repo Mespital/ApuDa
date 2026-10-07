@@ -1,7 +1,7 @@
 {
   "version": "1.1",
-  "generated_at": "2026-10-06T18:04:58.346346+09:00",
-  "as_of": "2026-10-06T09:00:00+09:00",
+  "generated_at": "2026-10-07T18:04:54.034143+09:00",
+  "as_of": "2026-10-07T09:00:00+09:00",
   "periods": {
     "today": {
       "label": "오늘",
@@ -9,206 +9,232 @@
       "items": [
         {
           "rank": 1,
-          "canonical_issue": "급여퇴출 항소 자누스틴·다파칸 등 경보 22품목, 급여 추가연장 - 약사공론",
-          "title": "급여퇴출 항소 자누스틴·다파칸 등 경보 22품목, 급여 추가연장",
+          "canonical_issue": "기술 팔고 해외기업·자산 확보…APAC 빅딜서 K바이오 '양방향' - 메디파나뉴스",
+          "title": "기술 팔고 해외기업·자산 확보…APAC 빅딜서 K바이오 '양방향'",
           "category": [
-            "급여",
-            "허가"
+            "기술수출",
+            "인수"
+          ],
+          "publishers": [
+            "메디파나뉴스"
+          ],
+          "published_at": "2026-10-06T12:05:12+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "국내 제약·바이오기업들이 올해 아시아·태평양 주요 바이오제약 거래에서 기술을 수출하는 동시에 해외 기업과 자산 확보에도 나섰다. 영향력 있는 거래 10건 가운데 한국 기업 관련 거래 3건이 포함됐으며, 한미약품은 기술수출, 삼성바이오로직스와 SK바이오팜은 각각 기업 인수 추진과 해외 자산 도입으로 이름을",
+            "AI 생성 이미지(ChatGPT) 국내 제약·바이오기업들이 올해 아시아·태평양 주요 바이오제약 거래에서 기술을 수출하는 동시에 해외 기업과 자산 확보에도 나섰다.",
+            "영향력 있는 거래 10건 가운데 한국 기업 관련 거래 3건이 포함됐으며, 한미약품은 기술수출, 삼성바이오로직스와 SK바이오팜은 각각 기업 인수 추진과 해외 자산 도입으로 이름을 올렸다."
+          ],
+          "importance": "사업개발·구조개편은 파이프라인 가치와 자본 배분, 기업 경쟁구도에 직접 영향을 주는 변화입니다.",
+          "source_urls": [
+            "https://www.medipana.com/news/articleView.html?idxno=418789"
+          ],
+          "source_links": [
+            {
+              "publisher": "메디파나뉴스",
+              "url": "https://www.medipana.com/news/articleView.html?idxno=418789"
+            }
+          ],
+          "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/418789_326050_2432.png",
+          "score": 68,
+          "oncology": null
+        },
+        {
+          "rank": 2,
+          "canonical_issue": "삼진제약, 암·백신·CNS로 사업 다각화…'AR1001' 3상 분수령 - 메디파나뉴스",
+          "title": "삼진제약, 암·백신·CNS로 사업 다각화…'AR1001' 3상 분수령",
+          "category": [
+            "3상",
+            "임상 3상"
+          ],
+          "publishers": [
+            "메디파나뉴스"
+          ],
+          "published_at": "2026-10-07T06:02:00+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "삼진제약이 항암제와 백신, 중추신경계(CNS) 치료제로 사업영역을 넓히면서 외형 성장을 꾀하고 있다. 항암 분야에서는 전담 조직과 신규 품목을 추가했으며, 백신은 판매와 공동개발 협력을 추진하고 있다. CNS 분야에서는 뇌전증 치료제를 보강한 데 이어 오는 11월 아리바이오에서 개발 중인 알츠하이머병 신",
+            "사진=최인환 기자 삼진제약이 항암제와 백신, 중추신경계(CNS) 치료제로 사업영역을 넓히면서 외형 성장을 꾀하고 있다.",
+            "항암 분야에서는 전담 조직과 신규 품목을 추가했으며, 백신은 판매와 공동개발 협력을 추진하고 있다."
+          ],
+          "importance": "주요 임상 결과는 향후 허가·가이드라인·표준치료 변화 가능성을 평가하는 근거가 됩니다.",
+          "source_urls": [
+            "https://www.medipana.com/news/articleView.html?idxno=418845"
+          ],
+          "source_links": [
+            {
+              "publisher": "메디파나뉴스",
+              "url": "https://www.medipana.com/news/articleView.html?idxno=418845"
+            }
+          ],
+          "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/418845_326108_2956.jpg",
+          "score": 58,
+          "oncology": {
+            "is_oncology": true,
+            "cancer_types": [
+              "유방암"
+            ],
+            "drug_generic": [],
+            "drug_brand": [],
+            "targets": [],
+            "mechanism": [],
+            "biomarkers": [],
+            "trial_name": null,
+            "phase": "3",
+            "line_of_therapy": null,
+            "endpoints": {
+              "orr": null,
+              "pfs": null,
+              "os": null,
+              "hr": null,
+              "grade3plus_ae": null
+            },
+            "approval_status": null,
+            "reimbursement_status": null,
+            "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
+            "patient_relevance_score": 48,
+            "patient_relevance_labels": [
+              "급여·접근성",
+              "임상결과"
+            ],
+            "industry_summary": null
+          }
+        },
+        {
+          "rank": 3,
+          "canonical_issue": "9월 품절 상위권 '물갈이'…울트라셋·나조넥스 급부상 - 약사공론",
+          "title": "9월 품절 상위권 '물갈이'…울트라셋·나조넥스 급부상",
+          "category": [
+            "수가",
+            "약국",
+            "품절"
           ],
           "publishers": [
             "약사공론"
           ],
-          "published_at": "2026-10-06T05:50:00+09:00",
+          "published_at": "2026-10-07T05:50:00+09:00",
           "published_at_verified": true,
           "summary": [
-            "경보제약의 품목허가 취소처분과 관련해 건강보험 급여 적용이 유지되고 있는 22개 품목의 급여중지 해제 기간이 추가 연장된다. 항소심 법원이 집행정지를 인용하면서",
+            "약국가의 의약품 수급 불안 품목이 한 달 사이 크게 바뀌었다. 8월 품절입고알림 신청 1위였던 마그밀정의 신청 건수가 크게 감소한 사이 울트라셋정과 나조넥스나잘스",
             "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
             "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
           ],
           "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
           "source_urls": [
-            "https://www.kpanews.co.kr/news/articleView.html?idxno=545527"
+            "https://www.kpanews.co.kr/news/articleView.html?idxno=545705"
           ],
           "source_links": [
             {
               "publisher": "약사공론",
-              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545527"
+              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545705"
             }
           ],
-          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/545527_450596_1223.png",
-          "score": 56,
+          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/545705_450706_4446.png",
+          "score": 42,
           "oncology": null
         },
         {
-          "rank": 2,
-          "canonical_issue": "선택분업 외친 의료계…이번엔 '시범사업' 불씨 지필까 - 메디파나뉴스",
-          "title": "선택분업 외친 의료계…이번엔 '시범사업' 불씨 지필까",
+          "rank": 4,
+          "canonical_issue": "약국 이름에 '창고·마트·최대' 금지…오남용 조장 광고 퇴출 - 메디파나뉴스",
+          "title": "약국 이름에 '창고·마트·최대' 금지…오남용 조장 광고 퇴출",
           "category": [
-            "정책",
+            "복지부",
             "약국"
           ],
           "publishers": [
             "메디파나뉴스"
           ],
-          "published_at": "2026-10-06T06:00:00+09:00",
+          "published_at": "2026-10-06T17:22:49+09:00",
           "published_at_verified": true,
           "summary": [
-            "의료계가 오랫동안 요구해온 '선택분업'을 정책으로 시험하기 위한 움직임이 구체화되고 있다. 의료계는 현행 의약분업의 문제점을 꾸준히 지적하며, 환자가 의료기관과 약국 가운데 조제 장소를 직접 고르는 선택분업을 대안으로 요구해왔다. 여론조사와 정책 연구 등을 통해 제도 개편의 필요성을 뒷받침해왔지만 의약분",
-            "선택분업 시범사업을 통해 환자에게 원내조제와 외부 약국 조제 선택권을 부여하는 방안이 제안됐다.",
-            "사진=AI 생성 이미지 의료계가 오랫동안 요구해온 '선택분업'을 정책으로 시험하기 위한 움직임이 구체화되고 있다."
+            "앞으로 약국 간판이나 광고에서 '창고', '마트', '할인', '최대'와 같이 의약품 오남용을 부추기거나 소비자를 현혹할 수 있는 표현들이 전면 금지된다. 보건복지부는 약국의 본래 기능을 왜곡하고 소비자가 오인하게 만들거나 의약품의 과다소비를 유도할 우려가 있는 명칭, 표시, 광고의 구체적 기준을 마련하",
+            "사진=이정수 기자 앞으로 약국 간판이나 광고에서 '창고', '마트', '할인', '최대'와 같이 의약품 오남용을 부추기거나 소비자를 현혹할 수 있는 표현들이 전면 금지된다.",
+            "보건복지부는 약국의 본래 기능을 왜곡하고 소비자가 오인하게 만들거나 의약품의 과다소비를 유도할 우려가 있는 명칭, 표시, 광고의 구체적 기준을 마련하기 위해 '약사법 시행규칙' 개정을 추진한다고 6일 밝혔다."
           ],
           "importance": "의료기관·약국 현장의 변화는 진료 흐름과 환자 경험, 의약품 사용 환경에 직접 영향을 줍니다.",
           "source_urls": [
-            "https://www.medipana.com/news/articleView.html?idxno=418728"
+            "https://www.medipana.com/news/articleView.html?idxno=418837"
           ],
           "source_links": [
             {
               "publisher": "메디파나뉴스",
-              "url": "https://www.medipana.com/news/articleView.html?idxno=418728"
+              "url": "https://www.medipana.com/news/articleView.html?idxno=418837"
             }
           ],
-          "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/418728_325980_4939.png",
-          "score": 44,
-          "oncology": null
-        },
-        {
-          "rank": 3,
-          "canonical_issue": "지엘팜텍에 '한미 DNA' 심은 우종수…'레코듀'로 선순환 첫발 - 메디파나뉴스",
-          "title": "지엘팜텍에 '한미 DNA' 심은 우종수…'레코듀'로 선순환 첫발",
-          "category": [
-            "인수",
-            "투자"
-          ],
-          "publishers": [
-            "메디파나뉴스"
-          ],
-          "published_at": "2026-10-06T06:04:00+09:00",
-          "published_at_verified": true,
-          "summary": [
-            "한미약품에서 33년간 연구개발과 생산, 경영을 경험한 우종수 더블유사이언스 대표이사가 '한미 DNA'를 지엘팜텍에 옮겨 심고 있다. 한미 출신 인력을 중심으로 제제연구부터 생산·개발·영업까지 체계를 정비하고, 이를 기반으로 연구개발 성과를 제품과 매출로 연결해 다시 R&D에 투자하는 선순환 구조를 실현한",
-            "사진=조후현 기자 한미약품에서 33년간 연구개발과 생산, 경영을 경험한 우종수 더블유사이언스 대표이사가 '한미 DNA'를 지엘팜텍에 옮겨 심고 있다.",
-            "한미 출신 인력을 중심으로 제제연구부터 생산·개발·영업까지 체계를 정비하고, 이를 기반으로 연구개발 성과를 제품과 매출로 연결해 다시 R&D에 투자하는 선순환 구조를 실현한다는 구상이다."
-          ],
-          "importance": "사업개발·구조개편은 파이프라인 가치와 자본 배분, 기업 경쟁구도에 직접 영향을 주는 변화입니다.",
-          "source_urls": [
-            "https://www.medipana.com/news/articleView.html?idxno=418696"
-          ],
-          "source_links": [
-            {
-              "publisher": "메디파나뉴스",
-              "url": "https://www.medipana.com/news/articleView.html?idxno=418696"
-            }
-          ],
-          "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/418696_325928_3555.jpg",
-          "score": 37,
-          "oncology": null
-        },
-        {
-          "rank": 4,
-          "canonical_issue": "달빛어린이병원, 밤 9시 이후 환자 1.4%...“수가보다 운영비 지원 현실화해야” - 의학신문",
-          "title": "달빛어린이병원, 밤 9시 이후 환자 1.4%...“수가보다 운영비 지원 현실화해야”",
-          "category": [
-            "수가",
-            "병원"
-          ],
-          "publishers": [
-            "의학신문"
-          ],
-          "published_at": "2026-10-06T06:58:25+09:00",
-          "published_at_verified": true,
-          "summary": [
-            "[의학신문·일간보사=이재원 기자] 달빛어린이병원의 야간진료를 유지하기 위해 환자 수에 따라 지급하는 가산수가보다 의료진 인건비와 대기비용 등을 반영한 운영비 지원",
-            "[의학신문·일간보사=이재원 기자] 달빛어린이병원의 야간진료를 유지하기 위해 환자 수에 따라 지급하는 가산수가보다",
-            "의료진 인건비와 대기비용 등을 반영한 운영비 지원을 강화해야 한다는 지적이 나왔다."
-          ],
-          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
-          "source_urls": [
-            "https://www.bosa.co.kr/news/articleView.html?idxno=3013302"
-          ],
-          "source_links": [
-            {
-              "publisher": "의학신문",
-              "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013302"
-            }
-          ],
-          "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3013302_414170_426.jpg",
-          "score": 36,
+          "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/418837_326101_2236.jpg",
+          "score": 40,
           "oncology": null
         },
         {
           "rank": 5,
-          "canonical_issue": "‘자가도뇨 카테터’ 요양비 대폭 확대로 1만 명 환자 숨통 트인다 - 의학신문",
-          "title": "‘자가도뇨 카테터’ 요양비 대폭 확대로 1만 명 환자 숨통 트인다",
+          "canonical_issue": "비대면진료 결국 '의료쇼핑'?…약사 98.7% \"도입 취지 변질\" - 약사공론",
+          "title": "비대면진료 결국 '의료쇼핑'?…약사 98.7% \"도입 취지 변질\"",
           "category": [
-            "정책",
-            "급여",
-            "수가",
-            "복지부",
-            "병원"
+            "급여"
           ],
           "publishers": [
-            "의학신문"
+            "약사공론"
           ],
-          "published_at": "2026-10-06T05:52:00+09:00",
+          "published_at": "2026-10-06T13:36:43+09:00",
           "published_at_verified": true,
           "summary": [
-            "[의학신문·일간보사=오인규 기자] 신경인성 방광으로 스스로 소변을 배출하지 못해 평생을 고통받아온 약 1만 여명의 환자들에게 마침내 새로운 삶의 길이 열렸다. 1",
-            "[의학신문·일간보사=오인규 기자] 신경인성 방광으로 스스로 소변을 배출하지 못해 평생을 고통받아온 약 1만 여명의 환자들에게 마침내 새로운 삶의 길이 열렸다.",
-            "10년 가까이 제자리걸음이던 자가도뇨 카테터 요양비 보험급여 지원이 대폭 확대되면서, 경제적 짐 때문에 치료를 망설여야 했던 환자들의 부담이 크게 줄어들 전망이다."
+            "비대면진료가 의료취약계층의 접근성을 높인다는 당초 취지와 달리 탈모·다이어트·여드름 등 비급여 진료와 젊은층의 편의성 중심으로 이용되고 있다는 현장 약사들의 평가",
+            "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+            "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
           ],
-          "importance": "기사에서 급여·약가 이슈가 함께 확인돼 시장 접근성과 환자 부담 변화를 후속 확인할 필요가 있습니다.",
+          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
           "source_urls": [
-            "https://www.bosa.co.kr/news/articleView.html?idxno=3013291"
+            "https://www.kpanews.co.kr/news/articleView.html?idxno=545630"
           ],
           "source_links": [
             {
-              "publisher": "의학신문",
-              "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013291"
+              "publisher": "약사공론",
+              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545630"
             }
           ],
-          "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3013291_414149_37.jpg",
-          "score": 35,
+          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/545630_450650_3938.png",
+          "score": 39,
           "oncology": null
         }
       ],
       "trends": [
         {
+          "title": "디지털헬스",
+          "count": 3,
+          "change": "3건의 주요 이슈에서 반복적으로 확인",
+          "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
+          "examples": [
+            "기술 팔고 해외기업·자산 확보…APAC 빅딜서 K바이오 '양방향'",
+            "9월 품절 상위권 '물갈이'…울트라셋·나조넥스 급부상"
+          ]
+        },
+        {
           "title": "정책·급여",
-          "count": 4,
-          "change": "4건의 주요 이슈에서 반복적으로 확인",
+          "count": 3,
+          "change": "3건의 주요 이슈에서 반복적으로 확인",
           "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
           "examples": [
-            "급여퇴출 항소 자누스틴·다파칸 등 경보 22품목, 급여 추가연장",
-            "선택분업 외친 의료계…이번엔 '시범사업' 불씨 지필까"
+            "9월 품절 상위권 '물갈이'…울트라셋·나조넥스 급부상",
+            "약국 이름에 '창고·마트·최대' 금지…오남용 조장 광고 퇴출"
           ]
         },
         {
           "title": "의료현장",
-          "count": 3,
-          "change": "3건의 주요 이슈에서 반복적으로 확인",
-          "implication": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름",
-          "examples": [
-            "선택분업 외친 의료계…이번엔 '시범사업' 불씨 지필까",
-            "달빛어린이병원, 밤 9시 이후 환자 1.4%...“수가보다 운영비 지원 현실화해야”"
-          ]
-        },
-        {
-          "title": "디지털헬스",
           "count": 2,
           "change": "2건의 주요 이슈에서 반복적으로 확인",
-          "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
+          "implication": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름",
           "examples": [
-            "급여퇴출 항소 자누스틴·다파칸 등 경보 22품목, 급여 추가연장",
-            "선택분업 외친 의료계…이번엔 '시범사업' 불씨 지필까"
+            "9월 품절 상위권 '물갈이'…울트라셋·나조넥스 급부상",
+            "약국 이름에 '창고·마트·최대' 금지…오남용 조장 광고 퇴출"
           ]
         },
         {
-          "title": "신약·임상",
+          "title": "투자·사업개발",
           "count": 1,
           "change": "1건의 주요 이슈에서 반복적으로 확인",
-          "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
+          "implication": "자본과 파이프라인 확보 경쟁이 사업전략의 핵심이 되는 흐름",
           "examples": [
-            "급여퇴출 항소 자누스틴·다파칸 등 경보 22품목, 급여 추가연장"
+            "기술 팔고 해외기업·자산 확보…APAC 빅딜서 K바이오 '양방향'"
           ]
         }
       ]
@@ -294,6 +320,40 @@
         },
         {
           "rank": 1,
+          "canonical_issue": "기술 팔고 해외기업·자산 확보…APAC 빅딜서 K바이오 '양방향' - 메디파나뉴스",
+          "title": "기술 팔고 해외기업·자산 확보…APAC 빅딜서 K바이오 '양방향'",
+          "category": [
+            "기술수출",
+            "인수"
+          ],
+          "publishers": [
+            "메디파나뉴스"
+          ],
+          "published_at": "2026-10-06T12:05:12+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "국내 제약·바이오기업들이 올해 아시아·태평양 주요 바이오제약 거래에서 기술을 수출하는 동시에 해외 기업과 자산 확보에도 나섰다. 영향력 있는 거래 10건 가운데 한국 기업 관련 거래 3건이 포함됐으며, 한미약품은 기술수출, 삼성바이오로직스와 SK바이오팜은 각각 기업 인수 추진과 해외 자산 도입으로 이름을",
+            "AI 생성 이미지(ChatGPT) 국내 제약·바이오기업들이 올해 아시아·태평양 주요 바이오제약 거래에서 기술을 수출하는 동시에 해외 기업과 자산 확보에도 나섰다.",
+            "영향력 있는 거래 10건 가운데 한국 기업 관련 거래 3건이 포함됐으며, 한미약품은 기술수출, 삼성바이오로직스와 SK바이오팜은 각각 기업 인수 추진과 해외 자산 도입으로 이름을 올렸다."
+          ],
+          "importance": "사업개발·구조개편은 파이프라인 가치와 자본 배분, 기업 경쟁구도에 직접 영향을 주는 변화입니다.",
+          "source_urls": [
+            "https://www.medipana.com/news/articleView.html?idxno=418789"
+          ],
+          "source_links": [
+            {
+              "publisher": "메디파나뉴스",
+              "url": "https://www.medipana.com/news/articleView.html?idxno=418789"
+            }
+          ],
+          "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/418789_326050_2432.png",
+          "score": 68,
+          "oncology": null,
+          "report_date": "2026-10-07",
+          "period_rank": 3
+        },
+        {
+          "rank": 1,
           "canonical_issue": "美 이어 유럽까지 뚫은 '조코바'…일동제약 국내 재도전 주목 - 메디파나뉴스",
           "title": "美 이어 유럽까지 뚫은 '조코바'…일동제약 국내 재도전 주목",
           "category": [
@@ -325,7 +385,7 @@
           "score": 64,
           "oncology": null,
           "report_date": "2026-10-05",
-          "period_rank": 3
+          "period_rank": 4
         },
         {
           "rank": 1,
@@ -359,57 +419,10 @@
           "score": 56,
           "oncology": null,
           "report_date": "2026-10-06",
-          "period_rank": 4
-        },
-        {
-          "rank": 3,
-          "canonical_issue": "P-CAB '파도' 개발하는 대원제약, '보노' 제네릭 허가 왜? - 약사공론",
-          "title": "P-CAB '파도' 개발하는 대원제약, '보노' 제네릭 허가 왜? - 약사공론",
-          "category": [
-            "허가",
-            "3상",
-            "라이선스",
-            "합병",
-            "ai"
-          ],
-          "publishers": [
-            "약사공론"
-          ],
-          "published_at": "2026-10-02T12:00:00+09:00",
-          "published_at_verified": true,
-          "summary": [
-            "P-CAB 신약 ‘파도프라잔’ 개발에 총력을 기울여 온 대원제약이 동일 계열인 ‘보노프라잔’ 제네릭 품목허가를 획득해 그 배경에 이목이 쏠린다. 대원제약 측은 신",
-            "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
-            "P-CAB '파도' 개발하는 대원제약, '보노' 제네릭 허가 왜?"
-          ],
-          "importance": "산업 중요도 규칙 기반 자동 선별 기사입니다. 편집 분석 문구는 후속 AI 검수 단계에서 보강합니다.",
-          "source_urls": [
-            "https://www.kpanews.co.kr/news/articleView.html?idxno=545437"
-          ],
-          "source_links": [
-            {
-              "publisher": "약사공론",
-              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545437"
-            }
-          ],
-          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/545437_450563_3851.png",
-          "score": 84,
-          "oncology": null,
-          "report_date": "2026-10-03",
           "period_rank": 5
         }
       ],
       "trends": [
-        {
-          "title": "신약·임상",
-          "count": 5,
-          "change": "5건의 주요 이슈에서 반복적으로 확인",
-          "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
-          "examples": [
-            "삼일제약이 5년 전 찜한 골관절염 신약…美·英 이어 유럽 허가 심사 - 메디파나뉴스",
-            "유한양행, '유한페라미비르주' 허가…독감 주사제 시장 진출 - 메디파나뉴스"
-          ]
-        },
         {
           "title": "디지털헬스",
           "count": 4,
@@ -425,6 +438,16 @@
           "count": 4,
           "change": "4건의 주요 이슈에서 반복적으로 확인",
           "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
+          "examples": [
+            "삼일제약이 5년 전 찜한 골관절염 신약…美·英 이어 유럽 허가 심사 - 메디파나뉴스",
+            "유한양행, '유한페라미비르주' 허가…독감 주사제 시장 진출 - 메디파나뉴스"
+          ]
+        },
+        {
+          "title": "신약·임상",
+          "count": 4,
+          "change": "4건의 주요 이슈에서 반복적으로 확인",
+          "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
           "examples": [
             "삼일제약이 5년 전 찜한 골관절염 신약…美·英 이어 유럽 허가 심사 - 메디파나뉴스",
             "유한양행, '유한페라미비르주' 허가…독감 주사제 시장 진출 - 메디파나뉴스"
@@ -522,6 +545,40 @@
         },
         {
           "rank": 1,
+          "canonical_issue": "기술 팔고 해외기업·자산 확보…APAC 빅딜서 K바이오 '양방향' - 메디파나뉴스",
+          "title": "기술 팔고 해외기업·자산 확보…APAC 빅딜서 K바이오 '양방향'",
+          "category": [
+            "기술수출",
+            "인수"
+          ],
+          "publishers": [
+            "메디파나뉴스"
+          ],
+          "published_at": "2026-10-06T12:05:12+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "국내 제약·바이오기업들이 올해 아시아·태평양 주요 바이오제약 거래에서 기술을 수출하는 동시에 해외 기업과 자산 확보에도 나섰다. 영향력 있는 거래 10건 가운데 한국 기업 관련 거래 3건이 포함됐으며, 한미약품은 기술수출, 삼성바이오로직스와 SK바이오팜은 각각 기업 인수 추진과 해외 자산 도입으로 이름을",
+            "AI 생성 이미지(ChatGPT) 국내 제약·바이오기업들이 올해 아시아·태평양 주요 바이오제약 거래에서 기술을 수출하는 동시에 해외 기업과 자산 확보에도 나섰다.",
+            "영향력 있는 거래 10건 가운데 한국 기업 관련 거래 3건이 포함됐으며, 한미약품은 기술수출, 삼성바이오로직스와 SK바이오팜은 각각 기업 인수 추진과 해외 자산 도입으로 이름을 올렸다."
+          ],
+          "importance": "사업개발·구조개편은 파이프라인 가치와 자본 배분, 기업 경쟁구도에 직접 영향을 주는 변화입니다.",
+          "source_urls": [
+            "https://www.medipana.com/news/articleView.html?idxno=418789"
+          ],
+          "source_links": [
+            {
+              "publisher": "메디파나뉴스",
+              "url": "https://www.medipana.com/news/articleView.html?idxno=418789"
+            }
+          ],
+          "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/418789_326050_2432.png",
+          "score": 68,
+          "oncology": null,
+          "report_date": "2026-10-07",
+          "period_rank": 3
+        },
+        {
+          "rank": 1,
           "canonical_issue": "美 이어 유럽까지 뚫은 '조코바'…일동제약 국내 재도전 주목 - 메디파나뉴스",
           "title": "美 이어 유럽까지 뚫은 '조코바'…일동제약 국내 재도전 주목",
           "category": [
@@ -553,7 +610,7 @@
           "score": 64,
           "oncology": null,
           "report_date": "2026-10-05",
-          "period_rank": 3
+          "period_rank": 4
         },
         {
           "rank": 1,
@@ -587,7 +644,7 @@
           "score": 56,
           "oncology": null,
           "report_date": "2026-10-06",
-          "period_rank": 4
+          "period_rank": 5
         },
         {
           "rank": 3,
@@ -624,86 +681,10 @@
           "score": 84,
           "oncology": null,
           "report_date": "2026-10-03",
-          "period_rank": 5
-        },
-        {
-          "rank": 4,
-          "canonical_issue": "'방광암' 수술 전후 치료, 키트루다-파드셉으로 선택지 확대 - 약사공론",
-          "title": "'방광암' 수술 전후 치료, 키트루다-파드셉으로 선택지 확대 - 약사공론",
-          "category": [
-            "식약처",
-            "허가",
-            "3상",
-            "병원",
-            "ai"
-          ],
-          "publishers": [
-            "약사공론"
-          ],
-          "published_at": "2026-10-02T12:00:00+09:00",
-          "published_at_verified": true,
-          "summary": [
-            "고령 인구 비중이 높은 근육침습성 방광암 치료 영역에서 새로운 전신 치료 옵션이 본격적인 도입을 앞두고 있다. 한국MSD는 2일 JW메리어트호텔에서 면역항암제 키",
-            "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
-            "'방광암' 수술 전후 치료, 키트루다-파드셉으로 선택지 확대 한국MSD는 고령층에 많은 근육침습성 방광암 치료를 위해 키트루다와 엔포투맙 베도틴 병용요법의 허가를 기념하는 기자간담회를 개최했습니다."
-          ],
-          "importance": "산업 중요도 규칙 기반 자동 선별 기사입니다. 편집 분석 문구는 후속 AI 검수 단계에서 보강합니다.",
-          "source_urls": [
-            "https://www.kpanews.co.kr/news/articleView.html?idxno=545430"
-          ],
-          "source_links": [
-            {
-              "publisher": "약사공론",
-              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545430"
-            }
-          ],
-          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/545430_450553_624.jpg",
-          "score": 82,
-          "oncology": {
-            "is_oncology": true,
-            "cancer_types": [],
-            "drug_generic": [],
-            "drug_brand": [],
-            "targets": [],
-            "mechanism": [],
-            "biomarkers": [],
-            "trial_name": null,
-            "phase": "3",
-            "line_of_therapy": null,
-            "endpoints": {
-              "orr": null,
-              "pfs": null,
-              "os": null,
-              "hr": null,
-              "grade3plus_ae": null
-            },
-            "approval_status": "허가 관련",
-            "reimbursement_status": null,
-            "patient_summary": "치료제의 허가 범위나 사용 가능성과 관련된 소식입니다. 국내 실제 사용은 식약처 허가사항을 확인해야 합니다.",
-            "patient_relevance_score": 96,
-            "patient_relevance_labels": [
-              "허가",
-              "안전성",
-              "임상결과",
-              "가이드라인"
-            ],
-            "industry_summary": null
-          },
-          "report_date": "2026-10-03",
           "period_rank": 6
         }
       ],
       "trends": [
-        {
-          "title": "신약·임상",
-          "count": 6,
-          "change": "6건의 주요 이슈에서 반복적으로 확인",
-          "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
-          "examples": [
-            "삼일제약이 5년 전 찜한 골관절염 신약…美·英 이어 유럽 허가 심사 - 메디파나뉴스",
-            "유한양행, '유한페라미비르주' 허가…독감 주사제 시장 진출 - 메디파나뉴스"
-          ]
-        },
         {
           "title": "디지털헬스",
           "count": 5,
@@ -715,9 +696,19 @@
           ]
         },
         {
-          "title": "정책·급여",
+          "title": "신약·임상",
           "count": 5,
           "change": "5건의 주요 이슈에서 반복적으로 확인",
+          "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
+          "examples": [
+            "삼일제약이 5년 전 찜한 골관절염 신약…美·英 이어 유럽 허가 심사 - 메디파나뉴스",
+            "유한양행, '유한페라미비르주' 허가…독감 주사제 시장 진출 - 메디파나뉴스"
+          ]
+        },
+        {
+          "title": "정책·급여",
+          "count": 4,
+          "change": "4건의 주요 이슈에서 반복적으로 확인",
           "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
           "examples": [
             "삼일제약이 5년 전 찜한 골관절염 신약…美·英 이어 유럽 허가 심사 - 메디파나뉴스",
@@ -725,22 +716,22 @@
           ]
         },
         {
-          "title": "의료현장",
+          "title": "투자·사업개발",
           "count": 2,
           "change": "2건의 주요 이슈에서 반복적으로 확인",
-          "implication": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름",
+          "implication": "자본과 파이프라인 확보 경쟁이 사업전략의 핵심이 되는 흐름",
           "examples": [
-            "삼일제약이 5년 전 찜한 골관절염 신약…美·英 이어 유럽 허가 심사 - 메디파나뉴스",
-            "'방광암' 수술 전후 치료, 키트루다-파드셉으로 선택지 확대 - 약사공론"
+            "기술 팔고 해외기업·자산 확보…APAC 빅딜서 K바이오 '양방향'",
+            "P-CAB '파도' 개발하는 대원제약, '보노' 제네릭 허가 왜? - 약사공론"
           ]
         },
         {
-          "title": "공급·유통",
+          "title": "의료현장",
           "count": 1,
           "change": "1건의 주요 이슈에서 반복적으로 확인",
-          "implication": "의약품 공급 안정성과 유통 대응이 현장 리스크로 부각되는 흐름",
+          "implication": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름",
           "examples": [
-            "유한양행, '유한페라미비르주' 허가…독감 주사제 시장 진출 - 메디파나뉴스"
+            "삼일제약이 5년 전 찜한 골관절염 신약…美·英 이어 유럽 허가 심사 - 메디파나뉴스"
           ]
         }
       ]
