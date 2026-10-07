@@ -32,6 +32,9 @@ button{font:600 14px system-ui;padding:10px 14px;border-radius:10px;border:0;bac
 </div>
 <div id="dash" hidden>
   <div class="card" id="tv-card"><div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:6px"><h2 style="margin:0;flex:1">📋 오늘 스케줄</h2><div class="seg" id="tv-seg" style="margin:0"><button data-d="0" aria-pressed="true">오늘</button><button data-d="1">어제</button></div></div><div id="tv"><p class="muted">불러오는 중…</p></div></div>
+  <div class="card" id="fam-card"><h2>👨‍👩‍👧 가족 공유</h2><p class="muted" id="fam-status">확인하는 중…</p>
+    <form id="fam-form"><input id="fam-pin" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" placeholder="가족 비밀번호 4자리" autocomplete="off" required><button>저장</button></form>
+    <p class="muted">아이·아내·내 기기에서 잠금 화면의 <b>가족 비밀번호로 들어가기</b>(이미 쓰던 기기는 위쪽 <b>👨‍👩‍👧 가족 공유</b> 버튼)를 누르고 이 번호를 넣으면 같은 기록을 함께 써. 번호를 바꾸면 모든 기기가 새 번호로 다시 들어와야 해. 아이 기기를 <b>먼저</b> 연결해야 아이 기록이 기준이 돼.</p></div>
   <h2 style="margin:22px 4px 0">📊 사용 현황</h2>
   <div class="seg" role="group" aria-label="기간"><button data-n="7">7일</button><button data-n="30" aria-pressed="true">30일</button><button data-n="90">90일</button><span style="flex:1"></span><button class="ghost" id="logout">토큰 지우기</button></div>
   <div class="card stats" id="stats"></div>
@@ -78,7 +81,7 @@ function load(){
   if(!t){$('#login').hidden=false;$('#dash').hidden=true;return}
   fetch('/api/usage?days='+N,{headers:{authorization:'Bearer '+t}}).then(function(r){return r.json().then(function(j){return{ok:r.ok,status:r.status,j:j}})}).then(function(x){
     if(!x.ok){try{localStorage.removeItem(KEY)}catch(e){}$('#login').hidden=false;$('#dash').hidden=true;$('#err').textContent=x.status===401?'토큰이 맞지 않아.':x.j.error==='not_configured'?'Netlify에 FC_ADMIN_TOKEN이 아직 없어.':'불러오지 못했어.';return}
-    $('#login').hidden=true;$('#dash').hidden=false;render(x.j.days||[]);loadToday(0);
+    $('#login').hidden=true;$('#dash').hidden=false;render(x.j.days||[]);loadToday(0);famStatus();
   }).catch(function(){$('#err').textContent='인터넷 연결을 확인해줘.';$('#login').hidden=false});
 }
 function loadToday(back){
@@ -89,6 +92,11 @@ function loadToday(back){
   }).catch(function(){$('#tv').innerHTML='<p class="muted">불러오지 못했어.</p>'});
 }
 document.querySelectorAll('#tv-seg [data-d]').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#tv-seg [data-d]').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});loadToday(Number(b.dataset.d))})});
+function famStatus(){fetch('/api/family',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({action:'status'})}).then(function(r){return r.json()}).then(function(j){$('#fam-status').textContent=j.enabled?'켜져 있어 (번호 버전 '+j.pv+'). 번호를 바꾸려면 새 번호를 넣어.':'아직 꺼져 있어. 가족 비밀번호 4자리를 정하면 켜져.'}).catch(function(){$('#fam-status').textContent='확인하지 못했어.'})}
+$('#fam-form').addEventListener('submit',function(e){e.preventDefault();var pin=$('#fam-pin').value.trim();if(!/^\d{4}$/.test(pin)){$('#fam-status').textContent='숫자 4자리로 정해줘.';return}
+  if(!confirm('가족 비밀번호를 '+pin+'(으)로 정할까? 이미 연결된 기기는 새 번호로 다시 들어와야 해.'))return;
+  var t='';try{t=localStorage.getItem(KEY)||''}catch(err){}
+  fetch('/api/family',{method:'POST',headers:{'content-type':'application/json',authorization:'Bearer '+t},body:JSON.stringify({action:'setup',pin:pin})}).then(function(r){return r.json()}).then(function(j){$('#fam-pin').value='';if(j.ok)famStatus();else $('#fam-status').textContent='저장하지 못했어 ('+(j.error||'')+').'})});
 $('#f').addEventListener('submit',function(e){e.preventDefault();try{localStorage.setItem(KEY,$('#t').value.trim())}catch(err){}load()});
 $('#logout').addEventListener('click',function(){try{localStorage.removeItem(KEY)}catch(e){}load()});
 document.querySelectorAll('.seg [data-n]').forEach(function(b){b.addEventListener('click',function(){N=Number(b.dataset.n);document.querySelectorAll('.seg [data-n]').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});load()})});
