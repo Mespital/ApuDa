@@ -6,7 +6,7 @@
   'use strict';
   var FAM = 'fc-family-v1', META = 'fc-family-meta-v1', API = '/api/family';
   var KEYS = ['compass-study-v1', 'compass-study-plus-v1', 'fc_academy_v1', 'fc_teachers_v1', 'fc_offdays_v1', 'fc_preview_v1',
-    'fc_hub_posts', 'compass-know-me-v1', 'compass-career-lab', 'compass-career-depth', 'future-compass-v2', 'fc_school_class', 'fc_places_v1', 'fc_avatar_v1', 'fc_planner_v1'];
+    'fc_hub_posts', 'compass-know-me-v1', 'compass-career-lab', 'compass-career-depth', 'future-compass-v2', 'fc_school_class', 'fc_places_v1', 'fc_avatar_v1', 'fc_planner_v1', 'fc_notes_v1'];
   function get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
   function set(k, v) { try { localStorage.setItem(k, v); return true; } catch (e) { return false; } }
   function obj(k) { try { return JSON.parse(get(k) || 'null'); } catch (e) { return null; } }
@@ -106,7 +106,8 @@
   }
   function status() { return api({ action: 'status' }); }
 
-  g.FamilySync = { join: join, setRole: setRole, status: status, start: start, joined: function () { return !!fam(); }, role: function () { var f = fam(); return f ? f.role : ''; }, pushNow: push, KEYS: KEYS };
+  function call(body) { var f = fam(); if (!f) return Promise.resolve({ _ok: false, error: 'not_joined' }); body.token = f.token; return api(body); }
+  g.FamilySync = { call: call, join: join, setRole: setRole, status: status, start: start, joined: function () { return !!fam(); }, role: function () { var f = fam(); return f ? f.role : ''; }, pushNow: push, KEYS: KEYS };
   if (!document.documentElement.classList.contains('pin-locked')) start(false);
   window.addEventListener('pin-unlocked', function () { start(false); });
 })(window);
