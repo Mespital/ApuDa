@@ -66,3 +66,9 @@ body.app .set-jump a{flex:none;font-size:13px;font-weight:600;padding:8px 12px;b
 
 
 body.app .rt-card summary{list-style:none}body.app .rt-card summary::-webkit-details-marker{display:none}body.app .rt-card{border:0;border-radius:18px;padding:14px 16px;box-shadow:0 1px 2px rgba(20,16,50,.04)}
+
+.pf-dlg{position:fixed;inset:0;z-index:1200;background:rgba(20,16,50,.45);display:grid;place-items:center;padding:16px}
+.pf-dlg-card{background:#fff;border-radius:20px;padding:18px;width:min(420px,100%);display:grid;gap:10px}.pf-dlg-card h3{margin:0;font-size:17px}.pf-dlg-card p{margin:0}
+.pf-opts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.pf-opts button{display:grid;gap:6px;justify-items:center;padding:8px!important;border-radius:14px!important;background:#faf9fd!important;min-height:0!important}
+.pf-opts img{width:100%;height:96px;object-fit:contain}.pf-opts span{font-size:12.5px;font-weight:700}.pf-cancel{justify-self:end}
+.shiro-launch{bottom:calc(84px + env(safe-area-inset-bottom,0px))!important}.shiro-hint{bottom:calc(150px + env(safe-area-inset-bottom,0px))!important}
