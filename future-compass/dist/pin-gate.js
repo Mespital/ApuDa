@@ -66,6 +66,8 @@
           '<button type="button" data-key="back" aria-label="한 칸 지우기">←</button><button type="button" data-key="0">0</button><button type="button" data-key="clear" aria-label="모두 지우기">C</button>' +
         '</div>' +
         '<button type="button" class="pin-forgot">비밀번호를 잊었어요</button>' +
+        '<button type="button" class="pin-family" hidden>👨‍👩‍👧 가족 비밀번호로 들어가기</button>' +
+        '<div class="pin-role" hidden><p><b>이 기기는 누가 써?</b><br>사용 통계는 아이 기기만 세.</p><div class="pin-confirm-row"><button type="button" data-role="child">🧒 아이</button><button type="button" data-role="parent">👨‍👩 보호자</button></div></div>' +
         '<button type="button" class="pin-cancel-change" hidden>바꾸지 않고 돌아가기</button>' +
         '<div class="pin-qa-setup" hidden><p><b>비밀번호를 잊었을 때 쓸 질문을 정해둘래?</b><br>나만 아는 답이면 메일 없이도 바로 찾을 수 있어. (선택)</p>' +
           '<label>질문<select class="pin-qa-sel">' + QUESTIONS.map(function (q) { return '<option>' + q + '</option>'; }).join('') + '<option value="__custom">직접 적기</option></select></label>' +
@@ -117,6 +119,11 @@
     gate.querySelector('.pin-cancel').addEventListener('click', function () { confirmBox.hidden = true; forgotEl.hidden = false; gate.querySelector('.pin-card').classList.remove('pin-recovering'); showMode(); });
     gate.querySelector('.pin-reset').addEventListener('click', function () { if (confirm('정말 이 기기의 기록을 모두 지울까? 되돌릴 수 없어.')) resetAll(); });
     gate.querySelector('.pin-rec-send').addEventListener('click', sendCode);
+    gate.querySelector('.pin-family').addEventListener('click', function () { if (mode === 'family') { mode = familyBack && familyBack !== 'family' ? familyBack : (readStored() ? 'unlock' : 'setup1'); } else { familyBack = mode; mode = 'family'; } showMode(); });
+    gate.querySelectorAll('.pin-role [data-role]').forEach(function (b) { b.addEventListener('click', function () {
+      if (window.FamilySync) { FamilySync.setRole(b.getAttribute('data-role')); FamilySync.start(true); }
+      var n = '가족 공유로 들어왔어. 같은 기록을 함께 써.'; changing = false; recovering = false; unlock(n);
+    }); });
     gate.querySelector('.pin-rec-mail-open').addEventListener('click', function () { gate.querySelector('.pin-rec-mail').hidden = false; gate.querySelector('.pin-rec-qa').hidden = true; recStatus(''); });
     gate.querySelector('.pin-rec-qa-open').addEventListener('click', function () {
       var qa = readQA(); if (!qa) { recStatus('아직 질문을 정하지 않았어. 보호자 메일로 찾아줘.'); return; }
@@ -143,9 +150,14 @@
     for (var i = 0; i < 4; i++) dotsEl[i].classList.toggle('on', i < entered.length);
     var input = gate.querySelector('#pin-input'); if (input.value !== entered) input.value = entered;
   }
+  var familyBack = '';
   function showMode(extra) {
     entered = ''; sync();
     forgotEl.hidden = mode !== 'unlock';
+    var fb = gate.querySelector('.pin-family');
+    fb.hidden = !((mode === 'setup1' && !changing && !recovering) || (mode === 'family' && !changing));
+    fb.textContent = mode === 'family' ? '← 이 기기만 쓰는 비밀번호로' : '👨‍👩‍👧 가족 비밀번호로 들어가기';
+    if (mode === 'family') { titleEl.textContent = '가족 비밀번호 4자리'; msgEl.textContent = extra || '보호자가 정한 가족 비밀번호야. 들어오면 가족과 같은 기록을 함께 써.'; checkLock(); return; }
     if (mode === 'setup1') { titleEl.textContent = '사용할 비밀번호 4자리를 정해줘'; msgEl.textContent = extra || '잊어버려도 보호자 메일로 되찾을 수 있어.'; }
     if (mode === 'setup2') { titleEl.textContent = '한 번 더 입력해줘'; msgEl.textContent = extra || '같은 숫자 4자리를 다시 눌러줘.'; }
     if (mode === 'unlock') { titleEl.textContent = changing ? '지금 쓰는 비밀번호를 입력해줘' : '비밀번호 4자리를 입력해줘'; msgEl.textContent = extra || (changing ? '확인되면 새 번호를 정할 수 있어.' : ''); }
@@ -175,6 +187,25 @@
   function submit() {
     if (busy) return;
     var pin = entered;
+    if (mode === 'family') {
+      if (!window.FamilySync) { shake('잠시 뒤 다시 해줘.'); return; }
+      busy = true; msgEl.textContent = '확인하는 중…';
+      FamilySync.join(pin).then(function (j) {
+        busy = false;
+        if (!j._ok) {
+          var M = { wrong_pin: '가족 비밀번호가 달라.' + (j.left != null ? ' (남은 기회 ' + j.left + '번)' : ''), locked: '여러 번 틀려서 ' + (j.retryMin || 15) + '분 동안 막혔어.', not_enabled: '가족 공유가 아직 켜지지 않았어. 보호자 화면에서 가족 비밀번호를 먼저 정해줘.', network: '인터넷 연결을 확인해줘.' };
+          shake(M[j.error] || '들어가지 못했어. 잠시 뒤 다시 해줘.'); return;
+        }
+        var salt = newSalt();
+        hashPin(pin, salt).then(function (h) {
+          lsSet(PIN_KEY, JSON.stringify({ salt: salt, hash: h, v: 1, family: true, at: new Date().toISOString() })); lsDel(FAIL_KEY);
+          gate.querySelector('.pin-card').classList.add('pin-recovering'); gate.querySelector('.pin-family').hidden = true;
+          titleEl.textContent = '가족 공유 연결 완료'; msgEl.textContent = '이 기기에서도 같은 비밀번호로 들어오면 돼.';
+          gate.querySelector('.pin-role').hidden = false;
+        });
+      });
+      return;
+    }
     if (mode === 'setup1') { firstPin = pin; mode = 'setup2'; showMode(); return; }
     if (mode === 'setup2') {
       if (pin !== firstPin) { mode = 'setup1'; firstPin = ''; showMode('두 번 입력한 숫자가 달라. 처음부터 다시 정해줘.'); shake(msgEl.textContent); return; }
@@ -324,6 +355,11 @@
     c.type = 'button'; c.className = 'pin-lock-btn pin-change-btn'; c.setAttribute('aria-label', '비밀번호 바꾸기'); c.textContent = '🔑 번호 바꾸기';
     c.addEventListener('click', function () { if (document.getElementById('pin-gate')) return; changing = true; root.classList.add('pin-locked'); build('unlock'); });
     var wrap = document.createElement('span'); wrap.className = 'pin-tools'; wrap.appendChild(c); wrap.appendChild(b);
+    if (window.FamilySync && !FamilySync.joined()) {
+      var f = document.createElement('button'); f.type = 'button'; f.className = 'pin-lock-btn'; f.textContent = '👨‍👩‍👧 가족 공유'; f.setAttribute('aria-label', '가족 공유로 연결');
+      f.addEventListener('click', function () { if (document.getElementById('pin-gate')) return; changing = true; root.classList.add('pin-locked'); build('family'); });
+      wrap.insertBefore(f, c);
+    }
     var host = document.querySelector('.hub-top') || document.querySelector('.sidebar') || document.querySelector('body > main > header') || document.querySelector('body > header') || document.querySelector('.wrap > header .brand');
     if (host) host.appendChild(wrap); else { wrap.classList.add('pin-lock-float'); document.body.appendChild(wrap); }
   }
