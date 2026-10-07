@@ -54,8 +54,9 @@
     gate.setAttribute('aria-labelledby', 'pin-title');
     gate.innerHTML =
       '<div class="pin-card">' +
+        '<div class="pin-hero" aria-hidden="true"></div>' +
         '<div class="pin-logo" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="#fff" stroke-width="2"/><path d="M15.5 8.5l-2 5-5 2 2-5 5-2z" fill="#f4c95d"/></svg></div>' +
-        '<p class="pin-brand">미래 나침반</p>' +
+        '<p class="pin-brand">승준 공부관리 방</p>' +
         '<h1 id="pin-title" class="pin-title"></h1>' +
         '<div class="pin-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>' +
         '<label class="pin-sr" for="pin-input">비밀번호 4자리</label>' +
