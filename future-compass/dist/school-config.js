@@ -14,7 +14,6 @@
     classMinutes: 50, lunch: '12:10',
     classNo: '1',                                  // 승준이 반(1학년 1반) — 반 선택 없이 고정
     schoolQuery: '서초고등학교, 서초구, 서울',        // 지도 위치 찾기용
-    naverMapKeyId: ''                              // 네이버 클라우드 Maps 키(있으면 네이버 지도, 없으면 OpenStreetMap)
   };
   function kstNow(d) {
     var t = (d || new Date()).getTime() + 9 * 3600000;

@@ -1,10 +1,11 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
-<link rel="stylesheet" href="pin-gate.css"><script src="pin-gate.js"></script><script src="family-sync.js"></script><script src="usage.js" defer></script>
+<link rel="stylesheet" href="pin-gate.css"><script src="characters.js"></script><script src="pin-gate.js"></script><script src="family-sync.js"></script><script src="usage.js" defer></script>
 <link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#2b2160"><title>오늘 한눈에 · 미래 나침반</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#f5f3ff;color:#302d49;font:15px/1.55 system-ui,-apple-system,"Apple SD Gothic Neo",sans-serif}
 main{max-width:720px;margin:0 auto;padding:14px 16px 60px}.top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}.top a{color:#6250ce;text-decoration:none;font-size:14px}.top .sp{flex:1}
 .top button{font:600 13px system-ui;border:1px solid #e3ddf5;background:#fff;color:#493c80;border-radius:10px;padding:7px 10px;cursor:pointer}
+.hello{display:flex;align-items:center;gap:12px;margin:0 0 6px}.hello p{margin:0;line-height:1.4}.hello small{color:#8a839a}
 .note{margin:18px 0 0;font-size:12.5px;color:#8a839a}
 @media(prefers-color-scheme:dark){body{background:#15131f;color:#ecebf5}.top button{background:#1e1b2b;border-color:#2e2b41;color:#d9d3f5}}
 @media print{.top,.note{display:none}body{background:#fff}}
@@ -18,8 +19,9 @@ main{max-width:720px;margin:0 auto;padding:14px 16px 60px}.top{display:flex;alig
 (function(){
   function draw(){
     var d = new Date(Date.now() + 9 * 3600000).toISOString().slice(0, 10), box = document.getElementById('today-view');
-    box.innerHTML = TodayView.render(TodayView.collect());
-    if (window.FC_ROUTE) { var rc = FC_ROUTE.card(d, { quiet: true }); if (rc) { box.insertAdjacentHTML('beforeend', rc); setTimeout(function(){ FC_ROUTE.mount(d); }, 50); } }
+    var who = 'child'; try { if (localStorage.getItem('fc-who-v1') === 'parent') who = 'parent'; } catch (e) {}
+    box.innerHTML = (window.FC_CHAR ? '<div class="hello">' + FC_CHAR.svg(who, 64) + '<p><b>' + (who === 'parent' ? '엄마, 승준이 오늘 일정이에요' : '승준, 오늘 이것만 하면 돼') + '</b><br><small>공부 먼저, 이동은 맨 아래</small></p></div>' : '') + TodayView.render(TodayView.collect());
+    if (window.FC_ROUTE) { var rc = FC_ROUTE.card(d, { quiet: true }); if (rc) { box.insertAdjacentHTML('beforeend', rc); } }
   }
   function go(){ TodayView.loadSchool().then(function(){ draw(); TodayView.sync(); }); }
   if (window.FC_CAL) FC_CAL.onUpdate(function(){ draw(); });

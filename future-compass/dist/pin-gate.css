@@ -43,4 +43,13 @@ body > main > header .pin-tools,body > header .pin-tools{margin-left:8px}
 
 .pin-rec-choices{display:grid;gap:8px}.pin-rec-choices button{min-height:44px;border:1px solid #d9d0ee;border-radius:10px;background:#fff;font:600 14px system-ui;cursor:pointer;color:#3d3566}.pin-rec-choices button.pin-off{color:#a7a2b8}.pin-rec-qa,.pin-rec-mail{display:grid;gap:8px}.pin-rec-qa[hidden],.pin-rec-mail[hidden]{display:none}.pin-qa-q{margin:0;font-weight:700;font-size:14px}.pin-qa-input{flex:1;min-height:44px;border:1px solid #d9d0ee;border-radius:10px;font:500 15px system-ui;padding:0 10px}.pin-qa-setup{width:100%;display:grid;gap:8px;text-align:left;background:#f4f0ff;border-radius:14px;padding:14px;font-size:13.5px}.pin-qa-setup[hidden]{display:none}.pin-qa-setup p{margin:0}.pin-qa-setup label{display:grid;gap:4px;font-weight:600}.pin-qa-setup select,.pin-qa-setup input{min-height:42px;border:1px solid #d9d0ee;border-radius:10px;font:500 14px system-ui;padding:0 8px;background:#fff}.pin-qa-msg{color:#b4475a;min-height:1em}.pin-qa-save{background:#5b3fd6;color:#fff}.pin-qa-skip{background:#fff;border:1px solid #ddd!important}
 
-.pin-family{margin-top:2px;border:0;background:none;color:#5b3fd6;font:600 13.5px system-ui;cursor:pointer;padding:8px}.pin-family[hidden]{display:none}.pin-role{width:100%;display:grid;gap:10px;background:#f4f0ff;border-radius:14px;padding:14px;font-size:13.5px;text-align:center}.pin-role[hidden]{display:none}.pin-role p{margin:0}.pin-role button{background:#5b3fd6;color:#fff;min-height:46px;font-size:15px}
+.pin-family{margin-top:2px;border:0;background:none;color:#5b3fd6;font:600 13.5px system-ui;cursor:pointer;padding:8px}.pin-family[hidden]{display:none}.pin-role{width:100%;display:grid;gap:10px;text-align:center}.pin-role[hidden]{display:none}.pin-who-note{margin:0;font-size:12px;color:#8a839a}
+
+.pin-who-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pin-who-row button{display:flex;flex-direction:column;align-items:center;gap:6px;border:2px solid #e6e0f7;background:#f8f6ff;border-radius:20px;padding:14px 8px 12px;cursor:pointer;color:#1d1b2e;font:700 17px system-ui;transition:transform .12s,border-color .12s}
+.pin-who-row button:hover,.pin-who-row button:focus-visible{border-color:#5b3fd6;transform:translateY(-2px);outline:none}
+.pin-who-row button.last{border-color:#5b3fd6;background:#efeaff}
+.pin-who-row button[data-role="parent"]{background:#fff4f7}.pin-who-row button[data-role="parent"].last{background:#ffe8ef;border-color:#e2668a}
+.pin-who .pin-logo,.pin-who .pin-brand{display:none}
+.pin-who-chip{display:inline-flex;align-items:center;gap:4px;padding:2px 10px 2px 4px!important}.pin-who-chip svg{display:block}
+@media (max-width:760px){.pin-who-chip span{font-size:12px}}

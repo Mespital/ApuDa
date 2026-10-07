@@ -313,7 +313,6 @@
         anchor.insertAdjacentElement('afterend', lessonCard); anchor = lessonCard;
       }
       if (hasTable()) { anchor.insertAdjacentHTML('afterend', prepCard()); anchor = anchor.nextElementSibling; }
-      if (typeof FC_ROUTE !== 'undefined') { const rc = FC_ROUTE.card(today(), { quiet: true }); if (rc) { anchor.insertAdjacentHTML('afterend', rc); anchor = anchor.nextElementSibling; setTimeout(() => FC_ROUTE.mount(today()), 50); } }
       if (taskCard) { anchor.insertAdjacentElement('afterend', taskCard); anchor = taskCard; }
       grid.remove();
     }
@@ -324,6 +323,7 @@
       while (weekCard.firstChild) d.appendChild(weekCard.firstChild);
       weekCard.replaceWith(d);
     }
+    if (typeof FC_ROUTE !== 'undefined') { const rc = FC_ROUTE.card(today(), { quiet: true }); if (rc) root.insertAdjacentHTML('beforeend', rc); }   // 이동은 맨 아래(공부 먼저)
   }
 
   /* ---------- 시간표 보기(읽기 전용) ---------- */
