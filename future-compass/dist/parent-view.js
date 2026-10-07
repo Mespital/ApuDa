@@ -147,6 +147,7 @@
     var ch = (ls(CHEER, []) || []).slice(-1)[0];
     h += '<section class="card pv-sec pv-cheer"><h2>👍 응원 보내기</h2><p class="muted small">기록을 고치지 않고, 승준이 오늘 화면 맨 위에 한 줄로 떠요.</p><div class="pl-chips">' +
       ['오늘도 화이팅! 💪', '시험 잘 봐 🍀', '오늘 정말 수고했어 🌙', '집중하는 모습 멋지다 👏', '간식 준비해둘게 🍓'].map(function (m) { return '<button type="button" data-pv-cheer="' + esc(m) + '">' + esc(m) + '</button>'; }).join('') + '</div>' +
+      '<form data-pv-cheer-form class="pv-add pv-cheer-form"><input name="m" maxlength="40" placeholder="직접 써서 보내기 (예: 오늘 저녁 치킨이다 🍗)" aria-label="응원 메시지"><button class="primary">보내기</button></form>' +
       (ch ? '<p class="muted small">마지막 응원: ' + esc(ch.msg) + ' · ' + ago(ch.at) + '</p>' : '') + '</section>';
     h += '<p class="pv-foot">숫자는 승준이 기록 기준이에요. 대화는 "했어?"보다 "오늘 어땠어?"가 더 좋아요.</p>';
     return h;
@@ -164,16 +165,21 @@
     prev();
     if (tab !== 'today') return;
     var root = document.getElementById('content');
-    if (isParent()) { root.innerHTML = dashboard(); return; }
+    if (isParent()) {
+      root.innerHTML = dashboard();
+      // 엄마가 먼저 볼 순서: 오늘 진행(통계) → 이번 주 → 엄마 체크 → 일정·시험·노트·응원
+      var secs = [].slice.call(root.querySelectorAll('.pv-sec')), find = function (t) { return secs.filter(function (x) { var h2 = x.querySelector('h2'); return h2 && h2.textContent.indexOf(t) >= 0; })[0]; };
+      var today0 = find('오늘 진행'), week = find('이번 주'), mc = root.querySelector('.pv-mom');
+      if (today0 && week) today0.insertAdjacentElement('afterend', week);
+      if (week && mc) week.insertAdjacentElement('afterend', mc);
+      return;
+    }
     var c = cheerLine(); if (c) root.insertAdjacentHTML('afterbegin', c);
   };
   document.addEventListener('click', function (e) {
     var b = e.target.closest && e.target.closest('button'); if (!b) return;
     if (b.dataset.pvCheer) {
-      var a = ls(CHEER, []) || []; a.push({ at: Date.now(), msg: b.dataset.pvCheer.slice(0, 40) });
-      try { localStorage.setItem(CHEER, JSON.stringify(a.slice(-20))); } catch (er) {}
-      if (typeof FamilySync !== 'undefined' && FamilySync.pushNow) FamilySync.pushNow();
-      notice('응원을 보냈어요. 승준이 화면에 떠요 💌'); render(); return;
+      sendCheer(b.dataset.pvCheer); return;
     }
     if (b.dataset.pvDel) { var v0 = mom(); v0.items = v0.items.filter(function (x) { return x.id !== b.dataset.pvDel; }); saveMom(v0); render(); return; }
     if (b.dataset.pvSeen) { try { localStorage.setItem('fc-cheer-seen', b.dataset.pvSeen); } catch (er) {} b.closest('.pv-cheer-line').remove(); }
@@ -184,6 +190,16 @@
     if (el.dataset && el.dataset.pvCk) { var c = v.checks[t] || (v.checks[t] = {}); if (el.checked) c[el.dataset.pvCk] = 1; else delete c[el.dataset.pvCk]; saveMom(v); setTimeout(render, 250); }
     if (el.dataset && el.dataset.pvItem) { v.items.forEach(function (x) { if (x.id === el.dataset.pvItem) { x.done = el.checked; x.doneAt = el.checked ? t : ''; } }); saveMom(v); setTimeout(render, 250); }
   });
+  function sendCheer(msg) {
+    msg = String(msg || '').trim().slice(0, 40); if (!msg) return;
+    var a = ls(CHEER, []) || []; a.push({ at: Date.now(), msg: msg });
+    try { localStorage.setItem(CHEER, JSON.stringify(a.slice(-20))); } catch (er) {}
+    if (typeof FamilySync !== 'undefined' && FamilySync.pushNow) FamilySync.pushNow();
+    notice('응원을 보냈어요. 승준이 화면에 떠요 💌'); render();
+  }
+  document.addEventListener('submit', function (e) {
+    var f0 = e.target; if (f0.matches && f0.matches('[data-pv-cheer-form]')) { e.preventDefault(); sendCheer(f0.elements.m.value); }
+  });
   document.addEventListener('submit', function (e) {
     var f = e.target; if (!f.matches || !f.matches('[data-pv-add]')) return; e.preventDefault();
     var title = f.elements.t.value.trim().slice(0, 60); if (!title) return;
@@ -191,7 +207,7 @@
   });
   var css = document.createElement('style');
   css.textContent =
-    '.pv-mom{background:linear-gradient(135deg,#fffaf0,#fff)!important;box-shadow:0 0 0 1.5px #f3dfb8!important}.pv-mlist{list-style:none;margin:0;padding:0;display:grid;gap:4px}.pv-mlist li{display:flex;align-items:center;gap:6px;border-bottom:1px solid #f3f0e8;padding:6px 0}.pv-mlist li:last-child{border-bottom:0}.pv-mlist label{flex:1;display:flex!important;align-items:center;gap:8px;margin:0!important;font-weight:500!important;cursor:pointer}.pv-mlist input{width:22px;min-height:22px;flex:none}.pv-mlist span:last-child{display:grid}.pv-mlist b{font-size:14.5px;font-weight:600}.pv-mlist small{font-size:12px;color:#8a879a}.pv-mlist li.done b{text-decoration:line-through;color:#a3a0b2}.pv-mi{flex:none;font-size:16px}.pv-add{display:grid;grid-template-columns:1fr 130px auto;gap:6px;margin-top:8px}.pv-add input{min-height:42px!important;font-size:14px}@media(max-width:420px){.pv-add{grid-template-columns:1fr 1fr}.pv-add button{grid-column:1/-1}}' +
+    '.pv-mom{background:linear-gradient(135deg,#fffaf0,#fff)!important;box-shadow:0 0 0 1.5px #f3dfb8!important}.pv-mlist{list-style:none;margin:0;padding:0;display:grid;gap:4px}.pv-mlist li{display:flex;align-items:center;gap:6px;border-bottom:1px solid #f3f0e8;padding:6px 0}.pv-mlist li:last-child{border-bottom:0}.pv-mlist label{flex:1;display:flex!important;align-items:center;gap:8px;margin:0!important;font-weight:500!important;cursor:pointer}.pv-mlist input{width:22px;min-height:22px;flex:none}.pv-mlist span:last-child{display:grid}.pv-mlist b{font-size:14.5px;font-weight:600}.pv-mlist small{font-size:12px;color:#8a879a}.pv-mlist li.done b{text-decoration:line-through;color:#a3a0b2}.pv-mi{flex:none;font-size:16px}.pv-add{display:grid;grid-template-columns:1fr 130px auto;gap:6px;margin-top:8px}.pv-cheer-form{grid-template-columns:1fr auto!important}.pv-add input{min-height:42px!important;font-size:14px}@media(max-width:420px){.pv-add{grid-template-columns:1fr 1fr}.pv-add button{grid-column:1/-1}}' +
     '.pv-head{display:flex;align-items:center;gap:12px;margin:4px 0 12px}.pv-head h1{font-size:23px;margin:0;font-weight:800}.pv-head p{margin:2px 0 0;color:#7d7a8c;font-size:13px}' +
     '.pv-sec h2{font-size:16px!important;margin:0 0 10px!important}.pv-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.pv-tile{background:#f7f6fb;border-radius:14px;padding:10px 8px;display:grid;gap:2px;align-content:start;min-height:92px}.pv-tile span{font-size:16px}.pv-tile b{font-size:19px;font-weight:800}.pv-tile em{font-style:normal;font-size:12px;color:#6b6880}.pv-tile small{font-size:11px;color:#8a879a;line-height:1.3}' +
     '.pv-bar{height:6px;border-radius:4px;background:#e6e3ef;overflow:hidden;margin-top:4px}.pv-bar i{display:block;height:100%;background:#6a55e0;border-radius:4px}.pv-bar.a i{background:#e0556f}.pv-bar.g i{background:#2fa36b}' +
