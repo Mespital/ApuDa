@@ -20,7 +20,8 @@ main{max-width:720px;margin:0 auto;padding:14px 16px 60px}.top{display:flex;alig
   function draw(){
     var d = new Date(Date.now() + 9 * 3600000).toISOString().slice(0, 10), box = document.getElementById('today-view');
     var who = 'child'; try { if (localStorage.getItem('fc-who-v1') === 'parent') who = 'parent'; } catch (e) {}
-    box.innerHTML = (window.FC_CHAR ? '<div class="hello">' + FC_CHAR.svg(who, 64) + '<p><b>' + (who === 'parent' ? '엄마, 승준이 오늘 일정이에요' : '승준, 오늘 이것만 하면 돼') + '</b><br><small>공부 먼저, 이동은 맨 아래</small></p></div>' : '') + TodayView.render(TodayView.collect());
+    var dd = TodayView.collect(), exam = dd && dd.examToday && !dd.off;
+    box.innerHTML = (window.FC_CHAR ? '<div class="hello">' + FC_CHAR.svg(who, 64) + '<p><b>' + (exam ? (who === 'parent' ? '오늘 승준이 시험날이에요 · 응원해 주세요' : '승준, 오늘 시험 화이팅! 💪') : who === 'parent' ? '엄마, 승준이 오늘 일정이에요' : '승준, 오늘 이것만 하면 돼') + '</b><br><small>공부 먼저, 이동은 맨 아래</small></p></div>' : '') + TodayView.render(dd);
     if (window.FC_ROUTE) { var rc = FC_ROUTE.card(d, { quiet: true }); if (rc) { box.insertAdjacentHTML('beforeend', rc); } }
   }
   function go(){ TodayView.loadSchool().then(function(){ draw(); TodayView.sync(); }); }

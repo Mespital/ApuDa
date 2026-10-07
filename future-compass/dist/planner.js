@@ -23,6 +23,8 @@
     p.dmeta = p.dmeta && typeof p.dmeta === 'object' ? p.dmeta : {};          // 시험·과제 추가 정보 {id:{imp,est,p1,p2,prog,steps}}
     p.wiz = p.wiz && typeof p.wiz === 'object' ? p.wiz : { skip: {} };
     p.wiz.skip = p.wiz.skip || {};
+    p.examDays = p.examDays && typeof p.examDays === 'object' ? p.examDays : {};   // {날짜:[시험 과목 순서대로]}
+    p.examPrep = p.examPrep && typeof p.examPrep === 'object' ? p.examPrep : {};
     return p;
   }
   var P = load();
@@ -62,6 +64,62 @@
     if (off || w < 1 || w > 5) return [];
     var r = state.table[w - 1] || [], n = r.length; while (n && !r[n - 1]) n--; return r.slice(0, n);
   }
+  /* ---------- 시험날: 학교 학사일정(나이스) + 직접 넣은 시험 시간표 ---------- */
+  var EXAM_RE = /중간고사|기말고사|지필|정기고사|학력평가|모의고사/;
+  function examName(d) {
+    var ev = typeof FC_CAL !== 'undefined' && FC_CAL.schoolEvents ? FC_CAL.schoolEvents(d) : [];
+    var t = ev.filter(function (x) { return EXAM_RE.test(x); })[0];
+    if (t) return t.replace(/\(\d학년\)/, '').trim();
+    return P.examDays[d] ? '시험' : '';
+  }
+  function nextExamDay(after) {
+    var keys = Object.keys(P.examDays).filter(function (d) { return d > after && P.examDays[d].length; }).sort();
+    var neis = '';
+    for (var i = 1; i <= 14; i++) { var d = addD(after, i); if (examName(d)) { neis = d; break; } }
+    var cand = [keys[0], neis].filter(Boolean).sort()[0];
+    return cand || '';
+  }
+  function allSubjects() {
+    var seen = {}, out = [];
+    state.table.forEach(function (r) { r.forEach(function (x) { x = String(x || '').trim(); if (x && !seen[x] && !/체육|음악|미술|창체|자율|동아리|진로|봉사/.test(x)) { seen[x] = 1; out.push(x); } }); });
+    return out;
+  }
+  var exEdit = '', exSel = [];
+  function dlabel(d) { var w = new Date(d + 'T12:00:00Z').getUTCDay(); return Number(d.slice(5, 7)) + '/' + Number(d.slice(8)) + '(' + KDAY[w] + ')'; }
+  function examPicker(d) {
+    var subs = allSubjects();
+    return '<div class="pl-ex-pick"><p class="muted small">' + dlabel(d) + ' 시험 과목을 <b>시험 보는 순서대로</b> 눌러줘.</p><div class="pl-chips">' +
+      subs.map(function (x) { var i = exSel.indexOf(x); return '<button type="button" data-pl-exs="' + esc(x) + '" class="' + (i >= 0 ? 'on' : '') + '">' + (i >= 0 ? (i + 1) + '교시 ' : '') + esc(x) + '</button>'; }).join('') + '</div>' +
+      '<div class="pl-row"><input data-pl-ex-other maxlength="20" placeholder="목록에 없는 과목"><button type="button" data-pl-ex-add>추가</button></div>' +
+      '<p class="pl-wiz-btns"><button type="button" class="primary" data-pl-ex-save="' + d + '">저장</button><button type="button" data-pl-ex-cancel>취소</button></p></div>';
+  }
+  function examDayCard() {
+    var t = today(), name = examName(t); if (!name) return '';
+    var subs = P.examDays[t] || [], nx = nextExamDay(t), nxSubs = nx ? (P.examDays[nx] || []) : [];
+    var h = '<section class="card pl-examday"><span class="pl-ex-badge">📝 오늘 ' + esc(name) + '</span><h2>시험 화이팅! 💪</h2>';
+    if (exEdit === t) h += examPicker(t);
+    else if (subs.length) h += '<ol class="pl-ex-list">' + subs.map(function (x, i) { return '<li><b>' + (i + 1) + '교시</b> ' + esc(x) + '</li>'; }).join('') + '</ol>';
+    else h += '<p class="muted">오늘 시험 과목을 넣으면 순서대로 보여줘. 학교에서 받은 시험 시간표대로 눌러줘.</p><p><button type="button" class="primary" data-pl-ex-edit="' + t + '">오늘 시험 과목 넣기</button></p>';
+    h += '<ul class="pl-ex-tips"><li>✏️ 컴퓨터용 사인펜 · 수정테이프 · 시계</li><li>⏱ 시작 전 5분: 자주 틀린 것만 훑기</li><li>🧘 끝난 과목은 잊고 다음 과목에 집중</li><li>🌙 오늘은 일찍 자기 — 잠이 점수야</li></ul>';
+    if (nx) {
+      h += '<div class="pl-ex-next"><b>다음 시험 ' + dlabel(nx) + '</b> ' + (exEdit === nx ? '' : nxSubs.length ? nxSubs.map(esc).join(' · ') : '<span class="muted">과목 미정</span>') + '</div>';
+      if (exEdit === nx) h += examPicker(nx);
+    }
+    if (exEdit !== t && exEdit !== nx) h += '<p class="pl-ex-btns">' + (subs.length ? '<button type="button" data-pl-ex-edit="' + t + '">오늘 과목 고치기</button>' : '') + (nx ? '<button type="button" data-pl-ex-edit="' + nx + '">' + dlabel(nx) + ' 과목 ' + (nxSubs.length ? '고치기' : '넣기') + '</button>' : '') + '<button type="button" data-pl-ex-newday>+ 다른 시험일 넣기</button></p>';
+    if (exEdit && exEdit !== t && exEdit !== nx) h += '<div class="pl-ex-next"><b>' + dlabel(exEdit) + ' 시험</b></div>' + examPicker(exEdit);
+    return h + '</section>';
+  }
+  /* 다음 시험 대비(시험 기간): 다음 시험 과목별 마무리 체크 */
+  function examPrepCard() {
+    var t = today(), nx = nextExamDay(t); if (!nx || gap(nx) > 4) return '';
+    var subs = P.examDays[nx] || [];
+    var h = '<section class="card pl-exprep"><h2>📚 ' + dlabel(nx) + ' 시험 대비</h2>';
+    if (!subs.length) return h + '<p class="muted">다음 시험 과목을 넣으면 과목별로 마무리할 것을 정리해줄게.</p><p><button type="button" data-pl-ex-edit="' + nx + '">' + dlabel(nx) + ' 시험 과목 넣기</button></p></section>';
+    return h + '<ul class="pl-list">' + subs.map(function (x) {
+      var k = nx + '@' + x, on = !!P.examPrep[k];
+      return '<li class="pl-item' + (on ? ' done' : '') + '"><label class="pl-main"><input type="checkbox" data-pl-exprep="' + esc(k) + '"' + (on ? ' checked' : '') + '><span><b>' + esc(x) + '</b><small>오답·자주 틀린 개념 다시 보기 → 핵심 요약 한 번 · 약 30분</small></span></label><button type="button" class="pl-play" data-pl-play-ex="' + esc(x) + '" aria-label="집중 시작">▶</button></li>';
+    }).join('') + '</ul><p class="muted small">새 내용보다 이미 한 것을 다시 보는 게 점수에 더 남아.</p></section>';
+  }
   function upcomingExams() { return state.dates.filter(function (x) { return !x.done && x.kind === '시험' && gap(x.date) >= 0; }).sort(function (a, b) { return a.date.localeCompare(b.date); }); }
   /* 시험 범위 하루 분량: 남은 쪽 ÷ 시험 전날까지 남은 날 */
   function examPortions() {
@@ -86,6 +144,7 @@
   function freeTime() {
     var row = todayRow(), per = (typeof FC_SCHOOL !== 'undefined' && FC_SCHOOL.config.periods) || [], start = 9 * 60;
     if (row.length && per[row.length - 1]) start = toMin(per[row.length - 1]) + ((typeof FC_SCHOOL !== 'undefined' && FC_SCHOOL.config.classMinutes) || 50) + 40;
+    if (examName(today())) start = 13 * 60 + 30;   // 시험날은 보통 낮에 끝나 (추정)
     start = Math.max(start, nowMin()); var end = 22 * 60 + 30; if (start >= end) return 0;
     var busy = (typeof FC_ACADEMY !== 'undefined' ? FC_ACADEMY.forDay(today()) : []).map(function (a) { var s0 = toMin(a.start), e0 = toMin(a.end) || (s0 != null ? s0 + 90 : null); return s0 == null ? null : [s0 - 30, e0 + 30]; }).filter(Boolean);
     if (start < 19 * 60 && end > 19 * 60 + 30) busy.push([18 * 60 + 30, 19 * 60 + 30]);
@@ -95,6 +154,7 @@
   function planned() {
     var mins = todays().filter(function (x) { return !x.t.done; }).reduce(function (s0, x) { return s0 + est(x.q); }, 0);
     mins += dueAgain().length * 10 + examPortions().filter(function (e) { return !e.done; }).length * 30;
+    var nx = nextExamDay(today()); if (nx && gap(nx) <= 4) mins += (P.examDays[nx] || []).filter(function (x) { return !P.examPrep[nx + '@' + x]; }).length * 30;
     return mins;
   }
   function loadLevel(plan, free) {
@@ -116,7 +176,8 @@
     var undone = L.filter(function (x) { return !x.t.done; }), top = undone.slice(0, 3), rest = L.filter(function (x) { return top.indexOf(x) < 0; });
     var row = todayRow(), ex = upcomingExams()[0], acs = typeof FC_ACADEMY !== 'undefined' ? FC_ACADEMY.forDay(t) : [];
     var plan = planned(), free = freeTime(), lv = loadLevel(plan, free);
-    var meta = [row.length ? '수업 ' + row.length + '교시' : '수업 없음', ex ? (ex.title.length > 10 ? '시험' : ex.title) + ' D-' + gap(ex.date) : '', acs.length ? '학원 ' + acs.length : ''].filter(Boolean).join(' · ');
+    var exN = examName(t);
+    var meta = [exN ? '📝 ' + exN : row.length ? '수업 ' + row.length + '교시' : '수업 없음', ex ? (ex.title.length > 10 ? '시험' : ex.title) + ' D-' + gap(ex.date) : '', acs.length ? '학원 ' + acs.length : ''].filter(Boolean).join(' · ');
     var html = '<div class="pl-hero-top"><div><b>' + (dt.getUTCMonth() + 1) + '월 ' + dt.getUTCDate() + '일 ' + KDAY[dt.getUTCDay()] + '요일</b><small>' + esc(meta) + '</small></div><button type="button" class="pl-mini" data-go="focus">⏱ 집중</button></div>';
     html += '<div class="pl-loadrow"><span>오늘 공부 예상 <b>' + plan + '분</b></span><span>쓸 수 있는 시간 약 <b>' + free + '분</b><small>(추정)</small></span><span class="pl-lv" aria-label="부담도 ' + lv.dots + '/5">' + [1, 2, 3, 4, 5].map(function (i) { return '<i class="' + (i <= lv.dots ? 'on' : '') + '"></i>'; }).join('') + ' ' + lv.label + '</span></div>';
     if (od.length) html += '<div class="pl-carry"><span>지난 할 일 ' + od.length + '개, 오늘로 가져올까?</span><button type="button" data-pl-carry="all">가져오기</button><button type="button" data-pl-carry="no">괜찮아</button></div>';
@@ -313,6 +374,16 @@
       var nc = root.querySelector('.next-card'); if (nc && todays().length) nc.remove();   // 할 일이 있으면 '오늘은 이 3개부터'는 겹쳐서 숨김
     }
     root.querySelectorAll('details').forEach(function (d) { var sm = d.querySelector('summary'); if (sm && /최근 7일/.test(sm.textContent)) d.remove(); });   // 기록 탭으로 옮김
+    var ec = examDayCard();
+    if (ec) {   // 시험날: 수업 칩 대신 시험 카드, '오늘은 이 3개부터'·예습은 시험 대비로
+      var lesson = [].slice.call(root.querySelectorAll('section.card')).filter(function (c) { var h2 = c.querySelector('h2'); return h2 && /오늘 수업/.test(h2.textContent); })[0];
+      if (lesson) lesson.outerHTML = ec; else root.insertAdjacentHTML('afterbegin', ec);
+      var nc2 = root.querySelector('.next-card'); if (nc2) nc2.remove();
+      var ep = examPrepCard(), pc = root.querySelector('.wk-prep'); if (ep) { if (pc) pc.outerHTML = ep; else root.querySelector('.pl-examday').insertAdjacentHTML('afterend', ep); }
+      var ex1 = root.querySelector('.pl-examday'), tk = root.querySelector('.pl-tasks'); if (ex1 && tk) tk.insertAdjacentElement('beforebegin', ex1);   // 시험 카드를 맨 위로
+    } else {
+      var ep2 = examPrepCard(), pc2 = root.querySelector('.wk-prep'); if (ep2 && pc2) pc2.insertAdjacentHTML('beforebegin', ep2);   // 시험 전 며칠은 예습 위에 시험 대비
+    }
     var m = missionLine(); if (m) root.insertAdjacentHTML('afterbegin', m);
     var wz = wizardCard(); if (wz) root.insertAdjacentHTML('afterbegin', wz);
     var rc = root.querySelector('.rt-card'), cc = closeCard();
@@ -413,6 +484,13 @@
       q.p = nx; rerender(); return;
     }
     if (d.plMore) { openMore = openMore === d.plMore ? '' : d.plMore; render(); return; }
+    if (d.plExEdit) { exEdit = d.plExEdit; exSel = (P.examDays[exEdit] || []).slice(); render(); return; }
+    if (d.plExs) { var ix2 = exSel.indexOf(d.plExs); if (ix2 >= 0) exSel.splice(ix2, 1); else exSel.push(d.plExs); render(); return; }
+    if (b.hasAttribute('data-pl-ex-add')) { var oi = document.querySelector('[data-pl-ex-other]'), ov = oi && oi.value.trim().slice(0, 20); if (ov && exSel.indexOf(ov) < 0) exSel.push(ov); render(); return; }
+    if (d.plExSave) { if (exSel.length) P.examDays[d.plExSave] = exSel.slice(0, 6); else delete P.examDays[d.plExSave]; exEdit = ''; exSel = []; notice('시험 과목을 저장했어. 시험 화이팅!'); rerender(); return; }
+    if (b.hasAttribute('data-pl-ex-cancel')) { exEdit = ''; exSel = []; render(); return; }
+    if (b.hasAttribute('data-pl-ex-newday')) { var nd0 = prompt('시험 날짜를 적어줘 (예: ' + addD(today(), 3) + ')', addD(today(), 1)); if (nd0 && /^\d{4}-\d{2}-\d{2}$/.test(nd0.trim())) { exEdit = nd0.trim(); exSel = (P.examDays[exEdit] || []).slice(); render(); } return; }
+    if (d.plPlayEx) { var tt0 = '[시험 대비] ' + d.plPlayEx + ' 오답·핵심 다시 보기', ex0 = state.tasks.find(function (x) { return x.date === today() && x.title === tt0; }); if (!ex0) { ex0 = { id: uid(), title: tt0, date: today(), done: false, kind: '과제', subject: '', note: '' }; state.tasks.push(ex0); lastIds.add(ex0.id); P.pri[ex0.id] = { p: 'A', st: '', min: 0, est: 30 }; save(); put(); } b.dataset.plPlay = ex0.id; }
     if (d.plEst) { pr(d.plEst).est = Number(d.n); openMore = ''; rerender(); return; }
     if (d.plAg) { var arr = P.again[d.plAg] || (P.again[d.plAg] = []), ix = arr.indexOf(d.d); if (ix >= 0) arr.splice(ix, 1); else arr.push(d.d); arr.sort(); rerender(); return; }
     if (d.plWizGo) { jumpTo = d.plWizGo; tab = 'settings'; location.hash = 'settings'; return; }
@@ -503,6 +581,7 @@
   document.addEventListener('change', function (e) {
     var t = e.target;
     if (t.dataset && t.dataset.check === 'tasks') { var q = pr(t.dataset.id); if (t.checked) q.doneAt = today(); else delete q.doneAt; put(); setTimeout(render, 0); }
+    if (t.dataset && t.dataset.plExprep) { if (t.checked) P.examPrep[t.dataset.plExprep] = 1; else delete P.examPrep[t.dataset.plExprep]; put(); if (t.checked) notice('한 과목 마무리 끝! 👍'); setTimeout(render, 300); }
     if (t.dataset && t.dataset.plAgain) { var k = t.dataset.plAgain + '@' + t.dataset.d; if (t.checked) P.againDone[k] = 1; else delete P.againDone[k]; put(); if (t.checked) notice('다시 보기 끝! 기억이 더 오래가 🧠'); setTimeout(render, 300); }
     if (t.dataset && t.dataset.plExam) { var m = P.dmeta[t.dataset.plExam]; if (m) { if (t.checked) { m.prevProg = m.prog || m.p1 - 1; m.dFrom = m.prevProg + 1; m.dTo = Number(t.dataset.to); m.prog = m.dTo; m.doneOn = today(); notice('오늘 시험 분량 끝! 내일 이어서 나와.'); } else { m.prog = m.prevProg; delete m.doneOn; } put(); setTimeout(render, 300); } }
   });
@@ -556,7 +635,10 @@
     '.pl-q5{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.pl-q5 button{display:grid;gap:2px;padding:8px 2px!important;min-height:0!important;border-radius:12px!important}.pl-q5 b{font-size:18px}.pl-q5 small{font-size:10.5px;color:#7d7a8c}' +
     '.pl-tile.empty{align-content:start}.pl-tile.empty small{font-size:12.5px;color:#6b6880}.pl-tile .pl-mini{justify-self:start;margin-top:6px}' +
     '.pl-parent ul{list-style:none;margin:0 0 10px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}.pl-parent li{background:#f7f6fb;border-radius:12px;padding:10px;font-size:13px;color:#6b6880}.pl-parent li b{display:block;font-size:20px;color:#22202e}.pl-tip{background:#fff7e8;border-radius:12px;padding:10px 12px;margin:0 0 6px;font-size:14px}';
+  css.textContent += '.pl-examday{background:linear-gradient(135deg,#fff3e0,#ffe9ef)!important}.pl-ex-badge{display:inline-block;font-size:12.5px;font-weight:800;color:#b4475a;background:#fff;border-radius:999px;padding:4px 10px}.pl-examday h2{font-size:24px!important;margin:8px 0 10px!important}' +
+    '.pl-ex-list{list-style:none;margin:0 0 10px;padding:0;display:grid;gap:6px}.pl-ex-list li{background:#fff;border-radius:12px;padding:10px 12px;font-size:16px;font-weight:600}.pl-ex-list b{color:#b4475a;margin-right:6px;font-size:13px}' +
+    '.pl-ex-tips{list-style:none;margin:6px 0 8px;padding:0;display:grid;gap:4px;font-size:13.5px;color:#5a4a55}.pl-ex-next{margin-top:8px;padding:10px 12px;background:#ffffffb3;border-radius:12px;font-size:14px}.pl-ex-btns{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0}.pl-ex-btns button{min-height:36px!important;padding:4px 12px!important;font-size:13px}.pl-ex-pick{margin:8px 0}';
   document.head.appendChild(css);
-  window.FC_PLANNER = { get: function () { return P; }, KEY: KEY, todays: todays, exams: upcomingExams, portions: examPortions, again: dueAgain, free: freeTime, planned: planned, est: function (id) { return est(P.pri[id]); }, subjOf: subjOf, todayRow: todayRow };
+  window.FC_PLANNER = { get: function () { return P; }, KEY: KEY, todays: todays, exams: upcomingExams, portions: examPortions, again: dueAgain, free: freeTime, planned: planned, examName: examName, examDays: function () { return P.examDays; }, nextExamDay: nextExamDay, est: function (id) { return est(P.pri[id]); }, subjOf: subjOf, todayRow: todayRow };
   render();   // 첫 화면에도 플래너 반영
 })();

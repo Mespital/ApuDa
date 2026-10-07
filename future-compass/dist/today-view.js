@@ -70,13 +70,15 @@
     var minutes = (d.examToday ? 0 : d.review.length * 10) + d.redo.length * 10 + (d.prep.exam ? 0 : d.prep.items.length * 10) + d.academyHw.length * 30;
     var chips = d.deadlines.filter(function (x) { return x.dday <= 7; }).map(function (x) { return '<span class="tv-chip' + (x.dday <= 1 ? ' hot' : '') + '">' + (x.dday === 0 ? '오늘' : 'D-' + x.dday) + ' ' + esc(x.title) + '</span>'; }).join('');
     h += '<header class="tv-head"><div><h1>' + esc(label(d.date)) + ' 오늘 한눈에</h1>' +
-      '<p class="tv-sub">' + (d.off ? '🌿 ' + esc(d.off.name) + (d.off.weekend ? '' : ' · 수업 없음') : '수업 ' + d.periods.filter(function (p) { return p.subject; }).length + '교시' + (d.endTime ? ' · ' + esc(d.endTime) + ' 끝' : '')) +
+      '<p class="tv-sub">' + (d.off ? '🌿 ' + esc(d.off.name) + (d.off.weekend ? '' : ' · 수업 없음') : d.examToday ? '📝 시험날' : '수업 ' + d.periods.filter(function (p) { return p.subject; }).length + '교시' + (d.endTime ? ' · ' + esc(d.endTime) + ' 끝' : '')) +
       (d.academies.length ? ' · 학원 ' + d.academies.length : '') + (minutes ? ' · 저녁 공부 약 ' + Math.min(180, minutes) + '분' : '') + '</p></div>' +
       (ro ? '<span class="tv-ro">보호자 보기 · ' + esc(ago(d.generated)) + ' 기준</span>' : '') + '</header>' + (chips ? '<div class="tv-chips">' + chips + '</div>' : '');
     // 학교
     h += '<section class="tv-block"><h2><span class="tv-time">' + esc(d.periods[0] && d.periods[0].time || '') + '</span>🏫 학교</h2>';
-    if (d.examToday && !d.off) h += '<p class="tv-exam">📝 오늘 ' + esc(d.examToday) + ' — 시험 시간표는 학교 안내를 따라. 아래는 평소 시간표야.</p>';
-    if (d.off) h += '<p class="tv-muted">' + esc(d.off.name) + '라 수업이 없어.</p>';
+    var exSubs = (ls('fc_planner_v1', {}).examDays || {})[d.date] || [];
+    if (d.examToday && !d.off) h += '<p class="tv-exam">📝 오늘 ' + esc(d.examToday.replace(/\(\d학년\)/, '')) + ' — 시험 화이팅! 💪' + (exSubs.length ? '<br><b>' + exSubs.map(function (x, i) { return (i + 1) + '교시 ' + esc(x); }).join(' · ') + '</b>' : '<br>시험 과목은 공부방 오늘 탭에서 넣을 수 있어.') + '</p>';
+    if (d.examToday && !d.off) { /* 시험날엔 평소 시간표를 숨김 */ }
+    else if (d.off) h += '<p class="tv-muted">' + esc(d.off.name) + '라 수업이 없어.</p>';
     else if (!d.periods.length) h += '<p class="tv-muted">공부방 시간표 탭에서 시간표를 올리면 여기 수업이 나와.</p>';
     else h += '<ol class="tv-periods">' + d.periods.map(function (p) { return '<li><span class="tv-t">' + esc(p.time) + '</span><b>' + p.n + '</b> ' + esc(p.subject || '—') + (p.teacher ? ' <small>' + esc(p.teacher) + '</small>' : '') + '</li>'; }).join('') + '</ol>';
     if (d.meal) h += '<p class="tv-meal">🍚 ' + (d.lunch ? esc(d.lunch) + ' ' : '') + d.meal.map(esc).join(' · ') + '</p>';
@@ -91,10 +93,12 @@
     if (hot.length) ev += grp('⏰ 마감 임박', hot.map(function (x) { return li((x.dday === 0 ? '오늘 ' : 'D-' + x.dday + ' ') + (x.kind ? x.kind + ' · ' : '') + x.title, false, ro); }));
     if (d.prep.exam) ev += grp('🧩 내일 시험 마무리', [li('내일 볼 과목 오답·핵심 개념 다시 보기', false, ro), li('일찍 자기 — 시험 기간엔 잠이 점수야', false, ro)]);
     var prepSubs = d.prep.exam ? [] : d.prep.items.map(function (p) { return p.subject; });   // 오늘 복습·내일 예습 과목이 겹치면 한 줄로 (중복처럼 보이지 않게)
-    var revOnly = d.review.filter(function (s) { return prepSubs.indexOf(s) < 0; });
+    var revOnly = d.examToday ? [] : d.review.filter(function (s) { return prepSubs.indexOf(s) < 0; });
+    var exDays = ls('fc_planner_v1', {}).examDays || {}, nxEx = Object.keys(exDays).filter(function (k) { return k > d.date && exDays[k].length && gap(k, d.date) <= 4; }).sort()[0];
+    if (nxEx) ev += grp('📚 ' + label(nxEx) + ' 시험 대비 (과목당 30분)', exDays[nxEx].map(function (x) { return li(x + ' · 오답·자주 틀린 개념 다시 보기', !!(ls('fc_planner_v1', {}).examPrep || {})[nxEx + '@' + x], ro); }));
     if (revOnly.length && !d.off && !d.examToday) ev += grp('🔁 오늘 배운 것 복습 (과목당 10분)', revOnly.map(function (s) { return li(s + ' · 오늘 필기 다시 보고 핵심 3줄 정리', false, ro); }));
     if (d.redo.length) ev += grp('💡 다시 풀 문제 ' + d.redo.length + '개', Object.entries(d.redo.reduce(function (a, r) { a[r.subject] = (a[r.subject] || 0) + 1; return a; }, {})).map(function (e) { return li(e[0] + ' · ' + e[1] + '개 (복습 탭)', false, ro); }));
-    if (d.prep.items.length) ev += grp('📘 ' + (gap(d.prep.date, d.date) === 1 ? '내일' : d.prep.label) + (revOnly.length < d.review.length ? ' 예습 (오늘 복습 같이)' : ' 예습') + (d.prep.exam ? ' — ' + d.prep.exam + ' 날이라 시험 과목 마무리가 먼저' : ''),
+    if (d.prep.items.length && !nxEx) ev += grp('📘 ' + (gap(d.prep.date, d.date) === 1 ? '내일' : d.prep.label) + (!d.examToday && revOnly.length < d.review.length ? ' 예습 (오늘 복습 같이)' : ' 예습') + (d.prep.exam ? ' — ' + d.prep.exam + ' 날이라 시험 과목 마무리가 먼저' : ''),
       d.prep.exam ? [] : d.prep.items.map(function (p) { var both = !d.off && !d.examToday && d.review.indexOf(p.subject) >= 0; return li(p.subject + (both ? ' · 오늘 복습 + ' : ' · ') + (p.target || '예습') + (p.teacher ? ' (' + p.teacher + ')' : ''), p.done, ro); }));
     if (d.tasks.length) ev += grp('✅ 할 일', d.tasks.map(function (t) { return li((t.carried ? '(지난) ' : '') + t.title, t.done, ro); }));
     h += '<section class="tv-block"><h2><span class="tv-time">' + esc(d.endTime ? '저녁' : '') + '</span>🌙 오늘 공부</h2>' + (ev || '<p class="tv-muted">오늘은 따로 챙길 게 없어. 쉬어도 돼 🌿</p>') + '</section>';
