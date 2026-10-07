@@ -1,8 +1,16 @@
 {
-  "checked_at": "2026-10-07T05:13:10.435574+00:00",
-  "last_success_at": "2026-10-07T05:13:10.435574+00:00",
+  "checked_at": "2026-10-07T12:58:58.400020+00:00",
+  "last_success_at": "2026-10-07T12:58:58.400020+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "Introducing Playground: Create and play custom games",
+      "url": "https://blog.google/innovation-and-ai/technology/ai/playground-experimental-gaming-platform/",
+      "source": "Google",
+      "published_at": "2026-10-07T12:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "Ask a Scientist: How are researchers using AI to help pregnant women access ultrasounds?",
       "url": "https://blog.google/innovation-and-ai/models-and-research/google-research/blind-sweep-ultrasounds-ai/",
@@ -234,20 +242,12 @@
       "published_at": "2026-10-01T16:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "1,400 educators joined our Badge-a-thon: Day of AI Learning.",
-      "url": "https://blog.google/products-and-platforms/products/education/ai-educator-series-badge-a-thon/",
-      "source": "Google",
-      "published_at": "2026-10-01T16:00:00+00:00",
-      "category": "교육·생활",
-      "domain": "education"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-07T05:13:10.435574+00:00",
+    "checked_at": "2026-10-07T12:58:58.400020+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -452,7 +452,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-07T05:13:10.435574+00:00",
+    "last_success_at": "2026-10-07T12:58:58.400020+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
