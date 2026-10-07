@@ -67,7 +67,7 @@
         '</div>' +
         '<button type="button" class="pin-forgot">비밀번호를 잊었어요</button>' +
         '<button type="button" class="pin-family" hidden>👨‍👩‍👧 가족 비밀번호로 들어가기</button>' +
-        '<div class="pin-role" hidden><p><b>이 기기는 누가 써?</b><br>사용 통계는 아이 기기만 세.</p><div class="pin-confirm-row"><button type="button" data-role="child">🧒 아이</button><button type="button" data-role="parent">👨‍👩 보호자</button></div></div>' +
+        '<div class="pin-role" hidden><p><b>이 기기는 누가 써?</b><br>사용 통계는 승준이 기기만 세.</p><div class="pin-confirm-row"><button type="button" data-role="child">🧒 승준</button><button type="button" data-role="parent">👩 엄마</button></div></div>' +
         '<button type="button" class="pin-cancel-change" hidden>바꾸지 않고 돌아가기</button>' +
         '<div class="pin-qa-setup" hidden><p><b>비밀번호를 잊었을 때 쓸 질문을 정해둘래?</b><br>나만 아는 답이면 메일 없이도 바로 찾을 수 있어. (선택)</p>' +
           '<label>질문<select class="pin-qa-sel">' + QUESTIONS.map(function (q) { return '<option>' + q + '</option>'; }).join('') + '<option value="__custom">직접 적기</option></select></label>' +
@@ -122,7 +122,7 @@
     gate.querySelector('.pin-family').addEventListener('click', function () { if (mode === 'family') { mode = familyBack && familyBack !== 'family' ? familyBack : (readStored() ? 'unlock' : 'setup1'); } else { familyBack = mode; mode = 'family'; } showMode(); });
     gate.querySelectorAll('.pin-role [data-role]').forEach(function (b) { b.addEventListener('click', function () {
       if (window.FamilySync) { FamilySync.setRole(b.getAttribute('data-role')); FamilySync.start(true); }
-      var n = '가족 공유로 들어왔어. 같은 기록을 함께 써.'; changing = false; recovering = false; unlock(n);
+      var n = (b.getAttribute('data-role') === 'parent' ? '엄마' : '승준') + ' 기기로 연결했어. 공부·학원 기록을 함께 써.'; changing = false; recovering = false; unlock(n);
     }); });
     gate.querySelector('.pin-rec-mail-open').addEventListener('click', function () { gate.querySelector('.pin-rec-mail').hidden = false; gate.querySelector('.pin-rec-qa').hidden = true; recStatus(''); });
     gate.querySelector('.pin-rec-qa-open').addEventListener('click', function () {

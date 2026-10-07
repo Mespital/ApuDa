@@ -34,7 +34,7 @@ button{font:600 14px system-ui;padding:10px 14px;border-radius:10px;border:0;bac
   <div class="card" id="tv-card"><div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:6px"><h2 style="margin:0;flex:1">📋 오늘 스케줄</h2><div class="seg" id="tv-seg" style="margin:0"><button data-d="0" aria-pressed="true">오늘</button><button data-d="1">어제</button></div></div><div id="tv"><p class="muted">불러오는 중…</p></div></div>
   <div class="card" id="fam-card"><h2>👨‍👩‍👧 가족 공유</h2><p class="muted" id="fam-status">확인하는 중…</p>
     <form id="fam-form"><input id="fam-pin" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" placeholder="가족 비밀번호 4자리" autocomplete="off" required><button>저장</button></form>
-    <p class="muted">아이·아내·내 기기에서 잠금 화면의 <b>가족 비밀번호로 들어가기</b>(이미 쓰던 기기는 위쪽 <b>👨‍👩‍👧 가족 공유</b> 버튼)를 누르고 이 번호를 넣으면 같은 기록을 함께 써. 번호를 바꾸면 모든 기기가 새 번호로 다시 들어와야 해. 아이 기기를 <b>먼저</b> 연결해야 아이 기록이 기준이 돼.</p></div>
+    <p class="muted">승준·엄마 기기에서 잠금 화면의 <b>가족 비밀번호로 들어가기</b>(이미 쓰던 기기는 위쪽 <b>👨‍👩‍👧 가족 공유</b> 버튼)를 누르고 이 번호를 넣고 <b>승준</b> 또는 <b>엄마</b>를 고르면 공부·학원 기록을 함께 써. 번호를 바꾸면 모든 기기가 새 번호로 다시 들어와야 해. 승준이 기기를 <b>먼저</b> 연결해야 승준이 기록이 기준이 돼.</p></div>
   <h2 style="margin:22px 4px 0">📊 사용 현황</h2>
   <div class="seg" role="group" aria-label="기간"><button data-n="7">7일</button><button data-n="30" aria-pressed="true">30일</button><button data-n="90">90일</button><span style="flex:1"></span><button class="ghost" id="logout">토큰 지우기</button></div>
   <div class="card stats" id="stats"></div>
