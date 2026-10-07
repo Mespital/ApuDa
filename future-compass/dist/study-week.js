@@ -90,6 +90,7 @@
         <header><b>${WD[wdOf(d)]}</b> <span>${md(d)}</span>${isToday ? '<em>오늘</em>' : ''}</header>
         ${o ? `<p class="wk-offname">🌿 ${esc(o.name)}<br><small>${esc(o.kind || '')} · 수업 없음</small></p>` :
           subs.some(Boolean) ? `<ol class="wk-classes">${subs.map(s => `<li>${esc(s) || '<span class="muted">—</span>'}</li>`).join('')}</ol>` : '<p class="muted">시간표 없음</p>'}
+        ${(typeof FC_ACADEMY !== 'undefined' ? FC_ACADEMY.forDay(d) : []).map(a => `<p class="wk-ac">🏫 ${esc(a.start || '')} ${esc(a.name)}${a.homework && !a.hwDone ? ' · 숙제' : ''}</p>`).join('')}
         ${evs.map(t => `<p class="wk-ev">${o ? '⚠ ' : '🏫 '}${esc(t)}${o ? '<br><small>쉬는 날과 겹쳐. 학교 공지 확인</small>' : ''}</p>`).join('')}
         ${dl.map(x => `<p class="wk-due${o ? ' clash' : ''}">📝 ${esc(x.kind)} · ${esc(x.title)}${o ? '<br><small>쉬는 날이야. 날짜 다시 확인!</small>' : ''}</p>`).join('')}
         ${rv.length ? `<p class="wk-rv">🔁 복습 ${rv.length}개</p>` : ''}
@@ -102,7 +103,7 @@
       <span class="wk-nav"><button data-week="-1" aria-label="이전 주">◀</button><button data-week="0">이번 주</button><button data-week="1" aria-label="다음 주">▶</button></span></div>
       <p class="muted">수업일 ${schoolDays}일${offs.some(o => o && !o.weekend) ? ' · 쉬는 날 ' + offs.filter(o => o && !o.weekend).map((o, i) => esc(o.name)).join(', ') : ''}${dueAll.length ? ' · 마감 ' + dueAll.length + '개' : ''}</p>
       ${hasTable() ? '' : '<p class="wk-warn">시간표를 먼저 올려줘. 그러면 요일별 수업과 예습이 자동으로 채워져. <button data-go="table">시간표 올리기 →</button></p>'}
-      <div class="wk-grid">${cards}</div></section>
+      <div class="wk-grid">${cards}</div>${(() => { if (!(typeof FC_ACADEMY !== 'undefined')) return ''; const sat = addDays(days5[4], 1), sun = addDays(days5[4], 2), w = [sat, sun].map(x => [x, FC_ACADEMY.forDay(x)]).filter(([, a]) => a.length); return w.length ? `<p class="wk-weekend">주말 학원 · ${w.map(([x, a]) => esc(label(x)) + ' ' + a.map(y => esc((y.start || '') + ' ' + y.name)).join(', ')).join(' / ')}</p>` : ''; })()}</section>
       <details class="card"><summary>🌿 쉬는 날 직접 추가 (재량휴업일·임시공휴일 등)</summary>
         <p class="muted">법정 공휴일·대체공휴일은 2029년까지 들어 있어. 학교 공지로 받은 재량휴업일이나 새로 생긴 임시공휴일만 여기 넣어.</p>
         <form data-offday><label>날짜<input type="date" name="date" required min="${today()}"></label><label>이름<input name="name" maxlength="30" placeholder="예: 재량휴업일"></label><button class="primary">추가</button></form>
@@ -292,6 +293,7 @@
     const next = root.querySelector('.next-card'), grid = root.querySelector('.grid');
     const strip = document.createElement('section'); strip.id = 'school-today'; strip.setAttribute('data-compact', ''); strip.className = 'today-strip';
     root.insertAdjacentElement('afterbegin', strip);
+    strip.insertAdjacentHTML('beforebegin', '<a class="wk-glance" href="today.html">📋 오늘 한눈에 보기 <small>수업·학원·복습·예습을 한 장으로</small></a>');
     if (next) strip.insertAdjacentElement('afterend', next);
     let anchor = next || strip;
     if (grid) {
@@ -303,6 +305,8 @@
           rows.forEach(r => r.remove()); lessonCard.querySelector('p.muted')?.remove();
           lessonCard.querySelector('h2')?.insertAdjacentHTML('afterend', `<ul class="lesson-chips">${chips}</ul>`);
         }
+        const acs = typeof FC_ACADEMY !== 'undefined' ? FC_ACADEMY.forDay(today()) : [];
+        if (acs.length) lessonCard.insertAdjacentHTML('beforeend', `<p class="wk-ac-today">🏫 오늘 학원 · ${acs.map(a => esc((a.start ? a.start + ' ' : '') + a.name)).join(', ')}</p>`);
         anchor.insertAdjacentElement('afterend', lessonCard); anchor = lessonCard;
       }
       if (hasTable()) { anchor.insertAdjacentHTML('afterend', prepCard()); anchor = anchor.nextElementSibling; }
@@ -326,6 +330,7 @@
     if (tab === 'today') arrangeToday();
     if (tab === 'table') {
       root.insertAdjacentHTML('afterbegin', hasTable() && !draft && !ocrBusy ? `<details class="card wk-fold"><summary>📤 시간표 다시 올리기</summary>${uploadPanel().replace('<section class="card wk-upload">', '<section class="wk-upload">')}</details>` : uploadPanel());
+      if (typeof FC_ACADEMY !== 'undefined') root.insertAdjacentHTML('beforeend', FC_ACADEMY.panel());
       const cp = root.querySelector('#course-panel');
       if (cp) { const s0 = cp.querySelector('summary'); if (s0) s0.textContent = '📖 과목별 단원 고르기 (예습이 정확해져)'; root.insertBefore(cp, root.querySelector('.card:not(.wk-fold):not(.wk-upload)') || null); if (openCourse) { cp.open = true; openCourse = false; setTimeout(() => cp.scrollIntoView({ block: 'start' }), 30); } }
     }
@@ -377,7 +382,7 @@
   .wk-nav{display:inline-flex;gap:4px}.wk-nav button{padding:4px 10px}
   .wk-warn{background:#fff6e5;border-radius:12px;padding:10px 12px;font-size:13.5px}
   .wk-prep-item{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid #f0ebf8}.wk-prep-item input{margin-top:4px;width:18px;height:18px}
-  .wk-prep-item span{display:grid;gap:2px}.wk-prep-item small{color:#667085}.wk-prep-item.light{opacity:.7}.wk-note{font-size:12px;color:#8a839a}.wk-bag{margin:8px 0 0;font-size:13.5px}.wk-next{color:#5b3fd6!important}.wk-book{color:#2f7a52}.wk-light{margin:8px 0 0;font-size:13px;color:#8a839a}.wk-hint{margin:12px 0 0;font-size:13.5px;background:#f6f3ff;border-radius:12px;padding:10px 12px}.wk-hint button{min-height:34px;padding:4px 10px;margin-left:4px}.wk-fold-in summary{cursor:pointer;font-size:13.5px;color:#6250ce;margin:6px 0}.wk-prep-item{padding:7px 0}
+  .wk-prep-item span{display:grid;gap:2px}.wk-prep-item small{color:#667085}.wk-prep-item.light{opacity:.7}.wk-note{font-size:12px;color:#8a839a}.wk-bag{margin:8px 0 0;font-size:13.5px}.wk-next{color:#5b3fd6!important}.wk-book{color:#2f7a52}.wk-ac{margin:6px 0 0;font-size:12.5px;color:#1f6b5a;font-weight:700}.wk-weekend{margin:10px 0 0;font-size:13px;color:#1f6b5a}.wk-ac-today{margin:8px 0 0;font-size:14px;color:#1f6b5a;font-weight:700}.wk-glance{display:block;margin:0 0 12px;padding:12px 14px;border-radius:16px;background:#2b2160;color:#fff!important;font-weight:700}.wk-glance small{display:block;font-weight:500;opacity:.8;font-size:12.5px}.wk-light{margin:8px 0 0;font-size:13px;color:#8a839a}.wk-hint{margin:12px 0 0;font-size:13.5px;background:#f6f3ff;border-radius:12px;padding:10px 12px}.wk-hint button{min-height:34px;padding:4px 10px;margin-left:4px}.wk-fold-in summary{cursor:pointer;font-size:13.5px;color:#6250ce;margin:6px 0}.wk-prep-item{padding:7px 0}
   .wk-up-ways{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}.wk-file{cursor:pointer;display:inline-flex;align-items:center;padding:9px 14px;border-radius:12px;background:#5b3fd6;color:#fff;font-weight:700;font-size:14px}
   .wk-neis{display:inline-flex;gap:6px;align-items:center;font-size:14px}[data-tt-paste] textarea{width:100%;box-sizing:border-box;font:13px/1.5 ui-monospace,monospace}
   .wk-status{font-size:13px;color:#5b3fd6;min-height:1em;margin:4px 0}

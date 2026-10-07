@@ -1,0 +1,26 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="pin-gate.css"><script src="pin-gate.js"></script><script src="usage.js" defer></script>
+<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#2b2160"><title>오늘 한눈에 · 미래 나침반</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f5f3ff;color:#302d49;font:15px/1.55 system-ui,-apple-system,"Apple SD Gothic Neo",sans-serif}
+main{max-width:720px;margin:0 auto;padding:14px 16px 60px}.top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}.top a{color:#6250ce;text-decoration:none;font-size:14px}.top .sp{flex:1}
+.top button{font:600 13px system-ui;border:1px solid #e3ddf5;background:#fff;color:#493c80;border-radius:10px;padding:7px 10px;cursor:pointer}
+.note{margin:18px 0 0;font-size:12.5px;color:#8a839a}
+@media(prefers-color-scheme:dark){body{background:#15131f;color:#ecebf5}.top button{background:#1e1b2b;border-color:#2e2b41;color:#d9d3f5}}
+@media print{.top,.note{display:none}body{background:#fff}}
+</style></head><body><main>
+<header class="top"><a href="./">← 홈</a><a href="study.html">📚 공부방</a><span class="sp"></span><button type="button" onclick="print()">🖨 인쇄</button></header>
+<div id="today-view"><p style="color:#8a839a">불러오는 중…</p></div>
+<p class="note">이 화면(수업·학원·할 일·예습 목록)은 보호자도 볼 수 있어. 메모와 복습 노트 내용은 보내지 않아.</p>
+</main>
+<script src="school-config.js"></script><script src="holidays-kr.js"></script><script src="curriculum-kr.js"></script><script src="today-view.js"></script>
+<script>
+(function(){
+  function draw(){ document.getElementById('today-view').innerHTML = TodayView.render(TodayView.collect()); }
+  function go(){ TodayView.loadSchool().then(function(){ draw(); TodayView.sync(); }); }
+  if (window.FC_CAL) FC_CAL.onUpdate(function(){ draw(); });
+  if (document.documentElement.classList.contains('pin-locked')) window.addEventListener('pin-unlocked', go); else go();
+  setInterval(function(){ draw(); TodayView.sync(); }, 600000);
+})();
+</script>
+</body></html>
