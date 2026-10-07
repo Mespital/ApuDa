@@ -344,8 +344,8 @@
   /* ---------- 설정: 시간표·교재·학원·이동·쉬는 날·가족·보안 ---------- */
   function settingsView() {
     const editor = root.querySelector('section.card .days')?.closest('section'), cp = root.querySelector('#course-panel');
-    root.innerHTML = `<section class="card set-head"><h2>⚙️ 설정</h2><p class="muted">여기서 바꾸면 가족 공유로 연결된 기기에 모두 반영돼.</p>
-      <nav class="set-jump">${[['set-tt', '시간표'], ['course-panel', '교과서·단원'], ['academy-panel', '학원'], ['route-settings', '이동 장소'], ['offday-panel', '쉬는 날'], ['set-family', '가족·보안']].map(([id, t]) => `<a href="#${id}" data-jump="${id}">${t}</a>`).join('')}</nav></section>`;
+    root.innerHTML = `<div class="set-top"><button type="button" class="set-back" data-go="today" aria-label="뒤로">←</button><h1>설정</h1></div>
+      <nav class="set-jump" aria-label="설정 바로가기">${[['set-tt', '시간표'], ['course-panel', '교과서'], ['academy-panel', '학원'], ['route-settings', '이동'], ['offday-panel', '쉬는 날'], ['set-profile', '프로필'], ['set-family', '가족·잠금']].map(([id, t]) => `<a href="#${id}" data-jump="${id}">${t}</a>`).join('')}</nav>`;
     const tt = document.createElement('div'); tt.id = 'set-tt';
     tt.innerHTML = hasTable() && !draft && !ocrBusy ? `<details class="card wk-fold"><summary>📤 시간표 다시 올리기 (사진·붙여넣기·나이스)</summary>${uploadPanel().replace('<section class="card wk-upload">', '<section class="wk-upload">')}</details>` : uploadPanel();
     root.appendChild(tt);
@@ -354,10 +354,27 @@
     if (typeof FC_ACADEMY !== 'undefined') root.insertAdjacentHTML('beforeend', FC_ACADEMY.panel());
     if (typeof FC_ROUTE !== 'undefined') root.insertAdjacentHTML('beforeend', FC_ROUTE.settingsPanel());
     root.insertAdjacentHTML('beforeend', offdayPanel());
-    const fam = typeof FamilySync !== 'undefined' && FamilySync.joined(), role = fam ? (FamilySync.role() === 'parent' ? '엄마' : '승준') : '';
-    root.insertAdjacentHTML('beforeend', `<section class="card" id="set-family"><h2>👨‍👩‍👧 가족·보안</h2>
-      <p>${fam ? `✅ 가족 공유 중 · 이 기기: <b>${role}</b>` : '이 기기는 아직 가족 공유에 연결 안 됐어.'}</p>
-      <div class="actions">${fam ? '' : '<button data-set-act="family">👨‍👩‍👧 가족 공유 연결</button>'}<button data-set-act="pin">🔑 비밀번호·복구 질문 바꾸기</button><button data-set-act="backup">💾 백업 저장</button><button data-set-act="restore">📂 백업 불러오기</button></div></section>`);
+    const fam = typeof FamilySync !== 'undefined' && FamilySync.joined(), who = typeof PinGate !== 'undefined' ? PinGate.who() : '';
+    const av = r => (typeof FC_CHAR !== 'undefined' ? FC_CHAR.avatar(r, 64) : '');
+    root.insertAdjacentHTML('beforeend', `<section class="card" id="set-profile"><h2>프로필 그림</h2>
+      <div class="pf-row">${['child', 'parent'].map(r => `<div class="pf"><div class="pf-img">${av(r)}</div><b>${r === 'parent' ? '엄마' : '승준'}</b>
+        <div class="pf-btns"><button type="button" data-pf-pick="${r}">그림 고르기</button>${typeof FC_CHAR !== 'undefined' && FC_CHAR.custom(r) ? `<button type="button" class="pf-reset" data-pf-reset="${r}">기본으로</button>` : ''}</div></div>`).join('')}</div>
+      <p class="muted small">폰에 있는 그림·사진을 고르면 들어가기 화면과 상단에 나와. GIF는 작은 파일이면 움직이는 그대로 써.</p>
+      <input type="file" accept="image/*" data-pf-file hidden></section>`);
+    root.insertAdjacentHTML('beforeend', `<section class="card" id="set-family"><h2>가족·잠금</h2>
+      <div class="set-list">
+        <button type="button" data-set-act="who"><span>지금 쓰는 사람</span><b>${who === 'parent' ? '엄마' : '승준'} ›</b></button>
+        <button type="button" data-set-act="family"><span>가족 공유</span><b>${fam ? '연결됨' : '연결하기 ›'}</b></button>
+        <button type="button" data-set-act="pin"><span>비밀번호·복구 질문 바꾸기</span><b>›</b></button>
+        <button type="button" data-set-act="lock"><span>지금 잠그기</span><b>🔒</b></button>
+        <button type="button" data-set-act="backup"><span>백업 파일로 저장</span><b>›</b></button>
+        <button type="button" data-set-act="restore"><span>백업 불러오기</span><b>›</b></button>
+      </div></section>
+      <section class="card" id="set-links"><h2>다른 화면</h2><div class="set-list">
+        <a href="today.html"><span>📋 오늘 한눈에 (엄마도 같이 보는 한 장)</span><b>›</b></a>
+        <a href="./"><span>🧭 미래 나침반 (진로 탐색)</span><b>›</b></a>
+        <a href="hub.html"><span>📚 공부 자료 허브</span><b>›</b></a>
+      </div></section>`);
     document.querySelectorAll('nav button').forEach(b => b.classList.toggle('active', b.dataset.go === 'settings'));
   }
 
@@ -383,7 +400,12 @@
     if (b.hasAttribute('data-go-course')) { openCourse = true; tab = 'settings'; history.replaceState(null, '', '#settings'); render(); window.scrollTo(0, 0); return; }
     if (b.dataset.setAct) {
       const k = b.dataset.setAct;
-      if (k === 'family' || k === 'pin') { const t = [...document.querySelectorAll('.pin-tools button')].find(x => k === 'family' ? /가족/.test(x.textContent) : /번호/.test(x.textContent)); if (t) t.click(); }
+      if (typeof PinGate !== 'undefined') {
+        if (k === 'who') PinGate.switchWho();
+        if (k === 'pin') PinGate.changePin();
+        if (k === 'lock') PinGate.lock();
+        if (k === 'family') { if (typeof FamilySync !== 'undefined' && FamilySync.joined()) notice('이미 가족 공유 중이야. 엄마 폰과 같은 기록을 써.'); else PinGate.joinFamily(); }
+      }
       if (k === 'backup') document.getElementById('study-backup')?.click();
       if (k === 'restore') document.getElementById('study-restore')?.click();
       return;

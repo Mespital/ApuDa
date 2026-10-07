@@ -78,5 +78,15 @@
     var label = role === 'parent' ? '엄마 캐릭터' : '승준 캐릭터';
     return '<svg class="fc-char" width="' + size + '" height="' + Math.round(size * 140 / 120) + '" viewBox="0 0 120 140" role="img" aria-label="' + label + '">' + (role === 'parent' ? parent() : child()) + '</svg>';
   }
-  g.FC_CHAR = { svg: svg, name: function (r) { return r === 'parent' ? '엄마' : '승준'; } };
+  /* 프로필 그림: 설정에서 고른 그림(이 기기 + 가족 공유)이 있으면 그걸, 없으면 기본 캐릭터 */
+  var AV = 'fc_avatar_v1';
+  function avMap() { try { var v = JSON.parse(localStorage.getItem(AV) || '{}'); return v && typeof v === 'object' ? v : {}; } catch (e) { return {}; } }
+  function custom(role) { var u = avMap()[role === 'parent' ? 'parent' : 'child']; return typeof u === 'string' && /^data:image\/(png|jpeg|webp|gif);base64,/.test(u) ? u : ''; }
+  function avatar(role, size) {
+    size = size || 96; var u = custom(role);
+    if (!u) return svg(role, size);
+    return '<img class="fc-char fc-av" src="' + u + '" width="' + size + '" height="' + Math.round(size * 140 / 120) + '" alt="' + (role === 'parent' ? '엄마' : '승준') + '" style="object-fit:contain">';
+  }
+  function setAvatar(role, url) { var m = avMap(); if (url) m[role] = url; else delete m[role]; try { localStorage.setItem(AV, JSON.stringify(m)); return true; } catch (e) { return false; } }
+  g.FC_CHAR = { svg: svg, avatar: avatar, custom: custom, setAvatar: setAvatar, KEY: AV, name: function (r) { return r === 'parent' ? '엄마' : '승준'; } };
 })(window);

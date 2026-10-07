@@ -51,7 +51,7 @@
 
   // 무엇을 눌렀는지(내용 없이 기능 이름만)
   var CLICK = [
-    ['nav button[data-go]', function (el) { return 'tab:' + el.getAttribute('data-go'); }],
+    ['button[data-go]', function (el) { return 'tab:' + el.getAttribute('data-go'); }],
     ['[data-go-course]', 'course_pick_open'], ['[data-tt-apply]', 'timetable_apply'], ['[data-tt-paste-open]', 'timetable_paste'],
     ['[data-tt-neis]', 'timetable_neis'], ['[data-week]', 'week_move'], ['[data-result]', function (el) { return 'review_' + el.getAttribute('data-result'); }],
     ['[data-timer]', 'timer'], ['[data-duration]', 'timer_set'], ['[data-carry]', 'task_carry'], ['[data-template]', 'exam_template'],
