@@ -7,7 +7,7 @@ import { getStore } from '@netlify/blobs';
 import { scryptSync, randomBytes, createHash, timingSafeEqual } from 'node:crypto';
 
 export const KEYS = ['compass-study-v1', 'compass-study-plus-v1', 'fc_academy_v1', 'fc_teachers_v1', 'fc_offdays_v1', 'fc_preview_v1',
-  'fc_hub_posts', 'compass-know-me-v1', 'compass-career-lab', 'compass-career-depth', 'future-compass-v2', 'fc_school_class', 'fc_places_v1', 'fc_avatar_v1', 'fc_planner_v1'];
+  'fc_hub_posts', 'compass-know-me-v1', 'compass-career-lab', 'compass-career-depth', 'future-compass-v2', 'fc_school_class', 'fc_places_v1', 'fc_avatar_v1', 'fc_planner_v1', 'fc_notes_v1'];
 const MAX_VALUE = 400000, MAX_TOTAL = 3000000, FAIL_LIMIT = 10, FAIL_WINDOW = 15 * 60000;
 const env = k => (globalThis.Netlify?.env?.get(k) || process.env[k] || '').trim();
 const json = (body, status = 200) => new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' } });
@@ -70,6 +70,15 @@ export default async (req) => {
   const data = (await store.get('data', { type: 'json' })) || {};
 
   if (b.action === 'pull') return json({ data, pv: cfg.pv });
+
+  // 수업 노트 사진: 가족 기기끼리 같이 보기 (기기 토큰 필요)
+  if (b.action === 'photo-put' || b.action === 'photo-get') {
+    if (typeof b.id !== 'string' || !/^[a-z0-9]{8,40}$/.test(b.id)) return json({ error: 'bad_id' }, 400);
+    if (b.action === 'photo-get') { const v = await store.get('photo:' + b.id); return v ? json({ ok: true, data: v }) : json({ error: 'not_found' }, 404); }
+    if (typeof b.data !== 'string' || !/^data:image\/(jpeg|webp|png);base64,/.test(b.data) || b.data.length > 900000) return json({ error: 'bad_photo' }, 400);
+    await store.set('photo:' + b.id, b.data);
+    return json({ ok: true });
+  }
 
   if (b.action === 'push') {
     const m = mergeData(data, b.changes, now);
