@@ -368,7 +368,7 @@
   /* ---------- 잠그기 버튼 ---------- */
   function addLockButton() {
     try { window.dispatchEvent(new Event('pin-who')); } catch (e) {}
-    if (document.body && document.body.classList.contains('app')) return;   // 앱 화면은 상단바·설정에서 처리
+    if (window.FC_APPNAV || (document.body && document.body.classList.contains('app'))) return;   // 하단 메뉴(☰ 전체)·설정에서 처리
     if (document.querySelector('.pin-tools')) return;
     var who = getWho();
     var b = document.createElement('button');
