@@ -5,7 +5,7 @@
    ※ 화면 잠금용이며 서버 보안이 아님 (README 참고) */
 (function () {
   'use strict';
-  var PIN_KEY = 'fc-pin-v1', FAIL_KEY = 'fc-pin-fail-v1', SESSION_KEY = 'fc-unlocked-v1', QA_KEY = 'fc-pin-qa-v1', QA_FAIL = 'fc-pin-qa-fail-v1';
+  var PIN_KEY = 'fc-pin-v1', FAIL_KEY = 'fc-pin-fail-v1', SESSION_KEY = 'fc-unlocked-v1', QA_KEY = 'fc-pin-qa-v1', QA_FAIL = 'fc-pin-qa-fail-v1', WHO_KEY = 'fc-who-v1';
   var QUESTIONS = ['처음 키운 반려동물(또는 갖고 싶은 동물) 이름은?', '초등학교 때 가장 친한 친구 이름은?', '제일 좋아하는 음식은?', '내 별명은?'];
   var MAX_FAIL = 5, LOCK_MS = 30000;
   var root = document.documentElement;
@@ -67,7 +67,7 @@
         '</div>' +
         '<button type="button" class="pin-forgot">비밀번호를 잊었어요</button>' +
         '<button type="button" class="pin-family" hidden>👨‍👩‍👧 가족 비밀번호로 들어가기</button>' +
-        '<div class="pin-role" hidden><p><b>이 기기는 누가 써?</b><br>사용 통계는 승준이 기기만 세.</p><div class="pin-confirm-row"><button type="button" data-role="child">🧒 승준</button><button type="button" data-role="parent">👩 엄마</button></div></div>' +
+        '<div class="pin-role" hidden><div class="pin-who-row">' + ['child', 'parent'].map(function (r) { return '<button type="button" data-role="' + r + '">' + (window.FC_CHAR ? FC_CHAR.svg(r, 92) : (r === 'parent' ? '👩' : '🧒')) + '<b>' + (r === 'parent' ? '엄마' : '승준') + '</b></button>'; }).join('') + '</div><p class="pin-who-note">사용 시간은 승준으로 들어왔을 때만 세.</p></div>' +
         '<button type="button" class="pin-cancel-change" hidden>바꾸지 않고 돌아가기</button>' +
         '<div class="pin-qa-setup" hidden><p><b>비밀번호를 잊었을 때 쓸 질문을 정해둘래?</b><br>나만 아는 답이면 메일 없이도 바로 찾을 수 있어. (선택)</p>' +
           '<label>질문<select class="pin-qa-sel">' + QUESTIONS.map(function (q) { return '<option>' + q + '</option>'; }).join('') + '<option value="__custom">직접 적기</option></select></label>' +
@@ -121,8 +121,9 @@
     gate.querySelector('.pin-rec-send').addEventListener('click', sendCode);
     gate.querySelector('.pin-family').addEventListener('click', function () { if (mode === 'family') { mode = familyBack && familyBack !== 'family' ? familyBack : (readStored() ? 'unlock' : 'setup1'); } else { familyBack = mode; mode = 'family'; } showMode(); });
     gate.querySelectorAll('.pin-role [data-role]').forEach(function (b) { b.addEventListener('click', function () {
-      if (window.FamilySync) { FamilySync.setRole(b.getAttribute('data-role')); FamilySync.start(true); }
-      var n = (b.getAttribute('data-role') === 'parent' ? '엄마' : '승준') + ' 기기로 연결했어. 공부·학원 기록을 함께 써.'; changing = false; recovering = false; unlock(n);
+      var r = b.getAttribute('data-role'); setWho(r);
+      if (window.FamilySync && whoFamily) FamilySync.start(true);
+      var n = (whoNotice ? whoNotice + ' ' : '') + (r === 'parent' ? '엄마, 반가워요 💜' : '승준, 오늘도 화이팅 🐾'); changing = false; recovering = false; whoNotice = ''; whoFamily = false; reallyUnlock(n);
     }); });
     gate.querySelector('.pin-rec-mail-open').addEventListener('click', function () { gate.querySelector('.pin-rec-mail').hidden = false; gate.querySelector('.pin-rec-qa').hidden = true; recStatus(''); });
     gate.querySelector('.pin-rec-qa-open').addEventListener('click', function () {
@@ -143,6 +144,7 @@
     mode = (typeof startMode === 'string' && startMode) || (readStored() ? 'unlock' : 'setup1');
     if (changing) gate.querySelector('.pin-cancel-change').hidden = false;
     showMode();
+    if (mode === 'who') showWho('', false);
     setTimeout(function () { try { input.focus({ preventScroll: true }); } catch (e) {} }, 50);
   }
 
@@ -155,7 +157,7 @@
     entered = ''; sync();
     forgotEl.hidden = mode !== 'unlock';
     var fb = gate.querySelector('.pin-family');
-    fb.hidden = !((mode === 'setup1' && !changing && !recovering) || (mode === 'family' && !changing));
+    fb.hidden = !((mode === 'setup1' && !changing && !recovering) || (mode === 'unlock' && !changing && window.FamilySync && !FamilySync.joined()) || mode === 'family');
     fb.textContent = mode === 'family' ? '← 이 기기만 쓰는 비밀번호로' : '👨‍👩‍👧 가족 비밀번호로 들어가기';
     if (mode === 'family') { titleEl.textContent = '가족 비밀번호 4자리'; msgEl.textContent = extra || '보호자가 정한 가족 비밀번호야. 들어오면 가족과 같은 기록을 함께 써.'; checkLock(); return; }
     if (mode === 'setup1') { titleEl.textContent = '사용할 비밀번호 4자리를 정해줘'; msgEl.textContent = extra || '잊어버려도 보호자 메일로 되찾을 수 있어.'; }
@@ -199,9 +201,7 @@
         var salt = newSalt();
         hashPin(pin, salt).then(function (h) {
           lsSet(PIN_KEY, JSON.stringify({ salt: salt, hash: h, v: 1, family: true, at: new Date().toISOString() })); lsDel(FAIL_KEY);
-          gate.querySelector('.pin-card').classList.add('pin-recovering'); gate.querySelector('.pin-family').hidden = true;
-          titleEl.textContent = '가족 공유 연결 완료'; msgEl.textContent = '이 기기에서도 같은 비밀번호로 들어오면 돼.';
-          gate.querySelector('.pin-role').hidden = false;
+          changing = false; showWho('가족 공유로 연결했어. 이제 이 비밀번호로 들어오면 돼.', true);
         });
       });
       return;
@@ -258,7 +258,7 @@
     var salt = newSalt();
     hashPin(a, salt).then(function (h) { lsSet(QA_KEY, JSON.stringify({ q: q.slice(0, 60), salt: salt, hash: h, at: new Date().toISOString() })); lsDel(QA_FAIL); pendingNotice += ' 복구 질문도 저장했어.'; finishSetup(); });
   }
-  function finishSetup() { changing = false; recovering = false; var n = pendingNotice; pendingNotice = ''; unlock(n); }
+  function finishSetup() { var was = changing; changing = false; recovering = false; var n = pendingNotice; pendingNotice = ''; if (was) reallyUnlock(n); else unlock(n); }
   function checkQA() {
     var qa = readQA(); if (!qa || busy) return;
     var f = (function () { try { return JSON.parse(lsGet(QA_FAIL) || '{"n":0,"until":0}'); } catch (e) { return { n: 0, until: 0 }; } })();
@@ -325,10 +325,28 @@
     });
   }
 
-  function unlock(notice) {
+  /* ---------- 누가 들어왔어? (승준 / 엄마) ---------- */
+  var whoNotice = '', whoFamily = false;
+  function getWho() { var w = lsGet(WHO_KEY); if (w === 'child' || w === 'parent') return w; var f = window.FamilySync && FamilySync.role(); return f === 'child' || f === 'parent' ? f : ''; }
+  function setWho(r) {
+    lsSet(WHO_KEY, r);
+    if (window.FamilySync && FamilySync.joined()) FamilySync.setRole(r);
+    if (r === 'parent') lsSet('fc-usage-optout', '1'); else lsDel('fc-usage-optout');
+  }
+  function showWho(notice, family) {
+    whoNotice = notice || ''; whoFamily = !!family;
+    var card = gate.querySelector('.pin-card'); card.classList.add('pin-recovering', 'pin-who');
+    ['.pin-forgot', '.pin-family', '.pin-qa-setup', '.pin-cancel-change', '.pin-confirm'].forEach(function (q) { var e = gate.querySelector(q); if (e) e.hidden = true; });
+    titleEl.textContent = '누가 들어왔어?'; msgEl.textContent = notice || '';
+    var box = gate.querySelector('.pin-role'); box.hidden = false;
+    var last = getWho(); box.querySelectorAll('[data-role]').forEach(function (b) { b.classList.toggle('last', b.getAttribute('data-role') === last); });
+  }
+  function unlock(notice) { if (gate && gate.isConnected) { showWho(notice, false); return; } reallyUnlock(notice); }
+  function reallyUnlock(notice) {
     ssSet(SESSION_KEY, '1');
     root.classList.remove('pin-locked');
     if (gate) gate.remove();
+    var old = document.querySelector('.pin-tools'); if (old) old.remove();
     addLockButton();
     if (notice) toast(notice);
     try { window.dispatchEvent(new Event('pin-unlocked')); } catch (e) {}
@@ -348,6 +366,7 @@
   /* ---------- 잠그기 버튼 ---------- */
   function addLockButton() {
     if (document.querySelector('.pin-tools')) return;
+    var who = getWho();
     var b = document.createElement('button');
     b.type = 'button'; b.className = 'pin-lock-btn'; b.setAttribute('aria-label', '미래 나침반 잠그기'); b.textContent = '🔒 잠그기';
     b.addEventListener('click', function () { ssDel(SESSION_KEY); location.reload(); });
@@ -355,6 +374,12 @@
     c.type = 'button'; c.className = 'pin-lock-btn pin-change-btn'; c.setAttribute('aria-label', '비밀번호 바꾸기'); c.textContent = '🔑 번호 바꾸기';
     c.addEventListener('click', function () { if (document.getElementById('pin-gate')) return; changing = true; root.classList.add('pin-locked'); build('unlock'); });
     var wrap = document.createElement('span'); wrap.className = 'pin-tools'; wrap.appendChild(c); wrap.appendChild(b);
+    if (who) {
+      var w = document.createElement('button'); w.type = 'button'; w.className = 'pin-lock-btn pin-who-chip'; w.setAttribute('aria-label', (who === 'parent' ? '엄마' : '승준') + '로 쓰는 중. 누르면 바꾸기');
+      w.innerHTML = (window.FC_CHAR ? FC_CHAR.svg(who, 22) : '') + '<span>' + (who === 'parent' ? '엄마' : '승준') + '</span>';
+      w.addEventListener('click', function () { if (document.getElementById('pin-gate')) return; root.classList.add('pin-locked'); build('who'); });
+      wrap.insertBefore(w, wrap.firstChild);
+    }
     if (window.FamilySync && !FamilySync.joined()) {
       var f = document.createElement('button'); f.type = 'button'; f.className = 'pin-lock-btn'; f.textContent = '👨‍👩‍👧 가족 공유'; f.setAttribute('aria-label', '가족 공유로 연결');
       f.addEventListener('click', function () { if (document.getElementById('pin-gate')) return; changing = true; root.classList.add('pin-locked'); build('family'); });
