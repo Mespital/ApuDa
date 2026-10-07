@@ -5,7 +5,8 @@
    ※ 화면 잠금용이며 서버 보안이 아님 (README 참고) */
 (function () {
   'use strict';
-  var PIN_KEY = 'fc-pin-v1', FAIL_KEY = 'fc-pin-fail-v1', SESSION_KEY = 'fc-unlocked-v1';
+  var PIN_KEY = 'fc-pin-v1', FAIL_KEY = 'fc-pin-fail-v1', SESSION_KEY = 'fc-unlocked-v1', QA_KEY = 'fc-pin-qa-v1', QA_FAIL = 'fc-pin-qa-fail-v1';
+  var QUESTIONS = ['처음 키운 반려동물(또는 갖고 싶은 동물) 이름은?', '초등학교 때 가장 친한 친구 이름은?', '제일 좋아하는 음식은?', '내 별명은?'];
   var MAX_FAIL = 5, LOCK_MS = 30000;
   var root = document.documentElement;
 
@@ -66,10 +67,17 @@
         '</div>' +
         '<button type="button" class="pin-forgot">비밀번호를 잊었어요</button>' +
         '<button type="button" class="pin-cancel-change" hidden>바꾸지 않고 돌아가기</button>' +
+        '<div class="pin-qa-setup" hidden><p><b>비밀번호를 잊었을 때 쓸 질문을 정해둘래?</b><br>나만 아는 답이면 메일 없이도 바로 찾을 수 있어. (선택)</p>' +
+          '<label>질문<select class="pin-qa-sel">' + QUESTIONS.map(function (q) { return '<option>' + q + '</option>'; }).join('') + '<option value="__custom">직접 적기</option></select></label>' +
+          '<input class="pin-qa-custom" maxlength="60" placeholder="질문을 직접 적어줘" hidden>' +
+          '<label>답<input class="pin-qa-ans" maxlength="40" autocomplete="off" placeholder="띄어쓰기·대소문자는 상관없어"></label>' +
+          '<p class="pin-qa-msg" role="status"></p><div class="pin-confirm-row"><button type="button" class="pin-qa-skip">다음에</button><button type="button" class="pin-qa-save">저장</button></div></div>' +
         '<div class="pin-confirm pin-recover" hidden>' +
-          '<p><b>보호자 메일로 복구 코드를 보낼게.</b><br>코드를 넣으면 새 비밀번호를 정할 수 있어. 공부 기록은 그대로 남아.</p>' +
-          '<button type="button" class="pin-rec-send">📧 복구 코드 보내기</button>' +
-          '<div class="pin-rec-code" hidden><label class="pin-sr" for="pin-rec-input">복구 코드 6자리</label><input id="pin-rec-input" class="pin-rec-input" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="one-time-code" placeholder="코드 6자리"><button type="button" class="pin-rec-check">확인</button></div>' +
+          '<p><b>어떤 방법으로 찾을까?</b><br>어느 쪽이든 새 비밀번호를 정하면 공부 기록은 그대로 남아.</p>' +
+          '<div class="pin-rec-choices"><button type="button" class="pin-rec-qa-open">🙋 내가 정한 질문으로 찾기</button><button type="button" class="pin-rec-mail-open">📧 보호자 메일로 코드 받기</button></div>' +
+          '<div class="pin-rec-qa" hidden><p class="pin-qa-q"></p><div class="pin-rec-code"><label class="pin-sr" for="pin-qa-input">답</label><input id="pin-qa-input" class="pin-qa-input" maxlength="40" autocomplete="off" placeholder="내가 정한 답"><button type="button" class="pin-qa-check">확인</button></div></div>' +
+          '<div class="pin-rec-mail" hidden><button type="button" class="pin-rec-send">📧 복구 코드 보내기</button>' +
+          '<div class="pin-rec-code" hidden><label class="pin-sr" for="pin-rec-input">복구 코드 6자리</label><input id="pin-rec-input" class="pin-rec-input" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="one-time-code" placeholder="코드 6자리"><button type="button" class="pin-rec-check">확인</button></div></div>' +
           '<p class="pin-rec-status" role="status" aria-live="polite"></p>' +
           '<button type="button" class="pin-cancel">비밀번호 화면으로 돌아가기</button>' +
           '<details class="pin-last"><summary>메일을 받을 수 없을 때</summary>' +
@@ -109,6 +117,18 @@
     gate.querySelector('.pin-cancel').addEventListener('click', function () { confirmBox.hidden = true; forgotEl.hidden = false; gate.querySelector('.pin-card').classList.remove('pin-recovering'); showMode(); });
     gate.querySelector('.pin-reset').addEventListener('click', function () { if (confirm('정말 이 기기의 기록을 모두 지울까? 되돌릴 수 없어.')) resetAll(); });
     gate.querySelector('.pin-rec-send').addEventListener('click', sendCode);
+    gate.querySelector('.pin-rec-mail-open').addEventListener('click', function () { gate.querySelector('.pin-rec-mail').hidden = false; gate.querySelector('.pin-rec-qa').hidden = true; recStatus(''); });
+    gate.querySelector('.pin-rec-qa-open').addEventListener('click', function () {
+      var qa = readQA(); if (!qa) { recStatus('아직 질문을 정하지 않았어. 보호자 메일로 찾아줘.'); return; }
+      gate.querySelector('.pin-rec-qa').hidden = false; gate.querySelector('.pin-rec-mail').hidden = true; gate.querySelector('.pin-qa-q').textContent = 'Q. ' + qa.q; recStatus('');
+      setTimeout(function () { try { gate.querySelector('.pin-qa-input').focus(); } catch (e) {} }, 30);
+    });
+    gate.querySelector('.pin-qa-check').addEventListener('click', checkQA);
+    gate.querySelector('.pin-qa-input').addEventListener('keydown', function (e) { if (e.key === 'Enter') checkQA(); });
+    gate.querySelector('.pin-qa-sel').addEventListener('change', function (e) { var c = gate.querySelector('.pin-qa-custom'); c.hidden = e.target.value !== '__custom'; if (!c.hidden) c.focus(); });
+    gate.querySelector('.pin-qa-skip').addEventListener('click', function () { finishSetup(); });
+    gate.querySelector('.pin-qa-save').addEventListener('click', saveQA);
+    if (!readQA()) { var qb = gate.querySelector('.pin-rec-qa-open'); qb.classList.add('pin-off'); qb.textContent = '🙋 내가 정한 질문으로 찾기 (질문 없음)'; }
     gate.querySelector('.pin-rec-check').addEventListener('click', checkCode);
     gate.querySelector('.pin-rec-input').addEventListener('input', function (e) { e.target.value = e.target.value.replace(/\D/g, '').slice(0, 6); if (e.target.value.length === 6) checkCode(); });
 
@@ -165,7 +185,9 @@
           busy = false; mode = 'setup1'; showMode('저장하지 못했어. 브라우저의 사이트 데이터 저장이 꺼져 있는지 확인해줘.'); return;
         }
         lsDel(FAIL_KEY);
-        busy = false; var wasChanging = changing || recovering; changing = false; recovering = false; unlock(wasChanging ? '새 비밀번호로 바꿨어. 기록은 그대로야.' : '비밀번호를 저장했어. 다음부터 이 번호로 들어오면 돼.');
+        busy = false; var wasChanging = changing || recovering; pendingNotice = wasChanging ? '새 비밀번호로 바꿨어. 기록은 그대로야.' : '비밀번호를 저장했어. 다음부터 이 번호로 들어오면 돼.';
+        if (recovering && readQA()) { finishSetup(); return; }
+        showQASetup();
       });
       return;
     }
@@ -183,6 +205,48 @@
         shake('비밀번호가 달라. (' + f.n + '/' + MAX_FAIL + ')');
       });
     }
+  }
+
+  /* ---------- 나만 아는 질문 ---------- */
+  var pendingNotice = '';
+  function readQA() { try { var v = JSON.parse(lsGet(QA_KEY) || 'null'); return v && v.q && v.salt && v.hash ? v : null; } catch (e) { return null; } }
+  function normAns(a) { return String(a || '').toLowerCase().replace(/\s+/g, '').trim(); }
+  function showQASetup() {
+    var box = gate.querySelector('.pin-qa-setup'), cur = readQA();
+    gate.querySelector('.pin-card').classList.add('pin-recovering'); box.hidden = false; forgotEl.hidden = true;
+    titleEl.textContent = cur ? '복구 질문 바꾸기' : '복구 질문 정하기'; msgEl.textContent = '';
+    if (cur) { box.querySelector('.pin-qa-skip').textContent = '지금 질문 그대로'; }
+    setTimeout(function () { try { box.querySelector('.pin-qa-ans').focus(); } catch (e) {} }, 30);
+  }
+  function saveQA() {
+    var box = gate.querySelector('.pin-qa-setup'), sel = box.querySelector('.pin-qa-sel').value;
+    var q = sel === '__custom' ? box.querySelector('.pin-qa-custom').value.trim() : sel, a = normAns(box.querySelector('.pin-qa-ans').value);
+    var m = box.querySelector('.pin-qa-msg');
+    if (!q) { m.textContent = '질문을 적어줘.'; return; }
+    if (a.length < 2) { m.textContent = '답은 두 글자 이상으로 정해줘.'; return; }
+    var salt = newSalt();
+    hashPin(a, salt).then(function (h) { lsSet(QA_KEY, JSON.stringify({ q: q.slice(0, 60), salt: salt, hash: h, at: new Date().toISOString() })); lsDel(QA_FAIL); pendingNotice += ' 복구 질문도 저장했어.'; finishSetup(); });
+  }
+  function finishSetup() { changing = false; recovering = false; var n = pendingNotice; pendingNotice = ''; unlock(n); }
+  function checkQA() {
+    var qa = readQA(); if (!qa || busy) return;
+    var f = (function () { try { return JSON.parse(lsGet(QA_FAIL) || '{"n":0,"until":0}'); } catch (e) { return { n: 0, until: 0 }; } })();
+    if (f.until > Date.now()) { recStatus(Math.ceil((f.until - Date.now()) / 60000) + '분 뒤에 다시 해줘. 급하면 보호자 메일로 찾아줘.'); return; }
+    var inp = gate.querySelector('.pin-qa-input'), a = normAns(inp.value);
+    if (!a) { recStatus('답을 적어줘.'); return; }
+    busy = true;
+    hashPin(a, qa.salt).then(function (h) {
+      busy = false;
+      if (h === qa.hash) { lsDel(QA_FAIL); recoverOK(); return; }
+      f.n = (f.n || 0) + 1; if (f.n >= 5) f = { n: 0, until: Date.now() + 5 * 60000 };
+      lsSet(QA_FAIL, JSON.stringify(f)); inp.value = '';
+      recStatus(f.until ? '5번 틀려서 5분 동안 막혔어. 보호자 메일로도 찾을 수 있어.' : '답이 달라. (' + f.n + '/5)');
+    });
+  }
+  function recoverOK() {
+    recovering = true; lsDel(FAIL_KEY);
+    confirmBox.hidden = true; gate.querySelector('.pin-card').classList.remove('pin-recovering');
+    mode = 'setup1'; showMode('확인됐어. 기록은 그대로야. 새 비밀번호를 정해줘.'); titleEl.textContent = '새 비밀번호 4자리를 정해줘';
   }
 
   /* ---------- 보호자 메일 복구 ---------- */
@@ -226,9 +290,7 @@
     recApi({ action: 'verify', device: deviceId(), code: code }).then(function (j) {
       busy = false;
       if (!j._ok) { inp.value = ''; recStatus(j.error === 'wrong_code' ? '코드가 달라. (남은 기회 ' + (j.left != null ? j.left : '?') + '번)' : (REC_MSG[j.error] || '확인하지 못했어.')); return; }
-      recovering = true; lsDel(FAIL_KEY);
-      confirmBox.hidden = true; gate.querySelector('.pin-card').classList.remove('pin-recovering');
-      mode = 'setup1'; showMode('확인됐어. 기록은 그대로야. 새 비밀번호를 정해줘.'); titleEl.textContent = '새 비밀번호 4자리를 정해줘';
+      recoverOK();
     });
   }
 

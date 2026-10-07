@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
-<title>사용 현황 · 미래 나침반</title>
+<title>보호자 화면 · 미래 나침반</title>
 <style>
 :root{--ink:#2b2840;--muted:#6f6a85;--line:#e6e1f3;--bg:#f6f4fc;--card:#fff;--bar:#7764ef;--bar2:#c9bff8;--we:#f0ecfb}
 @media(prefers-color-scheme:dark){:root{--ink:#ecebf5;--muted:#a9a4bf;--line:#2e2b41;--bg:#15131f;--card:#1e1b2b;--bar:#9b8cff;--bar2:#4a427a;--we:#24203a}}
@@ -22,8 +22,8 @@ button{font:600 14px system-ui;padding:10px 14px;border-radius:10px;border:0;bac
 @media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.rank li{grid-template-columns:120px 1fr 40px}}
 </style></head>
 <body><main>
-<h1>📊 사용 현황</h1>
-<p class="muted">보호자만 보는 화면이야. 어떤 화면을 얼마나 봤는지, 어떤 기능을 썼는지만 모아. 할 일·메모 같은 내용은 수집하지 않아.</p>
+<h1>👨‍👩‍👧 보호자 화면</h1>
+<p class="muted">보호자만 보는 화면이야. 아이의 오늘 스케줄(수업·학원·할 일·예습)과 사용 현황을 볼 수 있어. 메모·복습 노트 내용은 수집하지 않아.</p>
 <div id="login" class="card" hidden>
   <h2>관리자 토큰</h2>
   <form id="f"><input id="t" type="password" autocomplete="off" placeholder="Netlify 환경변수 FC_ADMIN_TOKEN 값" required><button>보기</button></form>
@@ -31,6 +31,8 @@ button{font:600 14px system-ui;padding:10px 14px;border-radius:10px;border:0;bac
   <p id="err" class="muted" style="color:#b4475a"></p>
 </div>
 <div id="dash" hidden>
+  <div class="card" id="tv-card"><div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:6px"><h2 style="margin:0;flex:1">📋 오늘 스케줄</h2><div class="seg" id="tv-seg" style="margin:0"><button data-d="0" aria-pressed="true">오늘</button><button data-d="1">어제</button></div></div><div id="tv"><p class="muted">불러오는 중…</p></div></div>
+  <h2 style="margin:22px 4px 0">📊 사용 현황</h2>
   <div class="seg" role="group" aria-label="기간"><button data-n="7">7일</button><button data-n="30" aria-pressed="true">30일</button><button data-n="90">90일</button><span style="flex:1"></span><button class="ghost" id="logout">토큰 지우기</button></div>
   <div class="card stats" id="stats"></div>
   <div class="card"><h2>날짜별 사용 시간(분)</h2><div class="bars" id="bars"></div><div class="xlab" id="xlab"></div><p class="muted">분홍 밑줄은 주말. 화면을 켜 두고 2분 넘게 손대지 않은 시간은 빼고 셌어.</p></div>
@@ -43,6 +45,7 @@ button{font:600 14px system-ui;padding:10px 14px;border-radius:10px;border:0;bac
   <p class="muted" id="foot"></p>
 </div>
 </main>
+<script src="today-view.js"></script>
 <script>
 (function(){'use strict';
 var KEY='fc-admin-token', N=30, $=function(s){return document.querySelector(s)};
@@ -75,9 +78,17 @@ function load(){
   if(!t){$('#login').hidden=false;$('#dash').hidden=true;return}
   fetch('/api/usage?days='+N,{headers:{authorization:'Bearer '+t}}).then(function(r){return r.json().then(function(j){return{ok:r.ok,status:r.status,j:j}})}).then(function(x){
     if(!x.ok){try{localStorage.removeItem(KEY)}catch(e){}$('#login').hidden=false;$('#dash').hidden=true;$('#err').textContent=x.status===401?'토큰이 맞지 않아.':x.j.error==='not_configured'?'Netlify에 FC_ADMIN_TOKEN이 아직 없어.':'불러오지 못했어.';return}
-    $('#login').hidden=true;$('#dash').hidden=false;render(x.j.days||[]);
+    $('#login').hidden=true;$('#dash').hidden=false;render(x.j.days||[]);loadToday(0);
   }).catch(function(){$('#err').textContent='인터넷 연결을 확인해줘.';$('#login').hidden=false});
 }
+function loadToday(back){
+  var t='';try{t=localStorage.getItem(KEY)||''}catch(e){}
+  var d=new Date(Date.now()+9*3600000-back*86400000).toISOString().slice(0,10);
+  fetch('/api/today'+(back?'?date='+d:''),{headers:{authorization:'Bearer '+t}}).then(function(r){return r.json()}).then(function(j){
+    var v=j&&j.today; $('#tv').innerHTML=v?(v.date!==d&&!back?'<p class="muted">아이가 오늘은 아직 공부방을 열지 않았어. 마지막 기록('+esc(v.date)+')을 보여줄게.</p>':'')+TodayView.render(v,{parent:true}):'<p class="muted">아직 올라온 기록이 없어. 아이 기기에서 공부방이나 오늘 한눈에를 한 번 열면 생겨.</p>';
+  }).catch(function(){$('#tv').innerHTML='<p class="muted">불러오지 못했어.</p>'});
+}
+document.querySelectorAll('#tv-seg [data-d]').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#tv-seg [data-d]').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});loadToday(Number(b.dataset.d))})});
 $('#f').addEventListener('submit',function(e){e.preventDefault();try{localStorage.setItem(KEY,$('#t').value.trim())}catch(err){}load()});
 $('#logout').addEventListener('click',function(){try{localStorage.removeItem(KEY)}catch(e){}load()});
 document.querySelectorAll('.seg [data-n]').forEach(function(b){b.addEventListener('click',function(){N=Number(b.dataset.n);document.querySelectorAll('.seg [data-n]').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});load()})});

@@ -8,7 +8,10 @@
     entryYear: 2026,          // 고1 입학년도
     atpt: 'B10',              // 서울특별시교육청
     schoolCode: '7010087',    // 나이스 학교코드
-    homepage: 'https://seocho.sen.hs.kr/'
+    homepage: 'https://seocho.sen.hs.kr/',
+    // 교시 시작 시각(1학년 1반 시간표 기준, 50분 수업). 점심 11:20 수업 뒤
+    periods: ['08:20', '09:20', '10:20', '11:20', '13:10', '14:10', '15:10'],
+    classMinutes: 50, lunch: '12:10'
   };
   function kstNow(d) {
     var t = (d || new Date()).getTime() + 9 * 3600000;

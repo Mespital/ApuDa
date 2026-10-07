@@ -11,3 +11,5 @@
 .focus-study-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}.focus-study-row a{display:block;padding:24px;border-radius:22px;color:#293152;text-decoration:none}.focus-study{background:#fff3cf}.focus-hub{background:#e3f1ea}.focus-study-row a h2{font-size:21px;margin:0 0 8px;color:#4b32b8}.focus-hub h2{color:#24604a!important}.focus-study-row a p{margin:0;font-size:15px;color:#667085}.focus-study-row a::after{content:none!important}.focus-study-row a:focus-visible{outline:3px solid #ffb94e;outline-offset:3px}@media(max-width:760px){.focus-study-row{grid-template-columns:1fr}}
 
 .focus-sub{font-size:18px;margin:26px 4px 10px}
+
+.focus-glance{display:block;margin:14px 0 0;padding:14px 16px;border-radius:18px;background:#2b2160;color:#fff!important;font-weight:700;text-decoration:none}.focus-glance small{display:block;font-weight:500;opacity:.8;font-size:12.5px}
