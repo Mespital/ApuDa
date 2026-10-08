@@ -1,9 +1,9 @@
 {
   "version": "1.0",
-  "generated_at": "2026-10-07T18:04:54.029694+09:00",
+  "generated_at": "2026-10-08T18:04:50.740438+09:00",
   "window": {
-    "start": "2026-09-07T09:00:00+09:00",
-    "end": "2026-10-07T09:00:00+09:00",
+    "start": "2026-09-08T09:00:00+09:00",
+    "end": "2026-10-08T09:00:00+09:00",
     "days": 30,
     "timezone": "Asia/Seoul"
   },
@@ -86,7 +86,67 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
+    },
+    {
+      "rank": null,
+      "canonical_issue": "주사시간 줄였는데 특허가 발목…'키트루다SC', 유럽 8개국 제동 - 메디파나뉴스",
+      "title": "주사시간 줄였는데 특허가 발목…'키트루다SC', 유럽 8개국 제동",
+      "category": [
+        "허가"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-08T08:07:30+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "MSD의 면역항암제 '키트루다' 피하주사(SC) 제형이 유럽에서 특허분쟁으로 상업화에 제동이 걸렸다. 네덜란드 법원이 유럽 8개국에서 해당 제형의 제조·판매 등을 제한하는 금지명령을 내렸다고 할로자임이 밝혔다. 미국 피하주사 약물전달 기술 전문기업 할로자임은 7일(현지시간) 네덜란드 헤이그의 특허 전문 ",
+        "ChatGPT Image MSD의 면역항암제 '키트루다' 피하주사(SC) 제형이 유럽에서 특허분쟁으로 상업화에 제동이 걸렸다.",
+        "네덜란드 법원이 유럽 8개국에서 해당 제형의 제조·판매 등을 제한하는 금지명령을 내렸다고 할로자임이 밝혔다."
+      ],
+      "importance": "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=418949"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=418949"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/418949_326269_5847.png",
+      "score": 25,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": "허가 관련",
+        "reimbursement_status": null,
+        "patient_summary": "치료제의 허가 범위나 사용 가능성과 관련된 소식입니다. 국내 실제 사용은 식약처 허가사항을 확인해야 합니다.",
+        "patient_relevance_score": 58,
+        "patient_relevance_labels": [
+          "허가",
+          "안전성"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "today",
+      "age_days": 0
     },
     {
       "rank": 2,
@@ -146,6 +206,126 @@
           "급여·접근성",
           "임상결과"
         ],
+        "industry_summary": null
+      },
+      "freshness": "7d",
+      "age_days": 1
+    },
+    {
+      "rank": null,
+      "canonical_issue": "내 암세포를 분석해, 나에게 맞는 암백신을 만든다? - 의학신문",
+      "title": "내 암세포를 분석해, 나에게 맞는 암백신을 만든다?",
+      "category": [
+        "3상",
+        "병원",
+        "ai"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-08T07:19:02+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "모더나의 ‘개인 맞춤형 암백신’은 우리가 흔히 떠올리는 예방백신과 어떻게 다를까요? 환자마다 다르게 만드는 이유부터 기존 항암제와의 차이까지, 안주원 약사님(한국",
+        "모더나의 ‘개인 맞춤형 암백신’은 우리가 흔히 떠올리는 예방백신과 어떻게 다를까요?",
+        "다르게 만드는 이유부터 기존 항암제와의 차이까지, 안주원 약사님(한국병원약사회 홍보위원회 / 용인세브란스병원)과 함께 쉽게 풀어봅니다."
+      ],
+      "importance": "시장·정책·연구개발 흐름을 보여주는 주요 산업 이슈로 후속 정책과 사업 변화 확인이 필요합니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3013499"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013499"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3013499_414391_1923.png",
+      "score": 15,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": "3",
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": "향후 치료 선택이나 표준치료 논의에 영향을 줄 수 있는 임상 결과입니다.",
+        "patient_relevance_score": 20,
+        "patient_relevance_labels": [
+          "임상결과"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "today",
+      "age_days": 0
+    },
+    {
+      "rank": null,
+      "canonical_issue": "RNA·유전자 통한 이상운동질환 치료 개발·연구 활발 - 메디파나뉴스",
+      "title": "RNA·유전자 통한 이상운동질환 치료 개발·연구 활발",
+      "category": [
+        "ai"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-08T06:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "이상운동질환 치료에 RNA 간섭(RNAi), 안티센스 올리고뉴클레오타이드(ASO) 등 RNA 치료제와 유전자 대체·유전자편집을 포함한 유전자 치료 활용이 시도되고 있다. 파킨슨병에서는 SNCA를 겨냥한 RNAi가 임상 1상에 진입했고, 희귀질환에서는 N-of-1 ASO가 환자 치료로 이어진 가운데 ADC",
+        "(왼쪽부터) 누릿 오메르 텔아비브 소라스키 메디컬센터 신경과 전문의, 김진국 KAIST 의과학대학원 부교수, 만주 쿠리안 영국 UCL 신경유전학 교수가 7일 서울 코엑스에서 열린 '국제 파킨슨병 및 이상운동질환학회(MDS) 국제학술대회'에서 RNA 간섭(RNAi), 안티센스 올리고뉴클레오타이드(ASO), 유전자 대체·편집",
+        "사진=민준영 기자 이상운동질환 치료에 RNA 간섭(RNAi), 안티센스 올리고뉴클레오타이드(ASO) 등 RNA 치료제와 유전자 대체·유전자편집을 포함한 유전자 치료 활용이 시도되고 있다."
+      ],
+      "importance": "기사에서 급여·약가 이슈가 함께 확인돼 시장 접근성과 환자 부담 변화를 후속 확인할 필요가 있습니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=418936"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=418936"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/418936_326245_623.png",
+      "score": 19,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [
+          "ADC"
+        ],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": "치료와 직접 관련된 정보인지 기사 원문과 공식 자료를 함께 확인해 주세요.",
+        "patient_relevance_score": 0,
+        "patient_relevance_labels": [],
         "industry_summary": null
       },
       "freshness": "today",
@@ -210,7 +390,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 2
+      "age_days": 3
     },
     {
       "rank": null,
@@ -265,7 +445,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": null,
@@ -323,7 +503,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": null,
@@ -380,7 +560,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": 4,
@@ -439,7 +619,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": null,
@@ -507,7 +687,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     }
   ]
 }

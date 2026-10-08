@@ -1,6 +1,6 @@
 {
   "version": "1.2",
-  "generated_at": "2026-10-07T18:05:02.419419+09:00",
+  "generated_at": "2026-10-08T18:04:58.595776+09:00",
   "service_key_connected": true,
   "credential_routes": {
     "mfds_drug_approval": "dedicated",
@@ -20,7 +20,7 @@
       "name": "의약품 제품 허가정보",
       "source_url": "https://www.data.go.kr/data/15095677/openapi.do",
       "status": "ok",
-      "checked_at": "2026-10-07T18:04:54.443410+09:00",
+      "checked_at": "2026-10-08T18:04:51.014898+09:00",
       "records": [
         {
           "item_seq": "202602182",
@@ -265,6 +265,39 @@
           "edi_code": null
         },
         {
+          "item_seq": "202402033",
+          "item_name": "후리코정(수출용)",
+          "company": "신일제약(주)",
+          "main_ingredient": null,
+          "permit_date": "20240823",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": null
+        },
+        {
+          "item_seq": "202400197",
+          "item_name": "한올케타민염산염주",
+          "company": "한올바이오파마(주)",
+          "main_ingredient": null,
+          "permit_date": "20240125",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": null
+        },
+        {
+          "item_seq": "202301862",
+          "item_name": "명문페티딘염산염주사(수출용)",
+          "company": "명문제약(주)",
+          "main_ingredient": null,
+          "permit_date": "20230619",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": null
+        },
+        {
           "item_seq": "202300950",
           "item_name": "카빅티주(실타캅타젠오토류셀)",
           "company": "(주)한국얀센",
@@ -274,6 +307,39 @@
           "newdrug_class_name": null,
           "atc_code": null,
           "edi_code": null
+        },
+        {
+          "item_seq": "202300713",
+          "item_name": "알프라원정0.25밀리그램(알프라졸람)",
+          "company": "하나제약(주)",
+          "main_ingredient": null,
+          "permit_date": "20230228",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": "657807870"
+        },
+        {
+          "item_seq": "202300714",
+          "item_name": "알프라원정0.5밀리그램(알프라졸람)",
+          "company": "하나제약(주)",
+          "main_ingredient": null,
+          "permit_date": "20230228",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": "657807880"
+        },
+        {
+          "item_seq": "202203919",
+          "item_name": "알프람정0.125밀리그램(알프라졸람)",
+          "company": "환인제약(주)",
+          "main_ingredient": null,
+          "permit_date": "20221026",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": "657203960"
         },
         {
           "item_seq": "202203438",
@@ -303,6 +369,61 @@
           "company": "하나제약(주)",
           "main_ingredient": null,
           "permit_date": "20220831",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": null
+        },
+        {
+          "item_seq": "202202754",
+          "item_name": "바이파보주20밀리그램(레미마졸람베실산염)(수출용)",
+          "company": "하나제약(주)",
+          "main_ingredient": null,
+          "permit_date": "20220704",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": null
+        },
+        {
+          "item_seq": "202202678",
+          "item_name": "잘레딥캡슐5밀리그램(잘레플론)",
+          "company": "부광약품(주)",
+          "main_ingredient": null,
+          "permit_date": "20220629",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": "642204620"
+        },
+        {
+          "item_seq": "202202679",
+          "item_name": "잘레딥캡슐10밀리그램(잘레플론)",
+          "company": "부광약품(주)",
+          "main_ingredient": null,
+          "permit_date": "20220629",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": "642204630"
+        },
+        {
+          "item_seq": "202106887",
+          "item_name": "프레조폴엠시티프리필드주1%(프로포폴) ",
+          "company": "프레지니우스카비코리아(주)",
+          "main_ingredient": null,
+          "permit_date": "20211013",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": null
+        },
+        {
+          "item_seq": "202106888",
+          "item_name": "프레조폴엠시티프리필드주2%(프로포폴) ",
+          "company": "프레지니우스카비코리아(주)",
+          "main_ingredient": null,
+          "permit_date": "20211013",
           "rare_drug_yn": null,
           "newdrug_class_name": null,
           "atc_code": null,
@@ -450,130 +571,9 @@
           "newdrug_class_name": null,
           "atc_code": null,
           "edi_code": null
-        },
-        {
-          "item_seq": "202105645",
-          "item_name": "큐어스킨주(자가유래피부섬유아세포)",
-          "company": "(주)에스바이오메딕스",
-          "main_ingredient": null,
-          "permit_date": "20210729",
-          "rare_drug_yn": null,
-          "newdrug_class_name": null,
-          "atc_code": null,
-          "edi_code": null
-        },
-        {
-          "item_seq": "202105509",
-          "item_name": "카티라이프(바솔자가연골유래연골세포)",
-          "company": "(주)바이오솔루션",
-          "main_ingredient": null,
-          "permit_date": "20210722",
-          "rare_drug_yn": null,
-          "newdrug_class_name": null,
-          "atc_code": null,
-          "edi_code": null
-        },
-        {
-          "item_seq": "202104462",
-          "item_name": "퀸셀(자가지방조직유래 최소조작 지방세포)",
-          "company": "(주)안트로젠",
-          "main_ingredient": null,
-          "permit_date": "20210609",
-          "rare_drug_yn": null,
-          "newdrug_class_name": null,
-          "atc_code": null,
-          "edi_code": null
-        },
-        {
-          "item_seq": "202104217",
-          "item_name": "졸겐스마주(오나셈노진아베파르보벡)",
-          "company": "한국노바티스(주)",
-          "main_ingredient": null,
-          "permit_date": "20210528",
-          "rare_drug_yn": null,
-          "newdrug_class_name": null,
-          "atc_code": null,
-          "edi_code": null
-        },
-        {
-          "item_seq": "202103385",
-          "item_name": "파마에스조피클론정3mg",
-          "company": "(주)한국파마",
-          "main_ingredient": null,
-          "permit_date": "20210426",
-          "rare_drug_yn": null,
-          "newdrug_class_name": null,
-          "atc_code": null,
-          "edi_code": null
-        },
-        {
-          "item_seq": "202103386",
-          "item_name": "파마에스조피클론정1mg",
-          "company": "(주)한국파마",
-          "main_ingredient": null,
-          "permit_date": "20210426",
-          "rare_drug_yn": null,
-          "newdrug_class_name": null,
-          "atc_code": null,
-          "edi_code": null
-        },
-        {
-          "item_seq": "202103387",
-          "item_name": "파마에스조피클론정2mg",
-          "company": "(주)한국파마",
-          "main_ingredient": null,
-          "permit_date": "20210426",
-          "rare_drug_yn": null,
-          "newdrug_class_name": null,
-          "atc_code": null,
-          "edi_code": null
-        },
-        {
-          "item_seq": "202102042",
-          "item_name": "킴리아주(티사젠렉류셀)",
-          "company": "한국노바티스(주)",
-          "main_ingredient": null,
-          "permit_date": "20210305",
-          "rare_drug_yn": null,
-          "newdrug_class_name": null,
-          "atc_code": null,
-          "edi_code": "653603381"
-        },
-        {
-          "item_seq": "202100735",
-          "item_name": "타코펜캡슐(수출용)",
-          "company": "구주제약(주)",
-          "main_ingredient": null,
-          "permit_date": "20210125",
-          "rare_drug_yn": null,
-          "newdrug_class_name": null,
-          "atc_code": null,
-          "edi_code": null
-        },
-        {
-          "item_seq": "202009292",
-          "item_name": "구주황산모르핀주사10mg/ml(모르핀황산염수화물)",
-          "company": "구주제약(주)",
-          "main_ingredient": null,
-          "permit_date": "20201229",
-          "rare_drug_yn": null,
-          "newdrug_class_name": null,
-          "atc_code": null,
-          "edi_code": null
-        },
-        {
-          "item_seq": "202009293",
-          "item_name": "구주황산모르핀주사15mg/ml(모르핀황산염수화물)",
-          "company": "구주제약(주)",
-          "main_ingredient": null,
-          "permit_date": "20201229",
-          "rare_drug_yn": null,
-          "newdrug_class_name": null,
-          "atc_code": null,
-          "edi_code": null
         }
       ],
-      "total_count": 42705,
+      "total_count": 42716,
       "http_status": 200,
       "key_variant_used": 1,
       "note": "식약처 공식 의약품 허가 OpenAPI 연결 상태입니다. 허가 상세 확인은 품목기준코드 기준으로 후속 조회합니다."
@@ -584,7 +584,7 @@
       "name": "의약품 공급부족 정보",
       "source_url": "https://www.data.go.kr/data/15056886/openapi.do",
       "status": "ok",
-      "checked_at": "2026-10-07T18:04:56.774029+09:00",
+      "checked_at": "2026-10-08T18:04:53.177885+09:00",
       "records": [
         {
           "report_date": "20261001",
@@ -738,7 +738,7 @@
           "stock_qty": "4,740",
           "patient_impact": "화이자시타라빈(cytarabine)은 급성백혈병, 적백혈병, 만성골수성백혈병의 급성전환기 및 일부 고형암의 병용 항암요법에 사용되는 항암제입니다. 공급부족이 발생할 경우 일부 환자에서 치료 일정 조정 또는 치료계획 변경이 필요할 수 있습니다. 다만 환자의 질환 상태, 치료 목적 및 치료 단계에 따라 의료진의 판단 하에 적절한 대체 치료전략 또는 대체 의약품을 고려할 수 있습니다. 따라서 환자에 미치는 영향은 개별 환자의 임상적 상황에 따라 다를 수 있으며, 치료 연속성 유지를 위해 의료진의 적절한 검토 및 처방 조정이 필요할 수 있습니다.",
           "normalization_plan": "당사는 제조원과의 긴밀한 협의를 통해 생산 및 수입 일정을 최적화하여 국내 공급 정상화 시점을 최대한 앞당기고자 합니다. 또한 의료기관 및 유통업체와 지속적으로 소통하여 환자 치료의 연속성 유지와 시장 안정화에 만전을 기할 예정입니다.",
-          "normalization_expected_date": "20270701"
+          "normalization_expected_date": "20281231"
         },
         {
           "report_date": "20260812",
@@ -752,7 +752,7 @@
           "stock_qty": "1,647",
           "patient_impact": "화이자시타라빈(cytarabine)은 급성백혈병, 적백혈병, 만성골수성백혈병의 급성전환기 및 일부 고형암의 병용 항암요법에 사용되는 항암제입니다. 공급부족이 발생할 경우 일부 환자에서 치료 일정 조정 또는 치료계획 변경이 필요할 수 있습니다. 다만 환자의 질환 상태, 치료 목적 및 치료 단계에 따라 의료진의 판단 하에 적절한 대체 치료전략 또는 대체 의약품을 고려할 수 있습니다. 따라서 환자에 미치는 영향은 개별 환자의 임상적 상황에 따라 다를 수 있으며, 치료 연속성 유지를 위해 의료진의 적절한 검토 및 처방 조정이 필요할 수 있습니다.",
           "normalization_plan": "당사는 제조원과의 긴밀한 협의를 통해 생산 및 수입 일정을 최적화하여 국내 공급 정상화 시점을 최대한 앞당기고자 합니다. 또한 의료기관 및 유통업체와 지속적으로 소통하여 환자 치료의 연속성 유지와 시장 안정화에 만전을 기할 예정입니다.",
-          "normalization_expected_date": "20270701"
+          "normalization_expected_date": "20281231"
         },
         {
           "report_date": "20260807",
@@ -1324,7 +1324,7 @@
       "name": "약가기준정보조회서비스",
       "source_url": "https://www.data.go.kr/data/15054445/openapi.do",
       "status": "ok",
-      "checked_at": "2026-10-07T18:04:58.233393+09:00",
+      "checked_at": "2026-10-08T18:04:54.155708+09:00",
       "records": [],
       "http_status": 200,
       "key_variant_used": 1,
@@ -1337,7 +1337,7 @@
       "name": "통계로 보는 암",
       "source_url": "https://edu.cancer.go.kr/lay1/S1T654C656/contents.do",
       "status": "ok",
-      "checked_at": "2026-10-07T18:04:58.327259+09:00",
+      "checked_at": "2026-10-08T18:04:54.264227+09:00",
       "latest_year": 2023,
       "note": "국가암정보센터 공식 통계 페이지 원문을 기준으로 연결합니다. 수치는 원문 표를 우선 확인합니다.",
       "page_title": "홈 >통계로 보는 암>유병률>암종별 암유병률",
@@ -1572,7 +1572,7 @@
       "name": "암환자 생활백서",
       "source_url": "https://cancer.go.kr/lay1/S1T523C850/contents.do",
       "status": "ok",
-      "checked_at": "2026-10-07T18:05:00.546724+09:00",
+      "checked_at": "2026-10-08T18:04:56.415941+09:00",
       "latest_year": null,
       "note": "국가암정보센터 원문을 직접 연결하며, ApuDa에서는 원문을 변형 복제하지 않습니다.",
       "page_title": "홈 >암정보 나눔터>국가암지식정보센터 OPEN API"
