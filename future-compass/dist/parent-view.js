@@ -312,7 +312,7 @@
     if (b.dataset.pvSoftUse) { sendCheer(b.dataset.pvSoftUse); return; }
     if (b.dataset.pvSoftKeep) { sendCheer(b.dataset.pvSoftKeep); return; }
     if (b.dataset.pvCopy) { try { navigator.clipboard.writeText(b.dataset.pvCopy).then(function () { notice('복사했어요. 말로 건네도 좋아요.'); }); } catch (er) { notice(b.dataset.pvCopy); } return; }
-    if (b.dataset.pvReq) { var pr = b.dataset.pvReq.split('|'), v1 = mom(); v1.reqs = (v1.reqs || []).filter(function (r) { return Date.now() - r.at < 10 * 86400000; }); v1.reqs.push({ id: Math.random().toString(36).slice(2, 10), at: Date.now(), kind: pr[0], ref: pr[1], label: pr.slice(2).join('|') }); saveMom(v1); notice('승준이 화면에 확인 요청을 띄웠어요. 직접 고치지 않아도 돼요.'); render(); return; }
+    if (b.dataset.pvReq) { var pr = b.dataset.pvReq.split('|'), v1 = mom(); v1.reqs = (v1.reqs || []).filter(function (r) { return Date.now() - r.at < 10 * 86400000; }); v1.reqs.push({ id: Math.random().toString(36).slice(2, 10), at: Date.now(), kind: pr[0], ref: pr[1], label: pr.slice(2).join('|') }); saveMom(v1); if (window.FC_PUSH) FC_PUSH.notify('child', 'cheer', '📮 엄마가 물어봤어', pr.slice(2).join('|') + (pr[0] === 'range' ? ' 범위' : '') + ' 나왔어? 나왔으면 입력해둘까?'); notice('승준이 화면에 확인 요청을 띄웠어요. 직접 고치지 않아도 돼요.'); render(); return; }
     if (b.dataset.pvReqSeen) { var sn = ls('fc-req-seen', {}) || {}; sn[b.dataset.pvReqSeen] = 1; try { localStorage.setItem('fc-req-seen', JSON.stringify(sn)); } catch (er) {} b.closest('.pv-req-line').remove(); return; }
     if (b.dataset.pvDel) { var v0 = mom(); v0.items = v0.items.filter(function (x) { return x.id !== b.dataset.pvDel; }); saveMom(v0); render(); return; }
     if (b.dataset.pvSeen) { try { localStorage.setItem('fc-cheer-seen', b.dataset.pvSeen); } catch (er) {} b.closest('.pv-cheer-line').remove(); }
@@ -334,6 +334,7 @@
     a.push(item);
     try { localStorage.setItem(CHEER, JSON.stringify(a.slice(-20))); } catch (er) {}
     if (typeof FamilySync !== 'undefined' && FamilySync.pushNow) FamilySync.pushNow();
+    if (!focusing && window.FC_PUSH) FC_PUSH.notify('child', 'cheer', '💌 엄마', msg);
     notice(focusing ? '집중이 끝나면 승준이 화면에 떠요 💌' : '응원을 보냈어요. 승준이 화면에 떠요 💌'); render();
   }
   function softBox(orig, sf) {
