@@ -21,7 +21,7 @@ chmod 600 "$work/key" "$work/known_hosts"
 tar -czf "$work/site.tgz" -C future-compass/dist .
 tar -czf "$work/auth.tgz" -C future-compass/auth .
 tar -czf "$work/live.tgz" -C future-compass/live .
-printf 'FC_LIVE_SECRET=%s\nANTHROPIC_API_KEY=%s\n' "${FC_LIVE_SECRET:-}" "${ANTHROPIC_API_KEY:-}" > "$work/live.env"
+printf 'FC_LIVE_SECRET=%s\nANTHROPIC_API_KEY=%s\nOPENAI_API_KEY=%s\nFC_CHAT_PROVIDER=%s\nFC_OPENAI_MODEL=%s\n' "${FC_LIVE_SECRET:-}" "${ANTHROPIC_API_KEY:-}" "${OPENAI_API_KEY:-}" "${FC_CHAT_PROVIDER:-}" "${FC_OPENAI_MODEL:-}" > "$work/live.env"
 chmod 600 "$work/live.env"
 trap 'echo "::error::deploy-vps.sh failed at line $LINENO"' ERR
 cp future-compass/ops/compose.yaml future-compass/ops/Caddyfile "$work/"

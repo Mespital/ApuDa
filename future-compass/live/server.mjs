@@ -7,12 +7,11 @@
 // 의존성 없음 (Node 20+)
 import http from 'node:http';
 import { createHmac, timingSafeEqual, createPublicKey, verify as edVerify } from 'node:crypto';
-import { buildPayload, askClaude, validQuestion } from './shiro.mjs';
+import { buildPayload, askAI, hasAI, validQuestion } from './shiro.mjs';
 
 const PORT = Number(process.env.PORT || 8093);
 const SECRET = process.env.FC_LIVE_SECRET || '';
-const API_KEY = process.env.ANTHROPIC_API_KEY || '';
-const MODEL = process.env.FC_CHAT_MODEL || '';
+const API_KEY = hasAI(process.env);
 const ORIGINS = (process.env.ALLOWED_ORIGINS || 'https://future.apuda.app').split(',').map(s => s.trim()).filter(Boolean);
 // 티켓 확인: ① FC_LIVE_SECRET(선택, HMAC) 또는 ② Netlify가 만든 ed25519 공개키(자동으로 가져옴 → 비밀값 필요 없음)
 const KEY_URL = process.env.FC_KEY_URL || 'https://future.apuda.app/api/family';
@@ -93,7 +92,7 @@ const server = http.createServer(async (req, res) => {
     if (!validQuestion(b.q)) return send(res, 400, { error: 'bad_q' });
     if (limited('c', 60, 3600000) || limited('cd', 300, 86400000)) return send(res, 429, { error: 'rate' });
     try {
-      const text = await askClaude({ apiKey: API_KEY, model: MODEL, payload: buildPayload({ role: b.role === 'parent' ? 'parent' : 'child', q: b.q, history: b.history, ctx: b.ctx, guide: b.guide }) });
+      const text = await askAI(process.env, buildPayload({ role: b.role === 'parent' ? 'parent' : 'child', q: b.q, history: b.history, ctx: b.ctx, guide: b.guide }));
       return send(res, 200, { ok: true, text });
     } catch (e) { return send(res, 502, { error: 'ai', status: e.status || 0 }); }
   }

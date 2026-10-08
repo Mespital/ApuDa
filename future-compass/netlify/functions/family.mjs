@@ -22,7 +22,7 @@ async function liveHealth(store, url) {
   try { const r = await fetch(url + '/health', { signal: AbortSignal.timeout(2500) }); const j = await r.json(); ok = r.ok && j.ok === true && j.keyed !== false; ai = !!j.ai; } catch {}
   const n = { url, ok, ai, at: Date.now() }; await store.setJSON('live-health', n); return n;
 }
-import { buildPayload, askClaude, validQuestion } from '../../live/shiro.mjs';
+import { buildPayload, askAI, validQuestion } from '../../live/shiro.mjs';
 
 export const KEYS = ['compass-study-v1', 'compass-study-plus-v1', 'fc_academy_v1', 'fc_teachers_v1', 'fc_offdays_v1', 'fc_preview_v1',
   'fc_hub_posts', 'compass-know-me-v1', 'compass-career-lab', 'compass-career-depth', 'future-compass-v2', 'fc_school_class', 'fc_places_v1', 'fc_avatar_v1', 'fc_planner_v1', 'fc_notes_v1', 'fc_cheer_v1', 'fc_mom_v1', 'fc_kid_v1', 'fc_life_v1', 'fc_av_child_v1', 'fc_av_parent_v1'];
@@ -113,7 +113,7 @@ export default async (req) => {
   // VPS 실시간 중계 티켓(24시간) + 흰둥이 똑똑 모드 사용 가능 여부
   const live = async () => {
     const url = (env('FC_LIVE_URL') || 'https://live.apuda.app').replace(/\/$/, ''), sec = env('FC_LIVE_SECRET');
-    const out = { ai: !!env('ANTHROPIC_API_KEY') };
+    const out = { ai: !!(env('ANTHROPIC_API_KEY') || env('OPENAI_API_KEY')) };
     if (!/^https:\/\//.test(url) || env('FC_LIVE_OFF')) return out;
     const h = await liveHealth(store, url); if (!h.ok) return out;
     const exp = now + 86400000; out.url = url; out.ai = out.ai || h.ai;
@@ -126,13 +126,13 @@ export default async (req) => {
 
   // 흰둥이 똑똑 모드 (Netlify에서 바로: ANTHROPIC_API_KEY 가 Netlify 환경변수에 있을 때)
   if (b.action === 'chat') {
-    const key = env('ANTHROPIC_API_KEY'); if (!key) return json({ error: 'no_ai' }, 503);
+    if (!env('ANTHROPIC_API_KEY') && !env('OPENAI_API_KEY')) return json({ error: 'no_ai' }, 503);
     if (!validQuestion(b.q)) return json({ error: 'bad_q' }, 400);
     const log = ((await store.get('chat-rate', { type: 'json' })) || []).filter(t => now - t < 86400000);
     if (log.filter(t => now - t < 3600000).length >= 60 || log.length >= 300) return json({ error: 'rate' }, 429);
     await store.setJSON('chat-rate', [...log, now]);
     try {
-      const text = await askClaude({ apiKey: key, model: env('FC_CHAT_MODEL'), payload: buildPayload({ role: b.role === 'parent' ? 'parent' : 'child', q: b.q, history: b.history, ctx: b.ctx, guide: b.guide }), timeoutMs: 20000 });
+      const E = k => env(k); const text = await askAI({ ANTHROPIC_API_KEY: E('ANTHROPIC_API_KEY'), OPENAI_API_KEY: E('OPENAI_API_KEY'), FC_CHAT_PROVIDER: E('FC_CHAT_PROVIDER'), FC_CHAT_MODEL: E('FC_CHAT_MODEL'), FC_OPENAI_MODEL: E('FC_OPENAI_MODEL') }, buildPayload({ role: b.role === 'parent' ? 'parent' : 'child', q: b.q, history: b.history, ctx: b.ctx, guide: b.guide }), 20000);
       return json({ ok: true, text });
     } catch (e) { return json({ error: 'ai', status: e.status || 0 }, 502); }
   }
