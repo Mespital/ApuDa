@@ -1,8 +1,24 @@
 {
-  "checked_at": "2026-10-08T17:17:24.954632+00:00",
-  "last_success_at": "2026-10-08T17:17:24.954632+00:00",
+  "checked_at": "2026-10-08T23:07:28.585667+00:00",
+  "last_success_at": "2026-10-08T23:07:28.585667+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "Study in The Lancet suggests AI could improve patient-physician relationships.",
+      "url": "https://blog.google/innovation-and-ai/technology/health/amie-clinical-study-lancet/",
+      "source": "Google",
+      "published_at": "2026-10-08T22:30:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "How Oracle turns days of work into minutes with ChatGPT and Codex",
+      "url": "https://openai.com/index/oracle",
+      "source": "OpenAI",
+      "published_at": "2026-10-08T16:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "Sign in quickly and securely with passkeys.",
       "url": "https://blog.google/innovation-and-ai/technology/safety-security/how-to-set-up-passkey/",
@@ -16,6 +32,14 @@
       "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/gemini-at-work/",
       "source": "Google",
       "published_at": "2026-10-08T12:05:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Pollo AI turns creative ideas into campaigns with OpenAI",
+      "url": "https://openai.com/index/pollo-ai",
+      "source": "OpenAI",
+      "published_at": "2026-10-08T12:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
     },
@@ -218,36 +242,12 @@
       "published_at": "2026-10-05T16:00:00+00:00",
       "category": "교육·생활",
       "domain": "education"
-    },
-    {
-      "title": "Gemini helps me give a voice to students who cannot write.",
-      "url": "https://blog.google/products-and-platforms/products/education/special-education-gemini/",
-      "source": "Google",
-      "published_at": "2026-10-05T16:00:00+00:00",
-      "category": "교육·생활",
-      "domain": "education"
-    },
-    {
-      "title": "Our approach to EU text provenance rules",
-      "url": "https://openai.com/index/eu-text-provenance",
-      "source": "OpenAI",
-      "published_at": "2026-10-05T15:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Building advertising for the way people use AI",
-      "url": "https://openai.com/index/new-chatgpt-ads-format-and-measurement",
-      "source": "OpenAI",
-      "published_at": "2026-10-05T10:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-08T17:17:24.954632+00:00",
+    "checked_at": "2026-10-08T23:07:28.585667+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -444,7 +444,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-08T17:17:24.954632+00:00",
+    "last_success_at": "2026-10-08T23:07:28.585667+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
