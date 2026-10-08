@@ -413,6 +413,7 @@
     } else {
       var ep2 = examPrepCard(), pc2 = root.querySelector('.wk-prep'); if (ep2 && pc2) pc2.insertAdjacentHTML('beforebegin', ep2);   // 시험 전 며칠은 예습 위에 시험 대비
     }
+    if (exEdit && !root.querySelector('.pl-examday')) root.insertAdjacentHTML('afterbegin', '<section class="card pl-examday"><span class="pl-ex-badge">📝 시험 과목 넣기</span><h2>' + dlabel(exEdit) + ' 시험</h2>' + examPicker(exEdit) + '</section>');   // 엄마 확인 요청 등에서 연 경우
     var wz = wizardCard(); if (wz) root.insertAdjacentHTML('afterbegin', wz);
     root.insertAdjacentHTML('afterbegin', heroCard());   // 맨 위: 힐링 그림 + 오늘의 핵심 (다짐은 여기 한 줄로)
     var rc = root.querySelector('.rt-card'), cc = closeCard();
