@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ApuDa Check v2.2 | 개인 맞춤 건강검진 선택 도움</title>
+  <title>ApuDa Check | 맞춤 건강검진 선택</title>
   <meta name="description" content="개인의 병력, 복약, 과거 검사, 현재 증상을 반영하는 ApuDa AI 건강검진 추천 시스템" />
   <style>
     :root{
@@ -78,34 +78,108 @@
     @media(max-width:1050px){.layout{grid-template-columns:1fr}aside{position:static;max-height:none}.nav{grid-template-columns:repeat(4,1fr)}.nav button{font-size:12px}.nav button span:last-child{display:none}.dashboard{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:720px){.topbar{align-items:flex-start}.brand{min-width:0}.brand small{display:none}.top-actions .btn{padding:8px 9px;font-size:12px}.layout{padding:12px}.hero{padding:20px;display:block}.hero-badge{margin-top:15px}.nav{grid-template-columns:repeat(3,1fr)}.grid{grid-template-columns:1fr}.col-12,.col-8,.col-6,.col-4,.col-3{grid-column:span 1}.result-grid{grid-template-columns:1fr}.dashboard{grid-template-columns:1fr 1fr}.section{padding:16px}.timeline-item{grid-template-columns:1fr}.floating-save{right:14px;bottom:14px}.top-actions{gap:5px}}
     @media print{header,aside,.section-footer,.floating-save,.notice,.hero-badge,.top-actions,.row-actions,.icon-btn{display:none!important}.layout{display:block;padding:0}.section{display:none!important;box-shadow:none;border:0}.section[data-section="results"]{display:block!important}.hero{background:white!important;color:black!important;box-shadow:none;padding:0;margin-bottom:12px}.hero p{color:#444}.result-grid{grid-template-columns:1fr 1fr}.result-box,.metric,.subcard,.timeline-item{break-inside:avoid;page-break-inside:avoid}.section[data-section="results"]{max-width:190mm;margin:0 auto;padding:0}.dashboard{grid-template-columns:repeat(2,1fr)}body{background:white}.app,main,.layout{width:100%!important;max-width:none!important}@page{size:A4 portrait;margin:12mm}}
+  
+    /* v2.3 — simple app UI */
+    body{background:#f6f8fb}
+    header{background:rgba(255,255,255,.97);box-shadow:0 1px 0 rgba(16,24,40,.06)}
+    .topbar{max-width:920px;padding:10px 16px;min-height:64px}
+    .brand{min-width:0;gap:9px}
+    .logo{width:38px;height:38px;border-radius:12px;box-shadow:none}
+    .brand strong{font-size:18px;letter-spacing:-.02em}
+    .brand small{font-size:11px}
+    .top-actions{gap:6px;align-items:center;flex-wrap:nowrap}
+    .top-actions>.btn,.more-menu>summary{min-height:40px;padding:8px 12px;border-radius:11px;font-size:13px;box-shadow:none}
+    .more-menu{position:relative}
+    .more-menu summary{list-style:none;display:flex;align-items:center;justify-content:center;min-width:42px}
+    .more-menu summary::-webkit-details-marker{display:none}
+    .menu-panel{position:absolute;right:0;top:calc(100% + 8px);z-index:80;width:180px;padding:8px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 16px 34px rgba(16,24,40,.14);display:grid;gap:4px}
+    .menu-btn{border:0;background:#fff;text-align:left;padding:10px 11px;border-radius:9px;color:var(--text);font-weight:700}
+    .menu-btn:hover{background:#f3f6fa}.menu-btn.danger{color:var(--danger)}
+    .layout{display:block;max-width:920px;margin:auto;padding:16px}
+    aside{display:none!important}
+    main{min-width:0}
+    .compact-progress{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin-bottom:10px}
+    .compact-progress-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px;font-size:13px}
+    .compact-progress-head strong{font-size:14px;color:var(--text)}
+    .compact-progress-head span{display:flex;align-items:center;gap:5px;color:var(--muted)}
+    .compact-progress-head span b{color:var(--blue);font-size:12px}
+    .compact-progress-head em{font-style:normal;color:#c1c7d0}
+    .progress{height:5px;background:#edf1f6}
+    .hero{background:#fff;color:var(--text);border:1px solid var(--line);border-radius:18px;padding:18px 20px;box-shadow:none;margin-bottom:10px;display:block}
+    .hero h1{font-size:25px;line-height:1.15;color:var(--blue);margin:0 0 5px;letter-spacing:-.03em}
+    .hero p{color:var(--muted);font-size:14px;max-width:none}
+    .hero-badge,.review-badge,.review-grid{display:none!important}
+    .notice{border-radius:13px;margin-bottom:12px;font-size:12px;padding:10px 12px}
+    .slim-notice{background:#fff9e8;border-color:#f4dda0;color:#6d5400}
+    .section{box-shadow:none;border-radius:18px;padding:20px;margin-bottom:12px}
+    .section-head{padding-bottom:12px;margin-bottom:16px;align-items:center}
+    .section h2{font-size:20px;letter-spacing:-.02em}
+    .section-head p{font-size:12px;line-height:1.45}
+    .subcard{border-radius:13px;background:#fafcff}
+    .field input,.field select,.field textarea{border-radius:10px;padding:11px}
+    .chip label{padding:8px 11px}
+    .section-footer{margin-top:18px;padding-top:14px}
+    .section-footer .btn{min-width:92px}
+    .floating-save{display:none!important}
+    footer{max-width:920px;padding:10px 16px 24px;font-size:11px}
+    @media(max-width:720px){
+      .topbar{padding:9px 12px}
+      .brand small{display:block}
+      .brand strong{font-size:17px}
+      .top-actions>.btn,.more-menu>summary{padding:7px 10px;min-height:38px}
+      .layout{padding:10px}
+      .compact-progress{border-radius:14px;padding:11px 12px}
+      .hero{padding:16px;border-radius:16px}
+      .hero h1{font-size:22px}
+      .hero p{font-size:13px}
+      .section{padding:15px;border-radius:16px}
+      .section h2{font-size:19px}
+      .section-head{display:block}
+      .section-head .status-pill{margin-top:8px}
+      .section-footer{position:sticky;bottom:0;z-index:12;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);margin:18px -15px -15px;padding:10px 15px;border-radius:0 0 16px 16px}
+      .section-footer .btn{flex:1}
+      .dashboard{grid-template-columns:1fr 1fr}
+      .result-grid{grid-template-columns:1fr}
+    }
+
   </style>
 </head>
 <body>
 <div class="app">
 <header>
   <div class="topbar">
-    <div class="brand"><div class="logo">A</div><div><strong>ApuDa</strong><small>AI 건강검진 의사결정 지원 시스템</small></div></div>
+    <div class="brand"><div class="logo">A</div><div><strong>ApuDa Check</strong><small>맞춤 건강검진 선택</small></div></div>
     <div class="top-actions">
-      <button class="btn" id="backupBtn">백업 JSON</button>
-      <button class="btn" id="restoreBtn">복원</button>
-      <input id="restoreInput" type="file" accept="application/json" hidden>
-      <button class="btn" id="fontBtn" aria-pressed="false">큰 글씨</button>
-      <button class="btn" id="reviewBtn">감수 기준</button>
-      <button class="btn" id="printBtn">결과 PDF</button>
-      <button class="btn danger" id="resetBtn">처음부터</button>
+      <button class="btn primary" id="saveBtn">저장</button>
+      <button class="btn" id="resultBtn">결과</button>
+      <details class="more-menu">
+        <summary class="btn" aria-label="더보기">⋯</summary>
+        <div class="menu-panel">
+          <button class="menu-btn" id="printBtn">결과 PDF</button>
+          <button class="menu-btn" id="backupBtn">백업</button>
+          <button class="menu-btn" id="restoreBtn">복원</button>
+          <input id="restoreInput" type="file" accept="application/json" hidden>
+          <button class="menu-btn" id="fontBtn" aria-pressed="false">큰 글씨</button>
+          <button class="menu-btn danger" id="resetBtn">처음부터</button>
+        </div>
+      </details>
     </div>
   </div>
 </header>
 
 <div class="layout">
-  <aside>
-    <div class="progress-wrap"><div class="progress-label"><span>입력 진행률</span><b id="progressText">0%</b></div><div class="progress"><div id="progressBar"></div></div></div>
-    <nav class="nav" id="sideNav"></nav>
-  </aside>
+  <aside aria-hidden="true"><nav class="nav" id="sideNav"></nav></aside>
 
   <main>
-    <section class="hero"><div><h1>나의 건강기록을 반영한<br>맞춤형 건강검진 선택 도움</h1><p>장기 건강기록(Longitudinal Health Record), 복약, 과거 이상 소견, 검사 주기와 현재 증상을 함께 분석합니다. 국가검진·추적검사·회사 선택검진을 서로 구분해서 보여줍니다.</p><span class="review-badge">다학제 전문가 30개 관점 + 연령별 사용자 30개 페르소나 가상 교차감수 반영</span></div><div class="hero-badge"><span>현재 입력 완성도</span><b id="heroProgress">0%</b><small>앱 자체 서버 전송 없음</small></div></section>
-    <div class="notice"><b>중요:</b> 이 도구는 검진 준비와 선택을 돕는 의사결정 지원 도구입니다. 증상이 있거나 과거 이상 소견의 추적이 필요한 경우에는 일반 검진 패키지보다 진료가 우선입니다. 또한 브라우저 LocalStorage는 암호화 의료기록 저장소가 아니므로 공용 PC에서는 입력 후 초기화하세요.</div>
+    <div class="compact-progress">
+      <div class="compact-progress-head">
+        <strong id="currentStepLabel">기본 정보</strong>
+        <span><b id="stepCounter">1/13</b><em>·</em><b id="progressText">0%</b></span>
+      </div>
+      <div class="progress"><div id="progressBar"></div></div>
+    </div>
+    <section class="hero"><div><h1>ApuDa Check</h1><p>내 건강기록을 바탕으로 지금 필요한 검진을 간단하게 정리합니다.</p></div></section>
+    <div class="notice slim-notice">증상이나 이전 이상 소견이 있다면 일반 검진보다 진료·추적검사가 우선입니다.</div>
 
     <section class="section active" data-section="basic"></section>
     <section class="section" data-section="lifestyle"></section>
@@ -123,16 +197,11 @@
     <section class="section" data-section="results"></section>
   </main>
 </div>
-<footer>ApuDa 아프지만, 다행이다. · 건강에 대한 정보가 가득한 곳 ApuDa 입니다. · v2.2 다학제/연령별 가상 교차감수 반영</footer>
-<button class="floating-save" id="saveBtn">저장</button>
+<footer>ApuDa 아프지만, 다행이다. · 건강에 대한 정보가 가득한 곳 ApuDa 입니다.</footer>
 <div class="toast" id="toast"></div>
 </div>
 
 <div class="modal" id="previewModal"><div class="modal-card"><div class="modal-head"><h3>업로드 자료 미리보기</h3><button class="close" data-close="previewModal">닫기</button></div><pre id="previewText" style="white-space:pre-wrap;font-size:13px"></pre></div></div>
-<div class="modal" id="reviewModal"><div class="modal-card"><div class="modal-head"><div><h3 style="margin:0">ApuDa Check 가상 교차감수 기준</h3><div class="help">실제 60명을 모집한 임상시험이 아니라, 30개 전문가 역할과 연령별 30개 사용자 페르소나를 이용한 설계 검토입니다.</div></div><button class="close" data-close="reviewModal">닫기</button></div>
-<div class="review-grid" style="margin-top:14px"><div class="subcard"><h3>전문가 30개 관점</h3><ul><li>가정의학·예방의학·건강검진</li><li>소화기·간·호흡기·심장·신경</li><li>내분비·신장·비뇨·산부인과·유방</li><li>영상의학·진단검사·약물안전·노인의학</li><li>응급·직업환경·유전·알레르기·종양</li><li>임상역학·근거중심의학·보건경제</li><li>의료정보·FHIR·개인정보·보안</li><li>UX/HCI·접근성·프론트엔드·데이터 파싱</li></ul></div><div class="subcard"><h3>연령별 사용자 30개 페르소나</h3><ul><li>20대 5명: 빠른 입력, 과잉검사 경고</li><li>30대 5명: 가족력·생활습관 중심</li><li>40대 5명: 국가암검진과 회사검진 구분</li><li>50대 5명: 추적검사·심혈관 위험 이해</li><li>60대 5명: 복약·기존질환·가독성</li><li>70세 이상 5명: 큰 글씨·44px 터치영역·단순 문장</li></ul></div></div>
-<div class="notice" style="margin-top:14px;margin-bottom:0"><b>핵심 감수 원칙:</b> 회사 검진표에 있는 검사를 의료적으로 “필수”라고 표시하지 않으며, 무증상 일반인에서 근거가 제한적인 검사(PET-CT, 종양표지자 단독검진, 일부 상업적 바이오마커·유전자검사 등)는 별도로 표시합니다.</div></div></div>
-
 <script>
 const APP_KEY='apuda_health_screening_v1';
 const sections=[
@@ -191,8 +260,9 @@ async function ensurePDFJS(){if(window.pdfjsLib)return window.pdfjsLib;const sou
 
 
 function init(){renderNav();renderAll();bindGlobal();showSection(current);updateProgress();}
-function renderNav(){q('#sideNav').innerHTML=sections.map(([id,n,label])=>`<button data-nav="${id}" class="${id===current?'active':''}"><span class="num">${n}</span><span>${label}</span></button>`).join('');qa('[data-nav]').forEach(b=>b.onclick=()=>showSection(b.dataset.nav));}
-function showSection(id){current=id;qa('.section').forEach(s=>s.classList.toggle('active',s.dataset.section===id));qa('[data-nav]').forEach(b=>b.classList.toggle('active',b.dataset.nav===id));if(id==='results')renderResults();window.scrollTo({top:0,behavior:'smooth'});}
+function renderNav(){const nav=q('#sideNav');if(!nav)return;nav.innerHTML=sections.map(([id,n,label])=>`<button data-nav="${id}" class="${id===current?'active':''}"><span class="num">${n}</span><span>${label}</span></button>`).join('');qa('[data-nav]').forEach(b=>b.onclick=()=>showSection(b.dataset.nav));}
+function updateStepUi(){const idx=sections.findIndex(x=>x[0]===current);const item=sections[idx]||sections[0];const label=q('#currentStepLabel'),counter=q('#stepCounter');if(label)label.textContent=item[2];if(counter)counter.textContent=current==='results'?'결과':`${Math.min(idx+1,13)}/13`;}
+function showSection(id){current=id;qa('.section').forEach(s=>s.classList.toggle('active',s.dataset.section===id));qa('[data-nav]').forEach(b=>b.classList.toggle('active',b.dataset.nav===id));updateStepUi();if(id==='results')renderResults();window.scrollTo({top:0,behavior:'smooth'});}
 function footer(prev,next){return `<div class="section-footer"><button class="btn" ${!prev?'disabled':''} data-go="${prev||''}">이전</button><button class="btn primary" data-go="${next||'results'}">${next?'다음':'추천 결과 보기'}</button></div>`}
 function sectionHead(title,desc,tag=''){return `<div class="section-head"><div><h2>${title}</h2><p>${desc}</p></div>${tag?`<span class="status-pill status-ok">${tag}</span>`:''}</div>`}
 function renderAll(){renderBasic();renderLifestyle();renderFamily();renderHistory();renderSurgeries();renderMeds();renderAllergies();renderScreenings();renderFindings();renderLabs();renderImaging();renderSymptoms();renderCatalog();renderResults();bindDynamic();}
@@ -307,7 +377,7 @@ function toggleArray(arr,val,checked){if(checked&&!arr.includes(val))arr.push(va
 function recalc(){const h=Number(state.profile.height),w=Number(state.profile.weight);state.profile.bmi=h&&w?(w/((h/100)**2)).toFixed(1):'';const c=Number(state.lifestyle.cigPerDay),y=Number(state.lifestyle.smokeYears);state.lifestyle.packYears=c&&y?((c/20)*y).toFixed(1):''}
 function refreshComputed(){const b=q('#bmiInput'),a=q('#ageDisplay'),bl=q('#bmiLabelDisplay'),p=q('#packYearsInput');if(b)b.value=state.profile.bmi||'';if(a)a.textContent=`${age()??'-'}세`;if(bl)bl.textContent=bmiLabel(state.profile.bmi);if(p)p.value=state.lifestyle.packYears||''}
 
-function updateProgress(){const checks=[state.profile.birth,state.profile.sex,state.profile.height,state.profile.weight,state.lifestyle.smoking,state.conditions.length||state.cancerHistory.length,state.meds.length,state.allergies.length,state.screenings.length,state.findings.length,state.labs.date||Object.values(state.labs).some(Boolean),state.imaging.length,state.symptoms.selected.length||state.symptoms.freeText];const pct=Math.round(checks.filter(Boolean).length/checks.length*100);q('#progressBar').style.width=pct+'%';q('#progressText').textContent=pct+'%';q('#heroProgress').textContent=pct+'%'}
+function updateProgress(){const checks=[state.profile.birth,state.profile.sex,state.profile.height,state.profile.weight,state.lifestyle.smoking,state.conditions.length||state.cancerHistory.length,state.meds.length,state.allergies.length,state.screenings.length,state.findings.length,state.labs.date||Object.values(state.labs).some(Boolean),state.imaging.length,state.symptoms.selected.length||state.symptoms.freeText];const pct=Math.round(checks.filter(Boolean).length/checks.length*100);const bar=q('#progressBar'),txt=q('#progressText');if(bar)bar.style.width=pct+'%';if(txt)txt.textContent=pct+'%';updateStepUi()}
 
 
 async function unzipXlsxEntries(buffer){const bytes=new Uint8Array(buffer),view=new DataView(buffer);let eocd=-1;for(let i=bytes.length-22;i>=Math.max(0,bytes.length-65557);i--){if(view.getUint32(i,true)===0x06054b50){eocd=i;break}}if(eocd<0)throw new Error('유효한 XLSX 압축 구조를 찾지 못했습니다.');const total=view.getUint16(eocd+10,true),centralOffset=view.getUint32(eocd+16,true);let pos=centralOffset;const entries={};for(let i=0;i<total;i++){if(view.getUint32(pos,true)!==0x02014b50)throw new Error('XLSX 중앙 디렉터리가 손상되었습니다.');const method=view.getUint16(pos+10,true),compSize=view.getUint32(pos+20,true),nameLen=view.getUint16(pos+28,true),extraLen=view.getUint16(pos+30,true),commentLen=view.getUint16(pos+32,true),localOffset=view.getUint32(pos+42,true);const name=new TextDecoder('utf-8').decode(bytes.slice(pos+46,pos+46+nameLen));if(view.getUint32(localOffset,true)!==0x04034b50)throw new Error('XLSX 내부 파일 헤더가 손상되었습니다.');const localNameLen=view.getUint16(localOffset+26,true),localExtraLen=view.getUint16(localOffset+28,true),dataStart=localOffset+30+localNameLen+localExtraLen;const compressed=bytes.slice(dataStart,dataStart+compSize);let data;if(method===0){data=compressed}else if(method===8){if(typeof DecompressionStream==='undefined')throw new Error('이 브라우저는 오프라인 XLSX 압축 해제를 지원하지 않습니다.');const stream=new Blob([compressed]).stream().pipeThrough(new DecompressionStream('deflate-raw'));data=new Uint8Array(await new Response(stream).arrayBuffer())}else{throw new Error(`지원하지 않는 XLSX 압축 방식입니다(${method}).`)}entries[name]=data;pos+=46+nameLen+extraLen+commentLen}return entries}
@@ -735,7 +805,7 @@ function openPrintReport(){
   }
   setTimeout(()=>URL.revokeObjectURL(url),120000);
 }
-function bindGlobal(){q('#saveBtn').onclick=()=>saveState(true);q('#backupBtn').onclick=backup;q('#restoreBtn').onclick=()=>q('#restoreInput').click();q('#restoreInput').onchange=restore;q('#printBtn').onclick=()=>{showSection('results');setTimeout(()=>openPrintReport(),200)};q('#reviewBtn').onclick=()=>q('#reviewModal').classList.add('open');const fontBtn=q('#fontBtn');const fontKey='apuda_large_text';const applyFont=()=>{let large=false;try{large=localStorage.getItem(fontKey)==='1'}catch(e){}document.body.classList.toggle('large-text',large);fontBtn.setAttribute('aria-pressed',large?'true':'false');fontBtn.textContent=large?'기본 글씨':'큰 글씨'};fontBtn.onclick=()=>{const next=!document.body.classList.contains('large-text');try{localStorage.setItem(fontKey,next?'1':'0')}catch(e){}applyFont()};applyFont();q('#resetBtn').onclick=()=>{if(confirm('이 브라우저에 저장된 모든 입력을 삭제할까요?')){try{localStorage.removeItem(APP_KEY)}catch(e){}state=clone(defaults);current='basic';renderAll();renderNav();showSection('basic');toast('초기화했습니다.')}};qa('[data-close]').forEach(b=>b.onclick=()=>q('#'+b.dataset.close).classList.remove('open'));window.addEventListener('beforeunload',()=>saveState(false));}
+function bindGlobal(){q('#saveBtn').onclick=()=>saveState(true);q('#resultBtn').onclick=()=>{saveState(false);showSection('results')};q('#backupBtn').onclick=backup;q('#restoreBtn').onclick=()=>q('#restoreInput').click();q('#restoreInput').onchange=restore;q('#printBtn').onclick=()=>{showSection('results');setTimeout(()=>openPrintReport(),200)};const fontBtn=q('#fontBtn');const fontKey='apuda_large_text';const applyFont=()=>{let large=false;try{large=localStorage.getItem(fontKey)==='1'}catch(e){}document.body.classList.toggle('large-text',large);fontBtn.setAttribute('aria-pressed',large?'true':'false');fontBtn.textContent=large?'기본 글씨':'큰 글씨'};fontBtn.onclick=()=>{const next=!document.body.classList.contains('large-text');try{localStorage.setItem(fontKey,next?'1':'0')}catch(e){}applyFont()};applyFont();q('#resetBtn').onclick=()=>{if(confirm('이 브라우저에 저장된 모든 입력을 삭제할까요?')){try{localStorage.removeItem(APP_KEY)}catch(e){}state=clone(defaults);current='basic';renderAll();renderNav();showSection('basic');toast('초기화했습니다.')}};qa('[data-close]').forEach(b=>b.onclick=()=>q('#'+b.dataset.close).classList.remove('open'));window.addEventListener('beforeunload',()=>saveState(false));}
 function backup(){saveState(false);const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`ApuDa_건강검진_백업_${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(a.href)}
 async function restore(e){const file=e.target.files[0];if(!file)return;try{state=Object.assign(clone(defaults),JSON.parse(await file.text()));saveState(false);renderAll();showSection('basic');toast('백업 데이터를 복원했습니다.')}catch(err){alert('복원할 수 없는 파일입니다.')}}
 init();
