@@ -63,8 +63,11 @@
   function momCard() {
     var t = today(), v = mom(), ck = v.checks[t] || {}, auto = autoChecks();
     var items = v.items.filter(function (x) { return !x.done || x.doneAt === t; }).sort(function (a, b) { return (a.done - b.done) || String(a.due || '9').localeCompare(String(b.due || '9')); });
-    var left = auto.filter(function (x) { return !ck[x.k]; }).length + items.filter(function (x) { return !x.done; }).length;
+    var kidAsk = ((ls('fc_kid_v1', {}) || {}).asks || []).filter(function (a) { return !a.hide && Date.now() - a.at < 7 * 86400000 && !(v.asksDone || {})[a.id]; }).length;
+    var left = auto.filter(function (x) { return !ck[x.k]; }).length + items.filter(function (x) { return !x.done; }).length + kidAsk;
     var h = '<section class="card pv-sec pv-mom"><div class="pl-head"><h2>🤝 오늘 도와줄 것</h2><span class="pl-count">' + (left ? left + '개' : '다 챙겼어요 👏') + '</span></div>';
+    var kid = ls('fc_kid_v1', {}) || {}, asks = (kid.asks || []).filter(function (a) { return !a.hide && Date.now() - a.at < 7 * 86400000; }), ad = v.asksDone || {};
+    if (asks.length) h += '<p class="pv-rocks-h">🙋 승준이 부탁</p><ul class="pv-mlist">' + asks.slice(-5).reverse().map(function (a) { var on = !!ad[a.id]; return '<li class="' + (on ? 'done' : '') + '"><label><input type="checkbox" data-pv-ask="' + esc(a.id) + '"' + (on ? ' checked' : '') + '><span class="pv-mi">🙋</span><span><b>' + esc(a.msg) + '</b><small>' + ago(a.at) + (on ? ' · 확인했다고 승준이에게 보여요' : ' · 체크하면 "엄마 확인 ✓"로 보여요') + '</small></span></label></li>'; }).join('') + '</ul><p class="pv-rocks-h">자동으로 챙길 것</p>';
     h += (auto.length ? '<ul class="pv-mlist">' + auto.map(function (x) {
       var on = !!ck[x.k];
       return '<li class="' + (on ? 'done' : '') + '"><label><input type="checkbox" data-pv-ck="' + esc(x.k) + '"' + (on ? ' checked' : '') + '><span class="pv-mi">' + x.icon + '</span><span><b>' + esc(x.t) + '</b><small>' + esc(x.sub) + '</small></span></label>' + (x.req ? reqBtn(x.req) : '') + '</li>';
@@ -105,6 +108,8 @@
     var nx = FP ? FP.nextExamDay(addD(t, -1)) : '', exToday = FP ? FP.examName(t) : '';
     var tomorrowExam = (FP && FP.examName(addD(t, 1))) || state.dates.some(function (x) { return !x.done && x.kind === '시험' && gap(x.date) === 1; });
     var dueSoon = state.dates.filter(function (x) { return !x.done && x.kind !== '시험' && gap(x.date) >= 0 && gap(x.date) <= 1; })[0];
+    var mood = ((ls('fc_kid_v1', {}) || {}).mood || {})[t];
+    if (mood === 'tired') return { lv: 'g', icon: '🟢', title: '쉬어가는 날', msg: '승준이가 오늘은 지친 날이라고 알려줬어요. 공부 이야기는 쉬어도 괜찮아요.', one: '맛있는 거 하나, 조용한 시간 하나면 충분해요.', ask: '오늘은 공부보다 네가 괜찮은지가 더 중요해.' };
     if (tomorrowExam) return { lv: 'y', icon: '🟡', title: '가볍게 도와주면 좋은 날', msg: '내일 시험이에요. 공부량보다 수면·준비물이 더 중요해요.', one: '저녁 일정을 가볍게 하고, 준비물만 같이 확인해 주세요.', ask: '오늘은 새로운 것보다 본 것만 정리하고 일찍 자자.' };
     if (nx && nx !== t && gap(nx) <= 7 && !((P.examDays || {})[nx] || []).length) return { lv: 'y', icon: '🟡', title: '가볍게 확인해 주세요', msg: dl(nx) + ' 시험 과목이 아직 입력되지 않았어요. 공부 여부보다 시험 시간표가 나왔는지만 물어봐 주세요.', one: '시험 과목만 확인해 주세요.', ask: '시험 시간표 나왔어? 나오면 앱에 같이 넣어두자.' };
     if (dueSoon) return { lv: 'y', icon: '🟡', title: '가볍게 확인해 주세요', msg: dueSoon.title + ' 마감이 ' + (gap(dueSoon.date) ? '내일' : '오늘') + '이에요.', one: '필요한 준비물·출력물이 있는지만 물어봐 주세요.', ask: '내일 낼 거 준비할 거 있어? 필요한 거 있으면 말해.' };
@@ -270,7 +275,7 @@
       '<p class="pv-rocks-h">자주 쓰는 말</p><div class="pl-chips">' +
       ['오늘도 화이팅! 💪', '시험 잘 봐 🍀', '오늘 정말 수고했어 🌙', '집중하는 모습 멋지다 👏', '간식 준비해둘게 🍓'].map(function (m) { return '<button type="button" data-pv-cheer="' + esc(m) + '">' + esc(m) + '</button>'; }).join('') + '</div>' +
       '<form data-pv-cheer-form class="pv-add pv-cheer-form"><input name="m" maxlength="40" placeholder="직접 써서 보내기 (예: 오늘 저녁 치킨이다 🍗)" aria-label="응원 메시지"><button class="primary">보내기</button></form>' +
-      (ch ? '<p class="muted small">마지막 응원: ' + esc(ch.msg) + ' · ' + ago(ch.at) + '</p>' : '') + '</section>';
+      (ch ? '<p class="muted small">마지막 응원: ' + esc(ch.msg) + ' · ' + ago(ch.at) + (function () { var r = ((ls('fc_kid_v1', {}) || {}).replies || []).filter(function (x) { return x.to === ch.at; }).slice(-1)[0]; return r ? '<br><b class="pv-reply">승준이 답장: ' + esc(r.msg) + '</b> · ' + ago(r.at) : ''; })() + '</p>' : '') + '</section>';
     h += coachCard();
     h += '<p class="pv-foot">숫자는 승준이 기록 기준이에요. 대화는 "했어?"보다 "오늘 어땠어?"가 더 좋아요.</p>';
     return h;
@@ -315,6 +320,7 @@
 
   document.addEventListener('change', function (e) {
     var el = e.target, v = mom(), t = today();
+    if (el.dataset && el.dataset.pvAsk) { v.asksDone = v.asksDone || {}; if (el.checked) v.asksDone[el.dataset.pvAsk] = Date.now(); else delete v.asksDone[el.dataset.pvAsk]; saveMom(v); setTimeout(render, 250); }
     if (el.dataset && el.dataset.pvCk) { var c = v.checks[t] || (v.checks[t] = {}); if (el.checked) c[el.dataset.pvCk] = 1; else delete c[el.dataset.pvCk]; saveMom(v); setTimeout(render, 250); }
     if (el.dataset && el.dataset.pvItem) { v.items.forEach(function (x) { if (x.id === el.dataset.pvItem) { x.done = el.checked; x.doneAt = el.checked ? t : ''; } }); saveMom(v); setTimeout(render, 250); }
   });
@@ -356,7 +362,7 @@
     '.pv-tip{background:#fff7fb!important}.pv-tip-q{font-size:15px;font-weight:700;margin:0 0 4px;line-height:1.5}' +
     '.pv-rec{list-style:none;margin:0 0 6px;padding:0;display:grid;gap:8px}.pv-rec li{display:grid;gap:3px}.pv-rec button{text-align:left;min-height:42px!important;font-weight:700;border-radius:12px!important;background:#fff!important}.pv-rec small{font-size:11.5px;color:#8a879a;padding-left:4px}' +
     '.pv-focusing{background:#fff7e8;border-radius:10px;padding:8px 10px;font-size:13px;margin:0 0 8px}.pv-soft{margin-top:8px;background:#f4f0ff;border-radius:12px;padding:10px 12px}.pv-soft p{margin:0 0 4px;font-size:13px}.pv-soft q{display:block;font-weight:700;margin-bottom:8px}' +
-    '.pv-coach-a{margin-top:10px}.pv-coach-a>p{font-size:14px;margin:0 0 8px;line-height:1.55}' +
+    '.pv-reply{color:#5b45d6}.pv-coach-a{margin-top:10px}.pv-coach-a>p{font-size:14px;margin:0 0 8px;line-height:1.55}' +
     '.pv-mom{background:linear-gradient(135deg,#fffaf0,#fff)!important;box-shadow:0 0 0 1.5px #f3dfb8!important}.pv-mlist{list-style:none;margin:0;padding:0;display:grid;gap:4px}.pv-mlist li{display:flex;align-items:center;gap:6px;border-bottom:1px solid #f3f0e8;padding:6px 0}.pv-mlist li:last-child{border-bottom:0}.pv-mlist label{flex:1;display:flex!important;align-items:center;gap:8px;margin:0!important;font-weight:500!important;cursor:pointer}.pv-mlist input{width:22px;min-height:22px;flex:none}.pv-mlist span:last-child{display:grid}.pv-mlist b{font-size:14.5px;font-weight:600}.pv-mlist small{font-size:12px;color:#8a879a}.pv-mlist li.done b{text-decoration:line-through;color:#a3a0b2}.pv-mi{flex:none;font-size:16px}.pv-add{display:grid;grid-template-columns:1fr 130px auto;gap:6px;margin-top:8px}.pv-cheer-form{grid-template-columns:1fr auto!important}.pv-add input{min-height:42px!important;font-size:14px}@media(max-width:420px){.pv-add{grid-template-columns:1fr 1fr}.pv-add button{grid-column:1/-1}}' +
     '.pv-head{display:flex;align-items:center;gap:12px;margin:4px 0 12px}.pv-head h1{font-size:23px;margin:0;font-weight:800}.pv-head p{margin:2px 0 0;color:#7d7a8c;font-size:13px}' +
     '.pv-sec h2{font-size:16px!important;margin:0 0 10px!important}.pv-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.pv-tile{background:#f7f6fb;border-radius:14px;padding:10px 8px;display:grid;gap:2px;align-content:start;min-height:92px}.pv-tile span{font-size:16px}.pv-tile b{font-size:19px;font-weight:800}.pv-tile em{font-style:normal;font-size:12px;color:#6b6880}.pv-tile small{font-size:11px;color:#8a879a;line-height:1.3}' +

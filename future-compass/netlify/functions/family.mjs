@@ -7,7 +7,7 @@ import { getStore } from '@netlify/blobs';
 import { scryptSync, randomBytes, createHash, timingSafeEqual } from 'node:crypto';
 
 export const KEYS = ['compass-study-v1', 'compass-study-plus-v1', 'fc_academy_v1', 'fc_teachers_v1', 'fc_offdays_v1', 'fc_preview_v1',
-  'fc_hub_posts', 'compass-know-me-v1', 'compass-career-lab', 'compass-career-depth', 'future-compass-v2', 'fc_school_class', 'fc_places_v1', 'fc_avatar_v1', 'fc_planner_v1', 'fc_notes_v1', 'fc_cheer_v1', 'fc_mom_v1'];
+  'fc_hub_posts', 'compass-know-me-v1', 'compass-career-lab', 'compass-career-depth', 'future-compass-v2', 'fc_school_class', 'fc_places_v1', 'fc_avatar_v1', 'fc_planner_v1', 'fc_notes_v1', 'fc_cheer_v1', 'fc_mom_v1', 'fc_kid_v1'];
 const MAX_VALUE = 400000, MAX_TOTAL = 3000000, FAIL_LIMIT = 10, FAIL_WINDOW = 15 * 60000;
 const env = k => (globalThis.Netlify?.env?.get(k) || process.env[k] || '').trim();
 const json = (body, status = 200) => new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' } });
