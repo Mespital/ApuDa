@@ -40,6 +40,7 @@ printf "live relay: %s\n" "${live_out:0:400}" | tr -d "\r" | sed "s/^/::notice::
 H="${FUTURE_LIVE_HOST:-live.apuda.app}"
 [[ "$H" =~ ^[a-z0-9.-]+\.[a-z]{2,}$ ]] || exit 2
 ssh "${ssh_opts[@]}" "$VPS_USER@$VPS_HOST" "set -u; H='$H'; F=/etc/caddy/Caddyfile
+  echo \"live health: \$(curl -s -m 5 http://127.0.0.1:8093/health || docker logs --tail 3 future-compass-live-1 2>&1 | tr '\\n' ' ')\"
   mine=\$( (hostname -I 2>/dev/null; getent ahostsv4 ai.apuda.app | awk '{print \$1}') | tr ' ' '\n' | sort -u)
   his=\$(getent ahostsv4 \$H | awk '{print \$1}' | sort -u)
   if [ -z \"\$his\" ] || ! printf '%s\n' \"\$his\" | grep -qxF -f <(printf '%s\n' \"\$mine\"); then echo \"live: DNS \$H not pointing here yet (\${his:-none})\"; exit 0; fi
