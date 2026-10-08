@@ -67,7 +67,7 @@
     var left = auto.filter(function (x) { return !ck[x.k]; }).length + items.filter(function (x) { return !x.done; }).length + kidAsk;
     var h = '<section class="card pv-sec pv-mom"><div class="pl-head"><h2>🤝 오늘 도와줄 것</h2><span class="pl-count">' + (left ? left + '개' : '다 챙겼어요 👏') + '</span></div>';
     var kid = ls('fc_kid_v1', {}) || {}, asks = (kid.asks || []).filter(function (a) { return !a.hide && Date.now() - a.at < 7 * 86400000; }), ad = v.asksDone || {};
-    if (asks.length) h += '<p class="pv-rocks-h">🙋 승준이 부탁</p><ul class="pv-mlist">' + asks.slice(-5).reverse().map(function (a) { var on = !!ad[a.id]; return '<li class="' + (on ? 'done' : '') + '"><label><input type="checkbox" data-pv-ask="' + esc(a.id) + '"' + (on ? ' checked' : '') + '><span class="pv-mi">🙋</span><span><b>' + esc(a.msg) + '</b><small>' + ago(a.at) + (on ? ' · 확인했다고 승준이에게 보여요' : ' · 체크하면 "엄마 확인 ✓"로 보여요') + '</small></span></label></li>'; }).join('') + '</ul><p class="pv-rocks-h">자동으로 챙길 것</p>';
+    if (asks.length) h += '<p class="pv-rocks-h">💌 승준이가 보낸 말</p><ul class="pv-mlist">' + asks.slice(-5).reverse().map(function (a) { var on = !!ad[a.id]; return '<li class="' + (on ? 'done' : '') + '"><label><input type="checkbox" data-pv-ask="' + esc(a.id) + '"' + (on ? ' checked' : '') + '><span class="pv-mi">💌</span><span><b>' + esc(a.msg) + '</b><small>' + ago(a.at) + (on ? ' · 승준이에게 "엄마가 봤어 💜"로 보여요' : ' · 체크하면 승준이에게 "엄마가 봤어 💜"로 보여요') + '</small></span></label></li>'; }).join('') + '</ul><p class="pv-rocks-h">자동으로 챙길 것</p>';
     h += (auto.length ? '<ul class="pv-mlist">' + auto.map(function (x) {
       var on = !!ck[x.k];
       return '<li class="' + (on ? 'done' : '') + '"><label><input type="checkbox" data-pv-ck="' + esc(x.k) + '"' + (on ? ' checked' : '') + '><span class="pv-mi">' + x.icon + '</span><span><b>' + esc(x.t) + '</b><small>' + esc(x.sub) + '</small></span></label>' + (x.req ? reqBtn(x.req) : '') + '</li>';
@@ -94,9 +94,9 @@
   function childReqLines() {
     var seen = ls('fc-req-seen', {}) || {};
     return reqs().filter(function (r) { return reqOpen(r) && !seen[r.id]; }).map(function (r) {
-      return '<div class="pv-req-line"><span>📮 엄마가 물어봤어: <b>' + esc(r.label) + (r.kind === 'range' ? ' 범위' : '') + '</b> 나왔어? 나왔으면 입력해둘까?</span><div>' +
+      return '<div class="pv-req-line"><span>💜 엄마가 시험 준비 도와주려고 해. <b>' + esc(r.label) + (r.kind === 'range' ? ' 범위' : '') + '</b> 나오면 넣어줘 — 같이 챙겨줄게.</span><div>' +
         (r.kind === 'subjects' ? '<button type="button" class="primary" data-pl-ex-edit="' + esc(r.ref) + '">입력하기</button>' : '<button type="button" class="primary" data-go="dates">입력하러 가기</button>') +
-        '<button type="button" data-pv-req-seen="' + esc(r.id) + '">나중에</button></div></div>';
+        '<button type="button" data-pv-req-seen="' + esc(r.id) + '">아직 안 나왔어</button></div></div>';
     }).join('');
   }
 
@@ -312,7 +312,7 @@
     if (b.dataset.pvSoftUse) { sendCheer(b.dataset.pvSoftUse); return; }
     if (b.dataset.pvSoftKeep) { sendCheer(b.dataset.pvSoftKeep); return; }
     if (b.dataset.pvCopy) { try { navigator.clipboard.writeText(b.dataset.pvCopy).then(function () { notice('복사했어요. 말로 건네도 좋아요.'); }); } catch (er) { notice(b.dataset.pvCopy); } return; }
-    if (b.dataset.pvReq) { var pr = b.dataset.pvReq.split('|'), v1 = mom(); v1.reqs = (v1.reqs || []).filter(function (r) { return Date.now() - r.at < 10 * 86400000; }); v1.reqs.push({ id: Math.random().toString(36).slice(2, 10), at: Date.now(), kind: pr[0], ref: pr[1], label: pr.slice(2).join('|') }); saveMom(v1); if (window.FC_PUSH) FC_PUSH.notify('child', 'cheer', '📮 엄마가 물어봤어', pr.slice(2).join('|') + (pr[0] === 'range' ? ' 범위' : '') + ' 나왔어? 나왔으면 입력해둘까?'); notice('승준이 화면에 확인 요청을 띄웠어요. 직접 고치지 않아도 돼요.'); render(); return; }
+    if (b.dataset.pvReq) { var pr = b.dataset.pvReq.split('|'), v1 = mom(); v1.reqs = (v1.reqs || []).filter(function (r) { return Date.now() - r.at < 10 * 86400000; }); v1.reqs.push({ id: Math.random().toString(36).slice(2, 10), at: Date.now(), kind: pr[0], ref: pr[1], label: pr.slice(2).join('|') }); saveMom(v1); if (window.FC_PUSH) FC_PUSH.notify('child', 'cheer', '💜 엄마가 도와줄게', pr.slice(2).join('|') + (pr[0] === 'range' ? ' 범위' : '') + ' 나오면 넣어줘. 같이 챙겨줄게'); notice('승준이 화면에 "엄마가 도와줄게"로 부드럽게 보여요.'); render(); return; }
     if (b.dataset.pvReqSeen) { var sn = ls('fc-req-seen', {}) || {}; sn[b.dataset.pvReqSeen] = 1; try { localStorage.setItem('fc-req-seen', JSON.stringify(sn)); } catch (er) {} b.closest('.pv-req-line').remove(); return; }
     if (b.dataset.pvDel) { var v0 = mom(); v0.items = v0.items.filter(function (x) { return x.id !== b.dataset.pvDel; }); saveMom(v0); render(); return; }
     if (b.dataset.pvSeen) { try { localStorage.setItem('fc-cheer-seen', b.dataset.pvSeen); } catch (er) {} b.closest('.pv-cheer-line').remove(); }
