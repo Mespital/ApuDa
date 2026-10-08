@@ -47,6 +47,7 @@
     return api({ action: 'push', token: f.token, changes: ch }).then(function (j) {
       pushing = false;
       if (j.error === 'rejoin') { rejoin(); return; }
+      if (j._ok) liveNotify(Object.keys(ch));
       if (!j._ok) { var meta = obj(META) || {}; Object.keys(ch).forEach(function (k) { if (meta[k]) meta[k].h = 'retry'; }); set(META, JSON.stringify(meta)); }   // 다음에 다시 보냄
     });
   }
@@ -62,6 +63,7 @@
     var f = fam(); if (!f) return Promise.resolve(0);
     return api({ action: 'pull', token: f.token }).then(function (j) {
       if (j.error === 'rejoin') { rejoin(); return 0; }
+      if (j.live) setLive(j.live);
       if (!j._ok || !j.data) return 0;
       var meta = obj(META) || {}, applied = 0;
       Object.keys(j.data).forEach(function (k) {
@@ -81,17 +83,44 @@
       return applied;
     });
   }
+  /* ── VPS 실시간: 다른 기기에서 바뀌면 바로 받아오기 (없으면 20초마다 확인) ── */
+  var LIVE = null, es = null, esTry = 0;
+  try { LIVE = JSON.parse(sessionStorage.getItem('fc-live') || 'null'); } catch (e) {}
+  function setLive(l) {
+    var was = LIVE && LIVE.url; LIVE = l && typeof l === 'object' ? l : null;
+    try { sessionStorage.setItem('fc-live', JSON.stringify(LIVE)); } catch (e) {}
+    if (LIVE && LIVE.url && !was) openLive();
+  }
+  function liveOk() { return !!(LIVE && LIVE.url && LIVE.t && Number(String(LIVE.t).split('.')[0]) > Date.now() + 60000); }
+  function openLive() {
+    if (!liveOk() || es || typeof EventSource === 'undefined' || document.visibilityState !== 'visible') return;
+    try { es = new EventSource(LIVE.url + '/rt?t=' + encodeURIComponent(LIVE.t) + '&d=' + encodeURIComponent(device())); } catch (e) { es = null; return; }
+    es.addEventListener('open', function () { esTry = 0; });
+    es.addEventListener('changed', function (ev) {
+      var d = {}; try { d = JSON.parse(ev.data); } catch (e) {}
+      if (d.by && d.by === device()) return;
+      pull(false).then(function (n) { if (n) reloadSoon(); });
+    });
+    es.addEventListener('error', function () { if (es && es.readyState === 2) { es = null; if (++esTry < 6) setTimeout(openLive, 5000 * esTry); } });
+  }
+  function closeLive() { if (es) { try { es.close(); } catch (e) {} es = null; } }
+  function liveNotify(keys) {
+    if (!liveOk()) return;
+    try { fetch(LIVE.url + '/rt/notify', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ t: LIVE.t, d: device(), keys: keys }), keepalive: true }).catch(function () {}); } catch (e) {}
+  }
   var started = false;
   function start(first) {
     if (started || !fam()) return; started = true;
     var lastPull = 0; try { lastPull = Number(sessionStorage.getItem('fc-family-pulled') || 0); } catch (e) {}
     var p = first || Date.now() - lastPull > 20000 ? pull(first) : Promise.resolve(0);
     p.then(function (n) { return push().then(function () { if (n) reloadSoon(); }); });
-    setInterval(push, 15000);
-    setInterval(function () { if (document.visibilityState === 'visible') pull(false).then(function (n) { if (n) reloadSoon(); }); }, 60000);
+    setInterval(push, 8000);
+    openLive();
+    setInterval(function () { if (document.visibilityState === 'visible' && !(es && es.readyState === 1)) pull(false).then(function (n) { if (n) reloadSoon(); }); }, 20000);
+    setInterval(function () { if (document.visibilityState === 'visible' && es && es.readyState === 1) pull(false).then(function (n) { if (n) reloadSoon(); }); }, 120000);
     document.addEventListener('visibilitychange', function () {
-      if (document.visibilityState === 'hidden') push();
-      else pull(false).then(function (n) { if (n) reloadSoon(); });
+      if (document.visibilityState === 'hidden') { push(); closeLive(); }
+      else { pull(false).then(function (n) { if (n) reloadSoon(); }); openLive(); }
     });
   }
 
@@ -115,7 +144,7 @@
   function status() { return api({ action: 'status' }); }
 
   function call(body) { var f = fam(); if (!f) return Promise.resolve({ _ok: false, error: 'not_joined' }); body.token = f.token; return api(body); }
-  g.FamilySync = { call: call, join: join, init: init, setRole: setRole, status: status, start: start, joined: function () { return !!fam(); }, role: function () { var f = fam(); return f ? f.role : ''; }, pushNow: push, KEYS: KEYS };
+  g.FamilySync = { call: call, join: join, init: init, setRole: setRole, status: status, start: start, joined: function () { return !!fam(); }, role: function () { var f = fam(); return f ? f.role : ''; }, pushNow: push, KEYS: KEYS, live: function () { return liveOk() ? { url: LIVE.url, t: LIVE.t, ai: !!LIVE.ai } : (LIVE ? { ai: !!LIVE.ai } : null); }, liveState: function () { return es ? es.readyState : -1; } };
   if (!document.documentElement.classList.contains('pin-locked')) start(false);
   window.addEventListener('pin-unlocked', function () { start(false); });
 })(window);

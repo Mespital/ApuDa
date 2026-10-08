@@ -46,3 +46,29 @@ services:
       interval: 30s
       timeout: 5s
       retries: 3
+  live:
+    # 실시간 중계 + 흰둥이 똑똑 모드 (FC_LIVE_SECRET 이 있을 때만 --profile live 로 기동)
+    profiles: [live]
+    image: node:22-alpine
+    user: "${COMPASS_UID:?set COMPASS_UID}:${COMPASS_GID:?set COMPASS_GID}"
+    command: ['node', '/live/server.mjs']
+    restart: unless-stopped
+    env_file: [live.env]
+    environment:
+      PORT: '8093'
+      ALLOWED_ORIGINS: https://future.apuda.app
+    volumes:
+      - ./live:/live:ro
+    ports:
+      - '127.0.0.1:8093:8093'
+    read_only: true
+    mem_limit: 128m
+    cpus: 0.5
+    security_opt:
+      - no-new-privileges:true
+    cap_drop: [ALL]
+    healthcheck:
+      test: ['CMD', 'wget', '-q', '-O', '-', 'http://127.0.0.1:8093/health']
+      interval: 30s
+      timeout: 5s
+      retries: 3
