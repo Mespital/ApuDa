@@ -322,8 +322,6 @@
     html += '<section class="card"><div class="pl-head"><h2>이번 학기 목표</h2>' + (parent ? '' : '<button type="button" class="pl-mini" data-pl-goals>설정</button>') + '</div>' + (P.goals.length ? '<ul class="pl-goals">' + P.goals.map(function (g) {
       return '<li class="' + (g.done ? 'done' : '') + '"><button type="button" class="pl-rock-st" data-pl-goal="' + esc(g.id) + '"' + (parent ? ' disabled' : '') + '>' + (g.done ? '✓' : '○') + '</button><span><b>' + esc(g.title) + '</b><small>' + esc([g.type, g.subject, g.measure, g.due ? '~' + md(g.due) : ''].filter(Boolean).join(' · ')) + '</small></span></li>';
     }).join('') + '</ul>' : '<p class="muted">' + (parent ? '아직 정한 목표가 없어.' : '⚙️ 설정 → 플래너에서 학기 목표를 3개까지 정할 수 있어.') + '</p>') + '</section>';
-    var shown = [['flow', '이번 주 흐름'], ['exams', '시험 일정'], ['review', '복습 메모'], ['questions', '질문'], ['reflect', '하루 마무리'], ['mission', '다짐']].filter(function (k) { return P.share[k[0]]; }).map(function (k) { return k[1]; });
-    html += '<p class="pl-foot">엄마에게 보이는 것: ' + (shown.length ? shown.join(' · ') : '없음') + ' — <button type="button" class="linkish" data-pl-goals>바꾸기</button></p>';
     return html;
   }
   function tile(i, v, l, btn) { return '<div class="pl-tile' + (v ? '' : ' empty') + '"><span>' + i + '</span>' + (v ? '<b>' + v + '</b>' : '') + '<small>' + l + '</small>' + (btn || '') + '</div>'; }
@@ -341,9 +339,9 @@
           '<input name="g' + i + 'title" maxlength="50" value="' + esc(x.title || '') + '" placeholder="' + ['예: 수행평가 기한 안에 모두 제출', '예: 매일 영단어 20개', '예: 기말 수학 범위 문제집 2회독'][i] + '">' +
           '<div class="pl-row"><input name="g' + i + 'measure" maxlength="30" value="' + esc(x.measure || '') + '" placeholder="기준 (예: 주 5일)"><input name="g' + i + 'due" type="date" value="' + esc(x.due || '') + '" aria-label="기한"></div></div>';
       }).join('') +
-      '<label>엄마에게 보이기 <small class="muted">(승준이 정해)</small></label><div class="pl-switches">' +
+      '<label>엄마랑 같이 볼 것 <small class="muted">(내가 정해)</small></label><div class="pl-switches">' +
         [['flow', '이번 주 공부 흐름'], ['exams', '시험·과제 일정'], ['review', '복습 메모'], ['questions', '내가 쓴 질문'], ['reflect', '하루 마무리'], ['mission', '나의 다짐']].map(function (k) { return '<label><input type="checkbox" name="sh_' + k[0] + '"' + (P.share[k[0]] ? ' checked' : '') + '> ' + k[1] + '</label>'; }).join('') + '</div>' +
-      '<p class="muted small">엄마 화면에는 켠 것만 보여. 엄마는 점수 대신 이번 주 흐름 요약을 봐.</p>' +
+      '<p class="muted small">켠 것만 엄마랑 나눠. 엄마는 도와줄 게 있는지 보는 용도야.</p>' +
       '<p><button class="primary">플래너 저장</button></p></form></section>';
   }
 
