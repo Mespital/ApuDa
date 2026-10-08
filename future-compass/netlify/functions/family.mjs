@@ -5,6 +5,7 @@
 // 저장: Netlify Blobs "family" (secret: FAMILY 비밀번호는 scrypt 해시만 저장)
 import { getStore } from '@netlify/blobs';
 import { scryptSync, randomBytes, createHash, timingSafeEqual } from 'node:crypto';
+import { vapid, getSubs, cleanSub, cleanPrefs, sendTo } from '../lib/push-core.mjs';
 
 export const KEYS = ['compass-study-v1', 'compass-study-plus-v1', 'fc_academy_v1', 'fc_teachers_v1', 'fc_offdays_v1', 'fc_preview_v1',
   'fc_hub_posts', 'compass-know-me-v1', 'compass-career-lab', 'compass-career-depth', 'future-compass-v2', 'fc_school_class', 'fc_places_v1', 'fc_avatar_v1', 'fc_planner_v1', 'fc_notes_v1', 'fc_cheer_v1', 'fc_mom_v1', 'fc_kid_v1'];
@@ -47,6 +48,8 @@ export default async (req) => {
     return json({ ok: true, pv: next.pv });
   }
 
+  if (b.action === 'push-key') { const k = await vapid(store); return json({ key: k.publicKey }); }   // 공개키만
+
   if (!cfg) return json({ error: 'not_enabled' }, 404);
 
   if (b.action === 'join') {
@@ -70,6 +73,28 @@ export default async (req) => {
   const data = (await store.get('data', { type: 'json' })) || {};
 
   if (b.action === 'pull') return json({ data, pv: cfg.pv });
+
+  // 폰 알림(웹 푸시): 구독 저장·해제, 다른 가족에게 보내기(시간당 20회 제한), 테스트
+  if (b.action === 'push-sub' || b.action === 'push-unsub' || b.action === 'push-send' || b.action === 'push-test') {
+    const subs = await getSubs(store);
+    if (b.action === 'push-sub') {
+      const sub = cleanSub(b.sub); if (!sub) return json({ error: 'bad_sub' }, 400);
+      const id = sha(sub.endpoint).slice(0, 24);
+      subs[id] = { sub, role: b.role === 'parent' ? 'parent' : 'child', prefs: cleanPrefs(b.prefs), device: String(b.device || '').slice(0, 8), at: now };
+      if (Object.keys(subs).length > 12) { const old = Object.entries(subs).sort((x, y) => x[1].at - y[1].at)[0]; delete subs[old[0]]; }
+      await store.setJSON('push-subs', subs); return json({ ok: true });
+    }
+    if (b.action === 'push-unsub') { const id = sha(String(b.endpoint || '')).slice(0, 24); delete subs[id]; await store.setJSON('push-subs', subs); return json({ ok: true }); }
+    if (b.action === 'push-test') { const n = await sendTo(store, 'all', { title: '🔔 알림 테스트', body: '이 폰에 알림이 잘 와요!', url: 'study.html', tag: 'test' }, null, String(b.endpoint || '')); return json({ ok: true, sent: n }); }
+    const kh = new Date(now + 9 * 3600000), km = kh.getUTCHours() * 60 + kh.getUTCMinutes();
+    if (km >= 22 * 60 + 30 || km < 7 * 60) return json({ ok: true, sent: 0, quiet: true });   // 밤에는 폰 알림 안 보냄(앱 안에는 보임)
+    const log = ((await store.get('push-rate', { type: 'json' })) || []).filter(t => now - t < 3600000);
+    if (log.length >= 20) return json({ error: 'rate' }, 429);
+    await store.setJSON('push-rate', [...log, now]);
+    const to = b.to === 'parent' ? 'parent' : 'child', kind = /^[a-z]{2,12}$/.test(b.kind || '') ? b.kind : 'cheer';
+    const n = await sendTo(store, to, { title: String(b.title || '').slice(0, 40) || '승준 공부관리 방', body: String(b.body || '').slice(0, 120), url: /^[a-z\-]+\.html(#[a-z]+)?$/.test(b.url || '') ? b.url : 'study.html', tag: kind }, kind);
+    return json({ ok: true, sent: n });
+  }
 
   // 수업 노트 사진: 가족 기기끼리 같이 보기 (기기 토큰 필요)
   if (b.action === 'photo-put' || b.action === 'photo-get') {

@@ -77,7 +77,7 @@
       cs.forEach(function (x) { x.t.date = addD(today(), 1); }); save(); notice('C ' + cs.length + '개를 내일로 옮겼어.'); render(); return;
     }
     if (b.hasAttribute('data-kp-share')) { if (typeof tab !== 'undefined') { location.hash = 'settings'; setTimeout(function () { var s = document.getElementById('set-planner'); if (s) s.scrollIntoView({ block: 'start' }); }, 200); } return; }
-    if (d.kpReply) { var v2 = kid(); v2.replies.push({ at: Date.now(), to: Number(d.to), msg: d.kpReply }); saveKid(v2); notice('엄마에게 답장했어 💌'); render(); return; }
+    if (d.kpReply) { var v2 = kid(); v2.replies.push({ at: Date.now(), to: Number(d.to), msg: d.kpReply }); saveKid(v2); if (window.FC_PUSH) FC_PUSH.notify('parent', 'ask', '💌 승준이 답장', d.kpReply); notice('엄마에게 답장했어 💌'); render(); return; }
     if (d.kpAsk) { addAsk(d.kpAsk); return; }
     if (d.kpAskHide) { var v3 = kid(); v3.asks.forEach(function (a) { if (a.id === d.kpAskHide) a.hide = 1; }); saveKid(v3); render(); return; }
     if (b.hasAttribute('data-kp-unfold')) { var p = b.closest('.wk-prep'); if (p) { p.classList.toggle('kp-fold'); p.dataset.open = p.classList.contains('kp-fold') ? '' : '1'; } return; }
@@ -85,6 +85,7 @@
   function addAsk(msg) {
     msg = String(msg || '').trim().slice(0, 60); if (!msg) return;
     var v = kid(); v.asks.push({ id: Math.random().toString(36).slice(2, 10), at: Date.now(), msg: msg }); saveKid(v);
+    if (window.FC_PUSH) FC_PUSH.notify('parent', 'ask', '🙋 승준이 부탁', msg);
     notice('엄마에게 전달했어. 엄마 화면 "오늘 도와줄 것"에 떠 🙋'); render();
   }
   document.addEventListener('submit', function (e) { var f = e.target; if (f.matches && f.matches('[data-kp-ask-form]')) { e.preventDefault(); addAsk(f.elements.m.value); } });
