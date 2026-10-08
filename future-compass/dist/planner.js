@@ -147,6 +147,7 @@
     if (examName(today())) start = 13 * 60 + 30;   // 시험날은 보통 낮에 끝나 (추정)
     start = Math.max(start, nowMin()); var end = 22 * 60 + 30; if (start >= end) return 0;
     var busy = (typeof FC_ACADEMY !== 'undefined' ? FC_ACADEMY.forDay(today()) : []).map(function (a) { var s0 = toMin(a.start), e0 = toMin(a.end) || (s0 != null ? s0 + 90 : null); return s0 == null ? null : [s0 - 30, e0 + 30]; }).filter(Boolean);
+    if (typeof FC_LIFE !== 'undefined') FC_LIFE.forDay(today()).forEach(function (x) { var s0 = toMin(x.start), e0 = toMin(x.end) || (s0 != null ? s0 + 60 : null); if (s0 != null && x.busy) busy.push([s0, e0]); });
     if (start < 19 * 60 && end > 19 * 60 + 30) busy.push([18 * 60 + 30, 19 * 60 + 30]);
     var free = 0; for (var m = start; m < end; m += 5) { if (!busy.some(function (b) { return m >= b[0] && m < b[1]; })) free += 5; }
     return free;
@@ -491,12 +492,40 @@
   }
 
   /* ---------- 집중 끝: 집중도 ---------- */
+  function subjList() {
+    var a = []; todayRow().forEach(function (x) { var k = subjOf(x) || String(x || '').trim(); if (k && a.indexOf(k) < 0) a.push(k); });
+    SUBJ.forEach(function (x) { if (a.indexOf(x[0]) < 0) a.push(x[0]); });
+    return a.slice(0, 10).concat(['기타']);
+  }
   function askQuality() {
     if (document.querySelector('.pl-q-dlg')) return;
+    var last = P.focus[P.focus.length - 1]; if (!last) return;
+    var sel = { s: last.subject || '', q: 0 };
     var d = document.createElement('div'); d.className = 'pf-dlg pl-q-dlg';
-    d.innerHTML = '<div class="pf-dlg-card"><h3>얼마나 집중했어?</h3><div class="pl-q5">' + ['거의 못함', '조금 함', '보통', '잘함', '완전 집중'].map(function (t, i) { return '<button type="button" data-q="' + (i + 1) + '"><b>' + (i + 1) + '</b><small>' + t + '</small></button>'; }).join('') + '</div><button type="button" class="pf-cancel">건너뛰기</button></div>';
+    d.innerHTML = '<div class="pf-dlg-card pl-rec"><h3>' + (last.partial ? '⏱ ' + last.min + '분 기록할게' : '👏 ' + last.min + '분 해냈어!') + '</h3><p class="muted small">공부한 거 남겨두면 📈 기록에 쌓여.</p>' +
+      '<p class="pl-rec-h">무슨 과목?</p><div class="pl-rec-subs">' + subjList().map(function (x) { return '<button type="button" data-rs="' + esc(x) + '" class="' + (x === sel.s ? 'on' : '') + '">' + esc(x) + '</button>'; }).join('') + '</div>' +
+      '<p class="pl-rec-h">얼마나 집중했어?</p><div class="pl-q5">' + ['거의 못함', '조금 함', '보통', '잘함', '완전 집중'].map(function (t, i) { return '<button type="button" data-q="' + (i + 1) + '"><b>' + (i + 1) + '</b><small>' + t + '</small></button>'; }).join('') + '</div>' +
+      '<input class="pl-rec-memo" maxlength="80" placeholder="뭐 했는지 한 줄 (선택) 예: 2단원 문제 10개">' +
+      '<div class="pl-rec-btns"><button type="button" class="primary" data-rec-save>기록하기</button><button type="button" class="pf-cancel">건너뛰기</button></div></div>';
     document.body.appendChild(d);
-    d.addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; if (b.dataset.q) { var last = P.focus[P.focus.length - 1]; if (last) { last.q = Number(b.dataset.q); put(); } notice(Number(b.dataset.q) >= 4 ? '좋았어! 기록에 남겼어 💪' : '괜찮아, 다음엔 10분부터 해보자.'); } d.remove(); });
+    d.addEventListener('click', function (e) {
+      var b = e.target.closest('button'); if (!b) return;
+      if (b.dataset.rs) { sel.s = sel.s === b.dataset.rs ? '' : b.dataset.rs; [].forEach.call(d.querySelectorAll('[data-rs]'), function (x) { x.classList.toggle('on', x.dataset.rs === sel.s); }); return; }
+      if (b.dataset.q) { sel.q = Number(b.dataset.q); [].forEach.call(d.querySelectorAll('[data-q]'), function (x) { x.classList.toggle('on', x === b); }); return; }
+      if (b.hasAttribute('data-rec-save')) {
+        if (sel.s) last.subject = sel.s === '기타' ? '' : sel.s;
+        if (sel.q) last.q = sel.q;
+        var m = d.querySelector('.pl-rec-memo').value.trim(); if (m) last.memo = m.slice(0, 80);
+        put(); notice(sel.q && sel.q <= 2 ? '기록했어. 다음엔 10분부터 가볍게 해보자 🌱' : '기록했어 📒 잘했어!'); d.remove(); render(); return;
+      }
+      if (b.classList.contains('pf-cancel')) { d.remove(); }
+    });
+  }
+  function addFocus(f) {
+    var min = Math.max(1, Math.min(600, Math.round(Number(f.min) || 0))); if (!min) return null;
+    var e = { date: f.date || today(), at: Date.now(), min: min, subject: String(f.subject || '').slice(0, 20), task: '', manual: 1 };
+    if (f.memo) e.memo = String(f.memo).slice(0, 80);
+    P.focus.push(e); put(); return e;
   }
 
   /* ---------- 동작 ---------- */
@@ -617,7 +646,7 @@
   });
   window.addEventListener('fc-focus-done', function (e) {
     var min = (e.detail && e.detail.min) || 25, task = cur && state.tasks.find(function (x) { return x.id === cur; });
-    P.focus.push({ date: today(), min: min, subject: task ? subjOf(task.title) : '', task: task ? task.id : '' });
+    var fe = { date: today(), at: Date.now(), min: min, subject: task ? subjOf(task.title) : '', task: task ? task.id : '' }; if (e.detail && e.detail.partial) fe.partial = 1; P.focus.push(fe);
     if (task) pr(task.id).min = (pr(task.id).min || 0) + min;
     setTimeout(askQuality, 400);
     put();
@@ -627,6 +656,7 @@
 
   var css = document.createElement('style');
   css.textContent =
+    '.pl-rec{max-height:86vh;overflow:auto}.pl-rec-h{margin:12px 0 6px;font-size:13px;font-weight:700;color:#5a5672}.pl-rec-subs{display:flex;flex-wrap:wrap;gap:6px}.pl-rec-subs button{min-height:36px!important;padding:4px 12px!important;font-size:14px;border-radius:999px!important}.pl-rec-subs button.on,.pl-q5 button.on{background:#2a2550!important;color:#fff!important;border-color:#2a2550!important}.pl-rec-memo{width:100%;margin-top:12px;box-sizing:border-box}.pl-rec-btns{display:flex;gap:8px;margin-top:12px}.pl-rec-btns button{flex:1}' +
     '.pl-head{display:flex;align-items:center;gap:8px;margin-bottom:10px}.pl-head h2{margin:0!important;flex:1}.pl-count{font-size:13px;color:#8a879a;font-weight:600}' +
     '.pl-mini{min-height:34px!important;padding:4px 12px!important;font-size:13px;border-radius:999px!important;background:#f0edff!important;border:0!important;color:#5b45d6!important;font-weight:700}' +
     '.pl-list{list-style:none;margin:0;padding:0;display:grid;gap:2px}.pl-item{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid #f0eff5}.pl-item:last-child{border-bottom:0}' +
@@ -675,6 +705,6 @@
     '.hero-core{list-style:none;margin:0;padding:0;display:grid;gap:6px}.hero-core li{background:#ffffffc9;border-radius:12px;padding:9px 12px;font-size:15px;font-weight:600;line-height:1.4}' +
     '.hero-soft{margin:10px 2px 0;font-size:14px;color:#6b6880}.hero-go{width:100%;margin-top:12px;min-height:48px!important;font-size:15.5px;border-radius:14px!important}';
   document.head.appendChild(css);
-  window.FC_PLANNER = { get: function () { return P; }, KEY: KEY, todays: todays, exams: upcomingExams, portions: examPortions, again: dueAgain, free: freeTime, planned: planned, examName: examName, examDays: function () { return P.examDays; }, nextExamDay: nextExamDay, est: function (id) { return est(P.pri[id]); }, subjOf: subjOf, todayRow: todayRow };
+  window.FC_PLANNER = { get: function () { return P; }, KEY: KEY, todays: todays, exams: upcomingExams, portions: examPortions, again: dueAgain, free: freeTime, planned: planned, examName: examName, examDays: function () { return P.examDays; }, nextExamDay: nextExamDay, est: function (id) { return est(P.pri[id]); }, subjOf: subjOf, todayRow: todayRow, addFocus: addFocus, save: put, subjects: subjList, ask: askQuality };
   render();   // 첫 화면에도 플래너 반영
 })();

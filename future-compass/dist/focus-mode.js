@@ -134,7 +134,13 @@
     if (t.end) t.end = 0; else { if (t.remaining === 0) t.remaining = t.duration; t.end = Date.now() + t.remaining * 1000; }
     save(); render(); watch(); paint();
   }
-  function stop() { var t = T(); t.remaining = t.duration; t.end = 0; save(); render(); watch(); hide(); }
+  /* 중간에 그만둬도 3분 넘게 했으면 기록 */
+  function logPartial() {
+    try { tick(); } catch (e) {} var t = T(); if (isBreak()) return;
+    var done = t.duration - (t.end ? left() : t.remaining);
+    if (done >= 180 && done < t.duration) try { window.dispatchEvent(new CustomEvent('fc-focus-done', { detail: { min: Math.round(done / 60), partial: true } })); } catch (e) {}
+  }
+  function stop() { logPartial(); var t = T(); t.remaining = t.duration; t.end = 0; save(); render(); watch(); hide(); }
 
   /* ── 상태 변화 감시: 어떤 버튼으로 시작/멈춤해도 여기서 한 번에 처리 ── */
   var lastEnd = 0, lastDur = 0, lastBrk = false, booted = false;
@@ -241,7 +247,7 @@
     if (b.dataset.fmMinSet) { setDur(+b.dataset.fmMinSet * 60); return; }
     if (b.dataset.fmAdd) { var t = T(); setDur(t.duration + +b.dataset.fmAdd * 60); return; }
     if (b.dataset.fmMode) { var brk = b.dataset.fmMode === 'b', p = ls(PREF, {}) || {}; if (brk === isBreak()) return; setDur(brk ? (p.lb || 300) : (p.lf || 1500), brk); render(); return; }
-    if (b.hasAttribute('data-fm-reset')) { var t2 = T(); t2.remaining = t2.duration; t2.end = 0; save(); render(); return; }
+    if (b.hasAttribute('data-fm-reset')) { logPartial(); var t2 = T(); t2.remaining = t2.duration; t2.end = 0; save(); render(); return; }
   });
 
   var prev = render;

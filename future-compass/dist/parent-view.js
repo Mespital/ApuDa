@@ -228,6 +228,7 @@
     else if (row.length) sched.push('🏫 수업 ' + row.length + '교시 · ' + row.map(esc).join(' · '));
     else sched.push('🌿 오늘은 수업 없음');
     acs.forEach(function (a) { sched.push('🏃 ' + esc((a.start ? a.start + (a.end ? '~' + a.end : '') + ' ' : '') + a.name) + (a.homework ? ' · 숙제 ' + (a.hwDone ? '<b class="ok">완료</b>' : '<b class="no">아직</b>') : '') + (a.progress ? '<br><small>진도 ' + esc(a.progress) + '</small>' : '')); });
+    if (typeof FC_LIFE !== 'undefined') FC_LIFE.forDay(today()).forEach(function (x) { sched.push(esc(x.icon) + ' ' + (x.start ? esc(x.start + (x.end ? '~' + x.end : '')) + ' ' : '') + esc(x.title)); });
     h += '<section class="card pv-sec"><h2>오늘 일정</h2><ul class="pv-list">' + sched.map(function (s) { return '<li>' + s + '</li>'; }).join('') + '</ul></section>';
 
     // 3. 다가오는 시험·수행평가
