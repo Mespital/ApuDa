@@ -236,7 +236,7 @@ const q=s=>document.querySelector(s), qa=s=>[...document.querySelectorAll(s)];
 const clone=o=>JSON.parse(JSON.stringify(o));
 let state=loadState();
 let current='basic';
-function loadState(){try{const saved=Object.assign(clone(defaults),JSON.parse(localStorage.getItem(APP_KEY)||'{}'));saved.profile=saved.profile||clone(defaults.profile);if(!saved.profile.birthMonth&&saved.profile.birth)saved.profile.birthMonth=String(saved.profile.birth).slice(0,7);saved.profile.birth='';saved.profile.name='';return saved}catch(e){return clone(defaults)}}
+function loadState(){try{const saved=Object.assign(clone(defaults),JSON.parse(localStorage.getItem(APP_KEY)||'{}'));saved.profile=saved.profile||clone(defaults.profile);if(!saved.profile.birthMonth&&saved.profile.birth)saved.profile.birthMonth=String(saved.profile.birth).slice(0,7);saved.profile.birth='';saved.profile.name='';saved.uploads=(saved.uploads||[]).map(u=>({name:(u.type==='catalog'?'선택검사표':'건강자료'),type:(u.type==='pdf'?'health':u.type),date:u.date||'',status:u.status||'success',rows:Number(u.rows||u.extracted||0),sheet:u.sheet||'',sections:u.sections||0,birthMonth:u.birthMonth||''}));try{localStorage.setItem(APP_KEY,JSON.stringify(saved))}catch(e){}return saved}catch(e){return clone(defaults)}}
 function saveState(show=true){state.updatedAt=new Date().toISOString();let stored=true;try{localStorage.setItem(APP_KEY,JSON.stringify(state))}catch(e){stored=false}updateProgress();if(show)toast(stored?'저장되었습니다. 이 기기에만 보관됩니다.':'브라우저 저장이 차단되어 현재 화면에서만 유지됩니다.')}
 function toast(msg){const t=q('#toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
 function esc(v=''){return String(v).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]))}
