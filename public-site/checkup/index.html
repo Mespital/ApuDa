@@ -89,6 +89,9 @@
     .match-ready{margin-top:12px;border-radius:12px;padding:10px 12px;background:#eefaf4;border:1px solid #cfead9;color:#216947;font-size:12px}
     .data-details{margin-top:12px;border:1px solid var(--line);border-radius:13px;background:#fff;padding:11px 13px}
     .data-details summary{cursor:pointer;font-weight:800;font-size:13px}
+    .quick-match{margin-top:12px;border:1px solid #d9e7f8;border-radius:14px;background:#fff;padding:12px}
+    .quick-match-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}.quick-match-title b{font-size:14px;color:var(--blue)}.quick-match-title span{font-size:11px;color:var(--muted)}
+    .quick-pick{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-top:1px solid #eef2f6}.quick-pick:first-of-type{border-top:0}.quick-pick .rank{width:24px;height:24px;border-radius:8px;background:#eaf3ff;color:var(--blue);font-weight:900;display:grid;place-items:center;font-size:12px;flex:0 0 auto}.quick-pick b{display:block;font-size:13px}.quick-pick small{display:block;color:var(--muted);font-size:11px;margin-top:2px}
     @media(max-width:720px){.upload-pair .upload-zone{min-height:0}.privacy-summary{display:block}.privacy-summary span{display:block;margin-top:4px}}
     /* v2.3 — simple app UI */
     body{background:#f6f8fb}
@@ -339,6 +342,7 @@ function renderAllergies(){q('[data-section="allergy"]').innerHTML=`${sectionHea
 
 function healthDataCount(){return state.screenings.length+state.findings.length+Object.entries(state.labs||{}).filter(([k,v])=>k!=='notes'&&Boolean(v)).length}
 function privacyUploadStatus(){const u=latestUpload('health');if(!u)return '아직 분석한 이전 건강자료가 없습니다.';return `개인식별정보 삭제 완료 · 출생 연·월 ${state.profile.birthMonth||'미확인'} · 이전 검사 ${state.screenings.length}건 · 이상소견 ${state.findings.length}건`}
+function quickMatchHtml(){if(!state.catalog.length||!healthDataCount())return '';const plan=buildCatalogRecommendations(),items=[];for(const g of plan.choiceGroups){for(const x of g.items)items.push(x)}for(const x of plan.additional)items.push(x);const unique=[];const seen=new Set();for(const x of items){if(!x?.test||seen.has(x.test))continue;seen.add(x.test);unique.push(x);if(unique.length>=3)break}if(!unique.length)return '<div class="quick-match"><b>매칭 결과</b><span>현재 기록에서는 뚜렷하게 우선할 선택검사가 없습니다. 최근 검사 이력과 의료진 상담을 기준으로 선택하세요.</span></div>';return '<div class="quick-match"><div class="quick-match-title"><b>우선 선택 후보</b><span>자동 매칭 상위 '+unique.length+'개</span></div>'+unique.map((x,i)=>'<div class="quick-pick"><span class="rank">'+(i+1)+'</span><div><b>'+esc(x.test)+'</b><small>'+esc((x.reasons||[]).slice(0,3).join(' · ')||x.historyNote||'연령·과거 기록·검사표 조건을 종합해 우선순위를 계산했습니다.')+'</small></div></div>').join('')+'</div>'}
 function renderScreenings(){q('[data-section="screening"]').innerHTML=`${sectionHead('8. 자료 분석','이전 건강자료와 이번 선택검사표를 넣으면 자동으로 비교합니다.')}
 <div class="privacy-summary"><b>이름·주민번호·전체 생년월일은 저장하지 않습니다.</b><span>출생 연·월만 연령 계산에 사용하고, 이전 검사결과·이상소견·검사수치와 이번 선택검사를 매칭합니다.</span></div>
 <div class="grid upload-pair" style="margin-top:14px">
@@ -360,6 +364,7 @@ function renderScreenings(){q('[data-section="screening"]').innerHTML=`${section
   </div>
 </div>
 ${state.screenings.length||state.findings.length||state.catalog.length?`<div class="match-ready">${state.catalog.length&&healthDataCount()?'<b>매칭 준비 완료</b> · 이전 건강기록과 선택검사표를 함께 분석해 결과에서 우선순위를 제안합니다.':'두 자료를 모두 넣으면 선택검사 우선순위를 더 정확하게 비교할 수 있습니다.'}</div>`:''}
+${quickMatchHtml()}
 <details class="data-details" ${state.screenings.length?'open':''}><summary>분석된 이전 검사 ${state.screenings.length}건 보기</summary><div style="margin-top:12px">${arrayTable('screenings',[['test','검사명','text'],['date','시행일','date'],['result','결과','text'],['followupMonths','권장 추적개월','number']])}</div></details>
 ${state.catalog.length?`<details class="data-details"><summary>불러온 선택검사 ${state.catalog.length}개 보기</summary><div style="margin-top:12px">${catalogTable()}</div></details>`:''}
 ${footer('allergy','findings')}`}
@@ -572,7 +577,7 @@ function analyzeHealthText(rawText,structured=[]){
 async function handleHealthFile(file){
   try{
     const ext=validateUpload(file,['pdf','xlsx','xls','xlsm','csv','txt','json','png','jpg','jpeg']);setUploadStatus('healthStatus','이전 건강자료를 분석하는 중입니다...');let raw='',structured=[];
-    if(ext==='pdf')raw=await pdfTextWithOcr(file);else if(['png','jpg','jpeg'].includes(ext)){setUploadStatus('healthStatus','이미지 OCR 분석 중입니다...');raw=await ocrSource(file)}else if(['xlsx','xls','xlsm'].includes(ext)){const r=await workbookToHealthText(file,ext);raw=r.text;structured=r.structured}else raw=await file.text();
+    if(ext==='pdf')raw=await pdfTextWithOcr(file);else if(['png','jpg','jpeg'].includes(ext)){setUploadStatus('healthStatus','이미지 OCR 분석 중입니다...');raw=await ocrSource(file)}else if(['xlsx','xls','xlsm'].includes(ext)){const r=await workbookToHealthText(file,ext);raw=r.text;structured=r.structured}else if(ext==='csv'){raw=await file.text();try{const matrix=parseCSVMatrix(raw),best=bestScreeningSheetResult([{matrix,sheet:'CSV',score:scoreWorkbookMatrix(matrix)}]);structured=best?.items||[]}catch(e){}}else raw=await file.text();
     const result=analyzeHealthText(raw,structured);state.uploads.push({name:'이전 건강자료(.'+ext+')',type:'health',date:new Date().toISOString(),status:'success',rows:result.screeningAdded+result.findingAdded+result.labAdded,birthMonth:result.birthMonth});
     saveState(false);renderAll();showSection('screening');setUploadStatus('healthStatus','개인식별정보 삭제 완료\n출생 연·월: '+(result.birthMonth||'확인되지 않음')+' · 새 검사 '+result.screeningAdded+'건 · 이상소견 '+result.findingAdded+'건 · 검사수치 '+result.labAdded+'개','success');toast('이전 건강자료 분석이 완료되었습니다.');return true;
   }catch(e){console.error(e);setUploadStatus('healthStatus','분석 실패: '+e.message,'error');toast('건강자료 분석에 실패했습니다.');return false}
@@ -591,7 +596,7 @@ async function handleWorkbook(file,target){
   const statusId=target==='catalog'?'catalogStatus':'screenStatus';
   try{
     const ext=validateUpload(file,['xlsx','xls','xlsm','csv']);
-    setUploadStatus(statusId,`${file.name}\n전체 시트에서 검진표 구조를 검색하는 중입니다...`);
+    setUploadStatus(statusId,target==='catalog'?'선택검사표를 분석하는 중입니다...':'검진자료를 분석하는 중입니다...');
     let workbookSheets=[];
     if(ext==='csv'){
       const matrix=parseCSVMatrix(await file.text());
@@ -624,8 +629,8 @@ async function handleWorkbook(file,target){
       parsed.forEach(x=>{const key=`${x.test}|${x.date}`;if(!existing.has(key)){state.screenings.push({...x,id:uid()});existing.add(key)}});
     }
     state.uploads.push({name:target==='catalog'?'선택검사표(.'+ext+')':'검진자료(.'+ext+')',type:target,date:new Date().toISOString(),status:'success',rows:parsed.length,sheet:sheetLabel,sections:result.sections});
-    saveState(false);renderAll();showSection(target==='catalog'?'catalog':'screening');
-    setUploadStatus(statusId,`${file.name}\n인식 시트: ${sheetLabel||'자동 선택'}\n표 영역 ${result.sections}개 · ${parsed.length}개 항목을 정상적으로 불러왔습니다.\n표지·약도·장비현황 등 검진표가 아닌 시트는 자동 제외했습니다.`,'success');
+    saveState(false);renderAll();showSection('screening');
+    setUploadStatus(statusId,(target==='catalog'?'선택검사표 분석 완료':'검진자료 분석 완료')+`\n인식 시트: ${sheetLabel||'자동 선택'}\n표 영역 ${result.sections}개 · ${parsed.length}개 항목을 불러왔습니다.`,'success');
     toast(`${target==='catalog'?state.catalog.length:parsed.length}개 항목을 정상적으로 불러왔습니다.`);return true;
   }catch(e){
     console.error('Workbook upload error',e);
@@ -633,62 +638,7 @@ async function handleWorkbook(file,target){
   }
 }
 function parseCSV(text){const matrix=parseCSVMatrix(text);if(!matrix.length)return[];const headers=matrix[0];return matrix.slice(1).map(row=>Object.fromEntries(headers.map((h,i)=>[h||`col${i}`,row[i]??''])))}
-async function handlePDF(file){
-  try{
-    validateUpload(file,['pdf']);
-    setUploadStatus('pdfStatus', `${file.name}
-PDF 텍스트를 분석하는 중입니다...`);
-    const PDFLib = await ensurePDFJS();
-    PDFLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-    const buf = await file.arrayBuffer();
-    const pdf = await PDFLib.getDocument({data:buf}).promise;
-    let text='';
-    for(let i=1;i<=Math.min(pdf.numPages,20);i++){
-      const p = await pdf.getPage(i), c = await p.getTextContent();
-      text += `
-[${i}페이지]
-` + c.items.map(x=>x.str).join(' ');
-    }
-    const extracted = extractScreeningsFromPdfText(text);
-    if(extracted.length){
-      const existing = new Set(state.screenings.map(x=>`${(x.test||'').trim()}|${(x.date||'').trim()}`));
-      extracted.forEach(item=>{
-        const key=`${(item.test||'').trim()}|${(item.date||'').trim()}`;
-        if(!existing.has(key)){
-          state.screenings.push({...item,id:uid()});
-          existing.add(key);
-        }
-      });
-    }
-    state.uploads.push({name:file.name,type:'pdf',date:new Date().toISOString(),status:'success',rows:pdf.numPages,text:text.slice(0,50000),extracted:extracted.length});
-    saveState(false);
-    renderAll();
-    showSection('screening');
-    setUploadStatus('pdfStatus', `${file.name}
-${pdf.numPages}페이지 중 최대 20페이지의 텍스트를 추출했습니다. 자동 인식 후보 ${extracted.length}건${extracted.length?'을 이전 검진 표에 반영했습니다.':'입니다.'} 이 문구를 클릭하면 미리보기가 열립니다.`,'success');
-    const status=q('#pdfStatus');
-    if(status){
-      status.style.cursor='pointer';
-      status.onclick=()=>{
-        const previewLines=['[자동 인식된 이전 검진 후보]'];
-        if(extracted.length){
-          extracted.forEach((x,i)=>previewLines.push(`${i+1}. ${x.test} | ${x.date||'날짜 미확인'} | ${x.result||'결과 미확인'}`));
-        }else{
-          previewLines.push('인식된 항목이 없습니다.');
-        }
-        previewLines.push('', '[추출 텍스트]', text);
-        q('#previewText').textContent = previewLines.join('\n');
-        q('#previewModal').classList.add('open');
-      };
-    }
-    toast(extracted.length?`PDF를 첨부하고 ${extracted.length}개 검진 항목을 반영했습니다.`:'PDF를 첨부했습니다.');
-    return true;
-  }catch(e){
-    setUploadStatus('pdfStatus', `첨부 실패: ${e.message}`,'error');
-    toast('PDF 첨부에 실패했습니다.');
-    return false;
-  }
-}
+async function handlePDF(file){return handleHealthFile(file)}
 
 function renderResults(){const rec=generateRecommendations();const catalogPlan=buildCatalogRecommendations();const conf=inputConfidence();const choiceCount=catalogPlan.choiceGroups.reduce((s,g)=>s+g.items.length,0);q('[data-section="results"]').innerHTML=`${sectionHead('건강검진 선택 도움 결과','국가검진·추적 필요·회사 선택검진을 구분해 보여줍니다. 회사 패키지 항목은 의료적 필수검사와 분리합니다.',state.updatedAt?`최근 저장 ${new Date(state.updatedAt).toLocaleString('ko-KR')}`:'미저장')}
 <div class="dashboard"><div class="metric"><span>만 나이</span><b>${age()??'-'}</b></div><div class="metric"><span>BMI</span><b>${state.profile.bmi||'-'}</b></div><div class="metric"><span>추적 대상</span><b>${rec.follow.length}</b></div><div class="metric"><span>입력 충분도</span><b>${conf.label}</b><div class="input-confidence">${conf.pct}% · 의료 정확도 점수가 아니라 입력 완성도입니다.</div></div></div>
