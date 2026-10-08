@@ -96,6 +96,22 @@ export default async (req) => {
     return json({ ok: true, sent: n });
   }
 
+  // 집중 타이머: 끝나는 시각을 맡겨두면 화면이 꺼져 있어도 timer-cron 이 그때 폰 알림을 보냄
+  if (b.action === 'timer-set' || b.action === 'timer-clear') {
+    const timers = (await store.get('timers', { type: 'json' })) || {};
+    const dev = String(b.device || rec.device || 'x').replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 12) || 'x';
+    for (const [k, v] of Object.entries(timers)) if (!v || v.at < now - 3600000) delete timers[k];
+    if (b.action === 'timer-clear') delete timers[dev];
+    else {
+      const at = Number(b.at);
+      if (!(at > now - 5000 && at < now + 3 * 3600000)) return json({ error: 'bad_time' }, 400);
+      const ep = typeof b.endpoint === 'string' && /^https:\/\//.test(b.endpoint) && b.endpoint.length < 1000 ? b.endpoint : '';
+      timers[dev] = { at, ep, title: String(b.title || '⏱ 집중 끝!').slice(0, 40), body: String(b.body || '').slice(0, 120), set: now };
+      if (Object.keys(timers).length > 6) { const old = Object.entries(timers).sort((x, y) => x[1].set - y[1].set)[0]; delete timers[old[0]]; }
+    }
+    await store.setJSON('timers', timers); return json({ ok: true });
+  }
+
   // 수업 노트 사진: 가족 기기끼리 같이 보기 (기기 토큰 필요)
   if (b.action === 'photo-put' || b.action === 'photo-get') {
     if (typeof b.id !== 'string' || !/^[a-z0-9]{8,40}$/.test(b.id)) return json({ error: 'bad_id' }, 400);
