@@ -47,8 +47,7 @@ services:
       timeout: 5s
       retries: 3
   live:
-    # 실시간 중계 + 흰둥이 똑똑 모드 (FC_LIVE_SECRET 이 있을 때만 --profile live 로 기동)
-    profiles: [live]
+    # 실시간 중계 + 흰둥이 똑똑 모드 (비밀값 없이 동작: 티켓 공개키는 Netlify에서 자동으로 가져옴)
     image: node:22-alpine
     user: "${COMPASS_UID:?set COMPASS_UID}:${COMPASS_GID:?set COMPASS_GID}"
     command: ['node', '/live/server.mjs']

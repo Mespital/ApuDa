@@ -6,7 +6,22 @@
 import { getStore } from '@netlify/blobs';
 import { scryptSync, randomBytes, createHash, timingSafeEqual } from 'node:crypto';
 import { vapid, getSubs, cleanSub, cleanPrefs, sendTo } from '../lib/push-core.mjs';
-import { createHmac } from 'node:crypto';
+import { createHmac, generateKeyPairSync, createPrivateKey, sign as edSign } from 'node:crypto';
+
+// VPS 실시간 서버용 서명 키(ed25519): 처음 한 번 자동 생성해 Blobs에만 보관. VPS는 공개키만 가져가서 티켓을 확인한다(공유 비밀값 불필요)
+async function liveKey(store) {
+  let k = await store.get('live-key', { type: 'json' });
+  if (!k || !k.priv) { const p = generateKeyPairSync('ed25519'); k = { pub: p.publicKey.export({ type: 'spki', format: 'pem' }), priv: p.privateKey.export({ type: 'pkcs8', format: 'pem' }) }; await store.setJSON('live-key', k); }
+  return k;
+}
+// VPS가 살아 있는지 5분마다 확인(죽어 있으면 앱은 Netlify만으로 동작)
+async function liveHealth(store, url) {
+  const h = await store.get('live-health', { type: 'json' });
+  if (h && h.url === url && Date.now() - h.at < 300000) return h;
+  let ok = false, ai = false;
+  try { const r = await fetch(url + '/health', { signal: AbortSignal.timeout(2500) }); const j = await r.json(); ok = r.ok && j.ok === true && j.keyed !== false; ai = !!j.ai; } catch {}
+  const n = { url, ok, ai, at: Date.now() }; await store.setJSON('live-health', n); return n;
+}
 import { buildPayload, askClaude, validQuestion } from '../../live/shiro.mjs';
 
 export const KEYS = ['compass-study-v1', 'compass-study-plus-v1', 'fc_academy_v1', 'fc_teachers_v1', 'fc_offdays_v1', 'fc_preview_v1',
@@ -58,6 +73,7 @@ export default async (req) => {
   }
 
   if (b.action === 'push-key') { const k = await vapid(store); return json({ key: k.publicKey }); }   // 공개키만
+  if (b.action === 'live-pub') { const k = await liveKey(store); return json({ pub: k.pub }); }       // VPS 실시간 서버가 티켓 확인용으로 가져가는 공개키
 
   // 처음 한 번: 가족 비밀번호가 아직 없으면 첫 기기에서 바로 정한다(우리 가족 전용). 이미 있으면 거절
   if (b.action === 'init') {
@@ -95,14 +111,18 @@ export default async (req) => {
   const data = (await store.get('data', { type: 'json' })) || {};
 
   // VPS 실시간 중계 티켓(24시간) + 흰둥이 똑똑 모드 사용 가능 여부
-  const live = () => {
-    const url = env('FC_LIVE_URL').replace(/\/$/, ''), sec = env('FC_LIVE_SECRET');
-    const out = { ai: !!(env('ANTHROPIC_API_KEY') || (url && sec)) };
-    if (/^https:\/\//.test(url) && sec.length >= 24) { const exp = now + 86400000; out.url = url; out.t = exp + '.fam.' + createHmac('sha256', sec).update(exp + '.fam').digest('hex'); }
+  const live = async () => {
+    const url = (env('FC_LIVE_URL') || 'https://live.apuda.app').replace(/\/$/, ''), sec = env('FC_LIVE_SECRET');
+    const out = { ai: !!env('ANTHROPIC_API_KEY') };
+    if (!/^https:\/\//.test(url) || env('FC_LIVE_OFF')) return out;
+    const h = await liveHealth(store, url); if (!h.ok) return out;
+    const exp = now + 86400000; out.url = url; out.ai = out.ai || h.ai;
+    if (sec.length >= 24) out.t = exp + '.fam.' + createHmac('sha256', sec).update(exp + '.fam').digest('hex');
+    else { const k = await liveKey(store); out.t = exp + '.fam.' + edSign(null, Buffer.from(exp + '.fam'), createPrivateKey(k.priv)).toString('hex'); }
     return out;
   };
-  if (b.action === 'pull') return json({ data, pv: cfg.pv, live: live() });
-  if (b.action === 'live') return json({ ok: true, live: live() });
+  if (b.action === 'pull') return json({ data, pv: cfg.pv, live: await live() });
+  if (b.action === 'live') return json({ ok: true, live: await live() });
 
   // 흰둥이 똑똑 모드 (Netlify에서 바로: ANTHROPIC_API_KEY 가 Netlify 환경변수에 있을 때)
   if (b.action === 'chat') {

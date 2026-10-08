@@ -1,7 +1,7 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert'),path=require('path');
 const source=fs.readFileSync(path.join(__dirname,'../dist/shiro-help.js'),'utf8');
 const block=source.slice(source.indexOf('const menus='),source.indexOf('function route()'));
-const ctx={};vm.createContext(ctx);vm.runInContext(block,ctx);
+const ctx={window:{}};vm.createContext(ctx);vm.runInContext(block,ctx);
 for(const [question,link] of [['직업 비교는 어떻게 해?','explore'],['나 알아보기','quiz'],['서초고 소식','news'],['미래 변화','future'],['공부 준비','plan'],['저장 삭제','quiz']]){assert(vm.runInContext('answer('+JSON.stringify(question)+').links',ctx).includes(link));}
 assert(vm.runInContext('answer("<script>alert(1)</script>").text',ctx).includes('찾지 못했어'));
 const functionSource=source.slice(source.indexOf('async function sendFeedback('),source.lastIndexOf('})();'));
