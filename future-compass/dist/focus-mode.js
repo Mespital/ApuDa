@@ -90,8 +90,9 @@
     if (el) return;
     el = document.createElement('div'); el.className = 'fm'; el.hidden = true; el.setAttribute('role', 'dialog'); el.setAttribute('aria-label', '집중 타이머');
     el.innerHTML = '<div class="fm-top"><span class="fm-label"></span><button type="button" class="fm-x" data-fm-min aria-label="작게 보기">작게 ⌄</button></div>' +
-      '<div class="fm-mid"><div class="fm-dial">' + ttMarkup('dark') + '</div>' +
+      '<div class="fm-mid"><div class="fm-dial" data-fm-dial>' + ttMarkup('dark') + '</div>' +
       '<div class="fm-face"><div class="fm-clock" aria-live="off"></div><div class="fm-sub"></div></div>' +
+      '<div class="fm-oadj"><button type="button" class="fm-pm" data-fm-add="-5" aria-label="5분 줄이기">−5</button><div class="fm-ochips"></div><button type="button" class="fm-pm" data-fm-add="5" aria-label="5분 늘리기">+5</button></div>' +
       '<p class="fm-task"></p></div>' +
       '<div class="fm-btns"><button type="button" class="fm-main" data-fm-toggle></button><button type="button" data-fm-stop>처음부터</button></div>' +
       '<div class="fm-foot"><label class="fm-wake"><input type="checkbox" data-fm-wake> 화면 켜두기</label><span class="fm-hint"></span></div>';
@@ -102,16 +103,19 @@
   function paint() {
     if (!el) return;
     if (open && (!kid() || locked())) { hide(); return; }
-    var t = T(), s = left(), on = running(), br = isBreak();
+    var t = T(), s = dragging ? dragSec : left(), on = running(), br = isBreak();
     var showPill = kid() && !open && t.end && on && tab !== 'focus';
     if (tab === 'focus') paintCard();
     pill.hidden = !showPill; if (showPill) pill.textContent = (br ? '🌿 ' : '⏱ ') + mmss(s);
     if (!open) return;
-    el.classList.toggle('fm-break', br); el.classList.toggle('fm-paused', !t.end);
+    el.classList.toggle('fm-break', br); el.classList.toggle('fm-paused', !t.end); el.classList.toggle('fm-fresh', !t.end && (dragging || s === t.duration));
     el.querySelector('.fm-label').textContent = br ? '🌿 쉬는 시간' : '⏱ 집중 ' + Math.round(t.duration / 60) + '분';
     el.querySelector('.fm-clock').textContent = mmss(s);
-    el.querySelector('.fm-sub').textContent = t.end ? hhmm(t.end) + '에 끝나' : (s === t.duration ? '준비됐어?' : '잠깐 멈춤');
-    wedge(el.querySelector('.fm-dial svg'), s, scaleOf(t.duration));
+    el.querySelector('.fm-sub').textContent = t.end ? hhmm(t.end) + '에 끝나' : dragging ? '손을 떼면 정해져' : (s === t.duration ? '원을 돌리거나 아래에서 시간을 바꿔' : '잠깐 멈춤');
+    wedge(el.querySelector('.fm-dial svg'), s, dragging ? 3600 : scaleOf(t.duration));
+    var oc = el.querySelector('.fm-ochips'), list = br ? CH.b : CH.f;
+    if (oc.getAttribute('data-k') !== String(br)) { oc.innerHTML = list.map(function (m) { return '<button type="button" data-fm-min-set="' + m + '">' + m + '분</button>'; }).join(''); oc.setAttribute('data-k', String(br)); }
+    [].forEach.call(oc.querySelectorAll('[data-fm-min-set]'), function (b) { b.classList.toggle('on', +b.dataset.fmMinSet * 60 === t.duration); });
     var task = taskTitle(); el.querySelector('.fm-task').textContent = br ? '물 한 잔, 스트레칭 한 번 🙆' : task ? '지금: ' + task : '한 가지에만 집중 🐾';
     el.querySelector('[data-fm-toggle]').textContent = t.end ? '잠깐 멈추기' : (s === t.duration ? '▶ 시작' : '▶ 이어하기');
     el.querySelector('[data-fm-wake]').checked = wantWake();
@@ -213,7 +217,7 @@
     if (brk === undefined) brk = isBreak();
     state.timer = { duration: sec, remaining: sec, end: 0, brk: brk };
     var p = ls(PREF, {}) || {}; p[brk ? 'lb' : 'lf'] = sec; setLs(PREF, p);
-    save(); paintCard();
+    save(); paintCard(); paint();
   }
   function angleSec(e, box) {
     var r = box.getBoundingClientRect(), x = e.clientX - (r.left + r.width / 2), y = e.clientY - (r.top + r.height / 2);
@@ -222,18 +226,18 @@
   }
   document.addEventListener('pointerdown', function (e) {
     var box = e.target.closest && e.target.closest('[data-fm-dial]'); if (!box || T().end) return;
-    e.preventDefault(); dragging = true; dragSec = Math.max(60, angleSec(e, box)); try { box.setPointerCapture(e.pointerId); } catch (er) {} unlockAudio(); paintCard();
+    e.preventDefault(); dragging = true; dragSec = Math.max(60, angleSec(e, box)); try { box.setPointerCapture(e.pointerId); } catch (er) {} unlockAudio(); paintCard(); paint();
     function mv(ev) {
       var v = angleSec(ev, box);
       if (dragSec >= 2700 && v <= 900) v = 3600; else if (dragSec <= 900 && v >= 2700) v = 60;   // 12시를 넘어가지 않게
       v = Math.max(60, Math.min(3600, v));
-      if (v !== dragSec) { dragSec = v; try { if (navigator.vibrate) navigator.vibrate(4); } catch (er) {} paintCard(); }
+      if (v !== dragSec) { dragSec = v; try { if (navigator.vibrate) navigator.vibrate(4); } catch (er) {} paintCard(); paint(); }
     }
     function up() { box.removeEventListener('pointermove', mv); box.removeEventListener('pointerup', up); box.removeEventListener('pointercancel', up); dragging = false; setDur(dragSec); }
     box.addEventListener('pointermove', mv); box.addEventListener('pointerup', up); box.addEventListener('pointercancel', up);
   });
   document.addEventListener('click', function (e) {
-    var b = e.target.closest && e.target.closest('button'); if (!b || !b.closest('.fm-card')) return;
+    var b = e.target.closest && e.target.closest('button'); if (!b || !b.closest('.fm-card, .fm')) return;
     if (b.dataset.fmMinSet) { setDur(+b.dataset.fmMinSet * 60); return; }
     if (b.dataset.fmAdd) { var t = T(); setDur(t.duration + +b.dataset.fmAdd * 60); return; }
     if (b.dataset.fmMode) { var brk = b.dataset.fmMode === 'b', p = ls(PREF, {}) || {}; if (brk === isBreak()) return; setDur(brk ? (p.lb || 300) : (p.lf || 1500), brk); render(); return; }
@@ -263,6 +267,7 @@
     '.tt{overflow:visible}.tt-face{fill:#fff;filter:drop-shadow(0 6px 18px rgba(60,40,140,.10))}.tt-well{fill:#f6f5fb}.tt-maj{stroke:#b9b5cc;stroke-width:1.6;stroke-linecap:round}.tt-min{stroke:#dcdae6;stroke-width:1;stroke-linecap:round}.tt text{font:600 10.5px Pretendard,system-ui,sans-serif;fill:#8f8ba5;text-anchor:middle}' +
     '.tt-wedge{fill:#ff6f61}.fm-break .tt-wedge{fill:#3fc49b}.tt-knob{fill:#fff;stroke:#ecebf3;stroke-width:1.5;filter:drop-shadow(0 1px 3px rgba(0,0,0,.18))}' +
     '.tt.dark .tt-face{fill:#25223f;filter:none}.tt.dark .tt-well{fill:#1d1b33}.tt.dark .tt-maj{stroke:rgba(255,255,255,.45)}.tt.dark .tt-min{stroke:rgba(255,255,255,.16)}.tt.dark text{fill:rgba(255,255,255,.55)}.tt.dark .tt-knob{fill:#f4f2ff;stroke:none}' +
+    '.fm-oadj{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:4px}.fm:not(.fm-paused) .fm-oadj{display:none}.fm-ochips{display:flex;gap:6px}.fm .fm-oadj button{all:unset;cursor:pointer;min-height:38px;padding:0 13px;display:inline-flex;align-items:center;border-radius:999px;background:rgba(255,255,255,.1);color:#ecebff;font-size:14px;font-weight:600}.fm .fm-oadj .fm-pm{background:transparent;border:1.5px solid rgba(255,255,255,.25);padding:0 11px}.fm .fm-oadj button.on{background:#f4f2ff;color:#2a2550}.fm.fm-paused .fm-dial{touch-action:none;cursor:grab}' +
     '.fm-run .fm-adj{display:none}.fm-run .fm-seg{visibility:hidden}.fm-card{text-align:center;padding:18px 16px 16px!important}.fm-seg{display:inline-flex;background:#f1f0f7;border-radius:999px;padding:4px;gap:2px;margin-bottom:6px}.fm-card .fm-seg button{all:unset;cursor:pointer;padding:7px 16px;border-radius:999px;font-size:14px;font-weight:600;color:#7d7a92}.fm-card .fm-seg button.on{background:#fff;color:#2a2550;box-shadow:0 1px 4px rgba(40,30,90,.12)}.fm-card .fm-seg button:disabled{opacity:.5;cursor:default}' +
     '.fm-dialwrap{width:min(76vw,300px);margin:6px auto 0;touch-action:none;cursor:grab;-webkit-user-select:none;user-select:none}.fm-run .fm-dialwrap{cursor:default}.fm-dialwrap svg{width:100%;display:block}' +
     '.fm-read{margin:6px 0 12px;display:flex;flex-direction:column;align-items:center}.fm-read-big{font-size:42px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:#24213a;line-height:1.1}.fm-read-sub{font-size:13px;color:#8a879a;margin-top:4px}' +
@@ -270,7 +275,7 @@
     '.fm-ctl{display:flex;gap:8px;justify-content:center;align-items:center}.fm-card .fm-go{all:unset;cursor:pointer;background:#ff6f61;color:#fff;font-size:17px;font-weight:700;border-radius:999px;padding:0 30px;min-height:52px;display:inline-flex;align-items:center;box-shadow:0 6px 16px rgba(255,111,97,.3)}.fm-break .fm-go{background:#3fc49b;box-shadow:0 6px 16px rgba(63,196,155,.3)}.fm-card .fm-go.pause{background:#2a2550;box-shadow:none}' +
     '.fm-card .fm-ghost{all:unset;cursor:pointer;min-height:52px;padding:0 16px;border-radius:999px;border:1.5px solid #e4e2ee;color:#5a5672;font-size:14.5px;font-weight:600;display:inline-flex;align-items:center}.fm-card .fm-ghost[hidden]{display:none}.fm-today{margin:14px 0 0;font-size:13px;color:#8a879a}' +
     '.fm-clock{font-size:clamp(48px,15vw,76px);font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1}.fm-sub{margin-top:4px;font-size:15px;opacity:.7}' +
-    '.fm-paused .fm-clock{opacity:.55}.fm-task{margin:0;font-size:16px;text-align:center;max-width:32ch;opacity:.9;line-height:1.4}' +
+    '.fm-paused:not(.fm-fresh) .fm-clock{opacity:.55}.fm-task{margin:0;font-size:16px;text-align:center;max-width:32ch;opacity:.9;line-height:1.4}' +
     '.fm-btns{display:flex;gap:10px;justify-content:center}.fm .fm-main{background:#f4f2ff!important;color:#2a2550!important;border:0!important;padding:14px 28px!important;font-size:17px!important;font-weight:700!important;min-height:54px!important;min-width:150px;box-shadow:none!important}.fm-break .fm-main{color:#14302c!important}' +
     '.fm .fm-btns button:not(.fm-main){background:transparent!important;color:#e4e0ff!important;border:1px solid rgba(255,255,255,.3)!important;padding:12px 18px!important;font-size:15px!important;min-height:54px!important;box-shadow:none!important}' +
     '.fm-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:12.5px;color:#cfcae8;min-height:24px}.fm-hint{text-align:right}.fm .fm-wake{display:flex!important;align-items:center;gap:6px;white-space:nowrap;color:#cfcae8!important;margin:0!important;font-weight:500!important;font-size:12.5px!important}.fm-wake[hidden]{display:none!important}.fm-wake input{width:18px;height:18px;min-height:0}' +
