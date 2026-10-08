@@ -71,3 +71,18 @@ services:
       interval: 30s
       timeout: 5s
       retries: 3
+  ollama:
+    # 무료 AI(오픈소스 모델). GitHub 변수 FC_OLLAMA_MODEL 이 있을 때만 --profile ollama 로 기동. 외부 포트 없음(live만 접근)
+    profiles: [ollama]
+    image: ollama/ollama:latest
+    restart: unless-stopped
+    environment:
+      OLLAMA_KEEP_ALIVE: 24h
+      OLLAMA_NUM_PARALLEL: '1'
+      OLLAMA_MAX_LOADED_MODELS: '1'
+    volumes:
+      - ./ollama-data:/root/.ollama
+    mem_limit: ${OLLAMA_MEM:-4g}
+    cpus: ${OLLAMA_CPUS:-2}
+    security_opt:
+      - no-new-privileges:true

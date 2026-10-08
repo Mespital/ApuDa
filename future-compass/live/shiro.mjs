@@ -65,17 +65,29 @@ export async function askOpenAI({ apiKey, model, payload, timeoutMs = 25000 }) {
   if (!r.ok) { const e = new Error('upstream'); e.status = r.status; throw e; }
   return clip(((j.choices || [])[0] || {}).message?.content || '', 2000).trim();
 }
-// 어떤 AI를 쓸지: FC_CHAT_PROVIDER=openai|claude 로 고정 가능, 아니면 있는 키로 (둘 다면 Claude 먼저, 실패 시 ChatGPT)
+// 무료: VPS에 직접 띄운 오픈소스 모델(Ollama). OLLAMA_MODEL 이 있을 때. CPU라 느려서 답을 짧게
+export async function askOllama({ base, model, payload, timeoutMs = 100000 }) {
+  const r = await fetch((base || 'http://ollama:11434').replace(/\/$/, '') + '/v1/chat/completions', {
+    method: 'POST', headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ model, max_tokens: 380, temperature: 0.4, messages: [{ role: 'system', content: payload.system + '\n반드시 한국어로, 4문장 이내로 답해.' }, ...payload.messages] }),
+    signal: AbortSignal.timeout(timeoutMs)
+  });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) { const e = new Error('upstream'); e.status = r.status; throw e; }
+  return clip(((j.choices || [])[0] || {}).message?.content || '', 2000).replace(/<think>[\s\S]*?<\/think>/g, '').trim();
+}
+// 어떤 AI를 쓸지: FC_CHAT_PROVIDER=ollama|openai|claude 로 고정 가능, 아니면 있는 것 순서대로 (Claude → ChatGPT → 무료 Ollama)
 export async function askAI(env, payload, timeoutMs) {
-  const prov = (env.FC_CHAT_PROVIDER || '').toLowerCase(), ak = env.ANTHROPIC_API_KEY, ok = env.OPENAI_API_KEY;
-  const order = prov === 'openai' ? ['o', 'c'] : prov === 'claude' ? ['c', 'o'] : ['c', 'o'];
+  const prov = (env.FC_CHAT_PROVIDER || '').toLowerCase(), ak = env.ANTHROPIC_API_KEY, ok = env.OPENAI_API_KEY, lm = env.OLLAMA_MODEL;
+  const order = prov === 'ollama' ? ['l', 'c', 'o'] : prov === 'openai' ? ['o', 'c', 'l'] : ['c', 'o', 'l'];
   let last;
   for (const w of order) {
     try {
       if (w === 'c' && ak) return await askClaude({ apiKey: ak, model: env.FC_CHAT_MODEL, payload, timeoutMs });
       if (w === 'o' && ok) return await askOpenAI({ apiKey: ok, model: env.FC_OPENAI_MODEL, payload, timeoutMs });
+      if (w === 'l' && lm) return await askOllama({ base: env.OLLAMA_URL, model: lm, payload });
     } catch (e) { last = e; }
   }
   throw last || Object.assign(new Error('no_ai'), { status: 0 });
 }
-export const hasAI = env => !!(env.ANTHROPIC_API_KEY || env.OPENAI_API_KEY);
+export const hasAI = env => !!(env.ANTHROPIC_API_KEY || env.OPENAI_API_KEY || env.OLLAMA_MODEL);

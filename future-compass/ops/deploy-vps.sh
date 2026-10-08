@@ -21,7 +21,7 @@ chmod 600 "$work/key" "$work/known_hosts"
 tar -czf "$work/site.tgz" -C future-compass/dist .
 tar -czf "$work/auth.tgz" -C future-compass/auth .
 tar -czf "$work/live.tgz" -C future-compass/live .
-printf 'FC_LIVE_SECRET=%s\nANTHROPIC_API_KEY=%s\nOPENAI_API_KEY=%s\nFC_CHAT_PROVIDER=%s\nFC_OPENAI_MODEL=%s\n' "${FC_LIVE_SECRET:-}" "${ANTHROPIC_API_KEY:-}" "${OPENAI_API_KEY:-}" "${FC_CHAT_PROVIDER:-}" "${FC_OPENAI_MODEL:-}" > "$work/live.env"
+printf 'FC_LIVE_SECRET=%s\nANTHROPIC_API_KEY=%s\nOPENAI_API_KEY=%s\nFC_CHAT_PROVIDER=%s\nFC_OPENAI_MODEL=%s\nOLLAMA_MODEL=%s\nOLLAMA_URL=http://ollama:11434\n' "${FC_LIVE_SECRET:-}" "${ANTHROPIC_API_KEY:-}" "${OPENAI_API_KEY:-}" "${FC_CHAT_PROVIDER:-}" "${FC_OPENAI_MODEL:-}" "${FC_OLLAMA_MODEL:-}" > "$work/live.env"
 chmod 600 "$work/live.env"
 trap 'echo "::error::deploy-vps.sh failed at line $LINENO"' ERR
 cp future-compass/ops/compose.yaml future-compass/ops/Caddyfile "$work/"
@@ -34,6 +34,12 @@ ssh "${ssh_opts[@]}" "$VPS_USER@$VPS_HOST" 'set -eu; test "$(curl -s -o /dev/nul
 echo 'VPS app serving on loopback port 8092. Public HTTPS routing remains separate.'  >> "${GITHUB_STEP_SUMMARY:-/dev/stdout}"
 
 # ── 실시간 중계 + 흰둥이 똑똑 모드 (위 compose up 에서 같이 기동) ──
+# 무료 AI(Ollama): FC_OLLAMA_MODEL 이 있을 때만. 모델은 처음 한 번 내려받음(수 GB)
+ssh "${ssh_opts[@]}" "$VPS_USER@$VPS_HOST" 'echo "vps: cpu $(nproc) · mem $(free -m | awk "/Mem:/{print \$2\"MB total, \"\$7\"MB free\"}") · disk $(df -h "$HOME" | awk "NR==2{print \$4\" free\"}")"' 2>&1 | sed 's/^/::notice::/' || true
+if [ -n "${FC_OLLAMA_MODEL:-}" ]; then
+  [[ "$FC_OLLAMA_MODEL" =~ ^[a-zA-Z0-9._:/-]+$ ]] || exit 2
+  ssh "${ssh_opts[@]}" "$VPS_USER@$VPS_HOST" "cd \"\$HOME/future-compass\"; mkdir -p ollama-data; OLLAMA_MEM='${OLLAMA_MEM:-4g}' docker compose -p future-compass -f compose.yaml --profile ollama up -d ollama >/dev/null 2>&1; for i in 1 2 3 4 5 6 7 8 9 10; do docker compose -p future-compass -f compose.yaml exec -T ollama ollama list >/dev/null 2>&1 && break; sleep 3; done; timeout 1500 docker compose -p future-compass -f compose.yaml exec -T ollama ollama pull '$FC_OLLAMA_MODEL' 2>&1 | tail -1; echo \"ollama models: \$(docker compose -p future-compass -f compose.yaml exec -T ollama ollama list 2>&1 | tail -n +2 | awk '{print \$1\" \"\$3\$4}' | tr '\\n' ' ')\"" 2>&1 | tr -d '\r' | grep -v '^$' | tail -2 | sed 's/^/::notice::/' || echo '::warning::ollama step failed'
+fi
 live_out=$(ssh "${ssh_opts[@]}" "$VPS_USER@$VPS_HOST" 'cd "$HOME/future-compass"; docker compose -p future-compass -f compose.yaml up -d --force-recreate live 2>&1 | tail -2 | tr "\n" " "; curl -s --retry 10 --retry-delay 2 --retry-all-errors http://127.0.0.1:8093/health || docker logs --tail 5 future-compass-live-1 2>&1 | tr "\n" " "' 2>&1 || true)
 printf "live relay: %s\n" "${live_out:0:400}" | tr -d "\r" | sed "s/^/::notice::/"
 # 공개 주소: DNS(live.apuda.app 등)가 이 VPS를 가리킬 때만 Caddy 끝에 블록 추가 (기존 블록은 그대로, validate 통과 시에만 reload)
