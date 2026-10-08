@@ -142,7 +142,11 @@
     gate.querySelector('.pin-rec-input').addEventListener('input', function (e) { e.target.value = e.target.value.replace(/\D/g, '').slice(0, 6); if (e.target.value.length === 6) checkCode(); });
 
     gate.querySelector('.pin-cancel-change').addEventListener('click', function () { changing = false; gate.remove(); root.classList.remove('pin-locked'); });
-    mode = (typeof startMode === 'string' && startMode) || (readStored() ? 'unlock' : 'setup1');
+    var st0 = readStored(), joined0 = window.FamilySync && FamilySync.joined();
+    // 우리 가족 전용: 어느 기기든 같은 가족 비밀번호. 이 기기가 아직 가족에 연결 안 됐으면 가족 비밀번호부터
+    mode = (typeof startMode === 'string' && startMode) || (st0 && (joined0 || !window.FamilySync) ? 'unlock' : window.FamilySync ? 'family' : (st0 ? 'unlock' : 'setup1'));
+    if (mode === 'family' && !startMode) familyBack = st0 ? 'unlock' : 'setup1';
+    if (mode === 'family' && window.FamilySync) FamilySync.status().then(function (j) { if (j && j._ok && j.enabled === false && mode === 'family' && !entered) { mode = 'init1'; showMode(); } });
     if (changing) gate.querySelector('.pin-cancel-change').hidden = false;
     showMode();
     if (mode === 'who') showWho('', false);
@@ -153,14 +157,16 @@
     for (var i = 0; i < 4; i++) dotsEl[i].classList.toggle('on', i < entered.length);
     var input = gate.querySelector('#pin-input'); if (input.value !== entered) input.value = entered;
   }
-  var familyBack = '';
+  var familyBack = '', oldPin = '';
   function showMode(extra) {
     entered = ''; sync();
     forgotEl.hidden = mode !== 'unlock';
     var fb = gate.querySelector('.pin-family');
-    fb.hidden = !((mode === 'setup1' && !changing && !recovering) || (mode === 'unlock' && !changing && window.FamilySync && !FamilySync.joined()) || mode === 'family');
+    fb.hidden = !((mode === 'setup1' && !changing && !recovering) || (mode === 'unlock' && !changing && window.FamilySync && !FamilySync.joined()) || (mode === 'family' && readStored() && !(window.FamilySync && FamilySync.joined())));
     fb.textContent = mode === 'family' ? '← 이 기기만 쓰는 비밀번호로' : '👨‍👩‍👧 가족 비밀번호로 들어가기';
-    if (mode === 'family') { titleEl.textContent = '가족 비밀번호 4자리'; msgEl.textContent = extra || '보호자가 정한 가족 비밀번호야. 들어오면 가족과 같은 기록을 함께 써.'; checkLock(); return; }
+    if (mode === 'family') { titleEl.textContent = '우리 가족 비밀번호 4자리'; msgEl.textContent = extra || '어느 폰에서든 같은 번호야. 들어오면 시간표·기록·캐릭터가 모두 똑같이 맞춰져.'; checkLock(); return; }
+    if (mode === 'init1') { fb.hidden = true; titleEl.textContent = '우리 가족 비밀번호를 정해줘'; msgEl.textContent = extra || '처음 한 번만 정하면 돼. 다른 폰에서도 이 번호로 들어와.'; return; }
+    if (mode === 'init2') { fb.hidden = true; titleEl.textContent = '한 번 더 입력해줘'; msgEl.textContent = extra || '같은 숫자 4자리를 다시 눌러줘.'; return; }
     if (mode === 'setup1') { titleEl.textContent = '사용할 비밀번호 4자리를 정해줘'; msgEl.textContent = extra || '잊어버려도 보호자 메일로 되찾을 수 있어.'; }
     if (mode === 'setup2') { titleEl.textContent = '한 번 더 입력해줘'; msgEl.textContent = extra || '같은 숫자 4자리를 다시 눌러줘.'; }
     if (mode === 'unlock') { titleEl.textContent = changing ? '지금 쓰는 비밀번호를 입력해줘' : '비밀번호 4자리를 입력해줘'; msgEl.textContent = extra || (changing ? '확인되면 새 번호를 정할 수 있어.' : ''); }
@@ -207,6 +213,22 @@
       });
       return;
     }
+    if (mode === 'init1') { firstPin = pin; mode = 'init2'; showMode(); return; }
+    if (mode === 'init2') {
+      if (pin !== firstPin) { mode = 'init1'; firstPin = ''; showMode('두 번 입력한 숫자가 달라. 처음부터 다시 정해줘.'); shake(msgEl.textContent); return; }
+      busy = true; msgEl.textContent = '저장하는 중…';
+      FamilySync.init(pin).then(function (j) {
+        busy = false;
+        if (j.error === 'exists') { mode = 'family'; showMode('이미 우리 가족 비밀번호가 있어. 그 번호를 입력해줘.'); return; }
+        if (!j._ok) { mode = 'init1'; firstPin = ''; showMode(j.error === 'network' ? '인터넷 연결을 확인해줘.' : '저장하지 못했어. 잠시 뒤 다시 해줘.'); return; }
+        var salt1 = newSalt();
+        hashPin(pin, salt1).then(function (h) {
+          lsSet(PIN_KEY, JSON.stringify({ salt: salt1, hash: h, v: 1, family: true, at: new Date().toISOString() })); lsDel(FAIL_KEY);
+          showWho('우리 가족 비밀번호를 정했어. 다른 폰에서도 이 번호로 들어오면 돼.', true);
+        });
+      });
+      return;
+    }
     if (mode === 'setup1') { firstPin = pin; mode = 'setup2'; showMode(); return; }
     if (mode === 'setup2') {
       if (pin !== firstPin) { mode = 'setup1'; firstPin = ''; showMode('두 번 입력한 숫자가 달라. 처음부터 다시 정해줘.'); shake(msgEl.textContent); return; }
@@ -217,6 +239,12 @@
           busy = false; mode = 'setup1'; showMode('저장하지 못했어. 브라우저의 사이트 데이터 저장이 꺼져 있는지 확인해줘.'); return;
         }
         lsDel(FAIL_KEY);
+        if (window.FamilySync && FamilySync.joined() && (changing || recovering)) {
+          var body = { action: 'change', pin: pin }; if (oldPin) body.old = oldPin;
+          FamilySync.call(body).then(function (j) { toast(j && j._ok ? '가족 모든 폰의 비밀번호가 새 번호로 바뀌었어.' : '이 폰만 바뀌었어. 인터넷 연결 후 다시 바꿔줘.'); });
+          try { var st2 = readStored(); st2.family = true; lsSet(PIN_KEY, JSON.stringify(st2)); } catch (e) {}
+        }
+        oldPin = '';
         busy = false; var wasChanging = changing || recovering; pendingNotice = wasChanging ? '새 비밀번호로 바꿨어. 기록은 그대로야.' : '비밀번호를 저장했어. 다음부터 이 번호로 들어오면 돼.';
         if (recovering && readQA()) { finishSetup(); return; }
         showQASetup();
@@ -228,14 +256,31 @@
       var stored = readStored();
       if (!stored) { mode = 'setup1'; showMode(); return; }
       busy = true;
+      var okPin = function () { lsDel(FAIL_KEY); if (changing) { oldPin = pin; mode = 'setup1'; showMode('기록은 그대로 두고 번호만 바꿔. 가족 모든 폰에 같이 적용돼.'); return; } unlock(); };
+      if (window.FamilySync && FamilySync.joined()) {
+        msgEl.textContent = '확인하는 중…';
+        FamilySync.call({ action: 'verify', pin: pin }).then(function (j) {
+          if (j && j._ok) {   // 가족 비밀번호가 다른 폰에서 바뀌었어도 새 번호로 들어오면 이 폰도 맞춰짐
+            var salt2 = newSalt(); hashPin(pin, salt2).then(function (h2) { lsSet(PIN_KEY, JSON.stringify({ salt: salt2, hash: h2, v: 1, family: true, at: new Date().toISOString() })); busy = false; okPin(); }); return;
+          }
+          if (j && j.error === 'wrong_pin') { busy = false; shake('비밀번호가 달라.' + (j.left != null ? ' (남은 기회 ' + j.left + '번)' : '')); return; }
+          if (j && j.error === 'locked') { busy = false; shake('여러 번 틀려서 ' + (j.retryMin || 15) + '분 동안 막혔어.'); return; }
+          if (j && j.error === 'rejoin') { busy = false; try { localStorage.removeItem('fc-family-v1'); } catch (e) {} mode = 'family'; showMode('가족 비밀번호가 새로 정해졌어. 새 번호로 들어와줘.'); return; }
+          localCheck();   // 인터넷이 안 되면 이 폰에 저장된 번호로
+        });
+        return;
+      }
+      localCheck();
+      function localCheck() {
       hashPin(pin, stored.salt).then(function (h) {
         busy = false;
-        if (h === stored.hash) { lsDel(FAIL_KEY); if (changing) { mode = 'setup1'; showMode('기록은 그대로 두고 번호만 바꿔.'); return; } unlock(); return; }
+        if (h === stored.hash) { okPin(); return; }
         var f = failState(); f.n = (f.n || 0) + 1;
         if (f.n >= MAX_FAIL) { f = { n: 0, until: Date.now() + LOCK_MS }; lsSet(FAIL_KEY, JSON.stringify(f)); shake(''); checkLock(); return; }
         lsSet(FAIL_KEY, JSON.stringify(f));
         shake('비밀번호가 달라. (' + f.n + '/' + MAX_FAIL + ')');
       });
+      }
     }
   }
 

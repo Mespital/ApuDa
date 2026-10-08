@@ -50,7 +50,20 @@ export default async (req) => {
 
   if (b.action === 'push-key') { const k = await vapid(store); return json({ key: k.publicKey }); }   // 공개키만
 
+  // 처음 한 번: 가족 비밀번호가 아직 없으면 첫 기기에서 바로 정한다(우리 가족 전용). 이미 있으면 거절
+  if (b.action === 'init') {
+    if (cfg) return json({ error: 'exists' }, 409);
+    if (!pinOk(b.pin)) return json({ error: 'bad_pin' }, 400);
+    const salt = randomBytes(16).toString('hex');
+    const next = { salt, hash: hashPin(b.pin, salt), pv: 1, at: new Date(now).toISOString(), by: 'init' };
+    await store.setJSON('config', next);
+    const tok = randomBytes(24).toString('hex');
+    await store.setJSON('tok:' + sha(tok), { pv: 1, device: String(b.device || '').slice(0, 8), at: new Date(now).toISOString() });
+    return json({ ok: true, token: tok, pv: 1 });
+  }
+
   if (!cfg) return json({ error: 'not_enabled' }, 404);
+  const pinMatch = p => { const want = Buffer.from(cfg.hash, 'hex'), got = Buffer.from(hashPin(p, cfg.salt), 'hex'); return want.length === got.length && timingSafeEqual(want, got); };
 
   if (b.action === 'join') {
     const fails = ((await store.get('fails', { type: 'json' })) || []).filter(t => now - t < FAIL_WINDOW);
@@ -73,6 +86,23 @@ export default async (req) => {
   const data = (await store.get('data', { type: 'json' })) || {};
 
   if (b.action === 'pull') return json({ data, pv: cfg.pv });
+
+  // 가족 비밀번호 확인(어느 기기든 같은 번호) · 바꾸기(한 번 바꾸면 모든 기기에 적용, 기기 연결은 유지)
+  if (b.action === 'verify' || b.action === 'change') {
+    const fails = ((await store.get('fails', { type: 'json' })) || []).filter(t => now - t < FAIL_WINDOW);
+    if (fails.length >= FAIL_LIMIT) return json({ error: 'locked', retryMin: Math.ceil((FAIL_WINDOW - (now - fails[0])) / 60000) }, 429);
+    const check = b.action === 'verify' ? b.pin : b.old;
+    if (check != null || b.action === 'verify') {
+      if (!pinOk(check)) return json({ error: 'bad_pin' }, 400);
+      if (!pinMatch(check)) { await store.setJSON('fails', [...fails, now]); return json({ error: 'wrong_pin', left: FAIL_LIMIT - fails.length - 1 }, 401); }
+      if (fails.length) await store.setJSON('fails', []);
+    }
+    if (b.action === 'verify') return json({ ok: true });
+    if (!pinOk(b.pin)) return json({ error: 'bad_pin' }, 400);
+    const salt = randomBytes(16).toString('hex');
+    await store.setJSON('config', { ...cfg, salt, hash: hashPin(b.pin, salt), at: new Date(now).toISOString(), by: 'change' });
+    return json({ ok: true });
+  }
 
   // 폰 알림(웹 푸시): 구독 저장·해제, 다른 가족에게 보내기(시간당 20회 제한), 테스트
   if (b.action === 'push-sub' || b.action === 'push-unsub' || b.action === 'push-send' || b.action === 'push-test') {

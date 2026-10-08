@@ -69,6 +69,8 @@
         var s = j.data[k], cur = get(k);
         if (!s || typeof s.v !== 'string') return;
         if (cur === s.v) { meta[k] = { h: hash(cur), t: Math.max(s.t, meta[k] ? meta[k].t : 0) }; return; }
+        // 처음 연결할 때: 이 기기 기록이 서버보다 훨씬 많으면(아이 폰) 빈 기록으로 덮어쓰지 않고 이 기기 것을 올린다
+        if (first && cur !== null && cur.length > s.v.length * 1.3 + 200) { set('fc-family-server-' + k, s.v); delete meta[k]; return; }
         if (first || !meta[k] || s.t > meta[k].t) {
           if (first && cur !== null) set('fc-family-before-' + k, cur);    // 처음 합칠 때 이 기기 값은 따로 보관
           set(k, s.v); meta[k] = { h: hash(s.v), t: s.t }; applied++;
@@ -100,6 +102,12 @@
       return j;
     });
   }
+  function init(pin) {
+    return api({ action: 'init', pin: pin, device: device() }).then(function (j) {
+      if (j._ok && j.token) { set(FAM, JSON.stringify({ token: j.token, pv: j.pv, joined: new Date().toISOString(), role: '' })); try { localStorage.removeItem(META); } catch (e) {} }
+      return j;
+    });
+  }
   function setRole(role) {
     var f = fam(); if (!f) return; f.role = role; set(FAM, JSON.stringify(f));
     if (role === 'parent') set('fc-usage-optout', '1'); else { try { localStorage.removeItem('fc-usage-optout'); } catch (e) {} }
@@ -107,7 +115,7 @@
   function status() { return api({ action: 'status' }); }
 
   function call(body) { var f = fam(); if (!f) return Promise.resolve({ _ok: false, error: 'not_joined' }); body.token = f.token; return api(body); }
-  g.FamilySync = { call: call, join: join, setRole: setRole, status: status, start: start, joined: function () { return !!fam(); }, role: function () { var f = fam(); return f ? f.role : ''; }, pushNow: push, KEYS: KEYS };
+  g.FamilySync = { call: call, join: join, init: init, setRole: setRole, status: status, start: start, joined: function () { return !!fam(); }, role: function () { var f = fam(); return f ? f.role : ''; }, pushNow: push, KEYS: KEYS };
   if (!document.documentElement.classList.contains('pin-locked')) start(false);
   window.addEventListener('pin-unlocked', function () { start(false); });
 })(window);
