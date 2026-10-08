@@ -86,3 +86,4 @@ body.app .tt tr.ac td{font-size:.85em}
 body.app .card:has(.tt){padding:14px 8px 10px}
 body.app .card:has(.tt) h2{padding:0 6px}
 @media(max-width:374px){body.app .tt td small{display:none}}
+@media (max-width:400px){.appbar{gap:4px;padding-left:12px;padding-right:8px}.ab-icon{width:36px;height:40px;font-size:19px}.ab-title b{font-size:15.5px}.ab-title small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
