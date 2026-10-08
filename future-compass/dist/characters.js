@@ -80,9 +80,13 @@
     return '<svg class="fc-char" width="' + size + '" height="' + Math.round(size * 140 / 120) + '" viewBox="0 0 120 140" role="img" aria-label="' + label + '">' + (role === 'parent' ? parent() : child()) + '</svg>';
   }
   /* 프로필 그림: 설정에서 고른 그림(이 기기 + 가족 공유)이 있으면 그걸, 없으면 기본 캐릭터 */
-  var AV = 'fc_avatar_v1';
-  function avMap() { try { var v = JSON.parse(localStorage.getItem(AV) || '{}'); return v && typeof v === 'object' ? v : {}; } catch (e) { return {}; } }
-  function custom(role) { var u = avMap()[role === 'parent' ? 'parent' : 'child']; return typeof u === 'string' && /^data:image\/(png|jpeg|webp|gif);base64,/.test(u) ? u : ''; }
+  /* 승준·엄마 그림을 따로 저장 → 가족 공유로 각 그림이 따로 맞춰져서, 다른 폰에서 바꿔도 서로 덮어쓰지 않아 */
+  var AV = 'fc_avatar_v1', RK = { child: 'fc_av_child_v1', parent: 'fc_av_parent_v1' };
+  function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function oldMap() { try { var v = JSON.parse(lsGet(AV) || '{}'); return v && typeof v === 'object' ? v : {}; } catch (e) { return {}; } }
+  function okUrl(u) { return typeof u === 'string' && /^data:image\/(png|jpeg|webp|gif);base64,/.test(u) ? u : ''; }
+  (function migrate() { var m = oldMap(); ['child', 'parent'].forEach(function (r) { if (lsGet(RK[r]) === null && okUrl(m[r])) { try { localStorage.setItem(RK[r], m[r]); } catch (e) {} } }); })();
+  function custom(role) { var r = role === 'parent' ? 'parent' : 'child', v = lsGet(RK[r]); if (v !== null) return okUrl(v); return okUrl(oldMap()[r]); }
   /* 고른 그림을 움직이는 SVG로 감싸기: 콩콩 뛰기 + 살짝 흔들기 + 그림자 (+ 엄마는 하트, 승준은 반짝이) */
   var AV_STYLE = '<style>' +
     '.fca-hop{animation:fcaHop 1.9s cubic-bezier(.3,.7,.4,1) infinite;transform-origin:60px 134px}' +
@@ -105,6 +109,11 @@
       (small ? '' : '<ellipse class="fca-shadow" cx="60" cy="135" rx="30" ry="4" fill="#2a2060"/>') + deco +
       '<g class="' + (small ? '' : 'fca-sway') + '"><g class="' + (small ? '' : 'fca-hop') + '"><image href="' + u + '" x="4" y="4" width="112" height="130" preserveAspectRatio="xMidYMax meet"/></g></g></svg>';
   }
-  function setAvatar(role, url) { var m = avMap(); if (url) m[role] = url; else delete m[role]; try { localStorage.setItem(AV, JSON.stringify(m)); return true; } catch (e) { return false; } }
-  g.FC_CHAR = { svg: svg, avatar: avatar, custom: custom, setAvatar: setAvatar, KEY: AV, name: function (r) { return r === 'parent' ? '엄마' : '승준'; } };
+  function setAvatar(role, url) {
+    var r = role === 'parent' ? 'parent' : 'child';
+    try { localStorage.setItem(RK[r], url ? url : 'none'); } catch (e) { return false; }   // 'none' = 기본 캐릭터 (지운 것도 다른 폰에 전달)
+    try { var m = oldMap(); if (m[r]) { delete m[r]; localStorage.setItem(AV, JSON.stringify(m)); } } catch (e) {}
+    return true;
+  }
+  g.FC_CHAR = { svg: svg, avatar: avatar, custom: custom, setAvatar: setAvatar, KEY: AV, KEYS: [RK.child, RK.parent], name: function (r) { return r === 'parent' ? '엄마' : '승준'; } };
 })(window);
