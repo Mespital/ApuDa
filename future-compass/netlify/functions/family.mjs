@@ -6,6 +6,8 @@
 import { getStore } from '@netlify/blobs';
 import { scryptSync, randomBytes, createHash, timingSafeEqual } from 'node:crypto';
 import { vapid, getSubs, cleanSub, cleanPrefs, sendTo } from '../lib/push-core.mjs';
+import { createHmac } from 'node:crypto';
+import { buildPayload, askClaude, validQuestion } from '../../live/shiro.mjs';
 
 export const KEYS = ['compass-study-v1', 'compass-study-plus-v1', 'fc_academy_v1', 'fc_teachers_v1', 'fc_offdays_v1', 'fc_preview_v1',
   'fc_hub_posts', 'compass-know-me-v1', 'compass-career-lab', 'compass-career-depth', 'future-compass-v2', 'fc_school_class', 'fc_places_v1', 'fc_avatar_v1', 'fc_planner_v1', 'fc_notes_v1', 'fc_cheer_v1', 'fc_mom_v1', 'fc_kid_v1', 'fc_life_v1', 'fc_av_child_v1', 'fc_av_parent_v1'];
@@ -92,7 +94,28 @@ export default async (req) => {
   if (!rec || rec.pv !== cfg.pv) return json({ error: 'rejoin', pv: cfg.pv }, 401);
   const data = (await store.get('data', { type: 'json' })) || {};
 
-  if (b.action === 'pull') return json({ data, pv: cfg.pv });
+  // VPS 실시간 중계 티켓(24시간) + 흰둥이 똑똑 모드 사용 가능 여부
+  const live = () => {
+    const url = env('FC_LIVE_URL').replace(/\/$/, ''), sec = env('FC_LIVE_SECRET');
+    const out = { ai: !!(env('ANTHROPIC_API_KEY') || (url && sec)) };
+    if (/^https:\/\//.test(url) && sec.length >= 24) { const exp = now + 86400000; out.url = url; out.t = exp + '.fam.' + createHmac('sha256', sec).update(exp + '.fam').digest('hex'); }
+    return out;
+  };
+  if (b.action === 'pull') return json({ data, pv: cfg.pv, live: live() });
+  if (b.action === 'live') return json({ ok: true, live: live() });
+
+  // 흰둥이 똑똑 모드 (Netlify에서 바로: ANTHROPIC_API_KEY 가 Netlify 환경변수에 있을 때)
+  if (b.action === 'chat') {
+    const key = env('ANTHROPIC_API_KEY'); if (!key) return json({ error: 'no_ai' }, 503);
+    if (!validQuestion(b.q)) return json({ error: 'bad_q' }, 400);
+    const log = ((await store.get('chat-rate', { type: 'json' })) || []).filter(t => now - t < 86400000);
+    if (log.filter(t => now - t < 3600000).length >= 60 || log.length >= 300) return json({ error: 'rate' }, 429);
+    await store.setJSON('chat-rate', [...log, now]);
+    try {
+      const text = await askClaude({ apiKey: key, model: env('FC_CHAT_MODEL'), payload: buildPayload({ role: b.role === 'parent' ? 'parent' : 'child', q: b.q, history: b.history, ctx: b.ctx, guide: b.guide }), timeoutMs: 20000 });
+      return json({ ok: true, text });
+    } catch (e) { return json({ error: 'ai', status: e.status || 0 }, 502); }
+  }
 
   // 가족 비밀번호 확인(어느 기기든 같은 번호) · 바꾸기(한 번 바꾸면 모든 기기에 적용, 기기 연결은 유지)
   if (b.action === 'verify' || b.action === 'change') {
