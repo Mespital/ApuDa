@@ -32,7 +32,14 @@ export default async (req) => {
   if (req.method !== 'POST') return json({ error: 'method' }, 405);
   const store = getStore({ name: 'family', consistency: 'strong' });
   let b; try { b = JSON.parse(await req.text()); } catch { return json({ error: 'bad_request' }, 400); }
-  const cfg = (await store.get('config', { type: 'json' })) || null;
+  let cfg = (await store.get('config', { type: 'json' })) || null;
+  // Netlify 환경변수 FC_FAMILY_PIN 이 있으면 그 번호가 우리 가족 비밀번호 (기기 연결은 유지)
+  const envPin = env('FC_FAMILY_PIN');
+  if (pinOk(envPin) && (!cfg || hashPin(envPin, cfg.salt) !== cfg.hash)) {
+    const salt = randomBytes(16).toString('hex');
+    cfg = { ...(cfg || { pv: 1 }), salt, hash: hashPin(envPin, salt), at: new Date().toISOString(), by: 'env' };
+    await store.setJSON('config', cfg);
+  }
   const now = Date.now();
 
   if (b.action === 'status') return json({ enabled: !!cfg, pv: cfg ? cfg.pv : 0 });
@@ -98,6 +105,7 @@ export default async (req) => {
       if (fails.length) await store.setJSON('fails', []);
     }
     if (b.action === 'verify') return json({ ok: true });
+    if (pinOk(envPin)) return json({ error: 'managed' }, 409);   // 번호는 Netlify 환경변수로 관리 중
     if (!pinOk(b.pin)) return json({ error: 'bad_pin' }, 400);
     const salt = randomBytes(16).toString('hex');
     await store.setJSON('config', { ...cfg, salt, hash: hashPin(b.pin, salt), at: new Date(now).toISOString(), by: 'change' });

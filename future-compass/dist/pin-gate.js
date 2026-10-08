@@ -144,8 +144,9 @@
     gate.querySelector('.pin-cancel-change').addEventListener('click', function () { changing = false; gate.remove(); root.classList.remove('pin-locked'); });
     var st0 = readStored(), joined0 = window.FamilySync && FamilySync.joined();
     // 우리 가족 전용: 어느 기기든 같은 가족 비밀번호. 이 기기가 아직 가족에 연결 안 됐으면 가족 비밀번호부터
-    mode = (typeof startMode === 'string' && startMode) || (st0 && (joined0 || !window.FamilySync) ? 'unlock' : window.FamilySync ? 'family' : (st0 ? 'unlock' : 'setup1'));
-    if (mode === 'family' && !startMode) familyBack = st0 ? 'unlock' : 'setup1';
+    // 이 폰에 번호가 있으면 그 번호로(맞으면 같은 번호로 가족 공유까지 자동 연결), 없으면 우리 가족 비밀번호부터
+    mode = (typeof startMode === 'string' && startMode) || (st0 ? 'unlock' : window.FamilySync ? 'family' : 'setup1');
+    if (mode === 'family' && !startMode) familyBack = 'setup1';
     if (mode === 'family' && window.FamilySync) FamilySync.status().then(function (j) { if (j && j._ok && j.enabled === false && mode === 'family' && !entered) { mode = 'init1'; showMode(); } });
     if (changing) gate.querySelector('.pin-cancel-change').hidden = false;
     showMode();
@@ -241,7 +242,7 @@
         lsDel(FAIL_KEY);
         if (window.FamilySync && FamilySync.joined() && (changing || recovering)) {
           var body = { action: 'change', pin: pin }; if (oldPin) body.old = oldPin;
-          FamilySync.call(body).then(function (j) { toast(j && j._ok ? '가족 모든 폰의 비밀번호가 새 번호로 바뀌었어.' : '이 폰만 바뀌었어. 인터넷 연결 후 다시 바꿔줘.'); });
+          FamilySync.call(body).then(function (j) { toast(j && j._ok ? '가족 모든 폰의 비밀번호가 새 번호로 바뀌었어.' : j && j.error === 'managed' ? '가족 번호는 보호자 설정(Netlify FC_FAMILY_PIN)으로 고정돼 있어. 거기서 바꿔줘.' : '이 폰만 바뀌었어. 인터넷 연결 후 다시 바꿔줘.'); });
           try { var st2 = readStored(); st2.family = true; lsSet(PIN_KEY, JSON.stringify(st2)); } catch (e) {}
         }
         oldPin = '';
@@ -256,7 +257,7 @@
       var stored = readStored();
       if (!stored) { mode = 'setup1'; showMode(); return; }
       busy = true;
-      var okPin = function () { lsDel(FAIL_KEY); if (changing) { oldPin = pin; mode = 'setup1'; showMode('기록은 그대로 두고 번호만 바꿔. 가족 모든 폰에 같이 적용돼.'); return; } unlock(); };
+      var okPin = function () { lsDel(FAIL_KEY); autoLink(pin); if (changing) { oldPin = pin; mode = 'setup1'; showMode('기록은 그대로 두고 번호만 바꿔. 가족 모든 폰에 같이 적용돼.'); return; } unlock(); };
       if (window.FamilySync && FamilySync.joined()) {
         msgEl.textContent = '확인하는 중…';
         FamilySync.call({ action: 'verify', pin: pin }).then(function (j) {
@@ -282,6 +283,23 @@
       });
       }
     }
+  }
+
+  /* 이 폰 번호로 들어오면 같은 번호로 가족 공유 자동 연결 (가족 번호가 아직 없으면 이 번호로 정함) */
+  function autoLink(pin) {
+    if (!window.FamilySync || FamilySync.joined() || changing) return;
+    FamilySync.join(pin).then(function (j) {
+      if (j && j._ok) return j;
+      if (j && j.error === 'not_enabled') return FamilySync.init(pin);
+      return j;
+    }).then(function (j) {
+      if (j && j._ok) {
+        try { var st = readStored(); st.family = true; lsSet(PIN_KEY, JSON.stringify(st)); } catch (e) {}
+        var w = getWho(); if (w) FamilySync.setRole(w);
+        whoFamily = true;
+        if (!gate || !gate.isConnected) { FamilySync.start(true); toast('가족 공유 연결 완료 👨‍👩‍👧 이제 어느 폰에서든 이 번호로 똑같이 보여.'); }
+      } else if (j && j.error === 'wrong_pin') toast('이 번호는 가족 비밀번호와 달라서 공유 연결은 안 됐어. ⚙️ 설정 → 가족 공유에서 가족 번호로 연결해줘.');
+    });
   }
 
   /* ---------- 나만 아는 질문 ---------- */
