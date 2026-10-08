@@ -52,3 +52,30 @@ export async function askClaude({ apiKey, model, payload, timeoutMs = 25000 }) {
 }
 
 export function validQuestion(q) { return typeof q === 'string' && q.trim().length >= 1 && q.length <= 500; }
+
+// ChatGPT(OpenAI)로 답하기 — OPENAI_API_KEY 가 있을 때. 모델은 FC_OPENAI_MODEL (기본 gpt-4o-mini)
+export async function askOpenAI({ apiKey, model, payload, timeoutMs = 25000 }) {
+  const r = await fetch('https://api.openai.com/v1/chat/completions', {
+    method: 'POST',
+    headers: { authorization: 'Bearer ' + apiKey, 'content-type': 'application/json' },
+    body: JSON.stringify({ model: model || 'gpt-4o-mini', max_tokens: 600, temperature: 0.4, messages: [{ role: 'system', content: payload.system }, ...payload.messages] }),
+    signal: AbortSignal.timeout(timeoutMs)
+  });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) { const e = new Error('upstream'); e.status = r.status; throw e; }
+  return clip(((j.choices || [])[0] || {}).message?.content || '', 2000).trim();
+}
+// 어떤 AI를 쓸지: FC_CHAT_PROVIDER=openai|claude 로 고정 가능, 아니면 있는 키로 (둘 다면 Claude 먼저, 실패 시 ChatGPT)
+export async function askAI(env, payload, timeoutMs) {
+  const prov = (env.FC_CHAT_PROVIDER || '').toLowerCase(), ak = env.ANTHROPIC_API_KEY, ok = env.OPENAI_API_KEY;
+  const order = prov === 'openai' ? ['o', 'c'] : prov === 'claude' ? ['c', 'o'] : ['c', 'o'];
+  let last;
+  for (const w of order) {
+    try {
+      if (w === 'c' && ak) return await askClaude({ apiKey: ak, model: env.FC_CHAT_MODEL, payload, timeoutMs });
+      if (w === 'o' && ok) return await askOpenAI({ apiKey: ok, model: env.FC_OPENAI_MODEL, payload, timeoutMs });
+    } catch (e) { last = e; }
+  }
+  throw last || Object.assign(new Error('no_ai'), { status: 0 });
+}
+export const hasAI = env => !!(env.ANTHROPIC_API_KEY || env.OPENAI_API_KEY);

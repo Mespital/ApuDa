@@ -79,6 +79,9 @@ jobs:
           VPS_KNOWN_HOSTS: ${{ secrets.FUTURE_VPS_KNOWN_HOSTS }}
           FC_LIVE_SECRET: ${{ secrets.FC_LIVE_SECRET }}       # 실시간·흰둥이 서버(선택). Netlify FC_LIVE_SECRET 과 같은 값
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }} # 흰둥이 똑똑 모드(선택)
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}       # 흰둥이를 ChatGPT로(선택)
+          FC_CHAT_PROVIDER: ${{ vars.FC_CHAT_PROVIDER }}       # openai 로 두면 ChatGPT 먼저
+          FC_OPENAI_MODEL: ${{ vars.FC_OPENAI_MODEL }}         # 예: gpt-4o-mini
           FUTURE_LIVE_HOST: ${{ vars.FUTURE_LIVE_HOST }}       # 예: live.apuda.app (DNS가 VPS를 가리킬 때 Caddy에 연결)
         run: |
           if [ -z "$VPS_HOST" ] || [ -z "$VPS_USER" ] || [ -z "$VPS_SSH_KEY" ]; then
