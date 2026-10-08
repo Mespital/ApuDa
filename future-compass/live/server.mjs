@@ -6,7 +6,7 @@
 // 티켓은 Netlify(family.mjs)가 가족 기기 토큰을 확인한 뒤 FC_LIVE_SECRET 으로 서명해 줌(24시간).
 // 의존성 없음 (Node 20+)
 import http from 'node:http';
-import { createHmac, timingSafeEqual } from 'node:crypto';
+import { createHmac, timingSafeEqual, createPublicKey, verify as edVerify } from 'node:crypto';
 import { buildPayload, askClaude, validQuestion } from './shiro.mjs';
 
 const PORT = Number(process.env.PORT || 8093);
@@ -14,14 +14,28 @@ const SECRET = process.env.FC_LIVE_SECRET || '';
 const API_KEY = process.env.ANTHROPIC_API_KEY || '';
 const MODEL = process.env.FC_CHAT_MODEL || '';
 const ORIGINS = (process.env.ALLOWED_ORIGINS || 'https://future.apuda.app').split(',').map(s => s.trim()).filter(Boolean);
-if (!SECRET || SECRET.length < 24) { console.error('FC_LIVE_SECRET (24자 이상) 필요'); process.exit(1); }
+// 티켓 확인: ① FC_LIVE_SECRET(선택, HMAC) 또는 ② Netlify가 만든 ed25519 공개키(자동으로 가져옴 → 비밀값 필요 없음)
+const KEY_URL = process.env.FC_KEY_URL || 'https://future.apuda.app/api/family';
+let PUB = null;
+async function loadPub() {
+  try {
+    const r = await fetch(KEY_URL, { method: 'POST', headers: { 'content-type': 'application/json' }, body: '{"action":"live-pub"}', signal: AbortSignal.timeout(8000) });
+    const j = await r.json(); if (j && typeof j.pub === 'string' && j.pub.includes('PUBLIC KEY')) { PUB = createPublicKey(j.pub); console.log('ticket key loaded'); }
+  } catch (e) { console.error('key load failed', e.message); }
+}
+loadPub(); setInterval(loadPub, PUB ? 3600000 : 600000);
+setInterval(() => { if (!PUB) loadPub(); }, 60000);
 
 export function verifyTicket(t, secret = SECRET, now = Date.now()) {
-  const m = /^(\d{10,14})\.([a-z]{1,8})\.([a-f0-9]{64})$/.exec(String(t || ''));
-  if (!m || Number(m[1]) < now) return null;
-  const want = createHmac('sha256', secret).update(m[1] + '.' + m[2]).digest();
-  const got = Buffer.from(m[3], 'hex');
-  return want.length === got.length && timingSafeEqual(want, got) ? { exp: Number(m[1]), role: m[2] } : null;
+  const m = /^(\d{10,14})\.([a-z]{1,8})\.([a-f0-9]{64}|[a-f0-9]{128})$/.exec(String(t || ''));
+  if (!m || Number(m[1]) < now || Number(m[1]) > now + 2 * 86400000) return null;
+  const data = m[1] + '.' + m[2], got = Buffer.from(m[3], 'hex');
+  if (got.length === 32) {
+    if (!secret || secret.length < 24) return null;
+    const want = createHmac('sha256', secret).update(data).digest();
+    return timingSafeEqual(want, got) ? { exp: Number(m[1]), role: m[2] } : null;
+  }
+  try { return PUB && edVerify(null, Buffer.from(data), PUB, got) ? { exp: Number(m[1]), role: m[2] } : null; } catch { return null; }
 }
 
 const clients = new Set();
@@ -47,7 +61,7 @@ const server = http.createServer(async (req, res) => {
   cors(req, res);
   const url = new URL(req.url, 'http://x');
   if (req.method === 'OPTIONS') { res.writeHead(204); return res.end(); }
-  if (url.pathname === '/health') return send(res, 200, { ok: true, clients: clients.size, ai: !!API_KEY });
+  if (url.pathname === '/health') return send(res, 200, { ok: true, keyed: !!(PUB || SECRET.length >= 24), clients: clients.size, ai: !!API_KEY });
 
   if (url.pathname === '/rt' && req.method === 'GET') {
     if (!verifyTicket(url.searchParams.get('t'))) return send(res, 401, { error: 'ticket' });

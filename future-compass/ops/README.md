@@ -17,20 +17,17 @@ workflow는 기존 apuda-ai-vps 환경의 VPS_HOST, VPS_USER, VPS_SSH_KEY를 재
 ## 설치와 갱신
 앱의 “앱으로 사용” 버튼을 누릅니다. 지원 브라우저는 설치 안내를, 나머지는 홈 화면 추가 방법을 표시합니다. PWA의 새 버전은 기존 앱 창을 닫고 다시 열 때 적용됩니다. 캐시는 이 앱의 공개 탐색 자료만 저장하며 로그인 정보·외부 기사의 본문은 저장하지 않습니다.
 
-## 실시간 동기화 + 흰둥이 똑똑 모드 (선택)
-- 기본: Netlify만으로 동작. 가족 기기끼리 20초마다 확인, 흰둥이는 준비된 안내로 답함.
-- 흰둥이 똑똑 모드만 빠르게 켜기: Netlify 환경변수 `ANTHROPIC_API_KEY` 추가 → 재배포. (`FC_CHAT_MODEL`로 모델 변경 가능, 기본 claude-haiku-4-5)
-- VPS 실시간(바뀌면 즉시 다른 기기에 반영) + VPS에서 AI 응답:
-  1. 같은 임의 문자열(24자 이상)을 GitHub 환경 `apuda-ai-vps` 비밀값 `FC_LIVE_SECRET`과 Netlify 환경변수 `FC_LIVE_SECRET`에 넣는다.
-  2. (선택) GitHub 비밀값 `ANTHROPIC_API_KEY` → VPS에서 AI 응답.
-  3. DNS `live.apuda.app` A 레코드를 VPS IP로, GitHub 변수(Variables) `FUTURE_LIVE_HOST=live.apuda.app`.
-     배포 때 /etc/caddy/Caddyfile 끝에 해당 블록이 없을 때만 추가하고 `caddy validate` 통과 시에만 reload. 권한이 없으면 아래를 직접 추가:
-     ```
-     live.apuda.app {
-       reverse_proxy 127.0.0.1:8093 {
-         flush_interval -1
-       }
-     }
-     ```
-  4. Netlify 환경변수 `FC_LIVE_URL=https://live.apuda.app` → 재배포.
-- live 컨테이너: node:22-alpine, 127.0.0.1:8093, 메모리 128MB. 기록 내용은 VPS로 가지 않고 '바뀐 키 이름'만 중계. 티켓은 Netlify가 가족 기기 토큰 확인 후 24시간짜리로 서명.
+## 실시간 동기화 + 흰둥이 똑똑 모드
+- live 컨테이너(node:22-alpine, 127.0.0.1:8093, 128MB)는 VPS 배포 때 항상 같이 뜬다. 비밀값 없이 동작:
+  티켓은 Netlify가 가족 기기 토큰 확인 후 ed25519로 서명(24시간), VPS는 공개키를 https://future.apuda.app/api/family(live-pub)에서 자동으로 가져온다.
+- VPS로는 기록 내용이 가지 않고 '바뀐 키 이름'만 중계.
+- 공개 주소: DNS `live.apuda.app` → VPS (가장 쉬움: `CNAME live → ai.apuda.app`). DNS가 이 VPS를 가리키면 배포 때 /etc/caddy/Caddyfile 끝에 블록을 추가(없을 때만, `caddy validate` 통과 시에만 reload). 권한이 없으면 직접:
+  ```
+  live.apuda.app {
+    reverse_proxy 127.0.0.1:8093 {
+      flush_interval -1
+    }
+  }
+  ```
+- Netlify는 기본으로 https://live.apuda.app/health 를 5분마다 확인해 살아 있을 때만 앱에 알려준다(다른 주소면 `FC_LIVE_URL`, 끄려면 `FC_LIVE_OFF=1`). 죽어 있으면 앱은 20초 확인 방식으로 동작.
+- 흰둥이 똑똑 모드 AI 키(둘 중 하나): GitHub 환경 `apuda-ai-vps` 비밀값 `ANTHROPIC_API_KEY`(VPS에서 응답) 또는 Netlify 환경변수 `ANTHROPIC_API_KEY`. 모델은 `FC_CHAT_MODEL`(기본 claude-haiku-4-5).
