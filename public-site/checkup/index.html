@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ApuDa Check v2.2 | 개인 맞춤 건강검진 선택 도움</title>
+  <meta name="description" content="개인의 병력, 복약, 과거 검사, 현재 증상을 반영하는 ApuDa AI 건강검진 추천 시스템" />
+  <style>
+    :root{
+      --blue:#1559b7; --blue2:#0e3f83; --green:#1f9d69; --bg:#f3f7fb; --card:#fff;
+      --text:#1d2939; --muted:#667085; --line:#d9e2ec; --danger:#c92a2a; --warn:#b76e00;
+      --shadow:0 12px 30px rgba(21,89,183,.10); --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,"Pretendard","Noto Sans KR",Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+    button,input,select,textarea{font:inherit}
+    button{cursor:pointer}
+    .app{min-height:100vh}
+    header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .topbar{max-width:1500px;margin:auto;padding:12px 20px;display:flex;align-items:center;gap:14px}
+    .brand{display:flex;align-items:center;gap:10px;min-width:250px}
+    .logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--blue),#52a9ff);display:grid;place-items:center;color:white;font-weight:900;box-shadow:var(--shadow)}
+    .brand strong{font-size:20px;color:var(--blue)}
+    .brand small{display:block;color:var(--muted);font-size:12px}
+    .top-actions{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+    .btn{border:1px solid var(--line);background:#fff;color:var(--text);padding:10px 13px;border-radius:12px;font-weight:700;transition:.2s}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(16,24,40,.08)}
+    .btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+    .btn.green{background:var(--green);border-color:var(--green);color:#fff}
+    .btn.danger{color:var(--danger);border-color:#f1b7b7}
+    .layout{max-width:1500px;margin:auto;display:grid;grid-template-columns:280px 1fr;gap:20px;padding:20px}
+    aside{position:sticky;top:82px;align-self:start;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow);max-height:calc(100vh - 100px);overflow:auto}
+    .progress-wrap{padding:10px 8px 16px}
+    .progress-label{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:6px}
+    .progress{height:8px;background:#e9eef5;border-radius:99px;overflow:hidden}.progress>div{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--green));transition:.3s}
+    .nav{display:grid;gap:6px}
+    .nav button{border:0;background:transparent;text-align:left;padding:11px;border-radius:12px;color:#344054;font-weight:700;display:flex;gap:10px;align-items:center}
+    .nav button:hover,.nav button.active{background:#eaf3ff;color:var(--blue)}
+    .nav .num{width:26px;height:26px;border-radius:9px;background:#edf1f7;display:grid;place-items:center;font-size:12px;flex:0 0 auto}
+    .nav button.active .num{background:var(--blue);color:#fff}
+    main{min-width:0}
+    .hero{background:linear-gradient(135deg,#0e3f83,#1976d2 60%,#1f9d69);color:white;border-radius:24px;padding:26px;box-shadow:var(--shadow);margin-bottom:18px;display:flex;gap:20px;align-items:center;justify-content:space-between}
+    .hero h1{margin:0 0 8px;font-size:clamp(24px,3vw,38px);line-height:1.15}.hero p{margin:0;color:#e8f4ff;max-width:800px}
+    .hero-badge{min-width:165px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:18px;padding:14px;text-align:center}.hero-badge b{display:block;font-size:30px}
+    .notice{background:#fff9db;border:1px solid #ffe066;color:#7a5300;padding:12px 14px;border-radius:14px;margin-bottom:18px;font-size:14px}
+    .section{display:none;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);margin-bottom:18px}
+    .section.active{display:block}
+    .section-head{display:flex;justify-content:space-between;gap:15px;align-items:flex-start;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:18px}
+    .section h2{margin:0;font-size:22px}.section-head p{margin:4px 0 0;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}.col-12{grid-column:span 12}.col-8{grid-column:span 8}.col-6{grid-column:span 6}.col-4{grid-column:span 4}.col-3{grid-column:span 3}
+    label.field{display:block;font-weight:700;font-size:13px;color:#344054}.field input,.field select,.field textarea{width:100%;margin-top:6px;border:1px solid #cfd8e3;border-radius:11px;padding:11px 12px;background:#fff;outline:none}.field textarea{min-height:96px;resize:vertical}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(21,89,183,.12)}
+    .help{font-size:12px;color:var(--muted);margin-top:5px;font-weight:400}.computed{background:#eef8ff!important;color:var(--blue);font-weight:800}
+    .chips{display:flex;flex-wrap:wrap;gap:8px}.chip input{display:none}.chip label{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 12px;font-weight:700;font-size:13px;cursor:pointer}.chip input:checked+label{background:#e8f3ff;border-color:var(--blue);color:var(--blue)}
+    .subcard{border:1px solid var(--line);border-radius:15px;padding:15px;background:#fbfdff}.subcard h3{margin:0 0 12px;font-size:16px}
+    .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px}.data-table{width:100%;border-collapse:collapse;min-width:780px}.data-table th,.data-table td{padding:9px;border-bottom:1px solid var(--line);vertical-align:top}.data-table th{background:#f5f8fc;text-align:left;font-size:12px;color:#475467;position:sticky;top:0}.data-table input,.data-table select,.data-table textarea{width:100%;border:1px solid #d8e0ea;border-radius:8px;padding:8px;background:white}.data-table textarea{min-height:42px}.data-table tr:last-child td{border-bottom:0}.icon-btn{border:0;background:#fff0f0;color:var(--danger);border-radius:9px;padding:7px 10px;font-weight:900}
+    .row-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}
+    .upload-zone{position:relative;border:2px dashed #b8c7d9;border-radius:16px;padding:22px;text-align:center;background:#f8fbff;transition:.2s}.upload-zone.dragover{border-color:var(--blue);background:#eaf3ff;transform:translateY(-1px)}.upload-zone input[type="file"]{position:absolute!important;width:1px!important;height:1px!important;opacity:0!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important}.upload-actions{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap}.upload-pick{display:inline-block;background:var(--blue);border:1px solid var(--blue);color:white;padding:10px 15px;border-radius:11px;font-weight:800;cursor:pointer}.upload-hint{margin:9px 0 0;color:var(--muted);font-size:12px}.upload-status{margin-top:12px;font-size:13px;color:var(--muted);white-space:pre-wrap;text-align:left;max-height:180px;overflow:auto;border-top:1px solid #e4eaf1;padding-top:10px}.upload-status.success{color:#13794d}.upload-status.error{color:var(--danger)}
+    .med-class{display:inline-block;margin-top:4px;background:#e8f7ef;color:#13794d;padding:4px 8px;border-radius:999px;font-size:11px;font-weight:800}
+    .section-footer{display:flex;justify-content:space-between;gap:10px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}
+    .dashboard{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}.metric{background:white;border:1px solid var(--line);border-radius:15px;padding:14px}.metric span{display:block;color:var(--muted);font-size:12px}.metric b{font-size:24px;color:var(--blue)}
+    .result-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.result-box{border:1px solid var(--line);border-radius:16px;padding:16px;background:#fff}.result-box h3{margin:0 0 10px;font-size:17px;display:flex;align-items:center;gap:8px}.result-box ul{margin:0;padding-left:20px}.result-box li{margin:8px 0}.result-box.high{border-left:6px solid var(--danger)}.result-box.follow{border-left:6px solid var(--warn)}.result-box.low{border-left:6px solid #6c757d}.result-box.caution{border-left:6px solid var(--blue)}
+    .evidence{display:block;font-size:12px;color:var(--muted);margin-top:3px}.empty{color:var(--muted);font-size:14px}
+    .timeline{display:grid;gap:10px}.timeline-item{display:grid;grid-template-columns:120px 1fr auto;gap:12px;align-items:center;border:1px solid var(--line);border-radius:13px;padding:11px}.timeline-item .date{font-weight:800;color:var(--blue)}
+    .status-pill{display:inline-block;border-radius:999px;padding:5px 9px;font-size:11px;font-weight:800}.status-overdue{background:#ffe3e3;color:#c92a2a}.status-soon{background:#fff3bf;color:#8a5d00}.status-ok{background:#d3f9d8;color:#13794d}
+    .floating-save{position:fixed;right:22px;bottom:22px;background:var(--green);color:white;border:0;border-radius:50px;padding:13px 18px;font-weight:900;box-shadow:0 12px 28px rgba(31,157,105,.28);z-index:30}
+    .toast{position:fixed;right:22px;bottom:82px;background:#101828;color:#fff;padding:12px 15px;border-radius:12px;opacity:0;transform:translateY(10px);pointer-events:none;transition:.25s;z-index:40}.toast.show{opacity:1;transform:none}
+    .modal{position:fixed;inset:0;background:rgba(16,24,40,.55);display:none;align-items:center;justify-content:center;padding:20px;z-index:50}.modal.open{display:flex}.modal-card{background:#fff;width:min(900px,100%);max-height:90vh;overflow:auto;border-radius:20px;padding:20px}.modal-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:12px}.close{border:0;background:#f1f3f5;border-radius:10px;padding:8px 11px;font-weight:900}
+    footer{max-width:1500px;margin:auto;padding:5px 20px 30px;color:var(--muted);font-size:12px;text-align:center}
+    .review-badge{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.26);font-size:12px;font-weight:800}
+    .evidence-pill{display:inline-flex;align-items:center;border-radius:999px;padding:4px 8px;font-size:11px;font-weight:900;margin:0 4px 4px 0}.evidence-a{background:#dcfce7;color:#166534}.evidence-b{background:#dbeafe;color:#1d4ed8}.evidence-c{background:#fff3bf;color:#8a5d00}.evidence-d{background:#f1f3f5;color:#495057}
+    .decision-note{border:1px solid #cfe0f3;background:#f7fbff;border-radius:14px;padding:13px 14px;margin:0 0 14px}.decision-note b{color:var(--blue)}
+    .age-guide{margin-top:14px;border-left:5px solid var(--blue);background:#f7fbff;border-radius:12px;padding:12px 14px;font-size:13px}.age-guide b{color:var(--blue)}
+    .review-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.review-grid .subcard{height:100%}.review-grid ul{margin:0;padding-left:18px}.review-grid li{margin:5px 0;font-size:13px}
+    .btn,.upload-pick,.nav button,.chip label{min-height:44px}
+    body.large-text{font-size:18px;line-height:1.65}body.large-text .field,body.large-text label.field,body.large-text .help,body.large-text .evidence{font-size:15px}body.large-text .btn,body.large-text .upload-pick{font-size:16px}body.large-text .section h2{font-size:25px}body.large-text .result-box h3{font-size:19px}
+    .input-confidence{font-size:12px;color:var(--muted);margin-top:4px}
+    @media(max-width:1050px){.layout{grid-template-columns:1fr}aside{position:static;max-height:none}.nav{grid-template-columns:repeat(4,1fr)}.nav button{font-size:12px}.nav button span:last-child{display:none}.dashboard{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:720px){.topbar{align-items:flex-start}.brand{min-width:0}.brand small{display:none}.top-actions .btn{padding:8px 9px;font-size:12px}.layout{padding:12px}.hero{padding:20px;display:block}.hero-badge{margin-top:15px}.nav{grid-template-columns:repeat(3,1fr)}.grid{grid-template-columns:1fr}.col-12,.col-8,.col-6,.col-4,.col-3{grid-column:span 1}.result-grid{grid-template-columns:1fr}.dashboard{grid-template-columns:1fr 1fr}.section{padding:16px}.timeline-item{grid-template-columns:1fr}.floating-save{right:14px;bottom:14px}.top-actions{gap:5px}}
+    @media print{header,aside,.section-footer,.floating-save,.notice,.hero-badge,.top-actions,.row-actions,.icon-btn{display:none!important}.layout{display:block;padding:0}.section{display:none!important;box-shadow:none;border:0}.section[data-section="results"]{display:block!important}.hero{background:white!important;color:black!important;box-shadow:none;padding:0;margin-bottom:12px}.hero p{color:#444}.result-grid{grid-template-columns:1fr 1fr}.result-box,.metric,.subcard,.timeline-item{break-inside:avoid;page-break-inside:avoid}.section[data-section="results"]{max-width:190mm;margin:0 auto;padding:0}.dashboard{grid-template-columns:repeat(2,1fr)}body{background:white}.app,main,.layout{width:100%!important;max-width:none!important}@page{size:A4 portrait;margin:12mm}}
+  </style>
+</head>
+<body>
+<div class="app">
+<header>
+  <div class="topbar">
+    <div class="brand"><div class="logo">A</div><div><strong>ApuDa</strong><small>AI 건강검진 의사결정 지원 시스템</small></div></div>
+    <div class="top-actions">
+      <button class="btn" id="backupBtn">백업 JSON</button>
+      <button class="btn" id="restoreBtn">복원</button>
+      <input id="restoreInput" type="file" accept="application/json" hidden>
+      <button class="btn" id="fontBtn" aria-pressed="false">큰 글씨</button>
+      <button class="btn" id="reviewBtn">감수 기준</button>
+      <button class="btn" id="printBtn">결과 PDF</button>
+      <button class="btn danger" id="resetBtn">처음부터</button>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <aside>
+    <div class="progress-wrap"><div class="progress-label"><span>입력 진행률</span><b id="progressText">0%</b></div><div class="progress"><div id="progressBar"></div></div></div>
+    <nav class="nav" id="sideNav"></nav>
+  </aside>
+
+  <main>
+    <section class="hero"><div><h1>나의 건강기록을 반영한<br>맞춤형 건강검진 선택 도움</h1><p>장기 건강기록(Longitudinal Health Record), 복약, 과거 이상 소견, 검사 주기와 현재 증상을 함께 분석합니다. 국가검진·추적검사·회사 선택검진을 서로 구분해서 보여줍니다.</p><span class="review-badge">다학제 전문가 30개 관점 + 연령별 사용자 30개 페르소나 가상 교차감수 반영</span></div><div class="hero-badge"><span>현재 입력 완성도</span><b id="heroProgress">0%</b><small>앱 자체 서버 전송 없음</small></div></section>
+    <div class="notice"><b>중요:</b> 이 도구는 검진 준비와 선택을 돕는 의사결정 지원 도구입니다. 증상이 있거나 과거 이상 소견의 추적이 필요한 경우에는 일반 검진 패키지보다 진료가 우선입니다. 또한 브라우저 LocalStorage는 암호화 의료기록 저장소가 아니므로 공용 PC에서는 입력 후 초기화하세요.</div>
+
+    <section class="section active" data-section="basic"></section>
+    <section class="section" data-section="lifestyle"></section>
+    <section class="section" data-section="family"></section>
+    <section class="section" data-section="history"></section>
+    <section class="section" data-section="surgery"></section>
+    <section class="section" data-section="medication"></section>
+    <section class="section" data-section="allergy"></section>
+    <section class="section" data-section="screening"></section>
+    <section class="section" data-section="findings"></section>
+    <section class="section" data-section="labs"></section>
+    <section class="section" data-section="imaging"></section>
+    <section class="section" data-section="symptoms"></section>
+    <section class="section" data-section="catalog"></section>
+    <section class="section" data-section="results"></section>
+  </main>
+</div>
+<footer>ApuDa 아프지만, 다행이다. · 건강에 대한 정보가 가득한 곳 ApuDa 입니다. · v2.2 다학제/연령별 가상 교차감수 반영</footer>
+<button class="floating-save" id="saveBtn">저장</button>
+<div class="toast" id="toast"></div>
+</div>
+
+<div class="modal" id="previewModal"><div class="modal-card"><div class="modal-head"><h3>업로드 자료 미리보기</h3><button class="close" data-close="previewModal">닫기</button></div><pre id="previewText" style="white-space:pre-wrap;font-size:13px"></pre></div></div>
+<div class="modal" id="reviewModal"><div class="modal-card"><div class="modal-head"><div><h3 style="margin:0">ApuDa Check 가상 교차감수 기준</h3><div class="help">실제 60명을 모집한 임상시험이 아니라, 30개 전문가 역할과 연령별 30개 사용자 페르소나를 이용한 설계 검토입니다.</div></div><button class="close" data-close="reviewModal">닫기</button></div>
+<div class="review-grid" style="margin-top:14px"><div class="subcard"><h3>전문가 30개 관점</h3><ul><li>가정의학·예방의학·건강검진</li><li>소화기·간·호흡기·심장·신경</li><li>내분비·신장·비뇨·산부인과·유방</li><li>영상의학·진단검사·약물안전·노인의학</li><li>응급·직업환경·유전·알레르기·종양</li><li>임상역학·근거중심의학·보건경제</li><li>의료정보·FHIR·개인정보·보안</li><li>UX/HCI·접근성·프론트엔드·데이터 파싱</li></ul></div><div class="subcard"><h3>연령별 사용자 30개 페르소나</h3><ul><li>20대 5명: 빠른 입력, 과잉검사 경고</li><li>30대 5명: 가족력·생활습관 중심</li><li>40대 5명: 국가암검진과 회사검진 구분</li><li>50대 5명: 추적검사·심혈관 위험 이해</li><li>60대 5명: 복약·기존질환·가독성</li><li>70세 이상 5명: 큰 글씨·44px 터치영역·단순 문장</li></ul></div></div>
+<div class="notice" style="margin-top:14px;margin-bottom:0"><b>핵심 감수 원칙:</b> 회사 검진표에 있는 검사를 의료적으로 “필수”라고 표시하지 않으며, 무증상 일반인에서 근거가 제한적인 검사(PET-CT, 종양표지자 단독검진, 일부 상업적 바이오마커·유전자검사 등)는 별도로 표시합니다.</div></div></div>
+
+<script>
+const APP_KEY='apuda_health_screening_v1';
+const sections=[
+  ['basic','1','기본 정보'],['lifestyle','2','생활습관'],['family','3','가족력'],['history','4','과거 병력'],
+  ['surgery','5','수술 이력'],['medication','6','복용 약'],['allergy','7','알레르기'],['screening','8','이전 검진'],
+  ['findings','9','이상 소견'],['labs','10','검사 수치'],['imaging','11','영상검사'],['symptoms','12','현재 증상'],
+  ['catalog','13','검사 항목 엑셀'],['results','✓','AI 추천 결과']
+];
+const defaults={
+  profile:{name:'',birth:'',sex:'',height:'',weight:'',bmi:'',bpSys:'',bpDia:'',waist:''},
+  lifestyle:{smoking:'never',cigPerDay:'',smokeYears:'',packYears:'',alcohol:'none',exercise:'',sleep:'',job:'',nightShift:false},
+  family:{cancers:[],cardio:false,diabetes:false,dementia:false,rare:false,notes:''},
+  conditions:[],cancerHistory:[],surgeries:[],meds:[],allergies:[],screenings:[],findings:[],
+  labs:{date:'',cbc:'',ast:'',alt:'',creatinine:'',egfr:'',hba1c:'',ldl:'',hdl:'',tg:'',psa:'',cea:'',afp:'',ca199:'',tsh:'',notes:''},
+  imaging:[],symptoms:{selected:[],freeText:''},catalog:[],uploads:[],updatedAt:''
+};
+const q=s=>document.querySelector(s), qa=s=>[...document.querySelectorAll(s)];
+const clone=o=>JSON.parse(JSON.stringify(o));
+let state=loadState();
+let current='basic';
+function loadState(){try{return Object.assign(clone(defaults),JSON.parse(localStorage.getItem(APP_KEY)||'{}'))}catch(e){return clone(defaults)}}
+function saveState(show=true){state.updatedAt=new Date().toISOString();let stored=true;try{localStorage.setItem(APP_KEY,JSON.stringify(state))}catch(e){stored=false}updateProgress();if(show)toast(stored?'저장되었습니다. 이 기기에만 보관됩니다.':'브라우저 저장이 차단되어 현재 화면에서만 유지됩니다.')}
+function toast(msg){const t=q('#toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
+function esc(v=''){return String(v).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]))}
+function uid(){return Math.random().toString(36).slice(2,9)}
+function age(){if(!state.profile.birth)return null;const b=new Date(state.profile.birth),n=new Date();let a=n.getFullYear()-b.getFullYear();if(n < new Date(n.getFullYear(),b.getMonth(),b.getDate()))a--;return a}
+function fmtDate(v){if(!v)return '-';return new Date(v).toLocaleDateString('ko-KR')}
+function addMonths(date,months){const d=new Date(date);d.setMonth(d.getMonth()+Number(months||0));return d}
+function diffDays(d){return Math.ceil((new Date(d)-new Date())/86400000)}
+function latestUpload(type){return [...(state.uploads||[])].reverse().find(x=>x.type===type&&x.status!=='error')||null}
+function uploadStatusText(type,count,emptyText){const u=latestUpload(type);if(!u)return count?`현재 ${count}개 항목이 저장되어 있습니다.`:emptyText;const when=u.date?new Date(u.date).toLocaleString('ko-KR'):``;const details=[u.sheet?`시트: ${u.sheet}`:``,Number.isFinite(Number(u.rows))?`${u.rows}개 항목`:count?`${count}개 저장`:``].filter(Boolean).join(' · ');return `최근 첨부: ${u.name}${details?`\n${details}`:``}${when?`\n${when}`:``}`}
+function setUploadStatus(id,message,type=``){const el=q(`#${id}`);if(!el)return;el.textContent=message;el.classList.remove('success','error');if(type)el.classList.add(type)}
+function bindUploadControl(inputId,buttonId,zoneId,handler){
+  const input=q(`#${inputId}`),button=buttonId?q(`#${buttonId}`):null,zone=q(`#${zoneId}`);
+  if(!input||!zone)return;
+  const choose=()=>{input.value='';input.click()};
+  if(button)button.onclick=choose;
+  input.onchange=async()=>{
+    const file=input.files&&input.files[0];
+    if(file){
+      const statusId=inputId==='catalogFile'?'catalogStatus':inputId==='screenFile'?'screenStatus':'pdfStatus';
+      setUploadStatus(statusId,`${file.name}
+파일을 읽기 시작했습니다...`);
+      await handler(file);
+    }
+    input.value='';
+  };
+  ['dragenter','dragover'].forEach(ev=>zone.addEventListener(ev,e=>{e.preventDefault();e.stopPropagation();zone.classList.add('dragover')}));
+  ['dragleave','drop'].forEach(ev=>zone.addEventListener(ev,e=>{e.preventDefault();e.stopPropagation();zone.classList.remove('dragover')}));
+  zone.addEventListener('drop',async e=>{const file=e.dataTransfer&&e.dataTransfer.files&&e.dataTransfer.files[0];if(file)await handler(file)});
+}
+function validateUpload(file,allowed){if(!file)throw new Error('선택된 파일이 없습니다.');if(file.size>20*1024*1024)throw new Error('파일 크기는 20MB 이하만 지원합니다.');const ext=(file.name.split('.').pop()||``).toLowerCase();if(!allowed.includes(ext))throw new Error(`지원하지 않는 파일 형식입니다: .${ext||'없음'}`);return ext}
+function loadScriptOnce(src){return new Promise((resolve,reject)=>{const found=[...document.scripts].find(x=>x.src===src);if(found&&window.XLSX)return resolve();const tag=found||document.createElement('script');const timer=setTimeout(()=>reject(new Error('Excel 분석 모듈 연결 시간이 초과되었습니다.')),10000);tag.onload=()=>{clearTimeout(timer);resolve()};tag.onerror=()=>{clearTimeout(timer);reject(new Error('Excel 분석 모듈을 불러오지 못했습니다.'))};if(!found){tag.src=src;tag.async=true;document.head.appendChild(tag)}})}
+async function ensureXLSX(){if(window.XLSX)return window.XLSX;const sources=['https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js','https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js'];for(const src of sources){try{await loadScriptOnce(src);if(window.XLSX)return window.XLSX}catch(e){}}throw new Error('Excel(.xlsx/.xls) 분석 모듈을 불러오지 못했습니다. 인터넷 연결을 확인하거나 파일을 CSV 형식으로 저장해 업로드하세요.')}
+async function ensurePDFJS(){if(window.pdfjsLib)return window.pdfjsLib;const sources=['https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js','https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js'];for(const src of sources){try{await loadScriptOnce(src);if(window.pdfjsLib)return window.pdfjsLib}catch(e){}}throw new Error('PDF 분석 모듈을 불러오지 못했습니다. 인터넷 연결을 확인하세요.')}
+
+
+function init(){renderNav();renderAll();bindGlobal();showSection(current);updateProgress();}
+function renderNav(){q('#sideNav').innerHTML=sections.map(([id,n,label])=>`<button data-nav="${id}" class="${id===current?'active':''}"><span class="num">${n}</span><span>${label}</span></button>`).join('');qa('[data-nav]').forEach(b=>b.onclick=()=>showSection(b.dataset.nav));}
+function showSection(id){current=id;qa('.section').forEach(s=>s.classList.toggle('active',s.dataset.section===id));qa('[data-nav]').forEach(b=>b.classList.toggle('active',b.dataset.nav===id));if(id==='results')renderResults();window.scrollTo({top:0,behavior:'smooth'});}
+function footer(prev,next){return `<div class="section-footer"><button class="btn" ${!prev?'disabled':''} data-go="${prev||''}">이전</button><button class="btn primary" data-go="${next||'results'}">${next?'다음':'추천 결과 보기'}</button></div>`}
+function sectionHead(title,desc,tag=''){return `<div class="section-head"><div><h2>${title}</h2><p>${desc}</p></div>${tag?`<span class="status-pill status-ok">${tag}</span>`:''}</div>`}
+function renderAll(){renderBasic();renderLifestyle();renderFamily();renderHistory();renderSurgeries();renderMeds();renderAllergies();renderScreenings();renderFindings();renderLabs();renderImaging();renderSymptoms();renderCatalog();renderResults();bindDynamic();}
+
+function renderBasic(){const p=state.profile;q('[data-section="basic"]').innerHTML=`${sectionHead('1. 기본 정보','연령, 성별, 체질량지수(BMI), 혈압과 허리둘레를 입력합니다.')}
+<div class="grid">
+<label class="field col-4">이름(선택)<input data-path="profile.name" value="${esc(p.name)}" placeholder="예: 홍길동"></label>
+<label class="field col-4">생년월일<input type="date" data-path="profile.birth" value="${esc(p.birth)}"></label>
+<label class="field col-4">성별<select data-path="profile.sex"><option value="">선택</option><option value="male" ${p.sex==='male'?'selected':''}>남성</option><option value="female" ${p.sex==='female'?'selected':''}>여성</option><option value="other" ${p.sex==='other'?'selected':''}>기타/응답 안 함</option></select></label>
+<label class="field col-3">키(cm)<input type="number" step="0.1" data-path="profile.height" value="${esc(p.height)}"></label>
+<label class="field col-3">체중(kg)<input type="number" step="0.1" data-path="profile.weight" value="${esc(p.weight)}"></label>
+<label class="field col-3">BMI<input id="bmiInput" class="computed" readonly value="${esc(p.bmi)}"><div class="help">체중(kg) ÷ 키(m)²</div></label>
+<label class="field col-3">허리둘레(cm)<input type="number" data-path="profile.waist" value="${esc(p.waist)}"></label>
+<label class="field col-3">수축기 혈압(mmHg)<input type="number" data-path="profile.bpSys" value="${esc(p.bpSys)}"></label>
+<label class="field col-3">이완기 혈압(mmHg)<input type="number" data-path="profile.bpDia" value="${esc(p.bpDia)}"></label>
+<div class="subcard col-6"><h3>자동 계산</h3><div>만 나이: <b id="ageDisplay">${age() ?? '-'}세</b></div><div>BMI 분류: <b id="bmiLabelDisplay">${bmiLabel(p.bmi)}</b></div></div>
+</div>${ageGuideHtml()}${footer('', 'lifestyle')}`}
+function ageGuideHtml(){const a=age();if(a===null)return `<div class="age-guide"><b>연령별 안내</b> 생년월일을 입력하면 현재 연령대에서 우선 확인할 정보를 안내합니다.</div>`;let msg='';if(a<30)msg='증상·가족력·생활습관을 먼저 확인하고, 무증상 상태의 고가 영상검사는 필요성을 따져보는 것이 중요합니다.';else if(a<40)msg='혈압·체중·흡연·가족력을 정리하고, 증상 또는 기존 이상 소견이 있으면 일반 패키지보다 해당 항목의 추적계획을 우선 확인하세요.';else if(a<50)msg='국가암검진 대상 항목과 회사 선택검진을 구분해서 확인하세요. 여성은 유방·자궁경부 검진 이력, 모든 성별은 위암검진 이력 확인이 중요합니다.';else if(a<65)msg='대장암 검진 이력, 심혈관·대사 위험, 이전 용종·결절의 추적 시기를 함께 확인하세요.';else msg='복용약, 신장기능, 이전 검사 결과와 추적 시기를 먼저 정리하세요. 필요하면 상단의 “큰 글씨”를 사용하세요.';return `<div class="age-guide"><b>${a}세 사용자 안내</b> ${msg}</div>`}
+function inputConfidence(){const items=[state.profile.birth,state.profile.sex,state.conditions.length||state.cancerHistory.length,state.meds.length||'none',state.screenings.length||state.findings.length||state.imaging.length,state.symptoms.selected.length||state.symptoms.freeText];const n=items.filter(Boolean).length;const pct=Math.round(n/items.length*100);return{pct,label:pct>=84?'높음':pct>=50?'보통':'낮음'}}
+function safeDescription(text=''){const s=cleanCellText(text);if(!s)return'';if(/아스피린|와파린|항응고|항혈소판|중단|복용.*중지/i.test(s))return '검사기관 안내문에 약물 관련 지시가 포함되어 있습니다. 임의로 약을 중단하지 말고 처방 의료진과 검사기관에 확인하세요.';return s}
+function bmiLabel(v){v=Number(v);if(!v)return '-';if(v<18.5)return '저체중';if(v<23)return '정상';if(v<25)return '과체중';if(v<30)return '비만';return '고도비만'}
+
+function renderLifestyle(){const l=state.lifestyle;q('[data-section="lifestyle"]').innerHTML=`${sectionHead('2. 생활습관','흡연, 음주, 운동, 수면과 직업성 위험을 반영합니다.')}
+<div class="grid">
+<label class="field col-4">흡연 상태<select data-path="lifestyle.smoking"><option value="never" ${l.smoking==='never'?'selected':''}>비흡연</option><option value="former" ${l.smoking==='former'?'selected':''}>과거 흡연</option><option value="current" ${l.smoking==='current'?'selected':''}>현재 흡연</option></select></label>
+<label class="field col-4">하루 흡연량(개비)<input type="number" data-path="lifestyle.cigPerDay" value="${esc(l.cigPerDay)}"></label>
+<label class="field col-4">흡연 기간(년)<input type="number" data-path="lifestyle.smokeYears" value="${esc(l.smokeYears)}"></label>
+<label class="field col-4">갑년(Pack-year)<input id="packYearsInput" class="computed" readonly value="${esc(l.packYears)}"><div class="help">하루 담배갑 수 × 흡연 연수</div></label>
+<label class="field col-4">음주<select data-path="lifestyle.alcohol"><option value="none" ${l.alcohol==='none'?'selected':''}>안 함</option><option value="light" ${l.alcohol==='light'?'selected':''}>가끔</option><option value="weekly" ${l.alcohol==='weekly'?'selected':''}>주 1회 이상</option><option value="frequent" ${l.alcohol==='frequent'?'selected':''}>주 4회 이상</option></select></label>
+<label class="field col-4">야간근무<select data-path="lifestyle.nightShift"><option value="false" ${!l.nightShift?'selected':''}>아니오</option><option value="true" ${l.nightShift?'selected':''}>예</option></select></label>
+<label class="field col-4">운동 습관<input data-path="lifestyle.exercise" value="${esc(l.exercise)}" placeholder="예: 주 3회, 30분 걷기"></label>
+<label class="field col-4">평균 수면시간<input data-path="lifestyle.sleep" value="${esc(l.sleep)}" placeholder="예: 6.5시간"></label>
+<label class="field col-4">직업/유해물질 노출<input data-path="lifestyle.job" value="${esc(l.job)}" placeholder="예: 용접, 석면, 방사선 노출"></label>
+</div>${footer('basic','family')}`}
+
+const cancerTypes=['위암','대장암','폐암','간암','유방암','자궁경부암','자궁내막암','난소암','전립선암','췌장암','담낭·담도암','갑상선암','신장암','혈액암','기타'];
+function renderFamily(){const f=state.family;q('[data-section="family"]').innerHTML=`${sectionHead('3. 가족력','1촌 가족 중심으로 암·심혈관·대사질환 가족력을 기록합니다.')}
+<div class="subcard"><h3>암 가족력</h3><div class="chips">${cancerTypes.map((x,i)=>`<span class="chip"><input type="checkbox" id="fc${i}" data-family-cancer="${x}" ${f.cancers.includes(x)?'checked':''}><label for="fc${i}">${x}</label></span>`).join('')}</div></div>
+<div class="grid" style="margin-top:14px"><div class="col-12 chips">${[['cardio','심혈관질환'],['diabetes','당뇨'],['dementia','치매'],['rare','희귀질환']].map(([k,l],i)=>`<span class="chip"><input type="checkbox" id="fam${i}" data-path="family.${k}" ${f[k]?'checked':''}><label for="fam${i}">${l}</label></span>`).join('')}</div><label class="field col-12">가족력 상세<textarea data-path="family.notes" placeholder="누가, 어떤 질환을, 몇 세에 진단받았는지 입력">${esc(f.notes)}</textarea></label></div>${footer('lifestyle','history')}`}
+
+const conditionList=['고혈압','당뇨','이상지질혈증','지방간','B형간염','C형간염','심근경색','협심증','뇌졸중','갑상선질환','신장질환','천식','COPD','염증성장질환','골다공증'];
+function renderHistory(){q('[data-section="history"]').innerHTML=`${sectionHead('4. 과거 병력(Past Medical History)','만성질환과 암 병력은 검사 필요성과 검사 전 안전성 판단에 중요합니다.')}
+<div class="subcard"><h3>질환 체크</h3><div class="chips">${conditionList.map((x,i)=>`<span class="chip"><input type="checkbox" id="cond${i}" data-condition="${x}" ${state.conditions.includes(x)?'checked':''}><label for="cond${i}">${x}</label></span>`).join('')}</div></div>
+<h3 style="margin-top:18px">암 병력</h3>${arrayTable('cancerHistory',[['type','암종','text'],['stage','병기','text'],['diagnosisDate','진단일','date'],['treatment','치료 내용','text'],['hospital','병원','text']])}
+${footer('family','surgery')}`}
+
+function renderSurgeries(){q('[data-section="surgery"]').innerHTML=`${sectionHead('5. 과거 수술 이력','장기 절제 여부는 일부 검사의 필요성과 해석에 영향을 줍니다.')}${arrayTable('surgeries',[['name','수술명','text'],['date','수술 날짜','date'],['hospital','병원','text'],['notes','비고','text']])}${footer('history','medication')}`}
+
+const medClasses={
+  '혈압약':['암로디핀','amlodipine','로사르탄','losartan','발사르탄','valsartan','텔미사르탄','telmisartan','비소프롤롤','bisoprolol'],
+  '당뇨약':['메트포르민','metformin','글리메피리드','glimepiride','시타글립틴','sitagliptin','다파글리플로진','dapagliflozin','세마글루타이드','semaglutide'],
+  '고지혈증약':['로수바스타틴','rosuvastatin','아토르바스타틴','atorvastatin','에제티미브','ezetimibe'],
+  '항응고제':['리바록사반','rivaroxaban','아픽사반','apixaban','와파린','warfarin','에독사반','edoxaban','다비가트란','dabigatran'],
+  '항혈소판제':['아스피린','aspirin','클로피도그렐','clopidogrel','프라수그렐','prasugrel','티카그렐러','ticagrelor'],
+  '갑상선호르몬':['레보티록신','levothyroxine','씬지로이드','synthroid'],
+  '면역억제제':['타크로리무스','tacrolimus','사이클로스포린','cyclosporine','메토트렉세이트','methotrexate'],
+  '호르몬제':['타목시펜','tamoxifen','레트로졸','letrozole','아나스트로졸','anastrozole'],
+  '항암제':['오시머티닙','osimertinib','카페시타빈','capecitabine','이매티닙','imatinib','레날리도마이드','lenalidomide','이브루티닙','ibrutinib']
+};
+function classifyMed(name=''){const n=name.toLowerCase();for(const [c,ks] of Object.entries(medClasses))if(ks.some(k=>n.includes(k.toLowerCase())))return c;return name?'기타/미분류':''}
+function renderMeds(){q('[data-section="medication"]').innerHTML=`${sectionHead('6. 현재 복용 약(Current Medication)','약 이름을 입력하면 주요 약물군을 자동 분류합니다.')}${arrayTable('meds',[['name','약 이름','text'],['dose','용량','text'],['frequency','복용법','text'],['purpose','목적','text'],['class','자동 분류','computed']])}<div class="notice" style="margin-top:14px;margin-bottom:0">항응고제·항혈소판제는 내시경 조직검사나 용종절제 전 중단 여부를 임의로 결정하면 안 됩니다. 처방 의료진과 검사기관이 혈전 위험과 출혈 위험을 함께 평가해야 합니다.</div>${footer('surgery','allergy')}`}
+
+function renderAllergies(){q('[data-section="allergy"]').innerHTML=`${sectionHead('7. 알레르기','조영제, 항생제, 음식 및 기타 약물 알레르기를 기록합니다.')}${arrayTable('allergies',[['type','종류','select:조영제|항생제|음식|기타 약물'],['item','원인 물질','text'],['reaction','반응','text'],['severity','중증도','select:경증|중등도|중증|모름']])}${footer('medication','screening')}`}
+
+function renderScreenings(){q('[data-section="screening"]').innerHTML=`${sectionHead('8. 이전 건강검진 결과','직접 입력하거나 엑셀·CSV·PDF 결과지를 업로드할 수 있습니다.')}
+${arrayTable('screenings',[['test','검사명','text'],['date','시행일','date'],['result','결과','text'],['followupMonths','권장 추적개월','number'],['cost','비용(원)','number']])}
+<div class="grid" style="margin-top:16px"><div class="upload-zone col-6" id="screenDropZone"><h3>엑셀/CSV 업로드</h3><p>권장 열: 검사명, 시행일, 결과, 추적개월, 비용</p><div class="upload-actions"><button class="upload-pick" type="button" id="screenPickBtn">엑셀 파일 선택</button></div><input id="screenFile" type="file" accept=".xlsx,.xls,.xlsm,.csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel,text/csv"><p class="upload-hint">파일을 이 영역에 끌어놓아도 됩니다. 최대 20MB</p><div class="upload-status ${latestUpload('screenings')?'success':''}" id="screenStatus">${uploadStatusText('screenings',state.screenings.length,'아직 불러온 검진 이력이 없습니다.')}</div></div>
+<div class="upload-zone col-6" id="pdfDropZone"><h3>PDF 결과지 업로드</h3><p>검진센터 PDF를 올리면 텍스트를 추출하고, 인식된 검사 항목은 이전 검진 표에 자동 반영을 시도합니다.</p><div class="upload-actions"><button class="upload-pick" type="button" id="pdfPickBtn">PDF 파일 선택</button></div><input id="pdfFile" type="file" accept="application/pdf,.pdf"><p class="upload-hint">파일을 이 영역에 끌어놓아도 됩니다. 최대 20MB · 미리보기와 자동 추출 후보를 함께 제공합니다.</p><div class="upload-status ${latestUpload('pdf')?'success':''}" id="pdfStatus">${uploadStatusText('pdf',0,'아직 업로드한 PDF가 없습니다.')}</div></div></div>${footer('allergy','findings')}`}
+
+const findingTypes=['위용종','대장용종','갑상선결절','폐결절','간낭종','신장낭종','담낭용종','유방결절','지방간','기타'];
+function renderFindings(){q('[data-section="findings"]').innerHTML=`${sectionHead('9. 과거 이상 소견','추적검사가 필요한 용종·결절·낭종과 판독 권고를 기록합니다.')}${arrayTable('findings',[['type','이상 소견','select:'+findingTypes.join('|')],['date','발견일','date'],['size','크기/정도','text'],['recommendation','판독 권고','text'],['followupMonths','추적개월','number']])}${footer('screening','labs')}`}
+
+function renderLabs(){const l=state.labs;q('[data-section="labs"]').innerHTML=`${sectionHead('10. 최근 검사 수치','최근 값과 날짜를 입력하면 안전성 경고와 변화 추세 분석에 활용됩니다.')}
+<div class="grid"><label class="field col-3">검사일<input type="date" data-path="labs.date" value="${esc(l.date)}"></label>${[
+['cbc','CBC','예: Hb 13.2, WBC 5.2'],['ast','AST (U/L)',''],['alt','ALT (U/L)',''],['creatinine','Creatinine (mg/dL)',''],['egfr','eGFR (mL/min/1.73㎡)',''],['hba1c','HbA1c (%)',''],['ldl','LDL (mg/dL)',''],['hdl','HDL (mg/dL)',''],['tg','중성지방 (mg/dL)',''],['psa','PSA (ng/mL)',''],['cea','CEA (ng/mL)',''],['afp','AFP (ng/mL)',''],['ca199','CA19-9 (U/mL)',''],['tsh','TSH (mIU/L)','']].map(([k,n,p])=>`<label class="field col-3">${n}<input data-path="labs.${k}" value="${esc(l[k])}" placeholder="${p}"></label>`).join('')}<label class="field col-12">비고<textarea data-path="labs.notes">${esc(l.notes)}</textarea></label></div>
+<div class="notice" style="margin-top:15px;margin-bottom:0">CEA, AFP, CA19-9 같은 종양표지자(Tumor Marker)는 일반인의 암 선별검사로 단독 사용하기 어렵습니다. 수치만으로 암 여부를 판단하지 마세요.</div>${footer('findings','imaging')}`}
+
+function renderImaging(){q('[data-section="imaging"]').innerHTML=`${sectionHead('11. 영상검사 이력','CT, MRI, PET-CT, 초음파, X-ray, 골밀도, 유방촬영 이력을 기록합니다.')}${arrayTable('imaging',[['type','검사 종류','select:CT|저선량 흉부 CT|MRI|PET-CT|초음파|X-ray|골밀도검사|유방촬영술|기타'],['area','부위','text'],['date','시행일','date'],['result','결과 요약','text'],['contrast','조영제','select:사용|미사용|모름']])}${footer('labs','symptoms')}`}
+
+const symptomList=['혈변','흑변','체중감소','기침','객혈','소화불량','복통','배뇨장애','멍울','피로감','흉통','호흡곤란','연하곤란','황달','발열'];
+function renderSymptoms(){const s=state.symptoms;q('[data-section="symptoms"]').innerHTML=`${sectionHead('12. 현재 증상','경고 증상이 있으면 정기검진보다 진료와 원인 평가가 우선입니다.')}
+<div class="chips">${symptomList.map((x,i)=>`<span class="chip"><input type="checkbox" id="sym${i}" data-symptom="${x}" ${s.selected.includes(x)?'checked':''}><label for="sym${i}">${x}</label></span>`).join('')}</div><label class="field" style="margin-top:15px">증상 상세<textarea data-path="symptoms.freeText" placeholder="시작 시점, 지속 기간, 악화·완화 요인, 동반 증상 등을 입력">${esc(s.freeText)}</textarea></label>${footer('imaging','catalog')}`}
+
+function renderCatalog(){q('[data-section="catalog"]').innerHTML=`${sectionHead('13. 선택검진 엑셀 연동','병원 검진표에서 선택검사와 추가 선택항목만 불러와 개인별 후보를 제안합니다.',`${state.catalog.length}개 항목`)}
+<div class="upload-zone" id="catalogDropZone"><h3>선택검진 Excel/CSV 업로드</h3><p>엑셀의 모든 시트를 확인한 뒤 <b>선택검사와 추가 선택항목만</b> 불러옵니다.</p><div class="upload-actions"><label class="upload-pick" for="catalogFile" id="catalogPickLabel">엑셀 파일 선택</label><button class="btn" type="button" id="sampleCatalogBtn">샘플 CSV</button></div><input id="catalogFile" type="file" accept=".xlsx,.xls,.xlsm,.csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel,text/csv"><p class="upload-hint">파일 선택이 되지 않으면 이 영역에 파일을 끌어놓으세요. 표지·약도·장비현황·기본검사 항목은 제외합니다. 최대 20MB</p><div class="upload-status ${latestUpload('catalog')?'success':''}" id="catalogStatus">${uploadStatusText('catalog',state.catalog.length,'아직 업로드된 선택검진 항목이 없습니다.')}</div></div>
+<div style="margin-top:16px">${state.catalog.length?catalogTable():`<div class="empty">엑셀 파일이 없어도 기본 추천 엔진은 작동합니다.</div>`}</div>${footer('symptoms','results')}`}
+function catalogTable(){const selected=state.catalog.filter(isSelectionCatalogItem);return `<div class="table-wrap"><table class="data-table"><thead><tr><th>검사명</th><th>분류</th><th>선택/패키지</th><th>나이</th><th>성별</th><th>주기</th><th>추천 연계요인</th><th>비용</th></tr></thead><tbody>${selected.slice(0,300).map(r=>`<tr><td>${esc(r.test)}</td><td>${esc(r.category||'-')}</td><td>${esc(r.package||'-')}</td><td>${r.minAge||r.maxAge?`${esc(r.minAge||'')}-${esc(r.maxAge||'')}`:'-'}</td><td>${esc(r.sex||'전체')}</td><td>${r.intervalMonths?`${esc(r.intervalMonths)}개월`:'-'}</td><td>${esc(r.risk||'자동 추천 제외')}</td><td>${r.cost!==''&&r.cost!==null&&r.cost!==undefined?Number(r.cost).toLocaleString()+'원':'-'}</td></tr>`).join('')}</tbody></table></div>${selected.length>300?`<div class="help" style="margin-top:8px">화면에는 처음 300개 선택항목만 표시합니다. 전체 ${selected.length}개 항목이 저장되어 있습니다.</div>`:''}`}
+
+function arrayTable(key,cols){const rows=state[key]||[];return `<div class="table-wrap"><table class="data-table"><thead><tr>${cols.map(c=>`<th>${c[1]}</th>`).join('')}<th style="width:55px">삭제</th></tr></thead><tbody>${rows.length?rows.map((r,idx)=>`<tr>${cols.map(([k,label,type])=>`<td>${cell(key,idx,k,type,r[k])}</td>`).join('')}<td><button class="icon-btn" data-remove="${key}" data-index="${idx}">×</button></td></tr>`).join(''):`<tr><td colspan="${cols.length+1}" class="empty">입력된 항목이 없습니다.</td></tr>`}</tbody></table></div><div class="row-actions"><button class="btn" data-add="${key}">+ 항목 추가</button></div>`}
+function cell(key,idx,k,type,val=''){
+  if(type==='computed'){const cls=key==='meds'?classifyMed(state[key][idx]?.name):val;state[key][idx][k]=cls;return `<span class="med-class" data-medclass="${idx}">${esc(cls||'미분류')}</span>`}
+  if(type.startsWith('select:')){const opts=type.slice(7).split('|');return `<select data-array="${key}" data-index="${idx}" data-key="${k}"><option value="">선택</option>${opts.map(o=>`<option value="${esc(o)}" ${val===o?'selected':''}>${esc(o)}</option>`).join('')}</select>`}
+  return `<input type="${type}" data-array="${key}" data-index="${idx}" data-key="${k}" value="${esc(val)}">`;
+}
+
+function setByPath(path,value){const parts=path.split('.');let o=state;for(let i=0;i<parts.length-1;i++)o=o[parts[i]];o[parts.at(-1)]=value}
+function bindDynamic(){
+  qa('[data-go]').forEach(b=>b.onclick=()=>b.dataset.go&&showSection(b.dataset.go));
+  qa('[data-path]').forEach(el=>{el.onchange=el.oninput=()=>{let v=el.type==='checkbox'?el.checked:el.value;if(el.tagName==='SELECT'&&(v==='true'||v==='false'))v=v==='true';setByPath(el.dataset.path,v);recalc();refreshComputed();saveState(false);}});
+  qa('[data-condition]').forEach(el=>el.onchange=()=>toggleArray(state.conditions,el.dataset.condition,el.checked));
+  qa('[data-family-cancer]').forEach(el=>el.onchange=()=>toggleArray(state.family.cancers,el.dataset.familyCancer,el.checked));
+  qa('[data-symptom]').forEach(el=>el.onchange=()=>toggleArray(state.symptoms.selected,el.dataset.symptom,el.checked));
+  qa('[data-array]').forEach(el=>el.onchange=el.oninput=()=>{const idx=Number(el.dataset.index),r=state[el.dataset.array][idx];r[el.dataset.key]=el.value;if(el.dataset.array==='meds'&&el.dataset.key==='name'){r.class=classifyMed(el.value);const badge=q(`[data-medclass="${idx}"]`);if(badge)badge.textContent=r.class||'미분류'}saveState(false);});
+  qa('[data-add]').forEach(b=>b.onclick=()=>{state[b.dataset.add].push({id:uid()});saveState(false);renderAll();showSection(current)});
+  qa('[data-remove]').forEach(b=>b.onclick=()=>{state[b.dataset.remove].splice(Number(b.dataset.index),1);saveState(false);renderAll();showSection(current)});
+  bindUploadControl('screenFile','screenPickBtn','screenDropZone',file=>handleWorkbook(file,'screenings'));
+  bindUploadControl('catalogFile','', 'catalogDropZone',file=>handleWorkbook(file,'catalog'));
+  bindUploadControl('pdfFile','pdfPickBtn','pdfDropZone',file=>handlePDF(file));
+  const sc=q('#sampleCatalogBtn');if(sc)sc.onclick=downloadCatalogSample;
+}
+function toggleArray(arr,val,checked){if(checked&&!arr.includes(val))arr.push(val);if(!checked)arr.splice(arr.indexOf(val),1);saveState(false);updateProgress()}
+function recalc(){const h=Number(state.profile.height),w=Number(state.profile.weight);state.profile.bmi=h&&w?(w/((h/100)**2)).toFixed(1):'';const c=Number(state.lifestyle.cigPerDay),y=Number(state.lifestyle.smokeYears);state.lifestyle.packYears=c&&y?((c/20)*y).toFixed(1):''}
+function refreshComputed(){const b=q('#bmiInput'),a=q('#ageDisplay'),bl=q('#bmiLabelDisplay'),p=q('#packYearsInput');if(b)b.value=state.profile.bmi||'';if(a)a.textContent=`${age()??'-'}세`;if(bl)bl.textContent=bmiLabel(state.profile.bmi);if(p)p.value=state.lifestyle.packYears||''}
+
+function updateProgress(){const checks=[state.profile.birth,state.profile.sex,state.profile.height,state.profile.weight,state.lifestyle.smoking,state.conditions.length||state.cancerHistory.length,state.meds.length,state.allergies.length,state.screenings.length,state.findings.length,state.labs.date||Object.values(state.labs).some(Boolean),state.imaging.length,state.symptoms.selected.length||state.symptoms.freeText];const pct=Math.round(checks.filter(Boolean).length/checks.length*100);q('#progressBar').style.width=pct+'%';q('#progressText').textContent=pct+'%';q('#heroProgress').textContent=pct+'%'}
+
+
+async function unzipXlsxEntries(buffer){const bytes=new Uint8Array(buffer),view=new DataView(buffer);let eocd=-1;for(let i=bytes.length-22;i>=Math.max(0,bytes.length-65557);i--){if(view.getUint32(i,true)===0x06054b50){eocd=i;break}}if(eocd<0)throw new Error('유효한 XLSX 압축 구조를 찾지 못했습니다.');const total=view.getUint16(eocd+10,true),centralOffset=view.getUint32(eocd+16,true);let pos=centralOffset;const entries={};for(let i=0;i<total;i++){if(view.getUint32(pos,true)!==0x02014b50)throw new Error('XLSX 중앙 디렉터리가 손상되었습니다.');const method=view.getUint16(pos+10,true),compSize=view.getUint32(pos+20,true),nameLen=view.getUint16(pos+28,true),extraLen=view.getUint16(pos+30,true),commentLen=view.getUint16(pos+32,true),localOffset=view.getUint32(pos+42,true);const name=new TextDecoder('utf-8').decode(bytes.slice(pos+46,pos+46+nameLen));if(view.getUint32(localOffset,true)!==0x04034b50)throw new Error('XLSX 내부 파일 헤더가 손상되었습니다.');const localNameLen=view.getUint16(localOffset+26,true),localExtraLen=view.getUint16(localOffset+28,true),dataStart=localOffset+30+localNameLen+localExtraLen;const compressed=bytes.slice(dataStart,dataStart+compSize);let data;if(method===0){data=compressed}else if(method===8){if(typeof DecompressionStream==='undefined')throw new Error('이 브라우저는 오프라인 XLSX 압축 해제를 지원하지 않습니다.');const stream=new Blob([compressed]).stream().pipeThrough(new DecompressionStream('deflate-raw'));data=new Uint8Array(await new Response(stream).arrayBuffer())}else{throw new Error(`지원하지 않는 XLSX 압축 방식입니다(${method}).`)}entries[name]=data;pos+=46+nameLen+extraLen+commentLen}return entries}
+function xmlFromEntry(entries,name){const data=entries[name];if(!data)return null;const xmlText=new TextDecoder('utf-8').decode(data);const xml=new DOMParser().parseFromString(xmlText,'application/xml');if(xml.querySelector('parsererror'))throw new Error(`${name} XML을 해석하지 못했습니다.`);return xml}
+function columnIndex(ref='A1'){const letters=(ref.match(/[A-Z]+/i)||['A'])[0].toUpperCase();let n=0;for(const ch of letters)n=n*26+(ch.charCodeAt(0)-64);return n-1}
+function xlsxCellValue(cell,shared){const type=cell.getAttribute('t')||'';if(type==='inlineStr')return [...cell.getElementsByTagName('t')].map(x=>x.textContent||'').join('');const v=cell.getElementsByTagName('v')[0]?.textContent??'';if(type==='s')return shared[Number(v)]??'';if(type==='b')return v==='1'?'TRUE':'FALSE';if(type==='str'||type==='e')return v;if(v==='')return '';const n=Number(v);return Number.isFinite(n)?n:v}
+function matrixFromSheetXml(sheet,shared){const matrix=[];[...sheet.getElementsByTagName('row')].forEach(row=>{const arr=[];[...row.getElementsByTagName('c')].forEach(cell=>{arr[columnIndex(cell.getAttribute('r')||'A1')]=xlsxCellValue(cell,shared)});matrix.push(arr)});return matrix}
+async function parseXlsxFallback(buffer){
+  const entries=await unzipXlsxEntries(buffer),shared=[];
+  const sharedXml=xmlFromEntry(entries,'xl/sharedStrings.xml');
+  if(sharedXml)[...sharedXml.getElementsByTagName('si')].forEach(si=>shared.push([...si.getElementsByTagName('t')].map(t=>t.textContent||'').join('')));
+  const workbook=xmlFromEntry(entries,'xl/workbook.xml');
+  if(!workbook)throw new Error('workbook.xml을 찾지 못했습니다.');
+  const rels=xmlFromEntry(entries,'xl/_rels/workbook.xml.rels');
+  const relMap=new Map();
+  if(rels)[...rels.getElementsByTagName('Relationship')].forEach(rel=>relMap.set(rel.getAttribute('Id'),rel.getAttribute('Target')||''));
+  const nodes=[...workbook.getElementsByTagName('sheet')];
+  if(!nodes.length)throw new Error('엑셀 시트를 찾지 못했습니다.');
+  const sheets=[];
+  nodes.forEach((node,index)=>{
+    const name=node.getAttribute('name')||`Sheet${index+1}`;
+    const rid=node.getAttribute('r:id')||node.getAttributeNS('http://schemas.openxmlformats.org/officeDocument/2006/relationships','id');
+    let target=relMap.get(rid)||`worksheets/sheet${index+1}.xml`;
+    target=target.replace(/^\//,'').replace(/^\.\//,'');
+    const path=target.startsWith('xl/')?target:`xl/${target}`;
+    const sheetXml=xmlFromEntry(entries,path);
+    if(!sheetXml)return;
+    const matrix=matrixFromSheetXml(sheetXml,shared);
+    sheets.push({matrix,sheet:name,score:scoreWorkbookMatrix(matrix)});
+  });
+  if(!sheets.length)throw new Error('읽을 수 있는 엑셀 시트가 없습니다.');
+  const best=[...sheets].sort((a,b)=>b.score-a.score)[0];
+  return {sheets,matrix:best.matrix,sheet:best.sheet,score:best.score};
+}
+function readWorkbookSheetsWithXLSX(data){
+  const book=XLSX.read(data,{type:'array',cellDates:true});
+  if(!book.SheetNames.length)throw new Error('엑셀 파일에 시트가 없습니다.');
+  return book.SheetNames.map(name=>{const matrix=XLSX.utils.sheet_to_json(book.Sheets[name],{header:1,defval:'',raw:false,blankrows:true});return{matrix,sheet:name,score:scoreWorkbookMatrix(matrix)}});
+}
+function readWorkbookMatrixWithXLSX(data){const sheets=readWorkbookSheetsWithXLSX(data),best=[...sheets].sort((a,b)=>b.score-a.score)[0];return{...best,sheets}}
+function cleanCellText(v){return String(v??'').replace(/\r/g,'\n').replace(/[ \t]+/g,' ').replace(/\n\s+/g,'\n').trim()}
+function compactHeader(v){return cleanCellText(v).replace(/[\s·ㆍ._\-()/]+/g,'').toLowerCase()}
+const headerAliases={category:['구분','분류','카테고리','category'],test:['검사항목','검사명','검사','test','name'],description:['관련질환','관련질병','설명','검사설명','description'],cost:['수가','비용','금액','가격','할인가','할인금액','검진수가','cost'],package:['30만형','패키지','선택구분','선택항목','package'],minAge:['최소나이','시작나이','minage'],maxAge:['최대나이','종료나이','maxage'],sex:['성별','sex'],intervalMonths:['주기개월','검사주기','intervalmonths'],risk:['위험요인','위험인자','risk']};
+function findHeaderMap(row=[]){const normalized=row.map(compactHeader),map={};for(const [key,names] of Object.entries(headerAliases)){const wanted=names.map(compactHeader);const idx=normalized.findIndex(x=>wanted.includes(x));if(idx>=0)map[key]=idx}return map}
+function isUsableHeader(map){return Number.isInteger(map.test)&&Object.keys(map).length>=2}
+function scoreWorkbookMatrix(matrix=[]){let headers=0,filled=0;matrix.forEach(row=>{if(isUsableHeader(findHeaderMap(row)))headers++;if((row||[]).some(v=>cleanCellText(v)!==''))filled++});return headers*10000+filled}
+function valueAt(row,index){return Number.isInteger(index)&&index>=0&&index<row.length?row[index]:''}
+function parseCSVMatrix(text){const lines=text.replace(/^\uFEFF/,'').split(/\r?\n/);const split=line=>{const out=[];let cur='',quoted=false;for(let i=0;i<line.length;i++){const ch=line[i];if(ch==='"'){if(quoted&&line[i+1]==='"'){cur+='"';i++}else quoted=!quoted}else if(ch===','&&!quoted){out.push(cur);cur=''}else cur+=ch}out.push(cur);return out};return lines.map(split)}
+function splitCatalogTestCell(raw){const original=cleanCellText(raw);if(!original)return[];const rawText=String(raw??'').replace(/\r/g,'\n');const marker=/^\s*(?:[①-⑳]|\d{1,2}[.)])\s*/gm;const matches=[...rawText.matchAll(marker)];let segments=[rawText];if(matches.length>=2){segments=[];for(let i=0;i<matches.length;i++){segments.push(rawText.slice(matches[i].index,i+1<matches.length?matches[i+1].index:rawText.length))}}return segments.map(segment=>{const full=cleanCellText(segment.replace(/^\s*(?:[①-⑳]|\d{1,2}[.)])\s*/,''));let name=full.split(/\s+(?=※|★|☞|▶)/)[0].split(/\s+-\s+(?=유소견|수면비|조직검사|80세)/)[0].trim();if(name.length>130)name=name.slice(0,130).trim();return {name,notes:full!==name?full:''}}).filter(x=>x.name)}
+function parseMoney(v){if(v===0||v==='0')return 0;const s=cleanCellText(v);if(!s||s==='-'||s==='–')return '';const n=Number(s.replace(/[^0-9.-]/g,''));return Number.isFinite(n)?n:''}
+function inferAgeRange(text){const s=cleanCellText(text);let minAge='',maxAge='';let m=s.match(/(\d{1,3})세\s*이상\s*(?:검사)?불가/);if(m)maxAge=Math.max(0,Number(m[1])-1);m=s.match(/(\d{1,3})세\s*미만\s*(?:검사)?불가/);if(m)minAge=Number(m[1]);m=s.match(/(?:만\s*)?(\d{1,3})세\s*이상(?!\s*(?:검사)?불가)/);if(m&&!minAge)minAge=Number(m[1]);m=s.match(/(?:만\s*)?(\d{1,3})세\s*(?:부터|이후)/);if(m&&!minAge)minAge=Number(m[1]);m=s.match(/(\d{1,3})세\s*까지(?:\s*가능)?/);if(m)maxAge=Number(m[1]);return {minAge,maxAge}}
+function inferSex(text){const s=cleanCellText(text).toLowerCase();const male=/(?:\(남\)|남성|전립선|\bmale\b)/i.test(s),female=/(?:\(여\)|여성|유방|난소|자궁|부인과|\bfemale\b)/i.test(s);if(male&&female)return '전체';if(male)return '남성';if(female)return '여성';return '전체'}
+function inferIntervalMonths(text){const s=cleanCellText(text);let m=s.match(/(?:검사주기\s*)?(\d+)\s*[~～-]\s*(\d+)\s*년/);if(m)return Number(m[1])*12;m=s.match(/(?:검사주기\s*)?(\d+)\s*년/);if(m)return Number(m[1])*12;m=s.match(/(?:검사주기\s*)?(\d+)\s*개월/);if(m)return Number(m[1]);return ''}
+function inferRiskTags(text){const s=cleanCellText(text).toLowerCase(),tags=new Set(),add=(...xs)=>xs.forEach(x=>tags.add(x));if(/대장|분변잠혈|colono/.test(s))add('대장용종','혈변','흑변','대장암');if(/위내시경|위장|위암|위용종|gast/.test(s))add('위용종','흑변','소화불량','위암');if(/폐|흉부|ldct|chest/.test(s))add('흡연','COPD','천식','기침','객혈','호흡곤란','폐암');if(/간|복부초음파|afp|m2bpgi/.test(s))add('지방간','B형간염','C형간염','간암','음주');if(/췌장|amylase|lipase/.test(s))add('췌장암','복통','체중감소');if(/전립선|psa/.test(s))add('배뇨장애','전립선암');if(/유방|mammog/.test(s))add('유방결절','멍울','유방암');if(/자궁|hpv|난소|ca-?125|roma/.test(s))add('자궁경부암','자궁내막암','난소암');if(/갑상선|tsh|free\s*t4/.test(s))add('갑상선질환','갑상선결절','갑상선암');if(/심장|심혈관|관상동맥|경동맥|동맥경화|콜레스테롤|지질|st2/.test(s))add('고혈압','당뇨','이상지질혈증','심근경색','협심증','뇌졸중','흡연');if(/뇌|mra|뇌혈관|치매|알츠/.test(s))add('고혈압','당뇨','이상지질혈증','뇌졸중','치매','흡연');if(/골밀도|골다공/.test(s))add('골다공증');if(/신장|creatinine|gfr|\bbun\b/.test(s))add('신장질환','고혈압','당뇨');if(/당뇨|혈당|hba1c|glucose/.test(s))add('당뇨');if(/알레르|알러지|mast/.test(s))add('천식');return [...tags].join(',')}
+function parseCatalogMatrix(matrix=[]){let header=null,currentCategory='',currentPackage='',selectionCost='',sections=0;const parsed=[];for(let rowIndex=0;rowIndex<matrix.length;rowIndex++){const row=matrix[rowIndex]||[],candidate=findHeaderMap(row);if(isUsableHeader(candidate)){header=candidate;currentCategory='';currentPackage='';selectionCost='';sections++;continue}if(!header)continue;const rawTest=valueAt(row,header.test);if(cleanCellText(rawTest)==='')continue;const rawCategory=valueAt(row,header.category),rawDescription=valueAt(row,header.description),rawPackage=valueAt(row,header.package),rawCost=valueAt(row,header.cost);if(cleanCellText(rawCategory))currentCategory=cleanCellText(rawCategory);if(cleanCellText(rawPackage))currentPackage=cleanCellText(rawPackage);let cost=parseMoney(rawCost);if(currentPackage.includes('선택')&&cost!==''&&selectionCost==='')selectionCost=cost;if(currentPackage.includes('선택')&&cost==='')cost=selectionCost;const simpleMin=valueAt(row,header.minAge),simpleMax=valueAt(row,header.maxAge),simpleSex=valueAt(row,header.sex),simpleInterval=valueAt(row,header.intervalMonths),simpleRisk=valueAt(row,header.risk);for(const part of splitCatalogTestCell(rawTest)){const description=[part.notes,cleanCellText(rawDescription)].filter(Boolean).join(' · ');const context=[part.name,currentCategory,description].join(' ');const inferredAge=inferAgeRange(context),minAge=simpleMin!==''&&simpleMin!==undefined?Number(simpleMin):inferredAge.minAge,maxAge=simpleMax!==''&&simpleMax!==undefined?Number(simpleMax):inferredAge.maxAge,sex=cleanCellText(simpleSex)||inferSex(context),intervalMonths=simpleInterval!==''&&simpleInterval!==undefined?Number(simpleInterval):inferIntervalMonths(context),risk=cleanCellText(simpleRisk)||inferRiskTags(context),hasExplicitCriteria=Number.isInteger(header.minAge)||Number.isInteger(header.maxAge)||Number.isInteger(header.risk)||Number.isInteger(header.intervalMonths);parsed.push({test:part.name,category:currentCategory||'기타',minAge:Number.isFinite(minAge)&&minAge>0?minAge:'',maxAge:Number.isFinite(maxAge)&&maxAge>0?maxAge:'',sex:sex||'전체',intervalMonths:Number.isFinite(intervalMonths)&&intervalMonths>0?intervalMonths:'',risk,cost,description,package:currentPackage,sourceRow:rowIndex+1,autoRecommend:hasExplicitCriteria||Boolean(risk||minAge||maxAge),sourceFormat:hasExplicitCriteria?'standard':'hospital'})}}const unique=[],seen=new Set();for(const item of parsed){const key=`${item.test}|${item.category}|${item.package}`;if(!seen.has(key)){seen.add(key);unique.push(item)}}return {items:unique,sections}}
+function parseScreeningMatrix(matrix=[]){let header=null,sections=0;const parsed=[];for(let rowIndex=0;rowIndex<matrix.length;rowIndex++){const row=matrix[rowIndex]||[],candidate=findHeaderMap(row);if(Number.isInteger(candidate.test)&&(Number.isInteger(candidate.description)||Number.isInteger(candidate.cost)||row.map(compactHeader).some(x=>['시행일','검사일','날짜','결과','소견','추적개월','권장추적개월'].includes(x)))){header=candidate;const normalized=row.map(compactHeader);header.date=normalized.findIndex(x=>['시행일','검사일','날짜','date'].includes(x));header.result=normalized.findIndex(x=>['결과','소견','result'].includes(x));header.followupMonths=normalized.findIndex(x=>['추적개월','권장추적개월','주기개월','followupmonths'].includes(x));sections++;continue}if(!header)continue;const test=cleanCellText(valueAt(row,header.test));if(!test)continue;parsed.push({test,date:excelDate(valueAt(row,header.date)),result:cleanCellText(valueAt(row,header.result)||valueAt(row,header.description)),followupMonths:valueAt(row,header.followupMonths),cost:parseMoney(valueAt(row,header.cost))})}return {items:parsed,sections}}
+function excelDate(v){if(!v)return '';if(typeof v==='number'&&window.XLSX){const d=XLSX.SSF.parse_date_code(v);return `${d.y}-${String(d.m).padStart(2,'0')}-${String(d.d).padStart(2,'0')}`}const d=new Date(v);return isNaN(d)?String(v):d.toISOString().slice(0,10)}
+function downloadCatalogSample(){const rows=[['검사명','분류','최소나이','최대나이','성별','주기개월','위험요인','비용','설명'],['기본 혈액검사','기초검사',40,120,'전체',12,'',50000,'CBC·간기능·신장기능·혈당·지질'],['저선량 흉부 CT','암검진',50,80,'전체',12,'흡연',150000,'흡연력과 금연 시점을 함께 확인'],['유방촬영술','암검진',40,74,'여성',24,'',80000,'이전 검사 결과와 가족력을 함께 검토'],['골밀도검사','만성질환',65,120,'여성',24,'골다공증',70000,'골절 위험도와 함께 평가']];const csv='\uFEFF'+rows.map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(',')).join('\n');const blob=new Blob([csv],{type:'text/csv;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='ApuDa_검진항목_샘플.csv';a.click();URL.revokeObjectURL(a.href)}
+function isSelectionCatalogItem(item){
+  if(!item)return false;
+  const pkg=cleanCellText(item.package||'');
+  const sheet=cleanCellText(item.sourceSheet||'');
+  const category=cleanCellText(item.category||'');
+  return /선택|옵션|추가/i.test(pkg)||/추가.*선택|선택.*항목|옵션/i.test(sheet)||/선택검사|선택항목/i.test(category);
+}
+function mergeCatalogSheetResults(workbookSheets=[]){
+  const allItems=[],seen=new Set(),usedSheets=[];let sections=0;
+  for(const entry of workbookSheets){
+    if(!entry||!entry.matrix||!entry.matrix.length)continue;
+    const parsed=parseCatalogMatrix(entry.matrix);
+    if(!parsed.items.length)continue;
+    const sheetName=cleanCellText(entry.sheet||'');
+    const isAdditional=/추가.*선택|선택.*항목|옵션|additional/i.test(sheetName);
+    const isChoicePackageSheet=/검진항목.*30만|선택검진|선택항목/i.test(sheetName);
+    let sheetUsed=false;
+    parsed.items.forEach(item=>{
+      const enriched={...item,sourceSheet:entry.sheet};
+      if(isAdditional&&!cleanCellText(enriched.package))enriched.package='추가 선택항목';
+      if(isChoicePackageSheet&&!cleanCellText(enriched.package))return;
+      if(!isSelectionCatalogItem(enriched))return;
+      const key=`${enriched.test}|${enriched.category}|${enriched.package}|${enriched.cost}`;
+      if(!seen.has(key)){seen.add(key);allItems.push(enriched);sheetUsed=true}
+    });
+    if(sheetUsed){usedSheets.push(entry.sheet);sections+=parsed.sections}
+  }
+  return{items:allItems,sections,sheets:usedSheets};
+}
+function bestScreeningSheetResult(workbookSheets=[]){
+  const ranked=[...workbookSheets].sort((a,b)=>b.score-a.score);
+  for(const entry of ranked){const parsed=parseScreeningMatrix(entry.matrix||[]);if(parsed.items.length)return{...parsed,sheet:entry.sheet}}
+  return{items:[],sections:0,sheet:ranked[0]?.sheet||''};
+}
+async function handleWorkbook(file,target){
+  const statusId=target==='catalog'?'catalogStatus':'screenStatus';
+  try{
+    const ext=validateUpload(file,['xlsx','xls','xlsm','csv']);
+    setUploadStatus(statusId,`${file.name}\n전체 시트에서 검진표 구조를 검색하는 중입니다...`);
+    let workbookSheets=[];
+    if(ext==='csv'){
+      const matrix=parseCSVMatrix(await file.text());
+      workbookSheets=[{matrix,sheet:'CSV',score:scoreWorkbookMatrix(matrix)}];
+    }else{
+      const data=await file.arrayBuffer();
+      if(window.XLSX){
+        workbookSheets=readWorkbookSheetsWithXLSX(data);
+      }else if(ext==='xlsx'||ext==='xlsm'){
+        try{
+          workbookSheets=(await parseXlsxFallback(data)).sheets;
+        }catch(fallbackError){
+          try{await ensureXLSX();workbookSheets=readWorkbookSheetsWithXLSX(data)}
+          catch(moduleError){throw new Error(`${fallbackError.message} ${moduleError.message}`)}
+        }
+      }else{
+        await ensureXLSX();workbookSheets=readWorkbookSheetsWithXLSX(data);
+      }
+    }
+    if(!workbookSheets.length)throw new Error('엑셀에 읽을 수 있는 시트가 없습니다.');
+    let result,parsed,sheetLabel='';
+    if(target==='catalog'){
+      result=mergeCatalogSheetResults(workbookSheets);parsed=result.items;sheetLabel=result.sheets.join(', ');
+      if(!parsed.length)throw new Error('전체 시트를 확인했지만 선택검사 또는 추가 선택항목을 찾지 못했습니다. 검진항목·추가선택항목 시트와 선택 문구를 확인하세요.');
+      state.catalog=parsed.filter(isSelectionCatalogItem);
+    }else{
+      result=bestScreeningSheetResult(workbookSheets);parsed=result.items;sheetLabel=result.sheet;
+      if(!parsed.length)throw new Error('전체 시트를 확인했지만 이전 검진 이력 표를 찾지 못했습니다. 검사명·시행일·결과 열을 확인하세요.');
+      const existing=new Set(state.screenings.map(x=>`${x.test}|${x.date}`));
+      parsed.forEach(x=>{const key=`${x.test}|${x.date}`;if(!existing.has(key)){state.screenings.push({...x,id:uid()});existing.add(key)}});
+    }
+    state.uploads.push({name:file.name,type:target,date:new Date().toISOString(),status:'success',rows:parsed.length,sheet:sheetLabel,sections:result.sections});
+    saveState(false);renderAll();showSection(target==='catalog'?'catalog':'screening');
+    setUploadStatus(statusId,`${file.name}\n인식 시트: ${sheetLabel||'자동 선택'}\n표 영역 ${result.sections}개 · ${parsed.length}개 항목을 정상적으로 불러왔습니다.\n표지·약도·장비현황 등 검진표가 아닌 시트는 자동 제외했습니다.`,'success');
+    toast(`${target==='catalog'?state.catalog.length:parsed.length}개 항목을 정상적으로 불러왔습니다.`);return true;
+  }catch(e){
+    console.error('Workbook upload error',e);
+    setUploadStatus(statusId,`첨부 실패: ${e.message}`,'error');toast('엑셀 파일 첨부에 실패했습니다.');return false;
+  }
+}
+function parseCSV(text){const matrix=parseCSVMatrix(text);if(!matrix.length)return[];const headers=matrix[0];return matrix.slice(1).map(row=>Object.fromEntries(headers.map((h,i)=>[h||`col${i}`,row[i]??''])))}
+async function handlePDF(file){
+  try{
+    validateUpload(file,['pdf']);
+    setUploadStatus('pdfStatus', `${file.name}
+PDF 텍스트를 분석하는 중입니다...`);
+    const PDFLib = await ensurePDFJS();
+    PDFLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    const buf = await file.arrayBuffer();
+    const pdf = await PDFLib.getDocument({data:buf}).promise;
+    let text='';
+    for(let i=1;i<=Math.min(pdf.numPages,20);i++){
+      const p = await pdf.getPage(i), c = await p.getTextContent();
+      text += `
+[${i}페이지]
+` + c.items.map(x=>x.str).join(' ');
+    }
+    const extracted = extractScreeningsFromPdfText(text);
+    if(extracted.length){
+      const existing = new Set(state.screenings.map(x=>`${(x.test||'').trim()}|${(x.date||'').trim()}`));
+      extracted.forEach(item=>{
+        const key=`${(item.test||'').trim()}|${(item.date||'').trim()}`;
+        if(!existing.has(key)){
+          state.screenings.push({...item,id:uid()});
+          existing.add(key);
+        }
+      });
+    }
+    state.uploads.push({name:file.name,type:'pdf',date:new Date().toISOString(),status:'success',rows:pdf.numPages,text:text.slice(0,50000),extracted:extracted.length});
+    saveState(false);
+    renderAll();
+    showSection('screening');
+    setUploadStatus('pdfStatus', `${file.name}
+${pdf.numPages}페이지 중 최대 20페이지의 텍스트를 추출했습니다. 자동 인식 후보 ${extracted.length}건${extracted.length?'을 이전 검진 표에 반영했습니다.':'입니다.'} 이 문구를 클릭하면 미리보기가 열립니다.`,'success');
+    const status=q('#pdfStatus');
+    if(status){
+      status.style.cursor='pointer';
+      status.onclick=()=>{
+        const previewLines=['[자동 인식된 이전 검진 후보]'];
+        if(extracted.length){
+          extracted.forEach((x,i)=>previewLines.push(`${i+1}. ${x.test} | ${x.date||'날짜 미확인'} | ${x.result||'결과 미확인'}`));
+        }else{
+          previewLines.push('인식된 항목이 없습니다.');
+        }
+        previewLines.push('', '[추출 텍스트]', text);
+        q('#previewText').textContent = previewLines.join('\n');
+        q('#previewModal').classList.add('open');
+      };
+    }
+    toast(extracted.length?`PDF를 첨부하고 ${extracted.length}개 검진 항목을 반영했습니다.`:'PDF를 첨부했습니다.');
+    return true;
+  }catch(e){
+    setUploadStatus('pdfStatus', `첨부 실패: ${e.message}`,'error');
+    toast('PDF 첨부에 실패했습니다.');
+    return false;
+  }
+}
+
+function renderResults(){const rec=generateRecommendations();const catalogPlan=buildCatalogRecommendations();const conf=inputConfidence();const choiceCount=catalogPlan.choiceGroups.reduce((s,g)=>s+g.items.length,0);q('[data-section="results"]').innerHTML=`${sectionHead('건강검진 선택 도움 결과','국가검진·추적 필요·회사 선택검진을 구분해 보여줍니다. 회사 패키지 항목은 의료적 필수검사와 분리합니다.',state.updatedAt?`최근 저장 ${new Date(state.updatedAt).toLocaleString('ko-KR')}`:'미저장')}
+<div class="dashboard"><div class="metric"><span>만 나이</span><b>${age()??'-'}</b></div><div class="metric"><span>BMI</span><b>${state.profile.bmi||'-'}</b></div><div class="metric"><span>추적 대상</span><b>${rec.follow.length}</b></div><div class="metric"><span>입력 충분도</span><b>${conf.label}</b><div class="input-confidence">${conf.pct}% · 의료 정확도 점수가 아니라 입력 완성도입니다.</div></div></div>
+<div class="decision-note"><b>결과 읽는 순서</b> ① 증상/추적 필요 → ② 국가검진 대상 확인 → ③ 회사 패키지에서 고를 항목 → ④ 일반 선별 근거가 제한적인 검사는 보류 또는 상담 순으로 확인하세요.</div>
+${state.catalog.length?`<div class="subcard" style="margin-bottom:16px"><h3>회사 패키지 · 선택형 검진 제안</h3>${catalogChoiceHtml(catalogPlan)}</div>`:''}
+${state.catalog.length?`<div class="subcard" style="margin-bottom:16px"><h3>건강 상태와 연결되는 추가 선택검사</h3>${catalogAdditionalHtml(catalogPlan)}</div>`:''}
+${state.catalog.length&&catalogPlan.lowEvidence.length?`<div class="subcard" style="margin-bottom:16px"><h3>일반 선별검사로는 근거가 제한적인 선택항목</h3>${catalogLowEvidenceHtml(catalogPlan)}</div>`:''}
+<div class="result-grid">
+${resultBox('high','① 진료 또는 우선 확인',rec.must,'⚠️')}
+${resultBox('follow','② 과거 이상 소견·추적검사',rec.follow,'🕒')}
+${resultBox('low','③ 선택적 검사 / 과잉검사 주의',rec.low,'➖')}
+${resultBox('caution','④ 검사 전 안전 확인',rec.caution,'🛡️')}
+</div>
+<div class="subcard" style="margin-top:16px"><h3>검사 이력 타임라인</h3><div class="timeline">${timelineHtml()}</div></div>
+<div class="subcard" style="margin-top:16px"><h3>의료진에게 보여줄 핵심 요약</h3><textarea id="summaryText" style="width:100%;min-height:180px;border:1px solid var(--line);border-radius:12px;padding:12px">${esc(buildSummary(rec))}</textarea><div class="row-actions"><button class="btn" id="copySummary">요약 복사</button><button class="btn primary" onclick="openPrintReport()">PDF로 저장/인쇄</button></div></div>
+<div class="section-footer"><button class="btn" data-go="catalog">이전</button><button class="btn green" id="refreshResults">추천 다시 계산</button></div>`;const cp=q('#copySummary');if(cp)cp.onclick=async()=>{await navigator.clipboard.writeText(q('#summaryText').value);toast('요약을 복사했습니다.')};const rr=q('#refreshResults');if(rr)rr.onclick=()=>{saveState(false);renderResults();toast('추천 결과를 다시 계산했습니다.')};bindDynamic()}
+function resultBox(cls,title,items,icon){return `<div class="result-box ${cls}"><h3>${icon} ${title}</h3>${items.length?`<ul>${items.map(x=>`<li><b>${esc(x.title)}</b>${x.detail?`<span class="evidence">${esc(x.detail)}</span>`:''}${x.cost?`<span class="evidence">예상 비용: ${Number(x.cost).toLocaleString()}원</span>`:''}</li>`).join('')}</ul>`:`<div class="empty">현재 입력 정보에서 해당 항목이 없습니다.</div>`}</div>`}
+function generateRecommendations(){const a=age(),sex=state.profile.sex,pack=Number(state.lifestyle.packYears||0),must=[],follow=[],low=[],caution=[];const add=(arr,title,detail,cost=0)=>{if(!arr.some(x=>x.title===title))arr.push({title,detail,cost})};
+  const red=['혈변','흑변','객혈','흉통','호흡곤란','연하곤란','황달','멍울','체중감소'];const hit=state.symptoms.selected.filter(x=>red.includes(x));if(hit.length)add(must,'정기검진보다 증상 진료 우선',`${hit.join(', ')} 증상이 입력되었습니다. 증상 원인 평가를 위해 진료 시점과 검사 종류를 의료진이 결정해야 합니다.`);
+  if(a!==null&&a>=40){add(must,'기본 심뇌혈관·대사 위험 평가','혈압, 공복혈당 또는 HbA1c, 지질, 간기능, 신장기능을 최근 결과와 함께 점검합니다.');}
+  if(state.conditions.includes('당뇨'))add(must,'당뇨 합병증 평가','HbA1c, 신장기능·소변 알부민, 안저검사, 발 상태를 진료계획에 따라 점검합니다.');
+  if(state.conditions.includes('B형간염')||state.conditions.includes('C형간염')||state.conditions.includes('간경변'))add(must,'간질환 추적 평가','간기능과 간암 감시검사 주기는 간질환 상태에 따라 전문의가 설정해야 합니다.');
+  if((state.conditions.includes('신장질환')||Number(state.labs.egfr)>0&&Number(state.labs.egfr)<60))add(must,'신장기능 재평가','eGFR 감소 또는 신장질환 병력이 있어 조영제 검사와 약물 용량 검토가 필요합니다.');
+  if(a!==null&&a>=50)add(must,'대장암 국가검진 대상 여부 확인','연령과 이전 대장내시경·용종 병력을 함께 확인해 분변검사 또는 내시경 시기를 정합니다.');
+  if(sex==='female'&&a!==null&&a>=40)add(must,'유방암 검진 대상 여부 확인','연령, 가족력, 이전 유방촬영·초음파 결과를 바탕으로 검진 시기를 결정합니다.');
+  if(sex==='female'&&a!==null&&a>=20)add(must,'자궁경부암 검진 이력 확인','자궁경부 보유 여부, 이전 검사 결과, HPV 관련 병력에 따라 검사 시기를 확인합니다.');
+  if(sex==='male'&&a!==null&&a>=50)add(low,'PSA 검사는 공동의사결정','전립선특이항원(PSA)은 이득과 위양성·과진단 가능성을 설명받고 선택하는 것이 적절합니다.');
+  if(a!==null&&a>=54&&a<=74&&pack>=30)add(must,'국가 폐암검진 대상 여부 확인',`만 ${a}세, 흡연력 ${pack}갑년이 입력되었습니다. 국내 국가폐암검진의 고위험군 기준에 해당할 가능성이 있어 검진 대상자 여부를 확인하세요.`);else if(pack>=20)add(low,'저선량 흉부 CT는 국내 국가검진 기준과 별도 확인',`흡연력 ${pack}갑년입니다. 국내 국가폐암검진은 54~74세·30갑년 이상 고위험군을 중심으로 시행되므로 개인별 필요성은 의료진과 확인하세요.`);
+  if((sex==='female'&&a!==null&&a>=65)||(sex==='male'&&a!==null&&a>=70)||state.conditions.includes('골다공증'))add(must,'골밀도검사 검토','연령 또는 골다공증 병력을 고려해 DXA(이중에너지 X선 흡수계측) 시행 여부를 확인합니다.');
+  if(Number(state.profile.bpSys)>=140||Number(state.profile.bpDia)>=90)add(must,'높은 혈압 재확인',`입력 혈압 ${state.profile.bpSys||'-'}/${state.profile.bpDia||'-'} mmHg. 반복 측정과 진료 상담이 필요합니다.`);
+  if(Number(state.profile.bmi)>=25)add(must,'비만 관련 대사평가',`BMI ${state.profile.bmi}. 혈압·당대사·지질·지방간 위험을 함께 평가합니다.`);
+  state.findings.forEach(f=>{if(!f.type)return;let d=f.recommendation||`${f.date?fmtDate(f.date)+' 발견. ':''}${f.followupMonths?`${f.followupMonths}개월 추적 입력.`:'판독문 권고 주기를 확인하세요.'}`;add(follow,`${f.type} 추적`,d)});
+  state.screenings.forEach(s=>{if(!s.test||!s.date||!s.followupMonths)return;const due=addMonths(s.date,s.followupMonths),days=diffDays(due);if(days<=180)add(follow,`${s.test} 다음 검사`,`${fmtDate(due)} 권장 예정${days<0?` · ${Math.abs(days)}일 경과`:` · ${days}일 남음`}`,s.cost)});
+  const antithrom=state.meds.filter(m=>['항응고제','항혈소판제'].includes(m.class||classifyMed(m.name)));if(antithrom.length)add(caution,'출혈 위험 약물 확인',`${antithrom.map(m=>m.name).join(', ')} 복용 중. 내시경 조직검사·용종절제 전 임의 중단 금지, 처방의와 검사기관 협의.`);
+  if(state.allergies.some(x=>x.type==='조영제'))add(caution,'조영제 알레르기 사전 통보','과거 반응의 종류와 중증도를 영상의학과에 미리 알리고 전처치·대체검사를 검토합니다.');
+  if(Number(state.labs.egfr)>0&&Number(state.labs.egfr)<45)add(caution,'조영 CT/MRI 전 신장기능 확인',`입력 eGFR ${state.labs.egfr}. 조영제 종류와 검사 필요성을 의료진이 평가해야 합니다.`);
+  if(state.conditions.includes('당뇨')&&state.meds.some(m=>(m.name||'').toLowerCase().includes('메트포르민')||(m.name||'').toLowerCase().includes('metformin')))add(caution,'메트포르민과 조영검사 일정 확인','신장기능과 조영제 사용 여부에 따라 복용 조정이 필요할 수 있으므로 검사기관 지침을 확인합니다.');
+  if(state.meds.some(m=>classifyMed(m.name)==='갑상선호르몬'))add(caution,'갑상선호르몬 복용과 채혈 시간 기록','TSH 추세를 비교할 때 복용 시간, 공복 여부, 제제 변경 여부를 함께 기록합니다.');
+  add(low,'PET-CT 일반 선별검사','무증상 일반인의 정기 암검진으로 일괄 시행하기보다, 임상적 필요성과 방사선 노출을 고려해 선택합니다.');
+  add(low,'종양표지자 단독 암검진','CEA·AFP·CA19-9 수치만으로 암을 선별하거나 배제하지 않습니다. 병력·영상·내시경과 함께 해석합니다.');
+  if(!state.profile.birth||!state.profile.sex)add(caution,'기본정보 보완','생년월일과 성별을 입력하면 연령·성별 기반 추천 정확도가 높아집니다.');
+  return {must,follow,low,caution};
+}
+function catalogMatch(item,a,sex){if(!item.test)return false;const min=Number(item.minAge||0),max=Number(item.maxAge||999);if(a!==null&&(a<min||a>max))return false;const s=String(item.sex||'전체');if(s&&!['전체','모두','all'].includes(s.toLowerCase())){if(sex==='male'&&!/남|male/i.test(s))return false;if(sex==='female'&&!/여|female/i.test(s))return false;if(!sex)return false}const risk=String(item.risk||'').trim();if(item.autoRecommend===false&&!risk)return false;if(!risk)return true;const hay=[...state.conditions,...state.family.cancers,...state.symptoms.selected,state.lifestyle.smoking,Number(state.lifestyle.packYears)>=20?'흡연':'',state.family.notes,state.lifestyle.alcohol!=='none'?'음주':''].join(' ');return risk.split(/[,/|]/).some(r=>r&&hay.includes(r.trim()))}
+function timelineHtml(){const items=[];state.screenings.forEach(s=>{if(s.test&&s.date)items.push({date:s.date,title:s.test,detail:s.result||'결과 미입력',due:s.followupMonths?addMonths(s.date,s.followupMonths):null})});state.imaging.forEach(s=>{if(s.type&&s.date)items.push({date:s.date,title:`${s.type} ${s.area||''}`,detail:s.result||'결과 미입력'})});if(!items.length)return '<div class="empty">검사 이력을 입력하면 시간순으로 표시됩니다.</div>';return items.sort((a,b)=>new Date(b.date)-new Date(a.date)).map(x=>{let pill='';if(x.due){const d=diffDays(x.due);pill=`<span class="status-pill ${d<0?'status-overdue':d<180?'status-soon':'status-ok'}">${d<0?'추적기한 경과':d<180?'추적 예정':'추적 여유'}</span>`}return `<div class="timeline-item"><div class="date">${fmtDate(x.date)}</div><div><b>${esc(x.title)}</b><div class="help">${esc(x.detail)}</div></div>${pill}</div>`}).join('')}
+function catalogEligible(item,a=age(),sex=state.profile.sex){if(!item||!item.test)return false;const min=Number(item.minAge||0),max=Number(item.maxAge||999);if(a!==null&&(a<min||a>max))return false;const s=String(item.sex||'전체');if(s&&!['전체','모두','all'].includes(s.toLowerCase())){if(sex==='male'&&!/남|male/i.test(s))return false;if(sex==='female'&&!/여|female/i.test(s))return false;if(!sex)return false}return true}
+function parsePackageMeta(pkg=''){const raw=cleanCellText(pkg).replace(/\s+/g,' ');if(!raw)return{isChoice:false,label:'',selectCount:0};const m=raw.match(/(\d+)\s*[~\-]\s*(\d+).*?(?:중|中)?\s*선택\s*(\d+)/i)||raw.match(/(\d+)\)\s*[~\-]\s*(\d+)\).*?(?:중|中)?\s*선택\s*(\d+)/i);if(m){return{isChoice:true,label:`${m[1]}~${m[2]} 중 ${m[3]}개 선택`,selectCount:Number(m[3]||1)}}const m2=raw.match(/선택\s*(\d+)/i);if(m2)return{isChoice:true,label:raw,selectCount:Number(m2[1]||1)};return{isChoice:false,label:raw,selectCount:0}}
+function buildUserHealthContext(){const tokens=new Set();const reasons=[];const add=(...xs)=>xs.filter(Boolean).forEach(x=>tokens.add(String(x).trim()));add(...state.conditions,...state.family.cancers,...state.symptoms.selected,...state.findings.map(x=>x.type));if(state.family.cardio)add('심혈관질환');if(state.family.diabetes)add('당뇨');if(state.family.dementia)add('치매');if(state.lifestyle.smoking&&state.lifestyle.smoking!=='never')add('흡연');if(state.lifestyle.alcohol&&state.lifestyle.alcohol!=='none')add('음주');if(Number(state.lifestyle.packYears)>=20)add('고위험흡연');if(Number(state.profile.bpSys)>=140||Number(state.profile.bpDia)>=90)add('고혈압');if(Number(state.profile.bmi)>=25)add('비만');if(Number(state.labs.hba1c)>=6.5)add('당뇨');if(Number(state.labs.ldl)>=160)add('이상지질혈증');if(Number(state.labs.egfr)>0&&Number(state.labs.egfr)<60)add('신장질환');return{tokens:[...tokens],age:age(),sex:state.profile.sex}}
+function screeningEvidence(item,ctx=buildUserHealthContext()){
+  const t=[item.test,item.category,item.description].map(x=>cleanCellText(x)).join(' ').toLowerCase();
+  const a=ctx.age,sex=ctx.sex,pack=Number(state.lifestyle.packYears||0);
+  if(/pet-?ct|pet ct|nk세포|정량뇌파|qeeg|활성산소|항산화력|장내세균|유전자검사|지놈헬스|st2|암\s*유전자|종양표지자|cea|ca\s*19-?9|ca-?125|roma/.test(t))return{level:'D',label:'일반 선별 근거 제한',note:'무증상 일반인의 정기 선별검사로 일괄 권고하기 어려운 항목입니다.'};
+  if(/저선량.*(ct|흉부)|ldct/.test(t)){if(a!==null&&a>=54&&a<=74&&pack>=30)return{level:'A',label:'국가검진 기준 부합 가능',note:'국내 국가폐암검진 고위험군 기준에 해당할 가능성이 있습니다.'};return{level:'D',label:'저위험군 선별 주의',note:'국가폐암검진 고위험군 기준과 다르면 이득과 방사선 노출을 함께 따져야 합니다.'}}
+  if(/위내시경|위장내시경/.test(t)&&a!==null&&a>=40)return{level:'A',label:'국가검진 연계',note:'국내 위암 국가검진 연령대입니다.'};
+  if(/유방촬영|mammog/.test(t)&&sex==='female'&&a!==null&&a>=40)return{level:'A',label:'국가검진 연계',note:'국내 유방암 국가검진 연령대입니다.'};
+  if(/자궁경부|pap|세포검사/.test(t)&&sex==='female'&&a!==null&&a>=20)return{level:'A',label:'국가검진 연계',note:'국내 자궁경부암 국가검진 연령대입니다.'};
+  if(/복부초음파|간초음파/.test(t)&&a!==null&&a>=40&&(ctx.tokens.includes('B형간염')||ctx.tokens.includes('C형간염')))return{level:'A',label:'고위험군 감시 연계',note:'간암 고위험군은 정기 감시 일정 확인이 중요합니다.'};
+  if(/대장내시경|colonoscopy/.test(t)){if(ctx.tokens.includes('대장용종')||ctx.tokens.includes('혈변')||ctx.tokens.includes('흑변'))return{level:'C',label:'추적/진료 맥락',note:'증상이나 과거 용종이 있으면 단순 패키지 선택보다 진료·추적계획 확인이 우선입니다.'};if(a!==null&&a>=50)return{level:'B',label:'선별 선택 가능',note:'국가대장암검진 대상 연령이므로 최근 검사 이력과 함께 선택 여부를 판단합니다.'}}
+  if(/골밀도|dxa/.test(t))return{level:'B',label:'위험도 기반 선택',note:'연령·골절위험·골다공증 병력에 따라 유용성이 달라집니다.'};
+  if(/psa|전립선/.test(t))return{level:'B',label:'공동의사결정',note:'PSA는 장단점을 설명받고 개인 선호와 위험도를 반영해 선택합니다.'};
+  if(/뇌\s*(mri|mra)|mri|mra|경동맥초음파|심장초음파|관상동맥.*(ct|칼슘)|갑상선초음파|유방초음파|mdct|ct/.test(t))return{level:'C',label:'증상·위험도 기반',note:'무증상 일반인에게 일괄 권고하기보다 증상·과거 소견·위험도에 따라 선택합니다.'};
+  return{level:'C',label:'개별 판단',note:'회사 선택검진 항목으로서 개인 병력과 최근 검사 이력을 함께 보고 결정합니다.'};
+}
+function scoreCatalogItem(item,ctx=buildUserHealthContext()){if(!catalogEligible(item,ctx.age,ctx.sex))return null;const text=[item.test,item.category,item.description,item.risk].map(x=>cleanCellText(x)).join(' ').toLowerCase();let score=0;const reasons=[];const addReason=(r,w=1)=>{if(r&&!reasons.includes(r))reasons.push(r);score+=w};for(const token of (String(item.risk||'').split(/[,/|]/).map(x=>x.trim()).filter(Boolean))){if(ctx.tokens.includes(token))addReason(token,3)}if(/대장|colono|m2pk/.test(text)){if(ctx.tokens.includes('혈변'))addReason('혈변',4);if(ctx.tokens.includes('흑변'))addReason('흑변',4);if(ctx.tokens.includes('대장용종'))addReason('대장용종',4);if(ctx.tokens.includes('대장암'))addReason('대장암 가족력/위험',3);if((ctx.age??0)>=50)addReason('50세 이상',1)}if(/위내시경|위장|위암|위용종|gast/.test(text)){if(ctx.tokens.includes('소화불량'))addReason('소화불량',3);if(ctx.tokens.includes('흑변'))addReason('흑변',3);if(ctx.tokens.includes('위용종'))addReason('위용종',4);if(ctx.tokens.includes('위암'))addReason('위암 가족력/위험',3);if((ctx.age??0)>=40)addReason('40세 이상',1)}if(/폐|흉부|ldct|chest/.test(text)){if(ctx.tokens.includes('흡연'))addReason('흡연',2);if(Number(state.lifestyle.packYears)>=30)addReason('30갑년 이상 흡연력',4);if(ctx.tokens.includes('기침'))addReason('기침',3);if(ctx.tokens.includes('객혈'))addReason('객혈',4);if(ctx.tokens.includes('호흡곤란'))addReason('호흡곤란',3)}if(/심장|심혈관|관상동맥|경동맥|동맥경화|콜레스테롤|지질|st2/.test(text)){if(ctx.tokens.includes('고혈압'))addReason('고혈압',3);if(ctx.tokens.includes('당뇨'))addReason('당뇨',3);if(ctx.tokens.includes('이상지질혈증'))addReason('이상지질혈증',3);if(ctx.tokens.includes('심혈관질환'))addReason('심혈관 가족력',3)}if(/뇌|mra|mri|치매|알츠/.test(text)){if(ctx.tokens.includes('뇌졸중'))addReason('뇌졸중 병력',4);if(ctx.tokens.includes('치매'))addReason('치매 가족력/위험',3);if(ctx.tokens.includes('고혈압'))addReason('고혈압',1);if(ctx.tokens.includes('당뇨'))addReason('당뇨',1)}if(/유방|mammog/.test(text)){if(ctx.sex==='female'&&(ctx.age??0)>=40)addReason('40세 이상 여성',2);if(ctx.tokens.includes('유방결절'))addReason('유방결절',4);if(ctx.tokens.includes('멍울'))addReason('멍울',3);if(ctx.tokens.includes('유방암'))addReason('유방암 가족력/위험',3)}if(/hpv|자궁|난소|roma|ca125/.test(text)){if(ctx.sex==='female')addReason('여성',1);if(ctx.tokens.includes('자궁경부암'))addReason('자궁경부암 위험',3);if(ctx.tokens.includes('난소암'))addReason('난소암 위험',3)}if(/전립선|psa/.test(text)){if(ctx.sex==='male'&&(ctx.age??0)>=50)addReason('50세 이상 남성',2);if(ctx.tokens.includes('배뇨장애'))addReason('배뇨장애',3);if(ctx.tokens.includes('전립선암'))addReason('전립선암 위험',3)}if(/간|복부초음파|afp|m2bpgi/.test(text)){if(ctx.tokens.includes('B형간염'))addReason('B형간염',4);if(ctx.tokens.includes('C형간염'))addReason('C형간염',4);if(ctx.tokens.includes('지방간'))addReason('지방간',2);if(ctx.tokens.includes('음주'))addReason('음주',1);if(ctx.tokens.includes('간암'))addReason('간암 위험',3)}if(/갑상선|tsh/.test(text)){if(ctx.tokens.includes('갑상선질환'))addReason('갑상선질환',3);if(ctx.tokens.includes('갑상선결절'))addReason('갑상선결절',4);if(ctx.tokens.includes('갑상선암'))addReason('갑상선암 위험',3)}if(/신장|gfr|creatinine/.test(text)){if(ctx.tokens.includes('신장질환'))addReason('신장질환',4);if(ctx.tokens.includes('고혈압'))addReason('고혈압',2);if(ctx.tokens.includes('당뇨'))addReason('당뇨',2)}if(/골밀도|골다공/.test(text)){if(ctx.tokens.includes('골다공증'))addReason('골다공증',4);if(ctx.sex==='female'&&(ctx.age??0)>=65)addReason('65세 이상 여성',2);if(ctx.sex==='male'&&(ctx.age??0)>=70)addReason('70세 이상 남성',2)}if(/알레르|알러지|mast/.test(text)&&ctx.tokens.includes('천식'))addReason('천식/알레르기',3);const evidence=screeningEvidence(item,ctx);if(evidence.level==='A')score+=4;else if(evidence.level==='B')score+=2;else if(evidence.level==='D')score-=5;return score>0?{score,reasons,evidence}:null}
+function buildCatalogRecommendations(){const ctx=buildUserHealthContext(),groupMap=new Map(),additional=[],lowEvidence=[];for(const item of state.catalog){if(!catalogEligible(item,ctx.age,ctx.sex))continue;const meta=parsePackageMeta(item.package||'');const evidence=screeningEvidence(item,ctx);const scored=scoreCatalogItem(item,ctx);const enriched={...item,score:scored?scored.score:0,reasons:scored?scored.reasons:[],evidence};if(meta.isChoice){const key=meta.label||cleanCellText(item.package)||'선택검사';if(!groupMap.has(key))groupMap.set(key,{label:key,selectCount:meta.selectCount||1,candidates:[]});groupMap.get(key).candidates.push(enriched)}else if(evidence.level==='D')lowEvidence.push(enriched);else if(scored)additional.push(enriched)}const choiceGroups=[...groupMap.values()].map(group=>{const usable=group.candidates.filter(x=>x.evidence.level!=='D'&&x.score>0).sort((a,b)=>b.score-a.score);return{label:group.label,selectCount:group.selectCount,items:usable.slice(0,Math.max(1,group.selectCount)),defer:usable.length===0,alternatives:group.candidates.filter(x=>x.evidence.level==='D').slice(0,3)}});return{choiceGroups,additional:additional.sort((a,b)=>b.score-a.score).slice(0,8),lowEvidence:lowEvidence.slice(0,12)}}
+function evidenceBadge(e){const level=(e&&e.level)||'C';const cls={'A':'evidence-a','B':'evidence-b','C':'evidence-c','D':'evidence-d'}[level]||'evidence-c';return `<span class="evidence-pill ${cls}">${level} · ${esc(e&&e.label||'개별 판단')}</span>`}
+function catalogChoiceHtml(plan=buildCatalogRecommendations()){if(!plan.choiceGroups.length)return `<div class="empty">엑셀에서 선택형 패키지 그룹을 찾지 못했습니다.</div>`;return `<div class="result-grid">${plan.choiceGroups.map(group=>`<div class="result-box follow"><h3>📦 ${esc(group.label)}</h3>${group.defer?`<div class="empty"><b>의학적으로 뚜렷한 우선선택이 없습니다.</b><br>패키지상 반드시 골라야 한다면 최근 검사 이력과 담당 의료진 의견을 확인하거나 검사기관에 대체 가능 여부를 문의하세요.</div>`:`<ul>${group.items.map(item=>`<li><b>${esc(item.test)}</b><div>${evidenceBadge(item.evidence)}</div>${item.reasons&&item.reasons.length?`<span class="evidence">선택 근거: ${esc(item.reasons.slice(0,5).join(', '))}</span>`:''}<span class="evidence">${esc(item.evidence.note)}</span>${safeDescription(item.description)?`<span class="evidence">${esc(safeDescription(item.description).slice(0,180))}</span>`:''}${item.cost?`<span class="evidence">검진표 표시 비용: ${Number(item.cost).toLocaleString()}원</span>`:''}</li>`).join('')}</ul>`}</div>`).join('')}</div><div class="help" style="margin-top:8px">A/B/C/D 등급은 이 앱의 설명용 분류입니다. A=국가검진/고위험군 기준과 직접 연계, B=위험도·공동의사결정, C=증상·과거 소견 등 맥락 필요, D=무증상 일반 선별 근거 제한.</div>`}
+function catalogAdditionalHtml(plan=buildCatalogRecommendations()){if(!plan.additional.length)return `<div class="empty">현재 입력 정보와 직접 연결되는 추가 선택검사가 없습니다. 이것은 “검사를 더 받아야 한다”는 뜻이 아닙니다.</div>`;return `<ul style="margin:0;padding-left:20px">${plan.additional.map(item=>`<li style="margin:10px 0"><b>${esc(item.test)}</b> ${evidenceBadge(item.evidence)}${item.reasons&&item.reasons.length?`<span class="evidence">건강 상태 연계: ${esc(item.reasons.slice(0,5).join(', '))}</span>`:''}<span class="evidence">${esc(item.evidence.note)}</span>${safeDescription(item.description)?`<span class="evidence">${esc(safeDescription(item.description).slice(0,160))}</span>`:''}</li>`).join('')}</ul>`}
+function catalogLowEvidenceHtml(plan=buildCatalogRecommendations()){return `<div class="notice" style="margin-bottom:10px"><b>과잉검사 방지:</b> 아래 항목은 회사 검진표에 있어도 무증상 일반인의 정기 선별검사로 일괄 추천하지 않습니다. 특정 증상·질환·전문의 판단이 있으면 의미가 달라질 수 있습니다.</div><ul style="margin:0;padding-left:20px">${plan.lowEvidence.map(item=>`<li style="margin:8px 0"><b>${esc(item.test)}</b> ${evidenceBadge(item.evidence)}<span class="evidence">${esc(item.evidence.note)}</span></li>`).join('')}</ul>`}
+function buildSummary(rec){return `[ApuDa 건강검진 상담 요약]\n작성일: ${new Date().toLocaleDateString('ko-KR')}\n이름: ${state.profile.name||'미입력'} / 만 ${age()??'-'}세 / ${state.profile.sex==='male'?'남성':state.profile.sex==='female'?'여성':'성별 미입력'}\nBMI: ${state.profile.bmi||'-'} / 혈압: ${state.profile.bpSys||'-'}/${state.profile.bpDia||'-'} mmHg\n흡연력: ${state.lifestyle.smoking} / ${state.lifestyle.packYears||0} 갑년\n\n과거 병력: ${state.conditions.join(', ')||'없음/미입력'}\n암 병력: ${state.cancerHistory.map(x=>`${x.type||''} ${x.stage||''}`).join(', ')||'없음/미입력'}\n복용 약: ${state.meds.map(x=>`${x.name||''}(${x.class||classifyMed(x.name)})`).join(', ')||'없음/미입력'}\n알레르기: ${state.allergies.map(x=>`${x.type||''}-${x.item||''}`).join(', ')||'없음/미입력'}\n현재 증상: ${state.symptoms.selected.join(', ')||'없음/미입력'} ${state.symptoms.freeText||''}\n\n[우선 확인]\n${rec.must.map((x,i)=>`${i+1}. ${x.title} - ${x.detail}`).join('\n')||'없음'}\n\n[추적검사]\n${rec.follow.map((x,i)=>`${i+1}. ${x.title} - ${x.detail}`).join('\n')||'없음'}\n\n[검사 전 주의]\n${rec.caution.map((x,i)=>`${i+1}. ${x.title} - ${x.detail}`).join('\n')||'없음'}\n\n※ 본 요약은 진료 전 정보정리용이며 최종 검사 결정은 의료진이 합니다.`}
+
+
+function extractScreeningsFromPdfText(text){
+  const patterns=[
+    {test:'위내시경',aliases:['위내시경','상부위장관내시경','위장내시경','gastroscopy','egd']},
+    {test:'대장내시경',aliases:['대장내시경','colonoscopy']},
+    {test:'저선량 흉부 CT',aliases:['저선량 흉부 ct','저선량ct','low-dose chest ct','ldct']},
+    {test:'복부초음파',aliases:['복부초음파','간초음파','abdomen ultrasound','abdominal ultrasound']},
+    {test:'유방촬영술',aliases:['유방촬영술','유방촬영','맘모그래피','mammography']},
+    {test:'골밀도검사',aliases:['골밀도검사','골밀도','dxa']},
+    {test:'갑상선초음파',aliases:['갑상선초음파','thyroid ultrasound']},
+    {test:'흉부 X-ray',aliases:['흉부 x-ray','흉부x선','chest x-ray']},
+    {test:'PSA',aliases:['psa']},
+    {test:'CEA',aliases:['cea']},
+    {test:'AFP',aliases:['afp']},
+    {test:'CA19-9',aliases:['ca19-9','ca 19-9']}
+  ];
+  const raw=String(text||'').replace(/\s+/g,' ').trim();
+  if(!raw) return [];
+  const results=[];
+  const dateMatches=[...raw.matchAll(/(20\d{2}[.\-/년]\s?\d{1,2}(?:[.\-/월]\s?\d{1,2})?\s?(?:일)?)/g)].map(m=>m[1]);
+  const defaultDate=dateMatches[0]?normalizePdfDate(dateMatches[0]):'';
+  for(const item of patterns){
+    let foundIndex=-1, aliasFound='';
+    for(const alias of item.aliases){
+      const idx=raw.toLowerCase().indexOf(alias.toLowerCase());
+      if(idx!==-1){foundIndex=idx; aliasFound=alias; break;}
+    }
+    if(foundIndex===-1) continue;
+    const start=Math.max(0,foundIndex-80), end=Math.min(raw.length, foundIndex+160);
+    const snippet=raw.slice(start,end);
+    const dmatch=snippet.match(/(20\d{2}[.\-/년]\s?\d{1,2}(?:[.\-/월]\s?\d{1,2})?\s?(?:일)?)/);
+    const date=normalizePdfDate(dmatch?dmatch[1]:defaultDate);
+    let result='';
+    const keywords=['정상','이상없음','이상 소견 없음','용종','결절','지방간','낭종','제거','추적','비정상','권고','의심','미세석회화'];
+    for(const key of keywords){
+      const idx=snippet.indexOf(key);
+      if(idx!==-1){result=snippet.slice(Math.max(0,idx-18), Math.min(snippet.length,idx+28)).trim(); break;}
+    }
+    if(!result){ result=snippet.replace(new RegExp(aliasFound,'ig'), item.test).slice(0,60).trim(); }
+    results.push({test:item.test,date,result,followupMonths:'',cost:''});
+  }
+  const uniq=[]; const seen=new Set();
+  results.forEach(r=>{const key=`${r.test}|${r.date}`; if(!seen.has(key)){seen.add(key); uniq.push(r)}});
+  return uniq;
+}
+function normalizePdfDate(value){
+  const src=String(value||'').trim();
+  if(!src) return '';
+  const m=src.match(/(20\d{2})[.\-/년]\s?(\d{1,2})(?:[.\-/월]\s?(\d{1,2}))?/);
+  if(!m) return '';
+  const y=m[1], mo=String(m[2]).padStart(2,'0'), da=String(m[3]||'01').padStart(2,'0');
+  return `${y}-${mo}-${da}`;
+}
+function printSectionHtml(title,items,cls){
+  const empty='<div class="print-empty">현재 입력 정보에서 해당 항목이 없습니다.</div>';
+  return `<section class="print-card ${cls}"><h3>${title}</h3>${items.length?`<ul>${items.map(x=>`<li><b>${esc(x.title)}</b><span>${esc(x.detail||'')}</span>${x.cost?`<em>예상 비용 ${Number(x.cost).toLocaleString()}원</em>`:''}</li>`).join('')}</ul>`:empty}</section>`;
+}
+function printTimelineHtml(){
+  const items=[];
+  state.screenings.forEach(s=>{if(s.test&&s.date)items.push({date:s.date,title:s.test,detail:s.result||'결과 미입력',due:s.followupMonths?addMonths(s.date,s.followupMonths):''})});
+  state.imaging.forEach(s=>{if(s.type&&s.date)items.push({date:s.date,title:`${s.type} ${s.area||''}`.trim(),detail:s.result||'결과 미입력',due:''})});
+  if(!items.length) return '<div class="print-empty">검사 이력이 없습니다.</div>';
+  return `<div class="print-timeline">${items.sort((a,b)=>new Date(b.date)-new Date(a.date)).map(x=>{let due=''; if(x.due){const days=diffDays(x.due); due=`<div class="meta">다음 권장 시기: ${fmtDate(x.due)} ${days<0?`· ${Math.abs(days)}일 경과`:days<180?`· ${days}일 남음`:''}</div>`} return `<div class="print-time-item"><div class="date">${fmtDate(x.date)}</div><div><b>${esc(x.title)}</b><div class="meta">${esc(x.detail)}</div>${due}</div></div>`}).join('')}</div>`;
+}
+function riskInfoHtml(){
+  const parts=[];
+  if(state.conditions.length) parts.push(`과거 병력: ${esc(state.conditions.join(', '))}`);
+  if(state.cancerHistory.length) parts.push(`암 병력: ${esc(state.cancerHistory.map(x=>`${x.type||''} ${x.stage||''}`.trim()).filter(Boolean).join(', '))}`);
+  if(state.meds.length) parts.push(`복용 약: ${esc(state.meds.map(x=>`${x.name||''} (${x.class||classifyMed(x.name)||'미분류'})`).join(', '))}`);
+  if(state.findings.length) parts.push(`과거 이상 소견: ${esc(state.findings.map(x=>`${x.type||''}${x.date?`(${fmtDate(x.date)})`:''}`).join(', '))}`);
+  if(state.symptoms.selected.length||state.symptoms.freeText) parts.push(`현재 증상: ${esc([...state.symptoms.selected, state.symptoms.freeText].filter(Boolean).join(', '))}`);
+  return parts.length?parts.map(x=>`<li>${x}</li>`).join(''):'<li>입력된 병력 요약이 없습니다.</li>';
+}
+function openPrintReport(){
+  const rec=generateRecommendations();
+  const cost=rec.must.reduce((s,x)=>s+Number(x.cost||0),0)+rec.follow.reduce((s,x)=>s+Number(x.cost||0),0);
+  const html=`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ApuDa Check 인쇄용 리포트</title><style>
+  @page{size:A4 portrait;margin:0}
+  *{box-sizing:border-box;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  html,body{margin:0;padding:0;background:#eef2f6;color:#17212f;font-family:Inter,"Pretendard","Noto Sans KR",Arial,sans-serif;line-height:1.35}
+  body{min-height:100vh}
+  .preview-toolbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:center;gap:10px;padding:10px;background:#17212f;color:#fff;box-shadow:0 2px 10px rgba(0,0,0,.18)}
+  .preview-toolbar button{border:0;border-radius:10px;padding:9px 14px;font-weight:800;cursor:pointer;background:#1559b7;color:#fff}
+  .preview-toolbar span{font-size:12px;color:#d0d5dd}
+  .sheet{width:210mm;height:296mm;margin:14px auto;background:#fff;padding:8mm;overflow:hidden;box-shadow:0 8px 30px rgba(16,24,40,.20)}
+  .print-area{width:194mm;height:280mm;overflow:hidden;position:relative}
+  .report{width:194mm;transform-origin:top left;overflow-wrap:anywhere;word-break:keep-all}
+  .brand{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;border-bottom:1.5px solid #1559b7;padding-bottom:7px;margin-bottom:7px}
+  .brand-left{display:flex;align-items:center;gap:8px;min-width:0}
+  .logo{width:31px;height:31px;border-radius:9px;background:linear-gradient(135deg,#1559b7,#52a9ff);color:#fff;display:grid;place-items:center;font-weight:900;font-size:16px;flex:0 0 auto}
+  .brand h1{margin:0;font-size:13.5px;color:#1559b7;line-height:1.2}
+  .brand p{margin:2px 0 0;font-size:7.7px;color:#5c6675;line-height:1.3}
+  .meta-top{text-align:right;font-size:7.5px;color:#5c6675;line-height:1.35;flex:0 0 auto}
+  .lead{background:#f3f7fb;border:1px solid #d9e2ec;border-radius:8px;padding:7px 9px;margin-bottom:7px}
+  .lead h2{margin:0 0 2px;font-size:11.5px}.lead p{margin:0;font-size:7.8px;color:#46505e;line-height:1.3}
+  .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin:6px 0}.metric{border:1px solid #d9e2ec;border-radius:8px;padding:6px 7px;background:#fff}.metric span{display:block;font-size:7.3px;color:#667085}.metric b{display:block;margin-top:1px;font-size:12px;color:#1559b7;line-height:1.2}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:6px 0}.print-card{border:1px solid #d9e2ec;border-radius:8px;padding:7px;break-inside:auto;page-break-inside:auto}.print-card.high{border-left:3px solid #c92a2a}.print-card.follow{border-left:3px solid #b76e00}.print-card.low{border-left:3px solid #6c757d}.print-card.caution{border-left:3px solid #1559b7}.print-card h3{margin:0 0 3px;font-size:9.3px}.print-card ul{margin:0;padding-left:13px}.print-card li{margin:2.5px 0;font-size:7.8px;line-height:1.25}.print-card li span,.print-card li em{display:block;font-size:7.1px;color:#46505e;font-style:normal;line-height:1.25}
+  .section{border:1px solid #d9e2ec;border-radius:8px;padding:7px 8px;margin:6px 0;break-inside:auto;page-break-inside:auto}.section h3{margin:0 0 3px;font-size:9.5px;color:#17212f}.section ul{margin:0;padding-left:14px}.section li{font-size:7.8px;margin:2px 0;line-height:1.25}
+  .summary{white-space:pre-wrap;font-size:6.8px;background:#f8fafc;border:1px solid #e5edf5;border-radius:7px;padding:6px;line-height:1.22}
+  .print-timeline{display:grid;gap:2px}.print-time-item{display:grid;grid-template-columns:54px 1fr;gap:6px;padding:3px 0;border-top:1px solid #eef2f6;font-size:7.5px}.print-time-item:first-child{border-top:0;padding-top:0}.date{font-weight:800;color:#1559b7}.meta{font-size:6.9px;color:#5c6675;text-align:left;line-height:1.22}.print-empty{font-size:7.3px;color:#667085}
+  .footer{margin-top:6px;padding-top:5px;border-top:1px solid #d9e2ec;font-size:6.9px;color:#667085;text-align:center;line-height:1.25}
+  @media print{
+    html,body{width:210mm!important;height:296mm!important;min-height:0!important;background:#fff!important;overflow:hidden!important}
+    .no-print{display:none!important}
+    .sheet{width:210mm!important;height:296mm!important;margin:0!important;padding:8mm!important;box-shadow:none!important;overflow:hidden!important}
+    .print-area{width:194mm!important;height:280mm!important;overflow:hidden!important}
+  }
+  </style></head><body>
+  <div class="preview-toolbar no-print"><button type="button" onclick="fitOnePage();setTimeout(()=>window.print(),80)">PDF 저장 / 인쇄</button><span id="fitStatus">A4 1페이지 자동 맞춤 중</span></div>
+  <div class="sheet"><div class="print-area" id="printArea"><div class="report" id="report">
+  <div class="brand"><div class="brand-left"><div class="logo">A</div><div><h1>ApuDa 아프지만, 다행이다 건강정보</h1><p>맞춤형 건강검진 제안 리포트 · 개인 병력, 복약, 검사 이력, 현재 증상을 종합 반영</p></div></div><div class="meta-top">작성일 ${new Date().toLocaleDateString('ko-KR')}<br>${state.profile.name?`대상자 ${esc(state.profile.name)}`:'대상자 이름 미입력'}</div></div>
+  <div class="lead"><h2>AI 건강검진 추천 결과</h2><p>모든 항목을 A4 한 페이지에 자동 축소하여 배치합니다. 최종 검사 선택과 약물 조정은 반드시 담당 의료진과 확인하세요.</p></div>
+  <div class="metrics"><div class="metric"><span>만 나이</span><b>${age()??'-'}</b></div><div class="metric"><span>BMI</span><b>${state.profile.bmi||'-'}</b></div><div class="metric"><span>추적 대상</span><b>${rec.follow.length}</b></div><div class="metric"><span>예상 추가비용</span><b style="font-size:10px">${cost?cost.toLocaleString()+'원':'미입력'}</b></div></div>
+  <div class="section"><h3>기본 요약</h3><ul><li>성별/연령: ${state.profile.sex==='male'?'남성':state.profile.sex==='female'?'여성':'미입력'} / 만 ${age()??'-'}세</li><li>혈압: ${state.profile.bpSys||'-'}/${state.profile.bpDia||'-'} mmHg</li><li>흡연력: ${esc(state.lifestyle.smoking||'미입력')} / ${state.lifestyle.packYears||0} 갑년</li><li>알레르기: ${esc(state.allergies.map(x=>`${x.type||''}-${x.item||''}`).join(', ')||'없음/미입력')}</li></ul></div>
+  <div class="cards">${printSectionHtml('① 우선 권장·진료 필요',rec.must,'high')}${printSectionHtml('② 추적검사 필요',rec.follow,'follow')}${printSectionHtml('③ 현재 필요성이 낮거나 선별 사용',rec.low,'low')}${printSectionHtml('④ 검사 전 주의사항',rec.caution,'caution')}</div>
+  <div class="section"><h3>주요 병력·복약·증상 요약</h3><ul>${riskInfoHtml()}</ul></div>
+  <div class="section"><h3>검사 이력 타임라인</h3>${printTimelineHtml()}</div>
+  <div class="section"><h3>의료진에게 보여줄 핵심 요약</h3><div class="summary">${esc(buildSummary(rec))}</div></div>
+  <div class="footer">ApuDa 아프지만, 다행이다 · 건강에 대한 정보가 가득한 곳 ApuDa 입니다. · 본 자료는 교육 및 진료 준비용입니다.</div>
+  </div></div></div>
+  <script>
+  function fitOnePage(){
+    const area=document.getElementById('printArea');
+    const report=document.getElementById('report');
+    const status=document.getElementById('fitStatus');
+    if(!area||!report)return 1;
+    report.style.transform='none';
+    report.style.width='194mm';
+    const naturalWidth=Math.max(report.scrollWidth,1);
+    const naturalHeight=Math.max(report.scrollHeight,1);
+    const availableWidth=Math.max(area.clientWidth,1);
+    const availableHeight=Math.max(area.clientHeight,1);
+    const scale=Math.min(1,availableWidth/naturalWidth,availableHeight/naturalHeight)*0.985;
+    report.style.transform='scale('+scale.toFixed(4)+')';
+    if(status)status.textContent='A4 1페이지 맞춤 배율 '+Math.round(scale*100)+'%';
+    return scale;
+  }
+  async function preparePrint(){
+    try{if(document.fonts&&document.fonts.ready)await document.fonts.ready}catch(e){}
+    fitOnePage();
+    requestAnimationFrame(()=>{fitOnePage();setTimeout(()=>{fitOnePage();window.print()},450)});
+  }
+  window.addEventListener('resize',()=>fitOnePage());
+  window.addEventListener('beforeprint',()=>fitOnePage());
+  window.onload=preparePrint;
+  <\/script></body></html>`;
+  const blob=new Blob([html],{type:'text/html;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  let previewWindow=null;
+  try{previewWindow=window.open(url,'_blank','width=1280,height=980')}catch(e){}
+  if(!previewWindow){
+    const link=document.createElement('a');
+    link.href=url;
+    link.target='_blank';
+    link.rel='noopener';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    toast('인쇄 미리보기 새 탭을 열었습니다. 열리지 않으면 팝업 차단을 해제하세요.');
+  }
+  setTimeout(()=>URL.revokeObjectURL(url),120000);
+}
+function bindGlobal(){q('#saveBtn').onclick=()=>saveState(true);q('#backupBtn').onclick=backup;q('#restoreBtn').onclick=()=>q('#restoreInput').click();q('#restoreInput').onchange=restore;q('#printBtn').onclick=()=>{showSection('results');setTimeout(()=>openPrintReport(),200)};q('#reviewBtn').onclick=()=>q('#reviewModal').classList.add('open');const fontBtn=q('#fontBtn');const fontKey='apuda_large_text';const applyFont=()=>{let large=false;try{large=localStorage.getItem(fontKey)==='1'}catch(e){}document.body.classList.toggle('large-text',large);fontBtn.setAttribute('aria-pressed',large?'true':'false');fontBtn.textContent=large?'기본 글씨':'큰 글씨'};fontBtn.onclick=()=>{const next=!document.body.classList.contains('large-text');try{localStorage.setItem(fontKey,next?'1':'0')}catch(e){}applyFont()};applyFont();q('#resetBtn').onclick=()=>{if(confirm('이 브라우저에 저장된 모든 입력을 삭제할까요?')){try{localStorage.removeItem(APP_KEY)}catch(e){}state=clone(defaults);current='basic';renderAll();renderNav();showSection('basic');toast('초기화했습니다.')}};qa('[data-close]').forEach(b=>b.onclick=()=>q('#'+b.dataset.close).classList.remove('open'));window.addEventListener('beforeunload',()=>saveState(false));}
+function backup(){saveState(false);const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`ApuDa_건강검진_백업_${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(a.href)}
+async function restore(e){const file=e.target.files[0];if(!file)return;try{state=Object.assign(clone(defaults),JSON.parse(await file.text()));saveState(false);renderAll();showSection('basic');toast('백업 데이터를 복원했습니다.')}catch(err){alert('복원할 수 없는 파일입니다.')}}
+init();
+</script>
+</body>
+</html>
