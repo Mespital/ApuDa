@@ -363,7 +363,6 @@ ${state.screenings.length||state.findings.length||state.catalog.length?`<div cla
 <details class="data-details" ${state.screenings.length?'open':''}><summary>분석된 이전 검사 ${state.screenings.length}건 보기</summary><div style="margin-top:12px">${arrayTable('screenings',[['test','검사명','text'],['date','시행일','date'],['result','결과','text'],['followupMonths','권장 추적개월','number']])}</div></details>
 ${state.catalog.length?`<details class="data-details"><summary>불러온 선택검사 ${state.catalog.length}개 보기</summary><div style="margin-top:12px">${catalogTable()}</div></details>`:''}
 ${footer('allergy','findings')}`}
-}
 
 const findingTypes=['위용종','대장용종','갑상선결절','폐결절','간낭종','신장낭종','담낭용종','유방결절','지방간','기타'];
 function renderFindings(){q('[data-section="findings"]').innerHTML=`${sectionHead('9. 과거 이상 소견','추적검사가 필요한 용종·결절·낭종과 판독 권고를 기록합니다.')}${arrayTable('findings',[['type','이상 소견','select:'+findingTypes.join('|')],['date','발견일','date'],['size','크기/정도','text'],['recommendation','판독 권고','text'],['followupMonths','추적개월','number']])}${footer('screening','labs')}`}
