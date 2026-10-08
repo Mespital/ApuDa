@@ -80,11 +80,11 @@ jobs:
           FC_LIVE_SECRET: ${{ secrets.FC_LIVE_SECRET }}       # 실시간·흰둥이 서버(선택). Netlify FC_LIVE_SECRET 과 같은 값
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }} # 흰둥이 똑똑 모드(선택)
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}       # 흰둥이를 ChatGPT로(선택)
-          FC_CHAT_PROVIDER: ${{ vars.FC_CHAT_PROVIDER }}       # openai 로 두면 ChatGPT 먼저
-          FC_OPENAI_MODEL: ${{ vars.FC_OPENAI_MODEL }}         # 예: gpt-4o-mini
-          FC_OLLAMA_MODEL: ${{ vars.FC_OLLAMA_MODEL }}         # 무료 AI: 예 qwen2.5:3b (VPS에서 직접 실행)
-          OLLAMA_MEM: ${{ vars.OLLAMA_MEM }}                   # 예: 4g
-          FUTURE_LIVE_HOST: ${{ vars.FUTURE_LIVE_HOST }}       # 예: live.apuda.app (DNS가 VPS를 가리킬 때 Caddy에 연결)
+          FC_CHAT_PROVIDER: ${{ vars.FC_CHAT_PROVIDER || secrets.FC_CHAT_PROVIDER }}       # openai 로 두면 ChatGPT 먼저
+          FC_OPENAI_MODEL: ${{ vars.FC_OPENAI_MODEL || secrets.FC_OPENAI_MODEL }}         # 예: gpt-4o-mini
+          FC_OLLAMA_MODEL: ${{ vars.FC_OLLAMA_MODEL || secrets.FC_OLLAMA_MODEL }}         # 무료 AI: 예 qwen2.5:3b (VPS에서 직접 실행)
+          OLLAMA_MEM: ${{ vars.OLLAMA_MEM || secrets.OLLAMA_MEM }}                   # 예: 4g
+          FUTURE_LIVE_HOST: ${{ vars.FUTURE_LIVE_HOST || secrets.FUTURE_LIVE_HOST }}       # 예: live.apuda.app (DNS가 VPS를 가리킬 때 Caddy에 연결)
         run: |
           if [ -z "$VPS_HOST" ] || [ -z "$VPS_USER" ] || [ -z "$VPS_SSH_KEY" ]; then
             echo 'VPS connection unavailable: environment apuda-ai-vps needs VPS_HOST, VPS_USER, VPS_SSH_KEY.' >> "$GITHUB_STEP_SUMMARY"
