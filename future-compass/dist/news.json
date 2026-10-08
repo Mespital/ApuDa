@@ -1,8 +1,32 @@
 {
-  "checked_at": "2026-10-08T09:25:41.192138+00:00",
-  "last_success_at": "2026-10-08T09:25:41.192138+00:00",
+  "checked_at": "2026-10-08T17:17:24.954632+00:00",
+  "last_success_at": "2026-10-08T17:17:24.954632+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "Sign in quickly and securely with passkeys.",
+      "url": "https://blog.google/innovation-and-ai/technology/safety-security/how-to-set-up-passkey/",
+      "source": "Google",
+      "published_at": "2026-10-08T15:00:00+00:00",
+      "category": "안전·보안",
+      "domain": "security"
+    },
+    {
+      "title": "Google Cloud introduces the Gemini agent.",
+      "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/gemini-at-work/",
+      "source": "Google",
+      "published_at": "2026-10-08T12:05:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Disrupting AI-enabled “false front” operations",
+      "url": "https://openai.com/index/disrupting-ai-enabled-false-front-operations",
+      "source": "OpenAI",
+      "published_at": "2026-10-08T00:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "We're making it easier to identify AI-generated content globally.",
       "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/synth-id-ai-content/",
@@ -218,42 +242,14 @@
       "published_at": "2026-10-05T10:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Making AI training available to UK and Ireland educators",
-      "url": "https://blog.google/products-and-platforms/products/education/making-ai-training-available-to-uk-and-ireland-educators/",
-      "source": "Google",
-      "published_at": "2026-10-05T07:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "A model guide for the GPT-6 family",
-      "url": "https://openai.com/index/practical-guide-building-gpt-6",
-      "source": "OpenAI",
-      "published_at": "2026-10-02T16:15:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "The latest AI news we announced in September 2026",
-      "url": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-september-2026/",
-      "source": "Google",
-      "published_at": "2026-10-02T15:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-08T09:25:41.192138+00:00",
+    "checked_at": "2026-10-08T17:17:24.954632+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
-      {
-        "date": "2026-10-08",
-        "title": "중간고사(1학년)"
-      },
       {
         "date": "2026-10-09",
         "title": "한글날"
@@ -448,7 +444,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-08T09:25:41.192138+00:00",
+    "last_success_at": "2026-10-08T17:17:24.954632+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
