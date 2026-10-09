@@ -1,11 +1,19 @@
 {
-  "checked_at": "2026-10-09T17:32:47.455951+00:00",
-  "last_success_at": "2026-10-09T17:32:47.455951+00:00",
+  "checked_at": "2026-10-09T19:21:25.916938+00:00",
+  "last_success_at": "2026-10-09T19:21:25.916938+00:00",
   "failures": [],
   "articles": [
     {
       "title": "Sophos cuts threat investigation time by 96% with OpenAI Daybreak",
       "url": "https://openai.com/index/sophos",
+      "source": "OpenAI",
+      "published_at": "2026-10-09T07:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Asana cuts model costs 76x in browser tests with GPT-6.1 Sol",
+      "url": "https://openai.com/index/asana-browser-agent",
       "source": "OpenAI",
       "published_at": "2026-10-09T07:00:00+00:00",
       "category": "AI·컴퓨팅",
@@ -234,20 +242,12 @@
       "published_at": "2026-10-05T16:00:00+00:00",
       "category": "교육·생활",
       "domain": "education"
-    },
-    {
-      "title": "Technology is helping my fellow math teachers trade weekend prep for personalized learning.",
-      "url": "https://blog.google/products-and-platforms/products/education/education-officer-gemini/",
-      "source": "Google",
-      "published_at": "2026-10-05T16:00:00+00:00",
-      "category": "교육·생활",
-      "domain": "education"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-09T17:32:47.455951+00:00",
+    "checked_at": "2026-10-09T19:21:25.916938+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -440,7 +440,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-09T17:32:47.455951+00:00",
+    "last_success_at": "2026-10-09T19:21:25.916938+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
