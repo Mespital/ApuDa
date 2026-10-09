@@ -40,6 +40,10 @@ if [ -n "${FC_OLLAMA_MODEL:-}" ]; then
   [[ "$FC_OLLAMA_MODEL" =~ ^[a-zA-Z0-9._:/-]+$ ]] || exit 2
   ssh "${ssh_opts[@]}" "$VPS_USER@$VPS_HOST" "cd \"\$HOME/future-compass\"; mkdir -p ollama-data; OLLAMA_MEM='${OLLAMA_MEM:-4g}' docker compose -p future-compass -f compose.yaml --profile ollama up -d ollama >/dev/null 2>&1; for i in 1 2 3 4 5 6 7 8 9 10; do docker compose -p future-compass -f compose.yaml exec -T ollama ollama list >/dev/null 2>&1 && break; sleep 3; done; timeout 1500 docker compose -p future-compass -f compose.yaml exec -T ollama ollama pull '$FC_OLLAMA_MODEL' 2>&1 | tail -1; echo \"ollama models: \$(docker compose -p future-compass -f compose.yaml exec -T ollama ollama list 2>&1 | tail -n +2 | awk '{print \$1\" \"\$3\$4}' | tr '\\n' ' ')\"" 2>&1 | tr -d '\r' | grep -v '^$' | tail -2 | sed 's/^/::notice::/' || echo '::warning::ollama step failed'
 fi
+# 수동 실행 때만: 무료 모델 실제 답변 속도·품질 한 번 확인
+if [ -n "${FC_OLLAMA_MODEL:-}" ] && [ "${GITHUB_EVENT_NAME:-}" = "workflow_dispatch" ]; then
+  ssh "${ssh_opts[@]}" "$VPS_USER@$VPS_HOST" "cd \"\$HOME/future-compass\"; s=\$(date +%s); a=\$(timeout 240 docker compose -p future-compass -f compose.yaml exec -T ollama ollama run '$FC_OLLAMA_MODEL' '고등학생에게 광합성을 한국어 세 문장으로 쉽게 설명해줘.' 2>/dev/null | tr '\n' ' ' | cut -c1-300); echo \"ollama test \$(( \$(date +%s) - s ))s: \$a\"" 2>&1 | tr -d '\r' | sed 's/^/::notice::/' || true
+fi
 live_out=$(ssh "${ssh_opts[@]}" "$VPS_USER@$VPS_HOST" 'cd "$HOME/future-compass"; docker compose -p future-compass -f compose.yaml up -d --force-recreate live 2>&1 | tail -2 | tr "\n" " "; curl -s --retry 10 --retry-delay 2 --retry-all-errors http://127.0.0.1:8093/health || docker logs --tail 5 future-compass-live-1 2>&1 | tr "\n" " "' 2>&1 || true)
 printf "live relay: %s\n" "${live_out:0:400}" | tr -d "\r" | sed "s/^/::notice::/"
 # 공개 주소: DNS(live.apuda.app 등)가 이 VPS를 가리킬 때만 Caddy 끝에 블록 추가 (기존 블록은 그대로, validate 통과 시에만 reload)
