@@ -481,7 +481,7 @@ function upcoming(){return state.roadmap.filter(function(x){return x.status!=='d
 function logLine(l){var a=[];if(l.bp)a.push('혈압 '+l.bp);if(l.waist)a.push('배 둘레 '+l.waist+'cm');if(l.numb!=null&&l.numb!=='')a.push('저림 '+l.numb+'단계');if(l.sleep)a.push('수면 '+l.sleep+'시간');if(l.rt)a.push('방사선 '+l.rt+'회차');if(l.temp)a.push('체온 '+l.temp+'℃');if(l.pain!==''&&l.pain!=null)a.push('통증 '+l.pain+'/10'+(l.painSite?'('+l.painSite+')':''));if(l.meal!=='')a.push('식사 '+l.meal+'%');if(l.weight)a.push('체중 '+l.weight+'kg');if(l.water)a.push('수분 '+l.water+'mL');if(+l.diarrhea)a.push('설사 '+l.diarrhea+'회');if(+l.vomit)a.push('구토 '+l.vomit+'회');if(l.bowel)a.push(l.bowel);if(l.steps)a.push(l.steps+'걸음');return esc(a.join(' · ')||'수치 없음')+(l.note?'<br><span class="small muted">'+esc(l.note)+'</span>':'')}
 function isWarn(l){return +l.temp>=38||(l.pain!==''&&+l.pain>=7)||l.bowel==='혈변·검은변'||+l.diarrhea>=4||+l.vomit>=3}
 function renderHome(){
-  var pb=document.getElementById('phoneBar');if(pb)pb.hidden=!!(state.profile.dayPhone||state.profile.nightPhone);
+  var pb=document.getElementById('phoneBar');if(pb){var _nz={};try{_nz=JSON.parse(localStorage.getItem('apuda_note_nudge')||'{}')}catch(e){}pb.hidden=!!(state.profile.dayPhone||state.profile.nightPhone)||!!(_nz.phone&&Date.now()-_nz.phone<7*864e5)}
   var p=state.profile,h=new Date().getHours();
   $('#hello').innerHTML=(p.name?esc(p.name)+'님, ':'')+(h<11?'좋은 아침이에요.':h<18?'오늘 하루 어떠세요?':'오늘 하루 고생 많으셨어요.')+'<br><span style="font-size:.72em;color:var(--muted);font-weight:800">오늘 몸 상태를 한 줄로 알려 주세요.</span>';
   var cd=cday(),cb=$('#chemoBar'),rx=myRx(),ci=cycleInfo(),bh='';
@@ -494,6 +494,7 @@ function renderHome(){
     if(nd)tips=['🛡️ 몸을 지키는 기간이에요. 면역력(백혈구)이 잠시 낮아질 수 있으니 체온을 하루 2번 재 두세요. <u>38.0℃ 이상이면 해열제 먹기 전에 바로 병원에 연락</u>하세요.'];else tips=tips.map(esc);
     bh='<div class="chemobar'+(nd?' nadir':'')+'" '+go+'><b>'+dLbl(cd)+'<em class="ref">참고용</em></b><span>'+(rx?'<small style="display:block;font-weight:900;opacity:.85">'+esc(rx.ko)+(ci?' · '+ci.no+'차':'')+(ol?' · '+ol:'')+'</small>':'')+(tips.join(' ')||'마지막 항암 '+fmt(cd.date))+(ci&&!ci.booked&&!nd&&cd.n>=3?'<small style="display:block;margin-top:2px">다음 '+(isInj(rx)?'주사':'항암')+' 예상 '+fmt(ci.next)+' (참고용)</small>':'')+(rx&&rx._needOpt?'<small style="display:block;margin-top:2px">투여 간격을 고르면 다음 예상일이 나와요 →</small>':'')+'</span></div>'}
   cb.innerHTML=bh;
+  var sl=$('#safeline');if(sl)sl.innerHTML=/fever/.test(bh)?'':'<button type="button" class="safeline" onclick="openSheet(\'sos\')"><span aria-hidden="true">🌡️</span><span><b>38.0℃ 이상</b>·오한·숨참이면 해열제 먹기 전에 병원에 연락하세요. 위급하면 119.</span></button>';
   renderTodo(rx,cd,ci,upc,ud);
   /* 주 1회 가벼운 제안: 백업 · 마음 온도계 */
   var nz=$('#nudge');if(nz){var nd2={};try{nd2=JSON.parse(localStorage.getItem('apuda_note_nudge')||'{}')}catch(e){}
@@ -504,13 +505,13 @@ function renderHome(){
     else if(state.logs.length>=3&&(!state.distress[0]||dayDiff(state.distress[0].date,today())>=7)&&!snoozed('mood'))nh='<div class="nudge"><span>💭 이번 주 마음은 어떠세요? 마음 온도계를 기록해 두면 진료 때 함께 이야기할 수 있어요.</span><div class="row"><button class="btn soft sm" onclick="snooze(\'mood\');tab(\'log\');setTimeout(function(){document.getElementById(\'distress\').scrollIntoView({block:\'center\'})},60)">기록하기</button><button class="btn line sm" onclick="snooze(\'mood\')">다음에</button></div></div>';
     nz.innerHTML=nh}
   var up=upcoming()[0], tl=state.logs.find(function(x){return x.date===today()}), hq=state.questions.filter(function(q){return !q.answer}).length;
-  $('#tiles').innerHTML=
+  var tilesEmpty=!up&&!tl&&!hq;$('#tiles').hidden=tilesEmpty;
+  $('#tiles').innerHTML=tilesEmpty?'':
    '<button class="tile" onclick="tab(\'plan\')"><small>📅 다음 일정</small><b>'+(up?dday(up.date)+' · '+esc(up.title.slice(0,14)):'없음')+'</b></button>'+
    '<button class="tile" onclick="tab(\'log\')"><small>🩺 오늘 기록</small><b'+(tl&&isWarn(tl)?' style="color:var(--red)"':'')+'>'+(tl?(tl.temp?tl.temp+'℃ ':'')+(tl.pain!==''?'통증 '+tl.pain:'')||'기록함':'아직 없음')+'</b></button>'+
    '<button class="tile" onclick="planTab=\'qs\';renderPlan();tab(\'plan\')"><small>❓ 물어볼 것</small><b>'+hq+'개</b></button>';
   var c='';if(p.dayPhone)c+='<a class="btn line" href="'+tel(p.dayPhone)+'">📞 병원 전화</a>';if(p.nightPhone)c+='<a class="btn line" href="'+tel(p.nightPhone)+'">🌙 야간·응급</a>';
-  if(!p.dayPhone&&!p.nightPhone)c='<button class="btn soft" style="grid-column:1/-1" onclick="openSheet(\'settings\')">📞 병원 연락처를 먼저 등록해 두세요</button>';
-  $('#callrow').innerHTML=c;
+  $('#callrow').innerHTML=c;$('#callrow').hidden=!c;
 }
 function chk(k){var d=state.checks[today()];return !!(d&&d[k])}
 window.toggleCheck=function(k){var d=state.checks[today()]||(state.checks[today()]={});d[k]=!d[k];
@@ -700,11 +701,14 @@ function renderER(){var el=$('#erBody');if(!el)return;var p=state.profile,rx=myR
   el.innerHTML='<div class="er-head">'+(injOnly?'암 치료 중인 환자예요':'항암 치료 중인 환자예요')+(tl&&+tl.temp>=38?'<br><span>오늘 '+esc(tl.temp)+'℃ 발열</span>':'')+'</div><table class="er-t">'+rows.map(function(r){return '<tr><th>'+r[0]+'</th><td>'+esc(r[1])+'</td></tr>'}).join('')+'</table><p class="nshort">환자·보호자가 노트에 기록한 내용이에요. 의료진 확인을 돕는 참고 자료예요.</p>'}
 function renderSOS(){
   var p=state.profile,c='';
-  c+=p.dayPhone?'<a class="btn red" href="'+tel(p.dayPhone)+'">📞 치료병원</a>':'<button class="btn line" onclick="openSheet(\'settings\')">병원 번호 등록</button>';
+  var big='style="grid-column:1/-1;min-height:64px;font-size:1.05em"';
+  if(p.dayPhone){c+='<a class="btn red" '+big+' href="'+tel(p.dayPhone)+'">📞 치료병원에 전화</a>';c+='<a class="btn red" href="tel:119">🚑 119</a>'}
+  else c+='<a class="btn red" '+big+' href="tel:119">🚑 119 (위급할 때)</a>';
   c+=p.nightPhone?'<a class="btn red" href="'+tel(p.nightPhone)+'">🌙 야간·응급</a>':'<a class="btn line" href="https://www.e-gen.or.kr/egen/search_emergency_room.do" target="_blank" rel="noopener">🏥 가까운 응급실</a>';
-  c+='<a class="btn red" href="tel:119">🚑 119</a><a class="btn line" href="tel:109">💙 109 마음 위기</a>';
-  c+='<button class="btn line" style="grid-column:1/-1" onclick="openSheet(\'er\')">📋 응급실에서 보여 줄 화면</button>';
-  $('#sosCalls').innerHTML=c+routeHTML(true);$('#redList').innerHTML=chkHTML(RED,'red');$('#amberList').innerHTML=chkHTML(AMB,'amber');triage(true);
+  c+='<a class="btn line" href="tel:109">💙 109 마음 위기</a>';
+  c+='<button class="btn line" '+(p.dayPhone?'':'')+'onclick="openSheet(\'er\')">📋 응급실용 화면</button>';
+
+  $('#sosCalls').innerHTML=c+'<span></span>'+routeHTML(true)+(p.dayPhone?'':'<button class="btn soft" style="grid-column:1/-1" onclick="openSheet(\'settings\')">📞 치료병원 번호 등록하기</button>');$('#redList').innerHTML=chkHTML(RED,'red');$('#amberList').innerHTML=chkHTML(AMB,'amber');triage(true);
 }
 function triage(silent){
   var boxes=[].slice.call(document.querySelectorAll('#sh-sos [data-level]'));
@@ -730,7 +734,7 @@ function renderAll(){renderHome();renderPlan();renderLog();renderSummary();rende
 /* ═════════ 시작 ═════════ */
 function greet(){
   var p=state.profile,first=!state.logs.length&&!state.roadmap.length&&!state.meds.length;
-  var h=first?'<b>안녕하세요, ApuDa 노트봇이에요.</b><br>말하듯이 쓰면 제가 정리해 둘게요.<ul><li>"열 37.8, 통증 3점"</li><li>"다음주 화요일 10시 항암 3차"</li><li>"약: 젤로다 아침저녁 3알"</li><li>"질문: 항암 중 운동해도 되나요?"</li></ul>먼저 <b>병원 연락처</b>를 알려 주시면 급할 때 바로 전화 버튼을 보여드려요.<div class="acts"><button type="button" onclick="prefill(\'병원 전화 \')">📞 병원 전화 등록</button><button type="button" onclick="openSheet(\'settings\')">내 정보 한 번에 입력</button></div>'
+  var h=first?'<b>안녕하세요, ApuDa 노트봇이에요.</b><br>말하듯이 쓰면 제가 정리해 둘게요.<ul><li>"열 37.8, 통증 3점"</li><li>"다음주 화요일 10시 항암 3차"</li><li>"질문: 항암 중 운동해도 되나요?"</li></ul>아래 입력창에 쓰거나 <b>🎤 말하기</b>를 눌러 보세요. 더 많은 예시는 <b>💡 사용법</b>에 있어요.'
     :'<b>'+(p.name?esc(p.name)+'님, ':'')+'오늘 상태를 알려 주세요.</b><div class="qr">'+[['🌡️ 체온','temp'],['😣 통증','pain'],['🍚 식사','meal']].map(function(x){return '<button type="button" onclick="document.querySelector(\'#chips [data-c='+x[1]+']\').click()">'+x[0]+'</button>'}).join('')+'</div>';
   addMsg('bot',h,'',false);
 }

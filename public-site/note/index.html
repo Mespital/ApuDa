@@ -69,8 +69,6 @@ label{display:block;font-size:.78em;font-weight:900;color:#3b4a60;margin:10px 0 
 .devs{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:4px}.devs label{display:flex;gap:6px;align-items:center;min-height:44px;border:1px solid var(--line);border-radius:12px;padding:0 10px;font-weight:700;font-size:.88em;margin:0}
 .er{font-size:1.15em}.er-head{background:var(--red);color:#fff;border-radius:16px;padding:14px 16px;font-size:1.25em;font-weight:900;line-height:1.35}.er-head span{font-size:.85em}
 .er-t{width:100%;border-collapse:collapse;margin-top:10px;background:#fff;border-radius:14px;overflow:hidden}.er-t th{width:34%;text-align:left;padding:12px;border-top:1px solid var(--line);color:var(--muted);vertical-align:top}.er-t td{padding:12px;border-top:1px solid var(--line);font-weight:800}
-html.big .logo b{font-size:.86em}html.big .logo i{width:34px;height:34px}html.big .tbtn{padding:0 7px}html.big .sos{padding:0 9px}
-@media(max-width:430px){html.big .logo b{font-size:.78em}html.big .top{gap:4px}}
 .nudge{border:1px dashed var(--line);background:#fff;border-radius:14px;padding:10px 12px;margin:-2px 0 10px;font-size:.84em;font-weight:700;display:grid;gap:8px}.nudge .row{gap:6px}
 table.kv{width:100%;border-collapse:collapse;margin-top:10px;font-size:.86em}table.kv th{width:84px;text-align:left;color:var(--muted);font-weight:900;vertical-align:top;padding:7px 6px 7px 0;border-top:1px solid var(--line)}table.kv td{padding:7px 0;border-top:1px solid var(--line);line-height:1.5}
 .cyc{display:flex;gap:2px;margin-top:10px}.cyc i{flex:1;height:26px;border-radius:4px;background:#eef1f5;position:relative;border:1px solid #dfe5ee}
@@ -160,31 +158,100 @@ table.kv{width:100%;border-collapse:collapse;margin-top:10px;font-size:.86em}tab
 }
 .phonebar{flex:0 0 100%;display:flex;align-items:center;gap:10px;margin:4px 0 0;padding:8px 12px;border-radius:12px;border:1px solid #fde3a7;background:#fff7e6;border-bottom:1px solid #fde3a7;color:#7a2e0e;font-size:.82em;line-height:1.45}
 .phonebar[hidden]{display:none}
-@media(max-width:430px){.logo small{display:none}.logo b{white-space:nowrap}.top{gap:6px}.tbtn{min-width:42px;padding:0 8px}.sos{padding:0 10px}}
+@media(max-width:430px){.logo small{display:none}}
 .phonebar span{flex:1}.phonebar button{flex:0 0 auto;border:0;background:var(--amber);color:#fff;border-radius:11px;min-height:44px;padding:0 14px;font-weight:900;font-size:1em}
+
+/* ===== v3.8 반응형·가독성 (감수 반영) ===== */
+:root{--muted:#4a5a70}
+html.big{--fs:21px}
+.small{font-size:.88em}.tile small,.legend,.chk small,.item .meta{font-size:.86em}.nshort{font-size:.84em}.cyc i span{font-size:.78em}
+html.big .logo b{font-size:1em}html.big .logo i{width:38px;height:38px}
+.tbtn,.sos{font-size:15px;flex:0 0 auto}html.big .tbtn,html.big .sos{font-size:16px}
+.logo{flex:1 1 auto;min-width:0}.logo b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.phonebar{display:flex;align-items:center;gap:8px;margin:0 0 12px;padding:10px 10px 10px 12px;border-radius:14px;border:1px solid #f3d38a;background:#fff7e6;color:#6b2a08;font-size:.88em;line-height:1.45}
+.phonebar[hidden]{display:none}.phonebar span{flex:1}
+.phonebar button{flex:0 0 auto;border:0;background:var(--amber);color:#fff;border-radius:11px;min-height:44px;padding:0 14px;font-weight:900;font-size:1em}
+.phonebar button.x{background:transparent;color:#8a5a2b;min-width:40px;padding:0 6px;font-size:1.05em}
+.safeline{display:flex;gap:8px;align-items:center;width:100%;margin:0 0 12px;padding:9px 12px;border:1px solid #f6c7c1;border-radius:14px;background:var(--redbg);color:#9b1c13;font-weight:800;font-size:.86em;line-height:1.45;text-align:left;cursor:pointer}
+.safeline b{white-space:nowrap}
+.sumbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}.sumbar h2{margin:0}.sumbar .btn{white-space:nowrap}
+.range .btn{white-space:nowrap;flex:0 0 auto}
+input[type=range]{height:36px;accent-color:var(--blue)}
+input[type=range]::-webkit-slider-thumb{width:30px;height:30px}
+.tabs{left:50%;right:auto;width:100%;max-width:680px;transform:translateX(-50%);height:calc(68px + env(safe-area-inset-bottom))}
+:root{--tab:68px}
+.tabs button{font-size:.86em;gap:2px;margin:6px 4px;border-radius:14px}
+.tabs button.on{background:var(--sky)}
+.tabs button{font-size:15px;line-height:1.2}.tabs button span{font-size:22px}html.big .tabs button{font-size:16px}html.big .tabs button span{font-size:22px}
+.chips{-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent);padding-right:24px}
+.inbar textarea::placeholder{color:#7b889b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:400px){
+  .tbtn.guide{display:none}.logo i{display:none}
+  .top{gap:6px;padding-left:12px;padding-right:12px}
+  .tbtn{min-width:44px;padding:0 6px}.sos{padding:0 10px}
+  .addline.three{grid-template-columns:minmax(0,1fr) auto}.addline.three input[type=date]{grid-column:1/-1}
+  .hello{font-size:1.18em}
+}
+@media(max-width:430px){
+  .labform{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tiles .tile{min-height:80px;padding:10px 9px}
+}
+@media(min-width:768px){
+  .app{max-width:760px}.tabs{max-width:760px}.composer .in{max-width:736px}
+  .chips{flex-wrap:wrap;-webkit-mask-image:none;mask-image:none;padding-right:2px}
+  .sheet{align-items:center;padding:24px}.sheet .panel{border-radius:24px;max-height:88dvh;max-width:720px}
+  .msg{max-width:78%}
+}
+@media(min-width:1024px){
+  .app{max-width:1180px;display:grid;grid-template-columns:200px minmax(0,1fr);grid-template-rows:auto 1fr auto;column-gap:20px;padding:0 20px}
+  .top{grid-column:1/-1;margin:0 -20px;padding-left:max(20px,calc((100vw - 1180px)/2 + 20px));padding-right:max(20px,calc((100vw - 1180px)/2 + 20px))}
+  .tabs{position:sticky;top:84px;transform:none;left:auto;grid-column:1;grid-row:2/4;align-self:start;display:flex;flex-direction:column;gap:6px;height:auto;max-width:none;width:auto;padding:14px 0;border:0;background:none}
+  .tabs button{flex-direction:row;justify-content:flex-start;gap:10px;min-height:56px;padding:0 16px;margin:0;font-size:1em;background:#fff;border:1px solid var(--line)}
+  .tabs button.on{background:var(--blue);border-color:var(--blue);color:#fff}
+  .tabs button span{font-size:1.2em}
+  main{grid-column:2;padding:16px 0 24px}
+  .composer{position:sticky;bottom:0;left:auto;right:auto;grid-column:2;padding:8px 0 16px}.composer .in{max-width:none}
+  #v-today.on{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:20px;align-items:start}
+  #v-today .tside{grid-column:2;grid-row:1;position:sticky;top:96px}
+  #v-today .thread{grid-column:1;grid-row:1;min-height:50vh}
+  #v-today .tiles{grid-template-columns:1fr}.tiles .tile{min-height:0}
+  .toast{bottom:120px}
+  #v-summary #summary{display:grid;grid-template-columns:1fr 1fr;gap:12px}#v-summary #summary>*{margin:0}#v-summary #summary>.sumhead{grid-column:1/-1}
+}
+
+.top{flex-wrap:nowrap}
+.chk{font-size:var(--fs);margin:0 0 8px;color:var(--ink);font-weight:400}.chk b{font-size:1em}.chk small{font-size:.88em}
+.devs label{font-size:.9em}
+@media(max-width:480px){html.big .tbtn.guide{display:none}html.big .logo i{display:none}}
+@media(max-width:400px){html.big .phonebar{flex-wrap:wrap}html.big .phonebar span{flex:1 0 100%}html.big .phonebar button:not(.x){margin-left:auto}}
+@media(max-width:430px){.sumhead .row.between{flex-direction:column;gap:6px}.sumhead .row.between>*:last-child{text-align:left!important}}
+@media(min-width:1024px) and (max-height:700px){.tabs{top:76px}}
 </style>
 </head>
 <body>
 <div class="app">
 <header class="top">
   <div class="logo"><i>A</i><div><b>암환자 노트</b><small>ApuDa · 말하듯 쓰면 정리돼요</small></div></div>
-  <button class="tbtn" onclick="window.ApudaBot&&ApudaBot.open()" aria-label="ApuDa 길잡이 — 다른 층으로 이동">🧭</button>
+  <button class="tbtn guide" onclick="window.ApudaBot&&ApudaBot.open()" aria-label="ApuDa 길잡이 — 다른 층으로 이동">🧭</button>
   <button class="tbtn" id="fontBtn" aria-label="글자 크기">가<span style="font-size:1.25em">가</span></button>
   <button class="tbtn" onclick="openSheet('settings')" aria-label="내 정보와 설정">⚙︎</button>
   <button class="sos" onclick="openSheet('sos')">🚨 응급</button>
-  <div class="phonebar" id="phoneBar" hidden><span>📞 <b>치료병원 번호</b>를 등록해 두면 열이 날 때 바로 전화할 수 있어요.</span><button type="button" onclick="openSheet('settings')">등록</button></div>
 </header>
 
 
 <main>
 <!-- 오늘(노트봇) -->
 <section class="view on" id="v-today">
+  <div class="tside">
   <div class="hello" id="hello"></div>
+  <div class="phonebar" id="phoneBar" hidden><span>📞 <b>치료병원 번호</b>를 등록해 두면 열이 날 때 바로 전화할 수 있어요.</span><button type="button" onclick="openSheet('settings')">등록</button><button type="button" class="x" aria-label="다음에 하기" onclick="snooze('phone')">✕</button></div>
   <div id="chemoBar"></div>
+  <div id="safeline"></div>
   <div id="nudge"></div>
   <div id="todo"></div>
   <div class="tiles" id="tiles"></div>
   <div class="callrow" id="callrow"></div>
+  </div>
   <div class="thread" id="thread" aria-live="polite"></div>
 </section>
 
@@ -211,7 +278,7 @@ table.kv{width:100%;border-collapse:collapse;margin-top:10px;font-size:.86em}tab
 
 <!-- 진료요약 -->
 <section class="view sum" id="v-summary">
-  <div class="row between noprint" style="margin-bottom:10px"><h2 style="margin:0">진료요약 한 장</h2><div class="row"><button class="btn line sm" onclick="openSheet('er')">📋 응급실용</button><button class="btn line sm" onclick="window.print()">🖨 인쇄·PDF</button></div></div>
+  <div class="sumbar noprint"><h2>진료요약</h2><div class="row"><button class="btn line sm" onclick="openSheet('er')">📋 응급실용</button><button class="btn line sm" onclick="window.print()">🖨 인쇄</button></div></div>
   <p class="small muted noprint" style="margin:-4px 2px 12px">진료실에서 이 화면을 의료진에게 그대로 보여주세요.</p>
   <div id="summary"></div>
 </section>
@@ -225,7 +292,7 @@ table.kv{width:100%;border-collapse:collapse;margin-top:10px;font-size:.86em}tab
       <button data-c="sym">🤒 증상 상담</button><button data-c="help">💡 사용법</button>
     </div>
     <form class="inbar" id="inbar" autocomplete="off">
-      <textarea id="input" rows="1" placeholder="예) 열 37.8 / 통증 5점 / 다음주 화 10시 항암" aria-label="노트봇에게 쓰기"></textarea>
+      <textarea id="input" rows="1" placeholder="예) 열 37.8, 통증 5점" aria-label="노트봇에게 쓰기"></textarea>
       <button type="button" class="mic" id="mic" aria-label="말로 입력하기" title="말로 입력하기" hidden>🎤<small>말하기</small></button>
       <button class="send" aria-label="보내기">↑</button>
     </form>
@@ -266,6 +333,7 @@ table.kv{width:100%;border-collapse:collapse;margin-top:10px;font-size:.86em}tab
 <div class="sheet" id="sh-settings" onclick="if(event.target===this)closeSheet()">
 <div class="panel">
   <div class="grab"><h2>내 정보 · 설정</h2><button class="tbtn" onclick="closeSheet()">닫기</button></div>
+  <button class="btn line block" style="margin-bottom:12px" onclick="closeSheet();window.ApudaBot&&ApudaBot.open()">🧭 ApuDa 길잡이 — 책·FAQ·지원 정보로 이동</button>
   <form class="card" id="profileForm">
     <h3>내 치료 정보 <span class="small muted">모르면 비워두세요</span></h3>
     <label>이름(호칭)</label><input name="name" placeholder="예) 김OO">
@@ -298,7 +366,7 @@ table.kv{width:100%;border-collapse:collapse;margin-top:10px;font-size:.86em}tab
     <b>하는 일</b><ul><li>몸 상태·일정·약·질문을 기록하고 진료요약으로 정리해요.</li><li>기록한 값과 입력한 날짜를 바탕으로 일반적인 참고 안내(연락 기준, 참고용 예상일)를 보여 줘요.</li></ul>
     <b>하지 않는 일</b><ul><li>질병을 진단·치료·예측하거나 약 용량·치료 일정을 정하지 않아요.</li><li>응급 상황을 판단하거나 의료진의 연락을 대신하지 않아요. 걱정되면 수치와 상관없이 의료진에게 연락하세요.</li><li>기록을 아프다 서버로 보내지 않아요(이 기기 안에만 저장, 구글 드라이브 백업은 직접 연결했을 때만).</li></ul>
     <p class="nshort" style="margin-top:6px">[안내] 이 노트의 모든 정보는 일반적인 건강 정보를 알기 쉽게 정리한 참고 자료이며, 의사의 진료·진단·처방을 대신하지 않습니다. 치료 일정·용량·검사·부작용 대처는 환자의 상태와 의료기관에 따라 다르므로 담당 의료진의 판단과 안내를 따르세요. ApuDa는 이 정보를 근거로 한 개별 의료 판단이나 그 결과에 대해 책임을 지지 않습니다. 응급 상황에는 즉시 119 또는 가까운 응급실을 이용하세요.</p></div>
-  <p class="note-foot">ApuDa 암환자 노트 v3.7 · <a href="/">ApuDa 홈</a></p>
+  <p class="note-foot">ApuDa 암환자 노트 v3.8 · <a href="/">ApuDa 홈</a></p>
 </div></div>
 
 <div class="toast" id="toast"></div>
