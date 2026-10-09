@@ -42,7 +42,7 @@ if [ -n "${FC_OLLAMA_MODEL:-}" ]; then
 fi
 # 수동 실행 때만: 무료 모델 실제 답변 속도·품질 한 번 확인
 if [ -n "${FC_OLLAMA_MODEL:-}" ] && [ "${GITHUB_EVENT_NAME:-}" = "workflow_dispatch" ]; then
-  ssh "${ssh_opts[@]}" "$VPS_USER@$VPS_HOST" "cd \"\$HOME/future-compass\"; s=\$(date +%s); a=\$(timeout 240 docker compose -p future-compass -f compose.yaml exec -T ollama ollama run '$FC_OLLAMA_MODEL' '고등학생에게 광합성을 한국어 세 문장으로 쉽게 설명해줘.' 2>/dev/null | tr '\n' ' ' | cut -c1-300); echo \"ollama test \$(( \$(date +%s) - s ))s: \$a\"" 2>&1 | tr -d '\r' | sed 's/^/::notice::/' || true
+  ssh "${ssh_opts[@]}" "$VPS_USER@$VPS_HOST" "cd \"\$HOME/future-compass\"; s=\$(date +%s); a=\$(timeout 420 docker compose -p future-compass -f compose.yaml exec -T ollama ollama run '$FC_OLLAMA_MODEL' '고등학생에게 광합성을 한국어 세 문장으로 쉽게 설명해줘.' 2>/dev/null | tr '\n' ' ' | cut -c1-300); echo \"ollama test \$(( \$(date +%s) - s ))s: \$a\"" 2>&1 | tr -d '\r' | sed 's/^/::notice::/' || true
 fi
 live_out=$(ssh "${ssh_opts[@]}" "$VPS_USER@$VPS_HOST" 'cd "$HOME/future-compass"; docker compose -p future-compass -f compose.yaml up -d --force-recreate live 2>&1 | tail -2 | tr "\n" " "; curl -s --retry 10 --retry-delay 2 --retry-all-errors http://127.0.0.1:8093/health || docker logs --tail 5 future-compass-live-1 2>&1 | tr "\n" " "' 2>&1 || true)
 printf "live relay: %s\n" "${live_out:0:400}" | tr -d "\r" | sed "s/^/::notice::/"
