@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-10-08T23:07:28.585667+00:00",
-  "last_success_at": "2026-10-08T23:07:28.585667+00:00",
+  "checked_at": "2026-10-09T02:19:29.901034+00:00",
+  "last_success_at": "2026-10-09T02:19:29.901034+00:00",
   "failures": [],
   "articles": [
     {
@@ -38,6 +38,14 @@
     {
       "title": "Pollo AI turns creative ideas into campaigns with OpenAI",
       "url": "https://openai.com/index/pollo-ai",
+      "source": "OpenAI",
+      "published_at": "2026-10-08T12:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "LegalOn halves Codex costs while maintaining development speed",
+      "url": "https://openai.com/index/legalon-halves-codex-costs",
       "source": "OpenAI",
       "published_at": "2026-10-08T12:00:00+00:00",
       "category": "AI·컴퓨팅",
@@ -234,20 +242,12 @@
       "published_at": "2026-10-05T16:00:00+00:00",
       "category": "교육·생활",
       "domain": "education"
-    },
-    {
-      "title": "I replaced traditional coding tests with real conversations about how my students solve problems using AI.",
-      "url": "https://blog.google/products-and-platforms/products/education/gemini-google-colab/",
-      "source": "Google",
-      "published_at": "2026-10-05T16:00:00+00:00",
-      "category": "교육·생활",
-      "domain": "education"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-08T23:07:28.585667+00:00",
+    "checked_at": "2026-10-09T02:19:29.901034+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -444,7 +444,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-08T23:07:28.585667+00:00",
+    "last_success_at": "2026-10-09T02:19:29.901034+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
