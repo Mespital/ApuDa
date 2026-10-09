@@ -12,6 +12,8 @@ var BASE=(function(){try{var s=document.currentScript&&document.currentScript.sr
 var SCRIPT=document.currentScript||{};
 var DS=(SCRIPT.dataset)||{};
 function A(p){return /^https?:/.test(p)?p:BASE+p}
+/* 이동 화면(아프지만, 다행이다 · 이동 중입니다) 함께 불러오기 */
+if(!window.ApudaTransit&&!document.querySelector('script[src*="apuda-transit.js"]')){var tsc=document.createElement('script');tsc.src=A('/assets/apuda-transit.js');tsc.defer=true;(document.head||document.documentElement).appendChild(tsc)}
 
 /* ── 사이트 지도 ── */
 var SITES=[

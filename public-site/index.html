@@ -211,6 +211,10 @@
   .p-stats div{flex:1;padding:18px 18px;border-radius:18px;background:var(--sky);border:1px solid var(--line)}
   .p-stats b{display:block;font-size:32px;letter-spacing:-.05em;color:var(--navy);line-height:1}
   .p-stats small{display:block;margin-top:8px;font-size:13px;color:var(--muted);font-weight:700}
+  .p-stats .p-stat-go{position:relative;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+  .p-stats .p-stat-go:hover,.p-stats .p-stat-go:focus-visible{border-color:#93b4f5;box-shadow:0 8px 20px rgba(37,99,235,.14);transform:translateY(-2px);outline:none}
+  .p-stats .p-stat-go:active{transform:scale(.98)}
+  .p-stat-ar{position:absolute;right:14px;bottom:12px;font-size:18px;font-weight:900;color:#2563eb}
   .p-links{display:flex;flex-direction:column;gap:10px;margin-top:22px;overflow:visible}
   .p-links a,.p-links .soon{display:flex;justify-content:space-between;align-items:center;gap:12px;
     min-height:70px;padding:13px 16px;border-radius:18px;background:#fff;border:1px solid var(--line);
@@ -737,12 +741,12 @@
   var DATA = {
     1:{fl:'1F', kicker:'CHECK · 확인센터', title:'진단 전이라면,\n위험도와 검진부터.',
        desc:'생활 습관과 주요 위험 요인으로 암 위험 관련 정보를 살펴보고, 기본 검진 외에 어떤 선택 항목을 고려할지 정리합니다.',
-       stats:[['3분','간편 체크'],['무료','가입 불필요']],
+       stats:[['3분','간편 체크','/risk/'],['무료','가입 불필요','/checkup/']],
        links:[['암 위험도 체크','/risk/',null,'생활습관과 주요 위험요인을 빠르게 확인','🧭'],
               ['건강검진 선택 항목','/checkup/',null,'기본검진 외 추가로 고려할 항목 정리','🩺']]},
     2:{fl:'2F', kicker:'LIBRARY · 암종별 이해', title:'진단 첫 30일,\n내 암종부터 이해하기.',
        desc:'《암 진단 첫 30일》 12종의 실제 표지와 함께 검사·병기·치료 흐름을 암종별로 차근차근 이해합니다.',
-       stats:[['12종','암종별 가이드'],['4컷','만화 암 정보']],
+       stats:[['12종','암종별 가이드','/library/mini/'],['4컷','만화 암 정보','https://product.kyobobook.co.kr/detail/S000219012641',1]],
        links:[['4컷 만화로 쉽게 이해되는 암 정보','https://product.kyobobook.co.kr/detail/S000219012641',null,'검사·병기·치료를 그림으로 쉽게 이해','📚'],
               ['유방암 첫 30일','https://apuda-breast.netlify.app/',null,'진단 후 꼭 알아야 할 검사·치료 흐름','🎀'],
               ['폐암 첫 30일','https://apuda-lung.netlify.app/',null,'유전자검사부터 치료선택까지 한눈에','🫁'],
@@ -758,22 +762,28 @@
               ['자궁경부암 첫 30일','https://apud-cervical.netlify.app',null,'병기·수술·방사선·항암치료 정리','🌸']]},
     3:{fl:'3F', kicker:'CARE · 치료·부작용 관리', title:'참지 말고,\n확인하고 지원받기.',
        desc:'치료 중 나타나는 불편을 확인하고 산정특례·의료비 등 받을 수 있는 지원 제도를 함께 살펴봅니다.',
-       stats:[['산정특례','본인부담 5%'],['의료비','지원 안내']],
+       stats:[['산정특례','본인부담 5%','/support/'],['의료비','지원 안내','/support/']],
        links:[['암 환자 지원 정보','/support/',null,'산정특례·의료비·지원제도를 한곳에서','🤝']]},
     4:{fl:'4F', kicker:'COMPANION · ApuDa Note', title:'내 치료를 기록하고,\n진료를 준비해요.',
        desc:'"열 37.8, 통증 3점"처럼 말하듯 쓰면 노트봇이 정리해요. 위험 신호는 바로 알려주고, 진료 때는 요약 한 장으로 보여주세요.',
-       stats:[['노트봇','말하듯 기록'],['오프라인','기기 저장']],
+       stats:[['노트봇','말하듯 기록','/note/?tab=today'],['오프라인','기기 저장','/note/']],
        links:[['암환자 노트 열기','/note/',null,'체온·증상·일정·약·질문을 노트봇으로 · 진료요약 한 장','📘'],
               ['ApuDa Care 보기','/care/',null,'일반질환 · 예방 · 생활 건강정보는 별도 Care에서','🩺']]},
     5:{fl:'5F', kicker:'TOGETHER · 암 커뮤니티', title:'함께 이겨내요,\n혼자가 아니에요.',
        desc:'같은 길을 걸어본 사람의 경험은 때로 정보만큼 큰 힘이 됩니다. 환자·보호자와 함께 이야기하세요.',
-       stats:[['7,550+','카페 회원'],['3,700+','정보 글']],
+       stats:[['7,550+','카페 회원','https://cafe.naver.com/2ndpart',1],['3,700+','정보 글','https://blog.naver.com/apuda_korea',1]],
        links:[['ApuDa 카페 가기','https://cafe.naver.com/2ndpart',null,'환자·보호자 경험과 질문을 나누는 공간','💬'],
               ['블로그 보기','https://blog.naver.com/apuda_korea',null,'질환·치료 정보를 차근차근 읽어보세요','📝'],
               ['항암제·암 뉴스','/news/oncology/',null,'허가 · 급여 · 임상 · 바이오마커','🎗️'],
               ['제약·헬스케어 뉴스','/news/',null,'정책 · 약가 · 신약 · 병원 · 디지털헬스','📰']]}
   };
 
+  function statHTML(s){if(!s[2])return '<div><b>'+s[0]+'</b><small>'+s[1]+'</small></div>';
+    return '<div class="p-stat-go" role="link" tabindex="0" data-href="'+s[2]+'"'+(s[3]?' data-ext="1"':'')+' aria-label="'+s[0]+' '+s[1]+' — 바로 가기"><b>'+s[0]+'</b><small>'+s[1]+'</small><span class="p-stat-ar" aria-hidden="true">'+(s[3]?'↗':'→')+'</span></div>'}
+  function statGo(el){var h=el.getAttribute('data-href');if(el.getAttribute('data-ext')){window.open(h,'_blank','noopener');return}
+    if(window.ApudaTransit)ApudaTransit.go(h,el.querySelector('b').textContent);else location.href=h}
+  document.addEventListener('click',function(e){var el=e.target.closest&&e.target.closest('.p-stat-go');if(el){e.preventDefault();statGo(el)}});
+  document.addEventListener('keydown',function(e){if(e.key!=='Enter'&&e.key!==' ')return;var el=e.target.closest&&e.target.closest('.p-stat-go');if(el){e.preventDefault();statGo(el)}});
   var frame=document.getElementById('frame'), spot=document.getElementById('spot'),
       panel=document.getElementById('panel'), sheet=document.getElementById('sheet'),
       pager=document.getElementById('pager'), hint=document.getElementById('hint'),
@@ -1211,7 +1221,7 @@
     }).join('');
     return '<span class="p-fl"><b>'+d.fl+'</b>'+d.kicker+'</span>'+
       '<div class="floor2-intro"><div><h2>'+d.title.replace(/\n/g,'&nbsp;<br>')+'</h2><p>'+d.desc+'</p></div>'+
-      '<div class="p-stats">'+d.stats.map(function(s){return '<div><b>'+s[0]+'</b><small>'+s[1]+'</small></div>'}).join('')+'</div></div>'+
+      '<div class="p-stats">'+d.stats.map(statHTML).join('')+'</div></div>'+
       '<div class="floor2-layout">'+
         '<section class="floor2-library"><div class="floor2-library-head"><div><b>암종별 가이드북</b><span>암종을 선택하면 첫 30일 MINI 가이드와 FAQ로 이동할 수 있습니다(완전판은 준비 중).</span></div><span>Vol. 01–12</span></div>'+
         '<div class="mini-series-grid">'+bookHtml+'</div></section>'+
@@ -1241,8 +1251,7 @@
       '<span class="p-fl"><b>'+d.fl+'</b>'+d.kicker+'</span>'+
       '<h2>'+d.title.replace(/\n/g,'<br>')+'</h2>'+
       '<p>'+d.desc+'</p>'+
-      '<div class="p-stats">'+d.stats.map(function(s){
-        return '<div><b>'+s[0]+'</b><small>'+s[1]+'</small></div>'}).join('')+'</div>'+
+      '<div class="p-stats">'+d.stats.map(statHTML).join('')+'</div>'+
       '<div class="p-links">'+(f===2
         ? renderLink(d.links[0])+'<div class="p-link-section">암종별 첫 30일 가이드</div>'+d.links.slice(1).map(renderLink).join('')
         : d.links.map(renderLink).join(''))+'</div>'+

@@ -855,7 +855,8 @@ function openPrintReport(){
   window.addEventListener('resize',()=>fitOnePage());
   window.addEventListener('beforeprint',()=>fitOnePage());
   window.onload=preparePrint;
-  <\/script></body></html>`;
+  <\/script><script src="/assets/apuda-transit.js" defer></script>
+</body></html>`;
   const blob=new Blob([html],{type:'text/html;charset=utf-8'});
   const url=URL.createObjectURL(blob);
   let previewWindow=null;
