@@ -1,9 +1,7 @@
 {
-  "checked_at": "2026-10-09T16:35:36.776352+00:00",
-  "last_success_at": "2026-10-09T16:35:36.776352+00:00",
-  "failures": [
-    "Google"
-  ],
+  "checked_at": "2026-10-09T16:40:00.723710+00:00",
+  "last_success_at": "2026-10-09T16:40:00.723710+00:00",
+  "failures": [],
   "articles": [
     {
       "title": "Sophos cuts threat investigation time by 96% with OpenAI Daybreak",
@@ -249,7 +247,7 @@
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-09T16:35:36.776352+00:00",
+    "checked_at": "2026-10-09T16:40:00.723710+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -442,7 +440,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-09T16:35:36.776352+00:00",
+    "last_success_at": "2026-10-09T16:40:00.723710+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
