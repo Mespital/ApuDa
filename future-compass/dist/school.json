@@ -7,7 +7,7 @@
     "code": "7010087",
     "homepage": "https://seocho.sen.hs.kr/"
   },
-  "checked_at": "2026-10-09T02:19:31.561151+00:00",
+  "checked_at": "2026-10-09T05:26:55.269625+00:00",
   "keyed": true,
   "school_year": 2026,
   "grade": 1,
@@ -430,5 +430,5 @@
     "NEIS": "true",
     "DATA": "false"
   },
-  "last_success_at": "2026-10-09T02:19:31.561151+00:00"
+  "last_success_at": "2026-10-09T05:26:55.269625+00:00"
 }
