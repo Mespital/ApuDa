@@ -7,6 +7,12 @@ window.SHIRO_STUDY = (function () {
     s_focus: ['⏱ 집중', 'study.html#focus'], s_set: ['⚙️ 설정', 'study.html#settings'], s_glance: ['📋 오늘 한눈에', 'today.html']
   };
   var faqs = [
+    { keys: ['기억 확인', '기억확인', '복습 간격', '잘 앎', '헷갈림', '다시 보기'], links: ['s_today'],
+      text: '🧠 기억 확인 (복습)\n오늘 할 일 아래 "다시" 항목을 누르면 열려.\n① 노트 덮고 질문에 답해보기 (말로 해도 돼)\n② "정리 보고 맞춰보기"로 확인\n③ 😀 잘 앎 → 다음 확인이 더 나중(7~60일) / 🤔 헷갈림 → 2일 뒤 / 😵 모름 → 내일 다시\n노트를 🧠 정리해두면 그 안의 확인 질문이 나와.' },
+    { keys: ['더 보기', '카드', '홈', '어디 갔', '사라졌'], links: ['s_today'],
+      text: '📂 오늘 화면은 핵심만 위에 있어: 오늘의 핵심 · 시험 D-day · 오늘 할 일 · 오늘 배운 것 남기기.\n시간표·급식·일정·공부 기록·엄마·아빠에게는 아래 "📂 더 보기"를 누르면 다 있어. 한 번 펼치면 다음에도 펼쳐져 있어.' },
+    { keys: ['엄마 확인 번호', '확인 번호', '내 자료', '개인정보', '어디 저장', '삭제'], links: ['s_set'],
+      text: '🔒 ⚙️ 설정 → "내 자료는 어디에?"에 저장 위치·AI로 보내는 것·지우는 법이 정리돼 있어.\n엄마 확인 번호는 엄마 화면 설정에서 켜는 거야. 켜면 승준 폰에서 "엄마로 들어가기"를 누를 때 번호를 한 번 더 물어봐.' },
     { keys: ['처음', '시작', '사용법', '어떻게', '도움', '순서'], links: ['s_set', 's_today'],
       text: '🐶 처음이면 이 순서로 해봐!\n① ⚙️ 설정 → 시간표: 시간표 사진을 올리거나 붙여넣기(나이스로 가져오기도 돼)\n② ⚙️ 설정 → 교과서: 과목별 교과서·지금 단원 고르기 → 내일 예습이 정확해져\n③ ⚙️ 설정 → 학원: 요일·시간·숙제 넣기\n④ ⚙️ 설정 → 플래너: 나의 다짐 한 줄, 학기 목표 3개\n⑤ 그다음부터는 매일 ☀️ 오늘 탭만 보면 돼. 할 일 → ▶ 집중 → 하루 마무리!' },
     { keys: ['하루', '매일', '루틴', '오늘탭', '오늘화면'], links: ['s_today'],
@@ -134,7 +140,7 @@ window.SHIRO_STUDY = (function () {
   function go(t, sel, click) {
     if (typeof tab !== 'undefined' && tab !== t) location.hash = t;
     setTimeout(function () {
-      var el = sel && document.querySelector(sel);
+      var el = sel && document.querySelector(sel); if (el && window.FC_REVEAL) FC_REVEAL(el);
       var to = function (b) { var e = sel && document.querySelector(sel); if (e) window.scrollTo({ top: Math.max(0, e.getBoundingClientRect().top + window.scrollY - 72), behavior: b }); return e; };
       if (el) { to('smooth'); el.classList.add('kp-flash'); setTimeout(function () { el.classList.remove('kp-flash'); }, 1600); setTimeout(function () { var e = document.querySelector(sel); if (e) { var r = e.getBoundingClientRect(); if (r.top < 0 || r.top > innerHeight - 80) to('auto'); } }, 700); }
       if (click) setTimeout(function () { var c = document.querySelector(click); if (c) c.click(); }, 250);

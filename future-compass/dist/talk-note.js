@@ -22,7 +22,7 @@
   function idb() { return new Promise(function (ok, no) { try { var r = indexedDB.open(DB, 1); r.onupgradeneeded = function () { r.result.createObjectStore('p'); }; r.onsuccess = function () { ok(r.result); }; r.onerror = function () { no(r.error); }; } catch (e) { no(e); } }); }
   function putPhoto(id, data) { return idb().then(function (db) { return new Promise(function (ok, no) { var tx = db.transaction('p', 'readwrite'); tx.objectStore('p').put(data, id); tx.oncomplete = function () { ok(true); }; tx.onerror = function () { no(tx.error); }; }); }); }
   function getLocal(id) { return idb().then(function (db) { return new Promise(function (ok) { var q = db.transaction('p').objectStore('p').get(id); q.onsuccess = function () { ok(q.result || ''); }; q.onerror = function () { ok(''); }; }); }).catch(function () { return ''; }); }
-  function delPhoto(id) { return idb().then(function (db) { db.transaction('p', 'readwrite').objectStore('p').delete(id); }).catch(function () {}); }
+  function delPhoto(id) { if (typeof FamilySync !== 'undefined' && FamilySync.joined()) FamilySync.call({ action: 'photo-del', id: id }).catch(function () {}); return idb().then(function (db) { db.transaction('p', 'readwrite').objectStore('p').delete(id); }).catch(function () {}); }   // 이 폰 + 가족 서버 사진 같이 지움
   function getPhoto(id) {
     return getLocal(id).then(function (d) {
       if (d || typeof FamilySync === 'undefined' || !FamilySync.joined()) return d;
