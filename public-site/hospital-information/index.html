@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c1733">
+  <meta name="description" content="ApuDa Hospital Information — 30개 주요 암 진료기관의 공식 정보를 찾아보고, 검증된 의료진 정보를 확인하세요.">
+  <meta property="og:title" content="ApuDa | Hospital Information">
+  <meta property="og:description" content="암 진료의 시작, 믿을 수 있는 의료기관 정보에서.">
+  <title>ApuDa Hospital Information | 암 진료 정보 찾기</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">본문으로 이동</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="https://apuda.app/" aria-label="ApuDa 메인으로">
+        <span class="brand-mark" aria-hidden="true">A</span>
+        <span class="brand-text">ApuDa<span class="brand-sub">HOSPITAL INFORMATION</span></span>
+      </a>
+      <nav class="header-nav" aria-label="주 메뉴">
+        <a href="#finder">정보 찾기</a><a href="#about">이용 안내</a><a class="back-home" href="https://apuda.app/">ApuDa 홈 ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap hero-inner">
+        <div class="hero-copy">
+          <span class="eyebrow"><i aria-hidden="true"></i> ApuDa Medical Directory · Beta</span>
+          <h1 id="hero-title">암 진료의 시작,<br><em>정확한 정보</em>에서.</h1>
+          <p>공식 의료기관 정보를 한곳에서 확인하고, 암종과 지역에 맞는 의료진 탐색을 준비합니다. 검증되지 않은 이름이나 순위는 제공하지 않습니다.</p>
+          <a href="#finder" class="hero-cta">의료기관 찾아보기 <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="orb orb-one"></div><div class="orb orb-two"></div>
+          <div class="hero-glass">
+            <span class="glass-kicker">INFORMATION, NOT RANKING</span>
+            <div class="glass-icon">✚</div>
+            <strong>더 정확한 정보로<br>더 나은 선택을</strong>
+            <div class="glass-lines"><b></b><b></b><b></b></div>
+            <span class="glass-footer">아프지만, 다행이다.</span>
+          </div>
+        </div>
+      </div>
+      <div class="wrap metric-row" aria-label="정보 구축 현황">
+        <div><strong id="hospitalMetric">30</strong><span>등록 의료기관</span></div>
+        <div><strong id="cancerMetric">30</strong><span>암종 검색 기준</span></div>
+        <div><strong id="verifiedMetric">—</strong><span>현재 확인 가능한 검증 의료진</span></div>
+        <span class="metric-badge">검증 중심 운영</span>
+      </div>
+    </section>
+
+    <section class="finder-section wrap" id="finder" aria-labelledby="finder-title">
+      <div class="section-heading">
+        <div><span class="kicker">FIND INFORMATION</span><h2 id="finder-title">의료기관과 의료진 찾기</h2><p>원하는 암종, 지역, 진료 목적을 선택해 정보를 좁혀보세요.</p></div>
+        <span class="privacy-note">개인정보 입력 없이 이용</span>
+      </div>
+      <div class="finder-grid">
+        <form class="filter-panel" id="filters" aria-label="검색 조건">
+          <div class="panel-heading"><span>01 / 검색 조건</span><strong>어떤 정보를 찾으시나요?</strong></div>
+          <label for="cancerSelect">암종 <small>의료진 검색에 필요</small></label>
+          <select id="cancerSelect" name="cancer"><option value="">암종을 선택해 주세요</option></select>
+          <label for="regionSelect">지역</label>
+          <select id="regionSelect" name="region"><option value="">전국</option></select>
+          <label for="roleSelect">진료 목적</label>
+          <select id="roleSelect" name="role">
+            <option value="">전체 진료 목적</option>
+            <option value="diagnosis">진단·검사</option>
+            <option value="surgery">수술</option>
+            <option value="medical_oncology">항암치료</option>
+            <option value="radiation">방사선치료</option>
+            <option value="endoscopy">내시경 치료</option>
+            <option value="transplant">이식치료</option>
+          </select>
+          <label for="hospitalQuery">의료기관명 검색</label>
+          <input id="hospitalQuery" name="q" type="search" placeholder="예: 서울아산, 국립암센터" autocomplete="off">
+          <div class="filter-buttons"><button class="primary-button" type="submit">의료진 검색 <span aria-hidden="true">→</span></button><button class="ghost-button" type="button" id="resetButton">초기화</button></div>
+          <p class="form-note">의료진 검색 결과에는 공식 진료 분야가 확인되고 공개 승인된 의료진만 표시됩니다.</p>
+        </form>
+
+        <div class="results-panel">
+          <div class="result-top">
+            <div class="tab-row" role="tablist" aria-label="결과 유형">
+              <button class="tab active" type="button" role="tab" aria-selected="true" id="tabHospitals" aria-controls="hospitalPanel">의료기관 <span id="hospitalTabCount">30</span></button>
+              <button class="tab" type="button" role="tab" aria-selected="false" id="tabDoctors" aria-controls="doctorPanel">검증된 의료진 <span id="doctorTabCount">—</span></button>
+            </div>
+            <span class="result-label" id="resultsLabel" aria-live="polite">의료기관 30곳</span>
+          </div>
+          <section id="hospitalPanel" role="tabpanel" aria-labelledby="tabHospitals">
+            <div id="hospitalList" class="card-list" aria-live="polite"></div>
+          </section>
+          <section id="doctorPanel" role="tabpanel" aria-labelledby="tabDoctors" hidden>
+            <div id="doctorStatus" class="status-message" role="status"></div>
+            <div id="doctorList" class="card-list" aria-live="polite"></div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about-section">
+      <div class="wrap about-grid">
+        <div><span class="kicker">HOW IT WORKS</span><h2>이름보다 중요한 것은<br>확인 가능한 근거입니다.</h2><p>이 서비스는 의료진의 실력이나 치료 성적을 순위화하지 않습니다. 공식 진료분야와 입력 조건의 관련성을 바탕으로 정보 탐색을 돕습니다.</p></div>
+        <div class="principles">
+          <article><span>01</span><div><h3>공식 출처 우선</h3><p>병원 공식 홈페이지의 진료과·의료진·전문분야를 근거로 사용합니다.</p></div></article>
+          <article><span>02</span><div><h3>검증 후 공개</h3><p>수집된 정보는 검증 상태를 거쳐야 공개됩니다. 단순 발견만으로 추천하지 않습니다.</p></div></article>
+          <article><span>03</span><div><h3>환자의 선택 지원</h3><p>의료진 정보는 변경될 수 있습니다. 예약 가능 여부와 치료 결정은 해당 병원·담당 의료진에게 확인하세요.</p></div></article>
+        </div>
+      </div>
+    </section>
+    <div class="wrap medical-notice"><strong>의료 안내</strong><p>본 서비스는 의료기관·의료진 탐색을 돕는 정보 서비스이며, 의학적 진단·치료 결정·응급 판단을 대신하지 않습니다. 의료진 검색 결과가 없다는 것은 해당 분야의 의사가 없다는 뜻이 아닙니다.</p></div>
+  </main>
+  <footer class="site-footer"><div class="wrap footer-inner"><div><strong>ApuDa <span>Hospital Information</span></strong><p>아프지만, 다행이다.</p></div><p>© ApuDa · <a href="https://apuda.app/">apuda.app</a><br><small>의료기관 목록은 운영용 등록 데이터이며, 링크의 현재 유효성은 기관별로 다를 수 있습니다.</small></p></div></footer>
+</body></html>

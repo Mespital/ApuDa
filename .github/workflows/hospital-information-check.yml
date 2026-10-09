@@ -1,0 +1,41 @@
+name: Hospital Information checks
+on:
+  push:
+    paths:
+      - "public-site/hospital-information/**"
+      - "public-site/netlify/functions/hospital-information-matcher.js"
+      - ".github/workflows/hospital-information-check.yml"
+  pull_request:
+    paths:
+      - "public-site/hospital-information/**"
+      - "public-site/netlify/functions/hospital-information-matcher.js"
+      - ".github/workflows/hospital-information-check.yml"
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: JavaScript syntax
+        run: |
+          node --check public-site/hospital-information/app.js
+          node --check public-site/hospital-information/netlify/functions/hospital-information-matcher.js
+          node --check public-site/netlify/functions/hospital-information-matcher.js
+      - name: Directory data integrity
+        run: |
+          node - <<'NODE'
+          const fs = require("fs");
+          const root = "public-site/hospital-information/";
+          const h = JSON.parse(fs.readFileSync(root+"data/hospitals.json","utf8"));
+          const c = JSON.parse(fs.readFileSync(root+"data/cancers.json","utf8"));
+          if (h.length !== 30 || c.length !== 30) throw Error("30 hospitals and 30 cancers required");
+          if (new Set(h.map(x=>x.slug)).size !== h.length) throw Error("duplicate hospital slug");
+          if (new Set(c.map(x=>x.code)).size !== c.length) throw Error("duplicate cancer code");
+          if (h.some(x=>!x.official_url.startsWith("https://"))) throw Error("insecure hospital URL");
+          const f=fs.readFileSync("public-site/netlify/functions/hospital-information-matcher.js","utf8");
+          const g=fs.readFileSync(root+"netlify/functions/hospital-information-matcher.js","utf8");
+          if (f !== g) throw Error("Proxy function copies differ");
+          console.log("Hospitals:",h.length,"Cancers:",c.length,"Proxy copies identical");
+          NODE

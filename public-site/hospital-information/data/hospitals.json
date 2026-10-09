@@ -1,0 +1,182 @@
+[
+  {
+    "slug": "amc",
+    "name": "서울아산병원",
+    "region": "서울",
+    "official_url": "https://www.amc.seoul.kr/asan/main.do"
+  },
+  {
+    "slug": "smc",
+    "name": "삼성서울병원",
+    "region": "서울",
+    "official_url": "https://www.samsunghospital.com"
+  },
+  {
+    "slug": "snuh",
+    "name": "서울대학교병원",
+    "region": "서울",
+    "official_url": "https://www.snuh.org"
+  },
+  {
+    "slug": "sev",
+    "name": "세브란스병원",
+    "region": "서울",
+    "official_url": "https://sev.severance.healthcare"
+  },
+  {
+    "slug": "cmc",
+    "name": "서울성모병원",
+    "region": "서울",
+    "official_url": "https://www.cmcseoul.or.kr"
+  },
+  {
+    "slug": "brmh",
+    "name": "서울특별시보라매병원",
+    "region": "서울",
+    "official_url": "https://www.brmh.org"
+  },
+  {
+    "slug": "anam",
+    "name": "고려대학교 안암병원",
+    "region": "서울",
+    "official_url": "https://anam.kumc.or.kr"
+  },
+  {
+    "slug": "guro",
+    "name": "고려대학교 구로병원",
+    "region": "서울",
+    "official_url": "https://guro.kumc.or.kr"
+  },
+  {
+    "slug": "kuh",
+    "name": "건국대학교병원",
+    "region": "서울",
+    "official_url": "https://www.kuh.ac.kr"
+  },
+  {
+    "slug": "eumc",
+    "name": "이대목동병원",
+    "region": "서울",
+    "official_url": "https://mokdong.eumc.ac.kr"
+  },
+  {
+    "slug": "ncc",
+    "name": "국립암센터",
+    "region": "경기",
+    "official_url": "https://www.ncc.re.kr"
+  },
+  {
+    "slug": "snubh",
+    "name": "분당서울대학교병원",
+    "region": "경기",
+    "official_url": "https://www.snubh.org"
+  },
+  {
+    "slug": "ajou",
+    "name": "아주대학교병원",
+    "region": "경기",
+    "official_url": "https://hosp.ajoumc.or.kr"
+  },
+  {
+    "slug": "gil",
+    "name": "가천대 길병원",
+    "region": "인천",
+    "official_url": "https://www.gilhospital.com"
+  },
+  {
+    "slug": "inha",
+    "name": "인하대학교병원",
+    "region": "인천",
+    "official_url": "https://www.inha.com"
+  },
+  {
+    "slug": "ansan",
+    "name": "고려대학교 안산병원",
+    "region": "경기",
+    "official_url": "https://ansan.kumc.or.kr"
+  },
+  {
+    "slug": "bundangcha",
+    "name": "분당차병원",
+    "region": "경기",
+    "official_url": "https://bundang.chamc.co.kr"
+  },
+  {
+    "slug": "cnuh",
+    "name": "충남대학교병원",
+    "region": "대전",
+    "official_url": "https://www.cnuh.co.kr"
+  },
+  {
+    "slug": "cbnuh",
+    "name": "충북대학교병원",
+    "region": "충북",
+    "official_url": "https://www.cbnuh.or.kr"
+  },
+  {
+    "slug": "dkuh",
+    "name": "단국대학교병원",
+    "region": "충남",
+    "official_url": "https://www.dkuh.co.kr"
+  },
+  {
+    "slug": "knuh",
+    "name": "강원대학교병원",
+    "region": "강원",
+    "official_url": "https://www.knuh.or.kr"
+  },
+  {
+    "slug": "ywmc",
+    "name": "원주세브란스기독병원",
+    "region": "강원",
+    "official_url": "https://www.ywmc.or.kr"
+  },
+  {
+    "slug": "pnuh",
+    "name": "부산대학교병원",
+    "region": "부산",
+    "official_url": "https://www.pnuh.or.kr"
+  },
+  {
+    "slug": "pnuyh",
+    "name": "양산부산대학교병원",
+    "region": "경남",
+    "official_url": "https://www.pnuyh.or.kr"
+  },
+  {
+    "slug": "dauh",
+    "name": "동아대학교병원",
+    "region": "부산",
+    "official_url": "https://www.damc.or.kr"
+  },
+  {
+    "slug": "knu",
+    "name": "경북대학교병원",
+    "region": "대구",
+    "official_url": "https://www.knuh.kr"
+  },
+  {
+    "slug": "knumc",
+    "name": "칠곡경북대학교병원",
+    "region": "대구",
+    "official_url": "https://www.knuch.kr"
+  },
+  {
+    "slug": "dsmc",
+    "name": "계명대학교 동산병원",
+    "region": "대구",
+    "official_url": "https://dongsan.dsmc.or.kr"
+  },
+  {
+    "slug": "cnuhh",
+    "name": "화순전남대학교병원",
+    "region": "전남",
+    "official_url": "https://www.cnuhh.com"
+  },
+  {
+    "slug": "jbuh",
+    "name": "전북대학교병원",
+    "region": "전북",
+    "official_url": "https://www.jbuh.co.kr"
+  }
+]

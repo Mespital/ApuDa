@@ -1,0 +1,17 @@
+# 검토용 예시. 실제 /etc/caddy/Caddyfile에 추가하기 전 기존 설정 백업 및 도메인 확인 필수.
+# DNS에 hospital-api.apuda.app A 레코드로 VPS 공인 IP 연결 후 HTTPS 인증 확인.
+# Netlify는 서버에서 GET /v1/specialists만 호출함.
+hospital-api.apuda.app {
+    @specialists {
+        method GET
+        path /v1/specialists
+    }
+    handle @specialists {
+        reverse_proxy 127.0.0.1:4890
+    }
+    handle {
+        respond "Not found" 404
+    }
+}
+# 배포 전: caddy validate --config /etc/caddy/Caddyfile && systemctl reload caddy
+# 연결 확인: curl -fsS 'https://hospital-api.apuda.app/v1/specialists?cancer=LUNG'

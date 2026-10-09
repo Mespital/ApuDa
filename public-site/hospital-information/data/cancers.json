@@ -1,0 +1,122 @@
+[
+  {
+    "code": "STOMACH",
+    "label": "위암"
+  },
+  {
+    "code": "COLON",
+    "label": "대장암"
+  },
+  {
+    "code": "RECTAL",
+    "label": "직장암"
+  },
+  {
+    "code": "LUNG",
+    "label": "폐암"
+  },
+  {
+    "code": "BREAST",
+    "label": "유방암"
+  },
+  {
+    "code": "LIVER",
+    "label": "간암"
+  },
+  {
+    "code": "PANCREAS",
+    "label": "췌장암"
+  },
+  {
+    "code": "BILIARY",
+    "label": "담도암"
+  },
+  {
+    "code": "GALLBLADDER",
+    "label": "담낭암"
+  },
+  {
+    "code": "ESOPHAGUS",
+    "label": "식도암"
+  },
+  {
+    "code": "THYROID",
+    "label": "갑상선암"
+  },
+  {
+    "code": "KIDNEY",
+    "label": "신장암"
+  },
+  {
+    "code": "PROSTATE",
+    "label": "전립선암"
+  },
+  {
+    "code": "BLADDER",
+    "label": "방광암"
+  },
+  {
+    "code": "TESTICULAR",
+    "label": "고환암"
+  },
+  {
+    "code": "CERVICAL",
+    "label": "자궁경부암"
+  },
+  {
+    "code": "OVARIAN",
+    "label": "난소암"
+  },
+  {
+    "code": "ENDOMETRIAL",
+    "label": "자궁내막암"
+  },
+  {
+    "code": "HEAD_NECK",
+    "label": "두경부암"
+  },
+  {
+    "code": "ORAL",
+    "label": "구강암"
+  },
+  {
+    "code": "BRAIN",
+    "label": "뇌종양"
+  },
+  {
+    "code": "SARCOMA",
+    "label": "육종"
+  },
+  {
+    "code": "MELANOMA",
+    "label": "흑색종"
+  },
+  {
+    "code": "LEUKEMIA",
+    "label": "백혈병"
+  },
+  {
+    "code": "DLBCL",
+    "label": "미만성 거대 B세포 림프종"
+  },
+  {
+    "code": "LYMPHOMA",
+    "label": "림프종"
+  },
+  {
+    "code": "MYELOMA",
+    "label": "다발골수종"
+  },
+  {
+    "code": "PEDIATRIC",
+    "label": "소아암"
+  },
+  {
+    "code": "NET",
+    "label": "신경내분비종양"
+  },
+  {
+    "code": "RARE_CUP",
+    "label": "희귀암·원발불명암"
+  }
+]
