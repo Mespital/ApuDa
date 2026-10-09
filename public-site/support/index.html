@@ -56,19 +56,19 @@ a{color:var(--blue)}
 .bar{margin-top:14px}.bar .row{display:grid;grid-template-columns:92px 1fr auto;gap:10px;align-items:center;margin:8px 0;font-size:14.5px;font-weight:800}
 .bar .track{height:16px;border-radius:9px;background:#eef2f7;overflow:hidden}.bar .fill{height:100%;border-radius:9px;background:#9fb4cc}.bar .fill.hi{background:var(--blue2)}
 .big{font-size:28px;font-weight:950;color:var(--blue);letter-spacing:-.02em}
-table{width:100%;border-collapse:collapse;font-size:14.5px}th,td{padding:9px 8px;border-bottom:1px solid var(--line);text-align:left}th{font-size:13px;color:var(--muted)}td.r,th.r{text-align:right}
+table{width:100%;border-collapse:collapse;font-size:14.5px}th,td{padding:9px 8px;border-bottom:1px solid var(--line);text-align:left}th{font-size:13px;color:var(--muted)}td small{color:var(--muted);font-size:12px}.pay{display:grid;gap:10px}.pc{padding:14px 16px;border:1px solid var(--line);border-radius:16px;background:#fbfdff}.pc.hl{border-color:#bcd3ff;background:#f3f8ff}.ph{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}.ph b{font-size:16.5px}.ph span{font-size:12.5px;color:var(--muted);font-weight:700}.pc p{margin:6px 0 0;font-size:14.5px}.pc .pa{color:#33475b}td.r,th.r{text-align:right}
 .check li{margin:6px 0}.check{padding-left:20px}
 .acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.acts .btn{flex:1 1 160px}
 .foot{margin-top:24px;font-size:13.5px;color:#66758c;line-height:1.75}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#0b2746;color:#fff;padding:12px 18px;border-radius:14px;font-weight:800;font-size:14.5px;opacity:0;transition:.2s;pointer-events:none;z-index:50}.toast.on{opacity:1}
 [hidden]{display:none!important}
 @media(max-width:560px){.tabs a.hide-m{display:none}.card{padding:16px}.sum b{font-size:21px}.bar .row{grid-template-columns:78px 1fr auto}}
-@media print{.top,.nav,.acts,.steps,#wizard,.calc,#tbl,.toast{display:none!important}.res .body{display:block!important}body{background:#fff}.hero{background:none;color:var(--navy);padding:0}}
+@media print{.top,.nav,.acts,.steps,#wizard,.calc,#tbl,#drg,.toast{display:none!important}.res .body{display:block!important}body{background:#fff}.hero{background:none;color:var(--navy);padding:0}}
 </style>
 </head>
 <body>
 <header class="top"><a class="brand" href="/">ApuDa</a>
-<nav class="tabs" aria-label="바로가기"><a href="#wizard">지원 찾기</a><a href="#calc">계산기</a><a class="hide-m" href="#tbl">기준표</a><a href="/#floor-3" class="hide-m">3F로</a></nav></header>
+<nav class="tabs" aria-label="바로가기"><a href="#wizard">지원 찾기</a><a href="#calc">계산기</a><a class="hide-m" href="#drg">입원비 방식</a><a class="hide-m" href="#tbl">기준표</a><a href="/#floor-3" class="hide-m">3F로</a></nav></header>
 <main class="wrap">
 <section class="hero">
   <div class="k">ApuDa 3F · 암 치료비 지원</div>
@@ -134,7 +134,26 @@ table{width:100%;border-collapse:collapse;font-size:14.5px}th,td{padding:9px 8px
   <div class="opts" data-k="ctype" style="margin-top:10px"><button data-v="in" aria-pressed="true">입원</button><button data-v="out">외래(상급종합병원)</button></div>
   <div class="bar" id="cBar"></div>
   <p id="cMsg" style="margin:8px 0 0;font-size:15px"></p>
-  <p style="margin:10px 0 0;font-size:13px;color:var(--muted)">비급여·선택진료·상급병실 차액 등은 산정특례 5%가 적용되지 않아요. 일반 본인부담률은 대표값(입원 20%, 상급종합병원 외래 진료비 60%)이며 병원 종류·항목에 따라 달라요.</p>
+  <p style="margin:10px 0 0;font-size:13px;color:var(--muted)">비급여·선택진료·상급병실 차액 등은 산정특례 5%가 적용되지 않아요. 일반 본인부담률은 대표값(입원 20%, 상급종합병원 외래 진료비 60%)이며 병원 종류·항목에 따라 달라요. 신포괄수가제 병원은 계산 방식이 달라 <a href="#drg">아래</a>를 참고하세요.</p>
+</section>
+
+<!-- ===== 입원비 계산 방식 ===== -->
+<section class="card sec" id="drg">
+  <h2>입원비는 병원마다 계산 방식이 달라요</h2>
+  <p>같은 치료라도 병원이 어떤 방식으로 진료비를 매기느냐에 따라 내 부담이 달라질 수 있어요. 입원 전에 원무과에 한 번 물어보세요.</p>
+  <div class="pay">
+    <div class="pc"><div class="ph"><b>행위별수가제</b><span>대부분 병원</span></div><p>검사·처치·약마다 각각 가격을 매겨 더해요.</p><p class="pa"><b>암 환자:</b> 산정특례로 급여 항목은 5%. 비급여는 그대로 내요.</p></div>
+    <div class="pc"><div class="ph"><b>포괄수가제</b><span>7개 질병군</span></div><p>백내장·편도·맹장·탈장·항문·제왕절개·자궁(악성 아님) 수술은 정해진 묶음 가격이에요.</p><p class="pa"><b>암 환자:</b> 암 수술은 대부분 해당하지 않아요.</p></div>
+    <div class="pc hl"><div class="ph"><b>신포괄수가제</b><span>시범사업 참여 병원</span></div><p>입원료·기본 처치 등은 묶음 가격, 수술·시술 등은 따로 계산해요. 일부 비급여가 묶음 안에 들어가요.</p><p class="pa"><b>암 환자:</b> 묶음 안의 비급여까지 본인부담이 줄 수 있어요. 다만 일부 항암제·희귀의약품·고가 약·재료는 <b>‘비포괄’</b>이라 따로 계산돼 부담이 클 수 있어요.</p></div>
+  </div>
+  <h3 style="margin:16px 0 6px;font-size:17px">입원 전에 원무과에 물어볼 4가지</h3>
+  <ol class="check">
+    <li>이 병원은 신포괄수가제 참여 병원인가요?</li>
+    <li>제가 받을 치료(특히 항암제)는 포괄에 들어가나요, 비포괄인가요?</li>
+    <li>산정특례 5%는 어떤 항목까지 적용되나요?</li>
+    <li>예상 진료비(입원 기간·검사 포함)를 미리 알려 줄 수 있나요?</li>
+  </ol>
+  <p style="margin:10px 0 0;font-size:13px;color:var(--muted)">신포괄수가제는 건강보험심사평가원 시범사업으로, 국민건강보험공단 일산병원·국립중앙의료원·지역거점공공병원 등 약 98개 기관이 참여해요(2025년 지침 기준). 참여 병원과 비포괄 항목은 해마다 바뀌니 병원에 확인하세요. 문의: 건강보험심사평가원 1644-2000.</p>
 </section>
 
 <!-- ===== 기준표 ===== -->
@@ -306,6 +325,7 @@ table{width:100%;border-collapse:collapse;font-size:14.5px}th,td{padding:9px 8px
     if(list.some(function(x){return x.id==='dis'&&x.st!=='no'}))todo.push('진료비 영수증·세부내역서 모아 두기(재난적 의료비는 퇴원 후 180일 이내 신청)');
     if(list.some(function(x){return x.id==='ca'&&x.st!=='no'}))todo.push('주소지 보건소에 암환자 의료비 지원 등록 문의하기');
     if(list.some(function(x){return x.id==='em'&&x.st!=='no'}))todo.push('129에 전화해 긴급복지 상담 받기');
+    todo.push('입원 예정이면 원무과에 “신포괄수가 병원인지, 내 항암제가 비포괄인지” 물어보기');
     todo.push('병원 의료사회복지팀에 이 결과를 보여주고 상담받기');
     $('#todo').innerHTML=todo.map(function(t){return '<li>'+t+'</li>'}).join('');
     $$('[data-step]').forEach(function(c){c.hidden=true});$('#result').hidden=false;$$('.steps div').forEach(function(d){d.classList.add('on')});
