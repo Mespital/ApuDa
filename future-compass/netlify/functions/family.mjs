@@ -18,31 +18,48 @@ async function liveKey(store) {
 async function liveHealth(store, url) {
   const h = await store.get('live-health', { type: 'json' });
   if (h && h.url === url && Date.now() - h.at < 300000) return h;
-  let ok = false, ai = false;
-  try { const r = await fetch(url + '/health', { signal: AbortSignal.timeout(2500) }); const j = await r.json(); ok = r.ok && j.ok === true && j.keyed !== false; ai = !!j.ai; } catch {}
-  const n = { url, ok, ai, at: Date.now() }; await store.setJSON('live-health', n); return n;
+  let ok = false, ai = false, prov = '';
+  try { const r = await fetch(url + '/health', { signal: AbortSignal.timeout(2500) }); const j = await r.json(); ok = r.ok && j.ok === true && j.keyed !== false; ai = !!j.ai; prov = typeof j.prov === 'string' ? j.prov.slice(0, 10) : ''; } catch {}
+  const n = { url, ok, ai, prov, at: Date.now() }; await store.setJSON('live-health', n); return n;
 }
-import { buildPayload, askAI, validQuestion, organizePayload } from '../../live/shiro.mjs';
+import { buildPayload, askAI, validQuestion, organizePayload, providerOf } from '../../live/shiro.mjs';
 import { searchDocs, searchWiki, knowledgeQ } from '../../live/rag.mjs';
 
 export const KEYS = ['compass-study-v1', 'compass-study-plus-v1', 'fc_academy_v1', 'fc_teachers_v1', 'fc_offdays_v1', 'fc_preview_v1',
-  'fc_hub_posts', 'compass-know-me-v1', 'compass-career-lab', 'compass-career-depth', 'future-compass-v2', 'fc_school_class', 'fc_places_v1', 'fc_avatar_v1', 'fc_planner_v1', 'fc_notes_v1', 'fc_cheer_v1', 'fc_mom_v1', 'fc_kid_v1', 'fc_life_v1', 'fc_av_child_v1', 'fc_av_parent_v1'];
-const MAX_VALUE = 400000, MAX_TOTAL = 3000000, FAIL_LIMIT = 10, FAIL_WINDOW = 15 * 60000;
+  'fc_hub_posts', 'compass-know-me-v1', 'compass-career-lab', 'compass-career-depth', 'future-compass-v2', 'fc_school_class', 'fc_places_v1', 'fc_avatar_v1', 'fc_planner_v1', 'fc_notes_v1', 'fc_cheer_v1', 'fc_mom_v1', 'fc_kid_v1', 'fc_life_v1', 'fc_av_child_v1', 'fc_av_parent_v1', 'fc_guard_v1'];
+const MAX_VALUE = 400000, MAX_TOTAL = 3000000, FAIL_LIMIT = 10, FAIL_WINDOW = 15 * 60000, DAY_LIMIT = 30, DAY = 86400000;
 const env = k => (globalThis.Netlify?.env?.get(k) || process.env[k] || '').trim();
 const json = (body, status = 200) => new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' } });
+// 비밀번호 틀림 제한: 15분에 10번, 하루(24시간)에 30번. 하루 한도에 걸리면 24시간 잠금 + 엄마 폰 알림
+async function failGate(store, now) {
+  const all = ((await store.get('fails', { type: 'json' })) || []).filter(t => now - t < DAY);
+  const recent = all.filter(t => now - t < FAIL_WINDOW);
+  if (all.length >= DAY_LIMIT) return { all, locked: json({ error: 'locked', retryMin: Math.ceil((DAY - (now - all[all.length - DAY_LIMIT])) / 60000), day: true }, 429) };
+  if (recent.length >= FAIL_LIMIT) return { all, locked: json({ error: 'locked', retryMin: Math.ceil((FAIL_WINDOW - (now - recent[0])) / 60000) }, 429) };
+  return { all, recent };
+}
+async function failAdd(store, g, now) {
+  const all = [...g.all, now].slice(-DAY_LIMIT - 5);
+  await store.setJSON('fails', all);
+  if (all.length === DAY_LIMIT) { try { await sendTo(store, 'parent', { title: '🔒 가족 비밀번호 잠금', body: '오늘 비밀번호가 ' + DAY_LIMIT + '번 틀려서 24시간 잠갔어요. 가족이 아니라면 번호를 바꿔 주세요.', url: 'study.html', tag: 'lock' }); } catch {} }
+  return json({ error: 'wrong_pin', left: Math.max(0, Math.min(FAIL_LIMIT - g.recent.length - 1, DAY_LIMIT - all.length)) }, 401);
+}
 const sha = s => createHash('sha256').update(s).digest('hex');
 export const pinOk = p => typeof p === 'string' && /^\d{4,6}$/.test(p);
 export const hashPin = (pin, salt) => scryptSync(pin + ':family', salt, 32).toString('hex');
 
+// 기기별 변경 합치기. base(이 기기가 마지막으로 본 서버 시각)가 오면: 그 뒤에 다른 기기가 바꿨으면 덮어쓰지 않고 conflicts로 돌려보냄
+// → 기기가 먼저 받아서 합친 뒤 다시 올림. base 없는 옛 기기는 예전처럼 나중 시각이 이김.
 export function mergeData(server, changes, now = Date.now()) {
-  const out = { ...(server || {}) }, applied = [];
+  const out = { ...(server || {}) }, applied = [], conflicts = [], ts = {};
   for (const [k, c] of Object.entries(changes || {})) {
     if (!KEYS.includes(k) || !c || typeof c !== 'object') continue;
     if (typeof c.v !== 'string' || c.v.length > MAX_VALUE) continue;
-    const t = Math.min(Number(c.t) || 0, now + 60000);
-    if (!out[k] || t > out[k].t) { out[k] = { v: c.v, t, by: String(c.by || '').slice(0, 8) }; applied.push(k); }
+    const t = Math.min(Number(c.t) || 0, now + 60000), by = String(c.by || '').slice(0, 8), cur = out[k], hasBase = Number.isFinite(c.base);
+    if (hasBase && cur && cur.t > c.base && cur.by !== by) { conflicts.push(k); continue; }
+    if (!cur || hasBase || t > cur.t) { const tt = cur ? Math.max(t, cur.t + 1) : t; out[k] = { v: c.v, t: tt, by }; applied.push(k); ts[k] = tt; }
   }
-  return { data: out, applied };
+  return { data: out, applied, conflicts, ts };
 }
 const size = d => Object.values(d).reduce((n, x) => n + (x.v ? x.v.length : 0), 0);
 
@@ -92,15 +109,10 @@ export default async (req) => {
   const pinMatch = p => { const want = Buffer.from(cfg.hash, 'hex'), got = Buffer.from(hashPin(p, cfg.salt), 'hex'); return want.length === got.length && timingSafeEqual(want, got); };
 
   if (b.action === 'join') {
-    const fails = ((await store.get('fails', { type: 'json' })) || []).filter(t => now - t < FAIL_WINDOW);
-    if (fails.length >= FAIL_LIMIT) return json({ error: 'locked', retryMin: Math.ceil((FAIL_WINDOW - (now - fails[0])) / 60000) }, 429);
+    const g = await failGate(store, now); if (g.locked) return g.locked;
     if (!pinOk(b.pin)) return json({ error: 'bad_pin' }, 400);
-    const want = Buffer.from(cfg.hash, 'hex'), got = Buffer.from(hashPin(b.pin, cfg.salt), 'hex');
-    if (!(want.length === got.length && timingSafeEqual(want, got))) {
-      await store.setJSON('fails', [...fails, now]);
-      return json({ error: 'wrong_pin', left: FAIL_LIMIT - fails.length - 1 }, 401);
-    }
-    await store.setJSON('fails', []);
+    if (!pinMatch(b.pin)) return failAdd(store, g, now);
+    if (g.all.length) await store.setJSON('fails', []);
     const tok = randomBytes(24).toString('hex');
     await store.setJSON('tok:' + sha(tok), { pv: cfg.pv, device: String(b.device || '').slice(0, 8), at: new Date(now).toISOString() });
     return json({ ok: true, token: tok, pv: cfg.pv });
@@ -114,10 +126,10 @@ export default async (req) => {
   // VPS 실시간 중계 티켓(24시간) + 흰둥이 똑똑 모드 사용 가능 여부
   const live = async () => {
     const url = (env('FC_LIVE_URL') || 'https://live.apuda.app').replace(/\/$/, ''), sec = env('FC_LIVE_SECRET');
-    const out = { ai: !!(env('ANTHROPIC_API_KEY') || env('OPENAI_API_KEY')) };
+    const out = { ai: !!(env('ANTHROPIC_API_KEY') || env('OPENAI_API_KEY')), nprov: providerOf({ ANTHROPIC_API_KEY: env('ANTHROPIC_API_KEY'), OPENAI_API_KEY: env('OPENAI_API_KEY'), FC_CHAT_PROVIDER: env('FC_CHAT_PROVIDER') }) };
     if (!/^https:\/\//.test(url) || env('FC_LIVE_OFF')) return out;
     const h = await liveHealth(store, url); if (!h.ok) return out;
-    const exp = now + 86400000; out.url = url; out.ai = out.ai || h.ai;
+    const exp = now + 86400000; out.url = url; out.ai = out.ai || h.ai; out.prov = h.prov || '';
     if (sec.length >= 24) out.t = exp + '.fam.' + createHmac('sha256', sec).update(exp + '.fam').digest('hex');
     else { const k = await liveKey(store); out.t = exp + '.fam.' + edSign(null, Buffer.from(exp + '.fam'), createPrivateKey(k.priv)).toString('hex'); }
     return out;
@@ -148,13 +160,12 @@ export default async (req) => {
 
   // 가족 비밀번호 확인(어느 기기든 같은 번호) · 바꾸기(한 번 바꾸면 모든 기기에 적용, 기기 연결은 유지)
   if (b.action === 'verify' || b.action === 'change') {
-    const fails = ((await store.get('fails', { type: 'json' })) || []).filter(t => now - t < FAIL_WINDOW);
-    if (fails.length >= FAIL_LIMIT) return json({ error: 'locked', retryMin: Math.ceil((FAIL_WINDOW - (now - fails[0])) / 60000) }, 429);
+    const g = await failGate(store, now); if (g.locked) return g.locked;
     const check = b.action === 'verify' ? b.pin : b.old;
     if (check != null || b.action === 'verify') {
       if (!pinOk(check)) return json({ error: 'bad_pin' }, 400);
-      if (!pinMatch(check)) { await store.setJSON('fails', [...fails, now]); return json({ error: 'wrong_pin', left: FAIL_LIMIT - fails.length - 1 }, 401); }
-      if (fails.length) await store.setJSON('fails', []);
+      if (!pinMatch(check)) return failAdd(store, g, now);
+      if (g.all.length) await store.setJSON('fails', []);
     }
     if (b.action === 'verify') return json({ ok: true });
     if (pinOk(envPin)) return json({ error: 'managed' }, 409);   // 번호는 Netlify 환경변수로 관리 중
@@ -203,8 +214,9 @@ export default async (req) => {
   }
 
   // 수업 노트 사진: 가족 기기끼리 같이 보기 (기기 토큰 필요)
-  if (b.action === 'photo-put' || b.action === 'photo-get') {
+  if (b.action === 'photo-put' || b.action === 'photo-get' || b.action === 'photo-del') {
     if (typeof b.id !== 'string' || !/^[a-z0-9]{8,40}$/.test(b.id)) return json({ error: 'bad_id' }, 400);
+    if (b.action === 'photo-del') { await store.delete('photo:' + b.id); return json({ ok: true }); }
     if (b.action === 'photo-get') { const v = await store.get('photo:' + b.id); return v ? json({ ok: true, data: v }) : json({ error: 'not_found' }, 404); }
     if (typeof b.data !== 'string' || !/^data:image\/(jpeg|webp|png);base64,/.test(b.data) || b.data.length > 900000) return json({ error: 'bad_photo' }, 400);
     await store.set('photo:' + b.id, b.data);
@@ -215,7 +227,7 @@ export default async (req) => {
     const m = mergeData(data, b.changes, now);
     if (size(m.data) > MAX_TOTAL) return json({ error: 'too_large' }, 413);
     if (m.applied.length) await store.setJSON('data', m.data);
-    return json({ ok: true, applied: m.applied, pv: cfg.pv });
+    return json({ ok: true, applied: m.applied, conflicts: m.conflicts, ts: m.ts, pv: cfg.pv });
   }
   return json({ error: 'bad_request' }, 400);
 };

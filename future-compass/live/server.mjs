@@ -7,7 +7,7 @@
 // 의존성 없음 (Node 20+)
 import http from 'node:http';
 import { createHmac, timingSafeEqual, createPublicKey, verify as edVerify } from 'node:crypto';
-import { buildPayload, askAI, hasAI, validQuestion, organizePayload } from './shiro.mjs';
+import { buildPayload, askAI, hasAI, validQuestion, organizePayload, providerOf } from './shiro.mjs';
 import { listDocs, addDoc, delDoc, searchDocs, searchWiki, knowledgeQ } from './rag.mjs';
 const WEB = (process.env.FC_WEB_SEARCH || 'on') !== 'off';
 
@@ -62,7 +62,7 @@ const server = http.createServer(async (req, res) => {
   cors(req, res);
   const url = new URL(req.url, 'http://x');
   if (req.method === 'OPTIONS') { res.writeHead(204); return res.end(); }
-  if (url.pathname === '/health') return send(res, 200, { ok: true, keyed: !!(PUB || SECRET.length >= 24), clients: clients.size, ai: !!API_KEY, docs: listDocs().length, web: WEB });
+  if (url.pathname === '/health') return send(res, 200, { ok: true, keyed: !!(PUB || SECRET.length >= 24), clients: clients.size, ai: !!API_KEY, prov: providerOf(process.env), docs: listDocs().length, web: WEB });
 
   if (url.pathname === '/rt' && req.method === 'GET') {
     if (!verifyTicket(url.searchParams.get('t'))) return send(res, 401, { error: 'ticket' });

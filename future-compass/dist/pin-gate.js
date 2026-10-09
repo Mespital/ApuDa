@@ -10,6 +10,7 @@
   var MAX_FAIL = 5, LOCK_MS = 30000;
   var root = document.documentElement;
 
+  var GUARD_KEY = 'fc_guard_v1', GUARD_OK = 'fc-guard-ok', GUARD_FAIL = 'fc-guard-fail';
   function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
   function lsSet(k, v) { try { localStorage.setItem(k, v); return true; } catch (e) { return false; } }
   function lsDel(k) { try { localStorage.removeItem(k); } catch (e) {} }
@@ -41,6 +42,38 @@
     try { var a = new Uint8Array(8); crypto.getRandomValues(a); return hex(a.buffer); } catch (e) { return String(Date.now()) + Math.random().toString(16).slice(2); }
   }
   function readStored() { try { var v = JSON.parse(lsGet(PIN_KEY) || 'null'); return v && v.salt && v.hash ? v : null; } catch (e) { return null; } }
+
+  function lockMsg(j) { var m = j.retryMin || 15; return j.day ? '오늘 너무 많이 틀려서 ' + Math.ceil(m / 60) + '시간 동안 막혔어. 엄마 폰에 알림이 갔어.' : '여러 번 틀려서 ' + m + '분 동안 막혔어.'; }
+  /* ---------- 엄마 확인 번호(선택): 승준 폰에서 "엄마로 들어가기"를 누르면 한 번 더 확인 ----------
+     fc_guard_v1 = {salt, hash} (가족 공유). 가족끼리 쓰는 앱의 "잠금장치" 수준이야 — 해킹 방어용 보안은 아님. */
+  function readGuard() { try { var g = JSON.parse(lsGet(GUARD_KEY) || 'null'); return g && g.salt && g.hash ? g : null; } catch (e) { return null; } }
+  function needGuard() { return !!readGuard() && getWho() !== 'parent' && ssGet(GUARD_OK) !== '1'; }
+  function askGuard(host, done) {
+    var g = readGuard(); if (!g) { done(); return; }
+    var old = host.querySelector('.pin-guard'); if (old) old.remove();
+    var box = document.createElement('div'); box.className = 'pin-guard';
+    box.innerHTML = '<div class="pin-guard-in"><b>👩 엄마 확인 번호</b><p>엄마 화면은 엄마 확인 번호를 한 번 더 넣어야 열려요.</p><input type="password" inputmode="numeric" autocomplete="off" maxlength="6" aria-label="엄마 확인 번호"><p class="pin-guard-msg" role="alert"></p><div class="pin-guard-btns"><button type="button" class="pin-guard-cancel">취소</button><button type="button" class="pin-guard-ok">확인</button></div></div>';
+    host.appendChild(box);
+    var inp = box.querySelector('input'), msg = box.querySelector('.pin-guard-msg');
+    setTimeout(function () { try { inp.focus(); } catch (e) {} }, 30);
+    function fails() { try { return JSON.parse(lsGet(GUARD_FAIL) || 'null') || { n: 0, until: 0 }; } catch (e) { return { n: 0, until: 0 }; } }
+    function check() {
+      var f = fails(); if (f.until > Date.now()) { msg.textContent = '여러 번 틀려서 ' + Math.ceil((f.until - Date.now()) / 60000) + '분 뒤에 다시 해줘.'; return; }
+      var v = inp.value.replace(/\D/g, ''); if (v.length < 4) { msg.textContent = '4~6자리 숫자야.'; return; }
+      hashPin(v, g.salt).then(function (h) {
+        if (h === g.hash) { lsDel(GUARD_FAIL); ssSet(GUARD_OK, '1'); box.remove(); done(); return; }
+        f.n = (f.n || 0) + 1; if (f.n >= 5) { f.until = Date.now() + 10 * 60000; f.n = 0; }
+        lsSet(GUARD_FAIL, JSON.stringify(f)); inp.value = ''; msg.textContent = f.until > Date.now() ? '5번 틀려서 10분 동안 막혔어.' : '번호가 달라. (남은 기회 ' + (5 - f.n) + '번)';
+      });
+    }
+    box.querySelector('.pin-guard-ok').addEventListener('click', check);
+    inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') check(); e.stopPropagation(); });
+    box.querySelector('.pin-guard-cancel').addEventListener('click', function () { box.remove(); });
+  }
+  function setGuard(pin) {
+    if (!pin) { lsSet(GUARD_KEY, JSON.stringify({ off: 1, at: Date.now() })); return Promise.resolve(true); }
+    var salt = newSalt(); return hashPin(pin, salt).then(function (h) { lsSet(GUARD_KEY, JSON.stringify({ salt: salt, hash: h, at: Date.now() })); ssSet(GUARD_OK, '1'); return true; });
+  }
 
   /* ---------- 화면 ---------- */
   var gate, titleEl, msgEl, dotsEl, padEl, forgotEl, confirmBox;
@@ -122,10 +155,15 @@
     gate.querySelector('.pin-rec-send').addEventListener('click', sendCode);
     gate.querySelector('.pin-family').addEventListener('click', function () { if (mode === 'family') { mode = familyBack && familyBack !== 'family' ? familyBack : (readStored() ? 'unlock' : 'setup1'); } else { familyBack = mode; mode = 'family'; } showMode(); });
     gate.querySelectorAll('.pin-role [data-role]').forEach(function (b) { b.addEventListener('click', function () {
-      var r = b.getAttribute('data-role'); setWho(r);
+      var r = b.getAttribute('data-role');
+      if (r === 'parent' && needGuard()) { askGuard(gate, function () { pickRole(r); }); return; }
+      pickRole(r);
+    }); });
+    function pickRole(r) {
+      setWho(r);
       if (window.FamilySync && whoFamily) FamilySync.start(true);
       var n = (whoNotice ? whoNotice + ' ' : '') + (r === 'parent' ? '엄마로 들어왔어요 💜' : '승준, 오늘도 화이팅 🐾'); changing = false; recovering = false; whoNotice = ''; whoFamily = false; reallyUnlock(n);
-    }); });
+    }
     gate.querySelector('.pin-rec-mail-open').addEventListener('click', function () { gate.querySelector('.pin-rec-mail').hidden = false; gate.querySelector('.pin-rec-qa').hidden = true; recStatus(''); });
     gate.querySelector('.pin-rec-qa-open').addEventListener('click', function () {
       var qa = readQA(); if (!qa) { recStatus('아직 질문을 정하지 않았어. 보호자 메일로 찾아줘.'); return; }
@@ -203,7 +241,7 @@
       FamilySync.join(pin).then(function (j) {
         busy = false;
         if (!j._ok) {
-          var M = { wrong_pin: '가족 비밀번호가 달라.' + (j.left != null ? ' (남은 기회 ' + j.left + '번)' : ''), locked: '여러 번 틀려서 ' + (j.retryMin || 15) + '분 동안 막혔어.', not_enabled: '가족 공유가 아직 켜지지 않았어. 보호자 화면에서 가족 비밀번호를 먼저 정해줘.', network: '인터넷 연결을 확인해줘.' };
+          var M = { wrong_pin: '가족 비밀번호가 달라.' + (j.left != null ? ' (남은 기회 ' + j.left + '번)' : ''), locked: lockMsg(j), not_enabled: '가족 공유가 아직 켜지지 않았어. 보호자 화면에서 가족 비밀번호를 먼저 정해줘.', network: '인터넷 연결을 확인해줘.' };
           shake(M[j.error] || '들어가지 못했어. 잠시 뒤 다시 해줘.'); return;
         }
         var salt = newSalt();
@@ -265,7 +303,7 @@
             var salt2 = newSalt(); hashPin(pin, salt2).then(function (h2) { lsSet(PIN_KEY, JSON.stringify({ salt: salt2, hash: h2, v: 1, family: true, at: new Date().toISOString() })); busy = false; okPin(); }); return;
           }
           if (j && j.error === 'wrong_pin') { busy = false; shake('비밀번호가 달라.' + (j.left != null ? ' (남은 기회 ' + j.left + '번)' : '')); return; }
-          if (j && j.error === 'locked') { busy = false; shake('여러 번 틀려서 ' + (j.retryMin || 15) + '분 동안 막혔어.'); return; }
+          if (j && j.error === 'locked') { busy = false; shake(lockMsg(j)); return; }
           if (j && j.error === 'rejoin') { busy = false; try { localStorage.removeItem('fc-family-v1'); } catch (e) {} mode = 'family'; showMode('가족 비밀번호가 새로 정해졌어. 새 번호로 들어와줘.'); return; }
           localCheck();   // 인터넷이 안 되면 이 폰에 저장된 번호로
         });
@@ -465,7 +503,8 @@
     lock: function () { ssDel(SESSION_KEY); location.reload(); },
     changePin: function () { if (document.getElementById('pin-gate')) return; changing = true; root.classList.add('pin-locked'); build('unlock'); },
     joinFamily: function () { if (document.getElementById('pin-gate')) return; changing = true; root.classList.add('pin-locked'); build('family'); },
-    switchWho: function () { if (document.getElementById('pin-gate')) return; root.classList.add('pin-locked'); build('who'); }
+    switchWho: function () { if (document.getElementById('pin-gate')) return; root.classList.add('pin-locked'); build('who'); },
+    guard: { on: function () { return !!readGuard(); }, set: setGuard, ask: function (done) { if (!readGuard() || ssGet(GUARD_OK) === '1') { done(); return; } askGuard(document.body, done); } }
   }; }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { build(); }); else build();
 })();

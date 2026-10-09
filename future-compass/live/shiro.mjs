@@ -79,6 +79,12 @@ export async function askOllama({ base, model, payload, timeoutMs = 100000 }) {
   if (!r.ok) { const e = new Error('upstream'); e.status = r.status; throw e; }
   return clip(((j.choices || [])[0] || {}).message?.content || '', 2000).replace(/<think>[\s\S]*?<\/think>/g, '').trim();
 }
+// 지금 먼저 쓰는 AI 이름(설정 화면 안내용): claude | openai | ollama | ''
+export function providerOf(env) {
+  const prov = (env.FC_CHAT_PROVIDER || '').toLowerCase(), have = { claude: !!env.ANTHROPIC_API_KEY, openai: !!env.OPENAI_API_KEY, ollama: !!env.OLLAMA_MODEL };
+  const order = prov === 'ollama' ? ['ollama', 'claude', 'openai'] : prov === 'openai' ? ['openai', 'claude', 'ollama'] : ['claude', 'openai', 'ollama'];
+  return order.find(k => have[k]) || '';
+}
 // 어떤 AI를 쓸지: FC_CHAT_PROVIDER=ollama|openai|claude 로 고정 가능, 아니면 있는 것 순서대로 (Claude → ChatGPT → 무료 Ollama)
 export async function askAI(env, payload, timeoutMs) {
   const prov = (env.FC_CHAT_PROVIDER || '').toLowerCase(), ak = env.ANTHROPIC_API_KEY, ok = env.OPENAI_API_KEY, lm = env.OLLAMA_MODEL;

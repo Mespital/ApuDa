@@ -188,7 +188,7 @@
     if (ag.length || eps.length) {
       html += '<ul class="pl-list pl-auto">' +
         eps.map(function (e) { return '<li class="pl-item' + (e.done ? ' done' : '') + '"><span class="pl-tag">시험</span><label class="pl-main"><input type="checkbox" data-pl-exam="' + esc(e.id) + '" data-to="' + e.to + '"' + (e.done ? ' checked' : '') + '><span><b>' + esc((e.subject ? e.subject + ' ' : '') + e.unit + e.from + '~' + e.to) + '</b><small>' + esc(e.title) + ' D-' + e.dday + ' · 하루 ' + e.per + (e.unit === 'p.' ? '쪽' : '') + '</small></span></label></li>'; }).join('') +
-        ag.map(function (a) { return '<li class="pl-item"><span class="pl-tag again">다시</span><label class="pl-main"><input type="checkbox" data-pl-again="' + esc(a.r.id) + '" data-d="' + a.date + '"><span><b>' + esc(a.r.title) + '</b><small>' + esc((a.r.subject ? a.r.subject + ' · ' : '') + '답 안 보고 다시 설명해보기 · 10분') + '</small></span></label></li>'; }).join('') + '</ul>';
+        ag.map(function (a) { var rc = (P.recall || {})[a.r.id], lastR = rc && rc.length ? rc[rc.length - 1].r : ''; return '<li class="pl-item"><span class="pl-tag again">다시</span><button type="button" class="pl-main pl-rc" data-rc-open="' + esc(a.r.id) + '" data-d="' + a.date + '"><span><b>' + esc(a.r.title) + '</b><small>' + esc((a.r.subject ? a.r.subject + ' · ' : '') + '🧠 기억 확인 · 3분' + (lastR === 'bad' ? ' · 지난번 어려웠던 거' : lastR === 'meh' ? ' · 지난번 헷갈렸던 거' : '')) + '</small></span></button></li>'; }).join('') + '</ul>';
     }
     if (rest.length) html += '<details class="pl-all"' + (openAll ? ' open' : '') + '><summary data-pl-all>전체 할 일 보기 (' + rest.length + ')</summary><ul class="pl-list">' + rest.map(itemHtml).join('') + '</ul></details>';
     html += '<form data-form="tasks" class="pl-add"><input name="title" required maxlength="120" placeholder="할 일 추가 (예: 수학 유형 3~5)" aria-label="할 일"><button class="primary" aria-label="추가">추가</button></form>';
@@ -541,7 +541,7 @@
       q.p = nx; rerender(); return;
     }
     if (d.plMore) { openMore = openMore === d.plMore ? '' : d.plMore; render(); return; }
-    if (b.hasAttribute('data-hero-close')) { var cc0 = document.querySelector('.pl-close'); if (cc0) { cc0.scrollIntoView({ behavior: 'smooth', block: 'start' }); var i0 = cc0.querySelector('input'); if (i0) setTimeout(function () { i0.focus({ preventScroll: true }); }, 400); } return; }
+    if (b.hasAttribute('data-hero-close')) { var cc0 = document.querySelector('.pl-close'); if (cc0) { if (window.FC_REVEAL) FC_REVEAL(cc0); cc0.scrollIntoView({ behavior: 'smooth', block: 'start' }); var i0 = cc0.querySelector('input'); if (i0) setTimeout(function () { i0.focus({ preventScroll: true }); }, 400); } return; }
     if (b.hasAttribute('data-hero-add')) { var ai = document.querySelector('.pl-add input'); if (ai) { ai.scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(function () { ai.focus({ preventScroll: true }); }, 400); } return; }
     if (d.plExEdit) { exEdit = d.plExEdit; exSel = (P.examDays[exEdit] || []).slice(); render(); return; }
     if (d.plExs) { var ix2 = exSel.indexOf(d.plExs); if (ix2 >= 0) exSel.splice(ix2, 1); else exSel.push(d.plExs); render(); return; }

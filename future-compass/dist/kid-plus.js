@@ -48,7 +48,7 @@
     b.hidden = isParent();
   }
   function openAsk() {
-    var go = function () { var c = document.getElementById('kp-ask'); if (!c) return; c.scrollIntoView({ behavior: 'smooth', block: 'center' }); c.classList.add('kp-flash'); setTimeout(function () { c.classList.remove('kp-flash'); }, 1200); };
+    var go = function () { var c = document.getElementById('kp-ask'); if (!c) return; if (window.FC_REVEAL) FC_REVEAL(c); c.scrollIntoView({ behavior: 'smooth', block: 'center' }); c.classList.add('kp-flash'); setTimeout(function () { c.classList.remove('kp-flash'); }, 1200); };
     if (tab !== 'today') { location.hash = 'today'; setTimeout(go, 250); } else go();
   }
   render = function () {
