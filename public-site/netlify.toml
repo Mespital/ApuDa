@@ -33,7 +33,7 @@
   force = true
 
 [[redirects]]
-  from = "/support/*"
+  from = "/support/v4/*"
   to = "https://apuda-support.netlify.app/:splat"
   status = 200
   force = true

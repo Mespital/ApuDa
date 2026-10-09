@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b5fa5">
+<title>암 치료비 지원 찾기 · 계산기 | ApuDa</title>
+<meta name="description" content="질문 몇 개에 답하면 산정특례·본인부담상한제·재난적 의료비·암환자 의료비 지원·긴급복지 중 받을 수 있는 지원과 대략적인 금액을 계산해 드려요. 가입 없이, 입력값은 저장되지 않습니다.">
+<meta property="og:title" content="암 치료비, 받을 수 있는 지원부터 | ApuDa">
+<meta property="og:description" content="3분 질문으로 받을 수 있는 지원과 대략 금액을 확인하세요.">
+<style>
+:root{--navy:#0b2746;--blue:#0b5fa5;--blue2:#246bfe;--gold:#f5b301;--line:#dce8f5;--muted:#5f7387;--bg:#f4f8fd;--ok:#127a4a;--okbg:#e8f7ef;--warn:#8a5b00;--warnbg:#fff6dc;--no:#7b8794;--nobg:#f1f4f7;--red:#b42318}
+*{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--navy);font-family:Pretendard,"Noto Sans KR","Apple SD Gothic Neo",Arial,sans-serif;font-size:16px;line-height:1.6}
+a{color:var(--blue)}
+.top{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 16px;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.brand{font-size:21px;font-weight:950;color:var(--blue2);text-decoration:none}
+.tabs{display:flex;gap:4px}.tabs a{padding:9px 11px;border-radius:10px;color:var(--navy);text-decoration:none;font-weight:800;font-size:14px;min-height:44px;display:flex;align-items:center}
+.tabs a:hover{background:#eef5ff}
+.wrap{width:min(780px,calc(100vw - 32px));margin:0 auto;padding:20px 0 80px}
+.hero{padding:24px 22px;border-radius:24px;background:linear-gradient(135deg,#0b5fa5,#246bfe);color:#fff}
+.hero .k{font-size:12px;font-weight:900;letter-spacing:.12em;opacity:.85}
+.hero h1{margin:6px 0 8px;font-size:clamp(26px,6vw,38px);line-height:1.25;letter-spacing:-.03em}
+.hero p{margin:0;font-size:15.5px;opacity:.95}
+.hero .pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}.hero .pills span{padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.16);font-size:13px;font-weight:800}
+.steps{display:flex;gap:6px;margin:18px 0 10px}.steps div{flex:1;height:6px;border-radius:6px;background:#d7e4f2}.steps div.on{background:var(--blue2)}
+.card{margin-top:14px;padding:20px;border:1px solid var(--line);border-radius:20px;background:#fff}
+.q{margin:0 0 18px}.q:last-child{margin-bottom:0}
+.q h3{margin:0 0 4px;font-size:18px;letter-spacing:-.02em}
+.q .help{margin:0 0 10px;color:var(--muted);font-size:14px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
+.opts button{min-height:52px;padding:10px 12px;border:1.5px solid var(--line);border-radius:14px;background:#fff;color:var(--navy);font:inherit;font-weight:800;font-size:15.5px;cursor:pointer;text-align:left;line-height:1.35}
+.opts button small{display:block;font-weight:600;color:var(--muted);font-size:12.5px}
+.opts button[aria-pressed=true]{border-color:var(--blue2);background:#eef4ff;color:var(--blue)}
+.opts button:focus-visible,.btn:focus-visible,input:focus-visible{outline:3px solid #9cc0ff;outline-offset:2px}
+.num{display:flex;align-items:center;gap:8px}.num input{width:100%;min-height:52px;border:1.5px solid var(--line);border-radius:14px;padding:10px 14px;font:inherit;font-size:20px;font-weight:800;color:var(--navy);background:#f9fbfe}
+.num input:focus{border-color:var(--blue2);background:#fff;outline:none}.num span{font-weight:800;color:var(--muted);white-space:nowrap}
+.hint{margin-top:6px;font-size:13.5px;color:var(--blue);font-weight:700;min-height:1em}
+.nav{display:flex;gap:8px;margin-top:18px}
+.btn{flex:1;min-height:54px;border:0;border-radius:15px;font:inherit;font-weight:900;font-size:16.5px;cursor:pointer}
+.btn.p{background:var(--blue2);color:#fff;box-shadow:0 8px 20px rgba(36,107,254,.25)}.btn.s{background:#fff;border:1.5px solid var(--line);color:var(--navy);flex:0 0 auto;padding:0 18px}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.skip{display:block;margin-top:10px;text-align:center;color:var(--muted);font-size:14px}
+.sum{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sum div{padding:14px;border-radius:16px;background:#f3f8ff}.sum b{display:block;font-size:24px;color:var(--blue);letter-spacing:-.02em}.sum span{font-size:13px;color:var(--muted)}
+.res{margin-top:12px;border:1px solid var(--line);border-radius:18px;background:#fff;overflow:hidden}
+.res>button{display:flex;width:100%;gap:12px;align-items:flex-start;padding:16px;border:0;background:#fff;font:inherit;text-align:left;cursor:pointer;color:var(--navy)}
+.badge{flex:0 0 auto;padding:4px 9px;border-radius:999px;font-size:12.5px;font-weight:900;margin-top:2px}
+.b-ok{background:var(--okbg);color:var(--ok)}.b-warn{background:var(--warnbg);color:var(--warn)}.b-no{background:var(--nobg);color:var(--no)}
+.res h4{margin:0;font-size:17px;letter-spacing:-.01em}.res .amt{margin-top:2px;font-size:15px;font-weight:800;color:var(--blue)}.res .why{margin-top:2px;font-size:14px;color:var(--muted)}
+.res .body{display:none;padding:0 16px 16px;font-size:15px}.res.on .body{display:block}
+.res .body dl{display:grid;grid-template-columns:76px 1fr;gap:6px 10px;margin:0}.res .body dt{font-weight:900;color:var(--muted);font-size:13.5px}.res .body dd{margin:0}
+.res .body .tel{display:inline-flex;align-items:center;gap:6px;margin:10px 8px 0 0;padding:10px 14px;border-radius:12px;background:#eef4ff;color:var(--blue);text-decoration:none;font-weight:900;min-height:44px}
+.res.no{opacity:.75}
+.note{margin-top:14px;padding:14px 16px;border-radius:16px;background:var(--warnbg);color:#5b4a12;font-size:14.5px}
+.calc h2,.sec h2{margin:0 0 6px;font-size:21px;letter-spacing:-.02em}.sec>p,.calc>p{margin:0 0 12px;color:var(--muted);font-size:14.5px}
+.bar{margin-top:14px}.bar .row{display:grid;grid-template-columns:92px 1fr auto;gap:10px;align-items:center;margin:8px 0;font-size:14.5px;font-weight:800}
+.bar .track{height:16px;border-radius:9px;background:#eef2f7;overflow:hidden}.bar .fill{height:100%;border-radius:9px;background:#9fb4cc}.bar .fill.hi{background:var(--blue2)}
+.big{font-size:28px;font-weight:950;color:var(--blue);letter-spacing:-.02em}
+table{width:100%;border-collapse:collapse;font-size:14.5px}th,td{padding:9px 8px;border-bottom:1px solid var(--line);text-align:left}th{font-size:13px;color:var(--muted)}td.r,th.r{text-align:right}
+.check li{margin:6px 0}.check{padding-left:20px}
+.acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.acts .btn{flex:1 1 160px}
+.foot{margin-top:24px;font-size:13.5px;color:#66758c;line-height:1.75}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#0b2746;color:#fff;padding:12px 18px;border-radius:14px;font-weight:800;font-size:14.5px;opacity:0;transition:.2s;pointer-events:none;z-index:50}.toast.on{opacity:1}
+[hidden]{display:none!important}
+@media(max-width:560px){.tabs a.hide-m{display:none}.card{padding:16px}.sum b{font-size:21px}.bar .row{grid-template-columns:78px 1fr auto}}
+@media print{.top,.nav,.acts,.steps,#wizard,.calc,#tbl,.toast{display:none!important}.res .body{display:block!important}body{background:#fff}.hero{background:none;color:var(--navy);padding:0}}
+</style>
+</head>
+<body>
+<header class="top"><a class="brand" href="/">ApuDa</a>
+<nav class="tabs" aria-label="바로가기"><a href="#wizard">지원 찾기</a><a href="#calc">계산기</a><a class="hide-m" href="#tbl">기준표</a><a href="/#floor-3" class="hide-m">3F로</a></nav></header>
+<main class="wrap">
+<section class="hero">
+  <div class="k">ApuDa 3F · 암 치료비 지원</div>
+  <h1>암 치료비,<br>받을 수 있는 지원부터 확인해요</h1>
+  <p>질문 6개에 답하면 받을 수 있는 지원과 대략 금액, 어디에 전화하면 되는지 알려드려요. 모르는 건 건너뛰어도 돼요.</p>
+  <div class="pills"><span>약 3분</span><span>가입 없음</span><span>입력값은 저장·전송 안 됨</span></div>
+</section>
+
+<!-- ===== 지원 찾기 ===== -->
+<section id="wizard">
+  <div class="steps" aria-hidden="true"><div class="on"></div><div></div><div></div></div>
+
+  <div class="card" data-step="1">
+    <div class="q"><h3>1. 누가 치료를 받나요?</h3>
+      <div class="opts" data-k="who"><button data-v="adult">성인<small>만 18세 이상</small></button><button data-v="child">소아·청소년<small>만 18세 미만</small></button></div></div>
+    <div class="q"><h3>2. 건강보험은 어떤 자격인가요?</h3><p class="help">건강보험증이나 병원 영수증의 ‘자격’ 칸에 적혀 있어요.</p>
+      <div class="opts" data-k="ins"><button data-v="nhi">건강보험<small>직장·지역 가입자</small></button><button data-v="aid">의료급여<small>1종·2종 수급자</small></button><button data-v="near">차상위계층<small>본인부담 경감 대상</small></button><button data-v="unk">잘 모르겠어요</button></div></div>
+    <div class="q"><h3>3. 암 진단(확진)은 언제 받았나요?</h3>
+      <div class="opts" data-k="dx"><button data-v="d30">30일 이내</button><button data-v="dold">30일이 지났어요</button><button data-v="dno">아직 검사 중</button></div></div>
+    <div class="nav"><button class="btn p" data-next="2" disabled>다음</button></div>
+  </div>
+
+  <div class="card" data-step="2" hidden>
+    <div class="q"><h3>4. 함께 사는 가족은 몇 명인가요?</h3><p class="help">환자 본인을 포함한 건강보험상 가구원 수예요.</p>
+      <div class="opts" data-k="hh"><button data-v="1">1명</button><button data-v="2">2명</button><button data-v="3">3명</button><button data-v="4">4명</button><button data-v="5">5명</button><button data-v="6">6명 이상</button></div></div>
+    <div class="q"><h3>5. 가구 전체의 한 달 소득은 대략 얼마인가요?</h3><p class="help">세금 떼기 전, 가족 모두의 월급·사업소득을 합친 금액이에요. 대략이면 충분해요.</p>
+      <div class="num"><input id="inc" inputmode="numeric" placeholder="예: 350" aria-label="월 가구 소득(만원)"><span>만원 / 월</span></div>
+      <div class="hint" id="incHint"></div>
+      <a href="#" class="skip" data-skip="inc">소득을 잘 모르겠어요 → 건너뛰기</a></div>
+    <div class="q"><h3>6. 재산(집·토지 등 공시가격 합계)이 7억 원을 넘나요?</h3>
+      <div class="opts" data-k="asset"><button data-v="lo">넘지 않아요</button><button data-v="hi">넘어요</button><button data-v="unk">잘 모르겠어요</button></div></div>
+    <div class="nav"><button class="btn s" data-prev="1">이전</button><button class="btn p" data-next="3">다음</button></div>
+  </div>
+
+  <div class="card" data-step="3" hidden>
+    <div class="q"><h3>7. 최근 1년 동안 낸 병원비는 얼마인가요?</h3><p class="help">영수증의 ‘환자부담 총액’(급여 본인부담 + 비급여)을 합친 금액이에요. 약값 포함, 대략이면 돼요.</p>
+      <div class="num"><input id="paid" inputmode="numeric" placeholder="예: 600" aria-label="1년 병원비 본인부담(만원)"><span>만원</span></div>
+      <div class="hint" id="paidHint"></div></div>
+    <div class="q"><h3>그중 비급여(건강보험이 안 되는 항목)는 얼마인가요?</h3><p class="help">영수증 오른쪽 ‘비급여’ 칸이에요. 모르면 비워 두세요.</p>
+      <div class="num"><input id="nonpay" inputmode="numeric" placeholder="예: 300" aria-label="비급여(만원)"><span>만원</span></div></div>
+    <div class="q"><h3>8. 최근 갑자기 생계가 어려워졌나요?</h3><p class="help">주소득자의 실직·휴직·폐업이나, 질병으로 일을 못 하게 된 경우예요.</p>
+      <div class="opts" data-k="crisis"><button data-v="y">네, 그래요</button><button data-v="n">아니요</button></div></div>
+    <div class="nav"><button class="btn s" data-prev="2">이전</button><button class="btn p" id="go">결과 보기</button></div>
+  </div>
+
+  <div class="card" id="result" hidden>
+    <h2 style="margin:0 0 4px;font-size:22px">받을 수 있는 지원</h2>
+    <p style="margin:0 0 12px;color:var(--muted);font-size:14.5px" id="resLead"></p>
+    <div class="sum"><div><b id="sumOk">0개</b><span>받을 가능성이 높아요</span></div><div><b id="sumChk">0개</b><span>확인해 볼 만해요</span></div></div>
+    <div id="resList"></div>
+    <div class="note"><b>금액을 그냥 더하지 마세요.</b> 재난적 의료비·암환자 의료비 지원·본인부담상한제·실손보험은 서로 빼고 계산하거나 중복이 안 될 수 있어요. 실제 금액은 영수증과 조사 후 기관이 정해요.</div>
+    <h3 style="margin:20px 0 6px;font-size:18px">오늘 할 일</h3>
+    <ol class="check" id="todo"></ol>
+    <div class="acts"><button class="btn p" id="copy">결과 복사하기</button><button class="btn s" onclick="print()">인쇄·PDF</button><button class="btn s" id="restart">처음부터</button></div>
+  </div>
+</section>
+
+<!-- ===== 계산기 ===== -->
+<section class="card calc" id="calc">
+  <h2>산정특례 계산기</h2>
+  <p>병원 영수증의 <b>급여 진료비 총액</b>(공단부담금 + 본인부담금)을 넣으면, 산정특례를 받을 때와 안 받을 때 내 돈이 얼마인지 비교해요.</p>
+  <div class="num"><input id="cTot" inputmode="numeric" placeholder="예: 1000" aria-label="급여 진료비 총액(만원)"><span>만원</span></div>
+  <div class="opts" data-k="ctype" style="margin-top:10px"><button data-v="in" aria-pressed="true">입원</button><button data-v="out">외래(상급종합병원)</button></div>
+  <div class="bar" id="cBar"></div>
+  <p id="cMsg" style="margin:8px 0 0;font-size:15px"></p>
+  <p style="margin:10px 0 0;font-size:13px;color:var(--muted)">비급여·선택진료·상급병실 차액 등은 산정특례 5%가 적용되지 않아요. 일반 본인부담률은 대표값(입원 20%, 상급종합병원 외래 진료비 60%)이며 병원 종류·항목에 따라 달라요.</p>
+</section>
+
+<!-- ===== 기준표 ===== -->
+<section class="card sec" id="tbl">
+  <h2>본인부담상한제 상한액</h2>
+  <p>1년 동안 낸 급여 본인부담금이 아래 금액을 넘으면, 넘은 만큼 공단이 돌려줘요(비급여 제외). 소득분위는 건강보험료로 정해져요.</p>
+  <table><thead><tr><th>소득분위</th><th class="r">상한액</th><th class="r">요양병원 120일 초과</th></tr></thead><tbody>
+  <tr><td>1분위</td><td class="r">89만원</td><td class="r">141만원</td></tr>
+  <tr><td>2~3분위</td><td class="r">110만원</td><td class="r">178만원</td></tr>
+  <tr><td>4~5분위</td><td class="r">170만원</td><td class="r">240만원</td></tr>
+  <tr><td>6~7분위</td><td class="r">320만원</td><td class="r">396만원</td></tr>
+  <tr><td>8분위</td><td class="r">437만원</td><td class="r">569만원</td></tr>
+  <tr><td>9분위</td><td class="r">525만원</td><td class="r">684만원</td></tr>
+  <tr><td>10분위</td><td class="r">826만원</td><td class="r">1,074만원</td></tr>
+  </tbody></table>
+  <p style="margin:8px 0 0;font-size:13px;color:var(--muted)">2025년 적용 기준(보건복지부·건강보험공단 2025.8.28 보도자료). 2026년 금액은 공단 1577-1000에서 확인하세요.</p>
+
+  <h2 style="margin-top:22px">2026년 기준중위소득(월)</h2>
+  <p>재난적 의료비·긴급복지·소아암 지원의 소득 기준이 되는 금액이에요.</p>
+  <table><thead><tr><th>가구원</th><th class="r">100%</th><th class="r">75%</th><th class="r">120%</th></tr></thead><tbody id="mi"></tbody></table>
+</section>
+
+<p class="foot">
+  <b>이렇게 계산했어요.</b> 산정특례(암 급여 본인부담 5%, 등록 후 5년, 확진 30일 이내 신청 시 확진일부터 적용), 재난적 의료비(기준중위소득 100% 이하·재산 7억 이하, 소득구간별 의료비 부담 기준 초과 시 50~80% 지원, 연 5천만원 한도, 퇴원 후 180일 이내 신청), 암환자 의료비 지원(성인 의료급여·차상위 연 최대 300만원, 소아 연 2,000만~3,000만원, 소아는 중위소득 120% 이하), 긴급복지 의료지원(중위소득 75% 이하·위기사유, 300만원 이내 1회·최대 2회) 기준을 사용했어요. 기준은 해마다 바뀔 수 있어요(2026년 10월 확인).<br>
+  더 자세한 조건은 <a href="/support/v4/">상세 분석기(v4.1)</a>에서 볼 수 있어요. 문의: 국민건강보험공단 1577-1000 · 보건복지상담센터 129 · 국가암지식정보센터 1577-8899 · 병원 원무과·의료사회복지팀.<br><br>
+  [안내] 이 정보는 일반적인 건강·복지 정보를 알기 쉽게 정리한 참고 자료이며, 실제 지원 여부와 금액은 각 기관의 심사로 정해집니다. 의사의 진료·진단·처방을 대신하지 않습니다. 입력한 값은 이 화면 안에서만 계산되고 저장·전송되지 않습니다. ApuDa는 이 정보를 근거로 한 개별 판단이나 그 결과에 대해 책임을 지지 않습니다.
+</p>
+</main>
+<div class="toast" id="toast"></div>
+<script>
+(function(){
+  // 2026 기준중위소득(월, 원) — 보건복지부 고시. 6인 이상은 6인 값 사용
+  var MI={1:2564238,2:4199292,3:5359036,4:6494738,5:7556719,6:8555952};
+  var S={who:null,ins:null,dx:null,hh:null,asset:null,crisis:null};
+  var $=function(s){return document.querySelector(s)}, $$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
+  function won(m){return Math.round(m).toLocaleString('ko-KR')}
+  function man(v){return (Math.round(v*10)/10).toLocaleString('ko-KR')+'만원'}
+  function toast(t){var el=$('#toast');el.textContent=t;el.classList.add('on');setTimeout(function(){el.classList.remove('on')},1800)}
+
+  // 기준중위소득 표
+  $('#mi').innerHTML=[1,2,3,4,5,6].map(function(n){var v=MI[n];return '<tr><td>'+n+(n==6?'인 이상':'인')+'</td><td class="r">'+won(v/1e4)+'만원</td><td class="r">'+won(v*.75/1e4)+'만원</td><td class="r">'+won(v*1.2/1e4)+'만원</td></tr>'}).join('');
+
+  // 선택 버튼
+  $$('.opts').forEach(function(g){g.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
+    g.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+    var k=g.dataset.k; if(k==='ctype'){calc();return} S[k]=b.dataset.v; check1(); incHint();});});
+  $$('.opts button').forEach(function(b){if(!b.hasAttribute('aria-pressed'))b.setAttribute('aria-pressed','false')});
+  function check1(){var ok=S.who&&S.ins&&S.dx;$('[data-next="2"]').disabled=!ok}
+
+  // 단계 이동
+  function show(n){$$('[data-step]').forEach(function(c){c.hidden=(+c.dataset.step!==n)});$('#result').hidden=true;
+    $$('.steps div').forEach(function(d,i){d.classList.toggle('on',i<n)});$('#wizard').scrollIntoView({behavior:'smooth',block:'start'})}
+  $$('[data-next]').forEach(function(b){b.onclick=function(){show(+b.dataset.next)}});
+  $$('[data-prev]').forEach(function(b){b.onclick=function(){show(+b.dataset.prev)}});
+  $('[data-skip="inc"]').onclick=function(e){e.preventDefault();$('#inc').value='';S.incUnknown=true;incHint();toast('소득은 건너뛰었어요')};
+
+  function num(id){var v=String($(id).value||'').replace(/[^\d.]/g,'');return v===''?null:+v}
+  $$('input[inputmode=numeric]').forEach(function(i){i.addEventListener('input',function(){if(i.id==='inc')S.incUnknown=false;incHint();paidHint();calc()})});
+
+  function bracket(){ // 소득 구간: 'basic'|'50'|'100'|'200'|'over'|null
+    if(S.ins==='aid'||S.ins==='near')return 'basic';
+    var inc=num('#inc'); if(inc==null||!S.hh)return null;
+    var r=inc*1e4/MI[+S.hh];
+    return r<=.5?'50':r<=1?'100':r<=2?'200':'over';
+  }
+  function ratio(){var inc=num('#inc');if(inc==null||!S.hh)return null;return inc*1e4/MI[+S.hh]}
+  function incHint(){var r=ratio(),h=$('#incHint');if(r==null){h.textContent=S.hh?'':'가족 수를 먼저 고르면 기준중위소득과 비교해 드려요.';return}
+    h.textContent='기준중위소득의 약 '+Math.round(r*100)+'% 예요 ('+S.hh+'인 가구 100% = '+won(MI[+S.hh]/1e4)+'만원)'}
+  function paidHint(){var p=num('#paid'),n=num('#nonpay'),h=$('#paidHint');if(p==null){h.textContent='';return}
+    if(n!=null&&n>p){h.textContent='비급여가 전체보다 클 수 없어요. 다시 확인해 주세요.';return}
+    h.textContent=n!=null?'급여 본인부담은 약 '+man(p-n)+'이에요.':''}
+
+  // ===== 결과 계산 =====
+  function evaluate(){
+    var out=[],br=bracket(),r=ratio(),paid=num('#paid'),non=num('#nonpay'),inc=num('#inc');
+    var annualInc=inc!=null?inc*12:null;
+    var payBen=(paid!=null&&non!=null)?Math.max(0,paid-non):null;
+
+    // 1) 산정특례
+    var sj={id:'sj',title:'중증질환(암) 산정특례',st:'ok',amt:'급여 진료비 본인부담 5%',why:'',
+      body:{what:'암 확진 후 등록하면 암 관련 급여 진료비의 본인부담이 5%로 줄어요. 등록 후 5년간 적용되고, 5년이 끝날 때 남은 암·재발·전이로 치료 중이면 재등록할 수 있어요.',
+        where:'진단받은 병원 원무과(병원이 공단에 신청)',need:'산정특례 등록 신청서(병원에서 작성), 신분증',tel:[['국민건강보험공단','1577-1000']]}};
+    if(S.dx==='d30'){sj.why='확진 후 30일 안에 신청하면 확진일부터 적용돼요. 오늘 원무과에 꼭 물어보세요.'}
+    else if(S.dx==='dold'){sj.why='30일이 지나도 신청할 수 있어요. 다만 적용은 신청일부터일 수 있어요(이미 등록했는지 원무과에 확인).'}
+    else {sj.st='warn';sj.why='조직검사 등으로 암이 확진되면 바로 신청하세요. 확진 후 30일 이내 신청이 가장 유리해요.'}
+    if(S.ins==='aid'){sj.why+=' 의료급여 수급자는 본인부담 기준이 따로 있어 병원에서 함께 확인해요.'}
+    out.push(sj);
+
+    // 2) 본인부담상한제
+    var cap={id:'cap',title:'본인부담상한제',st:'warn',amt:'1년 급여 본인부담이 상한액을 넘으면 넘은 만큼 환급',why:'',
+      body:{what:'소득분위별 상한액(2025년 기준 89만~826만원)을 넘는 급여 본인부담금을 공단이 돌려줘요. 비급여·선별급여 등은 빠져요. 대상이면 공단이 우편·문자로 안내해요.',
+        where:'따로 신청하지 않아도 안내가 와요. 안내를 받으면 공단 홈페이지·앱·지사에서 계좌 신청',need:'환급 안내문, 본인 계좌',tel:[['국민건강보험공단','1577-1000']]}};
+    if(S.ins==='aid'){cap.st='no';cap.why='의료급여 수급자는 의료급여 본인부담 보상·상한제가 따로 있어요. 주민센터에 문의하세요.'}
+    else if(payBen!=null){
+      if(payBen>89){cap.st=payBen>320?'ok':'warn';cap.why='급여 본인부담 약 '+man(payBen)+' — 소득분위에 따라 '+(payBen>826?'모든 분위에서':'일부 분위에서')+' 상한액을 넘을 수 있어요.'}
+      else {cap.st='no';cap.why='급여 본인부담이 가장 낮은 상한액(89만원)보다 적어 아직은 해당이 어려워요.'}
+    } else cap.why='병원비를 입력하면 넘는지 대략 알려드려요.';
+    out.push(cap);
+
+    // 3) 재난적 의료비
+    var rate={basic:.8,'50':.7,'100':.6,'200':.5}[br];
+    var thr=null; // 의료비 부담 기준(만원)
+    if(br==='basic')thr=80; else if(br==='50')thr=(+S.hh===1&&annualInc!=null)?annualInc*.1:160; else if((br==='100'||br==='200')&&annualInc!=null)thr=annualInc*.1;
+    var dis={id:'dis',title:'재난적 의료비 지원',st:'warn',amt:'',why:'',
+      body:{what:'소득에 비해 의료비가 너무 클 때 비급여 등 본인부담의 50~80%를 지원해요(연 최대 5,000만원, 입원·외래 합산 연 180일까지). 기준중위소득 100% 이하·재산 7억 이하가 원칙이고, 200%까지는 개별 심사로 지원할 수 있어요.',
+        where:'국민건강보험공단 지사 방문(환자 또는 대리인) · 퇴원(최종 진료) 다음 날부터 180일 이내',need:'지급신청서, 개인정보 동의서, 가족관계증명서, 진료비 영수증·세부내역서, 입·퇴원확인서, 민간보험 가입 서류',tel:[['국민건강보험공단','1577-1000'],['보건복지상담센터','129']]}};
+    if(S.asset==='hi'){dis.st='no';dis.why='재산 기준(7억 원 이하)을 넘으면 대상이 아니에요.'}
+    else if(br==='over'){dis.st='no';dis.why='소득이 기준중위소득 200%를 넘어 대상이 어려워요.'}
+    else if(br==null){dis.why='소득을 입력하면 대략 판단해 드려요. 모르면 공단에 “재난적 의료비 대상인지” 물어보세요.'}
+    else {
+      var lbl={basic:'기초·차상위',"50":'중위소득 50% 이하',"100":'중위소득 50~100%',"200":'중위소득 100~200%(개별 심사)'}[br];
+      if(paid==null){dis.why=lbl+' 구간이에요. 병원비를 입력하면 기준을 넘는지 알려드려요. 기준: '+(thr!=null?man(thr)+' 초과':'연소득의 10% 초과');}
+      else if(thr!=null&&paid>thr){
+        var base=non!=null?non:paid; var est=Math.min(5000,base*rate);
+        dis.st=br==='200'?'warn':'ok';dis.amt='대략 '+man(est)+' (지원율 '+Math.round(rate*100)+'%)';
+        dis.why=lbl+' · 병원비 '+man(paid)+' → 기준('+man(thr)+' 초과)에 해당해요.'+(non==null?' 비급여를 입력하면 더 정확해져요.':'')+(br==='200'?' 이 구간은 개별 심사예요.':'');
+      } else {dis.st='no';dis.why=lbl+' · 병원비 '+man(paid)+' → 아직 기준('+(thr!=null?man(thr):'연소득의 10%')+' 초과)에 못 미쳐요. 병원비가 늘면 다시 확인하세요.'}
+      if(S.asset==='unk'&&dis.st==='ok'){dis.st='warn';dis.why+=' 재산이 7억 원 이하인지 확인이 필요해요.'}
+    }
+    out.push(dis);
+
+    // 4) 암환자 의료비 지원(보건소)
+    var ca={id:'ca',title:'암환자 의료비 지원사업(보건소)',st:'no',amt:'',why:'',
+      body:{what:'',where:'주소지 보건소(국가암지식정보센터·보건소 안내)',need:'등록 신청서, 개인정보 동의서, 진단서(최초), 진료비 영수증 또는 납입확인서, 통장 사본',tel:[['국가암지식정보센터','1577-8899'],['보건복지상담센터','129']]}};
+    if(S.who==='child'){
+      ca.body.what='만 18세 미만 암환자의 본인부담 의료비를 백혈병 연 최대 3,000만원, 그 밖의 암 연 최대 2,000만원(조혈모세포이식 시 3,000만원)까지 지원해요. 건강보험 가입자는 소득(중위소득 120% 이하)·재산 조사를 받아요.';
+      if(S.ins==='aid'||S.ins==='near'){ca.st='ok';ca.amt='연 최대 2,000만~3,000만원';ca.why='의료급여·차상위 소아 환자는 지원 대상이에요.'}
+      else if(r!=null){ca.st=r<=1.2?'ok':'no';ca.amt=r<=1.2?'연 최대 2,000만~3,000만원':'';ca.why=r<=1.2?'소득이 중위소득 120% 이하로 보여요(재산 기준도 함께 봐요).':'소득이 중위소득 120%를 넘어 대상이 어려워요.'}
+      else {ca.st='warn';ca.amt='연 최대 2,000만~3,000만원';ca.why='소득·재산 조사가 필요해요. 보건소에 문의하세요.'}
+    } else {
+      ca.body.what='성인 의료급여 수급자와 건강보험 차상위 본인부담 경감 대상자의 암 의료비(급여·비급여)를 연 최대 300만원, 진단 연도부터 연속 최대 3년 지원해요. 건강보험 일반 가입자 신규 지원은 2021년 7월부터 중단됐어요.';
+      if(S.ins==='aid'||S.ins==='near'){ca.st='ok';ca.amt='연 최대 300만원 (최대 3년)';ca.why='의료급여·차상위 자격이면 대상이에요.'}
+      else if(S.ins==='unk'){ca.st='warn';ca.amt='연 최대 300만원';ca.why='의료급여·차상위 자격인지 주민센터에서 확인해 보세요.'}
+      else ca.why='건강보험 일반 가입 성인은 신규 지원이 중단됐어요.';
+    }
+    out.push(ca);
+
+    // 5) 긴급복지 의료지원
+    var em={id:'em',title:'긴급복지 의료지원',st:'no',amt:'',why:'',
+      body:{what:'중한 질병·실직 등으로 갑자기 생계가 어려워진 가구에 의료비를 300만원 이내로 지원해요(1회, 위기가 계속되면 심의를 거쳐 최대 2회). 기준중위소득 75% 이하이고 금융재산 기준을 충족해야 해요. 먼저 지원하고 나중에 조사하는 제도예요.',
+        where:'129(24시간) 전화 또는 시군구청·행정복지센터',need:'신분증, 진단서·진료비 영수증, 위기 사유 증빙(퇴직·휴직 서류 등)',tel:[['보건복지상담센터','129']]}};
+    if(S.crisis==='y'){
+      if(r!=null&&r>.75){em.why='소득이 기준중위소득 75%를 넘어 대상이 어려울 수 있어요. 위기 직후 소득이 줄었다면 129에 상담해 보세요.';em.st='warn'}
+      else {em.st=r==null?'warn':'ok';em.amt='300만원 이내';em.why=r==null?'소득을 모르면 129에 먼저 상담하세요.':'위기 상황 + 소득 기준(75% 이하)에 맞을 수 있어요.'}
+    } else em.why='갑작스러운 생계 위기가 생기면 129에 바로 연락하세요.';
+    out.push(em);
+
+    // 6) 기타 (항상)
+    out.push({id:'etc',title:'병원 의료사회복지팀 · 민간 지원',st:'warn',amt:'',why:'제도 사이 빈틈은 병원 사회복지팀이 재단·후원금을 연결해 줘요.',
+      body:{what:'대부분의 대학병원에는 의료사회복지팀(사회사업실)이 있어 공적 지원과 민간 재단·후원을 함께 찾아줘요. 실손보험이 있다면 청구 서류(진료비 세부내역서, 진단서)를 미리 챙기세요. 장루·요루 등 영구 기능장애가 생기면 장애 등록도 확인하세요.',
+        where:'다니는 병원 의료사회복지팀(원무과에 위치 문의) · 5F ApuDa 카페',need:'진료비 영수증, 소득 관련 서류',tel:[]}});
+    return out;
+  }
+
+  var last=[];
+  function render(){
+    var list=evaluate();last=list;
+    var ord={ok:0,warn:1,no:2};list.sort(function(a,b){return ord[a.st]-ord[b.st]});
+    var ok=list.filter(function(x){return x.st==='ok'}).length,chk=list.filter(function(x){return x.st==='warn'}).length;
+    $('#sumOk').textContent=ok+'개';$('#sumChk').textContent=chk+'개';
+    $('#resLead').textContent='답한 내용으로 대략 판단했어요. 카드를 누르면 신청처와 준비물이 나와요.';
+    var B={ok:['b-ok','가능성 높음'],warn:['b-warn','확인해 보세요'],no:['b-no','해당 어려움']};
+    $('#resList').innerHTML=list.map(function(x,i){var b=B[x.st];
+      return '<article class="res'+(x.st==='no'?' no':'')+(i<2&&x.st!=='no'?' on':'')+'"><button type="button" aria-expanded="'+(i<2&&x.st!=='no')+'"><span class="badge '+b[0]+'">'+b[1]+'</span><span><h4>'+x.title+'</h4>'+(x.amt?'<div class="amt">'+x.amt+'</div>':'')+'<div class="why">'+x.why+'</div></span></button>'+
+      '<div class="body"><dl><dt>무엇</dt><dd>'+x.body.what+'</dd><dt>어디서</dt><dd>'+x.body.where+'</dd><dt>준비물</dt><dd>'+x.body.need+'</dd></dl>'+
+      x.body.tel.map(function(t){return '<a class="tel" href="tel:'+t[1]+'">☎ '+t[0]+' '+t[1]+'</a>'}).join('')+'</div></article>'}).join('');
+    var todo=[];
+    if(S.dx!=='dno')todo.push('병원 원무과에 “산정특례 등록됐나요?” 확인하기');else todo.push('확진되면 그날 원무과에 산정특례 신청하기');
+    if(list.some(function(x){return x.id==='dis'&&x.st!=='no'}))todo.push('진료비 영수증·세부내역서 모아 두기(재난적 의료비는 퇴원 후 180일 이내 신청)');
+    if(list.some(function(x){return x.id==='ca'&&x.st!=='no'}))todo.push('주소지 보건소에 암환자 의료비 지원 등록 문의하기');
+    if(list.some(function(x){return x.id==='em'&&x.st!=='no'}))todo.push('129에 전화해 긴급복지 상담 받기');
+    todo.push('병원 의료사회복지팀에 이 결과를 보여주고 상담받기');
+    $('#todo').innerHTML=todo.map(function(t){return '<li>'+t+'</li>'}).join('');
+    $$('[data-step]').forEach(function(c){c.hidden=true});$('#result').hidden=false;$$('.steps div').forEach(function(d){d.classList.add('on')});
+    $('#result').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  $('#resList').addEventListener('click',function(e){var b=e.target.closest('.res > button');if(!b)return;var a=b.parentNode;a.classList.toggle('on');b.setAttribute('aria-expanded',a.classList.contains('on'))});
+  $('#go').onclick=render;
+  $('#restart').onclick=function(){location.hash='';location.reload()};
+  $('#copy').onclick=function(){
+    var L={ok:'가능성 높음',warn:'확인 필요',no:'해당 어려움'};
+    var t='[ApuDa 암 치료비 지원 확인 결과]\n'+last.filter(function(x){return x.st!=='no'}).map(function(x){return '· '+x.title+' — '+L[x.st]+(x.amt?' / '+x.amt:'')+'\n  '+x.why+'\n  신청: '+x.body.where}).join('\n')+
+      '\n\n※ 대략적인 판단이에요. 실제 지원은 기관 심사로 정해져요.\napuda.app/support/';
+    (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){toast('복사했어요. 카톡·메모에 붙여 넣으세요')},function(){prompt('아래 내용을 복사하세요',t)});
+  };
+
+  // ===== 산정특례 계산기 =====
+  function calc(){
+    var tot=num('#cTot'),bar=$('#cBar'),msg=$('#cMsg');
+    var type=($('[data-k=ctype] [aria-pressed=true]')||{}).dataset;type=type?type.v:'in';
+    if(tot==null||tot<=0){bar.innerHTML='';msg.textContent='금액을 넣으면 바로 계산돼요.';return}
+    var base=type==='in'?.2:.6,a=tot*base,b=tot*.05,mx=Math.max(a,b);
+    bar.innerHTML='<div class="row"><span>일반</span><div class="track"><div class="fill" style="width:'+(a/mx*100)+'%"></div></div><span>'+man(a)+'</span></div>'+
+      '<div class="row"><span>산정특례</span><div class="track"><div class="fill hi" style="width:'+Math.max(2,b/mx*100)+'%"></div></div><span>'+man(b)+'</span></div>';
+    msg.innerHTML='산정특례를 받으면 내 돈이 <span class="big">'+man(a-b)+'</span> 줄어요 ('+(type==='in'?'입원 20%':'외래 60%')+' → 5%).';
+  }
+  calc();
+})();
+</script>
+<script src="/assets/apuda-bot.js" defer></script>
+</body>
+</html>
