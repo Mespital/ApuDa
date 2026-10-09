@@ -32,6 +32,17 @@ export function plan(data, school, nowMs) {
     if (nextExam && !examOn(t)) bits.push('📝 ' + nextExam.title + ' D-' + gap(nextExam.date, t));
     out.push({ key: 'morning', to: 'child', kind: 'morning', title: '☀️ 좋은 아침, 승준아', body: bits.length ? bits.join(' · ') : '오늘 할 일 하나만 정해볼까?', url: 'study.html#today' });
   }
+  if (at(7, 30)) {   // 시험 D-100·60·30·14·7·3 미리 알림 (학교 학사일정 + 직접 넣은 시험)
+    const MARK = [100, 60, 30, 14, 7, 3], seen = new Set();
+    const list = [...(school?.schedule || []).filter(e => /중간고사|기말고사|지필|정기고사|학력평가|모의고사/.test(e.title)).map(e => ({ date: e.date, title: e.title })),
+      ...(st.dates || []).filter(x => !x.done && x.kind === '시험').map(x => ({ date: x.date, title: x.title }))];
+    for (const e of list) {
+      const n = gap(e.date, t), k = e.title.replace(/\(.*?\)/g, '').replace(/\s+/g, '');
+      if (!MARK.includes(n) || seen.has(k)) continue; seen.add(k);
+      const tipx = n >= 60 ? '지금은 매일 수업 정리 습관만 챙기면 돼' : n >= 30 ? '수업 노트·정리 모아 과목별 1회독 시작해볼까?' : n >= 14 ? '시험 범위 확정하고 과목별 계획 세울 때야' : n >= 7 ? '범위 1회독 마무리·오답 정리' : '새로운 것보다 본 것 다시 보기, 잠 충분히';
+      out.push({ key: 'exd:' + e.date + ':' + n, to: 'all', kind: 'examdday', title: '📝 ' + e.title + ' D-' + n, body: tipx, url: 'study.html#today' });
+    }
+  }
   if (at(15, 30) && isSchool && !examOn(t)) out.push({ key: 'afterclass', to: 'child', kind: 'afterclass', title: '📒 수업 끝! 1분만', body: '오늘 배운 거 1분 말하기나 노트 사진 하나 남겨둘까?', url: 'study.html#today' });
   for (const a of acs) {
     if (!Array.isArray(a.days) || a.days.indexOf(wd) < 0) continue;

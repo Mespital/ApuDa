@@ -7,7 +7,7 @@
 // 의존성 없음 (Node 20+)
 import http from 'node:http';
 import { createHmac, timingSafeEqual, createPublicKey, verify as edVerify } from 'node:crypto';
-import { buildPayload, askAI, hasAI, validQuestion } from './shiro.mjs';
+import { buildPayload, askAI, hasAI, validQuestion, organizePayload } from './shiro.mjs';
 import { listDocs, addDoc, delDoc, searchDocs, searchWiki, knowledgeQ } from './rag.mjs';
 const WEB = (process.env.FC_WEB_SEARCH || 'on') !== 'off';
 
@@ -101,6 +101,19 @@ const server = http.createServer(async (req, res) => {
       if (src.length && !/📎/.test(text)) text += '\n📎 출처: ' + src.map(r => (r.kind === '위키백과' ? '위키백과 ' : '') + r.title).join(', ');
       return send(res, 200, { ok: true, text, sources: src });
     } catch (e) { return send(res, 502, { error: 'ai', status: e.status || 0 }); }
+  }
+  // 수업 사진·노트 정리 → 자료로도 저장(흰둥이 근거)
+  if (url.pathname === '/organize' && req.method === 'POST') {
+    let b; try { b = await body(req, 60000); } catch { return send(res, 400, { error: 'bad' }); }
+    if (!verifyTicket(b.t)) return send(res, 401, { error: 'ticket' });
+    if (!API_KEY) return send(res, 503, { error: 'no_ai' });
+    const text = String(b.text || '').trim(); if (text.length < 15) return send(res, 400, { error: 'short' });
+    if (limited('o', 40, 3600000)) return send(res, 429, { error: 'rate' });
+    try {
+      const sum = await askAI(process.env, organizePayload({ subject: b.subject, text, kind: b.kind }));
+      if (b.save !== false && sum) addDoc({ title: String(b.subject || '수업') + ' ' + String(b.date || '').slice(5) + ' 수업 정리', subject: b.subject, text: sum + '\n\n[원문]\n' + text, by: 'child' });
+      return send(res, 200, { ok: true, sum });
+    } catch (e) { return send(res, 502, { error: 'ai' }); }
   }
   // 공부 자료 (가족 기기 티켓 필요)
   if (url.pathname === '/docs' && req.method === 'GET') {

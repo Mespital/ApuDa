@@ -22,7 +22,7 @@ async function liveHealth(store, url) {
   try { const r = await fetch(url + '/health', { signal: AbortSignal.timeout(2500) }); const j = await r.json(); ok = r.ok && j.ok === true && j.keyed !== false; ai = !!j.ai; } catch {}
   const n = { url, ok, ai, at: Date.now() }; await store.setJSON('live-health', n); return n;
 }
-import { buildPayload, askAI, validQuestion } from '../../live/shiro.mjs';
+import { buildPayload, askAI, validQuestion, organizePayload } from '../../live/shiro.mjs';
 import { searchDocs, searchWiki, knowledgeQ } from '../../live/rag.mjs';
 
 export const KEYS = ['compass-study-v1', 'compass-study-plus-v1', 'fc_academy_v1', 'fc_teachers_v1', 'fc_offdays_v1', 'fc_preview_v1',
@@ -125,6 +125,12 @@ export default async (req) => {
   if (b.action === 'pull') return json({ data, pv: cfg.pv, live: await live() });
   if (b.action === 'live') return json({ ok: true, live: await live() });
 
+  if (b.action === 'organize') {
+    if (!env('ANTHROPIC_API_KEY') && !env('OPENAI_API_KEY')) return json({ error: 'no_ai' }, 503);
+    const text = String(b.text || '').trim(); if (text.length < 15) return json({ error: 'short' }, 400);
+    try { const E = k => env(k); const sum = await askAI({ ANTHROPIC_API_KEY: E('ANTHROPIC_API_KEY'), OPENAI_API_KEY: E('OPENAI_API_KEY'), FC_CHAT_PROVIDER: E('FC_CHAT_PROVIDER'), FC_CHAT_MODEL: E('FC_CHAT_MODEL'), FC_OPENAI_MODEL: E('FC_OPENAI_MODEL') }, organizePayload({ subject: b.subject, text, kind: b.kind }), 20000); return json({ ok: true, sum }); }
+    catch (e) { return json({ error: 'ai' }, 502); }
+  }
   // 흰둥이 똑똑 모드 (Netlify에서 바로: ANTHROPIC_API_KEY 가 Netlify 환경변수에 있을 때)
   if (b.action === 'chat') {
     if (!env('ANTHROPIC_API_KEY') && !env('OPENAI_API_KEY')) return json({ error: 'no_ai' }, 503);
