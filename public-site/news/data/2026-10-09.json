@@ -1,0 +1,404 @@
+{
+  "version": "1.2",
+  "report_date": "2026-10-09",
+  "collection_window": {
+    "start": "2026-10-08T09:00:00+09:00",
+    "end": "2026-10-09T09:00:00+09:00",
+    "timezone": "Asia/Seoul"
+  },
+  "sources": [
+    "데일리팜",
+    "의학신문",
+    "메디파나뉴스",
+    "약사공론"
+  ],
+  "briefing": "정은경 장관 “희귀중증 치료제, 허가부터 급여까지 기간 관리 검토”가 오늘 가장 중요한 이슈로 부각됐습니다. 이어 복지부, 국립대병원 전용 공공수가 신설 추진...“건보 지원 방식 검토”도 주요 변화로 확인됐습니다. 전체적으로는 정책·급여 · 디지털헬스 흐름이 두드러집니다.",
+  "top_news": [
+    {
+      "rank": 1,
+      "canonical_issue": "정은경 장관 “희귀중증 치료제, 허가부터 급여까지 기간 관리 검토” - 약사공론",
+      "title": "정은경 장관 “희귀중증 치료제, 허가부터 급여까지 기간 관리 검토”",
+      "category": [
+        "급여",
+        "복지부",
+        "허가"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-10-08T23:10:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "희귀·중증 질환 치료제의 건강보험 급여 접근성을 높이기 위해 허가부터 실제 급여까지 전체 소요기간을 관리해야 한다는 언급이 국정감사에서 나왔다. 정은경 보건복지부",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=545985"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545985"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/545985_450946_1243.jpg",
+      "score": 65,
+      "oncology": null
+    },
+    {
+      "rank": 2,
+      "canonical_issue": "복지부, 국립대병원 전용 공공수가 신설 추진...“건보 지원 방식 검토” - 의학신문",
+      "title": "복지부, 국립대병원 전용 공공수가 신설 추진...“건보 지원 방식 검토”",
+      "category": [
+        "수가",
+        "복지부",
+        "병원"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-08T13:04:02+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=이재원 기자] 정부가 국립대병원의 공공의료 수행에 따른 재정적 부담을 보상하기 위해 건강보험을 활용한 별도의 공공수가 신설을 검토한다. 국립대",
+        "[의학신문·일간보사=이재원 기자] 정부가 국립대병원의 공공의료 수행에 따른 재정적 부담을 보상하기 위해 건강보험을 활용한 별도의 공공수가 신설을 검토한다.",
+        "비급여 진료를 적게 시행하면서 발생하는 수익 차이를 보상해 지역 필수의료 인력 확보와 의료서비스 유지에 활용하겠다는 취지다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3013570"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013570"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3013570_414460_25.jpg",
+      "score": 60,
+      "oncology": null
+    },
+    {
+      "rank": 3,
+      "canonical_issue": "\"연합학습 AI K-MELLODDY 사업, 선제적으로 논의·대응해야\" - 메디파나뉴스",
+      "title": "\"연합학습 AI K-MELLODDY 사업, 선제적으로 논의·대응해야\"",
+      "category": [
+        "정책",
+        "복지부",
+        "ai"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-08T16:21:18+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "보건복지부 지원 하에 추진되고 있는 '연합학습 기반 신약개발 가속화 프로젝트 K-MELLODDY'에 대해 선제적으로 정책·제도적인 보완이 필요하다는 요구가 나왔다. 최보윤 국민의힘 의원은 8일 열린 국회 보건복지위원회 국정감사에서 'K-MELLODDY'에 대해 '차질 없이 추진되고 있는가'라고 질의했다.",
+        "사진=강희재 기자 보건복지부 지원 하에 추진되고 있는 '연합학습 기반 신약개발 가속화 프로젝트 K-MELLODDY'에 대해 선제적으로 정책·제도적인 보완이 필요하다는 요구가 나왔다.",
+        "최보윤 국민의힘 의원은 8일 열린 국회 보건복지위원회 국정감사에서 'K-MELLODDY'에 대해 '차질 없이 추진되고 있는가'라고 질의했다."
+      ],
+      "importance": "시장·정책·연구개발 흐름을 보여주는 주요 산업 이슈로 후속 정책과 사업 변화 확인이 필요합니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=419005"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=419005"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419005_326337_1952.jpg",
+      "score": 57,
+      "oncology": null
+    },
+    {
+      "rank": 4,
+      "canonical_issue": "한지아 \"합성약 국가전략기술 포함해야…세제개편 반드시 반영\" - 약사공론",
+      "title": "한지아 \"합성약 국가전략기술 포함해야…세제개편 반드시 반영\"",
+      "category": [
+        "약가",
+        "복지부"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-10-08T22:23:18+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "합성의약품을 국가전략기술에 포함하는 세제지원과 국산 원료의약품에 대한 약가우대 제도 개선을 촉구하는 목소리가 국회에서 제기됐다. 8일 국회에서 열린 보건복지부 국",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=545981"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545981"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/545981_450937_2235.jpg",
+      "score": 56,
+      "oncology": null
+    },
+    {
+      "rank": 5,
+      "canonical_issue": "B형 혈우병 유전자치료제 급여화 논의 \"신속 트랙 심사 예정” - 약사공론",
+      "title": "B형 혈우병 유전자치료제 급여화 논의 \"신속 트랙 심사 예정”",
+      "category": [
+        "급여",
+        "복지부"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-10-08T22:05:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "국정감사에서 B형 혈우병 환자를 대상으로 한 혁신적 유전자 치료제의 건강보험 급여화가 지연되고 있다는 지적이 나왔다. 복지부는 해당 치료제가 희귀질환 치료제 신속",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=545979"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545979"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/545979_450936_1742.jpg",
+      "score": 56,
+      "oncology": null
+    }
+  ],
+  "trends": [
+    {
+      "title": "정책·급여",
+      "count": 5,
+      "change": "5건의 주요 이슈에서 반복적으로 확인",
+      "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
+      "examples": [
+        "정은경 장관 “희귀중증 치료제, 허가부터 급여까지 기간 관리 검토”",
+        "복지부, 국립대병원 전용 공공수가 신설 추진...“건보 지원 방식 검토”"
+      ]
+    },
+    {
+      "title": "디지털헬스",
+      "count": 4,
+      "change": "4건의 주요 이슈에서 반복적으로 확인",
+      "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
+      "examples": [
+        "정은경 장관 “희귀중증 치료제, 허가부터 급여까지 기간 관리 검토”",
+        "\"연합학습 AI K-MELLODDY 사업, 선제적으로 논의·대응해야\""
+      ]
+    },
+    {
+      "title": "신약·임상",
+      "count": 2,
+      "change": "2건의 주요 이슈에서 반복적으로 확인",
+      "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
+      "examples": [
+        "정은경 장관 “희귀중증 치료제, 허가부터 급여까지 기간 관리 검토”",
+        "\"연합학습 AI K-MELLODDY 사업, 선제적으로 논의·대응해야\""
+      ]
+    },
+    {
+      "title": "의료현장",
+      "count": 1,
+      "change": "1건의 주요 이슈에서 반복적으로 확인",
+      "implication": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름",
+      "examples": [
+        "복지부, 국립대병원 전용 공공수가 신설 추진...“건보 지원 방식 검토”"
+      ]
+    }
+  ],
+  "outlet_status": [
+    {
+      "publisher": "데일리팜",
+      "homepage_url": "https://www.dailypharm.com/",
+      "items": [
+        {
+          "title": "[데일리팜]정은경 장관, 비대면 약 배송 속도조절 시사…&quot;직능의견 수렴&quot;",
+          "published_at": "2026-10-08T17:29:55+09:00",
+          "verified": true,
+          "source_url": "https://www.dailypharm.com/user/news/343241"
+        }
+      ]
+    },
+    {
+      "publisher": "의학신문",
+      "homepage_url": "https://www.bosa.co.kr/",
+      "items": [
+        {
+          "title": "복지부, 국립대병원 전용 공공수가 신설 추진...“건보 지원 방식 검토”",
+          "published_at": "2026-10-08T13:04:02+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013570"
+        },
+        {
+          "title": "정부, 국립대병원 시설 확충에 정책금융 지원 추진…금융당국과 협의",
+          "published_at": "2026-10-08T11:51:45+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013539"
+        },
+        {
+          "title": "질병청 고당사업 개편에 45만명 지원 변화 우려...국회서 신중한 검토 주문",
+          "published_at": "2026-10-08T19:43:29+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013610"
+        },
+        {
+          "title": "복지부, 보험사 '대형병원 진료 우선권' 실태 파악 나선다...환자 유인 단속",
+          "published_at": "2026-10-08T16:21:58+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013597"
+        },
+        {
+          "title": "복지부, 내년 상반기 국립대병원 공공기관 지정 해제 추진",
+          "published_at": "2026-10-08T13:01:49+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013555"
+        },
+        {
+          "title": "정부, 국립대병원 진료시설 국고지원 확대 추진",
+          "published_at": "2026-10-08T13:01:49+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013559"
+        },
+        {
+          "title": "복지부 \"비대면 약 배송 전면 확대 아니다\"...의·약계 합의 원칙 유지",
+          "published_at": "2026-10-08T17:39:17+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013606"
+        },
+        {
+          "title": "복지부, 의료기관 안전정보 공개 강화·전문가단체 자율징계 확대 검토",
+          "published_at": "2026-10-08T16:21:45+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013595"
+        }
+      ]
+    },
+    {
+      "publisher": "메디파나뉴스",
+      "homepage_url": "https://www.medipana.com/",
+      "items": [
+        {
+          "title": "\"연합학습 AI K-MELLODDY 사업, 선제적으로 논의·대응해야\"",
+          "published_at": "2026-10-08T16:21:18+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419005"
+        },
+        {
+          "title": "파드셉·빌로이 급여 등재…요로상피암·위암 치료 선택지 확대",
+          "published_at": "2026-10-08T16:45:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545941"
+        },
+        {
+          "title": "국감 질타에 약 배송 전면 확대 물러선 정부…\"의견 수렴 취지\"",
+          "published_at": "2026-10-08T18:03:45+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419012"
+        },
+        {
+          "title": "국립대병원, 복지위에서 첫 국감…인력·재정난 도마",
+          "published_at": "2026-10-08T12:28:34+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=418999"
+        },
+        {
+          "title": "대원제약, 올해 건기식 매출 125%↑ 전망…수익성 개선 기대",
+          "published_at": "2026-10-08T11:29:51+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=418990"
+        },
+        {
+          "title": "신약에 큰돈 걸기 전…AI로 임상 실패 위험 짚어보니",
+          "published_at": "2026-10-08T11:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=418967"
+        },
+        {
+          "title": "원부자재 95% 수입 의존…K-바이오, 국산화 시급",
+          "published_at": "2026-10-08T12:02:09+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=418994"
+        },
+        {
+          "title": "한국유니온제약, '부광유니파마'로 사명 변경",
+          "published_at": "2026-10-08T16:28:52+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419007"
+        }
+      ]
+    },
+    {
+      "publisher": "약사공론",
+      "homepage_url": "https://www.kpanews.co.kr/",
+      "items": [
+        {
+          "title": "정은경 장관 “희귀중증 치료제, 허가부터 급여까지 기간 관리 검토”",
+          "published_at": "2026-10-08T23:10:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545985"
+        },
+        {
+          "title": "한지아 \"합성약 국가전략기술 포함해야…세제개편 반드시 반영\"",
+          "published_at": "2026-10-08T22:23:18+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545981"
+        },
+        {
+          "title": "B형 혈우병 유전자치료제 급여화 논의 \"신속 트랙 심사 예정”",
+          "published_at": "2026-10-08T22:05:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545979"
+        },
+        {
+          "title": "파드셉·빌로이 급여 등재…요로상피암·위암 치료 선택지 확대",
+          "published_at": "2026-10-08T16:45:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545941"
+        },
+        {
+          "title": "약배송 정책 국감서 '일단 제동'…정부 \"전면확대 아니다\" 선긋기",
+          "published_at": "2026-10-09T05:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545978"
+        },
+        {
+          "title": "정은경 \"금연약국 등 사업루트 확대 공감…참여모형 검토하겠다\"",
+          "published_at": "2026-10-08T22:36:30+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545982"
+        },
+        {
+          "title": "‘에페’ 허가 직접 완주…한미 ‘랩스커버리’ 독자 신약 플랫폼 우뚝",
+          "published_at": "2026-10-09T05:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545943"
+        },
+        {
+          "title": "\"창고형약국·약배송 '안전 사용'으로 판 뒤집힌다\"",
+          "published_at": "2026-10-09T05:51:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545961"
+        }
+      ]
+    }
+  ],
+  "insight": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름 동시에 디지털헬스 흐름도 함께 확인돼 단일 이슈보다 복합적인 산업 변화로 보는 것이 적절합니다.",
+  "infographic": {
+    "image_path": null,
+    "generated_at": null,
+    "template_version": "news-card-v1"
+  }
+}

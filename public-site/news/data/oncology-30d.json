@@ -1,9 +1,9 @@
 {
   "version": "1.0",
-  "generated_at": "2026-10-08T18:04:50.740438+09:00",
+  "generated_at": "2026-10-09T18:04:49.527524+09:00",
   "window": {
-    "start": "2026-09-08T09:00:00+09:00",
-    "end": "2026-10-08T09:00:00+09:00",
+    "start": "2026-09-09T09:00:00+09:00",
+    "end": "2026-10-09T09:00:00+09:00",
     "days": 30,
     "timezone": "Asia/Seoul"
   },
@@ -86,7 +86,81 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 2
+      "age_days": 3
+    },
+    {
+      "rank": null,
+      "canonical_issue": "파드셉·빌로이 급여 등재…요로상피암·위암 치료 선택지 확대 - 약사공론",
+      "title": "파드셉·빌로이 급여 등재…요로상피암·위암 치료 선택지 확대",
+      "category": [
+        "급여"
+      ],
+      "publishers": [
+        "약사공론",
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-08T16:45:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "한국아스텔라스가 요로상피암과 위암 치료에서 새로운 치료 옵션으로 자리 잡은 파드셉과 빌로이의 건강보험 급여 등재를 계기로 국내 환자 치료 환경의 변화를 조명했다.",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=545941",
+        "https://www.medipana.com/news/articleView.html?idxno=419014"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545941"
+        },
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=419014"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/545941_450908_3152.jpg",
+      "score": 43,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "위암",
+          "요로상피암"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [
+          "ADC"
+        ],
+        "biomarkers": [
+          "HER2"
+        ],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": "허가 관련",
+        "reimbursement_status": "급여 관련",
+        "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
+        "patient_relevance_score": 80,
+        "patient_relevance_labels": [
+          "급여·접근성",
+          "허가",
+          "바이오마커"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -145,8 +219,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "today",
-      "age_days": 0
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": 2,
@@ -205,6 +279,66 @@
         "patient_relevance_labels": [
           "급여·접근성",
           "임상결과"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "7d",
+      "age_days": 2
+    },
+    {
+      "rank": null,
+      "canonical_issue": "성빈센트병원, ‘상상휠 하모니 오케스트라’ 공연 개최 - 의학신문",
+      "title": "성빈센트병원, ‘상상휠 하모니 오케스트라’ 공연 개최",
+      "category": [
+        "병원"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-08T19:43:18+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=정광성 기자] 성빈센트병원(원장 나승임)은 최근 원내 암병원 10층 성바오로홀에서 환자와 보호자, 교직원을 대상으로 ‘장벽 없는 병원을 위한",
+        "[의학신문·일간보사=정광성 기자] 성빈센트병원(원장 나승임)은 최근 원내 암병원 10층 성바오로홀에서 환자와 보호자, 교직원을 대상으로 ‘장벽 없는 병원을 위한 상상휠 하모니 오케스트라 공연’을 개최했다고 8일 밝혔다.",
+        "사진제공= 성빈센트병원 이번 공연은 장애에 대한 이해를 높이고 서로의 다름을 존중하는 포용적인 병원 문화를 조성하기 위해 마련됐다."
+      ],
+      "importance": "의료기관·약국 현장의 변화는 진료 흐름과 환자 경험, 의약품 사용 환경에 직접 영향을 줍니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3013607"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013607"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3013607_414499_4020.jpg",
+      "score": 16,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": "향후 치료 선택이나 표준치료 논의에 영향을 줄 수 있는 임상 결과입니다.",
+        "patient_relevance_score": 46,
+        "patient_relevance_labels": [
+          "임상결과",
+          "지원제도"
         ],
         "industry_summary": null
       },
@@ -269,8 +403,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "today",
-      "age_days": 0
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -328,8 +462,8 @@
         "patient_relevance_labels": [],
         "industry_summary": null
       },
-      "freshness": "today",
-      "age_days": 0
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": 3,
@@ -390,7 +524,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     },
     {
       "rank": null,
@@ -445,7 +579,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": null,
@@ -503,7 +637,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": null,
@@ -560,7 +694,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 6
+      "age_days": 7
     },
     {
       "rank": 4,
@@ -619,7 +753,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 6
+      "age_days": 7
     },
     {
       "rank": null,
@@ -687,7 +821,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 6
+      "age_days": 7
     }
   ]
 }
