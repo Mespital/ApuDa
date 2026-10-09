@@ -143,13 +143,31 @@ def clean_dish(text):
     return items[:12]
 
 
+NTR_KEYS = {'탄수화물': 'carb', '단백질': 'protein', '지방': 'fat', '비타민A': 'vitA', '티아민': 'thiamin',
+            '리보플라빈': 'ribo', '비타민C': 'vitC', '칼슘': 'ca', '철분': 'fe'}
+
+
+def parse_ntr(text):
+    """NEIS NTR_INFO '탄수화물(g) : 113.4<br/>단백질(g) : 35.7 ...' → {'carb': 113.4, ...}"""
+    out = {}
+    for name, val in re.findall(r'([가-힣A-Za-z]+)\s*\([^)]*\)\s*:\s*([0-9]+(?:\.[0-9]+)?)', str(text or '')):
+        k = NTR_KEYS.get(name)
+        if k:
+            out[k] = round(float(val), 1)
+    return out
+
+
 def meals(today):
     start = today - dt.timedelta(days=today.weekday())
     rows = neis('mealServiceDietInfo', MLSV_FROM_YMD=ymd(start), MLSV_TO_YMD=ymd(start + dt.timedelta(days=11)))
     out = []
     for r in rows:
-        out.append(dict(date=iso(r['MLSV_YMD']), kind=str(r.get('MMEAL_SC_NM', '중식')), dishes=clean_dish(r.get('DDISH_NM')),
-                        kcal=str(r.get('CAL_INFO', '')).strip()[:20]))
+        m = dict(date=iso(r['MLSV_YMD']), kind=str(r.get('MMEAL_SC_NM', '중식')), dishes=clean_dish(r.get('DDISH_NM')),
+                 kcal=str(r.get('CAL_INFO', '')).strip()[:20])
+        ntr = parse_ntr(r.get('NTR_INFO'))
+        if ntr:
+            m['ntr'] = ntr
+        out.append(m)
     out.sort(key=lambda m: (m['date'], m['kind']))
     return out[:30]
 
