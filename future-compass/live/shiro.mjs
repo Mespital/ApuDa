@@ -20,11 +20,13 @@ const RULES_PARENT = `너는 '흰둥이'야. 고등학교 1학년 승준이의 �
 - 승준이를 어떻게 도와줄지 물으시면 [오늘 정보]를 보고 '감시·확인'보다 '도와주기·응원' 쪽으로 구체적인 한두 가지를 제안해. 점수·비교·잔소리 표현은 피하도록 권해.
 - 공부·진로 일반 질문은 균형 있게 답하되 단정하지 마. 의료·법률 판단은 하지 마.`;
 
-export function buildPayload({ role, q, history, ctx, guide }) {
+export function buildPayload({ role, q, history, ctx, guide, refs }) {
   const parent = role === 'parent';
   const sys = (parent ? RULES_PARENT : RULES_CHILD) +
     '\n\n[앱 안내]\n' + clip((Array.isArray(guide) ? guide : []).map(g => '- ' + clip(g, 700)).join('\n') || '(관련 안내 없음)', 3000) +
-    '\n\n[오늘 정보]\n' + clip(typeof ctx === 'string' ? ctx : JSON.stringify(ctx || {}), 3500);
+    '\n\n[오늘 정보]\n' + clip(typeof ctx === 'string' ? ctx : JSON.stringify(ctx || {}), 3500) +
+    (Array.isArray(refs) && refs.length ? '\n\n[참고 자료]\n' + refs.map((r, i) => '(' + (i + 1) + ') [' + r.kind + '] ' + clip(r.title, 60) + '\n' + clip(r.text, 1300)).join('\n\n') +
+      '\n\n[자료 사용 규칙] 공부 질문이면 위 참고 자료를 근거로 답해. 자료에 있는 내용과 다르게 말하지 마. 마지막 줄에 "📎 출처: 자료 제목"을 써(위키백과면 "위키백과: 제목"). 자료에 답이 없으면 "자료에는 없어"라고 먼저 말하고 아는 범위에서 조심스럽게 답해.' : '');
   const msgs = [];
   (Array.isArray(history) ? history : []).slice(-8).forEach(m => {
     if (!m || (m.r !== 'u' && m.r !== 'a')) return;
