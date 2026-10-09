@@ -56,8 +56,10 @@ services:
     environment:
       PORT: '8093'
       ALLOWED_ORIGINS: https://future.apuda.app
+      FC_DATA_DIR: /data
     volumes:
       - ./live:/live:ro
+      - ./live-data:/data
     ports:
       - '127.0.0.1:8093:8093'
     read_only: true

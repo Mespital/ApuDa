@@ -32,3 +32,4 @@ workflow는 기존 apuda-ai-vps 환경의 VPS_HOST, VPS_USER, VPS_SSH_KEY를 재
 - Netlify는 기본으로 https://live.apuda.app/health 를 5분마다 확인해 살아 있을 때만 앱에 알려준다(다른 주소면 `FC_LIVE_URL`, 끄려면 `FC_LIVE_OFF=1`). 죽어 있으면 앱은 20초 확인 방식으로 동작.
 - 흰둥이 똑똑 모드 AI 키(둘 중 하나): GitHub 환경 `apuda-ai-vps` 비밀값 `ANTHROPIC_API_KEY`(VPS에서 응답) 또는 Netlify 환경변수 `ANTHROPIC_API_KEY`. 모델은 `FC_CHAT_MODEL`(기본 claude-haiku-4-5).
 - ChatGPT로 쓰기: GitHub 환경 `apuda-ai-vps` 비밀값 `OPENAI_API_KEY` (또는 Netlify 환경변수 `OPENAI_API_KEY`). 둘 다 있으면 Claude 먼저·실패 시 ChatGPT. ChatGPT를 먼저 쓰려면 변수 `FC_CHAT_PROVIDER=openai`, 모델은 `FC_OPENAI_MODEL`(기본 gpt-4o-mini).
+- 공부 자료 근거 답변: ⚙️ 설정 → 흰둥이 → 📚 공부 자료(텍스트·.txt·.md·.pdf). VPS `live-data/docs.json`에 저장(최대 6MB). 질문과 맞는 자료 조각 → 없으면 관련 내 노트 → 개념 질문이면 한국어 위키백과 요약을 근거로 답하고 출처 표시. 위키 검색 끄기: `FC_WEB_SEARCH=off`.

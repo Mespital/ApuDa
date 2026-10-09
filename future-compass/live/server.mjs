@@ -8,6 +8,8 @@
 import http from 'node:http';
 import { createHmac, timingSafeEqual, createPublicKey, verify as edVerify } from 'node:crypto';
 import { buildPayload, askAI, hasAI, validQuestion } from './shiro.mjs';
+import { listDocs, addDoc, delDoc, searchDocs, searchWiki, knowledgeQ } from './rag.mjs';
+const WEB = (process.env.FC_WEB_SEARCH || 'on') !== 'off';
 
 const PORT = Number(process.env.PORT || 8093);
 const SECRET = process.env.FC_LIVE_SECRET || '';
@@ -60,7 +62,7 @@ const server = http.createServer(async (req, res) => {
   cors(req, res);
   const url = new URL(req.url, 'http://x');
   if (req.method === 'OPTIONS') { res.writeHead(204); return res.end(); }
-  if (url.pathname === '/health') return send(res, 200, { ok: true, keyed: !!(PUB || SECRET.length >= 24), clients: clients.size, ai: !!API_KEY });
+  if (url.pathname === '/health') return send(res, 200, { ok: true, keyed: !!(PUB || SECRET.length >= 24), clients: clients.size, ai: !!API_KEY, docs: listDocs().length, web: WEB });
 
   if (url.pathname === '/rt' && req.method === 'GET') {
     if (!verifyTicket(url.searchParams.get('t'))) return send(res, 401, { error: 'ticket' });
@@ -92,9 +94,25 @@ const server = http.createServer(async (req, res) => {
     if (!validQuestion(b.q)) return send(res, 400, { error: 'bad_q' });
     if (limited('c', 60, 3600000) || limited('cd', 300, 86400000)) return send(res, 429, { error: 'rate' });
     try {
-      const text = await askAI(process.env, buildPayload({ role: b.role === 'parent' ? 'parent' : 'child', q: b.q, history: b.history, ctx: b.ctx, guide: b.guide }));
-      return send(res, 200, { ok: true, text });
+      let refs = searchDocs(b.q, 3, b.notes);
+      if (!refs.length && WEB && knowledgeQ(b.q)) refs = await searchWiki(b.q);
+      let text = await askAI(process.env, buildPayload({ role: b.role === 'parent' ? 'parent' : 'child', q: b.q, history: b.history, ctx: b.ctx, guide: b.guide, refs }));
+      const src = [...new Map(refs.map(r => [r.kind + r.title, { kind: r.kind, title: r.title, url: r.url || '' }])).values()];
+      if (src.length && !/📎/.test(text)) text += '\n📎 출처: ' + src.map(r => (r.kind === '위키백과' ? '위키백과 ' : '') + r.title).join(', ');
+      return send(res, 200, { ok: true, text, sources: src });
     } catch (e) { return send(res, 502, { error: 'ai', status: e.status || 0 }); }
+  }
+  // 공부 자료 (가족 기기 티켓 필요)
+  if (url.pathname === '/docs' && req.method === 'GET') {
+    if (!verifyTicket(url.searchParams.get('t'))) return send(res, 401, { error: 'ticket' });
+    return send(res, 200, { ok: true, docs: listDocs() });
+  }
+  if ((url.pathname === '/docs' || url.pathname === '/docs/del') && req.method === 'POST') {
+    let b; try { b = await body(req, 900000); } catch { return send(res, 400, { error: 'bad' }); }
+    if (!verifyTicket(b.t)) return send(res, 401, { error: 'ticket' });
+    if (limited('d', 120, 3600000)) return send(res, 429, { error: 'rate' });
+    const r = url.pathname === '/docs/del' ? delDoc(String(b.id || '')) : addDoc(b);
+    return send(res, r.error ? 400 : 200, r);
   }
   send(res, 404, { error: 'not_found' });
 });
