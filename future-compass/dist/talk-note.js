@@ -61,20 +61,23 @@
     var n = notes().filter(function (x) { return x.date === today(); });
     var hour = new Date(Date.now() + 9 * 3600000).getUTCHours();
     return '<section class="card tn-card' + (hour >= 15 && !n.length ? ' tn-hot' : '') + '"><div class="pl-head"><h2>📒 오늘 배운 것 남기기</h2>' + (n.length ? '<span class="pl-count">오늘 ' + n.length + '개</span>' : '') + '</div>' +
-      '<p class="muted small">수업 끝나고 1분 — 내 말로 말하거나 요약 노트를 찍어두면 내일·3일·7일 뒤에 다시 보여줘.</p>' +
-      '<div class="tn-btns"><button type="button" class="primary" data-tn-open="talk">🎙️ 1분 말하기</button><button type="button" data-tn-open="photo">📷 노트 사진</button></div></section>';
+      '<p class="muted small">수업 끝나고 1분 — 교과서·필기 사진을 찍거나 말로 남기면 🧠 핵심·용어·확인 질문으로 정리해서 복습과 다음 수업 전에 보여줘.</p>' +
+      '<div class="tn-btns"><button type="button" class="primary" data-tn-open="talk">🎙️ 1분 말하기</button><button type="button" data-tn-open="photo">📷 교과서·노트 사진</button></div></section>';
   }
 
   /* ---------- 시트(전체 화면) ---------- */
   var sheet = null, sub = '', rec = null, timer = null, left = 60, finalText = '', photoData = '';
+  var sheetKind = 'photo';
   function closeSheet() { stopRec(); if (sheet) sheet.remove(); sheet = null; photoData = ''; finalText = ''; }
   function openSheet(kind) {
-    closeSheet(); sub = subjects()[0] || '';
+    closeSheet(); sub = subjects()[0] || ''; sheetKind = kind;
     sheet = document.createElement('div'); sheet.className = 'tn-sheet'; sheet.setAttribute('role', 'dialog'); sheet.setAttribute('aria-label', kind === 'talk' ? '1분 말하기' : '노트 사진');
     sheet.innerHTML = '<div class="tn-panel"><div class="tn-top"><button type="button" class="tn-x" data-tn-close aria-label="닫기">✕</button><b>' + (kind === 'talk' ? '🎙️ 1분 말하기' : '📷 요약 노트 사진') + '</b><span></span></div>' +
       '<label class="tn-l">과목</label><div class="pl-chips tn-subs">' + subjects().map(function (x, i) { return '<button type="button" data-tn-sub="' + esc(x) + '" class="' + (i === 0 ? 'on' : '') + '">' + esc(x) + '</button>'; }).join('') + '<input class="tn-sub-other" maxlength="20" placeholder="다른 과목"></div>' +
       (kind === 'talk' ? talkBody() : photoBody()) +
       '<label class="tn-l">메모 <small class="muted">(헷갈린 것·선생님 강조·시험 나올 것)</small></label><textarea class="tn-text" rows="5" maxlength="1500" placeholder="' + (kind === 'talk' ? '말한 내용이 여기 적혀. 틀린 글자는 고쳐도 돼.' : '사진 속 핵심을 한두 줄 적거나, 글자 읽기를 눌러봐.') + '"></textarea>' +
+      '<p class="tn-org-row"><button type="button" data-tn-org>🧠 정리하기 — 핵심·용어·확인 질문·다음 수업 전 볼 것</button></p>' +
+      '<div class="tn-sum-box" hidden><label class="tn-l">🧠 정리 <small class="muted">(복습·다음 수업 예습에 써. 고쳐도 돼)</small></label><textarea class="tn-sum" rows="10" maxlength="2000"></textarea></div>' +
       '<div class="tn-again"><span>다시 보기</span><label><input type="checkbox" checked data-tn-day="1"> 내일</label><label><input type="checkbox" checked data-tn-day="3"> 3일 뒤</label><label><input type="checkbox" checked data-tn-day="7"> 7일 뒤</label></div>' +
       '<p class="tn-save-row"><button type="button" class="primary" data-tn-save="' + kind + '">저장</button></p></div>';
     document.body.appendChild(sheet);
@@ -110,6 +113,26 @@
     b.textContent = '■ 그만'; b.classList.add('on');
     timer = setInterval(function () { left--; clock.textContent = fmt(Math.max(0, left)); if (left <= 0) { stopRec(); live.textContent = ''; notice('1분 끝! 내용 확인하고 저장해줘.'); } }, 1000);
   }
+  /* 🧠 정리: AI(흰둥이 똑똑 모드)로 핵심·용어·확인 질문·다음 수업 전 볼 것. AI가 없으면 글에서 핵심 후보만 뽑기 */
+  function localSum(text) {
+    var lines = String(text).split(/\n|(?<=[.?!다])\s+/).map(function (x) { return x.replace(/^[\s•\-·*○●▶▷]+/, '').trim(); }).filter(function (x) { return x.length >= 6; });
+    var key = lines.filter(function (x) { return /[:=]|이란|이다|란\s|뜻|정의|원리|법칙|특징/.test(x); }).concat(lines).filter(function (x, i, a) { return a.indexOf(x) === i; }).slice(0, 4);
+    var terms = []; lines.forEach(function (x) { var m = /^([가-힣A-Za-z0-9 ]{2,14})\s*[:=]\s*(.{4,60})/.exec(x); if (m && terms.length < 5) terms.push('- ' + m[1].trim() + ': ' + m[2].trim()); });
+    return '📌 핵심 정리 (자동 추출 — 틀린 곳은 고쳐줘)\n' + key.map(function (x) { return '- ' + x.slice(0, 80); }).join('\n') + (terms.length ? '\n🔑 꼭 알아야 할 용어\n' + terms.join('\n') : '') +
+      '\n❓ 스스로 확인 질문\n' + key.slice(0, 3).map(function (x) { var w = (/^([가-힣A-Za-z0-9]{2,12})/.exec(x) || ['', '이 내용'])[1]; return '- ' + w + '을(를) 내 말로 설명할 수 있어?'; }).join('\n') + '\n➡️ 다음 수업 전에 볼 것\n- 위 핵심 정리 1분 훑어보기';
+  }
+  function canAI() { return window.SHIRO_AI && SHIRO_AI.on && SHIRO_AI.on() && SHIRO_AI.organize; }
+  function organizeSheet(auto) {
+    if (!sheet) return;
+    var ta = sheet.querySelector('.tn-text'), text = ta.value.trim(), box = sheet.querySelector('.tn-sum-box'), out = sheet.querySelector('.tn-sum'), b = sheet.querySelector('[data-tn-org]');
+    if (text.length < 15) { if (!auto) notice('정리할 글이 너무 짧아. 사진에서 글자를 먼저 읽거나 조금 더 적어줘.'); return; }
+    box.hidden = false;
+    if (!canAI()) { out.value = localSum(text); if (!auto) notice('흰둥이 AI가 연결 안 돼서 핵심 후보만 뽑았어. 고쳐서 저장해줘.'); return; }
+    b.disabled = true; b.textContent = '🧠 정리하는 중… (최대 1~2분)'; out.value = '';
+    SHIRO_AI.organize(sub || '기타', text, sheetKind, today()).then(function (sum) { if (!sheet) return; out.value = sum; notice('정리했어 🧠 고칠 곳 있으면 고쳐서 저장해.'); })
+      .catch(function () { if (!sheet) return; out.value = localSum(text); notice('AI 정리가 안 돼서 핵심 후보만 뽑았어.'); })
+      .then(function () { if (sheet) { b.disabled = false; b.textContent = '🧠 다시 정리'; } });
+  }
   function runOcr() {
     var b = sheet.querySelector('[data-tn-ocr]'), ta = sheet.querySelector('.tn-text'); if (!photoData) return;
     b.disabled = true; b.textContent = '글자 읽는 중… (처음엔 30초쯤)';
@@ -120,7 +143,8 @@
     }).then(function (txt) {
       txt = txt.replace(/[ \t]+/g, ' ').replace(/\n{3,}/g, '\n\n').trim();
       if (sheet) { ta.value = (ta.value ? ta.value.trim() + '\n' : '') + txt.slice(0, 1400); b.textContent = '🔤 다시 읽기'; b.disabled = false; }
-      notice(txt ? '읽은 글자를 메모에 넣었어. 틀린 건 고쳐줘.' : '글자를 못 읽었어. 핵심만 직접 적어줘.');
+      notice(txt ? '읽은 글자를 넣었어. 이어서 🧠 정리할게.' : '글자를 못 읽었어. 핵심만 직접 적어줘.');
+      if (txt && sheet) organizeSheet(true);
     }).catch(function () { if (sheet) { b.disabled = false; b.textContent = '🔤 글자 읽기'; } notice('글자 읽기를 불러오지 못했어. 직접 적어줘.'); });
   }
   function saveNote(kind) {
@@ -131,10 +155,12 @@
     var id = nid(), t = today(), days = [].slice.call(sheet.querySelectorAll('[data-tn-day]')).filter(function (c) { return c.checked; }).map(function (c) { return Number(c.dataset.tnDay); });
     var first = text.split('\n')[0].slice(0, 40);
     var title = subject + ' · ' + (kind === 'talk' ? '1분 말하기' : '요약 노트') + (first ? ' — ' + first : '');
-    var rv = { id: uid(), title: title.slice(0, 120), date: t, done: false, kind: '과제', subject: subject, note: text.slice(0, 800) };
+    var sumEl = sheet.querySelector('.tn-sum'), sum = sumEl && !sheet.querySelector('.tn-sum-box').hidden ? sumEl.value.trim().slice(0, 2000) : '';
+    var rv = { id: uid(), title: title.slice(0, 120), date: t, done: false, kind: '과제', subject: subject, note: (sum || text).slice(0, 800) };
     state.reviews.push(rv); save();
     if (window.FC_PLANNER) { var P = FC_PLANNER.get(); P.again[rv.id] = days.map(function (n) { return new Date(Date.parse(t + 'T12:00:00Z') + n * 86400000).toISOString().slice(0, 10); }); try { localStorage.setItem(FC_PLANNER.KEY, JSON.stringify(P)); } catch (e) {} }
-    var a = notes(); a.push({ id: id, date: t, at: new Date().toISOString(), kind: kind, subject: subject, text: text, photo: kind === 'photo', review: rv.id }); saveNotes(a);
+    var a = notes(); a.push({ id: id, date: t, at: new Date().toISOString(), kind: kind, subject: subject, text: text, sum: sum || undefined, photo: kind === 'photo', review: rv.id }); saveNotes(a);
+    if (!sum && text.length >= 30 && canAI()) SHIRO_AI.organize(subject, text, kind, t).then(function (s2) { var b3 = notes(); b3.forEach(function (n) { if (n.id === id) n.sum = s2.slice(0, 2000); }); saveNotes(b3); if (typeof render === 'function') render(); }).catch(function () {});
     var done = function () { closeSheet(); document.documentElement.classList.remove('tn-open'); notice('저장했어! ' + (days.length ? '다시 보기 ' + days.map(function (n) { return n === 1 ? '내일' : n + '일 뒤'; }).join('·') + ' 잡아뒀어 🧠' : '')); if (typeof render === 'function') render(); };
     if (kind === 'photo') {
       var data = photoData;
@@ -154,7 +180,7 @@
     h += '<ul>' + a.slice(0, showN).map(function (n) {
       return '<li><div class="tn-li-top"><span class="tn-tag ' + n.kind + '">' + (n.kind === 'talk' ? '🎙️' : '📷') + ' ' + esc(n.subject) + '</span><small>' + md(n.date) + '</small>' + (isParent() ? '' : '<button type="button" class="pl-x" data-tn-del="' + esc(n.id) + '" aria-label="노트 지우기">×</button>') + '</div>' +
         (n.photo ? '<button type="button" class="tn-thumb" data-tn-view="' + esc(n.id) + '" data-tn-img="' + esc(n.id) + '" aria-label="사진 크게 보기"></button>' : '') +
-        (n.text ? '<p class="tn-txt">' + esc(n.text).replace(/\n/g, '<br>') + '</p>' : '') + '</li>';
+        (n.sum ? '<div class="tn-sumv">' + esc(n.sum).replace(/\n/g, '<br>') + '</div>' + (n.text ? '<p class="tn-txt tn-raw">' + esc(n.text).replace(/\n/g, '<br>') + '</p><button type="button" class="linkish" data-tn-raw="1">원문 보기</button>' : '') : (n.text ? '<p class="tn-txt">' + esc(n.text).replace(/\n/g, '<br>') + '</p>' : '')) + '</li>';
     }).join('') + '</ul>' + (a.length > showN ? '<button type="button" class="linkish" data-tn-more>이전 노트 더 보기 (' + (a.length - showN) + ')</button>' : '') + '</section>';
     return h;
   }
@@ -209,6 +235,8 @@
     if (b.hasAttribute('data-tn-mic')) { if (timer) { stopRec(); sheet.querySelector('.tn-live').textContent = ''; } else startRec(); return; }
     if (b.hasAttribute('data-tn-pick')) { var f = sheet.querySelector('[data-tn-file]'); f.value = ''; f.click(); return; }
     if (b.hasAttribute('data-tn-ocr')) { runOcr(); return; }
+    if (b.hasAttribute('data-tn-org')) { organizeSheet(false); return; }
+    if (d.tnRaw) { var li = b.closest('li'); li.classList.toggle('tn-show-raw'); b.textContent = li.classList.contains('tn-show-raw') ? '정리 보기' : '원문 보기'; return; }
     if (d.tnSave) { saveNote(d.tnSave); return; }
     if (d.tnDel) { var n = notes().find(function (x) { return x.id === d.tnDel; }); if (n && confirm('이 노트를 지울까? (복습 메모는 남아)')) { saveNotes(notes().filter(function (x) { return x.id !== n.id; })); if (n.photo) delPhoto(n.id); render(); } return; }
     if (d.tnView) { getPhoto(d.tnView).then(function (src) { if (!src) return; var v = document.createElement('div'); v.className = 'pf-dlg tn-viewer'; v.innerHTML = '<img src="' + src + '" alt="노트 사진"><button type="button" class="pf-cancel">닫기</button>'; document.body.appendChild(v); v.addEventListener('click', function () { v.remove(); }); }); return; }
@@ -239,6 +267,7 @@
     '.tn-photo{margin-top:8px}.tn-preview{border:2px dashed #d9d3ee;border-radius:16px;min-height:140px;display:grid;place-items:center;gap:8px;padding:10px}.tn-preview img{max-width:100%;max-height:42dvh;border-radius:10px}.tn-ocr-row{margin:8px 0 0}' +
     '.tn-list ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}.tn-list li{border:1px solid #efedf5;border-radius:14px;padding:10px 12px}.tn-li-top{display:flex;align-items:center;gap:8px}.tn-li-top small{flex:1;color:#8a879a}.tn-tag{font-size:12.5px;font-weight:700;background:#f0edff;color:#5b45d6;border-radius:999px;padding:3px 9px}.tn-tag.photo{background:#e8f4ff;color:#2a6aa8}' +
     '.tn-thumb{display:block;width:100%;height:140px;margin:8px 0 0;border-radius:10px;background:#f4f3f8 center/cover no-repeat;border:0!important;font-size:12px;color:#8a879a}.tn-txt{margin:8px 0 0;font-size:14px;line-height:1.6;white-space:normal;max-height:9.6em;overflow:hidden}' +
+    '.tn-org-row button{width:100%;min-height:46px!important;margin-top:8px;font-weight:700}.tn-sum{width:100%;font-size:14px;line-height:1.6;background:#fbfaff}.tn-sumv{margin:8px 0 0;font-size:14px;line-height:1.65;background:#f8f6ff;border-radius:10px;padding:10px 12px}.tn-raw{display:none}.tn-show-raw .tn-raw{display:block}.tn-show-raw .tn-sumv{display:none}' +
     '.tn-viewer img{max-width:100%;max-height:85dvh;border-radius:12px}.tn-viewer{flex-direction:column;gap:10px}';
   document.head.appendChild(css);
   if (typeof render === 'function') render();

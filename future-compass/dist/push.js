@@ -5,8 +5,8 @@
   'use strict';
   var PREF = 'fc-push-v1';
   var KINDS = {
-    child: [['morning', '07:30 오늘의 핵심'], ['afterclass', '15:30 수업 끝 1분 남기기'], ['academy', '학원 1시간 전'], ['exameve', '시험 전날 밤'], ['close', '21:00 하루 마무리'], ['cheer', '엄마 응원·확인 요청'], ['timer', '집중 타이머 끝']],
-    parent: [['ask', '승준이 부탁·답장'], ['summary', '21:30 오늘 승준이 요약'], ['exameve', '시험 전날 밤']]
+    child: [['morning', '07:30 오늘의 핵심'], ['afterclass', '15:30 수업 끝 1분 남기기'], ['academy', '학원 1시간 전'], ['exameve', '시험 전날 밤'], ['close', '21:00 하루 마무리'], ['cheer', '엄마 응원·확인 요청'], ['timer', '집중 타이머 끝'], ['examdday', '시험 D-100·60·30·14·7·3']],
+    parent: [['examdday', '시험 D-100·60·30·14·7·3'], ['ask', '승준이 부탁·답장'], ['summary', '21:30 오늘 승준이 요약'], ['exameve', '시험 전날 밤']]
   };
   function ls(k, d) { try { var v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch (e) { return d; } }
   function who() { return typeof PinGate !== 'undefined' && PinGate.who() === 'parent' ? 'parent' : 'child'; }

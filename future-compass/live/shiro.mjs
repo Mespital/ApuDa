@@ -44,7 +44,7 @@ export async function askClaude({ apiKey, model, payload, timeoutMs = 25000 }) {
   const r = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: { 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
-    body: JSON.stringify({ model: model || MODEL, max_tokens: 600, temperature: 0.4, system: payload.system, messages: payload.messages }),
+    body: JSON.stringify({ model: model || MODEL, max_tokens: payload.maxTokens || 600, temperature: 0.4, system: payload.system, messages: payload.messages }),
     signal: AbortSignal.timeout(timeoutMs)
   });
   const j = await r.json().catch(() => ({}));
@@ -60,7 +60,7 @@ export async function askOpenAI({ apiKey, model, payload, timeoutMs = 25000 }) {
   const r = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: { authorization: 'Bearer ' + apiKey, 'content-type': 'application/json' },
-    body: JSON.stringify({ model: model || 'gpt-4o-mini', max_tokens: 600, temperature: 0.4, messages: [{ role: 'system', content: payload.system }, ...payload.messages] }),
+    body: JSON.stringify({ model: model || 'gpt-4o-mini', max_tokens: payload.maxTokens || 600, temperature: 0.4, messages: [{ role: 'system', content: payload.system }, ...payload.messages] }),
     signal: AbortSignal.timeout(timeoutMs)
   });
   const j = await r.json().catch(() => ({}));
@@ -69,9 +69,10 @@ export async function askOpenAI({ apiKey, model, payload, timeoutMs = 25000 }) {
 }
 // 무료: VPS에 직접 띄운 오픈소스 모델(Ollama). OLLAMA_MODEL 이 있을 때. CPU라 느려서 답을 짧게
 export async function askOllama({ base, model, payload, timeoutMs = 100000 }) {
+  timeoutMs = payload.long ? 240000 : timeoutMs;
   const r = await fetch((base || 'http://ollama:11434').replace(/\/$/, '') + '/v1/chat/completions', {
     method: 'POST', headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ model, max_tokens: 380, temperature: 0.4, messages: [{ role: 'system', content: payload.system + '\n반드시 자연스러운 한국어로만, 4문장 이내로 답해. 한자·중국어·일본어를 절대 섞지 마. 모르는 건 지어내지 말고 모른다고 해.' }, ...payload.messages] }),
+    body: JSON.stringify({ model, max_tokens: payload.maxTokens || 380, temperature: 0.4, messages: [{ role: 'system', content: payload.system + (payload.long ? '\n반드시 자연스러운 한국어로만 답해.' : '\n반드시 자연스러운 한국어로만, 4문장 이내로 답해.') + ' 한자·중국어·일본어를 절대 섞지 마. 모르는 건 지어내지 말고 모른다고 해.' }, ...payload.messages] }),
     signal: AbortSignal.timeout(timeoutMs)
   });
   const j = await r.json().catch(() => ({}));
@@ -93,3 +94,18 @@ export async function askAI(env, payload, timeoutMs) {
   throw last || Object.assign(new Error('no_ai'), { status: 0 });
 }
 export const hasAI = env => !!(env.ANTHROPIC_API_KEY || env.OPENAI_API_KEY || env.OLLAMA_MODEL);
+
+// 수업 사진·노트 정리 (복습·다음 수업 예습용)
+export function organizePayload({ subject, text, kind }) {
+  const sys = `너는 고등학교 1학년 승준이의 공부 정리 도우미야. 아래 글은 승준이가 ${kind === 'talk' ? '수업 끝나고 말로 정리한 내용' : '수업 후 찍은 교과서·필기 사진에서 글자 인식(OCR)으로 읽은 내용'}이야. OCR이면 오타·깨진 글자가 있을 수 있어.
+아래 형식 그대로, 원문에 있는 내용만으로 정리해. 원문에 없는 내용은 지어내지 마. 읽기 어려운 부분은 "(사진 확인 필요)"라고 써.
+📌 핵심 정리
+- (3~5줄, 쉬운 말로)
+🔑 꼭 알아야 할 용어
+- 용어: 뜻 (최대 5개)
+❓ 스스로 확인 질문
+- (3개, 답은 쓰지 마)
+➡️ 다음 수업 전에 볼 것
+- (1~2줄)`;
+  return { system: sys, messages: [{ role: 'user', content: '과목: ' + clip(subject, 20) + '\n\n' + clip(text, 3500) }], maxTokens: 900, long: true };
+}
