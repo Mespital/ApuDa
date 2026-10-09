@@ -25,7 +25,7 @@ a{color:var(--blue2)}
 .logo b{display:block;font-size:1.02em;letter-spacing:-.03em;line-height:1.2}.logo small{display:block;font-size:.78em;color:var(--muted);font-weight:700}
 .tbtn{border:1px solid var(--line);background:#fff;border-radius:12px;min-width:44px;height:44px;padding:0 10px;font-weight:900;font-size:.82em}
 .sos{border:0;background:var(--red);color:#fff;border-radius:12px;height:44px;padding:0 13px;font-weight:900;font-size:.86em;box-shadow:0 6px 16px rgba(217,45,32,.3)}
-main{padding:14px 14px calc(var(--tab) + 150px)}
+main{padding:14px 14px calc(var(--tab) + var(--compH,200px) + 14px)}
 .view{display:none}.view.on{display:block}
 h2{font-size:1.25em;margin:4px 2px 12px;letter-spacing:-.03em}
 h3{font-size:1.02em;margin:0 0 8px;letter-spacing:-.02em}
@@ -161,7 +161,7 @@ table.kv{width:100%;border-collapse:collapse;margin-top:10px;font-size:.86em}tab
 @media(max-width:430px){.logo small{display:none}}
 .phonebar span{flex:1}.phonebar button{flex:0 0 auto;border:0;background:var(--amber);color:#fff;border-radius:11px;min-height:44px;padding:0 14px;font-weight:900;font-size:1em}
 
-/* ===== v3.8 반응형·가독성 (감수 반영) ===== */
+/* ===== v3.9 반응형·가독성 (감수 반영) ===== */
 :root{--muted:#4a5a70}
 html.big{--fs:21px}
 .small{font-size:.88em}.tile small,.legend,.chk small,.item .meta{font-size:.86em}.nshort{font-size:.84em}.cyc i span{font-size:.78em}
@@ -226,6 +226,44 @@ input[type=range]::-webkit-slider-thumb{width:30px;height:30px}
 @media(max-width:400px){html.big .phonebar{flex-wrap:wrap}html.big .phonebar span{flex:1 0 100%}html.big .phonebar button:not(.x){margin-left:auto}}
 @media(max-width:430px){.sumhead .row.between{flex-direction:column;gap:6px}.sumhead .row.between>*:last-child{text-align:left!important}}
 @media(min-width:1024px) and (max-height:700px){.tabs{top:76px}}
+
+/* v3.9 버튼 기록(감수단: 가로 스크롤 없앰·큰 버튼·경계값 간격) */
+.chips{display:grid!important;grid-template-columns:repeat(3,1fr);gap:6px;overflow:visible!important;-webkit-mask-image:none!important;mask-image:none!important;padding:2px 0 8px!important;flex-wrap:nowrap}
+.chips button{min-height:46px;padding:2px 4px;font-size:.8em;line-height:1.2;white-space:normal;word-break:keep-all;display:flex;align-items:center;justify-content:center;text-align:center}
+.chips button.pri{background:var(--blue);color:#fff;border-color:var(--blue)}
+.chips .x{display:none}.chips.open .x{display:flex}
+.chips button[data-c=more]{background:var(--sky);color:var(--blue2);border-color:transparent}
+.composer.typing .chips{display:none!important}
+.msg.bot.flw{max-width:100%!important;width:100%;align-self:stretch;padding:12px 12px 14px}
+.fl .flh{display:flex;align-items:center;gap:8px;font-size:.8em;font-weight:900;color:var(--muted)}
+.fl .flp{background:var(--sky);color:var(--blue2);border-radius:999px;padding:2px 10px}
+.fl .flx{margin-left:auto;border:0;background:transparent;font-size:1.1em;min-width:44px;min-height:40px;color:var(--muted)}
+.fl .flq{display:block;font-size:1.06em;margin:8px 0 2px;line-height:1.45}
+.fl .flg{margin-top:10px}.fl .flg+.flg{margin-top:16px}
+.fl .flgh{font-size:.8em;font-weight:900;color:var(--muted);margin-bottom:6px}.fl .flgh.hot{color:#b91c1c}
+.fl .flo{display:grid;gap:10px;grid-template-columns:repeat(3,1fr)}
+.fl .flo.c1{grid-template-columns:1fr}.fl .flo.c2{grid-template-columns:repeat(2,1fr)}.fl .flo.c4{grid-template-columns:repeat(4,1fr)}
+.fl .flo button{min-height:56px;border:2px solid var(--line);background:#fff;border-radius:14px;font-weight:900;font-size:.98em;color:#1f3350;padding:6px;line-height:1.25;word-break:keep-all}
+.fl .flo.c1 button{text-align:left;padding:8px 14px}
+.fl .flo button.hot{border-color:#fca5a5;background:#fff7f7;color:#b91c1c}
+.fl .flo button[aria-pressed=true],.fl .flo button[aria-current=true]{border-color:var(--blue);background:var(--sky);color:var(--blue2);box-shadow:inset 0 0 0 2px var(--blue)}
+.fl .flo button[aria-pressed=true]::before{content:'✓ '}
+.fl .flo button:active{transform:scale(.97)}
+.fl .flnav{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.fl .flnav button{min-height:52px;border-radius:14px;padding:0 16px;font-weight:900;border:1px solid var(--line);background:#fff;color:#2c3e57;font-size:.95em}
+.fl .flnav .ok,.fl .flin .ok{flex:1;background:var(--blue);color:#fff;border:0}
+.fl .flcf{margin-top:12px;padding:12px;border-radius:14px;background:var(--redbg);border:1px solid #fecaca}
+.fl .flin{display:flex;gap:8px;margin-top:12px}
+.fl .flin input{flex:1;min-width:0;min-height:56px;font-size:1.1em;border:2px solid var(--line);border-radius:14px;padding:0 12px;font-family:inherit}
+.fl .flin .ok{flex:0 0 auto;min-height:56px;border-radius:14px;padding:0 18px;font-weight:900;font-size:.98em}
+.fl .flpv{margin-top:12px;padding-top:8px;border-top:1px dashed var(--line);font-size:.82em;color:var(--muted)}
+.fl .flsum{margin:8px 0 0;padding-left:20px;font-weight:700}
+.qr button{min-height:50px}
+html.big .chips button{font-size:.74em;min-height:52px}
+@media(max-width:400px){html.big .fl .flo.c3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:1023px){.composer.flowing .chips{display:none!important}}
+.acts.gstart button{min-height:54px;font-size:.95em}.acts.gstart .pri{flex:1 1 100%;background:var(--blue);color:#fff;border-color:var(--blue)}
+@media(min-width:768px){.chips{grid-template-columns:repeat(6,1fr)}.chips button{font-size:.78em}}
 </style>
 </head>
 <body>
@@ -286,10 +324,12 @@ input[type=range]::-webkit-slider-thumb{width:30px;height:30px}
 
 <div class="composer" id="composer">
   <div class="in">
-    <div class="chips" id="chips">
-      <button data-c="temp">🌡️ 체온</button><button data-c="pain">😣 통증</button><button data-c="meal">🍚 식사</button>
-      <button data-c="sched">📅 일정</button><button data-c="med">💊 약</button><button data-c="lab">🩸 검사 수치</button><button data-c="q">❓ 질문 메모</button>
-      <button data-c="sym">🤒 증상 상담</button><button data-c="help">💡 사용법</button>
+    <div class="chips" id="chips" aria-label="버튼으로 기록">
+      <button data-c="temp">🌡️ 체온</button><button data-c="pain">😣 통증</button><button data-c="meal">🍚 식사·속</button>
+      <button data-c="checkin" class="pri">✅ 한 번에 기록</button><button data-c="med">💊 약 먹음</button><button data-c="more" aria-expanded="false">➕ 더보기</button>
+      <button data-c="sym" class="x">🤒 증상</button><button data-c="mood" class="x">💭 마음</button><button data-c="body" class="x">😴 잠·체중·물</button>
+      <button data-c="sched" class="x">📅 일정</button><button data-c="q" class="x">❓ 질문</button><button data-c="lab" class="x">🩸 검사 수치</button>
+      <button data-c="help" class="x">💡 사용법</button>
     </div>
     <form class="inbar" id="inbar" autocomplete="off">
       <textarea id="input" rows="1" placeholder="예) 열 37.8, 통증 5점" aria-label="노트봇에게 쓰기"></textarea>
@@ -366,7 +406,7 @@ input[type=range]::-webkit-slider-thumb{width:30px;height:30px}
     <b>하는 일</b><ul><li>몸 상태·일정·약·질문을 기록하고 진료요약으로 정리해요.</li><li>기록한 값과 입력한 날짜를 바탕으로 일반적인 참고 안내(연락 기준, 참고용 예상일)를 보여 줘요.</li></ul>
     <b>하지 않는 일</b><ul><li>질병을 진단·치료·예측하거나 약 용량·치료 일정을 정하지 않아요.</li><li>응급 상황을 판단하거나 의료진의 연락을 대신하지 않아요. 걱정되면 수치와 상관없이 의료진에게 연락하세요.</li><li>기록을 아프다 서버로 보내지 않아요(이 기기 안에만 저장, 구글 드라이브 백업은 직접 연결했을 때만).</li></ul>
     <p class="nshort" style="margin-top:6px">[안내] 이 노트의 모든 정보는 일반적인 건강 정보를 알기 쉽게 정리한 참고 자료이며, 의사의 진료·진단·처방을 대신하지 않습니다. 치료 일정·용량·검사·부작용 대처는 환자의 상태와 의료기관에 따라 다르므로 담당 의료진의 판단과 안내를 따르세요. ApuDa는 이 정보를 근거로 한 개별 의료 판단이나 그 결과에 대해 책임을 지지 않습니다. 응급 상황에는 즉시 119 또는 가까운 응급실을 이용하세요.</p></div>
-  <p class="note-foot">ApuDa 암환자 노트 v3.8 · <a href="/">ApuDa 홈</a></p>
+  <p class="note-foot">ApuDa 암환자 노트 v3.9 · <a href="/">ApuDa 홈</a></p>
 </div></div>
 
 <div class="toast" id="toast"></div>

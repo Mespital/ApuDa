@@ -400,9 +400,9 @@ function botHTML(o,raw){
   if(ambs.length)parts.push({cls:'amber',html:ambs.map(atx).join('<br><br>')+(ambs.some(function(a){return ALERT[a][2]})||ambs.indexOf('askSOS')>=0?'<div class="acts">'+callBtns()+'<button type="button" onclick="openSheet(\'sos\')">응급 판단</button></div>':'')+'<p class="nshort">ⓘ 기록한 값으로 알려 드리는 참고용 안내예요. 몸 상태가 걱정되면 의료진에게 연락하세요.</p>'});
   o.cards.forEach(function(c){
     if(c.kind==='topic'){var tp=c.topic;parts.push({cls:tp.urgent?'red':'',html:'<b>'+esc(tp.q||tp.title)+'</b><div>'+tp.body+'</div><div class="acts">'+linkBtns(tp.links)+'</div>'+NS()+''})}
-    if(c.kind==='fallback')parts.push({cls:'',html:'제가 정확히 이해하지 못했어요. 이렇게 써 보세요.<ul><li>열 37.8 / 통증 5점 / 밥 반 먹음</li><li>다음주 화요일 10시 항암 3차</li><li>타그리소 아침 1알 시작</li><li>질문: 운동해도 되나요?</li></ul><div class="acts"><button type="button" onclick="saveAsMemo(this)" data-t="'+esc(c.text)+'">📝 이대로 메모로 저장</button><button type="button" onclick="saveAsQ(this)" data-t="'+esc(c.text)+'">❓ 질문으로 저장</button></div>'});
+    if(c.kind==='fallback')parts.push({cls:'',html:'제가 정확히 이해하지 못했어요. 이렇게 써 보세요.<ul><li>열 37.8 / 통증 5점 / 밥 반 먹음</li><li>다음주 화요일 10시 항암 3차</li><li>약: 오시머티닙 아침 1알 시작</li><li>질문: 운동해도 되나요?</li></ul><div class="acts"><button type="button" onclick="saveAsMemo(this)" data-t="'+esc(c.text)+'">📝 이대로 메모로 저장</button><button type="button" onclick="saveAsQ(this)" data-t="'+esc(c.text)+'">❓ 질문으로 저장</button></div>'});
     if(c.kind==='nextSched'){var up=upcoming();parts.push({cls:'',html:up.length?'<b>다가오는 일정</b><ul>'+up.slice(0,5).map(function(x){return '<li>'+fmt(x.date)+(x.time?' '+x.time:'')+' · '+esc(x.title)+' <span class="small muted">('+dday(x.date)+')</span></li>'}).join('')+'</ul>':'예정된 일정이 없어요. "10월 20일 오전 9시 CT"처럼 알려 주세요.'})}
-    if(c.kind==='medList'){var act=state.meds.filter(function(m){return m.active==='yes'});parts.push({cls:'',html:act.length?'<b>복용 중인 약</b><ul>'+act.map(function(m){return '<li>'+esc(m.name)+' '+esc(m.dose||'')+(m.schedule?' · '+esc(m.schedule):'')+'</li>'}).join('')+'</ul>':'등록된 약이 없어요. "약: 타그리소 아침 1알"처럼 알려 주세요.'})}
+    if(c.kind==='medList'){var act=state.meds.filter(function(m){return m.active==='yes'});parts.push({cls:'',html:act.length?'<b>복용 중인 약</b><ul>'+act.map(function(m){return '<li>'+esc(m.name)+' '+esc(m.dose||'')+(m.schedule?' · '+esc(m.schedule):'')+'</li>'}).join('')+'</ul>':'등록된 약이 없어요. "약: 오시머티닙 아침 1알"처럼 알려 주세요.'})}
     if(c.kind==='goSummary'){parts.push({cls:'',html:'진료요약을 열게요.<div class="acts"><button type="button" onclick="tab(\'summary\')">📄 진료요약 보기</button></div>'})}
     if(c.kind==='recent'){var l=state.logs[0];parts.push({cls:'',html:l?'<b>'+fmt(l.date)+' 기록</b><br>'+logLine(l):'아직 기록이 없어요.'})}
     if(c.kind==='cntAsk'){var nm=c.k==='diarrhea'?'설사':'구토';parts.push({cls:'',html:'오늘 '+nm+'를 이미 <b>'+c.old+'회</b> 기록해 두셨어요. 지금 <b>오늘 총 '+c.n+'회</b>로 저장했어요. 앞 기록에 더한 횟수라면 아래를 눌러 주세요.<div class="qr"><button type="button" data-s="'+nm+' 총 '+(c.old+c.n)+'회">더해서 총 '+(c.old+c.n)+'회</button><button type="button" data-s="'+nm+' 총 '+c.n+'회">총 '+c.n+'회가 맞아요</button></div>'})}
@@ -414,7 +414,7 @@ function botHTML(o,raw){
     if(c.kind==='painAsk'){parts.push({cls:'',html:'<b>'+(c.site?esc(c.site)+' ':'')+'통증이 어느 정도인가요?</b><br><span class="small muted">0 = 안 아픔 · 10 = 상상할 수 있는 가장 심한 통증</span><div class="qr">'+[0,1,2,3,4,5,6,7,8,9,10].map(function(i){return '<button type="button" data-s="통증 '+i+'점'+(c.site?' '+esc(c.site):'')+'">'+i+'</button>'}).join('')+'</div>'})}
     if(c.kind==='stopUnknown'){parts.push({cls:'',html:'복용 중인 약 목록에서 해당 약을 찾지 못했어요. 약 이름을 처방전 그대로 알려 주시거나, 이대로 메모로 남길 수 있어요.<div class="acts"><button type="button" onclick="saveAsMemo(this)" data-t="'+esc(c.text)+'">📝 메모로 저장</button><button type="button" onclick="planTab=\'meds\';renderPlan();tab(\'plan\')">💊 약 목록 보기</button></div><p class="small muted" style="margin:8px 0 0">처방약을 스스로 끊기 전에는 의료진과 상의하세요.</p>'})}
     if(c.kind==='topicLink'){parts.push({cls:'',html:'💡 관련 안내가 있어요.<div class="acts"><button type="button" onclick="showTopic(\''+esc(c.id)+'\')">'+esc(c.q)+'</button></div>'})}
-    if(c.kind==='askMed'){parts.push({cls:'',html:'약 이름을 함께 알려 주세요. 예) "약: 젤로다 아침저녁 3알" (처방전·약봉투에 적힌 이름 그대로)'})}
+    if(c.kind==='askMed'){parts.push({cls:'',html:'약 이름을 함께 알려 주세요. 예) "약: 카페시타빈 아침저녁 3알" (처방전·약봉투에 적힌 이름 그대로)'})}
   });
   if(!parts.length)parts.push({cls:'',html:'알겠어요.'});
   return parts;
@@ -443,33 +443,239 @@ window.pickRx=function(){rxPick=true;renderPlan()};
 function saveAsMemo(btn){sendText('메모: '+btn.dataset.t);btn.closest('.acts').remove()}
 window.saveAsMemo=saveAsMemo;
 window.saveAsQ=function(btn){sendText('질문: '+btn.dataset.t);btn.closest('.acts').remove()};
-function prefill(s){tab('today');var i=$('#input');i.value=s;i.focus();autoGrow()}
+function prefill(s){tab('today');var i=$('#input');i.value=s;i.focus();autoGrow();$('#composer').classList.toggle('typing',!!s.trim())}
 window.prefill=prefill;window.tab=tab;window.openSheet=openSheet;window.closeSheet=closeSheet;
 
-/* 빠른 버튼 */
-var QUICK={
-  temp:['지금 체온은요? 숫자를 누르거나 직접 써 주세요.',['36.5','37.0','37.5','37.8','38.0','38.5'].map(function(v){return ['🌡️ '+v,'체온 '+v]})],
-  pain:['통증은 몇 점인가요? (0 없음 ~ 10 상상할 수 있는 가장 심한 통증)',[0,1,2,3,4,5,6,7,8,9,10].map(function(v){return [String(v),'통증 '+v+'점']})],
-  meal:['오늘 식사는 평소와 비교해 어느 정도 드셨어요?',[['거의 못 먹음','식사 거의 못 먹음'],['조금(¼)','식사 조금 먹음'],['절반','식사 반 먹음'],['대부분(¾)','식사 대부분 먹음'],['평소만큼','식사 다 먹음']]],
-  sched:['일정을 말하듯 써 주세요.<br><span class="small muted">예) 다음주 화요일 오전 10시 항암 3차 · 10월 20일 CT · 모레 2시 외래</span>',[]],
-  med:['약 이름과 먹는 시간을 써 주세요.<br><span class="small muted">예) 약: 젤로다 아침저녁 3알 · 진통제 중단</span>',[]],
-  lab:['혈액검사 결과지의 수치를 적어 주세요.<br><span class="small muted">예) 호중구 800, 혈소판 9만, 혈색소 10.2 · 백혈구 수치 낮대</span>',[]],
-  q:['진료 때 물어볼 것을 써 주세요. 진료요약에 모아 둘게요.<br><span class="small muted">예) 질문: 항암 중 운동해도 되나요? · 꼭 질문: CT 결과</span>',[]],
-  sym:['어떤 증상이 걱정되세요?',KB.TOPICS.filter(function(x){return x.cat==='증상'||x.cat==='마음'}).map(function(x){return [x.q,x.q]})],
-  help:null
+/* ═════════ 버튼 기록 v3.9 — 암환자 감수단 설계(단계형 버튼·다중선택·경계값 확인·한 번에 저장) ═════════
+ * 버튼은 파서가 이미 이해하는 문장을 만들어 interpret()로 보낸다 → 손으로 쓴 기록과 같은 형식으로 저장된다. */
+function sendBatch(list,label,fx){
+  list=list.filter(Boolean);if(!list.length)return;
+  addMsg('me',esc(label||list.join(' · ')));
+  var snap=JSON.stringify(state);(fx||[]).forEach(function(f){f()});var M={saved:[],notes:[],alerts:[],cards:[],undo:false},seen={},tl=[];
+  list.forEach(function(s){var o=interpret(s);
+    M.saved=M.saved.concat(o.saved);
+    o.notes.forEach(function(n){if(M.notes.indexOf(n)<0)M.notes.push(n)});
+    o.alerts.forEach(function(a){if(M.alerts.indexOf(a)<0)M.alerts.push(a)});
+    o.cards.forEach(function(c){if(c.kind==='fallback'||c.kind==='painAsk')return;if(c.kind==='topicLink'){if(!tl.some(function(x){return x.id===c.id}))tl.push(c);return}var key=c.kind+(c.id||'');if(seen[key])return;seen[key]=1;c.kind==='emergency'?M.cards.unshift(c):M.cards.push(c)});
+    if(o.undo)M.undo=true});
+  if(M.undo){lastSnapshot=snap;save()}
+  botHTML(M).forEach(function(p){addMsg('bot',p.html,p.cls)});
+  if(tl.length)addMsg('bot','💡 관련 안내가 있어요.<div class="acts">'+tl.slice(0,4).map(function(c){return '<button type="button" onclick="showTopic(\''+esc(c.id)+'\')">'+esc(c.q)+'</button>'}).join('')+'</div>');
+  renderHome();scrollBottom();
+}
+window.sendBatch=sendBatch;
+
+function O(l,v,x){var o={l:l,v:v==null?l:v};if(x)for(var k in x)o[k]=x[k];return o}
+function G(h,items,c,hot){return {h:h,items:items,c:c||3,hot:hot}}
+function rng(a,b){var r=[];for(var i=a;i<=b;i++)r.push(i);return r}
+var SITE_PH={'배':'복통','가슴':'가슴 통증','머리':'두통','허리·등':'허리 통증','수술 부위':'수술 부위','입안·목':'목이 아파','팔·어깨':'어깨 통증','다리':'다리 통증','뼈·관절':'관절 통증','포트·주사 부위':'포트 부위'};
+var SYM_PH={'오한':'오한','기침':'기침','숨참':'숨이 차요','입안 염증':'입안 염증','발진':'발진','부종':'부종','피로':'피로','어지럼':'어지러움','불면':'잠을 못 잠','코피·출혈':'코피·잇몸 피','메스꺼움':'메스꺼움','탈모':'탈모'};
+function activeMeds(){var rx=myRx(),ci=cycleInfo&&cycleInfo(),off=rx&&rx.oral&&ci&&ci.t>=rx.oral.on&&ci.t<rx.cycle;
+  return state.meds.filter(function(m){return m.active==='yes'&&m.name}).map(function(m){var isRx=off&&RXDB&&RXDB.find(m.name)&&RXDB.find(m.name).id===rx.id;return {m:m,rest:!!isRx,done:chk('med_'+m.id)}})}
+function md(d){var x=new Date(d+'T00:00:00');return (x.getMonth()+1)+'월 '+x.getDate()+'일'}
+
+var ST={
+  temp:{q:'지금 체온은요?',sub:'방금 잰 숫자에 가장 가까운 것을 누르세요.',
+    groups:function(){return [G('보통',[O('36.0 이하','36.0'),O('36.5'),O('37.0')]),G('미열 — 1시간 뒤 다시 재기',[O('37.5'),O('37.8')]),G('⚠ 38.0℃ 이상 — 병원 연락',[O('38.0'),O('38.5'),O('39.0 이상','39.0')],3,true)]},
+    other:{lab:'✏️ 다른 숫자',ph:'예) 37.3',mode:'decimal',ok:function(v){v=+v;return v>=34&&v<=42.5}},
+    confirm:function(v){return +v>=38?'<b>⚠ '+v+'℃ 맞나요?</b><br>38.0℃ 이상이면 해열제 먹기 전에 병원에 연락해야 해서 한 번 더 확인해요.':''},
+    now:function(v){return +v>=38},out:function(v){return '체온 '+v},lab:function(v){return '체온 '+v+'℃'}},
+  chill:{q:'몸이 으슬으슬 떨리는 오한이 있나요?',when:function(s){return +s.temp>=37.5},
+    groups:function(){return [G('',[O('있어요','y'),O('없어요','n')],2)]},out:function(v){return v==='y'?'오한 있음':''},lab:function(v){return v==='y'?'오한 있음':'오한 없음'}},
+  pain:{q:'통증은 몇 점인가요?',sub:'0 = 안 아픔 · 10 = 상상할 수 있는 가장 심한 통증',
+    groups:function(){return [G('0~3 없음·약함',rng(0,3).map(function(i){return O(String(i))}),4),G('4~6 중간',rng(4,6).map(function(i){return O(String(i))}),4),G('⚠ 7~10 심함 — 병원 연락',rng(7,10).map(function(i){return O(String(i))}),4,true)]},
+    out:function(v,s){return '통증 '+v+'점'+(+v>0&&s.site&&SITE_PH[s.site]?' '+SITE_PH[s.site]:'')},lab:function(v,s){return '통증 '+v+'점'+(+v>0&&s.site?'('+s.site+')':'')}},
+  site:{q:'어디가 아픈가요?',when:function(s){return +s.pain>0},
+    groups:function(){return [G('',Object.keys(SITE_PH).map(function(k){return O(k)}).concat([O('잘 모름','')]),3)]},
+    now:function(v,s){return +s.pain>=7},out:function(){return ''},lab:function(){return ''}},
+  meal:{q:'식사는 평소와 비교해 어느 정도 드셨어요?',
+    groups:function(){return [G('',[O('거의 못 먹음','식사 거의 못 먹음'),O('조금 (¼)','식사 조금 먹음'),O('절반','식사 반 먹음'),O('대부분 (¾)','식사 대부분 먹음'),O('평소만큼','식사 다 먹음')],2)]},
+    out:function(v){return v},lab:function(v){return v.replace('식사 ','식사 ')}},
+  gi:{q:'속은 어떠세요?',sub:'해당하는 것을 모두 누른 뒤 [다 골랐어요]를 누르세요.',multi:true,
+    groups:function(){return [G('',[O('괜찮아요','ok',{ex:1}),O('메스꺼움'),O('구토'),O('설사'),O('변비'),O('⚠ 검은 변·피','검은 변',{hot:1})],2)]},
+    now:function(v){return v.indexOf('검은 변')>=0},
+    out:function(v,s){return v.filter(function(x){return x!=='ok'}).map(function(x){if(x==='구토')return s.vcnt?'':'구토';if(x==='설사')return s.dcnt?'':'설사';return x})},
+    lab:function(v,s){if(v.indexOf('ok')>=0)return '속 괜찮음';return v.filter(function(x){return !((x==='구토'&&s.vcnt)||(x==='설사'&&s.dcnt))}).join('·')}},
+  vcnt:{q:'오늘 구토는 모두 몇 번이에요?',when:function(s){return s.gi&&s.gi.indexOf('구토')>=0},
+    groups:function(){return [G('',[O('1번','1'),O('2번','2'),O('3번','3',{hot:1}),O('4번','4',{hot:1}),O('5번 이상','5',{hot:1})],3)]},
+    now:function(v){return +v>=3},out:function(v){return '구토 총 '+v+'회'},lab:function(v){return '구토 '+v+'회'}},
+  dcnt:{q:'오늘 설사는 모두 몇 번이에요?',when:function(s){return s.gi&&s.gi.indexOf('설사')>=0},
+    groups:function(){return [G('',[O('1번','1'),O('2번','2'),O('3번','3'),O('4번','4',{hot:1}),O('5번 이상','5',{hot:1})],3)]},
+    now:function(v){return +v>=4},out:function(v){return '설사 총 '+v+'회'},lab:function(v){return '설사 '+v+'회'}},
+  meds:{q:'오늘 먹은 약을 모두 누르세요.',sub:'다 고르면 [다 골랐어요]. 먹은 시간이 함께 기록돼요.',multi:true,
+    when:function(){return activeMeds().some(function(a){return !a.rest&&!a.done})},
+    groups:function(){var a=activeMeds();return [G('',a.filter(function(x){return !x.rest&&!x.done}).map(function(x){return O('💊 '+x.m.name+(x.m.schedule?' · '+x.m.schedule:''),x.m.id)}).concat([O('아직 안 먹었어요','none',{ex:1})]),1)].concat(a.some(function(x){return x.rest||x.done})?[G(a.filter(function(x){return x.done}).length?'✓ 오늘 이미 체크한 약·쉬는 기간 약은 빼고 보여 드려요':'쉬는 기간 약은 빼고 보여 드려요',[],1)]:[])},
+    fx:function(v){var d=state.checks[today()]||(state.checks[today()]={});v.forEach(function(id){if(id!=='none')d['med_'+id]=true})},
+    out:function(v){return v.filter(function(id){return id!=='none'}).map(function(id){var m=state.meds.find(function(x){return x.id===id});return m?m.name+' 먹었어':''})},
+    lab:function(v){var n=v.filter(function(id){return id!=='none'}).map(function(id){var m=state.meds.find(function(x){return x.id===id});return m?m.name:''});return n.length?'약 먹음: '+n.join(', '):'약 아직'}},
+  sym:{q:'오늘 있는 증상을 모두 누르세요.',sub:'다 고르면 [다 골랐어요]. 없으면 [없어요].',multi:true,
+    groups:function(){return [G('',Object.keys(SYM_PH).map(function(k){return O(k,k,(k==='숨참'||k==='코피·출혈')?{hot:1}:null)}).concat([O('손발 저림'),O('✏️ 그 밖에','etc'),O('없어요','none',{ex:1})]),3)]},
+    now:function(v){return v.indexOf('숨참')>=0||v.indexOf('코피·출혈')>=0},
+    out:function(v){var p=v.filter(function(x){return SYM_PH[x]}).map(function(x){return SYM_PH[x]});return p.length?p.join(', '):''},
+    lab:function(v){return v.indexOf('none')>=0?'증상 없음':v.filter(function(x){return x!=='etc'}).join('·')}},
+  numb:{q:'손발 저림은 어느 정도인가요?',when:function(s){return s.sym&&s.sym.indexOf('손발 저림')>=0},
+    groups:function(){return [G('',[O('1 가끔 저림','1'),O('2 단추·글씨가 불편','2',{hot:1}),O('3 걷기·일상이 어려움','3',{hot:1})],1)]},
+    out:function(v){return '손발 저림 '+v+'단계'},lab:function(v){return '저림 '+v+'단계'}},
+  symTxt:{q:'그 밖의 증상을 적어 주세요.',when:function(s){return s.sym&&s.sym.indexOf('etc')>=0},
+    input:{ph:'예) 손톱이 까매졌어요',mode:'text',ok:function(v){return v.trim().length>0}},
+    out:function(v){return '메모: '+v},lab:function(v){return v}},
+  mood:{q:'요즘 마음이 얼마나 힘드세요?',sub:'마음 온도계 · 0 = 평온 · 10 = 매우 힘듦',
+    groups:function(){return [G('0~3 괜찮음',rng(0,3).map(function(i){return O(String(i))}),4),G('4~6 조금 힘듦',rng(4,6).map(function(i){return O(String(i))}),4),G('7~10 많이 힘듦 — 이야기 나눠요',rng(7,10).map(function(i){return O(String(i))}),4,true)]},
+    out:function(v){return '기분 '+v+'점'},lab:function(v){return '마음 '+v+'점'}},
+  reason:{q:'무엇 때문에 힘드세요?',sub:'여러 개 골라도 돼요. 진료 때 함께 이야기할 수 있게 적어 둘게요.',multi:true,when:function(s){return +s.mood>=4},
+    groups:function(){return [G('',['걱정·불안','잠','통증','가족','돈·일','외로움','기타'].map(function(k){return O(k)}),3)]},
+    out:function(v){return '메모: 마음이 힘든 이유 - '+v.join(', ')},lab:function(v){return '힘든 이유: '+v.join('·')}},
+  bodyPick:{q:'무엇을 기록할까요?',groups:function(){return [G('',[O('😴 잠','sleep'),O('⚖️ 체중','weight'),O('💧 물','water')],3)]},out:function(){return ''},lab:function(){return ''}},
+  sleep:{q:'어젯밤 몇 시간 주무셨어요?',when:function(s){return s.bodyPick==='sleep'||(s.extra&&s.extra.indexOf('sleep')>=0)},
+    groups:function(){return [G('',[O('3시간 이하','3'),O('4시간','4'),O('5시간','5'),O('6시간','6'),O('7시간','7'),O('8시간 이상','8')],3)]},
+    out:function(v){return '잠 '+v+'시간'},lab:function(v){return '잠 '+v+'시간'}},
+  weight:{q:'체중을 적어 주세요 (kg).',sub:'아침 화장실 다녀온 뒤 재면 비교하기 좋아요.',when:function(s){return s.bodyPick==='weight'},
+    input:{ph:'예) 58.5',mode:'decimal',ok:function(v){v=+v;return v>=20&&v<=200}},
+    out:function(v){return '체중 '+(+v)},lab:function(v){return '체중 '+(+v)+'kg'}},
+  water:{q:'오늘 물을 몇 컵(200mL) 드셨어요?',when:function(s){return s.bodyPick==='water'},
+    groups:function(){return [G('',[O('1컵','1'),O('2컵','2'),O('4컵','4'),O('6컵','6'),O('8컵','8'),O('10컵 이상','10')],3)]},
+    out:function(v){return '물 '+v+'컵'},lab:function(v){return '물 '+v+'컵'}},
+  extra:{q:'더 기록할 것이 있나요?',sub:'없으면 [다 골랐어요]를 눌러 마무리하세요.',multi:true,
+    groups:function(){return [G('',[O('🤒 증상','sym'),O('💭 마음','mood'),O('😴 잠','sleep'),O('없어요','none',{ex:1})],2)]},out:function(){return ''},lab:function(){return ''}},
+  sDate:{q:'언제예요?',groups:function(){return [G('',[O('오늘','0'),O('내일','1'),O('모레','2')],3)]},
+    other:{lab:'📆 날짜 고르기',mode:'date',ok:function(v){return !!v&&v>=today()}},
+    out:function(d,s){var ds=/^\d+$/.test(d)?(function(){var x=new Date();x.setDate(x.getDate()+(+d));return ymd(x)})():d;
+      var tm=s.sTime||'';if(/^\d{1,2}:\d{2}$/.test(tm))tm=tm.replace(/^0/,'').replace(':00','시').replace(/:(\d\d)$/,'시 $1분');
+      return md(ds)+(tm?' '+tm:'')+' '+(s.sKind||'병원 예약')+(s.sMemo?' '+s.sMemo:'')},
+    lab:function(v){return /^\d+$/.test(v)?['오늘','내일','모레'][+v]:md(v)}},
+  sKind:{q:'어떤 일정이에요?',groups:function(){return [G('',[O('💉 항암','항암'),O('☢️ 방사선','방사선'),O('🩻 검사','검사'),O('🩺 외래 진료','외래 진료'),O('🩸 채혈','채혈'),O('💊 주사','주사'),O('기타','병원 예약')],3)]},out:function(){return ''},lab:function(v){return v}},
+  sTime:{q:'몇 시예요?',groups:function(){return [G('오전',[O('8시','오전 8시'),O('9시','오전 9시'),O('10시','오전 10시'),O('11시','오전 11시')],4),G('오후',[O('1시','오후 1시'),O('2시','오후 2시'),O('3시','오후 3시'),O('4시','오후 4시')],4),G('',[O('시간 모름','')],1)]},
+    other:{lab:'✏️ 다른 시간',mode:'time',ok:function(v){return /^\d{1,2}:\d{2}$/.test(v)}},
+    out:function(){return ''},lab:function(v){return v?(/:/.test(v)?v:v):'시간 미정'}},
+  sMemo:{q:'더 적을 것이 있으면 쓰세요 (선택).',sub:'예) 3차 · 복부 CT · 금식 — 없으면 [건너뛰기]',input:{ph:'예) 3차',mode:'text',ok:function(v){return v.trim().length>0}},
+    out:function(){return ''},
+    lab:function(v){return v||''}},
+  qPick:{q:'진료 때 물어볼 것을 고르세요.',sub:'여러 개 골라도 돼요. 직접 쓰려면 [✏️ 직접 쓰기].',multi:true,
+    groups:function(){return [G('',['부작용은 언제까지 가나요?','운동해도 되나요?','검사 결과를 설명해 주세요','음식은 가려야 하나요?','다음 치료 일정은 어떻게 되나요?','열이 나면 어디로 연락하나요?'].map(function(k){return O(k)}).concat([O('✏️ 직접 쓰기','etc')]),1)]},
+    out:function(v){return v.filter(function(x){return x!=='etc'}).map(function(x){return '질문: '+x})},lab:function(v){var n=v.filter(function(x){return x!=='etc'}).length;return n?'질문 '+n+'개':''}},
+  qTxt:{q:'물어볼 것을 적어 주세요.',when:function(s){return s.qPick&&s.qPick.indexOf('etc')>=0},input:{ph:'예) 항암 중 여행 가도 되나요?',mode:'text',ok:function(v){return v.trim().length>0}},
+    out:function(v){return '질문: '+v},lab:function(v){return '질문: '+v}},
+  labPick:{q:'어떤 수치를 적을까요?',sub:'결과지에 적힌 숫자 그대로 적으면 돼요.',groups:function(){return [G('',[O('호중구'),O('백혈구'),O('혈소판'),O('혈색소')],2)]},out:function(){return ''},lab:function(){return ''}},
+  labVal:{q:'수치를 적어 주세요.',when:function(s){return !!s.labPick},input:{ph:'결과지 숫자 그대로',mode:'decimal',ok:function(v){return v!==''&&!isNaN(+String(v).replace(/,/g,''))}},
+    qf:function(s){return (s.labPick||'')+' 수치를 적어 주세요.'},
+    out:function(v,s){return s.labPick+' '+String(v).replace(/,/g,'')},lab:function(v,s){return s.labPick+' '+v}}
 };
+var FLOWS={
+  temp:{t:'🌡️ 체온',steps:['temp','chill']},
+  pain:{t:'😣 통증',steps:['pain','site']},
+  meal:{t:'🍚 식사·속',steps:['meal','gi','vcnt','dcnt']},
+  med:{t:'💊 약 먹음',steps:['meds']},
+  sym:{t:'🤒 증상',steps:['sym','numb','symTxt']},
+  mood:{t:'💭 마음 온도계',steps:['mood','reason']},
+  body:{t:'😴 잠·체중·물',steps:['bodyPick','sleep','weight','water']},
+  sched:{t:'📅 일정',steps:['sDate','sKind','sTime','sMemo']},
+  q:{t:'❓ 질문 메모',steps:['qPick','qTxt']},
+  lab:{t:'🩸 검사 수치',steps:['labPick','labVal']},
+  checkin:{t:'✅ 오늘 한 번에 기록',review:true,steps:['temp','chill','pain','site','meal','gi','vcnt','dcnt','meds','extra','sym','numb','symTxt','mood','reason','sleep']}
+};
+/* 체크인에서는 '더 기록할 것'에서 고른 것만 묻는다 */
+function stepOn(F,k){var st=ST[k],s=F.sel;
+  if(F.key==='checkin'&&['sym','mood','sleep'].indexOf(k)>=0&&!(s.extra&&s.extra.indexOf(k)>=0))return false;
+  if(F.key==='sched'&&k==='sMemo')return true;
+  return !st.when||st.when(s)}
+var F=null;
+function flowStart(key){
+  if(key==='med'&&!activeMeds().length){tab('today');addMsg('bot','<b>💊 등록된 약이 없어요.</b><br>먹는 약을 먼저 등록하면 다음부터 버튼으로 체크할 수 있어요.<div class="acts"><button type="button" onclick="prefill(\'약: \')">✏️ 약 등록하기</button><button type="button" onclick="planTab=\'meds\';renderPlan();tab(\'plan\')">💊 약 목록</button></div>','',false);scrollBottom();return}
+  if(key==='med'&&!stepOn({key:'med',sel:{}},'meds')){tab('today');addMsg('bot','<b>💊 오늘 먹을 약을 모두 체크했어요 ✓</b><br><span class="small muted">쉬는 기간인 약은 빼고 보여 드려요. 체크를 고치려면 홈의 할 일 목록에서 누르세요.</span>','',false);scrollBottom();return}
+  if(F&&F.el)F.el.remove();
+  tab('today');
+  var el=addMsg('bot','','flw',false);
+  F={key:key,def:FLOWS[key],sel:{},hist:[],i:-1,done:{},el:el,other:false,pend:null};
+  next();
+}
+window.flowStart=flowStart;
+function next(){var s=F.def.steps,j=F.i+1;while(j<s.length&&!stepOn(F,s[j]))j++;
+  if(j>=s.length){if(F.def.review&&Object.keys(F.sel).some(function(k){return !F.done[k]}))return renderReview();return flowSave()}
+  if(F.i>=0)F.hist.push(F.i);F.i=j;F.other=false;F.pend=null;renderFlow()}
+function flowPreview(onlyNew){var parts=[];F.def.steps.forEach(function(k){if(!(k in F.sel)||(onlyNew&&F.done[k]))return;if(!stepOn(F,k))return;var l=ST[k].lab(F.sel[k],F.sel);if(l)parts.push(l)});return parts}
+function flowStrings(){var out=[],ks=[],fxs=[];F.def.steps.forEach(function(k){if(!(k in F.sel)||F.done[k]||!stepOn(F,k))return;var st=ST[k],o=st.out(F.sel[k],F.sel);if(st.fx)fxs.push(st.fx.bind(null,F.sel[k]));ks.push(k);[].concat(o).forEach(function(x){if(x)out.push(x)})});return {out:out,ks:ks,fx:fxs}}
+function flush(){var r=flowStrings(),lab=flowPreview(true).join(' · ');r.ks.forEach(function(k){F.done[k]=1});F.hist=[];
+  if(r.out.length){F.el.remove();sendBatch(r.out,lab,r.fx);F.el=addMsg('bot','','flw',false)}}
+function flowSave(){$('#composer').classList.remove('flowing');var r=flowStrings(),lab=flowPreview(true).join(' · ');var el=F.el,fdone=F.done;F=null;
+  if(!r.out.length){if(Object.keys(fdone).length)el.remove();else el.innerHTML='<span class="small muted">기록할 내용이 없어서 닫았어요.</span>';return}
+  el.remove();sendBatch(r.out,lab,r.fx)}
+function optList(st){var a=[];st.groups().forEach(function(g){g.items.forEach(function(o){a.push(o)})});return a}
+function renderFlow(){
+  var k=F.def.steps[F.i],st=ST[k],v=F.sel[k],tot=0,pos=0;
+  F.def.steps.forEach(function(x,ix){if(stepOn(F,x)){tot++;if(ix<=F.i)pos++}});
+  var h='<div class="fl" aria-live="polite"><div class="flh"><span class="flp">'+(tot>1?pos+' / '+tot:'버튼 기록')+'</span><span>'+F.def.t+'</span><button type="button" class="flx" data-fa="close" aria-label="닫기">✕</button></div>';
+  h+='<b class="flq">'+esc(st.qf?st.qf(F.sel):st.q)+'</b>'+(st.sub?'<div class="small muted">'+esc(st.sub)+'</div>':'');
+  if(F.pend!=null){h+='<div class="flcf">'+st.confirm(F.pend)+'<div class="flnav"><button type="button" class="ok" data-fa="cfy">네, 맞아요</button><button type="button" data-fa="cfn">다시 고를게요</button></div></div></div>';F.el.innerHTML=h;return}
+  if(st.groups){var idx=0;st.groups().forEach(function(g){
+    h+='<div class="flg">'+(g.h?'<div class="flgh'+(g.hot?' hot':'')+'">'+esc(g.h)+'</div>':'')+'<div class="flo c'+g.c+'">';
+    g.items.forEach(function(o){var on=st.multi?(v||[]).indexOf(o.v)>=0:v===o.v;
+      h+='<button type="button" data-fa="'+(st.multi?'tg':'pk')+'" data-i="'+idx+'" class="'+((o.hot||g.hot)?'hot':'')+'"'+(st.multi?' aria-pressed="'+on+'"':(on?' aria-current="true"':''))+'>'+esc(o.l)+'</button>';idx++});
+    h+='</div></div>'})}
+  var inp=st.input||(F.other&&st.other);
+  if(st.other&&!F.other)h+='<div class="flnav"><button type="button" data-fa="oth">'+esc(st.other.lab)+'</button></div>';
+  if(inp){var ty=inp.mode==='date'?'date':inp.mode==='time'?'time':'text';
+    h+='<form class="flin" data-fa="inp"><input type="'+ty+'" '+(inp.mode==='decimal'?'inputmode="decimal" ':'')+(ty==='date'?'min="'+today()+'" ':'')+'placeholder="'+esc(inp.ph||'')+'" aria-label="'+esc(st.q)+'" value="'+(st.input&&typeof v==='string'?esc(v):'')+'"><button type="submit" class="ok">확인</button></form>'}
+  h+='<div class="flnav">';
+  if(F.hist.length)h+='<button type="button" data-fa="back">◀ 이전</button>';
+  h+='<button type="button" data-fa="skip">건너뛰기</button>';
+  if(st.multi)h+='<button type="button" class="ok" data-fa="done">다 골랐어요 ✓</button>';
+  h+='</div>';
+  var pv=flowPreview(true);if(pv.length)h+='<div class="flpv">지금까지: '+esc(pv.join(' · '))+'</div>';
+  h+='</div>';F.el.innerHTML=h;
+  if(inp&&F.other){var ie=F.el.querySelector('input');ie&&ie.focus({preventScroll:true})}
+  flowScroll();
+}
+function flowScroll(){if(!F||!F.el)return;var c=$('#composer');c.classList.add('flowing');setTimeout(function(){if(!F||!F.el)return;var r=F.el.getBoundingClientRect(),top=$('.top')?$('.top').getBoundingClientRect().bottom:60,bot=c.getBoundingClientRect().top;
+  if(r.height>bot-top-12)window.scrollTo({top:scrollY+r.top-top-8,behavior:'smooth'});else scrollBottom()},40)}
+function renderReview(){
+  var pv=flowPreview(true);
+  F.el.innerHTML='<div class="fl" aria-live="polite"><div class="flh"><span class="flp">확인</span><span>'+F.def.t+'</span><button type="button" class="flx" data-fa="close" aria-label="닫기">✕</button></div><b class="flq">이대로 저장할까요?</b><ul class="flsum">'+pv.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul><div class="flnav"><button type="button" data-fa="back">◀ 고치기</button><button type="button" class="ok" data-fa="save">✓ 저장</button></div></div>';
+  F.hist.push(F.i);F.i=F.def.steps.length;flowScroll();
+}
+$('#thread').addEventListener('click',function(e){
+  var b=e.target.closest('[data-fa]');if(!b||!F||!F.el.contains(b)||b.tagName==='FORM')return;
+  var a=b.dataset.fa,k=F.def.steps[F.i],st=ST[k];
+  if(a==='close'){F.el.remove();F=null;$('#composer').classList.remove('flowing');return}
+  if(a==='save'){flowSave();return}
+  if(a==='back'){if(!F.hist.length)return;F.i=F.hist.pop();F.other=false;F.pend=null;renderFlow();return}
+  if(a==='skip'){delete F.sel[k];next();return}
+  if(a==='oth'){F.other=true;renderFlow();return}
+  if(a==='cfn'){F.pend=null;renderFlow();return}
+  if(a==='cfy'){F.sel[k]=F.pend;F.pend=null;after(k);return}
+  if(a==='done'){if(!F.sel[k])delete F.sel[k];after(k);return}
+  var o=optList(st)[+b.dataset.i];if(!o)return;
+  if(a==='pk'){if(st.confirm&&st.confirm(o.v)){F.pend=o.v;renderFlow();return}F.sel[k]=o.v;after(k);return}
+  if(a==='tg'){var arr=(F.sel[k]||[]).slice(),ix=arr.indexOf(o.v);
+    if(ix>=0)arr.splice(ix,1);else{if(o.ex)arr=[];else arr=arr.filter(function(x){return !optList(st).some(function(p){return p.ex&&p.v===x})});arr.push(o.v)}
+    if(arr.length)F.sel[k]=arr;else delete F.sel[k];
+    if(o.ex&&ix<0){after(k);return}
+    renderFlow();return}
+});
+$('#thread').addEventListener('submit',function(e){var f=e.target.closest('form[data-fa="inp"]');if(!f||!F)return;e.preventDefault();
+  var k=F.def.steps[F.i],st=ST[k],inp=st.input||st.other,val=f.querySelector('input').value.trim();
+  if(!inp.ok(val)){toast(inp.mode==='date'?'오늘 이후 날짜를 골라 주세요':'값을 확인해 주세요');return}
+  if(inp.mode==='decimal')val=String(val).replace(/,/g,'');
+  if(st.confirm&&st.confirm(val)){F.pend=val;renderFlow();return}
+  F.sel[k]=val;after(k)});
+function after(k){var st=ST[k];if(st.now&&(k in F.sel)&&st.now(F.sel[k],F.sel)){
+    /* 위험 신호: 다음 단계로 가기 전에 지금 저장하고 경고를 먼저 보여 준다 */
+    flush()}
+  next()}
+
+/* 칩 */
+(function(){var c=$('#composer');function m(){document.documentElement.style.setProperty('--compH',c.offsetHeight+'px')}m();if(window.ResizeObserver)new ResizeObserver(m).observe(c);else addEventListener('resize',m)})();
 document.querySelectorAll('#chips button').forEach(function(b){b.onclick=function(){
-  var k=b.dataset.c;if(k==='help'){sendText('사용법');return}
-  var q=QUICK[k];var html=q[0]+(q[1].length?'<div class="qr">'+q[1].map(function(x){return '<button type="button" data-s="'+esc(x[1])+'">'+esc(x[0])+'</button>'}).join('')+'</div>':'');
-  addMsg('bot',html,'',false);
-  if(k==='sched')prefill('');if(k==='med')prefill('약: ');if(k==='q')prefill('질문: ');if(k==='lab')prefill('');
-  scrollBottom();
+  var k=b.dataset.c,ch=$('#chips');
+  if(k==='more'){var open=ch.classList.toggle('open');b.setAttribute('aria-expanded',open);b.innerHTML=open?'➖ 접기':'➕ 더보기';return}
+  if(ch.classList.contains('open')&&b.classList.contains('x')){ch.classList.remove('open');var mb=ch.querySelector('[data-c=more]');mb.setAttribute('aria-expanded','false');mb.innerHTML='➕ 더보기'}
+  if(k==='help'){sendText('사용법');return}
+  flowStart(k);
 }});
 $('#thread').addEventListener('click',function(e){var b=e.target.closest('.qr button');if(!b)return;b.parentNode.querySelectorAll('button').forEach(function(x){x.disabled=true;x.style.opacity=x===b?1:.4});sendText(b.dataset.s)});
 function autoGrow(){var i=$('#input');i.style.height='auto';i.style.height=Math.min(i.scrollHeight,120)+'px'}
-$('#input').addEventListener('input',autoGrow);
+$('#input').addEventListener('input',function(){autoGrow();$('#composer').classList.toggle('typing',!!$('#input').value.trim())});
 $('#input').addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing){e.preventDefault();$('#inbar').requestSubmit()}});
-$('#inbar').addEventListener('submit',function(e){e.preventDefault();var v=$('#input').value;$('#input').value='';autoGrow();sendText(v)});
+$('#inbar').addEventListener('submit',function(e){e.preventDefault();var v=$('#input').value;$('#input').value='';autoGrow();$('#composer').classList.remove('typing');sendText(v)});
 /* 음성 입력(지원 브라우저만) */
 (function(){var SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR)return;var mic=$('#mic');mic.hidden=false;var r=null;
   mic.onclick=function(){if(r){r.stop();return}r=new SR();r.lang='ko-KR';r.interimResults=false;mic.classList.add('rec');
@@ -553,7 +759,7 @@ function renderPlan(){
   }else if(planTab==='meds'){
     var act=state.meds.filter(function(m){return m.active==='yes'}),stop=state.meds.filter(function(m){return m.active!=='yes'});
     h='<div class="card"><h3>복용 중인 약</h3>'+(act.length?act.map(medItem).join(''):'<div class="empty">등록된 약이 없어요.</div>')+
-      '<form class="addline" onsubmit="addMed(event)"><input name="t" placeholder="예) 젤로다 아침저녁 3알" required><button class="btn primary sm">추가</button></form>'+
+      '<form class="addline" onsubmit="addMed(event)"><input name="t" placeholder="예) 카페시타빈 아침저녁 3알" required><button class="btn primary sm">추가</button></form>'+
       '<p class="small muted" style="margin:8px 0 0">처방전·약봉투에 적힌 이름 그대로 적어 주세요. 영양제·한약도 함께 적으면 진료 때 도움이 돼요.</p></div>'+
       (stop.length?'<div class="card"><h3>중단·종료한 약</h3>'+stop.map(medItem).join('')+'</div>':'');
   }else if(planTab==='chemo'){h=renderChemo();
@@ -734,8 +940,9 @@ function renderAll(){renderHome();renderPlan();renderLog();renderSummary();rende
 /* ═════════ 시작 ═════════ */
 function greet(){
   var p=state.profile,first=!state.logs.length&&!state.roadmap.length&&!state.meds.length;
-  var h=first?'<b>안녕하세요, ApuDa 노트봇이에요.</b><br>말하듯이 쓰면 제가 정리해 둘게요.<ul><li>"열 37.8, 통증 3점"</li><li>"다음주 화요일 10시 항암 3차"</li><li>"질문: 항암 중 운동해도 되나요?"</li></ul>아래 입력창에 쓰거나 <b>🎤 말하기</b>를 눌러 보세요. 더 많은 예시는 <b>💡 사용법</b>에 있어요.'
-    :'<b>'+(p.name?esc(p.name)+'님, ':'')+'오늘 상태를 알려 주세요.</b><div class="qr">'+[['🌡️ 체온','temp'],['😣 통증','pain'],['🍚 식사','meal']].map(function(x){return '<button type="button" onclick="document.querySelector(\'#chips [data-c='+x[1]+']\').click()">'+x[0]+'</button>'}).join('')+'</div>';
+  var h=first?'<b>안녕하세요, ApuDa 노트봇이에요.</b><br>말하듯이 쓰면 제가 정리해 둘게요.<ul><li>"열 37.8, 통증 3점"</li><li>"다음주 화요일 10시 항암 3차"</li><li>"질문: 항암 중 운동해도 되나요?"</li></ul>아래 버튼을 누르거나, 입력창에 쓰거나 <b>🎤 말하기</b>를 눌러 보세요. 더 많은 예시는 <b>💡 사용법</b>에 있어요.'
+    :'<b>'+(p.name?esc(p.name)+'님, ':'')+'오늘 상태를 알려 주세요.</b><br><span class="small muted">버튼만 눌러도 기록돼요.</span>';
+  h+='<div class="acts gstart"><button type="button" class="pri" onclick="flowStart(\'checkin\')">✅ 오늘 한 번에 기록 (1분)</button><button type="button" onclick="flowStart(\'temp\')">🌡️ 체온만</button></div>';
   addMsg('bot',h,'',false);
 }
 (function init(){
