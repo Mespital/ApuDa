@@ -264,12 +264,48 @@ html.big .chips button{font-size:.74em;min-height:52px}
 @media(max-width:1023px){.composer.flowing .chips{display:none!important}}
 .acts.gstart button{min-height:54px;font-size:.95em}.acts.gstart .pri{flex:1 1 100%;background:var(--blue);color:#fff;border-color:var(--blue)}
 @media(min-width:768px){.chips{grid-template-columns:repeat(6,1fr)}.chips button{font-size:.78em}}
+
+/* v4.0 앱형 첫 화면 */
+.tabs{grid-template-columns:repeat(5,1fr)}
+.tabs button{white-space:nowrap;font-size:13px!important;letter-spacing:-.03em;margin:6px 2px!important}html.big .tabs button{font-size:14px!important}
+.hempty{margin:0 2px 8px;padding:14px;border:1px dashed var(--line);border-radius:14px;color:var(--muted);font-size:.86em;background:#fff}
+@media(min-width:1024px){.tabs button{font-size:1em!important;margin:0!important}}
+.logo a.home{display:flex;text-decoration:none;color:inherit}
+.hsec{font-size:.86em;font-weight:900;color:var(--muted);margin:18px 2px 8px;letter-spacing:-.01em}
+.hcta{display:flex;align-items:center;gap:12px;width:100%;border:0;border-radius:20px;padding:16px;background:linear-gradient(135deg,var(--blue),#3b82f6);color:#fff;text-align:left;box-shadow:0 8px 20px rgba(37,99,235,.25);margin-top:4px}
+.hcta .hi{font-size:1.8em;width:52px;height:52px;border-radius:16px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.hcta b{display:block;font-size:1.1em}.hcta small{display:block;opacity:.9;font-size:.8em;margin-top:2px}
+.hcta .ar{margin-left:auto;font-size:1.8em;opacity:.8}
+.hgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.hgrid button{border:1px solid var(--line);background:#fff;border-radius:18px;min-height:88px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-weight:900;font-size:.88em;color:#22324a;box-shadow:0 2px 6px rgba(15,23,42,.04);padding:8px 4px;word-break:keep-all}
+.hgrid button i{font-style:normal;font-size:1.7em;line-height:1}
+.hgrid button:active,.hhelp>*:active,.hcta:active{transform:scale(.97)}
+.hhelp{display:grid;grid-template-columns:1fr;gap:8px}
+.hhelp>*{display:flex;align-items:center;gap:12px;border:1px solid var(--line);background:#fff;border-radius:16px;min-height:64px;padding:10px 14px;text-align:left;text-decoration:none;color:var(--ink)}
+.hhelp i{font-style:normal;font-size:1.5em;width:40px;text-align:center}
+.hhelp b{display:block;font-size:.95em}.hhelp small{display:block;color:var(--muted);font-size:.78em}
+.hhelp .hlink{background:#f3f7ff;border-color:#cfdcf0}
+#v-home .tiles{margin-bottom:8px}
+.chathead{display:flex;align-items:center;gap:10px;margin:0 0 12px;flex-wrap:wrap}
+.chathead button{border:1px solid var(--line);background:#fff;border-radius:12px;min-height:44px;padding:0 12px;font-weight:900;color:var(--blue2)}
+.chathead b{font-size:1.05em}.chathead small{color:var(--muted);font-size:.78em;flex-basis:100%}
+@media(min-width:420px){.chathead small{flex-basis:auto}}
+@media(min-width:768px){.hhelp{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){
+  #v-today.on{display:block}
+  #v-home.on{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:24px;align-items:start}
+  #v-home .hgrid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  #v-home .hhelp{grid-template-columns:1fr}
+  #v-home .side{position:sticky;top:96px}
+  #v-home .tiles{grid-template-columns:1fr}
+  .chathead button{display:none}
+}
 </style>
 </head>
 <body>
 <div class="app">
 <header class="top">
-  <div class="logo"><i>A</i><div><b>암환자 노트</b><small>ApuDa · 말하듯 쓰면 정리돼요</small></div></div>
+  <div class="logo"><a href="/" class="home" aria-label="ApuDa.app 홈으로" title="ApuDa.app 홈으로"><i>A</i></a><div><b>암환자 노트</b><small>ApuDa · 말하듯 쓰면 정리돼요</small></div></div>
   <button class="tbtn guide" onclick="window.ApudaBot&&ApudaBot.open()" aria-label="ApuDa 길잡이 — 다른 층으로 이동">🧭</button>
   <button class="tbtn" id="fontBtn" aria-label="글자 크기">가<span style="font-size:1.25em">가</span></button>
   <button class="tbtn" onclick="openSheet('settings')" aria-label="내 정보와 설정">⚙︎</button>
@@ -278,18 +314,47 @@ html.big .chips button{font-size:.74em;min-height:52px}
 
 
 <main>
-<!-- 오늘(노트봇) -->
-<section class="view on" id="v-today">
-  <div class="tside">
+<!-- 홈(앱 첫 화면) -->
+<section class="view on" id="v-home">
+  <div class="hcol main">
   <div class="hello" id="hello"></div>
   <div class="phonebar" id="phoneBar" hidden><span>📞 <b>치료병원 번호</b>를 등록해 두면 열이 날 때 바로 전화할 수 있어요.</span><button type="button" onclick="openSheet('settings')">등록</button><button type="button" class="x" aria-label="다음에 하기" onclick="snooze('phone')">✕</button></div>
   <div id="chemoBar"></div>
   <div id="safeline"></div>
   <div id="nudge"></div>
-  <div id="todo"></div>
-  <div class="tiles" id="tiles"></div>
-  <div class="callrow" id="callrow"></div>
+  <button type="button" class="hcta" onclick="startFrom('checkin')"><span class="hi">✅</span><span><b>오늘 한 번에 기록</b><small>체온·통증·식사·약을 버튼으로 1분</small></span><span class="ar" aria-hidden="true">›</span></button>
+  <h3 class="hsec">빠른 기록</h3>
+  <div class="hgrid">
+    <button type="button" onclick="startFrom('temp')"><i>🌡️</i>체온</button>
+    <button type="button" onclick="startFrom('pain')"><i>😣</i>통증</button>
+    <button type="button" onclick="startFrom('meal')"><i>🍚</i>식사·속</button>
+    <button type="button" onclick="startFrom('med')"><i>💊</i>약 먹음</button>
+    <button type="button" onclick="startFrom('sym')"><i>🤒</i>증상</button>
+    <button type="button" onclick="startFrom('mood')"><i>💭</i>마음</button>
+    <button type="button" onclick="startFrom('body')"><i>😴</i>잠·체중·물</button>
+    <button type="button" onclick="startFrom('sched')"><i>📅</i>일정</button>
+    <button type="button" onclick="startFrom('q')"><i>❓</i>질문</button>
   </div>
+  </div>
+  <div class="hcol side">
+  <h3 class="hsec">오늘</h3>
+  <p class="hempty" id="todayEmpty" hidden>아직 오늘 기록이 없어요. 위 버튼을 눌러 시작해 보세요.</p>
+  <div class="tiles" id="tiles"></div>
+  <div id="todo"></div>
+  <div class="callrow" id="callrow"></div>
+  <h3 class="hsec">도움 받기</h3>
+  <div class="hhelp">
+    <button type="button" onclick="tab('today')"><i>💬</i><span><b>노트봇과 대화</b><small>말하듯 쓰면 정리해 줘요</small></span></button>
+    <button type="button" onclick="window.ApudaBot&amp;&amp;ApudaBot.open()"><i>🧭</i><span><b>ApuDa 길잡이</b><small>책·약·지원 정보 찾기</small></span></button>
+    <a href="/" class="hlink"><i>🏢</i><span><b>ApuDa.app 홈</b><small>암 정보 서재·지원 정보 전체</small></span></a>
+    <button type="button" onclick="tab('summary')"><i>📄</i><span><b>진료요약</b><small>진료 때 보여 줄 화면</small></span></button>
+  </div>
+  </div>
+</section>
+
+<!-- 노트봇(대화) -->
+<section class="view" id="v-today">
+  <div class="chathead"><button type="button" onclick="tab('home')" aria-label="홈으로">‹ 홈</button><b>💬 노트봇</b><small>버튼을 누르거나 말하듯 쓰세요</small></div>
   <div class="thread" id="thread" aria-live="polite"></div>
 </section>
 
@@ -340,7 +405,8 @@ html.big .chips button{font-size:.74em;min-height:52px}
 </div>
 
 <nav class="tabs" id="tabs">
-  <button data-t="today" class="on"><span>💬</span>오늘</button>
+  <button data-t="home" class="on"><span>🏠</span>홈</button>
+  <button data-t="today"><span>💬</span>노트봇</button>
   <button data-t="plan"><span>📅</span>일정·약</button>
   <button data-t="log"><span>📈</span>기록</button>
   <button data-t="summary"><span>📄</span>진료요약</button>
@@ -406,7 +472,7 @@ html.big .chips button{font-size:.74em;min-height:52px}
     <b>하는 일</b><ul><li>몸 상태·일정·약·질문을 기록하고 진료요약으로 정리해요.</li><li>기록한 값과 입력한 날짜를 바탕으로 일반적인 참고 안내(연락 기준, 참고용 예상일)를 보여 줘요.</li></ul>
     <b>하지 않는 일</b><ul><li>질병을 진단·치료·예측하거나 약 용량·치료 일정을 정하지 않아요.</li><li>응급 상황을 판단하거나 의료진의 연락을 대신하지 않아요. 걱정되면 수치와 상관없이 의료진에게 연락하세요.</li><li>기록을 아프다 서버로 보내지 않아요(이 기기 안에만 저장, 구글 드라이브 백업은 직접 연결했을 때만).</li></ul>
     <p class="nshort" style="margin-top:6px">[안내] 이 노트의 모든 정보는 일반적인 건강 정보를 알기 쉽게 정리한 참고 자료이며, 의사의 진료·진단·처방을 대신하지 않습니다. 치료 일정·용량·검사·부작용 대처는 환자의 상태와 의료기관에 따라 다르므로 담당 의료진의 판단과 안내를 따르세요. ApuDa는 이 정보를 근거로 한 개별 의료 판단이나 그 결과에 대해 책임을 지지 않습니다. 응급 상황에는 즉시 119 또는 가까운 응급실을 이용하세요.</p></div>
-  <p class="note-foot">ApuDa 암환자 노트 v3.9 · <a href="/">ApuDa 홈</a></p>
+  <p class="note-foot">ApuDa 암환자 노트 v4.0 · <a href="/">ApuDa 홈</a></p>
 </div></div>
 
 <div class="toast" id="toast"></div>

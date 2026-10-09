@@ -76,7 +76,7 @@ function toast(m){var t=$('#toast');t.textContent=m;t.classList.add('on');clearT
 function tel(n){return 'tel:'+String(n||'').replace(/[^\d+]/g,'')}
 
 /* ── 화면 전환 (기존 지식 링크 호환) ── */
-var ALIAS={home:'today',symptoms:'log',nutrition:'log',roadmap:'plan',questions:'plan',meds:'plan',support:'log',summary:'summary',safety:'sos'};
+var ALIAS={home:'home',chat:'today',symptoms:'log',nutrition:'log',roadmap:'plan',questions:'plan',meds:'plan',support:'log',summary:'summary',safety:'sos'};
 function tab(name){
   if(name==='sos'){openSheet('sos');return}
   document.querySelectorAll('.view').forEach(function(v){v.classList.toggle('on',v.id==='v-'+name)});
@@ -588,7 +588,7 @@ function flowStart(key){
   F={key:key,def:FLOWS[key],sel:{},hist:[],i:-1,done:{},el:el,other:false,pend:null};
   next();
 }
-window.flowStart=flowStart;
+window.flowStart=flowStart;window.startFrom=function(k){flowStart(k)};
 function next(){var s=F.def.steps,j=F.i+1;while(j<s.length&&!stepOn(F,s[j]))j++;
   if(j>=s.length){if(F.def.review&&Object.keys(F.sel).some(function(k){return !F.done[k]}))return renderReview();return flowSave()}
   if(F.i>=0)F.hist.push(F.i);F.i=j;F.other=false;F.pend=null;renderFlow()}
@@ -718,6 +718,7 @@ function renderHome(){
    '<button class="tile" onclick="planTab=\'qs\';renderPlan();tab(\'plan\')"><small>❓ 물어볼 것</small><b>'+hq+'개</b></button>';
   var c='';if(p.dayPhone)c+='<a class="btn line" href="'+tel(p.dayPhone)+'">📞 병원 전화</a>';if(p.nightPhone)c+='<a class="btn line" href="'+tel(p.nightPhone)+'">🌙 야간·응급</a>';
   $('#callrow').innerHTML=c;$('#callrow').hidden=!c;
+  var te=$('#todayEmpty');if(te)te.hidden=!(tilesEmpty&&!$('#todo').innerHTML.trim()&&!c);
 }
 function chk(k){var d=state.checks[today()];return !!(d&&d[k])}
 window.toggleCheck=function(k){var d=state.checks[today()]||(state.checks[today()]={});d[k]=!d[k];
@@ -949,7 +950,7 @@ function greet(){
   chat.slice(-30).forEach(function(m){var el=addMsg(m.w,m.h,m.c,false);el.querySelectorAll('.undo,.qr button').forEach(function(b){b.remove()})});
   if(chat.length){var sep=document.createElement('div');sep.className='small muted';sep.style.textAlign='center';sep.textContent='— 이전 대화 —';$('#thread').appendChild(sep)}
   renderAll();greet();
-  var q=new URLSearchParams(location.search);if(q.get('tab'))tab(q.get('tab'));
+  var q=new URLSearchParams(location.search);tab(q.get('tab')||'home');
   var say=q.get('say');if(say!==null){history.replaceState(null,'',location.pathname+location.hash);if(/[:：]\s*$/.test(say)||say.trim().length<3)prefill(say);else setTimeout(function(){sendText(say)},120)}
   if(location.hash==='#sos')openSheet('sos');
   setTimeout(function(){window.scrollTo(0,document.body.scrollHeight)},60);
