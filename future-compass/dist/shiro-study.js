@@ -130,5 +130,38 @@ window.SHIRO_STUDY = (function () {
   }
   var examples = ['오늘 뭐부터 해?', '시험까지 뭐부터 해?', '오늘 40분밖에 없어', '수학이 너무 밀렸어', '내일 시간표 알려줘', '시간표 어떻게 바꿔?'];
   var chips = ['엄마·아빠에게 보내기', '공부 기록', '일정 넣기', '컨디션', '오늘 뭐부터 해?', '시험까지 뭐부터 해?', '오늘 40분밖에 없어', '내일 시간표 알려줘', '1분 말하기', '처음 사용법', '하루 쓰는 법', 'A/B/C 우선순위', '집중 타이머', '하루 마무리', '이번 주 큰 돌', '기록 보기', '다짐·학기 목표', '시간표 바꾸기', '교과서·예습', '학원', '이동·길찾기', '시험·수행평가', '복습·오답', '캐릭터 바꾸기', '가족 공유', '비밀번호', '백업'];
-  return { menus: menus, faqs: faqs, chips: chips, intro: intro, dynamic: dynamic, examples: examples, placeholder: '예: 오늘 뭐부터 해?' };
+  /* 버튼을 누르면 설명만 하지 않고 그 화면으로 바로 이동·실행 */
+  function go(t, sel, click) {
+    if (typeof tab !== 'undefined' && tab !== t) location.hash = t;
+    setTimeout(function () {
+      var el = sel && document.querySelector(sel);
+      var to = function (b) { var e = sel && document.querySelector(sel); if (e) window.scrollTo({ top: Math.max(0, e.getBoundingClientRect().top + window.scrollY - 72), behavior: b }); return e; };
+      if (el) { to('smooth'); el.classList.add('kp-flash'); setTimeout(function () { el.classList.remove('kp-flash'); }, 1600); setTimeout(function () { var e = document.querySelector(sel); if (e) { var r = e.getBoundingClientRect(); if (r.top < 0 || r.top > innerHeight - 80) to('auto'); } }, 700); }
+      if (click) setTimeout(function () { var c = document.querySelector(click); if (c) c.click(); }, 250);
+    }, 380);
+  }
+  var actions = {
+    '엄마·아빠에게 보내기': function () { var b = document.querySelector('[data-kp-open-ask]'); if (b) b.click(); else go('today', '#kp-ask'); },
+    '공부 기록': function () { go('today', '#sl-today', '#sl-today [data-sl-open]'); },
+    '일정 넣기': function () { go('today', '#lg-today', '[data-lg-add="today"]'); },
+    '컨디션': function () { go('today', '.kp-mood'); },
+    '1분 말하기': function () { go('today', '.tn-card'); },
+    '집중 타이머': function () { go('focus', '.fm-card'); },
+    '하루 마무리': function () { go('today', '.pl-close'); },
+    '이번 주 큰 돌': function () { go('week', '#content .card'); },
+    '기록 보기': function () { go('stats', '#sl-journal'); },
+    '다짐·학기 목표': function () { go('settings', '#set-planner'); },
+    '시간표 바꾸기': function () { go('settings', '.wk-upload'); },
+    '교과서·예습': function () { go('settings', '#course-panel'); },
+    '학원': function () { go('settings', '#academy-panel'); },
+    '이동·길찾기': function () { go('settings', '#route-settings'); },
+    '시험·수행평가': function () { go('dates', '#content .card'); },
+    '복습·오답': function () { go('review', '#content .card'); },
+    '캐릭터 바꾸기': function () { go('settings', '#set-profile'); },
+    '가족 공유': function () { go('settings', '#set-family'); },
+    '비밀번호': function () { go('settings', '#set-family'); },
+    '백업': function () { go('settings', '#set-family'); },
+    '처음 사용법': null, '하루 쓰는 법': null, 'A/B/C 우선순위': null
+  };
+  return { actions: actions, menus: menus, faqs: faqs, chips: chips, intro: intro, dynamic: dynamic, examples: examples, placeholder: '예: 오늘 뭐부터 해?' };
 })();
