@@ -71,7 +71,7 @@ export async function askOpenAI({ apiKey, model, payload, timeoutMs = 25000 }) {
 export async function askOllama({ base, model, payload, timeoutMs = 100000 }) {
   const r = await fetch((base || 'http://ollama:11434').replace(/\/$/, '') + '/v1/chat/completions', {
     method: 'POST', headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ model, max_tokens: 380, temperature: 0.4, messages: [{ role: 'system', content: payload.system + '\n반드시 한국어로, 4문장 이내로 답해.' }, ...payload.messages] }),
+    body: JSON.stringify({ model, max_tokens: 380, temperature: 0.4, messages: [{ role: 'system', content: payload.system + '\n반드시 자연스러운 한국어로만, 4문장 이내로 답해. 한자·중국어·일본어를 절대 섞지 마. 모르는 건 지어내지 말고 모른다고 해.' }, ...payload.messages] }),
     signal: AbortSignal.timeout(timeoutMs)
   });
   const j = await r.json().catch(() => ({}));
