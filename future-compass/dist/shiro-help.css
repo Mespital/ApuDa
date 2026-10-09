@@ -40,3 +40,7 @@
 .shiro-launch{bottom:80px}
 .shiro-hint{bottom:148px}
 @media(max-width:600px){.shiro-launch{bottom:calc(76px + env(safe-area-inset-bottom,0px))}.shiro-hint{bottom:calc(140px + env(safe-area-inset-bottom,0px))}}
+/* 바로가기 버튼은 한 줄(가로 스크롤)로: 버튼이 많아도 대화창이 가려지지 않게 */
+.shiro-quick{flex-wrap:nowrap!important;overflow-x:auto;overflow-y:hidden;flex-shrink:0;max-height:none;padding:10px 12px!important;gap:8px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.shiro-quick .shiro-chip{white-space:nowrap;flex-shrink:0}
+.shiro-scroll{min-height:120px}
