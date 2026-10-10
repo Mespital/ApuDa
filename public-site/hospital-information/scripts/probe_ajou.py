@@ -37,4 +37,14 @@ with requests.Session() as s:
   if ("자세히" in text or "의료진" in text or "prof" in href or "deptNo=" in href or js):
    links.append((text[:25],href[:160],js[:180]))
  for l in links[:55]:print(l)
+ print("JS_HANDLER_CALLS")
+ for script in soup.select("script"):
+  t=script.get_text(" ",strip=True)
+  if "openDoctorView" in t:
+   pos=t.find("openDoctorView")
+   print("HANDLER_JS",repr(t[max(0,pos-100):pos+900]))
+ print("JS_SOURCES",[x.get("src") for x in soup.select("script[src]") if "doctor" in x.get("src","").lower() or "prof" in x.get("src","").lower()])
+ for kw in ("위암센터","폐암센터","유방암센터"):
+  for node in soup.find_all(string=lambda z:z and z.strip()==kw)[:2]:
+   print("MENU_NODE",kw,str(node.parent.parent)[:900].replace("\\n"," "))
  print("TEXT",soup.get_text(" ",strip=True)[-2200:])
