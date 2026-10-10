@@ -334,7 +334,7 @@
     const tw = wdOf(today()) - 1, ac = typeof FC_ACADEMY !== 'undefined' ? FC_ACADEMY.list() : [];
     const head = '<tr><th></th>' + days.map((d, i) => `<th class="${i === tw ? 'now' : ''}">${d}</th>`).join('') + '</tr>';
     const rows = [...Array(n)].map((_, j) => `<tr><th><b>${j + 1}</b><small>${esc(times[j] || '')}</small></th>` + [0, 1, 2, 3, 4].map(i => { const s = state.table[i][j] || ''; return `<td class="${i === tw ? 'now' : ''}">${esc(s)}${s && teachers[s] ? `<small>${esc(teachers[s])}</small>` : ''}</td>`; }).join('') + '</tr>').join('');
-    const acRow = ac.length ? '<tr class="ac"><th>학원</th>' + [1, 2, 3, 4, 5].map(w => `<td>${ac.filter(a => a.days.includes(w)).map(a => `<span>${esc(a.start || '')} ${esc(a.name)}</span>`).join('')}</td>`).join('') + '</tr>' : '';
+    const acRow = ac.length ? '<tr class="ac"><th>학원</th>' + [1, 2, 3, 4, 5].map(w => `<td>${ac.filter(a => a.days.includes(w)).map(a => `<span>${esc(a.start || '')} ${esc(a.name)}${a.from && a.from > today() ? `<small>${Number(a.from.slice(5, 7))}/${Number(a.from.slice(8))}~</small>` : ''}</span>`).join('')}</td>`).join('') + '</tr>' : '';
     const weekend = ac.filter(a => a.days.includes(6) || a.days.includes(0));
     return `<section class="card tt-view"><div class="section-title"><h2>🗓️ 시간표</h2><button data-go="settings">⚙️ 바꾸기</button></div>
       <div class="tt-scroll"><table class="tt">${head}${rows}${acRow}</table></div>

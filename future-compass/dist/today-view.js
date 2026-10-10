@@ -30,7 +30,7 @@
     var row = !off && w >= 1 && w <= 5 && table[w - 1] ? table[w - 1].slice() : [];
     while (row.length && !row[row.length - 1]) row.pop();
     var periods = row.map(function (s, i) { return { n: i + 1, time: times[i] || '', subject: s || '', teacher: teachers[s] || '' }; });
-    var acs = ls('fc_academy_v1', []).filter(function (a) { return a && Array.isArray(a.days) && a.days.indexOf(w) >= 0; }).sort(function (a, b) { return String(a.start || '99').localeCompare(String(b.start || '99')); })
+    var acs = ls('fc_academy_v1', []).filter(function (a) { return a && Array.isArray(a.days) && a.days.indexOf(w) >= 0 && (!a.from || date >= a.from); }).sort(function (a, b) { return String(a.start || '99').localeCompare(String(b.start || '99')); })
       .map(function (a) { return { name: a.name, subject: a.subject || '', start: a.start || '', end: a.end || '', progress: a.progress || '', homework: a.homework || '', hwDone: !!a.hwDone }; });
     var meal = null, events = [], examToday = '';
     if (schoolData) {

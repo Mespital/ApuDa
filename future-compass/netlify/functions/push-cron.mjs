@@ -45,7 +45,7 @@ export function plan(data, school, nowMs) {
   }
   if (at(15, 30) && isSchool && !examOn(t)) out.push({ key: 'afterclass', to: 'child', kind: 'afterclass', title: '📒 수업 끝! 1분만', body: '오늘 배운 거 1분 말하기나 노트 사진 하나 남겨둘까?', url: 'study.html#today' });
   for (const a of acs) {
-    if (!Array.isArray(a.days) || a.days.indexOf(wd) < 0) continue;
+    if (!Array.isArray(a.days) || a.days.indexOf(wd) < 0 || (a.from && t < a.from)) continue;
     const s = toMin(a.start); if (s == null) continue;
     if (s - mins >= 45 && s - mins < 75) out.push({ key: 'ac:' + a.id, to: 'child', kind: 'academy', title: '🏫 ' + a.start + ' ' + a.name, body: a.homework && !a.hwDone ? '숙제 체크: ' + a.homework : '출발 준비할 시간이야', url: 'study.html#today' });
   }
