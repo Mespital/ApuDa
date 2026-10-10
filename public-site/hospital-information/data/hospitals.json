@@ -10,19 +10,22 @@
     "slug": "smc",
     "name": "삼성서울병원",
     "region": "서울",
-    "official_url": "https://www.samsunghospital.com"
+    "official_url": "https://www.samsunghospital.com",
+    "staff_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do"
   },
   {
     "slug": "snuh",
     "name": "서울대학교병원",
     "region": "서울",
-    "official_url": "https://www.snuh.org"
+    "official_url": "https://www.snuh.org",
+    "staff_url": "https://www.snuh.org/searchResult.do"
   },
   {
     "slug": "sev",
     "name": "세브란스병원",
     "region": "서울",
-    "official_url": "https://sev.severance.healthcare"
+    "official_url": "https://sev.severance.healthcare",
+    "staff_url": "https://www.severance.healthcare/sev/doctor/doctor.do"
   },
   {
     "slug": "cmc",
@@ -35,19 +38,22 @@
     "slug": "brmh",
     "name": "서울특별시보라매병원",
     "region": "서울",
-    "official_url": "https://www.brmh.org"
+    "official_url": "https://www.brmh.org",
+    "staff_url": "https://www.brmh.org/custom/doctor_search.do?site=001&user_code=010019000"
   },
   {
     "slug": "anam",
     "name": "고려대학교 안암병원",
     "region": "서울",
-    "official_url": "https://anam.kumc.or.kr"
+    "official_url": "https://anam.kumc.or.kr",
+    "staff_url": "https://anam.kumc.or.kr/kr/doctor-department/doctor.do"
   },
   {
     "slug": "guro",
     "name": "고려대학교 구로병원",
     "region": "서울",
-    "official_url": "https://guro.kumc.or.kr"
+    "official_url": "https://guro.kumc.or.kr",
+    "staff_url": "https://guro.kumc.or.kr/kr/doctor-department/doctor.do"
   },
   {
     "slug": "kuh",
