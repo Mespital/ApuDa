@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "checked_at": null,
+  "registered_hospitals": 30,
+  "hospitals_with_matched_doctors": 7,
+  "matched_doctors": 463,
+  "hospitals": []
+}
