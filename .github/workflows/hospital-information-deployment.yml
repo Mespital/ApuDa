@@ -1,0 +1,57 @@
+name: Hospital Information deployment diagnostics
+on:
+  push:
+    branches: [main]
+    paths:
+      - "public-site/hospital-information/**"
+      - ".github/workflows/hospital-information-deployment.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    environment: apuda-ai-vps
+    timeout-minutes: 5
+    steps:
+      - name: Verify deployed application URL
+        env:
+          TARGET: https://apuda.app/hospital-information/
+        run: |
+          set -euo pipefail
+          code=$(curl -L -sS -o /tmp/hospital.html -w '%{http_code}' --connect-timeout 10 --max-time 25 "$TARGET" || true)
+          echo "TARGET_HTTP=$code"
+          if [ "$code" = 200 ] && grep -q 'ApuDa Hospital Information' /tmp/hospital.html; then
+            echo "SITE_LIVE=yes"
+          else
+            echo "SITE_LIVE=no"
+          fi
+      - name: Inspect pre-existing Netlify credentials and exact target site
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          APUDA_NETLIFY_SITE_ID: ${{ secrets.APUDA_NETLIFY_SITE_ID }}
+        run: |
+          set -euo pipefail
+          if [ -z "$NETLIFY_AUTH_TOKEN" ]; then
+            echo "NETLIFY_AUTH_TOKEN_CONFIGURED=no"
+            echo "Existing Netlify Git integration might deploy the site; CLI deployment cannot be performed from this workflow without an auth token."
+            exit 0
+          fi
+          echo "NETLIFY_AUTH_TOKEN_CONFIGURED=yes"
+          if [ -n "$APUDA_NETLIFY_SITE_ID" ]; then
+            echo "APUDA_NETLIFY_SITE_ID_CONFIGURED=yes"
+          else
+            echo "APUDA_NETLIFY_SITE_ID_CONFIGURED=no"
+          fi
+          code=$(curl -sS -o /tmp/netlify-sites.json -w '%{http_code}' --connect-timeout 10 --max-time 25 -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" 'https://api.netlify.com/api/v1/sites?per_page=100' || true)
+          echo "NETLIFY_API_HTTP=$code"
+          if [ "$code" = 200 ]; then
+            python3 - <<'PY'
+          import json
+          sites=json.load(open("/tmp/netlify-sites.json"))
+          found=[x for x in sites if x.get("custom_domain")=="apuda.app" or "apuda.app" in (x.get("domain_aliases") or [])]
+          print("APUDA_EXACT_DOMAIN_MATCHES=",len(found))
+          for s in found:
+              print("NETLIFY_SITE_NAME=",s.get("name"),"GIT_CONNECTED=",bool((s.get("build_settings") or {}).get("repo_url")))
+          PY
+          fi
