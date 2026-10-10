@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8">
-  <meta name="apuda-hospital-app-release" content="apuda-hi-20261010-auto-deploy-v2">
+  <meta name="apuda-hospital-app-release" content="apuda-hi-20261010-results-fix-v3">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0c1733">
   <meta name="description" content="ApuDa Hospital Information — 30개 주요 암 진료기관의 공식 정보를 찾아보고, 검증된 의료진 정보를 확인하세요.">
@@ -32,7 +32,7 @@
         <div class="hero-copy">
           <span class="eyebrow"><i aria-hidden="true"></i> ApuDa Medical Directory · Beta</span>
           <h1 id="hero-title">암 진료의 시작,<br><em>정확한 정보</em>에서.</h1>
-          <p>공식 의료기관 정보를 한곳에서 확인하고, 암종과 지역에 맞는 의료진 탐색을 준비합니다. 검증되지 않은 이름이나 순위는 제공하지 않습니다.</p>
+          <p>공식 의료기관 정보를 한곳에서 확인하고, 등록 병원의 공식 의료진 안내로 바로 이동할 수 있습니다. 검증되지 않은 이름이나 순위는 제공하지 않습니다.</p>
           <a href="#finder" class="hero-cta">의료기관 찾아보기 <span aria-hidden="true">↗</span></a>
         </div>
         <div class="hero-visual" aria-hidden="true">
@@ -78,11 +78,11 @@
           </select>
           <label for="hospitalQuery">의료기관명 검색</label>
           <input id="hospitalQuery" name="q" type="search" placeholder="예: 서울아산, 국립암센터" autocomplete="off">
-          <div class="filter-buttons"><button class="primary-button" type="submit">의료진 검색 <span aria-hidden="true">→</span></button><button class="ghost-button" type="button" id="resetButton">초기화</button></div>
-          <p class="form-note">의료진 검색 결과에는 공식 진료 분야가 확인되고 공개 승인된 의료진만 표시됩니다.</p>
+          <div class="filter-buttons"><button class="primary-button" type="submit">병원·의료진 찾기 <span aria-hidden="true">→</span></button><button class="ghost-button" type="button" id="resetButton">초기화</button></div>
+          <p class="form-note">검증 의료진이 아직 없으면 검색 조건에 맞는 병원과 공식 의료진 안내 페이지를 먼저 보여줍니다.</p>
         </form>
 
-        <div class="results-panel">
+        <div class="results-panel"><p class="search-note" id="searchNote" role="status" hidden></p>
           <div class="result-top">
             <div class="tab-row" role="tablist" aria-label="결과 유형">
               <button class="tab active" type="button" role="tab" aria-selected="true" id="tabHospitals" aria-controls="hospitalPanel">의료기관 <span id="hospitalTabCount">30</span></button>
@@ -95,7 +95,7 @@
           </section>
           <section id="doctorPanel" role="tabpanel" aria-labelledby="tabDoctors" hidden>
             <div id="doctorStatus" class="status-message" role="status"></div>
-            <div id="doctorList" class="card-list" aria-live="polite"></div>
+            <div id="doctorList" class="card-list" aria-live="polite"></div><div id="officialFallback" class="official-fallback"></div>
           </section>
         </div>
       </div>

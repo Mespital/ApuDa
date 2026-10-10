@@ -3,7 +3,8 @@
     "slug": "amc",
     "name": "서울아산병원",
     "region": "서울",
-    "official_url": "https://www.amc.seoul.kr/asan/main.do"
+    "official_url": "https://www.amc.seoul.kr/asan/main.do",
+    "staff_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoList.do"
   },
   {
     "slug": "smc",
@@ -63,19 +64,22 @@
     "slug": "ncc",
     "name": "국립암센터",
     "region": "경기",
-    "official_url": "https://www.ncc.re.kr"
+    "official_url": "https://www.ncc.re.kr",
+    "staff_url": "https://www.ncc.re.kr/ncc_about03_param.ncc?searchKey=&searchValue=&dept="
   },
   {
     "slug": "snubh",
     "name": "분당서울대학교병원",
     "region": "경기",
-    "official_url": "https://www.snubh.org"
+    "official_url": "https://www.snubh.org",
+    "staff_url": "https://www.snubh.org/medical/drMedicalTeam.do"
   },
   {
     "slug": "ajou",
     "name": "아주대학교병원",
     "region": "경기",
-    "official_url": "https://hosp.ajoumc.or.kr"
+    "official_url": "https://hosp.ajoumc.or.kr",
+    "staff_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do"
   },
   {
     "slug": "gil",
@@ -165,13 +169,15 @@
     "slug": "dsmc",
     "name": "계명대학교 동산병원",
     "region": "대구",
-    "official_url": "https://dongsan.dsmc.or.kr"
+    "official_url": "https://dongsan.dsmc.or.kr",
+    "staff_url": "https://dongsan.dsmc.or.kr:49870/content/02depart/02_01.php"
   },
   {
     "slug": "cnuhh",
     "name": "화순전남대학교병원",
     "region": "전남",
-    "official_url": "https://www.cnuhh.com"
+    "official_url": "https://www.cnuhh.com",
+    "staff_url": "https://www.cnuhh.com/medical/info/dept.cs?m=9"
   },
   {
     "slug": "jbuh",
