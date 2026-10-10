@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8">
-  <meta name="apuda-hospital-app-release" content="apuda-hi-20261010-audit-v4">
+  <meta name="apuda-hospital-app-release" content="apuda-hi-20261010-doctors-live-v5">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0c1733">
   <meta name="description" content="ApuDa Hospital Information — 30개 주요 암 진료기관의 공식 정보를 찾아보고, 검증된 의료진 정보를 확인하세요.">
@@ -50,7 +50,7 @@
         <div><strong id="hospitalMetric">30</strong><span>등록 의료기관</span></div>
         <div><strong id="cancerMetric">30</strong><span>암종 검색 기준</span></div>
         <div><strong id="verifiedMetric">—</strong><span>현재 확인 가능한 검증 의료진</span></div>
-        <span class="metric-badge">검증 중심 운영</span>
+        <span class="metric-badge">공식 진료분야 근거 제공</span>
       </div>
     </section>
 
@@ -60,6 +60,7 @@
         <span class="privacy-note">개인정보 입력 없이 이용</span>
       </div>
       <p class="sync-status" id="syncStatus" aria-live="polite">의료진 공개 데이터 확인 중…</p>
+      <p class="sync-status" id="coverageStatus" aria-live="polite">의료진 정보 제공 병원을 확인하고 있습니다.</p>
       <div class="finder-grid">
         <form class="filter-panel" id="filters" aria-label="검색 조건">
           <div class="panel-heading"><span>01 / 검색 조건</span><strong>어떤 정보를 찾으시나요?</strong></div>

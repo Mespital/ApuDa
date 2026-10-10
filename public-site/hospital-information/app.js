@@ -96,12 +96,13 @@
       for (const d of found) {
         const card = el("article", "doctor-card");
         const head = el("div", "doctor-head");
-        head.append(el("h3", "", d.doctor_name), label("검증 완료", "doc-label"));
+        head.append(el("h3", "", d.doctor_name), label("공식 진료분야 확인", "doc-label"));
         card.append(head, el("p", "", d.hospital_name + (d.department ? " · " + d.department : "")));
         if (d.specialty_text) card.append(el("p", "specialty", "공식 진료분야: " + d.specialty_text));
         card.append(el("p", "verification-date", "정보 확인: " + new Date(d.verified_at).toLocaleDateString("ko-KR")));
         const bottom = el("div", "card-bottom");
         bottom.append(label(d.region || "지역 확인 필요"), link(d.profile_url, "공식 프로필 ↗"));
+        if (d.source_url) bottom.append(link(d.source_url, "진료분야 출처 ↗"));
         card.append(bottom); list.append(card);
       }
     }
@@ -195,6 +196,10 @@
       state.records=payload.results.filter(eligibleDoctor);
       state.snapshotLoaded=true;
       $("verifiedMetric").textContent=state.records.length;
+      const coveredHospitals=[...new Set(state.records.map(d=>d.hospital_name))].sort();
+      $("coverageStatus").textContent=coveredHospitals.length
+        ? "현재 의료진 데이터 제공 병원: " + coveredHospitals.join(" · ") + " (" + coveredHospitals.length + "곳). 나머지 의료기관은 공식 링크를 이용해 주세요."
+        : "현재 공개 승인된 의료진 명단은 없습니다. 병원 공식 의료진 안내를 이용해 주세요.";
       const syncTime = Date.parse(payload.generated_at || "");
       $("syncStatus").textContent = Number.isFinite(syncTime)
         ? "마지막 자동 동기화: " + new Date(syncTime).toLocaleString("ko-KR", {timeZone:"Asia/Seoul"}) + " (KST)"
@@ -203,6 +208,7 @@
     } catch(err) {
       state.snapshotLoaded=false;
       $("verifiedMetric").textContent="—";
+      $("coverageStatus").textContent="의료진 데이터 연동 상태를 확인하고 있습니다.";
       $("syncStatus").textContent="공개 의료진 데이터 연결을 확인하지 못했습니다. 병원 공식 홈페이지를 이용해 주세요.";
       renderDoctors();
     }
