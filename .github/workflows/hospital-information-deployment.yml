@@ -7,6 +7,8 @@ on:
       - "public-site/netlify/functions/hospital-information-matcher.js"
       - ".github/workflows/hospital-information-deployment.yml"
   workflow_dispatch:
+  schedule:
+    - cron: "15 23 * * *" # daily 08:15 Asia/Seoul verification
 permissions:
   contents: read
 concurrency:
@@ -71,6 +73,14 @@ jobs:
           with open("/tmp/production-specialists.json", encoding="utf-8") as f: d=json.load(f)
           assert isinstance(d.get("results"),list) and d.get("count")==len(d["results"]), "Snapshot contract mismatch"
           assert all(p.get("status")=="ACTIVE" for p in d["results"]), "Non-public specialist data leaked"
+          from datetime import datetime, timezone, timedelta
+          stamp=d.get("generated_at")
+          if not stamp:
+              raise AssertionError("Last successful sync timestamp is missing")
+          at=datetime.fromisoformat(stamp.replace("Z","+00:00"))
+          if at.tzinfo is None: at=at.replace(tzinfo=timezone.utc)
+          age=datetime.now(timezone.utc)-at
+          assert -timedelta(hours=1) < age < timedelta(hours=48), "Last medical data sync is stale: "+str(age)
           print("PRODUCTION_MEDICAL_SNAPSHOT_OK count="+str(d["count"]))
           PY
       - name: Inspect Netlify medical directory API function
