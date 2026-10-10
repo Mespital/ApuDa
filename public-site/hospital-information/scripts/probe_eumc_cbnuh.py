@@ -2,6 +2,7 @@ import requests,urllib.robotparser
 from bs4 import BeautifulSoup
 UA="ApuDaMedicalDirectoryBot/1.0 (+https://apuda.app/)"
 cases=[
+("eumc-index","https://mokdong.eumc.ac.kr","/medical/dept/deptList.do",[]),
 ("eumc","https://mokdong.eumc.ac.kr","/medical/dept/deptScheduleInfo.do?dept_cd=IMH&grp_yn=N",["조정민","함아롱"]),
 ("eumc-profile","https://mokdong.eumc.ac.kr","/doctor/basicInfo.do?dept_cd=IMH&dr_sid=1013917",["조정민"]),
 ("cbnuh","https://www.cbnuh.or.kr","/prog/clnicDept/main/sub01_01_02/view.do?clndCd=IMH",[])]
@@ -27,5 +28,7 @@ for name,root,path,names in cases:
     if "조정민" not in tr.get_text(" ",strip=True) and "함아롱" not in tr.get_text(" ",strip=True):continue
     print("DOCTOR_ROW_HTML",str(tr)[:4400].replace("\\n"," "),flush=True)
    print("DEPT_DOCTOR_LINKS",[(a.get_text(" ",strip=True)[:28],a.get("href","")[:130]) for a in soup.select("a[href]") if "dept_cd=" in a.get("href","").lower()][:55],flush=True)
+  if name=="eumc-index":
+   print("ALL_DEPTS",[(a.get_text(" ",strip=True)[:35],a.get("href","")[:140]) for a in soup.select("a[href]") if "dept_cd=" in a.get("href","").lower()][:90],flush=True)
   print("DOCTOR_LINKS",[(a.get_text(" ",strip=True)[:24],a.get("href","")[:160]) for a in soup.select("a[href]") if any(x in a.get("href","").lower() for x in ["doctor","dr_sid","clndcd"])][:25],flush=True)
  except Exception as exc:print("ERROR",type(exc).__name__,str(exc)[:160],flush=True)
