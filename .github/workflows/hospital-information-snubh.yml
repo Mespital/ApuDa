@@ -1,0 +1,64 @@
+name: Hospital Information SNUBH official specialists
+on:
+  schedule:
+    - cron: '30 22 * * *' # daily 07:30 KST
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'public-site/hospital-information/scripts/collect_snubh.py'
+      - '.github/workflows/hospital-information-snubh.yml'
+permissions:
+  contents: write
+concurrency:
+  group: apuda-hospital-data-sync
+  cancel-in-progress: false
+jobs:
+  official-directory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install requests beautifulsoup4
+      - name: Verify source policy and fetch specialty-linked clinicians
+        run: |
+          set -euo pipefail
+          python public-site/hospital-information/scripts/collect_snubh.py \
+            --output public-site/hospital-information/data/snubh-verified.json
+          python public-site/hospital-information/scripts/merge_verified.py
+      - name: Validate evidence and reviewed snapshots
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          d=Path('public-site/hospital-information/data')
+          s=json.loads((d/'snubh-verified.json').read_text())
+          all_=json.loads((d/'verified-specialists.json').read_text())
+          assert len(s.get('coverage',[]))==8
+          assert s['count']==len(s['results'])>=10, 'Official clinical records insufficient'
+          assert all(x.get('status')=='ACTIVE' and x.get('cancers') and
+            x.get('profile_url','').startswith('https://www.snubh.org/medical/drIntroduce.do?') and
+            x.get('source_url','').startswith('https://www.snubh.org/medical/drMedicalTeam.do?')
+            for x in s['results'])
+          assert all_['count']>=s['count']
+          print('SNUBH_OFFICIAL_ACQUIRED',s['count'],'TOTAL_APPROVED',all_['count'])
+          PY
+      - name: Commit to GitHub and trigger existing Netlify Git deployment
+        run: |
+          set -euo pipefail
+          git config user.name apuda-hospital-bot
+          git config user.email apuda-hospital-bot@users.noreply.github.com
+          git add public-site/hospital-information/data/snubh-verified.json \
+                  public-site/hospital-information/data/verified-specialists.json
+          if git diff --cached --quiet; then
+            echo "No verified medical directory changes"
+          else
+            git commit -m "data(hospital): sync SNUBH clinically documented specialists"
+            git pull --rebase -X theirs origin main
+            git push origin main
+          fi
