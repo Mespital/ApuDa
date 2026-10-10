@@ -15,7 +15,7 @@ TARGETS=[
 ("snuh-doctors","https://www.snuh.org","/health/nMedInfo/nMedicalInfo.do")
 ]
 def main():
-    for title,root,path in TARGETS[:3]:
+    for title,root,path in TARGETS[:1]:
         print("\n=== TARGET",title,root+path,"===",flush=True)
         try:
             s=requests.Session();s.headers.update({"User-Agent":UA,"Accept":"text/html"})
@@ -39,6 +39,12 @@ def main():
                     i+=1
             print("DEPT_LINKS",[(a.get_text(" ",strip=True)[:35],a.get("href","")[:120]) for a in soup.select('a[href*="viewStf.do"]')][:50],flush=True)
 
+            for i, name in enumerate(soup.select(".doctor-list .dl-name")[:3]):
+                box=name
+                for j in range(3):
+                    box=box.parent
+                    print("DOCTOR_ANCESTOR",i,j,box.name,box.get("class"),re.sub(r"\\s+"," ",str(box))[:2800],flush=True)
+            print("CARD_COUNTS",len(soup.select(".doctor-list .dl-name")),flush=True)
             for pattern in ["li","div","article"]:
                 counts=[]
                 for element in soup.select(pattern+"[class]"):
