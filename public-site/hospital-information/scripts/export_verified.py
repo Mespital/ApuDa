@@ -3,10 +3,9 @@
 import json
 import sqlite3
 import sys
-import hashlib
 import shutil
 import tempfile
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from urllib.parse import urlparse
 from pathlib import Path
 DB = Path("/var/lib/apuda-cancer-matcher/apuda_specialists.db")
@@ -52,6 +51,13 @@ def export(db_path):
         x=dict(item)
         if not (x["doctor_name"] and x["stable_key"] and x["verified_at"] and x["evidence_text"]):
             continue
+        try:
+            checked = datetime.fromisoformat(str(x["verified_at"]).replace("Z","+00:00"))
+            if checked.tzinfo is None: checked = checked.replace(tzinfo=timezone.utc)
+            age = datetime.now(timezone.utc) - checked
+            if age > timedelta(days=180) or age < timedelta(days=-1): continue
+        except (ValueError, TypeError, OverflowError):
+            continue
         if not https_url(x["profile_url"]): continue
         if not x["cancer_code"] or x["role"] not in VALID_ROLES: continue
         # Publish only a public official hospital domain or matching subdomain.
@@ -68,7 +74,7 @@ def export(db_path):
                 "region":x["region"] or "", "department":x["department"] or "",
                 "specialty_text":x["specialty_text"] or "", "profile_url":x["profile_url"],
                 "verified_at":x["verified_at"],"status":"ACTIVE","cancers":[]}
-        mapping={"code":x["cancer_code"],"role":x["role"],"evidence_text":x["evidence_text"]}
+        mapping={"code":x["cancer_code"],"role":x["role"]}
         if mapping not in doctors[key]["cancers"]:doctors[key]["cancers"].append(mapping)
     result=sorted(doctors.values(),key=lambda d:(d["hospital_name"],d["doctor_name"]))
     return {"schema_version":1,"source":"ApuDa VPS verified doctors only",
