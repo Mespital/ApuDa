@@ -689,7 +689,10 @@ function isWarn(l){return +l.temp>=38||(l.pain!==''&&+l.pain>=7)||l.bowel==='혈
 function renderHome(){
   var pb=document.getElementById('phoneBar');if(pb){var _nz={};try{_nz=JSON.parse(localStorage.getItem('apuda_note_nudge')||'{}')}catch(e){}pb.hidden=!!(state.profile.dayPhone||state.profile.nightPhone)||!!(_nz.phone&&Date.now()-_nz.phone<7*864e5)}
   var p=state.profile,h=new Date().getHours();
-  $('#hello').innerHTML=(p.name?esc(p.name)+'님, ':'')+(h<11?'좋은 아침이에요.':h<18?'오늘 하루 어떠세요?':'오늘 하루 고생 많으셨어요.')+'<br><span style="font-size:.72em;color:var(--muted);font-weight:800">오늘 몸 상태를 한 줄로 알려 주세요.</span>';
+  var _d=new Date(),_logged=state.logs.some(function(x){return x.date===today()}),_hd=$('#hello'),_was=_hd.dataset.done;
+  _hd.innerHTML='<span class="date"><span>'+(_d.getMonth()+1)+'월 '+_d.getDate()+'일</span> <span>'+'일월화수목금토'.charAt(_d.getDay())+'요일</span></span><span class="greet">'+(p.name?esc(p.name)+'님, ':'')+(h<11?'좋은 아침이에요.':h<18?'오늘 하루 어떠세요?':'오늘 하루 고생 많으셨어요.')+'</span>'+
+    '<button type="button" class="stamp'+(_logged?' done':'')+(_logged&&_was==='0'?' press':'')+'" onclick="'+(_logged?'tab(\'log\')':'startFrom(\'checkin\')')+'" aria-label="'+(_logged?'오늘 기록함 — 기록 보기':'오늘 아직 기록 전 — 지금 기록하기')+'">'+(_logged?'오늘<br>기록함<small>✓</small>':'오늘<br>기록 전')+'</button>';
+  _hd.dataset.done=_logged?'1':'0';
   var cd=cday(),cb=$('#chemoBar'),rx=myRx(),ci=cycleInfo(),bh='';
   var upc=upcoming().filter(function(r){return CHEMO_RE.test(r.title||'')})[0],ud=upc?dayDiff(today(),upc.date):99;
   var go='onclick="planTab=\'chemo\';renderPlan();tab(\'plan\')" role="button" tabindex="0"';
@@ -755,7 +758,7 @@ function renderPlan(){
     var up=upcoming(),past=state.roadmap.filter(function(x){return x.status==='done'||x.date<today()}).sort(function(a,b){return b.date.localeCompare(a.date)});
     h='<div class="card"><h3>다가오는 일정</h3>'+(up.length?up.map(schedItem).join(''):'<div class="empty">예정된 일정이 없어요.</div>')+
       '<form class="addline three" onsubmit="addSched(event)"><input type="date" name="date" value="'+today()+'" required><input name="title" placeholder="예) 항암 3차 / CT" required><button class="btn primary sm">추가</button></form>'+
-      '<p class="small muted" style="margin:8px 0 0">💬 오늘 탭에서 "모레 10시 외래"처럼 말해도 돼요.</p></div>'+
+      '<p class="small muted" style="margin:8px 0 0">💬 노트봇 탭에서 "모레 10시 외래"처럼 말해도 돼요.</p></div>'+
       (past.length?'<div class="card"><h3>지난 일정</h3>'+past.slice(0,20).map(schedItem).join('')+'</div>':'');
   }else if(planTab==='meds'){
     var act=state.meds.filter(function(m){return m.active==='yes'}),stop=state.meds.filter(function(m){return m.active!=='yes'});
@@ -845,7 +848,7 @@ function renderLog(){
   $('#chart').innerHTML=has?svg:'<div class="empty">기록이 쌓이면 그래프가 그려져요.</div>';
   $('#chartNote').textContent=days[0].slice(5).replace('-','/')+' ~ 오늘';
   var a=state.logs.slice().sort(function(a,b){return b.date.localeCompare(a.date)});
-  $('#logList').innerHTML=a.length?a.slice(0,30).map(function(l){return '<div class="logrow"><b'+(isWarn(l)?' style="color:var(--red)"':'')+'>'+fmt(l.date)+(dTag(l.date)?'<br><span class="pill'+(inNadir(l.date)?' red':'')+'">'+dTag(l.date).replace('항암 ','')+'</span>':'')+'</b><div>'+logLine(l)+'</div><button class="btn line sm" onclick="delItem(\'logs\',\''+l.id+'\')">삭제</button></div>'}).join(''):'<div class="empty">아직 기록이 없어요. 오늘 탭에서 "열 36.8 통증 2점"처럼 써 보세요.</div>';
+  $('#logList').innerHTML=a.length?a.slice(0,30).map(function(l){return '<div class="logrow"><b'+(isWarn(l)?' style="color:var(--red)"':'')+'>'+fmt(l.date)+(dTag(l.date)?'<br><span class="pill'+(inNadir(l.date)?' red':'')+'">'+dTag(l.date).replace('항암 ','')+'</span>':'')+'</b><div>'+logLine(l)+'</div><button class="btn line sm" onclick="delItem(\'logs\',\''+l.id+'\')">삭제</button></div>'}).join(''):'<div class="empty">아직 기록이 없어요. 노트봇 탭에서 "열 36.8 통증 2점"처럼 써 보세요.</div>';
   $('#labList').innerHTML=labTable(state.labs.slice(0,10),true);
   var lf=document.querySelector('.labform [name=date]');if(lf&&!lf.value)lf.value=today();
   var dv=state.distress[0];$('#distress').value=dv?dv.score:state.distressValue||0;distressUI();
@@ -953,7 +956,7 @@ function greet(){
   var q=new URLSearchParams(location.search);tab(q.get('tab')||'home');
   var say=q.get('say');if(say!==null){history.replaceState(null,'',location.pathname+location.hash);if(/[:：]\s*$/.test(say)||say.trim().length<3)prefill(say);else setTimeout(function(){sendText(say)},120)}
   if(location.hash==='#sos')openSheet('sos');
-  setTimeout(function(){window.scrollTo(0,document.body.scrollHeight)},60);
+  setTimeout(function(){if($('#v-today').classList.contains('on'))window.scrollTo(0,document.body.scrollHeight)},60);
 })();
 if('serviceWorker' in navigator){
   window.addEventListener('load',function(){navigator.serviceWorker.register('./sw.js').catch(function(){})});

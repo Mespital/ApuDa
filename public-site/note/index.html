@@ -8,6 +8,8 @@
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
 <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
 <title>ApuDa 암환자 노트</title>
 <style>
 :root{--blue:#1467e8;--blue2:#0d4fb9;--sky:#eef5ff;--ink:#14213a;--muted:#5d6b80;--line:#e2e8f1;--bg:#f4f7fb;--card:#fff;
@@ -300,6 +302,103 @@ html.big .chips button{font-size:.74em;min-height:52px}
   #v-home .tiles{grid-template-columns:1fr}
   .chathead button{display:none}
 }
+
+/* ===== v4.1 「치료 수첩」 테마 — 환자가 들고 다니는 병원 수첩: 서늘한 종이·남색 잉크·형광펜·도장 ===== */
+:root{--paper:#F5F7F4;--bg:#F5F7F4;--ink:#1C2B3A;--muted:#506072;--line:#DCE3DF;--line2:#C9D3CE;
+--blue:#1F5FD1;--blue2:#1A4FAE;--sky:#ECF1FA;--hl:#FFE873;--stamp:#C23B32;--red:#C23B32;--redbg:#FCEFEC;--green:#2F7D5B;--greenbg:#E9F4EE;
+--serif:"Gowun Batang","Noto Serif KR","AppleMyungjo",serif}
+body{font-family:"IBM Plex Sans KR",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;background:var(--paper);font-weight:500}
+b,strong{font-weight:700}
+.top{background:rgba(245,247,244,.94);border-bottom-color:var(--line)}
+.logo i{background:var(--ink);border-radius:10px;font-family:var(--serif)}
+.logo b{font-family:var(--serif);font-weight:700;font-size:1.12em;letter-spacing:-.01em}
+.tbtn{border-color:var(--line);font-weight:700}
+.sos{background:var(--stamp);box-shadow:none;font-weight:700}
+h2,.hsec,.card>h3,.todo h3,.chathead b{font-family:var(--serif);font-weight:700;letter-spacing:-.01em}
+h2{font-size:1.38em}
+.card{box-shadow:none;border-radius:16px;border-color:var(--line)}
+.btn,.chips button,.qr button,.acts button,.acts a,.seg button,.tabs button{font-weight:700}
+.btn.primary{background:var(--blue)}
+.seg button.on{background:var(--ink);border-color:var(--ink)}
+input:focus,textarea:focus,select:focus{border-color:var(--ink);box-shadow:0 0 0 3px rgba(255,232,115,.7)}
+:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.pill{font-weight:700}
+
+/* 홈: 수첩 첫 장 — 날짜 머리말 + 오늘 기록 도장 */
+.pagehd{position:relative;padding:4px 100px 16px 2px;margin:2px 0 16px;border-bottom:3px double var(--line2)}
+.pagehd .date{display:block;font-family:var(--serif);font-weight:700;font-size:1.72em;line-height:1.2;letter-spacing:-.02em;color:var(--ink)}
+.pagehd .greet{display:block;margin-top:6px;color:var(--muted);font-size:.92em;line-height:1.45}
+.stamp{position:absolute;right:6px;top:-2px;width:84px;height:84px;border-radius:50%;border:3px solid currentColor;box-shadow:inset 0 0 0 3px var(--paper),inset 0 0 0 4.5px currentColor;
+  color:var(--stamp);background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(-9deg);
+  font-family:var(--serif);font-weight:700;font-size:.82em;line-height:1.2;text-align:center;padding:0;opacity:.9}
+.stamp small{font-size:.82em;font-weight:400;opacity:.9}
+.stamp.done{color:var(--green)}
+.stamp.press{animation:stampIn .5s cubic-bezier(.2,1.4,.4,1)}
+@keyframes stampIn{0%{transform:rotate(-9deg) scale(1.6);opacity:0}60%{opacity:1}100%{transform:rotate(-9deg) scale(1)}}
+.pagehd .date>span{white-space:nowrap}html.big .pagehd .date{font-size:1.45em}html.big .pagehd{padding-right:92px}html.big .stamp{width:78px;height:78px;font-size:.7em}
+.hcta{background:var(--blue);box-shadow:none;border-radius:16px;padding:14px 16px}
+.hcta .hi{background:var(--hl);color:var(--ink);font-family:var(--serif);font-size:1.6em;border-radius:12px;width:48px;height:48px}
+.hcta b{font-family:var(--serif);font-weight:700;font-size:1.14em}
+.hsec{font-size:1em;color:var(--ink);margin:22px 2px 10px}
+/* 빠른 기록: 수첩 칸 — 카드 9개 대신 한 장의 표 */
+.hgrid{gap:0;background:#fff;border:1px solid var(--line2);border-radius:16px;overflow:hidden}
+.hgrid button{border:0;border-radius:0;box-shadow:none;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-height:90px;font-weight:600;background:#fff}
+.hgrid button:nth-child(3n){border-right:0}.hgrid button:nth-last-child(-n+3){border-bottom:0}
+.hgrid button:active{background:var(--hl);transform:none}
+.hgrid button:hover{background:#FAFBF8}
+/* 오늘 현황: 한 줄짜리 표 */
+#v-home .tiles{gap:0;background:#fff;border:1px solid var(--line2);border-radius:16px;overflow:hidden}
+#v-home .tile{border:0;border-radius:0;border-right:1px solid var(--line);min-height:84px}
+#v-home .tile:last-child{border-right:0}
+#v-home .tile b{font-family:var(--serif);font-weight:700;font-size:.98em}
+.hempty{border-style:dashed;border-color:var(--line2);background:transparent}
+.todo{border-color:var(--line2)}
+.todo-i .box{border-radius:6px;border-color:var(--line2)}
+.todo-i.on .box{background:var(--green);border-color:var(--green)}
+/* 도움 받기: 목록 한 장 */
+.hhelp{gap:0;background:#fff;border:1px solid var(--line2);border-radius:16px;overflow:hidden;grid-template-columns:1fr!important}
+.hhelp>*{border:0;border-radius:0;border-bottom:1px solid var(--line);background:#fff;min-height:62px}
+.hhelp>*:last-child{border-bottom:0}
+.hhelp .hlink{background:#fff}
+.hhelp>*:hover{background:#FAFBF8}.hhelp>*:active{background:var(--hl);transform:none}
+.hhelp b{font-weight:700}
+/* 하단 탭: 형광펜 표시 */
+.tabs{background:#fff;border-top:1px solid var(--line2)}
+.tabs button{color:#6a7888}
+.tabs button.on{background:transparent!important;color:var(--ink)}
+.tabs button.on span{background:var(--hl);border-radius:10px;padding:1px 12px}
+/* 노트봇 */
+.chathead{padding-bottom:10px;border-bottom:3px double var(--line2)}
+.msg.me{background:var(--ink)}
+.msg.bot{border-color:var(--line2)}
+.msg .saved span{background:var(--greenbg);color:var(--green);font-weight:700}
+.chips button{border-color:var(--line2);box-shadow:none;color:var(--ink)}
+.chips button.pri{background:var(--blue);border-color:var(--blue)}
+.chips button[data-c=more]{background:#fff;color:var(--blue2);border-style:dashed}
+.fl .flp{background:var(--hl);color:var(--ink)}
+.fl .flq{font-family:var(--serif);font-weight:700;font-size:1.14em}
+.fl .flo button{border-width:1.5px;border-color:var(--line2);font-weight:700;color:var(--ink)}
+.fl .flo button[aria-pressed=true],.fl .flo button[aria-current=true]{background:var(--hl);border-color:var(--ink);color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.fl .flo button.hot{border-color:#E7A39C;background:#FFF8F7;color:var(--stamp)}
+.fl .flo button.hot[aria-pressed=true]{background:var(--hl);color:var(--stamp);border-color:var(--stamp)}
+.fl .flgh.hot{color:var(--stamp)}
+.fl .flnav .ok,.fl .flin .ok{background:var(--blue)}
+.fl .flpv{border-top-style:dashed}
+.acts.gstart .pri{background:var(--blue);border-color:var(--blue)}
+/* 진료요약 표지 */
+.sumhead{background:var(--ink)!important;border-radius:16px}
+.sumhead b,.sumhead h2,.sumhead h3{font-family:var(--serif)}
+@media(min-width:1024px){
+  .tabs{background:transparent!important;border-top:0!important}
+  .tabs button.on{background:var(--ink)!important;color:#fff}
+  .tabs button.on span{background:transparent;padding:0}
+  #v-home .tile{border-right:0;border-bottom:1px solid var(--line)}#v-home .tile:last-child{border-bottom:0}
+}
+.inbar textarea:focus,.inbar textarea:focus-visible{outline:none;box-shadow:none}
+.inbar:focus-within{border-color:var(--ink);box-shadow:0 0 0 3px rgba(255,232,115,.7)}
+.chemobar:not(.fever){background:#fff;border:1px solid var(--line2);color:var(--ink);text-align:left;justify-content:flex-start}
+.chemobar:not(.fever) b{color:var(--blue2);font-family:var(--serif)}
+@media(prefers-reduced-motion:reduce){.stamp.press{animation:none}}
 </style>
 </head>
 <body>
@@ -317,12 +416,12 @@ html.big .chips button{font-size:.74em;min-height:52px}
 <!-- 홈(앱 첫 화면) -->
 <section class="view on" id="v-home">
   <div class="hcol main">
-  <div class="hello" id="hello"></div>
+  <div class="pagehd" id="hello"></div>
   <div class="phonebar" id="phoneBar" hidden><span>📞 <b>치료병원 번호</b>를 등록해 두면 열이 날 때 바로 전화할 수 있어요.</span><button type="button" onclick="openSheet('settings')">등록</button><button type="button" class="x" aria-label="다음에 하기" onclick="snooze('phone')">✕</button></div>
   <div id="chemoBar"></div>
   <div id="safeline"></div>
   <div id="nudge"></div>
-  <button type="button" class="hcta" onclick="startFrom('checkin')"><span class="hi">✅</span><span><b>오늘 한 번에 기록</b><small>체온·통증·식사·약을 버튼으로 1분</small></span><span class="ar" aria-hidden="true">›</span></button>
+  <button type="button" class="hcta" onclick="startFrom('checkin')"><span class="hi" aria-hidden="true">✎</span><span><b>오늘 한 번에 기록</b><small>체온·통증·식사·약을 버튼으로 1분</small></span><span class="ar" aria-hidden="true">›</span></button>
   <h3 class="hsec">빠른 기록</h3>
   <div class="hgrid">
     <button type="button" onclick="startFrom('temp')"><i>🌡️</i>체온</button>
@@ -472,7 +571,7 @@ html.big .chips button{font-size:.74em;min-height:52px}
     <b>하는 일</b><ul><li>몸 상태·일정·약·질문을 기록하고 진료요약으로 정리해요.</li><li>기록한 값과 입력한 날짜를 바탕으로 일반적인 참고 안내(연락 기준, 참고용 예상일)를 보여 줘요.</li></ul>
     <b>하지 않는 일</b><ul><li>질병을 진단·치료·예측하거나 약 용량·치료 일정을 정하지 않아요.</li><li>응급 상황을 판단하거나 의료진의 연락을 대신하지 않아요. 걱정되면 수치와 상관없이 의료진에게 연락하세요.</li><li>기록을 아프다 서버로 보내지 않아요(이 기기 안에만 저장, 구글 드라이브 백업은 직접 연결했을 때만).</li></ul>
     <p class="nshort" style="margin-top:6px">[안내] 이 노트의 모든 정보는 일반적인 건강 정보를 알기 쉽게 정리한 참고 자료이며, 의사의 진료·진단·처방을 대신하지 않습니다. 치료 일정·용량·검사·부작용 대처는 환자의 상태와 의료기관에 따라 다르므로 담당 의료진의 판단과 안내를 따르세요. ApuDa는 이 정보를 근거로 한 개별 의료 판단이나 그 결과에 대해 책임을 지지 않습니다. 응급 상황에는 즉시 119 또는 가까운 응급실을 이용하세요.</p></div>
-  <p class="note-foot">ApuDa 암환자 노트 v4.0 · <a href="/">ApuDa 홈</a></p>
+  <p class="note-foot">ApuDa 암환자 노트 v4.1 · <a href="/">ApuDa 홈</a></p>
 </div></div>
 
 <div class="toast" id="toast"></div>
