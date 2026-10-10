@@ -1,0 +1,66 @@
+name: Hospital Information AMC official specialists
+on:
+  schedule:
+    - cron: '20 22 * * *' # 07:20 Asia/Seoul next day
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'public-site/hospital-information/scripts/collect_amc.py'
+      - 'public-site/hospital-information/scripts/merge_verified.py'
+      - '.github/workflows/hospital-information-amc.yml'
+permissions:
+  contents: write
+concurrency:
+  group: apuda-hospital-data-sync
+  cancel-in-progress: false
+jobs:
+  official-directory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install official-page parser
+        run: python -m pip install requests beautifulsoup4
+      - name: Verify robots policy and capture 20 official cancer centers
+        run: |
+          set -euo pipefail
+          python public-site/hospital-information/scripts/collect_amc.py \
+            --output public-site/hospital-information/data/amc-verified.json
+          python public-site/hospital-information/scripts/merge_verified.py
+      - name: Validate official clinical data before publication
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          base=Path("public-site/hospital-information/data")
+          amc=json.loads((base/"amc-verified.json").read_text())
+          merged=json.loads((base/"verified-specialists.json").read_text())
+          assert len(amc.get("coverage",[]))==20, "Center coverage incomplete"
+          assert amc["count"]==len(amc["results"])>=15, "Insufficient valid official physician records"
+          assert all(x["status"]=="ACTIVE" and x["cancers"] and x["specialty_text"] and
+            x["profile_url"].startswith("https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do")
+            and x["source_url"].startswith("https://www.amc.seoul.kr/asan/depts/cancer/K/staffcancer.do")
+            for x in amc["results"]), "Unexpected AMC physician evidence"
+          assert merged["count"]>=amc["count"], "Merged records lost official clinicians"
+          print("OFFICIAL_ACQUIRED",amc["count"],"MERGED",merged["count"])
+          PY
+      - name: Publish verified official snapshot via existing Netlify Git deployment
+        run: |
+          set -euo pipefail
+          git config user.name apuda-hospital-bot
+          git config user.email apuda-hospital-bot@users.noreply.github.com
+          git add public-site/hospital-information/data/amc-verified.json \
+                  public-site/hospital-information/data/verified-specialists.json
+          if git diff --cached --quiet; then
+            echo "No clinical records changed"
+          else
+            git commit -m "data(hospital): sync AMC clinically confirmed specialist directory"
+            git pull --rebase -X theirs origin main
+            git push origin main
+          fi
