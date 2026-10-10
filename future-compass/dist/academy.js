@@ -131,5 +131,22 @@
       g.FC_ROUTE.geocode(a0.addr).then(function (p) { if (!p) return; var arr2 = list(); arr2.forEach(function (y) { if (y.id === id) { y.lat = p.lat; y.lng = p.lng; } }); save(arr2); });
     });
   }
-  setTimeout(function () { seed(); info(); }, 3500);   // 가족 동기화 첫 받기가 끝난 뒤
+  /* 2차: 수학 주소, 국어는 본관으로 (엄마 확인) */
+  var INFO2_FLAG = 'fc-ac-info-20261010b';
+  function info2() {
+    try { if (localStorage.getItem(INFO2_FLAG) || !localStorage.getItem(INFO_FLAG)) return; } catch (e) { return; }
+    var arr = list(), nm = function (v) { return v.replace(/[\s()]/g, ''); }, geo = [];
+    var get = function (id, name) { return arr.filter(function (y) { return y.id === id || nm(y.name) === nm(name); })[0]; };
+    var m = get('seed-math', '다원교육 대치');
+    if (m) { if (!m.addr) { m.addr = '서울 강남구 도곡로 501'; m.lat = null; m.lng = null; geo.push(m.id); } if ((m.note || '').indexOf('고등관') < 0) m.note = ((m.note ? m.note + ' · ' : '') + '고등관 2층').slice(0, 80); }
+    var k = get('seed-kor', '송림 국어 (채리)');
+    if (k) { if (!k.addr) { k.addr = '서울 서초구 반포대로 300-3'; k.lat = null; k.lng = null; geo.push(k.id); } k.note = (k.note || '').replace(/강의 장소 확인 필요:[^·]*/, '').replace(/^[\s·]+|[\s·]+$/g, ''); if (k.note.indexOf('본관') < 0) k.note = ((k.note ? k.note + ' · ' : '') + '본관 3~4층').slice(0, 80); }
+    save(arr); try { localStorage.setItem(INFO2_FLAG, '1'); } catch (e) {}
+    if (typeof render === 'function') render();
+    if (g.FC_ROUTE && g.FC_ROUTE.geocode) geo.forEach(function (id) {
+      var a0 = list().filter(function (y) { return y.id === id; })[0]; if (!a0) return;
+      g.FC_ROUTE.geocode(a0.addr).then(function (p) { if (!p) return; var arr2 = list(); arr2.forEach(function (y) { if (y.id === id) { y.lat = p.lat; y.lng = p.lng; } }); save(arr2); });
+    });
+  }
+  setTimeout(function () { seed(); info(); info2(); }, 3500);   // 가족 동기화 첫 받기가 끝난 뒤
 })(window);
