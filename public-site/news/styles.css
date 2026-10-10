@@ -539,3 +539,135 @@ a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 32px));m
   .drug-downloads{width:100%;justify-content:flex-start}
   .drug-download{flex:1 1 auto}
 }
+
+/* ===== Readability & consistency pass (2026-10-11) =====
+   대상: 50~80대 사용자. 본문 15px+, 메타 13px+, 터치 44px+, 탭 문법 통일. */
+:root{--muted:#53657A;--tab-line:#C5D3E2}
+body{font-size:16px;line-height:1.6;letter-spacing:-.01em}
+h1,h2,h3,p,b,strong{word-break:keep-all;overflow-wrap:break-word}
+:where(a,button,[tabindex]):focus-visible{outline:3px solid var(--blue2)!important;outline-offset:2px}
+
+/* 헤더: 세 페이지 같은 문법 */
+.navlinks a{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;font-size:15px;font-weight:800;color:#3F5368}
+.navlinks a.on{background:var(--navy);color:#fff}
+.navlinks a:not(.on):hover{background:var(--sky);color:var(--blue2)}
+.brand small{font-size:11px;letter-spacing:0}
+.eyebrow{font-size:15px;font-weight:800;letter-spacing:0;color:var(--blue2)}
+.hero p{font-size:17px}
+.chip{font-size:14px;padding:8px 12px;color:#3F5368}
+.section-head p,.oncology-toolbar p{font-size:15px;line-height:1.6;color:var(--muted)}
+.official-updated,.oncology-count{font-size:14px;color:#3F5368}
+.brief h2{font-size:19px}
+
+/* 선택 컨트롤: 기간 탭·종류 탭·필터 칩을 하나의 모양으로 */
+.period-tabs,.drug-brief-tabs,.drug-period-tabs,.notice-filters,.oncology-tags,.quick-filter-chips{display:flex;flex-wrap:wrap;gap:8px;overflow:visible}
+.period-tabs button,.drug-brief-tabs button,.drug-period-tabs button,.notice-filters button,.oncology-tags button,.quick-filter-chips button,.issue-more{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:0 16px;border:1px solid var(--tab-line);border-radius:999px;background:#fff;color:#2F4358;font:inherit;font-size:15px;font-weight:800;cursor:pointer;white-space:nowrap}
+.period-tabs button:not(.on):hover,.drug-brief-tabs button:not(.on):hover,.drug-period-tabs button:not(.on):hover,.notice-filters button:not(.on):hover,.oncology-tags button:not(.on):hover,.quick-filter-chips button:not(.on):hover{border-color:var(--blue);color:var(--blue2);background:#fff}
+.period-tabs button.on,.drug-brief-tabs button.on,.drug-period-tabs button.on,.notice-filters button.on,.oncology-tags button.on,.quick-filter-chips button.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.quick-filter-chips em{font-size:13px;min-width:22px;padding:1px 6px;background:#EEF2F7;color:#2F4358}
+.quick-filter-chips button.on em{background:rgba(255,255,255,.2);color:#fff}
+.quick-filter-label{font-size:14px;color:#3F5368}
+.oncology-quick-filter{flex-wrap:wrap;overflow:visible}
+.issue-more{width:100%;border-radius:12px;background:#F8FBFF;color:var(--blue2)}
+.drug-period-row{margin:12px 0 10px}
+
+/* 뉴스 카드 공통: 제목 3줄까지, 메타·요약 크게 */
+.period-meta,.newsroom-meta,.official-notice-meta,.patient-official-meta,.issue-meta{font-size:13px;font-weight:700;color:var(--muted)}
+.period-rank{min-width:28px;height:28px;font-size:13px}
+.newsroom-badge,.freshness,.notice-type,.patient-official-meta em{font-size:13px;padding:3px 9px}
+.period-card h3,.newsroom-card h3{font-size:19px;line-height:1.42;-webkit-line-clamp:3}
+.period-card p,.newsroom-summary{font-size:15px;line-height:1.6;color:#3A4E63;-webkit-line-clamp:3}
+.period-summary{font-size:15px}
+.source-chip,.attachment-chip,.patient-official-actions>a{min-height:44px;padding:0 14px;font-size:14px;font-weight:800;align-items:center;display:inline-flex}
+.newsroom-foot span{font-size:13px;color:var(--muted)}
+.newsroom-foot em{font-size:14px}
+.patient-meaning b{font-size:14px}
+.patient-meaning span{font-size:15px;line-height:1.6}
+.patient-meaning small{font-size:13px}
+.official-notice-card h3,.patient-official-card h3{font-size:17px;line-height:1.5}
+.official-notice-summary,.patient-official-card p{font-size:14.5px;line-height:1.6;color:#3F5368;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+.issue-meta{white-space:normal;overflow:visible}
+.issue-copy b{font-size:16px;line-height:1.5;-webkit-line-clamp:3}
+.issue-column h3{font-size:19px}
+.issue-total{font-size:13px}
+.issue-item{min-height:44px}
+.issue-empty,.period-trend-empty{font-size:15px}
+.period-trends-head span{font-size:14px}
+.period-trend b{font-size:15px}.period-trend small{font-size:13px}.period-trend p{font-size:14px}
+.row b{font-size:16px}.row span{font-size:14.5px;line-height:1.6}
+.outlet-link{font-size:15px;line-height:1.55;padding:4px 0}
+.outlet-head a{font-size:16px;display:inline-flex;min-height:44px;align-items:center}
+.media-card{min-height:64px}.media-card b{font-size:16px;word-break:keep-all}.media-card small{font-size:13px}
+.archive a{min-height:56px}
+.archive time{display:block;font-size:14px}
+.archive strong{display:block;font-size:16px;line-height:1.5;font-weight:700}
+.archive em{flex:0 0 auto;white-space:nowrap;font-size:14px}
+.insight p{font-size:16px}
+.newsroom-empty{font-size:15px;color:#3F5368}
+.load-error{border-style:solid;border-color:#F0C9C3;background:#FFF8F6;color:#7A2E24}
+.retry-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;margin-top:12px;padding:0 18px;border:1px solid var(--navy);border-radius:12px;background:var(--navy);color:#fff;font:inherit;font-size:15px;font-weight:800;cursor:pointer}
+.footer{font-size:14px;line-height:1.7}
+.footer-status-link{font-size:14px;display:inline-flex;min-height:44px;align-items:center;margin-top:0}
+.note{font-size:14.5px;color:#3F5368}
+
+/* 공식 의약품 */
+.drug-paper-top{font-size:13px;letter-spacing:0}
+.drug-paper-card:before{top:56px}
+.drug-deck{font-size:15px;line-height:1.6}
+.drug-detail,.drug-impact p{font-size:14px}
+.drug-impact b{font-size:14px}
+.drug-paper-foot{font-size:13px}
+.drug-tag{font-size:13px}
+.drug-download{min-height:44px;padding:0 16px;font-size:14px}
+.drug-period-summary{font-size:14px}.drug-period-summary b{font-size:15px}
+.drug-brief-source{font-size:13px}
+
+/* NCCN·상태 페이지 */
+.nccn-patient-kicker{font-size:14px;letter-spacing:0}
+.nccn-patient-ref-copy p{font-size:15px}
+.nccn-patient-cta{min-height:48px;font-size:15px}
+.nccn-patient-ref>small{font-size:13px}
+.status-card-top span,.recommended-api-card>span{font-size:13px}
+.status-card-top em{font-size:13px}
+.status-card h3{font-size:17px}
+.status-card p,.recommended-api-card p{font-size:14px}
+.status-card>a,.recommended-api-card em{display:inline-flex;align-items:center;min-height:44px;font-size:14px;padding-top:8px}
+.recommended-api-card h3{font-size:17px}
+
+@media(max-width:620px){
+  .nav{flex-wrap:wrap;gap:4px 10px;padding:8px 0}
+  .navlinks{margin-left:0;width:100%;gap:4px}
+  .navlinks a{padding:0 12px;font-size:15px}
+  .hero{padding:26px 0 18px}
+  /* 썸네일은 위로: 제목·요약이 화면 폭을 다 쓰도록 */
+  .period-card.has-thumb,.newsroom-card.has-thumb{display:flex;flex-direction:column}
+  .period-card.has-thumb .period-thumb,.newsroom-card.has-thumb .newsroom-thumb{width:100%;height:132px;min-height:0}
+  .period-card.has-thumb .period-thumb img,.newsroom-card.has-thumb .newsroom-thumb img{min-height:0}
+  .period-body,.newsroom-body{padding:16px}
+  .period-card h3,.newsroom-card h3{font-size:18px;line-height:1.42;margin:8px 0 6px}
+  .period-card p,.newsroom-summary{font-size:15px;line-height:1.6;-webkit-line-clamp:3}
+  .period-meta,.newsroom-meta{font-size:13px}
+  .source-chip{padding:0 14px;font-size:14px}
+  .newsroom-foot span{font-size:13px}.newsroom-foot em{font-size:14px}
+  .period-summary{font-size:14.5px}
+  .period-trend p{display:block}
+  .issue-copy b{font-size:16px}
+  .media-icon{display:none}
+  .media-card small{display:block}
+  .media-hub{grid-template-columns:1fr 1fr}
+  .drug-download{flex:0 1 auto}
+  .archive a{align-items:center}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .card:hover,.newsroom-card:hover,.period-card.is-clickable:hover,.media-card:hover,.official-source-card:hover,.recommended-api-card:hover{transform:none}
+}
+.toolbar-title{margin:0;font-size:26px;letter-spacing:-.04em}
+.toolbar-sub{margin:6px 0 0}
+.brand{display:inline-flex;flex-direction:column;justify-content:center;min-height:44px}
+.outlet-link{min-height:44px;display:flex;align-items:center}
+@media(max-width:420px){.navlinks a{padding:0 10px;font-size:14px}}
+.oncology-quick-filter[hidden]{display:none}
+.brief p,.insight p,.nccn-patient-ref-copy p{max-width:44em}

@@ -56,7 +56,7 @@ var CONF={
  about:{t:'ApuDa 길잡이',g:'궁금한 서비스를 말씀하시면 사용법을 알려드리고 바로 데려다 드려요.',chips:[['🏢 층별 안내','전체 메뉴'],['🎗️ 내 암종 정보','암종 고르기'],['📘 노트 사용법','노트 사용법'],['💊 약 찾기','항암제']]},
  mini:{t:'무료 웹북 도우미',g:function(){var c=curCancer();return '<b>'+(c?c[1]+' ':'')+'첫 30일 웹북</b>을 보고 계세요. 앞부분은 무료 미리보기예요. <b>책 전체</b>는 인스타그램 @apuda.app 팔로우 → “30일” 댓글 → DM 코드로 받을 수 있어요.'},chips:[['⬇ 다운로드 방법','다운로드 방법'],['❓ 이 암 FAQ','이 암 FAQ'],['🗺️ 이 암 치료결정 지도','이 암 치료지도'],['💊 관련 항암제','이 암 약'],['📚 다른 암종 책','다른 암종 책']]},
  faq:{t:'FAQ 도우미',g:'질문을 눌러 펼쳐 보세요. 진료 때 물어볼 질문은 <b>노트에 저장</b>해 두면 진료요약에 모여요.',chips:[['📖 첫 30일 책 읽기','이 암 책'],['🗺️ 치료결정 지도','이 암 치료지도'],['📘 질문 노트에 저장','질문 저장 방법']]},
- drugs:{t:'Drug Hub 도우미',g:'<b>약 이름을 그대로</b> 써 주세요(상품명·성분명 모두 OK). 기전·부작용·공급상태·뉴스를 바로 보여드려요.',chips:[['🔎 예: 키트루다','키트루다'],['📦 공급부족 표시란?','공급부족이란'],['🧬 바이오마커 보기','바이오마커'],['📘 내 약 노트에 기록','약 기록 방법']]},
+ drugs:{t:'Drug Hub 도우미',g:'<b>약 이름을 그대로</b> 써 주세요(상품명·성분명 모두 OK). 기전·부작용·공급상태·뉴스를 바로 보여드려요.',chips:[['🔎 예: 펨브롤리주맙','펨브롤리주맙'],['📦 공급부족 표시란?','공급부족이란'],['🧬 바이오마커 보기','바이오마커'],['📘 내 약 노트에 기록','약 기록 방법']]},
  biomarkers:{t:'바이오마커 도우미',g:'검사 이름(EGFR, HER2, PD-L1, MSI…)을 쓰시면 그 검사가 왜 필요한지와 관련 약으로 연결해 드려요.',chips:[['🔎 예: HER2','HER2'],['📄 결과지 읽는 법','결과지 읽는 법'],['🗺️ 치료결정 지도','치료결정 지도']]},
  map:{t:'치료결정 지도 도우미',g:'위쪽 표지를 눌러 암종을 바꿀 수 있어요. 오른쪽 <b>진료실 질문 3가지</b>는 노트에 저장해 진료 때 꺼내 보세요.',chips:[['🎗️ 암종 바꾸기','암종 고르기'],['💊 이 암 관련 약','이 암 약'],['📘 질문 노트에 저장','질문 저장 방법']]},
  note:{t:'ApuDa 길잡이',g:'노트 기록은 아래 입력창(노트봇)에 쓰시면 돼요. 저는 <b>다른 층·서비스로 이동</b>과 사용법을 도와드려요.',chips:[['📘 노트 사용법','노트 사용법'],['🚨 응급 판단','응급'],['🎗️ 내 암종 정보','암종 고르기'],['🏢 다른 층으로','전체 메뉴']]},
@@ -92,7 +92,7 @@ function cancerPicker(){return '어떤 암종을 볼까요?<div class="qr">'+CAN
 function menu(){var groups=[['1F 확인센터',['cancercheck','checkup']],['2F 암 정보 서재',['library','map','drugs','markers','comic']],['3F 지원',['support']],['4F 치료 동행',['note','care']],['5F 커뮤니티',['cafe']],['뉴스',['news','oncnews']],['ApuDa 패밀리·계정',['pet','farm','my']],['안내',['home','about']]];
   return '<b>ApuDa 전체 메뉴</b>'+groups.map(function(g){return '<div class="grp">'+g[0]+'</div>'+g[1].map(function(id){return siteCard(SITE[id])}).join('')}).join('')}
 var ABOUT='<b>ApuDa.app — 아프지만, 다행이다.</b><p>암 진단 전 위험도 확인부터 진단 첫 30일, 치료 중 기록, 비용 지원, 커뮤니티까지 <b>환자와 보호자가 다음에 할 일</b>을 한 건물 안에서 찾도록 만든 무료 서비스예요.</p><ul><li><b>1F</b> 암 위험도·건강검진</li><li><b>2F</b> 암종별 첫 30일 책(미리보기·전체 PDF)·FAQ·치료결정 지도·Drug Hub·바이오마커</li><li><b>3F</b> 산정특례·의료비 지원</li><li><b>4F</b> 암환자 노트(기록·진료요약)</li><li><b>5F</b> 환자·보호자 카페</li></ul><p class="sm">모든 정보는 환자교육용이며 진단·처방을 대신하지 않아요.</p><div class="links">'+link('/about/','자세한 소개·사용법',true)+'</div>';
-var NOTE_HOW='<b>암환자 노트 사용법</b><ol><li>아래 입력창에 말하듯 쓰기 — "열 37.8 통증 3점", "다음주 화 10시 항암 3차", "약: 젤로다 아침저녁 3알", "질문: 운동해도 되나요?"</li><li>잘못 저장되면 <b>↩ 되돌리기</b></li><li>위험 신호(38℃·혈변·통증 7점↑)는 바로 연락 안내가 떠요</li><li>진료 갈 땐 <b>진료요약</b> 탭을 의료진에게 보여주기</li><li>⚙︎에서 병원 번호를 넣어두면 🚨 응급 화면에서 바로 전화</li></ol><p class="sm">기록은 이 기기 안에만 저장돼요. 폰을 바꾸기 전엔 ⚙︎ → 백업 파일 받기.</p>';
+var NOTE_HOW='<b>암환자 노트 사용법</b><ol><li>아래 입력창에 말하듯 쓰기 — "열 37.8 통증 3점", "다음주 화 10시 항암 3차", "약: 카페시타빈 아침저녁 3알", "질문: 운동해도 되나요?"</li><li>잘못 저장되면 <b>↩ 되돌리기</b></li><li>위험 신호(38℃·혈변·통증 7점↑)는 바로 연락 안내가 떠요</li><li>진료 갈 땐 <b>진료요약</b> 탭을 의료진에게 보여주기</li><li>⚙︎에서 병원 번호를 넣어두면 🚨 응급 화면에서 바로 전화</li></ol><p class="sm">기록은 이 기기 안에만 저장돼요. 폰을 바꾸기 전엔 ⚙︎ → 백업 파일 받기.</p>';
 
 function reply(raw){
   var t=String(raw||'').trim(),n=norm(t),cc=curCancer(),out=[];
@@ -124,7 +124,7 @@ function reply(raw){
    '이 암 약':function(){return cc?[{h:link('/library/drugs/?cancer='+cc[0],'💊 '+cc[1]+' 관련 항암제',true)}]:[{h:link('/library/drugs/','💊 Drug Hub 열기',true)}]},
    '이 암 책':function(){return cc?[{h:link('/library/mini/?cancer='+cc[0],'📖 '+cc[1]+' 진단 첫 30일',true)}]:cmd['첫 30일 책']()},
    '질문 저장 방법':function(){return [{h:'노트에 <b>"질문: 궁금한 내용"</b>이라고 쓰면 진료요약의 "오늘 꼭 물어볼 것"에 모여요. 아래 버튼을 누르면 바로 써 둘 수 있어요.<div class="links">'+link('/note/?say='+encodeURIComponent('질문: '),'📘 노트에 질문 쓰기',true)+'</div>'}]},
-   '약 기록 방법':function(){return [{h:'노트에 <b>"약: 약이름 먹는 시간 개수"</b>로 쓰면 복용 중인 약 목록에 들어가요. 예) 약: 젤로다 아침저녁 3알<div class="links">'+link('/note/?say='+encodeURIComponent('약: '),'📘 노트에 약 기록',true)+'</div>'}]},
+   '약 기록 방법':function(){return [{h:'노트에 <b>"약: 약이름 먹는 시간 개수"</b>로 쓰면 복용 중인 약 목록에 들어가요. 예) 약: 카페시타빈 아침저녁 3알<div class="links">'+link('/note/?say='+encodeURIComponent('약: '),'📘 노트에 약 기록',true)+'</div>'}]},
    '공급부족이란':function(){return [{h:'<b>공급 표시</b>는 식약처에 신고된 공급중단·부족 보고를 약 이름으로 찾아 보여주는 거예요. 빨강은 정상화 예정일이 아직 안 지난 신고, 주황은 최근 3년 내 이력이에요.<p class="sm">공급 소식이 있어도 <b>치료 일정이나 약을 임의로 바꾸지 말고</b> 치료기관에 확인하세요.</p>'}]},
    '결과지 읽는 법':function(){return [{h:'<b>검사 결과지 볼 때</b><ol><li>검사 이름(EGFR, HER2…)과 결과(양성/음성, 수치)를 그대로 적어 두기</li><li>바이오마커 페이지에서 그 검사의 "결과는 치료와 어떻게 연결되나요?" 확인</li><li>모르는 표현은 노트에 질문으로 저장해 진료 때 확인</li></ol><p class="sm">결과 해석과 치료 결정은 담당 의료진이 해요.</p>'}]},
    '응급':function(){return [{c:'red',h:'<b>지금 병원에 연락해야 하는지</b> 체크리스트로 확인해 보세요. 숨쉬기 힘들거나 의식이 처지면 바로 119.<div class="links">'+link('/note/#sos','🚨 응급 판단 열기',true)+'<a class="go red" href="tel:119">🚑 119</a></div>'}]},
@@ -146,7 +146,7 @@ function reply(raw){
    '치료 중 열':function(){return [{c:'red',h:'<b>항암·면역·표적치료 중이라면 일반 감기와 기준이 달라요.</b><p>38.0℃ 이상이면 해열제로 먼저 내리지 말고 <b>치료병원에 바로 연락</b>하세요. 치료 중이 아니라면 Care의 일반 안내를 보세요.</p><div class="links">'+link('/note/#sos','🚨 응급 판단',true)+link('/note/?say='+encodeURIComponent('체온 '),'📘 체온 기록')+'</div>'}]},
    '반려동물 응급':function(){return [{c:'red',h:'<b>바로 동물병원에 연락할 신호</b><ul><li>숨쉬기 힘들어하거나 잇몸이 창백·파랗게 변함</li><li>경련, 쓰러짐, 의식이 흐림</li><li>계속 토하거나 피 섞인 구토·설사</li><li>배가 부풀고 헛구역질(특히 대형견)</li><li>소변을 못 봄(특히 수컷 고양이)</li><li>중독 의심(초콜릿·포도·양파·약·살충제 등)</li></ul><p class="sm">야간엔 24시 동물병원을 찾으세요. 사람 약을 임의로 먹이지 마세요.</p>'}]},
    '가축 신고':function(){return [{c:'red',h:'<b>가축 이상 시</b><ul><li>여러 마리가 동시에 고열·식욕부진·폐사 → <b>가축전염병 의심 신고 1588-9060</b></li><li>개별 개체 이상 → 담당 수의사·공수의 상담</li><li>신고 전 이동·출하를 멈추고 출입을 통제하세요.</li></ul><div class="links"><a class="go p red" href="tel:15889060">📞 1588-9060 신고</a></div>'}]},'카페':function(){return [{h:siteCard(SITE.cafe)}]},'건강검진':function(){return [{h:siteCard(SITE.checkup)}]},'위험도':function(){return [{h:siteCard(SITE.cancercheck)}]},
-   '항암제 뉴스':function(){return [{h:siteCard(SITE.oncnews)}]},'항암제':function(){return [{h:siteCard(SITE.drugs)+'<p class="sm">약 이름을 바로 써 주셔도 돼요. 예) 키트루다</p>'}]},'바이오마커':function(){return [{h:siteCard(SITE.markers)}]},'치료결정 지도':function(){return [{h:siteCard(SITE.map)}]}
+   '항암제 뉴스':function(){return [{h:siteCard(SITE.oncnews)}]},'항암제':function(){return [{h:siteCard(SITE.drugs)+'<p class="sm">약 이름을 바로 써 주셔도 돼요. 예) 펨브롤리주맙</p>'}]},'바이오마커':function(){return [{h:siteCard(SITE.markers)}]},'치료결정 지도':function(){return [{h:siteCard(SITE.map)}]}
   };
   if(animal)return cmd[animal]();
   if(cmd[t])return cmd[t]();
@@ -182,7 +182,7 @@ function reply(raw){
   /* 증상 상담 → 노트봇 지식 */
   if(/아파|아픔|메스|구역|설사|변비|입안|저려|저림|피곤|피로|탈모|머리카락|먹어야|운동|우울|불안|잠|열이/.test(t))
     return [{h:'증상별 대처 안내는 <b>암환자 노트의 노트봇</b>이 자세히 알려드려요. 아래를 누르면 그대로 물어볼게요.<div class="links">'+link('/note/?say='+encodeURIComponent(t),'📘 노트봇에게 묻기',true)+'</div><p class="sm">심하거나 갑자기 나빠지면 치료병원에 바로 연락하세요.</p>'}];
-  return [{h:'제가 잘 이해하지 못했어요. 이렇게 물어보세요.<ul><li>"폐암 정보" · "키트루다" · "HER2"</li><li>"치료비 지원" · "카페" · "건강검진"</li><li>"열 37.8" (노트에 기록)</li></ul><div class="qr">'+q('🏢 전체 메뉴','전체 메뉴')+q('💡 ApuDa 소개','ApuDa 소개')+'</div>'}];
+  return [{h:'제가 잘 이해하지 못했어요. 이렇게 물어보세요.<ul><li>"폐암 정보" · "펨브롤리주맙" · "HER2"</li><li>"치료비 지원" · "카페" · "건강검진"</li><li>"열 37.8" (노트에 기록)</li></ul><div class="qr">'+q('🏢 전체 메뉴','전체 메뉴')+q('💡 ApuDa 소개','ApuDa 소개')+'</div>'}];
 }
 
 /* ── UI ── */
@@ -211,7 +211,7 @@ root.innerHTML='<style>'+CSS+'</style>'+
  (DS.launcher==='none'?'':'<button class="fab'+(left?' left':'')+'" aria-label="ApuDa 길잡이 열기"><span>🧭</span><b>'+(CTX==='home'?'무엇을 도와드릴까요?':'길잡이')+'</b></button>')+
  '<section class="pn'+(left?' left':'')+'" role="dialog" aria-label="ApuDa 길잡이"><div class="hd"><i>A</i><div><b>'+esc(C.t)+'</b><small>ApuDa.app · 어디든 안내해 드려요</small></div><button class="m" data-say="전체 메뉴">전체 메뉴</button><button class="x" aria-label="닫기">✕</button></div>'+
  '<div class="th" aria-live="polite"></div><div class="ch">'+C.chips.map(function(c){return '<button data-say="'+esc(c[1])+'">'+esc(c[0])+'</button>'}).join('')+'</div>'+
- '<form><input placeholder="예) 폐암 정보 · 키트루다 · 치료비 지원" aria-label="길잡이에게 묻기" enterkeyhint="send"><button aria-label="보내기">↑</button></form><div class="ft">참고용 일반 정보예요 · 진료·진단·처방을 대신하지 않아요 · 입력 내용은 저장·전송되지 않아요 · 응급 시 119</div></section>';
+ '<form><input placeholder="예) 폐암 정보 · 펨브롤리주맙 · 치료비 지원" aria-label="길잡이에게 묻기" enterkeyhint="send"><button aria-label="보내기">↑</button></form><div class="ft">참고용 일반 정보예요 · 진료·진단·처방을 대신하지 않아요 · 입력 내용은 저장·전송되지 않아요 · 응급 시 119</div></section>';
 var pn=root.querySelector('.pn'),th=root.querySelector('.th'),inp=root.querySelector('input'),started=false;
 function add(cls,h){var d=document.createElement('div');d.className='mg '+cls;d.innerHTML=h;th.appendChild(d);th.scrollTop=th.scrollHeight;return d}
 function say(text,silentUser){if(!silentUser)add('me',esc(text));var go=function(){reply(text).forEach(function(r){add('bt'+(r.c?' '+r.c:''),r.h)})};if(!ONC&&/[a-z가-힣]/i.test(text))loadOnc().then(go);else go()}

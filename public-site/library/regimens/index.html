@@ -51,6 +51,15 @@ details{margin-top:10px;border-top:1px solid var(--line);padding-top:8px}summary
 .cta{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}.cta a{background:var(--blue);color:#fff;border-radius:12px;padding:11px 16px;font-weight:900;text-decoration:none}.cta a.l{background:#fff;color:var(--blue2);border:1px solid var(--line)}
 .cnote{margin-top:12px;font-size:13px;color:var(--amber);font-weight:800}.src{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 16px;margin-top:22px}.src h2{font-size:17px;margin:0 0 6px}.src li{font-size:14px;margin:4px 0}
 .foot{font-size:13px;color:var(--muted);margin-top:26px;line-height:1.7}
+/* 2026-10-11 보강: 읽기·누르기·대비 */
+.tabs button{min-height:44px}
+@media(max-width:640px){.tabs{flex-wrap:wrap;overflow:visible}.tabs button{padding:0 14px}}
+.pill.red{color:#b42318}
+.lg,.cnote,.foot{font-size:14px}
+.cta a{min-height:48px;display:inline-flex;align-items:center}
+.top a.b,.logo{min-height:44px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:10px}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
@@ -80,7 +89,7 @@ function tabs(){document.getElementById('tabs').innerHTML=R.CANCERS.map(function
 function card(r){
   var bar='',sum='';if(r.cycle&&r.cycle<=42&&!r.opts){var dz=r.days||[1];for(var d=0;d<r.cycle;d++){var c=[];if(dz.indexOf(d+1)>=0||r.oral&&d<r.oral.on)c.push('d');if(r.nadir&&d>=r.nadir[0]&&d<=r.nadir[1])c.push('n');bar+='<i class="'+c.join(' ')+'"></i>'}
     sum=(r.oral?r.oral.on+'일 복용 → '+r.oral.off+'일 휴약':dz.map(function(x){return x+'일째'}).join('·')+' 투여')+(r.nadir?' → '+(r.nadir[0]+1)+'~'+(r.nadir[1]+1)+'일째 면역력 낮아지기 쉬움':'')+' → '+(r.cycle+1)+'일째 다음 주기'}
-  return '<article class="rx"><span class="pill'+(r.type==='면역'?' green':r.type==='세포독성'?' red':r.type==='ADC'?' red':r.type==='호르몬'?' gray':'')+'">'+esc(r.type)+'</span><h3>'+esc(r.name)+'</h3><div class="ko">'+esc(r.ko)+'</div>'+
+  return '<article class="rx"><span class="pill'+(r.type==='면역'?' green':r.type==='세포독성'?' red':r.type==='ADC'?' red':r.type==='호르몬'?' gray':'')+'">'+esc(r.type)+'</span><h3>'+esc(r.name)+'</h3>'+
   '<table><tr><th>투여</th><td>'+esc(r.how)+'</td></tr><tr><th>주기</th><td>'+esc(cyc(r))+'</td></tr><tr><th>백혈구 저하</th><td>'+(r.type==='호르몬'||r.once?'해당 없음 (항암제가 아니에요)':r.nadir?'대개 D+'+r.nadir[0]+'~'+r.nadir[1]+' 무렵':'뚜렷한 시기 없음 — 특정 시기가 없을 뿐, 38.0℃ 이상이면 언제든 바로 연락')+'</td></tr></table>'+
   (bar?'<div class="cyc" role="img" aria-label="'+esc(sum)+'">'+bar+'</div><p class="cycsum">'+esc(sum)+'</p><div class="lg" aria-hidden="true"><span><i style="background:#0b4fc0"></i>투여·복용(진한 칸)</span><span><i style="background:repeating-linear-gradient(45deg,#e98a80 0 2px,#fde7e4 2px 4px)"></i>면역력 낮아지기 쉬움(빗금)</span></div>':'')+
   '<details><summary>시기별 주의사항</summary><ul class="tl">'+r.tl.map(function(x){return '<li><b>'+(x[1]>=99?'D+'+x[0]+' 이후':'D+'+x[0]+'~'+x[1])+'</b> '+esc(x[2])+'</li>'}).join('')+'</ul></details>'+

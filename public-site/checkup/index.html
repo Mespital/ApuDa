@@ -156,13 +156,49 @@
       .result-grid{grid-template-columns:1fr}
     }
 
+    /* v2.4 — 읽기·누르기 접근성 보강 (2026-10-11) */
+    a.brand{text-decoration:none;color:inherit;border-radius:12px}
+    .help,.section-head p,.notice,.hero p,.age-guide,.privacy-summary,.upload-pair .upload-zone p,.match-ready{font-size:14px}
+    label.field{font-size:15px}
+    .evidence,.input-confidence{font-size:13px}
+    .compact-progress-head span b{font-size:13px}
+    footer{font-size:13px}
+    .result-box li{font-size:15px}
+    .chip input{display:inline-block!important;position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+    .chip{position:relative}
+    .chip label{min-height:44px;font-size:14px}
+    .icon-btn{min-width:44px;min-height:44px}
+    .menu-btn{min-height:44px}
+    .btn:disabled{opacity:.45;cursor:not-allowed}
+    .btn:disabled:hover{transform:none;box-shadow:none}
+    :focus-visible{outline:3px solid #0b57d0;outline-offset:2px}
+    .chip input:focus-visible+label{outline:3px solid #0b57d0;outline-offset:2px}
+    .field input:focus-visible,.field select:focus-visible,.field textarea:focus-visible{outline:2px solid #0b57d0;outline-offset:1px}
+    @media(max-width:720px){
+      .top-actions>.btn,.more-menu>summary{min-height:44px;font-size:14px}
+      .data-table.stack{min-width:0}
+      .data-table.stack thead{display:none}
+      .data-table.stack,.data-table.stack tbody,.data-table.stack tr,.data-table.stack td{display:block;width:100%}
+      .table-wrap:has(.data-table.stack){overflow:visible;border:0;border-radius:0}
+      .data-table.stack tr{border:1px solid var(--line);border-radius:13px;padding:10px 12px;margin-bottom:10px;background:#fff}
+      .data-table.stack td{border:0;padding:5px 0}
+      .data-table.stack td[data-label]::before{content:attr(data-label);display:block;font-size:14px;font-weight:700;color:#344054;margin-bottom:4px}
+      .data-table.stack td.row-del{text-align:right}
+      .data-table.stack td.empty{text-align:center;padding:12px 0}
+      .data-table.stack input,.data-table.stack select{min-height:44px;font-size:16px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{transition:none!important;animation:none!important}
+      .btn:hover{transform:none}
+    }
   </style>
 </head>
 <body>
 <div class="app">
 <header>
   <div class="topbar">
-    <div class="brand"><div class="logo">A</div><div><strong>ApuDa Check</strong><small>맞춤 건강검진 선택</small></div></div>
+    <a class="brand" href="/" aria-label="ApuDa 홈으로"><div class="logo">A</div><div><strong>ApuDa Check</strong><small>맞춤 건강검진 선택</small></div></a>
     <div class="top-actions">
       <button class="btn primary" id="saveBtn">저장</button>
       <button class="btn" id="resultBtn">결과</button>
@@ -276,7 +312,7 @@ async function ensurePDFJS(){if(window.pdfjsLib)return window.pdfjsLib;const sou
 function init(){renderNav();renderAll();bindGlobal();showSection(current);updateProgress();}
 function renderNav(){const nav=q('#sideNav');if(!nav)return;nav.innerHTML=sections.map(([id,n,label])=>`<button data-nav="${id}" class="${id===current?'active':''}"><span class="num">${n}</span><span>${label}</span></button>`).join('');qa('[data-nav]').forEach(b=>b.onclick=()=>showSection(b.dataset.nav));}
 function updateStepUi(){const idx=sections.findIndex(x=>x[0]===current);const item=sections[idx]||sections[0];const label=q('#currentStepLabel'),counter=q('#stepCounter');if(label)label.textContent=item[2];if(counter)counter.textContent=current==='results'?'결과':`${Math.min(idx+1,12)}/12`;}
-function showSection(id){current=id;qa('.section').forEach(s=>s.classList.toggle('active',s.dataset.section===id));qa('[data-nav]').forEach(b=>b.classList.toggle('active',b.dataset.nav===id));updateStepUi();if(id==='results')renderResults();window.scrollTo({top:0,behavior:'smooth'});}
+function showSection(id){current=id;qa('.section').forEach(s=>s.classList.toggle('active',s.dataset.section===id));qa('[data-nav]').forEach(b=>b.classList.toggle('active',b.dataset.nav===id));updateStepUi();if(id==='results')renderResults();window.scrollTo({top:0,behavior:(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)?'auto':'smooth'});}
 function footer(prev,next){return `<div class="section-footer"><button class="btn" ${!prev?'disabled':''} data-go="${prev||''}">이전</button><button class="btn primary" data-go="${next||'results'}">${next?'다음':'추천 결과 보기'}</button></div>`}
 function sectionHead(title,desc,tag=''){return `<div class="section-head"><div><h2>${title}</h2><p>${desc}</p></div>${tag?`<span class="status-pill status-ok">${tag}</span>`:''}</div>`}
 function renderAll(){renderBasic();renderLifestyle();renderFamily();renderHistory();renderSurgeries();renderMeds();renderAllergies();renderScreenings();renderFindings();renderLabs();renderImaging();renderSymptoms();renderResults();bindDynamic();}
@@ -388,7 +424,7 @@ function renderCatalog(){q('[data-section="catalog"]').innerHTML=`${sectionHead(
 <div style="margin-top:16px">${state.catalog.length?catalogTable():`<div class="empty">엑셀 파일이 없어도 기본 추천 엔진은 작동합니다.</div>`}</div>${footer('symptoms','results')}`}
 function catalogTable(){const selected=state.catalog.filter(isSelectionCatalogItem);return `<div class="table-wrap"><table class="data-table"><thead><tr><th>검사명</th><th>분류</th><th>선택/패키지</th><th>나이</th><th>성별</th><th>주기</th><th>추천 연계요인</th><th>비용</th></tr></thead><tbody>${selected.slice(0,300).map(r=>`<tr><td>${esc(r.test)}</td><td>${esc(r.category||'-')}</td><td>${esc(r.package||'-')}</td><td>${r.minAge||r.maxAge?`${esc(r.minAge||'')}-${esc(r.maxAge||'')}`:'-'}</td><td>${esc(r.sex||'전체')}</td><td>${r.intervalMonths?`${esc(r.intervalMonths)}개월`:'-'}</td><td>${esc(r.risk||'자동 추천 제외')}</td><td>${r.cost!==''&&r.cost!==null&&r.cost!==undefined?Number(r.cost).toLocaleString()+'원':'-'}</td></tr>`).join('')}</tbody></table></div>${selected.length>300?`<div class="help" style="margin-top:8px">화면에는 처음 300개 선택항목만 표시합니다. 전체 ${selected.length}개 항목이 저장되어 있습니다.</div>`:''}`}
 
-function arrayTable(key,cols){const rows=state[key]||[];return `<div class="table-wrap"><table class="data-table"><thead><tr>${cols.map(c=>`<th>${c[1]}</th>`).join('')}<th style="width:55px">삭제</th></tr></thead><tbody>${rows.length?rows.map((r,idx)=>`<tr>${cols.map(([k,label,type])=>`<td>${cell(key,idx,k,type,r[k])}</td>`).join('')}<td><button class="icon-btn" data-remove="${key}" data-index="${idx}">×</button></td></tr>`).join(''):`<tr><td colspan="${cols.length+1}" class="empty">입력된 항목이 없습니다.</td></tr>`}</tbody></table></div><div class="row-actions"><button class="btn" data-add="${key}">+ 항목 추가</button></div>`}
+function arrayTable(key,cols){const rows=state[key]||[];return `<div class="table-wrap"><table class="data-table stack"><thead><tr>${cols.map(c=>`<th>${c[1]}</th>`).join('')}<th style="width:55px">삭제</th></tr></thead><tbody>${rows.length?rows.map((r,idx)=>`<tr>${cols.map(([k,label,type])=>`<td data-label="${esc(label)}">${cell(key,idx,k,type,r[k])}</td>`).join('')}<td class="row-del"><button class="icon-btn" data-remove="${key}" data-index="${idx}" aria-label="이 항목 삭제">× 삭제</button></td></tr>`).join(''):`<tr><td colspan="${cols.length+1}" class="empty">입력된 항목이 없습니다.</td></tr>`}</tbody></table></div><div class="row-actions"><button class="btn" data-add="${key}">+ 항목 추가</button></div>`}
 function cell(key,idx,k,type,val=''){
   if(type==='computed'){const cls=key==='meds'?classifyMed(state[key][idx]?.name):val;state[key][idx][k]=cls;return `<span class="med-class" data-medclass="${idx}">${esc(cls||'미분류')}</span>`}
   if(type.startsWith('select:')){const opts=type.slice(7).split('|');return `<select data-array="${key}" data-index="${idx}" data-key="${k}"><option value="">선택</option>${opts.map(o=>`<option value="${esc(o)}" ${val===o?'selected':''}>${esc(o)}</option>`).join('')}</select>`}
@@ -413,7 +449,7 @@ function toggleArray(arr,val,checked){if(checked&&!arr.includes(val))arr.push(va
 function recalc(){const h=Number(state.profile.height),w=Number(state.profile.weight);state.profile.bmi=h&&w?(w/((h/100)**2)).toFixed(1):'';const c=Number(state.lifestyle.cigPerDay),y=Number(state.lifestyle.smokeYears);state.lifestyle.packYears=c&&y?((c/20)*y).toFixed(1):''}
 function refreshComputed(){const b=q('#bmiInput'),a=q('#ageDisplay'),bl=q('#bmiLabelDisplay'),p=q('#packYearsInput');if(b)b.value=state.profile.bmi||'';if(a)a.textContent=`${age()??'-'}세`;if(bl)bl.textContent=bmiLabel(state.profile.bmi);if(p)p.value=state.lifestyle.packYears||''}
 
-function updateProgress(){const checks=[(state.profile.birthMonth||state.profile.birth),state.profile.sex,state.profile.height,state.profile.weight,state.lifestyle.smoking,state.conditions.length||state.cancerHistory.length,state.meds.length,state.allergies.length,state.screenings.length,state.findings.length,state.labs.date||Object.values(state.labs).some(Boolean),state.imaging.length,state.symptoms.selected.length||state.symptoms.freeText];const pct=Math.round(checks.filter(Boolean).length/checks.length*100);const bar=q('#progressBar'),txt=q('#progressText');if(bar)bar.style.width=pct+'%';if(txt)txt.textContent=pct+'%';updateStepUi()}
+function updateProgress(){const checks=[(state.profile.birthMonth||state.profile.birth),state.profile.sex,state.profile.height,state.profile.weight,state.lifestyle.smoking,state.conditions.length||state.cancerHistory.length,state.meds.length,state.allergies.length,state.screenings.length,state.findings.length,state.labs.date||Object.values(state.labs).some(Boolean),state.imaging.length,state.symptoms.selected.length||state.symptoms.freeText];const pct=Math.round(checks.filter(Boolean).length/checks.length*100);const bar=q('#progressBar'),txt=q('#progressText');if(bar)bar.style.width=pct+'%';if(txt)txt.textContent='입력 '+pct+'%';updateStepUi()}
 
 
 async function unzipXlsxEntries(buffer){const bytes=new Uint8Array(buffer),view=new DataView(buffer);let eocd=-1;for(let i=bytes.length-22;i>=Math.max(0,bytes.length-65557);i--){if(view.getUint32(i,true)===0x06054b50){eocd=i;break}}if(eocd<0)throw new Error('유효한 XLSX 압축 구조를 찾지 못했습니다.');const total=view.getUint16(eocd+10,true),centralOffset=view.getUint32(eocd+16,true);let pos=centralOffset;const entries={};for(let i=0;i<total;i++){if(view.getUint32(pos,true)!==0x02014b50)throw new Error('XLSX 중앙 디렉터리가 손상되었습니다.');const method=view.getUint16(pos+10,true),compSize=view.getUint32(pos+20,true),nameLen=view.getUint16(pos+28,true),extraLen=view.getUint16(pos+30,true),commentLen=view.getUint16(pos+32,true),localOffset=view.getUint32(pos+42,true);const name=new TextDecoder('utf-8').decode(bytes.slice(pos+46,pos+46+nameLen));if(view.getUint32(localOffset,true)!==0x04034b50)throw new Error('XLSX 내부 파일 헤더가 손상되었습니다.');const localNameLen=view.getUint16(localOffset+26,true),localExtraLen=view.getUint16(localOffset+28,true),dataStart=localOffset+30+localNameLen+localExtraLen;const compressed=bytes.slice(dataStart,dataStart+compSize);let data;if(method===0){data=compressed}else if(method===8){if(typeof DecompressionStream==='undefined')throw new Error('이 브라우저는 오프라인 XLSX 압축 해제를 지원하지 않습니다.');const stream=new Blob([compressed]).stream().pipeThrough(new DecompressionStream('deflate-raw'));data=new Uint8Array(await new Response(stream).arrayBuffer())}else{throw new Error(`지원하지 않는 XLSX 압축 방식입니다(${method}).`)}entries[name]=data;pos+=46+nameLen+extraLen+commentLen}return entries}

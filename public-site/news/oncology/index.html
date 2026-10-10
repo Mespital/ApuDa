@@ -1,23 +1,23 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ApuDa 항암제 뉴스</title><meta name="description" content="항암제 허가·급여·임상·바이오마커·가이드라인 변화를 암종별로 보여줍니다."><link rel="stylesheet" href="/news/styles.css"></head><body>
-<header class="topbar"><div class="wrap nav"><a class="brand" href="/">ApuDa<small>아프지만, 다행이다.</small></a><nav class="navlinks"><a href="/news/">오늘의 브리핑</a><a class="on" href="/news/oncology/">항암제 뉴스</a><a href="/">ApuDa 홈</a></nav></div></header>
+<header class="topbar"><div class="wrap nav"><a class="brand" href="/">ApuDa<small>아프지만, 다행이다.</small></a><nav class="navlinks" aria-label="뉴스 메뉴"><a href="/news/">오늘의 브리핑</a><a class="on" aria-current="page" href="/news/oncology/">항암제 뉴스</a><a href="/">ApuDa 홈</a></nav></div></header>
 <main class="wrap">
-<section class="hero"><div class="eyebrow">APUDA ONCOLOGY INTELLIGENCE</div><h1>항암제 뉴스</h1><p>허가·급여·임상·바이오마커·가이드라인 변화를 암종과 주요 변화 기준으로 보기 쉽게 보여줍니다. 뉴스 카드를 누르면 원문 기사로 이동합니다.</p>
-<div class="oncology-tags" id="oncologyTags" aria-label="암종 필터"></div></section>
+<section class="hero"><div class="eyebrow">항암제·암 뉴스</div><h1>항암제 뉴스</h1><p>허가·급여·임상·바이오마커·가이드라인 변화를 암종별로 모아 보여드려요. 뉴스를 누르면 원문 기사가 새 창으로 열려요.</p>
+<div class="oncology-tags" id="oncologyTags" role="group" aria-label="암종 선택"></div></section>
 
-<section class="brief"><h2>Oncology Focus</h2><p><b>오늘 기사 우선</b>으로 보여주고, 해당 암종에 오늘 뉴스가 없으면 <b>최근 7일 → 최근 30일</b> 순으로 보완합니다. 각 암종은 최근 30일 기사 중 최대 3건까지 표시하며, 기사 날짜와 최신성 배지를 함께 보여줍니다.</p></section>
+<section class="brief"><h2>이렇게 골라 보여드려요</h2><p><b>오늘 기사</b>를 먼저 보여드리고, 그 암종에 오늘 뉴스가 없으면 <b>최근 7일, 최근 30일</b> 기사 순서로 채워요. 기사마다 날짜와 '오늘·최근 7일·최근 30일' 표시를 함께 달았어요.</p></section>
 
 <section class="section" id="oncologyNewsSection">
-  <div class="oncology-toolbar"><div><h2 style="margin:0">주요 항암 업데이트</h2><p style="margin:6px 0 0;color:var(--muted);font-size:13px">최근 30일 · 환자에게 영향이 큰 변화 우선</p></div><div class="oncology-count" id="oncologyCount">불러오는 중</div></div>
-  <div class="oncology-quick-filter" aria-label="항암 뉴스 빠른 필터">
-    <span class="quick-filter-label">빠르게 보기</span>
-    <div class="quick-filter-chips" id="oncologyQuickFilters"></div>
+  <div class="oncology-toolbar"><div><h2 class="toolbar-title">주요 항암 업데이트</h2><p class="toolbar-sub">최근 30일 기사 중 환자에게 영향이 큰 변화부터 보여드려요.</p></div><div class="oncology-count" id="oncologyCount">불러오는 중</div></div>
+  <div class="oncology-quick-filter">
+    <span class="quick-filter-label" id="quickFilterLabel">주제로 좁혀 보기</span>
+    <div class="quick-filter-chips" id="oncologyQuickFilters" role="group" aria-labelledby="quickFilterLabel"></div>
   </div>
-  <div class="oncology-grid" id="oncologyGrid"><div class="newsroom-empty">최신 항암 뉴스를 불러오는 중입니다.</div></div>
+  <div class="oncology-grid" id="oncologyGrid"><div class="newsroom-empty">최신 항암 뉴스를 불러오는 중이에요.</div></div>
 </section>
 
 <section class="section patient-official-section">
-  <div class="section-head"><div><h2>환자에게 중요한 공식 업데이트</h2><p>국내 급여·항암 기준·안전성처럼 치료 접근성과 직접 관련된 공식자료를 우선 보여줍니다.</p></div><span class="official-updated" id="patientOfficialUpdated">공식자료 확인 중</span></div>
-  <div class="patient-official-grid" id="patientOfficialGrid"><div class="newsroom-empty">환자 관련 공식 업데이트를 불러오는 중입니다.</div></div>
+  <div class="section-head"><div><h2>환자에게 중요한 공식 업데이트</h2><p>급여·항암 기준·안전성처럼 치료를 받는 데 직접 관련된 공식 자료를 먼저 보여드려요.</p></div><span class="official-updated" id="patientOfficialUpdated">공식자료 확인 중</span></div>
+  <div class="patient-official-grid" id="patientOfficialGrid"><div class="newsroom-empty">공식 업데이트를 불러오는 중이에요.</div></div>
 </section>
 
 <section class="section nccn-patient-ref">
@@ -31,7 +31,7 @@
 </section>
 
 <div class="note">치료 가능 여부는 암종, 병기, 바이오마커, 이전 치료, 전신상태 등에 따라 달라집니다. 이 페이지의 정보는 진료를 대체하지 않으며 담당 의료진과의 상담이 필요합니다.</div>
-</main><footer class="footer"><div class="wrap"><b>ApuDa</b>아프지만, 다행이다.</div></footer>
+</main><footer class="footer"><div class="wrap"><b>ApuDa</b>아프지만, 다행이다.<br>의료정보는 일반적인 정보 제공 목적이며 개인의 진단·치료를 대체하지 않습니다.</div></footer>
 <script>
 const CANCERS=['전체','유방암','폐암','위암','대장암','갑상선암','신장암','전립선암','췌장암','담도암','간암','림프종','자궁경부암'];
 const QUICK_FILTERS=[
@@ -41,20 +41,24 @@ const QUICK_FILTERS=[
   {id:'trial',label:'임상결과'},
   {id:'biomarker',label:'바이오마커'}
 ];
-let stories=[],active='전체',activeFacet='';
+let stories=[],active='전체',activeFacet='',loadFailed=false;
 const tags=document.getElementById('oncologyTags'),grid=document.getElementById('oncologyGrid'),count=document.getElementById('oncologyCount'),quickFilters=document.getElementById('oncologyQuickFilters');
-const esc=s=>String(s??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+const decodeEntities=s=>{const t=document.createElement('textarea');t.innerHTML=String(s??'');return t.value;};
+const esc=s=>decodeEntities(s).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 function renderTags(){
-  tags.innerHTML=CANCERS.map(c=>'<button type="button" data-cancer="'+esc(c)+'" class="'+(c===active?'on':'')+'">'+esc(c)+'</button>').join('');
+  tags.innerHTML=CANCERS.map(c=>'<button type="button" data-cancer="'+esc(c)+'" class="'+(c===active?'on':'')+'" aria-pressed="'+(c===active)+'">'+esc(c)+'</button>').join('');
   tags.querySelectorAll('button').forEach(b=>b.onclick=()=>{active=b.dataset.cancer;activeFacet='';renderTags();render();document.getElementById('oncologyNewsSection')?.scrollIntoView({behavior:'smooth',block:'start'});});
 }
 function cancersOf(n){return n?.oncology?.cancer_types||[];}
 function primaryUrl(n){return Array.isArray(n.source_urls)&&n.source_urls.length?n.source_urls[0]:'';}
+const pad2=n=>String(n).padStart(2,'0');
+function fmtDay(d){return (d.getFullYear()!==new Date().getFullYear()?d.getFullYear()+'년 ':'')+(d.getMonth()+1)+'월 '+d.getDate()+'일';}
 function formatTime(v,verified){
-  if(!verified||!v)return '게시시간 확인 필요';
-  try{return new Date(v).toLocaleString('ko-KR',{year:'numeric',month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit',hour12:false});}
-  catch{return '게시시간 확인 필요';}
+  if(!verified||!v)return '게시 시각 확인 중';
+  const d=new Date(v);
+  return isNaN(d)?'게시 시각 확인 중':fmtDay(d)+' '+pad2(d.getHours())+':'+pad2(d.getMinutes());
 }
+function failBox(msg){return '<div class="newsroom-empty load-error" role="alert">'+esc(msg)+'<br><button type="button" class="retry-btn" onclick="location.reload()">다시 불러오기</button></div>';}
 function freshText(n){
   if(n.freshness==='today') return '오늘';
   if(n.freshness==='7d') return '최근 7일';
@@ -84,7 +88,7 @@ function card(n){
   const summary=(n.summary&&n.summary[0])||n.importance||'';
   const patient=(n.oncology&&n.oncology.patient_summary)||'';
   const labels=(n.oncology&&n.oncology.patient_relevance_labels)||[];
-  const body='<div class="newsroom-body"><div class="newsroom-meta"><span class="newsroom-badge">'+esc(tag)+'</span><span class="freshness '+freshClass(n)+'">'+freshText(n)+'</span><span>'+esc(pub)+'</span></div><h3>'+esc(n.title)+'</h3><p class="newsroom-summary">'+esc(summary)+'</p>'+(patient?'<div class="patient-meaning"><b>환자에게 의미</b><span>'+esc(patient)+'</span>'+(labels.length?'<small>'+esc(labels.join(' · '))+'</small>':'')+'</div>':'')+'<div class="newsroom-foot"><span>'+esc(formatTime(n.published_at,n.published_at_verified))+'</span><em>'+(u?'뉴스 원문 보기 →':'뉴스 원문 링크 확인 중')+'</em></div></div>';
+  const body='<div class="newsroom-body"><div class="newsroom-meta"><span class="newsroom-badge">'+esc(tag)+'</span><span class="freshness '+freshClass(n)+'">'+freshText(n)+'</span><span>'+esc(pub)+'</span></div><h3>'+esc(n.title)+'</h3><p class="newsroom-summary">'+esc(summary)+'</p>'+(patient?'<div class="patient-meaning"><b>환자에게 의미</b><span>'+esc(patient)+'</span>'+(labels.length?'<small>'+esc(labels.join(' · '))+'</small>':'')+'</div>':'')+'<div class="newsroom-foot"><span>'+esc(formatTime(n.published_at,n.published_at_verified))+'</span><em>'+(u?'원문 보기 ↗':'원문 링크 확인 중')+'</em></div></div>';
   const cls='newsroom-card'+(img?' has-thumb':'')+(u?' card-openable':'');
   return '<article class="'+cls+'"'+(u?' data-url="'+esc(u)+'" tabindex="0" role="link" aria-label="'+esc(n.title)+' 뉴스 원문 열기"':'')+'>'+imgHtml+body+'</article>';
 }
@@ -113,10 +117,11 @@ function matchesFacet(n,facet){
 }
 function renderQuickFilters(){
   if(!quickFilters)return;
+  quickFilters.closest('.oncology-quick-filter').hidden=loadFailed;
   const cancerBase=active==='전체'?stories:stories.filter(n=>cancersOf(n).includes(active));
   quickFilters.innerHTML=QUICK_FILTERS.map(f=>{
     const n=f.id?cancerBase.filter(x=>matchesFacet(x,f.id)).length:cancerBase.length;
-    return '<button type="button" data-quick-filter="'+esc(f.id)+'" class="'+(activeFacet===f.id?'on':'')+'"><span>'+esc(f.label)+'</span><em>'+n+'</em></button>';
+    return '<button type="button" data-quick-filter="'+esc(f.id)+'" class="'+(activeFacet===f.id?'on':'')+'" aria-pressed="'+(activeFacet===f.id)+'"><span>'+esc(f.label)+'</span><em aria-label="'+n+'건">'+n+'</em></button>';
   }).join('');
   quickFilters.querySelectorAll('button').forEach(btn=>btn.onclick=()=>{
     activeFacet=btn.dataset.quickFilter||'';
@@ -128,11 +133,17 @@ function render(){
   let base=active==='전체'?stories:stories.filter(n=>cancersOf(n).includes(active));
   if(activeFacet) base=base.filter(n=>matchesFacet(n,activeFacet));
   let filtered=(active==='전체'&&!activeFacet)?latestPerCancer():base.slice(0,12);
-  const label=[active!=='전체'?active:'',activeFacet||''].filter(Boolean).join(' · ');
-  count.textContent=(label?label+' · ':'')+'최근 30일 '+base.length+'건';
+  const facetLabel=(QUICK_FILTERS.find(f=>f.id===activeFacet)||{}).label;
+  const label=[active!=='전체'?active:'',activeFacet?facetLabel:''].filter(Boolean).join(', ');
   renderQuickFilters();
+  if(loadFailed){
+    count.textContent='불러오지 못함';
+    grid.innerHTML=failBox('항암 뉴스를 불러오지 못했어요. 인터넷 연결을 확인한 뒤 다시 불러와 주세요.');
+    return;
+  }
+  count.textContent=(label?label+' · ':'')+'최근 30일 '+base.length+'건';
   if(!filtered.length){
-    grid.innerHTML='<div class="newsroom-empty"><b>'+esc(label||active)+'</b> 조건의 최근 30일 주요 업데이트가 없습니다.<br>다른 필터를 선택해 주세요.</div>';
+    grid.innerHTML='<div class="newsroom-empty"><b>'+esc(label||active)+'</b>에 해당하는 최근 30일 주요 소식이 없어요.<br>다른 암종이나 주제를 골라 보세요.</div>';
     return;
   }
   grid.innerHTML=filtered.map(card).join('');
@@ -141,7 +152,8 @@ function render(){
 function patientOfficialCard(n){
   const agency=n.agency||'공식기관';
   const type=n.category||n.document_type||'공식자료';
-  const date=n.published_at?new Date(n.published_at).toLocaleDateString('ko-KR'):'';
+  const dd=n.published_at?new Date(n.published_at):null;
+  const date=dd&&!isNaN(dd)?fmtDay(dd):'';
   const summary=n.summary||(
     type.includes('급여')?'치료 접근성과 건강보험 적용에 영향을 줄 수 있는 공식 기준입니다.':
     type.includes('안전성')?'치료 중 안전성 확인에 필요한 공식 자료입니다.':
@@ -195,11 +207,11 @@ async function loadPatientOfficialUpdates(){
     const m=(mfds.items||[]).filter(x=>/안전성|의약품|항암|허가|회수|공급/.test([x.category,x.title].join(' ')));
     const supply=supplyOfficialItems(official);
     const all=[...h,...m,...supply].sort((a,b)=>String(b.published_at||'').localeCompare(String(a.published_at||''))).slice(0,8);
-    updated.textContent='최신 공식자료 · '+all.length+'건';
-    box.innerHTML=all.length?all.map(patientOfficialCard).join(''):'<div class="newsroom-empty">최근 환자 치료에 직접 관련된 공식 업데이트가 없습니다.</div>';
+    updated.textContent='최신 공식자료 '+all.length+'건';
+    box.innerHTML=all.length?all.map(patientOfficialCard).join(''):'<div class="newsroom-empty">최근에는 치료와 직접 관련된 공식 업데이트가 없어요.</div>';
   }catch(e){
-    updated.textContent='공식자료 준비 중';
-    box.innerHTML='<div class="newsroom-empty">공식 업데이트 데이터가 준비되면 자동 표시됩니다.</div>';
+    updated.textContent='불러오지 못함';
+    box.innerHTML=failBox('공식 업데이트를 불러오지 못했어요.');
   }
 }
 
@@ -217,7 +229,7 @@ async function load(){
       const latest=await fetch('/news/data/latest.json',{cache:'no-store'}).then(r=>r.json());
       const data=await fetch(latest.path,{cache:'no-store'}).then(r=>r.json());
       stories=(data.top_news||[]).filter(n=>n.oncology&&n.oncology.is_oncology).map(n=>({...n,freshness:'today',age_days:0}));
-    }catch(_){stories=[];}
+    }catch(_){stories=[];loadFailed=true;}
   }
   render();
 }

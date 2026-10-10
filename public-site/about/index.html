@@ -41,12 +41,21 @@ h2{font-size:clamp(23px,3.4vw,32px);letter-spacing:-.04em;margin:46px 0 6px}
 .howc .ex{margin-top:10px;padding:10px 12px;border-radius:12px;background:var(--soft);font-size:13px;color:#244f8f;font-weight:700}
 .faq details{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin-bottom:8px}.faq summary{font-weight:900;cursor:pointer}.faq p{margin:8px 0 0;color:var(--muted);font-size:14.5px}
 .bot{display:flex;gap:16px;align-items:center;padding:20px;border-radius:22px;background:linear-gradient(135deg,#0f5bce,#3b8cf6);color:#fff;margin-top:14px}.bot i{font-style:normal;font-size:40px}.bot b{font-size:19px}.bot p{margin:4px 0 0;opacity:.9;font-size:14.5px}.bot button{margin-left:auto;border:0;border-radius:14px;min-height:48px;padding:0 16px;background:#fff;color:#0d4fb9;font-weight:900;font-size:15px;cursor:pointer;white-space:nowrap}
-.foot{margin-top:40px;padding:18px;border-radius:16px;background:#eef6ff;color:#526a81;font-size:13px}
-@media(max-width:760px){.pillars,.how{grid-template-columns:1fr}.floor{grid-template-columns:1fr}.fl{width:64px;height:64px;font-size:20px;border-radius:18px}.top nav{display:none}.bot{flex-wrap:wrap}.bot button{margin-left:0;width:100%}}
+.foot{margin-top:40px;padding:18px;border-radius:16px;background:#eef6ff;color:#526a81;font-size:14px;line-height:1.75}
+/* 2026-10 가독성·터치 보정 */
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid rgba(36,107,254,.45);outline-offset:3px;border-radius:10px}
+.brand{display:inline-flex;align-items:center;min-height:44px}
+.top nav a{display:inline-flex;align-items:center;min-height:44px;font-size:14px}
+.pillar p{font-size:15px}.floor p{font-size:15.5px}.svc a{min-height:56px}.svc b{font-size:15.5px}.svc small{font-size:13.5px}
+.howc ol{font-size:15.5px}.howc .ex{font-size:14px}.bot p{font-size:15px}
+.faq details{padding:0}.faq summary{padding:15px 16px;min-height:44px;line-height:1.5}.faq p{margin:0;padding:0 16px 16px;font-size:15.5px}
+.faq p a{display:inline-block;padding:4px 0}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media(max-width:760px){.pillars,.how{grid-template-columns:1fr}.floor{grid-template-columns:1fr}.fl{width:64px;height:64px;font-size:20px;border-radius:18px}.top nav a:not(.home){display:none}.bot{flex-wrap:wrap}.bot button{margin-left:0;width:100%}}
 </style>
 </head>
 <body>
-<header class="top"><a class="brand" href="/">ApuDa</a><nav><a href="#floors">층별 안내</a><a href="#how">사용법</a><a href="#faq">자주 묻는 질문</a><a href="/">홈으로</a></nav></header>
+<header class="top"><a class="brand" href="/">ApuDa</a><nav><a href="#floors">층별 안내</a><a href="#how">사용법</a><a href="#faq">자주 묻는 질문</a><a class="home" href="/">홈으로</a></nav></header>
 <main class="wrap">
 <section class="hero">
   <span class="kicker">ABOUT ApuDa.app</span>
@@ -60,7 +69,7 @@ h2{font-size:clamp(23px,3.4vw,32px);letter-spacing:-.04em;margin:46px 0 6px}
   </div>
 </section>
 
-<div class="bot"><i>🧭</i><div><b>어디로 가야 할지 모르겠다면, 길잡이에게 물어보세요</b><p>모든 페이지 오른쪽 아래 🧭 버튼 — "폐암 정보", "치료비 지원", "키트루다", "열 37.8"처럼 쓰면 맞는 곳으로 안내합니다.</p></div><button onclick="window.ApudaBot&&ApudaBot.open()">길잡이 열기</button></div>
+<div class="bot"><i>🧭</i><div><b>어디로 가야 할지 모르겠다면, 길잡이에게 물어보세요</b><p>모든 페이지 오른쪽 아래 🧭 버튼 — "폐암 정보", "치료비 지원", "항암제 이름", "열 37.8"처럼 쓰면 맞는 곳으로 안내합니다.</p></div><button onclick="window.ApudaBot&&ApudaBot.open()">길잡이 열기</button></div>
 
 <h2 id="floors">층별 안내</h2>
 <p class="lead">홈 화면의 건물에서 층을 누르면 해당 서비스가 열립니다.</p>
@@ -84,7 +93,7 @@ h2{font-size:clamp(23px,3.4vw,32px);letter-spacing:-.04em;margin:46px 0 6px}
 <div class="how">
   <div class="howc"><h3>① 내 암종 책부터 읽기</h3><ol><li>홈에서 <b>2F</b>를 누르고 내 암종 표지 선택</li><li><b>[암종] 진단 첫 30일</b> → 미리보기 (앞부분 무료)</li><li>책 전체는 인스타그램 @apuda.app 팔로우 → “30일” 댓글 → DM 코드 → 다운로드에 입력</li></ol></div>
   <div class="howc"><h3>② 치료가 왜 이렇게 정해졌는지 보기</h3><ol><li><b>치료결정 지도</b>에서 내 암종 선택</li><li>6단계 흐름에서 내가 지금 어디인지 확인</li><li>모르는 검사는 <b>바이오마커</b>, 약은 <b>Drug Hub</b>에서</li></ol></div>
-  <div class="howc"><h3>③ 암환자 노트에 기록하기</h3><ol><li>⚙︎에서 병원 전화번호 먼저 등록</li><li>입력창에 말하듯 쓰기</li><li>잘못 저장되면 ↩ 되돌리기</li></ol><div class="ex">예) 열 37.8 통증 3점 · 밥 반 먹음 · 다음주 화 10시 항암 3차 · 약: 젤로다 아침저녁 3알 · 질문: 운동해도 되나요?</div></div>
+  <div class="howc"><h3>③ 암환자 노트에 기록하기</h3><ol><li>⚙︎에서 병원 전화번호 먼저 등록</li><li>입력창에 말하듯 쓰기</li><li>잘못 저장되면 ↩ 되돌리기</li></ol><div class="ex">예) 열 37.8 통증 3점 · 밥 반 먹음 · 다음주 화 10시 항암 3차 · 약: 카페시타빈 아침저녁 3알 · 질문: 운동해도 되나요?</div></div>
   <div class="howc"><h3>④ 진료 날엔 진료요약 보여주기</h3><ol><li>노트 하단 <b>진료요약</b> 탭</li><li>2주간 체온·통증·식사·체중 변화와 질문이 한 장에</li><li>그대로 보여주거나 인쇄·PDF</li></ol></div>
   <div class="howc"><h3>🚨 급할 때</h3><ol><li>노트 상단 <b>🚨 응급</b> → 체크리스트</li><li>병원·야간·119·109 원탭 전화</li><li>38.0℃ 이상 열은 해열제보다 병원 연락이 먼저</li></ol></div>
   <div class="howc"><h3>💰 비용이 걱정될 때</h3><ol><li><b>3F 지원 정보</b>에서 산정특례·의료비 지원 확인</li><li>필요한 서류는 노트에 "질문:"으로 적어 원무과에 문의</li><li>다른 환자 경험은 <b>5F 카페</b>에서</li></ol></div>
@@ -95,7 +104,7 @@ h2{font-size:clamp(23px,3.4vw,32px);letter-spacing:-.04em;margin:46px 0 6px}
   <details><summary>정말 무료인가요? 회원가입이 필요한가요?</summary><p>모든 ApuDa 도구는 무료이며 가입 없이 쓸 수 있습니다. My ApuDa 개인 건강기록만 ApuDa ID 로그인이 필요합니다.</p></details>
   <details><summary>노트에 적은 내용은 어디에 저장되나요?</summary><p>지금 쓰는 기기(브라우저) 안에만 저장되고 아프다 서버로 전송되지 않습니다. 폰을 바꾸기 전에 노트 ⚙︎에서 백업 파일을 받아 두세요.</p></details>
   <details><summary>보호자가 대신 써도 되나요?</summary><p>네. 같은 기기에서 쓰거나, 백업 파일을 보호자 폰에서 불러오면 같은 기록을 볼 수 있습니다.</p></details>
-  <details><summary>ApuDa 정보로 치료를 결정해도 되나요?</summary><p>아니요. ApuDa는 이해와 질문을 돕는 환자교육 자료입니다. 진단·처방·치료 결정은 반드시 담당 의료진과 하세요. 국내 허가·급여 조건은 자주 바뀌므로 의약품안전나라·심평원과 병원에서 확인하세요.</p></details>
+  <details><summary>ApuDa 정보로 치료를 결정해도 되나요?</summary><p>아니요. ApuDa는 이해와 질문을 돕는 환자교육 자료입니다. 진단·처방·치료 결정은 담당 의료진과 함께 하세요. 국내 허가·급여 조건은 자주 바뀌므로 의약품안전나라·심평원과 병원에서 확인하세요.</p></details>
   <details><summary>PDF 다운로드 코드는 어디서 받나요?</summary><p>인스타그램 <a href="https://www.instagram.com/apuda.app/" target="_blank" rel="noopener" style="color:#246bfe;font-weight:900">@apuda.app</a>을 팔로우하고 이벤트 게시물에 “30일” 댓글을 남기면 DM으로 코드가 와요(최대 24시간). 코드 하나로 12종 모두 받을 수 있어요. 앞부분 미리보기는 코드 없이 누구나 볼 수 있어요.</p></details>
   <details><summary>앱처럼 설치할 수 있나요?</summary><p>암환자 노트는 휴대폰 브라우저 메뉴의 “홈 화면에 추가”로 앱처럼 쓸 수 있고, 인터넷이 없어도 열립니다.</p></details>
 </div>

@@ -1,9 +1,9 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>ApuDa 뉴스 데이터 상태</title><link rel="stylesheet" href="/news/styles.css"></head><body>
-<header class="topbar"><div class="wrap nav"><a class="brand" href="/">ApuDa<small>아프지만, 다행이다.</small></a><nav class="navlinks"><a href="/news/">오늘의 브리핑</a><a href="/news/oncology/">항암제 뉴스</a><a class="on" href="/news/status/">데이터 상태</a></nav></div></header>
+<header class="topbar"><div class="wrap nav"><a class="brand" href="/">ApuDa<small>아프지만, 다행이다.</small></a><nav class="navlinks" aria-label="뉴스 메뉴"><a href="/news/">오늘의 브리핑</a><a href="/news/oncology/">항암제 뉴스</a><a class="on" aria-current="page" href="/news/status/">데이터 상태</a><a href="/">ApuDa 홈</a></nav></div></header>
 <main class="wrap">
-<section class="hero"><div class="eyebrow">APUDA DATA OPERATIONS</div><h1>뉴스 데이터 상태</h1><p>뉴스·공식기관·NCCN 데이터의 마지막 갱신과 연결 상태를 한 화면에서 확인합니다.</p><div class="meta" id="statusMeta"><span class="chip">상태 확인 중</span></div></section>
-<section class="section"><div class="status-grid" id="statusGrid"><div class="newsroom-empty">데이터 상태를 불러오는 중입니다.</div></div></section>
-<section class="section"><div class="panel"><h3>다음 조치</h3><div class="list" id="actionList"><div class="row"><span>상태를 분석하는 중입니다.</span></div></div></div></section>
+<section class="hero"><div class="eyebrow">운영 점검용 페이지</div><h1>뉴스 데이터 상태</h1><p>뉴스·공식기관·NCCN 데이터가 언제 마지막으로 갱신됐는지, 연결은 잘 되는지 한 화면에서 확인해요.</p><div class="meta" id="statusMeta"><span class="chip">상태 확인 중</span></div></section>
+<section class="section"><div class="status-grid" id="statusGrid"><div class="newsroom-empty">데이터 상태를 불러오는 중이에요.</div></div></section>
+<section class="section"><div class="panel"><h3>다음 조치</h3><div class="list" id="actionList"><div class="row"><span>상태를 분석하는 중이에요.</span></div></div></div></section>
 <section class="section">
   <div class="section-head"><div><h2>다음 연동 추천</h2><p>현재 뉴스·항암·공식근거 구조를 확장할 때 가치가 큰 공공데이터입니다. 활용신청 후 키만 연결하면 됩니다.</p></div></div>
   <div class="recommended-api-grid">
@@ -16,16 +16,17 @@
 </section>
 <section class="section"><div class="panel"><h3>점검 기준</h3><div class="list"><div class="row"><b>정상</b><span>최근 생성 파일이 있고 공식 연결 응답이 정상</span></div><div class="row"><b>확인 필요</b><span>키·권한·외부기관 응답 또는 수집결과를 점검해야 함</span></div><div class="row"><b>저작권·이용정책 보호</b><span>NCCN은 환자용·전문가용 공식 링크만 제공하며, 가이드라인 본문/PDF/알고리즘/도표·변경내용을 자동수집·저장·AI 처리·재배포하지 않음</span></div></div></div></section>
 </main>
-<footer class="footer"><div class="wrap"><b>ApuDa</b>News Data Operations</div></footer>
+<footer class="footer"><div class="wrap"><b>ApuDa</b>아프지만, 다행이다.</div></footer>
 <script>
 const esc=s=>String(s??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
-const fmt=v=>{try{return new Date(v).toLocaleString('ko-KR',{year:'numeric',month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit',hour12:false})}catch{return '확인 필요'}};
+const pad2=n=>String(n).padStart(2,'0');
+const fmt=v=>{const d=new Date(v);return isNaN(d)?'확인 필요':d.getFullYear()+'년 '+(d.getMonth()+1)+'월 '+d.getDate()+'일 '+pad2(d.getHours())+':'+pad2(d.getMinutes())};
 async function get(url){try{const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw 0;return await r.json()}catch{return null}}
 function card(title,status,detail,updated,url){
  const ok=status==='정상';
  const cls=ok?'status-ok-card':'status-warn-card';
- const link=url?'<a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">원문/데이터 ↗</a>':'';
- return '<article class="status-card '+cls+'"><div class="status-card-top"><span>'+esc(title)+'</span><em>'+(ok?'정상':'확인 필요')+'</em></div><h3>'+esc(detail)+'</h3><p>'+esc(updated?('최종 갱신 '+fmt(updated)):'갱신시각 확인 필요')+'</p>'+link+'</article>';
+ const link=url?'<a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">원본 열기 ↗</a>':'';
+ return '<article class="status-card '+cls+'"><div class="status-card-top"><span>'+esc(title)+'</span><em>'+(ok?'정상':'확인 필요')+'</em></div><h3>'+esc(detail)+'</h3><p>'+esc(updated?('최종 갱신 '+fmt(updated)):'갱신 시각 확인 필요')+'</p>'+link+'</article>';
 }
 async function load(){
  const [latest,run,official,mfds,hira,nccn]=await Promise.all([
@@ -60,6 +61,8 @@ async function load(){
  if(hiraPrice?.status==='key_available'){
    actions.push('<div class="row"><b>심평원 약가 API</b><span>공공데이터 키는 등록되어 있습니다. 약가기준정보조회서비스 활용신청이 승인되면 실제 조회 검증 단계로 전환합니다.</span></div>');
  }
+ const loaded=[latest,run,official,mfds,hira,nccn].filter(Boolean).length;
+ if(!loaded) actions.unshift('<div class="row"><b>데이터 파일을 하나도 불러오지 못했어요</b><span>인터넷 연결이나 서버 상태를 확인한 뒤 다시 불러와 주세요. 위 카드의 확인 필요 표시는 이 때문일 수 있어요.</span><button type="button" class="retry-btn" onclick="location.reload()">다시 불러오기</button></div>');
  if(!actions.length) actions.push('<div class="row"><b>자동 점검</b><span>현재 즉시 조치가 필요한 데이터 소스가 없습니다.</span></div>');
  document.getElementById('actionList').innerHTML=actions.join('');
  document.getElementById('statusMeta').innerHTML='<span class="chip">자동 갱신</span><span class="chip">KST 기준</span><span class="chip">'+(run?.generated_at?'마지막 실행 '+esc(fmt(run.generated_at)):'마지막 실행 확인 필요')+'</span>';

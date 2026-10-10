@@ -541,6 +541,90 @@
   #famPop .foot{padding:0 22px 20px;font-size:12px;color:var(--muted);line-height:1.65}
   .guide-about{display:inline-flex;margin-top:12px;padding:8px 12px;border-radius:12px;background:#fff;border:1px solid var(--line);color:var(--blue);font-size:13px;font-weight:900;text-decoration:none}
   .guide-about:hover{border-color:#a9c4ea}
+
+  /* ── 2026-10 가독성·터치 보정 (구조 유지, 글자·누름 영역만) ── */
+  .account-link{min-height:44px;font-size:13px}
+  .guide-hero p{font-size:clamp(14px,1.15vw,16px)}
+  .guide-service-copy b{font-size:clamp(14px,1.15vw,16px)}
+  .guide-service-copy small{font-size:clamp(12px,.95vw,13px)}
+  .guide-about{min-height:44px;align-items:center}
+  /* 통계 카드: 화살표가 글자와 겹치지 않게 */
+  .p-stats b{white-space:nowrap}
+  .floor2-intro .p-stats .p-stat-go,#panel.floor-2-expanded .floor2-intro .p-stats .p-stat-go{padding-right:36px}
+  #panel p,.p-link-copy small,.floor2-service-copy small{word-break:keep-all}
+  .floor2-service{flex-shrink:0}
+  .mini-book-go{display:none}
+  .community-news-meta{flex-wrap:wrap;row-gap:3px}
+  .community-news-badge{white-space:nowrap}
+  .p-link-copy small{font-size:13px;line-height:1.4}
+  /* 층 패널 하단: 다른 층으로 바로 이동 */
+  .p-floors{position:sticky;bottom:-28px;z-index:2;display:flex;align-items:center;justify-content:center;gap:6px;
+    margin:18px -30px -28px;padding:10px 16px;background:rgba(239,246,255,.97);border-top:1px solid var(--line);
+    backdrop-filter:blur(8px)}
+  .p-floors span{margin-right:4px;color:#4E6680;font-size:13px;font-weight:800;white-space:nowrap}
+  .p-floors button{min-width:46px;min-height:44px;padding:0 6px;border-radius:12px;border:1px solid var(--line);background:#fff;
+    color:var(--blue-700);font-size:14px;font-weight:900}
+  .p-floors button:hover{border-color:var(--blue)}
+  .p-floors button[aria-current="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+  /* 5F 뉴스 미리보기 */
+  .community-news-head a{display:inline-flex;align-items:center;min-height:44px;padding:0 4px;font-size:13px}
+  .community-news-meta{font-size:12px}
+  .community-news-badge{padding:3px 8px}
+  .community-news-title{font-size:15px}
+  .community-news-empty{font-size:13px}
+  /* 2F 서재 */
+  .floor2-library-head span{font-size:12.5px;line-height:1.5}
+  .floor2-library-head b{font-size:18px}
+  .floor2-intro .p-stats small{font-size:12.5px;white-space:nowrap}
+  .mini-book-badge{font-size:10.5px;padding:3px 7px}
+  .mini-book-vol{width:22px;height:22px;font-size:11px}
+  .mini-book-name{font-size:13.5px}
+  .mini-book-go{font-size:14px}
+  .mini-book-tags{font-size:11.5px;color:#5F7389;padding-left:28px}
+  .floor2-side-head b{font-size:17px}
+  .floor2-side-head span{font-size:12.5px}
+  .floor2-service{min-height:68px}
+  .floor2-service-copy b{font-size:14.5px}
+  .floor2-service-copy small{font-size:12px;line-height:1.4}
+  .floor2-service-copy b em{font-size:10px}
+  .floor2-service.soon::after{font-size:11px}
+  .floor2-note{font-size:12.5px}
+  /* 책 선택 창 */
+  .book-choice-x{width:44px;height:44px}
+  .book-choice-kicker{font-size:11.5px;letter-spacing:.04em}
+  .book-choice-head p{font-size:14px;line-height:1.6}
+  .book-choice-copy b{font-size:15.5px}
+  .book-choice-copy small{font-size:13px;line-height:1.5}
+  .book-choice-actions a{min-height:44px;padding:8px 14px;font-size:14px;border-radius:12px}
+  .soon-badge{min-height:36px;font-size:12.5px}
+  .book-choice-note{font-size:13px;line-height:1.6}
+  .book-more span{font-size:13px}
+  .book-more a{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;font-size:13.5px}
+  #famPop .x{width:44px;height:44px;font-size:20px}
+  @media (min-width:861px){
+    /* 세부창이 오른쪽 아래 길잡이 버튼과 겹치지 않게 */
+    .sheet{max-height:min(84svh,calc(100svh - 180px))}
+    #panel.floor-2-expanded{top:calc(50% + 34px)}
+    #panel.floor-2-expanded .sheet{height:calc(100svh - 108px);max-height:calc(100svh - 108px)}
+    body.f2wide #apuda-bot{display:none}
+    #panel.floor-2-expanded .p-floors{margin:8px -28px -14px;bottom:-14px;padding:8px 16px}
+  }
+  @media (max-width:860px){
+    .account-dock{padding:3px}
+    .account-link{min-height:44px;font-size:13px;padding:0 13px}
+    body.open .account-dock{visibility:hidden}
+    body.open #apuda-bot{display:none}
+    .p-fl{font-size:12px}
+    #panel p{font-size:15px;line-height:1.7}
+    .p-stats small{font-size:13px}
+    .p-link-copy b{font-size:16px}
+    .p-link-copy small{font-size:13px}
+    .p-floors{margin:16px -22px calc(-28px - env(safe-area-inset-bottom));bottom:calc(-28px - env(safe-area-inset-bottom));
+      padding:10px 10px calc(10px + env(safe-area-inset-bottom));gap:5px}
+    #panel.floor-2-expanded .p-floors{margin-left:-18px;margin-right:-18px;margin-bottom:calc(-22px - env(safe-area-inset-bottom));bottom:calc(-22px - env(safe-area-inset-bottom))}
+    .p-floors span{display:none}
+    .p-floors button{flex:1;min-width:0;max-width:60px}
+  }
 </style>
 </head>
 <body>
@@ -1054,8 +1138,8 @@
     interactionMode=mode;
     document.body.classList.toggle('panel-scroll',mode==='panel');
     if(!cur) hint.textContent='층이나 카드를 눌러보세요';
-    else if(mode==='panel') hint.textContent='세부창 스크롤 중 · 건물을 클릭하면 층 이동';
-    else hint.textContent='건물 층 이동 중 · 세부창을 클릭하면 목록 스크롤';
+    else if(mode==='panel') hint.textContent='목록을 보는 중 · 건물을 누르면 층을 옮겨요';
+    else hint.textContent='휠·화살표로 층을 옮겨요 · 목록을 누르면 스크롤';
   }
 
   function positionConnector(f){
@@ -1192,16 +1276,20 @@
       '</div><div class="book-choice-note">앞부분은 코드 없이 미리 볼 수 있어요. 책 전체는 인스타그램 <b>@apuda.app</b> 팔로우 → 이벤트 게시물에 “30일” 댓글 → DM으로 받은 코드를 입력하면 다운로드돼요.</div>'+
       '<div class="book-more"><span>'+esc(name)+' 더 알아보기</span><a href="/library/treatment-map/?cancer='+slug+'">🗺️ 치료결정 지도</a><a href="/library/drugs/?cancer='+slug+'">💊 관련 항암제</a><a href="/library/biomarkers/?cancer='+slug+'">🧬 관련 바이오마커</a><a href="/library/regimens/?cancer='+slug+'">💉 항암 요법 가이드</a></div></section>';
     document.body.appendChild(root);
-    var close=function(){root.remove()};
+    var opener=document.activeElement;
+    function escOnce(e){if(e.key==='Escape'){e.stopPropagation();close()}}
+    var close=function(){root.remove();document.removeEventListener('keydown',escOnce);if(opener&&opener.focus)opener.focus({preventScroll:true})};
     root.querySelector('.book-choice-x').onclick=close;
     root.addEventListener('click',function(e){if(e.target===root)close()});
-    document.addEventListener('keydown',function escOnce(e){if(e.key==='Escape'){close();document.removeEventListener('keydown',escOnce)}},{once:true});
+    /* 책 선택 창만 닫히고 뒤의 2F 세부창은 그대로 남도록 전파를 막는다 */
+    document.addEventListener('keydown',escOnce);
+    root.querySelector('.book-choice-x').focus({preventScroll:true});
   }
 
   function fitShelf(){
     var g=sheet.querySelector('.mini-series-grid'); if(!g) return;
     if(matchMedia('(max-width:860px)').matches){ g.style.gridTemplateColumns=''; return; }
-    var W=g.clientWidth, H=g.clientHeight, gap=14, meta=46, R=340/240, best=0, bc=6;
+    var W=g.clientWidth, H=g.clientHeight, gap=14, meta=52, R=340/240, best=0, bc=6;
     if(W<200||H<200) return;
     [3,4,6,12].forEach(function(c){
       var r=Math.ceil(12/c), wW=(W-gap*(c-1))/c, wH=((H-gap*(r-1))/r-meta)/R, w=Math.min(wW,wH);
@@ -1217,7 +1305,7 @@
       return '<button type="button" class="mini-book" data-book="'+i+'" aria-label="'+esc(name)+' 가이드북 자료 선택">'+
         '<span class="mini-book-art" style="--cover:url(\'assets/books/'+slug+'.webp\')">'+(badge?'<span class="mini-book-badge'+(badge==='인기'?' hot':'')+'">'+badge+'</span>':'')+'</span>'+
         '<span class="mini-book-meta"><span class="mini-book-vol">'+(i+1)+'</span><span class="mini-book-name">'+esc(name)+'</span><span class="mini-book-go">→</span></span>'+
-        '<span class="mini-book-tags">MINI · FAQ · 완전판(준비중)</span></button>';
+        '<span class="mini-book-tags">MINI · FAQ</span></button>';
     }).join('');
     return '<span class="p-fl"><b>'+d.fl+'</b>'+d.kicker+'</span>'+
       '<div class="floor2-intro"><div><h2>'+d.title.replace(/\n/g,'&nbsp;<br>')+'</h2><p>'+d.desc+'</p></div>'+
@@ -1232,7 +1320,13 @@
         '<a class="floor2-service" href="/library/regimens/"><span class="floor2-service-icon">💉</span><span class="floor2-service-copy"><b>항암 요법별 관리 가이드<em>NEW</em></b><small>주기·백혈구 낮은 시기·부작용 관리·연락 기준</small></span></a>'+
         '<a class="floor2-service" href="/library/biomarkers/"><span class="floor2-service-icon">🧬</span><span class="floor2-service-copy"><b>바이오마커 Navigator<em>NEW</em></b><small>왜 이 검사를 하는지, 결과가 치료와 어떻게 연결되는지</small></span></a>'+
         '<div class="floor2-note">2F는 <b>“내 암을 이해하는 층”</b>입니다. 모든 자료는 환자교육용이며, 실제 치료 선택은 담당 의료진과 상의하세요.</div></aside>'+
-      '</div><div class="p-scroll-tip">책 표지 클릭: 암종별 가이드 · 건물 클릭: 층 이동</div>';
+      '</div>'+floorNav(2);
+  }
+
+  function floorNav(f){
+    return '<nav class="p-floors" aria-label="다른 층 보기"><span>다른 층</span>'+[1,2,3,4,5].map(function(n){
+      return '<button type="button" data-goto="'+n+'"'+(n===f?' aria-current="true"':'')+' aria-label="'+n+'층 '+GUIDE_COPY[n].title+'">'+n+'F</button>';
+    }).join('')+'</nav>';
   }
 
   function render(f){
@@ -1259,7 +1353,7 @@
         '<div class="community-news-head"><b>오늘의 뉴스 브리핑</b><a href="/news/">전체보기 →</a></div>'+
         '<div class="community-news-list" id="communityNewsList"><div class="community-news-empty">오늘의 주요 뉴스를 불러오는 중입니다.</div></div>'+
         '</section>':'')+
-      '<div class="p-scroll-tip">세부창 클릭: 목록 스크롤 · 건물 클릭: 층 이동</div>';
+      floorNav(f);
     sheet.scrollTop=0;
     if(f===5) loadCommunityNewsPreview();
   }
@@ -1296,6 +1390,8 @@
   }
 
   function open(f){
+    /* #floor-N 으로 들어오면 인트로가 끝나기 전에 열리므로, 인트로를 끝내 두어야 안내 메뉴가 다시 나타나 겹치지 않는다 */
+    if(intro && intro.isActive()) intro.progress(1);
     var first = !cur;
     playFloorVideo(f);
     if(roofTimer) clearTimeout(roofTimer);
@@ -1387,6 +1483,10 @@
   }
 
   document.getElementById('btnX').onclick=close;
+  sheet.addEventListener('click',function(e){
+    var b=e.target.closest&&e.target.closest('.p-floors button'); if(!b) return;
+    var n=+b.dataset.goto; if(n&&n!==cur){setInteractionMode('building');open(n)}
+  });
   document.getElementById('btnUp').onclick=function(){moveFloor(1)};
   document.getElementById('btnDown').onclick=function(){moveFloor(-1)};
   pagerBtns.forEach(function(b){ b.onclick=function(){setInteractionMode('building');open(+b.dataset.f)} });

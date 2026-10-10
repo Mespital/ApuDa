@@ -7,62 +7,111 @@
 <meta name="description" content="ApuDa 암 진단 첫 30일 MINI 무료 웹북">
 <title>ApuDa 암 진단 첫 30일 MINI</title>
 <style>
-:root{--navy:#0b2746;--blue:#246bfe;--line:#dce8f5;--muted:#677b90;--bg:#f4f8fd;--card:#fff}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#f8fbff,#eef5fc);color:var(--navy);font-family:Pretendard,"Noto Sans KR","Apple SD Gothic Neo",Arial,sans-serif}
-a{color:inherit;text-decoration:none}.top{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.brand{font-weight:950;color:var(--blue);font-size:22px}.brand small{display:block;font-size:9px;color:#6d8094;letter-spacing:.02em}
-.actions{display:flex;gap:7px}.btn{border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:12px;padding:9px 12px;font-weight:900;cursor:pointer;font-size:12px}.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}.btn:disabled{opacity:.55;cursor:wait}
-.wrap{width:min(1100px,94vw);margin:22px auto 70px}.hero{display:grid;grid-template-columns:150px minmax(0,1fr);gap:22px;align-items:center;padding:22px;border:1px solid var(--line);border-radius:24px;background:#fff;box-shadow:0 12px 32px rgba(27,77,128,.07)}
-.cover{aspect-ratio:240/340;border-radius:12px;background-color:#EAF2FB;background-image:var(--cover);background-size:cover;background-position:center;box-shadow:0 13px 28px rgba(20,70,125,.16);border:1px solid #cfe0f2}
-.kicker{color:var(--blue);font-size:11px;font-weight:950;letter-spacing:.12em}.hero h1{font-size:clamp(28px,4vw,48px);line-height:1.08;margin:7px 0 9px;letter-spacing:-.04em}.hero p{margin:0;color:var(--muted);line-height:1.65;font-size:13px}.dl-cta{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:12px 16px;border:0;border-radius:14px;background:var(--blue);color:#fff;font-weight:950;font-size:13px;cursor:pointer;box-shadow:0 10px 22px rgba(36,107,254,.25)}.dl-cta small{font-weight:800;opacity:.8;font-size:10px}.pdf-cover{width:794px;height:1123px;display:grid;place-items:center;background:#fff;page-break-after:always}.pdf-cover img{width:794px;height:1123px;object-fit:contain}
-.meta{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}.pill{padding:6px 9px;border-radius:999px;background:#eef5ff;color:#245b9b;font-size:10px;font-weight:900}
-.reader{margin-top:18px;display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:16px;align-items:start}.pages{display:grid;gap:14px}.page{position:relative;background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px 30px;box-shadow:0 10px 28px rgba(27,77,128,.05);overflow:hidden}.page:before{content:"ApuDa";position:absolute;right:22px;top:18px;color:#e9f2ff;font-weight:950;font-size:44px;pointer-events:none}.page-no{position:relative;z-index:1;display:inline-flex;margin-bottom:14px;padding:4px 8px;border-radius:999px;background:#eef5ff;color:var(--blue);font-size:10px;font-weight:950}.page pre{position:relative;z-index:1;margin:0;white-space:pre-wrap;word-break:keep-all;overflow-wrap:anywhere;font-family:inherit;font-size:13px;line-height:1.72;color:#1a3653}
-.toc{position:sticky;top:78px;padding:15px;border:1px solid var(--line);border-radius:18px;background:#fff}.toc b{display:block;font-size:13px;margin-bottom:8px}.toc button{display:flex;width:100%;justify-content:space-between;gap:8px;border:0;background:transparent;color:#536a80;padding:7px 4px;cursor:pointer;text-align:left;font-size:10px}.toc button:hover{color:var(--blue)}.notice{margin-top:16px;padding:12px 14px;border-radius:14px;background:#eef6ff;color:#516a82;font-size:10.5px;line-height:1.6}
+:root{--navy:#0b2746;--blue:#246bfe;--blue-ink:#1a56d6;--line:#dce8f5;--muted:#5a6d82;--bg:#f4f8fd;--card:#fff;--soft:#eef5ff}
+*{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}body{margin:0;background:linear-gradient(180deg,#f8fbff,#eef5fc);color:var(--navy);font-family:Pretendard,"Noto Sans KR","Apple SD Gothic Neo",Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:8px}
+/* 서재 공통 헤더 */
+.top{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px max(16px,env(safe-area-inset-left));background:rgba(255,255,255,.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.brand{font-weight:950;color:var(--blue);font-size:22px;line-height:1.05}.brand small{display:block;margin-top:2px;font-size:11px;font-weight:700;color:var(--muted)}
+.actions{display:flex;gap:8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:12px;padding:0 14px;font:inherit;font-weight:900;cursor:pointer;font-size:14px;white-space:nowrap}
+.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}.btn:disabled{opacity:.6;cursor:wait}
+.wrap{width:min(1100px,calc(100vw - 32px));margin:22px auto 70px}
+/* 위치 표시 */
+.crumb{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 8px;font-size:13px;font-weight:800;color:var(--muted)}.crumb a{color:var(--blue-ink);text-decoration:underline;text-underline-offset:3px}
+/* 책 머리 — 이 페이지의 주인공은 표지 */
+.hero{display:grid;grid-template-columns:168px minmax(0,1fr);grid-template-areas:"cover head" "cover body";column-gap:26px;align-items:start;padding:26px;border:1px solid var(--line);border-radius:24px;background:#fff}
+.cover{grid-area:cover;aspect-ratio:240/340;border-radius:10px;background-color:#EAF2FB;background-image:var(--cover);background-size:cover;background-position:center;box-shadow:0 14px 30px rgba(20,70,125,.18),inset -6px 0 0 rgba(0,0,0,.04);border:1px solid #cfe0f2}
+.hhead{grid-area:head}.hbody{grid-area:body}
+.hero h1{font-size:clamp(28px,4vw,46px);line-height:1.12;margin:0 0 6px;letter-spacing:-.035em;word-break:keep-all}
+.vol{margin:0;color:var(--muted);font-size:14px;font-weight:700}
+.hero p.lead{margin:12px 0 0;color:#3e5268;line-height:1.7;font-size:15px;max-width:40em;word-break:keep-all}
+.meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}.pill{padding:6px 10px;border-radius:999px;background:var(--soft);color:#1f4f8a;font-size:12.5px;font-weight:800}
+.dl-cta{display:inline-flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:2px;min-height:56px;margin-top:16px;padding:8px 20px;border:0;border-radius:14px;background:var(--blue);color:#fff;font:inherit;font-weight:950;font-size:16px;cursor:pointer}.dl-cta small{font-weight:700;opacity:.9;font-size:12.5px}
+/* 암종 탭 (FAQ와 같은 문법) */
+.cancers{display:flex;gap:6px;overflow-x:auto;margin:16px -4px 0;padding:4px;scrollbar-width:none}.cancers::-webkit-scrollbar{display:none}
+.cancers a{flex:0 0 auto;display:flex;align-items:center;min-height:44px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--navy);font-size:14px;font-weight:800}
+.cancers a.on{background:#0b5fa5;border-color:#0b5fa5;color:#fff}
+.pdf-cover{width:794px;height:1123px;display:grid;place-items:center;background:#fff;page-break-after:always}.pdf-cover img{width:794px;height:1123px;object-fit:contain}
+.reader{margin-top:18px;display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:16px;align-items:start}.pages{display:grid;gap:14px}
+.page{position:relative;background:#fff;border:1px solid var(--line);border-radius:20px;padding:30px clamp(18px,4vw,40px);overflow:hidden;scroll-margin-top:84px}
+.page-no{display:inline-flex;margin-bottom:16px;padding:5px 10px;border-radius:999px;background:var(--soft);color:var(--blue-ink);font-size:12.5px;font-weight:900}
+.page pre{margin:0;max-width:40em;white-space:pre-wrap;word-break:keep-all;overflow-wrap:anywhere;font-family:inherit;font-size:16px;line-height:1.8;color:#1a3653}
+.toc{position:sticky;top:84px;padding:16px;border:1px solid var(--line);border-radius:18px;background:#fff}.toc b{display:block;font-size:15px;margin-bottom:6px}
+.toc button{display:flex;width:100%;align-items:center;gap:8px;min-height:40px;border:0;border-radius:10px;background:transparent;color:#3e5268;padding:6px 8px;cursor:pointer;text-align:left;font:inherit;font-size:13.5px;line-height:1.35}.toc button:hover{background:var(--soft);color:var(--blue-ink)}.toc button i{flex:0 0 auto;font-style:normal;font-weight:900;color:var(--blue-ink);min-width:1.4em}
+.notice{margin-top:16px;padding:12px 14px;border-radius:14px;background:#eef6ff;color:#3e5268;font-size:13px;line-height:1.65}
 .lockfade{position:relative;height:120px;margin-top:-120px;background:linear-gradient(rgba(244,248,253,0),#f4f8fd 85%);pointer-events:none;z-index:2}
-.getbook{position:relative;z-index:3;padding:clamp(20px,4vw,30px);border-radius:24px;background:#fff;border:2px solid #cfe0ff;box-shadow:0 18px 40px rgba(36,107,254,.12)}
-.getbook .lk{display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border-radius:999px;background:#eef5ff;color:var(--blue);font-size:12px;font-weight:950}
-.getbook h2{margin:10px 0 6px;font-size:clamp(22px,3.4vw,30px);letter-spacing:-.04em;line-height:1.25}.getbook h2 span{color:var(--blue)}
-.getbook>p{margin:0 0 16px;color:var(--muted);font-size:14px;line-height:1.65}
-.steps{display:grid;gap:10px}.stp{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:center;padding:13px 14px;border:1px solid var(--line);border-radius:16px;background:#fbfdff}
+.getbook{position:relative;z-index:3;padding:clamp(20px,4vw,30px);border-radius:24px;background:#fff;border:2px solid #cfe0ff;scroll-margin-top:84px}
+.getbook .lk{display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border-radius:999px;background:var(--soft);color:var(--blue-ink);font-size:13px;font-weight:900}
+.getbook h2{margin:12px 0 8px;font-size:clamp(22px,3.4vw,30px);letter-spacing:-.035em;line-height:1.3;word-break:keep-all}
+.getbook>p{margin:0 0 16px;color:#3e5268;font-size:15px;line-height:1.7;max-width:40em;word-break:keep-all}
+.steps{display:grid;gap:10px;margin:0;padding:0;list-style:none}.stp{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:center;padding:13px 14px;border:1px solid var(--line);border-radius:16px;background:#fbfdff}
 .stp i{display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:var(--blue);color:#fff;font-style:normal;font-weight:950;font-size:18px}
-.stp b{display:block;font-size:15px;line-height:1.4}.stp small strong{color:var(--blue)}.stp small{display:block;color:var(--muted);font-size:12.5px;line-height:1.5;margin-top:2px}
+.stp b{display:block;font-size:16px;line-height:1.4}.stp small strong{color:var(--blue-ink)}.stp small{display:block;color:var(--muted);font-size:14px;line-height:1.55;margin-top:2px}
 .stp.ig i{background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af)}
-.gb-act{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.gb-act a,.gb-act button{display:inline-flex;align-items:center;gap:6px;min-height:50px;padding:0 18px;border-radius:15px;font-weight:950;font-size:14.5px;border:1px solid var(--line);background:#fff;color:var(--navy);cursor:pointer;text-decoration:none}
-.gb-act .p{background:var(--blue);border-color:var(--blue);color:#fff}.gb-act .ig{background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af);border:0;color:#fff}
-.gb-note{margin-top:14px;padding:11px 13px;border-radius:12px;background:#f2f7fd;color:#5b7085;font-size:12px;line-height:1.6}
-.toc .lockitem{display:block;margin-top:6px;padding:9px 6px;border-top:1px dashed var(--line);color:#8a9bad;font-size:10.5px;font-weight:800}
-.toc .lockitem a{color:var(--blue);font-weight:950}
-.download-modal{position:fixed;inset:0;display:none;place-items:center;z-index:80;background:rgba(5,28,54,.45);padding:18px}.download-modal.on{display:grid}.download-card{width:min(430px,94vw);padding:22px;border-radius:22px;background:#fff;box-shadow:0 30px 80px rgba(2,22,44,.28)}.download-card h2{margin:0 0 7px;font-size:21px}.download-card p{margin:0 0 15px;color:var(--muted);font-size:12px;line-height:1.55}.code-row{display:flex;gap:8px}.code-row input{min-width:0;flex:1;border:1px solid #cfddec;border-radius:12px;padding:11px 12px;font-size:14px;outline:none}.code-row input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(36,107,254,.1)}.error{min-height:18px;margin-top:7px;color:#c23535;font-size:10px;font-weight:800}.modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:12px}
+.gb-act{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.gb-act a,.gb-act button{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:50px;padding:0 18px;border-radius:14px;font:inherit;font-weight:900;font-size:15px;border:1px solid var(--line);background:#fff;color:var(--navy);cursor:pointer;text-decoration:none}
+.gb-act .p{background:var(--blue);border-color:var(--blue);color:#fff}.gb-act .ig{background:linear-gradient(135deg,#d9661f,#c81f6b,#7a2fa8);border:0;color:#fff}
+.gb-note{margin-top:14px;padding:12px 14px;border-radius:12px;background:#f2f7fd;color:#3e5268;font-size:13.5px;line-height:1.7}
+.toc .lockitem{display:block;margin-top:8px;padding:10px 8px 2px;border-top:1px dashed var(--line);color:var(--muted);font-size:13px;font-weight:700;line-height:1.5}
+.toc .lockitem a{display:inline-block;margin-top:4px;color:var(--blue-ink);font-weight:900;text-decoration:underline;text-underline-offset:3px}
+.download-modal{position:fixed;inset:0;display:none;grid-template-columns:minmax(0,1fr);place-items:center;overflow-y:auto;z-index:80;background:rgba(5,28,54,.5);padding:16px}.download-modal.on{display:grid}
+.download-card{width:100%;max-width:440px;padding:24px;border-radius:22px;background:#fff;box-shadow:0 30px 80px rgba(2,22,44,.28)}.download-card h2{margin:0 0 8px;font-size:22px;letter-spacing:-.02em}.download-card p{margin:0 0 16px;color:#3e5268;font-size:15px;line-height:1.65;word-break:keep-all}
+.download-card label{display:block;margin-bottom:6px;font-size:14px;font-weight:900}
+.code-row{display:flex;gap:8px}.code-row input{min-width:0;flex:1;min-height:50px;border:1px solid #b9cde3;border-radius:12px;padding:0 14px;font:inherit;font-size:16px;color:var(--navy);outline:none}.code-row input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(36,107,254,.18)}.code-row .btn{min-height:50px;font-size:15px}
+.error{min-height:22px;margin-top:8px;color:#b42318;font-size:14px;font-weight:800;line-height:1.5}.modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}
 #pdfSource{position:fixed;left:-200vw;top:0;width:794px;background:#fff}.pdf-sheet{width:794px;min-height:1123px;padding:58px 62px 54px;background:#fff;color:#102b47;page-break-after:always}.pdf-sheet h4{margin:0 0 16px;color:#246bfe;font-size:11px}.pdf-sheet pre{margin:0;white-space:pre-wrap;word-break:keep-all;font-family:"Noto Sans KR","Apple SD Gothic Neo",Arial,sans-serif;font-size:12px;line-height:1.6}
 .mnotice{display:none}
-@media(max-width:760px){.mnotice{display:block;margin:10px 0 0}.top{padding:10px 12px}.brand{font-size:20px}.actions .btn:first-child{display:none}.wrap{margin-top:14px}.hero{grid-template-columns:92px 1fr;padding:15px;gap:14px;border-radius:18px}.hero h1{font-size:27px}.reader{grid-template-columns:1fr}.toc{position:static;order:-1;display:none}.page{padding:22px 18px;border-radius:16px}.page pre{font-size:12px;line-height:1.67}.cover{border-radius:9px}}
-@media print{.top,.toc,.hero,.notice{display:none!important}.wrap{width:100%;margin:0}.reader{display:block}.pages{gap:0}.page{box-shadow:none;border:0;border-radius:0;page-break-after:always;min-height:100vh}.page:before{display:none}}
+@media(max-width:760px){
+ .mnotice{display:block;margin:10px 0 0}.top{padding:10px 16px}.brand{font-size:20px}.btn{padding:0 12px;font-size:13.5px}
+ .wrap{margin-top:14px}
+ .hero{grid-template-columns:96px minmax(0,1fr);grid-template-areas:"cover head" "body body";column-gap:16px;padding:18px 16px;border-radius:18px}
+ .hhead{align-self:center}.hero h1{font-size:clamp(24px,7vw,30px)}.cover{border-radius:8px}
+ .dl-cta{display:flex;width:100%;align-items:center;text-align:center}
+ .reader{grid-template-columns:1fr}.toc{display:none}
+ .page{padding:22px 18px;border-radius:16px}.page pre{font-size:16px;line-height:1.78}
+ .gb-act a,.gb-act button{flex:1 1 100%}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+@media print{.top,.toc,.hero,.notice{display:none!important}.wrap{width:100%;margin:0}.reader{display:block}.pages{gap:0}.page{box-shadow:none;border:0;border-radius:0;page-break-after:always;min-height:100vh}}
 </style>
 </head>
 <body>
 <header class="top">
-  <a class="brand" href="/"><span>ApuDa</span><small>아프지만, 다행이다.</small></a>
-  <div class="actions"><button class="btn" id="backBtn">2F 서재로</button><button class="btn primary" id="downloadBtn">⬇ 다운로드</button></div>
+  <a class="brand" href="/" aria-label="ApuDa 홈으로"><span>ApuDa</span><small>아프지만, 다행이다.</small></a>
+  <div class="actions"><a class="btn" href="/#floor-2">2F 서재로</a><button class="btn primary" id="downloadBtn" type="button">⬇ PDF 받기</button></div>
 </header>
 <main class="wrap">
-  <section class="hero">
-    <div class="cover" id="cover"></div>
-    <div><span class="kicker" id="kicker">ApuDa 「암 진단 첫 30일」 MINI SERIES</span><h1 id="bookTitle">불러오는 중</h1><p>처음 진단받은 환자와 보호자를 위한 핵심 정리 · 질문 · 행동 가이드입니다. 웹에서는 <b>앞부분을 무료로 미리 볼 수 있고</b>, 책 전체(PDF)는 다운로드 코드로 받을 수 있어요.</p><div class="meta"><span class="pill">무료 미리보기</span><span class="pill" id="pageCount">미리보기</span><span class="pill">환자·보호자용</span></div><button class="dl-cta" id="downloadBtn2" type="button">⬇ PDF 다운로드 <small>코드 입력 필요</small></button></div>
+  <section class="hero" aria-labelledby="bookTitle">
+    <div class="cover" id="cover" role="img" aria-label="책 표지"></div>
+    <div class="hhead">
+      <nav class="crumb" aria-label="현재 위치"><a href="/#floor-2">2F 암 정보 서재</a><span aria-hidden="true">›</span><span>진단 첫 30일 MINI</span></nav>
+      <h1 id="bookTitle">불러오는 중</h1>
+      <p class="vol" id="kicker">ApuDa 「암 진단 첫 30일」 MINI 시리즈</p>
+    </div>
+    <div class="hbody">
+      <p class="lead">처음 진단받은 환자와 보호자를 위한 핵심 정리·질문·행동 가이드예요. 웹에서는 <b>앞부분을 무료로 미리 볼 수 있고</b>, 책 전체(PDF)는 다운로드 코드로 받을 수 있어요.</p>
+      <div class="meta"><span class="pill">무료 미리보기</span><span class="pill" id="pageCount">미리보기</span><span class="pill">환자·보호자용</span></div>
+      <button class="dl-cta" id="downloadBtn2" type="button">⬇ 책 전체 PDF 받기 <small>다운로드 코드가 필요해요</small></button>
+    </div>
   </section>
+  <nav class="cancers" id="cancers" aria-label="암종 선택"></nav>
+</section>
   <section class="reader">
     <div class="pages" id="pages"><div class="page"><pre>책 내용을 불러오는 중입니다.</pre></div></div>
     <div class="notice mnotice">[안내] 이 정보는 일반적인 건강 정보를 알기 쉽게 정리한 참고 자료이며, 의사의 진료·진단·처방을 대신하지 않습니다. 치료 일정·용량·검사·부작용 대처는 환자의 상태와 의료기관에 따라 다르므로 담당 의료진의 판단과 안내를 따르세요. 실제 치료는 담당 의료진과 상의하세요.</div>
-    <aside class="toc"><b>페이지 이동</b><div id="toc"></div><div class="notice">[안내] 이 정보는 일반적인 건강 정보를 알기 쉽게 정리한 참고 자료이며, 의사의 진료·진단·처방을 대신하지 않습니다. 치료 일정·용량·검사·부작용 대처는 환자의 상태와 의료기관에 따라 다르므로 담당 의료진의 판단과 안내를 따르세요. 실제 치료는 담당 의료진과 상의하세요.</div></aside>
+    <aside class="toc" aria-label="미리보기 목차"><b>미리보기 목차</b><div id="toc"></div><div class="notice">[안내] 이 정보는 일반적인 건강 정보를 알기 쉽게 정리한 참고 자료이며, 의사의 진료·진단·처방을 대신하지 않습니다. 치료 일정·용량·검사·부작용 대처는 환자의 상태와 의료기관에 따라 다르므로 담당 의료진의 판단과 안내를 따르세요. 실제 치료는 담당 의료진과 상의하세요.</div></aside>
   </section>
 </main>
 
-<div class="download-modal" id="downloadModal" role="dialog" aria-modal="true" aria-labelledby="downloadTitle">
+<div class="download-modal" id="downloadModal" role="dialog" aria-modal="true" aria-labelledby="downloadTitle" aria-describedby="downloadDesc">
   <div class="download-card">
-    <h2 id="downloadTitle">무료 배포판 다운로드</h2>
-    <p>인스타그램 <b>@apuda.app</b> 팔로우 후 이벤트 게시물에 “30일” 댓글을 남기면 DM으로 받는 <b>다운로드 코드</b>를 입력하세요.</p>
-    <div class="code-row"><input id="downloadCode" type="password" autocomplete="off" placeholder="다운로드 코드"><button class="btn primary" id="verifyBtn">확인</button></div>
-    <div class="error" id="codeError"></div>
-    <div class="modal-actions"><button class="btn" id="cancelDownload">취소</button></div>
+    <h2 id="downloadTitle">책 전체 PDF 받기</h2>
+    <p id="downloadDesc">인스타그램 <b>@apuda.app</b>을 팔로우하고 이벤트 게시물에 “30일” 댓글을 남기면 DM으로 <b>다운로드 코드</b>가 와요. 받은 코드를 아래에 입력하세요.</p>
+    <label for="downloadCode">다운로드 코드</label>
+    <div class="code-row"><input id="downloadCode" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="DM으로 받은 코드" aria-describedby="codeError"><button class="btn primary" id="verifyBtn" type="button">PDF 받기</button></div>
+    <div class="error" id="codeError" role="status" aria-live="polite"></div>
+    <div class="modal-actions"><button class="btn" id="cancelDownload" type="button">닫기</button></div>
   </div>
 </div>
 
@@ -70,28 +119,50 @@ a{color:inherit;text-decoration:none}.top{position:sticky;top:0;z-index:20;displ
 (function(){
   var ORDER=['breast','lung','stomach','colorectal','thyroid','kidney','prostate','pancreas','biliary','liver','lymphoma','cervical'];
   var params=new URLSearchParams(location.search);
-  var slug=params.get('cancer')||'breast';
+  var NAMES={breast:'유방암',lung:'폐암',stomach:'위암',colorectal:'대장암',thyroid:'갑상선암',kidney:'신장암',prostate:'전립선암',pancreas:'췌장암',biliary:'담도암',liver:'간암',lymphoma:'림프종',cervical:'자궁경부암'};
+  var ALIAS={pancreatic:'pancreas'};
+  var slug=(params.get('cancer')||'breast').toLowerCase();slug=ALIAS[slug]||slug;
   if(ORDER.indexOf(slug)<0) slug='breast';
   var idx=ORDER.indexOf(slug);
   var coverUrl='/assets/books/'+slug+'.webp', coverHq='/assets/books/'+slug+'-hq.jpg';
   document.getElementById('cover').style.setProperty('--cover',"url('"+coverUrl+"')");
-  document.getElementById('kicker').textContent='ApuDa 「암 진단 첫 30일」 MINI SERIES · Vol. '+(idx+1);
+  document.getElementById('kicker').textContent='「암 진단 첫 30일」 MINI 시리즈 '+(idx+1)+'권 (전 12권)';
+  document.getElementById('cancers').innerHTML=ORDER.map(function(c){return '<a href="?cancer='+c+'"'+(c===slug?' class="on" aria-current="page"':'')+'>'+NAMES[c]+'</a>'}).join('');
+  setTimeout(function(){var on=document.querySelector('.cancers a.on');if(on&&on.scrollIntoView)on.scrollIntoView({inline:'center',block:'nearest'})},50);
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
   var og=document.createElement('meta');og.setAttribute('property','og:image');og.content=location.origin+coverHq;document.head.appendChild(og);
 
   var data=null;
   function esc(s){return String(s==null?'':s).replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})}
+  // PDF에서 뽑은 글의 줄바꿈(쪽 폭 때문에 생긴 것)만 이어 붙여 휴대폰에서도 자연스럽게 읽히게 한다. 표·목록 줄은 그대로 둔다.
+  function reflow(t){
+    var L=String(t||'').split('\n');
+    if(L.length&&/^\s*\d{1,3}\s*$/.test(L[0]))L.shift();
+    var out=[];
+    for(var i=0;i<L.length;i++){
+      var cur=L[i],prev=out.length?out[out.length-1]:null;
+      if(prev!=null&&prev.length>=33&&prev.indexOf(' · ')<0&&!/[.!?。:)\]」』>~…]\s*$/.test(prev)&&/^[가-힣A-Za-z(“"'‘]/.test(cur.trim())&&!/^\s*(\d+[.)]|[☐□■•·\-–—▶※①-⑳\[])/.test(cur)){out[out.length-1]=prev.replace(/\s+$/,'')+' '+cur.trim()}
+      else out.push(cur);
+    }
+    return out.join('\n');
+  }
+  function tocLabel(t,i){
+    var first=String(t||'').split('\n').map(function(x){return x.trim()}).find(function(x){return x&&!/^\d{1,3}$/.test(x)&&!/^ApuDa|MINI|아프지만|^\d+\s*\/\s*\d+$/.test(x)});
+    first=(first||((i+1)+'쪽')).replace(/^PART\s*\d+\.\s*/,'');
+    return first.length>24?first.slice(0,23)+'…':first;
+  }
   function getBookHTML(d,pv,total,pdfp){
     return '<div class="lockfade"></div><section class="getbook" id="getbook">'+
       '<span class="lk">🔒 미리보기는 여기까지예요 (앞부분 약 1/3)</span>'+
       '<h2>「'+esc(d.name)+' 진단 첫 30일」<br><span>책 전체를 무료로 받는 방법</span></h2>'+
       '<p>뒷부분에는 치료 흐름, 진료실 질문, 생활관리, 핵심 체크리스트가 이어집니다. 인스타그램 팔로워 1000명 달성 기념으로 <b>12종 전체를 무료</b>로 드려요.</p>'+
-      '<div class="steps">'+
-        '<div class="stp ig"><i>1</i><div><b>ApuDa 인스타그램 팔로우</b><small>@apuda.app 계정을 팔로우해 주세요.</small></div></div>'+
-        '<div class="stp"><i>2</i><div><b>이벤트 게시물에 “30일” 댓글</b><small>팔로워 1000명 기념 이벤트 게시물에 “30일”이라고 남겨 주세요.</small></div></div>'+
-        '<div class="stp"><i>3</i><div><b>DM으로 다운로드 코드 자동 발송</b><small>팔로우 확인 후 DM으로 코드가 와요(최대 24시간 소요). 코드 하나로 12종 모두 받을 수 있어요.</small></div></div>'+
-        '<div class="stp"><i>4</i><div><b>apuda.app 2F 암 정보 서재에서 다운로드</b><small>원하는 암종 선택 → <strong>⬇ 다운로드</strong> → 코드 입력 → PDF('+pdfp+'쪽) 저장</small></div></div>'+
-      '</div>'+
-      '<div class="gb-act"><a class="ig" href="https://www.instagram.com/apuda.app/" target="_blank" rel="noopener">📷 인스타그램 @apuda.app 열기</a><button class="p" id="gbDownload" type="button">⬇ 코드 입력하고 PDF 받기</button><a href="/#floor-2">📚 다른 암종 보기</a></div>'+
+      '<ol class="steps">'+
+        '<li class="stp ig"><i aria-hidden="true">1</i><div><b>ApuDa 인스타그램 팔로우</b><small>@apuda.app 계정을 팔로우해 주세요.</small></div></li>'+
+        '<li class="stp"><i aria-hidden="true">2</i><div><b>이벤트 게시물에 “30일” 댓글</b><small>팔로워 1000명 기념 이벤트 게시물에 “30일”이라고 남겨 주세요.</small></div></li>'+
+        '<li class="stp"><i aria-hidden="true">3</i><div><b>DM으로 다운로드 코드 자동 발송</b><small>팔로우 확인 후 DM으로 코드가 와요(최대 24시간 소요). 코드 하나로 12종 모두 받을 수 있어요.</small></div></li>'+
+        '<li class="stp"><i aria-hidden="true">4</i><div><b>apuda.app 2F 암 정보 서재에서 다운로드</b><small>원하는 암종 선택 → <strong>⬇ PDF 받기</strong> → 코드 입력 → PDF('+pdfp+'쪽) 저장</small></div></li>'+
+      '</ol>'+
+      '<div class="gb-act"><a class="ig" href="https://www.instagram.com/apuda.app/" target="_blank" rel="noopener">📷 인스타그램 @apuda.app 열기</a><button class="p" id="gbDownload" type="button">⬇ 코드 입력하고 PDF 받기</button><a href="/library/faq/?cancer='+slug+'">❓ '+esc(d.name)+' FAQ 보기</a></div>'+
       '<div class="gb-note">이미 코드를 받으셨다면 바로 <b>⬇ 코드 입력하고 PDF 받기</b>를 누르세요. 코드는 대소문자를 구분하지 않아요. 휴대폰에서는 파일(약 '+(d.file_mb||7)+'MB) 저장에 몇 초 걸릴 수 있어요. <b>인스타그램 앱 안에서 저장이 안 되면</b> 오른쪽 위 ⋯ → ‘외부 브라우저(Safari·Chrome)로 열기’ 후 다시 받아 주세요.<br>이벤트 기간·조건은 @apuda.app 이벤트 게시물 공지를 따릅니다. 이 이벤트는 Instagram(Meta)이 후원·보증·운영하지 않습니다.<br>이 책은 환자교육용이며 개인의 진단·처방을 대신하지 않습니다.</div>'+
     '</section>';
   }
@@ -101,22 +172,27 @@ a{color:inherit;text-decoration:none}.top{position:sticky;top:0;z-index:20;displ
     var pv=d.preview_count||d.pages.length,total=d.page_count||pv,pdfp=d.pdf_pages||total;
     document.getElementById('pageCount').textContent='앞부분 1/3 미리보기 · 책 전체 PDF '+pdfp+'쪽'+(d.edition?' · '+d.edition:'');
     var pages=document.getElementById('pages'),toc=document.getElementById('toc');
-    pages.innerHTML=d.pages.map(function(t,i){return '<article class="page" id="p'+(i+1)+'"><span class="page-no">미리보기 '+(i+1)+' / '+pv+'</span><pre>'+esc(t)+'</pre></article>'}).join('')+getBookHTML(d,pv,total,pdfp);
-    toc.innerHTML=d.pages.map(function(t,i){var first=(t.split('\n').map(function(x){return x.trim()}).find(function(x){return x&&!/^ApuDa|MINI SERIES|아프지만|^\d+\s*\/\s*\d+$/.test(x)})||('PAGE '+(i+1)));return '<button data-page="'+(i+1)+'"><span>'+(i+1)+'. '+esc(first.slice(0,22))+'</span><span>→</span></button>'}).join('');
-    toc.innerHTML+='<span class="lockitem">🔒 나머지 내용은 책 전체(PDF '+pdfp+'쪽)에서<br><a href="#getbook">받는 방법 보기 →</a></span>';
-    toc.querySelectorAll('button').forEach(function(b){b.onclick=function(){document.getElementById('p'+b.dataset.page).scrollIntoView({behavior:'smooth',block:'start'})}});
+    pages.innerHTML=d.pages.map(function(t,i){return '<article class="page" id="p'+(i+1)+'" aria-label="미리보기 '+(i+1)+'쪽"><span class="page-no">미리보기 '+(i+1)+' / '+pv+'</span><pre>'+esc(reflow(t))+'</pre></article>'}).join('')+getBookHTML(d,pv,total,pdfp);
+    toc.innerHTML=d.pages.map(function(t,i){return '<button type="button" data-page="'+(i+1)+'"><i>'+(i+1)+'</i><span>'+esc(tocLabel(t,i))+'</span></button>'}).join('');
+    toc.innerHTML+='<span class="lockitem">🔒 나머지 내용은 책 전체(PDF '+pdfp+'쪽)에서<br><a href="#getbook">받는 방법 보기</a></span>';
+    toc.querySelectorAll('button').forEach(function(b){b.onclick=function(){document.getElementById('p'+b.dataset.page).scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'})}});
     var g1=document.getElementById('gbDownload');if(g1)g1.onclick=openDownload;
     if(location.hash==='#download') setTimeout(openDownload,300);
   }
-  fetch('./data/'+slug+'.json',{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(render).catch(function(){document.getElementById('pages').innerHTML='<div class="page"><pre>웹북 데이터를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.</pre></div>'});
+  fetch('./data/'+slug+'.json',{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(render).catch(function(){document.getElementById('bookTitle').textContent=(NAMES[slug]||'')+' 진단 첫 30일';document.getElementById('pages').innerHTML='<div class="page"><pre>미리보기를 불러오지 못했어요. 인터넷 연결을 확인한 뒤 새로고침해 주세요.</pre><div class="gb-act"><button class="p" type="button" onclick="location.reload()">새로고침</button><a href="/#floor-2">2F 서재로</a></div></div>'});
 
   var modal=document.getElementById('downloadModal'),code=document.getElementById('downloadCode'),err=document.getElementById('codeError'),verify=document.getElementById('verifyBtn');
-  function openDownload(){modal.classList.add('on');err.textContent='';code.value='';setTimeout(function(){code.focus()},50)}
-  function closeDownload(){modal.classList.remove('on')}
+  var lastFocus=null;
+  function openDownload(){lastFocus=document.activeElement;modal.classList.add('on');err.textContent='';code.value='';setTimeout(function(){code.focus()},50)}
+  function closeDownload(){modal.classList.remove('on');if(lastFocus&&lastFocus.focus)lastFocus.focus()}
+  document.addEventListener('keydown',function(e){
+    if(!modal.classList.contains('on'))return;
+    if(e.key==='Escape'){closeDownload();return}
+    if(e.key==='Tab'){var f=modal.querySelectorAll('input,button:not([disabled])'),a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}
+  });
   document.getElementById('downloadBtn').onclick=openDownload;
   document.getElementById('downloadBtn2').onclick=openDownload;
   document.getElementById('cancelDownload').onclick=closeDownload;
-  document.getElementById('backBtn').onclick=function(){location.href='/#floor-2'};
   modal.addEventListener('click',function(e){if(e.target===modal)closeDownload()});
   code.addEventListener('keydown',function(e){if(e.key==='Enter')verify.click()});
 
@@ -138,21 +214,21 @@ a{color:inherit;text-decoration:none}.top{position:sticky;top:0;z-index:20;displ
     return new Blob([await crypto.subtle.decrypt({name:'AES-GCM',iv:iv},key,ct)],{type:'application/pdf'});
   }
   verify.onclick=async function(){
-    var v=code.value.trim().toLowerCase(); if(!v){err.textContent='다운로드 코드를 입력해 주세요.';return}
-    verify.disabled=true; verify.textContent='확인 중'; err.style.color=''; err.textContent='';
+    var v=code.value.trim().toLowerCase(); if(!v){err.textContent='DM으로 받은 다운로드 코드를 입력해 주세요.';return}
+    verify.disabled=true; verify.textContent='확인 중…'; err.style.color=''; err.textContent='';
     try{
       var h=await sha256(v);
-      if(h!=='b35e7199a444b485664663ff6938503f6fe255b7d096756b9475c5b1f389434b'){ err.textContent='다운로드 코드가 맞지 않습니다.'; return; }
-      err.style.color='#1b7a50'; err.textContent='인증되었습니다. PDF(약 '+((data&&data.file_mb)||7)+'MB)를 받는 중입니다…';
+      if(h!=='b35e7199a444b485664663ff6938503f6fe255b7d096756b9475c5b1f389434b'){ err.textContent='코드가 맞지 않아요. DM에 온 코드를 띄어쓰기 없이 다시 입력해 주세요.'; return; }
+      err.style.color='#1b7a50'; err.textContent='코드가 맞아요. PDF(약 '+((data&&data.file_mb)||7)+'MB)를 받는 중이에요…';
       var blob=await decryptPdf(v);
       var name=(data&&data.name)||slug;
       saveBlob(blob,'ApuDa_'+String(idx+1).padStart(2,'0')+'_'+name+'_진단첫30일_무료배포판_v3.2.pdf');
-      err.textContent='다운로드를 시작했습니다.';
-      setTimeout(closeDownload,900);
+      err.textContent='PDF 저장을 시작했어요. 다운로드 폴더를 확인하세요.';
+      setTimeout(closeDownload,1800);
     }catch(e){
-      err.style.color=''; err.textContent='PDF를 불러오지 못했습니다. 네트워크 확인 후 다시 시도해 주세요.';
+      err.style.color=''; err.textContent='PDF를 받지 못했어요. 인터넷 연결을 확인한 뒤 다시 눌러 주세요.';
     }finally{
-      verify.disabled=false; verify.textContent='확인';
+      verify.disabled=false; verify.textContent='PDF 받기';
     }
   };
 })();

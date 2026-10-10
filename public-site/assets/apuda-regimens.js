@@ -111,6 +111,26 @@ R({id:'fp',name:'5-FU + 시스플라틴 (± 키트루다·옵디보)',ko:'FP',al
 R({id:'rchop',name:'R-CHOP',ko:'리툭시맙 + CHOP',alias:['알칩','알챱','리툭시맙챱','리툭시맙chop','r-chop','rchop','알촙','알찹','폴라이비','pola-r-chp','폴라알챕'],cancers:['림프종'],type:'세포독성',how:'1일째 정맥주사 + 스테로이드(프레드니솔론) 5일 복용, 3주 간격 (Pola-R-CHP는 빈크리스틴 대신 폴라이비를 쓰고 백혈구 촉진 주사를 함께 맞는 경우가 많아요)',cycle:21,nadir:[7,14],tl:[[0,4,'스테로이드 복용 기간 — 잠이 안 오거나 혈당이 오를 수 있어요. 구역 예방약 챙기기.'],[3,6,'변비(빈크리스틴)가 생기기 쉬워요. 3일 이상 못 보면 알리기.'],[7,14,NADIR_TXT(7,14)],[15,99,AFTER_TXT]],se:[S.neutro,S.infus,S.const_,S.neuroTax,S.hair,S.redUrine,S.heart],pre:'첫 리툭시맙은 주입 반응이 흔해 천천히 맞아요. 리툭시맙은 B형간염을 다시 활성화시킬 수 있어요(예전에 앓고 나은 경우 포함). 간염 예방약을 처방받았다면 항암이 끝난 뒤에도 의료진이 그만하라고 할 때까지 드세요. 스테로이드를 먹는 동안은 열이 덜 날 수 있어요.'}),
 R({id:'br',name:'BR (벤다무스틴 + 리툭시맙)',ko:'BR',alias:['벤다무스틴','심벤다','bendamustine','br요법'],cancers:['림프종'],type:'세포독성',how:'1·2일째 정맥주사, 4주 간격',cycle:28,days:[1,2],nadir:[7,21],se:[S.neutro,S.infus,S.nausea,S.fatigue,{t:'피부 발진',care:'보습.',call:'넓은 발진·물집'}],pre:'면역(림프구)이 치료가 끝난 뒤에도 몇 달간 낮을 수 있어요. 대상포진·폐렴 예방약을 처방받았다면 의료진이 그만하라고 할 때까지 드세요. 리툭시맙은 B형간염을 다시 활성화시킬 수 있어요(예전에 앓고 나은 경우 포함).'})
 ];
+/* 화면 표기는 성분명만(브랜드 안전 규칙). 상품명은 alias에 남겨 인식에만 쓴다. */
+var BRAND=[['키트루다','펨브롤리주맙'],['옵디보','니볼루맙'],['티쎈트릭','아테졸리주맙'],['임핀지','더발루맙'],['이뮤도','트레멜리무맙'],['여보이','이필리무맙'],['인라이타','악시티닙'],
+['알림타','페메트렉시드'],['아바스틴','베바시주맙'],['엔허투','트라스투주맙 데룩스테칸'],['허셉틴','트라스투주맙'],['퍼제타','퍼투주맙'],['페스고','복합 피하주사'],
+['타그리소','오시머티닙'],['렉라자','레이저티닙'],['젤록스','CAPOX(카페시타빈+옥살리플라틴)'],['젤로다','카페시타빈'],['젬시스','젬시타빈+시스플라틴'],['젬자','젬시타빈'],['아브락산','냅-파클리탁셀'],
+['탁소텔','도세탁셀'],['탁솔','파클리탁셀'],['사이람자','라무시루맙'],['티에스원','S-1(테가푸르 복합제)'],['론서프','트리플루리딘·티피라실'],
+['입랜스','팔보시클립'],['키스칼리','리보시클립'],['버제니오','아베마시클립'],['렌비마','렌바티닙'],['넥사바','소라페닙'],['카보메틱스','카보잔티닙'],['보트리엔트','파조파닙'],['수텐트','수니티닙'],['수텐','수니티닙'],
+['자이티가','아비라테론'],['엑스탄디','엔잘루타마이드'],['얼리다','아팔루타마이드'],['뉴베카','다로루타마이드'],['루프린','류프로렐린'],['엘리가드','류프로렐린'],['졸라덱스','고세렐린'],['피르마곤','데가렐릭스'],
+['페마라','레트로졸'],['아리미덱스','아나스트로졸'],['아로마신','엑스메스탄'],['알레센자','알렉티닙'],['로비큐아','롤라티닙'],['얼비툭스','세툭시맙'],['벡티빅스','파니투무맙'],
+['폴라이비','폴라투주맙 베도틴'],['리툭산','리툭시맙'],['맙테라','리툭시맙'],['엘록사틴','옥살리플라틴'],['캄푸토','이리노테칸'],['심벤다','벤다무스틴'],['이레사','게피티닙'],['타쎄바','엘로티닙'],['지오트립','아파티닙']];
+function deBrand(s){if(typeof s!=='string'||!s)return s;var o=s;
+  BRAND.forEach(function(b){o=o.split(b[0]).join(b[1])});
+  o=o.replace(/카보(?=\s*\+)/g,'카보플라틴');
+  o=o.replace(/([가-힣A-Za-z0-9\-·+ ]+?)\s*\(\1\)/g,'$1');
+  o=o.replace(/[가-힣A-Za-z0-9\- ]+(?:·[가-힣A-Za-z0-9\- ]+)+/g,function(m){var seen={},p=m.split('·').filter(function(x){var k=x.trim();if(seen[k])return false;seen[k]=1;return true});return p.join('·')});
+  return o}
+function deBrandObj(x){if(Array.isArray(x)){for(var i=0;i<x.length;i++){if(typeof x[i]==='string')x[i]=deBrand(x[i]);else if(x[i]&&typeof x[i]==='object')deBrandObj(x[i])}return x}
+  for(var k in x){if(k==='alias'||k==='id')continue;var v=x[k];if(typeof v==='string')x[k]=deBrand(v);else if(v&&typeof v==='object')deBrandObj(v)}return x}
+var _seenObj=[];RX.forEach(function(r){r.alias=(r.alias||[]).concat([r.ko,r.name].filter(function(v){return v&&r.alias.indexOf(v)<0}));
+  Object.keys(r).forEach(function(k){if(k==='alias'||k==='id')return;var v=r[k];if(typeof v==='string')r[k]=deBrand(v);else if(v&&typeof v==='object'&&_seenObj.indexOf(v)<0){_seenObj.push(v);deBrandObj(v)}})});
+for(var _s in S){if(_seenObj.indexOf(S[_s])<0)deBrandObj(S[_s])}
 var NOTICE='[안내] 이 정보는 일반적인 건강 정보를 알기 쉽게 정리한 참고 자료이며, 의사의 진료·진단·처방을 대신하지 않습니다. 치료 일정·용량·검사·부작용 대처는 환자의 상태와 의료기관에 따라 다르므로, 담당 의료진의 판단과 안내를 따르세요.';
 var NOTICE_SHORT='참고용 일반 정보이며 진료·진단·처방을 대신하지 않습니다. 치료는 담당 의료진의 판단과 안내를 따르세요.';
 var NOTICE_FULL=NOTICE+' ApuDa는 이 정보를 근거로 한 개별 의료 판단이나 그 결과에 대해 책임을 지지 않으며, 정보는 작성 시점(2026년 10월) 기준으로 이후 달라질 수 있습니다. 응급 상황에는 즉시 119 또는 가까운 응급실을 이용하세요.';
@@ -133,6 +153,8 @@ var TRACK={bp:['bev','tki-liver','sutent','tki-kidney','pembro-axi','atezobev','
 var PUMP=['folfox','folfiri','ffx','fp'];
 var COMBO={bev:'bev',cetux:'egfrab',nivo:'io',pembro:'io',atezo:'io',durva:'io',trastu:'her2',pertu:'her2',phesgo:'her2'};
 function tracks(id){var o=[];for(var k in TRACK)if(TRACK[k].indexOf(id)>=0)o.push(k);return o}
+SOURCES.forEach(function(s){s[0]=deBrand(s[0])});
+for(var _k in DRUG){var _a=DRUG[_k],_i=-1;for(var _j=0;_j<_a.length;_j++){if(/[가-힣]/.test(_a[_j])&&!BRAND.some(function(b){return b[0]===_a[_j]})){_i=_j;break}}if(_i>0){_a.unshift(_a.splice(_i,1)[0])}}
 var DRUGSET={};for(var _d in DRUG)DRUG[_d].forEach(function(k){DRUGSET[String(k).toLowerCase().replace(/\s+/g,'')]=1});
 var PRIO={'cdk':6,'cdk-abema':6};
 function findAll(text,ctxCancer){var raw=String(text||'').toLowerCase();
@@ -148,7 +170,7 @@ function findAll(text,ctxCancer){var raw=String(text||'').toLowerCase();
       var extra=Object.keys(found).filter(function(x){return !used[x]}).length;if(inter)sc+=inter*10-miss*4-extra*2}
     var mine=hits.filter(function(h){return h.id===r.id}),al=0,drugHit=false;mine.forEach(function(h){if(h.drug||h.noComp&&h.k.length<=6&&!/요법|치료/.test(h.k))drugHit=true;if(!h.drug)al=Math.max(al,h.k.length)});
     if(cp&&!inter&&mine.some(function(h){return h.drug})){inter=1;sc+=10-Object.keys(found).filter(function(x){return !used[x]}).length*2}
-    if(!cp&&mine.length){inter=1;sc+=10-Object.keys(found).length*2;names.push(mine[0].k)}
+    if(!cp&&mine.length){inter=1;sc+=10-Object.keys(found).length*2;names.push(deBrand(mine[0].k))}
     if(al&&!(r.id!=null&&!cp&&!/[a-z]/.test(mine[0].k)&&al<=6&&drugHit&&mine.every(function(h){return h.noComp})))sc=Math.max(sc,0)+20+al;
     if(!inter&&!al)return;
     if(ctx&&r.cancers[0]===ctx)sc+=8;else if(ctx&&r.cancers.indexOf(ctx)<0)sc-=4;

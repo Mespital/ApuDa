@@ -11,12 +11,86 @@
 <meta property="og:image" content="/og.jpg">
 <link rel="icon" href="/favicon-32.png">
 <link rel="stylesheet" href="/library/assets/onco.css">
+<style>
+/* 페이지 보강 — 공용 onco.css는 그대로 두고 읽기·누르기·대비만 올림 (2026-10-11) */
+:root{--muted:#55697d}
+.nav a,.back{min-height:44px;display:inline-flex;align-items:center;font-size:14px}
+.kicker{font-size:12px;letter-spacing:.06em}
+.hero p{font-size:16px;color:#4b6075}
+.hero-stats small{font-size:13px;color:#4b6075}
+.principle{font-size:15px}
+.search input{font-size:17px;min-height:50px}
+.chips{scroll-padding:0 12px;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent);padding-right:24px}
+.chip{min-height:44px;padding:0 15px;font-size:14.5px}
+.count{display:block;font-size:14px;color:#4b6075;padding:0 4px}
+.card{min-width:0}
+.card h3{font-size:18px;overflow-wrap:break-word}
+.card .en,.d-head .en{font-size:13.5px;color:#5c7084;overflow-wrap:anywhere}
+.card p{font-size:15px;color:#4b6075}
+.tag{font-size:13px;padding:4px 9px;border-radius:8px}
+.type,.mk-kind{font-size:12.5px;padding:4px 10px}
+.type{background-image:linear-gradient(rgba(0,0,0,.22),rgba(0,0,0,.22))}
+.ev{font-size:11.5px}
+.sec h4{font-size:16px;flex-wrap:wrap}
+.sec p,.sec li{font-size:16px}
+.meaning b{font-size:14px}
+.closebtn{min-height:44px;padding:0 14px;font-size:15px}
+.st-h{font-size:15px;flex-wrap:wrap}
+.st p,.supply-row{font-size:14px}
+.light{font-size:13.5px}.light.warn{color:#b45309}.light.na{color:#5c7084}
+.ext{min-height:44px;padding:0 12px;font-size:14px}
+.news a{padding:13px 14px}.news b{font-size:15.5px}.news small{font-size:13px;color:#5c7084}
+.caution{font-size:14.5px}
+#app p[style*="font-size:12.5px"]{font-size:14px!important}
+.foot{font-size:14px;color:#405a72}
+.ctab span{font-size:14px}
+.lead{font-size:clamp(18px,2vw,21px)}
+.step-body small{font-size:13px;letter-spacing:.02em}
+.step-body h3{font-size:18px}
+.step-body p{font-size:16px;color:#33506b}
+.axes span{font-size:14px}
+.qlist li{font-size:15.5px;padding:13px 14px 13px 44px}.qlist li:before{top:14px;font-size:13px}
+.mini-links a{min-height:48px;font-size:15px}
+.drug-group b{font-size:13px;color:#55697d}
+.drug-group .tag{min-height:36px;display:inline-flex;align-items:center}
+.flowline span{font-size:13.5px}.flowline em{color:#6f8396}
+.sec h4 a{font-size:13.5px!important;min-height:44px;display:inline-flex;align-items:center}
+.sec .tags a.tag{min-height:36px;display:inline-flex;align-items:center}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #246bfe;outline-offset:2px;border-radius:12px}
+.search:focus-within input{outline:0}
+#cnt::before{content:'찾은 약물 '}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card,.ctab{transition:none}.card:hover,.ctab:hover{transform:none}}
+@media(max-width:640px){
+ .back{display:none}
+ .tools{position:static}
+ .grid{grid-template-columns:minmax(0,1fr)}
+ .card{padding:15px}.card h3{font-size:17.5px}.card p{display:block}
+ .hero p{font-size:15.5px}
+ .nav a{font-size:13.5px}
+ .nav{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 20px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 20px),transparent);padding-right:16px}
+ .ctab{flex:0 0 82px}
+}
+</style>
 </head>
 <body data-page="drugs">
 <header class="top" id="top"></header>
 <main class="wrap"><div id="app"></div><div class="foot" id="foot"></div></main>
 <script src="/library/assets/onco-data.js"></script>
+<script>/* 화면에는 성분명만 — 상품명은 검색어 매칭(match)에만 남김 */
+(window.APUDA_ONC&&APUDA_ONC.DRUGS||[]).forEach(function(d){d.brand=''});</script>
 <script src="/library/assets/onco-app.js"></script>
+<script>
+(function(){
+  var q=document.getElementById('q');
+  if(q){q.placeholder='약 이름으로 찾기 (예: 펨브롤리주맙, 오시머티닙, HER2)';q.setAttribute('aria-label','약 이름 검색 — 성분명·영문명·상품명 모두 찾을 수 있어요');}
+  var c=document.getElementById('cnt'),t=document.querySelector('#lview .tools');
+  if(c&&t){t.appendChild(c);c.setAttribute('aria-live','polite');}
+  function sync(){document.querySelectorAll('.chips .chip').forEach(function(b){b.setAttribute('aria-pressed',b.classList.contains('on'))})}
+  document.addEventListener('click',function(e){if(e.target.closest('.chip'))setTimeout(sync,0)});
+  addEventListener('popstate',function(){setTimeout(sync,0)});
+  sync();
+})();
+</script>
 <script src="/assets/apuda-bot.js" defer></script>
 </body>
 </html>

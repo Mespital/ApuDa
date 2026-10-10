@@ -83,7 +83,7 @@ function pageDrugs(){
    '<section class="hero"><div><span class="kicker">ApuDa DRUG HUB</span><h1>항암제 하나의 모든 것</h1><p>약 이름을 검색하면 <b>기전 → 관련 암종 → 바이오마커 → 공급상태 → 최근 뉴스</b>가 한 화면에 연결됩니다. 같은 약이라도 암종·병기·바이오마커·이전 치료에 따라 쓰이는 조건이 다릅니다.</p></div>'+
    '<div class="hero-stats"><div><b>'+O.DRUGS.length+'</b><small>약물·요법</small></div><div><b>12</b><small>암종 연결</small></div></div></section>'+
    '<div id="dview"></div>'+
-   '<div id="lview"><div class="tools"><label class="search">🔎<input id="q" type="search" placeholder="약 이름·상품명·영문명 검색 (예: 키트루다, 오시머티닙, HER2)" value="'+esc(st.q)+'"></label>'+
+   '<div id="lview"><div class="tools"><label class="search">🔎<input id="q" type="search" placeholder="약 이름·영문명 검색 (예: 펨브롤리주맙, 오시머티닙, HER2)" value="'+esc(st.q)+'"></label>'+
    '<div class="chips" id="cchips"></div><div class="chips" id="tchips"></div></div><div class="grid" id="grid"></div></div>';
   var cch=$('#cchips'),tch=$('#tchips');
   cch.innerHTML='<button class="chip" data-c="">전체 암종</button>'+ORDER.map(function(c){return '<button class="chip" data-c="'+c+'">'+esc(C[c].name)+'</button>'}).join('');
@@ -104,13 +104,13 @@ function pageDrugs(){
     $('#cnt').textContent=arr.length+'개';
     $('#grid').innerHTML=arr.length?arr.map(function(d){
       return '<button class="card" data-id="'+d.id+'">'+typeBadge(d.type)+'<div><h3>'+esc(d.ko)+'</h3><span class="en">'+esc(d.en)+'</span></div>'+
-        (d.brand?'<span class="brand-name">'+esc(d.brand)+'</span>':'')+'<p>'+esc(d.moa)+'</p><div class="tags">'+cancerTags(d.cancers)+markerTags(d.markers)+'</div></button>';
+        ''+'<p>'+esc(d.moa)+'</p><div class="tags">'+cancerTags(d.cancers)+markerTags(d.markers)+'</div></button>';
     }).join(''):'<div class="empty">조건에 맞는 약물이 없습니다. 검색어를 줄이거나 필터를 해제해 보세요.</div>';
   }
   $('#grid').onclick=function(e){var b=e.target.closest('.card');if(!b)return;setQS({id:b.dataset.id},true);route()};
   function detail(d){
     var dv=$('#dview');
-    dv.innerHTML='<div class="detail"><div><section class="panel"><div class="d-head"><div>'+typeBadge(d.type)+'<h2>'+esc(d.ko)+'</h2><div class="en">'+esc(d.en)+(d.brand?' · <b style="color:var(--blue)">'+esc(d.brand)+'</b>':'')+'</div></div><button class="closebtn" id="dclose">← 목록으로</button></div>'+
+    dv.innerHTML='<div class="detail"><div><section class="panel"><div class="d-head"><div>'+typeBadge(d.type)+'<h2>'+esc(d.ko)+'</h2><div class="en">'+esc(d.en)+''+'</div></div><button class="closebtn" id="dclose">← 목록으로</button></div>'+
      '<div class="sec"><h4>기전 <span class="ev">허가사항 요약</span></h4><p>'+esc(d.moa)+'</p><p style="color:var(--muted);font-size:12.5px;margin-top:4px">'+esc(O.TYPES[d.type].label)+' — '+esc(O.TYPES[d.type].desc)+'</p></div>'+
      '<div class="sec"><h4>관련 암종</h4><div class="tags">'+cancerTags(d.cancers,true)+'</div></div>'+
      (d.markers.length?'<div class="sec"><h4>주요 바이오마커</h4><div class="tags">'+markerTags(d.markers,true)+'</div></div>':'')+
@@ -140,7 +140,7 @@ function pageDrugs(){
       $('#dsupply').innerHTML=html;
     });
     loadNews().then(function(){var el=$('#dnews');if(el)el.innerHTML=newsHtml(newsFor(drugKeys(d),6))}).catch(function(){var el=$('#dnews');if(el)el.innerHTML=newsHtml([])});
-    document.title=d.ko+(d.brand?' ('+d.brand+')':'')+' | ApuDa Drug Hub';
+    document.title=d.ko+' | ApuDa Drug Hub';
   }
   function route(){
     var id=qs().get('id'), d=id&&DRUG[id];
@@ -176,7 +176,7 @@ function pageMarkers(){
       '<div class="sec"><h4>② 어떻게 검사하나요?</h4><p>'+esc(m.test)+'</p></div>'+
       '<div class="sec"><h4>③ 왜 검사하나요? <span class="ev guide">가이드라인</span></h4><p>'+esc(m.why)+'</p></div>'+
       '<div class="sec meaning"><b>④ 결과는 치료와 어떻게 연결되나요?</b><p>'+esc(m.result)+'</p></div>'+
-      '<div class="sec"><h4>⑤ 관련 약물</h4>'+(drugs.length?'<div class="grid" style="margin-top:0">'+drugs.map(function(d){return '<a class="card" href="/library/drugs/?id='+d.id+'">'+typeBadge(d.type)+'<div><h3>'+esc(d.ko)+'</h3><span class="en">'+esc(d.brand||d.en)+'</span></div></a>'}).join('')+'</div>':'<p style="color:var(--muted)">이 지표는 약을 고르는 기준이라기보다 진단·추적에 쓰입니다.</p>')+'</div>'+
+      '<div class="sec"><h4>⑤ 관련 약물</h4>'+(drugs.length?'<div class="grid" style="margin-top:0">'+drugs.map(function(d){return '<a class="card" href="/library/drugs/?id='+d.id+'">'+typeBadge(d.type)+'<div><h3>'+esc(d.ko)+'</h3><span class="en">'+esc(d.en)+'</span></div></a>'}).join('')+'</div>':'<p style="color:var(--muted)">이 지표는 약을 고르는 기준이라기보다 진단·추적에 쓰입니다.</p>')+'</div>'+
       '</section><section class="panel"><div class="sec" style="margin-top:0"><h4>⑥ 최근 뉴스 <span class="ev press">언론보도</span></h4><div id="dnews"><p style="color:var(--muted);font-size:12.5px">불러오는 중…</p></div></div></section></div>'+
       '<aside class="side-sticky"><section class="panel"><div class="sec" style="margin-top:0"><h4>진료실에서 이렇게 물어보세요</h4><ol class="qlist"><li>'+esc(m.q)+'</li><li>검사 결과지는 사본으로 받을 수 있나요?</li><li>결과가 나오기 전에 치료를 시작해도 되나요?</li></ol></div>'+
       '<div class="sec"><h4>암종별 치료결정 지도에서 보기</h4><div class="mini-links">'+m.cancers.map(function(c){return '<a href="/library/treatment-map/?cancer='+c+'">🗺️ '+esc(C[c].name)+' 치료결정 지도<i>→</i></a>'}).join('')+'</div></div></section></aside></div>';
