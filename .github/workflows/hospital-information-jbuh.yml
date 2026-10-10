@@ -1,0 +1,64 @@
+name: Hospital Information JBUH official specialists
+on:
+  schedule:
+    - cron: '40 22 * * *' # daily 07:40 KST
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'public-site/hospital-information/scripts/collect_jbuh.py'
+      - '.github/workflows/hospital-information-jbuh.yml'
+permissions:
+  contents: write
+concurrency:
+  group: apuda-hospital-data-sync
+  cancel-in-progress: false
+jobs:
+  official-directory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install requests beautifulsoup4
+      - name: Read JBUH official doctors and specialty evidence
+        run: |
+          set -euo pipefail
+          python public-site/hospital-information/scripts/collect_jbuh.py \
+            --output public-site/hospital-information/data/jbuh-verified.json
+          python public-site/hospital-information/scripts/merge_verified.py
+      - name: Validate individual official profiles
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('public-site/hospital-information/data')
+          j=json.loads((root/'jbuh-verified.json').read_text(encoding='utf-8'))
+          m=json.loads((root/'verified-specialists.json').read_text(encoding='utf-8'))
+          assert len(j.get('coverage',[]))==3, 'A source department was skipped'
+          assert j['count']==len(j['results'])>=5, 'Too few clinically documented doctors'
+          for x in j['results']:
+            assert x['status']=='ACTIVE' and x['doctor_name'] and x['specialty_text'] and x['cancers']
+            assert x['source_url'].startswith('https://www.jbuh.co.kr/prog/mdcl/')
+            assert x['profile_url'].startswith('https://www.jbuh.co.kr/prog/mdclStf/')
+          assert m['count']>=j['count'], 'Merged records missing'
+          print('JBUH_OFFICIAL',j['count'],'MERGED_TOTAL',m['count'])
+          PY
+      - name: Publish verified medical directory via GitHub Netlify
+        run: |
+          set -euo pipefail
+          git config user.name apuda-hospital-bot
+          git config user.email apuda-hospital-bot@users.noreply.github.com
+          git add public-site/hospital-information/data/jbuh-verified.json \
+                  public-site/hospital-information/data/verified-specialists.json
+          if git diff --cached --quiet; then
+            echo 'No clinical record changes'
+          else
+            git commit -m 'data(hospital): publish JBUH verified oncology directory'
+            git pull --rebase -X theirs origin main
+            git push origin main
+          fi
