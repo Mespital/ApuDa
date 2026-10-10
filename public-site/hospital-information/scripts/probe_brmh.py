@@ -1,3 +1,4 @@
+import re
 #!/usr/bin/env python3
 """Read-only Boramae doctors department markup and profile-link audit."""
 import requests,urllib.robotparser
@@ -27,6 +28,22 @@ for code in CODES:
     pos=body.find("openDoctorView")
     print("JS_SOURCE_FN",body[max(0,pos-150):pos+2500],flush=True)
   print("JS_URLS",[(a.get("src") or "") for a in scripts if any(term in (a.get("src") or "").lower() for term in ["doctor","medical","medi","custom"])][:25],flush=True)
+  for src in ["/common/js/mediteam.js"]:
+   scripturl=HOST+src
+   if not rp.can_fetch(UA,scripturl):
+    print("JS_ROBOTS_DENIED",src,flush=True)
+    continue
+   code=s.get(scripturl,timeout=18,allow_redirects=False)
+   print("JS_HTTP",code.status_code,"LENGTH",len(code.content),flush=True)
+   if code.status_code==200:
+    txt=code.text
+    for phrase in ("openDoctorView","doctor_view","doctor_info","doctorView"):
+     index=txt.find(phrase)
+     if index>=0:print("JS_MATCH",phrase,re.sub(r"\\s+"," ",txt[max(0,index-220):index+2200]),flush=True)
+  for inline in scripts:
+   txt=inline.get_text("",strip=False)
+   i=txt.find("function openDoctorView")
+   if i>=0:print("INLINE_JS_FN",re.sub(r"\\s+"," ",txt[i:i+2400]),flush=True)
 
   for name in ["곽재용","서경석","전혜원","정현"]:
    t=soup.find_all(string=lambda z:z and z.strip()==name)
