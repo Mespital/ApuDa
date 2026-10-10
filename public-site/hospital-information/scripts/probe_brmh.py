@@ -21,6 +21,12 @@ for code in CODES:
   if rr.status_code!=200:continue
   soup=BeautifulSoup(rr.text,"html.parser")
   scripts=soup.select("script")
+  detail=HOST+"/custom/popup/layer_doctor_view.do?dt_no=421&medi_code=001023000%7C001023000"
+  print("DETAIL_ROBOT_ALLOWED",rp.can_fetch(UA,detail),flush=True)
+  if rp.can_fetch(UA,detail):
+   response=s.get(detail,timeout=20,allow_redirects=False,headers={"Referer":url})
+   detail_text=BeautifulSoup(response.text,"html.parser").get_text(" ",strip=True)
+   print("DETAIL_HTTP",response.status_code,"LEN",len(response.content),"HAS_NAME",("서경석" in detail_text),"SAMPLE",detail_text[:350],flush=True)
   print("SCRIPT_SOURCE_COUNT",len(scripts),flush=True)
   for script in scripts:
    body=script.get_text(" ",strip=False)
