@@ -1,44 +1,49 @@
-# ApuDa Hospital Information
+# ApuDa Hospital Information — 운영·검증 가이드
 
-암 진료 기관 및 검증된 의료진 정보 검색용 독립 Netlify 웹앱.
+**운영 URL:** https://apuda.app/hospital-information/  
+**코드 관리:** https://github.com/Mespital/ApuDa/tree/main/public-site/hospital-information
 
-## 운영 구성
-- **원본 코드:** `Mespital/ApuDa` 저장소의 `public-site/hospital-information/`
-- **기존 ApuDa 주소 목표:** `https://apuda.app/hospital-information/` (기존 apuda.app Netlify 배포가 `public-site/`를 publish할 때)
-- **독립 Netlify 앱:** 같은 GitHub 저장소에서 **Base directory**를 `public-site/hospital-information`으로 설정하고 **Publish directory**는 `.` (base 기준), Build command는 빈칸. 기존 메인 사이트와 별도의 Netlify 프로젝트로 배포할 수 있음.
-- **데이터:** 의료기관 30곳과 암종 30개는 `data/*.json` 정적 파일. 공개 가능한 검증 의료진은 Netlify Function을 통해 VPS의 FastAPI `GET /v1/specialists`를 실시간 조회.
-- **비공개:** SQLite DB, 수집 로그, 의료진 검증 대기 기록은 VPS에서만 관리. GitHub 및 Netlify에 업로드하지 말 것.
+## 서비스 상태
+- 30개 병원·30개 암종 기준 데이터를 기반으로 의료기관을 검색합니다.
+- 병원 등록 자체는 해당 암종의 진료 가능 여부, 의료의 질 또는 순위를 검증한 것이 아닙니다.
+- 공개 승인된 의사만 검색 가능하며, 검증 대기 상태의 의사는 절대 표시하지 않습니다.
+- 공개 의료진이 0명이어도 지역별 병원 목록과 확인 가능한 공식 의료진 페이지 안내 링크를 제공합니다.
 
-## Netlify 지속 배포 (수동 1회 연결 필요)
-1. Netlify > Add new project > Import an existing project > GitHub 선택.
-2. `Mespital/ApuDa` 저장소 선택.
-3. Branch `main`; Base directory `public-site/hospital-information`; Publish directory `.`; Build command 없음.
-4. Deploy. 이후 GitHub main 브랜치의 이 디렉터리 변경이 Netlify 자동 배포됨.
-5. 별도 Netlify 앱용 도메인은 Netlify가 실제로 발급한 이름을 확인해 사용. `apuda.app/hospital-information/`은 기존 메인 Netlify 사이트가 GitHub의 `public-site/`를 배포하는 경우 동일 파일로 제공되며, 그렇지 않으면 메인 사이트 배포 설정을 별도로 수정해야 함.
+## 실제 배포 구조
+- 기존 `Mespital/ApuDa`의 `public-site/`를 Netlify가 배포합니다.
+- GitHub `main`의 `public-site/hospital-information/` 수정 → 기존 Netlify Git 연동으로 자동 운영 반영.
+- 별도 Netlify 프로젝트 생성, 수동 ZIP 업로드 또는 VPS 프런트엔드 서버 설치가 필요 없습니다.
+- `.github/workflows/hospital-information-check.yml`에서 JS 문법·의료진 공개 데이터 검증·사용자 흐름 테스트 수행.
+- `.github/workflows/hospital-information-deployment.yml`에서 운영 URL, 배포 JS, 병원·암종 JSON, 의료진 스냅샷, 의료진 API를 확인합니다.
+- 위 운영 점검은 매일 오전 08:15 KST에도 실행됩니다.
 
-## 의료진 데이터 연결
-- 초기 상태에서 의료진 API는 의도적으로 미연결이다. UI는 검증되지 않은 의료진을 표시하지 않는다.
-- VPS의 `/opt/apuda-cancer-matcher` API는 현재 `127.0.0.1:4890`에 바인딩되어 있어 Netlify 서버에서 직접 접근할 수 없다.
-- DNS에 전용 서브도메인(예: `hospital-api.apuda.app`)을 설정하고 TLS 역프록시로 **필요한 읽기 전용 API만** 공개한다. `server/Caddyfile.example` 참조. 기존 Caddy 설정을 확인하고 충돌이 없게 추가할 것.
-- Netlify 사이트 > Site configuration > Environment variables에 `APUDA_HOSPITAL_API_URL=https://hospital-api.apuda.app` 설정 후 재배포.
-- 메인 apuda.app 사이트에서도 의료진 기능을 사용할 경우 해당 메인 사이트 Netlify 환경변수에도 동일하게 설정해야 한다.
-- `public-site/netlify/functions/hospital-information-matcher.js`와 이 폴더의 동일한 함수가 각각 메인 사이트와 독립 사이트의 API 요청을 처리한다. 수정 시 두 파일을 동기화할 것.
-- FastAPI에서는 `status='ACTIVE'`이고 암종 연결 테이블에 매핑된 의료진만 반환된다. 현재 검증 대기 2명은 공개되지 않는다.
+## 의료진 데이터 흐름
+1. 기존 VPS `/var/lib/apuda-cancer-matcher/apuda_specialists.db`에서 공식 의료진 정보를 운영 관리합니다.
+2. `VERIFY_REQUIRED`는 검증 대기입니다. 공개 전 `ACTIVE`, `verified_at`, 공식 HTTPS 프로필 URL, 암종/진료 역할, 근거를 모두 확인해야 합니다.
+3. `.github/workflows/hospital-information-sync.yml`은 매일 오전 07:50 KST 실행됩니다.
+4. 이 작업은 VPS DB와 WAL 파일을 **읽기용 임시 복사본**으로 가져와 검사합니다. 운영 DB를 변경하지 않습니다.
+5. 검증된 의료진만 `data/verified-specialists.json`에 내보냅니다. 검증이 180일보다 오래되면 공개 대상에서 제외합니다.
+6. 공개 JSON에는 이름·병원·진료과·전문분야·공식 프로필·검증일·암종/진료역할만 남깁니다. 검증 전 자료와 내부 근거 텍스트 전체는 공개하지 않습니다.
+7. 동기화 성공 시 날짜별로 `generated_at`(마지막 확인 시각)을 반영합니다. 실패하면 기존 자료를 보존하며 오류 로그를 남깁니다.
 
-## 유지 관리
-- 병원·암종 목록: `data/hospitals.json`, `data/cancers.json` 수정 → GitHub commit → Netlify 자동 배포
-- UI: `index.html`, `styles.css`, `app.js`
-- Netlify 함수: `netlify/functions/hospital-information-matcher.js` (메인 사이트 복제본 동기화)
-- 의료진 원본 갱신: VPS의 기존 systemd 스케줄, 수집기, 수동 검증 → ACTIVE 변경 후 API 응답에 반영 (GitHub에 개인정보/DB 업로드 불필요).
-- CI: `.github/workflows/hospital-information-check.yml`에서 JavaScript 문법 및 등록 건수 검사.
+## 웹앱과 의료진 API
+- 웹앱은 `data/verified-specialists.json`을 읽으므로 VPS 또는 별도 HTTPS 백엔드의 실시간 접근이 필요하지 않습니다.
+- 메인 Netlify Function `/.netlify/functions/hospital-information-matcher?cancer=LUNG`도 동일 공개 스냅샷을 읽습니다.
+- Function은 데이터가 정상이고 공개 의료진이 없을 때 **HTTP 200, count=0**으로 응답합니다. 이전의 API 미설정 HTTP 503은 수정되었습니다.
+- 신선도 검사는 마지막 데이터 동기화 시간과 개별 의료진 `verified_at`을 구분합니다.
+- 의료진 예약이나 치료 판단은 본 앱에서 수행하지 않으며 각 병원 공식 사이트에서 확인하도록 합니다.
+
+## 수정 위치
+- 사용자 화면: `index.html`, `app.js`, `styles.css`
+- 병원·암종: `data/hospitals.json`, `data/cancers.json`
+- 공식 의료진 링크: `data/hospitals.json`의 `staff_url` (확인된 링크만 입력)
+- VPS 검증 데이터 exporter: `scripts/export_verified.py`
+- GitHub Actions: `.github/workflows/hospital-information-*.yml`
+- 의료진 API Function은 `public-site/netlify/functions/hospital-information-matcher.js`와 앱 내부 `netlify/functions/hospital-information-matcher.js` 두 위치가 **같아야 합니다.**
 
 ## 의료정보 안전 원칙
-공식 출처와 진료 분야를 검증하고 공개 승인한 의료진만 표시한다. 치료 성적, 우열 순위, 인증되지 않은 추천 정보는 표시하지 않는다. 링크 및 공식 진료분야는 주기적으로 재검증한다.
-
-## 2026-10-10 운영 연결 변경
-- 초기 Netlify Function의 HTTP 503 문제를 사용자 검색 화면에서 제거했습니다.
-- 환자 화면은 `data/verified-specialists.json`을 읽습니다. 이 데이터는 상태가 `ACTIVE`이고 공식 프로필 주소·근거·검증일이 있는 의료진만 포함합니다.
-- 검증된 의료진이 아직 0명이면 검색 버튼은 의료기관 목록을 보여주며, 확인된 공식 의료진 페이지로 이동할 수 있습니다. 병원 목록 자체는 암종 전문성 확인이나 우수병원 선정이 아닙니다.
-- `.github/workflows/hospital-information-sync.yml`이 매일 07:50 KST(22:50 UTC)에 기존 VPS를 읽기 전용으로 조회하여 공개 승인 자료만 GitHub 정적 데이터에 동기화합니다. SSH/DNS/DB 접근 실패 시 기존 스냅샷 유지, 임의로 0명 처리하지 않습니다.
-- VPS SQLite의 `VERIFY_REQUIRED` 및 비공개 원본 정보는 GitHub에 업로드하지 않습니다.
-- Netlify 사이트의 기존 GitHub 자동 배포는 그대로 유지합니다.
+- 명단을 발견했다고 `ACTIVE`로 승인하지 않습니다.
+- 공식 의료진 소개에 명시된 진료분야만 암종과 연결합니다.
+- 논문 발표, 센터 소속, 특정 학회 활동만으로 해당 암종 치료 전문의라고 분류하지 않습니다.
+- 의료진 순위, 치료성과 우열, 임의 추천 점수를 만들지 않습니다.
+- 병원 사이트의 자동 수집이 robots.txt에 의해 제한되면 우회하지 않고 공개 페이지 링크 등 허용되는 방식으로 검증합니다.
