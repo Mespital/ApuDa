@@ -28,7 +28,8 @@
     "slug": "cmc",
     "name": "서울성모병원",
     "region": "서울",
-    "official_url": "https://www.cmcseoul.or.kr"
+    "official_url": "https://www.cmcseoul.or.kr",
+    "staff_url": "https://www.cmcseoul.or.kr/page/department/A"
   },
   {
     "slug": "brmh",
@@ -97,7 +98,8 @@
     "slug": "ansan",
     "name": "고려대학교 안산병원",
     "region": "경기",
-    "official_url": "https://ansan.kumc.or.kr"
+    "official_url": "https://ansan.kumc.or.kr",
+    "staff_url": "https://ansan.kumc.or.kr/kr/doctor-department/department.do"
   },
   {
     "slug": "bundangcha",
@@ -157,7 +159,8 @@
     "slug": "knu",
     "name": "경북대학교병원",
     "region": "대구",
-    "official_url": "https://www.knuh.kr"
+    "official_url": "https://www.knuh.kr",
+    "staff_url": "https://knuh.kr/content/01treatment/08_01.asp"
   },
   {
     "slug": "knumc",
@@ -170,19 +173,20 @@
     "name": "계명대학교 동산병원",
     "region": "대구",
     "official_url": "https://dongsan.dsmc.or.kr",
-    "staff_url": "https://dongsan.dsmc.or.kr:49870/content/02depart/02_01.php"
+    "staff_url": "https://dongsan.dsmc.or.kr/"
   },
   {
     "slug": "cnuhh",
     "name": "화순전남대학교병원",
     "region": "전남",
     "official_url": "https://www.cnuhh.com",
-    "staff_url": "https://www.cnuhh.com/medical/info/dept.cs?m=9"
+    "staff_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor"
   },
   {
     "slug": "jbuh",
     "name": "전북대학교병원",
     "region": "전북",
-    "official_url": "https://www.jbuh.co.kr"
+    "official_url": "https://www.jbuh.co.kr",
+    "staff_url": "https://www.jbuh.co.kr/prog/mdcl/main/sub01_01_01/list.do"
   }
 ]

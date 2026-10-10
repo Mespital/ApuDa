@@ -18,3 +18,9 @@
 .fallback-actions a{font-size:12px;font-weight:750;color:#2459c3;text-decoration:underline}
 @media(max-width:860px){.fallback-grid{grid-template-columns:1fr}}
 @media(max-width:680px){.result-top{align-items:flex-start;flex-wrap:wrap}.tab{font-size:12px}.tab-row{gap:12px}.result-label{margin-bottom:9px}.card-actions{justify-content:flex-start}.filter-buttons .primary-button{min-width:0}.filter-buttons .primary-button,.filter-buttons .ghost-button{font-size:13px}.fallback-grid{grid-template-columns:1fr}}
+
+/* Audit v4: mobile layout and verification transparency */
+.sync-status{font-size:12px;color:#61748d;line-height:1.6;margin:0 0 16px}
+.verification-date{font-size:11px!important;color:#75879c!important;margin-top:7px!important}
+.results-panel{scroll-margin-top:16px}
+@media(max-width:680px){.tab-row{flex-wrap:wrap;row-gap:0;column-gap:13px}.tab{white-space:normal;line-height:1.4;min-height:48px}.status-message{padding:15px 16px;font-size:13px}.empty-state{padding:35px 16px}.empty-state h3{font-size:16px;word-break:keep-all}.empty-state p{font-size:12px}.result-top .result-label{width:100%;margin:0 0 7px}}

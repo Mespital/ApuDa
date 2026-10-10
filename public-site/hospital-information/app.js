@@ -3,7 +3,7 @@
   const $ = (id) => document.getElementById(id);
   const state = { hospitals: [], cancers: [], records: [], mode: "hospitals", searched: false, snapshotLoaded: false };
   const safeUrl = (value) => {
-    try { const u = new URL(value); return u.protocol === "https:" ? u.href : null; }
+    try { const u = new URL(value); return u.protocol === "https:" && !u.username && !u.password ? u.href : null; }
     catch (_) { return null; }
   };
   function el(tag, className, text) {
@@ -62,12 +62,18 @@
     $("hospitalTabCount").textContent = matches.length;
     if (state.mode === "hospitals") $("resultsLabel").textContent = "의료기관 " + matches.length + "곳";
   }
+  const REVIEW_MAX_AGE_MS = 180 * 86400000;
+  function eligibleDoctor(d) {
+    if (!d || d.status !== "ACTIVE" || !d.doctor_name || !d.hospital_name || !safeUrl(d.profile_url)) return false;
+    const stamp = Date.parse(d.verified_at || "");
+    const age = Date.now() - stamp;
+    return Number.isFinite(stamp) && age >= -86400000 && age <= REVIEW_MAX_AGE_MS
+      && Array.isArray(d.cancers) && d.cancers.some(c => c && typeof c.code === "string" && typeof c.role === "string");
+  }
   function matchedDoctors() {
     const f = filters();
     if (!f.cancer) return [];
-    return state.records.filter(d => d && d.status === "ACTIVE"
-      && d.doctor_name && d.hospital_name && safeUrl(d.profile_url)
-      && Array.isArray(d.cancers)
+    return state.records.filter(d => eligibleDoctor(d)
       && d.cancers.some(c => c.code === f.cancer && (!f.role || c.role === f.role))
       && (!f.region || d.region === f.region)
       && (!f.query || (d.doctor_name + " " + d.hospital_name).toLowerCase().includes(f.query)));
@@ -93,6 +99,7 @@
         head.append(el("h3", "", d.doctor_name), label("검증 완료", "doc-label"));
         card.append(head, el("p", "", d.hospital_name + (d.department ? " · " + d.department : "")));
         if (d.specialty_text) card.append(el("p", "specialty", "공식 진료분야: " + d.specialty_text));
+        card.append(el("p", "verification-date", "정보 확인: " + new Date(d.verified_at).toLocaleDateString("ko-KR")));
         const bottom = el("div", "card-bottom");
         bottom.append(label(d.region || "지역 확인 필요"), link(d.profile_url, "공식 프로필 ↗"));
         card.append(bottom); list.append(card);
@@ -125,6 +132,8 @@
     $("tabDoctors").classList.toggle("active", !isHospital);
     $("tabHospitals").setAttribute("aria-selected", String(isHospital));
     $("tabDoctors").setAttribute("aria-selected", String(!isHospital));
+    $("tabHospitals").tabIndex = isHospital ? 0 : -1;
+    $("tabDoctors").tabIndex = isHospital ? -1 : 0;
     $("resultsLabel").textContent = isHospital ? "의료기관 " + filteredHospitals().length + "곳"
       : "검증 의료진 " + matchedDoctors().length + "명";
   }
@@ -143,6 +152,11 @@
     } else {
       setNote("등록 의료기관 " + hospitalCount + "곳입니다. 의료진 검색은 암종 선택 후 이용해 주세요.");
     }
+    try {
+      if (typeof window !== "undefined" && window.matchMedia("(max-width: 680px)").matches) {
+        $("resultsArea").scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    } catch (_) { /* Search still works if scrolling is unavailable. */ }
   }
   async function init() {
     const [a,b] = await Promise.all([fetch("./data/hospitals.json"),fetch("./data/cancers.json")]);
@@ -158,6 +172,16 @@
     $("resetButton").addEventListener("click",()=>{ $("filters").reset();setNote("");renderHospitals();renderDoctors();changeTab("hospitals"); });
     $("tabHospitals").addEventListener("click",()=>changeTab("hospitals"));
     $("tabDoctors").addEventListener("click",()=>{renderDoctors();changeTab("doctors");});
+    for (const id of ["tabHospitals", "tabDoctors"]) {
+      $(id).addEventListener("keydown", event => {
+        if (!["ArrowLeft","ArrowRight","Home","End"].includes(event.key)) return;
+        event.preventDefault();
+        const target = event.key === "ArrowLeft" || event.key === "Home" ? $("tabHospitals") : $("tabDoctors");
+        if (target === $("tabHospitals")) changeTab("hospitals");
+        else {renderDoctors(); changeTab("doctors");}
+        target.focus();
+      });
+    }
     for (const id of ["cancerSelect","regionSelect","roleSelect"]) {
       $(id).addEventListener("change",()=>{renderHospitals();renderDoctors();if($("searchNote").hidden===false)setNote("조건이 변경되었습니다. 검색 버튼을 다시 눌러 결과를 확인해 주세요.");});
     }
@@ -168,13 +192,18 @@
       if(!response.ok)throw Error("의료진 정적 데이터 응답 실패");
       const payload=await response.json();
       if(!Array.isArray(payload.results))throw Error("의료진 데이터 형식 오류");
-      state.records=payload.results.filter(x=>x && x.status==="ACTIVE" && Array.isArray(x.cancers));
+      state.records=payload.results.filter(eligibleDoctor);
       state.snapshotLoaded=true;
       $("verifiedMetric").textContent=state.records.length;
+      const syncTime = Date.parse(payload.generated_at || "");
+      $("syncStatus").textContent = Number.isFinite(syncTime)
+        ? "마지막 자동 동기화: " + new Date(syncTime).toLocaleString("ko-KR", {timeZone:"Asia/Seoul"}) + " (KST)"
+        : "의료진 공개정보는 공식 근거 확인과 승인 후 업데이트됩니다.";
       renderDoctors();
     } catch(err) {
       state.snapshotLoaded=false;
       $("verifiedMetric").textContent="—";
+      $("syncStatus").textContent="공개 의료진 데이터 연결을 확인하지 못했습니다. 병원 공식 홈페이지를 이용해 주세요.";
       renderDoctors();
     }
   }
