@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "source": "ApuDa reviewed official medical institution directories",
-  "generated_at": "2026-10-10T07:45:45+00:00",
+  "generated_at": "2026-10-10T22:09:17+00:00",
   "count": 342,
   "results": [
     {
@@ -3539,7 +3539,7 @@
       "department": "소아청소년종양혈액과 , 소아청소년전문과 , CAR T 센터",
       "specialty_text": "소아 혈액종양, 골수이식, 혈구탐식림프조직구증(HLH), 망막세포종, CAR-T 세포치료, 필라델피아 급성림프구성 백혈병, 급성 골수성 백혈병, 영아 급성림프구성 백혈병, 혈관종",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=bm1CUXRpQXMzelQ4Rk5ZZ1BhZExnZz09&searchHpCd=D024",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3557,7 +3557,7 @@
       "department": "간이식ㆍ간담도외과 , 로봇수술센터 , 간암센터 , 대장암센터 , 암병원",
       "specialty_text": "간암,복강경/로봇 담낭절제술,간이식 수혜자·기증자 사전검사,간이식 수술 후 환자",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=MFhhL3N0RGkyYlU5dlN3eXNlTkxwdz09&searchHpCd=D150",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3575,7 +3575,7 @@
       "department": "소아청소년종양혈액과 , 소아청소년 암센터 , 소아청소년전문과 , CAR T 센터 , 육종ㆍ희귀암센터",
       "specialty_text": "소아 혈액종양, 골수이식, 소아 뇌종양, 소아 고형암, 랑게르한스세포조직구증, CAR-T 세포치료",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=Y0hHNmoyUEdmMHhONVhEVjVyL3VJQT09&searchHpCd=D024",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3593,7 +3593,7 @@
       "department": "유방외과 , 유방암클리닉 , 로봇수술센터 , 유방암센터",
       "specialty_text": "수술후퇴원클리닉,유방암,로봇수술,유방암 미용수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=TUorYVJ6OFVLTUxjQVJVTngycTBxZz09&searchHpCd=D342",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3611,7 +3611,7 @@
       "department": "위장관외과 , 로봇수술센터 , 비만대사통합진료센터 , 식도암센터 , 위암센터",
       "specialty_text": "위암, 로봇수술, 비만대사수술, 탈장",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=NkVXb2RINFlhYVEzdE9ncGRJYkdEdz09&searchHpCd=D152",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3629,7 +3629,7 @@
       "department": "영상의학과 , 중증외상팀 , 간센터 , 간암센터",
       "specialty_text": "간암,혈관질환 치료,비수술적 종양 소작술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=Q2pSOTZkcFMrWExveGllM29Wb0pxUT09&searchHpCd=D015",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3647,7 +3647,7 @@
       "department": "위장관외과 , 로봇수술센터 , 식도암센터 , 위암센터",
       "specialty_text": "위암, 위·식도역류질환수술, 비만대사수술,로봇수술,탈장",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=RWIzNmZYd1RtYVJWUDAzYjlsU2JJZz09&searchHpCd=D152",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3665,7 +3665,7 @@
       "department": "이비인후과 , 로봇수술센터 , 갑상선암센터 , 두경부암센터 , 암병원",
       "specialty_text": "두경부암, 침샘종양, 갑상선종양, 경부종물, 음성질환, 두경부암 및 갑상선종양 로봇수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=SHFkWUNCM0dpcHlyaXJISUlyK2JHQT09&searchHpCd=D035",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3683,7 +3683,7 @@
       "department": "소화기내과 , 소화기내시경센터 ,소화기병센터, 장기이식센터 , 암병원 , 간센터 , 간암센터",
       "specialty_text": "간질환,간암,간염,간경변,지방간 클리닉,지방간,알코올 간질환 클리닉",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=bHowV3RwWW90Z2tuK0FObmx6bW5ydz09&searchHpCd=D006",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3701,7 +3701,7 @@
       "department": "종양내과 , 암병원 , 파킨슨ㆍ알츠하이머센터 , 담도 및 췌장암센터 , 유전체맞춤암치료센터",
       "specialty_text": "담도암, 췌장암, 소장암(십이지장), 간암",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=ODU2UFM1aFdrRTdkREczWm9LWWxOZz09&searchHpCd=D011",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3727,7 +3727,7 @@
       "department": "간이식ㆍ간담도외과 , 로봇수술트레이닝센터 ,소화기병센터, 장기이식센터 , 암병원 , 간센터 , 로봇수술센터 , 간암센터 , 담도 및 췌장암센터",
       "specialty_text": "간암,담도암,간이식,복강경,로봇간절제클리닉,전이성간암",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=UklKN2Y0MTdicm9TWm03dmNpbnJFZz09&searchHpCd=D150",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3749,7 +3749,7 @@
       "department": "호흡기내과 , 폐암센터",
       "specialty_text": "간질성폐질환 (폐섬유증, 유육종증, 임파관평활근종), 폐이식, 폐암, 치료내시경,호흡기질환",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=VDBMa1RxaTBCQjg4RXhzeUxCa1p6dz09&searchHpCd=D013",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3771,7 +3771,7 @@
       "department": "대장항문외과 , 로봇수술센터 , 소화기내시경센터 , 대장암센터 , 식도암센터 , 암병원",
       "specialty_text": "대장암,직장암,복강경,로봇수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=bEdzOEZpOE5GUDRvT1RpRm1iRkxYdz09&searchHpCd=D095",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3793,7 +3793,7 @@
       "department": "위장관외과 , 암병원 , 로봇수술센터 , 식도암센터 , 위암센터",
       "specialty_text": "위암, 기질성종양(기스트), 비만대사수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=QUJzVkVaMmJvTzMwTVhWRVdRSHBPdz09&searchHpCd=D152",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3811,7 +3811,7 @@
       "department": "종양내과 , 암병원 , 대장암센터 , 완화의료센터 , 유전체맞춤암치료센터",
       "specialty_text": "대장암, 직장암, 항문암, 소장암(공장,회장), 소화기 육종, 부인암. 복막중피종",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=Y1ZJTWF3b2s3QWtZTVFCSGEzQU1EZz09&searchHpCd=D011",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3837,7 +3837,7 @@
       "department": "종양내과 , 유방암클리닉 , 암병원 , 두경부암센터 , 식도암센터 , 유방암센터",
       "specialty_text": "유방암,두경부암",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=bW9wUE8yeUdSL2lqb1U2L3ZoRHU5Zz09&searchHpCd=D011",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3859,7 +3859,7 @@
       "department": "방사선종양학과 , 유방암클리닉 , 암병원 , 암환자라이프케어센터 , 유방암센터 , 폐암센터 , 피부암센터",
       "specialty_text": "유방암, 폐암",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=RU0vaElITlV1Y2MrTmR1Q0VnNHJXZz09&searchHpCd=D016",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3881,7 +3881,7 @@
       "department": "심장혈관흉부외과 , 폐식도외과 , 로봇수술센터 , 암병원 , 폐암센터",
       "specialty_text": "폐암, 흉선종, 흉강경, 폐이식",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=NWxLYjU4MHFUZXJpTWpxalVyMGx0UT09&searchHpCd=D043",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3899,7 +3899,7 @@
       "department": "대장항문외과 , 로봇수술센터 , 소화기내시경센터 , 대장암센터 , 식도암센터 , 암병원",
       "specialty_text": "대장암,직장암,복강경,로봇수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=K1lyaDRXU2lSSUZBY29xbWpFSUptZz09&searchHpCd=D095",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3921,7 +3921,7 @@
       "department": "신경외과 , 뇌종양센터 , 암병원",
       "specialty_text": "뇌하수체종양,뇌종양,감마나이프,사이버나이프,뇌전이암",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=cTU0NU5MWTRtRXovdXo3Skl6S1Mydz09&searchHpCd=D031",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3939,7 +3939,7 @@
       "department": "정형외과 , 암환자라이프케어센터 , 육종ㆍ희귀암센터 , 피부암센터",
       "specialty_text": "육종, 근골격계 종양, 골반뼈 종양 (척추뼈 종양 제외)",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=SC9lZUJqSGdwYjJGaHB4cmNkUTZFQT09&searchHpCd=D038",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3957,7 +3957,7 @@
       "department": "심장혈관흉부외과 , 폐식도외과 , 로봇수술트레이닝센터 , 암병원 , 로봇수술센터 , 식도암센터 , 폐암센터",
       "specialty_text": "폐암,식도암,비디오 흉강경수술(폐암,식도암),로봇수술(다빈치),악성중피종",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=ZmMrMlAvZmhEdHRTKy80d3ArSVh0QT09&searchHpCd=D043",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3979,7 +3979,7 @@
       "department": "내분비내과 , 갑상선암센터",
       "specialty_text": "갑상선질환,갑상선암",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=YjQxWTg1YS9DME9YN25ucHhNNlpjdz09&searchHpCd=D005",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3997,7 +3997,7 @@
       "department": "내분비외과 , 로봇수술센터 , 갑상선암센터",
       "specialty_text": "갑상선암(절개, 로봇 갑상선절제술 및 측경부 림프절절제술(액와부 접근법)), 부갑상선종양(일차성, 이차성, 삼차성 부갑상선기능항진증 수술), 부신질환(복강경 후복막 부신절제술(3 port), 로봇 후복막 부신절제술(단일공 or 2 port))",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=Ti91YmZ4ZVJYVFBKOGtoY25UTk83UT09&searchHpCd=D343",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4015,7 +4015,7 @@
       "department": "심장혈관흉부외과 , 소아심장외과 , 폐식도외과 , 로봇수술센터 , 갑상선암센터 , 폐암센터",
       "specialty_text": "폐암, 흉선종, 흉강경, 로봇수술, 폐이식",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=dk1KVzE2YU8yUXZKa1NhOTJVV0lNZz09&searchHpCd=D043",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4033,7 +4033,7 @@
       "department": "비뇨의학과 , 로봇수술센터 , 비뇨기암센터 , 암병원",
       "specialty_text": "신장암, 전립선암, 로봇수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=L2xPTWJybkhWYjMrTkk0NFRrOC9sQT09&searchHpCd=D018",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4055,7 +4055,7 @@
       "department": "종양내과 , 대장암센터 , 유방암센터 , 육종ㆍ희귀암센터",
       "specialty_text": "대장암, 직장암, 항문암, 소장암(공장,회장), 골연부 육종",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=WE0rMnFsR3p2UUZ4NlIxQ1JnVUx5UT09&searchHpCd=D011",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4081,7 +4081,7 @@
       "department": "신경외과 , 암병원 , 뇌종양센터 , 육종ㆍ희귀암센터",
       "specialty_text": "뇌종양",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=RDlqbC9aMWtEN0dDU0RCSjU3bkNHUT09&searchHpCd=D031",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4099,7 +4099,7 @@
       "department": "방사선종양학과 ,소화기병센터, 암병원 , 간센터 , 간암센터 , 담도 및 췌장암센터 , 대장암센터 , 식도암센터 , 위암센터",
       "specialty_text": "식도암, 소화기암, 간암",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=MlhxL3crQ3lwd2sxOGRHYjA0cEpOUT09&searchHpCd=D016",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4121,7 +4121,7 @@
       "department": "유방외과 , 암병원 , 로봇수술센터 , 유방암클리닉 , 유방암센터",
       "specialty_text": "유방암클리닉,유방질환,로봇수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=VG5Xa3JKQzRnM3c5Tlppa0U2R0ZQdz09&searchHpCd=D342",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4139,7 +4139,7 @@
       "department": "심장혈관흉부외과 , 폐식도외과 , 로봇수술센터 , 폐암센터",
       "specialty_text": "폐암, 흉선종, 흉강경, 로봇수술, 폐이식",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=T2JVLzc3UkFUS3FQVTExYy9qeWQ5QT09&searchHpCd=D043",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4157,7 +4157,7 @@
       "department": "간이식ㆍ간담도외과 , 로봇수술센터 , 간암센터 , 대장암센터 , 암병원",
       "specialty_text": "간암, 간내 담도암 및 간질환 복강경간절제술, 로봇간절제술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=N1FleDBwMXJPWGwxTG9qL0x4eTEydz09&searchHpCd=D150",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4179,7 +4179,7 @@
       "department": "대장항문외과 , 암병원 , 로봇수술센터 , 소화기내시경센터 , 대장암센터 , 식도암센터 , 육종ㆍ희귀암센터",
       "specialty_text": "대장암,직장암,로봇수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=M29pd1NOcm1BSnJJckEzZDdtT1dZUT09&searchHpCd=D095",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4201,7 +4201,7 @@
       "department": "내분비내과 , 갑상선암센터",
       "specialty_text": "갑상선질환,갑상선암",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=SFVJOGk4Qnk0SVpUMExZR212UHV3UT09&searchHpCd=D005",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4219,7 +4219,7 @@
       "department": "종양내과 , 임상약리학과 ,소화기병센터, 암병원 , 대장암센터 , 유전체맞춤암치료센터",
       "specialty_text": "대장암,직장암",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=VnZmSUN3R0M1U3NwaStLNTlBRjBZZz09&searchHpCd=D011",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4241,7 +4241,7 @@
       "department": "영상의학과 , 유방암클리닉 , 암병원 , 유방암센터",
       "specialty_text": "유방암 조기진단클리닉",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=eDY4bE1UUmJzc3gzQ0JReDBkdkNNUT09&searchHpCd=D015",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4259,7 +4259,7 @@
       "department": "종양내과 , 간암센터 , 암병원 , 위암센터",
       "specialty_text": "위암, 간암, GIST, 소화기 육종",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=c1pNSk1QTThWYVRZVlF0MXBQUnBpQT09&searchHpCd=D011",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4285,7 +4285,7 @@
       "department": "심장혈관흉부외과 , 폐식도외과 , 암병원 , 로봇수술센터 , 식도암센터 , 폐암센터",
       "specialty_text": "폐암,식도암,흉선종,흉강경수술,로봇수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=ZytzajU0YmRobGM3eCs0aUhjd2hudz09&searchHpCd=D043",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4307,7 +4307,7 @@
       "department": "소아청소년종양혈액과 , CAR T 센터",
       "specialty_text": "소아청소년 급성림프구성 백혈병 (B세포, T세포), 재발/불응성 급성림프구성백혈병, 버킷 림프종, 미만성거대B세포림프종, 역형성 대세포 림프종, 비호지킨림프종, 호지킨 림프종, 조혈모세포(골수)이식, CAR-T 세포치료,소아암 완치자 클리닉",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=RzJwMWU4dTloMEd1SmxsSEJQZmdOdz09&searchHpCd=D024",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4337,7 +4337,7 @@
       "department": "영상의학과 , 암병원 , 뇌종양센터",
       "specialty_text": "신경두경부 영상의학, 뇌종양영상, 최신 뇌영상기법, 뇌인공지능영상",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=Y2ZmYkNTektQdXZxTVQxaXZRcG9Ddz09&searchHpCd=D015",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4355,7 +4355,7 @@
       "department": "호흡기내과 , 폐암센터",
       "specialty_text": "간질성폐질환 (폐섬유증, 유육종증, 임파관평활근종) 폐이식",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=WmZLLzJNYXR6SmFwOExKdVB6WjV3QT09&searchHpCd=D013",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4373,7 +4373,7 @@
       "department": "유방외과 , 국제진료센터 , 유방암클리닉 , 로봇수술센터 , 유방암센터",
       "specialty_text": "수술후퇴원클리닉,유방암,젊은유방암,미용적유방암,로봇수술,국제진료센터(외국인진료)",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=eGJ1bkdWQnhmTDJEaFVlcGRpK3dXUT09&searchHpCd=D342",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4391,7 +4391,7 @@
       "department": "종양내과 ,소화기병센터, 암병원 , 간센터 , 간암센터 , 위암센터",
       "specialty_text": "위암,간암,GIST,소화기육종,GIST 클리닉,암센터 GIST",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=aE1qVzBoWFR1ZDdXcUpmMUhJbkQvQT09&searchHpCd=D011",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4417,7 +4417,7 @@
       "department": "종양내과 , 암병원 , 간센터 , 간암센터 , 담도 및 췌장암센터 , 테라노스틱스센터",
       "specialty_text": "간암,담도암,췌장암,소장암(십이지장), 신경내분비종양",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=Um9tUWIzMjBZeFp0S2gzTWRIdXZ5Zz09&searchHpCd=D011",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4447,7 +4447,7 @@
       "department": "핵의학과 , 유방암클리닉 , 심장병원 ,심장병원 심장핵의학팀,심장병원 지원부문, 암병원 , 협심증·심근경색증센터 , 유방암센터",
       "specialty_text": "심장핵의학, 신장핵의학, 유방암영상진단",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=c0xwbmpkYWhVdjkyajJUR09LOUpydz09&searchHpCd=D042",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4465,7 +4465,7 @@
       "department": "간이식ㆍ간담도외과 ,소화기병센터, 장기이식센터 , 암병원 , 간센터 , 로봇수술센터 , 간암센터 , 담도 및 췌장암센터",
       "specialty_text": "간암,간이식,복강경간절제술,담석,췌담도암,간문부담도암",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=S0RBS1pQSjBCY0hpLzZTWDNuYllTdz09&searchHpCd=D150",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4487,7 +4487,7 @@
       "department": "위장관외과 , 로봇수술센터 , 식도암센터 , 암병원 , 위암센터",
       "specialty_text": "위암, 위식도역류질환수술, 위장관질환수술, 로봇수술(위장관,탈장)",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=R1R3K3NtdEdTbm83cnJ1WHg2ZFZpQT09&searchHpCd=D152",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4505,7 +4505,7 @@
       "department": "간이식ㆍ간담도외과 ,소화기병센터, 암병원 , 간센터 , 로봇수술센터 , 간암센터 , 담도 및 췌장암센터 , 대장암센터",
       "specialty_text": "간암,담도암,간이식,복강경간절제술,로봇간절제술,로봇담낭절제술,담석",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=bE8rNzJMby9sejJoMkthOVRGL2hqZz09&searchHpCd=D150",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4527,7 +4527,7 @@
       "department": "소화기내과 , 담도ㆍ췌장센터 , 소화기내시경센터 , 암병원 , 담도 및 췌장암센터",
       "specialty_text": "담도·췌장 질환,담도췌장센터 췌·담도암 클리닉(췌·담도암 의심환자),담도췌장센터 췌장암 고위험 클리닉(췌장양성종양)",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=RW5MWTFoYXJJQm93ZlVOdkM1RU1iUT09&searchHpCd=D006",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4549,7 +4549,7 @@
       "department": "종양내과 , 암병원 , 간센터 , 간암센터 , 식도암센터",
       "specialty_text": "위암,간암,식도암,GIST",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=SnNYMndmTkk1VC9FNld6YWNGa2Q2QT09&searchHpCd=D011",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4575,7 +4575,7 @@
       "department": "심장혈관흉부외과 , 폐식도외과 , 장기이식센터 , 암병원 , 폐암센터",
       "specialty_text": "폐암,기관질환,폐이식,흉부종양,비디오 흉강경수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=MzUrM2dTc0ZYVk0yOTFjMlBCYjJQQT09&searchHpCd=D043",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4593,7 +4593,7 @@
       "department": "대장항문외과 , 로봇수술센터 , 염증성장질환센터 , 대장암센터 , 암병원",
       "specialty_text": "대장암, 직장암, 복막가성점액종, 대장암 복막전이, 하이펙(HIPEC) 수술, 염증성장질환 수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=OXpZZ1RJYi95U3FHS1Y5bmNDTW5JQT09&searchHpCd=D095",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4615,7 +4615,7 @@
       "department": "종양내과 , 암병원 , 비뇨기암센터",
       "specialty_text": "비뇨기암(전립선암,신장암,방광암,고환암,부신암),비뇨기종양클리닉",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=MUl3UWNNdFRPeVkyRnJvM2hWUk1SUT09&searchHpCd=D011",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4645,7 +4645,7 @@
       "department": "대장항문외과 , 암병원 , 로봇수술센터 , 소화기내시경센터 , 대장암센터",
       "specialty_text": "대장암,직장암,복강경,로봇수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=d2dlWk43aWNEeCtCRkQ2bEovSGtNUT09&searchHpCd=D095",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4667,7 +4667,7 @@
       "department": "방사선종양학과 , 암병원 , 담도 및 췌장암센터 , 대장암센터 , 식도암센터",
       "specialty_text": "소화기암, 대장암, 췌담도암",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=QU13N3dYa3VrQ3gvWjFKVkowQjQ4UT09&searchHpCd=D016",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4689,7 +4689,7 @@
       "department": "혈액내과 , 암병원 , 혈액암 및 골수이식센터",
       "specialty_text": "급성,만성골수성백혈병, 골수형성이상증후군, 재생불량성빈혈, 골수증식성종양, 급성백혈병의심",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=cExtNmwrcStEUGpoZ2NHUEpkc0dLZz09&searchHpCd=D012",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4707,7 +4707,7 @@
       "department": "신경외과 , 소아신경외과 , 뇌종양센터",
       "specialty_text": "뇌종양,수두증,감마나이프,소아 뇌종양, 모야모야병, 두개골조기유합증, 수두증, 선천성 신경계 기형",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=ejluR0pKTmQzWndKRzF6QXA3Nms&searchHpCd=D031",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4725,7 +4725,7 @@
       "department": "소화기내과 , 소화기내시경센터 ,소화기병센터, 암병원 , 염증성장질환센터 , 대장암센터",
       "specialty_text": "대장질환(대장암),치료 대장내시경(대장진행용종 및 조기대장암), 염증성장질환 신환",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=Smk3RllUbFRuYzFrTkROYVRLNzVDdz09&searchHpCd=D006",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4743,7 +4743,7 @@
       "department": "소화기내과 , 담도ㆍ췌장센터 , 소화기내시경센터 ,소화기병센터, 암병원 , 담도 및 췌장암센터",
       "specialty_text": "담도·췌장 질환,담도췌장센터 췌·담도암 클리닉(췌·담도암 의심환자),담도췌장센터 췌장암 고위험 클리닉(췌장양성종양)",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=YnJtQm9BMFdHUi9EWWtkbTZLUlhWUT09&searchHpCd=D006",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4765,7 +4765,7 @@
       "department": "종양내과 , 암병원 , 갑상선암센터 , 두경부암센터 , 암환자라이프케어센터 , 완화의료센터",
       "specialty_text": "두경부암",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=bXFWMnY1Qk9FZVcrYXBxMHZiTks4Zz09&searchHpCd=D011",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4783,7 +4783,7 @@
       "department": "비뇨의학과 , 로봇수술센터 , 비뇨기암센터 , 암병원 , 테라노스틱스센터",
       "specialty_text": "신장암, 전립선암, 로봇수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=M3ZZMjV2QWFtT0tLeUJVQmlXeWVGdz09&searchHpCd=D018",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4805,7 +4805,7 @@
       "department": "간담도췌외과 , 로봇수술센터 , 담도 및 췌장암센터 , 암병원",
       "specialty_text": "간,담도,담낭,췌장암,십이지장암,로봇 및 복강경수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=YnRCMFRpT0hyYVVPYnVFaGl6RlIzdz09&searchHpCd=D149",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4823,7 +4823,7 @@
       "department": "유방외과 , 유방암클리닉 , 암병원 , 로봇수술센터 , 유방암센터",
       "specialty_text": "유방암,미용적 유방암수술,로봇수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=TStnZnRvcWU4VHVMV0Jkc3p0bEU3Zz09&searchHpCd=D342",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4841,7 +4841,7 @@
       "department": "간담도췌외과 , 암병원 , 로봇수술센터 , 담도 및 췌장암센터",
       "specialty_text": "복강경 및 로봇수술,췌장 담도질환,팽대부주위암(십이지장)",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=THY0LzJ1ckNVd3RMTGIxY0x3RGliQT09&searchHpCd=D149",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4859,7 +4859,7 @@
       "department": "간이식ㆍ간담도외과 ,소화기병센터, 장기이식센터 , 암병원 , 간센터 , 간암센터 , 담도 및 췌장암센터 , 대장암센터",
       "specialty_text": "간암 및 간종양, 간이식, 담도암, ABO혈액형부적합 간이식, 복강경기증자 간절제술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=UnF6SVRUL2lJOXJqZmZrbUYvTnBNQT09&searchHpCd=D150",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4881,7 +4881,7 @@
       "department": "방사선종양학과 , 암병원 , 유전체맞춤암치료센터 , 육종ㆍ희귀암센터 , 폐암센터 , 피부암센터 , 혈액암 및 골수이식센터",
       "specialty_text": "두경부암, 폐암, 육종, 피부암, 혈액암, 양성종양",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=cGs3ZzFtTGs4bURaMmJtMkVCaGtMQT09&searchHpCd=D016",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4907,7 +4907,7 @@
       "department": "비뇨의학과 , 로봇수술트레이닝센터 , 암병원 , 로봇수술센터 , 비뇨기암센터",
       "specialty_text": "신장암,신장암 의증, 로봇수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=YTBlQUMrbU9CUDVtem5PQzJRMElVQT09&searchHpCd=D018",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4925,7 +4925,7 @@
       "department": "소화기내과 , 국제진료센터 , 담도ㆍ췌장센터 , 소화기내시경센터 , 담도 및 췌장암센터 , 암병원",
       "specialty_text": "담도·췌장질환,담도췌장센터 췌·담도암 클리닉(췌·담도암 의심환자),담도췌장센터 췌장암 고위험 클리닉(췌장양성종양)",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=NE4wM1F0M3hYa3JjVlBXMDR4N24rUT09&searchHpCd=D006",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4947,7 +4947,7 @@
       "department": "방사선종양학과 , 갑상선암센터 , 두경부암센터 , 암병원 , 폐암센터",
       "specialty_text": "폐암, 두경부암, 정위방사선치료, 전이성종양",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=alprYkY5WTl1T3lXWThxNm1vMDJUQT09&searchHpCd=D016",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4969,7 +4969,7 @@
       "department": "영상의학과 , 유방암클리닉 , 암병원 , 유방암센터",
       "specialty_text": "유방암 조기진단클리닉",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=eWFGd3JuZ3hlUnJMeVk5dFdnQVh4Zz09&searchHpCd=D015",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -4987,7 +4987,7 @@
       "department": "소화기내과 , 소화기내시경센터 , 간센터 , 간암센터",
       "specialty_text": "간암",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=OXhLeU00UGVmeDQyVkJ3Y2lpQVBDQT09&searchHpCd=D006",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5005,7 +5005,7 @@
       "department": "치과 , 구강악안면외과 , 임플란트센터 , 중증외상팀 , 육종ㆍ희귀암센터",
       "specialty_text": "구강암,미세재건수술,임플란트",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=ZjUyWVVzQ091WUJzUExPWEZBNXp1Zz09&searchHpCd=D040",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5023,7 +5023,7 @@
       "department": "방사선종양학과 , 유방암클리닉 , 암병원 , 유방암센터",
       "specialty_text": "유방암, 소아암",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=SnArNFdwSno1OHJFeWU5aWliVUwyQT09&searchHpCd=D016",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5045,7 +5045,7 @@
       "department": "종양내과 , 유방암클리닉 , 암환자라이프케어센터 , 유방암센터 , 유전체맞춤암치료센터 , 육종ㆍ희귀암센터",
       "specialty_text": "유방암,골연부조직육종",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=Qlp1NVh6VmFhSzdWUFU4cS9PMm5jQT09&searchHpCd=D011",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5067,7 +5067,7 @@
       "department": "간이식ㆍ간담도외과 ,소화기병센터, 장기이식센터 , 암병원 , 간센터 , 로봇수술센터 , 간암센터 , 담도 및 췌장암센터",
       "specialty_text": "간암,담도암,간이식,복강경간절제술,로봇간절제술,로봇 담낭절제술,담석,췌장암,간외담도암",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=MTVhZVhGRkFma21DUXFJR24vOE5RZz09&searchHpCd=D150",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5093,7 +5093,7 @@
       "department": "소화기내과 , 소화기내시경센터 , 암병원 , 염증성장질환센터 , 대장암센터",
       "specialty_text": "조기 대장암/유암종 내시경치료,대장암,기타 소장·대장 질환",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=cTBhNmJWWjZFTzBLb0RrdHY5MDk2QT09&searchHpCd=D006",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5111,7 +5111,7 @@
       "department": "정형외과 , 육종ㆍ희귀암센터",
       "specialty_text": "육종, 근골격계 종양, 골반뼈 종양 (척추뼈 종양 제외), 전이성 골종양",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=QzZxeTdBb3BLNnR5UnZ3azVmN2ZMQT09&searchHpCd=D038",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5129,7 +5129,7 @@
       "department": "소화기내과 , 담도ㆍ췌장센터 , 소화기내시경센터 , 담도 및 췌장암센터 , 암병원",
       "specialty_text": "담도·췌장질환,담도췌장센터 췌·담도암 클리닉(췌·담도암 의심환자),담도췌장센터 췌장암 고위험 클리닉(췌장양성종양)",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=VkVENG9TcFVldmwxMXRxSUdFc01TUT09&searchHpCd=D006",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5151,7 +5151,7 @@
       "department": "대장항문외과 , 로봇수술센터 , 소화기내시경센터 , 대장암센터 , 암병원",
       "specialty_text": "대장암,직장암,복강경,로봇수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=dUJqUHNUbnpxNTlMVEg1RUh2YURmQT09&searchHpCd=D095",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5173,7 +5173,7 @@
       "department": "피부과 , 암병원 , 암환자라이프케어센터 , 피부암센터",
       "specialty_text": "피부암(기저세포암, 편평상피암), 흑색종, 아토피피부염, 탈모",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=QzRoVkhZMHZnRnUvekdnWHBab05sUT09&searchHpCd=D041",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5191,7 +5191,7 @@
       "department": "비뇨의학과 , 로봇수술센터 , 장기이식센터 , 비뇨기암센터 , 육종ㆍ희귀암센터 , 테라노스틱스센터",
       "specialty_text": "전립선암,신장암,방광암,신우요관암,로봇수술,복강경수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=c2t5cll5MXBWTWJHSVgxdWhMZStXUT09&searchHpCd=D018",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5217,7 +5217,7 @@
       "department": "위장관외과 , 암병원 , 로봇수술센터 , 비만대사통합진료센터 , 위암센터",
       "specialty_text": "위암, 위·식도역류질환수술, 비만대사수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=RjZ2RXNRUnRlSlBOYUhJUXk0Tmk0dz09&searchHpCd=D152",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5235,7 +5235,7 @@
       "department": "종양내과 , 간센터 , 간암센터 , 담도 및 췌장암센터 , 육종ㆍ희귀암센터 , 테라노스틱스센터",
       "specialty_text": "간암,담도암,췌장암,소장암(십이지장), 신경내분비종양",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=MG9BTFpPZXNyUlZ6K0lleWl2TzBnZz09&searchHpCd=D011",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5265,7 +5265,7 @@
       "department": "유방외과 , 로봇수술센터 , 암병원 , 유방암센터",
       "specialty_text": "유방암클리닉,로봇수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=M1lCekZ3ejZFUDBaS3l4N09EaSt0QT09&searchHpCd=D342",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5283,7 +5283,7 @@
       "department": "위장관외과 ,소화기병센터, 암병원 , 위암센터",
       "specialty_text": "위암,위장관외과질환수술(개복수술)",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=VU5mRzVjM3J3eWpXeEZZL0pzamRVQT09&searchHpCd=D152",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5301,7 +5301,7 @@
       "department": "종양내과 , 암병원 , CAR T 센터 , 혈액암 및 골수이식센터",
       "specialty_text": "림프종,다발골수종,만성림프구백혈병. 아밀로이드증",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=MFFIUDlybWZPMHZiaTI1TEZxazhsQT09&searchHpCd=D011",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5327,7 +5327,7 @@
       "department": "방사선종양학과 , 암병원 , 간센터 , 간암센터 , 뇌종양센터 , 담도 및 췌장암센터",
       "specialty_text": "간암, 상부위장관종양, 췌담도암, 뇌종양",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=NXlZbkZNR05VUHEvRitheE0rb2Rndz09&searchHpCd=D016",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5353,7 +5353,7 @@
       "department": "종양내과 , 암병원 , 뇌종양센터 , 유전체맞춤암치료센터 , 육종ㆍ희귀암센터 , 테라노스틱스센터 , 폐암센터",
       "specialty_text": "폐암,흉선종양,신경계암",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=RHJaTkcyNG50MElwbXFOUEkwR21PUT09&searchHpCd=D011",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5371,7 +5371,7 @@
       "department": "간이식ㆍ간담도외과 , 로봇수술센터 , 간암센터 , 담도 및 췌장암센터 , 대장암센터 , 암병원",
       "specialty_text": "간암,간이식 수혜자·기증자 사전검사,간이식 수술 후 환자, 간이식전 환자 관리,담낭절제술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=OXNUUXN0WlI5cnR2cmEyOVNHb3J0QT09&searchHpCd=D150",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5389,7 +5389,7 @@
       "department": "대장항문외과 , 소화기내시경센터 , 암병원 , 로봇수술센터 , 염증성장질환센터 , 대장암센터",
       "specialty_text": "대장암,직장암,염증성 장질환,로봇수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=YmV1TjVTVGNra21tRGV5SkRnbjZaZz09&searchHpCd=D095",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5411,7 +5411,7 @@
       "department": "심장혈관흉부외과 , 폐식도외과 , 로봇수술센터 , 식도암센터 , 암병원 , 폐암센터",
       "specialty_text": "폐암, 흉선종, 식도암, 비디오 흉강경수술, 다빈치 로봇수술 (단일공)",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=allyajZEYmdWWVhKL0xKVkphT1Jrdz09&searchHpCd=D043",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5433,7 +5433,7 @@
       "department": "종양내과 , 암병원 , 유전체맞춤암치료센터 , 폐암센터 , 피부암센터",
       "specialty_text": "폐암,흉선종양,피부암",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=Yll4cWFDeW03eHNnYXJDclR6eFI3dz09&searchHpCd=D011",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5451,7 +5451,7 @@
       "department": "핵의학과 , 갑상선암센터 , 두경부암센터 , 암병원 , 테라노스틱스센터 , 폐암센터",
       "specialty_text": "방사성핵종 치료, 종양핵의학, 전이성 전립선암 방사성 동위원소 치료",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=RmtxL1o3SW04aHMxU2JSWnRwUVNyUT09&searchHpCd=D042",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5469,7 +5469,7 @@
       "department": "피부과 , 암병원 , 피부암센터",
       "specialty_text": "균상식육종 포함 림프종, 피부조직검사, 흑색종, 소아피부질환, 아토피 피부염, 점(모반), 여드름",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=cmNYeEZLcG9PaFowa0ptOURrbGwydz09&searchHpCd=D041",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5495,7 +5495,7 @@
       "department": "방사선종양학과 , 암병원 , CAR T 센터 , 갑상선암센터 , 두경부암센터 , 혈액암 및 골수이식센터",
       "specialty_text": "두경부암, 림프종, 혈액암,방사선치료 후유증 클리닉",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=eHRTajlPQkIxWDdDZ1V3VE9VTnNmQT09&searchHpCd=D016",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5517,7 +5517,7 @@
       "department": "유방외과 , 로봇수술센터 , 유방암클리닉 , 암병원 , 유방암센터",
       "specialty_text": "수술후퇴원클리닉,유방암클리닉(유방암, 유방암미용수술, 로봇유방수술)",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=YzRsc1lLbjliOWh2VzV6dkVwcjNxQT09&searchHpCd=D342",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5535,7 +5535,7 @@
       "department": "호흡기내과 , 천식ㆍCOPD센터 , 폐암센터",
       "specialty_text": "COPD(만성폐쇄성폐질환), 천식, 폐암, 수면무호흡증(수면무호흡클리닉), 간질성폐질환,호흡곤란",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=U2gyZWRzUjR3Tk1BbVIzUWxuRHFzQT09&searchHpCd=D013",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5553,7 +5553,7 @@
       "department": "재활의학과 , 심장내과 , 소아재활의학과 , 뇌졸중센터 , 심장병예방·재활센터 , 폐암센터",
       "specialty_text": "뇌신경재활, 말초신경손상, 뇌종양재활, 심장재활, 소아 재활",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=N3JLVkY0dHE5cERvdWViWHZOSE9IQT09&searchHpCd=D036",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5571,7 +5571,7 @@
       "department": "유방외과 , 로봇수술센터 , 암병원 , 유방암센터",
       "specialty_text": "기타 유방 및 액와 수술 클리닉,유방암클리닉,로봇수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=Szh3ODdyb0JvWTBYVVc1eXNpQm5UUT09&searchHpCd=D342",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5589,7 +5589,7 @@
       "department": "피부과 , 육종ㆍ희귀암센터 , 피부암센터",
       "specialty_text": "피부암(흑색종,기저세포암 등), 피부림프종, 피부조직검사, 항암제피부부작용",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=YVNMRzkzZXF4eDRKS1A2aFVyNVliUT09&searchHpCd=D041",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5611,7 +5611,7 @@
       "department": "이비인후과 , 로봇수술센터 , 소아호흡기ㆍ알레르기센터 , 갑상선암센터 , 두경부암센터 , 식도암센터",
       "specialty_text": "갑상선암, 로봇수술, 구강암, 후두암, 인두암, 침샘암, 기도질환",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=b2NaMGgrQlhqV3ZSN0UyZlJmM2hWdz09&searchHpCd=D035",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5633,7 +5633,7 @@
       "department": "위장관외과 , 암병원 , 로봇수술센터 , 식도암센터 , 위암센터",
       "specialty_text": "위암,복강경/로봇수술,비만대사수술, 위·식도역류질환수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=V1ZBTTY1cXppRjVqRGZncU96dFdRQT09&searchHpCd=D152",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5651,7 +5651,7 @@
       "department": "종양내과 , 암병원 , 폐암센터",
       "specialty_text": "폐암, 흉선종양",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=dVRVU2VOWlR3NHMyQ0FyRXFmRnhuUT09&searchHpCd=D011",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5669,7 +5669,7 @@
       "department": "간담도췌외과 , 암병원 , 간센터 , 로봇수술센터 , 간암센터 , 담도 및 췌장암센터",
       "specialty_text": "담도 및 췌장암, 간암, 로봇수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=a05keXdwKzRPSDNGQlY0dnJHakZGdz09&searchHpCd=D149",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5691,7 +5691,7 @@
       "department": "영상의학과 , 암병원 , 갑상선암센터 , 두경부암센터",
       "specialty_text": "두경부중재클리닉(하마종, 림프관종을 비롯한 경부낭종, 갑상선), 두경부영상의학, 두경부암의 CT 및 MRI, 고해상도뇌신경MRI",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=bWR3Vy9oc1RodzcwYTZUaS93Y3BQQT09&searchHpCd=D015",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5709,7 +5709,7 @@
       "department": "혈액내과 , 암병원 , CAR T 센터 , 유전체맞춤암치료센터 , 혈액암 및 골수이식센터",
       "specialty_text": "골수이식, 림프구성백혈병, 림프종, 다발골수종",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=NTAwZlI3NGMrQ05QMUVkOEJydkYzdz09&searchHpCd=D012",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5735,7 +5735,7 @@
       "department": "혈액내과 , 암병원 , 혈액암 및 골수이식센터",
       "specialty_text": "골수이식, 골수형성이상증후군, 급성골수성백혈병",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=VWFpbG5nSVlXTmdwT202SGpZd2lzQT09&searchHpCd=D012",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5753,7 +5753,7 @@
       "department": "대장항문외과 , 암병원 , 로봇수술센터 , 소화기내시경센터 , 염증성장질환센터 , 대장암센터 , 식도암센터",
       "specialty_text": "대장암,직장암,염증성장질환수술,로봇수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=SWoybm5wYUVFMXNDTUZ1NFJ4eEsydz09&searchHpCd=D095",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5775,7 +5775,7 @@
       "department": "정형외과 , 암병원 , 육종ㆍ희귀암센터 , 피부암센터",
       "specialty_text": "근골격계종양,육종,뼈암 (뼈전이·척추뼈 종양 불가)",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=ZkZOTWRjc0JYUlpsNnNPVVp6TlFJZz09&searchHpCd=D038",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5793,7 +5793,7 @@
       "department": "유방외과 , 유방암클리닉 , 암병원 , 유방암센터",
       "specialty_text": "수술후퇴원클리닉,유방암,유방암클리닉",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=U0JFNEhyTVprWWhXNlRTSmJXMzZnQT09&searchHpCd=D342",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5811,7 +5811,7 @@
       "department": "비뇨의학과 , 로봇수술센터 , 비뇨기암센터 , 암병원 , 테라노스틱스센터",
       "specialty_text": "전립선암,신장암,방광암,신우암,로봇수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=VFpPSEczTHF4bzJMcXVmaDM3ZmFHUT09&searchHpCd=D018",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5837,7 +5837,7 @@
       "department": "대장항문외과 , 로봇수술트레이닝센터 , 소화기내시경센터 , 암병원 , 로봇수술센터 , 대장암센터",
       "specialty_text": "대장암, 직장암, 로봇수술, 복강경수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=VjRDSzNPbnEzR1RNNWIyWlVMc05YZz09&searchHpCd=D095",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5859,7 +5859,7 @@
       "department": "종양내과 ,소화기병센터, 암병원 , 담도 및 췌장암센터",
       "specialty_text": "췌장암, 담도암, 소장암(십이지장)",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=WG1GU3c0Z0JYNTUrMmdJM3VGbHNSQT09&searchHpCd=D011",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5881,7 +5881,7 @@
       "department": "종양내과 , 유방암클리닉 , 암병원 , 난소·자궁암센터 , 유방암센터",
       "specialty_text": "유방암,부인암",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=UVcrSHdBYlhoanIrWU9TSjBrMlYxZz09&searchHpCd=D011",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5899,7 +5899,7 @@
       "department": "간이식ㆍ간담도외과 ,소화기병센터, 장기이식센터 , 암병원 , 간센터 , 로봇수술센터 , 간암센터 , 담도 및 췌장암센터 , 대장암센터",
       "specialty_text": "간암,담도암,간이식,복강경간절제술,담석,로봇담낭절제술,간·담도·담낭질환",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=RlNaMG4yTm9TZXJlT2lHRWo0UHRtdz09&searchHpCd=D150",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5921,7 +5921,7 @@
       "department": "이비인후과 , 로봇수술센터 , 갑상선암센터 , 두경부암센터 , 식도암센터 , 암병원 , 피부암센터",
       "specialty_text": "갑상선암(로봇수술),두경부암(로봇수술),타액선(침샘)종양,두경부종양(구강암,편도선암,인두암,후두암)",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=K2F5c1hMeEk5dUFHU1JxRjh6dU5zUT09&searchHpCd=D035",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5947,7 +5947,7 @@
       "department": "비뇨의학과 , 로봇수술트레이닝센터 , 장기이식센터 , 암병원 , 로봇수술센터 , 전립선센터 , 비뇨기암센터 , 테라노스틱스센터",
       "specialty_text": "전립선센터(전립선암확진(로봇수술),전립선암의심),전립선암, 신장암, 방광암, 로봇수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=UnlJSWdrZVd2TFVsdjZrQUUwMGU2dz09&searchHpCd=D018",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5973,7 +5973,7 @@
       "department": "유방외과 , 로봇수술센터 , 유방암센터",
       "specialty_text": "유방암, 유방암 수술, 로봇유방수술, 유방암 미용수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=eEh4bDd3dlZ1ZWNwVGowdC9rc2RTUT09&searchHpCd=D342",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -5991,7 +5991,7 @@
       "department": "종양내과 , 담도 및 췌장암센터 , 암병원 , 유방암센터",
       "specialty_text": "유방암",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=RUJxRHJyQjNWRkVtSE5OaVhFVHE3dz09&searchHpCd=D011",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6009,7 +6009,7 @@
       "department": "방사선종양학과 , 간암센터 , 담도 및 췌장암센터 , 암병원 , 유방암센터",
       "specialty_text": "간암, 유방암, 소화기암",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=MmhEOGZld0FYUnR6UVhBMDBpNU8yZz09&searchHpCd=D016",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6031,7 +6031,7 @@
       "department": "종양내과 , 담도 및 췌장암센터 , 암병원 , 유방암센터",
       "specialty_text": "유방암,췌담도암",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=UEU4RytvR1dKaFlWeHNLZWphVlNJUT09&searchHpCd=D011",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6053,7 +6053,7 @@
       "department": "소화기내과 , 담도ㆍ췌장센터 , 소화기내시경센터 , 담도 및 췌장암센터 , 암병원",
       "specialty_text": "담도·췌장 질환,담도췌장센터 췌·담도암 클리닉(췌·담도암 의심환자),담도췌장센터 췌장암 고위험 클리닉(췌장양성종양)",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=U1JHYUx1QjRGYUZCdWtHSHZ4WG01QT09&searchHpCd=D006",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6075,7 +6075,7 @@
       "department": "신경외과 , 중환자실 , 암병원 , 뇌종양센터",
       "specialty_text": "뇌종양(뇌수막종,신경초종,뇌하수체종양,기타 뇌종양,악성뇌종양,뇌전이암),두개저종양,감마나이프,사이버나이프",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=TWg3Nnk3a3BwZEVkZk9wdXBuNkpodz09&searchHpCd=D031",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6093,7 +6093,7 @@
       "department": "산부인과 , 로봇수술센터 , 난소·자궁암센터 , 암병원",
       "specialty_text": "부인암 확진 및 의증(난소암,자궁경부암,자궁내막암,유전성부인암) / 경계성 종양,제자리암종 확진 및 의증/ 양성종양 및 질환(자궁근종, 자궁내막증, 자궁내막증식증)/부인암 가임력 보존치료/ 복강경 수술, 로봇 수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=Zm1YaFNHRVFkNmVYZE9DMGtYTzFZUT09&searchHpCd=D019",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6119,7 +6119,7 @@
       "department": "종양내과 , CAR T 센터 , 뇌종양센터 , 암병원 , 혈액암 및 골수이식센터",
       "specialty_text": "림프종,다발골수종,만성림프구백혈병,아밀로이드증, 신경계암",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=eExtRXRrbnIzM3RUblZpUHd4d1RQQT09&searchHpCd=D011",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6145,7 +6145,7 @@
       "department": "호흡기내과 , 암병원 , 폐암센터",
       "specialty_text": "호흡기질환,폐암,치료내시경",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=ZVpPWWdobngvNGxqT05DbCtMU2x1QT09&searchHpCd=D013",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6163,7 +6163,7 @@
       "department": "재활의학과 , 소아재활의학과 , 뇌졸중센터 , 파킨슨ㆍ알츠하이머센터 , 뇌종양센터 , 유방암센터",
       "specialty_text": "뇌신경재활, 뇌종양재활, 삼킴장애, 소아재활의학과, 암재활",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=SVZCQzNud1hIb1ZzSWtwa2J2c1ZCQT09&searchHpCd=D036",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6181,7 +6181,7 @@
       "department": "산부인과 , 생식의학 및 난임클리닉 , 암병원 , 유방암센터",
       "specialty_text": "여성불임,골반장기탈출증,방광탈출증,습관성유산,월경장애,갱년기 및 골다공증,요실금,유방암환자가임력보존",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=dE1XbWVHeU9YdVRkM3hjVUJWTCsxZz09&searchHpCd=D019",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6199,7 +6199,7 @@
       "department": "심장혈관흉부외과 , 폐식도외과 , 소아호흡기ㆍ알레르기센터 , 육종ㆍ희귀암센터 , 폐암센터",
       "specialty_text": "폐암,비디오흉강경수술(폐암,흉선종), 폐이식",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=MHYyWGJsaG04eFlOZjhaMlk4Niszdz09&searchHpCd=D043",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6217,7 +6217,7 @@
       "department": "이비인후과 , 암병원 , 갑상선암센터 , 뇌종양센터 , 두경부암센터",
       "specialty_text": "갑상선암, 구강암, 후두암, 인두암, 침샘암",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=enNhcjlOc1N0OTMwK2pneXFGTnBqQT09&searchHpCd=D035",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6239,7 +6239,7 @@
       "department": "소화기내과 , 소화기내시경센터 , 간암센터 , 암병원",
       "specialty_text": "간암,지방간염 클리닉",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=dm9NZEw3ZTJrK0RBbndqOWNBdnFVZz09&searchHpCd=D006",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6257,7 +6257,7 @@
       "department": "혈액내과 , 암병원 , 혈액암 및 골수이식센터",
       "specialty_text": "급성,만성골수성백혈병, 골수형성이상증후군, 재생불량성빈혈, 골수증식성종양, 급성백혈병의심",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=d29pMWIvYmR5ZnFnZzBLTDhhbEx2UT09&searchHpCd=D012",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6275,7 +6275,7 @@
       "department": "혈액내과 , 암병원 , 혈액암 및 골수이식센터",
       "specialty_text": "급성·만성골수성백혈병, 골수형성이상증후군, 재생불량성빈혈, 골수증식성종양, 급성백혈병의심,유전성 혈액암 클리닉",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=SmJGMHBpSUFRT1hqNkVVRTUxdDJxZz09&searchHpCd=D012",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6293,7 +6293,7 @@
       "department": "호흡기내과 , 종양내과 , 암병원 , 폐암센터",
       "specialty_text": "폐암,치료내시경,폐암, 흉선종양",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=cFFreCtGdmhYRmZwWTA0di9pWVFSQT09&searchHpCd=D013",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6311,7 +6311,7 @@
       "department": "간이식ㆍ간담도외과 ,소화기병센터, 장기이식센터 , 암병원 , 간센터 , 로봇수술센터 , 간암센터 , 담도 및 췌장암센터 , 대장암센터",
       "specialty_text": "간암,담도암,간이식,복강경간절제술,간이식기증자사전검사",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=VjhES0JUNDVCMUNScnVVSFJ4dTVFUT09&searchHpCd=D150",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6333,7 +6333,7 @@
       "department": "소화기내과 , 담도ㆍ췌장센터 , 소화기내시경센터 , 담도 및 췌장암센터 , 암병원",
       "specialty_text": "담도,췌장질환,담도췌장센터 췌·담도암 클리닉(췌·담도암 의심환자),담도췌장센터 췌장암 고위험 클리닉(췌장양성종양)",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=Z3RHV0RkMHBzd2F1bjRKZzV6bkxEUT09&searchHpCd=D006",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6355,7 +6355,7 @@
       "department": "혈액내과 , CAR T 센터 , 암병원 , 혈액암 및 골수이식센터",
       "specialty_text": "림프구성백혈병, 림프종, 다발골수종,혈구탐식성림프조직구증,아밀로이드증,단클론감마글로불린혈증,급성백혈병의심",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=dDVyaGZyNm1NSWNlUm15VVFFTUwyUT09&searchHpCd=D012",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6381,7 +6381,7 @@
       "department": "종양내과 , 암병원 , CAR T 센터 , 위암센터 , 혈액암 및 골수이식센터",
       "specialty_text": "위암, GIST, 림프종, 다발 골수종, 만성림프구백혈병, 아밀로이드증,GIST 클리닉",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=cFcvZEJsdFZoeWtLdmNOMEhSVDNaZz09&searchHpCd=D011",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6411,7 +6411,7 @@
       "department": "간담도췌외과 , 로봇수술센터 , 간암센터 , 담도 및 췌장암센터 , 대장암센터 , 암병원",
       "specialty_text": "일차성 간암, 전이성 간암, 담도암, 담낭암, 담낭/담도의 양성질환 수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=L1A0a1JZVFZQODJEWGFlYzJGZlZFQT09&searchHpCd=D149",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6437,7 +6437,7 @@
       "department": "비뇨의학과 , 비뇨기암센터",
       "specialty_text": "방광암, 요관암, 신우암",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=RnVqT0lSUzFDd1ZkbVZVN2diSnBWUT09&searchHpCd=D018",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6455,7 +6455,7 @@
       "department": "소화기내과 , 소화기내시경센터 , 대장암센터 , 암병원",
       "specialty_text": "대장 용종 클리닉,대장 용종, 조기 대장암, 치료 대장 내시경, 유전성 대장 용종 증후군, 다발성 대장용종",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=cGJMUHdrT0pCeENCZTl2S0RYb3ZJQT09&searchHpCd=D006",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6473,7 +6473,7 @@
       "department": "종양내과 , 암병원 , 대장암센터 , 유전체맞춤암치료센터",
       "specialty_text": "대장암, 직장암, 항문암, 소장암(공장,회장), 악성흑색종",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=bGQ1ckFWUURjSzA4UXdQRjBxSGU2Zz09&searchHpCd=D011",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6499,7 +6499,7 @@
       "department": "비뇨의학과 , 로봇수술트레이닝센터 , 전립선센터 , 암병원 , 로봇수술센터 , 비뇨기암센터 , 테라노스틱스센터",
       "specialty_text": "전립선암",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=K0dnY0ROb2RuaS8vNm1QUzZGeFM2UT09&searchHpCd=D018",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6517,7 +6517,7 @@
       "department": "신경외과 , 뇌종양센터 , 암병원",
       "specialty_text": "뇌종양,두개저종양,해면혈관종,내시경수술",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=akRPODRramVQeVlWZWZkSXNWcEFRQT09&searchHpCd=D031",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6535,7 +6535,7 @@
       "department": "간이식ㆍ간담도외과 ,소화기병센터, 장기이식센터 , 암병원 , 간센터 , 간암센터 , 담도 및 췌장암센터",
       "specialty_text": "간암,간이식,간질환,간문부담관암,담낭암,담도질환",
       "profile_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=anFtOFo1eWlsb21QTDB2K21USVZpZz09&searchHpCd=D150",
-      "verified_at": "2026-10-10T07:43:58+00:00",
+      "verified_at": "2026-10-10T22:08:20+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
