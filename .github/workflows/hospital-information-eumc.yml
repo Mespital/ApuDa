@@ -1,0 +1,62 @@
+name: Hospital Information Ewha Mokdong official specialists
+on:
+  schedule:
+    - cron: '30 21 * * *' # daily 06:30 KST
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'public-site/hospital-information/scripts/collect_eumc.py'
+      - '.github/workflows/hospital-information-eumc.yml'
+permissions:
+  contents: write
+concurrency:
+  group: apuda-hospital-data-sync
+  cancel-in-progress: false
+jobs:
+  official-directory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install requests beautifulsoup4
+      - name: Verify all department staff directories and medical profile evidence
+        run: |
+          set -euo pipefail
+          python public-site/hospital-information/scripts/collect_eumc.py \
+            --output public-site/hospital-information/data/eumc-verified.json
+          python public-site/hospital-information/scripts/merge_verified.py
+      - name: Require independently linked profiles and official clinical specialties
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('public-site/hospital-information/data')
+          d=json.loads((p/'eumc-verified.json').read_text(encoding='utf-8'))
+          m=json.loads((p/'verified-specialists.json').read_text(encoding='utf-8'))
+          assert len(d['coverage'])>=15, 'Incomplete official department scan'
+          assert d['count']==len(d['results'])>=15, 'Too few linked clinicians'
+          for x in d['results']:
+              assert x['doctor_name'] and x['cancers'] and x['status']=='ACTIVE' and x['specialty_text']
+              assert x['profile_url'].startswith('https://mokdong.eumc.ac.kr/doctor/basicInfo.do?')
+              assert x['source_url'].startswith('https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?')
+          assert m['count']>=d['count']
+          print('EUMC_OFFICIAL',d['count'],'ALL_HOSPITALS',m['count'])
+          PY
+      - name: Commit official evidence via GitHub and auto-publish Netlify
+        run: |
+          set -euo pipefail
+          git config user.name apuda-hospital-bot
+          git config user.email apuda-hospital-bot@users.noreply.github.com
+          git add public-site/hospital-information/data/eumc-verified.json \
+                  public-site/hospital-information/data/verified-specialists.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'data(hospital): sync Ewha Mokdong cancer physicians'
+            git pull --rebase -X theirs origin main
+            git push origin main
+          fi
