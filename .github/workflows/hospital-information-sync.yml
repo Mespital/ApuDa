@@ -52,7 +52,7 @@ jobs:
           opts=(-i "$tmp/key" -o BatchMode=yes -o StrictHostKeyChecking=yes -o "UserKnownHostsFile=$tmp/known_hosts")
           target="$VPS_USER@$VPS_HOST"
           scp "${opts[@]}" public-site/hospital-information/scripts/export_verified.py "$target:/tmp/apuda-export-verified.py"
-          ssh "${opts[@]}" "$target" 'set -e; chmod 644 /tmp/apuda-export-verified.py; if sudo -n -u apuda test -r /var/lib/apuda-cancer-matcher/apuda_specialists.db 2>/dev/null; then sudo -n -u apuda python3 /tmp/apuda-export-verified.py; elif test -w /var/lib/apuda-cancer-matcher/apuda_specialists.db; then python3 /tmp/apuda-export-verified.py; else echo "No approved read access for SQLite export" >&2; exit 1; fi' > "$tmp/snapshot.json"
+          ssh "${opts[@]}" "$target" 'set -e; chmod 600 /tmp/apuda-export-verified.py; test -r /var/lib/apuda-cancer-matcher/apuda_specialists.db || { echo "ApuDa DB not readable" >&2; exit 1; }; python3 /tmp/apuda-export-verified.py' > "$tmp/snapshot.json"
           python3 - "$tmp/snapshot.json" <<'PY'
           import json,sys
           p=json.load(open(sys.argv[1],encoding="utf-8"))
