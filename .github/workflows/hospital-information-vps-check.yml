@@ -1,0 +1,55 @@
+name: Hospital Information VPS access diagnostic
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/hospital-information-vps-check.yml"
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    environment: apuda-ai-vps
+    timeout-minutes: 6
+    steps:
+      - name: Test existing VPS connections without modifying databases
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+          FUTURE_VPS_HOST: ${{ secrets.FUTURE_VPS_HOST }}
+          FUTURE_VPS_USER: ${{ secrets.FUTURE_VPS_USER }}
+          FUTURE_VPS_SSH_KEY: ${{ secrets.FUTURE_VPS_SSH_KEY }}
+          VPS_KNOWN_HOSTS: ${{ secrets.VPS_KNOWN_HOSTS }}
+          FUTURE_VPS_KNOWN_HOSTS: ${{ secrets.FUTURE_VPS_KNOWN_HOSTS }}
+        run: |
+          set -euo pipefail
+          temp=$(mktemp -d)
+          trap 'rm -rf "$temp"' EXIT
+          for item in PRIMARY FUTURE; do
+            case "$item" in
+              PRIMARY) host="$VPS_HOST"; user="$VPS_USER"; key="$VPS_SSH_KEY"; known="$VPS_KNOWN_HOSTS";;
+              FUTURE) host="${FUTURE_VPS_HOST:-$VPS_HOST}"; user="${FUTURE_VPS_USER:-$VPS_USER}"; key="${FUTURE_VPS_SSH_KEY:-$VPS_SSH_KEY}"; known="${FUTURE_VPS_KNOWN_HOSTS:-$VPS_KNOWN_HOSTS}";;
+            esac
+            echo "===== $item ====="
+            if [ -z "$host" ] || [ -z "$user" ] || [ -z "$key" ]; then
+              echo "$item credentials=missing";continue
+            fi
+            printf '%s\n' "$key" > "$temp/key"
+            chmod 600 "$temp/key"
+            if [ -n "$known" ]; then
+              printf '%s\n' "$known" > "$temp/known"
+            else
+              ssh-keyscan -T 8 -H "$host" > "$temp/known" 2>/dev/null || true
+            fi
+            if [ ! -s "$temp/known" ]; then echo "$item known_hosts=unavailable";continue;fi
+            if ! ssh -i "$temp/key" -o BatchMode=yes -o StrictHostKeyChecking=yes -o "UserKnownHostsFile=$temp/known" -o ConnectTimeout=10 "$user@$host" '
+              if test -d /opt/apuda-cancer-matcher; then echo "PROJECT_EXISTS=yes"; else echo "PROJECT_EXISTS=no"; fi
+              if test -f /var/lib/apuda-cancer-matcher/apuda_specialists.db; then echo "DATABASE_EXISTS=yes"; else echo "DATABASE_EXISTS=no"; fi
+              if test -r /var/lib/apuda-cancer-matcher/apuda_specialists.db; then echo "DATABASE_READ=yes"; else echo "DATABASE_READ=no"; fi
+              if sudo -n -u apuda test -r /var/lib/apuda-cancer-matcher/apuda_specialists.db 2>/dev/null; then echo "SUDO_APUDA_DB=yes"; else echo "SUDO_APUDA_DB=no"; fi
+              ' ; then
+              echo "$item ssh_access=failed"
+            fi
+          done
