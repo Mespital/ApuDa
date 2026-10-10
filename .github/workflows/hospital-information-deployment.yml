@@ -61,19 +61,33 @@ jobs:
           print(f"PRODUCTION_DATA_OK hospitals={len(hospitals)} cancers={len(cancers)}")
           PY
           echo "Production app.js matches GitHub and both data files are valid." >> "$GITHUB_STEP_SUMMARY"
+      - name: Verify production specialist snapshot
+        run: |
+          set -euo pipefail
+          url="https://apuda.app/hospital-information/data/verified-specialists.json"
+          curl -fsSL --max-time 25 "$url" -o /tmp/production-specialists.json
+          python3 - <<'PY'
+          import json
+          with open("/tmp/production-specialists.json", encoding="utf-8") as f: d=json.load(f)
+          assert isinstance(d.get("results"),list) and d.get("count")==len(d["results"]), "Snapshot contract mismatch"
+          assert all(p.get("status")=="ACTIVE" for p in d["results"]), "Non-public specialist data leaked"
+          print("PRODUCTION_MEDICAL_SNAPSHOT_OK count="+str(d["count"]))
+          PY
       - name: Inspect Netlify medical directory API function
         run: |
           set -euo pipefail
           function_url="https://apuda.app/.netlify/functions/hospital-information-matcher?cancer=LUNG"
           code=$(curl -L -sS -o /tmp/apuda-hi-function.json -w '%{http_code}' --connect-timeout 10 --max-time 25 "$function_url" || true)
           echo "NETLIFY_FUNCTION_HTTP=$code"
-          if [ "$code" = 404 ]; then
-            echo "::warning::Netlify Function is not published at the main site; verified medical professionals will remain unavailable until the function deployment configuration is fixed."
-          elif [ "$code" = 503 ]; then
-            echo "::notice::Netlify Function exists, but the VPS medical API is not configured."
-          elif [ "$code" = 200 ]; then
-            echo "::notice::Netlify Function is available."
-          else
-            echo "::warning::Netlify Function requires attention (HTTP=$code)."
+          if [ "$code" != "200" ]; then
+            echo "::error::Netlify verified-directory function returned HTTP=$code (expected 200)"
+            exit 1
           fi
+          python3 - <<'PY'
+          import json
+          with open("/tmp/apuda-hi-function.json",encoding="utf-8") as f:d=json.load(f)
+          assert d.get("count")==len(d.get("results",[])), "Medical API count mismatch"
+          assert all(x.get("status")=="ACTIVE" and x.get("verified_at") for x in d.get("results",[])), "Medical API returned unreviewed profile"
+          print("NETLIFY_MEDICAL_API_OK count="+str(d["count"]))
+          PY
           echo "Medical API function HTTP status: $code" >> "$GITHUB_STEP_SUMMARY"
