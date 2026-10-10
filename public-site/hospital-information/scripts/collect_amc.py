@@ -59,7 +59,7 @@ def clean(t):
 def clinical_role(dept,specialty):
     d=dept
     if "방사선종양학과" in d:return "radiation"
-    if any(p in d for p in ["종양내과","혈액내과","혈액종양내과"]):return "medical_oncology"
+    if any(p in d for p in ["종양내과","혈액내과","혈액종양내과","소아청소년종양혈액과"]):return "medical_oncology"
     if any(p in d for p in ["외과","비뇨의학과","비뇨기과","산부인과","이비인후과","구강악안면외과"]):
         return "surgery"
     if "소화기내과" in d and "내시경" in specialty:return "endoscopy"
