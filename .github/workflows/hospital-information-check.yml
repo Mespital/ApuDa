@@ -23,6 +23,7 @@ jobs:
           node --check public-site/hospital-information/app.js
           node --check public-site/hospital-information/netlify/functions/hospital-information-matcher.js
           node --check public-site/netlify/functions/hospital-information-matcher.js
+          node --test public-site/hospital-information/scripts/test-hospital-app.cjs
       - name: Directory data integrity
         run: |
           node - <<'NODE'
@@ -37,5 +38,14 @@ jobs:
           const f=fs.readFileSync("public-site/netlify/functions/hospital-information-matcher.js","utf8");
           const g=fs.readFileSync(root+"netlify/functions/hospital-information-matcher.js","utf8");
           if (f !== g) throw Error("Proxy function copies differ");
+          const published=JSON.parse(fs.readFileSync(root+"data/verified-specialists.json","utf8"));
+          if (!Array.isArray(published.results) || published.count!==published.results.length) throw Error("Published data count mismatch");
+          const codes=new Set(c.map(x=>x.code));
+          const roles=new Set(["diagnosis","surgery","medical_oncology","radiation","endoscopy","transplant","car_t"]);
+          for (const d of published.results) {
+            if(d.status!=="ACTIVE" || !d.verified_at || !/^https:\/\//.test(d.profile_url||"")) throw Error("Unreviewed public doctor");
+            if(!Array.isArray(d.cancers) || !d.cancers.length) throw Error("Missing cancer matching");
+            if(d.cancers.some(x=>!codes.has(x.code)||!roles.has(x.role))) throw Error("Invalid cancer/role");
+          }
           console.log("Hospitals:",h.length,"Cancers:",c.length,"Proxy copies identical");
           NODE
