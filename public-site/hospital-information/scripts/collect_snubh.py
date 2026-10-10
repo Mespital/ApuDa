@@ -34,6 +34,9 @@ CODES={
 "ENT":("이비인후과","surgery"),
 "OS":("정형외과","surgery"),
 "OG":("산부인과","surgery"),
+"OL":("이비인후과","surgery"),
+"PS":("성형외과","surgery"),
+"DR":("영상의학과","diagnosis"),
 }
 def parse_card(box,source,now):
     anchor=box.select_one("a.bh_doctor_name_link[href]")
