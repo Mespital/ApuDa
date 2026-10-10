@@ -855,7 +855,7 @@ function openPrintReport(){
   window.addEventListener('resize',()=>fitOnePage());
   window.addEventListener('beforeprint',()=>fitOnePage());
   window.onload=preparePrint;
-  <\/script><script src="/assets/apuda-transit.js" defer></script>
+  <\/script>
 </body></html>`;
   const blob=new Blob([html],{type:'text/html;charset=utf-8'});
   const url=URL.createObjectURL(blob);
@@ -878,5 +878,6 @@ function backup(){saveState(false);const blob=new Blob([JSON.stringify(state,nul
 async function restore(e){const file=e.target.files[0];if(!file)return;try{state=Object.assign(clone(defaults),JSON.parse(await file.text()));saveState(false);renderAll();showSection('basic');toast('백업 데이터를 복원했습니다.')}catch(err){alert('복원할 수 없는 파일입니다.')}}
 init();
 </script>
+<script src="/assets/apuda-transit.js" defer></script>
 </body>
 </html>
