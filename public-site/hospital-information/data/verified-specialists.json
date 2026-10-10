@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "source": "ApuDa reviewed official medical institution directories",
-  "generated_at": "2026-10-10T07:35:35+00:00",
-  "count": 218,
+  "generated_at": "2026-10-10T07:37:00+00:00",
+  "count": 324,
   "results": [
     {
       "doctor_name": "강민수",
@@ -1283,6 +1283,2254 @@
       ],
       "source_url": "https://www.snubh.org/medical/drMedicalTeam.do?DP_CD=RC&DP_TP=H",
       "verification_method": "official_team_directory_exact_specialty"
+    },
+    {
+      "doctor_name": "강민용",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "비뇨의학과",
+      "specialty_text": "신장암, 전립선암, 혈뇨",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2225",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "KIDNEY",
+          "role": "surgery"
+        },
+        {
+          "code": "PROSTATE",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%8B%A0%EC%9E%A5%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "강원석",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "소화기내과",
+      "specialty_text": "바이러스성간염, 간경화, 지방간질환(대사이상지방간질환), 만성간염, 간경변, 자가면역간질환, 간암(간세포암), 간이식",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1911",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LIVER",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EA%B0%84%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "강진석",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "비뇨의학과",
+      "specialty_text": "전립선암, 신장암, 방광암, 로봇수술, 전립선비대증, 요로결석(요석증), 과민성방광, 만성간질성방광염",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3527",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "KIDNEY",
+          "role": "surgery"
+        },
+        {
+          "code": "PROSTATE",
+          "role": "surgery"
+        },
+        {
+          "code": "BLADDER",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%B0%A9%EA%B4%91%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "곽금연",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "소화기내과",
+      "specialty_text": "간암, 간경화, 급성간염, 만성간염, 지방간, 간질환, 간이식",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=228",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LIVER",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EA%B0%84%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "권도현",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "구강악안면외과",
+      "specialty_text": "구강암, 악안면재건, 미세수술재건, 악안면외상및골절",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3003",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "ORAL",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EA%B5%AC%EA%B0%95%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "김나리",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "방사선종양학과",
+      "specialty_text": "대장/직장/항문암, 뇌종양, 소아암, 간암, 양성자치료",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2844",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LIVER",
+          "role": "radiation"
+        },
+        {
+          "code": "BRAIN",
+          "role": "radiation"
+        },
+        {
+          "code": "PEDIATRIC",
+          "role": "radiation"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%86%8C%EC%95%84%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "김민지",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "소화기내과",
+      "specialty_text": "위암, 위선종, 대장용종, 염증성장질환, 소장질환, 조기대장암, 치료내시경(ESD,스텐트,소장내시경)",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3116",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "endoscopy"
+        },
+        {
+          "code": "COLON",
+          "role": "endoscopy"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%84%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "김석원",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "유방외과분과",
+      "specialty_text": "유방암, 유방암수술",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1386",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BREAST",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%A0%EB%B0%A9%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "김석진",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "혈액종양내과",
+      "specialty_text": "림프종, 조혈모세포이식, 혈구탐식증후군, CAR-T세포치료",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=307",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LYMPHOMA",
+          "role": "medical_oncology"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%A6%BC%ED%94%84%EC%A2%85",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "김소연",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "호흡기내과",
+      "specialty_text": "폐암, 폐결절, 기관지내시경",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3699",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%ED%8F%90%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "김영학",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "이비인후과",
+      "specialty_text": "두경부암수술, 두경부종양, 갑상선암, 두경부로봇수술(두경부암,갑상선), 음성질환",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3533",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "THYROID",
+          "role": "surgery"
+        },
+        {
+          "code": "HEAD_NECK",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%91%90%EA%B2%BD%EB%B6%80%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "김영호",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "소화기내과",
+      "specialty_text": "염증성장질환, 장결핵, 대장암, 크론병, 궤양성대장염",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=225",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%8C%80%EC%9E%A5%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "김원석",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "혈액종양내과",
+      "specialty_text": "림프종, CAR-T세포치료",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=312",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LYMPHOMA",
+          "role": "medical_oncology"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%A6%BC%ED%94%84%EC%A2%85",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "김은란",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "소화기내과",
+      "specialty_text": "대장암, 대장용종, 소장질환, 염증성장질환, 대장협착",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=752",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%8C%80%EC%9E%A5%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "김정한",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "내분비외과분과",
+      "specialty_text": "갑상선암, 갑상선양성종양, 부갑상선의종양, 부신종양, 악성흑색종, 경부암",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=167",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "THYROID",
+          "role": "surgery"
+        },
+        {
+          "code": "MELANOMA",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EA%B0%91%EC%83%81%EC%84%A0%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "김지수",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "내분비외과분과",
+      "specialty_text": "갑상선암, 부갑상선의종양, 갑상선양성종양, 경부암, 갑상선의종양",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=189",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "THYROID",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EA%B0%91%EC%83%81%EC%84%A0%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "김지연",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "혈액종양내과",
+      "specialty_text": "유방암, 원발부위불명암",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1812",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BREAST",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "RARE_CUP",
+          "role": "medical_oncology"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%A0%EB%B0%A9%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "김지은",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "소화기내과",
+      "specialty_text": "대장암, 대장용종, 대장협착, 소장질환, 염증성장질환",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2695",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%8C%80%EC%9E%A5%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "김태세",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "소화기내과",
+      "specialty_text": "위암, 식도암, 위장관암, 위선종, 치료내시경, 위장관질환",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3336",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "endoscopy"
+        },
+        {
+          "code": "ESOPHAGUS",
+          "role": "endoscopy"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%84%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "김태중",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "산부인과",
+      "specialty_text": "자궁내막암, 난소암, 자궁경부암, 로봇수술, 싱글포트복강경수술(단일구멍복강경수술), 질식접근복강경수술(NOTES,자연개구내시경수술)",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=379",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "CERVICAL",
+          "role": "surgery"
+        },
+        {
+          "code": "OVARIAN",
+          "role": "surgery"
+        },
+        {
+          "code": "ENDOMETRIAL",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9E%90%EA%B6%81%EA%B2%BD%EB%B6%80%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "김태혁",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "내분비대사내과",
+      "specialty_text": "갑상선질환, 갑상선암",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1845",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "THYROID",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EA%B0%91%EC%83%81%EC%84%A0%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "김태훈",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "산부인과",
+      "specialty_text": "난소암, 난관암(나팔관암), 복막암, 자궁내막암, 자궁경부암, 자궁육종, 질암, 외음부암, 유전성부인암, 화학요법(항암치료), 양성 부인종양, 싱글포트복강경수술(단일구멍복강경수술), 질식접근복강경수술(NOTES,자연개구내시경수술), 로봇수술",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3820",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "CERVICAL",
+          "role": "surgery"
+        },
+        {
+          "code": "OVARIAN",
+          "role": "surgery"
+        },
+        {
+          "code": "ENDOMETRIAL",
+          "role": "surgery"
+        },
+        {
+          "code": "SARCOMA",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9E%90%EA%B6%81%EA%B2%BD%EB%B6%80%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "김해영",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "방사선종양학과",
+      "specialty_text": "유방암, 림프종(위,중추신경계 림프종 제외), 양성자치료",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2348",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BREAST",
+          "role": "radiation"
+        },
+        {
+          "code": "LYMPHOMA",
+          "role": "radiation"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%A6%BC%ED%94%84%EC%A2%85",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "김홍관",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "폐식도외과분과",
+      "specialty_text": "폐암, 식도암, 식도재건술, 최소침습수술(로봇수술,흉강경수술)",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=676",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "surgery"
+        },
+        {
+          "code": "ESOPHAGUS",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%8B%9D%EB%8F%84%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "김홍범",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "간담췌외과분과",
+      "specialty_text": "로봇수술, 췌장암, 담도암, 담낭암, 바터팽대부암, 췌장낭종, 췌장신경내분비종양",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3182",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "PANCREAS",
+          "role": "surgery"
+        },
+        {
+          "code": "BILIARY",
+          "role": "surgery"
+        },
+        {
+          "code": "GALLBLADDER",
+          "role": "surgery"
+        },
+        {
+          "code": "NET",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%8B%A0%EA%B2%BD%EB%82%B4%EB%B6%84%EB%B9%84%EC%A2%85%EC%96%91",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "김희철",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "대장항문외과분과",
+      "specialty_text": "대장암, 직장암, 유전성대장암, 전이성대장암, 로봇수술, 복강경수술, 싱글포트복강경수술(단일구멍복강경수술)",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=172",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "surgery"
+        },
+        {
+          "code": "RECTAL",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%A7%81%EC%9E%A5%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "남도현",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "신경외과",
+      "specialty_text": "뇌하수체종양, 뇌교종, 악성뇌종양",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=361",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BRAIN",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%87%8C%EC%A2%85%EC%96%91",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "민병훈",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "소화기내과",
+      "specialty_text": "위암, 치료내시경, 위선종, 식도암",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=692",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "endoscopy"
+        },
+        {
+          "code": "ESOPHAGUS",
+          "role": "endoscopy"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%84%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "민양원",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "소화기내과",
+      "specialty_text": "기능성식도질환및식도암",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1018",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "ESOPHAGUS",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%8B%9D%EB%8F%84%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "박세훈",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "혈액종양내과",
+      "specialty_text": "폐암, 식도암, 흉선암",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2548",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "ESOPHAGUS",
+          "role": "medical_oncology"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%8B%9D%EB%8F%84%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "박연희",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "혈액종양내과",
+      "specialty_text": "유방암",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=306",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BREAST",
+          "role": "medical_oncology"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%A0%EB%B0%A9%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "박영석",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "혈액종양내과",
+      "specialty_text": "대장암",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=313",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "medical_oncology"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%8C%80%EC%9E%A5%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "박윤아",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "대장항문외과분과",
+      "specialty_text": "대장암, 직장암, 전이성대장암, 유전성대장암, 로봇수술, 복강경수술",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1080",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "surgery"
+        },
+        {
+          "code": "RECTAL",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%A7%81%EC%9E%A5%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "박재범",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "이식외과분과",
+      "specialty_text": "신장이식(콩팥이식), 후복막의종양, 장기및조직이식, 췌장이식, 복강내육종, 자궁이식",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1172",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "SARCOMA",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%A1%EC%A2%85",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "박주경",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "소화기내과",
+      "specialty_text": "췌장암, 담낭암, 담도암, 췌장염, 췌장의양성종양, 췌장낭종, 췌장질환, 담석증, 담도의질환, 내시경초음파, 간이식",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1749",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "PANCREAS",
+          "role": "endoscopy"
+        },
+        {
+          "code": "BILIARY",
+          "role": "endoscopy"
+        },
+        {
+          "code": "GALLBLADDER",
+          "role": "endoscopy"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%B7%8C%EC%9E%A5%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "백용한",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "소화기내과",
+      "specialty_text": "간암, 간경화, 급성간염, 만성간염, 지방간, 간질환, 간이식",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1079",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LIVER",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EA%B0%84%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "서성욱",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "정형외과",
+      "specialty_text": "골낭종, 병적골절, 골육종(골암), 근골격계종양, 사지구제술",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=419",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "SARCOMA",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%A1%EC%A2%85",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "서성일",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "비뇨의학과",
+      "specialty_text": "신장암, 전립선암, 로봇수술, 복강경수술",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=526",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "KIDNEY",
+          "role": "surgery"
+        },
+        {
+          "code": "PROSTATE",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%8B%A0%EC%9E%A5%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "서준형",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "산부인과",
+      "specialty_text": "난소암, 난관암(나팔관암), 자궁내막암, HPV-의존성 자궁경부암, HPV-비의존성 자궁경부암, 자궁육종, 유전성부인암, 로봇수술, 최소침습부인과수술, 화학요법(항암치료)",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3350",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "CERVICAL",
+          "role": "surgery"
+        },
+        {
+          "code": "OVARIAN",
+          "role": "surgery"
+        },
+        {
+          "code": "ENDOMETRIAL",
+          "role": "surgery"
+        },
+        {
+          "code": "SARCOMA",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9E%90%EA%B6%81%EA%B2%BD%EB%B6%80%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "선종무",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "혈액종양내과",
+      "specialty_text": "폐암, 식도암",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=589",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "ESOPHAGUS",
+          "role": "medical_oncology"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%8B%9D%EB%8F%84%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "설호준",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "신경외과",
+      "specialty_text": "뇌기저부수술, 뇌종양, 뇌하수체종양, 뇌수막종, 신경초종,, 감마나이프",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=846",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BRAIN",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%87%8C%EC%A2%85%EC%96%91",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "성현환",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "비뇨의학과",
+      "specialty_text": "방광암, 신우암, 요관암, 비뇨종양의학, 로봇수술, 복강경수술, 요도협착, 요도손상",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1041",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BLADDER",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%B0%A9%EA%B4%91%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "손영익",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "이비인후과",
+      "specialty_text": "후두암, 갑상선암, 음성질환, 두경부암수술",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=144",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "THYROID",
+          "role": "surgery"
+        },
+        {
+          "code": "HEAD_NECK",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%91%90%EA%B2%BD%EB%B6%80%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "송완",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "비뇨의학과",
+      "specialty_text": "전립선암, 로봇수술, 전립선암하이푸(HIFU)시술, PSA(전립선암표지자)이상소견, 신장암, 부신종양, 복강경수술",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2738",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "KIDNEY",
+          "role": "surgery"
+        },
+        {
+          "code": "PROSTATE",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%8B%A0%EC%9E%A5%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "신동현",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "소화기내과",
+      "specialty_text": "간암, B형간염, 간경변, 간이식",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1481",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LIVER",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EA%B0%84%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "신선혜",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "호흡기내과",
+      "specialty_text": "만성폐쇄성폐질환, 폐암, 기관지내시경",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2144",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%ED%8F%90%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "신정훈",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "혈액종양내과",
+      "specialty_text": "유방암, 원발부위불명암",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3186",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BREAST",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "RARE_CUP",
+          "role": "medical_oncology"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%A0%EB%B0%A9%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "신지은",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "혈액종양내과",
+      "specialty_text": "대장암, 췌장암, 담도암, 간암, 육종",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3613",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "LIVER",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "PANCREAS",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "BILIARY",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "SARCOMA",
+          "role": "medical_oncology"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%A1%EC%A2%85",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "안진석",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "혈액종양내과",
+      "specialty_text": "폐암, 유방암",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=314",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "BREAST",
+          "role": "medical_oncology"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%A0%EB%B0%A9%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "안희경",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "혈액종양내과",
+      "specialty_text": "유방암",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3577",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BREAST",
+          "role": "medical_oncology"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%A0%EB%B0%A9%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "엄상원",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "호흡기내과",
+      "specialty_text": "폐암, 폐결절",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=271",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%ED%8F%90%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "오영은",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "소화기내과",
+      "specialty_text": "위용종, 위선종, 위암, 십이지장 종양, 위궤양, 진단적 내시경, 위염",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3536",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "endoscopy"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%84%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "유건희",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "소아청소년 혈액종양분과",
+      "specialty_text": "빈혈, 소아암, 백혈병, 출혈, 혈소판감소증, 조혈모세포이식",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=444",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LEUKEMIA",
+          "role": "diagnosis"
+        },
+        {
+          "code": "PEDIATRIC",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%B0%B1%ED%98%88%EB%B3%91",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "유재민",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "유방외과분과",
+      "specialty_text": "유방암, 유방로봇수술, 유전성유방암난소암증후군",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1881",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BREAST",
+          "role": "surgery"
+        },
+        {
+          "code": "OVARIAN",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%82%9C%EC%86%8C%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "유종한",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "유방외과분과",
+      "specialty_text": "유방암, 유방암수술, 유방악성질환, 유전성유방암난소암증후군, 유방로봇수술",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1913",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BREAST",
+          "role": "surgery"
+        },
+        {
+          "code": "OVARIAN",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%82%9C%EC%86%8C%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "유종한",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "국제진료센터",
+      "specialty_text": "유방암, 유방암수술, 유방악성질환, 유전성유방암난소암증후군, 유방로봇수술",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3800",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BREAST",
+          "role": "diagnosis"
+        },
+        {
+          "code": "OVARIAN",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%82%9C%EC%86%8C%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "유지웅",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "비뇨의학과",
+      "specialty_text": "전립선암, 신장암, 방광암, 로봇수술, 남성기능상담",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3588",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "KIDNEY",
+          "role": "surgery"
+        },
+        {
+          "code": "PROSTATE",
+          "role": "surgery"
+        },
+        {
+          "code": "BLADDER",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%8B%A0%EC%9E%A5%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "윤상은",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "혈액종양내과",
+      "specialty_text": "악성림프종, CAR-T세포치료, 조혈모세포이식, 혈구탐식증후군",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2590",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LYMPHOMA",
+          "role": "medical_oncology"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%A6%BC%ED%94%84%EC%A2%85",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "윤성현",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "대장항문외과분과",
+      "specialty_text": "대장암, 직장암, 싱글포트복강경수술(단일구멍복강경수술), 복강경수술, 로봇수술, 대장암수술",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=170",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "surgery"
+        },
+        {
+          "code": "RECTAL",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%A7%81%EC%9E%A5%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "이경종",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "호흡기내과",
+      "specialty_text": "폐암, 폐결절, 초음파기관지내시경, 로봇기관지내시경",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1004",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%ED%8F%90%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "이경태",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "성형외과",
+      "specialty_text": "흑색종, 피부암, 유방재건, 하지재건, 상지재건, 피부이식, 미세수술재건, 화상흉터구축",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2604",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "MELANOMA",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%ED%9D%91%EC%83%89%EC%A2%85",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "이광혁",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "소화기내과",
+      "specialty_text": "췌장암, 담낭암, 담도암, 췌장염, 췌장의양성종양, 담석증, 담도의질환, 내시경초음파, 간이식",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=227",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "PANCREAS",
+          "role": "endoscopy"
+        },
+        {
+          "code": "BILIARY",
+          "role": "endoscopy"
+        },
+        {
+          "code": "GALLBLADDER",
+          "role": "endoscopy"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%B7%8C%EC%9E%A5%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "이교원",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "이식외과분과",
+      "specialty_text": "신장이식(콩팥이식), 후복막의종양, 장기및조직이식, 췌장이식, 복강내육종",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1667",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "SARCOMA",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%A1%EC%A2%85",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "이규택",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "소화기내과",
+      "specialty_text": "췌장암, 담낭암, 담도암, 췌장염, 췌장의양성종양, 췌장질환, 담석증, 담낭용종, 담도의질환, 간이식",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=221",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "PANCREAS",
+          "role": "diagnosis"
+        },
+        {
+          "code": "BILIARY",
+          "role": "diagnosis"
+        },
+        {
+          "code": "GALLBLADDER",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%B7%8C%EC%9E%A5%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "이동윤",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "피부과",
+      "specialty_text": "피부암(흑색종포함), 손발톱질환, 탈모및두피질환, 백반증",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=138",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "MELANOMA",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%ED%9D%91%EC%83%89%EC%A2%85",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "이세훈",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "혈액종양내과",
+      "specialty_text": "폐암, 두경부암",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1811",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "HEAD_NECK",
+          "role": "medical_oncology"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%91%90%EA%B2%BD%EB%B6%80%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "이우용",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "대장항문외과분과",
+      "specialty_text": "대장암, 직장암, 유전성대장암, 복강경수술, 로봇수술, 대장암수술",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=183",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "surgery"
+        },
+        {
+          "code": "RECTAL",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%A7%81%EC%9E%A5%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "이원재",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "신경외과",
+      "specialty_text": "두개저종양, 뇌하수체종양의내시경수술, 전이성뇌종양, 악성뇌종양, 감마나이프, 뇌외상",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2821",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BRAIN",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%87%8C%EC%A2%85%EC%96%91",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "이유영",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "산부인과",
+      "specialty_text": "난소암, 복막암, 자궁내막암, 자궁경부암, 자궁육종, 난관암(나팔관암), 질암, 유전성부인암, 부인암, 로봇수술",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=389",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "CERVICAL",
+          "role": "surgery"
+        },
+        {
+          "code": "OVARIAN",
+          "role": "surgery"
+        },
+        {
+          "code": "ENDOMETRIAL",
+          "role": "surgery"
+        },
+        {
+          "code": "SARCOMA",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9E%90%EA%B6%81%EA%B2%BD%EB%B6%80%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "이은경",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "내분비대사내과",
+      "specialty_text": "갑상선질환, 갑상선암",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3816",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "THYROID",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EA%B0%91%EC%83%81%EC%84%A0%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "이정원",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "산부인과",
+      "specialty_text": "자궁경부암, 난소암, 자궁내막암",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=376",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "CERVICAL",
+          "role": "surgery"
+        },
+        {
+          "code": "OVARIAN",
+          "role": "surgery"
+        },
+        {
+          "code": "ENDOMETRIAL",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9E%90%EA%B6%81%EA%B2%BD%EB%B6%80%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "이종균",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "소화기내과",
+      "specialty_text": "췌장암, 담낭암, 담도암, 췌장염, 췌장의양성종양, 췌장질환, 담석증, 담낭용종, 담도의질환, 간이식",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=222",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "PANCREAS",
+          "role": "diagnosis"
+        },
+        {
+          "code": "BILIARY",
+          "role": "diagnosis"
+        },
+        {
+          "code": "GALLBLADDER",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%B7%8C%EC%9E%A5%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "이종훈",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "비뇨의학과",
+      "specialty_text": "수신증, 방광요관역류, 신장암, 신우요관암, 부신종양, 고환암, 잠복고환증(정류고환), 음낭수종, 로봇수술, 소아로봇수술, 복강경수술",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3361",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "KIDNEY",
+          "role": "surgery"
+        },
+        {
+          "code": "TESTICULAR",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%8B%A0%EC%9E%A5%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "이준행",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "소화기내과",
+      "specialty_text": "위암, 위식도역류질환, 소화성궤양, 기능성소화불량, 치료내시경",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=214",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "endoscopy"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%84%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "이준혁",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "소화기내과",
+      "specialty_text": "간암, 간경화, 급성간염, 만성간염, 간질환, 간이식",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=223",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LIVER",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EA%B0%84%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "이준협",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "내분비외과분과",
+      "specialty_text": "갑상선암, 갑상선수술, 갑상선의종양, 내시경수술, 갑상선질환, 부갑상선의종양, 갑상선양성종양, 로봇수술",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3469",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "THYROID",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EA%B0%91%EC%83%81%EC%84%A0%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "이태훈",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "방사선종양학과",
+      "specialty_text": "유방암, 비뇨기암, 피부암, 흑색종, 양성자치료",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3378",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BREAST",
+          "role": "radiation"
+        },
+        {
+          "code": "MELANOMA",
+          "role": "radiation"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%ED%9D%91%EC%83%89%EC%A2%85",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "이혁",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "소화기내과",
+      "specialty_text": "위암, 위의양성종양, 치료내시경",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1480",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "endoscopy"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%84%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "임도훈",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "방사선종양학과",
+      "specialty_text": "뇌종양, 소아암, 위암, 위말트림프종, 중추신경계림프종, 다발성골수종, 양성자치료",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=492",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "radiation"
+        },
+        {
+          "code": "BRAIN",
+          "role": "radiation"
+        },
+        {
+          "code": "LYMPHOMA",
+          "role": "radiation"
+        },
+        {
+          "code": "MYELOMA",
+          "role": "radiation"
+        },
+        {
+          "code": "PEDIATRIC",
+          "role": "radiation"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%A6%BC%ED%94%84%EC%A2%85",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "장동경",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "소화기내과",
+      "specialty_text": "대장암, 대장용종, 유전성대장암, 염증성장질환",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=215",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%8C%80%EC%9E%A5%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "장동기",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "소화기내과",
+      "specialty_text": "췌장암, 담낭암, 담도암, 췌장염, 췌장낭종, 담도의질환, 췌장질환, 내시경초음파, 췌장의양성종양",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3726",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "PANCREAS",
+          "role": "endoscopy"
+        },
+        {
+          "code": "BILIARY",
+          "role": "endoscopy"
+        },
+        {
+          "code": "GALLBLADDER",
+          "role": "endoscopy"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%B7%8C%EC%9E%A5%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "장서윤",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "혈액종양내과",
+      "specialty_text": "위암, 대장암, 육종",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3787",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "COLON",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "SARCOMA",
+          "role": "medical_oncology"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%A1%EC%A2%85",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "장준호",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "혈액종양내과",
+      "specialty_text": "골수형성이상증후군, 재생불량성빈혈, 혈소판감소증, 발작성야간혈색소뇨증, 급성백혈병, 만성림프구성백혈병, 빈혈",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=318",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LEUKEMIA",
+          "role": "medical_oncology"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%B0%B1%ED%98%88%EB%B3%91",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "전성수",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "비뇨의학과",
+      "specialty_text": "전립선암, 로봇수술, PSA(전립선암표지자)이상소견",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=520",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "PROSTATE",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%A0%84%EB%A6%BD%EC%84%A0%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "전황균",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "비뇨의학과",
+      "specialty_text": "전립선암, 로봇수술, 전립선암하이푸(HIFU)시술, PSA(전립선암표지자)이상소견",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1170",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "PROSTATE",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%A0%84%EB%A6%BD%EC%84%A0%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "정규하",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "신경외과",
+      "specialty_text": "악성뇌종양, 전이성뇌종양, 뇌교종, 뇌수막종, 감마나이프, 뇌수두증",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3024",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BRAIN",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%87%8C%EC%A2%85%EC%96%91",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "정만기",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "이비인후과",
+      "specialty_text": "구강암, 구인두암, 갑상선암",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=150",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "THYROID",
+          "role": "surgery"
+        },
+        {
+          "code": "ORAL",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EA%B5%AC%EA%B0%95%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "정병창",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "비뇨의학과",
+      "specialty_text": "방광암, 전립선암, 신장암, 부신종양, 신우요관암",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=527",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "KIDNEY",
+          "role": "surgery"
+        },
+        {
+          "code": "PROSTATE",
+          "role": "surgery"
+        },
+        {
+          "code": "BLADDER",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%8B%A0%EC%9E%A5%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "정병호",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "호흡기내과",
+      "specialty_text": "폐암, 기관지내시경, 기관지협착, 기관지내시경초음파",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=861",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%ED%8F%90%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "정철원",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "혈액종양내과",
+      "specialty_text": "백혈병, 조혈모세포이식, 만성골수증식성질환, 빈혈, 출혈질환",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=303",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LEUKEMIA",
+          "role": "medical_oncology"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%B0%B1%ED%98%88%EB%B3%91",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "정한신",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "이비인후과",
+      "specialty_text": "타액선암, 구강암, 두경부종양, 두경부암수술",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=148",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "HEAD_NECK",
+          "role": "surgery"
+        },
+        {
+          "code": "ORAL",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%91%90%EA%B2%BD%EB%B6%80%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "정현애",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "혈액종양내과",
+      "specialty_text": "폐암, 두경부암, 뇌종양",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2347",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "HEAD_NECK",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "BRAIN",
+          "role": "medical_oncology"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%91%90%EA%B2%BD%EB%B6%80%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "조용범",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "대장항문외과분과",
+      "specialty_text": "대장암, 직장암, 유전성대장암, 전이성대장암, 염증성장질환, 크론병, 궤양성대장염, 복강경수술, 로봇수술",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=187",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "surgery"
+        },
+        {
+          "code": "RECTAL",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%A7%81%EC%9E%A5%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "조희원",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "소아청소년 혈액종양분과",
+      "specialty_text": "소아뇌종양, 소아암",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2205",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BRAIN",
+          "role": "diagnosis"
+        },
+        {
+          "code": "PEDIATRIC",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%86%8C%EC%95%84%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "주희영",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "소아청소년 혈액종양분과",
+      "specialty_text": "백혈병, 림프종, CAR-T세포치료, 조혈모세포이식, 빈혈, 혈소판감소증, 혈관기형, 혈관종",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2560",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LEUKEMIA",
+          "role": "diagnosis"
+        },
+        {
+          "code": "LYMPHOMA",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%B0%B1%ED%98%88%EB%B3%91",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "최나연",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "이비인후과",
+      "specialty_text": "두경부암수술, 두경부재건, 두경부로봇수술(두경부암,갑상선)",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2915",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "HEAD_NECK",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%91%90%EA%B2%BD%EB%B6%80%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "최대호",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "혈액종양내과",
+      "specialty_text": "백혈병, 만성골수증식성질환, 출혈질환, 빈혈, 재생불량성빈혈, 혈소판감소증, 발작성야간혈색소뇨증, 골수형성이상증후군",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3019",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LEUKEMIA",
+          "role": "medical_oncology"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%B0%B1%ED%98%88%EB%B3%91",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "최문석",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "소화기내과",
+      "specialty_text": "간암, 간경화, 만성간염, 간이식",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=212",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LIVER",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EA%B0%84%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "최영훈",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "소화기내과",
+      "specialty_text": "췌장암, 담낭암, 담도암, 췌장염, 췌장의양성종양, 췌장낭종, 췌장질환, 담석증, 담도의질환, 내시경초음파, 간이식",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3452",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "PANCREAS",
+          "role": "endoscopy"
+        },
+        {
+          "code": "BILIARY",
+          "role": "endoscopy"
+        },
+        {
+          "code": "GALLBLADDER",
+          "role": "endoscopy"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%B7%8C%EC%9E%A5%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "최정원",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "신경외과",
+      "specialty_text": "악성뇌종양, 뇌교종, 전이성뇌종양, 뇌수막종, 뇌종양, 감마나이프",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1819",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BRAIN",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%87%8C%EC%A2%85%EC%96%91",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "최준수",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "호흡기내과",
+      "specialty_text": "로봇기관지내시경, 폐이식, 초음파기관지내시경, 폐암",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3351",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%ED%8F%90%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "최준호",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "내분비외과분과",
+      "specialty_text": "갑상선수술, 부갑상선의종양, 복강경수술, 갑상선암",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=190",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "THYROID",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EA%B0%91%EC%83%81%EC%84%A0%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "최철훈",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "산부인과",
+      "specialty_text": "난소암, 자궁경부암, 자궁내막암",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=380",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "CERVICAL",
+          "role": "surgery"
+        },
+        {
+          "code": "OVARIAN",
+          "role": "surgery"
+        },
+        {
+          "code": "ENDOMETRIAL",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9E%90%EA%B6%81%EA%B2%BD%EB%B6%80%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "팽준영",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "구강악안면외과",
+      "specialty_text": "악안면기형, 악안면종양, 구강암, 턱관절외과, 악안면재건",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2278",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "ORAL",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EA%B5%AC%EA%B0%95%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "표홍렬",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "방사선종양학과",
+      "specialty_text": "폐암(육종포함), 전립선/비뇨기암, 식도암, 양성자치료",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=735",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "radiation"
+        },
+        {
+          "code": "ESOPHAGUS",
+          "role": "radiation"
+        },
+        {
+          "code": "SARCOMA",
+          "role": "radiation"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%A1%EC%A2%85",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
+    },
+    {
+      "doctor_name": "허정욱",
+      "hospital_name": "삼성서울병원",
+      "region": "서울",
+      "department": "대장항문외과분과",
+      "specialty_text": "대장암, 직장암, 유전성대장암, 전이성대장암, 로봇수술, 복강경수술",
+      "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1295",
+      "verified_at": "2026-10-10T07:35:51+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "surgery"
+        },
+        {
+          "code": "RECTAL",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%A7%81%EC%9E%A5%EC%95%94",
+      "verification_method": "official_keyword_search_explicit_clinical_specialty"
     },
     {
       "doctor_name": "강성한",
