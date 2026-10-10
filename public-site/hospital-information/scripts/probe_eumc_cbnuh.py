@@ -2,6 +2,7 @@ import requests,urllib.robotparser
 from bs4 import BeautifulSoup
 UA="ApuDaMedicalDirectoryBot/1.0 (+https://apuda.app/)"
 cases=[
+("cbnuh-all","https://www.cbnuh.or.kr","/prog/doctor/main/sub01_01_02/list.do",["한정호","윤순만","박선미"]),
 ("eumc-index","https://mokdong.eumc.ac.kr","/medical/dept/deptList.do",[]),
 ("eumc","https://mokdong.eumc.ac.kr","/medical/dept/deptScheduleInfo.do?dept_cd=IMH&grp_yn=N",["조정민","함아롱"]),
 ("eumc-profile","https://mokdong.eumc.ac.kr","/doctor/basicInfo.do?dept_cd=IMH&dr_sid=1013917",["조정민"]),
@@ -30,5 +31,12 @@ for name,root,path,names in cases:
    print("DEPT_DOCTOR_LINKS",[(a.get_text(" ",strip=True)[:28],a.get("href","")[:130]) for a in soup.select("a[href]") if "dept_cd=" in a.get("href","").lower()][:55],flush=True)
   if name=="eumc-index":
    print("ALL_DEPTS",[(a.get_text(" ",strip=True)[:35],a.get("href","")[:140]) for a in soup.select("a[href]") if "dept_cd=" in a.get("href","").lower()][:90],flush=True)
+  if name=="cbnuh-all":
+   for doctor in ["한정호","윤순만"]:
+    for node in soup.find_all(string=lambda z:z and doctor in z)[:1]:
+     p=node.parent
+     for i,a in enumerate(list(p.parents)[:5]):
+      print("CBNUH_DOCTOR",doctor,i,a.name,a.get("class"),a.get_text(" ",strip=True)[:310],[(x.get_text(" ",strip=True)[:28],x.get("href","")[:180],x.get("onclick","")[:90]) for x in a.select("a[href],a[onclick]")[:3]],flush=True)
+   print("CBNUH_ALL_LINKS",[(a.get_text(" ",strip=True)[:40],a.get("href","")[:160]) for a in soup.select("a[href]") if any(w in a.get("href","").lower() for w in ["page", "doctor","view.do"])][:50],flush=True)
   print("DOCTOR_LINKS",[(a.get_text(" ",strip=True)[:24],a.get("href","")[:160]) for a in soup.select("a[href]") if any(x in a.get("href","").lower() for x in ["doctor","dr_sid","clndcd"])][:25],flush=True)
  except Exception as exc:print("ERROR",type(exc).__name__,str(exc)[:160],flush=True)
