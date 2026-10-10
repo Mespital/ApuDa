@@ -1,57 +1,79 @@
-name: Hospital Information deployment diagnostics
+name: Hospital Information production verification
 on:
   push:
     branches: [main]
     paths:
       - "public-site/hospital-information/**"
+      - "public-site/netlify/functions/hospital-information-matcher.js"
       - ".github/workflows/hospital-information-deployment.yml"
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: hospital-information-production-check
+  cancel-in-progress: true
 jobs:
-  inspect:
+  verify:
     runs-on: ubuntu-latest
-    environment: apuda-ai-vps
-    timeout-minutes: 5
+    timeout-minutes: 8
     steps:
-      - name: Verify deployed application URL
-        env:
-          TARGET: https://apuda.app/hospital-information/
+      - uses: actions/checkout@v4
+      - name: Wait for existing Netlify Git deployment
         run: |
           set -euo pipefail
-          code=$(curl -L -sS -o /tmp/hospital.html -w '%{http_code}' --connect-timeout 10 --max-time 25 "$TARGET" || true)
-          echo "TARGET_HTTP=$code"
-          if [ "$code" = 200 ] && grep -q 'ApuDa Hospital Information' /tmp/hospital.html; then
-            echo "SITE_LIVE=yes"
-          else
-            echo "SITE_LIVE=no"
+          target="https://apuda.app/hospital-information/"
+          marker=$(grep -o 'apuda-hi-[0-9a-z-]*' public-site/hospital-information/index.html | head -1)
+          echo "Expected release marker: $marker"
+          success=0
+          for attempt in $(seq 1 24); do
+            code=$(curl -L -sS -o /tmp/apuda-hospital.html -w '%{http_code}' --connect-timeout 10 --max-time 20 "$target" || true)
+            if [ "$code" = "200" ] && grep -Fq "$marker" /tmp/apuda-hospital.html; then
+              echo "SITE_RELEASE_LIVE=yes HTTP=$code attempt=$attempt"
+              success=1
+              break
+            fi
+            echo "Waiting for Netlify Git auto-deploy ($attempt/24), HTTP=$code"
+            sleep 10
+          done
+          if [ "$success" != 1 ]; then
+            echo "::error::Live apuda.app does not contain the committed release marker. Check existing Netlify Git repository/main publish configuration."
+            exit 1
           fi
-      - name: Inspect pre-existing Netlify credentials and exact target site
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          APUDA_NETLIFY_SITE_ID: ${{ secrets.APUDA_NETLIFY_SITE_ID }}
+          echo "Verified URL: $target" >> "$GITHUB_STEP_SUMMARY"
+          echo "Verified release marker: $marker" >> "$GITHUB_STEP_SUMMARY"
+      - name: Validate deployed JS and data files
         run: |
           set -euo pipefail
-          if [ -z "$NETLIFY_AUTH_TOKEN" ]; then
-            echo "NETLIFY_AUTH_TOKEN_CONFIGURED=no"
-            echo "Existing Netlify Git integration might deploy the site; CLI deployment cannot be performed from this workflow without an auth token."
-            exit 0
+          base="https://apuda.app/hospital-information"
+          curl -fsSL --max-time 25 "$base/app.js" -o /tmp/apuda-hi-live-app.js
+          if ! cmp -s public-site/hospital-information/app.js /tmp/apuda-hi-live-app.js; then
+            echo "::error::Production JS does not match the committed GitHub version."
+            exit 1
           fi
-          echo "NETLIFY_AUTH_TOKEN_CONFIGURED=yes"
-          if [ -n "$APUDA_NETLIFY_SITE_ID" ]; then
-            echo "APUDA_NETLIFY_SITE_ID_CONFIGURED=yes"
-          else
-            echo "APUDA_NETLIFY_SITE_ID_CONFIGURED=no"
-          fi
-          code=$(curl -sS -o /tmp/netlify-sites.json -w '%{http_code}' --connect-timeout 10 --max-time 25 -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" 'https://api.netlify.com/api/v1/sites?per_page=100' || true)
-          echo "NETLIFY_API_HTTP=$code"
-          if [ "$code" = 200 ]; then
-            python3 - <<'PY'
+          curl -fsSL --max-time 25 "$base/data/hospitals.json" -o /tmp/apuda-hi-hospitals.json
+          curl -fsSL --max-time 25 "$base/data/cancers.json" -o /tmp/apuda-hi-cancers.json
+          python3 - <<'PY'
           import json
-          sites=json.load(open("/tmp/netlify-sites.json"))
-          found=[x for x in sites if x.get("custom_domain")=="apuda.app" or "apuda.app" in (x.get("domain_aliases") or [])]
-          print("APUDA_EXACT_DOMAIN_MATCHES=",len(found))
-          for s in found:
-              print("NETLIFY_SITE_NAME=",s.get("name"),"GIT_CONNECTED=",bool((s.get("build_settings") or {}).get("repo_url")))
+          with open('/tmp/apuda-hi-hospitals.json') as f: hospitals=json.load(f)
+          with open('/tmp/apuda-hi-cancers.json') as f: cancers=json.load(f)
+          assert len(hospitals)==30, f"Unexpected hospital count {len(hospitals)}"
+          assert len(cancers)==30, f"Unexpected cancer count {len(cancers)}"
+          print(f"PRODUCTION_DATA_OK hospitals={len(hospitals)} cancers={len(cancers)}")
           PY
+          echo "Production app.js matches GitHub and both data files are valid." >> "$GITHUB_STEP_SUMMARY"
+      - name: Inspect Netlify medical directory API function
+        run: |
+          set -euo pipefail
+          function_url="https://apuda.app/.netlify/functions/hospital-information-matcher?cancer=LUNG"
+          code=$(curl -L -sS -o /tmp/apuda-hi-function.json -w '%{http_code}' --connect-timeout 10 --max-time 25 "$function_url" || true)
+          echo "NETLIFY_FUNCTION_HTTP=$code"
+          if [ "$code" = 404 ]; then
+            echo "::warning::Netlify Function is not published at the main site; verified medical professionals will remain unavailable until the function deployment configuration is fixed."
+          elif [ "$code" = 503 ]; then
+            echo "::notice::Netlify Function exists, but the VPS medical API is not configured."
+          elif [ "$code" = 200 ]; then
+            echo "::notice::Netlify Function is available."
+          else
+            echo "::warning::Netlify Function requires attention (HTTP=$code)."
           fi
+          echo "Medical API function HTTP status: $code" >> "$GITHUB_STEP_SUMMARY"
