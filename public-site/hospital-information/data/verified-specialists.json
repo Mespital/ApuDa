@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "source": "ApuDa reviewed official medical institution directories",
-  "generated_at": "2026-10-10T22:19:18+00:00",
-  "count": 463,
+  "generated_at": "2026-10-10T22:21:31+00:00",
+  "count": 486,
   "results": [
     {
       "doctor_name": "강민수",
@@ -8281,6 +8281,536 @@
       ],
       "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=13",
       "verification_method": "official_department_explicit_specialty_and_individual_profile"
+    },
+    {
+      "doctor_name": "금지영",
+      "hospital_name": "이대목동병원",
+      "region": "서울",
+      "department": "소화기내과",
+      "specialty_text": "췌담도분야(담석증, 담낭암, 담도암, 췌장염, 췌장암) ※< >특수진료(15:00까지 진료)",
+      "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=IMG&dr_sid=1016155",
+      "verified_at": "2026-10-10T22:19:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "PANCREAS",
+          "role": "diagnosis"
+        },
+        {
+          "code": "BILIARY",
+          "role": "diagnosis"
+        },
+        {
+          "code": "GALLBLADDER",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=IMG&grp_yn=N",
+      "verification_method": "official_schedule_explicit_specialty_profile"
+    },
+    {
+      "doctor_name": "김성은",
+      "hospital_name": "이대목동병원",
+      "region": "서울",
+      "department": "소화기내과",
+      "specialty_text": "대장질환(대장용종, 대장암, 염증성장질환, 기능성장질환), 대장 치료내시경, 캡슐내시경, 소장내시경, 위식도질환",
+      "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=IMG&dr_sid=1003746",
+      "verified_at": "2026-10-10T22:19:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "endoscopy"
+        }
+      ],
+      "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=IMG&grp_yn=N",
+      "verification_method": "official_schedule_explicit_specialty_profile"
+    },
+    {
+      "doctor_name": "김진우",
+      "hospital_name": "이대목동병원",
+      "region": "서울",
+      "department": "구강악안면외과",
+      "specialty_text": "악안면기형 및 양악수술, 악골괴사증, 구강암, 구강종양, 악안면재건, 임플란트, 안면골절, 신경손상",
+      "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=OMS&dr_sid=1007956",
+      "verified_at": "2026-10-10T22:19:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "ORAL",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=OMS&grp_yn=N",
+      "verification_method": "official_schedule_explicit_specialty_profile"
+    },
+    {
+      "doctor_name": "박정현",
+      "hospital_name": "이대목동병원",
+      "region": "서울",
+      "department": "구강악안면외과",
+      "specialty_text": "악안면기형 및 양악수술, 악골괴사증, 구강암, 구강종양, 악안면재건, 임플란트, 안면골절, 신경손상",
+      "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=OMS&dr_sid=1007330",
+      "verified_at": "2026-10-10T22:19:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "ORAL",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=OMS&grp_yn=N",
+      "verification_method": "official_schedule_explicit_specialty_profile"
+    },
+    {
+      "doctor_name": "박진우",
+      "hospital_name": "이대목동병원",
+      "region": "서울",
+      "department": "성형외과",
+      "specialty_text": "유방재건 및 유방성형, 미세수술 재건, 림프 부종, 악성 흑색종",
+      "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=PS&dr_sid=1014594",
+      "verified_at": "2026-10-10T22:19:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "MELANOMA",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=PS&grp_yn=N",
+      "verification_method": "official_schedule_explicit_specialty_profile"
+    },
+    {
+      "doctor_name": "배세련",
+      "hospital_name": "이대목동병원",
+      "region": "서울",
+      "department": "소화기내과",
+      "specialty_text": "대장질환 (대장용종, 대장암, 기능성장질환), 대장 치료내시경, 캡슐내시경, 소장내시경, 위식도질환",
+      "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=IMG&dr_sid=1017804",
+      "verified_at": "2026-10-10T22:19:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "endoscopy"
+        }
+      ],
+      "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=IMG&grp_yn=N",
+      "verification_method": "official_schedule_explicit_specialty_profile"
+    },
+    {
+      "doctor_name": "신수민",
+      "hospital_name": "이대목동병원",
+      "region": "서울",
+      "department": "심장혈관흉부외과",
+      "specialty_text": "폐암, 식도암, 흉선암, 최소침습수술, 흉강경 수술, 로봇수술, 종격동 질환, 기흉, 일반 흉부질환",
+      "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=CS&dr_sid=1017895",
+      "verified_at": "2026-10-10T22:19:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "surgery"
+        },
+        {
+          "code": "ESOPHAGUS",
+          "role": "surgery"
+        }
+      ],
+      "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=CS&grp_yn=N",
+      "verification_method": "official_schedule_explicit_specialty_profile"
+    },
+    {
+      "doctor_name": "심정석",
+      "hospital_name": "이대목동병원",
+      "region": "서울",
+      "department": "영상의학과",
+      "specialty_text": "갑상선질환(갑상선암) 초음파진단 및 시술",
+      "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=DR&dr_sid=1022233",
+      "verified_at": "2026-10-10T22:19:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "THYROID",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=DR&grp_yn=N",
+      "verification_method": "official_schedule_explicit_specialty_profile"
+    },
+    {
+      "doctor_name": "양은영",
+      "hospital_name": "이대목동병원",
+      "region": "서울",
+      "department": "방사선종양학과",
+      "specialty_text": "유방암, 혈액암, 피부암, 육종, 부인종양암",
+      "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=TR&dr_sid=1023205",
+      "verified_at": "2026-10-10T22:19:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BREAST",
+          "role": "radiation"
+        },
+        {
+          "code": "SARCOMA",
+          "role": "radiation"
+        }
+      ],
+      "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=TR&grp_yn=N",
+      "verification_method": "official_schedule_explicit_specialty_profile"
+    },
+    {
+      "doctor_name": "유은선",
+      "hospital_name": "이대목동병원",
+      "region": "서울",
+      "department": "소아청소년과",
+      "specialty_text": "소아혈액질환(빈혈, 자반, 출혈), 혈관종, 림프절질환(경부림프절비대, 림프절염, 림프관종), 혈액종양질환(백혈병, 림프종, 뇌종양, 신경모세포종, 조직구증식증, 기타소아암), 조혈모세포이식 ※진료장소 : 2층 혈액내과",
+      "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=PGE&dr_sid=1001705",
+      "verified_at": "2026-10-10T22:19:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BRAIN",
+          "role": "diagnosis"
+        },
+        {
+          "code": "LEUKEMIA",
+          "role": "diagnosis"
+        },
+        {
+          "code": "LYMPHOMA",
+          "role": "diagnosis"
+        },
+        {
+          "code": "PEDIATRIC",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=PGE&grp_yn=N",
+      "verification_method": "official_schedule_explicit_specialty_profile"
+    },
+    {
+      "doctor_name": "이경은",
+      "hospital_name": "이대목동병원",
+      "region": "서울",
+      "department": "종양내과",
+      "specialty_text": "유방암(임상시험포함)",
+      "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=IMH&dr_sid=1003308",
+      "verified_at": "2026-10-10T22:19:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BREAST",
+          "role": "medical_oncology"
+        }
+      ],
+      "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=IMH&grp_yn=N",
+      "verification_method": "official_schedule_explicit_specialty_profile"
+    },
+    {
+      "doctor_name": "이선영",
+      "hospital_name": "이대목동병원",
+      "region": "서울",
+      "department": "소화기내과",
+      "specialty_text": "췌담도분야(담석증,담낭암,담도암,췌장염,췌장암)",
+      "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=IMG&dr_sid=1001518",
+      "verified_at": "2026-10-10T22:19:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "PANCREAS",
+          "role": "diagnosis"
+        },
+        {
+          "code": "BILIARY",
+          "role": "diagnosis"
+        },
+        {
+          "code": "GALLBLADDER",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=IMG&grp_yn=N",
+      "verification_method": "official_schedule_explicit_specialty_profile"
+    },
+    {
+      "doctor_name": "이정경",
+      "hospital_name": "이대목동병원",
+      "region": "서울",
+      "department": "영상의학과",
+      "specialty_text": "복부영상의학(방사선과학), 복부 초음파 및 초음파 유도하의 중재적 시술, 간 및 복부의 조직검사와 배농, 간암 및 간전이의 고주파 열치료",
+      "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=DR&dr_sid=1002959",
+      "verified_at": "2026-10-10T22:19:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LIVER",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=DR&grp_yn=N",
+      "verification_method": "official_schedule_explicit_specialty_profile"
+    },
+    {
+      "doctor_name": "이지혜",
+      "hospital_name": "이대목동병원",
+      "region": "서울",
+      "department": "방사선종양학과",
+      "specialty_text": "유방암, 두경부암, 폐암, 식도암, 뇌종양",
+      "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=TR&dr_sid=1005989",
+      "verified_at": "2026-10-10T22:19:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "radiation"
+        },
+        {
+          "code": "BREAST",
+          "role": "radiation"
+        },
+        {
+          "code": "ESOPHAGUS",
+          "role": "radiation"
+        },
+        {
+          "code": "HEAD_NECK",
+          "role": "radiation"
+        },
+        {
+          "code": "BRAIN",
+          "role": "radiation"
+        }
+      ],
+      "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=TR&grp_yn=N",
+      "verification_method": "official_schedule_explicit_specialty_profile"
+    },
+    {
+      "doctor_name": "정의선",
+      "hospital_name": "이대목동병원",
+      "region": "서울",
+      "department": "소화기내과",
+      "specialty_text": "식도암, 위암 검진 및 치료, 위암.대장암 치료내시경",
+      "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=IMG&dr_sid=1008998",
+      "verified_at": "2026-10-10T22:19:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "endoscopy"
+        },
+        {
+          "code": "COLON",
+          "role": "endoscopy"
+        },
+        {
+          "code": "ESOPHAGUS",
+          "role": "endoscopy"
+        }
+      ],
+      "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=IMG&grp_yn=N",
+      "verification_method": "official_schedule_explicit_specialty_profile"
+    },
+    {
+      "doctor_name": "정재윤",
+      "hospital_name": "이대목동병원",
+      "region": "서울",
+      "department": "소화기내과",
+      "specialty_text": "간암, 간경변, B형간염, C형간염, 급성간염, 알코올간질환, 지방간, 독성간염, 자가면역간질환, 간기능검사이상",
+      "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=IMG&dr_sid=1021479",
+      "verified_at": "2026-10-10T22:19:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LIVER",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=IMG&grp_yn=N",
+      "verification_method": "official_schedule_explicit_specialty_profile"
+    },
+    {
+      "doctor_name": "정혜경",
+      "hospital_name": "이대목동병원",
+      "region": "서울",
+      "department": "소화기내과",
+      "specialty_text": "위식도질환(위암, 식도암, 역류성식도염, 소화불량, 위궤양, 상피하종양, 헬리코박터 파이로리), 대장질환, 치료내시경, 위장관기능검사",
+      "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=IMG&dr_sid=1002327",
+      "verified_at": "2026-10-10T22:19:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "endoscopy"
+        },
+        {
+          "code": "ESOPHAGUS",
+          "role": "endoscopy"
+        }
+      ],
+      "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=IMG&grp_yn=N",
+      "verification_method": "official_schedule_explicit_specialty_profile"
+    },
+    {
+      "doctor_name": "조정민",
+      "hospital_name": "이대목동병원",
+      "region": "서울",
+      "department": "종양내과",
+      "specialty_text": "비뇨기암(방광암, 전립선암, 신장암, 고환암, 부신암등), 대장암, 담도암, 췌장암, 간암",
+      "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=IMH&dr_sid=1013917",
+      "verified_at": "2026-10-10T22:19:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "LIVER",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "PANCREAS",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "BILIARY",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "KIDNEY",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "PROSTATE",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "BLADDER",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "TESTICULAR",
+          "role": "medical_oncology"
+        }
+      ],
+      "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=IMH&grp_yn=N",
+      "verification_method": "official_schedule_explicit_specialty_profile"
+    },
+    {
+      "doctor_name": "천은미",
+      "hospital_name": "이대목동병원",
+      "region": "서울",
+      "department": "호흡기내과",
+      "specialty_text": "폐암, 만성폐쇄성폐질환, 천식, 금연, 코로나 후유증 클리닉",
+      "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=IMP&dr_sid=1001707",
+      "verified_at": "2026-10-10T22:19:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=IMP&grp_yn=N",
+      "verification_method": "official_schedule_explicit_specialty_profile"
+    },
+    {
+      "doctor_name": "최나령",
+      "hospital_name": "이대목동병원",
+      "region": "서울",
+      "department": "소화기내과",
+      "specialty_text": "간암, 간경변, B형간염, C형간염, 급성간염, 알코올 간질환, 지방간, 독성간염, 자가면역간질환, 간기능검사",
+      "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=IMG&dr_sid=1020929",
+      "verified_at": "2026-10-10T22:19:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LIVER",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=IMG&grp_yn=N",
+      "verification_method": "official_schedule_explicit_specialty_profile"
+    },
+    {
+      "doctor_name": "함아롱",
+      "hospital_name": "이대목동병원",
+      "region": "서울",
+      "department": "종양내과",
+      "specialty_text": "식도암, 두경부암, 폐암, 위암, 췌담도암, 대장암, 유방암, 기타 고형암",
+      "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=IMH&dr_sid=1008797",
+      "verified_at": "2026-10-10T22:19:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "COLON",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "LUNG",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "BREAST",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "BILIARY",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "ESOPHAGUS",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "HEAD_NECK",
+          "role": "medical_oncology"
+        }
+      ],
+      "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=IMH&grp_yn=N",
+      "verification_method": "official_schedule_explicit_specialty_profile"
+    },
+    {
+      "doctor_name": "현동호",
+      "hospital_name": "이대목동병원",
+      "region": "서울",
+      "department": "영상의학과",
+      "specialty_text": "간암 경동맥치료, 림파틱 인터벤션, 간이식 관련 인터벤션",
+      "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=DR&dr_sid=1024213",
+      "verified_at": "2026-10-10T22:19:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LIVER",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=DR&grp_yn=N",
+      "verification_method": "official_schedule_explicit_specialty_profile"
+    },
+    {
+      "doctor_name": "황윤정",
+      "hospital_name": "이대목동병원",
+      "region": "서울",
+      "department": "호흡기내과",
+      "specialty_text": "폐암, 기관지확장증, 만성폐쇄성폐질환, 천식, 폐결핵, 간질성폐질환",
+      "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=IMP&dr_sid=1011076",
+      "verified_at": "2026-10-10T22:19:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=IMP&grp_yn=N",
+      "verification_method": "official_schedule_explicit_specialty_profile"
     },
     {
       "doctor_name": "곽재용",
