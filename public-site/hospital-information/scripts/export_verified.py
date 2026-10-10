@@ -17,8 +17,9 @@ def https_url(s):
     except ValueError: return False
 def export(db_path):
     if not db_path.is_file(): raise RuntimeError("Database file not found")
-    uri=f"file:{db_path}?mode=ro"
-    connection=sqlite3.connect(uri,uri=True,timeout=20)
+    # WAL-backed SQLite may require writable shared-memory files even for SELECT.
+    # Open normally, then prohibit SQL writes for this connection.
+    connection=sqlite3.connect(str(db_path),timeout=20)
     connection.row_factory=sqlite3.Row
     try:
         connection.execute("PRAGMA query_only=ON")
