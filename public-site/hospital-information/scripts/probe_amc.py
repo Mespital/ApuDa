@@ -33,6 +33,21 @@ try:
             print("  parent",str(p)[:350])
             for ancestor in list(p.parents)[:5]:
                 print("  ancestor",ancestor.name,ancestor.get("class"),ancestor.get("id"),str(ancestor)[:230].replace("\n"," "))
+    cards=sp.select("ul.serchlist_boxwrap > li")
+    print("CARDS",len(cards))
+    for item in cards[:2]:
+        section=item.select_one("div.doctor_info")
+        print("CARD_INFO",str(section)[:2800].replace("\\n"," "))
+        if section:
+            for tr in section.select("tr"):
+                print("ROW",repr(tr.get_text(" ",strip=True)[:200]))
+    first=sp.select_one("p.doctor_name a[href]")
+    if first:
+        detail=urljoin(r.url,first["href"])
+        print("PROFILE_POLICY",parser.can_fetch(UA,detail))
+        if parser.can_fetch(UA,detail):
+            profile=s.get(detail,timeout=15)
+            print("PROFILE",profile.status_code,len(profile.content),"name_visible",first.get_text(" ",strip=True) in BeautifulSoup(profile.text,"html.parser").get_text(" ",strip=True))
     links=[]
     for a in sp.find_all("a",href=True):
         h=a["href"];tx=a.get_text(" ",strip=True)
