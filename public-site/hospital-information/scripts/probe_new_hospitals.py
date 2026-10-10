@@ -30,6 +30,19 @@ for name,domain,path,who in SOURCES:
   if r.status_code!=200:continue
   soup=BeautifulSoup(r.text,"html.parser")
   print("TITLE",soup.title.get_text(" ",strip=True)[:100] if soup.title else "-",flush=True)
+  if name.startswith("ajou"):
+   for script in soup.select("script"):
+    txt=script.get_text("",strip=False)
+    for needle in ["function openDoctorView","openDoctorView =","openDoctorView("]:
+     pos=txt.find(needle)
+     if pos>=0:print("AJOU_JS_HANDLER",needle,txt[max(0,pos-80):pos+1300].replace("\\n"," "),flush=True)
+   print("AJOU_SCRIPT_URLS",[a.get("src") for a in soup.select("script[src]") if any(z in a.get("src","").lower() for z in ["doctor","prof","common"])][:18],flush=True)
+   print("AJOU_CANCER_LINKS",[(a.get_text(" ",strip=True)[:32],a.get("href","")[:90]) for a in soup.select('a[href*="profCancerList.do"]')][:35],flush=True)
+  if name=="hwasun":
+   print("HWASUN_CARDS",len(soup.select("ul.introList > li")),flush=True)
+   print("HWASUN_FIRST",str(soup.select_one("ul.introList > li"))[:2600].replace("\\n"," "),flush=True)
+   print("HWASUN_PAGE_LINKS",[a.get("href") for a in soup.select('a[href*="pageIndex="]')][:45],flush=True)
+
   for term in who:
    matches=soup.find_all(string=lambda z:z and term in z)
    for t in matches[:1]:
