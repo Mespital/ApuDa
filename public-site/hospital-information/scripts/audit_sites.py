@@ -45,6 +45,19 @@ def main():
                     box=box.parent
                     print("DOCTOR_ANCESTOR",i,j,box.name,box.get("class"),re.sub(r"\\s+"," ",str(box))[:2800],flush=True)
             print("CARD_COUNTS",len(soup.select(".doctor-list .dl-name")),flush=True)
+            inner=soup.select_one(".doctor-list .dl-inner")
+            if inner:
+                print("INNER_CHILD_CLASSES",[(x.name,x.get("class")) for x in inner.find_all(recursive=False)][:18],flush=True)
+            for name in soup.select(".doctor-list .dl-name")[:2]:
+                container=name.find_parent(class_="dl-text-box")
+                if container:
+                    print("NAME_AND_SPECIALTY",container.get_text(" ",strip=True)[:1100],flush=True)
+                for level in range(1,6):
+                    ancestor=list(name.parents)[level]
+                    links=[(x.get_text(" ",strip=True)[:30],x.get("href")) for x in ancestor.select("a[href]")]
+                    if links and any("mdclStfEmplNo" in (h or "") for t,h in links):
+                        print("PROFILE_CONTAINER",level,ancestor.get("class"),"TEXT",ancestor.get_text(" ",strip=True)[:1100],"LINKS",links[:4],flush=True)
+                        break
             for pattern in ["li","div","article"]:
                 counts=[]
                 for element in soup.select(pattern+"[class]"):
