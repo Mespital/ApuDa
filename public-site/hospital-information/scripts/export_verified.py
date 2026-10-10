@@ -4,6 +4,8 @@ import json
 import sqlite3
 import sys
 import hashlib
+import shutil
+import tempfile
 from datetime import datetime, timezone
 from urllib.parse import urlparse
 from pathlib import Path
@@ -17,25 +19,34 @@ def https_url(s):
     except ValueError: return False
 def export(db_path):
     if not db_path.is_file(): raise RuntimeError("Database file not found")
-    # WAL-backed SQLite may require writable shared-memory files even for SELECT.
-    # Open normally, then prohibit SQL writes for this connection.
-    connection=sqlite3.connect(str(db_path),timeout=20)
-    connection.row_factory=sqlite3.Row
-    try:
-        connection.execute("PRAGMA query_only=ON")
-        n=connection.execute("SELECT COUNT(*) FROM hospitals").fetchone()[0]
-        if n<1: raise RuntimeError("DB has no hospital records")
-        records=connection.execute("""
-            SELECT s.stable_key, s.doctor_name, s.department, s.specialty_text, s.profile_url,
-                   s.verified_at, h.name AS hospital_name, h.region, h.official_url,
-                   sc.cancer_code, sc.role, sc.evidence_text
-            FROM specialists AS s
-            JOIN hospitals AS h ON h.id=s.hospital_id AND h.active=1
-            JOIN specialist_cancers AS sc ON sc.specialist_id=s.id
-            WHERE s.status='ACTIVE'
-            ORDER BY s.stable_key, sc.cancer_code, sc.role
-        """).fetchall()
-    finally: connection.close()
+    # Avoid writes to the live WAL-backed DB or its -shm sidecar.
+    # A private temporary copy allows SQLite to create shared-memory files safely.
+    # Schedule runs after the DB collectors; quick_check rejects inconsistent copies.
+    with tempfile.TemporaryDirectory(prefix="apuda-verified-") as temporary:
+        copy=Path(temporary)/db_path.name
+        shutil.copy2(db_path, copy)
+        wal=Path(str(db_path)+"-wal")
+        if wal.is_file():
+            shutil.copy2(wal, Path(str(copy)+"-wal"))
+        connection=sqlite3.connect(str(copy),timeout=20)
+        connection.row_factory=sqlite3.Row
+        try:
+            connection.execute("PRAGMA query_only=ON")
+            integrity=connection.execute("PRAGMA quick_check(1)").fetchone()[0]
+            if integrity!="ok": raise RuntimeError("Temporary SQLite snapshot failed integrity check")
+            n=connection.execute("SELECT COUNT(*) FROM hospitals").fetchone()[0]
+            if n<1: raise RuntimeError("DB has no hospital records")
+            records=connection.execute("""
+                SELECT s.stable_key, s.doctor_name, s.department, s.specialty_text, s.profile_url,
+                       s.verified_at, h.name AS hospital_name, h.region, h.official_url,
+                       sc.cancer_code, sc.role, sc.evidence_text
+                FROM specialists AS s
+                JOIN hospitals AS h ON h.id=s.hospital_id AND h.active=1
+                JOIN specialist_cancers AS sc ON sc.specialist_id=s.id
+                WHERE s.status='ACTIVE'
+                ORDER BY s.stable_key, sc.cancer_code, sc.role
+            """).fetchall()
+        finally: connection.close()
     doctors={}
     for item in records:
         x=dict(item)
