@@ -70,6 +70,11 @@ async function run(){
   assert.equal(get("hospitalPanel").hidden,false,"Keyboard tab navigation works");
   get("resetButton").listeners.click();
   assert.equal(get("hospitalList").children.length,30);
+  get("hospitalQuery").value="시험 검증 의료진";
+  get("filters").listeners.submit({preventDefault(){}});
+  assert.equal(get("doctorPanel").hidden,false,"Doctor name query works without selecting cancer");
+  assert.equal(get("doctorList").children.length,1,"Only reviewed doctor appears in name search");
+  get("resetButton").listeners.click();
   const fn=require(path.join(root,"netlify/functions/hospital-information-matcher.js"));
   const original=global.fetch;
   global.fetch=async()=>({ok:true,json:async()=>({count:2,generated_at:now,results:[publicDoctor,pendingDoctor]})});

@@ -28,10 +28,17 @@
     return { cancer: $("cancerSelect").value, region: $("regionSelect").value,
       role: $("roleSelect").value, query: $("hospitalQuery").value.trim().toLowerCase() };
   }
+  function doctorsInHospital(h, f) {
+    return state.records.filter(d => d.hospital_name === h.name
+      && (!f.cancer || d.cancers.some(c => c.code === f.cancer && (!f.role || c.role === f.role)))
+      && (!f.query || (d.doctor_name + " " + d.hospital_name).toLowerCase().includes(f.query)));
+  }
   function filteredHospitals() {
     const f = filters();
     return state.hospitals.filter(h => (!f.region || h.region === f.region)
-      && (!f.query || (h.name + " " + h.slug).toLowerCase().includes(f.query)));
+      && (!f.query || (h.name + " " + h.slug).toLowerCase().includes(f.query)
+        || state.records.some(d => d.hospital_name === h.name && d.doctor_name.toLowerCase().includes(f.query))))
+      .sort((a,b) => doctorsInHospital(b,f).length - doctorsInHospital(a,f).length);
   }
   function cancerLabel() {
     const f = filters();
@@ -47,8 +54,21 @@
     const top = el("div", "card-top");
     top.append(label("✚", "hospital-icon"), label(h.region, "region-chip"));
     card.append(top, el("h3", "", h.name));
-    card.append(el("p", "", "의료기관 기본 정보 · 해당 암종의 진료 여부는 병원에서 확인해 주세요."));
-    if (h.staff_url) card.append(el("p", "directory-note", "공식 의료진 안내 페이지 연결 가능"));
+    const condition = filters();
+    const total = doctorsInHospital(h,{...condition,cancer:"",role:""}).length;
+    const matched = doctorsInHospital(h,condition).length;
+    if (matched && condition.cancer) {
+      card.append(el("p","directory-note","공식 " + cancerLabel() + " 진료분야 일치 의료진 " + matched + "명"));
+    } else if (matched) {
+      card.append(el("p","directory-note","공식 진료분야 확인 의료진 " + matched + "명"));
+    } else if (condition.cancer && total) {
+      card.append(el("p","directory-note muted","등록된 의료진 중 " + cancerLabel() + " 진료분야 확인 정보 없음"));
+    } else if (h.staff_url) {
+      card.append(el("p","directory-note muted","의료진 목록 연동 대기 · 공식 검색에서 직접 확인"));
+    } else {
+      card.append(el("p","directory-note muted","의료진 목록 연동 대기 · 병원 홈페이지에서 확인"));
+    }
+    card.append(el("p","","병원 목록은 의료기관 평가나 치료 성적 순위가 아닙니다."));
     const bottom = el("div", "card-bottom");
     const actions = el("div", "card-actions");
     if (h.staff_url) actions.append(link(h.staff_url, "의료진 안내 ↗", "staff-link"));
@@ -72,9 +92,9 @@
   }
   function matchedDoctors() {
     const f = filters();
-    if (!f.cancer) return [];
+    if (!f.cancer && !f.query) return [];
     return state.records.filter(d => eligibleDoctor(d)
-      && d.cancers.some(c => c.code === f.cancer && (!f.role || c.role === f.role))
+      && (!f.cancer || d.cancers.some(c => c.code === f.cancer && (!f.role || c.role === f.role)))
       && (!f.region || d.region === f.region)
       && (!f.query || (d.doctor_name + " " + d.hospital_name).toLowerCase().includes(f.query)));
   }
@@ -82,8 +102,8 @@
     const list = $("doctorList"), status = $("doctorStatus"), found = matchedDoctors(), f = filters();
     list.replaceChildren();
     $("doctorTabCount").textContent = found.length;
-    if (!f.cancer) {
-      status.textContent = "암종을 선택하면 검증 완료 의료진을 확인할 수 있습니다. 병원 검색은 언제든지 이용할 수 있습니다.";
+    if (!f.cancer && !f.query) {
+      status.textContent = "암종을 선택하거나 의료진 이름을 검색하면 공식 진료분야 확인 의료진을 볼 수 있습니다.";
       list.append(empty("암종을 선택해 주세요", "해당 암종과 공식 진료분야가 일치하는 공개 승인 의료진만 표시합니다."));
     } else if (!found.length) {
       status.textContent = state.snapshotLoaded
@@ -92,7 +112,8 @@
       list.append(empty("검증 완료 의료진 검색 결과 0명",
         "아직 공개 승인된 정보가 없거나 선택 조건과 일치하는 자료가 없습니다. 의료진이 존재하지 않거나 해당 암종을 진료하지 않는다는 뜻은 아닙니다."));
     } else {
-      status.textContent = cancerLabel() + " · 공식 진료분야와 연결되어 공개 승인된 의료진 " + found.length + "명입니다. 순위 또는 치료 성적 비교가 아닙니다.";
+      status.textContent = (f.cancer ? cancerLabel() + " · " : "의료진 이름/병원 검색 · ")
+        + "공식 진료분야가 확인된 의료진 " + found.length + "명입니다. 순위 또는 치료 성적 비교가 아닙니다.";
       for (const d of found) {
         const card = el("article", "doctor-card");
         const head = el("div", "doctor-head");
@@ -108,9 +129,9 @@
     }
     const others = $("officialFallback"), fallbacks = filteredHospitals();
     others.replaceChildren();
-    if (f.cancer) {
+    if (f.cancer || f.query) {
       others.append(el("h3", "fallback-heading", "병원 공식 의료진 안내"));
-      others.append(el("p", "fallback-copy", "아래 기관들은 " + cancerLabel() + " 전문 치료가 검증된 목록이 아닙니다. 해당 병원 공식 페이지에서 직접 진료과·진료분야를 확인하세요."));
+      others.append(el("p", "fallback-copy", "이 목록의 모든 병원이 해당 암종을 진료한다고 검증된 것은 아닙니다. 각 병원 공식 페이지에서 진료과·진료분야를 확인하세요."));
       const mini = el("div", "fallback-grid");
       for (const h of fallbacks) {
         const item = el("div", "fallback-item");
@@ -142,12 +163,12 @@
     renderHospitals();
     renderDoctors();
     const f = filters(), matches = matchedDoctors().length, hospitalCount = filteredHospitals().length;
-    const hasDoctors = Boolean(f.cancer && matches > 0);
+    const hasDoctors = Boolean((f.cancer || f.query) && matches > 0);
     changeTab(hasDoctors ? "doctors" : "hospitals");
-    if (f.cancer && !hasDoctors) {
-      setNote(cancerLabel() + " · 현재 조건에 맞는 공개 승인 의료진은 " + matches
+    if ((f.cancer || f.query) && !hasDoctors) {
+      setNote((f.cancer ? cancerLabel() : "의료진 검색") + " · 현재 조건에 맞는 공개 승인 의료진은 " + matches
         + "명입니다. 대신 등록 의료기관 " + hospitalCount
-        + "곳과 공식 의료진 확인 링크를 표시합니다. 기관별 " + cancerLabel() + " 진료 여부는 직접 확인해 주세요.");
+        + "곳과 공식 의료진 확인 링크를 표시합니다. 기관별 진료 여부는 직접 확인해 주세요.");
     } else if (hasDoctors) {
       setNote("검증된 의료진 " + matches + "명과 병원 공식 출처를 확인할 수 있습니다.");
     } else {
@@ -198,7 +219,7 @@
       $("verifiedMetric").textContent=state.records.length;
       const coveredHospitals=[...new Set(state.records.map(d=>d.hospital_name))].sort();
       $("coverageStatus").textContent=coveredHospitals.length
-        ? "현재 의료진 데이터 제공 병원: " + coveredHospitals.join(" · ") + " (" + coveredHospitals.length + "곳). 나머지 의료기관은 공식 링크를 이용해 주세요."
+        ? "공식 의료진 데이터 제공: 전체 " + state.hospitals.length + "개 병원 중 " + coveredHospitals.length + "곳. 나머지 병원은 공식 의료진 검색을 이용해 주세요."
         : "현재 공개 승인된 의료진 명단은 없습니다. 병원 공식 의료진 안내를 이용해 주세요.";
       const syncTime = Date.parse(payload.generated_at || "");
       $("syncStatus").textContent = Number.isFinite(syncTime)

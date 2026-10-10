@@ -24,3 +24,7 @@
 .verification-date{font-size:11px!important;color:#75879c!important;margin-top:7px!important}
 .results-panel{scroll-margin-top:16px}
 @media(max-width:680px){.tab-row{flex-wrap:wrap;row-gap:0;column-gap:13px}.tab{white-space:normal;line-height:1.4;min-height:48px}.status-message{padding:15px 16px;font-size:13px}.empty-state{padding:35px 16px}.empty-state h3{font-size:16px;word-break:keep-all}.empty-state p{font-size:12px}.result-top .result-label{width:100%;margin:0 0 7px}}
+
+/* Coverage-aware hospital search */
+.directory-note.muted{color:#758498!important;font-weight:500!important}
+.hospital-card .directory-note{font-size:12px;line-height:1.7;margin-top:8px}
