@@ -1,0 +1,64 @@
+name: Hospital Information Samsung official specialists
+on:
+  schedule:
+    - cron: '10 22 * * *' # every morning 07:10 Asia/Seoul
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'public-site/hospital-information/scripts/collect_smc.py'
+      - '.github/workflows/hospital-information-smc.yml'
+permissions:
+  contents: write
+concurrency:
+  group: apuda-hospital-data-sync
+  cancel-in-progress: false
+jobs:
+  smc-directory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install requests beautifulsoup4
+      - name: Official 30-cancer searches and specialties
+        run: |
+          set -euo pipefail
+          python public-site/hospital-information/scripts/collect_smc.py \
+            --output public-site/hospital-information/data/smc-verified.json
+          python public-site/hospital-information/scripts/merge_verified.py
+      - name: Validate searched and published official clinical profiles
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("public-site/hospital-information/data")
+          smc=json.loads((p/"smc-verified.json").read_text(encoding="utf-8"))
+          all_=json.loads((p/"verified-specialists.json").read_text(encoding="utf-8"))
+          assert len(smc["coverage"])==30, "Not all cancer searches completed"
+          assert smc["count"]==len(smc["results"])>=20, "Low official clinician coverage"
+          for d in smc["results"]:
+            assert d["status"]=="ACTIVE" and d["cancers"] and d["specialty_text"]
+            assert d["source_url"].startswith("https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=")
+            assert d["profile_url"].startswith("https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=")
+          assert all_["count"]>=smc["count"]
+          print("SMC_VERIFIED",smc["count"],"TOTAL_VERIFIED",all_["count"])
+          PY
+      - name: Publish GitHub reviewed snapshot to existing Netlify site
+        run: |
+          set -euo pipefail
+          git config user.name apuda-hospital-bot
+          git config user.email apuda-hospital-bot@users.noreply.github.com
+          git add public-site/hospital-information/data/smc-verified.json \
+                  public-site/hospital-information/data/verified-specialists.json
+          if git diff --cached --quiet; then
+            echo "No Samsung medical directory changes"
+          else
+            git commit -m "data(hospital): publish SMC officially documented clinical specialists"
+            git pull --rebase -X theirs origin main
+            git push origin main
+          fi
