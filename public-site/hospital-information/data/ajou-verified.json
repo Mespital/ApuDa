@@ -1,7 +1,1441 @@
 {
   "schema_version": 1,
-  "source": "Ajou awaiting verification",
-  "generated_at": null,
-  "count": 0,
-  "results": []
+  "source": "아주대학교병원 공식 진료과 의료진 소개",
+  "generated_at": "2026-10-10T22:10:15+00:00",
+  "count": 64,
+  "coverage": [
+    {
+      "source": "암센터",
+      "cards": 6,
+      "matched": 3
+    },
+    {
+      "source": "비뇨의학과",
+      "cards": 6,
+      "matched": 0
+    },
+    {
+      "source": "방사선종양학과",
+      "cards": 7,
+      "matched": 7
+    },
+    {
+      "source": "산부인과",
+      "cards": 11,
+      "matched": 1
+    },
+    {
+      "source": "성형외과",
+      "cards": 6,
+      "matched": 1
+    },
+    {
+      "source": "신경과",
+      "cards": 14,
+      "matched": 0
+    },
+    {
+      "source": "소아청소년과",
+      "cards": 19,
+      "matched": 0
+    },
+    {
+      "source": "소화기내과",
+      "cards": 16,
+      "matched": 12
+    },
+    {
+      "source": "이비인후과",
+      "cards": 9,
+      "matched": 4
+    },
+    {
+      "source": "정형외과",
+      "cards": 23,
+      "matched": 0
+    },
+    {
+      "source": "종양혈액내과",
+      "cards": 9,
+      "matched": 9
+    },
+    {
+      "source": "피부과",
+      "cards": 5,
+      "matched": 0
+    },
+    {
+      "source": "심장혈관흉부외과",
+      "cards": 8,
+      "matched": 3
+    },
+    {
+      "source": "호흡기내과",
+      "cards": 7,
+      "matched": 6
+    },
+    {
+      "source": "신경외과",
+      "cards": 10,
+      "matched": 1
+    },
+    {
+      "source": "위장관외과",
+      "cards": 5,
+      "matched": 5
+    },
+    {
+      "source": "대장항문외과",
+      "cards": 5,
+      "matched": 4
+    },
+    {
+      "source": "소아외과",
+      "cards": 1,
+      "matched": 0
+    },
+    {
+      "source": "유방외과",
+      "cards": 3,
+      "matched": 3
+    },
+    {
+      "source": "갑상선내분비외과",
+      "cards": 4,
+      "matched": 4
+    },
+    {
+      "source": "이식혈관외과",
+      "cards": 4,
+      "matched": 0
+    },
+    {
+      "source": "응급중환자외과",
+      "cards": 2,
+      "matched": 1
+    },
+    {
+      "source": "간담췌외과",
+      "cards": 6,
+      "matched": 4
+    }
+  ],
+  "results": [
+    {
+      "doctor_name": "강석윤",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "종양혈액내과",
+      "specialty_text": "대장암, 췌담도암, GIST",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=24&profNo=93",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=24",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "BILIARY",
+          "role": "medical_oncology"
+        }
+      ]
+    },
+    {
+      "doctor_name": "김봉완",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "간담췌외과",
+      "specialty_text": "간이식, 간암, 로봇·복강경간수술, 담낭·담도질환",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=197&profNo=81",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=197",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "LIVER",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "김선정",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "대장항문외과",
+      "specialty_text": "대장암, 직장암, 여성 골반질환, 대장항문 질환, 염증성 장질환, 복강경수술, 로봇수술",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=101&profNo=892",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=101",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "surgery"
+        },
+        {
+          "code": "RECTAL",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "김성열",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "이비인후과",
+      "specialty_text": "두경부종양(구강암·설암·편도암·후두암·인두암·침샘암),갑상선암,음성장애,기관식도질환,두경부로봇수술",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=17&profNo=293",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=17",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "THYROID",
+          "role": "surgery"
+        },
+        {
+          "code": "ORAL",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "김세혁",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "신경외과",
+      "specialty_text": "뇌종양(뇌수막종 · 신경초종 · 교모세포종 등), 지주막낭종, 해면상혈관종, 뇌하수체종양, 감마나이프 수술",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=49&profNo=71",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=49",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "BRAIN",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "김수영",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "갑상선내분비외과",
+      "specialty_text": "갑상선암, 갑상선, 부갑상선질환의 수술적치료, 최소침습수술, 로봇수술, 두경부질환, 경구강로봇수술, 겨드랑이로봇수술, 진행성 갑상선암, 미분화 갑상선암",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=105&profNo=804",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=105",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "THYROID",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "김순선",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "소화기내과",
+      "specialty_text": "간질환(내과계), 간암, 간염, 간경변증, 지방간, 간결절",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=13&profNo=194",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=13",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "LIVER",
+          "role": "diagnosis"
+        }
+      ]
+    },
+    {
+      "doctor_name": "김창우",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "대장항문외과",
+      "specialty_text": "대장암, 직장암, 대장항문질환, 복강경수술, 로봇수술",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=101&profNo=817",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=101",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "surgery"
+        },
+        {
+          "code": "RECTAL",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "김철호",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "이비인후과",
+      "specialty_text": "두경부종양(구강암, 설암, 편도암, 후두암, 인두암, 침샘암), 갑상선암, 음성장애, 기관식도질환, 두경부로봇수술",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=17&profNo=157",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=17",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "THYROID",
+          "role": "surgery"
+        },
+        {
+          "code": "ORAL",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "김태환",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "종양혈액내과",
+      "specialty_text": "폐암, 췌담도암, 비뇨기암, 유방암",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=24&profNo=411",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=24",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "BREAST",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "BILIARY",
+          "role": "medical_oncology"
+        }
+      ]
+    },
+    {
+      "doctor_name": "김형규",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "갑상선내분비외과",
+      "specialty_text": "갑상선암, 조기 갑상선암의 환자별 맞춤치료, 그레이브스병 및 갑상선 종양의 수술적 치료, 부갑상선 질환 및 부갑상선 종양의 수술적 치료, 부신질환(부신 쿠싱증후군, 고알도스테론 혈증, 갈색세포종) 및 부신의 악성종양의 수술적 치료, 최소침습, 복강경 및 로봇수술",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=105&profNo=623",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=105",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "THYROID",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "노오규",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "방사선종양학과",
+      "specialty_text": "폐암, 비뇨기암, 식도암, 대장암, 직장암",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=6&profNo=300",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=6",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "radiation"
+        },
+        {
+          "code": "RECTAL",
+          "role": "radiation"
+        },
+        {
+          "code": "LUNG",
+          "role": "radiation"
+        },
+        {
+          "code": "ESOPHAGUS",
+          "role": "radiation"
+        }
+      ]
+    },
+    {
+      "doctor_name": "박광주",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "호흡기내과",
+      "specialty_text": "폐암, 만성폐질환, 폐결핵, 중환자 치료학",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=29&profNo=91",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=29",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "diagnosis"
+        }
+      ]
+    },
+    {
+      "doctor_name": "박제연",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "소화기내과",
+      "specialty_text": "간질환(내과계), 간암, 간염, 간경변증, 지방간",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=13&profNo=982",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=13",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "LIVER",
+          "role": "diagnosis"
+        }
+      ]
+    },
+    {
+      "doctor_name": "박종선",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "소화기내과",
+      "specialty_text": "위·대장질환, 위암, 위점막하종양, 위선종, 대장암, 내시경 종양 절제술",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=13&profNo=756",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=13",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "endoscopy"
+        },
+        {
+          "code": "COLON",
+          "role": "endoscopy"
+        }
+      ]
+    },
+    {
+      "doctor_name": "박종훈",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "소화기내과",
+      "specialty_text": "위질환(위선종·위염·위궤양·헬리코박터 제균치료),위점막하종양, 대장암, 대장용종, 내시경 종양 절제술",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=13&profNo=493",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=13",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "endoscopy"
+        }
+      ]
+    },
+    {
+      "doctor_name": "박준성",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "종양혈액내과",
+      "specialty_text": "만성골수성백혈병, 골수증식종양, 조혈모세포이식, 빈혈, 혈구증가증, 혈구감소증, 비장비대",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=24&profNo=67",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=24",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "LEUKEMIA",
+          "role": "medical_oncology"
+        }
+      ]
+    },
+    {
+      "doctor_name": "박지은",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "호흡기내과",
+      "specialty_text": "폐이식, 폐암, 만성폐쇄성폐질환, 천식",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=29&profNo=731",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=29",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "diagnosis"
+        }
+      ]
+    },
+    {
+      "doctor_name": "백수연",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "유방외과",
+      "specialty_text": "유방암 및 유방질환, 유방 음영 증가, 유방 비대칭 음영, 유방 결절, 유선염, 유방통증, 유방 양성종양(맘모톰 시술 제외), 유방 미세석회화",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=104&profNo=822",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=104",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "BREAST",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "부여진",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "위장관외과",
+      "specialty_text": "위암, 위장관질환, 비만대사수술, 탈장, 복강경 및 로봇수술",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=100&profNo=780",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=100",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "손상용",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "위장관외과",
+      "specialty_text": "위암, 복강경수술, 복강경탈장, 위장관일반질환, 비만대사 수술",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=100&profNo=562",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=100",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "송정호",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "위장관외과",
+      "specialty_text": "위암, 복강경 및 로봇수술, 탈장, 위·식도역류질환수술, 비만대사수술",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=100&profNo=821",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=100",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "신성재",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "소화기내과",
+      "specialty_text": "위·대장질환, 염증성장질환(크론병 · 궤양성대장염), 대장암, 대장용종",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=13&profNo=218",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=13",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "diagnosis"
+        }
+      ]
+    },
+    {
+      "doctor_name": "신승수",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "호흡기내과",
+      "specialty_text": "폐암, 만성 폐쇄성 폐질환",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=29&profNo=51",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=29",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "diagnosis"
+        }
+      ]
+    },
+    {
+      "doctor_name": "신유섭",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "이비인후과",
+      "specialty_text": "두경부종양(구강암·설암·편도암·후두암·인두암·침샘암), 갑상선암, 음성장애, 기관식도질환, 두경부로봇수술",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=17&profNo=375",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=17",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "THYROID",
+          "role": "surgery"
+        },
+        {
+          "code": "ORAL",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "안미선",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "종양혈액내과",
+      "specialty_text": "유방암, 부인암, 육종, 대장암, 완화의료",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=116&profNo=193",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profCancerList.do?deptNo=116",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "BREAST",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "SARCOMA",
+          "role": "medical_oncology"
+        }
+      ]
+    },
+    {
+      "doctor_name": "양민재",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "소화기내과",
+      "specialty_text": "췌장암, 담도암, 담낭암, 바터팽대부종양, 췌장낭종, 췌장염, 담석증, 담낭염, 담낭용종, 간결석, 초음파내시경, 췌장담도치료내시경, 소장내시경, 초음파내시경 중재시술",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=13&profNo=195",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=13",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "PANCREAS",
+          "role": "endoscopy"
+        },
+        {
+          "code": "BILIARY",
+          "role": "endoscopy"
+        },
+        {
+          "code": "GALLBLADDER",
+          "role": "endoscopy"
+        }
+      ]
+    },
+    {
+      "doctor_name": "양청인",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "종양혈액내과",
+      "specialty_text": "백혈병, 다발골수종, 조혈모세포이식, 빈혈, 혈구증가증, 혈구감소증, 비장비대",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=24&profNo=555",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=24",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "LEUKEMIA",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "MYELOMA",
+          "role": "medical_oncology"
+        }
+      ]
+    },
+    {
+      "doctor_name": "양혜연",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "간담췌외과",
+      "specialty_text": "췌장암, 담도암, 담낭&담도 질환, 복강경수술, 로봇수술, 간이식",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=197&profNo=854",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=197",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "PANCREAS",
+          "role": "surgery"
+        },
+        {
+          "code": "BILIARY",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "오영택",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "방사선종양학과",
+      "specialty_text": "뇌, 두경부종양, 폐암",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=6&profNo=77",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=6",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "radiation"
+        }
+      ]
+    },
+    {
+      "doctor_name": "오주현",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "호흡기내과",
+      "specialty_text": "폐암, 만성 폐쇄성폐질환, 간질성 폐질환, 천식, 폐결핵",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=29&profNo=959",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=29",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "diagnosis"
+        }
+      ]
+    },
+    {
+      "doctor_name": "유병무",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "소화기내과",
+      "specialty_text": "췌·담도질환, 췌장암, 췌장염, 췌장의양성종양, 담낭암, 담도암, 담석증, 담낭용종, 담낭염, 간결석, 치료내시경",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=13&profNo=78",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=13",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "PANCREAS",
+          "role": "endoscopy"
+        },
+        {
+          "code": "BILIARY",
+          "role": "endoscopy"
+        },
+        {
+          "code": "GALLBLADDER",
+          "role": "endoscopy"
+        }
+      ]
+    },
+    {
+      "doctor_name": "유우식",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "심장혈관흉부외과",
+      "specialty_text": "폐암, 식도암, 종격동 종양, 로봇수술, 폐이식",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=28&profNo=748",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=28",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "surgery"
+        },
+        {
+          "code": "ESOPHAGUS",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "이길호",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "소화기내과",
+      "specialty_text": "위·대장질환, 위암, 위선종, 대장암, 대장용종, 내시경 종양 절제술",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=13&profNo=325",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=13",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "endoscopy"
+        },
+        {
+          "code": "COLON",
+          "role": "endoscopy"
+        }
+      ]
+    },
+    {
+      "doctor_name": "이시호",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "방사선종양학과",
+      "specialty_text": "대장암, 완화 방사선치료",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=6&profNo=1009",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=6",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "radiation"
+        }
+      ]
+    },
+    {
+      "doctor_name": "이진석",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "갑상선내분비외과",
+      "specialty_text": "갑상선암, 갑상선·부갑상선질환의 수술적치료, 최소침습수술, 로봇수술, 두경부질환, 경구강수술, 부신질환(부신 쿠싱증후군, 고알도 스테론 혈정, 갈색세포종) 및 부신의 악성종양의 수술적 치료",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=105&profNo=903",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=105",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "THYROID",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "이태균",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "대장항문외과",
+      "specialty_text": "대장암, 직장암, 대장항문 질환, 염증성 장질환, 복강경수술, 로봇수술",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=101&profNo=902",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=101",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "surgery"
+        },
+        {
+          "code": "RECTAL",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "이현우",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "종양혈액내과",
+      "specialty_text": "폐암, 비뇨기암, 흑색종, 피부암, 위암, 완화의료",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=116&profNo=139",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profCancerList.do?deptNo=116",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "LUNG",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "MELANOMA",
+          "role": "medical_oncology"
+        }
+      ]
+    },
+    {
+      "doctor_name": "임선교",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "소화기내과",
+      "specialty_text": "상부위장관 종양(위암 · 상피하종양 식도암), 위장관 양성질환(위염/위궤양 · 헬리코박터 파일로리 연관 질환 · 식도아칼라지아), 내시경종양 절제술 및 위장관 치료내시경",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=13&profNo=126",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=13",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "endoscopy"
+        },
+        {
+          "code": "ESOPHAGUS",
+          "role": "endoscopy"
+        }
+      ]
+    },
+    {
+      "doctor_name": "장석준",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "산부인과",
+      "specialty_text": "난소암, 복막암, 자궁암, 하이펙",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=7&profNo=80",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=7",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "OVARIAN",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "장전엽",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "이비인후과",
+      "specialty_text": "두경부종양(구강암·설암·편도암·후두암·인두암·침샘암), 갑상선암, 음성장애, 기관식도질환, 두경부로봇수술",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=17&profNo=654",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=17",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "THYROID",
+          "role": "surgery"
+        },
+        {
+          "code": "ORAL",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "전미선",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "방사선종양학과",
+      "specialty_text": "유방암, 부인암, 통합의학, 완화의료",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=116&profNo=6",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profCancerList.do?deptNo=116",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "BREAST",
+          "role": "radiation"
+        }
+      ]
+    },
+    {
+      "doctor_name": "정성현",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "종양혈액내과",
+      "specialty_text": "림프종, 만성백혈병, 골수증식성질환, 빈혈, 혈구감소증",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=24&profNo=109",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=24",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "LEUKEMIA",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "LYMPHOMA",
+          "role": "medical_oncology"
+        }
+      ]
+    },
+    {
+      "doctor_name": "정승연",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "방사선종양학과",
+      "specialty_text": "유방암, 간암, 혈액암, 소아",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=6&profNo=795",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=6",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "BREAST",
+          "role": "radiation"
+        },
+        {
+          "code": "LIVER",
+          "role": "radiation"
+        }
+      ]
+    },
+    {
+      "doctor_name": "정용식",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "유방외과",
+      "specialty_text": "유방암, 맘모톰 시술 및 수술환자진료",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=104&profNo=52",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=104",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "BREAST",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "정우영",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "호흡기내과",
+      "specialty_text": "폐암, 폐결핵, 만성폐쇄성 폐질환",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=29&profNo=269",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=29",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "diagnosis"
+        }
+      ]
+    },
+    {
+      "doctor_name": "정우현",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "간담췌외과",
+      "specialty_text": "담낭, 담도, 췌장암, 담도암, 췌장질환의 복강경 및 로봇수술",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=197&profNo=627",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=197",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "PANCREAS",
+          "role": "surgery"
+        },
+        {
+          "code": "BILIARY",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "정윤정",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "호흡기내과",
+      "specialty_text": "폐암, 만성폐쇄성폐질환, 천식",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=29&profNo=214",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=29",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "diagnosis"
+        }
+      ]
+    },
+    {
+      "doctor_name": "정재연",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "소화기내과",
+      "specialty_text": "간암, 간염, 지방간, 간경변증, 간결절",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=13&profNo=159",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=13",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "LIVER",
+          "role": "diagnosis"
+        }
+      ]
+    },
+    {
+      "doctor_name": "정준호",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "심장혈관흉부외과",
+      "specialty_text": "폐암, 종격동종양, 기흉, 로봇수술",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=28&profNo=252",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=28",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "정진민",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "대장항문외과",
+      "specialty_text": "대장암, 직장암, 대장항문 질환, 염증성 장질환(크론병, 궤양성대장염), 복강경수술, 로봇수술",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=101&profNo=901",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=101",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "surgery"
+        },
+        {
+          "code": "RECTAL",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "정호중",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "갑상선내분비외과",
+      "specialty_text": "갑상선암, 갑상선·부갑상선질환의 수술적치료, 최소침습수술, 로봇수술, 두경부질환, 경구강수술, 부신질환(부신 쿠싱증후군, 고알도 스테론 혈정, 갈색세포종) 및 부신의 악성종양의 수술적 치료",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=105&profNo=964",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=105",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "THYROID",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "조오연",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "방사선종양학과",
+      "specialty_text": "부인암, 유방암, 육종",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=6&profNo=307",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=6",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "BREAST",
+          "role": "radiation"
+        },
+        {
+          "code": "SARCOMA",
+          "role": "radiation"
+        }
+      ]
+    },
+    {
+      "doctor_name": "조효정",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "소화기내과",
+      "specialty_text": "간질환(내과계), 간암, 간염, 간경변증, 지방간, 간결절",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=13&profNo=305",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=13",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "LIVER",
+          "role": "diagnosis"
+        }
+      ]
+    },
+    {
+      "doctor_name": "최용원",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "종양혈액내과",
+      "specialty_text": "위암, 폐암, 두경부암, 뇌종양",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=24&profNo=179",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=24",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "LUNG",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "HEAD_NECK",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "BRAIN",
+          "role": "medical_oncology"
+        }
+      ]
+    },
+    {
+      "doctor_name": "최진혁",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "종양혈액내과",
+      "specialty_text": "폐암, 위암, 두경부암",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=24&profNo=72",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=24",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "LUNG",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "HEAD_NECK",
+          "role": "medical_oncology"
+        }
+      ]
+    },
+    {
+      "doctor_name": "한상욱",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "위장관외과",
+      "specialty_text": "위암, 위·식도역류질환, 복강경 및 로봇수술",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=100&profNo=74",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=100",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "한형민",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "성형외과",
+      "specialty_text": "유방성형, 유방암 재건, 재건성형, 안면부 외상, 당뇨발, 만성상처, 눈성형",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=8&profNo=584",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=8",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "BREAST",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "함석진",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "심장혈관흉부외과",
+      "specialty_text": "폐암, 폐이식, 로봇수술",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=28&profNo=590",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=28",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "허민희",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "유방외과",
+      "specialty_text": "유방암, 유방로봇수술",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=104&profNo=799",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=104",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "BREAST",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "허재성",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "방사선종양학과",
+      "specialty_text": "유방암, 위암, 췌담도, 두경부종양, 뇌종양, 비뇨기암",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=6&profNo=380",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=6",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "radiation"
+        },
+        {
+          "code": "BREAST",
+          "role": "radiation"
+        },
+        {
+          "code": "BRAIN",
+          "role": "radiation"
+        }
+      ]
+    },
+    {
+      "doctor_name": "허훈",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "위장관외과",
+      "specialty_text": "위암, 복강경 수술,위식도역류 질환",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=100&profNo=336",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=100",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "홍성연",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "간담췌외과",
+      "specialty_text": "간이식, 전이성 간암, 복강경수술, 담낭·담도질환",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=197&profNo=267",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=197",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "LIVER",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "황재철",
+      "hospital_name": "아주대학교병원",
+      "region": "경기",
+      "department": "소화기내과",
+      "specialty_text": "췌·담도질환, 췌장암, 췌장염, 췌장 양성종양, 췌장 낭종, 담낭암, 담낭결석, 담낭용종, 담도암, 담도염, 담도결석, 치료내시경, 초음파내시경",
+      "profile_url": "https://hosp.ajoumc.or.kr/doctor/profViewPop.do?deptNo=13&profNo=111",
+      "verified_at": "2026-10-10T22:10:15+00:00",
+      "status": "ACTIVE",
+      "source_url": "https://hosp.ajoumc.or.kr/doctor/profDeptList.do?deptNo=13",
+      "verification_method": "official_department_explicit_specialty_and_individual_profile",
+      "cancers": [
+        {
+          "code": "PANCREAS",
+          "role": "endoscopy"
+        },
+        {
+          "code": "BILIARY",
+          "role": "endoscopy"
+        },
+        {
+          "code": "GALLBLADDER",
+          "role": "endoscopy"
+        }
+      ]
+    }
+  ]
 }
