@@ -24,6 +24,11 @@ with requests.Session() as s:
    p=x.parent
    for a in list(p.parents)[:5]:
     print("PARENT",a.name,a.get("class"),str(a)[:700].replace("\n"," "))
+ print("CARDS",len(soup.select("li.doc_blk")))
+ for card in soup.select("li.doc_blk")[:3]:
+  print("CARD_ANCHORS",[(x.get_text(" ",strip=True),x.get("href"),x.get("onclick")) for x in card.select("a[href],a[onclick]")])
+  print("CARD_HTML_END",str(card)[-1100:].replace("\\n"," "))
+ print("ONCOLOGY_MENU",[(x.get_text(" ",strip=True),x.get("href")) for x in soup.select('a[href*="profCancerList.do?deptNo="]')][:40])
  print("ANCHOR_SAMPLES")
  links=[]
  for a in soup.select("a[href],a[onclick]"):
