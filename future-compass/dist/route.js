@@ -43,7 +43,7 @@
     var core = ls('compass-study-v1', {}), row = !off && w >= 1 && w <= 5 && core.table && core.table[w - 1] ? core.table[w - 1].filter(Boolean) : [];
     var times = cfg().periods || [], schoolDay = row.length > 0;
     var end = schoolDay && times[row.length - 1] ? addMin(times[row.length - 1], cfg().classMinutes || 50) : '';
-    var acs = (g.FC_ACADEMY ? g.FC_ACADEMY.forDay(iso) : ls('fc_academy_v1', []).filter(function (a) { return a && Array.isArray(a.days) && a.days.indexOf(w) >= 0; }));
+    var acs = (g.FC_ACADEMY ? g.FC_ACADEMY.forDay(iso) : ls('fc_academy_v1', []).filter(function (a) { return a && Array.isArray(a.days) && a.days.indexOf(w) >= 0 && (!a.from || iso >= a.from); }));
     var stops = [], out = [];
     if (schoolDay) stops.push({ key: 'school', name: p.school.name, lat: p.school.lat, lng: p.school.lng, at: times[0] ? addMin(times[0], -10) + ' 도착' : '', leave: end });
     acs.forEach(function (a) { stops.push({ key: 'ac', name: a.name, lat: a.lat, lng: a.lng, addr: a.addr, at: a.start, leave: a.end }); });
