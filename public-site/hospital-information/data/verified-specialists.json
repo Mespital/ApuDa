@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "source": "ApuDa reviewed official medical institution directories",
-  "generated_at": "2026-10-10T07:30:47+00:00",
-  "count": 205,
+  "generated_at": "2026-10-10T07:31:16+00:00",
+  "count": 218,
   "results": [
     {
       "doctor_name": "강민수",
@@ -4305,6 +4305,288 @@
       ],
       "source_url": "https://www.amc.seoul.kr/asan/depts/cancer/K/staffcancer.do?menuId=3750",
       "verification_method": "official_center_directory_exact_specialty"
+    },
+    {
+      "doctor_name": "곽재용",
+      "hospital_name": "전북대학교병원",
+      "region": "전북",
+      "department": "혈액종양내과",
+      "specialty_text": "림프종, 혈액 질환, 혈액암, 조혈모세포 이식",
+      "profile_url": "https://www.jbuh.co.kr/prog/mdclStf/main/sub01_01/view.do?mdclCd=IMHO&mdclStfEmplNo=91315",
+      "verified_at": "2026-10-10T07:31:03+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LYMPHOMA",
+          "role": "medical_oncology"
+        }
+      ],
+      "source_url": "https://www.jbuh.co.kr/prog/mdcl/main/sub01_01_01/viewStf.do?mdclCd=IMHO",
+      "verification_method": "official_department_explicit_specialty"
+    },
+    {
+      "doctor_name": "박성주",
+      "hospital_name": "전북대학교병원",
+      "region": "전북",
+      "department": "호흡기알레르기내과",
+      "specialty_text": "천식 및 만성기도질환, 알레르기질환, 폐결절 및 폐암",
+      "profile_url": "https://www.jbuh.co.kr/prog/mdclStf/main/sub01_01/view.do?mdclCd=IMPM&mdclStfEmplNo=98251",
+      "verified_at": "2026-10-10T07:31:03+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://www.jbuh.co.kr/prog/mdcl/main/sub01_01_01/viewStf.do?mdclCd=IMPM",
+      "verification_method": "official_department_explicit_specialty"
+    },
+    {
+      "doctor_name": "박승용",
+      "hospital_name": "전북대학교병원",
+      "region": "전북",
+      "department": "호흡기알레르기내과",
+      "specialty_text": "폐암, 호흡기질환, 기관지 내시경 시술",
+      "profile_url": "https://www.jbuh.co.kr/prog/mdclStf/main/sub01_01/view.do?mdclCd=IMPM&mdclStfEmplNo=20345",
+      "verified_at": "2026-10-10T07:31:03+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://www.jbuh.co.kr/prog/mdcl/main/sub01_01_01/viewStf.do?mdclCd=IMPM",
+      "verification_method": "official_department_explicit_specialty"
+    },
+    {
+      "doctor_name": "박혜리",
+      "hospital_name": "전북대학교병원",
+      "region": "전북",
+      "department": "방사선종양학과",
+      "specialty_text": "유방암, 하부소화기종양, 전이성암, 온열치료",
+      "profile_url": "https://www.jbuh.co.kr/prog/mdclStf/main/sub01_01/view.do?mdclCd=RT&mdclStfEmplNo=26984",
+      "verified_at": "2026-10-10T07:31:03+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BREAST",
+          "role": "radiation"
+        }
+      ],
+      "source_url": "https://www.jbuh.co.kr/prog/mdcl/main/sub01_01_01/viewStf.do?mdclCd=RT",
+      "verification_method": "official_department_explicit_specialty"
+    },
+    {
+      "doctor_name": "송은기",
+      "hospital_name": "전북대학교병원",
+      "region": "전북",
+      "department": "혈액종양내과",
+      "specialty_text": "위/식도암, 폐암, 두경부암, 육종, 피부암, 암생존자 건강 관리",
+      "profile_url": "https://www.jbuh.co.kr/prog/mdclStf/main/sub01_01/view.do?mdclCd=IMHO&mdclStfEmplNo=99334",
+      "verified_at": "2026-10-10T07:31:03+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "ESOPHAGUS",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "HEAD_NECK",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "SARCOMA",
+          "role": "medical_oncology"
+        }
+      ],
+      "source_url": "https://www.jbuh.co.kr/prog/mdcl/main/sub01_01_01/viewStf.do?mdclCd=IMHO",
+      "verification_method": "official_department_explicit_specialty"
+    },
+    {
+      "doctor_name": "이나리",
+      "hospital_name": "전북대학교병원",
+      "region": "전북",
+      "department": "혈액종양내과",
+      "specialty_text": "부인과암, 유방암, 비뇨생식기암, 호스피스 완화의료",
+      "profile_url": "https://www.jbuh.co.kr/prog/mdclStf/main/sub01_01/view.do?mdclCd=IMHO&mdclStfEmplNo=99337",
+      "verified_at": "2026-10-10T07:31:03+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BREAST",
+          "role": "medical_oncology"
+        }
+      ],
+      "source_url": "https://www.jbuh.co.kr/prog/mdcl/main/sub01_01_01/viewStf.do?mdclCd=IMHO",
+      "verification_method": "official_department_explicit_specialty"
+    },
+    {
+      "doctor_name": "이선영",
+      "hospital_name": "전북대학교병원",
+      "region": "전북",
+      "department": "방사선종양학과",
+      "specialty_text": "두경부암,흉부종양,상부소화기종양,부인과종양,소아암,혈액암,악성육종,양성종양,전신방사선치료,강내치료,온열치료",
+      "profile_url": "https://www.jbuh.co.kr/prog/mdclStf/main/sub01_01/view.do?mdclCd=RT&mdclStfEmplNo=20454",
+      "verified_at": "2026-10-10T07:31:03+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "HEAD_NECK",
+          "role": "radiation"
+        },
+        {
+          "code": "SARCOMA",
+          "role": "radiation"
+        },
+        {
+          "code": "PEDIATRIC",
+          "role": "radiation"
+        }
+      ],
+      "source_url": "https://www.jbuh.co.kr/prog/mdcl/main/sub01_01_01/viewStf.do?mdclCd=RT",
+      "verification_method": "official_department_explicit_specialty"
+    },
+    {
+      "doctor_name": "이환진",
+      "hospital_name": "전북대학교병원",
+      "region": "전북",
+      "department": "호흡기알레르기내과",
+      "specialty_text": "폐암, 간질성 폐질환, 결핵 및 비결핵항상균 폐질환(NTM), 기관지 내시경 시술",
+      "profile_url": "https://www.jbuh.co.kr/prog/mdclStf/main/sub01_01/view.do?mdclCd=IMPM&mdclStfEmplNo=24058",
+      "verified_at": "2026-10-10T07:31:03+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://www.jbuh.co.kr/prog/mdcl/main/sub01_01_01/viewStf.do?mdclCd=IMPM",
+      "verification_method": "official_department_explicit_specialty"
+    },
+    {
+      "doctor_name": "이흥범",
+      "hospital_name": "전북대학교병원",
+      "region": "전북",
+      "department": "호흡기알레르기내과",
+      "specialty_text": "호흡기 질환 및 폐암, 초음파 내시경 및 중재 내시경, 중환자 관리",
+      "profile_url": "https://www.jbuh.co.kr/prog/mdclStf/main/sub01_01/view.do?mdclCd=IMPM&mdclStfEmplNo=93513",
+      "verified_at": "2026-10-10T07:31:03+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://www.jbuh.co.kr/prog/mdcl/main/sub01_01_01/viewStf.do?mdclCd=IMPM",
+      "verification_method": "official_department_explicit_specialty"
+    },
+    {
+      "doctor_name": "임호영",
+      "hospital_name": "전북대학교병원",
+      "region": "전북",
+      "department": "혈액종양내과",
+      "specialty_text": "다발성 골수종, 혈액암, 혈액 질환, 조혈모세포 이식",
+      "profile_url": "https://www.jbuh.co.kr/prog/mdclStf/main/sub01_01/view.do?mdclCd=IMHO&mdclStfEmplNo=20020",
+      "verified_at": "2026-10-10T07:31:03+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "MYELOMA",
+          "role": "medical_oncology"
+        }
+      ],
+      "source_url": "https://www.jbuh.co.kr/prog/mdcl/main/sub01_01_01/viewStf.do?mdclCd=IMHO",
+      "verification_method": "official_department_explicit_specialty"
+    },
+    {
+      "doctor_name": "전소연",
+      "hospital_name": "전북대학교병원",
+      "region": "전북",
+      "department": "혈액종양내과",
+      "specialty_text": "대장암, 직장암, 항문암, 간·담도암, 췌장암, 호스피스 완화의료",
+      "profile_url": "https://www.jbuh.co.kr/prog/mdclStf/main/sub01_01/view.do?mdclCd=IMHO&mdclStfEmplNo=21424",
+      "verified_at": "2026-10-10T07:31:03+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "RECTAL",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "PANCREAS",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "BILIARY",
+          "role": "medical_oncology"
+        }
+      ],
+      "source_url": "https://www.jbuh.co.kr/prog/mdcl/main/sub01_01_01/viewStf.do?mdclCd=IMHO",
+      "verification_method": "official_department_explicit_specialty"
+    },
+    {
+      "doctor_name": "최영훈",
+      "hospital_name": "전북대학교병원",
+      "region": "전북",
+      "department": "호흡기알레르기내과",
+      "specialty_text": "호흡기 및 알레르기질환, 폐암, 결핵, 기관지 내시경 및 중재내시경 시술",
+      "profile_url": "https://www.jbuh.co.kr/prog/mdclStf/main/sub01_01/view.do?mdclCd=IMPM&mdclStfEmplNo=99322",
+      "verified_at": "2026-10-10T07:31:03+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "diagnosis"
+        }
+      ],
+      "source_url": "https://www.jbuh.co.kr/prog/mdcl/main/sub01_01_01/viewStf.do?mdclCd=IMPM",
+      "verification_method": "official_department_explicit_specialty"
+    },
+    {
+      "doctor_name": "한미란",
+      "hospital_name": "전북대학교병원",
+      "region": "전북",
+      "department": "혈액종양내과",
+      "specialty_text": "위/식도암,폐암, 두경부암, 유방암, 조혈모세포이식, 대장암",
+      "profile_url": "https://www.jbuh.co.kr/prog/mdclStf/main/sub01_01/view.do?mdclCd=IMHO&mdclStfEmplNo=25312",
+      "verified_at": "2026-10-10T07:31:03+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "LUNG",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "BREAST",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "ESOPHAGUS",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "HEAD_NECK",
+          "role": "medical_oncology"
+        }
+      ],
+      "source_url": "https://www.jbuh.co.kr/prog/mdcl/main/sub01_01_01/viewStf.do?mdclCd=IMHO",
+      "verification_method": "official_department_explicit_specialty"
     }
   ]
 }
