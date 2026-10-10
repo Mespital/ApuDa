@@ -22,5 +22,10 @@ for name,root,path,names in cases:
    for node in soup.find_all(string=lambda z:z and who in z)[:1]:
     for i,p in enumerate(list(node.parent.parents)[:5]):
      print("CARD",who,i,p.name,p.get("class"),p.get_text(" ",strip=True)[:230],[(a.get_text(" ",strip=True)[:25],a.get("href","")[:130]) for a in p.select("a[href]")[:3]],flush=True)
+  if name=="eumc":
+   for tr in soup.select("tr")[:90]:
+    if "조정민" not in tr.get_text(" ",strip=True) and "함아롱" not in tr.get_text(" ",strip=True):continue
+    print("DOCTOR_ROW_HTML",str(tr)[:4400].replace("\\n"," "),flush=True)
+   print("DEPT_DOCTOR_LINKS",[(a.get_text(" ",strip=True)[:28],a.get("href","")[:130]) for a in soup.select("a[href]") if "dept_cd=" in a.get("href","").lower()][:55],flush=True)
   print("DOCTOR_LINKS",[(a.get_text(" ",strip=True)[:24],a.get("href","")[:160]) for a in soup.select("a[href]") if any(x in a.get("href","").lower() for x in ["doctor","dr_sid","clndcd"])][:25],flush=True)
  except Exception as exc:print("ERROR",type(exc).__name__,str(exc)[:160],flush=True)
