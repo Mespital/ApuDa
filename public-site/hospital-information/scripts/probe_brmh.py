@@ -4,7 +4,7 @@ import requests,urllib.robotparser
 from bs4 import BeautifulSoup
 UA="ApuDaMedicalDirectoryBot/1.0 (+https://apuda.app/)"
 HOST="https://www.brmh.org"
-CODES=["001035000","001023000","001011000","001010000"]
+CODES=["001023000"]
 s=requests.Session();s.headers.update({"User-Agent":UA})
 r=s.get(HOST+"/robots.txt",timeout=15,allow_redirects=False)
 print("ROBOTS",r.status_code,flush=True)
@@ -19,6 +19,15 @@ for code in CODES:
   print("HTTP",rr.status_code,"SIZE",len(rr.content),flush=True)
   if rr.status_code!=200:continue
   soup=BeautifulSoup(rr.text,"html.parser")
+  scripts=soup.select("script")
+  print("SCRIPT_SOURCE_COUNT",len(scripts),flush=True)
+  for script in scripts:
+   body=script.get_text(" ",strip=False)
+   if "function openDoctorView" in body or "openDoctorView = function" in body:
+    pos=body.find("openDoctorView")
+    print("JS_SOURCE_FN",body[max(0,pos-150):pos+2500],flush=True)
+  print("JS_URLS",[(a.get("src") or "") for a in scripts if any(term in (a.get("src") or "").lower() for term in ["doctor","medical","medi","custom"])][:25],flush=True)
+
   for name in ["곽재용","서경석","전혜원","정현"]:
    t=soup.find_all(string=lambda z:z and z.strip()==name)
    if not t:continue
