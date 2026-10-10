@@ -32,6 +32,13 @@ for name,root,path,names in cases:
   if name=="eumc-index":
    print("ALL_DEPTS",[(a.get_text(" ",strip=True)[:35],a.get("href","")[:140]) for a in soup.select("a[href]") if "dept_cd=" in a.get("href","").lower()][:90],flush=True)
   if name=="cbnuh-all":
+   all_cards=soup.select(".doctor_list > ul > li")
+   print("CBNUH_DIRECT_CARDS",len(all_cards),flush=True)
+   if not all_cards:all_cards=soup.select(".doctor_list li")
+   for card in all_cards[:2]:
+    print("CBNUH_HTML_SAMPLE",str(card)[:7000].replace("\\n"," "),flush=True)
+   print("CBNUH_PAGINATION",[a.get("href","")[:150] for a in soup.select('a[href*="pageIndex"],a[href*="page="]')][:25],flush=True)
+
    for doctor in ["한정호","윤순만"]:
     for node in soup.find_all(string=lambda z:z and doctor in z)[:1]:
      p=node.parent
