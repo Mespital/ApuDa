@@ -1,7 +1,1360 @@
 {
   "schema_version": 1,
-  "source": "CNUHH pending official verification",
-  "generated_at": null,
-  "count": 0,
-  "results": []
+  "source": "화순전남대학교병원 공식 진료과/의료진",
+  "generated_at": "2026-10-10T22:09:36+00:00",
+  "count": 57,
+  "coverage": [
+    {
+      "page": 1,
+      "cards": 10,
+      "matched": 3
+    },
+    {
+      "page": 2,
+      "cards": 10,
+      "matched": 1
+    },
+    {
+      "page": 3,
+      "cards": 10,
+      "matched": 4
+    },
+    {
+      "page": 4,
+      "cards": 10,
+      "matched": 4
+    },
+    {
+      "page": 5,
+      "cards": 10,
+      "matched": 7
+    },
+    {
+      "page": 6,
+      "cards": 10,
+      "matched": 4
+    },
+    {
+      "page": 7,
+      "cards": 10,
+      "matched": 5
+    },
+    {
+      "page": 8,
+      "cards": 10,
+      "matched": 2
+    },
+    {
+      "page": 9,
+      "cards": 10,
+      "matched": 2
+    },
+    {
+      "page": 10,
+      "cards": 10,
+      "matched": 3
+    },
+    {
+      "page": 11,
+      "cards": 10,
+      "matched": 5
+    },
+    {
+      "page": 12,
+      "cards": 10,
+      "matched": 6
+    },
+    {
+      "page": 13,
+      "cards": 10,
+      "matched": 1
+    },
+    {
+      "page": 14,
+      "cards": 10,
+      "matched": 2
+    },
+    {
+      "page": 15,
+      "cards": 10,
+      "matched": 7
+    },
+    {
+      "page": 16,
+      "cards": 9,
+      "matched": 1
+    }
+  ],
+  "results": [
+    {
+      "doctor_name": "고양석",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "간담췌외과",
+      "specialty_text": "간세포암, 간 전이, 간내 담관암종, 간혈관종, 담석증 등 담낭 관련질환, 비장 관련질환, 복강경 간 절제술, 간이식 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=GSL&doctCd=GE00024&searchKeyword=&searchCondition=&pageIndex=5&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=5",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LIVER",
+          "role": "surgery"
+        },
+        {
+          "code": "BILIARY",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "권동득",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "비뇨의학과",
+      "specialty_text": "전립선암, 방광암, 신장암, 전립선비대증, 로봇수술 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=UR&doctCd=UR00018&searchKeyword=&searchCondition=&pageIndex=3&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=3",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "KIDNEY",
+          "role": "surgery"
+        },
+        {
+          "code": "PROSTATE",
+          "role": "surgery"
+        },
+        {
+          "code": "BLADDER",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "김기현",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "소화기내과",
+      "specialty_text": "췌장암, 담도 담낭암, 버터팽대부암, 급만성췌장염, 담도염, 췌장낭종, 위장관암 종양, 자가면역 췌장 담도염 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMG&doctCd=GI00128&searchKeyword=&searchCondition=&pageIndex=12&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=12",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "PANCREAS",
+          "role": "diagnosis"
+        },
+        {
+          "code": "GALLBLADDER",
+          "role": "diagnosis"
+        }
+      ]
+    },
+    {
+      "doctor_name": "김미희",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "혈액내과",
+      "specialty_text": "급성골수성백혈병, 골수이형성증후군, 재생불량성빈혈, 만성골수성백혈병, 골수섬유증, 골수증식성질환 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMH&doctCd=HD00067&searchKeyword=&searchCondition=&pageIndex=15&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=15",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LEUKEMIA",
+          "role": "medical_oncology"
+        }
+      ]
+    },
+    {
+      "doctor_name": "김성은",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "위장관외과",
+      "specialty_text": "위암, 복강경수술, 상피하종양 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=GSS&doctCd=GE00101&searchKeyword=&searchCondition=&pageIndex=11&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=11",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "김영철",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "호흡기내과",
+      "specialty_text": "폐암(폐암 4기 환자) 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMP&doctCd=PD00003&searchKeyword=&searchCondition=&pageIndex=2&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=2",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "diagnosis"
+        }
+      ]
+    },
+    {
+      "doctor_name": "김용협",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "방사선종양학과",
+      "specialty_text": "유방암, 폐종양, 흉선암, 육종, 전이암 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=TR&doctCd=RT00016&searchKeyword=&searchCondition=&pageIndex=14&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=14",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BREAST",
+          "role": "radiation"
+        },
+        {
+          "code": "SARCOMA",
+          "role": "radiation"
+        }
+      ]
+    },
+    {
+      "doctor_name": "김인영",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "신경외과",
+      "specialty_text": "전이성뇌종양, 척추종양, 퇴행성척추질환, 뇌혈관질환, 감마나이프수술 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=NS&doctCd=NS00026&searchKeyword=&searchCondition=&pageIndex=5&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=5",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BRAIN",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "김장현",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "호흡기내과",
+      "specialty_text": "호흡기 질환, 폐암 의심 환자 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMP&doctCd=PD00068&searchKeyword=&searchCondition=&pageIndex=15&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=15",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "diagnosis"
+        }
+      ]
+    },
+    {
+      "doctor_name": "김창현",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "대장항문외과",
+      "specialty_text": "대장암, 복강경 대장 수술, 다빈치 로봇수술 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=GSA&doctCd=GE00061&searchKeyword=&searchCondition=&pageIndex=7&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=7",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "김현종",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "종양내과",
+      "specialty_text": "위암, 대장암, 직장암, 담관암, 담도암, 췌장암 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMH2&doctCd=HD00065&searchKeyword=&searchCondition=&pageIndex=15&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=15",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "COLON",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "RECTAL",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "PANCREAS",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "BILIARY",
+          "role": "medical_oncology"
+        }
+      ]
+    },
+    {
+      "doctor_name": "김형록",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "대장항문외과",
+      "specialty_text": "대장암, 복강경 대장 수술, 다빈치 로봇수술 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=GSA&doctCd=GE00006&searchKeyword=&searchCondition=&pageIndex=5&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=5",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "나국주",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "심장혈관흉부외과",
+      "specialty_text": "폐암, 식도암 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=CS&doctCd=CS00009&searchKeyword=&searchCondition=&pageIndex=1&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=1",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "surgery"
+        },
+        {
+          "code": "ESOPHAGUS",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "나용민",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "내분비외과",
+      "specialty_text": "유방암,유방제자리암,유방로봇수술 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=GSE&doctCd=ES00035&searchKeyword=&searchCondition=&pageIndex=6&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=6",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BREAST",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "문경섭",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "신경외과",
+      "specialty_text": "뇌수막종, 뇌기저부종양, 신경교종, 양성뇌종양, 감마나이프수술 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=NS&doctCd=NS00040&searchKeyword=&searchCondition=&pageIndex=8&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=8",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BRAIN",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "박민호",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "내분비외과",
+      "specialty_text": "유방암, 유방로봇수술 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=GSE&doctCd=ES00021&searchKeyword=&searchCondition=&pageIndex=1&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=1",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BREAST",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "박상춘",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "내분비외과",
+      "specialty_text": "갑상선암, 갑상선로봇수술 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=GSE&doctCd=ES00038&searchKeyword=&searchCondition=&pageIndex=11&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=11",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "THYROID",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "박수지",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "신경외과",
+      "specialty_text": "뇌하수체종양, 양성뇌종양, 편측안면경련, 삼차신경통, 내시경수술, 감마나이프수술 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=NS&doctCd=NS00245&searchKeyword=&searchCondition=&pageIndex=15&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=15",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BRAIN",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "박영규",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "위장관외과",
+      "specialty_text": "위암, 복강경 수술, 로봇 수술 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=GSS&doctCd=GE00020&searchKeyword=&searchCondition=&pageIndex=1&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=1",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "박철규",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "호흡기내과",
+      "specialty_text": "폐암 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMP&doctCd=PD00052&searchKeyword=&searchCondition=&pageIndex=8&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=8",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "diagnosis"
+        }
+      ]
+    },
+    {
+      "doctor_name": "박형민",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "대장항문외과",
+      "specialty_text": "대장암, 직장암 의료진소개",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=GSA&doctCd=GE00094&searchKeyword=&searchCondition=&pageIndex=11&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=11",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "surgery"
+        },
+        {
+          "code": "RECTAL",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "방현진",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "종양내과",
+      "specialty_text": "위암, 대장암, 식도암, 직장암, 두경부암, 유방암, 육종암 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMH2&doctCd=HD00068&searchKeyword=&searchCondition=&pageIndex=14&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=14",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "COLON",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "RECTAL",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "BREAST",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "ESOPHAGUS",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "HEAD_NECK",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "SARCOMA",
+          "role": "medical_oncology"
+        }
+      ]
+    },
+    {
+      "doctor_name": "배우균",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "종양내과",
+      "specialty_text": "위암, 직장암, 간암, 담관암, 담도암 췌장암, 신장암, 요관암, 방광암, 전립선암, 신경내분비종양 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMH2&doctCd=HD00028&searchKeyword=&searchCondition=&pageIndex=7&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=7",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "RECTAL",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "LIVER",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "PANCREAS",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "BILIARY",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "KIDNEY",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "PROSTATE",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "BLADDER",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "NET",
+          "role": "medical_oncology"
+        }
+      ]
+    },
+    {
+      "doctor_name": "서영은",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "소화기내과",
+      "specialty_text": "간암, 바이러스성간염, 간경변 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMG&doctCd=GI00180&searchKeyword=&searchCondition=&pageIndex=16&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=16",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LIVER",
+          "role": "diagnosis"
+        }
+      ]
+    },
+    {
+      "doctor_name": "송가영",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "혈액내과",
+      "specialty_text": "다발골수종, 급성림프구성백혈병, 림프종, 골수섬유증, 골수증식성질환 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMH&doctCd=HD00066&searchKeyword=&searchCondition=&pageIndex=15&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=15",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LEUKEMIA",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "LYMPHOMA",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "MYELOMA",
+          "role": "medical_oncology"
+        }
+      ]
+    },
+    {
+      "doctor_name": "송상윤",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "심장혈관흉부외과",
+      "specialty_text": "폐암, 종격동, 흉선암 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=CS&doctCd=CS00011&searchKeyword=&searchCondition=&pageIndex=3&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=3",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "송상화",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "간담췌외과",
+      "specialty_text": "간세포암, 간내담관암, 간전이, 간외담관암, 간이식, 췌장암, 담낭질환, 비장 관련질환 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=GSL&doctCd=GE00092&searchKeyword=&searchCondition=&pageIndex=11&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=11",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LIVER",
+          "role": "surgery"
+        },
+        {
+          "code": "PANCREAS",
+          "role": "surgery"
+        },
+        {
+          "code": "BILIARY",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "심현정",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "종양내과",
+      "specialty_text": "두경부암, 유방암, 흑색종 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMH2&doctCd=HD00025&searchKeyword=&searchCondition=&pageIndex=12&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=12",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BREAST",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "HEAD_NECK",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "MELANOMA",
+          "role": "medical_oncology"
+        }
+      ]
+    },
+    {
+      "doctor_name": "안성자",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "방사선종양학과",
+      "specialty_text": "유방암, 폐종양 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=TR&doctCd=RT00007&searchKeyword=&searchCondition=&pageIndex=4&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=4",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BREAST",
+          "role": "radiation"
+        }
+      ]
+    },
+    {
+      "doctor_name": "안재숙",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "혈액내과",
+      "specialty_text": "급성골수성백혈병, 만성골수성백혈병, 골수이형성증후군, 재생불량성빈혈 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMH&doctCd=HD00023&searchKeyword=&searchCondition=&pageIndex=11&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=11",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LEUKEMIA",
+          "role": "medical_oncology"
+        }
+      ]
+    },
+    {
+      "doctor_name": "양덕환",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "혈액내과",
+      "specialty_text": "림프종, 만성림프구성백혈병, 골수섬유증, 골수증식성질환 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMH&doctCd=HD00019&searchKeyword=&searchCondition=&pageIndex=7&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=7",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LEUKEMIA",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "LYMPHOMA",
+          "role": "medical_oncology"
+        }
+      ]
+    },
+    {
+      "doctor_name": "오인재",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "호흡기내과",
+      "specialty_text": "폐암(폐암 4기 환자) 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMP&doctCd=PD00029&searchKeyword=&searchCondition=&pageIndex=6&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=6",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "diagnosis"
+        }
+      ]
+    },
+    {
+      "doctor_name": "오형주",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "호흡기내과",
+      "specialty_text": "폐암질환, 폐암의심환자 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMP&doctCd=PD00062&searchKeyword=&searchCondition=&pageIndex=13&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=13",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "diagnosis"
+        }
+      ]
+    },
+    {
+      "doctor_name": "유영재",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "내분비외과",
+      "specialty_text": "갑상선암,갑상선로봇수술 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=GSE&doctCd=ES00030&searchKeyword=&searchCondition=&pageIndex=4&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=4",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "THYROID",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "윤미선",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "방사선종양학과",
+      "specialty_text": "부인암, 유방암, 폐종양 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=TR&doctCd=RT00011&searchKeyword=&searchCondition=&pageIndex=10&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=10",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BREAST",
+          "role": "radiation"
+        }
+      ]
+    },
+    {
+      "doctor_name": "윤숙정",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "피부과",
+      "specialty_text": "흑색종, 피부암, 피부양성종양, 색소질환, 모반 등 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=DM&doctCd=DE00011&searchKeyword=&searchCondition=&pageIndex=3&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=3",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "MELANOMA",
+          "role": "diagnosis"
+        }
+      ]
+    },
+    {
+      "doctor_name": "윤주식",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "심장혈관흉부외과",
+      "specialty_text": "폐암, 오목가슴, 새가슴, 횡경막 질환, 흉막종, 식도암 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=CS&doctCd=CS00533&searchKeyword=&searchCondition=&pageIndex=7&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=7",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LUNG",
+          "role": "surgery"
+        },
+        {
+          "code": "ESOPHAGUS",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "이수민",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "피부과",
+      "specialty_text": "피부암(흑색종, 흑색종 제자리 암 제외), 일반피부질환 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=DM&doctCd=DE00221&searchKeyword=&searchCondition=&pageIndex=4&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=4",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "MELANOMA",
+          "role": "diagnosis"
+        }
+      ]
+    },
+    {
+      "doctor_name": "이수영",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "대장항문외과",
+      "specialty_text": "대장암(결장암,직장암), 복강경 대장 수술, 다빈치 로봇수술 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=GSA&doctCd=GE00073&searchKeyword=&searchCondition=&pageIndex=9&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=9",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "surgery"
+        },
+        {
+          "code": "RECTAL",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "이완식",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "소화기내과",
+      "specialty_text": "소화기암(조기 위암 및 식도암), 위식도 역류질환, 위염, 소화성궤양, 소화불량 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMG&doctCd=GI00034&searchKeyword=&searchCondition=&pageIndex=5&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=5",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "diagnosis"
+        },
+        {
+          "code": "ESOPHAGUS",
+          "role": "diagnosis"
+        }
+      ]
+    },
+    {
+      "doctor_name": "이자람",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "대장항문외과",
+      "specialty_text": "대장암, 직장암, 복강경수술 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=GSA&doctCd=GE00095&searchKeyword=&searchCondition=&pageIndex=12&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=12",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "surgery"
+        },
+        {
+          "code": "RECTAL",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "이제중",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "혈액내과",
+      "specialty_text": "다발골수종, 의미불명의 단세포군감마글로불린병증 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMH&doctCd=HD00010&searchKeyword=&searchCondition=&pageIndex=6&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=6",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "MYELOMA",
+          "role": "medical_oncology"
+        }
+      ]
+    },
+    {
+      "doctor_name": "이준규",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "이비인후과",
+      "specialty_text": "구강암, 하인두암, 성문암, 고난이도 두경부수술 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=EN&doctCd=EN00043&searchKeyword=&searchCondition=&pageIndex=5&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=5",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "ORAL",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "임도경",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "비뇨의학과",
+      "specialty_text": "배뇨장애, 전립선비대증, 방광암, 고환암, 음경암, 요로결석, 소아비뇨, 로봇수술 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=UR&doctCd=UR00236&searchKeyword=&searchCondition=&pageIndex=12&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=12",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BLADDER",
+          "role": "surgery"
+        },
+        {
+          "code": "TESTICULAR",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "임찬묵",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "소화기내과",
+      "specialty_text": "역류성식도염,위염,위선종,조기위암.,점막하병변,대장용종,대장암,소화기계질환 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMG&doctCd=GI00165&searchKeyword=&searchCondition=&pageIndex=15&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=15",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "diagnosis"
+        },
+        {
+          "code": "COLON",
+          "role": "diagnosis"
+        }
+      ]
+    },
+    {
+      "doctor_name": "장호철",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "혈액내과",
+      "specialty_text": "급성골수성백혈병, 골수이형성증후군, 재생불량성빈혈, 골수섬유증, 골수증식성질환, 혈액질환(백혈구 이상,적혈구이상,혈소판이상, 혈액응고이상질환) 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMH&doctCd=HD00070&searchKeyword=&searchCondition=&pageIndex=15&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=15",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LEUKEMIA",
+          "role": "medical_oncology"
+        }
+      ]
+    },
+    {
+      "doctor_name": "정미란",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "위장관외과",
+      "specialty_text": "위암, 비만대사 수술, 복강경 수술, 로봇 수술, 위장관 기질성 종양, 위식도 역류 질환, 소장암 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=GSS&doctCd=GE00027&searchKeyword=&searchCondition=&pageIndex=4&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=4",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "정성훈",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "혈액내과",
+      "specialty_text": "다발골수종, 의미불명의 단세포군감마글로불린혈증, 급성림프구성백혈병, 왈덴스트롬 거대글로불린혈증, 골수섬유증, 골수증식성질환 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMH&doctCd=HD00056&searchKeyword=&searchCondition=&pageIndex=12&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=12",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LEUKEMIA",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "MYELOMA",
+          "role": "medical_oncology"
+        }
+      ]
+    },
+    {
+      "doctor_name": "정승일",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "비뇨의학과",
+      "specialty_text": "방광암, 전립선암, 요로감염, 기타 비뇨기 종양, 로봇수술 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=UR&doctCd=UR00037&searchKeyword=&searchCondition=&pageIndex=5&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=5",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "PROSTATE",
+          "role": "surgery"
+        },
+        {
+          "code": "BLADDER",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "정익주",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "종양내과",
+      "specialty_text": "위암, 대장암, 식도암, 직장암, 두경부암, 육종 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMH2&doctCd=HD00005&searchKeyword=&searchCondition=&pageIndex=3&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=3",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "COLON",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "RECTAL",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "ESOPHAGUS",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "HEAD_NECK",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "SARCOMA",
+          "role": "medical_oncology"
+        }
+      ]
+    },
+    {
+      "doctor_name": "정재욱",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "방사선종양학과",
+      "specialty_text": "두경부종양, 뇌종양, 식도암, 간암, 소아종양, 간담췌종양 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=TR&doctCd=RT00013&searchKeyword=&searchCondition=&pageIndex=12&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=12",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LIVER",
+          "role": "radiation"
+        },
+        {
+          "code": "ESOPHAGUS",
+          "role": "radiation"
+        },
+        {
+          "code": "BRAIN",
+          "role": "radiation"
+        },
+        {
+          "code": "PEDIATRIC",
+          "role": "radiation"
+        }
+      ]
+    },
+    {
+      "doctor_name": "정태영",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "신경외과",
+      "specialty_text": "악성뇌종양, 소아뇌종양, 감마나이프수술 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=NS&doctCd=NS00027&searchKeyword=&searchCondition=&pageIndex=10&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=10",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "BRAIN",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "조상희",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "종양내과",
+      "specialty_text": "대장암, 식도암, 직장암, 두경부암, 부인암 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMH2&doctCd=HD00018&searchKeyword=&searchCondition=&pageIndex=5&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=5",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "COLON",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "RECTAL",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "ESOPHAGUS",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "HEAD_NECK",
+          "role": "medical_oncology"
+        }
+      ]
+    },
+    {
+      "doctor_name": "조성범",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "소화기내과",
+      "specialty_text": "간암 조기위암, 위선종 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMG&doctCd=GI00071&searchKeyword=&searchCondition=&pageIndex=9&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=9",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "diagnosis"
+        },
+        {
+          "code": "LIVER",
+          "role": "diagnosis"
+        }
+      ]
+    },
+    {
+      "doctor_name": "허영회",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "간담췌외과",
+      "specialty_text": "췌장암(췌장관련질환), 담도암, 담낭(쓸개)암, 간암, 십이지장암 (팽대부암) 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=GSL&doctCd=GE00041&searchKeyword=&searchCondition=&pageIndex=6&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=6",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "LIVER",
+          "role": "surgery"
+        },
+        {
+          "code": "PANCREAS",
+          "role": "surgery"
+        },
+        {
+          "code": "BILIARY",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "황의창",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "비뇨의학과",
+      "specialty_text": "신장암, 전립선암, 방광암, 신우·요관암, 로봇수술 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=UR&doctCd=UR00102&searchKeyword=&searchCondition=&pageIndex=7&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=7",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "KIDNEY",
+          "role": "surgery"
+        },
+        {
+          "code": "PROSTATE",
+          "role": "surgery"
+        },
+        {
+          "code": "BLADDER",
+          "role": "surgery"
+        }
+      ]
+    },
+    {
+      "doctor_name": "황준일",
+      "hospital_name": "화순전남대학교병원",
+      "region": "전남",
+      "department": "종양내과",
+      "specialty_text": "위암, 대장암, 직장암, 간암, 담관암, 담도암, 췌장암, 위장관기질종양 의료진소개 진료예약",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMH2&doctCd=HD00051&searchKeyword=&searchCondition=&pageIndex=10&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=10",
+      "verification_method": "official_staff_listing_explicit_specialty",
+      "verified_at": "2026-10-10T22:09:36+00:00",
+      "status": "ACTIVE",
+      "cancers": [
+        {
+          "code": "STOMACH",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "COLON",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "RECTAL",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "LIVER",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "PANCREAS",
+          "role": "medical_oncology"
+        },
+        {
+          "code": "BILIARY",
+          "role": "medical_oncology"
+        }
+      ]
+    }
+  ]
 }
