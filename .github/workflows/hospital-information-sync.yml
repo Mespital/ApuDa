@@ -61,7 +61,8 @@ jobs:
           assert all(x["status"]=="ACTIVE" and x["cancers"] and x["verified_at"] for x in p["results"])
           print("Approved public medical specialists:",p["count"])
           PY
-          cp "$tmp/snapshot.json" public-site/hospital-information/data/verified-specialists.json
+          cp "$tmp/snapshot.json" public-site/hospital-information/data/vps-verified.json
+          python3 public-site/hospital-information/scripts/merge_verified.py
       - name: Commit approved public snapshot (if changed)
         run: |
           set -euo pipefail
@@ -82,7 +83,8 @@ jobs:
           PY
           git config user.name apuda-hospital-bot
           git config user.email apuda-hospital-bot@users.noreply.github.com
-          git add public-site/hospital-information/data/verified-specialists.json
+          git add public-site/hospital-information/data/vps-verified.json \
+                  public-site/hospital-information/data/verified-specialists.json
           if ! git diff --cached --quiet; then
             git commit -m "data(hospital): sync verified doctors and freshness date"
             git pull --rebase -X theirs origin main
