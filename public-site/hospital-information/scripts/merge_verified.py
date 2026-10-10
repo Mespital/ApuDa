@@ -26,7 +26,7 @@ def merge():
     now=datetime.now(timezone.utc)
     unique={}
     count_by_source={}
-    for filename in ("vps-verified.json","amc-verified.json","snubh-verified.json","jbuh-verified.json","smc-verified.json","brmh-verified.json"):
+    for filename in ("vps-verified.json","amc-verified.json","snubh-verified.json","jbuh-verified.json","smc-verified.json","brmh-verified.json","cnuhh-verified.json"):
         source=BASE/filename
         if not source.exists():
             count_by_source[filename]=0
