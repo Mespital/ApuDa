@@ -1,0 +1,22 @@
+name: Hospital Information AMC source structure probe
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'public-site/hospital-information/scripts/probe_amc.py'
+      - '.github/workflows/hospital-information-source-probe.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install requests beautifulsoup4
+      - name: Fetch robots policy and inspect official listing
+        run: python public-site/hospital-information/scripts/probe_amc.py
