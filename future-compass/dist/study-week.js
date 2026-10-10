@@ -75,35 +75,38 @@
 
   /* ---------- 이번 주 ---------- */
   function weekView() {
-    const base = addDays(today(), weekOffset * 7), days5 = CAL() ? CAL().weekDays(base) : (() => { const w = wdOf(base), mon = addDays(base, w === 0 ? 1 : w === 6 ? 2 : 1 - w); return [0, 1, 2, 3, 4].map(i => addDays(mon, i)); })();
+    const t0 = today(), wkd = wdOf(t0), base = addDays(wkd === 6 ? addDays(t0, -5) : wkd === 0 ? addDays(t0, -6) : t0, weekOffset * 7), days5 = CAL() ? CAL().weekDays(base) : (() => { const w = wdOf(base), mon = addDays(base, w === 0 ? 1 : w === 6 ? 2 : 1 - w); return [0, 1, 2, 3, 4].map(i => addDays(mon, i)); })();
     const p = plusData(), reviews = p.reviews || {};
+    const days7 = days5.concat([addDays(days5[4], 1), addDays(days5[4], 2)]);
     const offs = days5.map(offDay), schoolDays = offs.filter(o => !o).length;
-    const dueAll = state.dates.filter(x => !x.done && days5.includes(x.date));
-    const cards = days5.map((d, i) => {
-      const o = offs[i], subs = (a => { while (a.length && !a[a.length - 1]) a.pop(); return a; })(subjectsOf(d)), isToday = d === today();
+    const dueAll = state.dates.filter(x => !x.done && days7.includes(x.date));
+    const cards = days7.map((d, i) => {
+      const o = i < 5 ? offs[i] : offDay(d), wkend = i >= 5 && o && o.weekend, subs = (a => { while (a.length && !a[a.length - 1]) a.pop(); return a; })(subjectsOf(d)), isToday = d === today();
       const evs = CAL() ? CAL().schoolEvents(d).filter(t => !(o && t === o.name)) : [];
       const dl = state.dates.filter(x => !x.done && x.date === d);
       const rv = state.reviews.filter(x => !x.done && (reviews[x.id]?.due || x.date) === d);
       const tk = state.tasks.filter(x => !x.done && x.date === d);
       const nd = nextSchoolDay(d), prepSubs = uniq(subjectsOf(nd)).filter(s => !NO_PREP.test(s));
-      return `<article class="wk-day${o ? ' off' : ''}${isToday ? ' today' : ''}">
+      return `<article class="wk-day${o ? ' off' : ''}${wkend ? ' wkend' : ''}${isToday ? ' today' : ''}">
         <header><b>${WD[wdOf(d)]}</b> <span>${md(d)}</span>${isToday ? '<em>오늘</em>' : ''}</header>
-        ${o ? `<p class="wk-offname">🌿 ${esc(o.name)}<br><small>${esc(o.kind || '')} · 수업 없음</small></p>` :
+        ${wkend ? '' : o ? `<p class="wk-offname">🌿 ${esc(o.name)}<br><small>${esc(o.kind || '')} · 수업 없음</small></p>` :
           subs.some(Boolean) ? `<ol class="wk-classes">${subs.map(s => `<li>${esc(s) || '<span class="muted">—</span>'}</li>`).join('')}</ol>` : '<p class="muted">시간표 없음</p>'}
-        ${(typeof FC_ACADEMY !== 'undefined' ? FC_ACADEMY.forDay(d) : []).map(a => `<p class="wk-ac">🏫 ${esc(a.start || '')} ${esc(a.name)}${a.homework && !a.hwDone ? ' · 숙제' : ''}</p>`).join('')}
+        ${(typeof FC_ACADEMY !== 'undefined' ? FC_ACADEMY.forDay(d) : []).map(a => `<p class="wk-ac">🏫 ${esc(a.start || '')}${a.end ? '~' + esc(a.end) : ''} ${esc(a.name)}${a.homework && !a.hwDone ? ' · 숙제' : ''}</p>`).join('')}
+        ${(typeof FC_LIFE !== 'undefined' ? FC_LIFE.forDay(d) : []).filter(x => x.start || x.end).map(x => `<p class="wk-life">${esc(x.icon)} ${esc(x.start || '')}${x.end ? '~' + esc(x.end) : ''} ${esc(x.title)}</p>`).join('')}
         ${evs.map(t => `<p class="wk-ev">${o ? '⚠ ' : '🏫 '}${esc(t)}${o ? '<br><small>쉬는 날과 겹쳐. 학교 공지 확인</small>' : ''}</p>`).join('')}
         ${dl.map(x => `<p class="wk-due${o ? ' clash' : ''}">📝 ${esc(x.kind)} · ${esc(x.title)}${o ? '<br><small>쉬는 날이야. 날짜 다시 확인!</small>' : ''}</p>`).join('')}
         ${rv.length ? `<p class="wk-rv">🔁 복습 ${rv.length}개</p>` : ''}
         ${tk.length ? `<p class="wk-rv">✅ 할 일 ${tk.length}개</p>` : ''}
+        ${wkend && !(typeof FC_ACADEMY !== 'undefined' && FC_ACADEMY.forDay(d).length) && !dl.length && !tk.length ? '<p class="muted">🌿 쉬는 날</p>' : ''}
         ${!o && hasTable() ? `<p class="wk-eve">🌙 저녁: ${prepSubs.length ? '예습 ' + esc(prepSubs.slice(0, 3).join('·')) + (prepSubs.length > 3 ? ' 외' : '') : '쉬어가기'}${gap(nd) > 1 ? ` <small>(${label(nd)} 수업)</small>` : ''}</p>` : ''}
       </article>`;
     }).join('');
     const own = CAL() ? CAL().ownList().filter(x => x.date >= today()) : [];
-    return `<section class="card"><div class="section-title"><h2>📅 ${weekOffset === 0 ? '이번 주' : weekOffset === 1 ? '다음 주' : weekOffset === -1 ? '지난주' : md(days5[0]) + ' 주'} <small class="muted">${md(days5[0])}~${md(days5[4])}</small></h2>
+    return `<section class="card"><div class="section-title"><h2>📅 ${weekOffset === 0 ? '이번 주' : weekOffset === 1 ? '다음 주' : weekOffset === -1 ? '지난주' : md(days5[0]) + ' 주'} <small class="muted">${md(days7[0])}~${md(days7[6])}</small></h2>
       <span class="wk-nav"><button data-week="-1" aria-label="이전 주">◀</button><button data-week="0">이번 주</button><button data-week="1" aria-label="다음 주">▶</button></span></div>
       <p class="muted">수업일 ${schoolDays}일${offs.some(o => o && !o.weekend) ? ' · 쉬는 날 ' + offs.filter(o => o && !o.weekend).map((o, i) => esc(o.name)).join(', ') : ''}${dueAll.length ? ' · 마감 ' + dueAll.length + '개' : ''}</p>
       ${hasTable() ? '' : '<p class="wk-warn">시간표를 먼저 올려줘. 그러면 요일별 수업과 예습이 자동으로 채워져. <button data-go="settings">⚙️ 설정에서 시간표 올리기 →</button></p>'}
-      <div class="wk-grid">${cards}</div>${(() => { if (!(typeof FC_ACADEMY !== 'undefined')) return ''; const sat = addDays(days5[4], 1), sun = addDays(days5[4], 2), w = [sat, sun].map(x => [x, FC_ACADEMY.forDay(x)]).filter(([, a]) => a.length); return w.length ? `<p class="wk-weekend">주말 학원 · ${w.map(([x, a]) => esc(label(x)) + ' ' + a.map(y => esc((y.start || '') + ' ' + y.name)).join(', ')).join(' / ')}</p>` : ''; })()}</section>
+      <div class="wk-grid">${cards}</div></section>
       <p class="muted wk-offlink">다가오는 쉬는 날: ${CAL() ? CAL().upcoming(today(), 120).slice(0, 4).map(x => esc(label(x.date) + ' ' + x.name)).join(' · ') || '없음' : ''} · 재량휴업일 추가는 <button class="linkish" data-go="settings">⚙️ 설정</button></p>`;
   }
   function offdayPanel() {
@@ -435,7 +438,7 @@
   fetch('school.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).then(s => { school = s; if (tab === 'table') render(); }).catch(() => {});
 
   const css = document.createElement('style');
-  css.textContent = `.wk-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:10px}
+  css.textContent = `.wk-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin-top:10px}.wk-day.wkend{background:#fbfaff}.wk-life{font-size:12.5px;color:#5b5772;margin:4px 0}
   .wk-day{border:1px solid #e4daf4;border-radius:16px;padding:10px 10px 12px;background:#fff;min-width:0;font-size:13.5px}
   .wk-day header{display:flex;gap:6px;align-items:baseline;margin-bottom:6px}.wk-day header b{font-size:16px}.wk-day header em{font-style:normal;font-size:11px;background:#5b3fd6;color:#fff;border-radius:999px;padding:2px 7px;margin-left:auto}
   .wk-day.today{border-color:#5b3fd6;box-shadow:0 0 0 2px #e7defd}.wk-day.off{background:#f1f8f4;border-color:#cfe8da}
