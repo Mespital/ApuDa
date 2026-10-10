@@ -1,0 +1,303 @@
+{
+  "version": "1.2",
+  "report_date": "2026-10-10",
+  "collection_window": {
+    "start": "2026-10-09T09:00:00+09:00",
+    "end": "2026-10-10T09:00:00+09:00",
+    "timezone": "Asia/Seoul"
+  },
+  "sources": [
+    "데일리팜",
+    "의학신문",
+    "메디파나뉴스",
+    "약사공론"
+  ],
+  "briefing": "[제약공시 책갈피] 10월 2주차 - 한미약품·알테오젠·종근당 外가 오늘 가장 중요한 이슈로 부각됐습니다. 이어 안철우 교수, 혈당 관리 습관 담은 '혈당 루틴' 출간도 주요 변화로 확인됐습니다. 전체적으로는 정책·급여 · 신약·임상 흐름이 두드러집니다.",
+  "top_news": [
+    {
+      "rank": 1,
+      "canonical_issue": "[제약공시 책갈피] 10월 2주차 - 한미약품·알테오젠·종근당 外 - 메디파나뉴스",
+      "title": "[제약공시 책갈피] 10월 2주차 - 한미약품·알테오젠·종근당 外",
+      "category": [
+        "식약처",
+        "허가",
+        "공급"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-10T06:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[메디파나뉴스 = 이정수 기자] 2026년 10월 2주차(10.5~10.9)에는 한미약품이 독자 개발한 GLP-1 계열 비만치료제 '에페'에 대해 식약처로부터 품목허가를 승인받았다. 이로써 에페는 국산 신약 45호가 됐다. 한미약품은 연내 국내 시장 공급을 목표로 수입약 대비 경쟁력 있는 가격 체계를 갖",
+        "[메디파나뉴스 = 이정수 기자] 2026년 10월 2주차(10.5~10.9)에는 한미약품이 독자 개발한 GLP-1 계열 비만치료제 '에페'에 대해 식약처로부터 품목허가를 승인받았다.",
+        "한미약품은 연내 국내 시장 공급을 목표로 수입약 대비 경쟁력 있는 가격 체계를 갖춰 발매를 준비하고 있다."
+      ],
+      "importance": "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=419057"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=419057"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419057_326416_3614.jpg",
+      "score": 68,
+      "oncology": null
+    },
+    {
+      "rank": 2,
+      "canonical_issue": "안철우 교수, 혈당 관리 습관 담은 '혈당 루틴' 출간 - 메디파나뉴스",
+      "title": "안철우 교수, 혈당 관리 습관 담은 '혈당 루틴' 출간",
+      "category": [
+        "수가",
+        "병원"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-09T15:17:42+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "강남세브란스병원 내분비내과 안철우 교수가 혈당 관리를 위한 생활습관과 실천 방법을 담은 신간 '매일 아침 몸이 가벼워지는 혈당 루틴'(쌤앤파커스)을 출간했다. 이번 책은 30년간 당뇨병 환자를 진료하고 연구해 온 경험을 바탕으로, 혈당을 단순히 낮춰야 할 수치가 아닌 식욕과 수면, 체중, 일상 컨디션 등",
+        "강남세브란스병원 내분비내과 안철우 교수가 혈당 관리를 위한 생활습관과 실천 방법을 담은 신간 '매일 아침 몸이 가벼워지는 혈당 루틴'(쌤앤파커스)을 출간했다.",
+        "이번 책은 30년간 당뇨병 환자를 진료하고 연구해 온 경험을 바탕으로, 혈당을 단순히 낮춰야 할 수치가 아닌 식욕과 수면, 체중, 일상 컨디션 등과 연관된 건강 지표로 살펴본다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=419043"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=419043"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419043_326401_1736.jpg",
+      "score": 46,
+      "oncology": null
+    },
+    {
+      "rank": 3,
+      "canonical_issue": "신약 육성부터 약 배송·관리까지…복지위, 제도 보완 주문 - 메디파나뉴스",
+      "title": "신약 육성부터 약 배송·관리까지…복지위, 제도 보완 주문",
+      "category": [
+        "약가"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-09T12:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "국회 보건복지위원회 국정감사에서 제약·바이오 산업 육성과 의약품 유통·관리체계를 둘러싼 제도 보완 요구가 제기됐다. '초혁신형 제약기업' 육성과 국산 원료의약품 약가우대 개선 필요성이 제시된 가운데, 정부가 추진 중인 비대면진료 약 배송 전면 확대 논의 드라이브에는 한 차례 제동이 걸렸다. 제약산업 이끌",
+        "국회 보건복지위원회 국정감사에서 제약·바이오 산업 육성과 의약품 유통·관리체계를 둘러싼 제도 보완 요구가 제기됐다.",
+        "'초혁신형 제약기업' 육성과 국산 원료의약품 약가우대 개선 필요성이 제시된 가운데, 정부가 추진 중인 비대면진료 약 배송 전면 확대 논의 드라이브에는 한 차례 제동이 걸렸다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=419026"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=419026"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419026_326396_4736.jpg",
+      "score": 44,
+      "oncology": null
+    },
+    {
+      "rank": 4,
+      "canonical_issue": "국감서 약 배송 전면 확대 제동…약국가, 긍정 속 불안감 여전 - 메디파나뉴스",
+      "title": "국감서 약 배송 전면 확대 제동…약국가, 긍정 속 불안감 여전",
+      "category": [
+        "정책",
+        "약국"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-10T06:03:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "국정감사에서 약 배송 전면 확대에 대한 신중론이 제기되면서 약사사회가 일단 한숨을 돌렸다. 다만 정부의 정책 추진 방향에 대한 불안감과 대한약사회의 대응을 둘러싼 아쉬움은 여전히 남아 있는 분위기다. 지난 8일 국회 보건복지위원회 국정감사에서는 비대면진료 제도 시행에 앞서 정부가 약 배송 전면 확대 논의",
+        "사진=이정수 기자(AI 생성) 국정감사에서 약 배송 전면 확대에 대한 신중론이 제기되면서 약사사회가 일단 한숨을 돌렸다.",
+        "다만 정부의 정책 추진 방향에 대한 불안감과 대한약사회의 대응을 둘러싼 아쉬움은 여전히 남아 있는 분위기다."
+      ],
+      "importance": "의료기관·약국 현장의 변화는 진료 흐름과 환자 경험, 의약품 사용 환경에 직접 영향을 줍니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=419056"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=419056"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419056_326414_377.png",
+      "score": 43,
+      "oncology": null
+    },
+    {
+      "rank": 5,
+      "canonical_issue": "임신중지약, 韓 도입 추진 · 美 안전성 재검토…같은 성분, 다른 규제 - 메디파나뉴스",
+      "title": "임신중지약, 韓 도입 추진 · 美 안전성 재검토…같은 성분, 다른 규제",
+      "category": [
+        "허가"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-09T09:28:58+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "한국이 경구용 임신중지약 도입을 추진하는 가운데 미국에서는 동일 성분에 대한 안전성 재평가가 진행되고 있다. 국내에서는 현대약품의 '미프지미소(Mifegymiso)' 허가 여부가 관심사로 떠오른 반면, 미국은 기존에 허용한 원격 처방과 우편 배송 규제를 다시 검토하면서 양국의 규제 움직임이 대비되는 모양",
+        "국내에서는 현대약품의 '미프지미소(Mifegymiso)' 허가 여부가 관심사로 떠오른 반면, 미국은 기존에 허용한 원격 처방과 우편 배송 규제를 다시 검토하면서 양국의 규제 움직임이 대비되는 모양새다.",
+        "다만 미국의 재평가는 이미 허가된 의약품의 안전성과 처방·유통 요건을 재검토하는 절차인 반면, 한국은 아직 허가되지 않은 제품의 품질과 안전성, 유효성을 심사하는 단계라는 점에서 차이가 있다."
+      ],
+      "importance": "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=419030"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=419030"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419030_326380_958.png",
+      "score": 24,
+      "oncology": null
+    }
+  ],
+  "trends": [
+    {
+      "title": "정책·급여",
+      "count": 5,
+      "change": "5건의 주요 이슈에서 반복적으로 확인",
+      "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
+      "examples": [
+        "[제약공시 책갈피] 10월 2주차 - 한미약품·알테오젠·종근당 外",
+        "안철우 교수, 혈당 관리 습관 담은 '혈당 루틴' 출간"
+      ]
+    },
+    {
+      "title": "신약·임상",
+      "count": 3,
+      "change": "3건의 주요 이슈에서 반복적으로 확인",
+      "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
+      "examples": [
+        "[제약공시 책갈피] 10월 2주차 - 한미약품·알테오젠·종근당 外",
+        "신약 육성부터 약 배송·관리까지…복지위, 제도 보완 주문"
+      ]
+    },
+    {
+      "title": "공급·유통",
+      "count": 3,
+      "change": "3건의 주요 이슈에서 반복적으로 확인",
+      "implication": "의약품 공급 안정성과 유통 대응이 현장 리스크로 부각되는 흐름",
+      "examples": [
+        "[제약공시 책갈피] 10월 2주차 - 한미약품·알테오젠·종근당 外",
+        "신약 육성부터 약 배송·관리까지…복지위, 제도 보완 주문"
+      ]
+    },
+    {
+      "title": "의료현장",
+      "count": 2,
+      "change": "2건의 주요 이슈에서 반복적으로 확인",
+      "implication": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름",
+      "examples": [
+        "안철우 교수, 혈당 관리 습관 담은 '혈당 루틴' 출간",
+        "국감서 약 배송 전면 확대 제동…약국가, 긍정 속 불안감 여전"
+      ]
+    }
+  ],
+  "outlet_status": [
+    {
+      "publisher": "데일리팜",
+      "homepage_url": "https://www.dailypharm.com/",
+      "items": [
+        {
+          "title": "[데일리팜]&quot;비대면 처방은 정산 불가&quot;…제약사들 CSO 수수료 빗장",
+          "published_at": "2026-10-10T06:00:59+09:00",
+          "verified": true,
+          "source_url": "https://www.dailypharm.com/user/news/343218"
+        }
+      ]
+    },
+    {
+      "publisher": "의학신문",
+      "homepage_url": "https://www.bosa.co.kr/",
+      "items": []
+    },
+    {
+      "publisher": "메디파나뉴스",
+      "homepage_url": "https://www.medipana.com/",
+      "items": [
+        {
+          "title": "[제약공시 책갈피] 10월 2주차 - 한미약품·알테오젠·종근당 外",
+          "published_at": "2026-10-10T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419057"
+        },
+        {
+          "title": "안철우 교수, 혈당 관리 습관 담은 '혈당 루틴' 출간",
+          "published_at": "2026-10-09T15:17:42+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419043"
+        },
+        {
+          "title": "신약 육성부터 약 배송·관리까지…복지위, 제도 보완 주문",
+          "published_at": "2026-10-09T12:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419026"
+        },
+        {
+          "title": "국감서 약 배송 전면 확대 제동…약국가, 긍정 속 불안감 여전",
+          "published_at": "2026-10-10T06:03:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419056"
+        },
+        {
+          "title": "임신중지약, 韓 도입 추진 · 美 안전성 재검토…같은 성분, 다른 규제",
+          "published_at": "2026-10-09T09:28:58+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419030"
+        },
+        {
+          "title": "中, 비인간 영장류 질환모델 구축 성과…뇌질환 신약개발 가속",
+          "published_at": "2026-10-10T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419041"
+        },
+        {
+          "title": "마더스제약, 코스닥 문턱 넘었다…성장성 시험대",
+          "published_at": "2026-10-09T11:40:53+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419039"
+        },
+        {
+          "title": "멀츠 에스테틱스, '스킨지비티' 공개…통합 에스테틱 전략 강화",
+          "published_at": "2026-10-09T12:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419019"
+        }
+      ]
+    },
+    {
+      "publisher": "약사공론",
+      "homepage_url": "https://www.kpanews.co.kr/",
+      "items": []
+    }
+  ],
+  "insight": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름 동시에 신약·임상 흐름도 함께 확인돼 단일 이슈보다 복합적인 산업 변화로 보는 것이 적절합니다.",
+  "infographic": {
+    "image_path": null,
+    "generated_at": null,
+    "template_version": "news-card-v1"
+  }
+}
