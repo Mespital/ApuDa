@@ -1,0 +1,41 @@
+/* 승준 공부방 테마 — "밤 공부방 책상"
+   night(밤하늘 잉크) · violet(잠옷, 버튼) · lamp(스탠드 불빛 = "지금"만 표시) · paper(책상 위 종이) · leaf(끝냄)
+   규칙: 할 일·지금 카드는 떠 있고(흰 종이+그림자), 정보 카드는 책상 위에 납작하게. 노랑은 오직 "지금/오늘"에만. */
+:root{--night:#262150;--violet:#5b45d6;--lamp:#f0a92b;--lamp-soft:#fff1d1;--paper:#efedf8;--leaf:#22885a;--line:#e6e3f2;--ink:#262150}
+body.app{font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
+body.app .card h2{font-size:17px;letter-spacing:-.01em;color:var(--night)}
+
+/* 떠 있는 카드: 지금 해야 하는 것 */
+body.app .pl-tasks,body.app #nx-3h{background:#fff;box-shadow:0 1px 0 rgba(38,33,80,.04),0 10px 24px -14px rgba(38,33,80,.38)}
+/* 납작한 카드: 참고 정보 */
+body.app #bo-exam,body.app .mw-card,body.app #set-data,body.app .tt-view{background:var(--paper);box-shadow:none}
+body.app #bo-exam li,body.app .mw-days li{background:#fff}
+
+/* 오늘 할 일: 다시(기억 확인) 줄은 노트 여백처럼 */
+body.app .pl-auto{border-top:1.5px dashed var(--line)}
+body.app button.pl-rc small{color:#5b45d6}
+
+/* 급식: 오늘만 스탠드 불빛 */
+body.app .mw-days li.now{background:var(--lamp-soft)!important;box-shadow:inset 3px 0 0 var(--lamp)!important}
+body.app .mw-sum>div{background:#fff!important;box-shadow:none!important;border:1px solid var(--line)}
+
+/* 주간: 오늘 칸 = 불빛 띠, 주말 칸 = 종이 */
+body.app .wk-day.today{box-shadow:inset 0 3px 0 var(--lamp)!important}
+body.app .wk-day.wkend{background:var(--paper)!important;border-color:transparent!important}
+body.app .wk-day .wk-ac{color:#1f6b46}
+
+/* 더 보기: 서랍 */
+body.app .more-cards{background:transparent;box-shadow:inset 0 0 0 1.5px var(--line)}
+body.app .more-cards>summary b{color:var(--night)}
+
+/* 엄마 화면: 오늘의 승준은 편지지 */
+body.app .pv-story{background:#fff;border:0;box-shadow:inset 4px 0 0 var(--lamp),0 10px 24px -16px rgba(38,33,80,.35)}
+body.app .pv-story-l li::marker{color:var(--lamp)}
+
+/* 기억 확인 시트 */
+.rc-sheet{border-top:4px solid var(--lamp)}
+.rc-rate button[data-rc-rate="good"]{border-color:#bfe6d2!important}.rc-rate button[data-rc-rate="meh"]{border-color:#f3dca8!important}.rc-rate button[data-rc-rate="bad"]{border-color:#f0c4cc!important}
+
+/* 접근성 */
+body.app :focus-visible{outline:3px solid var(--lamp)!important;outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}

@@ -34,15 +34,19 @@
   function card() {
     var L = items(), now = nowMin();
     var h = '<section class="card nx-card" id="nx-3h" data-keep-home><div class="nx-head"><h2>⏰ 앞으로 3시간</h2><small>' + hm(now) + ' ~ ' + hm(now + WIN) + '</small></div>';
-    if (!L.length) return h + '<p class="muted small nx-empty">3시간 안에 잡힌 일정 없어. 집중하기 좋은 시간이야 ⏱</p></section>';
-    h += '<ul class="nx-list">' + L.map(function (x) {
-      var on = x.s <= now, when = on ? '<b class="nx-now">지금</b>' : '<b>' + hm(x.s) + '</b><small>' + inMin(x.s - now) + '</small>';
+    if (!L.length) return h + '<p class="nx-empty"><b>' + hm(now) + '</b> 지금부터 3시간은 비어 있어. 집중하기 좋은 시간이야.</p></section>';
+    var nowRow = '<li class="nx-nowrow" aria-hidden="true"><time>' + hm(now) + '</time><i></i><span>지금</span></li>', placed = false;
+    h += '<ol class="nx-tl">' + L.map(function (x) {
+      var on = x.s <= now, pre = '';
+      if (!on && !placed) { pre = nowRow; placed = true; }
       var leave = x.k === 'ac' && !on ? x.s - 40 : null;   // 학원은 40분 전 출발 (추정)
-      return '<li class="nx-' + x.k + (on ? ' on' : '') + '"><div class="nx-time">' + when + '</div><div class="nx-body"><span>' + esc(x.icon) + ' ' + esc(x.title) + (x.e > x.s ? ' <small>~' + hm(x.e) + '</small>' : '') + '</span>' +
-        (leave != null ? '<small class="nx-sub">' + (leave <= now ? '🚶 지금 출발하면 좋아' : '🚶 ' + hm(leave) + '쯤 출발 (추정)') + '</small>' : '') +
+      return pre + '<li class="nx-' + x.k + (on ? ' on' : '') + '"><time>' + hm(x.s) + '</time><i class="nx-dot"></i><div class="nx-body">' +
+        '<b>' + esc(x.icon) + ' ' + esc(x.title) + '</b>' +
+        '<small class="nx-sub">' + (on ? '진행 중 · ' + hm(x.e) + '까지' : inMin(x.s - now) + (x.e > x.s ? ' · ' + hm(x.e) + '까지' : '')) + '</small>' +
+        (leave != null ? '<small class="nx-sub nx-leave">' + (leave <= now ? '🚶 지금 출발하면 좋아' : '🚶 ' + hm(leave) + '쯤 출발 (추정)') + '</small>' : '') +
         (x.hw ? '<small class="nx-sub">📚 숙제: ' + esc(x.hw) + '</small>' : '') +
-        (x.k === 'ac' ? '<button type="button" class="nx-map" data-nx-map="' + esc(x.ac.id) + '">🗺 네이버 지도</button>' : '') + '</div></li>';
-    }).join('') + '</ul></section>';
+        (x.k === 'ac' ? '<button type="button" class="nx-map" data-nx-map="' + esc(x.ac.id) + '"><span class="nx-n" aria-hidden="true">N</span>네이버 지도 길찾기</button>' : '') + '</div></li>';
+    }).join('') + '</ol></section>';
     return h;
   }
 
@@ -73,11 +77,16 @@
   setInterval(function () { if (tab === 'today' && !isParent() && document.visibilityState === 'visible') { var c = document.getElementById('nx-3h'); if (c && !(document.activeElement && /INPUT|TEXTAREA/.test(document.activeElement.tagName))) c.outerHTML = card(); } }, 60000);
 
   var css = document.createElement('style');
-  css.textContent = '.nx-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px}.nx-head h2{margin:0!important}.nx-head small{color:#8a879a;font-size:12.5px}.nx-empty{margin:6px 0 0}' +
-    '.nx-list{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:8px}.nx-list li{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;border-radius:14px;background:#f8f7fc}.nx-list li.on{background:#efeaff;box-shadow:0 0 0 1.5px #c9bdf7}.nx-list li.nx-ac{background:#fff7ec}.nx-list li.nx-ac.on{background:#ffefd6}' +
-    '.nx-time{min-width:58px;display:grid}.nx-time b{font-size:16px;color:#2a2550}.nx-time small{font-size:11.5px;color:#8a879a}.nx-now{color:#5b45d6!important}' +
-    '.nx-body{flex:1;min-width:0;display:grid;gap:3px}.nx-body span{font-size:15px;font-weight:600;color:#2a2550;overflow-wrap:anywhere}.nx-body span small{font-weight:500;color:#8a879a}.nx-sub{font-size:12.5px;color:#6b6880}' +
-    '.nx-map{justify-self:start;margin-top:4px;min-height:38px!important;padding:6px 14px!important;border-radius:999px!important;background:#03c75a!important;border-color:#03c75a!important;color:#fff!important;font-weight:700;font-size:14px}';
+  css.textContent = '.nx-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px}.nx-head h2{margin:0!important}.nx-head small{color:var(--sub,#7d7a8c);font-size:12.5px;font-variant-numeric:tabular-nums}' +
+    '.nx-empty{margin:10px 0 0;font-size:14px;color:#4f4b66}.nx-empty b{font-variant-numeric:tabular-nums;color:var(--night,#262150);margin-right:4px}' +
+    '.nx-tl{list-style:none;margin:12px 0 0;padding:0;position:relative}.nx-tl::before{content:"";position:absolute;left:61px;top:10px;bottom:10px;width:2px;background:var(--line,#e6e3f2);border-radius:2px}' +
+    '.nx-tl>li{display:grid;grid-template-columns:52px 20px 1fr;align-items:start;column-gap:2px;padding:6px 0}' +
+    '.nx-tl time{font-size:15px;font-weight:700;color:var(--night,#262150);font-variant-numeric:tabular-nums;padding-top:1px}' +
+    '.nx-dot{width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 2.5px #b9b0ec;margin:4px 0 0 4px;position:relative;z-index:1}' +
+    '.nx-ac .nx-dot{box-shadow:inset 0 0 0 2.5px var(--violet,#5b45d6)}.nx-tl li.on .nx-dot{background:var(--lamp,#f0a92b);box-shadow:0 0 0 4px var(--lamp-soft,#fff1d1)}' +
+    '.nx-body{display:grid;gap:2px;min-width:0}.nx-body b{font-size:15px;font-weight:650;color:var(--night,#262150);overflow-wrap:anywhere}.nx-sub{font-size:12.5px;color:#6b6880}.nx-leave{color:#9a5b00}' +
+    '.nx-nowrow{align-items:center!important;padding:2px 0!important}.nx-nowrow time{font-size:12px!important;font-weight:600!important;color:#b07100!important}.nx-nowrow i{width:8px;height:8px;border-radius:50%;background:var(--lamp,#f0a92b);margin-left:6px;position:relative;z-index:1}.nx-nowrow span{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:#b07100}.nx-nowrow span::after{content:"";flex:1;border-top:1.5px dashed #f3c46a}' +
+    '.nx-map{justify-self:start;margin-top:6px;display:inline-flex;align-items:center;gap:6px;min-height:36px!important;padding:5px 14px 5px 6px!important;border-radius:999px!important;background:#03c75a!important;border:0!important;color:#fff!important;font-weight:700;font-size:13.5px}.nx-n{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#fff;color:#03c75a;font-weight:900;font-size:13px}';
   document.head.appendChild(css);
   render();
 })();
