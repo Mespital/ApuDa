@@ -48,17 +48,35 @@
 - 의료진 순위, 치료성과 우열, 임의 추천 점수를 만들지 않습니다.
 - 병원 사이트의 자동 수집이 robots.txt에 의해 제한되면 우회하지 않고 공개 페이지 링크 등 허용되는 방식으로 검증합니다.
 
-## 2026-10-10 의료진 수집 확장
+## 2026-10-10 병원별 의료진 확대 현황 (현재 운영 검증 기준)
 
-- 현재 공식 진료분야 일치 의료진 205명 등록 (서울아산병원 145명, 분당서울대학교병원 60명). 수치는 공식 사이트 변경에 따라 변동됩니다.
-- 등록된 30개 의료기관 전체의 의료진 구축이 완료된 것은 아니며, 현재 개별 의료진 자료는 2개 병원에서 제공합니다.
-- 서울아산병원: 공식 암센터 20개 페이지 / scripts/collect_amc.py / hospital-information-amc.yml (매일 07:20 KST).
-- 분당서울대학교병원: 공식 진료과·센터 8개 페이지 / scripts/collect_snubh.py / hospital-information-snubh.yml (매일 07:30 KST).
-- VPS 수동 검증자료: hospital-information-sync.yml (매일 07:50 KST).
-- scripts/merge_verified.py 는 data/amc-verified.json, data/snubh-verified.json, data/vps-verified.json을 합쳐 data/verified-specialists.json을 생성합니다.
-- 병원별 의료진 목록·진료분야·개별 프로필 링크를 공식 사이트에서 확인합니다. 암센터 소속만으로 해당 암종과 연결하지 않습니다.
-- 자동 조회 전에 robots.txt 접근 규칙을 확인하고 실패하면 작업을 중지하며, 기존에 확인한 기록은 180일을 초과하면 환자 화면에서 제외합니다.
-- 공식 진료분야 확인은 전문의 면허·치료성과·예약 가능 일정의 독립 인증이나 의사 추천 순위가 아닙니다.
-- 진료 목적의 수술/항암/방사선/진단 분류는 검색 편의를 위한 공식 진료과 기반 분류이며, 개별 치료법 판단을 대신하지 않습니다.
-- GitHub 소스 변경 후 기존 Netlify 연결로 자동 배포됩니다. 메인 Netlify 의료진 API는 검증 완료 JSON만 읽습니다.
-- 나머지 28개 의료기관은 개별 사이트 접근 정책과 의사 명단·전문분야 파서를 확인해 확장할 수 있습니다.
+| 공식 의료진 제공 병원 | 현재 명단 | 자동 새로고침 |
+| --- | ---: | --- |
+| 서울특별시보라매병원 | 18 | 06:50 KST |
+| 삼성서울병원 | 106 | 07:10 KST |
+| 서울아산병원 | 145 | 07:20 KST |
+| 분당서울대학교병원 | 60 | 07:30 KST |
+| 전북대학교병원 | 13 | 07:40 KST |
+| 총계 | **342** | 매일 GitHub → 기존 Netlify |
+
+30개 등록 의료기관 중 5곳은 공식 개인 의료진 정보가 제공되고, 그 밖의 기관은 공식 의료진 검색/병원 링크를 제공합니다. 342명은 공식 진료분야 텍스트가 암종과 일치해 검색에 등록된 인원이며 전체 의사 명단은 아닙니다. 독립적인 전문의 자격인증·예약 가능 여부·치료 성과 순위는 아닙니다.
+
+## 실제 운영 데이터
+
+- `data/verified-specialists.json`: 공개 임상 진료분야를 명시한 의료진 통합 자료. 의료진 이름·공식 진료분야·개별 공식 프로필 주소·확인시각·매칭된 암종과 역할을 포함합니다.
+- `data/brmh-verified.json`: 보라매병원 4개 공식 진료과, 그중 명확히 암종을 표기한 18명. `scripts/collect_brmh.py` 및 `.github/workflows/hospital-information-brmh.yml`.
+- `data/smc-verified.json`: 삼성서울병원 30개 암종 키워드 검색 결과 106명. 각 검색 화면의 첫 6명 기반이므로 전체 명단은 아닙니다.
+- `data/amc-verified.json`: 서울아산병원 암센터 20개 목록, 145명.
+- `data/snubh-verified.json`: 분당서울대학교병원 진료과·센터 8개 목록, 60명.
+- `data/jbuh-verified.json`: 전북대학교병원 3개 관련 진료과 목록, 13명.
+- `data/vps-verified.json`: VPS 직접 검증 승인 명단만 포함하며 검증 대기 의사는 공개하지 않습니다.
+- `scripts/merge_verified.py`: 위 병원별 자료를 공식 개인 프로필 기준으로 중복 제거해 통합 공개 명단 생성. 기존 자동수집 정보를 VPS 동기화가 덮어쓰지 않습니다.
+- 자동 수집은 robots.txt 접근 정책을 먼저 검사합니다. 거부된 URL은 조회를 강행하지 않습니다.
+- 의료진 개인 프로필 정보는 180일 이내 재확인이 필요하며 더 오래된 자료는 검색 화면/API에서 제외합니다.
+- 공식 진료분야가 명시된 의료진만 암종과 연결합니다. 진료 목적(수술/약물/방사선/진단 등)은 공식 진료과 및 진료분야 기반의 검색 편의 분류입니다.
+
+## 자동 검증
+
+- `.github/workflows/hospital-information-check.yml`: 프런트엔드/데이터 계약 검증
+- `.github/workflows/hospital-information-deployment.yml`: 실제 Netlify 운영 사이트·의료진 공개 JSON·검색 API 응답 확인
+- 자동 갱신을 통한 의료진 데이터는 GitHub `main`의 `public-site/hospital-information`에 기록되고, 기존 Netlify Git 연동을 통해 추가 수동 업로드 없이 배포됩니다.
