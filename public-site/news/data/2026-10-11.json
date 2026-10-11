@@ -1,0 +1,301 @@
+{
+  "version": "1.2",
+  "report_date": "2026-10-11",
+  "collection_window": {
+    "start": "2026-10-10T09:00:00+09:00",
+    "end": "2026-10-11T09:00:00+09:00",
+    "timezone": "Asia/Seoul"
+  },
+  "sources": [
+    "데일리팜",
+    "의학신문",
+    "메디파나뉴스",
+    "약사공론"
+  ],
+  "briefing": "가천대 길병원 인천환경보건센터, ‘2026 인천광역시 환경보건 포럼’ 성료가 오늘 가장 중요한 이슈로 부각됐습니다. 이어 소청과 전문의 부족 심각...지역 소아의료 ‘붕괴 중’도 주요 변화로 확인됐습니다. 전체적으로는 의료현장 · 정책·급여 흐름이 두드러집니다.",
+  "top_news": [
+    {
+      "rank": 1,
+      "canonical_issue": "가천대 길병원 인천환경보건센터, ‘2026 인천광역시 환경보건 포럼’ 성료 - 의학신문",
+      "title": "가천대 길병원 인천환경보건센터, ‘2026 인천광역시 환경보건 포럼’ 성료",
+      "category": [
+        "정책",
+        "병원"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-11T00:08:44+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=오인규 기자] 인천지역 환경오염 취약계층의 실내공기질 문제를 과학적으로 진단하고, 실효성 있는 환경보건 정책 발전 방안을 모색하는 뜻깊은 자리",
+        "[의학신문·일간보사=오인규 기자] 인천지역 환경오염 취약계층의 실내공기질 문제를 과학적으로 진단하고, 실효성 있는 환경보건 정책 발전 방안을 모색하는 뜻깊은 자리가 마련됐다.",
+        "사진제공=가천대 길병원 가천대 길병원(병원장 김우경)에 위치한 인천환경보건센터(센터장 최원준, 직업환경의학과)는 지난 1일 하버파크호텔에서 관련 분야 전문가, 관계 공무원 및 유관기관, 인천시민 등 60여 명이 참석한 가운데 ‘2026 인천광역시 환경보건 포럼’을 성공적으로 개최했다고 밝혔다."
+      ],
+      "importance": "의료기관·약국 현장의 변화는 진료 흐름과 환자 경험, 의약품 사용 환경에 직접 영향을 줍니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3013619"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013619"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3013619_414509_2835.jpg",
+      "score": 37,
+      "oncology": null
+    },
+    {
+      "rank": 2,
+      "canonical_issue": "소청과 전문의 부족 심각...지역 소아의료 ‘붕괴 중’ - 의학신문",
+      "title": "소청과 전문의 부족 심각...지역 소아의료 ‘붕괴 중’",
+      "category": [
+        "병원"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-10T16:52:04+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=김현기 기자] 지역 소아필수의료를 담당하는 소아청소년병원들이 심각한 의료인력 부족으로 진료 축소와 운영난에 직면한 것으로 나타났다.특히 전문의",
+        "[의학신문·일간보사=김현기 기자] 지역 소아필수의료를 담당하는 소아청소년병원들이 심각한 의료인력 부족으로 진료 축소와 운영난에 직면한 것으로 나타났다.",
+        "특히 전문의 채용에 나선 병원 상당수가 장기간 인력을 확보하지 못하고 있는 실정으로, 절반 이상의 병원은 향후 4년 이내 현재의 진료체계를 유지하기 어렵다고 호소하고 있다."
+      ],
+      "importance": "의료기관·약국 현장의 변화는 진료 흐름과 환자 경험, 의약품 사용 환경에 직접 영향을 줍니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3013625"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013625"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3013625_414515_4310.jpg",
+      "score": 30,
+      "oncology": null
+    },
+    {
+      "rank": 3,
+      "canonical_issue": "소아병원 60% 진료 축소…절반은 '4년 내 한계' 경고 - 메디파나뉴스",
+      "title": "소아병원 60% 진료 축소…절반은 '4년 내 한계' 경고",
+      "category": [
+        "병원"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-10T17:02:21+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "지역 소아의료를 담당하는 소아청소년병원 10곳 중 6곳이 전문의 부족으로 진료를 축소하거나 중단한 것으로 나타났다. 야간·휴일 진료와 입원 병상을 유지하기 위해 기존 의료진이 초과 근무를 감당하고 있지만, 인력 공백을 메우기에는 역부족인 상황이다. 더 큰 문제는 앞으로의 전망이다. 절반이 넘는 병원이 현",
+        "(왼쪽부터) 대한소아청소년병원협회 한동균 부회장, 최용재 회장, 이홍준 부회장.",
+        "사진=박으뜸 기자 지역 소아의료를 담당하는 소아청소년병원 10곳 중 6곳이 전문의 부족으로 진료를 축소하거나 중단한 것으로 나타났다."
+      ],
+      "importance": "의료기관·약국 현장의 변화는 진료 흐름과 환자 경험, 의약품 사용 환경에 직접 영향을 줍니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=419063"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=419063"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419063_326423_5853.jpg",
+      "score": 21,
+      "oncology": null
+    },
+    {
+      "rank": 4,
+      "canonical_issue": "두통 등 연간 외래진료 1775회? 과도한 의료이용 도마 - 의학신문",
+      "title": "두통 등 연간 외래진료 1775회? 과도한 의료이용 도마",
+      "category": [
+        "정책",
+        "수가"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-11T00:04:58+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=김현기 기자] 두통 등의 증상으로 1년 동안 의료기관에서 1775회나 외래진료를 받은 환자가 확인되는 등 일부 환자의 과도한 의료이용 문제가",
+        "[의학신문·일간보사=김현기 기자] 두통 등의 증상으로 1년 동안 의료기관에서 1775회나 외래진료를 받은 환자가 확인되는 등 일부 환자의 과도한 의료이용 문제가 지속되고 있는 것으로 나타났다.",
+        "특히 연간 외래진료를 100회 이상 이용한 환자가 56만명을 넘어선 가운데 건강보험 재정 악화 우려까지 커지면서 의료자원의 효율적 활용을 위한 관리 강화가 필요하다는 지적이다."
+      ],
+      "importance": "의료기관·약국 현장의 변화는 진료 흐름과 환자 경험, 의약품 사용 환경에 직접 영향을 줍니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3013628"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013628"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3013628_414518_230.png",
+      "score": 19,
+      "oncology": null
+    },
+    {
+      "rank": 5,
+      "canonical_issue": "시지바이오 '노보시스', 주상골 불유합 치료 새 장 열어… 골유합·정렬 개선 확인 - 의학신문",
+      "title": "시지바이오 '노보시스', 주상골 불유합 치료 새 장 열어… 골유합·정렬 개선 확인",
+      "category": [
+        "수가",
+        "병원",
+        "공급"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-11T00:08:44+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=오인규 기자] 시지바이오의 골대체재 ‘노보시스(NOVOSIS)’가 치료가 까다로운 주상골 불유합 환자들에게 훌륭한 치료 옵션으로 주목받고 있다",
+        "[의학신문·일간보사=오인규 기자] 시지바이오의 골대체재 ‘노보시스(NOVOSIS)’가 치료가 까다로운 주상골 불유합 환자들에게 훌륭한 치료 옵션으로 주목받고 있다.",
+        "(왼쪽부터) 원주세브란스기독병원 정형외과 오진록 교수, 박지수 교수 사진 제공=원주세브란스기독병원 홈페이지 연세대학교 원주세브란스기독병원 정형외과 박지수·오진록 교수 연구팀은 노보시스를 활용한 주상골 불유합 치료의 예비 임상 연구 결과를 국제학술지 ‘Orthopaedic Surgery’에 발표했다고 밝혔다."
+      ],
+      "importance": "주요 임상 결과는 향후 허가·가이드라인·표준치료 변화 가능성을 평가하는 근거가 됩니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3013623"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013623"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3013623_414513_4924.jpg",
+      "score": 17,
+      "oncology": null
+    }
+  ],
+  "trends": [
+    {
+      "title": "의료현장",
+      "count": 5,
+      "change": "5건의 주요 이슈에서 반복적으로 확인",
+      "implication": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름",
+      "examples": [
+        "가천대 길병원 인천환경보건센터, ‘2026 인천광역시 환경보건 포럼’ 성료",
+        "소청과 전문의 부족 심각...지역 소아의료 ‘붕괴 중’"
+      ]
+    },
+    {
+      "title": "정책·급여",
+      "count": 4,
+      "change": "4건의 주요 이슈에서 반복적으로 확인",
+      "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
+      "examples": [
+        "가천대 길병원 인천환경보건센터, ‘2026 인천광역시 환경보건 포럼’ 성료",
+        "소청과 전문의 부족 심각...지역 소아의료 ‘붕괴 중’"
+      ]
+    },
+    {
+      "title": "신약·임상",
+      "count": 1,
+      "change": "1건의 주요 이슈에서 반복적으로 확인",
+      "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
+      "examples": [
+        "시지바이오 '노보시스', 주상골 불유합 치료 새 장 열어… 골유합·정렬 개선 확인"
+      ]
+    },
+    {
+      "title": "공급·유통",
+      "count": 1,
+      "change": "1건의 주요 이슈에서 반복적으로 확인",
+      "implication": "의약품 공급 안정성과 유통 대응이 현장 리스크로 부각되는 흐름",
+      "examples": [
+        "시지바이오 '노보시스', 주상골 불유합 치료 새 장 열어… 골유합·정렬 개선 확인"
+      ]
+    }
+  ],
+  "outlet_status": [
+    {
+      "publisher": "데일리팜",
+      "homepage_url": "https://www.dailypharm.com/",
+      "items": []
+    },
+    {
+      "publisher": "의학신문",
+      "homepage_url": "https://www.bosa.co.kr/",
+      "items": [
+        {
+          "title": "가천대 길병원 인천환경보건센터, ‘2026 인천광역시 환경보건 포럼’ 성료",
+          "published_at": "2026-10-11T00:08:44+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013619"
+        },
+        {
+          "title": "소청과 전문의 부족 심각...지역 소아의료 ‘붕괴 중’",
+          "published_at": "2026-10-10T16:52:04+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013625"
+        },
+        {
+          "title": "두통 등 연간 외래진료 1775회? 과도한 의료이용 도마",
+          "published_at": "2026-10-11T00:04:58+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013628"
+        },
+        {
+          "title": "시지바이오 '노보시스', 주상골 불유합 치료 새 장 열어… 골유합·정렬 개선 확인",
+          "published_at": "2026-10-11T00:08:44+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013623"
+        },
+        {
+          "title": "포항세명기독병원, 포스텍 PAMTIP 수강생 대상 치매 예방 특강",
+          "published_at": "2026-10-11T00:08:44+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013624"
+        },
+        {
+          "title": "한양대병원 안명주 의학석좌교수, 병원 발전기금 1억 원 쾌척",
+          "published_at": "2026-10-11T00:08:44+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013621"
+        },
+        {
+          "title": "의료용 마약류 특별감시 10곳 중 7곳 위반",
+          "published_at": "2026-10-10T23:45:45+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013627"
+        },
+        {
+          "title": "한국애보트, 당뇨 환자 가족 원격 모니터링 앱 ‘리브레링크업’ 국내 출시",
+          "published_at": "2026-10-11T00:08:44+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013622"
+        }
+      ]
+    },
+    {
+      "publisher": "메디파나뉴스",
+      "homepage_url": "https://www.medipana.com/",
+      "items": [
+        {
+          "title": "소아병원 60% 진료 축소…절반은 '4년 내 한계' 경고",
+          "published_at": "2026-10-10T17:02:21+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419063"
+        }
+      ]
+    },
+    {
+      "publisher": "약사공론",
+      "homepage_url": "https://www.kpanews.co.kr/",
+      "items": []
+    }
+  ],
+  "insight": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름 동시에 정책·급여 흐름도 함께 확인돼 단일 이슈보다 복합적인 산업 변화로 보는 것이 적절합니다.",
+  "infographic": {
+    "image_path": null,
+    "generated_at": null,
+    "template_version": "news-card-v1"
+  }
+}
