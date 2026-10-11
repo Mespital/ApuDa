@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "source": "ApuDa reviewed official medical institution directories",
-  "generated_at": "2026-10-11T00:32:56+00:00",
+  "generated_at": "2026-10-11T00:54:53+00:00",
   "count": 486,
   "results": [
     {
@@ -1291,7 +1291,7 @@
       "department": "비뇨의학과",
       "specialty_text": "신장암, 전립선암, 혈뇨",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2225",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1313,7 +1313,7 @@
       "department": "소화기내과",
       "specialty_text": "바이러스성간염, 간경화, 지방간질환(대사이상지방간질환), 만성간염, 간경변, 자가면역간질환, 간암(간세포암), 간이식",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1911",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1331,7 +1331,7 @@
       "department": "비뇨의학과",
       "specialty_text": "전립선암, 신장암, 방광암, 로봇수술, 전립선비대증, 요로결석(요석증), 과민성방광, 만성간질성방광염",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3527",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1357,7 +1357,7 @@
       "department": "소화기내과",
       "specialty_text": "간암, 간경화, 급성간염, 만성간염, 지방간, 간질환, 간이식",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=228",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1375,7 +1375,7 @@
       "department": "구강악안면외과",
       "specialty_text": "구강암, 악안면재건, 미세수술재건, 악안면외상및골절",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3003",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1393,7 +1393,7 @@
       "department": "방사선종양학과",
       "specialty_text": "대장/직장/항문암, 뇌종양, 소아암, 간암, 양성자치료",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2844",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1419,7 +1419,7 @@
       "department": "소화기내과",
       "specialty_text": "위암, 위선종, 대장용종, 염증성장질환, 소장질환, 조기대장암, 치료내시경(ESD,스텐트,소장내시경)",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3116",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1441,7 +1441,7 @@
       "department": "유방외과분과",
       "specialty_text": "유방암, 유방암수술",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1386",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1459,7 +1459,7 @@
       "department": "혈액종양내과",
       "specialty_text": "림프종, 조혈모세포이식, 혈구탐식증후군, CAR-T세포치료",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=307",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1477,7 +1477,7 @@
       "department": "호흡기내과",
       "specialty_text": "폐암, 폐결절, 기관지내시경",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3699",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1495,7 +1495,7 @@
       "department": "이비인후과",
       "specialty_text": "두경부암수술, 두경부종양, 갑상선암, 두경부로봇수술(두경부암,갑상선), 음성질환",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3533",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1517,7 +1517,7 @@
       "department": "소화기내과",
       "specialty_text": "염증성장질환, 장결핵, 대장암, 크론병, 궤양성대장염",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=225",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1535,7 +1535,7 @@
       "department": "혈액종양내과",
       "specialty_text": "림프종, CAR-T세포치료",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=312",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1553,7 +1553,7 @@
       "department": "소화기내과",
       "specialty_text": "대장암, 대장용종, 소장질환, 염증성장질환, 대장협착",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=752",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1571,7 +1571,7 @@
       "department": "내분비외과분과",
       "specialty_text": "갑상선암, 갑상선양성종양, 부갑상선의종양, 부신종양, 악성흑색종, 경부암",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=167",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1593,7 +1593,7 @@
       "department": "내분비외과분과",
       "specialty_text": "갑상선암, 부갑상선의종양, 갑상선양성종양, 경부암, 갑상선의종양",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=189",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1611,7 +1611,7 @@
       "department": "혈액종양내과",
       "specialty_text": "유방암, 원발부위불명암",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1812",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1633,7 +1633,7 @@
       "department": "소화기내과",
       "specialty_text": "대장암, 대장용종, 대장협착, 소장질환, 염증성장질환",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2695",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1651,7 +1651,7 @@
       "department": "소화기내과",
       "specialty_text": "위암, 식도암, 위장관암, 위선종, 치료내시경, 위장관질환",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3336",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1673,7 +1673,7 @@
       "department": "산부인과",
       "specialty_text": "자궁내막암, 난소암, 자궁경부암, 로봇수술, 싱글포트복강경수술(단일구멍복강경수술), 질식접근복강경수술(NOTES,자연개구내시경수술)",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=379",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1699,7 +1699,7 @@
       "department": "내분비대사내과",
       "specialty_text": "갑상선질환, 갑상선암",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1845",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1717,7 +1717,7 @@
       "department": "산부인과",
       "specialty_text": "난소암, 난관암(나팔관암), 복막암, 자궁내막암, 자궁경부암, 자궁육종, 질암, 외음부암, 유전성부인암, 화학요법(항암치료), 양성 부인종양, 싱글포트복강경수술(단일구멍복강경수술), 질식접근복강경수술(NOTES,자연개구내시경수술), 로봇수술",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3820",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1747,7 +1747,7 @@
       "department": "방사선종양학과",
       "specialty_text": "유방암, 림프종(위,중추신경계 림프종 제외), 양성자치료",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2348",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1769,7 +1769,7 @@
       "department": "폐식도외과분과",
       "specialty_text": "폐암, 식도암, 식도재건술, 최소침습수술(로봇수술,흉강경수술)",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=676",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1791,7 +1791,7 @@
       "department": "간담췌외과분과",
       "specialty_text": "로봇수술, 췌장암, 담도암, 담낭암, 바터팽대부암, 췌장낭종, 췌장신경내분비종양",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3182",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1821,7 +1821,7 @@
       "department": "대장항문외과분과",
       "specialty_text": "대장암, 직장암, 유전성대장암, 전이성대장암, 로봇수술, 복강경수술, 싱글포트복강경수술(단일구멍복강경수술)",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=172",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1843,7 +1843,7 @@
       "department": "신경외과",
       "specialty_text": "뇌하수체종양, 뇌교종, 악성뇌종양",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=361",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1861,7 +1861,7 @@
       "department": "소화기내과",
       "specialty_text": "위암, 치료내시경, 위선종, 식도암",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=692",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1883,7 +1883,7 @@
       "department": "소화기내과",
       "specialty_text": "기능성식도질환및식도암",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1018",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1901,7 +1901,7 @@
       "department": "혈액종양내과",
       "specialty_text": "폐암, 식도암, 흉선암",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2548",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1923,7 +1923,7 @@
       "department": "혈액종양내과",
       "specialty_text": "유방암",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=306",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1941,7 +1941,7 @@
       "department": "혈액종양내과",
       "specialty_text": "대장암",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=313",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1959,7 +1959,7 @@
       "department": "대장항문외과분과",
       "specialty_text": "대장암, 직장암, 전이성대장암, 유전성대장암, 로봇수술, 복강경수술",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1080",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1981,7 +1981,7 @@
       "department": "이식외과분과",
       "specialty_text": "신장이식(콩팥이식), 후복막의종양, 장기및조직이식, 췌장이식, 복강내육종, 자궁이식",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1172",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1999,7 +1999,7 @@
       "department": "소화기내과",
       "specialty_text": "췌장암, 담낭암, 담도암, 췌장염, 췌장의양성종양, 췌장낭종, 췌장질환, 담석증, 담도의질환, 내시경초음파, 간이식",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1749",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2025,7 +2025,7 @@
       "department": "소화기내과",
       "specialty_text": "간암, 간경화, 급성간염, 만성간염, 지방간, 간질환, 간이식",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1079",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2043,7 +2043,7 @@
       "department": "정형외과",
       "specialty_text": "골낭종, 병적골절, 골육종(골암), 근골격계종양, 사지구제술",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=419",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2061,7 +2061,7 @@
       "department": "비뇨의학과",
       "specialty_text": "신장암, 전립선암, 로봇수술, 복강경수술",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=526",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2083,7 +2083,7 @@
       "department": "산부인과",
       "specialty_text": "난소암, 난관암(나팔관암), 자궁내막암, HPV-의존성 자궁경부암, HPV-비의존성 자궁경부암, 자궁육종, 유전성부인암, 로봇수술, 최소침습부인과수술, 화학요법(항암치료)",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3350",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2113,7 +2113,7 @@
       "department": "혈액종양내과",
       "specialty_text": "폐암, 식도암",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=589",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2135,7 +2135,7 @@
       "department": "신경외과",
       "specialty_text": "뇌기저부수술, 뇌종양, 뇌하수체종양, 뇌수막종, 신경초종,, 감마나이프",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=846",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2153,7 +2153,7 @@
       "department": "비뇨의학과",
       "specialty_text": "방광암, 신우암, 요관암, 비뇨종양의학, 로봇수술, 복강경수술, 요도협착, 요도손상",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1041",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2171,7 +2171,7 @@
       "department": "이비인후과",
       "specialty_text": "후두암, 갑상선암, 음성질환, 두경부암수술",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=144",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2193,7 +2193,7 @@
       "department": "비뇨의학과",
       "specialty_text": "전립선암, 로봇수술, 전립선암하이푸(HIFU)시술, PSA(전립선암표지자)이상소견, 신장암, 부신종양, 복강경수술",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2738",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2215,7 +2215,7 @@
       "department": "소화기내과",
       "specialty_text": "간암, B형간염, 간경변, 간이식",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1481",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2233,7 +2233,7 @@
       "department": "호흡기내과",
       "specialty_text": "만성폐쇄성폐질환, 폐암, 기관지내시경",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2144",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2251,7 +2251,7 @@
       "department": "혈액종양내과",
       "specialty_text": "유방암, 원발부위불명암",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3186",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2273,7 +2273,7 @@
       "department": "혈액종양내과",
       "specialty_text": "대장암, 췌장암, 담도암, 간암, 육종",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3613",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2307,7 +2307,7 @@
       "department": "혈액종양내과",
       "specialty_text": "폐암, 유방암",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=314",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2329,7 +2329,7 @@
       "department": "혈액종양내과",
       "specialty_text": "유방암",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3577",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2347,7 +2347,7 @@
       "department": "호흡기내과",
       "specialty_text": "폐암, 폐결절",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=271",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2365,7 +2365,7 @@
       "department": "소화기내과",
       "specialty_text": "위용종, 위선종, 위암, 십이지장 종양, 위궤양, 진단적 내시경, 위염",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3536",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2383,7 +2383,7 @@
       "department": "소아청소년 혈액종양분과",
       "specialty_text": "빈혈, 소아암, 백혈병, 출혈, 혈소판감소증, 조혈모세포이식",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=444",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2405,7 +2405,7 @@
       "department": "유방외과분과",
       "specialty_text": "유방암, 유방로봇수술, 유전성유방암난소암증후군",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1881",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2427,7 +2427,7 @@
       "department": "유방외과분과",
       "specialty_text": "유방암, 유방암수술, 유방악성질환, 유전성유방암난소암증후군, 유방로봇수술",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1913",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2449,7 +2449,7 @@
       "department": "국제진료센터",
       "specialty_text": "유방암, 유방암수술, 유방악성질환, 유전성유방암난소암증후군, 유방로봇수술",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3800",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2471,7 +2471,7 @@
       "department": "비뇨의학과",
       "specialty_text": "전립선암, 신장암, 방광암, 로봇수술, 남성기능상담",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3588",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2497,7 +2497,7 @@
       "department": "혈액종양내과",
       "specialty_text": "악성림프종, CAR-T세포치료, 조혈모세포이식, 혈구탐식증후군",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2590",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2515,7 +2515,7 @@
       "department": "대장항문외과분과",
       "specialty_text": "대장암, 직장암, 싱글포트복강경수술(단일구멍복강경수술), 복강경수술, 로봇수술, 대장암수술",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=170",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2537,7 +2537,7 @@
       "department": "호흡기내과",
       "specialty_text": "폐암, 폐결절, 초음파기관지내시경, 로봇기관지내시경",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1004",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2555,7 +2555,7 @@
       "department": "성형외과",
       "specialty_text": "흑색종, 피부암, 유방재건, 하지재건, 상지재건, 피부이식, 미세수술재건, 화상흉터구축",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2604",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2573,7 +2573,7 @@
       "department": "소화기내과",
       "specialty_text": "췌장암, 담낭암, 담도암, 췌장염, 췌장의양성종양, 담석증, 담도의질환, 내시경초음파, 간이식",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=227",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2599,7 +2599,7 @@
       "department": "이식외과분과",
       "specialty_text": "신장이식(콩팥이식), 후복막의종양, 장기및조직이식, 췌장이식, 복강내육종",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1667",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2617,7 +2617,7 @@
       "department": "소화기내과",
       "specialty_text": "췌장암, 담낭암, 담도암, 췌장염, 췌장의양성종양, 췌장질환, 담석증, 담낭용종, 담도의질환, 간이식",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=221",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2643,7 +2643,7 @@
       "department": "피부과",
       "specialty_text": "피부암(흑색종포함), 손발톱질환, 탈모및두피질환, 백반증",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=138",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2661,7 +2661,7 @@
       "department": "혈액종양내과",
       "specialty_text": "폐암, 두경부암",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1811",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2683,7 +2683,7 @@
       "department": "대장항문외과분과",
       "specialty_text": "대장암, 직장암, 유전성대장암, 복강경수술, 로봇수술, 대장암수술",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=183",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2705,7 +2705,7 @@
       "department": "신경외과",
       "specialty_text": "두개저종양, 뇌하수체종양의내시경수술, 전이성뇌종양, 악성뇌종양, 감마나이프, 뇌외상",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2821",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2723,7 +2723,7 @@
       "department": "산부인과",
       "specialty_text": "난소암, 복막암, 자궁내막암, 자궁경부암, 자궁육종, 난관암(나팔관암), 질암, 유전성부인암, 부인암, 로봇수술",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=389",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2753,7 +2753,7 @@
       "department": "내분비대사내과",
       "specialty_text": "갑상선질환, 갑상선암",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3816",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2771,7 +2771,7 @@
       "department": "산부인과",
       "specialty_text": "자궁경부암, 난소암, 자궁내막암",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=376",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2797,7 +2797,7 @@
       "department": "소화기내과",
       "specialty_text": "췌장암, 담낭암, 담도암, 췌장염, 췌장의양성종양, 췌장질환, 담석증, 담낭용종, 담도의질환, 간이식",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=222",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2823,7 +2823,7 @@
       "department": "비뇨의학과",
       "specialty_text": "수신증, 방광요관역류, 신장암, 신우요관암, 부신종양, 고환암, 잠복고환증(정류고환), 음낭수종, 로봇수술, 소아로봇수술, 복강경수술",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3361",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2845,7 +2845,7 @@
       "department": "소화기내과",
       "specialty_text": "위암, 위식도역류질환, 소화성궤양, 기능성소화불량, 치료내시경",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=214",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2863,7 +2863,7 @@
       "department": "소화기내과",
       "specialty_text": "간암, 간경화, 급성간염, 만성간염, 간질환, 간이식",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=223",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2881,7 +2881,7 @@
       "department": "내분비외과분과",
       "specialty_text": "갑상선암, 갑상선수술, 갑상선의종양, 내시경수술, 갑상선질환, 부갑상선의종양, 갑상선양성종양, 로봇수술",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3469",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2899,7 +2899,7 @@
       "department": "방사선종양학과",
       "specialty_text": "유방암, 비뇨기암, 피부암, 흑색종, 양성자치료",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3378",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2921,7 +2921,7 @@
       "department": "소화기내과",
       "specialty_text": "위암, 위의양성종양, 치료내시경",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1480",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2939,7 +2939,7 @@
       "department": "방사선종양학과",
       "specialty_text": "뇌종양, 소아암, 위암, 위말트림프종, 중추신경계림프종, 다발성골수종, 양성자치료",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=492",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2973,7 +2973,7 @@
       "department": "소화기내과",
       "specialty_text": "대장암, 대장용종, 유전성대장암, 염증성장질환",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=215",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2991,7 +2991,7 @@
       "department": "소화기내과",
       "specialty_text": "췌장암, 담낭암, 담도암, 췌장염, 췌장낭종, 담도의질환, 췌장질환, 내시경초음파, 췌장의양성종양",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3726",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3017,7 +3017,7 @@
       "department": "혈액종양내과",
       "specialty_text": "위암, 대장암, 육종",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3787",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3043,7 +3043,7 @@
       "department": "혈액종양내과",
       "specialty_text": "골수형성이상증후군, 재생불량성빈혈, 혈소판감소증, 발작성야간혈색소뇨증, 급성백혈병, 만성림프구성백혈병, 빈혈",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=318",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3061,7 +3061,7 @@
       "department": "비뇨의학과",
       "specialty_text": "전립선암, 로봇수술, PSA(전립선암표지자)이상소견",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=520",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3079,7 +3079,7 @@
       "department": "비뇨의학과",
       "specialty_text": "전립선암, 로봇수술, 전립선암하이푸(HIFU)시술, PSA(전립선암표지자)이상소견",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1170",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3097,7 +3097,7 @@
       "department": "신경외과",
       "specialty_text": "악성뇌종양, 전이성뇌종양, 뇌교종, 뇌수막종, 감마나이프, 뇌수두증",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3024",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3115,7 +3115,7 @@
       "department": "이비인후과",
       "specialty_text": "구강암, 구인두암, 갑상선암",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=150",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3137,7 +3137,7 @@
       "department": "비뇨의학과",
       "specialty_text": "방광암, 전립선암, 신장암, 부신종양, 신우요관암",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=527",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3163,7 +3163,7 @@
       "department": "호흡기내과",
       "specialty_text": "폐암, 기관지내시경, 기관지협착, 기관지내시경초음파",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=861",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3181,7 +3181,7 @@
       "department": "혈액종양내과",
       "specialty_text": "백혈병, 조혈모세포이식, 만성골수증식성질환, 빈혈, 출혈질환",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=303",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3199,7 +3199,7 @@
       "department": "이비인후과",
       "specialty_text": "타액선암, 구강암, 두경부종양, 두경부암수술",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=148",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3221,7 +3221,7 @@
       "department": "혈액종양내과",
       "specialty_text": "폐암, 두경부암, 뇌종양",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2347",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3247,7 +3247,7 @@
       "department": "대장항문외과분과",
       "specialty_text": "대장암, 직장암, 유전성대장암, 전이성대장암, 염증성장질환, 크론병, 궤양성대장염, 복강경수술, 로봇수술",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=187",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3269,7 +3269,7 @@
       "department": "소아청소년 혈액종양분과",
       "specialty_text": "소아뇌종양, 소아암",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2205",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3291,7 +3291,7 @@
       "department": "소아청소년 혈액종양분과",
       "specialty_text": "백혈병, 림프종, CAR-T세포치료, 조혈모세포이식, 빈혈, 혈소판감소증, 혈관기형, 혈관종",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2560",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3313,7 +3313,7 @@
       "department": "이비인후과",
       "specialty_text": "두경부암수술, 두경부재건, 두경부로봇수술(두경부암,갑상선)",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2915",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3331,7 +3331,7 @@
       "department": "혈액종양내과",
       "specialty_text": "백혈병, 만성골수증식성질환, 출혈질환, 빈혈, 재생불량성빈혈, 혈소판감소증, 발작성야간혈색소뇨증, 골수형성이상증후군",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3019",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3349,7 +3349,7 @@
       "department": "소화기내과",
       "specialty_text": "간암, 간경화, 만성간염, 간이식",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=212",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3367,7 +3367,7 @@
       "department": "소화기내과",
       "specialty_text": "췌장암, 담낭암, 담도암, 췌장염, 췌장의양성종양, 췌장낭종, 췌장질환, 담석증, 담도의질환, 내시경초음파, 간이식",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3452",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3393,7 +3393,7 @@
       "department": "신경외과",
       "specialty_text": "악성뇌종양, 뇌교종, 전이성뇌종양, 뇌수막종, 뇌종양, 감마나이프",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1819",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3411,7 +3411,7 @@
       "department": "호흡기내과",
       "specialty_text": "로봇기관지내시경, 폐이식, 초음파기관지내시경, 폐암",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3351",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3429,7 +3429,7 @@
       "department": "내분비외과분과",
       "specialty_text": "갑상선수술, 부갑상선의종양, 복강경수술, 갑상선암",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=190",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3447,7 +3447,7 @@
       "department": "산부인과",
       "specialty_text": "난소암, 자궁경부암, 자궁내막암",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=380",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3473,7 +3473,7 @@
       "department": "구강악안면외과",
       "specialty_text": "악안면기형, 악안면종양, 구강암, 턱관절외과, 악안면재건",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2278",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3491,7 +3491,7 @@
       "department": "방사선종양학과",
       "specialty_text": "폐암(육종포함), 전립선/비뇨기암, 식도암, 양성자치료",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=735",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -3517,7 +3517,7 @@
       "department": "대장항문외과분과",
       "specialty_text": "대장암, 직장암, 유전성대장암, 전이성대장암, 로봇수술, 복강경수술",
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1295",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {

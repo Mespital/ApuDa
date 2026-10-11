@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "source": "삼성서울병원 공식 의료진 검색",
-  "generated_at": "2026-10-10T07:35:51+00:00",
+  "generated_at": "2026-10-11T00:53:39+00:00",
   "count": 106,
   "results": [
     {
@@ -13,7 +13,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2225",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%8B%A0%EC%9E%A5%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -35,7 +35,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1911",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EA%B0%84%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -53,7 +53,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3527",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%B0%A9%EA%B4%91%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -79,7 +79,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=228",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EA%B0%84%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -97,7 +97,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3003",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EA%B5%AC%EA%B0%95%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -115,7 +115,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2844",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%86%8C%EC%95%84%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -141,7 +141,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3116",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%84%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -163,7 +163,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1386",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%A0%EB%B0%A9%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -181,7 +181,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=307",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%A6%BC%ED%94%84%EC%A2%85",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -199,7 +199,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3699",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%ED%8F%90%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -217,7 +217,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3533",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%91%90%EA%B2%BD%EB%B6%80%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -239,7 +239,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=225",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%8C%80%EC%9E%A5%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -257,7 +257,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=312",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%A6%BC%ED%94%84%EC%A2%85",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -275,7 +275,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=752",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%8C%80%EC%9E%A5%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -293,7 +293,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=167",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EA%B0%91%EC%83%81%EC%84%A0%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -315,7 +315,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=189",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EA%B0%91%EC%83%81%EC%84%A0%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -333,7 +333,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1812",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%A0%EB%B0%A9%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -355,7 +355,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2695",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%8C%80%EC%9E%A5%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -373,7 +373,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3336",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%84%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -395,7 +395,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=379",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9E%90%EA%B6%81%EA%B2%BD%EB%B6%80%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -421,7 +421,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1845",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EA%B0%91%EC%83%81%EC%84%A0%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -439,7 +439,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3820",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9E%90%EA%B6%81%EA%B2%BD%EB%B6%80%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -469,7 +469,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2348",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%A6%BC%ED%94%84%EC%A2%85",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -491,7 +491,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=676",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%8B%9D%EB%8F%84%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -513,7 +513,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3182",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%8B%A0%EA%B2%BD%EB%82%B4%EB%B6%84%EB%B9%84%EC%A2%85%EC%96%91",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -543,7 +543,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=172",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%A7%81%EC%9E%A5%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -565,7 +565,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=361",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%87%8C%EC%A2%85%EC%96%91",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -583,7 +583,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=692",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%84%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -605,7 +605,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1018",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%8B%9D%EB%8F%84%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -623,7 +623,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2548",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%8B%9D%EB%8F%84%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -645,7 +645,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=306",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%A0%EB%B0%A9%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -663,7 +663,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=313",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%8C%80%EC%9E%A5%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -681,7 +681,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1080",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%A7%81%EC%9E%A5%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -703,7 +703,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1172",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%A1%EC%A2%85",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -721,7 +721,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1749",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%B7%8C%EC%9E%A5%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -747,7 +747,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1079",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EA%B0%84%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -765,7 +765,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=419",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%A1%EC%A2%85",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -783,7 +783,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=526",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%8B%A0%EC%9E%A5%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -805,7 +805,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3350",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9E%90%EA%B6%81%EA%B2%BD%EB%B6%80%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -835,7 +835,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=589",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%8B%9D%EB%8F%84%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -857,7 +857,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=846",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%87%8C%EC%A2%85%EC%96%91",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -875,7 +875,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1041",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%B0%A9%EA%B4%91%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -893,7 +893,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=144",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%91%90%EA%B2%BD%EB%B6%80%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -915,7 +915,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2738",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%8B%A0%EC%9E%A5%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -937,7 +937,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1481",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EA%B0%84%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -955,7 +955,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2144",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%ED%8F%90%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -973,7 +973,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3186",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%A0%EB%B0%A9%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -995,7 +995,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3613",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%A1%EC%A2%85",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1029,7 +1029,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=314",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%A0%EB%B0%A9%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1051,7 +1051,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3577",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%A0%EB%B0%A9%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1069,7 +1069,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=271",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%ED%8F%90%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1087,7 +1087,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3536",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%84%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1105,7 +1105,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=444",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%B0%B1%ED%98%88%EB%B3%91",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1127,7 +1127,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1881",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%82%9C%EC%86%8C%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1149,7 +1149,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1913",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%82%9C%EC%86%8C%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1171,7 +1171,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3800",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%82%9C%EC%86%8C%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1193,7 +1193,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3588",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%8B%A0%EC%9E%A5%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1219,7 +1219,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2590",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%A6%BC%ED%94%84%EC%A2%85",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1237,7 +1237,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=170",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%A7%81%EC%9E%A5%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1259,7 +1259,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1004",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%ED%8F%90%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1277,7 +1277,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2604",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%ED%9D%91%EC%83%89%EC%A2%85",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1295,7 +1295,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=227",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%B7%8C%EC%9E%A5%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1321,7 +1321,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1667",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%A1%EC%A2%85",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1339,7 +1339,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=221",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%B7%8C%EC%9E%A5%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1365,7 +1365,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=138",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%ED%9D%91%EC%83%89%EC%A2%85",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1383,7 +1383,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1811",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%91%90%EA%B2%BD%EB%B6%80%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1405,7 +1405,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=183",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%A7%81%EC%9E%A5%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1427,7 +1427,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2821",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%87%8C%EC%A2%85%EC%96%91",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1445,7 +1445,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=389",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9E%90%EA%B6%81%EA%B2%BD%EB%B6%80%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1475,7 +1475,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3816",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EA%B0%91%EC%83%81%EC%84%A0%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1493,7 +1493,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=376",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9E%90%EA%B6%81%EA%B2%BD%EB%B6%80%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1519,7 +1519,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=222",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%B7%8C%EC%9E%A5%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1545,7 +1545,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3361",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%8B%A0%EC%9E%A5%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1567,7 +1567,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=214",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%84%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1585,7 +1585,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=223",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EA%B0%84%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1603,7 +1603,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3469",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EA%B0%91%EC%83%81%EC%84%A0%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1621,7 +1621,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3378",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%ED%9D%91%EC%83%89%EC%A2%85",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1643,7 +1643,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1480",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%84%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1661,7 +1661,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=492",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%A6%BC%ED%94%84%EC%A2%85",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1695,7 +1695,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=215",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%8C%80%EC%9E%A5%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1713,7 +1713,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3726",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%B7%8C%EC%9E%A5%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1739,7 +1739,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3787",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%A1%EC%A2%85",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1765,7 +1765,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=318",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%B0%B1%ED%98%88%EB%B3%91",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1783,7 +1783,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=520",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%A0%84%EB%A6%BD%EC%84%A0%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1801,7 +1801,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1170",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%A0%84%EB%A6%BD%EC%84%A0%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1819,7 +1819,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3024",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%87%8C%EC%A2%85%EC%96%91",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1837,7 +1837,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=150",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EA%B5%AC%EA%B0%95%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1859,7 +1859,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=527",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%8B%A0%EC%9E%A5%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1885,7 +1885,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=861",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%ED%8F%90%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1903,7 +1903,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=303",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%B0%B1%ED%98%88%EB%B3%91",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1921,7 +1921,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=148",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%91%90%EA%B2%BD%EB%B6%80%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1943,7 +1943,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2347",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%91%90%EA%B2%BD%EB%B6%80%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1969,7 +1969,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=187",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%A7%81%EC%9E%A5%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1991,7 +1991,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2205",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%86%8C%EC%95%84%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2013,7 +2013,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2560",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%B0%B1%ED%98%88%EB%B3%91",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2035,7 +2035,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2915",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%91%90%EA%B2%BD%EB%B6%80%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2053,7 +2053,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3019",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%B0%B1%ED%98%88%EB%B3%91",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2071,7 +2071,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=212",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EA%B0%84%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2089,7 +2089,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3452",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%B7%8C%EC%9E%A5%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2115,7 +2115,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1819",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EB%87%8C%EC%A2%85%EC%96%91",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2133,7 +2133,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=3351",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%ED%8F%90%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2151,7 +2151,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=190",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EA%B0%91%EC%83%81%EC%84%A0%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2169,7 +2169,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=380",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9E%90%EA%B6%81%EA%B2%BD%EB%B6%80%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2195,7 +2195,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=2278",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EA%B5%AC%EA%B0%95%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2213,7 +2213,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=735",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%9C%A1%EC%A2%85",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -2239,7 +2239,7 @@
       "profile_url": "https://www.samsunghospital.com/home/reservation/common/doctorProfile.do?DR_NO=1295",
       "source_url": "https://www.samsunghospital.com/home/reservation/doctorDetailInfo.do?SW=%EC%A7%81%EC%9E%A5%EC%95%94",
       "verification_method": "official_keyword_search_explicit_clinical_specialty",
-      "verified_at": "2026-10-10T07:35:51+00:00",
+      "verified_at": "2026-10-11T00:53:39+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
