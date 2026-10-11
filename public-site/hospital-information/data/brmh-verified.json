@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "source": "서울특별시보라매병원 공식 의료진정보",
-  "generated_at": "2026-10-10T07:45:29+00:00",
+  "generated_at": "2026-10-11T00:32:43+00:00",
   "count": 18,
   "results": [
     {
@@ -13,7 +13,7 @@
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=500&medi_code=001035000%7C001035000",
       "source_url": "https://www.brmh.org/medical/medi_doctor_info.do?mcode=001035000",
       "verification_method": "official_department_explicit_specialty_and_detail_popup",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -39,7 +39,7 @@
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=296&medi_code=001035000%7C001035000",
       "source_url": "https://www.brmh.org/medical/medi_doctor_info.do?mcode=001035000",
       "verification_method": "official_department_explicit_specialty_and_detail_popup",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -69,7 +69,7 @@
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=292&medi_code=001035000%7C001035000",
       "source_url": "https://www.brmh.org/medical/medi_doctor_info.do?mcode=001035000",
       "verification_method": "official_department_explicit_specialty_and_detail_popup",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -99,7 +99,7 @@
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=558&medi_code=001023000%7C001023000",
       "source_url": "https://www.brmh.org/medical/medi_doctor_info.do?mcode=001023000",
       "verification_method": "official_department_explicit_specialty_and_detail_popup",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -117,7 +117,7 @@
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=480&medi_code=001035000%7C001035000",
       "source_url": "https://www.brmh.org/medical/medi_doctor_info.do?mcode=001035000",
       "verification_method": "official_department_explicit_specialty_and_detail_popup",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -143,7 +143,7 @@
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=299&medi_code=001035000%7C001035000",
       "source_url": "https://www.brmh.org/medical/medi_doctor_info.do?mcode=001035000",
       "verification_method": "official_department_explicit_specialty_and_detail_popup",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -169,7 +169,7 @@
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=421&medi_code=001023000%7C001023000",
       "source_url": "https://www.brmh.org/medical/medi_doctor_info.do?mcode=001023000",
       "verification_method": "official_department_explicit_specialty_and_detail_popup",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -191,7 +191,7 @@
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=223&medi_code=001023000%7C001023000",
       "source_url": "https://www.brmh.org/medical/medi_doctor_info.do?mcode=001023000",
       "verification_method": "official_department_explicit_specialty_and_detail_popup",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -217,7 +217,7 @@
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=215&medi_code=001023000%7C001023000",
       "source_url": "https://www.brmh.org/medical/medi_doctor_info.do?mcode=001023000",
       "verification_method": "official_department_explicit_specialty_and_detail_popup",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -235,7 +235,7 @@
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=537&medi_code=001023000%7C001023000",
       "source_url": "https://www.brmh.org/medical/medi_doctor_info.do?mcode=001023000",
       "verification_method": "official_department_explicit_specialty_and_detail_popup",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -253,7 +253,7 @@
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=226&medi_code=001023000%7C001023000",
       "source_url": "https://www.brmh.org/medical/medi_doctor_info.do?mcode=001023000",
       "verification_method": "official_department_explicit_specialty_and_detail_popup",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -271,7 +271,7 @@
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=212&medi_code=001023000%7C001023000",
       "source_url": "https://www.brmh.org/medical/medi_doctor_info.do?mcode=001023000",
       "verification_method": "official_department_explicit_specialty_and_detail_popup",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -297,7 +297,7 @@
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=220&medi_code=001023000%7C001023000",
       "source_url": "https://www.brmh.org/medical/medi_doctor_info.do?mcode=001023000",
       "verification_method": "official_department_explicit_specialty_and_detail_popup",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -315,7 +315,7 @@
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=288&medi_code=001035000%7C001035000",
       "source_url": "https://www.brmh.org/medical/medi_doctor_info.do?mcode=001035000",
       "verification_method": "official_department_explicit_specialty_and_detail_popup",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -341,7 +341,7 @@
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=439&medi_code=001023000%7C001023000",
       "source_url": "https://www.brmh.org/medical/medi_doctor_info.do?mcode=001023000",
       "verification_method": "official_department_explicit_specialty_and_detail_popup",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -367,7 +367,7 @@
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=218&medi_code=001023000%7C001023000",
       "source_url": "https://www.brmh.org/medical/medi_doctor_info.do?mcode=001023000",
       "verification_method": "official_department_explicit_specialty_and_detail_popup",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -385,7 +385,7 @@
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=204&medi_code=001023000%7C001023000",
       "source_url": "https://www.brmh.org/medical/medi_doctor_info.do?mcode=001023000",
       "verification_method": "official_department_explicit_specialty_and_detail_popup",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -407,7 +407,7 @@
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=209&medi_code=001023000%7C001023000",
       "source_url": "https://www.brmh.org/medical/medi_doctor_info.do?mcode=001023000",
       "verification_method": "official_department_explicit_specialty_and_detail_popup",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {

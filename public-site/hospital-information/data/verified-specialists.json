@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "source": "ApuDa reviewed official medical institution directories",
-  "generated_at": "2026-10-10T22:21:31+00:00",
+  "generated_at": "2026-10-11T00:32:56+00:00",
   "count": 486,
   "results": [
     {
@@ -6561,7 +6561,7 @@
       "department": "혈액종양내과",
       "specialty_text": "급성/만성 백혈병, 골수이형성증후군, 다발성골수종, 림프종, 빈혈/혈소판 감소 등 혈액학적 이상",
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=500&medi_code=001035000%7C001035000",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6587,7 +6587,7 @@
       "department": "혈액종양내과",
       "specialty_text": "폐암, 림프종, 식도암, 두경부암, 비뇨기암, 기타 암",
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=296&medi_code=001035000%7C001035000",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6617,7 +6617,7 @@
       "department": "혈액종양내과",
       "specialty_text": "폐암, 위암, 대장암, 두경부암, 신약임상시험",
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=292&medi_code=001035000%7C001035000",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6647,7 +6647,7 @@
       "department": "외과",
       "specialty_text": "유방암 및 양성 유방질환, 유방암 수술, 유방암 로봇수술",
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=558&medi_code=001023000%7C001023000",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6665,7 +6665,7 @@
       "department": "혈액종양내과",
       "specialty_text": "급성/만성 백혈병, 골수이형성증후군, 다발골수종, 림프종, 빈혈/혈소판감소 등 혈액학적 이상",
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=480&medi_code=001035000%7C001035000",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6691,7 +6691,7 @@
       "department": "혈액종양내과",
       "specialty_text": "유방암, 간담췌암, 대장암, 비뇨기암, 식도암, 피부암, 기타 암",
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=299&medi_code=001035000%7C001035000",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6717,7 +6717,7 @@
       "department": "외과",
       "specialty_text": "간암의심, 간종양, 간암, 간내 담도암, 전이성간암, 간세포암, 간이식",
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=421&medi_code=001023000%7C001023000",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6739,7 +6739,7 @@
       "department": "외과",
       "specialty_text": "직장암/결장암(대장암), 결장직장암로봇수술, 대장암복강경수술, 복강경 경항문직장수술, 신경내분비종양,소장암, 항문암, 변실금",
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=223&medi_code=001023000%7C001023000",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6765,7 +6765,7 @@
       "department": "외과",
       "specialty_text": "위암, 점막하종양(GIST), 위암 로봇/복강경수술, 위장관/탈장 로봇/복강경수술, 비만대사수술",
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=215&medi_code=001023000%7C001023000",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6783,7 +6783,7 @@
       "department": "외과",
       "specialty_text": "갑상선암, 갑상선결절, 갑상선수술, 내시경/로봇 수술, 갑상선 초음파 및 세침흡인검사/총생검, 갑상선 고주파절제술",
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=537&medi_code=001023000%7C001023000",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6801,7 +6801,7 @@
       "department": "외과",
       "specialty_text": "간암, 간종양, 간이식, 담낭(쓸개)질환, 복강경수술",
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=226&medi_code=001023000%7C001023000",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6819,7 +6819,7 @@
       "department": "외과",
       "specialty_text": "담석증, 담낭용종, 췌장암, 담관암, 팽대부암, 담낭암, 복강경/로봇 담도췌장외과 수술",
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=212&medi_code=001023000%7C001023000",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6845,7 +6845,7 @@
       "department": "외과",
       "specialty_text": "갑상선암, 구강 내시경 갑상선수술, 로봇 갑상선수술, 부갑상선 종양, 부신 절제술",
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=220&medi_code=001023000%7C001023000",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6863,7 +6863,7 @@
       "department": "혈액종양내과",
       "specialty_text": "유방암, 대장암, 위암, 간담췌암",
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=288&medi_code=001035000%7C001035000",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6889,7 +6889,7 @@
       "department": "외과",
       "specialty_text": "대장암 (결장암, 직장암, 로봇·복강경 최소침습수술), 배변장애 (변실금, 직장탈출증, 난치성 변비), 항문질환 (치질, 치루, 항문 주위 농양), 탈장, 종양 및 검사 (신경내분비종양, 대장내시경 용종절제술), 유전성 대장암 및 소화기암 가족상담",
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=439&medi_code=001023000%7C001023000",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6915,7 +6915,7 @@
       "department": "외과",
       "specialty_text": "위암, 점막하종양(GIST), 비만대사수술, 위장관 복강경/로봇수술, 복강경탈장수술",
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=218&medi_code=001023000%7C001023000",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6933,7 +6933,7 @@
       "department": "외과",
       "specialty_text": "대장암(결장 및 직장암) 복강경/로봇 수술, 대장 및 항문질환, 탈장",
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=204&medi_code=001023000%7C001023000",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -6955,7 +6955,7 @@
       "department": "외과",
       "specialty_text": "유방암 및 유방질환",
       "profile_url": "https://www.brmh.org/custom/popup/layer_doctor_view.do?dt_no=209&medi_code=001023000%7C001023000",
-      "verified_at": "2026-10-10T07:45:29+00:00",
+      "verified_at": "2026-10-11T00:32:43+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
