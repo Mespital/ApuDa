@@ -1,8 +1,16 @@
 {
-  "checked_at": "2026-10-12T14:54:57.541869+00:00",
-  "last_success_at": "2026-10-12T14:54:57.541869+00:00",
+  "checked_at": "2026-10-12T22:48:50.624915+00:00",
+  "last_success_at": "2026-10-12T22:48:50.624915+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "Applying technology to understand and treat disease",
+      "url": "https://blog.google/innovation-and-ai/technology/health/ai-health-research/",
+      "source": "Google",
+      "published_at": "2026-10-12T17:30:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "Sophos cuts threat investigation time by 96% with OpenAI Daybreak",
       "url": "https://openai.com/index/sophos",
@@ -234,20 +242,12 @@
       "published_at": "2026-10-05T16:00:00+00:00",
       "category": "교육·생활",
       "domain": "education"
-    },
-    {
-      "title": "My students use Gemini to brainstorm creative ideas.",
-      "url": "https://blog.google/products-and-platforms/products/education/teacher-voices-gemini-creativity/",
-      "source": "Google",
-      "published_at": "2026-10-05T16:00:00+00:00",
-      "category": "교육·생활",
-      "domain": "education"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-12T14:54:57.541869+00:00",
+    "checked_at": "2026-10-12T22:48:50.624915+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -440,7 +440,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-12T14:54:57.541869+00:00",
+    "last_success_at": "2026-10-12T22:48:50.624915+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
