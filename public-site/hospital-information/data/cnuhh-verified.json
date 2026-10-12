@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "source": "화순전남대학교병원 공식 진료과/의료진",
-  "generated_at": "2026-10-10T22:09:36+00:00",
+  "generated_at": "2026-10-12T01:00:04+00:00",
   "count": 57,
   "coverage": [
     {
@@ -72,16 +72,16 @@
     {
       "page": 14,
       "cards": 10,
-      "matched": 2
+      "matched": 3
     },
     {
       "page": 15,
       "cards": 10,
-      "matched": 7
+      "matched": 6
     },
     {
       "page": 16,
-      "cards": 9,
+      "cards": 8,
       "matched": 1
     }
   ],
@@ -95,7 +95,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=GSL&doctCd=GE00024&searchKeyword=&searchCondition=&pageIndex=5&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=5",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -117,7 +117,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=UR&doctCd=UR00018&searchKeyword=&searchCondition=&pageIndex=3&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=3",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -143,7 +143,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMG&doctCd=GI00128&searchKeyword=&searchCondition=&pageIndex=12&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=12",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -165,7 +165,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMH&doctCd=HD00067&searchKeyword=&searchCondition=&pageIndex=15&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=15",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -183,7 +183,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=GSS&doctCd=GE00101&searchKeyword=&searchCondition=&pageIndex=11&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=11",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -201,7 +201,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMP&doctCd=PD00003&searchKeyword=&searchCondition=&pageIndex=2&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=2",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -219,7 +219,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=TR&doctCd=RT00016&searchKeyword=&searchCondition=&pageIndex=14&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=14",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -241,7 +241,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=NS&doctCd=NS00026&searchKeyword=&searchCondition=&pageIndex=5&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=5",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -256,10 +256,10 @@
       "region": "전남",
       "department": "호흡기내과",
       "specialty_text": "호흡기 질환, 폐암 의심 환자 의료진소개 진료예약",
-      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMP&doctCd=PD00068&searchKeyword=&searchCondition=&pageIndex=15&mode=doctor",
-      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=15",
+      "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMP&doctCd=PD00068&searchKeyword=&searchCondition=&pageIndex=14&mode=doctor",
+      "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=14",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -277,7 +277,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=GSA&doctCd=GE00061&searchKeyword=&searchCondition=&pageIndex=7&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=7",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -295,7 +295,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMH2&doctCd=HD00065&searchKeyword=&searchCondition=&pageIndex=15&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=15",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -329,7 +329,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=GSA&doctCd=GE00006&searchKeyword=&searchCondition=&pageIndex=5&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=5",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -347,7 +347,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=CS&doctCd=CS00009&searchKeyword=&searchCondition=&pageIndex=1&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=1",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -369,7 +369,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=GSE&doctCd=ES00035&searchKeyword=&searchCondition=&pageIndex=6&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=6",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -387,7 +387,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=NS&doctCd=NS00040&searchKeyword=&searchCondition=&pageIndex=8&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=8",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -405,7 +405,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=GSE&doctCd=ES00021&searchKeyword=&searchCondition=&pageIndex=1&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=1",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -423,7 +423,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=GSE&doctCd=ES00038&searchKeyword=&searchCondition=&pageIndex=11&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=11",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -441,7 +441,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=NS&doctCd=NS00245&searchKeyword=&searchCondition=&pageIndex=15&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=15",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -459,7 +459,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=GSS&doctCd=GE00020&searchKeyword=&searchCondition=&pageIndex=1&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=1",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -477,7 +477,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMP&doctCd=PD00052&searchKeyword=&searchCondition=&pageIndex=8&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=8",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -495,7 +495,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=GSA&doctCd=GE00094&searchKeyword=&searchCondition=&pageIndex=11&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=11",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -517,7 +517,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMH2&doctCd=HD00068&searchKeyword=&searchCondition=&pageIndex=14&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=14",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -559,7 +559,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMH2&doctCd=HD00028&searchKeyword=&searchCondition=&pageIndex=7&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=7",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -609,7 +609,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMG&doctCd=GI00180&searchKeyword=&searchCondition=&pageIndex=16&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=16",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -627,7 +627,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMH&doctCd=HD00066&searchKeyword=&searchCondition=&pageIndex=15&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=15",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -653,7 +653,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=CS&doctCd=CS00011&searchKeyword=&searchCondition=&pageIndex=3&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=3",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -671,7 +671,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=GSL&doctCd=GE00092&searchKeyword=&searchCondition=&pageIndex=11&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=11",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -697,7 +697,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMH2&doctCd=HD00025&searchKeyword=&searchCondition=&pageIndex=12&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=12",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -723,7 +723,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=TR&doctCd=RT00007&searchKeyword=&searchCondition=&pageIndex=4&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=4",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -741,7 +741,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMH&doctCd=HD00023&searchKeyword=&searchCondition=&pageIndex=11&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=11",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -759,7 +759,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMH&doctCd=HD00019&searchKeyword=&searchCondition=&pageIndex=7&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=7",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -781,7 +781,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMP&doctCd=PD00029&searchKeyword=&searchCondition=&pageIndex=6&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=6",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -799,7 +799,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMP&doctCd=PD00062&searchKeyword=&searchCondition=&pageIndex=13&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=13",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -817,7 +817,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=GSE&doctCd=ES00030&searchKeyword=&searchCondition=&pageIndex=4&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=4",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -835,7 +835,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=TR&doctCd=RT00011&searchKeyword=&searchCondition=&pageIndex=10&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=10",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -853,7 +853,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=DM&doctCd=DE00011&searchKeyword=&searchCondition=&pageIndex=3&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=3",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -871,7 +871,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=CS&doctCd=CS00533&searchKeyword=&searchCondition=&pageIndex=7&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=7",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -893,7 +893,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=DM&doctCd=DE00221&searchKeyword=&searchCondition=&pageIndex=4&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=4",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -911,7 +911,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=GSA&doctCd=GE00073&searchKeyword=&searchCondition=&pageIndex=9&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=9",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -933,7 +933,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMG&doctCd=GI00034&searchKeyword=&searchCondition=&pageIndex=5&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=5",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -955,7 +955,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=GSA&doctCd=GE00095&searchKeyword=&searchCondition=&pageIndex=12&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=12",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -977,7 +977,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMH&doctCd=HD00010&searchKeyword=&searchCondition=&pageIndex=6&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=6",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -995,7 +995,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=EN&doctCd=EN00043&searchKeyword=&searchCondition=&pageIndex=5&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=5",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1013,7 +1013,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=UR&doctCd=UR00236&searchKeyword=&searchCondition=&pageIndex=12&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=12",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1035,7 +1035,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMG&doctCd=GI00165&searchKeyword=&searchCondition=&pageIndex=15&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=15",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1057,7 +1057,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMH&doctCd=HD00070&searchKeyword=&searchCondition=&pageIndex=15&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=15",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1075,7 +1075,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=GSS&doctCd=GE00027&searchKeyword=&searchCondition=&pageIndex=4&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=4",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1093,7 +1093,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMH&doctCd=HD00056&searchKeyword=&searchCondition=&pageIndex=12&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=12",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1115,7 +1115,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=UR&doctCd=UR00037&searchKeyword=&searchCondition=&pageIndex=5&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=5",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1137,7 +1137,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMH2&doctCd=HD00005&searchKeyword=&searchCondition=&pageIndex=3&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=3",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1175,7 +1175,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=TR&doctCd=RT00013&searchKeyword=&searchCondition=&pageIndex=12&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=12",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1205,7 +1205,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=NS&doctCd=NS00027&searchKeyword=&searchCondition=&pageIndex=10&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=10",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1223,7 +1223,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMH2&doctCd=HD00018&searchKeyword=&searchCondition=&pageIndex=5&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=5",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1253,7 +1253,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMG&doctCd=GI00071&searchKeyword=&searchCondition=&pageIndex=9&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=9",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1275,7 +1275,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=GSL&doctCd=GE00041&searchKeyword=&searchCondition=&pageIndex=6&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=6",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1301,7 +1301,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=UR&doctCd=UR00102&searchKeyword=&searchCondition=&pageIndex=7&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=7",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
@@ -1327,7 +1327,7 @@
       "profile_url": "https://www.cnuhh.com/medical/info/dept.cs?act=view&deptCd=IMH2&doctCd=HD00051&searchKeyword=&searchCondition=&pageIndex=10&mode=doctor",
       "source_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor&pageIndex=10",
       "verification_method": "official_staff_listing_explicit_specialty",
-      "verified_at": "2026-10-10T22:09:36+00:00",
+      "verified_at": "2026-10-12T01:00:04+00:00",
       "status": "ACTIVE",
       "cancers": [
         {
