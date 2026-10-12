@@ -1,9 +1,9 @@
 {
   "version": "1.0",
-  "generated_at": "2026-10-11T18:06:29.087884+09:00",
+  "generated_at": "2026-10-12T18:06:47.531053+09:00",
   "approval": {
-    "total_count_api": 42717,
-    "exported_count": 42717,
+    "total_count_api": 42713,
+    "exported_count": 42713,
     "fetch_failures": 0,
     "downloads": {
       "xlsx": "/news/downloads/mfds-drug-approvals.xlsx",

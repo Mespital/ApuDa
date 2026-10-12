@@ -1,9 +1,9 @@
 {
   "version": "1.0",
-  "generated_at": "2026-10-11T18:04:48.547664+09:00",
+  "generated_at": "2026-10-12T18:04:47.495039+09:00",
   "window": {
-    "start": "2026-09-11T09:00:00+09:00",
-    "end": "2026-10-11T09:00:00+09:00",
+    "start": "2026-09-12T09:00:00+09:00",
+    "end": "2026-10-12T09:00:00+09:00",
     "days": 30,
     "timezone": "Asia/Seoul"
   },
@@ -86,7 +86,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": null,
@@ -160,7 +160,69 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
+    },
+    {
+      "rank": null,
+      "canonical_issue": "일본은 급여, 한국은 비급여…'프루자클라' 치료 접근성 격차 - 약사공론",
+      "title": "일본은 급여, 한국은 비급여…'프루자클라' 치료 접근성 격차",
+      "category": [
+        "급여"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-10-12T05:51:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "국내 전이성 대장암 치료 현장에서 3차 이상 후기 치료 단계의 보장성 강화 목소리가 고조되고 있다. 1·2차 표준치료의 관문을 넘은 뒤에도 전신 체력이 양호해 치",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=546022"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546022"
+        }
+      ],
+      "thumbnail_url": "https://www.kpanews.co.kr/image/logo/snslogotrans_20250903011014.png",
+      "score": 34,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "대장암"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": "허가 관련",
+        "reimbursement_status": "급여 관련",
+        "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
+        "patient_relevance_score": 60,
+        "patient_relevance_labels": [
+          "급여·접근성",
+          "허가"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "today",
+      "age_days": 0
     },
     {
       "rank": null,
@@ -220,7 +282,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     },
     {
       "rank": 2,
@@ -283,7 +345,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": null,
@@ -343,7 +405,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     },
     {
       "rank": null,
@@ -404,8 +466,71 @@
         ],
         "industry_summary": null
       },
-      "freshness": "today",
-      "age_days": 0
+      "freshness": "7d",
+      "age_days": 1
+    },
+    {
+      "rank": null,
+      "canonical_issue": "대장내시경 국가검진 도입 가시화...소독교육 확대 시급 - 의학신문",
+      "title": "대장내시경 국가검진 도입 가시화...소독교육 확대 시급",
+      "category": [
+        "정책",
+        "수가",
+        "공급"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-11T13:44:42+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=김현기 기자] 오는 2028년 국가 대장암검진에 대장내시경 도입이 가시화되고 있지만 일선 검진기관의 세척·소독교육 인프라는 여전히 부족해 제도",
+        "왼쪽부터 검진의학회 윤중원 부회장, 양대원 수석부회장, 박창영 회장, 이민영 학술위원장, 한재용 학술대외협력 부회장, 이정화 공보이사 [의학신문·일간보사=김현기 기자] 오는 2028년 국가 대장암검진에 대장내시경 도입이 가시화되고 있지만 일선 검진기관의 세척·소독교육 인프라는 여전히 부족해 제도적 보완이 필요하다는 지적이",
+        "특히 실습교육 이수가 검진기관 평가에 반영되는 상황에서 교육 기회가 제한돼 의원급 의료기관의 부담이 커지고 있어 교육기관 확대와 평가체계 개선을 요구하는 목소리가 높아지고 있다."
+      ],
+      "importance": "기사에서 급여·약가 이슈가 함께 확인돼 시장 접근성과 환자 부담 변화를 후속 확인할 필요가 있습니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3013635"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013635"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3013635_414527_3055.jpg",
+      "score": 18,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "대장암"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": "환자 부담이나 지원제도와 관련된 정보입니다. 대상 조건을 공식 안내에서 확인해야 합니다.",
+        "patient_relevance_score": 26,
+        "patient_relevance_labels": [
+          "지원제도"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -466,7 +591,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     },
     {
       "rank": null,
@@ -525,7 +650,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     },
     {
       "rank": 3,
@@ -586,7 +711,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 6
+      "age_days": 7
     },
     {
       "rank": null,
@@ -641,7 +766,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 8
+      "age_days": 9
     },
     {
       "rank": null,
@@ -699,7 +824,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 8
+      "age_days": 9
     },
     {
       "rank": null,
@@ -756,7 +881,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 9
+      "age_days": 10
     },
     {
       "rank": 4,
@@ -815,7 +940,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 9
+      "age_days": 10
     },
     {
       "rank": null,
@@ -883,7 +1008,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 9
+      "age_days": 10
     }
   ]
 }
