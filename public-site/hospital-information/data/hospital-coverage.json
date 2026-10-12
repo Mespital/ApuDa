@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-10-11T01:40:08+00:00",
+  "checked_at": "2026-10-12T02:10:33+00:00",
   "registered_hospitals": 30,
   "hospitals_with_matched_doctors": 8,
   "matched_doctors": 486,
@@ -36,9 +36,9 @@
       "official_url": "https://www.snuh.org",
       "official_staff_url": "https://www.snuh.org/searchResult.do",
       "matched_doctors": 0,
-      "source_status": "REVIEW_REQUIRED",
-      "directory_http": null,
-      "diagnostic": "ConnectTimeout",
+      "source_status": "OFFICIAL_DIRECTORY_REACHABLE",
+      "directory_http": 200,
+      "diagnostic": null,
       "candidate_links": []
     },
     {
@@ -241,8 +241,8 @@
       "official_staff_url": null,
       "matched_doctors": 0,
       "source_status": "REVIEW_REQUIRED",
-      "directory_http": 302,
-      "diagnostic": "directory-http-302",
+      "directory_http": null,
+      "diagnostic": "ConnectTimeout",
       "candidate_links": []
     },
     {
