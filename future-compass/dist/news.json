@@ -1,8 +1,56 @@
 {
-  "checked_at": "2026-10-13T15:45:00.848588+00:00",
-  "last_success_at": "2026-10-13T15:45:00.848588+00:00",
+  "checked_at": "2026-10-13T21:05:12.927080+00:00",
+  "last_success_at": "2026-10-13T21:05:12.927080+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "Developing Gemini 4 Argon responsibly and safely",
+      "url": "https://blog.google/innovation-and-ai/technology/safety-security/gemini-4-model-safety-security/",
+      "source": "Google",
+      "published_at": "2026-10-13T18:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Gemini 4 Argon comes to the Gemini app.",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-4-argon-availability/",
+      "source": "Google",
+      "published_at": "2026-10-13T16:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Gemini 4 Argon is now available for developers.",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-argon/",
+      "source": "Google",
+      "published_at": "2026-10-13T16:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "We're helping Indiana communities save with clean energy investments.",
+      "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/indiana-energy-imact-program/",
+      "source": "Google",
+      "published_at": "2026-10-13T16:00:00+00:00",
+      "category": "과학·환경",
+      "domain": "energy"
+    },
+    {
+      "title": "Gemini 4 Argon: Built to solve your hardest problems",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon/",
+      "source": "Google",
+      "published_at": "2026-10-13T16:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Higgsfield takes AI video from 1 minute to over 10",
+      "url": "https://openai.com/index/higgsfield-longer-videos-voice",
+      "source": "OpenAI",
+      "published_at": "2026-10-13T12:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "Applying technology to understand and treat disease",
       "url": "https://blog.google/innovation-and-ai/technology/health/ai-health-research/",
@@ -194,60 +242,12 @@
       "published_at": "2026-10-06T10:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "I use technology to give students a voice and become critical digital citizens.",
-      "url": "https://blog.google/products-and-platforms/products/education/teacher-voices-sweden/",
-      "source": "Google",
-      "published_at": "2026-10-05T16:00:00+00:00",
-      "category": "교육·생활",
-      "domain": "education"
-    },
-    {
-      "title": "Technology helps my students balance big creative ideas with tight deadlines.",
-      "url": "https://blog.google/products-and-platforms/products/education/media-teacher-gemini/",
-      "source": "Google",
-      "published_at": "2026-10-05T16:00:00+00:00",
-      "category": "교육·생활",
-      "domain": "education"
-    },
-    {
-      "title": "Here’s how I use technology to bring science to life in my classroom.",
-      "url": "https://blog.google/products-and-platforms/products/education/science-teacher-gemini/",
-      "source": "Google",
-      "published_at": "2026-10-05T16:00:00+00:00",
-      "category": "교육·생활",
-      "domain": "education"
-    },
-    {
-      "title": "World Teachers’ Day 2026",
-      "url": "https://blog.google/products-and-platforms/products/education/world-teachers-day-2026/",
-      "source": "Google",
-      "published_at": "2026-10-05T16:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "I teach my students that in the AI era, critical thinking comes first.",
-      "url": "https://blog.google/products-and-platforms/products/education/teacher-stories-gemini-middle-school/",
-      "source": "Google",
-      "published_at": "2026-10-05T16:00:00+00:00",
-      "category": "교육·생활",
-      "domain": "education"
-    },
-    {
-      "title": "My eighth-grade students built our school newscast from scratch with Gemini.",
-      "url": "https://blog.google/products-and-platforms/products/education/gemini-student-newscast/",
-      "source": "Google",
-      "published_at": "2026-10-05T16:00:00+00:00",
-      "category": "교육·생활",
-      "domain": "education"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-13T15:45:00.848588+00:00",
+    "checked_at": "2026-10-13T21:05:12.927080+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -440,7 +440,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-13T15:45:00.848588+00:00",
+    "last_success_at": "2026-10-13T21:05:12.927080+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
