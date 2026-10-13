@@ -1,6 +1,6 @@
 {
   "version": "1.2",
-  "generated_at": "2026-10-12T18:05:14.401343+09:00",
+  "generated_at": "2026-10-13T18:04:58.727496+09:00",
   "service_key_connected": true,
   "credential_routes": {
     "mfds_drug_approval": "dedicated",
@@ -10,8 +10,7 @@
   "source_health": {
     "total": 5,
     "status_counts": {
-      "ok": 3,
-      "unavailable": 2
+      "ok": 5
     }
   },
   "sources": [
@@ -21,7 +20,7 @@
       "name": "의약품 제품 허가정보",
       "source_url": "https://www.data.go.kr/data/15095677/openapi.do",
       "status": "ok",
-      "checked_at": "2026-10-12T18:04:47.790451+09:00",
+      "checked_at": "2026-10-13T18:04:51.089907+09:00",
       "records": [
         {
           "item_seq": "202602182",
@@ -387,6 +386,17 @@
           "edi_code": null
         },
         {
+          "item_seq": "202202678",
+          "item_name": "잘레딥캡슐5밀리그램(잘레플론)",
+          "company": "부광약품(주)",
+          "main_ingredient": null,
+          "permit_date": "20220629",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": "642204620"
+        },
+        {
           "item_seq": "202202679",
           "item_name": "잘레딥캡슐10밀리그램(잘레플론)",
           "company": "부광약품(주)",
@@ -396,6 +406,28 @@
           "newdrug_class_name": null,
           "atc_code": null,
           "edi_code": "642204630"
+        },
+        {
+          "item_seq": "202106887",
+          "item_name": "프레조폴엠시티프리필드주1%(프로포폴) ",
+          "company": "프레지니우스카비코리아(주)",
+          "main_ingredient": null,
+          "permit_date": "20211013",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": null
+        },
+        {
+          "item_seq": "202106888",
+          "item_name": "프레조폴엠시티프리필드주2%(프로포폴) ",
+          "company": "프레지니우스카비코리아(주)",
+          "main_ingredient": null,
+          "permit_date": "20211013",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": null
         },
         {
           "item_seq": "202106440",
@@ -539,42 +571,9 @@
           "newdrug_class_name": null,
           "atc_code": null,
           "edi_code": null
-        },
-        {
-          "item_seq": "202105645",
-          "item_name": "큐어스킨주(자가유래피부섬유아세포)",
-          "company": "(주)에스바이오메딕스",
-          "main_ingredient": null,
-          "permit_date": "20210729",
-          "rare_drug_yn": null,
-          "newdrug_class_name": null,
-          "atc_code": null,
-          "edi_code": null
-        },
-        {
-          "item_seq": "202105509",
-          "item_name": "카티라이프(바솔자가연골유래연골세포)",
-          "company": "(주)바이오솔루션",
-          "main_ingredient": null,
-          "permit_date": "20210722",
-          "rare_drug_yn": null,
-          "newdrug_class_name": null,
-          "atc_code": null,
-          "edi_code": null
-        },
-        {
-          "item_seq": "202104462",
-          "item_name": "퀸셀(자가지방조직유래 최소조작 지방세포)",
-          "company": "(주)안트로젠",
-          "main_ingredient": null,
-          "permit_date": "20210609",
-          "rare_drug_yn": null,
-          "newdrug_class_name": null,
-          "atc_code": null,
-          "edi_code": null
         }
       ],
-      "total_count": 42713,
+      "total_count": 42716,
       "http_status": 200,
       "key_variant_used": 1,
       "note": "식약처 공식 의약품 허가 OpenAPI 연결 상태입니다. 허가 상세 확인은 품목기준코드 기준으로 후속 조회합니다."
@@ -585,7 +584,7 @@
       "name": "의약품 공급부족 정보",
       "source_url": "https://www.data.go.kr/data/15056886/openapi.do",
       "status": "ok",
-      "checked_at": "2026-10-12T18:04:49.692806+09:00",
+      "checked_at": "2026-10-13T18:04:53.678615+09:00",
       "records": [
         {
           "report_date": "20261001",
@@ -1325,7 +1324,7 @@
       "name": "약가기준정보조회서비스",
       "source_url": "https://www.data.go.kr/data/15054445/openapi.do",
       "status": "ok",
-      "checked_at": "2026-10-12T18:04:50.617982+09:00",
+      "checked_at": "2026-10-13T18:04:54.548825+09:00",
       "records": [],
       "http_status": 200,
       "key_variant_used": 1,
@@ -1337,22 +1336,246 @@
       "agency": "국립암센터 국가암정보센터",
       "name": "통계로 보는 암",
       "source_url": "https://edu.cancer.go.kr/lay1/S1T654C656/contents.do",
-      "status": "unavailable",
-      "checked_at": "2026-10-12T18:04:50.755440+09:00",
-      "latest_year": null,
-      "note": null,
-      "error": "('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))"
+      "status": "ok",
+      "checked_at": "2026-10-13T18:04:54.662938+09:00",
+      "latest_year": 2023,
+      "note": "국가암정보센터 공식 통계 페이지 원문을 기준으로 연결합니다. 수치는 원문 표를 우선 확인합니다.",
+      "page_title": "홈 >통계로 보는 암>유병률>암종별 암유병률",
+      "matched_rows": [
+        [
+          "순위",
+          "암종",
+          "유병자수",
+          "분율",
+          "조유병률",
+          "연령표준화 유병률*"
+        ],
+        [
+          "1",
+          "갑상선",
+          "587,292",
+          "21.5",
+          "1,148.3",
+          "1,102.2"
+        ],
+        [
+          "2",
+          "위",
+          "366,717",
+          "13.4",
+          "717.0",
+          "644.2"
+        ],
+        [
+          "3",
+          "유방",
+          "354,699",
+          "13.0",
+          "693.5",
+          "654.5"
+        ],
+        [
+          "4",
+          "대장",
+          "340,064",
+          "12.4",
+          "664.9",
+          "598.9"
+        ],
+        [
+          "5",
+          "전립선",
+          "161,768",
+          "5.9",
+          "316.3",
+          "278.0"
+        ],
+        [
+          "6",
+          "폐",
+          "141,143",
+          "5.2",
+          "276.0",
+          "246.9"
+        ],
+        [
+          "7",
+          "간",
+          "85,687",
+          "3.1",
+          "167.5",
+          "151.6"
+        ],
+        [
+          "8",
+          "신장",
+          "69,451",
+          "2.5",
+          "135.8",
+          "125.4"
+        ],
+        [
+          "9",
+          "자궁경부",
+          "65,438",
+          "2.4",
+          "127.9",
+          "120.0"
+        ],
+        [
+          "10",
+          "비 호지킨 림프종 (11)",
+          "48,916",
+          "1.8",
+          "95.6",
+          "89.6"
+        ],
+        [
+          "순 위",
+          "남자",
+          "여자"
+        ],
+        [
+          "암종 (2023년순위)",
+          "유병자수",
+          "분율",
+          "조 유병률",
+          "연령 표준화 유병률*",
+          "암종 (2023년순위)",
+          "유병자수",
+          "분율",
+          "조 유병률",
+          "연령 표준화 유병률*"
+        ],
+        [
+          "1",
+          "위",
+          "240,257",
+          "20.1",
+          "943.3",
+          "937.1",
+          "갑상선",
+          "470,948",
+          "30.6",
+          "1,834.1",
+          "1,744.2"
+        ],
+        [
+          "2",
+          "대장",
+          "200,038",
+          "16.8",
+          "785.4",
+          "785.4",
+          "유방",
+          "353,411",
+          "23.0",
+          "1,376.4",
+          "1,278.2"
+        ],
+        [
+          "3",
+          "전립선",
+          "161,768",
+          "13.5",
+          "635.2",
+          "657.7",
+          "대장",
+          "140,026",
+          "9.1",
+          "545.3",
+          "451.6"
+        ],
+        [
+          "4",
+          "갑상선",
+          "116,344",
+          "9.7",
+          "456.8",
+          "446.1",
+          "위",
+          "126,460",
+          "8.2",
+          "492.5",
+          "411.3"
+        ],
+        [
+          "5",
+          "폐",
+          "81,621",
+          "6.8",
+          "320.5",
+          "318.5",
+          "자궁경부",
+          "65,438",
+          "4.3",
+          "254.9",
+          "232.4"
+        ],
+        [
+          "6",
+          "간",
+          "63,947",
+          "5.4",
+          "251.1",
+          "242.7",
+          "폐",
+          "59,522",
+          "3.9",
+          "231.8",
+          "195.0"
+        ],
+        [
+          "7",
+          "신장",
+          "47,060",
+          "3.9",
+          "184.8",
+          "180.7",
+          "자궁체부",
+          "43,136",
+          "2.8",
+          "168.0",
+          "154.4"
+        ],
+        [
+          "9",
+          "비호지킨 림프종",
+          "27,531",
+          "2.3",
+          "108.1",
+          "106.7",
+          "신장(10)",
+          "22,391",
+          "1.5",
+          "87.2",
+          "76.2"
+        ],
+        [
+          "10",
+          "입술, 구강 및 인두",
+          "25,671",
+          "2.2",
+          "100.8",
+          "98.0",
+          "간(9)",
+          "21,740",
+          "1.4",
+          "84.7",
+          "71.3"
+        ]
+      ]
     },
     {
       "id": "ncc_living_guide",
       "agency": "국립암센터 국가암정보센터",
       "name": "암환자 생활백서",
       "source_url": "https://cancer.go.kr/lay1/S1T523C850/contents.do",
-      "status": "unavailable",
-      "checked_at": "2026-10-12T18:04:54.188857+09:00",
+      "status": "ok",
+      "checked_at": "2026-10-13T18:04:56.763879+09:00",
       "latest_year": null,
-      "note": null,
-      "error": "HTTPSConnectionPool(host='cancer.go.kr', port=443): Read timed out. (read timeout=20)"
+      "note": "국가암정보센터 원문을 직접 연결하며, ApuDa에서는 원문을 변형 복제하지 않습니다.",
+      "page_title": "홈 >암정보 나눔터>국가암지식정보센터 OPEN API"
     }
   ],
   "usage_policy": {

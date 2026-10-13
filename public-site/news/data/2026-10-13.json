@@ -1,0 +1,391 @@
+{
+  "version": "1.2",
+  "report_date": "2026-10-13",
+  "collection_window": {
+    "start": "2026-10-12T09:00:00+09:00",
+    "end": "2026-10-13T09:00:00+09:00",
+    "timezone": "Asia/Seoul"
+  },
+  "sources": [
+    "데일리팜",
+    "의학신문",
+    "메디파나뉴스",
+    "약사공론"
+  ],
+  "briefing": "신약 혁신부터 안전관리 공백까지…식약처 국정감사 '미리보기'가 오늘 가장 중요한 이슈로 부각됐습니다. 이어 JW중외제약, AI 신약 첫 상용화 도전…'에파미뉴라드' 허가 채비도 주요 변화로 확인됐습니다. 전체적으로는 정책·급여 · 공급·유통 흐름이 두드러집니다.",
+  "top_news": [
+    {
+      "rank": 1,
+      "canonical_issue": "신약 혁신부터 안전관리 공백까지…식약처 국정감사 '미리보기' - 약사공론",
+      "title": "신약 혁신부터 안전관리 공백까지…식약처 국정감사 '미리보기'",
+      "category": [
+        "정책",
+        "식약처",
+        "허가",
+        "공급"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-10-13T05:51:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "식품의약품안전처의 허가·심사 혁신과 의약품 안전관리 정책이 국정감사 시험대에 오른다. 신약 허가기간 단축과 필수의약품 공급 안정화 등 주요 정책의 추진 상황을 점",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=546147"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546147"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/546147_451053_4324.jpg",
+      "score": 77,
+      "oncology": null
+    },
+    {
+      "rank": 2,
+      "canonical_issue": "JW중외제약, AI 신약 첫 상용화 도전…'에파미뉴라드' 허가 채비 - 메디파나뉴스",
+      "title": "JW중외제약, AI 신약 첫 상용화 도전…'에파미뉴라드' 허가 채비",
+      "category": [
+        "허가",
+        "3상",
+        "임상 3상",
+        "ai"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-13T06:02:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "JW중외제약이 자체 인공지능(AI) 기반 신약개발 플랫폼을 활용해 발굴한 통풍 치료제 '에파미뉴라드'의 상용화에 도전한다. 제품화에 성공하면 자체 AI 플랫폼을 활용해 발굴한 후보물질 가운데 처음으로 상용화되는 사례가 될 전망이다. 에파미뉴라드는 최근 다국가 임상 3상에서 주력 개발 용량의 유효성과 안전",
+        "사진=최인환 기자 JW중외제약이 자체 인공지능(AI) 기반 신약개발 플랫폼을 활용해 발굴한 통풍 치료제 '에파미뉴라드'의 상용화에 도전한다.",
+        "제품화에 성공하면 자체 AI 플랫폼을 활용해 발굴한 후보물질 가운데 처음으로 상용화되는 사례가 될 전망이다."
+      ],
+      "importance": "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=419149"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=419149"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419149_326544_3231.jpg",
+      "score": 74,
+      "oncology": null
+    },
+    {
+      "rank": 3,
+      "canonical_issue": "\"한 달 걸리던 반품 정산, 일주일이면 끝\" 약국가 반색 - 약사공론",
+      "title": "\"한 달 걸리던 반품 정산, 일주일이면 끝\" 약국가 반색",
+      "category": [
+        "정책",
+        "약국"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-10-13T05:54:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "최근 약국가에서는 의약품 반품 처리 기간 단축과 정산 투명성 개선에 대한 긍정적인 사례들이 공유되며 관심이 모아지고 있다.대웅제약이 추진하는 유통 선진화 정책에",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "의료기관·약국 현장의 변화는 진료 흐름과 환자 경험, 의약품 사용 환경에 직접 영향을 줍니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=545948"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545948"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/545948_450910_5610.png",
+      "score": 41,
+      "oncology": null
+    },
+    {
+      "rank": 4,
+      "canonical_issue": "국내 제약사 거점 정책 추진에 종소업체 '연합체 구성' 움직임 - 의학신문",
+      "title": "국내 제약사 거점 정책 추진에 종소업체 '연합체 구성' 움직임",
+      "category": [
+        "정책"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-13T06:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=김상일 기자]국내 제약사들이 유통망을 소수의 '거점형 도매' 체제로 재편하려는 움직임이 포착되면서 이에 타격을 입을 수 있는 중소 의약품 유통",
+        "[의학신문·일간보사=김상일 기자]국내 제약사들이 유통망을 소수의 '거점형 도매' 체제로 재편하려는 움직임이 포착되면서 이에 타격을 입을 수 있는 중소 의약품 유통업체들이 공동 대응용 연합체 구성을 추진하고 있는 것으로 전해져 눈길을 끌고 있다.",
+        "의약품유통·제약업계에 따르면 국내 일부 제약사들이 물류 효율화 명목으로 기존 수십 곳에 달하던 거래 의약품유통업체를 대폭 축소하고 거점 도매 중심의 공급 체계로 전환을 서두르고 있다."
+      ],
+      "importance": "시장·정책·연구개발 흐름을 보여주는 주요 산업 이슈로 후속 정책과 사업 변화 확인이 필요합니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3013702"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013702"
+        }
+      ],
+      "thumbnail_url": "https://www.bosa.co.kr/image/logo/snslogotrans_20251212052521.png",
+      "score": 36,
+      "oncology": null
+    },
+    {
+      "rank": 5,
+      "canonical_issue": "어린이 약 공급 끊겨도 통계엔 없다 - 의학신문",
+      "title": "어린이 약 공급 끊겨도 통계엔 없다",
+      "category": [
+        "공급"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-12T12:53:49+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=이재원 기자] 어린이 해열제와 감기약 품귀 사태가 반복됐지만, 정작 식품의약품안전처의 공식 의약품 공급중단·부족 통계에는 관련 사례가 제대로",
+        "[의학신문·일간보사=이재원 기자] 어린이 해열제와 감기약 품귀 사태가 반복됐지만, 정작 식품의약품안전처의 공식 의약품 공급중단·부족 통계에는 관련 사례가 제대로 반영되지 않은 것으로 나타났다.",
+        "현행 공급중단 보고기준에서도 다빈도 소아용 의약품 상당수가 제외되면서 수급관리 체계에 사각지대가 발생하고 있다는 지적이다."
+      ],
+      "importance": "공급 변화는 의약품 접근성과 의료현장 재고 운영, 대체치료 준비에 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3013712"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013712"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3013712_414622_555.jpeg",
+      "score": 35,
+      "oncology": null
+    }
+  ],
+  "trends": [
+    {
+      "title": "정책·급여",
+      "count": 4,
+      "change": "4건의 주요 이슈에서 반복적으로 확인",
+      "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
+      "examples": [
+        "신약 혁신부터 안전관리 공백까지…식약처 국정감사 '미리보기'",
+        "\"한 달 걸리던 반품 정산, 일주일이면 끝\" 약국가 반색"
+      ]
+    },
+    {
+      "title": "공급·유통",
+      "count": 4,
+      "change": "4건의 주요 이슈에서 반복적으로 확인",
+      "implication": "의약품 공급 안정성과 유통 대응이 현장 리스크로 부각되는 흐름",
+      "examples": [
+        "신약 혁신부터 안전관리 공백까지…식약처 국정감사 '미리보기'",
+        "\"한 달 걸리던 반품 정산, 일주일이면 끝\" 약국가 반색"
+      ]
+    },
+    {
+      "title": "디지털헬스",
+      "count": 3,
+      "change": "3건의 주요 이슈에서 반복적으로 확인",
+      "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
+      "examples": [
+        "신약 혁신부터 안전관리 공백까지…식약처 국정감사 '미리보기'",
+        "JW중외제약, AI 신약 첫 상용화 도전…'에파미뉴라드' 허가 채비"
+      ]
+    },
+    {
+      "title": "신약·임상",
+      "count": 2,
+      "change": "2건의 주요 이슈에서 반복적으로 확인",
+      "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
+      "examples": [
+        "신약 혁신부터 안전관리 공백까지…식약처 국정감사 '미리보기'",
+        "JW중외제약, AI 신약 첫 상용화 도전…'에파미뉴라드' 허가 채비"
+      ]
+    }
+  ],
+  "outlet_status": [
+    {
+      "publisher": "데일리팜",
+      "homepage_url": "https://www.dailypharm.com/",
+      "items": []
+    },
+    {
+      "publisher": "의학신문",
+      "homepage_url": "https://www.bosa.co.kr/",
+      "items": [
+        {
+          "title": "국내 제약사 거점 정책 추진에 종소업체 '연합체 구성' 움직임",
+          "published_at": "2026-10-13T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013702"
+        },
+        {
+          "title": "어린이 약 공급 끊겨도 통계엔 없다",
+          "published_at": "2026-10-12T12:53:49+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013712"
+        },
+        {
+          "title": "비만치료제 '위고비' 건강보험 급여 등재 신청",
+          "published_at": "2026-10-12T11:30:58+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013710"
+        },
+        {
+          "title": "정신응급 필수의료 지정 추진...우울증 치료 보장성 강화",
+          "published_at": "2026-10-12T16:08:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013715"
+        },
+        {
+          "title": "10년 맞은 ‘슈가논’, 차별화된 경쟁력은",
+          "published_at": "2026-10-12T16:17:09+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013723"
+        },
+        {
+          "title": "복용 편의성 고려 액상 스틱 제형 확대",
+          "published_at": "2026-10-13T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013732"
+        },
+        {
+          "title": "“조기 발견이 생명 살린다” 헬스케어 기업들, ‘핑크런’ 달렸다",
+          "published_at": "2026-10-13T05:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013736"
+        }
+      ]
+    },
+    {
+      "publisher": "메디파나뉴스",
+      "homepage_url": "https://www.medipana.com/",
+      "items": [
+        {
+          "title": "JW중외제약, AI 신약 첫 상용화 도전…'에파미뉴라드' 허가 채비",
+          "published_at": "2026-10-13T06:02:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419149"
+        },
+        {
+          "title": "제약사 거점 도매 전환 움직임…중소 유통업체, 연합체 구성 추진",
+          "published_at": "2026-10-13T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419157"
+        },
+        {
+          "title": "한미약품 '에페' 매출 전망 상향…첫 연간 최대 2000억원",
+          "published_at": "2026-10-12T12:10:40+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419118"
+        },
+        {
+          "title": "SK케미칼, 제약사업 제2 전성기 노린다…공격적 도입·확대",
+          "published_at": "2026-10-12T11:59:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419052"
+        },
+        {
+          "title": "국내 인체조직 가공기술, 피부 ECM 넘어 해외·CDMO로",
+          "published_at": "2026-10-12T11:58:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419073"
+        },
+        {
+          "title": "동국제약, 'DK Centellian'으로 사명 바꾼다…해외 공략 목표",
+          "published_at": "2026-10-12T10:58:47+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419110"
+        },
+        {
+          "title": "비대면 초진 '30일 처방' 허용 움직임…개원가 '거부' 경고",
+          "published_at": "2026-10-12T11:57:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419066"
+        },
+        {
+          "title": "동아제약, '판피린'에 이부프로펜 추가…액상스틱 3종 출시",
+          "published_at": "2026-10-12T10:44:13+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419103"
+        }
+      ]
+    },
+    {
+      "publisher": "약사공론",
+      "homepage_url": "https://www.kpanews.co.kr/",
+      "items": [
+        {
+          "title": "신약 혁신부터 안전관리 공백까지…식약처 국정감사 '미리보기'",
+          "published_at": "2026-10-13T05:51:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546147"
+        },
+        {
+          "title": "\"한 달 걸리던 반품 정산, 일주일이면 끝\" 약국가 반색",
+          "published_at": "2026-10-13T05:54:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=545948"
+        },
+        {
+          "title": "제약사 '거점도매' 확대…중소 유통업체 연합체 추진",
+          "published_at": "2026-10-13T05:51:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546151"
+        },
+        {
+          "title": "국감서 다시 드러난 DUR 존재감…처방부터 헌혈안전까지",
+          "published_at": "2026-10-13T05:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546158"
+        },
+        {
+          "title": "삼바 6위·SK바이오팜 7위·한미 9위…K바이오 빅딜 존재감",
+          "published_at": "2026-10-12T12:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546079"
+        },
+        {
+          "title": "탄소발자국이 수출 경쟁력으로…제약·바이오 공급망의 변화",
+          "published_at": "2026-10-13T05:53:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546071"
+        },
+        {
+          "title": "[현장] 사례로 본 비대면진료의 민낯…처방 관리 곳곳 '구멍'",
+          "published_at": "2026-10-13T05:55:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546140"
+        },
+        {
+          "title": "[별일이약] 약국서 발견된 대변 든 봉지…약사는 '황당'",
+          "published_at": "2026-10-13T05:53:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546108"
+        }
+      ]
+    }
+  ],
+  "insight": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름 동시에 공급·유통 흐름도 함께 확인돼 단일 이슈보다 복합적인 산업 변화로 보는 것이 적절합니다.",
+  "infographic": {
+    "image_path": null,
+    "generated_at": null,
+    "template_version": "news-card-v1"
+  }
+}

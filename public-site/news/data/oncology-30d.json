@@ -1,9 +1,9 @@
 {
   "version": "1.0",
-  "generated_at": "2026-10-12T18:04:47.495039+09:00",
+  "generated_at": "2026-10-13T18:04:50.812223+09:00",
   "window": {
-    "start": "2026-09-12T09:00:00+09:00",
-    "end": "2026-10-12T09:00:00+09:00",
+    "start": "2026-09-13T09:00:00+09:00",
+    "end": "2026-10-13T09:00:00+09:00",
     "days": 30,
     "timezone": "Asia/Seoul"
   },
@@ -86,7 +86,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 6
+      "age_days": 7
     },
     {
       "rank": null,
@@ -160,7 +160,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": null,
@@ -221,8 +221,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "today",
-      "age_days": 0
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -282,7 +282,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": 2,
@@ -345,7 +345,70 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
+    },
+    {
+      "rank": null,
+      "canonical_issue": "“조기 발견이 생명 살린다” 헬스케어 기업들, ‘핑크런’ 달렸다 - 의학신문",
+      "title": "“조기 발견이 생명 살린다” 헬스케어 기업들, ‘핑크런’ 달렸다",
+      "category": [
+        "공급",
+        "ai"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-13T05:50:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=오인규 기자] 국내외 헬스케어 전문 기업들이 여성 건강 증진과 유방암 조기 발견의 중요성을 환기하기 위해 푸른 가을 하늘 아래 상암벌을 핑크빛",
+        "[의학신문·일간보사=오인규 기자] 국내외 헬스케어 전문 기업들이 여성 건강 증진과 유방암 조기 발견의 중요성을 환기하기 위해 푸른 가을 하늘 아래 상암벌을 핑크빛으로 물들였다.",
+        "기술과 솔루션을 공급하는 역할을 넘어, 임직원들이 직접 발로 뛰며 예방과 나눔의 가치를 실천하고 나선 모습이다."
+      ],
+      "importance": "시장·정책·연구개발 흐름을 보여주는 주요 산업 이슈로 후속 정책과 사업 변화 확인이 필요합니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3013736"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013736"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3013736_414642_3737.jpg",
+      "score": -2,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "유방암"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": "향후 치료 선택이나 표준치료 논의에 영향을 줄 수 있는 임상 결과입니다.",
+        "patient_relevance_score": 46,
+        "patient_relevance_labels": [
+          "임상결과",
+          "지원제도"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "today",
+      "age_days": 0
     },
     {
       "rank": null,
@@ -405,7 +468,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": null,
@@ -467,7 +530,68 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
+    },
+    {
+      "rank": null,
+      "canonical_issue": "큐리언트, 론자 손잡고 차세대 ADC 글로벌 시장 공략 - 메디파나뉴스",
+      "title": "큐리언트, 론자 손잡고 차세대 ADC 글로벌 시장 공략",
+      "category": [
+        "ai"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-13T08:05:27+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "큐리언트가 글로벌 의약품 위탁개발생산(CDMO) 기업 론자와 손잡고 차세대 항체-약물접합체(ADC) 기술의 글로벌 사업화에 나선다. 독자 개발한 CDK7 저해제를 론자의 이중 페이로드 ADC 플랫폼에 적용해 글로벌 제약사에 제공함으로써 항암 신약개발 분야에서 새로운 사업 기회를 확보한다는 전략이다. 동구",
+        "AI 생성 이미지 큐리언트가 글로벌 의약품 위탁개발생산(CDMO) 기업 론자와 손잡고 차세대 항체-약물접합체(ADC) 기술의 글로벌 사업화에 나선다.",
+        "독자 개발한 CDK7 저해제를 론자의 이중 페이로드 ADC 플랫폼에 적용해 글로벌 제약사에 제공함으로써 항암 신약개발 분야에서 새로운 사업 기회를 확보한다는 전략이다."
+      ],
+      "importance": "생산·투자 확대는 공급망 안정성과 글로벌 사업 확장, 중장기 생산능력 경쟁과 연결됩니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=419165"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=419165"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419165_326566_2240.png",
+      "score": 3,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [
+          "ADC"
+        ],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": "환자 부담이나 지원제도와 관련된 정보입니다. 대상 조건을 공식 안내에서 확인해야 합니다.",
+        "patient_relevance_score": 26,
+        "patient_relevance_labels": [
+          "지원제도"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "today",
+      "age_days": 0
     },
     {
       "rank": null,
@@ -530,7 +654,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
     },
     {
       "rank": null,
@@ -591,7 +715,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": null,
@@ -650,7 +774,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": 3,
@@ -710,8 +834,8 @@
         "patient_relevance_labels": [],
         "industry_summary": null
       },
-      "freshness": "7d",
-      "age_days": 7
+      "freshness": "30d",
+      "age_days": 8
     },
     {
       "rank": null,
@@ -766,7 +890,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 9
+      "age_days": 10
     },
     {
       "rank": null,
@@ -824,7 +948,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 9
+      "age_days": 10
     },
     {
       "rank": null,
@@ -881,7 +1005,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 10
+      "age_days": 11
     },
     {
       "rank": 4,
@@ -940,7 +1064,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 10
+      "age_days": 11
     },
     {
       "rank": null,
@@ -1008,7 +1132,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 10
+      "age_days": 11
     }
   ]
 }
