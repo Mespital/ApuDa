@@ -1,0 +1,27 @@
+name: apuda-voxcpm
+services:
+  voice:
+    image: ${VOXCPM_IMAGE:-apuda-voxcpm:cpu}
+    restart: unless-stopped
+    init: true
+    env_file: .env
+    ports:
+      - "127.0.0.1:8818:8818"
+    volumes:
+      - ./models:/models:ro
+      - ./data:/data
+    tmpfs:
+      - /tmp:size=128m,mode=1777
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    cpus: 1.5
+    mem_limit: 4608m
+    memswap_limit: 5120m
+    pids_limit: 128
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8818/health', timeout=3).read()"]
+      interval: 20s
+      timeout: 5s
+      retries: 3
+      start_period: 10s

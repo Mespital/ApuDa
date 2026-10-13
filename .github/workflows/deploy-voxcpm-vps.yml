@@ -89,3 +89,65 @@ jobs:
       - name: Remove temporary SSH credentials
         if: always()
         run: rm -f ~/.ssh/id_ed25519 ~/.ssh/config
+
+  deploy:
+    needs: preflight
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    environment: apuda-ai-vps
+    steps:
+      - name: Checkout VoxCPM deployment
+        uses: actions/checkout@v5
+      - name: Verify API, queue, and Caddy configuration behavior
+        run: |
+          python3 -m unittest discover -s services/voxcpm/tests -v
+          bash -n services/voxcpm/install.sh
+          bash -n services/voxcpm/configure-ssh.sh
+      - name: Build CPU image away from the VPS
+        run: docker build -t apuda-voxcpm:cpu services/voxcpm
+      - name: Configure existing VPS connection
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+          VPS_SSH_PORT: ${{ secrets.VPS_SSH_PORT }}
+          VPS_KNOWN_HOSTS: ${{ secrets.VPS_KNOWN_HOSTS }}
+        run: bash services/voxcpm/configure-ssh.sh
+      - name: Transfer isolated service and CPU image
+        run: |
+          set -euo pipefail
+          ssh apuda-vps 'mkdir -p /srv/apuda-voxcpm'
+          tar -C services/voxcpm --exclude=.env --exclude=models --exclude=data --exclude=__pycache__ -czf - . \
+            | ssh apuda-vps 'tar -xzf - -C /srv/apuda-voxcpm'
+          docker save apuda-voxcpm:cpu | gzip -1 | ssh apuda-vps 'gunzip | docker load'
+      - name: Install verified models and publish voice route
+        run: |
+          set -euo pipefail
+          ssh apuda-vps 'bash -s' <<'REMOTE'
+          set -euo pipefail
+          cd /srv/apuda-voxcpm
+          if [ "$(id -u)" = 0 ]; then
+            bash install.sh
+          else
+            sudo -n bash install.sh
+          fi
+          curl --max-time 10 -fsS http://127.0.0.1:8000/health
+          REMOTE
+      - name: Generate a Korean WAV and verify protected download
+        run: |
+          set -euo pipefail
+          ssh apuda-vps 'bash -s' <<'REMOTE'
+          set -euo pipefail
+          cd /srv/apuda-voxcpm
+          if [ "$(id -u)" = 0 ]; then
+            python3 smoke_test.py
+          else
+            sudo -n python3 smoke_test.py
+          fi
+          docker compose -f compose.yml exec -T voice python -c 'import json,pathlib; p=pathlib.Path("/sys/fs/cgroup"); print(json.dumps({"memory_current_mib":round(int((p/"memory.current").read_text())/1048576,1),"memory_peak_mib":round(int((p/"memory.peak").read_text())/1048576,1)}))'
+          curl --max-time 15 -fsS https://ai.apuda.app/voice/health
+          curl --max-time 10 -fsS http://127.0.0.1:8000/health
+          REMOTE
+      - name: Remove temporary SSH credentials
+        if: always()
+        run: rm -f ~/.ssh/id_ed25519 ~/.ssh/config

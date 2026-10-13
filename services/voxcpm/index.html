@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ApuDa 음성 제작</title>
+  <style>
+    :root{font-family:system-ui,-apple-system,sans-serif;color:#18363b;background:#f2f7f6;line-height:1.65;color-scheme:light}
+    *{box-sizing:border-box}body{margin:0}main{max-width:760px;margin:48px auto;padding:0 20px 48px}
+    .brand{font-size:15px;font-weight:750;color:#168477;letter-spacing:.03em}h1{font-size:32px;line-height:1.3;margin:8px 0 12px}
+    .intro{color:#557074;margin:0 0 24px}.panel{background:white;border:1px solid #dce8e5;border-radius:20px;padding:26px;margin:18px 0;box-shadow:0 8px 28px #21443b08}
+    label{display:block;font-weight:650;margin:18px 0 7px}label:first-child{margin-top:0}
+    input,textarea,select{width:100%;padding:13px;border:1px solid #b9cdc8;border-radius:10px;font:inherit;background:white;color:inherit}
+    input:focus,textarea:focus,select:focus{outline:3px solid #9edace;outline-offset:2px}textarea{resize:vertical;min-height:210px}
+    .hint,.count{font-size:13px;color:#647a7b}.count{text-align:right;margin:4px 0 12px}
+    button,.download{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 22px;border:0;border-radius:11px;background:#168477;color:white;font:inherit;font-weight:700;cursor:pointer;text-decoration:none}
+    button:disabled{background:#91aca6;cursor:wait}button{width:100%;margin-top:22px}.download{margin-top:14px}
+    .status{font-weight:650;white-space:pre-line}.error{color:#a52637}progress{width:100%;height:16px;accent-color:#168477}audio{width:100%;margin-top:14px}
+    details{margin-top:20px}summary{cursor:pointer;font-weight:650}small{display:block;margin-top:20px;color:#647a7b}
+    [hidden]{display:none!important}@media(max-width:500px){main{margin:24px auto;padding:0 14px 30px}.panel{padding:19px}h1{font-size:27px}}
+  </style>
+</head>
+<body><main>
+  <div class="brand">ApuDa · 아프지만, 다행이다.</div>
+  <h1>원고를 넣고, 음성으로 받아보세요.</h1>
+  <p class="intro">영상 나레이션과 책자 낭독에 사용할 음성을 만듭니다. 생성이 끝나면 바로 듣거나 WAV 파일로 내려받을 수 있습니다.</p>
+  <form id="form" class="panel">
+    <label for="key">접속 코드</label><input id="key" type="password" autocomplete="off" required placeholder="기존 ApuDa AI API 키">
+    <label for="text">읽을 원고</label><textarea id="text" maxlength="800" required placeholder="안녕하세요. 아프다입니다. 오늘은 질환을 이해하는 데 도움이 되는 이야기를 전해 드립니다."></textarea>
+    <div class="count"><span id="count">0</span> / 800자</div>
+    <label for="voice">목소리</label><select id="voice"><option value="default">기본 목소리</option><option value="calm_male">차분한 남성</option><option value="warm_female">따뜻한 여성</option></select>
+    <details><summary>내 목소리 샘플 사용</summary>
+      <p class="hint">본인 목소리로 녹음한 3~20초 WAV 파일을 넣으세요. 파일 형식은 16kHz · 모노 · PCM16입니다.</p>
+      <label for="reference">목소리 샘플</label><input id="reference" type="file" accept=".wav,audio/wav">
+    </details>
+    <button id="submit" type="submit">음성 만들기</button>
+    <small>원고를 문장별로 순서대로 처리합니다. 원고 길이에 따라 시간이 걸릴 수 있으며, 페이지를 열어 두면 진행 상황이 표시됩니다. 완성 파일은 7일간 보관됩니다.</small>
+  </form>
+  <section class="panel" id="result" aria-live="polite" hidden>
+    <div class="status" id="status"></div><p class="hint" id="meta"></p>
+    <progress id="progress" max="1" value="0" aria-label="음성 생성 진행률"></progress>
+    <audio id="audio" controls hidden></audio><a id="download" class="download" download="ApuDa-narration.wav" hidden>음성 내려받기</a>
+    <button id="resume" type="button" hidden>진행 상황 다시 확인</button>
+  </section>
+</main>
+<script>
+  const $=id=>document.getElementById(id);let jobId=null,audioUrl=null;
+  $('text').addEventListener('input',()=>{$('count').textContent=$('text').value.length});
+  async function api(path,options={}){
+    const response=await fetch('/voice/'+path,{...options,headers:{'X-ApuDa-AI-Key':$('key').value.trim(),...(options.headers||{})},cache:'no-store'});
+    if(!response.ok){let message='연결을 확인해 주세요.';try{message=(await response.json()).error||message}catch{}throw new Error(message)}return response;
+  }
+  function show(message,error=false){$('result').hidden=false;$('status').textContent=message;$('status').className='status'+(error?' error':'')}
+  async function uploadReference(file){
+    if(file.size>640044)throw new Error('목소리 샘플은 20초 이하 WAV 파일로 준비해 주세요.');
+    const buffer=new Uint8Array(await file.arrayBuffer());let bytes='';for(const value of buffer)bytes+=String.fromCharCode(value);
+    const response=await api('api/reference',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({wav_base64:btoa(bytes)})});return (await response.json()).reference;
+  }
+  async function poll(){
+    try{
+      const job=await (await api('api/jobs/'+jobId)).json();$('progress').max=job.total;$('progress').value=job.completed;$('resume').hidden=true;
+      const labels={queued:'차례를 기다리고 있습니다.',waiting_memory:'서버의 다른 작업이 끝나기를 기다리고 있습니다.',running:'음성을 만들고 있습니다.'};
+      if(job.status==='completed'){
+        show('음성이 완성되었습니다.');$('meta').textContent='음성 길이 '+job.duration+'초 · 생성에 걸린 시간 '+Math.round(job.elapsed)+'초';
+        const blob=await (await api('api/jobs/'+jobId+'/audio')).blob();if(audioUrl)URL.revokeObjectURL(audioUrl);audioUrl=URL.createObjectURL(blob);
+        $('audio').src=audioUrl;$('audio').hidden=false;$('download').href=audioUrl;$('download').hidden=false;$('submit').disabled=false;return;
+      }
+      if(job.status==='failed'){show(job.error||'음성 생성에 실패했습니다.',true);$('submit').disabled=false;return}
+      show(labels[job.status]||'진행 상태를 확인하고 있습니다.');$('meta').textContent='완료한 문장 '+job.completed+' / '+job.total;setTimeout(poll,5000);
+    }catch(error){show(error.message,true);$('resume').hidden=false}
+  }
+  $('resume').addEventListener('click',poll);
+  $('form').addEventListener('submit',async event=>{
+    event.preventDefault();$('submit').disabled=true;$('audio').hidden=true;$('download').hidden=true;show('원고를 전달하고 있습니다.');
+    try{let reference=null;if($('reference').files[0])reference=await uploadReference($('reference').files[0]);
+      const job=await (await api('api/jobs',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:$('text').value,voice:$('voice').value,reference})})).json();
+      jobId=job.id;await poll();
+    }catch(error){show(error.message,true);$('submit').disabled=false}
+  });
+</script></body></html>
