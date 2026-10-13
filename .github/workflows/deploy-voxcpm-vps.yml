@@ -1,0 +1,91 @@
+name: Deploy ApuDa VoxCPM to VPS
+
+on:
+  push:
+    branches: [feature/apuda-voxcpm-vps]
+    paths:
+      - 'services/voxcpm/**'
+      - '.github/workflows/deploy-voxcpm-vps.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: apuda-voxcpm-vps
+  cancel-in-progress: false
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    environment: apuda-ai-vps
+    steps:
+      - name: Configure existing VPS connection
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+          VPS_SSH_PORT: ${{ secrets.VPS_SSH_PORT }}
+          VPS_KNOWN_HOSTS: ${{ secrets.VPS_KNOWN_HOSTS }}
+        run: |
+          set -euo pipefail
+          test -n "$VPS_HOST" && test -n "$VPS_USER" && test -n "$VPS_SSH_KEY"
+          [[ "$VPS_HOST" =~ ^[a-zA-Z0-9.-]+$ ]]
+          [[ "$VPS_USER" =~ ^[a-zA-Z0-9_-]+$ ]]
+          port="${VPS_SSH_PORT:-22}"
+          [[ "$port" =~ ^[0-9]+$ ]]
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          if [ -n "$VPS_KNOWN_HOSTS" ]; then
+            printf '%s\n' "$VPS_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          else
+            ssh-keyscan -T 10 -p "$port" -H "$VPS_HOST" > ~/.ssh/known_hosts
+          fi
+          cat > ~/.ssh/config <<EOF
+          Host apuda-vps
+            HostName $VPS_HOST
+            User $VPS_USER
+            Port $port
+            IdentityFile ~/.ssh/id_ed25519
+            IdentitiesOnly yes
+            BatchMode yes
+            StrictHostKeyChecking yes
+            ConnectTimeout 15
+          EOF
+          chmod 600 ~/.ssh/config ~/.ssh/known_hosts
+      - name: Check server resources and existing services
+        run: |
+          set -euo pipefail
+          ssh apuda-vps 'bash -s' <<'REMOTE'
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, os, pathlib, shutil, subprocess
+          memory = {}
+          for line in pathlib.Path('/proc/meminfo').read_text().splitlines():
+              name, value = line.split(':', 1)
+              memory[name] = int(value.strip().split()[0])
+          disk = shutil.disk_usage('/srv')
+          caddyfile = pathlib.Path('/etc/caddy/Caddyfile')
+          result = {
+              'cpu_count': os.cpu_count(),
+              'ram_total_gib': round(memory['MemTotal'] / 1048576, 2),
+              'ram_available_gib': round(memory['MemAvailable'] / 1048576, 2),
+              'disk_free_gib': round(disk.free / 1073741824, 2),
+              'docker_available': bool(shutil.which('docker')),
+              'gpu_tool_present': bool(shutil.which('nvidia-smi')),
+              'caddy_config_present': caddyfile.is_file(),
+              'ai_host_in_caddy_config': caddyfile.is_file() and 'ai.apuda.app' in caddyfile.read_text(),
+              'ai_deployment_present': pathlib.Path('/srv/apuda-ai').is_dir(),
+          }
+          print(json.dumps(result, indent=2))
+          PY
+          docker version --format '{{.Server.Version}}'
+          docker compose version
+          docker stats --no-stream --format '{{.Name}} {{.CPUPerc}} {{.MemUsage}}'
+          curl --max-time 10 -fsS http://127.0.0.1:8000/health
+          REMOTE
+      - name: Remove temporary SSH credentials
+        if: always()
+        run: rm -f ~/.ssh/id_ed25519 ~/.ssh/config
