@@ -1,0 +1,7 @@
+.hero p.lead,.hero>p{font-size:18px;line-height:1.65}.btn,.cancers a,.toc button{min-height:48px}
+.page pre{font-size:18px;line-height:1.8}.download-card p{font-size:16px;line-height:1.65}.download-card label{font-size:16px}
+.dl-cta{font-size:18px}.dl-cta small{font-size:14px}.stp small,.gb-note{font-size:15px}
+.answer{font-size:18px;line-height:1.8}.hero{box-shadow:0 6px 22px rgba(20,44,67,.035)}
+@media(max-width:760px){.page pre{font-size:18px;line-height:1.8}.top .actions{gap:6px}.btn{padding:0 10px}.brand small{font-size:10px}}
+@media print{.page pre{font-size:16px}.apuda-videos{display:none!important}}
+

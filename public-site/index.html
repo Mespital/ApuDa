@@ -626,6 +626,9 @@
     .p-floors button{flex:1;min-width:0;max-width:60px}
   }
 </style>
+<meta name="apuda-release" content="design-videos-20261014">
+<link rel="stylesheet" href="/assets/apuda-cancer-videos.css">
+<link rel="stylesheet" href="/assets/apuda-home-polish.css">
 </head>
 <body>
 
@@ -654,6 +657,7 @@
       <p>암 위험도 확인부터 진단 첫 30일, 치료·부작용 관리와 커뮤니티까지 필요한 길을 한 번에 연결합니다.</p>
       <a class="guide-about" href="/about/">💡 ApuDa.app 소개 · 사용법 →</a>
     </div>
+    <p class="mobile-guidance">암종별 정보와 오늘 필요한 도움을 찾아보세요.</p>
     <nav class="guide-services" id="guideServices" aria-label="층별 서비스 바로가기"></nav>
   </aside>
   <div id="frame">
@@ -674,6 +678,8 @@
     </div>
   </div>
 </div>
+
+<nav id="mobileFloorGuide" aria-label="층별 서비스 바로가기"><span class="mobile-guide-title">필요한 서비스를 선택하세요</span><div class="mobile-guide-buttons" id="mobileGuideButtons"></div></nav>
 
 <nav id="pager" aria-label="층 선택">
   <button type="button" data-f="5">5F</button>
@@ -744,6 +750,7 @@
 
 <div id="curtain"><div><b>ApuDa</b><small>PATIENT CARE OS</small></div></div>
 
+<script src="/assets/apuda-cancer-videos.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script>
 (function(){
@@ -844,7 +851,7 @@
               ['간암 첫 30일','https://apuda-liver.netlify.app',null,'간기능과 병기를 함께 보는 치료 흐름','🟤'],
               ['림프종 첫 30일','https://apuda-lymphoma.netlify.app',null,'아형·병기·항암치료 과정 이해','🧫'],
               ['자궁경부암 첫 30일','https://apud-cervical.netlify.app',null,'병기·수술·방사선·항암치료 정리','🌸']]},
-    3:{fl:'3F', kicker:'CARE · 치료·부작용 관리', title:'참지 말고,\n확인하고 지원받기.',
+    3:{fl:'3F', kicker:'SUPPORT · 나에게 맞는 지원', title:'참지 말고,\n확인하고 지원받기.',
        desc:'치료 중 나타나는 불편을 확인하고 산정특례·의료비 등 받을 수 있는 지원 제도를 함께 살펴봅니다.',
        stats:[['산정특례','본인부담 5%','/support/'],['의료비','지원 안내','/support/']],
        links:[['암 환자 지원 정보','/support/',null,'산정특례·의료비·지원제도를 한곳에서','🤝']]},
@@ -903,18 +910,8 @@
     c:connectorLine.querySelector('.connector-c'),start:connectorLine.querySelector('.connector-dot.start'),
     end:connectorLine.querySelector('.connector-dot.end')};
 
-  function preloadFloorVideos(){
-    Object.keys(FLOOR_VIDEOS).forEach(function(k){
-      try{
-        var v=document.createElement('video');
-        v.muted=true; v.playsInline=true; v.preload='auto';
-        v.src=FLOOR_VIDEOS[k]; v.load();
-      }catch(e){}
-    });
-  }
-
   function playFloorVideo(f){
-    if(!FLOOR_VIDEOS[f]) return;
+    if(reduce || !FLOOR_VIDEOS[f]) return;
     var token=++mediaToken;
     var next=(mediaFront===buildingVideoA)?buildingVideoB:buildingVideoA;
     var prev=mediaFront;
@@ -928,15 +925,18 @@
 
     function reveal(){
       if(token!==mediaToken) return;
+      function showPlaying(){
+        if(token!==mediaToken){next.pause();return;}
+        frame.classList.add('media-active');
+        next.classList.add('media-on'); next.style.opacity='1';
+        prev.classList.remove('media-on'); prev.style.opacity='0'; prev.pause();
+        mediaFront=next; mediaBack=prev; mediaFloor=f;
+      }
       var promise=next.play();
-      if(promise && promise.catch) promise.catch(function(){});
-      frame.classList.add('media-active');
-      next.classList.add('media-on');
-      next.style.opacity='1';
-      prev.classList.remove('media-on');
-      prev.style.opacity='0';
-      setTimeout(function(){ if(prev!==next){prev.pause();} },380);
-      mediaFront=next; mediaBack=prev; mediaFloor=f;
+      if(promise && promise.then) promise.then(showPlaying).catch(function(){
+        if(token===mediaToken) showIdleMedia();
+      });
+      else if(!next.paused) showPlaying();
     }
     if(next.readyState>=2) reveal();
     else {
@@ -959,7 +959,7 @@
   applyIdleImage();
   addEventListener('resize', applyIdleImage);
 
-  preloadFloorVideos();
+  // Floor videos are requested only after a floor is selected.
 
   function put(el,r){ el.style.left=r.x+'%'; el.style.top=r.y+'%'; el.style.width=r.w+'%'; el.style.height=r.h+'%'; }
 
@@ -978,7 +978,7 @@
     frame.appendChild(g); glows[f]=g;
 
     var a=document.createElement('button'); a.className='hz fl'; a.type='button';
-    a.setAttribute('aria-label', DATA[f].fl+' '+DATA[f].kicker);
+    a.setAttribute('aria-label', f+'층 '+GUIDE_COPY[f].title+' 상세 보기');
     put(a,FLOORS[f]); a.onclick=function(e){e.stopPropagation();open(f)};
     frame.appendChild(a); hz[f]=a;
 
@@ -1012,7 +1012,7 @@
     nav.onclick=function(){
       connectorPinned=true;previewFloor(f);showConnector(f,true);setInteractionMode('building');
       if(openDelay) openDelay.kill();
-      openDelay=gsap.delayedCall(.38,function(){openDelay=null;open(f)});
+      openDelay=gsap.delayedCall(reduce?0:.08,function(){openDelay=null;open(f)});
     };
     guideServices.appendChild(nav); guideBtns[f]=nav;
 
@@ -1031,19 +1031,30 @@
     activities[f]=activity;
   });
 
+  var mobileButtons=document.getElementById('mobileGuideButtons');
+  var mobileNames={1:'위험도',2:'암 서재',3:'지원',4:'기록',5:'커뮤니티'};
+  [1,2,3,4,5].forEach(function(f){
+    var button=document.createElement('button');button.type='button';
+    button.setAttribute('aria-label',f+'층 '+GUIDE_COPY[f].title+' 상세 보기');
+    button.innerHTML='<span>'+f+'F</span>'+mobileNames[f];
+    button.onclick=function(){setInteractionMode('building');open(f);};
+    mobileButtons.appendChild(button);
+  });
+
   /* ── GSAP: 인트로 ── */
   var q = gsap.utils.selector(frame);
   gsap.set(frame,{scale:1.06,opacity:0,y:22});
   gsap.set(q('.hz'),{opacity:0});
   gsap.set(desktopGuide,{opacity:0});
 
-  var intro = gsap.timeline({delay:.15});
+  var intro = gsap.timeline({delay:reduce?0:.05});
   intro.to(curtain,{opacity:0,duration:.5,ease:'power2.out',onComplete:function(){curtain.style.display='none'}})
-       .to(frame,{scale:1,opacity:1,y:0,duration:1.15,ease:'power3.out'},'-=.3')
+       .to(frame,{scale:1,opacity:1,y:0,duration:reduce?0:.35,ease:'power2.out'},'-=.3')
        .to(q('.glow'),{opacity:.85,duration:.42,stagger:{each:.11,from:'end'},ease:'power2.out'},'-=.6')
        .to(q('.glow'),{opacity:0,duration:.5,stagger:{each:.11,from:'end'},ease:'power2.inOut'},'-=.3')
        .to(q('.hz'),{opacity:1,duration:.01},'-=.4')
        .to([desktopGuide,pager,hint,siteFooter],{opacity:1,duration:.5,ease:'power2.out',stagger:.08},'-=.25');
+  if(reduce) intro.progress(1);
 
   /* 은은한 부유 */
   /* Fixed architectural frame: no idle floating motion. */
@@ -1270,13 +1281,19 @@
       '<button class="book-choice-x" type="button" aria-label="닫기">×</button>'+
       '<div class="book-choice-head"><div class="book-choice-cover" style="--cover:url(\'assets/books/'+slug+'.webp\')"></div><div><span class="book-choice-kicker">ApuDa 암종별 가이드북 · Vol. '+(i+1)+'</span><h3>'+esc(name)+'</h3><p>'+esc(BOOK_INTRO[slug]||'')+'</p></div></div>'+
       '<div class="book-choice-list">'+
-        '<div class="book-choice-item"><span class="book-choice-num">1</span><span class="book-choice-copy"><b>'+esc(name)+' 진단 첫 30일 (MINI)</b><small>앞부분 무료 미리보기 · 책 전체(PDF)는 다운로드 코드</small></span><span class="book-choice-actions"><a class="primary" href="/library/mini/?cancer='+slug+'">미리보기</a><a href="/library/mini/?cancer='+slug+'#download">⬇ 다운로드</a></span></div>'+
+        '<div class="book-choice-item"><span class="book-choice-num">1</span><span class="book-choice-copy"><b>'+esc(name)+' 진단 첫 30일 (MINI)</b><small>MINI 앞부분 미리보기 · MINI 전체 PDF는 다운로드 코드</small></span><span class="book-choice-actions"><a class="primary" href="/library/mini/?cancer='+slug+'">미리보기</a><a href="/library/mini/?cancer='+slug+'#download">⬇ 다운로드</a></span></div>'+
         '<div class="book-choice-item"><span class="book-choice-num">2</span><span class="book-choice-copy"><b>'+esc(name)+' FAQ</b><small>환자·보호자가 진료실에서 자주 확인하는 질문</small></span><span class="book-choice-actions"><a href="/library/faq/?cancer='+slug+'">FAQ 보기</a></span></div>'+
         '<div class="book-choice-item full soon"><span class="book-choice-num">3</span><span class="book-choice-copy"><b>'+esc(name)+' 진단 첫 30일 완전판</b><small>준비중입니다.</small></span><span class="book-choice-actions full-soon"><span class="full-thumb" style="--cover:url(\'assets/books/'+slug+'.webp\')"></span><span class="soon-badge">준비중입니다</span></span></div>'+
-      '</div><div class="book-choice-note">앞부분은 코드 없이 미리 볼 수 있어요. 책 전체는 인스타그램 <b>@apuda.app</b> 팔로우 → 이벤트 게시물에 “30일” 댓글 → DM으로 받은 코드를 입력하면 다운로드돼요.</div>'+
+      '</div>'+(window.ApuDaCancerVideos?window.ApuDaCancerVideos.html(slug,{heading:4}):'')+'<div class="book-choice-note">MINI 앞부분은 코드 없이 미리 볼 수 있어요. MINI 전체 PDF는 인스타그램 <b>@apuda.app</b> 팔로우 → 이벤트 게시물에 “30일” 댓글 → DM으로 받은 코드를 입력하면 다운로드돼요.</div>'+
       '<div class="book-more"><span>'+esc(name)+' 더 알아보기</span><a href="/library/treatment-map/?cancer='+slug+'">🗺️ 치료결정 지도</a><a href="/library/drugs/?cancer='+slug+'">💊 관련 항암제</a><a href="/library/biomarkers/?cancer='+slug+'">🧬 관련 바이오마커</a><a href="/library/regimens/?cancer='+slug+'">💉 항암 요법 가이드</a></div></section>';
     document.body.appendChild(root);
     var opener=document.activeElement;
+    root.addEventListener('keydown',function(e){
+      if(e.key!=='Tab') return;
+      var controls=root.querySelectorAll('button:not([disabled]),a[href]'), first=controls[0], last=controls[controls.length-1];
+      if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+      else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+    });
     function escOnce(e){if(e.key==='Escape'){e.stopPropagation();close()}}
     var close=function(){root.remove();document.removeEventListener('keydown',escOnce);if(opener&&opener.focus)opener.focus({preventScroll:true})};
     root.querySelector('.book-choice-x').onclick=close;
@@ -1289,7 +1306,7 @@
   function fitShelf(){
     var g=sheet.querySelector('.mini-series-grid'); if(!g) return;
     if(matchMedia('(max-width:860px)').matches){ g.style.gridTemplateColumns=''; return; }
-    var W=g.clientWidth, H=g.clientHeight, gap=14, meta=52, R=340/240, best=0, bc=6;
+    var W=g.clientWidth, H=g.clientHeight, gap=14, meta=60, R=340/240, best=0, bc=6;
     if(W<200||H<200) return;
     [3,4,6,12].forEach(function(c){
       var r=Math.ceil(12/c), wW=(W-gap*(c-1))/c, wH=((H-gap*(r-1))/r-meta)/R, w=Math.min(wW,wH);
@@ -1305,13 +1322,13 @@
       return '<button type="button" class="mini-book" data-book="'+i+'" aria-label="'+esc(name)+' 가이드북 자료 선택">'+
         '<span class="mini-book-art" style="--cover:url(\'assets/books/'+slug+'.webp\')">'+(badge?'<span class="mini-book-badge'+(badge==='인기'?' hot':'')+'">'+badge+'</span>':'')+'</span>'+
         '<span class="mini-book-meta"><span class="mini-book-vol">'+(i+1)+'</span><span class="mini-book-name">'+esc(name)+'</span><span class="mini-book-go">→</span></span>'+
-        '<span class="mini-book-tags">MINI · FAQ</span></button>';
+        '<span class="mini-book-tags">MINI · FAQ · 영상</span></button>';
     }).join('');
     return '<span class="p-fl"><b>'+d.fl+'</b>'+d.kicker+'</span>'+
       '<div class="floor2-intro"><div><h2>'+d.title.replace(/\n/g,'&nbsp;<br>')+'</h2><p>'+d.desc+'</p></div>'+
       '<div class="p-stats">'+d.stats.map(statHTML).join('')+'</div></div>'+
       '<div class="floor2-layout">'+
-        '<section class="floor2-library"><div class="floor2-library-head"><div><b>암종별 가이드북</b><span>암종을 선택하면 첫 30일 MINI 가이드와 FAQ로 이동할 수 있습니다(완전판은 준비 중).</span></div><span>Vol. 01–12</span></div>'+
+        '<section class="floor2-library"><div class="floor2-library-head"><div><b>암종별 가이드북</b><span>암종을 선택하면 MINI·FAQ·영상을 확인할 수 있습니다. 완전판은 준비 중입니다.</span></div><span>Vol. 01–12</span></div>'+
         '<div class="mini-series-grid">'+bookHtml+'</div></section>'+
         '<aside class="floor2-side"><div class="floor2-side-head"><b>더 깊게 이해하기</b><span>암종을 이해한 뒤 필요한 다음 정보로 이어집니다.</span></div>'+
         '<a class="floor2-service" href="'+esc(d.links[0][1])+'" target="_blank" rel="noopener"><span class="floor2-service-icon">📚</span><span class="floor2-service-copy"><b>4컷 만화 암 정보</b><small>검사·병기·치료를 그림으로 쉽게</small></span></a>'+
@@ -1393,7 +1410,7 @@
     /* #floor-N 으로 들어오면 인트로가 끝나기 전에 열리므로, 인트로를 끝내 두어야 안내 메뉴가 다시 나타나 겹치지 않는다 */
     if(intro && intro.isActive()) intro.progress(1);
     var first = !cur;
-    playFloorVideo(f);
+    if(reduce) showIdleMedia(); else playFloorVideo(f);
     if(roofTimer) clearTimeout(roofTimer);
     frame.classList.remove('roof-active');
     roofTimer=setTimeout(function(){ if(cur===f) frame.classList.add('roof-active'); },720);
@@ -1417,29 +1434,29 @@
     });
     Object.keys(wallLabels).forEach(function(k){ wallLabels[k].classList.toggle('active',+k===f); });
     Object.keys(guideBtns).forEach(function(k){ guideBtns[k].classList.toggle('on',+k===f); });
-    runFloorActivity(f);
+    if(!reduce) runFloorActivity(f);
 
     gsap.killTweensOf(frame);
     gsap.killTweensOf(lightSweep);
     var tl=gsap.timeline();
     tl.to(frame,{transformOrigin:cx+'% '+cy+'%', xPercent:dx, scale:S, y:0, rotationX:0, rotationY:0,
-                 duration:.95, ease:'power3.inOut'},0)
-      .fromTo(frame,{filter:'blur(0px)'},{filter:'blur(4px)',duration:.22,ease:'power1.in'},0)
-      .to(frame,{filter:'blur(0px)',duration:.55,ease:'power2.out'},.22)
-      .to(spot,{opacity:1,duration:.5,ease:'power2.out'},0.05)
-      .fromTo(glows[f],{opacity:0},{opacity:.9,duration:.6,ease:'power2.out'},0.1)
-      .fromTo(lightSweep,{xPercent:-70,opacity:0},{xPercent:25,opacity:.85,duration:.6,ease:'power2.out'},0.08)
-      .to(lightSweep,{opacity:0,duration:.35,ease:'power2.in'},.42)
-      .to(ctrls,{opacity:1,duration:.35,stagger:.05},0.25)
-      .to(desktopGuide,{opacity:0,x:-28,pointerEvents:'none',duration:.35,ease:'power2.out'},0)
-      .to(hint,{opacity:0,duration:.25},0)
-      .to(siteFooter,{opacity:0,duration:.25},0)
+                 duration:reduce?0:.26, ease:'power2.out'},0)
+      .set(frame,{filter:'none'},0)
+      .to(spot,{opacity:1,duration:.2,ease:'power2.out'},0)
+      .fromTo(glows[f],{opacity:0},{opacity:.9,duration:.22,ease:'power2.out'},0)
+      .fromTo(lightSweep,{xPercent:-70,opacity:0},{xPercent:25,opacity:.45,duration:.18,ease:'power2.out'},0)
+      .to(lightSweep,{opacity:0,duration:.06,ease:'power2.in'},.18)
+      .to(ctrls,{opacity:1,duration:.2},0)
+      .to(desktopGuide,{opacity:0,x:-28,pointerEvents:'none',duration:.2,ease:'power2.out'},0)
+      .to(hint,{opacity:0,duration:.2},0)
+      .to(siteFooter,{opacity:0,duration:.2},0)
       .to(panel,{x:0,y:0,xPercent:narrow?-50:0,yPercent:-50,opacity:1,
-                 duration:.75,ease:'power3.out',
+                 duration:reduce?0:.25,ease:'power2.out',
                  onStart:function(){panel.classList.add('live')},
-                 onComplete:function(){document.getElementById('btnX').focus({preventScroll:true})}}, first?0.35:0.15);
+                 onComplete:function(){document.getElementById('btnX').focus({preventScroll:true})}}, reduce?0:.04);
 
-    Object.keys(glows).forEach(function(k){ if(+k!==f) gsap.to(glows[k],{opacity:0,duration:.3}); });
+    Object.keys(glows).forEach(function(k){ if(+k!==f) gsap.to(glows[k],{opacity:0,duration:reduce?0:.2}); });
+    if(reduce) tl.progress(1);
   }
 
   function close(){
@@ -1464,16 +1481,17 @@
       if(lastFocus && typeof lastFocus.focus==='function') lastFocus.focus({preventScroll:true});
     }});
     tl.to(panel,{x:0,y:0,xPercent:narrow?-50:126,yPercent:narrow?120:-50,opacity:0,
-                 duration:.5,ease:'power3.in',
+                 duration:reduce?0:.18,ease:'power2.out',
                  onComplete:function(){panel.classList.remove('live')}},0)
-      .to(ctrls,{opacity:0,duration:.3},0)
-      .to(spot,{opacity:0,duration:.4},0)
-      .to(Object.values(glows),{opacity:0,duration:.4},0)
-      .to(lightSweep,{opacity:0,duration:.25},0)
-      .to(frame,{xPercent:0,scale:1,y:0,rotationX:0,rotationY:0,filter:'blur(0px)',duration:.85,ease:'power3.inOut'},0.05)
-      .to(desktopGuide,{opacity:1,x:0,pointerEvents:'auto',duration:.45,ease:'power2.out'},.35)
-      .to(hint,{opacity:1,duration:.4},0.4)
-      .to(siteFooter,{opacity:1,duration:.4},0.4);
+      .to(ctrls,{opacity:0,duration:.18},0)
+      .to(spot,{opacity:0,duration:.18},0)
+      .to(Object.values(glows),{opacity:0,duration:.18},0)
+      .to(lightSweep,{opacity:0,duration:.18},0)
+      .to(frame,{xPercent:0,scale:1,y:0,rotationX:0,rotationY:0,filter:'none',duration:reduce?0:.25,ease:'power2.out'},0)
+      .to(desktopGuide,{opacity:1,x:0,pointerEvents:'auto',duration:.18,ease:'power2.out'},0)
+      .to(hint,{opacity:1,duration:.18},0)
+      .to(siteFooter,{opacity:1,duration:.18},0);
+    if(reduce) tl.progress(1);
   }
 
   function moveFloor(direction){
@@ -1497,13 +1515,13 @@
     if(cur && e.target.id==='stage') close();
   });
   addEventListener('keydown',function(e){
-    if(!cur){ if(e.key==='Enter') open(1); return; }
-    if(e.key==='Escape') close();
-    if(interactionMode==='panel' && (e.key==='ArrowUp'||e.key==='ArrowDown')){
-      e.preventDefault();sheet.scrollBy({top:e.key==='ArrowUp'?-150:150,behavior:reduce?'auto':'smooth'});return;
+    var fam=document.getElementById('famPop');
+    if(document.getElementById('bookChoiceModal') || (fam&&!fam.hidden)) return;
+    if(!cur) return;
+    if(e.key==='Escape'){e.preventDefault();close();return;}
+    if(frame.contains(e.target) && (e.key==='ArrowUp'||e.key==='ArrowDown')){
+      e.preventDefault();setInteractionMode('building');moveFloor(e.key==='ArrowUp'?1:-1);
     }
-    if(e.key==='ArrowUp'){e.preventDefault();moveFloor(1)}
-    if(e.key==='ArrowDown'){e.preventDefault();moveFloor(-1)}
   });
   var wl=0;
   addEventListener('wheel',function(e){
@@ -1524,15 +1542,24 @@
   var btn=document.getElementById("famBtn"), pop=document.getElementById("famPop");
   if(!btn||!pop) return;
   function open(){ pop.hidden=false; btn.setAttribute("aria-expanded","true");
-    document.documentElement.style.overflow="hidden"; }
+    document.documentElement.style.overflow="hidden"; document.getElementById("famX").focus(); }
   function close(){ pop.hidden=true; btn.setAttribute("aria-expanded","false");
     document.documentElement.style.overflow=""; btn.focus(); }
   btn.addEventListener("click", function(e){ e.stopPropagation(); open(); });
   document.getElementById("famX").addEventListener("click", close);
   document.getElementById("famBack").addEventListener("click", close);
-  document.addEventListener("keydown", function(e){ if(e.key==="Escape" && !pop.hidden) close(); });
+  document.addEventListener('keydown',function(e){
+    if(pop.hidden) return;
+    if(e.key==='Escape'){e.preventDefault();e.stopPropagation();close();return;}
+    if(e.key==='Tab'){
+      var controls=pop.querySelectorAll('button,a[href]'), first=controls[0], last=controls[controls.length-1];
+      if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+      else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+    }
+  });
 })();
 </script>
 <script src="/assets/apuda-bot.js" data-context="home" defer></script>
 </body>
 </html>
+
