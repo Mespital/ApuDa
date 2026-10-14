@@ -1,6 +1,6 @@
 :root{--ink:#142c43;--muted:#52657b;--line:#d7e3f0;--ease:cubic-bezier(.22,.61,.36,1)}
 :focus-visible{outline:3px solid #1855d8;outline-offset:4px}
-#stage{background:radial-gradient(ellipse at 72% 38%,#f7faff 0,#eaf2fc 54%,#e1ecf8 100%)}
+#stage{overflow:clip;background:radial-gradient(ellipse at 72% 38%,#f7faff 0,#eaf2fc 54%,#e1ecf8 100%)}
 .building-media{border-radius:20px}
 #frame::before{content:"";position:absolute;left:6%;right:6%;bottom:-1%;height:5%;z-index:-1;background:rgba(38,73,120,.14);border-radius:50%;filter:blur(18px);pointer-events:none}
 .spot{box-shadow:inset 0 0 0 2px rgba(36,107,254,.28);background:rgba(255,255,255,.035)}
