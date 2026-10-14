@@ -679,7 +679,7 @@
   </div>
 </div>
 
-<nav id="mobileFloorGuide" aria-label="층별 서비스 바로가기"><span class="mobile-guide-title">필요한 서비스를 선택하세요</span><div class="mobile-guide-buttons" id="mobileGuideButtons"></div></nav>
+<nav id="mobileFloorGuide" aria-label="층별 서비스 바로가기"><div class="mobile-guide-heading"><span class="mobile-guide-title">필요한 서비스를 선택하세요</span><button type="button" class="mobile-help" id="mobileHelper" aria-label="ApuDa 길잡이 열기">🧭 길잡이</button></div><div class="mobile-guide-buttons" id="mobileGuideButtons"></div></nav>
 
 <nav id="pager" aria-label="층 선택">
   <button type="button" data-f="5">5F</button>
@@ -1031,6 +1031,9 @@
     activities[f]=activity;
   });
 
+  document.getElementById('mobileHelper').onclick=function(){
+    if(window.ApudaBot) window.ApudaBot.open(); else location.href='/about/';
+  };
   var mobileButtons=document.getElementById('mobileGuideButtons');
   var mobileNames={1:'위험도',2:'암 서재',3:'지원',4:'기록',5:'커뮤니티'};
   [1,2,3,4,5].forEach(function(f){

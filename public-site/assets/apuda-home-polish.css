@@ -46,11 +46,15 @@ body.open .wall-label.active{opacity:1;visibility:visible}
   .guide-top,.guide-eyebrow,.guide-services,.guide-about,.guide-hero>p:not(.mobile-guidance){display:none}
   .guide-hero{margin:0}.guide-hero h1{margin:0;font-size:24px;line-height:1.2}.guide-hero h1>br{display:none}.guide-hero h1 span{display:block;margin-top:4px;font-size:20px}.guide-hero h1 span br{display:none}
   .mobile-guidance{display:block;margin-top:9px!important;font-size:15px!important;line-height:1.5!important;color:#52657b!important}
-  #stage{padding:180px 0 115px;align-items:center}
-  #frame{width:min(calc(100vw - 12px),calc((100svh - 295px)*.8236),620px);max-height:calc(100svh - 295px);justify-self:center}
+  #stage{padding:180px 0 145px;align-items:center}
+  #frame{width:min(calc(100vw - 12px),calc((100svh - 330px)*.8236),620px);max-height:calc(100svh - 330px);justify-self:center}
   body.open #stage{padding:8px 0 12px}body.open .desktop-guide{visibility:hidden}
   #mobileFloorGuide{display:block;position:fixed;left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));z-index:55;padding:10px 8px 8px;background:rgba(255,255,255,.97);border:1px solid #cfdeef;border-radius:18px;box-shadow:0 8px 28px rgba(20,44,67,.08)}
-  #mobileFloorGuide .mobile-guide-title{display:block;margin:0 7px 7px;color:#52657b;font-size:12px;font-weight:700}
+  #mobileFloorGuide .mobile-guide-title{display:block;margin:0 7px;color:#52657b;font-size:12px;font-weight:700}
+  #mobileFloorGuide .mobile-guide-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}
+  #mobileFloorGuide .mobile-help{display:flex;flex-direction:row;gap:5px;width:auto;min-height:48px;padding:0 12px;background:#eaf2ff;color:#1855d8;font-size:13px}
+  #apuda-bot{--apuda-launcher-display:none}
+  #siteFooter{display:none}
   #mobileFloorGuide .mobile-guide-buttons{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
   #mobileFloorGuide button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;width:100%;min-height:56px;padding:5px 2px;border-radius:11px;color:#142c43;font-size:12px;font-weight:800;background:#f2f6fc}
   #mobileFloorGuide button span{font-size:11px;color:#1855d8}
