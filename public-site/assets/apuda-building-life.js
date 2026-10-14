@@ -36,16 +36,32 @@
     var scene = node('svg', { 'class': 'building-life-scene', 'aria-hidden': 'true', 'focusable': 'false', 'preserveAspectRatio': 'xMidYMid slice' });
     var definitions = node('defs');
     var softLight = node('filter', { id: 'apuda-life-softlight', x: '-8%', y: '-160%', width: '116%', height: '420%' });
-    softLight.appendChild(node('feGaussianBlur', { stdDeviation: '2.5' })); definitions.appendChild(softLight); scene.appendChild(definitions);
+    softLight.appendChild(node('feGaussianBlur', { stdDeviation: '2.5' })); definitions.appendChild(softLight);
+    var nightTint = node('filter', { id: 'apuda-life-night-tint', 'color-interpolation-filters': 'sRGB' });
+    nightTint.appendChild(node('feColorMatrix', { type: 'saturate', values: '.68' }));
+    var transfer = node('feComponentTransfer');
+    transfer.appendChild(node('feFuncR', { type: 'linear', slope: '.23' }));
+    transfer.appendChild(node('feFuncG', { type: 'linear', slope: '.28' }));
+    transfer.appendChild(node('feFuncB', { type: 'linear', slope: '.35' }));
+    nightTint.appendChild(transfer); definitions.appendChild(nightTint);
+    var roomMask = node('mask', { id: 'apuda-life-room-mask', maskUnits: 'userSpaceOnUse', maskContentUnits: 'userSpaceOnUse', x: '0', y: '0', width: '1672', height: '941' });
+    definitions.appendChild(roomMask); scene.appendChild(definitions);
+    var nightPhoto = node('image', { 'class': 'life-night-photo', y: '0', height: '941', filter: 'url(#apuda-life-night-tint)', mask: 'url(#apuda-life-room-mask)' });
+    scene.appendChild(nightPhoto);
     rooms.forEach(function (room) {
       var shade = node('polygon', { 'class': 'life-room-shade', points: room.room, 'data-life-floor': room.floor });
       var light = node('polyline', { 'class': 'life-ceiling-light', points: room.ceiling });
       var screen = node('rect', { 'class': 'life-screen-light', x: room.screen[0], y: room.screen[1], width: room.screen[2], height: room.screen[3], rx: '3', style: '--screen-delay:' + (-room.floor * .83) + 's' });
-      scene.appendChild(shade); scene.appendChild(light); scene.appendChild(screen);
+      roomMask.appendChild(shade); scene.appendChild(light); scene.appendChild(screen);
       shades.push(shade); ceiling.push(light);
     });
     frame.appendChild(scene);
-    function syncViewport() { scene.setAttribute('viewBox', mobile.matches ? '444 0 775 941' : '0 0 1672 941'); }
+    function syncViewport() {
+      scene.setAttribute('viewBox', mobile.matches ? '444 0 775 941' : '0 0 1672 941');
+      nightPhoto.setAttribute('x', mobile.matches ? '444' : '0');
+      nightPhoto.setAttribute('width', mobile.matches ? '775' : '1672');
+      nightPhoto.setAttribute('href', mobile.matches ? '/assets/image/building-mobile-home-v2.png' : '/assets/image/building-master.png');
+    }
     syncViewport(); mobile.addEventListener('change', syncViewport);
     frame.dataset.buildingLightPhase = reduced ? 'ready' : 'dark';
     frame.dataset.buildingLife = 'still';

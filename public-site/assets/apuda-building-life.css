@@ -1,7 +1,8 @@
 .building-life-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;opacity:0;pointer-events:none;transition:opacity 900ms ease-in-out}
 #frame.life-playing:not(.media-active) .building-life-media{opacity:1}
 .building-life-scene{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;overflow:hidden;transition:opacity 240ms ease-out}
-.life-room-shade{fill:#122239;opacity:.94}
+.life-room-shade{fill:#fff;opacity:.94}
+#frame.life-lit .life-night-photo{visibility:hidden}
 .life-ceiling-light{fill:none;stroke:#ffe2ac;stroke-width:4;stroke-linecap:round;opacity:0;filter:url(#apuda-life-softlight)}
 .life-screen-light{fill:#8fc7ff;opacity:0;mix-blend-mode:screen}
 #frame.life-lit .life-screen-light{animation:apuda-screen-breathe 5.6s ease-in-out infinite;animation-delay:var(--screen-delay,0s)}
