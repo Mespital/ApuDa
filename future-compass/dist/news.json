@@ -1,8 +1,16 @@
 {
-  "checked_at": "2026-10-14T02:25:53.254957+00:00",
-  "last_success_at": "2026-10-14T02:25:53.254957+00:00",
+  "checked_at": "2026-10-14T07:18:52.153999+00:00",
+  "last_success_at": "2026-10-14T07:18:52.153999+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "Enabling an AI-first European economy",
+      "url": "https://blog.google/company-news/inside-google/around-the-globe/google-europe/european-economic-impact-report/",
+      "source": "Google",
+      "published_at": "2026-10-14T07:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "Developing Gemini 4 Argon responsibly and safely",
       "url": "https://blog.google/innovation-and-ai/technology/safety-security/gemini-4-model-safety-security/",
@@ -234,20 +242,12 @@
       "published_at": "2026-10-06T12:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Advancing computer use with Ironclad",
-      "url": "https://openai.com/index/advancing-computer-use-with-ironclad",
-      "source": "OpenAI",
-      "published_at": "2026-10-06T10:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-14T02:25:53.254957+00:00",
+    "checked_at": "2026-10-14T07:18:52.153999+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -440,7 +440,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-14T02:25:53.254957+00:00",
+    "last_success_at": "2026-10-14T07:18:52.153999+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
