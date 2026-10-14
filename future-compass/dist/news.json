@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-10-14T18:24:14.017934+00:00",
-  "last_success_at": "2026-10-14T18:24:14.017934+00:00",
+  "checked_at": "2026-10-14T23:04:24.430980+00:00",
+  "last_success_at": "2026-10-14T23:04:24.430980+00:00",
   "failures": [],
   "articles": [
     {
@@ -58,6 +58,14 @@
       "published_at": "2026-10-14T07:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
+    },
+    {
+      "title": "How Block is building AI-powered security with OpenAI technology",
+      "url": "https://openai.com/index/block-ai-powered-security",
+      "source": "OpenAI",
+      "published_at": "2026-10-14T07:00:00+00:00",
+      "category": "안전·보안",
+      "domain": "security"
     },
     {
       "title": "The EU’s next chapter in AI is agentic",
@@ -234,20 +242,12 @@
       "published_at": "2026-10-07T00:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Ask a Scientist: How are researchers using AI to help pregnant women access ultrasounds?",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/google-research/blind-sweep-ultrasounds-ai/",
-      "source": "Google",
-      "published_at": "2026-10-06T18:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-14T18:24:14.017934+00:00",
+    "checked_at": "2026-10-14T23:04:24.430980+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -440,7 +440,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-14T18:24:14.017934+00:00",
+    "last_success_at": "2026-10-14T23:04:24.430980+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
