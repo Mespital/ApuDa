@@ -2,6 +2,7 @@
   'use strict';
   var NS = 'http://www.w3.org/2000/svg';
   var VIDEO = '/assets/video/building-life-91eb77cdc84a.mp4';
+  var WALK = '/assets/image/apuda-walk-cycle-v1.png';
   // Coordinates refer to the unchanged 1672 x 941 master image.
   var rooms = [
     { floor: 1, room: '525,742 1086,741 1172,752 1172,883 1086,879 525,832', ceiling: '541,745 1075,746', screen: [847,761,129,68] },
@@ -23,7 +24,9 @@
     var lowData = !!(navigator.connection && navigator.connection.saveData);
     var reduced = motion.matches;
     var started = false, complete = false, suspended = false, playPending = false;
-    var generation = 0, animations = [], shades = [], ceiling = [];
+    var generation = 0, animations = [], shades = [], ceiling = [], walkersMounted = false;
+    frame.classList.toggle('life-reduced', reduced);
+    frame.classList.toggle('life-low-data', lowData);
 
     var video = document.createElement('video');
     video.className = 'building-life-media'; video.id = 'buildingLifeVideo';
@@ -56,8 +59,46 @@
       shades.push(shade); ceiling.push(light);
     });
     frame.appendChild(scene);
+    // The two-line wordmark is real text, independent of the photo/video lettering.
+    var sign = node('svg', { 'class': 'apuda-rooftop-sign', role: 'img', 'aria-label': 'ApuDa — 아프지만, 다행이다.', focusable: 'false', preserveAspectRatio: 'xMidYMid slice' });
+    var signDefs = node('defs');
+    var panelFinish = node('linearGradient', { id: 'apuda-sign-ivory', x1: '0', y1: '0', x2: '0', y2: '1' });
+    panelFinish.appendChild(node('stop', { offset: '0', 'stop-color': '#fefefd' }));
+    panelFinish.appendChild(node('stop', { offset: '1', 'stop-color': '#efefeb' }));
+    signDefs.appendChild(panelFinish); sign.appendChild(signDefs);
+    sign.appendChild(node('polygon', { points: '956,7 1033,32 1033,46 956,21', fill: '#f7f8f5', stroke: '#d8dfdf', 'stroke-width': '1' }));
+    var face = node('g', { transform: 'matrix(1,-.092,0,1,758,25)' });
+    face.appendChild(node('rect', { x: '0', y: '0', width: '198', height: '94', fill: 'url(#apuda-sign-ivory)', stroke: '#d1d7d9', 'stroke-width': '1.3' }));
+    face.appendChild(node('path', { d: 'M2 92V2H196', fill: 'none', stroke: '#fff', 'stroke-width': '2' }));
+    'ApuDa'.split('').forEach(function (letter, index) {
+      var position = node('g', { transform: 'translate(' + [23,57,84,112,146][index] + ',0)' });
+      var moving = node('g', { 'class': 'apuda-roof-letter', style: '--letter-delay:' + (index * .16) + 's' });
+      var text = node('text', { x: '0', y: '49', 'class': 'apuda-roof-brand' });
+      text.textContent = letter; moving.appendChild(text); position.appendChild(moving); face.appendChild(position);
+    });
+    var tagline = node('text', { x: '99', y: '73', 'text-anchor': 'middle', 'class': 'apuda-roof-tagline' });
+    tagline.textContent = '아프지만, 다행이다.'; face.appendChild(tagline);
+    sign.appendChild(face); frame.appendChild(sign);
+
+    function enableWalkers() {
+      if (walkersMounted || reduced || lowData) return;
+      walkersMounted = true;
+      // Front corridors, away from the floor labels and the seated original people.
+      [
+        { floor: 4, y: 331, from: 1009, to: 1109, height: 105, period: 16, delay: -3.4 },
+        { floor: 1, y: 769, from: 1045, to: 1123, height: 108, period: 19, delay: -10.6 }
+      ].forEach(function (route) {
+        var position = node('g', { transform: 'translate(0,' + route.y + ')', 'class': 'life-walker', 'data-walker-floor': route.floor });
+        var travel = node('g', { 'class': 'life-walker-route', style: '--walk-from:' + route.from + 'px;--walk-to:' + route.to + 'px;--walk-period:' + route.period + 's;--walk-delay:' + route.delay + 's' });
+        var turn = node('g', { 'class': 'life-walker-turn', style: '--walk-period:' + route.period + 's;--walk-delay:' + route.delay + 's;--walk-center:' + (route.height / 4) + 'px' });
+        var sprite = node('svg', { x: '0', y: '0', width: route.height / 2, height: route.height, viewBox: '0 0 362 724', overflow: 'hidden' });
+        sprite.appendChild(node('image', { 'class': 'life-walker-film', href: WALK, x: '0', y: '0', width: '2172', height: '724', 'preserveAspectRatio': 'none' }));
+        turn.appendChild(sprite); travel.appendChild(turn); position.appendChild(travel); scene.appendChild(position);
+      });
+    }
     function syncViewport() {
       scene.setAttribute('viewBox', mobile.matches ? '444 0 775 941' : '0 0 1672 941');
+      sign.setAttribute('viewBox', mobile.matches ? '444 0 775 941' : '0 0 1672 941');
       nightPhoto.setAttribute('x', mobile.matches ? '444' : '0');
       nightPhoto.setAttribute('width', mobile.matches ? '775' : '1672');
       nightPhoto.setAttribute('href', mobile.matches ? '/assets/image/building-mobile-home-v2.png' : '/assets/image/building-master.png');
@@ -68,6 +109,7 @@
 
     function play() {
       if (!complete || suspended || reduced || lowData || document.hidden || playPending) return;
+      enableWalkers();
       var token = ++generation;
       if (!video.getAttribute('src')) { video.src = VIDEO; video.load(); }
       playPending = true;
@@ -86,7 +128,7 @@
       });
     }
     function pause() {
-      ++generation; playPending = false; video.pause(); frame.classList.remove('life-playing');
+      ++generation; playPending = false; video.pause();
       frame.classList.add('life-paused');
       frame.dataset.buildingLife = 'paused';
     }
@@ -120,11 +162,13 @@
     });
     motion.addEventListener('change', function (event) {
       reduced = event.matches;
+      frame.classList.toggle('life-reduced', reduced);
       if (reduced) { finish(false); pause(); } else { finish(); }
     });
-    video.addEventListener('error', function () { pause(); frame.dataset.buildingLife = 'still'; });
+    video.addEventListener('error', function () { pause(); frame.classList.remove('life-playing'); frame.dataset.buildingLife = 'still'; });
     if (reduced) finish(false);
     return Object.freeze({ start: start, suspend: suspend, resume: resume });
   }
   global.ApuDaBuildingLife = Object.freeze({ mount: mount });
 })(window);
+

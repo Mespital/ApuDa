@@ -626,10 +626,11 @@
     .p-floors button{flex:1;min-width:0;max-width:60px}
   }
 </style>
-<meta name="apuda-release" content="building-life-20261014">
+<meta name="apuda-release" content="building-immersive-20261015">
 <link rel="stylesheet" href="/assets/apuda-cancer-videos.css">
 <link rel="stylesheet" href="/assets/apuda-home-polish.css">
-<link rel="stylesheet" href="/assets/apuda-building-life.css">
+<link rel="stylesheet" href="/assets/apuda-building-life.css?v=20261015">
+<link rel="stylesheet" href="/assets/apuda-floor-transition.css?v=20261015">
 </head>
 <body>
 
@@ -699,7 +700,7 @@
 
 <footer id="siteFooter" aria-hidden="true">
   <span class="footer-brand">ApuDa</span>
-  <span class="footer-tag">아프지만,다행이다.</span>
+  <span class="footer-tag">아프지만, 다행이다.</span>
 </footer>
 
 <div id="famPop" hidden>
@@ -749,7 +750,8 @@
 <div id="curtain"><div><b>ApuDa</b><small>PATIENT CARE OS</small></div></div>
 
 <script src="/assets/apuda-cancer-videos.js"></script>
-<script src="/assets/apuda-building-life.js"></script>
+<script src="/assets/apuda-building-life.js?v=20261015"></script>
+<script src="/assets/apuda-floor-transition.js?v=20261015"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script>
 (function(){
@@ -962,6 +964,17 @@
 
   function put(el,r){ el.style.left=r.x+'%'; el.style.top=r.y+'%'; el.style.width=r.w+'%'; el.style.height=r.h+'%'; }
 
+  function syncFloorGeometry(){
+    if(!window.ApuDaFloorTransition) return;
+    var mapped=window.ApuDaFloorTransition.projectFloors({width:frame.clientWidth,height:frame.clientHeight,mobile:matchMedia('(max-width:860px)').matches});
+    Object.keys(mapped).forEach(function(f){
+      FLOORS[f]=mapped[f];
+      if(hz[f]) put(hz[f],mapped[f]);
+      if(glows[f]) put(glows[f],mapped[f]);
+    });
+  }
+  syncFloorGeometry();
+
   /* 건물 상단 간판 위치 — 4점 실측(TL/TR/BL/BR, 이미지 % 기준)으로 중심·기울기 계산 */
   var SIGN_CENTER={x:52.59,y:8.01}, SIGN_W=25.4, SIGN_H=7.4, SIGN_ANGLE=-5.34;
   signText.style.left=SIGN_CENTER.x+'%';
@@ -978,6 +991,7 @@
 
     var a=document.createElement('button'); a.className='hz fl'; a.type='button';
     a.setAttribute('aria-label', f+'층 '+GUIDE_COPY[f].title+' 상세 보기');
+    a.setAttribute('aria-controls','panel'); a.setAttribute('aria-expanded','false');
     put(a,FLOORS[f]); a.onclick=function(e){e.stopPropagation();open(f)};
     frame.appendChild(a); hz[f]=a;
 
@@ -1001,6 +1015,7 @@
 
     var nav=document.createElement('button'); nav.className='guide-service'; nav.type='button';
     nav.setAttribute('aria-label',f+'층 '+GUIDE_COPY[f].title+'로 이동');
+    nav.setAttribute('aria-controls','panel'); nav.setAttribute('aria-expanded','false');
     nav.innerHTML='<span class="guide-service-floor">'+f+'F</span>'+
       '<span class="guide-service-copy"><b>'+GUIDE_COPY[f].title+'</b><small>'+GUIDE_COPY[f].sub+'</small></span>'+
       '<span class="guide-service-arrow" aria-hidden="true">→</span>';
@@ -1033,6 +1048,8 @@
   /* ── GSAP: 인트로 ── */
   var q = gsap.utils.selector(frame);
   var buildingLife=window.ApuDaBuildingLife ? window.ApuDaBuildingLife.mount({frame:frame}) : null;
+  var floorTransition=window.ApuDaFloorTransition.mount({frame:frame,panel:panel,spot:spot,sweep:lightSweep,controls:ctrls,guide:desktopGuide,hint:hint,footer:siteFooter});
+  panel.inert=true;
   gsap.set(frame,{scale:1,opacity:0,y:9});
   gsap.set(q('.hz'),{opacity:0});
   gsap.set(desktopGuide,{opacity:0});
@@ -1396,93 +1413,61 @@
   }
 
   function open(f){
-    /* #floor-N 으로 들어오면 인트로가 끝나기 전에 열리므로, 인트로를 끝내 두어야 안내 메뉴가 다시 나타나 겹치지 않는다 */
+    if(!DATA[f]) return;
     if(intro && intro.isActive()) intro.progress(1);
-    var first = !cur;
-    if(buildingLife) buildingLife.suspend();
-    if(reduce) showIdleMedia(); else playFloorVideo(f);
-    if(roofTimer) clearTimeout(roofTimer);
-    frame.classList.remove('roof-active');
-    roofTimer=setTimeout(function(){ if(cur===f) frame.classList.add('roof-active'); },720);
+    if(openDelay){openDelay.kill();openDelay=null;}
+    var first=!cur;
     if(first) lastFocus=document.activeElement;
     cur=f;
-    render(f);
-    var r=FLOORS[f], cx=r.x+r.w/2, cy=r.y+r.h/2;
-    var narrow = matchMedia('(max-width:860px)').matches;
-    var S = narrow ? 1.16 : 1.22;
-    var desktop = matchMedia('(min-width:1100px)').matches;
-    var dx = narrow ? 0 : (desktop ? -7 : -4);
-
-    put(spot,{x:r.x-1.5,y:r.y-1,w:r.w+1.5,h:r.h+2});
+    frame.dataset.selectedFloor=String(f);
+    // Keep the original architectural scene during the camera approach.
+    showIdleMedia(); stopFloorActivity();
+    if(buildingLife) buildingLife.resume();
+    render(f); syncFloorGeometry();
+    var r=FLOORS[f];
+    put(spot,r);
     connectorPinned=false;
-    gsap.to(connector.root,{autoAlpha:0,duration:.25,delay:.12,ease:'power2.out'});
+    gsap.to(connector.root,{autoAlpha:0,duration:reduce?0:.2});
     document.body.classList.add('open');
-    panel.setAttribute('aria-hidden','false');
-    pagerBtns.forEach(function(b){ b.classList.toggle('on', +b.dataset.f===f); });
-    Object.keys(wallCards).forEach(function(k){
-      wallCards[k].classList.remove('preview');wallCards[k].classList.toggle('active',+k===f);
+    pagerBtns.forEach(function(b){b.classList.toggle('on',+b.dataset.f===f);});
+    Object.keys(wallCards).forEach(function(k){wallCards[k].classList.remove('preview');wallCards[k].classList.toggle('active',+k===f);});
+    Object.keys(wallLabels).forEach(function(k){wallLabels[k].classList.toggle('active',+k===f);});
+    Object.keys(guideBtns).forEach(function(k){
+      var selected=+k===f;
+      guideBtns[k].classList.toggle('on',selected); guideBtns[k].setAttribute('aria-expanded',String(selected));
+      hz[k].setAttribute('aria-expanded',String(selected));
     });
-    Object.keys(wallLabels).forEach(function(k){ wallLabels[k].classList.toggle('active',+k===f); });
-    Object.keys(guideBtns).forEach(function(k){ guideBtns[k].classList.toggle('on',+k===f); });
-    if(!reduce) runFloorActivity(f);
-
-    gsap.killTweensOf(frame);
-    gsap.killTweensOf(lightSweep);
-    var tl=gsap.timeline();
-    tl.to(frame,{transformOrigin:cx+'% '+cy+'%', xPercent:dx, scale:S, y:0, rotationX:0, rotationY:0,
-                 duration:reduce?0:.26, ease:'power2.out'},0)
-      .set(frame,{filter:'none'},0)
-      .to(spot,{opacity:1,duration:.2,ease:'power2.out'},0)
-      .fromTo(glows[f],{opacity:0},{opacity:.9,duration:.22,ease:'power2.out'},0)
-      .fromTo(lightSweep,{xPercent:-70,opacity:0},{xPercent:25,opacity:.45,duration:.18,ease:'power2.out'},0)
-      .to(lightSweep,{opacity:0,duration:.06,ease:'power2.in'},.18)
-      .to(ctrls,{opacity:1,duration:.2},0)
-      .to(desktopGuide,{opacity:0,x:-28,pointerEvents:'none',duration:.2,ease:'power2.out'},0)
-      .to(hint,{opacity:0,duration:.2},0)
-      .to(siteFooter,{opacity:0,duration:.2},0)
-      .to(panel,{x:0,y:0,xPercent:narrow?-50:0,yPercent:-50,opacity:1,
-                 duration:reduce?0:.25,ease:'power2.out',
-                 onStart:function(){panel.classList.add('live')},
-                 onComplete:function(){document.getElementById('btnX').focus({preventScroll:true})}}, reduce?0:.04);
-
-    Object.keys(glows).forEach(function(k){ if(+k!==f) gsap.to(glows[k],{opacity:0,duration:reduce?0:.2}); });
-    if(reduce) tl.progress(1);
+    Object.keys(glows).forEach(function(k){gsap.to(glows[k],{opacity:+k===f?.45:0,duration:reduce?0:.2});});
+    floorTransition.open({floor:f,room:r,first:first,
+      onReveal:function(){if(buildingLife) buildingLife.suspend();},
+      onComplete:function(){
+        if(!document.getElementById('bookChoiceModal')) document.getElementById('btnX').focus({preventScroll:true});
+      }
+    });
   }
 
   function close(){
     if(!cur) return;
     cur=0;
+    if(openDelay){openDelay.kill();openDelay=null;}
     if(roofTimer){clearTimeout(roofTimer);roofTimer=null;}
     frame.classList.remove('roof-active');
-    showIdleMedia();
-    setInteractionMode('building');
-    hideConnector(true);
-    panel.setAttribute('aria-hidden','true');
-    panel.classList.remove('floor-2-expanded'); document.body.classList.remove('f2wide');
-    pagerBtns.forEach(function(b){ b.classList.remove('on'); });
-    Object.keys(wallCards).forEach(function(k){ wallCards[k].classList.remove('active','preview'); });
-    Object.keys(wallLabels).forEach(function(k){ wallLabels[k].classList.remove('active'); });
-    Object.keys(guideBtns).forEach(function(k){ guideBtns[k].classList.remove('on'); });
+    showIdleMedia(); setInteractionMode('building'); hideConnector(true);
+    pagerBtns.forEach(function(b){b.classList.remove('on');});
+    Object.keys(wallCards).forEach(function(k){wallCards[k].classList.remove('active','preview');});
+    Object.keys(wallLabels).forEach(function(k){wallLabels[k].classList.remove('active');});
+    Object.keys(guideBtns).forEach(function(k){
+      guideBtns[k].classList.remove('on'); guideBtns[k].setAttribute('aria-expanded','false');
+      hz[k].setAttribute('aria-expanded','false');
+    });
     stopFloorActivity();
-    var narrow = matchMedia('(max-width:860px)').matches;
-    var tl=gsap.timeline({onComplete:function(){
-      document.body.classList.remove('open');
+    gsap.to(Object.values(glows),{opacity:0,duration:reduce?0:.2});
+    floorTransition.close({onComplete:function(){
+      document.body.classList.remove('open','f2wide'); panel.classList.remove('floor-2-expanded');
+      delete frame.dataset.selectedFloor;
       if(buildingLife) buildingLife.resume();
-      /* Keep the architectural frame fixed after closing. */
       if(lastFocus && typeof lastFocus.focus==='function') lastFocus.focus({preventScroll:true});
     }});
-    tl.to(panel,{x:0,y:0,xPercent:narrow?-50:126,yPercent:narrow?120:-50,opacity:0,
-                 duration:reduce?0:.18,ease:'power2.out',
-                 onComplete:function(){panel.classList.remove('live')}},0)
-      .to(ctrls,{opacity:0,duration:.18},0)
-      .to(spot,{opacity:0,duration:.18},0)
-      .to(Object.values(glows),{opacity:0,duration:.18},0)
-      .to(lightSweep,{opacity:0,duration:.18},0)
-      .to(frame,{xPercent:0,scale:1,y:0,rotationX:0,rotationY:0,filter:'none',duration:reduce?0:.25,ease:'power2.out'},0)
-      .to(desktopGuide,{opacity:1,x:0,pointerEvents:'auto',duration:.18,ease:'power2.out'},0)
-      .to(hint,{opacity:1,duration:.18},0)
-      .to(siteFooter,{opacity:1,duration:.18},0);
-    if(reduce) tl.progress(1);
   }
 
   function moveFloor(direction){
@@ -1522,7 +1507,9 @@
     moveFloor(e.deltaY<0?1:-1);
   },{passive:false});
   addEventListener('resize',function(){
-    if(cur) open(cur); else if(connectorFloor) showConnector(connectorFloor,connectorPinned,true);
+    syncFloorGeometry();
+    if(cur){floorTransition.reflow(FLOORS[cur]);if(cur===2) requestAnimationFrame(fitShelf);}
+    else if(connectorFloor) showConnector(connectorFloor,connectorPinned,true);
   });  var hm=/^#floor-([1-5])$/.exec(location.hash);
   if(hm) setTimeout(function(){ try{ open(+hm[1]); history.replaceState(null,'',location.pathname); }catch(e){} },400);
 })();
@@ -1553,4 +1540,5 @@
 <script src="/assets/apuda-bot.js" data-context="home" defer></script>
 </body>
 </html>
+
 

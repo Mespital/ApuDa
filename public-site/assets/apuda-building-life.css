@@ -7,7 +7,24 @@
 .life-screen-light{fill:#8fc7ff;opacity:0;mix-blend-mode:screen}
 #frame.life-lit .life-screen-light{animation:apuda-screen-breathe 5.6s ease-in-out infinite;animation-delay:var(--screen-delay,0s)}
 #frame.life-paused .life-screen-light{animation-play-state:paused}
-body.open .building-life-media,body.open .building-life-scene{opacity:0!important}
+.apuda-rooftop-sign{position:absolute;inset:0;width:100%;height:100%;z-index:8;pointer-events:none;overflow:hidden;font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Noto Sans KR",sans-serif}
+.apuda-roof-brand{font-size:45px;font-weight:900;letter-spacing:-1px;fill:#0743b3;stroke:#073c9d;stroke-width:.5px;paint-order:stroke fill;filter:drop-shadow(0 1.4px .55px rgba(9,49,111,.25))}
+.apuda-roof-tagline{font-size:15px;font-weight:800;letter-spacing:-.4px;fill:#173e77}
+.apuda-roof-letter{animation:apuda-sign-wave 6.8s ease-in-out infinite;animation-delay:var(--letter-delay,0s);animation-play-state:paused}
+#frame.life-lit:not(.life-paused):not(.life-reduced):not(.life-low-data) .apuda-roof-letter{animation-play-state:running}
+.life-walker{opacity:0;pointer-events:none;transition:opacity .8s ease;filter:drop-shadow(1px 1px .7px rgba(59,44,28,.12))}
+#frame.life-lit:not(.life-reduced):not(.life-low-data) .life-walker{opacity:1}
+.life-walker-route{animation:apuda-walk-route var(--walk-period) linear infinite;animation-delay:var(--walk-delay);animation-play-state:paused}
+.life-walker-turn{animation:apuda-walk-turn var(--walk-period) steps(1,end) infinite;animation-delay:var(--walk-delay);transform-origin:var(--walk-center) 50px;animation-play-state:paused}
+.life-walker-film{animation:apuda-walk-frames .96s steps(6,end) infinite;animation-play-state:paused}
+#frame.life-lit:not(.life-paused):not(.life-reduced):not(.life-low-data) .life-walker-route,
+#frame.life-lit:not(.life-paused):not(.life-reduced):not(.life-low-data) .life-walker-turn,
+#frame.life-lit:not(.life-paused):not(.life-reduced):not(.life-low-data) .life-walker-film{animation-play-state:running}
+@keyframes apuda-sign-wave{0%,38%,100%{transform:translateY(0);filter:drop-shadow(0 0 0 transparent)}9%{transform:translateY(-2.5px);filter:drop-shadow(0 0 2px rgba(59,142,255,.6))}19%{transform:translateY(.4px)}27%{transform:translateY(0)}}
+@keyframes apuda-walk-frames{from{transform:translateX(0)}to{transform:translateX(-2172px)}}
+@keyframes apuda-walk-route{0%{transform:translate(var(--walk-from),0);opacity:0}5%{opacity:1}39%,43%{transform:translate(var(--walk-to),2px);opacity:1}79%{transform:translate(var(--walk-from),0);opacity:1}84%,100%{transform:translate(var(--walk-from),0);opacity:0}}
+@keyframes apuda-walk-turn{0%,41%{transform:scaleX(1)}42%,83%{transform:scaleX(-1)}84%,100%{transform:scaleX(1)}}
 @keyframes apuda-screen-breathe{0%,100%{opacity:.025}45%{opacity:.10}70%{opacity:.04}}
 @media(max-width:860px){.building-life-media{object-position:calc(50% + .58065cqw) center}}
-@media(prefers-reduced-motion:reduce){.building-life-media{display:none}.building-life-scene{transition:none}.life-room-shade{opacity:0!important}.life-ceiling-light,.life-screen-light{opacity:0!important;animation:none!important}}
+@media(prefers-reduced-motion:reduce){.building-life-media,.life-walker{display:none}.building-life-scene{transition:none}.life-room-shade{opacity:0!important}.life-ceiling-light,.life-screen-light{opacity:0!important;animation:none!important}.apuda-roof-letter{animation:none!important}}
+

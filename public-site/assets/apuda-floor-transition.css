@@ -1,0 +1,10 @@
+/* Keep the same architecture and aspect ratio while the camera moves into a room. */
+#panel{will-change:transform,opacity;transform-origin:50% 50%}
+body.floor-entering #panel{pointer-events:none}
+body.open #frame .fam-sign{opacity:0;pointer-events:none}
+body.open .wall-label{display:none!important}
+body.floor-entering #btnUp,body.floor-entering #btnDown{pointer-events:none}
+@media(max-width:860px){
+  body.open #frame{width:min(100vw,620px);max-width:100vw;aspect-ratio:775/941}
+}
+@media(prefers-reduced-motion:reduce){#panel{will-change:auto}}
