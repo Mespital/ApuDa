@@ -91,7 +91,7 @@
         <header><b>${WD[wdOf(d)]}</b> <span>${md(d)}</span>${isToday ? '<em>오늘</em>' : ''}</header>
         ${wkend ? '' : o ? `<p class="wk-offname">🌿 ${esc(o.name)}<br><small>${esc(o.kind || '')} · 수업 없음</small></p>` :
           subs.some(Boolean) ? `<ol class="wk-classes">${subs.map(s => `<li>${esc(s) || '<span class="muted">—</span>'}</li>`).join('')}</ol>` : '<p class="muted">시간표 없음</p>'}
-        ${(typeof FC_ACADEMY !== 'undefined' ? FC_ACADEMY.forDay(d) : []).map(a => `<p class="wk-ac">🏫 ${esc(a.start || '')}${a.end ? '~' + esc(a.end) : ''} ${esc(a.name)}${a.homework && !a.hwDone ? ' · 숙제' : ''}</p>`).join('')}
+        ${(typeof FC_ACADEMY !== 'undefined' ? FC_ACADEMY.forDay(d) : []).map(a => `<p class="wk-ac">🏫 ${esc(a.start || '')}${a.end ? '~' + esc(a.end) : ''} ${esc(a.name)}${a.homework && !a.hwDone ? ' · 숙제' : ''}${typeof PinGate === 'undefined' || PinGate.who() !== 'parent' ? ` <button type="button" class="linkish" data-ac-edit="${esc(a.id)}" data-ac-date="${esc(a.originalDate || d)}" aria-label="${esc(label(d) + ' ' + a.name + ' 일정 바꾸기')}">일정 바꾸기</button>` : ''}</p>`).join('')}
         ${(typeof FC_LIFE !== 'undefined' ? FC_LIFE.forDay(d) : []).filter(x => x.start || x.end).map(x => `<p class="wk-life">${esc(x.icon)} ${esc(x.start || '')}${x.end ? '~' + esc(x.end) : ''} ${esc(x.title)}</p>`).join('')}
         ${evs.map(t => `<p class="wk-ev">${o ? '⚠ ' : '🏫 '}${esc(t)}${o ? '<br><small>쉬는 날과 겹쳐. 학교 공지 확인</small>' : ''}</p>`).join('')}
         ${dl.map(x => `<p class="wk-due${o ? ' clash' : ''}">📝 ${esc(x.kind)} · ${esc(x.title)}${o ? '<br><small>쉬는 날이야. 날짜 다시 확인!</small>' : ''}</p>`).join('')}
@@ -312,7 +312,7 @@
           lessonCard.querySelector('h2')?.insertAdjacentHTML('afterend', `<ul class="lesson-chips">${chips}</ul>`);
         }
         const acs = typeof FC_ACADEMY !== 'undefined' ? FC_ACADEMY.forDay(today()) : [];
-        if (acs.length) lessonCard.insertAdjacentHTML('beforeend', `<p class="wk-ac-today">🏫 오늘 학원 · ${acs.map(a => esc((a.start ? a.start + ' ' : '') + a.name)).join(', ')}</p>`);
+        if (acs.length) lessonCard.insertAdjacentHTML('beforeend', `<p class="wk-ac-today">🏫 오늘 학원 · ${acs.map(a => esc((a.start ? a.start + ' ' : '') + a.name) + (typeof PinGate === 'undefined' || PinGate.who() !== 'parent' ? ` <button type="button" class="linkish" data-ac-edit="${esc(a.id)}" data-ac-date="${esc(a.originalDate || today())}">일정 바꾸기</button>` : '')).join(', ')}</p>`);
         anchor.insertAdjacentElement('afterend', lessonCard); anchor = lessonCard;
       }
       if (hasTable()) { anchor.insertAdjacentHTML('afterend', prepCard()); anchor = anchor.nextElementSibling; }
@@ -334,14 +334,15 @@
     if (!hasTable()) return '<section class="card"><h2>🗓️ 시간표</h2><p class="muted">아직 시간표가 없어.</p><button data-go="settings" class="primary">⚙️ 설정에서 시간표 올리기</button></section>';
     const times = (typeof FC_SCHOOL !== 'undefined' && FC_SCHOOL.config.periods) || [], teachers = lsGet(TEACHER_KEY, {}) || {};
     const n = Math.max(...state.table.map(r => { let k = r.length; while (k && !r[k - 1]) k--; return k; }));
-    const tw = wdOf(today()) - 1, ac = typeof FC_ACADEMY !== 'undefined' ? FC_ACADEMY.list() : [];
+    const tw = wdOf(today()) - 1, mon = addDays(today(), wdOf(today()) === 0 ? -6 : 1 - wdOf(today()));
+    const acFor = d => typeof FC_ACADEMY !== 'undefined' ? FC_ACADEMY.forDay(d) : [];
     const head = '<tr><th></th>' + days.map((d, i) => `<th class="${i === tw ? 'now' : ''}">${d}</th>`).join('') + '</tr>';
     const rows = [...Array(n)].map((_, j) => `<tr><th><b>${j + 1}</b><small>${esc(times[j] || '')}</small></th>` + [0, 1, 2, 3, 4].map(i => { const s = state.table[i][j] || ''; return `<td class="${i === tw ? 'now' : ''}">${esc(s)}${s && teachers[s] ? `<small>${esc(teachers[s])}</small>` : ''}</td>`; }).join('') + '</tr>').join('');
-    const acRow = ac.length ? '<tr class="ac"><th>학원</th>' + [1, 2, 3, 4, 5].map(w => `<td>${ac.filter(a => a.days.includes(w)).map(a => `<span>${esc(a.start || '')} ${esc(a.name)}${a.from && a.from > today() ? `<small>${Number(a.from.slice(5, 7))}/${Number(a.from.slice(8))}~</small>` : ''}</span>`).join('')}</td>`).join('') + '</tr>' : '';
-    const weekend = ac.filter(a => a.days.includes(6) || a.days.includes(0));
+    const acRow = [0, 1, 2, 3, 4].some(i => acFor(addDays(mon, i)).length) ? '<tr class="ac"><th>이번 주 학원</th>' + [0, 1, 2, 3, 4].map(i => `<td>${acFor(addDays(mon, i)).map(a => `<span>${esc(a.start || '')} ${esc(a.name)}</span>`).join('')}</td>`).join('') + '</tr>' : '';
+    const weekend = [5, 6].flatMap(i => acFor(addDays(mon, i)).map(a => label(addDays(mon, i)) + ' ' + (a.start ? a.start + ' ' : '') + a.name));
     return `<section class="card tt-view"><div class="section-title"><h2>🗓️ 시간표</h2><button data-go="settings">⚙️ 바꾸기</button></div>
       <div class="tt-scroll"><table class="tt">${head}${rows}${acRow}</table></div>
-      ${weekend.length ? `<p class="muted">주말 학원 · ${weekend.map(a => esc(a.when ? a.name : FC_ACADEMY.when(a) + ' ' + a.name)).join(', ')}</p>` : ''}</section>`;
+      ${weekend.length ? `<p class="muted">이번 주말 학원 · ${weekend.map(esc).join(', ')}</p>` : ''}</section>`;
   }
 
   /* ---------- 설정: 시간표·교재·학원·이동·쉬는 날·가족·보안 ---------- */

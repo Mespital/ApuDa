@@ -2,7 +2,8 @@
 import vm from 'node:vm'; import fs from 'node:fs'; import path from 'node:path'; import assert from 'node:assert/strict';
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const fsrc = fs.readFileSync(path.join(root, 'netlify/functions/family.mjs'),'utf8');
-const KEYS = ['compass-study-v1'], MAX_VALUE = 400000;
+const KEYS = new Function('return ' + fsrc.match(/export const KEYS = (\[[\s\S]*?\]);/)[1])(), MAX_VALUE = 400000;
+assert.ok(KEYS.includes('fc_academy_occurrences_v1'));
 const mergeData = new Function('KEYS','MAX_VALUE', fsrc.slice(fsrc.indexOf('export function mergeData')).split('\nconst size')[0].replace('export ','') + '; return mergeData;')(KEYS, MAX_VALUE);
 const src = fs.readFileSync(path.join(root, 'dist/family-sync.js'),'utf8');
 let server = {}, online = true, clock = 1000;
@@ -36,4 +37,23 @@ online=false; A.ls.setItem(K, JSON.stringify({ ...JSON.parse(A.ls.getItem(K)), t
 B.ls.setItem(K, JSON.stringify({ ...JSON.parse(B.ls.getItem(K)), tasks: [...JSON.parse(B.ls.getItem(K)).tasks, { id: 't5', title: 'mom2' }] })); clock+=50; await B.FS.pushNow();
 await A.FS.pullNow(); await A.FS.pushNow(); await B.FS.pullNow();
 for (const v of [A.ls.getItem(K), B.ls.getItem(K), server[K].v]) assert.equal(JSON.parse(v).tasks.map(t => t.id).join(','), 't1,t2,t3,t4,t5');
-console.log('family sync merge ok');
+// Dated academy changes made on different devices survive reconnects. For the
+// same occurrence, the newest actual edit wins instead of a stale local copy.
+const CK = 'fc_academy_occurrences_v1';
+const first = { id: 'math@one@2026-10-15', academyId: 'math', scope: 'one', date: '2026-10-15', days: [], start: '18:00', end: '22:00', updatedAt: 10 };
+A.ls.setItem(CK, JSON.stringify([first])); clock += 100; await A.FS.pushNow(); await B.FS.pullNow();
+online = false;
+A.ls.setItem(CK, JSON.stringify([{ ...first, start: '17:00', updatedAt: 20 }])); await A.FS.pushNow();
+const second = { ...first, id: 'math@one@2026-10-22', date: '2026-10-22', start: '16:00', updatedAt: 25 };
+B.ls.setItem(CK, JSON.stringify([{ ...first, start: '19:00', updatedAt: 30 }, second]));
+online = true; clock += 100; await B.FS.pushNow(); await A.FS.pushNow(); await B.FS.pullNow();
+for (const v of [A.ls.getItem(CK), B.ls.getItem(CK), server[CK].v]) {
+  const records = JSON.parse(v); assert.equal(records.length, 2);
+  assert.equal(records.find(x => x.id === first.id).start, '19:00');
+  assert.equal(records.find(x => x.id === second.id).start, '16:00');
+}
+// Equal clocks resolve deterministically in either device order.
+const merge = new Function(src.slice(src.indexOf('  function mergeOccurrences')).split('  function mergeJSON')[0] + '; return mergeOccurrences;')();
+const left = [{ ...first, start: '16:00' }], right = [{ ...first, start: '19:00' }];
+assert.deepEqual(merge(left, right), merge(right, left));
+console.log('PASS: family sync merges offline tasks and dated academy changes; newest occurrence edits and equal-clock ties converge.');

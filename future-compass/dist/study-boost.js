@@ -42,6 +42,8 @@
     return '지금은 매일 수업 정리 습관만 — 미리 알고만 있어도 충분해';
   }
   function examCard() {
+    var P = window.FC_PLANNER ? FC_PLANNER.get() : {};
+    if (isParent() && P.share && P.share.exams === false) return '';
     var list = exams(); if (!list.length) return '';
     var first = list[0], n = dg(first.date);
     return '<section class="card bo-exam" id="bo-exam"><div class="pl-head"><h2>📝 다가오는 시험</h2><button type="button" class="pl-mini" data-go="dates">+ 시험</button></div>' +

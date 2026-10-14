@@ -43,7 +43,12 @@
   function md(d) { return Number(d.slice(5, 7)) + '/' + Number(d.slice(8, 10)); }
   function isParent() { return typeof PinGate !== 'undefined' && PinGate.who() === 'parent'; }
   function subjOf(t) { t = String(t || ''); for (var i = 0; i < SUBJ.length; i++) if (SUBJ[i][1].test(t)) return SUBJ[i][0]; return ''; }
-  function pr(id) { return P.pri[id] || (P.pri[id] = { p: 'B', st: '', min: 0 }); }
+  function pr(id) {
+    if (P.pri[id]) return P.pri[id];
+    var q = { p: 'B', st: '', min: 0 };
+    if (!isParent()) P.pri[id] = q;
+    return q;
+  }
 
   /* ---------- 오늘 할 일 ---------- */
   function todays() {
@@ -198,6 +203,7 @@
   /* 새 할 일: A가 없으면 A, 아니면 B */
   var lastIds = new Set(state.tasks.map(function (x) { return x.id; }));
   function tagNew() {
+    if (isParent()) return;
     var t = today(), hasA = state.tasks.some(function (x) { return x.date === t && P.pri[x.id] && P.pri[x.id].p === 'A' && !x.done; });
     state.tasks.forEach(function (x) { if (!lastIds.has(x.id)) { if (!P.pri[x.id]) P.pri[x.id] = { p: hasA ? 'B' : 'A', st: '', min: 0 }; hasA = true; } });
     lastIds = new Set(state.tasks.map(function (x) { return x.id; }));
@@ -620,7 +626,7 @@
       if (v.a1) {   // 내일 A1으로 등록
         var tm = addD(t, 1), ex = state.tasks.find(function (x) { return x.date === tm && x.title === v.a1; }) || state.tasks.find(function (x) { return !x.done && x.title === v.a1 && x.date <= t; });
         if (ex) ex.date = tm; else { ex = { id: uid(), title: v.a1, date: tm, done: false, kind: '과제', subject: '', note: '' }; state.tasks.push(ex); lastIds.add(ex.id); }
-        P.pri[ex.id] = { p: 'A', st: '', min: (P.pri[ex.id] && P.pri[ex.id].min) || 0, first: 1 };
+        var q = pr(ex.id); q.p = 'A'; q.st = ''; q.min = q.min || 0; q.first = 1; P.pri[ex.id] = q;
         save();
       }
       notice('오늘 마무리 끝! 푹 쉬어 🌙'); rerender(); return;
@@ -645,6 +651,7 @@
     if (t.dataset && t.dataset.plExam) { var m = P.dmeta[t.dataset.plExam]; if (m) { if (t.checked) { m.prevProg = m.prog || m.p1 - 1; m.dFrom = m.prevProg + 1; m.dTo = Number(t.dataset.to); m.prog = m.dTo; m.doneOn = today(); notice('오늘 시험 분량 끝! 내일 이어서 나와.'); } else { m.prog = m.prevProg; delete m.doneOn; } put(); setTimeout(render, 300); } }
   });
   window.addEventListener('fc-focus-done', function (e) {
+    if (isParent()) return;
     var min = (e.detail && e.detail.min) || 25, task = cur && state.tasks.find(function (x) { return x.id === cur; });
     var fe = { date: today(), at: Date.now(), min: min, subject: task ? subjOf(task.title) : '', task: task ? task.id : '' }; if (e.detail && e.detail.partial) fe.partial = 1; P.focus.push(fe);
     if (task) pr(task.id).min = (pr(task.id).min || 0) + min;
@@ -706,5 +713,9 @@
     '.hero-soft{margin:10px 2px 0;font-size:14px;color:#6b6880}.hero-go{width:100%;margin-top:12px;min-height:48px!important;font-size:15.5px;border-radius:14px!important}';
   document.head.appendChild(css);
   window.FC_PLANNER = { get: function () { return P; }, KEY: KEY, todays: todays, exams: upcomingExams, portions: examPortions, again: dueAgain, free: freeTime, planned: planned, examName: examName, examDays: function () { return P.examDays; }, nextExamDay: nextExamDay, est: function (id) { return est(P.pri[id]); }, subjOf: subjOf, todayRow: todayRow, addFocus: addFocus, save: put, subjects: subjList, ask: askQuality };
+  // 처음 열었을 때 이미 끝난 타이머도 플래너가 준비된 뒤 한 번만 기록한다.
+  var pendingFocus = window.fcPendingFocusDone || [];
+  delete window.fcPendingFocusDone;
+  pendingFocus.forEach(function (detail) { window.dispatchEvent(new CustomEvent('fc-focus-done', { detail: detail })); });
   render();   // 첫 화면에도 플래너 반영
 })();

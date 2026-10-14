@@ -1,11 +1,15 @@
 /* 엄마 한눈에: 엄마로 들어오면 오늘 탭이 승준이 공부 현황판이 된다.
-   - 진행 상황(개수·완료·D-day·진도)은 모두 보여주고, 승준이가 쓴 글(복습 메모·하루 마무리·다짐·노트 내용)은 승준이가 공개한 것만
+   - 공부 흐름·시험과 과제·직접 쓴 글은 승준이가 정한 공개 범위에 맞춰 보여줌
    - 엄마는 기록을 고치지 않고 👍 응원만 보낼 수 있음(fc_cheer_v1) → 승준이 오늘 화면 맨 위에 보임 */
 (function () {
   'use strict';
   var CHEER = 'fc_cheer_v1', DN = ['일', '월', '화', '수', '목', '금', '토'];
   function ls(k, d) { try { var v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch (e) { return d; } }
   function isParent() { return typeof PinGate !== 'undefined' && PinGate.who() === 'parent'; }
+  function shared(kind) {
+    var P = window.FC_PLANNER ? FC_PLANNER.get() : ls('fc_planner_v1', {}), sh = (P && P.share) || {};
+    return kind === 'flow' || kind === 'exams' ? sh[kind] !== false : !!sh[kind];
+  }
   function addD(d, n) { return new Date(Date.parse(d + 'T12:00:00Z') + n * 86400000).toISOString().slice(0, 10); }
   function dl(d) { return Number(d.slice(5, 7)) + '/' + Number(d.slice(8)) + '(' + DN[new Date(d + 'T12:00:00Z').getUTCDay()] + ')'; }
   function monday(d) { return addD(d, -((new Date(d + 'T12:00:00Z').getUTCDay() + 6) % 7)); }
@@ -29,6 +33,7 @@
   }
   function autoChecks() {
     var t = today(), FP = window.FC_PLANNER, P = FP ? FP.get() : {}, out = [], CAL = window.FC_CAL;
+    var flow = shared('flow'), exams = shared('exams');
     var h = new Date(Date.now() + 9 * 3600000).getUTCHours();
     var nd = CAL ? CAL.nextSchoolDay(t) : addD(t, 1), w = new Date(nd + 'T12:00:00Z').getUTCDay();
     // 내일(다음 등교일) 준비물
@@ -39,25 +44,26 @@
       var d = addD(t, i), off = CAL ? CAL.offDay(d) : null;
       if (off && !off.weekend) out.push({ k: 'off:' + d, icon: '🌿', t: dl(d) + ' ' + off.name + ' — 학교 일정 확인', sub: '학교 안 가는 날 · 돌봄·외출 계획' });
       (CAL && CAL.schoolEvents ? CAL.schoolEvents(d) : []).forEach(function (ev) {
+        if (!exams && /고사|평가|시험/.test(ev)) return;
         if (/고사|평가|시험|체험|수련|축제|상담|설명회|소풍|졸업|입학|방학|단축/.test(ev)) out.push({ k: 'ev:' + d + ':' + ev, icon: /고사|평가|시험/.test(ev) ? '📝' : '📌', t: dl(d) + ' ' + ev.replace(/\(\d학년\)/, ''), sub: /고사|평가|시험/.test(ev) ? '컨디션·수면 챙겨주기' : '가정통신문·준비물 확인해 주기' });
       });
     }
     // 시험 과목 미입력
-    var nx = FP ? FP.nextExamDay(addD(t, -1)) : '';
+    var nx = exams && FP ? FP.nextExamDay(addD(t, -1)) : '';
     if (nx && gap(nx) <= 7 && !((P.examDays || {})[nx] || []).length) out.push({ k: 'exsub:' + nx, icon: '🗓️', t: (nx === t ? '오늘' : dl(nx)) + ' 시험 과목 확인 도와주기', sub: '시험 시간표가 나왔는지만 물어봐 주세요', req: { kind: 'subjects', ref: nx, label: dl(nx) + ' 시험 과목' } });
     // 학원 숙제·시간
     (typeof FC_ACADEMY !== 'undefined' ? FC_ACADEMY.forDay(t) : []).forEach(function (a) {
-      if (a.homework && !a.hwDone) out.push({ k: 'achw:' + a.id + ':' + t, icon: '📝', t: a.name + ' 숙제 시간 챙겨주기', sub: '숙제: ' + a.homework + ' · ' + (a.start ? a.start + ' 수업 전' : '오늘 수업 전') });
+      if (exams && a.homework && (!flow || !a.hwDone)) out.push({ k: 'achw:' + a.id + ':' + t, icon: '📝', t: a.name + ' 숙제 시간 챙겨주기', sub: '숙제: ' + a.homework + ' · ' + (a.start ? a.start + ' 수업 전' : '오늘 수업 전') });
     });
     // 마감 임박 수행평가·과제
-    state.dates.filter(function (x) { return !x.done && x.kind !== '시험' && gap(x.date) >= 0 && gap(x.date) <= 3; }).forEach(function (x) {
+    (exams ? state.dates : []).filter(function (x) { return !x.done && x.kind !== '시험' && gap(x.date) >= 0 && gap(x.date) <= 3; }).forEach(function (x) {
       out.push({ k: 'due:' + x.id, icon: '⏰', t: x.title + ' ' + (gap(x.date) === 0 ? '오늘' : 'D-' + gap(x.date)) + ' 마감', sub: x.kind + (x.subject ? ' · ' + x.subject : '') + ' — 필요한 준비물이 있는지 물어봐 주세요' });
     });
     // 다시 보기 밀림
     var late = 0; Object.keys(P.again || {}).forEach(function (id) { (P.again[id] || []).forEach(function (d) { if (d < t && d >= addD(t, -3) && !(P.againDone || {})[id + '@' + d]) late++; }); });
-    if (late >= 3) out.push({ k: 'again:' + t, icon: '🔁', t: '복습할 조용한 시간 만들어주기', sub: '다시 볼 게 조금 쌓였어요 · "10분만 같이 앉아 있을까?"' });
+    if (flow && late >= 3) out.push({ k: 'again:' + t, icon: '🔁', t: '복습할 조용한 시간 만들어주기', sub: '다시 볼 게 조금 쌓였어요 · "10분만 같이 앉아 있을까?"' });
     // 밤: 하루 마무리
-    if (h >= 21 && !(P.days || {})[t]) out.push({ k: 'close:' + t, icon: '🌙', t: '잘 자라는 인사 건네기', sub: '하루 마무리는 승준이가 원할 때 — 재촉하지 않기' });
+    if (flow && h >= 21 && !(P.days || {})[t]) out.push({ k: 'close:' + t, icon: '🌙', t: '잘 자라는 인사 건네기', sub: '하루 마무리는 승준이가 원할 때 — 재촉하지 않기' });
     return out;
   }
   function momCard() {
@@ -102,12 +108,12 @@
 
   /* ---------- 오늘은 어떻게 도와줄까? (관찰·지원·격려 3단계, 빨간 경고 없음) ---------- */
   function guide() {
-    var t = today(), FP = window.FC_PLANNER, P = FP ? FP.get() : {}, L = FP ? FP.todays() : [];
-    var aDone = L.filter(function (x) { return x.q.p === 'A' && x.t.done; }).length, foc = (P.focus || []).filter(function (f) { return f.date === t; }).length;
-    var nt = (ls('fc_notes_v1', []) || []).filter(function (n) { return n && n.date === t; }).length;
-    var nx = FP ? FP.nextExamDay(addD(t, -1)) : '', exToday = FP ? FP.examName(t) : '';
-    var tomorrowExam = (FP && FP.examName(addD(t, 1))) || state.dates.some(function (x) { return !x.done && x.kind === '시험' && gap(x.date) === 1; });
-    var dueSoon = state.dates.filter(function (x) { return !x.done && x.kind !== '시험' && gap(x.date) >= 0 && gap(x.date) <= 1; })[0];
+    var t = today(), FP = window.FC_PLANNER, P = FP ? FP.get() : {}, flow = shared('flow'), exams = shared('exams'), L = flow && FP ? FP.todays() : [];
+    var aDone = L.filter(function (x) { return x.q.p === 'A' && x.t.done; }).length, foc = flow ? (P.focus || []).filter(function (f) { return f.date === t; }).length : 0;
+    var nt = flow ? (ls('fc_notes_v1', []) || []).filter(function (n) { return n && n.date === t; }).length : 0;
+    var nx = exams && FP ? FP.nextExamDay(addD(t, -1)) : '', exToday = exams && FP ? FP.examName(t) : '';
+    var tomorrowExam = exams && ((FP && FP.examName(addD(t, 1))) || state.dates.some(function (x) { return !x.done && x.kind === '시험' && gap(x.date) === 1; }));
+    var dueSoon = (exams ? state.dates : []).filter(function (x) { return !x.done && x.kind !== '시험' && gap(x.date) >= 0 && gap(x.date) <= 1; })[0];
     var mood = ((ls('fc_kid_v1', {}) || {}).mood || {})[t];
     if (mood === 'tired') return { lv: 'g', icon: '🟢', title: '쉬어가는 날', msg: '승준이가 오늘은 지친 날이라고 알려줬어요. 공부 이야기는 쉬어도 괜찮아요.', one: '맛있는 거 하나, 조용한 시간 하나면 충분해요.', ask: '오늘은 공부보다 네가 괜찮은지가 더 중요해.' };
     if (tomorrowExam) return { lv: 'y', icon: '🟡', title: '가볍게 도와주면 좋은 날', msg: '내일 시험이에요. 공부량보다 수면·준비물이 더 중요해요.', one: '저녁 일정을 가볍게 하고, 준비물만 같이 확인해 주세요.', ask: '오늘은 새로운 것보다 본 것만 정리하고 일찍 자자.' };
@@ -115,7 +121,7 @@
     if (dueSoon) return { lv: 'y', icon: '🟡', title: '가볍게 확인해 주세요', msg: dueSoon.title + ' 마감이 ' + (gap(dueSoon.date) ? '내일' : '오늘') + '이에요.', one: '필요한 준비물·출력물이 있는지만 물어봐 주세요.', ask: '내일 낼 거 준비할 거 있어? 필요한 거 있으면 말해.' };
     if (exToday) return { lv: 'b', icon: '🔵', title: '격려가 좋은 날', msg: '오늘은 ' + exToday + ' 보는 날이에요. 점수 이야기는 나중에 해도 돼요.', one: '결과보다 오늘 버틴 것을 인정해 주세요.', ask: '시험 보느라 고생했어. 오늘 제일 어려웠던 게 뭐였어?' };
     if (aDone || foc || nt) return { lv: 'b', icon: '🔵', title: '격려가 좋은 날', msg: (aDone ? '오늘 꼭 할 일(A)을 ' + aDone + '개 끝냈어요. ' : foc ? '오늘 집중을 ' + foc + '번 했어요. ' : '오늘 수업 노트를 남겼어요. ') + '결과보다 시작한 것을 인정해 주세요.', one: '구체적인 행동 하나를 칭찬해 주세요.', ask: aDone ? '하나 끝낸 거 좋다. 시작한 게 제일 어려운 건데.' : foc ? '집중했네. 잠깐 쉬어도 돼.' : '배운 걸 정리해둔 거 멋지다.' };
-    return { lv: 'g', icon: '🟢', title: '기다려 주세요', msg: L.length ? '할 일이 정리되어 있고 승준이가 스스로 진행 중이에요.' : '오늘은 아직 기록이 없어요. 기록이 없다고 공부하지 않은 건 아니에요.', one: '오늘은 스스로 해볼 시간을 주세요.', ask: '오늘 하루 어땠어?' };
+    return { lv: 'g', icon: '🟢', title: '기다려 주세요', msg: !flow ? '공부 흐름은 승준이가 공개하면 보여요. 오늘은 편하게 안부를 물어봐 주세요.' : L.length ? '할 일이 정리되어 있고 승준이가 스스로 진행 중이에요.' : '오늘은 아직 기록이 없어요. 기록이 없다고 공부하지 않은 건 아니에요.', one: '오늘은 스스로 해볼 시간을 주세요.', ask: '오늘 하루 어땠어?' };
   }
   function guideCard() {
     var g = guide();
@@ -135,7 +141,7 @@
     ['공부 이야기를 하지 않는 시간도 필요해요.', '저녁 한 끼는 공부 질문 없이 보내 보세요. 신뢰가 쌓여야 대화가 쉬워져요.']
   ];
   function tipCard() {
-    var t = today(), FP = window.FC_PLANNER, nx = FP ? FP.nextExamDay(addD(t, -1)) : '', ex = state.dates.filter(function (x) { return !x.done && x.kind === '시험' && gap(x.date) >= 0; }).sort(function (a, b) { return a.date.localeCompare(b.date); })[0];
+    var t = today(), FP = window.FC_PLANNER, exams = shared('exams'), nx = exams && FP ? FP.nextExamDay(addD(t, -1)) : '', ex = (exams ? state.dates : []).filter(function (x) { return !x.done && x.kind === '시험' && gap(x.date) >= 0; }).sort(function (a, b) { return a.date.localeCompare(b.date); })[0];
     var dd = Math.min(nx ? gap(nx) : 99, ex ? gap(ex.date) : 99), tip;
     if (dd === 0) tip = ['시험날엔 점수보다 "어떤 문제가 어려웠어?"를 먼저 물어보세요.', '점수 이야기를 먼저 하면 방어적으로 느끼기 쉬워요.'];
     else if (dd === 1) tip = ['시험 전날엔 공부량보다 수면·준비물을 챙겨 주세요.', '새로운 것보다 본 것 정리가 점수에 더 남아요.'];
@@ -147,10 +153,10 @@
 
   /* ---------- 상황별 추천 응원 (왜 추천했는지 함께) ---------- */
   function recCheers() {
-    var t = today(), FP = window.FC_PLANNER, P = FP ? FP.get() : {}, L = FP ? FP.todays() : [], out = [];
-    var aDone = L.some(function (x) { return x.q.p === 'A' && x.t.done; }), foc = (P.focus || []).filter(function (f) { return f.date === t; });
-    var nx = FP ? FP.nextExamDay(addD(t, -1)) : '', ex = state.dates.filter(function (x) { return !x.done && x.kind === '시험' && gap(x.date) >= 0; }).sort(function (a, b) { return a.date.localeCompare(b.date); })[0];
-    var dd = Math.min(nx ? gap(nx) : 99, ex ? gap(ex.date) : 99), exToday = FP && FP.examName(t);
+    var t = today(), FP = window.FC_PLANNER, P = FP ? FP.get() : {}, flow = shared('flow'), exams = shared('exams'), L = flow && FP ? FP.todays() : [], out = [];
+    var aDone = L.some(function (x) { return x.q.p === 'A' && x.t.done; }), foc = flow ? (P.focus || []).filter(function (f) { return f.date === t; }) : [];
+    var nx = exams && FP ? FP.nextExamDay(addD(t, -1)) : '', ex = (exams ? state.dates : []).filter(function (x) { return !x.done && x.kind === '시험' && gap(x.date) >= 0; }).sort(function (a, b) { return a.date.localeCompare(b.date); })[0];
+    var dd = Math.min(nx ? gap(nx) : 99, ex ? gap(ex.date) : 99), exToday = exams && FP && FP.examName(t);
     if (exToday) out.push(['점수보다 오늘 시험에서 뭐가 어려웠는지가 더 궁금해.', '오늘 시험날이라 결과보다 과정을 묻는 말을 추천했어요.']);
     else if (dd === 1) out.push(['오늘은 새로운 것보다 본 것만 정리하고 일찍 자자.', '내일 시험이라 수면을 챙기는 말을 추천했어요.']);
     else if (dd <= 7) out.push(['일주일 남았네. 급하게 다 하려고 하지 말고 하나씩 하자.', '시험 D-' + dd + '라 부담을 줄이는 말을 추천했어요.']);
@@ -159,7 +165,7 @@
     else if (L.length >= 5) out.push(['오늘은 하나만 끝내도 충분해.', '오늘 등록된 할 일이 많아 부담을 줄이는 말을 추천했어요.']);
     else if (L.length && !L.some(function (x) { return x.t.done; })) out.push(['오늘 제일 중요한 거 하나만 먼저 해보자.', '아직 시작 전이라 첫걸음을 응원하는 말을 추천했어요.']);
     if (foc.length) out.push([foc[foc.length - 1].min + '분 집중했네. 잠깐 쉬어도 돼.', '집중 기록이 있어서 쉬어도 된다는 말을 추천했어요.']);
-    if (!L.length && !foc.length) out.push(['오늘 하루 어땠어? 공부 얘기는 나중에 해도 돼.', '오늘 기록이 없어 공부보다 안부를 묻는 말을 추천했어요.']);
+    if (!L.length && !foc.length) out.push(['오늘 하루 어땠어? 공부 얘기는 나중에 해도 돼.', flow ? '오늘 기록이 없어 공부보다 안부를 묻는 말을 추천했어요.' : '공부량보다 안부를 묻는 말이에요.']);
     out.push(['공부 끝나면 맛있는 거 먹자 🍗', '부담 없이 기분을 올려주는 말이에요.']);
     return out.slice(0, 3);
   }
@@ -198,11 +204,12 @@
 
   function dashboard() {
     var t = today(), FP = window.FC_PLANNER, P = FP ? FP.get() : {}, share = P.share || {};
-    var L = FP ? FP.todays() : [], done = L.filter(function (x) { return x.t.done; }), aAll = L.filter(function (x) { return x.q.p === 'A'; }), aDone = aAll.filter(function (x) { return x.t.done; });
+    var flow = shared('flow'), exams = shared('exams');
+    var L = flow && FP ? FP.todays() : [], done = L.filter(function (x) { return x.t.done; }), aAll = L.filter(function (x) { return x.q.p === 'A'; }), aDone = aAll.filter(function (x) { return x.t.done; });
     var foc = (P.focus || []).filter(function (f) { return f.date === t; }), fmin = foc.reduce(function (s, f) { return s + (f.min || 0); }, 0), qs = foc.filter(function (f) { return f.q; });
     var agDue = 0, agDone = 0; Object.keys(P.again || {}).forEach(function (id) { (P.again[id] || []).forEach(function (d) { if (d === t) { agDue++; if ((P.againDone || {})[id + '@' + d]) agDone++; } }); });
     var notes = (ls('fc_notes_v1', []) || []).filter(function (n) { return n && n.date; }), notesToday = notes.filter(function (n) { return n.date === t; });
-    var closed = (P.days || {})[t], exN = FP ? FP.examName(t) : '', exSubs = (P.examDays || {})[t] || [];
+    var closed = (P.days || {})[t], exN = exams && FP ? FP.examName(t) : '', exSubs = exams ? (P.examDays || {})[t] || [] : [];
     var acs = typeof FC_ACADEMY !== 'undefined' ? FC_ACADEMY.forDay(t) : [], row = FP ? FP.todayRow() : [];
     var up = lastUpdate(), who = typeof FC_CHAR !== 'undefined' ? FC_CHAR.avatar('child', 56) : '';
     var dt = new Date(t + 'T12:00:00Z');
@@ -210,6 +217,8 @@
     var h = '<section class="pv-head">' + who + '<div><h1>승준이 오늘</h1><p>' + (dt.getUTCMonth() + 1) + '월 ' + dt.getUTCDate() + '일 ' + DN[dt.getUTCDay()] + '요일' + (up ? ' · ' + ago(up) + ' 업데이트' : '') + '</p></div></section><p class="pv-motto">승준의 공부는 승준이에게. 엄마에게는 오늘 어떻게 도와주면 좋을지만 알려드릴게요.</p>' + guideCard() + momCard();
 
     // 1. 오늘 진행
+    var reflect = closed && share.reflect ? '<div class="pv-reflect">' + (closed.good ? '<p>👍 잘한 것: ' + esc(closed.good) + '</p>' : '') + (closed.a1 ? '<p>🥇 내일 먼저: ' + esc(closed.a1) + '</p>' : '') + '</div>' : '';
+    if (flow) {
     var tiles = [
       ['✅', L.length ? done.length + '/' + L.length : '', '할 일', L.length ? bar(done.length, L.length) : '<small>아직 안 정했어요</small>'],
       ['🥇', aAll.length ? aDone.length + '/' + aAll.length : '', '꼭 할 일(A)', aAll.length ? bar(aDone.length, aAll.length, 'a') : '<small>아직 기록 없음</small>'],
@@ -220,35 +229,43 @@
     ];
     h += '<section class="card pv-sec"><h2>오늘 진행</h2><div class="pv-tiles">' + tiles.map(function (x) { return '<div class="pv-tile' + (x[1] ? '' : ' none') + '"><span>' + x[0] + '</span>' + (x[1] ? '<b>' + x[1] + '</b>' : '') + '<em>' + x[2] + '</em>' + x[3] + '</div>'; }).join('') + '</div><p class="pv-note">앱에 기록된 것만 보여요. 실제 공부량과 다를 수 있어요.</p>' +
       (L.length ? '<ul class="pv-tasks">' + L.map(function (x) { return '<li class="' + (x.t.done ? 'done' : '') + '"><span class="pv-chk">' + (x.t.done ? '✓' : '') + '</span><b class="pv-p p' + x.q.p + '">' + x.label + '</b>' + esc(x.t.title) + '</li>'; }).join('') + '</ul>' : '') +
-      (closed && share.reflect ? '<div class="pv-reflect">' + (closed.good ? '<p>👍 잘한 것: ' + esc(closed.good) + '</p>' : '') + (closed.a1 ? '<p>🥇 내일 먼저: ' + esc(closed.a1) + '</p>' : '') + '</div>' : '') + '</section>';
+      reflect + '</section>';
+    } else {
+      h += '<section class="card pv-sec"><h2>오늘 진행</h2><p class="muted">공부 흐름은 승준이가 공개하면 보여요.</p>' + reflect + '</section>';
+    }
 
     // 2. 오늘 일정
     var sched = [];
     if (exN) sched.push('📝 <b>' + esc(exN) + '</b>' + (exSubs.length ? ' · ' + exSubs.map(function (s, i) { return (i + 1) + '교시 ' + esc(s); }).join(', ') : ''));
     else if (row.length) sched.push('🏫 수업 ' + row.length + '교시 · ' + row.map(esc).join(' · '));
     else sched.push('🌿 오늘은 수업 없음');
-    acs.forEach(function (a) { sched.push('🏃 ' + esc((a.start ? a.start + (a.end ? '~' + a.end : '') + ' ' : '') + a.name) + (a.homework ? ' · 숙제 ' + (a.hwDone ? '<b class="ok">완료</b>' : '<b class="no">아직</b>') : '') + (a.progress ? '<br><small>진도 ' + esc(a.progress) + '</small>' : '')); });
+    acs.forEach(function (a) { sched.push('🏃 ' + esc((a.start ? a.start + (a.end ? '~' + a.end : '') + ' ' : '') + a.name) + (exams && a.homework ? flow ? ' · 숙제 ' + (a.hwDone ? '<b class="ok">완료</b>' : '<b class="no">아직</b>') : ' · 숙제 있음' : '') + (flow && a.progress ? '<br><small>진도 ' + esc(a.progress) + '</small>' : '')); });
     if (typeof FC_LIFE !== 'undefined') FC_LIFE.forDay(today()).forEach(function (x) { sched.push(esc(x.icon) + ' ' + (x.start ? esc(x.start + (x.end ? '~' + x.end : '')) + ' ' : '') + esc(x.title)); });
     h += '<section class="card pv-sec"><h2>오늘 일정</h2><ul class="pv-list">' + sched.map(function (s) { return '<li>' + s + '</li>'; }).join('') + '</ul></section>';
 
     // 3. 다가오는 시험·수행평가
+    if (exams) {
     var ups = state.dates.filter(function (x) { return !x.done && gap(x.date) >= 0 && gap(x.date) <= 30; }).sort(function (a, b) { return a.date.localeCompare(b.date); }).slice(0, 5);
     var nx = FP ? FP.nextExamDay(t) : '';
     var exRows = ups.map(function (x) { return [gap(x.date), exRow(x)]; });
     function exRow(x) {
       var m = (P.dmeta || {})[x.id] || {}, prog = '';
-      if (m.p1 && m.p2) { var dn = Math.max(0, Math.min(m.p2, m.prog || m.p1 - 1) - m.p1 + 1), tot = m.p2 - m.p1 + 1; prog = bar(dn, tot) + '<small>범위 ' + dn + '/' + tot + '쪽</small>'; }
-      if (x.kind === '수행평가') { var key = '[' + x.subject + ' 수행] ' + (x.title.length > 14 ? x.title.slice(0, 14) + '…' : x.title), st = state.tasks.filter(function (k) { return k.title.indexOf(key) === 0; }), sd = st.filter(function (k) { return k.done; }).length; if (st.length) prog = bar(sd, st.length, 'g') + '<small>단계 ' + sd + '/' + st.length + '</small>'; }
+      if (m.p1 && m.p2) { var dn = Math.max(0, Math.min(m.p2, m.prog || m.p1 - 1) - m.p1 + 1), tot = m.p2 - m.p1 + 1; prog = flow ? bar(dn, tot) + '<small>범위 ' + dn + '/' + tot + '쪽</small>' : '<small>범위 ' + esc(m.p1) + '~' + esc(m.p2) + '쪽</small>'; }
+      if (flow && x.kind === '수행평가') { var key = '[' + x.subject + ' 수행] ' + (x.title.length > 14 ? x.title.slice(0, 14) + '…' : x.title), st = state.tasks.filter(function (k) { return k.title.indexOf(key) === 0; }), sd = st.filter(function (k) { return k.done; }).length; if (st.length) prog = bar(sd, st.length, 'g') + '<small>단계 ' + sd + '/' + st.length + '</small>'; }
       return '<li><div class="pv-ex-top"><span class="pv-dday' + (gap(x.date) <= 3 ? ' hot' : '') + '">' + (gap(x.date) === 0 ? '오늘' : 'D-' + gap(x.date)) + '</span><b>' + esc(x.title) + '</b><small>' + esc(x.kind) + '</small></div>' + prog + (x.kind === '시험' && !(m.p1 && m.p2) && !(x.note || '').trim() ? '<div class="pv-req-row"><small>범위가 아직 없어요</small>' + reqBtn({ kind: 'range', ref: x.id, label: x.title }) + '</div>' : '') + '</li>';
     }
     if (nx && !ups.some(function (x) { return x.date === nx; })) {
       var subs = (P.examDays || {})[nx] || [], prepDone = subs.filter(function (s) { return (P.examPrep || {})[nx + '@' + s]; }).length;
-      exRows.push([gap(nx), '<li><div class="pv-ex-top"><span class="pv-dday hot">D-' + gap(nx) + '</span><b>' + dl(nx) + ' 시험</b><small>' + (subs.length ? subs.map(esc).join('·') : '과목 미정') + '</small></div>' + (subs.length ? bar(prepDone, subs.length, 'g') + '<small>시험 대비 ' + prepDone + '/' + subs.length + '과목</small>' : '<div class="pv-req-row"><small>시험 과목이 아직 없어요</small>' + reqBtn({ kind: 'subjects', ref: nx, label: dl(nx) + ' 시험 과목' }) + '</div>') + '</li>']);
+      exRows.push([gap(nx), '<li><div class="pv-ex-top"><span class="pv-dday hot">D-' + gap(nx) + '</span><b>' + dl(nx) + ' 시험</b><small>' + (subs.length ? subs.map(esc).join('·') : '과목 미정') + '</small></div>' + (subs.length ? flow ? bar(prepDone, subs.length, 'g') + '<small>시험 대비 ' + prepDone + '/' + subs.length + '과목</small>' : '' : '<div class="pv-req-row"><small>시험 과목이 아직 없어요</small>' + reqBtn({ kind: 'subjects', ref: nx, label: dl(nx) + ' 시험 과목' }) + '</div>') + '</li>']);
     }
     exRows.sort(function (a, b) { return a[0] - b[0]; });
     h += '<section class="card pv-sec"><h2>다가오는 시험·수행평가</h2>' + (exRows.length ? '<ul class="pv-ex">' + exRows.map(function (x) { return x[1]; }).join('') + '</ul>' : '<p class="muted">한 달 안에 등록된 시험·수행평가가 없어요.</p>') + '</section>';
+    } else {
+      h += '<section class="card pv-sec"><h2>다가오는 시험·수행평가</h2><p class="muted">시험·과제 일정은 승준이가 공개하면 보여요.</p></section>';
+    }
 
     // 4. 이번 주
+    if (flow) {
     var wk = monday(t), we = addD(wk, 6), dots = '', dayN = 0;
     for (var i = 0; i < 7; i++) {
       var d = addD(wk, i), on = (P.focus || []).some(function (f) { return f.date === d; }) || state.tasks.some(function (k) { return k.done && ((P.pri || {})[k.id] && P.pri[k.id].doneAt || k.date) === d; }) || notes.some(function (n) { return n.date === d; }) || state.reviews.some(function (r) { return r.date === d; });
@@ -260,17 +277,20 @@
     h += '<section class="card pv-sec"><h2>이번 주</h2><div class="pv-dots">' + dots + '</div>' +
       '<ul class="pv-week"><li><b>' + (dayN ? dayN + '일' : '–') + '</b>기록한 날</li><li><b>' + (planW.length ? doneW.length + '/' + planW.length : '–') + '</b>계획한 일</li><li><b>' + (fW.length ? fW.reduce(function (s, f) { return s + f.min; }, 0) + '분' : '–') + '</b>집중</li><li><b>' + (notes.filter(function (n) { return n.date >= wk; }).length || '–') + '</b>수업 노트</li></ul>' + (dayN || planW.length ? '' : '<p class="pv-note">이번 주는 아직 기록이 없어요. 기록이 없다고 공부하지 않은 건 아니에요.</p>') +
       (rocks.length ? '<p class="pv-rocks-h">이번 주 큰 돌</p><ul class="pv-list">' + rocks.map(function (r) { return '<li>' + (r.st === 'done' ? '✅' : r.st === 'no' ? '➖' : '⬜') + ' ' + esc(r.title) + '</li>'; }).join('') + '</ul>' : '') + '</section>';
+    } else {
+      h += '<section class="card pv-sec"><h2>이번 주</h2><p class="muted">이번 주 공부 흐름은 승준이가 공개하면 보여요.</p></section>';
+    }
 
     // 5. 최근 수업 노트
     var rn = notes.slice(-5).reverse();
-    if (rn.length) h += '<section class="card pv-sec"><h2>최근 수업 노트</h2><ul class="pv-notes">' + rn.map(function (n) { return '<li><span>' + (n.kind === 'talk' ? '🎙️' : '📷') + ' ' + esc(n.subject) + '</span><small>' + dl(n.date) + '</small>' + (share.review && n.text ? '<p>' + esc(n.text.slice(0, 120)) + (n.text.length > 120 ? '…' : '') + '</p>' : '') + '</li>'; }).join('') + '</ul>' + (share.review ? '' : '<p class="muted small">노트 내용은 승준이가 공개하면 보여요. 과목·날짜만 표시 중.</p>') + '</section>';
+    if (rn.length && (flow || share.review)) h += '<section class="card pv-sec"><h2>최근 수업 노트</h2><ul class="pv-notes">' + rn.map(function (n) { return '<li><span>' + (n.kind === 'talk' ? '🎙️' : '📷') + ' ' + esc(n.subject) + '</span><small>' + dl(n.date) + '</small>' + (share.review && n.text ? '<p>' + esc(n.text.slice(0, 120)) + (n.text.length > 120 ? '…' : '') + '</p>' : '') + '</li>'; }).join('') + '</ul>' + (share.review ? '' : '<p class="muted small">노트 내용은 승준이가 공개하면 보여요. 과목·날짜만 표시 중.</p>') + '</section>';
 
     // 6. 응원
     var ch = (ls(CHEER, []) || []).slice(-1)[0], sentToday = (ls(CHEER, []) || []).filter(function (c) { return new Date(c.at + 9 * 3600000).toISOString().slice(0, 10) === t; }).length;
     var focusing = state.timer && state.timer.end > Date.now(), rc = recCheers();
     h += tipCard();
     h += '<section class="card pv-sec pv-cheer"><h2>👍 응원 보내기</h2>' +
-      (focusing ? '<p class="pv-focusing">⏱ 지금 집중 중이에요 (약 ' + Math.ceil((state.timer.end - Date.now()) / 60000) + '분 남음). 보내면 집중이 끝난 뒤에 보여요.</p>' : '') +
+      (flow && focusing ? '<p class="pv-focusing">⏱ 지금 집중 중이에요 (약 ' + Math.ceil((state.timer.end - Date.now()) / 60000) + '분 남음). 보내면 집중이 끝난 뒤에 보여요.</p>' : '') +
       (sentToday >= 2 ? '<p class="pv-focusing">오늘은 이미 ' + sentToday + '번 보냈어요. 하루 1~2번이 부담 없이 좋아요.</p>' : '<p class="muted small">하루 1~2번이 좋아요. 승준이 오늘 화면 맨 위에 한 줄로 떠요.</p>') +
       '<p class="pv-rocks-h">오늘 추천</p><ul class="pv-rec">' + rc.map(function (r) { return '<li><button type="button" data-pv-cheer="' + esc(r[0]) + '">' + esc(r[0]) + '</button><small>' + esc(r[1]) + '</small></li>'; }).join('') + '</ul>' +
       '<p class="pv-rocks-h">자주 쓰는 말</p><div class="pl-chips">' +
@@ -305,6 +325,8 @@
     }
     var c = cheerLine() + childReqLines(); if (c) root.insertAdjacentHTML('afterbegin', c);
   };
+  // 프로필을 바꾸면 가장 마지막에 확장된 render를 호출한다.
+  window.addEventListener('pin-who', function () { render(); });
   document.addEventListener('click', function (e) {
     var b = e.target.closest && e.target.closest('button'); if (!b) return;
     if (b.dataset.pvCheer && b.closest('#content')) {
@@ -336,7 +358,7 @@
     try { localStorage.setItem(CHEER, JSON.stringify(a.slice(-20))); } catch (er) {}
     if (typeof FamilySync !== 'undefined' && FamilySync.pushNow) FamilySync.pushNow();
     if (!focusing && window.FC_PUSH) FC_PUSH.notify('child', 'cheer', '💌 엄마', msg);
-    notice(focusing ? '집중이 끝나면 승준이 화면에 떠요 💌' : '응원을 보냈어요. 승준이 화면에 떠요 💌'); render();
+    notice(!shared('flow') ? '응원을 보냈어요 💌' : focusing ? '집중이 끝나면 승준이 화면에 떠요 💌' : '응원을 보냈어요. 승준이 화면에 떠요 💌'); render();
   }
   function softBox(orig, sf) {
     var box = document.querySelector('.pv-soft'); if (box) box.remove();

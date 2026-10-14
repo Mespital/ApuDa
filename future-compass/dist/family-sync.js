@@ -5,7 +5,7 @@
 (function (g) {
   'use strict';
   var FAM = 'fc-family-v1', META = 'fc-family-meta-v1', API = '/api/family';
-  var KEYS = ['compass-study-v1', 'compass-study-plus-v1', 'fc_academy_v1', 'fc_teachers_v1', 'fc_offdays_v1', 'fc_preview_v1',
+  var KEYS = ['compass-study-v1', 'compass-study-plus-v1', 'fc_academy_v1', 'fc_academy_occurrences_v1', 'fc_teachers_v1', 'fc_offdays_v1', 'fc_preview_v1',
     'fc_hub_posts', 'compass-know-me-v1', 'compass-career-lab', 'compass-career-depth', 'future-compass-v2', 'fc_school_class', 'fc_places_v1', 'fc_avatar_v1', 'fc_planner_v1', 'fc_notes_v1', 'fc_cheer_v1', 'fc_mom_v1', 'fc_kid_v1', 'fc_life_v1', 'fc_av_child_v1', 'fc_av_parent_v1', 'fc_guard_v1'];
   function get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
   function set(k, v) { try { localStorage.setItem(k, v); return true; } catch (e) { return false; } }
@@ -51,7 +51,17 @@
     }
     return a;
   }
-  function mergeJSON(local, server) { try { return JSON.stringify(mergeVal(JSON.parse(local), JSON.parse(server))); } catch (e) { return local; } }
+  function mergeOccurrences(a, b) {
+    var byId = Object.create(null);
+    function stable(x) { return JSON.stringify(Object.keys(x).sort().map(function (k) { return [k, x[k]]; })); }
+    (Array.isArray(a) ? a : []).concat(Array.isArray(b) ? b : []).forEach(function (x) {
+      if (!x || typeof x !== 'object' || typeof x.id !== 'string') return;
+      var old = byId[x.id], t = Number.isFinite(x.updatedAt) ? x.updatedAt : 0, ot = old && Number.isFinite(old.updatedAt) ? old.updatedAt : 0;
+      if (!old || t > ot || t === ot && stable(x) > stable(old)) byId[x.id] = x;
+    });
+    return Object.keys(byId).sort().map(function (id) { return byId[id]; });
+  }
+  function mergeJSON(local, server, key) { try { var a = JSON.parse(local), b = JSON.parse(server); return JSON.stringify(key === 'fc_academy_occurrences_v1' ? mergeOccurrences(a, b) : mergeVal(a, b)); } catch (e) { return local; } }
   var pushing = false, again = 0;
   function push() {
     var f = fam(); if (!f || pushing) return Promise.resolve();
@@ -96,7 +106,7 @@
         // 이 기기에 아직 못 올린 변경이 있는데 서버도 바뀌었으면: 덮어쓰지 않고 합친다(인터넷 끊겼다 돌아온 경우 등)
         if (!first && cur !== null && m && (m.dirty || m.h !== hash(cur)) && s.t > known) {
           if (s.by && s.by === device()) { m.st = s.t; return; }   // 서버 것은 이 기기가 올린 것 — 지금 변경은 곧 올라감
-          set('fc-family-conflict-' + k, s.v); set(k, mergeJSON(cur, s.v)); meta[k] = { h: 'merged', t: Date.now(), st: s.t }; applied++; return;
+          set('fc-family-conflict-' + k, s.v); set(k, mergeJSON(cur, s.v, k)); meta[k] = { h: 'merged', t: Date.now(), st: s.t }; applied++; return;
         }
         if (first || !m || s.t > known) {
           if (first && cur !== null) set('fc-family-before-' + k, cur);    // 처음 합칠 때 이 기기 값은 따로 보관

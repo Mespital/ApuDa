@@ -50,3 +50,6 @@ run("depthExperience={};depthChoices.clear();labTopics.add('robots');chosenActiv
 for(const id of run('depthCareers.map(c=>c.id)')){run(`depthActive='${id}';labStep=3;render()`);assert.match(content.innerHTML,/하루 업무 예시/);assert.doesNotMatch(content.innerHTML,/undefined/)}
 events.click.forEach(fn=>fn({target:{closest:()=>resetButton}}));assert.equal(run('depthChoices.size+depthStrong.size+depthLearn.size+depthCompare.size'),0);assert.deepEqual(JSON.parse(storage.get('compass-career-depth')).experience,{});
 console.log('PASS: 30 role details, top-three and show-more, academic categories, refined interests, experience reranking, sensitivity and reset, 24 review perspectives, 10 scenario inputs, four steps, comparison, escaped reflection and persistence, personalized home, encouragement timing and opt-out, 8 screens, interest matching, full-width detail, saved choices, feed URL/content validation.');
+await import('./check-study-brief.mjs');
+await import('./check-academy-occurrences.mjs');
+await import('./check-parent-readonly.mjs');

@@ -25,7 +25,7 @@ async function liveHealth(store, url) {
 import { buildPayload, askAI, validQuestion, organizePayload, providerOf } from '../../live/shiro.mjs';
 import { searchDocs, searchWiki, knowledgeQ } from '../../live/rag.mjs';
 
-export const KEYS = ['compass-study-v1', 'compass-study-plus-v1', 'fc_academy_v1', 'fc_teachers_v1', 'fc_offdays_v1', 'fc_preview_v1',
+export const KEYS = ['compass-study-v1', 'compass-study-plus-v1', 'fc_academy_v1', 'fc_academy_occurrences_v1', 'fc_teachers_v1', 'fc_offdays_v1', 'fc_preview_v1',
   'fc_hub_posts', 'compass-know-me-v1', 'compass-career-lab', 'compass-career-depth', 'future-compass-v2', 'fc_school_class', 'fc_places_v1', 'fc_avatar_v1', 'fc_planner_v1', 'fc_notes_v1', 'fc_cheer_v1', 'fc_mom_v1', 'fc_kid_v1', 'fc_life_v1', 'fc_av_child_v1', 'fc_av_parent_v1', 'fc_guard_v1'];
 const MAX_VALUE = 400000, MAX_TOTAL = 3000000, FAIL_LIMIT = 10, FAIL_WINDOW = 15 * 60000, DAY_LIMIT = 30, DAY = 86400000;
 const env = k => (globalThis.Netlify?.env?.get(k) || process.env[k] || '').trim();

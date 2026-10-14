@@ -19,7 +19,23 @@ if(tab==='table')root.innerHTML=`<section class="card"><h2>🗓️ 우리 반 �
 if(tab==='dates')root.innerHTML=`<div class="grid"><section class="card"><h2>📝 시험·과제 넣기</h2>${form('dates')}</section><section class="card"><h2>다가오는 일정</h2>${list([...state.dates].sort((a,b)=>Number(a.done)-Number(b.done)||a.date.localeCompare(b.date)),'dates')}</section></div>`;
 if(tab==='review')root.innerHTML=`<div class="grid"><section class="card"><h2>💡 내 말로 다시 설명하기</h2><p class="muted">틀린 이유와 다음에 확인할 것 하나를 적어봐.</p>${form('reviews')}</section><section class="card"><h2>나의 복습 메모</h2>${list([...state.reviews].reverse(),'reviews')}</section></div>`;
 if(tab==='focus')root.innerHTML=`<section class="card center"><h2>⏱️ 지금은 한 가지에 집중</h2><p class="muted">끝나면 잠깐 쉬고, 다음 목표를 정해봐.</p><div class="actions">${[600,1500,2400,300].map(n=>`<button data-duration="${n}" ${state.timer.end?'disabled':''} class="${n===state.timer.duration?'active':''}">${n===300?'쉬기 5분':n/60+'분'}</button>`).join('')}</div><div class="clock" id="clock"></div><progress id="progress" max="${state.timer.duration}"></progress><p><button class="primary" data-timer>${state.timer.end?'잠깐 멈추기':'시작 / 이어하기'}</button> <button data-reset>처음부터</button></p><p class="muted">오늘 마친 집중 타이머: ${state.sessions[today()]||0}회</p><p>🐾 조금씩 해도 괜찮아. 지금 시작한 네가 멋져!</p></section>`;tick()}
-function tick(){const t=state.timer;if(t.end){t.remaining=Math.max(0,Math.ceil((t.end-Date.now())/1000));if(!t.remaining){t.end=0;const br=t.brk===undefined?t.duration===300:!!t.brk;if(!br){state.sessions[today()]=(state.sessions[today()]||0)+1;try{window.dispatchEvent(new CustomEvent('fc-focus-done',{detail:{min:Math.round(t.duration/60)}}))}catch{}}save();notice(br?'쉬는 시간 끝! 다음 한 가지를 골라봐.':'집중 시간 끝! 잠깐 쉬어가자 🌱');render();return}}const c=document.querySelector('#clock');if(c)c.textContent=String(Math.floor(t.remaining/60)).padStart(2,'0')+':'+String(t.remaining%60).padStart(2,'0');const p=document.querySelector('#progress');if(p)p.value=t.duration-t.remaining}
+function notifyFocusDone(detail){
+  if(window.FC_PLANNER)window.dispatchEvent(new CustomEvent('fc-focus-done',{detail}));
+  else(window.fcPendingFocusDone||(window.fcPendingFocusDone=[])).push(detail);
+}
+function tick(){
+  const t=state.timer,parent=typeof PinGate!=='undefined'&&PinGate.who()==='parent';
+  let remaining=t.remaining;
+  if(t.end){
+    remaining=Math.max(0,Math.ceil((t.end-Date.now())/1000));
+    // 보호자 화면은 남은 시간만 보여주고, 완료 기록은 아이 화면에서 남긴다.
+    if(!parent){
+      t.remaining=remaining;
+      if(!remaining){t.end=0;const br=t.brk===undefined?t.duration===300:!!t.brk;if(!br){state.sessions[today()]=(state.sessions[today()]||0)+1;try{notifyFocusDone({min:Math.round(t.duration/60)})}catch{}}save();notice(br?'쉬는 시간 끝! 다음 한 가지를 골라봐.':'집중 시간 끝! 잠깐 쉬어가자 🌱');render();return}
+    }
+  }
+  const c=document.querySelector('#clock');if(c)c.textContent=String(Math.floor(remaining/60)).padStart(2,'0')+':'+String(remaining%60).padStart(2,'0');const p=document.querySelector('#progress');if(p)p.value=t.duration-remaining;
+}
 document.addEventListener('input',e=>{if(e.target.hasAttribute('data-lesson')){state.table[day][Number(e.target.dataset.lesson)]=e.target.value;save()}if(e.target.hasAttribute('data-bag')){state.bags[day]=e.target.value;save()}});
 document.addEventListener('change',e=>{const k=e.target.dataset.check;if(k){const x=state[k].find(x=>x.id===e.target.dataset.id);if(x){x.done=e.target.checked;save()}}});
 document.addEventListener('submit',e=>{const k=e.target.dataset.form;if(!k)return;e.preventDefault();const f=new FormData(e.target),title=String(f.get('title')||'').trim(),date=k==='dates'?String(f.get('date')):today();if(!title||!valid(date))return;if(state[k].length>=200){notice('기록이 200개야. 지난 기록을 정리한 뒤 추가해줘.');return}state[k].push({id:uid(),title,date,done:false,kind:String(f.get('kind')||'과제'),subject:String(f.get('subject')||''),note:String(f.get('note')||'')});if(save()){render();notice('저장했어! 하나씩 해보자 🐾')}});

@@ -4,6 +4,7 @@
 // 가족 공유로 서버에 올라온 기록만 사용. 같은 알림은 하루 한 번.
 import { getStore } from '@netlify/blobs';
 import { sendTo, getSubs } from '../lib/push-core.mjs';
+import '../../dist/academy-occurrences.js';
 
 const pj = (v, d) => { try { return JSON.parse(v); } catch { return d; } };
 const addD = (d, n) => new Date(Date.parse(d + 'T12:00:00Z') + n * 86400000).toISOString().slice(0, 10);
@@ -13,7 +14,7 @@ const toMin = s => { const m = /^(\d{1,2}):(\d{2})$/.exec(s || ''); return m ? +
 export function plan(data, school, nowMs) {
   const k = new Date(nowMs + 9 * 3600000), t = k.toISOString().slice(0, 10), mins = k.getUTCHours() * 60 + k.getUTCMinutes(), wd = k.getUTCDay();
   const v = key => pj(data[key]?.v, null);
-  const st = v('compass-study-v1') || {}, P = v('fc_planner_v1') || {}, acs = v('fc_academy_v1') || [], kid = v('fc_kid_v1') || {};
+  const st = v('compass-study-v1') || {}, P = v('fc_planner_v1') || {}, acs = globalThis.FC_ACADEMY_OCCURRENCES.forDay(v('fc_academy_v1') || [], v('fc_academy_occurrences_v1') || [], t), kid = v('fc_kid_v1') || {};
   const tasks = (st.tasks || []).filter(x => x.date === t && !(P.pri?.[x.id]?.st === 'no'));
   const rank = { A: 0, B: 1, C: 2 }, pr = id => P.pri?.[id]?.p || 'B';
   const undone = tasks.filter(x => !x.done).sort((a, b) => rank[pr(a.id)] - rank[pr(b.id)]);
@@ -45,7 +46,6 @@ export function plan(data, school, nowMs) {
   }
   if (at(15, 30) && isSchool && !examOn(t)) out.push({ key: 'afterclass', to: 'child', kind: 'afterclass', title: '📒 수업 끝! 1분만', body: '오늘 배운 거 1분 말하기나 노트 사진 하나 남겨둘까?', url: 'study.html#today' });
   for (const a of acs) {
-    if (!Array.isArray(a.days) || a.days.indexOf(wd) < 0 || (a.from && t < a.from)) continue;
     const s = toMin(a.start); if (s == null) continue;
     if (s - mins >= 45 && s - mins < 75) out.push({ key: 'ac:' + a.id, to: 'child', kind: 'academy', title: '🏫 ' + a.start + ' ' + a.name, body: a.homework && !a.hwDone ? '숙제 체크: ' + a.homework : '출발 준비할 시간이야', url: 'study.html#today' });
   }

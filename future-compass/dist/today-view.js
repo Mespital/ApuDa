@@ -22,53 +22,66 @@
   function loadSchool() { return fetch('school.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) { schoolData = d; return d; }).catch(function () { return null; }); }
 
   /* ---------- 이 기기 기록으로 오늘 만들기 ---------- */
-  function collect(date) {
+  function collect(date, opts) {
     date = date || todayISO();
+    opts = opts || {};
     var core = ls('compass-study-v1', {}), plus = ls('compass-study-plus-v1', {}), teachers = ls('fc_teachers_v1', {}) || {};
+    var planner = ls('fc_planner_v1', {}) || {}, share = planner.share || {}, shared = !!(opts.parent || opts.shared);
+    var showFlow = !shared || share.flow !== false, showExams = !shared || share.exams !== false;
+    var resolver = g.FC_ACADEMY_OCCURRENCES, academyList = ls('fc_academy_v1', []), occurrenceList = resolver ? ls(resolver.KEY, []) : [];
+    function academyFor(d) { return resolver ? resolver.forDay(academyList, occurrenceList, d) : (g.FC_ACADEMY ? g.FC_ACADEMY.forDay(d) : (Array.isArray(academyList) ? academyList : []).filter(function (a) { return a && Array.isArray(a.days) && a.days.indexOf(wd(d)) >= 0 && (!a.from || d >= a.from); }).sort(function (a, b) { return String(a.start || '99').localeCompare(String(b.start || '99')); })); }
+    function validDue(d) { return resolver ? resolver.validDate(d) : typeof d === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(d) && Number.isFinite(Date.parse(d)) && new Date(d).toISOString().slice(0, 10) === d; }
     var table = Array.isArray(core.table) ? core.table : [], courses = plus.courses || {}, cfg = g.FC_SCHOOL ? g.FC_SCHOOL.config : {};
     var times = cfg.periods || [], len = cfg.classMinutes || 50, off = offDay(date), w = wd(date);
     var row = !off && w >= 1 && w <= 5 && table[w - 1] ? table[w - 1].slice() : [];
     while (row.length && !row[row.length - 1]) row.pop();
     var periods = row.map(function (s, i) { return { n: i + 1, time: times[i] || '', subject: s || '', teacher: teachers[s] || '' }; });
-    var acs = ls('fc_academy_v1', []).filter(function (a) { return a && Array.isArray(a.days) && a.days.indexOf(w) >= 0 && (!a.from || date >= a.from); }).sort(function (a, b) { return String(a.start || '99').localeCompare(String(b.start || '99')); })
-      .map(function (a) { return { name: a.name, subject: a.subject || '', start: a.start || '', end: a.end || '', progress: a.progress || '', homework: a.homework || '', hwDone: !!a.hwDone }; });
+    var acs = academyFor(date).map(function (a) { return { name: a.name, subject: a.subject || '', start: a.start || '', end: a.end || '', progress: showFlow ? a.progress || '' : '', homework: showFlow ? a.homework || '' : '', hwDone: showFlow && !!a.hwDone }; });
     var meal = null, events = [], examToday = '';
     if (schoolData) {
       var ms = (schoolData.meals || []).filter(function (m) { return m.date === date; });
       if (ms.length) meal = ms[0].dishes.slice(0, 6);
-      examToday = ((schoolData.schedule || []).filter(function (e) { return e.date === date && /고사|시험|평가/.test(e.title); })[0] || {}).title || '';
-      events = (schoolData.schedule || []).filter(function (e) { return e.date >= date && gap(e.date, date) <= 14; }).slice(0, 4).map(function (e) { return { date: e.date, title: e.title, off: !!e.off }; });
+      examToday = showExams ? ((schoolData.schedule || []).filter(function (e) { return e.date === date && /고사|시험|평가/.test(e.title); })[0] || {}).title || '' : '';
+      events = (schoolData.schedule || []).filter(function (e) { return e.date >= date && gap(e.date, date) <= 14 && (showExams || !/고사|시험|평가/.test(e.title)); }).slice(0, 4).map(function (e) { return { date: e.date, title: e.title, off: !!e.off }; });
     }
     // 저녁 공부
-    var tasks = (core.tasks || []).filter(function (t) { return t.date === date || (!t.done && t.date < date); }).slice(0, 12).map(function (t) { return { title: t.title, done: !!t.done, carried: t.date < date }; });
-    var deadlines = (core.dates || []).filter(function (x) { return !x.done && gap(x.date, date) >= 0 && gap(x.date, date) <= 7; }).sort(function (a, b) { return a.date.localeCompare(b.date); })
-      .map(function (x) { return { title: x.title, kind: x.kind || '', subject: x.subject || '', dday: gap(x.date, date), date: x.date }; });
+    var tasks = showFlow ? (core.tasks || []).filter(function (t) { return t.date === date || (!t.done && t.date < date); }).slice(0, 12).map(function (t) { return { title: String(t.title || '').slice(0, 120), subject: String(t.subject || '').slice(0, 40), done: !!t.done, carried: t.date < date }; }) : [];
+    var deadlines = showExams ? (core.dates || []).filter(function (x) { return !x.done && gap(x.date, date) >= 0 && gap(x.date, date) <= 7; }).sort(function (a, b) { return a.date.localeCompare(b.date); })
+      .map(function (x) { return { title: x.title, kind: x.kind || '', subject: x.subject || '', dday: gap(x.date, date), date: x.date }; }) : [];
+    if (showFlow && showExams) {
+      (core.tasks || []).filter(function (t) { var due = (planner.pri || {})[t.id] || {}; return !t.done && due.st !== 'no' && validDue(due.due) && gap(due.due, date) <= 7; }).forEach(function (t) {
+        var due = planner.pri[t.id].due; deadlines.push({ title: String(t.title || '').slice(0, 120), subject: String(t.subject || '').slice(0, 40), kind: '할 일', dday: gap(due, date), date: due });
+      });
+      deadlines.sort(function (a, b) { return a.date.localeCompare(b.date); });
+    }
+    deadlines = deadlines.slice(0, 40);
     var rmeta = plus.reviews || {};
-    var redo = (core.reviews || []).filter(function (x) { return !x.done && (rmeta[x.id] ? rmeta[x.id].due : x.date) <= date; }).slice(0, 6).map(function (x) { return { subject: x.subject || '복습' }; });   // 복습 노트 제목·내용은 보내지 않음
-    var learned = uniq(row).filter(function (s) { return !NO_PREP.test(s); }).slice(0, 4);
+    var redo = showFlow ? (core.reviews || []).filter(function (x) { return !x.done && (rmeta[x.id] ? rmeta[x.id].due : x.date) <= date; }).slice(0, 6).map(function (x) { return { subject: x.subject || '복습' }; }) : [];   // 복습 노트 제목·내용은 보내지 않음
+    var learned = showFlow ? uniq(row).filter(function (s) { return !NO_PREP.test(s); }).slice(0, 4) : [];
     var nd = nextSchool(date), nw = wd(nd), nrow = table[nw - 1] ? uniq(table[nw - 1]) : [];
     var prepDone = (ls('fc_preview_v1', {}) || {})[nd] || [];
-    var exams = schoolData ? (schoolData.schedule || []).filter(function (e) { return e.date === nd && /고사|시험|평가/.test(e.title); }).map(function (e) { return e.title; }) : [];
-    var prep = nrow.filter(function (s) { return !NO_PREP.test(s); }).map(function (s) {
+    var exams = showExams && schoolData ? (schoolData.schedule || []).filter(function (e) { return e.date === nd && /고사|시험|평가/.test(e.title); }).map(function (e) { return e.title; }) : [];
+    var prep = showFlow ? nrow.filter(function (s) { return !NO_PREP.test(s); }).map(function (s) {
       var c = courses[s] || {}, cur = g.FC_CURRICULUM ? g.FC_CURRICULUM.lookup(s, null, null, { book: c.book }) : null;
       var nx = cur && c.unit ? g.FC_CURRICULUM.nextAfter(s, c.unit, c.book) : null;
       return { subject: s, teacher: teachers[s] || '', target: nx ? nx.split(' › ').pop() : (c.unit ? c.unit.split(' › ').pop() : ''), done: prepDone.indexOf(s) >= 0 };
-    });
-    var tomorrowAc = ls('fc_academy_v1', []).filter(function (a) { return a && a.homework && !a.hwDone && Array.isArray(a.days) && (a.days.indexOf(wd(add(date, 1))) >= 0 || a.days.indexOf(w) >= 0); })
-      .map(function (a) { return { name: a.name, homework: a.homework }; });
+    }) : [];
+    var seenAcademies = Object.create(null);
+    var tomorrowAc = showFlow ? academyFor(date).concat(academyFor(add(date, 1))).filter(function (a) { if (!a.homework || a.hwDone || seenAcademies[a.id]) return false; seenAcademies[a.id] = true; return true; })
+      .map(function (a) { return { name: a.name, homework: a.homework }; }) : [];
     var endTime = periods.length && periods[periods.length - 1].time ? addMin(periods[periods.length - 1].time, len) : '';
     return { v: 1, date: date, generated: new Date().toISOString(), off: off ? { name: off.name, weekend: !!off.weekend } : null, periods: periods, endTime: endTime, lunch: cfg.lunch || '',
       meal: meal, examToday: examToday, academies: acs, events: events, deadlines: deadlines, academyHw: tomorrowAc, review: learned, redo: redo,
-      prep: { date: nd, label: label(nd), exam: exams[0] || '', items: prep }, tasks: tasks, school: cfg.shortName || '' };
+      prep: { date: nd, label: label(nd), exam: exams[0] || '', items: prep }, tasks: tasks, school: cfg.shortName || '', sharing: { flow: showFlow, exams: showExams } };
   }
 
   /* ---------- 그리기 ---------- */
   function render(d, opts) {
     opts = opts || {};
     if (!d || !d.date) return '<p class="tv-empty">아직 오늘 기록이 없어.</p>';
-    var ro = !!opts.parent, h = '';
+    var ro = !!opts.parent, h = '', flow = !d.sharing || d.sharing.flow !== false, exams = !d.sharing || d.sharing.exams !== false;
     var minutes = (d.examToday ? 0 : d.review.length * 10) + d.redo.length * 10 + (d.prep.exam ? 0 : d.prep.items.length * 10) + d.academyHw.length * 30;
-    var chips = d.deadlines.filter(function (x) { return x.dday <= 7; }).map(function (x) { return '<span class="tv-chip' + (x.dday <= 1 ? ' hot' : '') + '">' + (x.dday === 0 ? '오늘' : 'D-' + x.dday) + ' ' + esc(x.title) + '</span>'; }).join('');
+    var chips = d.deadlines.filter(function (x) { return x.dday <= 7; }).map(function (x) { return '<span class="tv-chip' + (x.dday <= 1 ? ' hot' : '') + '">' + dueLabel(x.dday) + ' ' + esc(x.title) + '</span>'; }).join('');
     h += '<header class="tv-head"><div><h1>' + esc(label(d.date)) + ' 오늘 한눈에</h1>' +
       '<p class="tv-sub">' + (d.off ? '🌿 ' + esc(d.off.name) + (d.off.weekend ? '' : ' · 수업 없음') : d.examToday ? '📝 시험날' : '수업 ' + d.periods.filter(function (p) { return p.subject; }).length + '교시' + (d.endTime ? ' · ' + esc(d.endTime) + ' 끝' : '')) +
       (d.academies.length ? ' · 학원 ' + d.academies.length : '') + (minutes ? ' · 저녁 공부 약 ' + Math.min(180, minutes) + '분' : '') + '</p></div>' +
@@ -90,11 +103,11 @@
     var ev = '';
     if (d.academyHw.length) ev += grp('📝 학원 숙제', d.academyHw.map(function (a) { return li(a.name + ' · ' + a.homework, false, ro); }));
     var hot = d.deadlines.filter(function (x) { return x.dday <= 2; });
-    if (hot.length) ev += grp('⏰ 마감 임박', hot.map(function (x) { return li((x.dday === 0 ? '오늘 ' : 'D-' + x.dday + ' ') + (x.kind ? x.kind + ' · ' : '') + x.title, false, ro); }));
+    if (hot.length) ev += grp('⏰ 마감 임박', hot.map(function (x) { return li(dueLabel(x.dday) + ' ' + (x.kind ? x.kind + ' · ' : '') + x.title, false, ro); }));
     if (d.prep.exam) ev += grp('🧩 내일 시험 마무리', [li('내일 볼 과목 오답·핵심 개념 다시 보기', false, ro), li('일찍 자기 — 시험 기간엔 잠이 점수야', false, ro)]);
     var prepSubs = d.prep.exam ? [] : d.prep.items.map(function (p) { return p.subject; });   // 오늘 복습·내일 예습 과목이 겹치면 한 줄로 (중복처럼 보이지 않게)
     var revOnly = d.examToday ? [] : d.review.filter(function (s) { return prepSubs.indexOf(s) < 0; });
-    var exDays = ls('fc_planner_v1', {}).examDays || {}, nxEx = Object.keys(exDays).filter(function (k) { return k > d.date && exDays[k].length && gap(k, d.date) <= 4; }).sort()[0];
+    var exDays = exams ? ls('fc_planner_v1', {}).examDays || {} : {}, nxEx = flow && Object.keys(exDays).filter(function (k) { return k > d.date && exDays[k].length && gap(k, d.date) <= 4; }).sort()[0];
     if (nxEx) ev += grp('📚 ' + label(nxEx) + ' 시험 대비 (과목당 30분)', exDays[nxEx].map(function (x) { return li(x + ' · 오답·자주 틀린 개념 다시 보기', !!(ls('fc_planner_v1', {}).examPrep || {})[nxEx + '@' + x], ro); }));
     if (revOnly.length && !d.off && !d.examToday) ev += grp('🔁 오늘 배운 것 복습 (과목당 10분)', revOnly.map(function (s) { return li(s + ' · 오늘 필기 다시 보고 핵심 3줄 정리', false, ro); }));
     if (d.redo.length) ev += grp('💡 다시 풀 문제 ' + d.redo.length + '개', Object.entries(d.redo.reduce(function (a, r) { a[r.subject] = (a[r.subject] || 0) + 1; return a; }, {})).map(function (e) { return li(e[0] + ' · ' + e[1] + '개 (복습 탭)', false, ro); }));
@@ -107,6 +120,7 @@
     return h;
   }
   function grp(title, items) { return '<div class="tv-grp"><h3>' + esc(title) + '</h3>' + (items.length ? '<ul class="tv-check">' + items.join('') + '</ul>' : '') + '</div>'; }
+  function dueLabel(n) { return n < 0 ? Math.abs(n) + '일 지남' : n === 0 ? '오늘' : 'D-' + n; }
   function li(text, done, ro) { return '<li class="' + (done ? 'done' : '') + '"><span class="tv-box" aria-hidden="true">' + (done ? '✓' : '') + '</span>' + esc(text) + '</li>'; }
   function ago(iso) { var m = Math.round((Date.now() - Date.parse(iso)) / 60000); return !iso ? '' : m < 1 ? '방금' : m < 60 ? m + '분 전' : m < 1440 ? Math.round(m / 60) + '시간 전' : Math.round(m / 1440) + '일 전'; }
 
@@ -119,7 +133,7 @@
   function sync() {
     if (!canSync() || document.documentElement.classList.contains('pin-locked')) return Promise.resolve(false);
     return (schoolData ? Promise.resolve() : loadSchool()).then(function () {
-      var d = collect();
+      var d = collect(undefined, { shared: true });
       d.periods.forEach(function (p) { p.teacher = ''; }); d.prep.items.forEach(function (p) { p.teacher = ''; });   // 선생님 이름은 이 기기에만
       var body = JSON.stringify({ device: ls('fc-device-id', '') || (localStorage.getItem('fc-device-id') || ''), data: d });
       var sig = body.replace(/"generated":"[^"]*"/, '');

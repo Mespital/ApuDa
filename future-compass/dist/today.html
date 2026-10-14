@@ -14,14 +14,14 @@ main{max-width:720px;margin:0 auto;padding:14px 16px 60px}.top{display:flex;alig
 <div id="today-view"><p style="color:#8a839a">불러오는 중…</p></div>
 <p class="note">이 화면(수업·학원·할 일·예습 목록)은 엄마도 같이 봐. 메모와 복습 노트 내용은 보내지 않아.</p>
 </main>
-<script src="school-config.js"></script><script src="holidays-kr.js"></script><script src="curriculum-kr.js"></script><script src="today-view.js"></script><script src="route.js"></script><script src="shiro-study.js"></script><script src="shiro-ai.js"></script><script src="shiro-help.js"></script>
+<script src="school-config.js"></script><script src="holidays-kr.js"></script><script src="curriculum-kr.js"></script><script src="academy-occurrences.js"></script><script src="today-view.js"></script><script src="route.js"></script><script src="shiro-study.js"></script><script src="shiro-ai.js"></script><script src="shiro-help.js"></script>
 <script>
 (function(){
   function draw(){
     var d = new Date(Date.now() + 9 * 3600000).toISOString().slice(0, 10), box = document.getElementById('today-view');
     var who = 'child'; try { if (localStorage.getItem('fc-who-v1') === 'parent') who = 'parent'; } catch (e) {}
-    var dd = TodayView.collect(), exam = dd && dd.examToday && !dd.off;
-    box.innerHTML = (window.FC_CHAR ? '<div class="hello">' + FC_CHAR.svg(who, 64) + '<p><b>' + (exam ? (who === 'parent' ? '오늘 승준이 시험날이에요 · 응원해 주세요' : '승준, 오늘 시험 화이팅! 💪') : who === 'parent' ? '엄마, 승준이 오늘 일정이에요' : '승준, 오늘 이것만 하면 돼') + '</b><br><small>공부 먼저, 이동은 맨 아래</small></p></div>' : '') + TodayView.render(dd);
+    var dd = TodayView.collect(undefined, { parent: who === 'parent' }), exam = dd && dd.examToday && !dd.off;
+    box.innerHTML = (window.FC_CHAR ? '<div class="hello">' + FC_CHAR.svg(who, 64) + '<p><b>' + (exam ? (who === 'parent' ? '오늘 승준이 시험날이에요 · 응원해 주세요' : '승준, 오늘 시험 화이팅! 💪') : who === 'parent' ? '엄마, 승준이 오늘 일정이에요' : '승준, 오늘 이것만 하면 돼') + '</b><br><small>공부 먼저, 이동은 맨 아래</small></p></div>' : '') + TodayView.render(dd, { parent: who === 'parent' });
     if (window.FC_ROUTE) { var rc = FC_ROUTE.card(d, { quiet: true }); if (rc) { box.insertAdjacentHTML('beforeend', rc); } }
   }
   function go(){ TodayView.loadSchool().then(function(){ draw(); TodayView.sync(); }); }

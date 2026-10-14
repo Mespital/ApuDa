@@ -1,0 +1,29 @@
+name: Future Compass REA reference analysis
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/future-compass-rea-reference.yml'
+      - 'future-compass/scripts/analyze-study-reference.mjs'
+permissions:
+  contents: read
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Analyze the selected public reference with REA
+        run: node future-compass/scripts/analyze-study-reference.mjs --output "$RUNNER_TEMP/rea-reference"
+      - name: Retain evidence summary only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rea-mystudylife-summary
+          path: ${{ runner.temp }}/rea-reference/summary.json
+          if-no-files-found: warn
+          retention-days: 14

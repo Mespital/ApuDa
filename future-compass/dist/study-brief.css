@@ -1,0 +1,14 @@
+.sb-summary{border:1px solid #e5dff5;background:linear-gradient(135deg,#faf8ff,#fff);padding:18px}
+.sb-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.sb-heading h2{margin:0;font-size:18px;color:#302847}.sb-count{font-size:12px;color:#75668b;white-space:nowrap}
+.sb-summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.sb-cell{min-width:0;padding:13px;background:#f1eef9;border-radius:13px}
+.sb-label{display:block;font-size:12px;color:#766a8b;margin-bottom:7px}.sb-cell strong{display:block;font-size:16px;line-height:1.45;overflow-wrap:anywhere;color:#35294f}
+.sb-cell small{display:block;color:#756a86;font-size:12px;margin-top:7px;line-height:1.5}.sb-overdue{background:#fff2ec}.sb-overdue .sb-label{color:#ab6539}
+.sb-parent-tasks{list-style:none;margin:14px 0 0;padding:0;border-top:1px solid #ece6f6}.sb-parent-tasks li{padding:9px 0 0;font-size:14px;overflow-wrap:anywhere}.sb-parent-tasks span{color:#9b8ac3;margin-right:3px}
+.pl-add.sb-quick{display:grid;grid-template-columns:1fr 1.3fr;gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid #ece6f6}
+.sb-quick label{display:block;min-width:0;font-size:12px;font-weight:600;color:#655678}.sb-quick .sb-title-field{grid-column:2;grid-row:1}
+.pl-add.sb-quick input{box-sizing:border-box;width:100%;min-width:0;min-height:44px;font-size:16px;margin-top:5px}
+.sb-quick button{align-self:end;min-height:44px}.sb-form-hint{grid-column:1/-1;margin:0;font-size:12px;font-weight:400;color:#84798f}
+.sb-due-list{display:grid;gap:12px}.sb-due-row{display:flex;align-items:flex-start;gap:12px;min-width:0}.sb-due-row input{flex:none;width:20px;height:20px;margin-top:2px}
+.sb-due-row div{min-width:0}.sb-due-row strong{font-size:15px;overflow-wrap:anywhere}.sb-due-row small{display:block;margin-top:4px;font-size:12px;color:#80728e}.sb-static-status{color:#a193b1;font-size:19px}
+@media(max-width:430px){.sb-heading{align-items:flex-start;flex-wrap:wrap}.sb-summary-grid{grid-template-columns:1fr}.pl-add.sb-quick{grid-template-columns:1fr}.sb-quick .sb-title-field{grid-column:1;grid-row:auto}}
