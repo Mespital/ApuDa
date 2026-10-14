@@ -1,9 +1,9 @@
 {
   "version": "1.0",
-  "generated_at": "2026-10-13T18:04:50.812223+09:00",
+  "generated_at": "2026-10-14T18:04:52.881135+09:00",
   "window": {
-    "start": "2026-09-13T09:00:00+09:00",
-    "end": "2026-10-13T09:00:00+09:00",
+    "start": "2026-09-14T09:00:00+09:00",
+    "end": "2026-10-14T09:00:00+09:00",
     "days": 30,
     "timezone": "Asia/Seoul"
   },
@@ -85,8 +85,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "7d",
-      "age_days": 7
+      "freshness": "30d",
+      "age_days": 8
     },
     {
       "rank": null,
@@ -160,7 +160,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": null,
@@ -222,7 +222,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
     },
     {
       "rank": null,
@@ -282,7 +282,71 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
+    },
+    {
+      "rank": 3,
+      "canonical_issue": "'키트루다' 바이오시밀러, 美 허가 심사 진입…MSD 독주 흔들리나 - 메디파나뉴스",
+      "title": "'키트루다' 바이오시밀러, 美 허가 심사 진입…MSD 독주 흔들리나",
+      "category": [
+        "허가",
+        "3상",
+        "임상 3상"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-13T21:57:47+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "세계 최대 매출 항암제 '키트루다(펨브롤리주맙)'의 바이오시밀러가 미국 허가 심사에 진입했다. 특히 대규모 임상 3상 유효성시험을 생략하고 허가신청까지 진행하면서 글로벌 바이오시밀러 개발 경쟁과 미국 규제환경 변화에 관심이 쏠리고 있다. 독일 바이오시밀러 전문기업 포마이콘(Formycon)과 인도 자이더",
+        "AI 생성 이미지 세계 최대 매출 항암제 '키트루다(펨브롤리주맙)'의 바이오시밀러가 미국 허가 심사에 진입했다.",
+        "특히 대규모 임상 3상 유효성시험을 생략하고 허가신청까지 진행하면서 글로벌 바이오시밀러 개발 경쟁과 미국 규제환경 변화에 관심이 쏠리고 있다."
+      ],
+      "importance": "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=419234"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=419234"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419234_326653_4824.png",
+      "score": 73,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "폐암"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": "3",
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": "허가 관련",
+        "reimbursement_status": null,
+        "patient_summary": "치료제의 허가 범위나 사용 가능성과 관련된 소식입니다. 국내 실제 사용은 식약처 허가사항을 확인해야 합니다.",
+        "patient_relevance_score": 52,
+        "patient_relevance_labels": [
+          "허가",
+          "임상결과"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": 2,
@@ -345,7 +409,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 6
+      "age_days": 7
     },
     {
       "rank": null,
@@ -407,8 +471,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "today",
-      "age_days": 0
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -468,7 +532,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": null,
@@ -530,7 +594,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 2
+      "age_days": 3
     },
     {
       "rank": null,
@@ -590,8 +654,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "today",
-      "age_days": 0
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -654,7 +718,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 2
+      "age_days": 3
     },
     {
       "rank": null,
@@ -715,7 +779,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": null,
@@ -774,7 +838,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": 3,
@@ -835,7 +899,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 8
+      "age_days": 9
     },
     {
       "rank": null,
@@ -890,7 +954,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 10
+      "age_days": 11
     },
     {
       "rank": null,
@@ -948,7 +1012,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 10
+      "age_days": 11
     },
     {
       "rank": null,
@@ -1005,7 +1069,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 11
+      "age_days": 12
     },
     {
       "rank": 4,
@@ -1064,7 +1128,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 11
+      "age_days": 12
     },
     {
       "rank": null,
@@ -1132,7 +1196,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 11
+      "age_days": 12
     }
   ]
 }
