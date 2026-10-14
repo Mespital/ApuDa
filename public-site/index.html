@@ -626,9 +626,10 @@
     .p-floors button{flex:1;min-width:0;max-width:60px}
   }
 </style>
-<meta name="apuda-release" content="home-restored-videos-20261014">
+<meta name="apuda-release" content="building-life-20261014">
 <link rel="stylesheet" href="/assets/apuda-cancer-videos.css">
 <link rel="stylesheet" href="/assets/apuda-home-polish.css">
+<link rel="stylesheet" href="/assets/apuda-building-life.css">
 </head>
 <body>
 
@@ -748,6 +749,7 @@
 <div id="curtain"><div><b>ApuDa</b><small>PATIENT CARE OS</small></div></div>
 
 <script src="/assets/apuda-cancer-videos.js"></script>
+<script src="/assets/apuda-building-life.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script>
 (function(){
@@ -1030,17 +1032,17 @@
 
   /* ── GSAP: 인트로 ── */
   var q = gsap.utils.selector(frame);
-  gsap.set(frame,{scale:1.06,opacity:0,y:22});
+  var buildingLife=window.ApuDaBuildingLife ? window.ApuDaBuildingLife.mount({frame:frame}) : null;
+  gsap.set(frame,{scale:1,opacity:0,y:9});
   gsap.set(q('.hz'),{opacity:0});
   gsap.set(desktopGuide,{opacity:0});
 
   var intro = gsap.timeline({delay:reduce?0:.05});
-  intro.to(curtain,{opacity:0,duration:.5,ease:'power2.out',onComplete:function(){curtain.style.display='none'}})
-       .to(frame,{scale:1,opacity:1,y:0,duration:reduce?0:.35,ease:'power2.out'},'-=.3')
-       .to(q('.glow'),{opacity:.85,duration:.42,stagger:{each:.11,from:'end'},ease:'power2.out'},'-=.6')
-       .to(q('.glow'),{opacity:0,duration:.5,stagger:{each:.11,from:'end'},ease:'power2.inOut'},'-=.3')
-       .to(q('.hz'),{opacity:1,duration:.01},'-=.4')
-       .to([desktopGuide,pager,hint,siteFooter],{opacity:1,duration:.5,ease:'power2.out',stagger:.08},'-=.25');
+  intro.to(curtain,{opacity:0,duration:reduce?0:.35,ease:'power2.out',onComplete:function(){curtain.style.display='none'}},0)
+       .to(frame,{opacity:1,y:0,duration:reduce?0:.6,ease:'power2.out'},.05)
+       .to(q('.hz'),{opacity:1,duration:.01},.1)
+       .to([desktopGuide,pager,hint,siteFooter],{opacity:1,duration:reduce?0:.5,ease:'power2.out'},.18)
+       .add(function(){if(buildingLife) buildingLife.start();},.32);
   if(reduce) intro.progress(1);
 
   /* 은은한 부유 */
@@ -1397,6 +1399,7 @@
     /* #floor-N 으로 들어오면 인트로가 끝나기 전에 열리므로, 인트로를 끝내 두어야 안내 메뉴가 다시 나타나 겹치지 않는다 */
     if(intro && intro.isActive()) intro.progress(1);
     var first = !cur;
+    if(buildingLife) buildingLife.suspend();
     if(reduce) showIdleMedia(); else playFloorVideo(f);
     if(roofTimer) clearTimeout(roofTimer);
     frame.classList.remove('roof-active');
@@ -1464,6 +1467,7 @@
     var narrow = matchMedia('(max-width:860px)').matches;
     var tl=gsap.timeline({onComplete:function(){
       document.body.classList.remove('open');
+      if(buildingLife) buildingLife.resume();
       /* Keep the architectural frame fixed after closing. */
       if(lastFocus && typeof lastFocus.focus==='function') lastFocus.focus({preventScroll:true});
     }});
