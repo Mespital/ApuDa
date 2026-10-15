@@ -17,6 +17,34 @@
       '<p class="muted small">가족끼리 쓰는 앱의 "잠금장치" 수준이에요. 폰을 직접 만지는 걸 막는 정도이고, 전문적인 해킹 방어는 아니에요.</p></section>';
   }
 
+  function devCard() {
+    var joined = typeof FamilySync !== 'undefined' && FamilySync.joined && FamilySync.joined();
+    return '<section class="card" id="set-devices"><h2>📱 연결된 기기 정리</h2>' +
+      '<p class="muted small">폰을 잃어버렸거나 바꿨을 때 눌러요. 이 폰만 연결이 남고, 다른 폰은 모두 끊겨요. 가족 폰은 다음에 가족 비밀번호를 넣으면 자동으로 다시 연결돼요.</p>' +
+      (joined ? '<button type="button" class="sf-danger" data-sf-revoke>🔌 다른 기기 연결 모두 끊기</button>' : '<p class="muted small">가족 공유에 연결된 폰에서만 쓸 수 있어요.</p>') +
+      '<p class="muted small">잃어버린 폰이 가족 비밀번호를 알 수 있는 상황이면, 끊은 다음 ⚙️ 가족·잠금에서 비밀번호도 바꿔 주세요.</p></section>';
+  }
+  function askPin(done) {
+    var box = document.createElement('div'); box.className = 'pin-guard';
+    box.innerHTML = '<div class="pin-guard-in"><b>🔌 다른 기기 연결 끊기</b><p>확인을 위해 가족 비밀번호를 넣어 주세요.</p><input type="password" inputmode="numeric" autocomplete="off" maxlength="6" aria-label="가족 비밀번호"><p class="pin-guard-msg" role="alert"></p><div class="pin-guard-btns"><button type="button" data-x>취소</button><button type="button" class="pin-guard-ok" data-ok>끊기</button></div></div>';
+    document.body.appendChild(box);
+    var inp = box.querySelector('input'), msg = box.querySelector('.pin-guard-msg');
+    setTimeout(function () { try { inp.focus(); } catch (e) {} }, 30);
+    var go = function () { var v = inp.value.replace(/\D/g, ''); if (v.length < 4) { msg.textContent = '4~6자리 숫자야.'; return; } done(v, msg, function () { box.remove(); }); };
+    box.querySelector('[data-ok]').addEventListener('click', go);
+    inp.addEventListener('keydown', function (e) { e.stopPropagation(); if (e.key === 'Enter') go(); });
+    box.querySelector('[data-x]').addEventListener('click', function () { box.remove(); });
+  }
+  function revokeNow() {
+    askPin(function (pin, msg, close) {
+      msg.textContent = '정리하는 중…';
+      var ep = ('serviceWorker' in navigator && 'PushManager' in window) ? navigator.serviceWorker.ready.then(function (r) { return r.pushManager.getSubscription(); }).then(function (s) { return s ? s.endpoint : ''; }).catch(function () { return ''; }) : Promise.resolve('');
+      Promise.race([ep, new Promise(function (r) { setTimeout(function () { r(''); }, 1200); })]).then(function (endpoint) { return FamilySync.revoke(pin, endpoint); }).then(function (j) {
+        if (j && j._ok) { close(); notice('다른 기기 연결을 모두 끊었어요. 이 폰은 그대로 연결돼 있어요 🔌'); return; }
+        msg.textContent = j && j.error === 'wrong_pin' ? '가족 비밀번호가 달라요.' + (j.left != null ? ' (남은 기회 ' + j.left + '번)' : '') : j && j.error === 'locked' ? '여러 번 틀려서 잠시 막혔어요.' : '지금은 정리하지 못했어요. 인터넷 연결을 확인해 주세요.';
+      });
+    });
+  }
   function provText() {
     var l = (typeof FamilySync !== 'undefined' && FamilySync.live && FamilySync.live()) || null, p = l && l.prov;
     if (!l) return '가족 공유에 연결하면 확인할 수 있어.';
@@ -34,7 +62,7 @@
       ['🧠 AI 정리·질문', '보내는 건 글뿐(질문, 사진에서 읽은 글, 오늘 요약). ' + provText()],
       ['🗑 지우는 법', '노트는 복습 탭에서 × (이 폰 + 가족 서버 사진 같이 지워져, 다른 폰에 이미 받아둔 사진은 그 폰에 남을 수 있어) · 공부 자료는 흰둥이 설정에서 × · 이 폰 전체는 잠금 화면 "비밀번호 찾기 → 이 기기 기록 모두 지우기" · 가족 서버 전체 삭제는 보호자가 관리 화면에서.'],
       ['🔄 두 폰에서 동시에 고치면', '목록(할 일·시험·노트)은 양쪽 것을 합쳐서 남기고, 같은 항목을 둘 다 고쳤으면 나중에 올린 폰 것이 남아.'],
-      ['🔑 비밀번호', '가족 비밀번호는 15분에 10번, 하루에 30번 틀리면 막혀(하루 한도면 24시간 + 엄마 폰 알림). 번호를 바꾸면 다른 폰도 다음에 열 때 새 번호가 필요해.']
+      ['🔑 비밀번호', '가족 비밀번호는 15분에 10번, 하루에 30번 틀리면 막혀(하루 한도면 24시간 + 엄마 폰 알림). 번호를 바꾸면 다른 폰도 다음에 열 때 새 번호가 필요해. 폰을 잃어버리면 엄마 화면 설정 → 📱 연결된 기기 정리로 다른 폰 연결을 한 번에 끊을 수 있어.']
     ];
     return '<section class="card" id="set-data"><h2>🔒 내 자료는 어디에?</h2><ul class="sf-list">' + rows.map(function (r) { return '<li><b>' + r[0] + '</b><span>' + r[1] + '</span></li>'; }).join('') + '</ul></section>';
   }
@@ -44,10 +72,10 @@
     prev();
     if (tab !== 'settings') return;
     var root = document.getElementById('content'), anchor = document.getElementById('set-family') || document.getElementById('set-links');
-    var html = (isParent() ? guardCard() : '') + dataCard();
+    var html = (isParent() ? guardCard() + devCard() : '') + dataCard();
     if (anchor) anchor.insertAdjacentHTML('afterend', html); else root.insertAdjacentHTML('beforeend', html);
     var nav = document.querySelector('.set-jump');
-    if (nav && !nav.querySelector('[data-jump="set-data"]')) nav.insertAdjacentHTML('beforeend', (isParent() ? '<a href="#set-guard" data-jump="set-guard">엄마 확인</a>' : '') + '<a href="#set-data" data-jump="set-data">내 자료</a>');
+    if (nav && !nav.querySelector('[data-jump="set-data"]')) nav.insertAdjacentHTML('beforeend', (isParent() ? '<a href="#set-guard" data-jump="set-guard">엄마 확인</a><a href="#set-devices" data-jump="set-devices">기기 정리</a>' : '') + '<a href="#set-data" data-jump="set-data">내 자료</a>');
   };
 
   function push() { if (typeof FamilySync !== 'undefined' && FamilySync.pushNow) FamilySync.pushNow(); }
@@ -61,12 +89,13 @@
     if (G().on()) G().ask(go); else go();
   }, true);
   document.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('[data-sf-revoke]')) { revokeNow(); return; }
     var b = e.target.closest && e.target.closest('[data-sf-guard-off]'); if (!b) return;
     G().ask(function () { if (!confirm('엄마 확인 번호를 끌까요? 승준 폰에서도 바로 엄마 화면을 열 수 있게 돼요.')) return; G().set('').then(function () { push(); notice('엄마 확인 번호를 껐어요.'); render(); }); });
   });
 
   var css = document.createElement('style');
-  css.textContent = '.sf-st{margin:6px 0;font-weight:700;color:#2a2550}.sf-form{display:grid;grid-template-columns:1fr 1fr auto;gap:6px;margin:6px 0}.sf-form input{min-width:0}#set-guard>button{margin-top:4px}' +
+  css.textContent = '.sf-danger{border-color:#f0c4cc!important;color:#b3263f!important;background:#fff6f7!important;font-weight:700}.sf-st{margin:6px 0;font-weight:700;color:#2a2550}.sf-form{display:grid;grid-template-columns:1fr 1fr auto;gap:6px;margin:6px 0}.sf-form input{min-width:0}#set-guard>button{margin-top:4px}' +
     '.sf-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}.sf-list li{display:grid;gap:2px;font-size:14px;line-height:1.5}.sf-list b{font-size:14px;color:#2a2550}.sf-list span{color:#4f4b66}';
   document.head.appendChild(css);
   render();

@@ -25,7 +25,7 @@
   }
   function rejoin() {
     try { localStorage.removeItem(FAM); } catch (e) {}
-    toast('가족 비밀번호가 바뀌었어. 잠금 화면의 "가족 공유"로 다시 들어와줘. 이 기기 기록은 그대로야.');
+    toast('가족 연결이 새로 정리됐어. 다음에 열 때 가족 비밀번호를 넣으면 다시 연결돼. 이 기기 기록은 그대로야.');
   }
 
   /* 바뀐 키 찾기 (st = 이 기기가 마지막으로 맞춘 서버 시각) */
@@ -178,8 +178,16 @@
   }
   function status() { return api({ action: 'status' }); }
 
+  /* 다른 기기 연결 모두 끊기: 이 기기는 새 토큰으로 계속 연결 */
+  function revoke(pin, endpoint) {
+    var f = fam(); if (!f) return Promise.resolve({ _ok: false, error: 'not_joined' });
+    return api({ action: 'revoke', token: f.token, pin: pin, endpoint: endpoint || '', device: device() }).then(function (j) {
+      if (j._ok && j.token) { f.token = j.token; f.pv = j.pv; set(FAM, JSON.stringify(f)); }
+      return j;
+    });
+  }
   function call(body) { var f = fam(); if (!f) return Promise.resolve({ _ok: false, error: 'not_joined' }); body.token = f.token; return api(body); }
-  g.FamilySync = { call: call, join: join, init: init, setRole: setRole, status: status, start: start, joined: function () { return !!fam(); }, role: function () { var f = fam(); return f ? f.role : ''; }, pushNow: push, pullNow: function () { return pull(false); }, KEYS: KEYS, live: function () { return liveOk() ? { url: LIVE.url, t: LIVE.t, ai: !!LIVE.ai, prov: LIVE.prov || '' } : (LIVE ? { ai: !!LIVE.ai, prov: LIVE.nprov || '' } : null); }, liveState: function () { return es ? es.readyState : -1; } };
+  g.FamilySync = { call: call, revoke: revoke, join: join, init: init, setRole: setRole, status: status, start: start, joined: function () { return !!fam(); }, role: function () { var f = fam(); return f ? f.role : ''; }, pushNow: push, pullNow: function () { return pull(false); }, KEYS: KEYS, live: function () { return liveOk() ? { url: LIVE.url, t: LIVE.t, ai: !!LIVE.ai, prov: LIVE.prov || '' } : (LIVE ? { ai: !!LIVE.ai, prov: LIVE.nprov || '' } : null); }, liveState: function () { return es ? es.readyState : -1; } };
   if (!document.documentElement.classList.contains('pin-locked')) start(false);
   window.addEventListener('pin-unlocked', function () { start(false); });
 })(window);
