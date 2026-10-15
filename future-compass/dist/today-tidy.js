@@ -12,7 +12,7 @@
     prev();
     if (tab !== 'today') return;
     var root = document.getElementById('content'); if (!root) return;
-    if (isParent()) { var be = root.querySelector('#bo-exam'); if (be && root.querySelector('.pv-ex, .pv-sec')) be.remove(); return; }
+    if (isParent()) { var be = root.querySelector('#bo-exam'); if (be && root.querySelector('.pv-ex, .pv-sec')) be.remove(); momFold(root); return; }
     var brief = root.querySelector('#study-brief'), nx = root.querySelector('#nx-3h'), hero = root.querySelector('.hero-heal');
     if (brief && nx) { brief.classList.add('sb-has-3h'); nx.insertAdjacentElement('afterend', brief); }
     else if (brief && hero) hero.insertAdjacentElement('afterend', brief);
@@ -25,6 +25,22 @@
       d.addEventListener('toggle', function () { openAdd = d.open; });
     }
   };
+  /* 엄마 화면: 위에는 "오늘의 승준 + 추천 한마디"와 "오늘 도와줄 것"만, 나머지는 더 보기 */
+  var MOM_OPEN = 'fc-mom-more';
+  function momFold(root) {
+    if (root.querySelector('.mom-more')) return;
+    var keep = '.pv-head,.pv-motto,.pv-story,.pv-mom,.pv-cheer-line,.pv-req-line,.mom-more';
+    var out = [].slice.call(root.children).filter(function (el) { return !el.matches(keep) && el.matches('section,details,.card,.pv-guide'); });
+    if (out.length < 2) return;
+    var d = document.createElement('details'); d.className = 'more-cards mom-more';
+    try { if (localStorage.getItem(MOM_OPEN) === '1') d.open = true; } catch (e) {}
+    d.innerHTML = '<summary><b>📂 더 보기</b><small>오늘 진행 · 이번 주 · 일정·시험 · 응원 보내기</small></summary><div class="more-in"></div>';
+    var anchor = root.querySelector('.pv-mom') || root.querySelector('.pv-story') || root.querySelector('.pv-motto');
+    if (anchor) anchor.insertAdjacentElement('afterend', d); else root.appendChild(d);
+    var box = d.querySelector('.more-in'); out.forEach(function (el) { box.appendChild(el); });
+    var foot = root.querySelector('.pv-foot'); if (foot) d.insertAdjacentElement('afterend', foot);
+    d.addEventListener('toggle', function () { try { localStorage.setItem(MOM_OPEN, d.open ? '1' : '0'); } catch (e) {} });
+  }
   var css = document.createElement('style');
   css.textContent = '#study-brief.sb-has-3h .sb-summary-grid>.sb-cell:first-child{display:none}#study-brief.sb-has-3h .sb-summary-grid{grid-template-columns:1fr!important}' +
     '.tt-add{margin-top:10px;border-top:1.5px dashed var(--line,#e6e3f2);padding-top:8px}.tt-add>summary{cursor:pointer;list-style:none;font-weight:700;color:var(--violet,#5b45d6);padding:8px 2px;min-height:40px;display:flex;align-items:center}.tt-add>summary::-webkit-details-marker{display:none}.tt-add[open]>summary{color:#6b6880}';

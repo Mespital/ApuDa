@@ -159,6 +159,23 @@ export default async (req) => {
   }
 
   // 가족 비밀번호 확인(어느 기기든 같은 번호) · 바꾸기(한 번 바꾸면 모든 기기에 적용, 기기 연결은 유지)
+  // 다른 기기 연결 모두 끊기(잃어버린 폰 대비): 가족 비밀번호 확인 → 연결 버전(pv)을 올려 다른 기기 토큰 무효화, 이 기기만 새 토큰.
+  // 다른 가족 폰은 다음에 가족 비밀번호를 넣으면 자동으로 다시 연결된다. 폰 알림 구독도 이 폰 것만 남긴다(다른 폰은 다시 열면 자동 재등록).
+  if (b.action === 'revoke') {
+    const g = await failGate(store, now); if (g.locked) return g.locked;
+    if (!pinOk(b.pin)) return json({ error: 'bad_pin' }, 400);
+    if (!pinMatch(b.pin)) return failAdd(store, g, now);
+    if (g.all.length) await store.setJSON('fails', []);
+    const next = { ...cfg, pv: (Number(cfg.pv) || 1) + 1, at: new Date(now).toISOString(), by: 'revoke' };
+    await store.setJSON('config', next);
+    const tok = randomBytes(24).toString('hex');
+    await store.setJSON('tok:' + sha(tok), { pv: next.pv, device: String(b.device || '').slice(0, 8), at: new Date(now).toISOString() });
+    const subs = await getSubs(store), keep = typeof b.endpoint === 'string' ? b.endpoint : ''; let removed = 0;
+    for (const [id, s0] of Object.entries(subs)) if (!keep || !s0 || !s0.sub || s0.sub.endpoint !== keep) { delete subs[id]; removed++; }
+    if (removed) await store.setJSON('push-subs', subs);
+    return json({ ok: true, token: tok, pv: next.pv, removedSubs: removed });
+  }
+
   if (b.action === 'verify' || b.action === 'change') {
     const g = await failGate(store, now); if (g.locked) return g.locked;
     const check = b.action === 'verify' ? b.pin : b.old;

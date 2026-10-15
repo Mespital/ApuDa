@@ -1,0 +1,26 @@
+// 가족 서버 "다른 기기 연결 모두 끊기"(revoke) 검사: 비번 확인, 다른 기기 토큰 무효화, 이 기기 새 토큰, 알림 구독 정리, 비번으로 재연결
+import assert from 'node:assert/strict'; import fs from 'node:fs'; import os from 'node:os'; import path from 'node:path'; import { fileURLToPath, pathToFileURL } from 'node:url';
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const T = fs.mkdtempSync(path.join(os.tmpdir(), 'fc-revoke-'));
+for (const d of ['netlify/functions', 'netlify/lib', 'live']) fs.mkdirSync(path.join(T, d), { recursive: true });
+for (const f of ['shiro.mjs', 'rag.mjs']) fs.copyFileSync(path.join(root, 'live', f), path.join(T, 'live', f));
+fs.writeFileSync(path.join(T, 'blobs.mjs'), "const M = globalThis.__M || (globalThis.__M = new Map());\nexport function getStore() { return { get: async (k, o) => { const v = M.get(k); return v == null ? null : (o && o.type === 'json' ? JSON.parse(v) : v); }, setJSON: async (k, v) => M.set(k, JSON.stringify(v)), set: async (k, v) => M.set(k, v), delete: async k => M.delete(k) }; }\n");
+fs.writeFileSync(path.join(T, 'netlify/lib/push-core.mjs'), "export const vapid = async () => ({ publicKey: 'x', privateKey: 'y' });\nexport async function getSubs(store) { return (await store.get('push-subs', { type: 'json' })) || {}; }\nexport const cleanSub = s => s, cleanPrefs = p => p;\nexport async function sendTo() { return 1; }\n");
+fs.writeFileSync(path.join(T, 'netlify/functions/family.mjs'), fs.readFileSync(path.join(root, 'netlify/functions/family.mjs'), 'utf8').replace("from '@netlify/blobs'", "from '../../blobs.mjs'"));
+delete process.env.FC_FAMILY_PIN;
+const { default: h } = await import(pathToFileURL(path.join(T, 'netlify/functions/family.mjs')).href);
+const call = async b => { const r = await h(new Request('https://x/api/family', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(b) })); return { s: r.status, j: await r.json() }; };
+let r = await call({ action: 'init', pin: '1234', device: 'A' }); assert.equal(r.s, 200); const tA = r.j.token;
+r = await call({ action: 'join', pin: '1234', device: 'B' }); const tB = r.j.token;
+globalThis.__M.set('push-subs', JSON.stringify({ a: { sub: { endpoint: 'epA' } }, b: { sub: { endpoint: 'epB' } } }));
+r = await call({ action: 'revoke', token: tA, pin: '9999' }); assert.equal(r.s, 401);
+r = await call({ action: 'revoke', token: tA, pin: '1234', endpoint: 'epA' }); assert.equal(r.s, 200); const tA2 = r.j.token;
+assert.equal((await call({ action: 'pull', token: tB })).j.error, 'rejoin');
+assert.equal((await call({ action: 'pull', token: tA })).j.error, 'rejoin');
+assert.equal((await call({ action: 'pull', token: tA2 })).s, 200);
+assert.deepEqual(Object.keys(JSON.parse(globalThis.__M.get('push-subs'))), ['a']);
+r = await call({ action: 'join', pin: '1234', device: 'B' }); assert.equal(r.s, 200);
+assert.equal((await call({ action: 'pull', token: r.j.token })).s, 200);
+assert.equal((await call({ action: 'revoke', token: 'f'.repeat(48), pin: '1234' })).s, 401);
+fs.rmSync(T, { recursive: true, force: true });
+console.log('revoke ok');

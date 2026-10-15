@@ -33,6 +33,13 @@
     }).catch(function () { notice('알림을 켜지 못했어. 잠시 뒤 다시 해줘.'); });
   }
   function save(sub) { var j = sub.toJSON ? sub.toJSON() : sub; return call({ action: 'push-sub', sub: j, role: who(), prefs: prefs(), device: (localStorage.getItem('fc-device-id') || '').slice(0, 8) }); }
+  /* 서버 구독이 사라졌을 때(기기 연결 정리 등) 이 폰이 알림 켠 상태면 조용히 다시 등록 — 하루 1번 */
+  function resync() {
+    try { if (!supported || Notification.permission !== 'granted' || !st().on || typeof FamilySync === 'undefined' || !FamilySync.joined()) return; var k = 'fc-push-resync', d = new Date().toISOString().slice(0, 10); if (localStorage.getItem(k) === d) return; localStorage.setItem(k, d); } catch (e) { return; }
+    navigator.serviceWorker.ready.then(function (r) { return r.pushManager.getSubscription(); }).then(function (s) { if (s) save(s); }).catch(function () {});
+  }
+  setTimeout(resync, 6000); window.addEventListener('pin-unlocked', function () { setTimeout(resync, 8000); });
+  window.addEventListener('fc-family-relinked', function () { try { localStorage.removeItem('fc-push-resync'); } catch (e) {} setTimeout(resync, 3000); });
   function disable() {
     currentSub().then(function (s) { if (!s) return; call({ action: 'push-unsub', endpoint: s.endpoint }); return s.unsubscribe(); }).finally(function () { var s0 = st(); s0.on = 0; setSt(s0); notice('이 폰 알림을 껐어.'); render(); });
   }

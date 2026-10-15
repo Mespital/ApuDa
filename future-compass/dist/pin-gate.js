@@ -335,6 +335,7 @@
         try { var st = readStored(); st.family = true; lsSet(PIN_KEY, JSON.stringify(st)); } catch (e) {}
         var w = getWho(); if (w) FamilySync.setRole(w);
         whoFamily = true;
+        try { window.dispatchEvent(new Event('fc-family-relinked')); } catch (e) {}
         if (!gate || !gate.isConnected) { FamilySync.start(true); toast('가족 공유 연결 완료 👨‍👩‍👧 이제 어느 폰에서든 이 번호로 똑같이 보여.'); }
       } else if (j && j.error === 'wrong_pin') toast('이 번호는 가족 비밀번호와 달라서 공유 연결은 안 됐어. ⚙️ 설정 → 가족 공유에서 가족 번호로 연결해줘.');
     });
