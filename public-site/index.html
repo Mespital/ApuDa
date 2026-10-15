@@ -1162,8 +1162,8 @@
   }
 
   function positionConnector(f){
-    if(!matchMedia('(min-width:1100px)').matches || !guideBtns[f] || !wallLabels[f]) return false;
-    var from=guideBtns[f].getBoundingClientRect(), to=wallLabels[f].getBoundingClientRect();
+    if(!matchMedia('(min-width:1100px)').matches || !guideBtns[f] || !hz[f]) return false;
+    var from=guideBtns[f].getBoundingClientRect(), to=hz[f].getBoundingClientRect();
     var x1=from.right+2, y1=from.top+from.height/2, x2=to.left-10, y2=to.top+to.height/2;
     if(x2<=x1+18) return false;
     var mid=x1+(x2-x1)*.58, verticalTop=Math.min(y1,y2), verticalHeight=Math.max(2,Math.abs(y2-y1));
