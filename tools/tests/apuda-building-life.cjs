@@ -68,7 +68,7 @@ function setup({ reduced = false, saveData = false, mobile = false, deferredPlay
   normal.life.suspend(); assert.equal(normal.video.paused, true);
   normal.document.hidden = true; normal.listeners.visibilitychange();
   normal.document.hidden = false; normal.listeners.visibilitychange(); await settle();
-  assert.equal(normal.frame.classList.contains('life-paused'), true, 'Returning to an open detail window must keep all resident CSS animation paused');
+  assert.equal(normal.frame.classList.contains('life-paused'), true, 'Returning to an open detail window must keep the building motion paused');
   assert.equal(normal.video.paused, true);
   normal.life.resume(); await settle(); assert.equal(normal.frame.dataset.buildingLife, 'playing');
   const quiet = setup({ reduced: true }); quiet.life.start(); await settle();
@@ -86,12 +86,13 @@ function setup({ reduced = false, saveData = false, mobile = false, deferredPlay
   assert.equal(normal.frame.classList.contains('life-playing'), true, 'Keep the exact last video frame while the detail window is open');
   function flatten(e) { return [e].concat(e.children.flatMap(flatten)); }
   const nodes=flatten(normal.frame);
-  assert.equal(nodes.filter(e => (e.attrs.class || '').includes('life-walker-route')).length,5);
+  assert.equal(nodes.filter(e => /life-walker|life-resident/.test(e.attrs.class || '')).length,0, 'Keep only the original people in the building footage');
   assert.equal(nodes.filter(e => e.attrs.class === 'apuda-roof-letter').length,5);
-  assert.equal(nodes.filter(e => e.attrs.class === 'life-resident-sit-film').length,5);
-  assert.deepEqual(nodes.filter(e => e.attrs['data-walker-floor']).map(e=>e.attrs['data-walker-floor']),['1','2','3','4','5']);
+  assert.equal(nodes.filter(e => e.attrs['data-walker-floor']).length,0, 'Do not add replacement people or chairs to any floor');
   assert(nodes.some(e => e.textContent === '아프지만, 다행이다.'));
-  assert.equal(flatten(quiet.frame).filter(e => e.attrs.href === '/assets/image/apuda-walk-cycle-v1.png').length,0);
-  assert.equal(flatten(saver.frame).filter(e => e.attrs.href === '/assets/image/apuda-walk-cycle-v1.png').length,0);
-  console.log('PASS: 1F-to-5F timing, one decoder, reduced motion, data saver, visibility, detail navigation, rejected autoplay and playback races');
+  [normal,quiet,saver].forEach(state => {
+    assert.equal(flatten(state.frame).filter(e => /apuda-(walk|sit)-cycle/.test(e.attrs.href || '')).length,0, 'Do not request the added-person sprite sheets');
+  });
+  assert.equal(normal.video.src, '/assets/video/building-life-91eb77cdc84a.mp4', 'Retain the original-building animation');
+  console.log('PASS: original people only, no added chairs or sprite requests, 1F-to-5F timing, one decoder, reduced motion, data saver, visibility, detail navigation, rejected autoplay and playback races');
 })().catch(error => { console.error(error); process.exitCode = 1; });

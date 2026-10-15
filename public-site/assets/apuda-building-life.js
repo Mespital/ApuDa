@@ -2,8 +2,6 @@
   'use strict';
   var NS = 'http://www.w3.org/2000/svg';
   var VIDEO = '/assets/video/building-life-91eb77cdc84a.mp4';
-  var WALK = '/assets/image/apuda-walk-cycle-v1.png';
-  var SIT = '/assets/image/apuda-sit-cycle-v1.png';
   // Coordinates refer to the unchanged 1672 x 941 master image.
   var rooms = [
     { floor: 1, room: '525,742 1086,741 1172,752 1172,883 1086,879 525,832', ceiling: '541,745 1075,746', screen: [847,761,129,68] },
@@ -25,7 +23,7 @@
     var lowData = !!(navigator.connection && navigator.connection.saveData);
     var reduced = motion.matches;
     var started = false, complete = false, suspended = false, playPending = false;
-    var generation = 0, animations = [], shades = [], ceiling = [], walkersMounted = false, monitors = null;
+    var generation = 0, animations = [], shades = [], ceiling = [], monitors = null;
     frame.classList.toggle('life-reduced', reduced);
     frame.classList.toggle('life-low-data', lowData);
 
@@ -81,40 +79,6 @@
     tagline.textContent = '아프지만, 다행이다.'; face.appendChild(tagline);
     sign.appendChild(face); frame.appendChild(sign);
 
-    function enableWalkers() {
-      if (walkersMounted || reduced || lowData) return;
-      walkersMounted = true;
-      var chairGradient = node('linearGradient', { id: 'apuda-chair-fabric', x1: '0', y1: '0', x2: '1', y2: '1' });
-      chairGradient.appendChild(node('stop', { offset: '0', 'stop-color': '#b7c3cb' }));
-      chairGradient.appendChild(node('stop', { offset: '1', 'stop-color': '#7f909d' }));
-      definitions.appendChild(chairGradient);
-      [
-        { floor: 1, y: 777, from: 1121, seat: 1011, height: 105, period: 24, delay: -2.8 },
-        { floor: 2, y: 632, from: 1120, seat: 1058, height: 101, period: 25, delay: -10.1 },
-        { floor: 3, y: 492, from: 1121, seat: 1051, height: 100, period: 23, delay: -16.4 },
-        { floor: 4, y: 338, from: 1118, seat: 1026, height: 102, period: 26, delay: -7.5 },
-        { floor: 5, y: 188, from: 1120, seat: 1030, height: 100, period: 22, delay: -19.2 }
-      ].forEach(function (route) {
-        var clock = '--resident-period:' + route.period + 's;--resident-delay:' + route.delay + 's;';
-        var position = node('g', { transform: 'translate(0,' + route.y + ')', 'class': 'life-walker life-resident', 'data-walker-floor': route.floor });
-        var chair = node('g', { transform: 'translate(' + route.seat + ',0) scale(' + (route.height / 105) + ')', 'class': 'life-resident-chair' });
-        chair.appendChild(node('path', { d: 'M12 58Q12 54 16 54H20Q24 54 24 59V79H13Z', fill: 'url(#apuda-chair-fabric)', stroke: '#718390', 'stroke-width': '.6' }));
-        chair.appendChild(node('rect', { x: '15', y: '76', width: '24', height: '6', rx: '2', fill: 'url(#apuda-chair-fabric)', stroke: '#718390', 'stroke-width': '.6' }));
-        chair.appendChild(node('path', { d: 'M18 82V98M35 82V98M14 98H23M31 98H40', stroke: '#777b7c', 'stroke-width': '1.6', 'stroke-linecap': 'round', fill: 'none' }));
-        position.appendChild(chair);
-        var travel = node('g', { 'class': 'life-walker-route life-resident-route', style: clock + '--resident-from:' + route.from + 'px;--resident-seat:' + route.seat + 'px' });
-        var walking = node('g', { 'class': 'life-resident-walk', style: clock });
-        var turn = node('g', { 'class': 'life-walker-turn life-resident-turn', style: clock + '--walk-center:' + (route.height / 4) + 'px' });
-        var sprite = node('svg', { width: route.height / 2, height: route.height, viewBox: '0 0 362 724', overflow: 'hidden' });
-        sprite.appendChild(node('image', { 'class': 'life-walker-film', href: WALK, width: '2172', height: '724', preserveAspectRatio: 'none' }));
-        turn.appendChild(sprite); walking.appendChild(turn); travel.appendChild(walking);
-        var seated = node('g', { 'class': 'life-resident-seat', style: clock });
-        var breathing = node('g', { 'class': 'life-resident-breathe', style: '--breathe-delay:' + (-route.floor * .47) + 's' });
-        var sitSprite = node('svg', { width: route.height / 2, height: route.height, viewBox: '0 0 443.5 887', overflow: 'hidden' });
-        sitSprite.appendChild(node('image', { 'class': 'life-resident-sit-film', href: SIT, width: '1774', height: '887', preserveAspectRatio: 'none', style: clock }));
-        breathing.appendChild(sitSprite); seated.appendChild(breathing); travel.appendChild(seated); position.appendChild(travel); scene.appendChild(position);
-      });
-    }
     function syncViewport() {
       scene.setAttribute('viewBox', mobile.matches ? '444 0 775 941' : '0 0 1672 941');
       sign.setAttribute('viewBox', mobile.matches ? '444 0 775 941' : '0 0 1672 941');
@@ -128,7 +92,6 @@
 
     function play() {
       if (!complete || suspended || reduced || lowData || document.hidden || playPending) return;
-      enableWalkers();
       if (!monitors && global.ApuDaBuildingMonitors) monitors = global.ApuDaBuildingMonitors.mount({ frame: frame });
       if (monitors) monitors.resume();
       var token = ++generation;
@@ -197,5 +160,6 @@
   }
   global.ApuDaBuildingLife = Object.freeze({ mount: mount });
 })(window);
+
 
 
