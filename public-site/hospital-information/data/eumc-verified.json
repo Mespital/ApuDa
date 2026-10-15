@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "source": "이대목동병원 공식 진료과 의료진 및 전문진료분야",
-  "generated_at": "2026-10-14T23:59:39+00:00",
+  "generated_at": "2026-10-15T23:43:19+00:00",
   "count": 23,
   "results": [
     {
@@ -12,7 +12,7 @@
       "specialty_text": "췌담도분야(담석증, 담낭암, 담도암, 췌장염, 췌장암) ※< >특수진료(15:00까지 진료)",
       "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=IMG&dr_sid=1016155",
       "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=IMG&grp_yn=N",
-      "verified_at": "2026-10-14T23:59:39+00:00",
+      "verified_at": "2026-10-15T23:43:19+00:00",
       "status": "ACTIVE",
       "verification_method": "official_schedule_explicit_specialty_profile",
       "cancers": [
@@ -38,7 +38,7 @@
       "specialty_text": "대장질환(대장용종, 대장암, 염증성장질환, 기능성장질환), 대장 치료내시경, 캡슐내시경, 소장내시경, 위식도질환",
       "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=IMG&dr_sid=1003746",
       "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=IMG&grp_yn=N",
-      "verified_at": "2026-10-14T23:59:39+00:00",
+      "verified_at": "2026-10-15T23:43:19+00:00",
       "status": "ACTIVE",
       "verification_method": "official_schedule_explicit_specialty_profile",
       "cancers": [
@@ -56,7 +56,7 @@
       "specialty_text": "악안면기형 및 양악수술, 악골괴사증, 구강암, 구강종양, 악안면재건, 임플란트, 안면골절, 신경손상",
       "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=OMS&dr_sid=1007956",
       "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=OMS&grp_yn=N",
-      "verified_at": "2026-10-14T23:59:39+00:00",
+      "verified_at": "2026-10-15T23:43:19+00:00",
       "status": "ACTIVE",
       "verification_method": "official_schedule_explicit_specialty_profile",
       "cancers": [
@@ -74,7 +74,7 @@
       "specialty_text": "악안면기형 및 양악수술, 악골괴사증, 구강암, 구강종양, 악안면재건, 임플란트, 안면골절, 신경손상",
       "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=OMS&dr_sid=1007330",
       "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=OMS&grp_yn=N",
-      "verified_at": "2026-10-14T23:59:39+00:00",
+      "verified_at": "2026-10-15T23:43:19+00:00",
       "status": "ACTIVE",
       "verification_method": "official_schedule_explicit_specialty_profile",
       "cancers": [
@@ -92,7 +92,7 @@
       "specialty_text": "유방재건 및 유방성형, 미세수술 재건, 림프 부종, 악성 흑색종",
       "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=PS&dr_sid=1014594",
       "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=PS&grp_yn=N",
-      "verified_at": "2026-10-14T23:59:39+00:00",
+      "verified_at": "2026-10-15T23:43:19+00:00",
       "status": "ACTIVE",
       "verification_method": "official_schedule_explicit_specialty_profile",
       "cancers": [
@@ -110,7 +110,7 @@
       "specialty_text": "대장질환 (대장용종, 대장암, 기능성장질환), 대장 치료내시경, 캡슐내시경, 소장내시경, 위식도질환",
       "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=IMG&dr_sid=1017804",
       "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=IMG&grp_yn=N",
-      "verified_at": "2026-10-14T23:59:39+00:00",
+      "verified_at": "2026-10-15T23:43:19+00:00",
       "status": "ACTIVE",
       "verification_method": "official_schedule_explicit_specialty_profile",
       "cancers": [
@@ -128,7 +128,7 @@
       "specialty_text": "폐암, 식도암, 흉선암, 최소침습수술, 흉강경 수술, 로봇수술, 종격동 질환, 기흉, 일반 흉부질환",
       "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=CS&dr_sid=1017895",
       "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=CS&grp_yn=N",
-      "verified_at": "2026-10-14T23:59:39+00:00",
+      "verified_at": "2026-10-15T23:43:19+00:00",
       "status": "ACTIVE",
       "verification_method": "official_schedule_explicit_specialty_profile",
       "cancers": [
@@ -150,7 +150,7 @@
       "specialty_text": "갑상선질환(갑상선암) 초음파진단 및 시술",
       "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=DR&dr_sid=1022233",
       "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=DR&grp_yn=N",
-      "verified_at": "2026-10-14T23:59:39+00:00",
+      "verified_at": "2026-10-15T23:43:19+00:00",
       "status": "ACTIVE",
       "verification_method": "official_schedule_explicit_specialty_profile",
       "cancers": [
@@ -168,7 +168,7 @@
       "specialty_text": "유방암, 혈액암, 피부암, 육종, 부인종양암",
       "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=TR&dr_sid=1023205",
       "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=TR&grp_yn=N",
-      "verified_at": "2026-10-14T23:59:39+00:00",
+      "verified_at": "2026-10-15T23:43:19+00:00",
       "status": "ACTIVE",
       "verification_method": "official_schedule_explicit_specialty_profile",
       "cancers": [
@@ -190,7 +190,7 @@
       "specialty_text": "소아혈액질환(빈혈, 자반, 출혈), 혈관종, 림프절질환(경부림프절비대, 림프절염, 림프관종), 혈액종양질환(백혈병, 림프종, 뇌종양, 신경모세포종, 조직구증식증, 기타소아암), 조혈모세포이식 ※진료장소 : 2층 혈액내과",
       "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=PGE&dr_sid=1001705",
       "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=PGE&grp_yn=N",
-      "verified_at": "2026-10-14T23:59:39+00:00",
+      "verified_at": "2026-10-15T23:43:19+00:00",
       "status": "ACTIVE",
       "verification_method": "official_schedule_explicit_specialty_profile",
       "cancers": [
@@ -220,7 +220,7 @@
       "specialty_text": "유방암(임상시험포함)",
       "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=IMH&dr_sid=1003308",
       "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=IMH&grp_yn=N",
-      "verified_at": "2026-10-14T23:59:39+00:00",
+      "verified_at": "2026-10-15T23:43:19+00:00",
       "status": "ACTIVE",
       "verification_method": "official_schedule_explicit_specialty_profile",
       "cancers": [
@@ -238,7 +238,7 @@
       "specialty_text": "췌담도분야(담석증,담낭암,담도암,췌장염,췌장암)",
       "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=IMG&dr_sid=1001518",
       "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=IMG&grp_yn=N",
-      "verified_at": "2026-10-14T23:59:39+00:00",
+      "verified_at": "2026-10-15T23:43:19+00:00",
       "status": "ACTIVE",
       "verification_method": "official_schedule_explicit_specialty_profile",
       "cancers": [
@@ -264,7 +264,7 @@
       "specialty_text": "복부영상의학(방사선과학), 복부 초음파 및 초음파 유도하의 중재적 시술, 간 및 복부의 조직검사와 배농, 간암 및 간전이의 고주파 열치료",
       "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=DR&dr_sid=1002959",
       "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=DR&grp_yn=N",
-      "verified_at": "2026-10-14T23:59:39+00:00",
+      "verified_at": "2026-10-15T23:43:19+00:00",
       "status": "ACTIVE",
       "verification_method": "official_schedule_explicit_specialty_profile",
       "cancers": [
@@ -282,7 +282,7 @@
       "specialty_text": "유방암, 두경부암, 폐암, 식도암, 뇌종양",
       "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=TR&dr_sid=1005989",
       "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=TR&grp_yn=N",
-      "verified_at": "2026-10-14T23:59:39+00:00",
+      "verified_at": "2026-10-15T23:43:19+00:00",
       "status": "ACTIVE",
       "verification_method": "official_schedule_explicit_specialty_profile",
       "cancers": [
@@ -316,7 +316,7 @@
       "specialty_text": "식도암, 위암 검진 및 치료, 위암.대장암 치료내시경",
       "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=IMG&dr_sid=1008998",
       "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=IMG&grp_yn=N",
-      "verified_at": "2026-10-14T23:59:39+00:00",
+      "verified_at": "2026-10-15T23:43:19+00:00",
       "status": "ACTIVE",
       "verification_method": "official_schedule_explicit_specialty_profile",
       "cancers": [
@@ -342,7 +342,7 @@
       "specialty_text": "간암, 간경변, B형간염, C형간염, 급성간염, 알코올간질환, 지방간, 독성간염, 자가면역간질환, 간기능검사이상",
       "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=IMG&dr_sid=1021479",
       "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=IMG&grp_yn=N",
-      "verified_at": "2026-10-14T23:59:39+00:00",
+      "verified_at": "2026-10-15T23:43:19+00:00",
       "status": "ACTIVE",
       "verification_method": "official_schedule_explicit_specialty_profile",
       "cancers": [
@@ -360,7 +360,7 @@
       "specialty_text": "위식도질환(위암, 식도암, 역류성식도염, 소화불량, 위궤양, 상피하종양, 헬리코박터 파이로리), 대장질환, 치료내시경, 위장관기능검사",
       "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=IMG&dr_sid=1002327",
       "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=IMG&grp_yn=N",
-      "verified_at": "2026-10-14T23:59:39+00:00",
+      "verified_at": "2026-10-15T23:43:19+00:00",
       "status": "ACTIVE",
       "verification_method": "official_schedule_explicit_specialty_profile",
       "cancers": [
@@ -382,7 +382,7 @@
       "specialty_text": "비뇨기암(방광암, 전립선암, 신장암, 고환암, 부신암등), 대장암, 담도암, 췌장암, 간암",
       "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=IMH&dr_sid=1013917",
       "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=IMH&grp_yn=N",
-      "verified_at": "2026-10-14T23:59:39+00:00",
+      "verified_at": "2026-10-15T23:43:19+00:00",
       "status": "ACTIVE",
       "verification_method": "official_schedule_explicit_specialty_profile",
       "cancers": [
@@ -428,7 +428,7 @@
       "specialty_text": "폐암, 만성폐쇄성폐질환, 천식, 금연, 코로나 후유증 클리닉",
       "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=IMP&dr_sid=1001707",
       "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=IMP&grp_yn=N",
-      "verified_at": "2026-10-14T23:59:39+00:00",
+      "verified_at": "2026-10-15T23:43:19+00:00",
       "status": "ACTIVE",
       "verification_method": "official_schedule_explicit_specialty_profile",
       "cancers": [
@@ -446,7 +446,7 @@
       "specialty_text": "간암, 간경변, B형간염, C형간염, 급성간염, 알코올 간질환, 지방간, 독성간염, 자가면역간질환, 간기능검사",
       "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=IMG&dr_sid=1020929",
       "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=IMG&grp_yn=N",
-      "verified_at": "2026-10-14T23:59:39+00:00",
+      "verified_at": "2026-10-15T23:43:19+00:00",
       "status": "ACTIVE",
       "verification_method": "official_schedule_explicit_specialty_profile",
       "cancers": [
@@ -464,7 +464,7 @@
       "specialty_text": "식도암, 두경부암, 폐암, 위암, 췌담도암, 대장암, 유방암, 기타 고형암",
       "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=IMH&dr_sid=1008797",
       "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=IMH&grp_yn=N",
-      "verified_at": "2026-10-14T23:59:39+00:00",
+      "verified_at": "2026-10-15T23:43:19+00:00",
       "status": "ACTIVE",
       "verification_method": "official_schedule_explicit_specialty_profile",
       "cancers": [
@@ -506,7 +506,7 @@
       "specialty_text": "간암 경동맥치료, 림파틱 인터벤션, 간이식 관련 인터벤션",
       "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=DR&dr_sid=1024213",
       "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=DR&grp_yn=N",
-      "verified_at": "2026-10-14T23:59:39+00:00",
+      "verified_at": "2026-10-15T23:43:19+00:00",
       "status": "ACTIVE",
       "verification_method": "official_schedule_explicit_specialty_profile",
       "cancers": [
@@ -524,7 +524,7 @@
       "specialty_text": "폐암, 기관지확장증, 만성폐쇄성폐질환, 천식, 폐결핵, 간질성폐질환",
       "profile_url": "https://mokdong.eumc.ac.kr/doctor/basicInfo.do?dept_cd=IMP&dr_sid=1011076",
       "source_url": "https://mokdong.eumc.ac.kr/medical/dept/deptScheduleInfo.do?dept_cd=IMP&grp_yn=N",
-      "verified_at": "2026-10-14T23:59:39+00:00",
+      "verified_at": "2026-10-15T23:43:19+00:00",
       "status": "ACTIVE",
       "verification_method": "official_schedule_explicit_specialty_profile",
       "cancers": [
