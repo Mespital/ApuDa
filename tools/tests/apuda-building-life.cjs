@@ -66,6 +66,10 @@ function setup({ reduced = false, saveData = false, mobile = false, deferredPlay
   normal.document.hidden = false; normal.listeners.visibilitychange(); await settle();
   assert.equal(normal.frame.dataset.buildingLife, 'playing');
   normal.life.suspend(); assert.equal(normal.video.paused, true);
+  normal.document.hidden = true; normal.listeners.visibilitychange();
+  normal.document.hidden = false; normal.listeners.visibilitychange(); await settle();
+  assert.equal(normal.frame.classList.contains('life-paused'), true, 'Returning to an open detail window must keep all resident CSS animation paused');
+  assert.equal(normal.video.paused, true);
   normal.life.resume(); await settle(); assert.equal(normal.frame.dataset.buildingLife, 'playing');
   const quiet = setup({ reduced: true }); quiet.life.start(); await settle();
   assert.equal(quiet.frame.dataset.buildingLightPhase, 'ready'); assert.equal(quiet.allAnimations.length, 0); assert.equal(quiet.video.src, undefined);

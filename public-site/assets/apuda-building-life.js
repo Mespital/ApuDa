@@ -180,7 +180,7 @@
     function resume() { suspended = false; syncViewport(); if (!document.hidden) frame.classList.remove('life-paused'); if (!started) start(); else play(); }
     document.addEventListener('visibilitychange', function () {
       if (document.hidden) { animations.forEach(function (animation) { animation.pause(); }); pause(); }
-      else { frame.classList.remove('life-paused'); animations.forEach(function (animation) { if (animation.playState === 'paused') animation.play(); }); play(); }
+      else { if (!suspended) { frame.classList.remove('life-paused'); animations.forEach(function (animation) { if (animation.playState === 'paused') animation.play(); }); } play(); }
     });
     motion.addEventListener('change', function (event) {
       reduced = event.matches;
