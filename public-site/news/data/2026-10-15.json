@@ -1,0 +1,395 @@
+{
+  "version": "1.2",
+  "report_date": "2026-10-15",
+  "collection_window": {
+    "start": "2026-10-14T09:00:00+09:00",
+    "end": "2026-10-15T09:00:00+09:00",
+    "timezone": "Asia/Seoul"
+  },
+  "sources": [
+    "데일리팜",
+    "의학신문",
+    "메디파나뉴스",
+    "약사공론"
+  ],
+  "briefing": "의학계, 호흡기질환 지원 호소…산정특례·약제 급여 확대 촉구가 오늘 가장 중요한 이슈로 부각됐습니다. 이어 IPF 치료 선택지 확대 움직임…'닌테다닙' 급여·제네릭 주목도 주요 변화로 확인됐습니다. 전체적으로는 정책·급여 · 신약·임상 흐름이 두드러집니다.",
+  "top_news": [
+    {
+      "rank": 1,
+      "canonical_issue": "의학계, 호흡기질환 지원 호소…산정특례·약제 급여 확대 촉구 - 의학신문",
+      "title": "의학계, 호흡기질환 지원 호소…산정특례·약제 급여 확대 촉구",
+      "category": [
+        "정책",
+        "급여"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-15T06:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=정광성 기자] 중증 호흡기질환 환자의 의료비 부담을 줄이고 치료 기회를 넓히기 위해 산정특례와 치료제 급여 등 정책 지원을 확대해야 한다는 의",
+        "[의학신문·일간보사=정광성 기자] 중증 호흡기질환 환자의 의료비 부담을 줄이고 치료 기회를 넓히기 위해 산정특례와 치료제 급여 등 정책 지원을 확대해야 한다는 의학계의 목소리가 나왔다.",
+        "호흡기내과 전문가들은 지난 14일 열린 ‘2026년 폐의 날 정책토론회’에서 중증 만성폐쇄성질환(COPD) 지원과 간질성폐질환(ILD)의 치료 접근성 개선을 위한 제도 보안을 요구했다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3013922"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013922"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3013922_414851_2020.jpg",
+      "score": 67,
+      "oncology": null
+    },
+    {
+      "rank": 2,
+      "canonical_issue": "IPF 치료 선택지 확대 움직임…'닌테다닙' 급여·제네릭 주목 - 메디파나뉴스",
+      "title": "IPF 치료 선택지 확대 움직임…'닌테다닙' 급여·제네릭 주목",
+      "category": [
+        "급여",
+        "약가"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-15T06:02:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "특발성폐섬유증(IPF) 치료 선택지가 확대될지 주목된다. '닌테다닙' 오리지널 의약품 '오페브'의 IPF 급여 확대가 약가협상 단계에 들어갔다. 국내 제네릭까지 IPF 급여 시장에 진입하면 성분과 가격 선택지가 함께 늘어날 전망이다. '오페브' IPF 급여 확대 협상…두 번째 성분 선택지 기대 14일 관",
+        "제공=한국베링거인겔하임 특발성폐섬유증(IPF) 치료 선택지가 확대될지 주목된다.",
+        "'닌테다닙' 오리지널 의약품 '오페브'의 IPF 급여 확대가 약가협상 단계에 들어갔다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=419327"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=419327"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419327_326761_2134.jpg",
+      "score": 65,
+      "oncology": null
+    },
+    {
+      "rank": 3,
+      "canonical_issue": "美, AI 활용 임상 신청 급증…AI가 만든 혁신신약은 3상 진입 - 메디파나뉴스",
+      "title": "美, AI 활용 임상 신청 급증…AI가 만든 혁신신약은 3상 진입",
+      "category": [
+        "수가",
+        "3상",
+        "약국",
+        "ai"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-14T14:39:09+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "인공지능(AI) 기술이 신약 개발 판도를 바꾸고 있는 가운데, 미국에서는 식품의약국(FDA)에 신청되는 AI 활용 임상 승인 건수가 한 해 500건 수준으로 늘면서 검증 체계 강화가 본격화되고 있다. 또 AI를 통해 발굴된 후 글로벌 3상까지 진입한 혁신적 신약 사례도 조명받고 있다. 14일 서울 롯데호",
+        "치 리우(Qi Liu) 미국 식품의약국(FDA) 의약품평가연구센터(CDER) 중개과학국(OTS) 계산과학실 국장대행이 14일 서울 롯데호텔에서 열린 '2026 KoNECT-MOHW-MFDS International Conference'에서 AI를 활용한 의약품 규제 의사결정 사례와 신뢰성 평가 방향을 설명하고 있다.",
+        "사진=민준영 기자 인공지능(AI) 기술이 신약 개발 판도를 바꾸고 있는 가운데, 미국에서는 식품의약국(FDA)에 신청되는 AI 활용 임상 승인 건수가 한 해 500건 수준으로 늘면서 검증 체계 강화가 본격화되고 있다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=419286"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=419286"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419286_326718_1013.jpg",
+      "score": 60,
+      "oncology": null
+    },
+    {
+      "rank": 4,
+      "canonical_issue": "IPF 치료제 급여 1종뿐…\"신약 승인·급여 속도 높여야\" - 메디파나뉴스",
+      "title": "IPF 치료제 급여 1종뿐…\"신약 승인·급여 속도 높여야\"",
+      "category": [
+        "급여",
+        "허가"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-14T12:16:13+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "특발성 폐섬유증(IPF) 환자의 치료 선택권을 넓히기 위해 항섬유화제 급여 확대와 신약의 신속한 허가·급여가 필요하다는 제언이 나왔다. 국내에서는 기존 항섬유화제 2종 가운데 피르페니돈에만 건강보험이 적용돼, 부작용이나 치료 반응 부족으로 투약을 중단한 환자에 대해선 치료옵션이 제한돼 있다는 지적이다. ",
+        "대한결핵 및 호흡기학회 이재하 간질성폐질환(ILD)연구회 총무가 14일 서울 한국프레스센터에서 열린 '2026년 폐의 날 기념 정책토론회'에 나와 발표하고 있다.",
+        "사진=강희재 기자 특발성 폐섬유증(IPF) 환자의 치료 선택권을 넓히기 위해 항섬유화제 급여 확대와 신약의 신속한 허가·급여가 필요하다는 제언이 나왔다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=419281"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=419281"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419281_326717_944.jpg",
+      "score": 54,
+      "oncology": null
+    },
+    {
+      "rank": 5,
+      "canonical_issue": "국내 임상은 1상·다국가 임상은 3상 집중 - 의학신문",
+      "title": "국내 임상은 1상·다국가 임상은 3상 집중",
+      "category": [
+        "3상",
+        "임상 3상"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-14T09:55:56+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=김정일 기자] 지난해 국내 임상은 임상 1상에, 다국가 임상은 임상 3상에 집중됐던 것으로 나타났다.국가임상시험지원재단이 최근 발간한 ‘202",
+        "[의학신문·일간보사=김정일 기자] 지난해 국내 임상은 임상 1상에, 다국가 임상은 임상 3상에 집중됐던 것으로 나타났다.",
+        "국가임상시험지원재단이 최근 발간한 ‘2025년 한국 임상시험 산업 정보 통계집’에 따르면 2025년 승인받은 국내 임상시험계획은 총 783건으로 이중 국내 임상시험이 243건(31%), 다국가 임상시험이 425건(54%), 연구자 임상시험이 115건(15%)으로 나타났다."
+      ],
+      "importance": "주요 임상 결과는 향후 허가·가이드라인·표준치료 변화 가능성을 평가하는 근거가 됩니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3013884"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013884"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3013884_414785_3554.jpg",
+      "score": 51,
+      "oncology": null
+    }
+  ],
+  "trends": [
+    {
+      "title": "정책·급여",
+      "count": 4,
+      "change": "4건의 주요 이슈에서 반복적으로 확인",
+      "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
+      "examples": [
+        "의학계, 호흡기질환 지원 호소…산정특례·약제 급여 확대 촉구",
+        "IPF 치료 선택지 확대 움직임…'닌테다닙' 급여·제네릭 주목"
+      ]
+    },
+    {
+      "title": "신약·임상",
+      "count": 3,
+      "change": "3건의 주요 이슈에서 반복적으로 확인",
+      "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
+      "examples": [
+        "美, AI 활용 임상 신청 급증…AI가 만든 혁신신약은 3상 진입",
+        "IPF 치료제 급여 1종뿐…\"신약 승인·급여 속도 높여야\""
+      ]
+    },
+    {
+      "title": "의료현장",
+      "count": 1,
+      "change": "1건의 주요 이슈에서 반복적으로 확인",
+      "implication": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름",
+      "examples": [
+        "美, AI 활용 임상 신청 급증…AI가 만든 혁신신약은 3상 진입"
+      ]
+    },
+    {
+      "title": "디지털헬스",
+      "count": 1,
+      "change": "1건의 주요 이슈에서 반복적으로 확인",
+      "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
+      "examples": [
+        "美, AI 활용 임상 신청 급증…AI가 만든 혁신신약은 3상 진입"
+      ]
+    }
+  ],
+  "outlet_status": [
+    {
+      "publisher": "데일리팜",
+      "homepage_url": "https://www.dailypharm.com/",
+      "items": []
+    },
+    {
+      "publisher": "의학신문",
+      "homepage_url": "https://www.bosa.co.kr/",
+      "items": [
+        {
+          "title": "의학계, 호흡기질환 지원 호소…산정특례·약제 급여 확대 촉구",
+          "published_at": "2026-10-15T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013922"
+        },
+        {
+          "title": "국내 임상은 1상·다국가 임상은 3상 집중",
+          "published_at": "2026-10-14T09:55:56+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013884"
+        },
+        {
+          "title": "순천향병원 간납사 동하메디칼 매각 1차 선정 완료",
+          "published_at": "2026-10-15T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013451"
+        },
+        {
+          "title": "위고비 건보 급여 신청, 마운자로·에페 등 비만약 시장 경쟁 변수될까",
+          "published_at": "2026-10-15T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013947"
+        },
+        {
+          "title": "“제2의 렉라자 만들려면 생태계 변화 필요...병원이 신약개발 주도해야”",
+          "published_at": "2026-10-14T14:56:49+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013796"
+        },
+        {
+          "title": "중진료권 70개→50개 지역·필수·공공의료 해법 제시",
+          "published_at": "2026-10-15T06:03:51+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013950"
+        },
+        {
+          "title": "위고비·마운자로 처방 후 췌장염·담석증 등 진료 9476명",
+          "published_at": "2026-10-14T11:46:13+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013905"
+        },
+        {
+          "title": "산부인과의사회 “국가인구전략, 분만 의료체계 회복 대책 강화해야”",
+          "published_at": "2026-10-14T14:56:49+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013921"
+        }
+      ]
+    },
+    {
+      "publisher": "메디파나뉴스",
+      "homepage_url": "https://www.medipana.com/",
+      "items": [
+        {
+          "title": "IPF 치료 선택지 확대 움직임…'닌테다닙' 급여·제네릭 주목",
+          "published_at": "2026-10-15T06:02:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419327"
+        },
+        {
+          "title": "美, AI 활용 임상 신청 급증…AI가 만든 혁신신약은 3상 진입",
+          "published_at": "2026-10-14T14:39:09+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419286"
+        },
+        {
+          "title": "IPF 치료제 급여 1종뿐…\"신약 승인·급여 속도 높여야\"",
+          "published_at": "2026-10-14T12:16:13+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419281"
+        },
+        {
+          "title": "급여약 3분기에 소폭 증가…브리바라세탐·만성질환 영역 주도",
+          "published_at": "2026-10-14T11:58:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419233"
+        },
+        {
+          "title": "환자는 경계 넘는데 지역의료는 행정구역에…진료권 개편 '쟁점'",
+          "published_at": "2026-10-15T06:03:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419311"
+        },
+        {
+          "title": "광동제약 도입 망막 유전자치료제, 중동 진출 기반 확보",
+          "published_at": "2026-10-15T08:34:03+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419331"
+        },
+        {
+          "title": "식약처, AI·RWD 활용 藥 개발 지침 마련 추진…총 61종",
+          "published_at": "2026-10-15T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419321"
+        },
+        {
+          "title": "\"호흡기내과, 필수의료로 명시해야…중증 COPD, 산정특례 필요\"",
+          "published_at": "2026-10-14T15:52:56+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419293"
+        }
+      ]
+    },
+    {
+      "publisher": "약사공론",
+      "homepage_url": "https://www.kpanews.co.kr/",
+      "items": [
+        {
+          "title": "\"환산지수, 유형별로 다르게\"…공단, 2028년도 수가계약 개편 추진",
+          "published_at": "2026-10-15T05:51:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546359"
+        },
+        {
+          "title": "아젤리아 빈자리 노리는 '녹십자·한미', 약국 선점 경쟁 본격화",
+          "published_at": "2026-10-15T05:53:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546362"
+        },
+        {
+          "title": "\"통합돌봄 실태조사서 빠진 약물관리…약국 포함 전국 모형 마련해야\"",
+          "published_at": "2026-10-14T12:02:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546317"
+        },
+        {
+          "title": "\"약국 없는 섬에 배 띄우자\"…'해상약국' 도입 제안 나왔다",
+          "published_at": "2026-10-14T12:01:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546310"
+        },
+        {
+          "title": "경주시약사회 이문욱 (동아약국) 회원 부친상",
+          "published_at": "2026-10-14T17:07:42+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546351"
+        },
+        {
+          "title": "LG화학 '네폭실' 재심사 규정 위반…판매정지 대신 과징금",
+          "published_at": "2026-10-15T05:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546358"
+        },
+        {
+          "title": "약국 마약류 수거·폐기사업 활성화 내년 전환점?",
+          "published_at": "2026-10-15T05:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546337"
+        },
+        {
+          "title": "약배송·상비약에 창고형약국까지…비대위 조직 재정비",
+          "published_at": "2026-10-15T05:52:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546366"
+        }
+      ]
+    }
+  ],
+  "insight": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름 동시에 신약·임상 흐름도 함께 확인돼 단일 이슈보다 복합적인 산업 변화로 보는 것이 적절합니다.",
+  "infographic": {
+    "image_path": null,
+    "generated_at": null,
+    "template_version": "news-card-v1"
+  }
+}
