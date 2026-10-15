@@ -1,8 +1,16 @@
 {
-  "checked_at": "2026-10-15T21:50:26.783994+00:00",
-  "last_success_at": "2026-10-15T21:50:26.783994+00:00",
+  "checked_at": "2026-10-15T22:17:55.525967+00:00",
+  "last_success_at": "2026-10-15T22:17:55.525967+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "Bringing GPT-Rosalind to academic research labs",
+      "url": "https://openai.com/index/introducing-the-rosalind-academic-plan",
+      "source": "OpenAI",
+      "published_at": "2026-10-15T19:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "Bringing the magic: Google breaks open a bottleneck in quantum computing",
       "url": "https://blog.google/innovation-and-ai/models-and-research/quantum-computing/magic-state-cultivation-quantum-computing/",
@@ -234,20 +242,12 @@
       "published_at": "2026-10-08T12:05:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Pollo AI turns creative ideas into campaigns with OpenAI",
-      "url": "https://openai.com/index/pollo-ai",
-      "source": "OpenAI",
-      "published_at": "2026-10-08T12:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-15T21:50:26.783994+00:00",
+    "checked_at": "2026-10-15T22:17:55.525967+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -440,7 +440,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-15T21:50:26.783994+00:00",
+    "last_success_at": "2026-10-15T22:17:55.525967+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
