@@ -133,7 +133,7 @@
   };
   document.addEventListener('change', function (e) { if (e.target.hasAttribute && e.target.hasAttribute('data-ai-on')) { try { localStorage.setItem(PREF, e.target.checked ? 'on' : 'off'); } catch (er) {} notice(e.target.checked ? '흰둥이 똑똑 모드를 켰어 🧠' : '똑똑 모드를 껐어. 준비된 안내로만 답할게.'); } });
 
-  var css = document.createElement('style'); css.textContent = '.ai-docs{margin-top:14px;border-top:1px solid #ecebf2;padding-top:12px}.ai-docs h3{font-size:15px;margin:0 0 8px}.ai-docs h3 small{font-weight:500;color:#8a879a;margin-left:4px}.ai-docs textarea,.ai-docs select{width:100%;box-sizing:border-box}.shiro-think{opacity:.7;animation:shiroThink 1.2s ease-in-out infinite}@keyframes shiroThink{50%{opacity:.4}}'; document.head.appendChild(css);
+  var css = document.createElement('style'); css.textContent = '.ai-docs{margin-top:14px;border-top:1px solid #ecebf2;padding-top:12px}.ai-docs h3{font-size:15px;margin:0 0 8px}.ai-docs h3 small{font-weight:500;color:#6b6880;margin-left:4px}.ai-docs textarea,.ai-docs select{width:100%;box-sizing:border-box}.shiro-think{opacity:.7;animation:shiroThink 1.2s ease-in-out infinite}@keyframes shiroThink{50%{opacity:.4}}'; document.head.appendChild(css);
   // 수업 사진·노트 정리 (VPS → 안 되면 Netlify)
   function organize(subject, text, kind, date) {
     var l = live() || {}, body = { subject: subject, text: String(text).slice(0, 3500), kind: kind, date: date };

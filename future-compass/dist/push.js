@@ -80,7 +80,7 @@
   var css = document.createElement('style');
   css.textContent = '.push-row{display:flex!important;justify-content:space-between;align-items:center;min-height:50px;padding:10px 14px!important;margin:0!important;border-bottom:1px solid #ecebf2;background:#fff;font-weight:500!important;font-size:15px}.push-row:last-child{border-bottom:0}.push-row input{width:22px;min-height:22px}' +
     '.push-btns{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 4px}.push-why{background:#fff7e8;border-radius:10px;padding:8px 10px;font-size:13px;margin:6px 0 10px}' +
-    '.push-nudge{display:flex;align-items:center;gap:8px;background:#f0edff;border-radius:14px;padding:10px 12px;margin:0 0 12px;font-size:13.5px}.push-nudge span{flex:1}.push-nudge button{min-height:36px!important;padding:4px 12px!important;font-size:13px}.push-nudge [data-push-later]{border:0!important;background:transparent!important;color:#8a879a!important;padding:4px!important}';
+    '.push-nudge{display:flex;align-items:center;gap:8px;background:#f0edff;border-radius:14px;padding:10px 12px;margin:0 0 12px;font-size:13.5px}.push-nudge span{flex:1}.push-nudge button{min-height:36px!important;padding:4px 12px!important;font-size:13px}.push-nudge [data-push-later]{border:0!important;background:transparent!important;color:#6b6880!important;padding:4px!important}';
   document.head.appendChild(css);
   window.FC_PUSH = { notify: notify, enable: enable };
   if (typeof render === 'function') render();

@@ -10,6 +10,7 @@
   function ls(k, d) { try { var v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch (e) { return d; } }
   function addD(d, n) { return new Date(Date.parse(d + 'T12:00:00Z') + n * 86400000).toISOString().slice(0, 10); }
   function diff(a, b) { return Math.round((Date.parse(b + 'T12:00:00Z') - Date.parse(a + 'T12:00:00Z')) / 86400000); }
+  function josa(w) { var c = String(w).charCodeAt(String(w).length - 1); return c >= 0xAC00 && c <= 0xD7A3 && (c - 0xAC00) % 28 ? '이' : '가'; }   // 받침 있으면 이, 없으면 가
   function FP() { return window.FC_PLANNER; }
   function P() { return FP() ? FP().get() : {}; }
 
@@ -128,7 +129,7 @@
     if (notesT.length) lines.push(notesT.map(function (n) { return n.subject; }).filter(function (s, i, a) { return s && a.indexOf(s) === i; }).join('·') + ' 수업 정리를 남겼어요.');
     if (share.review && hard.length) lines.push(hard.join('·') + ' 복습에서 헷갈리는 부분이 있었어요.');
     else if (good) lines.push('복습 기억 확인을 ' + good + '개 했어요.');
-    soon.forEach(function (x) { var g = diff(t, x.date); lines.push((g === 0 ? '오늘' : g === 1 ? '내일' : '모레') + '은 ' + (x.subject ? x.subject + ' ' : '') + x.title + (x.kind === '시험' ? '이 있어요.' : ' 준비가 필요해요.')); });
+    soon.forEach(function (x) { var g = diff(t, x.date); var nm0 = (x.subject && String(x.title).indexOf(x.subject) < 0 ? x.subject + ' ' : '') + x.title; lines.push((g === 0 ? '오늘은' : g === 1 ? '내일은' : '모레는') + ' ' + nm0 + (x.kind === '시험' ? josa(nm0) + ' 있어요.' : ' 준비가 필요해요.')); });
     if (mood === 'tired') lines.push('오늘 컨디션을 "지침"으로 남겼어요.');
 
     if (mood === 'tired') recs.push(['오늘은 많이 피곤했지. 충분히 쉬는 것도 공부야.', '컨디션을 "지침"으로 남겨서']);
@@ -167,7 +168,7 @@
     '.rc-qs{margin:0 0 10px;padding-left:20px;display:grid;gap:6px;font-size:15px}.rc-my{width:100%;box-sizing:border-box;margin-bottom:10px}.rc-show{width:100%}' +
     '.rc-ans pre{white-space:pre-wrap;font:inherit;font-size:14px;background:#f5f3ff;border-radius:12px;padding:10px 12px;margin:0 0 10px}' +
     '.rc-ai{width:100%;margin-bottom:8px}.rc-ai-out{white-space:pre-wrap;font-size:14px;background:#fff8e6;border-radius:12px;padding:10px 12px;margin-bottom:8px}' +
-    '.rc-ask{margin:6px 0;font-weight:700}.rc-rate{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.rc-rate button{display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 4px!important;font-size:22px;border-radius:14px!important}.rc-rate b{font-size:14px}.rc-rate small{font-size:11px;color:#7d7a8c;font-weight:500}' +
+    '.rc-ask{margin:6px 0;font-weight:700}.rc-rate{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.rc-rate button{display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 4px!important;font-size:22px;border-radius:14px!important}.rc-rate b{font-size:14px}.rc-rate small{font-size:11px;color:#6b6880;font-weight:500}' +
     '.pv-story{border:2px solid #f3d9a4;background:linear-gradient(#fffaf0,#fff)}.pv-story-l{margin:0 0 8px;padding-left:18px;display:grid;gap:4px;font-size:15px}';
   document.head.appendChild(css);
   window.FC_RECALL = { open: open, reschedule: reschedule, story: story };
