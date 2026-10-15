@@ -1,8 +1,24 @@
 {
-  "checked_at": "2026-10-15T09:04:53.221887+00:00",
-  "last_success_at": "2026-10-15T09:04:53.221887+00:00",
+  "checked_at": "2026-10-15T14:46:10.522680+00:00",
+  "last_success_at": "2026-10-15T14:46:10.522680+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "TIME has named Google SynthID one of the Best Inventions of 2026.",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/synthid-time-best-inventions/",
+      "source": "Google",
+      "published_at": "2026-10-15T13:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Teaching students to think and learn through questions",
+      "url": "https://openai.com/index/teaching-students-to-think-and-learn-through-questions",
+      "source": "OpenAI",
+      "published_at": "2026-10-15T13:00:00+00:00",
+      "category": "교육·생활",
+      "domain": "education"
+    },
     {
       "title": "Research@ 2026: Novel capabilities and intelligence",
       "url": "https://blog.google/innovation-and-ai/technology/research/research-capabilities-intelligence-2026/",
@@ -226,28 +242,12 @@
       "published_at": "2026-10-07T12:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Radisson Hotel Group brings hotel discovery into ChatGPT",
-      "url": "https://openai.com/index/radisson",
-      "source": "OpenAI",
-      "published_at": "2026-10-07T07:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "GPT-6 and Intelligent UI for everyone",
-      "url": "https://openai.com/index/gpt-6-for-everyone",
-      "source": "OpenAI",
-      "published_at": "2026-10-07T00:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-15T09:04:53.221887+00:00",
+    "checked_at": "2026-10-15T14:46:10.522680+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -440,7 +440,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-15T09:04:53.221887+00:00",
+    "last_success_at": "2026-10-15T14:46:10.522680+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
