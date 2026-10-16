@@ -1,8 +1,16 @@
 {
-  "checked_at": "2026-10-16T14:40:18.012186+00:00",
-  "last_success_at": "2026-10-16T14:40:18.012186+00:00",
+  "checked_at": "2026-10-16T19:27:23.502476+00:00",
+  "last_success_at": "2026-10-16T19:27:23.502476+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "We’re sharing 3 tips to study smarter with Gemini Notebook.",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-notebook/three-tips-study-gemini-notebook/",
+      "source": "Google",
+      "published_at": "2026-10-16T16:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "Bringing GPT-Rosalind to academic research labs",
       "url": "https://openai.com/index/introducing-the-rosalind-academic-plan",
@@ -234,26 +242,14 @@
       "published_at": "2026-10-08T16:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Sign in quickly and securely with passkeys.",
-      "url": "https://blog.google/innovation-and-ai/technology/safety-security/how-to-set-up-passkey/",
-      "source": "Google",
-      "published_at": "2026-10-08T15:00:00+00:00",
-      "category": "안전·보안",
-      "domain": "security"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-16T14:40:18.012186+00:00",
+    "checked_at": "2026-10-16T19:27:23.502476+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
-      {
-        "date": "2026-10-16",
-        "title": "동아리"
-      },
       {
         "date": "2026-10-17",
         "title": "토요휴업일"
@@ -440,7 +436,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-16T14:40:18.012186+00:00",
+    "last_success_at": "2026-10-16T19:27:23.502476+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
