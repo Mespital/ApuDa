@@ -40,6 +40,13 @@
   }
 
   /* ---------- 다음 날짜 정하기 ---------- */
+  function preview(rid, due) {   // 고르기 전에 다음 날짜 미리 보기 (reschedule과 같은 계산)
+    var p = P(), t = today(), r = state.reviews.find(function (x) { return x.id === rid; }) || {};
+    var past = ((p.again || {})[rid] || []).slice().sort().filter(function (d) { return d <= t && d < due; });
+    var last = past.pop() || r.date || addD(due, -1), iv = Math.min(60, Math.max(7, Math.max(1, diff(last, due)) * 2));
+    var f = function (d) { return Number(d.slice(5, 7)) + '/' + Number(d.slice(8)) + '에 다시'; };
+    return { good: f(addD(t, iv)), meh: f(addD(t, 2)), bad: '내일 다시' };
+  }
   function reschedule(rid, due, rating) {
     var p = P(), t = today(); p.again = p.again || {}; p.againDone = p.againDone || {}; p.recall = p.recall || {};
     var r = state.reviews.find(function (x) { return x.id === rid; }) || {};
@@ -67,6 +74,7 @@
   function open(rid, due) {
     var r = state.reviews.find(function (x) { return x.id === rid; }); if (!r) return;
     close();
+    var pv = preview(rid, due || today());
     var qs = questions(r), ai = window.SHIRO_AI && SHIRO_AI.on && SHIRO_AI.on();
     sheet = document.createElement('div'); sheet.className = 'rc-wrap'; sheet.setAttribute('role', 'dialog'); sheet.setAttribute('aria-label', '기억 확인');
     sheet.innerHTML = '<div class="rc-sheet"><div class="rc-top"><b>🧠 기억 확인</b><button type="button" class="rc-x" data-rc-close aria-label="닫기">✕</button></div>' +
@@ -78,8 +86,8 @@
       '<div class="rc-ans" hidden><pre>' + esc(answerText(r)) + '</pre>' +
       (ai ? '<button type="button" class="rc-ai" data-rc-ai>🧠 흰둥이에게 내 답 봐달라기</button><div class="rc-ai-out" hidden></div>' : '') +
       '<p class="rc-ask">어땠어?</p><div class="rc-rate">' +
-      '<button type="button" data-rc-rate="good">😀<b>잘 앎</b><small>다음엔 더 나중에</small></button>' +
-      '<button type="button" data-rc-rate="meh">🤔<b>헷갈림</b><small>2일 뒤 다시</small></button>' +
+      '<button type="button" data-rc-rate="good">😀<b>잘 앎</b><small>' + pv.good + '</small></button>' +
+      '<button type="button" data-rc-rate="meh">🤔<b>헷갈림</b><small>' + pv.meh + '</small></button>' +
       '<button type="button" data-rc-rate="bad">😵<b>모름</b><small>내일 다시</small></button></div></div></div>';
     sheet.dataset.rid = rid; sheet.dataset.due = due;
     document.body.appendChild(sheet);
