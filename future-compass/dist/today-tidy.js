@@ -29,7 +29,7 @@
   var MOM_OPEN = 'fc-mom-more';
   function momFold(root) {
     if (root.querySelector('.mom-more')) return;
-    var keep = '.pv-head,.pv-motto,.pv-story,.pv-mom,.pv-cheer-line,.pv-req-line,.mom-more';
+    var keep = '.pv-head,.pv-motto,.pv-story,.pv-mom,.pv-cheer-line,.pv-req-line,.cp-mom,.mom-more';
     var out = [].slice.call(root.children).filter(function (el) { return !el.matches(keep) && el.matches('section,details,.card,.pv-guide'); });
     if (out.length < 2) return;
     var d = document.createElement('details'); d.className = 'more-cards mom-more';

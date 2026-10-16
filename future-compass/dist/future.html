@@ -161,6 +161,7 @@ section{display:flex;flex-direction:column;gap:16px}
   .myth{grid-template-columns:1fr;gap:4px}
 }
 @media (prefers-reduced-motion:no-preference){.fade{animation:fade .35s ease}@keyframes fade{from{opacity:.4}to{opacity:1}}}
+.fsig{margin-top:28px}.sigs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:14px 0}.sig{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px}.sig h3{margin:6px 0;font:700 16px var(--display)}.sig p{margin:4px 0;font-size:14px;line-height:1.6}.sig .so{font-weight:600;color:var(--ink)}.sig a{font-size:12.5px;color:var(--accent);text-decoration:underline}.sig-go{display:inline-flex;align-items:center;min-height:46px;padding:10px 16px;border-radius:14px;background:var(--accent);color:#fff;font-weight:700;text-decoration:none;margin-top:6px}
 </style><style>
 .fc-topnav{display:flex;gap:6px;flex-wrap:wrap}
 .fc-topnav a{font-size:13.5px;font-weight:600;color:var(--muted);text-decoration:none;padding:7px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
@@ -241,6 +242,7 @@ section{display:flex;flex-direction:column;gap:16px}
   </div>
   <div class="fbox res" id="commonRes"></div>
 </section>
+<section id="fsig" class="fsig" aria-label="미래 신호판"></section>
 <details class="acc deep">
   <summary>더 깊이 알고 싶으면 · 숫자와 시나리오 (인구 · AI 일자리 · 4가지 미래 · 흔한 오해)</summary>
   <div class="in deep-in"><section>
@@ -281,7 +283,7 @@ section{display:flex;flex-direction:column;gap:16px}
     <div class="sc"><span class="tag">A · 사람 + AI 협업</span><h3>AI는 강력한 도구, 결정은 사람</h3><p class="muted small">의사·교사·엔지니어가 AI로 2~3배 빠르게 일하지만 최종 판단·책임은 사람이 지는 구조.</p>
       <dl><dt>지금 신호</dt><dd>"AI 사용 의무화"보다 "AI 결과 검증 책임"을 정하는 규정이 늘어남</dd><dt>유리한 힘</dt><dd>전공 기초 + AI 활용 + 결과가 맞는지 따지는 능력</dd></dl></div>
     <div class="sc"><span class="tag">B · 디지털 자동화가 먼저</span><h3>화면 속 일은 빠르게, 현장은 천천히</h3><p class="muted small">문서·코드·상담·회계 같은 일은 빠르게 자동화되고, 몸을 쓰는 현장 일은 로봇 가격·안전 문제로 늦게 바뀜.</p>
-      <dl><dt>지금 신호</dt><dd>신입 사무직 채용 축소, 현장 기술직 임금 상승</dd><dt>유리한 힘</dt><dd>장비·기계를 다루고 고치는 손 기술, 현장 측정·문제 해결</dd></dl></div>
+      <dl><dt>지금 신호</dt><dd>신입 사무직 채용 축소(2025.10 한국은행: AI 노출 큰 업종 청년 일자리 감소), 현장 기술직 임금 상승</dd><dt>유리한 힘</dt><dd>장비·기계를 다루고 고치는 손 기술, 현장 측정·문제 해결</dd></dl></div>
     <div class="sc"><span class="tag">C · AI + 로봇 빠른 확산</span><h3>설계부터 제조·서비스까지 한꺼번에</h3><p class="muted small">로봇 가격이 크게 떨어지고 안전 기준이 정리되면, 물류·제조·돌봄 보조까지 넓게 바뀜.</p>
       <dl><dt>지금 신호</dt><dd>공장·물류센터의 로봇 도입 대수 급증, 로봇 안전 인증 제도 정비</dd><dt>유리한 힘</dt><dd>여러 시스템을 묶어 운영하는 능력, 안전·보안, 새 역할을 빨리 배우는 힘</dd></dl></div>
     <div class="sc"><span class="tag">D · 산업별로 다른 속도</span><h3>어떤 곳은 확 바뀌고, 어떤 곳은 그대로</h3><p class="muted small">비용·전력·규제·신뢰 문제로 업종·지역·회사 규모마다 도입 속도가 크게 갈림. 현재 가장 현실에 가까운 모습이라는 의견이 많았어요.</p>
@@ -316,6 +318,12 @@ section{display:flex;flex-direction:column;gap:16px}
     <li><a href="https://mods.go.kr/board.es?mid=a10301010000&bid=207&act=view&list_no=428476" target="_blank" rel="noopener">통계청(현 국가데이터처), 장래인구추계: 2022~2072년 (2023.12)</a></li>
     <li><a href="https://www.index.go.kr/unity/potal/main/EachDtlPageDetail.do?idx_cd=1010" target="_blank" rel="noopener">e-나라지표, 장래인구추계 연령구조 지표</a></li>
     <li><a href="https://www.bok.or.kr/portal/bbs/B0000168/view.do?menuNo=200058&nttId=10085160" target="_blank" rel="noopener">한국은행, BOK이슈노트 「AI와 노동시장 변화」 (2023.11)</a></li>
+    <li><a href="https://etoday.co.kr/news/view/2615436" target="_blank" rel="noopener">교육부 2029학년도 수능 시행 발표 보도 (2026.8)</a></li>
+    <li><a href="https://v.daum.net/v/20260212110216215" target="_blank" rel="noopener">한국고용정보원, 중장기 인력수급 전망 2024~2034 보도 (2026.2)</a></li>
+    <li><a href="https://www.heraldk.com/article/2025102921152134344" target="_blank" rel="noopener">한국은행, 「AI 확산과 청년고용 위축」 보도 (2025.10)</a></li>
+    <li><a href="https://www.segye.com/newsView/20260831511281" target="_blank" rel="noopener">한국고용정보원, AI 노출 직업 청년 고용 분석 보도 (2026.8)</a></li>
+    <li><a href="https://aiweekly.co/alerts/stanfords-brynjolfsson-study-entry-level-employment-in-ai-exposed-jobs-now-19" target="_blank" rel="noopener">Stanford Digital Economy Lab, "Canaries in the Coal Mine" 업데이트 요약 (2026.8)</a></li>
+    <li><a href="https://sgsg.hankyung.com/article/2025101004841" target="_blank" rel="noopener">2028 대입 주요대 전공연계 핵심·권장과목 분석 (2025.10, 9월 말 기준)</a></li>
     <li><a href="https://www.weforum.org/press/2025/01/future-of-jobs-report-2025-78-million-new-job-opportunities-by-2030-but-urgent-upskilling-needed-to-prepare-workforces/" target="_blank" rel="noopener">World Economic Forum, Future of Jobs Report 2025 (2025.1)</a></li>
   </ol>
   <p class="disclaim">연도별 내용은 가능성을 살펴보는 시나리오예요. 실제 일정이나 특정 진로의 결과를 보장하지 않아요. 나이는 2026년 고1(대부분 2010년생) 기준 만 나이 근사치예요.</p>
@@ -329,7 +337,7 @@ const Y={
   scene:"출근하면 AI 비서가 메일 요약, 회의 자료 초안, 오늘 할 일 목록을 먼저 만들어 둬요. 예전 신입이 하던 '자료 찾기·정리·초벌 작성'은 꽤 줄어 있어서, 신입에게도 처음부터 '이 초안이 맞는지 판단하고 고객이나 팀을 설득하는 일'이 맡겨질 수 있어요. 물류센터·공장·대형 건물 청소처럼 정해진 공간에선 로봇이 흔해지지만, 집집마다 휴머노이드가 있는 모습은 아직 아닐 가능성이 커요.",
   hi:["업무에서 AI 도구를 쓰는 게 기본값","생산연령인구 감소 진행(2022년 이후 10년간 약 332만 명 감소 추계)","청년 인구가 줄어 대학·기업의 사람 구하기 경쟁 심화"],
   hiWhy:"인구는 이미 태어난 세대로 계산하고, AI 도구는 지금도 빠르게 퍼지는 중이라서",
-  mid:["신입 채용이 시험·스펙보다 실무 과제·포트폴리오 중심으로 이동","로봇은 물류·제조·청소 같은 정해진 공간부터 확산","일부 사무직 신입 채용 축소"],
+  mid:["신입 채용이 시험·스펙보다 실무 과제·포트폴리오 중심으로 이동","로봇은 물류·제조·청소 같은 정해진 공간부터 확산","일부 사무직 신입 채용 축소 (2025~26 한국·미국 자료에서 신호 늘어남)"],
   midWhy:"방향은 보이지만 속도는 경기·규제·회사 사정에 따라 크게 달라서",
   lo:["가정용 휴머노이드 로봇 대중화","완전 자율주행 차량의 전면 상용화","특정 직업의 완전한 소멸"],
   loWhy:"가격·안전·법·사회적 합의가 모두 풀려야 하는 일이라서",
@@ -394,7 +402,7 @@ const F={
  ai:{name:"AI·소프트웨어",
   era:["AI가 코드 초안을 쓰고, 사람은 무엇을 만들지 정하고 테스트·보안을 책임져요.","AI 에이전트 여러 개를 묶어 서비스를 운영하는 '시스템 설계' 역할이 커질 수 있어요.","사람과 AI의 역할 분담을 설계하고 사고가 났을 때 책임을 따지는 일이 중요해질 수 있어요."],
   ai:["반복적인 코드 작성","문서·주석 정리","단순 버그 찾기"],hu:["어떤 문제를 풀지 정하기","보안·안전 검증","사용자와 대화해 요구 파악"],
-  subj:["정보","인공지능 기초","데이터 과학","미적분Ⅰ","확률과 통계"],
+  subj:["미적분Ⅱ","기하","확률과 통계","인공지능 기초","데이터 과학"],
   proj:"우리 학교 급식 메뉴나 시간표 데이터를 모아 간단한 웹페이지나 챗봇 만들기. AI가 짜준 코드에서 틀린 부분을 찾아 기록하면 더 좋은 탐구가 돼요.",
   books:[["코드","찰스 펫졸드 · 컴퓨터가 0과 1로 어떻게 동작하는지 바닥부터"],["AI 2041","카이푸 리·천치우판 · AI가 바꿀 20년 뒤를 소설+해설로"],["호모 데우스","유발 하라리 · 기술이 인간의 의미를 어떻게 바꿀지"]],
   sites:[["생활코딩","https://opentutorials.org","무료 한국어 프로그래밍 강의"],["Elements of AI","https://www.elementsofai.com","핀란드 헬싱키대 무료 AI 입문 과정"],["엔트리","https://playentry.org","블록 코딩부터 파이썬까지"]]},
@@ -422,7 +430,7 @@ const F={
  mech:{name:"기계·로봇·전기전자",
   era:["물류·제조 현장에 로봇이 늘고, 로봇을 설치·점검하는 기술자 수요가 커져요.","로봇 가격이 내려가면 돌봄·농업·건설로 퍼질 수 있어요. 속도는 안전 기준에 달려 있어요.","사람 몸을 돕는 장치(웨어러블 로봇 등)가 얼마나 일상화될지는 아직 불확실해요."],
   ai:["설계 초안 생성","시뮬레이션","고장 예측"],hu:["현장 설치·수리","안전 책임","여러 장비를 묶어 운영"],
-  subj:["물리학","역학과 에너지","전자기와 양자","공학 일반","로봇과 공학세계"],
+  subj:["미적분Ⅱ","기하","물리학","역학과 에너지","전자기와 양자","로봇과 공학세계"],
   proj:"아두이노나 마이크로비트로 '교실 온도·습도 측정기' 만들기. 측정값이 맞는지 시판 온도계와 비교해보기.",
   books:[["로봇의 부상","마틴 포드 · 자동화가 일자리에 미치는 영향"],["제2의 기계 시대","에릭 브린욜프슨·앤드루 맥아피 · 기술과 경제의 변화"],["코드","찰스 펫졸드 · 전기 신호가 컴퓨터가 되는 과정"]],
   sites:[["Tinkercad","https://www.tinkercad.com","무료 3D 설계·회로 시뮬레이션"],["Arduino","https://www.arduino.cc","아두이노 공식(영어)"],["K-MOOC","https://www.kmooc.kr","공학 입문 강좌"]]},
@@ -475,7 +483,7 @@ function showField(k){
  fv.innerHTML=`<h3>${f.name}</h3>
  <div class="era">${["2036 · 약 26세","2046 · 약 36세","2056 · 약 46세"].map((y,i)=>`<div><b>${y}</b>${f.era[i]}</div>`).join('')}</div>
  <div class="split"><div class="ai"><h4>AI가 많이 가져갈 일</h4><ul>${li(f.ai)}</ul></div><div class="hu"><h4>사람에게 남는 일</h4><ul>${li(f.hu)}</ul></div></div>
- <div><h4 style="margin:0 0 8px;font:700 13px var(--display)">고교에서 들어볼 선택과목</h4><div class="subj">${f.subj.map(s=>`<span>${s}</span>`).join('')}</div><p class="small muted" style="margin-top:6px">과목 개설은 학교마다 달라. 고교학점제 포털에서 우리 학교 개설 과목을 확인해봐.</p></div>
+ <div><h4 style="margin:0 0 8px;font:700 13px var(--display)">고교에서 들어볼 선택과목</h4><div class="subj">${f.subj.map(s=>`<span>${s}</span>`).join('')}</div><p class="small muted" style="margin-top:6px">과목 개설은 학교마다 달라. 고교학점제 포털에서 우리 학교 개설 과목을 확인해봐. 대학이 지정한 과목은 <a href="study.html#path">🎯 진로 한 장</a>에서 같이 볼 수 있어.</p></div>
  <div class="proj"><b>해볼 만한 탐구 주제 · </b>${f.proj}</div>
  <div class="res">${resHTML(f.books,f.sites)}</div>`;
  fv.classList.remove('fade');void fv.offsetWidth;fv.classList.add('fade');
@@ -519,8 +527,8 @@ function renderPlan(){
  <div class="pcard"><h3>3. 고2 선택과목 후보</h3><div class="subj">${subj.map(x=>`<span>${x}</span>`).join('')}</div><p class="small muted">과목 신청은 보통 고1 2학기 중에 해. 정확한 날짜는 학교 공지를 확인하고, 대학 학과별 권장 과목도 어디가(adiga.kr)에서 같이 봐.</p></div>
  <div class="pcard"><h3>4. 나의 AI 사용 규칙</h3>${ai.map((x,i)=>goal('ai'+i,x)).join('')}<p class="small muted">숙제·수행평가에서 AI를 써도 되는지는 학교와 과목 선생님 규칙이 먼저야.</p></div>
  <div class="pcard"><h3>5. 시기별 체크포인트</h3><div class="tl">
-  <div><b>지금~11월</b><span>2학기 시험 준비가 1순위. 틈틈이 선택과목 정보 모으기</span></div>
-  <div><b>12월 무렵</b><span>고2 선택과목 확정(학교 일정 확인). 탐구 주제 정하기</span></div>
+  <div><b>지금(10~12월)</b><span>고2 과목 수요조사·신청 시기(학교 안내가 기준). 🎯 진로 한 장에서 후보 담고 마감일 넣기. 시험 준비가 1순위인 건 그대로</span></div>
+  <div><b>2학기 끝 무렵</b><span>최종 확정·변경 기간이 있는지 확인. 탐구 주제 정하기</span></div>
   <div><b>겨울방학</b><span>약한 과목 복습 + 탐구 1개 완성 + 책 1권</span></div>
   <div><b>고2 3월</b><span>방학 탐구 결과를 관련 과목 선생님께 보여주고 수업 활동으로 이어가기</span></div>
   <div><b>고2 겨울</b><span>이 페이지 다시 열어 관심 분야가 바뀌었는지 점검. 바뀌어도 괜찮아</span></div>
@@ -528,7 +536,7 @@ function renderPlan(){
  planTxt=[`[내 공부 계획] 관심 분야: ${names}`,'',"1. 겨울방학까지 목표",...goals.map(([i,x])=>`- ${checks[i]?'[완료] ':''}${x}`),'',
   "2. 주간 루틴",`- 평일: ${w} ${t.w}분${t.r?` / 격일 관심 분야 읽기 ${t.r}분`:''}`,`- 주말: 틀린 문제 복습, 탐구 ${t.we}`,'',
   "3. 고2 선택과목 후보: "+subj.join(', '),'',"4. AI 사용 규칙",...ai.map(x=>'- '+x),'',
-  "5. 체크포인트: 지금~11월 시험 / 12월 과목 확정 / 겨울방학 탐구·독서 / 고2 3월 탐구 이어가기"].join('\n');
+  "5. 체크포인트: 지금(10~12월) 고2 과목 신청(학교 안내 기준) / 2학기 끝 최종 확정 / 겨울방학 탐구·독서 / 고2 3월 탐구 이어가기"].join('\n');
  saveP();
 }
 let pfTouched=false;
@@ -543,10 +551,11 @@ $('copyPlan').addEventListener('click',()=>{
 });
 (function(){let p=null;try{p=JSON.parse(localStorage.getItem('fc_plan')||'null')}catch(e){}
  if(p&&F[p.f1]){pf1.value=p.f1;pf2.value=p.f2||'';$('pweak').value=p.w;$('ptime').value=p.t;$('pai').value=p.a}else{pf1.value=sf}
+ ['pweak','ptime','pai'].forEach(id=>{const el=$(id);if(!el.value){const o=el.querySelector('option[selected]')||el.options[0];if(o)el.value=o.value}});
  renderPlan();})();
 
 let start='2036';try{const s=localStorage.getItem('fc_year');if(Y[s])start=s}catch(e){}
 render(start);
 </script>
-<script src="shiro-help.js"></script>
+<script src="future-signals.js"></script><script src="shiro-help.js"></script>
 </body></html>
