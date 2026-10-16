@@ -130,3 +130,24 @@ body.app .pv-story .pv-rec li button{border-radius:16px!important;border:1.5px s
 .fm .tt.dark .tt-face{fill:#2a2560}
 body.app .tt-wedge{fill:#f0a92b}
 body.app .fm-break .tt-wedge,body.app [class*="brk"] .tt-wedge,body.app [class*="break"] .tt-wedge{fill:#4fd1a8}
+
+/* 10/16 시인성 감수: 대비·글자 크기·누르는 크기 */
+.nx-map,.ag-map{background:#007a37!important}           /* 네이버 초록을 진하게: 흰 글자 대비 2.3 → 5.5 */
+.nx-n{color:#007a37!important}
+.seg2 button{color:#57546a!important}
+body.app .wk-file{color:#fff!important}
+body.app .st-foot a,body.app #content p a:not([class]){text-decoration:underline;text-underline-offset:2px}
+body.app .tt th small{font-size:10.5px!important;color:#5f5c70!important}
+body.app .pl-x{min-width:36px!important;min-height:36px!important}
+.wk-nav2 button{min-width:40px;min-height:40px!important}
+body.app .appnav button span{font-size:11.5px}
+body.app #content small{line-height:1.45}
+.dt-add{margin:0 0 12px;border-radius:18px;background:#fff}
+.dt-add>summary{list-style:none;cursor:pointer;padding:14px 16px;min-height:48px;box-sizing:border-box;font-weight:700;color:#5b45d6;font-size:15px;display:flex;align-items:center}
+.dt-add>summary::-webkit-details-marker{display:none}
+.dt-add[open]>summary{color:#6b6880}
+.dt-add>.card{margin:0;box-shadow:none}
+.shiro-launch{transition:transform .2s ease,opacity .2s ease}
+body.scroll-down .shiro-launch,body.scroll-down .shiro-hint{transform:translateX(calc(100% + 24px));opacity:0;pointer-events:none}
+@media (prefers-reduced-motion:reduce){.shiro-launch{transition:none}}
+body.app .tt td{font-size:13px;line-height:1.25}

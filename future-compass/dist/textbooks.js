@@ -18,5 +18,14 @@
     if (n) { studyPlusBridge.replace(x); try { localStorage.setItem('compass-study-plus-v1', JSON.stringify(studyPlusBridge.snapshot())); } catch (e) { return; } if (typeof render === 'function') render(); }
     try { localStorage.setItem(FLAG, '1'); } catch (e) {}
   }
-  setTimeout(apply, 3800);   // 가족 동기화 첫 받기 뒤
+  /* 과학탐구실험2도 미래엔(오현선) (2026-10-16 보호자 확인) */
+  function applySci() {
+    try { if (localStorage.getItem(FLAG + 'b')) return; } catch (e) { return; }
+    if (!window.studyPlusBridge || typeof FC_CURRICULUM === 'undefined' || typeof state === 'undefined') return;
+    var x = studyPlusBridge.snapshot(), n = 0; x.courses = x.courses || {};
+    (state.table || []).forEach(function (r) { (r || []).forEach(function (name) { if (name && FC_CURRICULUM.baseOf(name) === '과학탐구실험') { var c = x.courses[name] || { book: '', unit: '', pages: '' }; if (c.book !== '미래엔 · 오현선') { c.book = '미래엔 · 오현선'; x.courses[name] = c; n++; } } }); });
+    if (n) { studyPlusBridge.replace(x); try { localStorage.setItem('compass-study-plus-v1', JSON.stringify(studyPlusBridge.snapshot())); } catch (e) { return; } if (typeof render === 'function') render(); }
+    try { localStorage.setItem(FLAG + 'b', '1'); } catch (e) {}
+  }
+  setTimeout(function () { apply(); applySci(); }, 3800);   // 가족 동기화 첫 받기 뒤
 })();

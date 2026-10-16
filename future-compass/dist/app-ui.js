@@ -214,6 +214,24 @@
     (ul || st.querySelector('h2')).insertAdjacentHTML('afterend', '<div class="ms-row">' + cells.map(function (c) { return '<div><b>' + esc(c[0]) + '</b><small>' + esc(c[1]) + '</small></div>'; }).join('') + '</div>');
   }
 
+  /* ---------- 시험·과제: 목록 먼저, 넣는 칸은 접기 ---------- */
+  var datesOpen = false;
+  function datesTidy(root) {
+    var form = null, list = null;
+    root.querySelectorAll('section.card, .card').forEach(function (c) { var h = c.querySelector('h2'); if (!h) return; if (!form && /시험·과제 넣기/.test(h.textContent)) form = c; if (!list && /다가오는 일정/.test(h.textContent)) list = c; });
+    if (!form || form.closest('details.dt-add')) return;
+    var has = state.dates.some(function (x) { return !x.done; });
+    var d = document.createElement('details'); d.className = 'dt-add'; if (datesOpen || !has) d.open = true;
+    d.innerHTML = '<summary>＋ 시험·과제 넣기</summary>';
+    form.parentNode.insertBefore(d, form); d.appendChild(form);
+    if (list) list.insertAdjacentElement('afterend', d);
+    d.addEventListener('toggle', function () { datesOpen = d.open; });
+  }
+
+  /* ---------- 흰둥이 버튼: 내릴 때는 옆으로 비켜주기 ---------- */
+  var lastY = 0;
+  window.addEventListener('scroll', function () { var y = window.scrollY; document.body.classList.toggle('scroll-down', y > lastY + 4 && y > 120); if (y < lastY - 4) document.body.classList.remove('scroll-down'); lastY = y; }, { passive: true });
+
   /* ---------- 연결 ---------- */
   var prev = render;
   render = function () {
@@ -229,6 +247,8 @@
       var after = root.querySelector('#nx-3h') || root.querySelector('.hb');
       ['.pl-tasks', '#bo-exam'].forEach(function (sel) { var el = root.querySelector(sel); if (el && after) { after.insertAdjacentElement('afterend', el); after = el; } });
     }
+    if (tab === 'stats') { var sh1 = root.querySelector('.pl-stat-top h1'); if (sh1) sh1.remove(); }
+    if (tab === 'dates') datesTidy(root);
     if (tab === 'today' && isParent()) { var ph = root.querySelector('.pv-head'); if (ph) ph.remove(); momStats(root); }
     var old = root.querySelector('.lt-head'); if (old) old.remove();
     root.insertAdjacentHTML('afterbegin', headHTML(tab));
