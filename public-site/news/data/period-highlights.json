@@ -1,7 +1,7 @@
 {
   "version": "1.1",
-  "generated_at": "2026-10-16T18:04:48.101805+09:00",
-  "as_of": "2026-10-16T09:00:00+09:00",
+  "generated_at": "2026-10-17T18:04:48.285280+09:00",
+  "as_of": "2026-10-17T09:00:00+09:00",
   "periods": {
     "today": {
       "label": "오늘",
@@ -9,198 +9,176 @@
       "items": [
         {
           "rank": 1,
-          "canonical_issue": "허가 기대와 개발 포기 사이…'폐섬유증' 신약 엇갈린 운명 - 약사공론",
-          "title": "허가 기대와 개발 포기 사이…'폐섬유증' 신약 엇갈린 운명",
+          "canonical_issue": "오리지널-제네릭 약가역전, 복지부 \"추가 약가제도 개선 검토\" - 약사공론",
+          "title": "오리지널-제네릭 약가역전, 복지부 \"추가 약가제도 개선 검토\"",
           "category": [
-            "허가",
-            "3상",
-            "임상 3상"
+            "약가",
+            "복지부"
           ],
           "publishers": [
             "약사공론"
           ],
-          "published_at": "2026-10-16T05:52:00+09:00",
+          "published_at": "2026-10-17T05:50:00+09:00",
           "published_at_verified": true,
           "summary": [
-            "특발성 폐섬유증(IPF)을 겨냥한 글로벌 제약사들의 신약개발 성적표가 엇갈렸다.브리스톨마이어스스퀴브(BMS)는 새로운 작용기전의 치료제로 임상 3상에서 유효성을",
+            "오리지널 의약품과 제네릭 간 약가 역전을 막기 위한 별도 조정기준 마련 필요성이 국회에서 제기된 가운데, 보건복지부가 제약업계와 소통하며 추가적인 약가제도 개선",
             "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
             "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
           ],
-          "importance": "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다.",
+          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
           "source_urls": [
-            "https://www.kpanews.co.kr/news/articleView.html?idxno=546474"
+            "https://www.kpanews.co.kr/news/articleView.html?idxno=546607"
           ],
           "source_links": [
             {
               "publisher": "약사공론",
-              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546474"
+              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546607"
             }
           ],
-          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/546474_451313_719.png",
-          "score": 71,
+          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/546607_451430_418.jpg",
+          "score": 69,
           "oncology": null
         },
         {
           "rank": 2,
-          "canonical_issue": "비뇨의학회 “신기술·복합제, 필요한 환자에 급여 길 열어야” - 의학신문",
-          "title": "비뇨의학회 “신기술·복합제, 필요한 환자에 급여 길 열어야”",
+          "canonical_issue": "특발성 폐섬유증 새 치료제 자스케이드…급여 진입 주목 - 약사공론",
+          "title": "특발성 폐섬유증 새 치료제 자스케이드…급여 진입 주목",
           "category": [
-            "급여"
-          ],
-          "publishers": [
-            "의학신문"
-          ],
-          "published_at": "2026-10-16T06:22:09+09:00",
-          "published_at_verified": true,
-          "summary": [
-            "[의학신문·일간보사=정광성 기자] 요로결석 수술용 레이저와 전립선비대증 치료 복합제의 건강보험 보상체계를 개선해 환자의 치료 선택권을 넓혀야 한다는 비뇨의학계의",
-            "[의학신문·일간보사=정광성 기자] 요로결석 수술용 레이저와 전립선비대증 치료 복합제의 건강보험 보상체계를 개선해 환자의 치료 선택권을 넓혀야 한다는 비뇨의학계의 요구가 나왔다.",
-            "사진= 의학신문 정광성 기자 대한비뇨의학회 방우진 보험이사 <사진> (한림대성심병원)는 지난 15일 서울 코엑스에서 열린 ‘제78차 대한비뇨의학회 국제 정기학술대회(KUA 2026)’ 기자간담회에서 임상적 이점이 기대되는 환자를 대상으로 치료재료와 약제의 제한적 급여 적용을 검토해야 한다고 밝혔다."
-          ],
-          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
-          "source_urls": [
-            "https://www.bosa.co.kr/news/articleView.html?idxno=3014020"
-          ],
-          "source_links": [
-            {
-              "publisher": "의학신문",
-              "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014020"
-            }
-          ],
-          "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3014020_414964_4910.jpg",
-          "score": 49,
-          "oncology": null
-        },
-        {
-          "rank": 3,
-          "canonical_issue": "'중앙약심'이 면역주사를 바라보는 시각은? - 약사공론",
-          "title": "'중앙약심'이 면역주사를 바라보는 시각은?",
-          "category": [
+            "급여",
             "허가"
           ],
           "publishers": [
             "약사공론"
           ],
-          "published_at": "2026-10-16T05:50:00+09:00",
+          "published_at": "2026-10-17T05:50:00+09:00",
           "published_at_verified": true,
           "summary": [
-            "암 환자에게 사용되는 이른바 '면역주사'를 바라보는 중앙약사심의위원회(중앙약심)의 시선은 단순히 허가를 유지하거나 없애는 문제에 머물지 않았다. 유효성에 대한 과",
+            "특발성 폐섬유증 치료제 자스케이드가 국내 품목허가를 받으면서 기존 항섬유화제 중심의 치료 시장에 새로운 선택지가 추가됐다.닌테다닙과 피르페니돈이 치료의 기반을 이",
+            "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+            "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+          ],
+          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+          "source_urls": [
+            "https://www.kpanews.co.kr/news/articleView.html?idxno=546601"
+          ],
+          "source_links": [
+            {
+              "publisher": "약사공론",
+              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546601"
+            }
+          ],
+          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/546601_451422_2149.png",
+          "score": 61,
+          "oncology": null
+        },
+        {
+          "rank": 3,
+          "canonical_issue": "지역의료 수가 지원 확대에도…의료취약지 '소외' - 메디파나뉴스",
+          "title": "지역의료 수가 지원 확대에도…의료취약지 '소외'",
+          "category": [
+            "수가",
+            "합병",
+            "병원"
+          ],
+          "publishers": [
+            "메디파나뉴스"
+          ],
+          "published_at": "2026-10-16T16:00:39+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "정부가 지역의료 격차를 줄이기 위해 건강보험 수가를 추가 지원하고 있지만, 정작 종합병원이 없는 의료취약지는 혜택을 받기 어려운 구조라는 비판이 나왔다. 인구감소지역임에도 광역시에 속한다는 이유로 지원 대상에서 제외되는 곳이 있는가 하면, 의사가 한 명뿐인 지역에서는 일차의료 시범사업의 참여 요건조차 충",
+            "사진=이정수 기자 정부가 지역의료 격차를 줄이기 위해 건강보험 수가를 추가 지원하고 있지만, 정작 종합병원이 없는 의료취약지는 혜택을 받기 어려운 구조라는 비판이 나왔다.",
+            "인구감소지역임에도 광역시에 속한다는 이유로 지원 대상에서 제외되는 곳이 있는가 하면, 의사가 한 명뿐인 지역에서는 일차의료 시범사업의 참여 요건조차 충족하기 어려운 상황이다."
+          ],
+          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+          "source_urls": [
+            "https://www.medipana.com/news/articleView.html?idxno=419462"
+          ],
+          "source_links": [
+            {
+              "publisher": "메디파나뉴스",
+              "url": "https://www.medipana.com/news/articleView.html?idxno=419462"
+            }
+          ],
+          "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419462_326922_5638.jpg",
+          "score": 59,
+          "oncology": null
+        },
+        {
+          "rank": 4,
+          "canonical_issue": "검사 수가 인하, 비급여 풍선효과 부른다...국감서 개편 부작용 우려 - 의학신문",
+          "title": "검사 수가 인하, 비급여 풍선효과 부른다...국감서 개편 부작용 우려",
+          "category": [
+            "급여",
+            "수가"
+          ],
+          "publishers": [
+            "의학신문"
+          ],
+          "published_at": "2026-10-16T18:50:54+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "[의학신문·일간보사=이재원 기자] 정부가 검사 수가를 조정해 확보한 재원을 필수의료 분야에 재배분하는 수가 구조 개편을 추진하는 가운데, 검사 수가 인하가 오히려",
+            "[의학신문·일간보사=이재원 기자] 정부가 검사 수가를 조정해 확보한 재원을 필수의료 분야에 재배분하는 수가 구조 개편을 추진하는 가운데, 검사 수가 인하가 오히려 비급여 진료 확대로 이어지는 '풍선효과'를 초래할 수 있다는 우려가 국정감사에서 제기됐다.",
+            "특히 지역 의료기관들이 그동안 검사 수익으로 응급·소아·분만 등 필수의료 분야의 적자를 보전해 온 만큼, 검사 수가 조정에 따른 수익 감소가 비급여 진료 확대와 환자 부담 증가로 이어질 가능성까지 고려해야 한다는 지적이다."
+          ],
+          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+          "source_urls": [
+            "https://www.bosa.co.kr/news/articleView.html?idxno=3014161"
+          ],
+          "source_links": [
+            {
+              "publisher": "의학신문",
+              "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014161"
+            }
+          ],
+          "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3014161_415074_4551.jpg",
+          "score": 56,
+          "oncology": null
+        },
+        {
+          "rank": 5,
+          "canonical_issue": "복지부 \"비만주사 원내 판매 점검…공급 집중 의료기관 현장조사\" - 약사공론",
+          "title": "복지부 \"비만주사 원내 판매 점검…공급 집중 의료기관 현장조사\"",
+          "category": [
+            "복지부",
+            "허가",
+            "공급"
+          ],
+          "publishers": [
+            "약사공론"
+          ],
+          "published_at": "2026-10-16T10:19:34+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "비만치료제의 무분별한 원내 처방·조제와 허가 범위를 벗어난 사용에 대한 관리가 강화될 전망이다. 보건복지부는 자가 주사제 공급이 과도하게 집중되는 의료기관을 중심",
             "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
             "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
           ],
           "importance": "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다.",
           "source_urls": [
-            "https://www.kpanews.co.kr/news/articleView.html?idxno=546476"
+            "https://www.kpanews.co.kr/news/articleView.html?idxno=546510"
           ],
           "source_links": [
             {
               "publisher": "약사공론",
-              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546476"
+              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546510"
             }
           ],
-          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/546476_451314_5751.png",
-          "score": 47,
-          "oncology": {
-            "is_oncology": true,
-            "cancer_types": [],
-            "drug_generic": [],
-            "drug_brand": [],
-            "targets": [],
-            "mechanism": [],
-            "biomarkers": [],
-            "trial_name": null,
-            "phase": null,
-            "line_of_therapy": null,
-            "endpoints": {
-              "orr": null,
-              "pfs": null,
-              "os": null,
-              "hr": null,
-              "grade3plus_ae": null
-            },
-            "approval_status": "허가 관련",
-            "reimbursement_status": "급여 관련",
-            "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
-            "patient_relevance_score": 60,
-            "patient_relevance_labels": [
-              "급여·접근성",
-              "허가"
-            ],
-            "industry_summary": null
-          }
-        },
-        {
-          "rank": 4,
-          "canonical_issue": "병원약사 인력기준 15년째 제자리…“환자 안전 위해 현실화 시급” - 의학신문",
-          "title": "병원약사 인력기준 15년째 제자리…“환자 안전 위해 현실화 시급”",
-          "category": [
-            "병원"
-          ],
-          "publishers": [
-            "의학신문"
-          ],
-          "published_at": "2026-10-16T06:00:00+09:00",
-          "published_at_verified": true,
-          "summary": [
-            "[의학신문·일간보사=유은제 기자]의료기관의 약사 인력 기준이 2010년 개정 이후 15년 넘게 유지되면서 달라진 의료환경과 병원 약사 업무를 제대로 반영하지 못하",
-            "[의학신문·일간보사=유은제 기자]의료기관의 약사 인력 기준이 2010년 개정 이후 15년 넘게 유지되면서 달라진 의료환경과 병원 약사 업무를 제대로 반영하지 못하고 있다는 지적이 제기됐다.",
-            "특히 환자 수와 관계없이 약사 1명만 배치하도록 한 일부 의료기관의 인력 기준이 약제 서비스의 질적 격차를 키우고 환자 안전까지 위협할 수 있다는 우려다."
-          ],
-          "importance": "의료기관·약국 현장의 변화는 진료 흐름과 환자 경험, 의약품 사용 환경에 직접 영향을 줍니다.",
-          "source_urls": [
-            "https://www.bosa.co.kr/news/articleView.html?idxno=3014036"
-          ],
-          "source_links": [
-            {
-              "publisher": "의학신문",
-              "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014036"
-            }
-          ],
-          "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3014036_414947_2855.png",
-          "score": 37,
-          "oncology": null
-        },
-        {
-          "rank": 5,
-          "canonical_issue": "\"병원약사 인력기준 현실화 절실\"…환자안전 위한 제도 개선 첫발 - 약사공론",
-          "title": "\"병원약사 인력기준 현실화 절실\"…환자안전 위한 제도 개선 첫발",
-          "category": [
-            "병원"
-          ],
-          "publishers": [
-            "약사공론"
-          ],
-          "published_at": "2026-10-16T05:50:00+09:00",
-          "published_at_verified": true,
-          "summary": [
-            "\"의료기관에서 약사는 있어도 되고 없어도 되는 인력이 아니라, 의사와 간호사처럼 반드시 필요한 필수 보건의료인력으로 인식돼야 합니다.\"한국병원약사회가 15년 넘게",
-            "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
-            "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
-          ],
-          "importance": "의료기관·약국 현장의 변화는 진료 흐름과 환자 경험, 의약품 사용 환경에 직접 영향을 줍니다.",
-          "source_urls": [
-            "https://www.kpanews.co.kr/news/articleView.html?idxno=546482"
-          ],
-          "source_links": [
-            {
-              "publisher": "약사공론",
-              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546482"
-            }
-          ],
-          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/546482_451319_445.jpg",
-          "score": 31,
+          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/546510_451336_1813.jpg",
+          "score": 52,
           "oncology": null
         }
       ],
       "trends": [
         {
-          "title": "신약·임상",
-          "count": 3,
-          "change": "3건의 주요 이슈에서 반복적으로 확인",
-          "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
+          "title": "정책·급여",
+          "count": 5,
+          "change": "5건의 주요 이슈에서 반복적으로 확인",
+          "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
           "examples": [
-            "허가 기대와 개발 포기 사이…'폐섬유증' 신약 엇갈린 운명",
-            "비뇨의학회 “신기술·복합제, 필요한 환자에 급여 길 열어야”"
+            "오리지널-제네릭 약가역전, 복지부 \"추가 약가제도 개선 검토\"",
+            "특발성 폐섬유증 새 치료제 자스케이드…급여 진입 주목"
           ]
         },
         {
@@ -209,8 +187,8 @@
           "change": "3건의 주요 이슈에서 반복적으로 확인",
           "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
           "examples": [
-            "허가 기대와 개발 포기 사이…'폐섬유증' 신약 엇갈린 운명",
-            "'중앙약심'이 면역주사를 바라보는 시각은?"
+            "오리지널-제네릭 약가역전, 복지부 \"추가 약가제도 개선 검토\"",
+            "특발성 폐섬유증 새 치료제 자스케이드…급여 진입 주목"
           ]
         },
         {
@@ -219,17 +197,18 @@
           "change": "3건의 주요 이슈에서 반복적으로 확인",
           "implication": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름",
           "examples": [
-            "비뇨의학회 “신기술·복합제, 필요한 환자에 급여 길 열어야”",
-            "병원약사 인력기준 15년째 제자리…“환자 안전 위해 현실화 시급”"
+            "지역의료 수가 지원 확대에도…의료취약지 '소외'",
+            "검사 수가 인하, 비급여 풍선효과 부른다...국감서 개편 부작용 우려"
           ]
         },
         {
-          "title": "정책·급여",
-          "count": 1,
-          "change": "1건의 주요 이슈에서 반복적으로 확인",
-          "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
+          "title": "신약·임상",
+          "count": 2,
+          "change": "2건의 주요 이슈에서 반복적으로 확인",
+          "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
           "examples": [
-            "비뇨의학회 “신기술·복합제, 필요한 환자에 급여 길 열어야”"
+            "특발성 폐섬유증 새 치료제 자스케이드…급여 진입 주목",
+            "복지부 \"비만주사 원내 판매 점검…공급 집중 의료기관 현장조사\""
           ]
         }
       ]
@@ -346,6 +325,40 @@
         },
         {
           "rank": 1,
+          "canonical_issue": "오리지널-제네릭 약가역전, 복지부 \"추가 약가제도 개선 검토\" - 약사공론",
+          "title": "오리지널-제네릭 약가역전, 복지부 \"추가 약가제도 개선 검토\"",
+          "category": [
+            "약가",
+            "복지부"
+          ],
+          "publishers": [
+            "약사공론"
+          ],
+          "published_at": "2026-10-17T05:50:00+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "오리지널 의약품과 제네릭 간 약가 역전을 막기 위한 별도 조정기준 마련 필요성이 국회에서 제기된 가운데, 보건복지부가 제약업계와 소통하며 추가적인 약가제도 개선",
+            "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+            "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+          ],
+          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+          "source_urls": [
+            "https://www.kpanews.co.kr/news/articleView.html?idxno=546607"
+          ],
+          "source_links": [
+            {
+              "publisher": "약사공론",
+              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546607"
+            }
+          ],
+          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/546607_451430_418.jpg",
+          "score": 69,
+          "oncology": null,
+          "report_date": "2026-10-17",
+          "period_rank": 4
+        },
+        {
+          "rank": 1,
           "canonical_issue": "의학계, 호흡기질환 지원 호소…산정특례·약제 급여 확대 촉구 - 의학신문",
           "title": "의학계, 호흡기질환 지원 호소…산정특례·약제 급여 확대 촉구",
           "category": [
@@ -376,45 +389,20 @@
           "score": 67,
           "oncology": null,
           "report_date": "2026-10-15",
-          "period_rank": 4
-        },
-        {
-          "rank": 1,
-          "canonical_issue": "[제약공시 책갈피] 10월 2주차 - 한미약품·알테오젠·종근당 外 - 메디파나뉴스",
-          "title": "[제약공시 책갈피] 10월 2주차 - 한미약품·알테오젠·종근당 外",
-          "category": [
-            "식약처",
-            "허가",
-            "공급"
-          ],
-          "publishers": [
-            "메디파나뉴스"
-          ],
-          "published_at": "2026-10-10T06:00:00+09:00",
-          "published_at_verified": true,
-          "summary": [
-            "[메디파나뉴스 = 이정수 기자] 2026년 10월 2주차(10.5~10.9)에는 한미약품이 독자 개발한 GLP-1 계열 비만치료제 '에페'에 대해 식약처로부터 품목허가를 승인받았다. 이로써 에페는 국산 신약 45호가 됐다. 한미약품은 연내 국내 시장 공급을 목표로 수입약 대비 경쟁력 있는 가격 체계를 갖",
-            "[메디파나뉴스 = 이정수 기자] 2026년 10월 2주차(10.5~10.9)에는 한미약품이 독자 개발한 GLP-1 계열 비만치료제 '에페'에 대해 식약처로부터 품목허가를 승인받았다.",
-            "한미약품은 연내 국내 시장 공급을 목표로 수입약 대비 경쟁력 있는 가격 체계를 갖춰 발매를 준비하고 있다."
-          ],
-          "importance": "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다.",
-          "source_urls": [
-            "https://www.medipana.com/news/articleView.html?idxno=419057"
-          ],
-          "source_links": [
-            {
-              "publisher": "메디파나뉴스",
-              "url": "https://www.medipana.com/news/articleView.html?idxno=419057"
-            }
-          ],
-          "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419057_326416_3614.jpg",
-          "score": 68,
-          "oncology": null,
-          "report_date": "2026-10-10",
           "period_rank": 5
         }
       ],
       "trends": [
+        {
+          "title": "디지털헬스",
+          "count": 4,
+          "change": "4건의 주요 이슈에서 반복적으로 확인",
+          "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
+          "examples": [
+            "화이자 하임파지, 급여화 '9부능선' 약가협상 중…이르면 1월 등재",
+            "신약 혁신부터 안전관리 공백까지…식약처 국정감사 '미리보기'"
+          ]
+        },
         {
           "title": "정책·급여",
           "count": 4,
@@ -426,19 +414,9 @@
           ]
         },
         {
-          "title": "디지털헬스",
-          "count": 3,
-          "change": "3건의 주요 이슈에서 반복적으로 확인",
-          "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
-          "examples": [
-            "화이자 하임파지, 급여화 '9부능선' 약가협상 중…이르면 1월 등재",
-            "신약 혁신부터 안전관리 공백까지…식약처 국정감사 '미리보기'"
-          ]
-        },
-        {
           "title": "신약·임상",
-          "count": 3,
-          "change": "3건의 주요 이슈에서 반복적으로 확인",
+          "count": 2,
+          "change": "2건의 주요 이슈에서 반복적으로 확인",
           "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
           "examples": [
             "신약 혁신부터 안전관리 공백까지…식약처 국정감사 '미리보기'",
@@ -447,12 +425,11 @@
         },
         {
           "title": "공급·유통",
-          "count": 2,
-          "change": "2건의 주요 이슈에서 반복적으로 확인",
+          "count": 1,
+          "change": "1건의 주요 이슈에서 반복적으로 확인",
           "implication": "의약품 공급 안정성과 유통 대응이 현장 리스크로 부각되는 흐름",
           "examples": [
-            "신약 혁신부터 안전관리 공백까지…식약처 국정감사 '미리보기'",
-            "[제약공시 책갈피] 10월 2주차 - 한미약품·알테오젠·종근당 外"
+            "신약 혁신부터 안전관리 공백까지…식약처 국정감사 '미리보기'"
           ]
         }
       ]
@@ -607,6 +584,40 @@
         },
         {
           "rank": 1,
+          "canonical_issue": "오리지널-제네릭 약가역전, 복지부 \"추가 약가제도 개선 검토\" - 약사공론",
+          "title": "오리지널-제네릭 약가역전, 복지부 \"추가 약가제도 개선 검토\"",
+          "category": [
+            "약가",
+            "복지부"
+          ],
+          "publishers": [
+            "약사공론"
+          ],
+          "published_at": "2026-10-17T05:50:00+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "오리지널 의약품과 제네릭 간 약가 역전을 막기 위한 별도 조정기준 마련 필요성이 국회에서 제기된 가운데, 보건복지부가 제약업계와 소통하며 추가적인 약가제도 개선",
+            "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+            "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+          ],
+          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+          "source_urls": [
+            "https://www.kpanews.co.kr/news/articleView.html?idxno=546607"
+          ],
+          "source_links": [
+            {
+              "publisher": "약사공론",
+              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546607"
+            }
+          ],
+          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/546607_451430_418.jpg",
+          "score": 69,
+          "oncology": null,
+          "report_date": "2026-10-17",
+          "period_rank": 5
+        },
+        {
+          "rank": 1,
           "canonical_issue": "의학계, 호흡기질환 지원 호소…산정특례·약제 급여 확대 촉구 - 의학신문",
           "title": "의학계, 호흡기질환 지원 호소…산정특례·약제 급여 확대 촉구",
           "category": [
@@ -637,45 +648,20 @@
           "score": 67,
           "oncology": null,
           "report_date": "2026-10-15",
-          "period_rank": 5
-        },
-        {
-          "rank": 1,
-          "canonical_issue": "[제약공시 책갈피] 10월 2주차 - 한미약품·알테오젠·종근당 外 - 메디파나뉴스",
-          "title": "[제약공시 책갈피] 10월 2주차 - 한미약품·알테오젠·종근당 外",
-          "category": [
-            "식약처",
-            "허가",
-            "공급"
-          ],
-          "publishers": [
-            "메디파나뉴스"
-          ],
-          "published_at": "2026-10-10T06:00:00+09:00",
-          "published_at_verified": true,
-          "summary": [
-            "[메디파나뉴스 = 이정수 기자] 2026년 10월 2주차(10.5~10.9)에는 한미약품이 독자 개발한 GLP-1 계열 비만치료제 '에페'에 대해 식약처로부터 품목허가를 승인받았다. 이로써 에페는 국산 신약 45호가 됐다. 한미약품은 연내 국내 시장 공급을 목표로 수입약 대비 경쟁력 있는 가격 체계를 갖",
-            "[메디파나뉴스 = 이정수 기자] 2026년 10월 2주차(10.5~10.9)에는 한미약품이 독자 개발한 GLP-1 계열 비만치료제 '에페'에 대해 식약처로부터 품목허가를 승인받았다.",
-            "한미약품은 연내 국내 시장 공급을 목표로 수입약 대비 경쟁력 있는 가격 체계를 갖춰 발매를 준비하고 있다."
-          ],
-          "importance": "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다.",
-          "source_urls": [
-            "https://www.medipana.com/news/articleView.html?idxno=419057"
-          ],
-          "source_links": [
-            {
-              "publisher": "메디파나뉴스",
-              "url": "https://www.medipana.com/news/articleView.html?idxno=419057"
-            }
-          ],
-          "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419057_326416_3614.jpg",
-          "score": 68,
-          "oncology": null,
-          "report_date": "2026-10-10",
           "period_rank": 6
         }
       ],
       "trends": [
+        {
+          "title": "디지털헬스",
+          "count": 5,
+          "change": "5건의 주요 이슈에서 반복적으로 확인",
+          "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
+          "examples": [
+            "삼일제약이 5년 전 찜한 골관절염 신약…美·英 이어 유럽 허가 심사 - 메디파나뉴스",
+            "화이자 하임파지, 급여화 '9부능선' 약가협상 중…이르면 1월 등재"
+          ]
+        },
         {
           "title": "정책·급여",
           "count": 5,
@@ -687,33 +673,13 @@
           ]
         },
         {
-          "title": "디지털헬스",
-          "count": 4,
-          "change": "4건의 주요 이슈에서 반복적으로 확인",
-          "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
-          "examples": [
-            "삼일제약이 5년 전 찜한 골관절염 신약…美·英 이어 유럽 허가 심사 - 메디파나뉴스",
-            "화이자 하임파지, 급여화 '9부능선' 약가협상 중…이르면 1월 등재"
-          ]
-        },
-        {
           "title": "신약·임상",
-          "count": 4,
-          "change": "4건의 주요 이슈에서 반복적으로 확인",
+          "count": 3,
+          "change": "3건의 주요 이슈에서 반복적으로 확인",
           "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
           "examples": [
             "삼일제약이 5년 전 찜한 골관절염 신약…美·英 이어 유럽 허가 심사 - 메디파나뉴스",
             "신약 혁신부터 안전관리 공백까지…식약처 국정감사 '미리보기'"
-          ]
-        },
-        {
-          "title": "공급·유통",
-          "count": 2,
-          "change": "2건의 주요 이슈에서 반복적으로 확인",
-          "implication": "의약품 공급 안정성과 유통 대응이 현장 리스크로 부각되는 흐름",
-          "examples": [
-            "신약 혁신부터 안전관리 공백까지…식약처 국정감사 '미리보기'",
-            "[제약공시 책갈피] 10월 2주차 - 한미약품·알테오젠·종근당 外"
           ]
         },
         {
@@ -723,6 +689,15 @@
           "implication": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름",
           "examples": [
             "삼일제약이 5년 전 찜한 골관절염 신약…美·英 이어 유럽 허가 심사 - 메디파나뉴스"
+          ]
+        },
+        {
+          "title": "공급·유통",
+          "count": 1,
+          "change": "1건의 주요 이슈에서 반복적으로 확인",
+          "implication": "의약품 공급 안정성과 유통 대응이 현장 리스크로 부각되는 흐름",
+          "examples": [
+            "신약 혁신부터 안전관리 공백까지…식약처 국정감사 '미리보기'"
           ]
         }
       ]

@@ -1,0 +1,404 @@
+{
+  "version": "1.2",
+  "report_date": "2026-10-17",
+  "collection_window": {
+    "start": "2026-10-16T09:00:00+09:00",
+    "end": "2026-10-17T09:00:00+09:00",
+    "timezone": "Asia/Seoul"
+  },
+  "sources": [
+    "데일리팜",
+    "의학신문",
+    "메디파나뉴스",
+    "약사공론"
+  ],
+  "briefing": "오리지널-제네릭 약가역전, 복지부 \"추가 약가제도 개선 검토\"가 오늘 가장 중요한 이슈로 부각됐습니다. 이어 특발성 폐섬유증 새 치료제 자스케이드…급여 진입 주목도 주요 변화로 확인됐습니다. 전체적으로는 정책·급여 · 디지털헬스 흐름이 두드러집니다.",
+  "top_news": [
+    {
+      "rank": 1,
+      "canonical_issue": "오리지널-제네릭 약가역전, 복지부 \"추가 약가제도 개선 검토\" - 약사공론",
+      "title": "오리지널-제네릭 약가역전, 복지부 \"추가 약가제도 개선 검토\"",
+      "category": [
+        "약가",
+        "복지부"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-10-17T05:50:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "오리지널 의약품과 제네릭 간 약가 역전을 막기 위한 별도 조정기준 마련 필요성이 국회에서 제기된 가운데, 보건복지부가 제약업계와 소통하며 추가적인 약가제도 개선",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=546607"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546607"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/546607_451430_418.jpg",
+      "score": 69,
+      "oncology": null
+    },
+    {
+      "rank": 2,
+      "canonical_issue": "특발성 폐섬유증 새 치료제 자스케이드…급여 진입 주목 - 약사공론",
+      "title": "특발성 폐섬유증 새 치료제 자스케이드…급여 진입 주목",
+      "category": [
+        "급여",
+        "허가"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-10-17T05:50:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "특발성 폐섬유증 치료제 자스케이드가 국내 품목허가를 받으면서 기존 항섬유화제 중심의 치료 시장에 새로운 선택지가 추가됐다.닌테다닙과 피르페니돈이 치료의 기반을 이",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=546601"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546601"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/546601_451422_2149.png",
+      "score": 61,
+      "oncology": null
+    },
+    {
+      "rank": 3,
+      "canonical_issue": "지역의료 수가 지원 확대에도…의료취약지 '소외' - 메디파나뉴스",
+      "title": "지역의료 수가 지원 확대에도…의료취약지 '소외'",
+      "category": [
+        "수가",
+        "합병",
+        "병원"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-16T16:00:39+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "정부가 지역의료 격차를 줄이기 위해 건강보험 수가를 추가 지원하고 있지만, 정작 종합병원이 없는 의료취약지는 혜택을 받기 어려운 구조라는 비판이 나왔다. 인구감소지역임에도 광역시에 속한다는 이유로 지원 대상에서 제외되는 곳이 있는가 하면, 의사가 한 명뿐인 지역에서는 일차의료 시범사업의 참여 요건조차 충",
+        "사진=이정수 기자 정부가 지역의료 격차를 줄이기 위해 건강보험 수가를 추가 지원하고 있지만, 정작 종합병원이 없는 의료취약지는 혜택을 받기 어려운 구조라는 비판이 나왔다.",
+        "인구감소지역임에도 광역시에 속한다는 이유로 지원 대상에서 제외되는 곳이 있는가 하면, 의사가 한 명뿐인 지역에서는 일차의료 시범사업의 참여 요건조차 충족하기 어려운 상황이다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=419462"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=419462"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419462_326922_5638.jpg",
+      "score": 59,
+      "oncology": null
+    },
+    {
+      "rank": 4,
+      "canonical_issue": "검사 수가 인하, 비급여 풍선효과 부른다...국감서 개편 부작용 우려 - 의학신문",
+      "title": "검사 수가 인하, 비급여 풍선효과 부른다...국감서 개편 부작용 우려",
+      "category": [
+        "급여",
+        "수가"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-16T18:50:54+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=이재원 기자] 정부가 검사 수가를 조정해 확보한 재원을 필수의료 분야에 재배분하는 수가 구조 개편을 추진하는 가운데, 검사 수가 인하가 오히려",
+        "[의학신문·일간보사=이재원 기자] 정부가 검사 수가를 조정해 확보한 재원을 필수의료 분야에 재배분하는 수가 구조 개편을 추진하는 가운데, 검사 수가 인하가 오히려 비급여 진료 확대로 이어지는 '풍선효과'를 초래할 수 있다는 우려가 국정감사에서 제기됐다.",
+        "특히 지역 의료기관들이 그동안 검사 수익으로 응급·소아·분만 등 필수의료 분야의 적자를 보전해 온 만큼, 검사 수가 조정에 따른 수익 감소가 비급여 진료 확대와 환자 부담 증가로 이어질 가능성까지 고려해야 한다는 지적이다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3014161"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014161"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3014161_415074_4551.jpg",
+      "score": 56,
+      "oncology": null
+    },
+    {
+      "rank": 5,
+      "canonical_issue": "복지부 \"비만주사 원내 판매 점검…공급 집중 의료기관 현장조사\" - 약사공론",
+      "title": "복지부 \"비만주사 원내 판매 점검…공급 집중 의료기관 현장조사\"",
+      "category": [
+        "복지부",
+        "허가",
+        "공급"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-10-16T10:19:34+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "비만치료제의 무분별한 원내 처방·조제와 허가 범위를 벗어난 사용에 대한 관리가 강화될 전망이다. 보건복지부는 자가 주사제 공급이 과도하게 집중되는 의료기관을 중심",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=546510"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546510"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/546510_451336_1813.jpg",
+      "score": 52,
+      "oncology": null
+    }
+  ],
+  "trends": [
+    {
+      "title": "정책·급여",
+      "count": 5,
+      "change": "5건의 주요 이슈에서 반복적으로 확인",
+      "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
+      "examples": [
+        "오리지널-제네릭 약가역전, 복지부 \"추가 약가제도 개선 검토\"",
+        "특발성 폐섬유증 새 치료제 자스케이드…급여 진입 주목"
+      ]
+    },
+    {
+      "title": "디지털헬스",
+      "count": 3,
+      "change": "3건의 주요 이슈에서 반복적으로 확인",
+      "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
+      "examples": [
+        "오리지널-제네릭 약가역전, 복지부 \"추가 약가제도 개선 검토\"",
+        "특발성 폐섬유증 새 치료제 자스케이드…급여 진입 주목"
+      ]
+    },
+    {
+      "title": "의료현장",
+      "count": 3,
+      "change": "3건의 주요 이슈에서 반복적으로 확인",
+      "implication": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름",
+      "examples": [
+        "지역의료 수가 지원 확대에도…의료취약지 '소외'",
+        "검사 수가 인하, 비급여 풍선효과 부른다...국감서 개편 부작용 우려"
+      ]
+    },
+    {
+      "title": "신약·임상",
+      "count": 2,
+      "change": "2건의 주요 이슈에서 반복적으로 확인",
+      "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
+      "examples": [
+        "특발성 폐섬유증 새 치료제 자스케이드…급여 진입 주목",
+        "복지부 \"비만주사 원내 판매 점검…공급 집중 의료기관 현장조사\""
+      ]
+    }
+  ],
+  "outlet_status": [
+    {
+      "publisher": "데일리팜",
+      "homepage_url": "https://www.dailypharm.com/",
+      "items": [
+        {
+          "title": "[데일리팜]의약계 Vs 플랫폼, 비대면 &#039;초진 7일&#039; 제한 놓고 전면전",
+          "published_at": "2026-10-17T06:00:59+09:00",
+          "verified": true,
+          "source_url": "https://www.dailypharm.com/user/news/343478"
+        }
+      ]
+    },
+    {
+      "publisher": "의학신문",
+      "homepage_url": "https://www.bosa.co.kr/",
+      "items": [
+        {
+          "title": "검사 수가 인하, 비급여 풍선효과 부른다...국감서 개편 부작용 우려",
+          "published_at": "2026-10-16T18:50:54+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014161"
+        },
+        {
+          "title": "심평원, AI 의료기술 정식 급여등재 평가 가이드라인 마련 추진",
+          "published_at": "2026-10-16T17:35:54+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014153"
+        },
+        {
+          "title": "난임·출산 지원 확대 속 비급여 가격 급등",
+          "published_at": "2026-10-16T23:24:23+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014166"
+        },
+        {
+          "title": "혁신형 제약기업 제네릭 약가 우대 국감서 도마...“R&D 아닌 판촉비로 쓰일 우려”",
+          "published_at": "2026-10-16T18:08:47+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014157"
+        },
+        {
+          "title": "정형외과 스캐노그램 급여청구 기준 혼선...심평원, 현장조사 개선 추진",
+          "published_at": "2026-10-16T12:29:31+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014097"
+        },
+        {
+          "title": "“사무장병원·면대약국 근절 위해 건보공단 특사경 연내 도입해야”",
+          "published_at": "2026-10-16T12:29:31+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014095"
+        },
+        {
+          "title": "병원의사협의회, 공의모와 의료현안 공동 대응 MOU",
+          "published_at": "2026-10-16T21:41:33+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014141"
+        },
+        {
+          "title": "콜린알포세레이트'급여 환수율 계약 적정성' 논란",
+          "published_at": "2026-10-16T13:21:32+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014118"
+        }
+      ]
+    },
+    {
+      "publisher": "메디파나뉴스",
+      "homepage_url": "https://www.medipana.com/",
+      "items": [
+        {
+          "title": "지역의료 수가 지원 확대에도…의료취약지 '소외'",
+          "published_at": "2026-10-16T16:00:39+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419462"
+        },
+        {
+          "title": "도수치료 관리급여에 '풍선효과' 우려…신장분사치료 청구 급증",
+          "published_at": "2026-10-16T14:42:46+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419453"
+        },
+        {
+          "title": "병원 규모가 치료 성적 보장 못해…'사망비 공개' 재촉구",
+          "published_at": "2026-10-16T18:51:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419478"
+        },
+        {
+          "title": "원료직접생산 가산혜택 0곳…\"과도한 규제에 의약품 안보 위기\"",
+          "published_at": "2026-10-16T22:16:50+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419492"
+        },
+        {
+          "title": "[종합] 적자 앞둔 건강보험…재정 누수·관리 책임 집중 추궁",
+          "published_at": "2026-10-17T06:04:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419482"
+        },
+        {
+          "title": "콜린알포 급여 환수 100%→20%…국감서 '제약사 봐주기' 질타",
+          "published_at": "2026-10-16T12:42:57+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419451"
+        },
+        {
+          "title": "제네릭 약가 우대 확대…건보재정 '판촉비 전용' 우려",
+          "published_at": "2026-10-16T18:06:26+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419477"
+        },
+        {
+          "title": "급여 지혈재 1300원인데 비급여 13만원…가격 격차 도마",
+          "published_at": "2026-10-16T15:47:23+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419460"
+        }
+      ]
+    },
+    {
+      "publisher": "약사공론",
+      "homepage_url": "https://www.kpanews.co.kr/",
+      "items": [
+        {
+          "title": "오리지널-제네릭 약가역전, 복지부 \"추가 약가제도 개선 검토\"",
+          "published_at": "2026-10-17T05:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546607"
+        },
+        {
+          "title": "특발성 폐섬유증 새 치료제 자스케이드…급여 진입 주목",
+          "published_at": "2026-10-17T05:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546601"
+        },
+        {
+          "title": "복지부 \"비만주사 원내 판매 점검…공급 집중 의료기관 현장조사\"",
+          "published_at": "2026-10-16T10:19:34+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546510"
+        },
+        {
+          "title": "“약배송, 안전관리 면밀히 고려”한다는 복지부…국회는 '정책근거' 부족 연이어 지적",
+          "published_at": "2026-10-16T10:58:54+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546505"
+        },
+        {
+          "title": "복지부, RSA 급여확대 간소화 검토…환급형 외 총액형 등 포함",
+          "published_at": "2026-10-16T12:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546514"
+        },
+        {
+          "title": "원료 직접생산 약가우대 \"기준 강화에 취지 퇴색\" 지적",
+          "published_at": "2026-10-16T19:33:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546602"
+        },
+        {
+          "title": "\"창고형약국 오남용 약 대량판매 관리 강화\"…복지부, 행정처분 경고",
+          "published_at": "2026-10-16T11:01:06+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546515"
+        },
+        {
+          "title": "[약국에서 바로 쓰는 AI] Claude Dashboards로 품절 보고·예정된 의약품 한눈에 보기",
+          "published_at": "2026-10-17T05:49:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546447"
+        }
+      ]
+    }
+  ],
+  "insight": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름 동시에 디지털헬스 흐름도 함께 확인돼 단일 이슈보다 복합적인 산업 변화로 보는 것이 적절합니다.",
+  "infographic": {
+    "image_path": null,
+    "generated_at": null,
+    "template_version": "news-card-v1"
+  }
+}

@@ -1,9 +1,9 @@
 {
   "version": "1.0",
-  "generated_at": "2026-10-16T18:04:48.083523+09:00",
+  "generated_at": "2026-10-17T18:04:48.271899+09:00",
   "window": {
-    "start": "2026-09-16T09:00:00+09:00",
-    "end": "2026-10-16T09:00:00+09:00",
+    "start": "2026-09-17T09:00:00+09:00",
+    "end": "2026-10-17T09:00:00+09:00",
     "days": 30,
     "timezone": "Asia/Seoul"
   },
@@ -86,7 +86,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 10
+      "age_days": 11
     },
     {
       "rank": null,
@@ -152,7 +152,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 2
+      "age_days": 3
     },
     {
       "rank": null,
@@ -226,7 +226,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 8
+      "age_days": 9
     },
     {
       "rank": 3,
@@ -285,8 +285,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "today",
-      "age_days": 0
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -348,7 +348,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": null,
@@ -408,7 +408,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 8
+      "age_days": 9
     },
     {
       "rank": null,
@@ -473,8 +473,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "today",
-      "age_days": 0
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -538,8 +538,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "today",
-      "age_days": 0
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": 3,
@@ -603,7 +603,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     },
     {
       "rank": 2,
@@ -666,7 +666,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 9
+      "age_days": 10
     },
     {
       "rank": null,
@@ -727,7 +727,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 2
+      "age_days": 3
     },
     {
       "rank": null,
@@ -790,7 +790,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     },
     {
       "rank": null,
@@ -850,7 +850,129 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 8
+      "age_days": 9
+    },
+    {
+      "rank": null,
+      "canonical_issue": "경북대병원 김준영 교수팀, 대한손발톱학회 '우수 연제상' 수상 - 의학신문",
+      "title": "경북대병원 김준영 교수팀, 대한손발톱학회 '우수 연제상' 수상",
+      "category": [
+        "병원"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-16T21:41:55+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=박재영 기자] 경북대병원 피부과 김준영 교수 연구팀(발표자 서연주 전공의)이 조갑단위 편평세포암의 체계적인 임상 분류 틀을 제시한 연구로 학계",
+        "[의학신문·일간보사=박재영 기자] 경북대병원 피부과 김준영 교수 연구팀(발표자 서연주 전공의)이 조갑단위 편평세포암의 체계적인 임상 분류 틀을 제시한 연구로 학계의 주목을 받았다.",
+        "경북대병원은 김준영 교수팀이 지난 10일 서울 삼정호텔에서 열린 ‘제11차 대한손발톱학회 학술대회’에서 연구의 우수성을 인정받아 ‘우수 연제상’을 수상했다고 밝혔다."
+      ],
+      "importance": "의료기관·약국 현장의 변화는 진료 흐름과 환자 경험, 의약품 사용 환경에 직접 영향을 줍니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3014137"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014137"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3014137_415053_5353.jpg",
+      "score": 13,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": "향후 치료 선택이나 표준치료 논의에 영향을 줄 수 있는 임상 결과입니다.",
+        "patient_relevance_score": 28,
+        "patient_relevance_labels": [
+          "임상결과"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "7d",
+      "age_days": 1
+    },
+    {
+      "rank": null,
+      "canonical_issue": "종근당 CKD-DAC '기존 ADC 한계 넘는다’ 전임상 경쟁력 입증 - 의학신문",
+      "title": "종근당 CKD-DAC '기존 ADC 한계 넘는다’ 전임상 경쟁력 입증",
+      "category": [
+        "산업"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-16T09:39:15+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=김정일 기자]종근당이 차세대 항암 기술로 주목받는 '분해제-항체 접합체(DAC)' 신약 후보물질의 혁신적인 전임상 성과를 글로벌 무대에 공개했",
+        "[의학신문·일간보사=김정일 기자]종근당이 차세대 항암 기술로 주목받는 '분해제-항체 접합체(DAC)' 신약 후보물질의 혁신적인 전임상 성과를 글로벌 무대에 공개했다.",
+        "기존 항체-약물 접합체(ADC)의 한계로 지적되던 내성 문제와 독성을 극복할 수 있는 가능성을 입증하면서, 차세대 항암 치료제 개발에 속도가 붙을 전망이다."
+      ],
+      "importance": "시장·정책·연구개발 흐름을 보여주는 주요 산업 이슈로 후속 정책과 사업 변화 확인이 필요합니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3014076"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014076"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3014076_414989_3022.jpg",
+      "score": 0,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [
+          "ADC"
+        ],
+        "biomarkers": [
+          "HER2"
+        ],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": "검사 결과에 따라 치료 선택이 달라질 수 있는 정밀의료 관련 정보입니다.",
+        "patient_relevance_score": 28,
+        "patient_relevance_labels": [
+          "바이오마커"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -912,7 +1034,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": null,
@@ -973,7 +1095,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     },
     {
       "rank": null,
@@ -1036,7 +1158,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": null,
@@ -1097,7 +1219,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 8
+      "age_days": 9
     },
     {
       "rank": null,
@@ -1156,7 +1278,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 8
+      "age_days": 9
     },
     {
       "rank": 3,
@@ -1217,7 +1339,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 11
+      "age_days": 12
     },
     {
       "rank": null,
@@ -1272,7 +1394,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 13
+      "age_days": 14
     },
     {
       "rank": null,
@@ -1330,7 +1452,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 13
+      "age_days": 14
     },
     {
       "rank": null,
@@ -1387,7 +1509,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 14
+      "age_days": 15
     },
     {
       "rank": 4,
@@ -1446,7 +1568,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 14
+      "age_days": 15
     },
     {
       "rank": null,
@@ -1514,7 +1636,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 14
+      "age_days": 15
     }
   ]
 }
