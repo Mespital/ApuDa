@@ -1,0 +1,24 @@
+===== https://webdt.edunet.net/login
+HTTP/2 200 
+set-cookie: KHANUSER=x21j0ge5n1foqj; Path=/; Max-Age=2147483647
+set-cookie: JSESSIONID=gHQxWR-A4J3PdVRB9mfyN0Rz95lobTqub1JQL-Mu.WEBVIEW72; path=/
+set-cookie: NCPVPCLBTG=ac3ce7ad9d037a167e11d060de75cc04ee07b87abebdfaa31b23e7246c3a359f; path=/
+set-cookie: NCPVPCLB=c0b77c41f913b5b661af37d690c0326a52e058ad80771deee31a4f586c9e9d35; path=/
+<title>디지털교과서 웹 뷰어
+              <!DOCTYPE html> <html lang="ko">  <head> 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 	<meta http-equiv="Content-Script-Type" content="text/javascript"> 	<meta http-equiv="Content-Style-Type" content="text/css"> 	<meta http-equiv="X-UA-Compatible" content="IE=Edge"> 	<!-- S : mobile --> 	<meta name="viewport" content="width=device-width,viewport-fit=cover,initial-scale=1,user-scalable=no"> 	<meta name="format-detection" content="telephone=no"> 	<meta name="apple-mobile-web-app-capable" content="yes"> 	<meta name="apple-mobile-web-app-status-bar-style" content="black"> 	<meta name="format-detection" content="telephone=no"> 	<!-- E : mobile --> 	<title>디지털교과서 웹 뷰어</title> 	<meta name="description" content="다운로드 없이 온라인 이용 가능한 디지털교과서(초·중 사회/과학/영어, 고 영어) 및 교과서 PDF 제공"> 	<meta property="og:type" content="website"> 	<meta property="og:title" content="디지털교과서 웹 뷰어"> 	<meta property="og:description" content="다운로드 없이 온라인 이용 가능한 디지털교과서(초·중 사회/과학/영어, 고 영어) 및 교과서 PDF 제공"> 	<meta property="og:image" content="https://webdt.edunet.net/resources/images/logoscrap.png"> 	<meta property="og:image:width" content="242"> 	<meta property="og:image:height" content="248"> 	<meta property="og:url" content="https://webdt.edunet.net">  	<link rel=
+===== https://webdt.edunet.net/
+HTTP/2 302 
+set-cookie: KHANUSER=x1b3b5ifvs4p7k; Path=/; Max-Age=2147483647
+location: http://webdt.edunet.net/login
+set-cookie: NCPVPCLBTG=72a490bfad223a6d43fa7aa8ff4bc1efd0dd274137690e8cdd395d105988e320; path=/
+set-cookie: NCPVPCLB=c0b77c41f913b5b661af37d690c0326a52e058ad80771deee31a4f586c9e9d35; path=/
+
+===== https://dtbook.edunet.net/
+HTTP/2 200 
+set-cookie: KHANUSER=x3heon82ci78dp; Path=/; Max-Age=2147483647
+set-cookie: NCPVPCLBTG=e17700273727e4fbe97b1f24bea4531a0c8808b9273a1bb6844b19f33b150d0f; path=/
+<html><head><script language='javascript' type='text/javascript'>function OnSubmit(){top.document.location='https://stsso2.edunet.net/nsso-authweb/ssoService.do?returnURL=https%3A%2F%2Fdtbook.edunet.net%2F&ssosite=dtbook.edunet.net::SSO_WEB';}</script></script></head><body onload='OnSubmit();'></body></html>
+===== https://www.edunet.net/
+HTTP/2 200 
+<title>에듀넷
+<!DOCTYPE html> <html lang="ko">   <head>     <meta charset="UTF-8" />     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1" />     <meta name="robots" content="index,follow" />     <meta name="subject" content="에듀넷" />     <meta name="title" content="에듀넷" />     <meta name="author" content="KERIS" />     <meta       name="description"       content="한국교육학술정보원 운영, 교육정책자료, 학습·평가자료, 창의적 체험활동 자료 제공"     />     <meta name="keywords" content="에듀넷, 한국교육학술정보원, 중앙교수학습센터 edunet" />     <meta name="naver-site-verification" content="15122d318bd4e20d21caaa5b0120bcc0189747e1" />     <meta property="og:type" content="website" />     <meta property="og:site_name" content="에듀넷" />     <meta property="og:title" content="에듀넷" />     <meta       property="og:description"       content="한국교육학술정보원 운영, 교육정책자료, 학습·평가자료, 창의적 체험활동 자료 제공"     />     <meta property="og:image" content="/images/common/mobile.png" />     <meta property="og:url" content="https://www.edunet.net" />     <title>에듀넷</title>     <!--favicon-->     <link rel="apple-touch-icon" type="image/png" sizes="57x57" href="/images/favicon/apple-icon-57x57.png" />     <link rel="apple-touch-icon"
