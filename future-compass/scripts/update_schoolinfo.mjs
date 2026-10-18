@@ -33,7 +33,7 @@ async function http(url, opt = {}) {
   return { r, buf };
 }
 const fix = (name) => fs.readFile(path.join(FIX, name));
-const strip = (s) => String(s || '').replace(/<br\s*\/?>/gi, ' ').replace(/<sup>.*?<\/sup>/gi, '').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/\\([~*_|])/g, '$1').replace(/\s+/g, ' ').trim();
+const strip = (s) => String(s || '').replace(/<br\s*\/?>/gi, ' ').replace(/<sup>.*?<\/sup>/gi, '').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&#39;/g, "'").replace(/\\([~*_|])/g, '$1').replace(/\s+/g, ' ').trim();
 
 /* ---------- 문서 → 블록(제목 줄 / 표) ---------- */
 function blocks(md) {
@@ -273,6 +273,78 @@ async function schoolNews() {
   return { checked: nowIso(), boards };
 }
 
+/* ---------- ②-b 가정통신문 첨부: 시험 범위·시험 시간표 (1학년) ----------
+   게시판 목록(세션 쿠키 필요) → 제목으로 '시험 범위'·'시간표' 글 찾기 → 첨부 PDF/HWP → kordoc → 표 해석
+   결과: exams.{mid|fin} = { scope:{title,date,url,subjects:{과목:{text,essay,short,mc,min}}}, days:{날짜:[과목…]} } */
+const BOARD = { bbsId: 'BBSMSTR_000000011310', menu: '75977' };
+const cells = (tr) => [...tr.matchAll(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/g)].map((m) => m[1]);
+const txt = (c) => strip(String(c).replace(/<br\s*\/?>/gi, '\n')).replace(/\s*\n\s*/g, '\n');
+const keepLines = (c) => String(c).replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').split('\n').map((x) => x.replace(/\s+/g, ' ').trim()).filter(Boolean).join('\n');
+export function parseScope(md) {
+  const out = {};
+  for (const tr of md.split(/<tr>/).slice(1)) {
+    const c = cells(tr); if (c.length < 4) continue;
+    const name = keepLines(c[0]).split('\n')[0].replace(/\(\d+\)$/, '').trim();
+    if (!/^[가-힣A-Za-z][가-힣A-Za-z0-9ⅠⅡ·\s]{1,20}$/.test(name) || /교과목|구분|학점|소요/.test(name)) continue;
+    const vals = c.slice(1).map(keepLines), scope = vals.slice().sort((a, b) => b.length - a.length)[0] || '';
+    if (scope.length < 6 || !/[가-힣]/.test(scope)) continue;
+    const nums = vals.filter((v) => /^\d{1,3}$/.test(v)).map(Number);
+    const tail = nums.slice(-3), min = nums.find((n, i) => i < nums.length - 3 && n >= 20 && n <= 120);
+    out[name] = { text: scope.slice(0, 600), ...(tail.length === 3 && tail[0] + tail[1] + tail[2] === 100 ? { essay: tail[0], short: tail[1], mc: tail[2] } : {}), ...(min ? { min } : {}) };
+  }
+  return out;
+}
+export function parseTimetable(md, year, names) {
+  const days = {}; let cur = null;
+  const norm = (x) => x.replace(/\s|\[\d+\]/g, '');
+  for (const tr of md.split(/<tr>/).slice(1)) {
+    for (const c of cells(tr)) {
+      const t = keepLines(c).replace(/\n/g, ' '), dm = /^(\d{1,2})\s*월\s*(\d{1,2})\s*일/.exec(t);
+      if (dm) { cur = year + '-' + String(dm[1]).padStart(2, '0') + '-' + String(dm[2]).padStart(2, '0'); continue; }
+      if (!cur) continue;
+      const hit = names.filter((n) => norm(t).startsWith(norm(n))).sort((a, b) => b.length - a.length)[0];
+      if (hit && !(days[cur] || []).includes(hit)) (days[cur] = days[cur] || []).push(hit);
+    }
+  }
+  return days;
+}
+async function examLetters(prev, gradeNames) {
+  let jar = '';
+  const go = async (url, opt = {}) => {
+    if (FIX) return { buf: await fix(opt.fx) };
+    const r = await fetch(url, { ...opt, headers: { 'User-Agent': UA, Referer: SCHOOL.home + '/' + BOARD.menu + '/subMenu.do', ...(jar ? { cookie: jar } : {}), ...(opt.headers || {}) }, signal: AbortSignal.timeout(30000) });
+    const sc = r.headers.getSetCookie ? r.headers.getSetCookie() : []; if (sc.length) jar = [...new Set([...(jar ? jar.split('; ') : []), ...sc.map((x) => x.split(';')[0])])].join('; ');
+    if (!r.ok) throw new Error('HTTP ' + r.status + ' ' + url);
+    return { buf: Buffer.from(await r.arrayBuffer()) };
+  };
+  const PH = { 'content-type': 'application/x-www-form-urlencoded; charset=UTF-8', 'X-Requested-With': 'XMLHttpRequest' };
+  const form = (o) => new URLSearchParams({ bbsId: BOARD.bbsId, bbsTyCode: 'dliv', customRecordCountPerPage: '30', pageIndex: '1', searchCondition: '', searchKeyword: '', checkNttId: '', mvmnReturnUrl: '', ...o }).toString();
+  if (!FIX) await go(SCHOOL.home + '/' + BOARD.menu + '/subMenu.do');
+  const list = (await go(SCHOOL.home + '/dggb/module/board/selectBoardListAjax.do', { method: 'POST', headers: PH, body: form({}), fx: 'letters-list.html' })).buf.toString('utf-8');
+  const posts = [...list.matchAll(/fnView\('[^']*',\s*'(\d+)'\);"\s*>([\s\S]*?)<\/a>[\s\S]*?<td>(\d{4}-\d{2}-\d{2})<\/td>/g)].map((m) => ({ id: m[1], title: strip(m[2]), date: m[3] }));
+  const year = String(KST().getUTCFullYear()), sem2 = KST().getUTCMonth() + 1 >= 8 || KST().getUTCMonth() + 1 <= 2;
+  const pick = (re) => posts.filter((p) => re.test(p.title) && (/1학년|1,\s*2학년|전\s*학년/.test(p.title) || !/[23]학년/.test(p.title)) && (!sem2 || /2학기/.test(p.title) || p.date >= year + '-08-01'));
+  const out = { checked: nowIso(), mid: prev?.mid || null, fin: prev?.fin || null, seen: prev?.seen || {} };
+  const attach = async (p) => {
+    const d = (await go(SCHOOL.home + '/dggb/module/board/selectBoardDetailAjax.do', { method: 'POST', headers: PH, body: form({ nttId: p.id, cmntSe: 'N' }), fx: 'd-' + p.id + '.html' })).buf.toString('utf-8');
+    const files = [...d.matchAll(/serverFileObj\["name"\] = "([^"]+)";[\s\S]*?serverFileObj\["atchFileId"\] = "([^"]+)";\s*serverFileObj\["fileSn"\] = "(\d+)"/g)].map((m) => ({ name: m[1], id: m[2], sn: m[3] })).filter((f) => /\.(pdf|hwpx?)$/i.test(f.name));
+    const mine = files.filter((f) => /1학년|전\s*학년/.test(f.name)); const use = (mine.length ? mine : files.filter((f) => !/[23]학년/.test(f.name))).slice(0, 2);
+    const mds = [];
+    for (const f of use) { const b = (await go(SCHOOL.home + '/dggb/board/boardFile/downFile.do?atchFileId=' + f.id + '&fileSn=' + f.sn, { fx: 'f-' + p.id + '-' + f.sn + '.bin' })).buf; mds.push(FIX && /\.md$/.test(f.sn) ? b.toString() : await toMarkdown(b)); }
+    return mds.join('\n');
+  };
+  for (const kind of ['mid', 'fin']) {
+    const kre = kind === 'mid' ? /중간고사|1차\s*지필/ : /기말고사|2차\s*지필/;
+    const sc = pick(new RegExp('(?:' + kre.source + ')[\\s\\S]*(시험\\s*범위|출제\\s*범위)'))[0], tt = pick(new RegExp('(?:' + kre.source + ')[\\s\\S]*시간표'))[0];
+    const cur = out[kind] || {};
+    if (sc && cur.scope?.id !== sc.id) { const md = await attach(sc); const subjects = parseScope(md); if (Object.keys(subjects).length) cur.scope = { id: sc.id, title: sc.title, date: sc.date, url: SCHOOL.home + '/' + BOARD.menu + '/subMenu.do', subjects }; }
+    if (tt && cur.tt?.id !== tt.id) { const md = await attach(tt); const days = parseTimetable(md, year, gradeNames); if (Object.keys(days).length) cur.tt = { id: tt.id, title: tt.title, date: tt.date }, cur.days = days; }
+    if (cur.scope || cur.days) out[kind] = cur;
+  }
+  if (out.mid && out.fin && (out.mid.scope?.date || '') > (out.fin.scope?.date || out.fin.tt?.date || '9')) out.fin = null;   // 지난 학기 기말 남은 것 정리
+  return out;
+}
+
 /* ---------- ③ 서초구 교육지원센터 ---------- */
 const CENTERS = { yangjae: '양재내곡', bangbae: '방배', banpo: '반포잠원', seocho: '서초' };
 async function programs() {
@@ -307,15 +379,18 @@ async function parseDir(dir) {
     const cur = JSON.parse(await fs.readFile(DEST, 'utf-8'));
     cur.eval.subjects = out.filter((d) => d.grade === cur.eval.grade).map((d) => ({ subject: d.subject, semester: d.semester, classes: d.classes || null, ratio: d.ratio || null, tasks: d.tasks, timeline: d.timeline, note: d.taskNote }));
     if (process.env.SEM) out.forEach((d) => { d._sem = Number(process.env.SEM); });
-    cur.eval.catalog = buildCatalog(out); cur.eval.parser = 0;   // 서버 수집이 원본을 다시 받아 확정하도록 버전은 비워 둔다 await fs.writeFile(DEST, JSON.stringify(cur, null, 1) + '\n'); console.log('written', cur.eval.subjects.length);
+    cur.eval.catalog = buildCatalog(out); cur.eval.parser = 0;   // 서버 수집이 원본을 다시 받아 확정하도록 버전은 비워 둔다
+    await fs.writeFile(DEST, JSON.stringify(cur, null, 1) + '\n'); console.log('written', cur.eval.subjects.length);
   }
   console.log(JSON.stringify(out.filter((d) => process.env.ALLG || d.grade === 1).map((d) => ({ s: d.subject, g: d.grade, h: d.hours, gr: d.grading, cls: d.classes, r: d.ratio, t: d.tasks.map((x) => [x.when, x.title.slice(0, 24), x.pct, (x.parts || []).length, (x.rubric || []).length]) })), null, 0));
 }
 async function main() {
   const pd = process.argv.indexOf('--parse-dir'); if (pd > 0) return parseDir(process.argv[pd + 1]);
+  const pl = process.argv.indexOf('--parse-letter'); if (pl > 0) { const md = await fs.readFile(process.argv[pl + 1], 'utf-8'); console.log(JSON.stringify(process.argv[pl + 2] === 'tt' ? parseTimetable(md, '2026', ['공통국어2', '공통수학2', '공통영어2', '한국사2', '한국사', '통합사회2', '통합과학2', '생애 설계와 자립']) : parseScope(md), null, 1)); return; }
   let prev = {}; try { prev = JSON.parse(await fs.readFile(DEST, 'utf-8')); } catch (e) {}
   const out = { ...prev, school: SCHOOL.name, updated: nowIso() }, log = [];
-  for (const [k, fn] of [['eval', () => schoolinfo(prev.eval)], ['news', schoolNews], ['programs', programs]]) {
+  const g1 = () => [...new Set([...((out.eval || prev.eval || {}).subjects || []).filter((x) => x.ratio && x.ratio.exam).map((x) => x.subject), '한국사2', '공통국어2', '공통수학2', '공통영어2', '통합사회2', '통합과학2'])];
+  for (const [k, fn] of [['eval', () => schoolinfo(prev.eval)], ['news', schoolNews], ['exams', () => examLetters(prev.exams, g1())], ['programs', programs]]) {
     try { out[k] = await fn(); log.push(k + ' ok'); } catch (e) { log.push(k + ' fail: ' + e.message); if (prev[k]) out[k] = prev[k]; }
   }
   out.links = {
