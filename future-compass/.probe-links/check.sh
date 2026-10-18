@@ -1,13 +1,9 @@
 #!/usr/bin/env bash
-# 링크 점검: 상태코드·최종 주소·제목·크기·'없는 페이지' 문구
 UA='Mozilla/5.0 (Linux; Android 14; SM-S918N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Mobile Safari/537.36'
-out=future-compass/.probe-links/result.tsv; : > $out
-while read -r u; do
-  [ -z "$u" ] && continue
-  f=$(mktemp)
-  meta=$(curl -sSL --compressed -m 25 -A "$UA" -H 'Accept-Language: ko-KR,ko;q=0.9' -o "$f" -w '%{http_code}\t%{url_effective}\t%{size_download}\t%{time_total}' "$u" 2>&1 | tr '\n' ' ')
-  t=$(iconv -f utf-8 -t utf-8 -c "$f" 2>/dev/null | tr '\n\r' '  ' | grep -oiE '<title[^>]*>[^<]{0,120}' | head -1 | sed 's/<title[^>]*>//I')
-  bad=$(iconv -f utf-8 -t utf-8 -c "$f" 2>/dev/null | grep -oiE '페이지를 찾을 수 없|존재하지 않는|잘못된 접근|404 Not Found|Page Not Found|삭제된 게시물|서비스 종료|접근이 차단|해외 IP|Access Denied' | head -1)
-  printf '%s\t%s\t%s\t%s\n' "$u" "$meta" "$t" "$bad" >> $out
-  rm -f "$f"
-done < future-compass/.probe-links/urls.txt
+out=future-compass/.probe-links/detail.txt; : > $out
+for u in https://dt.edunet.net http://dt.edunet.net https://www.zocbo.com http://www.zocbo.com https://m.zocbo.com https://edu.fss.or.kr https://www.fss.or.kr/edu https://www.index.go.kr/unity/potal/main/EachDtlPageDetail.do?idx_cd=1010 https://www.adiga.kr/ https://stdict.korean.go.kr https://www.kocw.net https://read365.edunet.net https://www.ebsi.co.kr/ https://www.moe.go.kr/ https://health.kdca.go.kr https://www.climate.go.kr https://www.law.go.kr; do
+  echo "===== $u" >> $out
+  curl -sSL --compressed -m 60 --retry 2 -A "$UA" -H 'Accept-Language: ko-KR' -D - "$u" -o /tmp/b 2>&1 | grep -iE '^(HTTP|location|curl)' | head -6 >> $out
+  iconv -f utf-8 -t utf-8 -c /tmp/b 2>/dev/null | tr '\n\r\t' '   ' | sed 's/  */ /g' | head -c 700 >> $out; echo >> $out
+  iconv -f utf-8 -t utf-8 -c /tmp/b 2>/dev/null | grep -oE '.{80}잘못된 접근.{80}' | head -1 >> $out
+done
