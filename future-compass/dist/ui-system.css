@@ -111,3 +111,4 @@ body.po-scrolling :is(.shiro-launch,.shiro-hint){opacity:0!important;pointer-eve
 :is(.shiro-launch,.shiro-hint){transition:opacity .25s}
 body.app .ch-pick:disabled{cursor:default}
 .po-drop{margin:6px 0 0;padding:10px 12px;border-radius:14px;background:#f1edff;font-size:13.5px;line-height:1.55;color:#2a2550}
+body.app .rt-legs button{background:#027a3c!important;color:#fff!important}   /* 네이버 초록 + 흰 글자 대비 4.5 이상 */
