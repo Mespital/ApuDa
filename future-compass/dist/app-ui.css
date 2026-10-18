@@ -151,3 +151,10 @@ body.app #content small{line-height:1.45}
 body.scroll-down .shiro-launch,body.scroll-down .shiro-hint{transform:translateX(calc(100% + 24px));opacity:0;pointer-events:none}
 @media (prefers-reduced-motion:reduce){.shiro-launch{transition:none}}
 body.app .tt td{font-size:13px;line-height:1.25}
+
+/* 지금 할 1개 (2026-10-18) */
+.hb-go{display:flex!important;align-items:center;gap:12px;width:100%;min-height:60px!important;margin:-4px 0 12px;padding:10px 12px 10px 16px!important;border-radius:18px!important;border:0!important;background:#5b45d6!important;color:#fff!important;text-align:left;box-shadow:0 6px 18px rgba(91,69,214,.25)}
+.hb-go span{flex:none;font-size:12px;font-weight:800;padding:3px 8px;border-radius:999px;background:rgba(0,0,0,.22);color:#fff}
+.hb-go b{flex:1;min-width:0;font-size:16px;font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hb-go i{flex:none;width:40px;height:40px;border-radius:50%;background:#fff;color:#5b45d6;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:16px}
+.hb-go.night{background:#2c2766!important;box-shadow:none}.hb-go.night i{color:#2c2766}

@@ -179,6 +179,6 @@
     '.rc-ask{margin:6px 0;font-weight:700}.rc-rate{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.rc-rate button{display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 4px!important;font-size:22px;border-radius:14px!important}.rc-rate b{font-size:14px}.rc-rate small{font-size:11px;color:#6b6880;font-weight:500}' +
     '.pv-story{border:2px solid #f3d9a4;background:linear-gradient(#fffaf0,#fff)}.pv-story-l{margin:0 0 8px;padding-left:18px;display:grid;gap:4px;font-size:15px}';
   document.head.appendChild(css);
-  window.FC_RECALL = { open: open, reschedule: reschedule, story: story };
+  window.FC_RECALL = { open: open, reschedule: reschedule, story: story, questions: questions, answer: answerText, preview: preview };
   render();
 })();
