@@ -1,6 +1,7 @@
 // 정해진 시간 폰 알림 (30분마다 실행, 한국 시간 기준)
 //  승준: 07:30 오늘의 핵심 · 15:30 수업 끝 1분 말하기 · 학원 1시간 전 · 20:30 내일 시험 · 21:00 하루 마무리
 //  엄마: 21:30 오늘 요약(개수만, 칭찬·도와줄 것 중심)
+//  엄마: 일요일 21:00 이번 주 리포트
 //  둘 다: 16:00 학교 새 소식 · 07:30 수행평가 D-3/D-1 · 구청 프로그램 신청 마감 D-2
 // 가족 공유로 서버에 올라온 기록만 사용. 같은 알림은 하루 한 번.
 import { getStore } from '@netlify/blobs';
@@ -78,6 +79,16 @@ export function plan(data, school, nowMs, live, seen) {
       const n = gap(x.date, t); if (n !== 3 && n !== 1) continue;
       out.push({ key: 'perf:' + x.id + ':' + n, to: 'all', kind: 'school', title: '📝 수행평가 D-' + n, body: String(x.title).replace(/^\[수행\]\s*/, '') + (n === 3 ? ' · 만점 기준 한 번 읽어보자' : ' · 준비물·제출 확인'), url: 'study.html#school' });
     }
+  }
+  // 🗓 엄마 주간 리포트 (일요일 21:00)
+  if (wd === 0 && at(21, 0)) {
+    const from = addD(t, -6), inW = d => d >= from && d <= t, days = new Set();
+    (st.tasks || []).forEach(x => { if (x.done && inW(x.date)) days.add(x.date); });
+    Object.entries(st.sessions || {}).forEach(([d, n]) => { if (n > 0 && inW(d)) days.add(d); });
+    (P.focus || []).forEach(f => { if (inW(f.date)) days.add(f.date); });
+    const wt = (st.tasks || []).filter(x => inW(x.date)), wdone = wt.filter(x => x.done).length;
+    const next = (st.dates || []).filter(x => !x.done && gap(x.date, t) >= 1 && gap(x.date, t) <= 7).sort((a, b) => a.date.localeCompare(b.date)).slice(0, 2).map(x => String(x.title).replace(/^\[수행\]\s*/, '수행 ').slice(0, 24));
+    out.push({ key: 'weekly', to: 'parent', kind: 'weekly', title: '🗓 이번 주 승준이', body: '공부한 날 ' + days.size + '일 · 할 일 ' + wdone + '/' + wt.length + (next.length ? ' · 다음 주: ' + next.join(', ') : '') + ' · 자세히는 기록 탭', url: 'study.html#stats' });
   }
   return { today: t, items: out, seen: seenOut };
 }
