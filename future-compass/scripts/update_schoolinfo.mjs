@@ -307,7 +307,7 @@ async function parseDir(dir) {
     const cur = JSON.parse(await fs.readFile(DEST, 'utf-8'));
     cur.eval.subjects = out.filter((d) => d.grade === cur.eval.grade).map((d) => ({ subject: d.subject, semester: d.semester, classes: d.classes || null, ratio: d.ratio || null, tasks: d.tasks, timeline: d.timeline, note: d.taskNote }));
     if (process.env.SEM) out.forEach((d) => { d._sem = Number(process.env.SEM); });
-    cur.eval.catalog = buildCatalog(out); cur.eval.parser = PARSER; await fs.writeFile(DEST, JSON.stringify(cur, null, 1) + '\n'); console.log('written', cur.eval.subjects.length);
+    cur.eval.catalog = buildCatalog(out); cur.eval.parser = 0;   // 서버 수집이 원본을 다시 받아 확정하도록 버전은 비워 둔다 await fs.writeFile(DEST, JSON.stringify(cur, null, 1) + '\n'); console.log('written', cur.eval.subjects.length);
   }
   console.log(JSON.stringify(out.filter((d) => process.env.ALLG || d.grade === 1).map((d) => ({ s: d.subject, g: d.grade, h: d.hours, gr: d.grading, cls: d.classes, r: d.ratio, t: d.tasks.map((x) => [x.when, x.title.slice(0, 24), x.pct, (x.parts || []).length, (x.rubric || []).length]) })), null, 0));
 }
