@@ -16,7 +16,7 @@
     var d = wantDark();
     root.classList.toggle('fc-dark', d);
     if (!meta) meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) { if (!meta.dataset.light) meta.dataset.light = meta.content; meta.content = d ? '#15131f' : meta.dataset.light; }
+    if (meta) { if (!meta.dataset.light) meta.dataset.light = meta.content; meta.content = d ? '#0f1229' : meta.dataset.light; }
   }
 
   /* ---------- 색 변환 ---------- */
@@ -45,8 +45,9 @@
       return out(c, a);
     }
     if (kind === 'shadow') return 'rgba(0, 0, 0, ' + Math.min(.6, a + .15) + ')';
-    if (kind === 'border') { if (l > .5) l = .2 + (1 - l) * .55; return out(rgb(h, s * .55, l), a); }
-    // 배경
+    if (kind === 'border') { if (l > .5 && s < .2) { h = .655; s = .35; } if (l > .5) l = .2 + (1 - l) * .55; return out(rgb(h, s * .55, l), a); }
+    // 배경 — 무채색(흰·회색) 바탕은 차분한 남색 계열로 (밤 전용 팔레트)
+    if (l > .5 && s < .2) { h = .655; s = .42; }
     if (l > .5) {
       l = .1 + (1 - l) * .62; s = s * (l < .2 ? .5 : .75); c = rgb(h, s, l);
       while (lum(c) > .04 && l > .06) { l -= .015; c = rgb(h, s, l); }                // 노랑처럼 밝아 보이는 배경 보정
@@ -131,13 +132,13 @@
     var css = walk(rules); if (!css) return;
     chunks.push(css); ensureOut(); outEl.textContent = BASE + chunks.join('\n');
   }
-  var BASE = 'html.fc-dark{color-scheme:dark;background:#15131f}html.fc-dark body{background:#15131f;color:#e8e6f2}' +
+  var BASE = 'html.fc-dark{color-scheme:dark;background:#0f1229}html.fc-dark body{background:#0f1229;color:#eceaf4}' +
     'html.fc-dark img,html.fc-dark .hb-img,html.fc-dark .hero-img,html.fc-dark video{filter:brightness(.82) contrast(1.05)}' +
     'html.fc-dark ::placeholder{color:#8f8aa6}html.fc-dark a{color:#b9acff}html.fc-dark :is(p,li,small,span,dd,td)>a,html.fc-dark a:not([class]):not([role]){text-decoration:underline!important;text-underline-offset:2px}';
   function scan() { document.querySelectorAll('style,link[rel="stylesheet"]').forEach(function (n) { if (n.tagName === 'LINK' && !sheetOf(n)) n.addEventListener('load', function () { process(n); }, { once: true }); else process(n); }); }
 
   /* 깜빡임 방지: 변환 전에도 바탕은 어둡게 */
-  var pre = document.createElement('style'); pre.dataset.fcDark = '1'; pre.textContent = 'html.fc-dark{background:#15131f;color-scheme:dark}html.fc-dark body{background:#15131f}';
+  var pre = document.createElement('style'); pre.dataset.fcDark = '1'; pre.textContent = 'html.fc-dark{background:#0f1229;color-scheme:dark}html.fc-dark body{background:#0f1229}';
   (document.head || root).appendChild(pre);
   apply();
   var obs = new MutationObserver(function (ms) {

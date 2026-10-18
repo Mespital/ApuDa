@@ -158,11 +158,13 @@ body.app .tt td{font-size:13px;line-height:1.25}
 .hb-go b{flex:1;min-width:0;font-size:16px;font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .hb-go i{flex:none;width:40px;height:40px;border-radius:50%;background:#fff;color:#5b45d6;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:16px}
 .hb-go.night{background:#2c2766!important;box-shadow:none}.hb-go.night i{color:#2c2766}
-/* 오늘 진행 링 */
-.hb-rings{position:absolute;top:10px;left:10px;z-index:2;display:flex;align-items:center;gap:6px;padding:5px 8px 5px 5px;border-radius:16px;background:rgba(20,16,56,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-.hb-rings svg{display:block;width:52px;height:52px}
-.hb-rings ul{list-style:none;margin:0;padding:0;display:grid;gap:1px}
-.hb-rings li{display:flex;align-items:center;gap:4px;font-size:11.5px;font-weight:700;color:#fff;white-space:nowrap}
+/* 오늘 진행 링: 왼쪽 위 한 줄 알약 (그림 위 글자와 안 겹치게 배너를 조금 키움) */
+.hb:has(.hb-rings){height:154px}
+.hb-rings{position:absolute;top:10px;left:10px;right:150px;z-index:2;display:flex;align-items:center;gap:6px;padding:4px 10px 4px 4px;border-radius:999px;background:rgba(20,16,56,.58);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);width:max-content;max-width:calc(100% - 160px)}
+.hb-rings svg{display:block;width:30px;height:30px;flex:none}
+.hb-rings ul{list-style:none;margin:0;padding:0;display:flex;gap:8px;flex-wrap:wrap}
+.hb-rings li{display:flex;align-items:center;gap:3px;font-size:11.5px;font-weight:600;color:#fff;white-space:nowrap}
+.hb-rings li b{font-weight:800}
 .hb-rings li i{width:7px;height:7px;border-radius:50%;flex:none}
 .hb-rings.full{box-shadow:0 0 0 2px #ffd166}
-@media(max-width:360px){.hb-rings ul{display:none}}
+@media(max-width:380px){.hb-rings ul{display:none}.hb-rings{padding:4px}}

@@ -82,16 +82,16 @@
     ];
   }
   function rings(L) {
-    var R = ringVals(L), sz = 64, cx = 32, w = 6.5, label = [];
+    var R = ringVals(L), sz = 30, cx = 32, w = 8, label = [];
     var svg = R.map(function (r, i) {
-      var rad = 27 - i * 8.5, C = 2 * Math.PI * rad, p = r.of ? Math.min(1, r.v / r.of) : 0;
+      var rad = 27 - i * 9.5, C = 2 * Math.PI * rad, p = r.of ? Math.min(1, r.v / r.of) : 0;
       label.push(r.n + ' ' + (r.of ? (r.raw != null ? r.raw : r.v) + '/' + r.of : '없음'));
       return '<circle cx="' + cx + '" cy="' + cx + '" r="' + rad + '" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="' + w + '"/>' +
         (p ? '<circle cx="' + cx + '" cy="' + cx + '" r="' + rad + '" fill="none" stroke="' + r.c + '" stroke-width="' + w + '" stroke-linecap="round" stroke-dasharray="' + (C * p).toFixed(1) + ' ' + C.toFixed(1) + '" transform="rotate(-90 ' + cx + ' ' + cx + ')"/>' : '');
     }).join('');
     var all = R.every(function (r) { return !r.of || r.v >= r.of; }) && R.some(function (r) { return r.of; });
     return '<div class="hb-rings' + (all ? ' full' : '') + '" role="img" aria-label="오늘 진행: ' + label.join(', ') + '"><svg viewBox="0 0 64 64" width="' + sz + '" height="' + sz + '" aria-hidden="true">' + svg + '</svg>' +
-      '<ul aria-hidden="true">' + R.map(function (r) { return '<li><i style="background:' + r.c + '"></i>' + r.n + ' ' + (r.of ? (r.raw != null ? r.raw : r.v) + '/' + r.of : '-') + '</li>'; }).join('') + '</ul></div>';
+      '<ul aria-hidden="true">' + R.map(function (r) { return '<li><i style="background:' + r.c + '"></i>' + r.n + ' <b>' + (r.of ? (r.raw != null ? r.raw : r.v) + '/' + r.of : '-') + '</b></li>'; }).join('') + '</ul></div>';
   }
   window.FC_RINGS = { vals: function () { return ringVals(window.FC_PLANNER ? FC_PLANNER.todays() : []); } };
 
