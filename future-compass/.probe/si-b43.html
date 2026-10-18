@@ -1,0 +1,722 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<!-- 소셜로그인 정보 -->
+
+
+
+
+
+ 
+<form id="srcForm" name="srcForm" method="post" action="/ei/pp/Pneipp_b43_s0p.do">
+	<input type="hidden" name="SHL_IDF_CD" value="5c571812-c664-4495-be26-6b9fb997a233" />
+	<input type="hidden" name="HG_NM" value="서초고등학교" />
+	<input type="hidden" name="GS_BURYU_CD" value="JG110" />
+	<input type="hidden" name="GS_HANGMOK_CD" value="43" />
+	<input type="hidden" name="JG_BURYU_CD" value="JG040" />
+	<input type="hidden" name="JG_HANGMOK_CD" value="14" />
+	<input type="hidden" name="GS_HANGMOK_NO" value="4-가" />
+	<input type="hidden" name="GS_HANGMOK_NM" value="교과별(학년별) 교수ㆍ학습 및 평가계획에 관한 사항" />
+	<input type="hidden" name="JG_YEAR" value="2026" />
+	<input type="hidden" name="JG_CHASU" value="3" />
+	<input type="hidden" name="SORT" value="BR" />
+	<input type="hidden" name="POP_YN" value=""/>
+	<input type="hidden" name="JG_GUBUN" value="1"/>
+	<input type="hidden" name="PRE_JG_YEAR" value="2026" />
+	<input type="hidden" name="LOAD_TYPE" value="single" /><!-- 학교별공시, 관리자에서 호출하는지 구분  -->
+</form>
+
+<div class="tabtt_wrap">
+	<p class="tabtt">4-가. 교과별(학년별) 교수ㆍ학습 및 평가계획에 관한 사항</p>
+	<div class="fR">
+		<div class="select-group">
+			
+				<label for="select_trans_dt">자료제출일</label>
+				<div class="select t4">
+					
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<!-- 소셜로그인 정보 -->
+
+
+
+
+<style>
+	.tabSelected_data .select.t4 {
+		max-width: none !important;
+</style>
+<script type="text/javascript">
+<!--
+	var focusChk = 0;
+	
+	function chgSelect43()
+	{	
+		
+		
+		 if( 'single' == 'single' ){//현재 페이지에 load 된 공시 갯수가 1개일 경우
+			var str = $('#select_trans_dt option:selected').val();
+			$('#srcForm input[name="JG_YEAR"]').val(str.substring(0,4));
+			$('#srcForm input[name="JG_CHASU"]').val(str.substring(4));
+		}else{
+			var str = $('#gongsiInfo43 #select_trans_dt option:selected').val();
+			console.log('gsHangmokCd : ', 43);
+			console.log('formName : ', srcForm);
+			$('#gongsiInfo43 #srcForm input[name="JG_YEAR"]').val(str.substring(0,4));
+			$('#gongsiInfo43 #srcForm input[name="JG_CHASU"]').val(str.substring(4));
+		}
+
+	}
+	
+	function goSelect43()
+	{	
+		var str = $('#select_trans_dt option:selected').val();
+		
+		 if( 'single' == 'single' ){//현재 페이지에 load 된 공시 갯수가 1개일 경우
+			$('#gongsiInfo').load($('#srcForm').prop('action'), $('#srcForm').serialize(), function(){
+				$(".schoolinfo_table").mCustomScrollbar({
+					axis:"x"
+				});
+			});
+		}else{
+			$('#gongsiInfo43').load($('#gongsiInfo43 #srcForm').prop('action'), $('#gongsiInfo43 #srcForm').serialize(), function(){
+				$(".schoolinfo_table").mCustomScrollbar({
+					axis:"x"
+				});
+				//엑셀다운로드, 인쇄하기 숨김
+				$('a').filter(":contains('엑셀다운로드')").hide();
+				$('a').filter(":contains('인쇄하기')").hide();
+			});
+		}
+	}
+//-->
+</script>
+<div class="custom-select-box">
+<select name="select_trans_dt" id="select_trans_dt"title="자료제출일 선택" onchange="chgSelect43();" >
+
+	<option value="20263" selected>(3차) 2026년 09월</option>
+
+	<option value="20261" >(1차) 2026년 04월</option>
+
+	<option value="20253" >(3차) 2025년 09월</option>
+
+	<option value="20251" >(1차) 2025년 04월</option>
+
+	<option value="20243" >(3차) 2024년 09월</option>
+
+	<option value="20241" >(1차) 2024년 04월</option>
+
+</select>
+<div class="select-arrow"></div>
+</div><a href="javascript: goSelect43();" class="choicebtn mr0" title="선택">선택</a>
+				</div>
+			
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<!-- 소셜로그인 정보 -->
+
+
+
+
+<script type="text/javascript" src="/js/Printmade3.js"></script>
+
+<script>
+function printPage(printId) {
+	$(printId).printThis({
+		importCSS: true
+		, importStyle: true
+	});
+}
+</script>
+
+	<a href="javascript:;" class="btn mobile_hidden" onclick="printPage('.tabSelected_data')" title="인쇄하기"><i class="remixicon-printer-line"></i>인쇄하기</a>
+
+
+		</div>
+	</div>
+</div>
+
+<!-- 사용자가 선택한 Max 연도에 공시자료가 없으면 자료가 있는 가장 최근 연도의 공시자료를 보여준다는 도움말 출력 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<!-- 소셜로그인 정보 -->
+
+
+
+
+
+
+<div class="table_wrap">
+<!-- 첨부파일 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<!-- 소셜로그인 정보 -->
+
+
+
+
+<style>
+.documentPreviewBtn{
+    background: #2f5fba;
+    color: #fff !important;
+    text-align: center;
+    width: 130px;
+    height: 45px;
+    line-height: 27px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.is-hidden-row { display:none !important; }
+
+.attached-files-toggle {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	text-align: center;
+	border: 1px solid #e0e0e0;
+	padding: 5px 10px;
+	height: 33px;
+	background: #fff;
+	color: #555;
+	font-size: 1.4rem;
+	text-decoration: none;
+	margin: auto;
+	margin-top: 10px;
+}
+
+.attached-files-toggle:hover { 
+	color: #fff;
+	background: #2f5fba;
+}
+
+.documentPreviewBtn {margin-left: 9px;}
+.ico-fold{
+	display:inline-block;
+	width:6px;
+	height:6px;
+	margin-right:6px;
+	border-left:1px solid currentColor;
+	border-top:1px solid currentColor;
+	transform: rotate(45deg) translateY(1px);
+	margin-botton: 1px;
+}
+
+.attached-files-toggle:hover .ico-fold{
+}
+    
+</style>
+<script type="text/javascript">
+(() => {
+	const DEFAULT_COUNT = 3;
+	
+	function onlyWhitespaceTextNode(node) {
+		return node.nodeType === Node.TEXT_NODE &&
+		node.textContent.replace(/\u00A0/g, ' ').trim() === '';
+	}
+	
+	// 버튼 제외하고 attached_file 내부의 '공백 텍스트 노드'만 제거
+	function cleanupSpacesExcludingButton(attached, btn) {
+		Array.from(attached.childNodes).forEach(node => {
+			if (node === btn) return;
+			if (onlyWhitespaceTextNode(node)) node.remove();
+		});
+	}
+	
+	// 버튼 앞쪽의 마지막 <br> / 공백만 정의 (버튼은 절대 제거/이동 안 함)
+	function cleanupBeforeButton(attached, btn) {
+		if (!btn || btn.parentNode !== attached) return;
+		
+		let prev = btn.previousSibling;
+		while (prev) {
+			const cur = prev;
+			prev = cur.previousSibiling;
+			
+			// 버튼 바로 앞이 <br> 이면 하나만 남기고 정리하고 싶으면 여기 조절
+			if (cur.nodeType === 1 && cur.tagName === 'BR') {
+				// 버튼 바로 앞 BR은 1개만 남기고 싶으면 break 대신 continue 호출
+				// 여기서는 과도한 BR만 제거 : 연속 BR이면 제거
+				const prev2 = cur.previousSibling;
+				if (prev2 && prev2.nodeType === 1 && prev2.tagName === 'BR') {
+					cur.remove();
+					continue;
+				}
+				break;
+			}
+			
+			if (onlyWhitespaceTextNode(cur)) {
+				cur.remove();
+				continue;
+			}
+			
+			break;
+		}
+	}
+	
+	function applyToWrap(wrap) {
+		const attached = wrap.querySelector(':scope > .attached_file');
+		if (!attached) return;
+		
+		const collapsedCount = parseInt(wrap.dataset.collapsedCount || String(DEFAULT_COUNT), 10);
+		const fileLinks = Array.from(attached.querySelectorAll('a.file_name'));
+		
+		// 버튼 준비(항상 attached_file 직계 자식으로 둠)
+		let btn = attached.querySelector(':scope > button.attached-files-toggle');
+		if (!btn) {
+			btn = document.createElement('button');
+			btn.type = 'button';
+			btn.className = 'attached-files-toggle';
+			attached.appendChild(btn);
+		} else {
+			// 항상 맨 아래로 이동(안 사라지게 고정)
+			attached.appendChild(btn);
+		}
+		
+		cleanupSpacesExcludingButton(attached, btn);
+		
+		// 파일이 적으면 버튼은 "삭제"하지 말고 숨김
+		if (fileLinks.length <= collapsedCount) {
+			btn.style.display = 'none';
+			return;
+		} else {
+			btn.style.display = 'block';
+		}
+		
+		// 초기 상태
+		if (wrap.dataset.collapsed == null) wrap.dataset.collapsed = "true";
+		const isCollapsed = wrap.dataset.collapsed === "true";
+		
+		// 이전 숨김 초기화 (버튼은 제외)
+		attached.querySelectorAll('.is-hidden-row').forEach(el => el.classList.remove('is-hidden-row'));
+		
+		// row 묶기: a.file_name ~ 다음 a.file_name 전까지
+		const rows = fileLinks.map((startEl, i) => {
+			const endEl = fileLinks[i + 1] || null;
+			const nodes = [];
+			let n = startEl;
+			
+			while (n && n !== endEl) {
+				// 버튼을 만나면 중단(안전장치)
+				if (n === btn) break;
+				nodes.push(n);
+				n = n.nextSibling;
+			}
+			return nodes;		
+		});
+		
+		// 숨김 적용
+		rows.forEach((nodes, i) => {
+			const hide = isCollapsed && i >= collapsedCount;
+			if (!hide) return;
+			
+			nodes.forEach(node => {
+				if (node === btn) return;
+				if (node.nodeType === 1 || node.nodeName === 'BR') {
+					node.classList.add('is-hidden-row');
+				}
+			});
+		});
+		
+		const hiddenCount = Math.max(0, rows.length - collapsedCount);
+		console.log('hiddenCount : ', hiddenCount);
+		btn.innerHTML = isCollapsed ? '더보기 (+' + hiddenCount + ')' 
+				: `<span class="ico-fold" aria-hidden="true"></span>접기`;
+		
+		btn.setAttribute('aria-expanded', String(!isCollapsed));
+		
+		// 버튼 앞쪽 정리(버튼 자체는 절대 건드리지 않음)
+		cleanupBeforeButton(attached, btn);
+		
+		// 클릭 이벤트(1회만)
+		if (!btn.dataset.bound) {
+			btn.addEventListener('click', () => {
+				wrap.dataset.collapsed = (wrap.dataset.collapsed === "true") ? "false" : "true";
+				applyToWrap(wrap);
+			});
+			btn.dataset.bound = "true";
+		}
+	}
+	
+	document.querySelectorAll('.table_wrap').forEach(applyToWrap);
+})();
+
+var popupCounter = 0;
+
+function getEiFile43(fileSeq) {
+	if( 'single' == 'single' ){//현재 페이지에 load 된 공시 갯수가 1개일 경우
+		$('#eiFileDownForm').prop('action', '/servlets/EiFileDownLoad.do');
+		$('#eiFileDownForm input[name="FILE_SEQ"]').val(fileSeq);
+		$('#eiFileDownForm').submit();
+	}else{
+		$('#gongsiInfo43 #eiFileDownForm').prop('action', '/servlets/EiFileDownLoad.do');
+		$('#gongsiInfo43 #eiFileDownForm input[name="FILE_SEQ"]').val(fileSeq);
+		$('#gongsiInfo43 #eiFileDownForm').submit();		
+	}
+}
+function documentPreview(fileSeq, subIndex){
+	var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+	var formData;
+	var loadingDiv;
+	popupCounter++;
+	if( 'single' == 'single' ){//현재 페이지에 load 된 공시 갯수가 1개일 경우
+		$('#documentPreviewForm input[name="FILE_SEQ"]').val(fileSeq);
+		formData = $('#documentPreviewForm').serialize();
+	}else{
+		$('#gongsiInfo43 #documentPreviewForm input[name="FILE_SEQ"]').val(fileSeq);
+		formData = $('#gongsiInfo43 #documentPreviewForm').serialize();
+	}
+	
+	var nWidth = 950;
+	var nHeight = 800;
+	var nLeft = (window.screen.width - nWidth) / 2;
+	var nTop = (window.screen.height - nHeight) / 2;
+	var OpenParam = "";
+	OpenParam += "toolbar=no, location=no, menubar=no, status=no, directories=no, resizable=yes, scrollbars=yes";
+	OpenParam += ", left=" +nLeft;
+	OpenParam += ", top=" +nTop;
+	OpenParam += ", width=" +nWidth;
+	OpenParam += ", height=" +nHeight;
+	
+	var popup;
+	var popupId = "popForm_" + "2026" + "3" + "43" + popupCounter;
+	
+	if(isIOSWebView()) {
+		popup = window.open("", popupId, OpenParam);
+	}
+	
+	// ajax 호출
+	$.ajax({
+		type : 'post',
+		url : '/pn/cm/documentView.do',
+		data :  formData,
+		dataType : "text",
+		beforeSend : function(xhr) {
+			// 로딩바
+			if(subIndex){
+				loadingDiv = $('.loading2_' + subIndex);
+			}else {
+				loadingDiv = $('.loading2');
+			}
+			loadingDiv.show();
+		},
+		success : function(data){
+			if(popup){
+				popup.location.href = data;
+			}else{
+				window.open(data, popupId, OpenParam);
+			}
+		},
+		error : function(xhr, status, error){
+			if(popup){
+				popup.close();
+			}
+			alert('문서변환에 실패하였습니다. (' + xhr.responseText + ')');
+		},
+		complete : function(){
+			loadingDiv.hide();
+		}
+	});
+}
+</script>
+
+<form id="eiFileDownForm" name="eiFileDownForm" method="get" action="/servlets/EiFileDownLoad.do">
+	<input type="hidden" name="SHL_IDF_CD" value="5c571812-c664-4495-be26-6b9fb997a233" />
+	<input type="hidden" name="JG_BURYU_CD" value="JG040" />
+	<input type="hidden" name="JG_HANGMOK_CD" value="14" />
+	<input type="hidden" name="JG_GUBUN" value="1" />
+	<input type="hidden" name="JG_YEAR" value="2026" />
+	<input type="hidden" name="JG_CHASU" value="3" />
+	<input type="hidden" name="USE_YN" value="Y"/>
+	<input type="hidden" name="FILE_SEQ" value=""/>	
+</form>
+<form id="documentPreviewForm" name="documentPreviewForm" method="post" action="/pn/cm/documentView.do" target="_blank">
+	<input type="hidden" name="SHL_IDF_CD" value="5c571812-c664-4495-be26-6b9fb997a233" />
+	<input type="hidden" name="JG_BURYU_CD" value="JG040" />
+	<input type="hidden" name="JG_HANGMOK_CD" value="14" />
+	<input type="hidden" name="JG_GUBUN" value="1" />
+	<input type="hidden" name="JG_YEAR" value="2026" />
+	<input type="hidden" name="JG_CHASU" value="3" />
+	<input type="hidden" name="USE_YN" value="Y"/>
+	<input type="hidden" name="FILE_SEQ" value=""/>	
+	<input type="hidden" name="PREVIEW_TYPE" value="GONGSI"/>
+</form>
+
+
+			<div class="table_wrap">
+				<div class="table_title">
+					<p class="intt">① 교과별(학년별)교수ㆍ학습  및 평가계획에 관한 사항</p>
+				</div>
+				<div class="attached_file">
+					
+							<a href="#none" class="file_name" onclick="getEiFile43('3');" title="26학년도 2학기 정보공시.zip 알수없는 첨부파일">26학년도 2학기 정보공시.zip(7,019 KB)</a>
+                           	
+							
+			               	
+			               	
+			               	
+			               	
+							<br>
+						
+					<div class="loader_bg2 loading2_1" style="display:none;">
+			        	<div class="loaderWrap2">
+				            <div class="loader2"></div>
+				            <div class="loading_ex2">
+				                <div class="ex2">파일을 변환중입니다.</div>
+				            </div>
+		        		</div>
+		    		</div>
+				</div>
+			</div>
+		
+			<div class="table_wrap">
+				<div class="table_title">
+					<p class="intt">② 학업성적관리 규정</p>
+				</div>
+				<div class="attached_file">
+					
+							<a href="#none" class="file_name" onclick="getEiFile43('2');" title="2026학년도 서초고 학업성적관리규정 (04.15.).hwp 알수없는 첨부파일">2026학년도 서초고 학업성적관리규정 (04.15.).hwp(142 KB)</a>
+                           	
+							
+			               	
+			               	
+			               	
+			               	
+								&nbsp;&nbsp;<a href="#none" class="documentPreviewBtn" title="새창으로 열림" onclick="documentPreview('2', '2');" aria-label="2026학년도 서초고 학업성적관리규정 (04.15.).hwp 미리보기">미리보기</a>
+							
+							
+					<div class="loader_bg2 loading2_2" style="display:none;">
+			        	<div class="loaderWrap2">
+				            <div class="loader2"></div>
+				            <div class="loading_ex2">
+				                <div class="ex2">파일을 변환중입니다.</div>
+				            </div>
+		        		</div>
+		    		</div>
+				</div>
+			</div>
+		
+
+<!-- //첨부파일 끝 -->
+</div>
+
+<!-- 작성자테이블 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<!-- 소셜로그인 정보 -->
+
+
+
+
+<div class="manager_info">
+	<ul>
+		<li>학교 : 서초고등학교&nbsp;&nbsp;|</li>
+		<li>작성자 : 이민선&nbsp;&nbsp;|</li>
+		<li>확인자 : 김부헌</li>
+	</ul>
+</div>
+<!-- /작성자테이블끝-->
+
+
+	<!-- 공시가이드테이블 -->
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<!-- 소셜로그인 정보 -->
+
+
+
+
+
+<div class="school_wrap">
+	<div class="MD" id="contents">
+		<div class="contents_wrap">
+		<br>
+			<div class="open_nuri_w">
+				<a href="http://www.kogl.or.kr/info/license.do#03-tab" target="_blank" title="공공누리 새 창 열림">
+					<img src="/images/new/openapi/nuri_new.png" alt="공공누리 공공저작물 자유이용허락-출처표시+변경금지">
+				</a>	
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="guide" id="gongsiGuide_43">
+	
+	<p>공시가이드</p>
+	<div>●공시기관 : 초, 중, 고<br>●공시내용 : 학년별, 교과별, 교과(목)별(중/고) 교수학습 및 평가계획, 학업성적관리 규정<br><br>【교과별(학년별) 교수·학습 및 평가 계획】: 학년별, 학기별, 교과(목)별 교수·학습 계획(수업방법 등) 및 평가계획(지필·수행평가 계획 등)을 연계하여 작성<br> - 교수학습-평가 방법: 학년별, 학기별, 교과별로 시기, 성취기준, 단원명, 수업 방법, 수업·평가 연계의 주안점, 평가영역·요소·방법·횟수·기준 등의 항목을 포함<br>【학업성적관리규정】: 초중등교육법 시행규칙 제24조, 학교생활기록 작성 및 관리지침에 의해 학교에서 정한 규정<br><br>◈ 공시기관 구분 (초등학교, 중학교, 고등학교, 특수학교, 각종학교, 기타학교)<br>◈ 허위내용 및 오류 신고 (schoolinfo@keris.or.kr)</div>
+	
+</div>   
+	<!-- //공시가이드테이블끝-->
