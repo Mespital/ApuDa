@@ -1,67 +1,20 @@
-===== https://dt.edunet.net
-curl: (28) Connection timed out after 60000 milliseconds
-curl: (28) Connection timed out after 60000 milliseconds
-curl: (28) Connection timed out after 60002 milliseconds
-
-===== http://dt.edunet.net
-curl: (28) Connection timed out after 60000 milliseconds
-curl: (28) Connection timed out after 60000 milliseconds
-curl: (28) Connection timed out after 60000 milliseconds
-
-===== https://www.zocbo.com
-curl: (28) Connection timed out after 60001 milliseconds
-curl: (28) Connection timed out after 60000 milliseconds
-curl: (28) Connection timed out after 60001 milliseconds
-
-===== http://www.zocbo.com
-curl: (28) Connection timed out after 60001 milliseconds
-curl: (28) Connection timed out after 60001 milliseconds
-curl: (28) Connection timed out after 60001 milliseconds
-
-===== https://m.zocbo.com
-curl: (28) Connection timed out after 60001 milliseconds
-curl: (28) Connection timed out after 60000 milliseconds
-curl: (28) Connection timed out after 60000 milliseconds
-
-===== https://edu.fss.or.kr
-HTTP/1.1 302 Found
-Location: /error.html
-HTTP/1.1 403 Forbidden
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"> <HTML><HEAD> <TITLE> 403 Forbidden </TITLE> </HEAD><BODY> <H1>Forbidden</H1> <HR> </BODY></HTML> 
-===== https://www.fss.or.kr/edu
-HTTP/1.1 307 Temporary Redirect
-Location: https://www.fss.or.kr/edu/
-HTTP/1.1 302 Found
-Location: https://www.fss.or.kr/edu/main/main.do
-HTTP/1.1 200 OK
-<!-- static 개발 주소 작업 --> <!DOCTYPE html> <html lang="ko"> <head> <title>금융감독원 e-금융교육센터</title> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta http-equiv="X-UA-Compatible" content="ie=edge"> <meta name="format-detection" content="telephone=no"> <link rel="stylesheet" href="/static/edu/pub/resources/user/css/style.css"> <link rel="stylesheet" href="/static/edu/pub/resources/_common/css/font-real.css"> <script> location.href = "/edu/main/main.do?menuNo=300000"; </script> <!-- JavaScript --> <script src="/static/edu/pub/resources/_common/js/jquery-1.12.4.min.js"></script> <script src="/static/jslibrary/slick.j
+DNS dt.edunet.net: 210.102.120.57  dt.edunet.net
+DNS webdt.edunet.net: 175.45.213.31   kr-6900-sm-prd-lb-06-1774629-8b740e765fe4.kr-gov.lb.naverncp.com webdt.edunet.net
+DNS dtbook.edunet.net: 175.45.213.234  kr-6900-sm-prd-lb-04-1774627-8a67128c04df.kr-gov.lb.naverncp.com dtbook.edunet.net
+DNS www.zocbo.com: 210.105.192.134 www.zocbo.com
+DNS zocbo.com: 210.105.192.134 zocbo.com
+===== https://webdt.edunet.net
+HTTP/2 302 
+location: http://webdt.edunet.net/login
+HTTP/2 200 
+<title>디지털교과서 웹 뷰어
+===== https://dtbook.edunet.net
+HTTP/2 200 
 ===== https://www.index.go.kr/unity/potal/main/EachDtlPageDetail.do?idx_cd=1010
 HTTP/1.1 200 OK
- <!--ip null 처리 함수 --> <!DOCTYPE HTML> <html lang="ko"> <head> <title>지표서비스 | e-나라지표</title> <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <link rel="shortcut icon" href="/potal/mainNew/img/common/favicon_KOSTAT16x16.ico"> <!-- css 파일 --> <link rel="stylesheet" href="/potal/e-nara/css/common.css?v=20241114" type="text/css"> <link rel="stylesheet" href="/potal/e-nara/css/sub.css?v=20241114" type="text/css"> <link rel="stylesheet" href="/potal/e-nara/css/media.css?v=20241114" type="text/css"> <link rel="stylesheet" href="/potal/e-nara/css/icon/xeicon.min.css?v=20241114" ty
-===== https://www.adiga.kr/
-HTTP/1.1 200 OK
-<!DOCTYPE html> <html> <head> <meta charset="UTF-8"> <title>Insert title here</title> <script type="text/javascript"> function Mobile(){ return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent); } function main(){ if (Mobile()){// 모바일일 경우 location.href = "https://m.adiga.kr/"; } else {// 모바일 외 location.href = "/man/inf/mainView.do?menuId=PCMANINF1000"; } } </script> </head> <body onload="main();"></body> </html>
-===== https://stdict.korean.go.kr
-HTTP/1.1 200 OK
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko"> <head> <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" /> <title>표준국어대사전</title> </head> <body onload="location.href='/main/main.do'"></body> </body> </html>
-===== https://www.kocw.net
-HTTP/1.1 200 OK
- <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> <html> <head> <meta property="fb:admins" content="100002226971899" /> <meta http-equiv="Refresh" content="0; url=/home/index.do"> <title>KOCW</title> </head> <body> </body> </html> 
-===== https://read365.edunet.net
-HTTP/1.1 200 OK
-<!doctype html><html lang="ko" xml:lang="ko" xmlns="http://www.w3.org/1999/xhtml"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="robots" content="index,follow"/><meta name="description" content="학교도서관 이용 현황 및 독서 활동을 관리하고 맞춤형 독서 정보를 제공하는 플랫폼입니다."/><link rel="shortcut icon" id="main-icon" href="/favicon.ico"/><title>독서로</title><script src="/namo/js/namo_scripteditor.js?ver=20260831"></script><link rel="prefetch" href="../src/assets/img/reading_world_main.png"/><script defer="defer" src="/js/chunk-vend
-===== https://www.ebsi.co.kr/
-HTTP/1.1 200 OK
-<html> <head> <meta name="naver-site-verification" content="953378100fb1126519737bd3e0652285184cae29"/> <script> location.href="/ebs/pot/poti/main.ebs"; </script> </head> <body> </body> </html> 
-===== https://www.moe.go.kr/
-HTTP/1.1 200 OK
- <script type="text/javaScript">document.location.href="/main.do?s=moe";</script> 
-===== https://health.kdca.go.kr
-HTTP/1.1 200 OK
-<script> location.href="/healthinfo/"; </script> 
-===== https://www.climate.go.kr
-HTTP/1.1 200 OK
-<script type="text/javascript"> <!-- location.href="/home/"; //--> </script> 
-===== https://www.law.go.kr
-HTTP/1.1 200 OK
- <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> <HTML> <HEAD> <TITLE></TITLE> <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <meta http-equiv="Refresh" content="0;url=/main.html"/> </HEAD> <BODY></BODY> </HTML>
+<title>지표서비스 | e-나라지표
+pe:"json", 		async:false, 		success:function(data){ 			//지표명 			htmls = ""; 			$(".depth3 ul li").remove(); 			$.each(data.selIdxList, fu
+ " / " + status + " 처리도중 에러가 발생해였습니다."); 		} 	}) }  /* 지표명 클릭이벤트(depth3)  * idxCd : 지표코드  * 지표 페이지 이동  */ function fn_changeDepth3(idx
+) { 					alert("등록이 완료 되었습니다."); 				}else { 					alert("잘못된 접근입니다."); 				} 				fn_backToBBSList(); 				fn_searchQnAList(); 			}, 			erro
+ = jsondata.replace(/&quot;/g,'"'); 	var idxKor = "남녀별 연령별 인구구조"; 	/*JSON 파라미터 엑셀 다운 Bean 전송 */ 	document.excelIntgrfrm.jsondata.value =jsond
+i class="depth3 dep"> 					<a id="dep3Nm" href="#">남녀별 연령별 인구구조
