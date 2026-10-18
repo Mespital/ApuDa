@@ -123,7 +123,7 @@ function fixture({ role = 'parent', share, timerEnd = 0, boost = true } = {}) {
 {
   const app = fixture();
   const share = JSON.parse(JSON.stringify(app.context.FC_PLANNER.get().share));
-  assert.deepEqual(share, { flow: true, exams: true, review: false, questions: false, reflect: false, mission: false });
+  assert.deepEqual(share, { flow: true, exams: true, review: false, questions: false, reflect: false, mission: false, grades: false });   // 성적·내신 목표는 기본 비공개 (2026-10-19 감수 ⑦-1)
   for (const token of ['private-open-task', 'private-exam-title', 'private-deadline-title', 'private-academy-progress', 'private-note-subject', 'private-week-rock', '47분']) {
     assert.ok(app.content.innerHTML.includes(token), `default overview includes ${token}`);
   }

@@ -77,7 +77,8 @@
     });
     function mk(x) { x.list = chunk(x.u, x.k).map(function (t) { return { k: '1회독', t: t }; }).concat(x.extra); }
     Q.forEach(mk);
-    var cap = days.map(function (d) { var n = wd(d) === 0 || wd(d) === 6 ? o.we : o.wd; return n; }), totalCap = cap.reduce(function (a, b) { return a + b; }, 0);
+    /* 학원 가는 날은 1칸 덜 (감수 ②-1) */
+    var acad = 0, cap = days.map(function (d) { var we = wd(d) === 0 || wd(d) === 6, n = we ? o.we : o.wd; var ac = typeof FC_ACADEMY !== 'undefined' && FC_ACADEMY.forDay ? FC_ACADEMY.forDay(d).length : 0; if (ac && n > 1) { n -= 1; acad++; } return n; }), totalCap = cap.reduce(function (a, b) { return a + b; }, 0);
     var need = Q.reduce(function (a, x) { return a + x.list.length; }, 0), merged = false;
     /* 칸이 모자라면 단원이 많은 과목부터 1회독 단원을 묶는다 */
     while (need > totalCap) {
@@ -107,7 +108,7 @@
     var mid = [];
     F.days.forEach(function (d, i) { var nx = F.days[i + 1]; if (!nx) return; var subs = S.filter(function (q) { return exOrder[q.name] === nx; }); if (subs.length) mid.push({ d: d, cap: 3, items: subs.map(function (q) { return { s: q.name, k: '마무리', t: '오답·요약 다시 보기 (시험 끝나고)' }; }) }); });
     var left = Q.filter(function (x) { return x.used < x.list.length; }).map(function (x) { return x.q.name + ' ' + (x.list.length - x.used) + '칸'; });
-    return { F: F, S: S, plan: plan, mid: mid, merged: merged, left: left, start: start, cap: totalCap, need: need, exOrder: Object.keys(exOrder).length };
+    return { F: F, S: S, plan: plan, mid: mid, merged: merged, acad: acad, left: left, start: start, cap: totalCap, need: need, exOrder: Object.keys(exOrder).length };
   }
   function added() { return state.tasks.filter(function (t) { return t.title.indexOf(TAG) === 0; }); }
   function title(it) { return (TAG + it.s + ' · ' + it.t + ' (' + it.k + ')').slice(0, 120); }
@@ -121,10 +122,10 @@
     h += '<section class="card ep-opt"><div class="ep-row"><label>시작<select data-ep="weeks"' + (ro ? ' disabled' : '') + '>' + [2, 3, 4].map(function (n) { return '<option value="' + n + '"' + (o.weeks === n ? ' selected' : '') + '>' + n + '주 전</option>'; }).join('') + '</select></label>' +
       '<label>평일<select data-ep="wd"' + (ro ? ' disabled' : '') + '>' + [1, 2, 3, 4].map(function (n) { return '<option value="' + n + '"' + (o.wd === n ? ' selected' : '') + '>' + n + '칸</option>'; }).join('') + '</select></label>' +
       '<label>주말<select data-ep="we"' + (ro ? ' disabled' : '') + '>' + [2, 3, 4, 5, 6].map(function (n) { return '<option value="' + n + '"' + (o.we === n ? ' selected' : '') + '>' + n + '칸</option>'; }).join('') + '</select></label></div>' +
-      '<p class="muted small">학원 가는 날이 많으면 평일 칸을 줄여. 필요한 칸 ' + B.need + ' · 가능한 칸 ' + B.cap + (B.merged ? ' · 칸이 모자라 단원을 묶었어' : '') + '</p></section>';
+      '<p class="muted small">' + (B.acad ? '학원 가는 날 ' + B.acad + '일은 자동으로 1칸씩 줄였어. ' : '') + '필요한 칸 ' + B.need + ' · 가능한 칸 ' + B.cap + (B.merged ? ' · 칸이 모자라 단원을 묶었어' : '') + '</p></section>';
     /* 범위 */
     h += '<details class="card ep-scope"><summary><b>📖 과목별 기말 범위</b><small>' + (B.S.some(function (q) { return q.scope.src === 'notice'; }) ? '가정통신문 시험 범위 반영' : '평가계획 진도표로 추정 — 범위 공지 나오면 자동 반영') + '</small></summary><ul>' +
-      B.S.map(function (q) { return '<li><b>' + e(q.name) + '</b> <small>기말 ' + q.w + '%' + (q.need != null && q.need > 0 && q.need <= 100 ? ' · 필요 ' + Math.ceil(q.need) + '점' : '') + (q.scope.src === 'notice' ? ' · 📨 공지' : ' · 추정') + '</small><p>' + (q.scope.units.length ? q.scope.units.map(e).join(' / ') : '진도표에서 범위를 못 찾았어 — 수업 노트 기준') + '</p></li>'; }).join('') + '</ul></details>';
+      B.S.map(function (q) { return '<li><b>' + e(q.name) + '</b> <small>기말 ' + q.w + '%' + (q.need != null && q.need > 0 && q.need <= 100 && !(window.FC_GRADES.hidden && FC_GRADES.hidden()) ? ' · 필요 ' + Math.ceil(q.need) + '점' : '') + (q.scope.src === 'notice' ? ' · 📨 공지' : ' · 추정') + '</small><p>' + (q.scope.units.length ? q.scope.units.map(e).join(' / ') : '진도표에서 범위를 못 찾았어 — 수업 노트 기준') + '</p></li>'; }).join('') + '</ul></details>';
     /* 날짜별 */
     h += '<section class="card ep-days"><h2>🗓 날짜별 계획 <small>' + B.plan.length + '일</small></h2>';
     if (!ro) h += '<div class="ep-act">' + (have.length ? '<button type="button" data-ep-sync>🔄 다시 짜서 할 일 바꾸기</button><button type="button" data-ep-clear>할 일에서 빼기 (' + have.filter(function (t) { return !t.done; }).length + ')</button>' : '<button type="button" class="primary" data-ep-add>＋ 날짜별 할 일로 넣기</button>') + '</div>';

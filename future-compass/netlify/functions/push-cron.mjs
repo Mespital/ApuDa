@@ -2,10 +2,11 @@
 //  승준: 07:30 오늘의 핵심 · 15:30 수업 끝 1분 말하기 · 학원 1시간 전 · 20:30 내일 시험 · 21:00 하루 마무리
 //  엄마: 21:30 오늘 요약(개수만, 칭찬·도와줄 것 중심)
 //  엄마: 일요일 21:00 이번 주 리포트
-//  둘 다: 16:00 학교 새 소식 · 07:30 수행평가 D-3/D-1 · 구청 프로그램 신청 마감 D-2
+//  둘 다: 16:00 학교 새 소식 · 07:30 수행평가 D-3(승준)/D-1(둘 다) · 구청 프로그램 신청 마감 D-2
+//  같은 시각에 여러 개면 한 알림으로 묶음(기기별로 끈 종류는 빼고) — 2026-10-19 감수 ⑧-1
 // 가족 공유로 서버에 올라온 기록만 사용. 같은 알림은 하루 한 번.
 import { getStore } from '@netlify/blobs';
-import { sendTo, getSubs } from '../lib/push-core.mjs';
+import { sendTo, sendBundle, getSubs } from '../lib/push-core.mjs';
 import '../../dist/academy-occurrences.js';
 
 const pj = (v, d) => { try { return JSON.parse(v); } catch { return d; } };
@@ -67,17 +68,18 @@ export function plan(data, school, nowMs, live, seen) {
     for (const p of posts) seenOut.push(p.id);
     if (seenIn && at(16, 0)) {
       const fresh = posts.filter(p => !seenIn.includes(p.id) && gap(t, p.date) <= 7);
-      if (fresh.length) out.push({ key: 'news:' + fresh.map(p => p.id).join(','), to: 'all', kind: 'school', title: '📨 학교 새 소식 ' + fresh.length + '개', body: fresh.slice(0, 3).map(p => p.title.slice(0, 40)).join(' · '), url: 'study.html#school', markSeen: true });
+      if (fresh.length) out.push({ key: 'news:' + fresh.map(p => p.id).join(','), to: 'all', kind: 'letters', title: '📨 학교 새 소식 ' + fresh.length + '개', body: fresh.slice(0, 3).map(p => p.title.slice(0, 40)).join(' · '), url: 'study.html#school', markSeen: true });
     }
     if (at(7, 30)) {
-      for (const it of live.programs?.items || []) if (it.applyEnd && gap(it.applyEnd, t) === 2) out.push({ key: 'prog:' + it.id, to: 'all', kind: 'school', title: '🧭 신청 마감 D-2', body: it.title + ' (' + it.center + ') · ' + it.target, url: 'study.html#school' });
+      for (const it of live.programs?.items || []) if (it.applyEnd && gap(it.applyEnd, t) === 2) out.push({ key: 'prog:' + it.id, to: /학부모/.test(it.target || '') && !/학생|청소년|중고|고등|누구나|구민|전체/.test(it.target || '') ? 'parent' : 'all', kind: 'prog', title: '🧭 신청 마감 D-2', body: it.title + ' (' + it.center + ') · ' + it.target, url: 'study.html#school' });
     }
   }
   if (at(7, 30)) {
     for (const x of st.dates || []) {
       if (x.done || !(x.kind === '수행평가' || x.kind === '수행' || /^\[수행\]/.test(x.title || ''))) continue;
       const n = gap(x.date, t); if (n !== 3 && n !== 1) continue;
-      out.push({ key: 'perf:' + x.id + ':' + n, to: 'all', kind: 'school', title: '📝 수행평가 D-' + n, body: String(x.title).replace(/^\[수행\]\s*/, '') + (n === 3 ? ' · 만점 기준 한 번 읽어보자' : ' · 준비물·제출 확인'), url: 'study.html#school' });
+      out.push({ key: 'perf:' + x.id + ':' + n, to: n === 1 ? 'all' : 'child', kind: 'perf',   // 엄마에게는 전날(D-1)만 — 잔소리 계기 줄이기 (감수 ⑧-1)
+        title: '📝 수행평가 D-' + n, body: String(x.title).replace(/^\[수행\]\s*/, '') + (n === 3 ? ' · 만점 기준 한 번 읽어보자' : ' · 준비물·제출 확인'), url: 'study.html#school' });
     }
   }
   // 🗓 엄마 주간 리포트 (일요일 21:00)
@@ -91,6 +93,17 @@ export function plan(data, school, nowMs, live, seen) {
     out.push({ key: 'weekly', to: 'parent', kind: 'weekly', title: '🗓 이번 주 승준이', body: '공부한 날 ' + days.size + '일 · 할 일 ' + wdone + '/' + wt.length + (next.length ? ' · 다음 주: ' + next.join(', ') : '') + ' · 자세히는 기록 탭', url: 'study.html#stats' });
   }
   return { today: t, items: out, seen: seenOut };
+}
+
+/** 역할별로 나누고(all → 승준·엄마), 이미 보낸 것 빼기. 같은 실행(30분 칸) 안의 여러 알림은 한 번에 */
+export function bundle(items, sent = {}) {
+  const by = { child: [], parent: [] };
+  for (const it of items) for (const role of it.to === 'all' ? ['child', 'parent'] : [it.to]) {
+    const key = it.key + '@' + role; if (sent[key] || sent[it.key]) continue;
+    by[role].push({ ...it, key });
+  }
+  for (const r of Object.keys(by)) if (!by[r].length) delete by[r];
+  return by;
 }
 
 export default async () => {
@@ -109,10 +122,10 @@ export default async () => {
   const log = (await store.get('push-log', { type: 'json' })) || {};
   for (const d of Object.keys(log)) if (d < addD(today, -3)) delete log[d];
   const sent = log[today] || (log[today] = {});
-  for (const it of items) {
-    if (sent[it.key]) continue;
-    await sendTo(store, it.to, { title: it.title, body: it.body, url: it.url, tag: it.kind }, it.kind);
-    sent[it.key] = Date.now();
+  for (const [role, parts] of Object.entries(bundle(items, sent))) {
+    if (parts.length === 1) { const it = parts[0]; await sendTo(store, role, { title: it.title, body: it.body, url: it.url, tag: it.kind }, it.kind); }
+    else await sendBundle(store, role, parts);
+    for (const it of parts) sent[it.key] = Date.now();
   }
   await store.setJSON('push-log', log);
 };

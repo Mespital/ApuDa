@@ -102,11 +102,13 @@
     var desc = used.map(function (s) { return s + ' ' + pts.filter(function (r) { return r.s && r.s[s] != null; }).map(function (r) { return r.s[s]; }).join('→'); }).join(', ');
     return '<figure class="po-chart"><svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="과목별 점수 흐름: ' + e(desc) + '">' + grid + lines + labels + '</svg><figcaption>' + used.map(function (s) { return '<span><i style="background:' + COL[s] + '"></i>' + s + '</span>'; }).join('') + '</figcaption></figure>';
   }
+  function trend(log) { var p = log.slice().sort(function (a, b) { return a.date.localeCompare(b.date); }); if (p.length < 2) return []; var a = p[p.length - 2].s || {}, b = p[p.length - 1].s || {}; return SUBJ.filter(function (s) { return a[s] != null && b[s] != null && b[s] < a[s]; }); }
   function scoreCard() {
-    var g = G(); if (!g) return '';
+    var g = G(); if (!g || (window.FC_GRADES.hidden && FC_GRADES.hidden())) return '';
     var log = g.log || [], ro = isParent();
     var h = '<section class="card po-score" id="po-score"><h2>📊 성적 기록 <small>학평·지필 점수 흐름</small></h2>';
-    h += log.length ? chart(log) + '<ul class="po-log">' + log.slice().sort(function (a, b) { return b.date.localeCompare(a.date); }).map(function (r) { return '<li><b>' + e(r.name) + '</b><small>' + md(r.date) + '</small><span>' + SUBJ.filter(function (s) { return r.s && r.s[s] != null; }).map(function (s) { return s + ' ' + r.s[s] + (r.g && r.g[s] ? '<em>(' + r.g[s] + '등급)</em>' : ''); }).join(' · ') + '</span>' + (ro ? '' : '<button type="button" class="po-del" data-po-del="' + e(r.id) + '" aria-label="' + e(r.name) + ' 기록 지우기">✕</button>') + '</li>'; }).join('') + '</ul>' : '<p class="muted small">학평(10/20)이나 시험 점수를 넣으면 과목별 흐름을 보여줘. 원점수(100점 기준)로 넣어.</p>';
+    var drop = trend(log);
+    h += log.length ? chart(log) + (drop.length ? '<p class="po-drop">💡 ' + e(drop.join('·')) + '은 지난번보다 내려갔어. 점수보다 다음 한 가지가 중요해 — 틀린 문제 다시 풀기나 남은 수행평가 챙기기부터 해보자.</p>' : '') + '<ul class="po-log">' + log.slice().sort(function (a, b) { return b.date.localeCompare(a.date); }).map(function (r) { return '<li><b>' + e(r.name) + '</b><small>' + md(r.date) + '</small><span>' + SUBJ.filter(function (s) { return r.s && r.s[s] != null; }).map(function (s) { return s + ' ' + r.s[s] + (r.g && r.g[s] ? '<em>(' + r.g[s] + '등급)</em>' : ''); }).join(' · ') + '</span>' + (ro ? '' : '<button type="button" class="po-del" data-po-del="' + e(r.id) + '" aria-label="' + e(r.name) + ' 기록 지우기">✕</button>') + '</li>'; }).join('') + '</ul>' : '<p class="muted small">학평(10/20)이나 시험 점수를 넣으면 과목별 흐름을 보여줘. 원점수(100점 기준)로 넣어.</p>';
     if (!ro) h += editing ? '<form class="po-form" data-po-form><div class="po-f1"><label>이름<input name="name" maxlength="20" required placeholder="10월 학평" value="' + (today() <= '2026-10-25' ? '10월 학평' : '') + '"></label><label>날짜<input name="date" type="date" required value="' + today() + '"></label></div><div class="po-f2">' + SUBJ.map(function (s) { return '<label>' + s + '<input name="s_' + s + '" type="number" inputmode="decimal" min="0" max="100" step="0.5" placeholder="-"><select name="g_' + s + '" aria-label="' + s + ' 등급"><option value="">등급</option>' + [1, 2, 3, 4, 5, 6, 7, 8, 9].map(function (n) { return '<option>' + n + '</option>'; }).join('') + '</select></label>'; }).join('') + '</div><p class="muted small">학평은 9등급, 내신은 5등급이야. 등급은 알면만 넣어. 한국사 학평은 50점 만점이면 ×2 해서 넣어.</p><p class="po-btns"><button type="submit" class="primary">저장</button><button type="button" data-po-cancel>취소</button></p></form>' : '<button type="button" data-po-new>＋ 점수 기록하기</button>';
     return h + '</section>';
   }
@@ -116,7 +118,7 @@
   render = function () {
     prev(); applyFont();
     var c = document.getElementById('content'); if (!c) return;
-    if (tab === 'settings') { var th = c.querySelector('#hb-theme'); if (th && !th.querySelector('.po-font')) th.insertAdjacentHTML('beforeend', fontRow()); }
+    if (tab === 'settings') { var th = c.querySelector('#hb-theme'); if (th && !th.querySelector('.po-font')) th.insertAdjacentHTML('beforeend', fontRow()); if (!c.querySelector('#po-help')) c.insertAdjacentHTML('beforeend', '<section class="card po-help" id="po-help"><h2>🤝 힘들 때 이야기할 곳</h2><p>공부보다 마음이 먼저야. 혼자 참지 말고 엄마·선생님께 말해줘. 말하기 어려우면 <b>청소년상담 1388</b>도 있어.</p><p class="po-help-row"><a class="po-call" href="tel:02-1388">☎ 전화 1388</a><a class="po-call" href="sms:1388">💬 문자 1388</a></p><p class="muted small">24시간·무료 · 카카오톡에서 \'청소년상담1388\' 채널로도 돼 · 휴대폰 전화는 지역번호(서울 02)를 붙여.</p></section>'); }
     if (tab === 'stats' && !c.querySelector('#po-week')) { var a = c.querySelector('#hb-streak') || c.querySelector('.card'); if (a) a.insertAdjacentHTML('afterend', weekCard()); }
     if (tab === 'today' && isParent() && wd(today()) === 0 && !c.querySelector('#po-week')) c.insertAdjacentHTML('beforeend', weekCard());
     if (tab === 'grades' && !c.querySelector('#po-score')) { var gl = c.querySelectorAll('.gd-wrap>section.card'); var at = gl[gl.length - 1]; if (at) at.insertAdjacentHTML('afterend', scoreCard()); }
@@ -141,5 +143,6 @@
     if (!r.name || !r.date || !any) { notice('이름·날짜와 점수 하나 이상 넣어줘.'); return; }
     g.log = (g.log || []).concat(r).slice(-40); FC_GRADES.put(g); editing = false; notice('기록했어. 흐름 그래프에 반영됐어.'); rerender();
   });
+  var scT = 0; window.addEventListener('scroll', function () { document.body.classList.add('po-scrolling'); clearTimeout(scT); scT = setTimeout(function () { document.body.classList.remove('po-scrolling'); }, 900); }, { passive: true });
   window.FC_POLISH = { week: weekData, steps: steps };
 })();
