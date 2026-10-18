@@ -1,13 +1,15 @@
 {
  "school": "서초고등학교",
- "updated": "2026-10-18T13:53:44.482Z",
+ "updated": "2026-10-18T13:56:12.629Z",
  "eval": {
-  "checked": "2026-10-18T13:53:45.738Z",
-  "fetched": "2026-10-18T12:10:17.874Z",
+  "checked": "2026-10-18T13:56:50.505Z",
+  "fetched": "2026-10-18T13:56:50.505Z",
+  "shl": "5c571812-c664-4495-be26-6b9fb997a233",
   "round": "(3차) 2026년 09월",
   "year": 2026,
   "grade": 1,
   "source": "https://www.schoolinfo.go.kr/ei/ss/pneiss_a03_s0.do",
+  "parser": 3,
   "subjects": [
    {
     "subject": "과학탐구실험",
@@ -1915,9 +1917,6 @@
     "체육전공실기심화"
    ]
   },
-  "unreadable": [],
-  "shl": "5c571812-c664-4495-be26-6b9fb997a233",
-  "parser": 0,
   "catalog": [
    {
     "subject": "과학과제연구",
@@ -4392,11 +4391,2485 @@
       "pct": 50
      }
     ]
+   },
+   {
+    "subject": "과학과제연구",
+    "grade": 3,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 100,
+    "exam": 0,
+    "hasMid": false,
+    "nTasks": 2,
+    "tasks": [
+     {
+      "when": "3월",
+      "type": "서ㆍ논술형",
+      "title": "연구윤리",
+      "pct": 50
+     },
+     {
+      "when": "6월",
+      "type": "발표",
+      "title": "연구 계획서",
+      "pct": 50
+     }
+    ]
+   },
+   {
+    "subject": "과학탐구실험1",
+    "grade": 1,
+    "semester": 1,
+    "hours": 1,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 100,
+    "exam": 0,
+    "hasMid": false,
+    "nTasks": 3,
+    "tasks": [
+     {
+      "when": "4월 1~2주",
+      "type": "서ㆍ논술형, 그 외 유형",
+      "title": "멘델레예프의 주기율표 만들기",
+      "pct": 30
+     },
+     {
+      "when": "5월 4~5주",
+      "type": "서ㆍ논술형, 그 외 유형",
+      "title": "화학반응을 활용한 과학 마술 시나리오 개발 및 시연하기",
+      "pct": 30
+     },
+     {
+      "when": "6월 2~3주",
+      "type": "그 외 유형",
+      "title": "우리 주변에서 천연 항생물질 찾기",
+      "pct": 40
+     }
+    ]
+   },
+   {
+    "subject": "물리학II",
+    "grade": 3,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 100,
+    "exam": 0,
+    "hasMid": false,
+    "nTasks": 4,
+    "tasks": [
+     {
+      "when": "4월",
+      "type": "서논술형",
+      "title": "운동의 법칙(1)",
+      "pct": 25
+     },
+     {
+      "when": "5월",
+      "type": "서논술형",
+      "title": "운동의 법칙(2)",
+      "pct": 25
+     },
+     {
+      "when": "6월",
+      "type": "서논술형",
+      "title": "시공간과 에너지(1)",
+      "pct": 25
+     },
+     {
+      "when": "6월",
+      "type": "서논술형",
+      "title": "시공간과 에너지(2)",
+      "pct": 25
+     }
+    ]
+   },
+   {
+    "subject": "물리학",
+    "grade": 2,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 40,
+    "exam": 60,
+    "hasMid": true,
+    "nTasks": 3,
+    "tasks": [
+     {
+      "when": "5월 4주",
+      "type": "서ㆍ논술형 그 외 유형(실험)",
+      "title": "전기 회로 제작 및 특성 분석",
+      "pct": 15
+     },
+     {
+      "when": "4월 3주, 6월 3주",
+      "type": "그 외 유형(구술)",
+      "title": "지식 재구성 기반 문제 해결 구술",
+      "pct": 15
+     },
+     {
+      "when": "6월 1주~4주",
+      "type": "서ㆍ논술형",
+      "title": "교과 연계 주제 탐구 프로젝트",
+      "pct": 10
+     }
+    ]
+   },
+   {
+    "subject": "생명과학Ⅱ",
+    "grade": 3,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 40,
+    "exam": 60,
+    "hasMid": true,
+    "nTasks": 2,
+    "tasks": [
+     {
+      "when": "5월",
+      "type": "서ㆍ논술형",
+      "title": "탐구1",
+      "pct": 20
+     },
+     {
+      "when": "6월",
+      "type": "그 외 유형",
+      "title": "탐구2",
+      "pct": 20
+     }
+    ]
+   },
+   {
+    "subject": "생명과학",
+    "grade": 2,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 40,
+    "exam": 60,
+    "hasMid": true,
+    "nTasks": 3,
+    "tasks": [
+     {
+      "when": "3월",
+      "type": "실험ㆍ실습 서ㆍ논술형",
+      "title": "영양소 분해 실험 및 보고서 평가",
+      "pct": 15
+     },
+     {
+      "when": "4월",
+      "type": "실험ㆍ실습 서ㆍ논술형",
+      "title": "방형구법으로 식물군집 분석하기",
+      "pct": 15
+     },
+     {
+      "when": "3~6월",
+      "type": "서ㆍ논술형",
+      "title": "수업 밀착형 탐구 보고서 작성",
+      "pct": 10
+     }
+    ]
+   },
+   {
+    "subject": "융합과학",
+    "grade": 3,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 100,
+    "exam": 0,
+    "hasMid": false,
+    "nTasks": 3,
+    "tasks": [
+     {
+      "when": "상시",
+      "type": "그 외 유형",
+      "title": "포트폴리오",
+      "pct": 30
+     },
+     {
+      "when": "5월",
+      "type": "서ㆍ논술형",
+      "title": "탐구1",
+      "pct": 30
+     },
+     {
+      "when": "6월",
+      "type": "그 외 유형",
+      "title": "탐구2",
+      "pct": 40
+     }
+    ]
+   },
+   {
+    "subject": "지구과학Ⅱ",
+    "grade": 3,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 100,
+    "exam": 0,
+    "hasMid": false,
+    "nTasks": 5,
+    "tasks": [
+     {
+      "when": "4월",
+      "type": "서ㆍ논술형",
+      "title": "과학 탐구 활동지",
+      "pct": 10
+     },
+     {
+      "when": "6월",
+      "type": "서ㆍ논술형",
+      "title": "자료 분석 기반 과학적 설명쓰기",
+      "pct": 10
+     },
+     {
+      "when": "4월",
+      "type": "실험ㆍ실습",
+      "title": "지질도 작성 및 해석 실험ㆍ실습",
+      "pct": 20
+     },
+     {
+      "when": "6월",
+      "type": "실험ㆍ실습",
+      "title": "단열선도 해석 실험ㆍ실습",
+      "pct": 20
+     }
+    ]
+   },
+   {
+    "subject": "지구과학",
+    "grade": 2,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 40,
+    "exam": 60,
+    "hasMid": true,
+    "nTasks": 2,
+    "tasks": [
+     {
+      "when": "3, 5월",
+      "type": "서ㆍ논술형",
+      "title": "대기 대순환과 북대서양 아열대 환류 탐구 / 일기도와 위성 영상을 이용한 날씨 분석",
+      "pct": 25
+     },
+     {
+      "when": "4월",
+      "type": "실험ㆍ실습",
+      "title": "실측 자료를 이용한 엘니뇨 남방진동 분석",
+      "pct": 15
+     }
+    ]
+   },
+   {
+    "subject": "통합과학1",
+    "grade": 1,
+    "semester": 1,
+    "hours": 4,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 40,
+    "exam": 60,
+    "hasMid": true,
+    "nTasks": 2,
+    "tasks": [
+     {
+      "when": "4월",
+      "type": "서ㆍ논술형 실험 평가",
+      "title": "자유낙하와 수평으로 던진 물체의 운동 분석하기",
+      "pct": 20
+     },
+     {
+      "when": "6월",
+      "type": "서ㆍ논술형",
+      "title": "알칼리 금속과 할로젠 원소의 화학적 성질 탐구",
+      "pct": 20
+     }
+    ]
+   },
+   {
+    "subject": "화학Ⅱ",
+    "grade": 3,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 50,
+    "exam": 50,
+    "hasMid": false,
+    "nTasks": 2,
+    "tasks": [
+     {
+      "when": "5월 2~3주",
+      "type": "서ㆍ논술형",
+      "title": "물질의 세 가지 상태와 용액",
+      "pct": 30
+     },
+     {
+      "when": "상시",
+      "type": "포트폴리오",
+      "title": "학습내용 정리",
+      "pct": 20
+     }
+    ]
+   },
+   {
+    "subject": "화학",
+    "grade": 2,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 40,
+    "exam": 60,
+    "hasMid": true,
+    "nTasks": 3,
+    "tasks": [
+     {
+      "when": "3월",
+      "type": "서ㆍ논술형 그 외 유형",
+      "title": "다양한 물질들을 이용하여 특정한 양(mol)의 질량 측정하기",
+      "pct": 12
+     },
+     {
+      "when": "4월",
+      "type": "서ㆍ논술형 그 외 유형",
+      "title": "물과 다양한 물질의 극성 확인하기 및 물의 전기분해",
+      "pct": 16
+     },
+     {
+      "when": "5월",
+      "type": "서ㆍ논술형 그 외 유형",
+      "title": "농도, 온도 변화에 따른 화학평형 이동 실험하기",
+      "pct": 12
+     }
+    ]
+   },
+   {
+    "subject": "환경",
+    "grade": 3,
+    "semester": 1,
+    "hours": 2,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": false,
+     "pf": true
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 100,
+    "exam": 0,
+    "hasMid": false,
+    "nTasks": 2,
+    "tasks": [
+     {
+      "when": "3월",
+      "type": "서ㆍ논술형",
+      "title": "미래를 준비하는 환경 윤리",
+      "pct": 50
+     },
+     {
+      "when": "6월",
+      "type": "발표",
+      "title": "환경 프로젝트",
+      "pct": 50
+     }
+    ]
+   },
+   {
+    "subject": "공통국어1",
+    "grade": 1,
+    "semester": 1,
+    "hours": 4,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 40,
+    "exam": 60,
+    "hasMid": true,
+    "nTasks": 3,
+    "tasks": [
+     {
+      "when": "3월",
+      "type": "포트폴리오",
+      "title": "어휘 활용 포트폴리오",
+      "pct": 5
+     },
+     {
+      "when": "4월",
+      "type": "서ㆍ논술형",
+      "title": "사회적 쟁점에 대한 비판적 글쓰기",
+      "pct": 15
+     },
+     {
+      "when": "5월",
+      "type": "서ㆍ논술형",
+      "title": "비인간적 존재의 시선에서 1인칭 생태 서사 쓰기",
+      "pct": 20
+     }
+    ]
+   },
+   {
+    "subject": "논술",
+    "grade": 3,
+    "semester": 1,
+    "hours": 1,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": false,
+     "pf": true
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 100,
+    "exam": 0,
+    "hasMid": false,
+    "nTasks": 1,
+    "tasks": [
+     {
+      "when": "수시",
+      "type": "작문, 발표",
+      "title": "분석적 글쓰기 비판적 글쓰기",
+      "pct": null
+     }
+    ]
+   },
+   {
+    "subject": "문학",
+    "grade": 2,
+    "semester": 1,
+    "hours": 4,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 40,
+    "exam": 60,
+    "hasMid": true,
+    "nTasks": 3,
+    "tasks": [
+     {
+      "when": "5월 2주",
+      "type": "서 · 논술형",
+      "title": "진로 성찰 에세이 쓰기",
+      "pct": 20
+     },
+     {
+      "when": "5월 4주",
+      "type": "토의ㆍ토론",
+      "title": "문학 가치 논제 토론",
+      "pct": 10
+     },
+     {
+      "when": "6월 1주",
+      "type": "서ㆍ논술형",
+      "title": "문학 비평문 쓰기",
+      "pct": 10
+     }
+    ]
+   },
+   {
+    "subject": "언어와 매체",
+    "grade": 3,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 20,
+    "exam": 80,
+    "hasMid": true,
+    "nTasks": 2,
+    "tasks": [
+     {
+      "when": "3월 1주 ~ 6월 4주",
+      "type": "포트폴리오",
+      "title": "탐구 활동지 작성",
+      "pct": 10
+     },
+     {
+      "when": "3월 1주 ~ 6월 4주",
+      "type": "포트폴리오",
+      "title": "학습 포트폴리오 완성",
+      "pct": 10
+     }
+    ]
+   },
+   {
+    "subject": "주제 탐구 독서",
+    "grade": 2,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 60,
+    "exam": 40,
+    "hasMid": true,
+    "nTasks": 2,
+    "tasks": [
+     {
+      "when": "4월 1주 ~ 5월 2주",
+      "type": "• 포트폴리오 • 서ㆍ논술형 • 구술ㆍ발표",
+      "title": "독서 기반 주제 탐구 및 매체 활용 공유",
+      "pct": 30
+     },
+     {
+      "when": "5월 4주 ~ 6월 4주",
+      "type": "• 포트폴리오 • 서ㆍ논술형 • 구술ㆍ발표",
+      "title": "독서 기반 주제 탐구 보고서 작성 및 결과 공유",
+      "pct": 30
+     }
+    ]
+   },
+   {
+    "subject": "화법과 작문",
+    "grade": 3,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 20,
+    "exam": 80,
+    "hasMid": true,
+    "nTasks": 1,
+    "tasks": [
+     {
+      "when": "4월 1주",
+      "type": "서ㆍ논술형",
+      "title": "정보 전달 글쓰기",
+      "pct": null
+     }
+    ]
+   },
+   {
+    "subject": "미술",
+    "grade": 1,
+    "semester": 1,
+    "hours": 2,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "classes": [
+     1,
+     5
+    ],
+    "perf": 100,
+    "exam": 0,
+    "hasMid": false,
+    "nTasks": 2,
+    "tasks": [
+     {
+      "when": "3월~4월",
+      "type": "포트폴리오",
+      "title": "앨범아트",
+      "pct": 50
+     },
+     {
+      "when": "5월~6월",
+      "type": "포트폴리오",
+      "title": "전통회화",
+      "pct": 50
+     }
+    ]
+   },
+   {
+    "subject": "미술감상과 비평",
+    "grade": 3,
+    "semester": 1,
+    "hours": 1,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 100,
+    "exam": 0,
+    "hasMid": false,
+    "nTasks": 3,
+    "tasks": [
+     {
+      "when": "3월 4월",
+      "type": "포트폴리오1",
+      "title": "미술비평",
+      "pct": 40
+     },
+     {
+      "when": "5월",
+      "type": "포트폴리오2",
+      "title": "미술사여행",
+      "pct": 30
+     },
+     {
+      "when": "6월",
+      "type": "실기 평가",
+      "title": "진로와 연관된 유파를 선택하여 이미지 자료, 드로잉, 텍스트를 활용하여 인포메이션 드로잉을 제작함.",
+      "pct": null
+     }
+    ]
+   },
+   {
+    "subject": "미술 전공 실기",
+    "grade": 3,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 100,
+    "exam": 0,
+    "hasMid": false,
+    "nTasks": 2,
+    "tasks": [
+     {
+      "when": "3월 1주 ~ 4월 4주",
+      "type": "포트폴리오",
+      "title": "전공 실기 1",
+      "pct": 50
+     },
+     {
+      "when": "5월 1주 ~ 7월 3주",
+      "type": "포트폴리오",
+      "title": "전공 실기 2",
+      "pct": 50
+     }
+    ]
+   },
+   {
+    "subject": "미술창작",
+    "grade": 2,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 100,
+    "exam": 0,
+    "hasMid": false,
+    "nTasks": 3,
+    "tasks": [
+     {
+      "when": "3월",
+      "type": "포트폴리오",
+      "title": "나를 표현하는 자화상",
+      "pct": 30
+     },
+     {
+      "when": "4월",
+      "type": "포트폴리오",
+      "title": "랜드마크 드로잉",
+      "pct": 30
+     },
+     {
+      "when": "5월~6월",
+      "type": "포트폴리오",
+      "title": "아이덴티티 디자인",
+      "pct": 40
+     }
+    ]
+   },
+   {
+    "subject": "공통수학1",
+    "grade": 1,
+    "semester": 1,
+    "hours": 4,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 40,
+    "exam": 60,
+    "hasMid": true,
+    "nTasks": 3,
+    "tasks": [
+     {
+      "when": "상시",
+      "type": "그 외 유형",
+      "title": "배움성장일지",
+      "pct": 20
+     },
+     {
+      "when": "5월 1~2주",
+      "type": "서ㆍ논술형",
+      "title": "창의적 문항 설계",
+      "pct": 10
+     },
+     {
+      "when": "6월 1~2주",
+      "type": "서ㆍ논술형",
+      "title": "주제 탐구 보고서 작성",
+      "pct": 10
+     }
+    ]
+   },
+   {
+    "subject": "기하",
+    "grade": 2,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 40,
+    "exam": 60,
+    "hasMid": true,
+    "nTasks": 2,
+    "tasks": [
+     {
+      "when": "상시",
+      "type": "그 외 유형",
+      "title": "기하 학습 성장 프로세스폴리오",
+      "pct": 20
+     },
+     {
+      "when": "6월 2~3주",
+      "type": "서ㆍ논술형",
+      "title": "수학 개념 활용 사례 분석 및 보고서 작성",
+      "pct": 20
+     }
+    ]
+   },
+   {
+    "subject": "대수",
+    "grade": 2,
+    "semester": 1,
+    "hours": 4,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 40,
+    "exam": 60,
+    "hasMid": true,
+    "nTasks": 3,
+    "tasks": [
+     {
+      "when": "상시",
+      "type": "그 외 유형",
+      "title": "대수 학습 성장 프로세스폴리오",
+      "pct": 20
+     },
+     {
+      "when": "4월 2~3주",
+      "type": "서ㆍ논술형",
+      "title": "문제 재구성을 통한 개념 확장",
+      "pct": 5
+     },
+     {
+      "when": "5월 5주~6월 1주",
+      "type": "서ㆍ논술형",
+      "title": "수학 개념 활용 사례 분석 및 카드뉴스 만들기",
+      "pct": 15
+     }
+    ]
+   },
+   {
+    "subject": "미적분",
+    "grade": 3,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 10,
+    "exam": 90,
+    "hasMid": true,
+    "nTasks": 1,
+    "tasks": [
+     {
+      "when": "3월 2주 ~6월 4주",
+      "type": "포트폴리오",
+      "title": "포트폴리오",
+      "pct": 10
+     }
+    ]
+   },
+   {
+    "subject": "수학과제탐구",
+    "grade": 3,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 100,
+    "exam": 0,
+    "hasMid": false,
+    "nTasks": 2,
+    "tasks": [
+     {
+      "when": "3월 2주 ~4월 2주",
+      "type": "서논술형",
+      "title": "과제탐구1",
+      "pct": null
+     },
+     {
+      "when": "5월 3주 ~6월 4주",
+      "type": "서논술형",
+      "title": "과제탐구2",
+      "pct": null
+     }
+    ]
+   },
+   {
+    "subject": "확률과 통계",
+    "grade": 3,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 10,
+    "exam": 90,
+    "hasMid": true,
+    "nTasks": 1,
+    "tasks": [
+     {
+      "when": "5월 2주",
+      "type": "그 외 유형",
+      "title": "수학 포스터 만들기",
+      "pct": 10
+     }
+    ]
+   },
+   {
+    "subject": "심리학",
+    "grade": 3,
+    "semester": 1,
+    "hours": 2,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": false,
+     "pf": true
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 100,
+    "exam": 0,
+    "hasMid": false,
+    "nTasks": 1,
+    "tasks": [
+     {
+      "when": "수시",
+      "type": "구술, 발표, 토의, 실습",
+      "title": "나를 이해하기, 나를 설명하기, 우리에 대하여, 삶의 궁극은",
+      "pct": null
+     }
+    ]
+   },
+   {
+    "subject": "동아시아사",
+    "grade": 3,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 40,
+    "exam": 60,
+    "hasMid": true,
+    "nTasks": 2,
+    "tasks": [
+     {
+      "when": "5월",
+      "type": "서ㆍ논술형",
+      "title": "관점 기반 역사 탐구",
+      "pct": 20
+     },
+     {
+      "when": "6월",
+      "type": "서ㆍ논술형",
+      "title": "사건의 세 시선 탐구",
+      "pct": 20
+     }
+    ]
+   },
+   {
+    "subject": "세계사",
+    "grade": 2,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 40,
+    "exam": 60,
+    "hasMid": true,
+    "nTasks": 2,
+    "tasks": [
+     {
+      "when": "4월 2주",
+      "type": "서ㆍ논술형",
+      "title": "지역 세계 탐방 계획서 제작하기",
+      "pct": 20
+     },
+     {
+      "when": "6월 3주",
+      "type": "서ㆍ논술형",
+      "title": "세계사를 통해 본 현대 세계 과제 탐구",
+      "pct": 20
+     }
+    ]
+   },
+   {
+    "subject": "한국사1",
+    "grade": 1,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 40,
+    "exam": 60,
+    "hasMid": true,
+    "nTasks": 2,
+    "tasks": [
+     {
+      "when": "5월 4주",
+      "type": "서ㆍ논술형",
+      "title": "역사 사건의 현대적 재해석",
+      "pct": 20
+     },
+     {
+      "when": "6월 3주",
+      "type": "서ㆍ논술형",
+      "title": "역사 도서 읽기와 쓰기",
+      "pct": 20
+     }
+    ]
+   },
+   {
+    "subject": "현대 세계의 변화",
+    "grade": 3,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 100,
+    "exam": 0,
+    "hasMid": false,
+    "nTasks": 2,
+    "tasks": [
+     {
+      "when": "4~7월",
+      "type": "서·논술형 포트폴리오",
+      "title": "역사 논술 및 글쓰기 포트폴리오",
+      "pct": 60
+     },
+     {
+      "when": "5~7월",
+      "type": "프로젝트 학습",
+      "title": "현대 문제 역사 분석",
+      "pct": 40
+     }
+    ]
+   },
+   {
+    "subject": "공통영어1",
+    "grade": 1,
+    "semester": 1,
+    "hours": 4,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 40,
+    "exam": 60,
+    "hasMid": true,
+    "nTasks": 2,
+    "tasks": [
+     {
+      "when": "5월 4주",
+      "type": "논술형",
+      "title": "영어 관용 표현을 활용한 자기 가치관 소개하는 글쓰기",
+      "pct": 20
+     },
+     {
+      "when": "5월 5주",
+      "type": "구술",
+      "title": "영어 관용 표현을 활용한 자기 가치관 말하기",
+      "pct": 20
+     }
+    ]
+   },
+   {
+    "subject": "세계 문화와 영어",
+    "grade": 2,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 40,
+    "exam": null,
+    "hasMid": false,
+    "nTasks": 2,
+    "tasks": [
+     {
+      "when": "4월 4주",
+      "type": "학습지 작성",
+      "title": "세계 문화와 영어 학습지 작성 및 발표",
+      "pct": 20
+     },
+     {
+      "when": "7월 3주",
+      "type": "쓰기",
+      "title": "세계 문화와 영어에 대한 글쓰기",
+      "pct": 20
+     }
+    ]
+   },
+   {
+    "subject": "심화영어독해Ⅰ",
+    "grade": 3,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 25,
+    "exam": 75,
+    "hasMid": true,
+    "nTasks": 1,
+    "tasks": [
+     {
+      "when": "5월 3주",
+      "type": "읽고 쓰기",
+      "title": "영어 관용 표현을 활용한 자신의 관심분야 소개하는 글쓰기",
+      "pct": 25
+     }
+    ]
+   },
+   {
+    "subject": "영어 I",
+    "grade": 2,
+    "semester": 1,
+    "hours": 4,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 40,
+    "exam": 60,
+    "hasMid": true,
+    "nTasks": 2,
+    "tasks": [
+     {
+      "when": "5월 3주",
+      "type": "서ㆍ논술형",
+      "title": "자신의 의견을 전달하는 영어 에세이 작성",
+      "pct": 20
+     },
+     {
+      "when": "5월 4주",
+      "type": "구술",
+      "title": "주제 발표 영어 말하기",
+      "pct": 20
+     }
+    ]
+   },
+   {
+    "subject": "고전과 윤리",
+    "grade": 3,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 100,
+    "exam": 0,
+    "hasMid": false,
+    "nTasks": 4,
+    "tasks": [
+     {
+      "when": "상시",
+      "type": "그 외 유형",
+      "title": "고전 포트폴리오",
+      "pct": 20
+     },
+     {
+      "when": "상시",
+      "type": "그 외 유형",
+      "title": "고전 탐구 활동",
+      "pct": 20
+     },
+     {
+      "when": "상시",
+      "type": "그 외 유형",
+      "title": "고전 논술 활동",
+      "pct": 20
+     },
+     {
+      "when": "5월",
+      "type": "서ㆍ논술형",
+      "title": "고진감래 최종보고서 (고전과 진로를 연결하면 즐거움이 찾아온다)",
+      "pct": 40
+     }
+    ]
+   },
+   {
+    "subject": "생활과 윤리",
+    "grade": 3,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 40,
+    "exam": 60,
+    "hasMid": true,
+    "nTasks": 2,
+    "tasks": [
+     {
+      "when": "5월 1~2주",
+      "type": "서·논술형",
+      "title": "현대의 삶과 윤리 탐구 보고서",
+      "pct": 20
+     },
+     {
+      "when": "4월 3~4주, 6월 3~4주",
+      "type": "그 외 유형",
+      "title": "학습 포트폴리오",
+      "pct": 20
+     }
+    ]
+   },
+   {
+    "subject": "철학",
+    "grade": 3,
+    "semester": 1,
+    "hours": 2,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": false,
+     "pf": true
+    },
+    "classes": [
+     3,
+     10
+    ],
+    "perf": 100,
+    "exam": 0,
+    "hasMid": false,
+    "nTasks": 1,
+    "tasks": [
+     {
+      "when": "수시",
+      "type": "구술, 발표, 토의, 보고서",
+      "title": "주제 탐구 프로젝트",
+      "pct": null
+     }
+    ]
+   },
+   {
+    "subject": "현대사회와 윤리",
+    "grade": 3,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 60,
+    "exam": 40,
+    "hasMid": true,
+    "nTasks": 2,
+    "tasks": [
+     {
+      "when": "6월",
+      "type": "서ㆍ논술형",
+      "title": "현대 윤리 에세이 시리즈",
+      "pct": 40
+     },
+     {
+      "when": "6월",
+      "type": "서ㆍ논술형",
+      "title": "윤리적 시선으로 탐구한 세상",
+      "pct": 20
+     }
+    ]
+   },
+   {
+    "subject": "음악",
+    "grade": 1,
+    "semester": 1,
+    "hours": 2,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "classes": [
+     6,
+     10
+    ],
+    "perf": 100,
+    "exam": 0,
+    "hasMid": false,
+    "nTasks": 4,
+    "tasks": [
+     {
+      "when": "3월 4주",
+      "type": "실기평가",
+      "title": "칼림바 연주",
+      "pct": 35
+     },
+     {
+      "when": "4월 1~2주",
+      "type": "실기평가",
+      "title": "교가 가창",
+      "pct": 10
+     },
+     {
+      "when": "5월 4주",
+      "type": "실기평가",
+      "title": "우쿨렐레 연주",
+      "pct": 35
+     },
+     {
+      "when": "6월 4~5주",
+      "type": "서·논술형 평가",
+      "title": "한국음악사",
+      "pct": 20
+     }
+    ]
+   },
+   {
+    "subject": "음악감상과비평",
+    "grade": 3,
+    "semester": 1,
+    "hours": 1,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 100,
+    "exam": 0,
+    "hasMid": false,
+    "nTasks": 4,
+    "tasks": [
+     {
+      "when": "3월 2~3주",
+      "type": "프로젝트",
+      "title": "상상과 표현",
+      "pct": 20
+     },
+     {
+      "when": "4월",
+      "type": "서ㆍ논술형",
+      "title": "감상과 비평1",
+      "pct": 35
+     },
+     {
+      "when": "5월",
+      "type": "서ㆍ논술형",
+      "title": "감상과 비평2",
+      "pct": null
+     },
+     {
+      "when": "6월",
+      "type": "서술형",
+      "title": "생활 속의 음악",
+      "pct": 15
+     }
+    ]
+   },
+   {
+    "subject": "음악",
+    "grade": 3,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 100,
+    "exam": 0,
+    "hasMid": false,
+    "nTasks": 5,
+    "tasks": [
+     {
+      "when": "4월 1주",
+      "type": "서술형 평가",
+      "title": "실기 과제 분석",
+      "pct": 20
+     },
+     {
+      "when": "4월 3주",
+      "type": "실기평가",
+      "title": "리듬시창 및 창작",
+      "pct": 20
+     },
+     {
+      "when": "6월 1주",
+      "type": "프로젝트 학습",
+      "title": "연주회 자료 제작",
+      "pct": 10
+     },
+     {
+      "when": "6월 4주",
+      "type": "실기평가",
+      "title": "연주 발표",
+      "pct": 30
+     }
+    ]
+   },
+   {
+    "subject": "음악연주와 창작",
+    "grade": 2,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 100,
+    "exam": 0,
+    "hasMid": false,
+    "nTasks": 5,
+    "tasks": [
+     {
+      "when": "4월 1주",
+      "type": "실기평가",
+      "title": "피아노의 기초",
+      "pct": 10
+     },
+     {
+      "when": "5월 2주",
+      "type": "실기평가",
+      "title": "피아노 독주",
+      "pct": 35
+     },
+     {
+      "when": "5월 3주",
+      "type": "서논술형평가",
+      "title": "개인 실습 과정 평가",
+      "pct": 5
+     },
+     {
+      "when": "6월 2주",
+      "type": "실기평가",
+      "title": "피아노 앙상블",
+      "pct": 40
+     }
+    ]
+   },
+   {
+    "subject": "사회·문화",
+    "grade": 3,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 20,
+    "exam": 80,
+    "hasMid": true,
+    "nTasks": 1,
+    "tasks": [
+     {
+      "when": "4월 2주",
+      "type": "서·논술형",
+      "title": "사회·문화 현상의 양적 연구 계획서 작성",
+      "pct": 20
+     }
+    ]
+   },
+   {
+    "subject": "사회와 문화",
+    "grade": 2,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 40,
+    "exam": 60,
+    "hasMid": true,
+    "nTasks": 3,
+    "tasks": [
+     {
+      "when": "4월",
+      "type": "서ㆍ논술형",
+      "title": "사회변동의 과정에서 발생하는 사회 문제의 해결 방안 모색하기",
+      "pct": 15
+     },
+     {
+      "when": "6월",
+      "type": "서ㆍ논술형",
+      "title": "기존 기사를 비판적으로 분석하여 객관적인 기사 작성하기",
+      "pct": 15
+     },
+     {
+      "when": "상시",
+      "type": "서ㆍ논술형",
+      "title": "수업과정 포트폴리오 완성하기",
+      "pct": 10
+     }
+    ]
+   },
+   {
+    "subject": "생애 설계와 자립",
+    "grade": 1,
+    "semester": 1,
+    "hours": 1,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     6,
+     10
+    ],
+    "perf": 40,
+    "exam": 60,
+    "hasMid": false,
+    "nTasks": 3,
+    "tasks": [
+     {
+      "when": "3월 4주 ~ 4월 1주",
+      "type": "서ㆍ논술형",
+      "title": "SNS 관계 맺기 분석 활동",
+      "pct": 15
+     },
+     {
+      "when": "5월 4~5주",
+      "type": "서ㆍ논술형",
+      "title": "소비 문제점과 해결방안 탐색",
+      "pct": 15
+     },
+     {
+      "when": "6월 3주",
+      "type": "그 외 유형",
+      "title": "학습지 정리",
+      "pct": 10
+     }
+    ]
+   },
+   {
+    "subject": "일본문화",
+    "grade": 3,
+    "semester": 1,
+    "hours": 2,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "classes": [
+     2,
+     10
+    ],
+    "perf": 100,
+    "exam": 0,
+    "hasMid": false,
+    "nTasks": 2,
+    "tasks": [
+     {
+      "when": "4월",
+      "type": "서ㆍ논술형",
+      "title": "일본 인물 혹은 캐릭터 평론 쓰기",
+      "pct": 50
+     },
+     {
+      "when": "5월",
+      "type": "서ㆍ논술형",
+      "title": "일본 관련 기사 분석",
+      "pct": 50
+     }
+    ]
+   },
+   {
+    "subject": "일본어Ⅱ",
+    "grade": 3,
+    "semester": 1,
+    "hours": 2,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "classes": [
+     3,
+     10
+    ],
+    "perf": 100,
+    "exam": 0,
+    "hasMid": false,
+    "nTasks": 3,
+    "tasks": [
+     {
+      "when": "4월",
+      "type": "그 외 유형",
+      "title": "의사소통 기본표현 해석하기",
+      "pct": 30
+     },
+     {
+      "when": "5월",
+      "type": "서ㆍ논술형",
+      "title": "일본 문화 보고서 작성하기",
+      "pct": 40
+     },
+     {
+      "when": "6월",
+      "type": "그 외 유형",
+      "title": "의사소통 기본표현 말하기",
+      "pct": 30
+     }
+    ]
+   },
+   {
+    "subject": "일본어",
+    "grade": 2,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 40,
+    "exam": 60,
+    "hasMid": true,
+    "nTasks": 2,
+    "tasks": [
+     {
+      "when": "4월",
+      "type": "서술형 및 논술형 평가",
+      "title": "1인 1현 소개지 만들기",
+      "pct": 20
+     },
+     {
+      "when": "5월",
+      "type": "그 외 유형",
+      "title": "의사소통 역량 강화를 위한 말하기 평가",
+      "pct": 20
+     }
+    ]
+   },
+   {
+    "subject": "정보",
+    "grade": 2,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 50,
+    "exam": 50,
+    "hasMid": true,
+    "nTasks": 3,
+    "tasks": [
+     {
+      "when": "상시",
+      "type": "포트폴리오",
+      "title": "실습 활동 포트폴리오",
+      "pct": 10
+     },
+     {
+      "when": "5월 4주차",
+      "type": "서논술형",
+      "title": "코딩 테스트",
+      "pct": 20
+     },
+     {
+      "when": "6월 2주차",
+      "type": "프로젝트 학습",
+      "title": "사물 인터넷 시스템 설계 및 구현",
+      "pct": 20
+     }
+    ]
+   },
+   {
+    "subject": "중국문화",
+    "grade": 3,
+    "semester": 1,
+    "hours": 2,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "classes": [
+     3,
+     10
+    ],
+    "perf": 100,
+    "exam": 0,
+    "hasMid": false,
+    "nTasks": 2,
+    "tasks": [
+     {
+      "when": "3월~6월",
+      "type": "구술ㆍ발표",
+      "title": "주제 탐구 결과 발표",
+      "pct": 20
+     },
+     {
+      "when": "3월~6월",
+      "type": "포트폴리오",
+      "title": "포트폴리오",
+      "pct": 80
+     }
+    ]
+   },
+   {
+    "subject": "중국어",
+    "grade": 2,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": false,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     9
+    ],
+    "perf": 60,
+    "exam": 40,
+    "hasMid": true,
+    "nTasks": 3,
+    "tasks": [
+     {
+      "when": "3월~6월",
+      "type": "구술, 발표 등",
+      "title": "듣고 말하기",
+      "pct": 20
+     },
+     {
+      "when": "4월~6월",
+      "type": "프로젝트 학습",
+      "title": "언어문화탐구",
+      "pct": 20
+     },
+     {
+      "when": "3월~6월",
+      "type": "포트폴리오",
+      "title": "포트폴리오",
+      "pct": 20
+     }
+    ]
+   },
+   {
+    "subject": "프랑스어",
+    "grade": 2,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 100,
+    "exam": 0,
+    "hasMid": false,
+    "nTasks": 4,
+    "tasks": [
+     {
+      "when": "수업 중 상시",
+      "type": "서ㆍ논술형",
+      "title": "학습 성찰 일지",
+      "pct": 20
+     },
+     {
+      "when": "4~5월 예정",
+      "type": "서ㆍ논술형",
+      "title": "자기소개 쓰기",
+      "pct": 30
+     },
+     {
+      "when": "4~5월 예정",
+      "type": "그 외 유형",
+      "title": "자기소개 구술 발표",
+      "pct": 20
+     },
+     {
+      "when": "5~6월 예정",
+      "type": "그 외 유형",
+      "title": "문화 탐구 프로젝트",
+      "pct": 30
+     }
+    ]
+   },
+   {
+    "subject": "프랑스어권 문화",
+    "grade": 3,
+    "semester": 1,
+    "hours": 2,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "classes": [
+     3,
+     10
+    ],
+    "perf": 100,
+    "exam": 0,
+    "hasMid": false,
+    "nTasks": 2,
+    "tasks": [
+     {
+      "when": "3월 1~4주",
+      "type": "서ㆍ논술형",
+      "title": "주제 선택 소감문",
+      "pct": 40
+     },
+     {
+      "when": "4~7월 상시",
+      "type": "그 외 유형",
+      "title": "주제 선택 탐구 발표",
+      "pct": 60
+     }
+    ]
+   },
+   {
+    "subject": "프로그래밍",
+    "grade": 3,
+    "semester": 1,
+    "hours": 2,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "classes": [
+     3,
+     10
+    ],
+    "perf": 100,
+    "exam": 0,
+    "hasMid": false,
+    "nTasks": 3,
+    "tasks": [
+     {
+      "when": "4월 3주차",
+      "type": "서논술형",
+      "title": "프로그래밍 평가",
+      "pct": 30
+     },
+     {
+      "when": "6월 3주차",
+      "type": "프로젝트 학습",
+      "title": "알고리즘 조사 및 활용",
+      "pct": 40
+     },
+     {
+      "when": "상시",
+      "type": "포트폴리오",
+      "title": "포트폴리오",
+      "pct": 30
+     }
+    ]
+   },
+   {
+    "subject": "세계시민과 지리",
+    "grade": 2,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 40,
+    "exam": 60,
+    "hasMid": true,
+    "nTasks": 4,
+    "tasks": [
+     {
+      "when": "3월 5주 ~4월 1주",
+      "type": "서ㆍ논술형",
+      "title": "기후 활용 및 극복 사례 탐구하기",
+      "pct": 10
+     },
+     {
+      "when": "4월 2주",
+      "type": "그 외 유형 (포트폴리오)",
+      "title": "포트폴리오 작성하기",
+      "pct": 10
+     },
+     {
+      "when": "5월 4주",
+      "type": "서ㆍ논술형",
+      "title": "국제 이주민의 인권 문제와 국가별 이주민 정책 탐구하기",
+      "pct": 10
+     },
+     {
+      "when": "6월 3주",
+      "type": "서ㆍ논술형",
+      "title": "글로벌 생산 네트워크와 지역 발전 사례 탐구하기",
+      "pct": 10
+     }
+    ]
+   },
+   {
+    "subject": "세계지리",
+    "grade": 3,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 30,
+    "exam": 70,
+    "hasMid": true,
+    "nTasks": 4,
+    "tasks": [
+     {
+      "when": "3월 3주",
+      "type": "서ㆍ논술형",
+      "title": "세계-지방화에 대한 지리적 글쓰기",
+      "pct": 10
+     },
+     {
+      "when": "4월 3주",
+      "type": "그 외 유형(포트폴리오)",
+      "title": "학습지 정리",
+      "pct": 5
+     },
+     {
+      "when": "6월 2주",
+      "type": "서ㆍ논술형",
+      "title": "인구 이주에 대한 지리적 글쓰기",
+      "pct": 10
+     },
+     {
+      "when": "6월 4주",
+      "type": "그 외 유형(포트폴리오)",
+      "title": "학습지 정리",
+      "pct": 5
+     }
+    ]
+   },
+   {
+    "subject": "여행지리",
+    "grade": 3,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 60,
+    "exam": 40,
+    "hasMid": false,
+    "nTasks": 3,
+    "tasks": [
+     {
+      "when": "4월 1주",
+      "type": "서ㆍ논술형",
+      "title": "여행의 지리학적 의미",
+      "pct": 20
+     },
+     {
+      "when": "5월 4주",
+      "type": "서ㆍ논술형",
+      "title": "지속 가능한 여행 사례 탐구",
+      "pct": 20
+     },
+     {
+      "when": "6월 2주",
+      "type": "서ㆍ논술형",
+      "title": "진로 여행 계획 수립",
+      "pct": 20
+     }
+    ]
+   },
+   {
+    "subject": "통합사회1",
+    "grade": 1,
+    "semester": 1,
+    "hours": 4,
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 40,
+    "exam": 60,
+    "hasMid": true,
+    "nTasks": 2,
+    "tasks": [
+     {
+      "when": "4월 ~ 6월",
+      "type": "서·논술형",
+      "title": "시민의 행복을 위한 국가 설계 프로젝트",
+      "pct": 20
+     },
+     {
+      "when": "5월 4주",
+      "type": "서·논술형",
+      "title": "기후위기 정책 제안 활동",
+      "pct": 20
+     }
+    ]
+   },
+   {
+    "subject": "스포츠 문화",
+    "grade": 1,
+    "semester": 1,
+    "hours": 1,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "classes": [
+     1,
+     5
+    ],
+    "perf": 100,
+    "exam": 0,
+    "hasMid": false,
+    "nTasks": 2,
+    "tasks": [
+     {
+      "when": "6월 1~2주",
+      "type": "실기",
+      "title": "탁구 연속 스트로크",
+      "pct": 50
+     },
+     {
+      "when": "4월 3주~ 6월 5주",
+      "type": "실기",
+      "title": "탁구 경기 참여",
+      "pct": 50
+     }
+    ]
+   },
+   {
+    "subject": "스포츠 생활",
+    "grade": 3,
+    "semester": 1,
+    "hours": 1,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "classes": null,
+    "perf": 100,
+    "exam": 0,
+    "hasMid": false,
+    "nTasks": 1,
+    "tasks": [
+     {
+      "when": "6월 4주~5주",
+      "type": "보고서",
+      "title": "탐구 보고서",
+      "pct": 100
+     }
+    ]
+   },
+   {
+    "subject": "운동과 건강",
+    "grade": 2,
+    "semester": 1,
+    "hours": 2,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 100,
+    "exam": 0,
+    "hasMid": false,
+    "nTasks": 4,
+    "tasks": [
+     {
+      "when": "4월 2주~3주",
+      "type": "실기",
+      "title": "원반던지기",
+      "pct": 35
+     },
+     {
+      "when": "5월 1주~3주",
+      "type": "실기",
+      "title": "얼티미트 경기",
+      "pct": 20
+     },
+     {
+      "when": "5월 1주~3주",
+      "type": "실기",
+      "title": "플라잉디스크 (정의적)",
+      "pct": 10
+     },
+     {
+      "when": "6월 4주~5주",
+      "type": "실기",
+      "title": "배드민턴 서브",
+      "pct": 35
+     }
+    ]
+   },
+   {
+    "subject": "체육1",
+    "grade": 1,
+    "semester": 1,
+    "hours": 2,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 100,
+    "exam": 0,
+    "hasMid": false,
+    "nTasks": 3,
+    "tasks": [
+     {
+      "when": "4월 2주~3주",
+      "type": "실기",
+      "title": "풋살 드리블",
+      "pct": 40
+     },
+     {
+      "when": "5월 1주~3주",
+      "type": "실기",
+      "title": "풋살 경기 참여",
+      "pct": 20
+     },
+     {
+      "when": "6월 4주~5주",
+      "type": "실기",
+      "title": "배구 패스",
+      "pct": 40
+     }
+    ]
+   },
+   {
+    "subject": "체육전공실기심화",
+    "grade": 3,
+    "semester": 1,
+    "hours": 3,
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "classes": [
+     1,
+     10
+    ],
+    "perf": 100,
+    "exam": 0,
+    "hasMid": false,
+    "nTasks": 3,
+    "tasks": [
+     {
+      "when": "4월 2주~3주",
+      "type": "실기",
+      "title": "10m 왕복달리기",
+      "pct": 35
+     },
+     {
+      "when": "5월 1주~3주",
+      "type": "실기",
+      "title": "메디신볼 던지기",
+      "pct": 30
+     },
+     {
+      "when": "6월 1주~3주",
+      "type": "실기",
+      "title": "농구 골밑슛",
+      "pct": 35
+     }
+    ]
    }
-  ]
+  ],
+  "unreadable": []
  },
  "news": {
-  "checked": "2026-10-18T13:53:48.676Z",
+  "checked": "2026-10-18T13:56:54.075Z",
   "boards": [
    {
     "name": "공지사항",
@@ -4461,7 +6934,7 @@
   ]
  },
  "programs": {
-  "checked": "2026-10-18T13:53:54.494Z",
+  "checked": "2026-10-18T13:57:00.591Z",
   "items": [
    {
     "id": "P0655",
