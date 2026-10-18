@@ -21,7 +21,7 @@
 
   /* 교과군 */
   var AREAS = [['국어', /문학|독서|화법|작문|언어|매체 의사|논술|국어|주제 탐구/], ['수학', /수학|미적분|기하|확률|대수|통계/], ['영어', /영어/], ['사회', /지리|사회|윤리|정치|법|경제(?!수학)|역사|세계사|동아시아|도시|국제|금융/], ['과학', /물리|화학|생명|지구|역학|전자기|물질|세포|과학|환경|행성|기후/], ['제2외국어', /일본|중국|프랑스|독일|스페인|한문/], ['정보·교양', /인공지능|정보|프로그래밍|데이터|심리|철학|진로|생애/], ['예체능', /음악|미술|체육|스포츠/]];
-  function areaOf(s) { if (/경제수학|수학과제/.test(s)) return '수학'; for (var i = 0; i < AREAS.length; i++) if (AREAS[i][1].test(s)) return AREAS[i][0]; return '기타'; }
+  function areaOf(s) { if (/음악|미술|체육|스포츠|운동/.test(s)) return '예체능'; if (/일본|중국|프랑스|독일|스페인|한문/.test(s)) return '제2외국어'; if (/경제수학|수학과제/.test(s)) return '수학'; for (var i = 0; i < AREAS.length; i++) if (AREAS[i][1].test(s)) return AREAS[i][0]; return '기타'; }
   function typeOf(s) { var k = Object.keys(TYPE).find(function (t) { return norm(t) === norm(s); }); return k ? TYPE[k] : ''; }
   function catalog() { var d = live(); return d && d.eval && d.eval.catalog ? d.eval.catalog.filter(function (c) { return c.grade === 2; }) : []; }
   function bySem(s) { return catalog().filter(function (c) { return (c.semester || 2) === s; }); }
