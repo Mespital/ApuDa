@@ -61,6 +61,7 @@ details{margin-top:10px;border-top:1px solid var(--line);padding-top:8px}summary
 a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:10px}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 </style>
+<link rel="stylesheet" href="/assets/apuda-ui.css?v=20261018"><script src="/assets/apuda-ui.js?v=20261018"></script>
 </head>
 <body>
 <header class="top"><div class="in"><a class="logo" href="/"><i>A</i>ApuDa</a><span class="sp"></span><a class="b" href="/library/drugs/">💊 Drug Hub</a><a class="b" href="/note/">📘 노트</a></div></header>
@@ -77,18 +78,18 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
   <section class="src"><h2>참고자료</h2><p style="margin:0 0 6px;font-size:14px;color:var(--muted)">의약품 허가정보와 공개된 요법 자료를 대조해 기본 일정·주의사항을 정리했어요. 같은 요법도 나라·병원·환자 상태에 따라 다르게 쓰일 수 있어요.</p><ul id="src"></ul></section>
   <p class="foot">ApuDa 항암 요법 가이드 v1.3 · 2026-10-05 · 용량 정보는 싣지 않았습니다.<br>[안내] 이 정보는 일반적인 건강 정보를 알기 쉽게 정리한 참고 자료이며, 의사의 진료·진단·처방을 대신하지 않습니다. 치료 일정·용량·검사·부작용 대처는 환자의 상태와 의료기관에 따라 다르므로 담당 의료진의 판단과 안내를 따르세요. ApuDa는 이 정보를 근거로 한 개별 의료 판단이나 그 결과에 대해 책임을 지지 않으며, 정보는 작성 시점 기준으로 이후 달라질 수 있습니다. 응급 상황에는 즉시 119 또는 가까운 응급실을 이용하세요.</p>
 </main>
-<script src="/assets/apuda-regimens.js"></script>
+<script src="/assets/apuda-regimens.js?v=20261018"></script>
 <script>
 (function(){
 var R=window.APUDA_RX,SL={rectal:'대장암',colon:'대장암',lung:'폐암',breast:'유방암',stomach:'위암',colorectal:'대장암',liver:'간암',pancreas:'췌장암',biliary:'담도암',thyroid:'갑상선암',prostate:'전립선암',kidney:'신장암',cervical:'자궁경부암',lymphoma:'림프종'};
 function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]})}
-function cyc(r){if(r.once)return '대개 1회 치료';if(r.opts)return r.opts.map(function(o){return o.label}).join(' / ')+' (병원 안내에 따라)';if(r.oral&&r.cycle)return r.oral.on+'일 복용 · '+r.oral.off+'일 휴약 ('+r.cycle+'일 주기)';if(!r.cycle)return '매일 또는 정해진 간격';var d=r.days||[1];return (r.cycle%7===0?(r.cycle/7)+'주':r.cycle+'일')+' 간격'+(d.length>1?' · '+d.join('·')+'일째 투여':'')}
+function cyc(r){if(r.once)return '대개 1회 치료';if(r.opts)return r.opts.map(function(o){return o.label}).join(' / ')+' (병원 안내에 따라)';if(r.oral&&r.cycle)return APUDA_RX.oralText(r);if(!r.cycle)return '매일 또는 정해진 간격';var d=r.days||[1];return (r.cycle%7===0?(r.cycle/7)+'주':r.cycle+'일')+' 간격'+(d.length>1?' · '+d.join('·')+'일째 투여':'')}
 document.getElementById('gen').innerHTML=R.GEN.map(function(g){return '<div'+(g[0]===7?' class="n"':'')+'><b>D+'+g[0]+(g[1]>30?' ~ 다음 주기':'~'+g[1])+'</b>'+esc(g[2])+'</div>'}).join('');
 var q=new URLSearchParams(location.search).get('cancer')||'',cur=SL[q]||(R.CANCERS.indexOf(R.normCancer(q))>=0?R.normCancer(q):'폐암');
 function tabs(){document.getElementById('tabs').innerHTML=R.CANCERS.map(function(c){return '<button role="tab" aria-selected="'+(c===cur)+'" class="'+(c===cur?'on':'')+'" data-c="'+c+'">'+c+'</button>'}).join('')}
 function card(r){
-  var bar='',sum='';if(r.cycle&&r.cycle<=42&&!r.opts){var dz=r.days||[1];for(var d=0;d<r.cycle;d++){var c=[];if(dz.indexOf(d+1)>=0||r.oral&&d<r.oral.on)c.push('d');if(r.nadir&&d>=r.nadir[0]&&d<=r.nadir[1])c.push('n');bar+='<i class="'+c.join(' ')+'"></i>'}
-    sum=(r.oral?r.oral.on+'일 복용 → '+r.oral.off+'일 휴약':dz.map(function(x){return x+'일째'}).join('·')+' 투여')+(r.nadir?' → '+(r.nadir[0]+1)+'~'+(r.nadir[1]+1)+'일째 면역력 낮아지기 쉬움':'')+' → '+(r.cycle+1)+'일째 다음 주기'}
+  var bar='',sum='';if(r.cycle&&r.cycle<=42&&!r.opts){var dz=r.days||[1];for(var d=0;d<r.cycle;d++){var c=[];if(r.oral?APUDA_RX.isOralDay(r,d):dz.indexOf(d+1)>=0)c.push('d');if(r.nadir&&d>=r.nadir[0]&&d<=r.nadir[1])c.push('n');bar+='<i class="'+c.join(' ')+'"></i>'}
+    sum=(r.oral?APUDA_RX.oralText(r):dz.map(function(x){return x+'일째'}).join('·')+' 투여')+(r.nadir?' → '+(r.nadir[0]+1)+'~'+(r.nadir[1]+1)+'일째 면역력 낮아지기 쉬움':'')+' → '+(r.cycle+1)+'일째 다음 주기'}
   return '<article class="rx"><span class="pill'+(r.type==='면역'?' green':r.type==='세포독성'?' red':r.type==='ADC'?' red':r.type==='호르몬'?' gray':'')+'">'+esc(r.type)+'</span><h3>'+esc(r.name)+'</h3>'+
   '<table><tr><th>투여</th><td>'+esc(r.how)+'</td></tr><tr><th>주기</th><td>'+esc(cyc(r))+'</td></tr><tr><th>백혈구 저하</th><td>'+(r.type==='호르몬'||r.once?'해당 없음 (항암제가 아니에요)':r.nadir?'대개 D+'+r.nadir[0]+'~'+r.nadir[1]+' 무렵':'뚜렷한 시기 없음 — 특정 시기가 없을 뿐, 38.0℃ 이상이면 언제든 바로 연락')+'</td></tr></table>'+
   (bar?'<div class="cyc" role="img" aria-label="'+esc(sum)+'">'+bar+'</div><p class="cycsum">'+esc(sum)+'</p><div class="lg" aria-hidden="true"><span><i style="background:#0b4fc0"></i>투여·복용(진한 칸)</span><span><i style="background:repeating-linear-gradient(45deg,#e98a80 0 2px,#fde7e4 2px 4px)"></i>면역력 낮아지기 쉬움(빗금)</span></div>':'')+
@@ -101,6 +102,7 @@ tabs();list();
 document.getElementById('src').innerHTML=R.SOURCES.map(function(x){return '<li><a href="'+esc(x[1])+'" target="_blank" rel="noopener">'+esc(x[0])+'</a></li>'}).join('');
 })();
 </script>
-<script src="/assets/apuda-bot.js" data-context="drugs" defer></script>
+<script src="/assets/apuda-bot.js?v=20261018" data-context="drugs" defer></script>
 </body>
 </html>
+

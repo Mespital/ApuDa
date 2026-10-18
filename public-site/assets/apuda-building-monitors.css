@@ -4,8 +4,9 @@
 .building-monitor-canvas{display:block;width:320px;height:180px;max-width:none}
 .building-monitor-link{position:absolute;z-index:4;display:block;border-radius:2px;cursor:pointer;background:transparent;outline-offset:3px}
 .building-monitor-link:hover,.building-monitor-link:focus-visible{outline:2px solid rgba(73,158,255,.8);box-shadow:0 0 10px rgba(73,158,255,.28)}
-.building-monitor-link::after{content:'영상 크게 보기 ↗';position:absolute;left:50%;top:-26px;transform:translateX(-50%);padding:5px 8px;background:#0b365d;color:#fff;white-space:nowrap;border-radius:6px;font-size:10px;font-weight:700;opacity:0;pointer-events:none}
+.building-monitor-link::after{content:'영상 · 책자 · FAQ ▶';position:absolute;left:50%;top:-26px;transform:translateX(-50%);padding:5px 8px;background:#0b365d;color:#fff;white-space:nowrap;border-radius:6px;font-size:10px;font-weight:700;opacity:0;pointer-events:none}
 .building-monitor-link:hover::after,.building-monitor-link:focus-visible::after{opacity:1}
 body.open .building-monitor-link{pointer-events:none;visibility:hidden}
 @media(max-width:860px){#frame,body.open #frame{width:min(100vw,620px,calc(92svh * 775 / 941));max-height:none;aspect-ratio:775/941}}
 @media(prefers-reduced-motion:reduce){.building-monitor-scene{transition:none}}
+

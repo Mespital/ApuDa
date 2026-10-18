@@ -51,8 +51,8 @@
       occluded.appendChild(plane); scene.appendChild(occluded);
       surfaces.push({ context:context, tile:index });
       var link=document.createElement('a'); link.className='building-monitor-link';
-      link.target='_blank'; link.rel='noopener noreferrer'; link.dataset.monitorFloor=String(screen.floor);
-      link.addEventListener('click',function(event){event.stopPropagation();});
+      link.setAttribute('aria-haspopup','dialog'); link.dataset.monitorFloor=String(screen.floor);
+      link.addEventListener('click',function(event){event.stopPropagation();if(!event.ctrlKey&&!event.metaKey&&!event.shiftKey&&!event.altKey&&global.ApuDaVideoDialog){event.preventDefault();global.ApuDaVideoDialog.open(link.dataset.cancer);}});
       frame.appendChild(link); links.push({ element:link, screen:screen, tile:index, slug:null });
     });
     frame.appendChild(video); frame.appendChild(scene);
@@ -64,9 +64,9 @@
         item.slug=slug;
         var list=global.ApuDaCancerVideos ? global.ApuDaCancerVideos.items(slug) : [];
         if (!list.length) return;
-        item.element.href='https://youtu.be/'+list[0].id;
-        item.element.setAttribute('aria-label',item.screen.floor+'층 모니터 · '+list[0].name+' 영상 크게 보기 · YouTube 새 창');
-        item.element.setAttribute('title',list[0].name+' 영상 크게 보기 ↗');
+        item.element.href='/watch/?cancer='+slug;
+        item.element.setAttribute('aria-label',item.screen.floor+'층 모니터 · '+list[0].name+' 영상과 자료 팝업 열기');
+        item.element.setAttribute('title',list[0].name+' 영상과 자료 보기 ▶');
         item.element.dataset.cancer=slug;
       });
     }
@@ -85,7 +85,7 @@
     }
     syncViewport(); updateTopics();
     mobile.addEventListener('change',syncViewport); global.addEventListener('resize',syncViewport);
-    function allowed() { return !suspended && !reduced && !lowData && !document.hidden; }
+    function allowed() { return !suspended && !reduced && !lowData && !document.hidden && !(global.ApuDaPreferences&&global.ApuDaPreferences.isQuiet()); }
     function cancelFrame() {
       if (callback===null) return;
       if (useVideoCallback) video.cancelVideoFrameCallback(callback); else global.cancelAnimationFrame(callback);
@@ -140,3 +140,4 @@
   }
   global.ApuDaBuildingMonitors=Object.freeze({mount:mount});
 })(window);
+

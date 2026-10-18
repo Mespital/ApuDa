@@ -21,7 +21,7 @@
     var motion = matchMedia('(prefers-reduced-motion: reduce)');
     var mobile = matchMedia('(max-width:860px)');
     var lowData = !!(navigator.connection && navigator.connection.saveData);
-    var reduced = motion.matches;
+    var reduced = motion.matches, userPaused=!!(global.ApuDaPreferences&&global.ApuDaPreferences.isQuiet()), videoOverlay=false;
     var started = false, complete = false, suspended = false, playPending = false;
     var generation = 0, animations = [], shades = [], ceiling = [], monitors = null;
     frame.classList.toggle('life-reduced', reduced);
@@ -87,11 +87,12 @@
       nightPhoto.setAttribute('href', mobile.matches ? '/assets/image/building-mobile-home-v2.png' : '/assets/image/building-master.png');
     }
     syncViewport(); mobile.addEventListener('change', syncViewport);
+    if(global.ApuDaBuildingMonitors)monitors=global.ApuDaBuildingMonitors.mount({frame:frame});
     frame.dataset.buildingLightPhase = reduced ? 'ready' : 'dark';
     frame.dataset.buildingLife = 'still';
 
     function play() {
-      if (!complete || suspended || reduced || lowData || document.hidden || playPending) return;
+      if (!complete || suspended || reduced || userPaused || videoOverlay || lowData || document.hidden || playPending) return;
       if (!monitors && global.ApuDaBuildingMonitors) monitors = global.ApuDaBuildingMonitors.mount({ frame: frame });
       if (monitors) monitors.resume();
       var token = ++generation;
@@ -102,7 +103,7 @@
       Promise.resolve(promise).then(function () {
         if (token !== generation) return;
         playPending = false;
-        if (suspended || reduced || document.hidden) { video.pause(); return; }
+        if (suspended || reduced || userPaused || videoOverlay || document.hidden) { video.pause(); return; }
         frame.classList.remove('life-paused');
         frame.classList.add('life-playing'); frame.dataset.buildingLife = 'playing';
       }).catch(function () {
@@ -127,7 +128,7 @@
     function start() {
       if (started || suspended) return;
       started = true;
-      if (reduced || !shades[0].animate) { finish(); return; }
+      if (reduced || userPaused || !shades[0].animate) { finish(); return; }
       frame.dataset.buildingLightPhase = 'warming';
       var sequence = shades.map(function (shade, index) {
         var delay = 180 + index * 550;
@@ -140,10 +141,10 @@
       Promise.allSettled(sequence).then(function () { if (!complete && !suspended) finish(); });
     }
     function suspend() { suspended = true; started = true; finish(false); pause(); }
-    function resume() { suspended = false; syncViewport(); if (!document.hidden) frame.classList.remove('life-paused'); if (!started) start(); else play(); }
+    function resume() { suspended = false; syncViewport(); if (!document.hidden && !userPaused && !videoOverlay) frame.classList.remove('life-paused'); if (!started) start(); else play(); }
     document.addEventListener('visibilitychange', function () {
       if (document.hidden) { animations.forEach(function (animation) { animation.pause(); }); pause(); }
-      else { if (!suspended) { frame.classList.remove('life-paused'); animations.forEach(function (animation) { if (animation.playState === 'paused') animation.play(); }); } play(); }
+      else { if (!suspended && !userPaused && !videoOverlay) { frame.classList.remove('life-paused'); animations.forEach(function (animation) { if (animation.playState === 'paused') animation.play(); }); } play(); }
     });
     motion.addEventListener('change', function (event) {
       reduced = event.matches;
@@ -155,11 +156,16 @@
       frame.classList.remove('life-playing'); frame.dataset.buildingLife = 'still';
       if (!suspended && !reduced && !document.hidden) frame.classList.remove('life-paused');
     });
-    if (reduced) finish(false);
+    if(global.addEventListener){
+      global.addEventListener('apuda:video-state',function(e){videoOverlay=!!(e.detail&&e.detail.open);if(videoOverlay)pause();else play();});
+      global.addEventListener('apuda:preferences-change',function(e){userPaused=!!(e.detail&&e.detail.quiet);if(userPaused){finish(false);pause();}else play();});
+    }
+    if (reduced || userPaused) finish(false);
     return Object.freeze({ start: start, suspend: suspend, resume: resume });
   }
   global.ApuDaBuildingLife = Object.freeze({ mount: mount });
 })(window);
+
 
 
 

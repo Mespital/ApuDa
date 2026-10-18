@@ -3,8 +3,8 @@ const vm = require('vm');
 const assert = require('assert');
 const source = fs.readFileSync(require('path').resolve(__dirname,'../../public-site/assets/apuda-building-life.js'), 'utf8');
 const settle = () => new Promise(resolve => setImmediate(resolve));
-function setup({ reduced = false, saveData = false, mobile = false, deferredPlay = false } = {}) {
-  const allAnimations = [], plays = [], listeners = {}, queries = {};
+function setup({ reduced = false, saveData = false, mobile = false, deferredPlay = false, userQuiet = false } = {}) {
+  const allAnimations = [], plays = [], listeners = {}, queries = {}, events = {};
   class Element {
     constructor(tag) {
       this.tag = tag; this.children = []; this.attrs = {}; this.style = {}; this.dataset = {};
@@ -41,13 +41,13 @@ function setup({ reduced = false, saveData = false, mobile = false, deferredPlay
   }
   const frame = new Element('frame');
   const document = { hidden: false, createElement: tag => new Element(tag), createElementNS: (_, tag) => new Element(tag), addEventListener: (type, callback) => { listeners[type] = callback; } };
-  const context = { window: {}, document, navigator: { connection: { saveData } }, Promise,
+  const context = { window: {addEventListener(type,callback){events[type]=callback;},ApuDaPreferences:{isQuiet(){return userQuiet;}}}, document, navigator: { connection: { saveData } }, Promise,
     matchMedia(query) { return queries[query] = { matches: query.includes('reduced-motion') ? reduced : mobile, addEventListener(_, callback) { this.change = callback; } }; } };
   vm.runInNewContext(source, context);
   const life = context.window.ApuDaBuildingLife.mount({ frame });
   const video = frame.children.find(x => x.tag === 'video');
   const scene = frame.children.find(x => x.tag === 'svg');
-  return { frame, life, video, scene, allAnimations, plays, document, listeners, queries,
+  return { frame, life, video, scene, allAnimations, plays, document, listeners, queries, events,
     async lightUp() { life.start(); allAnimations.forEach(x => x.resolve()); await settle(); await settle(); } };
 }
 (async () => {
@@ -71,6 +71,13 @@ function setup({ reduced = false, saveData = false, mobile = false, deferredPlay
   assert.equal(normal.frame.classList.contains('life-paused'), true, 'Returning to an open detail window must keep the building motion paused');
   assert.equal(normal.video.paused, true);
   normal.life.resume(); await settle(); assert.equal(normal.frame.dataset.buildingLife, 'playing');
+  normal.events['apuda:video-state']({detail:{open:true}});assert.equal(normal.video.paused,true);
+  normal.life.suspend();normal.events['apuda:video-state']({detail:{open:false}});await settle();assert.equal(normal.video.paused,true,'Closing a video must preserve an open floor');
+  normal.life.resume();await settle();assert.equal(normal.video.paused,false);
+  normal.events['apuda:preferences-change']({detail:{quiet:true}});assert.equal(normal.video.paused,true);
+  normal.events['apuda:video-state']({detail:{open:true}});normal.events['apuda:video-state']({detail:{open:false}});await settle();assert.equal(normal.video.paused,true,'Closing a video must preserve the motion preference');
+  normal.events['apuda:preferences-change']({detail:{quiet:false}});await settle();assert.equal(normal.video.paused,false);
+  const preference=setup({userQuiet:true});preference.life.start();await settle();assert.equal(preference.video.src,undefined);assert.equal(preference.allAnimations.length,0);
   const quiet = setup({ reduced: true }); quiet.life.start(); await settle();
   assert.equal(quiet.frame.dataset.buildingLightPhase, 'ready'); assert.equal(quiet.allAnimations.length, 0); assert.equal(quiet.video.src, undefined);
   const saver = setup({ saveData: true }); await saver.lightUp();

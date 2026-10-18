@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ApuDa Check | 맞춤 건강검진 선택</title>
-  <meta name="description" content="개인의 병력, 복약, 과거 검사, 현재 증상을 반영하는 ApuDa AI 건강검진 추천 시스템" />
+  <meta name="description" content="개인의 병력, 복약, 과거 검사, 현재 증상을 반영하는 ApuDa 건강검진 상담 준비 도구" />
   <style>
     :root{
       --blue:#1559b7; --blue2:#0e3f83; --green:#1f9d69; --bg:#f3f7fb; --card:#fff;
@@ -193,6 +193,7 @@
       .btn:hover{transform:none}
     }
   </style>
+<link rel="stylesheet" href="/assets/apuda-ui.css?v=20261018"><script src="/assets/apuda-ui.js?v=20261018"></script>
 </head>
 <body>
 <div class="app">
@@ -857,7 +858,7 @@ function openPrintReport(){
   <div class="preview-toolbar no-print"><button type="button" onclick="fitOnePage();setTimeout(()=>window.print(),80)">PDF 저장 / 인쇄</button><span id="fitStatus">A4 1페이지 자동 맞춤 중</span></div>
   <div class="sheet"><div class="print-area" id="printArea"><div class="report" id="report">
   <div class="brand"><div class="brand-left"><div class="logo">A</div><div><h1>ApuDa 아프지만, 다행이다 건강정보</h1><p>맞춤형 건강검진 제안 리포트 · 개인 병력, 복약, 검사 이력, 현재 증상을 종합 반영</p></div></div><div class="meta-top">작성일 ${new Date().toLocaleDateString('ko-KR')}<br>개인식별정보 미저장 · 출생 연·월 ${state.profile.birthMonth||'미확인'}</div></div>
-  <div class="lead"><h2>AI 건강검진 추천 결과</h2><p>모든 항목을 A4 한 페이지에 자동 축소하여 배치합니다. 최종 검사 선택과 약물 조정은 반드시 담당 의료진과 확인하세요.</p></div>
+  <div class="lead"><h2>건강검진 상담 준비안</h2><p>모든 항목을 A4 한 페이지에 자동 축소하여 배치합니다. 최종 검사 선택과 약물 조정은 반드시 담당 의료진과 확인하세요.</p></div>
   <div class="metrics"><div class="metric"><span>만 나이</span><b>${age()??'-'}</b></div><div class="metric"><span>BMI</span><b>${state.profile.bmi||'-'}</b></div><div class="metric"><span>추적 대상</span><b>${rec.follow.length}</b></div><div class="metric"><span>예상 추가비용</span><b style="font-size:10px">${cost?cost.toLocaleString()+'원':'미입력'}</b></div></div>
   <div class="section"><h3>기본 요약</h3><ul><li>성별/연령: ${state.profile.sex==='male'?'남성':state.profile.sex==='female'?'여성':'미입력'} / 만 ${age()??'-'}세</li><li>혈압: ${state.profile.bpSys||'-'}/${state.profile.bpDia||'-'} mmHg</li><li>흡연력: ${esc(state.lifestyle.smoking||'미입력')} / ${state.lifestyle.packYears||0} 갑년</li><li>알레르기: ${esc(state.allergies.map(x=>`${x.type||''}-${x.item||''}`).join(', ')||'없음/미입력')}</li></ul></div>
   <div class="cards">${printSectionHtml('① 우선 권장·진료 필요',rec.must,'high')}${printSectionHtml('② 추적검사 필요',rec.follow,'follow')}${printSectionHtml('③ 현재 필요성이 낮거나 선별 사용',rec.low,'low')}${printSectionHtml('④ 검사 전 주의사항',rec.caution,'caution')}</div>

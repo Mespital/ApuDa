@@ -400,6 +400,8 @@ input:focus,textarea:focus,select:focus{border-color:var(--ink);box-shadow:0 0 0
 .chemobar:not(.fever) b{color:var(--blue2);font-family:var(--serif)}
 @media(prefers-reduced-motion:reduce){.stamp.press{animation:none}}
 </style>
+<link rel="stylesheet" href="/assets/apuda-ui.css?v=20261018"><script src="/assets/apuda-ui.js?v=20261018"></script>
+<style>.temp-history{margin-top:8px;font-size:14px}.temp-history summary{min-height:44px;cursor:pointer;padding:10px 0}.temp-history li{margin:5px 0}.labtbl td{white-space:normal;overflow-wrap:anywhere}.labform select{width:100%;min-width:0}</style>
 </head>
 <body>
 <div class="app">
@@ -473,8 +475,8 @@ input:focus,textarea:focus,select:focus{border-color:var(--ink);box-shadow:0 0 0
     <div class="range"><input type="range" min="0" max="10" step="1" id="distress"><output id="distressOut">0</output><button class="btn soft sm" onclick="saveDistress()">기록</button></div>
     <div id="distressAdvice" class="small" style="margin-top:6px"></div></div>
   <div class="card"><div class="row between"><h3>🩸 혈액검사 수치</h3><span class="small muted">결과지 보고 적어 두기</span></div><div id="labList"></div>
-    <form class="labform" onsubmit="addLab(event)"><input type="date" name="date" class="wide" required><input name="wbc" inputmode="decimal" placeholder="백혈구"><input name="anc" inputmode="decimal" placeholder="호중구"><input name="hb" inputmode="decimal" placeholder="혈색소"><input name="plt" inputmode="decimal" placeholder="혈소판"><input name="note" class="wide" placeholder="메모(예: 수치 낮대)"><button class="btn primary sm wide">추가</button></form>
-    <p class="small muted" style="margin:8px 0 0">💬 오늘 탭에서 "호중구 800, 혈소판 9만"처럼 써도 돼요. 수치의 의미는 담당 의료진이 판단합니다.</p></div>
+    <form class="labform" onsubmit="addLab(event)"><input type="date" name="date" class="wide" required><label class="wide">백혈구·호중구·혈소판 단위<select name="countUnit" aria-label="혈액검사 수치 단위"><option value="unknown">단위 모름 · 숫자 그대로 보관</option><option value="/µL">/µL (개/µL)</option><option value="thousand">×10³/µL (천/µL)</option></select></label><input name="wbc" inputmode="decimal" placeholder="백혈구" aria-label="백혈구 수치"><input name="anc" inputmode="decimal" placeholder="호중구"><input name="hb" inputmode="decimal" placeholder="혈색소 (g/dL)" aria-label="혈색소 g/dL"><input name="plt" inputmode="decimal" placeholder="혈소판"><input name="note" class="wide" placeholder="메모(예: 수치 낮대)"><button class="btn primary sm wide">추가</button></form>
+    <p class="small muted" style="margin:8px 0 0">💬 오늘 탭에서 "호중구 800 /µL, 혈소판 9만 /µL"처럼 써도 돼요. 수치의 의미는 담당 의료진이 판단합니다.</p></div>
   <div class="card"><div class="row between"><h3>날짜별 기록</h3><button class="btn soft sm" onclick="tab('today');prefill('체온 ')">+ 기록</button></div><div id="logList"></div></div>
 </section>
 
@@ -571,16 +573,18 @@ input:focus,textarea:focus,select:focus{border-color:var(--ink);box-shadow:0 0 0
     <b>하는 일</b><ul><li>몸 상태·일정·약·질문을 기록하고 진료요약으로 정리해요.</li><li>기록한 값과 입력한 날짜를 바탕으로 일반적인 참고 안내(연락 기준, 참고용 예상일)를 보여 줘요.</li></ul>
     <b>하지 않는 일</b><ul><li>질병을 진단·치료·예측하거나 약 용량·치료 일정을 정하지 않아요.</li><li>응급 상황을 판단하거나 의료진의 연락을 대신하지 않아요. 걱정되면 수치와 상관없이 의료진에게 연락하세요.</li><li>기록을 아프다 서버로 보내지 않아요(이 기기 안에만 저장, 구글 드라이브 백업은 직접 연결했을 때만).</li></ul>
     <p class="nshort" style="margin-top:6px">[안내] 이 노트의 모든 정보는 일반적인 건강 정보를 알기 쉽게 정리한 참고 자료이며, 의사의 진료·진단·처방을 대신하지 않습니다. 치료 일정·용량·검사·부작용 대처는 환자의 상태와 의료기관에 따라 다르므로 담당 의료진의 판단과 안내를 따르세요. ApuDa는 이 정보를 근거로 한 개별 의료 판단이나 그 결과에 대해 책임을 지지 않습니다. 응급 상황에는 즉시 119 또는 가까운 응급실을 이용하세요.</p></div>
-  <p class="note-foot">ApuDa 암환자 노트 v4.1 · <a href="/">ApuDa 홈</a></p>
+  <p class="note-foot">ApuDa 암환자 노트 v4.2 · <a href="/">ApuDa 홈</a></p>
 </div></div>
 
 <div class="toast" id="toast"></div>
 
-<script src="/assets/apuda-regimens.js"></script>
+<script src="/assets/apuda-regimens.js?v=20261018"></script>
 <script src="note-kb.js"></script>
-<script src="note-app.js"></script>
+<script src="note-safety.js?v=20261018"></script>
+<script src="note-app.js?v=20261018"></script>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <script src="apuda-backup.js" defer></script>
-<script src="/assets/apuda-bot.js" data-context="note" data-launcher="none" defer></script>
+<script src="/assets/apuda-bot.js?v=20261018" data-context="note" data-launcher="none" defer></script>
 </body>
 </html>
+

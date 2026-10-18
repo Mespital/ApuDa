@@ -53,7 +53,7 @@
     }
     function open(settings) {
       lastSettings = settings;
-      var token = begin(), quiet = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var token = begin(), quiet = matchMedia('(prefers-reduced-motion: reduce)').matches || !!(global.ApuDaPreferences && global.ApuDaPreferences.isQuiet());
       var mobile = matchMedia('(max-width:860px)').matches;
       var pose = readPose(settings.room);
       var revealAt = quiet ? 0 : (settings.first ? .58 : .4);
@@ -86,7 +86,7 @@
       if (quiet) timeline.progress(1);
     }
     function close(settings) {
-      var token = begin(), quiet = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var token = begin(), quiet = matchMedia('(prefers-reduced-motion: reduce)').matches || !!(global.ApuDaPreferences && global.ApuDaPreferences.isQuiet());
       document.body.classList.remove('floor-entering'); frame.dataset.floorTransition = 'leaving';
       panel.inert = true; panel.setAttribute('aria-hidden', 'true'); panel.classList.remove('live');
       timeline = gsap.timeline({ onComplete: guard(token, function () {
@@ -114,3 +114,4 @@
   }
   global.ApuDaFloorTransition = Object.freeze({ mount: mount, projectFloors: projectFloors, cameraPose: cameraPose });
 })(window);
+

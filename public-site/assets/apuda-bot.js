@@ -83,7 +83,13 @@ loadOnc();
 /* ── 응답 만들기 ── */
 function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]})}
 function norm(s){return String(s||'').toLowerCase().replace(/\s+/g,'')}
-function link(url,label,primary){var ext=/^https?:/.test(url)&&url.indexOf(location.origin)!==0&&!(BASE&&url.indexOf(BASE)===0);return '<a class="'+(primary?'go p':'go')+'" href="'+esc(/^\//.test(url)?A(url):url)+'"'+(ext?' target="_blank" rel="noopener"':'')+'>'+esc(label)+(ext?' ↗':' →')+'</a>'}
+function noteHandoff(text,label,primary){return '<button type="button" class="'+(primary?'go p':'go')+'" data-note-handoff="'+esc(text)+'">'+esc(label)+' →</button>'}
+function link(url,label,primary){if(url.indexOf('/note/?say=')===0){var text='';try{text=decodeURIComponent(url.slice('/note/?say='.length));}catch(ignore){}return noteHandoff(text,label,primary);}var ext=/^https?:/.test(url)&&url.indexOf(location.origin)!==0&&!(BASE&&url.indexOf(BASE)===0);return '<a class="'+(primary?'go p':'go')+'" href="'+esc(/^\//.test(url)?A(url):url)+'"'+(ext?' target="_blank" rel="noopener"':'')+'>'+esc(label)+(ext?' ↗':' →')+'</a>'}
+function handoff(text){var destination=new URL(A('/note/?tab=today'),location.href);if(destination.origin===location.origin){try{sessionStorage.setItem('apuda_note_handoff_v1',JSON.stringify({text:String(text),at:Date.now()}));location.assign(destination.href);return;}catch(ignore){}}
+  var copied=function(){destination.searchParams.set('paste','1');location.assign(destination.href);};
+  var manual=function(){var box=add('bt','내용을 길게 눌러 복사한 뒤 노트 입력창에 붙여넣어 주세요.');var area=document.createElement('textarea');area.readOnly=true;area.value=String(text);area.setAttribute('aria-label','노트로 옮길 내용');area.style.cssText='display:block;width:100%;min-height:88px;margin:10px 0';box.appendChild(area);area.focus();area.select();var a=document.createElement('a');a.className='go p';a.href=destination.href+'\u0026paste=1';a.textContent='노트 열기 →';box.appendChild(a);};
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(String(text)).then(copied,manual);else manual();
+}
 function siteCard(s){return '<div class="site"><div class="si">'+s.ico+'</div><div class="sb"><b>'+(s.fl?'<em>'+s.fl+'</em> ':'')+esc(s.name)+'</b><small>'+esc(s.desc)+'</small></div>'+link(s.url,'열기')+'</div>'}
 function q(label,text){return '<button class="qb" data-say="'+esc(text||label)+'">'+esc(label)+'</button>'}
 function cancerCard(c){var s=c[0],n=c[1];return '<b>'+n+'</b> 관련해서 이렇게 볼 수 있어요.<div class="links">'+
@@ -181,7 +187,7 @@ function reply(raw){
   if(scored.length)return [{h:'이곳으로 안내해 드릴게요.'+scored.map(function(x){return siteCard(x[1])}).join('')}];
   /* 증상 상담 → 노트봇 지식 */
   if(/아파|아픔|메스|구역|설사|변비|입안|저려|저림|피곤|피로|탈모|머리카락|먹어야|운동|우울|불안|잠|열이/.test(t))
-    return [{h:'증상별 대처 안내는 <b>암환자 노트의 노트봇</b>이 자세히 알려드려요. 아래를 누르면 그대로 물어볼게요.<div class="links">'+link('/note/?say='+encodeURIComponent(t),'📘 노트봇에게 묻기',true)+'</div><p class="sm">심하거나 갑자기 나빠지면 치료병원에 바로 연락하세요.</p>'}];
+    return [{h:'증상별 대처 안내는 <b>암환자 노트의 노트봇</b>이 자세히 알려드려요. 아래를 누르면 내용을 확인한 뒤 노트에서 물어볼 수 있어요.<div class="links">'+link('/note/?say='+encodeURIComponent(t),'📘 노트봇에게 묻기',true)+'</div><p class="sm">심하거나 갑자기 나빠지면 치료병원에 바로 연락하세요.</p>'}];
   return [{h:'제가 잘 이해하지 못했어요. 이렇게 물어보세요.<ul><li>"폐암 정보" · "펨브롤리주맙" · "HER2"</li><li>"치료비 지원" · "카페" · "건강검진"</li><li>"열 37.8" (노트에 기록)</li></ul><div class="qr">'+q('🏢 전체 메뉴','전체 메뉴')+q('💡 ApuDa 소개','ApuDa 소개')+'</div>'}];
 }
 
@@ -211,7 +217,7 @@ root.innerHTML='<style>'+CSS+'</style>'+
  (DS.launcher==='none'?'':'<button class="fab'+(left?' left':'')+'" aria-label="ApuDa 길잡이 열기"><span>🧭</span><b>'+(CTX==='home'?'무엇을 도와드릴까요?':'길잡이')+'</b></button>')+
  '<section class="pn'+(left?' left':'')+'" role="dialog" aria-label="ApuDa 길잡이"><div class="hd"><i>A</i><div><b>'+esc(C.t)+'</b><small>ApuDa.app · 어디든 안내해 드려요</small></div><button class="m" data-say="전체 메뉴">전체 메뉴</button><button class="x" aria-label="닫기">✕</button></div>'+
  '<div class="th" aria-live="polite"></div><div class="ch">'+C.chips.map(function(c){return '<button data-say="'+esc(c[1])+'">'+esc(c[0])+'</button>'}).join('')+'</div>'+
- '<form><input placeholder="예) 폐암 정보 · 펨브롤리주맙 · 치료비 지원" aria-label="길잡이에게 묻기" enterkeyhint="send"><button aria-label="보내기">↑</button></form><div class="ft">참고용 일반 정보예요 · 진료·진단·처방을 대신하지 않아요 · 입력 내용은 저장·전송되지 않아요 · 응급 시 119</div></section>';
+ '<form><input placeholder="예) 폐암 정보 · 펨브롤리주맙 · 치료비 지원" aria-label="길잡이에게 묻기" enterkeyhint="send"><button aria-label="보내기">↑</button></form><div class="ft">참고용 일반 정보예요 · 진료·진단·처방을 대신하지 않아요 · 입력은 이 기기에서 처리해요 · 노트 이동 시 확인 후 기록해요 · 응급 시 119</div></section>';
 var pn=root.querySelector('.pn'),th=root.querySelector('.th'),inp=root.querySelector('input'),started=false;
 function add(cls,h){var d=document.createElement('div');d.className='mg '+cls;d.innerHTML=h;th.appendChild(d);th.scrollTop=th.scrollHeight;return d}
 function say(text,silentUser){if(!silentUser)add('me',esc(text));var go=function(){reply(text).forEach(function(r){add('bt'+(r.c?' '+r.c:''),r.h)})};if(!ONC&&/[a-z가-힣]/i.test(text))loadOnc().then(go);else go()}
@@ -221,6 +227,7 @@ var fab=root.querySelector('.fab');if(fab)fab.onclick=function(){pn.classList.co
 root.querySelector('.x').onclick=close;
 root.querySelector('form').onsubmit=function(e){e.preventDefault();var v=inp.value.trim();if(!v)return;inp.value='';say(v)};
 root.addEventListener('click',function(e){var b=e.target.closest('[data-say]');if(b){e.preventDefault();say(b.dataset.say);return}
+  var transfer=e.target.closest('[data-note-handoff]');if(transfer){e.preventDefault();handoff(transfer.dataset.noteHandoff);return}
   var nb=e.target.closest('[data-note]');if(nb&&window.sendText){window.sendText(nb.dataset.note);close();return}
   var cb=e.target.closest('[data-click]');if(cb){var el=document.querySelector(cb.dataset.click);if(el){close();el.click()}return}
   if(e.target.closest('a.go,a.qb')&&!/target/.test(e.target.closest('a').outerHTML))setTimeout(close,50)});
@@ -229,3 +236,4 @@ function mount(){document.body.appendChild(host)}
 if(document.body)mount();else document.addEventListener('DOMContentLoaded',mount);
 window.ApudaBot={open:open,close:close,ask:function(t){open(t)},context:CTX};
 })();
+

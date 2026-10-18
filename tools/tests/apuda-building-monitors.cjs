@@ -32,11 +32,11 @@ function setup({quiet=false,lowData=false,deferred=false,fallback=false}={}){
   const s=setup();assert.equal(s.video.src,undefined);assert.equal(s.links.length,5);
   assert.equal(s.flat().filter(e=>e.tag==='canvas').length,5);
   assert.equal(s.frame.children.filter(e=>e.tag==='video').length,1,'One decoder supplies five screens');
-  assert.equal(s.links[0].href,'https://youtu.be/CLpKUrsdqwE');
+  assert.equal(s.links[0].href,'/watch/?cancer=breast');
   s.api.resume();await settle();assert.equal(s.callbacks.size,1);s.tick(100);
   assert.equal(s.draws.length,5);assert.deepEqual(s.draws.map(a=>a[1]),[0,320,640,960,1280]);
   assert.equal(s.frame.dataset.monitorFrames,'1');assert(s.frame.classList.contains('monitor-playing'));
-  s.video.currentTime=2.2;s.tick(200);assert.equal(s.links[0].href,'https://youtu.be/RkS8stwpToo');
+  s.video.currentTime=2.2;s.tick(200);assert.equal(s.links[0].href,'/watch/?cancer=lung');
   assert(s.links[0].attrs['aria-label'].includes('폐암'));
   const oldCallback=[...s.callbacks.values()][0];s.api.suspend();assert.equal(s.callbacks.size,0);assert.equal(s.video.paused,true);
   s.api.resume();await settle();const currentCallback=[...s.callbacks.values()][0];oldCallback(300);

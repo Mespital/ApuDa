@@ -6,7 +6,7 @@
 <title>암 치료비 지원 찾기 · 계산기 | ApuDa</title>
 <meta name="description" content="질문 몇 개에 답하면 산정특례·본인부담상한제·재난적 의료비·암환자 의료비 지원·긴급복지 중 받을 수 있는 지원과 대략적인 금액을 계산해 드려요. 가입 없이, 입력값은 저장되지 않습니다.">
 <meta property="og:title" content="암 치료비, 받을 수 있는 지원부터 | ApuDa">
-<meta property="og:description" content="3분 질문으로 받을 수 있는 지원과 대략 금액을 확인하세요.">
+<meta property="og:description" content="3분 질문으로 확인할 지원 제도와 참고 금액을 확인하세요.">
 <style>
 :root{--navy:#0b2746;--blue:#0b5fa5;--blue2:#246bfe;--gold:#f5b301;--line:#dce8f5;--muted:#5f7387;--bg:#f4f8fd;--ok:#127a4a;--okbg:#e8f7ef;--warn:#8a5b00;--warnbg:#fff6dc;--no:#7b8794;--nobg:#f1f4f7;--red:#b42318}
 *{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -89,6 +89,7 @@ a:focus-visible,.res>button:focus-visible,.skip:focus-visible{outline:3px solid 
 @media(max-width:560px){.res>button{flex-direction:column;gap:8px}.res>button .badge{margin-top:0}.res .body dl{grid-template-columns:64px 1fr}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.toast{transition:none}}
 </style>
+<link rel="stylesheet" href="/assets/apuda-ui.css?v=20261018"><script src="/assets/apuda-ui.js?v=20261018"></script>
 </head>
 <body>
 <header class="top"><a class="brand" href="/">ApuDa</a>
@@ -97,7 +98,7 @@ a:focus-visible,.res>button:focus-visible,.skip:focus-visible{outline:3px solid 
 <section class="hero">
   <div class="k">ApuDa 3F · 암 치료비 지원</div>
   <h1>암 치료비,<br>받을 수 있는 지원부터 확인해요</h1>
-  <p>질문 9개에 답하면 받을 수 있는 지원과 대략 금액, 어디에 전화하면 되는지 알려드려요. 모르는 건 건너뛰어도 돼요.</p>
+  <p>질문 9개에 답하면 확인할 지원 제도와 참고 금액, 어디에 전화하면 되는지 알려드려요. 모르는 건 건너뛰어도 돼요.</p>
   <div class="pills"><span>약 3분</span><span>가입 없음</span><span>입력값은 저장·전송 안 됨</span></div>
 </section>
 
@@ -145,7 +146,7 @@ a:focus-visible,.res>button:focus-visible,.skip:focus-visible{outline:3px solid 
   <div class="card" id="result" tabindex="-1" hidden>
     <h2 style="margin:0 0 4px;font-size:22px">받을 수 있는 지원</h2>
     <p style="margin:0 0 12px;color:var(--muted);font-size:14.5px" id="resLead"></p>
-    <div class="sum"><div><b id="sumOk">0개</b><span>받을 가능성이 높아요</span></div><div><b id="sumChk">0개</b><span>확인해 볼 만해요</span></div></div>
+    <div class="sum"><div><b id="sumOk">0개</b><span>우선 상담해 보세요</span></div><div><b id="sumChk">0개</b><span>확인해 볼 만해요</span></div></div>
     <div id="resList"></div>
     <div class="note"><b>금액을 그냥 더하지 마세요.</b> 재난적 의료비·암환자 의료비 지원·본인부담상한제·실손보험은 서로 빼고 계산하거나 중복이 안 될 수 있어요. 실제 금액은 영수증과 조사 후 기관이 정해요.</div>
     <h3 style="margin:20px 0 6px;font-size:18px">오늘 할 일</h3>
@@ -401,7 +402,7 @@ a:focus-visible,.res>button:focus-visible,.skip:focus-visible{outline:3px solid 
     var ok=list.filter(function(x){return x.st==='ok'}).length,chk=list.filter(function(x){return x.st==='warn'}).length;
     $('#sumOk').textContent=ok+'개';$('#sumChk').textContent=chk+'개';
     $('#resLead').textContent='답한 내용으로 대략 판단했어요. 카드를 누르면 신청처와 준비물이 나와요.';
-    var B={ok:['b-ok','가능성 높음'],warn:['b-warn','확인해 보세요'],no:['b-no','해당 어려움']};
+    var B={ok:['b-ok','상담 권장'],warn:['b-warn','확인해 보세요'],no:['b-no','해당 어려움']};
     $('#resList').innerHTML=list.map(function(x,i){var b=B[x.st];
       return '<article class="res'+(x.st==='no'?' no':'')+(i<2&&x.st!=='no'?' on':'')+'"><button type="button" aria-expanded="'+(i<2&&x.st!=='no')+'"><span class="badge '+b[0]+'">'+b[1]+'</span><span><h4>'+x.title+'</h4>'+(x.amt?'<div class="amt">'+x.amt+'</div>':'')+'<div class="why">'+x.why+'</div></span></button>'+
       '<div class="body"><dl><dt>무엇</dt><dd>'+x.body.what+'</dd><dt>어디서</dt><dd>'+x.body.where+'</dd><dt>준비물</dt><dd>'+x.body.need+'</dd></dl>'+
@@ -421,7 +422,7 @@ a:focus-visible,.res>button:focus-visible,.skip:focus-visible{outline:3px solid 
   $('#go').onclick=render;
   $('#restart').onclick=function(){location.hash='';location.reload()};
   $('#copy').onclick=function(){
-    var L={ok:'가능성 높음',warn:'확인 필요',no:'해당 어려움'};
+    var L={ok:'상담 권장',warn:'확인 필요',no:'해당 어려움'};
     var t='[ApuDa 암 치료비 지원 확인 결과]\n'+last.filter(function(x){return x.st!=='no'}).map(function(x){return '· '+x.title+' — '+L[x.st]+(x.amt?' / '+x.amt:'')+'\n  '+x.why+'\n  신청: '+x.body.where.replace(/<[^>]+>/g,'')}).join('\n')+
       '\n\n※ 대략적인 판단이에요. 실제 지원은 기관 심사로 정해져요.\napuda.app/support/';
     (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){toast('복사했어요. 카톡·메모에 붙여 넣으세요')},function(){prompt('아래 내용을 복사하세요',t)});
@@ -440,6 +441,7 @@ a:focus-visible,.res>button:focus-visible,.skip:focus-visible{outline:3px solid 
   calc();renderOrgs();
 })();
 </script>
-<script src="/assets/apuda-bot.js" defer></script>
+<script src="/assets/apuda-bot.js?v=20261018" defer></script>
 </body>
 </html>
+

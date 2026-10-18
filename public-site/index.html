@@ -626,12 +626,14 @@
     .p-floors button{flex:1;min-width:0;max-width:60px}
   }
 </style>
-<meta name="apuda-release" content="building-original-people-20261015">
+<meta name="apuda-release" content="patient-video-upgrade-20261018">
 <link rel="stylesheet" href="/assets/apuda-cancer-videos.css">
 <link rel="stylesheet" href="/assets/apuda-home-polish.css">
-<link rel="stylesheet" href="/assets/apuda-building-life.css?v=20261015-original-people-1">
+<link rel="stylesheet" href="/assets/apuda-building-life.css?v=20261018-patient-1">
 <link rel="stylesheet" href="/assets/apuda-floor-transition.css?v=20261015">
-<link rel="stylesheet" href="/assets/apuda-building-monitors.css?v=20261015-all-floors-1">
+<link rel="stylesheet" href="/assets/apuda-building-monitors.css?v=20261018-patient-1">
+<link rel="stylesheet" href="/assets/apuda-ui.css?v=20261018"><script src="/assets/apuda-ui.js?v=20261018"></script>
+<link rel="stylesheet" href="/assets/apuda-video-dialog.css?v=20261018">
 </head>
 <body>
 
@@ -750,14 +752,16 @@
 
 <div id="curtain"><div><b>ApuDa</b><small>PATIENT CARE OS</small></div></div>
 
-<script src="/assets/apuda-cancer-videos.js"></script>
-<script src="/assets/apuda-building-monitors.js?v=20261015-all-floors-1"></script>
-<script src="/assets/apuda-building-life.js?v=20261015-original-people-1"></script>
-<script src="/assets/apuda-floor-transition.js?v=20261015"></script>
+<script src="/assets/apuda-cancer-videos.js?v=20261018"></script>
+<script src="/assets/apuda-video-dialog.js?v=20261018"></script>
+<script src="/assets/apuda-building-monitors.js?v=20261018-patient-1"></script>
+<script src="/assets/apuda-building-life.js?v=20261018-patient-1"></script>
+<script src="/assets/apuda-floor-transition.js?v=20261018"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script>
 (function(){
-  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches || !!(window.ApuDaPreferences && ApuDaPreferences.isQuiet());
+  addEventListener('apuda:preferences-change',function(){reduce=matchMedia('(prefers-reduced-motion: reduce)').matches || ApuDaPreferences.isQuiet();});
 
   /* ── 세로형 건물 크롭 기준 % 좌표 ── */
   var CARDS = {
@@ -1494,7 +1498,7 @@
   });
   addEventListener('keydown',function(e){
     var fam=document.getElementById('famPop');
-    if(document.getElementById('bookChoiceModal') || (fam&&!fam.hidden)) return;
+    if(document.getElementById('apudaVideoDialog') || document.getElementById('bookChoiceModal') || (fam&&!fam.hidden)) return;
     if(!cur) return;
     if(e.key==='Escape'){e.preventDefault();close();return;}
     if(frame.contains(e.target) && (e.key==='ArrowUp'||e.key==='ArrowDown')){
@@ -1539,9 +1543,10 @@
   });
 })();
 </script>
-<script src="/assets/apuda-bot.js" data-context="home" defer></script>
+<script src="/assets/apuda-bot.js?v=20261018" data-context="home" defer></script>
 </body>
 </html>
+
 
 
 
