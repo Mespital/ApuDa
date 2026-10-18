@@ -44,7 +44,8 @@
       else out.push(['ok', '국·수·사·과 선택 4과목 ✓']);
     }
     // 위계: 같은 학기·앞 학기에 먼저 들을 과목
-    var prevList = s === 2 ? o.plan.s1 : [];
+    var fxOf = function (q) { return bySem(q).filter(fixed).map(function (c) { return c.subject; }); };
+    var prevList = (s === 2 ? o.plan.s1.concat(fxOf(1)) : []).concat(fxOf(s));   // 학교 지정 과목은 이미 듣는 걸로
     list.forEach(function (x) {
       var b = Object.keys(BEFORE).find(function (k) { return norm(k) === norm(x); }); if (!b) return;
       var need = BEFORE[b], has = prevList.concat(list).some(function (y) { return norm(y) === norm(need); });
@@ -52,7 +53,7 @@
     });
     // 계열 핵심 과목
     if (groups.length) {
-      var all = o.plan.s1.concat(o.plan.s2).map(norm), offeredAll = catalog().map(function (c) { return norm(c.subject); });
+      var all = o.plan.s1.concat(o.plan.s2, bySem(1).filter(fixed).map(function (c) { return c.subject; }), bySem(2).filter(fixed).map(function (c) { return c.subject; })).map(norm), offeredAll = catalog().map(function (c) { return norm(c.subject); });
       groups.forEach(function (g) {
         if (!G[g]) return;
         var miss = G[g].core.filter(function (x) { return all.indexOf(norm(x)) < 0 && offeredAll.indexOf(norm(x)) >= 0; });
