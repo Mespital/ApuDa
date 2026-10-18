@@ -12,7 +12,7 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
       - run: cd future-compass/scripts && npm i --no-save kordoc@4.22.12 iconv-lite@0.6.3 fflate@0.8.2
-      - run: node future-compass/scripts/probe-letters.mjs future-compass/.probe
+      - run: node future-compass/scripts/probe-letters.mjs future-compass/.probe || true
       - run: |
           git config user.name "probe-bot"; git config user.email "probe@users.noreply.github.com"
           git add -f future-compass/.probe && git commit -m "tmp: probe output" && git push

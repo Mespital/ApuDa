@@ -1,5 +1,5 @@
 import fs from 'node:fs/promises'; import path from 'node:path';
-import kordoc from 'kordoc';
+import { parse as kordoc } from 'kordoc';
 const OUT = process.argv[2]; await fs.mkdir(OUT, { recursive: true });
 const H = 'https://seocho.sen.hs.kr', UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36';
 const log = []; let jar = '';
@@ -9,6 +9,7 @@ async function get(url, opt = {}) {
   const b = Buffer.from(await r.arrayBuffer()); log.push(r.status + ' ' + url + ' ' + b.length + ' ' + (r.headers.get('content-type') || '') + ' ' + (r.headers.get('content-disposition') || '')); return { r, b };
 }
 const form = (o) => new URLSearchParams(o).toString(), PH = { 'content-type': 'application/x-www-form-urlencoded; charset=UTF-8', 'X-Requested-With': 'XMLHttpRequest' };
+try {
 await get(H + '/75977/subMenu.do');
 const bbsId = 'BBSMSTR_000000011310';
 const L = await get(H + '/dggb/module/board/selectBoardListAjax.do', { method: 'POST', headers: PH, body: form({ bbsId, bbsTyCode: 'dliv', customRecordCountPerPage: '10', pageIndex: '1', searchCondition: '', searchKeyword: '', checkNttId: '', mvmnReturnUrl: '' }) });
@@ -30,4 +31,5 @@ for (const id of ['27536770', '27543433']) {
     try { const r = await kordoc(F.b.buffer.slice(F.b.byteOffset, F.b.byteOffset + F.b.byteLength)); await fs.writeFile(path.join(OUT, fn + '.md'), (r && r.markdown) || JSON.stringify(r).slice(0, 2000)); } catch (e) { log.push(' kordoc ' + e.message); }
   }
 }
+} catch (e) { log.push('ERR ' + e.stack); }
 await fs.writeFile(path.join(OUT, 'log.txt'), log.join('\n'));
