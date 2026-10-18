@@ -18,6 +18,7 @@
   }
   function stopVideo() {
     if(!current)return;
+    clearTimeout(current.bufferTimer);current.bufferTimer=null;
     if(current.player){try{current.player.destroy();}catch(ignore){}current.player=null;}
     current.playerBox.replaceChildren();
   }
@@ -32,13 +33,13 @@
     session.choices.replaceChildren();
     global.ApuDaCancerVideos.items(slug).forEach(function(v){var b=el('button','avd-choice',v.name+' 영상');b.type='button';b.setAttribute('aria-pressed',String(v.id===id));b.addEventListener('click',function(){loadVideo(slug,v.id);});session.choices.appendChild(b);});
     var iframe=el('iframe');iframe.id='apudaVideoFrame';iframe.title=names[slug]+' · ApuDa YouTube 영상';
-    iframe.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&playsinline=1&rel=0&enablejsapi=1&fs=1&hl=ko&origin='+encodeURIComponent(location.origin);
+    iframe.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=0&playsinline=1&rel=0&enablejsapi=1&fs=1&hl=ko&origin='+encodeURIComponent(location.origin);
     iframe.allow='autoplay; encrypted-media; fullscreen; picture-in-picture';iframe.allowFullscreen=true;
     iframe.setAttribute('referrerpolicy','strict-origin-when-cross-origin');session.playerBox.appendChild(iframe);
     session.status.textContent='영상의 재생 버튼을 누르면 이 창에서 시청할 수 있어요.';
     session.fallback.hidden=true;session.external.href='https://www.youtube.com/watch?v='+id;
     api().then(function(YT){if(current!==session||token!==serial)return;
-      session.player=new YT.Player(iframe,{events:{onReady:function(){if(current===session&&token===serial)session.status.textContent='영상 아래에서 같은 암종의 책자와 FAQ를 함께 볼 수 있어요.';},onError:function(e){if(current!==session||token!==serial)return;session.status.textContent=(e.data===101||e.data===150)?'게시자 설정으로 이 영상의 사이트 내 재생이 제한돼 있어요.':'영상을 불러오지 못했어요. 아래 자료는 계속 볼 수 있어요.';session.fallback.hidden=false;}}});
+      session.player=new YT.Player(iframe,{events:{onReady:function(){if(current===session&&token===serial)session.status.textContent='재생 버튼으로 시청을 시작하세요. 아래에는 같은 암종의 책자와 FAQ가 있어요.';},onStateChange:function(e){if(current!==session||token!==serial)return;clearTimeout(session.bufferTimer);session.bufferTimer=null;if(e.data===1){session.status.textContent='시청 중에도 아래에서 같은 암종의 책자와 FAQ를 확인할 수 있어요.';session.fallback.hidden=true;}else if(e.data===3){session.bufferTimer=setTimeout(function(){if(current!==session||token!==serial)return;session.status.textContent='영상 준비가 지연되고 있어요. 잠시 기다리거나 아래에서 다시 불러오기를 선택하세요. 책자와 FAQ는 계속 볼 수 있어요.';session.fallback.hidden=false;},15000);}},onError:function(e){if(current!==session||token!==serial)return;clearTimeout(session.bufferTimer);session.bufferTimer=null;session.status.textContent=(e.data===101||e.data===150)?'게시자 설정으로 이 영상의 사이트 내 재생이 제한돼 있어요.':'영상을 불러오지 못했어요. 아래 자료는 계속 볼 수 있어요.';session.fallback.hidden=false;}}});
     }).catch(function(){if(current===session&&token===serial){session.status.textContent='재생되지 않으면 다시 불러오기를 눌러 주세요. 아래 자료도 함께 이용할 수 있어요.';session.fallback.hidden=false;}});
     loadResources(session,slug);
     if(history.state&&history.state.apudaVideoDialog)history.replaceState(Object.assign({},history.state,{apudaVideoDialog:{slug:slug,id:id}}),'',location.href);
