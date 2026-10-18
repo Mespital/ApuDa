@@ -15,19 +15,15 @@ const bbsId = 'BBSMSTR_000000011310';
 const L = await get(H + '/dggb/module/board/selectBoardListAjax.do', { method: 'POST', headers: PH, body: form({ bbsId, bbsTyCode: 'dliv', customRecordCountPerPage: '10', pageIndex: '1', searchCondition: '', searchKeyword: '', checkNttId: '', mvmnReturnUrl: '' }) });
 await fs.writeFile(path.join(OUT, 'letters-list2.html'), L.b);
 log.push('list ids ' + [...new Set([...L.b.toString().matchAll(/fnView\('[^']*',\s*'(\d+)'/g)].map(m => m[1]))].join(','));
-for (const id of ['27536770', '27543433']) {
+for (const id of ['27502687', '27502703']) {
   const D = await get(H + '/dggb/module/board/selectBoardDetailAjax.do', { method: 'POST', headers: PH, body: form({ bbsId, bbsTyCode: 'dliv', customRecordCountPerPage: '10', pageIndex: '1', nttId: id, cmntSe: 'N' }) });
   await fs.writeFile(path.join(OUT, 'd-' + id + '.html'), D.b);
   const s = D.b.toString();
-  const links = [...s.matchAll(/(?:href|onclick)\s*=\s*"([^"]*)"/g)].map(m => m[1]).filter(x => /file|down|atch/i.test(x));
-  log.push('detail ' + id + ' links: ' + links.slice(0, 10).join(' | '));
-  for (const l of links.slice(0, 4)) {
-    let u = null, m;
-    if ((m = /^(\/[^"']+)/.exec(l))) u = H + m[1].replace(/&amp;/g, '&');
-    else if ((m = /\(\s*'([^']*)'\s*,\s*'([^']*)'/.exec(l))) u = H + '/dggb/module/file/selectFileDownload.do?atchFileId=' + m[1] + '&fileSn=' + m[2];
-    if (!u) continue;
-    const F = await get(u);
-    const fn = 'f-' + id + '-' + links.indexOf(l) + '.bin'; await fs.writeFile(path.join(OUT, fn), F.b.subarray(0, 3000000));
+  const files = [...s.matchAll(/serverFileObj\["name"\] = "([^"]+)";[\s\S]*?serverFileObj\["atchFileId"\] = "([^"]+)";\s*serverFileObj\["fileSn"\] = "(\d+)"/g)];
+  log.push('detail ' + id + ' files: ' + files.map(f => f[1] + ' ' + f[2] + ':' + f[3]).join(' | '));
+  for (const f of files) {
+    const F = await get(H + '/dggb/board/boardFile/downFile.do?atchFileId=' + f[2] + '&fileSn=' + f[3]);
+    const fn = 'f-' + id + '-' + f[3]; await fs.writeFile(path.join(OUT, fn + '.bin'), F.b.subarray(0, 3000000));
     try { const r = await kordoc(F.b.buffer.slice(F.b.byteOffset, F.b.byteOffset + F.b.byteLength)); await fs.writeFile(path.join(OUT, fn + '.md'), (r && r.markdown) || JSON.stringify(r).slice(0, 2000)); } catch (e) { log.push(' kordoc ' + e.message); }
   }
 }
