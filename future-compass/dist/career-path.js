@@ -243,7 +243,7 @@
     }, 500);
   });
 
-  window.FC_PATH = { load: load, groups: G, signals: SIG, momLine: momLine };
+  window.FC_PATH = { load: load, groups: G, signals: SIG, momLine: momLine, type: TYPE, before: BEFORE, suneung: SUNEUNG };
 
   var css = document.createElement('style');
   css.textContent = '.cp-wrap h2 small{font-size:12.5px;font-weight:600;color:#6b6880;margin-left:4px}.cp-eye{margin:0 0 2px;font-size:12.5px;font-weight:700;color:#5b45d6;letter-spacing:.02em}' +

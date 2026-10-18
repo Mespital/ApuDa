@@ -18,7 +18,7 @@
   function md(d) { return Number(d.slice(5, 7)) + '/' + Number(d.slice(8, 10)); }
   function ago(iso) { if (!iso) return ''; var m = Math.round((Date.now() - Date.parse(iso)) / 60000); return m < 1 ? '방금' : m < 60 ? m + '분 전' : m < 1440 ? Math.round(m / 60) + '시간 전' : Math.round(m / 1440) + '일 전'; }
   function load() {
-    fetch('school-live.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) { if (j) { D = j; if (tab === 'school' || tab === 'today' || tab === 'path') render(); } }).catch(function () {});
+    fetch('school-live.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) { if (j) { D = j; if (tab === 'school' || tab === 'today' || tab === 'path' || tab === 'courses') render(); } }).catch(function () {});
   }
 
   /* ---------- 시기 해석 ---------- */

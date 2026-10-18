@@ -20,7 +20,7 @@ const DEST = path.join(ROOT, 'dist/school-live.json');
 const FIX = (() => { const i = process.argv.indexOf('--fixtures'); return i > 0 ? process.argv[i + 1] : ''; })();
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36';
 const SI = 'https://www.schoolinfo.go.kr';
-const PARSER = 2;   // 해석 규칙을 고치면 올린다 → 같은 공시 회차라도 다시 받아 해석
+const PARSER = 3;   // 해석 규칙을 고치면 올린다 → 같은 공시 회차라도 다시 받아 해석
 const SCHOOL = { name: '서초고등학교', home: 'https://seocho.sen.hs.kr', entryYear: 2026 };
 const KST = () => new Date(Date.now() + 9 * 3600e3);
 const nowIso = () => new Date().toISOString();
@@ -76,6 +76,20 @@ function parsePlan(md, filename) {
   }
   if (!doc.subject) { const m = /\(\s*([^()]+?)\s*\)\s*과/.exec(filename) || /2학기\s+(.+?)과?\s*교수/.exec(filename); doc.subject = m ? m[1].trim() : filename; }
   if (!doc.grade) { const m = /(?<![0-9])([1-3])학년/.exec(filename); doc.grade = m ? Number(m[1]) : null; }
+  // 평가 개요: 주당 수업시수(=학점), 성적 산출(석차등급·성취도)
+  const ovw = B.find((b) => b.t === 'table' && b.rows.some((r) => r.some((c) => /석차\s*등급/.test(c))));
+  if (ovw) {
+    const hi = ovw.rows.findIndex((r) => r.some((c) => /주당/.test(c)));
+    if (hi >= 0 && ovw.rows[hi + 1]) { const ix = ovw.rows[hi].findIndex((c) => /주당/.test(c)), v = ovw.rows[hi + 1]; const cand = [v[ix - 1], v[ix]].map((x) => Number(String(x || '').replace(/[^\d]/g, ''))).filter((n) => n > 0 && n < 10); if (cand.length) doc.hours = cand[0]; }
+    const si = ovw.rows.findIndex((r) => r.some((c) => /석차\s*등급/.test(c)));
+    const hd = ovw.rows[si], mk = ovw.rows[si + 1] || [];
+    if (hd) {
+      const off = hd.length - mk.length;   // '성적 산출' 칸이 세로로 합쳐져 있으면 한 칸 밀림
+      const at = (re) => { const i = hd.findIndex((c) => re.test(c)); return i < 0 ? '' : mk[i - off] || ''; };
+      const on = (s) => /○|O|●|◯|V|√|v/.test(s);
+      doc.grading = { rank: on(at(/석차/)), ach5: on(at(/5\s*단계/)), ach3: on(at(/3\s*단계/)), pf: on(at(/이수|P\/F/)) };
+    }
+  }
   // 진도(교수학습 운영계획 표들)
   doc.timeline = []; let label = '';
   B.forEach((b, i) => {
@@ -169,6 +183,20 @@ function zipEntries(buf) {
   });
 }
 
+function buildCatalog(all) {
+  const nm = (s) => String(s || '').replace(/\s*\([A-Z,\s]+\)\s*$/, '').trim();
+  const catalog = [];
+  all.forEach((d) => {
+    if (d.unreadable || !d.grade || !d.subject || /교과목|과목명/.test(d.subject)) return;
+    const s = nm(d.subject), sem = d._sem || d.semester || null;
+    if (catalog.some((c) => c.subject === s && c.grade === d.grade && c.semester === sem)) return;
+    catalog.push({ subject: s, grade: d.grade, semester: sem, hours: d.hours || null, grading: d.grading || null, classes: d.classes || null,
+      perf: d.ratio ? d.ratio.perf : null, exam: d.ratio ? d.ratio.exam : null, hasMid: d.ratio ? !!d.ratio.mid : null, nTasks: (d.tasks || []).length,
+      tasks: (d.tasks || []).slice(0, 4).map((x) => ({ when: x.when, type: x.type, title: x.title.slice(0, 60), pct: x.pct })) });
+  });
+  return catalog;
+}
+
 /* ---------- ① 학교알리미 ---------- */
 async function schoolinfo(prev) {
   const year = KST().getUTCFullYear(), grade = Math.min(3, Math.max(1, (KST().getUTCMonth() >= 2 ? year : year - 1) - SCHOOL.entryYear + 1));
@@ -188,18 +216,37 @@ async function schoolinfo(prev) {
   const round = sel ? sel[3].trim() : '';
   const fresh = prev && prev.round === round && prev.parser === PARSER && prev.fetched && Date.now() - Date.parse(prev.fetched) < 7 * 864e5 && !FIX;
   if (fresh) return { ...prev, checked: nowIso() };
-  const fi = html.indexOf('eiFileDownForm'), seg = html.slice(fi, html.indexOf('</form>', fi));
-  const params = {}; for (const m of seg.matchAll(/name="([A-Za-z_]\w*)"[^>]*?value="([^"]*)"/g)) if (!(m[1] in params) && /^[\w.\-]*$/.test(m[2])) params[m[1]] = m[2];
-  const files = [...html.matchAll(/getEiFile\d*\(\s*['"]?(\d+)['"]?\s*\)[^>]*>\s*([^<]*?\.(?:hwpx|hwp|pdf|zip))/gi)].map((m) => ({ seq: m[1], name: m[2].trim() })).filter((f) => !/학업성적관리/.test(f.name));
-  const docs = [];
-  for (const f of files.slice(0, 6)) {
-    const buf = FIX ? await fix('si-file-' + f.seq + '.' + f.name.split('.').pop()) : (await http(SI + '/servlets/EiFileDownLoad.do?' + new URLSearchParams({ ...params, FILE_SEQ: f.seq }), { headers: { Referer: SI + '/ei/pp/Pneipp_b43_s0p.do' } })).buf;
-    const entries = /\.zip$/i.test(f.name) ? zipEntries(buf) : [{ name: f.name, buf }];
-    for (const e of entries.slice(0, 160)) {
-      try { const md = await toMarkdown(e.buf); if (md.length > 200) docs.push(parsePlan(md, e.name)); else docs.push({ subject: e.name, file: e.name, unreadable: true }); }
-      catch (err) { docs.push({ subject: e.name, file: e.name, unreadable: true }); }
+  async function docsOf(h) {
+    const fi = h.indexOf('eiFileDownForm'), seg = h.slice(fi, h.indexOf('</form>', fi));
+    const params = {}; for (const m of seg.matchAll(/name="([A-Za-z_]\w*)"[^>]*?value="([^"]*)"/g)) if (!(m[1] in params) && /^[\w.\-]*$/.test(m[2])) params[m[1]] = m[2];
+    const files = [...h.matchAll(/getEiFile\d*\(\s*['"]?(\d+)['"]?\s*\)[^>]*>\s*([^<]*?\.(?:hwpx|hwp|pdf|zip))/gi)].map((m) => ({ seq: m[1], name: m[2].trim() })).filter((f) => !/학업성적관리/.test(f.name));
+    const out = [];
+    for (const f of files.slice(0, 6)) {
+      const buf = FIX ? await fix('si-file-' + f.seq + '.' + f.name.split('.').pop()) : (await http(SI + '/servlets/EiFileDownLoad.do?' + new URLSearchParams({ ...params, FILE_SEQ: f.seq }), { headers: { Referer: SI + '/ei/pp/Pneipp_b43_s0p.do' } })).buf;
+      const entries = /\.zip$/i.test(f.name) ? zipEntries(buf) : [{ name: f.name, buf }];
+      for (const e of entries.slice(0, 200)) {
+        try { const md = await toMarkdown(e.buf); if (md.length > 200) out.push(parsePlan(md, e.name)); else out.push({ subject: e.name, file: e.name, unreadable: true }); }
+        catch (err) { out.push({ subject: e.name, file: e.name, unreadable: true }); }
+      }
+    }
+    const rs = /<option\s+value="\d{4}\d+"\s*selected\s*>[^<]*?(\d{2})월/i.exec(h), sm = rs ? (Number(rs[1]) >= 8 || Number(rs[1]) <= 2 ? 2 : 1) : null;
+    if (sm) out.forEach((d) => { d._sem = sm; });   // 학기는 공시 회차로 (문서 표지 학기 오기 대비)
+    return out;
+  }
+  const docs = await docsOf(html);
+  // 같은 해 다른 회차(1학기 4월분 등)도 받아서 과목 목록(학점·등급 산출·수행 비중)을 만든다
+  let older = [];
+  if (!FIX) {
+    const chs = [...html.matchAll(/<option\s+value="(\d{4})(\d+)"\s*(selected)?/gi)].filter((m) => Number(m[1]) === year && !m[3]).map((m) => m[2]);
+    for (const ch of chs.slice(0, 2)) {
+      try {
+        const b2 = new URLSearchParams({ GS_HANGMOK_CD: '43', GS_HANGMOK_NO: '4-가', GS_HANGMOK_NM: '교과별(학년별) 교수ㆍ학습 및 평가계획에 관한 사항', GS_BURYU_CD: 'JG110', JG_BURYU_CD: 'JG040', JG_HANGMOK_CD: '14', JG_GUBUN: '1', HG_NM: SCHOOL.name, SHL_IDF_CD: shl, GS_TYPE: 'Y', JG_YEAR: String(year), JG_CHASU: ch, SORT: 'BR', CHOSEN_JG_YEAR: String(year), PRE_JG_YEAR: String(year), LOAD_TYPE: 'single' });
+        const { buf } = await http(SI + '/ei/pp/Pneipp_b43_s0p.do', { method: 'POST', headers: { 'X-Requested-With': 'XMLHttpRequest', 'Content-Type': 'application/x-www-form-urlencoded', Referer: SI + '/ei/ss/Pneiss_b01_s0.do' }, body: b2 });
+        older = older.concat(await docsOf(iconv.decode(buf, 'euc-kr')));
+      } catch (e) { console.log('round', ch, 'fail', e.message); }
     }
   }
+  const catalog = buildCatalog(docs.concat(older));
   const mine = docs.filter((d) => d.grade === grade && !d.unreadable);
   const offered = { 1: [], 2: [], 3: [] };
   docs.forEach((d) => { const s = String(d.subject || '').replace(/\s*\([A-Z,\s]+\)\s*$/, '').trim(); if (d.grade && offered[d.grade] && s && !/교과목|과목명/.test(s) && offered[d.grade].indexOf(s) < 0) offered[d.grade].push(s); });
@@ -208,7 +255,7 @@ async function schoolinfo(prev) {
     source: SI + '/ei/ss/pneiss_a03_s0.do',
     parser: PARSER,
     subjects: mine.map((d) => ({ subject: d.subject, semester: d.semester, classes: d.classes || null, ratio: d.ratio || null, tasks: d.tasks, timeline: d.timeline, note: d.taskNote })),
-    offered, unreadable: docs.filter((d) => d.unreadable).map((d) => d.file),
+    offered, catalog, unreadable: docs.filter((d) => d.unreadable).map((d) => d.file),
   };
 }
 
@@ -259,9 +306,10 @@ async function parseDir(dir) {
   if (process.argv.includes('--write')) {   // 받아둔 원본으로 dist 데이터 다시 만들기 (공시 회차 정보는 기존 값 유지)
     const cur = JSON.parse(await fs.readFile(DEST, 'utf-8'));
     cur.eval.subjects = out.filter((d) => d.grade === cur.eval.grade).map((d) => ({ subject: d.subject, semester: d.semester, classes: d.classes || null, ratio: d.ratio || null, tasks: d.tasks, timeline: d.timeline, note: d.taskNote }));
-    cur.eval.parser = PARSER; await fs.writeFile(DEST, JSON.stringify(cur, null, 1) + '\n'); console.log('written', cur.eval.subjects.length);
+    if (process.env.SEM) out.forEach((d) => { d._sem = Number(process.env.SEM); });
+    cur.eval.catalog = buildCatalog(out); cur.eval.parser = PARSER; await fs.writeFile(DEST, JSON.stringify(cur, null, 1) + '\n'); console.log('written', cur.eval.subjects.length);
   }
-  console.log(JSON.stringify(out.filter((d) => d.grade === 1).map((d) => ({ s: d.subject, cls: d.classes, r: d.ratio, t: d.tasks.map((x) => [x.when, x.title.slice(0, 24), x.pct, (x.parts || []).length, (x.rubric || []).length]) })), null, 0));
+  console.log(JSON.stringify(out.filter((d) => process.env.ALLG || d.grade === 1).map((d) => ({ s: d.subject, g: d.grade, h: d.hours, gr: d.grading, cls: d.classes, r: d.ratio, t: d.tasks.map((x) => [x.when, x.title.slice(0, 24), x.pct, (x.parts || []).length, (x.rubric || []).length]) })), null, 0));
 }
 async function main() {
   const pd = process.argv.indexOf('--parse-dir'); if (pd > 0) return parseDir(process.argv[pd + 1]);
