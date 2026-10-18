@@ -11,8 +11,8 @@
     parent: [['today', '💜', '오늘'], ['stats', '📈', '흐름'], ['cheer', '💌', '응원', 1], ['week', '📅', '일정'], ['more', '☰', '더보기']]
   };
   var MORE = {
-    child: [['study.html#path', '🎯', '진로 한 장'], ['study.html#career', '🧭', '진로 탐색기'], ['study.html#school', '🏫', '학교 소식·평가'], ['study.html#table', '🗓️', '시간표'], ['study.html#dates', '📝', '시험·과제'], ['study.html#stats', '📈', '나의 기록'], ['today.html', '📋', '오늘 한눈에'], ['hub.html', '📚', '자료 허브'], ['./', '🧭', '진로 탐색'], ['future.html', '🔮', '미래 예측'], ['know-me.html', '✨', '나 알아보기'], ['study.html#settings', '⚙️', '설정'], ['#lock', '🔒', '잠그기']],
-    parent: [['study.html#path', '🎯', '승준 진로'], ['study.html#career', '🧭', '진로 탐색기'], ['study.html#school', '🏫', '학교 소식·평가'], ['study.html#table', '🗓️', '시간표'], ['study.html#dates', '📝', '시험'], ['study.html#review', '💡', '복습'], ['today.html', '📋', '오늘 한눈에'], ['study.html#week', '🪨', '이번 주 큰 돌'], ['hub.html', '📚', '자료 허브'], ['./', '🧭', '진로 탐색'], ['study.html#settings', '⚙️', '설정'], ['#who', '🔄', '승준으로 바꾸기'], ['#lock', '🔒', '잠그기']]
+    child: [['study.html#path', '🎯', '진로 한 장'], ['study.html#career', '🧭', '진로 탐색기'], ['study.html#courses', '📚', '과목 선택 도우미'], ['study.html#school', '🏫', '학교 소식·평가'], ['study.html#table', '🗓️', '시간표'], ['study.html#dates', '📝', '시험·과제'], ['study.html#stats', '📈', '나의 기록'], ['today.html', '📋', '오늘 한눈에'], ['hub.html', '📚', '자료 허브'], ['./', '🧭', '진로 탐색'], ['future.html', '🔮', '미래 예측'], ['know-me.html', '✨', '나 알아보기'], ['study.html#settings', '⚙️', '설정'], ['#lock', '🔒', '잠그기']],
+    parent: [['study.html#path', '🎯', '승준 진로'], ['study.html#career', '🧭', '진로 탐색기'], ['study.html#courses', '📚', '과목 선택 도우미'], ['study.html#school', '🏫', '학교 소식·평가'], ['study.html#table', '🗓️', '시간표'], ['study.html#dates', '📝', '시험'], ['study.html#review', '💡', '복습'], ['today.html', '📋', '오늘 한눈에'], ['study.html#week', '🪨', '이번 주 큰 돌'], ['hub.html', '📚', '자료 허브'], ['./', '🧭', '진로 탐색'], ['study.html#settings', '⚙️', '설정'], ['#who', '🔄', '승준으로 바꾸기'], ['#lock', '🔒', '잠그기']]
   };
   function current() { if (!onStudy) return 'more'; var h = location.hash.slice(1); return h || 'today'; }
   function draw() {
