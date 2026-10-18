@@ -712,7 +712,7 @@
     '.hero-core{list-style:none;margin:0;padding:0;display:grid;gap:6px}.hero-core li{background:#ffffffc9;border-radius:12px;padding:9px 12px;font-size:15px;font-weight:600;line-height:1.4}' +
     '.hero-soft{margin:10px 2px 0;font-size:14px;color:#6b6880}.hero-go{width:100%;margin-top:12px;min-height:48px!important;font-size:15.5px;border-radius:14px!important}';
   document.head.appendChild(css);
-  window.FC_PLANNER = { get: function () { return P; }, KEY: KEY, todays: todays, exams: upcomingExams, portions: examPortions, again: dueAgain, free: freeTime, planned: planned, examName: examName, examDays: function () { return P.examDays; }, nextExamDay: nextExamDay, est: function (id) { return est(P.pri[id]); }, subjOf: subjOf, todayRow: todayRow, addFocus: addFocus, save: put, subjects: subjList, ask: askQuality };
+  window.FC_PLANNER = { get: function () { return P; }, studied: studiedDays, KEY: KEY, todays: todays, exams: upcomingExams, portions: examPortions, again: dueAgain, free: freeTime, planned: planned, examName: examName, examDays: function () { return P.examDays; }, nextExamDay: nextExamDay, est: function (id) { return est(P.pri[id]); }, subjOf: subjOf, todayRow: todayRow, addFocus: addFocus, save: put, subjects: subjList, ask: askQuality };
   // 처음 열었을 때 이미 끝난 타이머도 플래너가 준비된 뒤 한 번만 기록한다.
   var pendingFocus = window.fcPendingFocusDone || [];
   delete window.fcPendingFocusDone;

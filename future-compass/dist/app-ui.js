@@ -57,9 +57,17 @@
     var s = document.createElement('section'); s.className = 'hero-heal hb' + (old.classList.contains('night') ? ' night' : '');
     s.innerHTML = '<div class="hb-img" role="img" aria-label="잠옷 입고 쉬는 그림"></div><div class="hb-txt"><b>' + esc(head) + '</b>' + (meta ? '<span>' + esc(meta) + '</span>' : '') + '</div>' +
       (!L.length && !exN ? '<button type="button" class="hb-add" data-as-add>＋ 할 일 적기</button>' : '');
+    /* 지금 할 1개: 큰 시작 줄 (밤 9시 이후엔 하루 마무리) */
+    var night0 = h >= 21 || h < 5, closed0 = FP && FP.get && FP.get().days && FP.get().days[today()];
+    var go = '';
+    if (!isParent()) {
+      if (undone[0] && !night0) go = ('<button type="button" class="hb-go" data-pl-play="' + esc(undone[0].t.id) + '"><span>지금 할 1개</span><b>' + esc(undone[0].t.title) + '</b><i aria-hidden="true">▶</i></button>');
+      else if (night0 && L.length && !closed0) go = ('<button type="button" class="hb-go night" data-hero-close><span>오늘 마무리</span><b>🌙 하루 마무리 30초</b><i aria-hidden="true">›</i></button>');
+    }
     if (img) s.querySelector('.hb-img').style.backgroundImage = getComputedStyle(img).backgroundImage;
     if (mood) { mood.classList.add('hb-mood'); var lab = mood.querySelector('span'); if (lab && !lab.querySelector('*') && !lab.dataset.kpMood) lab.remove(); s.appendChild(mood); }
     old.replaceWith(s);
+    if (go) s.insertAdjacentHTML('afterend', go);
   }
 
   /* ---------- 오늘: 지금부터 3시간 (시간 막대) ---------- */
@@ -244,7 +252,7 @@
       var nx = root.querySelector('#nx-3h'); if (nx && !nx.querySelector('.sp')) strip(nx);
       tasks(root); examTiles(root);
       var br = root.querySelector('#study-brief'); if (br) br.remove();   // 마감은 시험 타일·할 일에 이미 보임
-      var after = root.querySelector('#nx-3h') || root.querySelector('.hb');
+      var after = root.querySelector('#nx-3h') || root.querySelector('.hb-go') || root.querySelector('.hb');
       ['.pl-tasks', '#bo-exam'].forEach(function (sel) { var el = root.querySelector(sel); if (el && after) { after.insertAdjacentElement('afterend', el); after = el; } });
     }
     if (tab === 'stats') { var sh1 = root.querySelector('.pl-stat-top h1'); if (sh1) sh1.remove(); }
