@@ -18,7 +18,7 @@
   function md(d) { return Number(d.slice(5, 7)) + '/' + Number(d.slice(8, 10)); }
   function ago(iso) { if (!iso) return ''; var m = Math.round((Date.now() - Date.parse(iso)) / 60000); return m < 1 ? '방금' : m < 60 ? m + '분 전' : m < 1440 ? Math.round(m / 60) + '시간 전' : Math.round(m / 1440) + '일 전'; }
   function load() {
-    fetch('school-live.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) { if (j) { D = j; if (tab === 'school' || tab === 'today' || tab === 'path' || tab === 'courses' || tab === 'grades') render(); } }).catch(function () {});
+    fetch('school-live.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) { if (j) { D = j; if (tab === 'school' || tab === 'today' || tab === 'path' || tab === 'courses' || tab === 'grades' || tab === 'examplan') render(); } }).catch(function () {});
   }
 
   /* ---------- 시기 해석 ---------- */
@@ -85,6 +85,19 @@
     return (notes.length ? '<p class="sl-warn">⚠️ ' + notes.map(function (s) { return '<b>' + e(s.subject) + '</b>: ' + e(s.note); }).join('<br>') + '</p>' : '') +
       (c ? '<p class="muted small">1학년 ' + c + '반 기준이야.' + (oth.length ? ' ' + oth.map(function (s) { return e(s.subject) + '(' + s.classes[0] + '~' + s.classes[1] + '반)'; }).join(' · ') + '은 다른 반 과목이라 뺐어.' : '') + '</p>' : '');
   }
+  function joinLines(t) { var o = []; String(t).split('\n').forEach(function (ln) { if (!o.length || /^[^:：\s]{1,10}\s*[:：]/.test(ln)) o.push(ln); else o[o.length - 1] += ' ' + ln; }); return o; }
+  /* 📨 시험 범위·시간표 (가정통신문 첨부를 자동으로 읽은 것) */
+  function scopeCard() {
+    var X = D && D.exams; if (!X) return '';
+    var k = X.fin && (X.fin.scope || X.fin.days) ? 'fin' : X.mid && X.mid.scope ? 'mid' : ''; if (!k) return '';
+    var E = X[k], label = k === 'fin' ? '기말고사' : '중간고사', S = (E.scope && E.scope.subjects) || {}, days = E.days || {};
+    var dayOf = {}, orig = {}; Object.keys(days).forEach(function (d) { days[d].forEach(function (x) { dayOf[x.replace(/\s/g, '')] = d; orig[x.replace(/\s/g, '')] = x; }); });
+    var names = Object.keys(S); Object.keys(dayOf).forEach(function (x) { if (!names.some(function (n) { return n.replace(/\s/g, '') === x; })) names.push(orig[x]); });
+    names.sort(function (a, b) { return (dayOf[a.replace(/\s/g, '')] || '9').localeCompare(dayOf[b.replace(/\s/g, '')] || '9'); });
+    return '<details class="card sl-card sl-scope"' + (k === 'fin' ? ' open' : '') + '><summary><b>📨 ' + (k === 'fin' ? '' : '지난 ') + label + ' 시험 범위' + (Object.keys(days).length ? '·시간표' : '') + '</b><small>' + (k === 'fin' ? '가정통신문 첨부를 자동으로 읽었어' : '기말 범위 공지가 나오면 여기 바로 바뀌어 · 서술형 비중 참고용') + '</small></summary><ul>' +
+      names.map(function (n) { var v = S[n] || {}, d = dayOf[n.replace(/\s/g, '')]; return '<li><div class="sl-sch"><b>' + e(n) + '</b>' + (d ? '<span>' + md(d) + '</span>' : '') + (v.essay != null ? '<small>서술형 ' + v.essay + ' · 단답 ' + v.short + ' · 선택 ' + v.mc + (v.min ? ' · ' + v.min + '분' : '') + '</small>' : '') + '</div>' + (v.text ? '<p>' + joinLines(v.text).map(e).join('<br>') + '</p>' : '') + '</li>'; }).join('') +
+      '</ul><p class="muted small">' + e((E.scope || E.tt || {}).title || '') + ' · 원문은 <a href="' + e((D.links || {}).letters || '#') + '" target="_blank" rel="noopener noreferrer">가정통신문 게시판</a></p></details>';
+  }
   function ratioCard() {
     var ev = D && D.eval; if (!ev || !ev.subjects) return '';
     var rows = mySubjects().filter(function (s) { return s.ratio; });
@@ -128,7 +141,7 @@
     if (!D) return '<section class="card"><p class="muted">공식 자료를 불러오는 중이야…</p></section>';
     var ev = D.eval || {};
     return '<div class="sl-wrap"><section class="sl-head"><h1>🏫 서초고 공식 자료</h1><p>학교알리미 평가계획 ' + e(ev.round || '') + ' · 학교 홈페이지 · 서초구 교육지원센터<br><small>2시간마다 자동 확인 · 마지막 확인 ' + e(ago(D.updated)) + '</small></p></section>' +
-      perfCard(ro) + weekCard() + ratioCard() + newsCard() + progCard() + linksCard() + '</div>';
+      perfCard(ro) + scopeCard() + weekCard() + ratioCard() + newsCard() + progCard() + linksCard() + '</div>';
   }
 
   /* 오늘 화면 요약 줄 */
@@ -225,6 +238,7 @@
     '.sl-links div{display:grid;grid-template-columns:1fr 1fr;gap:8px}.sl-links a{min-height:48px;display:flex;align-items:center;padding:6px 10px;border-radius:12px;background:#f5f3ff;color:#3a22b8;font-weight:700;font-size:13.5px;text-decoration:none;line-height:1.35}' +
     '.sl-today{display:flex!important;align-items:center;gap:10px;width:100%;min-height:56px!important;margin:0 0 12px;padding:10px 14px!important;border-radius:16px!important;border:1.5px solid #e1dcf5!important;background:#fff!important;color:#2a2550!important;text-align:left}.sl-today>span:first-child{font-size:22px;flex:none}.sl-today>span:nth-child(2){flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}.sl-today b{font-size:14.5px}.sl-today small{font-size:12.5px;color:#57546a;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.sl-today i{font-style:normal;font-size:20px;color:#5b45d6;flex:none}' +
     '.sl-offer h3{font-size:14px;margin:10px 0 6px}.sl-chips{display:flex;flex-wrap:wrap;gap:6px}.sl-chips span{font-size:13px;padding:4px 10px;border-radius:999px;background:#eef8f3;color:#145c43;font-weight:600}.sl-offer details{margin-top:8px}.sl-offer summary{cursor:pointer;min-height:40px;display:flex;align-items:center;font-weight:700;font-size:14px}.sl-fact{margin:12px 0 0;padding:10px 12px;border-radius:12px;background:#f8f7fc;font-size:13.5px}.sl-fact ul{margin:4px 0;padding-left:18px;line-height:1.6}.sl-fact small{font-size:12px;color:#57546a}' +
+    '.sl-scope>summary{cursor:pointer;list-style:none;min-height:44px;display:flex;flex-direction:column;justify-content:center;gap:2px}.sl-scope>summary::-webkit-details-marker{display:none}.sl-scope>summary b{font-size:16px;color:#2a2550}.sl-scope>summary small{font-size:12.5px;color:#6b6880}.sl-scope ul{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:8px}.sl-scope li{padding:10px 12px;border-radius:12px;background:#f8f7fc}.sl-sch{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px}.sl-sch b{font-size:14.5px;color:#2a2550}.sl-sch span{font-size:12.5px;font-weight:800;color:#fff;background:#5b45d6;border-radius:999px;padding:1px 8px}.sl-sch small{font-size:12px;color:#4f4b66;flex-basis:100%}.sl-scope li p{margin:4px 0 0;font-size:13.5px;line-height:1.55;color:#3b3758}.sl-scope a{color:#3a22b8}' +
     '.cp-c small.sl-ok{background:#e3f5ec!important;color:#145c43!important}' +
     '@media(max-width:360px){.sl-links div{grid-template-columns:1fr}}';
   document.head.appendChild(css);
