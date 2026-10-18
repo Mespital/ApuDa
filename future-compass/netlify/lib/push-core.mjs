@@ -28,3 +28,20 @@ export async function sendTo(store, role, payload, kind, onlyEndpoint) {
   if (changed) await store.setJSON('push-subs', subs);
   return sent;
 }
+
+/** 같은 시각 알림 묶음: 기기마다 끈 종류는 빼고, 남은 게 1개면 그대로, 2개 이상이면 한 알림으로 */
+export async function sendBundle(store, role, parts) {
+  const k = await vapid(store);
+  webpush.setVapidDetails('mailto:' + (env('RECOVERY_EMAIL') || 'noreply@apuda.app'), k.publicKey, k.privateKey);
+  const subs = await getSubs(store); let changed = false, sent = 0;
+  for (const [id, s] of Object.entries(subs)) {
+    if (s.role !== role) continue;
+    const ok = parts.filter((p) => !(s.prefs && s.prefs[p.kind] === false)); if (!ok.length) continue;
+    const payload = ok.length === 1 ? { title: ok[0].title, body: ok[0].body, url: ok[0].url, tag: ok[0].kind }
+      : { title: '🔔 알림 ' + ok.length + '개', body: ok.map((p) => p.title).join('\n').slice(0, 300), url: ok[0].url, tag: 'bundle' };
+    try { await webpush.sendNotification(s.sub, JSON.stringify(payload), { TTL: 6 * 3600, urgency: 'normal' }); sent++; }
+    catch (e) { if (e && (e.statusCode === 404 || e.statusCode === 410)) { delete subs[id]; changed = true; } }
+  }
+  if (changed) await store.setJSON('push-subs', subs);
+  return sent;
+}

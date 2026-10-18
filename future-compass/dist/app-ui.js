@@ -66,8 +66,10 @@
     }
     s.insertAdjacentHTML('beforeend', rings(L));
     if (img) s.querySelector('.hb-img').style.backgroundImage = getComputedStyle(img).backgroundImage;
+    var tiredBox = old.querySelector('.kp-tired');   // 지친 날 안내는 배너 밖으로 (배너 안에선 잘려 안 보였음 — 감수 ③-1)
     if (mood) { mood.classList.add('hb-mood'); var lab = mood.querySelector('span'); if (lab && !lab.querySelector('*') && !lab.dataset.kpMood) lab.remove(); s.appendChild(mood); }
     old.replaceWith(s);
+    if (tiredBox) { tiredBox.classList.add('kp-tired-out'); s.insertAdjacentElement('afterend', tiredBox); }
     if (go) s.insertAdjacentHTML('afterend', go);
   }
 

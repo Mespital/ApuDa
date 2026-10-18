@@ -24,7 +24,7 @@
   function moodRow() {
     var m = kid().mood[today()];
     return '<div class="kp-mood"><span>오늘 컨디션</span>' + MOODS.map(function (x) { return '<button type="button" data-kp-mood="' + x[0] + '" class="' + (m === x[0] ? 'on' : '') + '" aria-label="' + x[2] + '">' + x[1] + '<small>' + x[2] + '</small></button>'; }).join('') + '</div>' +
-      (m === 'tired' ? '<div class="kp-tired"><b>오늘은 A 하나만 해도 충분해 🌙</b><span>나머지는 내일로 옮겨도 괜찮아. 엄마에게는 "쉬어가는 날"이라고만 알려줄게.</span><button type="button" data-kp-light>B·C는 내일로 옮기기</button></div>' : '');
+      (m === 'tired' ? '<div class="kp-tired"><b>오늘은 A 하나만 해도 충분해 🌙</b><span>나머지는 내일로 옮겨도 괜찮아. 엄마에게는 "쉬어가는 날"이라고만 알려줄게.</span><button type="button" data-kp-light>B·C는 내일로 옮기기</button><small class="kp-help">마음이 많이 힘들면 혼자 참지 말고 엄마·선생님께 말해줘. 청소년상담 <a href="tel:02-1388">☎ 1388</a>(휴대폰은 02-1388) · 문자 1388 · 카카오톡 ‘청소년상담1388’ · 24시간 무료</small></div>' : '');
   }
   function privacyLine() {
     var P = window.FC_PLANNER ? FC_PLANNER.get() : {}, sh = P.share || {};

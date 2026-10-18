@@ -84,3 +84,30 @@ html[data-font=big] body.app .lt-mini{font-size:16px}
 .po-form select{width:auto}
 .po-btns{display:flex;gap:8px;margin:0}
 @media(max-width:360px){.po-f2{grid-template-columns:1fr}}
+/* 지친 날 안내 (배너 밖) + 도움 연락처 */
+body.app .kp-tired.kp-tired-out{margin:0 0 12px!important;border-radius:16px}
+body.app .kp-help{display:block;margin-top:6px;font-size:13px;line-height:1.5;color:#3b3758}
+body.app .kp-help a{font-weight:800;text-decoration:underline}
+.po-help p{font-size:14.5px;line-height:1.6}
+.po-help-row{display:flex;gap:8px;flex-wrap:wrap}
+body.app .po-call{display:inline-flex;align-items:center;min-height:48px;padding:6px 16px;border-radius:999px;background:#efeafe;color:#3a22b8;font-weight:800;text-decoration:none!important}
+
+/* ── 2026-10-19 감수 반영 ── */
+/* ⑥-1 손가락 터치 영역 44px (기분 버튼은 배너 공간 때문에 40px) */
+body.app :is(.set-jump a,.pl-mini,.ch-pick,.ch-link,.pl-back,.fm-pm,.pl-x,.sl-add,.hb-add,.pv-req,.set-back){min-height:44px!important}
+body.app .set-jump a{display:inline-flex;align-items:center}
+body.app #content [data-ce-env],body.app #content .cp-g button,body.app #content .ce-chip{min-height:44px!important}
+body.app .hb .hb-mood button{min-height:40px!important;width:40px}
+/* ⑥-2 작은 글씨 하한 12.5px */
+body.app #content :is(small,.small){font-size:max(12.5px,.85em)}
+body.app #content :is(.ch-b,.ep-day li span,.sl-new){font-size:12px!important}
+/* ⑥-3 큰 글씨 모드 가로 넘침·링크 밑줄 */
+html[data-font=big] body.app .set-jump{margin-left:0!important;margin-right:0!important;padding-left:0!important;padding-right:0!important}
+body.app details.card>a[href]:not([class]){text-decoration:underline;text-underline-offset:2px}
+/* ⑤-1·⑤-2 할 일 추가 버튼 중복·겹침: 바로 아래 '오늘 할 일' 카드에 + 추가가 있어 배너 버튼은 숨김 */
+body.app .hb .hb-add{display:none!important}
+/* ⑤-3 도움 버튼이 본문을 가리지 않게: 스크롤하는 동안 숨김 */
+body.po-scrolling :is(.shiro-launch,.shiro-hint){opacity:0!important;pointer-events:none;transition:opacity .15s}
+:is(.shiro-launch,.shiro-hint){transition:opacity .25s}
+body.app .ch-pick:disabled{cursor:default}
+.po-drop{margin:6px 0 0;padding:10px 12px;border-radius:14px;background:#f1edff;font-size:13.5px;line-height:1.55;color:#2a2550}

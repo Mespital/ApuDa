@@ -184,7 +184,7 @@ assert.equal(uploads[0].data.tasks.length, 0);
 assert.equal(uploads[0].data.deadlines.length, 0);
 
 // Test the actual exported push-plan body; never load or call its notification sender.
-const pushSource = read('netlify/functions/push-cron.mjs').replace(/^import .*;\n/gm, '').split('export default async')[0].replace('export function plan', 'function plan');
+const pushSource = read('netlify/functions/push-cron.mjs').replace(/^import .*;\n/gm, '').split('export default async')[0].replace(/export function /g, 'function ');
 const pushCtx = vm.createContext({ FC_ACADEMY_OCCURRENCES: r }); vm.runInContext(pushSource + ';this.pushPlan=plan;', pushCtx);
 const serverData = { fc_academy_v1: { v: JSON.stringify([academy]) }, [key]: { v: JSON.stringify([moved, future]) } };
 const planned = (date, utcTime) => pushCtx.pushPlan(serverData, {}, Date.parse(date + 'T' + utcTime + ':00Z')).items.filter(x => x.kind === 'academy');

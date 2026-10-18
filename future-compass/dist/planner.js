@@ -17,7 +17,7 @@
     p.days = p.days && typeof p.days === 'object' ? p.days : {};
     p.focus = Array.isArray(p.focus) ? p.focus.slice(-400) : [];
     var sh = p.share && typeof p.share === 'object' ? p.share : {};
-    p.share = { flow: sh.flow !== false, exams: sh.exams !== false, review: !!sh.review, questions: !!sh.questions, reflect: !!sh.reflect, mission: !!sh.mission };   // 엄마에게 보이기(승준이 고름)
+    p.share = { flow: sh.flow !== false, exams: sh.exams !== false, review: !!sh.review, questions: !!sh.questions, reflect: !!sh.reflect, mission: !!sh.mission, grades: !!sh.grades };   // 엄마에게 보이기(승준이 고름)
     p.again = p.again && typeof p.again === 'object' ? p.again : {};          // 복습 다시 보기 날짜 {reviewId:[날짜]}
     p.againDone = p.againDone && typeof p.againDone === 'object' ? p.againDone : {};
     p.dmeta = p.dmeta && typeof p.dmeta === 'object' ? p.dmeta : {};          // 시험·과제 추가 정보 {id:{imp,est,p1,p2,prog,steps}}
@@ -347,7 +347,7 @@
           '<div class="pl-row"><input name="g' + i + 'measure" maxlength="30" value="' + esc(x.measure || '') + '" placeholder="기준 (예: 주 5일)"><input name="g' + i + 'due" type="date" value="' + esc(x.due || '') + '" aria-label="기한"></div></div>';
       }).join('') +
       '<label>엄마랑 같이 볼 것 <small class="muted">(내가 정해)</small></label><div class="pl-switches">' +
-        [['flow', '이번 주 공부 흐름'], ['exams', '시험·과제 일정'], ['review', '복습 메모'], ['questions', '내가 쓴 질문'], ['reflect', '하루 마무리'], ['mission', '나의 다짐']].map(function (k) { return '<label><input type="checkbox" name="sh_' + k[0] + '"' + (P.share[k[0]] ? ' checked' : '') + '> ' + k[1] + '</label>'; }).join('') + '</div>' +
+        [['flow', '이번 주 공부 흐름'], ['exams', '시험·과제 일정'], ['review', '복습 메모'], ['questions', '내가 쓴 질문'], ['reflect', '하루 마무리'], ['mission', '나의 다짐'], ['grades', '성적·내신 목표']].map(function (k) { return '<label><input type="checkbox" name="sh_' + k[0] + '"' + (P.share[k[0]] ? ' checked' : '') + '> ' + k[1] + '</label>'; }).join('') + '</div>' +
       '<p class="muted small">켠 것만 엄마랑 나눠. 엄마는 도와줄 게 있는지 보는 용도야.</p>' +
       '<p><button class="primary">플래너 저장</button></p></form></section>';
   }
@@ -639,7 +639,7 @@
         var old = P.goals[i] || {};
         goals.push({ id: old.id || Math.random().toString(36).slice(2, 10), type: el['g' + i + 'type'].value, subject: el['g' + i + 'subject'].value, title: title.slice(0, 50), measure: el['g' + i + 'measure'].value.trim().slice(0, 30), due: el['g' + i + 'due'].value, done: old.title === title ? !!old.done : false });
       }
-      P.mission = el.mission.value.trim().slice(0, 60); P.goals = goals; ['flow', 'exams', 'review', 'questions', 'reflect', 'mission'].forEach(function (k) { P.share[k] = !!(el['sh_' + k] && el['sh_' + k].checked); });
+      P.mission = el.mission.value.trim().slice(0, 60); P.goals = goals; ['flow', 'exams', 'review', 'questions', 'reflect', 'mission', 'grades'].forEach(function (k) { P.share[k] = !!(el['sh_' + k] && el['sh_' + k].checked); });
       put(); notice('플래너를 저장했어.'); return;
     }
   }, true);

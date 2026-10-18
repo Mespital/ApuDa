@@ -34,7 +34,7 @@ body.app{background:#f3f1fa}
 .sp{position:relative;height:66px;margin:4px 0 2px}
 .sp-rail{position:absolute;left:0;right:0;top:32px;height:4px;border-radius:2px;background:#e4e1f0}
 .sp-ev{position:absolute;top:24px;height:20px;border-radius:7px;font-size:11.5px;font-weight:700;color:#fff;display:flex;align-items:center;padding:0 7px;white-space:nowrap;overflow:hidden;background:#8e80e6}
-.sp-ev.sp-ac{background:#22885a}.sp-ev.sp-life{background:#f0a92b;color:#3a2600}.sp-ev.sp-class{background:#8e80e6}
+.sp-ev.sp-ac{background:#1b7a4f}.sp-ev.sp-life{background:#f0a92b;color:#3a2600}.sp-ev.sp-class{background:#8e80e6}
 .sp-tick{position:absolute;top:50px;font-size:11px;color:#6b6880;transform:translateX(-50%)}
 .sp-now{position:absolute;left:0;top:8px;bottom:22px;width:2px;background:#f0a92b;border-radius:1px}
 .sp-now em{position:absolute;top:-8px;left:-6px;font-style:normal;font-size:11px;font-weight:700;color:#8a5a00;background:#fff3d9;padding:1px 6px;border-radius:6px;white-space:nowrap}

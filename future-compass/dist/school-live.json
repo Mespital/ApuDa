@@ -163,7 +163,14 @@
       "w": "3~4",
       "unit": "2. 미래 사회와 첨단 과학 탐구 (3) 우주 개발 사례 조사를 통해 과학 기술의 발전 방향 평가하기"
      }
-    ]
+    ],
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "cut": "fixed"
    },
    {
     "subject": "통합과학2",
@@ -315,7 +322,14 @@
       "w": "3~5",
       "unit": "전 단원 복습"
      }
-    ]
+    ],
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "cut": "est"
    },
    {
     "subject": "공통국어2",
@@ -503,7 +517,14 @@
       "unit": "기말고사",
       "exam": true
      }
-    ]
+    ],
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "cut": "est"
    },
    {
     "subject": "미술",
@@ -620,7 +641,14 @@
       "unit": "기말고사",
       "exam": true
      }
-    ]
+    ],
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "cut": "fixed"
    },
    {
     "subject": "공통수학2",
@@ -786,7 +814,14 @@
       "w": "3~5",
       "unit": "종합 정리"
      }
-    ]
+    ],
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "cut": "est"
    },
    {
     "subject": "한국사",
@@ -964,7 +999,14 @@
       "w": "4~5",
       "unit": "I. 일제 식민 통치와 민족 운동 ~ III. 오늘날의 대한민국 : 총정리 및 발표"
      }
-    ]
+    ],
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "cut": "est"
    },
    {
     "subject": "공통영어2",
@@ -1087,7 +1129,14 @@
       "w": "1~3",
       "unit": "Special Lesson / 부교재 Unit 13 빈칸추론(2), Unit 16 글의 순서"
      }
-    ]
+    ],
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "cut": "est"
    },
    {
     "subject": "음악",
@@ -1162,7 +1211,14 @@
       "unit": "2학기 수업 정리"
      }
     ],
-    "note": "공시 문서의 수행평가 시기가 1학기로 적혀 있어. 원문을 확인해줘."
+    "note": "공시 문서의 수행평가 시기가 1학기로 적혀 있어. 원문을 확인해줘.",
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "cut": "fixed"
    },
    {
     "subject": "생애 설계와 자립",
@@ -1315,7 +1371,14 @@
       "w": "3~4",
       "unit": "04. 청년 자립을 위한 복지 서비스 알아보기"
      }
-    ]
+    ],
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "cut": "est"
    },
    {
     "subject": "통합사회2",
@@ -1651,7 +1714,14 @@
       "w": "1",
       "unit": "4, 5단원"
      }
-    ]
+    ],
+    "grading": {
+     "rank": true,
+     "ach5": true,
+     "ach3": false,
+     "pf": false
+    },
+    "cut": "est"
    },
    {
     "subject": "스포츠 문화",
@@ -1736,7 +1806,14 @@
       "unit": "기말고사",
       "exam": true
      }
-    ]
+    ],
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "cut": "fixed"
    },
    {
     "subject": "체육2",
@@ -1837,7 +1914,14 @@
       "unit": "기말고사",
       "exam": true
      }
-    ]
+    ],
+    "grading": {
+     "rank": false,
+     "ach5": false,
+     "ach3": true,
+     "pf": false
+    },
+    "cut": "fixed"
    }
   ],
   "offered": {

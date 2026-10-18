@@ -20,7 +20,7 @@ const DEST = path.join(ROOT, 'dist/school-live.json');
 const FIX = (() => { const i = process.argv.indexOf('--fixtures'); return i > 0 ? process.argv[i + 1] : ''; })();
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36';
 const SI = 'https://www.schoolinfo.go.kr';
-const PARSER = 3;   // 해석 규칙을 고치면 올린다 → 같은 공시 회차라도 다시 받아 해석
+const PARSER = 4;   // 해석 규칙을 고치면 올린다 → 같은 공시 회차라도 다시 받아 해석
 const SCHOOL = { name: '서초고등학교', home: 'https://seocho.sen.hs.kr', entryYear: 2026 };
 const KST = () => new Date(Date.now() + 9 * 3600e3);
 const nowIso = () => new Date().toISOString();
@@ -89,6 +89,8 @@ function parsePlan(md, filename) {
       const on = (s) => /○|O|●|◯|V|√|v/.test(s);
       doc.grading = { rank: on(at(/석차/)), ach5: on(at(/5\s*단계/)), ach3: on(at(/3\s*단계/)), pf: on(at(/이수|P\/F/)) };
     }
+    const all = ovw.rows.flat().join(' ');   // 분할점수 산출 방식: 고정(90·80·70·60 등 미리 정함) / 추정(시험마다 성취수준별로 정함)
+    doc.cut = /추정\s*분할/.test(all) ? 'est' : /고정\s*분할/.test(all) ? 'fixed' : null;
   }
   // 진도(교수학습 운영계획 표들)
   doc.timeline = []; let label = '';
@@ -254,7 +256,7 @@ async function schoolinfo(prev) {
     checked: nowIso(), fetched: nowIso(), shl, round, year, grade,
     source: SI + '/ei/ss/pneiss_a03_s0.do',
     parser: PARSER,
-    subjects: mine.map((d) => ({ subject: d.subject, semester: d.semester, classes: d.classes || null, ratio: d.ratio || null, tasks: d.tasks, timeline: d.timeline, note: d.taskNote })),
+    subjects: mine.map((d) => ({ subject: d.subject, semester: d.semester, classes: d.classes || null, ratio: d.ratio || null, grading: d.grading || null, cut: d.cut || null, tasks: d.tasks, timeline: d.timeline, note: d.taskNote })),
     offered, catalog, unreadable: docs.filter((d) => d.unreadable).map((d) => d.file),
   };
 }
@@ -377,7 +379,7 @@ async function parseDir(dir) {
   }
   if (process.argv.includes('--write')) {   // 받아둔 원본으로 dist 데이터 다시 만들기 (공시 회차 정보는 기존 값 유지)
     const cur = JSON.parse(await fs.readFile(DEST, 'utf-8'));
-    cur.eval.subjects = out.filter((d) => d.grade === cur.eval.grade).map((d) => ({ subject: d.subject, semester: d.semester, classes: d.classes || null, ratio: d.ratio || null, tasks: d.tasks, timeline: d.timeline, note: d.taskNote }));
+    cur.eval.subjects = out.filter((d) => d.grade === cur.eval.grade).map((d) => ({ subject: d.subject, semester: d.semester, classes: d.classes || null, ratio: d.ratio || null, grading: d.grading || null, cut: d.cut || null, tasks: d.tasks, timeline: d.timeline, note: d.taskNote }));
     if (process.env.SEM) out.forEach((d) => { d._sem = Number(process.env.SEM); });
     cur.eval.catalog = buildCatalog(out); cur.eval.parser = 0;   // 서버 수집이 원본을 다시 받아 확정하도록 버전은 비워 둔다
     await fs.writeFile(DEST, JSON.stringify(cur, null, 1) + '\n'); console.log('written', cur.eval.subjects.length);
@@ -385,6 +387,7 @@ async function parseDir(dir) {
   console.log(JSON.stringify(out.filter((d) => process.env.ALLG || d.grade === 1).map((d) => ({ s: d.subject, g: d.grade, h: d.hours, gr: d.grading, cls: d.classes, r: d.ratio, t: d.tasks.map((x) => [x.when, x.title.slice(0, 24), x.pct, (x.parts || []).length, (x.rubric || []).length]) })), null, 0));
 }
 async function main() {
+  const pm = process.argv.indexOf('--parse-md'); if (pm > 0) { const dir = process.argv[pm + 1]; for (const f of (await fs.readdir(dir)).filter((x) => /1학년|공통|통합|한국사|과학탐구|체육2|음악\)|생애/.test(x) && x.endsWith('.md'))) { const d = parsePlan(await fs.readFile(path.join(dir, f), 'utf-8'), f); if (d.grade === 1) console.log(d.subject, JSON.stringify(d.grading), d.cut); } return; }
   const pd = process.argv.indexOf('--parse-dir'); if (pd > 0) return parseDir(process.argv[pd + 1]);
   const pl = process.argv.indexOf('--parse-letter'); if (pl > 0) { const md = await fs.readFile(process.argv[pl + 1], 'utf-8'); console.log(JSON.stringify(process.argv[pl + 2] === 'tt' ? parseTimetable(md, '2026', ['공통국어2', '공통수학2', '공통영어2', '한국사2', '한국사', '통합사회2', '통합과학2', '생애 설계와 자립']) : parseScope(md), null, 1)); return; }
   let prev = {}; try { prev = JSON.parse(await fs.readFile(DEST, 'utf-8')); } catch (e) {}
