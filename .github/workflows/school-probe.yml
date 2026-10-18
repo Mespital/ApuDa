@@ -1,0 +1,16 @@
+name: School sources probe (temporary)
+on:
+  push:
+    branches: [feat/school-live]
+    paths: ['future-compass/scripts/probe-sources.mjs', '.github/workflows/school-probe.yml']
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save iconv-lite@0.6.3
+      - run: node future-compass/scripts/probe-sources.mjs probe-out
+      - uses: actions/upload-artifact@v4
+        with: { name: probe-out, path: probe-out, retention-days: 1 }
