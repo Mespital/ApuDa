@@ -20,6 +20,7 @@ const DEST = path.join(ROOT, 'dist/school-live.json');
 const FIX = (() => { const i = process.argv.indexOf('--fixtures'); return i > 0 ? process.argv[i + 1] : ''; })();
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36';
 const SI = 'https://www.schoolinfo.go.kr';
+const PARSER = 2;   // 해석 규칙을 고치면 올린다 → 같은 공시 회차라도 다시 받아 해석
 const SCHOOL = { name: '서초고등학교', home: 'https://seocho.sen.hs.kr', entryYear: 2026 };
 const KST = () => new Date(Date.now() + 9 * 3600e3);
 const nowIso = () => new Date().toISOString();
@@ -46,7 +47,11 @@ function blocks(md) {
     }
     if (/^\s*\|/.test(l)) {
       const rows = [];
-      while (i < lines.length && /^\s*\|/.test(lines[i])) { const r = lines[i].trim().replace(/^\||\|$/g, '').split('|').map(strip); if (!r.every((c) => /^-+$/.test(c))) rows.push(r); i++; }
+      while (i < lines.length && /^\s*\|/.test(lines[i])) {
+        let row = lines[i].trim();
+        while (!/\|\s*$/.test(row) && i + 1 < lines.length && !/^\s*\|/.test(lines[i + 1])) row += ' ' + lines[++i].trim();   // 칸 안 줄바꿈 이어 붙이기
+        const r = row.replace(/^\||\|$/g, '').split('|').map(strip); if (!r.every((c) => /^-+$/.test(c))) rows.push(r); i++;
+      }
       out.push({ t: 'table', rows }); continue;
     }
     const s = strip(l.replace(/^#+\s*/, '').replace(/\*\*/g, ''));
@@ -66,6 +71,8 @@ function parsePlan(md, filename) {
     doc.grade = Number((v[h.indexOf('학년')] || '').replace(/\D/g, '')) || null;
     doc.semester = Number((v[h.indexOf('학기')] || '').replace(/\D/g, '')) || null;
     doc.subject = v[h.indexOf('과목')] || '';
+    const cls = (v[h.indexOf('학급')] || '').match(/\d+/g);
+    if (cls && cls.length) doc.classes = [Number(cls[0]), Number(cls[cls.length - 1])];
   }
   if (!doc.subject) { const m = /\(\s*([^()]+?)\s*\)\s*과/.exec(filename) || /2학기\s+(.+?)과?\s*교수/.exec(filename); doc.subject = m ? m[1].trim() : filename; }
   if (!doc.grade) { const m = /(?<![0-9])([1-3])학년/.exec(filename); doc.grade = m ? Number(m[1]) : null; }
@@ -106,9 +113,13 @@ function parsePlan(md, filename) {
     const col = (re) => h.findIndex((c) => re.test(c));
     const ci = { when: col(/시기/), type: col(/유형/), title: col(/과제명|영역|과제/), how: col(/방법/), pts: col(/배점/), pct: col(/비율/) };
     ovT.rows.slice(1).forEach((r) => {
-      if (r.length < h.length - 1) return;   // 한 과제 아래 세부 줄(실기·발표 등)은 과제로 세지 않음
+      if (r.length < h.length - 1) {   // 한 과제 아래 세부 줄(실기·발표 등) → 앞 과제에 합침
+        const prev = doc.tasks[doc.tasks.length - 1], pc = pctNum(r[r.length - 1]);
+        if (prev && pc != null) { (prev.parts = prev.parts || [{ type: prev.type, pct: prev.pct }]).push({ type: r[0].slice(0, 30), how: (r[1] || '').slice(0, 160), pct: pc }); prev.pct = (prev.pct || 0) + pc; }
+        return;
+      }
       const g = (k) => (ci[k] >= 0 ? r[ci[k]] || '' : '');
-      if (!g('title') || /합계|계$/.test(g('title'))) return;
+      if (!g('title') || /^(합계|소계|계|총계)$/.test(g('title').replace(/\s/g, ''))) return;
       doc.tasks.push({ when: g('when'), type: g('type'), title: g('title').slice(0, 120), how: g('how').slice(0, 220), pts: g('pts'), pct: pctNum(g('pct')) });
     });
   }
@@ -175,7 +186,7 @@ async function schoolinfo(prev) {
   }
   const sel = /<option\s+value="(\d{4})(\d+)"\s*selected\s*>\s*([^<]*)<\/option>/i.exec(html);
   const round = sel ? sel[3].trim() : '';
-  const fresh = prev && prev.round === round && prev.fetched && Date.now() - Date.parse(prev.fetched) < 7 * 864e5 && !FIX;
+  const fresh = prev && prev.round === round && prev.parser === PARSER && prev.fetched && Date.now() - Date.parse(prev.fetched) < 7 * 864e5 && !FIX;
   if (fresh) return { ...prev, checked: nowIso() };
   const fi = html.indexOf('eiFileDownForm'), seg = html.slice(fi, html.indexOf('</form>', fi));
   const params = {}; for (const m of seg.matchAll(/name="([A-Za-z_]\w*)"[^>]*?value="([^"]*)"/g)) if (!(m[1] in params) && /^[\w.\-]*$/.test(m[2])) params[m[1]] = m[2];
@@ -195,7 +206,8 @@ async function schoolinfo(prev) {
   return {
     checked: nowIso(), fetched: nowIso(), shl, round, year, grade,
     source: SI + '/ei/ss/pneiss_a03_s0.do',
-    subjects: mine.map((d) => ({ subject: d.subject, semester: d.semester, ratio: d.ratio || null, tasks: d.tasks, timeline: d.timeline, note: d.taskNote })),
+    parser: PARSER,
+    subjects: mine.map((d) => ({ subject: d.subject, semester: d.semester, classes: d.classes || null, ratio: d.ratio || null, tasks: d.tasks, timeline: d.timeline, note: d.taskNote })),
     offered, unreadable: docs.filter((d) => d.unreadable).map((d) => d.file),
   };
 }
@@ -239,7 +251,20 @@ async function programs() {
   return { checked: nowIso(), items: out.slice(0, 20) };
 }
 
+async function parseDir(dir) {
+  const out = [];
+  for (const f of (await fs.readdir(dir)).filter((x) => /\.(hwpx?|pdf)$/i.test(x))) {
+    const md = await toMarkdown(await fs.readFile(path.join(dir, f))); if (md.length > 200) out.push(parsePlan(md, f));
+  }
+  if (process.argv.includes('--write')) {   // 받아둔 원본으로 dist 데이터 다시 만들기 (공시 회차 정보는 기존 값 유지)
+    const cur = JSON.parse(await fs.readFile(DEST, 'utf-8'));
+    cur.eval.subjects = out.filter((d) => d.grade === cur.eval.grade).map((d) => ({ subject: d.subject, semester: d.semester, classes: d.classes || null, ratio: d.ratio || null, tasks: d.tasks, timeline: d.timeline, note: d.taskNote }));
+    cur.eval.parser = PARSER; await fs.writeFile(DEST, JSON.stringify(cur, null, 1) + '\n'); console.log('written', cur.eval.subjects.length);
+  }
+  console.log(JSON.stringify(out.filter((d) => d.grade === 1).map((d) => ({ s: d.subject, cls: d.classes, r: d.ratio, t: d.tasks.map((x) => [x.when, x.title.slice(0, 24), x.pct, (x.parts || []).length, (x.rubric || []).length]) })), null, 0));
+}
 async function main() {
+  const pd = process.argv.indexOf('--parse-dir'); if (pd > 0) return parseDir(process.argv[pd + 1]);
   let prev = {}; try { prev = JSON.parse(await fs.readFile(DEST, 'utf-8')); } catch (e) {}
   const out = { ...prev, school: SCHOOL.name, updated: nowIso() }, log = [];
   for (const [k, fn] of [['eval', () => schoolinfo(prev.eval)], ['news', schoolNews], ['programs', programs]]) {

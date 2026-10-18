@@ -46,9 +46,14 @@
     if (order(first) === order(cm) + 1) return { k: 'next', label: t.when };
     return { k: 'later', label: t.when };
   }
+  /* 우리 반 과목만 (평가계획 표지의 대상 반 → 1~5반 음악·생애 설계, 6~10반 미술·스포츠 문화 등) */
+  function myClass() { var c = (window.FC_SCHOOL && FC_SCHOOL.config && FC_SCHOOL.config.classNo) || ''; try { c = localStorage.getItem('fc_school_class') || c; } catch (x) {} return Number(String(c).replace(/\D/g, '')) || 0; }
+  function inClass(s) { var c = myClass(); return !c || !s.classes || (c >= s.classes[0] && c <= s.classes[1]); }
+  function mySubjects() { var ev = D && D.eval; return ev && ev.subjects ? ev.subjects.filter(inClass) : []; }
+  function otherSubjects() { var ev = D && D.eval; return ev && ev.subjects ? ev.subjects.filter(function (s) { return !inClass(s); }) : []; }
   function allTasks() {
-    var ev = D && D.eval, out = []; if (!ev || !ev.subjects) return out;
-    ev.subjects.forEach(function (s) { (s.tasks || []).forEach(function (t, i) { out.push({ s: s, t: t, id: s.subject + '#' + i, st: taskStatus(t) }); }); });
+    var out = [];
+    mySubjects().forEach(function (s) { (s.tasks || []).forEach(function (t, i) { out.push({ s: s, t: t, id: s.subject + '#' + i, st: taskStatus(t) }); }); });
     var rank = { now: 0, soon: 1, always: 2, next: 3, later: 4, unknown: 5, past: 6 };
     return out.sort(function (a, b) { return rank[a.st.k] - rank[b.st.k] || (months(a.t.when)[0] ? order(months(a.t.when)[0]) : 99) - (months(b.t.when)[0] ? order(months(b.t.when)[0]) : 99); });
   }
@@ -60,7 +65,8 @@
     var tag = { now: '이번 달', soon: '곧', always: '상시', next: '다음 달', later: '', unknown: '', past: '지남' }[k];
     var h = '<li class="sl-t sl-' + k + '"><details' + (opened[x.id] ? ' open' : '') + ' data-sl-rub="' + id + '"><summary><div class="sl-th"><span class="sl-sub">' + e(x.s.subject) + '</span>' + (tag ? '<span class="sl-tag">' + tag + '</span>' : '') + '<small>' + e(t.when || '') + '</small>' + (a ? '<em class="sl-done">📅 ' + md(a.date) + '</em>' : '') + '</div>' +
       '<b>' + e(t.title) + '</b><p class="sl-meta">' + e([t.type, t.pts && t.pts + (/점/.test(t.pts) ? '' : '점'), t.pct != null ? '학기 성적의 ' + t.pct + '%' : ''].filter(Boolean).join(' · ')) + '</p></summary>' +
-      (t.how ? '<p class="sl-how">' + e(t.how) + '</p>' : '');
+      (t.how ? '<p class="sl-how">' + e(t.how) + '</p>' : '') +
+      (t.parts && t.parts.length > 1 ? '<p class="sl-how">구성: ' + t.parts.map(function (q) { return e(q.type) + ' ' + q.pct + '%'; }).join(' + ') + '</p>' : '');
     if (t.rubric && t.rubric.length) h += '<div class="sl-rub"><p class="sl-rh">🎯 만점 받으려면 (채점 기준 ' + t.rubric.length + '개)</p><ol>' + t.rubric.map(function (r) { return '<li><b>' + e(r.el) + '</b>' + (r.pts ? ' <small>' + e(String(r.pts).replace(/점$/, '')) + '점</small>' : '') + '<p>' + e(r.top) + '</p></li>'; }).join('') + '</ol></div>';
     if (!ro && k !== 'past') h += '<div class="sl-act">' + (a ? '<span class="sl-done">📅 ' + md(a.date) + ' 시험·과제에 있음</span>' : '<label class="sl-date"><span>날짜 정해지면</span><input type="date" data-sl-date="' + id + '" aria-label="' + e(t.title) + ' 날짜"></label>') + '<button type="button" data-sl-prep="' + id + '">＋ 오늘 준비 할 일</button></div>';
     return h + '</details></li>';
@@ -71,11 +77,17 @@
     return '<section class="card sl-card" id="sl-perf"><h2>📝 이번 달·다음 달 수행평가 <small>' + main.length + '개</small></h2>' +
       '<p class="muted small">서초고가 학교알리미에 공시한 2학기 평가계획 기준이야. 눌러서 만점 기준·날짜 넣기. 정확한 날짜는 선생님 안내로 확정돼.</p>' +
       (main.length ? '<ul class="sl-tl">' + main.map(function (x) { return taskRow(x, ro); }).join('') + '</ul>' : '<p class="muted">이번 달·다음 달 수행평가가 없어.</p>') +
-      (rest.length ? '<details class="sl-more"><summary>나머지 ' + rest.length + '개 (지난 것·시기 미정)</summary><ul class="sl-tl">' + rest.map(function (x) { return taskRow(x, ro); }).join('') + '</ul></details>' : '') + '</section>';
+      (rest.length ? '<details class="sl-more"><summary>나머지 ' + rest.length + '개 (지난 것·시기 미정)</summary><ul class="sl-tl">' + rest.map(function (x) { return taskRow(x, ro); }).join('') + '</ul></details>' : '') +
+      classNote() + '</section>';
+  }
+  function classNote() {
+    var c = myClass(), oth = otherSubjects(), notes = mySubjects().filter(function (s) { return s.note; });
+    return (notes.length ? '<p class="sl-warn">⚠️ ' + notes.map(function (s) { return '<b>' + e(s.subject) + '</b>: ' + e(s.note); }).join('<br>') + '</p>' : '') +
+      (c ? '<p class="muted small">1학년 ' + c + '반 기준이야.' + (oth.length ? ' ' + oth.map(function (s) { return e(s.subject) + '(' + s.classes[0] + '~' + s.classes[1] + '반)'; }).join(' · ') + '은 다른 반 과목이라 뺐어.' : '') + '</p>' : '');
   }
   function ratioCard() {
     var ev = D && D.eval; if (!ev || !ev.subjects) return '';
-    var rows = ev.subjects.filter(function (s) { return s.ratio; });
+    var rows = mySubjects().filter(function (s) { return s.ratio; });
     return '<details class="card sl-card sl-ratio"><summary><b>⚖️ 과목별 성적 반영</b><small>수행평가 vs 지필(중간·기말)</small></summary><table><thead><tr><th>과목</th><th>수행</th><th>지필</th></tr></thead><tbody>' +
       rows.map(function (s) { var r = s.ratio, ex = r.exam; return '<tr><td>' + e(s.subject) + '</td><td><span class="sl-bar"><i style="width:' + (r.perf || 0) + '%"></i></span>' + (r.perf != null ? r.perf + '%' : '-') + '</td><td>' + (ex ? ex + '%' + (r.mid ? '<small>중간 ' + r.mid + ' · 기말 ' + r.fin + '</small>' : r.fin ? '<small>기말만</small>' : '') : '없음') + '</td></tr>'; }).join('') +
       '</tbody></table><p class="muted small">수행평가 비중이 큰 과목은 과제 하나가 시험 한 번만큼 중요해.' + (rows.some(function (s) { return s.note; }) ? ' ' + rows.filter(function (s) { return s.note; }).map(function (s) { return e(s.subject) + ': ' + e(s.note); }).join(' ') : '') + '</p></details>';
@@ -83,7 +95,7 @@
   function weekCard() {
     var ev = D && D.eval; if (!ev || !ev.subjects) return '';
     var m = curM(), w = curW(), rows = [];
-    ev.subjects.forEach(function (s) {
+    mySubjects().forEach(function (s) {
       var hit = (s.timeline || []).filter(function (x) { if (x.m !== m || x.exam) return false; var r = wkRange(x.w); return !r || (w >= r[0] && w <= r[1]); });
       var secs = {}; hit.forEach(function (x) { if (!secs[x.sec || '']) secs[x.sec || ''] = x; });
       Object.keys(secs).forEach(function (k) { rows.push({ s: s.subject, sec: k, u: secs[k].unit }); });
@@ -205,7 +217,7 @@
     '.sl-t summary>b{display:block;font-size:15.5px;line-height:1.4;color:#2a2550}.sl-meta{margin:4px 0 0;font-size:13px;color:#4f4b66;font-weight:600}.sl-how{margin:6px 0 0;font-size:13.5px;line-height:1.55;color:#3b3758}' +
     '.sl-t>details>summary{list-style:none;cursor:pointer}.sl-t>details>summary::-webkit-details-marker{display:none}.sl-t>details>summary::after{content:"자세히 ▾";display:block;margin-top:4px;font-size:12px;font-weight:700;color:#5b45d6}.sl-t>details[open]>summary::after{content:"접기 ▴"}.sl-th em{font-style:normal;margin-left:auto}.sl-rub{margin-top:8px;border-radius:12px;background:#f5f3ff;padding:8px 10px}.sl-rh{margin:0 0 6px;font-weight:800;font-size:13.5px;color:#3a22b8}.sl-rub ol{margin:0;padding-left:18px;display:grid;gap:6px}.sl-rub li{font-size:13.5px;line-height:1.5}.sl-rub li small{color:#5b45d6;font-weight:800}.sl-rub li p{margin:2px 0 0;color:#3b3758}' +
     '.sl-act{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:10px}.sl-act button{min-height:42px!important;padding:6px 12px!important;border-radius:999px!important;font-size:13.5px;font-weight:700}.sl-date{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:#4f4b66;margin:0}.sl-date input{min-height:42px;width:auto!important;padding:4px 8px;border-radius:10px;border:1.5px solid #e1dcf5;font:inherit;font-size:14px}.sl-done{font-size:13px;font-weight:700;color:#187a5c}' +
-    '.sl-more{margin-top:10px}.sl-more summary,.sl-ratio>summary,.sl-week>summary{cursor:pointer;min-height:44px;display:flex;flex-direction:column;justify-content:center;gap:2px}.sl-ratio>summary,.sl-week>summary{list-style:none}.sl-ratio>summary::-webkit-details-marker,.sl-week>summary::-webkit-details-marker{display:none}.sl-ratio>summary b,.sl-week>summary b{font-size:16px;color:#2a2550}.sl-ratio>summary small,.sl-week>summary small{font-size:12.5px;color:#6b6880}.sl-more summary{font-weight:700;font-size:14px;color:#2a2550}' +
+    '.sl-more{margin-top:10px}.sl-warn{margin:12px 0 0;padding:10px 12px;border-radius:12px;background:#fff6e6;color:#4a3500;font-size:13.5px;line-height:1.55}.sl-more summary,.sl-ratio>summary,.sl-week>summary{cursor:pointer;min-height:44px;display:flex;flex-direction:column;justify-content:center;gap:2px}.sl-ratio>summary,.sl-week>summary{list-style:none}.sl-ratio>summary::-webkit-details-marker,.sl-week>summary::-webkit-details-marker{display:none}.sl-ratio>summary b,.sl-week>summary b{font-size:16px;color:#2a2550}.sl-ratio>summary small,.sl-week>summary small{font-size:12.5px;color:#6b6880}.sl-more summary{font-weight:700;font-size:14px;color:#2a2550}' +
     '.sl-ratio table{width:100%;border-collapse:collapse;margin-top:8px;font-size:14px}.sl-ratio th{text-align:left;font-size:12.5px;color:#4f4b66;padding:6px 4px;border-bottom:1.5px solid #e6e2f5}.sl-ratio td{padding:8px 4px;border-bottom:1px solid #f0eef7;vertical-align:middle}.sl-ratio td small{display:block;font-size:11.5px;color:#57546a}.sl-bar{display:inline-block;width:46px;height:8px;border-radius:999px;background:#ece8fc;margin-right:6px;vertical-align:middle;overflow:hidden}.sl-bar i{display:block;height:100%;background:#5b45d6}' +
     '.sl-week ul{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:8px}.sl-week li{padding:10px 12px;border-radius:12px;background:#f8f7fc}.sl-week li span{font-size:13px;font-weight:800;color:#5b45d6}.sl-week li span small{color:#57546a}.sl-week li p{margin:3px 0 0;font-size:14px;line-height:1.5;color:#2a2550}' +
     '.sl-news h3{font-size:14px;margin:12px 0 6px;color:#2a2550}.sl-news ul,.sl-prog ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}.sl-news li{display:flex;align-items:baseline;gap:8px}.sl-news li a{flex:1;min-width:0;font-size:14px;color:#2a2550;text-decoration:underline;text-underline-offset:3px;line-height:1.5}.sl-news li small{flex:none;font-size:12.5px;color:#57546a}.sl-new{display:inline-block;margin-right:6px;font-size:11px;font-weight:800;color:#fff;background:#c2410c;border-radius:6px;padding:1px 5px;text-decoration:none}' +
