@@ -1,6 +1,7 @@
 hit {"LAT":37.4892551532,"LNG":127.0054863224,"LCTN_NM":"서울","LCTN_SC_CD":"01","FOND_SC_NM":"공립","FNDN_SC_CD":"2","SHL_CRSE_SC_CD":"04","SCHUL_KIND":"04","USER_DFN_CODE_VALUE_03":"서초동","USER_DFN_CODE_VALUE_02":"서초구","USER_DFN_CODE_VALUE_01":"서울특별시","SHL_NM":"서초고등학교","SIDO_CODE":"1100000000","SHL_IDF_CD":"5c571812-c664-4495-be26-6b9fb997a233","SHL_CD":"B100000463","FULL_ADDR":"서울특별시 서초구 서초동","GUGUN_COD
-files [{"seq":"2","name":"2026학년도 서초고 학업성적관리규정 (04.15.).hwp"}]
+files [{"seq":"3","name":"26학년도 2학기 정보공시.zip"},{"seq":"2","name":"2026학년도 서초고 학업성적관리규정 (04.15.).hwp"}]
 params {"SHL_IDF_CD":"5c571812-c664-4495-be26-6b9fb997a233","JG_BURYU_CD":"JG040","JG_HANGMOK_CD":"14","JG_GUBUN":"1","JG_YEAR":"2026","JG_CHASU":"3","USE_YN":"Y","FILE_SEQ":""}
+dl 3 200 7187987 attachment;filename=26%ED%95%99%EB%85%84%EB%8F%84 2%ED%95%99%EA%B8%B0 %EC%A0%95%EB%B3%B4%EA%B3%B5%EC%8B%9C.zip;
 dl 2 200 145920 attachment;filename=2026%ED%95%99%EB%85%84%EB%8F%84 %EC%84%9C%EC%B4%88%EA%B3%A0 %ED%95%99%EC%97%85%EC%84%B1%EC%A0%81%EA%B4%80%EB%A6%AC%EA%B7%9C%EC%A0%95 (04.15.).hwp;
 seochoedu-home.html 200 https://www.seochoedu.or.kr/index.do
 seochoedu-prgrm-yangjae.html 200 https://seochoedu.or.kr/user/prgrm/yangjae/BD_selectPrgrmList.do
