@@ -1,7 +1,10 @@
 200 https://seocho.sen.hs.kr/75977/subMenu.do 512543 text/html; charset=utf-8 
 200 https://seocho.sen.hs.kr/dggb/module/board/selectBoardListAjax.do 21834 text/html; charset=utf-8 
 list ids 27543433,27536786,27536770,27502759,27502741,27502731,27502703,27502693,27502687,27502622
-200 https://seocho.sen.hs.kr/dggb/module/board/selectBoardDetailAjax.do 13189 text/html; charset=utf-8 
-detail 27536770 links: 
-200 https://seocho.sen.hs.kr/dggb/module/board/selectBoardDetailAjax.do 13168 text/html; charset=utf-8 
-detail 27543433 links: 
+200 https://seocho.sen.hs.kr/dggb/module/board/selectBoardDetailAjax.do 13544 text/html; charset=utf-8 
+detail 27502687 files: 2026학년도 2학년 2학기 중간고사 시험범위 안내 가정통신문.pdf FILE_000000012456475:1 | 2026학년도 1학년 2학기 중간고사 시험범위 안내 가정통신문.pdf FILE_000000012456475:2
+200 https://seocho.sen.hs.kr/dggb/board/boardFile/downFile.do?atchFileId=FILE_000000012456475&fileSn=1 82807 application/x-msdownload;charset=UTF-8 attachment; filename=2026%ED%95%99%EB%85%84%EB%8F%84 2%ED%95%99%EB%85%84 2%ED%95%99%EA%B8%B0 %EC%A4%91%EA%B0%84%EA%B3%A0%EC%82%AC %EC%8B%9C%ED%97%98%EB%B2%94%EC%9C%84 %EC%95%88%EB%82%B4 %EA%B0%80%EC%A0%95%ED%86%B5%EC%8B%A0%EB%AC%B8.pdf
+200 https://seocho.sen.hs.kr/dggb/board/boardFile/downFile.do?atchFileId=FILE_000000012456475&fileSn=2 71524 application/x-msdownload;charset=UTF-8 attachment; filename=2026%ED%95%99%EB%85%84%EB%8F%84 1%ED%95%99%EB%85%84 2%ED%95%99%EA%B8%B0 %EC%A4%91%EA%B0%84%EA%B3%A0%EC%82%AC %EC%8B%9C%ED%97%98%EB%B2%94%EC%9C%84 %EC%95%88%EB%82%B4 %EA%B0%80%EC%A0%95%ED%86%B5%EC%8B%A0%EB%AC%B8.pdf
+200 https://seocho.sen.hs.kr/dggb/module/board/selectBoardDetailAjax.do 13177 text/html; charset=utf-8 
+detail 27502703 files: 2026학년도 전 학년 2학기 중간고사 시간표 가정통신문.pdf FILE_000000012456483:0
+200 https://seocho.sen.hs.kr/dggb/board/boardFile/downFile.do?atchFileId=FILE_000000012456483&fileSn=0 76603 application/x-msdownload;charset=UTF-8 attachment; filename=2026%ED%95%99%EB%85%84%EB%8F%84 %EC%A0%84 %ED%95%99%EB%85%84 2%ED%95%99%EA%B8%B0 %EC%A4%91%EA%B0%84%EA%B3%A0%EC%82%AC %EC%8B%9C%EA%B0%84%ED%91%9C %EA%B0%80%EC%A0%95%ED%86%B5%EC%8B%A0%EB%AC%B8.pdf
