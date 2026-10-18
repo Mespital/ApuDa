@@ -1,0 +1,6 @@
+200 https://seocho.sen.hs.kr/dggb/module/board/selectBoardListAjax.do 9960 text/html; charset=utf-8 
+letters ids 
+200 https://seocho.sen.hs.kr/75976/subMenu.do 512566 text/html; charset=utf-8 
+notice bbsId BBSMSTR_000000011309
+200 https://seocho.sen.hs.kr/dggb/module/board/selectBoardListAjax.do 9957 text/html; charset=utf-8 
+notice ids 

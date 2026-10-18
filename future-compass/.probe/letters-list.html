@@ -1,0 +1,401 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<head>
+
+<link rel="shortcut icon" href="/images/favicon.ico" />
+<script type="text/javascript" src="/js/dggb/common/common.js?ver=1"></script>
+
+<script>
+var param={
+		url : location.href			
+};
+
+
+</script>
+</head>
+		  
+
+
+
+
+ 
+
+	
+	
+		
+	
+
+
+
+
+<script type="text/javascript">
+
+// 숫자가 아닌 정규식
+var replaceNotInt = /[^0-9]/gi;
+
+var title = document.getElementsByTagName("title")[0].innerHTML;
+if ( title.split('|').length > 2) {
+	document.title =  "목록 | " + title.substr(5);
+}
+else {
+	document.title = "목록 | " + title;
+}
+
+$(document).ready(function(){
+
+	// 숫자가 아닌 정규식
+	$("#pageIndex").on("focusout", function() {
+        var x = $(this).val();
+        if (x.length > 0) {
+            if (x.match(replaceNotInt)) {
+               x = x.replace(replaceNotInt, "");
+            }
+            $(this).val(x);
+        }
+    }).on("keyup", function() {
+        $(this).val($(this).val().replace(replaceNotInt, ""));
+    });
+	//
+	
+	$("[id='regist_btn']").click(function (){ 	
+		$.ajax({
+	        type:'POST'
+	      , url:'/dggb/module/board/registBoardPageAjax.do'
+	      , cache : false
+	      , async : false
+	      , data:$("#boardFrm").serialize()
+	      , success:function (data) {
+	    	  $('#board_area').html(data);
+	      }
+	      , error:function (data) {
+	          alert('오류');
+	      }
+	      , dateType: 'html'
+	 	});   
+	});
+	
+	$("#delete_btn").click(function (){
+		var checkCnt = 0;
+		var checkNttId = "";
+		for (var i = 0; i < document.getElementsByName("nttIdChk").length; i++){
+			if (document.getElementsByName("nttIdChk")[i].checked == true){
+				checkNttId += document.getElementsByName('nttIdChk')[i].value + ",";
+				checkCnt++;
+			}
+		}
+		if(checkCnt < 1){
+			alert("체크박스를 선택해주세요.");
+			return;
+		}
+		if(confirm("게시글을 삭제하시겠습니까?")){
+			document.getElementById('checkNttId').value = checkNttId;
+			$.ajax({
+				type:'POST'
+				, url:'/dggb/module/module/board/deleteBoardCheckAjax.do'
+				, cache : false
+				, async : false
+				, data:$("#boardFrm").serialize()
+				, success:function (data) {
+					$('#board_area').html(data);
+				}
+				, error:function (data) {
+				    alert('오류');
+				}
+	      	});
+		}else{
+			return;
+		}
+	});
+	
+	$("#move_btn").click(function (){
+		var checkCnt = 0;
+		var checkNttId = "";
+		for (var i = 0; i < document.getElementsByName("nttIdChk").length; i++){
+			if (document.getElementsByName("nttIdChk")[i].checked == true && document.getElementsByName("nttIdChk")[i].disabled == false){
+				checkNttId += document.getElementsByName('nttIdChk')[i].value + ",";
+				checkCnt++;
+			}
+		}
+		if(checkCnt < 1){
+			alert("체크박스를 선택해주세요.");
+			return;
+		}
+		document.getElementById('checkNttId').value = checkNttId;
+		
+		$.ajax({
+	        type:'POST'
+	      , url:'/dggb/module/board/boardCmmn/mvmnBoardPageAjax.do'
+	      , cache : false
+	      , async : false
+	      , data:$("#boardFrm").serialize()
+	      , success:function (data) {
+	    	  $("#boardMngr_layer").html(data);
+	    	  $("#boardMngr_layer").show();
+	      }
+	      , error:function (request, status, error) {
+	    	  alert("code : " + request.status + "\r\nmessage : " + request.reponseText);
+	      }
+	      , dateType: 'html'
+	 	});
+	});
+	
+	$("#login_regist_btn").click(function (){
+		alert("정책참여 게시판 글쓰기는 로그인 후 이용해주세요.");		
+		window.location.href ="https://member.newhosting.ssem.or.kr/dggb/mber/mberLogin/mberLogin.do?baseInfo=";
+	});	
+});//
+
+	
+	function fnPage(pageNo){
+		document.getElementById('pageIndex').value = pageNo;
+		
+		$.ajax({
+	        type:'POST'
+	      , url:'/dggb/module/board/selectBoardListAjax.do'
+	      , cache : false
+	      , async : false
+	      , data:$("#boardFrm").serialize()
+	      , success:function (data) {
+	    	  $('#board_area').html(data);
+	      }
+	      , error:function (data) {
+	          alert('오류');
+	      }
+	      , dateType: 'html'
+	 	});  
+		
+	}
+	
+	function fnView(bbsId, nttId){
+		
+		document.getElementById('nttId').value = nttId;
+		document.getElementById('bbsId').value = bbsId;
+		
+		if(xssFilter( document.getElementById('nttId').value )  ){
+			return false;		
+		}
+		if(xssFilter( document.getElementById('bbsId').value )  ){
+			return false;		
+		}
+		
+		$.ajax({
+	        type:'POST'
+	      , url:'/dggb/module/board/selectBoardDetailAjax.do'
+	      , cache : false
+	      , async : false
+	      , data:$("#boardFrm").serialize()
+	      , success:function (data) {
+	    	  $('#board_area').html(data);
+	      }
+	      , error:function (data) {
+	          alert('오류');
+	      }
+	      , dateType: 'html'
+	 	});    
+		
+	}
+	
+	// 체크박스 전체선택
+	function fnCheckBoxAll(obj){
+		var check_boolean = (obj.checked)? true: false; 
+		var check_list = document.getElementsByName("nttIdChk"); 
+
+		for (var i=0; i<check_list.length; i++) { 
+			check_list[i].checked = check_boolean; 
+		} 
+	}
+	
+	function fnPageSearch(){
+		document.getElementById('pageIndex').value = 1;
+		
+		// customRecordCountPerPage 변조방지
+		document.getElementById('customRecordCountPerPage').value = document.getElementById('recordPerPage').value; 
+		//
+		
+		$.ajax({
+	        type:'POST'
+	      , url:'/dggb/module/board/selectBoardListAjax.do'
+	      , cache : false
+	      , async : false
+	      , data:$("#boardFrm").serialize()
+	      , success:function (data) {
+	    	  $('#board_area').html(data);
+	      }
+	      , error:function (data) {
+	          alert('오류');
+	      }
+	      , dateType: 'html'
+	 	});  
+		
+		// 포커스 유지 2025.06.01	
+		document.getElementById('recordPerPage').focus();
+			
+	}
+	
+	function fnSenView(nttId){
+		
+		document.getElementById('nttId').value = nttId;
+		
+		$.ajax({
+	        type:'POST'
+	      , url:'/dggb/module/board/selectBoardSenDetailAjax.do'
+	      , cache : false
+	      , async : false
+	      , data:$("#boardFrm").serialize()
+	      , success:function (data) {
+	    	  $('#board_area').html(data);
+	      }
+	      , error:function (data) {
+	          alert('오류');
+	      }
+	      , dateType: 'html'
+	 	});    
+		
+	}
+	
+	
+</script>
+	
+	<input type="hidden" id="cmntSe" name="cmntSe" value="N"/>
+	<input type="hidden" id="nttId" name="nttId" />	
+	
+	<div class="board_type01_table_top">
+		
+		<!-- page count Start -->
+		<div class="board_type01_count">
+			<p>
+				<span class="total">총 0건</span>
+				<span class="count">
+					<label for="recordPerPage"></label>
+					<select id="recordPerPage" title="페이지당 조회건수" class="form-control w10" onchange="document.getElementById('customRecordCountPerPage').value=this.value;fnPageSearch(this.value);">
+						<option value="10" >10건</option>
+						<option value="30" >30건</option>
+						<option value="50" >50건</option>
+					</select>
+				</span>
+			</p>
+		</div>
+		<!-- page count End -->
+		
+		<!-- 검색 Start -->
+		<div class="board_type01_search_box">
+			<fieldset>
+				<legend>게시물 검색</legend>
+				<label class="searchSe" for="searchSe">검색구분</label>
+				<select id="searchSe" title="검색구분" class="board_type01_category"> 
+					<option value="0" >선택</option>
+					<option value="1" >제목</option>
+					
+					
+					
+				</select>
+				
+				<label  for="searchWord" >검색어 입력</label>
+				<input type="text" id="searchWord" title="검색어 입력" class="board_type01_keyword"  placeholder=" 검색어 입력" onfocus="this.placeholder=''" onblur="this.placeholder='검색어 입력'" value="" onkeydown="if(event.keyCode == 13){fnSearch();}" />
+				<input type="button" value="검색" class="board_type01_search_submit" onclick="fnSearch();" />
+			</fieldset>
+		</div>
+		<!-- 검색 End -->
+		
+	</div>
+
+	
+				
+				
+	
+	
+		
+		
+			<div class="board_header">
+				◇ 개인정보 보호법 제59조 3호에 의해 다른 사람의 개인정보를 유출하는 자는 5년 이하의 징역 또는 5천만원 이하의 벌금이 부과될 수 있으므로 게시물 등록 시 반드시 개인정보 유무를 확인해 주시기 바랍니다.<br/><br/>
+				◇ <span style="color:red;font-weight:bold">폰트파일</span>은 저작권법상 컴퓨터 프로그램 저작물로 저작권 보호를 받고 있어,<span style="color: red;"> 
+				불법 복제 및 무단 이용 시</span> 발생하는 민・형사상의 책임은 불법 행위를 한 본인에게 있습니다.
+				 
+			</div>
+		
+	
+	<div class="fl">
+		<div style="font-size:13px; font-weight:bold; margin-top:13px; margin-bottom:7px; text-align:right; color:#0066CC; ">
+			<p>◇게시글 보존년한은 5년 입니다.</p></div>
+	</div>
+	<div class="fr" style="margin-bottom:7px;" >
+			
+			
+			
+	</div>
+	<table class="board_type01_tb_list" summary="이표는 번호, 제목, 작성자, 작성일, 조회수로 구성되어 있습니다.">
+		<caption>가정통신문 게시판 목록</caption>	
+		<colgroup>
+		
+		<col width="8%"/>
+		<col width="*" />
+		<col width="13%"/>
+		<col width="13%"/>
+		<col width="10%"/>
+		</colgroup>
+		<thead>
+		<tr>
+			
+			<th scope="col">번호</th>
+			<th scope="col">제목</th>
+			<th scope="col">작성자</th>
+			<th scope="col">작성일</th>
+			<th scope="col">조회수</th>
+		</tr>
+		</thead>
+		<tbody>
+		
+		<!-- 공지목록 -->
+		
+		
+		
+		
+		
+		<tr>
+			
+				
+				
+					<td colspan="5">조회된 내용이 없습니다.</td>
+				
+			
+		</tr>
+		
+		
+	</tbody>
+	</table>
+	
+	
+	
+	<div class="board_type01_table_bottom">	
+		
+		
+		
+		
+				
+	</div>
+		
+	
+	
+</div>
