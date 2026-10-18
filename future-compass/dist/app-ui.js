@@ -41,7 +41,7 @@
     if (!mini) { mini = document.createElement('div'); mini.className = 'lt-mini'; mini.setAttribute('aria-hidden', 'true'); document.body.appendChild(mini); }
     mini.textContent = title;
   }
-  window.addEventListener('scroll', function () { if (mini) mini.classList.toggle('on', window.scrollY > 70 && TITLE[tab]); }, { passive: true });
+  window.addEventListener('scroll', function () { if (mini) mini.classList.toggle('on', !!(window.scrollY > 70 && TITLE[tab])); }, { passive: true });
 
   /* ---------- 오늘: 그림 배너 ---------- */
   function banner(old) {
