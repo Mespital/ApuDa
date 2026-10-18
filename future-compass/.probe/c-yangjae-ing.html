@@ -1,0 +1,1539 @@
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>
+    
+        
+        프로그램 신청 : HOME &gt; 진로∙직업체험 &gt; 프로그램 신청
+    
+</title>
+
+<!-- jquery-ui -->
+<link rel="stylesheet" type="text/css" href="/resources/libs/jquery-ui-1.11.3.custom/jquery-ui.min.css">
+<link rel="stylesheet" type="text/css" href="/resources/libs/jquery-ui-1.11.3.custom/jquery-ui.theme.min.css">
+<!-- customize -->
+<link rel="stylesheet" type="text/css" href="/resources/openworks4/css/openworks4-custom.css">
+    <script type="text/javascript">var CTX_PATH="";</script>
+<!-- jquery core -->
+<script type="text/javascript" src="/resources/libs/jquery/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/resources/libs/jquery-ui-1.11.3.custom/jquery-ui.min.js"></script>
+<!-- 설정 동기화 -->
+<script type="text/javascript" src="/component/js/ND_globalConfig.do" ></script>
+<script type="text/javascript" src="/component/js/ND_massageConfig.do" ></script>
+
+<!-- Openworks 공통 메소드 -->
+<script type="text/javascript" src="/resources/openworks4/js/openworks.global.js"></script>
+<script type="text/javascript" src="/resources/openworks4/js/openworks.message.js"></script>
+<script type="text/javascript" src="/resources/openworks4/js/openworks.initialize.js"></script>
+<script type="text/javascript" src="/resources/openworks4/js/analyze/tracker.js"></script>
+    
+
+<link rel="stylesheet" href="/resources/seochoEdu/js/plugin/swiper/swiper.css">
+<link rel="stylesheet" href="/resources/seochoEdu/css/style.css?ver=1">
+
+<script src="/resources/seochoEdu/js/plugin/swiper/swiper.min.js"></script>
+<script src="/resources/seochoEdu/js/common.js"></script>
+<script src="/resources/seochoEdu/js/style.js"></script>
+
+<script>
+/* 초기화 */
+$(document).ready(function() {
+
+});
+
+var opUserMenuLayer = function(obj) {
+    $.fn.opmodal({
+        href : $(obj).attr("href"),
+        width : $(window).width() * 0.8,
+        height : $(window).height() * 0.8,
+        closeBtn : true
+    });
+};
+</script>
+
+
+
+
+<script type="text/javascript" src="/resources/openworks4/js/openworks.ui.js"></script>
+    <script type="text/javascript" src="/resources/openworks4/js/openworks.form.js"></script>
+    <script type="text/javascript" src="/resources/openworks4/js/validate/openworks.validate.js"></script>
+    <script type="text/javascript" src="/resources/libs/cryptoJS-v3.1.2/rollups/aes.js"></script>
+<script type="text/javascript" src="/resources/libs/cryptoJS-v3.1.2/rollups/pbkdf2.js"></script>
+<script type="text/javascript" src="/resources/openworks4/js/openworks.password.js"></script>
+    
+	
+<!-- 기능별 스크립트 삽입 부 -->
+<script type="text/javascript" src="/resources/user/prgrm/js/prgrm.js"></script>
+<script type="text/javascript">
+	//<![CDATA[
+	$(function(){
+		opSelected("q_searchKey", "");
+	});	
+	
+	//모집상태 tab
+	function opStatus(status) {
+		$("#rctmSttsSeCd").val(status);
+		$("#statusForm").submit();
+	}
+	
+	//상세화면 이동
+	function opMove(prgrmId) {
+		$(".q_prgrmId").val(prgrmId);
+		$(".listForm").submit();
+	}
+	//]]>
+	$(document).ready( function() {
+		  $( '#q_prgrmClsfCd' ).attr('title', '프로그램 분류 검색 항목')
+		});
+</script>
+
+
+</head>
+<body>
+	
+	
+	
+	
+	
+	
+
+    <!-- header -->
+    <div id="header">
+        <header>
+            <div class="wrapper">
+                <div class="topWrap">
+                    <h1 id="logo">
+                        <a href="/index.do">
+                            <img src="/resources/seochoEdu/images/common/logo.svg" alt="서초" />
+                        </a>
+                    </h1>
+                    <ul id="family">
+                        <li><a href="/seochoFuture/index.do"><span>서초교육협력특화지구</a></li>
+                        <li class="on" ><a href="/index.do"><span>서초구</span> 교육지원센터</a></li>
+                    </ul>
+                    <ul id="util">
+                        
+							
+				                <li><a href="/seochoEdu/login/BD_loginForm.do">로그인</a></li>
+				                <li><a href="/seochoEdu/user/join/BD_mberSbscrbStep01.do">회원가입</a></li>
+							
+							
+						
+                    </ul>
+                </div>
+
+
+                <div class="gnbWrap">
+                    <ul id="gnb">
+						
+							
+				                
+				                    
+				                        
+				                        
+				                        
+				                            
+				                        
+				                    
+				                    
+				                    
+				                        
+				                            
+				                                
+				                                
+				                                    <li>
+				                                        <a href="/seochoEdu/eduSprtCntr/sareaEduCntr.jsp;jsessionid=0E362569D16F2E79289B2116B57BA589" >
+				                                            
+				                                                
+				                                                서초구교육지원센터
+				                                            
+				                                        </a>
+				                                    </li>
+				                                
+				                            
+				                        
+				                        
+				                    
+				                
+							
+			            
+							
+				                
+				                    
+				                        
+				                        
+				                        
+				                            
+				                        
+				                    
+				                    
+				                    
+				                        
+				                            
+				                                
+				                                
+				                                    <li>
+				                                        <a href="/seochoEdu/careerCrs/careerCrsCntrInfo.jsp;jsessionid=0E362569D16F2E79289B2116B57BA589" >
+				                                            
+				                                                
+				                                                진로∙직업체험
+				                                            
+				                                        </a>
+				                                    </li>
+				                                
+				                            
+				                        
+				                        
+				                    
+				                
+							
+			            
+							
+				                
+				                    
+				                        
+				                        
+				                        
+				                            
+				                        
+				                    
+				                    
+				                    
+				                        
+				                            
+				                                
+				                                
+				                                    <li>
+				                                        <a href="/seochoEdu/schoolCrs/schoolCrsCntrInfo.jsp;jsessionid=0E362569D16F2E79289B2116B57BA589" >
+				                                            
+				                                                
+				                                                진로∙진학상담
+				                                            
+				                                        </a>
+				                                    </li>
+				                                
+				                            
+				                        
+				                        
+				                    
+				                
+							
+			            
+							
+				                
+				                    
+				                        
+				                        
+				                        
+				                            
+				                        
+				                    
+				                    
+				                    
+				                        
+				                            
+				                                
+				                                
+				                                    <li>
+				                                        <a href="/seochoEdu/cultural/culturalCntrInfo.jsp;jsessionid=0E362569D16F2E79289B2116B57BA589" >
+				                                            
+				                                                
+				                                                문화∙예술
+				                                            
+				                                        </a>
+				                                    </li>
+				                                
+				                            
+				                        
+				                        
+				                    
+				                
+							
+			            
+							
+				                
+				                    
+				                        
+				                        
+				                        
+				                            
+				                        
+				                    
+				                    
+				                    
+				                        
+				                            
+				                                
+				                                
+				                                    <li>
+				                                        <a href="/seochoEdu/eduCn/eduCnCntrInfo.jsp;jsessionid=0E362569D16F2E79289B2116B57BA589" >
+				                                            
+				                                                
+				                                                인성∙리더십
+				                                            
+				                                        </a>
+				                                    </li>
+				                                
+				                            
+				                        
+				                        
+				                    
+				                
+							
+			            
+							
+				                
+				                    
+				                        
+				                        
+				                        
+				                            
+				                        
+				                    
+				                    
+				                    
+				                        
+				                            
+				                                
+				                                
+				                                    <li>
+				                                        <a href="/user/bbs/BD_selectBbsList.do;jsessionid=0E362569D16F2E79289B2116B57BA589?q_bbsSn=1015" >
+				                                            
+				                                                
+				                                                운영갤러리
+				                                            
+				                                        </a>
+				                                    </li>
+				                                
+				                            
+				                        
+				                        
+				                    
+				                
+							
+			            
+							
+			            
+							
+				                
+							
+			            
+	         		</ul>
+
+                    <div class="all_menu">
+                        <button type="button"><span>전체메뉴</span></button>
+                    </div>
+
+                                        <div class="gnb_all">
+                        <div class="wrap">
+                            <div>
+                                <ul>
+                                    
+										
+							                <li><a href="/seochoEdu/login/BD_loginForm.do">로그인</a></li>
+							                <li><a href="/seochoEdu/user/join/BD_mberSbscrbStep01.do">회원가입</a></li>
+										
+										
+									
+                                </ul>
+                            </div>
+                            <ul>
+                                
+				           			
+				           				
+				           				
+				           				
+			           					
+											
+				                     			
+	           										
+	           									
+	           								
+	           								
+				                     			
+	           										
+	           									
+	           								
+	           							
+											
+				                     			
+	           										
+	           									
+	           								
+	           								
+				                     			
+	           										
+	           									
+	           								
+	           							
+											
+				                     			
+	           										
+	           									
+	           								
+	           								
+				                     			
+	           										
+	           									
+	           								
+	           							
+	           							
+				           			
+				           				
+					           				<li>
+					           					
+						           					<h5>
+						           						<a href="/seochoEdu/eduSprtCntr/sareaEduCntr.jsp">
+						           							서초구교육지원센터
+						           						</a>
+						           					</h5>
+					           					
+					           					
+					           					
+						           					<ul class="subMenu">
+														
+															
+								                     			
+								                           			
+								                               			
+								                               			
+								                               			
+								                                   			
+								                               			
+								                           			
+								                                 	<li>
+								                                 		<a href="/seochoEdu/eduSprtCntr/sareaEduCntr.jsp" >
+								                                     		
+								                                         		
+								                                         		권역별 교육지원센터
+								                                     		
+								                                 		</a>
+								                                	 </li>
+																
+															
+														
+															
+								                     			
+								                           			
+								                               			
+								                               			
+								                               			
+								                                   			
+								                               			
+								                           			
+								                                 	<li>
+								                                 		<a href="/seochoEdu/eduSprtCntr/seoripul/seoripulPrgrmInfo.jsp" >
+								                                     		
+								                                         		
+								                                         		서리풀 하이브레인
+								                                     		
+								                                 		</a>
+								                                	 </li>
+																
+															
+														
+															
+								                     			
+								                           			
+								                               			
+								                               			
+								                               			
+								                                   			
+								                               			
+								                           			
+								                                 	<li>
+								                                 		<a href="/user/bbs/BD_selectBbsList.do?q_bbsSn=1002" >
+								                                     		
+								                                         		
+								                                         		자주묻는질문
+								                                     		
+								                                 		</a>
+								                                	 </li>
+																
+															
+														
+													</ul>
+												
+											</li>
+										
+				           			
+				           		
+				           			
+				           				
+				           				
+				           				
+			           					
+											
+				                     			
+	           										
+	           									
+	           								
+	           								
+				                     			
+	           										
+	           									
+	           								
+	           							
+											
+				                     			
+	           										
+	           									
+	           								
+	           								
+				                     			
+	           										
+	           									
+	           								
+	           							
+											
+				                     			
+	           										
+	           									
+	           								
+	           								
+				                     			
+	           										
+	           									
+	           								
+	           							
+											
+				                     			
+	           										
+	           									
+	           								
+	           								
+				                     			
+	           										
+	           									
+	           								
+	           							
+	           							
+				           			
+				           				
+					           				<li>
+					           					
+						           					<h5>
+						           						<a href="/seochoEdu/careerCrs/careerCrsCntrInfo.jsp">
+						           							진로∙직업체험
+						           						</a>
+						           					</h5>
+					           					
+					           					
+					           					
+						           					<ul class="subMenu">
+														
+															
+								                     			
+								                           			
+								                               			
+								                               			
+								                               			
+								                                   			
+								                               			
+								                           			
+								                                 	<li>
+								                                 		<a href="/seochoEdu/careerCrs/careerCrsCntrInfo.jsp" >
+								                                     		
+								                                         		
+								                                         		양재내곡교육지원센터
+								                                     		
+								                                 		</a>
+								                                	 </li>
+																
+															
+														
+															
+								                     			
+								                           			
+								                               			
+								                               			
+								                               			
+								                                   			
+								                               			
+								                           			
+								                                 	<li>
+								                                 		<a href="/seochoEdu/careerCrs/careerCrsPrgrmInfo.jsp" >
+								                                     		
+								                                         		
+								                                         		프로그램 안내
+								                                     		
+								                                 		</a>
+								                                	 </li>
+																
+															
+														
+															
+								                     			
+								                           			
+								                               			
+								                               			
+								                               			
+								                                   			
+								                               			
+								                           			
+								                                 	<li>
+								                                 		<a href="/user/prgrm/yangjae/BD_selectPrgrmList.do" >
+								                                     		
+								                                         		
+								                                         		프로그램 신청
+								                                     		
+								                                 		</a>
+								                                	 </li>
+																
+															
+														
+															
+								                     			
+								                           			
+								                               			
+								                               			
+								                               			
+								                                   			
+								                               			
+								                           			
+								                                 	<li>
+								                                 		<a href="/user/bbs/BD_selectBbsList.do?q_bbsSn=1007" >
+								                                     		
+								                                         		
+								                                         		운영게시판
+								                                     		
+								                                 		</a>
+								                                	 </li>
+																
+															
+														
+													</ul>
+												
+											</li>
+										
+				           			
+				           		
+				           			
+				           				
+				           				
+				           				
+			           					
+											
+				                     			
+	           										
+	           									
+	           								
+	           								
+				                     			
+	           										
+	           									
+	           								
+	           							
+											
+				                     			
+	           										
+	           									
+	           								
+	           								
+				                     			
+	           										
+	           									
+	           								
+	           							
+											
+				                     			
+	           										
+	           									
+	           								
+	           								
+				                     			
+	           										
+	           									
+	           								
+	           							
+											
+				                     			
+	           										
+	           									
+	           								
+	           								
+				                     			
+	           										
+	           									
+	           								
+	           							
+	           							
+				           			
+				           				
+					           				<li>
+					           					
+						           					<h5>
+						           						<a href="/seochoEdu/schoolCrs/schoolCrsCntrInfo.jsp">
+						           							진로∙진학상담
+						           						</a>
+						           					</h5>
+					           					
+					           					
+					           					
+						           					<ul class="subMenu">
+														
+															
+								                     			
+								                           			
+								                               			
+								                               			
+								                               			
+								                                   			
+								                               			
+								                           			
+								                                 	<li>
+								                                 		<a href="/seochoEdu/schoolCrs/schoolCrsCntrInfo.jsp" >
+								                                     		
+								                                         		
+								                                         		방배교육지원센터
+								                                     		
+								                                 		</a>
+								                                	 </li>
+																
+															
+														
+															
+								                     			
+								                           			
+								                               			
+								                               			
+								                               			
+								                                   			
+								                               			
+								                           			
+								                                 	<li>
+								                                 		<a href="/seochoEdu/schoolCrs/schoolCrsPrgrmInfo.jsp" >
+								                                     		
+								                                         		
+								                                         		프로그램 안내
+								                                     		
+								                                 		</a>
+								                                	 </li>
+																
+															
+														
+															
+								                     			
+								                           			
+								                               			
+								                               			
+								                               			
+								                                   			
+								                               			
+								                           			
+								                                 	<li>
+								                                 		<a href="/user/prgrm/bangbae/BD_selectPrgrmList.do" >
+								                                     		
+								                                         		
+								                                         		프로그램 신청
+								                                     		
+								                                 		</a>
+								                                	 </li>
+																
+															
+														
+															
+								                     			
+								                           			
+								                               			
+								                               			
+								                               			
+								                                   			
+								                               			
+								                           			
+								                                 	<li>
+								                                 		<a href="/user/bbs/BD_selectBbsList.do?q_bbsSn=1008" >
+								                                     		
+								                                         		
+								                                         		운영게시판
+								                                     		
+								                                 		</a>
+								                                	 </li>
+																
+															
+														
+													</ul>
+												
+											</li>
+										
+				           			
+				           		
+				           			
+				           				
+				           				
+				           				
+			           					
+											
+				                     			
+	           										
+	           									
+	           								
+	           								
+				                     			
+	           										
+	           									
+	           								
+	           							
+											
+				                     			
+	           										
+	           									
+	           								
+	           								
+				                     			
+	           										
+	           									
+	           								
+	           							
+											
+				                     			
+	           										
+	           									
+	           								
+	           								
+				                     			
+	           										
+	           									
+	           								
+	           							
+											
+				                     			
+	           										
+	           									
+	           								
+	           								
+				                     			
+	           										
+	           									
+	           								
+	           							
+	           							
+				           			
+				           				
+					           				<li>
+					           					
+						           					<h5>
+						           						<a href="/seochoEdu/cultural/culturalCntrInfo.jsp">
+						           							문화∙예술
+						           						</a>
+						           					</h5>
+					           					
+					           					
+					           					
+						           					<ul class="subMenu">
+														
+															
+								                     			
+								                           			
+								                               			
+								                               			
+								                               			
+								                                   			
+								                               			
+								                           			
+								                                 	<li>
+								                                 		<a href="/seochoEdu/cultural/culturalCntrInfo.jsp" >
+								                                     		
+								                                         		
+								                                         		반포잠원교육지원센터
+								                                     		
+								                                 		</a>
+								                                	 </li>
+																
+															
+														
+															
+								                     			
+								                           			
+								                               			
+								                               			
+								                               			
+								                                   			
+								                               			
+								                           			
+								                                 	<li>
+								                                 		<a href="/seochoEdu/cultural/culturalPrgrmInfo.jsp" >
+								                                     		
+								                                         		
+								                                         		프로그램 안내
+								                                     		
+								                                 		</a>
+								                                	 </li>
+																
+															
+														
+															
+								                     			
+								                           			
+								                               			
+								                               			
+								                               			
+								                                   			
+								                               			
+								                           			
+								                                 	<li>
+								                                 		<a href="/user/prgrm/banpo/BD_selectPrgrmList.do" >
+								                                     		
+								                                         		
+								                                         		프로그램 신청
+								                                     		
+								                                 		</a>
+								                                	 </li>
+																
+															
+														
+															
+								                     			
+								                           			
+								                               			
+								                               			
+								                               			
+								                                   			
+								                               			
+								                           			
+								                                 	<li>
+								                                 		<a href="/user/bbs/BD_selectBbsList.do?q_bbsSn=1009" >
+								                                     		
+								                                         		
+								                                         		운영게시판
+								                                     		
+								                                 		</a>
+								                                	 </li>
+																
+															
+														
+													</ul>
+												
+											</li>
+										
+				           			
+				           		
+				           			
+				           				
+				           				
+				           				
+			           					
+											
+				                     			
+	           										
+	           									
+	           								
+	           								
+				                     			
+	           										
+	           									
+	           								
+	           							
+											
+				                     			
+	           										
+	           									
+	           								
+	           								
+				                     			
+	           										
+	           									
+	           								
+	           							
+											
+				                     			
+	           										
+	           									
+	           								
+	           								
+				                     			
+	           										
+	           									
+	           								
+	           							
+											
+				                     			
+	           										
+	           									
+	           								
+	           								
+				                     			
+	           										
+	           									
+	           								
+	           							
+	           							
+				           			
+				           				
+					           				<li>
+					           					
+						           					<h5>
+						           						<a href="/seochoEdu/eduCn/eduCnCntrInfo.jsp">
+						           							인성∙리더십
+						           						</a>
+						           					</h5>
+					           					
+					           					
+					           					
+						           					<ul class="subMenu">
+														
+															
+								                     			
+								                           			
+								                               			
+								                               			
+								                               			
+								                                   			
+								                               			
+								                           			
+								                                 	<li>
+								                                 		<a href="/seochoEdu/eduCn/eduCnCntrInfo.jsp" >
+								                                     		
+								                                         		
+								                                         		서초교육지원센터
+								                                     		
+								                                 		</a>
+								                                	 </li>
+																
+															
+														
+															
+								                     			
+								                           			
+								                               			
+								                               			
+								                               			
+								                                   			
+								                               			
+								                           			
+								                                 	<li>
+								                                 		<a href="/seochoEdu/eduCn/eduCnPrgrmInfo.jsp" >
+								                                     		
+								                                         		
+								                                         		프로그램 안내
+								                                     		
+								                                 		</a>
+								                                	 </li>
+																
+															
+														
+															
+								                     			
+								                           			
+								                               			
+								                               			
+								                               			
+								                                   			
+								                               			
+								                           			
+								                                 	<li>
+								                                 		<a href="/user/prgrm/seocho/BD_selectPrgrmList.do" >
+								                                     		
+								                                         		
+								                                         		프로그램 신청
+								                                     		
+								                                 		</a>
+								                                	 </li>
+																
+															
+														
+															
+								                     			
+								                           			
+								                               			
+								                               			
+								                               			
+								                                   			
+								                               			
+								                           			
+								                                 	<li>
+								                                 		<a href="/user/bbs/BD_selectBbsList.do?q_bbsSn=1010" >
+								                                     		
+								                                         		
+								                                         		운영게시판
+								                                     		
+								                                 		</a>
+								                                	 </li>
+																
+															
+														
+													</ul>
+												
+											</li>
+										
+				           			
+				           		
+				           			
+				           				
+				           				
+				           				
+			           					
+											
+				                     			
+	           								
+	           								
+				                     			
+	           								
+	           							
+											
+				                     			
+	           								
+	           								
+				                     			
+	           								
+	           							
+											
+				                     			
+	           								
+	           								
+				                     			
+	           								
+	           							
+											
+				                     			
+	           								
+	           								
+				                     			
+	           								
+	           							
+	           							
+	           								
+	           							
+				           			
+				           				
+					           				<li>
+					           					
+						           					<h5>
+						           						<a href="/user/bbs/BD_selectBbsList.do?q_bbsSn=1015">
+						           							운영갤러리
+						           						</a>
+						           					</h5>
+					           					
+					           					
+					           					
+											</li>
+										
+				           			
+				           		
+				           			
+				           				
+				           				
+				           				
+			           					
+											
+	           								
+	           							
+											
+	           								
+	           							
+											
+	           								
+	           							
+											
+	           								
+	           							
+											
+	           								
+	           							
+											
+	           								
+	           							
+											
+	           								
+	           							
+	           							
+				           			
+				           				
+				           			
+				           		
+				           			
+				           		
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+    </div>
+    <!-- // header -->
+    
+	<div class="breadcrumb">
+        <div class="wrapper">
+            <ul class="bread_nav">
+                <li><a href="/index.do">메인페이지로 이동</a></li>
+                <li>
+                    <a href="/user/prgrm/yangjae/BD_selectPrgrmList.do"> 진로∙직업체험 </a>
+                    <ul class="depth1">
+                    	
+                    		
+		                        
+		                        
+		                        
+		                            
+		                            
+		                        
+		                        <li>
+		                            <a href="/seochoEdu/eduSprtCntr/sareaEduCntr.jsp" >
+		                                서초구교육지원센터
+		                            </a>
+		                        </li>
+		                    
+                    	
+                    		
+		                        
+		                            
+		                        
+		                        
+		                        
+		                            
+		                            
+		                        
+		                        <li>
+		                            <a href="/seochoEdu/careerCrs/careerCrsCntrInfo.jsp" >
+		                                진로∙직업체험
+		                            </a>
+		                        </li>
+		                    
+                    	
+                    		
+		                        
+		                        
+		                        
+		                            
+		                            
+		                        
+		                        <li>
+		                            <a href="/seochoEdu/schoolCrs/schoolCrsCntrInfo.jsp" >
+		                                진로∙진학상담
+		                            </a>
+		                        </li>
+		                    
+                    	
+                    		
+		                        
+		                        
+		                        
+		                            
+		                            
+		                        
+		                        <li>
+		                            <a href="/seochoEdu/cultural/culturalCntrInfo.jsp" >
+		                                문화∙예술
+		                            </a>
+		                        </li>
+		                    
+                    	
+                    		
+		                        
+		                        
+		                        
+		                            
+		                            
+		                        
+		                        <li>
+		                            <a href="/seochoEdu/eduCn/eduCnCntrInfo.jsp" >
+		                                인성∙리더십
+		                            </a>
+		                        </li>
+		                    
+                    	
+                    		
+		                        
+		                        
+		                        
+		                            
+		                            
+		                        
+		                        <li>
+		                            <a href="/user/bbs/BD_selectBbsList.do?q_bbsSn=1015" >
+		                                운영갤러리
+		                            </a>
+		                        </li>
+		                    
+                    	
+                    		
+		                        
+		                        
+		                        
+		                            
+		                            
+		                        
+		                        <li>
+		                            <a href="" >
+		                                마이페이지
+		                            </a>
+		                        </li>
+		                    
+                    	
+                    		
+                    	
+                    </ul>
+                </li>
+                <li>
+	                
+                		
+	                	
+	                		<a href="/user/prgrm/yangjae/BD_selectPrgrmList.do"> 프로그램 신청</a>
+	                	
+	                    <ul class="depth1">
+	                        
+	                        	
+		                            
+
+		                            
+		                            
+		                                
+		                                
+		                                
+		                                    
+		                                    
+		                                
+		                                <li>
+		                                    <a href="/seochoEdu/careerCrs/careerCrsCntrInfo.jsp" >
+		                                        양재내곡교육지원센터
+		                                    </a>
+		                                </li>
+		                            
+		                        
+	                        
+	                        	
+		                            
+
+		                            
+		                            
+		                                
+		                                
+		                                
+		                                    
+		                                    
+		                                
+		                                <li>
+		                                    <a href="/seochoEdu/careerCrs/careerCrsPrgrmInfo.jsp" >
+		                                        프로그램 안내
+		                                    </a>
+		                                </li>
+		                            
+		                        
+	                        
+	                        	
+		                            
+
+		                            
+		                            
+		                                
+		                                
+		                                
+		                                    
+		                                    
+		                                
+		                                <li>
+		                                    <a href="/user/prgrm/yangjae/BD_selectPrgrmList.do" >
+		                                        프로그램 신청
+		                                    </a>
+		                                </li>
+		                            
+		                        
+	                        
+	                        	
+		                            
+
+		                            
+		                            
+		                                
+		                                
+		                                
+		                                    
+		                                    
+		                                
+		                                <li>
+		                                    <a href="/user/bbs/BD_selectBbsList.do?q_bbsSn=1007" >
+		                                        운영게시판
+		                                    </a>
+		                                </li>
+		                            
+		                        
+	                        
+	                    </ul>
+                 	
+                 </li>
+                 
+            </ul>
+        </div>
+    </div>
+	<hr/>
+    <div id="quick-area"></div>
+
+    
+
+    
+<div id="contents" class="sub">
+	<div class="wrapper">
+        <h2 class="title">프로그램 신청</h2>
+        
+        <form name="statusForm" id="statusForm" action="BD_selectPrgrmList.do" method="post">
+        	<input type="hidden" name="rctmSttsSeCd" id="rctmSttsSeCd" value="" />
+	        <ul class="tab-list">
+	            <li ><a onclick="opStatus('')">전체</a></li>
+	            <li class="on"><a onclick="opStatus('ing')">모집중</a></li>
+	            <li ><a onclick="opStatus('schedule')">모집예정</a></li>
+	            <li ><a onclick="opStatus('deadline')">마감</a></li>
+	        </ul>
+	    </form>
+        
+        <form name="dataForm" id="dataForm" action="BD_selectPrgrmList.do" method="get">
+         	<input type="hidden" name="q_currPage" id="q_currPage" value="1" />
+ 			<input type="hidden" name="q_rowPerPage" id="q_rowPerPage" value="10" />
+ 			
+
+            <div class="form-search">
+            	
+                <select name="q_searchKey" id="q_searchKey" title="프로그램 검색 항목">
+                  <option value="">전체</option>
+                  <option value="1001" >제목</option>
+                  <option value="1002" >내용</option>
+             	</select>
+
+                <input type="text" name="q_searchVal" id="q_searchVal" value="" class="form-control" title="검색어 입력" placeholder="검색어를 입력하세요.">
+
+                <div class="input-addon">
+                    <button type="submit" class="search-btn">검색</button>
+                </div>
+            </div>
+        </form>
+           
+        <div class="bo_list">
+            
+            
+
+
+<div class="bo_info">
+	
+   		
+			<div class="list_total">총 <span> 0</span>개의 게시물이 등록되어 있습니다. </div>
+			
+		
+		
+	
+	
+   	<input type="hidden" name="q_currPage" id="q_currPage" value="1" />
+	
+    <input type="hidden" name="q_sortName" id="q_sortName" value="" />
+	
+    <input type="hidden" name="q_sortOrder" id="q_sortOrder" value="" />
+</div>
+            
+            
+            <div class="bo_table type_gallery_row">
+            	
+					
+	                
+	                	<ul style="text-align: center;">
+	                		<li style="display: inline-block;">
+		                		데이터가 없습니다.
+		                	</li>
+	                	</ul>
+	                	
+	                
+	            
+            </div>
+		</div>
+		
+		<!-- 페이징 -->
+	    
+
+
+
+
+<div class="pagination">
+	
+          
+          
+              <a href="#" title="현재 1 페이지" onclick="return false;"><strong><span>1</span></strong></a>
+          
+      
+</div>
+	    <!-- //페이징 -->
+   </div>
+</div>
+
+
+    
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+<script type="text/javascript" src="/resources/libs/form-3.51.0/jquery.form.js"></script>
+    
+
+
+
+
+    <!-- Footer -->
+    <div id="footer">
+    	<footer>
+		    <div class="wrapper">
+		        <h1 id="footer_logo">
+		            <a href="/">
+		                <img src="/resources/seochoEdu/images/common/footer_logo.svg" alt="서초 SEOCHO. 서초구 교육지원센터">
+		            </a>
+		        </h1>
+		
+		        <ul class="foot_util">
+		            <li><a href="https://www.seocho.go.kr/site/seocho/08/10803010000002015072105.jsp"><b>개인정보 처리방침</b></a></li>
+		            <li><a href="/seochoEdu/user/useGuidance/BD_siteMap.do">사이트맵</a></li>
+		        </ul>
+		
+		        <ul class="foot_info">
+		            <li>
+		                <b>양재내곡</b>
+		                <span>(06744) 서울시 서초구 강남대로 190 (양재동) 대관빌딩 1층 <i>/ 02-574-0304</i></span>
+		            </li>
+		            <li>
+		                <b>방배</b>
+		                <span>(06683) 서울시 서초구 방배로 13길 18, 방배아크로타워 230호 <i>/ 02-598-0038</i></span>
+		            </li>
+		            <li>
+		                <b>반포잠원</b>
+		                <span>(06544) 서울시 서초구 사평대로 273. 반포1동 주민센터 지하1층 <i>/ 02-545-4991</i></span>
+		            </li>
+		            <li>
+		                <b>서초</b>
+		                <span>(06637) 서울시 서초구 사임당로 89, 서초1동 주민센터 5층 <i>/ 02-588-2589</i></span>
+		            </li>
+		        </ul>
+		
+		        <div class="copy">Copyright &copy; 2024 서초구 교육지원센터. All Rights Reserved.</div>
+		    </div>
+	    </footer>
+	</div>
+    <!-- /.Footer -->
+
+</body>
+
+</html>
+
+
