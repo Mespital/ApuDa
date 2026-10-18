@@ -64,11 +64,36 @@
       if (undone[0] && !night0) go = ('<button type="button" class="hb-go" data-pl-play="' + esc(undone[0].t.id) + '"><span>지금 할 1개</span><b>' + esc(undone[0].t.title) + '</b><i aria-hidden="true">▶</i></button>');
       else if (night0 && L.length && !closed0) go = ('<button type="button" class="hb-go night" data-hero-close><span>오늘 마무리</span><b>🌙 하루 마무리 30초</b><i aria-hidden="true">›</i></button>');
     }
+    s.insertAdjacentHTML('beforeend', rings(L));
     if (img) s.querySelector('.hb-img').style.backgroundImage = getComputedStyle(img).backgroundImage;
     if (mood) { mood.classList.add('hb-mood'); var lab = mood.querySelector('span'); if (lab && !lab.querySelector('*') && !lab.dataset.kpMood) lab.remove(); s.appendChild(mood); }
     old.replaceWith(s);
     if (go) s.insertAdjacentHTML('afterend', go);
   }
+
+  /* 오늘 진행 링 3개: 할 일 · 집중 · 복습 (애플 피트니스 링처럼 한눈에) */
+  var FOCUS_GOAL = 2;
+  function ringVals(L) {
+    var t = today(), rv = (state.reviews || []).filter(function (r) { return r.date === t; }), ses = (state.sessions || {})[t] || 0;
+    return [
+      { k: 'todo', n: '할 일', v: L.filter(function (x) { return x.t.done; }).length, of: L.length, c: '#ffd166' },
+      { k: 'focus', n: '집중', v: Math.min(ses, FOCUS_GOAL), of: FOCUS_GOAL, raw: ses, c: '#7ee0b5' },
+      { k: 'rev', n: '복습', v: rv.filter(function (r) { return r.done; }).length, of: rv.length, c: '#a8b8ff' }
+    ];
+  }
+  function rings(L) {
+    var R = ringVals(L), sz = 64, cx = 32, w = 6.5, label = [];
+    var svg = R.map(function (r, i) {
+      var rad = 27 - i * 8.5, C = 2 * Math.PI * rad, p = r.of ? Math.min(1, r.v / r.of) : 0;
+      label.push(r.n + ' ' + (r.of ? (r.raw != null ? r.raw : r.v) + '/' + r.of : '없음'));
+      return '<circle cx="' + cx + '" cy="' + cx + '" r="' + rad + '" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="' + w + '"/>' +
+        (p ? '<circle cx="' + cx + '" cy="' + cx + '" r="' + rad + '" fill="none" stroke="' + r.c + '" stroke-width="' + w + '" stroke-linecap="round" stroke-dasharray="' + (C * p).toFixed(1) + ' ' + C.toFixed(1) + '" transform="rotate(-90 ' + cx + ' ' + cx + ')"/>' : '');
+    }).join('');
+    var all = R.every(function (r) { return !r.of || r.v >= r.of; }) && R.some(function (r) { return r.of; });
+    return '<div class="hb-rings' + (all ? ' full' : '') + '" role="img" aria-label="오늘 진행: ' + label.join(', ') + '"><svg viewBox="0 0 64 64" width="' + sz + '" height="' + sz + '" aria-hidden="true">' + svg + '</svg>' +
+      '<ul aria-hidden="true">' + R.map(function (r) { return '<li><i style="background:' + r.c + '"></i>' + r.n + ' ' + (r.of ? (r.raw != null ? r.raw : r.v) + '/' + r.of : '-') + '</li>'; }).join('') + '</ul></div>';
+  }
+  window.FC_RINGS = { vals: function () { return ringVals(window.FC_PLANNER ? FC_PLANNER.todays() : []); } };
 
   /* ---------- 오늘: 지금부터 3시간 (시간 막대) ---------- */
   function strip(card) {

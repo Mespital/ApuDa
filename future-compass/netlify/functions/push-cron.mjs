@@ -1,6 +1,7 @@
 // 정해진 시간 폰 알림 (30분마다 실행, 한국 시간 기준)
 //  승준: 07:30 오늘의 핵심 · 15:30 수업 끝 1분 말하기 · 학원 1시간 전 · 20:30 내일 시험 · 21:00 하루 마무리
 //  엄마: 21:30 오늘 요약(개수만, 칭찬·도와줄 것 중심)
+//  둘 다: 16:00 학교 새 소식 · 07:30 수행평가 D-3/D-1 · 구청 프로그램 신청 마감 D-2
 // 가족 공유로 서버에 올라온 기록만 사용. 같은 알림은 하루 한 번.
 import { getStore } from '@netlify/blobs';
 import { sendTo, getSubs } from '../lib/push-core.mjs';
@@ -11,7 +12,7 @@ const addD = (d, n) => new Date(Date.parse(d + 'T12:00:00Z') + n * 86400000).toI
 const gap = (d, t) => Math.round((Date.parse(d + 'T00:00:00Z') - Date.parse(t + 'T00:00:00Z')) / 86400000);
 const toMin = s => { const m = /^(\d{1,2}):(\d{2})$/.exec(s || ''); return m ? +m[1] * 60 + +m[2] : null; };
 
-export function plan(data, school, nowMs) {
+export function plan(data, school, nowMs, live, seen) {
   const k = new Date(nowMs + 9 * 3600000), t = k.toISOString().slice(0, 10), mins = k.getUTCHours() * 60 + k.getUTCMinutes(), wd = k.getUTCDay();
   const v = key => pj(data[key]?.v, null);
   const st = v('compass-study-v1') || {}, P = v('fc_planner_v1') || {}, acs = globalThis.FC_ACADEMY_OCCURRENCES.forDay(v('fc_academy_v1') || [], v('fc_academy_occurrences_v1') || [], t), kid = v('fc_kid_v1') || {};
@@ -58,7 +59,27 @@ export function plan(data, school, nowMs) {
       : tasks.length ? '할 일 ' + done + '/' + tasks.length + (aDone ? ' · 꼭 할 일 ' + aDone + '개 해냄 👏' : '') + (asks ? ' · 승준이 부탁 ' + asks + '개' : '') : '오늘은 기록이 없어요. "오늘 어땠어?" 한마디면 충분해요.';
     out.push({ key: 'summary', to: 'parent', kind: 'summary', title: '📊 오늘 승준이', body, url: 'study.html#today' });
   }
-  return { today: t, items: out };
+  // 🏫 학교 소식 (school-live.json): 새 공지·가정통신문(16:00 묶어서) · 수행평가 D-3·D-1 · 구청 프로그램 신청 마감 D-2 (07:30)
+  const seenIn = Array.isArray(seen) ? seen : null, seenOut = [];
+  if (live) {
+    const posts = []; for (const b of live.news?.boards || []) for (const it of b.items || []) if (it.id) posts.push({ id: String(it.id), title: it.title, board: b.name, date: it.date });
+    for (const p of posts) seenOut.push(p.id);
+    if (seenIn && at(16, 0)) {
+      const fresh = posts.filter(p => !seenIn.includes(p.id) && gap(t, p.date) <= 7);
+      if (fresh.length) out.push({ key: 'news:' + fresh.map(p => p.id).join(','), to: 'all', kind: 'school', title: '📨 학교 새 소식 ' + fresh.length + '개', body: fresh.slice(0, 3).map(p => p.title.slice(0, 40)).join(' · '), url: 'study.html#school', markSeen: true });
+    }
+    if (at(7, 30)) {
+      for (const it of live.programs?.items || []) if (it.applyEnd && gap(it.applyEnd, t) === 2) out.push({ key: 'prog:' + it.id, to: 'all', kind: 'school', title: '🧭 신청 마감 D-2', body: it.title + ' (' + it.center + ') · ' + it.target, url: 'study.html#school' });
+    }
+  }
+  if (at(7, 30)) {
+    for (const x of st.dates || []) {
+      if (x.done || !(x.kind === '수행평가' || x.kind === '수행' || /^\[수행\]/.test(x.title || ''))) continue;
+      const n = gap(x.date, t); if (n !== 3 && n !== 1) continue;
+      out.push({ key: 'perf:' + x.id + ':' + n, to: 'all', kind: 'school', title: '📝 수행평가 D-' + n, body: String(x.title).replace(/^\[수행\]\s*/, '') + (n === 3 ? ' · 만점 기준 한 번 읽어보자' : ' · 준비물·제출 확인'), url: 'study.html#school' });
+    }
+  }
+  return { today: t, items: out, seen: seenOut };
 }
 
 export default async () => {
@@ -67,7 +88,12 @@ export default async () => {
   const data = (await store.get('data', { type: 'json' })) || {};
   let school = null;
   try { const base = (process.env.URL || 'https://future.apuda.app').replace(/\/$/, ''); const r = await fetch(base + '/school.json', { signal: AbortSignal.timeout(5000) }); if (r.ok) school = await r.json(); } catch {}
-  const { today, items } = plan(data, school, Date.now());
+  let live = null;
+  try { const base = (process.env.URL || 'https://future.apuda.app').replace(/\/$/, ''); const r = await fetch(base + '/school-live.json', { signal: AbortSignal.timeout(5000) }); if (r.ok) live = await r.json(); } catch {}
+  const seenPrev = await store.get('push-school-seen', { type: 'json' });
+  const { today, items, seen } = plan(data, school, Date.now(), live, seenPrev);
+  // 처음 한 번은 지금 있는 글을 '본 것'으로만 기록(옛 글 알림 폭탄 방지). 이후엔 16:00 알림을 보낸 뒤에 갱신
+  if (live && seen.length && (!Array.isArray(seenPrev) || items.some(it => it.markSeen))) await store.setJSON('push-school-seen', [...new Set([...(seenPrev || []), ...seen])].slice(-300));
   if (!items.length) return;
   const log = (await store.get('push-log', { type: 'json' })) || {};
   for (const d of Object.keys(log)) if (d < addD(today, -3)) delete log[d];
