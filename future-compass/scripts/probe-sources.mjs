@@ -9,7 +9,7 @@ const BASE = 'https://www.schoolinfo.go.kr';
 async function save(name, buf) { await fs.writeFile(path.join(OUT, name), buf); console.log('saved', name, buf.length); }
 async function get(url, opt = {}) { const r = await fetch(url, { ...opt, headers: { 'User-Agent': UA, ...(opt.headers || {}) }, signal: AbortSignal.timeout(25000) }); return { r, buf: Buffer.from(await r.arrayBuffer()) }; }
 const log = [];
-try {
+if (process.env.SKIP_SI !== '1') try {
   const { buf } = await get(BASE + '/ei/ss/pneiss_a04_s0/getSchoolList.do', { method: 'POST', headers: { 'X-Requested-With': 'XMLHttpRequest', 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', Referer: BASE + '/ei/ss/pneiss_a03_s0.do' }, body: new URLSearchParams({ SEARCH_WORD: '서초고등학교' }) });
   await save('si-search.json', buf);
   const list = JSON.parse(buf.toString('utf-8'));
@@ -35,6 +35,24 @@ try {
     await save('si-file-' + f.seq + '.' + ext, fb);
   }
 } catch (e) { log.push('schoolinfo error ' + e.stack); }
+const H = 'https://seocho.sen.hs.kr';
+for (const [name, url, opt] of [
+  ['c-yangjae-ing.html', 'https://seochoedu.or.kr/user/prgrm/yangjae/BD_selectPrgrmList.do?rctmSttsSeCd=ing'],
+  ['c-bangbae-all.html', 'https://seochoedu.or.kr/user/prgrm/bangbae/BD_selectPrgrmList.do'],
+  ['c-bangbae-ing.html', 'https://seochoedu.or.kr/user/prgrm/bangbae/BD_selectPrgrmList.do?rctmSttsSeCd=ing'],
+  ['c-banpo-all.html', 'https://seochoedu.or.kr/user/prgrm/banpo/BD_selectPrgrmList.do'],
+  ['c-seocho-all.html', 'https://seochoedu.or.kr/user/prgrm/seocho/BD_selectPrgrmList.do'],
+  ['b-notice-get.html', H + '/75977/subMenu.do?bbsId=BBSMSTR_000000011310&nttId=27536770'],
+  ['b-notice-post.html', H + '/75977/subMenu.do', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams({ bbsId: 'BBSMSTR_000000011310', nttId: '27536770', bbsTyCode: 'notice' }) }],
+  ['b-letters.html', H + '/75977/subMenu.do'],
+  ['b-evalplan.html', H + '/129842/subMenu.do'],
+  ['b-career.html', H + '/129855/subMenu.do'],
+  ['b-events.html', H + '/129833/subMenu.do'],
+]) {
+  try { const { r, buf } = await get(url, opt || {}); log.push(name + ' ' + r.status + ' ' + r.url); await save(name, buf); } catch (e) { log.push(name + ' error ' + e.message); }
+}
+await save('log2.txt', Buffer.from(log.join('\n')));
+process.exit(0);
 for (const [name, url] of [
   ['seochoedu-home.html', 'https://www.seochoedu.or.kr/index.do'],
   ['seochoedu-prgrm-yangjae.html', 'https://seochoedu.or.kr/user/prgrm/yangjae/BD_selectPrgrmList.do'],
