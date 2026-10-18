@@ -68,7 +68,7 @@ window.STUDY_HUB_DATA = {
       {
         "id": "digital-textbook",
         "name": "디지털교과서 웹뷰어",
-        "url": "https://dt.edunet.net",
+        "url": "https://webdt.edunet.net",
         "kinds": [
           "교과서·개념"
         ],
