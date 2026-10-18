@@ -1,0 +1,15 @@
+name: Link probe (temporary)
+on:
+  push:
+    branches: [tmp/probe-links]
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash future-compass/.probe-links/check.sh || true
+      - run: |
+          git config user.name "probe-bot"; git config user.email "probe@users.noreply.github.com"
+          git add -f future-compass/.probe-links/result.tsv && git commit -m "tmp: link probe output" && git push
