@@ -19,7 +19,7 @@ try {
   const body = new URLSearchParams({ ...codes, HG_NM: hit.SHL_NM, SHL_IDF_CD: hit.SHL_IDF_CD, GS_TYPE: 'Y', JG_YEAR: '2026', SORT: 'BR', CHOSEN_JG_YEAR: '2026', PRE_JG_YEAR: '2026', LOAD_TYPE: 'single' });
   const { buf: lb } = await get(BASE + '/ei/pp/Pneipp_b43_s0p.do', { method: 'POST', headers: { 'X-Requested-With': 'XMLHttpRequest', 'Content-Type': 'application/x-www-form-urlencoded', Referer: BASE + '/ei/ss/Pneiss_b01_s0.do' }, body });
   const html = iconv.decode(lb, 'euc-kr'); await save('si-b43.html', Buffer.from(html));
-  const files = [...html.matchAll(/getEiFile\d*\(\s*['"]?(\d+)['"]?\s*\)[^>]*>\s*([^<]*?\.(?:hwpx|hwp|pdf))/gi)].map(m => ({ seq: m[1], name: m[2].trim() }));
+  const files = [...html.matchAll(/getEiFile\d*\(\s*['"]?(\d+)['"]?\s*\)[^>]*>\s*([^<]*?\.(?:hwpx|hwp|pdf|zip))/gi)].map(m => ({ seq: m[1], name: m[2].trim() }));
   log.push('files ' + JSON.stringify(files));
   const fi = html.indexOf('eiFileDownForm'), seg = html.slice(fi, html.indexOf('</form>', fi));
   const params = {}; for (const m of seg.matchAll(/name="([A-Za-z_]\w*)"[^>]*?value="([^"]*)"/g)) if (!(m[1] in params)) params[m[1]] = m[2];
@@ -31,7 +31,7 @@ try {
     const qs = new URLSearchParams({ ...params, FILE_SEQ: f.seq });
     const { r, buf: fb } = await get(BASE + '/servlets/EiFileDownLoad.do?' + qs, { headers: { Referer: BASE + '/ei/pp/Pneipp_b43_s0p.do' } });
     log.push('dl ' + f.seq + ' ' + r.status + ' ' + fb.length + ' ' + (r.headers.get('content-disposition') || ''));
-    const ext = (f.name.match(/\.(hwpx|hwp|pdf)$/i) || ['', 'bin'])[1];
+    const ext = (f.name.match(/\.(hwpx|hwp|pdf|zip)$/i) || ['', 'bin'])[1];
     await save('si-file-' + f.seq + '.' + ext, fb);
   }
 } catch (e) { log.push('schoolinfo error ' + e.stack); }
