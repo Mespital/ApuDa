@@ -1,6 +1,6 @@
 {
   "version": "1.2",
-  "generated_at": "2026-10-17T18:04:54.921214+09:00",
+  "generated_at": "2026-10-18T18:04:43.172175+09:00",
   "service_key_connected": true,
   "credential_routes": {
     "mfds_drug_approval": "dedicated",
@@ -20,7 +20,7 @@
       "name": "의약품 제품 허가정보",
       "source_url": "https://www.data.go.kr/data/15095677/openapi.do",
       "status": "ok",
-      "checked_at": "2026-10-17T18:04:48.528027+09:00",
+      "checked_at": "2026-10-18T18:04:34.909986+09:00",
       "records": [
         {
           "item_seq": "202602182",
@@ -408,28 +408,6 @@
           "edi_code": "642204630"
         },
         {
-          "item_seq": "202106887",
-          "item_name": "프레조폴엠시티프리필드주1%(프로포폴) ",
-          "company": "프레지니우스카비코리아(주)",
-          "main_ingredient": null,
-          "permit_date": "20211013",
-          "rare_drug_yn": null,
-          "newdrug_class_name": null,
-          "atc_code": null,
-          "edi_code": null
-        },
-        {
-          "item_seq": "202106888",
-          "item_name": "프레조폴엠시티프리필드주2%(프로포폴) ",
-          "company": "프레지니우스카비코리아(주)",
-          "main_ingredient": null,
-          "permit_date": "20211013",
-          "rare_drug_yn": null,
-          "newdrug_class_name": null,
-          "atc_code": null,
-          "edi_code": null
-        },
-        {
           "item_seq": "202106440",
           "item_name": "럭스터나주(보레티진네파보벡)",
           "company": "한국노바티스(주)",
@@ -439,17 +417,6 @@
           "newdrug_class_name": null,
           "atc_code": null,
           "edi_code": "653603481"
-        },
-        {
-          "item_seq": "202106240",
-          "item_name": "바이파보주20밀리그램(레미마졸람베실산염)",
-          "company": "하나제약(주)",
-          "main_ingredient": null,
-          "permit_date": "20210830",
-          "rare_drug_yn": null,
-          "newdrug_class_name": null,
-          "atc_code": null,
-          "edi_code": null
         },
         {
           "item_seq": "202106193",
@@ -571,9 +538,42 @@
           "newdrug_class_name": null,
           "atc_code": null,
           "edi_code": null
+        },
+        {
+          "item_seq": "202105792",
+          "item_name": "알엠에스오스론(알엠에스자가골수유래뼈세포)",
+          "company": "셀론텍(주)",
+          "main_ingredient": null,
+          "permit_date": "20210806",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": null
+        },
+        {
+          "item_seq": "202105645",
+          "item_name": "큐어스킨주(자가유래피부섬유아세포)",
+          "company": "(주)에스바이오메딕스",
+          "main_ingredient": null,
+          "permit_date": "20210729",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": null
+        },
+        {
+          "item_seq": "202105509",
+          "item_name": "카티라이프(바솔자가연골유래연골세포)",
+          "company": "(주)바이오솔루션",
+          "main_ingredient": null,
+          "permit_date": "20210722",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": null
         }
       ],
-      "total_count": 42725,
+      "total_count": 42714,
       "http_status": 200,
       "key_variant_used": 1,
       "note": "식약처 공식 의약품 허가 OpenAPI 연결 상태입니다. 허가 상세 확인은 품목기준코드 기준으로 후속 조회합니다."
@@ -584,7 +584,7 @@
       "name": "의약품 공급부족 정보",
       "source_url": "https://www.data.go.kr/data/15056886/openapi.do",
       "status": "ok",
-      "checked_at": "2026-10-17T18:04:50.403710+09:00",
+      "checked_at": "2026-10-18T18:04:39.014963+09:00",
       "records": [
         {
           "report_date": "20261016",
@@ -1324,7 +1324,7 @@
       "name": "약가기준정보조회서비스",
       "source_url": "https://www.data.go.kr/data/15054445/openapi.do",
       "status": "ok",
-      "checked_at": "2026-10-17T18:04:51.151838+09:00",
+      "checked_at": "2026-10-18T18:04:39.833979+09:00",
       "records": [],
       "http_status": 200,
       "key_variant_used": 1,
@@ -1337,7 +1337,7 @@
       "name": "통계로 보는 암",
       "source_url": "https://edu.cancer.go.kr/lay1/S1T654C656/contents.do",
       "status": "ok",
-      "checked_at": "2026-10-17T18:04:51.296895+09:00",
+      "checked_at": "2026-10-18T18:04:39.946672+09:00",
       "latest_year": 2023,
       "note": "국가암정보센터 공식 통계 페이지 원문을 기준으로 연결합니다. 수치는 원문 표를 우선 확인합니다.",
       "page_title": "홈 >통계로 보는 암>유병률>암종별 암유병률",
@@ -1572,7 +1572,7 @@
       "name": "암환자 생활백서",
       "source_url": "https://cancer.go.kr/lay1/S1T523C850/contents.do",
       "status": "ok",
-      "checked_at": "2026-10-17T18:04:53.202048+09:00",
+      "checked_at": "2026-10-18T18:04:41.654016+09:00",
       "latest_year": null,
       "note": "국가암정보센터 원문을 직접 연결하며, ApuDa에서는 원문을 변형 복제하지 않습니다.",
       "page_title": "홈 >암정보 나눔터>국가암지식정보센터 OPEN API"

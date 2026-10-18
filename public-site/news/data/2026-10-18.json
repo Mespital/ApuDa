@@ -1,0 +1,162 @@
+{
+  "version": "1.2",
+  "report_date": "2026-10-18",
+  "collection_window": {
+    "start": "2026-10-17T09:00:00+09:00",
+    "end": "2026-10-18T09:00:00+09:00",
+    "timezone": "Asia/Seoul"
+  },
+  "sources": [
+    "데일리팜",
+    "의학신문",
+    "메디파나뉴스",
+    "약사공론"
+  ],
+  "briefing": "[제약공시 책갈피] 10월 3주차 - 동국제약·안국약품 外가 오늘 가장 중요한 이슈로 부각됐습니다. 이어 이종득 前 환인제약 이사 별세도 주요 변화로 확인됐습니다. 전체적으로는 정책·급여 · 신약·임상 흐름이 두드러집니다.",
+  "top_news": [
+    {
+      "rank": 1,
+      "canonical_issue": "[제약공시 책갈피] 10월 3주차 - 동국제약·안국약품 外 - 메디파나뉴스",
+      "title": "[제약공시 책갈피] 10월 3주차 - 동국제약·안국약품 外",
+      "category": [
+        "식약처",
+        "허가",
+        "3상",
+        "인수",
+        "투자"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-18T06:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[메디파나뉴스 = 이정수 기자] 2026년 10월 3주차(10.12~10.16)에는 동국제약이 내달 27일 임시주주총회를 열어 사명을 '디케이센텔리안 주식회사'로 변경하는 정관 개정안을 상정키로 결정했다. 회사는 이같은 사명 변경을 통해 그동안 국내 의약품 중심 사업 구조에서 치료와 예방 분야, 헬스케어",
+        "[메디파나뉴스 = 이정수 기자] 2026년 10월 3주차(10.12~10.16)에는 동국제약이 내달 27일 임시주주총회를 열어 사명을 '디케이센텔리안 주식회사'로 변경하는 정관 개정안을 상정키로 결정했다.",
+        "회사는 이같은 사명 변경을 통해 그동안 국내 의약품 중심 사업 구조에서 치료와 예방 분야, 헬스케어, 뷰티(Health & Beauty) 영역까지 사업을 전방위 확장할 계획이다."
+      ],
+      "importance": "기사에서 사업개발·투자 변화가 함께 확인돼 기업 포트폴리오와 경쟁구도 영향을 살펴볼 필요가 있습니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=419508"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=419508"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419508_326977_77.png",
+      "score": 28,
+      "oncology": null
+    },
+    {
+      "rank": 2,
+      "canonical_issue": "이종득 前 환인제약 이사 별세 - 메디파나뉴스",
+      "title": "이종득 前 환인제약 이사 별세",
+      "category": [
+        "병원"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-17T16:14:23+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "이종득 前 환인제약 이사 16일 별세. 향년 71세. ▲빈소 : 삼육서울병원 추모관 11호실 ▲발인 : 2026년 10월 19일(월) 오전 8시 30분 ▲장지 : 경기도 포천시 창수면 선영",
+        "▲빈소 : 삼육서울병원 추모관 11호실 ▲발인 : 2026년 10월 19일(월) 오전 8시 30분 ▲장지 : 경기도 포천시 창수면 선영 이 기사를 공유합니다"
+      ],
+      "importance": "의료기관·약국 현장의 변화는 진료 흐름과 환자 경험, 의약품 사용 환경에 직접 영향을 줍니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=419507"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=419507"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419507_326974_1010.jpg",
+      "score": 12,
+      "oncology": null
+    }
+  ],
+  "trends": [
+    {
+      "title": "정책·급여",
+      "count": 1,
+      "change": "1건의 주요 이슈에서 반복적으로 확인",
+      "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
+      "examples": [
+        "[제약공시 책갈피] 10월 3주차 - 동국제약·안국약품 外"
+      ]
+    },
+    {
+      "title": "신약·임상",
+      "count": 1,
+      "change": "1건의 주요 이슈에서 반복적으로 확인",
+      "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
+      "examples": [
+        "[제약공시 책갈피] 10월 3주차 - 동국제약·안국약품 外"
+      ]
+    },
+    {
+      "title": "투자·사업개발",
+      "count": 1,
+      "change": "1건의 주요 이슈에서 반복적으로 확인",
+      "implication": "자본과 파이프라인 확보 경쟁이 사업전략의 핵심이 되는 흐름",
+      "examples": [
+        "[제약공시 책갈피] 10월 3주차 - 동국제약·안국약품 外"
+      ]
+    },
+    {
+      "title": "의료현장",
+      "count": 1,
+      "change": "1건의 주요 이슈에서 반복적으로 확인",
+      "implication": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름",
+      "examples": [
+        "이종득 前 환인제약 이사 별세"
+      ]
+    }
+  ],
+  "outlet_status": [
+    {
+      "publisher": "데일리팜",
+      "homepage_url": "https://www.dailypharm.com/",
+      "items": []
+    },
+    {
+      "publisher": "의학신문",
+      "homepage_url": "https://www.bosa.co.kr/",
+      "items": []
+    },
+    {
+      "publisher": "메디파나뉴스",
+      "homepage_url": "https://www.medipana.com/",
+      "items": [
+        {
+          "title": "[제약공시 책갈피] 10월 3주차 - 동국제약·안국약품 外",
+          "published_at": "2026-10-18T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419508"
+        },
+        {
+          "title": "이종득 前 환인제약 이사 별세",
+          "published_at": "2026-10-17T16:14:23+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419507"
+        }
+      ]
+    },
+    {
+      "publisher": "약사공론",
+      "homepage_url": "https://www.kpanews.co.kr/",
+      "items": []
+    }
+  ],
+  "insight": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름 동시에 신약·임상 흐름도 함께 확인돼 단일 이슈보다 복합적인 산업 변화로 보는 것이 적절합니다.",
+  "infographic": {
+    "image_path": null,
+    "generated_at": null,
+    "template_version": "news-card-v1"
+  }
+}

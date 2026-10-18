@@ -1,9 +1,9 @@
 {
   "version": "1.0",
-  "generated_at": "2026-10-17T18:04:48.271899+09:00",
+  "generated_at": "2026-10-18T18:04:34.694179+09:00",
   "window": {
-    "start": "2026-09-17T09:00:00+09:00",
-    "end": "2026-10-17T09:00:00+09:00",
+    "start": "2026-09-18T09:00:00+09:00",
+    "end": "2026-10-18T09:00:00+09:00",
     "days": 30,
     "timezone": "Asia/Seoul"
   },
@@ -86,7 +86,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 11
+      "age_days": 12
     },
     {
       "rank": null,
@@ -152,7 +152,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     },
     {
       "rank": null,
@@ -226,7 +226,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 9
+      "age_days": 10
     },
     {
       "rank": 3,
@@ -286,7 +286,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
     },
     {
       "rank": null,
@@ -348,7 +348,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": null,
@@ -408,7 +408,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 9
+      "age_days": 10
     },
     {
       "rank": null,
@@ -474,7 +474,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
     },
     {
       "rank": null,
@@ -539,7 +539,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
     },
     {
       "rank": 3,
@@ -603,7 +603,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": 2,
@@ -666,7 +666,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 10
+      "age_days": 11
     },
     {
       "rank": null,
@@ -727,7 +727,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     },
     {
       "rank": null,
@@ -790,7 +790,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": null,
@@ -850,7 +850,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 9
+      "age_days": 10
     },
     {
       "rank": null,
@@ -909,7 +909,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
     },
     {
       "rank": null,
@@ -972,7 +972,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
     },
     {
       "rank": null,
@@ -1034,7 +1034,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 6
+      "age_days": 7
     },
     {
       "rank": null,
@@ -1095,7 +1095,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": null,
@@ -1158,7 +1158,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 6
+      "age_days": 7
     },
     {
       "rank": null,
@@ -1219,7 +1219,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 9
+      "age_days": 10
     },
     {
       "rank": null,
@@ -1278,7 +1278,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 9
+      "age_days": 10
     },
     {
       "rank": 3,
@@ -1339,7 +1339,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 12
+      "age_days": 13
     },
     {
       "rank": null,
@@ -1394,7 +1394,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 14
+      "age_days": 15
     },
     {
       "rank": null,
@@ -1452,7 +1452,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 14
+      "age_days": 15
     },
     {
       "rank": null,
@@ -1509,7 +1509,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 15
+      "age_days": 16
     },
     {
       "rank": 4,
@@ -1568,7 +1568,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 15
+      "age_days": 16
     },
     {
       "rank": null,
@@ -1636,7 +1636,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 15
+      "age_days": 16
     }
   ]
 }
