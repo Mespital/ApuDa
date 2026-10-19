@@ -19,7 +19,7 @@
     var main = A.NAV[who].filter(function (x) { return x[0] !== 'more'; }).map(function (x) { return [x[0] === 'cheer' ? 'study.html#today' : 'study.html#' + x[0], x[1], x[2], x[0] === 'cheer' ? 'cheer' : '']; });
     var more = A.MORE[who], study = [], career = [], etc = [];
     more.forEach(function (x) {
-      var h = x[0];
+      var h = x[0]; if (h === '#group') return;
       if (main.some(function (m) { return m[0] === h; })) return;
       if (/#(path|career|courses|school|grades|examplan)$/.test(h) || /^\.\/$|future|know-me/.test(h)) career.push(x);
       else if (/^study\.html#/.test(h) && !/#settings$/.test(h)) study.push(x);

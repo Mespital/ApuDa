@@ -167,12 +167,12 @@
     var newL = 0; ((D.news && D.news.boards) || []).forEach(function (b) { b.items.forEach(function (it) { if (-gapDays(it.date) <= 3) newL++; }); });
     var prog = ((D.programs && D.programs.items) || []).filter(function (it) { return it.applyEnd && gapDays(it.applyEnd) >= 0 && gapDays(it.applyEnd) <= 7; }).length;
     var bits = [];
-    if (list.length) bits.push('수행평가 ' + list.length + '개 이번 달');
+    var first = list[0];
+    if (first) bits.push('챙길 수행평가: ' + first.s.subject);   // 개수 대신 가장 가까운 1개 (승준 리뷰 4)
     if (newL) bits.push('새 학교 소식 ' + newL);
     if (prog) bits.push('신청 마감 임박 ' + prog);
     if (!bits.length) return '';
-    var first = list[0];
-    return '<button type="button" class="sl-today" data-go="school"><span>🏫</span><span><b>' + e(bits.join(' · ')) + '</b>' + (first ? '<small>가까운 것: ' + e(first.s.subject) + ' · ' + e(first.t.title.slice(0, 26)) + (first.t.title.length > 26 ? '…' : '') + ' (' + e(first.t.when) + ')</small>' : '') + '</span><i aria-hidden="true">›</i></button>';
+    return '<button type="button" class="sl-today" data-go="school"><span>🏫</span><span><b>' + e(bits.join(' · ')) + '</b>' + (first ? '<small>' + e(first.t.title.slice(0, 30)) + (first.t.title.length > 30 ? '…' : '') + ' (' + e(first.t.when) + ')</small>' : '') + '</span><i aria-hidden="true">›</i></button>';
   }
 
   /* 진로 탭: 서초고 개설 과목 */

@@ -158,6 +158,10 @@
     prev();
     var root = document.getElementById('content'); if (!root) return;
     if (tab === 'examplan') { root.innerHTML = view(); document.querySelectorAll('nav.tabbar button').forEach(function (b) { b.classList.remove('active'); }); return; }
+    if (tab === 'today' && !isParent()) {   // 시험 21일 전부터 오늘 화면 시험 카드에 바로가기 (승준 리뷰 5)
+      var F0 = finalDays(), bx = root.querySelector('#bo-exam');
+      if (F0 && bx && !bx.querySelector('.ep-today')) { var d0 = dd(F0.start); if (d0 >= 0 && d0 <= 21) { var n0 = added().length; bx.insertAdjacentHTML('beforeend', '<button type="button" class="ep-today" data-go="examplan">📅 ' + e(F0.title) + ' 플랜 ' + (n0 ? '보기 · ' + added().filter(function (t) { return t.done; }).length + '/' + n0 + ' 완료' : '짜기 — 날짜별 할 일 자동') + ' <i aria-hidden="true">›</i></button>'); } }
+    }
     if ((tab === 'grades' || tab === 'school' || tab === 'dates') && !root.querySelector('.ep-entry')) {
       var en = entry(); if (!en) return;
       var a = root.querySelector('.gd-entry') || root.querySelector('.gd-head') || root.querySelector('.card');
@@ -184,6 +188,7 @@
     '.ep-act{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 10px}.ep-act button{min-height:44px!important;border-radius:999px!important;padding:6px 14px!important;font-weight:700}' +
     '.ep-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}.ep-day{display:grid;grid-template-columns:62px 1fr;gap:10px;padding:10px 12px;border-radius:14px;border:1.5px solid #ece8fc;background:#fff}.ep-day.now{border-color:#7764ef;background:#faf9ff}.ep-d b{display:block;font-size:14px;color:#2a2550}.ep-d small{font-size:11.5px;color:#57546a}' +
     '.ep-day ul{list-style:none;margin:0;padding:0;display:grid;gap:5px}.ep-day li{font-size:13.5px;line-height:1.45;color:#3b3758}.ep-day li b{color:#2a2550}.ep-day li span{display:inline-block;min-width:38px;margin-right:6px;font-size:11.5px;font-weight:800;border-radius:6px;padding:1px 5px;text-align:center}.ep-k-r span{background:#e6f0ff;color:#1d4ea8}.ep-k-q span{background:#fff0d9;color:#7a4b00}.ep-k-w span{background:#e7f6ee;color:#14543d}.ep-day li.done{text-decoration:line-through;color:#6b6880}.ep-free{color:#6b6880!important}' +
+    '.ep-today{display:flex!important;align-items:center;justify-content:space-between;gap:8px;width:100%;min-height:48px!important;margin-top:10px;padding:8px 14px!important;border-radius:14px!important;border:0!important;background:#5b45d6!important;color:#fff!important;font-weight:800;font-size:14.5px;text-align:left}.ep-today i{font-style:normal;font-size:18px}' +
     '.ep-how ul{margin:4px 0 0;padding-left:18px;font-size:13.5px;line-height:1.6}';
   document.head.appendChild(css);
 })();
