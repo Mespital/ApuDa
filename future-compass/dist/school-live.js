@@ -71,13 +71,29 @@
     if (!ro && k !== 'past') h += '<div class="sl-act">' + (a ? '<span class="sl-done">📅 ' + md(a.date) + ' 시험·과제에 있음</span>' : '<label class="sl-date"><span>날짜 정해지면</span><input type="date" data-sl-date="' + id + '" aria-label="' + e(t.title) + ' 날짜"></label>') + '<button type="button" data-sl-prep="' + id + '">＋ 오늘 준비 할 일</button></div>';
     return h + '</details></li>';
   }
+  /* 지금 챙길 것 우선순위: 날짜 넣은 것 중 2주 안 > 이번 주가 들어 있는 이번 달 과제 > 곧 > 상시 > 다음 달 (2026-10-19 '해당하는 것만' 요청) */
+  function urgency(x) {
+    var a = added(x), g = a ? gapDays(a.date) : null;
+    if (g != null && g >= 0 && g <= 14) return g;
+    var k = x.st.k, w = weekOf(x.t.when), cw = curW(), cm = curM(), ms = months(x.t.when);
+    if (k === 'now') { if (w && ms[0] === cm && w[0] <= cw + 1 && w[1] >= cw) return 15; return ms.length && ms[ms.length - 1] === cm ? 20 : 25; }
+    if (k === 'soon') return 30;
+    if (k === 'always') return 40;
+    if (k === 'next') return 50;
+    return 90;
+  }
+  var SHOW = 3;
   function perfCard(ro) {
     var list = allTasks(); if (!list.length) return '';
     var main = list.filter(function (x) { return x.st.k !== 'past' && x.st.k !== 'later' && x.st.k !== 'unknown'; }), rest = list.filter(function (x) { return main.indexOf(x) < 0; });
-    return '<section class="card sl-card" id="sl-perf"><h2>📝 이번 달·다음 달 수행평가 <small>' + main.length + '개</small></h2>' +
-      '<p class="muted small">서초고가 학교알리미에 공시한 2학기 평가계획 기준이야. 눌러서 만점 기준·날짜 넣기. 정확한 날짜는 선생님 안내로 확정돼.</p>' +
-      (main.length ? '<ul class="sl-tl">' + main.map(function (x) { return taskRow(x, ro); }).join('') + '</ul>' : '<p class="muted">이번 달·다음 달 수행평가가 없어.</p>') +
-      (rest.length ? '<details class="sl-more"><summary>나머지 ' + rest.length + '개 (지난 것·시기 미정)</summary><ul class="sl-tl">' + rest.map(function (x) { return taskRow(x, ro); }).join('') + '</ul></details>' : '') +
+    main.sort(function (p, q) { return urgency(p) - urgency(q); });
+    var top = main.slice(0, SHOW), more = main.slice(SHOW);
+    return '<section class="card sl-card" id="sl-perf"><h2>📝 지금 챙길 수행평가 <small>' + top.length + '개</small></h2>' +
+      '<p class="muted small">날짜가 가깝거나 이번 주에 해당하는 것부터 보여줘. 날짜를 넣으면 순서가 더 정확해져.</p>' +
+      (top.length ? '<ul class="sl-tl">' + top.map(function (x) { return taskRow(x, ro); }).join('') + '</ul>' : '<p class="muted">지금 챙길 수행평가가 없어.</p>') +
+      (more.length ? '<details class="sl-more sl-more-main"' + (opened.__more ? ' open' : '') + ' data-sl-rub="__more"><summary>이번 달·다음 달 ' + more.length + '개 더 보기</summary><ul class="sl-tl">' + more.map(function (x) { return taskRow(x, ro); }).join('') + '</ul></details>' : '') +
+      (rest.length ? '<details class="sl-more"' + (opened.__rest ? ' open' : '') + ' data-sl-rub="__rest"><summary>지난 것·시기 미정 ' + rest.length + '개</summary><ul class="sl-tl">' + rest.map(function (x) { return taskRow(x, ro); }).join('') + '</ul></details>' : '') +
+      '<p class="muted small">서초고가 학교알리미에 공시한 2학기 평가계획 기준이야. 정확한 날짜는 선생님 안내로 확정돼.</p>' +
       classNote() + '</section>';
   }
   function classNote() {
@@ -147,7 +163,7 @@
   /* 오늘 화면 요약 줄 */
   function todayLine() {
     if (!D) return '';
-    var list = allTasks().filter(function (x) { return x.st.k === 'now' || x.st.k === 'soon'; });
+    var list = allTasks().filter(function (x) { return x.st.k === 'now' || x.st.k === 'soon'; }).sort(function (p, q) { return urgency(p) - urgency(q); });
     var newL = 0; ((D.news && D.news.boards) || []).forEach(function (b) { b.items.forEach(function (it) { if (-gapDays(it.date) <= 3) newL++; }); });
     var prog = ((D.programs && D.programs.items) || []).filter(function (it) { return it.applyEnd && gapDays(it.applyEnd) >= 0 && gapDays(it.applyEnd) <= 7; }).length;
     var bits = [];
@@ -230,7 +246,7 @@
     '.sl-t summary>b{display:block;font-size:15.5px;line-height:1.4;color:#2a2550}.sl-meta{margin:4px 0 0;font-size:13px;color:#4f4b66;font-weight:600}.sl-how{margin:6px 0 0;font-size:13.5px;line-height:1.55;color:#3b3758}' +
     '.sl-t>details>summary{list-style:none;cursor:pointer}.sl-t>details>summary::-webkit-details-marker{display:none}.sl-t>details>summary::after{content:"자세히 ▾";display:block;margin-top:4px;font-size:12px;font-weight:700;color:#5b45d6}.sl-t>details[open]>summary::after{content:"접기 ▴"}.sl-th em{font-style:normal;margin-left:auto}.sl-rub{margin-top:8px;border-radius:12px;background:#f5f3ff;padding:8px 10px}.sl-rh{margin:0 0 6px;font-weight:800;font-size:13.5px;color:#3a22b8}.sl-rub ol{margin:0;padding-left:18px;display:grid;gap:6px}.sl-rub li{font-size:13.5px;line-height:1.5}.sl-rub li small{color:#5b45d6;font-weight:800}.sl-rub li p{margin:2px 0 0;color:#3b3758}' +
     '.sl-act{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:10px}.sl-act button{min-height:42px!important;padding:6px 12px!important;border-radius:999px!important;font-size:13.5px;font-weight:700}.sl-date{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:#4f4b66;margin:0}.sl-date input{min-height:42px;width:auto!important;padding:4px 8px;border-radius:10px;border:1.5px solid #e1dcf5;font:inherit;font-size:14px}.sl-done{font-size:13px;font-weight:700;color:#187a5c}' +
-    '.sl-more{margin-top:10px}.sl-warn{margin:12px 0 0;padding:10px 12px;border-radius:12px;background:#fff6e6;color:#4a3500;font-size:13.5px;line-height:1.55}.sl-more summary,.sl-ratio>summary,.sl-week>summary{cursor:pointer;min-height:44px;display:flex;flex-direction:column;justify-content:center;gap:2px}.sl-ratio>summary,.sl-week>summary{list-style:none}.sl-ratio>summary::-webkit-details-marker,.sl-week>summary::-webkit-details-marker{display:none}.sl-ratio>summary b,.sl-week>summary b{font-size:16px;color:#2a2550}.sl-ratio>summary small,.sl-week>summary small{font-size:12.5px;color:#6b6880}.sl-more summary{font-weight:700;font-size:14px;color:#2a2550}' +
+    '.sl-more{margin-top:10px}.sl-warn{margin:12px 0 0;padding:10px 12px;border-radius:12px;background:#fff6e6;color:#4a3500;font-size:13.5px;line-height:1.55}.sl-more summary,.sl-ratio>summary,.sl-week>summary{cursor:pointer;min-height:44px;display:flex;flex-direction:column;justify-content:center;gap:2px}.sl-ratio>summary,.sl-week>summary{list-style:none}.sl-ratio>summary::-webkit-details-marker,.sl-week>summary::-webkit-details-marker{display:none}.sl-ratio>summary b,.sl-week>summary b{font-size:16px;color:#2a2550}.sl-ratio>summary small,.sl-week>summary small{font-size:12.5px;color:#6b6880}.sl-more summary{font-weight:700;font-size:14px;color:#2a2550}.sl-more-main>summary{min-height:48px;justify-content:center;align-items:center;margin-top:4px;border-radius:14px;background:#f5f3ff;color:#3a22b8;text-align:center}' +
     '.sl-ratio table{width:100%;border-collapse:collapse;margin-top:8px;font-size:14px}.sl-ratio th{text-align:left;font-size:12.5px;color:#4f4b66;padding:6px 4px;border-bottom:1.5px solid #e6e2f5}.sl-ratio td{padding:8px 4px;border-bottom:1px solid #f0eef7;vertical-align:middle}.sl-ratio td small{display:block;font-size:11.5px;color:#57546a}.sl-bar{display:inline-block;width:46px;height:8px;border-radius:999px;background:#ece8fc;margin-right:6px;vertical-align:middle;overflow:hidden}.sl-bar i{display:block;height:100%;background:#5b45d6}' +
     '.sl-week ul{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:8px}.sl-week li{padding:10px 12px;border-radius:12px;background:#f8f7fc}.sl-week li span{font-size:13px;font-weight:800;color:#5b45d6}.sl-week li span small{color:#57546a}.sl-week li p{margin:3px 0 0;font-size:14px;line-height:1.5;color:#2a2550}' +
     '.sl-news h3{font-size:14px;margin:12px 0 6px;color:#2a2550}.sl-news ul,.sl-prog ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}.sl-news li{display:flex;align-items:baseline;gap:8px}.sl-news li a{flex:1;min-width:0;font-size:14px;color:#2a2550;text-decoration:underline;text-underline-offset:3px;line-height:1.5}.sl-news li small{flex:none;font-size:12.5px;color:#57546a}.sl-new{display:inline-block;margin-right:6px;font-size:11px;font-weight:800;color:#fff;background:#c2410c;border-radius:6px;padding:1px 5px;text-decoration:none}' +
