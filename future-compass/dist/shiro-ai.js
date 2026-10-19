@@ -233,6 +233,15 @@
     if (!isAndroid) return web;
     return 'intent://' + web.replace(/^https:\/\//, '') + '#Intent;scheme=https;package=com.openai.chatgpt;S.browser_fallback_url=' + encodeURIComponent(web) + ';end';
   }
+  // 아무 글(수업 노트 정리 요청 등)을 ChatGPT 앱으로 보내기 — 주소가 너무 길면 앱에서 잘릴 수 있어 복사도 같이
+  function rawHref(p) {
+    var web = gptBase() + '?q=' + encodeURIComponent(String(p).slice(0, 1800));
+    return isAndroid ? 'intent://' + web.replace(/^https:\/\//, '') + '#Intent;scheme=https;package=com.openai.chatgpt;S.browser_fallback_url=' + encodeURIComponent(web) + ';end' : web;
+  }
+  function rawCopy(p, msg) {
+    try { if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(String(p)).catch(function () {}); } catch (e) {}
+    try { if (msg && typeof notice === 'function') notice(msg); } catch (e) {}
+  }
   function gptCopy(q) {
     var t = gptPrompt(q);
     try { if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).catch(function () {}); } catch (e) {}
@@ -240,6 +249,6 @@
   }
   function studyQ(q) { return !/앱|설정|알림|버튼|화면|메뉴|로그인|비밀번호|급식|시간표|학원|엄마|아빠|힘들|싫어|우울|짜증|불안/.test(q) && (prefer(q) && !/추천|계획|짜줘|하기\s*싫|걱정|스트레스/.test(q)); }
 
-  window.SHIRO_AI = { on: ready, ask: ask, prefer: prefer, ctx: ctx, organize: organize, kb: kbAnswer, gpt: gptLink, gptHref: gptHref, gptCopy: gptCopy, study: studyQ };
+  window.SHIRO_AI = { on: ready, ask: ask, prefer: prefer, ctx: ctx, organize: organize, kb: kbAnswer, gpt: gptLink, gptHref: gptHref, gptCopy: gptCopy, rawHref: rawHref, rawCopy: rawCopy, study: studyQ };
   if (prev) render();
 })();

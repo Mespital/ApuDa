@@ -76,8 +76,9 @@
       '<label class="tn-l">과목</label><div class="pl-chips tn-subs">' + subjects().map(function (x, i) { return '<button type="button" data-tn-sub="' + esc(x) + '" class="' + (i === 0 ? 'on' : '') + '">' + esc(x) + '</button>'; }).join('') + '<input class="tn-sub-other" maxlength="20" placeholder="다른 과목"></div>' +
       (kind === 'talk' ? talkBody() : photoBody()) +
       '<label class="tn-l">메모 <small class="muted">(헷갈린 것·선생님 강조·시험 나올 것)</small></label><textarea class="tn-text" rows="5" maxlength="1500" placeholder="' + (kind === 'talk' ? '말한 내용이 여기 적혀. 틀린 글자는 고쳐도 돼.' : '사진 속 핵심을 한두 줄 적거나, 글자 읽기를 눌러봐.') + '"></textarea>' +
-      '<p class="tn-org-row"><button type="button" data-tn-org>🧠 정리하기 — 핵심·용어·확인 질문·다음 수업 전 볼 것</button></p>' +
-      '<div class="tn-sum-box" hidden><label class="tn-l">🧠 정리 <small class="muted">(복습·다음 수업 예습에 써. 고쳐도 돼)</small></label><textarea class="tn-sum" rows="10" maxlength="2000"></textarea></div>' +
+      '<p class="tn-org-row"><button type="button" data-tn-org>🧠 정리하기 — 핵심·용어·확인 질문·다음 수업 전 볼 것</button>' +
+      '<a class="tn-gpt" data-tn-gpt href="https://chatgpt.com/" target="_blank" rel="noopener">💬 ChatGPT 앱으로 정리하기 <small>정리된 글을 아래 칸에 붙여넣고 저장</small></a></p>' +
+      '<div class="tn-sum-box" hidden><label class="tn-l">🧠 정리 <small class="muted">(복습·다음 수업 예습에 써. 고쳐도 돼)</small></label><textarea class="tn-sum" rows="10" maxlength="2000" placeholder="ChatGPT가 정리해 준 글을 여기에 붙여넣어 줘"></textarea></div>' +
       '<div class="tn-again"><span>다시 보기</span><label><input type="checkbox" checked data-tn-day="1"> 내일</label><label><input type="checkbox" checked data-tn-day="3"> 3일 뒤</label><label><input type="checkbox" checked data-tn-day="7"> 7일 뒤</label></div>' +
       '<p class="tn-save-row"><button type="button" class="primary" data-tn-save="' + kind + '">저장</button></p></div>';
     document.body.appendChild(sheet);
@@ -120,6 +121,12 @@
     var terms = []; lines.forEach(function (x) { var m = /^([가-힣A-Za-z0-9 ]{2,14})\s*[:=]\s*(.{4,60})/.exec(x); if (m && terms.length < 5) terms.push('- ' + m[1].trim() + ': ' + m[2].trim()); });
     return '📌 핵심 정리 (자동 추출 — 틀린 곳은 고쳐줘)\n' + key.map(function (x) { return '- ' + x.slice(0, 80); }).join('\n') + (terms.length ? '\n🔑 꼭 알아야 할 용어\n' + terms.join('\n') : '') +
       '\n❓ 스스로 확인 질문\n' + key.slice(0, 3).map(function (x) { var w = (/^([가-힣A-Za-z0-9]{2,12})/.exec(x) || ['', '이 내용'])[1]; return '- ' + w + '을(를) 내 말로 설명할 수 있어?'; }).join('\n') + '\n➡️ 다음 수업 전에 볼 것\n- 위 핵심 정리 1분 훑어보기';
+  }
+  /* 💬 ChatGPT 앱으로 정리 — 암기 과목에 맞춘 정리 요청. 이름·학교는 안 넣는다 */
+  function gptPrompt(subject, text, kind) {
+    return '[수업 노트 정리] 나는 고등학교 1학년이야. 아래는 ' + (subject || '수업') + ' 수업 뒤에 ' + (kind === 'talk' ? '내가 말로 정리한 내용(받아쓰기라 오타가 있을 수 있어)' : '교과서·필기에서 옮긴 글') + '이야.\n' +
+      '내가 말한 내용만 근거로, 아래 형식 그대로 짧게 정리해줘. 내용이 틀렸거나 빠진 중요한 게 있으면 마지막 줄에 "⚠️ 확인할 것"으로만 따로 적어줘(본문에 섞지 마). 표·굵은 글씨 없이 줄글로.\n\n' +
+      '📌 핵심 정리\n- (3~5줄)\n🔑 꼭 외울 용어\n- 용어: 뜻 (최대 6개)\n🧩 헷갈리기 쉬운 것\n- (1~2줄)\n❓ 스스로 확인 질문\n- (3개, 답은 쓰지 마)\n🧠 외우기 팁\n- (앞글자·연결 고리 1줄)\n\n--- 내 노트 ---\n' + String(text).slice(0, 1300);
   }
   function canAI() { return window.SHIRO_AI && SHIRO_AI.on && SHIRO_AI.on() && SHIRO_AI.organize; }
   function organizeSheet(auto) {
@@ -227,6 +234,17 @@
     }
   };
   document.addEventListener('click', function (e) {
+    var g = e.target.closest && e.target.closest('[data-tn-gpt]');
+    if (g && sheet) {
+      var txt = sheet.querySelector('.tn-text').value.trim(), other = sheet.querySelector('.tn-sub-other').value.trim();
+      if (txt.length < 15) { e.preventDefault(); notice('정리할 글이 너무 짧아. 먼저 말하거나 적어줘.'); return; }
+      var pr = gptPrompt(other || sub || '수업', txt, sheetKind);
+      var A = window.SHIRO_AI;
+      g.href = A && A.rawHref ? A.rawHref(pr) : 'https://chatgpt.com/?q=' + encodeURIComponent(pr.slice(0, 1800));
+      if (A && A.rawCopy) A.rawCopy(pr, '정리 요청을 복사해 뒀어. ChatGPT 앱에 안 들어가 있으면 붙여넣기 → 정리된 글을 🧠 정리 칸에 붙여넣고 저장해.');
+      var box = sheet.querySelector('.tn-sum-box'); if (box) box.hidden = false;
+      return;   // 링크 기본 동작으로 ChatGPT 앱 열기
+    }
     var b = e.target.closest && e.target.closest('button'); if (!b) return;
     var d = b.dataset;
     if (d.tnOpen) { openSheet(d.tnOpen); return; }
@@ -267,7 +285,7 @@
     '.tn-photo{margin-top:8px}.tn-preview{border:2px dashed #d9d3ee;border-radius:16px;min-height:140px;display:grid;place-items:center;gap:8px;padding:10px}.tn-preview img{max-width:100%;max-height:42dvh;border-radius:10px}.tn-ocr-row{margin:8px 0 0}' +
     '.tn-list ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}.tn-list li{border:1px solid #efedf5;border-radius:14px;padding:10px 12px}.tn-li-top{display:flex;align-items:center;gap:8px}.tn-li-top small{flex:1;color:#6b6880}.tn-tag{font-size:12.5px;font-weight:700;background:#f0edff;color:#5b45d6;border-radius:999px;padding:3px 9px}.tn-tag.photo{background:#e8f4ff;color:#2a6aa8}' +
     '.tn-thumb{display:block;width:100%;height:140px;margin:8px 0 0;border-radius:10px;background:#f4f3f8 center/cover no-repeat;border:0!important;font-size:12px;color:#6b6880}.tn-txt{margin:8px 0 0;font-size:14px;line-height:1.6;white-space:normal;max-height:9.6em;overflow:hidden}' +
-    '.tn-org-row button{width:100%;min-height:46px!important;margin-top:8px;font-weight:700}.tn-sum{width:100%;font-size:14px;line-height:1.6;background:#fbfaff}.tn-sumv{margin:8px 0 0;font-size:14px;line-height:1.65;background:#f8f6ff;border-radius:10px;padding:10px 12px}.tn-raw{display:none}.tn-show-raw .tn-raw{display:block}.tn-show-raw .tn-sumv{display:none}' +
+    '.tn-org-row button{width:100%;min-height:46px!important;margin-top:8px;font-weight:700}.tn-gpt{display:block;margin-top:8px;padding:10px 12px;border:1px solid #d9d2f3;border-radius:12px;background:#fff;color:#4a33b8;font-weight:700;text-decoration:none;text-align:center;min-height:46px}.tn-gpt small{display:block;font-weight:500;color:#6b6880;font-size:12.5px}.tn-sum{width:100%;font-size:14px;line-height:1.6;background:#fbfaff}.tn-sumv{margin:8px 0 0;font-size:14px;line-height:1.65;background:#f8f6ff;border-radius:10px;padding:10px 12px}.tn-raw{display:none}.tn-show-raw .tn-raw{display:block}.tn-show-raw .tn-sumv{display:none}' +
     '.tn-viewer img{max-width:100%;max-height:85dvh;border-radius:12px}.tn-viewer{flex-direction:column;gap:10px}';
   document.head.appendChild(css);
   if (typeof render === 'function') render();
