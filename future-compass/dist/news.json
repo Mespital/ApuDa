@@ -1,8 +1,16 @@
 {
-  "checked_at": "2026-10-19T20:04:06.146654+00:00",
-  "last_success_at": "2026-10-19T20:04:06.146654+00:00",
+  "checked_at": "2026-10-19T20:55:30.288018+00:00",
+  "last_success_at": "2026-10-19T20:55:30.288018+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "Partnering to strengthen the grid and support local communities in Arkansas",
+      "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/arkansas-partnerships/",
+      "source": "Google",
+      "published_at": "2026-10-19T20:15:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "How to shape your slides and videos with Gemini Notebook",
       "url": "https://blog.google/innovation-and-ai/products/gemini-notebook/co-create-slides-videos/",
@@ -234,20 +242,12 @@
       "published_at": "2026-10-13T16:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Higgsfield takes AI video from 1 minute to over 10",
-      "url": "https://openai.com/index/higgsfield-longer-videos-voice",
-      "source": "OpenAI",
-      "published_at": "2026-10-13T12:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-19T20:04:06.146654+00:00",
+    "checked_at": "2026-10-19T20:55:30.288018+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -436,7 +436,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-19T20:04:06.146654+00:00",
+    "last_success_at": "2026-10-19T20:55:30.288018+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
