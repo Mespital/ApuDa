@@ -162,7 +162,8 @@
     function pickRole(r) {
       setWho(r);
       if (window.FamilySync && whoFamily) FamilySync.start(true);
-      var n = (whoNotice ? whoNotice + ' ' : '') + (r === 'parent' ? '엄마로 들어왔어요 💜' : '승준, 오늘도 화이팅 🐾'); changing = false; recovering = false; whoNotice = ''; whoFamily = false; reallyUnlock(n);
+      var gk = 'fc-greet-' + r, gd = new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10), greeted = (function () { try { return localStorage.getItem(gk) === gd; } catch (e) { return false; } })(); try { localStorage.setItem(gk, gd); } catch (e) {}   // 인사는 하루 첫 번째만 (승준 리뷰 2)
+      var n = (whoNotice ? whoNotice + ' ' : '') + (greeted ? '' : (r === 'parent' ? '엄마로 들어왔어요 💜' : '승준, 오늘도 화이팅 🐾')); changing = false; recovering = false; whoNotice = ''; whoFamily = false; reallyUnlock(n);
     }
     gate.querySelector('.pin-rec-mail-open').addEventListener('click', function () { gate.querySelector('.pin-rec-mail').hidden = false; gate.querySelector('.pin-rec-qa').hidden = true; recStatus(''); });
     gate.querySelector('.pin-rec-qa-open').addEventListener('click', function () {

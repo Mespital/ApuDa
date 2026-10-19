@@ -16,9 +16,21 @@
     var t = today(), now = nowMin(), out = [];
     var add = function (day, off) {   // off: 내일이면 +1440
       var cfg = (typeof FC_SCHOOL !== 'undefined' && FC_SCHOOL.config) || {}, per = cfg.periods || [], cm = cfg.classMinutes || 50;
+      var exN = !off && window.FC_PLANNER && FC_PLANNER.examName ? FC_PLANNER.examName(day) : '';
+      if (exN) {   // 시험날: 평소 수업 대신 시험 (승준 리뷰 1)
+        var P = FC_PLANNER.get ? FC_PLANNER.get() : {}, subs = (P.examDays && P.examDays[day]) || [];
+        if (!subs.length) { var L = window.FC_SCHOOL_LIVE && FC_SCHOOL_LIVE.data && FC_SCHOOL_LIVE.data(), X = L && L.exams; ['fin', 'mid'].forEach(function (k) { if (!subs.length && X && X[k] && X[k].days && X[k].days[day]) subs = X[k].days[day]; }); }
+        if (!subs.length && /학력평가|모의고사/.test(exN)) subs = ['국어', '수학', '영어', '한국사', '탐구(통합사회·통합과학)'];
+        var st0 = toMin(per[0]) || 8 * 60 + 20;
+        out.push({ k: 'exam', icon: '📝', title: exN + (subs.length ? ' · ' + subs.join(' → ') : ''), s: st0, e: st0 + 6 * 60, sub: '시험 시간은 학교 안내 기준' });
+        return addRest(day, off);
+      }
       if (!off && window.FC_PLANNER && FC_PLANNER.todayRow) FC_PLANNER.todayRow().forEach(function (s, i) {
         var st = toMin(per[i]); if (!s || st == null) return; out.push({ k: 'class', icon: '🏫', title: (i + 1) + '교시 ' + s, s: st, e: st + cm });
       });
+      addRest(day, off);
+    };
+    var addRest = function (day, off) {
       if (typeof FC_ACADEMY !== 'undefined') FC_ACADEMY.forDay(day).forEach(function (a) {
         var st = toMin(a.start); if (st == null) return; out.push({ k: 'ac', icon: '🏃', title: a.name, s: st + off, e: (toMin(a.end) || st + 90) + off, ac: a, hw: a.homework && !a.hwDone ? a.homework : '' });
       });
@@ -42,7 +54,7 @@
       var leave = x.k === 'ac' && !on ? x.s - 40 : null;   // 학원은 40분 전 출발 (추정)
       return pre + '<li class="nx-' + x.k + (on ? ' on' : '') + '"><time>' + hm(x.s) + '</time><i class="nx-dot"></i><div class="nx-body">' +
         '<b>' + esc(x.icon) + ' ' + esc(x.title) + '</b>' +
-        '<small class="nx-sub">' + (on ? '진행 중 · ' + hm(x.e) + '까지' : inMin(x.s - now) + (x.e > x.s ? ' · ' + hm(x.e) + '까지' : '')) + '</small>' +
+        '<small class="nx-sub">' + (x.k === 'exam' ? (on ? '시험 중 · ' : inMin(x.s - now) + ' · ') + '시간은 학교 안내대로 · 컴퓨터용 사인펜·시계 챙기기' : on ? '진행 중 · ' + hm(x.e) + '까지' : inMin(x.s - now) + (x.e > x.s ? ' · ' + hm(x.e) + '까지' : '')) + '</small>' +
         (leave != null ? '<small class="nx-sub nx-leave">' + (leave <= now ? '🚶 지금 출발하면 좋아' : '🚶 ' + hm(leave) + '쯤 출발 (추정)') + '</small>' : '') +
         (x.hw ? '<small class="nx-sub">📚 숙제: ' + esc(x.hw) + '</small>' : '') +
         (x.k === 'ac' ? '<button type="button" class="nx-map" data-nx-map="' + esc(x.ac.id) + '"><span class="nx-n" aria-hidden="true">N</span>네이버 지도 길찾기</button>' : '') + '</div></li>';

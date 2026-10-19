@@ -48,7 +48,9 @@
     var FP = window.FC_PLANNER, L = FP ? FP.todays() : [], undone = L.filter(function (x) { return !x.t.done; });
     var exN = FP && FP.examName ? FP.examName(today()) : '', ex = window.FC_BOOST ? FC_BOOST.exams()[0] : null, free = FP && FP.free ? FP.free() : 0;
     var h = Math.floor(nowMin() / 60), head;
+    var night = h >= 21 || h < 5;
     if (exN) head = '오늘 ' + exN + ' — 화이팅! 🍀';
+    else if (night) head = undone.length ? '🌙 오늘 남은 건 ' + undone.length + '개 — 내일로 미뤄도 괜찮아' : L.length ? '🌙 오늘 할 일 다 했어. 푹 쉬자' : '🌙 오늘 하루 수고했어';   // 밤엔 '오늘 할 일 정하기' 대신 (승준 리뷰 3)
     else if (undone.length) head = (h < 12 ? '좋은 아침! ' : h >= 15 && h < 19 ? '수업 끝! ' : '') + '오늘은 ' + undone.length + '개만 하면 돼';
     else if (L.length) head = '오늘 할 일 다 했어! 🎉';
     else head = '오늘 할 일 하나만 정해볼까?';
@@ -56,13 +58,14 @@
     var img = old.querySelector('.hero-img'), mood = old.querySelector('.kp-mood');
     var s = document.createElement('section'); s.className = 'hero-heal hb' + (old.classList.contains('night') ? ' night' : '');
     s.innerHTML = '<div class="hb-img" role="img" aria-label="잠옷 입고 쉬는 그림"></div><div class="hb-txt"><b>' + esc(head) + '</b>' + (meta ? '<span>' + esc(meta) + '</span>' : '') + '</div>' +
-      (!L.length && !exN ? '<button type="button" class="hb-add" data-as-add>＋ 할 일 적기</button>' : '');
+      (!L.length && !exN && !night ? '<button type="button" class="hb-add" data-as-add>＋ 할 일 적기</button>' : '');
     /* 지금 할 1개: 큰 시작 줄 (밤 9시 이후엔 하루 마무리) */
     var night0 = h >= 21 || h < 5, closed0 = FP && FP.get && FP.get().days && FP.get().days[today()];
     var go = '';
     if (!isParent()) {
       if (undone[0] && !night0) go = ('<button type="button" class="hb-go" data-pl-play="' + esc(undone[0].t.id) + '"><span>지금 할 1개</span><b>' + esc(undone[0].t.title) + '</b><i aria-hidden="true">▶</i></button>');
       else if (night0 && L.length && !closed0) go = ('<button type="button" class="hb-go night" data-hero-close><span>오늘 마무리</span><b>🌙 하루 마무리 30초</b><i aria-hidden="true">›</i></button>');
+      if (night0 && !tmrTask()) go += '<button type="button" class="hb-go night tmr" data-as-tmr><span>내일 첫 번째</span><b>🌙 내일 제일 먼저 할 1개 정하기</b><i aria-hidden="true">＋</i></button>';
     }
     s.insertAdjacentHTML('beforeend', rings(L));
     if (img) s.querySelector('.hb-img').style.backgroundImage = getComputedStyle(img).backgroundImage;
@@ -77,23 +80,23 @@
   var FOCUS_GOAL = 2;
   function ringVals(L) {
     var t = today(), rv = (state.reviews || []).filter(function (r) { return r.date === t; }), ses = (state.sessions || {})[t] || 0;
-    return [
-      { k: 'todo', n: '할 일', v: L.filter(function (x) { return x.t.done; }).length, of: L.length, c: '#ffd166' },
-      { k: 'focus', n: '집중', v: Math.min(ses, FOCUS_GOAL), of: FOCUS_GOAL, raw: ses, c: '#7ee0b5' },
-      { k: 'rev', n: '복습', v: rv.filter(function (r) { return r.done; }).length, of: rv.length, c: '#a8b8ff' }
-    ];
+    var exam = window.FC_PLANNER && FC_PLANNER.examName && FC_PLANNER.examName(t);   // 시험날엔 집중 목표를 빼 (승준 리뷰 7)
+    var R = [{ k: 'todo', n: '할 일', v: L.filter(function (x) { return x.t.done; }).length, of: L.length, c: '#ffd166', zero: true }];
+    if (!exam) R.push({ k: 'focus', n: '집중', v: Math.min(ses, FOCUS_GOAL), of: FOCUS_GOAL, raw: ses, c: '#7ee0b5' });
+    R.push({ k: 'rev', n: '복습', v: rv.filter(function (r) { return r.done; }).length, of: rv.length, c: '#a8b8ff', zero: true });
+    return R;
   }
   function rings(L) {
     var R = ringVals(L), sz = 30, cx = 32, w = 8, label = [];
     var svg = R.map(function (r, i) {
       var rad = 27 - i * 9.5, C = 2 * Math.PI * rad, p = r.of ? Math.min(1, r.v / r.of) : 0;
-      label.push(r.n + ' ' + (r.of ? (r.raw != null ? r.raw : r.v) + '/' + r.of : '없음'));
+      label.push(r.n + ' ' + (r.of ? (r.raw != null ? r.raw : r.v) + '/' + r.of : '0개'));
       return '<circle cx="' + cx + '" cy="' + cx + '" r="' + rad + '" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="' + w + '"/>' +
         (p ? '<circle cx="' + cx + '" cy="' + cx + '" r="' + rad + '" fill="none" stroke="' + r.c + '" stroke-width="' + w + '" stroke-linecap="round" stroke-dasharray="' + (C * p).toFixed(1) + ' ' + C.toFixed(1) + '" transform="rotate(-90 ' + cx + ' ' + cx + ')"/>' : '');
     }).join('');
     var all = R.every(function (r) { return !r.of || r.v >= r.of; }) && R.some(function (r) { return r.of; });
     return '<div class="hb-rings' + (all ? ' full' : '') + '" role="img" aria-label="오늘 진행: ' + label.join(', ') + '"><svg viewBox="0 0 64 64" width="' + sz + '" height="' + sz + '" aria-hidden="true">' + svg + '</svg>' +
-      '<ul aria-hidden="true">' + R.map(function (r) { return '<li><i style="background:' + r.c + '"></i>' + r.n + ' <b>' + (r.of ? (r.raw != null ? r.raw : r.v) + '/' + r.of : '-') + '</b></li>'; }).join('') + '</ul></div>';
+      '<ul aria-hidden="true">' + R.map(function (r) { return '<li><i style="background:' + r.c + '"></i>' + r.n + ' <b>' + (r.of ? (r.raw != null ? r.raw : r.v) + '/' + r.of : '0') + '</b></li>'; }).join('') + '</ul></div>';
   }
   window.FC_RINGS = { vals: function () { return ringVals(window.FC_PLANNER ? FC_PLANNER.todays() : []); } };
 
@@ -158,6 +161,18 @@
     var f = w.querySelector('input:not([type=date]),textarea'); if (f) setTimeout(function () { try { f.focus({ preventScroll: true }); } catch (e) {} }, 60);
     return w;
   }
+  function tmrDate() { return new Date(Date.parse(today() + 'T12:00:00Z') + 864e5).toISOString().slice(0, 10); }
+  function tmrTask() { var d = tmrDate(); return (state.tasks || []).some(function (x) { return x.date === d; }); }
+  function tmrSheet() {
+    sheet('<div class="as-top"><h2>🌙 내일 제일 먼저 할 1개</h2><button type="button" class="as-x" data-as-close aria-label="닫기">✕</button></div><form class="pl-add" data-as-tmr-form><label>과목<input name="subject" maxlength="40" placeholder="예: 영어" list="sb-subjects"></label><label>할 일<input name="title" required maxlength="80" placeholder="예: 단어 30개 외우기"></label><button class="primary" type="submit">내일 할 일로 넣기</button><p class="muted small">내일 아침 오늘 화면 맨 위 "지금 할 1개"로 떠.</p></form>', 'as-add as-tmr');
+    setTimeout(function () { var i = document.querySelector('[data-as-tmr-form] input[name=title]'); if (i) i.focus(); }, 50);
+  }
+  document.addEventListener('submit', function (e) {
+    var f = e.target; if (!f.matches || !f.matches('[data-as-tmr-form]')) return; e.preventDefault();
+    var t = f.elements.title.value.trim(); if (!t) return;
+    state.tasks.push({ id: uid(), title: t.slice(0, 120), date: tmrDate(), done: false, kind: '과제', subject: f.elements.subject.value.trim().slice(0, 40), note: '' }); save();
+    closeSheet(); if (typeof notice === 'function') notice('내일 첫 번째 할 일로 넣었어. 잘 자 🌙'); render();
+  });
   function closeSheet() { document.querySelectorAll('.as-wrap').forEach(function (x) { x.remove(); }); }
   function addSheet() {
     if (!quickHTML) { var f = document.querySelector('form.sb-quick'); if (f) quickHTML = f.outerHTML; }
@@ -177,6 +192,7 @@
   window.addEventListener('fc-open-cheer', function () { setTimeout(cheerSheet, 120); });
   document.addEventListener('click', function (e) {
     var b = e.target.closest && e.target.closest('[data-as-add]'); if (b) { e.preventDefault(); addSheet(); return; }
+    var bt = e.target.closest && e.target.closest('[data-as-tmr]'); if (bt) { e.preventDefault(); tmrSheet(); return; }
     var c = e.target.closest && e.target.closest('.as-cheer [data-pv-cheer]'); if (c) setTimeout(closeSheet, 50);
   });
   document.addEventListener('change', function (e) { if (e.target.matches && e.target.matches('input[type=checkbox]')) haptic(); });
