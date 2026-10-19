@@ -32,7 +32,7 @@ const push = (q, o) => { q = clean(q); if (/고사|평가|수행|방학|복습|�
 const live = read('school-live.json', {});
 for (const s of live.eval?.subjects || []) for (const t of s.timeline || []) {
   if (!t.unit || !(t.m === kstMonth || t.m === kstMonth + 1 || (kstMonth === 12 && t.m === 1))) continue;
-  String(t.unit).split(/\(\d+\)|·|,|\//).forEach((p) => push(p, { subject: s.subject, unit: '이번 진도', from: '진도', pri: 1 }));
+  String(t.unit).split(/\(\d+\)|\d+\.|·|,|\//).forEach((p) => push(p, { subject: s.subject, unit: '이번 진도', from: '진도', pri: 1 }));
 }
 try {
   const g = {}; vm.runInNewContext(fs.readFileSync(D('curriculum-kr.js'), 'utf8').replace('g.FC_CURRICULUM = {', 'g.__DATA = DATA; g.FC_CURRICULUM = {'), { window: g, globalThis: g, self: g, console });
@@ -53,7 +53,7 @@ for (const t of topics.sort((a, b) => a.pri - b.pri)) {
   const key = t.q; if (seen.has(key)) continue; seen.add(key);
   const tr = L.tried[key];
   if (tr && tr.title && have.has(tr.title) && now - Date.parse(have.get(tr.title).at) < STALE) continue;   // 이미 배웠고 아직 새것
-  if (tr && !tr.title && now - Date.parse(tr.at) < RETRY) continue;                                     // 못 찾은 주제는 2주 뒤 다시
+  if (tr && !tr.title && tr.v === 2 && now - Date.parse(tr.at) < RETRY) continue;                                     // 못 찾은 주제는 2주 뒤 다시
   if (have.has(t.q) && now - Date.parse(have.get(t.q).at) < STALE) continue;
   due.push(t);
 }
@@ -61,25 +61,41 @@ const pick = due.slice(0, PER_RUN);
 
 async function j(url) { const r = await fetch(url, { headers: UA, signal: AbortSignal.timeout(8000) }); if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); }
 const API = 'https://ko.wikipedia.org/w/api.php?format=json&formatversion=2&';
-async function learn(t) {
-  let title = t.q;
-  if (!t.exact) {
-    const s = await j(API + 'action=query&list=search&srlimit=3&srsearch=' + encodeURIComponent(t.q));
-    const hit = (s.query?.search || []).map((x) => x.title).find((x) => fit(x, t.q) >= 0.5 && !/동음이의|목록/.test(x));
-    if (!hit) return null; title = hit;
-  }
+/* 긴 진도 문장은 위키백과 검색이 안 맞아서 → 핵심어 후보로 쪼개서 차례로 찾는다 */
+const STOPW = /^(활용|감상|탐구|원리|이해|방법|사례|생활|우리|주변|다양한|관련|대한|위한|통한|중심|바탕|과정|문제|해결|방안|제안|활동|자료|교과서|단원|프로젝트|미래|첨단|과학적|학교)$/;
+const strip = (w) => w.replace(/(으로|에서|에게|하여|하고|하는|활용한|적용된|이용한|을|를|의|에|와|과|한|된|및|로)$/, '');
+function cands(q) {
+  const ws = q.split(/\s+/).map(strip).filter((w) => w.length >= 2);
+  const out = [q];
+  for (let i = 0; i < ws.length - 1; i++) if (!STOPW.test(ws[i]) && !STOPW.test(ws[i + 1])) out.push(ws[i] + ' ' + ws[i + 1]);
+  ws.filter((w) => w.length >= 2 && !STOPW.test(w)).sort((a, b) => b.length - a.length).forEach((w) => out.push(w));
+  return [...new Set(out)].slice(0, 5);
+}
+async function page(title, t) {
   const e = await j(API + 'action=query&prop=extracts|links|info&inprop=url&exintro=1&explaintext=1&redirects=1&pllimit=40&plnamespace=0&titles=' + encodeURIComponent(title));
   const p = (e.query?.pages || [])[0]; if (!p || p.missing || !p.extract || p.extract.length < 60 || /동음이의/.test(p.extract.slice(0, 80))) return null;
   const text = p.extract.replace(/\n{2,}/g, '\n').slice(0, 900);
   return { title: p.title, subject: t.subject, unit: t.unit, from: t.from, pri: t.pri, text, url: p.fullurl || 'https://ko.wikipedia.org/wiki/' + encodeURIComponent(p.title.replace(/ /g, '_')), links: (p.links || []).map((x) => x.title).slice(0, 12), at: iso };
 }
+async function learn(t) {   // 주제 하나에서 개념 최대 2개
+  if (t.exact) { const c = await page(t.q, t); return c ? [c] : []; }
+  const res = [], titles = new Set();
+  for (const q of cands(t.q)) {
+    if (res.length >= 2) break;
+    const s = await j(API + 'action=query&list=search&srlimit=3&srsearch=' + encodeURIComponent(q));
+    const hit = (s.query?.search || []).map((x) => x.title).find((x) => fit(x, q) >= 0.6 && !/동음이의|목록/.test(x) && !titles.has(x));
+    if (!hit) continue;
+    const c = await page(hit, t); if (c && !titles.has(c.title)) { titles.add(c.title); res.push(c); }
+  }
+  return res;
+}
 
 const got = [];
 for (const t of pick) {
   try {
-    const c = await learn(t);
-    L.tried[t.q] = { at: iso, title: c ? c.title : '' };
-    if (c) { const old = have.get(c.title); if (old && old.pri < c.pri) { c.pri = old.pri; c.subject = old.subject; c.unit = old.unit; c.from = old.from; } have.set(c.title, c); got.push(c.title); }
+    const cs = await learn(t);
+    L.tried[t.q] = { at: iso, title: cs[0] ? cs[0].title : '', v: 2 };
+    for (const c of cs) { const old = have.get(c.title); if (old && old.pri < c.pri) { c.pri = old.pri; c.subject = old.subject; c.unit = old.unit; c.from = old.from; } have.set(c.title, c); got.push(c.title); }
   } catch (e) { console.error('skip', t.q, e.message); }
   await new Promise((r) => setTimeout(r, 300));   // 위키백과에 부담 주지 않게
 }
