@@ -14,6 +14,7 @@
 | P1-5 오늘 첫 화면 | 확인만: 배너·3시간·할 일이 첫 화면(아래 메뉴 위) 안에 들어옴 | 변경 없음 |
 | P2-10 글꼴 | 버튼·입력칸도 Pretendard(`font-family:inherit`) | 폰 글꼴 1종 |
 | 덤 | 시간표 교시 시각 줄바꿈, 집중 시간 칩 한 줄 | — |
+| P2-7 과목 색 | `subject-color.js`: 과목 8색(`--sub-*`), 학교 소식 알약·시간표 칸·기말 플랜 점에 같은 색, 밤 화면 대응. `motion.js`: 탭 바꿀 때 알약 하나씩 톡톡(Jitter Color Pills: Reveal) | 같은 과목 같은 색 |
 
 ## 2. Codex에 넘기는 것 (순서대로)
 
@@ -42,7 +43,7 @@
 - 지시: "버튼을 primary(보라 꽉 참, 화면당 1개), secondary(테두리), ghost(글자만) 세 클래스로 정리하고 ui-system.css 에 정의해줘. 기존 button.primary 는 primary 로, 점선 버튼(.dt-more, [data-tn-paste])은 secondary 로. 네이버 길찾기(.nx-map) 초록은 예외로 유지."
 - 완료 기준: 모든 버튼이 3종 + 길찾기 예외.
 
-### C4. 과목 색 통일 (P2-7)
+### C4. 과목 색 통일 (P2-7) — ✅ 대부분 끝남. 남은 것: 주간 일정 수업 줄에 `window.FC_SUBJECT_KEY` 적용
 - 지시: "과목 색 토큰 8개(--sub-kor 국어, --sub-math 수학, --sub-eng 영어, --sub-soc 사회, --sub-sci 과학, --sub-his 한국사, --sub-art 예체능, --sub-etc 기타)를 ui-system.css 에 만들고 school-live.js(과목 라벨), exam-plan.js, study-week.js(시간표), app-ui.js(주간 일정)가 같은 함수로 색을 고르게 해줘. 과목명 글자는 그대로 보이게(색만으로 구분하지 않기)."
 - 완료 기준: 같은 과목은 어느 화면에서나 같은 색.
 

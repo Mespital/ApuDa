@@ -16,6 +16,9 @@
     '@keyframes moUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}',
     '@keyframes moPop{0%{transform:scale(1)}40%{transform:scale(1.18)}100%{transform:scale(1)}}',
     '@keyframes moFade{from{opacity:0}to{opacity:1}}',
+    /* 알약 하나씩 톡톡 (Jitter Color Pills: Reveal) */
+    '@keyframes moPill{0%{opacity:0;transform:scale(.6)}60%{opacity:1;transform:scale(1.06)}100%{opacity:1;transform:scale(1)}}',
+    'html.mo-on .mo-pill{animation:moPill var(--mo-3) var(--ease-spring) both;animation-delay:calc(140ms + var(--mo-p,0) * 45ms)}',
     '@keyframes moToast{from{opacity:0;transform:translate(-50%,12px)}to{opacity:1;transform:translate(-50%,0)}}',
     /* 탭이 바뀔 때 카드가 차례로 */
     'html.mo-on #content>.mo-in{animation:moRise var(--mo-3) var(--ease-out) both;animation-delay:calc(var(--mo-i,0) * 30ms)}',
@@ -51,6 +54,10 @@
     var kids = [].slice.call(c.children).filter(function (x) { return x.offsetParent !== null; }).slice(0, 8);
     kids.forEach(function (k, i) { k.style.setProperty('--mo-i', i); k.classList.remove('mo-in'); void k.offsetWidth; k.classList.add('mo-in'); });
     setTimeout(function () { kids.forEach(function (k) { k.classList.remove('mo-in'); k.style.removeProperty('--mo-i'); }); }, 320 + 8 * 30 + 80);
+    // 과목 알약·칩·날짜는 하나씩 톡톡 (첫 화면에 보이는 것 14개까지)
+    var pills = [].slice.call(c.querySelectorAll('.sl-sub, .pl-chips > button, .seg2 > button, .wd-row > .wd, .sub-dot')).filter(function (x) { var r = x.getBoundingClientRect(); return x.offsetParent !== null && r.top < innerHeight; }).slice(0, 14);
+    pills.forEach(function (p, i) { p.style.setProperty('--mo-p', i); p.classList.add('mo-pill'); });
+    setTimeout(function () { pills.forEach(function (p) { p.classList.remove('mo-pill'); p.style.removeProperty('--mo-p'); }); }, 140 + 14 * 45 + 400);
   };
   /* 할 일 체크하면 줄이 살짝 흐려지게 (다시 그려지기 전 짧은 피드백) */
   document.addEventListener('change', function (e) {
