@@ -88,7 +88,7 @@
     if (!SR) return '<div class="tn-rec"><p class="muted">이 브라우저는 바로 받아쓰기가 안 돼. 아래 메모 칸을 누르고 <b>키보드의 🎤 마이크 버튼</b>으로 말해줘.</p><ul class="tn-guide"><li>① 오늘 배운 핵심 한 가지</li><li>② 헷갈렸던 것</li><li>③ 시험에 나올 것 같은 것</li></ul></div>';
     return '<div class="tn-rec"><ul class="tn-guide"><li>① 오늘 배운 핵심 한 가지</li><li>② 헷갈렸던 것</li><li>③ 시험에 나올 것 같은 것</li></ul>' +
       '<div class="tn-clock" aria-live="polite">1:00</div><p class="tn-live muted small"></p>' +
-      '<p><button type="button" class="primary tn-mic" data-tn-mic>● 말하기 시작</button></p><p class="muted small">소리는 저장하지 않고 글자만 남겨.</p></div>';
+      '<p><button type="button" class="primary tn-mic" data-tn-mic>● 말하기 시작</button></p><p class="muted small">소리는 저장하지 않고 글자만 남겨. 글자가 이상하게 나오면 메모 칸을 누르고 키보드의 🎤 음성 입력으로 말해도 돼.</p></div>';
   }
   function photoBody() {
     return '<div class="tn-photo"><input type="file" accept="image/*" capture="environment" hidden data-tn-file>' +
@@ -97,19 +97,58 @@
   }
   function fmt(s) { return Math.floor(s / 60) + ':' + ('0' + s % 60).slice(-2); }
   function stopRec() { if (timer) { clearInterval(timer); timer = null; } if (rec) { try { rec.onend = null; rec.stop(); } catch (e) {} rec = null; } var b = sheet && sheet.querySelector('[data-tn-mic]'); if (b) { b.textContent = finalText ? '● 이어서 말하기' : '● 말하기 시작'; b.classList.remove('on'); } }
+  /* 🎙️ 받아쓰기 정리 — 안드로이드 크롬은 연속 인식에서 앞 문장을 계속 다시 보내(누적) 같은 말이 반복되는 문제가 있어
+     ① 결과는 매번 처음부터 다시 조립 ② 앞 문장을 포함한 새 문장은 '교체' ③ 연달아 반복된 어구는 하나로 */
+  var isAndroid = /Android/i.test(navigator.userAgent || '');
+  function nrm(x) { return String(x).replace(/\s+/g, '').toLowerCase(); }
+  function mergeFinals(list) {
+    var out = [];
+    list.forEach(function (t) {
+      t = String(t || '').trim(); if (!t) return;
+      var last = out.length ? out[out.length - 1] : '';
+      if (last && nrm(t).indexOf(nrm(last)) >= 0) out[out.length - 1] = t;         // 누적 결과(앞 문장을 품은 새 문장) → 바꿔치기
+      else if (last && nrm(last).indexOf(nrm(t)) >= 0) return;                      // 이미 들어간 말 → 건너뛰기
+      else out.push(t);
+    });
+    return out.join(' ');
+  }
+  function dedupeRuns(text) {
+    var w = String(text).split(/\s+/).filter(Boolean), changed = true, guard = 0;
+    while (changed && guard++ < 50) {
+      changed = false;
+      for (var n = Math.min(8, Math.floor(w.length / 2)); n >= 1 && !changed; n--) {
+        for (var i = 0; i + 2 * n <= w.length; i++) {
+          var same = true; for (var k = 0; k < n; k++) if (w[i + k] !== w[i + n + k]) { same = false; break; }
+          if (same) { w.splice(i + n, n); changed = true; break; }
+        }
+      }
+    }
+    // 같은 문장이 통째로 두 번 들어간 경우(띄어쓰기 달라도)
+    return w.join(' ');
+  }
   function startRec() {
     var ta = sheet.querySelector('.tn-text'), live = sheet.querySelector('.tn-live'), clock = sheet.querySelector('.tn-clock'), b = sheet.querySelector('[data-tn-mic]');
-    finalText = ta.value ? ta.value.trim() + ' ' : '';
+    var committed = ta.value ? ta.value.trim() : '';
+    finalText = committed;
     left = 60; clock.textContent = fmt(left);
-    try { rec = new SR(); } catch (e) { notice('마이크를 쓸 수 없어. 키보드 🎤로 말해줘.'); return; }
-    rec.lang = 'ko-KR'; rec.continuous = true; rec.interimResults = true;
-    rec.onresult = function (e) {
-      var interim = '';
-      for (var i = e.resultIndex; i < e.results.length; i++) { var r = e.results[i]; if (r.isFinal) finalText += r[0].transcript.trim() + ' '; else interim += r[0].transcript; }
-      ta.value = finalText.trim(); live.textContent = interim;
-    };
-    rec.onerror = function (e) { if (e.error === 'not-allowed' || e.error === 'service-not-allowed') { notice('마이크 권한이 꺼져 있어. 브라우저 설정에서 마이크를 허용해줘.'); stopRec(); } };
-    rec.onend = function () { if (timer && rec) { try { rec.start(); } catch (e) {} } };   // 폰에서 중간에 끊기면 이어서
+    function begin() {
+      try { rec = new SR(); } catch (e) { notice('마이크를 쓸 수 없어. 키보드의 🎤 음성 입력으로 말해줘.'); return false; }
+      rec.lang = 'ko-KR'; rec.continuous = !isAndroid; rec.interimResults = true; rec.maxAlternatives = 1;   // 안드로이드는 한 문장씩 끊어서 받는 게 정확해
+      rec.onresult = function (e) {
+        var fin = [], interim = '';
+        for (var i = 0; i < e.results.length; i++) { var r = e.results[i]; if (r.isFinal) fin.push(r[0].transcript); else interim = r[0].transcript; }
+        var sess = mergeFinals(fin);
+        finalText = dedupeRuns(mergeFinals([committed, sess]));
+        ta.value = finalText; live.textContent = interim;
+      };
+      rec.onerror = function (e) { if (e.error === 'not-allowed' || e.error === 'service-not-allowed') { notice('마이크 권한이 꺼져 있어. 브라우저 설정에서 마이크를 허용해줘.'); stopRec(); } };
+      rec.onend = function () {
+        committed = ta.value.trim();   // 이번 문장까지 확정
+        if (timer) { try { rec.start(); } catch (e) { setTimeout(function () { if (timer) begin() && rec.start(); }, 250); } }   // 폰에서 끊기면 이어서
+      };
+      return true;
+    }
+    if (!begin()) return;
     try { rec.start(); } catch (e) { notice('마이크를 시작하지 못했어.'); return; }
     b.textContent = '■ 그만'; b.classList.add('on');
     timer = setInterval(function () { left--; clock.textContent = fmt(Math.max(0, left)); if (left <= 0) { stopRec(); live.textContent = ''; notice('1분 끝! 내용 확인하고 저장해줘.'); } }, 1000);
