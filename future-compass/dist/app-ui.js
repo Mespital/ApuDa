@@ -262,7 +262,7 @@
     var bottom = nr && nr.height ? Math.min(window.innerHeight, nr.top) - 24 : window.innerHeight;   // 아래 메뉴(가운데 집중 버튼이 위로 솟은 만큼 포함) 바로 위까지
     var hint = document.querySelector('.wk-app .ag-hint'), hintH = hint ? hint.getBoundingClientRect().height + 6 : 0;
     var top = pg.getBoundingClientRect().top + Math.min(window.scrollY, 0), h = Math.floor(bottom - top - hintH - 10);
-    pg.style.maxHeight = Math.max(200, h) + 'px';
+    pg.style.maxHeight = Math.max(200, h) + 'px'; pg.style.minHeight = Math.max(200, h) + 'px';   // 빈 날도 화면을 채워서 어디를 밀어도 넘어가게
     var list = pg.querySelector('.ag-list'); if (!list) return;
     list.classList.remove('tight', 'tighter');
     if (list.scrollHeight > Math.max(200, h)) list.classList.add('tight');
@@ -278,8 +278,12 @@
   var sw = null;
   document.addEventListener('touchstart', function (e) {
     if (tab !== 'week' || e.touches.length !== 1) return;
-    var el = e.target.closest && e.target.closest('.wk-app .ag-pager, .wk-app .wd-row'); if (!el) return;
-    sw = { x: e.touches[0].clientX, y: e.touches[0].clientY, el: el, week: el.classList.contains('wd-row'), dx: 0, h: null };
+    // 날짜 줄 = 한 주씩, 그 밖의 주간 화면 어디서든(빈 곳 포함) = 하루씩. 아래 메뉴·흰둥이·시트는 제외
+    var t = e.target; if (!t.closest || t.closest('.appnav, .appnav-sheet, .shiro-panel, .shiro-launch, input, textarea, select, .sheet, [role=dialog]')) return;
+    var row = t.closest('.wk-app .wd-row'), pager = document.querySelector('.wk-app .ag-pager');
+    if (!row && !t.closest('#content') && t !== document.body && t !== document.documentElement) return;
+    if (!row && !pager) return;
+    sw = { x: e.touches[0].clientX, y: e.touches[0].clientY, el: row || pager, week: !!row, dx: 0, h: null };
   }, { passive: true });
   document.addEventListener('touchmove', function (e) {
     if (!sw) return;
