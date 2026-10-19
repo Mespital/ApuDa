@@ -7,7 +7,7 @@
     "code": "7010087",
     "homepage": "https://seocho.sen.hs.kr/"
   },
-  "checked_at": "2026-10-19T15:23:51.162155+00:00",
+  "checked_at": "2026-10-19T19:22:14.323285+00:00",
   "keyed": true,
   "school_year": 2026,
   "grade": 1,
@@ -185,17 +185,17 @@
         "배추김치",
         "무쌈"
       ],
-      "kcal": "957.4 Kcal",
+      "kcal": "961.8 Kcal",
       "ntr": {
-        "carb": 94.8,
-        "protein": 39.4,
+        "carb": 95.7,
+        "protein": 39.5,
         "fat": 45.8,
         "vitA": 108.1,
         "thiamin": 0.5,
         "ribo": 0.5,
         "vitC": 38.5,
-        "ca": 125.9,
-        "fe": 1.3
+        "ca": 126.3,
+        "fe": 1.4
       }
     },
     {
@@ -878,5 +878,5 @@
     "NEIS": "true",
     "DATA": "false"
   },
-  "last_success_at": "2026-10-19T15:23:51.162155+00:00"
+  "last_success_at": "2026-10-19T19:22:14.323285+00:00"
 }

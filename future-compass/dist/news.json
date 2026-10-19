@@ -1,8 +1,24 @@
 {
-  "checked_at": "2026-10-19T15:23:49.367956+00:00",
-  "last_success_at": "2026-10-19T15:23:49.367956+00:00",
+  "checked_at": "2026-10-19T19:22:12.296752+00:00",
+  "last_success_at": "2026-10-19T19:22:12.296752+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "How to shape your slides and videos with Gemini Notebook",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-notebook/co-create-slides-videos/",
+      "source": "Google",
+      "published_at": "2026-10-19T17:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "4 tips for styling outfits with Gemini",
+      "url": "https://blog.google/products-and-platforms/products/gemini/stylist-outfit-tips-gemini/",
+      "source": "Google",
+      "published_at": "2026-10-19T16:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "How Itaú is building generative AI for its entire customer base",
       "url": "https://openai.com/index/itau-generative-ai",
@@ -226,28 +242,12 @@
       "published_at": "2026-10-13T12:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Applying technology to understand and treat disease",
-      "url": "https://blog.google/innovation-and-ai/technology/health/ai-health-research/",
-      "source": "Google",
-      "published_at": "2026-10-12T17:30:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Sophos cuts threat investigation time by 96% with OpenAI Daybreak",
-      "url": "https://openai.com/index/sophos",
-      "source": "OpenAI",
-      "published_at": "2026-10-09T07:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-19T15:23:49.367956+00:00",
+    "checked_at": "2026-10-19T19:22:12.296752+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -436,7 +436,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-19T15:23:49.367956+00:00",
+    "last_success_at": "2026-10-19T19:22:12.296752+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
