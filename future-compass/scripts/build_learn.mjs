@@ -23,6 +23,11 @@ const have = new Map(L.concepts.map((c) => [c.title, c]));
 
 /* 2글자 묶음으로 비슷한지 보기 (검색 결과가 엉뚱한 문서인지 거르기) */
 const grams = (s) => { const t = String(s).replace(/[^가-힣A-Za-z0-9]/g, ''); const g = new Set(); for (let i = 0; i < t.length - 1; i++) g.add(t.slice(i, i + 2)); if (t.length === 1) g.add(t); return g; };
+const BADT = /\((?:[^)]*(나라|왕조|왕|인물|가수|드라마|영화|노래|음반|앨범|축구|야구|배우|기업|회사|프로그램|방송|잡지|게임|\d))[^)]*\)|기금|재단|협회|위원회|주식회사|목록|동음이의/;
+const cover = (a, b) => { const A = grams(a), B = grams(b); if (!A.size) return 0; let n = 0; A.forEach((x) => { if (B.has(x)) n++; }); return n / A.size; };
+/* 검색 결과가 주제와 맞는지: 제목이 주제를 다 품고(길이 비슷) 있거나, 서로 대부분 겹치면 OK */
+const ok = (x, q) => { if (BADT.test(x)) return false; const t = x.replace(/\s*\(.*\)$/, ''), qn = q.replace(/(와|과|및|의)(?=\s)/g, ''); const tl = t.replace(/\s/g, '').length, ql = qn.replace(/\s/g, '').length;
+  return (cover(qn, t) >= 0.8 && tl <= ql + 4) || (cover(t, qn) >= 0.75 && cover(qn, t) >= 0.6); };
 const fit = (title, q) => { const a = grams(title.replace(/\s*\(.*\)$/, '')), b = grams(q); if (!a.size) return 0; let n = 0; a.forEach((x) => { if (b.has(x)) n++; }); return n / a.size; };
 const clean = (s) => String(s).replace(/^[\s\dⅠ-Ⅻ.()·-]+/, '').replace(/\(\d+\)/g, ' ').replace(/(알아보기|탐구하기|이해하기|설명하기|분석하기|비교하기|조사하기|발표하기|인식하기|고안|하기)/g, ' ').replace(/\s+/g, ' ').trim();
 
@@ -83,7 +88,7 @@ async function learn(t) {   // 주제 하나에서 개념 최대 2개
   for (const q of cands(t.q)) {
     if (res.length >= 2) break;
     const s = await j(API + 'action=query&list=search&srlimit=3&srsearch=' + encodeURIComponent(q));
-    const hit = (s.query?.search || []).map((x) => x.title).find((x) => fit(x, q) >= 0.6 && !/동음이의|목록/.test(x) && !titles.has(x));
+    const hit = (s.query?.search || []).map((x) => x.title).find((x) => ok(x, q) && !titles.has(x));
     if (!hit) continue;
     const c = await page(hit, t); if (c && !titles.has(c.title)) { titles.add(c.title); res.push(c); }
   }
@@ -100,7 +105,7 @@ for (const t of pick) {
   await new Promise((r) => setTimeout(r, 300));   // 위키백과에 부담 주지 않게
 }
 /* 너무 많아지면 넓혀 읽기·오래된 것부터 정리 */
-let all = [...have.values()].filter((c) => c.from === '교육과정' || c.title.replace(/\s/g, '').length > 2 && !/^(사회|과학|운동|에너지|효율|오염|건축물|사회과학|온실)$/.test(c.title)).sort((a, b) => a.pri - b.pri || Date.parse(b.at) - Date.parse(a.at));
+let all = [...have.values()].filter((c) => c.from === '교육과정' || c.title.replace(/\s/g, '').length > 2 && !/^(사회|과학|운동|에너지|효율|오염|건축물|사회과학|온실)$/.test(c.title) && !BADT.test(c.title)).sort((a, b) => a.pri - b.pri || Date.parse(b.at) - Date.parse(a.at));
 if (all.length > MAX) all = all.slice(0, MAX);
 const keepTried = Object.entries(L.tried).sort((a, b) => Date.parse(b[1].at) - Date.parse(a[1].at)).slice(0, 3000);
 const out = { updated: got.length ? iso : (L.updated || iso), total: all.length, queue: Math.max(0, due.length - pick.length),
