@@ -30,8 +30,16 @@
     if (tb === 'review') { var n = window.FC_PLANNER && FC_PLANNER.again ? FC_PLANNER.again().length : 0; return n ? '오늘 기억 확인 ' + n + '개' : '오늘 확인할 건 다 했어'; }
     return longDate(t);
   }
+  /* 주간 제목: 오늘이 있는 주 기준으로 이번 주 / 다음 주 / 지난주 / N주 뒤 / N주 전 */
+  function weekTitle(p) {
+    var t = today(), d = typeof selDate === 'string' && selDate ? selDate : t;
+    var mon = function (x) { return addD(x, -((wd(x) + 6) % 7)); };
+    var n = Math.round((Date.parse(mon(d) + 'T12:00:00Z') - Date.parse(mon(t) + 'T12:00:00Z')) / (7 * 86400000));
+    var w = n === 0 ? '이번 주' : n === 1 ? '다음 주' : n === -1 ? '지난주' : n > 0 ? n + '주 뒤' : -n + '주 전';
+    return w + (p ? ' 일정' : '');
+  }
   function headHTML(tb) {
-    var p = isParent(), w = p ? 'parent' : 'child', ti = TITLE[tb][p ? 1 : 0];
+    var p = isParent(), w = p ? 'parent' : 'child', ti = tb === 'week' ? weekTitle(p) : TITLE[tb][p ? 1 : 0];
     return '<header class="lt-head"><div class="lt-txt"><small>' + esc(sub(tb)) + '</small><h1>' + esc(ti) + '</h1></div><div class="lt-acts">' +
       (p ? '' : '<button type="button" class="lt-ic" data-kp-open-ask aria-label="엄마·아빠에게 보내기">💌</button>') +
       '<button type="button" class="lt-av" data-who aria-label="' + (p ? '엄마' : '승준') + '로 쓰는 중. 누르면 바꾸기">' + avatar(w) + '</button></div></header>';
@@ -361,7 +369,7 @@
     if (tab === 'today' && isParent()) { var ph = root.querySelector('.pv-head'); if (ph) ph.remove(); momStats(root); }
     var old = root.querySelector('.lt-head'); if (old) old.remove();
     root.insertAdjacentHTML('afterbegin', headHTML(tab));
-    miniBar(TITLE[tab][isParent() ? 1 : 0]);
+    miniBar(tab === 'week' ? weekTitle(isParent()) : TITLE[tab][isParent() ? 1 : 0]);
   };
 
   var css = document.createElement('link'); css.rel = 'stylesheet'; css.href = 'app-ui.css'; document.head.appendChild(css);
