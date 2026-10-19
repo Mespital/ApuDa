@@ -11,13 +11,13 @@ html.tb .appnav,html.tb nav.tabbar{display:none!important}
 .tb-side{position:fixed;left:0;top:0;bottom:0;width:var(--tb-side);z-index:45;overflow-y:auto;padding:14px 12px 24px;box-sizing:border-box;background:#fbf8f1;border-right:1px solid var(--tb-line);box-shadow:inset -6px 0 0 -4px #efe7d6}
 .tb-side::before{content:"";position:absolute;right:10px;top:0;bottom:0;width:6px;background:radial-gradient(circle,#e3d9c4 2px,transparent 2.5px) 0 0/6px 22px repeat-y;opacity:.9}
 .tb-top{display:flex;align-items:center;gap:8px;margin:0 0 14px}
-.tb-fold{all:unset;box-sizing:border-box;cursor:pointer;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:18px;color:var(--tb-sub);background:#f1ebde;flex:none}
+.tb-fold{all:unset;box-sizing:border-box;cursor:pointer;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:20px;color:var(--tb-sub);background:#f1ebde;flex:none}
 .tb-fold:hover{background:#ebe2cf}.tb-fold:focus-visible,.tb-side a:focus-visible{outline:2px solid var(--tb-accent);outline-offset:2px}
-.tb-brand{display:grid;min-width:0}.tb-brand b{font:700 17px/1.25 'Gowun Batang',serif;color:var(--tb-ink);letter-spacing:-.01em}.tb-brand small{font:400 16px/1.2 'Gaegu',cursive;color:#8a6d3b}
-.tb-h{margin:16px 8px 6px;font-size:11.5px;font-weight:800;letter-spacing:.08em;color:#9a8f7a}
+.tb-brand{display:grid;min-width:0}.tb-brand b{font:700 17px/1.25 'Gowun Batang',serif;color:var(--tb-ink);letter-spacing:-.01em}.tb-brand small{font:400 17px/1.2 'Gaegu',cursive;color:#8a6d3b}
+.tb-h{margin:16px 8px 6px;font-size:12.5px;font-weight:800;letter-spacing:.08em;color:#9a8f7a}
 .tb-side ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}
-.tb-side a{display:flex;align-items:center;gap:10px;min-height:44px;padding:6px 10px;border-radius:10px;color:#3d3a52;text-decoration:none;font-size:14.5px;font-weight:600;position:relative}
-.tb-side a i{font-style:normal;font-size:18px;width:24px;text-align:center;flex:none}
+.tb-side a{display:flex;align-items:center;gap:10px;min-height:44px;padding:6px 10px;border-radius:12px;color:#3d3a52;text-decoration:none;font-size:15px;font-weight:600;position:relative}
+.tb-side a i{font-style:normal;font-size:20px;width:24px;text-align:center;flex:none}
 .tb-side a span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tb-side a:hover{background:#f1ebde}
 .tb-side a.on{background:#fff;color:var(--tb-accent);box-shadow:0 1px 0 var(--tb-line),0 2px 8px rgba(80,60,20,.06)}
@@ -27,8 +27,8 @@ html.tb-rail .tb-side{width:var(--tb-rail);padding:12px 8px}
 html.tb-rail .tb-brand,html.tb-rail .tb-h,html.tb-rail .tb-side::before{display:none}
 html.tb-rail .tb-top{justify-content:center}
 html.tb-rail .tb-side ul{gap:4px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px dashed var(--tb-line)}
-html.tb-rail .tb-side a{flex-direction:column;gap:2px;min-height:56px;padding:6px 2px;justify-content:center;font-size:10.5px;font-weight:700;text-align:center}
-html.tb-rail .tb-side a span{max-width:62px;font-size:11px}
+html.tb-rail .tb-side a{flex-direction:column;gap:2px;min-height:56px;padding:6px 2px;justify-content:center;font-size:12.5px;font-weight:700;text-align:center}
+html.tb-rail .tb-side a span{max-width:62px;font-size:12.5px}
 html.tb-rail .tb-side a i{font-size:20px}
 html.tb-rail .tb-side a.on::before{left:-8px}
 /* ── 위 줄·본문 ── */
@@ -38,16 +38,16 @@ html.tb.tb-two body.app main{max-width:1180px!important}
 /* 다이어리 제목 */
 html.tb body.app .lt-head h1,html.tb body.app :is(.sl-head,.gd-head,.ep-head,.ch-head,.ce-head)>h1{font-family:'Gowun Batang',serif!important;font-size:34px!important;letter-spacing:-.02em!important;font-weight:700!important}
 html.tb body.app .lt-head small{font:400 20px/1.2 'Gaegu',cursive!important;color:#8a6d3b!important}
-html.tb body.app #content section.card>h2{font-family:'Gowun Batang',serif;font-size:19px;background:linear-gradient(transparent 62%,var(--tb-hl) 62%) no-repeat;background-size:auto 100%;display:inline;padding:0 2px}
+html.tb body.app #content section.card>h2{font-family:'Gowun Batang',serif;font-size:20px;background:linear-gradient(transparent 62%,var(--tb-hl) 62%) no-repeat;background-size:auto 100%;display:inline;padding:0 2px}
 html.tb body.app #content section.card>h2+*{margin-top:12px}
 /* 다이어리 속지 카드 */
-html.tb body.app #content :is(.card,.sl-t,.gd-s,.ep-day){border:1px solid var(--tb-line)!important;box-shadow:0 1px 0 #efe7d6,0 10px 24px -14px rgba(80,60,20,.25)!important;border-radius:18px!important}
+html.tb body.app #content :is(.card,.sl-t,.gd-s,.ep-day){border:1px solid var(--tb-line)!important;box-shadow:0 1px 0 #efe7d6,0 10px 24px -14px rgba(80,60,20,.25)!important;border-radius:16px!important}
 /* 마스킹테이프: 화면 제목 옆 */
 html.tb body.app :is(.lt-head,.sl-head,.gd-head,.ep-head,.ch-head,.ce-head) h1{position:relative;display:inline-block}
-html.tb body.app :is(.lt-head,.sl-head,.gd-head,.ep-head,.ch-head,.ce-head) h1::after{content:"";position:absolute;right:-74px;top:10px;width:58px;height:18px;background:repeating-linear-gradient(45deg,rgba(255,214,102,.8) 0 7px,rgba(255,231,160,.8) 7px 14px);transform:rotate(8deg);border-radius:2px;box-shadow:0 1px 2px rgba(0,0,0,.08);pointer-events:none}
+html.tb body.app :is(.lt-head,.sl-head,.gd-head,.ep-head,.ch-head,.ce-head) h1::after{content:"";position:absolute;right:-74px;top:10px;width:58px;height:18px;background:repeating-linear-gradient(45deg,rgba(255,214,102,.8) 0 7px,rgba(255,231,160,.8) 7px 14px);transform:rotate(8deg);border-radius:8px;box-shadow:0 1px 2px rgba(0,0,0,.08);pointer-events:none}
 /* 오늘 배너는 넓게, 사진 높이 키움 */
 html.tb body.app .hb{height:190px!important;border-radius:26px!important}
-html.tb body.app .hb-txt b{font-family:'Gowun Batang',serif;font-size:26px}
+html.tb body.app .hb-txt b{font-family:'Gowun Batang',serif;font-size:24px}
 /* ── 2단 배치(넓은 화면): 다이어리 펼친 면처럼 카드가 위에서 아래로 흐름(빈칸 없이) ── */
 html.tb-two .tb-grid{display:block!important;columns:2 400px;column-gap:22px}
 html.tb-two .tb-grid>*{break-inside:avoid;-webkit-column-break-inside:avoid;margin:0 0 18px!important;min-width:0}

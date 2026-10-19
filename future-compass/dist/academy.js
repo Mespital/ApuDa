@@ -136,8 +136,8 @@
     save(list().map(function (a) { if (a.id === t.dataset.acHw) a.hwDone = t.checked; return a; }));
   });
   var css = document.createElement('style');
-  css.textContent = '.ac-list{list-style:none;margin:0 0 10px;padding:0;display:grid;gap:10px}.ac-list li{display:flex;justify-content:space-between;gap:10px;border:1px solid #ebe6f5;border-radius:14px;padding:10px 12px;font-size:14px}.ac-btns{display:flex;gap:6px;align-items:flex-start}.ac-btns button{min-height:36px;padding:4px 10px}' +
-    '.ac-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.ac-days{border:0;padding:0;margin:10px 0 0;display:flex;flex-wrap:wrap;gap:6px}.ac-days legend{font-size:14px;margin-bottom:6px}.ac-days label{display:inline-flex;align-items:center;gap:4px;margin:0;border:1px solid #dad5ec;border-radius:10px;padding:6px 10px;font-size:14px}.ac-days input{width:18px;min-height:18px}' +
+  css.textContent = '.ac-list{list-style:none;margin:0 0 10px;padding:0;display:grid;gap:10px}.ac-list li{display:flex;justify-content:space-between;gap:10px;border:1px solid #ebe6f5;border-radius:12px;padding:10px 12px;font-size:15px}.ac-btns{display:flex;gap:6px;align-items:flex-start}.ac-btns button{min-height:36px;padding:4px 10px}' +
+    '.ac-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.ac-days{border:0;padding:0;margin:10px 0 0;display:flex;flex-wrap:wrap;gap:6px}.ac-days legend{font-size:15px;margin-bottom:6px}.ac-days label{display:inline-flex;align-items:center;gap:4px;margin:0;border:1px solid #dad5ec;border-radius:12px;padding:6px 10px;font-size:15px}.ac-days input{width:18px;min-height:18px}' +
     '.ac-hw{display:inline-flex;gap:6px;align-items:center;margin:4px 0 0;font-size:13.5px}.ac-hw input{width:18px;min-height:18px}.ac-form-wrap summary{cursor:pointer;font-weight:700;color:#6250ce;margin:6px 0}';
   document.head.appendChild(css);
   g.FC_ACADEMY = { list: list, forDay: forDay, when: when, panel: panel, occurrences: occurrences, KEY: KEY };

@@ -39,7 +39,7 @@
   render = function () { prev(); if (tab === 'today' && !isParent()) fold(); };
 
   var css = document.createElement('style');
-  css.textContent = '.more-cards{margin:0 0 14px;border-radius:18px;background:#f6f4fd;box-shadow:0 0 0 1.5px #e6e1fa}.more-cards>summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;align-items:center;gap:8px;min-height:48px;box-sizing:border-box}.more-cards>summary::-webkit-details-marker{display:none}.more-cards>summary b{font-size:15px;color:#2a2550;white-space:nowrap}.more-cards>summary small{flex:1;min-width:0;color:#6b6880;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.more-cards>summary::after{content:"▾";color:#7764ef;font-size:14px}.more-cards[open]>summary::after{content:"▴"}.more-in{padding:0 8px 4px}.more-in>*{margin-top:0}';
+  css.textContent = '.more-cards{margin:0 0 14px;border-radius:16px;background:#f6f4fd;box-shadow:0 0 0 1.5px #e6e1fa}.more-cards>summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;align-items:center;gap:8px;min-height:48px;box-sizing:border-box}.more-cards>summary::-webkit-details-marker{display:none}.more-cards>summary b{font-size:15px;color:#2a2550;white-space:nowrap}.more-cards>summary small{flex:1;min-width:0;color:#6b6880;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.more-cards>summary::after{content:"▾";color:#7764ef;font-size:15px}.more-cards[open]>summary::after{content:"▴"}.more-in{padding:0 8px 4px}.more-in>*{margin-top:0}';
   document.head.appendChild(css);
   render();
 })();

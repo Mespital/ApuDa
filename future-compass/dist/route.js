@@ -98,7 +98,7 @@
       '<form data-rt-form><label>집 주소<input name="home" maxlength="120" value="' + esc(p.home.addr) + '" placeholder="예: 서울 서초구 ○○로 12"></label>' +
       '<label>학교 위치<input name="school" maxlength="120" value="' + esc(p.school.addr) + '"></label>' +
       '<p class="rt-status muted">' + (has(p.home) ? '✅ 집 위치 확인' : '집 위치 미확인') + ' · ' + (has(p.school) ? '✅ 학교 위치 확인' : '학교 위치 미확인') + '</p>' +
-      '<button class="primary">위치 저장</button></form><p class="muted" style="font-size:12px">주소 → 위치 변환: OpenStreetMap. 길찾기·실시간 도착 정보: 네이버 지도.</p></section>';
+      '<button class="primary">위치 저장</button></form><p class="muted" style="font-size:12.5px">주소 → 위치 변환: OpenStreetMap. 길찾기·실시간 도착 정보: 네이버 지도.</p></section>';
   }
   document.addEventListener('submit', function (e) {
     var f = e.target; if (!f.matches || !f.matches('[data-rt-form]')) return; e.preventDefault();
@@ -112,8 +112,8 @@
 
   var css = document.createElement('style');
   css.textContent = '.rt-card{background:#fff;border:1px solid #ebe6f5;border-radius:16px;padding:10px 14px;margin:14px 0}.rt-card summary{cursor:pointer;font-weight:700;font-size:15px}.rt-card summary small{font-weight:500;color:#6b6880;font-size:12.5px;margin-left:4px}' +
-    '.rt-legs{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:8px}.rt-legs li{display:grid;grid-template-columns:70px 1fr auto;gap:8px;align-items:center;font-size:14px}.rt-when{font-size:12px;color:#6b6880}' +
-    '.rt-legs button{min-height:36px;padding:4px 12px;border-radius:10px;border:0;background:#03c75a;color:#fff;font:600 13px system-ui;cursor:pointer;white-space:nowrap}.rt-muted{color:#6b6880;font-size:12.5px;margin:8px 0 0}' +
+    '.rt-legs{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:8px}.rt-legs li{display:grid;grid-template-columns:70px 1fr auto;gap:8px;align-items:center;font-size:15px}.rt-when{font-size:12.5px;color:#6b6880}' +
+    '.rt-legs button{min-height:36px;padding:4px 12px;border-radius:12px;border:0;background:#03c75a;color:#fff;font:600 13.5px system-ui;cursor:pointer;white-space:nowrap}.rt-muted{color:#6b6880;font-size:12.5px;margin:8px 0 0}' +
     '@media(max-width:420px){.rt-legs li{grid-template-columns:1fr auto}.rt-when{grid-column:1/-1}}@media(prefers-color-scheme:dark){.rt-card{background:#1c1a29;border-color:#2e2b41}}';
   document.head.appendChild(css);
   g.FC_ROUTE = { places: places, legs: legs, card: card, mount: mount, ensure: ensure, geocode: geocode, settingsPanel: settingsPanel, appUrl: appUrl, webUrl: webUrl };
