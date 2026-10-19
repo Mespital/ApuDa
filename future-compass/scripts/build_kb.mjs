@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* 흰둥이 지식 묶음 만들기 (2026-10-19) → dist/shiro-kb.json
-   2시간마다 학교 자료 수집 뒤에 실행된다(.github/workflows/future-compass.yml).
+   매일 아침 한 번 실행된다(.github/workflows/shiro-learn.yml) — 흰둥이는 아침 기준 자료로 답한다.
    재료: school-live.json(평가계획·수행평가·채점 기준·진도·시험 범위·시간표·학교 소식·구청 프로그램)
         school.json(나이스 학사일정·급식·시간표) · curriculum-kr.js(교과 단원) · news.json(AI·미래 소식 제목)
    흰둥이(live/shiro.mjs)가 질문과 맞는 조각을 찾아 근거로 답한다. 개인 기록은 넣지 않는다(공개 학교 자료만). */
@@ -77,14 +77,14 @@ add('고교학점제 기본', '졸업: 3년간 192학점(교과 174 + 창의적 
 const arts = (news.articles || []).slice(0, 12);
 if (arts.length) add('최근 AI·미래 소식', '최근 AI·미래 관련 공식 소식: ' + arts.map((a) => `${(a.published_at || '').slice(5, 10)} ${a.source}: ${a.title}`).join(' / '), 'AI 소식');
 
-/* ⑧ 흰둥이가 스스로 공부한 개념 사전(scripts/build_learn.mjs, 매시간) */
+/* ⑧ 흰둥이가 스스로 공부한 개념 사전(scripts/build_learn.mjs, 매일 아침) */
 const learnF = read('shiro-learn.json', {});
 const schoolN = out.length;
 for (const c of learnF.concepts || []) out.push({ title: c.title, text: `[${c.subject} · ${c.unit}] ` + c.text, src: '위키백과', subject: c.subject, url: c.url });
 const today24 = (learnF.log || []).filter((x) => Date.now() - Date.parse(x.at) < 864e5).reduce((n, x) => n + x.n, 0);
 const learn = { total: (learnF.concepts || []).length, today: today24, queue: learnF.queue || 0, last: (learnF.log || [])[0] || null };
 
-/* 내용이 그대로면 시각도 그대로 둬서 2시간마다 빈 커밋이 생기지 않게 */
+/* 내용이 그대로면 시각도 그대로 둬서 매일 빈 커밋이 생기지 않게 */
 const prev = read('shiro-kb.json', {});
 const same = prev.chunks && JSON.stringify(prev.chunks) === JSON.stringify(out);
 const kb = { updated: same && prev.updated ? prev.updated : new Date().toISOString(), count: out.length, school: schoolN, learn, sources: [...new Set(out.map((x) => x.src))], chunks: out };
