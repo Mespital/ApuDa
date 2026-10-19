@@ -23,7 +23,7 @@ async function liveHealth(store, url) {
   const n = { url, ok, ai, prov, at: Date.now() }; await store.setJSON('live-health', n); return n;
 }
 import { buildPayload, askAI, validQuestion, organizePayload, providerOf } from '../../live/shiro.mjs';
-import { loadKB, searchDocs, searchWiki, knowledgeQ } from '../../live/rag.mjs';
+import { gatherRefs } from '../../live/rag.mjs';
 
 export const KEYS = ['compass-study-v1', 'compass-study-plus-v1', 'fc_academy_v1', 'fc_academy_occurrences_v1', 'fc_teachers_v1', 'fc_offdays_v1', 'fc_preview_v1',
   'fc_hub_posts', 'compass-know-me-v1', 'compass-career-lab', 'compass-career-depth', 'future-compass-v2', 'fc_school_class', 'fc_places_v1', 'fc_avatar_v1', 'fc_planner_v1', 'fc_notes_v1', 'fc_cheer_v1', 'fc_mom_v1', 'fc_kid_v1', 'fc_life_v1', 'fc_av_child_v1', 'fc_av_parent_v1', 'fc_guard_v1', 'fc_path_v1', 'fc_grades_v1'];
@@ -151,8 +151,8 @@ export default async (req) => {
     if (log.filter(t => now - t < 3600000).length >= 60 || log.length >= 300) return json({ error: 'rate' }, 429);
     await store.setJSON('chat-rate', [...log, now]);
     try {
-      const kb = await loadKB(); let refs = searchDocs(b.q, 3, b.notes, kb.chunks); if (!refs.length && env('FC_WEB_SEARCH') !== 'off' && knowledgeQ(b.q)) refs = await searchWiki(b.q);
-      const E = k => env(k); let text = await askAI({ ANTHROPIC_API_KEY: E('ANTHROPIC_API_KEY'), OPENAI_API_KEY: E('OPENAI_API_KEY'), FC_CHAT_PROVIDER: E('FC_CHAT_PROVIDER'), FC_CHAT_MODEL: E('FC_CHAT_MODEL'), FC_OPENAI_MODEL: E('FC_OPENAI_MODEL') }, buildPayload({ role: b.role === 'parent' ? 'parent' : 'child', q: b.q, history: b.history, ctx: b.ctx, guide: b.guide, refs }), 20000);
+      const { refs, study, ctx: studyCtx } = await gatherRefs(b.q, b.notes, { web: env('FC_WEB_SEARCH') !== 'off', history: b.history });
+      const E = k => env(k); let text = await askAI({ ANTHROPIC_API_KEY: E('ANTHROPIC_API_KEY'), OPENAI_API_KEY: E('OPENAI_API_KEY'), FC_CHAT_PROVIDER: E('FC_CHAT_PROVIDER'), FC_CHAT_MODEL: E('FC_CHAT_MODEL'), FC_OPENAI_MODEL: E('FC_OPENAI_MODEL'), FC_STUDY_MODEL: E('FC_STUDY_MODEL') }, buildPayload({ role: b.role === 'parent' ? 'parent' : 'child', q: b.q, history: b.history, ctx: b.ctx, guide: b.guide, refs, study, studyCtx }), 20000);
       if (refs.length && !/📎/.test(text)) text += '\n📎 출처: ' + [...new Set(refs.map(r => (r.kind === '위키백과' ? '위키백과 ' : '') + r.title))].join(', ');
       return json({ ok: true, text });
     } catch (e) { return json({ error: 'ai', status: e.status || 0 }, 502); }

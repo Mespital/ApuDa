@@ -8,7 +8,7 @@
 import http from 'node:http';
 import { createHmac, timingSafeEqual, createPublicKey, verify as edVerify } from 'node:crypto';
 import { buildPayload, askAI, hasAI, validQuestion, organizePayload, providerOf } from './shiro.mjs';
-import { listDocs, addDoc, delDoc, loadKB, searchDocs, searchWiki, knowledgeQ } from './rag.mjs';
+import { listDocs, addDoc, delDoc, gatherRefs } from './rag.mjs';
 const WEB = (process.env.FC_WEB_SEARCH || 'on') !== 'off';
 
 const PORT = Number(process.env.PORT || 8093);
@@ -94,9 +94,9 @@ const server = http.createServer(async (req, res) => {
     if (!validQuestion(b.q)) return send(res, 400, { error: 'bad_q' });
     if (limited('c', 60, 3600000) || limited('cd', 300, 86400000)) return send(res, 429, { error: 'rate' });
     try {
-      const kb = await loadKB(); let refs = searchDocs(b.q, 3, b.notes, kb.chunks);
-      if (!refs.length && WEB && knowledgeQ(b.q)) refs = await searchWiki(b.q);
-      let text = await askAI(process.env, buildPayload({ role: b.role === 'parent' ? 'parent' : 'child', q: b.q, history: b.history, ctx: b.ctx, guide: b.guide, refs }));
+      const { refs, study, ctx: studyCtx } = await gatherRefs(b.q, b.notes, { web: WEB, history: b.history });
+      // 실시간 서버는 시간 제한이 없어서 공부 질문은 더 똑똑한 모델(FC_STUDY_MODEL, 기본 Sonnet)로 답한다
+      let text = await askAI({ ...process.env, FC_STUDY_MODEL: process.env.FC_STUDY_MODEL || 'claude-sonnet-5-5' }, buildPayload({ role: b.role === 'parent' ? 'parent' : 'child', q: b.q, history: b.history, ctx: b.ctx, guide: b.guide, refs, study, studyCtx }));
       const src = [...new Map(refs.map(r => [r.kind + r.title, { kind: r.kind, title: r.title, url: r.url || '' }])).values()];
       if (src.length && !/📎/.test(text)) text += '\n📎 출처: ' + src.map(r => (r.kind === '위키백과' ? '위키백과 ' : '') + r.title).join(', ');
       return send(res, 200, { ok: true, text, sources: src });
