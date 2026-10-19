@@ -121,10 +121,14 @@
   /* 📚 흰둥이가 자동으로 읽는 학교 자료(shiro-kb.json, 2시간마다 갱신) */
   var KBI = null;
   function kbLine() {
-    function put() { var el = document.getElementById('ai-kb'); if (!el || !KBI) return; var h = Math.max(0, Math.round((Date.now() - Date.parse(KBI.updated)) / 36e5));
-      el.textContent = '📚 학교 자료 자동 읽기: 평가계획·수행평가 기준·시험 범위·학사일정·급식·교과 단원 ' + KBI.count + '조각 · ' + (h < 1 ? '방금' : h + '시간 전') + ' 업데이트 (2시간마다 학교 홈페이지·나이스에서 새로 모음)'; }
+    function ago(t) { var h = Math.max(0, Math.round((Date.now() - Date.parse(t)) / 36e5)); return h < 1 ? '방금' : h < 48 ? h + '시간 전' : Math.round(h / 24) + '일 전'; }
+    function put() { var el = document.getElementById('ai-kb'); if (!el || !KBI) return; var L = KBI.learn || {};
+      el.innerHTML = '📚 학교 자료 자동 읽기: 평가계획·수행평가 기준·시험 범위·학사일정·급식·교과 단원 ' + (KBI.school || KBI.count) + '조각 (2시간마다)<br>🧠 스스로 공부: 위키백과 개념 ' + (L.total || 0) + '개' + (L.today ? ' · 최근 24시간 +' + L.today : '') + (L.last ? ' · ' + ago(L.last.at) + ' 「' + esc((L.last.titles || []).slice(0, 3).join(', ')) + '」' : '') + ' (매시간 진도·교과 단원·직업부터)'; }
+    function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
     if (KBI) return put();
-    fetch('shiro-kb.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) { if (d && d.updated) { KBI = d; put(); } else { var el = document.getElementById('ai-kb'); if (el) el.textContent = '📚 학교 자료 자동 읽기: 아직 준비 중'; } }).catch(function () {});
+    function get(u) { return fetch(u, { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw 0; return r.json(); }); }
+    get('https://raw.githubusercontent.com/Mespital/ApuDa/main/future-compass/dist/shiro-kb.json').catch(function () { return get('shiro-kb.json'); })
+      .then(function (d) { if (d && d.updated) { KBI = d; put(); } }).catch(function () { var el = document.getElementById('ai-kb'); if (el) el.textContent = '📚 학교 자료 자동 읽기: 아직 준비 중'; });
   }
   /* ⚙️ 설정 카드 */
   var prev = typeof render === 'function' ? render : null;
