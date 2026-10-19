@@ -24,6 +24,14 @@ jobs:
           MODELS: ${{ inputs.models }}
           EVAL_OUT: shiro-eval.md
         run: node future-compass/scripts/eval-shiro.mjs
+      - name: 지금 흰둥이 AI 상태 (실시간 서버 /health — 키 값은 안 나옴)
+        env:
+          H: ${{ vars.FUTURE_LIVE_HOST || 'live.apuda.app' }}
+          HAS_KEY: ${{ secrets.ANTHROPIC_API_KEY != '' }}
+          HAS_OPENAI: ${{ secrets.OPENAI_API_KEY != '' }}
+          OLLAMA: ${{ vars.FC_OLLAMA_MODEL || secrets.FC_OLLAMA_MODEL }}
+        run: |
+          { echo; echo "## 지금 흰둥이 AI 상태"; echo "- 실시간 서버: $(curl -s -m 8 https://$H/health || echo 연결 안 됨)"; echo "- GitHub 비밀값: Claude 키 $HAS_KEY · OpenAI 키 $HAS_OPENAI · 무료 모델 ${OLLAMA:-없음}"; } >> shiro-eval.md
       - name: Save result to branch eval-results (main에는 안 남김)
         run: |
           mkdir -p /tmp/ev && cp shiro-eval.md /tmp/ev/
