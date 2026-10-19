@@ -76,9 +76,11 @@
       '<label class="tn-l">과목</label><div class="pl-chips tn-subs">' + subjects().map(function (x, i) { return '<button type="button" data-tn-sub="' + esc(x) + '" class="' + (i === 0 ? 'on' : '') + '">' + esc(x) + '</button>'; }).join('') + '<input class="tn-sub-other" maxlength="20" placeholder="다른 과목"></div>' +
       (kind === 'talk' ? talkBody() : photoBody()) +
       '<label class="tn-l">메모 <small class="muted">(헷갈린 것·선생님 강조·시험 나올 것)</small></label><textarea class="tn-text" rows="5" maxlength="1500" placeholder="' + (kind === 'talk' ? '말한 내용이 여기 적혀. 틀린 글자는 고쳐도 돼.' : '사진 속 핵심을 한두 줄 적거나, 글자 읽기를 눌러봐.') + '"></textarea>' +
-      '<p class="tn-org-row"><button type="button" data-tn-org>🧠 정리하기 — 핵심·용어·확인 질문·다음 수업 전 볼 것</button>' +
-      '<a class="tn-gpt" data-tn-gpt href="https://chatgpt.com/" target="_blank" rel="noopener">💬 ChatGPT 앱으로 정리하기 <small>정리된 글을 아래 칸에 붙여넣고 저장</small></a></p>' +
-      '<div class="tn-sum-box" hidden><label class="tn-l">🧠 정리 <small class="muted">(복습·다음 수업 예습에 써. 고쳐도 돼)</small></label><textarea class="tn-sum" rows="10" maxlength="2000" placeholder="ChatGPT가 정리해 준 글을 여기에 붙여넣어 줘"></textarea></div>' +
+      '<p class="tn-org-row"><button type="button" data-tn-org>🧠 앱에서 바로 간단 정리 <small style="display:block;font-weight:500;font-size:12.5px;color:#6b6880">AI 없이 핵심 문장만 골라내기 — 제대로 정리는 아래 ChatGPT</small></button>' +
+      '<a class="tn-gpt" data-tn-gpt href="https://chatgpt.com/" target="_blank" rel="noopener">💬 ChatGPT 앱으로 정리하기 <small>ChatGPT 위쪽에서 \'채팅(Chat)\'을 고르고 보내기 → 답 복사</small></a></p>' +
+      '<div class="tn-sum-box"><label class="tn-l">🧠 정리 <small class="muted">(ChatGPT 정리를 붙여넣거나 직접 써. 저장하면 복습에 들어가)</small></label>' +
+      '<p class="tn-paste-row"><button type="button" data-tn-paste>📋 복사한 정리 붙여넣기</button></p>' +
+      '<textarea class="tn-sum" rows="8" maxlength="2000" placeholder="ChatGPT 답을 길게 눌러 복사 → 여기를 길게 눌러 붙여넣기 (또는 위 📋 버튼)"></textarea></div>' +
       '<div class="tn-again"><span>다시 보기</span><label><input type="checkbox" checked data-tn-day="1"> 내일</label><label><input type="checkbox" checked data-tn-day="3"> 3일 뒤</label><label><input type="checkbox" checked data-tn-day="7"> 7일 뒤</label></div>' +
       '<p class="tn-save-row"><button type="button" class="primary" data-tn-save="' + kind + '">저장</button></p></div>';
     document.body.appendChild(sheet);
@@ -167,6 +169,40 @@
       '내가 말한 내용만 근거로, 아래 형식 그대로 짧게 정리해줘. 내용이 틀렸거나 빠진 중요한 게 있으면 마지막 줄에 "⚠️ 확인할 것"으로만 따로 적어줘(본문에 섞지 마). 표·굵은 글씨 없이 줄글로.\n\n' +
       '📌 핵심 정리\n- (3~5줄)\n🔑 꼭 외울 용어\n- 용어: 뜻 (최대 6개)\n🧩 헷갈리기 쉬운 것\n- (1~2줄)\n❓ 스스로 확인 질문\n- (3개, 답은 쓰지 마)\n🧠 외우기 팁\n- (앞글자·연결 고리 1줄)\n\n--- 내 노트 ---\n' + String(text).slice(0, 1300);
   }
+  /* 📋 ChatGPT에서 돌아오면: 복사해 온 정리를 붙여넣기 · 앱을 오가다 화면이 새로 열려도 쓰던 노트 되살리기 */
+  var gptSent = '', DRAFT = 'fc-tn-draft';
+  function saveDraft() {
+    if (!sheet) return;
+    try { localStorage.setItem(DRAFT, JSON.stringify({ at: Date.now(), kind: sheetKind, sub: sub, other: sheet.querySelector('.tn-sub-other').value, text: sheet.querySelector('.tn-text').value, sum: sheet.querySelector('.tn-sum').value, gpt: gptSent ? 1 : 0 })); } catch (e) {}
+  }
+  function clearDraft() { try { localStorage.removeItem(DRAFT); } catch (e) {} gptSent = ''; }
+  function restoreDraft() {
+    var d = null; try { d = JSON.parse(localStorage.getItem(DRAFT) || 'null'); } catch (e) {}
+    if (!d || Date.now() - d.at > 6 * 3600e3 || (!d.text && !d.sum) || sheet) return false;
+    if (d.kind === 'photo') return false;   // 사진은 다시 찍어야 해서 글만 남은 경우는 말하기로
+    openSheet('talk');
+    if (d.sub) { sub = d.sub; sheet.querySelectorAll('[data-tn-sub]').forEach(function (x) { x.classList.toggle('on', x.dataset.tnSub === d.sub); }); }
+    sheet.querySelector('.tn-sub-other').value = d.other || ''; sheet.querySelector('.tn-text').value = d.text || ''; sheet.querySelector('.tn-sum').value = d.sum || '';
+    if (d.gpt) { gptSent = '1'; notice('쓰던 노트를 되살렸어. ChatGPT 정리를 복사해 왔으면 📋 붙여넣기를 눌러줘.'); }
+    return true;
+  }
+  function pasteSum(manual) {
+    if (!sheet) return;
+    var out = sheet.querySelector('.tn-sum');
+    if (!navigator.clipboard || !navigator.clipboard.readText) { if (manual) { out.focus(); notice('정리 칸을 길게 눌러 붙여넣기 해줘.'); } return; }
+    navigator.clipboard.readText().then(function (t) {
+      t = String(t || '').trim();
+      if (!t || /^\[수업 노트 정리\]/.test(t)) { if (manual) notice('ChatGPT 답을 먼저 복사해 와줘. (지금 복사된 건 보낸 질문이야)'); return; }
+      out.value = t.slice(0, 2000); saveDraft(); notice('붙여넣었어 📋 확인하고 저장해줘.');
+      out.scrollIntoView({ block: 'center' });
+    }).catch(function () { if (manual) { out.focus(); notice('붙여넣기 권한이 없어서, 정리 칸을 길게 눌러 붙여넣어 줘.'); } });
+  }
+  document.addEventListener('input', function (e) { if (sheet && e.target.closest && e.target.closest('.tn-sheet')) saveDraft(); });
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState !== 'visible') { saveDraft(); return; }
+    if (sheet && gptSent && !sheet.querySelector('.tn-sum').value.trim()) setTimeout(function () { pasteSum(false); }, 400);   // ChatGPT에서 돌아오면 자동으로 붙여넣기 시도
+  });
+  setTimeout(function () { if (document.visibilityState === 'visible') restoreDraft(); }, 1800);
   function canAI() { return window.SHIRO_AI && SHIRO_AI.on && SHIRO_AI.on() && SHIRO_AI.organize; }
   function organizeSheet(auto) {
     if (!sheet) return;
@@ -207,6 +243,7 @@
     if (window.FC_PLANNER) { var P = FC_PLANNER.get(); P.again[rv.id] = days.map(function (n) { return new Date(Date.parse(t + 'T12:00:00Z') + n * 86400000).toISOString().slice(0, 10); }); try { localStorage.setItem(FC_PLANNER.KEY, JSON.stringify(P)); } catch (e) {} }
     var a = notes(); a.push({ id: id, date: t, at: new Date().toISOString(), kind: kind, subject: subject, text: text, sum: sum || undefined, photo: kind === 'photo', review: rv.id }); saveNotes(a);
     if (!sum && text.length >= 30 && canAI()) SHIRO_AI.organize(subject, text, kind, t).then(function (s2) { var b3 = notes(); b3.forEach(function (n) { if (n.id === id) n.sum = s2.slice(0, 2000); }); saveNotes(b3); if (typeof render === 'function') render(); }).catch(function () {});
+    clearDraft();
     var done = function () { closeSheet(); document.documentElement.classList.remove('tn-open'); notice('저장했어! ' + (days.length ? '다시 보기 ' + days.map(function (n) { return n === 1 ? '내일' : n + '일 뒤'; }).join('·') + ' 잡아뒀어 🧠' : '')); if (typeof render === 'function') render(); };
     if (kind === 'photo') {
       var data = photoData;
@@ -282,12 +319,14 @@
       g.href = A && A.rawHref ? A.rawHref(pr) : 'https://chatgpt.com/?q=' + encodeURIComponent(pr.slice(0, 1800));
       if (A && A.rawCopy) A.rawCopy(pr, '정리 요청을 복사해 뒀어. ChatGPT 앱에 안 들어가 있으면 붙여넣기 → 정리된 글을 🧠 정리 칸에 붙여넣고 저장해.');
       var box = sheet.querySelector('.tn-sum-box'); if (box) box.hidden = false;
+      gptSent = pr; saveDraft();
       return;   // 링크 기본 동작으로 ChatGPT 앱 열기
     }
     var b = e.target.closest && e.target.closest('button'); if (!b) return;
     var d = b.dataset;
+    if (b.hasAttribute('data-tn-paste')) { pasteSum(true); return; }
     if (d.tnOpen) { openSheet(d.tnOpen); return; }
-    if (b.hasAttribute('data-tn-close')) { if ((sheet.querySelector('.tn-text').value || photoData) && !confirm('저장하지 않고 닫을까?')) return; closeSheet(); document.documentElement.classList.remove('tn-open'); return; }
+    if (b.hasAttribute('data-tn-close')) { if ((sheet.querySelector('.tn-text').value || photoData) && !confirm('저장하지 않고 닫을까?')) return; clearDraft(); closeSheet(); document.documentElement.classList.remove('tn-open'); return; }
     if (d.tnSub) { sub = d.tnSub; sheet.querySelectorAll('[data-tn-sub]').forEach(function (x) { x.classList.toggle('on', x === b); }); sheet.querySelector('.tn-sub-other').value = ''; return; }
     if (b.hasAttribute('data-tn-mic')) { if (timer) { stopRec(); sheet.querySelector('.tn-live').textContent = ''; } else startRec(); return; }
     if (b.hasAttribute('data-tn-pick')) { var f = sheet.querySelector('[data-tn-file]'); f.value = ''; f.click(); return; }
@@ -324,7 +363,7 @@
     '.tn-photo{margin-top:8px}.tn-preview{border:2px dashed #d9d3ee;border-radius:16px;min-height:140px;display:grid;place-items:center;gap:8px;padding:10px}.tn-preview img{max-width:100%;max-height:42dvh;border-radius:10px}.tn-ocr-row{margin:8px 0 0}' +
     '.tn-list ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}.tn-list li{border:1px solid #efedf5;border-radius:14px;padding:10px 12px}.tn-li-top{display:flex;align-items:center;gap:8px}.tn-li-top small{flex:1;color:#6b6880}.tn-tag{font-size:12.5px;font-weight:700;background:#f0edff;color:#5b45d6;border-radius:999px;padding:3px 9px}.tn-tag.photo{background:#e8f4ff;color:#2a6aa8}' +
     '.tn-thumb{display:block;width:100%;height:140px;margin:8px 0 0;border-radius:10px;background:#f4f3f8 center/cover no-repeat;border:0!important;font-size:12px;color:#6b6880}.tn-txt{margin:8px 0 0;font-size:14px;line-height:1.6;white-space:normal;max-height:9.6em;overflow:hidden}' +
-    '.tn-org-row button{width:100%;min-height:46px!important;margin-top:8px;font-weight:700}.tn-gpt{display:block;margin-top:8px;padding:10px 12px;border:1px solid #d9d2f3;border-radius:12px;background:#fff;color:#4a33b8;font-weight:700;text-decoration:none;text-align:center;min-height:46px}.tn-gpt small{display:block;font-weight:500;color:#6b6880;font-size:12.5px}.tn-sum{width:100%;font-size:14px;line-height:1.6;background:#fbfaff}.tn-sumv{margin:8px 0 0;font-size:14px;line-height:1.65;background:#f8f6ff;border-radius:10px;padding:10px 12px}.tn-raw{display:none}.tn-show-raw .tn-raw{display:block}.tn-show-raw .tn-sumv{display:none}' +
+    '.tn-org-row button{width:100%;min-height:46px!important;margin-top:8px;font-weight:700}.tn-gpt{display:block;margin-top:8px;padding:10px 12px;border:1px solid #d9d2f3;border-radius:12px;background:#fff;color:#4a33b8;font-weight:700;text-decoration:none;text-align:center;min-height:46px}.tn-gpt small{display:block;font-weight:500;color:#6b6880;font-size:12.5px}.tn-paste-row{margin:0 0 6px}.tn-paste-row button{width:100%;min-height:44px!important;font-weight:700;background:#f4f1fd!important;border:1px dashed #b9ade8!important;color:#3c2fa8!important}.tn-sum{width:100%;font-size:14px;line-height:1.6;background:#fbfaff}.tn-sumv{margin:8px 0 0;font-size:14px;line-height:1.65;background:#f8f6ff;border-radius:10px;padding:10px 12px}.tn-raw{display:none}.tn-show-raw .tn-raw{display:block}.tn-show-raw .tn-sumv{display:none}' +
     '.tn-viewer img{max-width:100%;max-height:85dvh;border-radius:12px}.tn-viewer{flex-direction:column;gap:10px}';
   document.head.appendChild(css);
   if (typeof render === 'function') render();
