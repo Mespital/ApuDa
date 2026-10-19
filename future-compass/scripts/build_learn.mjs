@@ -68,7 +68,7 @@ function cands(q) {
   const ws = q.split(/\s+/).map(strip).filter((w) => w.length >= 2);
   const out = [q];
   for (let i = 0; i < ws.length - 1; i++) if (!STOPW.test(ws[i]) && !STOPW.test(ws[i + 1])) out.push(ws[i] + ' ' + ws[i + 1]);
-  ws.filter((w) => w.length >= 2 && !STOPW.test(w)).sort((a, b) => b.length - a.length).forEach((w) => out.push(w));
+  ws.filter((w) => w.length >= 4 && !STOPW.test(w)).sort((a, b) => b.length - a.length).forEach((w) => out.push(w));
   return [...new Set(out)].slice(0, 5);
 }
 async function page(title, t) {
@@ -100,7 +100,7 @@ for (const t of pick) {
   await new Promise((r) => setTimeout(r, 300));   // 위키백과에 부담 주지 않게
 }
 /* 너무 많아지면 넓혀 읽기·오래된 것부터 정리 */
-let all = [...have.values()].sort((a, b) => a.pri - b.pri || Date.parse(b.at) - Date.parse(a.at));
+let all = [...have.values()].filter((c) => c.from === '교육과정' || c.title.replace(/\s/g, '').length > 2 && !/^(사회|과학|운동|에너지|효율|오염|건축물|사회과학|온실)$/.test(c.title)).sort((a, b) => a.pri - b.pri || Date.parse(b.at) - Date.parse(a.at));
 if (all.length > MAX) all = all.slice(0, MAX);
 const keepTried = Object.entries(L.tried).sort((a, b) => Date.parse(b[1].at) - Date.parse(a[1].at)).slice(0, 3000);
 const out = { updated: got.length ? iso : (L.updated || iso), total: all.length, queue: Math.max(0, due.length - pick.length),
