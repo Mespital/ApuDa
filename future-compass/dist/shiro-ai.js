@@ -143,13 +143,14 @@
     var l = live(), st = !l ? '가족 공유에 연결하면 쓸 수 있어.' : !(l.ai || l.url) ? '아직 준비 중이야(보호자가 서버에 AI 키를 넣으면 켜져).' : l.url ? '연결됨 · 실시간 서버' : '연결됨';
     var html = '<section class="card" id="set-ai"><h2>🧠 흰둥이 똑똑 모드</h2><p class="muted small">준비된 안내로 답하기 어려운 질문(개념 설명, 공부 계획, 고민)을 AI가 답해줘. ' + st + '</p>' +
       '<label class="push-row"><span>똑똑 모드 쓰기</span><input type="checkbox" data-ai-on' + (on() ? ' checked' : '') + '></label>' +
+      '<label class="small" style="display:block;margin:10px 0 4px">💬 ChatGPT 연결 (공부 질문의 \'ChatGPT에 자세히 물어보기\' 버튼) — 엄마가 만든 GPT 주소를 넣으면 그 GPT로, 비우면 기본 ChatGPT로 열려</label><input type="url" data-gpt-url placeholder="https://chatgpt.com/g/g-…" value="' + (function () { try { return (localStorage.getItem(GPT_KEY) || '').replace(/"/g, ''); } catch (e) { return ''; } })() + '" style="width:100%;box-sizing:border-box"><p class="muted small">ChatGPT는 만 13세 이상, 18세 미만은 보호자 동의가 필요해. 승준이 계정은 ChatGPT 보호자 연결(자녀 보호 설정)을 같이 켜두길 권해.</p>' +
       '<p class="muted small">보내는 것: 질문, 오늘 정보 요약(시간표·할 일·시험·학원·일정·공부 시간), 질문과 관련된 내 노트 글 몇 줄. 사진·메모는 안 보내. 아래 공부 자료에 있으면 그걸 근거로, 없으면 위키백과를 찾아보고 답해(출처 표시). 숙제를 대신 써주진 않고 힌트를 줘.</p><p class="muted small" id="ai-kb">📚 학교 자료 자동 읽기: 확인 중…</p>' + docsBox() + '</section>';
     var a = document.getElementById('set-push') || document.getElementById('set-profile');
     if (a) a.insertAdjacentHTML('beforebegin', html);
     kbLine();
     var nav = document.querySelector('.set-jump'); if (nav && !nav.querySelector('[data-jump="set-ai"]')) nav.insertAdjacentHTML('beforeend', '<a href="#set-ai" data-jump="set-ai">흰둥이</a>');
   };
-  document.addEventListener('change', function (e) { if (e.target.hasAttribute && e.target.hasAttribute('data-ai-on')) { try { localStorage.setItem(PREF, e.target.checked ? 'on' : 'off'); } catch (er) {} notice(e.target.checked ? '흰둥이 똑똑 모드를 켰어 🧠' : '똑똑 모드를 껐어. 준비된 안내로만 답할게.'); } });
+  document.addEventListener('change', function (e) { if (e.target.hasAttribute && e.target.hasAttribute('data-gpt-url')) { var v = e.target.value.trim(); if (v && !/^https:\/\/(chatgpt\.com|chat\.openai\.com)\//.test(v)) { notice('chatgpt.com 주소만 넣을 수 있어'); return; } try { v ? localStorage.setItem(GPT_KEY, v) : localStorage.removeItem(GPT_KEY); } catch (er) {} notice(v ? 'ChatGPT 연결을 저장했어 💬' : '기본 ChatGPT로 열게'); return; } if (e.target.hasAttribute && e.target.hasAttribute('data-ai-on')) { try { localStorage.setItem(PREF, e.target.checked ? 'on' : 'off'); } catch (er) {} notice(e.target.checked ? '흰둥이 똑똑 모드를 켰어 🧠' : '똑똑 모드를 껐어. 준비된 안내로만 답할게.'); } });
 
   var css = document.createElement('style'); css.textContent = '.ai-docs{margin-top:14px;border-top:1px solid #ecebf2;padding-top:12px}.ai-docs h3{font-size:15px;margin:0 0 8px}.ai-docs h3 small{font-weight:500;color:#6b6880;margin-left:4px}.ai-docs textarea,.ai-docs select{width:100%;box-sizing:border-box}.shiro-think{opacity:.7;animation:shiroThink 1.2s ease-in-out infinite}@keyframes shiroThink{50%{opacity:.4}}'; document.head.appendChild(css);
   // 수업 사진·노트 정리 (VPS → 안 되면 Netlify)
@@ -213,6 +214,18 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', loadKB); else setTimeout(loadKB, 1500);
 
-  window.SHIRO_AI = { on: ready, ask: ask, prefer: prefer, ctx: ctx, organize: organize, kb: kbAnswer };
+  /* 💬 ChatGPT로 이어 묻기 — AI가 필요한 공부 질문(개념·풀이·문법)은 ChatGPT(또는 엄마가 만든 GPT)로 넘긴다.
+     질문 앞에 '고1 수준·힌트 먼저·수행평가 대필 금지' 규칙을 붙여 보낸다. 이름·학교·개인 기록은 안 붙인다 */
+  var GPT_KEY = 'fc-gpt-url';
+  function gptBase() { var u = ''; try { u = localStorage.getItem(GPT_KEY) || ''; } catch (e) {} return /^https:\/\/(chatgpt\.com|chat\.openai\.com)\//.test(u) ? u.split('?')[0] : 'https://chatgpt.com/'; }
+  var SUBJ = [['공통수학2', /수학|함수|방정식|부등식|도형|직선|좌표|집합|명제|필요조건|충분조건|역함수|합성함수|유리함수|무리함수|그래프|기울기|이차|일차|\d\s*[x×*+\-=]/], ['통합과학2', /과학|산화|환원|염기|중화|pH|진화|자연선택|변이|생물\s*다양성|지질|화석|생태계|에너지|발전기|기후|광합성|세포|유전/], ['통합사회2', /사회|인권|헌법|시장|금융|경제|정의|문화|세계화|지속\s*가능|인구|자원|불평등|복지/], ['한국사2', /한국사|역사|광복|분단|6[.·]25|민주화|산업화|유신|4[.·]19|5[.·]18|냉전|외환\s*위기/], ['공통영어2', /영어|관계(대명사|부사)|분사|가정법|부정사|동명사|수동태|시제|영작|[A-Za-z]{4,}/], ['공통국어2', /국어|문학|시의|소설|수필|화자|서술자|갈래|비유|운율|음운|형태소|품사|문장\s*성분|화법|작문|매체/]];
+  function gptLink(q) {
+    var sj = SUBJ.find(function (x) { return x[1].test(q); });
+    var p = '[공부 도우미 규칙] 나는 고등학교 1학년이야(2022 개정 교육과정' + (sj ? ', 과목: ' + sj[0] : '') + '). 고1 교과서 수준으로 쉽게 설명해줘. 개념이면 한 줄 핵심 → 쉬운 설명 → 예시 1개 → 마지막에 확인 질문 1개. 문제면 바로 답 말고 핵심 개념과 첫 단계만 알려주고, 내가 "풀이 보여줘"라고 하면 끝까지 풀고 검산해줘. 수행평가·보고서는 대신 쓰지 말고 개요와 피드백만. 확실하지 않은 사실은 확실하지 않다고 말해줘.\n\n질문: ' + String(q).slice(0, 400);
+    return gptBase() + '?q=' + encodeURIComponent(p);
+  }
+  function studyQ(q) { return !/앱|설정|알림|버튼|화면|메뉴|로그인|비밀번호|급식|시간표|학원|엄마|아빠|힘들|싫어|우울|짜증|불안/.test(q) && (prefer(q) && !/추천|계획|짜줘|하기\s*싫|걱정|스트레스/.test(q)); }
+
+  window.SHIRO_AI = { on: ready, ask: ask, prefer: prefer, ctx: ctx, organize: organize, kb: kbAnswer, gpt: gptLink, study: studyQ };
   if (prev) render();
 })();
