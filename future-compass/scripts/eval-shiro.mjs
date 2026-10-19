@@ -59,4 +59,4 @@ out.push('', `자동 검사 경고: ${fails}건`);
 const md = out.join('\n');
 if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, md + '\n');
 fs.writeFileSync(process.env.EVAL_OUT || 'shiro-eval.md', md);
-console.log(md.slice(0, 6000));
+console.log(process.env.CI ? md : md.slice(0, 6000));

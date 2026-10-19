@@ -23,7 +23,7 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           MODELS: ${{ inputs.models }}
           EVAL_OUT: shiro-eval.md
-        run: node future-compass/scripts/eval-shiro.mjs > /dev/null
+        run: node future-compass/scripts/eval-shiro.mjs
       - uses: actions/upload-artifact@v4
         with:
           name: shiro-eval
