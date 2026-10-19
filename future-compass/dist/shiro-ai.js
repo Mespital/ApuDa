@@ -219,13 +219,27 @@
   var GPT_KEY = 'fc-gpt-url';
   function gptBase() { var u = ''; try { u = localStorage.getItem(GPT_KEY) || ''; } catch (e) {} return /^https:\/\/(chatgpt\.com|chat\.openai\.com)\//.test(u) ? u.split('?')[0] : 'https://chatgpt.com/'; }
   var SUBJ = [['공통수학2', /수학|함수|방정식|부등식|도형|직선|좌표|집합|명제|필요조건|충분조건|역함수|합성함수|유리함수|무리함수|그래프|기울기|이차|일차|\d\s*[x×*+\-=]/], ['통합과학2', /과학|산화|환원|염기|중화|pH|진화|자연선택|변이|생물\s*다양성|지질|화석|생태계|에너지|발전기|기후|광합성|세포|유전/], ['통합사회2', /사회|인권|헌법|시장|금융|경제|정의|문화|세계화|지속\s*가능|인구|자원|불평등|복지/], ['한국사2', /한국사|역사|광복|분단|6[.·]25|민주화|산업화|유신|4[.·]19|5[.·]18|냉전|외환\s*위기/], ['공통영어2', /영어|관계(대명사|부사)|분사|가정법|부정사|동명사|수동태|시제|영작|[A-Za-z]{4,}/], ['공통국어2', /국어|문학|시의|소설|수필|화자|서술자|갈래|비유|운율|음운|형태소|품사|문장\s*성분|화법|작문|매체/]];
-  function gptLink(q) {
+  function gptPrompt(q) {
     var sj = SUBJ.find(function (x) { return x[1].test(q); });
-    var p = '[공부 도우미 규칙] 나는 고등학교 1학년이야(2022 개정 교육과정' + (sj ? ', 과목: ' + sj[0] : '') + '). 고1 교과서 수준으로 쉽게 설명해줘. 개념이면 한 줄 핵심 → 쉬운 설명 → 예시 1개 → 마지막에 확인 질문 1개. 문제면 바로 답 말고 핵심 개념과 첫 단계만 알려주고, 내가 "풀이 보여줘"라고 하면 끝까지 풀고 검산해줘. 수행평가·보고서는 대신 쓰지 말고 개요와 피드백만. 확실하지 않은 사실은 확실하지 않다고 말해줘.\n\n질문: ' + String(q).slice(0, 400);
-    return gptBase() + '?q=' + encodeURIComponent(p);
+    return '[공부 도우미 규칙] 나는 고등학교 1학년이야(2022 개정 교육과정' + (sj ? ', 과목: ' + sj[0] : '') + '). 고1 교과서 수준으로 쉽게 설명해줘. 개념이면 한 줄 핵심 → 쉬운 설명 → 예시 1개 → 마지막에 확인 질문 1개. 문제면 바로 답 말고 핵심 개념과 첫 단계만 알려주고, 내가 "풀이 보여줘"라고 하면 끝까지 풀고 검산해줘. 수행평가·보고서는 대신 쓰지 말고 개요와 피드백만. 확실하지 않은 사실은 확실하지 않다고 말해줘.\n\n질문: ' + String(q).slice(0, 400);
+  }
+  function gptLink(q) { return gptBase() + '?q=' + encodeURIComponent(gptPrompt(q)); }
+  /* 📱 폰의 ChatGPT 앱으로 열기
+     - 안드로이드: intent 주소로 ChatGPT 앱(com.openai.chatgpt)을 바로 열고, 앱이 없으면 웹으로
+     - 아이폰: chatgpt.com 링크(앱이 깔려 있으면 앱이 받음). 앱에서 질문이 안 채워질 때를 대비해 질문을 미리 복사해 둔다 */
+  var isAndroid = /Android/i.test(navigator.userAgent || '');
+  function gptHref(q) {
+    var web = gptLink(q);
+    if (!isAndroid) return web;
+    return 'intent://' + web.replace(/^https:\/\//, '') + '#Intent;scheme=https;package=com.openai.chatgpt;S.browser_fallback_url=' + encodeURIComponent(web) + ';end';
+  }
+  function gptCopy(q) {
+    var t = gptPrompt(q);
+    try { if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).catch(function () {}); } catch (e) {}
+    try { if (typeof notice === 'function') notice('질문을 복사해 뒀어. ChatGPT 앱에 질문이 안 들어가 있으면 붙여넣기 해 📋'); } catch (e) {}
   }
   function studyQ(q) { return !/앱|설정|알림|버튼|화면|메뉴|로그인|비밀번호|급식|시간표|학원|엄마|아빠|힘들|싫어|우울|짜증|불안/.test(q) && (prefer(q) && !/추천|계획|짜줘|하기\s*싫|걱정|스트레스/.test(q)); }
 
-  window.SHIRO_AI = { on: ready, ask: ask, prefer: prefer, ctx: ctx, organize: organize, kb: kbAnswer, gpt: gptLink, study: studyQ };
+  window.SHIRO_AI = { on: ready, ask: ask, prefer: prefer, ctx: ctx, organize: organize, kb: kbAnswer, gpt: gptLink, gptHref: gptHref, gptCopy: gptCopy, study: studyQ };
   if (prev) render();
 })();
