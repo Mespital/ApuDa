@@ -77,9 +77,16 @@ add('고교학점제 기본', '졸업: 3년간 192학점(교과 174 + 창의적 
 const arts = (news.articles || []).slice(0, 12);
 if (arts.length) add('최근 AI·미래 소식', '최근 AI·미래 관련 공식 소식: ' + arts.map((a) => `${(a.published_at || '').slice(5, 10)} ${a.source}: ${a.title}`).join(' / '), 'AI 소식');
 
+/* ⑧ 흰둥이가 스스로 공부한 개념 사전(scripts/build_learn.mjs, 매시간) */
+const learnF = read('shiro-learn.json', {});
+const schoolN = out.length;
+for (const c of learnF.concepts || []) out.push({ title: c.title, text: `[${c.subject} · ${c.unit}] ` + c.text, src: '위키백과', subject: c.subject, url: c.url });
+const today24 = (learnF.log || []).filter((x) => Date.now() - Date.parse(x.at) < 864e5).reduce((n, x) => n + x.n, 0);
+const learn = { total: (learnF.concepts || []).length, today: today24, queue: learnF.queue || 0, last: (learnF.log || [])[0] || null };
+
 /* 내용이 그대로면 시각도 그대로 둬서 2시간마다 빈 커밋이 생기지 않게 */
 const prev = read('shiro-kb.json', {});
 const same = prev.chunks && JSON.stringify(prev.chunks) === JSON.stringify(out);
-const kb = { updated: same && prev.updated ? prev.updated : new Date().toISOString(), count: out.length, sources: [...new Set(out.map((x) => x.src))], chunks: out };
+const kb = { updated: same && prev.updated ? prev.updated : new Date().toISOString(), count: out.length, school: schoolN, learn, sources: [...new Set(out.map((x) => x.src))], chunks: out };
 fs.writeFileSync(D('shiro-kb.json'), JSON.stringify(kb) + '\n');
-console.log('shiro-kb', out.length, 'chunks', kb.sources.join(', '), Math.round(JSON.stringify(kb).length / 1024) + 'KB');
+console.log('shiro-kb', out.length, 'school', schoolN, 'learned', learn.total, 'chunks', kb.sources.join(', '), Math.round(JSON.stringify(kb).length / 1024) + 'KB');

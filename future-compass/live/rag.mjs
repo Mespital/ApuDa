@@ -40,17 +40,16 @@ export function addDoc({ title, subject, text, by }) {
 }
 export function delDoc(id) { const n = DOCS.length; DOCS = DOCS.filter(d => d.id !== id); if (DOCS.length !== n) persist(); return { ok: true }; }
 
-// 흰둥이 지식 묶음(dist/shiro-kb.json) — 2시간마다 GitHub Actions가 학교 자료로 다시 만든다. 30분 캐시
+// 흰둥이 지식 묶음(dist/shiro-kb.json) — 학교 자료(2시간마다) + 스스로 공부한 위키백과 개념(매시간). 30분 캐시
 let KB = { at: 0, data: { chunks: [] } };
+const GC = new WeakMap();   // 지식 조각별 2글자 묶음 캐시(매 질문마다 다시 안 셈)
 export async function loadKB() {
   if (Date.now() - KB.at < 30 * 60e3) return KB.data;
   let data = null;
-  try { const f = new URL('../dist/shiro-kb.json', import.meta.url); data = JSON.parse(fs.readFileSync(f, 'utf8')); } catch {}
-  if (!data) try {
-    const base = process.env.FC_KB_URL || process.env.URL || 'https://future.apuda.app';
-    const r = await fetch(base.replace(/\/$/, '') + '/shiro-kb.json', { signal: AbortSignal.timeout(4000) });
-    if (r.ok) data = await r.json();
-  } catch {}
+  // 매시간 GitHub에 쌓이는 최신본 → 사이트 배포본 → 서버에 있는 파일 순서
+  const urls = [process.env.FC_KB_URL, 'https://raw.githubusercontent.com/Mespital/ApuDa/main/future-compass/dist/shiro-kb.json', (process.env.URL || 'https://future.apuda.app').replace(/\/$/, '') + '/shiro-kb.json'].filter(Boolean);
+  for (const u of urls) { try { const r = await fetch(u, { signal: AbortSignal.timeout(4000) }); if (r.ok) { const d = await r.json(); if (d && Array.isArray(d.chunks)) { data = d; break; } } } catch {} }
+  if (!data) try { data = JSON.parse(fs.readFileSync(new URL('../dist/shiro-kb.json', import.meta.url), 'utf8')); } catch {}
   if (data && Array.isArray(data.chunks)) KB = { at: Date.now(), data }; else KB.at = Date.now() - 25 * 60e3;   // 실패하면 5분 뒤 다시
   return KB.data;
 }
@@ -61,13 +60,17 @@ export function searchDocs(q, k = 3, extra = [], kb = []) {
   const pool = [];
   DOCS.forEach(d => d.chunks.forEach((c, i) => pool.push({ title: d.title, subject: d.subject, text: c, kind: '자료', key: d.id + ':' + i })));
   (Array.isArray(extra) ? extra : []).slice(0, 40).forEach((n, i) => { if (n && n.text) pool.push({ title: String(n.title || '내 노트').slice(0, 40), text: String(n.text).slice(0, 1200), kind: '내 노트', key: 'n' + i }); });
-  (Array.isArray(kb) ? kb : []).forEach((c, i) => { if (c && c.text) pool.push({ title: String(c.title || '학교 자료').slice(0, 80), subject: c.subject, text: String(c.text).slice(0, 1400), kind: '학교 자료', src: c.src, key: 'kb' + i }); });
+  (Array.isArray(kb) ? kb : []).forEach((c, i) => { if (c && c.text) pool.push({ title: String(c.title || '학교 자료').slice(0, 80), subject: c.subject, text: String(c.text).slice(0, 1400), kind: c.src === '위키백과' ? '위키백과' : '학교 자료', src: c.src, url: c.url, ref: c, key: 'kb' + i }); });
   if (!pool.length) return [];
-  const df = new Map(); const gs = pool.map(p => { const g = grams(p.title + ' ' + p.text); g.forEach(x => df.set(x, (df.get(x) || 0) + 1)); return g; });
+  const df = new Map(); const gs = pool.map(p => { let g = p.ref && GC.get(p.ref); if (!g) { g = grams(p.title + ' ' + p.text); if (p.ref) GC.set(p.ref, g); } g.forEach(x => df.set(x, (df.get(x) || 0) + 1)); return g; });
   const N = pool.length, maxScore = qg.reduce((s, g) => s + Math.log(1 + N / (1 + (df.get(g) || 0))), 0) || 1;
-  const scored = pool.map((p, i) => { let s = 0; for (const g of qg) if (gs[i].has(g)) s += Math.log(1 + N / (df.get(g) || 1)); return { ...p, score: s / maxScore }; })
+  const scored = pool.map((p, i) => { let s = 0; for (const g of qg) if (gs[i].has(g)) s += Math.log(1 + N / (df.get(g) || 1)); const { ref, ...q2 } = p; return { ...q2, score: s / maxScore }; })
     .filter(x => x.score >= 0.34).sort((a, b) => b.score - a.score);
-  return scored.slice(0, k);
+  const top = scored.slice(0, k);
+  // 학교 자료가 위를 다 차지해도, 잘 맞는 개념 사전(위키백과) 한 조각은 끼워 준다
+  const wk = scored.find(x => x.kind === '위키백과' && x.score >= 0.5);
+  if (wk && !top.includes(wk) && top.length >= k) top[k - 1] = wk;
+  return top;
 }
 
 // 한국어 위키백과 요약 (공부 개념용)
