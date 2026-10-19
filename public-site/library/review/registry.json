@@ -1,0 +1,268 @@
+{
+  "revision": "20261019.1",
+  "checkedAt": "2026-10-19",
+  "mode": "AI 사전점검",
+  "humanApproval": "pending",
+  "sources": {
+    "nhis-special": {
+      "title": "국민건강보험공단 · 본인일부부담금 산정특례 제도",
+      "url": "https://www.nhis.or.kr/static/html/wbma/c/wbmac0215.html",
+      "checkedAt": "2026-10-19",
+      "scope": "확진 후 30일 이내 신청과 30일 경과 후 적용 시작일, 적용 범위·재등록 조건"
+    },
+    "nci-infection": {
+      "title": "NCI · Infection and Neutropenia during Cancer Treatment",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/infection",
+      "checkedAt": "2026-10-19",
+      "scope": "암 치료 중 발열·오한 등 감염 신호와 의료진 연락; 약 복용 전 상담"
+    },
+    "nhs-pancreas": {
+      "title": "NHS · Symptoms of pancreatic cancer",
+      "url": "https://www.nhs.uk/conditions/pancreatic-cancer/symptoms/",
+      "checkedAt": "2026-10-19",
+      "scope": "새 황달은 일반적인 지속 증상 대기 기간과 구별해 신속히 진료; 영국 연락 경로는 한국에 그대로 적용하지 않음"
+    },
+    "nhs-biliary": {
+      "title": "NHS · Symptoms of bile duct cancer",
+      "url": "https://www.nhs.uk/conditions/bile-duct-cancer/symptoms/",
+      "checkedAt": "2026-10-19",
+      "scope": "새로 생긴 황달의 신속한 진료 확인; 재발 여부를 증상만으로 판단하지 않음"
+    },
+    "esr-lymphoma": {
+      "title": "ESR Essentials · imaging of lymphoma (2025)",
+      "url": "https://doi.org/10.1007/s00330-024-11213-5",
+      "checkedAt": "2026-10-19",
+      "scope": "FDG 섭취가 높은 림프종의 PET/CT, SLL/CLL 및 아형별 CT 사용 예외"
+    },
+    "nci-biliary-treatment": {
+      "title": "NCI · Bile Duct Cancer Treatment (PDQ), 의료인용",
+      "url": "https://www.cancer.gov/types/liver/hp/bile-duct-treatment-pdq",
+      "checkedAt": "2026-10-19",
+      "scope": "절제 불가능·전이·재발 담도암 1차 면역·항암 병용의 국제 근거; 국내 허가·급여를 증명하는 자료는 아님"
+    }
+  },
+  "cancers": [
+    {
+      "slug": "breast",
+      "name": "유방암",
+      "responsibleRole": "S01",
+      "specialist": "배정 대기",
+      "bookletApproval": "pending",
+      "faqApproval": "pending",
+      "videoScriptApproval": "pending",
+      "appCopyApproval": "pending",
+      "participantTesting": "not-conducted",
+      "faqItems": 100,
+      "targetedItems": [
+        55,
+        90
+      ],
+      "pdfVersion": "v3.2 (2026-10-06)",
+      "webRevision": "20261019.1"
+    },
+    {
+      "slug": "lung",
+      "name": "폐암",
+      "responsibleRole": "S02",
+      "specialist": "배정 대기",
+      "bookletApproval": "pending",
+      "faqApproval": "pending",
+      "videoScriptApproval": "pending",
+      "appCopyApproval": "pending",
+      "participantTesting": "not-conducted",
+      "faqItems": 100,
+      "targetedItems": [
+        55,
+        90
+      ],
+      "pdfVersion": "v3.2 (2026-10-06)",
+      "webRevision": "20261019.1"
+    },
+    {
+      "slug": "stomach",
+      "name": "위암",
+      "responsibleRole": "S03",
+      "specialist": "배정 대기",
+      "bookletApproval": "pending",
+      "faqApproval": "pending",
+      "videoScriptApproval": "pending",
+      "appCopyApproval": "pending",
+      "participantTesting": "not-conducted",
+      "faqItems": 100,
+      "targetedItems": [
+        55,
+        90
+      ],
+      "pdfVersion": "v3.2 (2026-10-06)",
+      "webRevision": "20261019.1"
+    },
+    {
+      "slug": "colorectal",
+      "name": "대장암",
+      "responsibleRole": "S04",
+      "specialist": "배정 대기",
+      "bookletApproval": "pending",
+      "faqApproval": "pending",
+      "videoScriptApproval": "pending",
+      "appCopyApproval": "pending",
+      "participantTesting": "not-conducted",
+      "faqItems": 100,
+      "targetedItems": [
+        55,
+        90
+      ],
+      "pdfVersion": "v3.2 (2026-10-06)",
+      "webRevision": "20261019.1"
+    },
+    {
+      "slug": "thyroid",
+      "name": "갑상선암",
+      "responsibleRole": "S05",
+      "specialist": "배정 대기",
+      "bookletApproval": "pending",
+      "faqApproval": "pending",
+      "videoScriptApproval": "pending",
+      "appCopyApproval": "pending",
+      "participantTesting": "not-conducted",
+      "faqItems": 100,
+      "targetedItems": [
+        55,
+        90
+      ],
+      "pdfVersion": "v3.2 (2026-10-06)",
+      "webRevision": "20261019.1"
+    },
+    {
+      "slug": "kidney",
+      "name": "신장암",
+      "responsibleRole": "S06",
+      "specialist": "배정 대기",
+      "bookletApproval": "pending",
+      "faqApproval": "pending",
+      "videoScriptApproval": "pending",
+      "appCopyApproval": "pending",
+      "participantTesting": "not-conducted",
+      "faqItems": 100,
+      "targetedItems": [
+        55,
+        90
+      ],
+      "pdfVersion": "v3.2 (2026-10-06)",
+      "webRevision": "20261019.1"
+    },
+    {
+      "slug": "prostate",
+      "name": "전립선암",
+      "responsibleRole": "S07",
+      "specialist": "배정 대기",
+      "bookletApproval": "pending",
+      "faqApproval": "pending",
+      "videoScriptApproval": "pending",
+      "appCopyApproval": "pending",
+      "participantTesting": "not-conducted",
+      "faqItems": 100,
+      "targetedItems": [
+        55,
+        90
+      ],
+      "pdfVersion": "v3.2 (2026-10-06)",
+      "webRevision": "20261019.1"
+    },
+    {
+      "slug": "pancreas",
+      "name": "췌장암",
+      "responsibleRole": "S08",
+      "specialist": "배정 대기",
+      "bookletApproval": "pending",
+      "faqApproval": "pending",
+      "videoScriptApproval": "pending",
+      "appCopyApproval": "pending",
+      "participantTesting": "not-conducted",
+      "faqItems": 100,
+      "targetedItems": [
+        2,
+        18,
+        55,
+        90
+      ],
+      "pdfVersion": "v3.2 (2026-10-06)",
+      "webRevision": "20261019.1"
+    },
+    {
+      "slug": "biliary",
+      "name": "담도암·담낭암",
+      "responsibleRole": "S09",
+      "specialist": "배정 대기",
+      "bookletApproval": "pending",
+      "faqApproval": "pending",
+      "videoScriptApproval": "pending",
+      "appCopyApproval": "pending",
+      "participantTesting": "not-conducted",
+      "faqItems": 100,
+      "targetedItems": [
+        2,
+        15,
+        18,
+        55,
+        90
+      ],
+      "pdfVersion": "v3.2 (2026-10-06)",
+      "webRevision": "20261019.1"
+    },
+    {
+      "slug": "liver",
+      "name": "간암",
+      "responsibleRole": "S10",
+      "specialist": "배정 대기",
+      "bookletApproval": "pending",
+      "faqApproval": "pending",
+      "videoScriptApproval": "pending",
+      "appCopyApproval": "pending",
+      "participantTesting": "not-conducted",
+      "faqItems": 100,
+      "targetedItems": [
+        55,
+        90
+      ],
+      "pdfVersion": "v3.2 (2026-10-06)",
+      "webRevision": "20261019.1"
+    },
+    {
+      "slug": "lymphoma",
+      "name": "림프종",
+      "responsibleRole": "S11",
+      "specialist": "배정 대기",
+      "bookletApproval": "pending",
+      "faqApproval": "pending",
+      "videoScriptApproval": "pending",
+      "appCopyApproval": "pending",
+      "participantTesting": "not-conducted",
+      "faqItems": 100,
+      "targetedItems": [
+        3,
+        55,
+        90
+      ],
+      "pdfVersion": "v3.2 (2026-10-06)",
+      "webRevision": "20261019.1"
+    },
+    {
+      "slug": "cervical",
+      "name": "자궁경부암",
+      "responsibleRole": "S12",
+      "specialist": "배정 대기",
+      "bookletApproval": "pending",
+      "faqApproval": "pending",
+      "videoScriptApproval": "pending",
+      "appCopyApproval": "pending",
+      "participantTesting": "not-conducted",
+      "faqItems": 100,
+      "targetedItems": [
+        55,
+        90
+      ],
+      "pdfVersion": "v3.2 (2026-10-06)",
+      "webRevision": "20261019.1"
+    }
+  ]
+}

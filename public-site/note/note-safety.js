@@ -16,7 +16,10 @@ function signals(raw){
   var clear=current.replace(/숨(?:이)?\s*안\s*차(?:요|고|지만|다)?|호흡곤란(?:이|은)?\s*없(?:어요|고|지만|다)?|가슴\s*통증(?:이|은)?\s*없(?:어요|고|지만|다)?|의식(?:이|은)?\s*명료/g,'');
   clear=clear.replace(/(?:숨이?\s*차|호흡곤란|가슴\s*통증|경련)\s*(?:면|이면|라면)/g,'');
   var urgent=!historical&&!example&&/숨이?\s*(?:(?:몹시|너무|많이|심하게)\s*)?차|숨이?\s*막|숨쉬기\s*(힘|어려)|호흡곤란|가슴(?:이)?\s*(통증|조)|피를\s*토|토혈|의식\s*(이\s*)?(흐|없|처)|쓰러|경련|말이?\s*어눌|입술이?\s*파|얼굴이?\s*부|목이?\s*부/.test(clear);
-  return {temp:temp,current:now>=0,historical:historical,hypothetical:hypothetical,urgent:urgent};
+  var chillText=current.replace(/오한(?:이|은|도)?\s*(?:없(?:어요|고|지만|다)?|안\s*(?:나|와|오)(?:요|고|지만)?)/g,'').replace(/(?:심한?\s*)?오한(?:이|은|도)?\s*(?:있으|있다|생긴다|온다|난다)?면|오한(?:이)?\s*(?:생기|오|나)면/g,'');
+  var chill=!historical&&!example&&/오한|몸(?:이)?\s*(?:(?:심하게|덜덜|몹시|너무)\s*)*떨/.test(chillText);
+  var severeChill=chill&&!/심하(?:지\s*않|진\s*않|지는\s*않)|심한?\s*오한(?:은|이)?\s*없/.test(current)&&/(?:심한?|심하게|너무|몹시|덜덜|온몸|전신)[^,.!?，\n]{0,15}(?:오한|떨)|오한[^,.!?，\n]{0,15}(?:심|덜덜|떨)/.test(chillText);
+  return {temp:temp,current:now>=0,historical:historical,hypothetical:hypothetical,urgent:urgent,chill:chill,severeChill:severeChill};
 }
 function appendTemp(log,value,raw){if(!Array.isArray(log.tempReadings)){log.tempReadings=[];if(log.temp!==''&&log.temp!=null)log.tempReadings.push({value:String(log.temp),at:null,legacy:true});}log.tempReadings.push({value:String(value),at:new Date().toISOString(),raw:String(raw||'')});log.temp=String(value);}
 function temps(log){if(Array.isArray(log.tempReadings)&&log.tempReadings.length)return log.tempReadings.map(function(x){return +x.value;}).filter(isFinite);return log.temp!==''&&log.temp!=null&&isFinite(+log.temp)?[+log.temp]:[];}

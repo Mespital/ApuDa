@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>자료의 근거·검토정보 | ApuDa</title>
+<meta name="description" content="ApuDa 암종별 자료의 출처, 개정 범위, 실제 전문의 검토 상태를 확인하세요.">
+<style>
+:root{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:#f4f8fd;color:#17334f;font:16px/1.8 Pretendard,system-ui,sans-serif}a{color:#1457ac;text-underline-offset:3px}header{padding:16px max(20px,env(safe-area-inset-left));background:white;border-bottom:1px solid #dae5f1;display:flex;align-items:center;justify-content:space-between;gap:12px}header a{min-height:44px;display:inline-flex;align-items:center;font-weight:800}main{width:min(860px,calc(100% - 32px));margin:28px auto 100px}h1{font-size:clamp(28px,5vw,40px);line-height:1.3;letter-spacing:-.04em}h2{font-size:22px;line-height:1.5}.box{background:white;border:1px solid #d9e5f2;border-radius:20px;padding:22px;margin:18px 0}.notice{border-left:5px solid #d3a030;background:#fff9e9}.chips{display:flex;gap:8px;flex-wrap:wrap}.chips a{padding:8px 14px;min-height:44px;border:1px solid #cfdded;border-radius:100px;background:#fff;text-decoration:none}.chips a[aria-current]{background:#1b57a5;color:white}.row{display:flex;gap:8px;flex-wrap:wrap}.row a{min-height:48px;padding:8px 14px;border:1px solid #ccdbeb;border-radius:12px;background:#f5f9ff;font-weight:700}dt{font-weight:800}dd{margin:0 0 14px}.muted{color:#526b85}li{margin:12px 0}summary{cursor:pointer;min-height:48px;font-weight:800}:focus-visible{outline:3px solid #155bc4;outline-offset:3px}button{font:inherit;min-height:48px;padding:8px 16px}small{font-size:14px}@media(max-width:500px){.box{padding:18px}header{padding:12px 16px}}
+</style>
+<link rel="stylesheet" href="/assets/apuda-ui.css?v=20261019"><script src="/assets/apuda-ui.js?v=20261018"></script>
+<meta name="apuda-release" content="audit-20261019.1">
+</head>
+<body><header><a href="/">ApuDa · 아프지만, 다행이다.</a><a href="/#floor-2">2F 서재</a></header>
+<main>
+<h1>자료의 근거·검토정보</h1>
+<p>정보가 언제, 어떤 범위에서 확인되었는지 보실 수 있어요. 실제 의료진이 승인한 자료와 AI가 근거를 대조한 자료를 구별해 표시합니다.</p>
+<div class="box notice"><b>현재는 AI 사전점검 단계입니다.</b><p>12개 암종의 실제 책임전문의 배정·검토·승인과 환자·보호자 참여 평가는 대기 중입니다. 실제 전문가의 감수 완료나 환자 검증 완료를 뜻하지 않습니다.</p></div>
+<nav class="chips" id="cancers" aria-label="암종 선택"></nav>
+<div id="status" class="box" role="status">검토정보를 불러오고 있어요…</div>
+<section class="box"><h2>이번에 보완한 범위</h2><ul><li>새 황달을 몇 주 기다리도록 읽힐 수 있던 안내를 수정했습니다.</li><li>열·심한 오한의 연락 안내, 산정특례 신청 시점과 림프종 검사의 아형별 예외를 보완했습니다.</li><li>FAQ마다 출처 대조 범위·개정 버전·실제 전문의 검토 상태를 구분했습니다. 근거 링크가 있다고 답변 전체가 의료진 승인을 받은 것은 아닙니다.</li><li>무료 PDF는 2026.10.06의 v3.2 원문입니다. 책 페이지의 2026.10.19 보완 안내와 개정 FAQ를 함께 읽어 주세요. PDF 원문 전체와 약별 국내 허가·급여의 최신 대조는 아직 완료되지 않았습니다.</li></ul></section>
+<section class="box"><h2>이번 보완에서 확인한 출처</h2><p class="muted">국가·의료체계가 다른 자료는 국내 연락 경로와 허가·급여를 그대로 증명하지 않습니다.</p><ul id="sources"></ul></section>
+<p class="muted">개별 증상·치료·복용·검사는 담당 의료진과 확인하세요. 암종별 FAQ의 「근거·검토정보」에서 문항의 실제 대조 범위를 볼 수 있습니다.</p>
+</main>
+<script>
+(function(){
+'use strict';var requested=new URLSearchParams(location.search).get('cancer');
+function esc(x){return String(x||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]});}
+fetch('./registry.json',{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(d){
+var c=d.cancers.find(function(c){return c.slug===requested;})||d.cancers[0];
+document.getElementById('cancers').innerHTML=d.cancers.map(function(x){return '<a href="?cancer='+x.slug+'"'+(x.slug===c.slug?' aria-current="page"':'')+'>'+esc(x.name)+'</a>';}).join('');
+document.getElementById('status').innerHTML='<h2>'+esc(c.name)+' 자료</h2><dl><dt>의학 검토 책임 분야</dt><dd>'+esc(c.name)+' 진료 경험이 있는 관련 전문의 · '+esc(c.responsibleRole)+' · 실제 위원 배정 대기</dd><dt>책자·FAQ·영상 대본/자막·앱 안내</dt><dd>실제 전문의 검토·승인 대기</dd><dt>이번 웹 개정</dt><dd>'+esc(d.checkedAt)+' · 문항별 근거를 추가 대조한 FAQ '+c.targetedItems.length+'개 / 전체 '+c.faqItems+'개. 나머지 문항은 기존 자료의 최신 근거 대조 대기입니다.</dd><dt>무료 PDF 원문</dt><dd>'+esc(c.pdfVersion)+' · 파일 개방과 쪽수 확인은 의료 내용 전체의 검토와 다릅니다.</dd><dt>환자·보호자 참여 평가</dt><dd>아직 실시되지 않았습니다.</dd></dl><div class="row"><a href="/library/faq/?cancer='+c.slug+'">FAQ와 문항별 근거</a><a href="/library/mini/?cancer='+c.slug+'">책과 보완 안내</a><a href="/watch/?cancer='+c.slug+'">영상과 자료</a></div>';
+document.getElementById('sources').innerHTML=Object.keys(d.sources).map(function(k){var x=d.sources[k];return '<li><a href="'+esc(x.url)+'" target="_blank" rel="noopener">'+esc(x.title)+'</a><br>'+esc(x.scope)+'<br><small class="muted">출처 대조 '+esc(x.checkedAt)+'</small></li>';}).join('');
+}).catch(function(){document.getElementById('status').textContent='검토정보를 불러오지 못했어요. 인터넷 연결을 확인하고 새로고침해 주세요.';});
+})();
+</script>
+</body></html>

@@ -61,6 +61,21 @@
       frame.dataset.floorTransition = 'entering';
       panel.inert = true; panel.setAttribute('aria-hidden', 'true'); panel.classList.remove('live');
       gsap.set(frame, { transformOrigin: '50% 50%', xPercent: 0, yPercent: 0, filter: 'none' });
+      // A zero-duration tween does not reliably fire onStart. Apply both the
+      // visual and interactive state directly when motion is disabled.
+      if (quiet) {
+        gsap.set(frame, { x: pose.x, y: pose.y, scale: pose.scale, rotationX: 0, rotationY: 0 });
+        gsap.set(options.spot, { opacity: .85 });
+        gsap.set(options.guide, { opacity: 0, x: -28, pointerEvents: 'none' });
+        gsap.set([options.hint, options.footer, options.sweep], { opacity: 0 });
+        gsap.set(panel, { x: 0, y: 0, xPercent: mobile ? -50 : 0, yPercent: -50, opacity: 1, scale: 1 });
+        gsap.set(options.controls, { opacity: 1 });
+        panel.inert = false; panel.setAttribute('aria-hidden', 'false'); panel.classList.add('live');
+        document.body.classList.remove('floor-entering'); frame.dataset.floorTransition = 'open';
+        if (settings.onReveal) settings.onReveal();
+        if (generation === token && settings.onComplete) settings.onComplete();
+        return;
+      }
       timeline = gsap.timeline();
       timeline.to(frame, { x: pose.x, y: pose.y, scale: pose.scale, rotationX: 0, rotationY: 0,
         duration: quiet ? 0 : .72, ease: 'power3.inOut' }, 0)
@@ -89,6 +104,16 @@
       var token = begin(), quiet = matchMedia('(prefers-reduced-motion: reduce)').matches || !!(global.ApuDaPreferences && global.ApuDaPreferences.isQuiet());
       document.body.classList.remove('floor-entering'); frame.dataset.floorTransition = 'leaving';
       panel.inert = true; panel.setAttribute('aria-hidden', 'true'); panel.classList.remove('live');
+      if (quiet) {
+        gsap.set(panel, { y: 18, opacity: 0, scale: .975 });
+        gsap.set(options.controls.concat([options.spot, options.sweep]), { opacity: 0 });
+        gsap.set(frame, { x: 0, xPercent: 0, y: 0, yPercent: 0, scale: 1, rotationX: 0, rotationY: 0 });
+        gsap.set(options.guide, { opacity: 1, x: 0, pointerEvents: 'auto' });
+        gsap.set([options.hint, options.footer], { opacity: 1 });
+        frame.dataset.floorTransition = 'idle';
+        if (settings.onComplete) settings.onComplete();
+        return;
+      }
       timeline = gsap.timeline({ onComplete: guard(token, function () {
         frame.dataset.floorTransition = 'idle'; if (settings.onComplete) settings.onComplete();
       }) });
