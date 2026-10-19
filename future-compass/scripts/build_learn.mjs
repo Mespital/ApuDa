@@ -90,7 +90,7 @@ async function learn(t) {   // 주제 하나에서 개념 최대 2개
     const s = await j(API + 'action=query&list=search&srlimit=3&srsearch=' + encodeURIComponent(q));
     const hit = (s.query?.search || []).map((x) => x.title).find((x) => ok(x, q) && !titles.has(x));
     if (!hit) continue;
-    const c = await page(hit, t); if (c && !titles.has(c.title)) { titles.add(c.title); res.push(c); }
+    const c = await page(hit, t); if (c) c.q = q; if (c && !titles.has(c.title)) { titles.add(c.title); res.push(c); }
   }
   return res;
 }
@@ -105,7 +105,7 @@ for (const t of pick) {
   await new Promise((r) => setTimeout(r, 300));   // 위키백과에 부담 주지 않게
 }
 /* 너무 많아지면 넓혀 읽기·오래된 것부터 정리 */
-let all = [...have.values()].filter((c) => c.from === '교육과정' || c.title.replace(/\s/g, '').length > 2 && !/^(사회|과학|운동|에너지|효율|오염|건축물|사회과학|온실)$/.test(c.title) && !BADT.test(c.title)).sort((a, b) => a.pri - b.pri || Date.parse(b.at) - Date.parse(a.at));
+let all = [...have.values()].filter((c) => !BADT.test(c.title) && (c.from === '교육과정' || c.q === c.title.replace(/\s*\(.*\)$/, '') || c.title.replace(/\s/g, '').length > 2))   // 두 글자 개념은 주제 그대로일 때만(함수·명제 OK, 넓은 한 단어 X).sort((a, b) => a.pri - b.pri || Date.parse(b.at) - Date.parse(a.at));
 if (all.length > MAX) all = all.slice(0, MAX);
 const keepTried = Object.entries(L.tried).sort((a, b) => Date.parse(b[1].at) - Date.parse(a[1].at)).slice(0, 3000);
 const out = { updated: got.length ? iso : (L.updated || iso), total: all.length, queue: Math.max(0, due.length - pick.length),
