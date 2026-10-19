@@ -75,9 +75,11 @@
     sheet.innerHTML = '<div class="tn-panel"><div class="tn-top"><button type="button" class="tn-x" data-tn-close aria-label="닫기">✕</button><b>' + (kind === 'talk' ? '🎙️ 1분 말하기' : '📷 요약 노트 사진') + '</b><span></span></div>' +
       '<label class="tn-l">과목</label><div class="pl-chips tn-subs">' + subjects().map(function (x, i) { return '<button type="button" data-tn-sub="' + esc(x) + '" class="' + (i === 0 ? 'on' : '') + '">' + esc(x) + '</button>'; }).join('') + '<input class="tn-sub-other" maxlength="20" placeholder="다른 과목"></div>' +
       (kind === 'talk' ? talkBody() : photoBody()) +
-      '<label class="tn-l">메모 <small class="muted">(헷갈린 것·선생님 강조·시험 나올 것)</small></label><textarea class="tn-text" rows="5" maxlength="1500" placeholder="' + (kind === 'talk' ? '(선택) 직접 적거나 받아쓰기 결과. ChatGPT로 말했다면 비워둬도 돼.' : '사진 속 핵심을 한두 줄 적거나, 글자 읽기를 눌러봐.') + '"></textarea>' +
-      '<p class="tn-org-row"><button type="button" data-tn-org>🧠 앱에서 바로 간단 정리 <small style="display:block;font-weight:500;font-size:12.5px;color:#6b6880">AI 없이 핵심 문장만 골라내기 — 제대로 정리는 아래 ChatGPT</small></button>' +
-      '<a class="tn-gpt" data-tn-gpt href="https://chatgpt.com/" target="_blank" rel="noopener">💬 ChatGPT 앱으로 정리하기 <small>ChatGPT 위쪽에서 \'채팅(Chat)\'을 고르고 보내기 → 답 복사</small></a></p>' +
+      (kind === 'talk'
+        ? '<label class="tn-l">📝 녹음 내용 <small class="muted">(선택 — 녹음기 앱의 글자 변환을 붙여넣으면 ChatGPT에 같이 들어가. 비워두면 ChatGPT에서 🎤로 말하면 돼)</small></label><textarea class="tn-text" rows="5" maxlength="1500" placeholder="녹음 텍스트 붙여넣기 (선택)"></textarea>'
+        : '<label class="tn-l">메모 <small class="muted">(헷갈린 것·선생님 강조·시험 나올 것)</small></label><textarea class="tn-text" rows="5" maxlength="1500" placeholder="사진 속 핵심을 한두 줄 적거나, 글자 읽기를 눌러봐."></textarea>') +
+      '<a class="tn-gpt-main" data-tn-gpt href="https://chatgpt.com/" target="_blank" rel="noopener">💬 ChatGPT에 보내기</a>' +
+      '<ol class="tn-steps"><li>ChatGPT가 열리면 정리 규칙(채팅으로 답하기 포함)이 들어가 있어. ' + (kind === 'talk' ? '녹음 내용을 안 넣었으면 <b>🎤로 말하거나 붙여넣고</b> 보내기' : '그대로 <b>보내기</b>') + '</li><li>정리된 답을 <b>복사</b> → 여기로 돌아오면 자동으로 붙여넣기</li><li><b>저장</b> → 내일·3일·7일 복습</li></ol>' +
       '<div class="tn-sum-box"><label class="tn-l">🧠 정리 <small class="muted">(ChatGPT 정리를 붙여넣거나 직접 써. 저장하면 복습에 들어가)</small></label>' +
       '<p class="tn-paste-row"><button type="button" data-tn-paste>📋 복사한 정리 붙여넣기</button></p>' +
       '<textarea class="tn-sum" rows="8" maxlength="2000" placeholder="ChatGPT 답을 길게 눌러 복사 → 여기를 길게 눌러 붙여넣기 (또는 위 📋 버튼)"></textarea></div>' +
@@ -87,14 +89,8 @@
     document.documentElement.classList.add('tn-open');
   }
   function talkBody() {
-    // 기본: ChatGPT 앱에서 말하기(가장 정확). 앱 안 받아쓰기는 보조
-    return '<div class="tn-rec"><ul class="tn-guide"><li>① 오늘 배운 핵심 한 가지</li><li>② 헷갈렸던 것</li><li>③ 시험에 나올 것 같은 것</li></ul>' +
-      '<a class="tn-gpt-main" data-tn-gpt-voice href="https://chatgpt.com/" target="_blank" rel="noopener">🎙️ ChatGPT 앱에서 말하기</a>' +
-      '<ol class="tn-steps"><li>ChatGPT 위쪽에서 <b>채팅(Chat)</b> 고르고 보내기</li><li>"말해줘"가 나오면 <b>🎤</b> 누르고 말하기</li><li>정리된 답을 <b>복사</b> → 여기로 돌아오면 자동으로 붙여넣기</li><li><b>저장</b> → 내일·3일·7일 복습</li></ol>' +
-      '<details class="tn-alt"><summary>여기서 바로 받아쓰기 (보조)</summary>' +
-      (SR ? '<div class="tn-clock" aria-live="polite">1:00</div><p class="tn-live muted small"></p><p><button type="button" class="tn-mic" data-tn-mic>● 말하기 시작</button></p>' : '') +
-      (/SamsungBrowser/i.test(navigator.userAgent || '') ? '<p class="tn-warn">⚠️ 삼성 인터넷은 받아쓰기가 자주 틀려. 크롬에서 열거나 키보드 🎤를 써줘.</p>' : '') +
-      '<p class="muted small">' + (SR ? '소리는 저장하지 않고 글자만 남겨. ' : '') + '메모 칸을 누르고 키보드의 🎤(삼성 키보드·Gboard)로 말해도 돼. 짧게 끊어서, 용어는 또박또박.</p></details></div>';
+    // ChatGPT에 넣는 것만: 무엇을 말할지 안내 (받아쓰기·정리는 ChatGPT가)
+    return '<div class="tn-rec"><p class="tn-l" style="margin:0 0 4px">이렇게 말해봐</p><ul class="tn-guide"><li>① 오늘 배운 핵심 한 가지</li><li>② 헷갈렸던 것</li><li>③ 시험에 나올 것 같은 것</li></ul></div>';
   }
   function photoBody() {
     return '<div class="tn-photo"><input type="file" accept="image/*" capture="environment" hidden data-tn-file>' +
@@ -169,9 +165,12 @@
   }
   /* 💬 ChatGPT 앱으로 정리 — 암기 과목에 맞춘 정리 요청. 이름·학교는 안 넣는다 */
   function gptPrompt(subject, text, kind) {
-    return '[수업 노트 정리] 나는 고등학교 1학년이야. 아래는 ' + (subject || '수업') + ' 수업 뒤에 ' + (kind === 'talk' ? '내가 말로 정리한 내용(받아쓰기라 오타가 있을 수 있어)' : '교과서·필기에서 옮긴 글') + '이야.\n' +
-      '내가 말한 내용만 근거로, 아래 형식 그대로 짧게 정리해줘. 내용이 틀렸거나 빠진 중요한 게 있으면 마지막 줄에 "⚠️ 확인할 것"으로만 따로 적어줘(본문에 섞지 마). 표·굵은 글씨 없이 줄글로.\n\n' +
-      '📌 핵심 정리\n- (3~5줄)\n🔑 꼭 외울 용어\n- 용어: 뜻 (최대 6개)\n🧩 헷갈리기 쉬운 것\n- (1~2줄)\n❓ 스스로 확인 질문\n- (3개, 답은 쓰지 마)\n🧠 외우기 팁\n- (앞글자·연결 고리 1줄)\n\n--- 내 노트 ---\n' + String(text).slice(0, 1300);
+    var t = String(text || '').trim().slice(0, 1300);
+    return '[수업 노트 정리]\n※ 일반 채팅(Chat)으로 답해줘. Work·Codex 같은 작업 모드나 에이전트로 문서·파일을 만들지 말고, 이 대화창에 글로만 답해줘.\n\n' +
+      '나는 고등학교 1학년이야. ' + (subject || '수업') + ' 수업 내용을 정리하고 싶어. ' + (kind === 'photo' ? '아래는 교과서·필기 사진에서 옮긴 글이라 깨진 글자가 있을 수 있어.' : '아래는 녹음·받아쓰기라 용어가 틀릴 수 있으니 문맥에 맞게 이해해줘.') + '\n' +
+      '내가 준 내용만 근거로 아래 형식 그대로 짧게 정리해줘. 틀렸거나 빠진 중요한 게 있으면 마지막 줄에 "⚠️ 확인할 것"으로만 따로 적어줘(본문에 섞지 마). 표·굵은 글씨 없이.\n\n' +
+      '📌 핵심 정리\n- (3~5줄)\n🔑 꼭 외울 용어\n- 용어: 뜻 (최대 6개)\n🧩 헷갈리기 쉬운 것\n- (1~2줄)\n❓ 스스로 확인 질문\n- (3개, 답은 쓰지 마)\n🧠 외우기 팁\n- (1줄)\n\n' +
+      '--- 수업 내용 ---\n' + (t || '(이어서 녹음 내용을 붙여넣거나 🎤로 말할게. 내용을 받기 전에는 "수업 내용을 보내줘 🎙️"라고만 답해줘.)');
   }
   /* 📋 ChatGPT에서 돌아오면: 복사해 온 정리를 붙여넣기 · 앱을 오가다 화면이 새로 열려도 쓰던 노트 되살리기 */
   var gptSent = '', DRAFT = 'fc-tn-draft';
@@ -234,8 +233,7 @@
     }).then(function (txt) {
       txt = txt.replace(/[ \t]+/g, ' ').replace(/\n{3,}/g, '\n\n').trim();
       if (sheet) { ta.value = (ta.value ? ta.value.trim() + '\n' : '') + txt.slice(0, 1400); b.textContent = '🔤 다시 읽기'; b.disabled = false; }
-      notice(txt ? '읽은 글자를 넣었어. 이어서 🧠 정리할게.' : '글자를 못 읽었어. 핵심만 직접 적어줘.');
-      if (txt && sheet) organizeSheet(true);
+      notice(txt ? '읽은 글자를 넣었어. 💬 ChatGPT에 보내기를 눌러줘.' : '글자를 못 읽었어. 핵심만 직접 적어줘.');
     }).catch(function () { if (sheet) { b.disabled = false; b.textContent = '🔤 글자 읽기'; } notice('글자 읽기를 불러오지 못했어. 직접 적어줘.'); });
   }
   function saveNote(kind) {
@@ -332,11 +330,11 @@
     var g = e.target.closest && e.target.closest('[data-tn-gpt]');
     if (g && sheet) {
       var txt = sheet.querySelector('.tn-text').value.trim(), other = sheet.querySelector('.tn-sub-other').value.trim();
-      if (txt.length < 15) { e.preventDefault(); notice('정리할 글이 너무 짧아. 먼저 말하거나 적어줘.'); return; }
+      if (sheetKind !== 'talk' && txt.length < 15) { e.preventDefault(); notice('정리할 글이 너무 짧아. 글자 읽기를 하거나 적어줘.'); return; }
       var pr = gptPrompt(other || sub || '수업', txt, sheetKind);
       var A = window.SHIRO_AI;
       g.href = A && A.rawHref ? A.rawHref(pr) : 'https://chatgpt.com/?q=' + encodeURIComponent(pr.slice(0, 1800));
-      if (A && A.rawCopy) A.rawCopy(pr, '정리 요청을 복사해 뒀어. ChatGPT 앱에 안 들어가 있으면 붙여넣기 → 정리된 글을 🧠 정리 칸에 붙여넣고 저장해.');
+      if (A && A.rawCopy) A.rawCopy(pr, '정리 규칙을 복사해 뒀어. ChatGPT 입력창이 비어 있으면 붙여넣기 해줘. 답을 복사해서 돌아오면 붙여넣어 줄게.');
       var box = sheet.querySelector('.tn-sum-box'); if (box) box.hidden = false;
       gptSent = pr; saveDraft();
       return;   // 링크 기본 동작으로 ChatGPT 앱 열기
@@ -382,7 +380,7 @@
     '.tn-photo{margin-top:8px}.tn-preview{border:2px dashed #d9d3ee;border-radius:16px;min-height:140px;display:grid;place-items:center;gap:8px;padding:10px}.tn-preview img{max-width:100%;max-height:42dvh;border-radius:10px}.tn-ocr-row{margin:8px 0 0}' +
     '.tn-list ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}.tn-list li{border:1px solid #efedf5;border-radius:14px;padding:10px 12px}.tn-li-top{display:flex;align-items:center;gap:8px}.tn-li-top small{flex:1;color:#6b6880}.tn-tag{font-size:12.5px;font-weight:700;background:#f0edff;color:#5b45d6;border-radius:999px;padding:3px 9px}.tn-tag.photo{background:#e8f4ff;color:#2a6aa8}' +
     '.tn-thumb{display:block;width:100%;height:140px;margin:8px 0 0;border-radius:10px;background:#f4f3f8 center/cover no-repeat;border:0!important;font-size:12px;color:#6b6880}.tn-txt{margin:8px 0 0;font-size:14px;line-height:1.6;white-space:normal;max-height:9.6em;overflow:hidden}' +
-    '.tn-org-row button{width:100%;min-height:46px!important;margin-top:8px;font-weight:700}.tn-gpt{display:block;margin-top:8px;padding:10px 12px;border:1px solid #d9d2f3;border-radius:12px;background:#fff;color:#4a33b8;font-weight:700;text-decoration:none;text-align:center;min-height:46px}.tn-gpt small{display:block;font-weight:500;color:#6b6880;font-size:12.5px}.tn-paste-row{margin:0 0 6px}.tn-gpt-main{display:block;margin:12px 0 8px;padding:14px;border-radius:999px;background:#5b3fd6;color:#fff!important;font-weight:800;font-size:17px;text-align:center;text-decoration:none;min-height:52px}.tn-steps{margin:0 0 8px;padding-left:20px;text-align:left;font-size:13.5px;line-height:1.6;color:#3d3a55}.tn-alt{margin-top:6px;text-align:left}.tn-alt summary{cursor:pointer;font-size:13.5px;color:#6b6880;padding:6px 0}.tn-alt .tn-clock{font-size:28px}.tn-better{margin-top:12px;padding:10px 12px;border-radius:12px;background:#fff;border:1px solid #ece8f8;text-align:left}.tn-better>b{font-size:13.5px}.tn-better .tn-gpt{margin:8px 0}.tn-warn{margin:8px 0 0;font-size:13px;color:#8a4b00;background:#fff4e0;border-radius:10px;padding:8px 10px;text-align:left}.tn-paste-row button{width:100%;min-height:44px!important;font-weight:700;background:#f4f1fd!important;border:1px dashed #b9ade8!important;color:#3c2fa8!important}.tn-sum{width:100%;font-size:14px;line-height:1.6;background:#fbfaff}.tn-sumv{margin:8px 0 0;font-size:14px;line-height:1.65;background:#f8f6ff;border-radius:10px;padding:10px 12px}.tn-raw{display:none}.tn-show-raw .tn-raw{display:block}.tn-show-raw .tn-sumv{display:none}' +
+    '.tn-gpt{display:block;margin-top:8px;padding:10px 12px;border:1px solid #d9d2f3;border-radius:12px;background:#fff;color:#4a33b8;font-weight:700;text-decoration:none;text-align:center;min-height:46px}.tn-gpt small{display:block;font-weight:500;color:#6b6880;font-size:12.5px}.tn-paste-row{margin:0 0 6px}.tn-gpt-main{display:block;margin:12px 0 8px;padding:14px;border-radius:999px;background:#5b3fd6;color:#fff!important;font-weight:800;font-size:17px;text-align:center;text-decoration:none;min-height:52px}.tn-steps{margin:0 0 8px;padding-left:20px;text-align:left;font-size:13.5px;line-height:1.6;color:#3d3a55}.tn-alt{margin-top:6px;text-align:left}.tn-alt summary{cursor:pointer;font-size:13.5px;color:#6b6880;padding:6px 0}.tn-alt .tn-clock{font-size:28px}.tn-better{margin-top:12px;padding:10px 12px;border-radius:12px;background:#fff;border:1px solid #ece8f8;text-align:left}.tn-better>b{font-size:13.5px}.tn-better .tn-gpt{margin:8px 0}.tn-warn{margin:8px 0 0;font-size:13px;color:#8a4b00;background:#fff4e0;border-radius:10px;padding:8px 10px;text-align:left}.tn-paste-row button{width:100%;min-height:44px!important;font-weight:700;background:#f4f1fd!important;border:1px dashed #b9ade8!important;color:#3c2fa8!important}.tn-sum{width:100%;font-size:14px;line-height:1.6;background:#fbfaff}.tn-sumv{margin:8px 0 0;font-size:14px;line-height:1.65;background:#f8f6ff;border-radius:10px;padding:10px 12px}.tn-raw{display:none}.tn-show-raw .tn-raw{display:block}.tn-show-raw .tn-sumv{display:none}' +
     '.tn-viewer img{max-width:100%;max-height:85dvh;border-radius:12px}.tn-viewer{flex-direction:column;gap:10px}';
   document.head.appendChild(css);
   if (typeof render === 'function') render();
