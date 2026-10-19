@@ -118,6 +118,14 @@
     if (b.dataset.docDel && l) { if (!confirm('이 자료를 지울까?')) return; post(l.url + '/docs/del', { t: l.t, id: b.dataset.docDel }).then(function () { DOCS = null; loadDocs(); }); }
   });
 
+  /* 📚 흰둥이가 자동으로 읽는 학교 자료(shiro-kb.json, 2시간마다 갱신) */
+  var KBI = null;
+  function kbLine() {
+    function put() { var el = document.getElementById('ai-kb'); if (!el || !KBI) return; var h = Math.max(0, Math.round((Date.now() - Date.parse(KBI.updated)) / 36e5));
+      el.textContent = '📚 학교 자료 자동 읽기: 평가계획·수행평가 기준·시험 범위·학사일정·급식·교과 단원 ' + KBI.count + '조각 · ' + (h < 1 ? '방금' : h + '시간 전') + ' 업데이트 (2시간마다 학교 홈페이지·나이스에서 새로 모음)'; }
+    if (KBI) return put();
+    fetch('shiro-kb.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) { if (d && d.updated) { KBI = d; put(); } else { var el = document.getElementById('ai-kb'); if (el) el.textContent = '📚 학교 자료 자동 읽기: 아직 준비 중'; } }).catch(function () {});
+  }
   /* ⚙️ 설정 카드 */
   var prev = typeof render === 'function' ? render : null;
   if (prev) render = function () {
@@ -126,9 +134,10 @@
     var l = live(), st = !l ? '가족 공유에 연결하면 쓸 수 있어.' : !(l.ai || l.url) ? '아직 준비 중이야(보호자가 서버에 AI 키를 넣으면 켜져).' : l.url ? '연결됨 · 실시간 서버' : '연결됨';
     var html = '<section class="card" id="set-ai"><h2>🧠 흰둥이 똑똑 모드</h2><p class="muted small">준비된 안내로 답하기 어려운 질문(개념 설명, 공부 계획, 고민)을 AI가 답해줘. ' + st + '</p>' +
       '<label class="push-row"><span>똑똑 모드 쓰기</span><input type="checkbox" data-ai-on' + (on() ? ' checked' : '') + '></label>' +
-      '<p class="muted small">보내는 것: 질문, 오늘 정보 요약(시간표·할 일·시험·학원·일정·공부 시간), 질문과 관련된 내 노트 글 몇 줄. 사진·메모는 안 보내. 아래 공부 자료에 있으면 그걸 근거로, 없으면 위키백과를 찾아보고 답해(출처 표시). 숙제를 대신 써주진 않고 힌트를 줘.</p>' + docsBox() + '</section>';
+      '<p class="muted small">보내는 것: 질문, 오늘 정보 요약(시간표·할 일·시험·학원·일정·공부 시간), 질문과 관련된 내 노트 글 몇 줄. 사진·메모는 안 보내. 아래 공부 자료에 있으면 그걸 근거로, 없으면 위키백과를 찾아보고 답해(출처 표시). 숙제를 대신 써주진 않고 힌트를 줘.</p><p class="muted small" id="ai-kb">📚 학교 자료 자동 읽기: 확인 중…</p>' + docsBox() + '</section>';
     var a = document.getElementById('set-push') || document.getElementById('set-profile');
     if (a) a.insertAdjacentHTML('beforebegin', html);
+    kbLine();
     var nav = document.querySelector('.set-jump'); if (nav && !nav.querySelector('[data-jump="set-ai"]')) nav.insertAdjacentHTML('beforeend', '<a href="#set-ai" data-jump="set-ai">흰둥이</a>');
   };
   document.addEventListener('change', function (e) { if (e.target.hasAttribute && e.target.hasAttribute('data-ai-on')) { try { localStorage.setItem(PREF, e.target.checked ? 'on' : 'off'); } catch (er) {} notice(e.target.checked ? '흰둥이 똑똑 모드를 켰어 🧠' : '똑똑 모드를 껐어. 준비된 안내로만 답할게.'); } });

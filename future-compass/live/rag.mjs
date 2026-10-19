@@ -40,12 +40,28 @@ export function addDoc({ title, subject, text, by }) {
 }
 export function delDoc(id) { const n = DOCS.length; DOCS = DOCS.filter(d => d.id !== id); if (DOCS.length !== n) persist(); return { ok: true }; }
 
+// 흰둥이 지식 묶음(dist/shiro-kb.json) — 2시간마다 GitHub Actions가 학교 자료로 다시 만든다. 30분 캐시
+let KB = { at: 0, data: { chunks: [] } };
+export async function loadKB() {
+  if (Date.now() - KB.at < 30 * 60e3) return KB.data;
+  let data = null;
+  try { const f = new URL('../dist/shiro-kb.json', import.meta.url); data = JSON.parse(fs.readFileSync(f, 'utf8')); } catch {}
+  if (!data) try {
+    const base = process.env.FC_KB_URL || process.env.URL || 'https://future.apuda.app';
+    const r = await fetch(base.replace(/\/$/, '') + '/shiro-kb.json', { signal: AbortSignal.timeout(4000) });
+    if (r.ok) data = await r.json();
+  } catch {}
+  if (data && Array.isArray(data.chunks)) KB = { at: Date.now(), data }; else KB.at = Date.now() - 25 * 60e3;   // 실패하면 5분 뒤 다시
+  return KB.data;
+}
+
 // 질문과 가장 맞는 자료 조각 (점수 낮으면 없음)
-export function searchDocs(q, k = 3, extra = []) {
+export function searchDocs(q, k = 3, extra = [], kb = []) {
   const qg = [...grams(q)].filter(g => !STOP.has(g)); if (!qg.length) return [];
   const pool = [];
   DOCS.forEach(d => d.chunks.forEach((c, i) => pool.push({ title: d.title, subject: d.subject, text: c, kind: '자료', key: d.id + ':' + i })));
   (Array.isArray(extra) ? extra : []).slice(0, 40).forEach((n, i) => { if (n && n.text) pool.push({ title: String(n.title || '내 노트').slice(0, 40), text: String(n.text).slice(0, 1200), kind: '내 노트', key: 'n' + i }); });
+  (Array.isArray(kb) ? kb : []).forEach((c, i) => { if (c && c.text) pool.push({ title: String(c.title || '학교 자료').slice(0, 80), subject: c.subject, text: String(c.text).slice(0, 1400), kind: '학교 자료', src: c.src, key: 'kb' + i }); });
   if (!pool.length) return [];
   const df = new Map(); const gs = pool.map(p => { const g = grams(p.title + ' ' + p.text); g.forEach(x => df.set(x, (df.get(x) || 0) + 1)); return g; });
   const N = pool.length, maxScore = qg.reduce((s, g) => s + Math.log(1 + N / (1 + (df.get(g) || 0))), 0) || 1;

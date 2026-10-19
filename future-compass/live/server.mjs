@@ -8,7 +8,7 @@
 import http from 'node:http';
 import { createHmac, timingSafeEqual, createPublicKey, verify as edVerify } from 'node:crypto';
 import { buildPayload, askAI, hasAI, validQuestion, organizePayload, providerOf } from './shiro.mjs';
-import { listDocs, addDoc, delDoc, searchDocs, searchWiki, knowledgeQ } from './rag.mjs';
+import { listDocs, addDoc, delDoc, loadKB, searchDocs, searchWiki, knowledgeQ } from './rag.mjs';
 const WEB = (process.env.FC_WEB_SEARCH || 'on') !== 'off';
 
 const PORT = Number(process.env.PORT || 8093);
@@ -94,7 +94,7 @@ const server = http.createServer(async (req, res) => {
     if (!validQuestion(b.q)) return send(res, 400, { error: 'bad_q' });
     if (limited('c', 60, 3600000) || limited('cd', 300, 86400000)) return send(res, 429, { error: 'rate' });
     try {
-      let refs = searchDocs(b.q, 3, b.notes);
+      const kb = await loadKB(); let refs = searchDocs(b.q, 3, b.notes, kb.chunks);
       if (!refs.length && WEB && knowledgeQ(b.q)) refs = await searchWiki(b.q);
       let text = await askAI(process.env, buildPayload({ role: b.role === 'parent' ? 'parent' : 'child', q: b.q, history: b.history, ctx: b.ctx, guide: b.guide, refs }));
       const src = [...new Map(refs.map(r => [r.kind + r.title, { kind: r.kind, title: r.title, url: r.url || '' }])).values()];
