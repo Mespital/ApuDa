@@ -168,3 +168,17 @@ body.app .tt td{font-size:13px;line-height:1.25}
 .hb-rings li i{width:7px;height:7px;border-radius:50%;flex:none}
 .hb-rings.full{box-shadow:0 0 0 2px #ffd166}
 @media(max-width:380px){.hb-rings ul{display:none}.hb-rings{padding:4px}}
+
+/* 📱 주간 일정: 한 화면 + 좌우 밀기 (2026-10-19) */
+.wk-app .ag-pager{overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y;border-radius:14px}
+.wk-app .wd-row{touch-action:pan-y}
+.wk-app .ag-page{will-change:transform}
+.wk-app .ag-page.in-right{animation:agInR .22s ease-out}
+.wk-app .ag-page.in-left{animation:agInL .22s ease-out}
+@keyframes agInR{from{transform:translateX(36px);opacity:.3}to{transform:none;opacity:1}}
+@keyframes agInL{from{transform:translateX(-36px);opacity:.3}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.wk-app .ag-page.in-right,.wk-app .ag-page.in-left{animation:none}}
+.wk-app .ag-hint{margin:6px 0 0;text-align:center;font-size:12.5px;color:#6b6880}
+.wk-app .ag-map{min-height:36px!important;padding:6px 12px!important;font-size:13.5px!important}
+.wk-app .ag-list.tight .ag{margin-bottom:6px}.wk-app .ag-list.tight .ag-e{padding:7px 11px}.wk-app .ag-list.tight .ag time{padding-top:8px}
+.wk-app .ag-list.tighter .ag-e small{font-size:12.5px}.wk-app .ag-list.tighter .ag-e b{font-size:14.5px}.wk-app .ag-list.tighter .ag-map{min-height:32px!important;padding:4px 10px!important;margin-top:4px!important}

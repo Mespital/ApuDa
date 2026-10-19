@@ -212,7 +212,9 @@
       var last = toMin(per[row.length - 1]), end = last != null ? hm(last + (cfg.classMinutes || 50)) : '';
       out.push({ t: per[0] || '', k: 'cls', title: (exS.length ? '📝 시험 ' + exS.join('·') : row.filter(Boolean)[0] + ' 외 ' + (row.filter(Boolean).length - 1) + '교시'), sub: (end ? '~' + end : '') + ' · 수업 ' + row.length + '교시' });
     } else if (o && !o.weekend) out.push({ t: '종일', k: 'off', title: '🌿 ' + o.name, sub: '수업 없음' });
-    (window.FC_CAL && FC_CAL.schoolEvents ? FC_CAL.schoolEvents(d) : []).forEach(function (ev) { out.push({ t: '종일', k: /고사|시험|평가/.test(ev) ? 'ex' : 'ev', title: '🏫 ' + ev, sub: '학교 일정' }); });
+    var sev = (window.FC_CAL && FC_CAL.schoolEvents ? FC_CAL.schoolEvents(d) : []), plainEv = sev.filter(function (ev) { return !/고사|시험|평가/.test(ev); });
+    sev.filter(function (ev) { return /고사|시험|평가/.test(ev); }).forEach(function (ev) { out.push({ t: '종일', k: 'ex', title: '🏫 ' + ev, sub: '학교 일정' }); });
+    if (plainEv.length) out.push({ t: '종일', k: 'ev', title: '🏫 ' + plainEv.join(' · '), sub: '학교 일정' + (plainEv.length > 1 ? ' ' + plainEv.length + '개' : '') });   // 학교 행사는 한 칸으로 묶어 한 화면에
     state.dates.filter(function (x) { return !x.done && x.date === d; }).forEach(function (x) { out.push({ t: '종일', k: 'ex', title: '📝 ' + x.title + (x.kind === '시험' ? '' : ' 마감'), sub: [x.subject, x.kind, gap(d) >= 0 ? (gap(d) === 0 ? '오늘' : 'D-' + gap(d)) : ''].filter(Boolean).join(' · ') }); });
     (typeof FC_ACADEMY !== 'undefined' ? FC_ACADEMY.forDay(d) : []).forEach(function (a) { if (a.cancelled) return; out.push({ t: a.start || '', k: 'ac', title: a.name + (a.subject ? ' · ' + a.subject : ''), sub: [a.end ? '~' + a.end : '', a.from === d ? '첫 수업' : '', a.homework && !a.hwDone ? '숙제 ' + a.homework : '', a.note || ''].filter(Boolean).join(' · '), id: a.id }); });
     (typeof FC_LIFE !== 'undefined' ? FC_LIFE.forDay(d) : []).forEach(function (x) { if (!x.start) return; out.push({ t: x.start, k: 'lf', title: (x.icon || '📌') + ' ' + x.title, sub: (x.end ? '~' + x.end + ' · ' : '') + '일상' }); });
@@ -241,16 +243,68 @@
     var wrap = document.createElement('div'); wrap.className = 'wk-app';
     wrap.innerHTML = '<div class="wk-nav2"><button type="button" data-wk-shift="-7" aria-label="이전 주">‹</button><button type="button" data-wk-today' + (selDate === t ? ' disabled' : '') + '>오늘</button><button type="button" data-wk-shift="7" aria-label="다음 주">›</button></div>' +
       '<div class="wd-row">' + days + '</div><div class="seg2"><button type="button" class="on">일정</button><button type="button" data-go="table">시간표</button></div>' +
-      '<div class="ag-list">' + agenda(selDate) + agenda(addD(selDate, 1)) + '</div>';
+      '<div class="ag-pager" aria-live="polite"><div class="ag-list ag-page' + (slideDir ? ' in-' + slideDir : '') + '">' + agenda(selDate) + '</div></div>' +
+      '<p class="ag-hint">‹ 옆으로 밀면 ' + (swipeSeen() ? '다른 날' : '어제·내일로 넘어가') + ' ›</p>';
     root.insertAdjacentElement('afterbegin', wrap);
+    slideDir = '';
+    setTimeout(fitAg, 0);
     if (old.length) {
       var det = document.createElement('details'); det.className = 'more-cards wk-old'; det.innerHTML = '<summary><b>📋 주간 계획 · 저녁 예습</b><small>요일별 수업·예습·이번 주 큰 돌</small></summary><div class="more-in"></div>';
       var box = det.querySelector('.more-in'); old.forEach(function (el) { box.appendChild(el); }); wrap.insertAdjacentElement('afterend', det);
     }
   }
+  /* 📱 한 화면에 맞추기: 일정 칸 높이를 기기 화면(아래 메뉴 제외)에 맞추고, 많으면 칸 안에서만 스크롤 */
+  var slideDir = '';
+  function swipeSeen() { try { return Number(localStorage.getItem('fc-wk-swipe') || 0) >= 3; } catch (e) { return true; } }
+  function fitAg() {
+    var pg = document.querySelector('.wk-app .ag-pager'); if (!pg) return;
+    var nav = document.querySelector('.appnav'), nr = nav && getComputedStyle(nav).display !== 'none' ? nav.getBoundingClientRect() : null;
+    var bottom = nr && nr.height ? Math.min(window.innerHeight, nr.top) - 24 : window.innerHeight;   // 아래 메뉴(가운데 집중 버튼이 위로 솟은 만큼 포함) 바로 위까지
+    var hint = document.querySelector('.wk-app .ag-hint'), hintH = hint ? hint.getBoundingClientRect().height + 6 : 0;
+    var top = pg.getBoundingClientRect().top + Math.min(window.scrollY, 0), h = Math.floor(bottom - top - hintH - 10);
+    pg.style.maxHeight = Math.max(200, h) + 'px';
+    var list = pg.querySelector('.ag-list'); if (!list) return;
+    list.classList.remove('tight', 'tighter');
+    if (list.scrollHeight > Math.max(200, h)) list.classList.add('tight');
+    if (list.scrollHeight > Math.max(200, h)) list.classList.add('tighter');
+  }
+  window.addEventListener('resize', function () { if (tab === 'week') fitAg(); });
+  function goDay(n) {
+    selDate = addD(selDate, n); slideDir = n > 0 ? 'right' : 'left';
+    try { localStorage.setItem('fc-wk-swipe', String(Number(localStorage.getItem('fc-wk-swipe') || 0) + 1)); } catch (e) {}
+    haptic(); render();
+  }
+  /* 👉 좌우로 밀기: 일정 칸 = 하루씩, 날짜 줄 = 한 주씩 */
+  var sw = null;
+  document.addEventListener('touchstart', function (e) {
+    if (tab !== 'week' || e.touches.length !== 1) return;
+    var el = e.target.closest && e.target.closest('.wk-app .ag-pager, .wk-app .wd-row'); if (!el) return;
+    sw = { x: e.touches[0].clientX, y: e.touches[0].clientY, el: el, week: el.classList.contains('wd-row'), dx: 0, h: null };
+  }, { passive: true });
+  document.addEventListener('touchmove', function (e) {
+    if (!sw) return;
+    var dx = e.touches[0].clientX - sw.x, dy = e.touches[0].clientY - sw.y;
+    if (sw.h === null && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) sw.h = Math.abs(dx) > Math.abs(dy) * 1.3;
+    if (!sw.h) return;
+    sw.dx = dx;
+    var pgEl = sw.week ? sw.el : sw.el.querySelector('.ag-page');
+    if (pgEl) { pgEl.style.transition = 'none'; pgEl.style.transform = 'translateX(' + Math.round(dx * 0.6) + 'px)'; pgEl.style.opacity = String(1 - Math.min(Math.abs(dx) / 600, 0.4)); }
+  }, { passive: true });
+  document.addEventListener('touchend', function () {
+    if (!sw) return; var s0 = sw; sw = null;
+    var pgEl = s0.week ? s0.el : s0.el.querySelector('.ag-page');
+    if (s0.h && Math.abs(s0.dx) > 50) { if (s0.week) { selDate = addD(selDate, s0.dx < 0 ? 7 : -7); slideDir = s0.dx < 0 ? 'right' : 'left'; haptic(); render(); } else goDay(s0.dx < 0 ? 1 : -1); return; }
+    if (pgEl) { pgEl.style.transition = 'transform .18s, opacity .18s'; pgEl.style.transform = ''; pgEl.style.opacity = ''; }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (tab !== 'week' || /INPUT|TEXTAREA|SELECT/.test((e.target && e.target.tagName) || '')) return;
+    if (e.key === 'ArrowLeft') goDay(-1); else if (e.key === 'ArrowRight') goDay(1);
+  });
   document.addEventListener('click', function (e) {
     var b = e.target.closest && e.target.closest('[data-wk-day],[data-wk-shift],[data-wk-today]'); if (!b) return;
+    var before = selDate;
     if (b.dataset.wkDay) selDate = b.dataset.wkDay; else if (b.dataset.wkShift) selDate = addD(selDate, Number(b.dataset.wkShift)); else selDate = today();
+    slideDir = selDate > before ? 'right' : selDate < before ? 'left' : '';
     haptic(); render();
   });
 
