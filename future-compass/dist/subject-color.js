@@ -27,11 +27,11 @@
     css += 'body.app .sl-sub[data-sub=' + k + ']{background:var(--sub-' + k + ')!important;color:var(--sub-' + k + '-ink)!important}';
     css += 'body.app .sub-dot[data-sub=' + k + ']::before{background:var(--sub-' + k + '-ink)}';
     css += 'body.app table.tt td[data-sub=' + k + ']:not(.now){background:color-mix(in srgb,var(--sub-' + k + ') 55%,transparent)!important}';
-    css += 'body.app table.tt td[data-sub=' + k + '].now{box-shadow:inset 0 0 0 999px color-mix(in srgb,var(--sub-' + k + ') 70%,transparent)}';
+    css += 'body.app table.tt td[data-sub=' + k + '].now{background-image:linear-gradient(color-mix(in srgb,var(--sub-' + k + ') 70%,transparent),color-mix(in srgb,var(--sub-' + k + ') 70%,transparent))!important}';
     // 밤 화면: 진한 바탕 + 밝은 글자 (밝은 알약이 그대로 남아 글자가 안 보이던 문제 방지)
     css += 'html.fc-dark body.app .sl-sub[data-sub=' + k + ']{background:color-mix(in srgb,var(--sub-' + k + '-ink) 55%,#0f1229)!important;color:#fff!important}';
     css += 'html.fc-dark body.app table.tt td[data-sub=' + k + ']:not(.now){background:color-mix(in srgb,var(--sub-' + k + '-ink) 28%,transparent)!important}';
-    css += 'html.fc-dark body.app table.tt td[data-sub=' + k + '].now{box-shadow:inset 0 0 0 999px color-mix(in srgb,var(--sub-' + k + '-ink) 45%,transparent)}';
+    css += 'html.fc-dark body.app table.tt td[data-sub=' + k + '].now{background-image:linear-gradient(color-mix(in srgb,var(--sub-' + k + '-ink) 45%,transparent),color-mix(in srgb,var(--sub-' + k + '-ink) 45%,transparent))!important}';
     css += 'html.fc-dark body.app .sub-dot[data-sub=' + k + ']::before{background:color-mix(in srgb,var(--sub-' + k + '-ink) 50%,#fff)}';
   });
   css += 'body.app .sl-sub.pill{border-radius:999px!important;padding:3px 10px!important;font-weight:800}' +

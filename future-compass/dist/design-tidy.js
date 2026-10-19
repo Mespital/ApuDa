@@ -69,15 +69,15 @@
 
   var css = document.createElement('style');
   css.textContent = 'details.dt-fold{padding:0!important;overflow:hidden}' +
-    'details.dt-fold>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;min-height:56px;padding:12px 16px;font-size:17px;font-weight:800;color:var(--ink,#1f1b45)}' +
+    'details.dt-fold>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;min-height:56px;padding:12px 16px;font-size:17px;font-weight:800;color:var(--ink)}' +
     'details.dt-fold>summary::-webkit-details-marker{display:none}' +
-    'details.dt-fold>summary::after{content:"▾";margin-left:auto;font-size:15px;color:var(--ink-3,#6b6880);transition:transform .15s}' +
+    'details.dt-fold>summary::after{content:"▾";margin-left:auto;font-size:15px;color:var(--ink-3);transition:transform .15s}' +
     'details.dt-fold[open]>summary::after{transform:rotate(180deg)}' +
-    'details.dt-fold>summary small{font-size:12.5px;font-weight:600;color:var(--ink-3,#6b6880);margin-left:4px}' +
+    'details.dt-fold>summary small{font-size:12.5px;font-weight:600;color:var(--ink-3);margin-left:4px}' +
     '.dt-fold-in{margin:0!important;border:0!important;box-shadow:none!important;border-radius:0!important;background:transparent!important;padding-top:0!important}' +
     '.dt-fold-in .dt-fold-h,.dt-fold-in>.section-title:has(>.dt-fold-h:only-child){display:none}' +
     '.dt-fold-in>.section-title>.dt-fold-h{visibility:hidden;width:0;overflow:hidden}' +
-    '.dt-more{display:block;width:100%;margin:6px 0 4px;min-height:44px;border:1px dashed var(--u-line,#e6e2f5)!important;background:transparent!important;border-radius:12px!important;color:var(--accent,#5b3fd6)!important;font-weight:700;font-size:13.5px}' +
+    '.dt-more{display:block;width:100%;margin:6px 0 4px;min-height:44px;border:1px dashed var(--u-line)!important;background:transparent!important;border-radius:12px!important;color:var(--accent-ink)!important;font-weight:700;font-size:13.5px}' +
     '.dt-extra[hidden]{display:none!important}@media (prefers-reduced-motion:reduce){details.dt-fold>summary::after{transition:none}}';
   document.head.appendChild(css);
 })();

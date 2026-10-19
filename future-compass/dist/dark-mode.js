@@ -85,18 +85,24 @@
   /* CSS 변수: 이름으로 역할을 정함. 강조색(pri·violet·lamp 등)은 버튼 배경에도 쓰여서 값은 그대로 두고, 글자로 쓰일 때만 밝힘 */
   var VARS = {};
   function varKind(n) {
+    if (/^--u-(?:solid|on-solid|current|on-current)$/.test(n)) return 'fixed';
+    // subject-color.js supplies its own dark variants from the original palette.
+    if (/^--sub-(?:kor|math|eng|soc|sci|his|art|etc)(?:-ink)?$/.test(n)) return 'fixed';
+    if (/^--sh-/.test(n)) return 'shadow';
     if (/ink|night|sub|muted|text|fg|title/.test(n)) return 'fg';
     if (/line|border|stroke/.test(n)) return 'border';
     if (/bg|card|paper|soft|tint|surface|wash|cream/.test(n)) return 'bg';
     return 'accent';
   }
   function ruleCss(rule) {
+    // Explicit dark palettes already describe their final colors; never transform twice.
+    if (/\.fc-dark\b/.test(rule.selectorText || '')) return '';
     var st = rule.style, decl = '';
     for (var i = 0; i < st.length; i++) {
       var p = st[i], v0 = st.getPropertyValue(p), imp = st.getPropertyPriority(p) ? ' !important' : '';
       if (p.indexOf('--') === 0) {
         var vk = varKind(p); VARS[p] = v0.trim();
-        RX.lastIndex = 0; if (vk === 'accent' || !RX.test(v0)) { RX.lastIndex = 0; continue; } RX.lastIndex = 0;
+        RX.lastIndex = 0; if (vk === 'accent' || vk === 'fixed' || !RX.test(v0)) { RX.lastIndex = 0; continue; } RX.lastIndex = 0;
         decl += p + ':' + mapVal(v0, vk) + imp + ';'; continue;
       }
       var k = kindOf(p); if (!k) continue;
@@ -132,9 +138,9 @@
     var css = walk(rules); if (!css) return;
     chunks.push(css); ensureOut(); outEl.textContent = BASE + chunks.join('\n');
   }
-  var BASE = 'html.fc-dark{color-scheme:dark;background:#0f1229}html.fc-dark body{background:#0f1229;color:#eceaf4}' +
+  var BASE = 'html.fc-dark{color-scheme:dark;background:var(--u-canvas,#0f1229)}html.fc-dark body{background:var(--u-canvas,#0f1229);color:var(--ink,#eceaf4)}' +
     'html.fc-dark img,html.fc-dark .hb-img,html.fc-dark .hero-img,html.fc-dark video{filter:brightness(.82) contrast(1.05)}' +
-    'html.fc-dark ::placeholder{color:#8f8aa6}html.fc-dark a{color:#b9acff}html.fc-dark :is(p,li,small,span,dd,td)>a,html.fc-dark a:not([class]):not([role]){text-decoration:underline!important;text-underline-offset:2px}';
+    'html.fc-dark ::placeholder{color:var(--ink-3,#8f8aa6)}:where(html.fc-dark) a{color:var(--accent-ink,#b9acff)}html.fc-dark :is(p,li,small,span,dd,td)>a,html.fc-dark a:not([class]):not([role]){text-decoration:underline!important;text-underline-offset:2px}';
   function scan() { document.querySelectorAll('style,link[rel="stylesheet"]').forEach(function (n) { if (n.tagName === 'LINK' && !sheetOf(n)) n.addEventListener('load', function () { process(n); }, { once: true }); else process(n); }); }
 
   /* 깜빡임 방지: 변환 전에도 바탕은 어둡게 */
