@@ -26,7 +26,7 @@ export function buildPayload({ role, q, history, ctx, guide, refs }) {
     '\n\n[앱 안내]\n' + clip((Array.isArray(guide) ? guide : []).map(g => '- ' + clip(g, 700)).join('\n') || '(관련 안내 없음)', 3000) +
     '\n\n[오늘 정보]\n' + clip(typeof ctx === 'string' ? ctx : JSON.stringify(ctx || {}), 3500) +
     (Array.isArray(refs) && refs.length ? '\n\n[참고 자료]\n' + refs.map((r, i) => '(' + (i + 1) + ') [' + r.kind + '] ' + clip(r.title, 60) + '\n' + clip(r.text, 1300)).join('\n\n') +
-      '\n\n[자료 사용 규칙] 공부 질문이면 위 참고 자료를 근거로 답해. 자료에 있는 내용과 다르게 말하지 마. 마지막 줄에 "📎 출처: 자료 제목"을 써(위키백과면 "위키백과: 제목"). 자료에 답이 없으면 "자료에는 없어"라고 먼저 말하고 아는 범위에서 조심스럽게 답해.' : '');
+      '\n\n[자료 사용 규칙] 공부 질문이면 위 참고 자료를 근거로 답해. 자료에 있는 내용과 다르게 말하지 마. 마지막 줄에 "📎 출처: 자료 제목"을 써(위키백과면 "위키백과: 제목"). [학교 자료]는 서초고 공식 자료(평가계획·가정통신문·나이스)를 자동으로 모은 거야: 날짜·범위·배점은 그대로 옮기고, "최종은 학교 공지와 선생님 말씀이 기준"이라고 한 번 덧붙여. 자료에 답이 없으면 "자료에는 없어"라고 먼저 말하고 아는 범위에서 조심스럽게 답해.' : '');
   const msgs = [];
   (Array.isArray(history) ? history : []).slice(-8).forEach(m => {
     if (!m || (m.r !== 'u' && m.r !== 'a')) return;
