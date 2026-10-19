@@ -1,0 +1,393 @@
+{
+  "version": "1.2",
+  "report_date": "2026-10-19",
+  "collection_window": {
+    "start": "2026-10-18T09:00:00+09:00",
+    "end": "2026-10-19T09:00:00+09:00",
+    "timezone": "Asia/Seoul"
+  },
+  "sources": [
+    "데일리팜",
+    "의학신문",
+    "메디파나뉴스",
+    "약사공론"
+  ],
+  "briefing": "政 \"원료직접생산 약가우대, 재정 고려돼야\"…업계 우려 현실화가 오늘 가장 중요한 이슈로 부각됐습니다. 이어 정부, 오리지널·제네릭 약가 역전 우려에 \"추가 제도개선 검토\"도 주요 변화로 확인됐습니다. 전체적으로는 정책·급여 · 의료현장 흐름이 두드러집니다.",
+  "top_news": [
+    {
+      "rank": 1,
+      "canonical_issue": "政 \"원료직접생산 약가우대, 재정 고려돼야\"…업계 우려 현실화 - 메디파나뉴스",
+      "title": "政 \"원료직접생산 약가우대, 재정 고려돼야\"…업계 우려 현실화",
+      "category": [
+        "약가",
+        "복지부"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-19T06:03:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "보건복지부가 원료직접생산 의약품 약가 우대 인정기준 확대를 가로막는 핵심 요인 중 하나로 '건보 재정 영향'을 공식 명시하면서, 그간 제약업계에서 언급됐던 재정 부담론이 기정 사실화된 것으로 파악된다. 16일 국회에 따르면, 국회 보건복지위원회 한지아 의원(국민의힘)은 국정감사 서면질의를 통해 '국내 원",
+        "사진=게티이미지 보건복지부가 원료직접생산 의약품 약가 우대 인정기준 확대를 가로막는 핵심 요인 중 하나로 '건보 재정 영향'을 공식 명시하면서, 그간 제약업계에서 언급됐던 재정 부담론이 기정 사실화된 것으로 파악된다.",
+        "16일 국회에 따르면, 국회 보건복지위원회 한지아 의원(국민의힘)은 국정감사 서면질의를 통해 '국내 원료 생산기반 지원 강화를 위해 원료직접생산의약품 약가 우대 인정기준을 확대하는 것이 필요하다'는 것에 대한 의견을 물었다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=419484"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=419484"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419484_326943_5138.jpg",
+      "score": 54,
+      "oncology": null
+    },
+    {
+      "rank": 2,
+      "canonical_issue": "정부, 오리지널·제네릭 약가 역전 우려에 \"추가 제도개선 검토\" - 의학신문",
+      "title": "정부, 오리지널·제네릭 약가 역전 우려에 \"추가 제도개선 검토\"",
+      "category": [
+        "약가"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-19T06:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=이재원 기자] 정부가 오리지널 의약품과 제네릭 의약품 간 약가 역전 가능성에 대해 제도 운영 성과와 건강보험 재정 영향을 고려해 추가적인 약가",
+        "[의학신문·일간보사=이재원 기자] 정부가 오리지널 의약품과 제네릭 의약품 간 약가 역전 가능성에 대해 제도 운영 성과와 건강보험 재정 영향을 고려해 추가적인 약가제도 개선을 검토하겠다는 입장을 밝혔다.",
+        "다만 약가 우대는 제약산업 혁신과 필수의약품의 안정적인 공급 등 정책적 목적을 달성하기 위한 한시적·선별적 보상이라는 점을 강조하면서, 오리지널과 제네릭 간 일률적인 약가 조정 기준을 마련하는 데 대해서는 구체적인 방침을 제시하지 않았다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3014207"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014207"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3014207_415121_2811.jpg",
+      "score": 48,
+      "oncology": null
+    },
+    {
+      "rank": 3,
+      "canonical_issue": "[기획] 스타트업 기술에 제약사 영업망…디지털헬스 상용화 공식 - 메디파나뉴스",
+      "title": "[기획] 스타트업 기술에 제약사 영업망…디지털헬스 상용화 공식",
+      "category": [
+        "투자",
+        "병원",
+        "디지털헬스"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-19T06:04:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "국내 디지털헬스 기업이 보유 자산을 웃도는 1100억원 규모 자금조달을 추진하며 해외 시장 진출에 나섰다. 스타트업이 제약사 영업망을 통해 국내 병원에서 매출과 수익성을 확보하면서 성장 궤도에 올랐고, 이를 발판으로 글로벌 도약까지 추진하는 모델이 구체화되고 있다. 씨어스, 자산 웃도는 CB 조달 추진…",
+        "사진=Chat GPT 활용 기획 추격 아닌 선도, K-디지털헬스 한국 제약·바이오산업은 꾸준한 투자와 기술 발전에도 글로벌 신약 시장에서는 여전히 선도국을 추격하는 위치에 있다.",
+        "후보물질 발굴부터 대규모 임상시험과 허가, 세계 각국 판매망 구축까지 수십 년간 역량을 축적한 글로벌 빅파마와의 격차를 단기간에 좁히기는 쉽지 않다."
+      ],
+      "importance": "생산·투자 확대는 공급망 안정성과 글로벌 사업 확장, 중장기 생산능력 경쟁과 연결됩니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=419474"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=419474"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419474_326935_5655.png",
+      "score": 40,
+      "oncology": null
+    },
+    {
+      "rank": 4,
+      "canonical_issue": "정부, '창고형 약국' 포털 우회광고 차단 검토...네이버·카카오 협조 추진 - 의학신문",
+      "title": "정부, '창고형 약국' 포털 우회광고 차단 검토...네이버·카카오 협조 추진",
+      "category": [
+        "복지부",
+        "약국"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-19T06:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=이재원 기자] 보건복지부가 이른바 '창고형 약국'의 명칭 광고 제한과 관련해 네이버·카카오 등 온라인 포털사이트를 통한 우회광고를 방지하기 위",
+        "[의학신문·일간보사=이재원 기자] 보건복지부가 이른바 '창고형 약국'의 명칭 광고 제한과 관련해 네이버·카카오 등 온라인 포털사이트를 통한 우회광고를 방지하기 위한 관리방안 마련에 나선다.",
+        "오는 12월 약국 명칭에 의약품 오남용을 부추기는 표현을 사용하지 못하도록 하는 개정 약사법이 시행될 예정인 가운데, 온라인 포털을 통해 관련 표현이 우회적으로 광고되는 문제까지 관리할 필요성이 제기된 데 따른 것이다."
+      ],
+      "importance": "의료기관·약국 현장의 변화는 진료 흐름과 환자 경험, 의약품 사용 환경에 직접 영향을 줍니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3014187"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014187"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3014187_415120_2542.png",
+      "score": 40,
+      "oncology": null
+    },
+    {
+      "rank": 5,
+      "canonical_issue": "복지부, 창고형 약국 규제 신중론...의약품 대량판매는 관리 강화 - 의학신문",
+      "title": "복지부, 창고형 약국 규제 신중론...의약품 대량판매는 관리 강화",
+      "category": [
+        "복지부",
+        "약국"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-19T06:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=이재원 기자] 창고형 약국 확산에 따른 지역 약국의 경영 악화와 일반의약품 대량판매에 대한 우려가 제기되는 가운데, 보건복지부가 창고형 약국의",
+        "[의학신문·일간보사=이재원 기자] 창고형 약국 확산에 따른 지역 약국의 경영 악화와 일반의약품 대량판매에 대한 우려가 제기되는 가운데, 보건복지부가 창고형 약국의 운영방식 자체에 대한 규제에는 신중한 입장을 보이면서도 의약품 오남용과 불법 개설 행위에 대해서는 관리·감독을 강화하겠다는 방침을 밝혔다.",
+        "특히 슈도에페드린 등 오남용 우려가 있는 일반의약품을 적정사용량을 초과해 판매할 경우 현행 약사법에 따라 약사 자격정지 15일의 행정처분이 가능하다는 점을 강조했다."
+      ],
+      "importance": "의료기관·약국 현장의 변화는 진료 흐름과 환자 경험, 의약품 사용 환경에 직접 영향을 줍니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3014182"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014182"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3014182_415102_5121.jpg",
+      "score": 40,
+      "oncology": null
+    }
+  ],
+  "trends": [
+    {
+      "title": "정책·급여",
+      "count": 4,
+      "change": "4건의 주요 이슈에서 반복적으로 확인",
+      "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
+      "examples": [
+        "政 \"원료직접생산 약가우대, 재정 고려돼야\"…업계 우려 현실화",
+        "정부, 오리지널·제네릭 약가 역전 우려에 \"추가 제도개선 검토\""
+      ]
+    },
+    {
+      "title": "의료현장",
+      "count": 3,
+      "change": "3건의 주요 이슈에서 반복적으로 확인",
+      "implication": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름",
+      "examples": [
+        "[기획] 스타트업 기술에 제약사 영업망…디지털헬스 상용화 공식",
+        "정부, '창고형 약국' 포털 우회광고 차단 검토...네이버·카카오 협조 추진"
+      ]
+    },
+    {
+      "title": "공급·유통",
+      "count": 1,
+      "change": "1건의 주요 이슈에서 반복적으로 확인",
+      "implication": "의약품 공급 안정성과 유통 대응이 현장 리스크로 부각되는 흐름",
+      "examples": [
+        "정부, 오리지널·제네릭 약가 역전 우려에 \"추가 제도개선 검토\""
+      ]
+    },
+    {
+      "title": "신약·임상",
+      "count": 1,
+      "change": "1건의 주요 이슈에서 반복적으로 확인",
+      "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
+      "examples": [
+        "[기획] 스타트업 기술에 제약사 영업망…디지털헬스 상용화 공식"
+      ]
+    }
+  ],
+  "outlet_status": [
+    {
+      "publisher": "데일리팜",
+      "homepage_url": "https://www.dailypharm.com/",
+      "items": []
+    },
+    {
+      "publisher": "의학신문",
+      "homepage_url": "https://www.bosa.co.kr/",
+      "items": [
+        {
+          "title": "정부, 오리지널·제네릭 약가 역전 우려에 \"추가 제도개선 검토\"",
+          "published_at": "2026-10-19T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014207"
+        },
+        {
+          "title": "정부, '창고형 약국' 포털 우회광고 차단 검토...네이버·카카오 협조 추진",
+          "published_at": "2026-10-19T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014187"
+        },
+        {
+          "title": "복지부, 창고형 약국 규제 신중론...의약품 대량판매는 관리 강화",
+          "published_at": "2026-10-19T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014182"
+        },
+        {
+          "title": "검체검사 수가 인하, HLA·감염병 검사 등 보완 추진...政 \"필수검사 인프라 보호\"",
+          "published_at": "2026-10-19T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014195"
+        },
+        {
+          "title": "복지부, 만성콩팥병 국가관리 강화 추진...인공신장실 인증제·환자등록체계 검토",
+          "published_at": "2026-10-19T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014180"
+        },
+        {
+          "title": "비만치료 주사 원내 판매 단속 강화...공급 집중 기관 정부 현장조사 추진",
+          "published_at": "2026-10-19T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014189"
+        },
+        {
+          "title": "복지부, 비전문의 '전문의 오인' 간판 편법 개선 추진...의료법령 개정 검토",
+          "published_at": "2026-10-19T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014192"
+        },
+        {
+          "title": "다국적제약 주요 의약품 잇따라 '판매중단·공급차질'",
+          "published_at": "2026-10-19T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014048"
+        }
+      ]
+    },
+    {
+      "publisher": "메디파나뉴스",
+      "homepage_url": "https://www.medipana.com/",
+      "items": [
+        {
+          "title": "政 \"원료직접생산 약가우대, 재정 고려돼야\"…업계 우려 현실화",
+          "published_at": "2026-10-19T06:03:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419484"
+        },
+        {
+          "title": "[기획] 스타트업 기술에 제약사 영업망…디지털헬스 상용화 공식",
+          "published_at": "2026-10-19T06:04:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419474"
+        },
+        {
+          "title": "비대면진료 대상·처방기준 구체화…시행규칙 개정안 입법예고",
+          "published_at": "2026-10-18T13:32:47+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419515"
+        },
+        {
+          "title": "검체검사 개편에 내과 '구조적 손실'…심층진찰료가 관건",
+          "published_at": "2026-10-19T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419518"
+        },
+        {
+          "title": "비대면진료 확대 앞둔 신경과醫…환자 안전·수가체계 '숙제'",
+          "published_at": "2026-10-19T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419522"
+        },
+        {
+          "title": "리브스메드, 올해 수술기구·로봇 사업 진전…美 진출 승부수",
+          "published_at": "2026-10-19T06:01:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419481"
+        },
+        {
+          "title": "[PSK칼럼] 제약산업 산책 - 임상시험",
+          "published_at": "2026-10-19T05:59:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419458"
+        },
+        {
+          "title": "[수첩] 반환된 신약의 가치, 데이터로 판단해야",
+          "published_at": "2026-10-19T06:03:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419527"
+        }
+      ]
+    },
+    {
+      "publisher": "약사공론",
+      "homepage_url": "https://www.kpanews.co.kr/",
+      "items": [
+        {
+          "title": "위암부터 요로상피암까지…항암 신약 급여가 바꾼 치료 환경",
+          "published_at": "2026-10-19T05:52:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546615"
+        },
+        {
+          "title": "구주제약, 마약류 취급내역 약 50건 보고기한 미준수…'경고'",
+          "published_at": "2026-10-19T05:51:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546613"
+        },
+        {
+          "title": "\"복지부, 상비약 위반 1.2%라더니\"…의문투성이~",
+          "published_at": "2026-10-19T05:55:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546622"
+        },
+        {
+          "title": "[해설]비대면 '허용' 넘어 촘촘하게…배송·플랫폼까지 전과정 관리",
+          "published_at": "2026-10-19T05:53:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546606"
+        },
+        {
+          "title": "\"신약개발에 약물감시까지\"…제약업계 AI 활용 어디까지 왔나",
+          "published_at": "2026-10-19T05:51:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546625"
+        },
+        {
+          "title": "[일반의약품] 봄철 비염은 옛말, 지속성 비염-약국 상담의 새로운 기준",
+          "published_at": "2026-10-19T05:47:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546459"
+        },
+        {
+          "title": "진통제 '2+1'까지…창고형약국 과열 경쟁에 소비자 혼동 우려",
+          "published_at": "2026-10-19T05:54:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546621"
+        },
+        {
+          "title": "[약대약] 플루티카손푸로에이트 vs 아젤라스틴염산염+플루티카손프로피오네이트",
+          "published_at": "2026-10-19T05:46:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546438"
+        }
+      ]
+    }
+  ],
+  "insight": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름 동시에 의료현장 흐름도 함께 확인돼 단일 이슈보다 복합적인 산업 변화로 보는 것이 적절합니다.",
+  "infographic": {
+    "image_path": null,
+    "generated_at": null,
+    "template_version": "news-card-v1"
+  }
+}
