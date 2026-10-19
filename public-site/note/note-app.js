@@ -8,22 +8,32 @@ var KB=window.NOTE_KB, SAFETY=window.ApuDaNoteSafety;
 var defaultState={profile:{name:'',cancer:'',stage:'',treatment:'',goal:'',cycle:'',hospital:'',dayPhone:'',nightPhone:'',biomarkers:'',devices:[],rxCombo:[],rxPlan:[],rxStep:0,rxSince:''},checks:{},
   roadmap:[],meds:[],logs:[],labs:[],questions:[],supports:[],distress:[],triage:{items:[],at:0},distressValue:0,meta:{lastBackup:''}};
 function clone(o){return JSON.parse(JSON.stringify(o))}
-function validBackup(d){
-  if(!d||typeof d!=='object'||Array.isArray(d))return false;
-  var arrs=['roadmap','meds','logs','questions','supports','distress'];
-  for(var i=0;i<arrs.length;i++){if(arrs[i] in d&&!Array.isArray(d[arrs[i]]))return false}
-  if('profile' in d&&(typeof d.profile!=='object'||d.profile===null||Array.isArray(d.profile)))return false;
-  return true;
-}
+var NOTE_STORAGE=window.ApuDaNoteStorage;
+function validBackup(d){return !!NOTE_STORAGE&&NOTE_STORAGE.validState(d)}
 window.validBackup=validBackup;
+var noteLoadError=false;
 function load(){
-  try{var x=JSON.parse(localStorage.getItem(KEY));if(!x)return clone(defaultState);
-    if(!validBackup(x)){localStorage.setItem(KEY+'_corrupt',localStorage.getItem(KEY));return clone(defaultState)}
+  noteLoadError=false;
+  try{
+    var raw=localStorage.getItem(KEY);if(!raw)return clone(defaultState);
+    var x=JSON.parse(raw);if(!validBackup(x))throw new Error('invalid-local-note');
     var s=Object.assign(clone(defaultState),x);s.profile=Object.assign(clone(defaultState.profile),x.profile||{});
-    if(!s.triage||!Array.isArray(s.triage.items))s.triage={items:[],at:0};if(!Array.isArray(s.labs))s.labs=[];if(!s.checks||typeof s.checks!=='object')s.checks={};['devices','rxCombo','rxPlan'].forEach(function(k){if(!Array.isArray(s.profile[k]))s.profile[k]=[]});return s}catch(e){return clone(defaultState)}
+    if(!s.triage||!Array.isArray(s.triage.items))s.triage={items:[],at:0};if(!Array.isArray(s.labs))s.labs=[];if(!s.checks||typeof s.checks!=='object')s.checks={};['devices','rxCombo','rxPlan'].forEach(function(k){if(!Array.isArray(s.profile[k]))s.profile[k]=[]});return s;
+  }catch(e){noteLoadError=true;return clone(defaultState);}
 }
+
 var state=load();
-function save(){localStorage.setItem(KEY,JSON.stringify(state));renderAll()}
+function invalidateUndo(){
+  if(noteUndo)noteUndo.invalidate();undoToken='';
+  if(typeof document!=='undefined')document.querySelectorAll('.undo').forEach(function(b){b.remove()});
+}
+function save(){
+  if(noteLoadError){state=load();toast('기존 기록을 읽지 못해 새 기록으로 덮어쓰지 않았어요. 원본 파일을 먼저 받아 보관해 주세요.');throw new Error('unreadable-local-note');}
+  invalidateUndo();
+  try{var raw=JSON.stringify(state);localStorage.setItem(KEY,raw);if(localStorage.getItem(KEY)!==raw)throw new Error('not-saved')}
+  catch(e){state=load();renderAll();toast('저장 공간이 부족하거나 저장이 차단됐어요. 기록은 저장되지 않았어요. 백업 후 기기 설정을 확인해 주세요.');throw e}
+  renderAll();
+}
 function $(s){return document.querySelector(s)}
 function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]})}
 function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
@@ -352,8 +362,9 @@ function interpret(raw){
     SAFETY.appendTemp(log,scan.temp,raw);out.saved.push('체온 '+scan.temp+'℃'+(past?' ('+fmt(date)+' 기록)':''));out.handled=true;out.undo=true;
     state.logs.sort(function(a,b){return b.date.localeCompare(a.date);});
   }
-  out.alerts=out.alerts.filter(function(a){return ['fever','lowfever','nadirFever'].indexOf(a)<0;});
+  out.alerts=out.alerts.filter(function(a){return ['fever','lowfever','nadirFever','chill','severeChill'].indexOf(a)<0;});
   if(scan.temp!=null&&!past){if(+scan.temp>=38){out.alerts.push('fever');if(inNadir(date))out.alerts.push('nadirFever');}else if(+scan.temp>=37.5)out.alerts.push('lowfever');}
+  if(scan.severeChill)out.alerts.push('severeChill');else if(scan.chill)out.alerts.push('chill');
   if(past&&scan.temp!=null)out.notes.push('지난 날짜의 체온 기록이에요. 현재도 열이나 불편한 증상이 있다면 치료병원에 연락하세요.');
   out.cards=out.cards.filter(function(c){return c.kind!=='emergency'||scan.urgent;});
   if(scan.urgent&&!out.cards.some(function(c){return c.kind==='emergency';}))out.cards.unshift({kind:'emergency'});
@@ -367,7 +378,8 @@ function findTopic(text){
 
 /* ═════════ 대화 렌더 ═════════ */
 var chat=[];try{chat=JSON.parse(localStorage.getItem(CHAT_KEY)||'[]')}catch(e){chat=[]}
-var lastSnapshot=null;
+var noteUndo=NOTE_STORAGE&&NOTE_STORAGE.createUndo(),undoToken='';
+function armUndo(before){undoToken=noteUndo.arm(before,JSON.stringify(state))}
 function saveChat(){chat=chat.slice(-60);try{localStorage.setItem(CHAT_KEY,JSON.stringify(chat))}catch(e){}}
 function scrollBottom(){window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})}
 function linkBtns(links){return (links||[]).map(function(l){return '<button type="button" onclick="'+esc(l[1])+'">'+esc(l[0])+'</button>'}).join('')}
@@ -392,7 +404,8 @@ var ALERT={
   gi:['amber','설사·구토가 잦아요. 물도 못 마시거나 소변이 줄면 바로, 아니어도 <b>오늘 안에</b> 의료진과 상담하세요.',true],
   meal:['amber','식사량이 평소의 절반 이하예요. 하루 이상 이어지면 의료진·영양사와 상담하세요.',false],
   askSOS:['amber','숨참이나 출혈이 있다면 정도를 확인해야 해요. 응급 판단 화면을 함께 봐 주세요.',false],
-  chill:['amber','오한이 있으면 <b>체온을 재서 알려 주세요.</b> 38.0℃ 이상이면 바로 병원에 연락하세요.',false],
+  chill:['amber','<b>새로 생긴 오한은 감염 신호일 수 있어요.</b> 체온을 재고 치료병원에 연락해 안내를 받으세요. 심하게 떨리는 오한은 38.0℃ 미만이어도 기다리지 말고 지금 연락하세요.',true],
+  severeChill:['red','<b>심하게 떨리는 오한이 있어요.</b> 체온이 38.0℃ 미만이어도 기다리지 말고 <b>지금 치료병원에 연락</b>하세요. 해열제를 먼저 먹지 마세요. 숨쉬기 힘들거나 의식이 처지면 119를 이용하세요.',true],
   bpHigh:['amber','<b>혈압이 높게 기록됐어요(160/100 이상).</b> 5분 쉬고 다시 재 보세요. 계속 높거나 심한 두통·시야 이상이 있으면 병원에 연락하세요.',true],
   waistUp:['amber','<b>배 둘레가 1주 안에 3cm 넘게 늘었어요.</b> 배에 물이 차는 신호일 수 있어요. 다음 진료 전이라도 병원에 알려 주세요. 열이 함께 있으면 바로 연락하세요.',true],
   numb2:['amber','<b>손발 저림이 일상에 불편한 정도로 기록됐어요.</b> 다음 항암 전에 꼭 의료진에게 알려 주세요. 약 조절의 중요한 근거가 돼요. 걸을 때 넘어지지 않게 조심하세요.',false],
@@ -408,7 +421,7 @@ function botHTML(o,raw){
   if(o.saved.length){
     var h='<b>기록했어요 ✓</b><div class="saved">'+o.saved.map(function(s){return '<span>'+esc(s)+'</span>'}).join('')+'</div>';
     if(o.notes.length)h+='<p class="small muted" style="margin-top:8px">'+o.notes.map(esc).join('<br>')+'</p>';
-    h+='<div class="acts">'+(o.undo?'<button type="button" class="undo" onclick="undoLast(this)">↩ 되돌리기</button>':'')+'</div>';
+    h+='<div class="acts">'+(o.undo&&undoToken?'<button type="button" class="undo" data-undo-token="'+undoToken+'" onclick="undoLast(this)">↩ 마지막 기록 취소</button>':'')+'</div>';
     parts.push({cls:'',html:h});
   }
   var reds=o.alerts.filter(function(a){return ALERT[a][0]==='red'}),ambs=o.alerts.filter(function(a){return ALERT[a][0]==='amber'});
@@ -438,7 +451,7 @@ function botHTML(o,raw){
 }
 function addMsg(who,html,cls,store){
   var el=document.createElement('div');el.className='msg '+who+(cls?' '+cls:'');el.innerHTML=html;$('#thread').appendChild(el);
-  if(store!==false){chat.push({w:who,h:html,c:cls||'',at:Date.now()});saveChat()}
+  if(store!==false){el.dataset.chatAt=String(Date.now())+'_'+uid();chat.push({w:who,h:html,c:cls||'',at:Date.now(),key:el.dataset.chatAt});saveChat()}
   return el;
 }
 function sendText(text){
@@ -446,12 +459,19 @@ function sendText(text){
   addMsg('me',esc(text));
   var snap=JSON.stringify(state);
   var o=interpret(text);
-  if(o.undo){lastSnapshot=snap;save()}
+  if(o.undo){save();armUndo(snap)}
   botHTML(o,text).forEach(function(p){addMsg('bot',p.html,p.cls)});
   renderHome();scrollBottom();
 }
 window.sendText=sendText;
-function undoLast(btn){if(!lastSnapshot){toast('되돌릴 기록이 없어요');return}state=JSON.parse(lastSnapshot);lastSnapshot=null;save();btn.closest('.msg').querySelector('b').textContent='되돌렸어요 ↩';btn.remove();toast('방금 기록을 취소했어요');chat[chat.length-1]&&saveChat()}
+function undoLast(btn){
+  var before=noteUndo&&noteUndo.take(btn.dataset.undoToken,JSON.stringify(state),localStorage.getItem(KEY));
+  if(before===null||before===undefined){toast('새 기록이 있거나 취소할 수 있는 마지막 기록이 아니에요');return}
+  var msg=btn.closest('.msg'),chatKey=msg&&msg.dataset.chatAt;
+  state=JSON.parse(before);save();
+  if(msg){var title=msg.querySelector('b');if(title)title.textContent='마지막 기록을 취소했어요 ↩';var row=chat.find(function(m){return m.key===chatKey});if(row){row.h=msg.innerHTML;saveChat()}}
+  toast('방금 기록을 취소했어요');
+}
 window.undoLast=undoLast;
 window.showTopic=function(id){var tp=KB.TOPICS.find(function(x){return x.id===id});if(!tp)return;addMsg('bot','<b>'+esc(tp.q||tp.title)+'</b><div>'+tp.body+'</div><div class="acts">'+linkBtns(tp.links)+'</div>'+NS()+'','',true);scrollBottom()};
 window.setRxOpt=function(i){state.profile.rxOpt=i;save();var r=myRx();toast((r&&r._opt?r._opt:'간격')+'으로 맞췄어요')};
@@ -475,7 +495,7 @@ function sendBatch(list,label,fx){
     o.alerts.forEach(function(a){if(M.alerts.indexOf(a)<0)M.alerts.push(a)});
     o.cards.forEach(function(c){if(c.kind==='fallback'||c.kind==='painAsk')return;if(c.kind==='topicLink'){if(!tl.some(function(x){return x.id===c.id}))tl.push(c);return}var key=c.kind+(c.id||'');if(seen[key])return;seen[key]=1;c.kind==='emergency'?M.cards.unshift(c):M.cards.push(c)});
     if(o.undo)M.undo=true});
-  if(M.undo){lastSnapshot=snap;save()}
+  if(M.undo){save();armUndo(snap)}
   botHTML(M).forEach(function(p){addMsg('bot',p.html,p.cls)});
   if(tl.length)addMsg('bot','💡 관련 안내가 있어요.<div class="acts">'+tl.slice(0,4).map(function(c){return '<button type="button" onclick="showTopic(\''+esc(c.id)+'\')">'+esc(c.q)+'</button>'}).join('')+'</div>');
   renderHome();scrollBottom();
@@ -497,8 +517,8 @@ var ST={
     other:{lab:'✏️ 다른 숫자',ph:'예) 37.3',mode:'decimal',ok:function(v){v=+v;return v>=34&&v<=42.5}},
     confirm:function(v){return +v>=38?'<b>⚠ '+v+'℃ 맞나요?</b><br>38.0℃ 이상이면 해열제 먹기 전에 병원에 연락해야 해서 한 번 더 확인해요.':''},
     now:function(v){return +v>=38},out:function(v){return '체온 '+v},lab:function(v){return '체온 '+v+'℃'}},
-  chill:{q:'몸이 으슬으슬 떨리는 오한이 있나요?',when:function(s){return +s.temp>=37.5},
-    groups:function(){return [G('',[O('있어요','y'),O('없어요','n')],2)]},out:function(v){return v==='y'?'오한 있음':''},lab:function(v){return v==='y'?'오한 있음':'오한 없음'}},
+  chill:{q:'몸이 으슬으슬 떨리는 오한이 있나요?',sub:'체온이 낮아도 심한 오한은 바로 알려야 해요.',when:function(){return true},
+    groups:function(){return [G('',[O('없어요','n'),O('있어요','y'),O('심하게 떨려요','severe')],3)]},out:function(v){return v==='severe'?'지금 심한 오한':v==='y'?'오한 있음':''},lab:function(v){return v==='severe'?'심한 오한':v==='y'?'오한 있음':'오한 없음'}},
   pain:{q:'통증은 몇 점인가요?',sub:'0 = 안 아픔 · 10 = 상상할 수 있는 가장 심한 통증',
     groups:function(){return [G('0~3 없음·약함',rng(0,3).map(function(i){return O(String(i))}),4),G('4~6 중간',rng(4,6).map(function(i){return O(String(i))}),4),G('⚠ 7~10 심함 — 병원 연락',rng(7,10).map(function(i){return O(String(i))}),4,true)]},
     out:function(v,s){return '통증 '+v+'점'+(+v>0&&s.site&&SITE_PH[s.site]?' '+SITE_PH[s.site]:'')},lab:function(v,s){return '통증 '+v+'점'+(+v>0&&s.site?'('+s.site+')':'')}},
@@ -725,9 +745,9 @@ function renderHome(){
   /* 주 1회 가벼운 제안: 백업 · 마음 온도계 */
   var nz=$('#nudge');if(nz){var nd2={};try{nd2=JSON.parse(localStorage.getItem('apuda_note_nudge')||'{}')}catch(e){}
     var gm={};try{gm=JSON.parse(localStorage.getItem('apuda_backup_meta')||'{}')}catch(e){}
-    var lastB=Math.max(state.meta&&state.meta.lastBackup?Date.parse(state.meta.lastBackup):0,gm.lastBackupAt||0),wk=7*864e5,now=Date.now(),nh='';
+    var lastB=Math.max(state.meta&&state.meta.lastBackupConfirmed?Date.parse(state.meta.lastBackupConfirmed):0,gm.lastBackupAt||0),wk=7*864e5,now=Date.now(),nh='';
     function snoozed(k){return nd2[k]&&now-nd2[k]<wk}
-    if(state.logs.length>=3&&now-lastB>wk&&!snoozed('backup'))nh='<div class="nudge"><span>📦 '+(lastB?'마지막 백업 '+Math.floor((now-lastB)/864e5)+'일 전':'아직 백업한 적이 없어요')+'. 폰을 잃어버려도 기록이 남게 주 1회 백업해 두세요.</span><div class="row"><button class="btn soft sm" onclick="exportData();snooze(\'backup\')">백업 파일 받기</button><button class="btn line sm" onclick="snooze(\'backup\')">다음에</button></div></div>';
+    if(state.logs.length>=3&&now-lastB>wk&&!snoozed('backup'))nh='<div class="nudge"><span>📦 '+(lastB?'마지막 확인된 백업 '+Math.floor((now-lastB)/864e5)+'일 전':'확인된 백업이 없어요')+'. 폰을 잃어버려도 기록이 남게 주 1회 백업해 두세요.</span><div class="row"><button class="btn soft sm" onclick="exportData();snooze(\'backup\')">백업 파일 받기</button><button class="btn line sm" onclick="snooze(\'backup\')">다음에</button></div></div>';
     else if(state.logs.length>=3&&(!state.distress[0]||dayDiff(state.distress[0].date,today())>=7)&&!snoozed('mood'))nh='<div class="nudge"><span>💭 이번 주 마음은 어떠세요? 마음 온도계를 기록해 두면 진료 때 함께 이야기할 수 있어요.</span><div class="row"><button class="btn soft sm" onclick="snooze(\'mood\');tab(\'log\');setTimeout(function(){document.getElementById(\'distress\').scrollIntoView({block:\'center\'})},60)">기록하기</button><button class="btn line sm" onclick="snooze(\'mood\')">다음에</button></div></div>';
     nz.innerHTML=nh}
   var up=upcoming()[0], tl=state.logs.find(function(x){return x.date===today()}), hq=state.questions.filter(function(q){return !q.answer}).length;
@@ -954,11 +974,61 @@ $('#sh-sos').addEventListener('change',function(e){if(e.target.matches('[data-le
 function fillProfile(){var f=$('#profileForm');Object.keys(defaultState.profile).forEach(function(k){if(f[k]&&!Array.isArray(defaultState.profile[k]))f[k].value=state.profile[k]||''});[].forEach.call(f.querySelectorAll('[name=dev]'),function(b){b.checked=(state.profile.devices||[]).indexOf(b.value)>=0})}
 $('#profileForm').addEventListener('submit',function(e){e.preventDefault();var f=e.target;Object.keys(defaultState.profile).forEach(function(k){if(f[k]&&!Array.isArray(defaultState.profile[k])&&typeof f[k].value==='string')state.profile[k]=f[k].value.trim()});state.profile.devices=[].filter.call(f.querySelectorAll('[name=dev]'),function(b){return b.checked}).map(function(b){return b.value});save();closeSheet();toast('내 정보를 저장했어요')});
 window.snooze=function(k){var o={};try{o=JSON.parse(localStorage.getItem('apuda_note_nudge')||'{}')}catch(e){}o[k]=Date.now();try{localStorage.setItem('apuda_note_nudge',JSON.stringify(o))}catch(e){}renderHome()};
-window.exportData=function(){var b=new Blob([JSON.stringify(state,null,2)],{type:'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='ApuDa_암환자노트_백업_'+today()+'.json';document.body.appendChild(a);a.click();a.remove();state.meta=state.meta||{};state.meta.lastBackup=new Date().toISOString();localStorage.setItem(KEY,JSON.stringify(state));toast('백업 파일을 저장했어요');renderHome()};
-window.importData=function(inp){var f=inp.files[0];if(!f)return;var r=new FileReader();r.onload=function(){try{var d=JSON.parse(r.result);if(!validBackup(d))throw 0;if(!confirm('지금 기록을 백업 파일 내용으로 바꿀까요?'))return;localStorage.setItem(KEY,JSON.stringify(d));state=load();renderAll();closeSheet();toast('백업을 불러왔어요')}catch(e){alert('ApuDa 노트 백업 파일이 아니에요.')}};r.readAsText(f);inp.value=''};
-window.resetAll=function(){if(!confirm('모든 기록을 삭제할까요? 되돌릴 수 없어요.'))return;localStorage.removeItem(KEY);localStorage.removeItem(CHAT_KEY);state=clone(defaultState);chat=[];$('#thread').innerHTML='';renderAll();greet();closeSheet();toast('모두 삭제했어요')};
+function downloadNoteBlob(content,name){
+  var u=URL.createObjectURL(new Blob([content],{type:'application/json'})),a=document.createElement('a');
+  a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u)},60000);
+}
+function backupStatus(){
+  var warning=$('#note-read-error');if(warning)warning.hidden=!noteLoadError;
+  var host=$('#backup-file-status');if(!host)return;var m=state.meta||{};
+  host.textContent=m.lastBackupConfirmed?'파일 보관 확인: '+new Date(m.lastBackupConfirmed).toLocaleString('ko-KR'):(m.lastFileRequested?'다운로드 요청: '+new Date(m.lastFileRequested).toLocaleString('ko-KR')+' · 파일 앱에서 저장 여부를 확인해 주세요.':'아직 보관을 확인한 백업 파일이 없어요.');
+  var confirmButton=$('#confirm-backup-file');if(confirmButton)confirmButton.hidden=!m.lastFileRequested;
+  var recovery=$('#note-recovery');if(recovery)recovery.hidden=!NOTE_STORAGE.checkpoint(localStorage,KEY);
+}
+window.exportData=function(){
+  if(noteLoadError){downloadNoteBlob(localStorage.getItem(KEY)||'', 'ApuDa_확인필요_원본기록.json');toast('기존 원본 파일 다운로드를 요청했어요. 이 파일을 보관하고 도움을 요청해 주세요.');return;}
+  try{
+    var now=new Date().toISOString(),fileState=clone(state);fileState.meta=fileState.meta||{};fileState.meta.lastFileRequested=now;
+    downloadNoteBlob(JSON.stringify(NOTE_STORAGE.envelope(fileState),null,2),'ApuDa_건강기록_백업_'+today()+'.json');
+    state.meta=state.meta||{};state.meta.lastFileRequested=now;save();backupStatus();
+    toast('다운로드를 요청했어요. 파일 앱에서 JSON 파일이 있는지 확인해 주세요.');
+  }catch(e){toast('백업 파일을 준비하지 못했어요. 기존 기록은 그대로예요. 잠시 후 다시 시도해 주세요.')}
+};
+window.confirmBackupFile=function(){
+  if(!state.meta.lastFileRequested||!confirm('파일 앱의 다운로드 폴더에서 오늘 받은 ApuDa JSON 파일을 확인하셨나요?'))return;
+  state.meta.lastBackupConfirmed=new Date().toISOString();save();backupStatus();toast('파일 보관 확인을 기록했어요');
+};
+window.confirmNoteRestore=function(incoming,source){
+  var n=NOTE_STORAGE.summary(incoming),c=NOTE_STORAGE.summary(state);
+  return confirm((source||'백업 파일')+'을 확인해 주세요.\n이름: '+n.name+' / 암종: '+n.cancer+'\n기록 '+n.total+'건'+(n.from?' ('+n.from+' ~ '+n.to+')':'')+'\n현재 기기 기록: '+(noteLoadError?'읽기 오류가 있어 건수 확인 불가':c.total+'건')+'\n\n'+(n.empty?'빈 백업이에요. 복원하면 현재 기록이 비게 됩니다.\n':'')+'복원하면 현재 기록을 선택한 백업 내용으로 교체해요. 복원 직전 사본을 이 기기에 먼저 보관합니다. 계속할까요?');
+};
+window.importData=async function(input){
+  var file=input.files&&input.files[0];if(!file)return;
+  var before=localStorage.getItem(KEY);
+  try{
+    if(file.size>NOTE_STORAGE.MAX_BYTES)throw new Error('too-large');
+    var data=NOTE_STORAGE.unpack(await file.text());
+    if(localStorage.getItem(KEY)!==before)throw new Error('records-changed');
+    if(!window.confirmNoteRestore(data,'선택한 JSON 백업'))return;
+    if(localStorage.getItem(KEY)!==before)throw new Error('records-changed');
+    await NOTE_STORAGE.replace(localStorage,KEY,data,'file');invalidateUndo();state=load();renderAll();backupStatus();
+    toast('복원했어요. 설정에서 복원 직전 기록으로 되돌릴 수 있어요.');
+  }catch(e){toast(e.message==='records-changed'?'다른 창에서 기록이 바뀌었어요. 다시 백업을 선택해 주세요.':'올바른 ApuDa 백업이 아니거나 안전 사본을 저장할 공간이 부족해 복원하지 않았어요. 기존 기록을 확인해 주세요.');}
+  finally{input.value=''}
+};
+window.recoverBeforeRestore=async function(){
+  if(!confirm('가장 최근 복원 직전 기록으로 되돌릴까요? 복원 후 새로 쓴 기록이 있으면 덮어쓰지 않고 중단해요.'))return;
+  try{await NOTE_STORAGE.recover(localStorage,KEY);invalidateUndo();state=load();renderAll();backupStatus();toast('복원 직전 기록으로 되돌렸어요')}
+  catch(e){toast('복원 후 기록이 바뀌어 자동으로 되돌리지 않았어요. 직전 사본을 파일로 받아 별도로 보관해 주세요.')}
+};
+window.downloadBeforeRestore=function(){var c=NOTE_STORAGE.checkpoint(localStorage,KEY);if(!c||c.before===null){toast('보관된 직전 기록이 없어요');return}downloadNoteBlob(c.before,'ApuDa_복원직전_기록.json');toast('직전 사본 다운로드를 요청했어요. 파일 앱에서 확인해 주세요.')};
+window.resetAll=function(){
+  if(!confirm('이 기기의 건강기록·대화·복원 직전 사본을 모두 지울까요? 되돌릴 수 없어요. 내려받은 파일과 구글 드라이브 사본은 따로 삭제해야 합니다.'))return;
+  localStorage.removeItem(KEY);localStorage.removeItem(CHAT_KEY);localStorage.removeItem(NOTE_STORAGE.recoveryKey(KEY));localStorage.removeItem(KEY+'_corrupt');invalidateUndo();location.reload();
+};
+window.addEventListener('storage',function(e){if(e.key===KEY){invalidateUndo();state=load();renderAll();backupStatus();toast('다른 창에서 변경한 기록을 불러왔어요')}});
 
-function renderAll(){renderHome();renderPlan();renderLog();renderSummary();renderSOS()}
+function renderAll(){backupStatus();renderHome();renderPlan();renderLog();renderSummary();renderSOS()}
 
 /* ═════════ 시작 ═════════ */
 function greet(){

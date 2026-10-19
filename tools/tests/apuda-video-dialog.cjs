@@ -29,7 +29,7 @@ function setup({api=true,failResources=false,deferredResources=false}={}){
   assert.equal(Object.keys(catalog.catalog).length,12);assert.equal(Object.values(catalog.catalog).flat().length,13);
   assert.equal(api.open('invalid'),false);assert.equal(s.fetches.length,0);
   for(const slug of Object.keys(catalog.catalog)){
-    assert(api.open(slug));await settle();const iframe=s.byId('apudaVideoFrame');assert(iframe.src.startsWith('https://www.youtube-nocookie.com/embed/'+catalog.items(slug)[0].id+'?'));assert(iframe.src.includes('playsinline=1'));assert(iframe.src.includes('autoplay=0'));assert.equal(s.doc.querySelectorAll('iframe').length,1);
+    assert(api.open(slug));await settle();const iframe=s.byId('apudaVideoFrame');assert(iframe.src.startsWith('https://www.youtube-nocookie.com/embed/'+catalog.items(slug)[0].id+'?'));assert(iframe.src.includes('playsinline=1'));assert(iframe.src.includes('autoplay=0'));assert(iframe.src.includes('cc_load_policy=1'));assert(iframe.src.includes('cc_lang_pref=ko'));assert.equal(s.doc.querySelectorAll('iframe').length,1);
     assert(s.class('avd-book').children[1].children.some(n=>n.tagName==='H3'&&n.textContent.includes(api.names[slug])));
     assert(s.class('avd-faq').children.length===3);assert(!catalog.html(slug).includes('target="_blank"'));assert(catalog.html(slug).includes('/watch/?cancer='+slug));
   }
@@ -42,6 +42,8 @@ function setup({api=true,failResources=false,deferredResources=false}={}){
   s.history.forward();await settle();assert.equal(s.byId('avdTitle').textContent,sessionTitle);s.history.back();assert.equal(s.byId('apudaVideoDialog'),undefined,'Back closes the popup');
   const offline=setup({failResources:true});offline.c.ApuDaVideoDialog.open('breast');await settle();await settle();assert(offline.class('avd-faq').children[0].textContent.includes('FAQ 전체 보기'));assert(offline.class('avd-book'),'book links remain available');offline.c.ApuDaVideoDialog.close();
   const race=setup({deferredResources:true});race.c.ApuDaVideoDialog.open('breast');race.c.ApuDaVideoDialog.open('lung');race.queue.forEach(resolve=>resolve());await settle();await settle();assert(race.byId('avdTitle').textContent.includes('폐암'));assert(race.class('avd-book').children[1].children.some(n=>n.tagName==='H3'&&n.textContent.includes('폐암')));race.c.ApuDaVideoDialog.close();
+  const unavailable=setup({api:false});unavailable.c.ApuDaVideoDialog.open('breast');const apiTimeout=[...unavailable.timers.values()][0];apiTimeout();await settle();await settle();assert.equal(unavailable.class('avd-fallback').hidden,false,'blocked iframe API gets a recovery path');assert(unavailable.class('avd-book'));unavailable.c.ApuDaVideoDialog.close();
+  const noReady=setup();noReady.c.ApuDaVideoDialog.open('breast');await settle();[...noReady.timers.values()][0]();assert.equal(noReady.class('avd-fallback').hidden,false,'a player that never becomes ready has a bounded wait');noReady.c.ApuDaVideoDialog.close();
   const late=setup({api:false});late.c.ApuDaVideoDialog.open('breast');late.c.ApuDaVideoDialog.close();let created=0;late.c.YT={Player:function(){created++}};late.c.onYouTubeIframeAPIReady();await settle();assert.equal(created,0,'late iframe API must not recreate a closed player');
   console.log('PASS: 12 cancers / 13 IDs, same-site links, one portrait iframe, cancer switching, below-video resources, enlarge, restricted/offline states, background inert/focus restore, Back/Forward and late-response cleanup');
 })().catch(e=>{console.error(e);process.exitCode=1});

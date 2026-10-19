@@ -60,30 +60,17 @@
 
   function hasRecords(s) {
     if (!s || typeof s !== 'object') return false;
-    const arrs = ['roadmap', 'meds', 'logs', 'questions', 'supports'];
+    const arrs = ['roadmap', 'meds', 'logs', 'labs', 'questions', 'supports', 'distress'];
     if (arrs.some((k) => Array.isArray(s[k]) && s[k].length)) return true;
     if (s.profile && Object.values(s.profile).some((v) => String(v || '').trim())) return true;
     return false;
   }
 
-  /* 앱의 validBackup(state)을 그대로 재사용한다. 없으면 최소 검증만. */
   function isValidState(s) {
-    if (!s || typeof s !== 'object' || Array.isArray(s)) return false;
-    if (typeof window.validBackup === 'function') {
-      try { return !!window.validBackup(s); } catch { return false; }
-    }
-    return true;
+    return !!window.ApuDaNoteStorage && window.ApuDaNoteStorage.validState(s);
   }
-
-  function makeEnvelope(s) {
-    return { schemaVersion: 1, appVersion: APP_VERSION, exportedAt: new Date().toISOString(), state: s };
-  }
-
-  /* 봉투 형식과 옛 형식(상태 객체 그대로)을 모두 읽는다. */
-  function unwrap(obj) {
-    if (obj && typeof obj === 'object' && obj.state && typeof obj.state === 'object') return obj.state;
-    return obj;
-  }
+  function makeEnvelope(s) { return window.ApuDaNoteStorage.envelope(s); }
+  function unwrap(obj) { return window.ApuDaNoteStorage.unpack(obj); }
 
   /* ------------------------------------------------------- 인증 ------- */
   function ensureClient() {
@@ -155,6 +142,7 @@
       headers: { 'Content-Type': 'multipart/related; boundary=' + boundary },
       body
     });
+    if (!created || !created.id) throw new Error('backup-not-confirmed');
     meta.set({ lastBackupAt: Date.now(), lastError: null });
     prune();
     return created;
@@ -167,24 +155,35 @@
     } catch {}
   }
 
+  let restoring = false;
   async function restore(fileId) {
-    const token = await getToken(false);
-    const res = await fetch(`https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`, {
-      headers: { Authorization: 'Bearer ' + token }
-    });
-    if (!res.ok) throw new Error('download-failed');
-    const s = unwrap(await res.json());
-
-    if (!isValidState(s)) {
-      toast('백업 파일이 올바르지 않아 복원하지 않았습니다. 기존 기록은 그대로입니다.', 'error');
-      return false;
-    }
-    if (hasRecords(currentState())) { try { await uploadBackup(); } catch {} }  // 되돌릴 길 확보
-
-    localStorage.setItem(KEY, JSON.stringify(s));
-    toast('복원했습니다. 화면을 새로 불러옵니다.');
-    setTimeout(() => location.reload(), 900);
-    return true;
+    if (restoring) throw new Error('restore-in-progress');
+    if (!window.ApuDaNoteStorage || typeof window.confirmNoteRestore !== 'function') throw new Error('storage-not-ready');
+    restoring = true;
+    const before = localStorage.getItem(KEY);
+    try {
+      const token = await getToken(false);
+      const res = await fetch(`https://www.googleapis.com/drive/v3/files/${encodeURIComponent(fileId)}?alt=media`, {
+        headers: { Authorization: 'Bearer ' + token }
+      });
+      if (!res.ok) throw new Error('download-failed');
+      const text = await res.text();
+      if (new TextEncoder().encode(text).byteLength > window.ApuDaNoteStorage.MAX_BYTES) throw new Error('too-large');
+      const s = unwrap(JSON.parse(text));
+      if (!isValidState(s)) throw new Error('invalid-backup');
+      if (localStorage.getItem(KEY) !== before) throw new Error('records-changed');
+      if (!window.confirmNoteRestore(s, '선택한 드라이브 백업')) return false;
+      // A failed safety upload must abort; it must never be silently ignored.
+      if (hasRecords(currentState())) {
+        const copy = await uploadBackup();
+        if (!copy || !copy.id) throw new Error('safety-backup-failed');
+      }
+      if (localStorage.getItem(KEY) !== before) throw new Error('records-changed');
+      await window.ApuDaNoteStorage.replace(localStorage, KEY, s, 'drive');
+      toast('복원했습니다. 설정에서 복원 직전 기록으로 되돌릴 수 있습니다.');
+      setTimeout(() => location.reload(), 900);
+      return true;
+    } finally { restoring = false; }
   }
 
   async function deleteAll() {
@@ -315,11 +314,11 @@
     const items = files.map((f) => `<button class="ab-item" data-restore="${f.id}">${fmtTime(new Date(f.createdTime).getTime())}</button>`).join('');
     const mk = modal(`<p class="ab-h">복원할 시점을 고르세요</p>
       <p style="margin:6px 0 14px;opacity:.75">복원하면 이 기기의 기록이 선택한 시점으로 바뀝니다.
-      바꾸기 직전 상태도 자동으로 백업해 둡니다.</p>${items}
+      내용을 한 번 더 확인한 뒤 바꿉니다. 직전 기록의 안전 사본을 저장하지 못하면 복원을 중단합니다.</p>${items}
       <button class="ab-btn" data-ab="close-list" style="margin-top:10px">닫기</button>`);
     mk.addEventListener('click', async (ev) => {
       const t = ev.target.closest('[data-restore]');
-      if (t) { mk.remove(); try { await restore(t.dataset.restore); } catch { toast('복원하지 못했습니다.', 'error'); } }
+      if (t) { mk.remove(); try { await restore(t.dataset.restore); } catch { toast('백업 확인 또는 안전 사본 저장에 실패해 복원하지 않았습니다. 현재 기록을 확인해 주세요.', 'error'); } }
       if (ev.target.dataset.ab === 'close-list') mk.remove();
     });
   }
@@ -336,7 +335,7 @@
       <button class="ab-btn" data-ab="skip">나중에</button>`);
     mk.addEventListener('click', async (ev) => {
       const a = ev.target.dataset.ab;
-      if (a === 'do-restore') { mk.remove(); await restore(n.id); }
+      if (a === 'do-restore') { mk.remove(); try { await restore(n.id); } catch { toast('안전하게 복원하지 못했습니다. 현재 기록을 확인해 주세요.', 'error'); } }
       if (a === 'skip') mk.remove();
     });
   }

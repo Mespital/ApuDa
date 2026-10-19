@@ -1,0 +1,102 @@
+{
+  "checkedAt": "2026-10-19",
+  "pdfVersion": "v3.2",
+  "books": [
+    {
+      "slug": "breast",
+      "bytes": 6623964,
+      "pages": 27,
+      "expected": 27,
+      "match": true,
+      "sha256": "312dac2d87bccc3f13166ae46bb02654e8d39e8b0d20857179c713eb41431313"
+    },
+    {
+      "slug": "lung",
+      "bytes": 6450860,
+      "pages": 23,
+      "expected": 23,
+      "match": true,
+      "sha256": "d93bd48b3e54a31dcd5c0567961c4fab883fed04e772a493c1009f83913bd008"
+    },
+    {
+      "slug": "stomach",
+      "bytes": 6342630,
+      "pages": 21,
+      "expected": 21,
+      "match": true,
+      "sha256": "a5cc44fbf7329da28ad1900ee703646f8d517c2531b0f2b39296b7fe41da539f"
+    },
+    {
+      "slug": "colorectal",
+      "bytes": 6242675,
+      "pages": 20,
+      "expected": 20,
+      "match": true,
+      "sha256": "9365c4ba9cf3e3ce18c3203874187a9357d98d556921debc8136009ae761d763"
+    },
+    {
+      "slug": "thyroid",
+      "bytes": 6247183,
+      "pages": 20,
+      "expected": 20,
+      "match": true,
+      "sha256": "fe463baaa36ce0ab4dde8ba48486f4d7f402ca05e04ac977685e0b6db2478829"
+    },
+    {
+      "slug": "kidney",
+      "bytes": 6276402,
+      "pages": 19,
+      "expected": 19,
+      "match": true,
+      "sha256": "01999ef3efbefb26cde7bf1e4f1de54f61597cecb47ef733338f4cc81605c9f4"
+    },
+    {
+      "slug": "prostate",
+      "bytes": 6585915,
+      "pages": 19,
+      "expected": 19,
+      "match": true,
+      "sha256": "3979fb92d596aa08c3727973558010c00a905f31fe5c1708f4322c77016279a2"
+    },
+    {
+      "slug": "pancreas",
+      "bytes": 6406714,
+      "pages": 19,
+      "expected": 19,
+      "match": true,
+      "sha256": "bc6d3055632ee9dd5e46aade26dd3c4eddfe407cf7ca7bcbacb57d3bfce0158c"
+    },
+    {
+      "slug": "biliary",
+      "bytes": 6539020,
+      "pages": 18,
+      "expected": 18,
+      "match": true,
+      "sha256": "faa59435a5b175e8b5209b7e1d6d21cd6df87b975231b778a43daf7bfe7bfbb5"
+    },
+    {
+      "slug": "liver",
+      "bytes": 6357730,
+      "pages": 19,
+      "expected": 19,
+      "match": true,
+      "sha256": "02587bd95db7a2a3c2e7aebf696a26ccae6c6cb73141ee3b3732bd7d92a89764"
+    },
+    {
+      "slug": "lymphoma",
+      "bytes": 6632868,
+      "pages": 20,
+      "expected": 20,
+      "match": true,
+      "sha256": "a8a127405f9f40c9956f29bc26ab2731dafb21c3001ac5b194115e17787edf67"
+    },
+    {
+      "slug": "cervical",
+      "bytes": 6865297,
+      "pages": 32,
+      "expected": 32,
+      "match": true,
+      "sha256": "470ea5ff444c248a7879e821fdaca8da744c58778eb50238f24359018e0d169d"
+    }
+  ]
+}
