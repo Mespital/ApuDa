@@ -7,7 +7,7 @@ on:
         description: '비교할 모델 (haiku = Netlify 기본, sonnet = 실시간 서버 공부 모델)'
         default: 'haiku,sonnet'
 permissions:
-  contents: read
+  contents: write
 jobs:
   eval:
     runs-on: ubuntu-latest
@@ -24,7 +24,9 @@ jobs:
           MODELS: ${{ inputs.models }}
           EVAL_OUT: shiro-eval.md
         run: node future-compass/scripts/eval-shiro.mjs
-      - uses: actions/upload-artifact@v4
-        with:
-          name: shiro-eval
-          path: shiro-eval.md
+      - name: Save result to branch eval-results (main에는 안 남김)
+        run: |
+          mkdir -p /tmp/ev && cp shiro-eval.md /tmp/ev/
+          cd /tmp/ev && git init -q -b eval-results && git config user.name 'future-compass-bot' && git config user.email 'future-compass-bot@users.noreply.github.com'
+          git add shiro-eval.md && git commit -qm "흰둥이 답변 점검 $(date -u +%FT%TZ)"
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" eval-results
