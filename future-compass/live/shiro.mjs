@@ -96,15 +96,17 @@ export async function askOpenAI({ apiKey, model, payload, timeoutMs = 25000 }) {
 }
 // 무료: VPS에 직접 띄운 오픈소스 모델(Ollama). OLLAMA_MODEL 이 있을 때. CPU라 느려서 답을 짧게
 export async function askOllama({ base, model, payload, timeoutMs = 100000 }) {
-  timeoutMs = payload.long ? 240000 : timeoutMs;
+  timeoutMs = payload.long || payload.study ? 240000 : timeoutMs;
+  // 작은 무료 모델(CPU)은 긴 규칙을 잘 못 따라서, 공부 질문엔 짧은 규칙 + 짧은 답
+  if (payload.study) payload = { ...payload, maxTokens: 520, system: payload.system.replace(/\[공부 질문 답하는 법\][\s\S]*?(?=\n\n\[|$)/, '[공부 질문] 고1 교과서 수준으로: 한 줄 핵심 → 쉬운 설명 → 예시 1개 → 확인 질문 1개. 문제는 첫 단계만 알려주고, "풀이 보여줘"라고 하면 단계별로 끝까지. 수식은 x², √3 같은 글자로. 확실하지 않으면 모른다고 해.') };
   const r = await fetch((base || 'http://ollama:11434').replace(/\/$/, '') + '/v1/chat/completions', {
     method: 'POST', headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ model, max_tokens: payload.maxTokens || 380, temperature: 0.4, messages: [{ role: 'system', content: payload.system + (payload.long ? '\n반드시 자연스러운 한국어로만 답해.' : '\n반드시 자연스러운 한국어로만, 4문장 이내로 답해.') + ' 한자·중국어·일본어를 절대 섞지 마. 모르는 건 지어내지 말고 모른다고 해.' }, ...payload.messages] }),
+    body: JSON.stringify({ model, max_tokens: payload.maxTokens || 380, temperature: 0.4, messages: [{ role: 'system', content: payload.system + (payload.long ? '\n반드시 자연스러운 한국어로만 답해.' : payload.study ? '\n반드시 자연스러운 한국어로만, 8줄 이내로 답해.' : '\n반드시 자연스러운 한국어로만, 4문장 이내로 답해.') + ' 한자·중국어·일본어를 절대 섞지 마. 모르는 건 지어내지 말고 모른다고 해.' }, ...payload.messages] }),
     signal: AbortSignal.timeout(timeoutMs)
   });
   const j = await r.json().catch(() => ({}));
   if (!r.ok) { const e = new Error('upstream'); e.status = r.status; throw e; }
-  return clip(((j.choices || [])[0] || {}).message?.content || '', 2000).replace(/<think>[\s\S]*?<\/think>/g, '').trim();
+  return plain(clip(((j.choices || [])[0] || {}).message?.content || '', 2500).replace(/<think>[\s\S]*?<\/think>/g, ''));
 }
 // 지금 먼저 쓰는 AI 이름(설정 화면 안내용): claude | openai | ollama | ''
 export function providerOf(env) {
