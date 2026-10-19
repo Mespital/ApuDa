@@ -159,6 +159,60 @@
     var p = l.url ? post(l.url + '/organize', Object.assign({ t: l.t }, body)).then(function (j) { return j._ok ? j : (j.error === 'no_ai' || j.error === 'ticket' ? viaNetlify() : j); }).catch(viaNetlify) : viaNetlify();
     return p.then(function (j) { if (j && j._ok && j.sum) return j.sum; throw new Error((j && j.error) || 'ai'); });
   }
-  window.SHIRO_AI = { on: ready, ask: ask, prefer: prefer, ctx: ctx, organize: organize };
+  /* 📚 학교 자료 바로 답하기 (AI 없이) — 시험 범위·급식·학사일정·수행평가 기준처럼 '모인 자료 그대로'면 되는 질문은
+     매일 아침 갱신되는 shiro-kb.json에서 바로 찾아 보여준다. 틀린 말을 지어낼 일이 없고, AI·VPS가 없어도 된다 */
+  var KBC = null, KBU = '';
+  function loadKB() {
+    if (KBC) return;
+    KBC = [];
+    function get(u) { return fetch(u, { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw 0; return r.json(); }); }
+    get('https://raw.githubusercontent.com/Mespital/ApuDa/main/future-compass/dist/shiro-kb.json').catch(function () { return get('shiro-kb.json'); })
+      .then(function (d) { if (d && d.chunks) { KBC = d.chunks.filter(function (c) { return c.src !== '위키백과' && c.src !== 'AI 소식'; }).map(function (c) { return { c: c, g: bg(c.title + ' ' + c.text), t: bg(c.title) }; }); KBU = d.updated || ''; } })
+      .catch(function () { KBC = null; });
+  }
+  var FACT = /범위|시험|고사|급식|점심|메뉴|학사|행사|방학|수행|배점|만점|기준|채점|진도|며칠|몇\s*월|몇\s*일|언제|프로그램|모집|공지|가정통신문|평가\s*방법|비율|반영/;
+  var NOTFACT = /왜|설명|뜻|개념|차이|원리|어떻게\s*(풀|공부|외우|준비)|도와|알림|설정|앱|화면|버튼|힘들|싫/;
+  // 질문 종류별로 찾을 자료를 먼저 좁힌다 (급식은 급식에서, 범위는 시험 범위에서 …)
+  var KIND = [
+    [/급식|점심|메뉴|밥\s*뭐/, /급식/],
+    [/범위|배점|서술형/, /시험 범위/],
+    [/시험\s*(날|시간표|일정|언제)|고사\s*(언제|날|시간표)|무슨\s*과목/, /시간표\(1학년\)|학사일정/],
+    [/수행/, /수행평가:/],
+    [/진도/, /진도표/],
+    [/평가\s*방법|비율|반영|성적/, /평가 방법/],
+    [/프로그램|모집|구청|교육지원/, /교육지원센터/],
+    [/공지|가정통신문|게시판|소식/, /최근 글/],
+    [/학사|일정|행사|방학|휴업|언제|며칠|몇\s*월|몇\s*일/, /학사일정|시간표\(1학년\)/]
+  ];
+  function score(pool, q) {
+    var qb = Object.keys(bg(q)).filter(function (k) { return !/뭐야|알려|려줘|언제|이야|있어|해줘|이번|번주/.test(k); }); if (!qb.length) return [];
+    var df = {}; pool.forEach(function (x) { qb.forEach(function (k) { if (x.g[k]) df[k] = (df[k] || 0) + 1; }); });
+    var N = pool.length, max = qb.reduce(function (s, k) { return s + Math.log(1 + N / (1 + (df[k] || 0))); }, 0) || 1;
+    return pool.map(function (x) { var sc = 0; qb.forEach(function (k) { if (x.g[k]) sc += Math.log(1 + N / (df[k] || 1)) * (x.t[k] ? 1.5 : 1); }); return { sc: sc / max, c: x.c }; }).sort(function (a, b) { return b.sc - a.sc; });
+  }
+  function foot(src) { var d = KBU ? new Date(Date.parse(KBU) + 9 * 3600e3) : null; return '\n\n최종은 학교 공지와 선생님 말씀이 기준이야.\n📎 출처: ' + src + (d ? ' (' + (d.getUTCMonth() + 1) + '/' + d.getUTCDate() + ' 아침 기준)' : ''); }
+  function kbAnswer(q) {
+    if (!KBC || !KBC.length || !FACT.test(q) || NOTFACT.test(q)) return null;
+    var k = KIND.find(function (x) { return x[0].test(q); }); if (!k) return null;
+    var pool = KBC.filter(function (x) { return k[1].test(x.c.title); }); if (!pool.length) return null;
+    // 이번 주 급식 → 전부, 오늘·내일·요일이면 그날 것
+    if (/급식/.test(k[1].source)) {
+      var day = /오늘/.test(q) ? '오늘' : /내일/.test(q) ? '내일' : (q.match(/[월화수목금]요일/) || [])[0];
+      var ms = day ? pool.filter(function (x) { return x.c.title.indexOf(day) >= 0; }) : pool;
+      if (!ms.length) return null;
+      return '📚 ' + (day ? '' : '이번 주 ') + '급식\n' + ms.map(function (x) { return x.c.text; }).join('\n') + foot(ms[0].c.src);
+    }
+    var r = score(pool, q), top = r[0];
+    // 수행평가인데 과목만 물었으면(제목까지 콕 집지 않았으면) 그 과목 수행평가 목록
+    if (/수행평가:/.test(k[1].source) && top) {
+      var subj = top.c.subject, same = r.filter(function (x) { return x.c.subject === subj && x.sc > 0.3; });
+      if (same.length > 1 && !/만점|기준|채점|방법/.test(q)) return '📚 ' + subj + ' 수행평가\n' + same.map(function (x) { var m = x.c.text.match(/시기 ([^·]+)·[^·]*·\s*([^·]+)·\s*학기 성적의 ([^%.]+%)/); return '• ' + x.c.title.replace(/^.*수행평가:\s*/, '') + (m ? ' — ' + m[1].trim() + ' · ' + m[2].trim() + ' · ' + m[3] : ''); }).join('\n') + '\n(하나 골라 "만점 기준"을 물으면 자세히 알려줄게)' + foot(top.c.src);
+    }
+    if (!top || top.sc < (pool.length <= 3 ? 0.3 : 0.55)) return null;
+    return '📚 ' + top.c.title + '\n' + top.c.text + foot(top.c.src);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', loadKB); else setTimeout(loadKB, 1500);
+
+  window.SHIRO_AI = { on: ready, ask: ask, prefer: prefer, ctx: ctx, organize: organize, kb: kbAnswer };
   if (prev) render();
 })();
