@@ -217,7 +217,10 @@
   /* 💬 ChatGPT로 이어 묻기 — AI가 필요한 공부 질문(개념·풀이·문법)은 ChatGPT(또는 엄마가 만든 GPT)로 넘긴다.
      질문 앞에 '고1 수준·힌트 먼저·수행평가 대필 금지' 규칙을 붙여 보낸다. 이름·학교·개인 기록은 안 붙인다 */
   var GPT_KEY = 'fc-gpt-url';
-  function gptBase() { var u = ''; try { u = localStorage.getItem(GPT_KEY) || ''; } catch (e) {} return /^https:\/\/(chatgpt\.com|chat\.openai\.com)\//.test(u) ? u.split('?')[0] : 'https://chatgpt.com/'; }
+  function gptBase() {
+    try { var u = new URL(localStorage.getItem(GPT_KEY) || 'https://chatgpt.com/'); if (u.protocol === 'https:' && /^(chatgpt\.com|chat\.openai\.com)$/.test(u.hostname) && !u.username && !u.password) { u.search = ''; u.hash = ''; return u.href; } } catch (e) {}
+    return 'https://chatgpt.com/';
+  }
   var SUBJ = [['공통수학2', /수학|함수|방정식|부등식|도형|직선|좌표|집합|명제|필요조건|충분조건|역함수|합성함수|유리함수|무리함수|그래프|기울기|이차|일차|\d\s*[x×*+\-=]/], ['통합과학2', /과학|산화|환원|염기|중화|pH|진화|자연선택|변이|생물\s*다양성|지질|화석|생태계|에너지|발전기|기후|광합성|세포|유전/], ['통합사회2', /사회|인권|헌법|시장|금융|경제|정의|문화|세계화|지속\s*가능|인구|자원|불평등|복지/], ['한국사2', /한국사|역사|광복|분단|6[.·]25|민주화|산업화|유신|4[.·]19|5[.·]18|냉전|외환\s*위기/], ['공통영어2', /영어|관계(대명사|부사)|분사|가정법|부정사|동명사|수동태|시제|영작|[A-Za-z]{4,}/], ['공통국어2', /국어|문학|시의|소설|수필|화자|서술자|갈래|비유|운율|음운|형태소|품사|문장\s*성분|화법|작문|매체/]];
   function gptPrompt(q) {
     var sj = SUBJ.find(function (x) { return x[1].test(q); });
@@ -233,22 +236,37 @@
     if (!isAndroid) return web;
     return 'intent://' + web.replace(/^https:\/\//, '') + '#Intent;scheme=https;package=com.openai.chatgpt;S.browser_fallback_url=' + encodeURIComponent(web) + ';end';
   }
-  // 아무 글(수업 노트 정리 요청 등)을 ChatGPT 앱으로 보내기 — 주소가 너무 길면 앱에서 잘릴 수 있어 복사도 같이
+  // 긴 요청은 전체 복사로 전달한다. URL에는 일부만 넣지 않는다.
   function rawHref(p) {
-    var web = gptBase() + '?q=' + encodeURIComponent(String(p).slice(0, 1800));
+    var base = gptBase(), web = base + '?q=' + encodeURIComponent(String(p));
+    if (web.length > 6000) web = base;
     return isAndroid ? 'intent://' + web.replace(/^https:\/\//, '') + '#Intent;scheme=https;package=com.openai.chatgpt;S.browser_fallback_url=' + encodeURIComponent(web) + ';end' : web;
   }
+  // 1분 복습은 일반 Chat의 새 대화로. 사용자 지정 GPT·Android 앱 intent를 거치지 않는다.
+  // Chat/Work 전환은 ChatGPT에서 확인한다. 프롬프트로 앱의 모드를 바꿀 수 있다고 약속하지 않는다.
+  function chatHref(p) { var u = 'https://chatgpt.com/?q=' + encodeURIComponent(String(p)); return u.length <= 6000 ? u : 'https://chatgpt.com/'; }
+  function legacyCopy(text) {
+    var ta = document.createElement('textarea'), previous = document.activeElement, ok = false;
+    ta.value = text; ta.readOnly = true; ta.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;opacity:0';
+    document.body.appendChild(ta);
+    try { ta.focus(); ta.select(); ta.setSelectionRange(0, text.length); ok = document.execCommand('copy'); } catch (e) {}
+    ta.remove(); if (previous && previous.isConnected) previous.focus({ preventScroll: true });
+    return !!ok;
+  }
   function rawCopy(p, msg) {
-    try { if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(String(p)).catch(function () {}); } catch (e) {}
-    try { if (msg && typeof notice === 'function') notice(msg); } catch (e) {}
+    var text = String(p), copied;
+    try { copied = navigator.clipboard && navigator.clipboard.writeText ? navigator.clipboard.writeText(text).then(function () { return true; }, function () { return legacyCopy(text); }) : Promise.resolve(legacyCopy(text)); }
+    catch (e) { copied = Promise.resolve(legacyCopy(text)); }
+    return copied.then(function (ok) {
+      if (msg && typeof notice === 'function') notice(ok ? msg : '자동 복사를 못 했어. 요청을 직접 선택해 복사해줘.');
+      return ok;
+    });
   }
   function gptCopy(q) {
-    var t = gptPrompt(q);
-    try { if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).catch(function () {}); } catch (e) {}
-    try { if (typeof notice === 'function') notice('질문을 복사해 뒀어. ChatGPT 앱에 질문이 안 들어가 있으면 붙여넣기 해 📋'); } catch (e) {}
+    return rawCopy(gptPrompt(q), '질문을 복사했어. ChatGPT 입력창이 비어 있으면 붙여넣기 해 📋');
   }
   function studyQ(q) { return !/앱|설정|알림|버튼|화면|메뉴|로그인|비밀번호|급식|시간표|학원|엄마|아빠|힘들|싫어|우울|짜증|불안/.test(q) && (prefer(q) && !/추천|계획|짜줘|하기\s*싫|걱정|스트레스/.test(q)); }
 
-  window.SHIRO_AI = { on: ready, ask: ask, prefer: prefer, ctx: ctx, organize: organize, kb: kbAnswer, gpt: gptLink, gptHref: gptHref, gptCopy: gptCopy, rawHref: rawHref, rawCopy: rawCopy, study: studyQ };
+  window.SHIRO_AI = { on: ready, ask: ask, prefer: prefer, ctx: ctx, organize: organize, kb: kbAnswer, gpt: gptLink, gptHref: gptHref, gptCopy: gptCopy, rawHref: rawHref, rawCopy: rawCopy, chatHref: chatHref, study: studyQ };
   if (prev) render();
 })();
