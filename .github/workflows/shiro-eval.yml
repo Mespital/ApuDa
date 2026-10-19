@@ -1,0 +1,30 @@
+name: 흰둥이 공부 답변 점검 (수동)
+# 수동 실행만. 가상의 공부 질문 16개로 흰둥이 답을 받아 자동 검사한다(질문은 지어낸 예시, 개인 정보 없음).
+on:
+  workflow_dispatch:
+    inputs:
+      models:
+        description: '비교할 모델 (haiku = Netlify 기본, sonnet = 실시간 서버 공부 모델)'
+        default: 'haiku,sonnet'
+permissions:
+  contents: read
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    environment: apuda-ai-vps
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Ask 흰둥이
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          MODELS: ${{ inputs.models }}
+          EVAL_OUT: shiro-eval.md
+        run: node future-compass/scripts/eval-shiro.mjs > /dev/null
+      - uses: actions/upload-artifact@v4
+        with:
+          name: shiro-eval
+          path: shiro-eval.md

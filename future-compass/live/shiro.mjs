@@ -13,6 +13,20 @@ const RULES_CHILD = `너는 '흰둥이'야. 승준(고등학교 1학년)의 공�
 - 모르는 건 모른다고 해. 의료·법률 판단은 하지 마. 개인정보(주소·전화번호 등)는 묻지 마.
 - 엄마가 지켜본다는 느낌의 말은 하지 마. 기록은 승준이를 위한 거야.`;
 
+// 공부 질문일 때만 붙는 규칙 (개념·풀이·문법). 앱 말풍선은 글자만 보여서 수식·마크다운을 못 그린다
+const RULES_STUDY = `
+[공부 질문 답하는 법] 지금은 공부 질문이야. 이때는 길이 제한(2~5문장) 대신 아래를 따라.
+- 수준: 2022 개정 교육과정 고1 2학기 공통과목(공통수학2·통합과학2·통합사회2·한국사2·공통영어2·공통국어2). 교과서 용어를 그대로 써. 고1 범위를 넘는 내용이면 "고1 범위 밖이야" 한 줄 붙이고 짧게.
+- 개념 질문 순서: ① 한 줄 핵심 ② 쉬운 설명(일상 비유 1개) ③ 예시나 교과서식 예제 1개 ④ "시험 포인트"나 자주 틀리는 점 1줄 ⑤ 마지막에 "확인 질문:" 1개(답은 쓰지 마). 전체 6~12줄.
+- 문제 풀이 요청: 처음엔 (1) 무엇을 묻는지 (2) 쓸 개념·공식 (3) 첫 단계까지만 보여주고 "다음 단계 해볼래?"로 끝내. 승준이가 "답 알려줘·풀이 보여줘·막혔어"라고 하거나 같은 문제를 다시 물으면 전체 풀이를 단계마다 한 줄씩 쓰고, 마지막에 검산까지 해.
+- 수학 표기: 앱이 수식을 못 그려. LaTeX·$·\\frac·\\sqrt 금지. x², x³, √3, π, ≤, ≥, ≠, ×, ÷ 같은 기호와 (a+b)/2 같은 괄호 분수로 써.
+- 영어: 예문(영어) + 해석(한국어)을 같이. 문법 용어는 한국 교과서 용어(관계대명사·현재분사 등).
+- 국어·사회·한국사: 핵심 개념을 교과서 단원과 연결하고, 연도·인물·사건은 확실한 것만. 애매하면 "(교과서로 확인해줘)".
+- 형식: 마크다운 금지(#, **, 표, 코드블록). 줄바꿈과 ①②③, • 만 써.
+- 정확성: 틀린 설명보다 짧은 설명이 나아. 확실하지 않은 수치·연도는 쓰지 마. [참고 자료]·[승준이 과목 맥락]과 다르게 말하지 마.
+- 수행평가·보고서·글쓰기: 대신 써주지 마. 대신 구성 틀(개요), [학교 자료]의 만점 기준 체크리스트, 승준이가 쓴 글에 대한 피드백은 해줘.
+- [승준이 과목 맥락]에 이번 달 진도가 있으면, 질문이 진도·시험 범위와 이어질 때 "지금 ○○ 단원이랑 이어져" 한 줄로 연결해.`;
+
 const RULES_PARENT = `너는 '흰둥이'야. 고등학교 1학년 승준이의 공부방 앱 도우미이고, 지금은 엄마와 이야기하고 있어.
 말투: 부드러운 존댓말, 짧게(2~5문장).
 할 일:
@@ -20,9 +34,10 @@ const RULES_PARENT = `너는 '흰둥이'야. 고등학교 1학년 승준이의 �
 - 승준이를 어떻게 도와줄지 물으시면 [오늘 정보]를 보고 '감시·확인'보다 '도와주기·응원' 쪽으로 구체적인 한두 가지를 제안해. 점수·비교·잔소리 표현은 피하도록 권해.
 - 공부·진로 일반 질문은 균형 있게 답하되 단정하지 마. 의료·법률 판단은 하지 마.`;
 
-export function buildPayload({ role, q, history, ctx, guide, refs }) {
+export function buildPayload({ role, q, history, ctx, guide, refs, study, studyCtx }) {
   const parent = role === 'parent';
-  const sys = (parent ? RULES_PARENT : RULES_CHILD) +
+  const sys = (parent ? RULES_PARENT : RULES_CHILD) + (study ? RULES_STUDY + (parent ? '\n(지금은 엄마가 물어보셨으니 존댓말로, 승준이에게 설명해 줄 수 있게 정리해 드려.)' : '') : '') +
+    (studyCtx && studyCtx.subject ? '\n\n[승준이 과목 맥락] 과목: ' + studyCtx.subject + (studyCtx.units ? '\n교과서 단원: ' + clip(studyCtx.units, 900) : '') + (studyCtx.progress ? '\n이번 달·다음 달 진도(학교 평가계획):\n' + clip(studyCtx.progress, 600) : '') : '') +
     '\n\n[앱 안내]\n' + clip((Array.isArray(guide) ? guide : []).map(g => '- ' + clip(g, 700)).join('\n') || '(관련 안내 없음)', 3000) +
     '\n\n[오늘 정보]\n' + clip(typeof ctx === 'string' ? ctx : JSON.stringify(ctx || {}), 3500) +
     (Array.isArray(refs) && refs.length ? '\n\n[참고 자료]\n' + refs.map((r, i) => '(' + (i + 1) + ') [' + r.kind + '] ' + clip(r.title, 60) + '\n' + clip(r.text, 1300)).join('\n\n') +
@@ -37,20 +52,32 @@ export function buildPayload({ role, q, history, ctx, guide, refs }) {
   while (msgs.length && msgs[0].role !== 'user') msgs.shift();
   const question = clip(q, 500).trim();
   if (msgs.length && msgs[msgs.length - 1].role === 'user') msgs[msgs.length - 1].content += '\n' + question; else msgs.push({ role: 'user', content: question });
-  return { system: sys, messages: msgs };
+  return study ? { system: sys, messages: msgs, study: true, maxTokens: 1100 } : { system: sys, messages: msgs };
 }
 
 export async function askClaude({ apiKey, model, payload, timeoutMs = 25000 }) {
   const r = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: { 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
-    body: JSON.stringify({ model: model || MODEL, max_tokens: payload.maxTokens || 600, temperature: 0.4, system: payload.system, messages: payload.messages }),
+    body: JSON.stringify({ model: model || MODEL, max_tokens: payload.maxTokens || 600, temperature: payload.study ? 0.3 : 0.4, system: payload.system, messages: payload.messages }),
     signal: AbortSignal.timeout(timeoutMs)
   });
   const j = await r.json().catch(() => ({}));
   if (!r.ok) { const e = new Error('upstream'); e.status = r.status; e.detail = j && j.error && j.error.type; throw e; }
   const text = (j.content || []).filter(c => c.type === 'text').map(c => c.text).join('').trim();
-  return clip(text, 2000);
+  return plain(clip(text, payload.study ? 3500 : 2000));
+}
+
+// 말풍선은 글자만 보여서, 혹시 섞인 마크다운·LaTeX를 읽기 쉬운 글자로 바꾼다
+const SUP = { '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴', '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹', n: 'ⁿ', '-': '⁻' };
+export function plain(t) {
+  return String(t || '')
+    .replace(/\*\*(.+?)\*\*/g, '$1').replace(/^#{1,6}\s+/gm, '').replace(/^```.*$/gm, '').replace(/`([^`]+)`/g, '$1')
+    .replace(/\$\$?([^$]+)\$\$?/g, '$1').replace(/\\\(|\\\)|\\\[|\\\]/g, '')
+    .replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g, '($1)/($2)').replace(/\\sqrt\{([^{}]+)\}/g, '√($1)')
+    .replace(/\\times/g, '×').replace(/\\div/g, '÷').replace(/\\cdot/g, '·').replace(/\\le(q)?\b/g, '≤').replace(/\\ge(q)?\b/g, '≥').replace(/\\neq?\b/g, '≠').replace(/\\pi\b/g, 'π').replace(/\\pm/g, '±')
+    .replace(/\^\{([0-9n-]{1,3})\}|\^([0-9n])/g, (m, a, b) => (a || b).split('').map(c => SUP[c] || c).join(''))
+    .replace(/\\(left|right)/g, '').replace(/\n{3,}/g, '\n\n').trim();
 }
 
 export function validQuestion(q) { return typeof q === 'string' && q.trim().length >= 1 && q.length <= 500; }
@@ -65,7 +92,7 @@ export async function askOpenAI({ apiKey, model, payload, timeoutMs = 25000 }) {
   });
   const j = await r.json().catch(() => ({}));
   if (!r.ok) { const e = new Error('upstream'); e.status = r.status; throw e; }
-  return clip(((j.choices || [])[0] || {}).message?.content || '', 2000).trim();
+  return plain(clip(((j.choices || [])[0] || {}).message?.content || '', payload.study ? 3500 : 2000));
 }
 // 무료: VPS에 직접 띄운 오픈소스 모델(Ollama). OLLAMA_MODEL 이 있을 때. CPU라 느려서 답을 짧게
 export async function askOllama({ base, model, payload, timeoutMs = 100000 }) {
@@ -92,7 +119,11 @@ export async function askAI(env, payload, timeoutMs) {
   let last;
   for (const w of order) {
     try {
-      if (w === 'c' && ak) return await askClaude({ apiKey: ak, model: env.FC_CHAT_MODEL, payload, timeoutMs });
+      if (w === 'c' && ak) {
+        const sm = payload.study && env.FC_STUDY_MODEL;   // 공부 질문은 더 똑똑한 모델(있으면), 안 되면 기본 모델로
+        if (sm) { try { return await askClaude({ apiKey: ak, model: sm, payload, timeoutMs: Math.max(timeoutMs || 0, 45000) }); } catch (e) { last = e; } }
+        return await askClaude({ apiKey: ak, model: env.FC_CHAT_MODEL, payload, timeoutMs });
+      }
       if (w === 'o' && ok) return await askOpenAI({ apiKey: ok, model: env.FC_OPENAI_MODEL, payload, timeoutMs });
       if (w === 'l' && lm) return await askOllama({ base: env.OLLAMA_URL, model: lm, payload });
     } catch (e) { last = e; }
