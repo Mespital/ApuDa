@@ -40,13 +40,13 @@ export function addDoc({ title, subject, text, by }) {
 }
 export function delDoc(id) { const n = DOCS.length; DOCS = DOCS.filter(d => d.id !== id); if (DOCS.length !== n) persist(); return { ok: true }; }
 
-// 흰둥이 지식 묶음(dist/shiro-kb.json) — 학교 자료(2시간마다) + 스스로 공부한 위키백과 개념(매시간). 30분 캐시
+// 흰둥이 지식 묶음(dist/shiro-kb.json) — 학교 자료 + 위키백과 개념, 매일 아침 갱신. 30분 캐시
 let KB = { at: 0, data: { chunks: [] } };
 const GC = new WeakMap();   // 지식 조각별 2글자 묶음 캐시(매 질문마다 다시 안 셈)
 export async function loadKB() {
   if (Date.now() - KB.at < 30 * 60e3) return KB.data;
   let data = null;
-  // 매시간 GitHub에 쌓이는 최신본 → 사이트 배포본 → 서버에 있는 파일 순서
+  // 매일 아침 GitHub에 올라가는 최신본 → 사이트 배포본 → 서버에 있는 파일 순서
   const urls = [process.env.FC_KB_URL, 'https://raw.githubusercontent.com/Mespital/ApuDa/main/future-compass/dist/shiro-kb.json', (process.env.URL || 'https://future.apuda.app').replace(/\/$/, '') + '/shiro-kb.json'].filter(Boolean);
   for (const u of urls) { try { const r = await fetch(u, { signal: AbortSignal.timeout(4000) }); if (r.ok) { const d = await r.json(); if (d && Array.isArray(d.chunks)) { data = d; break; } } } catch {} }
   if (!data) try { data = JSON.parse(fs.readFileSync(new URL('../dist/shiro-kb.json', import.meta.url), 'utf8')); } catch {}

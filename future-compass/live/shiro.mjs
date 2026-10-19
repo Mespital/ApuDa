@@ -15,9 +15,9 @@ const RULES_CHILD = `너는 '흰둥이'야. 승준(고등학교 1학년)의 공�
 
 // 공부 질문일 때만 붙는 규칙 (개념·풀이·문법). 앱 말풍선은 글자만 보여서 수식·마크다운을 못 그린다
 const RULES_STUDY = `
-[공부 질문 답하는 법] 지금은 공부 질문이야. 이때는 길이 제한(2~5문장) 대신 아래를 따라.
+[공부 질문 답하는 법] 지금은 공부 질문이야. 꼭 필요한 정보만 적당히(보통 4~8줄). 길게 강의하지 마.
 - 수준: 2022 개정 교육과정 고1 2학기 공통과목(공통수학2·통합과학2·통합사회2·한국사2·공통영어2·공통국어2). 교과서 용어를 그대로 써. 고1 범위를 넘는 내용이면 "고1 범위 밖이야" 한 줄 붙이고 짧게.
-- 개념 질문 순서: ① 한 줄 핵심 ② 쉬운 설명(일상 비유 1개) ③ 예시나 교과서식 예제 1개 ④ "시험 포인트"나 자주 틀리는 점 1줄 ⑤ 마지막에 "확인 질문:" 1개(답은 쓰지 마). 전체 6~12줄.
+- 개념 질문 순서: ① 한 줄 핵심 ② 쉬운 설명(필요하면 비유 1개) ③ 짧은 예시 1개 ④ 마지막에 "확인 질문:" 1개(답은 쓰지 마). 시험 포인트는 꼭 필요할 때만 1줄.
 - 문제 풀이 요청: 처음엔 (1) 무엇을 묻는지 (2) 쓸 개념·공식 (3) 첫 단계까지만 보여주고 "다음 단계 해볼래?"로 끝내. 승준이가 "답 알려줘·풀이 보여줘·막혔어"라고 하거나 같은 문제를 다시 물으면 전체 풀이를 단계마다 한 줄씩 쓰고, 마지막에 검산까지 해.
 - 수학 표기: 앱이 수식을 못 그려. LaTeX·$·\\frac·\\sqrt 금지. x², x³, √3, π, ≤, ≥, ≠, ×, ÷ 같은 기호와 (a+b)/2 같은 괄호 분수로 써.
 - 영어: 예문(영어) + 해석(한국어)을 같이. 문법 용어는 한국 교과서 용어(관계대명사·현재분사 등).
@@ -52,7 +52,7 @@ export function buildPayload({ role, q, history, ctx, guide, refs, study, studyC
   while (msgs.length && msgs[0].role !== 'user') msgs.shift();
   const question = clip(q, 500).trim();
   if (msgs.length && msgs[msgs.length - 1].role === 'user') msgs[msgs.length - 1].content += '\n' + question; else msgs.push({ role: 'user', content: question });
-  return study ? { system: sys, messages: msgs, study: true, maxTokens: 1100 } : { system: sys, messages: msgs };
+  return study ? { system: sys, messages: msgs, study: true, maxTokens: 750 } : { system: sys, messages: msgs };
 }
 
 export async function askClaude({ apiKey, model, payload, timeoutMs = 25000 }) {
@@ -65,7 +65,7 @@ export async function askClaude({ apiKey, model, payload, timeoutMs = 25000 }) {
   const j = await r.json().catch(() => ({}));
   if (!r.ok) { const e = new Error('upstream'); e.status = r.status; e.detail = j && j.error && j.error.type; throw e; }
   const text = (j.content || []).filter(c => c.type === 'text').map(c => c.text).join('').trim();
-  return plain(clip(text, payload.study ? 3500 : 2000));
+  return plain(clip(text, payload.study ? 2600 : 2000));
 }
 
 // 말풍선은 글자만 보여서, 혹시 섞인 마크다운·LaTeX를 읽기 쉬운 글자로 바꾼다
