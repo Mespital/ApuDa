@@ -171,7 +171,7 @@ body.app .tt td{font-size:13px;line-height:1.25}
 
 /* 📱 주간 일정: 한 화면 + 좌우 밀기 (2026-10-19) */
 .wk-app .ag-pager{overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y;border-radius:14px}
-.wk-app .wd-row{touch-action:pan-y}
+.wk-app,.wk-app .wd-row{touch-action:pan-y}
 .wk-app .ag-page{will-change:transform}
 .wk-app .ag-page.in-right{animation:agInR .22s ease-out}
 .wk-app .ag-page.in-left{animation:agInL .22s ease-out}
