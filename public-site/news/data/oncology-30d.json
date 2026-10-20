@@ -1,9 +1,9 @@
 {
   "version": "1.0",
-  "generated_at": "2026-10-19T18:04:40.779688+09:00",
+  "generated_at": "2026-10-20T18:04:47.724418+09:00",
   "window": {
-    "start": "2026-09-19T09:00:00+09:00",
-    "end": "2026-10-19T09:00:00+09:00",
+    "start": "2026-09-20T09:00:00+09:00",
+    "end": "2026-10-20T09:00:00+09:00",
     "days": 30,
     "timezone": "Asia/Seoul"
   },
@@ -22,6 +22,73 @@
     "자궁경부암"
   ],
   "items": [
+    {
+      "rank": 3,
+      "canonical_issue": "복지부, 면역항암제 동반진단 중복검사 개선 필요성 공감 - 의학신문",
+      "title": "복지부, 면역항암제 동반진단 중복검사 개선 필요성 공감",
+      "category": [
+        "복지부"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-19T12:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=이재원 기자] 위암 치료에 사용되는 면역항암제의 동반진단 검사결과를 다른 치료제 선택에도 활용해 중복검사를 줄여야 한다는 지적에 대해 정부가",
+        "[의학신문·일간보사=이재원 기자] 위암 치료에 사용되는 면역항암제의 동반진단 검사결과를 다른 치료제 선택에도 활용해 중복검사를 줄여야 한다는 지적에 대해 정부가 개선 필요성에 공감하면서도, 실제 제도 개선을 위해서는 식품의약품안전처의 의료기기 허가사항 검토가 선행돼야 한다는 입장을 밝혔다.",
+        "동일한 바이오마커를 평가하는 검사라도 동반진단 의료기기별로 사용 가능한 치료제가 허가사항에 명시돼 있어, 검사결과의 과학적 일치성이 확보됐다는 이유만으로 다른 약제의 처방 대상자 선별에 활용하기는 어렵다는 것이다."
+      ],
+      "importance": "기사에서 급여·약가 이슈가 함께 확인돼 시장 접근성과 환자 부담 변화를 후속 확인할 필요가 있습니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3014200"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014200"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3014200_415115_3013.jpg",
+      "score": 40,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "위암"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [
+          "PD-L1"
+        ],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": "허가 관련",
+        "reimbursement_status": "급여 관련",
+        "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
+        "patient_relevance_score": 118,
+        "patient_relevance_labels": [
+          "급여·접근성",
+          "허가",
+          "임상결과",
+          "바이오마커",
+          "지원제도"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "7d",
+      "age_days": 1
+    },
     {
       "rank": null,
       "canonical_issue": "위암부터 요로상피암까지…항암 신약 급여가 바꾼 치료 환경 - 약사공론",
@@ -88,8 +155,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "today",
-      "age_days": 0
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -155,7 +222,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 13
+      "age_days": 14
     },
     {
       "rank": null,
@@ -221,7 +288,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": null,
@@ -295,7 +362,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 11
+      "age_days": 12
     },
     {
       "rank": 3,
@@ -355,7 +422,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     },
     {
       "rank": null,
@@ -416,8 +483,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "7d",
-      "age_days": 7
+      "freshness": "30d",
+      "age_days": 8
     },
     {
       "rank": null,
@@ -477,7 +544,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 11
+      "age_days": 12
     },
     {
       "rank": null,
@@ -543,7 +610,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     },
     {
       "rank": null,
@@ -608,7 +675,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     },
     {
       "rank": 3,
@@ -672,7 +739,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 6
+      "age_days": 7
     },
     {
       "rank": 2,
@@ -735,7 +802,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 12
+      "age_days": 13
     },
     {
       "rank": null,
@@ -796,7 +863,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": null,
@@ -859,7 +926,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 6
+      "age_days": 7
     },
     {
       "rank": null,
@@ -919,7 +986,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 11
+      "age_days": 12
     },
     {
       "rank": null,
@@ -978,7 +1045,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     },
     {
       "rank": null,
@@ -1041,7 +1108,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     },
     {
       "rank": null,
@@ -1103,7 +1170,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 8
+      "age_days": 9
     },
     {
       "rank": null,
@@ -1164,7 +1231,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 6
+      "age_days": 7
     },
     {
       "rank": null,
@@ -1227,7 +1294,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 8
+      "age_days": 9
     },
     {
       "rank": null,
@@ -1288,7 +1355,125 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 11
+      "age_days": 12
+    },
+    {
+      "rank": null,
+      "canonical_issue": "카나프테라퓨틱스, 황반변성 L/O 추진…항암 병용 개발 확대 - 메디파나뉴스",
+      "title": "카나프테라퓨틱스, 황반변성 L/O 추진…항암 병용 개발 확대",
+      "category": [
+        "산업"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-20T06:01:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "카나프테라퓨틱스가 황반변성 이중항체 후보물질 'KNP-301'의 글로벌 기술이전(L/O)을 추진한다. 국내 파트너와 개발하는 항암제는 기존 치료제와의 병용으로 개발 범위를 넓히며, 'KNP-502'는 내년 1분기 도세탁셀 병용의 초기 효능 신호 확보를 목표로 한다. 19일 카나프테라퓨틱스의 기업설명(IR",
+        "사진=최인환 기자 카나프테라퓨틱스가 황반변성 이중항체 후보물질 'KNP-301'의 글로벌 기술이전(L/O)을 추진한다.",
+        "국내 파트너와 개발하는 항암제는 기존 치료제와의 병용으로 개발 범위를 넓히며, 'KNP-502'는 내년 1분기 도세탁셀 병용의 초기 효능 신호 확보를 목표로 한다."
+      ],
+      "importance": "시장·정책·연구개발 흐름을 보여주는 주요 산업 이슈로 후속 정책과 사업 변화 확인이 필요합니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=419637"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=419637"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419637_327139_4237.png",
+      "score": 1,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": "치료와 직접 관련된 정보인지 기사 원문과 공식 자료를 함께 확인해 주세요.",
+        "patient_relevance_score": 8,
+        "patient_relevance_labels": [],
+        "industry_summary": null
+      },
+      "freshness": "today",
+      "age_days": 0
+    },
+    {
+      "rank": null,
+      "canonical_issue": "혈액암협회, 위암 환자·가족 위한 치료정보 나눔의 장 마련 - 메디파나뉴스",
+      "title": "혈액암협회, 위암 환자·가족 위한 치료정보 나눔의 장 마련",
+      "category": [
+        "수가",
+        "병원",
+        "ai"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-19T17:47:58+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "위암 환자와 가족이 전문 의료진에게 수술 전후 치료와 회복 관리에 관한 정보를 듣고, 서로의 치료 경험을 나누는 자리가 마련된다. 한국혈액암협회(KBDCA, 회장 장태평)는 오는 31일 서울 중구 페이지명동 4층에서 위암 환우와 가족을 대상으로 '위암 닥터스 토크쇼'를 개최한다. 이번 행사는 위암 수술 ",
+        "제공=한국혈액암협회 위암 환자와 가족이 전문 의료진에게 수술 전후 치료와 회복 관리에 관한 정보를 듣고, 서로의 치료 경험을 나누는 자리가 마련된다.",
+        "한국혈액암협회(KBDCA, 회장 장태평)는 오는 31일 서울 중구 페이지명동 4층에서 위암 환우와 가족을 대상으로 '위암 닥터스 토크쇼'를 개최한다."
+      ],
+      "importance": "기사에서 급여·약가 이슈가 함께 확인돼 시장 접근성과 환자 부담 변화를 후속 확인할 필요가 있습니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=419616"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=419616"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419616_327112_4419.jpg",
+      "score": 1,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "위암"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": "치료와 직접 관련된 정보인지 기사 원문과 공식 자료를 함께 확인해 주세요.",
+        "patient_relevance_score": 8,
+        "patient_relevance_labels": [],
+        "industry_summary": null
+      },
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -1347,7 +1532,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 11
+      "age_days": 12
     },
     {
       "rank": 3,
@@ -1408,7 +1593,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 14
+      "age_days": 15
     },
     {
       "rank": null,
@@ -1463,7 +1648,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 16
+      "age_days": 17
     },
     {
       "rank": null,
@@ -1521,7 +1706,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 16
+      "age_days": 17
     },
     {
       "rank": null,
@@ -1578,7 +1763,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 17
+      "age_days": 18
     },
     {
       "rank": 4,
@@ -1637,7 +1822,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 17
+      "age_days": 18
     },
     {
       "rank": null,
@@ -1705,7 +1890,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 17
+      "age_days": 18
     }
   ]
 }
