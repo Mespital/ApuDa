@@ -23,7 +23,7 @@
   function avatar(w) { return typeof FC_CHAR !== 'undefined' ? FC_CHAR.avatar(w, 40) : ''; }
 
   /* ---------- 큰 제목 ---------- */
-  var TITLE = { today: ['오늘', '승준이 오늘'], week: ['이번 주', '이번 주 일정'], table: ['시간표', '시간표'], dates: ['시험·과제', '시험·과제'], review: ['복습', '복습'], stats: ['나의 기록', '흐름'], focus: ['집중', '집중'], path: ['진로', '승준 진로'] };
+  var TITLE = { dash: ['한눈에', '승준이 한눈에'], today: ['오늘', '승준이 오늘'], week: ['이번 주', '이번 주 일정'], table: ['시간표', '시간표'], dates: ['시험·과제', '시험·과제'], review: ['복습', '복습'], stats: ['나의 기록', '흐름'], focus: ['집중', '집중'], path: ['진로', '승준 진로'] };
   function sub(tb) {
     var t = today();
     if (tb === 'week') { var mon = addD(selDate, -((wd(selDate) + 6) % 7)); return md(mon) + ' ~ ' + md(addD(mon, 6)); }
