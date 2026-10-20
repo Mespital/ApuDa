@@ -56,7 +56,7 @@
   function signature(j) { return JSON.stringify([j.prepared, j.applied, j.conflict, j.error, j.result]); }
   function showReady(j) {
     if (!allowed()) return;
-    open('공부방 → 채팅 → Drive', row(j) + (!j.result && j.prepared ? '<p class="small">① 요청을 복사하고 ② 일반 Chat을 열어 보내줘. 저장 결과는 이 화면으로 돌아오면 확인할게. ChatGPT 상단이 Work라면 Chat으로 바꿔줘.</p><button type="button" data-cd-copy="' + j.id + '">① 저장·복습 요청 복사</button><a class="cd-primary" data-cd-chat="' + j.id + '" href="' + esc(window.SHIRO_AI && SHIRO_AI.chatHref ? SHIRO_AI.chatHref(prompt(j)) : 'https://chatgpt.com/') + '" target="_blank" rel="noopener noreferrer">② 일반 Chat 열기 ↗</a><details><summary>요청 직접 복사</summary><textarea readonly aria-label="저장과 복습 요청" rows="6">' + esc(prompt(j)) + '</textarea></details><p class="small muted">전달 링크는 24시간 동안 이 자료에만 접근할 수 있어. 링크를 받은 사람도 자료를 볼 수 있으니 이 채팅에만 보내줘. Drive 보관은 전달 기한과 별개야.</p>' : ''));
+    open('공부방 → 채팅 → Drive', row(j) + (!j.result && j.prepared ? '<p class="small"><b>보라 버튼 한 번</b>이면 요청이 복사되고 ChatGPT가 열려. 입력창에 요청이 들어가 있으면 <b>보내기</b>만, 비어 있으면 붙여넣고 보내줘. ChatGPT가 정리하고 Drive에 저장해 결과를 돌려주면, 이 화면으로 돌아올 때 자동으로 반영돼. 상단이 Work라면 Chat으로 바꿔줘.</p><button type="button" data-cd-copy="' + j.id + '">요청만 복사</button><a class="cd-primary" data-cd-chat="' + j.id + '" href="' + esc(window.SHIRO_AI && SHIRO_AI.chatHref ? SHIRO_AI.chatHref(prompt(j)) : 'https://chatgpt.com/') + '" target="_blank" rel="noopener noreferrer">ChatGPT로 보내기 (정리·Drive 저장) ↗</a><details><summary>요청 직접 복사</summary><textarea readonly aria-label="저장과 복습 요청" rows="6">' + esc(prompt(j)) + '</textarea></details><p class="small muted">전달 링크는 24시간 동안 이 자료에만 접근할 수 있어. 링크를 받은 사람도 자료를 볼 수 있으니 이 채팅에만 보내줘. Drive 보관은 전달 기한과 별개야.</p>' : ''));
     dialog.dataset.job = j.id; dialog.dataset.state = signature(j); dialog.dataset.preparing = '';
   }
   function apply(j, force) {
@@ -122,6 +122,8 @@
     } catch (e) { notify('학습 기록을 준비하지 못했어. 기기 저장 공간을 확인해줘.'); }
   }
   document.addEventListener('click', function (e) {
+    var chat = e.target.closest && e.target.closest('a[data-cd-chat]');
+    if (chat) { var cj = items.find(function (x) { return x.id === chat.getAttribute('data-cd-chat'); }); if (cj && window.SHIRO_AI && SHIRO_AI.rawCopy) SHIRO_AI.rawCopy(prompt(cj)); return; }
     var b = e.target.closest && e.target.closest('button'); if (!b) return;
     if (b.hasAttribute('data-cd-close')) { dialog.close(); return; }
     if (!allowed()) return;
