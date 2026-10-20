@@ -151,6 +151,15 @@ for (const options of [{ locked: true }, { parent: true, share: false }]) {
   f.storage.set('fc_notes_v1', JSON.stringify([{ ...f.readNote(), text: '검증을 기다리다 수정한 원문' }]));
   release(true); assert.equal(await pending, 'conflict'); assert.equal(f.readNote().text, '검증을 기다리다 수정한 원문');
 }
+// Erasing raw audio while the receipt hash is pending must not restore that Blob.
+{
+  const f = fixture({ ...base, audio: { id: 'local-audio' } });
+  let release, began; const started = new Promise(r => { began = r; });
+  f.sandbox.crypto = { subtle: { digest: async () => { began(); await new Promise(r => { release = r; }); return Uint8Array.from(Buffer.from(audioFile.sha256, 'hex')).buffer; } } };
+  const pending = f.sandbox.FC_AUDIO.rememberDrive('local-audio', audioFile); await started;
+  await f.sandbox.FC_AUDIO.remove('local-audio'); release();
+  assert.equal(await pending, null); assert.equal(f.records.has('local-audio'), false);
+}
 // Existing Chat/MCP receiver waits for the asynchronous apply and keeps manual recovery.
 {
   const f = fixture(); f.storage.set('fc-voice-v1', '[]');
