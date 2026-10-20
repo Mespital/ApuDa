@@ -12,11 +12,11 @@
   };
   var MORE = {
     // 묶음 제목은 ['#group', '', '이름'] (승준 리뷰 6: 17개를 4묶음으로, 아이콘·이름 겹침 정리)
-    child: [['#group', '', '공부'], ['study.html#books', '📖', '내 교과서'], ['study.html#dates', '📝', '시험·과제'], ['study.html#table', '🗓️', '시간표'], ['study.html#grades', '🧮', '내신 계산기'], ['study.html#examplan', '📅', '기말 플랜'], ['study.html#stats', '📈', '나의 기록'],
+    child: [['#group', '', '공부'], ['study.html#dash', '📊', '한눈에 보기'], ['study.html#books', '📖', '내 교과서'], ['study.html#dates', '📝', '시험·과제'], ['study.html#table', '🗓️', '시간표'], ['study.html#grades', '🧮', '내신 계산기'], ['study.html#examplan', '📅', '기말 플랜'], ['study.html#stats', '📈', '나의 기록'],
       ['#group', '', '학교'], ['study.html#school', '🏫', '학교 소식·평가'], ['today.html', '📋', '오늘 한눈에'],
       ['#group', '', '진로'], ['study.html#path', '🎯', '진로 한 장'], ['study.html#career', '🧭', '진로 탐색기'], ['study.html#courses', '📚', '과목 선택 도우미'],
       ['#group', '', '더 보기'], ['hub.html', '🔗', '자료 허브'], ['./', '🌐', '미래 나침반'], ['future.html', '🔮', '미래 예측'], ['know-me.html', '✨', '나 알아보기'], ['study.html#settings', '⚙️', '설정'], ['#lock', '🔒', '잠그기']],
-    parent: [['#group', '', '승준이 공부'], ['study.html#dates', '📝', '시험'], ['study.html#table', '🗓️', '시간표'], ['study.html#review', '💡', '복습'], ['study.html#grades', '🧮', '내신 계산기'], ['study.html#examplan', '📅', '기말 플랜'], ['study.html#week', '🪨', '이번 주 큰 돌'],
+    parent: [['#group', '', '승준이 공부'], ['study.html#dash', '📊', '승준이 한눈에'], ['study.html#dates', '📝', '시험'], ['study.html#table', '🗓️', '시간표'], ['study.html#review', '💡', '복습'], ['study.html#grades', '🧮', '내신 계산기'], ['study.html#examplan', '📅', '기말 플랜'], ['study.html#week', '🪨', '이번 주 큰 돌'],
       ['#group', '', '학교'], ['study.html#school', '🏫', '학교 소식·평가'], ['today.html', '📋', '오늘 한눈에'],
       ['#group', '', '진로'], ['study.html#path', '🎯', '승준 진로'], ['study.html#career', '🧭', '진로 탐색기'], ['study.html#courses', '📚', '과목 선택 도우미'],
       ['#group', '', '더 보기'], ['hub.html', '🔗', '자료 허브'], ['./', '🌐', '미래 나침반'], ['study.html#settings', '⚙️', '설정'], ['#who', '🔄', '승준으로 바꾸기'], ['#lock', '🔒', '잠그기']]

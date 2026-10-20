@@ -549,6 +549,7 @@
   }
 
   window.FC_NOTES = {
+    lessons: function () { try { return lessons(); } catch (e) { return []; } },
     get: function (id) { return notes().find(function (n) { return n.id === id; }); }, photo: getPhoto,
     applyCloud: function (id, original, result, jobId, force) {
       if (document.documentElement.classList.contains('pin-locked') || isParent() && window.FC_PLANNER && !FC_PLANNER.get().share.review) return 'failed';
