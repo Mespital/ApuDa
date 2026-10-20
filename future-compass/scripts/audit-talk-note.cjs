@@ -92,7 +92,7 @@ let browser;
   {
     const { context, page } = await fresh(); await open(page); await local(page);
     const text = '함수의 입력과 출력 관계를 복습한다. '.repeat(70).slice(0, 1494) + '마지막문장';
-    await page.locator('.tn-text').fill(text); await page.locator('.tn-sub-other').fill('공통수학2');
+    await page.locator('.tn-text').fill(text); if (await page.locator('[data-tn-more][aria-expanded="false"]').count()) await page.locator('[data-tn-more]').click(); await page.locator('.tn-sub-other').fill('공통수학2');
     await page.locator('[data-tn-day="3"]').uncheck(); await page.locator('[data-tn-day="7"]').uncheck();
     await page.evaluate(() => localStorage.setItem('fc-gpt-url', 'https://chatgpt.com/g/g-study-test?old=yes#old'));
     await page.locator('[data-tn-copy]').click();
@@ -141,6 +141,7 @@ let browser;
   }
   {
     const { context, page } = await fresh(); await open(page);
+    await page.locator('.tn-lessons [data-tn-sub="수학"]').click(); // 기본은 방금 끝난 수업이라 과목을 직접 고른다
     await page.locator('.tn-topic').fill('함수의 뜻');
     await page.locator('.av-settings > summary').click();
     await page.locator('[data-av-file]').setInputFiles({ name: 'voice.webm', mimeType: 'audio/webm', buffer: fs.readFileSync(process.env.AUDIO_FIXTURE || '/tmp/audio-vault-audit/encoded-microphone.webm') });

@@ -54,6 +54,41 @@
     todayRow.concat([].concat.apply([], state.table)).forEach(function (x) { x = String(x || '').trim(); if (x && !seen[x] && !/체육|음악|미술|창체|자율|동아리|봉사/.test(x)) { seen[x] = 1; out.push(x); } });
     return out.slice(0, 14);
   }
+  /* 오늘 수업(시간표 순서) + 남김 상태. 주말·휴업일이면 빈 배열 */
+  var SKIP = /체육|음악|미술|창체|자율|동아리|봉사/;
+  function toMin(hm) { var m = /^(\d{1,2}):(\d{2})$/.exec(String(hm || '')); return m ? +m[1] * 60 + +m[2] : NaN; }
+  function lessons() {
+    var t = today(), w = new Date(t + 'T12:00:00Z').getUTCDay();
+    if (w < 1 || w > 5 || (window.FC_CAL && FC_CAL.offDay && FC_CAL.offDay(t))) return [];
+    var cfg = (window.FC_SCHOOL && FC_SCHOOL.config) || {}, per = cfg.periods || [], len = cfg.classMinutes || 50;
+    var k = new Date(Date.now() + 9 * 3600000), now = k.getUTCHours() * 60 + k.getUTCMinutes(), done = {}, out = [];
+    notes().forEach(function (n) { if (n.date === t) done[n.subject] = (done[n.subject] || 0) + 1; });
+    (state.table[w - 1] || []).forEach(function (x, i) {
+      x = String(x || '').trim(); if (!x || SKIP.test(x)) return;
+      var st = toMin(per[i]), end = st + len, ok = done[x] > 0;
+      if (ok) done[x]--;
+      out.push({ sub: x, p: i + 1, time: per[i] || '', end: end, status: ok ? 'done' : isNaN(st) || now < st ? 'later' : now < end ? 'now' : 'past', fresh: now >= end && now - end <= 70 });
+    });
+    return out;
+  }
+  function pickLesson(L) {
+    var past = L.filter(function (x) { return x.status === 'past'; });
+    return past[past.length - 1] || L.find(function (x) { return x.status === 'now'; }) || L.find(function (x) { return x.status === 'later'; }) || L[0] || null;
+  }
+  function lessonTag(x) { return x.status === 'done' ? '✓ 남김' : x.status === 'now' ? '수업 중' : x.status === 'later' ? '예정' : x.fresh ? '방금 끝남' : '못 남김'; }
+  function subjectPicker() {
+    var L = lessons(), pick = pickLesson(L);
+    if (!L.length) { sub = subjects()[0] || ''; return '<div class="pl-chips tn-subs">' + subjects().map(function (x, i) { return '<button type="button" data-tn-sub="' + esc(x) + '" aria-pressed="' + (i === 0) + '" class="' + (i === 0 ? 'on' : '') + '">' + esc(x) + '</button>'; }).join('') + '<input id="tn-subject" class="tn-sub-other" maxlength="20" placeholder="다른 과목"></div>'; }
+    sub = pick.sub;
+    var left = L.filter(function (x) { return x.status === 'past'; }).length, did = L.filter(function (x) { return x.status === 'done'; }).length;
+    var mine = {}; L.forEach(function (x) { mine[x.sub] = 1; });
+    var more = subjects().filter(function (x) { return !mine[x]; });
+    return '<p class="tn-ls-sum small">오늘 수업 ' + L.length + '개 중 <b>' + did + '개 남김</b>' + (left ? ' · 아직 못 남긴 수업 ' + left + '개' : '') + '</p>' +
+      '<div class="tn-lessons" role="group" aria-label="오늘 수업">' + L.map(function (x) { var on = x === pick; return '<button type="button" data-tn-sub="' + esc(x.sub) + '" aria-pressed="' + on + '" class="tn-ls st-' + x.status + (x.fresh && x.status === 'past' ? ' fresh' : '') + (on ? ' on' : '') + '"><small>' + x.p + '교시' + (x.time ? ' · ' + x.time : '') + '</small><b>' + esc(x.sub) + '</b><em>' + lessonTag(x) + '</em></button>'; }).join('') + '</div>' +
+      '<button type="button" class="tn-more-btn" data-tn-more aria-expanded="false" aria-controls="tn-more">＋ 다른 과목 더 보기</button>' +
+      '<div class="pl-chips tn-subs tn-more" id="tn-more" hidden>' + more.map(function (x) { return '<button type="button" data-tn-sub="' + esc(x) + '" aria-pressed="false">' + esc(x) + '</button>'; }).join('') + '<input id="tn-subject" class="tn-sub-other" maxlength="20" placeholder="다른 과목"></div>';
+  }
+  function showMore(on) { var m = sheet && sheet.querySelector('.tn-more'), b = sheet && sheet.querySelector('[data-tn-more]'); if (!m || !b) return; m.hidden = !on; b.setAttribute('aria-expanded', String(on)); b.textContent = on ? '－ 다른 과목 접기' : '＋ 다른 과목 더 보기'; }
 
   /* ---------- 오늘 탭 카드 ---------- */
   function todayCard() {
@@ -61,6 +96,7 @@
     var n = notes().filter(function (x) { return x.date === today(); });
     var hour = new Date(Date.now() + 9 * 3600000).getUTCHours();
     return '<section class="card tn-card' + (hour >= 15 && !n.length ? ' tn-hot' : '') + '"><div class="pl-head"><h2>📒 오늘 배운 것 남기기</h2>' + (n.length ? '<span class="pl-count">오늘 ' + n.length + '개</span>' : '') + '</div>' +
+      (function () { var L = lessons(), x = pickLesson(L); if (!x || x.status === 'done' || x.status === 'later') return ''; var left = L.filter(function (y) { return y.status === 'past'; }).length; return '<p class="tn-next small"><b>' + (x.status === 'now' ? '지금 ' : x.fresh ? '방금 끝난 ' : '남길 차례: ') + x.p + '교시 ' + esc(x.sub) + '</b>' + (left > 1 ? ' · 못 남긴 수업 ' + left + '개' : '') + '</p>'; })() +
       '<p class="muted small">수업 끝나고 1분 — 교과서·필기 사진을 찍거나 말로 남기면 🧠 핵심·용어·확인 질문으로 정리해서 복습과 다음 수업 전에 보여줘.</p>' +
       '<div class="tn-btns"><button type="button" class="primary" data-tn-open="talk">🎙️ 1분 말하기</button><button type="button" data-tn-open="photo">📷 교과서·노트 사진</button></div></section>';
   }
@@ -75,10 +111,10 @@
     if (returnFocus && returnFocus.isConnected) returnFocus.focus({ preventScroll: true });
   }
   function openSheet(kind) {
-    closeSheet(); returnFocus = document.activeElement; sub = subjects()[0] || ''; sheetKind = kind; gptSent = '';
+    closeSheet(); returnFocus = document.activeElement; sheetKind = kind; gptSent = ''; var picker = subjectPicker();
     sheet = document.createElement('div'); sheet.className = 'tn-sheet'; sheet.setAttribute('role', 'dialog'); sheet.setAttribute('aria-modal', 'true'); sheet.setAttribute('aria-label', kind === 'talk' ? '1분 말하기' : '노트 사진');
     sheet.innerHTML = '<div class="tn-panel"><div class="tn-top"><button type="button" class="tn-x" data-tn-close aria-label="닫기">✕</button><b>' + (kind === 'talk' ? '🎙️ 1분 말하기' : '📷 요약 노트 사진') + '</b><span></span></div>' +
-      '<label class="tn-l" for="tn-subject">과목</label><div class="pl-chips tn-subs">' + subjects().map(function (x, i) { return '<button type="button" data-tn-sub="' + esc(x) + '" aria-pressed="' + (i === 0) + '" class="' + (i === 0 ? 'on' : '') + '">' + esc(x) + '</button>'; }).join('') + '<input id="tn-subject" class="tn-sub-other" maxlength="20" placeholder="다른 과목"></div>' +
+      '<span class="tn-l">과목</span>' + picker +
       (kind === 'talk' ? '<label class="tn-l" for="tn-topic">오늘의 주제</label><input id="tn-topic" class="tn-topic" maxlength="60" placeholder="예: 함수의 뜻과 정의역">' : '') +
       (kind === 'talk' ? talkBody() : photoBody()) +
       (kind === 'talk' ? '' : '<label class="tn-l" for="tn-text">메모 <small class="muted">(사진에서 읽은 글·헷갈린 것)</small></label><textarea id="tn-text" class="tn-text" rows="5" maxlength="1500" placeholder="사진 속 핵심을 한두 줄 적거나, 글자 읽기를 눌러봐."></textarea>') +
@@ -265,7 +301,8 @@
     if (!d || d.kind !== 'talk' || !Number.isFinite(d.at) || Date.now() - d.at > 24 * 3600e3 || d.at > Date.now() + 60000 || (!d.text && !d.sum && !d.gpt && !d.audioId)) return false;
     openSheet('talk');
     sub = String(d.sub || '').slice(0, 20);
-    sheet.querySelectorAll('[data-tn-sub]').forEach(function (x) { var on = !d.other && x.dataset.tnSub === sub; x.classList.toggle('on', on); x.setAttribute('aria-pressed', String(on)); });
+    var first = null; sheet.querySelectorAll('[data-tn-sub]').forEach(function (x) { var on = !d.other && x.dataset.tnSub === sub && !first; if (on) first = x; x.classList.toggle('on', on); x.setAttribute('aria-pressed', String(on)); });
+    if (d.other || first && first.closest('.tn-more')) showMore(true);
     sheet.querySelector('.tn-sub-other').value = String(d.other || '').slice(0, 20);
     sheet.querySelector('.tn-topic').value = String(d.topic || '').slice(0, 60);
     if (d.audioId && audioSession) { audioSession.show(d.audioId); var restored = sheet; FC_AUDIO.get(d.audioId).then(function (r) { if (r && sheet === restored) currentAudio = FC_AUDIO.metadata(r); }); }
@@ -467,6 +504,7 @@
       if ((sheet.querySelector('.tn-text').value || sheet.querySelector('.tn-sum').value || photoData || gptSent || currentAudio || audioSession && audioSession.active()) && !confirm('복습 노트를 저장하지 않고 닫을까? 녹음 원본은 녹음 보관함에 남아 있어.')) return;
       var closing = sheet; (audioSession ? audioSession.stop() : Promise.resolve()).then(function () { if (sheet === closing) { closeSheet(); clearDraft(); } }); return;
     }
+    if (b.hasAttribute('data-tn-more')) { showMore(sheet.querySelector('.tn-more').hidden); return; }
     if (d.tnSub) { sub = d.tnSub; sheet.querySelectorAll('[data-tn-sub]').forEach(function (x) { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', String(x === b)); }); sheet.querySelector('.tn-sub-other').value = ''; updateHandoff(); saveDraft(); return; }
     if (b.hasAttribute('data-tn-mic')) { if (rec || timer || restart) stopRec('말한 글을 확인하고 잘못 인식된 용어를 고쳐줘.'); else startRec(); return; }
     if (b.hasAttribute('data-tn-pick')) { var f = sheet.querySelector('[data-tn-file]'); f.value = ''; f.click(); return; }
@@ -527,6 +565,13 @@
     '.tn-viewer img{max-width:100%;max-height:85dvh;border-radius:12px}.tn-viewer{flex-direction:column;gap:10px}' +
     '.tn-panel{box-sizing:border-box;overscroll-behavior:contain}.tn-panel .tn-x{width:var(--tap);min-height:var(--tap)!important}.tn-top{grid-template-columns:var(--tap) 1fr var(--tap)}.tn-sheet .tn-subs input{min-height:var(--tap)!important}.tn-sheet button,.tn-sheet summary,.tn-sheet a{min-height:var(--tap)}.tn-sheet summary{cursor:pointer;display:flex;align-items:center;font-size:var(--fs-s);line-height:1.6}.tn-sheet :is(button,a,input,textarea,summary):focus-visible{outline:3px solid var(--accent);outline-offset:2px}' +
     '.tn-rec>b{font-size:var(--fs-m)}.tn-rec .tn-guide{margin:8px 0;line-height:1.6}.tn-rec p{margin-bottom:0}.tn-local{margin:10px 0}.tn-clock{font-size:var(--fs-3xl)}.tn-mic.on{color:var(--u-on-solid,#fff)!important}.tn-handoff{margin:12px 0;padding:12px;border:1px solid var(--u-line);border-radius:var(--r-m);background:var(--u-soft)}.tn-handoff>b{font-size:var(--fs-m)}.tn-handoff p{line-height:1.6}.tn-handoff [data-tn-copy]{width:100%;min-height:50px;font-weight:700}.tn-handoff .tn-gpt-main{margin-bottom:0;box-sizing:border-box}.tn-transfer-status{color:var(--ink-2);margin:8px 0 0}.tn-prompt{width:100%;box-sizing:border-box;font-size:var(--fs-s);line-height:1.6}.tn-return:empty{display:none}.tn-return{color:var(--ink-2);line-height:1.6}.tn-again label{min-height:var(--tap)}.tn-text,.tn-sum{box-sizing:border-box}.tn-sum{scroll-margin:16px}.tn-local .tn-mic{width:100%}.tn-topic{width:100%;min-height:var(--tap);box-sizing:border-box;font-size:var(--fs-m)}.tn-audio-link{display:flex;align-items:center;justify-content:center;min-height:var(--tap);margin-top:8px}' +
+    '.tn-ls-sum{margin:0 0 8px;color:var(--ink-2)}.tn-lessons{display:grid;grid-template-columns:repeat(auto-fill,minmax(98px,1fr));gap:8px}' +
+    '.tn-ls{display:grid!important;gap:2px;justify-items:start;text-align:left;min-height:64px!important;padding:8px 10px!important;border:1px solid var(--u-line)!important;border-radius:12px!important;background:var(--u-surface)!important;color:var(--ink)!important;font-weight:500}' +
+    '.tn-ls small{font-size:12.5px;color:var(--ink-3)}.tn-ls b{font-size:15px}.tn-ls em{font-style:normal;font-size:12.5px;font-weight:700;color:var(--ink-3)}' +
+    '.tn-ls.st-past em{color:var(--warn-ink)}.tn-ls.fresh em,.tn-ls.st-now em{color:var(--accent-ink)}.tn-ls.st-done em{color:var(--ok-ink)}.tn-ls.st-done b{color:var(--ink-2)}' +
+    '.tn-ls.on{border:2px solid var(--accent)!important;background:var(--u-soft)!important;padding:7px 9px!important}' +
+    '.tn-more-btn{display:block;width:100%;margin:8px 0 0;min-height:var(--tap);border:1px dashed var(--u-line)!important;background:transparent!important;color:var(--accent-ink)!important;border-radius:12px!important;font-weight:700;font-size:13.5px}.tn-more{margin-top:8px}.tn-more[hidden]{display:none!important}' +
+    '.tn-next{margin:4px 0 6px;color:var(--accent-ink)}' +
     '@media(prefers-reduced-motion:reduce){.tn-mic.on{animation:none}}';
   document.head.appendChild(css);
   if (typeof render === 'function') render();
