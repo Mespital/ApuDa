@@ -90,6 +90,49 @@
   }
   function autoTopic() { var x = lessons().find(function (y) { return y.sub === sub; }); return x ? x.p + '교시 수업' : '수업 복습'; }
   function autoOn() { try { return localStorage.getItem('fc-tn-auto') !== '0'; } catch (e) { return true; } }
+  /* 🎙️ VPS 자동 처리: 녹음 → 받아쓰기(Whisper) → 정리 → Drive. 서버가 없거나 꺼져 있으면 ChatGPT 흐름으로 */
+  var VKEY = 'fc-voice-v1', vcap = null, vtimer = null;
+  function liveInfo() { return typeof FamilySync !== 'undefined' && FamilySync.joined() && FamilySync.live ? FamilySync.live() : null; }
+  function voiceCap() {
+    var l = liveInfo(); if (!l || !l.url || !l.t) return Promise.resolve(false);
+    if (vcap && Date.now() - vcap.at < 300000) return Promise.resolve(vcap.ok);
+    return fetch(l.url + '/health', { cache: 'no-store', signal: AbortSignal.timeout ? AbortSignal.timeout(5000) : undefined }).then(function (r) { return r.json(); })
+      .then(function (j) { var v = j && j.voice; vcap = { at: Date.now(), ok: !!(v && (v.stt || v.drive)), drive: !!(v && v.drive) }; return vcap.ok; })
+      .catch(function () { vcap = { at: Date.now(), ok: false }; return false; });
+  }
+  function vjobs() { var a = ls(VKEY, []); return Array.isArray(a) ? a.filter(function (j) { return j && /^[a-f0-9]{32}$/.test(j.id) && j.noteId && Date.now() - j.at < 48 * 3600e3; }).slice(-10) : []; }
+  function vsave(a) { try { localStorage.setItem(VKEY, JSON.stringify(a)); } catch (e) {} }
+  function hex(n) { return Array.from(crypto.getRandomValues(new Uint8Array(n)), function (x) { return x.toString(16).padStart(2, '0'); }).join(''); }
+  function b64(blob) { return new Promise(function (ok, no) { var fr = new FileReader(); fr.onload = function () { ok(String(fr.result).split(',')[1] || ''); }; fr.onerror = no; fr.readAsDataURL(blob); }); }
+  function startVoice(n) {
+    var l = liveInfo(); if (!l || !n.audio || !window.FC_AUDIO) return;
+    FC_AUDIO.get(n.audio.id).then(function (r) {
+      if (!r || !r.blob || !r.blob.size) throw Error('audio');
+      return b64(r.blob).then(function (data) {
+        var j = { id: hex(16), noteId: n.id, basis: window.FC_CHAT_DRIVE ? FC_CHAT_DRIVE.basis(n) : '', at: Date.now() };
+        var a = vjobs(); a.push(j); vsave(a);
+        return fetch(l.url + '/voice', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ t: l.t, id: j.id, subject: n.subject, topic: n.topic || '', at: new Date(r.at || Date.now()).toISOString(), mime: r.blob.type || 'audio/webm', name: r.name || '', text: n.text || '', audio: data }) })
+          .then(function (res) { return res.json().then(function (x) { if (!res.ok) throw Error(x.error || 'voice'); }); });
+      });
+    }).then(function () { notice('🎧 받아쓰기·정리·Drive 저장 중… 1~3분 걸려. 다른 거 해도 돼.'); vpoll(); if (typeof render === 'function') render(); })
+      .catch(function (e) { vsave(vjobs().filter(function (j) { return j.noteId !== n.id; })); notice('자동 정리 서버에 보내지 못했어. 노트의 "채팅·Drive로 보내기"를 눌러줘.'); if (typeof render === 'function') render(); });
+  }
+  function vpoll() {
+    clearTimeout(vtimer); var a = vjobs(), l = liveInfo(); if (!a.length || !l || document.visibilityState !== 'visible') return;
+    Promise.all(a.map(function (j) {
+      return fetch(l.url + '/voice?id=' + j.id + '&t=' + encodeURIComponent(l.t), { cache: 'no-store' }).then(function (r) { if (r.status === 404) return { gone: true }; return r.json(); }).then(function (x) {
+        if (x.gone) { j.drop = true; return; }
+        if (x.state !== 'done' || !x.result) return;
+        var note = notes().find(function (y) { return y.id === j.noteId; });
+        var res = FC_NOTES.applyCloud(j.noteId, j.basis, { at: x.result.at, value: { verified: true, summary: x.result.summary || '', transcript: x.result.transcript || '', files: x.result.files || [] } }, 'v-' + j.id, !(note && note.sum));
+        j.drop = res !== 'failed';
+        if (res === 'applied') notice((x.result.summary ? '🧠 정리 완료' : '📝 받아쓰기 완료') + ((x.result.files || []).length ? ' · Drive 저장' : '') + ((x.errors || []).length ? ' (일부 단계는 건너뜀)' : '') + '. 복습 탭에서 볼 수 있어.');
+        if (res === 'conflict') notice('정리를 받았는데 그사이 노트를 고쳐서 반영을 멈췄어.');
+      }).catch(function () {});
+    })).then(function () { var rest = a.filter(function (j) { return !j.drop; }); vsave(rest); if (rest.length) vtimer = setTimeout(vpoll, 8000); if (typeof render === 'function' && a.length !== rest.length) render(); });
+  }
+  document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible') vpoll(); });
+  setTimeout(vpoll, 2500);
   function showMore(on) { var m = sheet && sheet.querySelector('.tn-more'), b = sheet && sheet.querySelector('[data-tn-more]'); if (!m || !b) return; m.hidden = !on; b.setAttribute('aria-expanded', String(on)); b.textContent = on ? '－ 다른 과목 접기' : '＋ 다른 과목 더 보기'; }
 
   /* ---------- 오늘 탭 카드 ---------- */
@@ -120,7 +163,7 @@
       (kind === 'talk' ? '<label class="tn-l" for="tn-topic">오늘의 주제</label><input id="tn-topic" class="tn-topic" maxlength="60" placeholder="비워두면 N교시 수업으로 적을게 · 예: 함수의 뜻">' : '') +
       (kind === 'talk' ? talkBody() : photoBody()) +
       (kind === 'talk' ? '' : '<label class="tn-l" for="tn-text">메모 <small class="muted">(사진에서 읽은 글·헷갈린 것)</small></label><textarea id="tn-text" class="tn-text" rows="5" maxlength="1500" placeholder="사진 속 핵심을 한두 줄 적거나, 글자 읽기를 눌러봐."></textarea>') +
-      (window.FC_CHAT_DRIVE ? '<div class="tn-handoff"><b>채팅에서 정리하고 Drive에 보관</b><p class="small">지금 쓴 글과 녹음·사진 원본을 기기에 저장한 뒤 전달 자료로 준비해. 채팅에 요청을 보내면 정리와 Drive 파일 링크를 공부방으로 받을 수 있어.</p><p class="small muted">전달 자료는 사이트에 24시간 보관돼. Drive 저장은 채팅의 처리 결과를 받아야 확인돼.</p>' + (kind === 'talk' ? '<label class="tn-auto"><input type="checkbox" data-tn-auto' + (autoOn() ? ' checked' : '') + '> 녹음이 끝나면 바로 저장하고 보내기 준비</label>' : '') + '<button type="button" class="primary" data-tn-cloud-new="' + kind + '">노트 저장 · 채팅·Drive로 보내기</button></div><details class="tn-alt tn-manual"><summary>글만 전달 · 정리 직접 붙여넣기</summary>' : '') +
+      (window.FC_CHAT_DRIVE ? '<div class="tn-handoff"><b>채팅에서 정리하고 Drive에 보관</b><p class="small">지금 쓴 글과 녹음·사진 원본을 기기에 저장한 뒤 전달 자료로 준비해. 채팅에 요청을 보내면 정리와 Drive 파일 링크를 공부방으로 받을 수 있어.</p><p class="small muted">전달 자료는 사이트에 24시간 보관돼. Drive 저장은 채팅의 처리 결과를 받아야 확인돼.</p>' + (kind === 'talk' ? '<label class="tn-auto"><input type="checkbox" data-tn-auto' + (autoOn() ? ' checked' : '') + '> 녹음이 끝나면 자동으로 저장·정리·Drive 보관</label>' : '') + '<button type="button" class="primary" data-tn-cloud-new="' + kind + '">노트 저장 · 채팅·Drive로 보내기</button></div><details class="tn-alt tn-manual"><summary>글만 전달 · 정리 직접 붙여넣기</summary>' : '') +
       '<div class="tn-handoff"><b>💬 ChatGPT로 복습하기</b><p class="small">① 요청을 복사하고 ② ChatGPT를 열어줘. 입력창이 비어 있으면 붙여넣고 보내줘.' + (kind === 'talk' ? ' 수업 내용을 아직 안 적었다면, 그다음 입력창의 🎤 음성 입력으로 1분 말하고 보내면 돼.' : ' 사진 원본은 자동으로 전송되지 않아. 필요하면 ChatGPT에서 직접 첨부해줘.') + '</p>' +
       '<button type="button" data-tn-copy>① 복습 요청 복사</button><a class="tn-gpt-main" data-tn-gpt href="https://chatgpt.com/" target="_blank" rel="noopener">② 일반 Chat 새 대화 열기 ↗</a><p class="small">ChatGPT 상단에서 <b>Chat</b>을 확인하고 보내줘. Work로 열렸다면 Chat으로 바꿔줘.</p>' +
       '<p class="tn-transfer-status small" role="status" aria-live="polite">핵심 정리·확인할 것·복습 질문 3개를 부탁할게.</p>' +
@@ -138,7 +181,15 @@
       audioSession = FC_AUDIO.mount(sheet.querySelector('[data-tn-audio]'), {
         subject: function () { return current.querySelector('.tn-sub-other').value.trim() || sub || '기타'; },
         topic: function () { var el = current.querySelector('.tn-topic'), t = el.value.trim(); if (!t) { t = autoTopic(); el.value = t; saveDraft(); } return t; },
-        onFinal: function () { if (sheet !== current || !autoOn()) return; notice('녹음을 저장했어 🎙️ 정리·Drive 전달을 바로 준비할게.'); setTimeout(function () { if (sheet !== current) return; var b = current.querySelector('[data-tn-cloud-new]'); if (b && !b.disabled) b.click(); }, 500); },
+        onFinal: function () {
+          if (sheet !== current || !autoOn()) return;
+          voiceCap().then(function (ok) {
+            if (sheet !== current) return;
+            if (ok) { if (saveNote('talk', function (n) { startVoice(n); }) === false) notice('녹음은 보관함에 저장했어. 노트 저장은 다시 눌러줘.'); return; }
+            notice('녹음을 저장했어 🎙️ 정리·Drive 전달을 바로 준비할게.');
+            setTimeout(function () { if (sheet !== current) return; var b = current.querySelector('[data-tn-cloud-new]'); if (b && !b.disabled) b.click(); }, 300);
+          });
+        },
         onStart: function () { if (sheet === current) { current.querySelectorAll('[data-tn-sub],.tn-sub-other,.tn-topic').forEach(function (x) { x.disabled = true; }); if (SR) startRec(); } },
         onStop: function () { if (sheet === current) { current.querySelectorAll('[data-tn-sub],.tn-sub-other,.tn-topic').forEach(function (x) { x.disabled = false; }); stopRec('녹음이 끝났어. 글자로 남은 내용을 확인해줘.'); } },
         onRecord: function (r) { if (sheet === current) { currentAudio = r; saveDraft(); } }
@@ -423,6 +474,8 @@
     h += '<ul>' + a.slice(0, showN).map(function (n) {
       return '<li><div class="tn-li-top"><span class="tn-tag ' + n.kind + '">' + (n.kind === 'talk' ? '🎙️' : '📷') + ' ' + esc(n.subject) + '</span><small>' + md(n.date) + '</small>' + (isParent() ? '' : '<button type="button" class="pl-x" data-tn-del="' + esc(n.id) + '" aria-label="노트 지우기">×</button>') + '</div>' +
         (n.photo ? '<button type="button" class="tn-thumb" data-tn-view="' + esc(n.id) + '" data-tn-img="' + esc(n.id) + '" aria-label="사진 크게 보기"></button>' : '') +
+        (vjobs().some(function (j) { return j.noteId === n.id; }) ? '<p class="tn-voice-wait small" role="status">🎧 받아쓰기·정리 중… 끝나면 여기에 나와.</p>' : '') +
+        (n.cloud && Array.isArray(n.cloud.files) ? n.cloud.files.filter(function (f) { return f.role !== 'audio' && /^https:\/\/drive\.google\.com\//.test(f.url || ''); }).map(function (f) { return '<a class="tn-audio-link" href="' + esc(f.url) + '" target="_blank" rel="noopener">' + (f.role === 'review' ? 'Drive 복습 정리 ↗' : f.role === 'note' ? 'Drive 받아쓰기 ↗' : 'Drive 파일 ↗') + '</a>'; }).join('') : '') +
         (n.audio ? '<button type="button" class="tn-audio-link" data-tn-listen="' + esc(n.audio.id) + '">🎧 녹음 원본 듣기</button>' + (/^https:\/\/drive\.google\.com\//.test(n.audio.driveUrl || '') ? '<a class="tn-audio-link" href="' + esc(n.audio.driveUrl) + '" target="_blank" rel="noopener">Drive 녹음 열기 ↗</a>' : '') : '') +
         (n.sum ? '<div class="tn-sumv">' + esc(n.sum).replace(/\n/g, '<br>') + '</div>' + (n.text ? '<p class="tn-txt tn-raw">' + esc(n.text).replace(/\n/g, '<br>') + '</p><button type="button" class="linkish" data-tn-raw="1">원문 보기</button>' : '') : (n.text ? '<p class="tn-txt">' + esc(n.text).replace(/\n/g, '<br>') + '</p>' : '')) + (window.FC_CHAT_DRIVE ? '<button type="button" class="tn-audio-link" data-tn-cloud="' + esc(n.id) + '">채팅·Drive로 보내기</button>' : '') + '</li>';
     }).join('') + '</ul>' + (a.length > showN ? '<button type="button" class="linkish" data-tn-more>이전 노트 더 보기 (' + (a.length - showN) + ')</button>' : '') + '</section>';
@@ -466,12 +519,13 @@
       var n = a[pos]; if (n.cloud && n.cloud.jobId === jobId) return 'applied';
       if (!force && JSON.stringify([n.subject || '', n.topic || '', n.text || '', n.sum || '']) !== original) return 'conflict';
       if (!result || !result.value || typeof result.value.summary !== 'string' || result.value.summary.length > 2000) return 'failed';
-      var previousNotes = a.slice(), next = Object.assign({}, n, { sum: result.value.summary, cloud: { jobId: jobId, files: result.value.files, at: result.at } });
+      var previousNotes = a.slice(), next = Object.assign({}, n, { sum: result.value.summary || n.sum || undefined, cloud: { jobId: jobId, files: result.value.files, at: result.at } });
+      if (typeof result.value.transcript === 'string' && result.value.transcript && !n.text) next.text = result.value.transcript.slice(0, 1500);
       var audio = result.value.files.find(function (f) { return f.role === 'audio'; });
       if (audio && n.audio) next.audio = Object.assign({}, n.audio, { driveId: audio.id, driveUrl: audio.url, name: audio.name });
       a[pos] = next; var rv = state.reviews.find(function (x) { return x.id === n.review; }), old = rv && rv.note;
       if (!saveNotes(a)) return 'failed';
-      if (rv) { rv.note = result.value.summary.slice(0, 800); if (save() === false) { rv.note = old; saveNotes(previousNotes); return 'failed'; } }
+      if (rv && (next.sum || next.text)) { rv.note = (next.sum || next.text).slice(0, 800); if (save() === false) { rv.note = old; saveNotes(previousNotes); return 'failed'; } }
       if (audio && n.audio && window.FC_AUDIO && FC_AUDIO.rememberDrive) FC_AUDIO.rememberDrive(n.audio.id, audio);
       if (typeof render === 'function') render(); return 'applied';
     }
@@ -575,7 +629,7 @@
     '.tn-ls.st-past em{color:var(--warn-ink)}.tn-ls.fresh em,.tn-ls.st-now em{color:var(--accent-ink)}.tn-ls.st-done em{color:var(--ok-ink)}.tn-ls.st-done b{color:var(--ink-2)}' +
     '.tn-ls.on{border:2px solid var(--accent)!important;background:var(--u-soft)!important;padding:7px 9px!important}' +
     '.tn-more-btn{display:block;width:100%;margin:8px 0 0;min-height:var(--tap);border:1px dashed var(--u-line)!important;background:transparent!important;color:var(--accent-ink)!important;border-radius:12px!important;font-weight:700;font-size:13.5px}.tn-more{margin-top:8px}.tn-more[hidden]{display:none!important}' +
-    '.tn-next{margin:4px 0 6px;color:var(--accent-ink)}.tn-auto{display:flex!important;align-items:center;gap:8px;min-height:var(--tap);margin:4px 0 8px!important;font-size:13.5px;font-weight:600!important;color:var(--ink-2)}.tn-auto input{width:22px;height:22px;min-height:22px}' +
+    '.tn-voice-wait{margin:8px 0 0;color:var(--accent-ink);font-weight:700}.tn-next{margin:4px 0 6px;color:var(--accent-ink)}.tn-auto{display:flex!important;align-items:center;gap:8px;min-height:var(--tap);margin:4px 0 8px!important;font-size:13.5px;font-weight:600!important;color:var(--ink-2)}.tn-auto input{width:22px;height:22px;min-height:22px}' +
     '@media(prefers-reduced-motion:reduce){.tn-mic.on{animation:none}}';
   document.head.appendChild(css);
   if (typeof render === 'function') render();

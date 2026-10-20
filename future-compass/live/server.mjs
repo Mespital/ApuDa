@@ -9,11 +9,20 @@ import http from 'node:http';
 import { createHmac, timingSafeEqual, createPublicKey, verify as edVerify } from 'node:crypto';
 import { buildPayload, askAI, hasAI, validQuestion, organizePayload, providerOf } from './shiro.mjs';
 import { listDocs, addDoc, delDoc, gatherRefs } from './rag.mjs';
+import { createVoice, validVoice, sttClient, rcloneClient } from './voice.mjs';
 const WEB = (process.env.FC_WEB_SEARCH || 'on') !== 'off';
 
 const PORT = Number(process.env.PORT || 8093);
 const SECRET = process.env.FC_LIVE_SECRET || '';
 const API_KEY = hasAI(process.env);
+const STT = sttClient(process.env.FC_STT_URL || ''), DRIVE = rcloneClient(process.env.FC_RCLONE_URL || '', process.env.FC_RCLONE_REMOTE || 'gdrive:');
+const CAP = { stt: false, drive: false };
+async function probe() {
+  try { CAP.stt = !!(process.env.FC_STT_URL && (await fetch(process.env.FC_STT_URL.replace(/\/$/, '') + '/health', { signal: AbortSignal.timeout(4000) })).ok); } catch { CAP.stt = false; }
+  CAP.drive = DRIVE ? await DRIVE.ok() : false;
+}
+probe(); setInterval(probe, 300000);
+const VOICE = createVoice({ stt: STT, hasAI: hasAI(process.env), organize: (subject, text) => askAI(process.env, organizePayload({ subject, text, kind: 'voice' })), drive: () => (CAP.drive ? DRIVE : null) });
 const ORIGINS = (process.env.ALLOWED_ORIGINS || 'https://future.apuda.app').split(',').map(s => s.trim()).filter(Boolean);
 // 티켓 확인: ① FC_LIVE_SECRET(선택, HMAC) 또는 ② Netlify가 만든 ed25519 공개키(자동으로 가져옴 → 비밀값 필요 없음)
 const KEY_URL = process.env.FC_KEY_URL || 'https://future.apuda.app/api/family';
@@ -62,7 +71,7 @@ const server = http.createServer(async (req, res) => {
   cors(req, res);
   const url = new URL(req.url, 'http://x');
   if (req.method === 'OPTIONS') { res.writeHead(204); return res.end(); }
-  if (url.pathname === '/health') return send(res, 200, { ok: true, keyed: !!(PUB || SECRET.length >= 24), clients: clients.size, ai: !!API_KEY, prov: providerOf(process.env), docs: listDocs().length, web: WEB });
+  if (url.pathname === '/health') return send(res, 200, { ok: true, keyed: !!(PUB || SECRET.length >= 24), clients: clients.size, ai: !!API_KEY, prov: providerOf(process.env), docs: listDocs().length, web: WEB, voice: { stt: CAP.stt, drive: CAP.drive, ai: !!API_KEY, queue: VOICE.pending() } });
 
   if (url.pathname === '/rt' && req.method === 'GET') {
     if (!verifyTicket(url.searchParams.get('t'))) return send(res, 401, { error: 'ticket' });
@@ -113,6 +122,18 @@ const server = http.createServer(async (req, res) => {
       if (b.save !== false && sum) addDoc({ title: String(b.subject || '수업') + ' ' + String(b.date || '').slice(5) + ' 수업 정리', subject: b.subject, text: sum + '\n\n[원문]\n' + text, by: 'child' });
       return send(res, 200, { ok: true, sum });
     } catch (e) { return send(res, 502, { error: 'ai' }); }
+  }
+  // 🎙️ 1분 녹음 → 받아쓰기·정리·Drive (가족 기기 티켓 필요). 시작은 바로 답하고, 결과는 GET 으로 확인
+  if (url.pathname === '/voice' && req.method === 'POST') {
+    let b; try { b = await body(req, 8600000); } catch { return send(res, 400, { error: 'bad' }); }
+    if (!verifyTicket(b.t)) return send(res, 401, { error: 'ticket' });
+    const bad = validVoice(b); if (bad) return send(res, 400, { error: bad });
+    if (!VOICE.status(b.id) && (limited('v', 30, 3600000) || VOICE.pending() > 6)) return send(res, 429, { error: 'rate' });
+    const r = VOICE.start(b); return send(res, r.error ? 400 : 200, r);
+  }
+  if (url.pathname === '/voice' && req.method === 'GET') {
+    if (!verifyTicket(url.searchParams.get('t'))) return send(res, 401, { error: 'ticket' });
+    const r = VOICE.status(url.searchParams.get('id')); return r ? send(res, 200, r) : send(res, 404, { error: 'not_found' });
   }
   // 공부 자료 (가족 기기 티켓 필요)
   if (url.pathname === '/docs' && req.method === 'GET') {
