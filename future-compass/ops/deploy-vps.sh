@@ -46,6 +46,9 @@ if [ -n "${FC_OLLAMA_MODEL:-}" ] && [ "${GITHUB_EVENT_NAME:-}" = "workflow_dispa
 fi
 live_out=$(ssh "${ssh_opts[@]}" "$VPS_USER@$VPS_HOST" 'cd "$HOME/future-compass"; docker compose -p future-compass -f compose.yaml up -d --force-recreate live 2>&1 | tail -2 | tr "\n" " "; curl -s --retry 10 --retry-delay 2 --retry-all-errors http://127.0.0.1:8093/health || docker logs --tail 5 future-compass-live-1 2>&1 | tr "\n" " "' 2>&1 || true)
 printf "live relay: %s\n" "${live_out:0:400}" | tr -d "\r" | sed "s/^/::notice::/"
+# 🎙️ 받아쓰기·Drive (VPS에서 ~/future-compass/voice.on 을 만든 뒤부터 배포 때마다 같이 갱신)
+ssh "${ssh_opts[@]}" "$VPS_USER@$VPS_HOST" 'cd "$HOME/future-compass"; if [ -f voice.on ]; then mkdir -p stt-models rclone; docker compose -p future-compass -f compose.yaml --profile voice up -d --build stt rclone 2>&1 | tail -2 | tr "\n" " "; echo; echo "voice: stt $(curl -s -m 5 http://127.0.0.1:8093/health | grep -o "\"voice\":{[^}]*}")"; else echo "voice: off (touch ~/future-compass/voice.on to enable)"; fi' 2>&1 | tr -d '\r' | sed 's/^/::notice::/' || echo '::warning::voice step failed'
+
 # 공개 주소: DNS(live.apuda.app 등)가 이 VPS를 가리킬 때만 Caddy 끝에 블록 추가 (기존 블록은 그대로, validate 통과 시에만 reload)
 H="${FUTURE_LIVE_HOST:-live.apuda.app}"
 [[ "$H" =~ ^[a-z0-9.-]+\.[a-z]{2,}$ ]] || exit 2

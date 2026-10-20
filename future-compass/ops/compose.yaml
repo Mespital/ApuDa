@@ -57,6 +57,8 @@ services:
       PORT: '8093'
       ALLOWED_ORIGINS: https://future.apuda.app
       FC_DATA_DIR: /data
+      FC_STT_URL: http://stt:9000
+      FC_RCLONE_URL: http://rclone:5572
     volumes:
       - ./live:/live:ro
       - ./live-data:/data
@@ -86,5 +88,32 @@ services:
       - ./ollama-data:/root/.ollama
     mem_limit: ${OLLAMA_MEM:-4g}
     cpus: ${OLLAMA_CPUS:-2}
+    security_opt:
+      - no-new-privileges:true
+  stt:
+    # 🎙️ 받아쓰기(faster-whisper small, CPU). --profile voice 로만 기동. 외부 포트 없음(live만 접근)
+    profiles: [voice]
+    build: ./live/stt
+    image: future-compass-stt:1
+    restart: unless-stopped
+    environment:
+      STT_MODEL: ${STT_MODEL:-small}
+      STT_THREADS: '2'
+    volumes:
+      - ./stt-models:/models
+    mem_limit: ${STT_MEM:-2g}
+    cpus: ${STT_CPUS:-2}
+    security_opt:
+      - no-new-privileges:true
+  rclone:
+    # ☁️ Google Drive 업로드 창구. rclone 설정(./rclone/rclone.conf, 원격 이름 gdrive)은 VPS에서 한 번 만든다. 외부 포트 없음
+    profiles: [voice]
+    image: rclone/rclone:1.68.2
+    restart: unless-stopped
+    command: ['rcd', '--rc-addr=0.0.0.0:5572', '--rc-no-auth', '--config=/config/rclone/rclone.conf', '--drive-use-trash=true']
+    volumes:
+      - ./rclone:/config/rclone
+    mem_limit: 256m
+    cpus: 0.5
     security_opt:
       - no-new-privileges:true

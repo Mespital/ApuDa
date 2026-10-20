@@ -33,3 +33,30 @@ workflow는 기존 apuda-ai-vps 환경의 VPS_HOST, VPS_USER, VPS_SSH_KEY를 재
 - 흰둥이 똑똑 모드 AI 키(둘 중 하나): GitHub 환경 `apuda-ai-vps` 비밀값 `ANTHROPIC_API_KEY`(VPS에서 응답) 또는 Netlify 환경변수 `ANTHROPIC_API_KEY`. 모델은 `FC_CHAT_MODEL`(기본 claude-haiku-4-5).
 - ChatGPT로 쓰기: GitHub 환경 `apuda-ai-vps` 비밀값 `OPENAI_API_KEY` (또는 Netlify 환경변수 `OPENAI_API_KEY`). 둘 다 있으면 Claude 먼저·실패 시 ChatGPT. ChatGPT를 먼저 쓰려면 변수 `FC_CHAT_PROVIDER=openai`, 모델은 `FC_OPENAI_MODEL`(기본 gpt-4o-mini).
 - 공부 자료 근거 답변: ⚙️ 설정 → 흰둥이 → 📚 공부 자료(텍스트·.txt·.md·.pdf). VPS `live-data/docs.json`에 저장(최대 6MB). 질문과 맞는 자료 조각 → 없으면 관련 내 노트 → 개념 질문이면 한국어 위키백과 요약을 근거로 답하고 출처 표시. 위키 검색 끄기: `FC_WEB_SEARCH=off`.
+
+## 🎙️ 1분 녹음 자동 처리 (받아쓰기 · 정리 · Google Drive)
+흐름: 공부방 녹음 끝 → live `/voice` → `stt`(faster-whisper small, CPU) 받아쓰기 → 흰둥이 AI(Ollama 등) 정리 → `rclone` 으로 Drive `승준 공부방/1분 복습 녹음/<과목>/` 에 녹음·받아쓰기·복습정리 3개 저장 → 공부방이 결과를 받아 노트·복습에 반영.
+- 기기 원본 녹음은 그대로 남는다. 서버는 처리 후 소리 데이터를 지우고 결과 JSON만 48시간 보관(`live-data/voice/`).
+- 서버가 꺼져 있거나 `voice` 서비스가 없으면 앱은 자동으로 ChatGPT 전달 흐름으로 돌아간다.
+- `stt`·`rclone` 은 외부 포트가 없고 live 컨테이너만 부른다.
+
+### 처음 한 번 (VPS)
+1. 배포 폴더 확인: `ls -d ~/future-compass /root/future-compass /home/*/future-compass 2>/dev/null`
+2. PC 터미널에서 터널을 열고 접속: `ssh -L 53682:127.0.0.1:53682 root@<VPS IP>`
+3. 그 접속 안에서 (배포 폴더로 이동 후):
+   ```bash
+   mkdir -p rclone stt-models
+   docker run --rm -it --network host -v "$PWD/rclone:/config/rclone" rclone/rclone:1.68.2 config
+   ```
+   `n`(새 연결) → 이름 `gdrive` → 저장소 `drive` → client_id·secret 비움 → scope `1`(drive) → 나머지 기본값 → "Use web browser" `y` → 화면에 나온 `http://127.0.0.1:53682/...` 주소를 **PC 브라우저**에서 열고 Google 로그인·허용 → Shared Drive `n` → `y`(저장) → `q`
+4. 켜기:
+   ```bash
+   touch voice.on
+   docker compose -p future-compass -f compose.yaml --profile voice up -d --build stt rclone
+   docker compose -p future-compass -f compose.yaml up -d --force-recreate live
+   sleep 60; curl -s http://127.0.0.1:8093/health
+   ```
+   `"voice":{"stt":true,"drive":true,...}` 이면 끝. 받아쓰기 모델(약 500MB)은 처음 켤 때 내려받아 1~3분 걸린다(그동안 `stt:false`).
+- 이후 배포 때마다 `voice.on` 이 있으면 stt·rclone 도 같이 갱신된다.
+- 끄기: `rm voice.on; docker compose -p future-compass -f compose.yaml --profile voice stop stt rclone`
+- Drive 연결 해제: Google 계정 → 보안 → 타사 액세스에서 rclone 삭제, `rclone/rclone.conf` 삭제.
