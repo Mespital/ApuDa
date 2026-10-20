@@ -212,14 +212,18 @@
     });
   }
   function rememberDrive(id, f) {
-    return get(id).then(function (r) {
-      if (!r || !r.blob || r.blob.size !== f.size || !/^[\w-]{10,200}$/.test(f.id) || !/^https:\/\/drive\.google\.com\/file\/d\//.test(f.url || '')) return;
+    var recording = memory.has(id) ? Promise.resolve(memory.get(id)) : transaction('readonly', function (s) { return s.get(id); });
+    return recording.then(function (r) {
+      if (!r || !r.blob) return null; // The raw recording can live on another family device.
+      var u; try { u = new URL(f.url); } catch (e) { return false; }
+      if (r.blob.size !== f.size || !/^[\w-]{10,200}$/.test(f.id) || !/^[a-f0-9]{64}$/.test(f.sha256) || u.origin !== 'https://drive.google.com' || u.pathname !== '/file/d/' + f.id + '/view') return false;
       return r.blob.arrayBuffer().then(function (b) { return crypto.subtle.digest('SHA-256', b); }).then(function (b) {
-        var hash = Array.from(new Uint8Array(b), function (x) { return x.toString(16).padStart(2, '0'); }).join(''); if (hash !== f.sha256) return;
-        r.driveId = f.id; r.driveUrl = f.url; r.driveParent = f.parentId; r.name = f.name; r.uploaded = true; r.uploadedVia = 'chat'; r.error = '';
-        return store(r).then(function () { notify(r); });
+        var hash = Array.from(new Uint8Array(b), function (x) { return x.toString(16).padStart(2, '0'); }).join(''); if (hash !== f.sha256) return false;
+        if (r.uploaded && r.driveId === f.id && r.driveUrl === f.url && r.name === f.name) return true;
+        var before = r, next = Object.assign({}, r, { driveId: f.id, driveUrl: f.url, driveParent: f.parentId, name: f.name, uploaded: true, uploadedVia: f.via === 'vps' ? 'vps' : 'chat', error: '' });
+        return store(next).then(function (saved) { if (saved.memoryOnly) { memory.set(id, before); return false; } notify(saved); return true; });
       });
-    }).catch(function () {});
+    }).catch(function () { return false; });
   }
   window.FC_AUDIO = { mount: mount, stop: stop, get: get, metadata: metadata, open: open, rememberDrive: rememberDrive, remove: remove };
   document.addEventListener('visibilitychange', function () { if (document.visibilityState !== 'visible') stop(); });

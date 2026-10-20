@@ -73,19 +73,22 @@
   }
   function weekCard() {
     if (!can('flow')) return '<section class="card db-card"><h2>이번 주 공부</h2>' + hidden('공부 흐름') + '</section>';
-    var t = T(), mon = monday(t), sun = addD(mon, 6), fm = focusByDay(mon, sun), stud = window.FC_PLANNER && FC_PLANNER.studied ? FC_PLANNER.studied(mon, sun) : {};
-    var pmon = addD(mon, -7), pfm = focusByDay(pmon, addD(pmon, 6)), tot = 0, ptot = 0, days = 0;
+    var t = T(), mon = monday(t), sun = addD(mon, 6), fm = focusByDay(mon, t), stud = window.FC_PLANNER && FC_PLANNER.studied ? FC_PLANNER.studied(mon, t) : {};
+    var pmon = addD(mon, -7), pfm = focusByDay(pmon, addD(t, -7)), tot = 0, ptot = 0, days = 0;
     Object.keys(fm).forEach(function (k) { tot += fm[k]; }); Object.keys(pfm).forEach(function (k) { ptot += pfm[k]; });
     var max = 30; for (var i = 0; i < 7; i++) { var dd = addD(mon, i); max = Math.max(max, fm[dd] || 0); if (stud[dd]) days++; }
-    var bars = '';
+    var bars = '', table = '', description = [];
     for (var j = 0; j < 7; j++) {
       var d = addD(mon, j), m = fm[d] || 0, h = Math.round(m / max * 100);
       bars += '<div class="db-bar' + (d === t ? ' now' : '') + (d > t ? ' future' : '') + '"><span class="db-bv">' + (m ? m : '') + '</span><i style="height:' + Math.max(m ? 6 : 0, h) + '%"></i><em>' + WD[(j + 1) % 7] + '</em>' + (stud[d] ? '<b aria-label="공부한 날">●</b>' : '<b class="off" aria-hidden="true">·</b>') + '</div>';
+      description.push(WD[(j + 1) % 7] + '요일 ' + (d > t ? '예정' : m + '분'));
+      table += '<tr><th scope="row">' + md(d) + '</th><td>' + (d > t ? '예정' : m + '분') + '</td><td>' + (d > t ? '—' : stud[d] ? '공부함' : '기록 없음') + '</td></tr>';
     }
-    var diff = tot - ptot, cmp = ptot ? (diff >= 0 ? '지난주보다 ' + hm(diff) + ' 더' : '지난주보다 ' + hm(-diff) + ' 적게') : '지난주 기록 없음';
+    var diff = tot - ptot, cmp = ptot ? '지난주 같은 요일까지보다 ' + hm(Math.abs(diff)) + (diff >= 0 ? ' 더' : ' 적게') : '지난주 같은 요일까지 기록 없음';
     return '<section class="card db-card"><div class="db-head"><h2>이번 주 공부</h2><small>' + md(mon) + ' ~ ' + md(sun) + '</small></div>' +
       '<p class="db-big"><b>' + hm(tot) + '</b> 집중 · 공부한 날 <b>' + days + '</b>/7</p><p class="small muted">' + cmp + '</p>' +
-      '<div class="db-bars" role="img" aria-label="요일별 집중 시간(분)">' + bars + '</div><p class="small muted">막대는 집중 시간(분), ●는 할 일·복습·집중 중 하나라도 한 날</p></section>';
+      '<div class="db-bars" role="img" aria-label="' + e('요일별 집중 시간. ' + description.join(', ')) + '">' + bars + '</div><p class="small muted">막대는 집중 시간(분), ●는 할 일·복습·집중 중 하나라도 한 날</p>' +
+      '<details class="db-values"><summary>요일별 숫자를 표로 보기</summary><table><caption>이번 주 요일별 집중 기록</caption><thead><tr><th scope="col">날짜</th><th scope="col">집중 시간</th><th scope="col">공부 기록</th></tr></thead><tbody>' + table + '</tbody></table></details></section>';
   }
   function subjectCard() {
     if (!can('flow')) return '';
@@ -148,6 +151,7 @@
 
   var css = document.createElement('style');
   css.textContent =
+    '.db-values summary{min-height:var(--tap);display:flex;align-items:center;cursor:pointer;font-size:var(--fs-s)}.db-values table{width:100%;border-collapse:collapse;font-size:var(--fs-s)}.db-values :is(td,th){padding:6px;text-align:left;border-bottom:1px solid var(--u-line)}.db-values caption{text-align:left;font-weight:700;padding:6px}' +
     '.db-top h1{font-size:24px;margin:4px 0 2px}.db-top{margin-bottom:10px}' +
     '.db-kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:12px}@media(min-width:720px){.db-kpis{grid-template-columns:repeat(4,1fr)}}' +
     '.db-kpi{display:grid!important;gap:2px;justify-items:start;text-align:left;min-height:84px!important;padding:10px 12px!important;border:1px solid var(--u-line)!important;border-radius:16px!important;background:var(--u-surface)!important;color:var(--ink)!important;box-shadow:var(--sh-1)}' +

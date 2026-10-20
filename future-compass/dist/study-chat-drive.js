@@ -32,7 +32,7 @@
   }
   function label(j) { return j.applied ? j.kind === 'backup' ? '채팅에서 학습 기록의 Drive 저장을 확인했어.' : 'Drive 저장 결과를 받았고 공부방에도 반영했어.' : j.result ? j.error || (j.conflict ? 'Drive 저장 결과를 받았어. 그사이 바꾼 노트는 확인 후 반영해줘.' : 'Drive 저장 결과를 받았어.') : j.expiresAt <= Date.now() ? '전달 기한이 지났어. 원본에서 다시 보내줘.' : j.error || '채팅 처리 대기 · 아직 Drive 저장을 확인하지 않았어.'; }
   function row(j) {
-    return '<article class="cd-job"><b>' + esc(j.subject + ' · ' + j.topic) + '</b><p class="small" role="status">' + esc(label(j)) + '</p><div class="cd-actions">' + links(j) + (j.result && j.result.value.summary ? '<button type="button" data-cd-summary="' + j.id + '">받은 정리 보기</button>' : '') + (j.conflict ? '<button type="button" data-cd-apply="' + j.id + '">정리 반영하기</button>' : '') + (!j.result && j.expiresAt > Date.now() ? (j.prepared ? '<button type="button" data-cd-open="' + j.id + '">채팅으로 이동</button>' : '') + '<button type="button" data-cd-check="' + j.id + '">' + (j.prepared ? '저장 결과 확인' : '전달 상태 확인') + '</button>' : '') + '<button type="button" data-cd-cancel="' + j.id + '">전달 자료 지우기</button></div></article>';
+    return '<article class="cd-job"><b>' + esc(j.subject + ' · ' + j.topic) + '</b><p class="small" role="status">' + esc(label(j)) + '</p><div class="cd-actions">' + links(j) + (j.result && j.result.value.summary ? '<button type="button" data-cd-summary="' + j.id + '">받은 정리 보기</button>' : '') + (j.result && !j.applied && (j.conflict || j.error) && !(window.PinGate && PinGate.who() === 'parent') ? '<button type="button" data-cd-apply="' + j.id + '">정리 반영하기</button>' : '') + (!j.result && j.expiresAt > Date.now() ? (j.prepared ? '<button type="button" data-cd-open="' + j.id + '">채팅으로 이동</button>' : '') + '<button type="button" data-cd-check="' + j.id + '">' + (j.prepared ? '저장 결과 확인' : '전달 상태 확인') + '</button>' : '') + '<button type="button" data-cd-cancel="' + j.id + '">전달 자료 지우기</button></div></article>';
   }
   function panel() {
     if (!allowed()) return '';
@@ -59,16 +59,16 @@
     open('공부방 → 채팅 → Drive', row(j) + (!j.result && j.prepared ? '<p class="small"><b>보라 버튼 한 번</b>이면 요청이 복사되고 ChatGPT가 열려. 입력창에 요청이 들어가 있으면 <b>보내기</b>만, 비어 있으면 붙여넣고 보내줘. ChatGPT가 정리하고 Drive에 저장해 결과를 돌려주면, 이 화면으로 돌아올 때 자동으로 반영돼. 상단이 Work라면 Chat으로 바꿔줘.</p><button type="button" data-cd-copy="' + j.id + '">요청만 복사</button><a class="cd-primary" data-cd-chat="' + j.id + '" href="' + esc(window.SHIRO_AI && SHIRO_AI.chatHref ? SHIRO_AI.chatHref(prompt(j)) : 'https://chatgpt.com/') + '" target="_blank" rel="noopener noreferrer">ChatGPT로 보내기 (정리·Drive 저장) ↗</a><details><summary>요청 직접 복사</summary><textarea readonly aria-label="저장과 복습 요청" rows="6">' + esc(prompt(j)) + '</textarea></details><p class="small muted">전달 링크는 24시간 동안 이 자료에만 접근할 수 있어. 링크를 받은 사람도 자료를 볼 수 있으니 이 채팅에만 보내줘. Drive 보관은 전달 기한과 별개야.</p>' : ''));
     dialog.dataset.job = j.id; dialog.dataset.state = signature(j); dialog.dataset.preparing = '';
   }
-  function apply(j, force) {
+  async function apply(j, force) {
     if (!allowed() || !j.result) return;
     if (j.kind === 'backup') { j.applied = true; }
-    else if (window.FC_NOTES) { var result = FC_NOTES.applyCloud(j.noteId, j.basis, j.result, j.id, !!force); j.applied = result === 'applied'; j.conflict = result === 'conflict'; if (result === 'missing') j.error = '원본 노트가 이 기기에 없어. Drive 링크에서 확인해줘.'; if (result === 'failed') j.error = '기기 저장 공간 때문에 정리를 반영하지 못했어. 다시 확인해줘.'; }
+    else if (window.FC_NOTES) { var result = await FC_NOTES.applyCloud(j.noteId, j.basis, j.result, j.id, !!force); j.applied = result === 'applied'; j.conflict = result === 'conflict'; if (result === 'missing') j.error = '원본 노트가 이 기기에 없어. Drive 링크에서 확인해줘.'; if (result === 'failed') j.error = '기기 원본 검증이나 저장을 확인하지 못했어. 원본·저장 공간을 확인하고 다시 반영해줘.'; }
     try { remember(); } catch (e) { notify('전달 상태를 기기에 기록하지 못했어.'); }
   }
   function check(j, manual) {
     if (!allowed() || busy.has(j.id) || j.applied || j.expiresAt <= Date.now()) return Promise.resolve();
     busy.add(j.id);
-    return api(jobURL(j, 'status'), { headers: owner(j) }).then(function (r) { if (!allowed()) return; j.error = ''; j.prepared = true; if (r.result) { if (!validResult(r.result)) throw Error('receipt_invalid'); j.result = r.result; apply(j); } try { remember(); } catch (e) {} if (manual && !r.result) notify('전달 자료는 준비됐어. 채팅에서 요청을 보내고 처리가 끝나면 다시 확인해줘.'); }).catch(function (e) { j.error = errorText(e); if (e.status === 410) j.expiresAt = Date.now(); if (manual) notify(j.error); }).finally(function () { busy.delete(j.id); refresh(); });
+    return api(jobURL(j, 'status'), { headers: owner(j) }).then(async function (r) { if (!allowed()) return; j.error = ''; j.prepared = true; if (r.result) { if (!validResult(r.result)) throw Error('receipt_invalid'); j.result = r.result; remember(); await apply(j); } try { remember(); } catch (e) {} if (manual && !r.result) notify('전달 자료는 준비됐어. 채팅에서 요청을 보내고 처리가 끝나면 다시 확인해줘.'); }).catch(function (e) { j.error = errorText(e); if (e.status === 410) j.expiresAt = Date.now(); if (manual) notify(j.error); }).finally(function () { busy.delete(j.id); refresh(); });
   }
   function poll() {
     clearTimeout(pollTimer);
@@ -135,7 +135,7 @@
     if (key === 'copy') { var p = prompt(j); Promise.resolve(window.SHIRO_AI && SHIRO_AI.rawCopy ? SHIRO_AI.rawCopy(p) : false).then(function (ok) { if (ok) notify('요청을 복사했어. 일반 Chat을 열고 보내줘.'); else if (dialog && dialog.open && dialog.dataset.job === j.id) { var d = dialog.querySelector('details'); d.open = true; var t = d.querySelector('textarea'); t.focus(); t.select(); notify('요청 전체를 직접 복사해줘.'); } }); }
     if (key === 'check') { b.disabled = true; check(j, true).finally(function () { b.disabled = false; }); }
     if (key === 'summary') { open('받은 복습 정리', '<p class="cd-summary">' + esc(j.result.value.summary) + '</p>'); dialog.dataset.job = ''; }
-    if (key === 'apply' && confirm('기존에 고친 정리를 받은 정리로 바꿀까? 말한 원문은 그대로 남아.')) { apply(j, true); refresh(); if (typeof render === 'function') render(); }
+    if (key === 'apply' && confirm('기존에 고친 정리를 받은 정리로 바꿀까? 말한 원문은 그대로 남아.')) { apply(j, true).then(function () { refresh(); if (typeof render === 'function') render(); }); }
     if (key === 'cancel' && confirm('사이트의 전달 자료를 지울까? 기기 원본과 Drive에 저장한 파일은 남아 있어.')) { b.disabled = true; api(jobURL(j, 'cancel'), { method: 'DELETE', headers: owner(j) }).catch(function (er) { if (er.status !== 404 && er.status !== 410) throw er; }).then(function () { items = items.filter(function (x) { return x.id !== j.id; }); remember(); if (dialog && dialog.dataset.job === j.id) dialog.close(); refresh(); }).catch(function (er) { b.disabled = false; notify(errorText(er)); }); }
   });
   var previous = render;

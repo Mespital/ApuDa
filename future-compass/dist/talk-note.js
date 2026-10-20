@@ -85,7 +85,7 @@
     var more = subjects().filter(function (x) { return !mine[x]; });
     return '<p class="tn-ls-sum small">오늘 수업 ' + L.length + '개 중 <b>' + did + '개 남김</b>' + (left ? ' · 아직 못 남긴 수업 ' + left + '개' : '') + '</p>' +
       '<div class="tn-lessons" role="group" aria-label="오늘 수업">' + L.map(function (x) { var on = x === pick; return '<button type="button" data-tn-sub="' + esc(x.sub) + '" aria-pressed="' + on + '" class="tn-ls st-' + x.status + (x.fresh && x.status === 'past' ? ' fresh' : '') + (on ? ' on' : '') + '"><small>' + x.p + '교시' + (x.time ? ' · ' + x.time : '') + '</small><b>' + esc(x.sub) + '</b><em>' + lessonTag(x) + '</em></button>'; }).join('') + '</div>' +
-      '<button type="button" class="tn-more-btn" data-tn-more aria-expanded="false" aria-controls="tn-more">＋ 다른 과목 더 보기</button>' +
+      '<button type="button" class="tn-more-btn" data-tn-lessons-more aria-expanded="false" aria-controls="tn-more">＋ 다른 과목 더 보기</button>' +
       '<div class="pl-chips tn-subs tn-more" id="tn-more" hidden>' + more.map(function (x) { return '<button type="button" data-tn-sub="' + esc(x) + '" aria-pressed="false">' + esc(x) + '</button>'; }).join('') + '<input id="tn-subject" class="tn-sub-other" maxlength="20" placeholder="다른 과목"></div>';
   }
   /* 🗑 노트 지우기: 노트 + (선택) 이 기기 녹음 원본 + (선택) Drive 파일(휴지통, 30일 안 복구 가능) */
@@ -99,8 +99,9 @@
     var files = driveFiles(n), el = document.createElement('div');
     el.className = 'tn-sheet tn-delsheet'; el.setAttribute('role', 'dialog'); el.setAttribute('aria-modal', 'true'); el.setAttribute('aria-label', '노트 지우기'); el.dataset.note = n.id;
     el.innerHTML = '<div class="tn-panel"><b class="tn-del-title">🗑 이 노트를 지울까?</b><p class="small">' + esc(n.subject) + ' · ' + esc(n.topic || md(n.date)) + '</p>' +
-      (n.audio ? '<label class="tn-auto"><input type="checkbox" data-del-audio checked> 이 기기의 녹음 원본도 지우기</label>' : '') +
-      (files.length ? '<label class="tn-auto"><input type="checkbox" data-del-drive checked> Drive 파일 ' + files.length + '개도 휴지통으로 (30일 안에 Drive에서 되살릴 수 있어)</label>' : '') +
+      (n.audio ? '<label class="tn-auto"><input type="checkbox" data-del-audio> 이 기기의 녹음 원본도 영구 삭제</label>' : '') +
+      (files.length ? '<label class="tn-auto"><input type="checkbox" data-del-drive> Drive 파일 ' + files.length + '개도 휴지통으로 (30일 안에 Drive에서 되살릴 수 있어)</label>' : '') +
+      (vjobs().some(function (j) { return j.noteId === n.id && (!j.phase || /queued|working/.test(j.phase)); }) ? '<p class="small">서버 처리 중인 작업이 있어. 노트를 지워도 이미 시작한 처리는 계속되어 Drive에 파일이 생길 수 있어.</p>' : '') +
       '<p class="small muted">복습 목록의 메모는 남아. 지운 노트는 되돌릴 수 없어.</p><div class="tn-del-row"><button type="button" data-tn-delno>취소</button><button type="button" class="tn-del-go" data-tn-delgo>지우기</button></div></div>';
     el.addEventListener('click', function (e) { if (e.target === el) el.remove(); });
     el.addEventListener('keydown', function (e) { if (e.key === 'Escape') el.remove(); });
@@ -127,50 +128,126 @@
   function autoTopic() { var x = lessons().find(function (y) { return y.sub === sub; }); return x ? x.p + '교시 수업' : '수업 복습'; }
   function autoOn() { try { return localStorage.getItem('fc-tn-auto') !== '0'; } catch (e) { return true; } }
   /* 🎙️ VPS 자동 처리: 녹음 → 받아쓰기(Whisper) → 정리 → Drive. 서버가 없거나 꺼져 있으면 ChatGPT 흐름으로 */
-  var VKEY = 'fc-voice-v1', vcap = null, vtimer = null;
+  var VKEY = 'fc-voice-v1', vcap = null, vtimer = null, vbusy = new Set(), vpolling = false;
+  function voiceAllowed() { return !document.documentElement.classList.contains('pin-locked') && !(isParent() && window.FC_PLANNER && !FC_PLANNER.get().share.review); }
   function liveInfo() { return typeof FamilySync !== 'undefined' && FamilySync.joined() && FamilySync.live ? FamilySync.live() : null; }
   function voiceCap() {
     var l = liveInfo(); if (!l || !l.url || !l.t) return Promise.resolve(false);
     if (vcap && Date.now() - vcap.at < 300000) return Promise.resolve(vcap.ok);
-    return fetch(l.url + '/health', { cache: 'no-store', signal: AbortSignal.timeout ? AbortSignal.timeout(5000) : undefined }).then(function (r) { return r.json(); })
-      .then(function (j) { var v = j && j.voice; vcap = { at: Date.now(), ok: !!(v && (v.stt || v.drive)), drive: !!(v && v.drive) }; return vcap.ok; })
+    return voiceFetch(l.url + '/health', { cache: 'no-store' }, 5000).then(function (r) { return r.json(); })
+      .then(function (j) { var v = j && j.voice; vcap = { at: Date.now(), ok: !!(v && (v.stt || v.drive)) }; return vcap.ok; })
       .catch(function () { vcap = { at: Date.now(), ok: false }; return false; });
   }
-  function vjobs() { var a = ls(VKEY, []); return Array.isArray(a) ? a.filter(function (j) { return j && /^[a-f0-9]{32}$/.test(j.id) && j.noteId && Date.now() - j.at < 48 * 3600e3; }).slice(-10) : []; }
-  function vsave(a) { try { localStorage.setItem(VKEY, JSON.stringify(a)); } catch (e) {} }
+  function vjobs() { var a = ls(VKEY, []); return Array.isArray(a) ? a.filter(function (j) { return j && /^[a-f0-9]{32}$/.test(j.id) && j.noteId && Number.isFinite(j.at) && j.at <= Date.now() + 60000 && Date.now() - j.at < 48 * 3600e3; }).slice(-10) : []; }
+  function vsave(a) { try { localStorage.setItem(VKEY, JSON.stringify(a)); return true; } catch (e) { notice('처리 상태를 저장하지 못했어. 기기의 녹음 원본은 남아 있어. 저장 공간을 확인해줘.'); return false; } }
+  function vstore(j, drop) {
+    var a = vjobs(), found = false;
+    a = a.filter(function (x) { if (x.id !== j.id) return true; found = true; return !drop; }).map(function (x) { return x.id === j.id ? j : x; });
+    return found && vsave(a);
+  }
+  function voiceFile(f) {
+    try { var u = new URL(f.url); return /^[\w-]{10,200}$/.test(f.id) && /^[\w-]{10,200}$/.test(f.parentId) && /^[a-f0-9]{64}$/.test(f.sha256) && u.origin === 'https://drive.google.com' && u.pathname === '/file/d/' + f.id + '/view' && typeof f.name === 'string' && Number.isSafeInteger(f.size) && f.size > 0; } catch (e) { return false; }
+  }
+  function voiceResult(r) {
+    return r && typeof r.transcript === 'string' && r.transcript.length <= 3000 && typeof r.summary === 'string' && r.summary.length <= 2000 && Array.isArray(r.files) && r.files.length <= 3 && r.files.every(voiceFile) && new Set(r.files.map(function (f) { return f.role; })).size === r.files.length && r.files.every(function (f) { return /^(audio|note|review)$/.test(f.role); });
+  }
+  function voiceFetch(url, init, timeout) {
+    var c = new AbortController(), t = setTimeout(function () { c.abort(); }, timeout || 30000);
+    return fetch(url, Object.assign({}, init || {}, { signal: c.signal })).finally(function () { clearTimeout(t); });
+  }
+  function voiceLabel(j) {
+    if (j.error) return j.error;
+    if (j.phase === 'interrupted') return '서버가 다시 시작돼 처리가 중단됐어. 기기 원본으로 다시 시도해줘.';
+    if (j.phase === 'conflict') return '보낸 뒤 노트를 고쳐서 자동 반영을 멈췄어. 받은 결과를 확인하고 반영해줘.';
+    if (j.phase === 'failed') return '자동 처리에 실패했어. 녹음 원본으로 다시 시도할 수 있어.';
+    if (j.phase === 'apply-failed') return '받은 결과는 보관했어. 원본 확인이나 기기 저장을 마친 뒤 다시 반영해줘.';
+    if (j.result) return (j.result.transcript ? '받아쓰기 받음' : '받아쓰기 없음') + ' · ' + (j.result.summary ? '정리 받음' : '정리 없음') + ' · Drive ' + j.result.files.length + '개 확인' + (j.phase === 'partial' ? ' (일부 단계 미완료)' : '');
+    return j.phase === 'queued' ? '서버로 전달 중 · 아직 저장 완료가 아니야.' : '받아쓰기·정리·Drive 확인 중…';
+  }
+  function voiceStatus(n) {
+    var j = vjobs().filter(function (x) { return x.noteId === n.id; }).pop(); if (!j) return '';
+    var r = j.result, terminal = /^(failed|partial|interrupted|conflict|apply-failed)$/.test(j.phase || '');
+    return '<div class="tn-voice-state"><p class="small" role="status">' + esc(voiceLabel(j)) + '</p>' +
+      (r ? '<details><summary>받은 결과 보기</summary><div class="tn-voice-result">' + esc(r.summary || r.transcript || '반환된 글이 없어.') + '</div>' + r.files.map(function (f) { return '<a class="tn-audio-link" href="' + esc(f.url) + '" target="_blank" rel="noopener noreferrer">' + esc(f.name) + ' ↗</a>'; }).join('') + '</details>' : '') +
+      (terminal && !isParent() ? '<button type="button" data-tn-voice-retry="' + j.id + '">기기 원본으로 다시 처리</button>' : '') +
+      (r && !isParent() && /^(conflict|apply-failed)$/.test(j.phase) ? '<button type="button" data-tn-voice-apply="' + j.id + '">확인한 정리 반영하기</button>' : '') +
+      (!terminal ? '<button type="button" data-tn-voice-check="' + j.id + '">처리 상태 확인</button>' : '') +
+      (terminal && !isParent() ? '<button type="button" data-tn-voice-dismiss="' + j.id + '">처리 기록만 닫기</button>' : '') + '</div>';
+  }
   function hex(n) { return Array.from(crypto.getRandomValues(new Uint8Array(n)), function (x) { return x.toString(16).padStart(2, '0'); }).join(''); }
   function b64(blob) { return new Promise(function (ok, no) { var fr = new FileReader(); fr.onload = function () { ok(String(fr.result).split(',')[1] || ''); }; fr.onerror = no; fr.readAsDataURL(blob); }); }
-  function startVoice(n) {
-    var l = liveInfo(); if (!l || !n.audio || !window.FC_AUDIO) return;
-    FC_AUDIO.get(n.audio.id).then(function (r) {
+  function startVoice(n, previous) {
+    var l = liveInfo(); if (!voiceAllowed() || isParent()) return Promise.resolve(false);
+    if (!l || !l.url || !l.t || !n.audio || !window.FC_AUDIO) { notice('자동 처리 연결이나 기기 원본을 확인해줘. 채팅·Drive로 보내기도 이용할 수 있어.'); return Promise.resolve(false); }
+    if (previous && vbusy.has(previous.id)) return Promise.resolve(false);
+    var j = previous;
+    if (!j && vjobs().length >= 10) { notice('남아 있는 처리 기록을 확인하고 닫은 뒤 다시 보내줘. 녹음 원본은 기기에 있어.'); return Promise.resolve(false); }
+    return FC_AUDIO.get(n.audio.id).then(function (r) {
       if (!r || !r.blob || !r.blob.size) throw Error('audio');
+      if (!j) {
+        j = { id: hex(16), noteId: n.id, basis: window.FC_CHAT_DRIVE ? FC_CHAT_DRIVE.basis(n) : JSON.stringify([n.subject || '', n.topic || '', n.text || '', n.sum || '']), at: Date.now() };
+        var a = vjobs(); a.push(j); if (!vsave(a)) throw Error('storage');
+      }
+      if (!j.source) {
+        var fields; try { fields = JSON.parse(j.basis); } catch (e) { fields = [n.subject, n.topic, n.text]; }
+        j.source = { subject: fields[0] || n.subject, topic: fields[1] || '', text: fields[2] || '', at: new Date(r.at || Date.now()).toISOString(), mime: r.blob.type || 'audio/webm', name: r.name || '' };
+      }
+      j.phase = 'queued'; j.error = ''; if (!vstore(j)) throw Error('storage'); vbusy.add(j.id);
       return b64(r.blob).then(function (data) {
-        var j = { id: hex(16), noteId: n.id, basis: window.FC_CHAT_DRIVE ? FC_CHAT_DRIVE.basis(n) : '', at: Date.now() };
-        var a = vjobs(); a.push(j); vsave(a);
-        return fetch(l.url + '/voice', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ t: l.t, id: j.id, subject: n.subject, topic: n.topic || '', at: new Date(r.at || Date.now()).toISOString(), mime: r.blob.type || 'audio/webm', name: r.name || '', text: n.text || '', audio: data }) })
-          .then(function (res) { return res.json().then(function (x) { if (!res.ok) throw Error(x.error || 'voice'); }); });
+        return voiceFetch(l.url + '/voice', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(Object.assign({ t: l.t, id: j.id, retry: !!previous, audio: data }, j.source)) })
+          .then(function (res) { return res.json().then(function (x) { if (!res.ok) { var e = Error(x.error || 'voice'); e.status = res.status; throw e; } }); });
       });
-    }).then(function () { notice('🎧 받아쓰기·정리·Drive 저장 중… 1~3분 걸려. 다른 거 해도 돼.'); vpoll(); if (typeof render === 'function') render(); })
-      .catch(function (e) { vsave(vjobs().filter(function (j) { return j.noteId !== n.id; })); notice('자동 정리 서버에 보내지 못했어. 노트의 "채팅·Drive로 보내기"를 눌러줘.'); if (typeof render === 'function') render(); });
+    }).then(function () { j.phase = 'working'; vstore(j); notice('🎧 받아쓰기·정리·Drive 저장을 확인 중이야. 원본은 기기에 남아 있어.'); return true; })
+      .catch(function (e) {
+        if (j) { j.phase = e.status || /audio|storage/.test(e.message) ? 'failed' : 'working'; j.error = e.message === 'storage' ? '기기 저장 공간을 확인해줘. 원본 녹음은 남아 있어.' : e.message === 'audio' ? '원본 녹음을 이 기기에서 찾지 못했어. 원본이 있는 기기에서 다시 시도해줘.' : e.status ? '서버가 요청을 받지 못했어. 다시 처리하거나 채팅·Drive로 보내줘.' : '전송 응답을 확인하지 못했어. 중복 전송 전 서버 상태를 먼저 확인할게.'; vstore(j); }
+        notice(j && j.error || '기기 원본을 확인한 뒤 채팅·Drive로 보내줘.'); return false;
+      }).finally(function () { if (j) vbusy.delete(j.id); vpoll(); if (typeof render === 'function') render(); });
+  }
+  async function applyVoice(j, force) {
+    if (!voiceAllowed() || !j.result) return;
+    var r = j.result, res = await FC_NOTES.applyCloud(j.noteId, j.basis, { at: r.at, value: Object.assign({ verified: true }, r) }, 'v-' + j.id, !!force);
+    if (!voiceAllowed()) return;
+    j.phase = res === 'conflict' ? 'conflict' : res === 'failed' ? 'apply-failed' : j.outcome === 'succeeded' ? 'done' : 'partial';
+    if (res === 'missing') { vstore(j, true); return; }
+    if (res === 'applied') { j.error = ''; if (j.phase === 'done') notice('받아쓰기·정리와 Drive 파일 3개 저장을 확인했어. 복습과 녹음 보관함에도 반영했어.'); }
+    vstore(j, res === 'applied' && j.phase === 'done');
   }
   function vpoll() {
-    clearTimeout(vtimer); var a = vjobs(), l = liveInfo(); if (!a.length || !l || document.visibilityState !== 'visible') return;
-    Promise.all(a.map(function (j) {
-      return fetch(l.url + '/voice?id=' + j.id + '&t=' + encodeURIComponent(l.t), { cache: 'no-store' }).then(function (r) { if (r.status === 404) return { gone: true }; return r.json(); }).then(function (x) {
-        if (x.gone) { j.drop = true; return; }
-        if (x.state !== 'done' || !x.result) return;
-        var note = notes().find(function (y) { return y.id === j.noteId; });
-        var res = FC_NOTES.applyCloud(j.noteId, j.basis, { at: x.result.at, value: { verified: true, summary: x.result.summary || '', transcript: x.result.transcript || '', files: x.result.files || [] } }, 'v-' + j.id, !(note && note.sum));
-        j.drop = res !== 'failed';
-        if (res === 'applied') notice((x.result.summary ? '🧠 정리 완료' : '📝 받아쓰기 완료') + ((x.result.files || []).length ? ' · Drive 저장' : '') + ((x.errors || []).length ? ' (일부 단계는 건너뜀)' : '') + '. 복습 탭에서 볼 수 있어.');
-        if (res === 'conflict') notice('정리를 받았는데 그사이 노트를 고쳐서 반영을 멈췄어.');
-      }).catch(function () {});
-    })).then(function () { var rest = a.filter(function (j) { return !j.drop; }); vsave(rest); if (rest.length) vtimer = setTimeout(vpoll, 8000); if (typeof render === 'function' && a.length !== rest.length) render(); });
+    clearTimeout(vtimer);
+    var l = liveInfo(), before = JSON.stringify(vjobs()), a = vjobs().filter(function (j) { return !j.phase || /^(queued|working)$/.test(j.phase); });
+    if (vpolling || !a.length || !l || !l.url || !l.t || !voiceAllowed() || document.visibilityState !== 'visible') return Promise.resolve();
+    vpolling = true;
+    return Promise.all(a.map(async function (j) {
+      if (vbusy.has(j.id)) return;
+      vbusy.add(j.id);
+      try {
+        var response = await voiceFetch(l.url + '/voice?id=' + j.id + '&t=' + encodeURIComponent(l.t), { cache: 'no-store' });
+        if (!voiceAllowed()) return;
+        if (response.status === 404) { j.phase = 'failed'; j.error = '서버 작업을 찾지 못했거나 기한이 지났어. 기기 원본으로 다시 처리할 수 있어.'; vstore(j); return; }
+        if (!response.ok) throw Error('status');
+        var x = await response.json(); j.error = '';
+        if (x.state === 'interrupted') { j.phase = 'interrupted'; vstore(j); return; }
+        if (x.state !== 'done') { j.phase = 'working'; vstore(j); return; }
+        if (!voiceResult(x.result)) { j.phase = 'failed'; j.error = '파일 검증 정보를 확인하지 못했어. 원본으로 다시 처리하거나 채팅·Drive로 보내줘.'; vstore(j); return; }
+        j.result = x.result; j.errors = Array.isArray(x.errors) ? x.errors : [];
+        var useful = !!(j.result.transcript || j.result.summary || j.result.files.length);
+        j.outcome = useful && j.result.transcript && j.result.summary && j.result.files.length === 3 && !j.errors.length ? 'succeeded' : useful ? 'partial' : 'failed';
+        if (!vstore(j)) return;
+        if (!useful) { j.phase = 'failed'; vstore(j); return; }
+        await applyVoice(j, false);
+      } catch (e) { j.error = '처리 상태를 확인하지 못했어. 인터넷을 확인하면 다시 조회할게. 원본은 기기에 있어.'; vstore(j); }
+      finally { vbusy.delete(j.id); }
+    })).finally(function () {
+      vpolling = false;
+      if (vjobs().some(function (j) { return !j.phase || /^(queued|working)$/.test(j.phase); })) vtimer = setTimeout(vpoll, 8000);
+      if (typeof render === 'function' && voiceAllowed() && before !== JSON.stringify(vjobs())) render();
+    });
   }
   document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible') vpoll(); });
+  window.addEventListener('pin-unlocked', vpoll);
   window.addEventListener('fc-audio-removed', function (e) { if (currentAudio && e.detail && currentAudio.id === e.detail.id) { currentAudio = null; if (sheet) saveDraft(); } });
   setTimeout(vpoll, 2500);
-  function showMore(on) { var m = sheet && sheet.querySelector('.tn-more'), b = sheet && sheet.querySelector('[data-tn-more]'); if (!m || !b) return; m.hidden = !on; b.setAttribute('aria-expanded', String(on)); b.textContent = on ? '－ 다른 과목 접기' : '＋ 다른 과목 더 보기'; }
+  function showMore(on) { var m = sheet && sheet.querySelector('.tn-more'), b = sheet && sheet.querySelector('[data-tn-lessons-more]'); if (!m || !b) return; m.hidden = !on; b.setAttribute('aria-expanded', String(on)); b.textContent = on ? '－ 다른 과목 접기' : '＋ 다른 과목 더 보기'; }
 
   /* ---------- 오늘 탭 카드 ---------- */
   function todayCard() {
@@ -200,7 +277,7 @@
       (kind === 'talk' ? '<label class="tn-l" for="tn-topic">오늘의 주제</label><input id="tn-topic" class="tn-topic" maxlength="60" placeholder="비워두면 N교시 수업으로 적을게 · 예: 함수의 뜻">' : '') +
       (kind === 'talk' ? talkBody() : photoBody()) +
       (kind === 'talk' ? '' : '<label class="tn-l" for="tn-text">메모 <small class="muted">(사진에서 읽은 글·헷갈린 것)</small></label><textarea id="tn-text" class="tn-text" rows="5" maxlength="1500" placeholder="사진 속 핵심을 한두 줄 적거나, 글자 읽기를 눌러봐."></textarea>') +
-      (window.FC_CHAT_DRIVE ? '<div class="tn-handoff"><b>채팅에서 정리하고 Drive에 보관</b><p class="small">지금 쓴 글과 녹음·사진 원본을 기기에 저장한 뒤 전달 자료로 준비해. 채팅에 요청을 보내면 정리와 Drive 파일 링크를 공부방으로 받을 수 있어.</p><p class="small muted">전달 자료는 사이트에 24시간 보관돼. Drive 저장은 채팅의 처리 결과를 받아야 확인돼.</p>' + (kind === 'talk' ? '<label class="tn-auto"><input type="checkbox" data-tn-auto' + (autoOn() ? ' checked' : '') + '> 녹음이 끝나면 자동으로 저장·정리·Drive 보관</label>' : '') + '<button type="button" class="primary" data-tn-cloud-new="' + kind + '">노트 저장 · 채팅·Drive로 보내기</button></div><details class="tn-alt tn-manual"><summary>글만 전달 · 정리 직접 붙여넣기</summary>' : '') +
+      (window.FC_CHAT_DRIVE ? '<div class="tn-handoff"><b>정리·Drive 보관 방법</b><p class="small">자동 처리를 켜면 녹음이 끝난 뒤 서버가 받아쓰기·정리·Drive 저장을 시도해. 아래 버튼은 일반 채팅에서 정리하는 별도 방법이야. 기기 원본은 보존하고, 저장 결과를 확인한 뒤 완료로 표시해.</p><p class="small muted">채팅 전달 자료는 24시간, 자동 처리 서버의 결과는 48시간 보관해. Drive 사본은 별도로 남아 있어.</p>' + (kind === 'talk' ? '<label class="tn-auto"><input type="checkbox" data-tn-auto' + (autoOn() ? ' checked' : '') + '> 녹음이 끝나면 자동으로 저장·정리·Drive 보관</label>' : '') + '<button type="button" class="primary" data-tn-cloud-new="' + kind + '">노트 저장 · 채팅·Drive로 보내기</button></div><details class="tn-alt tn-manual"><summary>글만 전달 · 정리 직접 붙여넣기</summary>' : '') +
       '<div class="tn-handoff"><b>💬 ChatGPT로 복습하기</b><p class="small">① 요청을 복사하고 ② ChatGPT를 열어줘. 입력창이 비어 있으면 붙여넣고 보내줘.' + (kind === 'talk' ? ' 수업 내용을 아직 안 적었다면, 그다음 입력창의 🎤 음성 입력으로 1분 말하고 보내면 돼.' : ' 사진 원본은 자동으로 전송되지 않아. 필요하면 ChatGPT에서 직접 첨부해줘.') + '</p>' +
       '<button type="button" data-tn-copy>① 복습 요청 복사</button><a class="tn-gpt-main" data-tn-gpt href="https://chatgpt.com/" target="_blank" rel="noopener">② 일반 Chat 새 대화 열기 ↗</a><p class="small">ChatGPT 상단에서 <b>Chat</b>을 확인하고 보내줘. Work로 열렸다면 Chat으로 바꿔줘.</p>' +
       '<p class="tn-transfer-status small" role="status" aria-live="polite">핵심 정리·확인할 것·복습 질문 3개를 부탁할게.</p>' +
@@ -511,7 +588,7 @@
     h += '<ul>' + a.slice(0, showN).map(function (n) {
       return '<li><div class="tn-li-top"><span class="tn-tag ' + n.kind + '">' + (n.kind === 'talk' ? '🎙️' : '📷') + ' ' + esc(n.subject) + '</span><small>' + md(n.date) + '</small>' + (isParent() ? '' : '<button type="button" class="pl-x" data-tn-del="' + esc(n.id) + '" aria-label="노트 지우기">×</button>') + '</div>' +
         (n.photo ? '<button type="button" class="tn-thumb" data-tn-view="' + esc(n.id) + '" data-tn-img="' + esc(n.id) + '" aria-label="사진 크게 보기"></button>' : '') +
-        (vjobs().some(function (j) { return j.noteId === n.id; }) ? '<p class="tn-voice-wait small" role="status">🎧 받아쓰기·정리 중… 끝나면 여기에 나와.</p>' : '') +
+        voiceStatus(n) +
         (n.cloud && Array.isArray(n.cloud.files) ? n.cloud.files.filter(function (f) { return f.role !== 'audio' && /^https:\/\/drive\.google\.com\//.test(f.url || ''); }).map(function (f) { return '<a class="tn-audio-link" href="' + esc(f.url) + '" target="_blank" rel="noopener">' + (f.role === 'review' ? 'Drive 복습 정리 ↗' : f.role === 'note' ? 'Drive 받아쓰기 ↗' : 'Drive 파일 ↗') + '</a>'; }).join('') : '') +
         (n.audio ? '<button type="button" class="tn-audio-link" data-tn-listen="' + esc(n.audio.id) + '">🎧 녹음 원본 듣기</button>' + (/^https:\/\/drive\.google\.com\//.test(n.audio.driveUrl || '') ? '<a class="tn-audio-link" href="' + esc(n.audio.driveUrl) + '" target="_blank" rel="noopener">Drive 녹음 열기 ↗</a>' : '') : '') +
         (n.sum ? '<div class="tn-sumv">' + esc(n.sum).replace(/\n/g, '<br>') + '</div>' + (n.text ? '<p class="tn-txt tn-raw">' + esc(n.text).replace(/\n/g, '<br>') + '</p><button type="button" class="linkish" data-tn-raw="1">원문 보기</button>' : '') : (n.text ? '<p class="tn-txt">' + esc(n.text).replace(/\n/g, '<br>') + '</p>' : '')) + (window.FC_CHAT_DRIVE ? '<button type="button" class="tn-audio-link" data-tn-cloud="' + esc(n.id) + '">채팅·Drive로 보내기</button>' : '') + '</li>';
@@ -548,24 +625,34 @@
     }).catch(function () { notice('내보내기를 하지 못했어. 인터넷 연결을 확인해줘.'); });
   }
 
+  function noteBasis(n) { return JSON.stringify([n.subject || '', n.topic || '', n.text || '', n.sum || '']); }
+  async function noteStamp(n) { var bytes = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(noteBasis(n))); return Array.from(new Uint8Array(bytes), function (x) { return x.toString(16).padStart(2, '0'); }).join(''); }
   window.FC_NOTES = {
     lessons: function () { try { return lessons(); } catch (e) { return []; } },
     get: function (id) { return notes().find(function (n) { return n.id === id; }); }, photo: getPhoto,
-    applyCloud: function (id, original, result, jobId, force) {
-      if (document.documentElement.classList.contains('pin-locked') || isParent() && window.FC_PLANNER && !FC_PLANNER.get().share.review) return 'failed';
-      var a = notes(), pos = a.findIndex(function (n) { return n.id === id; }); if (pos < 0) return 'missing';
-      var n = a[pos]; if (n.cloud && n.cloud.jobId === jobId) return 'applied';
-      if (!force && JSON.stringify([n.subject || '', n.topic || '', n.text || '', n.sum || '']) !== original) return 'conflict';
-      if (!result || !result.value || typeof result.value.summary !== 'string' || result.value.summary.length > 2000) return 'failed';
-      var previousNotes = a.slice(), next = Object.assign({}, n, { sum: result.value.summary || n.sum || undefined, cloud: { jobId: jobId, files: result.value.files, at: result.at } });
-      if (typeof result.value.transcript === 'string' && result.value.transcript && !n.text) next.text = result.value.transcript.slice(0, 1500);
-      var audio = result.value.files.find(function (f) { return f.role === 'audio'; });
-      if (audio && n.audio) next.audio = Object.assign({}, n.audio, { driveId: audio.id, driveUrl: audio.url, name: audio.name });
-      a[pos] = next; var rv = state.reviews.find(function (x) { return x.id === n.review; }), old = rv && rv.note;
-      if (!saveNotes(a)) return 'failed';
-      if (rv && (next.sum || next.text)) { rv.note = (next.sum || next.text).slice(0, 800); if (save() === false) { rv.note = old; saveNotes(previousNotes); return 'failed'; } }
-      if (audio && n.audio && window.FC_AUDIO && FC_AUDIO.rememberDrive) FC_AUDIO.rememberDrive(n.audio.id, audio);
-      if (typeof render === 'function') render(); return 'applied';
+    applyCloud: async function (id, original, result, jobId, force) {
+      try {
+        if (!voiceAllowed() || force && isParent()) return 'failed';
+        var a = notes(), pos = a.findIndex(function (n) { return n.id === id; }); if (pos < 0) return 'missing';
+        var n = a[pos], before = noteBasis(n), stamp = await noteStamp(n), value = result && result.value;
+        if (!force && before !== original && !(n.cloud && n.cloud.jobId === jobId && n.cloud.basisAfter === stamp)) return 'conflict';
+        if (!value || value.verified !== true || typeof value.summary !== 'string' || value.summary.length > 2000 || !Array.isArray(value.files) || value.files.length > 6 || !value.files.every(voiceFile)) return 'failed';
+        var audio = value.files.find(function (f) { return f.role === 'audio'; });
+        if (audio && n.audio && (!window.FC_AUDIO || !FC_AUDIO.rememberDrive || await FC_AUDIO.rememberDrive(n.audio.id, audio) === false)) return 'failed';
+        var next = Object.assign({}, n, { sum: value.summary || n.sum || undefined });
+        if (typeof value.transcript === 'string' && value.transcript && !n.text) next.text = value.transcript.slice(0, 1500);
+        var after = await noteStamp(next);
+        if (!voiceAllowed()) return 'failed';
+        a = notes(); pos = a.findIndex(function (x) { return x.id === id; }); if (pos < 0) return 'missing';
+        if (noteBasis(a[pos]) !== before) return 'conflict'; // User edits during async verification also win.
+        n = a[pos]; var previousNotes = a.slice();
+        next = Object.assign({}, n, { sum: next.sum, text: next.text, cloud: { jobId: jobId, files: value.files, at: result.at, basisAfter: after } });
+        if (audio && n.audio) next.audio = Object.assign({}, n.audio, { driveId: audio.id, driveUrl: audio.url, name: audio.name });
+        a[pos] = next; var rv = state.reviews.find(function (x) { return x.id === n.review; }), old = rv && rv.note;
+        if (!saveNotes(a)) return 'failed';
+        if (rv && (next.sum || next.text)) { rv.note = (next.sum || next.text).slice(0, 800); if (save() === false) { rv.note = old; saveNotes(previousNotes); return 'failed'; } }
+        if (typeof render === 'function') render(); return 'applied';
+      } catch (e) { return 'failed'; }
     }
   };
 
@@ -600,7 +687,16 @@
       if ((sheet.querySelector('.tn-text').value || sheet.querySelector('.tn-sum').value || photoData || gptSent || currentAudio || audioSession && audioSession.active()) && !confirm('복습 노트를 저장하지 않고 닫을까? 녹음 원본은 녹음 보관함에 남아 있어.')) return;
       var closing = sheet; (audioSession ? audioSession.stop() : Promise.resolve()).then(function () { if (sheet === closing) { closeSheet(); clearDraft(); } }); return;
     }
-    if (b.hasAttribute('data-tn-more')) { showMore(sheet.querySelector('.tn-more').hidden); return; }
+    if (b.hasAttribute('data-tn-lessons-more')) { if (sheet) showMore(sheet.querySelector('.tn-more').hidden); return; }
+    if (d.tnVoiceRetry || d.tnVoiceApply || d.tnVoiceCheck || d.tnVoiceDismiss) {
+      if (!voiceAllowed()) return;
+      var key = d.tnVoiceRetry || d.tnVoiceApply || d.tnVoiceCheck || d.tnVoiceDismiss, job = vjobs().find(function (j) { return j.id === key; }); if (!job) return;
+      if (d.tnVoiceCheck) { job.phase = 'working'; job.error = ''; vstore(job); vpoll(); }
+      if (d.tnVoiceRetry && !isParent()) { var source = FC_NOTES.get(job.noteId); if (source) startVoice(source, job); }
+      if (d.tnVoiceApply && !isParent() && confirm('받은 결과를 확인했어? 과목·주제·원문은 그대로 두고 정리를 반영할까?')) applyVoice(job, true).then(function () { render(); });
+      if (d.tnVoiceDismiss && !isParent() && confirm('이 기기의 처리 기록만 닫을까? 기기 원본과 Drive 파일은 그대로 남아.')) { vstore(job, true); render(); }
+      return;
+    }
     if (d.tnSub) { sub = d.tnSub; sheet.querySelectorAll('[data-tn-sub]').forEach(function (x) { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', String(x === b)); }); sheet.querySelector('.tn-sub-other').value = ''; updateHandoff(); saveDraft(); return; }
     if (b.hasAttribute('data-tn-mic')) { if (rec || timer || restart) stopRec('말한 글을 확인하고 잘못 인식된 용어를 고쳐줘.'); else startRec(); return; }
     if (b.hasAttribute('data-tn-pick')) { var f = sheet.querySelector('[data-tn-file]'); f.value = ''; f.click(); return; }
@@ -647,6 +743,7 @@
 
   var css = document.createElement('style');
   css.textContent =
+    '.tn-voice-state{margin:10px 0;padding:10px;border:1px solid var(--u-line);border-radius:var(--r-m);background:var(--u-soft);overflow-wrap:anywhere}.tn-voice-state :is(button,summary){min-height:var(--tap);font-size:var(--fs-s);margin:4px 4px 0 0}.tn-voice-state summary{display:flex;align-items:center;cursor:pointer}.tn-voice-result{white-space:pre-wrap;font-size:var(--fs-m);line-height:1.6;color:var(--ink)}' +
     '.tn-card.tn-hot{box-shadow:none!important;outline:2px solid var(--u-line)!important;outline-offset:0px!important}.tn-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}.tn-btns button{min-height:50px!important;font-weight:700}' +
     'html.tn-open{overflow:hidden}.tn-sheet{position:fixed;inset:0;z-index:1100;background:color-mix(in srgb,var(--u-solid) 45%,transparent);display:flex;align-items:flex-end;justify-content:center}' +
     '.tn-panel{background:var(--u-surface);width:min(560px,100%);max-height:94dvh;overflow:auto;border-radius:22px 22px 0 0;padding:12px 16px calc(16px + env(safe-area-inset-bottom,0px))}' +

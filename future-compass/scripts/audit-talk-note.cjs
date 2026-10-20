@@ -92,7 +92,7 @@ let browser;
   {
     const { context, page } = await fresh(); await open(page); await local(page);
     const text = '함수의 입력과 출력 관계를 복습한다. '.repeat(70).slice(0, 1494) + '마지막문장';
-    await page.locator('.tn-text').fill(text); if (await page.locator('[data-tn-more][aria-expanded="false"]').count()) await page.locator('[data-tn-more]').click(); await page.locator('.tn-sub-other').fill('공통수학2');
+    await page.locator('.tn-text').fill(text); if (await page.locator('[data-tn-lessons-more][aria-expanded="false"]').count()) await page.locator('[data-tn-lessons-more]').click(); await page.locator('.tn-sub-other').fill('공통수학2');
     await page.locator('[data-tn-day="3"]').uncheck(); await page.locator('[data-tn-day="7"]').uncheck();
     await page.evaluate(() => localStorage.setItem('fc-gpt-url', 'https://chatgpt.com/g/g-study-test?old=yes#old'));
     await page.locator('[data-tn-copy]').click();
