@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { createVoice, validVoice, baseName, folderOf } from '../live/voice.mjs';
+import { createVoice, validVoice, baseName, folderOf, trashFiles } from '../live/voice.mjs';
 
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'voice-'));
 const now = Date.parse('2026-10-20T06:00:00Z');
@@ -67,5 +67,13 @@ assert.deepEqual(r4.errors, ['short']);
 
 // 5) 잘못된 id 조회
 assert.equal(ok.status('../etc/passwd'), null);
+// 6) Drive 지우기: 공부방 폴더 안 + ID 일치만
+const calls = [];
+const drv = { trash: async (d, name, id) => { calls.push([d, name, id]); return id === 'idmismatch00' ? 'mismatch' : 'trashed'; } };
+const t1 = await trashFiles(drv, '통합사회2', [{ id: 'abcdefghij12', name: 'a.webm' }, { id: 'idmismatch00', name: 'b.md' }, { id: 'zzzzzzzzzzzz', name: '../x' }]);
+assert.deepEqual(t1.result, { abcdefghij12: 'trashed', idmismatch00: 'mismatch', zzzzzzzzzzzz: 'bad' });
+assert.deepEqual(calls.map((c) => c[0]), ['승준 공부방/1분 복습 녹음/통합사회2', '승준 공부방/1분 복습 녹음/통합사회2']);
+assert.equal((await trashFiles(null, 'x', [{}])).error, 'no_drive');
+assert.equal((await trashFiles(drv, '', [{ id: 'abcdefghij12', name: 'a' }])).error, 'bad');
 fs.rmSync(dir, { recursive: true, force: true });
-console.log('PASS: voice pipeline — stt→summary→Drive(3 files, KST names, subject folder), idempotent retry, restart recovery without audio, stt fallback to browser text, no-AI/partial Drive, short skip, id validation');
+console.log('PASS: voice pipeline — stt→summary→Drive(3 files, KST names, subject folder), idempotent retry, restart recovery without audio, stt fallback to browser text, no-AI/partial Drive, short skip, id validation, Drive trash only inside study folder with matching id');

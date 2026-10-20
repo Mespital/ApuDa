@@ -9,7 +9,7 @@ import http from 'node:http';
 import { createHmac, timingSafeEqual, createPublicKey, verify as edVerify } from 'node:crypto';
 import { buildPayload, askAI, hasAI, validQuestion, organizePayload, providerOf } from './shiro.mjs';
 import { listDocs, addDoc, delDoc, gatherRefs } from './rag.mjs';
-import { createVoice, validVoice, sttClient, rcloneClient } from './voice.mjs';
+import { createVoice, validVoice, sttClient, rcloneClient, trashFiles } from './voice.mjs';
 const WEB = (process.env.FC_WEB_SEARCH || 'on') !== 'off';
 
 const PORT = Number(process.env.PORT || 8093);
@@ -130,6 +130,13 @@ const server = http.createServer(async (req, res) => {
     const bad = validVoice(b); if (bad) return send(res, 400, { error: bad });
     if (!VOICE.status(b.id) && (limited('v', 30, 3600000) || VOICE.pending() > 6)) return send(res, 429, { error: 'rate' });
     const r = VOICE.start(b); return send(res, r.error ? 400 : 200, r);
+  }
+  if (url.pathname === '/voice/del' && req.method === 'POST') {
+    let b; try { b = await body(req, 20000); } catch { return send(res, 400, { error: 'bad' }); }
+    const tk = verifyTicket(b.t); if (!tk) return send(res, 401, { error: 'ticket' });
+    if (tk.role === 'parent') return send(res, 403, { error: 'role' });
+    if (limited('vd', 60, 3600000)) return send(res, 429, { error: 'rate' });
+    const r = await trashFiles(DRIVE, b.subject, b.files); return send(res, r.error ? 400 : 200, r);
   }
   if (url.pathname === '/voice' && req.method === 'GET') {
     if (!verifyTicket(url.searchParams.get('t'))) return send(res, 401, { error: 'ticket' });
