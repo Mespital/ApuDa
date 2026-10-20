@@ -88,6 +88,8 @@
       '<button type="button" class="tn-more-btn" data-tn-more aria-expanded="false" aria-controls="tn-more">＋ 다른 과목 더 보기</button>' +
       '<div class="pl-chips tn-subs tn-more" id="tn-more" hidden>' + more.map(function (x) { return '<button type="button" data-tn-sub="' + esc(x) + '" aria-pressed="false">' + esc(x) + '</button>'; }).join('') + '<input id="tn-subject" class="tn-sub-other" maxlength="20" placeholder="다른 과목"></div>';
   }
+  function autoTopic() { var x = lessons().find(function (y) { return y.sub === sub; }); return x ? x.p + '교시 수업' : '수업 복습'; }
+  function autoOn() { try { return localStorage.getItem('fc-tn-auto') !== '0'; } catch (e) { return true; } }
   function showMore(on) { var m = sheet && sheet.querySelector('.tn-more'), b = sheet && sheet.querySelector('[data-tn-more]'); if (!m || !b) return; m.hidden = !on; b.setAttribute('aria-expanded', String(on)); b.textContent = on ? '－ 다른 과목 접기' : '＋ 다른 과목 더 보기'; }
 
   /* ---------- 오늘 탭 카드 ---------- */
@@ -115,10 +117,10 @@
     sheet = document.createElement('div'); sheet.className = 'tn-sheet'; sheet.setAttribute('role', 'dialog'); sheet.setAttribute('aria-modal', 'true'); sheet.setAttribute('aria-label', kind === 'talk' ? '1분 말하기' : '노트 사진');
     sheet.innerHTML = '<div class="tn-panel"><div class="tn-top"><button type="button" class="tn-x" data-tn-close aria-label="닫기">✕</button><b>' + (kind === 'talk' ? '🎙️ 1분 말하기' : '📷 요약 노트 사진') + '</b><span></span></div>' +
       '<span class="tn-l">과목</span>' + picker +
-      (kind === 'talk' ? '<label class="tn-l" for="tn-topic">오늘의 주제</label><input id="tn-topic" class="tn-topic" maxlength="60" placeholder="예: 함수의 뜻과 정의역">' : '') +
+      (kind === 'talk' ? '<label class="tn-l" for="tn-topic">오늘의 주제</label><input id="tn-topic" class="tn-topic" maxlength="60" placeholder="비워두면 N교시 수업으로 적을게 · 예: 함수의 뜻">' : '') +
       (kind === 'talk' ? talkBody() : photoBody()) +
       (kind === 'talk' ? '' : '<label class="tn-l" for="tn-text">메모 <small class="muted">(사진에서 읽은 글·헷갈린 것)</small></label><textarea id="tn-text" class="tn-text" rows="5" maxlength="1500" placeholder="사진 속 핵심을 한두 줄 적거나, 글자 읽기를 눌러봐."></textarea>') +
-      (window.FC_CHAT_DRIVE ? '<div class="tn-handoff"><b>채팅에서 정리하고 Drive에 보관</b><p class="small">지금 쓴 글과 녹음·사진 원본을 기기에 저장한 뒤 전달 자료로 준비해. 채팅에 요청을 보내면 정리와 Drive 파일 링크를 공부방으로 받을 수 있어.</p><p class="small muted">전달 자료는 사이트에 24시간 보관돼. Drive 저장은 채팅의 처리 결과를 받아야 확인돼.</p><button type="button" class="primary" data-tn-cloud-new="' + kind + '">노트 저장 · 채팅·Drive로 보내기</button></div><details class="tn-alt tn-manual"><summary>글만 전달 · 정리 직접 붙여넣기</summary>' : '') +
+      (window.FC_CHAT_DRIVE ? '<div class="tn-handoff"><b>채팅에서 정리하고 Drive에 보관</b><p class="small">지금 쓴 글과 녹음·사진 원본을 기기에 저장한 뒤 전달 자료로 준비해. 채팅에 요청을 보내면 정리와 Drive 파일 링크를 공부방으로 받을 수 있어.</p><p class="small muted">전달 자료는 사이트에 24시간 보관돼. Drive 저장은 채팅의 처리 결과를 받아야 확인돼.</p>' + (kind === 'talk' ? '<label class="tn-auto"><input type="checkbox" data-tn-auto' + (autoOn() ? ' checked' : '') + '> 녹음이 끝나면 바로 저장하고 보내기 준비</label>' : '') + '<button type="button" class="primary" data-tn-cloud-new="' + kind + '">노트 저장 · 채팅·Drive로 보내기</button></div><details class="tn-alt tn-manual"><summary>글만 전달 · 정리 직접 붙여넣기</summary>' : '') +
       '<div class="tn-handoff"><b>💬 ChatGPT로 복습하기</b><p class="small">① 요청을 복사하고 ② ChatGPT를 열어줘. 입력창이 비어 있으면 붙여넣고 보내줘.' + (kind === 'talk' ? ' 수업 내용을 아직 안 적었다면, 그다음 입력창의 🎤 음성 입력으로 1분 말하고 보내면 돼.' : ' 사진 원본은 자동으로 전송되지 않아. 필요하면 ChatGPT에서 직접 첨부해줘.') + '</p>' +
       '<button type="button" data-tn-copy>① 복습 요청 복사</button><a class="tn-gpt-main" data-tn-gpt href="https://chatgpt.com/" target="_blank" rel="noopener">② 일반 Chat 새 대화 열기 ↗</a><p class="small">ChatGPT 상단에서 <b>Chat</b>을 확인하고 보내줘. Work로 열렸다면 Chat으로 바꿔줘.</p>' +
       '<p class="tn-transfer-status small" role="status" aria-live="polite">핵심 정리·확인할 것·복습 질문 3개를 부탁할게.</p>' +
@@ -135,7 +137,8 @@
       var current = sheet;
       audioSession = FC_AUDIO.mount(sheet.querySelector('[data-tn-audio]'), {
         subject: function () { return current.querySelector('.tn-sub-other').value.trim() || sub || '기타'; },
-        topic: function () { return current.querySelector('.tn-topic').value.trim(); },
+        topic: function () { var el = current.querySelector('.tn-topic'), t = el.value.trim(); if (!t) { t = autoTopic(); el.value = t; saveDraft(); } return t; },
+        onFinal: function () { if (sheet !== current || !autoOn()) return; notice('녹음을 저장했어 🎙️ 정리·Drive 전달을 바로 준비할게.'); setTimeout(function () { if (sheet !== current) return; var b = current.querySelector('[data-tn-cloud-new]'); if (b && !b.disabled) b.click(); }, 500); },
         onStart: function () { if (sheet === current) { current.querySelectorAll('[data-tn-sub],.tn-sub-other,.tn-topic').forEach(function (x) { x.disabled = true; }); if (SR) startRec(); } },
         onStop: function () { if (sheet === current) { current.querySelectorAll('[data-tn-sub],.tn-sub-other,.tn-topic').forEach(function (x) { x.disabled = false; }); stopRec('녹음이 끝났어. 글자로 남은 내용을 확인해줘.'); } },
         onRecord: function (r) { if (sheet === current) { currentAudio = r; saveDraft(); } }
@@ -338,6 +341,7 @@
     var text = e.clipboardData.getData('text');
     if (!validSummary(text)) e.preventDefault();
   });
+  document.addEventListener('change', function (e) { if (e.target && e.target.hasAttribute && e.target.hasAttribute('data-tn-auto')) { try { localStorage.setItem('fc-tn-auto', e.target.checked ? '1' : '0'); } catch (x) {} } });
   document.addEventListener('input', function (e) { if (sheet && e.target.closest && e.target.closest('.tn-sheet')) { updateHandoff(); saveDraft(); } });
   function returnHint() {
     if (sheet && gptSent) sheet.querySelector('.tn-return').textContent = sheet.querySelector('.tn-sum').value.trim() ? '쓰던 정리가 남아 있어. 확인하고 저장해줘.' : 'ChatGPT 답을 복사해 왔으면 📋 붙여넣기를 눌러줘.';
@@ -571,7 +575,7 @@
     '.tn-ls.st-past em{color:var(--warn-ink)}.tn-ls.fresh em,.tn-ls.st-now em{color:var(--accent-ink)}.tn-ls.st-done em{color:var(--ok-ink)}.tn-ls.st-done b{color:var(--ink-2)}' +
     '.tn-ls.on{border:2px solid var(--accent)!important;background:var(--u-soft)!important;padding:7px 9px!important}' +
     '.tn-more-btn{display:block;width:100%;margin:8px 0 0;min-height:var(--tap);border:1px dashed var(--u-line)!important;background:transparent!important;color:var(--accent-ink)!important;border-radius:12px!important;font-weight:700;font-size:13.5px}.tn-more{margin-top:8px}.tn-more[hidden]{display:none!important}' +
-    '.tn-next{margin:4px 0 6px;color:var(--accent-ink)}' +
+    '.tn-next{margin:4px 0 6px;color:var(--accent-ink)}.tn-auto{display:flex!important;align-items:center;gap:8px;min-height:var(--tap);margin:4px 0 8px!important;font-size:13.5px;font-weight:600!important;color:var(--ink-2)}.tn-auto input{width:22px;height:22px;min-height:22px}' +
     '@media(prefers-reduced-motion:reduce){.tn-mic.on{animation:none}}';
   document.head.appendChild(css);
   if (typeof render === 'function') render();

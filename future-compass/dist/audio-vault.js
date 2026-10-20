@@ -142,7 +142,7 @@
         if (!blob.size) { v.message = '녹음 소리를 저장하지 못했어. 마이크를 확인하고 다시 녹음해줘.'; render(v); a.resolve(null); return; }
         var r = Object.assign({}, a.record, { blob: blob, partial: !!a.error, duration: Math.round(((a.stoppedAt || Date.now()) - a.started) / 1000) });
         v.current = r.id; v.message = a.error ? '녹음이 중간에 멈췄어. 남은 소리를 확인해줘.' : '녹음이 끝났어. 재생해서 소리가 들리는지 확인해줘.';
-        store(r).then(function () { notify(r); if (v.hooks.onRecord) v.hooks.onRecord(metadata(r)); a.resolve(r); if (connected()) upload(r); });
+        store(r).then(function () { notify(r); if (v.hooks.onRecord) v.hooks.onRecord(metadata(r)); a.resolve(r); if (connected()) upload(r); if (v.hooks.onFinal && !r.partial) v.hooks.onFinal(metadata(r)); });
       };
       a.recorder.onstop = a.finish; a.recorder.onerror = function () { a.error = true; stop(); };
       a.recorder.start(1000); a.started = Date.now();
