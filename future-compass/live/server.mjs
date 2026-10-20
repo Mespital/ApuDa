@@ -21,8 +21,8 @@ async function probe() {
   try { CAP.stt = !!(process.env.FC_STT_URL && (await fetch(process.env.FC_STT_URL.replace(/\/$/, '') + '/health', { signal: AbortSignal.timeout(4000) })).ok); } catch { CAP.stt = false; }
   CAP.drive = DRIVE ? await DRIVE.ok() : false;
 }
-probe(); setInterval(probe, 300000);
-const VOICE = createVoice({ stt: STT, hasAI: hasAI(process.env), organize: (subject, text) => askAI(process.env, organizePayload({ subject, text, kind: 'voice' })), drive: () => (CAP.drive ? DRIVE : null) });
+probe(); setInterval(probe, 300000); setInterval(() => { if (!CAP.stt || !CAP.drive) probe(); }, 60000);
+const VOICE = createVoice({ stt: STT, hasAI: hasAI(process.env), organize: (subject, text) => askAI(process.env, organizePayload({ subject, text, kind: 'voice' })), drive: () => DRIVE });   // 상태 확인이 잠깐 실패해도 업로드는 시도 (실패하면 단계 오류로 기록)
 const ORIGINS = (process.env.ALLOWED_ORIGINS || 'https://future.apuda.app').split(',').map(s => s.trim()).filter(Boolean);
 // 티켓 확인: ① FC_LIVE_SECRET(선택, HMAC) 또는 ② Netlify가 만든 ed25519 공개키(자동으로 가져옴 → 비밀값 필요 없음)
 const KEY_URL = process.env.FC_KEY_URL || 'https://future.apuda.app/api/family';
