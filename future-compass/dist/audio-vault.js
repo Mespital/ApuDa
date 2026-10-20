@@ -159,7 +159,7 @@
     var historyOpen = v.root.querySelector('.av-history') && v.root.querySelector('.av-history').open, settingsOpen = v.root.querySelector('.av-settings') && v.root.querySelector('.av-settings').open;
     v.root.querySelectorAll('[data-blob-url]').forEach(function (el) { URL.revokeObjectURL(el.dataset.blobUrl); });
     var recording = active && active.v === v;
-    v.root.innerHTML = '<div class="av-box"><b>🎙️ 녹음 원본 남기기</b><p class="small">과목·주제를 적고 녹음해줘. 파일 이름은 과목_주제_한국시간으로 붙여둘게.</p><div class="av-clock" role="timer" aria-label="남은 녹음 시간">1:00</div><button type="button" data-av-record aria-pressed="' + !!recording + '">' + (recording ? '■ 녹음 마치기' : '🎙️ 1분 녹음 시작') + '</button><p class="small" role="status">' + esc(v.message) + '</p><div class="av-current"></div><details class="av-settings"><summary>Drive 연결 · 다른 녹음 파일</summary><label class="av-import small">다른 녹음 파일 고르기<input type="file" data-av-file accept="audio/*"></label><p class="small av-drive-status" role="status">' + esc(driveMessage) + '</p><button type="button" data-av-connect>' + (connected() ? 'Google 저장 폴더 바꾸기' : 'Google Drive 연결') + '</button>' + (connected() ? '<a href="' + esc(destination.url) + '" target="_blank" rel="noopener">' + esc(destination.name) + ' 폴더 열기 ↗</a>' : '') + '</details><details class="av-history"><summary>이 기기의 녹음 보관함</summary><div class="av-records"></div></details></div>';
+    v.root.innerHTML = '<div class="av-box"><b>🎙️ 녹음 원본 남기기</b><p class="small">과목·주제를 적고 녹음해줘. 파일 이름은 과목_주제_한국시간으로 붙여둘게.</p><div class="av-clock" role="timer" aria-label="남은 녹음 시간">1:00</div><button type="button" data-av-record aria-pressed="' + !!recording + '">' + (recording ? '■ 녹음 마치기' : '🎙️ 1분 녹음 시작') + '</button><p class="small" role="status">' + esc(v.message) + '</p><div class="av-current"></div><details class="av-settings"><summary>녹음 가져오기 · 직접 Drive 연결(선택)</summary><label class="av-import small">다른 녹음 파일 고르기<input type="file" data-av-file accept="audio/*"></label><p class="small av-drive-status" role="status">' + esc(driveMessage) + '</p><button type="button" data-av-connect>' + (connected() ? 'Google 저장 폴더 바꾸기' : 'Google Drive 연결') + '</button>' + (connected() ? '<a href="' + esc(destination.url) + '" target="_blank" rel="noopener">' + esc(destination.name) + ' 폴더 열기 ↗</a>' : '') + '</details><details class="av-history"><summary>이 기기의 녹음 보관함</summary><div class="av-records"></div></details></div>';
     renderClock(v);
     v.root.querySelector('.av-history').open = !!historyOpen; v.root.querySelector('.av-settings').open = !!settingsOpen;
     if (v.current) get(v.current).then(function (r) { if (r && v.root.isConnected && v.generation === generation) recordRow(v.root.querySelector('.av-current'), r); });
@@ -204,9 +204,19 @@
       dialog.addEventListener('keydown', function (e) { if (e.key === 'Escape') { e.preventDefault(); close(); } }); dialog.querySelector('[data-av-close]').focus();
     });
   }
-  window.FC_AUDIO = { mount: mount, stop: stop, get: get, metadata: metadata, open: open };
+  function rememberDrive(id, f) {
+    return get(id).then(function (r) {
+      if (!r || !r.blob || r.blob.size !== f.size || !/^[\w-]{10,200}$/.test(f.id) || !/^https:\/\/drive\.google\.com\/file\/d\//.test(f.url || '')) return;
+      return r.blob.arrayBuffer().then(function (b) { return crypto.subtle.digest('SHA-256', b); }).then(function (b) {
+        var hash = Array.from(new Uint8Array(b), function (x) { return x.toString(16).padStart(2, '0'); }).join(''); if (hash !== f.sha256) return;
+        r.driveId = f.id; r.driveUrl = f.url; r.driveParent = f.parentId; r.name = f.name; r.uploaded = true; r.uploadedVia = 'chat'; r.error = '';
+        return store(r).then(function () { notify(r); });
+      });
+    }).catch(function () {});
+  }
+  window.FC_AUDIO = { mount: mount, stop: stop, get: get, metadata: metadata, open: open, rememberDrive: rememberDrive };
   document.addEventListener('visibilitychange', function () { if (document.visibilityState !== 'visible') stop(); });
   window.addEventListener('pagehide', stop);
-  fetch('/.netlify/functions/recording-config', { cache: 'no-store' }).then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (j) { config = j; if (!j.configured) driveMessage = 'Google Drive 자동 저장은 연결 준비 중이야. 녹음은 이 기기에 남기고 파일 받기로 보관할 수 있어.'; warm(); renderAll(); }).catch(function () { config = { configured: false }; driveMessage = 'Google 연결 설정을 불러오지 못했어. 녹음은 이 기기에 보관할게.'; renderAll(); });
+  fetch('/.netlify/functions/recording-config', { cache: 'no-store' }).then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (j) { config = j; if (!j.configured) driveMessage = '채팅·Drive로 보내기를 이용하면 ChatGPT가 녹음 원본도 저장할 수 있어. 사이트의 직접 Drive 연결은 선택 기능이야.'; warm(); renderAll(); }).catch(function () { config = { configured: false }; driveMessage = 'Google 연결 설정을 불러오지 못했어. 녹음은 이 기기에 보관할게.'; renderAll(); });
   var style = document.createElement('style'); style.textContent = '.av-box{padding:12px;border:1px solid var(--u-line);border-radius:var(--r-m);margin:10px 0;background:var(--u-soft)}.av-box p{line-height:1.6}.av-box button{min-height:var(--tap);width:100%;font-weight:700}.av-clock{font-size:var(--fs-3xl);font-weight:800;text-align:center;margin:8px 0;color:var(--accent)}.av-import{display:block!important;margin:8px 0!important}.av-import input{display:block;width:100%;box-sizing:border-box;font-size:var(--fs-s);padding:8px 0}.av-row{margin:10px 0;border-top:1px solid var(--u-line);padding-top:10px;overflow-wrap:anywhere}.av-row audio{display:block;width:100%;height:44px}.av-row p{margin:6px 0}.av-box a{display:flex;align-items:center;justify-content:center;min-height:var(--tap);font-size:var(--fs-s);color:var(--accent);padding:6px 10px;box-sizing:border-box}.av-actions{display:flex;gap:8px;flex-wrap:wrap}.av-actions>*{flex:1;min-width:100px}.av-settings>summary,.av-history>summary{min-height:var(--tap);font-size:var(--fs-s);cursor:pointer}.picker-dialog{z-index:1200!important}.picker-dialog-bg{z-index:1199!important}'; document.head.appendChild(style);
 })();

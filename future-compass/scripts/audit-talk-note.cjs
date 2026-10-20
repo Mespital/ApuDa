@@ -54,7 +54,8 @@ let browser;
     await page.goto(origin + '/study.html'); await page.waitForTimeout(2000);
     return { context, page };
   }
-  async function open(page) { await page.locator('[data-tn-open=talk]').click(); await page.locator('.tn-sheet').waitFor(); }
+  async function legacy(page) { if (await page.locator('.tn-manual').count() && !(await page.locator('.tn-manual').getAttribute('open') === '')) await page.locator('.tn-manual > summary').click(); }
+  async function open(page) { await page.locator('[data-tn-open=talk]').click(); await page.locator('.tn-sheet').waitFor(); await legacy(page); }
   async function local(page) { await page.locator('.tn-local > summary').click(); }
   async function storage(page, key) { return page.evaluate(key => JSON.parse(localStorage.getItem(key)), key); }
   async function showReview(page, rid) {
@@ -73,7 +74,7 @@ let browser;
     const request = await page.evaluate(() => window.__clip.text); assert.match(request, /다음 메시지로 내용을 받을 때까지/);
     const popupPromise = page.waitForEvent('popup'); await page.locator('[data-tn-gpt]').click(); const popup = await popupPromise; await popup.close();
     assert.equal((await storage(page, 'fc-tn-draft')).gpt, 1);
-    await page.reload(); await page.waitForTimeout(2000);
+    await page.reload(); await page.waitForTimeout(2000); await legacy(page);
     assert.equal(await page.locator('.tn-sheet').count(), 1); assert.equal(await page.locator('.tn-text').inputValue(), '');
     await page.evaluate(() => document.dispatchEvent(new Event('visibilitychange')));
     assert.equal(await page.evaluate(() => window.__clip.reads), 0);
@@ -100,7 +101,7 @@ let browser;
     await page.evaluate(() => { window.__clip.denyWrite = true; }); await page.locator('[data-tn-copy]').click();
     assert.equal(await page.locator('.tn-request').getAttribute('open'), ''); assert.match(await page.locator('.tn-transfer-status').textContent(), /못 했어/);
     assert.ok((await page.locator('.tn-prompt').inputValue()).endsWith(text));
-    await page.reload(); await page.waitForTimeout(2000);
+    await page.reload(); await page.waitForTimeout(2000); await legacy(page);
     assert.equal(await page.locator('.tn-text').inputValue(), text); assert.equal(await page.locator('.tn-sub-other').inputValue(), '공통수학2');
     assert.equal(await page.locator('[data-tn-day="3"]').isChecked(), false); assert.equal(await page.locator('[data-tn-day="7"]').isChecked(), false);
     await page.evaluate(() => { window.__clip.denyRead = true; }); await page.locator('[data-tn-paste]').click(); assert.equal(await page.locator('.tn-sum').inputValue(), '');

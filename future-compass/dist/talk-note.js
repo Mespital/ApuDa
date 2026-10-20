@@ -82,6 +82,7 @@
       (kind === 'talk' ? '<label class="tn-l" for="tn-topic">오늘의 주제</label><input id="tn-topic" class="tn-topic" maxlength="60" placeholder="예: 함수의 뜻과 정의역">' : '') +
       (kind === 'talk' ? talkBody() : photoBody()) +
       (kind === 'talk' ? '' : '<label class="tn-l" for="tn-text">메모 <small class="muted">(사진에서 읽은 글·헷갈린 것)</small></label><textarea id="tn-text" class="tn-text" rows="5" maxlength="1500" placeholder="사진 속 핵심을 한두 줄 적거나, 글자 읽기를 눌러봐."></textarea>') +
+      (window.FC_CHAT_DRIVE ? '<div class="tn-handoff"><b>채팅에서 정리하고 Drive에 보관</b><p class="small">지금 쓴 글과 녹음·사진 원본을 기기에 저장한 뒤 전달 자료로 준비해. 채팅에 요청을 보내면 정리와 Drive 파일 링크를 공부방으로 받을 수 있어.</p><p class="small muted">전달 자료는 사이트에 24시간 보관돼. Drive 저장은 채팅의 처리 결과를 받아야 확인돼.</p><button type="button" class="primary" data-tn-cloud-new="' + kind + '">노트 저장 · 채팅·Drive로 보내기</button></div><details class="tn-alt tn-manual"><summary>글만 전달 · 정리 직접 붙여넣기</summary>' : '') +
       '<div class="tn-handoff"><b>💬 ChatGPT로 복습하기</b><p class="small">① 요청을 복사하고 ② ChatGPT를 열어줘. 입력창이 비어 있으면 붙여넣고 보내줘.' + (kind === 'talk' ? ' 수업 내용을 아직 안 적었다면, 그다음 입력창의 🎤 음성 입력으로 1분 말하고 보내면 돼.' : ' 사진 원본은 자동으로 전송되지 않아. 필요하면 ChatGPT에서 직접 첨부해줘.') + '</p>' +
       '<button type="button" data-tn-copy>① 복습 요청 복사</button><a class="tn-gpt-main" data-tn-gpt href="https://chatgpt.com/" target="_blank" rel="noopener">② 일반 Chat 새 대화 열기 ↗</a><p class="small">ChatGPT 상단에서 <b>Chat</b>을 확인하고 보내줘. Work로 열렸다면 Chat으로 바꿔줘.</p>' +
       '<p class="tn-transfer-status small" role="status" aria-live="polite">핵심 정리·확인할 것·복습 질문 3개를 부탁할게.</p>' +
@@ -90,8 +91,8 @@
       '<div class="tn-sum-box"><label class="tn-l" for="tn-summary">🧠 ChatGPT 답 붙여넣기 <small class="muted">(직접 고쳐 써도 돼)</small></label>' +
       '<p class="tn-paste-row"><button type="button" data-tn-paste>📋 복사한 정리 붙여넣기</button></p>' +
       '<p class="tn-return small" role="status" aria-live="polite"></p><textarea id="tn-summary" class="tn-sum" rows="8" maxlength="2000" placeholder="ChatGPT 답을 복사한 뒤 📋 버튼을 눌러줘. 권한이 없으면 이 칸을 길게 눌러 붙여넣기."></textarea></div>' +
-      '<div class="tn-again"><span>다시 보기</span><label><input type="checkbox" checked data-tn-day="1"> 내일</label><label><input type="checkbox" checked data-tn-day="3"> 3일 뒤</label><label><input type="checkbox" checked data-tn-day="7"> 7일 뒤</label></div>' +
-      '<p class="tn-save-row"><button type="button" class="primary" data-tn-save="' + kind + '">복습 노트 저장</button></p></div>';
+      (window.FC_CHAT_DRIVE ? '</details>' : '') + '<div class="tn-again"><span>다시 보기</span><label><input type="checkbox" checked data-tn-day="1"> 내일</label><label><input type="checkbox" checked data-tn-day="3"> 3일 뒤</label><label><input type="checkbox" checked data-tn-day="7"> 7일 뒤</label></div>' +
+      '<p class="tn-save-row"><button type="button"' + (window.FC_CHAT_DRIVE ? '' : ' class="primary"') + ' data-tn-save="' + kind + '">' + (window.FC_CHAT_DRIVE ? '이 기기에만 저장' : '복습 노트 저장') + '</button></p></div>';
     document.body.appendChild(sheet);
     document.documentElement.classList.add('tn-open');
     if (kind === 'talk' && window.FC_AUDIO) {
@@ -337,31 +338,31 @@
       notice(txt ? '읽은 글자를 넣었어. ① 복습 요청 복사를 눌러줘.' : '글자를 못 읽었어. 핵심만 직접 적어줘.');
     }).catch(function () { if (sheet) { b.disabled = false; b.textContent = '🔤 글자 읽기'; } notice('글자 읽기를 불러오지 못했어. 직접 적어줘.'); });
   }
-  function saveNote(kind) {
-    if (audioSession && audioSession.active()) { var waiting = sheet; audioSession.stop().then(function () { if (sheet === waiting) saveNote(kind); }); return; }
+  function saveNote(kind, onDone) {
+    if (audioSession && audioSession.active()) { var waiting = sheet; audioSession.stop().then(function () { if (sheet === waiting && saveNote(kind, onDone) === false) { var control = sheet.querySelector('[data-tn-cloud-new]'); if (control) control.disabled = false; } }); return true; }
     stopRec();
     var ta = sheet.querySelector('.tn-text'), text = ta.value.trim().slice(0, 1500), other = sheet.querySelector('.tn-sub-other').value.trim().slice(0, 20), subject = other || sub || '기타';
     var sum0 = (sheet.querySelector('.tn-sum') || {}).value || '';
-    if (!validSummary(sum0.trim())) return;
-    if (kind === 'talk' && text.length < 5 && sum0.trim().length < 5 && !currentAudio) { notice('조금만 더 말하거나 적어줘. (ChatGPT 정리를 붙여넣어도 돼)'); return; }
-    if (kind === 'photo' && !photoData) { notice('사진을 먼저 찍어줘.'); return; }
+    if (!validSummary(sum0.trim())) return false;
+    if (kind === 'talk' && text.length < 5 && sum0.trim().length < 5 && !currentAudio) { notice('조금만 더 말하거나 적어줘. (ChatGPT 정리를 붙여넣어도 돼)'); return false; }
+    if (kind === 'photo' && !photoData) { notice('사진을 먼저 찍어줘.'); return false; }
     var id = nid(), t = today(), days = [].slice.call(sheet.querySelectorAll('[data-tn-day]')).filter(function (c) { return c.checked; }).map(function (c) { return Number(c.dataset.tnDay); });
     var topic = (sheet.querySelector('.tn-topic') || {}).value || '';
     var first = (topic || text || sum0.replace(/^[^\n]*정리[^\n]*\n/, '').replace(/^[\s\-•]+/, '')).split('\n')[0].slice(0, 40);
     var title = subject + ' · ' + (kind === 'talk' ? '1분 말하기' : '요약 노트') + (first ? ' — ' + first : '');
     var sumEl = sheet.querySelector('.tn-sum'), sum = sumEl && !sheet.querySelector('.tn-sum-box').hidden ? sumEl.value.trim().slice(0, 2000) : '';
     var rv = { id: uid(), title: title.slice(0, 120), date: t, done: false, kind: '과제', subject: subject, note: (sum || text).slice(0, 800) };
-    var previousNotes = notes(), a = previousNotes.slice(); a.push({ id: id, date: t, at: new Date().toISOString(), kind: kind, subject: subject, topic: topic || undefined, audio: currentAudio || undefined, text: text, sum: sum || undefined, photo: kind === 'photo', review: rv.id });
-    if (!saveNotes(a)) return;
+    var previousNotes = notes(), a = previousNotes.slice(), entry = { id: id, date: t, at: new Date().toISOString(), kind: kind, subject: subject, topic: topic || undefined, audio: currentAudio || undefined, text: text, sum: sum || undefined, photo: kind === 'photo', review: rv.id }; a.push(entry);
+    if (!saveNotes(a)) return false;
     state.reviews.push(rv);
-    if (save() === false) { state.reviews.pop(); saveNotes(previousNotes); return; }
+    if (save() === false) { state.reviews.pop(); saveNotes(previousNotes); return false; }
     if (window.FC_PLANNER) {
       var P = FC_PLANNER.get(); P.again[rv.id] = days.map(function (n) { return new Date(Date.parse(t + 'T12:00:00Z') + n * 86400000).toISOString().slice(0, 10); });
       try { localStorage.setItem(FC_PLANNER.KEY, JSON.stringify(P)); }
-      catch (e) { delete P.again[rv.id]; state.reviews.pop(); save(); saveNotes(previousNotes); notice('복습 날짜를 저장하지 못했어. 쓰던 내용은 이 화면에 남겼어.'); return; }
+      catch (e) { delete P.again[rv.id]; state.reviews.pop(); save(); saveNotes(previousNotes); notice('복습 날짜를 저장하지 못했어. 쓰던 내용은 이 화면에 남겼어.'); return false; }
     }
-    if (!sum && text.length >= 30 && canAI()) SHIRO_AI.organize(subject, text, kind, t).then(function (s2) { var b3 = notes(); b3.forEach(function (n) { if (n.id === id) n.sum = s2.slice(0, 2000); }); saveNotes(b3); if (typeof render === 'function') render(); }).catch(function () {});
-    var done = function () { closeSheet(); clearDraft(); notice('저장했어! ' + (days.length ? '다시 보기 ' + days.map(function (n) { return n === 1 ? '내일' : n + '일 뒤'; }).join('·') + ' 잡아뒀어 🧠' : '')); if (typeof render === 'function') render(); };
+    if (!onDone && !sum && text.length >= 30 && canAI()) SHIRO_AI.organize(subject, text, kind, t).then(function (s2) { var b3 = notes(); b3.forEach(function (n) { if (n.id === id) n.sum = s2.slice(0, 2000); }); saveNotes(b3); if (typeof render === 'function') render(); }).catch(function () {});
+    var done = function () { closeSheet(); clearDraft(); notice('기기에 저장했어! ' + (days.length ? '다시 보기 ' + days.map(function (n) { return n === 1 ? '내일' : n + '일 뒤'; }).join('·') + ' 잡아뒀어 🧠' : '')); if (typeof render === 'function') render(); if (onDone) onDone(entry); };
     if (kind === 'photo') {
       var data = photoData;
       putPhoto(id, data).catch(function () { notice('사진을 이 기기에 저장하지 못했어.'); }).then(function () {
@@ -369,6 +370,7 @@
         done();
       });
     } else done();
+    return true;
   }
 
   /* ---------- 복습 탭: 수업 노트 목록 ---------- */
@@ -381,7 +383,7 @@
       return '<li><div class="tn-li-top"><span class="tn-tag ' + n.kind + '">' + (n.kind === 'talk' ? '🎙️' : '📷') + ' ' + esc(n.subject) + '</span><small>' + md(n.date) + '</small>' + (isParent() ? '' : '<button type="button" class="pl-x" data-tn-del="' + esc(n.id) + '" aria-label="노트 지우기">×</button>') + '</div>' +
         (n.photo ? '<button type="button" class="tn-thumb" data-tn-view="' + esc(n.id) + '" data-tn-img="' + esc(n.id) + '" aria-label="사진 크게 보기"></button>' : '') +
         (n.audio ? '<button type="button" class="tn-audio-link" data-tn-listen="' + esc(n.audio.id) + '">🎧 녹음 원본 듣기</button>' + (/^https:\/\/drive\.google\.com\//.test(n.audio.driveUrl || '') ? '<a class="tn-audio-link" href="' + esc(n.audio.driveUrl) + '" target="_blank" rel="noopener">Drive 녹음 열기 ↗</a>' : '') : '') +
-        (n.sum ? '<div class="tn-sumv">' + esc(n.sum).replace(/\n/g, '<br>') + '</div>' + (n.text ? '<p class="tn-txt tn-raw">' + esc(n.text).replace(/\n/g, '<br>') + '</p><button type="button" class="linkish" data-tn-raw="1">원문 보기</button>' : '') : (n.text ? '<p class="tn-txt">' + esc(n.text).replace(/\n/g, '<br>') + '</p>' : '')) + '</li>';
+        (n.sum ? '<div class="tn-sumv">' + esc(n.sum).replace(/\n/g, '<br>') + '</div>' + (n.text ? '<p class="tn-txt tn-raw">' + esc(n.text).replace(/\n/g, '<br>') + '</p><button type="button" class="linkish" data-tn-raw="1">원문 보기</button>' : '') : (n.text ? '<p class="tn-txt">' + esc(n.text).replace(/\n/g, '<br>') + '</p>' : '')) + (window.FC_CHAT_DRIVE ? '<button type="button" class="tn-audio-link" data-tn-cloud="' + esc(n.id) + '">채팅·Drive로 보내기</button>' : '') + '</li>';
     }).join('') + '</ul>' + (a.length > showN ? '<button type="button" class="linkish" data-tn-more>이전 노트 더 보기 (' + (a.length - showN) + ')</button>' : '') + '</section>';
     return h;
   }
@@ -414,6 +416,25 @@
       notice('zip을 받았어. 압축을 풀어 옵시디언 보관함 폴더에 넣으면 돼.');
     }).catch(function () { notice('내보내기를 하지 못했어. 인터넷 연결을 확인해줘.'); });
   }
+
+  window.FC_NOTES = {
+    get: function (id) { return notes().find(function (n) { return n.id === id; }); }, photo: getPhoto,
+    applyCloud: function (id, original, result, jobId, force) {
+      if (document.documentElement.classList.contains('pin-locked') || isParent() && window.FC_PLANNER && !FC_PLANNER.get().share.review) return 'failed';
+      var a = notes(), pos = a.findIndex(function (n) { return n.id === id; }); if (pos < 0) return 'missing';
+      var n = a[pos]; if (n.cloud && n.cloud.jobId === jobId) return 'applied';
+      if (!force && JSON.stringify([n.subject || '', n.topic || '', n.text || '', n.sum || '']) !== original) return 'conflict';
+      if (!result || !result.value || typeof result.value.summary !== 'string' || result.value.summary.length > 2000) return 'failed';
+      var previousNotes = a.slice(), next = Object.assign({}, n, { sum: result.value.summary, cloud: { jobId: jobId, files: result.value.files, at: result.at } });
+      var audio = result.value.files.find(function (f) { return f.role === 'audio'; });
+      if (audio && n.audio) next.audio = Object.assign({}, n.audio, { driveId: audio.id, driveUrl: audio.url, name: audio.name });
+      a[pos] = next; var rv = state.reviews.find(function (x) { return x.id === n.review; }), old = rv && rv.note;
+      if (!saveNotes(a)) return 'failed';
+      if (rv) { rv.note = result.value.summary.slice(0, 800); if (save() === false) { rv.note = old; saveNotes(previousNotes); return 'failed'; } }
+      if (audio && n.audio && window.FC_AUDIO && FC_AUDIO.rememberDrive) FC_AUDIO.rememberDrive(n.audio.id, audio);
+      if (typeof render === 'function') render(); return 'applied';
+    }
+  };
 
   /* ---------- 화면에 끼우기 ---------- */
   var prev = render;
@@ -452,6 +473,8 @@
     if (b.hasAttribute('data-tn-ocr')) { runOcr(); return; }
     if (b.hasAttribute('data-tn-org')) { organizeSheet(false); return; }
     if (d.tnRaw) { var li = b.closest('li'); li.classList.toggle('tn-show-raw'); b.textContent = li.classList.contains('tn-show-raw') ? '정리 보기' : '원문 보기'; return; }
+    if (d.tnCloudNew && window.FC_CHAT_DRIVE) { b.disabled = true; if (saveNote(d.tnCloudNew, function (n) { FC_CHAT_DRIVE.sendNote(n); }) === false) b.disabled = false; return; }
+    if (d.tnCloud && window.FC_CHAT_DRIVE) { var target = notes().find(function (n) { return n.id === d.tnCloud; }); if (target) FC_CHAT_DRIVE.sendNote(target); return; }
     if (d.tnSave) { saveNote(d.tnSave); return; }
     if (d.tnListen && window.FC_AUDIO) { FC_AUDIO.open(d.tnListen); return; }
     if (d.tnDel) { var n = notes().find(function (x) { return x.id === d.tnDel; }); if (n && confirm('이 노트를 지울까? (복습 메모는 남아)')) { saveNotes(notes().filter(function (x) { return x.id !== n.id; })); if (n.photo) delPhoto(n.id); render(); } return; }
