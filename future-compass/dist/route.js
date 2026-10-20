@@ -111,10 +111,10 @@
   });
 
   var css = document.createElement('style');
-  css.textContent = '.rt-card{background:#fff;border:1px solid #ebe6f5;border-radius:16px;padding:10px 14px;margin:14px 0}.rt-card summary{cursor:pointer;font-weight:700;font-size:15px}.rt-card summary small{font-weight:500;color:#6b6880;font-size:12.5px;margin-left:4px}' +
-    '.rt-legs{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:8px}.rt-legs li{display:grid;grid-template-columns:70px 1fr auto;gap:8px;align-items:center;font-size:15px}.rt-when{font-size:12.5px;color:#6b6880}' +
-    '.rt-legs button{min-height:36px;padding:4px 12px;border-radius:12px;border:0;background:#03c75a;color:#fff;font:600 13.5px system-ui;cursor:pointer;white-space:nowrap}.rt-muted{color:#6b6880;font-size:12.5px;margin:8px 0 0}' +
-    '@media(max-width:420px){.rt-legs li{grid-template-columns:1fr auto}.rt-when{grid-column:1/-1}}@media(prefers-color-scheme:dark){.rt-card{background:#1c1a29;border-color:#2e2b41}}';
+  css.textContent = '.rt-card{background:var(--u-surface);border:1px solid var(--u-line);border-radius:16px;padding:10px 14px;margin:14px 0}.rt-card summary{cursor:pointer;font-weight:700;font-size:15px}.rt-card summary small{font-weight:500;color:var(--ink-3);font-size:12.5px;margin-left:4px}' +
+    '.rt-legs{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:8px}.rt-legs li{display:grid;grid-template-columns:70px 1fr auto;gap:8px;align-items:center;font-size:15px}.rt-when{font-size:12.5px;color:var(--ink-3)}' +
+    '.rt-legs button{min-height:36px;padding:4px 12px;border-radius:12px;border:0;background:#03c75a;color:#fff;font:600 13.5px system-ui;cursor:pointer;white-space:nowrap}.rt-muted{color:var(--ink-3);font-size:12.5px;margin:8px 0 0}' +
+    '@media(max-width:420px){.rt-legs li{grid-template-columns:1fr auto}.rt-when{grid-column:1/-1}}@media(prefers-color-scheme:dark){.rt-card{background:var(--u-solid);border-color:var(--u-line)}}';
   document.head.appendChild(css);
   g.FC_ROUTE = { places: places, legs: legs, card: card, mount: mount, ensure: ensure, geocode: geocode, settingsPanel: settingsPanel, appUrl: appUrl, webUrl: webUrl };
 })(window);

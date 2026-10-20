@@ -1,61 +1,61 @@
 /* 4자리 비밀번호 잠금 화면 */
 html.pin-locked body > *:not(#pin-gate){display:none!important}
 html.pin-locked body{overflow:hidden}
-#pin-gate{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:20px 16px;background:linear-gradient(150deg,#2a2463,#4b38b8);font-family:"Noto Sans KR","Apple SD Gothic Neo",system-ui,sans-serif;color:#1d1b2e}
-.pin-card{width:100%;max-width:340px;background:#fff;border-radius:16px;padding:28px 22px 20px;display:flex;flex-direction:column;align-items:center;gap:10px;box-shadow:0 20px 60px #0004}
-.pin-logo{width:48px;height:48px;border-radius:12px;background:#5b3fd6;display:grid;place-items:center}
-.pin-brand{margin:0;font-size:13.5px;font-weight:700;color:#5b3fd6;letter-spacing:.04em}
+#pin-gate{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:20px 16px;background:linear-gradient(150deg,var(--u-solid),var(--accent));font-family:"Noto Sans KR","Apple SD Gothic Neo",system-ui,sans-serif;color:var(--ink)}
+.pin-card{width:100%;max-width:340px;background:var(--u-surface);border-radius:16px;padding:28px 22px 20px;display:flex;flex-direction:column;align-items:center;gap:10px;box-shadow:var(--sh-2)}
+.pin-logo{width:48px;height:48px;border-radius:12px;background:var(--accent);display:grid;place-items:center}
+.pin-brand{margin:0;font-size:13.5px;font-weight:700;color:var(--accent-ink);letter-spacing:.04em}
 .pin-title{margin:0;font-size:20px;line-height:1.4;text-align:center;text-wrap:balance}
 .pin-dots{display:flex;gap:14px;margin:8px 0 2px}
-.pin-dots i{width:16px;height:16px;border-radius:50%;border:2px solid #5b3fd6;background:transparent;transition:background .12s}
-.pin-dots i.on{background:#5b3fd6}
+.pin-dots i{width:16px;height:16px;border-radius:50%;border:2px solid var(--accent);background:transparent;transition:background .12s}
+.pin-dots i.on{background:var(--accent)}
 .pin-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .pin-input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
-.pin-msg{margin:0;min-height:22px;font-size:13.5px;color:#5e5a76;text-align:center}
+.pin-msg{margin:0;min-height:22px;font-size:13.5px;color:var(--ink-2);text-align:center}
 .pin-pad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;margin-top:4px}
-.pin-pad button{height:58px;border:0;border-radius:16px;background:#f1eefb;color:#1d1b2e;font:600 24px/1 "IBM Plex Mono",ui-monospace,monospace;cursor:pointer;touch-action:manipulation}
-.pin-pad button:active{background:#ddd5fa}
-.pin-pad button:focus-visible,.pin-forgot:focus-visible,.pin-confirm button:focus-visible{outline:3px solid #f4c95d;outline-offset:2px}
+.pin-pad button{height:58px;border:0;border-radius:16px;background:var(--u-soft);color:var(--ink);font:600 24px/1 "IBM Plex Mono",ui-monospace,monospace;cursor:pointer;touch-action:manipulation}
+.pin-pad button:active{background:var(--u-soft)}
+.pin-pad button:focus-visible,.pin-forgot:focus-visible,.pin-confirm button:focus-visible{outline:3px solid var(--warn);outline-offset:2px}
 .pin-wait .pin-pad{opacity:.4;pointer-events:none}
-.pin-forgot{margin-top:6px;border:0;background:none;color:#5e5a76;font-size:13.5px;text-decoration:underline;cursor:pointer;padding:8px}
-.pin-confirm{width:100%;background:#fbe6ea;border-radius:12px;padding:14px;font-size:13.5px;line-height:1.6}
+.pin-forgot{margin-top:6px;border:0;background:none;color:var(--ink-2);font-size:13.5px;text-decoration:underline;cursor:pointer;padding:8px}
+.pin-confirm{width:100%;background:var(--u-soft);border-radius:12px;padding:14px;font-size:13.5px;line-height:1.6}
 .pin-confirm p{margin:0 0 10px}
 .pin-confirm-row{display:flex;gap:8px}
 .pin-confirm-row button{flex:1;min-height:42px;border:0;border-radius:12px;font:600 13.5px system-ui;cursor:pointer}
-.pin-cancel{background:#fff;color:#1d1b2e}
-.pin-reset{background:#b4475a;color:#fff}
+.pin-cancel{background:var(--u-surface);color:var(--ink)}
+.pin-reset{background:var(--exam);color:var(--u-on-solid)}
 .pin-shake{animation:pinshake .35s}
 @keyframes pinshake{20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
 @media (prefers-reduced-motion:reduce){.pin-shake{animation:none}}
-.pin-lock-btn{border:1px solid #ddd5f0;background:#fff;color:#5b3fd6;border-radius:999px;padding:6px 12px;font:600 12.5px system-ui;cursor:pointer;white-space:nowrap}
+.pin-lock-btn{border:1px solid var(--u-line);background:var(--u-surface);color:var(--accent-ink);border-radius:999px;padding:6px 12px;font:600 12.5px system-ui;cursor:pointer;white-space:nowrap}
 .pin-tools{display:inline-flex;gap:6px;align-items:center}
 .sidebar .pin-tools{position:absolute;top:22px;right:24px}
 .sidebar{position:relative}
 .wrap > header .brand .pin-tools{margin-left:auto}
 .pin-lock-float{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));right:12px;z-index:60}
-.pin-toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:1001;background:#2a2463;color:#fff;padding:12px 18px;border-radius:12px;font:500 15px system-ui;max-width:90vw;text-align:center}
+.pin-toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:1001;background:var(--u-solid);color:var(--u-on-solid);padding:12px 18px;border-radius:12px;font:500 15px system-ui;max-width:90vw;text-align:center}
 @media (max-width:760px){.sidebar .pin-tools{top:14px;right:16px}.pin-change-btn{font-size:0!important;padding:6px 9px!important}.pin-change-btn::before{content:"🔑";font-size:13.5px}}
-.pin-cancel-change{border:0;background:none;color:#5b3fd6;font-size:13.5px;font-weight:600;cursor:pointer;padding:8px}
+.pin-cancel-change{border:0;background:none;color:var(--accent-ink);font-size:13.5px;font-weight:600;cursor:pointer;padding:8px}
 body > main > header .pin-tools,body > header .pin-tools{margin-left:8px}
 
-.pin-recovering .pin-dots,.pin-recovering .pin-pad,.pin-recovering .pin-input{display:none!important}.pin-recover{display:grid;gap:10px;text-align:left}.pin-recover[hidden]{display:none}.pin-rec-send,.pin-rec-check{min-height:44px;border:0;border-radius:12px;background:#5b3fd6;color:#fff;font:600 15px system-ui;cursor:pointer;padding:0 14px}.pin-rec-send:disabled{opacity:.6}.pin-rec-code{display:flex;gap:8px}.pin-rec-code[hidden]{display:none}.pin-rec-input{flex:1;min-height:44px;border:1px solid #d9d0ee;border-radius:12px;font:600 20px/1 system-ui;letter-spacing:.3em;text-align:center;padding:0 8px}.pin-rec-status{margin:0;font-size:13.5px;color:#b4475a;min-height:1em}.pin-rec-status.ok{color:#1e7a4c}.pin-recover .pin-cancel{background:#fff;border:1px solid #ddd;border-radius:12px;min-height:40px;font:500 13.5px system-ui;cursor:pointer}.pin-last summary{font-size:12.5px;color:#7a7590;cursor:pointer}.pin-last p{font-size:12.5px;margin:6px 0}.pin-last .pin-reset{width:100%;min-height:40px;border:0;border-radius:12px;background:#b4475a;color:#fff;font:600 13.5px system-ui;cursor:pointer}
-.pin-recover{background:#f4f0ff!important}
+.pin-recovering .pin-dots,.pin-recovering .pin-pad,.pin-recovering .pin-input{display:none!important}.pin-recover{display:grid;gap:10px;text-align:left}.pin-recover[hidden]{display:none}.pin-rec-send,.pin-rec-check{min-height:44px;border:0;border-radius:12px;background:var(--accent);color:var(--u-on-solid);font:600 15px system-ui;cursor:pointer;padding:0 14px}.pin-rec-send:disabled{opacity:.6}.pin-rec-code{display:flex;gap:8px}.pin-rec-code[hidden]{display:none}.pin-rec-input{flex:1;min-height:44px;border:1px solid var(--u-line);border-radius:12px;font:600 20px/1 system-ui;letter-spacing:.3em;text-align:center;padding:0 8px}.pin-rec-status{margin:0;font-size:13.5px;color:var(--exam-ink);min-height:1em}.pin-rec-status.ok{color:var(--ok-ink)}.pin-recover .pin-cancel{background:var(--u-surface);border:1px solid var(--u-line);border-radius:12px;min-height:40px;font:500 13.5px system-ui;cursor:pointer}.pin-last summary{font-size:12.5px;color:var(--ink-3);cursor:pointer}.pin-last p{font-size:12.5px;margin:6px 0}.pin-last .pin-reset{width:100%;min-height:40px;border:0;border-radius:12px;background:var(--exam);color:var(--u-on-solid);font:600 13.5px system-ui;cursor:pointer}
+.pin-recover{background:var(--u-soft)!important}
 
-.pin-rec-choices{display:grid;gap:8px}.pin-rec-choices button{min-height:44px;border:1px solid #d9d0ee;border-radius:12px;background:#fff;font:600 15px system-ui;cursor:pointer;color:#3d3566}.pin-rec-choices button.pin-off{color:#a7a2b8}.pin-rec-qa,.pin-rec-mail{display:grid;gap:8px}.pin-rec-qa[hidden],.pin-rec-mail[hidden]{display:none}.pin-qa-q{margin:0;font-weight:700;font-size:15px}.pin-qa-input{flex:1;min-height:44px;border:1px solid #d9d0ee;border-radius:12px;font:500 15px system-ui;padding:0 10px}.pin-qa-setup{width:100%;display:grid;gap:8px;text-align:left;background:#f4f0ff;border-radius:12px;padding:14px;font-size:13.5px}.pin-qa-setup[hidden]{display:none}.pin-qa-setup p{margin:0}.pin-qa-setup label{display:grid;gap:4px;font-weight:600}.pin-qa-setup select,.pin-qa-setup input{min-height:42px;border:1px solid #d9d0ee;border-radius:12px;font:500 15px system-ui;padding:0 8px;background:#fff}.pin-qa-msg{color:#b4475a;min-height:1em}.pin-qa-save{background:#5b3fd6;color:#fff}.pin-qa-skip{background:#fff;border:1px solid #ddd!important}
+.pin-rec-choices{display:grid;gap:8px}.pin-rec-choices button{min-height:44px;border:1px solid var(--u-line);border-radius:12px;background:var(--u-surface);font:600 15px system-ui;cursor:pointer;color:var(--ink-2)}.pin-rec-choices button.pin-off{color:var(--ink-3)}.pin-rec-qa,.pin-rec-mail{display:grid;gap:8px}.pin-rec-qa[hidden],.pin-rec-mail[hidden]{display:none}.pin-qa-q{margin:0;font-weight:700;font-size:15px}.pin-qa-input{flex:1;min-height:44px;border:1px solid var(--u-line);border-radius:12px;font:500 15px system-ui;padding:0 10px}.pin-qa-setup{width:100%;display:grid;gap:8px;text-align:left;background:var(--u-soft);border-radius:12px;padding:14px;font-size:13.5px}.pin-qa-setup[hidden]{display:none}.pin-qa-setup p{margin:0}.pin-qa-setup label{display:grid;gap:4px;font-weight:600}.pin-qa-setup select,.pin-qa-setup input{min-height:42px;border:1px solid var(--u-line);border-radius:12px;font:500 15px system-ui;padding:0 8px;background:var(--u-surface)}.pin-qa-msg{color:var(--exam-ink);min-height:1em}.pin-qa-save{background:var(--accent);color:var(--u-on-solid)}.pin-qa-skip{background:var(--u-surface);border:1px solid var(--u-line)!important}
 
-.pin-family{margin-top:2px;border:0;background:none;color:#5b3fd6;font:600 13.5px system-ui;cursor:pointer;padding:8px}.pin-family[hidden]{display:none}.pin-role{width:100%;display:grid;gap:10px;text-align:center}.pin-role[hidden]{display:none}.pin-who-note{margin:0;font-size:12.5px;color:#6b6880}
+.pin-family{margin-top:2px;border:0;background:none;color:var(--accent-ink);font:600 13.5px system-ui;cursor:pointer;padding:8px}.pin-family[hidden]{display:none}.pin-role{width:100%;display:grid;gap:10px;text-align:center}.pin-role[hidden]{display:none}.pin-who-note{margin:0;font-size:12.5px;color:var(--ink-3)}
 
 .pin-who-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.pin-who-row button{display:flex;flex-direction:column;align-items:center;gap:6px;border:2px solid #e6e0f7;background:#f8f6ff;border-radius:16px;padding:14px 4px 12px;cursor:pointer;color:#1d1b2e;font:700 15px system-ui;letter-spacing:-.02em;white-space:nowrap;transition:transform .12s,border-color .12s}
-.pin-who-row button:hover,.pin-who-row button:focus-visible{border-color:#5b3fd6;transform:translateY(-2px);outline:none}
-.pin-who-row button.last{border-color:#5b3fd6;background:#efeaff}
-.pin-who-row button[data-role="parent"]{background:#fff4f7}.pin-who-row button[data-role="parent"].last{background:#ffe8ef;border-color:#e2668a}
+.pin-who-row button{display:flex;flex-direction:column;align-items:center;gap:6px;border:2px solid var(--u-line);background:var(--u-soft);border-radius:16px;padding:14px 4px 12px;cursor:pointer;color:var(--ink);font:700 15px system-ui;letter-spacing:-.02em;white-space:nowrap;transition:transform .12s,border-color .12s}
+.pin-who-row button:hover,.pin-who-row button:focus-visible{border-color:var(--accent);transform:translateY(-2px);outline:none}
+.pin-who-row button.last{border-color:var(--accent);background:var(--u-soft)}
+.pin-who-row button[data-role="parent"]{background:var(--u-soft)}.pin-who-row button[data-role="parent"].last{background:var(--u-soft);border-color:var(--exam)}
 .pin-who .pin-logo,.pin-who .pin-brand{display:none}
 .pin-who-chip{display:inline-flex;align-items:center;gap:4px;padding:2px 10px 2px 4px!important}.pin-who-chip svg{display:block}
 @media (max-width:760px){.pin-who-chip span{font-size:12.5px}}
 
 #pin-gate{overflow-y:auto}
-.pin-hero{width:calc(100% + 44px);margin:-28px -22px 2px;aspect-ratio:16/7;background:#e9e2ff url(cozy-study-sm.webp) center 32%/cover no-repeat;border-radius:24px 24px 0 0}
+.pin-hero{width:calc(100% + 44px);margin:-28px -22px 2px;aspect-ratio:16/7;background:var(--u-soft) url(cozy-study-sm.webp) center 32%/cover no-repeat;border-radius:24px 24px 0 0}
 .pin-card:has(.pin-hero) .pin-logo{display:none}
 @media (max-height:700px){.pin-hero{aspect-ratio:16/5}.pin-pad button{height:50px}}
-.pin-guard{position:fixed;inset:0;z-index:2147483000;background:#1d1a3399;display:flex;align-items:center;justify-content:center;padding:16px}.pin-guard-in{background:#fff;border-radius:16px;padding:20px;width:100%;max-width:320px;box-sizing:border-box;display:grid;gap:8px;text-align:center;font-family:system-ui}.pin-guard-in b{font-size:17px;color:#2a2550}.pin-guard-in p{margin:0;font-size:13.5px;color:#6b6880}.pin-guard-in input{font-size:24px;letter-spacing:.4em;text-align:center;padding:10px;border:1.5px solid #d9d3f5;border-radius:12px}.pin-guard-msg{color:#d6455d!important;min-height:1em}.pin-guard-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}.pin-guard-btns button{min-height:44px;border-radius:12px;border:1.5px solid #d9d3f5;background:#fff;font:600 15px system-ui}.pin-guard-ok{background:#5b45d6!important;color:#fff;border-color:#5b45d6!important}
+.pin-guard{position:fixed;inset:0;z-index:2147483000;background:color-mix(in srgb,var(--u-solid) 60%,transparent);display:flex;align-items:center;justify-content:center;padding:16px}.pin-guard-in{background:var(--u-surface);border-radius:16px;padding:20px;width:100%;max-width:320px;box-sizing:border-box;display:grid;gap:8px;text-align:center;font-family:system-ui}.pin-guard-in b{font-size:17px;color:var(--ink)}.pin-guard-in p{margin:0;font-size:13.5px;color:var(--ink-3)}.pin-guard-in input{font-size:24px;letter-spacing:.4em;text-align:center;padding:10px;border:1.5px solid var(--u-line);border-radius:12px}.pin-guard-msg{color:var(--exam-ink)!important;min-height:1em}.pin-guard-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}.pin-guard-btns button{min-height:44px;border-radius:12px;border:1.5px solid var(--u-line);background:var(--u-surface);font:600 15px system-ui}.pin-guard-ok{background:var(--accent)!important;color:var(--u-on-solid);border-color:var(--accent)!important}

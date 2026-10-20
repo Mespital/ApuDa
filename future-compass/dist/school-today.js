@@ -115,19 +115,19 @@
     load().then(function () { document.querySelectorAll('#school-today[data-st]').forEach(render); });
   }
   var css = document.createElement('style');
-  css.textContent = '.st-card{background:#fff;border:1px solid #e4daf4;border-radius:16px;padding:20px 22px;margin:18px 0;color:#293152}' +
+  css.textContent = '.st-card{background:var(--u-surface);border:1px solid var(--u-line);border-radius:16px;padding:20px 22px;margin:18px 0;color:var(--ink)}' +
     '.st-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.st-head h2{margin:0;font-size:20px}' +
-    '.st-badge{font-size:12.5px;font-weight:700;background:#efe8ff;color:#5b3fd6;padding:4px 10px;border-radius:999px}' +
+    '.st-badge{font-size:12.5px;font-weight:700;background:var(--u-soft);color:var(--accent-ink);padding:4px 10px;border-radius:999px}' +
     '.st-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:12px}.st-col{min-width:0}.st-col h3{margin:0 0 8px;font-size:15px}' +
-    '.st-meal{display:grid;gap:2px;margin-bottom:8px;font-size:15px}.st-meal b{font-size:12.5px;color:#5b3fd6}' +
-    '.st-tt{margin:4px 0 0;padding-left:1.4em;font-size:15px;display:grid;gap:2px}.st-sub{margin:6px 0 0;font-size:12.5px;color:#667085}' +
-    '.st-ev{margin:0;padding:0;list-style:none;display:grid;gap:6px;font-size:15px}.st-ev b{color:#5b3fd6;margin-right:4px}.st-dday{font-size:12.5px;color:#b4475a;font-weight:700}' +
-    '.st-class{font-size:13.5px;display:inline-flex;gap:6px;align-items:center}.st-class select{font:inherit;padding:4px 8px;border-radius:8px;border:1px solid #d9d0ee}' +
+    '.st-meal{display:grid;gap:2px;margin-bottom:8px;font-size:15px}.st-meal b{font-size:12.5px;color:var(--accent-ink)}' +
+    '.st-tt{margin:4px 0 0;padding-left:1.4em;font-size:15px;display:grid;gap:2px}.st-sub{margin:6px 0 0;font-size:12.5px;color:var(--ink-3)}' +
+    '.st-ev{margin:0;padding:0;list-style:none;display:grid;gap:6px;font-size:15px}.st-ev b{color:var(--accent-ink);margin-right:4px}.st-dday{font-size:12.5px;color:var(--exam-ink);font-weight:700}' +
+    '.st-class{font-size:13.5px;display:inline-flex;gap:6px;align-items:center}.st-class select{font:inherit;padding:4px 8px;border-radius:8px;border:1px solid var(--u-line)}' +
     '.st-card[data-compact]{padding:14px 16px;margin:0 0 14px}.st-line{margin:8px 0 6px;font-size:15px}.st-card[data-compact] .st-ev{gap:4px}.st-card[data-compact] .st-off{margin:0 0 6px}' +
-    '.st-muted{color:#667085;font-size:13.5px;margin:4px 0}.st-foot{margin:12px 0 0;font-size:12.5px;color:#6b6880}.st-card a::after{content:none!important}' +
-    '.st-off{margin:10px 0 0;padding:10px 12px;border-radius:12px;background:#eaf6ef;color:#1f5c40;font-size:15px}.st-is-off{color:#2f7a52}.st-clash{font-size:12.5px;color:#b4475a;font-weight:700}.st-rest{margin:10px 0 0;font-size:12.5px;color:#4a5568;line-height:1.6}.st-rest b{color:#2f7a52;margin-right:4px}' +
+    '.st-muted{color:var(--ink-3);font-size:13.5px;margin:4px 0}.st-foot{margin:12px 0 0;font-size:12.5px;color:var(--ink-3)}.st-card a::after{content:none!important}' +
+    '.st-off{margin:10px 0 0;padding:10px 12px;border-radius:12px;background:var(--u-soft);color:var(--ok-ink);font-size:15px}.st-is-off{color:var(--ok-ink)}.st-clash{font-size:12.5px;color:var(--exam-ink);font-weight:700}.st-rest{margin:10px 0 0;font-size:12.5px;color:var(--ink-2);line-height:1.6}.st-rest b{color:var(--ok-ink);margin-right:4px}' +
     '@media(max-width:760px){.st-grid{grid-template-columns:1fr}}' +
-    '@media(prefers-color-scheme:dark){.st-card{background:#1c1a29;border-color:#2e2b41;color:#ecebf5}.st-off{background:#1f3329;color:#bfe6cf}.st-rest{color:#b9b4c9}}';
+    '@media(prefers-color-scheme:dark){.st-card{background:var(--u-solid);border-color:var(--u-line);color:var(--u-on-solid)}.st-off{background:var(--u-solid);color:var(--u-on-solid)}.st-rest{color:var(--ink-3)}}';
   document.head.appendChild(css);
   if (window.FC_CAL) window.FC_CAL.onUpdate(function () { document.querySelectorAll('#school-today[data-st]').forEach(function (b) { if (data) render(b); }); });
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mountAll); else mountAll();

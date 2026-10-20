@@ -43,7 +43,7 @@
   }
   var css = document.createElement('style');
   css.textContent = '#study-brief.sb-has-3h .sb-summary-grid>.sb-cell:first-child{display:none}#study-brief.sb-has-3h .sb-summary-grid{grid-template-columns:1fr!important}' +
-    '.tt-add{margin-top:10px;border-top:1.5px dashed var(--line,#e6e3f2);padding-top:8px}.tt-add>summary{cursor:pointer;list-style:none;font-weight:700;color:var(--violet,#5b45d6);padding:8px 2px;min-height:40px;display:flex;align-items:center}.tt-add>summary::-webkit-details-marker{display:none}.tt-add[open]>summary{color:#6b6880}';
+    '.tt-add{margin-top:10px;border-top:1.5px dashed var(--u-line);padding-top:8px}.tt-add>summary{cursor:pointer;list-style:none;font-weight:700;color:var(--accent-ink);padding:8px 2px;min-height:40px;display:flex;align-items:center}.tt-add>summary::-webkit-details-marker{display:none}.tt-add[open]>summary{color:var(--ink-3)}';
   document.head.appendChild(css);
   render();
 })();
