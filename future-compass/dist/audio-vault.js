@@ -3,7 +3,7 @@
 (function () {
   'use strict';
   var DB = 'fc-study-audio', PREF = 'fc-audio-drive-v1', SCOPE = 'https://www.googleapis.com/auth/drive.file';
-  var memory = new Map(), writes = new Map(), views = new Set(), jobs = new Map(), folders = new Map(), token = '', expires = 0, destination = null, active = null;
+  var memory = new Map(), writes = new Map(), views = new Set(), jobs = new Map(), folders = new Map(), erased = new Set(), token = '', expires = 0, destination = null, active = null;
   var config = null, libraries = null, ready = false, driveMessage = 'Google Drive 연결 후 녹음이 끝나면 자동 저장해. 연결 전에는 이 기기에 남겨둘게.';
   function esc(s) { return String(s || '').replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function safe(s, max) { return String(s || '').normalize('NFC').replace(/[\x00-\x1f\\/:*?"<>|]/g, ' ').trim().replace(/\s+/g, '-').slice(0, max); }
@@ -19,6 +19,7 @@
   function get(id) { if (memory.has(id)) return Promise.resolve(memory.get(id)); return transaction('readonly', function (s) { return s.get(id); }).then(function (r) { if (r) { r.uploading = jobs.has(r.id); r.memoryOnly = false; memory.set(id, r); } return r; }).catch(function () { return null; }); }
   function all() { return transaction('readonly', function (s) { return s.getAll(); }).catch(function () { return []; }).then(function (rows) { rows.forEach(function (r) { if (!memory.has(r.id)) { r.uploading = jobs.has(r.id); r.memoryOnly = false; memory.set(r.id, r); } }); return Array.from(memory.values()).sort(function (a, b) { return b.at - a.at; }); }); }
   function remove(id) {
+    erased.add(id);
     memory.delete(id);
     return (writes.get(id) || Promise.resolve()).then(function () { return transaction('readwrite', function (s) { return s.delete(id); }); }).catch(function () {}).then(function () { window.dispatchEvent(new CustomEvent('fc-audio-removed', { detail: { id: id } })); renderAll(); });
   }
@@ -212,14 +213,20 @@
     });
   }
   function rememberDrive(id, f) {
-    return get(id).then(function (r) {
-      if (!r || !r.blob || r.blob.size !== f.size || !/^[\w-]{10,200}$/.test(f.id) || !/^https:\/\/drive\.google\.com\/file\/d\//.test(f.url || '')) return;
+    if (erased.has(id)) return Promise.resolve(null);
+    var recording = memory.has(id) ? Promise.resolve(memory.get(id)) : transaction('readonly', function (s) { return s.get(id); });
+    return recording.then(function (r) {
+      if (!r || !r.blob) return null; // The raw recording can live on another family device.
+      var u; try { u = new URL(f.url); } catch (e) { return false; }
+      if (r.blob.size !== f.size || !/^[\w-]{10,200}$/.test(f.id) || !/^[a-f0-9]{64}$/.test(f.sha256) || u.origin !== 'https://drive.google.com' || u.pathname !== '/file/d/' + f.id + '/view') return false;
       return r.blob.arrayBuffer().then(function (b) { return crypto.subtle.digest('SHA-256', b); }).then(function (b) {
-        var hash = Array.from(new Uint8Array(b), function (x) { return x.toString(16).padStart(2, '0'); }).join(''); if (hash !== f.sha256) return;
-        r.driveId = f.id; r.driveUrl = f.url; r.driveParent = f.parentId; r.name = f.name; r.uploaded = true; r.uploadedVia = 'chat'; r.error = '';
-        return store(r).then(function () { notify(r); });
+        if (erased.has(id)) return null; // Metadata verification must never restore an explicitly erased raw Blob.
+        var hash = Array.from(new Uint8Array(b), function (x) { return x.toString(16).padStart(2, '0'); }).join(''); if (hash !== f.sha256) return false;
+        if (r.uploaded && r.driveId === f.id && r.driveUrl === f.url && r.name === f.name) return true;
+        var before = r, next = Object.assign({}, r, { driveId: f.id, driveUrl: f.url, driveParent: f.parentId, name: f.name, uploaded: true, uploadedVia: f.via === 'vps' ? 'vps' : 'chat', error: '' });
+        return store(next).then(function (saved) { if (saved.memoryOnly) { memory.set(id, before); return false; } notify(saved); return true; });
       });
-    }).catch(function () {});
+    }).catch(function () { return false; });
   }
   window.FC_AUDIO = { mount: mount, stop: stop, get: get, metadata: metadata, open: open, rememberDrive: rememberDrive, remove: remove };
   document.addEventListener('visibilitychange', function () { if (document.visibilityState !== 'visible') stop(); });

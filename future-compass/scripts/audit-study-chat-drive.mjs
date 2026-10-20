@@ -91,7 +91,7 @@ try {
     await page.evaluate(() => { const a = JSON.parse(localStorage.getItem('fc_notes_v1')); a[0].sum = '내가 다시 고친 정리'; localStorage.setItem('fc_notes_v1', JSON.stringify(a)); });
     await actor(second); await page.reload(); await wait(page, () => JSON.parse(localStorage.getItem('fc-chat-drive-v1'))[1].conflict);
     assert.equal(await page.evaluate(() => JSON.parse(localStorage.getItem('fc_notes_v1'))[0].sum), '내가 다시 고친 정리');
-    await page.evaluate(() => { tab = 'review'; render(); }); await page.locator('[data-cd-apply]').click(); assert.equal(await page.evaluate(() => JSON.parse(localStorage.getItem('fc_notes_v1'))[0].sum), summary);
+    await page.evaluate(() => { tab = 'review'; render(); }); await page.locator('[data-cd-apply]').click(); await wait(page, () => JSON.parse(localStorage.getItem('fc-chat-drive-v1'))[1].applied); assert.equal(await page.evaluate(() => JSON.parse(localStorage.getItem('fc_notes_v1'))[0].sum), summary);
     await context.close(); results.push('recording + notes → real HTTP files → validated receipt → reload → note/review/audio links; edit conflict requires explicit apply');
   }
   {
