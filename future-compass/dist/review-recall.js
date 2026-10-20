@@ -22,8 +22,9 @@
   function section(text, mark) {
     var lines = String(text || '').split('\n'), out = [], on = false;
     lines.forEach(function (l) {
-      if (/^\s*(📌|🔑|❓|➡️)/.test(l)) { on = l.indexOf(mark) >= 0; return; }
-      if (on && l.trim()) out.push(l.replace(/^[\s\-•·*]+/, '').trim());
+      l = l.replace(/^\s*#{1,6}\s*/, '').replace(/\*\*/g, '').trim();
+      if (/^(📌|🔑|❓|➡|🧩|🧠|⚠)/.test(l)) { on = l.indexOf(mark) >= 0; return; }
+      if (on && l) out.push(l.replace(/^(?:[-•·*]\s*|\d+[.)、]\s*)/, '').trim());
     });
     return out;
   }
