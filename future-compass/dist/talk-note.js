@@ -88,6 +88,42 @@
       '<button type="button" class="tn-more-btn" data-tn-more aria-expanded="false" aria-controls="tn-more">＋ 다른 과목 더 보기</button>' +
       '<div class="pl-chips tn-subs tn-more" id="tn-more" hidden>' + more.map(function (x) { return '<button type="button" data-tn-sub="' + esc(x) + '" aria-pressed="false">' + esc(x) + '</button>'; }).join('') + '<input id="tn-subject" class="tn-sub-other" maxlength="20" placeholder="다른 과목"></div>';
   }
+  /* 🗑 노트 지우기: 노트 + (선택) 이 기기 녹음 원본 + (선택) Drive 파일(휴지통, 30일 안 복구 가능) */
+  function driveFiles(n) {
+    var a = (n.cloud && Array.isArray(n.cloud.files) ? n.cloud.files : []).filter(function (f) { return f && /^[\w-]{10,200}$/.test(f.id || '') && f.name; });
+    if (n.audio && n.audio.driveId && !a.some(function (f) { return f.id === n.audio.driveId; })) a.push({ role: 'audio', id: n.audio.driveId, name: n.audio.name || '' });
+    return a.filter(function (f) { return f.name; });
+  }
+  function askDelete(n) {
+    var old = document.querySelector('.tn-delsheet'); if (old) old.remove();
+    var files = driveFiles(n), el = document.createElement('div');
+    el.className = 'tn-sheet tn-delsheet'; el.setAttribute('role', 'dialog'); el.setAttribute('aria-modal', 'true'); el.setAttribute('aria-label', '노트 지우기'); el.dataset.note = n.id;
+    el.innerHTML = '<div class="tn-panel"><b class="tn-del-title">🗑 이 노트를 지울까?</b><p class="small">' + esc(n.subject) + ' · ' + esc(n.topic || md(n.date)) + '</p>' +
+      (n.audio ? '<label class="tn-auto"><input type="checkbox" data-del-audio checked> 이 기기의 녹음 원본도 지우기</label>' : '') +
+      (files.length ? '<label class="tn-auto"><input type="checkbox" data-del-drive checked> Drive 파일 ' + files.length + '개도 휴지통으로 (30일 안에 Drive에서 되살릴 수 있어)</label>' : '') +
+      '<p class="small muted">복습 목록의 메모는 남아. 지운 노트는 되돌릴 수 없어.</p><div class="tn-del-row"><button type="button" data-tn-delno>취소</button><button type="button" class="tn-del-go" data-tn-delgo>지우기</button></div></div>';
+    el.addEventListener('click', function (e) { if (e.target === el) el.remove(); });
+    el.addEventListener('keydown', function (e) { if (e.key === 'Escape') el.remove(); });
+    document.body.appendChild(el); el.querySelector('[data-tn-delno]').focus();
+  }
+  function doDelete(b) {
+    var el = b.closest('.tn-delsheet'); if (!el) return;
+    var n = notes().find(function (x) { return x.id === el.dataset.note; }); if (!n) { el.remove(); return; }
+    var wantAudio = !!(el.querySelector('[data-del-audio]') || {}).checked, wantDrive = !!(el.querySelector('[data-del-drive]') || {}).checked, files = driveFiles(n);
+    b.disabled = true;
+    if (!saveNotes(notes().filter(function (x) { return x.id !== n.id; }))) { b.disabled = false; return; }
+    if (n.photo) delPhoto(n.id);
+    vsave(vjobs().filter(function (j) { return j.noteId !== n.id; }));
+    if (wantAudio && n.audio && window.FC_AUDIO && FC_AUDIO.remove) FC_AUDIO.remove(n.audio.id);
+    el.remove(); render();
+    if (!wantDrive || !files.length) { notice('노트를 지웠어.'); return; }
+    var l = liveInfo();
+    if (!l || !l.url) { notice('노트를 지웠어. Drive 파일은 서버에 연결이 안 돼서 Drive에서 직접 지워줘.'); return; }
+    fetch(l.url + '/voice/del', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ t: l.t, subject: n.subject, files: files.map(function (f) { return { id: f.id, name: f.name }; }) }) })
+      .then(function (r) { return r.json().then(function (j) { if (!r.ok) throw Error(j.error || 'del'); return j.result || {}; }); })
+      .then(function (res) { var ids = Object.keys(res), gone = ids.filter(function (k) { return res[k] === 'trashed' || res[k] === 'missing'; }).length; notice(gone === ids.length ? '노트와 Drive 파일 ' + gone + '개를 지웠어 (Drive 휴지통).' : '노트를 지웠어. Drive 파일 ' + (ids.length - gone) + '개는 못 지웠어. Drive에서 직접 지워줘.'); })
+      .catch(function () { notice('노트를 지웠어. Drive 파일은 지우지 못했어. Drive에서 직접 지워줘.'); });
+  }
   function autoTopic() { var x = lessons().find(function (y) { return y.sub === sub; }); return x ? x.p + '교시 수업' : '수업 복습'; }
   function autoOn() { try { return localStorage.getItem('fc-tn-auto') !== '0'; } catch (e) { return true; } }
   /* 🎙️ VPS 자동 처리: 녹음 → 받아쓰기(Whisper) → 정리 → Drive. 서버가 없거나 꺼져 있으면 ChatGPT 흐름으로 */
@@ -132,6 +168,7 @@
     })).then(function () { var rest = a.filter(function (j) { return !j.drop; }); vsave(rest); if (rest.length) vtimer = setTimeout(vpoll, 8000); if (typeof render === 'function' && a.length !== rest.length) render(); });
   }
   document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible') vpoll(); });
+  window.addEventListener('fc-audio-removed', function (e) { if (currentAudio && e.detail && currentAudio.id === e.detail.id) { currentAudio = null; if (sheet) saveDraft(); } });
   setTimeout(vpoll, 2500);
   function showMore(on) { var m = sheet && sheet.querySelector('.tn-more'), b = sheet && sheet.querySelector('[data-tn-more]'); if (!m || !b) return; m.hidden = !on; b.setAttribute('aria-expanded', String(on)); b.textContent = on ? '－ 다른 과목 접기' : '＋ 다른 과목 더 보기'; }
 
@@ -573,7 +610,9 @@
     if (d.tnCloud && window.FC_CHAT_DRIVE) { var target = notes().find(function (n) { return n.id === d.tnCloud; }); if (target) FC_CHAT_DRIVE.sendNote(target); return; }
     if (d.tnSave) { saveNote(d.tnSave); return; }
     if (d.tnListen && window.FC_AUDIO) { FC_AUDIO.open(d.tnListen); return; }
-    if (d.tnDel) { var n = notes().find(function (x) { return x.id === d.tnDel; }); if (n && confirm('이 노트를 지울까? (복습 메모는 남아)')) { saveNotes(notes().filter(function (x) { return x.id !== n.id; })); if (n.photo) delPhoto(n.id); render(); } return; }
+    if (d.tnDel) { var n = notes().find(function (x) { return x.id === d.tnDel; }); if (n) askDelete(n); return; }
+    if (b.hasAttribute('data-tn-delgo')) { doDelete(b); return; }
+    if (b.hasAttribute('data-tn-delno')) { var ds = document.querySelector('.tn-delsheet'); if (ds) ds.remove(); return; }
     if (d.tnView) { getPhoto(d.tnView).then(function (src) { if (!src) return; var v = document.createElement('div'); v.className = 'pf-dlg tn-viewer'; v.innerHTML = '<img src="' + src + '" alt="노트 사진"><button type="button" class="pf-cancel">닫기</button>'; document.body.appendChild(v); v.addEventListener('click', function () { v.remove(); }); }); return; }
     if (b.hasAttribute('data-tn-more')) { showN += 10; render(); return; }
     if (b.hasAttribute('data-tn-export')) { exportZip(); return; }
@@ -629,7 +668,7 @@
     '.tn-ls.st-past em{color:var(--warn-ink)}.tn-ls.fresh em,.tn-ls.st-now em{color:var(--accent-ink)}.tn-ls.st-done em{color:var(--ok-ink)}.tn-ls.st-done b{color:var(--ink-2)}' +
     '.tn-ls.on{border:2px solid var(--accent)!important;background:var(--u-soft)!important;padding:7px 9px!important}' +
     '.tn-more-btn{display:block;width:100%;margin:8px 0 0;min-height:var(--tap);border:1px dashed var(--u-line)!important;background:transparent!important;color:var(--accent-ink)!important;border-radius:12px!important;font-weight:700;font-size:13.5px}.tn-more{margin-top:8px}.tn-more[hidden]{display:none!important}' +
-    '.tn-voice-wait{margin:8px 0 0;color:var(--accent-ink);font-weight:700}.tn-next{margin:4px 0 6px;color:var(--accent-ink)}.tn-auto{display:flex!important;align-items:center;gap:8px;min-height:var(--tap);margin:4px 0 8px!important;font-size:13.5px;font-weight:600!important;color:var(--ink-2)}.tn-auto input{width:22px;height:22px;min-height:22px}' +
+    '.tn-del-title{font-size:17px;display:block;margin:4px 0}.tn-del-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}.tn-del-row button{min-height:var(--tap)}.tn-del-go{background:var(--exam)!important;border-color:var(--exam)!important;color:var(--u-on-solid,#fff)!important;font-weight:800}.tn-voice-wait{margin:8px 0 0;color:var(--accent-ink);font-weight:700}.tn-next{margin:4px 0 6px;color:var(--accent-ink)}.tn-auto{display:flex!important;align-items:center;gap:8px;min-height:var(--tap);margin:4px 0 8px!important;font-size:13.5px;font-weight:600!important;color:var(--ink-2)}.tn-auto input{width:22px;height:22px;min-height:22px}' +
     '@media(prefers-reduced-motion:reduce){.tn-mic.on{animation:none}}';
   document.head.appendChild(css);
   if (typeof render === 'function') render();

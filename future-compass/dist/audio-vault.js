@@ -18,6 +18,11 @@
   }
   function get(id) { if (memory.has(id)) return Promise.resolve(memory.get(id)); return transaction('readonly', function (s) { return s.get(id); }).then(function (r) { if (r) { r.uploading = jobs.has(r.id); r.memoryOnly = false; memory.set(id, r); } return r; }).catch(function () { return null; }); }
   function all() { return transaction('readonly', function (s) { return s.getAll(); }).catch(function () { return []; }).then(function (rows) { rows.forEach(function (r) { if (!memory.has(r.id)) { r.uploading = jobs.has(r.id); r.memoryOnly = false; memory.set(r.id, r); } }); return Array.from(memory.values()).sort(function (a, b) { return b.at - a.at; }); }); }
+  function remove(id) {
+    memory.delete(id);
+    return (writes.get(id) || Promise.resolve()).then(function () { return transaction('readwrite', function (s) { return s.delete(id); }); }).catch(function () {}).then(function () { window.dispatchEvent(new CustomEvent('fc-audio-removed', { detail: { id: id } })); renderAll(); });
+  }
+  function askRemove(id) { if (!confirm('이 기기의 녹음 원본을 지울까? 지우면 되돌릴 수 없어.\n(Drive에 저장된 파일은 그대로 있어. 노트를 지울 때 함께 지울 수 있어)')) return Promise.resolve(false); return remove(id).then(function () { if (typeof notice === 'function') notice('이 기기의 녹음을 지웠어.'); return true; }); }
   function metadata(r) { return { id: r.id, name: r.name, subject: r.subject, topic: r.topic, at: r.at, driveId: r.driveId || '', driveUrl: r.driveUrl || '' }; }
   function notify(r) { window.dispatchEvent(new CustomEvent('fc-audio-saved', { detail: metadata(r) })); renderAll(); }
   function connected() { return !!(token && expires > Date.now() && destination); }
@@ -171,12 +176,14 @@
     var url = URL.createObjectURL(r.blob); box.innerHTML = '<p class="small"><b>' + esc(r.name) + '</b></p><audio controls preload="none" aria-label="녹음 재생" src="' + url + '"></audio><p class="small" role="status">' + (r.uploaded ? '✅ Google Drive 저장 확인됨' : r.uploading ? 'Drive에 저장하는 중…' : r.memoryOnly ? '이 화면에만 있어. 파일 받기로 꼭 보관해줘.' : '이 기기에 보관 중 · Drive 저장 대기') + (r.error ? '<br>' + esc(r.error) : '') + '</p><div class="av-actions"><a href="' + url + '" download="' + esc(r.name) + '">파일 받기</a>' + (r.uploaded ? '<a href="' + esc(r.driveUrl) + '" target="_blank" rel="noopener">Drive에서 열기 ↗</a>' : '<button type="button" data-av-upload="' + esc(r.id) + '"' + (r.uploading ? ' disabled' : '') + '>Drive에 다시 저장</button>') + '</div>';
     if (r.partial) box.querySelector('[role=status]').textContent = '중간에 멈춘 녹음이야. 재생해서 소리를 확인한 뒤 저장해줘.';
     box.dataset.blobUrl = url;
+    if (!(window.PinGate && PinGate.who && PinGate.who() === 'parent')) { var del = document.createElement('button'); del.type = 'button'; del.className = 'av-del'; del.dataset.avDel = r.id; del.textContent = '🗑 녹음 지우기'; box.appendChild(del); }
   }
   function renderAll() { views.forEach(function (v) { if (!v.root.isConnected) { views.delete(v); return; } render(v); }); }
   function mount(root, hooks) {
     var v = { root: root, hooks: hooks, current: '', limit: 5, message: '소리 파일은 이 기기에 먼저 남기고, Drive 저장 여부를 따로 표시할게.' }; views.add(v); render(v);
     root.addEventListener('click', function (e) {
       var b = e.target.closest('button'); if (!b) return;
+      if (b.dataset.avDel) { if (active && active.record && active.record.id === b.dataset.avDel) return; askRemove(b.dataset.avDel).then(function (ok) { if (ok && v.current === b.dataset.avDel) { v.current = ''; renderAll(); } }); return; }
       if (b.hasAttribute('data-av-record')) { active ? stop() : start(v); }
       if (b.hasAttribute('data-av-connect')) connect();
       if (b.hasAttribute('data-av-more')) { v.limit += 10; renderAll(); v.root.querySelector('.av-history').open = true; }
@@ -200,7 +207,7 @@
       function close() { var el = dialog.querySelector('[data-blob-url]'); if (el) URL.revokeObjectURL(el.dataset.blobUrl); window.removeEventListener('fc-audio-saved', update); dialog.remove(); if (previous && previous.isConnected) previous.focus(); }
       function update(e) { if (e.detail.id === id) { var el = dialog.querySelector('[data-blob-url]'); if (el) URL.revokeObjectURL(el.dataset.blobUrl); recordRow(dialog.querySelector('.av-preview'), memory.get(id)); } }
       window.addEventListener('fc-audio-saved', update);
-      dialog.addEventListener('click', function (e) { if (e.target.closest('[data-av-close]')) close(); if (e.target.closest('[data-av-upload]')) { if (r.partial) { if (!confirm('중간에 멈춘 녹음을 그대로 저장할까?')) return; r.partial = false; store(r); } connected() ? upload(r) : connect(); } });
+      dialog.addEventListener('click', function (e) { if (e.target.closest('[data-av-close]')) close(); if (e.target.closest('[data-av-del]')) { askRemove(id).then(function (ok) { if (ok) close(); }); return; } if (e.target.closest('[data-av-upload]')) { if (r.partial) { if (!confirm('중간에 멈춘 녹음을 그대로 저장할까?')) return; r.partial = false; store(r); } connected() ? upload(r) : connect(); } });
       dialog.addEventListener('keydown', function (e) { if (e.key === 'Escape') { e.preventDefault(); close(); } }); dialog.querySelector('[data-av-close]').focus();
     });
   }
@@ -214,9 +221,9 @@
       });
     }).catch(function () {});
   }
-  window.FC_AUDIO = { mount: mount, stop: stop, get: get, metadata: metadata, open: open, rememberDrive: rememberDrive };
+  window.FC_AUDIO = { mount: mount, stop: stop, get: get, metadata: metadata, open: open, rememberDrive: rememberDrive, remove: remove };
   document.addEventListener('visibilitychange', function () { if (document.visibilityState !== 'visible') stop(); });
   window.addEventListener('pagehide', stop);
   fetch('/.netlify/functions/recording-config', { cache: 'no-store' }).then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (j) { config = j; if (!j.configured) driveMessage = '채팅·Drive로 보내기를 이용하면 ChatGPT가 녹음 원본도 저장할 수 있어. 사이트의 직접 Drive 연결은 선택 기능이야.'; warm(); renderAll(); }).catch(function () { config = { configured: false }; driveMessage = 'Google 연결 설정을 불러오지 못했어. 녹음은 이 기기에 보관할게.'; renderAll(); });
-  var style = document.createElement('style'); style.textContent = '.av-box{padding:12px;border:1px solid var(--u-line);border-radius:var(--r-m);margin:10px 0;background:var(--u-soft)}.av-box p{line-height:1.6}.av-box button{min-height:var(--tap);width:100%;font-weight:700}.av-clock{font-size:var(--fs-3xl);font-weight:800;text-align:center;margin:8px 0;color:var(--accent)}.av-import{display:block!important;margin:8px 0!important}.av-import input{display:block;width:100%;box-sizing:border-box;font-size:var(--fs-s);padding:8px 0}.av-row{margin:10px 0;border-top:1px solid var(--u-line);padding-top:10px;overflow-wrap:anywhere}.av-row audio{display:block;width:100%;height:44px}.av-row p{margin:6px 0}.av-box a{display:flex;align-items:center;justify-content:center;min-height:var(--tap);font-size:var(--fs-s);color:var(--accent);padding:6px 10px;box-sizing:border-box}.av-actions{display:flex;gap:8px;flex-wrap:wrap}.av-actions>*{flex:1;min-width:100px}.av-settings>summary,.av-history>summary{min-height:var(--tap);font-size:var(--fs-s);cursor:pointer}.picker-dialog{z-index:1200!important}.picker-dialog-bg{z-index:1199!important}'; document.head.appendChild(style);
+  var style = document.createElement('style'); style.textContent = '.av-del{display:block;width:100%;margin-top:8px;min-height:var(--tap);background:transparent!important;border:1px solid var(--u-line)!important;color:var(--exam-ink)!important;font-weight:700;border-radius:12px!important}.av-box{padding:12px;border:1px solid var(--u-line);border-radius:var(--r-m);margin:10px 0;background:var(--u-soft)}.av-box p{line-height:1.6}.av-box button{min-height:var(--tap);width:100%;font-weight:700}.av-clock{font-size:var(--fs-3xl);font-weight:800;text-align:center;margin:8px 0;color:var(--accent)}.av-import{display:block!important;margin:8px 0!important}.av-import input{display:block;width:100%;box-sizing:border-box;font-size:var(--fs-s);padding:8px 0}.av-row{margin:10px 0;border-top:1px solid var(--u-line);padding-top:10px;overflow-wrap:anywhere}.av-row audio{display:block;width:100%;height:44px}.av-row p{margin:6px 0}.av-box a{display:flex;align-items:center;justify-content:center;min-height:var(--tap);font-size:var(--fs-s);color:var(--accent);padding:6px 10px;box-sizing:border-box}.av-actions{display:flex;gap:8px;flex-wrap:wrap}.av-actions>*{flex:1;min-width:100px}.av-settings>summary,.av-history>summary{min-height:var(--tap);font-size:var(--fs-s);cursor:pointer}.picker-dialog{z-index:1200!important}.picker-dialog-bg{z-index:1199!important}'; document.head.appendChild(style);
 })();

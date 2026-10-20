@@ -77,6 +77,18 @@ export function createVoice(deps, dir = path.join(process.env.FC_DATA_DIR || '/d
   };
 }
 
+// 공부방이 만든 폴더(승준 공부방/1분 복습 녹음/과목) 안의, ID까지 맞는 파일만 지운다
+export async function trashFiles(drive, subject, files) {
+  if (!drive || !drive.trash) return { error: 'no_drive' };
+  if (typeof subject !== 'string' || !subject.trim() || subject.length > 40 || !Array.isArray(files) || !files.length || files.length > 6) return { error: 'bad' };
+  const dir = folderOf(subject.trim()), out = {};
+  for (const f of files) {
+    if (!f || !/^[\w-]{10,200}$/.test(String(f.id || '')) || typeof f.name !== 'string' || !/^[^/\\]{1,240}$/.test(f.name)) { out[String(f && f.id)] = 'bad'; continue; }
+    try { out[f.id] = await drive.trash(dir, f.name, f.id); } catch { out[f.id] = 'failed'; }
+  }
+  return { ok: true, result: out };
+}
+
 /* ---------- 실제 연결: Whisper 서버 · rclone rc ---------- */
 export function sttClient(base) {
   if (!base) return null;
@@ -96,6 +108,14 @@ export function rcloneClient(base, remote = 'gdrive:') {
       const st = await rc('operations/stat', null, { headers: { 'content-type': 'application/json' }, body: JSON.stringify({ fs: remote, remote: dir + '/' + name, opt: {} }) });
       return st && st.item ? { id: st.item.ID, name: st.item.Name, size: st.item.Size } : null;
     },
-    async ok() { try { await rc('operations/about', { fs: remote }); return true; } catch { return false; } }
+    async ok() { try { await rc('operations/about', { fs: remote }); return true; } catch { return false; } },
+    // ID가 맞는 파일만 휴지통으로 (rclone --drive-use-trash). 없으면 'missing'
+    async trash(dir, name, id) {
+      const st = await rc('operations/stat', null, { headers: { 'content-type': 'application/json' }, body: JSON.stringify({ fs: remote, remote: dir + '/' + name, opt: {} }) });
+      if (!st || !st.item) return 'missing';
+      if (st.item.ID !== id) return 'mismatch';
+      await rc('operations/deletefile', null, { headers: { 'content-type': 'application/json' }, body: JSON.stringify({ fs: remote, remote: dir + '/' + name }) });
+      return 'trashed';
+    }
   };
 }
