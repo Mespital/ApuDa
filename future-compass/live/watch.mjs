@@ -12,16 +12,19 @@ const toMin = (hm) => { const m = /^(\d{1,2}):(\d{2})$/.exec(String(hm || '')); 
 export function createWatch(dir = process.env.FC_DATA_DIR || '/data', clock = Date.now) {
   const file = path.join(dir, 'watch.json');
   let S = {}; try { S = JSON.parse(fs.readFileSync(file, 'utf8')); } catch {}
-  const save = () => { try { fs.mkdirSync(dir, { recursive: true }); fs.writeFileSync(file + '.tmp', JSON.stringify(S)); fs.renameSync(file + '.tmp', file); } catch (e) { console.error('watch save failed', e.message); } };
+  const save = () => { try { fs.mkdirSync(dir, { recursive: true }); fs.writeFileSync(file + '.tmp', JSON.stringify(S)); fs.renameSync(file + '.tmp', file); return true; } catch (e) { console.error('watch save failed', e.message); return false; } };
+  const change = (fn) => { const before = JSON.parse(JSON.stringify(S)); fn(); if (save()) return true; S = before; return false; };
   const api = {
-    setKey(key) { if (!/^[a-f0-9]{40}$/.test(String(key || ''))) return false; S.keyHash = hash(key); S.keyAt = clock(); save(); return true; },
-    clearKey() { delete S.keyHash; save(); },
+    setKey(key) { if (!/^[a-f0-9]{40}$/.test(String(key || ''))) return false; return change(() => { S.keyHash = hash(key); S.keyAt = clock(); }); },
+    clearKey() { return change(() => { delete S.keyHash; }); },
     hasKey() { return !!S.keyHash; },
     check(key) { if (!S.keyHash || !/^[a-f0-9]{40}$/.test(String(key || ''))) return false; const a = Buffer.from(hash(key)), b = Buffer.from(S.keyHash); return a.length === b.length && timingSafeEqual(a, b); },
     setTable(table, periods, len) {
       if (!Array.isArray(table) || table.length > 5 || !Array.isArray(periods) || periods.length > 12) return false;
-      S.table = table.map((r) => (Array.isArray(r) ? r : []).slice(0, 12).map((x) => String(x || '').slice(0, 30)));
-      S.periods = periods.map((p) => String(p || '').slice(0, 5)); S.len = Math.max(30, Math.min(90, Number(len) || 50)); save(); return true;
+      return change(() => {
+        S.table = table.map((r) => (Array.isArray(r) ? r : []).slice(0, 12).map((x) => String(x || '').slice(0, 30)));
+        S.periods = periods.map((p) => String(p || '').slice(0, 5)); S.len = Math.max(30, Math.min(90, Number(len) || 50));
+      });
     },
     // 방금 끝난(70분 안) 수업 → 지금 수업 → 없으면 ''
     subjectAt(ms) {
@@ -33,7 +36,8 @@ export function createWatch(dir = process.env.FC_DATA_DIR || '/data', clock = Da
     },
     subjects() { return [...new Set((S.table || []).flat().map((x) => String(x || '').trim()).filter((x) => x && !SKIP.test(x)))]; },
     acked(id) { return (S.acked || []).includes(id); },
-    ack(ids) { S.acked = [...new Set([...(S.acked || []), ...ids.filter((x) => /^[a-f0-9]{32}$/.test(x))])].slice(-200); save(); },
+    ack(ids) { return change(() => { S.acked = [...new Set([...(S.acked || []), ...ids.filter((x) => /^[a-f0-9]{32}$/.test(x))])].slice(-200); }); },
+    unack(id) { return change(() => { S.acked = (S.acked || []).filter((x) => x !== id); }); },
     newId() { return randomBytes(16).toString('hex'); }
   };
   return api;
