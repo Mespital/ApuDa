@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-10-20T23:03:35.519691+00:00",
-  "last_success_at": "2026-10-20T23:03:35.519691+00:00",
+  "checked_at": "2026-10-21T04:01:34.672386+00:00",
+  "last_success_at": "2026-10-21T04:01:34.672386+00:00",
   "failures": [],
   "articles": [
     {
@@ -32,6 +32,14 @@
       "url": "https://openai.com/index/ted-taylor-restaurant",
       "source": "OpenAI",
       "published_at": "2026-10-20T10:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Terminal X matches senior investor judgment 88.6% with GPT-6.1",
+      "url": "https://openai.com/index/terminal-x",
+      "source": "OpenAI",
+      "published_at": "2026-10-20T07:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
     },
@@ -234,20 +242,12 @@
       "published_at": "2026-10-14T07:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "How Block is building AI-powered security with OpenAI technology",
-      "url": "https://openai.com/index/block-ai-powered-security",
-      "source": "OpenAI",
-      "published_at": "2026-10-14T07:00:00+00:00",
-      "category": "안전·보안",
-      "domain": "security"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-20T23:03:35.519691+00:00",
+    "checked_at": "2026-10-21T04:01:34.672386+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -432,7 +432,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-20T23:03:35.519691+00:00",
+    "last_success_at": "2026-10-21T04:01:34.672386+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
