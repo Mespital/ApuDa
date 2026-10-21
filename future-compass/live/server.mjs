@@ -141,8 +141,10 @@ const server = http.createServer(async (req, res) => {
     const r = await trashFiles(DRIVE, b.subject, b.files); return send(res, r.error ? 400 : 200, r);
   }
   if (url.pathname === '/voice' && req.method === 'GET') {
-    if (!verifyTicket(url.searchParams.get('t'))) return send(res, 401, { error: 'ticket' });
-    const r = VOICE.status(url.searchParams.get('id')); return r ? send(res, 200, r) : send(res, 404, { error: 'not_found' });
+    const tk = verifyTicket(url.searchParams.get('t')); if (!tk) return send(res, 401, { error: 'ticket' });
+    const r = VOICE.status(url.searchParams.get('id'));
+    if (r?.source === 'watch' && tk.role !== 'child') return send(res, 403, { error: 'role' });
+    return r ? send(res, 200, r) : send(res, 404, { error: 'not_found' });
   }
   // ⌚ 애플워치 단축어 → 1분 복습 (워치 키). 응답은 워치 화면에 그대로 보일 짧은 글
   if (url.pathname === '/watch/note' && req.method === 'POST') {
@@ -155,21 +157,43 @@ const server = http.createServer(async (req, res) => {
     const at = WATCH.subjectAt(Date.now());
     let subject = String(b.subject || '').trim().slice(0, 30) || sp.subject || at.sub || '기타'; if (sp.subject) text = sp.text;
     const r = VOICE.start({ id: WATCH.newId(), subject, topic: at.p && subject === at.sub ? at.p + '교시 수업' : '워치 메모', at: new Date().toISOString(), text, textOnly: true, source: 'watch' });
-    return r.error ? txt(400, '저장하지 못했어') : txt(200, '✓ ' + subject + ' 저장 · 정리 중');
+    return r.error ? txt(503, '접수하지 못했어\n잠시 뒤 다시 보내줘') : txt(200, '✓ ' + subject + ' 접수\n정리·Drive 보관 중\n완료는 공부방에서 확인');
   }
   if (url.pathname.startsWith('/watch/') && req.method === 'POST') {
     let b; try { b = await body(req, 20000); } catch { return send(res, 400, { error: 'bad' }); }
     const tk = verifyTicket(b.t); if (!tk) return send(res, 401, { error: 'ticket' });
-    if (url.pathname === '/watch/table') { WATCH.setTable(b.table, b.periods, b.len); return send(res, 200, { ok: true, key: WATCH.hasKey() }); }
     if (tk.role === 'parent') return send(res, 403, { error: 'role' });
-    if (url.pathname === '/watch/setup') { if (!WATCH.setKey(b.key)) return send(res, 400, { error: 'bad_key' }); WATCH.setTable(b.table, b.periods, b.len); return send(res, 200, { ok: true }); }
-    if (url.pathname === '/watch/off') { WATCH.clearKey(); return send(res, 200, { ok: true }); }
-    if (url.pathname === '/watch/ack') { WATCH.ack(Array.isArray(b.ids) ? b.ids.slice(0, 50) : []); return send(res, 200, { ok: true }); }
+    if (tk.role !== 'child') return send(res, 403, { error: 'role' });
+    if (url.pathname === '/watch/check') return WATCH.check(b.key) ? send(res, 200, { ok: true }) : send(res, 401, { error: 'watch_key' });
+    if (url.pathname === '/watch/table') { if (!WATCH.setTable(b.table, b.periods, b.len)) return send(res, 503, { error: 'persist' }); return send(res, 200, { ok: true, key: WATCH.hasKey() }); }
+    if (url.pathname === '/watch/setup') {
+      if (!/^[a-f0-9]{40}$/.test(String(b.key || ''))) return send(res, 400, { error: 'bad_key' });
+      if (!WATCH.setTable(b.table, b.periods, b.len) || !WATCH.setKey(b.key)) return send(res, 503, { error: 'persist' });
+      return send(res, 200, { ok: true });
+    }
+    if (url.pathname === '/watch/off') { if (!WATCH.clearKey()) return send(res, 503, { error: 'persist' }); return send(res, 200, { ok: true }); }
+    if (url.pathname === '/watch/ack') {
+      const available = new Set(VOICE.list('watch').filter((j) => j.state === 'done' && j.result?.transcript).map((j) => j.id));
+      const ids = (Array.isArray(b.ids) ? b.ids.slice(0, 50) : []).filter((id) => available.has(id));
+      if (!WATCH.ack(ids)) return send(res, 503, { error: 'persist' });
+      return send(res, 200, { ok: true });
+    }
+    if (url.pathname === '/watch/retry') {
+      if (limited('wr', 20, 3600000)) return send(res, 429, { error: 'rate' });
+      const result = VOICE.retry(b.id, 'watch');
+      if (result.error) return send(res, result.error === 'not_found' ? 404 : result.error === 'persist' ? 503 : 409, result);
+      if (!WATCH.unack(b.id)) return send(res, 503, { error: 'persist' });
+      return send(res, 200, result);
+    }
   }
   if (url.pathname === '/watch/inbox' && req.method === 'GET') {
-    if (!verifyTicket(url.searchParams.get('t'))) return send(res, 401, { error: 'ticket' });
-    const items = VOICE.list('watch').filter((j) => j.state === 'done' && !WATCH.acked(j.id)).slice(-20).map((j) => ({ id: j.id, at: j.at, subject: j.subject, topic: j.topic, transcript: j.result.transcript, summary: j.result.summary, files: j.result.files, errors: j.errors }));
-    return send(res, 200, { ok: true, key: WATCH.hasKey(), pending: VOICE.list('watch').filter((j) => j.state !== 'done').length, items });
+    const tk = verifyTicket(url.searchParams.get('t')); if (!tk) return send(res, 401, { error: 'ticket' });
+    if (tk.role !== 'child') return send(res, 403, { error: 'role' });
+    const jobs = VOICE.list('watch');
+    // Deliver completed notes first so legacy interrupted jobs cannot block later imports.
+    const available = jobs.filter((j) => ['done', 'interrupted'].includes(j.state) && !WATCH.acked(j.id)).sort((a, b) => Number(a.state === 'interrupted') - Number(b.state === 'interrupted'));
+    const items = available.slice(0, 20).map((j) => ({ id: j.id, at: j.at, subject: j.subject, topic: j.topic, state: j.state, outcome: VOICE.status(j.id).outcome, resultAt: j.result?.at || j.createdAt, transcript: j.result?.transcript || j.input?.text || '', summary: j.result?.summary || '', files: j.result?.files || [], errors: j.errors }));
+    return send(res, 200, { ok: true, key: WATCH.hasKey(), pending: jobs.filter((j) => ['queued', 'working'].includes(j.state)).length, more: available.length > items.length, items });
   }
   // 공부 자료 (가족 기기 티켓 필요)
   if (url.pathname === '/docs' && req.method === 'GET') {
