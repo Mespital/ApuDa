@@ -1,8 +1,16 @@
 {
-  "checked_at": "2026-10-21T16:54:58.642708+00:00",
-  "last_success_at": "2026-10-21T16:54:58.642708+00:00",
+  "checked_at": "2026-10-21T21:26:21.086189+00:00",
+  "last_success_at": "2026-10-21T21:26:21.086189+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "How AT&T is rethinking in-house legal work with OpenAI",
+      "url": "https://openai.com/index/att-legal",
+      "source": "OpenAI",
+      "published_at": "2026-10-21T17:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "ChatGPT Ads expands to 26 new countries as over 100,000 advertisers have used the platform",
       "url": "https://openai.com/index/chatgpt-ads-expands-26-new-countries",
@@ -40,6 +48,14 @@
       "url": "https://openai.com/index/scaling-ai-research-for-complex-biological-data",
       "source": "OpenAI",
       "published_at": "2026-10-21T04:50:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Democratic governance of frontier AI, part II: Empowering cyber defenders",
+      "url": "https://openai.com/index/empowering-cyber-defenders",
+      "source": "OpenAI",
+      "published_at": "2026-10-21T00:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
     },
@@ -226,28 +242,12 @@
       "published_at": "2026-10-15T00:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Research@ 2026: Novel capabilities and intelligence",
-      "url": "https://blog.google/innovation-and-ai/technology/research/research-capabilities-intelligence-2026/",
-      "source": "Google",
-      "published_at": "2026-10-14T16:15:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Amp puts AI agents to work beyond code with OpenAI models",
-      "url": "https://openai.com/index/amp-beyond-coding",
-      "source": "OpenAI",
-      "published_at": "2026-10-14T12:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-21T16:54:58.642708+00:00",
+    "checked_at": "2026-10-21T21:26:21.086189+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -428,7 +428,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-21T16:54:58.642708+00:00",
+    "last_success_at": "2026-10-21T21:26:21.086189+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
