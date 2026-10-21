@@ -7,7 +7,7 @@
     "code": "7010087",
     "homepage": "https://seocho.sen.hs.kr/"
   },
-  "checked_at": "2026-10-21T11:27:46.243867+00:00",
+  "checked_at": "2026-10-21T15:33:38.764964+00:00",
   "keyed": true,
   "school_year": 2026,
   "grade": 1,
@@ -15,10 +15,6 @@
   "semester": 2,
   "phase": "school",
   "schedule": [
-    {
-      "date": "2026-10-21",
-      "title": "국제리더 양성캠프"
-    },
     {
       "date": "2026-10-22",
       "title": "진로특강"
@@ -116,6 +112,14 @@
     {
       "date": "2026-12-18",
       "title": "동아리"
+    },
+    {
+      "date": "2026-12-21",
+      "title": "금요일수업"
+    },
+    {
+      "date": "2026-12-21",
+      "title": "축제 리허설 및 동아리 부스 설치"
     }
   ],
   "closures": [
@@ -874,5 +878,5 @@
     "NEIS": "true",
     "DATA": "false"
   },
-  "last_success_at": "2026-10-21T11:27:46.243867+00:00"
+  "last_success_at": "2026-10-21T15:33:38.764964+00:00"
 }
