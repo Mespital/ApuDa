@@ -47,7 +47,13 @@ export function plan(data, school, nowMs, live, seen) {
       out.push({ key: 'exd:' + e.date + ':' + n, to: 'all', kind: 'examdday', title: '📝 ' + e.title + ' D-' + n, body: tipx, url: 'study.html#today' });
     }
   }
-  if (at(15, 30) && isSchool && !examOn(t)) out.push({ key: 'afterclass', to: 'child', kind: 'afterclass', title: '📒 수업 끝! 1분만', body: '오늘 배운 거 1분 말하기나 노트 사진 하나 남겨둘까?', url: 'study.html#today' });
+  if (at(15, 30) && isSchool && !examOn(t)) {
+    // 오늘 시간표 중 아직 노트 안 남긴 과목 (워치·폰 공통)
+    const row = (st.table || [])[wd - 1] || [], noted = (v('fc_notes_v1') || []).filter(n => n && n.date === t).map(n => n.subject);
+    const left = [...new Set(row.map(x => String(x || '').trim()).filter(x => x && !/체육|음악|미술|창체|자율|동아리|봉사/.test(x)))].filter(x => !noted.includes(x));
+    const short = left.map(x => x.replace(/[0-9]+$/, '')).slice(0, 3).join('·');
+    out.push({ key: 'afterclass', to: 'child', kind: 'afterclass', title: '📒 수업 끝! 1분만', body: left.length ? '아직 안 남긴 수업 ' + left.length + '개 (' + short + (left.length > 3 ? ' 등' : '') + ') — 하나만 1분 말해볼까?' : '오늘 수업 노트 다 남겼어 👏 오늘은 쉬어도 돼.', url: 'study.html#today' });
+  }
   for (const a of acs) {
     const s = toMin(a.start); if (s == null) continue;
     if (s - mins >= 45 && s - mins < 75) out.push({ key: 'ac:' + a.id, to: 'child', kind: 'academy', title: '🏫 ' + a.start + ' ' + a.name, body: a.homework && !a.hwDone ? '숙제 체크: ' + a.homework : '출발 준비할 시간이야', url: 'study.html#today' });
