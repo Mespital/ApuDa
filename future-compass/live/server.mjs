@@ -10,6 +10,7 @@ import { createHmac, timingSafeEqual, createPublicKey, verify as edVerify } from
 import { buildPayload, askAI, hasAI, validQuestion, organizePayload, providerOf } from './shiro.mjs';
 import { listDocs, addDoc, delDoc, gatherRefs } from './rag.mjs';
 import { createVoice, validVoice, sttClient, rcloneClient, trashFiles } from './voice.mjs';
+import { createWatch, splitSubject } from './watch.mjs';
 const WEB = (process.env.FC_WEB_SEARCH || 'on') !== 'off';
 
 const PORT = Number(process.env.PORT || 8093);
@@ -23,6 +24,7 @@ async function probe() {
 }
 probe(); setInterval(probe, 300000); setInterval(() => { if (!CAP.stt || !CAP.drive) probe(); }, 60000);
 const VOICE = createVoice({ stt: STT, hasAI: hasAI(process.env), organize: (subject, text) => askAI(process.env, organizePayload({ subject, text, kind: 'voice' })), drive: () => DRIVE });   // 상태 확인이 잠깐 실패해도 업로드는 시도 (실패하면 단계 오류로 기록)
+const WATCH = createWatch();
 const ORIGINS = (process.env.ALLOWED_ORIGINS || 'https://future.apuda.app').split(',').map(s => s.trim()).filter(Boolean);
 // 티켓 확인: ① FC_LIVE_SECRET(선택, HMAC) 또는 ② Netlify가 만든 ed25519 공개키(자동으로 가져옴 → 비밀값 필요 없음)
 const KEY_URL = process.env.FC_KEY_URL || 'https://future.apuda.app/api/family';
@@ -141,6 +143,33 @@ const server = http.createServer(async (req, res) => {
   if (url.pathname === '/voice' && req.method === 'GET') {
     if (!verifyTicket(url.searchParams.get('t'))) return send(res, 401, { error: 'ticket' });
     const r = VOICE.status(url.searchParams.get('id')); return r ? send(res, 200, r) : send(res, 404, { error: 'not_found' });
+  }
+  // ⌚ 애플워치 단축어 → 1분 복습 (워치 키). 응답은 워치 화면에 그대로 보일 짧은 글
+  if (url.pathname === '/watch/note' && req.method === 'POST') {
+    const txt = (code, m) => { res.writeHead(code, { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'no-store' }); res.end(m); };
+    let b; try { b = await body(req, 20000); } catch { return txt(400, '보낸 내용을 읽지 못했어'); }
+    if (!WATCH.check(b.key)) return txt(401, '워치 키가 맞지 않아. 공부방 설정에서 다시 만들어줘');
+    if (limited('w', 30, 3600000)) return txt(429, '잠깐 쉬었다가 다시 보내줘');
+    let text = String(b.text || '').trim().slice(0, 1500); if (text.length < 2) return txt(400, '말한 내용이 비어 있어');
+    const sp = splitSubject(text, (WATCH.subjects && WATCH.subjects()) || []);
+    const at = WATCH.subjectAt(Date.now());
+    let subject = String(b.subject || '').trim().slice(0, 30) || sp.subject || at.sub || '기타'; if (sp.subject) text = sp.text;
+    const r = VOICE.start({ id: WATCH.newId(), subject, topic: at.p && subject === at.sub ? at.p + '교시 수업' : '워치 메모', at: new Date().toISOString(), text, textOnly: true, source: 'watch' });
+    return r.error ? txt(400, '저장하지 못했어') : txt(200, '✓ ' + subject + ' 저장 · 정리 중');
+  }
+  if (url.pathname.startsWith('/watch/') && req.method === 'POST') {
+    let b; try { b = await body(req, 20000); } catch { return send(res, 400, { error: 'bad' }); }
+    const tk = verifyTicket(b.t); if (!tk) return send(res, 401, { error: 'ticket' });
+    if (url.pathname === '/watch/table') { WATCH.setTable(b.table, b.periods, b.len); return send(res, 200, { ok: true, key: WATCH.hasKey() }); }
+    if (tk.role === 'parent') return send(res, 403, { error: 'role' });
+    if (url.pathname === '/watch/setup') { if (!WATCH.setKey(b.key)) return send(res, 400, { error: 'bad_key' }); WATCH.setTable(b.table, b.periods, b.len); return send(res, 200, { ok: true }); }
+    if (url.pathname === '/watch/off') { WATCH.clearKey(); return send(res, 200, { ok: true }); }
+    if (url.pathname === '/watch/ack') { WATCH.ack(Array.isArray(b.ids) ? b.ids.slice(0, 50) : []); return send(res, 200, { ok: true }); }
+  }
+  if (url.pathname === '/watch/inbox' && req.method === 'GET') {
+    if (!verifyTicket(url.searchParams.get('t'))) return send(res, 401, { error: 'ticket' });
+    const items = VOICE.list('watch').filter((j) => j.state === 'done' && !WATCH.acked(j.id)).slice(-20).map((j) => ({ id: j.id, at: j.at, subject: j.subject, topic: j.topic, transcript: j.result.transcript, summary: j.result.summary, files: j.result.files, errors: j.errors }));
+    return send(res, 200, { ok: true, key: WATCH.hasKey(), pending: VOICE.list('watch').filter((j) => j.state !== 'done').length, items });
   }
   // 공부 자료 (가족 기기 티켓 필요)
   if (url.pathname === '/docs' && req.method === 'GET') {

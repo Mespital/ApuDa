@@ -40,7 +40,7 @@ export function createVoice(deps, dir = path.join(process.env.FC_DATA_DIR || '/d
   async function run(j, bytes, b) {
     const set = (step) => { j.step = step; saveJob(j); };
     let transcript = '';
-    if (deps.stt) { set('stt'); try { transcript = String(await deps.stt(bytes, b.mime, b.subject) || '').trim().slice(0, 3000); } catch (e) { j.errors.push('stt'); } }
+    if (deps.stt && bytes) { set('stt'); try { transcript = String(await deps.stt(bytes, b.mime, b.subject) || '').trim().slice(0, 3000); } catch (e) { j.errors.push('stt'); } }
     if (!transcript && b.text) transcript = b.text.trim();
     let sum = '';
     if (transcript.length >= 15 && deps.hasAI) { set('summary'); try { sum = String(await deps.organize(b.subject, transcript) || '').trim().slice(0, 2000); } catch (e) { j.errors.push('summary'); } }
@@ -49,8 +49,8 @@ export function createVoice(deps, dir = path.join(process.env.FC_DATA_DIR || '/d
     if (drive) {
       set('drive');
       const base = baseName(b.subject, b.topic || '수업 복습', Date.parse(b.at)), folder = folderOf(b.subject);
-      const items = [['audio', (b.name && /^[^/\\]{1,200}$/.test(b.name) ? b.name : base + '.' + extOf(b.mime)), bytes, b.mime.split(';')[0]]];
-      if (transcript) items.push(['note', base + '_받아쓰기.md', Buffer.from('# ' + b.subject + ' · ' + (b.topic || '수업 복습') + '\n\n녹음 시각: ' + kstStamp(Date.parse(b.at)).replace(/_KST$/, ' (KST)') + '\n\n## 받아쓰기\n\n' + transcript + '\n'), 'text/markdown']);
+      const items = bytes ? [['audio', (b.name && /^[^/\\]{1,200}$/.test(b.name) ? b.name : base + '.' + extOf(b.mime)), bytes, b.mime.split(';')[0]]] : [];
+      if (transcript) items.push(['note', base + '_받아쓰기.md', Buffer.from('# ' + b.subject + ' · ' + (b.topic || '수업 복습') + '\n\n' + (bytes ? '녹음 시각: ' : '말한 시각(워치): ') + '' + kstStamp(Date.parse(b.at)).replace(/_KST$/, ' (KST)') + '\n\n## 받아쓰기\n\n' + transcript + '\n'), 'text/markdown']);
       if (sum) items.push(['review', base + '_복습정리.md', Buffer.from('# ' + b.subject + ' · ' + (b.topic || '수업 복습') + ' 복습 정리\n\n' + sum + '\n'), 'text/markdown']);
       for (const [role, name, data, mime] of items) {
         try { const f = await drive.upload(folder, name, data, mime); if (f && /^[\w-]{10,200}$/.test(f.id)) files.push({ role, id: f.id, url: 'https://drive.google.com/file/d/' + f.id + '/view', name, size: data.length }); else j.errors.push('drive_' + role); }
@@ -65,14 +65,16 @@ export function createVoice(deps, dir = path.join(process.env.FC_DATA_DIR || '/d
     start(b) {
       sweep();
       const old = load(b.id); if (old) return view(old);
-      const bytes = Buffer.from(b.audio, 'base64'); if (!bytes.length || bytes.length > MAX) return { error: 'bad_audio' };
-      const j = { id: b.id, state: 'queued', step: 'queued', errors: [], createdAt: clock(), subject: b.subject, topic: b.topic || '' };
+      const bytes = b.textOnly ? null : Buffer.from(b.audio, 'base64'); if (bytes && (!bytes.length || bytes.length > MAX)) return { error: 'bad_audio' };
+      if (!bytes && !(typeof b.text === 'string' && b.text.trim().length >= 2)) return { error: 'bad_text' };
+      const j = { id: b.id, state: 'queued', step: 'queued', errors: [], createdAt: clock(), subject: b.subject, topic: b.topic || '', source: b.source || '', at: b.at };
       jobs.set(j.id, j); saveJob(j);
-      const meta = { subject: b.subject.trim(), topic: (b.topic || '').trim(), at: b.at, mime: b.mime, text: b.text || '', name: b.name || '' };
+      const meta = { subject: b.subject.trim(), topic: (b.topic || '').trim(), at: b.at, mime: b.mime || '', text: b.text || '', name: b.name || '' };
       running = running.then(() => { j.state = 'working'; return run(j, bytes, meta); }).catch((e) => { j.state = 'done'; j.errors.push('failed'); j.result = { transcript: meta.text, summary: '', files: [], at: clock() }; saveJob(j); console.error('voice failed', e && e.message); });
       return view(j);
     },
     status(id) { const j = /^[a-f0-9]{32}$/.test(String(id || '')) ? load(id) : null; return j ? view(j) : null; },
+    list(source) { sweep(); const out = []; try { for (const f of fs.readdirSync(dir)) if (/^[a-f0-9]{32}\.json$/.test(f)) { const j = load(f.slice(0, 32)); if (j && j.source === source) out.push(j); } } catch {} return out.sort((a, b) => a.createdAt - b.createdAt); },
     pending() { let n = 0; for (const j of jobs.values()) if (j.state !== 'done') n++; return n; }
   };
 }

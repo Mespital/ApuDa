@@ -509,7 +509,7 @@
     var h = '<section class="card tn-list" id="tn-list"><div class="pl-head"><h2>📒 수업 노트</h2>' + (a.length ? '<button type="button" class="pl-mini" data-tn-export>📤 옵시디언용 내보내기</button>' : '') + '</div>';
     if (!a.length) return h + '<p class="muted">아직 노트가 없어. 오늘 탭의 🎙️ 1분 말하기나 📷 노트 사진으로 첫 노트를 남겨봐.</p></section>';
     h += '<ul>' + a.slice(0, showN).map(function (n) {
-      return '<li><div class="tn-li-top"><span class="tn-tag ' + n.kind + '">' + (n.kind === 'talk' ? '🎙️' : '📷') + ' ' + esc(n.subject) + '</span><small>' + md(n.date) + '</small>' + (isParent() ? '' : '<button type="button" class="pl-x" data-tn-del="' + esc(n.id) + '" aria-label="노트 지우기">×</button>') + '</div>' +
+      return '<li><div class="tn-li-top"><span class="tn-tag ' + n.kind + '">' + (n.via === 'watch' ? '⌚' : n.kind === 'talk' ? '🎙️' : '📷') + ' ' + esc(n.subject) + '</span><small>' + md(n.date) + '</small>' + (isParent() ? '' : '<button type="button" class="pl-x" data-tn-del="' + esc(n.id) + '" aria-label="노트 지우기">×</button>') + '</div>' +
         (n.photo ? '<button type="button" class="tn-thumb" data-tn-view="' + esc(n.id) + '" data-tn-img="' + esc(n.id) + '" aria-label="사진 크게 보기"></button>' : '') +
         (vjobs().some(function (j) { return j.noteId === n.id; }) ? '<p class="tn-voice-wait small" role="status">🎧 받아쓰기·정리 중… 끝나면 여기에 나와.</p>' : '') +
         (n.cloud && Array.isArray(n.cloud.files) ? n.cloud.files.filter(function (f) { return f.role !== 'audio' && /^https:\/\/drive\.google\.com\//.test(f.url || ''); }).map(function (f) { return '<a class="tn-audio-link" href="' + esc(f.url) + '" target="_blank" rel="noopener">' + (f.role === 'review' ? 'Drive 복습 정리 ↗' : f.role === 'note' ? 'Drive 받아쓰기 ↗' : 'Drive 파일 ↗') + '</a>'; }).join('') : '') +
@@ -550,6 +550,19 @@
 
   window.FC_NOTES = {
     lessons: function () { try { return lessons(); } catch (e) { return []; } },
+    // 워치 등 바깥에서 온 노트 넣기 (같은 extId는 한 번만). 복습: 내일·3일·7일
+    addExternal: function (x) {
+      if (!x || !x.extId || notes().some(function (n) { return n.extId === x.extId; })) return false;
+      var t = today(), id = nid(), text = String(x.text || '').slice(0, 1500), sum = String(x.sum || '').slice(0, 2000), subject = String(x.subject || '기타').slice(0, 20);
+      var title = subject + ' · ' + (x.via === 'watch' ? '⌚ 워치 메모' : '1분 말하기') + ' — ' + (x.topic || text).split('\n')[0].slice(0, 40);
+      var rv = { id: uid(), title: title.slice(0, 120), date: t, done: false, kind: '과제', subject: subject, note: (sum || text).slice(0, 800) };
+      var prevN = notes(), a = prevN.slice();
+      a.push({ id: id, extId: x.extId, via: x.via || '', date: t, at: x.at || new Date().toISOString(), kind: 'talk', subject: subject, topic: x.topic || undefined, text: text, sum: sum || undefined, review: rv.id, cloud: x.files && x.files.length ? { jobId: 'w-' + x.extId, files: x.files, at: Date.now() } : undefined });
+      if (!saveNotes(a)) return false;
+      state.reviews.push(rv); if (save() === false) { state.reviews.pop(); saveNotes(prevN); return false; }
+      if (window.FC_PLANNER) { var P = FC_PLANNER.get(); P.again[rv.id] = [1, 3, 7].map(function (n) { return new Date(Date.parse(t + 'T12:00:00Z') + n * 86400000).toISOString().slice(0, 10); }); try { localStorage.setItem(FC_PLANNER.KEY, JSON.stringify(P)); } catch (e) {} }
+      if (typeof render === 'function') render(); return true;
+    },
     get: function (id) { return notes().find(function (n) { return n.id === id; }); }, photo: getPhoto,
     applyCloud: function (id, original, result, jobId, force) {
       if (document.documentElement.classList.contains('pin-locked') || isParent() && window.FC_PLANNER && !FC_PLANNER.get().share.review) return 'failed';
