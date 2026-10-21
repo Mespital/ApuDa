@@ -1,0 +1,419 @@
+{
+  "version": "1.2",
+  "report_date": "2026-10-21",
+  "collection_window": {
+    "start": "2026-10-20T09:00:00+09:00",
+    "end": "2026-10-21T09:00:00+09:00",
+    "timezone": "Asia/Seoul"
+  },
+  "sources": [
+    "데일리팜",
+    "의학신문",
+    "메디파나뉴스",
+    "약사공론"
+  ],
+  "briefing": "복지부, 신약 간 병용요법 급여 절차 개선 모색...전담인력 확충 검토가 오늘 가장 중요한 이슈로 부각됐습니다. 이어 검체검사 위·수탁 개편, 국가건강검진도 재확인...비급여 검사도 예의 주시도 주요 변화로 확인됐습니다. 전체적으로는 정책·급여 · 신약·임상 흐름이 두드러집니다.",
+  "top_news": [
+    {
+      "rank": 1,
+      "canonical_issue": "복지부, 신약 간 병용요법 급여 절차 개선 모색...전담인력 확충 검토 - 의학신문",
+      "title": "복지부, 신약 간 병용요법 급여 절차 개선 모색...전담인력 확충 검토",
+      "category": [
+        "급여",
+        "복지부"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-21T06:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=이재원 기자] 정부가 서로 다른 신약을 함께 사용하는 병용요법의 건강보험 급여 적용을 확대하기 위해 건강보험심사평가원의 급여평가와 국민건강보험",
+        "[의학신문·일간보사=이재원 기자] 정부가 서로 다른 신약을 함께 사용하는 병용요법의 건강보험 급여 적용을 확대하기 위해 건강보험심사평가원의 급여평가와 국민건강보험공단의 약가협상 절차 개선을 검토한다.",
+        "특히 신약 간 병용요법의 급여 수요가 증가할 것으로 예상되는 만큼, 해외 제도와 산업계 의견 등을 검토해 평가·협상 절차를 개선하고 관련 전문인력을 확충하는 방안도 모색할 계획이다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3014406"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014406"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3014406_415325_1422.jpg",
+      "score": 55,
+      "oncology": null
+    },
+    {
+      "rank": 2,
+      "canonical_issue": "검체검사 위·수탁 개편, 국가건강검진도 재확인...비급여 검사도 예의 주시 - 의학신문",
+      "title": "검체검사 위·수탁 개편, 국가건강검진도 재확인...비급여 검사도 예의 주시",
+      "category": [
+        "급여"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-21T06:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=이재원 기자] 정부가 건강보험 급여검사를 중심으로 추진 중인 검체검사 위·수탁 제도 개편 방식을 국가건강검진 적용하기로 재확인했다. 건강검진",
+        "[의학신문·일간보사=이재원 기자] 정부가 건강보험 급여검사를 중심으로 추진 중인 검체검사 위·수탁 제도 개편 방식을 국가건강검진 적용하기로 재확인했다.",
+        "건강검진 검체검사 비용을 수탁기관에 직접 지급할 수 있도록 관련 기준을 개정하고 전산시스템을 개발하는 등 제도적 기반을 마련할 계획이다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3014407"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014407"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3014407_415326_2615.jpg",
+      "score": 48,
+      "oncology": null
+    },
+    {
+      "rank": 3,
+      "canonical_issue": "식약처 '원발성 담즙성 담관염' 희귀의약품 허가 - 의학신문",
+      "title": "식약처 '원발성 담즙성 담관염' 희귀의약품 허가",
+      "category": [
+        "식약처",
+        "허가"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-21T08:46:39+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=이정윤 기자] 식품의약품안전처(처장 오유경)는 우르소데옥시콜산(UDCA)에 내약성이 없거나 반응이 불충분한 성인 원발성 담즙성 담관염 환자의",
+        "[의학신문·일간보사=이정윤 기자] 식품의약품안전처(처장 오유경)는 우르소데옥시콜산(UDCA)에 내약성이 없거나 반응이 불충분한 성인 원발성 담즙성 담관염 환자의 치료에 사용하는 길리어드 수입 희귀의약품 ‘리브델지캡슐(셀라델파리신이수화물)’을 10월 20일 허가했다고 21일 밝혔다.",
+        "원발성 담즙성 담관염은 자가면역질환으로 간 내 담관의 파괴로 담즙산과 여러 독성 물질 등이 간에 축적되어 간이 손상되는 희귀 만성 진행성 간질환이다."
+      ],
+      "importance": "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3014417"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014417"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3014417_415338_4513.jpg",
+      "score": 46,
+      "oncology": null
+    },
+    {
+      "rank": 4,
+      "canonical_issue": "휴비츠, 상반기 매출 5.4%↑…오스비스 품고 치과사업 강화 - 메디파나뉴스",
+      "title": "휴비츠, 상반기 매출 5.4%↑…오스비스 품고 치과사업 강화",
+      "category": [
+        "합병"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-20T11:50:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "휴비츠가 기존 안광학 의료기기에 치과사업을 더하며 사업 영역을 확대하고 있다. 올해 상반기 연결 매출이 전년 동기보다 증가했으며, 오스비스 흡수합병을 통한 치과사업 통합과 디지털 덴탈 장비·임플란트의 해외시장 공략도 추진하고 있다. 19일 금융감독원 전자공시시스템에 따르면, 휴비츠 연결재무제표 기준 올해",
+        "사진=AI 생성 이미지 휴비츠가 기존 안광학 의료기기에 치과사업을 더하며 사업 영역을 확대하고 있다.",
+        "증가했으며, 오스비스 흡수합병을 통한 치과사업 통합과 디지털 덴탈 장비·임플란트의 해외시장 공략도 추진하고 있다."
+      ],
+      "importance": "사업개발·구조개편은 파이프라인 가치와 자본 배분, 기업 경쟁구도에 직접 영향을 주는 변화입니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=419635"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=419635"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419635_327137_331.png",
+      "score": 38,
+      "oncology": null
+    },
+    {
+      "rank": 5,
+      "canonical_issue": "B형간염 진료지침, 치료 대상 넓혔지만…건보 급여는 '제자리' - 메디파나뉴스",
+      "title": "B형간염 진료지침, 치료 대상 넓혔지만…건보 급여는 '제자리'",
+      "category": [
+        "급여"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-21T06:02:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "만성 B형간염 치료의 기준이 달라졌다. 그동안 간수치(ALT) 상승 여부가 항바이러스 치료를 결정하는 주요 기준이었다면, 이제는 B형간염 바이러스의 증식 정도와 간암 발생 위험을 중심으로 치료 시점을 판단하는 방향으로 전환됐다. 대한간학회가 개정한 '2026 만성 B형간염 진료가이드라인'은 이러한 변화를",
+        "대한간학회 의료정책위원회 최광현 간사, 대한간학회 임영석 이사장.",
+        "사진=박으뜸 기자 만성 B형간염 치료의 기준이 달라졌다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=419706"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=419706"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419706_327243_2231.jpg",
+      "score": 37,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "간암"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": "급여 관련",
+        "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
+        "patient_relevance_score": 54,
+        "patient_relevance_labels": [
+          "급여·접근성",
+          "가이드라인"
+        ],
+        "industry_summary": null
+      }
+    }
+  ],
+  "trends": [
+    {
+      "title": "정책·급여",
+      "count": 4,
+      "change": "4건의 주요 이슈에서 반복적으로 확인",
+      "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
+      "examples": [
+        "복지부, 신약 간 병용요법 급여 절차 개선 모색...전담인력 확충 검토",
+        "검체검사 위·수탁 개편, 국가건강검진도 재확인...비급여 검사도 예의 주시"
+      ]
+    },
+    {
+      "title": "신약·임상",
+      "count": 2,
+      "change": "2건의 주요 이슈에서 반복적으로 확인",
+      "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
+      "examples": [
+        "복지부, 신약 간 병용요법 급여 절차 개선 모색...전담인력 확충 검토",
+        "식약처 '원발성 담즙성 담관염' 희귀의약품 허가"
+      ]
+    },
+    {
+      "title": "투자·사업개발",
+      "count": 1,
+      "change": "1건의 주요 이슈에서 반복적으로 확인",
+      "implication": "자본과 파이프라인 확보 경쟁이 사업전략의 핵심이 되는 흐름",
+      "examples": [
+        "휴비츠, 상반기 매출 5.4%↑…오스비스 품고 치과사업 강화"
+      ]
+    },
+    {
+      "title": "디지털헬스",
+      "count": 1,
+      "change": "1건의 주요 이슈에서 반복적으로 확인",
+      "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
+      "examples": [
+        "휴비츠, 상반기 매출 5.4%↑…오스비스 품고 치과사업 강화"
+      ]
+    }
+  ],
+  "outlet_status": [
+    {
+      "publisher": "데일리팜",
+      "homepage_url": "https://www.dailypharm.com/",
+      "items": []
+    },
+    {
+      "publisher": "의학신문",
+      "homepage_url": "https://www.bosa.co.kr/",
+      "items": [
+        {
+          "title": "복지부, 신약 간 병용요법 급여 절차 개선 모색...전담인력 확충 검토",
+          "published_at": "2026-10-21T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014406"
+        },
+        {
+          "title": "검체검사 위·수탁 개편, 국가건강검진도 재확인...비급여 검사도 예의 주시",
+          "published_at": "2026-10-21T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014407"
+        },
+        {
+          "title": "식약처 '원발성 담즙성 담관염' 희귀의약품 허가",
+          "published_at": "2026-10-21T08:46:39+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014417"
+        },
+        {
+          "title": "복지부, 리베이트 처분 관련 혁신형 제약기업 인증취소 기준 손질 검토",
+          "published_at": "2026-10-20T15:21:49+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014384"
+        },
+        {
+          "title": "간학회 임영석 이사장 “간염 조기치료, 급여기준 개선해야”",
+          "published_at": "2026-10-20T19:08:08+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014397"
+        },
+        {
+          "title": "뇌졸중 골든타임 평가, 병원 도착에서 실제 치료까지 확대 추진",
+          "published_at": "2026-10-21T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014404"
+        },
+        {
+          "title": "도약형 제약기업, R&D 요건 충족하면 평가점수 관계없이 인증",
+          "published_at": "2026-10-21T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014399"
+        },
+        {
+          "title": "“AI만으로 의료혁신 한계...진료체계 재설계해야”",
+          "published_at": "2026-10-20T10:30:18+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014337"
+        }
+      ]
+    },
+    {
+      "publisher": "메디파나뉴스",
+      "homepage_url": "https://www.medipana.com/",
+      "items": [
+        {
+          "title": "휴비츠, 상반기 매출 5.4%↑…오스비스 품고 치과사업 강화",
+          "published_at": "2026-10-20T11:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419635"
+        },
+        {
+          "title": "B형간염 진료지침, 치료 대상 넓혔지만…건보 급여는 '제자리'",
+          "published_at": "2026-10-21T06:02:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419706"
+        },
+        {
+          "title": "간암 생존율 높아졌다…이제는 '맞춤 치료'가 관건",
+          "published_at": "2026-10-21T06:01:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419707"
+        },
+        {
+          "title": "IDS 2027 참가 신청 1300개사 돌파…한국 치과산업 주목",
+          "published_at": "2026-10-20T13:05:10+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419684"
+        },
+        {
+          "title": "삼일제약 베트남 공장, 본격 가동 막바지…KGMP 인증만 남겨",
+          "published_at": "2026-10-21T06:02:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419705"
+        },
+        {
+          "title": "AI가 주목한 'ESMO 2026' 항암 연구 다섯",
+          "published_at": "2026-10-20T12:05:13+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419681"
+        },
+        {
+          "title": "이상도 중앙약품 대표이사 장모상",
+          "published_at": "2026-10-20T09:56:26+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419661"
+        },
+        {
+          "title": "유한양행, 주가 저점서 상승세 반등…신약 '렉라자' 성장 주목",
+          "published_at": "2026-10-21T06:03:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419704"
+        }
+      ]
+    },
+    {
+      "publisher": "약사공론",
+      "homepage_url": "https://www.kpanews.co.kr/",
+      "items": [
+        {
+          "title": "\"국민 편의만 묻고 안전은 뒷전\"…약사회, 정부 여론조사 비판",
+          "published_at": "2026-10-21T05:55:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546825"
+        },
+        {
+          "title": "\"편의점이 빛과 소금?\"…식약처 상비약 숏폼 결국 수정",
+          "published_at": "2026-10-21T05:54:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546830"
+        },
+        {
+          "title": "'네트워크약국 차단법' 공포…내년 4월 개설·양수까지 사전검증",
+          "published_at": "2026-10-20T12:05:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546770"
+        },
+        {
+          "title": "팜젠, 씨투스 건조시럽 제네릭 첫 허가…제형 경쟁 츄정까지 확산",
+          "published_at": "2026-10-21T05:52:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546824"
+        },
+        {
+          "title": "ADHD 치료제 시장, 새로운 비자극제 가세 예고…선택지 넓어질까",
+          "published_at": "2026-10-21T05:53:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546832"
+        },
+        {
+          "title": "의약품 이상사례 보고 기준 구체화…SNS·문헌도 관리 대상",
+          "published_at": "2026-10-21T05:51:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546836"
+        },
+        {
+          "title": "GMP 적합판정 최대 6개월 효력정지…허위 제조기록도 제재",
+          "published_at": "2026-10-20T12:04:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546775"
+        },
+        {
+          "title": "[약공시론] 에키덴과 타스키",
+          "published_at": "2026-10-21T05:52:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546803"
+        }
+      ]
+    }
+  ],
+  "insight": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름 동시에 신약·임상 흐름도 함께 확인돼 단일 이슈보다 복합적인 산업 변화로 보는 것이 적절합니다.",
+  "infographic": {
+    "image_path": null,
+    "generated_at": null,
+    "template_version": "news-card-v1"
+  }
+}
