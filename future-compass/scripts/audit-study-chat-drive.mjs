@@ -52,6 +52,7 @@ async function fresh({ theme = 'light', width = 390, role = 'child', share = tru
   await context.addInitScript(({ theme, role, share, queue }) => {
     if (!localStorage.getItem('cd-audit')) {
       localStorage.clear(); localStorage.setItem('cd-audit', '1'); localStorage.setItem('fc-pin-v1', '{"salt":"test","hash":"test"}'); sessionStorage.setItem('fc-unlocked-v1', '1'); localStorage.setItem('fc-who-v1', role); localStorage.setItem('fc-theme-v1', theme);
+      localStorage.setItem('fc-tn-full', '1');
       localStorage.setItem('compass-study-v1', JSON.stringify({ table: Array.from({ length: 5 }, () => ['수학', '과학', '영어', '', '', '', '']), bags: ['', '', '', '', ''], tasks: [], dates: [], reviews: [], sessions: {}, timer: { duration: 1500, remaining: 1500, end: 0 } }));
       localStorage.setItem('fc_planner_v1', JSON.stringify({ share: { review: share } })); localStorage.setItem('fc-chat-drive-v1', JSON.stringify(queue));
       localStorage.setItem('fc_guard_v1', '{"phone":"PRIVATE_CONTACT_SENTINEL"}'); localStorage.setItem('fc_teachers_v1', '{"phone":"PRIVATE_CONTACT_SENTINEL"}');
