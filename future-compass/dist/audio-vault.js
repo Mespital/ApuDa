@@ -180,7 +180,7 @@
   }
   function renderAll() { views.forEach(function (v) { if (!v.root.isConnected) { views.delete(v); return; } render(v); }); }
   function mount(root, hooks) {
-    var v = { root: root, hooks: hooks, current: '', limit: 5, message: '소리 파일은 이 기기에 먼저 남기고, Drive 저장 여부를 따로 표시할게.' }; views.add(v); render(v);
+    var v = { root: root, hooks: hooks, current: '', limit: 5, message: '녹음은 이 폰에 먼저 저장돼.' }; views.add(v); render(v);
     root.addEventListener('click', function (e) {
       var b = e.target.closest('button'); if (!b) return;
       if (b.dataset.avDel) { if (active && active.record && active.record.id === b.dataset.avDel) return; askRemove(b.dataset.avDel).then(function (ok) { if (ok && v.current === b.dataset.avDel) { v.current = ''; renderAll(); } }); return; }

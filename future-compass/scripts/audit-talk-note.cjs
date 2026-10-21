@@ -17,6 +17,7 @@ function init({ speech, role, theme }) {
     localStorage.clear(); localStorage.setItem('tn-audit-seeded', '1');
     localStorage.setItem('fc-pin-v1', JSON.stringify({ salt: 'audit', hash: 'audit' }));
     sessionStorage.setItem('fc-unlocked-v1', '1'); localStorage.setItem('fc-who-v1', role); localStorage.setItem('fc-theme-v1', theme);
+    localStorage.setItem('fc-tn-full', '1'); // 전체 기능 검사(간단 모드는 아래 별도 확인)
     localStorage.setItem('compass-study-v1', JSON.stringify({ table: Array.from({ length: 5 }, () => ['수학', '과학', '영어']), tasks: [], dates: [], reviews: [], sessions: {}, timer: { duration: 1500, remaining: 1500, end: 0 } }));
     localStorage.setItem('fc_planner_v1', JSON.stringify({ share: { review: true } }));
   }
@@ -140,6 +141,14 @@ let browser;
     await context.close(); results.push('Android app intent and complete web fallback (long prompt uses full clipboard)');
   }
   {
+    const { context, page } = await fresh(); await page.evaluate(() => localStorage.removeItem('fc-tn-full'));
+    await page.locator('[data-tn-open=talk]').click(); await page.locator('.tn-sheet.tn-simple').waitFor();
+    for (const sel of ['.tn-topic', '.tn-handoff', '.tn-again', '.tn-save-row', '.av-settings']) assert.equal(await page.locator('.tn-sheet ' + sel).first().isVisible(), false, sel + ' hidden in simple mode');
+    assert.ok(await page.locator('.tn-sheet [data-av-record]').isVisible()); assert.ok(await page.locator('.tn-hint').isVisible());
+    await page.locator('.tn-full-btn').click(); assert.ok(await page.locator('.tn-topic').isVisible()); assert.equal(await storage(page, 'fc-tn-full'), 1);
+    await context.close(); results.push('simple mode: subject + one record button, extras behind one toggle that is remembered');
+  }
+  {
     const { context, page } = await fresh(); await open(page);
     await page.locator('.tn-lessons [data-tn-sub="수학"]').click(); // 기본은 방금 끝난 수업이라 과목을 직접 고른다
     await page.locator('.tn-topic').fill('함수의 뜻');
@@ -171,7 +180,7 @@ let browser;
       await page.screenshot({ path: path.join(output, `${width}-${theme}-${expanded ? 'dictation' : 'chatgpt'}.png`) });
     }
     await page.locator('[data-tn-gpt]').scrollIntoViewIfNeeded(); await page.screenshot({path:path.join(output,`${width}-${theme}-handoff.png`)});
-    await page.locator('[data-tn-close]').focus(); await page.keyboard.press('Shift+Tab'); assert.equal(await page.locator('[data-tn-save]').evaluate(el => el === document.activeElement), true);
+    await page.locator('[data-tn-close]').focus(); await page.keyboard.press('Shift+Tab'); assert.equal(await page.locator('.tn-full-btn').evaluate(el => el === document.activeElement), true); // 마지막 버튼 = 간단/전체 전환
     await page.keyboard.press('Tab'); assert.equal(await page.locator('[data-tn-close]').evaluate(el => el === document.activeElement), true);
     await context.close();
   }
