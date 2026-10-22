@@ -1,0 +1,24 @@
+.tn-lesson-fields,.tn-photo-block{border:1px solid var(--u-line);border-radius:var(--r-s);padding:0 12px;margin:12px 0;background:var(--u-surface)}
+.tn-lesson-fields>summary,.tn-photo-block>summary{min-height:var(--tap);font-size:var(--fs-m);font-weight:700;color:var(--ink);line-height:1.5}
+.tn-lesson-fields label,.tn-photo-text-label{display:block;font-size:var(--fs-s);color:var(--ink-2);margin:10px 0 5px}
+.tn-lesson-fields :is(input,select),.tn-photo-text{box-sizing:border-box;width:100%;min-height:48px;font:inherit;font-size:var(--fs-m);background:var(--u-soft);color:var(--ink);border:1px solid var(--u-line);border-radius:var(--r-xs);padding:9px}
+.tn-lesson-fields p,.tn-photo-block p,.tn-linked{font-size:var(--fs-s);color:var(--ink-2);line-height:1.65}
+.tn-photo-block .tn-preview{margin:10px 0}
+.tn-photo-block .tn-preview img{display:block;max-height:280px;width:auto;max-width:100%;margin:0 auto;object-fit:contain}
+.tn-photo-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:10px 0}
+.tn-photo-actions button{flex:1 1 120px;min-height:48px;font-size:var(--fs-m);line-height:1.5;white-space:normal}
+.tn-photo-block .tn-photo-text{margin-bottom:12px;line-height:1.65}
+.tn-linked{padding:10px 12px;background:var(--u-soft);border-radius:var(--r-s)}
+.tn-add-voice{width:100%;min-height:48px;margin:10px 0;font-size:var(--fs-m);font-weight:700}
+.tn-progress-line{font-size:var(--fs-s);color:var(--ink-2);line-height:1.65;margin:8px 0}
+.tn-panel.tn-saving{opacity:.85}
+.tn-again[hidden]{display:none!important}
+.lesson-context{padding:12px;border:1px solid var(--u-line);border-radius:var(--r-s);margin:8px 0 12px;background:var(--u-soft);color:var(--ink-2);font-size:var(--fs-s);line-height:1.65;overflow-wrap:anywhere}
+.lesson-context>b{font-size:var(--fs-m);color:var(--ink)}
+.lesson-context p{margin:4px 0;font-size:var(--fs-s)}
+.lesson-context small{display:block;font-size:var(--fs-xs);color:var(--ink-3);line-height:1.65;margin-top:8px}
+.lesson-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.lesson-links button{min-height:48px;min-width:var(--tap);font-size:var(--fs-s);white-space:normal;line-height:1.5}
+.wk-prep-row>.lesson-context{margin-left:28px}
+.tn-panel :is(.tn-lesson-fields,.tn-photo-block) :is(input,select,textarea,summary,button):focus-visible,.lesson-context button:focus-visible{outline:3px solid var(--accent-ink);outline-offset:2px}
+@media(max-width:390px){.wk-prep-row>.lesson-context{margin-left:0}.lesson-links button{flex:1 1 130px}}
