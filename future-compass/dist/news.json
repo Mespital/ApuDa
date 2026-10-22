@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-10-22T13:37:58.288948+00:00",
-  "last_success_at": "2026-10-22T13:37:58.288948+00:00",
+  "checked_at": "2026-10-22T18:25:32.025992+00:00",
+  "last_success_at": "2026-10-22T18:25:32.025992+00:00",
   "failures": [],
   "articles": [
     {
@@ -16,6 +16,14 @@
       "url": "https://openai.com/index/forward-deployed-engineering-means",
       "source": "OpenAI",
       "published_at": "2026-10-22T06:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Uber brings ChatGPT Work to all employees with OpenAI",
+      "url": "https://openai.com/index/uber-chatgpt-work-rollout",
+      "source": "OpenAI",
+      "published_at": "2026-10-22T00:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
     },
@@ -234,26 +242,14 @@
       "published_at": "2026-10-15T16:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "400 publications are now partnering with us on our News AI pilot program.",
-      "url": "https://blog.google/products-and-platforms/products/news/news-ai-pilot-update-publishers/",
-      "source": "Google",
-      "published_at": "2026-10-15T16:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-22T13:37:58.288948+00:00",
+    "checked_at": "2026-10-22T18:25:32.025992+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
-      {
-        "date": "2026-10-22",
-        "title": "진로특강"
-      },
       {
         "date": "2026-10-23",
         "title": "국제리더 양성캠프"
@@ -428,7 +424,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-22T13:37:58.288948+00:00",
+    "last_success_at": "2026-10-22T18:25:32.025992+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
