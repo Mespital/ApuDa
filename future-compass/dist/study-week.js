@@ -45,7 +45,8 @@
       const cur = typeof FC_CURRICULUM !== 'undefined' ? FC_CURRICULUM.lookup(s, null, null, { book: c.book }) : null;
       const next = cur && c.unit ? FC_CURRICULUM.nextAfter(s, c.unit, c.book) : null;
       const bookLabel = c.book ? c.book : cur && cur.books && cur.books[0] && /유력/.test(cur.books[0].tag) ? cur.books[0].name : '';
-      return { s, unit: c.unit || '', pages: c.pages || '', book: bookLabel, tip: tipFor(s), light: NO_PREP.test(s), exam, cur, next };
+      const lesson = window.FC_LESSON ? FC_LESSON.forSubject(s, d) : null;
+      return { s, unit: c.unit || '', pages: c.pages || '', book: bookLabel, tip: tipFor(s), light: NO_PREP.test(s), exam, cur, next, lesson };
     });
   }
   function prepDone(d) { const v = lsGet(PREV_KEY, {}); return Array.isArray(v[d]) ? v[d] : []; }
@@ -63,8 +64,8 @@
     const when = gap(nd) === 1 ? '내일' : label(nd);
     const bag = state.bags[rowOf(nd)] || '';
     const needUnit = real.some(x => x.cur && x.cur.flat.length && !x.unit);
-    const row = x => `<label class="wk-prep-item${x.light ? ' light' : ''}"><input type="checkbox" data-prep="${esc(nd)}" data-subject="${esc(x.s)}" ${done.includes(x.s) ? 'checked' : ''}><span><b>${esc(x.s)}${teachers[x.s] ? ` <small>${esc(teachers[x.s])}</small>` : ''}${x.book && !x.light ? ` <small class="wk-book">${esc(x.book)}</small>` : ''}</b><small>${
-      x.light ? '준비물만 확인' : x.exam ? '🧩 ' + esc(x.exam.title) + ' D-' + gap(x.exam.date) + ' → 범위 복습 먼저' : x.next ? '다음: ' + esc(x.next.split(' › ').pop()) + (x.cur && x.cur.extra ? ' · ' + esc(x.cur.extra) : '') : esc(x.tip)}</small></span></label>`;
+    const row = x => `<div class="wk-prep-row"><label class="wk-prep-item${x.light ? ' light' : ''}"><input type="checkbox" data-prep="${esc(nd)}" data-subject="${esc(x.s)}" ${done.includes(x.s) ? 'checked' : ''}><span><b>${esc(x.s)}${teachers[x.s] ? ` <small>${esc(teachers[x.s])}</small>` : ''}${x.book && !x.light ? ` <small class="wk-book">${esc(x.book)}</small>` : ''}</b><small>${
+      x.light ? '준비물만 확인' : x.exam ? '🧩 ' + esc(x.exam.title) + ' D-' + gap(x.exam.date) + ' → 범위 복습 먼저' : x.lesson && x.lesson.nextPage ? '예습 출발: ' + x.lesson.nextPage + '쪽의 소제목 확인' : x.next ? '다음: ' + esc(x.next.split(' › ').pop()) + (x.cur && x.cur.extra ? ' · ' + esc(x.cur.extra) : '') : esc(x.tip)}</small></span></label>${!x.light && x.lesson ? FC_LESSON.markup(x.lesson, true) : ''}</div>`;
     const list = real.map(row).join('') + (items.some(x => x.light) ? `<p class="wk-light">${items.filter(x => x.light).map(x => esc(x.s)).join(' · ')}: 준비물만 챙기기</p>` : '');
     return `<section class="card wk-prep"><div class="section-title"><h2>📘 ${esc(when)} 예습</h2><span class="badge">${examDay.length ? '시험날' : real.length ? '약 ' + mins + '분' : '가볍게'}</span></div>
       ${gap(nd) > 1 ? `<p class="muted">${esc(label(nd))} 수업 기준</p>` : ''}

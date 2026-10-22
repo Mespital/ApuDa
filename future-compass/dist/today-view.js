@@ -64,7 +64,8 @@
     var prep = showFlow ? nrow.filter(function (s) { return !NO_PREP.test(s); }).map(function (s) {
       var c = courses[s] || {}, cur = g.FC_CURRICULUM ? g.FC_CURRICULUM.lookup(s, null, null, { book: c.book }) : null;
       var nx = cur && c.unit ? g.FC_CURRICULUM.nextAfter(s, c.unit, c.book) : null;
-      return { subject: s, teacher: teachers[s] || '', target: nx ? nx.split(' › ').pop() : (c.unit ? c.unit.split(' › ').pop() : ''), done: prepDone.indexOf(s) >= 0 };
+      var lesson = (!shared || !!share.review) && g.FC_LESSON ? g.FC_LESSON.forSubject(s, nd) : null;
+      return { subject: s, teacher: teachers[s] || '', target: lesson && lesson.nextPage ? '예습 출발 ' + lesson.nextPage + '쪽 · 소제목 확인' : nx ? nx.split(' › ').pop() : (c.unit ? c.unit.split(' › ').pop() : ''), done: prepDone.indexOf(s) >= 0 };
     }) : [];
     var seenAcademies = Object.create(null);
     var tomorrowAc = showFlow ? academyFor(date).concat(academyFor(add(date, 1))).filter(function (a) { if (!a.homework || a.hwDone || seenAcademies[a.id]) return false; seenAcademies[a.id] = true; return true; })

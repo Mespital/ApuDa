@@ -22,8 +22,10 @@
   function idb() { return new Promise(function (ok, no) { try { var r = indexedDB.open(DB, 1); r.onupgradeneeded = function () { r.result.createObjectStore('p'); }; r.onsuccess = function () { ok(r.result); }; r.onerror = function () { no(r.error); }; } catch (e) { no(e); } }); }
   function putPhoto(id, data) { return idb().then(function (db) { return new Promise(function (ok, no) { var tx = db.transaction('p', 'readwrite'); tx.objectStore('p').put(data, id); tx.oncomplete = function () { ok(true); }; tx.onerror = function () { no(tx.error); }; }); }); }
   function getLocal(id) { return idb().then(function (db) { return new Promise(function (ok) { var q = db.transaction('p').objectStore('p').get(id); q.onsuccess = function () { ok(q.result || ''); }; q.onerror = function () { ok(''); }; }); }).catch(function () { return ''; }); }
+  function delLocal(id) { return idb().then(function (db) { return new Promise(function (ok, no) { var tx = db.transaction('p', 'readwrite'); tx.objectStore('p').delete(id); tx.oncomplete = ok; tx.onerror = no; }); }); }
   function delPhoto(id) { if (typeof FamilySync !== 'undefined' && FamilySync.joined()) FamilySync.call({ action: 'photo-del', id: id }).catch(function () {}); return idb().then(function (db) { db.transaction('p', 'readwrite').objectStore('p').delete(id); }).catch(function () {}); }   // 이 폰 + 가족 서버 사진 같이 지움
   function getPhoto(id) {
+    var n = notes().find(function (x) { return x.id === id; }); if (n && n.photoRef) id = n.photoRef;
     return getLocal(id).then(function (d) {
       if (d || typeof FamilySync === 'undefined' || !FamilySync.joined()) return d;
       return FamilySync.call({ action: 'photo-get', id: id }).then(function (j) { if (j && j.data) { putPhoto(id, j.data).catch(function () {}); return j.data; } return ''; });
@@ -112,7 +114,7 @@
     var wantAudio = !!(el.querySelector('[data-del-audio]') || {}).checked, wantDrive = !!(el.querySelector('[data-del-drive]') || {}).checked, files = driveFiles(n);
     b.disabled = true;
     if (!saveNotes(notes().filter(function (x) { return x.id !== n.id; }))) { b.disabled = false; return; }
-    if (n.photo) delPhoto(n.id);
+    if (n.photo) delPhoto(n.photoRef || n.id);
     vsave(vjobs().filter(function (j) { return j.noteId !== n.id; }));
     if (wantAudio && n.audio && window.FC_AUDIO && FC_AUDIO.remove) FC_AUDIO.remove(n.audio.id);
     el.remove(); render();
@@ -180,25 +182,34 @@
     return '<section class="card tn-card' + (hour >= 15 && !n.length ? ' tn-hot' : '') + '"><div class="pl-head"><h2>📒 오늘 배운 것 남기기</h2>' + (n.length ? '<span class="pl-count">오늘 ' + n.length + '개</span>' : '') + '</div>' +
       (function () { var L = lessons(), x = pickLesson(L); if (!x || x.status === 'done' || x.status === 'later') return ''; var left = L.filter(function (y) { return y.status === 'past'; }).length; return '<p class="tn-next small"><b>' + (x.status === 'now' ? '지금 ' : x.fresh ? '방금 끝난 ' : '남길 차례: ') + x.p + '교시 ' + esc(x.sub) + '</b>' + (left > 1 ? ' · 못 남긴 수업 ' + left + '개' : '') + '</p>'; })() +
       '<p class="muted small">수업 끝나고 1분 — 교과서·필기 사진을 찍거나 말로 남기면 🧠 핵심·용어·확인 질문으로 정리해서 복습과 다음 수업 전에 보여줘.</p>' +
-      '<div class="tn-btns"><button type="button" class="primary" data-tn-open="talk">🎙️ 1분 말하기</button><button type="button" data-tn-open="photo">📷 교과서·노트 사진</button></div></section>';
+      '<div class="tn-btns"><button type="button" class="primary" data-tn-open="talk">🎙️ 1분 말하기</button><button type="button" data-tn-open="photo">📷 수업 사진·마지막 쪽</button></div></section>';
   }
 
   /* ---------- 시트(전체 화면) ---------- */
   var sheet = null, sub = '', rec = null, timer = null, restart = null, deadline = 0, photoData = '';
   var sheetKind = 'photo', preparedPrompt = '', returnFocus = null, audioSession = null, currentAudio = null;
+  var editingNoteId = '', editingBasis = '', saving = false, photoPending = false, photoSerial = 0;
+  var draftPhotoId = '', draftPhotoData = '', draftPhotoWrite = Promise.resolve();
   function closeSheet() {
     stopRec(); if (audioSession) audioSession.detach(); audioSession = null;
     if (sheet) sheet.remove(); sheet = null; photoData = ''; preparedPrompt = ''; currentAudio = null;
+    editingNoteId = ''; editingBasis = ''; photoPending = false; photoSerial++;
     document.documentElement.classList.remove('tn-open');
     if (returnFocus && returnFocus.isConnected) returnFocus.focus({ preventScroll: true });
   }
-  function openSheet(kind) {
+  function openSheet(kind, noteId) {
+    if (isParent() || document.documentElement.classList.contains('pin-locked') || saving) return;
+    var linked = noteId && notes().find(function (n) { return n.id === noteId; });
+    if (noteId && !linked) { notice('연결할 메모를 찾지 못했어.'); return; }
     closeSheet(); returnFocus = document.activeElement; sheetKind = kind; gptSent = ''; var picker = subjectPicker();
+    editingNoteId = linked ? linked.id : ''; editingBasis = linked ? JSON.stringify(linked) : '';
     sheet = document.createElement('div'); sheet.className = 'tn-sheet'; sheet.setAttribute('role', 'dialog'); sheet.setAttribute('aria-modal', 'true'); sheet.setAttribute('aria-label', kind === 'talk' ? '1분 말하기' : '노트 사진');
-    sheet.innerHTML = '<div class="tn-panel"><div class="tn-top"><button type="button" class="tn-x" data-tn-close aria-label="닫기">✕</button><b>' + (kind === 'talk' ? '🎙️ 1분 말하기' : '📷 요약 노트 사진') + '</b><span></span></div>' +
-      '<span class="tn-l">과목</span>' + picker +
-      (kind === 'talk' ? '<label class="tn-l" for="tn-topic">오늘의 주제</label><input id="tn-topic" class="tn-topic" maxlength="60" placeholder="비워두면 N교시 수업으로 적을게 · 예: 함수의 뜻">' : '') +
-      (kind === 'talk' ? talkBody() : photoBody()) +
+    sheet.innerHTML = '<div class="tn-panel"><div class="tn-top"><button type="button" class="tn-x" data-tn-close aria-label="닫기">✕</button><b>' + (kind === 'talk' ? '🎙️ 1분 말하기' : linked ? '📷 기존 메모에 사진 연결' : '📷 수업 사진·마지막 쪽') + '</b><span></span></div>' +
+      (linked ? '<p class="tn-linked">' + esc(linked.date + ' · ' + linked.subject) + ' 메모에 연결해. 기존 녹음·글·복습 날짜는 유지해.</p>' : '') +
+      '<div class="tn-subject-picker"' + (linked ? ' hidden' : '') + '><span class="tn-l">과목</span>' + picker + '</div>' +
+      '<label class="tn-l" for="tn-topic">오늘의 주제·단원 (선택)</label><input id="tn-topic" class="tn-topic" maxlength="60" placeholder="예: 유리함수 · 비워두면 수업 복습">' +
+      (kind === 'talk' ? lessonFields(false, linked) + talkBody() + photoBody(true) : photoBody(false) + lessonFields(true, linked)) +
+      (kind === 'photo' && !linked ? '<button type="button" class="tn-add-voice" data-tn-add-voice>🎙️ 이 사진에 1분 말하기도 추가</button>' : '') +
       (kind === 'talk' ? '' : '<label class="tn-l" for="tn-text">메모 <small class="muted">(사진에서 읽은 글·헷갈린 것)</small></label><textarea id="tn-text" class="tn-text" rows="5" maxlength="1500" placeholder="사진 속 핵심을 한두 줄 적거나, 글자 읽기를 눌러봐."></textarea>') +
       (window.FC_CHAT_DRIVE ? '<div class="tn-handoff"><b>채팅에서 정리하고 Drive에 보관</b><p class="small">지금 쓴 글과 녹음·사진 원본을 기기에 저장한 뒤 전달 자료로 준비해. 채팅에 요청을 보내면 정리와 Drive 파일 링크를 공부방으로 받을 수 있어.</p><p class="small muted">전달 자료는 사이트에 24시간 보관돼. Drive 저장은 채팅의 처리 결과를 받아야 확인돼.</p>' + (kind === 'talk' ? '<label class="tn-auto"><input type="checkbox" data-tn-auto' + (autoOn() ? ' checked' : '') + '> 녹음이 끝나면 자동으로 저장·정리·Drive 보관</label>' : '') + '<button type="button" class="primary" data-tn-cloud-new="' + kind + '">노트 저장 · 채팅·Drive로 보내기</button></div><details class="tn-alt tn-manual"><summary>글만 전달 · 정리 직접 붙여넣기</summary>' : '') +
       '<div class="tn-handoff"><b>💬 ChatGPT로 복습하기</b><p class="small">① 요청을 복사하고 ② ChatGPT를 열어줘. 입력창이 비어 있으면 붙여넣고 보내줘.' + (kind === 'talk' ? ' 수업 내용을 아직 안 적었다면, 그다음 입력창의 🎤 음성 입력으로 1분 말하고 보내면 돼.' : ' 사진 원본은 자동으로 전송되지 않아. 필요하면 ChatGPT에서 직접 첨부해줘.') + '</p>' +
@@ -209,10 +220,16 @@
       '<div class="tn-sum-box"><label class="tn-l" for="tn-summary">🧠 ChatGPT 답 붙여넣기 <small class="muted">(직접 고쳐 써도 돼)</small></label>' +
       '<p class="tn-paste-row"><button type="button" data-tn-paste>📋 복사한 정리 붙여넣기</button></p>' +
       '<p class="tn-return small" role="status" aria-live="polite"></p><textarea id="tn-summary" class="tn-sum" rows="8" maxlength="2000" placeholder="ChatGPT 답을 복사한 뒤 📋 버튼을 눌러줘. 권한이 없으면 이 칸을 길게 눌러 붙여넣기."></textarea></div>' +
-      (window.FC_CHAT_DRIVE ? '</details>' : '') + '<div class="tn-again"><span>다시 보기</span><label><input type="checkbox" checked data-tn-day="1"> 내일</label><label><input type="checkbox" checked data-tn-day="3"> 3일 뒤</label><label><input type="checkbox" checked data-tn-day="7"> 7일 뒤</label></div>' +
+      (window.FC_CHAT_DRIVE ? '</details>' : '') + '<div class="tn-again"' + (linked ? ' hidden' : '') + '><span>다시 보기</span><label><input type="checkbox" checked data-tn-day="1"> 내일</label><label><input type="checkbox" checked data-tn-day="3"> 3일 뒤</label><label><input type="checkbox" checked data-tn-day="7"> 7일 뒤</label></div>' +
       '<p class="tn-save-row"><button type="button"' + (window.FC_CHAT_DRIVE ? '' : ' class="primary"') + ' data-tn-save="' + kind + '">' + (window.FC_CHAT_DRIVE ? '이 기기에만 저장' : '복습 노트 저장') + '</button></p></div>';
     document.body.appendChild(sheet);
     document.documentElement.classList.add('tn-open');
+    if (linked) {
+      chooseSubject(linked.subject); sheet.querySelector('.tn-topic').value = linked.topic || '';
+      sheet.querySelectorAll('[data-tn-sub],.tn-sub-other,.tn-lesson-date').forEach(function (el) { el.disabled = true; });
+      sheet.querySelector('.tn-text').value = linked.kind === 'photo' ? linked.text || '' : linked.photoText || '';
+      if (linked.photo) { var opening = sheet; getPhoto(linked.id).then(function (data) { if (sheet === opening && !photoData && data) showPhoto(data); }); }
+    }
     if (kind === 'talk' && window.FC_AUDIO) {
       var current = sheet;
       audioSession = FC_AUDIO.mount(sheet.querySelector('[data-tn-audio]'), {
@@ -220,6 +237,7 @@
         topic: function () { var el = current.querySelector('.tn-topic'), t = el.value.trim(); if (!t) { t = autoTopic(); el.value = t; saveDraft(); } return t; },
         onFinal: function () {
           if (sheet !== current || !autoOn()) return;
+          if (photoData && window.FC_CHAT_DRIVE) { if (saveNote('talk', function (n) { FC_CHAT_DRIVE.sendNote(n); }) === false) notice('사진과 녹음은 아직 이 화면에 있어. 저장을 다시 눌러줘.'); return; }
           voiceCap().then(function (ok) {
             if (sheet !== current) return;
             if (ok) { if (saveNote('talk', function (n) { startVoice(n); }) === false) notice('녹음은 보관함에 저장했어. 노트 저장은 다시 눌러줘.'); return; }
@@ -234,16 +252,59 @@
     }
     updateHandoff(); sheet.querySelector('[data-tn-close]').focus({ preventScroll: true });
   }
+  function chooseSubject(value) {
+    sub = value; var found = false;
+    sheet.querySelectorAll('[data-tn-sub]').forEach(function (el) { var on = !found && el.dataset.tnSub === value; if (on) found = true; el.classList.toggle('on', on); el.setAttribute('aria-pressed', String(on)); });
+    sheet.querySelector('.tn-sub-other').value = found ? '' : value;
+    if (!found) showMore(true);
+  }
+  function lessonFields(open, linked) {
+    var l = linked && linked.lesson || {}, d = linked ? linked.date : today();
+    return '<details class="tn-lesson-fields"' + (open ? ' open' : '') + '><summary>수업 날짜·사진 용도·쪽 번호</summary>' +
+      '<label for="tn-lesson-date">수업 날짜</label><input id="tn-lesson-date" class="tn-lesson-date" type="date" value="' + esc(d) + '" max="' + esc(today()) + '">' +
+      '<label for="tn-purpose">사진 용도</label><select id="tn-purpose" class="tn-purpose"><option value="last"' + (l.purpose !== 'important' ? ' selected' : '') + '>오늘 여기까지 · 수업 마지막 쪽</option><option value="important"' + (l.purpose === 'important' ? ' selected' : '') + '>중요한 부분 · 복습 자료</option></select>' +
+      '<label for="tn-page" data-tn-page-label>' + (l.purpose === 'important' ? '중요한 쪽' : '수업 마지막 쪽') + ' (선택)</label><input id="tn-page" class="tn-page" type="number" inputmode="numeric" min="1" max="5000" step="1" value="' + (l.page || '') + '" placeholder="예: 86"><p>쪽 번호는 확인한 값만 적어줘. 마지막 쪽은 다음 예습의 출발점으로, 중요한 부분은 복습 자료로 연결해. 사진에서 다음 수업 범위를 추측하지 않아.</p></details>';
+  }
+  function lessonValue() {
+    var raw = sheet.querySelector('.tn-page').value.trim(), page = raw ? Number(raw) : null;
+    var value = { date: sheet.querySelector('.tn-lesson-date').value, purpose: sheet.querySelector('.tn-purpose').value, page: page };
+    if (!window.FC_LESSON || !FC_LESSON.metadata(value) || value.date > today() || raw && !/^\d{1,4}$/.test(raw)) return null;
+    return FC_LESSON.metadata(value);
+  }
+  function updatePageLabel() {
+    sheet.querySelector('[data-tn-page-label]').textContent = (sheet.querySelector('.tn-purpose').value === 'important' ? '중요한 쪽' : '수업 마지막 쪽') + ' (선택)';
+  }
+  function showPhoto(data) {
+    photoData = data; var pv = sheet.querySelector('[data-tn-preview]');
+    pv.innerHTML = '<img src="' + data + '" alt="수업 사진 미리보기">' + photoPickButtons();
+    sheet.querySelector('.tn-ocr-row').hidden = false;
+  }
+  function addVoice() {
+    if (!sheet || editingNoteId || saving) return;
+    var value = lessonValue(); if (!value) { notice('수업 날짜와 쪽 번호를 확인해줘.'); return; }
+    var draft = { photo: photoData, text: sheet.querySelector('.tn-text').value, sum: sheet.querySelector('.tn-sum').value, subject: sheet.querySelector('.tn-sub-other').value.trim() || sub, topic: sheet.querySelector('.tn-topic').value, lesson: value };
+    openSheet('talk'); chooseSubject(draft.subject); sheet.querySelector('.tn-topic').value = draft.topic;
+    sheet.querySelector('.tn-lesson-date').value = value.date; sheet.querySelector('.tn-purpose').value = value.purpose; sheet.querySelector('.tn-page').value = value.page || '';
+    updatePageLabel();
+    sheet.querySelector('.tn-photo-text').value = draft.text; sheet.querySelector('.tn-sum').value = draft.sum;
+    sheet.querySelector('.tn-photo-block').open = true; if (draft.photo) showPhoto(draft.photo);
+    updateHandoff(); saveDraft();
+  }
   function talkBody() {
     return '<div class="tn-rec"><b>노트를 덮고, 기억나는 대로 1분</b><ul class="tn-guide"><li>0~20초 · 오늘 배운 핵심 한 가지</li><li>20~40초 · 왜 그런지, 예시 한 가지</li><li>40~60초 · 헷갈리거나 설명이 막힌 부분</li></ul><p class="small muted">모르는 건 모른다고 말해도 돼. ChatGPT와 확인할 부분을 찾는 시간이야.</p></div><div data-tn-audio></div>' +
       '<details class="tn-local"><summary>말한 글 확인 · 받아쓰기 · 직접 적기</summary><p class="small muted">지원되는 브라우저는 녹음과 함께 받아쓰기를 시도해. 잘못 인식된 용어는 고쳐줘. 음성 인식은 브라우저의 음성 서비스가 처리할 수 있어. 아래 버튼은 받아쓰기만 시작해.</p>' +
       (SR ? '<div class="tn-clock" role="timer" aria-label="남은 말하기 시간">1:00</div><button type="button" class="tn-mic" data-tn-mic aria-pressed="false">🎙️ 1분 말하기 시작</button><p class="tn-live small" role="status" aria-live="polite">마이크를 허용하면 시작해.</p>' : '<p class="small">이 브라우저는 받아쓰기를 지원하지 않아. ChatGPT의 🎤 또는 키보드 음성 입력을 써줘.</p>') +
       '<label class="tn-l" for="tn-text">📝 말한 내용·메모 (최대 1,500자)</label><textarea id="tn-text" class="tn-text" rows="5" maxlength="1500" placeholder="말한 글을 확인하고 잘못 인식된 용어를 고쳐줘. 다른 녹음 앱의 받아쓰기를 붙여넣어도 돼."></textarea></details>';
   }
-  function photoBody() {
-    return '<div class="tn-photo"><input type="file" accept="image/*" capture="environment" hidden data-tn-file>' +
-      '<div class="tn-preview" data-tn-preview><button type="button" data-tn-pick>📷 찍기 / 사진 고르기</button></div>' +
-      '<p class="tn-ocr-row" hidden><button type="button" data-tn-ocr>🔤 글자 읽기 (손글씨는 잘 안 될 수 있어)</button></p></div>';
+  function photoPickButtons() {
+    return '<div class="tn-photo-actions"><button type="button" data-tn-pick="camera">📷 사진 촬영</button><button type="button" data-tn-pick="gallery">🖼️ 사진 선택</button></div>';
+  }
+  function photoBody(optional) {
+    return '<details class="tn-photo-block"' + (!optional ? ' open' : '') + '><summary>' + (optional ? '📷 수업 사진도 함께 남기기 (선택)' : '📷 교과서·필기 사진') + '</summary><div class="tn-photo"><input type="file" accept="image/*" capture="environment" hidden data-tn-file="camera"><input type="file" accept="image/*" hidden data-tn-file="gallery">' +
+      '<div class="tn-preview" data-tn-preview>' + photoPickButtons() + '</div>' +
+      '<p class="tn-ocr-row" hidden><button type="button" data-tn-ocr>🔤 사진 글자 다시 읽기</button><span class="tn-ocr-status" role="status" aria-live="polite"></span></p></div>' +
+      '<p>사진을 고르면 글자 읽기를 시도해. 인식된 글과 쪽 번호를 확인해줘. 글자를 못 읽어도 사진은 저장할 수 있어.</p>' +
+      (optional ? '<label class="tn-photo-text-label" for="tn-photo-text">사진에서 읽은 글·메모</label><textarea id="tn-photo-text" class="tn-photo-text" rows="3" maxlength="1500" placeholder="녹음 받아쓰기와 따로 보관해."></textarea>' : '') + '</details>';
   }
   function fmt(s) { return Math.floor(s / 60) + ':' + ('0' + s % 60).slice(-2); }
   function recStatus(message) { var el = sheet && sheet.querySelector('.tn-live'); if (el) el.textContent = message; }
@@ -341,7 +402,11 @@
   }
   function currentPrompt() {
     var subject = sheet.querySelector('.tn-sub-other').value.trim() || sub || '수업', topic = sheet.querySelector('.tn-topic');
-    return gptPrompt(subject + (topic && topic.value.trim() ? ' · ' + topic.value.trim() : ''), sheet.querySelector('.tn-text').value, sheetKind);
+    var base = editingNoteId && notes().find(function (n) { return n.id === editingNoteId; });
+    var value = { text: base && base.kind !== 'photo' ? base.text || '' : sheet.querySelector('.tn-text').value, photoText: sheetKind === 'talk' ? sheet.querySelector('.tn-photo-text').value : base && base.kind !== 'photo' ? sheet.querySelector('.tn-text').value : '', lesson: lessonValue() };
+    var content = window.FC_LESSON ? FC_LESSON.text(value) : value.text;
+    if (content || photoData) content = (window.FC_LESSON ? FC_LESSON.scope(value) + '\n\n' : '') + content + (photoData ? '\n[수업 사진] 사진 원본은 이 채팅에 첨부할게. 첨부되지 않으면 이미지 내용을 추측하지 말고 알려줘.' : '');
+    return gptPrompt(subject + (topic && topic.value.trim() ? ' · ' + topic.value.trim() : ''), content, sheetKind) + ((content || photoData) ? '\n예습에는 확인한 마지막 쪽을 출발점으로 쓸 수 있지만, 다음 수업 범위와 교과서 다음 단원의 내용을 추측하지 마.' : '');
   }
   function noteHref(prompt) {
     var A = window.SHIRO_AI;
@@ -362,7 +427,7 @@
     if (audioSession && audioSession.active()) { var waiting = sheet; audioSession.stop().then(function () { if (sheet === waiting) preparePrompt(); }); return; }
     stopRec('말한 글을 확인해줘. 복습 요청에 함께 넣을게.');
     var current = sheet, text = sheet.querySelector('.tn-text').value.trim();
-    if (sheetKind === 'photo' && text.length < 15) { notice('글자 읽기를 하거나 사진의 핵심을 조금 더 적어줘.'); return; }
+    if (sheetKind === 'photo' && text.length < 15 && !photoData) { notice('사진을 고르거나 핵심을 조금 더 적어줘.'); return; }
     var prompt = currentPrompt(), b = sheet.querySelector('[data-tn-copy]'), A = window.SHIRO_AI;
     updateHandoff(); b.disabled = true;
     var copied = A && A.rawCopy ? A.rawCopy(prompt) : Promise.resolve(false);
@@ -379,27 +444,37 @@
   /* 📋 외부 앱에서 돌아오면 직접 붙여넣는다. 백그라운드에서 클립보드를 읽지 않는다. */
   var gptSent = '', DRAFT = 'fc-tn-draft';
   function saveDraft() {
-    if (!sheet) return;
+    if (!sheet || editingNoteId) return;
     try {
-      localStorage.setItem(DRAFT, JSON.stringify({ at: Date.now(), kind: sheetKind, sub: sub, other: sheet.querySelector('.tn-sub-other').value, topic: (sheet.querySelector('.tn-topic') || {}).value || '', audioId: currentAudio && currentAudio.id || '', text: sheet.querySelector('.tn-text').value, sum: sheet.querySelector('.tn-sum').value, gpt: gptSent ? 1 : 0, days: [].slice.call(sheet.querySelectorAll('[data-tn-day]')).filter(function (x) { return x.checked; }).map(function (x) { return Number(x.dataset.tnDay); }) }));
+      if (photoData && photoData !== draftPhotoData) {
+        var oldPhotoId = draftPhotoId, id = 'draft:lesson-' + nid(), data = photoData; draftPhotoId = id; draftPhotoData = data;
+        draftPhotoWrite = draftPhotoWrite.catch(function () {}).then(function () { return putPhoto(id, data); }).then(function () { if (oldPhotoId) return delLocal(oldPhotoId); }).catch(function () { if (draftPhotoId === id) draftPhotoData = ''; });
+      }
+      localStorage.setItem(DRAFT, JSON.stringify({ at: Date.now(), kind: sheetKind, sub: sub, other: sheet.querySelector('.tn-sub-other').value, topic: (sheet.querySelector('.tn-topic') || {}).value || '', lesson: lessonValue(), photoId: photoData || photoPending ? draftPhotoId : '', photoText: (sheet.querySelector('.tn-photo-text') || {}).value || '', audioId: currentAudio && currentAudio.id || '', text: sheet.querySelector('.tn-text').value, sum: sheet.querySelector('.tn-sum').value, gpt: gptSent ? 1 : 0, days: [].slice.call(sheet.querySelectorAll('[data-tn-day]')).filter(function (x) { return x.checked; }).map(function (x) { return Number(x.dataset.tnDay); }) }));
       return true;
     } catch (e) { return false; }
   }
-  function clearDraft() { try { localStorage.removeItem(DRAFT); } catch (e) {} gptSent = ''; }
+  function clearDraft() { var d = ls(DRAFT, null), ids = [draftPhotoId, d && d.photoId].filter(function (id) { return /^draft:lesson-[a-z0-9]+$/.test(id || ''); }); try { localStorage.removeItem(DRAFT); } catch (e) {} gptSent = ''; draftPhotoId = ''; draftPhotoData = ''; draftPhotoWrite = draftPhotoWrite.catch(function () {}).then(function () { return Promise.all(ids.map(function (id) { return delLocal(id).catch(function () {}); })); }); }
   function restoreDraft() {
     if (sheet || isParent() || document.documentElement.classList.contains('pin-locked')) return false;
     var d = ls(DRAFT, null);
-    if (!d || d.kind !== 'talk' || !Number.isFinite(d.at) || Date.now() - d.at > 24 * 3600e3 || d.at > Date.now() + 60000 || (!d.text && !d.sum && !d.gpt && !d.audioId)) return false;
-    openSheet('talk');
+    if (!d || ['talk', 'photo'].indexOf(d.kind) < 0 || !Number.isFinite(d.at) || Date.now() - d.at > 24 * 3600e3 || d.at > Date.now() + 60000 || (!d.text && !d.sum && !d.gpt && !d.audioId && !d.photoId)) return false;
+    openSheet(d.kind);
     sub = String(d.sub || '').slice(0, 20);
     var first = null; sheet.querySelectorAll('[data-tn-sub]').forEach(function (x) { var on = !d.other && x.dataset.tnSub === sub && !first; if (on) first = x; x.classList.toggle('on', on); x.setAttribute('aria-pressed', String(on)); });
     if (d.other || first && first.closest('.tn-more')) showMore(true);
     sheet.querySelector('.tn-sub-other').value = String(d.other || '').slice(0, 20);
     sheet.querySelector('.tn-topic').value = String(d.topic || '').slice(0, 60);
+    if (window.FC_LESSON && FC_LESSON.metadata(d.lesson)) { sheet.querySelector('.tn-lesson-date').value = d.lesson.date; sheet.querySelector('.tn-purpose').value = d.lesson.purpose; sheet.querySelector('.tn-page').value = d.lesson.page || ''; updatePageLabel(); }
+    if (d.kind === 'talk') sheet.querySelector('.tn-photo-text').value = String(d.photoText || '').slice(0, 1500);
+    if (/^draft:lesson-[a-z0-9]+$/.test(d.photoId || '')) {
+      var restoredSheet = sheet, restoredSerial = photoSerial; draftPhotoId = d.photoId; photoPending = true;
+      getLocal(d.photoId).then(function (data) { if (sheet !== restoredSheet || photoSerial !== restoredSerial) return; photoPending = false; if (photoData) return; if (data) { draftPhotoData = data; showPhoto(data); sheet.querySelector('.tn-photo-block').open = true; updateHandoff(); } else notice('임시 사진을 찾지 못했어. 저장하기 전에 사진을 다시 골라줘.'); });
+    }
     if (d.audioId && audioSession) { audioSession.show(d.audioId); var restored = sheet; FC_AUDIO.get(d.audioId).then(function (r) { if (r && sheet === restored) currentAudio = FC_AUDIO.metadata(r); }); }
     sheet.querySelector('.tn-text').value = String(d.text || '').slice(0, 1500); sheet.querySelector('.tn-sum').value = String(d.sum || '').slice(0, 2000);
     if (Array.isArray(d.days)) sheet.querySelectorAll('[data-tn-day]').forEach(function (x) { x.checked = d.days.indexOf(Number(x.dataset.tnDay)) >= 0; });
-    if (d.text) sheet.querySelector('.tn-local').open = true;
+    if (d.text && d.kind === 'talk') sheet.querySelector('.tn-local').open = true;
     gptSent = d.gpt ? '1' : ''; updateHandoff();
     sheet.querySelector('.tn-return').textContent = '쓰던 노트를 되살렸어. ' + (gptSent ? 'ChatGPT 답을 복사해 왔으면 📋 붙여넣기를 눌러줘.' : '이어서 작성해줘.');
     return true;
@@ -455,50 +530,85 @@
       .then(function () { if (sheet) { b.disabled = false; b.textContent = '🧠 다시 정리'; } });
   }
   function runOcr() {
-    var b = sheet.querySelector('[data-tn-ocr]'), ta = sheet.querySelector('.tn-text'); if (!photoData) return;
-    b.disabled = true; b.textContent = '글자 읽는 중… (처음엔 30초쯤)';
+    if (!sheet || !photoData || saving) return;
+    var current = sheet, image = photoData, serial = ++photoSerial, worker = null;
+    var b = sheet.querySelector('[data-tn-ocr]'), ta = sheet.querySelector(sheetKind === 'talk' ? '.tn-photo-text' : '.tn-text'), status = sheet.querySelector('.tn-ocr-status');
+    b.disabled = true; b.textContent = '글자 읽는 중…'; status.textContent = '처음에는 30초쯤 걸릴 수 있어. 사진만 먼저 저장해도 돼.';
     loadScript(OCR.lib, function () { return !!window.Tesseract; }).then(function () {
       return Tesseract.createWorker('kor', 1, { workerPath: OCR.worker, corePath: OCR.core, langPath: OCR.lang });
     }).then(function (w) {
-      return w.recognize(photoData).then(function (r) { w.terminate(); return r.data.text || ''; });
+      worker = w; return w.recognize(image).then(function (r) { return r.data.text || ''; });
     }).then(function (txt) {
+      if (sheet !== current || photoData !== image || photoSerial !== serial) return;
       txt = txt.replace(/[ \t]+/g, ' ').replace(/\n{3,}/g, '\n\n').trim();
-      if (sheet) { ta.value = ((ta.value ? ta.value.trim() + '\n' : '') + txt).slice(0, 1500); b.textContent = '🔤 다시 읽기'; b.disabled = false; updateHandoff(); saveDraft(); }
-      notice(txt ? '읽은 글자를 넣었어. ① 복습 요청 복사를 눌러줘.' : '글자를 못 읽었어. 핵심만 직접 적어줘.');
-    }).catch(function () { if (sheet) { b.disabled = false; b.textContent = '🔤 글자 읽기'; } notice('글자 읽기를 불러오지 못했어. 직접 적어줘.'); });
+      if (txt && ta.value.indexOf(txt) < 0) ta.value = ((ta.value ? ta.value.trim() + '\n' : '') + txt).slice(0, 1500);
+      status.textContent = txt ? '읽은 글을 넣었어. 틀린 글과 쪽 번호를 확인하고 저장해줘.' : '글자를 못 찾았어. 사진은 저장할 수 있고 메모는 직접 적어도 돼.';
+      updateHandoff(); saveDraft();
+    }).catch(function () { if (sheet === current && photoSerial === serial) status.textContent = '글자를 읽지 못했어. 사진은 그대로 저장할 수 있어.'; }).finally(function () {
+      if (worker) Promise.resolve(worker.terminate()).catch(function () {});
+      if (sheet === current && photoSerial === serial) { b.disabled = false; b.textContent = '🔤 사진 글자 다시 읽기'; }
+    });
   }
   function saveNote(kind, onDone) {
+    if (!sheet || saving || isParent() || document.documentElement.classList.contains('pin-locked')) return false;
     if (audioSession && audioSession.active()) { var waiting = sheet; audioSession.stop().then(function () { if (sheet === waiting && saveNote(kind, onDone) === false) { var control = sheet.querySelector('[data-tn-cloud-new]'); if (control) control.disabled = false; } }); return true; }
     stopRec();
-    var ta = sheet.querySelector('.tn-text'), text = ta.value.trim().slice(0, 1500), other = sheet.querySelector('.tn-sub-other').value.trim().slice(0, 20), subject = other || sub || '기타';
+    if (photoPending) { notice('사진을 여는 중이야. 잠시 뒤 저장해줘.'); return false; }
+    var lesson = lessonValue(); if (!lesson) { sheet.querySelector('.tn-lesson-fields').open = true; notice('수업 날짜와 쪽 번호(1~5,000)를 확인해줘.'); return false; }
+    var text = sheet.querySelector('.tn-text').value.trim().slice(0, 1500), other = sheet.querySelector('.tn-sub-other').value.trim().slice(0, 20), subject = other || sub || '기타';
     var sum0 = (sheet.querySelector('.tn-sum') || {}).value || '';
     if (!validSummary(sum0.trim())) return false;
-    if (kind === 'talk' && text.length < 5 && sum0.trim().length < 5 && !currentAudio) { notice('조금만 더 말하거나 적어줘. (ChatGPT 정리를 붙여넣어도 돼)'); return false; }
+    if (kind === 'talk' && text.length < 5 && sum0.trim().length < 5 && !currentAudio && !photoData) { notice('조금만 더 말하거나 적거나 수업 사진을 골라줘.'); return false; }
     if (kind === 'photo' && !photoData) { notice('사진을 먼저 찍어줘.'); return false; }
-    var id = nid(), t = today(), days = [].slice.call(sheet.querySelectorAll('[data-tn-day]')).filter(function (c) { return c.checked; }).map(function (c) { return Number(c.dataset.tnDay); });
-    var topic = (sheet.querySelector('.tn-topic') || {}).value || '';
+    var current = sheet, linkedId = editingNoteId, original = editingBasis, id = linkedId || nid(), t = lesson.date, data = photoData, photoRef = data ? 'photo' + nid() : '';
+    var days = [].slice.call(sheet.querySelectorAll('[data-tn-day]')).filter(function (c) { return c.checked; }).map(function (c) { return Number(c.dataset.tnDay); });
+    var topic = (sheet.querySelector('.tn-topic') || {}).value || (kind === 'photo' && lesson.page ? lesson.page + (lesson.purpose === 'last' ? '쪽까지' : '쪽 중요 부분') : '');
     var first = (topic || text || sum0.replace(/^[^\n]*정리[^\n]*\n/, '').replace(/^[\s\-•]+/, '')).split('\n')[0].slice(0, 40);
-    var title = subject + ' · ' + (kind === 'talk' ? '1분 말하기' : '요약 노트') + (first ? ' — ' + first : '');
+    var title = subject + ' · ' + (kind === 'talk' ? '1분 말하기' : '수업 사진') + (first ? ' — ' + first : '');
     var sumEl = sheet.querySelector('.tn-sum'), sum = sumEl && !sheet.querySelector('.tn-sum-box').hidden ? sumEl.value.trim().slice(0, 2000) : '';
-    var rv = { id: uid(), title: title.slice(0, 120), date: t, done: false, kind: '과제', subject: subject, note: (sum || text).slice(0, 800) };
-    var previousNotes = notes(), a = previousNotes.slice(), entry = { id: id, date: t, at: new Date().toISOString(), kind: kind, subject: subject, topic: topic || undefined, audio: currentAudio || undefined, text: text, sum: sum || undefined, photo: kind === 'photo', review: rv.id }; a.push(entry);
-    if (!saveNotes(a)) return false;
-    state.reviews.push(rv);
-    if (save() === false) { state.reviews.pop(); saveNotes(previousNotes); return false; }
-    if (window.FC_PLANNER) {
-      var P = FC_PLANNER.get(); P.again[rv.id] = days.map(function (n) { return new Date(Date.parse(t + 'T12:00:00Z') + n * 86400000).toISOString().slice(0, 10); });
-      try { localStorage.setItem(FC_PLANNER.KEY, JSON.stringify(P)); }
-      catch (e) { delete P.again[rv.id]; state.reviews.pop(); save(); saveNotes(previousNotes); notice('복습 날짜를 저장하지 못했어. 쓰던 내용은 이 화면에 남겼어.'); return false; }
-    }
-    if (!onDone && !sum && text.length >= 30 && canAI()) SHIRO_AI.organize(subject, text, kind, t).then(function (s2) { var b3 = notes(); b3.forEach(function (n) { if (n.id === id) n.sum = s2.slice(0, 2000); }); saveNotes(b3); if (typeof render === 'function') render(); }).catch(function () {});
-    var done = function () { closeSheet(); clearDraft(); notice('기기에 저장했어! ' + (days.length ? '다시 보기 ' + days.map(function (n) { return n === 1 ? '내일' : n + '일 뒤'; }).join('·') + ' 잡아뒀어 🧠' : '')); if (typeof render === 'function') render(); if (onDone) onDone(entry); };
-    if (kind === 'photo') {
-      var data = photoData;
-      putPhoto(id, data).catch(function () { notice('사진을 이 기기에 저장하지 못했어.'); }).then(function () {
-        if (typeof FamilySync !== 'undefined' && FamilySync.joined()) FamilySync.call({ action: 'photo-put', id: id, data: data }).then(function (j) { if (!j._ok) { var b2 = notes(); b2.forEach(function (n) { if (n.id === id) n.unsynced = 1; }); saveNotes(b2); } });
-        done();
+    var audio = currentAudio, photoText = (sheet.querySelector('.tn-photo-text') || {}).value || '';
+    var controls = [].slice.call(current.querySelectorAll('button,input,select,textarea')).map(function (el) { return { el: el, disabled: el.disabled }; });
+    saving = true; current.querySelector('.tn-panel').classList.add('tn-saving'); controls.forEach(function (x) { x.el.disabled = true; });
+    var storedPhoto = false, committed = false;
+    // A new asset key keeps an existing photo intact if metadata persistence fails.
+    var picture = data ? putPhoto(photoRef, data).then(function () { storedPhoto = true; }) : Promise.resolve();
+    picture.then(function () {
+      if (sheet !== current || isParent() || document.documentElement.classList.contains('pin-locked')) throw Error('role');
+      var previousNotes = notes(), existing = linkedId && previousNotes.find(function (n) { return n.id === linkedId; });
+      if (linkedId && (!existing || JSON.stringify(existing) !== original)) throw Error('conflict');
+      var entry = existing ? Object.assign({}, existing, { photo: !!data || existing.photo, photoRef: photoRef || existing.photoRef, photoAt: Date.now(), lesson: lesson, topic: topic || existing.topic }) : { id: id, date: t, at: new Date().toISOString(), kind: kind, subject: subject, topic: topic || undefined, audio: audio || undefined, text: text, sum: sum || undefined, photo: !!data, photoRef: photoRef || undefined, photoAt: data ? Date.now() : undefined, lesson: lesson };
+      if (data) entry.photoNeedsReview = true;
+      if (existing) { if (existing.kind === 'photo') entry.text = text; else entry.photoText = text; if (sum) entry.sum = sum; }
+      else if (kind === 'talk' && photoText) entry.photoText = photoText.slice(0, 1500);
+      var priorReviews = state.reviews.slice(), reviewId = entry.review || uid(), oldReview = priorReviews.find(function (r) { return r.id === reviewId; }); entry.review = reviewId;
+      var content = FC_LESSON.text(entry), rv = oldReview || { id: reviewId, title: title.slice(0, 120), date: t, done: false, kind: '과제', subject: subject, note: (sum || content || FC_LESSON.scope(entry) + '\n수업 사진을 열어 핵심 개념·이유·헷갈린 점을 확인해줘.').slice(0, 800) };
+      var P = window.FC_PLANNER && FC_PLANNER.get(); if (!P) throw Error('planner');
+      var oldDates = P.again[reviewId], keys = ['compass-study-v1', FC_PLANNER.KEY, KEY], before = {};
+      keys.forEach(function (k) { before[k] = localStorage.getItem(k); });
+      try {
+        state.reviews = oldReview ? priorReviews : priorReviews.concat([rv]);
+        if (save() === false) throw Error('core');
+        if (!existing || !Array.isArray(oldDates)) P.again[reviewId] = days.map(function (n) { return new Date(Date.parse(t + 'T12:00:00Z') + n * 86400000).toISOString().slice(0, 10); });
+        localStorage.setItem(FC_PLANNER.KEY, JSON.stringify(P));
+        if (!saveNotes(previousNotes.filter(function (n) { return n.id !== id; }).concat([entry]))) throw Error('notes');
+      } catch (error) {
+        state.reviews = priorReviews; if (oldDates === undefined) delete P.again[reviewId]; else P.again[reviewId] = oldDates;
+        keys.forEach(function (k) { try { if (before[k] === null) localStorage.removeItem(k); else localStorage.setItem(k, before[k]); } catch (ignored) {} }); throw error;
+      }
+      committed = true; saving = false; closeSheet(); if (!linkedId) clearDraft();
+      notice(existing ? '기존 메모에 사진과 진도를 연결했어. 녹음·복습 날짜는 유지했어.' : '수업 자료를 저장했어. 복습' + (days.length ? ' ' + days.join('·') + '일 뒤' : '') + '와 다음 수업 예습에 연결했어.');
+      if (typeof render === 'function') render();
+      if (data && typeof FamilySync !== 'undefined' && FamilySync.joined()) FamilySync.call({ action: 'photo-put', id: photoRef, data: data }).then(function (j) { if (!j._ok) throw Error('sync'); }).catch(function () { var b2 = notes(); b2.forEach(function (n) { if (n.id === id) n.unsynced = 1; }); saveNotes(b2); });
+      if (onDone) Promise.resolve(onDone(entry)).catch(function () { notice('노트는 저장했어. 자료 전달은 복습 탭에서 다시 해줘.'); });
+      else if (!existing && !sum && content.length >= 30 && canAI()) SHIRO_AI.organize(subject, content.slice(0, 1500), kind, t).then(function (s2) { var b3 = notes(); b3.forEach(function (n) { if (n.id === id && !n.sum) n.sum = s2.slice(0, 2000); }); saveNotes(b3); if (typeof render === 'function') render(); }).catch(function () {});
+    }).catch(function (error) {
+      if (committed) { saving = false; notice('노트는 저장했어. 정리·전달은 복습 탭에서 확인해줘.'); return; }
+      var rollback = storedPhoto ? delLocal(photoRef) : Promise.resolve();
+      rollback.catch(function () {}).then(function () {
+        saving = false; if (sheet === current) { current.querySelector('.tn-panel').classList.remove('tn-saving'); controls.forEach(function (x) { x.el.disabled = x.disabled; }); current.querySelectorAll('[data-tn-save],[data-tn-cloud-new]').forEach(function (b) { b.disabled = false; }); }
+        notice(error && error.message === 'conflict' ? '연결할 메모가 바뀌었어. 닫고 최신 메모에서 다시 사진을 붙여줘.' : '사진·노트·복습 날짜를 모두 저장하지 못했어. 쓰던 자료는 이 화면에 남겨뒀어.');
       });
-    } else done();
+    });
     return true;
   }
 
@@ -510,7 +620,11 @@
     if (!a.length) return h + '<p class="muted">아직 노트가 없어. 오늘 탭의 🎙️ 1분 말하기나 📷 노트 사진으로 첫 노트를 남겨봐.</p></section>';
     h += '<ul>' + a.slice(0, showN).map(function (n) {
       return '<li><div class="tn-li-top"><span class="tn-tag ' + n.kind + '">' + (n.via === 'watch' ? '⌚' : n.kind === 'talk' ? '🎙️' : '📷') + ' ' + esc(n.subject) + '</span><small>' + md(n.date) + '</small>' + (isParent() ? '' : '<button type="button" class="pl-x" data-tn-del="' + esc(n.id) + '" aria-label="노트 지우기">×</button>') + '</div>' +
+        (window.FC_LESSON && n.lesson ? '<p class="tn-progress-line">' + esc(FC_LESSON.scope(n)) + '</p>' : '') +
         (n.photo ? '<button type="button" class="tn-thumb" data-tn-view="' + esc(n.id) + '" data-tn-img="' + esc(n.id) + '" aria-label="사진 크게 보기"></button>' : '') +
+        (n.photo && (!n.sum || n.photoNeedsReview) ? '<p class="tn-progress-line">사진·수업 범위는 연결됐어. 사진까지 함께 정리하려면 채팅·Drive로 보내줘.</p>' : '') +
+        (n.photoText ? '<details><summary>사진에서 읽은 글·메모</summary><p class="tn-txt">' + esc(n.photoText).replace(/\n/g, '<br>') + '</p></details>' : '') +
+        (isParent() ? '' : '<button type="button" class="tn-audio-link" data-tn-attach="' + esc(n.id) + '">' + (n.photo ? '사진·마지막 쪽 바꾸기' : '이 메모에 수업 사진 추가') + '</button>') +
         (vjobs().some(function (j) { return j.noteId === n.id; }) ? '<p class="tn-voice-wait small" role="status">🎧 받아쓰기·정리 중… 끝나면 여기에 나와.</p>' : '') +
         (n.cloud && Array.isArray(n.cloud.files) ? n.cloud.files.filter(function (f) { return f.role !== 'audio' && /^https:\/\/drive\.google\.com\//.test(f.url || ''); }).map(function (f) { return '<a class="tn-audio-link" href="' + esc(f.url) + '" target="_blank" rel="noopener">' + (f.role === 'review' ? 'Drive 복습 정리 ↗' : f.role === 'note' ? 'Drive 받아쓰기 ↗' : 'Drive 파일 ↗') + '</a>'; }).join('') : '') +
         (n.audio ? '<button type="button" class="tn-audio-link" data-tn-listen="' + esc(n.audio.id) + '">🎧 녹음 원본 듣기</button>' + (/^https:\/\/drive\.google\.com\//.test(n.audio.driveUrl || '') ? '<a class="tn-audio-link" href="' + esc(n.audio.driveUrl) + '" target="_blank" rel="noopener">Drive 녹음 열기 ↗</a>' : '') : '') +
@@ -536,6 +650,8 @@
         var base = n.date + '_' + slug(n.subject) + '_' + (n.kind === 'talk' ? '1분말하기' : '요약노트') + '_' + n.id.slice(0, 4);
         var body = '---\ndate: ' + n.date + '\nsubject: ' + n.subject + '\ntype: ' + (n.kind === 'talk' ? '1분 말하기' : '요약 노트 사진') + '\ntags: [수업노트, ' + slug(n.subject).replace(/\s/g, '') + ']\n---\n\n# ' + n.date + ' ' + n.subject + ' ' + (n.kind === 'talk' ? '1분 말하기' : '요약 노트') + '\n\n';
         if (n.photo) { body += '![[' + base + '.jpg]]\n\n'; jobs.push(getPhoto(n.id).then(function (d) { if (d) z.file('사진/' + base + '.jpg', d.split(',')[1], { base64: true }); })); }
+        if (n.lesson && window.FC_LESSON) body += '## 수업 범위\n\n' + FC_LESSON.scope(n) + '\n\n';
+        if (n.photoText) body += '## 사진에서 읽은 글·메모\n\n' + n.photoText + '\n\n';
         body += (n.sum ? '## 복습 정리\n\n' + n.sum + '\n\n' : '') + (n.text ? '## 원문\n\n' + n.text + '\n\n' : '') + (n.audio ? '## 녹음 원본\n\n' + n.audio.name + (/^https:\/\/drive\.google\.com\//.test(n.audio.driveUrl || '') ? '\n[Drive에서 열기](' + n.audio.driveUrl + ')' : '\n이 기기의 녹음 보관함에서 확인') + '\n\n' : '') + '## 다시 보기\n- [ ] 내일\n- [ ] 3일 뒤\n- [ ] 7일 뒤\n';
         z.file(slug(n.subject) + '/' + base + '.md', body);
       });
@@ -568,9 +684,11 @@
       if (document.documentElement.classList.contains('pin-locked') || isParent() && window.FC_PLANNER && !FC_PLANNER.get().share.review) return 'failed';
       var a = notes(), pos = a.findIndex(function (n) { return n.id === id; }); if (pos < 0) return 'missing';
       var n = a[pos]; if (n.cloud && n.cloud.jobId === jobId) return 'applied';
-      if (!force && JSON.stringify([n.subject || '', n.topic || '', n.text || '', n.sum || '']) !== original) return 'conflict';
+      var currentBasis = window.FC_CHAT_DRIVE && FC_CHAT_DRIVE.basis ? FC_CHAT_DRIVE.basis(n) : JSON.stringify([n.subject || '', n.topic || '', n.text || '', n.sum || '']);
+      if (!force && currentBasis !== original) return 'conflict';
       if (!result || !result.value || typeof result.value.summary !== 'string' || result.value.summary.length > 2000) return 'failed';
       var previousNotes = a.slice(), next = Object.assign({}, n, { sum: result.value.summary || n.sum || undefined, cloud: { jobId: jobId, files: result.value.files, at: result.at } });
+      if (n.photoNeedsReview && currentBasis === original) next.photoNeedsReview = false;
       if (typeof result.value.transcript === 'string' && result.value.transcript && !n.text) next.text = result.value.transcript.slice(0, 1500);
       var audio = result.value.files.find(function (f) { return f.role === 'audio'; });
       if (audio && n.audio) next.audio = Object.assign({}, n.audio, { driveId: audio.id, driveUrl: audio.url, name: audio.name });
@@ -608,15 +726,17 @@
     if (b.hasAttribute('data-tn-copy')) { preparePrompt(); return; }
     if (b.hasAttribute('data-tn-select')) { var request = sheet.querySelector('.tn-prompt'); request.focus(); request.select(); request.setSelectionRange(0, request.value.length); return; }
     if (b.hasAttribute('data-tn-paste')) { pasteSum(); return; }
-    if (d.tnOpen) { if (d.tnOpen !== 'talk' || !restoreDraft()) openSheet(d.tnOpen); return; }
+    if (b.hasAttribute('data-tn-add-voice')) { addVoice(); return; }
+    if (d.tnAttach) { openSheet('photo', d.tnAttach); return; }
+    if (d.tnOpen) { if (!restoreDraft()) openSheet(d.tnOpen); return; }
     if (b.hasAttribute('data-tn-close')) {
       if ((sheet.querySelector('.tn-text').value || sheet.querySelector('.tn-sum').value || photoData || gptSent || currentAudio || audioSession && audioSession.active()) && !confirm('복습 노트를 저장하지 않고 닫을까? 녹음 원본은 녹음 보관함에 남아 있어.')) return;
-      var closing = sheet; (audioSession ? audioSession.stop() : Promise.resolve()).then(function () { if (sheet === closing) { closeSheet(); clearDraft(); } }); return;
+      var closing = sheet, wasEditing = !!editingNoteId; (audioSession ? audioSession.stop() : Promise.resolve()).then(function () { if (sheet === closing) { closeSheet(); if (!wasEditing) clearDraft(); } }); return;
     }
     if (b.hasAttribute('data-tn-more')) { showMore(sheet.querySelector('.tn-more').hidden); return; }
     if (d.tnSub) { sub = d.tnSub; sheet.querySelectorAll('[data-tn-sub]').forEach(function (x) { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', String(x === b)); }); sheet.querySelector('.tn-sub-other').value = ''; updateHandoff(); saveDraft(); return; }
     if (b.hasAttribute('data-tn-mic')) { if (rec || timer || restart) stopRec('말한 글을 확인하고 잘못 인식된 용어를 고쳐줘.'); else startRec(); return; }
-    if (b.hasAttribute('data-tn-pick')) { var f = sheet.querySelector('[data-tn-file]'); f.value = ''; f.click(); return; }
+    if (b.hasAttribute('data-tn-pick')) { var f = sheet.querySelector('[data-tn-file="' + (d.tnPick === 'camera' ? 'camera' : 'gallery') + '"]'); f.value = ''; f.click(); return; }
     if (b.hasAttribute('data-tn-ocr')) { runOcr(); return; }
     if (b.hasAttribute('data-tn-org')) { organizeSheet(false); return; }
     if (d.tnRaw) { var li = b.closest('li'); li.classList.toggle('tn-show-raw'); b.textContent = li.classList.contains('tn-show-raw') ? '정리 보기' : '원문 보기'; return; }
@@ -632,13 +752,15 @@
     if (b.hasAttribute('data-tn-export')) { exportZip(); return; }
   });
   document.addEventListener('change', function (e) {
-    var f = e.target; if (!f.matches || !f.matches('[data-tn-file]') || !f.files[0]) return;
+    var f = e.target; if (!sheet || saving || !f.matches || !f.matches('[data-tn-file]') || !f.files[0] || !sheet.contains(f)) return;
+    var current = sheet, serial = ++photoSerial; photoPending = true;
     shrinkPhoto(f.files[0]).then(function (data) {
-      photoData = data;
-      var pv = sheet.querySelector('[data-tn-preview]'); pv.innerHTML = '<img src="' + data + '" alt="노트 사진 미리보기"><button type="button" data-tn-pick>다시 찍기</button>';
-      sheet.querySelector('.tn-ocr-row').hidden = false;
-    }).catch(function () { notice('사진을 열지 못했어. 다시 찍어줘.'); });
+      if (sheet !== current || photoSerial !== serial) return;
+      photoPending = false; showPhoto(data); sheet.querySelector('.tn-lesson-fields').open = true;
+      saveDraft(); updateHandoff(); runOcr();
+    }).catch(function () { if (sheet === current && photoSerial === serial) { photoPending = false; notice('사진을 열지 못했어. 다시 찍어줘.'); } });
   });
+  document.addEventListener('change', function (e) { if (sheet && e.target.matches('.tn-purpose')) { updatePageLabel(); updateHandoff(); saveDraft(); } });
   document.addEventListener('input', function (e) { if (sheet && e.target.classList && e.target.classList.contains('tn-sub-other') && e.target.value) sheet.querySelectorAll('[data-tn-sub]').forEach(function (x) { x.classList.remove('on'); x.setAttribute('aria-pressed', 'false'); }); });
   document.addEventListener('change', function (e) { if (sheet && e.target.matches('[data-tn-day]')) saveDraft(); });
   window.addEventListener('fc-audio-saved', function (e) {
@@ -652,7 +774,7 @@
       if (document.documentElement.classList.contains('fc-drive-picker-open')) return;
       if (e.key === 'Escape') { e.preventDefault(); sheet.querySelector('[data-tn-close]').click(); return; }
     if (e.key !== 'Tab') return;
-    var focusable = [].slice.call(sheet.querySelectorAll('button:not(:disabled),a[href],input,textarea,summary')).filter(function (x) { return x.getClientRects().length; });
+    var focusable = [].slice.call(sheet.querySelectorAll('button:not(:disabled),a[href],input:not(:disabled),select:not(:disabled),textarea:not(:disabled),summary')).filter(function (x) { return x.getClientRects().length; });
     var first = focusable[0], last = focusable[focusable.length - 1];
     if (e.shiftKey && (document.activeElement === first || !sheet.contains(document.activeElement))) { e.preventDefault(); last.focus(); }
     else if (!e.shiftKey && (document.activeElement === last || !sheet.contains(document.activeElement))) { e.preventDefault(); first.focus(); }
