@@ -1,9 +1,9 @@
 {
   "version": "1.0",
-  "generated_at": "2026-10-21T18:04:54.551098+09:00",
+  "generated_at": "2026-10-22T18:04:48.696758+09:00",
   "window": {
-    "start": "2026-09-21T09:00:00+09:00",
-    "end": "2026-10-21T09:00:00+09:00",
+    "start": "2026-09-22T09:00:00+09:00",
+    "end": "2026-10-22T09:00:00+09:00",
     "days": 30,
     "timezone": "Asia/Seoul"
   },
@@ -87,7 +87,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 2
+      "age_days": 3
     },
     {
       "rank": null,
@@ -156,7 +156,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 2
+      "age_days": 3
     },
     {
       "rank": null,
@@ -222,7 +222,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 15
+      "age_days": 16
     },
     {
       "rank": null,
@@ -287,8 +287,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "7d",
-      "age_days": 7
+      "freshness": "30d",
+      "age_days": 8
     },
     {
       "rank": null,
@@ -362,7 +362,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 13
+      "age_days": 14
     },
     {
       "rank": null,
@@ -425,7 +425,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
     },
     {
       "rank": 3,
@@ -485,7 +485,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": null,
@@ -547,7 +547,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 9
+      "age_days": 10
     },
     {
       "rank": null,
@@ -607,7 +607,71 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 13
+      "age_days": 14
+    },
+    {
+      "rank": null,
+      "canonical_issue": "ESMO 앞둔 K바이오, 에이비엘·유한·HLB 임상 성과 주목 - 약사공론",
+      "title": "ESMO 앞둔 K바이오, 에이비엘·유한·HLB 임상 성과 주목",
+      "category": [
+        "3상",
+        "ai"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-10-21T12:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "세계 최대 규모의 종양학 학술행사 중 하나인 유럽종양학회(ESMO 2026)가 개막을 앞두면서 국내 제약·바이오기업들의 항암 신약 개발 성과에 관심이 집중되고 있",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "시장·정책·연구개발 흐름을 보여주는 주요 산업 이슈로 후속 정책과 사업 변화 확인이 필요합니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=546869"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546869"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/546869_451636_5652.png",
+      "score": -6,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "폐암",
+          "담도암"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": "3",
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": "치료 중 안전성과 관련된 정보입니다. 복용·투여 변경은 담당 의료진과 상의해야 합니다.",
+        "patient_relevance_score": 54,
+        "patient_relevance_labels": [
+          "안전성",
+          "임상결과"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": 5,
@@ -668,8 +732,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "today",
-      "age_days": 0
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -730,8 +794,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "today",
-      "age_days": 0
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -794,8 +858,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "today",
-      "age_days": 0
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -861,7 +925,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": null,
@@ -926,7 +990,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": 3,
@@ -990,7 +1054,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 8
+      "age_days": 9
     },
     {
       "rank": 2,
@@ -1053,7 +1117,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 14
+      "age_days": 15
     },
     {
       "rank": null,
@@ -1113,8 +1177,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "7d",
-      "age_days": 7
+      "freshness": "30d",
+      "age_days": 8
     },
     {
       "rank": null,
@@ -1177,7 +1241,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 8
+      "age_days": 9
     },
     {
       "rank": null,
@@ -1237,7 +1301,69 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 13
+      "age_days": 14
+    },
+    {
+      "rank": null,
+      "canonical_issue": "“양적 경쟁 넘어 삶의 질 아우르는 ‘가치 기반 암 치료’ 새 지평 열 것” - 의학신문",
+      "title": "“양적 경쟁 넘어 삶의 질 아우르는 ‘가치 기반 암 치료’ 새 지평 열 것”",
+      "category": [
+        "병원"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-22T05:50:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=오인규 기자] 한국 의료가 세계적인 수준으로 도약하며 글로벌 유수 병원들과 어깨를 나란히 하고 있다. 삼성서울병원 암병원은 전체 암 환자 5년",
+        "[의학신문·일간보사=오인규 기자] 한국 의료가 세계적인 수준으로 도약하며 글로벌 유수 병원들과 어깨를 나란히 하고 있다.",
+        "삼성서울병원 암병원은 전체 암 환자 5년 생존율 75.4%를 기록하고, 최근 미국 뉴스위크가 발표한 ‘월드 베스트 전문병원 2027’에서 암 분야 세계 5위·국내 1위에 오르며 탁월한 역량을 입증했다."
+      ],
+      "importance": "의료기관·약국 현장의 변화는 진료 흐름과 환자 경험, 의약품 사용 환경에 직접 영향을 줍니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3014452"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014452"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3014452_415377_5646.jpg",
+      "score": 10,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "유방암",
+          "폐암"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": "향후 치료 선택이나 표준치료 논의에 영향을 줄 수 있는 임상 결과입니다.",
+        "patient_relevance_score": 28,
+        "patient_relevance_labels": [
+          "임상결과"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "today",
+      "age_days": 0
     },
     {
       "rank": null,
@@ -1298,7 +1424,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
     },
     {
       "rank": null,
@@ -1357,7 +1483,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": null,
@@ -1420,7 +1546,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": null,
@@ -1482,7 +1608,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 10
+      "age_days": 11
     },
     {
       "rank": null,
@@ -1543,7 +1669,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 8
+      "age_days": 9
     },
     {
       "rank": null,
@@ -1606,7 +1732,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 10
+      "age_days": 11
     },
     {
       "rank": null,
@@ -1667,7 +1793,64 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 13
+      "age_days": 14
+    },
+    {
+      "rank": null,
+      "canonical_issue": "국립암센터 낙상사고 35% 증가…인증 사후관리 실효성 논란 - 메디파나뉴스",
+      "title": "국립암센터 낙상사고 35% 증가…인증 사후관리 실효성 논란",
+      "category": [
+        "산업"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-21T10:27:35+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "국립암센터의 입원환자 규모는 줄었지만 낙상사고는 오히려 증가한 것으로 나타났다. 환자안전사고 예방대책을 시행하고도 낙상 발생률이 높아지면서 기존 관리체계의 실효성에 의문이 제기됐다. 더 큰 쟁점은 의료기관평가인증원의 사후관리다. 인증원이 낙상사고 증가를 중간현장조사에서 확인했음에도 구체적으로 어떤 개선조",
+        "제공=이소희 의원실 국립암센터의 입원환자 규모는 줄었지만 낙상사고는 오히려 증가한 것으로 나타났다.",
+        "환자안전사고 예방대책을 시행하고도 낙상 발생률이 높아지면서 기존 관리체계의 실효성에 의문이 제기됐다."
+      ],
+      "importance": "의료기관·약국 현장의 변화는 진료 흐름과 환자 경험, 의약품 사용 환경에 직접 영향을 줍니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=419740"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=419740"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419740_327277_2618.jpg",
+      "score": 4,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": "치료와 직접 관련된 정보인지 기사 원문과 공식 자료를 함께 확인해 주세요.",
+        "patient_relevance_score": 8,
+        "patient_relevance_labels": [],
+        "industry_summary": null
+      },
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -1724,7 +1907,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
     },
     {
       "rank": null,
@@ -1785,7 +1968,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 2
+      "age_days": 3
     },
     {
       "rank": null,
@@ -1844,8 +2027,8 @@
         "patient_relevance_labels": [],
         "industry_summary": null
       },
-      "freshness": "today",
-      "age_days": 0
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -1904,7 +2087,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 13
+      "age_days": 14
     },
     {
       "rank": 3,
@@ -1965,7 +2148,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 16
+      "age_days": 17
     },
     {
       "rank": null,
@@ -2020,7 +2203,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 18
+      "age_days": 19
     },
     {
       "rank": null,
@@ -2078,7 +2261,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 18
+      "age_days": 19
     },
     {
       "rank": null,
@@ -2135,7 +2318,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 19
+      "age_days": 20
     },
     {
       "rank": 4,
@@ -2194,7 +2377,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 19
+      "age_days": 20
     },
     {
       "rank": null,
@@ -2262,7 +2445,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 19
+      "age_days": 20
     }
   ]
 }

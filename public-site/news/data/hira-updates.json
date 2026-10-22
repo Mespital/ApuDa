@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-10-21T18:05:16.570773+09:00",
+  "generated_at": "2026-10-22T18:05:06.183234+09:00",
   "window_days": 30,
   "status": "ok",
   "items": [
@@ -195,21 +195,6 @@
       "detail_link_verified": true,
       "attachments": [],
       "summary": "2. 건전한 요양 · 의료급여비용 청구풍토 조성을 위한 “ 요양 · 의료 급여비용 자율점검제 ” 도입에 따라 요양기관 착오 개연성이 높은 「 한방",
-      "oncology_related": false,
-      "source_list_url": "https://www.hira.or.kr/bbsDummy.do?pgmid=HIRAA020002000100",
-      "criteria_url": "https://www.hira.or.kr/rc/insu/insuadtcrtr/InsuAdtCrtrList.do?pgmid=HIRAA030069000400"
-    },
-    {
-      "agency": "건강보험심사평가원",
-      "document_type": "공식 고시·공지",
-      "category": "약제·급여",
-      "department": "약제평가부",
-      "title": "약제 재평가 1차 재평가 대상 및 제외대상 공개(최종)",
-      "published_at": "2026-09-22T00:00:00+09:00",
-      "url": "https://www.hira.or.kr/bbsDummy.do?brdBltNo=12256&brdScnBltNo=4&pgmid=HIRAA020002000100",
-      "detail_link_verified": true,
-      "attachments": [],
-      "summary": "○ 약제 상한금액 재평가 계획 공고 제 2026 – 691 호 (2026.8.31.) 관련 1 차 재평가 대상 및 제외대상 ( 최종 ) 을 붙임과 같이 공지하오니 참고하시기 바랍니다 .",
       "oncology_related": false,
       "source_list_url": "https://www.hira.or.kr/bbsDummy.do?pgmid=HIRAA020002000100",
       "criteria_url": "https://www.hira.or.kr/rc/insu/insuadtcrtr/InsuAdtCrtrList.do?pgmid=HIRAA030069000400"
