@@ -1,8 +1,16 @@
 {
-  "checked_at": "2026-10-23T04:05:57.747853+00:00",
-  "last_success_at": "2026-10-23T04:05:57.747853+00:00",
+  "checked_at": "2026-10-23T11:17:45.553839+00:00",
+  "last_success_at": "2026-10-23T11:17:45.553839+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "OpenAI and Poland’s NASK partner to advance AI safety and security",
+      "url": "https://openai.com/index/openai-nask-ai-safety-security-partnership",
+      "source": "OpenAI",
+      "published_at": "2026-10-23T00:00:00+00:00",
+      "category": "안전·보안",
+      "domain": "security"
+    },
     {
       "title": "Build more responsive apps with the Decisions API",
       "url": "https://openai.com/index/decisions-api",
@@ -234,20 +242,12 @@
       "published_at": "2026-10-15T18:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Check if a text message is a scam using Circle to Search.",
-      "url": "https://blog.google/innovation-and-ai/technology/safety-security/circle-to-search-android-text-message-scams/",
-      "source": "Google",
-      "published_at": "2026-10-15T17:30:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-23T04:05:57.747853+00:00",
+    "checked_at": "2026-10-23T11:17:45.553839+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -424,7 +424,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-23T04:05:57.747853+00:00",
+    "last_success_at": "2026-10-23T11:17:45.553839+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
