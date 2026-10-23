@@ -1,9 +1,9 @@
 {
   "version": "1.0",
-  "generated_at": "2026-10-22T18:04:48.696758+09:00",
+  "generated_at": "2026-10-23T18:04:46.786892+09:00",
   "window": {
-    "start": "2026-09-22T09:00:00+09:00",
-    "end": "2026-10-22T09:00:00+09:00",
+    "start": "2026-09-23T09:00:00+09:00",
+    "end": "2026-10-23T09:00:00+09:00",
     "days": 30,
     "timezone": "Asia/Seoul"
   },
@@ -87,7 +87,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     },
     {
       "rank": null,
@@ -156,7 +156,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     },
     {
       "rank": null,
@@ -222,7 +222,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 16
+      "age_days": 17
     },
     {
       "rank": null,
@@ -288,7 +288,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 8
+      "age_days": 9
     },
     {
       "rank": null,
@@ -362,7 +362,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 14
+      "age_days": 15
     },
     {
       "rank": null,
@@ -425,7 +425,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 2
+      "age_days": 3
     },
     {
       "rank": 3,
@@ -485,7 +485,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 6
+      "age_days": 7
     },
     {
       "rank": null,
@@ -547,7 +547,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 10
+      "age_days": 11
     },
     {
       "rank": null,
@@ -607,7 +607,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 14
+      "age_days": 15
     },
     {
       "rank": null,
@@ -671,7 +671,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
     },
     {
       "rank": 5,
@@ -733,7 +733,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
     },
     {
       "rank": null,
@@ -795,7 +795,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
     },
     {
       "rank": null,
@@ -859,7 +859,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
     },
     {
       "rank": null,
@@ -925,7 +925,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 6
+      "age_days": 7
     },
     {
       "rank": null,
@@ -990,7 +990,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 6
+      "age_days": 7
     },
     {
       "rank": 3,
@@ -1054,7 +1054,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 9
+      "age_days": 10
     },
     {
       "rank": 2,
@@ -1117,7 +1117,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 15
+      "age_days": 16
     },
     {
       "rank": null,
@@ -1178,7 +1178,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 8
+      "age_days": 9
     },
     {
       "rank": null,
@@ -1241,7 +1241,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 9
+      "age_days": 10
     },
     {
       "rank": null,
@@ -1301,7 +1301,190 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 14
+      "age_days": 15
+    },
+    {
+      "rank": null,
+      "canonical_issue": "BPS 출범 앞둔 보령, 국내 처방·글로벌 항암 나란히 성장 성과 - 메디파나뉴스",
+      "title": "BPS 출범 앞둔 보령, 국내 처방·글로벌 항암 나란히 성장 성과",
+      "category": [
+        "약가",
+        "인수"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-23T06:03:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "보령이 내년 보령파마솔루션(BPS) 출범을 앞두고 국내 만성질환 제품군과 글로벌 항암사업에서 나란히 성장세를 보였다. '카나브·L패밀리·트루패밀리'의 처방이 증가한 가운데, '탁소텔' 해외 매출도 본격 반영됐다. 국내외 사업이 함께 성장하면서 3분기 매출은 전년 동기보다 12.3% 증가한 3144억원을 ",
+        "사진=이정수 기자 보령이 내년 보령파마솔루션(BPS) 출범을 앞두고 국내 만성질환 제품군과 글로벌 항암사업에서 나란히 성장세를 보였다.",
+        "'카나브·L패밀리·트루패밀리'의 처방이 증가한 가운데, '탁소텔' 해외 매출도 본격 반영됐다."
+      ],
+      "importance": "기사에서 급여·약가 이슈가 함께 확인돼 시장 접근성과 환자 부담 변화를 후속 확인할 필요가 있습니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=419873"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=419873"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419873_327451_4731.jpg",
+      "score": 16,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
+        "patient_relevance_score": 28,
+        "patient_relevance_labels": [
+          "급여·접근성"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "today",
+      "age_days": 0
+    },
+    {
+      "rank": null,
+      "canonical_issue": "보령, 영업익 694억 '역대급' 성장…수익성은 둔화 - 약사공론",
+      "title": "보령, 영업익 694억 '역대급' 성장…수익성은 둔화",
+      "category": [
+        "약가",
+        "인수",
+        "ai"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-10-23T05:52:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "보령이 고혈압 치료제 카나브패밀리와 항암제 탁소텔의 성장에 힘입어 올해 3분기 누적 영업이익으로 지난해 연간 실적을 넘어섰다. 다만 3분기만 놓고 보면 매출 증가",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "기사에서 급여·약가 이슈가 함께 확인돼 시장 접근성과 환자 부담 변화를 후속 확인할 필요가 있습니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=547027"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547027"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/547027_451774_5229.jpg",
+      "score": 15,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
+        "patient_relevance_score": 28,
+        "patient_relevance_labels": [
+          "급여·접근성"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "today",
+      "age_days": 0
+    },
+    {
+      "rank": null,
+      "canonical_issue": "보령, 3Q 누적 영업익 694억…지난해 연간 실적 넘어 - 메디파나뉴스",
+      "title": "보령, 3Q 누적 영업익 694억…지난해 연간 실적 넘어",
+      "category": [
+        "약가",
+        "인수",
+        "병원",
+        "공급"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-22T12:41:03+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "보령이 올해 3분기까지 누적 영업이익 694억원을 기록하며 지난해 연간 영업이익을 넘어섰다. 카나브패밀리의 처방 증가와 아토젯 공동판매, 탁소텔 매출 확대가 실적 성장을 이끌었다. 항암 부문에서는 도입 품목의 매출 확대와 제형 개선, 자체 생산을 통한 수익성 강화가 이어지고 있다. 22일 보령에 따르면 ",
+        "사진=이정수 기자 보령이 올해 3분기까지 누적 영업이익 694억원을 기록하며 지난해 연간 영업이익을 넘어섰다.",
+        "카나브패밀리의 처방 증가와 아토젯 공동판매, 탁소텔 매출 확대가 실적 성장을 이끌었다."
+      ],
+      "importance": "기사에서 급여·약가 이슈가 함께 확인돼 시장 접근성과 환자 부담 변화를 후속 확인할 필요가 있습니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=419860"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=419860"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419860_327432_3958.jpg",
+      "score": 22,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
+        "patient_relevance_score": 28,
+        "patient_relevance_labels": [
+          "급여·접근성"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -1362,8 +1545,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "today",
-      "age_days": 0
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -1424,7 +1607,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 2
+      "age_days": 3
     },
     {
       "rank": null,
@@ -1483,7 +1666,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 6
+      "age_days": 7
     },
     {
       "rank": null,
@@ -1546,7 +1729,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 6
+      "age_days": 7
     },
     {
       "rank": null,
@@ -1608,7 +1791,68 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 11
+      "age_days": 12
+    },
+    {
+      "rank": null,
+      "canonical_issue": "\"의료AI '파일럿병' 극복 위해선 조달·재원·현지화가 관건\" - 메디파나뉴스",
+      "title": "\"의료AI '파일럿병' 극복 위해선 조달·재원·현지화가 관건\"",
+      "category": [
+        "ai"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-23T06:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "의료 인공지능(AI) 평가 기준이 기술 성능을 넘어 국가 보건의료체계 진입 여부로 넓어지고 있다. 시범사업에서 가능성을 확인한 AI가 국가 단위로 확산되려면 조달·재원·진료 연계와 현지 운영구조까지 함께 갖춰져야 한다는 진단이다. 국내 의료AI 기업들도 필리핀 결핵 검진과 몽골 자궁경부암 국가검진 등 해",
+        "복사하기 (왼쪽부터) 자넷 기나드 유니테이드 전략국장, 김영기 레메디 고문, 정재훈 아이도트 대표, 박외진 아크릴 대표가 22일 서울 코엑스마곡에서 열린 KHIDI-Unitaid 공동포럼에서 의료AI 국가 도입 전략과 해외 적용·운영 사례를 소개하고 있다.",
+        "사진=민준영 기자 의료 인공지능(AI) 평가 기준이 기술 성능을 넘어 국가 보건의료체계 진입 여부로 넓어지고 있다."
+      ],
+      "importance": "시장·정책·연구개발 흐름을 보여주는 주요 산업 이슈로 후속 정책과 사업 변화 확인이 필요합니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=419880"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=419880"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419880_327457_1347.png",
+      "score": 12,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "자궁경부암"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": "환자 부담이나 지원제도와 관련된 정보입니다. 대상 조건을 공식 안내에서 확인해야 합니다.",
+        "patient_relevance_score": 26,
+        "patient_relevance_labels": [
+          "지원제도"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "today",
+      "age_days": 0
     },
     {
       "rank": null,
@@ -1669,7 +1913,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 9
+      "age_days": 10
     },
     {
       "rank": null,
@@ -1732,7 +1976,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 11
+      "age_days": 12
     },
     {
       "rank": null,
@@ -1793,7 +2037,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 14
+      "age_days": 15
     },
     {
       "rank": null,
@@ -1850,7 +2094,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
     },
     {
       "rank": null,
@@ -1907,7 +2151,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 2
+      "age_days": 3
     },
     {
       "rank": null,
@@ -1968,7 +2212,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     },
     {
       "rank": null,
@@ -2028,7 +2272,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
     },
     {
       "rank": null,
@@ -2087,7 +2331,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 14
+      "age_days": 15
     },
     {
       "rank": 3,
@@ -2148,7 +2392,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 17
+      "age_days": 18
     },
     {
       "rank": null,
@@ -2203,7 +2447,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 19
+      "age_days": 20
     },
     {
       "rank": null,
@@ -2261,7 +2505,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 19
+      "age_days": 20
     },
     {
       "rank": null,
@@ -2318,7 +2562,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 20
+      "age_days": 21
     },
     {
       "rank": 4,
@@ -2377,7 +2621,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 20
+      "age_days": 21
     },
     {
       "rank": null,
@@ -2445,7 +2689,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 20
+      "age_days": 21
     }
   ]
 }

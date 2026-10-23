@@ -1,0 +1,393 @@
+{
+  "version": "1.2",
+  "report_date": "2026-10-23",
+  "collection_window": {
+    "start": "2026-10-22T09:00:00+09:00",
+    "end": "2026-10-23T09:00:00+09:00",
+    "timezone": "Asia/Seoul"
+  },
+  "sources": [
+    "데일리팜",
+    "의학신문",
+    "메디파나뉴스",
+    "약사공론"
+  ],
+  "briefing": "온코닉 '자큐보', 3Q 처방 287억원…연 1000억원 가시권가 오늘 가장 중요한 이슈로 부각됐습니다. 이어 보건복지부, 비만 신약 불법 판매 병·의원 현장 실태조사 착수도 주요 변화로 확인됐습니다. 전체적으로는 신약·임상 · 디지털헬스 흐름이 두드러집니다.",
+  "top_news": [
+    {
+      "rank": 1,
+      "canonical_issue": "온코닉 '자큐보', 3Q 처방 287억원…연 1000억원 가시권 - 메디파나뉴스",
+      "title": "온코닉 '자큐보', 3Q 처방 287억원…연 1000억원 가시권",
+      "category": [
+        "3상",
+        "임상 3상"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-22T12:10:26+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "온코닉테라퓨틱스의 위식도역류질환 신약 '자큐보'가 올해 3분기까지 누적 처방액 754억원을 기록하면서 연간 1000억원 달성이 가시화됐다는 분석이 나왔다. 진행 중인 4개 적응증 임상 3상도 향후 처방 대상 확대를 뒷받침할 전망이다. 22일 독립리서치 밸류파인더의 온코닉테라퓨틱스 보고서에 따르면, 자큐보",
+        "AI생성 온코닉테라퓨틱스의 위식도역류질환 신약 '자큐보'가 올해 3분기까지 누적 처방액 754억원을 기록하면서 연간 1000억원 달성이 가시화됐다는 분석이 나왔다.",
+        "진행 중인 4개 적응증 임상 3상도 향후 처방 대상 확대를 뒷받침할 전망이다."
+      ],
+      "importance": "주요 임상 결과는 향후 허가·가이드라인·표준치료 변화 가능성을 평가하는 근거가 됩니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=419853"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=419853"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419853_327425_2814.png",
+      "score": 52,
+      "oncology": null
+    },
+    {
+      "rank": 2,
+      "canonical_issue": "보건복지부, 비만 신약 불법 판매 병·의원 현장 실태조사 착수 - 메디파나뉴스",
+      "title": "보건복지부, 비만 신약 불법 판매 병·의원 현장 실태조사 착수",
+      "category": [
+        "복지부"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-22T11:33:29+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "비만신약을 원내에서 환자에게 직접 판매하는 병·의원 불법 행위에 대해 전면적인 실태조사가 이뤄진다. 보건복지부는 일부 병·의원이 의약분업 원칙을 위반하고 비만치료 자가주사제를 원내에서 불법으로 판매하는 문제가 심각해짐에 따라, 지방자치단체와 공동으로 불법 원내 조제·판매 의심 의료기관에 대한 고강도 현장",
+        "사진=이정수 기자 비만신약을 원내에서 환자에게 직접 판매하는 병·의원 불법 행위에 대해 전면적인 실태조사가 이뤄진다.",
+        "보건복지부는 일부 병·의원이 의약분업 원칙을 위반하고 비만치료 자가주사제를 원내에서 불법으로 판매하는 문제가 심각해짐에 따라, 지방자치단체와 공동으로 불법 원내 조제·판매 의심 의료기관에 대한 고강도 현장 조사를 실시한다고 22일 밝혔다."
+      ],
+      "importance": "의료기관·약국 현장의 변화는 진료 흐름과 환자 경험, 의약품 사용 환경에 직접 영향을 줍니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=419852"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=419852"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419852_327426_2823.jpg",
+      "score": 52,
+      "oncology": null
+    },
+    {
+      "rank": 3,
+      "canonical_issue": "비만치료제 원내 판매에 칼 빼든 복지부…공급량 많은 병·의원 집중조사 - 약사공론",
+      "title": "비만치료제 원내 판매에 칼 빼든 복지부…공급량 많은 병·의원 집중조사",
+      "category": [
+        "복지부",
+        "약국",
+        "공급"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-10-22T12:00:31+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "비만치료 자가주사제를 약국을 거치지 않고 의료기관에서 직접 조제·판매하는 행위에 대해 정부가 현장조사에 나선다.최근 일부 병·의원에서 의약분업 원칙을 위반한 비만",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "의료기관·약국 현장의 변화는 진료 흐름과 환자 경험, 의약품 사용 환경에 직접 영향을 줍니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=546977"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546977"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/546977_451712_011.png",
+      "score": 51,
+      "oncology": null
+    },
+    {
+      "rank": 4,
+      "canonical_issue": "원형탈모 시장에 세 번째 카드…JAK 억제제 경쟁 새 국면 - 약사공론",
+      "title": "원형탈모 시장에 세 번째 카드…JAK 억제제 경쟁 새 국면",
+      "category": [
+        "허가"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-10-23T05:53:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "국내 중증 원형탈모 치료제 시장에 새로운 경쟁자가 등장했다.한국애브비의 린버크가 최근 식품의약품안전처 허가를 획득하면서 한국릴리의 올루미언트, 한국화이자의 리트풀",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=547019"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547019"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/547019_451762_1523.png",
+      "score": 49,
+      "oncology": null
+    },
+    {
+      "rank": 5,
+      "canonical_issue": "크리스비타, 성인 XLH 환자도 건강보험 적용...연령별 급여 장벽 해소 - 의학신문",
+      "title": "크리스비타, 성인 XLH 환자도 건강보험 적용...연령별 급여 장벽 해소",
+      "category": [
+        "급여"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-23T06:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=이재원 기자] 소아 환자에게만 건강보험이 적용돼 연령에 따른 급여 차별 논란이 제기됐던 X염색체 연관 저인산혈증(XLH) 치료제 '크리스비타",
+        "[의학신문·일간보사=이재원 기자] 소아 환자에게만 건강보험이 적용돼 연령에 따른 급여 차별 논란이 제기됐던 X염색체 연관 저인산혈증(XLH) 치료제 '크리스비타 주사제'(성분명 부로수맙)의 급여 범위가 성인 환자까지 확대될 전망이다.",
+        "그동안 성인 XLH 환자는 치료제의 허가사항에 포함돼 있음에도 건강보험 혜택을 받지 못했지만, 이번 개정으로 일정 요건을 충족하면 급여 치료가 가능해진다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3014646"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014646"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3014646_415575_5237.jpg",
+      "score": 45,
+      "oncology": null
+    }
+  ],
+  "trends": [
+    {
+      "title": "신약·임상",
+      "count": 4,
+      "change": "4건의 주요 이슈에서 반복적으로 확인",
+      "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
+      "examples": [
+        "온코닉 '자큐보', 3Q 처방 287억원…연 1000억원 가시권",
+        "보건복지부, 비만 신약 불법 판매 병·의원 현장 실태조사 착수"
+      ]
+    },
+    {
+      "title": "디지털헬스",
+      "count": 3,
+      "change": "3건의 주요 이슈에서 반복적으로 확인",
+      "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
+      "examples": [
+        "온코닉 '자큐보', 3Q 처방 287억원…연 1000억원 가시권",
+        "비만치료제 원내 판매에 칼 빼든 복지부…공급량 많은 병·의원 집중조사"
+      ]
+    },
+    {
+      "title": "정책·급여",
+      "count": 3,
+      "change": "3건의 주요 이슈에서 반복적으로 확인",
+      "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
+      "examples": [
+        "보건복지부, 비만 신약 불법 판매 병·의원 현장 실태조사 착수",
+        "비만치료제 원내 판매에 칼 빼든 복지부…공급량 많은 병·의원 집중조사"
+      ]
+    },
+    {
+      "title": "의료현장",
+      "count": 2,
+      "change": "2건의 주요 이슈에서 반복적으로 확인",
+      "implication": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름",
+      "examples": [
+        "보건복지부, 비만 신약 불법 판매 병·의원 현장 실태조사 착수",
+        "비만치료제 원내 판매에 칼 빼든 복지부…공급량 많은 병·의원 집중조사"
+      ]
+    }
+  ],
+  "outlet_status": [
+    {
+      "publisher": "데일리팜",
+      "homepage_url": "https://www.dailypharm.com/",
+      "items": []
+    },
+    {
+      "publisher": "의학신문",
+      "homepage_url": "https://www.bosa.co.kr/",
+      "items": [
+        {
+          "title": "크리스비타, 성인 XLH 환자도 건강보험 적용...연령별 급여 장벽 해소",
+          "published_at": "2026-10-23T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014646"
+        },
+        {
+          "title": "일차의료 혁신, 지속관리·지역 협력 보상 강화해야",
+          "published_at": "2026-10-23T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014612"
+        },
+        {
+          "title": "복지부, 비만치료 주사제 원내 불법 판매 병·의원 현장조사 착수",
+          "published_at": "2026-10-22T13:15:48+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014591"
+        },
+        {
+          "title": "병원 가업상속공제 제외 국회서 제동",
+          "published_at": "2026-10-23T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014637"
+        },
+        {
+          "title": "비만치료제 '질병 예방' 차원 급여화 필요",
+          "published_at": "2026-10-22T11:09:29+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014578"
+        },
+        {
+          "title": "‘약학회’ 창립 80주년, 혁신 넘어 ‘노벨상’ 향한 도약 다짐",
+          "published_at": "2026-10-23T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014622"
+        },
+        {
+          "title": "코스닥 제약바이오기업, 주식 시장 돌파구 찾을까",
+          "published_at": "2026-10-23T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014631"
+        },
+        {
+          "title": "[KIMES BUSAN 특별좌담회] 한·중·일 ‘혁신 의료기기 규제’ 3국 3색",
+          "published_at": "2026-10-23T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014542"
+        }
+      ]
+    },
+    {
+      "publisher": "메디파나뉴스",
+      "homepage_url": "https://www.medipana.com/",
+      "items": [
+        {
+          "title": "온코닉 '자큐보', 3Q 처방 287억원…연 1000억원 가시권",
+          "published_at": "2026-10-22T12:10:26+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419853"
+        },
+        {
+          "title": "보건복지부, 비만 신약 불법 판매 병·의원 현장 실태조사 착수",
+          "published_at": "2026-10-22T11:33:29+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419852"
+        },
+        {
+          "title": "약학회 \"해외선 발표하면서 국내 학회는 외면\"…산학협력 쓴소리",
+          "published_at": "2026-10-23T07:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419887"
+        },
+        {
+          "title": "식약처, 오·남용우려藥 '적색·전면표시' 추진…비만신약 결정적",
+          "published_at": "2026-10-22T11:55:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419790"
+        },
+        {
+          "title": "한독학술대상에 이범진 아주대 약학대학 교수 선정",
+          "published_at": "2026-10-22T09:32:15+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419829"
+        },
+        {
+          "title": "계약만 남은 한미약품 4자 연합…법적갈등-지분대결 고조",
+          "published_at": "2026-10-23T06:04:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419881"
+        },
+        {
+          "title": "보령, 3Q 누적 영업익 694억…지난해 연간 실적 넘어",
+          "published_at": "2026-10-22T12:41:03+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419860"
+        },
+        {
+          "title": "셀트리온, 美 카이진서 자가면역 신약 도입…최대 7695억",
+          "published_at": "2026-10-22T11:21:45+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419851"
+        }
+      ]
+    },
+    {
+      "publisher": "약사공론",
+      "homepage_url": "https://www.kpanews.co.kr/",
+      "items": [
+        {
+          "title": "비만치료제 원내 판매에 칼 빼든 복지부…공급량 많은 병·의원 집중조사",
+          "published_at": "2026-10-22T12:00:31+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546977"
+        },
+        {
+          "title": "원형탈모 시장에 세 번째 카드…JAK 억제제 경쟁 새 국면",
+          "published_at": "2026-10-23T05:53:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547019"
+        },
+        {
+          "title": "원외탕전실 관리 방안 국정감사 계기 '현실화?'",
+          "published_at": "2026-10-23T05:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547032"
+        },
+        {
+          "title": "제57회 한독학술대상, 이범진 아주약대 교수 선정",
+          "published_at": "2026-10-22T19:39:37+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547025"
+        },
+        {
+          "title": "\"약사의 시대가 온다\"…통합돌봄 시대 새 역할 주목",
+          "published_at": "2026-10-23T05:55:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546984"
+        },
+        {
+          "title": "'로수탄정10밀리그램' 3개 제조번호 회수…유연물질 기준 초과 우려",
+          "published_at": "2026-10-22T12:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546964"
+        },
+        {
+          "title": "약학의 미래를 위한 과제는?…연구 지원·협력에 주목",
+          "published_at": "2026-10-23T05:51:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547029"
+        },
+        {
+          "title": "보령, 3분기 누적 영업익 694억원…지난해 연간 실적 넘어서",
+          "published_at": "2026-10-22T14:39:45+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546993"
+        }
+      ]
+    }
+  ],
+  "insight": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름 동시에 디지털헬스 흐름도 함께 확인돼 단일 이슈보다 복합적인 산업 변화로 보는 것이 적절합니다.",
+  "infographic": {
+    "image_path": null,
+    "generated_at": null,
+    "template_version": "news-card-v1"
+  }
+}
