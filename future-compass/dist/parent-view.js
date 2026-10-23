@@ -3,6 +3,8 @@
    - 엄마는 기록을 고치지 않고 👍 응원만 보낼 수 있음(fc_cheer_v1) → 승준이 오늘 화면 맨 위에 보임 */
 (function () {
   'use strict';
+  if (typeof tabs !== 'undefined') tabs.family = '가족 공유·엄마 체크';
+  if (location.hash === '#family') tab = 'family';
   var CHEER = 'fc_cheer_v1', DN = ['일', '월', '화', '수', '목', '금', '토'];
   function ls(k, d) { try { var v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch (e) { return d; } }
   function isParent() { return typeof PinGate !== 'undefined' && PinGate.who() === 'parent'; }
@@ -312,6 +314,7 @@
   var prev = render;
   render = function () {
     prev();
+    if (tab === 'family' && isParent()) { document.getElementById('content').innerHTML = dashboard(); return; }
     if (tab !== 'today') return;
     var root = document.getElementById('content');
     if (isParent()) {

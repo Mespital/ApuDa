@@ -387,9 +387,16 @@
   }
 
   /* ---------- 연결 ---------- */
+  window.FC_STUDY_WEEK = {
+    select(d) {
+      if (!valid(d)) return;
+      const monday = x => addDays(x, -((wdOf(x) + 6) % 7));
+      weekOffset = Math.round((Date.parse(monday(d) + 'T12:00:00Z') - Date.parse(monday(today()) + 'T12:00:00Z')) / (7 * 864e5));
+    }
+  };
   const prevRender = render;
   render = function () {
-    if (tab === 'week') { prevRender(); root.innerHTML = weekView(); return; }
+    if (tab === 'week') { prevRender(); root.innerHTML = weekView() + (typeof PinGate !== 'undefined' && PinGate.who() === 'parent' ? '' : prepCard()); return; }
     if (tab === 'settings') { tab = 'table'; prevRender(); tab = 'settings'; settingsView(); return; }
     prevRender();
     if (tab === 'today') arrangeToday();

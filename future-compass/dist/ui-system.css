@@ -10,7 +10,7 @@
   --accent:#5b3fd6;--ok:#1f8a55;--warn:#b86200;--exam:#c43a52;
   --accent-ink:var(--accent);--ok-ink:#1f7a55;--warn-ink:#965000;--exam-ink:var(--exam);
   --u-surface:#fff;--u-soft:#f8f7fc;--u-canvas:#f3f1fa;--u-line:#e6e2f5;
-  --u-solid:#1f1b45;--u-on-solid:#fff;--u-current:#f0a92b;--u-on-current:#1f1b45;
+  --u-solid:#1f1b45;--u-on-solid:#fff;--u-on-accent:#fff;--u-current:#f0a92b;--u-on-current:#1f1b45;
   --sh-1:0 1px 3px rgba(31,27,69,.08);--sh-2:0 8px 24px rgba(31,27,69,.16);
   /* Compatibility names used by the existing standalone screens. */
   --u-ink:var(--ink);--u-sub:var(--ink-2);--u-accent:var(--accent);

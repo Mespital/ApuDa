@@ -23,7 +23,7 @@
   function avatar(w) { return typeof FC_CHAR !== 'undefined' ? FC_CHAR.avatar(w, 40) : ''; }
 
   /* ---------- 큰 제목 ---------- */
-  var TITLE = { dash: ['한눈에', '승준이 한눈에'], today: ['오늘', '승준이 오늘'], week: ['이번 주', '이번 주 일정'], table: ['시간표', '시간표'], dates: ['시험·과제', '시험·과제'], review: ['복습', '복습'], stats: ['나의 기록', '흐름'], focus: ['집중', '집중'], path: ['진로', '승준 진로'] };
+  var TITLE = { family: ['가족 공유', '가족 공유·엄마 체크'], dash: ['한눈에', '승준이 한눈에'], today: ['오늘', '승준이 오늘'], week: ['이번 주', '이번 주 일정'], table: ['시간표', '시간표'], dates: ['시험·과제', '시험·과제'], review: ['복습', '복습'], stats: ['나의 기록', '흐름'], focus: ['집중', '집중'], path: ['진로', '승준 진로'] };
   function sub(tb) {
     var t = today();
     if (tb === 'week') { var mon = addD(selDate, -((wd(selDate) + 6) % 7)); return md(mon) + ' ~ ' + md(addD(mon, 6)); }
@@ -211,22 +211,34 @@
   });
 
   /* ---------- 주간: 날짜 줄 + 일정 ---------- */
-  var selDate = today();
-  function dayItems(d) {
+  var selDate = today(), planDate = '';
+  window.FC_WEEK = {
+    items: dayItems,
+    open: function (d) {
+      if (!valid(d)) return false;
+      selDate = d; slideDir = ''; tab = 'week';
+      if (window.FC_STUDY_WEEK) FC_STUDY_WEEK.select(d);
+      if (location.hash !== '#week') location.hash = 'week'; else render();
+      window.scrollTo(0, 0);
+      return true;
+    }
+  };
+  function dayItems(d, permissions) {
+    var sh = window.FC_PLANNER ? FC_PLANNER.get().share || {} : {}, exams = permissions ? permissions.exams !== false : !isParent() || sh.exams !== false, flow = permissions ? permissions.flow !== false : !isParent() || sh.flow !== false;
     var out = [], o = window.FC_CAL ? FC_CAL.offDay(d) : null, cfg = (window.FC_SCHOOL && FC_SCHOOL.config) || {}, per = cfg.periods || [];
     var row = (state.table[(wd(d) + 6) % 7] || []).slice(); while (row.length && !row[row.length - 1]) row.pop();
-    var exS = (window.FC_PLANNER && FC_PLANNER.examDays ? FC_PLANNER.examDays()[d] : null) || [];
+    var exS = (exams && window.FC_PLANNER && FC_PLANNER.examDays ? FC_PLANNER.examDays()[d] : null) || [];
     if (!o && row.length && wd(d) >= 1 && wd(d) <= 5) {
       var last = toMin(per[row.length - 1]), end = last != null ? hm(last + (cfg.classMinutes || 50)) : '';
       out.push({ t: per[0] || '', k: 'cls', title: (exS.length ? '📝 시험 ' + exS.join('·') : row.filter(Boolean)[0] + ' 외 ' + (row.filter(Boolean).length - 1) + '교시'), sub: (end ? '~' + end : '') + ' · 수업 ' + row.length + '교시' });
     } else if (o && !o.weekend) out.push({ t: '종일', k: 'off', title: '🌿 ' + o.name, sub: '수업 없음' });
-    var sev = (window.FC_CAL && FC_CAL.schoolEvents ? FC_CAL.schoolEvents(d) : []), plainEv = sev.filter(function (ev) { return !/고사|시험|평가/.test(ev); });
+    var sev = (window.FC_CAL && FC_CAL.schoolEvents ? FC_CAL.schoolEvents(d) : []).filter(function (ev) { return exams || !/고사|시험|평가/.test(ev); }), plainEv = sev.filter(function (ev) { return !/고사|시험|평가/.test(ev); });
     sev.filter(function (ev) { return /고사|시험|평가/.test(ev); }).forEach(function (ev) { out.push({ t: '종일', k: 'ex', title: '🏫 ' + ev, sub: '학교 일정' }); });
     if (plainEv.length) out.push({ t: '종일', k: 'ev', title: '🏫 ' + plainEv.join(' · '), sub: '학교 일정' + (plainEv.length > 1 ? ' ' + plainEv.length + '개' : '') });   // 학교 행사는 한 칸으로 묶어 한 화면에
-    state.dates.filter(function (x) { return !x.done && x.date === d; }).forEach(function (x) { out.push({ t: '종일', k: 'ex', title: '📝 ' + x.title + (x.kind === '시험' ? '' : ' 마감'), sub: [x.subject, x.kind, gap(d) >= 0 ? (gap(d) === 0 ? '오늘' : 'D-' + gap(d)) : ''].filter(Boolean).join(' · ') }); });
-    (typeof FC_ACADEMY !== 'undefined' ? FC_ACADEMY.forDay(d) : []).forEach(function (a) { if (a.cancelled) return; out.push({ t: a.start || '', k: 'ac', title: a.name + (a.subject ? ' · ' + a.subject : ''), sub: [a.end ? '~' + a.end : '', a.from === d ? '첫 수업' : '', a.homework && !a.hwDone ? '숙제 ' + a.homework : '', a.note || ''].filter(Boolean).join(' · '), id: a.id }); });
+    (exams ? state.dates : []).filter(function (x) { return !x.done && x.date === d; }).forEach(function (x) { out.push({ t: '종일', k: 'ex', title: '📝 ' + x.title + (x.kind === '시험' ? '' : ' 마감'), sub: [x.subject, x.kind, gap(d) >= 0 ? (gap(d) === 0 ? '오늘' : 'D-' + gap(d)) : ''].filter(Boolean).join(' · ') }); });
+    (typeof FC_ACADEMY !== 'undefined' ? FC_ACADEMY.forDay(d) : []).forEach(function (a) { if (a.cancelled) return; out.push({ t: a.start || '', k: 'ac', title: a.name + (a.subject ? ' · ' + a.subject : ''), sub: [a.end ? '~' + a.end : '', a.from === d ? '첫 수업' : '', exams && a.homework && !a.hwDone ? '숙제 ' + a.homework : '', a.note || ''].filter(Boolean).join(' · '), id: a.id }); });
     (typeof FC_LIFE !== 'undefined' ? FC_LIFE.forDay(d) : []).forEach(function (x) { if (!x.start) return; out.push({ t: x.start, k: 'lf', title: (x.icon || '📌') + ' ' + x.title, sub: (x.end ? '~' + x.end + ' · ' : '') + '일상' }); });
-    var tk = state.tasks.filter(function (x) { return !x.done && x.date === d; }).length;
+    var tk = flow ? state.tasks.filter(function (x) { return !x.done && x.date === d; }).length : 0;
     if (tk) out.push({ t: '', k: 'tk', title: '✅ 할 일 ' + tk + '개', sub: '' });
     var order = function (x) { return x.t === '종일' ? -1 : toMin(x.t) == null ? 9999 : toMin(x.t); };
     return out.sort(function (a, b) { return order(a) - order(b); });
@@ -352,6 +364,7 @@
   /* ---------- 연결 ---------- */
   var prev = render;
   render = function () {
+    if (tab === 'week' && window.FC_STUDY_WEEK && planDate !== selDate) { FC_STUDY_WEEK.select(selDate); planDate = selDate; }
     prev();
     document.body.classList.toggle('is-parent', isParent());
     var root = document.getElementById('content'); if (!root || !TITLE[tab]) { if (mini) mini.classList.remove('on'); return; }
