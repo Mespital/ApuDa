@@ -1,8 +1,32 @@
 {
-  "checked_at": "2026-10-23T16:46:22.291941+00:00",
-  "last_success_at": "2026-10-23T16:46:22.291941+00:00",
+  "checked_at": "2026-10-23T21:12:20.901443+00:00",
+  "last_success_at": "2026-10-23T21:12:20.901443+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "Rapidly scaling online storage to serve over 1 billion ChatGPT users (Part II)",
+      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-two",
+      "source": "OpenAI",
+      "published_at": "2026-10-23T17:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "See what 5 builders are making with Gemini 4 Argon",
+      "url": "https://blog.google/products-and-platforms/products/gemini/gemini-4-argon-builders/",
+      "source": "Google",
+      "published_at": "2026-10-23T16:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Securing our frontier model training environment",
+      "url": "https://openai.com/index/securing-our-frontier-model-training-environment",
+      "source": "OpenAI",
+      "published_at": "2026-10-23T10:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "OpenAI and Poland’s NASK partner to advance AI safety and security",
       "url": "https://openai.com/index/openai-nask-ai-safety-security-partnership",
@@ -218,36 +242,12 @@
       "published_at": "2026-10-16T00:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Benefit Street Partners answers questions faster with Codex",
-      "url": "https://openai.com/index/benefit-street-partners",
-      "source": "OpenAI",
-      "published_at": "2026-10-16T00:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Bringing GPT-Rosalind to academic research labs",
-      "url": "https://openai.com/index/introducing-the-rosalind-academic-plan",
-      "source": "OpenAI",
-      "published_at": "2026-10-15T19:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Bringing the magic: Google breaks open a bottleneck in quantum computing",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/quantum-computing/magic-state-cultivation-quantum-computing/",
-      "source": "Google",
-      "published_at": "2026-10-15T18:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-23T16:46:22.291941+00:00",
+    "checked_at": "2026-10-23T21:12:20.901443+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -412,7 +412,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-23T16:46:22.291941+00:00",
+    "last_success_at": "2026-10-23T21:12:20.901443+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
