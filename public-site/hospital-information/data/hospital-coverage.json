@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-10-23T01:20:23+00:00",
+  "checked_at": "2026-10-24T01:25:23+00:00",
   "registered_hospitals": 30,
   "hospitals_with_matched_doctors": 8,
   "matched_doctors": 486,
@@ -241,8 +241,8 @@
       "official_staff_url": null,
       "matched_doctors": 0,
       "source_status": "REVIEW_REQUIRED",
-      "directory_http": null,
-      "diagnostic": "SSLError",
+      "directory_http": 200,
+      "diagnostic": "no-public-static-doctor-links-found",
       "candidate_links": []
     },
     {
