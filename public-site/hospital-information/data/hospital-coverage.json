@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-10-24T01:25:23+00:00",
+  "checked_at": "2026-10-25T00:55:01+00:00",
   "registered_hospitals": 30,
   "hospitals_with_matched_doctors": 8,
   "matched_doctors": 486,
@@ -132,9 +132,9 @@
       "official_url": "https://www.ncc.re.kr",
       "official_staff_url": "https://www.ncc.re.kr/ncc_about03_param.ncc?searchKey=&searchValue=&dept=",
       "matched_doctors": 0,
-      "source_status": "ROBOTS_RESTRICTED",
+      "source_status": "REVIEW_REQUIRED",
       "directory_http": null,
-      "diagnostic": "robots-disallows-directory-url",
+      "diagnostic": "ConnectTimeout",
       "candidate_links": []
     },
     {
