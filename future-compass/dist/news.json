@@ -1,8 +1,64 @@
 {
-  "checked_at": "2026-10-26T12:33:47.538673+00:00",
-  "last_success_at": "2026-10-26T12:33:47.538673+00:00",
+  "checked_at": "2026-10-26T19:48:15.862571+00:00",
+  "last_success_at": "2026-10-26T19:48:15.862571+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "Our newest AI Quest: Mapping the human brain",
+      "url": "https://blog.google/products-and-platforms/products/education/ai-quests-polar-peaks/",
+      "source": "Google",
+      "published_at": "2026-10-26T16:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "15 college students share their favorite Gemini features",
+      "url": "https://blog.google/products-and-platforms/products/gemini/college-student-favorite-features/",
+      "source": "Google",
+      "published_at": "2026-10-26T16:00:00+00:00",
+      "category": "교육·생활",
+      "domain": "education"
+    },
+    {
+      "title": "How Google Beam connects military families globally",
+      "url": "https://blog.google/innovation-and-ai/technology/research/google-beam-uso-docuseries-service-members/",
+      "source": "Google",
+      "published_at": "2026-10-26T13:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "ChatGPT’s expanding world of work",
+      "url": "https://openai.com/index/chatgpt-expanding-world-of-work",
+      "source": "OpenAI",
+      "published_at": "2026-10-26T10:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "How Fanatics and OpenAI streamline the fan experience",
+      "url": "https://openai.com/index/fanatics-streamline-fan-experience",
+      "source": "OpenAI",
+      "published_at": "2026-10-26T07:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "How Ultrafast cut incident investigation from hours to minutes at OpenAI",
+      "url": "https://openai.com/index/openai-cut-incident-investigation",
+      "source": "OpenAI",
+      "published_at": "2026-10-26T07:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Introducing GPT-6.1 Terra",
+      "url": "https://openai.com/index/introducing-gpt-6-1-terra",
+      "source": "OpenAI",
+      "published_at": "2026-10-26T00:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "Rapidly scaling online storage to serve over 1 billion ChatGPT users (Part II)",
       "url": "https://openai.com/index/scaling-storage-one-billion-users-part-two",
@@ -186,68 +242,12 @@
       "published_at": "2026-10-20T00:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Partnering to strengthen the grid and support local communities in Arkansas",
-      "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/arkansas-partnerships/",
-      "source": "Google",
-      "published_at": "2026-10-19T20:15:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "How to shape your slides and videos with Gemini Notebook",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-notebook/co-create-slides-videos/",
-      "source": "Google",
-      "published_at": "2026-10-19T17:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "4 tips for styling outfits with Gemini",
-      "url": "https://blog.google/products-and-platforms/products/gemini/stylist-outfit-tips-gemini/",
-      "source": "Google",
-      "published_at": "2026-10-19T16:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Advancing coding in low‑resource programming languages",
-      "url": "https://openai.com/index/low-resource-programming-languages",
-      "source": "OpenAI",
-      "published_at": "2026-10-19T12:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "How Itaú is building generative AI for its entire customer base",
-      "url": "https://openai.com/index/itau-generative-ai",
-      "source": "OpenAI",
-      "published_at": "2026-10-16T19:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "We’re sharing 3 tips to study smarter with Gemini Notebook.",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-notebook/three-tips-study-gemini-notebook/",
-      "source": "Google",
-      "published_at": "2026-10-16T16:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Stack Overflow for Agents triples signups with ChatGPT plugin",
-      "url": "https://openai.com/index/stack-overflow-chatgpt-plugin",
-      "source": "OpenAI",
-      "published_at": "2026-10-16T00:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-26T12:33:47.538673+00:00",
+    "checked_at": "2026-10-26T19:48:15.862571+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -412,7 +412,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-26T12:33:47.538673+00:00",
+    "last_success_at": "2026-10-26T19:48:15.862571+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
