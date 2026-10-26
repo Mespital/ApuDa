@@ -1,7 +1,7 @@
 {
   "version": "1.1",
-  "generated_at": "2026-10-25T18:05:49.922746+09:00",
-  "as_of": "2026-10-25T09:00:00+09:00",
+  "generated_at": "2026-10-26T18:05:47.624779+09:00",
+  "as_of": "2026-10-26T09:00:00+09:00",
   "periods": {
     "today": {
       "label": "오늘",
@@ -9,138 +9,274 @@
       "items": [
         {
           "rank": 1,
-          "canonical_issue": "[제약공시 책갈피] 10월 4주차 - 저PBR제약사·셀트리온 外 - 메디파나뉴스",
-          "title": "[제약공시 책갈피] 10월 4주차 - 저PBR제약사·셀트리온 外",
+          "canonical_issue": "국내 제약업계, 규모의 경제로 살 길 찾는다 - 의학신문",
+          "title": "국내 제약업계, 규모의 경제로 살 길 찾는다",
           "category": [
-            "허가",
-            "라이선스",
-            "2상",
-            "투자"
+            "약가",
+            "m&a",
+            "인수",
+            "합병"
           ],
           "publishers": [
-            "메디파나뉴스"
+            "의학신문"
           ],
-          "published_at": "2026-10-25T06:00:00+09:00",
+          "published_at": "2026-10-26T06:00:00+09:00",
           "published_at_verified": true,
           "summary": [
-            "[메디파나뉴스 = 이정수 기자] 2026년 10월 4주차(10.19~10.23)에는 비씨월드제약, 신일제약, 팜젠사이언스, 제일파마홀딩스 등 다수 제약사가 한국거래소의 PBR 개선 요구에 따라 주식 시장 내 저평가를 해소하기 위해 수년 내 PBR 상향, ROE 제고, 주주환원 확대 등 중장기 목표와 계획",
-            "복사하기 [메디파나뉴스 = 이정수 기자] 2026년 10월 4주차(10.19~10.23)에는 비씨월드제약, 신일제약, 팜젠사이언스, 제일파마홀딩스 등 다수 제약사가 한국거래소의 PBR 개선 요구에 따라 주식 시장 내 저평가를 해소하기 위해 수년 내 PBR 상향, ROE 제고, 주주환원 확대 등 중장기 목표와 계획을 공개했",
-            "셀트리온이 미국 카이진으로부터 면역질환을 타깃으로 하는 장기 지속형 신약 후보물질 'KG013'을 최대 7700억원 규모로 도입하는 라이선스-인 계약을 체결했다."
+            "[의학신문·일간보사=김정일 기자] 정부의 약가인하가 지속되는 가운데 국내 제약바이오기업들이 인수합병(M&A), 품목 통합 등 규모의 경제로 통해 지속적인 성장 기",
+            "[의학신문·일간보사=김정일 기자] 정부의 약가인하가 지속되는 가운데 국내 제약바이오기업들이 인수합병(M&A), 품목 통합 등 규모의 경제로 통해 지속적인 성장 기반 마련을 모색하고 있어 주목된다.",
+            "반복되는 약가 인하 속에서 제약사들은 자체적인 경쟁력을 높이기 위해 인수합병, 품목 통합에 나서고, 정부는 업계의 이같은 움직임에 약가인하 제외, 세제 지원 등 정책적, 제도적 지원책을 마련해야 한다는 의견이다."
           ],
-          "importance": "기사에서 사업개발·투자 변화가 함께 확인돼 기업 포트폴리오와 경쟁구도 영향을 살펴볼 필요가 있습니다.",
+          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
           "source_urls": [
-            "https://www.medipana.com/news/articleView.html?idxno=420008"
+            "https://www.bosa.co.kr/news/articleView.html?idxno=3014740"
           ],
           "source_links": [
             {
-              "publisher": "메디파나뉴스",
-              "url": "https://www.medipana.com/news/articleView.html?idxno=420008"
+              "publisher": "의학신문",
+              "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014740"
             }
           ],
-          "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/420008_327622_344.png",
-          "score": 20,
+          "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3014740_415678_124.jpg",
+          "score": 88,
           "oncology": null
         },
         {
           "rank": 2,
-          "canonical_issue": "공보의 부족한데 시니어의사 채용도 예산이 발목 잡아 - 의학신문",
-          "title": "공보의 부족한데 시니어의사 채용도 예산이 발목 잡아",
+          "canonical_issue": "반복되는 약가인하…제약사도 이제 '합쳐야 산다' - 약사공론",
+          "title": "반복되는 약가인하…제약사도 이제 '합쳐야 산다'",
           "category": [
-            "복지부",
-            "ai"
+            "약가",
+            "투자"
           ],
           "publishers": [
-            "의학신문"
+            "약사공론"
           ],
-          "published_at": "2026-10-24T13:37:55+09:00",
+          "published_at": "2026-10-26T05:54:00+09:00",
           "published_at_verified": true,
           "summary": [
-            "[의학신문·일간보사=김현기 기자] 농어촌과 의료취약지의 공중보건의사 부족이 심화되는 가운데, 정부가 대안으로 추진하는 시니어의사 채용지원사업마저 예산 부족으로 현",
-            "[의학신문·일간보사=김현기 기자] 농어촌과 의료취약지의 공중보건의사 부족이 심화되는 가운데, 정부가 대안으로 추진하는 시니어의사 채용지원사업마저 예산 부족으로 현장 수요를 충족하지 못하고 있는 것으로 드러났다.",
-            "특히 공보의 감소에 직접적인 영향을 받는 보건소는 신청 인원의 4분의 1도 지원받지 못해 지역 공공의료 공백을 메우기 위한 실효성 있는 대책이 필요하다는 지적이다."
+            "국내 제약산업이 또 한 번의 구조적 변화를 맞고 있다.정부의 지속적인 약가인하와 원가 상승, 연구개발 투자 부담이 겹치면서 그동안 제네릭 중심의 다품목 구조를 유",
+            "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+            "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
           ],
-          "importance": "시장·정책·연구개발 흐름을 보여주는 주요 산업 이슈로 후속 정책과 사업 변화 확인이 필요합니다.",
+          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
           "source_urls": [
-            "https://www.bosa.co.kr/news/articleView.html?idxno=3014722"
+            "https://www.kpanews.co.kr/news/articleView.html?idxno=547178"
           ],
           "source_links": [
             {
-              "publisher": "의학신문",
-              "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014722"
+              "publisher": "약사공론",
+              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547178"
             }
           ],
-          "thumbnail_url": "https://www.bosa.co.kr/image/logo/snslogotrans_20251212052521.png",
-          "score": 9,
+          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/547178_451864_146.png",
+          "score": 76,
           "oncology": null
         },
         {
           "rank": 3,
-          "canonical_issue": "납 수치 조작 의혹에 항노화 홍보까지...킬레이션 주사제 논란 확산 - 의학신문",
-          "title": "납 수치 조작 의혹에 항노화 홍보까지...킬레이션 주사제 논란 확산",
+          "canonical_issue": "종근당 국내 판권 '테도피', 폐암 병용 2상서 생존 개선 신호 - 메디파나뉴스",
+          "title": "종근당 국내 판권 '테도피', 폐암 병용 2상서 생존 개선 신호",
           "category": [
-            "ai"
+            "임상 2상",
+            "2상"
           ],
           "publishers": [
-            "의학신문"
+            "메디파나뉴스"
           ],
-          "published_at": "2026-10-24T14:12:17+09:00",
+          "published_at": "2026-10-26T07:45:26+09:00",
           "published_at_verified": true,
           "summary": [
-            "[의학신문·일간보사=김현기 기자] 노동자의 혈중 납 농도를 인위적으로 낮추기 위한 킬레이션 주사제 투약 의혹이 불거진 가운데 의료계가 의약품의 부적절한 사용에 제",
-            "[의학신문·일간보사=김현기 기자] 노동자의 혈중 납 농도를 인위적으로 낮추기 위한 킬레이션 주사제 투약 의혹이 불거진 가운데 의료계가 의약품의 부적절한 사용에 제동을 걸고 나섰다.",
-            "피로회복과 항노화 등 의학적 근거가 부족한 효능을 내세운 홍보까지 문제로 지목되면서 약물 사용의 적정성과 환자 안전을 둘러싼 논란이 확산되는 분위기다."
+            "종근당이 국내 판권을 보유한 치료용 암백신 후보물질 '테도피'(Tedopi·OSE2101)가 전이성 비소세포폐암 병용 임상에서 생존 개선 가능성을 보였다. 항암화학요법 또는 면역항암제와 병용한 환자군에서 도세탁셀 단독군보다 수치상 높은 1년 생존율이 관찰됐다. 프랑스 바이오기업 OSE 이뮤노테라퓨틱스는 ",
+            "복사하기 종근당 충정로 본사 사옥 전경 사진을 AI 도움을 받아 생성한 이미지 종근당이 국내 판권을 보유한 치료용 암백신 후보물질 '테도피'(Tedopi·OSE2101)가 전이성 비소세포폐암 병용 임상에서 생존 개선 가능성을 보였다.",
+            "항암화학요법 또는 면역항암제와 병용한 환자군에서 도세탁셀 단독군보다"
           ],
-          "importance": "시장·정책·연구개발 흐름을 보여주는 주요 산업 이슈로 후속 정책과 사업 변화 확인이 필요합니다.",
+          "importance": "주요 임상 결과는 향후 허가·가이드라인·표준치료 변화 가능성을 평가하는 근거가 됩니다.",
           "source_urls": [
-            "https://www.bosa.co.kr/news/articleView.html?idxno=3014723"
+            "https://www.medipana.com/news/articleView.html?idxno=420029"
           ],
           "source_links": [
             {
-              "publisher": "의학신문",
-              "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014723"
+              "publisher": "메디파나뉴스",
+              "url": "https://www.medipana.com/news/articleView.html?idxno=420029"
             }
           ],
-          "thumbnail_url": "https://www.bosa.co.kr/image/logo/snslogotrans_20251212052521.png",
-          "score": 3,
+          "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/420029_327652_3910.png",
+          "score": 57,
+          "oncology": {
+            "is_oncology": true,
+            "cancer_types": [
+              "폐암"
+            ],
+            "drug_generic": [],
+            "drug_brand": [],
+            "targets": [],
+            "mechanism": [],
+            "biomarkers": [
+              "EGFR",
+              "ALK",
+              "ROS1"
+            ],
+            "trial_name": null,
+            "phase": "3",
+            "line_of_therapy": null,
+            "endpoints": {
+              "orr": null,
+              "pfs": null,
+              "os": null,
+              "hr": null,
+              "grade3plus_ae": null
+            },
+            "approval_status": "허가 관련",
+            "reimbursement_status": null,
+            "patient_summary": "치료제의 허가 범위나 사용 가능성과 관련된 소식입니다. 국내 실제 사용은 식약처 허가사항을 확인해야 합니다.",
+            "patient_relevance_score": 98,
+            "patient_relevance_labels": [
+              "허가",
+              "안전성",
+              "임상결과",
+              "바이오마커"
+            ],
+            "industry_summary": null
+          }
+        },
+        {
+          "rank": 4,
+          "canonical_issue": "'퍼제타' 8년째 비급여…'사회적 편익' 논의에 환자들 기대감 - 메디파나뉴스",
+          "title": "'퍼제타' 8년째 비급여…'사회적 편익' 논의에 환자들 기대감",
+          "category": [
+            "급여",
+            "허가"
+          ],
+          "publishers": [
+            "메디파나뉴스"
+          ],
+          "published_at": "2026-10-26T06:02:00+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "HER2 양성 조기 유방암 치료제 '퍼제타(퍼투주맙)'의 수술 후 보조요법이 국내 허가 이후 8년째 건강보험을 적용받지 못하고 있다. 재발 위험을 낮추고 완치를 목표로 하는 치료지만, 환자들은 여전히 약제비 전액을 부담해야 하는 상황이다. 이러한 가운데 국정감사에서 신약의 경제성 평가에 환자의 경제활동 ",
+            "복사하기 유방암 치료제의 건강보험 급여 평가에 환자의 사회 복귀와 가족의 돌봄 부담 감소 등 사회적 편익을 반영해야 한다는 논의가 제기되고 있다.",
+            "사진=AI 생성 이미지 HER2 양성 조기 유방암 치료제 '퍼제타(퍼투주맙)'의 수술 후 보조요법이 국내 허가 이후 8년째 건강보험을 적용받지 못하고 있다."
+          ],
+          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+          "source_urls": [
+            "https://www.medipana.com/news/articleView.html?idxno=419973"
+          ],
+          "source_links": [
+            {
+              "publisher": "메디파나뉴스",
+              "url": "https://www.medipana.com/news/articleView.html?idxno=419973"
+            }
+          ],
+          "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419973_327583_4618.jpg",
+          "score": 55,
+          "oncology": {
+            "is_oncology": true,
+            "cancer_types": [
+              "유방암"
+            ],
+            "drug_generic": [],
+            "drug_brand": [],
+            "targets": [],
+            "mechanism": [],
+            "biomarkers": [
+              "HER2"
+            ],
+            "trial_name": null,
+            "phase": null,
+            "line_of_therapy": null,
+            "endpoints": {
+              "orr": null,
+              "pfs": null,
+              "os": null,
+              "hr": null,
+              "grade3plus_ae": null
+            },
+            "approval_status": "허가 관련",
+            "reimbursement_status": "급여 관련",
+            "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
+            "patient_relevance_score": 98,
+            "patient_relevance_labels": [
+              "급여·접근성",
+              "허가",
+              "바이오마커",
+              "가이드라인"
+            ],
+            "industry_summary": null
+          }
+        },
+        {
+          "rank": 5,
+          "canonical_issue": "내달 신약 15품목 등재…협상 대상 9개 중 8개 '약가유연' 트랙 - 약사공론",
+          "title": "내달 신약 15품목 등재…협상 대상 9개 중 8개 '약가유연' 트랙",
+          "category": [
+            "급여",
+            "약가"
+          ],
+          "publishers": [
+            "약사공론"
+          ],
+          "published_at": "2026-10-26T05:51:00+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "신약 15개 품목이 내달 줄줄이 급여권에 본격 진입한다. 이 중 약가 또는 예상사용량 등 협상을 거쳐 등재된 신약은 9품목이고 이 중 약가유연제로 급여 등재에 도",
+            "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+            "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+          ],
+          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+          "source_urls": [
+            "https://www.kpanews.co.kr/news/articleView.html?idxno=547117"
+          ],
+          "source_links": [
+            {
+              "publisher": "약사공론",
+              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547117"
+            }
+          ],
+          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/547117_451825_3529.jpg",
+          "score": 53,
           "oncology": null
         }
       ],
       "trends": [
         {
+          "title": "정책·급여",
+          "count": 4,
+          "change": "4건의 주요 이슈에서 반복적으로 확인",
+          "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
+          "examples": [
+            "국내 제약업계, 규모의 경제로 살 길 찾는다",
+            "반복되는 약가인하…제약사도 이제 '합쳐야 산다'"
+          ]
+        },
+        {
           "title": "디지털헬스",
-          "count": 2,
-          "change": "2건의 주요 이슈에서 반복적으로 확인",
+          "count": 4,
+          "change": "4건의 주요 이슈에서 반복적으로 확인",
           "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
           "examples": [
-            "공보의 부족한데 시니어의사 채용도 예산이 발목 잡아",
-            "납 수치 조작 의혹에 항노화 홍보까지...킬레이션 주사제 논란 확산"
+            "반복되는 약가인하…제약사도 이제 '합쳐야 산다'",
+            "종근당 국내 판권 '테도피', 폐암 병용 2상서 생존 개선 신호"
           ]
         },
         {
           "title": "신약·임상",
-          "count": 1,
-          "change": "1건의 주요 이슈에서 반복적으로 확인",
+          "count": 3,
+          "change": "3건의 주요 이슈에서 반복적으로 확인",
           "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
           "examples": [
-            "[제약공시 책갈피] 10월 4주차 - 저PBR제약사·셀트리온 外"
+            "종근당 국내 판권 '테도피', 폐암 병용 2상서 생존 개선 신호",
+            "'퍼제타' 8년째 비급여…'사회적 편익' 논의에 환자들 기대감"
           ]
         },
         {
           "title": "투자·사업개발",
-          "count": 1,
-          "change": "1건의 주요 이슈에서 반복적으로 확인",
+          "count": 2,
+          "change": "2건의 주요 이슈에서 반복적으로 확인",
           "implication": "자본과 파이프라인 확보 경쟁이 사업전략의 핵심이 되는 흐름",
           "examples": [
-            "[제약공시 책갈피] 10월 4주차 - 저PBR제약사·셀트리온 外"
-          ]
-        },
-        {
-          "title": "정책·급여",
-          "count": 1,
-          "change": "1건의 주요 이슈에서 반복적으로 확인",
-          "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
-          "examples": [
-            "공보의 부족한데 시니어의사 채용도 예산이 발목 잡아"
+            "국내 제약업계, 규모의 경제로 살 길 찾는다",
+            "반복되는 약가인하…제약사도 이제 '합쳐야 산다'"
           ]
         }
       ]
@@ -149,6 +285,42 @@
       "label": "최근 7일",
       "description": "최근 7일 핵심 이슈",
       "items": [
+        {
+          "rank": 1,
+          "canonical_issue": "국내 제약업계, 규모의 경제로 살 길 찾는다 - 의학신문",
+          "title": "국내 제약업계, 규모의 경제로 살 길 찾는다",
+          "category": [
+            "약가",
+            "m&a",
+            "인수",
+            "합병"
+          ],
+          "publishers": [
+            "의학신문"
+          ],
+          "published_at": "2026-10-26T06:00:00+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "[의학신문·일간보사=김정일 기자] 정부의 약가인하가 지속되는 가운데 국내 제약바이오기업들이 인수합병(M&A), 품목 통합 등 규모의 경제로 통해 지속적인 성장 기",
+            "[의학신문·일간보사=김정일 기자] 정부의 약가인하가 지속되는 가운데 국내 제약바이오기업들이 인수합병(M&A), 품목 통합 등 규모의 경제로 통해 지속적인 성장 기반 마련을 모색하고 있어 주목된다.",
+            "반복되는 약가 인하 속에서 제약사들은 자체적인 경쟁력을 높이기 위해 인수합병, 품목 통합에 나서고, 정부는 업계의 이같은 움직임에 약가인하 제외, 세제 지원 등 정책적, 제도적 지원책을 마련해야 한다는 의견이다."
+          ],
+          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+          "source_urls": [
+            "https://www.bosa.co.kr/news/articleView.html?idxno=3014740"
+          ],
+          "source_links": [
+            {
+              "publisher": "의학신문",
+              "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014740"
+            }
+          ],
+          "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3014740_415678_124.jpg",
+          "score": 88,
+          "oncology": null,
+          "report_date": "2026-10-26",
+          "period_rank": 1
+        },
         {
           "rank": 1,
           "canonical_issue": "약국 환산지수 109.4원으로…내년 요양급여비용 개정고시 - 약사공론",
@@ -183,7 +355,7 @@
           "score": 91,
           "oncology": null,
           "report_date": "2026-10-20",
-          "period_rank": 1
+          "period_rank": 2
         },
         {
           "rank": 1,
@@ -218,7 +390,41 @@
           "score": 71,
           "oncology": null,
           "report_date": "2026-10-22",
-          "period_rank": 2
+          "period_rank": 3
+        },
+        {
+          "rank": 2,
+          "canonical_issue": "반복되는 약가인하…제약사도 이제 '합쳐야 산다' - 약사공론",
+          "title": "반복되는 약가인하…제약사도 이제 '합쳐야 산다'",
+          "category": [
+            "약가",
+            "투자"
+          ],
+          "publishers": [
+            "약사공론"
+          ],
+          "published_at": "2026-10-26T05:54:00+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "국내 제약산업이 또 한 번의 구조적 변화를 맞고 있다.정부의 지속적인 약가인하와 원가 상승, 연구개발 투자 부담이 겹치면서 그동안 제네릭 중심의 다품목 구조를 유",
+            "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+            "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+          ],
+          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+          "source_urls": [
+            "https://www.kpanews.co.kr/news/articleView.html?idxno=547178"
+          ],
+          "source_links": [
+            {
+              "publisher": "약사공론",
+              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547178"
+            }
+          ],
+          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/547178_451864_146.png",
+          "score": 76,
+          "oncology": null,
+          "report_date": "2026-10-26",
+          "period_rank": 4
         },
         {
           "rank": 1,
@@ -253,86 +459,18 @@
           "score": 56,
           "oncology": null,
           "report_date": "2026-10-24",
-          "period_rank": 3
-        },
-        {
-          "rank": 1,
-          "canonical_issue": "복지부, 신약 간 병용요법 급여 절차 개선 모색...전담인력 확충 검토 - 의학신문",
-          "title": "복지부, 신약 간 병용요법 급여 절차 개선 모색...전담인력 확충 검토",
-          "category": [
-            "급여",
-            "복지부"
-          ],
-          "publishers": [
-            "의학신문"
-          ],
-          "published_at": "2026-10-21T06:00:00+09:00",
-          "published_at_verified": true,
-          "summary": [
-            "[의학신문·일간보사=이재원 기자] 정부가 서로 다른 신약을 함께 사용하는 병용요법의 건강보험 급여 적용을 확대하기 위해 건강보험심사평가원의 급여평가와 국민건강보험",
-            "[의학신문·일간보사=이재원 기자] 정부가 서로 다른 신약을 함께 사용하는 병용요법의 건강보험 급여 적용을 확대하기 위해 건강보험심사평가원의 급여평가와 국민건강보험공단의 약가협상 절차 개선을 검토한다.",
-            "특히 신약 간 병용요법의 급여 수요가 증가할 것으로 예상되는 만큼, 해외 제도와 산업계 의견 등을 검토해 평가·협상 절차를 개선하고 관련 전문인력을 확충하는 방안도 모색할 계획이다."
-          ],
-          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
-          "source_urls": [
-            "https://www.bosa.co.kr/news/articleView.html?idxno=3014406"
-          ],
-          "source_links": [
-            {
-              "publisher": "의학신문",
-              "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014406"
-            }
-          ],
-          "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3014406_415325_1422.jpg",
-          "score": 55,
-          "oncology": null,
-          "report_date": "2026-10-21",
-          "period_rank": 4
-        },
-        {
-          "rank": 1,
-          "canonical_issue": "온코닉 '자큐보', 3Q 처방 287억원…연 1000억원 가시권 - 메디파나뉴스",
-          "title": "온코닉 '자큐보', 3Q 처방 287억원…연 1000억원 가시권",
-          "category": [
-            "3상",
-            "임상 3상"
-          ],
-          "publishers": [
-            "메디파나뉴스"
-          ],
-          "published_at": "2026-10-22T12:10:26+09:00",
-          "published_at_verified": true,
-          "summary": [
-            "온코닉테라퓨틱스의 위식도역류질환 신약 '자큐보'가 올해 3분기까지 누적 처방액 754억원을 기록하면서 연간 1000억원 달성이 가시화됐다는 분석이 나왔다. 진행 중인 4개 적응증 임상 3상도 향후 처방 대상 확대를 뒷받침할 전망이다. 22일 독립리서치 밸류파인더의 온코닉테라퓨틱스 보고서에 따르면, 자큐보",
-            "AI생성 온코닉테라퓨틱스의 위식도역류질환 신약 '자큐보'가 올해 3분기까지 누적 처방액 754억원을 기록하면서 연간 1000억원 달성이 가시화됐다는 분석이 나왔다.",
-            "진행 중인 4개 적응증 임상 3상도 향후 처방 대상 확대를 뒷받침할 전망이다."
-          ],
-          "importance": "주요 임상 결과는 향후 허가·가이드라인·표준치료 변화 가능성을 평가하는 근거가 됩니다.",
-          "source_urls": [
-            "https://www.medipana.com/news/articleView.html?idxno=419853"
-          ],
-          "source_links": [
-            {
-              "publisher": "메디파나뉴스",
-              "url": "https://www.medipana.com/news/articleView.html?idxno=419853"
-            }
-          ],
-          "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419853_327425_2814.png",
-          "score": 52,
-          "oncology": null,
-          "report_date": "2026-10-23",
           "period_rank": 5
         }
       ],
       "trends": [
         {
           "title": "정책·급여",
-          "count": 3,
-          "change": "3건의 주요 이슈에서 반복적으로 확인",
+          "count": 4,
+          "change": "4건의 주요 이슈에서 반복적으로 확인",
           "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
           "examples": [
-            "약국 환산지수 109.4원으로…내년 요양급여비용 개정고시",
-            "식약처, 국가필수의료기기 내년 하반기 첫 지정…수가 보전·공급망 대책 마련"
+            "국내 제약업계, 규모의 경제로 살 길 찾는다",
+            "약국 환산지수 109.4원으로…내년 요양급여비용 개정고시"
           ]
         },
         {
@@ -342,17 +480,17 @@
           "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
           "examples": [
             "약국 환산지수 109.4원으로…내년 요양급여비용 개정고시",
-            "알테오젠부터 릴리·로슈까지…글로벌 신약 거래 살펴보니"
+            "반복되는 약가인하…제약사도 이제 '합쳐야 산다'"
           ]
         },
         {
-          "title": "신약·임상",
+          "title": "투자·사업개발",
           "count": 3,
           "change": "3건의 주요 이슈에서 반복적으로 확인",
-          "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
+          "implication": "자본과 파이프라인 확보 경쟁이 사업전략의 핵심이 되는 흐름",
           "examples": [
-            "알테오젠부터 릴리·로슈까지…글로벌 신약 거래 살펴보니",
-            "복지부, 신약 간 병용요법 급여 절차 개선 모색...전담인력 확충 검토"
+            "국내 제약업계, 규모의 경제로 살 길 찾는다",
+            "반복되는 약가인하…제약사도 이제 '합쳐야 산다'"
           ]
         },
         {
@@ -370,6 +508,42 @@
       "label": "최근 30일",
       "description": "최근 30일 핵심 이슈",
       "items": [
+        {
+          "rank": 1,
+          "canonical_issue": "국내 제약업계, 규모의 경제로 살 길 찾는다 - 의학신문",
+          "title": "국내 제약업계, 규모의 경제로 살 길 찾는다",
+          "category": [
+            "약가",
+            "m&a",
+            "인수",
+            "합병"
+          ],
+          "publishers": [
+            "의학신문"
+          ],
+          "published_at": "2026-10-26T06:00:00+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "[의학신문·일간보사=김정일 기자] 정부의 약가인하가 지속되는 가운데 국내 제약바이오기업들이 인수합병(M&A), 품목 통합 등 규모의 경제로 통해 지속적인 성장 기",
+            "[의학신문·일간보사=김정일 기자] 정부의 약가인하가 지속되는 가운데 국내 제약바이오기업들이 인수합병(M&A), 품목 통합 등 규모의 경제로 통해 지속적인 성장 기반 마련을 모색하고 있어 주목된다.",
+            "반복되는 약가 인하 속에서 제약사들은 자체적인 경쟁력을 높이기 위해 인수합병, 품목 통합에 나서고, 정부는 업계의 이같은 움직임에 약가인하 제외, 세제 지원 등 정책적, 제도적 지원책을 마련해야 한다는 의견이다."
+          ],
+          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+          "source_urls": [
+            "https://www.bosa.co.kr/news/articleView.html?idxno=3014740"
+          ],
+          "source_links": [
+            {
+              "publisher": "의학신문",
+              "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014740"
+            }
+          ],
+          "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3014740_415678_124.jpg",
+          "score": 88,
+          "oncology": null,
+          "report_date": "2026-10-26",
+          "period_rank": 1
+        },
         {
           "rank": 1,
           "canonical_issue": "약국 환산지수 109.4원으로…내년 요양급여비용 개정고시 - 약사공론",
@@ -404,7 +578,7 @@
           "score": 91,
           "oncology": null,
           "report_date": "2026-10-20",
-          "period_rank": 1
+          "period_rank": 2
         },
         {
           "rank": 1,
@@ -442,7 +616,7 @@
           "score": 104,
           "oncology": null,
           "report_date": "2026-10-03",
-          "period_rank": 2
+          "period_rank": 3
         },
         {
           "rank": 1,
@@ -477,7 +651,7 @@
           "score": 71,
           "oncology": null,
           "report_date": "2026-10-22",
-          "period_rank": 3
+          "period_rank": 4
         },
         {
           "rank": 1,
@@ -512,109 +686,62 @@
           "score": 78,
           "oncology": null,
           "report_date": "2026-10-14",
-          "period_rank": 4
-        },
-        {
-          "rank": 1,
-          "canonical_issue": "신약 혁신부터 안전관리 공백까지…식약처 국정감사 '미리보기' - 약사공론",
-          "title": "신약 혁신부터 안전관리 공백까지…식약처 국정감사 '미리보기'",
-          "category": [
-            "정책",
-            "식약처",
-            "허가",
-            "공급"
-          ],
-          "publishers": [
-            "약사공론"
-          ],
-          "published_at": "2026-10-13T05:51:00+09:00",
-          "published_at_verified": true,
-          "summary": [
-            "식품의약품안전처의 허가·심사 혁신과 의약품 안전관리 정책이 국정감사 시험대에 오른다. 신약 허가기간 단축과 필수의약품 공급 안정화 등 주요 정책의 추진 상황을 점",
-            "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
-            "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
-          ],
-          "importance": "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다.",
-          "source_urls": [
-            "https://www.kpanews.co.kr/news/articleView.html?idxno=546147"
-          ],
-          "source_links": [
-            {
-              "publisher": "약사공론",
-              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546147"
-            }
-          ],
-          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/546147_451053_4324.jpg",
-          "score": 77,
-          "oncology": null,
-          "report_date": "2026-10-13",
           "period_rank": 5
         },
         {
-          "rank": 1,
-          "canonical_issue": "허가 기대와 개발 포기 사이…'폐섬유증' 신약 엇갈린 운명 - 약사공론",
-          "title": "허가 기대와 개발 포기 사이…'폐섬유증' 신약 엇갈린 운명",
+          "rank": 2,
+          "canonical_issue": "반복되는 약가인하…제약사도 이제 '합쳐야 산다' - 약사공론",
+          "title": "반복되는 약가인하…제약사도 이제 '합쳐야 산다'",
           "category": [
-            "허가",
-            "3상",
-            "임상 3상"
+            "약가",
+            "투자"
           ],
           "publishers": [
             "약사공론"
           ],
-          "published_at": "2026-10-16T05:52:00+09:00",
+          "published_at": "2026-10-26T05:54:00+09:00",
           "published_at_verified": true,
           "summary": [
-            "특발성 폐섬유증(IPF)을 겨냥한 글로벌 제약사들의 신약개발 성적표가 엇갈렸다.브리스톨마이어스스퀴브(BMS)는 새로운 작용기전의 치료제로 임상 3상에서 유효성을",
+            "국내 제약산업이 또 한 번의 구조적 변화를 맞고 있다.정부의 지속적인 약가인하와 원가 상승, 연구개발 투자 부담이 겹치면서 그동안 제네릭 중심의 다품목 구조를 유",
             "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
             "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
           ],
-          "importance": "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다.",
+          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
           "source_urls": [
-            "https://www.kpanews.co.kr/news/articleView.html?idxno=546474"
+            "https://www.kpanews.co.kr/news/articleView.html?idxno=547178"
           ],
           "source_links": [
             {
               "publisher": "약사공론",
-              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546474"
+              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547178"
             }
           ],
-          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/546474_451313_719.png",
-          "score": 71,
+          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/547178_451864_146.png",
+          "score": 76,
           "oncology": null,
-          "report_date": "2026-10-16",
+          "report_date": "2026-10-26",
           "period_rank": 6
         }
       ],
       "trends": [
         {
           "title": "정책·급여",
-          "count": 5,
-          "change": "5건의 주요 이슈에서 반복적으로 확인",
+          "count": 6,
+          "change": "6건의 주요 이슈에서 반복적으로 확인",
           "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
           "examples": [
-            "약국 환산지수 109.4원으로…내년 요양급여비용 개정고시",
-            "삼일제약이 5년 전 찜한 골관절염 신약…美·英 이어 유럽 허가 심사 - 메디파나뉴스"
+            "국내 제약업계, 규모의 경제로 살 길 찾는다",
+            "약국 환산지수 109.4원으로…내년 요양급여비용 개정고시"
           ]
         },
         {
           "title": "디지털헬스",
-          "count": 5,
-          "change": "5건의 주요 이슈에서 반복적으로 확인",
+          "count": 4,
+          "change": "4건의 주요 이슈에서 반복적으로 확인",
           "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
           "examples": [
             "약국 환산지수 109.4원으로…내년 요양급여비용 개정고시",
             "삼일제약이 5년 전 찜한 골관절염 신약…美·英 이어 유럽 허가 심사 - 메디파나뉴스"
-          ]
-        },
-        {
-          "title": "신약·임상",
-          "count": 3,
-          "change": "3건의 주요 이슈에서 반복적으로 확인",
-          "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
-          "examples": [
-            "삼일제약이 5년 전 찜한 골관절염 신약…美·英 이어 유럽 허가 심사 - 메디파나뉴스",
-            "신약 혁신부터 안전관리 공백까지…식약처 국정감사 '미리보기'"
           ]
         },
         {
@@ -628,13 +755,22 @@
           ]
         },
         {
-          "title": "공급·유통",
+          "title": "투자·사업개발",
           "count": 2,
           "change": "2건의 주요 이슈에서 반복적으로 확인",
-          "implication": "의약품 공급 안정성과 유통 대응이 현장 리스크로 부각되는 흐름",
+          "implication": "자본과 파이프라인 확보 경쟁이 사업전략의 핵심이 되는 흐름",
           "examples": [
-            "식약처, 국가필수의료기기 내년 하반기 첫 지정…수가 보전·공급망 대책 마련",
-            "신약 혁신부터 안전관리 공백까지…식약처 국정감사 '미리보기'"
+            "국내 제약업계, 규모의 경제로 살 길 찾는다",
+            "반복되는 약가인하…제약사도 이제 '합쳐야 산다'"
+          ]
+        },
+        {
+          "title": "신약·임상",
+          "count": 1,
+          "change": "1건의 주요 이슈에서 반복적으로 확인",
+          "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
+          "examples": [
+            "삼일제약이 5년 전 찜한 골관절염 신약…美·英 이어 유럽 허가 심사 - 메디파나뉴스"
           ]
         }
       ]
