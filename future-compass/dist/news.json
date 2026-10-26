@@ -1,8 +1,16 @@
 {
-  "checked_at": "2026-10-26T19:48:15.862571+00:00",
-  "last_success_at": "2026-10-26T19:48:15.862571+00:00",
+  "checked_at": "2026-10-26T23:39:31.554078+00:00",
+  "last_success_at": "2026-10-26T23:39:31.554078+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "Greptile takes bug detection beyond code review with GPT-6 Astra",
+      "url": "https://openai.com/index/greptile-code-review-codex-astra",
+      "source": "OpenAI",
+      "published_at": "2026-10-26T22:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "Our newest AI Quest: Mapping the human brain",
       "url": "https://blog.google/products-and-platforms/products/education/ai-quests-polar-peaks/",
@@ -18,6 +26,22 @@
       "published_at": "2026-10-26T16:00:00+00:00",
       "category": "교육·생활",
       "domain": "education"
+    },
+    {
+      "title": "Working with academic communities to build scientific understanding",
+      "url": "https://openai.com/index/building-scientific-understanding-with-academic-communities",
+      "source": "OpenAI",
+      "published_at": "2026-10-26T14:30:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "GPT-6.1 Sol helps CodeRabbit strengthen security across complex codebases",
+      "url": "https://openai.com/index/gpt-6-1-sol-coderabbit-code-security",
+      "source": "OpenAI",
+      "published_at": "2026-10-26T13:45:00+00:00",
+      "category": "안전·보안",
+      "domain": "security"
     },
     {
       "title": "How Google Beam connects military families globally",
@@ -218,36 +242,12 @@
       "published_at": "2026-10-20T16:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Franchisee reconciles cash in 94% less time with ChatGPT Work",
-      "url": "https://openai.com/index/ted-taylor-restaurant",
-      "source": "OpenAI",
-      "published_at": "2026-10-20T10:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Terminal X matches senior investor judgment 88.6% with GPT-6.1",
-      "url": "https://openai.com/index/terminal-x",
-      "source": "OpenAI",
-      "published_at": "2026-10-20T07:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "OpenAI acquires Orchestra Bio",
-      "url": "https://openai.com/index/openai-to-acquire-orchestra-bio",
-      "source": "OpenAI",
-      "published_at": "2026-10-20T00:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-26T19:48:15.862571+00:00",
+    "checked_at": "2026-10-26T23:39:31.554078+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -412,7 +412,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-26T19:48:15.862571+00:00",
+    "last_success_at": "2026-10-26T23:39:31.554078+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
