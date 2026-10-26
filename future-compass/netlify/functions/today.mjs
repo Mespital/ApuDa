@@ -11,6 +11,7 @@ export function validSnapshot(b) {
   const d = b.data;
   if (!d || typeof d !== 'object' || d.v !== 1 || !/^\d{4}-\d{2}-\d{2}$/.test(d.date || '')) return null;
   for (const k of ['periods', 'academies', 'events', 'deadlines', 'academyHw', 'review', 'redo', 'tasks']) if (!Array.isArray(d[k]) || d[k].length > 40) return null;
+  if (d.life != null && (!Array.isArray(d.life) || d.life.length > 40)) return null;
   if (!d.prep || !Array.isArray(d.prep.items) || d.prep.items.length > 20) return null;
   return d;
 }

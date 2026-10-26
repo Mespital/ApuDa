@@ -26,8 +26,9 @@ main{max-width:720px;margin:0 auto;padding:14px 16px 60px}.top{display:flex;alig
   }
   function go(){ TodayView.loadSchool().then(function(){ draw(); TodayView.sync(); }); }
   if (window.FC_CAL) FC_CAL.onUpdate(function(){ draw(); });
+  window.addEventListener('fc-schedule-updated', go);
   if (document.documentElement.classList.contains('pin-locked')) window.addEventListener('pin-unlocked', go); else go();
   setInterval(function(){ draw(); TodayView.sync(); }, 600000);
 })();
 </script>
-<script src="tablet.js"></script></body></html>
+<script src="tablet.js"></script><script src="schedule-update.js"></script></body></html>

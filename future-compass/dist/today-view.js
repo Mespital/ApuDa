@@ -29,7 +29,7 @@
     var planner = ls('fc_planner_v1', {}) || {}, share = planner.share || {}, shared = !!(opts.parent || opts.shared);
     var showFlow = !shared || share.flow !== false, showExams = !shared || share.exams !== false;
     var resolver = g.FC_ACADEMY_OCCURRENCES, academyList = ls('fc_academy_v1', []), occurrenceList = resolver ? ls(resolver.KEY, []) : [];
-    function academyFor(d) { return resolver ? resolver.forDay(academyList, occurrenceList, d) : (g.FC_ACADEMY ? g.FC_ACADEMY.forDay(d) : (Array.isArray(academyList) ? academyList : []).filter(function (a) { return a && Array.isArray(a.days) && a.days.indexOf(wd(d)) >= 0 && (!a.from || d >= a.from); }).sort(function (a, b) { return String(a.start || '99').localeCompare(String(b.start || '99')); })); }
+    function academyFor(d) { return resolver ? resolver.forDay(academyList, occurrenceList, d) : (g.FC_ACADEMY ? g.FC_ACADEMY.forDay(d) : (Array.isArray(academyList) ? academyList : []).filter(function (a) { return a && Array.isArray(a.days) && a.days.indexOf(wd(d)) >= 0 && (!a.from || d >= a.from) && (!a.effectiveFrom || d >= a.effectiveFrom) && (!a.until || d <= a.until); }).sort(function (a, b) { return String(a.start || '99').localeCompare(String(b.start || '99')); })); }
     function validDue(d) { return resolver ? resolver.validDate(d) : typeof d === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(d) && Number.isFinite(Date.parse(d)) && new Date(d).toISOString().slice(0, 10) === d; }
     var table = Array.isArray(core.table) ? core.table : [], courses = plus.courses || {}, cfg = g.FC_SCHOOL ? g.FC_SCHOOL.config : {};
     var times = cfg.periods || [], len = cfg.classMinutes || 50, off = offDay(date), w = wd(date);
@@ -37,6 +37,10 @@
     while (row.length && !row[row.length - 1]) row.pop();
     var periods = row.map(function (s, i) { return { n: i + 1, time: times[i] || '', subject: s || '', teacher: teachers[s] || '' }; });
     var acs = academyFor(date).map(function (a) { return { name: a.name, subject: a.subject || '', start: a.start || '', end: a.end || '', progress: showFlow ? a.progress || '' : '', homework: showFlow ? a.homework || '' : '', hwDone: showFlow && !!a.hwDone }; });
+    var lifeData = ls('fc_life_v1', {}) || {};
+    var life = (Array.isArray(lifeData.items) ? lifeData.items : []).filter(function (x) { return x && (!x.from || date >= x.from) && (!x.until || date <= x.until) && (x.date ? x.date === date : Array.isArray(x.days) && x.days.indexOf(w) >= 0); }).slice(0, 40).map(function (x) {
+      return { title: String(x.title || '').slice(0, 60), icon: String(x.icon || '📌').slice(0, 8), start: x.start || '', end: x.end || '' };
+    }).sort(function (a, b) { return (a.start || '99').localeCompare(b.start || '99'); });
     var meal = null, events = [], examToday = '';
     if (schoolData) {
       var ms = (schoolData.meals || []).filter(function (m) { return m.date === date; });
@@ -72,7 +76,7 @@
       .map(function (a) { return { name: a.name, homework: a.homework }; }) : [];
     var endTime = periods.length && periods[periods.length - 1].time ? addMin(periods[periods.length - 1].time, len) : '';
     return { v: 1, date: date, generated: new Date().toISOString(), off: off ? { name: off.name, weekend: !!off.weekend } : null, periods: periods, endTime: endTime, lunch: cfg.lunch || '',
-      meal: meal, examToday: examToday, academies: acs, events: events, deadlines: deadlines, academyHw: tomorrowAc, review: learned, redo: redo,
+      meal: meal, examToday: examToday, academies: acs, life: life, events: events, deadlines: deadlines, academyHw: tomorrowAc, review: learned, redo: redo,
       prep: { date: nd, label: label(nd), exam: exams[0] || '', items: prep }, tasks: tasks, school: cfg.shortName || '', sharing: { flow: showFlow, exams: showExams } };
   }
 
@@ -99,7 +103,8 @@
     h += '</section>';
     // 학원
     if (d.academies.length) h += '<section class="tv-block"><h2><span class="tv-time">' + esc(d.academies[0].start) + '</span>🏃 학원</h2><ul class="tv-list">' + d.academies.map(function (a) {
-      return '<li><b>' + esc((a.start ? a.start + (a.end ? '~' + a.end : '') + ' ' : '') + a.name) + '</b>' + (a.subject ? ' <small>' + esc(a.subject) + '</small>' : '') + (a.progress ? '<br><span class="tv-muted">진도 ' + esc(a.progress) + '</span>' : '') + '</li>'; }).join('') + '</ul></section>';
+      return '<li><b>' + esc((a.start ? a.start + (a.end ? '~' + a.end : ' (종료 시간 미정)') + ' ' : '') + a.name) + '</b>' + (a.subject ? ' <small>' + esc(a.subject) + '</small>' : '') + (a.progress ? '<br><span class="tv-muted">진도 ' + esc(a.progress) + '</span>' : '') + '</li>'; }).join('') + '</ul></section>';
+    if (Array.isArray(d.life) && d.life.length) h += '<section class="tv-block"><h2>🗓 일상 일정</h2><ul class="tv-list">' + d.life.map(function (x) { return '<li><b>' + esc((x.start ? x.start + (x.end ? '~' + x.end : ' (종료 시간 미정)') + ' ' : '') + x.icon + ' ' + x.title) + '</b></li>'; }).join('') + '</ul></section>';
     // 저녁 공부
     var ev = '';
     if (d.academyHw.length) ev += grp('📝 학원 숙제', d.academyHw.map(function (a) { return li(a.name + ' · ' + a.homework, false, ro); }));
