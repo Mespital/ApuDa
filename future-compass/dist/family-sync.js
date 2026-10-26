@@ -143,12 +143,12 @@
     if (!liveOk()) return;
     try { fetch(LIVE.url + '/rt/notify', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ t: LIVE.t, d: device(), keys: keys }), keepalive: true }).catch(function () {}); } catch (e) {}
   }
-  var started = false;
+  var started = false, initialReady = Promise.resolve();
   function start(first) {
     if (started || !fam()) return; started = true;
     var lastPull = 0; try { lastPull = Number(sessionStorage.getItem('fc-family-pulled') || 0); } catch (e) {}
     var p = first || Date.now() - lastPull > 20000 ? pull(first) : Promise.resolve(0);
-    p.then(function (n) { return push().then(function () { if (n) reloadSoon(); }); });
+    initialReady = p.then(function (n) { return push().then(function () { if (n) reloadSoon(); }); });
     setInterval(push, 8000);
     openLive();
     setInterval(function () { if (document.visibilityState === 'visible' && !(es && es.readyState === 1)) pull(false).then(function (n) { if (n) reloadSoon(); }); }, 20000);
@@ -187,7 +187,7 @@
     });
   }
   function call(body) { var f = fam(); if (!f) return Promise.resolve({ _ok: false, error: 'not_joined' }); body.token = f.token; return api(body); }
-  g.FamilySync = { call: call, revoke: revoke, join: join, init: init, setRole: setRole, status: status, start: start, joined: function () { return !!fam(); }, role: function () { var f = fam(); return f ? f.role : ''; }, pushNow: push, pullNow: function () { return pull(false); }, KEYS: KEYS, live: function () { return liveOk() ? { url: LIVE.url, t: LIVE.t, ai: !!LIVE.ai, prov: LIVE.prov || '' } : (LIVE ? { ai: !!LIVE.ai, prov: LIVE.nprov || '' } : null); }, liveState: function () { return es ? es.readyState : -1; } };
+  g.FamilySync = { ready: function () { return initialReady; }, call: call, revoke: revoke, join: join, init: init, setRole: setRole, status: status, start: start, joined: function () { return !!fam(); }, role: function () { var f = fam(); return f ? f.role : ''; }, pushNow: push, pullNow: function () { return pull(false); }, KEYS: KEYS, live: function () { return liveOk() ? { url: LIVE.url, t: LIVE.t, ai: !!LIVE.ai, prov: LIVE.prov || '' } : (LIVE ? { ai: !!LIVE.ai, prov: LIVE.nprov || '' } : null); }, liveState: function () { return es ? es.readyState : -1; } };
   if (!document.documentElement.classList.contains('pin-locked')) start(false);
   window.addEventListener('pin-unlocked', function () { start(false); });
 })(window);

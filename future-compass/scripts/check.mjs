@@ -55,6 +55,7 @@ await import('./check-academy-occurrences.mjs');
 await import('./check-parent-readonly.mjs');
 await import('./check-lesson-photos.mjs');
 await import('./check-today-focus.mjs');
+await import('./check-schedule-update.mjs');
 // 모든 dist 스크립트 문법 + 서비스워커 캐시 목록이 실제 파일인지 (2026-10-19: sw.js 따옴표 누락으로 SW 설치 실패했던 것 재발 방지)
 for(const f of fs.readdirSync(path.join(root,'dist')).filter(f=>f.endsWith('.js')))new vm.Script(fs.readFileSync(path.join(root,'dist',f),'utf8'),{filename:f});
 {const sw=fs.readFileSync(path.join(root,'dist/sw.js'),'utf8');const list=JSON.parse(sw.match(/const ASSETS=(\[[\s\S]*?\]);/)[1]);for(const a of list)if(a!=='./')assert.ok(fs.existsSync(path.join(root,'dist',a)),'sw asset missing: '+a);for(const f of ['grades.js','course-helper.js','school-live.js'])assert.ok(list.includes(f),'sw missing '+f);console.log('PASS: dist scripts parse, sw assets exist ('+list.length+')');}
