@@ -1,9 +1,9 @@
 {
   "version": "1.0",
-  "generated_at": "2026-10-26T18:05:47.496163+09:00",
+  "generated_at": "2026-10-27T18:05:54.048571+09:00",
   "window": {
-    "start": "2026-09-26T09:00:00+09:00",
-    "end": "2026-10-26T09:00:00+09:00",
+    "start": "2026-09-27T09:00:00+09:00",
+    "end": "2026-10-27T09:00:00+09:00",
     "days": 30,
     "timezone": "Asia/Seoul"
   },
@@ -86,8 +86,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "7d",
-      "age_days": 7
+      "freshness": "30d",
+      "age_days": 8
     },
     {
       "rank": null,
@@ -155,8 +155,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "7d",
-      "age_days": 7
+      "freshness": "30d",
+      "age_days": 8
     },
     {
       "rank": 3,
@@ -224,8 +224,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "today",
-      "age_days": 0
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": 4,
@@ -291,8 +291,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "today",
-      "age_days": 0
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -358,7 +358,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 20
+      "age_days": 21
     },
     {
       "rank": null,
@@ -424,7 +424,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 12
+      "age_days": 13
     },
     {
       "rank": null,
@@ -498,7 +498,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 18
+      "age_days": 19
     },
     {
       "rank": null,
@@ -561,7 +561,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 6
+      "age_days": 7
     },
     {
       "rank": null,
@@ -623,8 +623,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "today",
-      "age_days": 0
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": 3,
@@ -684,7 +684,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 10
+      "age_days": 11
     },
     {
       "rank": null,
@@ -746,7 +746,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 14
+      "age_days": 15
     },
     {
       "rank": null,
@@ -806,7 +806,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 18
+      "age_days": 19
     },
     {
       "rank": null,
@@ -870,7 +870,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": 5,
@@ -932,7 +932,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": null,
@@ -994,7 +994,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": null,
@@ -1058,7 +1058,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": null,
@@ -1124,7 +1124,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 10
+      "age_days": 11
     },
     {
       "rank": null,
@@ -1185,7 +1185,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     },
     {
       "rank": null,
@@ -1250,7 +1250,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 10
+      "age_days": 11
     },
     {
       "rank": 3,
@@ -1314,7 +1314,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 13
+      "age_days": 14
     },
     {
       "rank": 2,
@@ -1377,7 +1377,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 19
+      "age_days": 20
     },
     {
       "rank": null,
@@ -1438,7 +1438,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 12
+      "age_days": 13
     },
     {
       "rank": null,
@@ -1501,7 +1501,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 13
+      "age_days": 14
     },
     {
       "rank": null,
@@ -1561,7 +1561,67 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 18
+      "age_days": 19
+    },
+    {
+      "rank": null,
+      "canonical_issue": "'에페' 출시 초기 암초…비만약 단속에 개원가 위축 '불똥' - 메디파나뉴스",
+      "title": "'에페' 출시 초기 암초…비만약 단속에 개원가 위축 '불똥'",
+      "category": [
+        "복지부",
+        "공급"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-27T06:03:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "한미약품 국산 비만신약 '에페'가 출시 초반 예상 밖 암초를 만났다. 초도 물량을 병의원에만 공급하는 가운데, 정부가 비만치료제 불법 원내판매 단속을 발표하면서다. 개원가 원내 취급 부담이 커지면서 주문을 취소하는 사례도 확인된다. 첫 출하일, 정부 단속 발표…개원가 주문 취소 사례도 26일 메디파나뉴스",
+        "사진=한미약품 한미약품 국산 비만신약 '에페'가 출시 초반 예상 밖 암초를 만났다.",
+        "초도 물량을 병의원에만 공급하는 가운데, 정부가 비만치료제 불법 원내판매 단속을 발표하면서다."
+      ],
+      "importance": "공급 변화는 의약품 접근성과 의료현장 재고 운영, 대체치료 준비에 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=420107"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=420107"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/420107_327733_4031.jpg",
+      "score": 36,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": "허가 관련",
+        "reimbursement_status": null,
+        "patient_summary": "치료제의 허가 범위나 사용 가능성과 관련된 소식입니다. 국내 실제 사용은 식약처 허가사항을 확인해야 합니다.",
+        "patient_relevance_score": 32,
+        "patient_relevance_labels": [
+          "허가"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "today",
+      "age_days": 0
     },
     {
       "rank": null,
@@ -1621,7 +1681,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     },
     {
       "rank": null,
@@ -1682,7 +1742,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     },
     {
       "rank": null,
@@ -1744,7 +1804,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": null,
@@ -1806,7 +1866,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": null,
@@ -1867,7 +1927,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 6
+      "age_days": 7
     },
     {
       "rank": null,
@@ -1926,7 +1986,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 10
+      "age_days": 11
     },
     {
       "rank": null,
@@ -1989,7 +2049,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 10
+      "age_days": 11
     },
     {
       "rank": null,
@@ -2051,7 +2111,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 15
+      "age_days": 16
     },
     {
       "rank": null,
@@ -2112,7 +2172,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     },
     {
       "rank": null,
@@ -2173,7 +2233,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 13
+      "age_days": 14
     },
     {
       "rank": null,
@@ -2236,7 +2296,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 15
+      "age_days": 16
     },
     {
       "rank": null,
@@ -2297,7 +2357,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 18
+      "age_days": 19
     },
     {
       "rank": null,
@@ -2354,7 +2414,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": null,
@@ -2411,7 +2471,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 6
+      "age_days": 7
     },
     {
       "rank": null,
@@ -2471,8 +2531,8 @@
         "patient_relevance_labels": [],
         "industry_summary": null
       },
-      "freshness": "7d",
-      "age_days": 7
+      "freshness": "30d",
+      "age_days": 8
     },
     {
       "rank": null,
@@ -2532,7 +2592,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": null,
@@ -2591,7 +2651,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 18
+      "age_days": 19
     },
     {
       "rank": 3,
@@ -2652,7 +2712,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 21
+      "age_days": 22
     },
     {
       "rank": null,
@@ -2707,7 +2767,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 23
+      "age_days": 24
     },
     {
       "rank": null,
@@ -2765,7 +2825,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 23
+      "age_days": 24
     },
     {
       "rank": null,
@@ -2822,7 +2882,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 24
+      "age_days": 25
     },
     {
       "rank": 4,
@@ -2881,7 +2941,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 24
+      "age_days": 25
     },
     {
       "rank": null,
@@ -2949,7 +3009,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 24
+      "age_days": 25
     }
   ]
 }

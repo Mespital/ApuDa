@@ -1,6 +1,6 @@
 {
   "version": "1.2",
-  "generated_at": "2026-10-26T18:06:33.618348+09:00",
+  "generated_at": "2026-10-27T18:06:12.802704+09:00",
   "service_key_connected": true,
   "credential_routes": {
     "mfds_drug_approval": "dedicated",
@@ -10,8 +10,7 @@
   "source_health": {
     "total": 5,
     "status_counts": {
-      "ok": 3,
-      "unavailable": 2
+      "ok": 5
     }
   },
   "sources": [
@@ -21,7 +20,7 @@
       "name": "의약품 제품 허가정보",
       "source_url": "https://www.data.go.kr/data/15095677/openapi.do",
       "status": "ok",
-      "checked_at": "2026-10-26T18:05:49.049085+09:00",
+      "checked_at": "2026-10-27T18:05:55.619336+09:00",
       "records": [
         {
           "item_seq": "202602182",
@@ -266,39 +265,6 @@
           "edi_code": null
         },
         {
-          "item_seq": "202402033",
-          "item_name": "후리코정(수출용)",
-          "company": "신일제약(주)",
-          "main_ingredient": null,
-          "permit_date": "20240823",
-          "rare_drug_yn": null,
-          "newdrug_class_name": null,
-          "atc_code": null,
-          "edi_code": null
-        },
-        {
-          "item_seq": "202400197",
-          "item_name": "한올케타민염산염주",
-          "company": "한올바이오파마(주)",
-          "main_ingredient": null,
-          "permit_date": "20240125",
-          "rare_drug_yn": null,
-          "newdrug_class_name": null,
-          "atc_code": null,
-          "edi_code": "655605662"
-        },
-        {
-          "item_seq": "202301862",
-          "item_name": "명문페티딘염산염주사(수출용)",
-          "company": "명문제약(주)",
-          "main_ingredient": null,
-          "permit_date": "20230619",
-          "rare_drug_yn": null,
-          "newdrug_class_name": null,
-          "atc_code": null,
-          "edi_code": null
-        },
-        {
           "item_seq": "202300950",
           "item_name": "카빅티주(실타캅타젠오토류셀)",
           "company": "(주)한국얀센",
@@ -308,39 +274,6 @@
           "newdrug_class_name": null,
           "atc_code": null,
           "edi_code": null
-        },
-        {
-          "item_seq": "202300713",
-          "item_name": "알프라원정0.25밀리그램(알프라졸람)",
-          "company": "하나제약(주)",
-          "main_ingredient": null,
-          "permit_date": "20230228",
-          "rare_drug_yn": null,
-          "newdrug_class_name": null,
-          "atc_code": null,
-          "edi_code": "657807870"
-        },
-        {
-          "item_seq": "202300714",
-          "item_name": "알프라원정0.5밀리그램(알프라졸람)",
-          "company": "하나제약(주)",
-          "main_ingredient": null,
-          "permit_date": "20230228",
-          "rare_drug_yn": null,
-          "newdrug_class_name": null,
-          "atc_code": null,
-          "edi_code": "657807880"
-        },
-        {
-          "item_seq": "202203919",
-          "item_name": "알프람정0.125밀리그램(알프라졸람)",
-          "company": "환인제약(주)",
-          "main_ingredient": null,
-          "permit_date": "20221026",
-          "rare_drug_yn": null,
-          "newdrug_class_name": null,
-          "atc_code": null,
-          "edi_code": "657203960"
         },
         {
           "item_seq": "202203438",
@@ -376,61 +309,6 @@
           "edi_code": null
         },
         {
-          "item_seq": "202202754",
-          "item_name": "바이파보주20밀리그램(레미마졸람베실산염)(수출용)",
-          "company": "하나제약(주)",
-          "main_ingredient": null,
-          "permit_date": "20220704",
-          "rare_drug_yn": null,
-          "newdrug_class_name": null,
-          "atc_code": null,
-          "edi_code": null
-        },
-        {
-          "item_seq": "202202678",
-          "item_name": "잘레딥캡슐5밀리그램(잘레플론)",
-          "company": "부광약품(주)",
-          "main_ingredient": null,
-          "permit_date": "20220629",
-          "rare_drug_yn": null,
-          "newdrug_class_name": null,
-          "atc_code": null,
-          "edi_code": "642204620"
-        },
-        {
-          "item_seq": "202202679",
-          "item_name": "잘레딥캡슐10밀리그램(잘레플론)",
-          "company": "부광약품(주)",
-          "main_ingredient": null,
-          "permit_date": "20220629",
-          "rare_drug_yn": null,
-          "newdrug_class_name": null,
-          "atc_code": null,
-          "edi_code": "642204630"
-        },
-        {
-          "item_seq": "202106887",
-          "item_name": "프레조폴엠시티프리필드주1%(프로포폴) ",
-          "company": "프레지니우스카비코리아(주)",
-          "main_ingredient": null,
-          "permit_date": "20211013",
-          "rare_drug_yn": null,
-          "newdrug_class_name": null,
-          "atc_code": null,
-          "edi_code": null
-        },
-        {
-          "item_seq": "202106888",
-          "item_name": "프레조폴엠시티프리필드주2%(프로포폴) ",
-          "company": "프레지니우스카비코리아(주)",
-          "main_ingredient": null,
-          "permit_date": "20211013",
-          "rare_drug_yn": null,
-          "newdrug_class_name": null,
-          "atc_code": null,
-          "edi_code": null
-        },
-        {
           "item_seq": "202106440",
           "item_name": "럭스터나주(보레티진네파보벡)",
           "company": "한국노바티스(주)",
@@ -440,17 +318,6 @@
           "newdrug_class_name": null,
           "atc_code": null,
           "edi_code": "653603481"
-        },
-        {
-          "item_seq": "202106240",
-          "item_name": "바이파보주20밀리그램(레미마졸람베실산염)",
-          "company": "하나제약(주)",
-          "main_ingredient": null,
-          "permit_date": "20210830",
-          "rare_drug_yn": null,
-          "newdrug_class_name": null,
-          "atc_code": null,
-          "edi_code": null
         },
         {
           "item_seq": "202106193",
@@ -572,9 +439,141 @@
           "newdrug_class_name": null,
           "atc_code": null,
           "edi_code": null
+        },
+        {
+          "item_seq": "202105792",
+          "item_name": "알엠에스오스론(알엠에스자가골수유래뼈세포)",
+          "company": "셀론텍(주)",
+          "main_ingredient": null,
+          "permit_date": "20210806",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": null
+        },
+        {
+          "item_seq": "202105645",
+          "item_name": "큐어스킨주(자가유래피부섬유아세포)",
+          "company": "(주)에스바이오메딕스",
+          "main_ingredient": null,
+          "permit_date": "20210729",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": null
+        },
+        {
+          "item_seq": "202105509",
+          "item_name": "카티라이프(바솔자가연골유래연골세포)",
+          "company": "(주)바이오솔루션",
+          "main_ingredient": null,
+          "permit_date": "20210722",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": null
+        },
+        {
+          "item_seq": "202104462",
+          "item_name": "퀸셀(자가지방조직유래 최소조작 지방세포)",
+          "company": "(주)안트로젠",
+          "main_ingredient": null,
+          "permit_date": "20210609",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": null
+        },
+        {
+          "item_seq": "202104217",
+          "item_name": "졸겐스마주(오나셈노진아베파르보벡)",
+          "company": "한국노바티스(주)",
+          "main_ingredient": null,
+          "permit_date": "20210528",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": null
+        },
+        {
+          "item_seq": "202103385",
+          "item_name": "파마에스조피클론정3mg",
+          "company": "(주)한국파마",
+          "main_ingredient": null,
+          "permit_date": "20210426",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": null
+        },
+        {
+          "item_seq": "202103386",
+          "item_name": "파마에스조피클론정1mg",
+          "company": "(주)한국파마",
+          "main_ingredient": null,
+          "permit_date": "20210426",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": null
+        },
+        {
+          "item_seq": "202103387",
+          "item_name": "파마에스조피클론정2mg",
+          "company": "(주)한국파마",
+          "main_ingredient": null,
+          "permit_date": "20210426",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": null
+        },
+        {
+          "item_seq": "202102042",
+          "item_name": "킴리아주(티사젠렉류셀)",
+          "company": "한국노바티스(주)",
+          "main_ingredient": null,
+          "permit_date": "20210305",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": "653603381"
+        },
+        {
+          "item_seq": "202100735",
+          "item_name": "타코펜캡슐(수출용)",
+          "company": "구주제약(주)",
+          "main_ingredient": null,
+          "permit_date": "20210125",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": null
+        },
+        {
+          "item_seq": "202009292",
+          "item_name": "구주황산모르핀주사10mg/ml(모르핀황산염수화물)",
+          "company": "구주제약(주)",
+          "main_ingredient": null,
+          "permit_date": "20201229",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": null
+        },
+        {
+          "item_seq": "202009293",
+          "item_name": "구주황산모르핀주사15mg/ml(모르핀황산염수화물)",
+          "company": "구주제약(주)",
+          "main_ingredient": null,
+          "permit_date": "20201229",
+          "rare_drug_yn": null,
+          "newdrug_class_name": null,
+          "atc_code": null,
+          "edi_code": null
         }
       ],
-      "total_count": 42697,
+      "total_count": 42704,
       "http_status": 200,
       "key_variant_used": 1,
       "note": "식약처 공식 의약품 허가 OpenAPI 연결 상태입니다. 허가 상세 확인은 품목기준코드 기준으로 후속 조회합니다."
@@ -585,8 +584,22 @@
       "name": "의약품 공급부족 정보",
       "source_url": "https://www.data.go.kr/data/15056886/openapi.do",
       "status": "ok",
-      "checked_at": "2026-10-26T18:05:51.481656+09:00",
+      "checked_at": "2026-10-27T18:05:58.184392+09:00",
       "records": [
+        {
+          "report_date": "20261026",
+          "company": "삼일제약(주)",
+          "item_name": "버간점안겔(간시클로버)",
+          "edi_code": "8806439004303,8806439004310",
+          "shortage_expected_date": "20261102",
+          "shortage_reason": "운행 루트 변경으로 인항 입항 지연",
+          "last_supply_date": "20261030",
+          "stock_reference_date": "20261026",
+          "stock_qty": "35",
+          "patient_impact": "동일 성분은 없으나, 항바이러스 안연고로 바이클로버안연고 등 아시크로버 제제가 상용되고 있어, 환자 치료에는 큰 영향이 없을 것으로 판단 됨.",
+          "normalization_plan": "2026년 11월 말 이후 정상 공급 계획",
+          "normalization_expected_date": "20261127"
+        },
         {
           "report_date": "20261023",
           "company": "에스케이바이오사이언스(주)",
@@ -921,7 +934,7 @@
           "stock_qty": "2939",
           "patient_impact": "로푸록스겔(시클로피록스)은 족부백선 등 경증 표재성 피부 진균 감염에 사용되는 일반의약품(외용 항진균제)으로, 동일 적응증에 사용 가능한 대체 약물(테르비나핀 크림·겔, 클로트리마졸 크림 등)이 다수 유통되고 있어 환자 치료에 미치는 영향은 미미한 것으로 판단됨.",
           "normalization_plan": "튜브 자재 수입 일정을 최대한 앞당겨 조기 생산재개 목표",
-          "normalization_expected_date": "20261124"
+          "normalization_expected_date": "20270630"
         },
         {
           "report_date": "20260619",
@@ -1272,23 +1285,9 @@
           "patient_impact": "동일 성분 의약품이 시장에 충분히 공급되고 있으며, 빠른 시일 내 정상 공급이 예정되어 있어 환자의 치료에 미치는 영향은 적을 것으로 예상됨. ",
           "normalization_plan": "현재 보유중인 재고(7,985병)는 사용기간 6개월 미만(2026.8.17.)으로, 당사 방침상 출하 대상은 아니나 별도 요청이 있을 경우 출하 가능함.\n아울러, 당사는 반제품 입고 즉시 동 품목 ‘28캡슐/병’ 포장단위의 포장을 진행할 예정으로, 2026년 4월 말 동 포장단위의 공급 부족이 해소될 것으로 예상됨.",
           "normalization_expected_date": "20260501"
-        },
-        {
-          "report_date": "20260213",
-          "company": "한국릴리(유)",
-          "item_name": "자이프렉사자이디스확산정5밀리그램(미세올란자핀)",
-          "edi_code": "8806708013715",
-          "shortage_expected_date": "20260331",
-          "shortage_reason": "1) 현재 nedrug 변경허가 민원을 진행중에 있고, 처의 보완사항을 이행하기에 자료가 불충분하여 처와 요건에 대한 협의를 하고자 하였으니, 최종적으로 불가한 상황으로 결론이 났습니다. 이에 따라 제품 수급 불가가 예상되어 일정 기간 공급이 불가할 것으로 사료됩니다.\n2) 보다 자세한 사항은, 향후 더 자세히 보고드릴 수 있을 것으로 사료됩니다.",
-          "last_supply_date": "20250331",
-          "stock_reference_date": "20260213",
-          "stock_qty": "10,727",
-          "patient_impact": "보다 자세한 사항은, 향후 더 자세히 보고드릴 수 있을 것으로 사료됩니다.",
-          "normalization_plan": "보다 자세한 사항은, 향후 더 자세히 보고드릴 수 있을 것으로 사료됩니다.",
-          "normalization_expected_date": "20270331"
         }
       ],
-      "total_count": 772,
+      "total_count": 773,
       "http_status": 200,
       "key_variant_used": 1,
       "response_field_keys": [
@@ -1316,7 +1315,7 @@
         "SUPPLY_PLAN_DATE",
         "TREATMENT_INFU"
       ],
-      "mapped_records": 166,
+      "mapped_records": 167,
       "note": "식약처 공식 의약품 공급부족 OpenAPI 연결 상태입니다. 최신 신고일 기준으로 공급부족·환자영향·정상화 계획을 확인합니다."
     },
     {
@@ -1325,7 +1324,7 @@
       "name": "약가기준정보조회서비스",
       "source_url": "https://www.data.go.kr/data/15054445/openapi.do",
       "status": "ok",
-      "checked_at": "2026-10-26T18:05:52.470885+09:00",
+      "checked_at": "2026-10-27T18:05:59.116601+09:00",
       "records": [],
       "http_status": 200,
       "key_variant_used": 1,
@@ -1337,22 +1336,246 @@
       "agency": "국립암센터 국가암정보센터",
       "name": "통계로 보는 암",
       "source_url": "https://edu.cancer.go.kr/lay1/S1T654C656/contents.do",
-      "status": "unavailable",
-      "checked_at": "2026-10-26T18:05:52.600197+09:00",
-      "latest_year": null,
-      "note": null,
-      "error": "HTTPSConnectionPool(host='edu.cancer.go.kr', port=443): Read timed out. (read timeout=20)"
+      "status": "ok",
+      "checked_at": "2026-10-27T18:05:59.251713+09:00",
+      "latest_year": 2023,
+      "note": "국가암정보센터 공식 통계 페이지 원문을 기준으로 연결합니다. 수치는 원문 표를 우선 확인합니다.",
+      "page_title": "홈 >통계로 보는 암>유병률>암종별 암유병률",
+      "matched_rows": [
+        [
+          "순위",
+          "암종",
+          "유병자수",
+          "분율",
+          "조유병률",
+          "연령표준화 유병률*"
+        ],
+        [
+          "1",
+          "갑상선",
+          "587,292",
+          "21.5",
+          "1,148.3",
+          "1,102.2"
+        ],
+        [
+          "2",
+          "위",
+          "366,717",
+          "13.4",
+          "717.0",
+          "644.2"
+        ],
+        [
+          "3",
+          "유방",
+          "354,699",
+          "13.0",
+          "693.5",
+          "654.5"
+        ],
+        [
+          "4",
+          "대장",
+          "340,064",
+          "12.4",
+          "664.9",
+          "598.9"
+        ],
+        [
+          "5",
+          "전립선",
+          "161,768",
+          "5.9",
+          "316.3",
+          "278.0"
+        ],
+        [
+          "6",
+          "폐",
+          "141,143",
+          "5.2",
+          "276.0",
+          "246.9"
+        ],
+        [
+          "7",
+          "간",
+          "85,687",
+          "3.1",
+          "167.5",
+          "151.6"
+        ],
+        [
+          "8",
+          "신장",
+          "69,451",
+          "2.5",
+          "135.8",
+          "125.4"
+        ],
+        [
+          "9",
+          "자궁경부",
+          "65,438",
+          "2.4",
+          "127.9",
+          "120.0"
+        ],
+        [
+          "10",
+          "비호지킨림프종 (11)",
+          "48,916",
+          "1.8",
+          "95.6",
+          "89.6"
+        ],
+        [
+          "순 위",
+          "남자",
+          "여자"
+        ],
+        [
+          "암종 (2023년순위)",
+          "유병자수",
+          "분율",
+          "조 유병률",
+          "연령 표준화 유병률*",
+          "암종 (2023년순위)",
+          "유병자수",
+          "분율",
+          "조 유병률",
+          "연령 표준화 유병률*"
+        ],
+        [
+          "1",
+          "위",
+          "240,257",
+          "20.1",
+          "943.3",
+          "937.1",
+          "갑상선",
+          "470,948",
+          "30.6",
+          "1,834.1",
+          "1,744.2"
+        ],
+        [
+          "2",
+          "대장",
+          "200,038",
+          "16.8",
+          "785.4",
+          "785.4",
+          "유방",
+          "353,411",
+          "23.0",
+          "1,376.4",
+          "1,278.2"
+        ],
+        [
+          "3",
+          "전립선",
+          "161,768",
+          "13.5",
+          "635.2",
+          "657.7",
+          "대장",
+          "140,026",
+          "9.1",
+          "545.3",
+          "451.6"
+        ],
+        [
+          "4",
+          "갑상선",
+          "116,344",
+          "9.7",
+          "456.8",
+          "446.1",
+          "위",
+          "126,460",
+          "8.2",
+          "492.5",
+          "411.3"
+        ],
+        [
+          "5",
+          "폐",
+          "81,621",
+          "6.8",
+          "320.5",
+          "318.5",
+          "자궁경부",
+          "65,438",
+          "4.3",
+          "254.9",
+          "232.4"
+        ],
+        [
+          "6",
+          "간",
+          "63,947",
+          "5.4",
+          "251.1",
+          "242.7",
+          "폐",
+          "59,522",
+          "3.9",
+          "231.8",
+          "195.0"
+        ],
+        [
+          "7",
+          "신장",
+          "47,060",
+          "3.9",
+          "184.8",
+          "180.7",
+          "자궁체부",
+          "43,136",
+          "2.8",
+          "168.0",
+          "154.4"
+        ],
+        [
+          "9",
+          "비호지킨 림프종",
+          "27,531",
+          "2.3",
+          "108.1",
+          "106.7",
+          "신장(10)",
+          "22,391",
+          "1.5",
+          "87.2",
+          "76.2"
+        ],
+        [
+          "10",
+          "입술, 구강 및 인두",
+          "25,671",
+          "2.2",
+          "100.8",
+          "98.0",
+          "간(9)",
+          "21,740",
+          "1.4",
+          "84.7",
+          "71.3"
+        ]
+      ]
     },
     {
       "id": "ncc_living_guide",
       "agency": "국립암센터 국가암정보센터",
       "name": "암환자 생활백서",
       "source_url": "https://cancer.go.kr/lay1/S1T523C850/contents.do",
-      "status": "unavailable",
-      "checked_at": "2026-10-26T18:06:13.019358+09:00",
+      "status": "ok",
+      "checked_at": "2026-10-27T18:06:10.503612+09:00",
       "latest_year": null,
-      "note": null,
-      "error": "HTTPSConnectionPool(host='cancer.go.kr', port=443): Read timed out. (read timeout=20)"
+      "note": "국가암정보센터 원문을 직접 연결하며, ApuDa에서는 원문을 변형 복제하지 않습니다.",
+      "page_title": "홈 >암정보 나눔터>국가암지식정보센터 OPEN API"
     }
   ],
   "usage_policy": {

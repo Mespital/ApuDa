@@ -1,9 +1,24 @@
 {
   "version": "1.1",
-  "generated_at": "2026-10-26T18:06:45.152048+09:00",
+  "generated_at": "2026-10-27T18:06:24.544421+09:00",
   "window_days": 30,
   "status": "ok",
   "items": [
+    {
+      "agency": "건강보험심사평가원",
+      "document_type": "공식 고시·공지",
+      "category": "건강보험 기준",
+      "department": "청구관리부",
+      "title": "「정보통신망을 이용한 요양급여비용 청구오류 사전점검서비스 운영에 대한 세부사항」(건강보험심사평가원 공고 제2026-229호, 2026.10.26.) 일부 개정 안내 새글",
+      "published_at": "2026-10-26T00:00:00+09:00",
+      "url": "https://www.hira.or.kr/bbsDummy.do?brdBltNo=12309&brdScnBltNo=4&pgmid=HIRAA020002000100",
+      "detail_link_verified": true,
+      "attachments": [],
+      "summary": "국민건강보험법 시행규칙 제20조제4항 및 「요양급여비용 심사·지급업무 처리기준」제2조제3항에 따른 「정보통신망을 이용한 요양급여비용 청구오류 사전점검서비스 운영에 대한 세부사항」(건강보험심사평가원 공고 제2026-229호, 2026.10.26.)을 다음과 같이 개정·공고합니다.",
+      "oncology_related": false,
+      "source_list_url": "https://www.hira.or.kr/bbsDummy.do?pgmid=HIRAA020002000100",
+      "criteria_url": "https://www.hira.or.kr/rc/insu/insuadtcrtr/InsuAdtCrtrList.do?pgmid=HIRAA030069000400"
+    },
     {
       "agency": "건강보험심사평가원",
       "document_type": "공식 고시·공지",

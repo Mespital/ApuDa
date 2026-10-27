@@ -1,0 +1,370 @@
+{
+  "version": "1.2",
+  "report_date": "2026-10-27",
+  "collection_window": {
+    "start": "2026-10-26T09:00:00+09:00",
+    "end": "2026-10-27T09:00:00+09:00",
+    "timezone": "Asia/Seoul"
+  },
+  "sources": [
+    "데일리팜",
+    "의학신문",
+    "메디파나뉴스",
+    "약사공론"
+  ],
+  "briefing": "종근당, 토피라메이트 100mg 허가…뇌전증 시장 공략 본격화가 오늘 가장 중요한 이슈로 부각됐습니다. 이어 건보공단, 위험분담제·약가유연계약 병행 검토...신약 급여협상 개선 추진도 주요 변화로 확인됐습니다. 전체적으로는 정책·급여 · 신약·임상 흐름이 두드러집니다.",
+  "top_news": [
+    {
+      "rank": 1,
+      "canonical_issue": "종근당, 토피라메이트 100mg 허가…뇌전증 시장 공략 본격화 - 약사공론",
+      "title": "종근당, 토피라메이트 100mg 허가…뇌전증 시장 공략 본격화",
+      "category": [
+        "급여",
+        "허가",
+        "합병",
+        "병원"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-10-27T05:53:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "종근당이 토피라메이트 서방정 100mg 품목허가를 확보하면서 종합병원 뇌전증 치료제 시장 공략을 강화하는 모습이다. 기존 25mg과 50mg의 건강보험 급여 등재",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=547308"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547308"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/547308_451970_2042.jpg",
+      "score": 73,
+      "oncology": null
+    },
+    {
+      "rank": 2,
+      "canonical_issue": "건보공단, 위험분담제·약가유연계약 병행 검토...신약 급여협상 개선 추진 - 의학신문",
+      "title": "건보공단, 위험분담제·약가유연계약 병행 검토...신약 급여협상 개선 추진",
+      "category": [
+        "급여",
+        "약가",
+        "공급"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-26T15:00:51+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=이재원 기자] 국민건강보험공단이 의약품 공급 안정성과 신약 환자 접근성 강화를 위해 위험분담계약(RSA)과 약가유연계약제도의 병행 적용을 검토",
+        "[의학신문·일간보사=이재원 기자] 국민건강보험공단이 의약품 공급 안정성과 신약 환자 접근성 강화를 위해 위험분담계약(RSA)과 약가유연계약제도의 병행 적용을 검토한다.",
+        "복수 제약사의 신약을 함께 사용하는 병용요법에 대한 별도 약가협상 절차를 마련하고, 위험분담제 적용 약제의 급여범위 확대 절차를 간소화하는 방안도 논의할 계획이다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3014825"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014825"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3014825_415759_04.jpg",
+      "score": 66,
+      "oncology": null
+    },
+    {
+      "rank": 3,
+      "canonical_issue": "요양병원 경증환자 15만명 ‘사회적입원’ 낙인 논란 - 의학신문",
+      "title": "요양병원 경증환자 15만명 ‘사회적입원’ 낙인 논란",
+      "category": [
+        "병원"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-26T15:56:32+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=김현기 기자] 요양병원 경증환자를 둘러싼 ‘사회적입원 낙인’ 논란이 거세지고 있다. 환자의 실제 치료 필요성을 따지지 않은 채 의료경도와 선택",
+        "[의학신문·일간보사=김현기 기자] 요양병원 경증환자를 둘러싼 ‘사회적입원 낙인’ 논란이 거세지고 있다.",
+        "환자의 실제 치료 필요성을 따지지 않은 채 의료경도와 선택입원군을 건강보험 재정 낭비의 원인으로 지목하는 것은 부당하다는 지적이다."
+      ],
+      "importance": "의료기관·약국 현장의 변화는 진료 흐름과 환자 경험, 의약품 사용 환경에 직접 영향을 줍니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3014828"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014828"
+        }
+      ],
+      "thumbnail_url": "https://www.bosa.co.kr/image/logo/snslogotrans_20251212052521.png",
+      "score": 45,
+      "oncology": null
+    },
+    {
+      "rank": 4,
+      "canonical_issue": "[기획] 약가 45% 시대…제약사 수익성 시험대 - 메디파나뉴스",
+      "title": "[기획] 약가 45% 시대…제약사 수익성 시험대",
+      "category": [
+        "약가"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-27T06:04:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "국내 제약산업의 주요 매출 기반인 제네릭과 특허만료 의약품 시장이 약가제도 개편을 계기로 새로운 변화가 예고되고 있다. 정부가 제네릭 의약품의 기본 약가 산정률을 낮추고 기존 등재 의약품에 대한 단계적 가격 조정을 추진하면서, 국내 전문의약품 시장을 중심으로 성장해 온 제약기업들의 수익구조에도 변화가 예",
+        "복사하기 기획 약가 45% 시대, 제약산업 성장 공식 바뀐다",
+        "정부의 약가제도 개편이 국내 제약산업의 수익구조와 성장전략에 변화를 예고하고 있다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=420039"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=420039"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/420039_327693_1452.png",
+      "score": 41,
+      "oncology": null
+    },
+    {
+      "rank": 5,
+      "canonical_issue": "건보공단, 금감원과 도수치료 관리급여·체외충격파 자율시정 '풍선효과' 추적 - 의학신문",
+      "title": "건보공단, 금감원과 도수치료 관리급여·체외충격파 자율시정 '풍선효과' 추적",
+      "category": [
+        "급여"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-26T14:43:35+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=이재원 기자] 국민건강보험공단이 도수치료 관리급여 시행과 체외충격파치료 자율시정에 따른 비급여 풍선효과를 파악하기 위해 금융감독원과 자료 공유",
+        "[의학신문·일간보사=이재원 기자] 국민건강보험공단이 도수치료 관리급여 시행과 체외충격파치료 자율시정에 따른 비급여 풍선효과를 파악하기 위해 금융감독원과 자료 공유 및 공동 분석을 추진한다.",
+        "특정 비급여 항목에 대한 관리 강화가 유사한 통증치료 항목의 진료비와 진료량 증가로 이어지는지 확인하겠다는 취지다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3014824"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014824"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3014824_415758_4225.jpeg",
+      "score": 38,
+      "oncology": null
+    }
+  ],
+  "trends": [
+    {
+      "title": "정책·급여",
+      "count": 4,
+      "change": "4건의 주요 이슈에서 반복적으로 확인",
+      "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
+      "examples": [
+        "종근당, 토피라메이트 100mg 허가…뇌전증 시장 공략 본격화",
+        "건보공단, 위험분담제·약가유연계약 병행 검토...신약 급여협상 개선 추진"
+      ]
+    },
+    {
+      "title": "신약·임상",
+      "count": 2,
+      "change": "2건의 주요 이슈에서 반복적으로 확인",
+      "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
+      "examples": [
+        "종근당, 토피라메이트 100mg 허가…뇌전증 시장 공략 본격화",
+        "건보공단, 위험분담제·약가유연계약 병행 검토...신약 급여협상 개선 추진"
+      ]
+    },
+    {
+      "title": "의료현장",
+      "count": 2,
+      "change": "2건의 주요 이슈에서 반복적으로 확인",
+      "implication": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름",
+      "examples": [
+        "종근당, 토피라메이트 100mg 허가…뇌전증 시장 공략 본격화",
+        "요양병원 경증환자 15만명 ‘사회적입원’ 낙인 논란"
+      ]
+    },
+    {
+      "title": "투자·사업개발",
+      "count": 1,
+      "change": "1건의 주요 이슈에서 반복적으로 확인",
+      "implication": "자본과 파이프라인 확보 경쟁이 사업전략의 핵심이 되는 흐름",
+      "examples": [
+        "종근당, 토피라메이트 100mg 허가…뇌전증 시장 공략 본격화"
+      ]
+    }
+  ],
+  "outlet_status": [
+    {
+      "publisher": "데일리팜",
+      "homepage_url": "https://www.dailypharm.com/",
+      "items": []
+    },
+    {
+      "publisher": "의학신문",
+      "homepage_url": "https://www.bosa.co.kr/",
+      "items": [
+        {
+          "title": "건보공단, 위험분담제·약가유연계약 병행 검토...신약 급여협상 개선 추진",
+          "published_at": "2026-10-26T15:00:51+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014825"
+        },
+        {
+          "title": "요양병원 경증환자 15만명 ‘사회적입원’ 낙인 논란",
+          "published_at": "2026-10-26T15:56:32+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014828"
+        },
+        {
+          "title": "건보공단, 금감원과 도수치료 관리급여·체외충격파 자율시정 '풍선효과' 추적",
+          "published_at": "2026-10-26T14:43:35+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014824"
+        },
+        {
+          "title": "심평원, ICER·병용요법·위험분담제 등 신약 급여 심의 개선 검토",
+          "published_at": "2026-10-26T14:12:56+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014819"
+        },
+        {
+          "title": "“도수치료 막히면 수술로?”…신경외과 개원가 관리급여 반발",
+          "published_at": "2026-10-26T13:41:37+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014786"
+        },
+        {
+          "title": "대개협 \"건보 검체검사 개편, 국가건강검진까지 확대는 절대 수용 불가\"",
+          "published_at": "2026-10-27T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014830"
+        },
+        {
+          "title": "심평원, PNH 치료제 C5 억제제 급여기준 완화 검토...아스트라제네카 요청",
+          "published_at": "2026-10-26T12:45:54+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014812"
+        },
+        {
+          "title": "심평원, 의료기관 이상징후 감지체계 구축 검토",
+          "published_at": "2026-10-27T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014814"
+        }
+      ]
+    },
+    {
+      "publisher": "메디파나뉴스",
+      "homepage_url": "https://www.medipana.com/",
+      "items": [
+        {
+          "title": "[기획] 약가 45% 시대…제약사 수익성 시험대",
+          "published_at": "2026-10-27T06:04:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=420039"
+        },
+        {
+          "title": "'에페' 출시 초기 암초…비만약 단속에 개원가 위축 '불똥'",
+          "published_at": "2026-10-27T06:03:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=420107"
+        },
+        {
+          "title": "약국의 신뢰를 화장대로…제약사들의 사업 확장 새국면",
+          "published_at": "2026-10-26T11:55:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419840"
+        },
+        {
+          "title": "동아쏘시오그룹 임원인사",
+          "published_at": "2026-10-26T14:32:27+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=420081"
+        }
+      ]
+    },
+    {
+      "publisher": "약사공론",
+      "homepage_url": "https://www.kpanews.co.kr/",
+      "items": [
+        {
+          "title": "종근당, 토피라메이트 100mg 허가…뇌전증 시장 공략 본격화",
+          "published_at": "2026-10-27T05:53:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547308"
+        },
+        {
+          "title": "[영상] \"처방은 여럿이, 책임은 누가?\"",
+          "published_at": "2026-10-27T00:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547375"
+        },
+        {
+          "title": "지피테라퓨틱스, 변경허가 누락 '자진신고'…관리체계 강화",
+          "published_at": "2026-10-27T05:51:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547316"
+        },
+        {
+          "title": "'살 뺐더니 머리도 빠진다?' GLP-1시대, 다이어트탈모 상담",
+          "published_at": "2026-10-27T05:51:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547285"
+        },
+        {
+          "title": "\"폐업한다면서 처방은 계속?\"…약국 권리금 반환 불발",
+          "published_at": "2026-10-26T12:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547234"
+        },
+        {
+          "title": "\"비대면진료 12월 시행\"…약국이 알아야 할 공공 앱·전자처방전의 차이",
+          "published_at": "2026-10-27T05:55:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547296"
+        },
+        {
+          "title": "실무실습에서 찾은 ‘약사만의 역량’",
+          "published_at": "2026-10-26T12:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547130"
+        },
+        {
+          "title": "\"태국 그거 맞아요\"…약국 매대 차별화 '눈길'",
+          "published_at": "2026-10-27T05:54:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547295"
+        }
+      ]
+    }
+  ],
+  "insight": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름 동시에 신약·임상 흐름도 함께 확인돼 단일 이슈보다 복합적인 산업 변화로 보는 것이 적절합니다.",
+  "infographic": {
+    "image_path": null,
+    "generated_at": null,
+    "template_version": "news-card-v1"
+  }
+}
