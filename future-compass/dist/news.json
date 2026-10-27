@@ -1,8 +1,32 @@
 {
-  "checked_at": "2026-10-27T11:51:39.226898+00:00",
-  "last_success_at": "2026-10-27T11:51:39.226898+00:00",
+  "checked_at": "2026-10-27T17:45:26.348295+00:00",
+  "last_success_at": "2026-10-27T17:45:26.348295+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "We’re announcing Genie 4, our new world model for real-time interactive simulation.",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/introducing-genie-4/",
+      "source": "Google",
+      "published_at": "2026-10-27T16:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "8 examples of Gemini 4 Argon in action",
+      "url": "https://blog.google/products-and-platforms/products/gemini/gemini-4-argon-in-action/",
+      "source": "Google",
+      "published_at": "2026-10-27T15:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "OpenAI expands partnership with Oracle to bring its apps to ChatGPT",
+      "url": "https://openai.com/index/oracle-apps-in-chatgpt",
+      "source": "OpenAI",
+      "published_at": "2026-10-27T07:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "Greptile takes bug detection beyond code review with GPT-6 Astra",
       "url": "https://openai.com/index/greptile-code-review-codex-astra",
@@ -116,6 +140,14 @@
       "domain": "security"
     },
     {
+      "title": "Anima helps clinics cut call waits by 75% with GPT-6 and GPT-Live",
+      "url": "https://openai.com/index/anima",
+      "source": "OpenAI",
+      "published_at": "2026-10-23T00:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
       "title": "Build more responsive apps with the Decisions API",
       "url": "https://openai.com/index/decisions-api",
       "source": "OpenAI",
@@ -210,44 +242,12 @@
       "published_at": "2026-10-21T00:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Cloudflare links vulnerability discovery to defense with OpenAI",
-      "url": "https://openai.com/index/cloudflare-cyber",
-      "source": "OpenAI",
-      "published_at": "2026-10-21T00:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Get hands-free personalized help on the road with Gemini",
-      "url": "https://blog.google/products-and-platforms/platforms/android/android-auto-cars-with-google-built-in-gemini-personal-intelligence/",
-      "source": "Google",
-      "published_at": "2026-10-20T20:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Ask a Scientist: How can AI help doctors spend more time on collaborative care?",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/google-research/amie-clinical-study/",
-      "source": "Google",
-      "published_at": "2026-10-20T16:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "New Gemini tools for small business owners",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/new-tools-small-business-owners/",
-      "source": "Google",
-      "published_at": "2026-10-20T16:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-27T11:51:39.226898+00:00",
+    "checked_at": "2026-10-27T17:45:26.348295+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -412,7 +412,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-27T11:51:39.226898+00:00",
+    "last_success_at": "2026-10-27T17:45:26.348295+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
