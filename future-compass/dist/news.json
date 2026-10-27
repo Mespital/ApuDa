@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-10-27T17:45:26.348295+00:00",
-  "last_success_at": "2026-10-27T17:45:26.348295+00:00",
+  "checked_at": "2026-10-27T21:59:09.457738+00:00",
+  "last_success_at": "2026-10-27T21:59:09.457738+00:00",
   "failures": [],
   "articles": [
     {
@@ -24,6 +24,14 @@
       "url": "https://openai.com/index/oracle-apps-in-chatgpt",
       "source": "OpenAI",
       "published_at": "2026-10-27T07:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "How Check Point accelerates vulnerability research with Daybreak",
+      "url": "https://openai.com/index/check-point-daybreak",
+      "source": "OpenAI",
+      "published_at": "2026-10-27T00:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
     },
@@ -234,20 +242,12 @@
       "published_at": "2026-10-21T04:50:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Democratic governance of frontier AI, part II: Empowering cyber defenders",
-      "url": "https://openai.com/index/empowering-cyber-defenders",
-      "source": "OpenAI",
-      "published_at": "2026-10-21T00:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-27T17:45:26.348295+00:00",
+    "checked_at": "2026-10-27T21:59:09.457738+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -412,7 +412,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-27T17:45:26.348295+00:00",
+    "last_success_at": "2026-10-27T21:59:09.457738+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
