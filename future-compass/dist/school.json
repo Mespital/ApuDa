@@ -7,7 +7,7 @@
     "code": "7010087",
     "homepage": "https://seocho.sen.hs.kr/"
   },
-  "checked_at": "2026-10-28T16:30:27.685434+00:00",
+  "checked_at": "2026-10-28T22:23:11.760076+00:00",
   "keyed": true,
   "school_year": 2026,
   "grade": 1,
@@ -228,17 +228,17 @@
         "배추김치",
         "망고주스"
       ],
-      "kcal": "742.1 Kcal",
+      "kcal": "748.0 Kcal",
       "ntr": {
-        "carb": 118.9,
-        "protein": 24.9,
+        "carb": 120.2,
+        "protein": 25.0,
         "fat": 17.3,
         "vitA": 194.3,
         "thiamin": 0.6,
         "ribo": 0.3,
         "vitC": 27.0,
-        "ca": 159.6,
-        "fe": 2.1
+        "ca": 159.9,
+        "fe": 2.2
       }
     },
     {
@@ -746,5 +746,5 @@
     "NEIS": "true",
     "DATA": "false"
   },
-  "last_success_at": "2026-10-28T16:30:27.685434+00:00"
+  "last_success_at": "2026-10-28T22:23:11.760076+00:00"
 }
