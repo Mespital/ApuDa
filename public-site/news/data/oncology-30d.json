@@ -1,9 +1,9 @@
 {
   "version": "1.0",
-  "generated_at": "2026-10-27T18:05:54.048571+09:00",
+  "generated_at": "2026-10-28T18:05:46.601530+09:00",
   "window": {
-    "start": "2026-09-27T09:00:00+09:00",
-    "end": "2026-10-27T09:00:00+09:00",
+    "start": "2026-09-28T09:00:00+09:00",
+    "end": "2026-10-28T09:00:00+09:00",
     "days": 30,
     "timezone": "Asia/Seoul"
   },
@@ -87,7 +87,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 8
+      "age_days": 9
     },
     {
       "rank": null,
@@ -156,7 +156,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 8
+      "age_days": 9
     },
     {
       "rank": 3,
@@ -225,7 +225,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
     },
     {
       "rank": 4,
@@ -292,7 +292,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
     },
     {
       "rank": null,
@@ -358,7 +358,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 21
+      "age_days": 22
     },
     {
       "rank": null,
@@ -424,7 +424,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 13
+      "age_days": 14
     },
     {
       "rank": null,
@@ -498,7 +498,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 19
+      "age_days": 20
     },
     {
       "rank": null,
@@ -560,8 +560,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "7d",
-      "age_days": 7
+      "freshness": "30d",
+      "age_days": 8
     },
     {
       "rank": null,
@@ -624,7 +624,70 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
+    },
+    {
+      "rank": null,
+      "canonical_issue": "\"첨단재생의료, 환자에 닿으려면 생산·임상·허가 '연결' 관건\" - 메디파나뉴스",
+      "title": "\"첨단재생의료, 환자에 닿으려면 생산·임상·허가 '연결' 관건\"",
+      "category": [
+        "허가"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-28T06:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "첨단재생의료가 연구개발 단계에서 환자 치료로 이어지기 위해서는 제조와 임상, 규제·허가 체계를 하나로 연결해야 한다는 제언이 나왔다. CAR-T 현장생산과 첨단치료의약품(ATMP) 개발 지원, 아데노연관바이러스(AAV) 유전자치료제 임상, 유도만능줄기세포(iPSC) 치료제 조건부 승인 사례를 통해 연구성",
+        "복사하기 (왼쪽부터) 27일 서울 용산구 피스앤파크 컨벤션에서 열린 '2026 RMAF Annual Symposium'에서 재클린 배리 영국 세포·유전자치료 캐터펄트 최고임상책임자, 김대원 연세대학교 생명시스템대학 생화학과 교수 겸 아이씨엠 대표, 다카하시 료스케 교토대학교 대학원 의학연구과 교수가 첨단치료 개발 지원과 ",
+        "사진=민준영 기자 첨단재생의료가 연구개발 단계에서 환자 치료로 이어지기 위해서는 제조와 임상, 규제·허가 체계를 하나로 연결해야 한다는 제언이 나왔다."
+      ],
+      "importance": "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=420232"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=420232"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/420232_327890_5037.png",
+      "score": 34,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [
+          "CAR-T"
+        ],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": "허가 관련",
+        "reimbursement_status": null,
+        "patient_summary": "치료제의 허가 범위나 사용 가능성과 관련된 소식입니다. 국내 실제 사용은 식약처 허가사항을 확인해야 합니다.",
+        "patient_relevance_score": 62,
+        "patient_relevance_labels": [
+          "허가",
+          "임상결과",
+          "지원제도"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "today",
+      "age_days": 0
     },
     {
       "rank": 3,
@@ -684,7 +747,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 11
+      "age_days": 12
     },
     {
       "rank": null,
@@ -746,7 +809,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 15
+      "age_days": 16
     },
     {
       "rank": null,
@@ -806,7 +869,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 19
+      "age_days": 20
     },
     {
       "rank": null,
@@ -870,7 +933,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 6
+      "age_days": 7
     },
     {
       "rank": 5,
@@ -932,7 +995,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 6
+      "age_days": 7
     },
     {
       "rank": null,
@@ -994,7 +1057,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 6
+      "age_days": 7
     },
     {
       "rank": null,
@@ -1058,7 +1121,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 6
+      "age_days": 7
     },
     {
       "rank": null,
@@ -1124,7 +1187,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 11
+      "age_days": 12
     },
     {
       "rank": null,
@@ -1185,7 +1248,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": null,
@@ -1250,7 +1313,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 11
+      "age_days": 12
     },
     {
       "rank": 3,
@@ -1314,7 +1377,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 14
+      "age_days": 15
     },
     {
       "rank": 2,
@@ -1377,7 +1440,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 20
+      "age_days": 21
     },
     {
       "rank": null,
@@ -1438,7 +1501,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 13
+      "age_days": 14
     },
     {
       "rank": null,
@@ -1501,7 +1564,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 14
+      "age_days": 15
     },
     {
       "rank": null,
@@ -1561,7 +1624,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 19
+      "age_days": 20
     },
     {
       "rank": null,
@@ -1620,8 +1683,70 @@
         ],
         "industry_summary": null
       },
-      "freshness": "today",
-      "age_days": 0
+      "freshness": "7d",
+      "age_days": 1
+    },
+    {
+      "rank": null,
+      "canonical_issue": "RET 유전자 변이 표적치료 새 지평 개척한 '레테브모' - 의학신문",
+      "title": "RET 유전자 변이 표적치료 새 지평 개척한 '레테브모'",
+      "category": [
+        "산업"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-27T12:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=김상일 기자]최근 현대 정밀의료의 핵심은 환자 개개인의 유전적 특성을 분석해 암을 유발하는 근본적인 원인을 타깃하는 바이오마커 기반 치료 전략",
+        "[의학신문·일간보사=김상일 기자]최근 현대 정밀의료의 핵심은 환자 개개인의 유전적 특성을 분석해 암을 유발하는 근본적인 원인을 타깃하는 바이오마커 기반 치료 전략에 맞춰져 있다.",
+        "그중에서도 RET(REarranged during Transfection) 유전자 변이는 세포의 무분별한 증식과 암세포 성장을 유도하는 대표적인 드라이버 유전자 변이로 꼽힌다."
+      ],
+      "importance": "시장·정책·연구개발 흐름을 보여주는 주요 산업 이슈로 후속 정책과 사업 변화 확인이 필요합니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3014757"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014757"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3014757_415836_2152.jpg",
+      "score": 4,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "폐암",
+          "갑상선암"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": "검사 결과에 따라 치료 선택이 달라질 수 있는 정밀의료 관련 정보입니다.",
+        "patient_relevance_score": 28,
+        "patient_relevance_labels": [
+          "바이오마커"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -1681,7 +1806,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": null,
@@ -1742,7 +1867,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": null,
@@ -1804,7 +1929,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": null,
@@ -1866,7 +1991,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": null,
@@ -1926,8 +2051,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "7d",
-      "age_days": 7
+      "freshness": "30d",
+      "age_days": 8
     },
     {
       "rank": null,
@@ -1986,7 +2111,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 11
+      "age_days": 12
     },
     {
       "rank": null,
@@ -2049,7 +2174,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 11
+      "age_days": 12
     },
     {
       "rank": null,
@@ -2111,7 +2236,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 16
+      "age_days": 17
     },
     {
       "rank": null,
@@ -2172,7 +2297,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": null,
@@ -2233,7 +2358,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 14
+      "age_days": 15
     },
     {
       "rank": null,
@@ -2296,7 +2421,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 16
+      "age_days": 17
     },
     {
       "rank": null,
@@ -2357,7 +2482,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 19
+      "age_days": 20
     },
     {
       "rank": null,
@@ -2414,7 +2539,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 6
+      "age_days": 7
     },
     {
       "rank": null,
@@ -2470,8 +2595,8 @@
         "patient_relevance_labels": [],
         "industry_summary": null
       },
-      "freshness": "7d",
-      "age_days": 7
+      "freshness": "30d",
+      "age_days": 8
     },
     {
       "rank": null,
@@ -2532,7 +2657,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 8
+      "age_days": 9
     },
     {
       "rank": null,
@@ -2592,7 +2717,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 6
+      "age_days": 7
     },
     {
       "rank": null,
@@ -2651,7 +2776,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 19
+      "age_days": 20
     },
     {
       "rank": 3,
@@ -2712,7 +2837,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 22
+      "age_days": 23
     },
     {
       "rank": null,
@@ -2767,7 +2892,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 24
+      "age_days": 25
     },
     {
       "rank": null,
@@ -2825,7 +2950,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 24
+      "age_days": 25
     },
     {
       "rank": null,
@@ -2882,7 +3007,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 25
+      "age_days": 26
     },
     {
       "rank": 4,
@@ -2941,7 +3066,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 25
+      "age_days": 26
     },
     {
       "rank": null,
@@ -3009,7 +3134,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 25
+      "age_days": 26
     }
   ]
 }

@@ -1,8 +1,31 @@
 {
   "version": "1.0",
-  "generated_at": "2026-10-27T18:06:13.837354+09:00",
+  "generated_at": "2026-10-28T18:06:08.157052+09:00",
   "window_days": 30,
   "items": [
+    {
+      "agency": "식품의약품안전처",
+      "document_type": "행정예고",
+      "category": "안전성",
+      "title": "「유전자변형식품등의 안전성 심사 등에 관한 규정」 일부개정고시(안) 행정예고(공고 제2026-519호, 2026.10.28)",
+      "published_at": "2026-10-28T00:00:00+09:00",
+      "url": "https://www.mfds.go.kr/brd/m_209/view.do?seq=44306&srchFr=&srchTo=&srchWord=&srchTp=&itm_seq_1=0&itm_seq_2=0&multi_itm_seq=0&company_cd=&company_nm=&Data_stts_gubun=C9999&page=1",
+      "attachments": [
+        {
+          "label": "다운받기",
+          "url": "https://www.mfds.go.kr/brd/m_209/down.do?brd_id=data0009&seq=44306&data_tp=A&file_seq=4"
+        },
+        {
+          "label": "다운받기",
+          "url": "https://www.mfds.go.kr/brd/m_209/down.do?brd_id=data0009&seq=44306&data_tp=A&file_seq=5"
+        },
+        {
+          "label": "다운받기",
+          "url": "https://www.mfds.go.kr/brd/m_209/down.do?brd_id=data0009&seq=44306&data_tp=A&file_seq=6"
+        }
+      ],
+      "source_list_url": "https://www.mfds.go.kr/brd/m_209/list.do?Data_stts_gubun=C9999"
+    },
     {
       "agency": "식품의약품안전처",
       "document_type": "제개정고시",
