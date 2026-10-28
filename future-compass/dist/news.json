@@ -1,8 +1,24 @@
 {
-  "checked_at": "2026-10-28T08:05:37.260752+00:00",
-  "last_success_at": "2026-10-28T08:05:37.260752+00:00",
+  "checked_at": "2026-10-28T16:30:25.904003+00:00",
+  "last_success_at": "2026-10-28T16:30:25.904003+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "Legora is building the agentic operating system for legal work",
+      "url": "https://openai.com/index/legora-agentic-operating-system-for-legal-work",
+      "source": "OpenAI",
+      "published_at": "2026-10-28T09:30:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Legora is building the agentic operating system for legal work",
+      "url": "https://openai.com/index/legora",
+      "source": "OpenAI",
+      "published_at": "2026-10-28T09:30:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "We’re announcing Genie 4, our new world model for real-time interactive simulation.",
       "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/introducing-genie-4/",
@@ -226,28 +242,12 @@
       "published_at": "2026-10-21T12:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Patch the Planet: global response coordination as agents uncover critical vulnerabilities",
-      "url": "https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities",
-      "source": "OpenAI",
-      "published_at": "2026-10-21T07:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "How we built ChatGPT’s novel ad stack for user trust and relevance",
-      "url": "https://openai.com/index/building-chatgpt-ad-stack",
-      "source": "OpenAI",
-      "published_at": "2026-10-21T07:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-28T08:05:37.260752+00:00",
+    "checked_at": "2026-10-28T16:30:25.904003+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -364,11 +364,11 @@
       },
       {
         "date": "2026-12-21",
-        "title": "금요일수업"
+        "title": "축제 리허설 및 동아리 부스 설치"
       },
       {
         "date": "2026-12-21",
-        "title": "축제 리허설 및 동아리 부스 설치"
+        "title": "금요일수업"
       },
       {
         "date": "2026-12-22",
@@ -412,7 +412,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-28T08:05:37.260752+00:00",
+    "last_success_at": "2026-10-28T16:30:25.904003+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
