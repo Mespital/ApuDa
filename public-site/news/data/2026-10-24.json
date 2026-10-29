@@ -1,0 +1,403 @@
+{
+  "version": "1.2",
+  "report_date": "2026-10-24",
+  "collection_window": {
+    "start": "2026-10-23T09:00:00+09:00",
+    "end": "2026-10-24T09:00:00+09:00",
+    "timezone": "Asia/Seoul"
+  },
+  "sources": [
+    "데일리팜",
+    "의학신문",
+    "메디파나뉴스",
+    "약사공론"
+  ],
+  "briefing": "알테오젠부터 릴리·로슈까지…글로벌 신약 거래 살펴보니가 오늘 가장 중요한 이슈로 부각됐습니다. 이어 政, 식약처 의약품 심사 전면 개편…신약개발 부담 줄인다도 주요 변화로 확인됐습니다. 전체적으로는 신약·임상 · 디지털헬스 흐름이 두드러집니다.",
+  "top_news": [
+    {
+      "rank": 1,
+      "canonical_issue": "알테오젠부터 릴리·로슈까지…글로벌 신약 거래 살펴보니 - 약사공론",
+      "title": "알테오젠부터 릴리·로슈까지…글로벌 신약 거래 살펴보니",
+      "category": [
+        "m&a",
+        "인수",
+        "합병"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-10-23T12:05:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "국가신약개발재단(KDDF)이 공개한 2026년 9월 주요 신약개발 거래 현황에서 라이선싱 및 파트너십 계약 24건, 인수합병(M&A) 2건이 확인됐다. 노바티스와",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "사업개발·구조개편은 파이프라인 가치와 자본 배분, 기업 경쟁구도에 직접 영향을 주는 변화입니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=547079"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547079"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/547079_451797_3815.png",
+      "score": 56,
+      "oncology": null
+    },
+    {
+      "rank": 2,
+      "canonical_issue": "政, 식약처 의약품 심사 전면 개편…신약개발 부담 줄인다 - 메디파나뉴스",
+      "title": "政, 식약처 의약품 심사 전면 개편…신약개발 부담 줄인다",
+      "category": [
+        "식약처",
+        "허가",
+        "ai"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-23T17:41:40+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "의약품 개발 및 허가 심사 규제가 주요 선진국 수준으로 과감히 완화된다. 인공지능(AI) 활용 신약과 제네릭의약품, 일반의약품의 특성을 고려하지 않은 기존의 획일적인 심사 체계가 국내 제약업계의 경쟁력을 저해한다는 현장의 목소리를 적극 수용한 결과다. 23일 정부는 청와대 영빈관에서 대통령 주재로 '규제",
+        "사진=이정수 기자 의약품 개발 및 허가 심사 규제가 주요 선진국 수준으로 과감히 완화된다.",
+        "인공지능(AI) 활용 신약과 제네릭의약품, 일반의약품의 특성을 고려하지 않은 기존의 획일적인 심사 체계가 국내 제약업계의 경쟁력을 저해한다는 현장의 목소리를 적극 수용한 결과다."
+      ],
+      "importance": "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=419982"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=419982"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419982_327591_381.jpg",
+      "score": 55,
+      "oncology": null
+    },
+    {
+      "rank": 3,
+      "canonical_issue": "'P-CAB' 다케다 보신티·경보 보노칸 11월 급여 진입...특허 분쟁 등은 출시 변수 - 의학신문",
+      "title": "'P-CAB' 다케다 보신티·경보 보노칸 11월 급여 진입...특허 분쟁 등은 출시 변수",
+      "category": [
+        "급여"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-23T09:13:25+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=이재원 기자] 한국다케다제약의 칼륨경쟁적 위산분비억제제(P-CAB) '보신티'(보노프라잔푸마르산염)와 경보제약의 염변경 의약품 '보노칸'(보노",
+        "[의학신문·일간보사=이재원 기자] 한국다케다제약의 칼륨경쟁적 위산분비억제제(P-CAB) '보신티'(보노프라잔푸마르산염)와 경보제약의 염변경 의약품 '보노칸'(보노프라잔토실산염)이 오는 11월 건강보험에 진입할 전망이다.",
+        "보신티는 2019년 국내 첫 허가 이후 실제 출시로 이어지지 못하다가 허가 취하와 재허가를 거쳐 시장 진입을 다시 추진하고 있는 제품이다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3014651"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014651"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3014651_415579_61.jpg",
+      "score": 53,
+      "oncology": null
+    },
+    {
+      "rank": 4,
+      "canonical_issue": "식약처, AI 신약 심사기준 연내 마련...제네릭·일반약 허가 규제 완화 - 의학신문",
+      "title": "식약처, AI 신약 심사기준 연내 마련...제네릭·일반약 허가 규제 완화",
+      "category": [
+        "식약처",
+        "허가",
+        "ai"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-23T14:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=이재원 기자] 식품의약품안전처가 인공지능(AI)을 활용해 개발한 의약품의 허가·심사 가이드라인을 올해 12월까지 마련한다. AI를 이용한 신약",
+        "[의학신문·일간보사=이재원 기자] 식품의약품안전처가 인공지능(AI)을 활용해 개발한 의약품의 허가·심사 가이드라인을 올해 12월까지 마련한다.",
+        "AI를 이용한 신약 후보물질 발굴과 독성 예측 등이 확대되고 있지만, 이를 허가심사 과정에서 평가할 별도 기준이 없어 발생했던 제약기업의 불확실성을 해소하겠다는 취지다."
+      ],
+      "importance": "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3014609"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014609"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3014609_415542_172.jpg",
+      "score": 52,
+      "oncology": null
+    },
+    {
+      "rank": 5,
+      "canonical_issue": "요양기관 업무포털, 24일 오후 10시부터 서비스 일시중단 - 약사공론",
+      "title": "요양기관 업무포털, 24일 오후 10시부터 서비스 일시중단",
+      "category": [
+        "급여",
+        "약국"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-10-23T12:03:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "심사평가원 요양기관 업무포털이 오는 24일 밤부터 정기점검에 들어간다. 약국을 비롯한 요양기관에서 처방조제 이후 진행하는 요양급여비용 청구 등 주요 행정업무에 일",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=547086"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547086"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/547086_451801_451.png",
+      "score": 46,
+      "oncology": null
+    }
+  ],
+  "trends": [
+    {
+      "title": "신약·임상",
+      "count": 4,
+      "change": "4건의 주요 이슈에서 반복적으로 확인",
+      "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
+      "examples": [
+        "알테오젠부터 릴리·로슈까지…글로벌 신약 거래 살펴보니",
+        "政, 식약처 의약품 심사 전면 개편…신약개발 부담 줄인다"
+      ]
+    },
+    {
+      "title": "디지털헬스",
+      "count": 4,
+      "change": "4건의 주요 이슈에서 반복적으로 확인",
+      "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
+      "examples": [
+        "알테오젠부터 릴리·로슈까지…글로벌 신약 거래 살펴보니",
+        "政, 식약처 의약품 심사 전면 개편…신약개발 부담 줄인다"
+      ]
+    },
+    {
+      "title": "정책·급여",
+      "count": 4,
+      "change": "4건의 주요 이슈에서 반복적으로 확인",
+      "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
+      "examples": [
+        "政, 식약처 의약품 심사 전면 개편…신약개발 부담 줄인다",
+        "'P-CAB' 다케다 보신티·경보 보노칸 11월 급여 진입...특허 분쟁 등은 출시 변수"
+      ]
+    },
+    {
+      "title": "투자·사업개발",
+      "count": 1,
+      "change": "1건의 주요 이슈에서 반복적으로 확인",
+      "implication": "자본과 파이프라인 확보 경쟁이 사업전략의 핵심이 되는 흐름",
+      "examples": [
+        "알테오젠부터 릴리·로슈까지…글로벌 신약 거래 살펴보니"
+      ]
+    }
+  ],
+  "outlet_status": [
+    {
+      "publisher": "데일리팜",
+      "homepage_url": "https://www.dailypharm.com/",
+      "items": [
+        {
+          "title": "[데일리팜]&quot;두 달 뒤 시행인데&quot;…비대면 진료 제도화 앞둔 약국들 혼란",
+          "published_at": "2026-10-24T06:00:59+09:00",
+          "verified": true,
+          "source_url": "https://www.dailypharm.com/user/news/343736"
+        }
+      ]
+    },
+    {
+      "publisher": "의학신문",
+      "homepage_url": "https://www.bosa.co.kr/",
+      "items": [
+        {
+          "title": "'P-CAB' 다케다 보신티·경보 보노칸 11월 급여 진입...특허 분쟁 등은 출시 변수",
+          "published_at": "2026-10-23T09:13:25+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014651"
+        },
+        {
+          "title": "식약처, AI 신약 심사기준 연내 마련...제네릭·일반약 허가 규제 완화",
+          "published_at": "2026-10-23T14:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014609"
+        },
+        {
+          "title": "국립의전원, 특수의료인력 양성…보수체계까지 설계해야",
+          "published_at": "2026-10-23T11:29:02+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014679"
+        },
+        {
+          "title": "\"K-의료기기 중국 진출, 국내 인허가 벗어나 설계부터 현지 눈높이 맞춰야\"",
+          "published_at": "2026-10-23T12:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014570"
+        },
+        {
+          "title": "‘관리급여’에 흔들리는 ‘당연지정제’...헌법소원 수면 위로",
+          "published_at": "2026-10-23T17:20:10+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014715"
+        },
+        {
+          "title": "한림병원, 항생제 적정사용 관리 우수기관 선정",
+          "published_at": "2026-10-23T17:39:11+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014718"
+        },
+        {
+          "title": "동국대일산병원, 세계 의료계에 첨단 진료역량 소개",
+          "published_at": "2026-10-23T17:00:18+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014712"
+        },
+        {
+          "title": "융복합 헬스케어 진수 한자리에, ‘키메스 부산 2026’ 화려한 개막",
+          "published_at": "2026-10-23T10:37:07+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014668"
+        }
+      ]
+    },
+    {
+      "publisher": "메디파나뉴스",
+      "homepage_url": "https://www.medipana.com/",
+      "items": [
+        {
+          "title": "政, 식약처 의약품 심사 전면 개편…신약개발 부담 줄인다",
+          "published_at": "2026-10-23T17:41:40+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419982"
+        },
+        {
+          "title": "부광약품, 연구개발에 승부수 띄운다…투자·파이프라인 확대",
+          "published_at": "2026-10-24T06:03:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419986"
+        },
+        {
+          "title": "셀트리온, 옴리클로 日 공략…화분증부터 잡는다",
+          "published_at": "2026-10-23T10:10:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419926"
+        },
+        {
+          "title": "옵투스제약, 도입신약 마일스톤 전략적 변경…지급 부담 완화",
+          "published_at": "2026-10-24T06:01:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419988"
+        },
+        {
+          "title": "美, 중국 바이오 투자 막나…신약 기술도입은 허용?",
+          "published_at": "2026-10-24T08:59:07+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419996"
+        },
+        {
+          "title": "휴메딕스, 필러서 리투오로 성장축 이동…수익성 회복 과제",
+          "published_at": "2026-10-23T10:56:23+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419943"
+        },
+        {
+          "title": "제이브이엠, 3분기 영업익 31.5%↑ 전망…북미·중국 공략 추진",
+          "published_at": "2026-10-23T10:10:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419922"
+        },
+        {
+          "title": "아이센스, CGM·인슐린펌프 연동 확대 추진…안전성 검증 중점",
+          "published_at": "2026-10-23T10:40:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419936"
+        }
+      ]
+    },
+    {
+      "publisher": "약사공론",
+      "homepage_url": "https://www.kpanews.co.kr/",
+      "items": [
+        {
+          "title": "알테오젠부터 릴리·로슈까지…글로벌 신약 거래 살펴보니",
+          "published_at": "2026-10-23T12:05:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547079"
+        },
+        {
+          "title": "요양기관 업무포털, 24일 오후 10시부터 서비스 일시중단",
+          "published_at": "2026-10-23T12:03:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547086"
+        },
+        {
+          "title": "11월 약가 인하 앞둔 젤잔즈·닥사스…취급 약국 반품 확인",
+          "published_at": "2026-10-24T05:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547134"
+        },
+        {
+          "title": "많이팔린 7개 약가변동…레바아이 5%↓·위캡40mg은 표시가 그대로",
+          "published_at": "2026-10-24T05:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547127"
+        },
+        {
+          "title": "부광약품, 3분기 누적 매출 18% 성장에도 영업익 22% 감소",
+          "published_at": "2026-10-23T10:36:50+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547068"
+        },
+        {
+          "title": "[약국에서 바로 쓰는 AI] Claude Code로 약물 작용기전 영상 만들기",
+          "published_at": "2026-10-24T05:48:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546990"
+        },
+        {
+          "title": "AI 신약부터 제네릭·일반약까지…의약품 규제합리화 속도낸다",
+          "published_at": "2026-10-23T14:32:06+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547098"
+        },
+        {
+          "title": "청주시약사회 임명숙 감사 딸 (10/24)",
+          "published_at": "2026-10-23T10:59:54+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547074"
+        }
+      ]
+    }
+  ],
+  "insight": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름 동시에 디지털헬스 흐름도 함께 확인돼 단일 이슈보다 복합적인 산업 변화로 보는 것이 적절합니다.",
+  "infographic": {
+    "image_path": null,
+    "generated_at": null,
+    "template_version": "news-card-v1"
+  }
+}

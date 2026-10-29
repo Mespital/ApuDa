@@ -25,6 +25,7 @@
   }
   function ownRecords(a, records) {
     var from = validDate(a.from) ? a.from : '';
+    if (validDate(a.effectiveFrom) && a.effectiveFrom > from) from = a.effectiveFrom;
     return records.filter(function (x) { return x.academyId === a.id && (!from || x.date >= from && (!x.moveTo || x.moveTo >= from)); });
   }
   function schedule(a, records, date) {
@@ -37,14 +38,14 @@
     if (one) Object.assign(current, { start: one.start, end: one.end, cancelled: one.cancelled, moveTo: one.moveTo, occurrenceScope: 'one' });
     else Object.assign(current, { moveTo: date, occurrenceScope: current.scheduleScope });
     current.occurrenceDate = date;
-    current.isOccurrence = (!a.from || !validDate(a.from) || date >= a.from) && (!!one || current.days.indexOf(weekday(date)) >= 0);
+    current.isOccurrence = (!a.from || !validDate(a.from) || date >= a.from) && (!validDate(a.effectiveFrom) || date >= a.effectiveFrom) && (!validDate(a.until) || date <= a.until) && (!!one || current.days.indexOf(weekday(date)) >= 0);
     return current;
   }
   function forDay(academies, value, date) {
     if (!Array.isArray(academies) || !validDate(date)) return [];
     var all = cleanRecords(value), w = weekday(date), out = [];
     academies.forEach(function (a) {
-      if (!a || typeof a.id !== 'string' || !a.name || validDate(a.from) && date < a.from) return;
+      if (!a || typeof a.id !== 'string' || !a.name || validDate(a.from) && date < a.from || validDate(a.effectiveFrom) && date < a.effectiveFrom || validDate(a.until) && date > a.until) return;
       var records = ownRecords(a, all), current = schedule(a, records, date);
       var source = records.filter(function (x) { return x.scope === 'one' && x.date === date; })[0];
       var exceptions = records.filter(function (x) { return x.scope === 'one' && !x.cancelled && x.moveTo === date; }).sort(function (x, y) { return y.updatedAt - x.updatedAt || x.id.localeCompare(y.id); });
@@ -63,7 +64,9 @@
   function nextDate(a, value, from) {
     if (!validDate(from)) return '';
     var d = validDate(a.from) && a.from > from ? a.from : from;
-    for (var i = 0; i < 370; i++, d = addDays(d, 1)) { var s = scheduleFor(a, value, d); if (s && s.isOccurrence) return d; }
+    if (validDate(a.effectiveFrom) && a.effectiveFrom > d) d = a.effectiveFrom;
+    for (var i = 0; i < 370 && (!validDate(a.until) || d <= a.until); i++, d = addDays(d, 1)) { var s = scheduleFor(a, value, d); if (s && s.isOccurrence) return d; }
+    if (validDate(a.until) && d > a.until) return '';
     return validDate(a.from) && a.from > from ? a.from : from;
   }
   g.FC_ACADEMY_OCCURRENCES = { KEY: KEY, LIMIT: LIMIT, validDate: validDate, addDays: addDays, cleanRecord: cleanRecord,

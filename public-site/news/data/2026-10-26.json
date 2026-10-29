@@ -1,0 +1,465 @@
+{
+  "version": "1.2",
+  "report_date": "2026-10-26",
+  "collection_window": {
+    "start": "2026-10-25T09:00:00+09:00",
+    "end": "2026-10-26T09:00:00+09:00",
+    "timezone": "Asia/Seoul"
+  },
+  "sources": [
+    "데일리팜",
+    "의학신문",
+    "메디파나뉴스",
+    "약사공론"
+  ],
+  "briefing": "국내 제약업계, 규모의 경제로 살 길 찾는다가 오늘 가장 중요한 이슈로 부각됐습니다. 이어 반복되는 약가인하…제약사도 이제 '합쳐야 산다'도 주요 변화로 확인됐습니다. 전체적으로는 정책·급여 · 디지털헬스 흐름이 두드러집니다.",
+  "top_news": [
+    {
+      "rank": 1,
+      "canonical_issue": "국내 제약업계, 규모의 경제로 살 길 찾는다 - 의학신문",
+      "title": "국내 제약업계, 규모의 경제로 살 길 찾는다",
+      "category": [
+        "약가",
+        "m&a",
+        "인수",
+        "합병"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-26T06:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=김정일 기자] 정부의 약가인하가 지속되는 가운데 국내 제약바이오기업들이 인수합병(M&A), 품목 통합 등 규모의 경제로 통해 지속적인 성장 기",
+        "[의학신문·일간보사=김정일 기자] 정부의 약가인하가 지속되는 가운데 국내 제약바이오기업들이 인수합병(M&A), 품목 통합 등 규모의 경제로 통해 지속적인 성장 기반 마련을 모색하고 있어 주목된다.",
+        "반복되는 약가 인하 속에서 제약사들은 자체적인 경쟁력을 높이기 위해 인수합병, 품목 통합에 나서고, 정부는 업계의 이같은 움직임에 약가인하 제외, 세제 지원 등 정책적, 제도적 지원책을 마련해야 한다는 의견이다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3014740"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014740"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3014740_415678_124.jpg",
+      "score": 88,
+      "oncology": null
+    },
+    {
+      "rank": 2,
+      "canonical_issue": "반복되는 약가인하…제약사도 이제 '합쳐야 산다' - 약사공론",
+      "title": "반복되는 약가인하…제약사도 이제 '합쳐야 산다'",
+      "category": [
+        "약가",
+        "투자"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-10-26T05:54:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "국내 제약산업이 또 한 번의 구조적 변화를 맞고 있다.정부의 지속적인 약가인하와 원가 상승, 연구개발 투자 부담이 겹치면서 그동안 제네릭 중심의 다품목 구조를 유",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=547178"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547178"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/547178_451864_146.png",
+      "score": 76,
+      "oncology": null
+    },
+    {
+      "rank": 3,
+      "canonical_issue": "종근당 국내 판권 '테도피', 폐암 병용 2상서 생존 개선 신호 - 메디파나뉴스",
+      "title": "종근당 국내 판권 '테도피', 폐암 병용 2상서 생존 개선 신호",
+      "category": [
+        "임상 2상",
+        "2상"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-26T07:45:26+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "종근당이 국내 판권을 보유한 치료용 암백신 후보물질 '테도피'(Tedopi·OSE2101)가 전이성 비소세포폐암 병용 임상에서 생존 개선 가능성을 보였다. 항암화학요법 또는 면역항암제와 병용한 환자군에서 도세탁셀 단독군보다 수치상 높은 1년 생존율이 관찰됐다. 프랑스 바이오기업 OSE 이뮤노테라퓨틱스는 ",
+        "복사하기 종근당 충정로 본사 사옥 전경 사진을 AI 도움을 받아 생성한 이미지 종근당이 국내 판권을 보유한 치료용 암백신 후보물질 '테도피'(Tedopi·OSE2101)가 전이성 비소세포폐암 병용 임상에서 생존 개선 가능성을 보였다.",
+        "항암화학요법 또는 면역항암제와 병용한 환자군에서 도세탁셀 단독군보다"
+      ],
+      "importance": "주요 임상 결과는 향후 허가·가이드라인·표준치료 변화 가능성을 평가하는 근거가 됩니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=420029"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=420029"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/420029_327652_3910.png",
+      "score": 57,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "폐암"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [
+          "EGFR",
+          "ALK",
+          "ROS1"
+        ],
+        "trial_name": null,
+        "phase": "3",
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": "허가 관련",
+        "reimbursement_status": null,
+        "patient_summary": "치료제의 허가 범위나 사용 가능성과 관련된 소식입니다. 국내 실제 사용은 식약처 허가사항을 확인해야 합니다.",
+        "patient_relevance_score": 98,
+        "patient_relevance_labels": [
+          "허가",
+          "안전성",
+          "임상결과",
+          "바이오마커"
+        ],
+        "industry_summary": null
+      }
+    },
+    {
+      "rank": 4,
+      "canonical_issue": "'퍼제타' 8년째 비급여…'사회적 편익' 논의에 환자들 기대감 - 메디파나뉴스",
+      "title": "'퍼제타' 8년째 비급여…'사회적 편익' 논의에 환자들 기대감",
+      "category": [
+        "급여",
+        "허가"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-26T06:02:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "HER2 양성 조기 유방암 치료제 '퍼제타(퍼투주맙)'의 수술 후 보조요법이 국내 허가 이후 8년째 건강보험을 적용받지 못하고 있다. 재발 위험을 낮추고 완치를 목표로 하는 치료지만, 환자들은 여전히 약제비 전액을 부담해야 하는 상황이다. 이러한 가운데 국정감사에서 신약의 경제성 평가에 환자의 경제활동 ",
+        "복사하기 유방암 치료제의 건강보험 급여 평가에 환자의 사회 복귀와 가족의 돌봄 부담 감소 등 사회적 편익을 반영해야 한다는 논의가 제기되고 있다.",
+        "사진=AI 생성 이미지 HER2 양성 조기 유방암 치료제 '퍼제타(퍼투주맙)'의 수술 후 보조요법이 국내 허가 이후 8년째 건강보험을 적용받지 못하고 있다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=419973"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=419973"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419973_327583_4618.jpg",
+      "score": 55,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "유방암"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [
+          "HER2"
+        ],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": "허가 관련",
+        "reimbursement_status": "급여 관련",
+        "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
+        "patient_relevance_score": 98,
+        "patient_relevance_labels": [
+          "급여·접근성",
+          "허가",
+          "바이오마커",
+          "가이드라인"
+        ],
+        "industry_summary": null
+      }
+    },
+    {
+      "rank": 5,
+      "canonical_issue": "내달 신약 15품목 등재…협상 대상 9개 중 8개 '약가유연' 트랙 - 약사공론",
+      "title": "내달 신약 15품목 등재…협상 대상 9개 중 8개 '약가유연' 트랙",
+      "category": [
+        "급여",
+        "약가"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-10-26T05:51:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "신약 15개 품목이 내달 줄줄이 급여권에 본격 진입한다. 이 중 약가 또는 예상사용량 등 협상을 거쳐 등재된 신약은 9품목이고 이 중 약가유연제로 급여 등재에 도",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=547117"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547117"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/547117_451825_3529.jpg",
+      "score": 53,
+      "oncology": null
+    }
+  ],
+  "trends": [
+    {
+      "title": "정책·급여",
+      "count": 4,
+      "change": "4건의 주요 이슈에서 반복적으로 확인",
+      "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
+      "examples": [
+        "국내 제약업계, 규모의 경제로 살 길 찾는다",
+        "반복되는 약가인하…제약사도 이제 '합쳐야 산다'"
+      ]
+    },
+    {
+      "title": "디지털헬스",
+      "count": 4,
+      "change": "4건의 주요 이슈에서 반복적으로 확인",
+      "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
+      "examples": [
+        "반복되는 약가인하…제약사도 이제 '합쳐야 산다'",
+        "종근당 국내 판권 '테도피', 폐암 병용 2상서 생존 개선 신호"
+      ]
+    },
+    {
+      "title": "신약·임상",
+      "count": 3,
+      "change": "3건의 주요 이슈에서 반복적으로 확인",
+      "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
+      "examples": [
+        "종근당 국내 판권 '테도피', 폐암 병용 2상서 생존 개선 신호",
+        "'퍼제타' 8년째 비급여…'사회적 편익' 논의에 환자들 기대감"
+      ]
+    },
+    {
+      "title": "투자·사업개발",
+      "count": 2,
+      "change": "2건의 주요 이슈에서 반복적으로 확인",
+      "implication": "자본과 파이프라인 확보 경쟁이 사업전략의 핵심이 되는 흐름",
+      "examples": [
+        "국내 제약업계, 규모의 경제로 살 길 찾는다",
+        "반복되는 약가인하…제약사도 이제 '합쳐야 산다'"
+      ]
+    }
+  ],
+  "outlet_status": [
+    {
+      "publisher": "데일리팜",
+      "homepage_url": "https://www.dailypharm.com/",
+      "items": []
+    },
+    {
+      "publisher": "의학신문",
+      "homepage_url": "https://www.bosa.co.kr/",
+      "items": [
+        {
+          "title": "국내 제약업계, 규모의 경제로 살 길 찾는다",
+          "published_at": "2026-10-26T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014740"
+        },
+        {
+          "title": "[KIMES BUSAN 특별좌담회] \"의료 AI 글로벌 확장, '통합 레퍼런스'와 '갭 분석'으로 인허가 병목 뚫어야\"",
+          "published_at": "2026-10-26T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014571"
+        },
+        {
+          "title": "산부인과醫, '인건비 연 1억원 소요' 분만실 유지비 국가 지원 촉구",
+          "published_at": "2026-10-26T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014729"
+        },
+        {
+          "title": "“국가건강검진까지 검체검사 위·수탁 개편 확대, 즉각 중단해야”",
+          "published_at": "2026-10-25T15:31:17+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014739"
+        },
+        {
+          "title": "지·필·공의료 뒷받침할 임상·예방의학 융합인재 국가 육성 구체화",
+          "published_at": "2026-10-26T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014714"
+        },
+        {
+          "title": "의약품유통업계, 2026 세법 개정에 ‘백년지계’ 흔들린다",
+          "published_at": "2026-10-26T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3013886"
+        },
+        {
+          "title": "산부인과의사회, 응급피임약·임신중지약 비대면 처방 금지 촉구",
+          "published_at": "2026-10-25T15:18:12+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014735"
+        },
+        {
+          "title": "[기자수첩]치료와 미용의 경계, 환자의 고통은 누가 판단하나",
+          "published_at": "2026-10-26T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014682"
+        }
+      ]
+    },
+    {
+      "publisher": "메디파나뉴스",
+      "homepage_url": "https://www.medipana.com/",
+      "items": [
+        {
+          "title": "종근당 국내 판권 '테도피', 폐암 병용 2상서 생존 개선 신호",
+          "published_at": "2026-10-26T07:45:26+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=420029"
+        },
+        {
+          "title": "'퍼제타' 8년째 비급여…'사회적 편익' 논의에 환자들 기대감",
+          "published_at": "2026-10-26T06:02:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419973"
+        },
+        {
+          "title": "도수치료 묶자 다른 비급여로…관리급여 '풍선효과' 우려",
+          "published_at": "2026-10-26T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=420017"
+        },
+        {
+          "title": "[기획] 글로벌 블록버스터 도전, K-디지털헬스 육성 과제",
+          "published_at": "2026-10-26T06:04:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=420009"
+        },
+        {
+          "title": "큐리언트, 혈액암 전주기 신약 개발 전략 집중…연말 성과 주목",
+          "published_at": "2026-10-26T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=419971"
+        },
+        {
+          "title": "의약외품 분류 체계 손본다…식약처, 새 검토위원회 추진",
+          "published_at": "2026-10-26T06:02:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=420006"
+        },
+        {
+          "title": "[수첩] '신약' 검색에서 느껴지는 격세지감 이어가려면",
+          "published_at": "2026-10-26T06:03:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=420024"
+        },
+        {
+          "title": "공사 쉽다던 심평원 연수원…483억 증액 땐 '산악지형' 탓",
+          "published_at": "2026-10-26T07:27:13+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=420028"
+        }
+      ]
+    },
+    {
+      "publisher": "약사공론",
+      "homepage_url": "https://www.kpanews.co.kr/",
+      "items": [
+        {
+          "title": "반복되는 약가인하…제약사도 이제 '합쳐야 산다'",
+          "published_at": "2026-10-26T05:54:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547178"
+        },
+        {
+          "title": "내달 신약 15품목 등재…협상 대상 9개 중 8개 '약가유연' 트랙",
+          "published_at": "2026-10-26T05:51:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547117"
+        },
+        {
+          "title": "美 바이오 투자 규제 확대, 글로벌 제약사 신약 확보 전략은?",
+          "published_at": "2026-10-26T05:52:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547156"
+        },
+        {
+          "title": "RSA 14품목 조정…입랜스 6품목 상한금액 7만3천원으로",
+          "published_at": "2026-10-26T05:52:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547124"
+        },
+        {
+          "title": "항간질제·항생제 등 중증 피부부작용 8건…신경 이완제 악성 증후군 사망도",
+          "published_at": "2026-10-26T05:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547159"
+        },
+        {
+          "title": "[근거기반 한약제제의 최신임상동향] 경증 알츠하이머병에서 행동 및 심리 증상(BPSD)에 대한 도네페질과 우황청심원 병용의 최신 임상정보",
+          "published_at": "2026-10-26T05:46:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547014"
+        },
+        {
+          "title": "[일반의약품] 선택가능한 5가지 vs. 꼭 걸러야 할 5가지",
+          "published_at": "2026-10-26T05:48:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547010"
+        },
+        {
+          "title": "이번주 복지위 국정감사 ‘임신중지의약품 다시 다룬다’",
+          "published_at": "2026-10-26T05:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547175"
+        }
+      ]
+    }
+  ],
+  "insight": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름 동시에 디지털헬스 흐름도 함께 확인돼 단일 이슈보다 복합적인 산업 변화로 보는 것이 적절합니다.",
+  "infographic": {
+    "image_path": null,
+    "generated_at": null,
+    "template_version": "news-card-v1"
+  }
+}

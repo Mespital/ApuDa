@@ -85,6 +85,7 @@
       '<textarea class="rc-my" rows="3" maxlength="600" placeholder="(선택) 내 답 적기"></textarea>' +
       '<button type="button" class="primary rc-show" data-rc-show>정리 보고 맞춰보기</button>' +
       '<div class="rc-ans" hidden><pre>' + esc(answerText(r)) + '</pre>' +
+      (window.FC_LESSON ? FC_LESSON.markup(FC_LESSON.forReview(rid), false) : '') +
       (ai ? '<button type="button" class="rc-ai" data-rc-ai>🧠 흰둥이에게 내 답 봐달라기</button><div class="rc-ai-out" hidden></div>' : '') +
       '<p class="rc-ask">어땠어?</p><div class="rc-rate">' +
       '<button type="button" data-rc-rate="good">😀<b>잘 앎</b><small>' + pv.good + '</small></button>' +
@@ -98,6 +99,8 @@
     var my = sheet.querySelector('.rc-my').value.trim(), out = sheet.querySelector('.rc-ai-out');
     var q = my ? '복습 확인이야. 주제: ' + r.title + '\n질문: ' + questions(r).join(' / ') + '\n내 답: ' + my + '\n맞은 점, 빠진 점을 짧게 알려주고 정답은 2~3줄로 쉽게 설명해줘.'
       : '복습 확인이야. 주제: ' + r.title + '(' + (r.subject || '') + ')\n핵심 개념을 고1이 이해하게 3줄로 쉽게 설명해줘.';
+    var n = noteOf(r);
+    if (n && window.FC_LESSON) q += '\n[확인한 수업 자료]\n' + FC_LESSON.scope(n) + '\n' + FC_LESSON.text(n).slice(0, 1200) + '\n이 글과 메모만 근거로 확인해줘. 이 요청에 없는 사진 내용은 추측하지 마.';
     btn.disabled = true; btn.textContent = '🧠 보는 중… (최대 1~2분)'; out.hidden = false; out.textContent = '';
     SHIRO_AI.ask(q).then(function (a) { if (sheet) out.textContent = a || '지금은 답을 못 받았어. 정리 보고 스스로 맞춰봐.'; })
       .catch(function () { if (sheet) out.textContent = '지금은 흰둥이가 연결 안 돼. 정리 보고 스스로 맞춰봐.'; })

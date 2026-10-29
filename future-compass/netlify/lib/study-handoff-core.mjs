@@ -27,6 +27,12 @@ function sourceOf(v, now) {
   const source = { noteId: text(s.noteId || '', 80), at, subject: text(s.subject, 40, true), topic: text(s.topic, 80, true), text: text(s.text || '', 1500), sum: text(s.sum || '', 2000), review: text(s.review || '', 80), reviewDates: [] };
   if (!Array.isArray(s.reviewDates) || s.reviewDates.length > 7 || !s.reviewDates.every(dateOK)) fail('invalid');
   source.reviewDates = s.reviewDates;
+  if (s.photoText != null) source.photoText = text(s.photoText, 1500);
+  if (s.lesson != null) {
+    const l = s.lesson;
+    if (!l || typeof l !== 'object' || !dateOK(l.date) || l.date > new Date(now + 9 * 3600000).toISOString().slice(0, 10) || !['last', 'important'].includes(l.purpose) || l.page != null && (!Number.isInteger(l.page) || l.page < 1 || l.page > 5000)) fail('invalid');
+    source.lesson = { version: 1, date: l.date, purpose: l.purpose, page: l.page == null ? null : l.page };
+  }
   if (v.kind === 'note' && !source.noteId) fail('invalid');
   return source;
 }
@@ -86,7 +92,8 @@ export function makeHandler(openStore, clock = Date.now) {
         const v = JSON.parse(raw); if (v.version !== 1 || !idOK(v.id) || !secret(v.ownerKey)) fail('invalid');
         const source = sourceOf(v, now), base = baseName(source), files = [];
         if (v.kind === 'note') {
-          const md = '# ' + source.subject + ' · ' + source.topic + '\n\n작성 시각: ' + source.at + '\n\n## 원문\n\n' + source.text + '\n\n## 작성한 정리\n\n' + source.sum + '\n\n## 다시 보기\n\n' + source.reviewDates.join('\n') + '\n';
+          const lesson = source.lesson ? '\n\n## 수업 범위\n\n수업일: ' + source.lesson.date + '\n용도: ' + (source.lesson.purpose === 'last' ? '오늘 여기까지 · 수업 마지막 쪽' : '중요한 부분 · 복습 자료') + '\n확인한 쪽: ' + (source.lesson.page || '미입력') : '';
+          const md = '# ' + source.subject + ' · ' + source.topic + '\n\n작성 시각: ' + source.at + lesson + '\n\n## 원문\n\n' + source.text + (source.photoText ? '\n\n## 사진에서 읽은 글·메모\n\n' + source.photoText : '') + '\n\n## 작성한 정리\n\n' + source.sum + '\n\n## 다시 보기\n\n' + source.reviewDates.join('\n') + '\n';
           files.push(file('note', base + '.md', 'text/markdown', Buffer.from(md)));
           files.push(file('source', base + '.json', 'application/json', Buffer.from(JSON.stringify({ app: 'future-compass-note', version: 1, ...source }, null, 2))));
         }

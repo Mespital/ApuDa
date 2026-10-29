@@ -22,7 +22,7 @@
   }
   function forDay(d) {
     var w = wd(d);
-    return life().items.filter(function (x) { return x.date ? x.date === d : Array.isArray(x.days) && x.days.indexOf(w) >= 0; })
+    return life().items.filter(function (x) { return (!x.from || d >= x.from) && (!x.until || d <= x.until) && (x.date ? x.date === d : Array.isArray(x.days) && x.days.indexOf(w) >= 0); })
       .map(function (x) { return { id: x.id, title: x.title, icon: x.icon || '📌', start: okT(x.start), end: okT(x.end), busy: !!okT(x.end), rep: !x.date }; })
       .sort(function (a, b) { return (a.start || '99').localeCompare(b.start || '99'); });
   }
@@ -69,7 +69,7 @@
       (form.open && form.where === 'today' ? lifeForm() : '') + '</section>';
   }
   function lifeSettings() {
-    var items = life().items.slice().sort(function (a, b) { return (a.start || '99').localeCompare(b.start || '99'); });
+    var items = life().items.filter(function (x) { return !x.until || x.until >= today(); }).sort(function (a, b) { return (a.start || '99').localeCompare(b.start || '99'); });
     return '<section class="card" id="set-life"><h2>🗓 일상 일정</h2><p class="muted small">매일·평일·요일마다 반복되는 생활 일정. 오늘 화면 "오늘 일정"에 같이 보여.</p>' +
       (items.length ? '<ul class="lg-list">' + items.map(function (x) { var y = { id: x.id, title: x.title, icon: x.icon, start: okT(x.start), end: okT(x.end), rl: repLabel(x) }; return lifeRow(y, true); }).join('') + '</ul>' : '<p class="muted small">아직 없어.</p>') +
       (form.open && form.where === 'set' ? lifeForm() : '<p><button type="button" data-lg-add="set">+ 일정 추가</button></p>') + '</section>';

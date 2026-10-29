@@ -7,7 +7,7 @@
   function clean(x) {
     if (!x || typeof x !== 'object') return null;
     var days = Array.isArray(x.days) ? x.days.filter(function (d) { return Number.isInteger(d) && d >= 0 && d <= 6; }) : [];
-    return {
+    var item = {
       id: String(x.id || '').slice(0, 40) || Math.random().toString(36).slice(2, 10),
       name: String(x.name || '').trim().slice(0, 30), subject: String(x.subject || '').trim().slice(0, 20),
       days: days.filter(function (d, i) { return days.indexOf(d) === i; }).sort(),
@@ -17,12 +17,16 @@
       from: /^\d{4}-\d{2}-\d{2}$/.test(x.from || '') ? x.from : '', note: String(x.note || '').trim().slice(0, 80), tel: String(x.tel || '').replace(/[^\d-]/g, '').slice(0, 15),
       addr: String(x.addr || '').slice(0, 120), lat: Number.isFinite(+x.lat) && x.lat !== '' && x.lat != null ? +x.lat : null, lng: Number.isFinite(+x.lng) && x.lng !== '' && x.lng != null ? +x.lng : null
     };
+    if (/^\d{4}-\d\d-\d\d$/.test(x.until || '') && Number.isFinite(Date.parse(x.until)) && new Date(x.until).toISOString().slice(0, 10) === x.until) item.until = x.until;
+    if (/^\d{4}-\d\d-\d\d$/.test(x.effectiveFrom || '') && Number.isFinite(Date.parse(x.effectiveFrom)) && new Date(x.effectiveFrom).toISOString().slice(0, 10) === x.effectiveFrom) item.effectiveFrom = x.effectiveFrom;
+    if (x.scheduleRevision === '2026-10-26') item.scheduleRevision = x.scheduleRevision;
+    return item;
   }
-  function list() { try { var v = JSON.parse(localStorage.getItem(KEY) || '[]'); return Array.isArray(v) ? v.map(clean).filter(function (x) { return x && x.name; }).slice(0, 20) : []; } catch (e) { return []; } }
-  function save(arr) { try { localStorage.setItem(KEY, JSON.stringify(arr.slice(0, 20))); return true; } catch (e) { return false; } }
+  function list() { try { var v = JSON.parse(localStorage.getItem(KEY) || '[]'); return Array.isArray(v) ? v.map(clean).filter(function (x) { return x && x.name; }).slice(0, 100) : []; } catch (e) { return []; } }
+  function save(arr) { try { localStorage.setItem(KEY, JSON.stringify(arr.slice(0, 100))); return true; } catch (e) { return false; } }
   function occurrences() { try { return OCC ? OCC.cleanRecords(JSON.parse(localStorage.getItem(OCC.KEY) || '[]')) : []; } catch (e) { return []; } }
-  function forDay(iso) { if (OCC) return OCC.forDay(list(), occurrences(), iso); var w = new Date(iso + 'T12:00:00Z').getUTCDay(); return list().filter(function (a) { return a.days.indexOf(w) >= 0 && (!a.from || iso >= a.from); }).sort(function (a, b) { return (a.start || '99').localeCompare(b.start || '99'); }); }
-  function when(a) { return a.days.map(function (d) { return WD[d]; }).join('·') + (a.start ? ' ' + a.start + (a.end ? '~' + a.end : '') : '') + (a.from && a.from > today0() ? ' (' + Number(a.from.slice(5, 7)) + '/' + Number(a.from.slice(8)) + '부터)' : ''); }
+  function forDay(iso) { if (OCC) return OCC.forDay(list(), occurrences(), iso); var w = new Date(iso + 'T12:00:00Z').getUTCDay(); return list().filter(function (a) { return a.days.indexOf(w) >= 0 && (!a.from || iso >= a.from) && (!a.effectiveFrom || iso >= a.effectiveFrom) && (!a.until || iso <= a.until); }).sort(function (a, b) { return (a.start || '99').localeCompare(b.start || '99'); }); }
+  function when(a) { return a.days.map(function (d) { return WD[d]; }).join('·') + (a.start ? ' ' + a.start + (a.end ? '~' + a.end : ' (종료 시간 미정)') : '') + (a.from && a.from > today0() ? ' (' + Number(a.from.slice(5, 7)) + '/' + Number(a.from.slice(8)) + '부터)' : ''); }
   function today0() { return typeof today === 'function' ? today() : new Date(Date.now() + 9 * 3600000).toISOString().slice(0, 10); }
   var editing = null, editDate = '', editScope = 'one';
 
@@ -31,7 +35,7 @@
     var before, beforeRecords;
     try {
       before = localStorage.getItem(KEY); beforeRecords = localStorage.getItem(OCC.KEY);
-      localStorage.setItem(OCC.KEY, JSON.stringify(records)); localStorage.setItem(KEY, JSON.stringify(arr.slice(0, 20))); return true;
+      localStorage.setItem(OCC.KEY, JSON.stringify(records)); localStorage.setItem(KEY, JSON.stringify(arr.slice(0, 100))); return true;
     } catch (e) {
       try { if (beforeRecords === null) localStorage.removeItem(OCC.KEY); else if (beforeRecords !== undefined) localStorage.setItem(OCC.KEY, beforeRecords);
         if (before === null) localStorage.removeItem(KEY); else if (before !== undefined) localStorage.setItem(KEY, before); } catch (ignore) {}
@@ -59,7 +63,9 @@
   }
 
   function panel() {
-    var arr = list(), base = editing ? (arr.filter(function (a) { return a.id === editing; })[0] || {}) : {}, e = base;
+    var all = list(), arr = all.filter(function (a) { return !a.until || a.until >= today0(); }), past = all.filter(function (a) { return a.until && a.until < today0(); });
+    var base = editing ? (all.filter(function (a) { return a.id === editing; })[0] || {}) : {}, e = base;
+    var first = base.effectiveFrom && base.effectiveFrom > (base.from || '') ? base.effectiveFrom : base.from;
     if (editing && OCC && base.id) { if (!editDate) editDate = OCC.nextDate(base, occurrences(), today0()); e = OCC.scheduleFor(base, occurrences(), editDate) || base; }
     return '<section class="card ac-card" id="academy-panel"><div class="section-title"><h2>🏫 학원</h2><span class="badge">' + (arr.length ? arr.length + '곳' : '정해지면 입력') + '</span></div>' +
       (arr.length ? '<ul class="ac-list">' + arr.map(function (a) {
@@ -69,12 +75,13 @@
           (OCC && occurrences().some(function (x) { return x.academyId === a.id; }) ? '<br><small class="muted">바꾼 수업 일정은 오늘·주간 화면에 반영돼요.</small>' : '') +
           '</div><div class="ac-btns"><button data-ac-edit="' + esc(a.id) + '">고치기</button><button class="delete" data-ac-del="' + esc(a.id) + '" aria-label="' + esc(a.name) + ' 삭제">×</button></div></li>';
       }).join('') + '</ul>' : '<p class="muted">학원이 정해지면 여기에 넣어줘. 요일·시간을 넣으면 오늘·이번 주·오늘 한눈에 화면에 같이 나와.</p>') +
+      (past.length ? '<details class="ac-form-wrap"><summary>이전 학원 일정 기록 (' + past.length + '개)</summary><ul class="ac-list">' + past.map(function (a) { return '<li><div><b>' + esc(a.name) + '</b><br><span class="muted">' + esc(when(a)) + ' · ' + esc(a.until) + '까지</span></div></li>'; }).join('') + '</ul></details>' : '') +
       '<details class="ac-form-wrap"' + (editing || !arr.length ? ' open' : '') + '><summary>' + (editing ? '✏️ ' + esc(e.name) + ' 고치기' : '+ 학원 추가') + '</summary>' +
       '<form data-ac-form' + (editing ? ' data-id="' + esc(editing) + '"' : '') + '>' +
         '<div class="ac-row"><label>학원 이름<input name="name" required maxlength="30" value="' + esc(e.name) + '" placeholder="예: ○○수학"></label><label>과목<input name="subject" maxlength="20" value="' + esc(e.subject) + '" placeholder="예: 수학"></label></div>' +
         (editing && OCC ? '<fieldset class="ac-days"><legend>수업 일정을 바꾸는 범위</legend><label><input type="radio" name="scope" value="one" ' + (editScope === 'one' ? 'checked' : '') + '>이번 한 번만</label><label><input type="radio" name="scope" value="future" ' + (editScope === 'future' ? 'checked' : '') + '>이번부터 이후 일정 모두</label></fieldset>' +
-          '<label>바꿀 수업 날짜<input type="date" name="occurrenceDate" data-ac-occ-date required min="' + esc(base.from) + '" value="' + esc(editDate) + '"></label><p class="muted" data-ac-day-hint>' + (editScope === 'one' ? '이번 한 번은 아래 날짜·시간만 바뀌어요.' : '선택한 날부터 반복 요일·시간이 바뀌어요. 이전 일정과 따로 바꾼 한 번의 일정은 유지돼요.') + '</p>' +
-          '<label data-ac-move' + (editScope === 'future' ? ' hidden' : '') + '>이번 수업을 하는 날<input type="date" name="moveTo" min="' + esc(base.from) + '" value="' + esc(e.moveTo || editDate) + '"></label><label class="ac-hw"><input type="checkbox" name="cancelled" ' + (e.cancelled ? 'checked' : '') + '>선택한 범위의 수업 쉬기</label>' : '') +
+          '<label>바꿀 수업 날짜<input type="date" name="occurrenceDate" data-ac-occ-date required min="' + esc(first) + '" value="' + esc(editDate) + '"></label><p class="muted" data-ac-day-hint>' + (editScope === 'one' ? '이번 한 번은 아래 날짜·시간만 바뀌어요.' : '선택한 날부터 반복 요일·시간이 바뀌어요. 이전 일정과 따로 바꾼 한 번의 일정은 유지돼요.') + '</p>' +
+          '<label data-ac-move' + (editScope === 'future' ? ' hidden' : '') + '>이번 수업을 하는 날<input type="date" name="moveTo" min="' + esc(first) + '" value="' + esc(e.moveTo || editDate) + '"></label><label class="ac-hw"><input type="checkbox" name="cancelled" ' + (e.cancelled ? 'checked' : '') + '>선택한 범위의 수업 쉬기</label>' : '') +
         '<fieldset class="ac-days"><legend>' + (editing && OCC ? '반복 요일 (이후 일정 모두에 적용)' : '요일') + '</legend>' + [1, 2, 3, 4, 5, 6, 0].map(function (d) { return '<label><input type="checkbox" name="day" value="' + d + '" ' + ((e.days || []).indexOf(d) >= 0 ? 'checked' : '') + (editing && OCC && editScope === 'one' ? ' disabled' : '') + '>' + WD[d] + '</label>'; }).join('') + '</fieldset>' +
         '<div class="ac-row"><label>시작<input type="time" name="start" value="' + esc(e.start) + '"></label><label>끝<input type="time" name="end" value="' + esc(e.end) + '"></label></div>' +
         '<div class="ac-row"><label>' + (editing && OCC ? '처음 시작한 날' : '시작하는 날 <small class="muted">(이 날부터 표시)</small>') + '<input type="date" name="from" value="' + esc(base.from) + '"' + (editing && OCC ? ' readonly' : '') + '></label><label>전화<input name="tel" inputmode="tel" maxlength="15" value="' + esc(e.tel) + '" placeholder="02-000-0000"></label></div><div class="ac-row"><label>메모<input name="note" maxlength="80" value="' + esc(e.note) + '" placeholder="예: 결제해야 함"></label></div>' +
@@ -94,11 +101,12 @@
     if (id && !prev) return;
     var scope = String(d.get('scope') || ''), scoped = id && OCC && ['one', 'future'].indexOf(scope) >= 0;
     var selected = scoped ? String(d.get('occurrenceDate') || '') : '', prior = scoped ? OCC.scheduleFor(prev, occurrences(), selected) : null;
+    var first = prev && prev.effectiveFrom && prev.effectiveFrom > (prev.from || '') ? prev.effectiveFrom : prev && prev.from;
     if (scoped) {
-      if (!prior || prev.from && selected < prev.from) { if (typeof notice === 'function') notice('처음 시작한 날 이후의 수업 날짜를 골라줘.'); return; }
+      if (!prior || first && selected < first) { if (typeof notice === 'function') notice('현재 시간표 적용일 이후의 수업 날짜를 골라줘.'); return; }
       if (scope === 'one' && !prior.isOccurrence) { if (typeof notice === 'function') notice('반복 요일에 있는 수업 날짜를 골라줘. 요일을 바꾸려면 이후 일정 모두를 선택해줘.'); return; }
       var cancelled = d.get('cancelled') === 'on', target = scope === 'one' ? String(d.get('moveTo') || selected) : '';
-      if (scope === 'one' && (!OCC.validDate(target) || prev.from && target < prev.from)) { if (typeof notice === 'function') notice('이번 수업을 하는 날짜를 확인해줘.'); return; }
+      if (scope === 'one' && (!OCC.validDate(target) || first && target < first)) { if (typeof notice === 'function') notice('이번 수업을 하는 날짜를 확인해줘.'); return; }
       var record = OCC.cleanRecord({ academyId: id, scope: scope, date: selected, days: scope === 'one' ? prior.days : d.getAll('day').map(Number),
         start: cancelled ? prior.start : String(d.get('start') || ''), end: cancelled ? prior.end : String(d.get('end') || ''), cancelled: cancelled, moveTo: target, updatedAt: Date.now() });
       if (!record || !cancelled && scope === 'future' && !record.days.length) { if (typeof notice === 'function') notice('반복 요일과 시작·끝 시간을 확인해줘. 끝 시간은 시작 시간보다 늦어야 해.'); return; }
@@ -110,6 +118,9 @@
     var item = clean({ id: id || '', name: d.get('name'), subject: d.get('subject'), days: d.getAll('day').map(Number), start: d.get('start'), end: d.get('end'), book: d.get('book'), progress: d.get('progress'), homework: d.get('homework'), addr: addr, from: d.get('from'), note: d.get('note'), tel: d.get('tel'),
       lat: prev && prev.addr === addr ? prev.lat : null, lng: prev && prev.addr === addr ? prev.lng : null });
     if (scoped) { item.days = prev.days.slice(); item.start = prev.start; item.end = prev.end; item.from = prev.from; }
+    if (prev && prev.until) item.until = prev.until;
+    if (prev && prev.effectiveFrom) item.effectiveFrom = prev.effectiveFrom;
+    if (prev && prev.scheduleRevision) item.scheduleRevision = prev.scheduleRevision;
     if (!item.name) return;
     if (!item.days.length && typeof notice === 'function') notice('요일을 하나 이상 골라줘. 오늘·이번 주 화면에 나오려면 필요해.');
     if (id) { arr = arr.map(function (a) { if (a.id !== id) return a; item.hwDone = a.homework === item.homework ? a.hwDone : false; return item; }); } else arr.push(item);
@@ -153,6 +164,8 @@
   function seed() {
     try { if (localStorage.getItem(SEED_FLAG)) return; } catch (e) { return; }
     var arr = list(), n = 0;
+    // 다른 기기에서 이미 갱신된 시간표를 받았으면 예전 기본값을 다시 넣지 않는다.
+    try { if (arr.some(function (a) { return a.scheduleRevision === '2026-10-26'; }) || (JSON.parse(localStorage.getItem('fc_life_v1') || '{}') || {}).scheduleRevision === '2026-10-26') { localStorage.setItem(SEED_FLAG, '1'); return; } } catch (e) { return; }
     var nm = function (v) { return v.replace(/[\s()]/g, ''); };
     SEED.forEach(function (x) {
       var hit = arr.filter(function (a) { return a.id === x.id || nm(a.name) === nm(x.name); })[0];
@@ -179,7 +192,7 @@
     try { if (localStorage.getItem(INFO_FLAG) || !localStorage.getItem(SEED_FLAG)) return; } catch (e) { return; }
     var arr = list(), nm = function (v) { return v.replace(/[\s()]/g, ''); }, geo = [];
     INFO.forEach(function (x) {
-      var a = arr.filter(function (y) { return y.id === x.id || nm(y.name) === nm(x.name); })[0]; if (!a) return;
+      var a = arr.filter(function (y) { return y.id === x.id || y.id === x.id + '-20261026' || nm(y.name) === nm(x.name); })[0]; if (!a) return;
       if (x.addr && !a.addr) { a.addr = x.addr; a.lat = null; a.lng = null; geo.push(a.id); }
       if (x.tel && !a.tel) a.tel = x.tel;
       if (x.note && (a.note || '').indexOf(x.note) < 0) a.note = ((a.note ? a.note + ' · ' : '') + x.note).slice(0, 80);
@@ -196,7 +209,7 @@
   function info2() {
     try { if (localStorage.getItem(INFO2_FLAG) || !localStorage.getItem(INFO_FLAG)) return; } catch (e) { return; }
     var arr = list(), nm = function (v) { return v.replace(/[\s()]/g, ''); }, geo = [];
-    var get = function (id, name) { return arr.filter(function (y) { return y.id === id || nm(y.name) === nm(name); })[0]; };
+    var get = function (id, name) { return arr.filter(function (y) { return y.id === id || y.id === id + '-20261026' || nm(y.name) === nm(name); })[0]; };
     var m = get('seed-math', '다원교육 대치');
     if (m) { if (!m.addr) { m.addr = '서울 강남구 도곡로 501'; m.lat = null; m.lng = null; geo.push(m.id); } if ((m.note || '').indexOf('고등관') < 0) m.note = ((m.note ? m.note + ' · ' : '') + '고등관 2층').slice(0, 80); }
     var k = get('seed-kor', '송림 국어 (채리)');

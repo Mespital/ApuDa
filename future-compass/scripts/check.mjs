@@ -53,6 +53,9 @@ console.log('PASS: 30 role details, top-three and show-more, academic categories
 await import('./check-study-brief.mjs');
 await import('./check-academy-occurrences.mjs');
 await import('./check-parent-readonly.mjs');
+await import('./check-lesson-photos.mjs');
+await import('./check-today-focus.mjs');
+await import('./check-schedule-update.mjs');
 await import('./check-watch-recovery.mjs');
 // 모든 dist 스크립트 문법 + 서비스워커 캐시 목록이 실제 파일인지 (2026-10-19: sw.js 따옴표 누락으로 SW 설치 실패했던 것 재발 방지)
 for(const f of fs.readdirSync(path.join(root,'dist')).filter(f=>f.endsWith('.js')))new vm.Script(fs.readFileSync(path.join(root,'dist',f),'utf8'),{filename:f});
