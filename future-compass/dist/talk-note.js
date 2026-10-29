@@ -626,6 +626,7 @@
         (n.photoText ? '<details><summary>사진에서 읽은 글·메모</summary><p class="tn-txt">' + esc(n.photoText).replace(/\n/g, '<br>') + '</p></details>' : '') +
         (isParent() ? '' : '<button type="button" class="tn-audio-link" data-tn-attach="' + esc(n.id) + '">' + (n.photo ? '사진·마지막 쪽 바꾸기' : '이 메모에 수업 사진 추가') + '</button>') +
         (vjobs().some(function (j) { return j.noteId === n.id; }) ? '<p class="tn-voice-wait small" role="status">🎧 받아쓰기·정리 중… 끝나면 여기에 나와.</p>' : '') +
+        (n.via === 'watch' && n.watchState && n.watchState !== 'success' ? '<p class="tn-warn">워치 원문은 기기에 저장했어. 정리·Drive 처리는 설정 → 애플워치에서 확인해줘.</p>' : '') +
         (n.cloud && Array.isArray(n.cloud.files) ? n.cloud.files.filter(function (f) { return f.role !== 'audio' && /^https:\/\/drive\.google\.com\//.test(f.url || ''); }).map(function (f) { return '<a class="tn-audio-link" href="' + esc(f.url) + '" target="_blank" rel="noopener">' + (f.role === 'review' ? 'Drive 복습 정리 ↗' : f.role === 'note' ? 'Drive 받아쓰기 ↗' : 'Drive 파일 ↗') + '</a>'; }).join('') : '') +
         (n.audio ? '<button type="button" class="tn-audio-link" data-tn-listen="' + esc(n.audio.id) + '">🎧 녹음 원본 듣기</button>' + (/^https:\/\/drive\.google\.com\//.test(n.audio.driveUrl || '') ? '<a class="tn-audio-link" href="' + esc(n.audio.driveUrl) + '" target="_blank" rel="noopener">Drive 녹음 열기 ↗</a>' : '') : '') +
         (n.sum ? '<div class="tn-sumv">' + esc(n.sum).replace(/\n/g, '<br>') + '</div>' + (n.text ? '<p class="tn-txt tn-raw">' + esc(n.text).replace(/\n/g, '<br>') + '</p><button type="button" class="linkish" data-tn-raw="1">원문 보기</button>' : '') : (n.text ? '<p class="tn-txt">' + esc(n.text).replace(/\n/g, '<br>') + '</p>' : '')) + (window.FC_CHAT_DRIVE ? '<button type="button" class="tn-audio-link" data-tn-cloud="' + esc(n.id) + '">채팅·Drive로 보내기</button>' : '') + '</li>';
@@ -664,19 +665,49 @@
     }).catch(function () { notice('내보내기를 하지 못했어. 인터넷 연결을 확인해줘.'); });
   }
 
+  function externalStored(extId, revision) {
+    var n = notes().find(function (a) { return a.extId === extId; });
+    return !!(n && n.externalReady && (!revision || Number(n.externalRevision || 0) >= Number(revision)));
+  }
   window.FC_NOTES = {
     lessons: function () { try { return lessons(); } catch (e) { return []; } },
-    // 워치 등 바깥에서 온 노트 넣기 (같은 extId는 한 번만). 복습: 내일·3일·7일
+    hasExternal: externalStored,
+    // Core + review dates commit first; the final note is the durable import receipt.
     addExternal: function (x) {
-      if (!x || !x.extId || notes().some(function (n) { return n.extId === x.extId; })) return false;
-      var t = today(), id = nid(), text = String(x.text || '').slice(0, 1500), sum = String(x.sum || '').slice(0, 2000), subject = String(x.subject || '기타').slice(0, 20);
-      var title = subject + ' · ' + (x.via === 'watch' ? '⌚ 워치 메모' : '1분 말하기') + ' — ' + (x.topic || text).split('\n')[0].slice(0, 40);
-      var rv = { id: uid(), title: title.slice(0, 120), date: t, done: false, kind: '과제', subject: subject, note: (sum || text).slice(0, 800) };
-      var prevN = notes(), a = prevN.slice();
-      a.push({ id: id, extId: x.extId, via: x.via || '', date: t, at: x.at || new Date().toISOString(), kind: 'talk', subject: subject, topic: x.topic || undefined, text: text, sum: sum || undefined, review: rv.id, cloud: x.files && x.files.length ? { jobId: 'w-' + x.extId, files: x.files, at: Date.now() } : undefined });
-      if (!saveNotes(a)) return false;
-      state.reviews.push(rv); if (save() === false) { state.reviews.pop(); saveNotes(prevN); return false; }
-      if (window.FC_PLANNER) { var P = FC_PLANNER.get(); P.again[rv.id] = [1, 3, 7].map(function (n) { return new Date(Date.parse(t + 'T12:00:00Z') + n * 86400000).toISOString().slice(0, 10); }); try { localStorage.setItem(FC_PLANNER.KEY, JSON.stringify(P)); } catch (e) {} }
+      if (!x || typeof x.extId !== 'string' || !/^[a-zA-Z0-9-]{1,64}$/.test(x.extId) || isParent() || document.documentElement.classList.contains('pin-locked') || !window.FC_PLANNER) return false;
+      var captured = Date.parse(x.at || new Date().toISOString()), revision = Number(x.resultAt) || captured;
+      if (!isFinite(captured) || externalStored(x.extId, revision)) return false;
+      var t = new Date(captured + 9 * 3600000).toISOString().slice(0, 10), text = String(x.text || '').trim().slice(0, 1500), sum = String(x.sum || '').slice(0, 2000), subject = String(x.subject || '기타').slice(0, 20), topic = String(x.topic || '').slice(0, 80);
+      if (!text) return false;
+      var previous = notes(), existing = previous.find(function (n) { return n.extId === x.extId; }), id = existing ? existing.id : 'ext-' + x.extId;
+      var reviewId = existing && existing.review || 'ext-review-' + x.extId;
+      var title = subject + ' · ' + (x.via === 'watch' ? '⌚ 워치 메모' : '1분 말하기') + ' — ' + (topic || text).split('\n')[0].slice(0, 40);
+      var previousReviews = state.reviews.slice(), oldReview = previousReviews.find(function (r) { return r.id === reviewId; });
+      var rv = oldReview ? Object.assign({}, oldReview) : { id: reviewId, title: title.slice(0, 120), date: t, done: false, kind: '과제', subject: subject, note: (sum || text).slice(0, 800) };
+      if (oldReview && existing && oldReview.note === existing.externalBasisNote) rv.note = (sum || text).slice(0, 800);
+      var n = Object.assign({}, existing || {}, { id: id, extId: x.extId, via: x.via || '', date: existing ? existing.date : t, at: x.at || new Date(captured).toISOString(), kind: 'talk', subject: existing ? existing.subject : subject, topic: existing ? existing.topic : topic || undefined, review: reviewId, externalReady: true, externalRevision: revision, externalBasisText: text, externalBasisSum: sum, externalBasisNote: (sum || text).slice(0, 800), watchState: x.outcome || 'success', watchErrors: Array.isArray(x.errors) ? x.errors.slice(0, 8) : [] });
+      // A retry may add missing results; it must not replace a student's edits.
+      n.text = !existing || !existing.text || existing.text === existing.externalBasisText ? text : existing.text;
+      n.sum = !existing || !existing.sum || existing.sum === existing.externalBasisSum ? sum || undefined : existing.sum;
+      var files = existing && existing.cloud && Array.isArray(existing.cloud.files) ? existing.cloud.files.slice() : [];
+      (Array.isArray(x.files) ? x.files : []).forEach(function (f) { if (f && ['audio', 'note', 'review'].indexOf(f.role) >= 0 && /^https:\/\/drive\.google\.com\/file\/d\/[\w-]+\/view$/.test(f.url || '')) { files = files.filter(function (a) { return a.role !== f.role; }); files.push(f); } });
+      if (files.length) n.cloud = { jobId: 'w-' + x.extId, files: files, at: Date.now() };
+      var P = FC_PLANNER.get(), oldDates = P.again[reviewId], keys = ['compass-study-v1', FC_PLANNER.KEY, KEY], before = {};
+      try { keys.forEach(function (k) { before[k] = localStorage.getItem(k); }); }
+      catch (e) { notice('기기 저장소를 확인하지 못했어. 워치 메모는 서버에 남겨둘게.'); return false; }
+      try {
+        state.reviews = previousReviews.filter(function (r) { return r.id !== reviewId; }).concat([rv]);
+        if (save() === false) throw new Error('core');
+        if (!Array.isArray(oldDates)) P.again[reviewId] = [1, 3, 7].map(function (day) { return new Date(Date.parse(t + 'T12:00:00Z') + day * 86400000).toISOString().slice(0, 10); });
+        localStorage.setItem(FC_PLANNER.KEY, JSON.stringify(P));
+        if (!saveNotes(previous.filter(function (a) { return a.extId !== x.extId; }).concat([n]))) throw new Error('notes');
+      } catch (e) {
+        state.reviews = previousReviews;
+        if (oldDates === undefined) delete P.again[reviewId]; else P.again[reviewId] = oldDates;
+        keys.forEach(function (k) { try { if (before[k] === null) localStorage.removeItem(k); else localStorage.setItem(k, before[k]); } catch (ignored) {} });
+        notice('노트와 복습 날짜를 저장하지 못했어. 워치 메모는 다시 가져올 수 있게 남겨둘게.');
+        return false;
+      }
       if (typeof render === 'function') render(); return true;
     },
     get: function (id) { return notes().find(function (n) { return n.id === id; }); }, photo: getPhoto,

@@ -27,7 +27,7 @@ export function validVoice(b, now = Date.now()) {
 export function createVoice(deps, dir = path.join(process.env.FC_DATA_DIR || '/data', 'voice'), clock = Date.now) {
   const jobs = new Map();
   const file = (id) => path.join(dir, id + '.json');
-  const saveJob = (j) => { try { fs.mkdirSync(dir, { recursive: true }); fs.writeFileSync(file(j.id) + '.tmp', JSON.stringify(j)); fs.renameSync(file(j.id) + '.tmp', file(j.id)); } catch (e) { console.error('voice save failed', e.message); } };
+  const saveJob = (j) => { try { fs.mkdirSync(dir, { recursive: true }); fs.writeFileSync(file(j.id) + '.tmp', JSON.stringify(j)); fs.renameSync(file(j.id) + '.tmp', file(j.id)); return true; } catch (e) { console.error('voice save failed', e.message); return false; } };
   const load = (id) => { if (jobs.has(id)) return jobs.get(id); try { const j = JSON.parse(fs.readFileSync(file(id), 'utf8')); jobs.set(id, j); return j; } catch { return null; } };
   function sweep() {
     const now = clock();
@@ -35,17 +35,38 @@ export function createVoice(deps, dir = path.join(process.env.FC_DATA_DIR || '/d
     try { for (const f of fs.readdirSync(dir)) { if (!/^[a-f0-9]{32}\.json$/.test(f)) continue; const p = path.join(dir, f); if (now - fs.statSync(p).mtimeMs > KEEP) fs.unlinkSync(p); } } catch {}
   }
   let running = Promise.resolve();   // 한 번에 하나씩 (CPU 2개짜리 VPS)
-  function view(j) { return { ok: true, id: j.id, state: j.state, step: j.step, errors: j.errors, result: j.state === 'done' ? j.result : null }; }
+  function outcome(j) {
+    if (j.state === 'interrupted') return 'interrupted';
+    if (j.state !== 'done') return 'pending';
+    return j.errors.length ? (j.result?.files?.length ? 'partial' : 'failed') : 'success';
+  }
+  function view(j) { return { ok: true, id: j.id, source: j.source || '', state: j.state, step: j.step, errors: j.errors, outcome: outcome(j), result: j.state === 'done' ? j.result : null }; }
+
+  function enqueue(j, bytes, meta) {
+    running = running.then(() => {
+      j.state = 'working';
+      if (!saveJob(j)) throw new Error('persist');
+      return run(j, bytes, meta);
+    }).catch((e) => {
+      j.state = j.source === 'watch' ? 'interrupted' : 'done'; j.step = '';
+      j.errors = [...new Set([...j.errors, j.source === 'watch' ? 'interrupted' : 'failed'])];
+      j.result ||= { transcript: meta.text || '', summary: '', files: [], at: clock() };
+      saveJob(j); console.error('voice interrupted', e && e.message);
+    });
+  }
 
   async function run(j, bytes, b) {
-    const set = (step) => { j.step = step; saveJob(j); };
-    let transcript = '';
-    if (deps.stt && bytes) { set('stt'); try { transcript = String(await deps.stt(bytes, b.mime, b.subject) || '').trim().slice(0, 3000); } catch (e) { j.errors.push('stt'); } }
+    const set = (step) => { j.step = step; if (!saveJob(j)) throw new Error('persist'); };
+    let transcript = j.result?.transcript || '';
+    if (!transcript && deps.stt && bytes) { set('stt'); try { transcript = String(await deps.stt(bytes, b.mime, b.subject) || '').trim().slice(0, 3000); } catch (e) { j.errors.push('stt'); } }
     if (!transcript && b.text) transcript = b.text.trim();
-    let sum = '';
-    if (transcript.length >= 15 && deps.hasAI) { set('summary'); try { sum = String(await deps.organize(b.subject, transcript) || '').trim().slice(0, 2000); } catch (e) { j.errors.push('summary'); } }
+    let sum = j.result?.summary || '';
+    if (!sum && transcript.length >= 15 && deps.hasAI) { set('summary'); try { sum = String(await deps.organize(b.subject, transcript) || '').trim().slice(0, 2000); if (!sum) j.errors.push('summary'); } catch (e) { j.errors.push('summary'); } }
     else if (transcript.length < 15) j.errors.push('short');
-    const files = [], drive = typeof deps.drive === 'function' ? deps.drive() : deps.drive;
+    else if (!sum && b.textOnly && !deps.hasAI) j.errors.push('summary');
+    const files = (j.result?.files || []).slice(), drive = typeof deps.drive === 'function' ? deps.drive() : deps.drive;
+    j.result = { transcript, summary: sum, files, at: clock() };
+    if (!saveJob(j)) throw new Error('persist');
     if (drive) {
       set('drive');
       const base = baseName(b.subject, b.topic || '수업 복습', Date.parse(b.at)), folder = folderOf(b.subject);
@@ -53,13 +74,29 @@ export function createVoice(deps, dir = path.join(process.env.FC_DATA_DIR || '/d
       if (transcript) items.push(['note', base + '_받아쓰기.md', Buffer.from('# ' + b.subject + ' · ' + (b.topic || '수업 복습') + '\n\n' + (bytes ? '녹음 시각: ' : '말한 시각(워치): ') + '' + kstStamp(Date.parse(b.at)).replace(/_KST$/, ' (KST)') + '\n\n## 받아쓰기\n\n' + transcript + '\n'), 'text/markdown']);
       if (sum) items.push(['review', base + '_복습정리.md', Buffer.from('# ' + b.subject + ' · ' + (b.topic || '수업 복습') + ' 복습 정리\n\n' + sum + '\n'), 'text/markdown']);
       for (const [role, name, data, mime] of items) {
+        if (files.some((f) => f.role === role)) continue;
         try { const f = await drive.upload(folder, name, data, mime); if (f && /^[\w-]{10,200}$/.test(f.id)) files.push({ role, id: f.id, url: 'https://drive.google.com/file/d/' + f.id + '/view', name, size: data.length }); else j.errors.push('drive_' + role); }
         catch (e) { j.errors.push('drive_' + role); }
+        if (!saveJob(j)) throw new Error('persist');
+      }
+    } else if (b.textOnly) j.errors.push('drive');
+    j.result = { transcript, summary: sum, files, at: clock() };
+    j.state = 'done'; j.step = ''; if (!saveJob(j)) throw new Error('persist');
+  }
+
+  // Only text submissions can be resumed without an audio original. Never journal audio bytes.
+  try {
+    for (const f of fs.readdirSync(dir)) {
+      if (!/^[a-f0-9]{32}\.json$/.test(f)) continue;
+      const j = load(f.slice(0, 32));
+      if (!j || clock() - j.createdAt > KEEP || !['queued', 'working'].includes(j.state)) continue;
+      if (j.source === 'watch' && j.input?.textOnly && typeof j.input.text === 'string' && j.input.text.trim().length >= 2) {
+        j.state = 'queued'; j.step = 'queued'; j.errors = []; saveJob(j); enqueue(j, null, j.input);
+      } else if (j.source === 'watch') {
+        j.state = 'interrupted'; j.step = ''; j.errors = [...new Set([...j.errors, 'interrupted'])]; saveJob(j);
       }
     }
-    j.result = { transcript, summary: sum, files, at: clock() };
-    j.state = 'done'; j.step = ''; saveJob(j);
-  }
+  } catch {}
 
   return {
     start(b) {
@@ -67,15 +104,26 @@ export function createVoice(deps, dir = path.join(process.env.FC_DATA_DIR || '/d
       const old = load(b.id); if (old) return view(old);
       const bytes = b.textOnly ? null : Buffer.from(b.audio, 'base64'); if (bytes && (!bytes.length || bytes.length > MAX)) return { error: 'bad_audio' };
       if (!bytes && !(typeof b.text === 'string' && b.text.trim().length >= 2)) return { error: 'bad_text' };
+      const meta = { subject: b.subject.trim(), topic: (b.topic || '').trim(), at: b.at, mime: b.mime || '', text: b.text || '', name: b.name || '', textOnly: !!b.textOnly };
       const j = { id: b.id, state: 'queued', step: 'queued', errors: [], createdAt: clock(), subject: b.subject, topic: b.topic || '', source: b.source || '', at: b.at };
-      jobs.set(j.id, j); saveJob(j);
-      const meta = { subject: b.subject.trim(), topic: (b.topic || '').trim(), at: b.at, mime: b.mime || '', text: b.text || '', name: b.name || '' };
-      running = running.then(() => { j.state = 'working'; return run(j, bytes, meta); }).catch((e) => { j.state = 'done'; j.errors.push('failed'); j.result = { transcript: meta.text, summary: '', files: [], at: clock() }; saveJob(j); console.error('voice failed', e && e.message); });
+      if (b.textOnly && b.source === 'watch') j.input = meta;
+      if (!saveJob(j)) return { error: 'persist' };
+      jobs.set(j.id, j); enqueue(j, bytes, meta);
       return view(j);
+    },
+    retry(id, source) {
+      const j = /^[a-f0-9]{32}$/.test(String(id || '')) ? load(id) : null;
+      if (!j || j.source !== source || clock() - j.createdAt > KEEP) return { error: 'not_found' };
+      if (!j.input?.textOnly || typeof j.input.text !== 'string') return { error: 'no_original' };
+      if (['queued', 'working'].includes(j.state) || outcome(j) === 'success') return view(j);
+      const before = JSON.parse(JSON.stringify(j));
+      j.state = 'queued'; j.step = 'queued'; j.errors = [];
+      if (!saveJob(j)) { Object.assign(j, before); return { error: 'persist' }; }
+      enqueue(j, null, j.input); return view(j);
     },
     status(id) { const j = /^[a-f0-9]{32}$/.test(String(id || '')) ? load(id) : null; return j ? view(j) : null; },
     list(source) { sweep(); const out = []; try { for (const f of fs.readdirSync(dir)) if (/^[a-f0-9]{32}\.json$/.test(f)) { const j = load(f.slice(0, 32)); if (j && j.source === source) out.push(j); } } catch {} return out.sort((a, b) => a.createdAt - b.createdAt); },
-    pending() { let n = 0; for (const j of jobs.values()) if (j.state !== 'done') n++; return n; }
+    pending() { let n = 0; for (const j of jobs.values()) if (['queued', 'working'].includes(j.state)) n++; return n; }
   };
 }
 
