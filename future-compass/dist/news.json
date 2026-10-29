@@ -1,8 +1,72 @@
 {
-  "checked_at": "2026-10-29T12:36:55.132667+00:00",
-  "last_success_at": "2026-10-29T12:36:55.132667+00:00",
+  "checked_at": "2026-10-29T19:27:55.767580+00:00",
+  "last_success_at": "2026-10-29T19:27:55.767580+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "An updated Model Spec for more capable and beneficial AI",
+      "url": "https://openai.com/index/updated-model-spec",
+      "source": "OpenAI",
+      "published_at": "2026-10-29T17:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "You can now generate, preview, and edit documents, PDFs, presentations, spreadsheets, and more directly in Gemini.",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/edit-files-directly/",
+      "source": "Google",
+      "published_at": "2026-10-29T16:15:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Gemini Notebook makes hundreds of textbooks available to help students learn even more.",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-notebook/new-access-textbooks/",
+      "source": "Google",
+      "published_at": "2026-10-29T16:00:00+00:00",
+      "category": "교육·생활",
+      "domain": "education"
+    },
+    {
+      "title": "Equipping healthcare professionals with practical AI skills",
+      "url": "https://blog.google/innovation-and-ai/technology/health/google-ai-for-healthcare-professionals-certificate/",
+      "source": "Google",
+      "published_at": "2026-10-29T13:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "How to use Gemini to update your resume",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/update-resume-with-gemini/",
+      "source": "Google",
+      "published_at": "2026-10-29T11:33:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "How Gemini is helping students and teachers in the classroom",
+      "url": "https://blog.google/products-and-platforms/products/education/impact-studies-uk-italy/",
+      "source": "Google",
+      "published_at": "2026-10-29T09:00:00+00:00",
+      "category": "교육·생활",
+      "domain": "education"
+    },
+    {
+      "title": "How we detect frontier model misalignment",
+      "url": "https://openai.com/index/how-we-detect-frontier-model-misalignment",
+      "source": "OpenAI",
+      "published_at": "2026-10-29T09:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "How Ropes & Gray is developing AI for transactional diligence",
+      "url": "https://openai.com/index/ropes-gray-ai-diligence",
+      "source": "OpenAI",
+      "published_at": "2026-10-29T07:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "Partnering with Singapore to bring frontier AI to public health",
       "url": "https://blog.google/innovation-and-ai/technology/health/google-for-health-summit-singapore/",
@@ -178,76 +242,12 @@
       "published_at": "2026-10-26T07:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "How Ultrafast cut incident investigation from hours to minutes at OpenAI",
-      "url": "https://openai.com/index/openai-cut-incident-investigation",
-      "source": "OpenAI",
-      "published_at": "2026-10-26T07:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Introducing GPT-6.1 Terra",
-      "url": "https://openai.com/index/introducing-gpt-6-1-terra",
-      "source": "OpenAI",
-      "published_at": "2026-10-26T00:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Rapidly scaling online storage to serve over 1 billion ChatGPT users (Part II)",
-      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-two",
-      "source": "OpenAI",
-      "published_at": "2026-10-23T17:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "See what 5 builders are making with Gemini 4 Argon",
-      "url": "https://blog.google/products-and-platforms/products/gemini/gemini-4-argon-builders/",
-      "source": "Google",
-      "published_at": "2026-10-23T16:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Securing our frontier model training environment",
-      "url": "https://openai.com/index/securing-our-frontier-model-training-environment",
-      "source": "OpenAI",
-      "published_at": "2026-10-23T10:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "OpenAI and Poland’s NASK partner to advance AI safety and security",
-      "url": "https://openai.com/index/openai-nask-ai-safety-security-partnership",
-      "source": "OpenAI",
-      "published_at": "2026-10-23T00:00:00+00:00",
-      "category": "안전·보안",
-      "domain": "security"
-    },
-    {
-      "title": "Anima helps clinics cut call waits by 75% with GPT-6 and GPT-Live",
-      "url": "https://openai.com/index/anima",
-      "source": "OpenAI",
-      "published_at": "2026-10-23T00:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Build more responsive apps with the Decisions API",
-      "url": "https://openai.com/index/decisions-api",
-      "source": "OpenAI",
-      "published_at": "2026-10-22T19:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-29T12:36:55.132667+00:00",
+    "checked_at": "2026-10-29T19:27:55.767580+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -364,11 +364,11 @@
       },
       {
         "date": "2026-12-21",
-        "title": "축제 리허설 및 동아리 부스 설치"
+        "title": "금요일수업"
       },
       {
         "date": "2026-12-21",
-        "title": "금요일수업"
+        "title": "축제 리허설 및 동아리 부스 설치"
       },
       {
         "date": "2026-12-22",
@@ -412,7 +412,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-29T12:36:55.132667+00:00",
+    "last_success_at": "2026-10-29T19:27:55.767580+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
