@@ -60,7 +60,7 @@ let browser;
   async function local(page) { await page.locator('.tn-local > summary').click(); }
   async function storage(page, key) { return page.evaluate(key => JSON.parse(localStorage.getItem(key)), key); }
   async function showReview(page, rid) {
-    await page.evaluate(() => { tab = 'review'; render(); });
+    await page.evaluate(() => { tab = 'review'; render(); document.querySelectorAll('.rv-more').forEach(d => { d.open = true; }); });
     await page.locator('[data-rc-open="' + rid + '"]').first().click();
     assert.deepEqual(await page.locator('.rc-qs li').allTextContents(), questions);
     await page.locator('[data-rc-show]').click();
