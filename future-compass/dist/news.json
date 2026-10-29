@@ -1,8 +1,16 @@
 {
-  "checked_at": "2026-10-28T22:23:09.984017+00:00",
-  "last_success_at": "2026-10-28T22:23:09.984017+00:00",
+  "checked_at": "2026-10-29T05:05:48.021990+00:00",
+  "last_success_at": "2026-10-29T05:05:48.021990+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "Partnering with Singapore to bring frontier AI to public health",
+      "url": "https://blog.google/innovation-and-ai/technology/health/google-for-health-summit-singapore/",
+      "source": "Google",
+      "published_at": "2026-10-29T03:30:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "Ads in AI Mode expand to new markets.",
       "url": "https://blog.google/products/ads-commerce/ads-in-ai-mode-global/",
@@ -234,20 +242,12 @@
       "published_at": "2026-10-22T19:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "We are working with Voltus to build a 1-gigawatt virtual power plant.",
-      "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/virtual-power-plant-1-gigawatt/",
-      "source": "Google",
-      "published_at": "2026-10-22T11:30:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-28T22:23:09.984017+00:00",
+    "checked_at": "2026-10-29T05:05:48.021990+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -412,7 +412,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-28T22:23:09.984017+00:00",
+    "last_success_at": "2026-10-29T05:05:48.021990+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
