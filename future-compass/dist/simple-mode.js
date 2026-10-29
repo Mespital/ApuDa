@@ -1,6 +1,7 @@
 /* ✨ 간단하게 (2026-10-21, 승준 "쓰기 복잡해")
    1) 1분 말하기: 과목 고르고 → 큰 녹음 버튼 하나. 주제·보관함·받아쓰기·전달 방법·저장 옵션은 "다른 방법 · 설정" 안으로
       (녹음이 끝나면 자동으로 저장·정리·Drive. 자동을 끈 사람에게는 처음부터 전체 화면)
+   3) 복습: 오늘 기억 확인·수업 노트만 위에, 복습 추가·목록·질문·백업은 '더 보기'
    2) 오늘: 배너 → 오늘 배운 것 남기기 → 앞으로 3시간 → 할 일 → 시험. 수행평가·수업 전 1분·한눈에는 "더 보기" 안으로
    기능은 그대로, 보이는 순서와 양만 바꾼다. */
 (function () {
@@ -27,12 +28,34 @@
     list.forEach(function (m) { m.addedNodes.forEach(function (n) { if (n.nodeType === 1 && n.classList.contains('tn-sheet')) simplify(n); }); });
   }).observe(document.body, { childList: true });
 
+  /* ---------- 복습: 오늘 기억 확인 + 수업 노트만 위에, 나머지는 '더 보기' ---------- */
+  var RV_OPEN = 'fc-review-more';
+  function foldReview(root) {
+    if (root.querySelector('.rv-more')) return;
+    var keep = /^(rh-today|tn-list)$/;
+    var out = [].slice.call(root.children).filter(function (el) { return !el.matches('header,.lt-head,.rv-more') && !keep.test(el.id || '') && !(el.id === 'study-chat-drive' && el.querySelector('.cd-job')) && el.matches('section,details,div,.card'); });  // 진행 중인 채팅·Drive 전달은 위에 둔다
+    if (out.length < 2) return;
+    var names = [];
+    if (out.some(function (el) { return el.matches('.grid'); })) names.push('복습 추가·목록');
+    if (root.querySelector('#questions')) names.push('선생님 질문');
+    if (root.querySelector('#study-question-builder')) names.push('막힌 문제');
+    if (out.some(function (el) { return el.id === 'study-chat-drive'; })) names.push('백업');
+    var d = document.createElement('details'); d.className = 'more-cards rv-more';
+    try { if (localStorage.getItem(RV_OPEN) === '1') d.open = true; } catch (e) {}
+    d.innerHTML = '<summary><b>📂 더 보기</b><small>' + names.join(' · ') + '</small></summary><div class="more-in"></div>';
+    var box = d.querySelector('.more-in'); out.forEach(function (el) { box.appendChild(el); });
+    root.appendChild(d);
+    d.addEventListener('toggle', function () { try { localStorage.setItem(RV_OPEN, d.open ? '1' : '0'); } catch (e) {} });
+  }
+
   /* ---------- 오늘 화면 ---------- */
   var prev = render;
   render = function () {
     prev();
-    if (typeof tab === 'undefined' || tab !== 'today' || isParent()) return;
+    if (typeof tab === 'undefined' || isParent()) return;
     var root = document.getElementById('content'); if (!root) return;
+    if (tab === 'review') { try { foldReview(root); } catch (e) {} return; }
+    if (tab !== 'today') return;
     var hero = root.querySelector('.hero-heal'), tn = root.querySelector(':scope > .tn-card');
     if (hero && tn) hero.insertAdjacentElement('afterend', tn);
     var more = root.querySelector('.more-cards'), box = more && more.querySelector('.more-in');
@@ -49,7 +72,7 @@
   var css = document.createElement('style');
   css.textContent =
     /* 시트: 간단 모드에서 숨기는 것 */
-    '.tn-simple :is(label[for=tn-topic],.tn-topic,.tn-rec .tn-guide,.tn-rec>p:not(.tn-hint),.tn-local,.av-box>b,.av-box>p.small:not([role=status]),.av-settings,.av-history,.tn-handoff,.tn-manual,.tn-again,.tn-save-row,.tn-ls-sum){display:none!important}' +
+    '.tn-simple :is(label[for=tn-topic],.tn-topic,.tn-rec .tn-guide,.tn-rec>p:not(.tn-hint),.tn-local,.av-box>b,.av-box>p.small:not([role=status]),.av-settings,.av-history,.tn-handoff,.tn-manual,.tn-again,.tn-save-row,.tn-ls-sum,.tn-lesson-fields,.tn-photo-block){display:none!important}' +
     '.tn-sheet:not(.tn-simple) .tn-hint{display:none}' +
     '.tn-simple .tn-rec{background:transparent;padding:4px 0 0;margin-top:12px}.tn-simple .tn-rec>b{font-size:17px}' +
     '.tn-hint{margin:6px 0 0;font-size:13.5px;line-height:1.6;color:var(--ink-2)}' +

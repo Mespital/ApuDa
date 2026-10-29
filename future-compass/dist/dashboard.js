@@ -77,6 +77,7 @@
     var pmon = addD(mon, -7), pfm = focusByDay(pmon, addD(pmon, 6)), tot = 0, ptot = 0, days = 0;
     Object.keys(fm).forEach(function (k) { tot += fm[k]; }); Object.keys(pfm).forEach(function (k) { ptot += pfm[k]; });
     var max = 30; for (var i = 0; i < 7; i++) { var dd = addD(mon, i); max = Math.max(max, fm[dd] || 0); if (stud[dd]) days++; }
+    if (!tot && !ptot && !days) return '<section class="card db-card"><div class="db-head"><h2>이번 주 공부</h2><small>' + md(mon) + ' ~ ' + md(sun) + '</small></div><p class="db-empty">아직 이번 주 기록이 없어. <b>⏱ 집중</b>을 한 번 켜면 여기 막대가 생겨.</p></section>';
     var bars = '';
     for (var j = 0; j < 7; j++) {
       var d = addD(mon, j), m = fm[d] || 0, h = Math.round(m / max * 100);
@@ -89,7 +90,7 @@
   }
   function subjectCard() {
     if (!can('flow')) return '';
-    var t = T(), mon = monday(t), a = focusBySubject(mon, addD(mon, 6)); if (!a.length) return '<section class="card db-card"><h2>과목별 집중 (이번 주)</h2><p class="small muted">집중 타이머에서 과목을 고르고 시작하면 여기에 쌓여.</p></section>';
+    var t = T(), mon = monday(t), a = focusBySubject(mon, addD(mon, 6)); if (!a.length) return '';
     var max = a[0].m;
     return '<section class="card db-card"><h2>과목별 집중 (이번 주)</h2><ul class="db-subs">' + a.slice(0, 8).map(function (x) {
       var k = subKey(x.s); return '<li><span class="db-sn">' + e(x.s) + '</span><span class="db-track"><i style="width:' + Math.max(6, Math.round(x.m / max * 100)) + '%;background:var(--sub-' + k + '-ink,var(--accent))"></i></span><b>' + hm(x.m) + '</b></li>';
@@ -166,7 +167,7 @@
     '.db-dd{font-weight:800;font-size:12.5px;text-align:center;padding:3px 0;border-radius:999px;background:var(--u-soft);color:var(--ink-2)}.db-dd.hot{color:var(--exam-ink)}.db-up li.k-exam .db-ut{font-weight:700}' +
     '.db-trio{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}.db-trio b{display:block;font-size:24px;color:var(--accent-ink)}.db-trio small{font-size:12.5px;color:var(--ink-3)}' +
     '.db-act,.db-more{display:block;width:100%;margin-top:10px;min-height:var(--tap);font-weight:700;font-size:13.5px}.db-more{border:1px dashed var(--u-line)!important;background:transparent!important;color:var(--accent-ink)!important;border-radius:12px!important}' +
-    '.db-lock{margin:0;color:var(--ink-3)}.db-entry{margin-top:12px}';
+    '.db-empty{margin:4px 0 0;font-size:15px;line-height:1.6;color:var(--ink-2)}.db-lock{margin:0;color:var(--ink-3)}.db-entry{margin-top:12px}';
   document.head.appendChild(css);
   if (tab === 'dash') render();
 })();
