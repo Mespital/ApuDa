@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-10-30T19:04:11.267340+00:00",
-  "last_success_at": "2026-10-30T19:04:11.267340+00:00",
+  "checked_at": "2026-10-30T23:31:43.679255+00:00",
+  "last_success_at": "2026-10-30T23:31:43.679255+00:00",
   "failures": [],
   "articles": [
     {
@@ -34,6 +34,14 @@
       "published_at": "2026-10-30T09:00:00+00:00",
       "category": "안전·보안",
       "domain": "security"
+    },
+    {
+      "title": "Fair use benefits everyone",
+      "url": "https://openai.com/index/fair-use-benefits-everyone",
+      "source": "OpenAI",
+      "published_at": "2026-10-30T00:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
     },
     {
       "title": "An updated Model Spec for more capable and beneficial AI",
@@ -234,20 +242,12 @@
       "published_at": "2026-10-26T16:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "15 college students share their favorite Gemini features",
-      "url": "https://blog.google/products-and-platforms/products/gemini/college-student-favorite-features/",
-      "source": "Google",
-      "published_at": "2026-10-26T16:00:00+00:00",
-      "category": "교육·생활",
-      "domain": "education"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-30T19:04:11.267340+00:00",
+    "checked_at": "2026-10-30T23:31:43.679255+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -400,7 +400,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-30T19:04:11.267340+00:00",
+    "last_success_at": "2026-10-30T23:31:43.679255+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
