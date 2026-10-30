@@ -6,12 +6,12 @@
      like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=b04d0899-7698-4262-b7e8-352ee4b2842a
      Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>ApuDa — 환자와 보호자를 위한 Patient Care OS</title>
+<title>ApuDa — 환자와 보호자를 위한 암 정보 길잡이</title>
 <link rel="icon" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="description" content="암 위험도 확인부터 진단 첫 30일, 치료·부작용 관리와 커뮤니티까지 한 번에 연결합니다.">
+<meta name="description" content="암검진·암 신호 확인부터 진단 첫 30일, 치료·부작용 관리와 커뮤니티까지 한 번에 연결합니다.">
 <meta property="og:title" content="ApuDa — 환자와 보호자를 돕습니다.">
-<meta property="og:description" content="암 위험도 확인부터 첫 30일, 치료·지원까지 한 번에.">
+<meta property="og:description" content="암검진·암 신호 확인부터 첫 30일, 치료·지원까지 한 번에.">
 <meta property="og:image" content="og.jpg">
 <meta name="theme-color" content="#F4F8FF">
 <style>
@@ -307,7 +307,7 @@
   /* 로딩 커튼 */
   #curtain{position:fixed;inset:0;z-index:90;display:grid;place-items:center;background:#fff}
   #curtain b{font-size:38px;font-weight:950;color:var(--blue);letter-spacing:-.06em}
-  #curtain small{display:block;margin-top:8px;font-size:10px;letter-spacing:.3em;color:var(--muted);text-align:center}
+  #curtain small{display:block;margin-top:8px;font-size:12px;letter-spacing:.04em;color:var(--muted);text-align:center}
 
   /* 2F — 암 진단 첫 30일 MINI SERIES 확장 패널 */
   #panel.floor-2-expanded{width:min(1020px,67vw);min-width:min(760px,95vw);right:max(1.8vw,18px)}
@@ -632,7 +632,7 @@
 <link rel="stylesheet" href="/assets/apuda-building-life.css?v=20261018-patient-1">
 <link rel="stylesheet" href="/assets/apuda-floor-transition.css?v=20261015">
 <link rel="stylesheet" href="/assets/apuda-building-monitors.css?v=20261018-patient-1">
-<link rel="stylesheet" href="/assets/apuda-ui.css?v=20261019"><script src="/assets/apuda-ui.js?v=20261018"></script>
+<link rel="stylesheet" href="/assets/apuda-ui.css?v=20261019"><script src="/assets/apuda-ui.js?v=20261031"></script>
 <link rel="stylesheet" href="/assets/apuda-video-dialog.css?v=20261018">
 </head>
 <body>
@@ -653,20 +653,29 @@
 <div id="stage">
   <aside class="desktop-guide" id="desktopGuide" aria-label="ApuDa 서비스 안내">
     <div class="guide-top">
-      <div class="guide-brand"><b>ApuDa</b><span>PATIENT CARE OS</span></div>
-      <div class="guide-status"><span>STATUS</span><i aria-hidden="true"></i><strong>SYSTEM READY</strong></div>
+      <div class="guide-brand"><b>ApuDa</b><span>환자·보호자 길잡이</span></div>
     </div>
     <div class="guide-hero">
-      <span class="guide-eyebrow">PATIENT &amp; FAMILY COMPANION</span>
-      <h1>ApuDa<span>환자와 보호자를<br>돕습니다.</span></h1>
-      <p>암 위험도 확인부터 진단 첫 30일, 치료·부작용 관리와 커뮤니티까지 필요한 길을 한 번에 연결합니다.</p>
+      <span class="guide-eyebrow">무료 · 가입 없이 바로</span>
+      <h1>ApuDa<span>환자와 보호자를 <br>돕습니다.</span></h1>
+      <p>암검진·암 신호 확인부터 진단 첫 30일, 치료·부작용 관리와 커뮤니티까지 필요한 길을 한 번에 연결합니다.</p>
+      <div class="quick-start" role="group" aria-labelledby="qsTitle">
+        <b id="qsTitle" class="qs-title">지금 나는?</b>
+      <div class="qs-grid">
+        <a href="/risk/" data-qs="screening"><i aria-hidden="true">🔍</i><span>검진·증상이 걱정돼요</span></a>
+        <a href="/#floor-2" data-qs="diagnosed"><i aria-hidden="true">📘</i><span>막 진단받았어요</span></a>
+        <a href="/note/" data-qs="treatment"><i aria-hidden="true">💊</i><span>치료 중이에요</span></a>
+        <a href="/about/#caregiver" data-qs="caregiver"><i aria-hidden="true">🤝</i><span>가족을 돌보고 있어요</span></a>
+      </div>
+      </div>
       <a class="guide-about" href="/about/">💡 ApuDa.app 소개 · 사용법 →</a>
     </div>
     <nav class="guide-services" id="guideServices" aria-label="층별 서비스 바로가기"></nav>
+    <button type="button" class="guide-family qs-fam">일상·반려동물·축산 건강은 <b>ApuDa 패밀리 ›</b></button>
   </aside>
   <div id="frame">
     <img id="buildingIdle" class="building-media building-idle" src="assets/image/building-master.png"
-         alt="ApuDa 홈 — 1층 암 위험도·건강검진부터 5층 암 커뮤니티까지 연결하는 5층 환자 케어 빌딩" draggable="false">
+         alt="ApuDa 홈 — 1층 암검진·암 신호 확인부터 5층 암 커뮤니티까지 연결하는 5층 환자 케어 빌딩" draggable="false">
     <video id="buildingVideoA" class="building-media building-video" muted playsinline preload="auto"></video>
     <video id="buildingVideoB" class="building-media building-video" muted playsinline preload="auto"></video>
         <div class="spot" id="spot"></div>
@@ -750,7 +759,22 @@
   </div>
 </div>
 
-<div id="curtain"><div><b>ApuDa</b><small>PATIENT CARE OS</small></div></div>
+<section id="qsSheet" aria-labelledby="qsSheetTitle" hidden>
+  <div class="qs-card">
+    <b id="qsSheetTitle" class="qs-title">지금 어떤 상황이세요?</b>
+    <p>누르면 필요한 곳으로 바로 안내합니다. 모두 무료, 가입 없이 쓸 수 있어요.</p>
+    <div class="qs-grid">
+        <a href="/risk/" data-qs="screening"><i aria-hidden="true">🔍</i><span>검진·증상이 걱정돼요</span></a>
+        <a href="/#floor-2" data-qs="diagnosed"><i aria-hidden="true">📘</i><span>막 진단받았어요</span></a>
+        <a href="/note/" data-qs="treatment"><i aria-hidden="true">💊</i><span>치료 중이에요</span></a>
+        <a href="/about/#caregiver" data-qs="caregiver"><i aria-hidden="true">🤝</i><span>가족을 돌보고 있어요</span></a>
+      </div>
+    <div class="qs-foot"><button type="button" id="qsClose">건물 전체 둘러보기</button><button type="button" class="qs-fam">ApuDa 패밀리 ›</button></div>
+  </div>
+</section>
+<button type="button" id="qsReopen" hidden aria-controls="qsSheet">지금 나는? ▾</button>
+
+<div id="curtain"><div><b>ApuDa</b><small>아프지만, 다행이다.</small></div></div>
 
 <script src="/assets/apuda-cancer-videos.js?v=20261018"></script>
 <script src="/assets/apuda-video-dialog.js?v=20261019"></script>
@@ -796,7 +820,7 @@
   };
 
   var WALL_COPY = {
-    1:{title:'암 위험도 & 검진',sub:'진단 전 확인하기'},
+    1:{title:'암검진 & 신호 확인',sub:'진단 전 확인하기'},
     2:{title:'암 정보 서재',sub:'진단 첫 30일 가이드'},
     3:{title:'나에게 맞는 지원',sub:'확인하고 지원받기'},
     4:{title:'암 치료 동행',sub:'오늘 할 일 차근차근'},
@@ -804,7 +828,7 @@
   };
 
   var GUIDE_COPY = {
-    1:{title:'암 위험도 & 검진',sub:'진단 전 위험도와 검진 선택'},
+    1:{title:'암검진 & 신호 확인',sub:'국가검진 대상·암 신호 50문항'},
     2:{title:'암 정보 서재',sub:'암종별 첫 30일, 4컷 만화'},
     3:{title:'나에게 맞는 지원',sub:'확인하고 지원받기'},
     4:{title:'암 치료 동행',sub:'일정·질문·할 일을 한눈에'},
@@ -837,10 +861,10 @@
   })();
 
   var DATA = {
-    1:{fl:'1F', kicker:'CHECK · 확인센터', title:'진단 전이라면,\n위험도와 검진부터.',
-       desc:'생활 습관과 주요 위험 요인으로 암 위험 관련 정보를 살펴보고, 기본 검진 외에 어떤 선택 항목을 고려할지 정리합니다.',
-       stats:[['3분','간편 체크','/risk/'],['무료','가입 불필요','/checkup/']],
-       links:[['암 위험도 체크','/risk/',null,'생활습관과 주요 위험요인을 빠르게 확인','🧭'],
+    1:{fl:'1F', kicker:'CHECK · 확인센터', title:'진단 전이라면,\n검진과 몸의 신호부터.',
+       desc:'내 국가암검진 대상과 시기를 확인하고, 증상·위험요인 50문항으로 언제 어느 진료과에 갈지 정리합니다. 기본 검진 외에 고려할 선택 항목도 살펴봅니다.',
+       stats:[['3–5분','50문항 체크','/risk/'],['무료','가입 불필요','/checkup/']],
+       links:[['암 신호·검진 확인','/risk/',null,'국가암검진 대상 + 암 신호 50문항 · 결과는 진단이 아닙니다','🧭'],
               ['건강검진 선택 항목','/checkup/',null,'기본검진 외 추가로 고려할 항목 정리','🩺']]},
     2:{fl:'2F', kicker:'LIBRARY · 암종별 이해', title:'진단 첫 30일,\n내 암종부터 이해하기.',
        desc:'《암 진단 첫 30일》 12종의 실제 표지와 함께 검사·병기·치료 흐름을 암종별로 차근차근 이해합니다.',
@@ -1518,6 +1542,10 @@
     else if(connectorFloor) showConnector(connectorFloor,connectorPinned,true);
   });  var hm=/^#floor-([1-5])$/.exec(location.hash);
   if(hm) setTimeout(function(){ try{ open(+hm[1]); history.replaceState(null,'',location.pathname); }catch(e){} },400);
+  addEventListener('hashchange',function(){
+    var h=/^#floor-([1-5])$/.exec(location.hash); if(!h) return;
+    try{ open(+h[1]); history.replaceState(null,'',location.pathname); }catch(e){}
+  });
 })();
 </script>
 
@@ -1544,6 +1572,91 @@
 })();
 </script>
 <script src="/assets/apuda-bot.js?v=20261019" data-context="home" defer></script>
+
+<!-- 2026-10-31 환자감수단 P0: 상황별 시작점 · 패밀리 간판 정리 -->
+<style>
+  .fam-sign{display:none!important}
+  .quick-start{margin-top:16px}
+  .qs-title{display:block;color:var(--ink);font-size:15px;font-weight:900;letter-spacing:-.03em}
+  .qs-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+  .qs-grid a{display:flex;align-items:center;gap:8px;min-height:48px;padding:8px 12px;border:1px solid rgba(36,107,254,.35);
+    border-radius:14px;background:#fff;color:var(--ink);font-size:14px;font-weight:800;line-height:1.3;word-break:keep-all;
+    box-shadow:0 6px 16px rgba(30,77,145,.06);transition:transform .2s var(--ease),border-color .2s,box-shadow .2s}
+  .qs-grid a:hover{transform:translateY(-1px);border-color:var(--blue);box-shadow:0 10px 22px rgba(36,107,254,.14)}
+  .qs-grid a i{font-style:normal;font-size:20px;flex:none}
+  .guide-family{margin-top:12px;align-self:flex-start;color:var(--muted);font-size:12.5px;font-weight:700;text-align:left}
+  .guide-family b{color:var(--blue)}
+  .guide-family:hover b{text-decoration:underline}
+  #qsSheet{position:fixed;z-index:85;left:0;right:0;bottom:0;padding:0 10px calc(10px + env(safe-area-inset-bottom))}
+  #qsSheet[hidden]{display:none}
+  #qsSheet .qs-card{max-width:520px;margin:0 auto;padding:18px 16px 12px;border:1px solid var(--line);border-radius:22px;
+    background:rgba(255,255,255,.97);box-shadow:0 -10px 40px rgba(16,42,67,.16);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+  #qsSheet .qs-title{font-size:19px}
+  #qsSheet p{margin-top:4px;color:#3d4c5d;font-size:14px;line-height:1.5;word-break:keep-all}
+  #qsSheet .qs-grid{margin-top:12px}
+  #qsSheet .qs-grid a{min-height:56px;font-size:15px}
+  .qs-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:10px}
+  .qs-foot button{min-height:44px;padding:0 6px;font-size:14px;font-weight:800}
+  #qsClose{color:var(--blue)}
+  .qs-foot .qs-fam{color:var(--muted);font-size:13px}
+  #qsReopen{position:fixed;z-index:64;top:max(10px,env(safe-area-inset-top));left:10px;min-height:40px;padding:0 14px;
+    border:1px solid rgba(36,107,254,.4);border-radius:999px;background:rgba(255,255,255,.92);color:var(--blue);
+    font-size:13px;font-weight:900;box-shadow:0 8px 22px rgba(16,42,67,.1)}
+  #qsReopen[hidden]{display:none}
+  body.qs-on #apuda-ui-tools,body.qs-on #apuda-bot{visibility:hidden}
+  body.open #qsSheet,body.open #qsReopen{display:none}
+  @media (min-width:1100px){#qsSheet,#qsReopen{display:none!important}}
+  @media (min-width:1100px) and (max-height:1020px){
+    .guide-top{margin-bottom:10px}
+    .guide-hero{margin-bottom:12px}
+    .guide-hero h1{font-size:clamp(28px,2.7vw,40px)}
+    .guide-hero p{display:none}
+    .quick-start{margin-top:12px}
+    .qs-grid a{min-height:44px;padding:6px 11px}
+    .guide-about{margin-top:0}
+    .guide-services{gap:6px}
+    .guide-service{min-height:48px;padding:5px 12px}
+    .guide-service-floor{height:32px}
+    .guide-family{margin-top:8px}
+  }
+  @media (min-width:1100px) and (max-height:800px){
+    .guide-hero h1 span br{display:none}
+    .guide-service-copy small{display:none}
+    .guide-service{min-height:42px}
+  }
+  .apuda-large-text .qs-grid a{font-size:17px}
+  @media (max-width:360px){.qs-grid a,#qsSheet .qs-grid a{font-size:13.5px;padding:8px 9px}}
+</style>
+<script>
+(function(){
+  var sheet=document.getElementById('qsSheet'), reopen=document.getElementById('qsReopen'),
+      close=document.getElementById('qsClose'), mq=matchMedia('(max-width:1099px)'), KEY='apuda_qs_closed';
+  function setOpen(on){
+    if(!sheet) return;
+    sheet.hidden=!on; reopen.hidden=on || !mq.matches;
+    reopen.setAttribute('aria-expanded',String(on));
+    document.body.classList.toggle('qs-on',on);
+  }
+  function dismissed(){ try{return sessionStorage.getItem(KEY)==='1';}catch(e){return false;} }
+  function dismiss(){ try{sessionStorage.setItem(KEY,'1');}catch(e){} setOpen(false); }
+  if(sheet){
+    if(mq.matches) setTimeout(function(){ if(!document.body.classList.contains('open')) setOpen(!dismissed()); else reopen.hidden=false; },900);
+    close.addEventListener('click',dismiss);
+    reopen.addEventListener('click',function(){ setOpen(true); });
+    sheet.addEventListener('keydown',function(e){ if(e.key==='Escape') dismiss(); });
+    mq.addEventListener && mq.addEventListener('change',function(){ if(!mq.matches){ document.body.classList.remove('qs-on'); reopen.hidden=true; } });
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-qs]'),function(a){
+    a.addEventListener('click',function(){
+      if(sheet && !sheet.hidden) dismiss();
+      try{ if(window.gtag) gtag('event','home_situation_click',{situation:a.dataset.qs}); }catch(e){}
+    });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('.qs-fam'),function(b){
+    b.addEventListener('click',function(e){ e.stopPropagation(); var f=document.getElementById('famBtn'); if(f) f.click(); });
+  });
+})();
+</script>
 </body>
 </html>
 
