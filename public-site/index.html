@@ -867,8 +867,8 @@
        links:[['암 신호·검진 확인','/risk/',null,'국가암검진 대상 + 암 신호 50문항 · 결과는 진단이 아닙니다','🧭'],
               ['건강검진 선택 항목','/checkup/',null,'기본검진 외 추가로 고려할 항목 정리','🩺']]},
     2:{fl:'2F', kicker:'LIBRARY · 암종별 이해', title:'진단 첫 30일,\n내 암종부터 이해하기.',
-       desc:'《암 진단 첫 30일》 12종의 실제 표지와 함께 검사·병기·치료 흐름을 암종별로 차근차근 이해합니다.',
-       stats:[['12종','암종별 가이드','/library/mini/'],['4컷','만화 암 정보','https://product.kyobobook.co.kr/detail/S000219012641',1]],
+       desc:'《암 진단 첫 30일》 기존 12종의 표지와 무료 핵심안내 30종을 함께 만나보세요. 검사·병기·치료 질문을 암종별로 정리할 수 있습니다.',
+       stats:[['30종','무료 핵심안내','/library/first30/'],['4컷','만화 암 정보','https://product.kyobobook.co.kr/detail/S000219012641',1]],
        links:[['4컷 만화로 쉽게 이해되는 암 정보','https://product.kyobobook.co.kr/detail/S000219012641',null,'검사·병기·치료를 그림으로 쉽게 이해','📚'],
               ['유방암 첫 30일','https://apuda-breast.netlify.app/',null,'진단 후 꼭 알아야 할 검사·치료 흐름','🎀'],
               ['폐암 첫 30일','https://apuda-lung.netlify.app/',null,'유전자검사부터 치료선택까지 한눈에','🫁'],
@@ -1318,9 +1318,10 @@
       '<div class="book-choice-head"><div class="book-choice-cover" style="--cover:url(\'assets/books/'+slug+'.webp\')"></div><div><span class="book-choice-kicker">ApuDa 암종별 가이드북 · Vol. '+(i+1)+'</span><h3>'+esc(name)+'</h3><p>'+esc(BOOK_INTRO[slug]||'')+'</p></div></div>'+
       '<div class="book-choice-list">'+
         '<div class="book-choice-item"><span class="book-choice-num">1</span><span class="book-choice-copy"><b>'+esc(name)+' 진단 첫 30일 (MINI)</b><small>미리보기 · 전체 PDF도 코드 없이 무료</small></span><span class="book-choice-actions"><a class="primary" href="/library/mini/?cancer='+slug+'">미리보기</a><a href="/library/mini/?cancer='+slug+'#download">⬇ 다운로드</a></span></div>'+
+        '<div class="book-choice-item"><span class="book-choice-num">무료</span><span class="book-choice-copy"><b>'+esc(name)+' 진단 첫 30일 핵심안내</b><small>6면 무료 열람 · A4 인쇄·PDF 저장 가능 · 전문의 검토 대기</small></span><span class="book-choice-actions"><a class="primary" href="/library/first30/books/'+String(i+1).padStart(2,'0')+'.html">📖 읽기</a></span></div>'+
         '<div class="book-choice-item"><span class="book-choice-num">2</span><span class="book-choice-copy"><b>'+esc(name)+' FAQ</b><small>환자·보호자가 진료실에서 자주 확인하는 질문</small></span><span class="book-choice-actions"><a href="/library/faq/?cancer='+slug+'">FAQ 보기</a></span></div>'+
         '<div class="book-choice-item full soon"><span class="book-choice-num">3</span><span class="book-choice-copy"><b>'+esc(name)+' 진단 첫 30일 완전판</b><small>준비중입니다.</small></span><span class="book-choice-actions full-soon"><span class="full-thumb" style="--cover:url(\'assets/books/'+slug+'.webp\')"></span><span class="soon-badge">준비중입니다</span></span></div>'+
-      '</div>'+(window.ApuDaCancerVideos?window.ApuDaCancerVideos.html(slug,{heading:4}):'')+'<div class="book-choice-note">미리보기와 MINI 전체 PDF 12종을 무료로 이용하세요. <b>다운로드</b>를 누르면 코드 입력이나 SNS 참여 없이 PDF를 받을 수 있어요. 파일 앱에서 저장 여부를 확인하세요.</div>'+
+      '</div>'+(window.ApuDaCancerVideos?window.ApuDaCancerVideos.html(slug,{heading:4}):'')+'<div class="book-choice-note">기존 MINI PDF 12종과 새 무료 핵심안내 30종을 이용하세요. <b>다운로드</b>를 누르면 코드 입력이나 SNS 참여 없이 PDF를 받을 수 있어요. 파일 앱에서 저장 여부를 확인하세요.</div>'+
       '<div class="book-more"><span>'+esc(name)+' 더 알아보기</span><a href="/library/treatment-map/?cancer='+slug+'">🗺️ 치료결정 지도</a><a href="/library/drugs/?cancer='+slug+'">💊 관련 항암제</a><a href="/library/biomarkers/?cancer='+slug+'">🧬 관련 바이오마커</a><a href="/library/regimens/?cancer='+slug+'">💉 항암 요법 가이드</a></div></section>';
     document.body.appendChild(root);
     var opener=document.activeElement;
@@ -1367,6 +1368,7 @@
         '<section class="floor2-library"><div class="floor2-library-head"><div><b>암종별 가이드북</b><span>암종을 선택하면 MINI·FAQ·영상을 확인할 수 있습니다. 완전판은 준비 중입니다.</span></div><span>Vol. 01–12</span></div>'+
         '<div class="mini-series-grid">'+bookHtml+'</div></section>'+
         '<aside class="floor2-side"><div class="floor2-side-head"><b>더 깊게 이해하기</b><span>암종을 이해한 뒤 필요한 다음 정보로 이어집니다.</span></div>'+
+        '<a class="floor2-service" href="/library/first30/"><span class="floor2-service-icon">📖</span><span class="floor2-service-copy"><b>암 진단 첫 30일 무료 안내서 30종<em>NEW</em></b><small>암종별 표지 · 무료 열람 · 인쇄·PDF 저장</small></span></a>'+
         '<a class="floor2-service" href="'+esc(d.links[0][1])+'" target="_blank" rel="noopener"><span class="floor2-service-icon">📚</span><span class="floor2-service-copy"><b>4컷 만화 암 정보</b><small>검사·병기·치료를 그림으로 쉽게</small></span></a>'+
         '<a class="floor2-service" href="/library/treatment-map/"><span class="floor2-service-icon">🗺️</span><span class="floor2-service-copy"><b>치료결정 지도<em>NEW</em></b><small>왜 사람마다 치료가 다른지 12암종별로 이해</small></span></a>'+
         '<a class="floor2-service" href="/library/drugs/"><span class="floor2-service-icon">💊</span><span class="floor2-service-copy"><b>항암제 Drug Hub<em>NEW</em></b><small>약물·기전·암종·공급상태·최근 뉴스를 한곳에</small></span></a>'+
