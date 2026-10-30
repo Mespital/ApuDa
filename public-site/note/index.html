@@ -400,7 +400,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--ink);box-shadow:0 0 0
 .chemobar:not(.fever) b{color:var(--blue2);font-family:var(--serif)}
 @media(prefers-reduced-motion:reduce){.stamp.press{animation:none}}
 </style>
-<link rel="stylesheet" href="/assets/apuda-ui.css?v=20261019"><script src="/assets/apuda-ui.js?v=20261018"></script>
+<link rel="stylesheet" href="/assets/apuda-ui.css?v=20261019"><script src="/assets/apuda-ui.js?v=20261031"></script>
 <style>.temp-history{margin-top:8px;font-size:14px}.temp-history summary{min-height:44px;cursor:pointer;padding:10px 0}.temp-history li{margin:5px 0}.labtbl td{white-space:normal;overflow-wrap:anywhere}.labform select{width:100%;min-width:0}</style>
 <meta name="apuda-release" content="audit-20261019.1">
 </head>
@@ -558,9 +558,9 @@ input:focus,textarea:focus,select:focus{border-color:var(--ink);box-shadow:0 0 0
   </form>
   <div class="card">
     <h3>기록 보관</h3>
-    <p class="small muted" style="margin:0 0 10px">기록은 이 기기에 저장됩니다. 로그인만으로 다른 기기에 자동 동기화되지 않아요. 폰을 바꾸기 전에 JSON 백업을 받아 파일 앱에서 확인해 주세요. 진료요약 PDF는 읽는 자료이며 기록을 복원하는 JSON 백업과 달라요.</p>
+    <p class="small muted" style="margin:0 0 10px">기록은 이 기기에 저장됩니다. 로그인만으로 다른 기기에 자동 동기화되지 않아요. 폰을 바꾸기 전에 백업 파일을 받아 파일 앱에서 확인해 주세요. 진료요약 PDF는 읽는 자료이며 기록을 복원하는 백업 파일과 달라요.</p>
     <div class="row" style="flex-wrap:wrap"><button class="btn soft sm" onclick="exportData()">⬇ 백업 파일 받기</button><label class="btn line sm" style="margin:0">⬆ 백업 불러오기<input type="file" accept="application/json" hidden onchange="importData(this)"></label></div>
-    <p class="small" style="line-height:1.7;margin:12px 0"><b>건강정보가 담긴 파일이에요.</b> JSON 백업은 암호화되지 않아 파일을 가진 사람이 이름·암종·약·증상을 읽을 수 있어요. 공용 기기·공개 링크에 두지 말고, 가족에게 보낼 때도 받을 사람을 확인하세요. 파일과 드라이브 사본은 기기 기록 삭제와 별도로 관리해야 해요.</p>
+    <p class="small" style="line-height:1.7;margin:12px 0"><b>건강정보가 담긴 파일이에요.</b> 백업 파일(JSON)은 암호화되지 않아 파일을 가진 사람이 이름·암종·약·증상을 읽을 수 있어요. 공용 기기·공개 링크에 두지 말고, 가족에게 보낼 때도 받을 사람을 확인하세요. 파일과 드라이브 사본은 기기 기록 삭제와 별도로 관리해야 해요.</p>
     <p class="small muted" id="backup-file-status" role="status" aria-live="polite"></p>
     <button class="btn line sm" id="confirm-backup-file" type="button" onclick="confirmBackupFile()" hidden>파일 앱에서 보관을 확인했어요</button>
     <div id="note-recovery" hidden style="margin-top:14px;padding:12px;border:1px solid var(--line);border-radius:12px"><b>가장 최근 복원 직전 사본</b><p class="small">복원 후 새 기록이 생겼으면 자동으로 덮어쓰지 않아요. 직전 사본을 별도 파일로 보관할 수 있어요.</p><div class="row" style="flex-wrap:wrap"><button class="btn line sm" type="button" onclick="recoverBeforeRestore()">복원 직전으로 되돌리기</button><button class="btn line sm" type="button" onclick="downloadBeforeRestore()">직전 사본 파일 받기</button></div></div>

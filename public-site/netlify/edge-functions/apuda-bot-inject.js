@@ -16,6 +16,11 @@ export default async (request, context) => {
       const tag = `<script src="/assets/apuda-bot.js" data-context="${ctx}" data-pos="left" defer></script>`;
       html = /<\/body>/i.test(html) ? html.replace(/<\/body>(?![\s\S]*<\/body>)/i, tag + '</body>') : html + tag;
     }
+    // /risk/ 첫 화면: 한국어 브라우저는 언어 선택 창 생략 (환자감수단 P0, 2026-10-31)
+    if (seg === 'risk' && !html.includes('apuda-risk-lang.js')) {
+      const lt = '<script src="/assets/apuda-risk-lang.js" defer></script>';
+      html = /<\/body>/i.test(html) ? html.replace(/<\/body>(?![\s\S]*<\/body>)/i, lt + '</body>') : html + lt;
+    }
     const headers = new Headers(res.headers);
     headers.delete('content-length');
     headers.delete('content-encoding');
