@@ -1,8 +1,40 @@
 {
-  "checked_at": "2026-10-30T12:28:00.145164+00:00",
-  "last_success_at": "2026-10-30T12:28:00.145164+00:00",
+  "checked_at": "2026-10-30T19:04:11.267340+00:00",
+  "last_success_at": "2026-10-30T19:04:11.267340+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "We’ve received our first response from the Project Suncatcher prototype satellite.",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-research/project-suncatcher-satellite-response/",
+      "source": "Google",
+      "published_at": "2026-10-30T17:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "See who has access to your Gmail inbox in 2 minutes.",
+      "url": "https://blog.google/innovation-and-ai/technology/safety-security/google-security-checkup/",
+      "source": "Google",
+      "published_at": "2026-10-30T16:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Making it easier for websites to express AI training preferences",
+      "url": "https://openai.com/index/helping-websites-express-ai-training-preferences",
+      "source": "OpenAI",
+      "published_at": "2026-10-30T09:30:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Community safety report and new protections for teens",
+      "url": "https://openai.com/index/community-safety-report-and-new-protections-for-teens",
+      "source": "OpenAI",
+      "published_at": "2026-10-30T09:00:00+00:00",
+      "category": "안전·보안",
+      "domain": "security"
+    },
     {
       "title": "An updated Model Spec for more capable and beneficial AI",
       "url": "https://openai.com/index/updated-model-spec",
@@ -72,6 +104,14 @@
       "url": "https://blog.google/innovation-and-ai/technology/health/google-for-health-summit-singapore/",
       "source": "Google",
       "published_at": "2026-10-29T03:30:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Credit Saison achieves 954% ROI in a ChatGPT Enterprise pilot",
+      "url": "https://openai.com/index/credit-saison",
+      "source": "OpenAI",
+      "published_at": "2026-10-29T00:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
     },
@@ -202,66 +242,14 @@
       "published_at": "2026-10-26T16:00:00+00:00",
       "category": "교육·생활",
       "domain": "education"
-    },
-    {
-      "title": "Working with academic communities to build scientific understanding",
-      "url": "https://openai.com/index/building-scientific-understanding-with-academic-communities",
-      "source": "OpenAI",
-      "published_at": "2026-10-26T14:30:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "GPT-6.1 Sol helps CodeRabbit strengthen security across complex codebases",
-      "url": "https://openai.com/index/gpt-6-1-sol-coderabbit-code-security",
-      "source": "OpenAI",
-      "published_at": "2026-10-26T13:45:00+00:00",
-      "category": "안전·보안",
-      "domain": "security"
-    },
-    {
-      "title": "How Google Beam connects military families globally",
-      "url": "https://blog.google/innovation-and-ai/technology/research/google-beam-uso-docuseries-service-members/",
-      "source": "Google",
-      "published_at": "2026-10-26T13:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "ChatGPT’s expanding world of work",
-      "url": "https://openai.com/index/chatgpt-expanding-world-of-work",
-      "source": "OpenAI",
-      "published_at": "2026-10-26T10:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "How Fanatics and OpenAI streamline the fan experience",
-      "url": "https://openai.com/index/fanatics-streamline-fan-experience",
-      "source": "OpenAI",
-      "published_at": "2026-10-26T07:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-10-30T12:28:00.145164+00:00",
+    "checked_at": "2026-10-30T19:04:11.267340+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
-      {
-        "date": "2026-10-30",
-        "title": "토론한마당 예선"
-      },
-      {
-        "date": "2026-10-30",
-        "title": "생명존중교육"
-      },
-      {
-        "date": "2026-10-30",
-        "title": "장애인식교육"
-      },
       {
         "date": "2026-10-31",
         "title": "토요휴업일"
@@ -412,7 +400,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-10-30T12:28:00.145164+00:00",
+    "last_success_at": "2026-10-30T19:04:11.267340+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
