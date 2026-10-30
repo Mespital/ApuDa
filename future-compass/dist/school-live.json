@@ -1,6 +1,6 @@
 {
  "school": "서초고등학교",
- "updated": "2026-10-30T05:05:31.893Z",
+ "updated": "2026-10-30T12:28:20.601Z",
  "eval": {
   "checked": "2026-10-30T05:05:32.945Z",
   "fetched": "2026-10-25T23:58:59.260Z",
@@ -6953,7 +6953,7 @@
   "unreadable": []
  },
  "news": {
-  "checked": "2026-10-30T05:05:35.535Z",
+  "checked": "2026-10-30T12:28:34.585Z",
   "boards": [
    {
     "name": "공지사항",
@@ -7000,7 +7000,7 @@
   ]
  },
  "programs": {
-  "checked": "2026-10-30T05:05:44.097Z",
+  "checked": "2026-10-30T12:28:45.440Z",
   "items": [
    {
     "id": "P0655",
@@ -7023,6 +7023,28 @@
     "apply": "2026-09-29 (18:00) ~ 2026-12-04 (18:00)",
     "applyEnd": "2026-12-04",
     "url": "https://seochoedu.or.kr/user/prgrm/seocho/BD_selectPrgrm.do?q_prgrmId=P0656"
+   },
+   {
+    "id": "P0681",
+    "center": "반포잠원",
+    "status": "모집예정",
+    "title": "2027 서초어린이청소년예술제 Hello, My Shadow! 〈오디션〉 퍼포먼스 합창",
+    "target": "초등학교 1학년 - 고등학교 1학년",
+    "period": "2027-02-27 (13:00) ~ 2027-02-27 (15:00)",
+    "apply": "2026-12-02 (10:00) ~ 2027-02-13 (17:00)",
+    "applyEnd": "2027-02-13",
+    "url": "https://seochoedu.or.kr/user/prgrm/banpo/BD_selectPrgrm.do?q_prgrmId=P0681"
+   },
+   {
+    "id": "P0680",
+    "center": "반포잠원",
+    "status": "모집예정",
+    "title": "2027 서초어린이청소년예술제 Hello, My Shadow! 〈오디션〉 K-POP 댄스",
+    "target": "초등학교 4학년 - 고등학교 1학년",
+    "period": "2027-02-27 (10:00) ~ 2027-02-27 (12:00)",
+    "apply": "2026-12-02 (10:00) ~ 2027-02-13 (17:00)",
+    "applyEnd": "2027-02-13",
+    "url": "https://seochoedu.or.kr/user/prgrm/banpo/BD_selectPrgrm.do?q_prgrmId=P0680"
    },
    {
     "id": "P0679",
@@ -7070,7 +7092,7 @@
   "office": "https://gnscedu.sen.go.kr/CMS/about/about03/index.html"
  },
  "exams": {
-  "checked": "2026-10-30T05:05:39.492Z",
+  "checked": "2026-10-30T12:28:39.205Z",
   "mid": {
    "scope": {
     "id": "27502687",
