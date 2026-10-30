@@ -84,7 +84,7 @@ a{color:inherit;text-decoration:none}
 <body>
 <header class="top">
   <a class="brand" href="/" aria-label="ApuDa 홈으로"><span>ApuDa</span><small>아프지만, 다행이다.</small></a>
-  <div class="actions"><a class="btn" href="/#floor-2">2F 서재로</a><button class="btn primary" id="downloadBtn" type="button">⬇ PDF 받기</button></div>
+  <div class="actions"><a class="btn" href="/#floor-2">2F 서재로</a><button class="btn primary" id="downloadBtn" type="button" title="AI 사전점검 자료 · 실제 전문의 검토 대기">⬇ PDF 받기 (검토 대기)</button></div>
 </header>
 <main class="wrap">
   <section class="hero" aria-labelledby="bookTitle">
@@ -97,7 +97,8 @@ a{color:inherit;text-decoration:none}
     <div class="hbody">
       <p class="lead">처음 진단받은 환자와 보호자를 위한 핵심 정리·질문·행동 가이드예요. 웹에서는 <b>앞부분을 무료로 미리 볼 수 있고</b>, MINI 전체(PDF) 12종도 <b>코드 입력 없이 무료</b>로 받을 수 있어요.</p>
       <div class="meta"><span class="pill">무료 미리보기</span><span class="pill" id="pageCount">미리보기</span><span class="pill">환자·보호자용</span></div>
-      <button class="dl-cta" id="downloadBtn2" type="button">⬇ MINI 전체 PDF 받기 <small>코드 없이 무료 다운로드</small></button>
+      <p class="notice" role="note" style="margin:12px 0;padding:12px;font-weight:700">⚠️ AI 의학정보 사전점검 단계 · 실제 암종별 전문의 검토 대기. PDF v3.2 원문은 최신 보완 내용이 일부 미반영된 이전 판본입니다. 개정 FAQ와 웹 보완사항을 함께 확인하세요.</p>
+      <button class="dl-cta" id="downloadBtn2" type="button">⬇ MINI 전체 PDF 받기 <small>코드 없이 무료 다운로드 · 전문의 검토 대기</small></button>
     </div>
   </section>
   <nav class="cancers" id="cancers" aria-label="암종 선택"></nav>

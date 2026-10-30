@@ -113,7 +113,7 @@ function pageDrugs(){
     dv.innerHTML='<div class="detail"><div><section class="panel"><div class="d-head"><div>'+typeBadge(d.type)+'<h2>'+esc(d.ko)+'</h2><div class="en">'+esc(d.en)+''+'</div></div><button class="closebtn" id="dclose">← 목록으로</button></div>'+
      '<div class="sec"><h4>기전 <span class="ev">허가사항 요약</span></h4><p>'+esc(d.moa)+'</p><p style="color:var(--muted);font-size:12.5px;margin-top:4px">'+esc(O.TYPES[d.type].label)+' — '+esc(O.TYPES[d.type].desc)+'</p></div>'+
      '<div class="sec"><h4>관련 암종</h4><div class="tags">'+cancerTags(d.cancers,true)+'</div></div>'+
-     (d.markers.length?'<div class="sec"><h4>주요 바이오마커</h4><div class="tags">'+markerTags(d.markers,true)+'</div></div>':'')+
+     (d.markers.length?'<div class="sec"><h4>주요 바이오마커</h4><div class="tags">'+markerTags(d.markers,true)+'</div><p class="note">연결된 지표는 직접 표적·약물 선택 조건·참고 검사로 역할이 서로 다릅니다. 해당 암종의 허가·급여 기준을 진료팀과 확인하세요.</p></div>':'')+
      '<div class="sec"><h4>주로 쓰이는 상황 <span class="ev guide">가이드라인</span></h4><p>'+esc(d.use)+'</p></div>'+
      '<div class="sec"><h4>흔히 알려진 부작용</h4><ul>'+d.se.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul></div>'+
      '<div class="sec meaning"><b>환자에게 의미</b><p>'+esc(d.note||'같은 약이라도 암종·병기·바이오마커·이전 치료에 따라 사용할 수 있는 조건이 다릅니다.')+'</p></div>'+
@@ -129,14 +129,15 @@ function pageDrugs(){
       var hit=rows.filter(function(r){return keys.some(function(k){return r['품목명'].indexOf(k)>=0})});
       var recent=hit.filter(function(r){var a=new Date(r['신고일']||r['공급부족예상일']);var b=new Date(r['정상화예상일']);return (a>=cut)||(b>=now)});
       recent.sort(function(a,b){return String(b['신고일']||b['공급부족예상일']).localeCompare(String(a['신고일']||a['공급부족예상일']))});
-      var active=recent.filter(function(r){var b=new Date(r['정상화예상일']);return isNaN(b)||b>=now});
-      var light=active.length?'<span class="light bad">공급부족 신고 '+active.length+'건</span>':(recent.length?'<span class="light warn">최근 3년 내 신고 이력</span>':'<span class="light ok">최근 신고 없음</span>');
-      var html='<div class="st-h">공급 <span class="ev official">식약처 신고</span> '+light+'</div>';
-      if(!rows.length) html='<div class="st-h">공급 <span class="light na">데이터 없음</span></div><p>식약처 공급부족 데이터를 불러오지 못했습니다.</p>';
-      else if(!recent.length) html+='<p>식약처 공급중단·부족 보고 목록에서 최근 3년 내 이 성분 관련 신고가 확인되지 않았습니다.'+(hit.length?' (과거 이력 '+hit.length+'건)':'')+'</p>';
-      else html+=recent.slice(0,4).map(function(r){var b=new Date(r['정상화예상일']);var done=!isNaN(b)&&b<now;
-        return '<div class="supply-row"><b>'+esc(r['품목명'])+'</b><br>'+esc(r['업체명'])+' · 신고 '+esc(r['신고일']||'-')+'<br>정상화 예상 '+esc(r['정상화예상일']||'-')+(done?' <span style="color:var(--ok);font-weight:900">(예정일 경과)</span>':'')+(r['공급부족사유']?'<br><span style="color:#7a8ea3">사유: '+esc(r['공급부족사유'].slice(0,70))+(r['공급부족사유'].length>70?'…':'')+'</span>':'')+'</div>'}).join('')+(recent.length>4?'<p>외 '+(recent.length-4)+'건</p>':'');
-      html+='<a class="ext" href="/news/downloads/mfds-drug-supply-issues.xlsx">전체 공급부족 목록 ↓</a>';
+      // 신고 이력은 실제 재고·공급 정상화 여부를 입증하지 않음.
+      var light=recent.length?'<span class="light warn">신고 이력 '+recent.length+'건</span>':'<span class="light na">최근 신고 이력 없음</span>';
+      var html='<div class="st-h">공급 관련 신고 이력 <span class="ev official">식약처 보고자료</span> '+light+'</div>';
+      html+='<p class="caution"><b>현재 공급 가능 여부를 나타내는 실시간 정보가 아닙니다.</b> 과거 신고와 정상화 <em>예정</em> 날짜만으로 현재 공급부족 또는 정상화를 확정할 수 없습니다. 투약 일정 변경 전 병원 약제부·처방 의료진에게 확인하세요.</p>';
+      if(!rows.length) html='<div class="st-h">공급 신고 이력 <span class="light na">자료 미수신</span></div><p>식약처 공급부족 신고자료를 불러오지 못했습니다. 현재 공급 여부는 병원에 확인하세요.</p>';
+      else if(!recent.length) html+='<p>이 데이터에서 최근 3년 내 일치하는 신고를 찾지 못했습니다.'+(hit.length?' (그 이전 신고 이력 '+hit.length+'건)':'')+' 신고가 없다는 뜻이 공급을 보증하지는 않습니다.</p>';
+      else html+=recent.slice(0,4).map(function(r){var b=new Date(r['정상화예상일']);var past=!isNaN(b)&&b<now;
+        return '<div class="supply-row"><b>'+esc(r['품목명'])+'</b><br>'+esc(r['업체명'])+' · 신고일 '+esc(r['신고일']||'-')+'<br>신고 당시 정상화 <b>예정일</b> '+esc(r['정상화예상일']||'미기재')+(past?' <span class="light na">예정일 경과 · 실제 상태 미확인</span>':'')+(r['공급부족사유']?'<br><span style="color:#7a8ea3">신고 사유: '+esc(r['공급부족사유'].slice(0,70))+(r['공급부족사유'].length>70?'…':'')+'</span>':'')+'</div>'}).join('')+(recent.length>4?'<p>외 '+(recent.length-4)+'건의 신고 이력</p>':'');
+      html+='<a class="ext" href="/news/downloads/mfds-drug-supply-issues.xlsx">공식 신고 목록 내려받기 ↓</a>';
       $('#dsupply').innerHTML=html;
     });
     loadNews().then(function(){var el=$('#dnews');if(el)el.innerHTML=newsHtml(newsFor(drugKeys(d),6))}).catch(function(){var el=$('#dnews');if(el)el.innerHTML=newsHtml([])});

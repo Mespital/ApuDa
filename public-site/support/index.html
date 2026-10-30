@@ -218,7 +218,8 @@ a:focus-visible,.res>button:focus-visible,.skip:focus-visible{outline:3px solid 
 
 <!-- ===== 기준표 ===== -->
 <section class="card sec" id="tbl">
-  <h2>본인부담상한제 상한액</h2>
+  <h2>본인부담상한제 상한액 · 2025년 참고표</h2>
+  <p class="mini" role="note" style="font-weight:800;color:#a74412;background:#fff6e6;padding:12px;border-radius:10px">⚠️ 아래 금액은 2025년 기준입니다. 2026년 본인부담상한액이나 실제 환급 자격으로 사용하면 안 됩니다. 현재년도 적용액은 국민건강보험공단(1577-1000)에 확인하세요.</p>
   <p>1년 동안 낸 급여 본인부담금이 아래 금액을 넘으면, 넘은 만큼 공단이 돌려줘요(비급여 제외). 소득분위는 건강보험료로 정해져요.</p>
   <table><thead><tr><th>소득분위</th><th class="r">상한액</th><th class="r">요양병원 120일 초과</th></tr></thead><tbody>
   <tr><td>1분위</td><td class="r">89만원</td><td class="r">141만원</td></tr>
@@ -310,9 +311,9 @@ a:focus-visible,.res>button:focus-visible,.skip:focus-visible{outline:3px solid 
         where:'따로 신청하지 않아도 안내가 와요. 안내를 받으면 공단 홈페이지·앱·지사에서 계좌 신청',need:'환급 안내문, 본인 계좌',tel:[['국민건강보험공단','1577-1000']]}};
     if(S.ins==='aid'){cap.st='no';cap.why='의료급여 수급자는 의료급여 본인부담 보상·상한제가 따로 있어요. 주민센터에 문의하세요.'}
     else if(payBen!=null){
-      if(payBen>89){cap.st=payBen>320?'ok':'warn';cap.why='급여 본인부담 약 '+man(payBen)+' — 소득분위에 따라 '+(payBen>826?'모든 분위에서':'일부 분위에서')+' 상한액을 넘을 수 있어요.'}
-      else {cap.st='no';cap.why='급여 본인부담이 가장 낮은 상한액(89만원)보다 적어 아직은 해당이 어려워요.'}
-    } else cap.why='병원비를 입력하면 넘는지 대략 알려드려요.';
+      cap.st='warn';
+      cap.why='급여 본인부담 약 '+man(payBen)+'입니다. 표시된 상한액은 2025년 참고값이므로, 2026년 환급 가능 여부와 액수는 이 계산으로 판정할 수 없습니다. 공단(1577-1000)에서 현재년도·본인 소득분위 상한액을 확인하세요.';
+    } else cap.why='2025년 참고 상한액만 제공됩니다. 2026년 실제 적용액은 공단에서 확인하세요.';
     out.push(cap);
 
     // 3) 재난적 의료비

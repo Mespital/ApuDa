@@ -104,7 +104,7 @@
     }
     accessToken = null; tokenExpiry = 0;
     meta.set({ connected: false });
-    toast('구글 연결을 해제했습니다. 기기의 기록은 그대로 있습니다.');
+    toast('구글 연결만 해제했습니다. 기기 기록과 기존 드라이브 사본은 그대로 남습니다.');
   }
 
   /* --------------------------------------------------- Drive API ------ */
@@ -119,8 +119,26 @@
   }
 
   async function listBackups() {
-    const out = await api('drive/v3/files?spaces=appDataFolder&orderBy=createdTime desc&pageSize=50&fields=files(id,name,createdTime)');
-    return out.files || [];
+    // Drive 목록은 여러 페이지일 수 있다. 다른 appData 파일은 건드리지 않는다.
+    const files = [], seenTokens = new Set();
+    let pageToken = '';
+    do {
+      const query = new URLSearchParams({
+        spaces: 'appDataFolder', orderBy: 'createdTime desc',
+        pageSize: '100', fields: 'nextPageToken,files(id,name,createdTime)'
+      });
+      if (pageToken) query.set('pageToken', pageToken);
+      const out = await api('drive/v3/files?' + query.toString());
+      for (const file of (out.files || [])) {
+        if (file && typeof file.id === 'string' &&
+            typeof file.name === 'string' &&
+            /^apuda-backup-.*\.json$/.test(file.name)) files.push(file);
+      }
+      pageToken = String(out.nextPageToken || '');
+      if (pageToken && seenTokens.has(pageToken)) throw new Error('drive-pagination-loop');
+      if (pageToken) seenTokens.add(pageToken);
+    } while (pageToken);
+    return files;
   }
 
   async function uploadBackup() {
@@ -275,17 +293,31 @@
       ${m.connected ? `<div class="ab-row">
         <button class="ab-btn" data-ab="disconnect">연결 해제</button>
         <button class="ab-btn danger" data-ab="wipe">드라이브 백업 전체 삭제</button></div>` : ''}
-      <p class="ab-note">기록은 회원님의 기기와 회원님의 구글 드라이브에만 저장됩니다.
-      아프다는 회원님의 기록을 저장하지도, 볼 수도 없습니다.</p></div>`;
+      <p class="ab-note">구글 연결은 선택 사항입니다. 연결하면 현재 기록을 바로 백업하고,
+      이후 기록 변경 시에도 본인 Google Drive의 앱 전용 저장 영역에 자동 백업합니다.
+      <strong>백업에는 이름·암종·약·증상 등 건강정보가 추가 암호화 없이 JSON 형태로 저장됩니다.</strong>
+      이 백업 기능은 기록을 아프다 서버로 보내지 않습니다. 연결 해제나 기기 기록 삭제만으로 드라이브 사본은 삭제되지 않으며,
+      드라이브 사본은 별도로 삭제해야 합니다.</p></div>`;
   }
 
   document.addEventListener('click', async (e) => {
     const b = e.target.closest('[data-ab]'); if (!b) return;
     const act = b.dataset.ab;
     if (act === 'connect' || act === 'banner-go') {
-      const banner = document.getElementById('ab-banner'); if (banner) banner.remove();
-      try { await getToken(true); await runBackup('manual'); await offerRestore(); }
-      catch { toast('연결하지 못했습니다.', 'error'); }
+      const consent = window.confirm(
+        'Google Drive 건강정보 백업에 동의하시겠습니까?\n\n' +
+        '이름·암종·치료·약·증상 등 기록이 본인 Google Drive의 앱 전용 영역에 JSON 파일로 저장됩니다. ' +
+        '앱 자체의 추가 암호화는 적용되지 않습니다.\n\n' +
+        '연결하면 즉시 백업하고 이후 기록 변경 시에도 자동으로 백업합니다. ' +
+        '연결 해제나 기기 기록 삭제만으로 Drive 사본이 삭제되지는 않습니다.\n\n' +
+        '계속하려면 확인을 누르세요.'
+      );
+      if (!consent) return;
+      try {
+        await getToken(true);
+        const banner = document.getElementById('ab-banner'); if (banner) banner.remove();
+        await runBackup('manual'); await offerRestore();
+      } catch { toast('연결하지 못했습니다.', 'error'); }
     }
     if (act === 'backup') await runBackup('manual');
     if (act === 'disconnect') signOut();
@@ -311,7 +343,7 @@
     let files = [];
     try { files = await listBackups(); } catch { toast('목록을 불러오지 못했습니다.', 'error'); return; }
     if (!files.length) { toast('저장된 백업이 없습니다.'); return; }
-    const items = files.map((f) => `<button class="ab-item" data-restore="${f.id}">${fmtTime(new Date(f.createdTime).getTime())}</button>`).join('');
+    const items = files.map((f) => `<button class="ab-item" data-restore="${f.id.replace(/[^A-Za-z0-9_-]/g, '')}">${fmtTime(new Date(f.createdTime).getTime())}</button>`).join('');
     const mk = modal(`<p class="ab-h">복원할 시점을 고르세요</p>
       <p style="margin:6px 0 14px;opacity:.75">복원하면 이 기기의 기록이 선택한 시점으로 바뀝니다.
       내용을 한 번 더 확인한 뒤 바꿉니다. 직전 기록의 안전 사본을 저장하지 못하면 복원을 중단합니다.</p>${items}
@@ -349,7 +381,7 @@
     css();
     slot.innerHTML = `<div class="ab-banner" id="ab-banner">
       <b>폰을 바꿔도 기록을 지키세요</b><br>
-      내 구글 드라이브에 백업해 두면 새 기기에서 그대로 되살릴 수 있습니다.
+      내 구글 드라이브에 백업하면 새 기기에서 복원할 수 있어요. 건강정보는 추가 암호화 없이 저장되며 연결 후 자동 백업됩니다.
       <div class="ab-row">
         <button class="ab-btn primary" data-ab="banner-go">구글 드라이브에 백업</button>
         <button class="ab-btn" data-ab="banner-close">나중에</button>
