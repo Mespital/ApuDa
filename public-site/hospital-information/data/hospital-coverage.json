@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-10-29T02:14:12+00:00",
+  "checked_at": "2026-10-30T02:28:06+00:00",
   "registered_hospitals": 30,
   "hospitals_with_matched_doctors": 8,
-  "matched_doctors": 486,
+  "matched_doctors": 488,
   "hospitals": [
     {
       "slug": "amc",
@@ -11,7 +11,7 @@
       "region": "서울",
       "official_url": "https://www.amc.seoul.kr/asan/main.do",
       "official_staff_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoList.do",
-      "matched_doctors": 145,
+      "matched_doctors": 147,
       "source_status": "VERIFIED_MATCHES",
       "directory_http": 200,
       "diagnostic": null,
