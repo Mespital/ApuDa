@@ -131,7 +131,7 @@ function reply(raw){
    '이 암 책':function(){return cc?[{h:link('/library/mini/?cancer='+cc[0],'📖 '+cc[1]+' 진단 첫 30일',true)}]:cmd['첫 30일 책']()},
    '질문 저장 방법':function(){return [{h:'노트에 <b>"질문: 궁금한 내용"</b>이라고 쓰면 진료요약의 "오늘 꼭 물어볼 것"에 모여요. 아래 버튼을 누르면 바로 써 둘 수 있어요.<div class="links">'+link('/note/?say='+encodeURIComponent('질문: '),'📘 노트에 질문 쓰기',true)+'</div>'}]},
    '약 기록 방법':function(){return [{h:'노트에 <b>"약: 약이름 먹는 시간 개수"</b>로 쓰면 복용 중인 약 목록에 들어가요. 예) 약: 카페시타빈 아침저녁 3알<div class="links">'+link('/note/?say='+encodeURIComponent('약: '),'📘 노트에 약 기록',true)+'</div>'}]},
-   '공급부족이란':function(){return [{h:'<b>공급 표시</b>는 식약처에 신고된 공급중단·부족 보고를 약 이름으로 찾아 보여주는 거예요. 빨강은 정상화 예정일이 아직 안 지난 신고, 주황은 최근 3년 내 이력이에요.<p class="sm">공급 소식이 있어도 <b>치료 일정이나 약을 임의로 바꾸지 말고</b> 치료기관에 확인하세요.</p>'}]},
+   '공급부족이란':function(){return [{h:'<b>공급 표시</b>는 식약처에 제출된 과거 공급중단·부족 신고 이력을 약 이름으로 찾아 보여주는 거예요. <b>현재의 실시간 공급·재고·정상화 여부를 확인하는 기능은 아닙니다.</b> 신고서의 정상화 예정일이 지나도 실제 정상화를 뜻하지 않아요.<p class="sm">공급 소식이 있어도 <b>치료 일정이나 약을 임의로 바꾸지 말고</b> 치료기관에 확인하세요.</p>'}]},
    '결과지 읽는 법':function(){return [{h:'<b>검사 결과지 볼 때</b><ol><li>검사 이름(EGFR, HER2…)과 결과(양성/음성, 수치)를 그대로 적어 두기</li><li>바이오마커 페이지에서 그 검사의 "결과는 치료와 어떻게 연결되나요?" 확인</li><li>모르는 표현은 노트에 질문으로 저장해 진료 때 확인</li></ol><p class="sm">결과 해석과 치료 결정은 담당 의료진이 해요.</p>'}]},
    '응급':function(){return [{c:'red',h:'<b>지금 병원에 연락해야 하는지</b> 체크리스트로 확인해 보세요. 숨쉬기 힘들거나 의식이 처지면 바로 119.<div class="links">'+link('/note/#sos','🚨 응급 판단 열기',true)+'<a class="go red" href="tel:119">🚑 119</a></div>'}]},
    '노트':function(){return [{h:siteCard(SITE.note)}]},'치료비 지원':function(){return [{h:siteCard(SITE.support)+'<p class="sm">조건은 자주 바뀌어요. 병원 사회사업실에서 최종 확인하세요.</p>'}]},
