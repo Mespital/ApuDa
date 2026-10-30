@@ -1,8 +1,8 @@
 {
  "school": "서초고등학교",
- "updated": "2026-10-29T23:52:11.179Z",
+ "updated": "2026-10-30T05:05:31.893Z",
  "eval": {
-  "checked": "2026-10-29T23:52:12.593Z",
+  "checked": "2026-10-30T05:05:32.945Z",
   "fetched": "2026-10-25T23:58:59.260Z",
   "shl": "5c571812-c664-4495-be26-6b9fb997a233",
   "round": "(3차) 2026년 09월",
@@ -6953,7 +6953,7 @@
   "unreadable": []
  },
  "news": {
-  "checked": "2026-10-29T23:52:16.023Z",
+  "checked": "2026-10-30T05:05:35.535Z",
   "boards": [
    {
     "name": "공지사항",
@@ -7000,7 +7000,7 @@
   ]
  },
  "programs": {
-  "checked": "2026-10-29T23:52:27.422Z",
+  "checked": "2026-10-30T05:05:44.097Z",
   "items": [
    {
     "id": "P0655",
@@ -7023,6 +7023,39 @@
     "apply": "2026-09-29 (18:00) ~ 2026-12-04 (18:00)",
     "applyEnd": "2026-12-04",
     "url": "https://seochoedu.or.kr/user/prgrm/seocho/BD_selectPrgrm.do?q_prgrmId=P0656"
+   },
+   {
+    "id": "P0679",
+    "center": "반포잠원",
+    "status": "모집예정",
+    "title": "2027 서초어린이청소년예술제 Hello, My Shadow! 〈오디션〉 뮤지컬",
+    "target": "초등학교 3학년 - 고등학교 1학년",
+    "period": "2027-02-20 (13:00) ~ 2027-02-20 (15:00)",
+    "apply": "2026-12-02 (10:00) ~ 2027-02-13 (17:00)",
+    "applyEnd": "2027-02-13",
+    "url": "https://seochoedu.or.kr/user/prgrm/banpo/BD_selectPrgrm.do?q_prgrmId=P0679"
+   },
+   {
+    "id": "P0678",
+    "center": "반포잠원",
+    "status": "모집예정",
+    "title": "2027 서초어린이청소년예술제 Hello, My Shadow! 〈오디션〉 한국무용",
+    "target": "초등학교 3학년 - 고등학교 1학년",
+    "period": "2027-02-20 (10:00) ~ 2027-02-20 (12:00)",
+    "apply": "2026-12-02 (10:00) ~ 2027-02-13 (17:00)",
+    "applyEnd": "2027-02-13",
+    "url": "https://seochoedu.or.kr/user/prgrm/banpo/BD_selectPrgrm.do?q_prgrmId=P0678"
+   },
+   {
+    "id": "P0677",
+    "center": "반포잠원",
+    "status": "모집예정",
+    "title": "2027 서초어린이청소년예술제 Hello, My Shadow! 〈오디션〉 민요",
+    "target": "초등학교 1학년 - 고등학교 1학년",
+    "period": "2027-02-20 (10:00) ~ 2027-02-20 (12:00)",
+    "apply": "2026-12-02 (10:00) ~ 2027-02-13 (17:00)",
+    "applyEnd": "2027-02-13",
+    "url": "https://seochoedu.or.kr/user/prgrm/banpo/BD_selectPrgrm.do?q_prgrmId=P0677"
    }
   ]
  },
@@ -7037,7 +7070,7 @@
   "office": "https://gnscedu.sen.go.kr/CMS/about/about03/index.html"
  },
  "exams": {
-  "checked": "2026-10-29T23:52:21.261Z",
+  "checked": "2026-10-30T05:05:39.492Z",
   "mid": {
    "scope": {
     "id": "27502687",
