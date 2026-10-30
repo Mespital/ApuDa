@@ -1,0 +1,394 @@
+{
+  "version": "1.2",
+  "report_date": "2026-10-30",
+  "collection_window": {
+    "start": "2026-10-29T09:00:00+09:00",
+    "end": "2026-10-30T09:00:00+09:00",
+    "timezone": "Asia/Seoul"
+  },
+  "sources": [
+    "데일리팜",
+    "의학신문",
+    "메디파나뉴스",
+    "약사공론"
+  ],
+  "briefing": "대원제약 파도프라잔, 임상 3상 성공 연내 허가 신청 가시화가 오늘 가장 중요한 이슈로 부각됐습니다. 이어 [초점] 정부 검체검사 수가 인하, 근거된 '원가보상률 산정' 오류 의혹도 주요 변화로 확인됐습니다. 전체적으로는 신약·임상 · 정책·급여 흐름이 두드러집니다.",
+  "top_news": [
+    {
+      "rank": 1,
+      "canonical_issue": "대원제약 파도프라잔, 임상 3상 성공 연내 허가 신청 가시화 - 약사공론",
+      "title": "대원제약 파도프라잔, 임상 3상 성공 연내 허가 신청 가시화",
+      "category": [
+        "허가",
+        "3상",
+        "임상 3상"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-10-29T17:25:33+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "대원제약이 개발 중인 P-CAB 계열 위식도역류질환 치료 신약 '파도프라잔'이 국내 임상 3상에서 유효성을 입증하면서 상용화를 위한 마지막 관문에 다가섰다.특히",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=547658"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547658"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/547658_452247_2524.jpg",
+      "score": 73,
+      "oncology": null
+    },
+    {
+      "rank": 2,
+      "canonical_issue": "[초점] 정부 검체검사 수가 인하, 근거된 '원가보상률 산정' 오류 의혹 - 의학신문",
+      "title": "[초점] 정부 검체검사 수가 인하, 근거된 '원가보상률 산정' 오류 의혹",
+      "category": [
+        "정책",
+        "수가"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-30T06:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=이재원 기자] 정부가 검체검사 수가 인하를 포함한 건강보험 수가 구조 개편안을 건강보험정책심의위원회에서 의결한 가운데, 수가 조정의 핵심 근거",
+        "[의학신문·일간보사=이재원 기자] 정부가 검체검사 수가 인하를 포함한 건강보험 수가 구조 개편안을 건강보험정책심의위원회에서 의결한 가운데, 수가 조정의 핵심 근거인 원가보상률 192%에 이미 폐지된 종별가산이 포함됐을 가능성이 제기되면서 산정 오류 논란이 불거지고 있다.",
+        "종별가산을 제외하면 원가보상률이 정부의 수가 조정 기준인 150% 안팎까지 낮아질 수 있어, 실제보다"
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3015175"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015175"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3015175_416113_3736.jpg",
+      "score": 68,
+      "oncology": null
+    },
+    {
+      "rank": 3,
+      "canonical_issue": "GC녹십자·한미약품, 美바이오마린에 파브리병 신약 후보 기술수출 - 메디파나뉴스",
+      "title": "GC녹십자·한미약품, 美바이오마린에 파브리병 신약 후보 기술수출",
+      "category": [
+        "기술수출",
+        "라이선스"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-30T08:37:36+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "GC녹십자와 한미약품이 공동 개발 중인 차세대 파브리병 치료제 후보물질 'LA-GLA(HM15421/GC1134A)'를 미국 글로벌 희귀질환 전문기업 바이오마린에 기술수출한다. GC녹십자(대표 허은철)와 한미약품(대표 황상연)은 바이오마린 파마슈티컬과 LA-GLA의 독점 라이선스 계약을 체결했다고 30일",
+        "복사하기 AI 생성 이미지 GC녹십자와 한미약품이 공동 개발 중인 차세대 파브리병 치료제 후보물질 'LA-GLA(HM15421/GC1134A)'를 미국 글로벌 희귀질환 전문기업 바이오마린에 기술수출한다.",
+        "GC녹십자(대표 허은철)와 한미약품(대표 황상연)은 바이오마린 파마슈티컬과 LA-GLA의 독점 라이선스 계약을 체결했다고 30일 밝혔다."
+      ],
+      "importance": "사업개발·구조개편은 파이프라인 가치와 자본 배분, 기업 경쟁구도에 직접 영향을 주는 변화입니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=420446"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=420446"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/420446_328153_3438.png",
+      "score": 57,
+      "oncology": null
+    },
+    {
+      "rank": 4,
+      "canonical_issue": "식약처 '특별성과' 포상금 받는 업무는? - 의학신문",
+      "title": "식약처 '특별성과' 포상금 받는 업무는?",
+      "category": [
+        "식약처",
+        "허가"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-29T09:04:34+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=이정윤 기자] 신약 등 의료제품의 신속한 허가-심사 혁신업무가 자체 '특별성과' 로 선정, 표창과 포상금을 받았다.식품의약품안전처(처장 오유경",
+        "[의학신문·일간보사=이정윤 기자] 신약 등 의료제품의 신속한 허가-심사 혁신업무가 자체 '특별성과' 로 선정, 표창과 포상금을 받았다.",
+        "식약처 전경/사진제공=식약처 식품의약품안전처(처장 오유경)는 중동 전쟁에 따른 생활필수 품목 수급 불안 위기 대응과 신약 등 의료제품 허가·심사 혁신 등 통상적인 업무 수준을 넘어 혁신적으로 업무를 수행한 2개 사례를 올해 제2회 특별성과로 선정하고, 해당 성과 창출에 기여한 공적자에게 기관장 표창과 포상금(9명)을 수여"
+      ],
+      "importance": "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3015103"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015103"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3015103_416046_346.jpg",
+      "score": 46,
+      "oncology": null
+    },
+    {
+      "rank": 5,
+      "canonical_issue": "혁신위, '건보-비급여-실손 연계 관리·성과 중심 보상' 권고 - 의학신문",
+      "title": "혁신위, '건보-비급여-실손 연계 관리·성과 중심 보상' 권고",
+      "category": [
+        "급여"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-29T12:17:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=이재원 기자] 의료혁신위원회가 건강보험과 비급여, 실손보험을 연계해 국민의 실질적인 의료비 부담을 관리하고, 의료서비스의 질과 환자 건강성과에",
+        "[의학신문·일간보사=이재원 기자] 의료혁신위원회가 건강보험과 비급여, 실손보험을 연계해 국민의 실질적인 의료비 부담을 관리하고, 의료서비스의 질과 환자 건강성과에 따라 보상하는 혼합지불체계로 전환할 것을 정부에 권고했다.",
+        "특히 의료서비스와 의약품·치료재료의 임상적 효과 및 가치를 지속적으로 평가해 적정 진료량과 합리적인 보상체계를 마련하고, 지출 효율화를 통해 확보한 재원을 필수의료에 우선 투입해야 한다는 방향을 제시했다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3015138"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015138"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3015138_416086_5554.jpg",
+      "score": 42,
+      "oncology": null
+    }
+  ],
+  "trends": [
+    {
+      "title": "신약·임상",
+      "count": 4,
+      "change": "4건의 주요 이슈에서 반복적으로 확인",
+      "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
+      "examples": [
+        "대원제약 파도프라잔, 임상 3상 성공 연내 허가 신청 가시화",
+        "GC녹십자·한미약품, 美바이오마린에 파브리병 신약 후보 기술수출"
+      ]
+    },
+    {
+      "title": "정책·급여",
+      "count": 3,
+      "change": "3건의 주요 이슈에서 반복적으로 확인",
+      "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
+      "examples": [
+        "[초점] 정부 검체검사 수가 인하, 근거된 '원가보상률 산정' 오류 의혹",
+        "식약처 '특별성과' 포상금 받는 업무는?"
+      ]
+    },
+    {
+      "title": "디지털헬스",
+      "count": 2,
+      "change": "2건의 주요 이슈에서 반복적으로 확인",
+      "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
+      "examples": [
+        "대원제약 파도프라잔, 임상 3상 성공 연내 허가 신청 가시화",
+        "GC녹십자·한미약품, 美바이오마린에 파브리병 신약 후보 기술수출"
+      ]
+    },
+    {
+      "title": "투자·사업개발",
+      "count": 1,
+      "change": "1건의 주요 이슈에서 반복적으로 확인",
+      "implication": "자본과 파이프라인 확보 경쟁이 사업전략의 핵심이 되는 흐름",
+      "examples": [
+        "GC녹십자·한미약품, 美바이오마린에 파브리병 신약 후보 기술수출"
+      ]
+    }
+  ],
+  "outlet_status": [
+    {
+      "publisher": "데일리팜",
+      "homepage_url": "https://www.dailypharm.com/",
+      "items": []
+    },
+    {
+      "publisher": "의학신문",
+      "homepage_url": "https://www.bosa.co.kr/",
+      "items": [
+        {
+          "title": "[초점] 정부 검체검사 수가 인하, 근거된 '원가보상률 산정' 오류 의혹",
+          "published_at": "2026-10-30T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015175"
+        },
+        {
+          "title": "식약처 '특별성과' 포상금 받는 업무는?",
+          "published_at": "2026-10-29T09:04:34+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015103"
+        },
+        {
+          "title": "혁신위, '건보-비급여-실손 연계 관리·성과 중심 보상' 권고",
+          "published_at": "2026-10-29T12:17:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015138"
+        },
+        {
+          "title": "정부 'K-제약바이오 프론티어기업' 200개 육성",
+          "published_at": "2026-10-29T12:40:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015122"
+        },
+        {
+          "title": "원격중환자실, 삼성서울병원 거점 서울 권역 확대",
+          "published_at": "2026-10-29T12:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015121"
+        },
+        {
+          "title": "가격 넘어 임상·운영 가치 묻는 영국 의료기기 시장, K-메드테크 해법은?",
+          "published_at": "2026-10-30T05:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015191"
+        },
+        {
+          "title": "엑스코프리·스프라바토·팁소보 건보 적용",
+          "published_at": "2026-10-29T12:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015126"
+        },
+        {
+          "title": "대웅 얼라이언스·국제성모병원, AI 접목 해외 스마트 검진센터 추진",
+          "published_at": "2026-10-29T11:53:19+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015163"
+        }
+      ]
+    },
+    {
+      "publisher": "메디파나뉴스",
+      "homepage_url": "https://www.medipana.com/",
+      "items": [
+        {
+          "title": "GC녹십자·한미약품, 美바이오마린에 파브리병 신약 후보 기술수출",
+          "published_at": "2026-10-30T08:37:36+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=420446"
+        },
+        {
+          "title": "파브리병 시장 키우는 바이오마린…한미·GC 신약으로 승부수",
+          "published_at": "2026-10-30T07:29:07+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=420439"
+        },
+        {
+          "title": "보건복지부 인사 발령(11/2~3)",
+          "published_at": "2026-10-29T16:39:59+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=420422"
+        },
+        {
+          "title": "HK이노엔, '케이캡' 처방·수출 실적 확대…수익성 유지",
+          "published_at": "2026-10-29T15:11:41+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=420399"
+        },
+        {
+          "title": "소아응급센터 압수수색 논란 지속…의협, 정부 대응도 비판",
+          "published_at": "2026-10-29T15:04:08+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=420398"
+        },
+        {
+          "title": "藥 \"'의약품 인도 시스템' 사업 특혜 없어…타 업체도 환영\"",
+          "published_at": "2026-10-30T06:02:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=420438"
+        },
+        {
+          "title": "대웅제약, '나보타' 공급 경험 공유…\"콜드체인, 현장 관리 중요\"",
+          "published_at": "2026-10-30T06:03:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=420437"
+        },
+        {
+          "title": "동물약서 매출·데이터 확보…사람 신약 개발로 잇는다",
+          "published_at": "2026-10-30T06:01:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=420435"
+        }
+      ]
+    },
+    {
+      "publisher": "약사공론",
+      "homepage_url": "https://www.kpanews.co.kr/",
+      "items": [
+        {
+          "title": "대원제약 파도프라잔, 임상 3상 성공 연내 허가 신청 가시화",
+          "published_at": "2026-10-29T17:25:33+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547658"
+        },
+        {
+          "title": "중국 신약에 몰리는 글로벌 빅파마…K바이오 경쟁력 시험대",
+          "published_at": "2026-10-30T05:52:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547659"
+        },
+        {
+          "title": "'타그리소' 등 6품목 허가 손본다…B형 간염 재활성화 경고",
+          "published_at": "2026-10-30T05:51:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547667"
+        },
+        {
+          "title": "\"약배송 확대 아닌 약국 보호\"…약사회, 팜투홈 추진 논란 '전면 반박'",
+          "published_at": "2026-10-30T05:55:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547665"
+        },
+        {
+          "title": "\"반복 담합 사업자 영업정지 가능해진다\" 약사법 개정안 발의",
+          "published_at": "2026-10-29T13:29:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547620"
+        },
+        {
+          "title": "다시 시작된 '디지털헬스케어법' 논의, 균형점 찾을까?",
+          "published_at": "2026-10-30T05:53:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547648"
+        },
+        {
+          "title": "[릴레이집회-407일차] \"국민 의약품 안전이 우선\"…약사사회 국회 앞 외침 지속",
+          "published_at": "2026-10-30T05:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547668"
+        },
+        {
+          "title": "\"한국 오면 이 약국, 이 약!\"...\"공공기관이 호객하나?\"",
+          "published_at": "2026-10-29T12:05:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547343"
+        }
+      ]
+    }
+  ],
+  "insight": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름 동시에 정책·급여 흐름도 함께 확인돼 단일 이슈보다 복합적인 산업 변화로 보는 것이 적절합니다.",
+  "infographic": {
+    "image_path": null,
+    "generated_at": null,
+    "template_version": "news-card-v1"
+  }
+}

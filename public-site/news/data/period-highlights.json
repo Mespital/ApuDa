@@ -1,7 +1,7 @@
 {
   "version": "1.1",
-  "generated_at": "2026-10-29T18:05:43.182288+09:00",
-  "as_of": "2026-10-29T09:00:00+09:00",
+  "generated_at": "2026-10-30T18:05:50.826818+09:00",
+  "as_of": "2026-10-30T09:00:00+09:00",
   "periods": {
     "today": {
       "label": "오늘",
@@ -9,204 +9,203 @@
       "items": [
         {
           "rank": 1,
-          "canonical_issue": "내년 1월부터 건보수가 혁신 본격화…2.7조 사업 시행 확정 - 메디파나뉴스",
-          "title": "내년 1월부터 건보수가 혁신 본격화…2.7조 사업 시행 확정",
+          "canonical_issue": "대원제약 파도프라잔, 임상 3상 성공 연내 허가 신청 가시화 - 약사공론",
+          "title": "대원제약 파도프라잔, 임상 3상 성공 연내 허가 신청 가시화",
           "category": [
-            "정책",
-            "수가",
-            "복지부"
-          ],
-          "publishers": [
-            "메디파나뉴스"
-          ],
-          "published_at": "2026-10-28T17:22:27+09:00",
-          "published_at_verified": true,
-          "summary": [
-            "보건복지부는 28일 '2026년 제19차 건강보험정책심의위원회'를 열어 ▲지역과 필수의료 강화를 위한 건강보험 수가 구조 혁신방안 이행 ▲환산지수-상대가치 연계 수가 조정(안) ▲검체검사 위·수탁 조건부 보상 추진계획 등을 의결하고, ▲마약류 중독환자 치료지원 시범사업 ▲어린이 재활의료기관 지정·운영 2",
-            "복사하기 보건복지부는 28일 이형훈 제2차관 주재로 '2026년 제19차 건강보험정책심의위원회'를 개최했다.",
-            "사진=이정수 기자 보건복지부는 28일 '2026년 제19차 건강보험정책심의위원회'를 열어 ▲지역과 필수의료 강화를 위한 건강보험 수가 구조 혁신방안 이행 ▲환산지수-상대가치 연계 수가 조정(안) ▲검체검사 위·수탁 조건부 보상 추진계획 등을 의결하고, ▲마약류 중독환자 치료지원 시범사업 ▲어린이 재활의료기관 지정·운영 2"
-          ],
-          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
-          "source_urls": [
-            "https://www.medipana.com/news/articleView.html?idxno=420306"
-          ],
-          "source_links": [
-            {
-              "publisher": "메디파나뉴스",
-              "url": "https://www.medipana.com/news/articleView.html?idxno=420306"
-            }
-          ],
-          "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/420306_327976_024.jpg",
-          "score": 83,
-          "oncology": null
-        },
-        {
-          "rank": 2,
-          "canonical_issue": "[기획] 약가 개편 이후…제약산업 경쟁구도 달라진다 - 메디파나뉴스",
-          "title": "[기획] 약가 개편 이후…제약산업 경쟁구도 달라진다",
-          "category": [
-            "정책",
-            "약가",
-            "투자",
-            "공급"
-          ],
-          "publishers": [
-            "메디파나뉴스"
-          ],
-          "published_at": "2026-10-29T06:04:00+09:00",
-          "published_at_verified": true,
-          "summary": [
-            "정부의 약가제도 개편이 국내 제약산업의 경쟁구도에 변화를 가져올 것으로 예상된다. 제네릭과 특허만료 의약품의 가격 산정기준이 낮아지는 동시에 연구개발 투자와 필수의약품 공급에 대한 우대정책이 연계되면서, 제약기업의 사업구조와 연구개발 역량에 따라 적용받는 약가 수준과 경영환경에도 차이가 발생하기 때문이다",
-            "복사하기 기획 약가 45% 시대, 제약산업 성장 공식 바뀐다",
-            "정부의 약가제도 개편이 국내 제약산업의 수익구조와 성장전략에 변화를 예고하고 있다."
-          ],
-          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
-          "source_urls": [
-            "https://www.medipana.com/news/articleView.html?idxno=420062"
-          ],
-          "source_links": [
-            {
-              "publisher": "메디파나뉴스",
-              "url": "https://www.medipana.com/news/articleView.html?idxno=420062"
-            }
-          ],
-          "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/420062_327692_1018.png",
-          "score": 79,
-          "oncology": null
-        },
-        {
-          "rank": 3,
-          "canonical_issue": "COPD 환자 찾아내도…교육수가·신약 급여는 '공백' - 메디파나뉴스",
-          "title": "COPD 환자 찾아내도…교육수가·신약 급여는 '공백'",
-          "category": [
-            "급여",
-            "수가"
-          ],
-          "publishers": [
-            "메디파나뉴스"
-          ],
-          "published_at": "2026-10-29T06:01:00+09:00",
-          "published_at_verified": true,
-          "summary": [
-            "국가가 만성폐쇄성폐질환(COPD) 환자를 찾아내기 시작했다. 올해부터 국가건강검진에 폐기능검사가 도입되면서 그동안 자신이 환자인 줄도 모르고 지냈던 사람들을 조기에 발견할 수 있는 길이 열렸다. 그러나 환자를 찾아내는 것과 치료받게 하는 것은 다른 문제다. 질환을 진단받아도 흡입제 사용법을 충분히 배우기",
-            "복사하기 대한결핵 및 호흡기학회 유광하 이사장(큰 사진).",
-            "(상단 왼쪽부터) 한국호흡기장애인협회 심재정 이사장, 대한노인회 김우중 전 사무총장, 대한결핵 및 호흡기학회 이진국 간행이사, 건강보험심사평가원 이숙현 신약등재부장, 보건복지부 김은희 보험약제과 사무관, 대한결핵 및 호흡기학회 황용일 보험이사."
-          ],
-          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
-          "source_urls": [
-            "https://www.medipana.com/news/articleView.html?idxno=420307"
-          ],
-          "source_links": [
-            {
-              "publisher": "메디파나뉴스",
-              "url": "https://www.medipana.com/news/articleView.html?idxno=420307"
-            }
-          ],
-          "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/420307_327980_2716.jpg",
-          "score": 62,
-          "oncology": null
-        },
-        {
-          "rank": 4,
-          "canonical_issue": "지역·필수의료 수가 2.7조 투입…의원 초진·만성질환 보상 강화 - 약사공론",
-          "title": "지역·필수의료 수가 2.7조 투입…의원 초진·만성질환 보상 강화",
-          "category": [
-            "수가",
-            "투자"
+            "허가",
+            "3상",
+            "임상 3상"
           ],
           "publishers": [
             "약사공론"
           ],
-          "published_at": "2026-10-28T16:50:00+09:00",
+          "published_at": "2026-10-29T17:25:33+09:00",
           "published_at_verified": true,
           "summary": [
-            "정부가 내년 1월부터 지역·필수의료 강화를 위해 건강보험 수가 구조를 대폭 손질한다. 전체 연간 투자계획 3.6조 원 가운데 2.7조 원의 시행 시기를 확정하고,",
+            "대원제약이 개발 중인 P-CAB 계열 위식도역류질환 치료 신약 '파도프라잔'이 국내 임상 3상에서 유효성을 입증하면서 상용화를 위한 마지막 관문에 다가섰다.특히",
             "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
             "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
           ],
-          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+          "importance": "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다.",
           "source_urls": [
-            "https://www.kpanews.co.kr/news/articleView.html?idxno=547494"
+            "https://www.kpanews.co.kr/news/articleView.html?idxno=547658"
           ],
           "source_links": [
             {
               "publisher": "약사공론",
-              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547494"
+              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547658"
             }
           ],
-          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/547494_452114_5258.png",
+          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/547658_452247_2524.jpg",
+          "score": 73,
+          "oncology": null
+        },
+        {
+          "rank": 2,
+          "canonical_issue": "[초점] 정부 검체검사 수가 인하, 근거된 '원가보상률 산정' 오류 의혹 - 의학신문",
+          "title": "[초점] 정부 검체검사 수가 인하, 근거된 '원가보상률 산정' 오류 의혹",
+          "category": [
+            "정책",
+            "수가"
+          ],
+          "publishers": [
+            "의학신문"
+          ],
+          "published_at": "2026-10-30T06:00:00+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "[의학신문·일간보사=이재원 기자] 정부가 검체검사 수가 인하를 포함한 건강보험 수가 구조 개편안을 건강보험정책심의위원회에서 의결한 가운데, 수가 조정의 핵심 근거",
+            "[의학신문·일간보사=이재원 기자] 정부가 검체검사 수가 인하를 포함한 건강보험 수가 구조 개편안을 건강보험정책심의위원회에서 의결한 가운데, 수가 조정의 핵심 근거인 원가보상률 192%에 이미 폐지된 종별가산이 포함됐을 가능성이 제기되면서 산정 오류 논란이 불거지고 있다.",
+            "종별가산을 제외하면 원가보상률이 정부의 수가 조정 기준인 150% 안팎까지 낮아질 수 있어, 실제보다"
+          ],
+          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+          "source_urls": [
+            "https://www.bosa.co.kr/news/articleView.html?idxno=3015175"
+          ],
+          "source_links": [
+            {
+              "publisher": "의학신문",
+              "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015175"
+            }
+          ],
+          "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3015175_416113_3736.jpg",
+          "score": 68,
+          "oncology": null
+        },
+        {
+          "rank": 3,
+          "canonical_issue": "GC녹십자·한미약품, 美바이오마린에 파브리병 신약 후보 기술수출 - 메디파나뉴스",
+          "title": "GC녹십자·한미약품, 美바이오마린에 파브리병 신약 후보 기술수출",
+          "category": [
+            "기술수출",
+            "라이선스"
+          ],
+          "publishers": [
+            "메디파나뉴스"
+          ],
+          "published_at": "2026-10-30T08:37:36+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "GC녹십자와 한미약품이 공동 개발 중인 차세대 파브리병 치료제 후보물질 'LA-GLA(HM15421/GC1134A)'를 미국 글로벌 희귀질환 전문기업 바이오마린에 기술수출한다. GC녹십자(대표 허은철)와 한미약품(대표 황상연)은 바이오마린 파마슈티컬과 LA-GLA의 독점 라이선스 계약을 체결했다고 30일",
+            "복사하기 AI 생성 이미지 GC녹십자와 한미약품이 공동 개발 중인 차세대 파브리병 치료제 후보물질 'LA-GLA(HM15421/GC1134A)'를 미국 글로벌 희귀질환 전문기업 바이오마린에 기술수출한다.",
+            "GC녹십자(대표 허은철)와 한미약품(대표 황상연)은 바이오마린 파마슈티컬과 LA-GLA의 독점 라이선스 계약을 체결했다고 30일 밝혔다."
+          ],
+          "importance": "사업개발·구조개편은 파이프라인 가치와 자본 배분, 기업 경쟁구도에 직접 영향을 주는 변화입니다.",
+          "source_urls": [
+            "https://www.medipana.com/news/articleView.html?idxno=420446"
+          ],
+          "source_links": [
+            {
+              "publisher": "메디파나뉴스",
+              "url": "https://www.medipana.com/news/articleView.html?idxno=420446"
+            }
+          ],
+          "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/420446_328153_3438.png",
           "score": 57,
           "oncology": null
         },
         {
+          "rank": 4,
+          "canonical_issue": "식약처 '특별성과' 포상금 받는 업무는? - 의학신문",
+          "title": "식약처 '특별성과' 포상금 받는 업무는?",
+          "category": [
+            "식약처",
+            "허가"
+          ],
+          "publishers": [
+            "의학신문"
+          ],
+          "published_at": "2026-10-29T09:04:34+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "[의학신문·일간보사=이정윤 기자] 신약 등 의료제품의 신속한 허가-심사 혁신업무가 자체 '특별성과' 로 선정, 표창과 포상금을 받았다.식품의약품안전처(처장 오유경",
+            "[의학신문·일간보사=이정윤 기자] 신약 등 의료제품의 신속한 허가-심사 혁신업무가 자체 '특별성과' 로 선정, 표창과 포상금을 받았다.",
+            "식약처 전경/사진제공=식약처 식품의약품안전처(처장 오유경)는 중동 전쟁에 따른 생활필수 품목 수급 불안 위기 대응과 신약 등 의료제품 허가·심사 혁신 등 통상적인 업무 수준을 넘어 혁신적으로 업무를 수행한 2개 사례를 올해 제2회 특별성과로 선정하고, 해당 성과 창출에 기여한 공적자에게 기관장 표창과 포상금(9명)을 수여"
+          ],
+          "importance": "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다.",
+          "source_urls": [
+            "https://www.bosa.co.kr/news/articleView.html?idxno=3015103"
+          ],
+          "source_links": [
+            {
+              "publisher": "의학신문",
+              "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015103"
+            }
+          ],
+          "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3015103_416046_346.jpg",
+          "score": 46,
+          "oncology": null
+        },
+        {
           "rank": 5,
-          "canonical_issue": "듀피젠트, COPD 급여기준 논의 완료...경제성평가 진입 임박 - 의학신문",
-          "title": "듀피젠트, COPD 급여기준 논의 완료...경제성평가 진입 임박",
+          "canonical_issue": "혁신위, '건보-비급여-실손 연계 관리·성과 중심 보상' 권고 - 의학신문",
+          "title": "혁신위, '건보-비급여-실손 연계 관리·성과 중심 보상' 권고",
           "category": [
             "급여"
           ],
           "publishers": [
             "의학신문"
           ],
-          "published_at": "2026-10-29T06:00:00+09:00",
+          "published_at": "2026-10-29T12:17:00+09:00",
           "published_at_verified": true,
           "summary": [
-            "[의학신문·일간보사=이재원 기자] 중증 만성폐쇄성폐질환(COPD) 치료제 듀피젠트(두필루맙)의 건강보험 급여 확대를 위한 급여기준 논의가 마무리되고, 경제성평가",
-            "[의학신문·일간보사=이재원 기자] 중증 만성폐쇄성폐질환(COPD) 치료제 듀피젠트(두필루맙)의 건강보험 급여 확대를 위한 급여기준 논의가 마무리되고, 경제성평가 진입을 앞두고 있는 것으로 확인됐다.",
-            "건강보험심사평가원은 현재 제약사와 비용효과성 및 약가 관련 사항을 조율하고 있으며, 관련 자료가 취합되는 대로 후속 평가 절차를 진행할 예정이다."
+            "[의학신문·일간보사=이재원 기자] 의료혁신위원회가 건강보험과 비급여, 실손보험을 연계해 국민의 실질적인 의료비 부담을 관리하고, 의료서비스의 질과 환자 건강성과에",
+            "[의학신문·일간보사=이재원 기자] 의료혁신위원회가 건강보험과 비급여, 실손보험을 연계해 국민의 실질적인 의료비 부담을 관리하고, 의료서비스의 질과 환자 건강성과에 따라 보상하는 혼합지불체계로 전환할 것을 정부에 권고했다.",
+            "특히 의료서비스와 의약품·치료재료의 임상적 효과 및 가치를 지속적으로 평가해 적정 진료량과 합리적인 보상체계를 마련하고, 지출 효율화를 통해 확보한 재원을 필수의료에 우선 투입해야 한다는 방향을 제시했다."
           ],
           "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
           "source_urls": [
-            "https://www.bosa.co.kr/news/articleView.html?idxno=3015088"
+            "https://www.bosa.co.kr/news/articleView.html?idxno=3015138"
           ],
           "source_links": [
             {
               "publisher": "의학신문",
-              "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015088"
+              "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015138"
             }
           ],
-          "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3015088_416039_483.jpg",
-          "score": 50,
+          "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3015138_416086_5554.jpg",
+          "score": 42,
           "oncology": null
         }
       ],
       "trends": [
         {
+          "title": "신약·임상",
+          "count": 4,
+          "change": "4건의 주요 이슈에서 반복적으로 확인",
+          "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
+          "examples": [
+            "대원제약 파도프라잔, 임상 3상 성공 연내 허가 신청 가시화",
+            "GC녹십자·한미약품, 美바이오마린에 파브리병 신약 후보 기술수출"
+          ]
+        },
+        {
           "title": "정책·급여",
-          "count": 5,
-          "change": "5건의 주요 이슈에서 반복적으로 확인",
+          "count": 3,
+          "change": "3건의 주요 이슈에서 반복적으로 확인",
           "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
           "examples": [
-            "내년 1월부터 건보수가 혁신 본격화…2.7조 사업 시행 확정",
-            "[기획] 약가 개편 이후…제약산업 경쟁구도 달라진다"
+            "[초점] 정부 검체검사 수가 인하, 근거된 '원가보상률 산정' 오류 의혹",
+            "식약처 '특별성과' 포상금 받는 업무는?"
+          ]
+        },
+        {
+          "title": "디지털헬스",
+          "count": 2,
+          "change": "2건의 주요 이슈에서 반복적으로 확인",
+          "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
+          "examples": [
+            "대원제약 파도프라잔, 임상 3상 성공 연내 허가 신청 가시화",
+            "GC녹십자·한미약품, 美바이오마린에 파브리병 신약 후보 기술수출"
           ]
         },
         {
           "title": "투자·사업개발",
-          "count": 2,
-          "change": "2건의 주요 이슈에서 반복적으로 확인",
+          "count": 1,
+          "change": "1건의 주요 이슈에서 반복적으로 확인",
           "implication": "자본과 파이프라인 확보 경쟁이 사업전략의 핵심이 되는 흐름",
           "examples": [
-            "[기획] 약가 개편 이후…제약산업 경쟁구도 달라진다",
-            "지역·필수의료 수가 2.7조 투입…의원 초진·만성질환 보상 강화"
-          ]
-        },
-        {
-          "title": "의료현장",
-          "count": 1,
-          "change": "1건의 주요 이슈에서 반복적으로 확인",
-          "implication": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름",
-          "examples": [
-            "내년 1월부터 건보수가 혁신 본격화…2.7조 사업 시행 확정"
-          ]
-        },
-        {
-          "title": "공급·유통",
-          "count": 1,
-          "change": "1건의 주요 이슈에서 반복적으로 확인",
-          "implication": "의약품 공급 안정성과 유통 대응이 현장 리스크로 부각되는 흐름",
-          "examples": [
-            "[기획] 약가 개편 이후…제약산업 경쟁구도 달라진다"
+            "GC녹십자·한미약품, 美바이오마린에 파브리병 신약 후보 기술수출"
           ]
         }
       ]
@@ -323,6 +322,41 @@
         },
         {
           "rank": 1,
+          "canonical_issue": "대원제약 파도프라잔, 임상 3상 성공 연내 허가 신청 가시화 - 약사공론",
+          "title": "대원제약 파도프라잔, 임상 3상 성공 연내 허가 신청 가시화",
+          "category": [
+            "허가",
+            "3상",
+            "임상 3상"
+          ],
+          "publishers": [
+            "약사공론"
+          ],
+          "published_at": "2026-10-29T17:25:33+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "대원제약이 개발 중인 P-CAB 계열 위식도역류질환 치료 신약 '파도프라잔'이 국내 임상 3상에서 유효성을 입증하면서 상용화를 위한 마지막 관문에 다가섰다.특히",
+            "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+            "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+          ],
+          "importance": "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다.",
+          "source_urls": [
+            "https://www.kpanews.co.kr/news/articleView.html?idxno=547658"
+          ],
+          "source_links": [
+            {
+              "publisher": "약사공론",
+              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547658"
+            }
+          ],
+          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/547658_452247_2524.jpg",
+          "score": 73,
+          "oncology": null,
+          "report_date": "2026-10-30",
+          "period_rank": 4
+        },
+        {
+          "rank": 1,
           "canonical_issue": "종근당, 토피라메이트 100mg 허가…뇌전증 시장 공략 본격화 - 약사공론",
           "title": "종근당, 토피라메이트 100mg 허가…뇌전증 시장 공략 본격화",
           "category": [
@@ -355,50 +389,14 @@
           "score": 73,
           "oncology": null,
           "report_date": "2026-10-27",
-          "period_rank": 4
-        },
-        {
-          "rank": 2,
-          "canonical_issue": "[기획] 약가 개편 이후…제약산업 경쟁구도 달라진다 - 메디파나뉴스",
-          "title": "[기획] 약가 개편 이후…제약산업 경쟁구도 달라진다",
-          "category": [
-            "정책",
-            "약가",
-            "투자",
-            "공급"
-          ],
-          "publishers": [
-            "메디파나뉴스"
-          ],
-          "published_at": "2026-10-29T06:04:00+09:00",
-          "published_at_verified": true,
-          "summary": [
-            "정부의 약가제도 개편이 국내 제약산업의 경쟁구도에 변화를 가져올 것으로 예상된다. 제네릭과 특허만료 의약품의 가격 산정기준이 낮아지는 동시에 연구개발 투자와 필수의약품 공급에 대한 우대정책이 연계되면서, 제약기업의 사업구조와 연구개발 역량에 따라 적용받는 약가 수준과 경영환경에도 차이가 발생하기 때문이다",
-            "복사하기 기획 약가 45% 시대, 제약산업 성장 공식 바뀐다",
-            "정부의 약가제도 개편이 국내 제약산업의 수익구조와 성장전략에 변화를 예고하고 있다."
-          ],
-          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
-          "source_urls": [
-            "https://www.medipana.com/news/articleView.html?idxno=420062"
-          ],
-          "source_links": [
-            {
-              "publisher": "메디파나뉴스",
-              "url": "https://www.medipana.com/news/articleView.html?idxno=420062"
-            }
-          ],
-          "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/420062_327692_1018.png",
-          "score": 79,
-          "oncology": null,
-          "report_date": "2026-10-29",
           "period_rank": 5
         }
       ],
       "trends": [
         {
           "title": "정책·급여",
-          "count": 5,
-          "change": "5건의 주요 이슈에서 반복적으로 확인",
+          "count": 4,
+          "change": "4건의 주요 이슈에서 반복적으로 확인",
           "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
           "examples": [
             "[종합] 약가 인하부터 미프진까지…국감이 짚은 제약 정책",
@@ -406,22 +404,22 @@
           ]
         },
         {
-          "title": "투자·사업개발",
+          "title": "신약·임상",
           "count": 3,
           "change": "3건의 주요 이슈에서 반복적으로 확인",
-          "implication": "자본과 파이프라인 확보 경쟁이 사업전략의 핵심이 되는 흐름",
-          "examples": [
-            "국내 제약업계, 규모의 경제로 살 길 찾는다",
-            "종근당, 토피라메이트 100mg 허가…뇌전증 시장 공략 본격화"
-          ]
-        },
-        {
-          "title": "신약·임상",
-          "count": 2,
-          "change": "2건의 주요 이슈에서 반복적으로 확인",
           "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
           "examples": [
             "[종합] 약가 인하부터 미프진까지…국감이 짚은 제약 정책",
+            "대원제약 파도프라잔, 임상 3상 성공 연내 허가 신청 가시화"
+          ]
+        },
+        {
+          "title": "투자·사업개발",
+          "count": 2,
+          "change": "2건의 주요 이슈에서 반복적으로 확인",
+          "implication": "자본과 파이프라인 확보 경쟁이 사업전략의 핵심이 되는 흐름",
+          "examples": [
+            "국내 제약업계, 규모의 경제로 살 길 찾는다",
             "종근당, 토피라메이트 100mg 허가…뇌전증 시장 공략 본격화"
           ]
         },
@@ -623,46 +621,45 @@
         },
         {
           "rank": 1,
-          "canonical_issue": "종근당, 토피라메이트 100mg 허가…뇌전증 시장 공략 본격화 - 약사공론",
-          "title": "종근당, 토피라메이트 100mg 허가…뇌전증 시장 공략 본격화",
+          "canonical_issue": "대원제약 파도프라잔, 임상 3상 성공 연내 허가 신청 가시화 - 약사공론",
+          "title": "대원제약 파도프라잔, 임상 3상 성공 연내 허가 신청 가시화",
           "category": [
-            "급여",
             "허가",
-            "합병",
-            "병원"
+            "3상",
+            "임상 3상"
           ],
           "publishers": [
             "약사공론"
           ],
-          "published_at": "2026-10-27T05:53:00+09:00",
+          "published_at": "2026-10-29T17:25:33+09:00",
           "published_at_verified": true,
           "summary": [
-            "종근당이 토피라메이트 서방정 100mg 품목허가를 확보하면서 종합병원 뇌전증 치료제 시장 공략을 강화하는 모습이다. 기존 25mg과 50mg의 건강보험 급여 등재",
+            "대원제약이 개발 중인 P-CAB 계열 위식도역류질환 치료 신약 '파도프라잔'이 국내 임상 3상에서 유효성을 입증하면서 상용화를 위한 마지막 관문에 다가섰다.특히",
             "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
             "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
           ],
-          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+          "importance": "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다.",
           "source_urls": [
-            "https://www.kpanews.co.kr/news/articleView.html?idxno=547308"
+            "https://www.kpanews.co.kr/news/articleView.html?idxno=547658"
           ],
           "source_links": [
             {
               "publisher": "약사공론",
-              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547308"
+              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547658"
             }
           ],
-          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/547308_451970_2042.jpg",
+          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/547658_452247_2524.jpg",
           "score": 73,
           "oncology": null,
-          "report_date": "2026-10-27",
+          "report_date": "2026-10-30",
           "period_rank": 6
         }
       ],
       "trends": [
         {
           "title": "정책·급여",
-          "count": 6,
-          "change": "6건의 주요 이슈에서 반복적으로 확인",
+          "count": 5,
+          "change": "5건의 주요 이슈에서 반복적으로 확인",
           "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
           "examples": [
             "[종합] 약가 인하부터 미프진까지…국감이 짚은 제약 정책",
@@ -671,8 +668,8 @@
         },
         {
           "title": "의료현장",
-          "count": 4,
-          "change": "4건의 주요 이슈에서 반복적으로 확인",
+          "count": 3,
+          "change": "3건의 주요 이슈에서 반복적으로 확인",
           "implication": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름",
           "examples": [
             "내년 1월부터 건보수가 혁신 본격화…2.7조 사업 시행 확정",
@@ -701,12 +698,11 @@
         },
         {
           "title": "투자·사업개발",
-          "count": 2,
-          "change": "2건의 주요 이슈에서 반복적으로 확인",
+          "count": 1,
+          "change": "1건의 주요 이슈에서 반복적으로 확인",
           "implication": "자본과 파이프라인 확보 경쟁이 사업전략의 핵심이 되는 흐름",
           "examples": [
-            "국내 제약업계, 규모의 경제로 살 길 찾는다",
-            "종근당, 토피라메이트 100mg 허가…뇌전증 시장 공략 본격화"
+            "국내 제약업계, 규모의 경제로 살 길 찾는다"
           ]
         }
       ]

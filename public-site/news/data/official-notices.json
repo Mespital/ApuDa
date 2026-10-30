@@ -1,8 +1,27 @@
 {
   "version": "1.0",
-  "generated_at": "2026-10-29T18:06:06.394708+09:00",
+  "generated_at": "2026-10-30T18:06:14.256546+09:00",
   "window_days": 30,
   "items": [
+    {
+      "agency": "식품의약품안전처",
+      "document_type": "제개정고시",
+      "category": "허가·심사",
+      "title": "「한약(생약)제제 등의 품목허가·신고에 관한 규정」 일부개정고시(식품의약품안전처 고시 제2026-73호)",
+      "published_at": "2026-10-30T00:00:00+09:00",
+      "url": "https://www.mfds.go.kr/brd/m_207/view.do?seq=15202&srchFr=&srchTo=&srchWord=&srchTp=&itm_seq_1=0&itm_seq_2=0&multi_itm_seq=0&company_cd=&company_nm=&page=1",
+      "attachments": [
+        {
+          "label": "다운받기",
+          "url": "https://www.mfds.go.kr/brd/m_207/down.do?brd_id=data0008&seq=15202&data_tp=A&file_seq=1"
+        },
+        {
+          "label": "다운받기",
+          "url": "https://www.mfds.go.kr/brd/m_207/down.do?brd_id=data0008&seq=15202&data_tp=A&file_seq=2"
+        }
+      ],
+      "source_list_url": "https://www.mfds.go.kr/brd/m_207/list.do"
+    },
     {
       "agency": "식품의약품안전처",
       "document_type": "행정예고",
@@ -76,29 +95,6 @@
         {
           "label": "다운받기",
           "url": "https://www.mfds.go.kr/brd/m_207/down.do?brd_id=data0008&seq=15200&data_tp=A&file_seq=8"
-        }
-      ],
-      "source_list_url": "https://www.mfds.go.kr/brd/m_207/list.do"
-    },
-    {
-      "agency": "식품의약품안전처",
-      "document_type": "제개정고시",
-      "category": "고시",
-      "title": "「대한민국약전외한약(생약)규격집」 일부개정고시(식품의약품안전처고시 제2026-68호, 2026.9.30.)",
-      "published_at": "2026-09-30T00:00:00+09:00",
-      "url": "https://www.mfds.go.kr/brd/m_207/view.do?seq=15197&srchFr=&srchTo=&srchWord=&srchTp=&itm_seq_1=0&itm_seq_2=0&multi_itm_seq=0&company_cd=&company_nm=&page=1",
-      "attachments": [
-        {
-          "label": "다운받기",
-          "url": "https://www.mfds.go.kr/brd/m_207/down.do?brd_id=data0008&seq=15197&data_tp=A&file_seq=1"
-        },
-        {
-          "label": "다운받기",
-          "url": "https://www.mfds.go.kr/brd/m_207/down.do?brd_id=data0008&seq=15197&data_tp=A&file_seq=2"
-        },
-        {
-          "label": "다운받기",
-          "url": "https://www.mfds.go.kr/brd/m_207/down.do?brd_id=data0008&seq=15197&data_tp=A&file_seq=3"
         }
       ],
       "source_list_url": "https://www.mfds.go.kr/brd/m_207/list.do"
