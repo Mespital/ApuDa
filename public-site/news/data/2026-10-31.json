@@ -1,0 +1,401 @@
+{
+  "version": "1.2",
+  "report_date": "2026-10-31",
+  "collection_window": {
+    "start": "2026-10-30T09:00:00+09:00",
+    "end": "2026-10-31T09:00:00+09:00",
+    "timezone": "Asia/Seoul"
+  },
+  "sources": [
+    "데일리팜",
+    "의학신문",
+    "메디파나뉴스",
+    "약사공론"
+  ],
+  "briefing": "환산지수-상대가치 연계 조정을 통한 수가체계 개선 추진가 오늘 가장 중요한 이슈로 부각됐습니다. 이어 삼진로라제팜주, 퇴방약 신규지정…소아·응급 필수약 공급기반 확보도 주요 변화로 확인됐습니다. 전체적으로는 디지털헬스 · 정책·급여 흐름이 두드러집니다.",
+  "top_news": [
+    {
+      "rank": 1,
+      "canonical_issue": "환산지수-상대가치 연계 조정을 통한 수가체계 개선 추진 - 약사공론",
+      "title": "환산지수-상대가치 연계 조정을 통한 수가체계 개선 추진",
+      "category": [
+        "급여",
+        "수가",
+        "병원"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-10-30T15:16:25+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "환산지수 인상분 일부를 상대가치점수 조정에 활용해 의료행위 간 보상 불균형을 개선하는 수가체계 개편이 추진된다.2027년도 요양급여비용 계약에서는 기존 병원·의원",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=547724"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547724"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/547724_452302_2328.jpg",
+      "score": 68,
+      "oncology": null
+    },
+    {
+      "rank": 2,
+      "canonical_issue": "삼진로라제팜주, 퇴방약 신규지정…소아·응급 필수약 공급기반 확보 - 약사공론",
+      "title": "삼진로라제팜주, 퇴방약 신규지정…소아·응급 필수약 공급기반 확보",
+      "category": [
+        "공급"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-10-30T11:39:08+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "소아 경련과 뇌전증 지속상태 진정 등 소아 진료와 응급의료에 필수적으로 사용되는 삼진로라제팜주가 퇴장방지의약품으로 신규 지정된다.국내 생산 기반이 취약해 시장 철",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "공급 변화는 의약품 접근성과 의료현장 재고 운영, 대체치료 준비에 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=547697"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547697"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/547697_452287_1050.png",
+      "score": 47,
+      "oncology": null
+    },
+    {
+      "rank": 3,
+      "canonical_issue": "보건복지부 과장급 인사 발령 - 약사공론",
+      "title": "보건복지부 과장급 인사 발령",
+      "category": [
+        "정책",
+        "복지부"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-10-30T10:15:27+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "보건복지부 과장급 인사 발령○ 발령일자 : 2026년 11월 2일(월)▶ 과장급 전보- 혈액장기정책과장 성윤호- 국립재활원 총무과장 허창호▶ 과장급 파견- 의료혁",
+        "보건복지부 과장급 인사 발령 ○ 발령일자 : 2026년 11월 2일(월) ▶ 과장급 전보 - 혈액장기정책과장 성윤호 - 국립재활원 총무과장 허창호 ▶ 과장급 파견 - 의료혁신지원과장 양진한 ○ 발령일자 : 2026.",
+        "3.(화) ▶ 과장급 전보 - 사회보장조정과장 이선주 이기사를 추천합니다!"
+      ],
+      "importance": "시장·정책·연구개발 흐름을 보여주는 주요 산업 이슈로 후속 정책과 사업 변화 확인이 필요합니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=547689"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547689"
+        }
+      ],
+      "thumbnail_url": "https://www.kpanews.co.kr/image/logo/snslogotrans_20250903011014.png",
+      "score": 40,
+      "oncology": null
+    },
+    {
+      "rank": 4,
+      "canonical_issue": "[약국에서 바로 쓰는 AI] 약품명 넣으면 비교표 뚝딱 '챗GPT 스킬 만들기' - 약사공론",
+      "title": "[약국에서 바로 쓰는 AI] 약품명 넣으면 비교표 뚝딱 '챗GPT 스킬 만들기'",
+      "category": [
+        "허가",
+        "약국",
+        "ai"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-10-31T05:50:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "성분 구성이 비슷한 일반의약품을 비교해 설명해야 할 때, 허가사항을 매번 찾아 표로 정리하기는 쉽지 않다. 지난 편(12편)에 이어 이번 편에서는 ChatGPT에",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=547652"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547652"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/547652_452240_1442.png",
+      "score": 38,
+      "oncology": null
+    },
+    {
+      "rank": 5,
+      "canonical_issue": "크리스비타 급여 확대, 소아 중심 XLH 치료서 생애주기 관리로 - 의학신문",
+      "title": "크리스비타 급여 확대, 소아 중심 XLH 치료서 생애주기 관리로",
+      "category": [
+        "급여"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-30T16:16:39+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=이재원 기자] 그동안 건강보험 급여 제한으로 치료 선택지가 부족했던 성인 X염색체 연관 저인산혈증(XLH) 환자들에게 새로운 치료 기회가 열린",
+        "[의학신문·일간보사=이재원 기자] 그동안 건강보험 급여 제한으로 치료 선택지가 부족했던 성인 X염색체 연관 저인산혈증(XLH) 환자들에게 새로운 치료 기회가 열린다.",
+        "소아 환자에게만 제한적으로 급여가 적용됐던 크리스비타가 성인과 성장판이 닫힌 청소년까지 급여 범위를 확대하면서, 성장 종료 이후에도 질환 특성에 맞는 치료를 지속할 수 있는 기반이 마련됐다는 평가다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3015288"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015288"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3015288_416212_5524.jpg",
+      "score": 38,
+      "oncology": null
+    }
+  ],
+  "trends": [
+    {
+      "title": "디지털헬스",
+      "count": 3,
+      "change": "3건의 주요 이슈에서 반복적으로 확인",
+      "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
+      "examples": [
+        "환산지수-상대가치 연계 조정을 통한 수가체계 개선 추진",
+        "삼진로라제팜주, 퇴방약 신규지정…소아·응급 필수약 공급기반 확보"
+      ]
+    },
+    {
+      "title": "정책·급여",
+      "count": 3,
+      "change": "3건의 주요 이슈에서 반복적으로 확인",
+      "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
+      "examples": [
+        "환산지수-상대가치 연계 조정을 통한 수가체계 개선 추진",
+        "보건복지부 과장급 인사 발령"
+      ]
+    },
+    {
+      "title": "의료현장",
+      "count": 2,
+      "change": "2건의 주요 이슈에서 반복적으로 확인",
+      "implication": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름",
+      "examples": [
+        "환산지수-상대가치 연계 조정을 통한 수가체계 개선 추진",
+        "[약국에서 바로 쓰는 AI] 약품명 넣으면 비교표 뚝딱 '챗GPT 스킬 만들기'"
+      ]
+    },
+    {
+      "title": "공급·유통",
+      "count": 1,
+      "change": "1건의 주요 이슈에서 반복적으로 확인",
+      "implication": "의약품 공급 안정성과 유통 대응이 현장 리스크로 부각되는 흐름",
+      "examples": [
+        "삼진로라제팜주, 퇴방약 신규지정…소아·응급 필수약 공급기반 확보"
+      ]
+    }
+  ],
+  "outlet_status": [
+    {
+      "publisher": "데일리팜",
+      "homepage_url": "https://www.dailypharm.com/",
+      "items": [
+        {
+          "title": "[데일리팜]&quot;프로그램 바꾸면 현찰 쏜다&quot;…약국 청구SW 시장 쟁탈전",
+          "published_at": "2026-10-31T06:00:59+09:00",
+          "verified": true,
+          "source_url": "https://www.dailypharm.com/user/news/343809"
+        }
+      ]
+    },
+    {
+      "publisher": "의학신문",
+      "homepage_url": "https://www.bosa.co.kr/",
+      "items": [
+        {
+          "title": "크리스비타 급여 확대, 소아 중심 XLH 치료서 생애주기 관리로",
+          "published_at": "2026-10-30T16:16:39+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015288"
+        },
+        {
+          "title": "검체검사 원가보전율 재검토 필요하다!",
+          "published_at": "2026-10-30T13:48:22+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015283"
+        },
+        {
+          "title": "'의약품 개발·허가심사' 환자경험자료 활용",
+          "published_at": "2026-10-30T10:11:27+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015240"
+        },
+        {
+          "title": "정은경 복지부 장관, 다음주 경찰청과 만나 필수의료 수사 지침 논의",
+          "published_at": "2026-10-30T16:48:52+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015305"
+        },
+        {
+          "title": "공급중단 위기 로라제팜주, 퇴장방지약 지정...공급 안정화",
+          "published_at": "2026-10-30T12:03:27+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015279"
+        },
+        {
+          "title": "GC녹십자·한미약품, 파브리병 치료제 대형 딜 성공",
+          "published_at": "2026-10-30T10:43:18+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015238"
+        },
+        {
+          "title": "“의료분쟁조정법, 하위법령 보완·재개정 병행 필요”",
+          "published_at": "2026-10-31T07:52:45+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015322"
+        },
+        {
+          "title": "불가항력 의료사고 보상, ‘예견됐어도 회피 불가능’ 포함해야",
+          "published_at": "2026-10-30T17:55:33+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015312"
+        }
+      ]
+    },
+    {
+      "publisher": "메디파나뉴스",
+      "homepage_url": "https://www.medipana.com/",
+      "items": [
+        {
+          "title": "바로팜, 공모가 1만6400원 확정…약국 플랫폼서 의약품 생산까지",
+          "published_at": "2026-10-30T15:58:21+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=420526"
+        },
+        {
+          "title": "한미약품 비만신약 '에페', 비대면진료 처방금지…11월 시행",
+          "published_at": "2026-10-30T20:00:51+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=420557"
+        },
+        {
+          "title": "한미약품, 기술료 공백에도 3Q 매출 성장세…기술수출 순항",
+          "published_at": "2026-10-31T06:03:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=420561"
+        },
+        {
+          "title": "소량포장 의무화 20년…약효는 같아도 포장은 다르다",
+          "published_at": "2026-10-31T06:04:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=420523"
+        },
+        {
+          "title": "병원획득 폐렴, 다제내성균 89%가 그람음성균…약제 선택 다양화",
+          "published_at": "2026-10-31T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=420562"
+        },
+        {
+          "title": "특허 끝난 당뇨약, 운명은 달랐다…남고 팔고 떠나고",
+          "published_at": "2026-10-30T12:00:49+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=420491"
+        },
+        {
+          "title": "환자도 의사도 불안한 의료분쟁법…남은 '균형의 과제'",
+          "published_at": "2026-10-31T06:01:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=420549"
+        },
+        {
+          "title": "환인제약, 3년 만에 영업익 300억대 회복 전망…추정치 22% 상향",
+          "published_at": "2026-10-30T13:05:59+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=420471"
+        }
+      ]
+    },
+    {
+      "publisher": "약사공론",
+      "homepage_url": "https://www.kpanews.co.kr/",
+      "items": [
+        {
+          "title": "환산지수-상대가치 연계 조정을 통한 수가체계 개선 추진",
+          "published_at": "2026-10-30T15:16:25+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547724"
+        },
+        {
+          "title": "삼진로라제팜주, 퇴방약 신규지정…소아·응급 필수약 공급기반 확보",
+          "published_at": "2026-10-30T11:39:08+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547697"
+        },
+        {
+          "title": "보건복지부 과장급 인사 발령",
+          "published_at": "2026-10-30T10:15:27+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547689"
+        },
+        {
+          "title": "[약국에서 바로 쓰는 AI] 약품명 넣으면 비교표 뚝딱 '챗GPT 스킬 만들기'",
+          "published_at": "2026-10-31T05:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547652"
+        },
+        {
+          "title": "사전 GMP 평가 지침 '전면 개정'…심사기준 그대로, 절차는 명확하게",
+          "published_at": "2026-10-30T12:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547684"
+        },
+        {
+          "title": "농가 구매 원생약도 출발물질로…식약처, GMP 기준 합리화",
+          "published_at": "2026-10-30T09:36:10+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547678"
+        },
+        {
+          "title": "\"다이어트약 남용\" 89.3%…약사, 조제·판매 단계서 오남용 살펴야",
+          "published_at": "2026-10-30T12:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547609"
+        },
+        {
+          "title": "[한약제제] “구내염, 비타민B군을 줘도 왜 안 나을까?”",
+          "published_at": "2026-10-31T05:49:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547631"
+        }
+      ]
+    }
+  ],
+  "insight": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름 동시에 정책·급여 흐름도 함께 확인돼 단일 이슈보다 복합적인 산업 변화로 보는 것이 적절합니다.",
+  "infographic": {
+    "image_path": null,
+    "generated_at": null,
+    "template_version": "news-card-v1"
+  }
+}

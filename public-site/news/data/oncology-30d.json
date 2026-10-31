@@ -1,9 +1,9 @@
 {
   "version": "1.0",
-  "generated_at": "2026-10-30T18:05:50.665879+09:00",
+  "generated_at": "2026-10-31T18:05:53.503980+09:00",
   "window": {
-    "start": "2026-09-30T09:00:00+09:00",
-    "end": "2026-10-30T09:00:00+09:00",
+    "start": "2026-10-01T09:00:00+09:00",
+    "end": "2026-10-31T09:00:00+09:00",
     "days": 30,
     "timezone": "Asia/Seoul"
   },
@@ -87,7 +87,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 11
+      "age_days": 12
     },
     {
       "rank": null,
@@ -156,7 +156,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 11
+      "age_days": 12
     },
     {
       "rank": 3,
@@ -225,7 +225,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": 4,
@@ -292,7 +292,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": null,
@@ -358,7 +358,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 24
+      "age_days": 25
     },
     {
       "rank": null,
@@ -424,7 +424,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 16
+      "age_days": 17
     },
     {
       "rank": null,
@@ -498,7 +498,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 22
+      "age_days": 23
     },
     {
       "rank": null,
@@ -561,7 +561,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 10
+      "age_days": 11
     },
     {
       "rank": null,
@@ -624,7 +624,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": null,
@@ -687,7 +687,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 2
+      "age_days": 3
     },
     {
       "rank": 3,
@@ -747,7 +747,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 14
+      "age_days": 15
     },
     {
       "rank": null,
@@ -809,7 +809,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 18
+      "age_days": 19
     },
     {
       "rank": null,
@@ -870,8 +870,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "today",
-      "age_days": 0
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -931,7 +931,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 22
+      "age_days": 23
     },
     {
       "rank": null,
@@ -995,8 +995,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "today",
-      "age_days": 0
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -1060,7 +1060,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 9
+      "age_days": 10
     },
     {
       "rank": 5,
@@ -1122,7 +1122,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 9
+      "age_days": 10
     },
     {
       "rank": null,
@@ -1184,7 +1184,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 9
+      "age_days": 10
     },
     {
       "rank": null,
@@ -1248,7 +1248,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 9
+      "age_days": 10
     },
     {
       "rank": null,
@@ -1314,7 +1314,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 14
+      "age_days": 15
     },
     {
       "rank": null,
@@ -1374,8 +1374,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "7d",
-      "age_days": 7
+      "freshness": "30d",
+      "age_days": 8
     },
     {
       "rank": null,
@@ -1440,7 +1440,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 14
+      "age_days": 15
     },
     {
       "rank": 3,
@@ -1504,7 +1504,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 17
+      "age_days": 18
     },
     {
       "rank": 2,
@@ -1567,7 +1567,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 23
+      "age_days": 24
     },
     {
       "rank": null,
@@ -1628,7 +1628,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 16
+      "age_days": 17
     },
     {
       "rank": null,
@@ -1691,7 +1691,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 17
+      "age_days": 18
     },
     {
       "rank": null,
@@ -1751,7 +1751,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 22
+      "age_days": 23
     },
     {
       "rank": null,
@@ -1811,7 +1811,130 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
+    },
+    {
+      "rank": null,
+      "canonical_issue": "빅파마 3Q 성적표…비만·항암·면역질환 치료제가 성장 견인 - 메디파나뉴스",
+      "title": "빅파마 3Q 성적표…비만·항암·면역질환 치료제가 성장 견인",
+      "category": [
+        "약가",
+        "투자",
+        "ai"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-31T06:02:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "글로벌 주요 제약기업들이 올해 3분기에도 주력 신약의 판매 확대에 힘입어 성장세를 이어갔다. 비만·당뇨병 치료제와 항암제, HIV 치료제, 면역질환 치료제 등이 실적을 견인한 가운데 기업별로 성장의 중심이 달라지면서 사업 포트폴리오에도 차이가 나타나고 있다. 30일까지 발표된 글로벌 주요 제약기업 9곳의",
+        "복사하기 AI 생성 이미지 글로벌 주요 제약기업들이 올해 3분기에도 주력 신약의 판매 확대에 힘입어 성장세를 이어갔다.",
+        "비만·당뇨병 치료제와 항암제, HIV 치료제, 면역질환 치료제 등이 실적을 견인한 가운데 기업별로 성장의 중심이 달라지면서 사업 포트폴리오에도 차이가 나타나고 있다."
+      ],
+      "importance": "기사에서 급여·약가 이슈가 함께 확인돼 시장 접근성과 환자 부담 변화를 후속 확인할 필요가 있습니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=420558"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=420558"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/420558_328286_1313.png",
+      "score": 14,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
+        "patient_relevance_score": 28,
+        "patient_relevance_labels": [
+          "급여·접근성"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "today",
+      "age_days": 0
+    },
+    {
+      "rank": null,
+      "canonical_issue": "흡연력으론 폐암 검진 한계…가족력·인구집단 통한 선별 필요 - 메디파나뉴스",
+      "title": "흡연력으론 폐암 검진 한계…가족력·인구집단 통한 선별 필요",
+      "category": [
+        "수가",
+        "병원"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-10-30T13:19:54+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "흡연력 중심 검진만으로는 국내 폐암 환자 상당수를 포착하기 어렵다는 지적이 나왔다. 특히 여성·비흡연자 사각지대가 큰 만큼 가족력과 인구집단 특성을 반영한 위험예측 모델로 검진 대상을 정교하게 선별할 필요가 있다는 제언이다. 이에 저선량 흉부 CT(LDCT)는 표준으로 유지하고 바이오마커는 CT 전후 단",
+        "복사하기 (왼쪽부터) 김연욱 분당서울대학교병원 호흡기내과 교수, 범치 양(Pan-Chyr Yang) 대만국립대학교 의과대학 교수, 정채욱 충남대학교 의과대학 호흡기내과 교수가 30일 서울 롯데호텔월드에서 열린 '2026 대한결핵 및 호흡기학회 국제학술대회'에서 각각 폐암 위험예측 모델, 비흡연자 폐암 검진, 조기진단 바이",
+        "사진=민준영 기자 흡연력 중심 검진만으로는 국내 폐암 환자 상당수를 포착하기 어렵다는 지적이 나왔다."
+      ],
+      "importance": "기사에서 급여·약가 이슈가 함께 확인돼 시장 접근성과 환자 부담 변화를 후속 확인할 필요가 있습니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=420496"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=420496"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/420496_328211_4826.png",
+      "score": 14,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "폐암"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": "검사 결과에 따라 치료 선택이 달라질 수 있는 정밀의료 관련 정보입니다.",
+        "patient_relevance_score": 28,
+        "patient_relevance_labels": [
+          "바이오마커"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -1876,7 +1999,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
     },
     {
       "rank": null,
@@ -1938,7 +2061,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     },
     {
       "rank": null,
@@ -1997,8 +2120,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "7d",
-      "age_days": 7
+      "freshness": "30d",
+      "age_days": 8
     },
     {
       "rank": null,
@@ -2058,8 +2181,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "7d",
-      "age_days": 7
+      "freshness": "30d",
+      "age_days": 8
     },
     {
       "rank": null,
@@ -2121,7 +2244,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 8
+      "age_days": 9
     },
     {
       "rank": null,
@@ -2183,7 +2306,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 8
+      "age_days": 9
     },
     {
       "rank": null,
@@ -2244,7 +2367,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 10
+      "age_days": 11
     },
     {
       "rank": null,
@@ -2303,7 +2426,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 14
+      "age_days": 15
     },
     {
       "rank": null,
@@ -2366,7 +2489,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 14
+      "age_days": 15
     },
     {
       "rank": null,
@@ -2428,7 +2551,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 19
+      "age_days": 20
     },
     {
       "rank": null,
@@ -2488,8 +2611,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "7d",
-      "age_days": 7
+      "freshness": "30d",
+      "age_days": 8
     },
     {
       "rank": null,
@@ -2550,7 +2673,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 17
+      "age_days": 18
     },
     {
       "rank": null,
@@ -2613,7 +2736,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 19
+      "age_days": 20
     },
     {
       "rank": null,
@@ -2674,7 +2797,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 22
+      "age_days": 23
     },
     {
       "rank": null,
@@ -2731,7 +2854,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 9
+      "age_days": 10
     },
     {
       "rank": null,
@@ -2788,7 +2911,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 10
+      "age_days": 11
     },
     {
       "rank": null,
@@ -2849,7 +2972,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 11
+      "age_days": 12
     },
     {
       "rank": null,
@@ -2905,8 +3028,8 @@
         "patient_relevance_labels": [],
         "industry_summary": null
       },
-      "freshness": "today",
-      "age_days": 0
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -2966,7 +3089,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 9
+      "age_days": 10
     },
     {
       "rank": null,
@@ -3025,7 +3148,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 22
+      "age_days": 23
     },
     {
       "rank": 3,
@@ -3086,7 +3209,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 25
+      "age_days": 26
     },
     {
       "rank": null,
@@ -3141,7 +3264,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 27
+      "age_days": 28
     },
     {
       "rank": null,
@@ -3199,7 +3322,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 27
+      "age_days": 28
     },
     {
       "rank": null,
@@ -3256,7 +3379,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 28
+      "age_days": 29
     },
     {
       "rank": 4,
@@ -3315,7 +3438,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 28
+      "age_days": 29
     },
     {
       "rank": null,
@@ -3383,7 +3506,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 28
+      "age_days": 29
     }
   ]
 }
