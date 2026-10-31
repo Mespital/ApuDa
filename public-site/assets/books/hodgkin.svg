@@ -2,7 +2,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="720" height="1020" viewBox="0 0 720 1020" role="img" aria-labelledby="title description">
 <title id="title">ApuDa 암 진단 첫 30일 · 호지킨림프종 · VOL. 28</title><desc id="description">부드러운 종이색과 호지킨림프종 관련 상징적인 선화 일러스트를 사용한 환자 안내서 표지</desc>
 <defs><pattern id="paper" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="3" cy="5" r=".8" fill="#B6B8A9" opacity=".16"/><circle cx="19" cy="17" r=".65" fill="#B6B8A9" opacity=".12"/></pattern><linearGradient id="book" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#E4E9E1"/><stop offset=".65" stop-color="#F9F7F1"/><stop offset="1" stop-color="#F8F5EE"/></linearGradient></defs>
-<rect width="720" height="1020" fill="url(#book)"/><rect width="720" height="1020" fill="url(#paper)"/><rect width="20" height="1020" fill="#B9CCC0" opacity=".56"/><path d="M31 0 V1020" stroke="#C3D1C6" stroke-width="3"/>
+<rect width="720" height="1020" fill="#fff8ed"/><circle cx="560" cy="700" r="185" fill="#fbe4b4" opacity=".5"/><path d="M0 820 Q170 740 340 815 T720 800 V1020 H0Z" fill="#dcead8"/><rect width="720" height="1020" fill="url(#paper)"/><rect width="20" height="1020" fill="#B9CCC0" opacity=".56"/><path d="M31 0 V1020" stroke="#C3D1C6" stroke-width="3"/>
 <rect x="52" y="48" width="615" height="924" rx="8" fill="none" stroke="#96ACA2" stroke-width="2.5"/><rect x="61" y="57" width="597" height="906" rx="4" fill="none" stroke="#C8D6CC" stroke-width="1"/>
 <g fill="#708C79" opacity=".8"><path d="M105 109 C110 82 123 74 145 69 C139 91 125 102 105 109Z"/><path d="M108 106 C94 87 80 87 70 89 C78 107 88 113 108 106Z"/><path d="M615 109 C610 82 597 74 575 69 C581 91 595 102 615 109Z"/><path d="M612 106 C626 87 640 87 650 89 C642 107 632 113 612 106Z"/></g>
 <text x="360" y="142" font-family="Georgia,Palatino,serif" font-size="49" letter-spacing="1.8" text-anchor="middle" fill="#204A51">ApuDa</text>
@@ -18,4 +18,4 @@
 <path d="M275 866 H445" stroke="#9FB9AC" stroke-width="2"/>
 <text x="360" y="910" font-family="Georgia,serif" font-size="32" letter-spacing="7" text-anchor="middle" fill="#2B5357">VOL. 28</text>
 <text x="360" y="943" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="15" letter-spacing="1.8" text-anchor="middle" fill="#83968D">APUDA · FIRST 30 DAYS</text>
-</svg>
+<path d="M620 45 L638 66 665 61 661 88 683 105 661 124 664 150 637 145 619 167 606 142 580 144 585 117 564 100 589 84 587 57 610 65Z" fill="#ffcf4d"/><text x="623" y="113" text-anchor="middle" font-size="21" font-weight="900" font-family="sans-serif" fill="#214e68">무료판</text></svg>
