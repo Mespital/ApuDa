@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1020" viewBox="0 0 720 1020" role="img" aria-labelledby="title description">
+<title id="title">ApuDa 암 진단 첫 30일 · 간암 · VOL. 10</title><desc id="description">부드러운 종이색과 간암 관련 상징적인 선화 일러스트를 사용한 환자 안내서 표지</desc>
+<defs><pattern id="paper" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="3" cy="5" r=".8" fill="#B6B8A9" opacity=".16"/><circle cx="19" cy="17" r=".65" fill="#B6B8A9" opacity=".12"/></pattern><linearGradient id="book" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#E4E9E1"/><stop offset=".65" stop-color="#F9F7F1"/><stop offset="1" stop-color="#F8F5EE"/></linearGradient></defs>
+<rect width="720" height="1020" fill="url(#book)"/><rect width="720" height="1020" fill="url(#paper)"/><rect width="20" height="1020" fill="#B9CCC0" opacity=".56"/><path d="M31 0 V1020" stroke="#C3D1C6" stroke-width="3"/>
+<rect x="52" y="48" width="615" height="924" rx="8" fill="none" stroke="#96ACA2" stroke-width="2.5"/><rect x="61" y="57" width="597" height="906" rx="4" fill="none" stroke="#C8D6CC" stroke-width="1"/>
+<g fill="#708C79" opacity=".8"><path d="M105 109 C110 82 123 74 145 69 C139 91 125 102 105 109Z"/><path d="M108 106 C94 87 80 87 70 89 C78 107 88 113 108 106Z"/><path d="M615 109 C610 82 597 74 575 69 C581 91 595 102 615 109Z"/><path d="M612 106 C626 87 640 87 650 89 C642 107 632 113 612 106Z"/></g>
+<text x="360" y="142" font-family="Georgia,Palatino,serif" font-size="49" letter-spacing="1.8" text-anchor="middle" fill="#204A51">ApuDa</text>
+<text x="360" y="176" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="18" text-anchor="middle" letter-spacing="2" fill="#748981">아프지만, 다행이다</text>
+<path d="M286 200 H434" stroke="#99B6A8" stroke-width="2"/>
+<text x="360" y="257" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-weight="500" font-size="31" text-anchor="middle" letter-spacing="3" fill="#58736D">암 진단 첫 30일</text>
+<g text-anchor="middle" font-family="'Noto Serif KR','Nanum Myeongjo','Malgun Gothic',serif" font-weight="700" fill="#244B4F"><text x="360" y="349" font-size="65">간암</text></g>
+<text x="360" y="398" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="20" text-anchor="middle" letter-spacing="1.1" fill="#738680">환자와 가족을 위한 차분한 길잡이</text>
+<ellipse cx="360" cy="628" rx="202" ry="201" fill="#E4EEE1" opacity=".66"/><circle cx="360" cy="628" r="184" fill="#FAF8F3" opacity=".68" stroke="#B6C9AB" stroke-width="2"/>
+<g transform="translate(360 628) scale(.93)"><g fill="#E8C9BF" fill-opacity=".55" stroke="#557E7A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M-141-63 Q-60-120 41-111 Q114-102 141-46 Q134 23 73 59 Q23 85-4 68 Q-30 113-89 91 Q-146 47-141-63Z"/></g><g fill="none" stroke="#557E7A" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M-101-37 Q-10-66 98-38 M-1 68 Q15 30 38 7 M35 94 Q62 88 75 64"/></g></g>
+<path d="M166 755 Q148 688 166 617 M554 755 Q572 688 554 617" stroke="#8FAA9A" stroke-width="3" fill="none" opacity=".75"/>
+<g fill="#A0B5A6" opacity=".8"><ellipse cx="157" cy="670" rx="9" ry="24" transform="rotate(-34 157 670)"/><ellipse cx="169" cy="713" rx="10" ry="25" transform="rotate(27 169 713)"/><ellipse cx="563" cy="670" rx="9" ry="24" transform="rotate(34 563 670)"/><ellipse cx="551" cy="713" rx="10" ry="25" transform="rotate(-27 551 713)"/></g>
+<path d="M275 866 H445" stroke="#9FB9AC" stroke-width="2"/>
+<text x="360" y="910" font-family="Georgia,serif" font-size="32" letter-spacing="7" text-anchor="middle" fill="#2B5357">VOL. 10</text>
+<text x="360" y="943" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="15" letter-spacing="1.8" text-anchor="middle" fill="#83968D">APUDA · FIRST 30 DAYS</text>
+</svg>
