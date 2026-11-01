@@ -14,7 +14,7 @@ export const notebookSchema=z.object({
 export type Notebook=z.infer<typeof notebookSchema>;
 export type Entry=Notebook["entries"][string];
 export const subjects=["국어","수학","영어","통합사회","통합과학","한국사"] as const;
-export function newNotebook():Notebook{return {version:1,profile:{name:"승준",school:"서초고",major:"경영·유통물류",examMode:false,shareSummary:false,onboarded:false},entries:{},goals:[{id:"hufs",name:"한국외국어대학교",department:"경영 계열 관심",year:2029,url:"https://www.hufs.ac.kr/"},{id:"gachon",name:"가천대학교",department:"경영 계열 관심",year:2029,url:"https://admission.gachon.ac.kr/"}],exam:{name:"",grades:Object.fromEntries(subjects.map(s=>[s,""])),target:4,subjects:["국어","영어","통합사회","통합과학"]},diagnostic:null};}
+export function newNotebook():Notebook{return {version:1,profile:{name:"학습자",school:"서초고",major:"",examMode:false,shareSummary:false,onboarded:false},entries:{},goals:[{id:"hufs",name:"한국외국어대학교",department:"경영 계열 관심",year:2029,url:"https://www.hufs.ac.kr/"},{id:"gachon",name:"가천대학교",department:"경영 계열 관심",year:2029,url:"https://admission.gachon.ac.kr/"}],exam:{name:"",grades:Object.fromEntries(subjects.map(s=>[s,""])),target:4,subjects:["국어","영어","통합사회","통합과학"]},diagnostic:null};}
 export function newEntry():Entry{return {answer:"",outline:["","",""],history:[],seconds:0,updatedAt:new Date().toISOString(),checklist:[false,false,false,false]};}
 export const charCount=(text:string)=>[...text.replace(/\r?\n/g,"")].length;
 export const dateKey=(value:string|Date=new Date())=>new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Seoul",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date(value));

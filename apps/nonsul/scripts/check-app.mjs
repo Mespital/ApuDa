@@ -11,6 +11,7 @@ for(const lesson of lessons){
   assert(charCount(lesson.example)>=lesson.min&&charCount(lesson.example)<=lesson.max,`${lesson.id}: example length ${charCount(lesson.example)} outside ${lesson.min}-${lesson.max}`);
 }
 const data=newNotebook();assert(notebookSchema.safeParse(data).success);
+assert.equal(data.profile.name,'학습자');assert.equal(data.profile.major,'');
 assert.equal(personalScenario(data.exam).status,'missing');
 data.exam.grades.국어='2';data.exam.grades.영어='2';
 assert.equal(personalScenario(data.exam).status,'met');
