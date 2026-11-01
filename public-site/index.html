@@ -761,6 +761,7 @@
 
 <section id="qsSheet" aria-labelledby="qsSheetTitle" hidden>
   <div class="qs-card">
+    <button type="button" id="qsDismissX" class="qs-dismiss-x" aria-label="안내창 닫기" title="닫기">×</button>
     <b id="qsSheetTitle" class="qs-title">지금 어떤 상황이세요?</b>
     <p>누르면 필요한 곳으로 바로 안내합니다. 모두 무료, 가입 없이 쓸 수 있어요.</p>
     <div class="qs-grid">
@@ -1591,9 +1592,11 @@
   .guide-family:hover b{text-decoration:underline}
   #qsSheet{position:fixed;z-index:85;left:0;right:0;bottom:0;padding:0 10px calc(10px + env(safe-area-inset-bottom))}
   #qsSheet[hidden]{display:none}
-  #qsSheet .qs-card{max-width:520px;margin:0 auto;padding:18px 16px 12px;border:1px solid var(--line);border-radius:22px;
+  #qsSheet .qs-card{position:relative;max-width:520px;margin:0 auto;padding:18px 16px 12px;border:1px solid var(--line);border-radius:22px;
     background:rgba(255,255,255,.97);box-shadow:0 -10px 40px rgba(16,42,67,.16);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-  #qsSheet .qs-title{font-size:19px}
+  #qsSheet .qs-dismiss-x{position:absolute;top:10px;right:12px;width:36px;height:36px;display:grid;place-items:center;border:0;border-radius:50%;background:#edf3fa;color:#23384d;font-size:27px;line-height:1;cursor:pointer;z-index:2}
+  #qsSheet .qs-dismiss-x:focus-visible{outline:3px solid #246bfe;outline-offset:2px}
+  #qsSheet .qs-title{font-size:19px;padding-right:42px;display:block}
   #qsSheet p{margin-top:4px;color:#3d4c5d;font-size:14px;line-height:1.5;word-break:keep-all}
   #qsSheet .qs-grid{margin-top:12px}
   #qsSheet .qs-grid a{min-height:56px;font-size:15px}
@@ -1632,7 +1635,7 @@
 <script>
 (function(){
   var sheet=document.getElementById('qsSheet'), reopen=document.getElementById('qsReopen'),
-      close=document.getElementById('qsClose'), mq=matchMedia('(max-width:1099px)'), KEY='apuda_qs_closed';
+      close=document.getElementById('qsClose'), dismissX=document.getElementById('qsDismissX'), mq=matchMedia('(max-width:1099px)'), KEY='apuda_qs_closed';
   function setOpen(on){
     if(!sheet) return;
     sheet.hidden=!on; reopen.hidden=on || !mq.matches;
@@ -1642,8 +1645,9 @@
   function dismissed(){ try{return sessionStorage.getItem(KEY)==='1';}catch(e){return false;} }
   function dismiss(){ try{sessionStorage.setItem(KEY,'1');}catch(e){} setOpen(false); }
   if(sheet){
-    if(mq.matches) setTimeout(function(){ if(!document.body.classList.contains('open')) setOpen(!dismissed()); else reopen.hidden=false; },900);
+    if(mq.matches) setTimeout(function(){ if(!document.body.classList.contains('open')) setOpen(!dismissed()); else reopen.hidden=false; },5000);
     close.addEventListener('click',dismiss);
+    if(dismissX) dismissX.addEventListener('click',dismiss);
     reopen.addEventListener('click',function(){ setOpen(true); });
     sheet.addEventListener('keydown',function(e){ if(e.key==='Escape') dismiss(); });
     mq.addEventListener && mq.addEventListener('change',function(){ if(!mq.matches){ document.body.classList.remove('qs-on'); reopen.hidden=true; } });
