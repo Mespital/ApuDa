@@ -66,3 +66,38 @@
   [headers.values]
     Content-Type = "application/octet-stream"
     X-Robots-Tag = "noindex"
+
+# 논술 루틴 — static client + authenticated account storage
+[[redirects]]
+  from = "/nonsul/api/state"
+  to = "/.netlify/functions/nonsul-state"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/nonsul/api/auth"
+  to = "/.netlify/functions/nonsul-auth"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/nonsul"
+  to = "/nonsul/"
+  status = 301
+
+[[headers]]
+  for = "/nonsul/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/nonsul/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+[[headers]]
+  for = "/nonsul/api/*"
+  [headers.values]
+    Cache-Control = "no-store, private"
+
