@@ -57,10 +57,11 @@
     intro.appendChild(el('p','avd-muted','자막이 제공되는 영상은 CC 버튼에서 한국어 자막을 선택할 수 있어요. 아래 FAQ는 같은 암종의 글 자료이며 영상의 대본은 아니에요.'));
     intro.appendChild(link('영상 대신 글로 읽기',base+'faq/?cancer='+slug));
     session.resources.appendChild(intro);
-    var book=el('section','avd-book');var cover=el('img');cover.src='/assets/books/'+slug+'.webp';cover.alt=names[slug]+' 진단 첫 30일 표지';cover.loading='lazy';cover.width=120;cover.height=170;book.appendChild(cover);
+    var guide=global.ApuDaFirst30Catalog&&global.ApuDaFirst30Catalog.get(slug);var volume=Object.keys(names).indexOf(slug)+1;var guideHref=guide?guide.href:base+'first30/books/'+String(volume).padStart(2,'0')+'.html';
+    var book=el('section','avd-book');var cover=el('img');cover.src=guide?guide.cover:'/assets/books/first30/'+slug+'.webp?v=20261102-popup30';cover.alt=names[slug]+' 진단 첫 30일 무료 안내서 표지';cover.loading='lazy';cover.width=120;cover.height=200;book.appendChild(cover);
     var copy=el('div');copy.appendChild(el('span','avd-eyebrow','첫 진단을 위한 핵심 안내서'));copy.appendChild(el('h3','',names[slug]+' 진단 첫 30일'));
     copy.appendChild(el('p','avd-muted','웹에서 앞부분을 읽고, 전체 MINI PDF도 코드 입력 없이 무료로 받을 수 있어요.'));
-    var actions=el('div','avd-actions');actions.appendChild(link('무료로 읽기',base+'mini/?cancer='+slug,'avd-primary'));actions.appendChild(link('PDF 받기',base+'mini/?cancer='+slug+'#download','avd-secondary'));copy.appendChild(actions);book.appendChild(copy);session.resources.appendChild(book);
+    var actions=el('div','avd-actions');actions.appendChild(link('무료 핵심안내서',guideHref,'avd-primary'));actions.appendChild(link('MINI 읽기',base+'mini/?cancer='+slug,'avd-secondary'));actions.appendChild(link('MINI PDF 받기',base+'mini/?cancer='+slug+'#download','avd-secondary'));copy.appendChild(actions);book.appendChild(copy);session.resources.appendChild(book);
     var faq=el('section','avd-section');faq.appendChild(el('h3','','자주 묻는 질문'));var faqBody=el('div','avd-faq');faqBody.appendChild(el('p','avd-muted','ApuDa FAQ를 불러오고 있어요…'));faq.appendChild(faqBody);faq.appendChild(link('FAQ 전체 보기',base+'faq/?cancer='+slug));session.resources.appendChild(faq);
     var questions=el('section','avd-section');questions.appendChild(el('h3','','진료 전 확인할 질문'));var qList=el('ul','avd-questions');questions.appendChild(qList);questions.hidden=true;session.resources.appendChild(questions);
     var more=el('section','avd-section');more.appendChild(el('h3','','더 알아보기'));var grid=el('div','avd-more');[['치료결정 지도','treatment-map'],['항암제 정보','drugs'],['검사결과·바이오마커','biomarkers'],['항암 요법 관리','regimens']].forEach(function(x){grid.appendChild(link(x[0],base+x[1]+'/?cancer='+slug));});more.appendChild(grid);session.resources.appendChild(more);
@@ -107,3 +108,4 @@
   global.addEventListener('popstate',function(e){if(current)close(true);else if(e.state&&e.state.apudaVideoDialog)open(e.state.apudaVideoDialog.slug,e.state.apudaVideoDialog.id,true);});
   global.ApuDaVideoDialog=Object.freeze({open:open,close:function(){close(false);},names:Object.freeze(names)});
 })(window);
+
