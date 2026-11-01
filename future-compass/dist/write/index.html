@@ -1,0 +1,869 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>써보다</title>
+<meta name="description" content="읽고, 쓰고, 근거로 고치고, 다시 쓰는 고1 논술 20분 루틴">
+<meta name="theme-color" content="#1F3A8A">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F5F7FA; --sheet:#FFFFFF; --ink:#1B2433; --ink2:#4A5568; --ink3:#7A8496;
+  --line:#DCE2EA; --apuda:#1F3A8A; --grid:#2E7D5B; --grid-soft:#E3F1EA;
+  --amber:#B7791F; --amber-soft:#FDF3E1; --red:#B42318; --red-soft:#FDECEA;
+  --radius-s:6px; --radius-m:12px;
+  --serif:"Gowun Batang",serif; --sans:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#12161D; --sheet:#1A2029; --ink:#E7ECF3; --ink2:#B4BECC; --ink3:#8590A2;
+  --line:#2C3542; --apuda:#8EA8F0; --grid:#5FBF92; --grid-soft:#173027;
+  --amber:#E2A84B; --amber-soft:#2E2414; --red:#F08A80; --red-soft:#341A18;
+ color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#12161D; --sheet:#1A2029; --ink:#E7ECF3; --ink2:#B4BECC; --ink3:#8590A2;
+  --line:#2C3542; --apuda:#8EA8F0; --grid:#5FBF92; --grid-soft:#173027;
+  --amber:#E2A84B; --amber-soft:#2E2414; --red:#F08A80; --red-soft:#341A18;
+ color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 var(--sans);word-break:keep-all;overflow-wrap:anywhere}
+a{color:var(--apuda)}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--apuda);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* 상단 */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);border-bottom:1px solid var(--line);padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:21;background:var(--paper)}
+.top-in{max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.mark{display:flex;align-items:baseline;gap:8px;text-decoration:none;color:var(--ink)}
+.mark b{font-size:20px;letter-spacing:-.02em}
+.mark .wm{font-weight:800;color:var(--apuda);font-size:13px}.mark .wm span{color:var(--ink);font-weight:600}
+.family{margin-left:auto;display:flex;gap:6px}
+.family a{font-size:13px;text-decoration:none;color:var(--ink2);border:1px solid var(--line);border-radius:999px;padding:4px 10px;background:var(--sheet)}
+
+main{max-width:1080px;margin:0 auto;padding-top:16px;padding-bottom:calc(96px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1{font-size:24px;line-height:1.3;margin:4px 0 6px;letter-spacing:-.02em}
+h2{font-size:18px;margin:24px 0 8px;letter-spacing:-.01em}
+h3{font-size:16px;margin:0 0 6px}
+p{margin:0 0 10px}
+.muted{color:var(--ink2)}.small{font-size:14px}.tiny{font-size:12.5px;color:var(--ink3)}
+.sheet{background:var(--sheet);border:1px solid var(--line);border-radius:var(--radius-m);padding:16px;margin:12px 0}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.grow{flex:1}
+.btn{border:1px solid var(--line);background:var(--sheet);border-radius:var(--radius-s);padding:10px 14px;min-height:44px;cursor:pointer;font-weight:600}
+.btn.primary{background:var(--apuda);border-color:var(--apuda);color:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn.primary{color:var(--paper)}}
+:root[data-theme="dark"] .btn.primary{color:var(--paper)}
+.btn.ghost{background:transparent}
+.btn.danger{color:var(--red);border-color:var(--red)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.chip{display:inline-block;font-size:12.5px;border-radius:999px;padding:2px 9px;border:1px solid var(--line);color:var(--ink2);white-space:nowrap}
+.chip.ok{border-color:var(--grid);color:var(--grid)}.chip.warn{border-color:var(--amber);color:var(--amber)}.chip.bad{border-color:var(--red);color:var(--red)}
+label.f{display:block;margin:10px 0 4px;font-size:14px;font-weight:600}
+input[type=text],input[type=url],input[type=date],input[type=number],input[type=password],select,textarea{width:100%;border:1px solid var(--line);border-radius:var(--radius-s);background:var(--sheet);padding:10px 12px;min-height:44px}
+.days{display:flex;gap:6px;flex-wrap:wrap}
+.days label{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--line);border-radius:var(--radius-s);background:var(--sheet);cursor:pointer;font-weight:600}
+.days input{position:absolute;opacity:0;pointer-events:none}
+.days label:has(input:checked){background:var(--apuda);color:#fff;border-color:var(--apuda)}
+.banner{border-left:4px solid var(--amber);background:var(--amber-soft);padding:10px 12px;border-radius:0 var(--radius-s) var(--radius-s) 0;margin:12px 0;font-size:14.5px}
+.banner.green{border-color:var(--grid);background:var(--grid-soft)}
+.banner.red{border-color:var(--red);background:var(--red-soft)}
+
+/* 오늘 */
+.today-task{padding:20px}
+.today-task .q{font-family:var(--serif);font-size:17px;line-height:1.75;margin:10px 0 14px}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin:8px 0 4px}
+.week div{height:34px;border-radius:4px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:12.5px;color:var(--ink3)}
+.week .plan{border-color:var(--ink3);color:var(--ink2)}
+.week .done{background:var(--grid);border-color:var(--grid);color:#fff}
+.week .extra{background:var(--grid-soft);border-color:var(--grid);color:var(--grid)}
+.week .today{outline:2px solid var(--apuda);outline-offset:1px}
+
+/* 훈련 목록 */
+.set{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid var(--line);text-decoration:none;color:var(--ink)}
+.set:first-child{border-top:0}
+.set .wk{width:44px;flex:none;font-size:12.5px;color:var(--ink3);padding-top:2px}
+.set .t{font-weight:700}
+
+/* 쓰기 */
+.wtop{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.timer{font-variant-numeric:tabular-nums;font-weight:700}
+.phase{display:flex;gap:2px;height:6px;margin:6px 0 2px}
+.phase i{flex:var(--w);background:var(--line);border-radius:2px}
+.phase i.on{background:var(--apuda)}.phase i.past{background:var(--grid)}
+.tabs{display:flex;border:1px solid var(--line);border-radius:var(--radius-s);overflow:hidden;margin:8px 0}
+.tabs button{flex:1;border:0;background:var(--sheet);padding:10px;min-height:44px;font-weight:700;color:var(--ink2)}
+.tabs button[aria-selected=true]{background:var(--ink);color:var(--paper)}
+.wgrid{display:block}
+@media(min-width:900px){.tabs{display:none}.wgrid{display:grid;grid-template-columns:1fr 1.1fr;gap:16px;align-items:start}.wgrid>section{display:block!important}.wgrid .pass{position:sticky;top:72px;max-height:calc(100vh - 90px);overflow:auto}}
+.passage{font-family:var(--serif);font-size:16.5px;line-height:1.85;margin:0 0 14px}
+.passage b{font-family:var(--sans);display:inline-block;margin-right:6px;color:var(--apuda)}
+.question{border-top:1px solid var(--line);padding-top:12px;font-weight:600}
+mark.hl{background:var(--amber-soft);color:inherit;border-bottom:2px solid var(--amber);padding:0 1px}
+.outline input{margin-bottom:6px}
+
+/* 원고지 답안 */
+.manuscript{position:relative;border:1px solid var(--grid);border-radius:var(--radius-s);background:var(--sheet);overflow:hidden}
+.manuscript textarea{display:block;border:0;border-radius:0;min-height:240px;resize:vertical;background:transparent;
+  font-family:var(--serif);font-size:18px;line-height:36px;padding:0 14px;letter-spacing:.02em;
+  background-image:linear-gradient(var(--grid-soft) 1px,transparent 1px);background-size:100% 36px;background-position:0 35px;background-attachment:local}
+.manuscript textarea:focus{outline:none}
+.manuscript:focus-within{box-shadow:0 0 0 2px var(--apuda)}
+.ruler{margin:8px 0 2px}
+.ruler .track{position:relative;height:10px;background:var(--line);border-radius:5px}
+.ruler .zone{position:absolute;top:0;bottom:0;background:var(--grid-soft);border-left:2px solid var(--grid);border-right:2px solid var(--grid)}
+.ruler .pin{position:absolute;top:-4px;width:4px;height:18px;border-radius:2px;background:var(--ink);transform:translateX(-2px);transition:left .15s}
+.ruler .lab{display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink3);margin-top:4px;font-variant-numeric:tabular-nums}
+.ruler .count{font-weight:800;color:var(--ink)}.ruler .count.ok{color:var(--grid)}.ruler .count.over{color:var(--red)}
+.save{font-size:12.5px;color:var(--ink3)}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.actions .btn{flex:1;min-width:140px}
+
+/* 피드백 */
+.fb h3{margin-top:14px}
+.fb .good{border-left:4px solid var(--grid);padding:4px 0 4px 12px}
+.fix{border-left:4px solid var(--amber);padding:4px 0 4px 12px;margin:12px 0}
+.quote{font-family:var(--serif);font-size:15px;background:var(--paper);border-radius:var(--radius-s);padding:6px 10px;margin:6px 0}
+.quote small{font-family:var(--sans);display:block;color:var(--ink3);font-size:12px}
+.rub{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:14px}
+.diff .add{background:var(--grid-soft);border-bottom:2px solid var(--grid)}
+.diff .del{color:var(--ink3);text-decoration:line-through}
+.diff p{font-family:var(--serif);line-height:1.85}
+
+/* 기록 */
+.bars{display:flex;align-items:flex-end;gap:8px;height:120px;border-bottom:1px solid var(--line);padding-top:8px}
+.bars div{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;font-size:12px;color:var(--ink3)}
+.bars i{display:block;width:100%;max-width:36px;background:var(--apuda);border-radius:3px 3px 0 0;min-height:2px}
+.bars i.goal{background:transparent;border:1px dashed var(--ink3);position:absolute}
+.stat{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}
+.stat div{background:var(--sheet);border:1px solid var(--line);border-radius:var(--radius-s);padding:10px 12px}
+.stat b{display:block;font-size:22px;font-variant-numeric:tabular-nums}
+table.t{width:100%;border-collapse:collapse;font-size:14px}
+table.t td,table.t th{border-bottom:1px solid var(--line);padding:8px 4px;text-align:left;vertical-align:top}
+
+/* 하단 내비 */
+nav.tab{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--sheet);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);display:flex;justify-content:center}
+nav.tab .in{display:flex;max-width:560px;width:100%}
+nav.tab a{flex:1;text-align:center;padding:10px 0 8px;text-decoration:none;color:var(--ink3);font-size:12.5px;font-weight:700;min-height:56px}
+nav.tab a svg{display:block;margin:0 auto 2px;width:22px;height:22px}
+nav.tab a[aria-current=page]{color:var(--apuda)}
+.lock{position:fixed;inset:0;z-index:99;background:var(--paper);display:flex;align-items:center;justify-content:center;padding:24px}
+.lock .sheet{width:100%;max-width:340px;text-align:center}
+.toast{position:fixed;left:50%;bottom:calc(76px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:999px;font-size:14px;z-index:50;max-width:90vw}
+details summary{cursor:pointer;font-weight:600;min-height:32px}
+.hide{display:none!important}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <a class="mark" href="#/today" aria-label="써보다 홈"><b>써보다</b><span class="wm">ApuDa<span>.write</span></span></a>
+  <div class="family" id="family"></div>
+</div></header>
+<main id="app" tabindex="-1"></main>
+<nav class="tab" id="nav" aria-label="주요 메뉴"><div class="in">
+  <a href="#/today" data-r="today"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>오늘</a>
+  <a href="#/train" data-r="train"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13 7l4 4"/></svg>훈련</a>
+  <a href="#/univ" data-r="univ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-5 9 5-9 5z"/><path d="M7 11v5c2 2 8 2 10 0v-5"/></svg>목표 대학</a>
+  <a href="#/log" data-r="log"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 20V10M12 20V4M19 20v-7"/></svg>기록</a>
+</div></nav>
+<script src="sets.js"></script>
+<script src="resources.js"></script>
+<script>
+"use strict";
+/* ===== 설정: 아프다 패밀리 연결 ===== */
+const CFG = {
+  version: "1.4.0",
+  api: "api/feedback", // 상대 경로: 루트 배포면 /api/feedback, future.apuda.app/write/ 면 /write/api/feedback
+  family: [
+    { name: "미래 나침반", url: location.hostname==="future.apuda.app" ? "/" : "https://future.apuda.app/?from=write" },
+    { name: "ApuDa", url: "https://apuda.app/?from=write" },
+  ],
+};
+const SETS = window.SSUBODA_SETS || [];
+let SETMAP = {};
+function rebuildSets(){ SETMAP = Object.fromEntries([...SETS, ...((S&&S.custom)||[])].map(s => [s.id, s])); }
+const KEY = "ssuboda.v1";
+const DOW = ["일","월","화","수","목","금","토"];
+const DOC_TYPES = ["해당 학년도 공식 모집요강","해당 학년도 시행계획","이전 학년도 참고","확인 필요"];
+const ESSAY_TYPES = ["확인 필요","인문·사회 제시문형","국어·수학 약술형","수리 요소 포함"];
+const AREAS = ["국어","수학","영어","탐구"];
+const GRADE_FIELDS = ["국어","수학","영어","통합사회","통합과학","한국사"]; // 2028 체제: 탐구 = 통합사회·통합과학 모두 응시
+const INQUIRY = ["확인 필요","높은 1과목","2과목 평균"];
+
+/* ===== 저장소 ===== */
+function blank(){
+  const y = new Date().getFullYear();
+  return { v:1, profile:null,
+    settings:{ examStart:"", examEnd:"", guardianShare:false, guardianDrafts:false, showScores:false, appCode:"", pinHash:"", pinSalt:"" },
+    attempts:{}, log:[], scores:[], custom:[], goal:{ count:2, sum:4, areas:["국어","수학","영어","탐구"], inquiry:"높은 1과목" },
+    univs:[
+      { id:uid(), name:"한국외국어대학교", campus:"", unit:"", track:"논술전형", year:y+3, docType:"확인 필요", url:"", page:"", checked:"", essayType:"확인 필요", cond:null, note:"관심 후보. 2029학년도 공식 자료 확인 전." },
+      { id:uid(), name:"가천대학교", campus:"", unit:"", track:"논술전형", year:y+3, docType:"확인 필요", url:"https://admission.gachon.ac.kr/admission/html/rolling/noticeView.asp?BOARD_IDX=32292", page:"", checked:"", essayType:"확인 필요", cond:null, note:"링크는 2027학년도 모의논술(국어 4·수학 4 안내) 자료. 2029학년도 구성으로 쓰지 않음." },
+    ] };
+}
+function uid(){ return Math.random().toString(36).slice(2,9) + Date.now().toString(36).slice(-4); }
+let S;
+let storageOK = true;
+function load(){ try{ const r = localStorage.getItem(KEY); S = r ? Object.assign(blank(), JSON.parse(r)) : blank(); }catch(e){ storageOK=false; S = blank(); } }
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); storageOK = true; return true; }catch(e){ storageOK=false; return false; } }
+load();
+rebuildSets();
+
+/* ===== 유틸 ===== */
+const $ = (s, el=document) => el.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const today = () => ymd(new Date());
+function ymd(d){ const z=n=>String(n).padStart(2,"0"); return `${d.getFullYear()}-${z(d.getMonth()+1)}-${z(d.getDate())}`; }
+function weekStart(d=new Date()){ const x=new Date(d); x.setHours(0,0,0,0); const k=(x.getDay()+6)%7; x.setDate(x.getDate()-k); return x; }
+function toast(msg){ const t=document.createElement("div"); t.className="toast"; t.textContent=msg; t.setAttribute("role","status"); document.body.appendChild(t); setTimeout(()=>t.remove(),2600); }
+function hm(ts){ const d=new Date(ts); return `${String(d.getHours()).padStart(2,"0")}:${String(d.getMinutes()).padStart(2,"0")}`; }
+function inExam(){ const s=S.settings; if(!s.examStart||!s.examEnd) return false; const t=today(); return t>=s.examStart && t<=s.examEnd; }
+function attemptsOf(setId){ return Object.values(S.attempts).filter(a=>a.setId===setId).sort((a,b)=>b.createdAt-a.createdAt); }
+function latest(setId){ return attemptsOf(setId)[0]; }
+function statusOf(a){
+  if(!a) return ["안 함",""];
+  if(a.rewrite && a.fb2) return ["재작성 완료","ok"];
+  if(a.fb) return ["피드백 받음 · 재작성 대기","warn"];
+  if(a.pending) return ["피드백 확인 필요","bad"];
+  if(a.draft) return ["초안 저장","" ];
+  return ["시작함",""];
+}
+function addMinutes(sec){
+  if(sec<=0) return;
+  const d = today(); let row = S.log.find(r=>r.date===d);
+  if(!row){ row={date:d, sec:0}; S.log.push(row); }
+  row.sec += sec; if(S.log.length>400) S.log.shift();
+}
+async function sha(s){ const b=await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s)); return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join(""); }
+
+/* ===== 라우터 ===== */
+// 주소창 해시를 못 쓰는 환경(claude.ai 아티팩트)에서도 돌아가게 경로를 메모리에 두고, 가능하면 history에도 남긴다.
+let CUR = (location.hash||"").startsWith("#/") ? location.hash : "#/today";
+function go(h, replace){ CUR=h; try{ history[replace?"replaceState":"pushState"](null,"",h); }catch(e){} route(); }
+document.addEventListener("click", e=>{ const a=e.target.closest && e.target.closest('a[href^="#/"]'); if(!a) return; e.preventDefault(); go(a.getAttribute("href")); });
+window.addEventListener("popstate", ()=>{ if((location.hash||"").startsWith("#/")){ CUR=location.hash; route(); } });
+// 페이지 안 확인창 (아티팩트에서는 confirm/prompt가 막혀 있음)
+function ask(msg, {ok="확인", danger=false, typed=""}={}){
+  return new Promise(res=>{
+    const d=document.createElement("div"); d.className="lock"; d.setAttribute("role","dialog"); d.setAttribute("aria-modal","true");
+    d.innerHTML=`<div class="sheet"><p style="text-align:left">${esc(msg)}</p>${typed?`<label class="f" for="askIn" style="text-align:left">확인하려면 '${esc(typed)}'라고 입력하세요</label><input id="askIn" type="text" autocomplete="off">`:""}
+      <div class="actions"><button class="btn ghost" data-v="0">취소</button><button class="btn ${danger?"danger":"primary"}" data-v="1">${esc(ok)}</button></div></div>`;
+    document.body.appendChild(d);
+    d.querySelectorAll("button").forEach(b=>b.onclick=()=>{ const v=b.dataset.v==="1"; if(v&&typed&&d.querySelector("#askIn").value.trim()!==typed){ toast(`'${typed}'라고 입력해 주세요`); return; } d.remove(); res(v); });
+    (d.querySelector("#askIn")||d.querySelector("[data-v='1']")).focus();
+  });
+}
+let cleanup = null;
+function route(){
+  if(cleanup){ try{cleanup();}catch(e){} cleanup=null; }
+  const [, name="today", arg] = (CUR || "#/today").split("/");
+  const app = $("#app");
+  if(!S.profile && name!=="setup"){ go("#/setup", true); return; }
+  const views = { library:vLibrary, custom:vCustom, setup:vSetup, today:vToday, train:vTrain, write:vWrite, univ:vUniv, log:vLog, settings:vSettings, view:vView, guardian:vGuardian };
+  (views[name] || vToday)(app, arg);
+  const navName = ["write","library","custom"].includes(name) ? "train" : name==="view" ? "log" : name;
+  document.querySelectorAll("nav.tab a").forEach(a => { if(a.dataset.r===navName) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current"); });
+  $("#nav").classList.toggle("hide", name==="setup");
+  window.scrollTo(0,0);
+}
+function renderFamily(){
+  const from = new URLSearchParams(location.search).get("from");
+  $("#family").innerHTML = CFG.family.map(f => `<a href="${esc(f.url)}">${esc(f.name)}</a>`).join("") + (from ? "" : "");
+}
+
+/* ===== 첫 설정 ===== */
+function vSetup(app){
+  const y = new Date().getFullYear();
+  const p = S.profile || { nick:"", grade:1, interest:"경영·유통물류", days:[1,2,4,5,6], minutes:20 };
+  app.innerHTML = `
+  <h1>짧게 읽고, 직접 쓰고, 다시 쓰기</h1>
+  <p class="muted">하루 20분 논술 루틴이에요. 처음 한 번만 설정해요. 모든 기록은 이 기기에 저장돼요.</p>
+  <form class="sheet" id="f">
+    <label class="f" for="nick">부를 이름(별칭)</label><input id="nick" type="text" maxlength="12" value="${esc(p.nick)}" placeholder="예: 승준" required>
+    <div class="row"><div class="grow"><label class="f" for="grade">학년</label>
+      <select id="grade">${[1,2,3].map(g=>`<option ${p.grade==g?"selected":""} value="${g}">고${g}</option>`).join("")}</select></div>
+      <div class="grow"><label class="f">목표 학년도</label><input type="text" id="ty" readonly></div></div>
+    <p class="tiny" id="tyx"></p>
+    <label class="f" for="interest">관심 분야(첫 소재 고를 때만 써요)</label>
+    <select id="interest">${["경영·유통물류","경제","사회","정보·기술","과학·환경","인문·문화"].map(x=>`<option ${p.interest===x?"selected":""}>${x}</option>`).join("")}</select>
+    <label class="f">공부할 요일 (평일 20분 · 주말 35분)</label>
+    <div class="days">${[1,2,3,4,5,6,0].map(d=>`<label><input type="checkbox" value="${d}" ${p.days.includes(d)?"checked":""}>${DOW[d]}</label>`).join("")}</div>
+    <p class="tiny">기본: 평일 4회 + 주말 1회 = 주 115분. 학원 요일은 빼고 골라도 돼요.</p>
+    <label class="f" for="pin">잠금 번호 4자리 (선택)</label><input id="pin" type="password" inputmode="numeric" maxlength="4" pattern="\\d{4}" placeholder="비워두면 잠금 없음">
+    <div class="actions"><button class="btn primary">진단부터 시작하기</button></div>
+  </form>`;
+  const upd = () => { const g=+$("#grade").value; const t=y+(4-g); $("#ty").value=`${t}학년도`; $("#tyx").textContent=`${y}년 고${g} → ${y+(3-g)}년 수능 → ${t}학년도 대입 기준. 대학 조건은 이 학년도 공식 자료로만 계산해요.`; };
+  $("#grade").onchange = upd; upd();
+  $("#f").onsubmit = async e => {
+    e.preventDefault();
+    const days=[...app.querySelectorAll(".days input:checked")].map(i=>+i.value);
+    const g=+$("#grade").value;
+    S.profile = { nick:$("#nick").value.trim()||"나", grade:g, targetYear:y+(4-g), setYear:y, interest:$("#interest").value, days: days.length?days:[1,2,4,5,6], created:Date.now() };
+    const pin=$("#pin").value.trim();
+    if(/^\d{4}$/.test(pin)){ S.settings.pinSalt=uid(); S.settings.pinHash=await sha(S.settings.pinSalt+pin); }
+    S.univs.forEach(u=>u.year=S.profile.targetYear);
+    save(); go("#/write/D1");
+  };
+}
+
+/* ===== 오늘 ===== */
+function nextSet(){
+  for(const s of SETS){ const a=latest(s.id); if(!a || !(a.fb||a.pending)) return s; }
+  return null;
+}
+function rewriteCandidate(){
+  return Object.values(S.attempts).filter(a=>a.fb && !a.fb2).sort((a,b)=>b.updatedAt-a.updatedAt)[0];
+}
+function lastFix(){
+  const a = Object.values(S.attempts).filter(a=>a.fb2||a.fb).sort((a,b)=>b.updatedAt-a.updatedAt)[0];
+  if(!a) return null; const f=(a.fb2||a.fb).fixes?.[0]; return f ? {a,f} : null;
+}
+function weekInfo(){
+  const ws=weekStart(); const days=[];
+  for(let i=0;i<7;i++){ const d=new Date(ws); d.setDate(ws.getDate()+i); days.push(d); }
+  const planDays=S.profile.days;
+  const done=days.map(d=>{ const r=S.log.find(x=>x.date===ymd(d)); return r?r.sec:0; });
+  const plannedMin = planDays.reduce((s,d)=>s+((d===0||d===6)?35:20),0);
+  const doneSessions = days.filter((d,i)=>planDays.includes(d.getDay()) && done[i]>=300).length;
+  return { days, done, plannedMin, doneMin:Math.round(done.reduce((a,b)=>a+b,0)/60), doneSessions, planned:planDays.length };
+}
+function vToday(app){
+  const p=S.profile, w=weekInfo(), exam=inExam();
+  const ns=nextSet(), rw=rewriteCandidate(), lf=lastFix();
+  const pend=Object.values(S.attempts).filter(a=>a.pending && !a.fb);
+  const diagDone = ["D1","D2"].every(id=>{const a=latest(id); return a && (a.fb||a.pending);});
+  let main="";
+  const wsT=weekStart().getTime(); const revN=(S.reviews||[]).filter(r=>r.at>=wsT).length;
+  if(exam && revN>=2){
+    main = `<div class="sheet today-task"><span class="chip ok">시험기간 모드</span><h2 style="margin-top:10px">이번 주 복습 끝</h2><p class="muted small">5분 복습 2회를 마쳤어요. 시험 공부에 집중해요.</p></div>`;
+  } else if(exam){
+    main = `<div class="sheet today-task"><span class="chip warn">시험기간 모드 · 이번 주 ${revN}/2</span>
+      <h2 style="margin-top:10px">5분 복습만 해요</h2>
+      <p class="muted small">${esc(S.settings.examStart)} ~ ${esc(S.settings.examEnd)} · 주 2회 5분. 못 한 날을 몰아서 하지 않아요.</p>
+      ${lf ? `<div class="quote"><small>지난번 고칠 점 · ${esc(SETMAP[lf.a.setId]?.title||"")}</small>${esc(lf.f.issue)}</div>
+        <label class="f" for="rv">이 점을 고친 문장 하나만 써 보세요</label><textarea id="rv" rows="3" style="font-family:var(--serif)"></textarea>
+        <div class="actions"><button class="btn primary" id="rvs">5분 복습 완료</button></div>`
+        : `<p>아직 복습할 피드백이 없어요. 시험 끝나고 이어서 해요.</p>`}
+    </div>`;
+  } else if(!diagDone){
+    const id = latest("D1") && (latest("D1").fb||latest("D1").pending) ? "D2" : "D1";
+    const s=SETMAP[id];
+    main = `<div class="sheet today-task"><span class="chip">처음 진단 · 20분 × 2회</span>
+      <div class="q">${esc(s.question)}</div>
+      <p class="small muted">${esc(s.title)} · 지금 실력을 보려는 과제라 점수에 신경 쓰지 않아도 돼요.</p>
+      <a class="btn primary" style="display:inline-flex;align-items:center" href="#/write/${id}">진단 ${id==="D1"?"①":"②"} 시작</a></div>`;
+  } else {
+    main = `<div class="sheet today-task"><span class="chip">오늘의 20분 · 하나 골라요</span>
+      ${ns ? `<h2 style="margin-top:10px">새 제시문: ${esc(ns.title)}</h2><div class="q">${esc(ns.question)}</div>
+        <p class="tiny">${ns.week}주차 · ${esc(ns.skill)} · ${ns.min}~${ns.max}자</p>` : `<p>준비된 세트를 모두 썼어요. 기록에서 지난 답안을 다시 고쳐 보세요.</p>`}
+      <div class="actions">
+        ${ns?`<a class="btn primary" style="display:inline-flex;align-items:center;justify-content:center" href="#/write/${ns.id}">새 과제 시작</a>`:""}
+        ${rw?`<a class="btn" style="display:inline-flex;align-items:center;justify-content:center" href="#/write/${rw.setId}?a=${rw.id}">다시 쓰기: ${esc(SETMAP[rw.setId]?.title||"")}</a>`:""}
+      </div></div>`;
+  }
+  app.innerHTML = `
+    <h1>${esc(p.nick)}, 오늘은 20분</h1>
+    ${!storageOK?`<div class="banner red">이 기기에 저장이 안 되고 있어요. 설정 → 내보내기로 백업해 주세요.</div>`:""}
+    ${pend.length?`<div class="banner red">피드백을 아직 못 받은 답안이 ${pend.length}개 있어요. 답안은 저장돼 있어요. <a href="#/write/${pend[0].setId}?a=${pend[0].id}">다시 요청하기</a></div>`:""}
+    ${main}
+    ${lf && !exam ? `<div class="sheet"><h3>지난번 고칠 점</h3><p>${esc(lf.f.issue)}</p>${lf.f.suggestion?`<p class="small muted">${esc(lf.f.suggestion)}</p>`:""}</div>`:""}
+    <div class="sheet">
+      <div class="row"><h3 class="grow" style="margin:0">이번 주</h3><span class="small muted">${w.doneSessions}/${w.planned}회 · ${w.doneMin}/${w.plannedMin}분</span></div>
+      <div class="week">${w.days.map((d,i)=>`<div class="${S.profile.days.includes(d.getDay())?"plan":""} ${w.done[i]>=300?(S.profile.days.includes(d.getDay())?"done":"extra"):""} ${ymd(d)===today()?"today":""}" title="${Math.round(w.done[i]/60)}분">${DOW[d.getDay()]}</div>`).join("")}</div>
+      <p class="tiny">5분 이상 쓴 날을 채워요(연한 칸 = 계획 외 추가). 놓친 날은 다음 날로 몰지 않아요.</p>
+    </div>
+    <p class="tiny"><a href="#/settings">설정·보호자 공유</a> · 써보다 v${CFG.version}</p>`;
+  if(exam && lf && $("#rvs")){
+    $("#rvs").onclick=()=>{ const v=$("#rv").value.trim(); if(v.length<5){toast("한 문장을 써 주세요"); return;}
+      (S.reviews=S.reviews||[]).push({at:Date.now(), attemptId:lf.a.id, text:v}); addMinutes(300); save(); toast("5분 복습 완료"); route(); };
+  }
+}
+
+/* ===== 훈련 목록 ===== */
+function vTrain(app){
+  const groups = [["진단", SETS.filter(s=>s.kind==="diag")], ["훈련 세트", SETS.filter(s=>s.kind==="train")]];
+  const mine = S.custom||[];
+  app.innerHTML = `<h1>훈련</h1>
+    <div class="row" style="margin:4px 0 8px"><a class="btn" style="flex:1;display:inline-flex;align-items:center;justify-content:center" href="#/library">자료실</a><a class="btn" style="flex:1;display:inline-flex;align-items:center;justify-content:center" href="#/custom">내 문제 만들기</a></div>
+    <p class="muted small">모든 제시문은 앱용 가상 자료예요(대학 기출 아님). <span class="chip warn">검토 전</span> 표시는 지도교사 검토가 끝나지 않은 초안 세트예요.</p>
+    ${groups.map(([g,list])=>`<h2>${g}</h2><div class="sheet" style="padding:4px 16px">${list.map(s=>{const a=latest(s.id); const [st,c]=statusOf(a);
+      return `<a class="set" href="#/write/${s.id}"><span class="wk">${s.week?`${s.week}주`:"진단"}</span><span class="grow"><span class="t">${esc(s.title)}</span><br><span class="small muted">${esc(s.skill)} · ${s.min}~${s.max}자</span></span>
+      <span style="text-align:right">${st!=="안 함"?`<span class="chip ${c}">${st}</span>`:""}${!s.reviewed?`<br><span class="chip warn" style="margin-top:4px">검토 전</span>`:""}</span></a>`;}).join("")}</div>`).join("")}
+    ${mine.length?`<h2>내 문제</h2><div class="sheet" style="padding:4px 16px">${mine.map(s=>{const a=latest(s.id); const [st,c]=statusOf(a); return `<a class="set" href="#/write/${s.id}"><span class="wk">내 문제</span><span class="grow"><span class="t">${esc(s.title)}</span><br><span class="small muted">${esc(s.skill)} · ${s.min}~${s.max}자${s.source?` · ${esc(s.source)}`:""}</span></span>${st!=="안 함"?`<span class="chip ${c}">${st}</span>`:""}</a>`;}).join("")}</div>`:""}
+    <p class="tiny">12주 정규 운영용 48세트는 검토가 끝나는 대로 추가돼요.</p>`;
+}
+
+/* ===== 자료실 ===== */
+function vLibrary(app){
+  const R = window.SSUBODA_RESOURCES || [];
+  app.innerHTML = `<a href="#/train" class="small">← 훈련</a><h1>자료실</h1>
+    <p class="muted small">공식·무료 자료만 모았어요. 자료는 링크로만 연결하고, 지문은 '내 문제 만들기'에 붙여 개인 공부용으로 써요. 입시 자료는 학년도를 꼭 확인해요.</p>
+    <div class="sheet" style="background:var(--grid-soft);border-color:var(--grid)"><h3>주간 자료 루틴 (기본 루틴과 별도, 선택)</h3>
+      <ul class="small" style="margin:0;padding-left:18px">
+        <li>주 1회: 수능 국어 독서 지문 1개 → 요약 80~120자</li>
+        <li>격주 1회: 통계 표 1개 → 사실 2개 + 해석 한계</li>
+        <li>월 1회: 관심 대학 보고서에서 문항 1개 → 출제의도 한 문장</li></ul>
+      <p class="tiny" style="margin-top:6px">시험기간에는 쉬어요.</p></div>
+    ${R.map(g=>`<h2>${esc(g.cat)}</h2><div class="sheet" style="padding:4px 16px">${g.items.map(r=>`
+      <div class="set" style="display:block">
+        <div class="row"><a class="t grow" href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title)}</a>${r.status==="checked"?`<span class="chip ok">확인됨</span>`:`<span class="chip">대표 주소</span>`}</div>
+        <p class="tiny" style="margin:2px 0 4px">${esc(r.org)} · ${esc(r.stage)}</p>
+        <p class="small" style="margin:0 0 4px">${esc(r.what)}</p>
+        <p class="small muted" style="margin:0"><b>이렇게 써요</b> ${esc(r.how)}</p></div>`).join("")}</div>`).join("")}
+    <p class="tiny">확인됨 = 2026-11-02 존재 확인. 사이트 개편으로 주소가 바뀔 수 있어요.</p>`;
+}
+
+/* ===== 내 문제 만들기 ===== */
+const TEMPLATES = {
+  "요약": { q:"제시문의 핵심 주장을 찾아 한 문장으로 요약하시오.", min:80, max:120, outline:["핵심어 1","핵심어 2","핵심어 3"] },
+  "비교": { q:"제시문 A와 B의 관점을 비교하여 공통점과 차이점을 설명하시오.", min:200, max:300, outline:["A의 관점","B의 관점","공통점·차이점"] },
+  "자료 해석": { q:"자료에서 확인할 수 있는 사실 2가지를 쓰고, 그 자료로 말할 수 없는 것(해석의 한계)을 설명하시오.", min:200, max:300, outline:["사실 1(수치)","사실 2(수치)","해석의 한계"] },
+  "평가": { q:"제시문 B의 주장을 제시문 A에 근거하여 평가하시오.", min:250, max:350, outline:["B의 주장","A의 근거","평가와 조건"] },
+  "기출 그대로": { q:"", min:300, max:600, outline:["문제가 요구하는 것","제시문별 핵심","내 답의 순서"] },
+};
+function vCustom(app){
+  let tpl="요약";
+  app.innerHTML = `<a href="#/train" class="small">← 훈련</a><h1>내 문제 만들기</h1>
+    <p class="muted small">자료실의 기출·지문·통계를 붙여 넣으면 써보다 세트처럼 쓰고 피드백을 받을 수 있어요. 이 기기에만 저장돼요. 기출은 개인 공부용으로만 쓰고 다른 사람과 나누지 않아요.</p>
+    <form class="sheet" id="cf">
+      <label class="f">유형</label><div class="row" id="tp">${Object.keys(TEMPLATES).map(k=>`<button type="button" class="btn ${k===tpl?"primary":""}" data-t="${k}" style="min-height:40px;padding:6px 12px">${k}</button>`).join("")}</div>
+      <label class="f" for="ct">제목</label><input id="ct" type="text" maxlength="40" placeholder="예: 2025 수능 독서 3번 지문" required>
+      <label class="f" for="cs">출처 (어디서 가져왔나요)</label><input id="cs" type="text" maxlength="80" placeholder="예: 평가원 2025 수능 국어 / KOSIS 온라인쇼핑 동향" required>
+      <label class="f" for="pa">제시문 A</label><textarea id="pa" rows="6" required style="font-family:var(--serif)"></textarea>
+      <label class="f" for="pb">제시문 B (선택)</label><textarea id="pb" rows="4" style="font-family:var(--serif)"></textarea>
+      <label class="f" for="pc">제시문 C (선택)</label><textarea id="pc" rows="3" style="font-family:var(--serif)"></textarea>
+      <label class="f" for="cq">문제</label><textarea id="cq" rows="3" required></textarea>
+      <div class="row"><div class="grow"><label class="f" for="cmin">최소 글자</label><input id="cmin" type="number" min="30" max="1500"></div><div class="grow"><label class="f" for="cmax">최대 글자</label><input id="cmax" type="number" min="50" max="2000"></div></div>
+      <p class="tiny">제시문은 각 1,500자까지 피드백에 쓰여요. 더 긴 지문은 문제와 관련된 부분만 붙여요.</p>
+      <div class="actions"><button class="btn primary">만들고 바로 쓰기</button></div></form>`;
+  const apply=()=>{ const t=TEMPLATES[tpl]; if(t.q) $("#cq").value=t.q; $("#cmin").value=t.min; $("#cmax").value=t.max;
+    app.querySelectorAll("#tp button").forEach(b=>b.classList.toggle("primary", b.dataset.t===tpl)); };
+  app.querySelectorAll("#tp button").forEach(b=>b.onclick=()=>{ tpl=b.dataset.t; apply(); });
+  apply();
+  $("#cf").onsubmit=e=>{ e.preventDefault();
+    const ps=[["A","#pa"],["B","#pb"],["C","#pc"]].map(([l,id])=>({label:l, text:$(id).value.trim().slice(0,1500), kw:[]})).filter(p=>p.text);
+    const mn=+$("#cmin").value, mx=+$("#cmax").value;
+    if(!ps.length){ toast("제시문을 붙여 넣어 주세요"); return; }
+    if(!(mn>0 && mx>mn)){ toast("글자 수 범위를 확인해 주세요"); return; }
+    const set={ id:"C"+uid(), kind:"custom", week:0, skill:tpl, title:$("#ct").value.trim()||"내 문제", source:$("#cs").value.trim(), reviewed:false,
+      passages:ps, question:$("#cq").value.trim(), min:mn, max:mx, outline:TEMPLATES[tpl].outline, hints:[], createdAt:Date.now() };
+    (S.custom=S.custom||[]).push(set); rebuildSets(); save(); go(`#/write/${set.id}`); };
+}
+
+/* ===== 쓰기 ===== */
+const PHASES=[["읽기",4],["개요",4],["초안",8],["고치기",4]];
+function vWrite(app, arg){
+  const [setId, qs] = String(arg||"").split("?");
+  const s = SETMAP[setId]; if(!s){ app.innerHTML=`<p>세트를 찾지 못했어요. <a href="#/train">훈련으로</a></p>`; return; }
+  const aid = new URLSearchParams(qs||"").get("a");
+  let a = (aid && S.attempts[aid]) || latest(setId);
+  if(!a || (a.fb2 && !aid)){ a = { id:uid(), setId, createdAt:Date.now(), updatedAt:Date.now(), outline:["","",""], draft:"", rewrite:"", sec:0 }; S.attempts[a.id]=a; save(); }
+  const stage = a.fb ? "rewrite" : "draft";
+  let tab = "pass";
+  const passHTML = (hlLabel, hlText) => s.passages.map(p=>{ let t=esc(p.text); if(hlLabel===p.label && hlText){ const e=esc(hlText); t=t.split(e).join(`<mark class="hl">${e}</mark>`);} return `<p class="passage" id="p-${p.label}"><b>${s.passages.length>1?`제시문 ${p.label}`:"제시문"}</b>${t}</p>`; }).join("");
+  app.innerHTML = `
+    <div class="wtop"><a href="#/train" class="small">← 훈련</a><span class="grow"></span>${s.kind==="custom"?`<span class="chip">내 문제</span>`:!s.reviewed?`<span class="chip warn">검토 전 세트</span>`:""}<span class="timer" id="tm">00:00</span></div>
+    <h1>${esc(s.title)}</h1>
+    <div class="phase" id="ph" aria-hidden="true">${PHASES.map(([n,m])=>`<i style="--w:${m}" title="${n} ${m}분"></i>`).join("")}</div>
+    <p class="tiny" id="phl">읽기 4분 → 개요 4분 → 초안 8분 → 고치기 4분</p>
+    <div class="tabs" role="tablist"><button role="tab" data-t="pass" aria-selected="true">제시문</button><button role="tab" data-t="write" aria-selected="false">${stage==="rewrite"?"피드백·다시 쓰기":"쓰기"}</button></div>
+    <div class="wgrid">
+      <section class="sheet pass" data-p="pass" id="passBox">${passHTML()}<p class="question">${esc(s.question)}</p>
+        ${s.kind!=="diag"&&s.hints&&s.hints.length?`<details id="hint"><summary>막히면 힌트</summary><ul class="small" id="hintList"></ul></details>`:""}${s.kind==="diag"?`<p class="tiny">진단은 힌트 없이 써요. 제출하면 해설이 열려요.</p>`:""}${s.source?`<p class="tiny">출처: ${esc(s.source)} · 개인 공부용</p>`:""}</section>
+      <section data-p="write" style="display:none" id="writeBox"></section>
+    </div>`;
+  const wb=$("#writeBox");
+  const hd=$("#hint"); if(hd){ const fill=()=>{ const h=s.hints; $("#hintList").innerHTML = `<li>${esc(h[0])}</li>` + (h[1] ? ((a.sec||0)>=120 ? `<li>${esc(h[1])}</li>` : `<li class="tiny">다음 힌트는 쓰기 시작 2분 뒤에 열려요.</li>`) : ""); }; fill(); hd.addEventListener("toggle", fill); }
+  function setTab(t){ tab=t; app.querySelectorAll(".tabs button").forEach(b=>b.setAttribute("aria-selected", b.dataset.t===t)); app.querySelectorAll(".wgrid>section").forEach(x=>x.style.display = x.dataset.p===t ? "" : "none"); }
+  app.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>setTab(b.dataset.t));
+  if(a.draft || a.fb) setTab("write");
+
+  // 타이머 + 학습시간 (입력 없이 3분 지나면 멈춤)
+  let start=Date.now(), lastInput=Date.now(), acc=0, tick;
+  const tm=$("#tm"), ph=$("#ph");
+  tick=setInterval(()=>{
+    if(document.visibilityState==="visible" && Date.now()-lastInput<180000){ acc++; a.sec=(a.sec||0)+1; }
+    const t=a.sec||0; tm.textContent=`${String(Math.floor(t/60)).padStart(2,"0")}:${String(t%60).padStart(2,"0")}`;
+    let m=t/60, k=0; const bars=[...ph.children]; let c=0;
+    PHASES.forEach(([n,len],i)=>{ bars[i].className = m>=c+len ? "past" : (m>=c ? "on" : ""); c+=len; });
+    if(acc>=30){ addMinutes(acc); acc=0; save(); }
+  },1000);
+  const bump=()=>{ lastInput=Date.now(); };
+  cleanup=()=>{ clearInterval(tick); if(acc){ addMinutes(acc); acc=0; } a.updatedAt=Date.now(); save(); };
+
+  function ruler(len){
+    const max=Math.max(s.max*1.4, len+10), L=x=>Math.min(100, x/max*100);
+    const cls = len>s.max?"over":len>=s.min?"ok":"";
+    return `<div class="ruler" aria-label="글자 수 ${len}자, 목표 ${s.min}~${s.max}자"><div class="track"><div class="zone" style="left:${L(s.min)}%;width:${L(s.max)-L(s.min)}%"></div><div class="pin" style="left:${L(len)}%"></div></div>
+      <div class="lab"><span><span class="count ${cls}">${len}</span>자 (공백 포함)</span><span>목표 ${s.min}~${s.max}자</span></div></div>`;
+  }
+  function editor(field, label){
+    return `<label class="f" for="ta">${label}</label>
+      <div class="manuscript"><textarea id="ta" spellcheck="false" placeholder="여기에 직접 써요. 막히면 개요 1칸부터 채워요.">${esc(a[field])}</textarea></div>
+      <div id="rl">${ruler(a[field].length)}</div>
+      <div class="save" id="sv">${a.updatedAt?`기기에 저장됨 ${hm(a.updatedAt)}`:""}</div>`;
+  }
+  function bindEditor(field){
+    const ta=$("#ta"); let to;
+    ta.addEventListener("input",()=>{ bump(); a[field]=ta.value; $("#rl").innerHTML=ruler(ta.value.length); $("#sv").textContent="입력 중…"; clearTimeout(to);
+      to=setTimeout(()=>{ a.updatedAt=Date.now(); const ok=save(); const sv=$("#sv"); if(sv) sv.textContent = ok ? `기기에 저장됨 ${hm(a.updatedAt)}` : "저장 실패 — 설정에서 내보내기로 백업해 주세요"; },1200); });
+  }
+
+  function draw(){
+    if(!a.fb){
+      wb.innerHTML = `<div class="sheet">
+        <h3>쓰기 전 개요 3칸</h3><div class="outline">${s.outline.map((o,i)=>`<input type="text" data-o="${i}" placeholder="${esc(o)}" value="${esc(a.outline?.[i]||"")}" aria-label="${esc(o)}">`).join("")}</div>
+        ${editor("draft","답안")}
+        ${a.pending?pendingBox():""}
+        <div class="actions"><button class="btn primary" id="sub">피드백 받기</button></div>
+        <p class="tiny">답안은 피드백 성공 여부와 상관없이 이 기기에 먼저 저장돼요.</p></div>`;
+      wb.querySelectorAll("[data-o]").forEach(i=>i.oninput=()=>{ bump(); a.outline[+i.dataset.o]=i.value; save(); });
+      bindEditor("draft");
+      $("#sub").onclick=()=>submit("draft");
+      if(a.pending) bindPending("draft");
+    } else {
+      wb.innerHTML = `<div class="sheet fb">${fbHTML(a.fb, s)}</div>
+        ${s.debrief?`<details class="sheet" open><summary>진단 해설</summary><ul class="small">${s.debrief.map(d=>`<li>${esc(d)}</li>`).join("")}</ul><p class="tiny">진단 결과는 점수보다 '어디서 막혔는지'를 보려는 거예요.</p></details>`:""}
+        <div class="sheet">${!a.fb2 ? `<h3>다시 쓰기</h3><p class="small muted">고칠 점 2개만 반영해요. 첫 답안은 그대로 보관돼요.</p>
+          ${editor("rewrite","수정본")}
+          ${a.pending?pendingBox():""}
+          <div class="actions"><button class="btn primary" id="sub">수정본 제출</button></div>`
+          : `<h3>초안과 수정본 비교</h3>${diffHTML(a.draft,a.rewrite)}`}</div>
+        ${a.fb2?`<div class="sheet fb"><h3 style="margin-top:0">수정본 피드백</h3>${fbHTML(a.fb2, s, true)}</div>
+          <div class="actions"><a class="btn primary" style="display:inline-flex;align-items:center;justify-content:center" href="#/today">오늘 끝 · 처음으로</a><button class="btn" id="again">이 세트 새로 쓰기</button></div>`:""}`;
+      if(!a.fb2){ if(!a.rewrite){ a.rewrite=a.draft; } bindEditor("rewrite"); $("#ta").value=a.rewrite; $("#rl").innerHTML=ruler(a.rewrite.length); $("#sub").onclick=()=>submit("rewrite"); if(a.pending) bindPending("rewrite"); }
+      else $("#again").onclick=()=>{ const n={ id:uid(), setId, createdAt:Date.now(), updatedAt:Date.now(), outline:["","",""], draft:"", rewrite:"", sec:0 }; S.attempts[n.id]=n; save(); go(`#/write/${setId}?a=${n.id}`); };
+      wb.querySelectorAll("[data-hl]").forEach(b=>b.onclick=()=>{ const [l,...t]=b.dataset.hl.split("|"); $("#passBox").innerHTML=passHTML(l,t.join("|"))+`<p class="question">${esc(s.question)}</p>`; setTab("pass"); document.getElementById("p-"+l)?.scrollIntoView({block:"center"}); if(innerWidth<900) setTimeout(()=>{},0); });
+    }
+  }
+  function pendingBox(){
+    const lc=localCheck(s, a.fb?a.rewrite:a.draft, a.outline);
+    return `<div class="banner red" style="margin-top:12px"><b>피드백 확인 필요</b> — ${esc(a.pending.error||"AI 피드백을 받지 못했어요.")} 답안은 저장돼 있어요. 점수는 만들지 않았어요.
+      <div class="actions"><button class="btn" id="retry">다시 요청</button></div></div>
+      <div class="sheet" style="background:var(--paper)"><h3>자동 점검 (규칙 기반 · AI 아님)</h3><ul class="small">${lc.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`;
+  }
+  function bindPending(stage){ $("#retry").onclick=()=>submit(stage); }
+
+  async function submit(stage){
+    const text = (stage==="draft"?a.draft:a.rewrite).trim();
+    if(text.length<10){ toast("10자 이상 써 주세요"); return; }
+    if(stage==="rewrite" && text===a.draft.trim()){ toast("고친 곳이 없어요. 고칠 점을 반영해 주세요"); return; }
+    const btn=$("#sub"); btn.disabled=true; btn.textContent="피드백 받는 중… (최대 30초)";
+    a.updatedAt=Date.now(); save();
+    const rid = `${a.id}-${stage}-${await sha(text).then(h=>h.slice(0,12))}`;
+    const body = { request_id:rid, mode: stage==="draft"?"first":"rewrite", answer:text, outline:a.outline,
+      set:{ id:s.id, question:s.question, min:s.min, max:s.max, passages:s.passages.map(p=>({label:p.label,text:p.text})) },
+      previous: stage==="rewrite" ? { draft:a.draft, fixes:a.fb.fixes } : undefined };
+    try{
+      let j;
+      try{
+        const ctrl=new AbortController(); const to=setTimeout(()=>ctrl.abort(),45000);
+        const r = await fetch(CFG.api,{ method:"POST", headers:{ "content-type":"application/json", ...(S.settings.appCode?{"x-app-code":S.settings.appCode}:{}) }, body:JSON.stringify(body), signal:ctrl.signal });
+        clearTimeout(to);
+        j = await r.json().catch(()=>({ok:false, noServer:true, error:`피드백 서버가 없어요(${r.status}).`})); // JSON이 아니면 피드백 서버가 없는 곳
+      }catch(netErr){ if(netErr.name==="AbortError") throw netErr; j={ok:false, noServer:true, error:"인터넷 또는 서버에 연결하지 못했어요."}; }
+      if(!j.ok && j.noServer){ const alt = await aiViaSample(body); if(alt) j = alt; }
+      if(!j.ok) throw new Error(j.error || "피드백 실패");
+      const fb = Object.assign({}, j.feedback, { meta:j.meta });
+      if(stage==="draft"){ a.fb=fb; a.rewrite=a.draft; } else { a.fb2=fb; a.rewriteAt=Date.now(); }
+      delete a.pending; a.updatedAt=Date.now(); save();
+      toast(stage==="draft"?"피드백 도착":"수정본 피드백 도착");
+    }catch(e){
+      a.pending={ stage, at:Date.now(), error: e.name==="AbortError" ? "응답 시간이 초과됐어요." : (e.message==="Failed to fetch" ? "인터넷 또는 서버에 연결하지 못했어요." : e.message) };
+      save();
+    }
+    draw(); setTab("write"); window.scrollTo({top:0});
+  }
+  draw();
+}
+// 서버(/api/feedback)가 없는 곳(claude.ai 아티팩트)에서만 쓰는 임시 경로: 같은 프롬프트·같은 인용 검증으로 Claude에 요청
+async function aiViaSample(body){
+  const C=window.SSUBODA_CORE; if(!C || !window.claude || !window.claude.use) return null;
+  let sample=null; try{ sample=await window.claude.use("sample"); }catch(e){}
+  if(!sample) return null;
+  try{
+    const r=await sample([{role:"user", content: C.SYSTEM + "\n\n" + C.buildUser(body)}], {modelTier:"default"});
+    const fb=C.sanitize(C.parseJSON(r.text), body);
+    return { ok:true, feedback:fb, meta:{ provider:"claude(임시)", model:"claude.ai 아티팩트", prompt:C.PROMPT_VERSION, rubric:C.RUBRIC_VERSION, at:new Date().toISOString() } };
+  }catch(e){ return { ok:false, error: e && e.code==="rate_limited" ? "잠시 뒤 다시 요청해 주세요(요청이 많아요)." : e && e.code==="not_granted" ? "AI 사용이 허용되지 않았어요." : "AI 응답을 읽지 못했어요." }; }
+}
+function fbHTML(fb, s, isRewrite){
+  if(!fb) return "";
+  const lab = l => s.passages.length>1 ? `제시문 ${l}` : "제시문";
+  const rubNames = {demand:"문제 요구 충족",reading:"제시문 이해",evidence:"근거 사용",logic:"논리 구성",expression:"표현·분량"};
+  let h = "";
+  if(isRewrite && fb.changes) h += `<div class="good"><b>달라진 점</b><p>${esc(fb.changes)}</p></div>`;
+  if(fb.insufficient) h += `<div class="banner">AI가 판단 근거를 충분히 찾지 못했어요. 아래 내용만 참고하고, 점수는 표시하지 않아요.</div>`;
+  if(fb.strength?.text) h += `<h3>잘한 점</h3><div class="good"><p>${esc(fb.strength.text)}</p>${fb.strength.answer_quote?`<div class="quote"><small>내 문장</small>${esc(fb.strength.answer_quote)}</div>`:""}</div>`;
+  if(fb.fixes?.length) h += `<h3>${isRewrite?"남은":"먼저"} 고칠 점 ${fb.fixes.length}개</h3>` + fb.fixes.map((f,i)=>`<div class="fix"><p><b>${i+1}. ${esc(f.issue)}</b>${f.tag?` <span class="chip">${esc(f.tag)}</span>`:""}</p>
+      ${f.answer_quote?`<div class="quote"><small>내 문장</small>${esc(f.answer_quote)}</div>`:""}
+      ${f.passage_quote?`<div class="quote"><small>${lab(f.passage_label)} 근거</small>${esc(f.passage_quote)}</div><button class="btn ghost small" style="min-height:36px;padding:4px 10px" data-hl="${esc(f.passage_label)}|${esc(f.passage_quote)}">제시문에서 위치 보기</button>`:""}
+      ${f.suggestion?`<p class="small">${esc(f.suggestion)}</p>`:""}</div>`).join("");
+  if(fb.self_question) h += `<h3>고치기 전에 스스로 답해 볼 질문</h3><p>${esc(fb.self_question)}</p>`;
+  if(fb.next_action) h += `<h3>다음 행동</h3><p>${esc(fb.next_action)}</p>`;
+  if(fb.rubric){
+    h += `<details><summary>항목별 판단 ${S.settings.showScores?"(연습 지표 0~4)":""}</summary><div class="rub">${Object.entries(rubNames).map(([k,n])=>fb.rubric[k]?`<b>${n}${S.settings.showScores?` ${fb.rubric[k].score}/4`:""}</b><span class="small">${esc(fb.rubric[k].reason)}</span>`:"").join("")}</div>
+      <p class="tiny">내부 연습 지표예요. 대학 채점과 같지 않아요.${S.settings.showScores?"":" 숫자는 검증 전이라 숨겨 뒀어요."}</p></details>`;
+  }
+  if(fb.quotes_dropped) h += `<p class="tiny">원문과 정확히 맞지 않는 인용 ${fb.quotes_dropped}개는 표시하지 않았어요.</p>`;
+  if(fb.meta) h += `<p class="tiny">${esc(fb.meta.model)} · ${esc(fb.meta.prompt)} · 루브릭 ${esc(fb.meta.rubric)}</p>`;
+  return h;
+}
+function localCheck(s, text, outline){
+  const out=[]; const n=text.length;
+  out.push(n<s.min?`분량: ${n}자 — 목표 ${s.min}자까지 ${s.min-n}자 더 필요해요.`: n>s.max?`분량: ${n}자 — ${n-s.max}자 줄여야 해요.`:`분량: ${n}자 — 목표 범위 안이에요.`);
+  s.passages.forEach(p=>{ if(!p.kw||!p.kw.length) return; const hit=p.kw.filter(k=>text.includes(k)); const name=s.passages.length>1?`제시문 ${p.label}`:"제시문";
+    out.push(hit.length ? `${name}: 핵심 표현(${hit.slice(0,3).join(", ")})을 사용했어요.` : `${name}의 내용을 답안에서 찾기 어려워요. 근거로 연결했는지 확인해요.`); });
+  const abs=["모든","반드시","항상","절대","무조건"].filter(w=>text.includes(w));
+  if(abs.length) out.push(`'${abs.join("', '")}' 같은 단정 표현이 있어요. 제시문 범위를 넘는 결론인지 확인해요.`);
+  if(outline && outline.filter(x=>x&&x.trim()).length<2) out.push("개요 칸을 2개 이상 채우면 구조가 잡혀요.");
+  return out;
+}
+function sentences(t){ return String(t||"").split(/(?<=[.!?。])\s+|\n+/).map(x=>x.trim()).filter(Boolean); }
+function diffHTML(a,b){
+  const A=sentences(a), B=sentences(b); const As=new Set(A), Bs=new Set(B);
+  const removed=A.filter(x=>!Bs.has(x));
+  return `<div class="diff"><p class="tiny">초록 밑줄 = 새로 쓰거나 고친 문장</p><p>${B.map(x=>As.has(x)?esc(x):`<span class="add">${esc(x)}</span>`).join(" ")}</p>
+    ${removed.length?`<details><summary>바뀌기 전 문장 ${removed.length}개</summary><p>${removed.map(x=>`<span class="del">${esc(x)}</span>`).join("<br>")}</p></details>`:""}</div>`;
+}
+
+/* ===== 지난 답안 보기 ===== */
+function vView(app, id){
+  const a=S.attempts[id]; const s=a&&SETMAP[a.setId];
+  if(!a||!s){ app.innerHTML=`<p>기록을 찾지 못했어요. <a href="#/log">기록으로</a></p>`; return; }
+  app.innerHTML = `<a href="#/log" class="small">← 기록</a><h1>${esc(s.title)}</h1><p class="tiny">${new Date(a.createdAt).toLocaleDateString("ko-KR")} · ${Math.round((a.sec||0)/60)}분</p>
+    <div class="sheet"><h3>초안</h3><p style="font-family:var(--serif);white-space:pre-wrap">${esc(a.draft)||"(비어 있음)"}</p></div>
+    ${a.fb2?`<div class="sheet"><h3>초안 → 수정본</h3>${diffHTML(a.draft,a.rewrite)}</div>`:""}
+    ${a.fb?`<div class="sheet fb"><h3 style="margin-top:0">첫 피드백</h3>${fbHTML(a.fb,s)}</div>`:""}
+    <div class="actions"><a class="btn primary" style="display:inline-flex;align-items:center;justify-content:center" href="#/write/${s.id}?a=${a.id}">이 답안 열기</a><button class="btn danger" id="del">이 답안 삭제</button></div>`;
+  $("#del").onclick=async()=>{ if(await ask("이 답안과 피드백을 삭제할까요? 되돌릴 수 없어요.",{ok:"삭제",danger:true})){ delete S.attempts[id]; save(); go("#/log"); } };
+}
+
+/* ===== 목표 대학 ===== */
+function latestMock(){ return S.scores.filter(x=>x.system==="mock").sort((a,b)=>(b.date||"").localeCompare(a.date||""))[0]; }
+function tamgu(gr, mode){
+  if(Number.isFinite(gr?.["탐구"])) return {v:gr["탐구"]}; // 이전 버전 기록
+  const a=gr?.["통합사회"], b=gr?.["통합과학"];
+  if(mode==="확인 필요"||!mode) return {why:"탐구 반영 방식(높은 1과목/평균)이 정해지지 않았어요. 원문에서 확인해 넣어 주세요."};
+  if(!Number.isFinite(a)||!Number.isFinite(b)) return {why:"통합사회·통합과학 등급을 둘 다 넣어야 해요."};
+  return {v: mode==="2과목 평균" ? (a+b)/2 : Math.min(a,b)};
+}
+function evalCond(cond, sc){
+  // cond: {areas:[...], count, sum, historyMax?, inquiry, complete}
+  if(!cond || !cond.areas?.length || !cond.count || !cond.sum) return {r:"확인 필요", why:"조건이 비어 있어요."};
+  if(cond.complete===false) return {r:"확인 필요", why:"공식 조건을 다 옮기지 못했다고 표시돼 있어요. 원문과 대조해요."};
+  if(!sc) return {r:"확인 필요", why:"입력된 모의고사 등급이 없어요."};
+  let tg=null;
+  if(cond.areas.includes("탐구")){ tg=tamgu(sc.grades, cond.inquiry); if(tg.why) return {r:"확인 필요", why:tg.why}; }
+  const g = cond.areas.map(k=>k==="탐구"?tg.v:sc.grades?.[k]).filter(v=>Number.isFinite(v));
+  if(g.length < cond.areas.length) return {r:"확인 필요", why:"반영 영역 중 비어 있는 등급이 있어요."};
+  const best=[...g].sort((a,b)=>a-b).slice(0,cond.count); const sum=best.reduce((a,b)=>a+b,0);
+  let ok = sum<=cond.sum, why=`상위 ${cond.count}개 합 ${Math.round(sum*10)/10} (기준 ${cond.sum} 이내)${tg?` · 탐구 ${cond.inquiry}`:""}`;
+  if(cond.historyMax){ const h=sc.grades?.["한국사"]; if(!Number.isFinite(h)) return {r:"확인 필요", why:"한국사 등급이 없어요."}; if(h>cond.historyMax){ ok=false; } why+=` · 한국사 ${h} (기준 ${cond.historyMax} 이내)`; }
+  return {r: ok?"입력 성적 기준 충족":"입력 성적 기준 미충족", why};
+}
+function vUniv(app){
+  const ty=S.profile.targetYear, sc=latestMock();
+  const goal=evalCond({areas:S.goal.areas,count:S.goal.count,sum:S.goal.sum,inquiry:S.goal.inquiry||"높은 1과목"}, sc);
+  const chipFor = r => r.includes("미충족")?"bad":r.includes("충족")?"ok":"warn";
+  app.innerHTML = `<h1>목표 대학 · 수능최저</h1>
+    <p class="muted small">${ty}학년도 기준이에요. 대학 조건은 해당 학년도 공식 모집요강·시행계획으로 확인한 것만 계산해요. 다른 학년도 자료는 참고로만 표시해요.</p>
+
+    <div class="sheet"><div class="row"><h3 class="grow" style="margin:0">개인 목표 시뮬레이션</h3><span class="chip ${chipFor(goal.r)}">${esc(goal.r)}</span></div>
+      <p class="small">내가 정한 목표: ${S.goal.areas.join("·")} 중 상위 <b>${S.goal.count}개</b> 등급 합 <b>${S.goal.sum}</b> 이내 · 탐구는 ${esc(S.goal.inquiry||"높은 1과목")} <span class="tiny">(대학 공식 조건 아님)</span></p>
+      <p class="tiny">${esc(goal.why)}${sc?` · ${esc(sc.name)} ${esc(sc.date)} 기준`:""} 모의고사 결과로 수능을 예측하지 않아요.</p>
+      <details><summary>목표 바꾸기</summary><div class="row"><div class="grow"><label class="f">상위 몇 개 영역</label><input type="number" min="1" max="4" id="gc" value="${S.goal.count}"></div><div class="grow"><label class="f">등급 합</label><input type="number" min="2" max="36" id="gs" value="${S.goal.sum}"></div></div><label class="f">탐구 계산</label><select id="gi">${INQUIRY.slice(1).map(x=>`<option ${S.goal.inquiry===x?"selected":""}>${x}</option>`).join("")}</select><div class="actions"><button class="btn" id="gsave">목표 저장</button></div></details>
+    </div>
+
+    <h2>관심 대학 (${S.univs.length}/4)</h2>
+    ${S.univs.map(u=>{ const usable = u.year===ty && (u.docType===DOC_TYPES[0]||u.docType===DOC_TYPES[1]);
+      const ev = usable ? evalCond(u.cond, sc) : {r:"확인 필요", why: u.year!==ty ? `${u.year}학년도 자료라 계산하지 않아요.` : u.docType===DOC_TYPES[2] ? "이전 학년도 참고 자료라 계산하지 않아요." : "공식 자료 확인 전이에요."};
+      return `<div class="sheet"><div class="row"><h3 class="grow" style="margin:0">${esc(u.name)}</h3><span class="chip ${chipFor(ev.r)}">${esc(ev.r)}</span></div>
+      <p class="small muted">${[u.campus,u.unit,u.track].filter(Boolean).map(esc).join(" · ")||"모집단위 미정"} · ${u.year}학년도 · 논술 유형: ${esc(u.essayType)}</p>
+      <p class="small"><span class="chip ${usable?"ok":"warn"}">${esc(u.docType)}</span> ${u.url?`<a href="${esc(u.url)}" target="_blank" rel="noopener">원문 열기</a>`:"출처 없음"}${u.page?` · ${esc(u.page)}쪽`:""}${u.checked?` · 확인일 ${esc(u.checked)}`:""}</p>
+      ${u.cond?`<p class="small">조건: ${u.cond.areas.join("·")} 중 ${u.cond.count}개 합 ${u.cond.sum}${u.cond.areas.includes("탐구")?` · 탐구 ${esc(u.cond.inquiry||"확인 필요")}`:""}${u.cond.historyMax?` · 한국사 ${u.cond.historyMax}등급 이내`:""}${u.cond.complete===false?" · 일부만 입력":""}</p>`:""}
+      <p class="tiny">${esc(ev.why)}${u.note?` · ${esc(u.note)}`:""}</p>
+      <div class="row"><button class="btn ghost" data-ed="${u.id}">편집</button><button class="btn ghost" data-rm="${u.id}">목록에서 빼기</button></div></div>`;}).join("")}
+    ${S.univs.length<4?`<div class="actions"><button class="btn" id="addU">대학 추가</button></div>`:""}
+    <div id="uform"></div>
+
+    <h2>성적 기록</h2>
+    <p class="small muted">내신(5등급)과 모의고사 등급은 다른 평가라 따로 저장하고, 서로 바꿔 계산하지 않아요.</p>
+    <div class="sheet" style="overflow-x:auto"><table class="t"><tr><th>시험</th><th>구분</th><th>등급</th><th></th></tr>
+      ${S.scores.map(x=>`<tr><td>${esc(x.name)}<br><span class="tiny">${esc(x.date)}</span></td><td>${x.system==="mock"?"모의고사":"내신(5등급)"}</td><td class="small">${Object.entries(x.grades||{}).filter(([k,v])=>Number.isFinite(v)).map(([k,v])=>`${esc(k)} ${v}`).join(" · ")}</td><td><button class="btn ghost" style="min-height:32px;padding:2px 8px" data-sd="${x.id}">삭제</button></td></tr>`).join("") || `<tr><td colspan="4" class="muted small">아직 없어요. 모의고사를 보면 등급을 넣어 주세요.</td></tr>`}
+    </table>
+    <details style="margin-top:8px"><summary>성적 추가</summary>
+      <div class="row"><div class="grow"><label class="f">시험 이름</label><input type="text" id="sn" placeholder="예: 11월 전국연합"></div><div class="grow"><label class="f">날짜</label><input type="date" id="sdt" value="${today()}"></div></div>
+      <label class="f">구분</label><select id="ssys"><option value="mock">모의고사·수능 등급</option><option value="school">내신(5등급)</option></select>
+      <div class="row">${GRADE_FIELDS.map(k=>`<div style="flex:1;min-width:84px"><label class="f">${k}</label><input type="number" min="1" max="9" data-g="${k}"></div>`).join("")}</div>
+      <div class="actions"><button class="btn primary" id="sadd">성적 저장</button></div></details></div>`;
+
+  $("#gsave").onclick=()=>{ S.goal.count=Math.max(1,Math.min(4,+$("#gc").value||2)); S.goal.sum=Math.max(2,+$("#gs").value||4); S.goal.inquiry=$("#gi").value; save(); route(); };
+  $("#addU")&&($("#addU").onclick=()=>univForm());
+  app.querySelectorAll("[data-ed]").forEach(b=>b.onclick=()=>univForm(S.univs.find(u=>u.id===b.dataset.ed)));
+  app.querySelectorAll("[data-rm]").forEach(b=>b.onclick=async()=>{ if(await ask("목록에서 뺄까요?",{ok:"빼기"})){ S.univs=S.univs.filter(u=>u.id!==b.dataset.rm); save(); route(); }});
+  app.querySelectorAll("[data-sd]").forEach(b=>b.onclick=async()=>{ if(await ask("이 성적을 삭제할까요?",{ok:"삭제",danger:true})){ S.scores=S.scores.filter(x=>x.id!==b.dataset.sd); save(); route(); }});
+  $("#sadd").onclick=()=>{ const sys=$("#ssys").value; const grades={}; let bad=false;
+    app.querySelectorAll("[data-g]").forEach(i=>{ if(i.value!==""){ const v=+i.value; const mx = sys==="school"?5:9; if(!Number.isInteger(v)||v<1||v>mx) bad=true; else grades[i.dataset.g]=v; }});
+    if(bad){ toast(sys==="school"?"내신은 1~5등급이에요":"등급은 1~9 사이 정수예요"); return; }
+    S.scores.push({id:uid(), name:$("#sn").value.trim()||"이름 없는 시험", date:$("#sdt").value, system:sys, grades}); save(); route(); };
+}
+function univForm(u){
+  const ty=S.profile.targetYear; const isNew=!u; u = u || { id:uid(), name:"", campus:"", unit:"", track:"논술전형", year:ty, docType:"확인 필요", url:"", page:"", checked:"", essayType:"확인 필요", cond:null, note:"" };
+  const c=u.cond||{areas:[...AREAS],count:"",sum:"",historyMax:"",inquiry:"확인 필요",complete:false};
+  $("#uform").innerHTML = `<div class="sheet"><h3>${isNew?"대학 추가":"대학 편집"}</h3>
+    <label class="f">대학명</label><input type="text" id="un" value="${esc(u.name)}">
+    <div class="row"><div class="grow"><label class="f">캠퍼스</label><input type="text" id="uc" value="${esc(u.campus)}"></div><div class="grow"><label class="f">모집단위</label><input type="text" id="uu" value="${esc(u.unit)}" placeholder="예: 경영학부"></div></div>
+    <div class="row"><div class="grow"><label class="f">전형명</label><input type="text" id="ut" value="${esc(u.track)}"></div><div class="grow"><label class="f">적용 학년도</label><input type="number" id="uy" value="${u.year}"></div></div>
+    <label class="f">자료 종류</label><select id="ud">${DOC_TYPES.map(d=>`<option ${u.docType===d?"selected":""}>${d}</option>`).join("")}</select>
+    <label class="f">출처 URL</label><input type="url" id="url" value="${esc(u.url)}" placeholder="대학 입학처 공식 문서 주소">
+    <div class="row"><div class="grow"><label class="f">원문 쪽수</label><input type="text" id="up" value="${esc(u.page)}"></div><div class="grow"><label class="f">확인일</label><input type="date" id="uk" value="${esc(u.checked)}"></div></div>
+    <label class="f">논술 유형</label><select id="ue">${ESSAY_TYPES.map(d=>`<option ${u.essayType===d?"selected":""}>${d}</option>`).join("")}</select>
+    <h3 style="margin-top:16px">수능최저 (공식 문서에 적힌 그대로)</h3>
+    <div class="row">${AREAS.map(k=>`<label class="small" style="display:flex;gap:4px;align-items:center;min-height:44px"><input type="checkbox" data-a="${k}" ${c.areas.includes(k)?"checked":""}>${k}</label>`).join("")}</div>
+    <div class="row"><div class="grow"><label class="f">상위 몇 개</label><input type="number" id="cc" min="1" max="4" value="${c.count||""}"></div><div class="grow"><label class="f">등급 합 이내</label><input type="number" id="cs" min="2" max="36" value="${c.sum||""}"></div><div class="grow"><label class="f">한국사 이내(선택)</label><input type="number" id="ch" min="1" max="9" value="${c.historyMax||""}"></div></div>
+    <label class="f" for="ci">탐구 반영 (통합사회·통합과학)</label><select id="ci">${INQUIRY.map(x=>`<option ${c.inquiry===x?"selected":""}>${x}</option>`).join("")}</select>
+    <label class="row small" style="min-height:44px;margin-top:8px"><input type="checkbox" id="cfull" ${c.complete?"checked":""}> 공식 조건을 이 칸으로 <b>전부</b> 옮겼어요 (영어 별도 기준·절사 같은 추가 조건 없음)</label>
+    <p class="tiny">체크하지 않으면 계산하지 않고 '확인 필요'로 둬요. 추가 조건은 메모에 써요.</p>
+    <label class="f">메모</label><input type="text" id="unote" value="${esc(u.note)}">
+    <div class="actions"><button class="btn primary" id="usave">저장</button><button class="btn ghost" id="ucancel">취소</button></div></div>`;
+  $("#uform").scrollIntoView({behavior:"smooth"});
+  $("#ucancel").onclick=()=>$("#uform").innerHTML="";
+  $("#usave").onclick=async()=>{
+    const areas=[...document.querySelectorAll("[data-a]:checked")].map(i=>i.dataset.a);
+    const cc=+$("#cc").value, cs=+$("#cs").value, ch=+$("#ch").value;
+    Object.assign(u,{ name:$("#un").value.trim(), campus:$("#uc").value.trim(), unit:$("#uu").value.trim(), track:$("#ut").value.trim(), year:+$("#uy").value||ty, docType:$("#ud").value, url:$("#url").value.trim(), page:$("#up").value.trim(), checked:$("#uk").value, essayType:$("#ue").value, note:$("#unote").value.trim(),
+      cond:(areas.length&&cc&&cs)?{areas,count:cc,sum:cs,historyMax:ch||0,inquiry:$("#ci").value,complete:$("#cfull").checked}:null });
+    if(!u.name){ toast("대학명을 써 주세요"); return; }
+    if(u.cond && !u.url){ if(!(await ask("출처 URL 없이 조건을 저장하면 나중에 검증하기 어려워요. 그래도 저장할까요?",{ok:"저장"}))) return; }
+    if(isNew) S.univs.push(u); save(); route();
+  };
+}
+
+/* ===== 기록 ===== */
+function vLog(app){
+  const all=Object.values(S.attempts).filter(a=>a.draft).sort((a,b)=>b.createdAt-a.createdAt);
+  const fbN=all.filter(a=>a.fb).length, rwN=all.filter(a=>a.fb2).length;
+  const totalMin=Math.round(S.log.reduce((s,r)=>s+r.sec,0)/60);
+  const weeks=[]; for(let i=5;i>=0;i--){ const ws=weekStart(); ws.setDate(ws.getDate()-7*i); const we=new Date(ws); we.setDate(ws.getDate()+7);
+    const sec=S.log.filter(r=>r.date>=ymd(ws)&&r.date<ymd(we)).reduce((s,r)=>s+r.sec,0); weeks.push({label:`${ws.getMonth()+1}/${ws.getDate()}`, min:Math.round(sec/60)}); }
+  const plan=S.profile.days.reduce((s,d)=>s+((d===0||d===6)?35:20),0);
+  const mx=Math.max(plan, ...weeks.map(w=>w.min), 1);
+  const tags={}; all.forEach(a=>[a.fb,a.fb2].forEach(f=>f?.fixes?.forEach(x=>{ if(x.tag) tags[x.tag]=(tags[x.tag]||0)+1; })));
+  const tagList=Object.entries(tags).sort((a,b)=>b[1]-a[1]);
+  app.innerHTML = `<h1>기록</h1>
+    <div class="stat"><div><b>${all.length}</b><span class="small muted">쓴 답안</span></div><div><b>${rwN}/${fbN}</b><span class="small muted">피드백 후 다시 쓴 답안</span></div><div><b>${totalMin}분</b><span class="small muted">누적 학습</span></div></div>
+    <h2>주별 학습 시간</h2><div class="sheet"><div class="bars">${weeks.map(w=>`<div><span>${w.min}</span><i style="height:${w.min/mx*100}%"></i></div>`).join("")}</div>
+      <div class="row" style="justify-content:space-between">${weeks.map(w=>`<span class="tiny">${w.label}</span>`).join("")}</div><p class="tiny">주 목표 ${plan}분</p></div>
+    <h2>반복되는 고칠 점</h2><div class="sheet">${tagList.length?tagList.map(([t,n])=>`<span class="chip" style="margin:2px">${esc(t)} ${n}</span>`).join(""):`<p class="muted small">피드백을 받으면 여기에 쌓여요.</p>`}
+      ${tagList[0]?`<p class="small" style="margin-top:8px">가장 자주 나온 점: <b>${esc(tagList[0][0])}</b>. 다음 답안에서 이것 하나만 먼저 확인해요.</p>`:""}</div>
+    <h2>지난 답안</h2><div class="sheet" style="padding:4px 16px">${all.map(a=>{const s=SETMAP[a.setId]; const [st,c]=statusOf(a); return `<a class="set" href="#/view/${a.id}"><span class="wk">${new Date(a.createdAt).getMonth()+1}/${new Date(a.createdAt).getDate()}</span><span class="grow"><span class="t">${esc(s?.title||a.setId)}</span><br><span class="small muted">${a.draft.length}자${a.fb2?` → ${a.rewrite.length}자`:""}</span></span><span class="chip ${c}">${st}</span></a>`;}).join("")||`<p class="muted small" style="padding:12px 0">아직 쓴 답안이 없어요. <a href="#/today">오늘의 20분 시작</a></p>`}</div>`;
+}
+
+/* ===== 설정 ===== */
+function guardianText(){
+  const w=weekInfo(); const all=Object.values(S.attempts);
+  const ws=weekStart().getTime();
+  const thisWeek=all.filter(a=>a.updatedAt>=ws && a.draft);
+  const rw=thisWeek.filter(a=>a.fb2).length;
+  const tags={}; thisWeek.forEach(a=>a.fb?.fixes?.forEach(x=>x.tag&&(tags[x.tag]=(tags[x.tag]||0)+1)));
+  const top=Object.entries(tags).sort((a,b)=>b[1]-a[1])[0];
+  const fixed=thisWeek.filter(a=>a.fb2 && a.fb2.changes).map(a=>a.fb2.changes)[0];
+  let t=`[써보다 주간 요약] ${S.profile.nick} · ${ymd(weekStart())} 주\n- 완료: ${w.doneSessions}/${w.planned}회, ${w.doneMin}/${w.plannedMin}분\n- 다시 쓴 답안: ${rw}개 (이번 주 쓴 답안 ${thisWeek.length}개)\n`;
+  t+= fixed ? `- 나아진 점: ${fixed}\n` : "";
+  const PLAIN={"요구미충족":"문제가 시킨 것을 빠짐없이 하기","근거누락":"제시문 근거를 한 문장 더 넣기","범위초과결론":"제시문에 있는 만큼만 결론 내기","제시문오독":"제시문을 한 번 더 천천히 읽기","분량":"글자 수 범위 맞추기","연결부족":"근거와 주장을 '그래서'로 이어 주기","수치해석과잉":"숫자가 말하는 것까지만 해석하기","반론누락":"반대 입장도 한 줄 다루기","요약부정확":"핵심 주장을 한 문장으로 잡기"};
+  t+= `- 다음 주 목표: ${top?(PLAIN[top[0]]||top[0]):"계획한 횟수 채우기"}\n`;
+  if(S.settings.guardianDrafts){ thisWeek.slice(0,3).forEach(a=>{ t+=`\n· ${SETMAP[a.setId]?.title}\n${a.fb2?a.rewrite:a.draft}\n`; }); }
+  return t;
+}
+function vGuardian(app){
+  if(!S.settings.guardianShare){ app.innerHTML=`<h1>보호자 요약</h1><div class="banner">학생이 설정에서 공유를 켜야 볼 수 있어요.</div><a href="#/settings">설정으로</a>`; return; }
+  const t=guardianText();
+  app.innerHTML=`<a href="#/settings" class="small">← 설정</a><h1>보호자 주간 요약</h1><div class="sheet"><pre style="white-space:pre-wrap;font:inherit;margin:0">${esc(t)}</pre></div>
+    <div class="actions"><button class="btn primary" id="share">보내기</button><button class="btn" id="copy">복사</button></div>
+    <p class="tiny">요약은 학생이 직접 보내요. 서버에 올리지 않아요.</p>`;
+  $("#copy").onclick=async()=>{ try{ await navigator.clipboard.writeText(t); toast("복사했어요"); }catch(e){ toast("복사하지 못했어요. 길게 눌러 선택해 주세요"); } };
+  $("#share").onclick=async()=>{ if(navigator.share){ try{ await navigator.share({title:"써보다 주간 요약", text:t}); }catch(e){} } else $("#copy").click(); };
+}
+function vSettings(app){
+  const s=S.settings, p=S.profile;
+  app.innerHTML=`<h1>설정</h1>
+    <div class="sheet"><h3>학습</h3>
+      <label class="f">공부할 요일</label><div class="days">${[1,2,3,4,5,6,0].map(d=>`<label><input type="checkbox" value="${d}" ${p.days.includes(d)?"checked":""}>${DOW[d]}</label>`).join("")}</div>
+      <div class="row"><div class="grow"><label class="f" for="es">시험기간 시작</label><input type="date" id="es" value="${esc(s.examStart)}"></div><div class="grow"><label class="f" for="ee">끝</label><input type="date" id="ee" value="${esc(s.examEnd)}"></div></div>
+      <p class="tiny">시험기간에는 5분 복습(주 2회)만 보여줘요.</p>
+      <div class="actions"><button class="btn primary" id="ss">학습 설정 저장</button></div></div>
+
+    <div class="sheet"><h3>보호자 공유</h3>
+      <label class="row small" style="min-height:44px"><input type="checkbox" id="gs" ${s.guardianShare?"checked":""}> 주간 요약 공유 켜기 (완료량·재작성·다음 목표)</label>
+      <label class="row small" style="min-height:44px"><input type="checkbox" id="gd" ${s.guardianDrafts?"checked":""}> 요약에 답안 본문도 넣기</label>
+      <div class="actions"><button class="btn" id="gsv">공유 설정 저장</button>${s.guardianShare?`<a class="btn" style="display:inline-flex;align-items:center;justify-content:center" href="#/guardian">이번 주 요약 보기</a>`:""}</div></div>
+
+    <div class="sheet"><h3>AI 피드백</h3>
+      <p class="small" id="srv">서버 상태 확인 중…</p>
+      <label class="f" for="ac">접속 코드 (서버에 코드가 걸려 있을 때만)</label><input type="password" id="ac" value="${esc(s.appCode)}" autocomplete="off">
+      <label class="row small" style="min-height:44px"><input type="checkbox" id="sc" ${s.showScores?"checked":""}> 항목별 숫자(0~4) 보기 — 표본 30개 대조 검증 전이라 기본은 꺼져 있어요</label>
+      <div class="actions"><button class="btn" id="asv">저장</button></div></div>
+
+    <div class="sheet"><h3>잠금·데이터</h3>
+      <p class="small muted">기록은 이 기기 브라우저에만 저장돼요. 기기를 바꾸거나 브라우저 데이터를 지우면 사라지니, 가끔 내보내기 해 두세요.</p>
+      <label class="f" for="pn">잠금 번호 4자리 ${s.pinHash?"(설정됨 · 비우면 해제)":""}</label><input type="password" id="pn" inputmode="numeric" maxlength="4">
+      <div class="actions"><button class="btn" id="psv">잠금 저장</button><button class="btn" id="ex">내보내기(JSON)</button><label class="btn" style="display:inline-flex;align-items:center;justify-content:center">가져오기<input type="file" accept="application/json" id="im" class="hide"></label></div>
+      <div class="actions"><button class="btn danger" id="wipe">모든 기록 삭제</button></div></div>
+
+    <div class="sheet"><h3>아프다 패밀리</h3><p class="small">${CFG.family.map(f=>`<a href="${esc(f.url)}">${esc(f.name)}</a>`).join(" · ")}</p>
+      <p class="tiny">써보다 v${CFG.version} · ${esc(p.nick)} · 고${p.grade} · ${p.targetYear}학년도</p></div>`;
+  fetch(CFG.api).then(r=>r.json()).then(j=>{ $("#srv").textContent = j.ai ? `연결됨 (${j.provider==="claude"?"Claude":"Google Gemini"})${j.code_required?" · 접속 코드 필요":""}` : "서버는 있지만 AI 키가 없어요. 운영자에게 알려 주세요."; })
+    .catch(()=>{ $("#srv").textContent = window.SSUBODA_CORE ? "임시 모드: claude.ai 안에서 Claude가 피드백해요. write.apuda.app 배포 후 Google Gemini로 바뀌어요." : "서버에 연결하지 못했어요. 쓰기·저장은 그대로 돼요."; });
+  $("#ss").onclick=()=>{ const days=[...app.querySelectorAll(".days input:checked")].map(i=>+i.value); if(days.length) p.days=days; s.examStart=$("#es").value; s.examEnd=$("#ee").value;
+    if(s.examStart&&s.examEnd&&s.examEnd<s.examStart){ toast("끝 날짜가 시작보다 빨라요"); return; } save(); toast("학습 설정 저장됨"); };
+  $("#gsv").onclick=()=>{ s.guardianShare=$("#gs").checked; s.guardianDrafts=$("#gd").checked && s.guardianShare; save(); toast("공유 설정 저장됨"); route(); };
+  $("#asv").onclick=()=>{ s.appCode=$("#ac").value.trim(); s.showScores=$("#sc").checked; save(); toast("저장됨"); };
+  $("#psv").onclick=async()=>{ const v=$("#pn").value.trim(); if(!v){ s.pinHash=""; save(); toast("잠금 해제됨"); return; } if(!/^\d{4}$/.test(v)){ toast("숫자 4자리예요"); return; } s.pinSalt=uid(); s.pinHash=await sha(s.pinSalt+v); save(); toast("잠금 설정됨"); };
+  $("#ex").onclick=async()=>{ const name=`${today()}_써보다_백업.json`, data=JSON.stringify(S,null,1);
+    try{ const dl = window.claude && window.claude.use ? await window.claude.use("downloads") : null; if(dl){ await dl.save({filename:name, data}); return; } }catch(e){ if(e&&e.code) { toast("저장을 취소했어요"); return; } }
+    const b=new Blob([data],{type:"application/json"}); const u=URL.createObjectURL(b); const x=document.createElement("a"); x.href=u; x.download=`${today()}_써보다_백업.json`; x.click(); setTimeout(()=>URL.revokeObjectURL(u),2000); };
+  $("#im").onchange=async e=>{ const f=e.target.files[0]; if(!f) return; try{ const j=JSON.parse(await f.text()); if(!j.v||!j.attempts) throw 0; if(!(await ask("지금 기록을 가져온 파일로 바꿀까요?",{ok:"바꾸기",danger:true}))) return; S=Object.assign(blank(),j); rebuildSets(); save(); toast("가져왔어요"); route(); }catch(err){ toast("써보다 백업 파일이 아니에요"); } };
+  $("#wipe").onclick=async()=>{ if(await ask("모든 답안·피드백·설정을 이 기기에서 지워요. 되돌릴 수 없어요.",{ok:"모두 삭제",danger:true,typed:"삭제"})){ try{localStorage.removeItem(KEY);}catch(e){} S=blank(); rebuildSets(); go("#/setup"); } };
+}
+
+/* ===== 잠금 ===== */
+// 미래 나침반 가족 비밀번호(같은 주소, 같은 기기)가 있으면 그걸로 잠금. 저장값은 읽기만 한다.
+function familyPin(){ try{ const v=JSON.parse(localStorage.getItem("fc-pin-v1")||"null"); return v&&v.salt&&v.hash?v:null; }catch(e){ return null; } }
+function familyUnlocked(){ try{ return sessionStorage.getItem("fc-unlocked-v1")==="1"; }catch(e){ return false; } }
+function lockIfNeeded(){
+  const fam=familyPin();
+  if(fam && !familyUnlocked()) return new Promise(res=>{
+    const d=document.createElement("div"); d.className="lock";
+    d.innerHTML=`<form class="sheet"><h1>써보다</h1><p class="muted small">미래 나침반 비밀번호 4자리를 입력하세요</p><input type="password" inputmode="numeric" maxlength="4" aria-label="가족 비밀번호" style="text-align:center;font-size:24px;letter-spacing:.4em"><div class="actions"><button class="btn primary">열기</button></div></form>`;
+    document.body.appendChild(d); d.querySelector("input").focus();
+    d.querySelector("form").onsubmit=async e=>{ e.preventDefault(); const v=d.querySelector("input").value;
+      const h=await sha(fam.salt+":"+v+":future-compass");
+      if(h===fam.hash){ try{ sessionStorage.setItem("fc-unlocked-v1","1"); }catch(e){} d.remove(); res(); } else { d.querySelector("input").value=""; toast("번호가 달라요"); } };
+  });
+  return new Promise(res=>{
+    if(!S.settings.pinHash) return res();
+    const d=document.createElement("div"); d.className="lock";
+    d.innerHTML=`<form class="sheet"><h1>써보다</h1><p class="muted small">잠금 번호를 입력하세요</p><input type="password" inputmode="numeric" maxlength="4" autofocus aria-label="잠금 번호" style="text-align:center;font-size:24px;letter-spacing:.4em"><div class="actions"><button class="btn primary">열기</button></div><p class="tiny">번호를 잊었다면 브라우저 사이트 데이터를 지워야 해요(기록도 지워져요).</p></form>`;
+    document.body.appendChild(d);
+    d.querySelector("form").onsubmit=async e=>{ e.preventDefault(); const v=d.querySelector("input").value; if(await sha(S.settings.pinSalt+v)===S.settings.pinHash){ d.remove(); res(); } else { d.querySelector("input").value=""; toast("번호가 달라요"); } };
+  });
+}
+
+/* ===== 시작 ===== */
+renderFamily();
+window.addEventListener("hashchange", ()=>{ if(location.hash.startsWith("#/") && location.hash!==CUR){ CUR=location.hash; route(); } });
+window.addEventListener("beforeunload", ()=>{ if(cleanup) cleanup(); });
+document.addEventListener("visibilitychange", ()=>{ if(document.visibilityState==="hidden") save(); });
+lockIfNeeded().then(route);
+if("serviceWorker" in navigator && location.protocol==="https:") navigator.serviceWorker.register("sw.js").catch(()=>{});
+</script>
+</body>
+</html>
