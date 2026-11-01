@@ -1,0 +1,307 @@
+{
+  "version": "1.2",
+  "report_date": "2026-11-01",
+  "collection_window": {
+    "start": "2026-10-31T09:00:00+09:00",
+    "end": "2026-11-01T09:00:00+09:00",
+    "timezone": "Asia/Seoul"
+  },
+  "sources": [
+    "데일리팜",
+    "의학신문",
+    "메디파나뉴스",
+    "약사공론"
+  ],
+  "briefing": "식의약가족 테니스대회 롯데칠성음료 우승가 오늘 가장 중요한 이슈로 부각됐습니다. 이어 의협 “소아응급실 압수수색, 명백한 진료방해”도 주요 변화로 확인됐습니다. 전체적으로는 정책·급여 · 의료현장 흐름이 두드러집니다.",
+  "top_news": [
+    {
+      "rank": 1,
+      "canonical_issue": "식의약가족 테니스대회 롯데칠성음료 우승 - 의학신문",
+      "title": "식의약가족 테니스대회 롯데칠성음료 우승",
+      "category": [
+        "약가",
+        "식약처"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-31T18:39:29+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=이정윤 기자] 제24회 식약처장배 식의약가족 테니스대회 1부 우승은 롯데칠성음료(오포)팀에게 돌아갔다.1부 준우승은 롯데칠성음료(양산), 공동",
+        "[의학신문·일간보사=이정윤 기자] 제24회 식약처장배 식의약가족 테니스대회 1부 우승은 롯데칠성음료(오포)팀에게 돌아갔다.",
+        "1부 우승팀 롯데칠성음료(오포)팀, 맨오른쪽은 주선태 식약처 테니스동호회장/사진=의학신문 1부 준우승은 롯데칠성음료(양산), 공동 3위는 서울우유와 식약처가 차지했다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3015331"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015331"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3015331_416261_3333.jpg",
+      "score": 51,
+      "oncology": null
+    },
+    {
+      "rank": 2,
+      "canonical_issue": "의협 “소아응급실 압수수색, 명백한 진료방해” - 의학신문",
+      "title": "의협 “소아응급실 압수수색, 명백한 진료방해”",
+      "category": [
+        "병원"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-31T19:30:13+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=김현기 기자] 의료계가 최근 아주대병원 소아응급의료센터에서 이뤄진 경찰의 압수수색을 강하게 비판하며 수사당국의 공식 사과와 의료현장의 특수성을",
+        "[의학신문·일간보사=김현기 기자] 의료계가 최근 아주대병원 소아응급의료센터에서 이뤄진 경찰의 압수수색을 강하게 비판하며 수사당국의 공식 사과와 의료현장의 특수성을 고려한 수사 가이드라인 마련을 촉구했다.",
+        "사진=의학신문 김현기 대한의사협회는 31일 임시대의원총회 종료 후 “응급환자를 진료 중인 의사에게 압수수색 집행을 이유로 자리를 비우도록 요구한 것은 명백한 진료방해 행위”라며 “환아의 생명과 건강을 위협한 공권력 남용”이라고 규탄했다."
+      ],
+      "importance": "의료기관·약국 현장의 변화는 진료 흐름과 환자 경험, 의약품 사용 환경에 직접 영향을 줍니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3015332"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015332"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3015332_416263_2337.jpg",
+      "score": 27,
+      "oncology": null
+    },
+    {
+      "rank": 3,
+      "canonical_issue": "보건의료단체 홍보인 한자리...소통·협력 다져 - 의학신문",
+      "title": "보건의료단체 홍보인 한자리...소통·협력 다져",
+      "category": [
+        "정책"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-10-31T10:10:41+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=김현기 기자] 보건의료단체 홍보 담당자들이 한자리에 모여 보도사진과 정책홍보 실무 경험을 공유하고 단체 간 협력 강화에 나섰다.한국보건의료단체",
+        "[의학신문·일간보사=김현기 기자] 보건의료단체 홍보 담당자들이 한자리에 모여 보도사진과 정책홍보 실무 경험을 공유하고 단체 간 협력 강화에 나섰다.",
+        "워크숍에 참석한 홍보 담당자(사진제공=한국보건의료단체홍보인협의회) 한국보건의료단체홍보인협의회(회장 최헌수)는 지난 23일부터 24일까지 인천 영종도 더위크앤리조트에서 ‘2026 한국보건의료단체홍보인협의회 워크숍’을 개최했다."
+      ],
+      "importance": "시장·정책·연구개발 흐름을 보여주는 주요 산업 이슈로 후속 정책과 사업 변화 확인이 필요합니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3015325"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015325"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3015325_416244_936.jpg",
+      "score": 26,
+      "oncology": null
+    },
+    {
+      "rank": 4,
+      "canonical_issue": "[제약공시 책갈피] 10월 5주차 -휴온스·한미약품·대원제약 外 - 메디파나뉴스",
+      "title": "[제약공시 책갈피] 10월 5주차 -휴온스·한미약품·대원제약 外",
+      "category": [
+        "허가",
+        "3상",
+        "합병"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-11-01T06:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[메디파나뉴스 = 이정수 기자] 2026년 10월 5주차(10.26~10.30)에는 휴온스글로벌 윤성태 회장이 보유 주식 541만주 중 250만주를 개인 법인에 장외매각하는 거래계획을 보고했다. 지주사 체제 지배구조 안정성과 책임경영 강화가 목적이다. 현재 그룹은 오너 3세 장남 윤인상 부사장으로 경영승",
+        "복사하기 [메디파나뉴스 = 이정수 기자] 2026년 10월 5주차(10.26~10.30)에는 휴온스글로벌 윤성태 회장이 보유 주식 541만주 중 250만주를 개인 법인에 장외매각하는 거래계획을 보고했다.",
+        "지주사 체제 지배구조 안정성과 책임경영 강화가 목적이다."
+      ],
+      "importance": "기사에서 사업개발·투자 변화가 함께 확인돼 기업 포트폴리오와 경쟁구도 영향을 살펴볼 필요가 있습니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=420591"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=420591"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202611/420591_328330_570.jpg",
+      "score": 18,
+      "oncology": null
+    },
+    {
+      "rank": 5,
+      "canonical_issue": "최봉영 메디소비자뉴스 기자 모친 - 약사공론",
+      "title": "최봉영 메디소비자뉴스 기자 모친",
+      "category": [
+        "병원"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-10-31T20:32:03+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "메디소비자뉴스 최봉영 기자 모친 별세.-빈소: 강릉고려병원 장례식장 특1호실(강원도 강릉시 옥가로 30, 옥천동)-발인: 11월 2일 월요일 8시 30분-장지:",
+        "-빈소: 강릉고려병원 장례식장 특1호실(강원도 강릉시 옥가로 30, 옥천동) -발인: 11월 2일 월요일 8시 30분 -장지: 솔향하늘길(청솔공원 봉안당) 이기사를 추천합니다!",
+        "추천해요 0 좋아요 0 감동이에요 0 후속기사 원해요 0 이 기사를 공유합니다"
+      ],
+      "importance": "의료기관·약국 현장의 변화는 진료 흐름과 환자 경험, 의약품 사용 환경에 직접 영향을 줍니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=547760"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547760"
+        }
+      ],
+      "thumbnail_url": "https://www.kpanews.co.kr/image/logo/snslogotrans_20250903011014.png",
+      "score": 12,
+      "oncology": null
+    }
+  ],
+  "trends": [
+    {
+      "title": "정책·급여",
+      "count": 2,
+      "change": "2건의 주요 이슈에서 반복적으로 확인",
+      "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
+      "examples": [
+        "식의약가족 테니스대회 롯데칠성음료 우승",
+        "보건의료단체 홍보인 한자리...소통·협력 다져"
+      ]
+    },
+    {
+      "title": "의료현장",
+      "count": 2,
+      "change": "2건의 주요 이슈에서 반복적으로 확인",
+      "implication": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름",
+      "examples": [
+        "의협 “소아응급실 압수수색, 명백한 진료방해”",
+        "최봉영 메디소비자뉴스 기자 모친"
+      ]
+    },
+    {
+      "title": "신약·임상",
+      "count": 1,
+      "change": "1건의 주요 이슈에서 반복적으로 확인",
+      "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
+      "examples": [
+        "[제약공시 책갈피] 10월 5주차 -휴온스·한미약품·대원제약 外"
+      ]
+    },
+    {
+      "title": "투자·사업개발",
+      "count": 1,
+      "change": "1건의 주요 이슈에서 반복적으로 확인",
+      "implication": "자본과 파이프라인 확보 경쟁이 사업전략의 핵심이 되는 흐름",
+      "examples": [
+        "[제약공시 책갈피] 10월 5주차 -휴온스·한미약품·대원제약 外"
+      ]
+    }
+  ],
+  "outlet_status": [
+    {
+      "publisher": "데일리팜",
+      "homepage_url": "https://www.dailypharm.com/",
+      "items": []
+    },
+    {
+      "publisher": "의학신문",
+      "homepage_url": "https://www.bosa.co.kr/",
+      "items": [
+        {
+          "title": "식의약가족 테니스대회 롯데칠성음료 우승",
+          "published_at": "2026-10-31T18:39:29+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015331"
+        },
+        {
+          "title": "의협 “소아응급실 압수수색, 명백한 진료방해”",
+          "published_at": "2026-10-31T19:30:13+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015332"
+        },
+        {
+          "title": "보건의료단체 홍보인 한자리...소통·협력 다져",
+          "published_at": "2026-10-31T10:10:41+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015325"
+        },
+        {
+          "title": "식의약 가족 테니스대회 개막 '열전'",
+          "published_at": "2026-10-31T09:46:16+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015324"
+        },
+        {
+          "title": "김택우 의협회장 “학술대회 절차 미비 송구”",
+          "published_at": "2026-10-31T17:24:34+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015329"
+        },
+        {
+          "title": "의협 학술대회 특별감사위 설치 불발",
+          "published_at": "2026-10-31T18:03:04+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3015330"
+        }
+      ]
+    },
+    {
+      "publisher": "메디파나뉴스",
+      "homepage_url": "https://www.medipana.com/",
+      "items": [
+        {
+          "title": "[제약공시 책갈피] 10월 5주차 -휴온스·한미약품·대원제약 外",
+          "published_at": "2026-11-01T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=420591"
+        },
+        {
+          "title": "의협 특별감사위 의결 불발…대의원회, 감사단에 '유감'",
+          "published_at": "2026-10-31T19:12:47+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=420582"
+        },
+        {
+          "title": "의협 임총서 특별감사위 논의…김택우 '사과', 김교웅 '투명성' 강조",
+          "published_at": "2026-10-31T17:26:54+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=420580"
+        }
+      ]
+    },
+    {
+      "publisher": "약사공론",
+      "homepage_url": "https://www.kpanews.co.kr/",
+      "items": [
+        {
+          "title": "최봉영 메디소비자뉴스 기자 모친",
+          "published_at": "2026-10-31T20:32:03+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547760"
+        }
+      ]
+    }
+  ],
+  "insight": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름 동시에 의료현장 흐름도 함께 확인돼 단일 이슈보다 복합적인 산업 변화로 보는 것이 적절합니다.",
+  "infographic": {
+    "image_path": null,
+    "generated_at": null,
+    "template_version": "news-card-v1"
+  }
+}
