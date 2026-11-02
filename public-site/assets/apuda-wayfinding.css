@@ -1,0 +1,73 @@
+/* ApuDa 홈 길찾기(v27) — 상황 선택 → 층 점등, 엘리베이터, 비상구, 머릿돌
+   책·서재(2F) 영역은 건드리지 않는 독립 모듈. index.html 맨 아래에서 불러온다. */
+
+/* ── 엘리베이터 (데스크톱 #pager 재스타일) ── */
+#pager::before{content:"엘리베이터";display:block;margin:-2px 0 4px;text-align:center;
+  font-size:10px;font-weight:800;letter-spacing:.08em;color:var(--muted,#5b6b7c)}
+#pager button{font-variant-numeric:tabular-nums}
+#pager button.on{background:#0B5FA5;border-color:#0B5FA5;color:#fff;box-shadow:0 0 0 4px rgba(11,95,165,.18)}
+
+/* ── 상황 시트 안 엘리베이터 줄 (모바일) ── */
+.wf-lift{display:flex;align-items:center;gap:8px;margin-top:12px;padding:10px 10px;border-radius:16px;
+  background:#f3f6fb;border:1px solid #dce3f0}
+.wf-lift-label{flex:none;font-size:11.5px;font-weight:800;color:#3d4c5d;letter-spacing:.02em}
+.wf-lift-btns{display:flex;gap:6px;flex:1;justify-content:space-between}
+.wf-lift-btns button{width:44px;height:44px;border-radius:50%;border:2px solid #c9d3e6;background:#fff;
+  color:#24324f;font-family:inherit;font-size:13px;font-weight:800;cursor:pointer;padding:0}
+.wf-lift-btns button:hover,.wf-lift-btns button:focus-visible{border-color:#0B5FA5;color:#0B5FA5;outline:none}
+.wf-lift-btns button:focus-visible{box-shadow:0 0 0 3px rgba(11,95,165,.3)}
+
+/* ── 머릿돌 ── */
+.wf-stone{display:flex;gap:8px;align-items:flex-start;margin:12px 0 0;padding:9px 11px;border:1px dashed #aeb9cf;
+  border-radius:12px;background:#eef1f8;color:#3a4660;font-size:12px;line-height:1.55;word-break:keep-all}
+.wf-stone svg{flex:none;margin-top:2px}
+.wf-stone b{color:#0e1b33}
+#qsSheet .wf-stone-mini{display:block;margin-top:8px;padding:6px 10px;font-size:11.5px;line-height:1.45;text-align:center}
+body.wf-exit-on #apuda-ui-tools,body.wf-exit-on #apuda-bot{visibility:hidden}
+#desktopGuide>.wf-stone{margin-top:10px}
+
+/* ── 추천 안내 (층 열릴 때) ── */
+#wfReco{position:fixed;z-index:120;left:50%;top:calc(12px + env(safe-area-inset-top));transform:translate(-50%,-14px);
+  max-width:min(78vw,520px);display:flex;align-items:center;gap:10px;padding:10px 12px 10px 14px;border-radius:999px;
+  background:#F5B301;color:#0e1b33;box-shadow:0 10px 26px rgba(14,27,51,.22);font-size:14px;font-weight:800;
+  opacity:0;pointer-events:none;transition:opacity .3s ease,transform .3s ease;word-break:keep-all}
+#wfReco.on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+#wfReco span{white-space:nowrap}
+#wfReco a{flex:none;color:#0e1b33;text-decoration:underline;text-underline-offset:3px;font-weight:900}
+#wfReco button{flex:none;width:32px;height:32px;border:0;border-radius:50%;background:rgba(14,27,51,.12);
+  color:#0e1b33;font-size:18px;line-height:1;cursor:pointer}
+
+/* ── 비상구 ── */
+.wf-exit{position:absolute;z-index:12;left:2.5%;bottom:3.5%;display:flex;align-items:center;gap:6px;
+  min-height:40px;padding:0 12px 0 10px;border:0;border-radius:8px;background:#157A3F;color:#fff;
+  font-family:inherit;font-size:13px;font-weight:800;line-height:1;letter-spacing:-.01em;cursor:pointer;box-shadow:0 6px 16px rgba(21,122,63,.35)}
+.wf-exit:hover{background:#106533}
+.wf-exit:focus-visible{outline:3px solid #0e1b33;outline-offset:2px}
+body.open .wf-exit{display:none}
+@media (max-width:860px){.wf-exit{min-height:36px;font-size:12px;padding:0 10px 0 8px}}
+
+#wfExitPop[hidden]{display:none}
+#wfExitPop{position:fixed;inset:0;z-index:2147483600;display:grid;place-items:end center;padding:12px}
+@media (min-width:640px){#wfExitPop{place-items:center}}
+#wfExitPop .wf-back{position:absolute;inset:0;background:rgba(14,27,51,.45)}
+#wfExitPop .wf-box{position:relative;width:min(100%,440px);border-radius:22px;background:#fff;overflow:hidden;
+  box-shadow:0 24px 60px rgba(14,27,51,.3);color:#0e1b33}
+#wfExitPop .wf-head{display:flex;align-items:center;gap:8px;padding:14px 14px 14px 16px;background:#157A3F;color:#fff}
+#wfExitPop .wf-head h2{margin:0;font-size:17px;font-weight:900;flex:1}
+#wfExitPop .wf-head button{width:40px;height:40px;border:0;border-radius:50%;background:rgba(255,255,255,.18);color:#fff;font-size:22px;cursor:pointer}
+#wfExitPop .wf-body{padding:14px 16px 16px}
+#wfExitPop p{margin:0;font-size:14px;line-height:1.6;color:#2d3a55;word-break:keep-all}
+#wfExitPop ul{margin:10px 0 0;padding:0 0 0 18px;font-size:14.5px;line-height:1.75;color:#0e1b33}
+#wfExitPop .wf-acts{display:flex;gap:8px;margin-top:14px}
+#wfExitPop .wf-acts a{flex:1;min-height:48px;display:flex;align-items:center;justify-content:center;border-radius:24px;
+  font-size:15px;font-weight:800;text-decoration:none}
+#wfExitPop .wf-call{background:#157A3F;color:#fff}
+#wfExitPop .wf-er{border:2px solid #157A3F;color:#157A3F}
+#wfExitPop small{display:block;margin-top:10px;font-size:12px;line-height:1.5;color:#4a5670}
+
+/* 큰 글씨 */
+.apuda-large-text .wf-stone{font-size:14px}
+.apuda-large-text #wfExitPop ul{font-size:17px}
+.apuda-large-text .wf-lift-btns button{font-size:15px}
+
+@media (prefers-reduced-motion:reduce){#wfReco{transition:none}}
