@@ -654,7 +654,7 @@ function vWrite(app, arg){
         j = await r.json().catch(()=>({ok:false, noServer:true, error:`AI 서버가 없어요(${r.status}).`}));
       }catch(netErr){ if(netErr.name==="AbortError") throw netErr; j={ok:false, noServer:true, error:"인터넷 또는 서버에 연결하지 못했어요."}; }
       if(!j.ok && j.noServer){ const alt = await aiViaSample(body); if(alt) j = alt; }
-      if(!j.ok) throw new Error(j.code==="NO_KEY" ? "AI가 아직 연결되지 않았어요(운영자 설정 필요). 점검·다시 쓰기는 그대로 할 수 있어요." : j.code==="AUTH" ? "접속 코드가 필요해요. 설정 → AI 검토·분석에서 코드를 넣어 주세요." : (j.error || "AI 분석 실패"));
+      if(!j.ok) throw new Error(j.code==="NO_KEY" ? "AI가 아직 연결되지 않았어요(운영자 설정 필요). 점검·다시 쓰기는 그대로 할 수 있어요." : j.code==="AUTH" ? (S.settings.appCode ? "접속 코드가 맞지 않아요. 설정 → AI 검토·분석에서 코드를 다시 확인해 주세요." : "접속 코드가 필요해요. 설정 → AI 검토·분석에서 코드를 넣어 주세요.") : (j.error || "AI 분석 실패"));
       const fb = Object.assign({}, j.feedback, { meta:j.meta, kind:"ai" });
       if(n===1) a.ai1=fb; else a.ai2=fb;
       delete a.aiErr; a.updatedAt=Date.now(); save(); toast("AI 분석 도착");

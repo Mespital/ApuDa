@@ -4,7 +4,7 @@
 import { runFeedback } from "../lib/ssuboda-feedback-core.js";
 
 const provider = () => (Netlify.env.get("AI_PROVIDER") === "claude" ? "claude" : "gemini");
-const aiKey = () => (provider() === "claude" ? Netlify.env.get("ANTHROPIC_API_KEY") : Netlify.env.get("GEMINI_API_KEY"));
+const aiKey = () => ((provider() === "claude" ? Netlify.env.get("ANTHROPIC_API_KEY") : Netlify.env.get("GEMINI_API_KEY")) || "").trim();
 
 const seen = new Map(); // request_id → 응답 (인스턴스 단위 중복 제출 방지, best-effort)
 const hits = new Map(); // ip → [timestamps]
@@ -12,11 +12,11 @@ const hits = new Map(); // ip → [timestamps]
 const json = (status, body) => new Response(JSON.stringify(body), { status, headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" } });
 
 export default async (request, context) => {
-  if (request.method === "GET") return json(200, { ok: true, service: "ssuboda-feedback", ai: !!aiKey(), provider: provider(), code_required: !!Netlify.env.get("SSUBODA_ACCESS_CODE") });
+  if (request.method === "GET") return json(200, { ok: true, service: "ssuboda-feedback", ai: !!(aiKey() || "").trim(), provider: provider(), code_required: !!Netlify.env.get("SSUBODA_ACCESS_CODE") });
   if (request.method !== "POST") return json(405, { ok: false, error: "POST만 가능해요." });
 
-  const code = Netlify.env.get("SSUBODA_ACCESS_CODE");
-  if (code && request.headers.get("x-app-code") !== code) return json(401, { ok: false, error: "접속 코드가 맞지 않아요. 설정에서 코드를 확인해 주세요.", code: "AUTH" });
+  const code = (Netlify.env.get("SSUBODA_ACCESS_CODE") || "").trim(); // 붙여 넣을 때 섞인 공백·줄바꿈 무시
+  if (code && (request.headers.get("x-app-code") || "").trim() !== code) return json(401, { ok: false, error: "접속 코드가 맞지 않아요. 설정에서 코드를 확인해 주세요.", code: "AUTH" });
 
   const ip = context.ip || "x";
   const now = Date.now();
