@@ -216,7 +216,7 @@ details summary{cursor:pointer;font-weight:600;min-height:32px}
 "use strict";
 /* ===== 설정: 아프다 패밀리 연결 ===== */
 const CFG = {
-  version: "1.8.0",
+  version: "1.8.1",
   api: "api/feedback", // 상대 경로: 루트 배포면 /api/feedback, future.apuda.app/write/ 면 /write/api/feedback
   family: [
     { name: "미래 나침반", url: location.hostname==="future.apuda.app" ? "/" : "https://future.apuda.app/?from=write" },
@@ -591,7 +591,9 @@ function vWrite(app, arg){
     return `<div class="sheet"><h3 style="margin-top:0">AI 검토·분석 <span class="chip">선택</span></h3>
       <p class="small muted">${stage===1?"초안을":"수정본을"} AI가 제시문과 맞대어 읽고 근거·논리를 분석해요. 필요할 때만 눌러요.</p>
       ${err?`<p class="small" style="color:var(--red)">${esc(err)}</p>`:""}
-      <div class="actions"><button class="btn" type="button" id="ai${stage}">AI 검토·분석 받기</button></div></div>`;
+      ${a.aiErr&&a.aiErr.stage===stage&&a.aiErr.code==="AUTH" ? `<div class="row" style="margin-top:8px"><input type="password" id="acin${stage}" inputmode="numeric" autocomplete="off" placeholder="접속 코드 입력" aria-label="접속 코드" style="flex:1;min-width:140px"><button class="btn primary" type="button" id="acsv${stage}">코드 저장하고 AI 분석 받기</button></div>
+        <p class="tiny">코드는 이 기기에 저장돼서 다음부터는 안 물어봐요. <a href="#/settings">설정에서 바꾸기</a></p>`
+        : `<div class="actions"><button class="btn" type="button" id="ai${stage}">AI 검토·분석 받기</button></div>`}</div>`;
   }
   function draw(){
     if(!a.fb){
@@ -620,7 +622,8 @@ function vWrite(app, arg){
       if(!a.fb2){ if(!a.rewrite){ a.rewrite=a.draft; } bindEditor("rewrite"); $("#ta").value=a.rewrite; $("#rl").innerHTML=ruler(a.rewrite.length); $("#sub").onclick=()=>submit("rewrite"); }
       else $("#again").onclick=()=>{ const n={ id:uid(), setId, createdAt:Date.now(), updatedAt:Date.now(), outline:["","",""], draft:"", rewrite:"", sec:0 }; S.attempts[n.id]=n; save(); go(`#/write/${setId}?a=${n.id}`); };
       wb.querySelectorAll("[data-ck]").forEach(c=>c.onchange=()=>{ const k=c.dataset.ck; a[k]=a[k]||[]; a[k][+c.dataset.i]=c.checked; save(); });
-      [1,2].forEach(n=>{ const b=$("#ai"+n); if(b) b.onclick=()=>requestAI(n); });
+      [1,2].forEach(n=>{ const b=$("#ai"+n); if(b) b.onclick=()=>requestAI(n);
+        const sv=$("#acsv"+n); if(sv) sv.onclick=()=>{ const v=($("#acin"+n).value||"").trim(); if(!v){ toast("접속 코드를 입력해 주세요"); return; } S.settings.appCode=v; delete a.aiErr; save(); requestAI(n); }; });
       wb.querySelectorAll("[data-hl]").forEach(b=>b.onclick=()=>{ const [l,...t]=b.dataset.hl.split("|"); $("#passBox").innerHTML=passHTML(l,t.join("|"))+`<p class="question">${esc(s.question)}</p>`; setTab("pass"); document.getElementById("p-"+l)?.scrollIntoView({block:"center"}); });
     }
   }
@@ -654,12 +657,12 @@ function vWrite(app, arg){
         j = await r.json().catch(()=>({ok:false, noServer:true, error:`AI 서버가 없어요(${r.status}).`}));
       }catch(netErr){ if(netErr.name==="AbortError") throw netErr; j={ok:false, noServer:true, error:"인터넷 또는 서버에 연결하지 못했어요."}; }
       if(!j.ok && j.noServer){ const alt = await aiViaSample(body); if(alt) j = alt; }
-      if(!j.ok) throw new Error(j.code==="NO_KEY" ? "AI가 아직 연결되지 않았어요(운영자 설정 필요). 점검·다시 쓰기는 그대로 할 수 있어요." : j.code==="AUTH" ? (S.settings.appCode ? "접속 코드가 맞지 않아요. 설정 → AI 검토·분석에서 코드를 다시 확인해 주세요." : "접속 코드가 필요해요. 설정 → AI 검토·분석에서 코드를 넣어 주세요.") : (j.error || "AI 분석 실패"));
+      if(!j.ok){ const er=new Error(j.code==="NO_KEY" ? "AI가 아직 연결되지 않았어요(운영자 설정 필요). 점검·다시 쓰기는 그대로 할 수 있어요." : j.code==="AUTH" ? (S.settings.appCode ? "접속 코드가 맞지 않아요. 설정 → AI 검토·분석에서 코드를 다시 확인해 주세요." : "접속 코드가 필요해요. 설정 → AI 검토·분석에서 코드를 넣어 주세요.") : (j.error || "AI 분석 실패")); er.code=j.code; throw er; }
       const fb = Object.assign({}, j.feedback, { meta:j.meta, kind:"ai" });
       if(n===1) a.ai1=fb; else a.ai2=fb;
       delete a.aiErr; a.updatedAt=Date.now(); save(); toast("AI 분석 도착");
     }catch(e){
-      a.aiErr={ stage:n, msg: e.name==="AbortError" ? "AI 응답 시간이 초과됐어요. 잠시 뒤 다시 눌러 주세요." : e.message }; save();
+      a.aiErr={ stage:n, code:e.code||"", msg: e.name==="AbortError" ? "AI 응답 시간이 초과됐어요. 잠시 뒤 다시 눌러 주세요." : e.message }; save();
     }
     draw(); setTab("write");
   }

@@ -1,5 +1,5 @@
 // 써보다 서비스워커 — 오프라인에서도 앱 열기·쓰기 가능. API는 캐시하지 않는다.
-const C = "ssuboda-v1.8.0";
+const C = "ssuboda-v1.8.1";
 const CORE = ["./", "index.html", "sets.js", "resources.js", "manifest.webmanifest", "icon.svg"];
 self.addEventListener("install", (e) => { e.waitUntil(caches.open(C).then((c) => c.addAll(CORE)).then(() => self.skipWaiting())); });
 self.addEventListener("activate", (e) => { e.waitUntil(caches.keys().then((ks) => Promise.all(ks.filter((k) => k !== C).map((k) => caches.delete(k)))).then(() => self.clients.claim())); });
