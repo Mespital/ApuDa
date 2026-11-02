@@ -58,6 +58,7 @@ p{margin:0 0 10px}
 .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .grow{flex:1}
 .btn{border:1px solid var(--line);background:var(--sheet);border-radius:var(--radius-s);padding:10px 14px;min-height:44px;cursor:pointer;font-weight:600}
+a.btn{text-decoration:none;text-align:center}
 .btn.primary{background:var(--apuda);border-color:var(--apuda);color:#fff}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn.primary{color:var(--paper)}}
 :root[data-theme="dark"] .btn.primary{color:var(--paper)}
@@ -156,6 +157,15 @@ nav.tab a svg{display:block;margin:0 auto 2px;width:22px;height:22px}
 nav.tab a[aria-current=page]{color:var(--apuda)}
 .lock{position:fixed;inset:0;z-index:99;background:var(--paper);display:flex;align-items:center;justify-content:center;padding:24px}
 .lock .sheet{width:100%;max-width:340px;text-align:center}
+/* 예시로 배우기 */
+.lrn-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px}
+.lrn-card{display:block;text-decoration:none;color:var(--ink);background:var(--sheet);border:1px solid var(--line);border-radius:var(--radius-m);padding:12px 14px}
+.lrn-card b{display:block}
+.seg{border-left:4px solid var(--grid);background:var(--paper);border-radius:0 var(--radius-s) var(--radius-s) 0;padding:8px 12px;margin:10px 0}
+.seg .st{font-family:var(--serif);font-size:16.5px;line-height:1.8;margin:4px 0}
+.seg .why{font-size:14px;color:var(--ink2);margin:0}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:13px}
+.flow span{border:1px solid var(--grid);color:var(--grid);border-radius:999px;padding:2px 10px}
 /* 인쇄: 연습지·내 답안 (A4) */
 #printArea{display:none}
 @media print{
@@ -179,6 +189,9 @@ nav.tab a[aria-current=page]{color:var(--apuda)}
   #printArea .tick{font-size:8pt;color:#555;text-align:right}
   #printArea .note{font-size:8.5pt;color:#555}
   #printArea .keep{break-inside:avoid}
+  #printArea .seg{border-left:1mm solid #2E7D5B;padding:1mm 3mm;margin:2.5mm 0;break-inside:avoid}
+  #printArea .seg .st{font-family:var(--serif);margin:0}
+  #printArea .seg .why{font-size:9pt;color:#444;margin:0}
 }
 .toast{position:fixed;left:50%;bottom:calc(76px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:999px;font-size:14px;z-index:50;max-width:90vw}
 details summary{cursor:pointer;font-weight:600;min-height:32px}
@@ -203,7 +216,7 @@ details summary{cursor:pointer;font-weight:600;min-height:32px}
 "use strict";
 /* ===== 설정: 아프다 패밀리 연결 ===== */
 const CFG = {
-  version: "1.7.0",
+  version: "1.8.0",
   api: "api/feedback", // 상대 경로: 루트 배포면 /api/feedback, future.apuda.app/write/ 면 /write/api/feedback
   family: [
     { name: "미래 나침반", url: location.hostname==="future.apuda.app" ? "/" : "https://future.apuda.app/?from=write" },
@@ -289,9 +302,9 @@ function route(){
   const [, name="today", arg] = (CUR || "#/today").split("/");
   const app = $("#app");
   if(!S.profile && name!=="setup"){ go("#/setup", true); return; }
-  const views = { library:vLibrary, custom:vCustom, setup:vSetup, today:vToday, train:vTrain, write:vWrite, univ:vUniv, log:vLog, settings:vSettings, view:vView, guardian:vGuardian };
+  const views = { learn:vLearn, library:vLibrary, custom:vCustom, setup:vSetup, today:vToday, train:vTrain, write:vWrite, univ:vUniv, log:vLog, settings:vSettings, view:vView, guardian:vGuardian };
   (views[name] || vToday)(app, arg);
-  const navName = ["write","library","custom"].includes(name) ? "train" : name==="view" ? "log" : name;
+  const navName = ["write","library","custom","learn"].includes(name) ? "train" : name==="view" ? "log" : name;
   document.querySelectorAll("nav.tab a").forEach(a => { if(a.dataset.r===navName) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current"); });
   $("#nav").classList.toggle("hide", name==="setup");
   window.scrollTo(0,0);
@@ -387,6 +400,8 @@ function vToday(app){
     <h1>${esc(p.nick)}, 오늘은 20분</h1>
     ${!storageOK?`<div class="banner red">이 기기에 저장이 안 되고 있어요. 설정 → 내보내기로 백업해 주세요.</div>`:""}
     ${main}
+    ${!exam && Object.values(S.attempts).filter(x=>x.fb2).length<3 ? `<div class="sheet" style="border-color:var(--grid)"><div class="row"><h3 class="grow" style="margin:0">예시로 배우기</h3><a class="btn" style="display:inline-flex;align-items:center" href="#/learn">예시 보기</a></div>
+      <p class="small muted" style="margin-top:6px">아직 몇 번 안 써 봤다면, 예시 답안 5개를 문장마다 뜯어보고 같은 유형을 혼자 써 봐요.</p></div>`:""}
     ${diagLeft.length && !exam ? `<div class="sheet"><div class="row"><h3 class="grow" style="margin:0">진단하기 <span class="chip">선택</span></h3><a class="btn" style="display:inline-flex;align-items:center" href="#/write/${diagLeft[0]}">진단 ${diagLeft[0]==="D1"?"①":"②"} 시작</a></div>
       <p class="small muted" style="margin-top:6px">지금 실력을 보는 20분 과제 2개(요약·비교, 논증·자료 해석). 힌트 없이 쓰고, 끝나면 해설이 열려요. 하고 싶을 때 해요.</p></div>`:""}
     ${lf && !exam ? `<div class="sheet"><h3>지난번 고칠 점</h3><p>${esc(lf.f.issue)}</p>${lf.f.suggestion?`<p class="small muted">${esc(lf.f.suggestion)}</p>`:""}</div>`:""}
@@ -407,6 +422,9 @@ function vTrain(app){
   const groups = [["훈련 세트", SETS.filter(s=>s.kind==="train")], ["진단하기 (선택)", SETS.filter(s=>s.kind==="diag")]];
   const mine = S.custom||[];
   app.innerHTML = `<h1>훈련</h1>
+    <div class="sheet" style="border-color:var(--grid)"><div class="row"><h3 class="grow" style="margin:0">예시로 배우기</h3><a class="small" href="#/learn">전체 보기</a></div>
+      <p class="small muted" style="margin:4px 0 8px">처음이면 여기부터. 예시 답안을 먼저 보고 '이렇게 쓰는 거구나'를 익혀요.</p>
+      <div class="lrn-list">${learnSets().map(x=>`<a class="lrn-card" href="#/learn/${x.id}"><span class="tiny">${esc(x.learn.type)}</span><b>${esc(x.title)}</b></a>`).join("")}</div></div>
     <div class="row" style="margin:4px 0 8px"><a class="btn" style="flex:1;display:inline-flex;align-items:center;justify-content:center" href="#/library">자료실</a><a class="btn" style="flex:1;display:inline-flex;align-items:center;justify-content:center" href="#/custom">내 문제 만들기</a></div>
     <p class="muted small">모든 제시문은 앱용 가상 자료예요(대학 기출 아님). <span class="chip warn">검토 전</span> 표시는 지도교사 검토가 끝나지 않은 초안 세트예요.</p>
     ${groups.map(([g,list])=>`<h2>${g}</h2><div class="sheet" style="padding:4px 16px">${list.map(s=>{const a=latest(s.id); const [st,c]=statusOf(a);
@@ -414,6 +432,34 @@ function vTrain(app){
       <span style="text-align:right">${st!=="안 함"?`<span class="chip ${c}">${st}</span>`:""}${!s.reviewed?`<br><span class="chip warn" style="margin-top:4px">검토 전</span>`:""}</span></a>`;}).join("")}</div>`).join("")}
     ${mine.length?`<h2>내 문제</h2><div class="sheet" style="padding:4px 16px">${mine.map(s=>{const a=latest(s.id); const [st,c]=statusOf(a); return `<a class="set" href="#/write/${s.id}"><span class="wk">내 문제</span><span class="grow"><span class="t">${esc(s.title)}</span><br><span class="small muted">${esc(s.skill)} · ${s.min}~${s.max}자${s.source?` · ${esc(s.source)}`:""}</span></span>${st!=="안 함"?`<span class="chip ${c}">${st}</span>`:""}</a>`;}).join("")}</div>`:""}
     <p class="tiny">12주 정규 운영용 48세트는 검토가 끝나는 대로 추가돼요.</p>`;
+}
+
+/* ===== 예시로 배우기 ===== */
+function learnSets(){ return SETS.filter(s=>s.learn).sort((a,b)=>a.learn.order-b.learn.order); }
+function vLearn(app, id){
+  const s = id && SETMAP[id];
+  if(!s || !s.learn){
+    app.innerHTML = `<a href="#/train" class="small">← 훈련</a><h1>예시로 배우기</h1>
+      <p class="muted small">처음 쓰는 사람을 위해 예시 답안을 먼저 보여주는 5문제예요. 문장마다 '무슨 일을 하는지'와 '왜 이렇게 썼는지'를 달아 뒀어요. 다 읽으면 같은 유형의 다른 문제를 혼자 써 봐요.</p>
+      <div class="lrn-list">${learnSets().map(x=>{ const pr=SETMAP[x.learn.pair]; const done=latest(pr?.id)?.fb; return `<a class="lrn-card" href="#/learn/${x.id}"><span class="tiny">${x.learn.order}. ${esc(x.learn.type)}</span><b>${esc(x.title)}</b><span class="small muted">연습: ${esc(pr?.title||"")}${done?" · 연습함":""}</span></a>`; }).join("")}</div>
+      <p class="tiny" style="margin-top:12px">예시는 앱 연습용이에요(대학 모범답안 아님). 근거가 맞으면 다른 구성도 좋은 답이에요. 나머지 문제의 예시는 다시 쓰기를 마친 뒤 열려요.</p>`;
+    return;
+  }
+  const L=s.learn, pr=SETMAP[L.pair];
+  app.innerHTML = `<a href="#/learn" class="small">← 예시 목록</a>
+    <h1>${esc(s.title)}</h1><p class="tiny">${esc(L.type)} · ${s.min}~${s.max}자</p>
+    <div class="sheet"><details><summary>제시문 다시 보기</summary>${s.passages.map(p=>`<p class="passage"><b>${s.passages.length>1?`제시문 ${p.label}`:"제시문"}</b>${esc(p.text)}</p>`).join("")}</details>
+      <p class="question">${esc(s.question)}</p></div>
+    <div class="banner green"><b>이렇게 읽어요</b> ${esc(L.tip)}</div>
+    <h2>예시 답안, 문장마다 뜯어보기</h2>
+    <div class="flow" aria-label="글의 순서">${L.parts.map(p=>`<span>${esc(p.role)}</span>`).join("<span aria-hidden=\"true\" style=\"border:0;padding:0\">→</span>")}</div>
+    ${L.parts.map((p,i)=>`<div class="seg"><span class="chip ok">${i+1}. ${esc(p.role)}</span><p class="st">${esc(p.t)}</p><p class="why">${esc(p.why)}</p></div>`).join("")}
+    <details class="sheet"><summary>예시 답안 이어서 읽기 (${s.example.length}자)</summary><p style="font-family:var(--serif);line-height:1.85">${esc(s.example)}</p></details>
+    <p class="tiny">앱 연습용 예시예요. 대학 모범답안이 아니고, 근거가 맞으면 다른 구성도 좋은 답이에요.</p>
+    <div class="sheet"><h3 style="margin-top:0">이제 혼자 써 보기</h3>
+      <p class="small">같은 유형의 <b>다른 문제</b>로 연습해요. 위 순서(${L.parts.map(p=>esc(p.role)).join(" → ")})를 따라 내 말로 써요.</p>
+      <div class="actions"><a class="btn primary" style="display:inline-flex;align-items:center;justify-content:center" href="#/write/${pr.id}">연습: ${esc(pr.title)}</a>${CAN_PRINT?`<button class="btn" id="plr">예시 인쇄</button>`:""}</div></div>`;
+  if($("#plr")) $("#plr").onclick=()=>printNow(`${pHead(s,"예시로 배우기")}${pPassages(s)}<p class="q">${esc(s.question)}</p><h2>이렇게 읽어요</h2><p>${esc(L.tip)}</p><h2>예시 답안, 문장마다 뜯어보기</h2>${L.parts.map((p,i)=>`<div class="seg"><b>${i+1}. ${esc(p.role)}</b><p class="st">${esc(p.t)}</p><p class="why">${esc(p.why)}</p></div>`).join("")}<p class="note">앱 연습용 예시예요(대학 모범답안 아님). 다음은 '${esc(pr.title)}'를 같은 순서로 혼자 써 봐요.</p>`);
 }
 
 /* ===== 자료실 ===== */
@@ -491,7 +537,7 @@ function vWrite(app, arg){
     <p class="tiny" id="phl">${(s.minutes||20)>20?`권장 ${s.minutes}분 · 긴 답안이라 단계별 시간은 참고만`:"읽기 4분 → 개요 4분 → 초안 8분 → 고치기 4분"}</p>
     <div class="tabs" role="tablist"><button role="tab" data-t="pass" aria-selected="true">제시문</button><button role="tab" data-t="write" aria-selected="false">${stage==="rewrite"?"피드백·다시 쓰기":"쓰기"}</button></div>
     <div class="wgrid">
-      <section class="sheet pass" data-p="pass" id="passBox">${passHTML()}<p class="question">${esc(s.question)}</p>${CAN_PRINT?`<p><button class="btn ghost" type="button" id="pws" style="min-height:40px">손글씨 연습지 인쇄</button></p>`:""}
+      <section class="sheet pass" data-p="pass" id="passBox">${passHTML()}<p class="question">${esc(s.question)}</p>${s.learn?`<p><a class="btn ghost" style="display:inline-flex;align-items:center;min-height:40px" href="#/learn/${s.id}">예시 답안 먼저 보기</a></p>`:""}${CAN_PRINT?`<p><button class="btn ghost" type="button" id="pws" style="min-height:40px">손글씨 연습지 인쇄</button></p>`:""}
         ${s.kind!=="diag"&&s.hints&&s.hints.length?`<details id="hint"><summary>막히면 힌트</summary><ul class="small" id="hintList"></ul></details>`:""}${s.kind==="diag"?`<p class="tiny">진단은 힌트 없이 써요. 제출하면 해설이 열려요.</p>`:""}${s.source?`<p class="tiny">출처: ${esc(s.source)} · 개인 공부용</p>`:""}</section>
       <section data-p="write" style="display:none" id="writeBox"></section>
     </div>`;
