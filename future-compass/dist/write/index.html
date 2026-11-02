@@ -203,7 +203,7 @@ details summary{cursor:pointer;font-weight:600;min-height:32px}
 "use strict";
 /* ===== 설정: 아프다 패밀리 연결 ===== */
 const CFG = {
-  version: "1.6.0",
+  version: "1.7.0",
   api: "api/feedback", // 상대 경로: 루트 배포면 /api/feedback, future.apuda.app/write/ 면 /write/api/feedback
   family: [
     { name: "미래 나침반", url: location.hostname==="future.apuda.app" ? "/" : "https://future.apuda.app/?from=write" },
@@ -254,8 +254,7 @@ function latest(setId){ return attemptsOf(setId)[0]; }
 function statusOf(a){
   if(!a) return ["안 함",""];
   if(a.rewrite && a.fb2) return ["재작성 완료","ok"];
-  if(a.fb) return ["피드백 받음 · 재작성 대기","warn"];
-  if(a.pending) return ["피드백 확인 필요","bad"];
+  if(a.fb) return ["점검 완료 · 다시 쓰기 대기","warn"];
   if(a.draft) return ["초안 저장","" ];
   return ["시작함",""];
 }
@@ -321,7 +320,7 @@ function vSetup(app){
     <div class="days">${[1,2,3,4,5,6,0].map(d=>`<label><input type="checkbox" value="${d}" ${p.days.includes(d)?"checked":""}>${DOW[d]}</label>`).join("")}</div>
     <p class="tiny">기본: 평일 4회 + 주말 1회 = 주 115분. 학원 요일은 빼고 골라도 돼요.</p>
     <label class="f" for="pin">잠금 번호 4자리 (선택)</label><input id="pin" type="password" inputmode="numeric" maxlength="4" pattern="\\d{4}" placeholder="비워두면 잠금 없음">
-    <div class="actions"><button class="btn primary">진단부터 시작하기</button></div>
+    <div class="actions"><button class="btn primary">시작하기</button></div>
   </form>`;
   const upd = () => { const g=+$("#grade").value; const t=y+(4-g); $("#ty").value=`${t}학년도`; $("#tyx").textContent=`${y}년 고${g} → ${y+(3-g)}년 수능 → ${t}학년도 대입 기준. 대학 조건은 이 학년도 공식 자료로만 계산해요.`; };
   $("#grade").onchange = upd; upd();
@@ -333,13 +332,13 @@ function vSetup(app){
     const pin=$("#pin").value.trim();
     if(/^\d{4}$/.test(pin)){ S.settings.pinSalt=uid(); S.settings.pinHash=await sha(S.settings.pinSalt+pin); }
     S.univs.forEach(u=>u.year=S.profile.targetYear);
-    save(); go("#/write/D1");
+    save(); go("#/today");
   };
 }
 
 /* ===== 오늘 ===== */
 function nextSet(){
-  for(const s of SETS){ const a=latest(s.id); if(!a || !(a.fb||a.pending)) return s; }
+  for(const s of SETS){ if(s.kind==="diag") continue; const a=latest(s.id); if(!a || !a.fb) return s; }
   return null;
 }
 function rewriteCandidate(){
@@ -361,8 +360,7 @@ function weekInfo(){
 function vToday(app){
   const p=S.profile, w=weekInfo(), exam=inExam();
   const ns=nextSet(), rw=rewriteCandidate(), lf=lastFix();
-  const pend=Object.values(S.attempts).filter(a=>a.pending && !a.fb);
-  const diagDone = ["D1","D2"].every(id=>{const a=latest(id); return a && (a.fb||a.pending);});
+  const diagLeft = ["D1","D2"].filter(id=>{const a=latest(id); return !(a && a.fb);});
   let main="";
   const wsT=weekStart().getTime(); const revN=(S.reviews||[]).filter(r=>r.at>=wsT).length;
   if(exam && revN>=2){
@@ -376,13 +374,6 @@ function vToday(app){
         <div class="actions"><button class="btn primary" id="rvs">5분 복습 완료</button></div>`
         : `<p>아직 복습할 피드백이 없어요. 시험 끝나고 이어서 해요.</p>`}
     </div>`;
-  } else if(!diagDone){
-    const id = latest("D1") && (latest("D1").fb||latest("D1").pending) ? "D2" : "D1";
-    const s=SETMAP[id];
-    main = `<div class="sheet today-task"><span class="chip">처음 진단 · 20분 × 2회</span>
-      <div class="q">${esc(s.question)}</div>
-      <p class="small muted">${esc(s.title)} · 지금 실력을 보려는 과제라 점수에 신경 쓰지 않아도 돼요.</p>
-      <a class="btn primary" style="display:inline-flex;align-items:center" href="#/write/${id}">진단 ${id==="D1"?"①":"②"} 시작</a></div>`;
   } else {
     main = `<div class="sheet today-task"><span class="chip">오늘의 20분 · 하나 골라요</span>
       ${ns ? `<h2 style="margin-top:10px">새 제시문: ${esc(ns.title)}</h2><div class="q">${esc(ns.question)}</div>
@@ -395,8 +386,9 @@ function vToday(app){
   app.innerHTML = `
     <h1>${esc(p.nick)}, 오늘은 20분</h1>
     ${!storageOK?`<div class="banner red">이 기기에 저장이 안 되고 있어요. 설정 → 내보내기로 백업해 주세요.</div>`:""}
-    ${pend.length?`<div class="banner red">피드백을 아직 못 받은 답안이 ${pend.length}개 있어요. 답안은 저장돼 있어요. <a href="#/write/${pend[0].setId}?a=${pend[0].id}">다시 요청하기</a></div>`:""}
     ${main}
+    ${diagLeft.length && !exam ? `<div class="sheet"><div class="row"><h3 class="grow" style="margin:0">진단하기 <span class="chip">선택</span></h3><a class="btn" style="display:inline-flex;align-items:center" href="#/write/${diagLeft[0]}">진단 ${diagLeft[0]==="D1"?"①":"②"} 시작</a></div>
+      <p class="small muted" style="margin-top:6px">지금 실력을 보는 20분 과제 2개(요약·비교, 논증·자료 해석). 힌트 없이 쓰고, 끝나면 해설이 열려요. 하고 싶을 때 해요.</p></div>`:""}
     ${lf && !exam ? `<div class="sheet"><h3>지난번 고칠 점</h3><p>${esc(lf.f.issue)}</p>${lf.f.suggestion?`<p class="small muted">${esc(lf.f.suggestion)}</p>`:""}</div>`:""}
     <div class="sheet">
       <div class="row"><h3 class="grow" style="margin:0">이번 주</h3><span class="small muted">${w.doneSessions}/${w.planned}회 · ${w.doneMin}/${w.plannedMin}분</span></div>
@@ -412,7 +404,7 @@ function vToday(app){
 
 /* ===== 훈련 목록 ===== */
 function vTrain(app){
-  const groups = [["진단", SETS.filter(s=>s.kind==="diag")], ["훈련 세트", SETS.filter(s=>s.kind==="train")]];
+  const groups = [["훈련 세트", SETS.filter(s=>s.kind==="train")], ["진단하기 (선택)", SETS.filter(s=>s.kind==="diag")]];
   const mine = S.custom||[];
   app.innerHTML = `<h1>훈련</h1>
     <div class="row" style="margin:4px 0 8px"><a class="btn" style="flex:1;display:inline-flex;align-items:center;justify-content:center" href="#/library">자료실</a><a class="btn" style="flex:1;display:inline-flex;align-items:center;justify-content:center" href="#/custom">내 문제 만들기</a></div>
@@ -542,71 +534,88 @@ function vWrite(app, arg){
       to=setTimeout(()=>{ a.updatedAt=Date.now(); const ok=save(); const sv=$("#sv"); if(sv) sv.textContent = ok ? `기기에 저장됨 ${hm(a.updatedAt)}` : "저장 실패 — 설정에서 내보내기로 백업해 주세요"; },1200); });
   }
 
+  const CHECKS=["문제가 시킨 행동(요약·비교·평가 등)을 빠짐없이 했다","제시문 근거를 내 문장으로 넣었다","결론이 제시문이 말하는 범위 안에 있다","목표 분량을 맞췄다"];
+  function checklist(key){
+    const v=a[key]||[];
+    return `<div class="sheet"><h3 style="margin-top:0">스스로 점검</h3>${CHECKS.map((c,i)=>`<label class="row small" style="min-height:40px;flex-wrap:nowrap"><input type="checkbox" data-ck="${key}" data-i="${i}" ${v[i]?"checked":""}> <span>${esc(c)}</span></label>`).join("")}</div>`;
+  }
+  function aiBox(stage){
+    const f=stage===1?a.ai1:a.ai2; const err=a.aiErr&&a.aiErr.stage===stage?a.aiErr.msg:"";
+    if(f) return `<div class="sheet fb"><h3 style="margin-top:0">AI 검토·분석</h3>${fbHTML(f,s,stage===2)}</div>`;
+    return `<div class="sheet"><h3 style="margin-top:0">AI 검토·분석 <span class="chip">선택</span></h3>
+      <p class="small muted">${stage===1?"초안을":"수정본을"} AI가 제시문과 맞대어 읽고 근거·논리를 분석해요. 필요할 때만 눌러요.</p>
+      ${err?`<p class="small" style="color:var(--red)">${esc(err)}</p>`:""}
+      <div class="actions"><button class="btn" type="button" id="ai${stage}">AI 검토·분석 받기</button></div></div>`;
+  }
   function draw(){
     if(!a.fb){
       wb.innerHTML = `<div class="sheet">
         <h3>쓰기 전 개요 3칸</h3><div class="outline">${s.outline.map((o,i)=>`<input type="text" data-o="${i}" placeholder="${esc(o)}" value="${esc(a.outline?.[i]||"")}" aria-label="${esc(o)}">`).join("")}</div>
         ${editor("draft","답안")}
-        ${a.pending?pendingBox():""}
-        <div class="actions"><button class="btn primary" id="sub">피드백 받기</button></div>
-        <p class="tiny">답안은 피드백 성공 여부와 상관없이 이 기기에 먼저 저장돼요.</p></div>`;
+        <div class="actions"><button class="btn primary" id="sub">다 썼어요 · 점검하기</button></div>
+        <p class="tiny">점검은 기기 안에서 바로 돼요(AI 아님). AI 검토·분석은 다음 화면에서 원할 때만 받아요.</p></div>`;
       wb.querySelectorAll("[data-o]").forEach(i=>i.oninput=()=>{ bump(); a.outline[+i.dataset.o]=i.value; save(); });
       bindEditor("draft");
       $("#sub").onclick=()=>submit("draft");
-      if(a.pending) bindPending("draft");
     } else {
-      wb.innerHTML = `<div class="sheet fb">${fbHTML(a.fb, s)}${CAN_PRINT?`<div class="actions"><button class="btn" type="button" id="pat">내 답안·피드백 인쇄</button></div>`:""}</div>
+      wb.innerHTML = `<div class="sheet fb"><h3 style="margin-top:0">${a.fb.kind==="self"?"점검 결과":"첫 피드백"}</h3>${fbHTML(a.fb, s)}${CAN_PRINT?`<div class="actions"><button class="btn" type="button" id="pat">내 답안·점검 인쇄</button></div>`:""}</div>
+        ${a.fb.kind==="self"&&!a.fb2?checklist("checks1"):""}
+        ${!a.fb2?aiBox(1):(a.ai1?aiBox(1):"")}
         ${s.debrief?`<details class="sheet" ${s.kind==="diag"?"open":""}><summary>${s.kind==="diag"?"진단 해설":"문제 해설 (다시 쓰기 전에 참고)"}</summary><ul class="small">${s.debrief.map(d=>`<li>${esc(d)}</li>`).join("")}</ul>${s.kind==="diag"?`<p class="tiny">진단 결과는 점수보다 '어디서 막혔는지'를 보려는 거예요.</p>`:""}</details>`:""}
-        <div class="sheet">${!a.fb2 ? `<h3>다시 쓰기</h3><p class="small muted">고칠 점 2개만 반영해요. 첫 답안은 그대로 보관돼요.</p>${s.check?`<p class="small"><b>제출 전 확인</b> ${esc(s.check)}</p>`:""}
+        <div class="sheet">${!a.fb2 ? `<h3>다시 쓰기</h3><p class="small muted">고칠 점부터 한 문장씩 고쳐요. 첫 답안은 그대로 보관돼요.</p>${s.check?`<p class="small"><b>제출 전 확인</b> ${esc(s.check)}</p>`:""}
           ${editor("rewrite","수정본")}
-          ${a.pending?pendingBox():""}
-          <div class="actions"><button class="btn primary" id="sub">수정본 제출</button></div>`
+          <div class="actions"><button class="btn primary" id="sub">수정본 점검하기</button></div>`
           : `<h3>초안과 수정본 비교</h3>${diffHTML(a.draft,a.rewrite)}`}</div>
-        ${a.fb2?`<div class="sheet fb"><h3 style="margin-top:0">수정본 피드백</h3>${fbHTML(a.fb2, s, true)}</div>
+        ${a.fb2?`<div class="sheet fb"><h3 style="margin-top:0">수정본 점검</h3>${fbHTML(a.fb2, s, true)}</div>
+          ${a.fb2.kind==="self"?checklist("checks2"):""}
+          ${aiBox(2)}
           ${s.example?`<details class="sheet"><summary>예시 답안 보기</summary><p style="font-family:var(--serif);line-height:1.85">${esc(s.example)}</p><p class="tiny">앱 연습용 예시예요. 대학 모범답안이 아니고, 근거가 맞으면 다른 구성도 좋은 답이에요.</p></details>`:""}
           <div class="actions"><a class="btn primary" style="display:inline-flex;align-items:center;justify-content:center" href="#/today">오늘 끝 · 처음으로</a><button class="btn" id="again">이 세트 새로 쓰기</button></div>`:""}`;
-      if(!a.fb2){ if(!a.rewrite){ a.rewrite=a.draft; } bindEditor("rewrite"); $("#ta").value=a.rewrite; $("#rl").innerHTML=ruler(a.rewrite.length); $("#sub").onclick=()=>submit("rewrite"); if(a.pending) bindPending("rewrite"); }
+      if(!a.fb2){ if(!a.rewrite){ a.rewrite=a.draft; } bindEditor("rewrite"); $("#ta").value=a.rewrite; $("#rl").innerHTML=ruler(a.rewrite.length); $("#sub").onclick=()=>submit("rewrite"); }
       else $("#again").onclick=()=>{ const n={ id:uid(), setId, createdAt:Date.now(), updatedAt:Date.now(), outline:["","",""], draft:"", rewrite:"", sec:0 }; S.attempts[n.id]=n; save(); go(`#/write/${setId}?a=${n.id}`); };
-      wb.querySelectorAll("[data-hl]").forEach(b=>b.onclick=()=>{ const [l,...t]=b.dataset.hl.split("|"); $("#passBox").innerHTML=passHTML(l,t.join("|"))+`<p class="question">${esc(s.question)}</p>`; setTab("pass"); document.getElementById("p-"+l)?.scrollIntoView({block:"center"}); if(innerWidth<900) setTimeout(()=>{},0); });
+      wb.querySelectorAll("[data-ck]").forEach(c=>c.onchange=()=>{ const k=c.dataset.ck; a[k]=a[k]||[]; a[k][+c.dataset.i]=c.checked; save(); });
+      [1,2].forEach(n=>{ const b=$("#ai"+n); if(b) b.onclick=()=>requestAI(n); });
+      wb.querySelectorAll("[data-hl]").forEach(b=>b.onclick=()=>{ const [l,...t]=b.dataset.hl.split("|"); $("#passBox").innerHTML=passHTML(l,t.join("|"))+`<p class="question">${esc(s.question)}</p>`; setTab("pass"); document.getElementById("p-"+l)?.scrollIntoView({block:"center"}); });
     }
   }
-  function pendingBox(){
-    const lc=localCheck(s, a.fb?a.rewrite:a.draft, a.outline);
-    return `<div class="banner red" style="margin-top:12px"><b>피드백 확인 필요</b> — ${esc(a.pending.error||"AI 피드백을 받지 못했어요.")} 답안은 저장돼 있어요. 점수는 만들지 않았어요.
-      <div class="actions"><button class="btn" id="retry">다시 요청</button></div></div>
-      <div class="sheet" style="background:var(--paper)"><h3>자동 점검 (규칙 기반 · AI 아님)</h3><ul class="small">${lc.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`;
-  }
-  function bindPending(stage){ $("#retry").onclick=()=>submit(stage); }
 
-  async function submit(stage){
+  // 기본: 기기 안 규칙 점검으로 바로 다음 단계 (AI 없이도 쓰기 → 점검 → 다시 쓰기 → 예시까지 끝까지 감)
+  function submit(stage){
     const text = (stage==="draft"?a.draft:a.rewrite).trim();
     if(text.length<10){ toast("10자 이상 써 주세요"); return; }
     if(stage==="rewrite" && text===a.draft.trim()){ toast("고친 곳이 없어요. 고칠 점을 반영해 주세요"); return; }
-    const btn=$("#sub"); btn.disabled=true; btn.textContent="피드백 받는 중… (최대 30초)";
-    a.updatedAt=Date.now(); save();
-    const rid = `${a.id}-${stage}-${await sha(text).then(h=>h.slice(0,12))}`;
-    const body = { request_id:rid, mode: stage==="draft"?"first":"rewrite", answer:text, outline:a.outline,
+    const fb = selfReview(s, text, a.outline, stage==="rewrite" ? a.draft : null);
+    if(stage==="draft"){ a.fb=fb; a.rewrite=a.draft; } else { a.fb2=fb; a.rewriteAt=Date.now(); }
+    delete a.pending; a.updatedAt=Date.now(); save();
+    toast(stage==="draft"?"점검 완료 · 다시 써 봐요":"수정본 점검 완료");
+    draw(); setTab("write"); window.scrollTo({top:0});
+  }
+
+  // 선택: AI 검토·분석 (버튼을 눌렀을 때만 Gemini 호출, 실패해도 학습 흐름은 그대로)
+  async function requestAI(n){
+    const text = (n===1?a.draft:a.rewrite).trim();
+    const btn=$("#ai"+n); if(btn){ btn.disabled=true; btn.textContent="AI가 읽는 중… (최대 40초)"; }
+    const rid = `${a.id}-ai${n}-${await sha(text).then(h=>h.slice(0,12))}`;
+    const body = { request_id:rid, mode: n===1?"first":"rewrite", answer:text, outline:a.outline,
       set:{ id:s.id, question:s.question, min:s.min, max:s.max, passages:s.passages.map(p=>({label:p.label,text:p.text})) },
-      previous: stage==="rewrite" ? { draft:a.draft, fixes:a.fb.fixes } : undefined };
+      previous: n===2 ? { draft:a.draft, fixes:(a.ai1||a.fb||{}).fixes||[] } : undefined };
     try{
       let j;
       try{
         const ctrl=new AbortController(); const to=setTimeout(()=>ctrl.abort(),45000);
         const r = await fetch(CFG.api,{ method:"POST", headers:{ "content-type":"application/json", ...(S.settings.appCode?{"x-app-code":S.settings.appCode}:{}) }, body:JSON.stringify(body), signal:ctrl.signal });
         clearTimeout(to);
-        j = await r.json().catch(()=>({ok:false, noServer:true, error:`피드백 서버가 없어요(${r.status}).`})); // JSON이 아니면 피드백 서버가 없는 곳
+        j = await r.json().catch(()=>({ok:false, noServer:true, error:`AI 서버가 없어요(${r.status}).`}));
       }catch(netErr){ if(netErr.name==="AbortError") throw netErr; j={ok:false, noServer:true, error:"인터넷 또는 서버에 연결하지 못했어요."}; }
       if(!j.ok && j.noServer){ const alt = await aiViaSample(body); if(alt) j = alt; }
-      if(!j.ok) throw new Error(j.error || "피드백 실패");
-      const fb = Object.assign({}, j.feedback, { meta:j.meta });
-      if(stage==="draft"){ a.fb=fb; a.rewrite=a.draft; } else { a.fb2=fb; a.rewriteAt=Date.now(); }
-      delete a.pending; a.updatedAt=Date.now(); save();
-      toast(stage==="draft"?"피드백 도착":"수정본 피드백 도착");
+      if(!j.ok) throw new Error(j.code==="NO_KEY" ? "AI가 아직 연결되지 않았어요(운영자 설정 필요). 점검·다시 쓰기는 그대로 할 수 있어요." : j.code==="AUTH" ? "접속 코드가 필요해요. 설정 → AI 검토·분석에서 코드를 넣어 주세요." : (j.error || "AI 분석 실패"));
+      const fb = Object.assign({}, j.feedback, { meta:j.meta, kind:"ai" });
+      if(n===1) a.ai1=fb; else a.ai2=fb;
+      delete a.aiErr; a.updatedAt=Date.now(); save(); toast("AI 분석 도착");
     }catch(e){
-      a.pending={ stage, at:Date.now(), error: e.name==="AbortError" ? "응답 시간이 초과됐어요." : (e.message==="Failed to fetch" ? "인터넷 또는 서버에 연결하지 못했어요." : e.message) };
-      save();
+      a.aiErr={ stage:n, msg: e.name==="AbortError" ? "AI 응답 시간이 초과됐어요. 잠시 뒤 다시 눌러 주세요." : e.message }; save();
     }
-    draw(); setTab("write"); window.scrollTo({top:0});
+    draw(); setTab("write");
   }
   draw();
 }
@@ -640,15 +649,40 @@ function fbHTML(fb, s, isRewrite){
       <p class="tiny">내부 연습 지표예요. 대학 채점과 같지 않아요.${S.settings.showScores?"":" 숫자는 검증 전이라 숨겨 뒀어요."}</p></details>`;
   }
   if(fb.quotes_dropped) h += `<p class="tiny">원문과 정확히 맞지 않는 인용 ${fb.quotes_dropped}개는 표시하지 않았어요.</p>`;
-  if(fb.meta) h += `<p class="tiny">${esc(fb.meta.model)} · ${esc(fb.meta.prompt)} · 루브릭 ${esc(fb.meta.rubric)}</p>`;
+  if(fb.meta) h += fb.kind==="self" ? `<p class="tiny">기기 안 규칙 점검이에요(AI 아님). 분량·제시문 표현·단정어·개요만 보고, 내용이 맞는지는 판정하지 않아요.</p>`
+    : `<p class="tiny">${esc(fb.meta.provider||"")} · ${esc(fb.meta.model)} · ${esc(fb.meta.prompt)} · 루브릭 ${esc(fb.meta.rubric)}</p>`;
   return h;
+}
+// 기기 안 규칙 점검 → 피드백과 같은 모양(잘한 점 1 + 고칠 점 최대 2). 내용의 옳고 그름은 판정하지 않는다.
+const ABS_WORDS=["모든","반드시","항상","절대","무조건"];
+function selfReview(s, text, outline, prev){
+  const n=text.length, goods=[], fixes=[], name=p=>s.passages.length>1?`제시문 ${p.label}`:"제시문";
+  if(n<s.min) fixes.push({issue:`분량이 ${s.min-n}자 모자라요 (${n}자 / 목표 ${s.min}~${s.max}자).`, suggestion:"제시문 근거를 한 문장 더 넣어 채워요.", tag:"분량"});
+  else if(n>s.max) fixes.push({issue:`${n-s.max}자 넘었어요 (${n}자 / 목표 ${s.min}~${s.max}자).`, suggestion:"같은 뜻을 되풀이한 문장부터 줄여요.", tag:"분량"});
+  else goods.push(`분량이 목표 범위(${s.min}~${s.max}자) 안이에요.`);
+  s.passages.forEach(p=>{ if(!p.kw||!p.kw.length) return; const hit=p.kw.filter(k=>text.includes(k));
+    if(hit.length) goods.unshift(`${name(p)}의 핵심 표현(${hit.slice(0,2).join(", ")})을 근거로 썼어요.`);
+    else fixes.push({issue:`${name(p)}의 내용이 답안에 잘 보이지 않아요.`, suggestion:`${name(p)}에서 근거가 되는 부분을 찾아 내 말로 한 문장 넣어요.`, tag:"근거누락"}); });
+  const passAll=s.passages.map(p=>p.text).join(" ");
+  const abs=ABS_WORDS.filter(w=>text.includes(w) && !passAll.includes(w));
+  if(abs.length) fixes.push({issue:`'${abs[0]}' 같은 단정 표현이 있어요.`, suggestion:"제시문이 말하는 범위까지만 결론을 내고, 필요하면 조건을 붙여요.", tag:"범위초과결론"});
+  if(outline && outline.filter(x=>x&&x.trim()).length<2) fixes.push({issue:"개요를 거의 비우고 썼어요.", suggestion:"개요 3칸을 채우고 그 순서대로 문장을 배치해요.", tag:"연결부족"});
+  const fb={ kind:"self", insufficient:false,
+    strength:{ text: goods[0] || "끝까지 직접 썼어요. 이제 고칠 곳을 찾아봐요.", answer_quote:"" },
+    fixes: fixes.slice(0,2),
+    self_question: s.check || "문제가 시킨 것을 빠짐없이 했나요?",
+    next_action: fixes.length ? "고칠 점 1번부터 한 문장씩 고쳐 써요." : "아래 '스스로 점검'을 확인하고, 근거와 결론을 잇는 문장을 하나 더 다듬어요.",
+    changes:"", rubric:null, meta:{ provider:"자동 점검", model:"기기 안 규칙 점검 · AI 아님" } };
+  if(prev!=null){ const A=sentences(prev), B=sentences(text); const changed=B.filter(x=>!A.includes(x)).length; fb.changes=`문장 ${changed}개를 새로 쓰거나 고쳤어요 (${prev.length}자 → ${n}자).`; }
+  return fb;
 }
 function localCheck(s, text, outline){
   const out=[]; const n=text.length;
   out.push(n<s.min?`분량: ${n}자 — 목표 ${s.min}자까지 ${s.min-n}자 더 필요해요.`: n>s.max?`분량: ${n}자 — ${n-s.max}자 줄여야 해요.`:`분량: ${n}자 — 목표 범위 안이에요.`);
   s.passages.forEach(p=>{ if(!p.kw||!p.kw.length) return; const hit=p.kw.filter(k=>text.includes(k)); const name=s.passages.length>1?`제시문 ${p.label}`:"제시문";
     out.push(hit.length ? `${name}: 핵심 표현(${hit.slice(0,3).join(", ")})을 사용했어요.` : `${name}의 내용을 답안에서 찾기 어려워요. 근거로 연결했는지 확인해요.`); });
-  const abs=["모든","반드시","항상","절대","무조건"].filter(w=>text.includes(w));
+  const passAll=s.passages.map(p=>p.text).join(" ");
+  const abs=ABS_WORDS.filter(w=>text.includes(w) && !passAll.includes(w)); // 제시문에도 있는 말은 인용일 수 있어 제외
   if(abs.length) out.push(`'${abs.join("', '")}' 같은 단정 표현이 있어요. 제시문 범위를 넘는 결론인지 확인해요.`);
   if(outline && outline.filter(x=>x&&x.trim()).length<2) out.push("개요 칸을 2개 이상 채우면 구조가 잡혀요.");
   return out;
@@ -686,8 +720,8 @@ function printAttempt(a, s){
   printNow(`${pHead(s, new Date(a.createdAt).toLocaleDateString("ko-KR"))}${pPassages(s)}<p class="q">${esc(s.question)}</p>
     ${a.outline&&a.outline.some(x=>x&&x.trim())?`<h2>내 개요</h2><div class="ol">${a.outline.map((o,i)=>`<b>${i+1}. ${esc(s.outline[i]||"")}</b><span>${esc(o||"")}</span>`).join("")}</div>`:""}
     <h2>초안 (${a.draft.length}자)</h2><p class="ans">${esc(a.draft)||"(비어 있음)"}</p>
-    ${fbBox(fb,"첫 피드백")}
-    ${fb2?`<h2>수정본 (${a.rewrite.length}자)</h2><p class="ans">${esc(a.rewrite)}</p>${fbBox(fb2,"수정본 피드백")}`:""}
+    ${fbBox(fb, fb&&fb.kind==="self"?"점검 결과":"첫 피드백")}${fbBox(a.ai1,"AI 검토·분석 (초안)")}
+    ${fb2?`<h2>수정본 (${a.rewrite.length}자)</h2><p class="ans">${esc(a.rewrite)}</p>${fbBox(fb2,"수정본 점검")}${fbBox(a.ai2,"AI 검토·분석 (수정본)")}`:""}
     ${fb2&&s.example?`<h2>예시 답안</h2><p class="ans">${esc(s.example)}</p><p class="note">앱 연습용 예시예요. 대학 모범답안이 아니에요.</p>`:""}`);
 }
 
@@ -864,7 +898,8 @@ function vSettings(app){
       <label class="row small" style="min-height:44px"><input type="checkbox" id="gd" ${s.guardianDrafts?"checked":""}> 요약에 답안 본문도 넣기</label>
       <div class="actions"><button class="btn" id="gsv">공유 설정 저장</button>${s.guardianShare?`<a class="btn" style="display:inline-flex;align-items:center;justify-content:center" href="#/guardian">이번 주 요약 보기</a>`:""}</div></div>
 
-    <div class="sheet"><h3>AI 피드백</h3>
+    <div class="sheet"><h3>AI 검토·분석</h3>
+      <p class="small muted">쓰기·점검·다시 쓰기는 AI 없이 돼요. AI는 답안 화면의 'AI 검토·분석 받기'를 눌렀을 때만 써요.</p>
       <p class="small" id="srv">서버 상태 확인 중…</p>
       <label class="f" for="ac">접속 코드 (서버에 코드가 걸려 있을 때만)</label><input type="password" id="ac" value="${esc(s.appCode)}" autocomplete="off">
       <label class="row small" style="min-height:44px"><input type="checkbox" id="sc" ${s.showScores?"checked":""}> 항목별 숫자(0~4) 보기 — 표본 30개 대조 검증 전이라 기본은 꺼져 있어요</label>
