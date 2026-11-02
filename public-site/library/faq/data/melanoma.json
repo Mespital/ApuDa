@@ -1,0 +1,464 @@
+{
+  "slug": "melanoma",
+  "name": "악성 흑색종",
+  "updated": "2026-11-02",
+  "revision": "20261102-corefaq-v1",
+  "edition": "진단 후 첫 30일 핵심 FAQ 20",
+  "reviewMode": "AI 사전점검",
+  "clinicalApproval": "pending",
+  "scope": "성인 피부 흑색종 중심. 점막·안구 흑색종 및 소아의 치료는 별도 평가하며 국내 약제 허가·급여를 판정하지 않음.",
+  "items": [
+    {
+      "n": 1,
+      "q": "흑색종은 다른 피부암과 어떻게 다른가요?",
+      "a": "흑색종은 색소를 만드는 멜라닌세포(melanocyte)에서 생기는 암입니다. 기저세포암·편평세포암과 치료가 같지 않으며, 피부·점막·눈에 생긴 흑색종도 서로 구별해야 해요. 이 FAQ는 성인 피부 흑색종을 중심으로 하므로 발생 부위를 먼저 확인하세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.melanoma.001",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 피부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-melanoma",
+          "nci-melanoma-hp"
+        ],
+        "scope": "피부 흑색종의 세포 기원과 점막·안구 흑색종 범위 구별"
+      }
+    },
+    {
+      "n": 2,
+      "q": "검은 점이 아니어도 흑색종일 수 있나요?",
+      "a": "겉모습 하나로 흑색종을 배제할 수는 없습니다. 새로 생기거나 크기·모양·색이 달라지는 병변, 피가 나거나 잘 낫지 않는 부분은 진료가 필요해요. 손바닥·발바닥이나 외상 없이 변한 손발톱 밑도 확인하며, 사진만으로 확진하지 않습니다.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.melanoma.002",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 피부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-melanoma",
+          "nhs-melanoma-symptoms"
+        ],
+        "scope": "다양한 병변의 모습·말단 부위와 조직 평가 필요"
+      }
+    },
+    {
+      "n": 3,
+      "q": "흑색종이 의심되면 왜 조직검사를 하나요?",
+      "a": "조직검사로 흑색종인지 확인하고 종양의 두께 등 치료에 필요한 정보를 얻기 위해서입니다. 병변 위치와 크기에 맞는 생검 방법을 의료진이 정해요. 조직을 확인하기 전에 미용 목적 처치부터 받기보다, 의심 병변의 평가와 조직검사 계획을 먼저 상담하세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.melanoma.003",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 피부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-melanoma"
+        ],
+        "scope": "생검으로 진단·침윤 정도를 확인하는 목적"
+      }
+    },
+    {
+      "n": 4,
+      "q": "병리보고서의 두께와 궤양은 왜 중요한가요?",
+      "a": "종양이 피부 속으로 얼마나 깊이 들어갔는지 나타내는 두께와 표면이 헐어 있는 궤양(ulceration)은 병기·치료 결정에 중요합니다. 겉으로 보이는 점의 가로 크기와 침윤 두께는 달라요. 결과지의 두께 단위와 궤양 유무, 절제면 상태를 물어보세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.melanoma.004",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 피부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-melanoma",
+          "nci-melanoma-hp"
+        ],
+        "scope": "침윤 두께·궤양과 병기; 병변의 가로 크기와 구별"
+      }
+    },
+    {
+      "n": 5,
+      "q": "PET/CT를 모두 찍어야 병기를 알 수 있나요?",
+      "a": "모든 환자에게 같은 영상검사가 필요한 것은 아닙니다. 피부 병변의 병리 결과, 림프절 상태, 증상과 전이 위험에 맞춰 검사 범위를 정해요. 병기는 종양 두께·궤양·림프절·원격전이 등을 함께 보므로 검사 종류 하나로 판단하지 않습니다.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.melanoma.005",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 피부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-melanoma",
+          "nci-melanoma-hp"
+        ],
+        "scope": "병리·림프절·위험도에 따른 병기 평가"
+      }
+    },
+    {
+      "n": 6,
+      "q": "점을 떼었는데 왜 주변 피부를 더 절제하나요?",
+      "a": "생검이나 첫 절제 뒤에는 종양 두께 등에 맞춰 주변 정상 피부를 포함해 추가 절제할 수 있습니다. 이를 넓은 절제(wide excision)라고 하며 남아 있을 수 있는 암을 제거하려는 목적이에요. 절제 범위와 상처 봉합·재건 방법은 위치와 병리 결과에 맞춰 정합니다.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.melanoma.006",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 피부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-melanoma",
+          "nci-melanoma-hp"
+        ],
+        "scope": "국소 흑색종에서 넓은 절제와 범위 개별화"
+      }
+    },
+    {
+      "n": 7,
+      "q": "감시림프절이 양성이면 림프절을 모두 제거하나요?",
+      "a": "항상 그렇지는 않습니다. 감시림프절(sentinel node)은 암이 먼저 퍼질 가능성이 있는 림프절로, 생검 결과는 병기와 추가 치료를 정하는 데 쓰입니다. 양성일 때도 초음파 등으로 주의 깊게 관찰하는 선택이 있어 추가 수술의 이득과 위험을 따로 상담해야 해요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.melanoma.007",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 피부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-melanoma-hp"
+        ],
+        "scope": "감시림프절 생검과 양성 후 선택적 수술·관찰"
+      }
+    },
+    {
+      "n": 8,
+      "q": "BRAF 검사는 왜 하나요?",
+      "a": "암세포의 BRAF 유전자 변화가 특정 표적치료를 검토하는 데 도움이 되기 때문입니다. 필요한 상황에 암 조직 등을 검사하며, 검사 결과만으로 모든 약을 바로 사용할 수 있는 것은 아니에요. 병기·변이 종류·치료 목적과 국내 사용 조건을 함께 확인하세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.melanoma.008",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 피부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-melanoma",
+          "nci-melanoma-hp"
+        ],
+        "scope": "BRAF 변이와 치료 선택의 연관성; 양성만으로 사용 보장 아님"
+      }
+    },
+    {
+      "n": 9,
+      "q": "면역치료와 표적치료는 무엇이 다른가요?",
+      "a": "면역치료는 면역 반응이 암을 공격하도록 돕고, 표적치료는 암세포의 특정 변화와 연결된 신호를 억제합니다. 약의 대상과 부작용이 달라 검사 결과·병기·건강 상태에 따라 선택해요. 어느 쪽이 무조건 더 강하거나 더 안전하다고 단정할 수 없습니다.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.melanoma.009",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 피부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-melanoma",
+          "nci-melanoma-hp"
+        ],
+        "scope": "면역치료·분자 표적치료의 기전과 선택 요인"
+      }
+    },
+    {
+      "n": 10,
+      "q": "수술이 끝나도 약물치료가 필요한가요?",
+      "a": "재발 위험이 높은 일부 환자는 수술 후 보조치료(adjuvant therapy)를, 특정 상황에서는 수술 전 치료를 검토합니다. 모두에게 약이 필요한 것은 아니며 병기·절제 결과·유전자 변화·부작용 위험을 함께 봐요. 치료 목적과 기대 이득, 관찰만 하는 선택도 비교해 보세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.melanoma.010",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 피부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-melanoma-hp"
+        ],
+        "scope": "선택된 고위험·절제 가능 흑색종의 수술 전후 치료"
+      }
+    },
+    {
+      "n": 11,
+      "q": "면역치료 중 설사나 숨참은 흔한 부작용으로 넘겨도 되나요?",
+      "a": "새롭거나 심해지는 설사·기침·숨참은 면역 관련 장염·폐렴 등의 신호일 수 있어 치료팀에 빨리 알려야 합니다. 치료가 끝난 뒤 생기는 증상도 약 이름과 마지막 투여일을 함께 알리세요. 심한 호흡곤란·흉통·의식 저하는 119 등 응급 평가가 필요합니다.",
+      "category": "care",
+      "review": {
+        "id": "faq.melanoma.011",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 피부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-immune-inflammation",
+          "nhs-breathlessness"
+        ],
+        "scope": "면역관문억제제 관련 장·폐·기타 장기 염증과 조기 연락"
+      }
+    },
+    {
+      "n": 12,
+      "q": "약물치료 중 열이 나면 약 때문이라고 생각해도 되나요?",
+      "a": "약물 반응과 감염 모두 가능해 원인을 확인해야 합니다. 특히 항암치료 중 38°C 이상 발열이나 심한 오한이 있으면 병원에 바로 연락하고 해열제를 먹기 전에 상담하세요. 표적치료제 등 약을 임의로 끊거나 다시 먹기보다 처방 팀의 발열 지침을 확인하세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.melanoma.012",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 피부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-infection",
+          "nci-melanoma-hp"
+        ],
+        "scope": "치료 중 발열의 감별과 임의 복약 변경 금지"
+      }
+    },
+    {
+      "n": 13,
+      "q": "수술 상처가 붉어지거나 진물이 나면 어떻게 하나요?",
+      "a": "새로 번지는 붉어짐·붓기·통증이나 분비물, 발열은 치료팀에 알려 확인해야 합니다. 감염이나 회복 과정의 문제를 증상만으로 구별하기 어렵기 때문이에요. 수술팀이 준 상처 관리 지침을 따르고, 사진·증상 시작 시점·체온을 연락할 때 함께 전달하세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.melanoma.013",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 피부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-infection"
+        ],
+        "scope": "상처 부위 감염 의심 신호와 치료팀 연락"
+      }
+    },
+    {
+      "n": 14,
+      "q": "면역치료 전에 자가면역질환이나 복용약을 말해야 하나요?",
+      "a": "꼭 알려야 합니다. 면역치료는 장기 염증을 일으킬 수 있어 기존 자가면역질환이나 복용 중인 약이 치료 계획·관찰에 중요해요. 다른 병원 처방약과 과거 심한 부작용도 함께 알리세요. 기존 약의 중단 여부는 두 진료팀이 상의해 정해야 합니다.",
+      "category": "care",
+      "review": {
+        "id": "faq.melanoma.014",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 피부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-immune-inflammation"
+        ],
+        "scope": "면역치료 전 자가면역질환·약물 이력 공유"
+      }
+    },
+    {
+      "n": 15,
+      "q": "면역력을 높이는 보조제를 같이 먹어도 되나요?",
+      "a": "“면역력 강화”라는 표현만으로 항암치료와 함께 안전하거나 효과적이라고 판단할 수 없습니다. 보조제·한약·농축 추출물은 약물 작용에 영향을 줄 수 있어요. 제품명·성분·복용량을 약사와 의료진에게 보여 주고 표준치료를 대신하지 마세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.melanoma.015",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 피부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-supplements",
+          "nci-cam"
+        ],
+        "scope": "보조제 효과·안전성의 불확실성과 상호작용"
+      }
+    },
+    {
+      "n": 16,
+      "q": "치료 뒤에는 원래 점이 있던 자리만 보면 되나요?",
+      "a": "원래 수술 부위와 림프절뿐 아니라 피부 전체의 새로운 병변이나 변화도 살펴야 합니다. 보기 어려운 부위는 거울이나 가족의 도움을 이용할 수 있어요. 정기 진찰·영상 계획은 병기와 치료에 맞춰 정하고, 새 멍울이나 달라진 점은 예약일까지 기다리지 말고 알리세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.melanoma.016",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 피부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-melanoma",
+          "nhs-melanoma-symptoms"
+        ],
+        "scope": "재발·새 피부 병변의 관찰과 개별 추적"
+      }
+    },
+    {
+      "n": 17,
+      "q": "이미 흑색종이 생겼는데도 자외선 차단이 필요한가요?",
+      "a": "피부를 자외선으로부터 보호하는 습관은 계속 중요합니다. 그늘·옷·모자·자외선차단제를 활용하고 인공 태닝을 피하세요. 다만 흑색종의 발생 부위와 유형은 다양하므로 햇빛 노출이 적었다는 이유로 손발바닥·손발톱의 이상을 무시해서는 안 됩니다.",
+      "category": "followup",
+      "review": {
+        "id": "faq.melanoma.017",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 피부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nhs-melanoma",
+          "nhs-melanoma-symptoms"
+        ],
+        "scope": "피부 보호와 말단 부위 병변의 별도 주의"
+      }
+    },
+    {
+      "n": 18,
+      "q": "가족도 모두 유전자검사를 받아야 하나요?",
+      "a": "흑색종 진단만으로 가족 모두에게 유전자검사가 필요한 것은 아닙니다. 가족의 피부암 병력이나 본인의 여러 병변 등 상황을 진료팀에 알리고 피부 검진·유전 상담의 필요성을 상의하세요. 가족력이 있다는 사실은 위험 평가의 한 요소이며 암 발생을 확정하는 뜻이 아닙니다.",
+      "category": "followup",
+      "review": {
+        "id": "faq.melanoma.018",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 피부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-melanoma"
+        ],
+        "scope": "가족력의 위험 평가와 상담의 개별화; 일괄 검사 권고 아님"
+      }
+    },
+    {
+      "n": 19,
+      "q": "전이 흑색종에서 증상 완화 치료를 받으면 항암을 포기한 건가요?",
+      "a": "아닙니다. 통증·피로·불안 등을 줄이는 완화의료(palliative care)는 항암치료와 함께 받을 수 있어요. 항종양 치료의 목표와 일상에서 지키고 싶은 기능을 함께 이야기하면 치료 부담과 증상 관리 계획을 세우는 데 도움이 됩니다.",
+      "category": "followup",
+      "review": {
+        "id": "faq.melanoma.019",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 피부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-palliative",
+          "nci-melanoma"
+        ],
+        "scope": "완화의료와 항종양 치료의 병행 가능성"
+      }
+    },
+    {
+      "n": 20,
+      "q": "첫 진료에서 꼭 확인할 것은 무엇인가요?",
+      "a": "조직형, 종양 두께·궤양·절제면, 현재 병기와 림프절 평가 계획을 먼저 확인하세요. 추가 절제·감시림프절 생검·약물치료가 필요한 이유와 BRAF 검사 필요성을 물어보면 좋습니다. 이전 병리·수술 기록을 모으고 새 약을 쓸 때의 연락 기준도 준비하세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.melanoma.020",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 피부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-melanoma",
+          "nci-melanoma-hp"
+        ],
+        "scope": "병리·병기·치료 선택의 핵심 진료 질문 정리"
+      }
+    }
+  ],
+  "sources": {
+    "nci-cam": {
+      "title": "Complementary and Alternative Medicine",
+      "url": "https://www.cancer.gov/about-cancer/treatment/cam",
+      "organization": "National Cancer Institute",
+      "scope": "특정 식품·보조제가 암을 치료·재발 예방한다는 근거 부재와 표준치료 대체 금지",
+      "evidenceType": "official-patient-guidance",
+      "checkedAt": "2026-11-02"
+    },
+    "nci-immune-inflammation": {
+      "title": "Organ-Related Inflammation and Immunotherapy",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/organ-inflammation",
+      "organization": "National Cancer Institute",
+      "scope": "면역관문억제제 관련 폐·장·내분비 등 염증 증상과 조기 의료진 연락",
+      "evidenceType": "official-patient-guidance",
+      "checkedAt": "2026-11-02"
+    },
+    "nci-infection": {
+      "title": "Infection and Neutropenia during Cancer Treatment",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/infection",
+      "organization": "National Cancer Institute",
+      "scope": "암 치료 중 38°C 이상 발열·오한 등 감염 신호와 즉시 연락, 해열제 복용 전 상담",
+      "evidenceType": "official-patient-guidance",
+      "checkedAt": "2026-11-02"
+    },
+    "nci-melanoma": {
+      "title": "Melanoma Treatment (PDQ®)–Patient Version",
+      "url": "https://www.cancer.gov/types/skin/patient/melanoma-treatment-pdq",
+      "organization": "National Cancer Institute",
+      "scope": "흑색종의 범위·두께·궤양·림프절과 병기·수술·전신치료·추적",
+      "evidenceType": "official-patient-guidance",
+      "checkedAt": "2026-11-02"
+    },
+    "nci-melanoma-hp": {
+      "title": "Melanoma Treatment (PDQ®)–Health Professional Version",
+      "url": "https://www.cancer.gov/types/skin/hp/melanoma-treatment-pdq",
+      "organization": "National Cancer Institute",
+      "scope": "피부와 안구 흑색종의 차이·감시림프절·절제·고위험군 치료·BRAF 관련 치료",
+      "evidenceType": "official-professional-evidence-summary",
+      "checkedAt": "2026-11-02"
+    },
+    "nci-palliative": {
+      "title": "Palliative Care in Cancer",
+      "url": "https://www.cancer.gov/about-cancer/advanced-cancer/care-choices/palliative-care-fact-sheet",
+      "organization": "National Cancer Institute",
+      "scope": "진단 단계부터 항암치료와 함께 제공할 수 있는 증상·심리·가족 지지",
+      "evidenceType": "official-patient-guidance",
+      "checkedAt": "2026-11-02"
+    },
+    "nci-supplements": {
+      "title": "Cancer Therapy Interactions With Foods and Dietary Supplements (PDQ®)–Patient Version",
+      "url": "https://www.cancer.gov/about-cancer/treatment/cam/patient/dietary-interactions-pdq",
+      "organization": "National Cancer Institute",
+      "scope": "건강보조제·한약 성분·식품 농축물과 항암제 상호작용 가능성, 약 목록 공유",
+      "evidenceType": "official-patient-guidance",
+      "checkedAt": "2026-11-02"
+    },
+    "nhs-breathlessness": {
+      "title": "Shortness of breath",
+      "url": "https://www.nhs.uk/symptoms/shortness-of-breath/",
+      "organization": "NHS",
+      "scope": "심한 호흡곤란·흉부 압박·갑작스러운 혼돈 등 즉시 평가가 필요한 호흡 관련 증상. 영국 응급번호를 한국에 그대로 적용하지 않음",
+      "evidenceType": "official-patient-guidance",
+      "checkedAt": "2026-11-02"
+    },
+    "nhs-melanoma": {
+      "title": "What is melanoma skin cancer?",
+      "url": "https://www.nhs.uk/conditions/melanoma-skin-cancer/what-is-melanoma-skin-cancer/",
+      "organization": "NHS",
+      "scope": "피부 흑색종과 자외선 노출·피부 보호; 모든 흑색종의 원인을 자외선으로 단정하지 않음",
+      "evidenceType": "official-patient-guidance",
+      "checkedAt": "2026-11-02"
+    },
+    "nhs-melanoma-symptoms": {
+      "title": "Symptoms of melanoma skin cancer",
+      "url": "https://www.nhs.uk/conditions/melanoma-skin-cancer/symptoms/",
+      "organization": "NHS",
+      "scope": "새 점·변하는 점·손발바닥·손발톱의 변화와 진료 필요",
+      "evidenceType": "official-patient-guidance",
+      "checkedAt": "2026-11-02"
+    }
+  },
+  "questionsForVisit": [
+    "피부 흑색종의 정확한 유형과 두께·궤양·절제면 결과는 무엇인가요?",
+    "감시림프절 생검이나 다른 병기 검사가 필요한가요?",
+    "추가 절제 또는 수술 전후 약물치료가 필요한 이유는 무엇인가요?",
+    "BRAF 검사와 제 치료에 맞는 약물 선택은 어떻게 연결되나요?",
+    "피부 전체 관찰·추적검사 계획과 바로 연락할 부작용은 무엇인가요?"
+  ],
+  "aiReview": {
+    "status": "completed",
+    "independent": true,
+    "mode": "독립 AI 사전점검",
+    "checkedAt": "2026-11-02T11:00:35.647165+09:00",
+    "clinicalApproval": "pending",
+    "reviewedDraftSha256": "a650e51c3d72e83aa1267d02c29f1c076c9867789dced1453d6067e5be0a4724",
+    "contentSha256": "572e595eb756929d5b2a7cf786d40f1d8600841cd197a8ae0435c3b4ed785c2b"
+  }
+}

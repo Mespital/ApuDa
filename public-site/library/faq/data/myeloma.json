@@ -1,0 +1,440 @@
+{
+  "slug": "myeloma",
+  "name": "다발성골수종",
+  "updated": "2026-11-02",
+  "revision": "20261102-corefaq-v1",
+  "edition": "진단 후 첫 30일 핵심 FAQ 20",
+  "reviewMode": "AI 사전점검",
+  "clinicalApproval": "pending",
+  "contentScope": "성인 첫 진단·초기 치료 준비를 위한 일반 환자교육. 국제 근거의 치료 선택지를 국내 허가·급여와 동일하게 해석하지 않음.",
+  "items": [
+    {
+      "n": 1,
+      "q": "다발성골수종은 뼈암인가요, 혈액암인가요?",
+      "a": "골수에서 항체를 만드는 형질세포(plasma cell)가 비정상적으로 늘어나는 혈액암입니다. 뼈를 약하게 하거나 신장·혈액 기능에 영향을 줄 수 있어요. 여러 뼈에 병변이 있다는 이유만으로 다른 장기에서 뼈로 전이된 암과 같다고 해석하지 않습니다.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.myeloma.001",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-myeloma-patient"
+        ],
+        "scope": "형질세포 혈액암과 뼈 병변의 관계·다른 암의 골전이와 구별"
+      }
+    },
+    {
+      "n": 2,
+      "q": "MGUS나 무증상 골수종도 바로 항암치료를 하나요?",
+      "a": "모두 곧바로 같은 치료를 시작하는 것은 아닙니다. 의미불명 단클론감마글로불린혈증(MGUS), 무증상 골수종(SMM), 활동성 골수종은 기준과 관리가 달라요. 증상이 없어도 특정 골수종 정의 기준을 충족하면 치료가 필요할 수 있어, 정확한 진단명과 위험도를 확인하세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.myeloma.002",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "imwg-diagnosis",
+          "nci-myeloma-hp"
+        ],
+        "scope": "MGUS·SMM·활동성 골수종 구별; 무증상=치료 불필요라는 단정 방지"
+      }
+    },
+    {
+      "n": 3,
+      "q": "골수검사와 혈액·소변검사를 함께 하는 이유는 무엇인가요?",
+      "a": "서로 다른 정보를 확인하기 때문입니다. 골수검사는 비정상 형질세포와 유전적 특징을 보고, 혈액·소변검사는 M단백(한 종류의 비정상 항체 단백)이나 유리경쇄(free light chain), 빈혈·신장 기능·칼슘 등을 살펴요. 한 가지 수치만으로 진단이나 치료 필요성을 확정하지 않습니다.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.myeloma.003",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-myeloma-hp",
+          "imwg-diagnosis"
+        ],
+        "scope": "진단용 골수·단백 검사와 장기 손상 평가의 상호 보완"
+      }
+    },
+    {
+      "n": 4,
+      "q": "CRAB이나 SLiM이라는 말은 무엇인가요?",
+      "a": "치료가 필요한 골수종을 판단할 때 사용하는 기준의 묶음입니다. CRAB은 고칼슘혈증·신장 기능 저하·빈혈·뼈 손상을, SLiM은 골수·유리경쇄·MRI의 특정 생체표지자를 뜻해요. 검사 수치의 기준과 다른 원인 여부를 함께 따져야 하므로 직접 대입해 판단하지 마세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.myeloma.004",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "imwg-diagnosis"
+        ],
+        "scope": "장기 손상과 골수종 정의 생체표지자의 개념; 자가진단용 수치표 제공하지 않음"
+      }
+    },
+    {
+      "n": 5,
+      "q": "골수종 병기는 일반적인 암의 1~4기와 같은가요?",
+      "a": "같은 방식은 아닙니다. 골수종은 혈액검사·염색체와 유전적 위험 특징 등을 이용한 병기·위험군으로 치료 계획을 세워요. 병기 이름만으로 개인의 남은 시간을 예측할 수 없으며, 사용한 평가체계와 치료 반응까지 함께 설명받는 것이 좋습니다.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.myeloma.005",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-myeloma-hp"
+        ],
+        "scope": "골수종의 병기·위험군과 개인 예후의 한계"
+      }
+    },
+    {
+      "n": 6,
+      "q": "첫 치료는 보통 어떤 순서로 진행되나요?",
+      "a": "여러 약을 조합해 질환을 줄이는 유도치료(induction)를 하고, 환자에 따라 자가조혈모세포이식 등 공고치료와 유지치료를 이어갑니다. 체력·신장 기능·동반질환에 따라 순서와 강도가 달라져요. 첫 진료에서 각 단계의 목표와 예상 평가 시점을 적어 보세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.myeloma.006",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-myeloma-patient",
+          "nci-myeloma-hp"
+        ],
+        "scope": "유도·공고·유지치료의 큰 흐름과 개인별 차이"
+      }
+    },
+    {
+      "n": 7,
+      "q": "나이가 많으면 조혈모세포이식을 받을 수 없나요?",
+      "a": "나이 하나만으로 결정하지 않습니다. 자가이식은 자신의 조혈모세포를 모아 고용량 치료 뒤 돌려주는 과정이며, 전신 상태·장기 기능·동반질환과 예상 이득을 함께 평가해요. 이식을 하지 않는 치료도 있으므로 본인의 적합성 평가와 대안을 설명받으세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.myeloma.007",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-myeloma-hp"
+        ],
+        "scope": "자가이식의 원리와 생물학적 적합성 평가; 연령만으로 일괄 배제하지 않음"
+      }
+    },
+    {
+      "n": 8,
+      "q": "증상이 좋아졌는데 유지치료를 계속하는 이유는 무엇인가요?",
+      "a": "증상이 줄었다고 골수종 세포가 모두 사라졌다고 볼 수 없기 때문입니다. 유지치료(maintenance)는 반응을 오래 유지하려는 단계예요. 약의 종류·기간·용량은 반응과 부작용에 따라 달라지므로, 힘들 때는 임의로 중단하지 말고 조정 가능한지 상담하세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.myeloma.008",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-myeloma-hp"
+        ],
+        "scope": "유지치료 목적과 반응·독성에 따른 개별 조정"
+      }
+    },
+    {
+      "n": 9,
+      "q": "뼈 통증은 항암치료만으로 관리하나요?",
+      "a": "골수종 치료와 함께 통증 조절·뼈 보호 치료를 병행할 수 있습니다. 병변 위치와 골절 위험에 따라 방사선치료나 정형외과적 처치가 검토되기도 해요. 갑자기 심해진 통증은 참지 말고 알리고, 안전한 움직임과 통증약 사용법을 함께 확인하세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.myeloma.009",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "uclh-myeloma-bone",
+          "nci-myeloma-patient"
+        ],
+        "scope": "뼈 손상의 지지치료와 국소치료; 갑작스러운 통증의 신속한 평가"
+      }
+    },
+    {
+      "n": 10,
+      "q": "외국에서 소개된 새 약이 모두 제 치료에 가능한가요?",
+      "a": "그렇지는 않습니다. 약은 이전 치료, 질환의 반응·재발 상태, 체력과 장기 기능에 따라 선택해요. 국제 자료의 치료 선택지가 한국의 허가·급여나 본인에게 적합하다는 뜻은 아니므로, 담당의에게 지금 가능한 표준치료·임상시험·비용 확인 경로를 물어보세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.myeloma.010",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-myeloma-hp"
+        ],
+        "scope": "치료 차수·환자 조건과 국제 근거의 국내 적용 한계"
+      }
+    },
+    {
+      "n": 11,
+      "q": "허리 통증에 다리 힘 저하나 대소변 변화가 생기면 기다려도 되나요?",
+      "a": "기다리지 말고 즉시 응급 평가를 받아야 합니다. 골절이나 종괴가 척수를 누르는 척수압박(spinal cord compression)일 수 있어요. 새로 걷기 어렵거나 다리 감각이 떨어지고 대소변 조절이 달라지면 119 또는 응급실을 이용하고 골수종 진단 사실을 알리세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.myeloma.011",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "uclh-myeloma-bone",
+          "nhs-myeloma-symptoms"
+        ],
+        "scope": "골수종 관련 척수압박의 신경학적 응급 신호; 한국 응급 경로로 안내"
+      }
+    },
+    {
+      "n": 12,
+      "q": "물을 많이 마시면 신장 문제를 막을 수 있나요?",
+      "a": "수분 관리가 필요하지만 누구나 같은 양을 마시는 것은 아닙니다. 골수종 단백과 고칼슘혈증 등이 신장에 영향을 줄 수 있고, 심장·신장 상태에 따라 적절한 수분량이 달라져요. 소변이 크게 줄거나 구토·심한 갈증·혼란이 생기면 바로 의료진에게 알리세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.myeloma.012",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-myeloma-hp",
+          "nci-myeloma-patient"
+        ],
+        "scope": "골수종 관련 신장 손상·고칼슘혈증과 개별 수분 관리; 일률적 다량 음수 지시 금지"
+      }
+    },
+    {
+      "n": 13,
+      "q": "치료 중 열이 나면 해열제를 먹고 지켜봐도 되나요?",
+      "a": "38°C 이상 발열이나 심한 오한이 있으면 해열제부터 먹고 기다리지 말고 치료병원에 바로 연락하세요. 골수종과 치료는 감염에 대한 방어를 약하게 할 수 있어요. 체온이 그보다 낮아도 상태가 급격히 나빠지면 연락하고, 심한 숨참·의식 저하는 119를 이용하세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.myeloma.013",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-infection",
+          "nci-myeloma-hp"
+        ],
+        "scope": "감염 위험·38°C 발열·오한·해열제 전 연락과 중증 증상 대응"
+      }
+    },
+    {
+      "n": 14,
+      "q": "한약이나 뼈에 좋다는 보충제를 함께 먹어도 되나요?",
+      "a": "성분과 신장 기능, 치료약을 확인한 뒤 결정해야 합니다. 보충제·한약은 약의 대사나 배설에 영향을 줄 수 있고, 칼슘·비타민 제품도 검사 결과에 따라 필요성이 달라져요. 제품명과 성분표를 치료팀·약사에게 보여 주고 임의로 추가하지 마세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.myeloma.014",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-interactions",
+          "nci-myeloma-hp"
+        ],
+        "scope": "보충제 상호작용과 신장·칼슘 상태에 따른 확인; 모든 제품의 독성 단정하지 않음"
+      }
+    },
+    {
+      "n": 15,
+      "q": "뼈가 약한데 운동을 해도 되나요?",
+      "a": "가능한 활동은 있지만 먼저 골절 위험을 확인해야 합니다. 척추나 체중이 실리는 뼈의 병변에 따라 무거운 물건 들기·강한 비틀기처럼 피해야 할 동작이 달라져요. 담당의와 재활팀에게 안전한 걷기·근력운동 범위를 묻고, 새 통증이 생기면 운동을 멈추고 알리세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.myeloma.015",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "uclh-myeloma-bone"
+        ],
+        "scope": "골수종 뼈 손상·골절 위험에 맞춘 활동 상담; 통증 악화 시 평가"
+      }
+    },
+    {
+      "n": 16,
+      "q": "M단백이 줄면 완치되었다는 뜻인가요?",
+      "a": "좋은 치료 반응을 시사할 수 있지만 한 수치만으로 완치를 선언하지 않습니다. M단백·유리경쇄, 골수와 영상, 증상·장기 기능을 함께 봐요. 질환에 따라 추적에 적합한 지표가 다르므로 어떤 검사를 같은 방법으로 비교할지 확인하세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.myeloma.016",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-myeloma-hp"
+        ],
+        "scope": "반응 평가 지표의 종합 해석과 M단백 단독 판단의 한계"
+      }
+    },
+    {
+      "n": 17,
+      "q": "미세잔존질환 검사에서 음성이면 추적을 끝내도 되나요?",
+      "a": "추적을 끝내는 뜻은 아닙니다. 미세잔존질환(MRD) 음성은 사용한 검사의 검출 한계에서 골수종 세포를 찾지 못했다는 의미예요. 검사 시점·방법과 다른 결과를 함께 해석하며, 유지치료나 검사 일정을 스스로 줄이지 말고 담당의와 확인하세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.myeloma.017",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-myeloma-hp"
+        ],
+        "scope": "MRD 평가의 검출 한계와 지속 추적; 음성=완치 또는 임의 중단 아님"
+      }
+    },
+    {
+      "n": 18,
+      "q": "감염 예방 주사나 약을 누구나 똑같이 받나요?",
+      "a": "예방 계획은 치료약·혈액 수치·이전 감염과 면역 상태에 따라 다릅니다. 예방접종, 항미생물약, 일부 환자의 면역글로불린 치료 등이 검토될 수 있어요. 남은 항생제를 임의로 먹기보다 본인에게 필요한 예방과 접종 시점을 치료팀에 확인하세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.myeloma.018",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-myeloma-hp",
+          "nci-infection"
+        ],
+        "scope": "골수종의 감염 예방 선택지와 환자별 차이; 일률적 약·접종 처방 금지"
+      }
+    },
+    {
+      "n": 19,
+      "q": "재발하면 처음 썼던 약은 다시 쓸 수 없나요?",
+      "a": "항상 그런 것은 아닙니다. 이전 약의 효과가 유지된 기간, 부작용, 다른 치료 경험과 장기 기능에 따라 같은 약의 재사용이나 다른 조합을 검토해요. 약 이름·사용 기간·중단 이유를 정리해 두면 다음 치료를 고르는 데 도움이 됩니다.",
+      "category": "followup",
+      "review": {
+        "id": "faq.myeloma.019",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-myeloma-hp",
+          "nci-myeloma-patient"
+        ],
+        "scope": "재발 치료에서 이전 노출·반응·독성·재사용 가능성의 개별 평가"
+      }
+    },
+    {
+      "n": 20,
+      "q": "첫 진료에서 가장 먼저 확인할 것은 무엇인가요?",
+      "a": "정확한 질환명, 지금 치료가 필요한 이유, 신장·뼈 손상 여부, 치료 단계와 응급 연락처를 우선 확인하세요. 골수·혈액·소변·영상 결과와 복용약 목록을 함께 준비하면 좋습니다. 한 번에 모두 외우려 하기보다 질문을 세 가지씩 골라 적어 가세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.myeloma.020",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-myeloma-hp",
+          "imwg-diagnosis",
+          "nci-infection"
+        ],
+        "scope": "첫 진단의 검사·치료 결정·안전 연락 준비를 원자료에서 종합"
+      }
+    }
+  ],
+  "sources": {
+    "nci-infection": {
+      "title": "Infection and Neutropenia during Cancer Treatment",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/infection",
+      "organization": "미국 국립암연구소(NCI)",
+      "checkedAt": "2026-11-02",
+      "scope": "암 치료 중 38°C 이상 발열·오한의 신속한 연락, 해열제로 감염 신호를 가리지 않기, 손 씻기·음식 위생",
+      "evidenceType": "official-patient-guidance",
+      "sourceUpdated": "2020-01-23"
+    },
+    "nci-interactions": {
+      "title": "Cancer Therapy Interactions With Foods and Dietary Supplements (PDQ)–Patient Version",
+      "url": "https://www.cancer.gov/about-cancer/treatment/cam/patient/dietary-interactions-pdq",
+      "organization": "미국 국립암연구소(NCI)",
+      "checkedAt": "2026-11-02",
+      "scope": "건강기능식품·허브·특정 음식과 항암제의 흡수·대사·배설 상호작용; 특정 제품의 안전성이나 국내 허가를 보장하지 않음",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nci-myeloma-patient": {
+      "title": "Plasma Cell Neoplasms (Including Multiple Myeloma) Treatment (PDQ)–Patient Version",
+      "url": "https://www.cancer.gov/types/myeloma/patient/myeloma-treatment-pdq",
+      "organization": "미국 국립암연구소(NCI)",
+      "checkedAt": "2026-11-02",
+      "scope": "형질세포 질환·M단백·골수/혈액/소변 검사, 치료 단계·지지치료·추적의 큰 흐름",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nci-myeloma-hp": {
+      "title": "Plasma Cell Neoplasms (Including Multiple Myeloma) Treatment (PDQ)–Health Professional Version",
+      "url": "https://www.cancer.gov/types/myeloma/hp/myeloma-treatment-pdq",
+      "organization": "미국 국립암연구소(NCI)",
+      "checkedAt": "2026-11-02",
+      "scope": "진단과 위험군, 치료 필요성, 전신치료·자가이식·유지치료·반응 평가; 개인 처방이나 한국 급여 정보가 아님",
+      "evidenceType": "official-evidence-summary"
+    },
+    "imwg-diagnosis": {
+      "title": "IMWG Criteria for the Diagnosis of Multiple Myeloma",
+      "url": "https://www.myeloma.org/international-myeloma-working-group-imwg-criteria-diagnosis-multiple-myeloma",
+      "organization": "International Myeloma Foundation / International Myeloma Working Group",
+      "checkedAt": "2026-11-02",
+      "scope": "MGUS·무증상 골수종·활동성 골수종 구별과 CRAB/골수종 정의 생체표지자; 증상이 없어도 치료가 필요할 수 있다는 예외",
+      "evidenceType": "professional-consensus-criteria"
+    },
+    "nhs-myeloma-symptoms": {
+      "title": "Symptoms of myeloma",
+      "url": "https://www.nhs.uk/conditions/myeloma/symptoms/",
+      "organization": "영국 국민보건서비스(NHS)",
+      "checkedAt": "2026-11-02",
+      "scope": "갑작스러운 보행 장애·사지 감각 저하·배뇨배변 조절 이상·혼란의 응급 평가. 영국 연락번호를 한국 번호로 그대로 옮기지 않음",
+      "evidenceType": "official-patient-guidance",
+      "sourceUpdated": "2025-05-13"
+    },
+    "uclh-myeloma-bone": {
+      "title": "Myeloma and bone health",
+      "url": "https://www.uclh.nhs.uk/patients-and-visitors/patient-information-pages/myeloma-and-bone-health",
+      "organization": "University College London Hospitals NHS Foundation Trust",
+      "checkedAt": "2026-11-02",
+      "scope": "골수종 뼈 약화·골절·고칼슘혈증·척수압박, 뼈와 척추 보호를 위한 개별 치료·활동 상담",
+      "evidenceType": "official-patient-guidance"
+    }
+  },
+  "questionsForVisit": [
+    "제 진단은 MGUS·무증상 골수종·활동성 골수종 중 무엇인가요?",
+    "장기 손상 또는 골수종 정의 생체표지자 중 어떤 기준에 해당하나요?",
+    "신장과 뼈 상태에 맞춘 치료·수분·활동 계획은 무엇인가요?",
+    "이식 적합성, 공고·유지치료는 어떤 기준으로 결정하나요?",
+    "추적 지표와 다음 검사일, 밤이나 휴일의 연락처를 알려 주세요."
+  ],
+  "aiReview": {
+    "status": "completed",
+    "independent": true,
+    "mode": "독립 AI 사전점검",
+    "checkedAt": "2026-11-02T11:00:35.647165+09:00",
+    "clinicalApproval": "pending",
+    "reviewedDraftSha256": "c84ed2da041af5a6049c856812ca646433f50757dd42c2ac2abad69bf96b7d06",
+    "contentSha256": "432a772d7145f72d384c60cc2218ff4cdcc7b2ff0fbb0131cfa3a74f68fa749f"
+  }
+}

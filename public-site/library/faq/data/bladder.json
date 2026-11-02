@@ -1,0 +1,498 @@
+{
+  "slug": "bladder",
+  "name": "방광암",
+  "updated": "2026-11-02",
+  "revision": "20261102-corefaq-v1",
+  "edition": "진단 후 첫 30일 핵심 FAQ 20",
+  "reviewMode": "AI 사전점검",
+  "clinicalApproval": "pending",
+  "items": [
+    {
+      "n": 1,
+      "q": "혈뇨가 한 번 나오고 멈췄는데 괜찮은가요?",
+      "a": "피가 섞인 소변은 한 번이거나 양이 적고 통증이 없어도 진료로 확인해야 해요. 감염·결석 등 다른 원인도 있지만 증상이 사라졌다고 방광암 가능성을 배제할 수는 없어요. 이미 치료 중이라면 새 혈뇨의 시작·양·혈전 유무를 치료팀에 알려 주세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.bladder.001",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nhs-bladder-symptoms"
+        ],
+        "scope": "혈뇨가 한 번 나오고 멈췄는데 괜찮은가요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 2,
+      "q": "방광경과 소변검사는 무엇이 다른가요?",
+      "a": "소변검사는 혈액·감염·비정상 세포 등을 살피고, 방광경(cystoscopy)은 카메라로 방광 안을 직접 확인하는 검사예요. 의심 부위의 조직검사로 암을 확인해요. 소변검사나 CT가 정상이더라도 방광경이 필요한 상황이 있으니 검사 목적을 물어보세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.bladder.002",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-bladder-diagnosis"
+        ],
+        "scope": "방광경과 소변검사는 무엇이 다른가요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 3,
+      "q": "비근육침윤성과 근육침윤성은 왜 중요한가요?",
+      "a": "암이 방광의 근육층까지 들어갔는지가 치료 방향을 크게 바꾸기 때문이에요. 비근육침윤성(NMIBC)은 근육층에 도달하지 않은 상태이고, 근육침윤성(MIBC)은 근육층을 침범한 상태예요. 이 구분을 단순히 암의 크기나 증상의 세기로 판단하지 않아요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.bladder.003",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-bladder-stage"
+        ],
+        "scope": "비근육침윤성과 근육침윤성은 왜 중요한가요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 4,
+      "q": "고등급·저등급과 상피내암은 어떤 뜻인가요?",
+      "a": "등급(grade)은 암세포가 현미경에서 얼마나 비정상적으로 보이는지에 관한 정보예요. 상피내암(CIS)은 납작한 고등급 병변으로, 작거나 눈에 잘 안 보인다고 위험이 낮다는 뜻은 아니에요. 침범 깊이·개수·크기·재발 이력과 함께 위험도를 확인하세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.bladder.004",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-bladder-stage",
+          "eau-nmibc"
+        ],
+        "scope": "고등급·저등급과 상피내암은 어떤 뜻인가요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 5,
+      "q": "내시경 수술을 했는데 왜 다시 절제하자고 하나요?",
+      "a": "첫 절제에서 종양을 충분히 제거하지 못했거나 근육층 검체가 부족한 경우 등에는 재절제가 필요할 수 있어요. 남은 암과 실제 침범 깊이를 확인해 치료를 정확히 정하려는 목적이에요. 첫 병리결과에서 어떤 이유로 재수술을 권하는지 설명받으세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.bladder.005",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-bladder-stage"
+        ],
+        "scope": "내시경 수술을 했는데 왜 다시 절제하자고 하나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 6,
+      "q": "비근육침윤성이면 내시경 수술만 하고 끝나나요?",
+      "a": "그렇지 않을 수 있어요. 재발과 근육층 침범 위험도에 따라 방광 안에 약을 넣는 치료나 면밀한 관찰을 추가해요. 일부 고위험 상황에서는 방광절제술도 논의해요. 저위험·중간위험·고위험 중 어디에 해당하며 그 근거가 무엇인지 물어보세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.bladder.006",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-bladder-stage",
+          "eau-nmibc"
+        ],
+        "scope": "비근육침윤성이면 내시경 수술만 하고 끝나나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 7,
+      "q": "방광 안에 넣는 BCG는 결핵 예방접종과 같은 방식인가요?",
+      "a": "같은 계열의 균을 이용하지만 방광암 치료는 카테터로 방광 안에 약을 넣는 별도의 치료예요. 면역반응을 유도해 재발 위험을 낮추는 데 쓰며, 주사 예방접종을 대신 맞는 방식이 아니에요. 투여 일정과 당일 배뇨·위생 주의사항을 병원에서 배우세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.bladder.007",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment",
+          "eau-nmibc"
+        ],
+        "scope": "방광 안에 넣는 BCG는 결핵 예방접종과 같은 방식인가요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 8,
+      "q": "근육침윤성이면 어떤 치료를 논의하나요?",
+      "a": "방광절제술과 수술 전후 전신치료, 또는 선별 환자의 항암방사선 등 여러 방법을 고려해요. 암의 범위뿐 아니라 신장기능·전신상태와 개인의 선호도도 중요해요. 수술 여부만 묻기보다 전체 치료 순서와 치료 목표를 함께 설명받으세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.bladder.008",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-bladder-stage",
+          "nci-bladder-treatment",
+          "eau-mibc"
+        ],
+        "scope": "근육침윤성이면 어떤 치료를 논의하나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 9,
+      "q": "방광을 남기는 치료는 누구에게나 가능한가요?",
+      "a": "아니요. 종양의 상태·완전한 내시경 절제 가능성·방광 기능·추적검사를 받을 여건 등을 종합해 선별해요. 치료 후에도 방광경 등 면밀한 확인이 필요하며 추가 수술이 필요할 수 있어요. 방광절제술과의 기대 이득·부작용·재발 시 대안을 비교해 물어보세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.bladder.009",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-bladder-stage",
+          "eau-nmibc",
+          "eau-mibc"
+        ],
+        "scope": "방광을 남기는 치료는 누구에게나 가능한가요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 10,
+      "q": "방광을 제거하면 소변은 어떻게 보나요?",
+      "a": "소변이 몸 밖으로 나오는 새 길인 요로전환(urinary diversion)을 만들어요. 배에 소변 주머니를 붙이는 방법, 장으로 만든 저장공간을 이용하는 방법 등 선택지가 있어요. 신장기능·이전 치료와 관리 능력에 맞춰 결정하고 수술 전 장루전문간호사 상담을 요청하세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.bladder.010",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "niddk-diversion",
+          "nci-bladder-treatment"
+        ],
+        "scope": "방광을 제거하면 소변은 어떻게 보나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 11,
+      "q": "피덩어리가 나오면서 소변이 안 나오면 어떻게 하나요?",
+      "a": "혈전이 길을 막거나 다른 원인으로 소변이 정체될 수 있어 바로 병원에 연락해 평가받아야 해요. 아랫배 통증·팽만, 열·오한·옆구리 통증이 동반되면 더 미루지 마세요. 물을 억지로 많이 마시거나 카테터를 스스로 빼서 해결하려 하지 마세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.bladder.011",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-urinary",
+          "niddk-diversion"
+        ],
+        "scope": "피덩어리가 나오면서 소변이 안 나오면 어떻게 하나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 12,
+      "q": "전신 항암치료 중 열이 나면 어떻게 하나요?",
+      "a": "38°C 이상 발열이면 해열제를 먹기 전에 치료병원에 즉시 연락하세요. 체온이 그보다 낮아도 심한 오한·급격한 쇠약은 확인이 필요해요. 배뇨 통증이나 카테터 부위 변화도 함께 알려 주세요. 심한 호흡곤란·의식 저하는 119 또는 응급실을 이용하세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.bladder.012",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-infection",
+          "nci-urinary"
+        ],
+        "scope": "전신 항암치료 중 열이 나면 어떻게 하나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 13,
+      "q": "BCG 뒤 배뇨통과 열은 그냥 참아도 되나요?",
+      "a": "방광 자극 증상이 생길 수 있지만, 지속되거나 심한 배뇨통·발열·오한·전신 쇠약은 치료팀에 알려야 해요. 드물게 심한 감염이 생길 수 있어 심한 증상을 '예상 부작용'이라며 기다리면 안 돼요. 다음 투여 여부와 증상 대처는 병원 지침에 따라 결정하세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.bladder.013",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "eau-nmibc",
+          "nci-urinary"
+        ],
+        "scope": "BCG 뒤 배뇨통과 열은 그냥 참아도 되나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 14,
+      "q": "진단 후 금연을 해도 도움이 되나요?",
+      "a": "네, 흡연은 방광암의 중요한 위험요인이며 지금부터 금연 지원을 받는 것이 좋아요. 금연클리닉이나 의료진에게 도움이 되는 방법을 물어보세요. 이미 진단받았다는 이유로 소용없다고 생각하거나, 흡연력 때문에 스스로를 탓하며 진료를 피하지 마세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.bladder.014",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-bladder-risk"
+        ],
+        "scope": "진단 후 금연을 해도 도움이 되나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 15,
+      "q": "치료 전에 임신이나 정자 보존을 상담해야 하나요?",
+      "a": "향후 자녀 계획이 있다면 첫 치료 전에 말해 주세요. 골반 수술·방사선·전신치료가 생식기관이나 생식기능에 미치는 영향은 서로 달라요. 적용 가능한 난자·배아·정자 보존과 치료 시작 시점을 비뇨종양팀·생식의학팀과 함께 상담하세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.bladder.015",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-fertility-women",
+          "nci-fertility-men"
+        ],
+        "scope": "치료 전에 임신이나 정자 보존을 상담해야 하나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 16,
+      "q": "암을 제거했는데도 방광경을 반복하는 이유는 무엇인가요?",
+      "a": "방광암은 치료 후 같은 방광 안에 다시 생기거나 진행할 수 있어요. 재발을 빨리 확인하고 대처하기 위해 위험도에 맞춘 방광경·소변검사·필요한 영상을 계획해요. 증상이 없다고 검사를 생략하지 말고, 검사 목적과 다음 일정을 확인하세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.bladder.016",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-bladder-stage"
+        ],
+        "scope": "암을 제거했는데도 방광경을 반복하는 이유는 무엇인가요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 17,
+      "q": "요루나 새 방광은 집에서 어떻게 관리하나요?",
+      "a": "수술 방식마다 소변을 비우는 방법과 피부·주머니·카테터 관리가 달라요. 퇴원 전에 직접 연습하고 필요한 물품과 연락처를 받아 두세요. 소변이 잘 안 나오거나 카테터 삽입이 어렵고, 열·오한·통증이 생기면 바로 연락하세요. 다른 환자의 관리법을 그대로 적용하지 마세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.bladder.017",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "niddk-diversion"
+        ],
+        "scope": "요루나 새 방광은 집에서 어떻게 관리하나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 18,
+      "q": "방광 수술 후 성생활 변화는 상담할 수 있나요?",
+      "a": "네, 발기·사정·질 건조·통증·몸의 변화에 대한 걱정은 진료에서 다룰 수 있어요. 수술 범위와 신경·생식기관에 미친 영향에 따라 달라져요. 회복 후 성생활 재개 시점, 기능 보존 가능성과 도움받을 진료를 수술 전후에 물어보세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.bladder.018",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "niddk-diversion",
+          "nci-sexual-women",
+          "nci-sexual-men"
+        ],
+        "scope": "방광 수술 후 성생활 변화는 상담할 수 있나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 19,
+      "q": "첫 30일에 어떤 기록을 남기면 좋을까요?",
+      "a": "TURBT 병리결과에서 근육층 포함 여부·침범 깊이·등급·CIS를 확인해 두세요. 검사 날짜, 배뇨통·혈뇨·발열, 복용약과 예정된 방광 내 치료 일정도 적으면 도움이 돼요. 이해 안 되는 약어는 짐작하지 말고 다음 진료 질문에 넣으세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.bladder.019",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-bladder-diagnosis",
+          "nci-bladder-stage",
+          "nci-urinary"
+        ],
+        "scope": "첫 30일에 어떤 기록을 남기면 좋을까요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 20,
+      "q": "방광절제술을 결정하기 전에 무엇을 비교해야 하나요?",
+      "a": "암을 조절할 가능성과 수술 위험뿐 아니라 소변 관리·성기능·일상생활, 방광 보존 대안과 재발 시 계획을 함께 비교하세요. 다른 의견을 구하고 싶다면 병리와 영상을 준비하되, 안전한 치료 시작 시점을 먼저 확인하세요. 본인에게 중요한 생활 목표도 말해 주세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.bladder.020",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment",
+          "niddk-diversion"
+        ],
+        "scope": "방광절제술을 결정하기 전에 무엇을 비교해야 하나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    }
+  ],
+  "sources": {
+    "nci-infection": {
+      "title": "NCI · Infection and Neutropenia during Cancer Treatment",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/infection",
+      "organization": "National Cancer Institute",
+      "checkedAt": "2026-11-02",
+      "scope": "암 치료 중 38°C 이상 발열·오한과 즉시 의료진 연락, 해열제 복용 전 상담",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nci-fertility-women": {
+      "title": "NCI · Female Fertility and Cancer Treatment",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/fertility-women",
+      "organization": "National Cancer Institute",
+      "checkedAt": "2026-11-02",
+      "scope": "치료 전 생식력 상담과 치료 종류·연령별 영향의 차이",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nci-fertility-men": {
+      "title": "NCI · Male Fertility and Cancer Treatment",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/fertility-men",
+      "organization": "National Cancer Institute",
+      "checkedAt": "2026-11-02",
+      "scope": "치료 전 생식력·정자 보존 상담, 치료 종류별 영향의 차이",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nci-urinary": {
+      "title": "NCI · Urinary and Bladder Problems",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/urination-changes",
+      "organization": "National Cancer Institute",
+      "checkedAt": "2026-11-02",
+      "scope": "골반 치료 후 배뇨 변화·요폐·요로감염 증상과 신속한 평가",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nci-sexual-women": {
+      "title": "NCI · Sexual Health Issues in Women with Cancer",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/sexuality-women",
+      "organization": "National Cancer Institute",
+      "checkedAt": "2026-11-02",
+      "scope": "치료 후 건조·통증·성기능 변화의 상담과 개인별 관리",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nci-sexual-men": {
+      "title": "NCI · Sexual Health Issues in Men with Cancer",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/sexuality-men",
+      "organization": "National Cancer Institute",
+      "checkedAt": "2026-11-02",
+      "scope": "치료 후 발기·사정·성기능 변화의 상담과 개인별 관리",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nci-bladder-diagnosis": {
+      "title": "NCI · Bladder Cancer Diagnosis",
+      "url": "https://www.cancer.gov/types/bladder/diagnosis",
+      "organization": "National Cancer Institute",
+      "checkedAt": "2026-11-02",
+      "scope": "방광경·조직검사·요로 영상의 서로 다른 목적",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nci-bladder-stage": {
+      "title": "NCI · Treatment of Bladder Cancer by Stage",
+      "url": "https://www.cancer.gov/types/bladder/treatment/by-stage",
+      "organization": "National Cancer Institute",
+      "checkedAt": "2026-11-02",
+      "scope": "NMIBC/MIBC 구분, TURBT 재시행·위험도별 방광 내 치료와 추적",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nci-bladder-treatment": {
+      "title": "NCI · Bladder Cancer Treatment",
+      "url": "https://www.cancer.gov/types/bladder/treatment",
+      "organization": "National Cancer Institute",
+      "checkedAt": "2026-11-02",
+      "scope": "방광 절제·요로전환·전신치료·방사선의 일반적 역할",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nhs-bladder-symptoms": {
+      "title": "NHS · Symptoms of bladder cancer",
+      "url": "https://www.nhs.uk/conditions/bladder-cancer/symptoms/",
+      "organization": "NHS",
+      "checkedAt": "2026-11-02",
+      "scope": "소량·일회성 혈뇨도 진료 확인이 필요함",
+      "evidenceType": "official-patient-guidance"
+    },
+    "eau-nmibc": {
+      "title": "EAU Guidelines · Non-muscle-invasive Bladder Cancer: Disease Management",
+      "url": "https://uroweb.org/guidelines/non-muscle-invasive-bladder-cancer/chapter/disease-management",
+      "organization": "European Association of Urology",
+      "checkedAt": "2026-11-02",
+      "scope": "위험도별 방광내 BCG와 국소·전신 부작용 평가, 수술 선택",
+      "evidenceType": "professional-society-guideline"
+    },
+    "niddk-diversion": {
+      "title": "NIDDK · Urinary Diversion",
+      "url": "https://www.niddk.nih.gov/health-information/urologic-diseases/urinary-diversion",
+      "organization": "National Institute of Diabetes and Digestive and Kidney Diseases",
+      "checkedAt": "2026-11-02",
+      "scope": "요로전환의 종류·장루와 도뇨 관리·성기능·활동 복귀",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nci-bladder-risk": {
+      "title": "NCI · Bladder Cancer Causes and Risk Factors",
+      "url": "https://www.cancer.gov/types/bladder/causes-risk-factors",
+      "organization": "National Cancer Institute",
+      "checkedAt": "2026-11-02",
+      "scope": "흡연 등 방광암 위험요인과 금연 상담",
+      "evidenceType": "official-patient-guidance"
+    },
+    "eau-mibc": {
+      "title": "EAU Guidelines · Muscle-invasive and Metastatic Bladder Cancer: Disease Management",
+      "url": "https://uroweb.org/guidelines/muscle-invasive-and-metastatic-bladder-cancer/chapter/disease-management",
+      "organization": "European Association of Urology",
+      "checkedAt": "2026-11-02",
+      "scope": "근육침윤성 방광암의 다학제 의사결정·방광절제와 선별 환자의 방광보존 치료 비교",
+      "evidenceType": "professional-society-guideline"
+    }
+  },
+  "questionsForVisit": [
+    "근육층 침범 여부와 등급·CIS·위험군은 무엇인가요?",
+    "첫 TURBT 검체에 근육층이 포함됐고 재절제가 필요한가요?",
+    "방광 내 치료·절제술·항암방사선의 장단점은 무엇인가요?",
+    "요로전환·성기능·가임력에 어떤 변화가 예상되나요?",
+    "혈뇨·요폐·발열·BCG 후 증상은 어느 번호로 연락하나요?"
+  ],
+  "aiReview": {
+    "status": "completed",
+    "independent": true,
+    "mode": "독립 AI 사전점검",
+    "checkedAt": "2026-11-02T11:00:35.647165+09:00",
+    "clinicalApproval": "pending",
+    "reviewedDraftSha256": "547460b0158e325390f88d632a5433b1722a67a97258cebe4e9c8e3192c67822",
+    "contentSha256": "d53f57662bcbf9e0fd95d9ae26fd091db0bd9b75587cd14312f7abbb199bbbfd"
+  }
+}

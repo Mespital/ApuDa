@@ -1,0 +1,452 @@
+{
+  "slug": "brain",
+  "name": "성인 악성 뇌종양",
+  "updated": "2026-11-02",
+  "revision": "20261102-corefaq-v1",
+  "edition": "진단 후 첫 30일 핵심 FAQ 20",
+  "reviewMode": "AI 사전점검",
+  "clinicalApproval": "pending",
+  "scope": "성인 원발성 악성 뇌종양 중심. 미만성교종에만 적용되는 분자·치료·MRI 설명은 문항에 한정. 소아·양성 뇌종양·뇌전이·원발성 중추신경계 림프종은 별도 자료 필요.",
+  "items": [
+    {
+      "n": 1,
+      "q": "성인 악성 뇌종양은 모두 같은 암인가요?",
+      "a": "아닙니다. 뇌에서 시작한 원발성 악성 종양도 여러 종류이며, 다른 장기의 암이 뇌로 퍼진 뇌전이와 구별합니다. 이 FAQ는 성인 원발성 악성 뇌종양을 중심으로 해요. 양성 종양·뇌전이·원발성 중추신경계 림프종은 각각 별도 진단과 치료 안내가 필요합니다.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.brain.001",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 신경종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-brain"
+        ],
+        "scope": "성인 원발성 악성 종양의 범위와 전이·양성·중추신경계 림프종의 구별"
+      }
+    },
+    {
+      "n": 2,
+      "q": "MRI에서 종양이 보이면 정확한 종류도 확진되나요?",
+      "a": "MRI는 위치·크기·주변 부종을 평가하는 핵심 검사지만 영상만으로 정확한 종류를 모두 확정하기는 어렵습니다. 가능한 경우 수술이나 생검으로 조직·분자검사를 함께 해요. 조직을 얻는 위험이 큰 예외도 있어 신경외과·신경종양 팀이 검사 방법을 정합니다.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.brain.002",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 신경종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-brain",
+          "eano-glioma"
+        ],
+        "scope": "MRI와 조직 진단의 역할 및 생검 위험에 따른 예외"
+      }
+    },
+    {
+      "n": 3,
+      "q": "WHO 4등급이면 다른 암의 4기처럼 온몸에 퍼졌다는 뜻인가요?",
+      "a": "같은 뜻이 아닙니다. 뇌종양의 WHO 등급(grade)은 종양의 조직·분자 특성과 행동을 분류하는 기준이며, 다른 암에서 말하는 원격전이 병기와 구별해야 해요. 많은 원발성 뇌종양은 일반 고형암과 같은 병기 체계를 쓰지 않으므로 정확한 유형·등급을 함께 확인하세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.brain.003",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 신경종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-brain",
+          "eano-molecular"
+        ],
+        "scope": "WHO 등급과 일반 고형암 병기의 구별"
+      }
+    },
+    {
+      "n": 4,
+      "q": "통합진단과 IDH·1p/19q 검사는 무엇인가요?",
+      "a": "통합진단(integrated diagnosis)은 조직 모양과 필요한 분자검사 결과를 함께 읽어 종양을 분류하는 방법입니다. 성인 미만성교종에서는 IDH 변화, 유형에 따른 1p/19q 동시결실 등이 진단에 중요해요. 모든 뇌종양에 같은 검사 목록을 적용하는 것은 아니며 최종 진단명과 남은 검사를 물어보세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.brain.004",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 신경종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "eano-molecular"
+        ],
+        "scope": "성인 미만성교종의 조직·분자 통합진단과 유형별 검사"
+      }
+    },
+    {
+      "n": 5,
+      "q": "MGMT 메틸화 결과는 완치 가능성을 말해 주나요?",
+      "a": "완치 여부를 단독으로 알려 주는 검사는 아닙니다. MGMT 유전자 조절 부위의 메틸화(MGMT promoter methylation)는 IDH 변이가 없는 교모세포종에서 일부 항암치료의 이득을 판단하는 데 활용하는 표지입니다. 종양 유형·나이·기능 상태·다른 검사와 함께 해석해야 합니다.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.brain.005",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 신경종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "eano-molecular",
+          "eano-glioma"
+        ],
+        "scope": "IDH-wildtype 교모세포종에서 MGMT 메틸화의 치료 예측적 역할과 단독 예후 판정 금지"
+      }
+    },
+    {
+      "n": 6,
+      "q": "뇌종양은 보이는 만큼 모두 제거하는 것이 최선인가요?",
+      "a": "가능한 많은 종양을 제거하는 목표와 말하기·움직임 등 중요한 뇌 기능을 지키는 목표를 함께 고려합니다. 위치와 주변 신경 구조에 따라 안전한 절제 범위가 달라져요. 전부 제거하지 못했다고 바로 수술이 실패한 것은 아니며 남은 종양의 후속 치료를 함께 계획합니다.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.brain.006",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 신경종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-brain",
+          "eano-glioma"
+        ],
+        "scope": "최대한 안전한 절제와 신경 기능 보존·후속 치료"
+      }
+    },
+    {
+      "n": 7,
+      "q": "크게 절제하지 않고 조직검사만 하는 이유는 무엇인가요?",
+      "a": "위치가 깊거나 중요한 기능 영역과 가까워 절제 위험이 큰 경우 등에는 생검으로 진단 정보를 얻을 수 있습니다. 전신 상태와 조직을 얻는 위험도 함께 봐요. 생검의 목표, 얻을 조직·분자 정보, 결과 뒤 치료 선택을 물어보세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.brain.007",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 신경종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-brain",
+          "eano-glioma"
+        ],
+        "scope": "절제 위험을 고려한 생검의 진단 목적"
+      }
+    },
+    {
+      "n": 8,
+      "q": "수술 뒤 방사선과 항암치료는 모두 같은 방식으로 받나요?",
+      "a": "종양 유형·등급·분자 특성, 수술 뒤 남은 범위와 기능 상태에 따라 계획이 달라집니다. 일부 악성 교종에서는 수술 후 방사선·항암치료를 조합하지만 모든 악성 뇌종양에 같은 요법을 적용하지 않아요. 내 최종 병리 결과에 맞춘 목표와 순서를 확인하세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.brain.008",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 신경종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-brain",
+          "eano-glioma"
+        ],
+        "scope": "종양 유형별 수술 후 치료의 개별화"
+      }
+    },
+    {
+      "n": 9,
+      "q": "스테로이드를 먹고 좋아지면 종양이 줄었다는 뜻인가요?",
+      "a": "종양 주변 부종(oedema)이 줄어 두통·구토·마비 같은 증상이 호전된 것일 수 있습니다. 스테로이드는 부종을 조절하는 보조약이며 이 FAQ에서 다루는 악성 교종 등의 항종양 치료를 대신하지 않아요. 증상 호전만으로 암이 없어졌다고 판단하지 않습니다.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.brain.009",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 신경종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "cuh-steroids",
+          "nci-brain"
+        ],
+        "scope": "부종 완화와 항종양 효과의 구별; 중추신경계 림프종에는 일괄 적용하지 않음"
+      }
+    },
+    {
+      "n": 10,
+      "q": "임상시험이나 표적치료는 누구나 받을 수 있나요?",
+      "a": "연구의 대상 종양, 분자 변화, 이전 치료와 건강 상태 등 참여 조건이 맞아야 합니다. 유전자 변화가 발견돼도 바로 효과 있는 약이 있다는 뜻은 아니에요. 내 유형에 근거가 있는 선택인지, 연구 목적·대안·부작용과 국내 접근 조건을 팀과 확인하세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.brain.010",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 신경종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-brain",
+          "eano-molecular"
+        ],
+        "scope": "유형·분자 정보와 임상시험 적합성; 검사 양성과 치료 가능성 구별"
+      }
+    },
+    {
+      "n": 11,
+      "q": "처음 발작하거나 발작이 오래 이어지면 어떻게 하나요?",
+      "a": "첫 발작, 평소보다 길거나 5분 넘게 이어지는 발작, 발작 뒤 의식이 회복되지 않거나 숨쉬기 어려운 상태는 즉시 119 등 응급 도움을 받아야 합니다. 평소 발작이 있는 사람도 개인별 응급 계획을 치료팀과 준비하세요. 발작 시작 시간과 복용약 정보를 함께 알리면 도움이 됩니다.",
+      "category": "care",
+      "review": {
+        "id": "faq.brain.011",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 신경종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nhs-brain-urgent",
+          "nhs-breathlessness"
+        ],
+        "scope": "첫·장시간 발작 및 의식·호흡 이상 때의 즉시 평가; 한국 119로 현지화"
+      }
+    },
+    {
+      "n": 12,
+      "q": "두통이 심해지거나 갑자기 힘이 빠지면 기다려도 되나요?",
+      "a": "갑작스럽고 극심한 두통, 새 마비·말하기 어려움, 의식 저하는 다음 예약까지 기다리지 말고 응급 평가를 받아야 합니다. 종양·부종뿐 아니라 다른 응급 원인도 가능해요. 서서히 악화되는 두통·반복 구토·시야 변화도 치료팀에 신속히 알리세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.brain.012",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 신경종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nhs-brain-urgent",
+          "nci-brain",
+          "cuh-steroids"
+        ],
+        "scope": "급성 신경 증상·의식 변화와 악화되는 두통·구토의 신속한 평가"
+      }
+    },
+    {
+      "n": 13,
+      "q": "스테로이드 때문에 잠이 안 오면 임의로 줄여도 되나요?",
+      "a": "임의로 감량하거나 갑자기 중단하지 마세요. 복용 기간·현재 부종·치료 계획에 따라 감량 방식이 다르고 갑작스런 중단은 위험할 수 있습니다. 불면·기분 변화·혈당 문제 등 불편을 알려 조정을 상담하고, 퇴원 시 받은 개인별 복용·감량표를 확인하세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.brain.013",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 신경종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "cuh-steroids"
+        ],
+        "scope": "스테로이드 부작용 상담과 임의 감량·중단 위험; 구체 감량 처방 없음"
+      }
+    },
+    {
+      "n": 14,
+      "q": "뇌종양 환자는 모두 발작 예방약을 먹나요?",
+      "a": "발작을 경험한 환자의 치료와, 발작이 없던 환자의 예방 투여는 구별합니다. 모든 뇌종양 환자에게 같은 약을 자동 처방하는 것은 아니며 수술 전후 상태와 병력에 따라 정해요. 이미 처방받았다면 스스로 끊지 말고 복용 목적과 지속 기간을 물어보세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.brain.014",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 신경종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "eano-glioma"
+        ],
+        "scope": "교종에서 발작 병력과 일괄 예방 투여의 구별"
+      }
+    },
+    {
+      "n": 15,
+      "q": "항암치료 중 열이 나거나 심한 오한이 있으면요?",
+      "a": "항암치료 중 38°C 이상 발열이나 심한 오한은 병원에 바로 알리고 해열제 복용 전에 상담하세요. 감염 방어 세포가 줄었거나 다른 약이 증상을 바꾸는 상황도 있어 병원의 개별 지침이 중요합니다. 의식 저하나 심한 숨참이 동반되면 119 등 응급 도움을 받으세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.brain.015",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 신경종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-infection",
+          "nhs-breathlessness"
+        ],
+        "scope": "항암치료 중 감염 신호와 해열제 전 연락"
+      }
+    },
+    {
+      "n": 16,
+      "q": "치료 뒤 MRI가 더 진하게 보이면 바로 재발인가요?",
+      "a": "바로 재발로 확정하지는 않습니다. 특히 교종의 방사선·항암치료 뒤에는 치료 영향으로 병변이 커 보이는 가성진행(pseudoprogression)도 가능해요. 증상·이전 영상·치료 시점과 필요 시 추가 검사를 함께 봅니다. 새 증상이 있으면 기다리지 말고 팀에 알려야 합니다.",
+      "category": "followup",
+      "review": {
+        "id": "faq.brain.016",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 신경종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "eano-glioma"
+        ],
+        "scope": "교종 치료 후 MRI의 가성진행과 실제 진행의 감별"
+      }
+    },
+    {
+      "n": 17,
+      "q": "기억력·말하기·걷기가 달라졌는데 재활을 받을 수 있나요?",
+      "a": "재활 평가를 요청할 수 있습니다. 종양 위치와 치료 영향에 따라 언어·인지·운동 기능이 달라질 수 있어 물리·작업·언어 재활 등의 필요성을 개별 평가해요. 새로 급격히 생긴 변화는 먼저 응급 원인을 확인하고, 이후 회복 목표를 치료팀과 정하세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.brain.017",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 신경종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "eano-glioma",
+          "nci-palliative"
+        ],
+        "scope": "교종 환자의 신체·언어 재활과 지지 치료, 급성 변화의 선행 평가"
+      }
+    },
+    {
+      "n": 18,
+      "q": "치료 뒤 일상과 직장 복귀는 언제 가능한가요?",
+      "a": "수술 날짜만으로 정하지 않고 피로·발작·운동·언어·판단 기능과 업무 위험을 함께 봅니다. 담당 팀과 단계적 복귀와 필요한 재활·돌봄 지원을 상의하세요. 수면·집중·이동 같은 실제 어려움을 기록하면 본인에게 맞는 계획을 세우는 데 도움이 됩니다.",
+      "category": "followup",
+      "review": {
+        "id": "faq.brain.018",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 신경종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "eano-glioma",
+          "nci-palliative"
+        ],
+        "scope": "기능·증상·재활에 따른 일상 복귀 상담; 일률적 복귀 시점·법적 자격 판단 아님"
+      }
+    },
+    {
+      "n": 19,
+      "q": "보호자는 어떤 변화를 기록해 주면 좋나요?",
+      "a": "두통·구토·졸림, 발작 시각, 말하기·걷기·행동 변화와 약 복용 내용을 짧게 기록하면 진료에 도움이 됩니다. 환자가 가능한 범위에서 본인의 우선순위도 함께 정하세요. 기록보다 응급 연락이 먼저이며, 불안·돌봄 부담도 지지 치료팀에 상담할 수 있습니다.",
+      "category": "followup",
+      "review": {
+        "id": "faq.brain.019",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 신경종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-brain",
+          "cuh-steroids",
+          "nci-palliative"
+        ],
+        "scope": "신경 증상·약·환자 목표와 보호자 부담의 진료 전달"
+      }
+    },
+    {
+      "n": 20,
+      "q": "진단 후 첫 30일에 무엇을 꼭 물어봐야 하나요?",
+      "a": "최종 통합진단명·WHO 등급·필요한 분자검사, 수술의 안전한 범위와 후속 치료 목표를 확인하세요. 스테로이드·발작약의 복용 계획과 응급 연락 기준도 중요합니다. 영상·병리·퇴원 기록을 모으고 언어·운동·기억력 변화와 재활 필요성을 함께 알려 주세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.brain.020",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 신경종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-brain",
+          "eano-molecular",
+          "cuh-steroids"
+        ],
+        "scope": "통합진단·치료 계획·보조약·기능 목표를 연결한 진료 질문"
+      }
+    }
+  ],
+  "sources": {
+    "cuh-steroids": {
+      "title": "Living with a brain tumour: Taking steroids",
+      "url": "https://www.cuh.nhs.uk/patient-information/living-with-a-brain-tumour-taking-steroids/",
+      "organization": "Cambridge University Hospitals NHS Foundation Trust",
+      "scope": "종양 주변 부종 완화와 항종양 치료의 구별·스테로이드 임의 중단 위험. 이 기관의 구체 감량표는 일반화하지 않음",
+      "evidenceType": "academic-hospital-patient-guidance",
+      "checkedAt": "2026-11-02"
+    },
+    "eano-glioma": {
+      "title": "EANO guidelines on the diagnosis and treatment of diffuse gliomas of adulthood",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7904519/",
+      "organization": "European Association of Neuro-Oncology; Nature Reviews Clinical Oncology (2021)",
+      "scope": "미만성교종의 안전한 수술·생검·발작 약의 적응증·MRI 해석과 가성진행·재활. 현 분류 설명은 2023 분자진단 지침과 교차 확인",
+      "evidenceType": "professional-society-guideline",
+      "checkedAt": "2026-11-02"
+    },
+    "eano-molecular": {
+      "title": "Molecular diagnostic tools for the WHO 2021 classification of gliomas, glioneuronal and neuronal tumors; an EANO guideline",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10547522/",
+      "organization": "European Association of Neuro-Oncology; Neuro-Oncology (2023)",
+      "scope": "WHO CNS5의 조직·분자 통합진단, 미만성교종의 IDH·1p/19q 및 교모세포종 MGMT 검사 역할",
+      "evidenceType": "professional-society-guideline",
+      "checkedAt": "2026-11-02"
+    },
+    "nci-brain": {
+      "title": "Adult Central Nervous System Tumors Treatment (PDQ®)–Patient Version",
+      "url": "https://www.cancer.gov/types/brain/patient/adult-brain-treatment-pdq",
+      "organization": "National Cancer Institute",
+      "scope": "성인 원발성 중추신경계 종양과 전이성 종양의 구별·영상·조직검사·치료·지지요법",
+      "evidenceType": "official-patient-guidance",
+      "checkedAt": "2026-11-02"
+    },
+    "nci-infection": {
+      "title": "Infection and Neutropenia during Cancer Treatment",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/infection",
+      "organization": "National Cancer Institute",
+      "scope": "암 치료 중 38°C 이상 발열·오한 등 감염 신호와 즉시 연락, 해열제 복용 전 상담",
+      "evidenceType": "official-patient-guidance",
+      "checkedAt": "2026-11-02"
+    },
+    "nci-palliative": {
+      "title": "Palliative Care in Cancer",
+      "url": "https://www.cancer.gov/about-cancer/advanced-cancer/care-choices/palliative-care-fact-sheet",
+      "organization": "National Cancer Institute",
+      "scope": "진단 단계부터 항암치료와 함께 제공할 수 있는 증상·심리·가족 지지",
+      "evidenceType": "official-patient-guidance",
+      "checkedAt": "2026-11-02"
+    },
+    "nhs-brain-urgent": {
+      "title": "Symptoms of a malignant brain tumour (brain cancer)",
+      "url": "https://www.nhs.uk/conditions/malignant-brain-tumour/symptoms/",
+      "organization": "NHS",
+      "scope": "첫 발작·장시간 발작·갑작스럽고 극심한 두통·의식 저하 등 즉시 평가; 영국 응급번호를 한국에 옮기지 않음",
+      "evidenceType": "official-patient-guidance",
+      "checkedAt": "2026-11-02"
+    },
+    "nhs-breathlessness": {
+      "title": "Shortness of breath",
+      "url": "https://www.nhs.uk/symptoms/shortness-of-breath/",
+      "organization": "NHS",
+      "scope": "심한 호흡곤란·흉부 압박·갑작스러운 혼돈 등 즉시 평가가 필요한 호흡 관련 증상. 영국 응급번호를 한국에 그대로 적용하지 않음",
+      "evidenceType": "official-patient-guidance",
+      "checkedAt": "2026-11-02"
+    }
+  },
+  "questionsForVisit": [
+    "정확한 통합진단명·WHO 등급과 IDH 등 필요한 분자검사 결과는 무엇인가요?",
+    "안전한 절제 범위와 남은 병변에 대한 치료 목표는 무엇인가요?",
+    "방사선·항암치료의 순서와 MRI 추적 계획은 어떻게 정하나요?",
+    "스테로이드·발작약의 복용 목적과 개인별 중단·감량 계획은 무엇인가요?",
+    "언어·운동·인지 재활과 발작·급성 신경 증상 때의 응급 계획은 무엇인가요?"
+  ],
+  "aiReview": {
+    "status": "completed",
+    "independent": true,
+    "mode": "독립 AI 사전점검",
+    "checkedAt": "2026-11-02T11:00:35.647165+09:00",
+    "clinicalApproval": "pending",
+    "reviewedDraftSha256": "445da4ee0a99ef3892994f23ae742074542b50a137ec3542b9de6e3a8d9f9c0f",
+    "contentSha256": "8c0a3a33d53f04a1d0fb0217a35cbe2e0918b71fa2d1d972afc73f7a66100a37"
+  }
+}

@@ -1,0 +1,220 @@
+{
+  "mode": "독립 AI 사전점검",
+  "actualClinicalReview": "not-provided",
+  "participantTesting": "not-conducted",
+  "revision": "20261102-corefaq-v1",
+  "checkedAt": "2026-11-02T11:00:35.647165+09:00",
+  "reviewedItems": 360,
+  "confirmedP0": 0,
+  "confirmedP1": 0,
+  "openMedicalP2": 0,
+  "reviewedFiles": [
+    {
+      "slug": "ovarian",
+      "name": "난소암",
+      "items": 20,
+      "file_sha256": "553add1a2818d547585365dc5805ecb5ed0df2272aefdc0095d813d57f5f94ab",
+      "content_sha256": "fede3a1dae55b8b0c08d6bf35b57f25453dca9d561b2ff86c51c11cfa321c847"
+    },
+    {
+      "slug": "endometrial",
+      "name": "자궁내막암",
+      "items": 20,
+      "file_sha256": "906bd40b93bc488651e8cad1257c4cbd5d68862f47e623deb3a1878e3dab846b",
+      "content_sha256": "186b93af0bacff2cba9268cadea16e1e4111e9f784a9f22d3fef49ce7954898d"
+    },
+    {
+      "slug": "esophageal",
+      "name": "식도암",
+      "items": 20,
+      "file_sha256": "f6f1973f41224ff73bb69f7ffd162e4f143b62923ec678157f42528dda15812d",
+      "content_sha256": "0c121581bc89e20a0a3a3d0b27961e1c0b1e8bdf7b4a4298ecdbcff588a7e0b6"
+    },
+    {
+      "slug": "bladder",
+      "name": "방광암",
+      "items": 20,
+      "file_sha256": "547460b0158e325390f88d632a5433b1722a67a97258cebe4e9c8e3192c67822",
+      "content_sha256": "c35e2f3dd3551f533f37accbaf3d54176b9018654e608afe505c1bb82a188eed"
+    },
+    {
+      "slug": "testicular",
+      "name": "고환암",
+      "items": 20,
+      "file_sha256": "214ebf2984d1949d854a9e58f15ab1e0956d07bdf6529bc35a1171c157228df6",
+      "content_sha256": "a7af3d3baf3e657c9dedeff57366116e74e13df1d0a0def3939c79675be32cb9"
+    },
+    {
+      "slug": "oral",
+      "name": "구강암",
+      "items": 20,
+      "file_sha256": "d22de6e8dbe58937a47b038f0758b3bd315c026c9e0fd0d636747a3ee826c5a0",
+      "content_sha256": "8e5a5398470a057d2a2ec6bef98d9b1b733844e85fe5358e54f5d32b51c55c48"
+    },
+    {
+      "slug": "laryngeal",
+      "name": "후두암",
+      "items": 20,
+      "file_sha256": "a1a255a646eb383b3467787152f1d07b959f5632833bc5dbcdbbeaf2a0426ba4",
+      "content_sha256": "ea02ea41454332bc3f4fea0830b3e2dbb5f34cc213179d7ae79500ac09d29260"
+    },
+    {
+      "slug": "nasopharyngeal",
+      "name": "비인두암",
+      "items": 20,
+      "file_sha256": "6cf68aa38ca1e72a87274c5e8e5e00b9d02b91ca608ede432599d9b4978166c4",
+      "content_sha256": "5aeb96f45b3bc739761d7d077a3df311d3db6fa3364a2a081c9ff5f6460101f5"
+    },
+    {
+      "slug": "melanoma",
+      "name": "악성 흑색종",
+      "items": 20,
+      "file_sha256": "a650e51c3d72e83aa1267d02c29f1c076c9867789dced1453d6067e5be0a4724",
+      "content_sha256": "029956a30d15b3e2b28f841afbe602aa93804f8925972da7bb65df43a223da44"
+    },
+    {
+      "slug": "sarcoma",
+      "name": "연부조직육종",
+      "items": 20,
+      "file_sha256": "dfaf046d3403087f78fb3d512bcb2a7c2aaf1785fbd47a2bd3196bb7e859a5c6",
+      "content_sha256": "007b10bcad7c420fb228f3171273e756531c7feabf01ca999126b2f169ab43ec"
+    },
+    {
+      "slug": "brain",
+      "name": "성인 악성 뇌종양",
+      "items": 20,
+      "file_sha256": "445da4ee0a99ef3892994f23ae742074542b50a137ec3542b9de6e3a8d9f9c0f",
+      "content_sha256": "89938685b217e5b78476c2ded107182b84d8bc641b29b67257eae0a6af21b16a"
+    },
+    {
+      "slug": "myeloma",
+      "name": "다발성골수종",
+      "items": 20,
+      "file_sha256": "c84ed2da041af5a6049c856812ca646433f50757dd42c2ac2abad69bf96b7d06",
+      "content_sha256": "7dd177fe9e141cd0743dc796239b65156e1114dba6e3097cc1afc1e6135cba15"
+    },
+    {
+      "slug": "aml",
+      "name": "급성골수성백혈병",
+      "items": 20,
+      "file_sha256": "3fb9b06d6d50edb7e48dc5e623771c78bf88adb3b08591315a5badf7c91bc505",
+      "content_sha256": "85c6e0fb53e99ff6ed44b87469dfee7ece01006ce7736138f028de63e80bb9e3"
+    },
+    {
+      "slug": "all",
+      "name": "급성림프모구백혈병",
+      "items": 20,
+      "file_sha256": "767592f6235d903ae4667a2bd68302bbe864a8619a6307195eae8e03de833c63",
+      "content_sha256": "009321007ddaaa0f7a658d75f5522a3b633c6a4f9e17442bf2bcc4351f18418c"
+    },
+    {
+      "slug": "cml",
+      "name": "만성골수성백혈병",
+      "items": 20,
+      "file_sha256": "19286440395c6332c1345ea2e76e1f05b7fdd2fdfc438ed14d37c030a48a74a1",
+      "content_sha256": "074bc51a0a196ec8c33cfefeea657330604935e7dda7ab63f6a376bcd5ba699a"
+    },
+    {
+      "slug": "hodgkin",
+      "name": "호지킨림프종",
+      "items": 20,
+      "file_sha256": "6dd6c321d24af7d2ff438f7a87a5b64afcee657b48ef9e5f5888eefa6cd9ab49",
+      "content_sha256": "fb531757d9d3d551e1d4641cf889efbbc8353f6cd573cd621de2fc4715a7b0c4"
+    },
+    {
+      "slug": "pcnsl",
+      "name": "원발성 중추신경계 림프종",
+      "items": 20,
+      "file_sha256": "49d75777611a464086777ce07615f0960520e120fbf7d27eb6b41fe5c23fe2cb",
+      "content_sha256": "cfe8b15b4d09ead62dbbde6dc3bdb978eb885d7dbbac01cca66df9b799d7c4a1"
+    },
+    {
+      "slug": "cup",
+      "name": "원발불명암",
+      "items": 20,
+      "file_sha256": "d0c79774c1daf5214af07105ed92db2c503d81ff78d5856307f9b2f99ec1efc1",
+      "content_sha256": "5c16cefa613a6d0d7a809983d029855d0e9748caae603b0e241cb142e6f2a135"
+    }
+  ],
+  "uniqueSourceUrls": 98,
+  "issues": [
+    {
+      "id": "R01",
+      "slug": "laryngeal",
+      "n": [
+        9
+      ],
+      "priority": "P2",
+      "finding": "전절제 후 성대 발성 불가 명료화·ASHA 출처 보강",
+      "status": "amended-and-rechecked"
+    },
+    {
+      "id": "R02",
+      "slug": "endometrial",
+      "n": [
+        8
+      ],
+      "priority": "P2",
+      "finding": "몸 밖에서 골반으로 조사하는 외부방사선 표현",
+      "status": "amended-and-rechecked"
+    },
+    {
+      "id": "R03",
+      "slug": "esophageal",
+      "n": [
+        20
+      ],
+      "priority": "P2",
+      "finding": "암 치료와 병행하는 완화의료 직접 출처 보강",
+      "status": "amended-and-rechecked"
+    },
+    {
+      "id": "R04",
+      "slug": "all",
+      "n": [
+        6,
+        8,
+        9,
+        12,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "priority": "P2",
+      "finding": "LLS PDF 접근 제한을 보완하는 공식 HTML·NCI TLS 근거 연결",
+      "status": "amended-and-rechecked"
+    },
+    {
+      "id": "R05",
+      "slug": "myeloma",
+      "n": [
+        3
+      ],
+      "priority": "P2",
+      "finding": "M단백 환자용 풀이 추가",
+      "status": "amended-and-rechecked"
+    },
+    {
+      "id": "R06",
+      "slug": "cml",
+      "n": [
+        1
+      ],
+      "priority": "P2",
+      "finding": "BCR::ABL1에 의한 CML 정의 명확화",
+      "status": "amended-and-rechecked"
+    },
+    {
+      "id": "R07",
+      "slug": "brain",
+      "n": [
+        5
+      ],
+      "priority": "P2",
+      "finding": "MGMT의 예측 범위를 IDH-wildtype 교모세포종으로 한정",
+      "status": "amended-and-rechecked"
+    }
+  ]
+}

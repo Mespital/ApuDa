@@ -25,7 +25,8 @@ for (const [index, book] of catalog.books.entries()) {
   assert.equal(book.cover, approved.src);
   assert.equal(book.href, approved.book_href);
   assert.equal(book.hasMini, legacy.has(book.slug));
-  assert.equal(book.hasFaq, legacy.has(book.slug));
+  assert.equal(book.hasFaq, true);
+  assert.equal(book.faqCount, legacy.has(book.slug) ? 100 : 20);
   assert.equal(catalog.get(book.slug), book);
   assert.ok(Object.isFrozen(book));
   const image = fs.readFileSync(path.join(site, book.cover.split('?')[0]));
@@ -39,4 +40,4 @@ assert.equal(catalog.get('__proto__'), null);
 assert.equal(catalog.get(''), null);
 assert.ok(Object.isFrozen(catalog.books));
 assert.ok(Object.isFrozen(catalog));
-console.log('PASS: 30 cover/volume/name/guide identities, asset hashes, 12 supported MINI/FAQ cancers, safe unknown lookup');
+console.log('PASS: 30 cover/volume/name/guide identities, asset hashes, 12 supported MINI cancers, 30 FAQ cancers and correct question counts, safe unknown lookup');

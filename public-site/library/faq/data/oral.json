@@ -1,0 +1,465 @@
+{
+  "slug": "oral",
+  "name": "구강암",
+  "updated": "2026-11-02",
+  "revision": "20261102-corefaq-v1",
+  "edition": "진단 후 첫 30일 핵심 FAQ 20",
+  "reviewMode": "AI 사전점검",
+  "clinicalApproval": "pending",
+  "items": [
+    {
+      "n": 1,
+      "q": "구강암과 구인두암은 같은 병인가요?",
+      "a": "아니요. 구강은 앞쪽 혀·잇몸·입바닥·볼 안쪽 등을, 구인두는 편도·혀뿌리 등 더 뒤쪽을 포함해요. 위치가 가까워도 병기와 치료 판단이 달라요. 단순히 '혀암'이라는 말보다 앞쪽 혀인지 혀뿌리인지 정확한 발생 부위를 확인하세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.oral.001",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-oral",
+          "nci-headneck"
+        ],
+        "scope": "구강암과 구인두암은 같은 병인가요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 2,
+      "q": "낫지 않는 입안 상처는 모두 암인가요?",
+      "a": "염증이나 자극 등 다른 원인도 많아 겉모습만으로 암을 판단하지는 않아요. 다만 낫지 않는 궤양·붉거나 흰 반점·멍울·지속 통증은 구강악안면외과나 이비인후과 등에서 확인해야 해요. 필요하면 조직을 채취해 현미경으로 진단해요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.oral.002",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nhs-oral-symptoms",
+          "nci-oral"
+        ],
+        "scope": "낫지 않는 입안 상처는 모두 암인가요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 3,
+      "q": "입안 조직검사 후 CT나 MRI까지 하는 이유는 무엇인가요?",
+      "a": "조직검사는 암의 종류를 확인하고, 영상은 혀·턱뼈 등 주변 침범과 목 림프절·다른 부위 상태를 평가하는 데 도움을 줘요. 겉으로 보이는 크기와 실제 깊이가 다를 수 있어요. 각 검사에서 무엇을 확인했고 치료에 어떤 영향을 주는지 물어보세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.oral.003",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-oral"
+        ],
+        "scope": "입안 조직검사 후 CT나 MRI까지 하는 이유는 무엇인가요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 4,
+      "q": "목에 멍울이 없으면 림프절 전이는 없나요?",
+      "a": "손으로 만져지지 않아도 작은 전이가 있을 수 있어 진찰·영상·필요한 검사를 함께 봐요. 원발 부위와 침범 깊이·조직검사 결과 등에 따라 목 림프절 평가와 치료 계획을 세워요. 멍울 유무만으로 목 치료가 불필요하다고 판단하지 마세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.oral.004",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-oral",
+          "nci-headneck"
+        ],
+        "scope": "목에 멍울이 없으면 림프절 전이는 없나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 5,
+      "q": "HPV 양성 구인두암 정보를 구강암에도 적용해도 되나요?",
+      "a": "그대로 적용하면 안 돼요. 사람유두종바이러스(HPV)와 예후·병기 관련 근거는 주로 편도·혀뿌리의 구인두암에 해당해요. 입안 앞쪽의 구강암과 같은 질환으로 취급하지 않아요. 검사 결과가 있다면 정확한 원발 부위와 그 결과의 임상적 의미를 확인하세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.oral.005",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-headneck"
+        ],
+        "scope": "HPV 양성 구인두암 정보를 구강암에도 적용해도 되나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 6,
+      "q": "혀나 턱 수술 범위는 어떻게 정하나요?",
+      "a": "암을 안전한 경계와 함께 제거하면서 말하기·씹기·삼킴을 최대한 고려해 정해요. 위치·깊이·뼈 침범 등에 따라 범위가 달라져요. 예상 절제 부위와 기능 변화, 재건술·재활 계획을 수술 전에 함께 설명받으세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.oral.006",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-oral",
+          "nhs-oral-treatment"
+        ],
+        "scope": "혀나 턱 수술 범위는 어떻게 정하나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 7,
+      "q": "입안 암인데 목 림프절도 수술하는 이유는 무엇인가요?",
+      "a": "구강암이 목 림프절로 퍼졌거나 퍼질 위험이 있으면 목 부위 치료가 필요할 수 있어요. 확인 목적과 치료 목적이 상황에 따라 달라요. 수술 범위, 어깨 움직임·감각 변화 등 가능한 영향과 재활 계획을 물어보세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.oral.007",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-oral",
+          "nci-headneck"
+        ],
+        "scope": "입안 암인데 목 림프절도 수술하는 이유는 무엇인가요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 8,
+      "q": "수술 후 방사선이나 항암방사선을 추가하기도 하나요?",
+      "a": "수술 병리에서 절제 경계·림프절 등 재발 위험과 관련된 소견을 보면 추가 치료를 논의할 수 있어요. 모든 환자가 같은 조합을 받는 것은 아니에요. 어떤 병리 소견 때문에 권하는지, 입마름·치아·삼킴 기능에 대한 예방 계획은 무엇인지 확인하세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.oral.008",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-oral",
+          "nhs-oral-treatment"
+        ],
+        "scope": "수술 후 방사선이나 항암방사선을 추가하기도 하나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 9,
+      "q": "재건술은 모양만 바꾸는 수술인가요?",
+      "a": "아니요. 피부·연부조직·뼈 등을 이용한 재건은 모양뿐 아니라 입을 닫고 먹고 말하는 기능을 돕는 목적도 있어요. 결손 범위와 몸 상태에 따라 방법이 달라요. 조직을 가져올 부위의 영향과 회복 과정, 이후 보철·재활 가능성을 함께 물어보세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.oral.009",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nhs-oral-treatment",
+          "nci-headneck"
+        ],
+        "scope": "재건술은 모양만 바꾸는 수술인가요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 10,
+      "q": "어떤 진료팀을 함께 만나면 도움이 되나요?",
+      "a": "두경부 수술·방사선·약물치료팀과 함께 치과, 영양, 언어·삼킴 재활 전문가가 필요한 경우가 많아요. 치료 전 기능을 평가해 두면 치료 후 변화와 회복 계획을 세우는 데 도움을 줘요. 말하기·먹기·외모 변화 중 본인이 가장 걱정하는 점을 먼저 알려 주세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.oral.010",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-oral",
+          "nci-headneck",
+          "nci-mouth"
+        ],
+        "scope": "어떤 진료팀을 함께 만나면 도움이 되나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 11,
+      "q": "두경부 방사선 전에 치과 진료가 중요한가요?",
+      "a": "방사선은 치아·잇몸·침샘과 턱 조직에 영향을 줄 수 있어 치료 전에 치과 상태를 확인하는 것이 중요해요. 필요한 처치를 언제까지 할 수 있는지 암 치료팀과 조율하세요. 방사선을 받은 뒤 치과치료가 필요하면 조사 부위와 치료 이력을 반드시 알려 주세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.oral.011",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-mouth",
+          "nci-headneck"
+        ],
+        "scope": "두경부 방사선 전에 치과 진료가 중요한가요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 12,
+      "q": "입안이 헐고 아파서 못 먹으면 참아야 하나요?",
+      "a": "식사와 수분 섭취를 방해하는 통증은 치료팀에 알려 조절해야 해요. 점막염·감염 등 원인을 확인하고 통증 관리·구강 관리·영양 지원을 상담할 수 있어요. 맵고 뜨겁거나 거친 음식은 피하고, 가글·약은 의료진이 안내한 방법으로 사용하세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.oral.012",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-mouth",
+          "nci-nutrition"
+        ],
+        "scope": "입안이 헐고 아파서 못 먹으면 참아야 하나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 13,
+      "q": "삼킴이 힘들면 죽이나 물은 무조건 안전한가요?",
+      "a": "음식의 부드러움과 기도로 넘어가지 않고 삼키는 안전성은 다른 문제예요. 물이나 묽은 음식에도 사레가 들 수 있어 삼킴 평가와 개인별 식사 형태가 필요해요. 기침·사레·먹은 뒤 목소리 변화와 체중 저하를 알리고 재활·영양 상담을 요청하세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.oral.013",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-headneck",
+          "nci-mouth",
+          "nhs-glossectomy"
+        ],
+        "scope": "삼킴이 힘들면 죽이나 물은 무조건 안전한가요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 14,
+      "q": "입안 출혈이나 목의 붓기가 심해지면 어떻게 하나요?",
+      "a": "출혈이 멎지 않거나 입안·목 붓기 때문에 숨쉬기 힘들면 즉시 응급 평가가 필요해요. 위급하면 119 또는 응급실을 이용하세요. 치료 후 흔한 현상이라고 단정해 기다리지 말고 수술·방사선 이력과 증상 시작 시점을 알려 주세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.oral.014",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-oral",
+          "nhs-oral-treatment",
+          "nhs-glossectomy",
+          "nhs-dental-emergency"
+        ],
+        "scope": "입안 출혈이나 목의 붓기가 심해지면 어떻게 하나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 15,
+      "q": "항암치료 중 열이 나거나 입안에 하얀 막이 생기면요?",
+      "a": "38°C 이상 발열이나 심한 오한은 해열제 복용 전에 치료병원에 바로 연락하세요. 입안의 하얀 막·상처·통증은 감염을 포함한 원인 평가가 필요해요. 음식이나 물을 못 넘기는 상태도 함께 알려 주고 임의로 항생제·항진균제를 사용하지 마세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.oral.015",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-infection",
+          "nci-mouth"
+        ],
+        "scope": "항암치료 중 열이 나거나 입안에 하얀 막이 생기면요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 16,
+      "q": "치료 후 입마름은 어떻게 관리하나요?",
+      "a": "침샘이 영향을 받아 오래 지속될 수 있어요. 구강 상태·충치 위험을 치과에서 확인하고, 보습과 침 대체제 등 도움이 되는 방법을 상담하세요. 마실 수 있는 양과 삼킴 안전성이 허용하는 범위에서 수분을 보충하고, 당분 많은 사탕만으로 버티지 마세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.oral.016",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-mouth",
+          "nci-headneck"
+        ],
+        "scope": "치료 후 입마름은 어떻게 관리하나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 17,
+      "q": "치료 후 새 상처나 목 멍울이 생기면 재발인가요?",
+      "a": "치료 후 변화나 염증도 가능하지만 재발과 새로 생긴 암도 확인해야 해요. 새로 생기거나 낫지 않는 상처·멍울·통증·삼킴 악화를 예정 방문일까지 미루지 말고 알려 주세요. 증상만으로 스스로 재발 여부를 결론내리지는 마세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.oral.017",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nhs-oral-symptoms",
+          "nci-headneck"
+        ],
+        "scope": "치료 후 새 상처나 목 멍울이 생기면 재발인가요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 18,
+      "q": "진단 후에도 금연·금주를 권하는 이유는 무엇인가요?",
+      "a": "흡연과 음주는 구강·두경부암 위험과 관련되고 치료 후에도 새 암 위험과 회복을 고려해 상담해요. 지금부터 도움받아 조절하는 것이 중요하며 과거 생활을 탓하기 위한 말이 아니에요. 혼자 어렵다면 치료팀에 금연·음주 조절 지원을 요청하세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.oral.018",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-headneck",
+          "nci-oral"
+        ],
+        "scope": "진단 후에도 금연·금주를 권하는 이유는 무엇인가요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 19,
+      "q": "암 치료 후에도 치과·재활·영양 진료를 계속 받아야 하나요?",
+      "a": "네, 암의 재발 확인과 기능 회복은 함께 관리해야 해요. 입마름·치아 문제·턱 벌어짐 제한·말하기·삼킴 장애는 치료 뒤에도 상담할 수 있어요. 추적 일정과 증상별 담당 진료과를 적어 두고, 불편이 생겼을 때 어디로 연락할지 확인하세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.oral.019",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-headneck",
+          "nci-mouth"
+        ],
+        "scope": "암 치료 후에도 치과·재활·영양 진료를 계속 받아야 하나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 20,
+      "q": "첫 30일에 무엇을 결정하고 준비해야 하나요?",
+      "a": "원발 부위·조직형·병기와 치료 목표를 확인하고, 수술·방사선 후 먹고 말하는 변화에 대해 질문하세요. 치과·영양·재활 평가를 치료 전에 조율하고 복용약 목록을 준비하세요. 치료 중 연락처와 보호자가 도울 일도 구체적으로 정해 두면 좋아요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.oral.020",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-oral",
+          "nci-headneck",
+          "nci-mouth"
+        ],
+        "scope": "첫 30일에 무엇을 결정하고 준비해야 하나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    }
+  ],
+  "sources": {
+    "nci-infection": {
+      "title": "NCI · Infection and Neutropenia during Cancer Treatment",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/infection",
+      "organization": "National Cancer Institute",
+      "checkedAt": "2026-11-02",
+      "scope": "암 치료 중 38°C 이상 발열·오한과 즉시 의료진 연락, 해열제 복용 전 상담",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nci-nutrition": {
+      "title": "NCI · Weight Changes, Malnutrition, and Cancer",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/appetite-loss",
+      "organization": "National Cancer Institute",
+      "checkedAt": "2026-11-02",
+      "scope": "섭취량·체중 저하의 조기 보고와 개인별 영양 지원",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nci-mouth": {
+      "title": "NCI · Mouth and Throat Problems: Cancer Treatment Side Effects",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/mouth-throat",
+      "organization": "National Cancer Institute",
+      "checkedAt": "2026-11-02",
+      "scope": "두경부 치료 전 치과 평가, 점막염·구강건조·삼킴 장애와 영양 지원",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nci-oral": {
+      "title": "NCI · Lip and Oral Cavity Cancer Treatment (PDQ), Patient Version",
+      "url": "https://www.cancer.gov/types/head-and-neck/patient/adult/lip-mouth-treatment-pdq",
+      "organization": "National Cancer Institute",
+      "checkedAt": "2026-11-02",
+      "scope": "구강 부위·조직검사·림프절과 수술·방사선·기능 회복",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nci-headneck": {
+      "title": "NCI · Head and Neck Cancers",
+      "url": "https://www.cancer.gov/types/head-and-neck/head-neck-fact-sheet",
+      "organization": "National Cancer Institute",
+      "checkedAt": "2026-11-02",
+      "scope": "구강과 구인두의 구분, HPV 관련 근거의 주된 범위, 다학제·재활·추적",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nhs-oral-treatment": {
+      "title": "NHS · Treatment for mouth cancer",
+      "url": "https://www.nhs.uk/conditions/mouth-cancer/treatment/",
+      "organization": "NHS",
+      "checkedAt": "2026-11-02",
+      "scope": "혀·턱·목 림프절 수술, 재건과 항암방사선·재활",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nhs-oral-symptoms": {
+      "title": "NHS · Symptoms of mouth cancer",
+      "url": "https://www.nhs.uk/conditions/mouth-cancer/symptoms/",
+      "organization": "NHS",
+      "checkedAt": "2026-11-02",
+      "scope": "지속 구강궤양·붉거나 흰 반점·멍울·삼킴·말하기 변화의 평가",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nhs-glossectomy": {
+      "title": "Gloucestershire Hospitals NHS · Discharge information following a Glossectomy",
+      "url": "https://www.gloshospitals.nhs.uk/your-visit/patient-information-leaflets/discharge-information-following-a-glossectomy-and-radial-free-forearm-flap-ghpi1671_06_21/",
+      "organization": "Gloucestershire Hospitals NHS Foundation Trust",
+      "checkedAt": "2026-11-02",
+      "scope": "혀 수술 후 삼킴·영양 재활, 호흡을 방해하는 붓기와 지속·대량 출혈의 응급 평가. 현지 응급번호는 한국 119로 현지화",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nhs-dental-emergency": {
+      "title": "NHS · How to find an emergency or urgent NHS dentist appointment",
+      "url": "https://www.nhs.uk/nhs-services/dentists/how-to-find-an-nhs-dentist-in-an-emergency/",
+      "organization": "NHS",
+      "checkedAt": "2026-11-02",
+      "scope": "멈추지 않는 많은 구강 출혈 및 심한 구강·목 부종과 호흡곤란의 응급 평가",
+      "evidenceType": "official-patient-guidance",
+      "sourceUpdated": "2025-05-14"
+    }
+  },
+  "questionsForVisit": [
+    "제 암은 구강과 구인두 중 정확히 어디에서 시작됐나요?",
+    "절제 범위와 목 림프절 치료가 필요한 이유는 무엇인가요?",
+    "재건과 말하기·삼킴 재활은 언제 시작하나요?",
+    "방사선 전 치과·영양 평가와 구강 관리 계획은 무엇인가요?",
+    "출혈·호흡곤란·발열·식사 불가 때 누구에게 연락하나요?"
+  ],
+  "aiReview": {
+    "status": "completed",
+    "independent": true,
+    "mode": "독립 AI 사전점검",
+    "checkedAt": "2026-11-02T11:00:35.647165+09:00",
+    "clinicalApproval": "pending",
+    "reviewedDraftSha256": "d22de6e8dbe58937a47b038f0758b3bd315c026c9e0fd0d636747a3ee826c5a0",
+    "contentSha256": "9f0c28fe7ad932b8a52deef5ae61deda7b5c072041ada36be13f956c69be2002"
+  }
+}

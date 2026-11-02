@@ -793,7 +793,7 @@
 
 <div id="curtain"><div><b>ApuDa</b><small>아프지만, 다행이다.</small></div></div>
 
-<script src="/assets/apuda-first30-catalog.js?v=20261102-popup30"></script>
+<script src="/assets/apuda-first30-catalog.js?v=20261102-faq30"></script>
 <script src="/assets/apuda-cancer-videos.js?v=20261018"></script>
 <script src="/assets/apuda-video-dialog.js?v=20261102-popup30"></script>
 <script src="/assets/apuda-building-monitors.js?v=20261018-patient-1"></script>
@@ -885,7 +885,7 @@
        links:[['암 신호·검진 확인','/risk/',null,'국가암검진 대상 + 암 신호 50문항 · 결과는 진단이 아닙니다','🧭'],
               ['건강검진 선택 항목','/checkup/',null,'기본검진 외 추가로 고려할 항목 정리','🩺']]},
     2:{fl:'2F', kicker:'LIBRARY · 암종별 이해', title:'진단 첫 30일,\n내 암종부터 이해하기.',
-       desc:'《암 진단 첫 30일》 30암종의 표지와 무료 핵심안내서를 만나보세요. 기존 MINI·FAQ·영상도 제공되는 암종에서 함께 확인할 수 있습니다.',
+       desc:'《암 진단 첫 30일》 30암종의 무료 핵심안내서와 FAQ를 만나보세요. MINI·영상도 제공되는 암종에서 함께 이용할 수 있습니다.',
        stats:[['30종','무료 핵심안내','/library/first30/'],['4컷','만화 암 정보','https://product.kyobobook.co.kr/detail/S000219012641',1]],
        links:[['4컷 만화로 쉽게 이해되는 암 정보','https://product.kyobobook.co.kr/detail/S000219012641',null,'검사·병기·치료를 그림으로 쉽게 이해','📚'],
               ['유방암 첫 30일','https://apuda-breast.netlify.app/',null,'진단 후 꼭 알아야 할 검사·치료 흐름','🎀'],
@@ -1332,14 +1332,14 @@
       ? '<div class="book-choice-item"><span class="book-choice-num">1</span><span class="book-choice-copy"><b>'+esc(name)+' 진단 첫 30일 (MINI)</b><small>미리보기 · 전체 PDF도 코드 없이 무료</small></span><span class="book-choice-actions"><a class="primary" href="/library/mini/?cancer='+slug+'">미리보기</a><a href="/library/mini/?cancer='+slug+'#download">⬇ 다운로드</a></span></div>'
       : '<div class="book-choice-item soon"><span class="book-choice-num">1</span><span class="book-choice-copy"><b>'+esc(name)+' 진단 첫 30일 (MINI)</b><small>아래 무료 핵심안내서를 먼저 읽어 보세요.</small></span><span class="book-choice-actions"><span class="soon-badge">준비 중</span></span></div>';
     var faq=book.hasFaq
-      ? '<div class="book-choice-item"><span class="book-choice-num">2</span><span class="book-choice-copy"><b>'+esc(name)+' FAQ</b><small>환자·보호자가 진료실에서 자주 확인하는 질문</small></span><span class="book-choice-actions"><a href="/library/faq/?cancer='+slug+'">FAQ 보기</a></span></div>'
+      ? '<div class="book-choice-item"><span class="book-choice-num">2</span><span class="book-choice-copy"><b>'+esc(name)+' FAQ '+book.faqCount+'문항</b><small>환자·보호자가 진료실에서 자주 확인하는 질문</small></span><span class="book-choice-actions"><a href="/library/faq/?cancer='+slug+'">FAQ 보기</a></span></div>'
       : '<div class="book-choice-item soon"><span class="book-choice-num">2</span><span class="book-choice-copy"><b>'+esc(name)+' FAQ</b><small>진료실에서 확인할 질문은 무료 핵심안내서에 담았습니다.</small></span><span class="book-choice-actions"><span class="soon-badge">준비 중</span></span></div>';
     var more=book.hasMini
       ? '<div class="book-more"><span>'+esc(name)+' 더 알아보기</span><a href="/library/treatment-map/?cancer='+slug+'">🗺️ 치료결정 지도</a><a href="/library/drugs/?cancer='+slug+'">💊 관련 항암제</a><a href="/library/biomarkers/?cancer='+slug+'">🧬 관련 바이오마커</a><a href="/library/regimens/?cancer='+slug+'">💉 항암 요법 가이드</a></div>'
       : '<div class="book-more"><a href="/library/first30/">📚 무료 안내서 30종 전체 보기</a></div>';
     var note=book.hasMini
       ? '기존 MINI PDF 12종과 새 무료 핵심안내 30종을 이용하세요. <b>다운로드</b>를 누르면 코드 입력이나 SNS 참여 없이 PDF를 받을 수 있어요. 파일 앱에서 저장 여부를 확인하세요.'
-      : '이 암종의 무료 핵심안내서는 지금 읽을 수 있습니다. A4로 인쇄하거나 브라우저에서 PDF로 저장하세요. MINI·FAQ·완전판은 준비 중입니다.';
+      : '무료 핵심안내서와 FAQ 20문항을 지금 읽을 수 있습니다. 안내서는 A4 인쇄·브라우저 PDF 저장이 가능합니다. MINI·완전판은 준비 중입니다.';
     var old=document.getElementById('bookChoiceModal'); if(old) old.remove();
     var root=document.createElement('div'); root.id='bookChoiceModal'; root.className='book-choice-backdrop';
     root.innerHTML='<section class="book-choice-card" role="dialog" aria-modal="true" aria-label="'+esc(name)+' 자료 선택">'+
@@ -1380,7 +1380,7 @@
       return '<button type="button" class="mini-book" data-book="'+i+'" data-name="'+esc(name)+'" aria-label="'+esc(name)+' 가이드북 자료 선택">'+
         '<span class="mini-book-art" style="--cover:url(\''+esc(book.cover)+'\')">'+(badge?'<span class="mini-book-badge'+(badge==='인기'?' hot':'')+'">'+badge+'</span>':'')+'</span>'+
         '<span class="mini-book-meta"><span class="mini-book-vol">'+book.vol+'</span><span class="mini-book-name">'+esc(name)+'</span><span class="mini-book-go">→</span></span>'+
-        '<span class="mini-book-tags">'+(book.hasMini?'무료 · MINI · FAQ · 영상':'무료 핵심안내 · 6면')+'</span></button>';
+        '<span class="mini-book-tags">'+(book.hasMini?'무료 · MINI · FAQ · 영상':'무료 안내 · FAQ '+book.faqCount)+'</span></button>';
     }).join('');
     return '<span class="p-fl"><b>'+d.fl+'</b>'+d.kicker+'</span>'+
       '<div class="floor2-intro"><div><h2>'+d.title.replace(/\n/g,'&nbsp;<br>')+'</h2><p>'+d.desc+'</p></div>'+

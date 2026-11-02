@@ -1,0 +1,467 @@
+{
+  "slug": "testicular",
+  "name": "고환암",
+  "updated": "2026-11-02",
+  "revision": "20261102-corefaq-v1",
+  "edition": "진단 후 첫 30일 핵심 FAQ 20",
+  "reviewMode": "AI 사전점검",
+  "clinicalApproval": "pending",
+  "items": [
+    {
+      "n": 1,
+      "q": "정상피종과 비정상피종은 무엇이 다른가요?",
+      "a": "대부분의 고환암은 생식세포종양이며 정상피종(seminoma)과 비정상피종(nonseminoma)을 구분해 치료해요. 여러 성분이 섞인 혼합형도 있어요. 병리결과와 종양표지자, 병기를 함께 확인해야 하며 단순히 고환에 생겼다는 이유로 같은 치료를 하지는 않아요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.testicular.001",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-testicular-hp"
+        ],
+        "scope": "정상피종과 비정상피종은 무엇이 다른가요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 2,
+      "q": "AFP·β-hCG·LDH는 왜 수술 전후에 검사하나요?",
+      "a": "혈액의 종양표지자로 병기와 치료 반응·재발 여부를 판단하는 자료예요. 정상이라고 고환암을 배제할 수 없고, LDH 같은 수치는 암 외의 이유로도 변할 수 있어요. 수술 전 값과 수술 후 변화가 중요하므로 수치 하나보다 날짜별 흐름을 확인하세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.testicular.002",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-testicular-hp"
+        ],
+        "scope": "AFP·β-hCG·LDH는 왜 수술 전후에 검사하나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 3,
+      "q": "왜 바늘 조직검사보다 사타구니 쪽 수술을 먼저 하나요?",
+      "a": "의심되는 고환 악성종양은 보통 서혜부, 즉 사타구니를 통해 고환을 제거해 진단과 치료를 함께 해요. 음낭 피부를 통한 생검은 암세포의 국소 확산 위험 때문에 일반적으로 적절하지 않아요. 예외 상황은 전문팀이 판단하므로 예정된 수술 방법과 이유를 물어보세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.testicular.003",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-testicular-hp"
+        ],
+        "scope": "왜 바늘 조직검사보다 사타구니 쪽 수술을 먼저 하나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 4,
+      "q": "고환을 제거한 뒤에도 병기가 달라질 수 있나요?",
+      "a": "네, 수술 병리와 수술 후 종양표지자, CT 등에서 확인한 림프절·장기 전이를 합쳐 병기를 정해요. 고환의 혹 크기만으로 판단하지 않아요. 결과가 모두 나오는 시점과 추가 치료 결정에 필요한 검사를 설명받으세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.testicular.004",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-testicular-hp",
+          "nhs-testicular-tests"
+        ],
+        "scope": "고환을 제거한 뒤에도 병기가 달라질 수 있나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 5,
+      "q": "첫 치료 전에 준비해야 할 자료와 상담은 무엇인가요?",
+      "a": "고환 초음파·CT와 판독지, 수술 전 종양표지자, 복용약을 정리해 두세요. 아직 자녀 계획이 확실하지 않아도 정자 보존 가능성을 치료 전에 물어보는 것이 좋아요. 검사나 상담 때문에 치료가 지연되지 않도록 가능한 일정을 담당팀과 조율하세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.testicular.005",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nhs-testicular-tests",
+          "nhs-testicular-treatment",
+          "nci-fertility-men"
+        ],
+        "scope": "첫 치료 전에 준비해야 할 자료와 상담은 무엇인가요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 6,
+      "q": "수술 후 관찰만 하자는데 치료를 안 하는 건가요?",
+      "a": "능동적 감시(surveillance)는 선별된 환자에서 추가 치료 대신 정해진 진찰·표지자·영상검사로 면밀히 확인하는 적극적인 관리예요. 재발 위험과 필요 시 치료 가능성을 고려해 선택해요. 검사 일정을 지킬 수 있는지와 다른 보조치료의 장단점을 함께 논의하세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.testicular.006",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-testicular-treatment",
+          "nci-testicular-hp"
+        ],
+        "scope": "수술 후 관찰만 하자는데 치료를 안 하는 건가요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 7,
+      "q": "수술 후 항암치료나 방사선을 추가하는 이유는 무엇인가요?",
+      "a": "남아 있을 수 있는 암을 치료하거나 재발 위험을 낮추기 위한 경우가 있어요. 정상피종인지 비정상피종인지, 병기와 위험요인에 따라 적용이 달라요. 남들이 받은 치료 횟수를 기준으로 비교하기보다 제 경우 추가 치료의 목적과 대안을 확인하세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.testicular.007",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-testicular-treatment",
+          "nci-testicular-hp"
+        ],
+        "scope": "수술 후 항암치료나 방사선을 추가하는 이유는 무엇인가요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 8,
+      "q": "항암치료 뒤 배 안에 덩이가 남으면 모두 암인가요?",
+      "a": "남은 덩이는 흉터일 수도 있고 살아 있는 종양이나 기형종 성분일 수도 있어요. 정상피종·비정상피종과 종양표지자, 영상·덩이 크기 등에 따라 관찰·추가 검사·수술 판단이 달라요. 영상에 덩이가 있다는 이유만으로 항암치료 실패라고 결론내리지는 않아요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.testicular.008",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-testicular-hp"
+        ],
+        "scope": "항암치료 뒤 배 안에 덩이가 남으면 모두 암인가요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 9,
+      "q": "정자 보존은 언제 상담해야 하나요?",
+      "a": "가능하면 치료를 시작하기 전에 생식력 상담을 요청하세요. 고환암 자체나 수술·항암·방사선이 정자 생성과 사정 기능에 영향을 줄 수 있어요. 필요한 암 치료를 늦추지 않는 범위에서 정자 동결과 채취 방법을 상의하고, 이미 치료를 시작했어도 상담을 포기하지 마세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.testicular.009",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-fertility-men",
+          "nhs-testicular-treatment"
+        ],
+        "scope": "정자 보존은 언제 상담해야 하나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 10,
+      "q": "인공 고환을 넣으면 호르몬이나 생식 기능도 회복되나요?",
+      "a": "인공 고환은 주로 모양을 보완하는 보형물이며 정자나 호르몬을 만드는 장기는 아니에요. 삽입 여부와 시점은 본인의 선호와 수술 상태를 고려해 상의할 수 있어요. 기능에 대한 걱정은 보형물 선택과 구분해 호르몬·생식력 평가를 상담하세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.testicular.010",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nhs-testicular-treatment",
+          "nci-fertility-men"
+        ],
+        "scope": "인공 고환을 넣으면 호르몬이나 생식 기능도 회복되나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 11,
+      "q": "항암치료 중 열이나 오한이 나면 어떻게 하나요?",
+      "a": "38°C 이상 열이 나면 해열제를 먼저 먹기보다 치료병원에 즉시 연락하세요. 심한 오한은 그보다 낮은 체온이어도 확인이 필요해요. 마지막 항암 날짜·증상·체온을 전달하고, 심한 호흡곤란이나 의식 저하는 119 또는 응급실에서 평가받으세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.testicular.011",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-infection"
+        ],
+        "scope": "항암치료 중 열이나 오한이 나면 어떻게 하나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 12,
+      "q": "치료 중 새 기침이나 숨참이 생기면 운동 부족 때문인가요?",
+      "a": "운동 부족으로 단정하지 말고 치료팀에 빨리 알려 주세요. 감염이나 치료 부작용 등 원인이 다양하며 증상의 시작 시점과 치료 이력이 중요해요. 갑자기 심하게 숨이 차거나 가슴 통증·의식 저하가 있으면 119 또는 응급실을 이용하세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.testicular.012",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-testicular-hp",
+          "nci-infection",
+          "nhs-breathless"
+        ],
+        "scope": "치료 중 새 기침이나 숨참이 생기면 운동 부족 때문인가요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 13,
+      "q": "항암치료 후 귀울림·손발 저림도 알려야 하나요?",
+      "a": "네, 청력 변화나 귀울림·손발 저림은 일부 항암치료와 관련될 수 있어요. 다음 치료의 안전성 평가에 중요하므로 작아 보여도 시작 시점과 일상에 미치는 영향을 알려 주세요. 부작용이 걱정된다고 임의로 약을 끊거나 다음 치료를 빠뜨리지는 마세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.testicular.013",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-testicular-hp",
+          "nci-nerve"
+        ],
+        "scope": "항암치료 후 귀울림·손발 저림도 알려야 하나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 14,
+      "q": "한쪽 고환 제거 후 성기능이 모두 없어지나요?",
+      "a": "반드시 그런 것은 아니에요. 남은 고환의 기능과 추가 치료, 기존 건강상태에 따라 호르몬·정자·성기능의 변화가 달라요. 성욕·발기·사정이나 몸의 변화가 걱정되면 진료에서 따로 상담하세요. '젊으니까 괜찮다'며 불편을 숨길 필요는 없어요.",
+      "category": "care",
+      "review": {
+        "id": "faq.testicular.014",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-fertility-men",
+          "nci-sexual-men"
+        ],
+        "scope": "한쪽 고환 제거 후 성기능이 모두 없어지나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 15,
+      "q": "건강기능식품으로 항암 부작용을 줄일 수 있나요?",
+      "a": "제품마다 근거와 안전성이 다르고 항암제와 상호작용할 수 있어요. 성분표·복용량을 약사와 의료진에게 보여 주고 확인한 뒤 사용하세요. 보조제를 위해 표준치료를 미루거나, 부작용을 스스로 조절하려고 처방약을 바꾸지 마세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.testicular.015",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-cam"
+        ],
+        "scope": "건강기능식품으로 항암 부작용을 줄일 수 있나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 16,
+      "q": "표지자가 정상이면 추적 CT를 안 해도 되나요?",
+      "a": "종양표지자가 오르지 않는 고환암도 있어 혈액검사만으로 추적을 대신할 수는 없어요. 조직형·병기·치료 내용에 맞춰 진찰과 필요한 영상을 함께 계획해요. 검사마다 목적과 일정을 확인하고, 방사선 노출이 걱정되면 검사 필요성과 대안을 상담하세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.testicular.016",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-testicular-hp",
+          "nci-testicular-treatment"
+        ],
+        "scope": "표지자가 정상이면 추적 CT를 안 해도 되나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 17,
+      "q": "치료가 끝나면 남은 고환은 어떻게 살펴야 하나요?",
+      "a": "반대쪽에 새 멍울·크기나 단단함 변화·지속되는 불편이 생기면 진료로 확인하세요. 변화가 모두 암이라는 뜻은 아니지만 혼자 판단하지 않는 것이 좋아요. 담당의에게 자가 관찰 방법과 장기 추적 범위를 물어보고 정기 방문을 계속하세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.testicular.017",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-testicular-hp",
+          "nhs-testicular-treatment"
+        ],
+        "scope": "치료가 끝나면 남은 고환은 어떻게 살펴야 하나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 18,
+      "q": "치료 후 임신은 언제 시도할 수 있나요?",
+      "a": "안전한 시점은 받은 약·방사선과 생식력 회복 상태에 따라 달라요. 정자가 다시 만들어지는 것과 안전한 임신 시도 시점은 같은 질문이 아니에요. 담당팀과 생식의학팀에 피임 기간·정액검사·보관 정자 사용 계획을 확인하고 임의의 공통 기간을 적용하지 마세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.testicular.018",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-fertility-men",
+          "nci-testicular-hp"
+        ],
+        "scope": "치료 후 임신은 언제 시도할 수 있나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 19,
+      "q": "일이나 운동은 언제 다시 할 수 있나요?",
+      "a": "수술 상처·통증·피로, 항암 중 혈구 상태와 업무 강도에 따라 다르게 정해요. 무거운 물건을 드는 일이나 격한 운동의 재개는 수술팀에 확인하세요. 회복에 맞춰 활동을 조절하고 통증·부종·열이 새로 생기면 진료팀에 알리세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.testicular.019",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nhs-testicular-treatment",
+          "nci-infection"
+        ],
+        "scope": "일이나 운동은 언제 다시 할 수 있나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 20,
+      "q": "완치 가능성이 높다는 말만 듣고 추적을 생략해도 되나요?",
+      "a": "치료 성적이 좋은 암이라도 개인의 경과를 보장하거나 재발 위험이 없다는 뜻은 아니에요. 고환암 추적은 재발과 치료의 장기 영향을 확인하기 위해 중요해요. 검사 일정·놓쳤을 때 다시 예약하는 방법, 새로운 증상에 대한 연락처를 적어 두세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.testicular.020",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-testicular-hp",
+          "nci-testicular-treatment"
+        ],
+        "scope": "완치 가능성이 높다는 말만 듣고 추적을 생략해도 되나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    }
+  ],
+  "sources": {
+    "nci-infection": {
+      "title": "NCI · Infection and Neutropenia during Cancer Treatment",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/infection",
+      "organization": "National Cancer Institute",
+      "checkedAt": "2026-11-02",
+      "scope": "암 치료 중 38°C 이상 발열·오한과 즉시 의료진 연락, 해열제 복용 전 상담",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nci-fertility-men": {
+      "title": "NCI · Male Fertility and Cancer Treatment",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/fertility-men",
+      "organization": "National Cancer Institute",
+      "checkedAt": "2026-11-02",
+      "scope": "치료 전 생식력·정자 보존 상담, 치료 종류별 영향의 차이",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nci-cam": {
+      "title": "NCI · Complementary and Alternative Medicine",
+      "url": "https://www.cancer.gov/about-cancer/treatment/cam",
+      "organization": "National Cancer Institute",
+      "checkedAt": "2026-11-02",
+      "scope": "보완요법과 표준치료 대체의 구분, 보조제·약물 상호작용 상담",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nci-sexual-men": {
+      "title": "NCI · Sexual Health Issues in Men with Cancer",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/sexuality-men",
+      "organization": "National Cancer Institute",
+      "checkedAt": "2026-11-02",
+      "scope": "치료 후 발기·사정·성기능 변화의 상담과 개인별 관리",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nci-testicular-hp": {
+      "title": "NCI · Testicular Cancer Treatment (PDQ), Health Professional Version",
+      "url": "https://www.cancer.gov/types/testicular/hp/testicular-treatment-pdq",
+      "organization": "National Cancer Institute",
+      "checkedAt": "2026-11-02",
+      "scope": "정상피종/비정상피종, AFP·β-hCG·LDH, 서혜부 고환절제술과 음낭 생검의 한계",
+      "evidenceType": "official-professional-evidence-summary"
+    },
+    "nci-testicular-treatment": {
+      "title": "NCI · Testicular Cancer Treatment",
+      "url": "https://www.cancer.gov/types/testicular/treatment",
+      "organization": "National Cancer Institute",
+      "checkedAt": "2026-11-02",
+      "scope": "수술·항암·방사선·능동적 감시의 역할",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nhs-testicular-tests": {
+      "title": "NHS · Tests and next steps for testicular cancer",
+      "url": "https://www.nhs.uk/conditions/testicular-cancer/tests-and-next-steps/",
+      "organization": "NHS",
+      "checkedAt": "2026-11-02",
+      "scope": "초음파·혈액검사·수술에 의한 진단·병기 평가",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nhs-testicular-treatment": {
+      "title": "NHS · Treatment for testicular cancer",
+      "url": "https://www.nhs.uk/conditions/testicular-cancer/treatment/",
+      "organization": "NHS",
+      "checkedAt": "2026-11-02",
+      "scope": "치료 전 정자 보존, 인공 고환·치료 후 추적",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nhs-breathless": {
+      "title": "NHS · Shortness of breath",
+      "url": "https://www.nhs.uk/symptoms/shortness-of-breath/",
+      "organization": "NHS",
+      "checkedAt": "2026-11-02",
+      "scope": "심한 호흡곤란·가슴 압박·혼돈의 즉시 응급 평가. 영국 번호는 한국 119 경로로 현지화",
+      "evidenceType": "official-patient-guidance",
+      "sourceUpdated": "2024-01-30"
+    },
+    "nci-nerve": {
+      "title": "NCI · Nerve Problems (Peripheral Neuropathy) and Cancer Treatment",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/nerve-problems",
+      "organization": "National Cancer Institute",
+      "checkedAt": "2026-11-02",
+      "scope": "일부 암 치료에 의한 손발 저림과 신경증상은 조기 보고",
+      "evidenceType": "official-patient-guidance",
+      "sourceUpdated": "2020-01-15"
+    }
+  },
+  "questionsForVisit": [
+    "제 암은 정상피종·비정상피종·혼합형 중 무엇인가요?",
+    "수술 전후 AFP·β-hCG·LDH는 어떻게 변했고 병기에 어떤 영향을 주나요?",
+    "감시와 추가 항암·방사선·수술의 장단점은 무엇인가요?",
+    "정자 보존과 피임·임신 시도 시점을 언제 상담하나요?",
+    "발열·숨참·청력 변화가 생기면 어떻게 연락하나요?"
+  ],
+  "aiReview": {
+    "status": "completed",
+    "independent": true,
+    "mode": "독립 AI 사전점검",
+    "checkedAt": "2026-11-02T11:00:35.647165+09:00",
+    "clinicalApproval": "pending",
+    "reviewedDraftSha256": "214ebf2984d1949d854a9e58f15ab1e0956d07bdf6529bc35a1171c157228df6",
+    "contentSha256": "3993b9635251cd79ddf57661a22d454e34c907c54f5f346cac27904ec86e4a05"
+  }
+}

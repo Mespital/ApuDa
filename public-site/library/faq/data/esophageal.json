@@ -1,0 +1,475 @@
+{
+  "slug": "esophageal",
+  "name": "식도암",
+  "updated": "2026-11-02",
+  "revision": "20261102-corefaq-v1",
+  "edition": "진단 후 첫 30일 핵심 FAQ 20",
+  "reviewMode": "AI 사전점검",
+  "clinicalApproval": "pending",
+  "items": [
+    {
+      "n": 1,
+      "q": "음식이 걸리는 느낌만으로 식도암을 확진할 수 있나요?",
+      "a": "아니요. 삼키기 어려움인 연하곤란(dysphagia)은 암 외의 질환에서도 생겨요. 보통 내시경으로 병변을 살피고 조직을 채취해 확인하며, 이후 영상 등으로 퍼진 범위를 평가해요. 증상이 악화하거나 체중이 줄면 진료를 미루지 마세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.esophageal.001",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 소화기·흉부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-esophageal-hp",
+          "nhs-esophageal-symptoms"
+        ],
+        "scope": "음식이 걸리는 느낌만으로 식도암을 확진할 수 있나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 2,
+      "q": "편평세포암과 선암은 무엇이 다른가요?",
+      "a": "식도암의 대표적인 두 조직형으로, 생기는 세포와 흔한 위치·관련 요인이 달라요. 치료 결정에는 이 조직형과 병기·몸 상태가 함께 쓰여요. 위식도접합부에 걸친 병변은 위치 구분도 중요하니 병리결과의 정확한 이름과 발생 부위를 확인하세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.esophageal.002",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 소화기·흉부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-esophageal-overview",
+          "nci-esophageal-hp"
+        ],
+        "scope": "편평세포암과 선암은 무엇이 다른가요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 3,
+      "q": "내시경·초음파내시경·CT·PET는 왜 나눠서 하나요?",
+      "a": "내시경과 조직검사는 암의 존재와 조직형을 확인하고, 다른 검사는 벽을 파고든 깊이·림프절·먼 장기 전이를 살피는 데 도움을 줘요. 모든 환자가 모든 검사를 받는 것은 아니에요. 각 검사가 치료 결정을 어떻게 바꾸는지 물어보세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.esophageal.003",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 소화기·흉부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-esophageal-hp"
+        ],
+        "scope": "내시경·초음파내시경·CT·PET는 왜 나눠서 하나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 4,
+      "q": "종양 크기가 작으면 병기도 낮은가요?",
+      "a": "반드시 그렇지는 않아요. 식도암의 병기는 크기만이 아니라 벽 침범 깊이, 림프절과 다른 장기 전이 등을 함께 보며 조직형도 중요해요. 검사로 추정한 임상병기와 수술 뒤 확인한 병리병기가 달라질 수 있어 현재 판단의 근거를 설명받으세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.esophageal.004",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 소화기·흉부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-esophageal-hp"
+        ],
+        "scope": "종양 크기가 작으면 병기도 낮은가요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 5,
+      "q": "PD-L1·HER2 같은 검사는 모두에게 필요한가요?",
+      "a": "치료 단계와 조직형에 따라 필요한 검사가 달라요. 진행성 암에서 일부 면역·표적치료를 논의할 때 쓰이지만, 양성 결과 하나가 약의 사용이나 효과를 보장하지는 않아요. 제 경우 필요한 검사명과 검체, 국내 적용 기준을 의료진에게 확인하세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.esophageal.005",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 소화기·흉부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-esophageal-hp"
+        ],
+        "scope": "PD-L1·HER2 같은 검사는 모두에게 필요한가요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 6,
+      "q": "아주 초기 식도암은 내시경으로 치료할 수 있나요?",
+      "a": "선별된 아주 초기 병변에서는 내시경 절제를 고려할 수 있어요. 깊이와 절제 경계, 림프절 전이 위험 등 조건을 평가해야 하므로 모든 초기암에 가능한 것은 아니에요. 절제 후 병리결과에 따라 수술이나 다른 추가 치료가 필요한지도 확인하세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.esophageal.006",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 소화기·흉부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-esophageal",
+          "nci-esophageal-hp"
+        ],
+        "scope": "아주 초기 식도암은 내시경으로 치료할 수 있나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 7,
+      "q": "수술 전에 항암이나 항암방사선을 먼저 하는 이유는 무엇인가요?",
+      "a": "국소적으로 진행했지만 수술 가능한 식도암에서 종양을 줄이고 재발 위험을 낮추기 위해 여러 치료를 조합하기도 해요. 먼저 치료한다고 수술을 포기했다는 뜻은 아니에요. 치료 후 수술 가능성을 언제 어떤 검사로 다시 평가할지 물어보세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.esophageal.007",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 소화기·흉부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-esophageal-hp",
+          "nhs-esophageal-treatment"
+        ],
+        "scope": "수술 전에 항암이나 항암방사선을 먼저 하는 이유는 무엇인가요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 8,
+      "q": "수술하지 않고 항암방사선으로 치료하기도 하나요?",
+      "a": "네, 일부 환자에서는 항암치료와 방사선을 함께 하는 치료가 주된 치료가 될 수 있어요. 위치·조직형·병기와 수술 위험 등을 고려하며, 반드시 증상 완화 목적만을 뜻하지는 않아요. 본인 치료의 목표와 이후 평가·구제치료 계획을 확인하세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.esophageal.008",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 소화기·흉부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-esophageal-hp",
+          "nhs-esophageal-treatment"
+        ],
+        "scope": "수술하지 않고 항암방사선으로 치료하기도 하나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 9,
+      "q": "식도를 떼면 다시 먹을 수 있나요?",
+      "a": "식도의 일부를 제거한 뒤 남은 식도와 위 등을 연결해 음식 통로를 만드는 경우가 많아요. 수술 범위와 회복에 따라 먹는 방법이 달라지고 영양관 도움이 필요할 수 있어요. 예상 수술 방식, 식사 재개 과정과 퇴원 후 영양 지원을 미리 설명받으세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.esophageal.009",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 소화기·흉부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-esophageal",
+          "nhs-esophageal-treatment"
+        ],
+        "scope": "식도를 떼면 다시 먹을 수 있나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 10,
+      "q": "식도 스텐트를 넣으면 암도 치료되나요?",
+      "a": "스텐트(stent)는 좁아진 식도 통로를 넓혀 삼킴을 돕는 기구예요. 스텐트만으로 암 자체를 없애는 치료와 같지는 않아요. 치료 목적·위치와 예정된 항암·방사선 등을 고려해 결정하므로, 다른 영양 공급 방법과 장단점을 함께 상담하세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.esophageal.010",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 소화기·흉부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-esophageal"
+        ],
+        "scope": "식도 스텐트를 넣으면 암도 치료되나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 11,
+      "q": "물을 마실 때도 사레가 들면 계속 먹어도 되나요?",
+      "a": "음식이나 물이 기도로 넘어가는 흡인 위험을 평가해야 하므로 무리해서 계속 삼키지 말고 치료팀에 빨리 연락하세요. 삼킴 평가 후 음식 형태나 영양 공급 방법을 조정할 수 있어요. 심하게 숨을 못 쉬는 등 위급한 상태는 119 또는 응급실을 이용하세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.esophageal.011",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 소화기·흉부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nhs-dysphagia",
+          "nci-esophageal"
+        ],
+        "scope": "물을 마실 때도 사레가 들면 계속 먹어도 되나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 12,
+      "q": "체중이 빠지는데 항암치료 때까지 기다려도 되나요?",
+      "a": "체중과 섭취량 감소는 치료 전부터 적극적으로 상담할 문제예요. 식도 통로의 좁아짐과 통증·오심 등을 평가하고 영양팀이 먹는 방법이나 보충 영양을 도울 수 있어요. 마시지도 못하거나 소변이 줄고 어지러우면 탈수 평가를 위해 바로 연락하세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.esophageal.012",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 소화기·흉부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-nutrition",
+          "nci-esophageal"
+        ],
+        "scope": "체중이 빠지는데 항암치료 때까지 기다려도 되나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 13,
+      "q": "영양관을 달면 입으로는 영영 못 먹나요?",
+      "a": "영양관은 필요한 영양을 공급하기 위한 방법이며 일시적으로 쓰는 경우도 있어요. 입으로 먹을 수 있는 범위는 삼킴 안전성과 치료 상태를 따져 정해요. 관 종류·관리법·막히거나 빠졌을 때 연락처를 배우고 임의로 관을 빼거나 약을 갈아 넣지 마세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.esophageal.013",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 소화기·흉부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-esophageal",
+          "nhs-dysphagia"
+        ],
+        "scope": "영양관을 달면 입으로는 영영 못 먹나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 14,
+      "q": "항암방사선 중 열이 나거나 오한이 심하면 어떻게 하나요?",
+      "a": "항암치료 중 38°C 이상 발열은 해열제를 먹기 전 치료병원에 즉시 연락해야 해요. 심한 오한은 체온이 낮아도 확인이 필요해요. 삼킴 통증 때문에 열과 탈수 증상을 놓치지 않도록 체온과 먹은 양을 기록하고, 위급한 호흡곤란·의식 저하는 응급 평가를 받으세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.esophageal.014",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 소화기·흉부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-infection",
+          "nci-mouth"
+        ],
+        "scope": "항암방사선 중 열이 나거나 오한이 심하면 어떻게 하나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 15,
+      "q": "피를 토하거나 변이 검게 변하면 기다려도 되나요?",
+      "a": "출혈 가능성이 있어 다음 외래를 기다리지 말고 즉시 병원에 연락해 평가받으세요. 특히 피를 많이 토하거나 검은 변과 함께 어지럼·실신·호흡곤란이 있으면 119 또는 응급실을 이용하세요. 약이나 음식 때문이라고 스스로 판단해 관찰만 하지 마세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.esophageal.015",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 소화기·흉부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nhs-esophageal-symptoms"
+        ],
+        "scope": "피를 토하거나 변이 검게 변하면 기다려도 되나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 16,
+      "q": "치료가 끝나면 무엇을 추적하나요?",
+      "a": "암의 치료 반응과 재발 여부뿐 아니라 체중·섭취량·삼킴 기능, 수술·방사선의 후유증도 살펴요. 방문과 검사 계획은 치료 방법과 상태에 따라 달라요. 새 통증·삼킴 악화·체중 감소는 예정 검사일과 관계없이 치료팀에 알려 주세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.esophageal.016",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 소화기·흉부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nhs-esophageal-treatment",
+          "nci-esophageal"
+        ],
+        "scope": "치료가 끝나면 무엇을 추적하나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 17,
+      "q": "치료 후 다시 음식이 걸리면 재발인가요?",
+      "a": "재발 외에도 수술 부위나 방사선 후 흉터로 좁아지는 등 여러 원인이 있을 수 있어요. 증상만으로 구분하기 어려워 새로 생기거나 심해지는 연하곤란은 평가가 필요해요. 무리하게 음식 크기를 줄여 버티기보다 내시경 등 필요한 검사를 상담하세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.esophageal.017",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 소화기·흉부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-esophageal",
+          "nhs-dysphagia"
+        ],
+        "scope": "치료 후 다시 음식이 걸리면 재발인가요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 18,
+      "q": "보호자는 식사를 어떻게 도와주면 좋을까요?",
+      "a": "먹으라고 강요하기보다 환자가 안전하게 먹을 수 있는 식사 형태와 영양팀의 계획을 함께 확인하세요. 섭취량·사레·통증·구토·체중 변화를 적어 치료팀에 전달하면 도움이 돼요. 입으로 먹는 것만 고집하지 말고 필요한 보충 영양을 함께 상담하세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.esophageal.018",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 소화기·흉부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-nutrition",
+          "nhs-dysphagia"
+        ],
+        "scope": "보호자는 식사를 어떻게 도와주면 좋을까요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 19,
+      "q": "암에 좋다는 즙이나 한약을 먹어도 되나요?",
+      "a": "삼키기 쉬워 보이더라도 치료와의 상호작용이나 영양 불균형을 확인해야 해요. 제품·성분을 의료진과 약사에게 보여 주고, 음식이나 보조제로 항암·수술을 대신하지 마세요. 삼킴 장애가 있으면 액체도 안전하다고 단정하지 말고 섭취 방법을 확인하세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.esophageal.019",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 소화기·흉부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-cam",
+          "nhs-dysphagia"
+        ],
+        "scope": "암에 좋다는 즙이나 한약을 먹어도 되나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    },
+    {
+      "n": 20,
+      "q": "완화의료를 권하면 항암치료를 끝낸다는 뜻인가요?",
+      "a": "그렇지는 않아요. 증상과 삶의 질을 돕는 돌봄은 항암치료와 함께 받을 수 있어요. 식도암에서는 통증·삼킴·영양·불안을 함께 관리하는 것이 중요해요. 현재 암 치료의 목표와 증상 조절 계획을 구분해 물어보고 원하는 생활을 의료진에게 알려 주세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.esophageal.020",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 소화기·흉부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-esophageal-hp",
+          "nci-nutrition",
+          "nci-palliative"
+        ],
+        "scope": "완화의료를 권하면 항암치료를 끝낸다는 뜻인가요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
+      }
+    }
+  ],
+  "sources": {
+    "nci-infection": {
+      "title": "NCI · Infection and Neutropenia during Cancer Treatment",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/infection",
+      "organization": "National Cancer Institute",
+      "checkedAt": "2026-11-02",
+      "scope": "암 치료 중 38°C 이상 발열·오한과 즉시 의료진 연락, 해열제 복용 전 상담",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nci-nutrition": {
+      "title": "NCI · Weight Changes, Malnutrition, and Cancer",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/appetite-loss",
+      "organization": "National Cancer Institute",
+      "checkedAt": "2026-11-02",
+      "scope": "섭취량·체중 저하의 조기 보고와 개인별 영양 지원",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nci-cam": {
+      "title": "NCI · Complementary and Alternative Medicine",
+      "url": "https://www.cancer.gov/about-cancer/treatment/cam",
+      "organization": "National Cancer Institute",
+      "checkedAt": "2026-11-02",
+      "scope": "보완요법과 표준치료 대체의 구분, 보조제·약물 상호작용 상담",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nci-mouth": {
+      "title": "NCI · Mouth and Throat Problems: Cancer Treatment Side Effects",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/mouth-throat",
+      "organization": "National Cancer Institute",
+      "checkedAt": "2026-11-02",
+      "scope": "두경부 치료 전 치과 평가, 점막염·구강건조·삼킴 장애와 영양 지원",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nci-esophageal": {
+      "title": "NCI · Esophageal Cancer Treatment",
+      "url": "https://www.cancer.gov/types/esophageal/treatment",
+      "organization": "National Cancer Institute",
+      "checkedAt": "2026-11-02",
+      "scope": "내시경 절제·수술·항암방사선·영양관·스텐트의 일반적 역할",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nci-esophageal-hp": {
+      "title": "NCI · Esophageal Cancer Treatment (PDQ), Health Professional Version",
+      "url": "https://www.cancer.gov/types/esophageal/hp/esophageal-treatment-pdq",
+      "organization": "National Cancer Institute",
+      "checkedAt": "2026-11-02",
+      "scope": "조직형·병기·치료 순서와 전신치료 결정 요인",
+      "evidenceType": "official-professional-evidence-summary"
+    },
+    "nci-esophageal-overview": {
+      "title": "NCI · Esophageal Cancer",
+      "url": "https://www.cancer.gov/types/esophageal",
+      "organization": "National Cancer Institute",
+      "checkedAt": "2026-11-02",
+      "scope": "편평세포암·선암의 구분과 진단·병기 자료 범위",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nhs-esophageal-treatment": {
+      "title": "NHS · Oesophageal cancer: treatment",
+      "url": "https://www.nhs.uk/conditions/oesophageal-cancer/treatment/",
+      "organization": "NHS",
+      "checkedAt": "2026-11-02",
+      "scope": "수술·항암방사선·치료 중 식사와 추적관찰",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nhs-esophageal-symptoms": {
+      "title": "NHS · Oesophageal cancer: symptoms",
+      "url": "https://www.nhs.uk/conditions/oesophageal-cancer/symptoms/",
+      "organization": "NHS",
+      "checkedAt": "2026-11-02",
+      "scope": "연하곤란·체중 감소·검은 변·출혈 증상의 신속한 평가",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nhs-dysphagia": {
+      "title": "NHS · Dysphagia: swallowing problems",
+      "url": "https://www.nhs.uk/symptoms/swallowing-problems-dysphagia/",
+      "organization": "NHS",
+      "checkedAt": "2026-11-02",
+      "scope": "삼킴 평가·영양팀·재활팀과 식사 형태·영양관 상담",
+      "evidenceType": "official-patient-guidance",
+      "sourceUpdated": "2026-10-26"
+    },
+    "nci-palliative": {
+      "title": "NCI · Palliative Care in Cancer",
+      "url": "https://www.cancer.gov/about-cancer/advanced-cancer/care-choices/palliative-care-fact-sheet",
+      "organization": "National Cancer Institute",
+      "checkedAt": "2026-11-02",
+      "scope": "진단부터 증상·삶의 질·정서·가족 지원을 암 치료와 함께 제공할 수 있음",
+      "evidenceType": "official-patient-guidance",
+      "sourceUpdated": "2021-11-01"
+    }
+  },
+  "questionsForVisit": [
+    "제 조직형과 임상병기, 수술 가능성을 어떻게 판단했나요?",
+    "내시경·수술·항암방사선 중 권하는 순서와 목표는 무엇인가요?",
+    "치료 선택에 필요한 바이오마커 검사가 있나요?",
+    "현재 안전하게 먹는 방법과 영양 공급 대안은 무엇인가요?",
+    "삼킴 악화·출혈·발열이 생기면 언제 어디로 연락하나요?"
+  ],
+  "aiReview": {
+    "status": "completed",
+    "independent": true,
+    "mode": "독립 AI 사전점검",
+    "checkedAt": "2026-11-02T11:00:35.647165+09:00",
+    "clinicalApproval": "pending",
+    "reviewedDraftSha256": "f6f1973f41224ff73bb69f7ffd162e4f143b62923ec678157f42528dda15812d",
+    "contentSha256": "0d3b75748bdb006456591c05c63ee2a05bf7d0090793026dfc351c6e2f6c52e9"
+  }
+}

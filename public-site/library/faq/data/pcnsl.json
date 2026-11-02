@@ -1,0 +1,458 @@
+{
+  "slug": "pcnsl",
+  "name": "원발성 중추신경계 림프종",
+  "updated": "2026-11-02",
+  "revision": "20261102-corefaq-v1",
+  "edition": "진단 후 첫 30일 핵심 FAQ 20",
+  "reviewMode": "AI 사전점검",
+  "clinicalApproval": "pending",
+  "contentScope": "성인 첫 진단·초기 치료 준비를 위한 일반 환자교육. 국제 근거의 치료 선택지를 국내 허가·급여와 동일하게 해석하지 않음.",
+  "items": [
+    {
+      "n": 1,
+      "q": "뇌에 생겼는데 왜 혈액암이라고 하나요?",
+      "a": "원발성 중추신경계 림프종(PCNSL)은 림프구에서 생기는 림프종이 뇌·척수·뇌척수막·눈 같은 부위에서 시작한 병입니다. 교모세포종 등 다른 뇌종양과 세포의 기원과 치료가 달라요. 전신 림프종이 뇌로 퍼진 2차 중추신경계 림프종과도 구별해야 합니다.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.pcnsl.001",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-pcnsl-hp",
+          "bcuuk-pcnsl"
+        ],
+        "scope": "PCNSL의 림프종 기원·질환 범위와 다른 뇌종양·2차 CNS 침범 구별"
+      }
+    },
+    {
+      "n": 2,
+      "q": "MRI에서 림프종이 의심되면 확진된 것인가요?",
+      "a": "MRI는 중요한 단서지만 대개 조직검사로 확진해야 합니다. 다른 종양·염증·감염도 비슷한 영상 소견을 보일 수 있어요. 보통 정위적 생검(stereotactic biopsy)으로 조직을 얻으며, 안전성 때문에 생검이 어려운 경우의 대안은 전문팀이 따로 판단합니다.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.pcnsl.002",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "eha-esmo-pcnsl-2024"
+        ],
+        "scope": "조영 MRI와 조직 생검 중심 확진·영상 감별 및 생검 불가능 시 예외"
+      }
+    },
+    {
+      "n": 3,
+      "q": "조직검사 전에 스테로이드를 조심하는 이유는 무엇인가요?",
+      "a": "스테로이드가 림프종 세포를 빠르게 줄여 생검에서 진단하기 어렵게 만들 수 있기 때문입니다. 가능하면 검사 전 사용을 피하도록 계획하지만, 뇌부종·신경학적 악화 등 응급 상황은 다르게 판단할 수 있어요. 이미 처방받았다면 스스로 끊지 말고 복용 사실을 생검팀에 즉시 알리세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.pcnsl.003",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "eha-esmo-pcnsl-2024",
+          "cruk-pcnsl"
+        ],
+        "scope": "가능하면 생검 전 스테로이드 회피·진단 영향·임상 악화 예외; 임의 중단 금지"
+      }
+    },
+    {
+      "n": 4,
+      "q": "뇌 병변인데 전신 PET-CT나 다른 검사는 왜 하나요?",
+      "a": "몸의 다른 부위에 림프종이 있는지 확인해 원발성 PCNSL과 2차 CNS 침범을 구별하려는 목적입니다. 이 구별은 치료 계획에 영향을 줘요. 검사 범위는 병력·진찰과 영상 결과에 따라 정하므로, 뇌 검사만으로 모든 평가가 끝난다고 생각하지 마세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.pcnsl.004",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "eha-esmo-pcnsl-2024",
+          "nci-pcnsl-hp"
+        ],
+        "scope": "전신 질환 배제에 의한 PCNSL/SCNSL 구별과 치료계획"
+      }
+    },
+    {
+      "n": 5,
+      "q": "눈 검사나 뇌척수액 검사가 필요한가요?",
+      "a": "눈이나 뇌척수액에도 림프종이 있을 수 있어 침범 범위를 확인합니다. 눈에 증상이 없더라도 안과 평가를 권할 수 있고, 요추천자는 뇌압·영상 소견 등 안전 조건을 먼저 확인해요. 검사를 모두 같은 날 받는 것은 아니며 본인에게 필요한 순서와 이유를 물어보세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.pcnsl.005",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "eha-esmo-pcnsl-2024",
+          "nci-pcnsl-hp"
+        ],
+        "scope": "안과·CSF 평가와 요추천자 금기·안전 조건의 개별 판단"
+      }
+    },
+    {
+      "n": 6,
+      "q": "PCNSL의 첫 약물치료에서 메토트렉세이트가 중요한가요?",
+      "a": "고용량 메토트렉세이트(HD-MTX)는 치료가 가능한 많은 환자에서 유도치료의 중요한 기반입니다. 중추신경계에 도달하도록 사용하며 다른 약을 조합할 수 있어요. 신장 기능·체력·동반질환에 따라 적합성과 조합이 달라지므로, 인터넷의 요법명을 그대로 적용하지 마세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.pcnsl.006",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "eha-esmo-pcnsl-2024",
+          "nci-pcnsl-hp"
+        ],
+        "scope": "HD-MTX 기반 유도치료의 위치와 신장·체력 등에 따른 적합성·조합 차이"
+      }
+    },
+    {
+      "n": 7,
+      "q": "뇌종양을 크게 떼어 내는 수술부터 하지 않나요?",
+      "a": "PCNSL은 일반적으로 큰 절제수술보다 확진을 위한 생검 뒤 약물치료를 중심으로 접근합니다. 림프종의 특성과 신경 손상 위험 등을 고려하기 때문이에요. 다만 급격한 뇌압 상승 등 일부 특수 상황에서는 수술적 조치를 검토할 수 있어 전문팀의 설명이 필요합니다.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.pcnsl.007",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "eha-esmo-pcnsl-2024",
+          "cruk-pcnsl"
+        ],
+        "scope": "일반적인 생검·약물 중심 접근과 급성 뇌압 상승 등 선택적 수술 예외"
+      }
+    },
+    {
+      "n": 8,
+      "q": "영상에서 좋아졌는데 공고치료를 더 하는 이유는 무엇인가요?",
+      "a": "유도치료 뒤 검사에 보이지 않는 세포가 남을 수 있어 재발 위험을 낮추려는 목적입니다. 공고치료(consolidation)는 적합한 환자의 자가이식이나 방사선 등 여러 접근 중에서 정해요. 반응·체력·신경인지 기능과 장기 부작용을 함께 비교해 설명받으세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.pcnsl.008",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "eha-esmo-pcnsl-2024",
+          "nci-pcnsl-hp"
+        ],
+        "scope": "유도 후 공고치료 목적과 자가이식·방사선 등 선택의 개인화"
+      }
+    },
+    {
+      "n": 9,
+      "q": "나이가 많으면 고용량 치료나 이식은 모두 불가능한가요?",
+      "a": "나이만으로 같은 결론을 내리지는 않습니다. 신장·간·심장 기능, 일상생활 능력과 인지 상태, 치료 반응을 종합해 감당할 수 있는 치료를 고릅니다. 치료 도중 상태가 달라지면 이식 적합성도 다시 평가할 수 있으므로 대안과 목표를 함께 상의하세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.pcnsl.009",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "eha-esmo-pcnsl-2024"
+        ],
+        "scope": "생물학적 적합성·동반질환·동적 이식 적합성 평가; 연령 단독 배제 금지"
+      }
+    },
+    {
+      "n": 10,
+      "q": "눈에도 림프종이 있으면 치료가 달라지나요?",
+      "a": "눈 침범 여부는 치료 범위를 정하는 데 중요합니다. 전신 약물치료와 눈에 대한 국소치료의 필요성을 혈액내과·안과 등이 함께 검토해요. 시야 흐림·비문증 같은 새 증상을 알리고, 눈 증상이 좋아졌다는 이유만으로 뇌·다른 부위 추적을 끝내지 마세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.pcnsl.010",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "eha-esmo-pcnsl-2024",
+          "nci-pcnsl-hp"
+        ],
+        "scope": "눈 침범 평가·전신/국소치료와 신경계 추적의 연계"
+      }
+    },
+    {
+      "n": 11,
+      "q": "치료 중 열이나 오한이 나면 어떻게 하나요?",
+      "a": "38°C 이상 발열이나 심한 오한이 있으면 해열제를 먼저 먹고 기다리지 말고 치료병원에 즉시 연락하세요. 약물치료로 감염 방어가 약해질 수 있습니다. 의식이 평소보다 떨어지거나 심한 숨참이 있으면 감염 외 원인도 가능하므로 119나 응급실을 이용하세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.pcnsl.011",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-infection",
+          "nci-pcnsl-patient"
+        ],
+        "scope": "치료 중 감염 위험·발열·오한과 해열제 전 연락·중증 증상 평가"
+      }
+    },
+    {
+      "n": 12,
+      "q": "갑자기 말을 못 하거나 마비·경련이 생기면 기다려도 되나요?",
+      "a": "다음 진료를 기다리지 말고 즉시 응급 평가를 받아야 합니다. PCNSL 자체나 뇌부종, 뇌혈관 문제 등 여러 원인이 있을 수 있어 증상만으로 구별할 수 없어요. 갑작스러운 마비·언어장애·첫 경련·의식 저하는 119나 응급실을 이용하고 진단과 복용약을 알리세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.pcnsl.012",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-pcnsl-patient",
+          "eha-esmo-pcnsl-2024"
+        ],
+        "scope": "새 급성 신경학적 증상의 원인 불확실성과 신속한 응급 평가"
+      }
+    },
+    {
+      "n": 13,
+      "q": "HD-MTX 치료 때 신장 검사와 약물 농도를 자주 확인하나요?",
+      "a": "신장 기능과 약의 배출 상태가 치료 안전성에 중요하기 때문입니다. 고용량 메토트렉세이트(HD-MTX)는 환자 상태에 맞춘 수분·보조약과 검사 관리가 필요한 치료예요. 처방된 보조약이나 수분 안내를 스스로 바꾸지 말고, 소변 감소·구토 등 새 문제를 바로 알리세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.pcnsl.013",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "eha-esmo-pcnsl-2024",
+          "nci-pcnsl-hp",
+          "eviq-hdmtx-toxicity"
+        ],
+        "scope": "HD-MTX 신장 기능·배설·보조관리의 중요성; 정확한 용량·수액량 지시하지 않음"
+      }
+    },
+    {
+      "n": 14,
+      "q": "평소 약이나 건강기능식품도 치료팀에 알려야 하나요?",
+      "a": "모두 알려야 합니다. 다른 약이나 보충제는 치료약의 흡수·대사·배설에 영향을 줄 수 있고, HD-MTX 치료에서는 신장 기능도 중요해요. 처방약·일반약·한약·제품 성분표를 제출하고, 스테로이드·항경련제를 포함한 기존 약을 임의로 끊거나 새 약을 추가하지 마세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.pcnsl.014",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-interactions",
+          "eha-esmo-pcnsl-2024",
+          "eviq-hdmtx-toxicity"
+        ],
+        "scope": "병용약·보충제 검토와 HD-MTX 신장 상태·스테로이드 등 임의 변경 방지"
+      }
+    },
+    {
+      "n": 15,
+      "q": "기억력이나 성격이 달라지면 가족은 어떻게 도와야 하나요?",
+      "a": "새 변화가 있으면 환자 탓으로 돌리지 말고 치료팀에 알려야 합니다. 질환·부종·약·감염 등 여러 원인이 관여할 수 있어요. 시작 시점과 일상에 미치는 영향을 짧게 기록하고, 복약·낙상 예방·인지 및 재활 평가에 필요한 도움을 상의하세요. 갑작스러운 의식 변화는 응급 평가가 우선입니다.",
+      "category": "care",
+      "review": {
+        "id": "faq.pcnsl.015",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-pcnsl-patient",
+          "eha-esmo-pcnsl-2024"
+        ],
+        "scope": "인지·행동 변화와 신경인지 기능 평가·재활 및 급성 변화 감별"
+      }
+    },
+    {
+      "n": 16,
+      "q": "치료 반응은 MRI 하나로만 판단하나요?",
+      "a": "MRI가 중요하지만 증상·진찰과 스테로이드 사용, 처음 침범했던 눈·뇌척수액 등의 상태를 함께 봅니다. 스테로이드 자체가 영상에 영향을 줄 수 있어 복용량과 변경일도 알려야 해요. 영상 결과를 스스로 해석해 치료를 줄이기보다 정해진 평가 기준을 설명받으세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.pcnsl.016",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "eha-esmo-pcnsl-2024",
+          "nci-pcnsl-hp"
+        ],
+        "scope": "MRI와 임상·스테로이드·침범 부위의 종합 반응 평가"
+      }
+    },
+    {
+      "n": 17,
+      "q": "PCNSL은 일반 림프종처럼 1~4기로 이해하면 되나요?",
+      "a": "일반적인 전신 림프종의 병기 숫자만으로 이해하기 어렵습니다. 진단 시 중추신경계·눈 안의 범위와 전신 질환 여부를 확인하고, 치료에는 전신 상태·장기 기능·반응 등이 중요해요. 다른 뇌종양이나 전신 림프종의 병기·예후표를 그대로 대입하지 마세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.pcnsl.017",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-pcnsl-patient",
+          "nci-pcnsl-hp",
+          "eha-esmo-pcnsl-2024"
+        ],
+        "scope": "PCNSL 범위·전신 배제 평가와 일반 병기표의 부적절한 전용 방지"
+      }
+    },
+    {
+      "n": 18,
+      "q": "전뇌방사선치료는 모든 환자가 받아야 하나요?",
+      "a": "모든 환자에게 같은 시점·방식으로 시행하지 않습니다. 전뇌방사선(WBRT)은 질환 조절의 이득과 기억력·인지 기능 등에 미칠 위험을 함께 고려해 선택해요. 나이·반응·이식 가능성에 따라 대안이 달라지므로, 방사선의 목표와 예상 부작용을 설명받으세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.pcnsl.018",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "eha-esmo-pcnsl-2024",
+          "nci-pcnsl-hp"
+        ],
+        "scope": "WBRT의 선택적 적용과 신경인지 독성·대안·개인 요인"
+      }
+    },
+    {
+      "n": 19,
+      "q": "재발하면 처음 치료를 다시 하거나 새 표적약을 쓰나요?",
+      "a": "이전 치료에 대한 반응과 재발까지의 기간, 체력·장기 기능에 따라 여러 접근을 검토합니다. 일부는 HD-MTX 재치료·다른 약·이식·방사선 또는 임상시험이 고려될 수 있어요. 특정 약이 외국 자료에 나온다는 사실만으로 국내 허가·급여나 본인 적합성이 확인된 것은 아닙니다.",
+      "category": "followup",
+      "review": {
+        "id": "faq.pcnsl.019",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "eha-esmo-pcnsl-2024",
+          "nci-pcnsl-hp"
+        ],
+        "scope": "재발 시 이전 반응·기간·적합성에 따른 선택과 국내 허가·급여의 구별"
+      }
+    },
+    {
+      "n": 20,
+      "q": "첫 달에 어떤 내용을 우선 확인하고 기록하나요?",
+      "a": "생검 진단명, 스테로이드 등 복용약, 눈·뇌척수액·전신 평가 결과, HD-MTX 적합성과 치료 목표를 정리하세요. MRI 평가일과 응급 연락처도 받아 두면 좋습니다. 신경 증상 때문에 설명을 기억하기 어렵다면 동의한 가족의 동행과 복약·일상 지원을 요청하세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.pcnsl.020",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "eha-esmo-pcnsl-2024",
+          "nci-pcnsl-hp",
+          "nci-infection"
+        ],
+        "scope": "PCNSL 초기 진단·치료·반응 평가와 인지·가족 지원·안전 연락 준비의 종합"
+      }
+    }
+  ],
+  "sources": {
+    "nci-infection": {
+      "title": "Infection and Neutropenia during Cancer Treatment",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/infection",
+      "organization": "미국 국립암연구소(NCI)",
+      "checkedAt": "2026-11-02",
+      "scope": "암 치료 중 38°C 이상 발열·오한의 신속한 연락, 해열제로 감염 신호를 가리지 않기, 손 씻기·음식 위생",
+      "evidenceType": "official-patient-guidance",
+      "sourceUpdated": "2020-01-23"
+    },
+    "nci-interactions": {
+      "title": "Cancer Therapy Interactions With Foods and Dietary Supplements (PDQ)–Patient Version",
+      "url": "https://www.cancer.gov/about-cancer/treatment/cam/patient/dietary-interactions-pdq",
+      "organization": "미국 국립암연구소(NCI)",
+      "checkedAt": "2026-11-02",
+      "scope": "건강기능식품·허브·특정 음식과 항암제의 흡수·대사·배설 상호작용; 특정 제품의 안전성이나 국내 허가를 보장하지 않음",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nci-pcnsl-patient": {
+      "title": "Primary CNS Lymphoma Treatment (PDQ)–Patient Version",
+      "url": "https://www.cancer.gov/types/lymphoma/patient/primary-cns-lymphoma-treatment-pdq",
+      "organization": "미국 국립암연구소(NCI)",
+      "checkedAt": "2026-11-02",
+      "scope": "PCNSL의 질환 범위·신경 증상·눈과 뇌척수액 평가·추적. 치료 선택의 구체적 우선순위는 전문 지침과 교차 확인",
+      "evidenceType": "official-patient-guidance"
+    },
+    "nci-pcnsl-hp": {
+      "title": "Primary Central Nervous System Lymphoma Treatment (PDQ)–Health Professional Version",
+      "url": "https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq",
+      "organization": "미국 국립암연구소(NCI)",
+      "checkedAt": "2026-11-02",
+      "scope": "원발성과 전신 림프종의 CNS 침범 구별, HD-MTX 기반 유도치료·선별 환자의 공고이식·방사선의 인지 독성·재발 치료",
+      "evidenceType": "official-evidence-summary"
+    },
+    "eha-esmo-pcnsl-2024": {
+      "title": "Primary central nervous system lymphomas: EHA–ESMO Clinical Practice Guideline for diagnosis, treatment and follow-up",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1002/hem3.89",
+      "organization": "European Hematology Association / European Society for Medical Oncology",
+      "checkedAt": "2026-11-02",
+      "scope": "주로 면역기능이 보존된 성인 PCNSL: 조직 생검·가능하면 생검 전 스테로이드 회피와 임상 악화 예외, HD-MTX 기반 유도치료·개별 공고치료·신장/인지 기능·MRI 추적",
+      "evidenceType": "professional-clinical-guideline",
+      "sourceUpdated": "2024-06-04"
+    },
+    "bcuuk-pcnsl": {
+      "title": "Primary CNS lymphoma (PCNSL)",
+      "url": "https://bloodcancer.org.uk/understanding-blood-cancer/lymphoma/cns-lymphoma/",
+      "organization": "Blood Cancer UK",
+      "checkedAt": "2026-11-02",
+      "scope": "PCNSL과 전신 림프종의 2차 CNS 침범·다른 뇌종양 구별, 증상·진단·치료 후 생활과 반응",
+      "evidenceType": "official-patient-guidance"
+    },
+    "cruk-pcnsl": {
+      "title": "Primary central nervous system lymphoma (PCNSL)",
+      "url": "https://www.cancerresearchuk.org/about-cancer/brain-tumours/types/lymphoma-brain",
+      "organization": "Cancer Research UK",
+      "checkedAt": "2026-11-02",
+      "scope": "생검·스테로이드 시점·약물 기반 치료와 공고, 운전 및 일상·추적 상담. 영국 운전 규정을 한국에 전용하지 않음",
+      "evidenceType": "official-patient-guidance"
+    },
+    "eviq-hdmtx-toxicity": {
+      "title": "Management of high-dose methotrexate toxicity — ID 3535",
+      "url": "https://www.eviq.org.au/clinical-resources/side-effect-and-toxicity-management/prophylaxis-and-treatment/3535-management-of-high-dose-methotrexate-toxicity",
+      "organization": "Cancer Institute NSW / eviQ",
+      "checkedAt": "2026-11-02",
+      "scope": "HD-MTX의 신장·혈중 농도 감시, 수분·구제요법 및 병용약 확인 원리만 사용. 문서의 2024 보완과 검토기한 경과 안내를 확인했으며 구체적 용량·시간·수액량·중단 지시는 환자 FAQ에 옮기지 않음",
+      "evidenceType": "official-clinical-safety-resource"
+    }
+  },
+  "questionsForVisit": [
+    "PCNSL 조직 진단이 확인되었고 전신 림프종의 CNS 침범과 구별되었나요?",
+    "생검 전후 스테로이드와 항경련제 등 제 약은 어떻게 관리하나요?",
+    "눈·뇌척수액 평가와 신장 기능상 HD-MTX 치료 계획은 무엇인가요?",
+    "유도치료 후 공고이식·방사선 등은 어떤 기준으로 결정하나요?",
+    "MRI 평가일과 새 신경 증상·발열 때 응급 연락 방법을 알려 주세요."
+  ],
+  "aiReview": {
+    "status": "completed",
+    "independent": true,
+    "mode": "독립 AI 사전점검",
+    "checkedAt": "2026-11-02T11:00:35.647165+09:00",
+    "clinicalApproval": "pending",
+    "reviewedDraftSha256": "49d75777611a464086777ce07615f0960520e120fbf7d27eb6b41fe5c23fe2cb",
+    "contentSha256": "449c0a425dc5d70477a34eaface661d85fe7e96e2e9faeea70a67de7a0aa4025"
+  }
+}

@@ -9,7 +9,8 @@
     "cover": "/assets/books/first30/breast.webp?v=20261101-medical-v2",
     "href": "/library/first30/books/01.html",
     "hasMini": true,
-    "hasFaq": true
+    "hasFaq": true,
+    "faqCount": 100
   },
   {
     "vol": 2,
@@ -18,7 +19,8 @@
     "cover": "/assets/books/first30/lung.webp?v=20261101-medical-v2",
     "href": "/library/first30/books/02.html",
     "hasMini": true,
-    "hasFaq": true
+    "hasFaq": true,
+    "faqCount": 100
   },
   {
     "vol": 3,
@@ -27,7 +29,8 @@
     "cover": "/assets/books/first30/stomach.webp?v=20261101-validated-v1",
     "href": "/library/first30/books/03.html",
     "hasMini": true,
-    "hasFaq": true
+    "hasFaq": true,
+    "faqCount": 100
   },
   {
     "vol": 4,
@@ -36,7 +39,8 @@
     "cover": "/assets/books/first30/colorectal.webp?v=20261101-validated-v1",
     "href": "/library/first30/books/04.html",
     "hasMini": true,
-    "hasFaq": true
+    "hasFaq": true,
+    "faqCount": 100
   },
   {
     "vol": 5,
@@ -45,7 +49,8 @@
     "cover": "/assets/books/first30/thyroid.webp?v=20261101-medical-v2",
     "href": "/library/first30/books/05.html",
     "hasMini": true,
-    "hasFaq": true
+    "hasFaq": true,
+    "faqCount": 100
   },
   {
     "vol": 6,
@@ -54,7 +59,8 @@
     "cover": "/assets/books/first30/kidney.webp?v=20261101-medical-v2",
     "href": "/library/first30/books/06.html",
     "hasMini": true,
-    "hasFaq": true
+    "hasFaq": true,
+    "faqCount": 100
   },
   {
     "vol": 7,
@@ -63,7 +69,8 @@
     "cover": "/assets/books/first30/prostate.webp?v=20261101-medical-v2",
     "href": "/library/first30/books/07.html",
     "hasMini": true,
-    "hasFaq": true
+    "hasFaq": true,
+    "faqCount": 100
   },
   {
     "vol": 8,
@@ -72,7 +79,8 @@
     "cover": "/assets/books/first30/pancreas.webp?v=20261101-medical-v2",
     "href": "/library/first30/books/08.html",
     "hasMini": true,
-    "hasFaq": true
+    "hasFaq": true,
+    "faqCount": 100
   },
   {
     "vol": 9,
@@ -81,7 +89,8 @@
     "cover": "/assets/books/first30/biliary.webp?v=20261101-medical-v2",
     "href": "/library/first30/books/09.html",
     "hasMini": true,
-    "hasFaq": true
+    "hasFaq": true,
+    "faqCount": 100
   },
   {
     "vol": 10,
@@ -90,7 +99,8 @@
     "cover": "/assets/books/first30/liver.webp?v=20261101-medical-v2",
     "href": "/library/first30/books/10.html",
     "hasMini": true,
-    "hasFaq": true
+    "hasFaq": true,
+    "faqCount": 100
   },
   {
     "vol": 11,
@@ -99,7 +109,8 @@
     "cover": "/assets/books/first30/lymphoma.webp?v=20261101-medical-v2",
     "href": "/library/first30/books/11.html",
     "hasMini": true,
-    "hasFaq": true
+    "hasFaq": true,
+    "faqCount": 100
   },
   {
     "vol": 12,
@@ -108,7 +119,8 @@
     "cover": "/assets/books/first30/cervical.webp?v=20261101-medical-v2",
     "href": "/library/first30/books/12.html",
     "hasMini": true,
-    "hasFaq": true
+    "hasFaq": true,
+    "faqCount": 100
   },
   {
     "vol": 13,
@@ -117,7 +129,8 @@
     "cover": "/assets/books/first30/ovarian.webp?v=20261101-medical-v2",
     "href": "/library/first30/books/13.html",
     "hasMini": false,
-    "hasFaq": false
+    "hasFaq": true,
+    "faqCount": 20
   },
   {
     "vol": 14,
@@ -126,7 +139,8 @@
     "cover": "/assets/books/first30/endometrial.webp?v=20261101-medical-v2",
     "href": "/library/first30/books/14.html",
     "hasMini": false,
-    "hasFaq": false
+    "hasFaq": true,
+    "faqCount": 20
   },
   {
     "vol": 15,
@@ -135,7 +149,8 @@
     "cover": "/assets/books/first30/esophageal.webp?v=20261101-medical-v2",
     "href": "/library/first30/books/15.html",
     "hasMini": false,
-    "hasFaq": false
+    "hasFaq": true,
+    "faqCount": 20
   },
   {
     "vol": 16,
@@ -144,7 +159,8 @@
     "cover": "/assets/books/first30/bladder.webp?v=20261101-medical-v2",
     "href": "/library/first30/books/16.html",
     "hasMini": false,
-    "hasFaq": false
+    "hasFaq": true,
+    "faqCount": 20
   },
   {
     "vol": 17,
@@ -153,7 +169,8 @@
     "cover": "/assets/books/first30/testicular.webp?v=20261101-medical-v2",
     "href": "/library/first30/books/17.html",
     "hasMini": false,
-    "hasFaq": false
+    "hasFaq": true,
+    "faqCount": 20
   },
   {
     "vol": 18,
@@ -162,7 +179,8 @@
     "cover": "/assets/books/first30/oral.webp?v=20261101-medical-v2",
     "href": "/library/first30/books/18.html",
     "hasMini": false,
-    "hasFaq": false
+    "hasFaq": true,
+    "faqCount": 20
   },
   {
     "vol": 19,
@@ -171,7 +189,8 @@
     "cover": "/assets/books/first30/laryngeal.webp?v=20261101-medical-v2",
     "href": "/library/first30/books/19.html",
     "hasMini": false,
-    "hasFaq": false
+    "hasFaq": true,
+    "faqCount": 20
   },
   {
     "vol": 20,
@@ -180,7 +199,8 @@
     "cover": "/assets/books/first30/nasopharyngeal.webp?v=20261101-medical-v2",
     "href": "/library/first30/books/20.html",
     "hasMini": false,
-    "hasFaq": false
+    "hasFaq": true,
+    "faqCount": 20
   },
   {
     "vol": 21,
@@ -189,7 +209,8 @@
     "cover": "/assets/books/first30/melanoma.webp?v=20261101-medical-v2",
     "href": "/library/first30/books/21.html",
     "hasMini": false,
-    "hasFaq": false
+    "hasFaq": true,
+    "faqCount": 20
   },
   {
     "vol": 22,
@@ -198,7 +219,8 @@
     "cover": "/assets/books/first30/sarcoma.webp?v=20261101-medical-v2",
     "href": "/library/first30/books/22.html",
     "hasMini": false,
-    "hasFaq": false
+    "hasFaq": true,
+    "faqCount": 20
   },
   {
     "vol": 23,
@@ -207,7 +229,8 @@
     "cover": "/assets/books/first30/brain.webp?v=20261101-medical-v2",
     "href": "/library/first30/books/23.html",
     "hasMini": false,
-    "hasFaq": false
+    "hasFaq": true,
+    "faqCount": 20
   },
   {
     "vol": 24,
@@ -216,7 +239,8 @@
     "cover": "/assets/books/first30/myeloma.webp?v=20261101-medical-v2",
     "href": "/library/first30/books/24.html",
     "hasMini": false,
-    "hasFaq": false
+    "hasFaq": true,
+    "faqCount": 20
   },
   {
     "vol": 25,
@@ -225,7 +249,8 @@
     "cover": "/assets/books/first30/aml.webp?v=20261101-medical-v2",
     "href": "/library/first30/books/25.html",
     "hasMini": false,
-    "hasFaq": false
+    "hasFaq": true,
+    "faqCount": 20
   },
   {
     "vol": 26,
@@ -234,7 +259,8 @@
     "cover": "/assets/books/first30/all.webp?v=20261101-validated-v1",
     "href": "/library/first30/books/26.html",
     "hasMini": false,
-    "hasFaq": false
+    "hasFaq": true,
+    "faqCount": 20
   },
   {
     "vol": 27,
@@ -243,7 +269,8 @@
     "cover": "/assets/books/first30/cml.webp?v=20261101-medical-v2",
     "href": "/library/first30/books/27.html",
     "hasMini": false,
-    "hasFaq": false
+    "hasFaq": true,
+    "faqCount": 20
   },
   {
     "vol": 28,
@@ -252,7 +279,8 @@
     "cover": "/assets/books/first30/hodgkin.webp?v=20261101-medical-v2",
     "href": "/library/first30/books/28.html",
     "hasMini": false,
-    "hasFaq": false
+    "hasFaq": true,
+    "faqCount": 20
   },
   {
     "vol": 29,
@@ -261,7 +289,8 @@
     "cover": "/assets/books/first30/pcnsl.webp?v=20261101-medical-v2",
     "href": "/library/first30/books/29.html",
     "hasMini": false,
-    "hasFaq": false
+    "hasFaq": true,
+    "faqCount": 20
   },
   {
     "vol": 30,
@@ -270,7 +299,8 @@
     "cover": "/assets/books/first30/cup.webp?v=20261101-medical-v2",
     "href": "/library/first30/books/30.html",
     "hasMini": false,
-    "hasFaq": false
+    "hasFaq": true,
+    "faqCount": 20
   }
 ];
   var bySlug=Object.create(null);

@@ -1,0 +1,431 @@
+{
+  "slug": "sarcoma",
+  "name": "연부조직육종",
+  "updated": "2026-11-02",
+  "revision": "20261102-corefaq-v1",
+  "edition": "진단 후 첫 30일 핵심 FAQ 20",
+  "reviewMode": "AI 사전점검",
+  "clinicalApproval": "pending",
+  "scope": "성인 연부조직육종의 첫 진단·치료 준비. 골육종·소아육종·GIST·기타 특수 아형의 치료를 이 FAQ와 동일시하지 않음.",
+  "items": [
+    {
+      "n": 1,
+      "q": "연부조직육종은 뼈암과 같은 병인가요?",
+      "a": "연부조직육종은 근육·지방·혈관·신경 주변 등 몸을 지지하는 연한 조직에서 생기는 여러 암을 묶은 말입니다. 골육종 같은 뼈의 암과 구별하며, 위장관기질종양(GIST) 등은 별도 특성을 가진 안내가 필요해요. 정확한 발생 부위와 병리 아형을 확인하는 것이 출발점입니다.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.sarcoma.001",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 육종",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-sarcoma"
+        ],
+        "scope": "성인 연부조직육종의 범위와 골육종·특수 유형 구별"
+      }
+    },
+    {
+      "n": 2,
+      "q": "멍울이 아프지 않으면 암이 아닌가요?",
+      "a": "통증이 없다는 이유만으로 양성이라고 판단할 수 없습니다. 연부조직육종은 처음에 통증 없는 덩이로 나타날 수 있고, 깊은 부위에서는 커진 뒤 발견되기도 해요. 커지는 멍울·지속되는 붓기나 압박 증상은 진료를 받아 영상·조직 평가가 필요한지 확인하세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.sarcoma.002",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 육종",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-sarcoma"
+        ],
+        "scope": "무통성 종괴와 증상의 비특이성"
+      }
+    },
+    {
+      "n": 3,
+      "q": "조직검사 결과를 육종 전문 병리의가 다시 보는 이유는요?",
+      "a": "육종은 아형이 다양하고 다른 종양과 구별이 어려울 수 있기 때문입니다. 면역염색·필요한 분자검사와 경험 있는 병리 검토가 치료 방향에 영향을 줄 수 있어요. 다른 병원 진료를 받을 때는 결과지뿐 아니라 병리 슬라이드·조직 블록의 대여 방법도 확인하세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.sarcoma.003",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 육종",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-sarcoma"
+        ],
+        "scope": "육종 병리 전문 검토와 추가 조직 검사"
+      }
+    },
+    {
+      "n": 4,
+      "q": "MRI와 흉부 검사 등은 각각 무엇을 보나요?",
+      "a": "원발 부위의 범위와 주변 혈관·신경·근육 관계, 다른 장기로 퍼졌는지를 나눠 평가합니다. 부위와 아형에 따라 MRI·CT 등의 선택과 검사 범위가 달라져요. 모든 환자가 같은 검사를 반복하는 것은 아니므로 어떤 치료 결정을 위한 검사인지 물어보세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.sarcoma.004",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 육종",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-sarcoma"
+        ],
+        "scope": "원발 범위·원격전이 평가와 부위별 검사 선택"
+      }
+    },
+    {
+      "n": 5,
+      "q": "등급과 병기는 어떻게 다른가요?",
+      "a": "등급(grade)은 암세포 모양·분열 정도 등으로 본 생물학적 특성이고, 병기(stage)는 종양 크기·퍼진 범위 등을 종합한 구분입니다. 같은 크기라도 등급이나 발생 부위가 다르면 위험 평가가 달라질 수 있어요. 아형·등급·병기를 각각 설명해 달라고 요청하세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.sarcoma.005",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 육종",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-sarcoma"
+        ],
+        "scope": "조직학적 등급과 부위별 병기 체계의 구별"
+      }
+    },
+    {
+      "n": 6,
+      "q": "멍울을 먼저 떼고 육종 여부를 나중에 확인하면 안 되나요?",
+      "a": "육종이 의심되면 절제 전에 전문팀과 영상·생검 계획을 정하는 것이 중요합니다. 생검 위치와 경로는 나중 수술 범위에도 영향을 줄 수 있어요. 이미 제거했다면 잘못됐다고 단정하거나 다시 임의 처치하지 말고 수술 기록·병리·영상을 모아 다음 계획을 상담하세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.sarcoma.006",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 육종",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-sarcoma"
+        ],
+        "scope": "다학제 계획된 생검과 후속 절제; 이미 절제된 경우 개별 재평가"
+      }
+    },
+    {
+      "n": 7,
+      "q": "팔·다리에 생기면 반드시 절단하나요?",
+      "a": "반드시 그렇지는 않습니다. 종양을 충분히 제거하면서 기능을 보존하는 사지 보존 수술을 가능한 경우 검토하며, 절단은 일부 상황에 필요합니다. 신경·혈관 침범, 절제 범위, 재건 가능성을 함께 봐요. 암 조절과 예상 기능·재활을 모두 설명받으세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.sarcoma.007",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 육종",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-sarcoma"
+        ],
+        "scope": "사지 보존 수술과 선택적 절단의 역할"
+      }
+    },
+    {
+      "n": 8,
+      "q": "절제면에 암세포가 있다고 하면 어떻게 하나요?",
+      "a": "절제면(margin)은 제거한 조직의 가장자리입니다. 암세포가 가장자리에 닿거나 남은 암이 의심되면 재절제·방사선 등 추가 치료를 논의할 수 있어요. 아형·부위·이미 받은 치료와 기능 손실 위험에 따라 달라지므로 결과 한 줄만으로 다음 수술을 단정하지 않습니다.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.sarcoma.008",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 육종",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-sarcoma"
+        ],
+        "scope": "절제면과 남은 종양·추가 국소치료의 개별화"
+      }
+    },
+    {
+      "n": 9,
+      "q": "방사선치료는 수술 전과 후 중 언제 하나요?",
+      "a": "종양 위치·크기·등급, 예상 절제면과 부작용을 고려해 수술 전 또는 후로 계획합니다. 작은 저등급 종양 등에서는 수술만으로 치료하는 경우도 있어요. 내 경우 방사선이 필요한 목표와 주변 정상 조직·상처 회복에 미칠 영향을 함께 물어보세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.sarcoma.009",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 육종",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-sarcoma"
+        ],
+        "scope": "수술 전후 방사선의 선택과 일부 수술 단독 치료"
+      }
+    },
+    {
+      "n": 10,
+      "q": "육종이면 모두 같은 항암제를 쓰나요?",
+      "a": "그렇지 않습니다. 병리 아형과 퍼진 범위, 이전 치료, 전신 상태에 따라 약물치료의 역할과 종류가 달라집니다. 일부 아형에서는 특정 분자 변화에 맞는 치료나 임상시험을 검토해요. 다른 육종 환자가 받는 약이 내게도 맞는지 결과지와 함께 확인하세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.sarcoma.010",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 육종",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-sarcoma"
+        ],
+        "scope": "다양한 육종 아형별 전신치료와 선택적 표적치료"
+      }
+    },
+    {
+      "n": 11,
+      "q": "수술 후 운동이나 체중 싣기는 어떻게 시작하나요?",
+      "a": "수술 부위와 제거·재건한 근육·힘줄·신경 등에 따라 허용 범위가 다릅니다. 임의로 강하게 운동하기보다 수술팀·재활팀이 정한 걷기, 체중 부하, 관절 운동 계획을 확인하세요. 통증이나 기능 변화도 기록해 재활 강도 조정에 활용하면 좋습니다.",
+      "category": "care",
+      "review": {
+        "id": "faq.sarcoma.011",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 육종",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-sarcoma",
+          "nci-palliative"
+        ],
+        "scope": "사지 보존의 기능 목표와 개별 재활 계획; 구체 운동 처방 아님"
+      }
+    },
+    {
+      "n": 12,
+      "q": "수술 상처가 더 붓고 열이 나면 어떻게 하나요?",
+      "a": "상처 주변의 새 붉어짐·붓기·통증·분비물이나 발열은 치료팀에 알려야 합니다. 수술 후 변화와 감염 등을 증상만으로 구별하기 어렵기 때문이에요. 퇴원 지침의 연락 기준을 따르고, 붓기의 변화·체온·분비물 상태를 함께 전달하세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.sarcoma.012",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 육종",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-infection"
+        ],
+        "scope": "수술 부위 감염 의심 증상과 연락"
+      }
+    },
+    {
+      "n": 13,
+      "q": "치료 중 새로 숨이 차면 폐 전이 때문인가요?",
+      "a": "숨참만으로 폐전이를 확정할 수는 없습니다. 감염·약물 영향 등 다른 원인도 있어 새롭거나 악화되는 증상은 평가가 필요해요. 갑작스럽고 심한 호흡곤란이나 흉통, 의식 저하는 119 등 응급 평가를 받고, 치료 중인 약과 수술 정보를 알려 주세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.sarcoma.013",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 육종",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-sarcoma",
+          "nci-infection",
+          "nhs-breathlessness"
+        ],
+        "scope": "호흡 증상의 비특이성과 심한 급성 증상 평가"
+      }
+    },
+    {
+      "n": 14,
+      "q": "항암치료 중 38°C 이상 열이 나면 어떻게 하나요?",
+      "a": "치료병원에 바로 연락하고 해열제를 먹기 전에 상담하세요. 호중구라는 감염 방어 세포가 줄어든 시기에는 감염이 빠르게 심해질 수 있습니다. 38°C 미만이라도 심한 오한·숨참·상태 악화가 있으면 알리고, 병원에서 준 개별 발열 지침을 따르세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.sarcoma.014",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 육종",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-infection"
+        ],
+        "scope": "항암치료 중 발열·오한과 호중구 감소 감염 위험"
+      }
+    },
+    {
+      "n": 15,
+      "q": "육종에 좋다는 식품이나 한약을 추가해도 되나요?",
+      "a": "특정 식품이나 보조제가 육종을 치료하거나 재발을 막는다고 단정할 근거는 없습니다. 성분에 따라 항암제 작용에 영향을 줄 수 있어요. 복용 중인 제품의 성분·용량을 약사와 의료진에게 공유하고, 식사 문제는 영양 상담으로 해결 방향을 정하세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.sarcoma.015",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 육종",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-supplements",
+          "nci-cam"
+        ],
+        "scope": "보조제 효과 불확실성·상호작용과 표준치료 유지"
+      }
+    },
+    {
+      "n": 16,
+      "q": "치료 뒤에는 원래 종양 자리만 추적하나요?",
+      "a": "국소 재발과 다른 부위로 퍼지는 가능성을 함께 살핍니다. 진찰·원발 부위 영상·필요한 흉부 검사 등은 아형·등급·병기와 치료 결과에 맞춰 정해요. 검사 간격은 모두 같지 않으므로 내 추적 계획과 예약 전에 알려야 할 증상을 확인하세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.sarcoma.016",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 육종",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-sarcoma"
+        ],
+        "scope": "국소·원격 재발을 고려한 개별 추적"
+      }
+    },
+    {
+      "n": 17,
+      "q": "수술 부위에 새 멍울이 생기면 재발인가요?",
+      "a": "재발 외에도 흉터나 수술 후 변화 등 여러 가능성이 있습니다. 만져지는 덩이가 새로 생기거나 커지면 크기·위치·발견 날짜를 기록해 치료팀에 알리세요. 겉모습이나 통증 여부만으로 판단하거나 임의로 제거하기보다 필요 시 영상·조직 검사를 받습니다.",
+      "category": "followup",
+      "review": {
+        "id": "faq.sarcoma.017",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 육종",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-sarcoma"
+        ],
+        "scope": "새 종괴의 감별과 재평가; 재발 단정 금지"
+      }
+    },
+    {
+      "n": 18,
+      "q": "연부조직육종은 자녀에게 유전되나요?",
+      "a": "일부 유전 증후군이 육종 위험과 연관되지만 모든 육종이 유전되는 것은 아닙니다. 본인이나 가족에게 여러 암이 생겼거나 관련 유전 질환이 있다면 담당의에게 알려 유전 상담 필요성을 확인하세요. 가족 모두에게 같은 검사를 자동 권하는 뜻은 아닙니다.",
+      "category": "followup",
+      "review": {
+        "id": "faq.sarcoma.018",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 육종",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-sarcoma"
+        ],
+        "scope": "일부 유전 증후군과 육종 위험; 일괄 가족 검사 아님"
+      }
+    },
+    {
+      "n": 19,
+      "q": "통증 치료나 완화의료는 항암이 끝난 뒤에만 받나요?",
+      "a": "아닙니다. 완화의료(palliative care)는 진단 때부터 통증·피로·불안·가족 부담을 줄이기 위해 항암치료와 함께 받을 수 있습니다. 통증 위치와 강도, 움직임·수면에 미치는 영향을 알려 개인별 관리 계획을 세우세요. 통증을 참는 것이 암 치료에 도움이 되는 것은 아닙니다.",
+      "category": "followup",
+      "review": {
+        "id": "faq.sarcoma.019",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 육종",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-palliative",
+          "nci-pain"
+        ],
+        "scope": "항암치료와 병행하는 증상·심리 지지와 통증 평가"
+      }
+    },
+    {
+      "n": 20,
+      "q": "첫 30일 진료에서 꼭 확인할 것은 무엇인가요?",
+      "a": "정확한 아형·등급·병기, 조직 검토 완료 여부, 생검과 수술 경로가 조율됐는지 확인하세요. 수술의 예상 절제면과 기능, 방사선·약물치료의 필요성을 함께 물어보면 좋습니다. 영상·병리·이전 수술 기록을 모아 육종 전문팀에서 치료 순서를 정리하세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.sarcoma.020",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 육종",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-sarcoma"
+        ],
+        "scope": "육종 전문팀의 병리·영상·치료 계획을 연결하는 질문"
+      }
+    }
+  ],
+  "sources": {
+    "nci-cam": {
+      "title": "Complementary and Alternative Medicine",
+      "url": "https://www.cancer.gov/about-cancer/treatment/cam",
+      "organization": "National Cancer Institute",
+      "scope": "특정 식품·보조제가 암을 치료·재발 예방한다는 근거 부재와 표준치료 대체 금지",
+      "evidenceType": "official-patient-guidance",
+      "checkedAt": "2026-11-02"
+    },
+    "nci-infection": {
+      "title": "Infection and Neutropenia during Cancer Treatment",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/infection",
+      "organization": "National Cancer Institute",
+      "scope": "암 치료 중 38°C 이상 발열·오한 등 감염 신호와 즉시 연락, 해열제 복용 전 상담",
+      "evidenceType": "official-patient-guidance",
+      "checkedAt": "2026-11-02"
+    },
+    "nci-pain": {
+      "title": "Cancer Pain (PDQ®)–Patient Version",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/pain/pain-pdq",
+      "organization": "National Cancer Institute",
+      "scope": "개별 통증 평가·기록·의료진과 관리 계획 수립",
+      "evidenceType": "official-patient-guidance",
+      "checkedAt": "2026-11-02"
+    },
+    "nci-palliative": {
+      "title": "Palliative Care in Cancer",
+      "url": "https://www.cancer.gov/about-cancer/advanced-cancer/care-choices/palliative-care-fact-sheet",
+      "organization": "National Cancer Institute",
+      "scope": "진단 단계부터 항암치료와 함께 제공할 수 있는 증상·심리·가족 지지",
+      "evidenceType": "official-patient-guidance",
+      "checkedAt": "2026-11-02"
+    },
+    "nci-sarcoma": {
+      "title": "Soft Tissue Sarcoma Treatment (PDQ®)–Patient Version",
+      "url": "https://www.cancer.gov/types/soft-tissue-sarcoma/patient/adult-soft-tissue-treatment-pdq",
+      "organization": "National Cancer Institute",
+      "scope": "성인 연부조직육종의 아형·계획된 생검·병리 재검·등급과 병기·국소 및 전신치료",
+      "evidenceType": "official-patient-guidance",
+      "checkedAt": "2026-11-02"
+    },
+    "nci-supplements": {
+      "title": "Cancer Therapy Interactions With Foods and Dietary Supplements (PDQ®)–Patient Version",
+      "url": "https://www.cancer.gov/about-cancer/treatment/cam/patient/dietary-interactions-pdq",
+      "organization": "National Cancer Institute",
+      "scope": "건강보조제·한약 성분·식품 농축물과 항암제 상호작용 가능성, 약 목록 공유",
+      "evidenceType": "official-patient-guidance",
+      "checkedAt": "2026-11-02"
+    },
+    "nhs-breathlessness": {
+      "title": "Shortness of breath",
+      "url": "https://www.nhs.uk/symptoms/shortness-of-breath/",
+      "organization": "NHS",
+      "scope": "심한 호흡곤란·흉부 압박·갑작스러운 혼돈 등 즉시 평가가 필요한 호흡 관련 증상. 영국 응급번호를 한국에 그대로 적용하지 않음",
+      "evidenceType": "official-patient-guidance",
+      "checkedAt": "2026-11-02"
+    }
+  },
+  "questionsForVisit": [
+    "정확한 육종 아형·등급·부위별 병기는 무엇인가요?",
+    "병리 전문 검토와 필요한 분자검사가 완료됐나요?",
+    "생검 경로와 수술 계획, 예상 절제면은 어떻게 조율하나요?",
+    "기능 보존·재건·재활과 방사선·약물치료의 역할은 무엇인가요?",
+    "원발 부위와 폐 등 추적 계획, 바로 연락할 증상은 무엇인가요?"
+  ],
+  "aiReview": {
+    "status": "completed",
+    "independent": true,
+    "mode": "독립 AI 사전점검",
+    "checkedAt": "2026-11-02T11:00:35.647165+09:00",
+    "clinicalApproval": "pending",
+    "reviewedDraftSha256": "dfaf046d3403087f78fb3d512bcb2a7c2aaf1785fbd47a2bd3196bb7e859a5c6",
+    "contentSha256": "83bed360cabe42e5379cce49f2b726db9cb0840f020f5523d13fdb487436493a"
+  }
+}

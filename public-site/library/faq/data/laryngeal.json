@@ -1,0 +1,435 @@
+{
+  "slug": "laryngeal",
+  "name": "후두암",
+  "updated": "2026-11-02",
+  "revision": "20261102-corefaq-v1",
+  "edition": "진단 후 첫 30일 핵심 FAQ 20",
+  "reviewMode": "AI 사전점검",
+  "clinicalApproval": "pending",
+  "scope": "성인 후두암의 첫 진단·치료 준비. 후두전절제의 호흡 안내는 전절제 환자에게만 적용하며 다른 두경부 암·소아암은 별도 평가.",
+  "items": [
+    {
+      "n": 1,
+      "q": "후두암과 다른 목의 암은 같은 병인가요?",
+      "a": "후두암은 성대가 들어 있는 후두에서 시작한 암으로, 비인두암·구인두암·식도암과 구별합니다. 성문 위·성문·성문 아래 중 발생 부위와 편평세포암 등 조직형에 따라 검사와 치료가 달라져요. 병리보고서의 정확한 진단명과 발생 부위를 먼저 확인하세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.laryngeal.001",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-laryngeal"
+        ],
+        "scope": "후두의 해부학적 부위와 조직형의 구별"
+      }
+    },
+    {
+      "n": 2,
+      "q": "쉰 목소리만으로 후두암을 확진할 수 있나요?",
+      "a": "그렇지 않습니다. 쉰 목소리·삼킴 통증·목의 멍울은 다른 질환에서도 생깁니다. 후두를 직접 보는 검사와 의심 부위 조직검사로 확인하며, 증상만으로 암 여부나 병기를 정하지 않아요. 진료 시 증상이 시작된 때와 달라진 점을 알려 주세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.laryngeal.002",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-laryngeal"
+        ],
+        "scope": "증상의 비특이성과 후두 검사·조직검사"
+      }
+    },
+    {
+      "n": 3,
+      "q": "성문암이라는 말은 무슨 뜻인가요?",
+      "a": "성문(glottis)은 성대가 있는 후두의 가운데 부분으로, 성문암은 그 부위에서 시작한 암입니다. 성문 위나 아래의 암과 림프절 전이 양상·치료 선택이 같지 않을 수 있어요. 암의 위치, 성대가 움직이는지, 주변 구조 침범 여부를 함께 물어보세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.laryngeal.003",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-laryngeal"
+        ],
+        "scope": "후두 아부위·성대 운동과 치료 결정"
+      }
+    },
+    {
+      "n": 4,
+      "q": "병기와 수술 후 병리 결과가 달라질 수 있나요?",
+      "a": "그럴 수 있습니다. 치료 전에는 내시경·영상·진찰로 임상 병기를 정하고, 수술한 경우 제거한 조직과 림프절을 검사해 병기를 더 정확히 평가합니다. 주변 침범이나 절제면 결과에 따라 수술 후 추가 치료가 논의될 수 있어요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.laryngeal.004",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-laryngeal"
+        ],
+        "scope": "임상 병기와 수술 후 병리 병기·추가 치료"
+      }
+    },
+    {
+      "n": 5,
+      "q": "CT나 MRI를 찍었는데 조직검사도 필요한가요?",
+      "a": "영상은 종양의 위치와 퍼진 범위를 보는 데, 조직검사는 실제 암세포와 조직형을 확인하는 데 사용합니다. 서로 목적이 달라 한 검사로 다른 검사를 모두 대신하기 어렵습니다. 이미 조직검사를 받았다면 결과지와 영상 자료를 진료에 가져가세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.laryngeal.005",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-laryngeal"
+        ],
+        "scope": "영상검사와 생검의 상호보완적 역할"
+      }
+    },
+    {
+      "n": 6,
+      "q": "후두암이면 성대를 모두 제거하나요?",
+      "a": "모든 환자가 후두전절제술을 받는 것은 아닙니다. 발생 부위·범위에 따라 내시경 수술, 부분절제, 방사선치료 등 선택지가 있으며, 진행된 경우 전절제술이 필요할 수 있어요. 암 조절과 호흡·삼킴·목소리 기능을 함께 비교해 결정합니다.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.laryngeal.006",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-laryngeal"
+        ],
+        "scope": "범위에 따른 수술·방사선 선택과 기능 고려"
+      }
+    },
+    {
+      "n": 7,
+      "q": "후두 보존 치료를 하면 목소리가 그대로 남나요?",
+      "a": "후두를 남기는 것과 목소리·삼킴 기능이 그대로 유지되는 것은 다릅니다. 선택된 환자에서 항암방사선치료 등으로 후두 보존을 시도하지만, 치료 후 기능 저하나 추가 수술 가능성도 살펴야 해요. 예상되는 음성·삼킴 결과와 재활 계획을 함께 상담하세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.laryngeal.007",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-laryngeal",
+          "nci-mouth"
+        ],
+        "scope": "후두 보존 치료와 기능적 결과의 구별"
+      }
+    },
+    {
+      "n": 8,
+      "q": "목의 림프절도 치료하는 이유는 무엇인가요?",
+      "a": "후두암은 목 림프절로 퍼질 수 있어 원발 종양뿐 아니라 림프절 상태도 치료 계획에 중요합니다. 발생 부위와 전이 위험에 따라 목 수술이나 방사선 범위가 달라져요. 영상에서 커 보이지 않는 림프절까지 평가·치료가 필요한지 이유를 물어보세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.laryngeal.008",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-laryngeal"
+        ],
+        "scope": "후두암의 국소 림프절 평가와 치료 범위"
+      }
+    },
+    {
+      "n": 9,
+      "q": "후두전절제술 뒤에는 어떻게 말하나요?",
+      "a": "후두전절제술로 성대를 제거하면 원래 성대로 목소리를 낼 수 없지만, 다른 의사소통 방법을 재활팀과 준비할 수 있습니다. 음성 보철물을 이용하는 기관식도 발성, 전기후두 등이 있고 수술 범위·회복 상태에 따라 적합성이 달라요. 수술 전에 언어재활 상담과 초기 의사소통 수단을 요청하세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.laryngeal.009",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "cuh-stoma",
+          "asha-laryngectomy"
+        ],
+        "scope": "후두전절제 후 원래 성대 발성 불가와 대체 음성 재활·선택의 개별화"
+      }
+    },
+    {
+      "n": 10,
+      "q": "재발하거나 멀리 퍼진 후두암에도 치료가 있나요?",
+      "a": "이전 치료, 재발 위치, 수술 가능성, 전신 상태에 따라 수술·방사선·약물치료·임상시험을 검토합니다. 면역치료도 일부 상황에서 논의되지만 모든 환자에게 같은 약을 쓰는 것은 아니에요. 기대 효과와 부작용, 국내 사용 조건을 담당 팀과 확인하세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.laryngeal.010",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-laryngeal"
+        ],
+        "scope": "재발·전이 후 치료 선택; 국내 허가·급여 확정 아님"
+      }
+    },
+    {
+      "n": 11,
+      "q": "음식을 삼킬 때 사레가 들면 참아도 되나요?",
+      "a": "반복되는 사레·기침, 먹을 때 숨참, 음식 섭취 감소는 치료팀에 알려야 합니다. 음식이나 물이 기도로 들어가는 흡인(aspiration) 위험을 평가하고, 삼킴 재활·식사 형태·영양 공급 방법을 조정할 수 있어요. 숨쉬기 어렵거나 의식이 떨어지면 119를 이용하세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.laryngeal.011",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-mouth",
+          "nhs-breathlessness"
+        ],
+        "scope": "삼킴 장애·흡인과 영양·호흡 위험"
+      }
+    },
+    {
+      "n": 12,
+      "q": "목에 방사선치료를 받기 전에 치과 진료가 필요한가요?",
+      "a": "치아·잇몸·입안 상태를 미리 평가하면 치료 중·후 구강 문제를 줄이는 데 도움이 됩니다. 발치 등 처치의 필요성과 시기는 암 치료팀과 치과가 함께 정해야 해요. 방사선치료 후에도 치과에 머리·목 방사선치료 이력을 꼭 알려 주세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.laryngeal.012",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-mouth"
+        ],
+        "scope": "치료 전 구강 평가와 방사선 후 치과 처치 주의"
+      }
+    },
+    {
+      "n": 13,
+      "q": "후두전절제술 뒤 기공이 막히거나 숨이 차면 어떻게 하나요?",
+      "a": "후두전절제술 후에는 목의 영구 기공(stoma)으로만 호흡하며 입·코와 폐의 길이 분리됩니다. 갑자기 숨쉬기 어렵다면 즉시 119에 연락하고 “후두전절제 후 목으로 호흡한다”고 알리세요. 기공 관리·가습·응급 대처는 퇴원 전에 직접 교육받아야 합니다.",
+      "category": "care",
+      "review": {
+        "id": "faq.laryngeal.013",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "cuh-stoma",
+          "nhs-breathlessness"
+        ],
+        "scope": "전절제 후 호흡 경로와 응급 전달; 부분절제·일반 기관절개에 일괄 적용하지 않음"
+      }
+    },
+    {
+      "n": 14,
+      "q": "항암치료 중 열이 나면 해열제를 먼저 먹어도 되나요?",
+      "a": "항암치료 중 38°C 이상 발열이나 심한 오한은 감염 신호일 수 있어 치료병원에 바로 연락하세요. 해열제가 위험 신호를 가릴 수 있으므로 복용 전에 상담하고, 병원에서 준 발열 지침을 우선 따르세요. 심한 숨참이나 의식 저하가 동반되면 119를 이용하세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.laryngeal.014",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-infection",
+          "nhs-breathlessness"
+        ],
+        "scope": "항암치료 중 감염 신호와 해열제 전 연락"
+      }
+    },
+    {
+      "n": 15,
+      "q": "입이 마르고 먹기 어려워 체중이 줄면 어떻게 하나요?",
+      "a": "구강건조·통증·미각 변화는 치료 중 흔히 영양 섭취를 방해합니다. 먹을 수 있는 양과 체중 변화를 기록해 일찍 알리면 통증 조절, 구강 관리, 영양·삼킴 상담을 받을 수 있어요. 물도 넘기기 어렵거나 탈수 증상이 있으면 다음 예약까지 기다리지 마세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.laryngeal.015",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-mouth"
+        ],
+        "scope": "구강 합병증·섭취 저하와 영양 지원"
+      }
+    },
+    {
+      "n": 16,
+      "q": "치료가 끝나면 영상검사만 받으면 되나요?",
+      "a": "영상뿐 아니라 후두·목 진찰과 증상, 호흡·음성·삼킴 기능을 함께 확인합니다. 추적 간격과 검사는 치료 종류와 재발 위험에 따라 정하며, 늦게 나타나는 치료 영향도 살펴야 해요. 새 증상이 생기면 정기 검사 날짜와 관계없이 치료팀에 알리세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.laryngeal.016",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-laryngeal",
+          "nci-mouth"
+        ],
+        "scope": "재발·치료 합병증을 포함한 추적관리"
+      }
+    },
+    {
+      "n": 17,
+      "q": "치료 뒤 목소리가 달라지면 재발인가요?",
+      "a": "목소리 변화는 수술·방사선의 영향 등 여러 원인으로 생겨 그것만으로 재발을 판단할 수 없습니다. 새로 생기거나 악화되는 쉰 목소리, 삼킴 통증, 목 멍울은 진찰이 필요해요. 변화 시점과 동반 증상을 적어 치료팀에 알려 주세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.laryngeal.017",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-laryngeal",
+          "nci-mouth"
+        ],
+        "scope": "증상만으로 재발 확정 금지와 재평가 필요"
+      }
+    },
+    {
+      "n": 18,
+      "q": "진단 후에도 금연과 절주가 도움이 되나요?",
+      "a": "도움이 됩니다. 흡연과 음주는 후두암 치료 효과와 다른 새 암의 위험에 영향을 줄 수 있어요. 혼자 끊기 어렵다면 치료팀에 금연 지원을 요청하고 음주 습관도 알려 주세요. 진단 원인을 본인 탓으로 돌리기보다 지금 바꿀 수 있는 행동을 정하는 것이 중요합니다.",
+      "category": "followup",
+      "review": {
+        "id": "faq.laryngeal.018",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-laryngeal"
+        ],
+        "scope": "치료 중 흡연·음주와 이차암 위험"
+      }
+    },
+    {
+      "n": 19,
+      "q": "목에 좋다는 한약이나 고농도 보조제를 먹어도 되나요?",
+      "a": "제품에 따라 항암제와 상호작용하거나 부작용 평가를 어렵게 할 수 있습니다. 한약·비타민·건강기능식품의 제품명과 성분표를 치료팀·약사에게 보여 주세요. 표준치료를 대신하거나 암을 없앤다는 광고만 믿고 시작하지 마세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.laryngeal.019",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-supplements"
+        ],
+        "scope": "보조제·항암치료 상호작용 가능성과 복용 목록 공유"
+      }
+    },
+    {
+      "n": 20,
+      "q": "진단 후 첫 30일에는 무엇부터 준비하나요?",
+      "a": "정확한 발생 부위·조직형·병기와 치료 목표를 정리하고, 호흡·영양·의사소통 문제를 먼저 상담하세요. 치료 전 치과·삼킴·음성 재활이 필요한지, 전절제술 가능성이 있다면 기공 교육은 언제 하는지 물어보세요. 야간 연락처와 응급 시 전할 수술 정보를 준비하면 도움이 됩니다.",
+      "category": "followup",
+      "review": {
+        "id": "faq.laryngeal.020",
+        "version": "20261102-corefaq-v1",
+        "responsibleRole": "추가 전문분야: 두경부종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "independent-ai-reviewed",
+        "sourceRefs": [
+          "nci-laryngeal",
+          "nci-mouth",
+          "cuh-stoma"
+        ],
+        "scope": "질환·기능·치료 전 준비를 연결한 진료 질문 정리"
+      }
+    }
+  ],
+  "sources": {
+    "asha-laryngectomy": {
+      "title": "Communication After Total Laryngectomy",
+      "url": "https://www.asha.org/practice-portal/clinical-topics/head-and-neck-cancer/communication-after-total-laryngectomy/",
+      "organization": "American Speech-Language-Hearing Association",
+      "scope": "후두전절제 후 음성 보철·전기후두·식도발성·보완대체 의사소통과 개별 재활",
+      "evidenceType": "professional-society-practice-resource",
+      "checkedAt": "2026-11-02"
+    },
+    "cuh-stoma": {
+      "title": "Caring for a laryngeal stoma and voice prosthesis after a laryngectomy",
+      "url": "https://www.cuh.nhs.uk/patient-information/caring-for-a-laryngeal-stoma-and-voice-prosthesis-after-a-laryngectomy/",
+      "organization": "Cambridge University Hospitals NHS Foundation Trust",
+      "scope": "후두전절제 후 영구 기공을 통한 호흡·의사소통·기공 관리·응급 호흡 경로",
+      "evidenceType": "academic-hospital-patient-guidance",
+      "checkedAt": "2026-11-02"
+    },
+    "nci-infection": {
+      "title": "Infection and Neutropenia during Cancer Treatment",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/infection",
+      "organization": "National Cancer Institute",
+      "scope": "암 치료 중 38°C 이상 발열·오한 등 감염 신호와 즉시 연락, 해열제 복용 전 상담",
+      "evidenceType": "official-patient-guidance",
+      "checkedAt": "2026-11-02"
+    },
+    "nci-laryngeal": {
+      "title": "Laryngeal Cancer Treatment (PDQ®)–Patient Version",
+      "url": "https://www.cancer.gov/types/head-and-neck/patient/adult/laryngeal-treatment-pdq",
+      "organization": "National Cancer Institute",
+      "scope": "후두의 부위·진단·병기·치료 선택·금연·추적관리",
+      "evidenceType": "official-patient-guidance",
+      "checkedAt": "2026-11-02"
+    },
+    "nci-mouth": {
+      "title": "Oral Complications of Cancer Therapies (PDQ®)–Patient Version",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/mouth-throat/oral-complications-pdq",
+      "organization": "National Cancer Institute",
+      "scope": "두경부 치료 전 치과 점검·구강건조·삼킴 곤란·영양·흡인 위험·재활",
+      "evidenceType": "official-patient-guidance",
+      "checkedAt": "2026-11-02"
+    },
+    "nci-supplements": {
+      "title": "Cancer Therapy Interactions With Foods and Dietary Supplements (PDQ®)–Patient Version",
+      "url": "https://www.cancer.gov/about-cancer/treatment/cam/patient/dietary-interactions-pdq",
+      "organization": "National Cancer Institute",
+      "scope": "건강보조제·한약 성분·식품 농축물과 항암제 상호작용 가능성, 약 목록 공유",
+      "evidenceType": "official-patient-guidance",
+      "checkedAt": "2026-11-02"
+    },
+    "nhs-breathlessness": {
+      "title": "Shortness of breath",
+      "url": "https://www.nhs.uk/symptoms/shortness-of-breath/",
+      "organization": "NHS",
+      "scope": "심한 호흡곤란·흉부 압박·갑작스러운 혼돈 등 즉시 평가가 필요한 호흡 관련 증상. 영국 응급번호를 한국에 그대로 적용하지 않음",
+      "evidenceType": "official-patient-guidance",
+      "checkedAt": "2026-11-02"
+    }
+  },
+  "questionsForVisit": [
+    "암의 정확한 위치와 조직형, 임상 병기는 무엇인가요?",
+    "후두 보존 가능성과 예상되는 호흡·목소리·삼킴 기능은 어떤가요?",
+    "목 림프절 치료와 수술 후 추가 치료가 필요한가요?",
+    "치과·영양·삼킴·언어재활을 언제 연결하나요?",
+    "기공 관리가 필요하다면 응급 시 무엇을 알리고 어디로 연락하나요?"
+  ],
+  "aiReview": {
+    "status": "completed",
+    "independent": true,
+    "mode": "독립 AI 사전점검",
+    "checkedAt": "2026-11-02T11:00:35.647165+09:00",
+    "clinicalApproval": "pending",
+    "reviewedDraftSha256": "a1a255a646eb383b3467787152f1d07b959f5632833bc5dbcdbbeaf2a0426ba4",
+    "contentSha256": "ea8d047c15a3a2c0a039bc444be2304bfe7cad7c83f984252eddfdb784296ba4"
+  }
+}
