@@ -80,10 +80,31 @@
   status = 200
   force = true
 
+# 2026-11-02: 논술 루틴은 써보다(future.apuda.app/write/)로 통합. 앱 첫 화면만 넘기고 파일은 남긴다.
+# 예전 기록을 내보내야 하면 /nonsul/old 로 옛 앱을 연다(자산 경로가 /nonsul/assets/ 절대경로라 그대로 동작).
+[[redirects]]
+  from = "/nonsul/old"
+  to = "/nonsul/index.html"
+  status = 200
+  force = true
+
 [[redirects]]
   from = "/nonsul"
-  to = "/nonsul/"
-  status = 301
+  to = "https://future.apuda.app/write/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/nonsul/"
+  to = "https://future.apuda.app/write/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/nonsul/index.html"
+  to = "https://future.apuda.app/write/"
+  status = 302
+  force = true
 
 [[headers]]
   for = "/nonsul/*"

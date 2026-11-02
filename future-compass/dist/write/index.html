@@ -156,6 +156,30 @@ nav.tab a svg{display:block;margin:0 auto 2px;width:22px;height:22px}
 nav.tab a[aria-current=page]{color:var(--apuda)}
 .lock{position:fixed;inset:0;z-index:99;background:var(--paper);display:flex;align-items:center;justify-content:center;padding:24px}
 .lock .sheet{width:100%;max-width:340px;text-align:center}
+/* 인쇄: 연습지·내 답안 (A4) */
+#printArea{display:none}
+@media print{
+  @page{size:A4;margin:14mm 14mm 16mm}
+  body{background:#fff!important;color:#000!important}
+  body>*:not(#printArea){display:none!important}
+  body::before{display:none!important}
+  #printArea{display:block;font:11pt/1.7 var(--sans);color:#000}
+  #printArea h1{font-size:16pt;margin:0 0 2mm}
+  #printArea h2{font-size:12pt;margin:5mm 0 2mm;border-bottom:.3mm solid #000;padding-bottom:1mm}
+  #printArea .meta{font-size:9pt;color:#444;display:flex;justify-content:space-between;gap:4mm;margin-bottom:3mm}
+  #printArea .ps{font-family:var(--serif);font-size:11pt;line-height:1.8;margin:0 0 2mm}
+  #printArea .ps b{font-family:var(--sans)}
+  #printArea .q{font-weight:700;border:.3mm solid #000;padding:2mm 3mm;margin:3mm 0}
+  #printArea .ans{font-family:var(--serif);white-space:pre-wrap;line-height:1.9;border-left:.8mm solid #999;padding-left:3mm}
+  #printArea .ol{display:grid;grid-template-columns:auto 1fr;gap:1.5mm 3mm;font-size:10pt}
+  #printArea .ol span{border-bottom:.2mm solid #888;min-height:7mm}
+  #printArea .grid{display:grid;grid-template-columns:repeat(20,1fr);border-top:.3mm solid #2E7D5B;border-left:.3mm solid #2E7D5B;margin-top:2mm}
+  #printArea .grid i{aspect-ratio:1;border-right:.2mm solid #2E7D5B;border-bottom:.2mm solid #2E7D5B}
+  #printArea .grid i.row{border-bottom-width:.5mm}
+  #printArea .tick{font-size:8pt;color:#555;text-align:right}
+  #printArea .note{font-size:8.5pt;color:#555}
+  #printArea .keep{break-inside:avoid}
+}
 .toast{position:fixed;left:50%;bottom:calc(76px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:999px;font-size:14px;z-index:50;max-width:90vw}
 details summary{cursor:pointer;font-weight:600;min-height:32px}
 .hide{display:none!important}
@@ -179,7 +203,7 @@ details summary{cursor:pointer;font-weight:600;min-height:32px}
 "use strict";
 /* ===== 설정: 아프다 패밀리 연결 ===== */
 const CFG = {
-  version: "1.5.0",
+  version: "1.6.0",
   api: "api/feedback", // 상대 경로: 루트 배포면 /api/feedback, future.apuda.app/write/ 면 /write/api/feedback
   family: [
     { name: "미래 나침반", url: location.hostname==="future.apuda.app" ? "/" : "https://future.apuda.app/?from=write" },
@@ -475,11 +499,13 @@ function vWrite(app, arg){
     <p class="tiny" id="phl">${(s.minutes||20)>20?`권장 ${s.minutes}분 · 긴 답안이라 단계별 시간은 참고만`:"읽기 4분 → 개요 4분 → 초안 8분 → 고치기 4분"}</p>
     <div class="tabs" role="tablist"><button role="tab" data-t="pass" aria-selected="true">제시문</button><button role="tab" data-t="write" aria-selected="false">${stage==="rewrite"?"피드백·다시 쓰기":"쓰기"}</button></div>
     <div class="wgrid">
-      <section class="sheet pass" data-p="pass" id="passBox">${passHTML()}<p class="question">${esc(s.question)}</p>
+      <section class="sheet pass" data-p="pass" id="passBox">${passHTML()}<p class="question">${esc(s.question)}</p>${CAN_PRINT?`<p><button class="btn ghost" type="button" id="pws" style="min-height:40px">손글씨 연습지 인쇄</button></p>`:""}
         ${s.kind!=="diag"&&s.hints&&s.hints.length?`<details id="hint"><summary>막히면 힌트</summary><ul class="small" id="hintList"></ul></details>`:""}${s.kind==="diag"?`<p class="tiny">진단은 힌트 없이 써요. 제출하면 해설이 열려요.</p>`:""}${s.source?`<p class="tiny">출처: ${esc(s.source)} · 개인 공부용</p>`:""}</section>
       <section data-p="write" style="display:none" id="writeBox"></section>
     </div>`;
   const wb=$("#writeBox");
+  if($("#pws")) $("#pws").onclick=()=>printWorksheet(s);
+  wb.addEventListener("click", e=>{ if(e.target && e.target.id==="pat") printAttempt(a, s); });
   const hd=$("#hint"); if(hd){ const fill=()=>{ const h=s.hints; $("#hintList").innerHTML = `<li>${esc(h[0])}</li>` + (h[1] ? ((a.sec||0)>=120 ? `<li>${esc(h[1])}</li>` : `<li class="tiny">다음 힌트는 쓰기 시작 2분 뒤에 열려요.</li>`) : ""); }; fill(); hd.addEventListener("toggle", fill); }
   function setTab(t){ tab=t; app.querySelectorAll(".tabs button").forEach(b=>b.setAttribute("aria-selected", b.dataset.t===t)); app.querySelectorAll(".wgrid>section").forEach(x=>x.style.display = x.dataset.p===t ? "" : "none"); }
   app.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>setTab(b.dataset.t));
@@ -529,7 +555,7 @@ function vWrite(app, arg){
       $("#sub").onclick=()=>submit("draft");
       if(a.pending) bindPending("draft");
     } else {
-      wb.innerHTML = `<div class="sheet fb">${fbHTML(a.fb, s)}</div>
+      wb.innerHTML = `<div class="sheet fb">${fbHTML(a.fb, s)}${CAN_PRINT?`<div class="actions"><button class="btn" type="button" id="pat">내 답안·피드백 인쇄</button></div>`:""}</div>
         ${s.debrief?`<details class="sheet" ${s.kind==="diag"?"open":""}><summary>${s.kind==="diag"?"진단 해설":"문제 해설 (다시 쓰기 전에 참고)"}</summary><ul class="small">${s.debrief.map(d=>`<li>${esc(d)}</li>`).join("")}</ul>${s.kind==="diag"?`<p class="tiny">진단 결과는 점수보다 '어디서 막혔는지'를 보려는 거예요.</p>`:""}</details>`:""}
         <div class="sheet">${!a.fb2 ? `<h3>다시 쓰기</h3><p class="small muted">고칠 점 2개만 반영해요. 첫 답안은 그대로 보관돼요.</p>${s.check?`<p class="small"><b>제출 전 확인</b> ${esc(s.check)}</p>`:""}
           ${editor("rewrite","수정본")}
@@ -635,6 +661,36 @@ function diffHTML(a,b){
     ${removed.length?`<details><summary>바뀌기 전 문장 ${removed.length}개</summary><p>${removed.map(x=>`<span class="del">${esc(x)}</span>`).join("<br>")}</p></details>`:""}</div>`;
 }
 
+/* ===== 인쇄 ===== */
+// claude.ai 아티팩트 안에서는 인쇄 창을 열 수 없어서 버튼을 숨긴다(써보다 사이트에서만 보임).
+const CAN_PRINT = !window.SSUBODA_CORE && typeof window.print === "function";
+function printNow(html){
+  let el=document.getElementById("printArea"); if(!el){ el=document.createElement("div"); el.id="printArea"; document.body.appendChild(el); }
+  el.innerHTML=html; setTimeout(()=>window.print(), 50);
+}
+function pPassages(s){ return s.passages.map(p=>`<p class="ps"><b>${s.passages.length>1?`제시문 ${esc(p.label)}`:"제시문"}</b> ${esc(p.text)}</p>`).join(""); }
+function pHead(s, sub){ return `<h1>${esc(s.title)}</h1><div class="meta"><span>써보다 · ${esc(s.skill)} · ${s.min}~${s.max}자${sub?` · ${esc(sub)}`:""}</span><span>이름 ________ 날짜 ________</span></div>`; }
+// 손글씨 연습지: 제시문 + 문제 + 개요 칸 + 20칸 원고지 (최대 글자 수 + 2줄)
+function printWorksheet(s){
+  const rows=Math.ceil(s.max/20)+2, cells=[];
+  for(let r=0;r<rows;r++) for(let c=0;c<20;c++) cells.push(`<i class="${c===19&&(r+1)%5===0?"row":""}"></i>`);
+  printNow(`${pHead(s,"손글씨 연습지")}${pPassages(s)}<p class="q">${esc(s.question)}</p>
+    <h2>개요</h2><div class="ol">${s.outline.map((o,i)=>`<b>${i+1}. ${esc(o)}</b><span></span>`).join("")}</div>
+    <h2>답안</h2><div class="grid">${cells.join("")}</div><p class="tick">20칸 × ${rows}줄 = ${rows*20}칸 · 목표 ${s.min}~${s.max}자</p>
+    <p class="note">${s.origin?esc(s.origin)+" · ":""}앱 연습용 가상 제시문이에요(대학 기출 아님). 다 쓰면 앱에 옮겨 적고 피드백을 받아요.</p>`);
+}
+// 내 답안 인쇄: 문제·제시문·초안·피드백 요약·수정본·(다시 쓴 뒤) 예시 답안
+function printAttempt(a, s){
+  const fb=a.fb, fb2=a.fb2;
+  const fbBox=(f,t)=>!f?"":`<h2>${t}</h2><div class="keep">${f.strength?.text?`<p><b>잘한 점</b> ${esc(f.strength.text)}</p>`:""}${(f.fixes||[]).map((x,i)=>`<p><b>고칠 점 ${i+1}</b> ${esc(x.issue)}${x.suggestion?` — ${esc(x.suggestion)}`:""}</p>`).join("")}${f.changes?`<p><b>달라진 점</b> ${esc(f.changes)}</p>`:""}</div>`;
+  printNow(`${pHead(s, new Date(a.createdAt).toLocaleDateString("ko-KR"))}${pPassages(s)}<p class="q">${esc(s.question)}</p>
+    ${a.outline&&a.outline.some(x=>x&&x.trim())?`<h2>내 개요</h2><div class="ol">${a.outline.map((o,i)=>`<b>${i+1}. ${esc(s.outline[i]||"")}</b><span>${esc(o||"")}</span>`).join("")}</div>`:""}
+    <h2>초안 (${a.draft.length}자)</h2><p class="ans">${esc(a.draft)||"(비어 있음)"}</p>
+    ${fbBox(fb,"첫 피드백")}
+    ${fb2?`<h2>수정본 (${a.rewrite.length}자)</h2><p class="ans">${esc(a.rewrite)}</p>${fbBox(fb2,"수정본 피드백")}`:""}
+    ${fb2&&s.example?`<h2>예시 답안</h2><p class="ans">${esc(s.example)}</p><p class="note">앱 연습용 예시예요. 대학 모범답안이 아니에요.</p>`:""}`);
+}
+
 /* ===== 지난 답안 보기 ===== */
 function vView(app, id){
   const a=S.attempts[id]; const s=a&&SETMAP[a.setId];
@@ -643,7 +699,8 @@ function vView(app, id){
     <div class="sheet"><h3>초안</h3><p style="font-family:var(--serif);white-space:pre-wrap">${esc(a.draft)||"(비어 있음)"}</p></div>
     ${a.fb2?`<div class="sheet"><h3>초안 → 수정본</h3>${diffHTML(a.draft,a.rewrite)}</div>`:""}
     ${a.fb?`<div class="sheet fb"><h3 style="margin-top:0">첫 피드백</h3>${fbHTML(a.fb,s)}</div>`:""}
-    <div class="actions"><a class="btn primary" style="display:inline-flex;align-items:center;justify-content:center" href="#/write/${s.id}?a=${a.id}">이 답안 열기</a><button class="btn danger" id="del">이 답안 삭제</button></div>`;
+    <div class="actions"><a class="btn primary" style="display:inline-flex;align-items:center;justify-content:center" href="#/write/${s.id}?a=${a.id}">이 답안 열기</a>${CAN_PRINT?`<button class="btn" id="pv">인쇄</button>`:""}<button class="btn danger" id="del">이 답안 삭제</button></div>`;
+  if($("#pv")) $("#pv").onclick=()=>printAttempt(a, s);
   $("#del").onclick=async()=>{ if(await ask("이 답안과 피드백을 삭제할까요? 되돌릴 수 없어요.",{ok:"삭제",danger:true})){ delete S.attempts[id]; save(); go("#/log"); } };
 }
 
