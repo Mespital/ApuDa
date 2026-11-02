@@ -131,6 +131,16 @@ mark.hl{background:var(--amber-soft);color:inherit;border-bottom:2px solid var(-
 .fb h3{margin-top:14px}
 .fb .good{border-left:4px solid var(--grid);padding:4px 0 4px 12px}
 .fix{border-left:4px solid var(--amber);padding:4px 0 4px 12px;margin:12px 0}
+.c-sum{font-size:17px;font-weight:700;line-height:1.55;margin:4px 0 12px;padding:10px 12px;background:var(--paper);border-radius:var(--radius-m)}
+.c-card{border:1px solid var(--line);border-radius:var(--radius-m);padding:12px 14px;margin:10px 0;background:var(--sheet)}
+.c-card p{margin:6px 0}.c-h{font-weight:800;font-size:15px;margin:2px 0 4px}
+.c-good{border-left:5px solid var(--grid)}.c-fix{border-left:5px solid var(--amber);background:var(--amber-soft)}.c-fix .quote{background:var(--sheet)}
+.c-sub{background:var(--sheet)}.c-issue{font-weight:700}.c-do{font-weight:700;color:var(--ink)}
+.c-hint{font-family:var(--serif);background:var(--grid-soft);border-radius:var(--radius-s);padding:8px 10px;margin:8px 0;line-height:1.7}
+.c-hint small,.quote small{display:block;font-family:var(--sans);font-size:12px;color:var(--ink3)}
+.c-sp{display:flex;flex-wrap:wrap;gap:8px}.c-sp span{border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-size:14px}.c-sp del{color:var(--red)}.c-sp b{color:var(--grid)}
+.c-next{border-left:5px solid var(--apuda)}.c-next .btn{margin-top:6px}
+.c-rub summary{cursor:pointer;min-height:40px;display:flex;align-items:center}
 .quote{font-family:var(--serif);font-size:15px;background:var(--paper);border-radius:var(--radius-s);padding:6px 10px;margin:6px 0}
 .quote small{font-family:var(--sans);display:block;color:var(--ink3);font-size:12px}
 .rub{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:14px}
@@ -216,7 +226,7 @@ details summary{cursor:pointer;font-weight:600;min-height:32px}
 "use strict";
 /* ===== 설정: 아프다 패밀리 연결 ===== */
 const CFG = {
-  version: "1.8.1",
+  version: "1.9.0",
   api: "api/feedback", // 상대 경로: 루트 배포면 /api/feedback, future.apuda.app/write/ 면 /write/api/feedback
   family: [
     { name: "미래 나침반", url: location.hostname==="future.apuda.app" ? "/" : "https://future.apuda.app/?from=write" },
@@ -587,13 +597,13 @@ function vWrite(app, arg){
   }
   function aiBox(stage){
     const f=stage===1?a.ai1:a.ai2; const err=a.aiErr&&a.aiErr.stage===stage?a.aiErr.msg:"";
-    if(f) return `<div class="sheet fb"><h3 style="margin-top:0">AI 검토·분석</h3>${fbHTML(f,s,stage===2)}</div>`;
-    return `<div class="sheet"><h3 style="margin-top:0">AI 검토·분석 <span class="chip">선택</span></h3>
+    if(f) return `<div class="sheet fb" id="aibox${stage}"><h3 style="margin-top:0">🤖 AI 코칭 ${stage===2?"(수정본)":"(초안)"}</h3>${fbHTML(f,s,stage===2)}</div>`;
+    return `<div class="sheet"><h3 style="margin-top:0">🤖 AI 코칭 <span class="chip">선택</span></h3>
       <p class="small muted">${stage===1?"초안을":"수정본을"} AI가 제시문과 맞대어 읽고 근거·논리를 분석해요. 필요할 때만 눌러요.</p>
       ${err?`<p class="small" style="color:var(--red)">${esc(err)}</p>`:""}
       ${a.aiErr&&a.aiErr.stage===stage&&a.aiErr.code==="AUTH" ? `<div class="row" style="margin-top:8px"><input type="password" id="acin${stage}" inputmode="numeric" autocomplete="off" placeholder="접속 코드 입력" aria-label="접속 코드" style="flex:1;min-width:140px"><button class="btn primary" type="button" id="acsv${stage}">코드 저장하고 AI 분석 받기</button></div>
         <p class="tiny">코드는 이 기기에 저장돼서 다음부터는 안 물어봐요. <a href="#/settings">설정에서 바꾸기</a></p>`
-        : `<div class="actions"><button class="btn" type="button" id="ai${stage}">AI 검토·분석 받기</button></div>`}</div>`;
+        : `<div class="actions"><button class="btn" type="button" id="ai${stage}">🤖 AI 코칭 받기</button></div>`}</div>`;
   }
   function draw(){
     if(!a.fb){
@@ -606,9 +616,12 @@ function vWrite(app, arg){
       bindEditor("draft");
       $("#sub").onclick=()=>submit("draft");
     } else {
-      wb.innerHTML = `<div class="sheet fb"><h3 style="margin-top:0">${a.fb.kind==="self"?"점검 결과":"첫 피드백"}</h3>${fbHTML(a.fb, s)}${CAN_PRINT?`<div class="actions"><button class="btn" type="button" id="pat">내 답안·점검 인쇄</button></div>`:""}</div>
-        ${a.fb.kind==="self"&&!a.fb2?checklist("checks1"):""}
-        ${!a.fb2?aiBox(1):(a.ai1?aiBox(1):"")}
+      const selfBody = `${fbHTML(a.fb, s)}${CAN_PRINT?`<div class="actions"><button class="btn" type="button" id="pat">내 답안·점검 인쇄</button></div>`:""}`;
+      const selfTitle = a.fb.kind==="self"?"자동 점검 결과":"첫 피드백";
+      wb.innerHTML = `${a.ai1&&!a.fb2?aiBox(1):""}
+        ${a.ai1 ? `<details class="sheet fb"><summary><b>${selfTitle}</b> <span class="tiny">(기기 안 규칙 점검 · 펼쳐 보기)</span></summary>${selfBody}</details>` : `<div class="sheet fb"><h3 style="margin-top:0">${selfTitle}</h3>${selfBody}</div>`}
+        ${a.fb.kind==="self"&&!a.fb2&&!a.ai1?checklist("checks1"):""}
+        ${!a.fb2&&!a.ai1?aiBox(1):(a.fb2&&a.ai1?aiBox(1):"")}
         ${s.debrief?`<details class="sheet" ${s.kind==="diag"?"open":""}><summary>${s.kind==="diag"?"진단 해설":"문제 해설 (다시 쓰기 전에 참고)"}</summary><ul class="small">${s.debrief.map(d=>`<li>${esc(d)}</li>`).join("")}</ul>${s.kind==="diag"?`<p class="tiny">진단 결과는 점수보다 '어디서 막혔는지'를 보려는 거예요.</p>`:""}</details>`:""}
         <div class="sheet">${!a.fb2 ? `<h3>다시 쓰기</h3><p class="small muted">고칠 점부터 한 문장씩 고쳐요. 첫 답안은 그대로 보관돼요.</p>${s.check?`<p class="small"><b>제출 전 확인</b> ${esc(s.check)}</p>`:""}
           ${editor("rewrite","수정본")}
@@ -624,6 +637,7 @@ function vWrite(app, arg){
       wb.querySelectorAll("[data-ck]").forEach(c=>c.onchange=()=>{ const k=c.dataset.ck; a[k]=a[k]||[]; a[k][+c.dataset.i]=c.checked; save(); });
       [1,2].forEach(n=>{ const b=$("#ai"+n); if(b) b.onclick=()=>requestAI(n);
         const sv=$("#acsv"+n); if(sv) sv.onclick=()=>{ const v=($("#acin"+n).value||"").trim(); if(!v){ toast("접속 코드를 입력해 주세요"); return; } S.settings.appCode=v; delete a.aiErr; save(); requestAI(n); }; });
+      wb.querySelectorAll("[data-goedit]").forEach(b=>b.onclick=()=>{ const t=$("#ta"); if(t){ t.scrollIntoView({block:"center"}); t.focus(); } });
       wb.querySelectorAll("[data-hl]").forEach(b=>b.onclick=()=>{ const [l,...t]=b.dataset.hl.split("|"); $("#passBox").innerHTML=passHTML(l,t.join("|"))+`<p class="question">${esc(s.question)}</p>`; setTab("pass"); document.getElementById("p-"+l)?.scrollIntoView({block:"center"}); });
     }
   }
@@ -681,25 +695,47 @@ async function aiViaSample(body){
 }
 function fbHTML(fb, s, isRewrite){
   if(!fb) return "";
+  if(fb.kind==="ai") return coachHTML(fb, s, isRewrite);
   const lab = l => s.passages.length>1 ? `제시문 ${l}` : "제시문";
-  const rubNames = {demand:"문제 요구 충족",reading:"제시문 이해",evidence:"근거 사용",logic:"논리 구성",expression:"표현·분량"};
   let h = "";
   if(isRewrite && fb.changes) h += `<div class="good"><b>달라진 점</b><p>${esc(fb.changes)}</p></div>`;
-  if(fb.insufficient) h += `<div class="banner">AI가 판단 근거를 충분히 찾지 못했어요. 아래 내용만 참고하고, 점수는 표시하지 않아요.</div>`;
   if(fb.strength?.text) h += `<h3>잘한 점</h3><div class="good"><p>${esc(fb.strength.text)}</p>${fb.strength.answer_quote?`<div class="quote"><small>내 문장</small>${esc(fb.strength.answer_quote)}</div>`:""}</div>`;
   if(fb.fixes?.length) h += `<h3>${isRewrite?"남은":"먼저"} 고칠 점 ${fb.fixes.length}개</h3>` + fb.fixes.map((f,i)=>`<div class="fix"><p><b>${i+1}. ${esc(f.issue)}</b>${f.tag?` <span class="chip">${esc(f.tag)}</span>`:""}</p>
       ${f.answer_quote?`<div class="quote"><small>내 문장</small>${esc(f.answer_quote)}</div>`:""}
-      ${f.passage_quote?`<div class="quote"><small>${lab(f.passage_label)} 근거</small>${esc(f.passage_quote)}</div><button class="btn ghost small" style="min-height:36px;padding:4px 10px" data-hl="${esc(f.passage_label)}|${esc(f.passage_quote)}">제시문에서 위치 보기</button>`:""}
+      ${f.passage_quote?`<div class="quote"><small>${lab(f.passage_label)} 근거</small>${esc(f.passage_quote)}</div>`:""}
       ${f.suggestion?`<p class="small">${esc(f.suggestion)}</p>`:""}</div>`).join("");
   if(fb.self_question) h += `<h3>고치기 전에 스스로 답해 볼 질문</h3><p>${esc(fb.self_question)}</p>`;
   if(fb.next_action) h += `<h3>다음 행동</h3><p>${esc(fb.next_action)}</p>`;
+  if(fb.meta) h += `<p class="tiny">기기 안 규칙 점검이에요(AI 아님). 분량·제시문 표현·단정어·개요만 보고, 내용이 맞는지는 판정하지 않아요.</p>`;
+  return h;
+}
+// AI 코칭 카드: 한 줄 총평 → 잘한 점 → 고칠 점(내 문장·근거·이렇게 고쳐 보기) → 맞춤법 → 질문 → 5분 과제 → 항목별(접힘)
+const TAG_TIP={요구미충족:"문제가 시킨 행동이 빠졌어요",요약부정확:"핵심 주장을 다시 잡아요",제시문오독:"제시문을 다시 읽어요",근거누락:"제시문 근거가 필요해요",연결부족:"근거와 주장을 이어요",범위초과결론:"결론을 제시문 범위로",수치해석과잉:"숫자가 말하는 만큼만",반론누락:"반대쪽도 짚어요",분량:"분량을 맞춰요"};
+function coachHTML(fb, s, isRewrite){
+  const lab = l => s.passages.length>1 ? `제시문 ${l}` : "제시문";
+  const rubNames = {demand:"문제 요구",reading:"제시문 이해",evidence:"근거",logic:"논리",expression:"표현·분량"};
+  let h = "";
+  if(fb.insufficient) h += `<div class="banner">AI가 판단 근거를 충분히 찾지 못했어요. 아래 내용만 참고해요.</div>`;
+  if(fb.summary) h += `<p class="c-sum">${esc(fb.summary)}</p>`;
+  if(isRewrite && fb.changes) h += `<div class="c-card c-good"><div class="c-h">📈 좋아진 점</div><p>${esc(fb.changes)}</p></div>`;
+  if(fb.strength?.text) h += `<div class="c-card c-good"><div class="c-h">👍 잘한 점</div><p>${esc(fb.strength.text)}</p>${fb.strength.answer_quote?`<div class="quote"><small>내 문장</small>${esc(fb.strength.answer_quote)}</div>`:""}</div>`;
+  (fb.fixes||[]).forEach((f,i)=>{
+    h += `<div class="c-card c-fix${i?" c-sub":""}"><div class="c-h">${i?"✏️ 그다음 고칠 점":"🎯 가장 먼저 고칠 점"}${f.tag?` <span class="chip">${esc(TAG_TIP[f.tag]||f.tag)}</span>`:""}</div>
+      <p class="c-issue">${esc(f.issue)}</p>${f.why?`<p class="small muted">왜? ${esc(f.why)}</p>`:""}
+      ${f.answer_quote?`<div class="quote"><small>내 문장</small>${esc(f.answer_quote)}</div>`:""}
+      ${f.passage_quote?`<div class="quote"><small>${lab(f.passage_label)}에서 찾은 근거</small>${esc(f.passage_quote)}</div><button class="btn ghost small" type="button" style="min-height:36px;padding:4px 10px" data-hl="${esc(f.passage_label)}|${esc(f.passage_quote)}">제시문에서 위치 보기</button>`:""}
+      ${f.suggestion?`<p class="c-do">👉 ${esc(f.suggestion)}</p>`:""}
+      ${f.rewrite_hint?`<div class="c-hint"><small>이렇게 고쳐 볼 수 있어요 (예시 한 문장)</small>${esc(f.rewrite_hint)}</div>`:""}</div>`;
+  });
+  if(fb.spelling?.length) h += `<div class="c-card"><div class="c-h">🔤 맞춤법·띄어쓰기</div><div class="c-sp">${fb.spelling.map(x=>`<span><del>${esc(x.wrong)}</del> → <b>${esc(x.right)}</b></span>`).join("")}</div></div>`;
+  if(fb.self_question || fb.next_action) h += `<div class="c-card c-next">${fb.self_question?`<div class="c-h">🤔 고치기 전에 생각해 볼 질문</div><p>${esc(fb.self_question)}</p>`:""}${fb.next_action?`<div class="c-h">⏱️ 지금 5분 과제</div><p><b>${esc(fb.next_action)}</b></p>`:""}
+    ${!isRewrite?`<button class="btn primary" type="button" data-goedit="1">수정본에 반영하러 가기</button>`:""}</div>`;
   if(fb.rubric){
-    h += `<details><summary>항목별 판단 ${S.settings.showScores?"(연습 지표 0~4)":""}</summary><div class="rub">${Object.entries(rubNames).map(([k,n])=>fb.rubric[k]?`<b>${n}${S.settings.showScores?` ${fb.rubric[k].score}/4`:""}</b><span class="small">${esc(fb.rubric[k].reason)}</span>`:"").join("")}</div>
-      <p class="tiny">내부 연습 지표예요. 대학 채점과 같지 않아요.${S.settings.showScores?"":" 숫자는 검증 전이라 숨겨 뒀어요."}</p></details>`;
+    h += `<details class="c-rub"><summary>항목별로 자세히 보기</summary><div class="rub">${Object.entries(rubNames).map(([k,n])=>fb.rubric[k]?`<b>${n}${S.settings.showScores?` ${fb.rubric[k].score}/4`:` ${"●".repeat(fb.rubric[k].score>=3?3:fb.rubric[k].score>=2?2:1)}`}</b><span class="small">${esc(fb.rubric[k].reason)}</span>`:"").join("")}</div>
+      <p class="tiny">● 표시는 연습용 대략 수준이에요(●●● 좋음 · ●● 보통 · ● 보완). 대학 채점과 같지 않아요.</p></details>`;
   }
   if(fb.quotes_dropped) h += `<p class="tiny">원문과 정확히 맞지 않는 인용 ${fb.quotes_dropped}개는 표시하지 않았어요.</p>`;
-  if(fb.meta) h += fb.kind==="self" ? `<p class="tiny">기기 안 규칙 점검이에요(AI 아님). 분량·제시문 표현·단정어·개요만 보고, 내용이 맞는지는 판정하지 않아요.</p>`
-    : `<p class="tiny">${esc(fb.meta.provider||"")} · ${esc(fb.meta.model)} · ${esc(fb.meta.prompt)} · 루브릭 ${esc(fb.meta.rubric)}</p>`;
+  if(fb.meta) h += `<p class="tiny">${esc(fb.meta.provider||"")} · ${esc(fb.meta.model||"")} · ${esc(fb.meta.prompt||"")} · AI 코칭은 참고용이에요. 판단은 내가 해요.</p>`;
   return h;
 }
 // 기기 안 규칙 점검 → 피드백과 같은 모양(잘한 점 1 + 고칠 점 최대 2). 내용의 옳고 그름은 판정하지 않는다.
@@ -765,12 +801,12 @@ function printWorksheet(s){
 // 내 답안 인쇄: 문제·제시문·초안·피드백 요약·수정본·(다시 쓴 뒤) 예시 답안
 function printAttempt(a, s){
   const fb=a.fb, fb2=a.fb2;
-  const fbBox=(f,t)=>!f?"":`<h2>${t}</h2><div class="keep">${f.strength?.text?`<p><b>잘한 점</b> ${esc(f.strength.text)}</p>`:""}${(f.fixes||[]).map((x,i)=>`<p><b>고칠 점 ${i+1}</b> ${esc(x.issue)}${x.suggestion?` — ${esc(x.suggestion)}`:""}</p>`).join("")}${f.changes?`<p><b>달라진 점</b> ${esc(f.changes)}</p>`:""}</div>`;
+  const fbBox=(f,t)=>!f?"":`<h2>${t}</h2><div class="keep">${f.summary?`<p><b>${esc(f.summary)}</b></p>`:""}${f.strength?.text?`<p><b>잘한 점</b> ${esc(f.strength.text)}</p>`:""}${(f.fixes||[]).map((x,i)=>`<p><b>고칠 점 ${i+1}</b> ${esc(x.issue)}${x.suggestion?` — ${esc(x.suggestion)}`:""}${x.rewrite_hint?`<br><i>예시: ${esc(x.rewrite_hint)}</i>`:""}</p>`).join("")}${f.spelling?.length?`<p><b>맞춤법</b> ${f.spelling.map(x=>`${esc(x.wrong)}→${esc(x.right)}`).join(", ")}</p>`:""}${f.next_action&&f.kind==="ai"?`<p><b>5분 과제</b> ${esc(f.next_action)}</p>`:""}${f.changes?`<p><b>달라진 점</b> ${esc(f.changes)}</p>`:""}</div>`;
   printNow(`${pHead(s, new Date(a.createdAt).toLocaleDateString("ko-KR"))}${pPassages(s)}<p class="q">${esc(s.question)}</p>
     ${a.outline&&a.outline.some(x=>x&&x.trim())?`<h2>내 개요</h2><div class="ol">${a.outline.map((o,i)=>`<b>${i+1}. ${esc(s.outline[i]||"")}</b><span>${esc(o||"")}</span>`).join("")}</div>`:""}
     <h2>초안 (${a.draft.length}자)</h2><p class="ans">${esc(a.draft)||"(비어 있음)"}</p>
-    ${fbBox(fb, fb&&fb.kind==="self"?"점검 결과":"첫 피드백")}${fbBox(a.ai1,"AI 검토·분석 (초안)")}
-    ${fb2?`<h2>수정본 (${a.rewrite.length}자)</h2><p class="ans">${esc(a.rewrite)}</p>${fbBox(fb2,"수정본 점검")}${fbBox(a.ai2,"AI 검토·분석 (수정본)")}`:""}
+    ${fbBox(fb, fb&&fb.kind==="self"?"점검 결과":"첫 피드백")}${fbBox(a.ai1,"AI 코칭 (초안)")}
+    ${fb2?`<h2>수정본 (${a.rewrite.length}자)</h2><p class="ans">${esc(a.rewrite)}</p>${fbBox(fb2,"수정본 점검")}${fbBox(a.ai2,"AI 코칭 (수정본)")}`:""}
     ${fb2&&s.example?`<h2>예시 답안</h2><p class="ans">${esc(s.example)}</p><p class="note">앱 연습용 예시예요. 대학 모범답안이 아니에요.</p>`:""}`);
 }
 
