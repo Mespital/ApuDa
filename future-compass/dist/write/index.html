@@ -179,7 +179,7 @@ details summary{cursor:pointer;font-weight:600;min-height:32px}
 "use strict";
 /* ===== 설정: 아프다 패밀리 연결 ===== */
 const CFG = {
-  version: "1.4.0",
+  version: "1.5.0",
   api: "api/feedback", // 상대 경로: 루트 배포면 /api/feedback, future.apuda.app/write/ 면 /write/api/feedback
   family: [
     { name: "미래 나침반", url: location.hostname==="future.apuda.app" ? "/" : "https://future.apuda.app/?from=write" },
@@ -472,7 +472,7 @@ function vWrite(app, arg){
     <div class="wtop"><a href="#/train" class="small">← 훈련</a><span class="grow"></span>${s.kind==="custom"?`<span class="chip">내 문제</span>`:!s.reviewed?`<span class="chip warn">검토 전 세트</span>`:""}<span class="timer" id="tm">00:00</span></div>
     <h1>${esc(s.title)}</h1>
     <div class="phase" id="ph" aria-hidden="true">${PHASES.map(([n,m])=>`<i style="--w:${m}" title="${n} ${m}분"></i>`).join("")}</div>
-    <p class="tiny" id="phl">읽기 4분 → 개요 4분 → 초안 8분 → 고치기 4분</p>
+    <p class="tiny" id="phl">${(s.minutes||20)>20?`권장 ${s.minutes}분 · 긴 답안이라 단계별 시간은 참고만`:"읽기 4분 → 개요 4분 → 초안 8분 → 고치기 4분"}</p>
     <div class="tabs" role="tablist"><button role="tab" data-t="pass" aria-selected="true">제시문</button><button role="tab" data-t="write" aria-selected="false">${stage==="rewrite"?"피드백·다시 쓰기":"쓰기"}</button></div>
     <div class="wgrid">
       <section class="sheet pass" data-p="pass" id="passBox">${passHTML()}<p class="question">${esc(s.question)}</p>
@@ -530,13 +530,14 @@ function vWrite(app, arg){
       if(a.pending) bindPending("draft");
     } else {
       wb.innerHTML = `<div class="sheet fb">${fbHTML(a.fb, s)}</div>
-        ${s.debrief?`<details class="sheet" open><summary>진단 해설</summary><ul class="small">${s.debrief.map(d=>`<li>${esc(d)}</li>`).join("")}</ul><p class="tiny">진단 결과는 점수보다 '어디서 막혔는지'를 보려는 거예요.</p></details>`:""}
-        <div class="sheet">${!a.fb2 ? `<h3>다시 쓰기</h3><p class="small muted">고칠 점 2개만 반영해요. 첫 답안은 그대로 보관돼요.</p>
+        ${s.debrief?`<details class="sheet" ${s.kind==="diag"?"open":""}><summary>${s.kind==="diag"?"진단 해설":"문제 해설 (다시 쓰기 전에 참고)"}</summary><ul class="small">${s.debrief.map(d=>`<li>${esc(d)}</li>`).join("")}</ul>${s.kind==="diag"?`<p class="tiny">진단 결과는 점수보다 '어디서 막혔는지'를 보려는 거예요.</p>`:""}</details>`:""}
+        <div class="sheet">${!a.fb2 ? `<h3>다시 쓰기</h3><p class="small muted">고칠 점 2개만 반영해요. 첫 답안은 그대로 보관돼요.</p>${s.check?`<p class="small"><b>제출 전 확인</b> ${esc(s.check)}</p>`:""}
           ${editor("rewrite","수정본")}
           ${a.pending?pendingBox():""}
           <div class="actions"><button class="btn primary" id="sub">수정본 제출</button></div>`
           : `<h3>초안과 수정본 비교</h3>${diffHTML(a.draft,a.rewrite)}`}</div>
         ${a.fb2?`<div class="sheet fb"><h3 style="margin-top:0">수정본 피드백</h3>${fbHTML(a.fb2, s, true)}</div>
+          ${s.example?`<details class="sheet"><summary>예시 답안 보기</summary><p style="font-family:var(--serif);line-height:1.85">${esc(s.example)}</p><p class="tiny">앱 연습용 예시예요. 대학 모범답안이 아니고, 근거가 맞으면 다른 구성도 좋은 답이에요.</p></details>`:""}
           <div class="actions"><a class="btn primary" style="display:inline-flex;align-items:center;justify-content:center" href="#/today">오늘 끝 · 처음으로</a><button class="btn" id="again">이 세트 새로 쓰기</button></div>`:""}`;
       if(!a.fb2){ if(!a.rewrite){ a.rewrite=a.draft; } bindEditor("rewrite"); $("#ta").value=a.rewrite; $("#rl").innerHTML=ruler(a.rewrite.length); $("#sub").onclick=()=>submit("rewrite"); if(a.pending) bindPending("rewrite"); }
       else $("#again").onclick=()=>{ const n={ id:uid(), setId, createdAt:Date.now(), updatedAt:Date.now(), outline:["","",""], draft:"", rewrite:"", sec:0 }; S.attempts[n.id]=n; save(); go(`#/write/${setId}?a=${n.id}`); };
