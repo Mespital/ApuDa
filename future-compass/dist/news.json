@@ -1,8 +1,56 @@
 {
-  "checked_at": "2026-11-03T11:44:41.134205+00:00",
-  "last_success_at": "2026-11-03T11:44:41.134205+00:00",
+  "checked_at": "2026-11-03T19:17:59.476536+00:00",
+  "last_success_at": "2026-11-03T19:17:59.476536+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "New research shows how Guided Learning supports students",
+      "url": "https://blog.google/products-and-platforms/products/education/guided-learning-uk-japan/",
+      "source": "Google",
+      "published_at": "2026-11-03T14:00:00+00:00",
+      "category": "교육·생활",
+      "domain": "education"
+    },
+    {
+      "title": "We’re providing funding for organizations building AI for teachers.",
+      "url": "https://blog.google/products-and-platforms/products/education/google-org-funding-ai-education/",
+      "source": "Google",
+      "published_at": "2026-11-03T14:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "AI in the learning era",
+      "url": "https://blog.google/products-and-platforms/products/education/ai-learning-era-2026/",
+      "source": "Google",
+      "published_at": "2026-11-03T14:00:00+00:00",
+      "category": "교육·생활",
+      "domain": "education"
+    },
+    {
+      "title": "Designing responsible AI for learning",
+      "url": "https://blog.google/products-and-platforms/products/education/ai-learning-era-updates-2026/",
+      "source": "Google",
+      "published_at": "2026-11-03T14:00:00+00:00",
+      "category": "교육·생활",
+      "domain": "education"
+    },
+    {
+      "title": "Expanding AI educator training to new countries",
+      "url": "https://blog.google/products-and-platforms/products/education/google-ai-educator-series-global-expansion-november-2026/",
+      "source": "Google",
+      "published_at": "2026-11-03T14:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Accelerating engineering for the physical world",
+      "url": "https://openai.com/index/accelerating-engineering-for-the-physical-world",
+      "source": "OpenAI",
+      "published_at": "2026-11-03T12:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "Heimstaden is changing residential real estate management with AI",
       "url": "https://openai.com/index/heimstaden",
@@ -194,60 +242,12 @@
       "published_at": "2026-10-29T03:30:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Credit Saison achieves 954% ROI in a ChatGPT Enterprise pilot",
-      "url": "https://openai.com/index/credit-saison",
-      "source": "OpenAI",
-      "published_at": "2026-10-29T00:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Ads in AI Mode expand to new markets.",
-      "url": "https://blog.google/products/ads-commerce/ads-in-ai-mode-global/",
-      "source": "Google",
-      "published_at": "2026-10-28T21:30:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Dive into new topics with immersive explorations in the Gemini app.",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/immersive-explorations-student-hub/",
-      "source": "Google",
-      "published_at": "2026-10-28T18:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Gemini 4 Carbon: our next frontier model",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
-      "source": "Google",
-      "published_at": "2026-10-28T17:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Build and manage Connected Apps in one place",
-      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/connected-apps-one-place/",
-      "source": "Google",
-      "published_at": "2026-10-28T17:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "OpenAI and ServiceNow expand partnership across enterprise workflows",
-      "url": "https://openai.com/index/openai-servicenow-partnership-expansion",
-      "source": "OpenAI",
-      "published_at": "2026-10-28T13:15:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-11-03T11:44:41.134205+00:00",
+    "checked_at": "2026-11-03T19:17:59.476536+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -320,11 +320,11 @@
       },
       {
         "date": "2026-12-12",
-        "title": "기말고사(1학년)"
+        "title": "토요휴업일"
       },
       {
         "date": "2026-12-12",
-        "title": "토요휴업일"
+        "title": "기말고사(1학년)"
       },
       {
         "date": "2026-12-13",
@@ -400,7 +400,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-11-03T11:44:41.134205+00:00",
+    "last_success_at": "2026-11-03T19:17:59.476536+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
