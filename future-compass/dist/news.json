@@ -1,8 +1,24 @@
 {
-  "checked_at": "2026-11-03T03:23:14.549418+00:00",
-  "last_success_at": "2026-11-03T03:23:14.549418+00:00",
+  "checked_at": "2026-11-03T11:44:41.134205+00:00",
+  "last_success_at": "2026-11-03T11:44:41.134205+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "Heimstaden is changing residential real estate management with AI",
+      "url": "https://openai.com/index/heimstaden",
+      "source": "OpenAI",
+      "published_at": "2026-11-03T08:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Advancing research and partnering with universities in Singapore",
+      "url": "https://blog.google/innovation-and-ai/technology/research/partnering-singapore-advance-scientific-discovery/",
+      "source": "Google",
+      "published_at": "2026-11-03T04:30:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "Rewarding defenders with bigger bug bounties",
       "url": "https://openai.com/index/rewarding-defenders-with-bigger-bug-bounties",
@@ -226,28 +242,12 @@
       "published_at": "2026-10-28T13:15:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "The future of the firm",
-      "url": "https://openai.com/index/the-future-of-the-firm",
-      "source": "OpenAI",
-      "published_at": "2026-10-28T10:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Legora is building the agentic operating system for legal work",
-      "url": "https://openai.com/index/legora-agentic-operating-system-for-legal-work",
-      "source": "OpenAI",
-      "published_at": "2026-10-28T09:30:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-11-03T03:23:14.549418+00:00",
+    "checked_at": "2026-11-03T11:44:41.134205+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -400,7 +400,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-11-03T03:23:14.549418+00:00",
+    "last_success_at": "2026-11-03T11:44:41.134205+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
