@@ -1,13 +1,37 @@
 {
-  "checked_at": "2026-11-02T20:07:00.048659+00:00",
-  "last_success_at": "2026-11-02T20:07:00.048659+00:00",
+  "checked_at": "2026-11-03T03:23:14.549418+00:00",
+  "last_success_at": "2026-11-03T03:23:14.549418+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "Rewarding defenders with bigger bug bounties",
+      "url": "https://openai.com/index/rewarding-defenders-with-bigger-bug-bounties",
+      "source": "OpenAI",
+      "published_at": "2026-11-02T18:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Preparing our next security sprint to harden OpenAI",
+      "url": "https://openai.com/index/preparing-our-next-security-sprint-to-harden-openai",
+      "source": "OpenAI",
+      "published_at": "2026-11-02T18:00:00+00:00",
+      "category": "안전·보안",
+      "domain": "security"
+    },
     {
       "title": "The latest AI news we announced in October 2026",
       "url": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-october-2026/",
       "source": "Google",
       "published_at": "2026-11-02T17:45:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Scaling Git at OpenAI",
+      "url": "https://openai.com/index/scaling-git-at-openai",
+      "source": "OpenAI",
+      "published_at": "2026-11-02T15:30:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
     },
@@ -34,6 +58,14 @@
       "published_at": "2026-11-02T00:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
+    },
+    {
+      "title": "OpenAI appoints Dan Driscoll as Senior Counselor for National Security Modernization",
+      "url": "https://openai.com/index/dan-driscoll-joins-openai",
+      "source": "OpenAI",
+      "published_at": "2026-11-02T00:00:00+00:00",
+      "category": "안전·보안",
+      "domain": "security"
     },
     {
       "title": "We’ve received our first response from the Project Suncatcher prototype satellite.",
@@ -210,44 +242,12 @@
       "published_at": "2026-10-28T09:30:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Legora is building the agentic operating system for legal work",
-      "url": "https://openai.com/index/legora",
-      "source": "OpenAI",
-      "published_at": "2026-10-28T09:30:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "We’re announcing Genie 4, our new world model for real-time interactive simulation.",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/introducing-genie-4/",
-      "source": "Google",
-      "published_at": "2026-10-27T16:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "8 examples of Gemini 4 Argon in action",
-      "url": "https://blog.google/products-and-platforms/products/gemini/gemini-4-argon-in-action/",
-      "source": "Google",
-      "published_at": "2026-10-27T15:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Retell uses OpenAI models to help power 100M monthly calls",
-      "url": "https://openai.com/index/retell-ai",
-      "source": "OpenAI",
-      "published_at": "2026-10-27T15:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-11-02T20:07:00.048659+00:00",
+    "checked_at": "2026-11-03T03:23:14.549418+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -400,7 +400,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-11-02T20:07:00.048659+00:00",
+    "last_success_at": "2026-11-03T03:23:14.549418+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
