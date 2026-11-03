@@ -151,35 +151,35 @@ HD-MTX가 어려운 경우도 있으나 모든 치료가 불가능하다는 뜻�
 처음 림프종을 줄여 관해를 유도하는 치료 단계입니다. 반응평가 뒤 공고요법 또는 다른 후속 계획을 결정합니다.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/about-cancer/treatment/side-effects/infection)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
 
 ##### Q42. 리툭시맙은 PCNSL 환자라면 모두 필요한가요?
 
 일부 CD20 양성 PCNSL 치료 조합에 포함되는 항체약입니다. 환자 상태와 선택한 요법에 따라 사용 여부가 달라집니다.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/about-cancer/treatment/side-effects/infection)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
 
 ##### Q43. 척수강내 항암주사는 반드시 받아야 하나요?
 
 뇌척수액 공간으로 약물을 넣는 치료는 모든 PCNSL 환자에게 일률적으로 시행하지 않습니다. 침범 위치와 전신항암제의 중추신경계 도달 특성을 고려합니다.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/about-cancer/treatment/side-effects/infection)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
 
 ##### Q44. 메토트렉세이트 배설이 늦어지면 어떻게 하나요?
 
 약물 농도가 오래 높으면 신장·골수·점막 독성이 커질 수 있습니다. 의료진이 수액·소변상태·구제약 계획을 조정하므로 검사를 빠뜨리지 마세요.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/about-cancer/treatment/side-effects/infection)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
 
 ##### Q45. 혈중 메토트렉세이트 농도는 왜 반복 측정하나요?
 
 약물이 안전한 수준까지 배설되는지 확인하기 위한 검사입니다. 수치와 신장기능을 함께 보며 추가 보호치료와 퇴원 시점을 결정해요.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/about-cancer/treatment/side-effects/infection)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
 
 ##### Q46. 항암치료로 혈구 수치가 떨어지면 무엇을 주의해야 하나요?
 
@@ -193,14 +193,14 @@ HD-MTX가 어려운 경우도 있으나 모든 치료가 불가능하다는 뜻�
 항암 관련 점막염은 탈수와 영양저하, 감염 위험을 높일 수 있습니다. 식사를 못 하거나 발열이 동반되면 치료팀에 알려 통증·영양 지원을 받으세요.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/about-cancer/treatment/side-effects/infection)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
 
 ##### Q48. 주입 중 발진과 숨참이 생기면 어떻게 하나요?
 
 약물 주입반응이나 알레르기 가능성이 있습니다. 즉시 주입 담당자에게 알리고 심한 호흡곤란·의식저하는 응급대응을 받아야 해요.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/about-cancer/treatment/side-effects/infection)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
 
 ##### Q49. 중심정맥관 주변이 붉고 아프면 괜찮은가요?
 
@@ -214,77 +214,77 @@ HD-MTX가 어려운 경우도 있으나 모든 치료가 불가능하다는 뜻�
 치료 시점과 이전 영상, 실제 신경학적 증상을 함께 평가해야 합니다. 한 차례 영상 변화만으로 실패를 단정하지 않고 다음 검사를 계획할 수 있어요.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/about-cancer/treatment/side-effects/infection)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/patient/primary-cns-lymphoma-treatment-pdq)
 
 ##### Q51. 완전관해(CR)와 부분관해(PR)는 무엇이 다른가요?
 
 완전관해는 평가기준상 활동성 병변이 보이지 않는 상태이고, 부분관해는 병변이 의미 있게 줄어든 상태입니다. 완전관해가 평생 재발하지 않는다는 보장은 아니에요.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/patient/primary-cns-lymphoma-treatment-pdq)
 
 ##### Q52. 치료 후 MRI에 흔적이 남으면 암이 남은 건가요?
 
 치료 뒤 흉터나 변화로 영상의 흔적이 남을 수 있습니다. 과거 영상과 비교하고 필요시 추적 검사로 활동성 여부를 평가합니다.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/patient/primary-cns-lymphoma-treatment-pdq)
 
 ##### Q53. MRI 악화가 모두 재발을 뜻하나요?
 
 염증이나 방사선 손상도 종양처럼 보일 수 있습니다. 치료 후 경과시간과 영상 특징·증상을 함께 보아 판단해요.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/patient/primary-cns-lymphoma-treatment-pdq)
 
 ##### Q54. 자가조혈모세포이식은 다른 사람의 세포를 받나요?
 
 자가이식(ASCT)은 자신의 조혈모세포를 미리 모았다가 고용량 치료 후 다시 주입합니다. 타인의 세포를 사용하는 동종이식과는 달라요.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/patient/primary-cns-lymphoma-treatment-pdq)
 
 ##### Q55. 자가이식 전에 세포를 채집하는 이유는 무엇인가요?
 
 고용량 치료가 골수 기능을 크게 억제할 수 있어 회복을 돕기 위해 세포를 미리 확보합니다. 채집 가능성과 장기기능을 평가한 후 진행합니다.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/patient/primary-cns-lymphoma-treatment-pdq)
 
 ##### Q56. 고령이면 공고치료를 받을 수 없나요?
 
 연령뿐 아니라 신장·심장기능, 수행능력, 인지기능과 치료 반응을 함께 평가합니다. 이식·방사선·다른 약물의 이득과 부담을 비교해요.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/patient/primary-cns-lymphoma-treatment-pdq)
 
 ##### Q57. 전뇌방사선치료는 기억력에 영향을 줄 수 있나요?
 
 WBRT는 일부 환자에서 기억력·집중력 저하 같은 지연 신경독성 위험이 있습니다. 병 조절 효과와 장기 뇌기능 보존을 함께 논의해야 해요.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/patient/primary-cns-lymphoma-treatment-pdq)
 
 ##### Q58. 낮은 방사선량이면 인지부작용이 없나요?
 
 특정 상황에서 낮춘 방사선량을 검토하지만 위험이 완전히 사라지는 것은 아닙니다. 방사선 범위·용량·연령과 기존 인지기능을 함께 고려합니다.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/patient/primary-cns-lymphoma-treatment-pdq)
 
 ##### Q59. HD-MTX는 왜 입원해서 맞는 일이 많나요?
 
 반복 수액·소변 관리와 혈중 약물농도 검사가 필요하기 때문입니다. 병원별 절차와 환자 상태에 따라 계획이 달라질 수 있어요.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/patient/primary-cns-lymphoma-treatment-pdq)
 
 ##### Q60. 재활치료는 항암이 끝난 뒤에만 가능한가요?
 
 상태가 허락하면 치료 도중에도 보행·언어·일상생활 재활을 시작할 수 있습니다. 혈구 수치와 피로도, 낙상위험에 맞춰 강도를 조절해요.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/patient/primary-cns-lymphoma-treatment-pdq)
 
 ##### Q61. 갑자기 한쪽 팔다리에 힘이 빠지면 어떻게 하나요?
 
@@ -312,7 +312,7 @@ WBRT는 일부 환자에서 기억력·집중력 저하 같은 지연 신경독�
 호중구가 낮은 시기에는 감염이 빨리 악화할 수 있습니다. 해열제로 먼저 가리지 말고 치료병원에 즉시 연락하세요.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/patient/primary-cns-lymphoma-treatment-pdq)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/about-cancer/treatment/side-effects/infection)
 
 ##### Q65. 넘어지거나 중심을 잃는 일이 늘면 어떻게 하나요?
 
@@ -431,91 +431,91 @@ WBRT는 일부 환자에서 기억력·집중력 저하 같은 지연 신경독�
 발작·시야장애·주의력 저하가 있으면 운전이 위험할 수 있습니다. 의료진의 기능 평가와 관련 법규를 확인한 뒤 결정하세요.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/patient/primary-cns-lymphoma-treatment-pdq)
 
 ##### Q82. 기억력이 떨어지면 전문 검사를 받을 수 있나요?
 
 신경심리검사로 기억력·주의력·실행기능을 나누어 평가할 수 있습니다. 결과에 따라 인지재활과 일상 지원을 상담합니다.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/patient/primary-cns-lymphoma-treatment-pdq)
 
 ##### Q83. 근력이 떨어졌다면 무조건 많이 걸어야 하나요?
 
 걷기는 도움이 될 수 있지만 빈혈·낙상위험·신경학적 장애에 따라 강도를 조절해야 합니다. 재활팀과 단계적인 운동계획을 세우세요.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/patient/primary-cns-lymphoma-treatment-pdq)
 
 ##### Q84. 스테로이드를 오래 복용했다면 뼈 건강은요?
 
 장기간 스테로이드와 활동 감소는 골절 위험에 영향을 줄 수 있습니다. 골건강·낙상위험 평가와 필요한 검사를 상담하세요.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/patient/primary-cns-lymphoma-treatment-pdq)
 
 ##### Q85. 항암치료 중 예방접종 시기는 어떻게 정하나요?
 
 면역상태와 치료 단계에 따라 백신 종류와 시기가 달라집니다. 특히 생백신은 주의가 필요하므로 접종 전에 반드시 확인하세요.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/patient/primary-cns-lymphoma-treatment-pdq)
 
 ##### Q86. 퇴원 후 감염 예방에서 가장 중요한 것은 무엇인가요?
 
 손위생과 발열·오한의 빠른 보고, 처방받은 예방약 준수가 중요합니다. 극단적인 식사 제한보다 개인별 면역상태에 맞는 안내를 따르세요.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/about-cancer/treatment/side-effects/infection)
 
 ##### Q87. 보호자가 지쳐도 도움을 요청할 수 있나요?
 
 장기 치료는 보호자에게도 큰 부담을 줍니다. 가족 역할을 나누고 병원 사회사업팀이나 돌봄 지원 자원을 상담하세요.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/patient/primary-cns-lymphoma-treatment-pdq)
 
 ##### Q88. 우울·불안 치료를 항암과 병행해도 되나요?
 
 가능하며 정신건강 지원은 암 치료의 일부로 볼 수 있습니다. 불면·식사곤란·일상 기능 저하가 지속되면 조기에 알려주세요.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/patient/primary-cns-lymphoma-treatment-pdq)
 
 ##### Q89. 치료 목표를 언제 다시 상의해야 하나요?
 
 검사 결과나 부작용이 변할 때마다 생존과 일상 기능이라는 목표를 다시 논의할 수 있습니다. 환자에게 중요한 삶의 우선순위를 직접 전달하세요.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/patient/primary-cns-lymphoma-treatment-pdq)
 
 ##### Q90. 완화의료 상담은 항암을 포기한 사람만 받나요?
 
 아니요, 완화의료는 치료 중에도 통증·수면·정서와 가족 부담을 돕습니다. 항암치료 여부와 별개로 일찍 상담할 수 있어요.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/patient/primary-cns-lymphoma-treatment-pdq)
 
 ##### Q91. 병리보고서에서 무엇을 보관해야 하나요?
 
 정확한 진단명과 면역염색·분자검사 결과, 조직 채취 날짜를 보관하세요. 재발 또는 전원 시 과거 검체가 중요할 수 있어요.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/patient/primary-cns-lymphoma-treatment-pdq)
 
 ##### Q92. MRI 판독지만 있으면 다른 병원 진료에 충분한가요?
 
 영상 원본과 판독지 모두 있으면 과거 병변 비교가 더 정확합니다. 검사 날짜를 정리해 전원·2차 의견 진료에 가져가세요.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/patient/primary-cns-lymphoma-treatment-pdq)
 
 ##### Q93. 약물 상호작용 확인표는 어떻게 만들까요?
 
 처방약·일반약·보조제의 이름과 용량·복용시간을 한 장으로 정리하세요. 항암 주기마다 변동사항을 의료진·약사에게 알리세요.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/patient/primary-cns-lymphoma-treatment-pdq)
 
 ##### Q94. 환자의 기억력 보존 희망도 치료 선택에 반영되나요?
 
@@ -543,14 +543,14 @@ WBRT는 일부 환자에서 기억력·집중력 저하 같은 지연 신경독�
 이전 치료와 치료 반응, 신장·간기능, 수행능력, 병변 위치 등을 평가할 수 있습니다. 실제 기준은 각 시험의 연구팀이 확인합니다.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/about-cancer/treatment/clinical-trials)
 
 ##### Q98. 종양 유전자변이가 발견되면 가족도 검사를 해야 하나요?
 
 종양의 후천적 변화와 유전되는 생식세포 변이는 서로 다릅니다. 가족 검사는 개인·가족력에 따라 별도 유전상담이 필요한지 평가합니다.
 
 점검 상태: AI 사전작성 · 실제 전문의 승인 대기  
-근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq)
+근거: [미국 국립암연구소(NCI)](https://www.cancer.gov/about-cancer/causes-prevention/genetics/genetic-testing-fact-sheet)
 
 ##### Q99. 집에서 응급연락 정보를 어떻게 준비하나요?
 
