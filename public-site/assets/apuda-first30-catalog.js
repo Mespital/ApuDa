@@ -1,6 +1,7 @@
 (function(global){
   'use strict';
   // Shared cover/guide identity for the homepage shelf, resource chooser and video resources.
+  // FAQ: 30 cancer types, 100 questions each; Vol.13–30 Q21–100 are AI drafts pending clinician review.
   var books=[
   {
     "vol": 1,
@@ -130,7 +131,7 @@
     "href": "/library/first30/books/13.html",
     "hasMini": false,
     "hasFaq": true,
-    "faqCount": 20
+    "faqCount": 100
   },
   {
     "vol": 14,
@@ -140,7 +141,7 @@
     "href": "/library/first30/books/14.html",
     "hasMini": false,
     "hasFaq": true,
-    "faqCount": 20
+    "faqCount": 100
   },
   {
     "vol": 15,
@@ -150,7 +151,7 @@
     "href": "/library/first30/books/15.html",
     "hasMini": false,
     "hasFaq": true,
-    "faqCount": 20
+    "faqCount": 100
   },
   {
     "vol": 16,
@@ -160,7 +161,7 @@
     "href": "/library/first30/books/16.html",
     "hasMini": false,
     "hasFaq": true,
-    "faqCount": 20
+    "faqCount": 100
   },
   {
     "vol": 17,
@@ -170,7 +171,7 @@
     "href": "/library/first30/books/17.html",
     "hasMini": false,
     "hasFaq": true,
-    "faqCount": 20
+    "faqCount": 100
   },
   {
     "vol": 18,
@@ -180,7 +181,7 @@
     "href": "/library/first30/books/18.html",
     "hasMini": false,
     "hasFaq": true,
-    "faqCount": 20
+    "faqCount": 100
   },
   {
     "vol": 19,
@@ -190,7 +191,7 @@
     "href": "/library/first30/books/19.html",
     "hasMini": false,
     "hasFaq": true,
-    "faqCount": 20
+    "faqCount": 100
   },
   {
     "vol": 20,
@@ -200,7 +201,7 @@
     "href": "/library/first30/books/20.html",
     "hasMini": false,
     "hasFaq": true,
-    "faqCount": 20
+    "faqCount": 100
   },
   {
     "vol": 21,
@@ -210,7 +211,7 @@
     "href": "/library/first30/books/21.html",
     "hasMini": false,
     "hasFaq": true,
-    "faqCount": 20
+    "faqCount": 100
   },
   {
     "vol": 22,
@@ -220,7 +221,7 @@
     "href": "/library/first30/books/22.html",
     "hasMini": false,
     "hasFaq": true,
-    "faqCount": 20
+    "faqCount": 100
   },
   {
     "vol": 23,
@@ -230,7 +231,7 @@
     "href": "/library/first30/books/23.html",
     "hasMini": false,
     "hasFaq": true,
-    "faqCount": 20
+    "faqCount": 100
   },
   {
     "vol": 24,
@@ -240,7 +241,7 @@
     "href": "/library/first30/books/24.html",
     "hasMini": false,
     "hasFaq": true,
-    "faqCount": 20
+    "faqCount": 100
   },
   {
     "vol": 25,
@@ -250,7 +251,7 @@
     "href": "/library/first30/books/25.html",
     "hasMini": false,
     "hasFaq": true,
-    "faqCount": 20
+    "faqCount": 100
   },
   {
     "vol": 26,
@@ -260,7 +261,7 @@
     "href": "/library/first30/books/26.html",
     "hasMini": false,
     "hasFaq": true,
-    "faqCount": 20
+    "faqCount": 100
   },
   {
     "vol": 27,
@@ -270,7 +271,7 @@
     "href": "/library/first30/books/27.html",
     "hasMini": false,
     "hasFaq": true,
-    "faqCount": 20
+    "faqCount": 100
   },
   {
     "vol": 28,
@@ -280,7 +281,7 @@
     "href": "/library/first30/books/28.html",
     "hasMini": false,
     "hasFaq": true,
-    "faqCount": 20
+    "faqCount": 100
   },
   {
     "vol": 29,
@@ -290,7 +291,7 @@
     "href": "/library/first30/books/29.html",
     "hasMini": false,
     "hasFaq": true,
-    "faqCount": 20
+    "faqCount": 100
   },
   {
     "vol": 30,
@@ -300,7 +301,7 @@
     "href": "/library/first30/books/30.html",
     "hasMini": false,
     "hasFaq": true,
-    "faqCount": 20
+    "faqCount": 100
   }
 ];
   var bySlug=Object.create(null);

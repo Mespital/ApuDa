@@ -1,10 +1,10 @@
 {
   "slug": "bladder",
   "name": "방광암",
-  "updated": "2026-11-02",
-  "revision": "20261102-corefaq-v1",
-  "edition": "진단 후 첫 30일 핵심 FAQ 20",
-  "reviewMode": "AI 사전점검",
+  "updated": "2026-11-03",
+  "revision": "20261103-faq100-ai-draft-v1",
+  "edition": "진단 후 첫 30일 FAQ 100문항 (신규 80문항 AI 편집 초안)",
+  "reviewMode": "AI 사전점검(기존20)·AI 확장원고(신규80)",
   "clinicalApproval": "pending",
   "items": [
     {
@@ -363,6 +363,1366 @@
         ],
         "scope": "방광절제술을 결정하기 전에 무엇을 비교해야 하나요?에 관한 공식 근거 대조. 일반 환자교육이며 개별 치료·국내 허가·급여를 판정하지 않음."
       }
+    },
+    {
+      "n": 21,
+      "q": "CT 요로조영술은 일반 CT와 무엇이 다른가요?",
+      "a": "신장·요관·방광으로 이어지는 소변길의 병변을 자세히 보려는 검사예요. 상부요로 평가에 도움을 주지만 작은 방광 종양을 찾는 방광경까지 대신하지는 못해요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.bladder.021",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 22,
+      "q": "현미경적 혈뇨만 있어도 방광암 검사가 필요한가요?",
+      "a": "소변이 눈에 붉게 보이지 않아도 검사에서 적혈구가 확인될 수 있어요. 흡연력·연령·혈뇨 정도 등에 따라 비뇨의학과가 추가 방광경과 영상검사 필요성을 결정해요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.bladder.022",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 23,
+      "q": "소변 세포검사가 음성이면 암이 없나요?",
+      "a": "고등급 암세포를 찾는 데 유용하지만 저등급 병변은 놓칠 수 있어요. 세포검사가 음성이라도 혈뇨나 방광경 소견이 의심스럽다면 추가 평가가 필요합니다.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.bladder.023",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 24,
+      "q": "청색광 방광경은 언제 사용하나요?",
+      "a": "일부 기관에서 일반 방광경보다 작은 병변이나 상피내암을 발견하는 데 도움을 얻으려 사용해요. 모든 환자에게 필수는 아니며 해당 검사와 예상 이득을 담당의에게 물어보세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.bladder.024",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 25,
+      "q": "방광암은 모두 요로상피암인가요?",
+      "a": "요로상피암이 가장 흔하지만 편평세포암·선암 등 다른 조직형도 있어요. 조직형마다 표준치료 근거가 다르므로 병리보고서의 정확한 명칭을 확인해야 해요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.bladder.025",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 26,
+      "q": "TURBT 조직에 근육층이 있어야 하는 이유는요?",
+      "a": "내시경 절제검체에 방광 고유근층이 있어야 근육 침범 여부를 더 정확히 판단할 수 있어요. 근육층이 없거나 T1·고등급 소견이면 재절제가 필요한지 의논해요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.bladder.026",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 27,
+      "q": "림프혈관침범(LVI)이 무엇인가요?",
+      "a": "암세포가 병리검사상 작은 림프관·혈관 안에 보인다는 뜻이에요. 진행 위험을 평가하는 요소지만, 이 소견 하나만으로 다른 장기 전이가 확정된 것은 아니에요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.bladder.027",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 28,
+      "q": "변이 조직형이라는 병리소견은 왜 중요한가요?",
+      "a": "보통의 요로상피암과 다른 성분이 섞였다는 뜻으로 일부 유형은 치료 강도에 영향을 줄 수 있어요. 전문 병리 검토를 요청하고 수술·약물치료 결정에 어떻게 반영되는지 확인하세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.bladder.028",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 29,
+      "q": "방광암 환자에서 신우·요관도 검사하는 이유는요?",
+      "a": "방광과 상부요로는 비슷한 요로상피로 이어져 있어 다른 부위에도 병변이 생길 수 있어요. 개인 위험도에 따라 영상검사를 추가하며 추적 중 새 혈뇨를 알려야 해요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.bladder.029",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 30,
+      "q": "종양이 방광목에 있으면 달라지는 점은요?",
+      "a": "종양 위치가 방광목이나 요도에 가까우면 절제 범위와 요도 보존, 요로전환 방법에 영향을 줄 수 있어요. 위치·요도 침범 여부를 수술 전에 확인하세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.bladder.030",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 31,
+      "q": "Ta·T1·Tis를 어떻게 구분하나요?",
+      "a": "Ta는 점막에 국한된 유두상 병변, T1은 점막 아래 결합조직 침범, Tis는 평평한 상피내암을 뜻해요. 모두 근육 비침윤성이지만 재발·진행 위험은 같지 않아요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.bladder.031",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-stage"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 32,
+      "q": "고위험 방광암은 병기가 높은 암만 뜻하나요?",
+      "a": "T1·고등급·상피내암 여부와 병변 수·크기·재발 양상 등을 함께 평가해요. 같은 초기 병기라도 위험군에 따라 방광 내 약물치료와 추적검사 간격이 달라집니다.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.bladder.032",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 33,
+      "q": "방광 안에 종양이 여러 개 있으면 더 위험한가요?",
+      "a": "다발성 여부는 재발 위험을 판단하는 여러 요소 중 하나예요. 정확한 위험 평가는 병변 크기와 등급, 침윤 깊이, 이전 재발 이력까지 종합해야 합니다.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.bladder.033",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 34,
+      "q": "상피내암(CIS)은 CT에서 발견되나요?",
+      "a": "방광 점막에 평평하게 생겨 일반 영상으로는 놓치기 쉬워요. 방광경·조직검사, 필요시 소변 세포검사를 함께 판단하는 이유입니다.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.bladder.034",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 35,
+      "q": "BCG 유도요법과 유지요법의 차이는요?",
+      "a": "유도요법은 처음 일정 기간 반복 주입하는 치료이고 유지요법은 효과를 이어가기 위한 추가 과정이에요. 위험도·부작용과 약제 공급에 따라 실제 일정은 조정됩니다.",
+      "category": "followup",
+      "review": {
+        "id": "faq.bladder.035",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-stage"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 36,
+      "q": "BCG 주입 전 육안적 혈뇨가 있으면요?",
+      "a": "방광에 뚜렷한 출혈이나 감염이 있을 때 주입하면 합병증 위험이 커질 수 있어요. 예정된 날이어도 출혈·발열·배뇨통을 먼저 알려 치료 여부를 판단받으세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.bladder.036",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 37,
+      "q": "BCG 주입 후 집에서 주의할 점은요?",
+      "a": "초기 배뇨와 화장실 위생·청소에 관한 병원 안내를 따르세요. 제제와 기관의 지침에 따라 주의 시간과 방법이 달라질 수 있으니 서면 안내를 받아두면 좋아요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.bladder.037",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 38,
+      "q": "BCG 불응성이라는 진단은 정확히 무엇인가요?",
+      "a": "충분한 BCG를 받았는데도 일정 기준에 해당하는 고위험 병변이 남거나 다시 나타난 상태를 뜻해요. 단순히 치료 후 통증이 있다는 의미가 아니며 다음 치료 선택에 중요합니다.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.bladder.038",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 39,
+      "q": "BCG가 어렵다면 다른 방광 내 치료가 있나요?",
+      "a": "특정 위험군과 이전 치료에 따라 방광 내 항암제 등 다른 치료를 고려할 수 있어요. 근육침윤으로 진행할 위험이 높다면 방광절제술과 비교해야 합니다.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.bladder.039",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-stage"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 40,
+      "q": "재발이 반복되면 근육 비침윤성이어도 방광을 제거하나요?",
+      "a": "반복 고등급 재발이나 BCG 반응 불량 등에서는 조기 방광절제술을 논의할 수 있어요. 재발 횟수만으로 결정하지 않고 현재 병리·전신상태·환자 선호를 함께 봅니다.",
+      "category": "followup",
+      "review": {
+        "id": "faq.bladder.040",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 41,
+      "q": "수술 전에 전신 항암치료를 하는 목적은요?",
+      "a": "보이지 않는 미세 전이를 치료하고 장기 결과를 개선하기 위해 일부 근육침윤성 환자에게 권할 수 있어요. 치료가 적합한지는 신기능과 청력·신경병증 등을 따져야 합니다.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.bladder.041",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-stage"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 42,
+      "q": "시스플라틴 사용 가능 여부를 판단하는 기준은요?",
+      "a": "신장 기능과 전신상태, 청력, 말초신경 이상, 심부전 등을 함께 평가해요. 한 가지 수치만으로 스스로 결정하지 말고 다른 치료 선택지까지 설명받으세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.bladder.042",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 43,
+      "q": "선행항암 후 CT에서 종양이 사라졌다면 수술은 생략하나요?",
+      "a": "영상에 보이지 않아도 미세한 암세포가 남을 수 있어요. 계획을 바꿀 때는 초기 병기와 수술·방광보존의 근거를 함께 따져 다학제 진료에서 결정해야 합니다.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.bladder.043",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 44,
+      "q": "방광절제 후 보조치료를 권하는 이유는요?",
+      "a": "수술 후 최종 병리에서 림프절 전이 등 재발 위험이 높은 소견이 나올 수 있어요. 이미 받은 항암치료와 회복 상태를 고려해 추가 전신치료의 이득·위험을 상담합니다.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.bladder.044",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-stage"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 45,
+      "q": "FGFR 유전자 검사는 누구에게 필요한가요?",
+      "a": "일부 진행성 요로상피암에서 특정 FGFR 변화가 표적약 선택의 단서가 됩니다. 검사법과 국내 허가·급여는 시점에 따라 달라지므로 실제 적용 가능성을 확인하세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.bladder.045",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 46,
+      "q": "PD-L1 양성이면 면역치료가 반드시 효과 있나요?",
+      "a": "PD-L1은 일부 치료 상황의 참고 지표이지만 약물·검사법마다 의미가 달라요. 양성만으로 반응을 보장하거나 음성이라고 모든 면역치료 가능성을 배제하지는 않아요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.bladder.046",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 47,
+      "q": "림프절이 커졌다면 전이가 확실한가요?",
+      "a": "염증으로 커질 수도 있고 반대로 작은 전이는 영상에서 보이지 않을 수 있어요. 위치·크기·다른 병변을 함께 보고 추가 검사 필요성을 판단합니다.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.bladder.047",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 48,
+      "q": "수신증이 생겼다면 어떤 위험이 있나요?",
+      "a": "종양 등이 소변의 흐름을 막으면 신장에 소변이 고일 수 있어요. 신기능 저하나 감염이 생길 수 있으므로 옆구리 통증·열·소변량 감소를 빠르게 알려야 해요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.bladder.048",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 49,
+      "q": "수술 전 영양·근력 관리는 왜 필요한가요?",
+      "a": "근치적 방광절제술은 큰 수술이라 영양과 체력 상태가 회복에 영향을 줄 수 있어요. 치료 전에 영양사·재활팀과 식사, 걷기, 금연 계획을 상의하세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.bladder.049",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-02"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 50,
+      "q": "시스플라틴 치료 중 이명이 생기면 알려야 하나요?",
+      "a": "일부 환자에서 청력 감소·이명·신경병증·신장기능 변화가 생길 수 있어요. 새 증상을 말하면 검사와 치료 조정을 판단하는 데 도움이 됩니다.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.bladder.050",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 51,
+      "q": "방광절제 때 골반 림프절도 절제하나요?",
+      "a": "암의 범위를 평가·치료하기 위해 골반 림프절 절제를 함께 하는 경우가 많아요. 수술 범위와 혈전·림프부종 등 합병증을 미리 설명받으세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.bladder.051",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 52,
+      "q": "수술 전 요루 위치를 왜 표시하나요?",
+      "a": "회장도관 등 요루를 만들 경우 복부 주름과 옷차림, 손 사용을 고려해 위치를 정해야 관리가 쉬워요. 장루전문간호사의 표시·주머니 교육을 받으세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.bladder.052",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 53,
+      "q": "회장도관과 신방광은 생활에서 어떻게 다른가요?",
+      "a": "회장도관은 복부 배출구와 외부 주머니를 사용하고, 신방광은 장으로 만든 저장 공간을 요도에 연결해요. 요실금·야간 배뇨·수술 적합성을 비교해야 합니다.",
+      "category": "followup",
+      "review": {
+        "id": "faq.bladder.053",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 54,
+      "q": "신방광을 만들면 예전처럼 소변이 마렵나요?",
+      "a": "원래 방광과 감각이 달라 시간에 맞춰 배뇨하는 습관이 필요할 수 있어요. 야간 실금과 잔뇨는 개인차가 있으므로 재활 방법을 배우세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.bladder.054",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 55,
+      "q": "요루 주머니 교체 주기는 모든 환자가 같나요?",
+      "a": "피부 상태와 제품, 소변량에 따라 달라요. 장루전문간호사에게 피부에 맞는 밀착 방법과 주머니를 비울 시점을 교육받으세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.bladder.055",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 56,
+      "q": "방광절제 후 장운동이 느려질 수 있나요?",
+      "a": "수술 중 장 일부를 이용하고 복부를 조작하면 장마비가 일시적으로 생길 수 있어요. 구토·심한 팽만·방귀가 나오지 않는 증상을 의료진에게 알려야 합니다.",
+      "category": "care",
+      "review": {
+        "id": "faq.bladder.056",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 57,
+      "q": "큰 골반 수술 뒤 혈전 예방이 필요한가요?",
+      "a": "움직임이 줄어 혈전 위험이 올라갈 수 있어 예방주사와 조기 보행을 계획하기도 해요. 한쪽 다리의 갑작스러운 부종이나 가슴 통증·호흡곤란은 즉시 평가받으세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.bladder.057",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 58,
+      "q": "장으로 만든 요로전환 후 전해질 검사가 필요한가요?",
+      "a": "일부 방식에서는 장 점막과 소변 접촉으로 산·염기 균형이 바뀔 수 있어요. 특히 신기능이 약하면 혈액검사로 전해질과 산증 여부를 확인합니다.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.bladder.058",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 59,
+      "q": "요로전환 후 비타민 B12가 부족해질 수 있나요?",
+      "a": "회장을 사용하는 범위에 따라 장기적으로 흡수 문제가 발생할 수 있어요. 모든 환자에게 바로 생기지는 않으며 수술 방식에 맞춰 추적검사를 논의하세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.bladder.059",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 60,
+      "q": "요로전환 뒤 신장 검사를 계속하는 이유는요?",
+      "a": "요관 연결 부위가 좁아지거나 감염이 반복되면 신장기능이 나빠질 수 있어요. 혈액검사와 필요한 영상을 통해 정기적으로 확인합니다.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.bladder.060",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 61,
+      "q": "방광보존 삼중병합치료란 무엇인가요?",
+      "a": "선별된 근육침윤성 환자에게 내시경 절제와 방사선·항암치료를 함께 적용하는 방법이에요. 방광을 보존할 수 있지만 엄격한 방광경 추적이 필요합니다.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.bladder.061",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 62,
+      "q": "삼중병합치료가 적합한지 어떤 조건을 보나요?",
+      "a": "종양의 범위와 위치, 수신증, 방광 기능, 다른 병변, 전신 건강 등을 함께 평가해요. 수술과 방사선 전문가의 의견을 모두 들어 선택하는 것이 좋습니다.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.bladder.062",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 63,
+      "q": "방광보존 방사선치료에 항암제를 같이 쓰는 이유는요?",
+      "a": "일부 약물은 방사선 효과를 높이는 감작제로 사용됩니다. 동반 질환으로 약물 종류나 강도를 바꿀 수 있으니 기대 효과와 부작용을 확인하세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.bladder.063",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 64,
+      "q": "방사선 중 소변이 자주 마려우면 재발인가요?",
+      "a": "방광 점막 자극으로 빈뇨·절박뇨·배뇨통이 생길 수 있지만 감염도 감별해야 해요. 열·심한 통증·혈뇨는 단순 부작용이라고 넘기지 마세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.bladder.064",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 65,
+      "q": "방사선치료 후 수년이 지나 혈뇨가 생길 수 있나요?",
+      "a": "지연성 방사선방광염으로 출혈이 생길 수 있어요. 그러나 새 혈뇨는 재발·감염·다른 요로병변 때문일 수도 있으므로 평가받아야 합니다.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.bladder.065",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 66,
+      "q": "방광보존 후 재발하면 방광절제술이 가능한가요?",
+      "a": "일부 침윤성 재발에서는 구제 방광절제술을 고려할 수 있어요. 이전 방사선 때문에 수술 위험이 달라질 수 있어 경험 있는 팀에서 평가받으세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.bladder.066",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 67,
+      "q": "방광보존 치료 후 CT만 찍으면 되나요?",
+      "a": "방광 안에 새 병변이 생기는지 확인하는 방광경이 중요해요. 소변검사·영상과 진찰을 병행하며 위험도에 맞춘 추적 일정을 지켜야 합니다.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.bladder.067",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 68,
+      "q": "치료 후 피로가 길어지면 암이 남았다는 뜻인가요?",
+      "a": "항암·방사선·수술 후 회복, 빈혈, 수면 문제 등 원인이 다양해요. 새 증상과 피로 변화가 지속되면 검사와 재활을 상담하세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.bladder.068",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-03"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 69,
+      "q": "골반 치료 후 한쪽 다리가 부으면 림프부종인가요?",
+      "a": "림프절 절제·방사선으로 림프부종이 생길 수 있지만 갑작스러운 한쪽 부종은 혈전 가능성도 있어요. 통증·호흡곤란이 동반되면 응급 평가가 필요합니다.",
+      "category": "care",
+      "review": {
+        "id": "faq.bladder.069",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 70,
+      "q": "방광보존 후 절박뇨에는 재활 방법이 있나요?",
+      "a": "방광 자극·용적 변화로 소변이 급해질 수 있어요. 감염과 재발을 확인한 뒤 배뇨일지·골반저근 훈련·약물치료를 상담할 수 있습니다.",
+      "category": "care",
+      "review": {
+        "id": "faq.bladder.070",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 71,
+      "q": "진행성 방광암은 어떤 검사로 치료를 정하나요?",
+      "a": "전이 범위, 조직형, 신장기능, 이전 치료와 일부 바이오마커를 종합해 선택해요. 검사마다 목적이 달라 치료팀에 결과가 선택을 어떻게 바꾸는지 물어보세요.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.bladder.071",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 72,
+      "q": "면역관문억제제는 어떤 원리로 작동하나요?",
+      "a": "암이 면역반응을 회피하는 신호를 차단해 T세포 기능을 돕는 약이에요. 효과는 개인차가 있고 정상 장기에 면역성 염증이 생길 수 있습니다.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.bladder.072",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 73,
+      "q": "항체약물접합체(ADC)는 어떤 약인가요?",
+      "a": "암세포 표면 표적에 붙는 항체와 세포독성 약물을 연결한 치료예요. 진행성 요로상피암에서 일부 사용되지만 약물별 발진·신경병증 등을 확인해야 해요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.bladder.073",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 74,
+      "q": "FGFR 표적치료 전에 검사를 해야 하나요?",
+      "a": "특정 FGFR 변화가 확인돼야 약물 대상이 되는 경우가 있어요. 검사 방법과 국내 사용 가능 여부는 치료 시점의 기준을 별도로 확인해야 합니다.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.bladder.074",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 75,
+      "q": "NGS에서 변이가 많이 나오면 약도 많아지나요?",
+      "a": "차세대염기서열분석(NGS)은 많은 유전자를 살펴보지만 모든 변이에 약이 있는 것은 아니에요. 표준치료 표적과 연구단계 결과를 구분해 설명받으세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.bladder.075",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 76,
+      "q": "면역치료 중 설사·숨참이 생기면 기다려도 되나요?",
+      "a": "면역관련 장염·폐렴 등 부작용일 수 있어 새로 지속되는 증상은 즉시 치료팀에 알려야 해요. 복용한 면역항암제명과 증상 시작 시점을 기록하세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.bladder.076",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 77,
+      "q": "면역치료 후 영상에서 조금 커지면 실패인가요?",
+      "a": "일시적으로 커 보이는 면역반응도 드물게 있지만 실제 진행을 배제할 수 없어요. 증상과 연속 영상을 종합해 판단하며 임의로 치료를 중단하지 마세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.bladder.077",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 78,
+      "q": "치료 효과를 혈액 종양표지자 하나로 판단할 수 있나요?",
+      "a": "모든 방광암에 공통으로 적용되는 단일 혈액 지표는 없어요. 치료 목표에 맞게 영상·방광경·소변검사·진찰을 조합해 평가합니다.",
+      "category": "diagnosis",
+      "review": {
+        "id": "faq.bladder.078",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 79,
+      "q": "뼈에 전이되어 통증이 심하면 방사선치료가 도움이 되나요?",
+      "a": "국소 방사선이 일부 환자에서 뼈 통증이나 출혈을 줄이는 데 도움이 될 수 있어요. 전신치료와 병행할지, 예상 효과와 위험을 상담하세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.bladder.079",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 80,
+      "q": "뼈 전이가 있으면 무조건 운동을 중단하나요?",
+      "a": "골절 위험은 병변 위치와 강도에 따라 달라 모든 활동을 금할 필요는 없어요. 심한 허리통증·다리 마비·대소변 변화는 척수압박 가능성이 있어 즉시 평가받아야 해요.",
+      "category": "care",
+      "review": {
+        "id": "faq.bladder.080",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 81,
+      "q": "갑자기 마비나 발작이 생기면 암 때문인가요?",
+      "a": "뇌혈관 질환이나 신경계 전이 등 여러 응급 원인이 있을 수 있어요. 원인 추측보다 즉시 119에 연락하는 것이 우선입니다.",
+      "category": "care",
+      "review": {
+        "id": "faq.bladder.081",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 82,
+      "q": "요로전환 뒤 소변이 탁하면 모두 감염인가요?",
+      "a": "장 점액이나 세균 집락 때문에 소변 양상이 달라질 수 있어요. 열·오한·옆구리 통증·심한 쇠약이 동반되면 감염을 평가받아야 해요.",
+      "category": "care",
+      "review": {
+        "id": "faq.bladder.082",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 83,
+      "q": "요루 주변 피부가 벗겨지면 어떻게 하나요?",
+      "a": "소변 누출이나 접착제 자극이 원인일 수 있어요. 구멍 크기와 장비를 장루전문간호사와 확인하고 고름·심한 통증·출혈이 있다면 진료받으세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.bladder.083",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 84,
+      "q": "요루 주머니가 계속 새면 어떻게 하나요?",
+      "a": "몸의 굴곡, 배출구 높이, 접착면 문제 등이 원인일 수 있어요. 무리하게 여러 제품을 겹치기보다 장루전문간호사에게 맞춤 장비를 상담하세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.bladder.084",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 85,
+      "q": "신방광 수술 후 야간 실금은 줄일 수 있나요?",
+      "a": "시간을 정한 배뇨·골반저근 훈련 등이 도움이 될 수 있어요. 잔뇨나 감염 문제도 확인해야 하므로 무조건 물을 끊지 말고 관리 계획을 상의하세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.bladder.085",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 86,
+      "q": "요로전환 후 소변량이 줄면 물을 더 마실까요?",
+      "a": "도관 막힘·탈수·신장 문제 등 원인이 다양해요. 소변이 거의 없거나 열·옆구리 통증이 있으면 수분만 늘리며 기다리지 말고 즉시 의료진에게 연락하세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.bladder.086",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 87,
+      "q": "수술 뒤 단백질 섭취가 중요한 이유는요?",
+      "a": "상처 회복과 근육 유지에 단백질이 필요해요. 신기능이 나쁘면 양을 조정해야 할 수 있으므로 영양사와 개인별 목표를 정하세요.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.bladder.087",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-02"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 88,
+      "q": "복부 수술 후 복근 운동은 언제 다시 하나요?",
+      "a": "상처와 요루의 탈장 위험 때문에 복압을 높이는 운동은 단계적으로 재개해야 해요. 걷기부터 시작하고 무거운 물건을 들 시점은 수술팀에 확인하세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.bladder.088",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 89,
+      "q": "전자담배로 바꾸면 방광암 위험이 줄어드나요?",
+      "a": "흡연은 방광암과 관련된 중요한 위험인자이며 전자담배가 안전한 대안이라고 단정할 수 없어요. 치료 뒤에도 완전 금연을 목표로 지원을 받으세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.bladder.089",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 90,
+      "q": "항암치료 중 예방접종 일정은 어떻게 정하나요?",
+      "a": "감염 예방이 중요하지만 항암 일정과 면역상태에 따라 접종 시기를 조정할 수 있어요. 백신 종류와 접종력을 치료팀에 알려 계획하세요.",
+      "category": "care",
+      "review": {
+        "id": "faq.bladder.090",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-infection"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 91,
+      "q": "방광암 이후 상부요로암도 추적하나요?",
+      "a": "일부 환자에서 신우·요관에도 요로상피암이 생길 수 있어요. 위험군에 따라 상부요로 영상 등 추적 방법이 달라집니다.",
+      "category": "followup",
+      "review": {
+        "id": "faq.bladder.091",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 92,
+      "q": "수술 뒤 요도 재발은 어떻게 확인하나요?",
+      "a": "새로운 출혈·분비물·골반 통증이 있으면 알려야 해요. 원래 병기와 절제연, 요도 보존 여부에 따라 진찰·영상·조직검사를 선택합니다.",
+      "category": "followup",
+      "review": {
+        "id": "faq.bladder.092",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 93,
+      "q": "요루 때문에 외출이 두려우면 도움받을 수 있나요?",
+      "a": "여분 장비 준비와 교체 연습, 누출 대처법을 배우면 자신감을 되찾는 데 도움이 될 수 있어요. 장루전문간호사와 심리상담 지원을 요청하세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.bladder.093",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-04"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 94,
+      "q": "방광절제 후 성생활이 달라지면 상담할 수 있나요?",
+      "a": "골반 신경과 주변 장기 수술 때문에 발기·질 건조·감각 변화가 나타날 수 있어요. 개인차가 크고 치료 방법도 있으니 성건강 상담을 요청하세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.bladder.094",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 95,
+      "q": "신방광 수술 후 골반저근 재활이 가능한가요?",
+      "a": "요실금과 배뇨장애에 따라 골반저근 훈련이 도움이 될 수 있어요. 요로전환 방식에 익숙한 재활 전문가에게 평가받는 것이 안전합니다.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.bladder.095",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 96,
+      "q": "항암 전에 생식력 보존을 상담할 시간이 있나요?",
+      "a": "항암제나 골반 수술이 임신 가능성에 영향을 줄 수 있어요. 치료를 지연하지 않는 범위에서 생식의학팀과 빠르게 보존 옵션을 확인하세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.bladder.096",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-fertility-men"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 97,
+      "q": "생식기관을 떼지 않아도 호르몬 변화가 생기나요?",
+      "a": "골반 수술과 일부 전신치료로 성기능·호르몬 증상이 생길 수 있어요. 증상을 숨기지 말고 치료 가능한 원인인지 함께 확인하세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.bladder.097",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 98,
+      "q": "수술과 방광보존치료 중 어떻게 선택하나요?",
+      "a": "종양 범위·방광 기능·수술 위험·추적 가능성·생활 우선순위를 함께 비교해야 해요. 비뇨종양외과와 방사선종양학과 의견을 모두 들으면 도움이 됩니다.",
+      "category": "treatment",
+      "review": {
+        "id": "faq.bladder.098",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-01"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 99,
+      "q": "임상시험을 선택하면 표준치료를 포기하나요?",
+      "a": "연구 목적에 따라 표준치료와 새 치료를 비교하거나 병합하기도 해요. 치료군 배정, 추가 검사, 비용, 철회 권리를 이해하고 결정하세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.bladder.099",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "faq20261103-05"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
+    },
+    {
+      "n": 100,
+      "q": "추적 방광경 예약을 놓쳤다면 어떻게 하나요?",
+      "a": "방광암은 증상 없이 재발할 수 있어 예정된 추적이 중요해요. 예약을 놓쳤다면 마지막 검사일과 위험군을 알려 가능한 빨리 다시 일정을 잡으세요.",
+      "category": "followup",
+      "review": {
+        "id": "faq.bladder.100",
+        "version": "20261103-faq100-ai-draft-v1",
+        "responsibleRole": "추가 전문분야: 비뇨종양",
+        "clinicalApproval": "pending",
+        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "sourceRefs": [
+          "nci-bladder-treatment"
+        ],
+        "scope": "AI 다학제 관점 신규 작성 초안. 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+      }
     }
   ],
   "sources": {
@@ -477,6 +1837,46 @@
       "checkedAt": "2026-11-02",
       "scope": "근육침윤성 방광암의 다학제 의사결정·방광절제와 선별 환자의 방광보존 치료 비교",
       "evidenceType": "professional-society-guideline"
+    },
+    "faq20261103-01": {
+      "title": "NCI · NCI 공식자료",
+      "url": "https://www.cancer.gov/types/bladder/hp/bladder-treatment-pdq",
+      "organization": "National Cancer Institute",
+      "checkedAt": "재확인 대기",
+      "scope": "신규 FAQ AI 작성 시 참조한 공식 자료. 문항별 근거 적합성·한국 진료 적용 여부 별도 검증 필요.",
+      "evidenceType": "official-source-ai-draft"
+    },
+    "faq20261103-02": {
+      "title": "NCI · NCI 공식자료",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/appetite-loss",
+      "organization": "National Cancer Institute",
+      "checkedAt": "재확인 대기",
+      "scope": "신규 FAQ AI 작성 시 참조한 공식 자료. 문항별 근거 적합성·한국 진료 적용 여부 별도 검증 필요.",
+      "evidenceType": "official-source-ai-draft"
+    },
+    "faq20261103-03": {
+      "title": "NCI · NCI 공식자료",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/fatigue",
+      "organization": "National Cancer Institute",
+      "checkedAt": "재확인 대기",
+      "scope": "신규 FAQ AI 작성 시 참조한 공식 자료. 문항별 근거 적합성·한국 진료 적용 여부 별도 검증 필요.",
+      "evidenceType": "official-source-ai-draft"
+    },
+    "faq20261103-04": {
+      "title": "NCI · NCI 공식자료",
+      "url": "https://www.cancer.gov/about-cancer/coping/feelings",
+      "organization": "National Cancer Institute",
+      "checkedAt": "재확인 대기",
+      "scope": "신규 FAQ AI 작성 시 참조한 공식 자료. 문항별 근거 적합성·한국 진료 적용 여부 별도 검증 필요.",
+      "evidenceType": "official-source-ai-draft"
+    },
+    "faq20261103-05": {
+      "title": "NCI · NCI 공식자료",
+      "url": "https://www.cancer.gov/about-cancer/treatment/clinical-trials",
+      "organization": "National Cancer Institute",
+      "checkedAt": "재확인 대기",
+      "scope": "신규 FAQ AI 작성 시 참조한 공식 자료. 문항별 근거 적합성·한국 진료 적용 여부 별도 검증 필요.",
+      "evidenceType": "official-source-ai-draft"
     }
   },
   "questionsForVisit": [
@@ -487,12 +1887,21 @@
     "혈뇨·요폐·발열·BCG 후 증상은 어느 번호로 연락하나요?"
   ],
   "aiReview": {
-    "status": "completed",
+    "status": "partial-ai-draft",
     "independent": true,
     "mode": "독립 AI 사전점검",
     "checkedAt": "2026-11-02T11:00:35.647165+09:00",
     "clinicalApproval": "pending",
     "reviewedDraftSha256": "547460b0158e325390f88d632a5433b1722a67a97258cebe4e9c8e3192c67822",
-    "contentSha256": "d53f57662bcbf9e0fd95d9ae26fd091db0bd9b75587cd14312f7abbb199bbbfd"
-  }
+    "contentSha256": "d53f57662bcbf9e0fd95d9ae26fd091db0bd9b75587cd14312f7abbb199bbbfd",
+    "additionalFaq": {
+      "range": "Q21-Q100",
+      "count": 80,
+      "status": "ai-editorial-draft",
+      "independentSourceReview": false,
+      "clinicalApproval": "pending",
+      "date": "2026-11-03"
+    }
+  },
+  "additionalDraftCount": 80
 }

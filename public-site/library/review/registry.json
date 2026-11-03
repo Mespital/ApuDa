@@ -1,7 +1,7 @@
 {
-  "revision": "20261102-faq30-v1",
+  "revision": "20261103-faq3000-ai-draft",
   "checkedAt": "2026-11-02",
-  "mode": "AI 사전점검",
+  "mode": "기존 핵심20 AI 사전점검 + 신규 80 AI 작성 초안 (전문의 승인 대기)",
   "humanApproval": "pending",
   "sources": {
     "nhis-special": {
@@ -466,7 +466,7 @@
       "videoScriptApproval": "pending",
       "appCopyApproval": "pending",
       "participantTesting": "not-conducted",
-      "faqItems": 20,
+      "faqItems": 100,
       "targetedItems": [
         1,
         2,
@@ -490,7 +490,7 @@
         20
       ],
       "pdfVersion": "MINI PDF 미제공",
-      "webRevision": "20261102-corefaq-v1",
+      "webRevision": "20261103-faq100-ai-draft-v1",
       "checkedAt": "2026-11-02",
       "miniAvailable": false,
       "videoAvailable": false,
@@ -585,7 +585,9 @@
           "scope": "수술 범위·치료 전후 항암·증상 보고·추적관찰",
           "evidenceType": "official-patient-guidance"
         }
-      }
+      },
+      "additionalDraftItems": 80,
+      "additionalDraftStatus": "ai-editorial-draft-awaiting-specialist-review"
     },
     {
       "slug": "endometrial",
@@ -597,7 +599,7 @@
       "videoScriptApproval": "pending",
       "appCopyApproval": "pending",
       "participantTesting": "not-conducted",
-      "faqItems": 20,
+      "faqItems": 100,
       "targetedItems": [
         1,
         2,
@@ -621,7 +623,7 @@
         20
       ],
       "pdfVersion": "MINI PDF 미제공",
-      "webRevision": "20261102-corefaq-v1",
+      "webRevision": "20261103-faq100-ai-draft-v1",
       "checkedAt": "2026-11-02",
       "miniAvailable": false,
       "videoAvailable": false,
@@ -742,7 +744,9 @@
           "evidenceType": "official-patient-guidance",
           "sourceUpdated": "2025-11-25"
         }
-      }
+      },
+      "additionalDraftItems": 80,
+      "additionalDraftStatus": "ai-editorial-draft-awaiting-specialist-review"
     },
     {
       "slug": "esophageal",
@@ -754,7 +758,7 @@
       "videoScriptApproval": "pending",
       "appCopyApproval": "pending",
       "participantTesting": "not-conducted",
-      "faqItems": 20,
+      "faqItems": 100,
       "targetedItems": [
         1,
         2,
@@ -778,7 +782,7 @@
         20
       ],
       "pdfVersion": "MINI PDF 미제공",
-      "webRevision": "20261102-corefaq-v1",
+      "webRevision": "20261103-faq100-ai-draft-v1",
       "checkedAt": "2026-11-02",
       "miniAvailable": false,
       "videoAvailable": false,
@@ -874,8 +878,18 @@
           "scope": "진단부터 증상·삶의 질·정서·가족 지원을 암 치료와 함께 제공할 수 있음",
           "evidenceType": "official-patient-guidance",
           "sourceUpdated": "2021-11-01"
+        },
+        "faq20261103-01": {
+          "title": "NCI · NCI 식도암 병기별 치료 안내",
+          "url": "https://www.cancer.gov/types/esophageal/treatment/by-stage",
+          "organization": "National Cancer Institute",
+          "checkedAt": "재확인 대기",
+          "scope": "신규 FAQ AI 작성 시 참조한 공식 자료. 문항별 근거 적합성·한국 진료 적용 여부 별도 검증 필요.",
+          "evidenceType": "official-source-ai-draft"
         }
-      }
+      },
+      "additionalDraftItems": 80,
+      "additionalDraftStatus": "ai-editorial-draft-awaiting-specialist-review"
     },
     {
       "slug": "bladder",
@@ -887,7 +901,7 @@
       "videoScriptApproval": "pending",
       "appCopyApproval": "pending",
       "participantTesting": "not-conducted",
-      "faqItems": 20,
+      "faqItems": 100,
       "targetedItems": [
         1,
         2,
@@ -911,7 +925,7 @@
         20
       ],
       "pdfVersion": "MINI PDF 미제공",
-      "webRevision": "20261102-corefaq-v1",
+      "webRevision": "20261103-faq100-ai-draft-v1",
       "checkedAt": "2026-11-02",
       "miniAvailable": false,
       "videoAvailable": false,
@@ -1029,8 +1043,50 @@
           "checkedAt": "2026-11-02",
           "scope": "근육침윤성 방광암의 다학제 의사결정·방광절제와 선별 환자의 방광보존 치료 비교",
           "evidenceType": "professional-society-guideline"
+        },
+        "faq20261103-01": {
+          "title": "NCI · NCI 공식자료",
+          "url": "https://www.cancer.gov/types/bladder/hp/bladder-treatment-pdq",
+          "organization": "National Cancer Institute",
+          "checkedAt": "재확인 대기",
+          "scope": "신규 FAQ AI 작성 시 참조한 공식 자료. 문항별 근거 적합성·한국 진료 적용 여부 별도 검증 필요.",
+          "evidenceType": "official-source-ai-draft"
+        },
+        "faq20261103-02": {
+          "title": "NCI · NCI 공식자료",
+          "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/appetite-loss",
+          "organization": "National Cancer Institute",
+          "checkedAt": "재확인 대기",
+          "scope": "신규 FAQ AI 작성 시 참조한 공식 자료. 문항별 근거 적합성·한국 진료 적용 여부 별도 검증 필요.",
+          "evidenceType": "official-source-ai-draft"
+        },
+        "faq20261103-03": {
+          "title": "NCI · NCI 공식자료",
+          "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/fatigue",
+          "organization": "National Cancer Institute",
+          "checkedAt": "재확인 대기",
+          "scope": "신규 FAQ AI 작성 시 참조한 공식 자료. 문항별 근거 적합성·한국 진료 적용 여부 별도 검증 필요.",
+          "evidenceType": "official-source-ai-draft"
+        },
+        "faq20261103-04": {
+          "title": "NCI · NCI 공식자료",
+          "url": "https://www.cancer.gov/about-cancer/coping/feelings",
+          "organization": "National Cancer Institute",
+          "checkedAt": "재확인 대기",
+          "scope": "신규 FAQ AI 작성 시 참조한 공식 자료. 문항별 근거 적합성·한국 진료 적용 여부 별도 검증 필요.",
+          "evidenceType": "official-source-ai-draft"
+        },
+        "faq20261103-05": {
+          "title": "NCI · NCI 공식자료",
+          "url": "https://www.cancer.gov/about-cancer/treatment/clinical-trials",
+          "organization": "National Cancer Institute",
+          "checkedAt": "재확인 대기",
+          "scope": "신규 FAQ AI 작성 시 참조한 공식 자료. 문항별 근거 적합성·한국 진료 적용 여부 별도 검증 필요.",
+          "evidenceType": "official-source-ai-draft"
         }
-      }
+      },
+      "additionalDraftItems": 80,
+      "additionalDraftStatus": "ai-editorial-draft-awaiting-specialist-review"
     },
     {
       "slug": "testicular",
@@ -1042,7 +1098,7 @@
       "videoScriptApproval": "pending",
       "appCopyApproval": "pending",
       "participantTesting": "not-conducted",
-      "faqItems": 20,
+      "faqItems": 100,
       "targetedItems": [
         1,
         2,
@@ -1066,7 +1122,7 @@
         20
       ],
       "pdfVersion": "MINI PDF 미제공",
-      "webRevision": "20261102-corefaq-v1",
+      "webRevision": "20261103-faq100-ai-draft-v1",
       "checkedAt": "2026-11-02",
       "miniAvailable": false,
       "videoAvailable": false,
@@ -1154,8 +1210,34 @@
           "scope": "일부 암 치료에 의한 손발 저림과 신경증상은 조기 보고",
           "evidenceType": "official-patient-guidance",
           "sourceUpdated": "2020-01-15"
+        },
+        "faq20261103-01": {
+          "title": "NCI · NCI 공식자료",
+          "url": "https://www.cancer.gov/types/testicular/treatment/by-stage",
+          "organization": "National Cancer Institute",
+          "checkedAt": "재확인 대기",
+          "scope": "신규 FAQ AI 작성 시 참조한 공식 자료. 문항별 근거 적합성·한국 진료 적용 여부 별도 검증 필요.",
+          "evidenceType": "official-source-ai-draft"
+        },
+        "faq20261103-02": {
+          "title": "NCI · NCI 공식자료",
+          "url": "https://www.cancer.gov/about-cancer/coping/feelings",
+          "organization": "National Cancer Institute",
+          "checkedAt": "재확인 대기",
+          "scope": "신규 FAQ AI 작성 시 참조한 공식 자료. 문항별 근거 적합성·한국 진료 적용 여부 별도 검증 필요.",
+          "evidenceType": "official-source-ai-draft"
+        },
+        "faq20261103-03": {
+          "title": "NCI · NCI 공식자료",
+          "url": "https://www.cancer.gov/about-cancer/treatment/clinical-trials",
+          "organization": "National Cancer Institute",
+          "checkedAt": "재확인 대기",
+          "scope": "신규 FAQ AI 작성 시 참조한 공식 자료. 문항별 근거 적합성·한국 진료 적용 여부 별도 검증 필요.",
+          "evidenceType": "official-source-ai-draft"
         }
-      }
+      },
+      "additionalDraftItems": 80,
+      "additionalDraftStatus": "ai-editorial-draft-awaiting-specialist-review"
     },
     {
       "slug": "oral",
@@ -1167,7 +1249,7 @@
       "videoScriptApproval": "pending",
       "appCopyApproval": "pending",
       "participantTesting": "not-conducted",
-      "faqItems": 20,
+      "faqItems": 100,
       "targetedItems": [
         1,
         2,
@@ -1191,7 +1273,7 @@
         20
       ],
       "pdfVersion": "MINI PDF 미제공",
-      "webRevision": "20261102-corefaq-v1",
+      "webRevision": "20261103-faq100-ai-draft-v1",
       "checkedAt": "2026-11-02",
       "miniAvailable": false,
       "videoAvailable": false,
@@ -1270,8 +1352,50 @@
           "scope": "멈추지 않는 많은 구강 출혈 및 심한 구강·목 부종과 호흡곤란의 응급 평가",
           "evidenceType": "official-patient-guidance",
           "sourceUpdated": "2025-05-14"
+        },
+        "faq20261103-01": {
+          "title": "NCI · NCI 공식자료",
+          "url": "https://www.cancer.gov/types/head-and-neck/hp/adult/lip-mouth-treatment-pdq",
+          "organization": "National Cancer Institute",
+          "checkedAt": "재확인 대기",
+          "scope": "신규 FAQ AI 작성 시 참조한 공식 자료. 문항별 근거 적합성·한국 진료 적용 여부 별도 검증 필요.",
+          "evidenceType": "official-source-ai-draft"
+        },
+        "faq20261103-02": {
+          "title": "NCI · NCI 공식자료",
+          "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/mouth-throat/oral-complications-pdq",
+          "organization": "National Cancer Institute",
+          "checkedAt": "재확인 대기",
+          "scope": "신규 FAQ AI 작성 시 참조한 공식 자료. 문항별 근거 적합성·한국 진료 적용 여부 별도 검증 필요.",
+          "evidenceType": "official-source-ai-draft"
+        },
+        "faq20261103-03": {
+          "title": "NCI · NCI 공식자료",
+          "url": "https://www.cancer.gov/about-cancer/treatment/clinical-trials",
+          "organization": "National Cancer Institute",
+          "checkedAt": "재확인 대기",
+          "scope": "신규 FAQ AI 작성 시 참조한 공식 자료. 문항별 근거 적합성·한국 진료 적용 여부 별도 검증 필요.",
+          "evidenceType": "official-source-ai-draft"
+        },
+        "faq20261103-04": {
+          "title": "NCI · NCI 공식자료",
+          "url": "https://www.cancer.gov/about-cancer/coping/feelings",
+          "organization": "National Cancer Institute",
+          "checkedAt": "재확인 대기",
+          "scope": "신규 FAQ AI 작성 시 참조한 공식 자료. 문항별 근거 적합성·한국 진료 적용 여부 별도 검증 필요.",
+          "evidenceType": "official-source-ai-draft"
+        },
+        "faq20261103-05": {
+          "title": "NCI · NCI 공식자료",
+          "url": "https://www.cancer.gov/about-cancer/treatment/cam",
+          "organization": "National Cancer Institute",
+          "checkedAt": "재확인 대기",
+          "scope": "신규 FAQ AI 작성 시 참조한 공식 자료. 문항별 근거 적합성·한국 진료 적용 여부 별도 검증 필요.",
+          "evidenceType": "official-source-ai-draft"
         }
-      }
+      },
+      "additionalDraftItems": 80,
+      "additionalDraftStatus": "ai-editorial-draft-awaiting-specialist-review"
     },
     {
       "slug": "laryngeal",
@@ -1283,7 +1407,7 @@
       "videoScriptApproval": "pending",
       "appCopyApproval": "pending",
       "participantTesting": "not-conducted",
-      "faqItems": 20,
+      "faqItems": 100,
       "targetedItems": [
         1,
         2,
@@ -1307,7 +1431,7 @@
         20
       ],
       "pdfVersion": "MINI PDF 미제공",
-      "webRevision": "20261102-corefaq-v1",
+      "webRevision": "20261103-faq100-ai-draft-v1",
       "checkedAt": "2026-11-02",
       "miniAvailable": false,
       "videoAvailable": false,
@@ -1370,7 +1494,9 @@
           "evidenceType": "official-patient-guidance",
           "checkedAt": "2026-11-02"
         }
-      }
+      },
+      "additionalDraftItems": 80,
+      "additionalDraftStatus": "ai-editorial-draft-awaiting-specialist-review"
     },
     {
       "slug": "nasopharyngeal",
@@ -1382,7 +1508,7 @@
       "videoScriptApproval": "pending",
       "appCopyApproval": "pending",
       "participantTesting": "not-conducted",
-      "faqItems": 20,
+      "faqItems": 100,
       "targetedItems": [
         1,
         2,
@@ -1406,7 +1532,7 @@
         20
       ],
       "pdfVersion": "MINI PDF 미제공",
-      "webRevision": "20261102-corefaq-v1",
+      "webRevision": "20261103-faq100-ai-draft-v1",
       "checkedAt": "2026-11-02",
       "miniAvailable": false,
       "videoAvailable": false,
@@ -1469,7 +1595,9 @@
           "evidenceType": "official-patient-guidance",
           "checkedAt": "2026-11-02"
         }
-      }
+      },
+      "additionalDraftItems": 80,
+      "additionalDraftStatus": "ai-editorial-draft-awaiting-specialist-review"
     },
     {
       "slug": "melanoma",
@@ -1481,7 +1609,7 @@
       "videoScriptApproval": "pending",
       "appCopyApproval": "pending",
       "participantTesting": "not-conducted",
-      "faqItems": 20,
+      "faqItems": 100,
       "targetedItems": [
         1,
         2,
@@ -1505,7 +1633,7 @@
         20
       ],
       "pdfVersion": "MINI PDF 미제공",
-      "webRevision": "20261102-corefaq-v1",
+      "webRevision": "20261103-faq100-ai-draft-v1",
       "checkedAt": "2026-11-02",
       "miniAvailable": false,
       "videoAvailable": false,
@@ -1592,7 +1720,9 @@
           "evidenceType": "official-patient-guidance",
           "checkedAt": "2026-11-02"
         }
-      }
+      },
+      "additionalDraftItems": 80,
+      "additionalDraftStatus": "ai-editorial-draft-awaiting-specialist-review"
     },
     {
       "slug": "sarcoma",
@@ -1604,7 +1734,7 @@
       "videoScriptApproval": "pending",
       "appCopyApproval": "pending",
       "participantTesting": "not-conducted",
-      "faqItems": 20,
+      "faqItems": 100,
       "targetedItems": [
         1,
         2,
@@ -1628,7 +1758,7 @@
         20
       ],
       "pdfVersion": "MINI PDF 미제공",
-      "webRevision": "20261102-corefaq-v1",
+      "webRevision": "20261103-faq100-ai-draft-v1",
       "checkedAt": "2026-11-02",
       "miniAvailable": false,
       "videoAvailable": false,
@@ -1691,7 +1821,9 @@
           "evidenceType": "official-patient-guidance",
           "checkedAt": "2026-11-02"
         }
-      }
+      },
+      "additionalDraftItems": 80,
+      "additionalDraftStatus": "ai-editorial-draft-awaiting-specialist-review"
     },
     {
       "slug": "brain",
@@ -1703,7 +1835,7 @@
       "videoScriptApproval": "pending",
       "appCopyApproval": "pending",
       "participantTesting": "not-conducted",
-      "faqItems": 20,
+      "faqItems": 100,
       "targetedItems": [
         1,
         2,
@@ -1727,7 +1859,7 @@
         20
       ],
       "pdfVersion": "MINI PDF 미제공",
-      "webRevision": "20261102-corefaq-v1",
+      "webRevision": "20261103-faq100-ai-draft-v1",
       "checkedAt": "2026-11-02",
       "miniAvailable": false,
       "videoAvailable": false,
@@ -1798,7 +1930,9 @@
           "evidenceType": "official-patient-guidance",
           "checkedAt": "2026-11-02"
         }
-      }
+      },
+      "additionalDraftItems": 80,
+      "additionalDraftStatus": "ai-editorial-draft-awaiting-specialist-review"
     },
     {
       "slug": "myeloma",
@@ -1810,7 +1944,7 @@
       "videoScriptApproval": "pending",
       "appCopyApproval": "pending",
       "participantTesting": "not-conducted",
-      "faqItems": 20,
+      "faqItems": 100,
       "targetedItems": [
         1,
         2,
@@ -1834,7 +1968,7 @@
         20
       ],
       "pdfVersion": "MINI PDF 미제공",
-      "webRevision": "20261102-corefaq-v1",
+      "webRevision": "20261103-faq100-ai-draft-v1",
       "checkedAt": "2026-11-02",
       "miniAvailable": false,
       "videoAvailable": false,
@@ -1899,7 +2033,9 @@
           "scope": "골수종 뼈 약화·골절·고칼슘혈증·척수압박, 뼈와 척추 보호를 위한 개별 치료·활동 상담",
           "evidenceType": "official-patient-guidance"
         }
-      }
+      },
+      "additionalDraftItems": 80,
+      "additionalDraftStatus": "ai-editorial-draft-awaiting-specialist-review"
     },
     {
       "slug": "aml",
@@ -1911,7 +2047,7 @@
       "videoScriptApproval": "pending",
       "appCopyApproval": "pending",
       "participantTesting": "not-conducted",
-      "faqItems": 20,
+      "faqItems": 100,
       "targetedItems": [
         1,
         2,
@@ -1935,7 +2071,7 @@
         20
       ],
       "pdfVersion": "MINI PDF 미제공",
-      "webRevision": "20261102-corefaq-v1",
+      "webRevision": "20261103-faq100-ai-draft-v1",
       "checkedAt": "2026-11-02",
       "miniAvailable": false,
       "videoAvailable": false,
@@ -2010,7 +2146,9 @@
           "evidenceType": "professional-clinical-recommendation",
           "sourceUpdated": "2019-02-25"
         }
-      }
+      },
+      "additionalDraftItems": 80,
+      "additionalDraftStatus": "ai-editorial-draft-awaiting-specialist-review"
     },
     {
       "slug": "all",
@@ -2022,7 +2160,7 @@
       "videoScriptApproval": "pending",
       "appCopyApproval": "pending",
       "participantTesting": "not-conducted",
-      "faqItems": 20,
+      "faqItems": 100,
       "targetedItems": [
         1,
         2,
@@ -2046,7 +2184,7 @@
         20
       ],
       "pdfVersion": "MINI PDF 미제공",
-      "webRevision": "20261102-corefaq-v1",
+      "webRevision": "20261103-faq100-ai-draft-v1",
       "checkedAt": "2026-11-02",
       "miniAvailable": false,
       "videoAvailable": false,
@@ -2135,7 +2273,9 @@
           "scope": "빠른 혈액암 등의 치료 후 종양 세포 내용물 유출·혈액 화학 변화와 신장·심장·간 손상의 개념. 개별 예방약·수액량·치료 지시는 포함하지 않음",
           "evidenceType": "official-patient-guidance"
         }
-      }
+      },
+      "additionalDraftItems": 80,
+      "additionalDraftStatus": "ai-editorial-draft-awaiting-specialist-review"
     },
     {
       "slug": "cml",
@@ -2147,7 +2287,7 @@
       "videoScriptApproval": "pending",
       "appCopyApproval": "pending",
       "participantTesting": "not-conducted",
-      "faqItems": 20,
+      "faqItems": 100,
       "targetedItems": [
         1,
         2,
@@ -2171,7 +2311,7 @@
         20
       ],
       "pdfVersion": "MINI PDF 미제공",
-      "webRevision": "20261102-corefaq-v1",
+      "webRevision": "20261103-faq100-ai-draft-v1",
       "checkedAt": "2026-11-02",
       "miniAvailable": false,
       "videoAvailable": false,
@@ -2244,8 +2384,18 @@
           "scope": "다사티닙의 위산 억제제·제산제·자몽 및 병용약 확인, 임의 중단·추가 복용 방지의 구체적 예. 모든 TKI의 복용법을 동일하게 적용하지 않음",
           "evidenceType": "official-patient-guidance",
           "sourceUpdated": "2025-02-15"
+        },
+        "faq20261103-01": {
+          "title": "NCI · NCI · CML 치료(PDQ)",
+          "url": "https://www.cancer.gov/types/leukemia/hp/cml-treatment-pdq",
+          "organization": "National Cancer Institute",
+          "checkedAt": "재확인 대기",
+          "scope": "신규 FAQ AI 작성 시 참조한 공식 자료. 문항별 근거 적합성·한국 진료 적용 여부 별도 검증 필요.",
+          "evidenceType": "official-source-ai-draft"
         }
-      }
+      },
+      "additionalDraftItems": 80,
+      "additionalDraftStatus": "ai-editorial-draft-awaiting-specialist-review"
     },
     {
       "slug": "hodgkin",
@@ -2257,7 +2407,7 @@
       "videoScriptApproval": "pending",
       "appCopyApproval": "pending",
       "participantTesting": "not-conducted",
-      "faqItems": 20,
+      "faqItems": 100,
       "targetedItems": [
         1,
         2,
@@ -2281,7 +2431,7 @@
         20
       ],
       "pdfVersion": "MINI PDF 미제공",
-      "webRevision": "20261102-corefaq-v1",
+      "webRevision": "20261103-faq100-ai-draft-v1",
       "checkedAt": "2026-11-02",
       "miniAvailable": false,
       "videoAvailable": false,
@@ -2337,7 +2487,9 @@
           "scope": "조직 진단·위험군·PET 반응과 치료 조정, 약제별 심폐·신경 독성 및 장기 영향, 재발 치료; 국제 선택지를 국내 허가·급여와 혼동하지 않음",
           "evidenceType": "official-evidence-summary"
         }
-      }
+      },
+      "additionalDraftItems": 80,
+      "additionalDraftStatus": "ai-editorial-draft-awaiting-specialist-review"
     },
     {
       "slug": "pcnsl",
@@ -2349,7 +2501,7 @@
       "videoScriptApproval": "pending",
       "appCopyApproval": "pending",
       "participantTesting": "not-conducted",
-      "faqItems": 20,
+      "faqItems": 100,
       "targetedItems": [
         1,
         2,
@@ -2373,7 +2525,7 @@
         20
       ],
       "pdfVersion": "MINI PDF 미제공",
-      "webRevision": "20261102-corefaq-v1",
+      "webRevision": "20261103-faq100-ai-draft-v1",
       "checkedAt": "2026-11-02",
       "miniAvailable": false,
       "videoAvailable": false,
@@ -2445,8 +2597,18 @@
           "checkedAt": "2026-11-02",
           "scope": "HD-MTX의 신장·혈중 농도 감시, 수분·구제요법 및 병용약 확인 원리만 사용. 문서의 2024 보완과 검토기한 경과 안내를 확인했으며 구체적 용량·시간·수액량·중단 지시는 환자 FAQ에 옮기지 않음",
           "evidenceType": "official-clinical-safety-resource"
+        },
+        "faq20261103-01": {
+          "title": "NCI · 미국 국립암연구소(NCI)",
+          "url": "https://www.cancer.gov/about-cancer/treatment/clinical-trials",
+          "organization": "National Cancer Institute",
+          "checkedAt": "재확인 대기",
+          "scope": "신규 FAQ AI 작성 시 참조한 공식 자료. 문항별 근거 적합성·한국 진료 적용 여부 별도 검증 필요.",
+          "evidenceType": "official-source-ai-draft"
         }
-      }
+      },
+      "additionalDraftItems": 80,
+      "additionalDraftStatus": "ai-editorial-draft-awaiting-specialist-review"
     },
     {
       "slug": "cup",
@@ -2458,7 +2620,7 @@
       "videoScriptApproval": "pending",
       "appCopyApproval": "pending",
       "participantTesting": "not-conducted",
-      "faqItems": 20,
+      "faqItems": 100,
       "targetedItems": [
         1,
         2,
@@ -2482,7 +2644,7 @@
         20
       ],
       "pdfVersion": "MINI PDF 미제공",
-      "webRevision": "20261102-corefaq-v1",
+      "webRevision": "20261103-faq100-ai-draft-v1",
       "checkedAt": "2026-11-02",
       "miniAvailable": false,
       "videoAvailable": false,
@@ -2552,8 +2714,18 @@
           "scope": "심한 호흡곤란·흉부 압박·갑작스러운 혼돈 등 즉시 평가가 필요한 호흡 관련 증상. 영국 응급번호를 한국에 그대로 적용하지 않음",
           "evidenceType": "official-patient-guidance",
           "checkedAt": "2026-11-02"
+        },
+        "faq20261103-01": {
+          "title": "NCI · 미국 국립암연구소(NCI)",
+          "url": "https://www.cancer.gov/about-cancer/treatment/side-effects",
+          "organization": "National Cancer Institute",
+          "checkedAt": "재확인 대기",
+          "scope": "신규 FAQ AI 작성 시 참조한 공식 자료. 문항별 근거 적합성·한국 진료 적용 여부 별도 검증 필요.",
+          "evidenceType": "official-source-ai-draft"
         }
-      }
+      },
+      "additionalDraftItems": 80,
+      "additionalDraftStatus": "ai-editorial-draft-awaiting-specialist-review"
     }
   ]
 }
