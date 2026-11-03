@@ -7,7 +7,6 @@
   },
   "dependencies": {
     "@netlify/identity": "2.0.0",
-    "@netlify/database": "2.0.1",
     "zod": "3.25.76"
   }
 }
