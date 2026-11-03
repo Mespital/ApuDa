@@ -74,9 +74,9 @@ LDH 상승은 일부 골수종 환자에서 질병 활동성과 관련될 수 �
 
 참고근거: [미국 국립암연구소(NCI) 형질세포종양·다발성골수종 PDQ](https://www.cancer.gov/types/myeloma/patient/myeloma-treatment-pdq)
 
-##### Q33. 척추 MRI를 권하는 골수종 증상은 무엇인가요?
+##### Q33. 척추 병변에서 CT와 MRI를 나누어 촬영하는 이유는 무엇인가요?
 
-지속·악화되는 등 통증, 다리 저림·근력저하, 대소변 조절 변화는 척추 병변이나 신경 압박 평가가 필요해요. 마비나 배뇨장애는 응급신호예요.
+CT는 뼈가 약해지거나 부서진 구조를 살피는 데 도움이 되고, MRI는 골수 침범·신경·척수 압박 평가에 유용해요. 어떤 영상이 필요한지는 통증 위치와 신경증상에 따라 달라요.
 
 참고근거: [미국 국립암연구소(NCI) 형질세포종양·다발성골수종 PDQ](https://www.cancer.gov/types/myeloma/patient/myeloma-treatment-pdq)
 
