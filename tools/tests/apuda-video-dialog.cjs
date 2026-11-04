@@ -26,7 +26,9 @@ function setup({api=true,failResources=false,deferredResources=false}={}){
 }
 (async()=>{
   const s=setup(),api=s.c.ApuDaVideoDialog,catalog=s.c.ApuDaCancerVideos;
-  assert.equal(Object.keys(catalog.catalog).length,12);assert.equal(Object.values(catalog.catalog).flat().length,13);
+  assert.equal(Object.keys(catalog.catalog).length,13);assert.equal(Object.values(catalog.catalog).flat().length,14);
+  assert.equal(catalog.items('ovarian')[0].id,'8Pch-BKNJTE');
+  assert.equal(api.names.ovarian,'난소암');
   assert.equal(api.open('invalid'),false);assert.equal(s.fetches.length,0);
   for(const slug of Object.keys(catalog.catalog)){
     assert(api.open(slug));await settle();const iframe=s.byId('apudaVideoFrame');assert(iframe.src.startsWith('https://www.youtube-nocookie.com/embed/'+catalog.items(slug)[0].id+'?'));assert(iframe.src.includes('playsinline=1'));assert(iframe.src.includes('autoplay=0'));assert(iframe.src.includes('cc_load_policy=1'));assert(iframe.src.includes('cc_lang_pref=ko'));assert.equal(s.doc.querySelectorAll('iframe').length,1);
@@ -35,6 +37,7 @@ function setup({api=true,failResources=false,deferredResources=false}={}){
   }
   assert.equal(s.background.inert,true);assert.equal(s.oldInert.inert,true);assert.equal(s.doc.documentElement.style.overflow,'hidden');
   api.open('breast');await settle();const select=s.byId('avdCancer');select.value='lung';select.fire('change');await settle();assert(s.byId('apudaVideoFrame').src.includes('/embed/RkS8stwpToo?'),'changing cancer chooses the valid default video');
+  api.open('ovarian','8Pch-BKNJTE');await settle();assert(s.byId('apudaVideoFrame').src.includes('/embed/8Pch-BKNJTE?'));assert(s.class('avd-book').children[1].children.some(n=>n.tagName==='H3'&&n.textContent.includes('난소암')));
   api.open('lymphoma','C-U62IjZgXQ');await settle();assert(s.byId('apudaVideoFrame').src.includes('C-U62IjZgXQ'));assert.equal(s.class('avd-choices').children.length,2);
   const expand=s.class('avd-expand');expand.fire('click');assert.equal(expand.getAttribute('aria-pressed'),'true');expand.fire('click');assert.equal(expand.getAttribute('aria-pressed'),'false');
   s.players.at(-1).options.events.onStateChange({data:3});assert.equal(s.timers.size,1);[...s.timers.values()][0]();assert.equal(s.class('avd-fallback').hidden,false);s.players.at(-1).options.events.onStateChange({data:1});assert.equal(s.class('avd-fallback').hidden,true);assert.equal(s.timers.size,0);s.players.at(-1).options.events.onError({data:150});assert.equal(s.class('avd-fallback').hidden,false);
@@ -45,5 +48,5 @@ function setup({api=true,failResources=false,deferredResources=false}={}){
   const unavailable=setup({api:false});unavailable.c.ApuDaVideoDialog.open('breast');const apiTimeout=[...unavailable.timers.values()][0];apiTimeout();await settle();await settle();assert.equal(unavailable.class('avd-fallback').hidden,false,'blocked iframe API gets a recovery path');assert(unavailable.class('avd-book'));unavailable.c.ApuDaVideoDialog.close();
   const noReady=setup();noReady.c.ApuDaVideoDialog.open('breast');await settle();[...noReady.timers.values()][0]();assert.equal(noReady.class('avd-fallback').hidden,false,'a player that never becomes ready has a bounded wait');noReady.c.ApuDaVideoDialog.close();
   const late=setup({api:false});late.c.ApuDaVideoDialog.open('breast');late.c.ApuDaVideoDialog.close();let created=0;late.c.YT={Player:function(){created++}};late.c.onYouTubeIframeAPIReady();await settle();assert.equal(created,0,'late iframe API must not recreate a closed player');
-  console.log('PASS: 12 cancers / 13 IDs, same-site links, one portrait iframe, cancer switching, below-video resources, enlarge, restricted/offline states, background inert/focus restore, Back/Forward and late-response cleanup');
+  console.log('PASS: 13 cancers / 14 IDs, same-site links, one portrait iframe, cancer switching, below-video resources, enlarge, restricted/offline states, background inert/focus restore, Back/Forward and late-response cleanup');
 })().catch(e=>{console.error(e);process.exitCode=1});
