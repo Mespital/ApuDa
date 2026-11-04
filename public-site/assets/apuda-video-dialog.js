@@ -2,7 +2,7 @@
   'use strict';
   if (global.ApuDaVideoDialog) return;
   var current = null, serial = 0, apiPromise = null, cache = {};
-  var names = {breast:'유방암',lung:'폐암',stomach:'위암',colorectal:'대장암',thyroid:'갑상선암',kidney:'신장암',prostate:'전립선암',pancreas:'췌장암',biliary:'담도암',liver:'간암',lymphoma:'림프종',cervical:'자궁경부암'};
+  var names = {breast:'유방암',lung:'폐암',stomach:'위암',colorectal:'대장암',thyroid:'갑상선암',kidney:'신장암',prostate:'전립선암',pancreas:'췌장암',biliary:'담도암',liver:'간암',lymphoma:'림프종',cervical:'자궁경부암',ovarian:'난소암'};
   function el(tag, cls, text) { var n=document.createElement(tag); if(cls)n.className=cls; if(text!=null)n.textContent=text; return n; }
   function link(label, href, cls) { var a=el('a',cls||'avd-resource',label);a.href=href;return a; }
   function event(opened) { global.dispatchEvent(new CustomEvent('apuda:video-state',{detail:{open:opened}})); }
