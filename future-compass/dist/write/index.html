@@ -226,12 +226,12 @@ details summary{cursor:pointer;font-weight:600;min-height:32px}
 "use strict";
 /* ===== 설정: 아프다 패밀리 연결 ===== */
 const CFG = {
-  version: "1.9.0",
+  version: "1.9.1",
   api: "api/feedback", // 상대 경로: 루트 배포면 /api/feedback, future.apuda.app/write/ 면 /write/api/feedback
   family: [
     { name: "미래 나침반", url: location.hostname==="future.apuda.app" ? "/" : "https://future.apuda.app/?from=write" },
     { name: "ApuDa", url: "https://apuda.app/?from=write" },
-  ],
+  ].filter(f => !(location.hostname==="future.apuda.app" && f.name==="ApuDa")), // 공부방 안에서는 학습과 무관한 ApuDa 칩 숨김
 };
 const SETS = window.SSUBODA_SETS || [];
 let SETMAP = {};
@@ -547,7 +547,7 @@ function vWrite(app, arg){
     <p class="tiny" id="phl">${(s.minutes||20)>20?`권장 ${s.minutes}분 · 긴 답안이라 단계별 시간은 참고만`:"읽기 4분 → 개요 4분 → 초안 8분 → 고치기 4분"}</p>
     <div class="tabs" role="tablist"><button role="tab" data-t="pass" aria-selected="true">제시문</button><button role="tab" data-t="write" aria-selected="false">${stage==="rewrite"?"피드백·다시 쓰기":"쓰기"}</button></div>
     <div class="wgrid">
-      <section class="sheet pass" data-p="pass" id="passBox">${passHTML()}<p class="question">${esc(s.question)}</p>${s.learn?`<p><a class="btn ghost" style="display:inline-flex;align-items:center;min-height:40px" href="#/learn/${s.id}">예시 답안 먼저 보기</a></p>`:""}${CAN_PRINT?`<p><button class="btn ghost" type="button" id="pws" style="min-height:40px">손글씨 연습지 인쇄</button></p>`:""}
+      <section class="sheet pass" data-p="pass" id="passBox">${passHTML()}<p class="question">${esc(s.question)}</p>${s.learn?`<p><a class="btn ghost" style="display:inline-flex;align-items:center;min-height:40px" href="#/learn/${s.id}">예시 답안 먼저 보기</a></p>`:""}${CAN_PRINT?`<p><button class="btn ghost" type="button" id="pws" style="min-height:40px">손글씨 연습지 인쇄</button></p><p class="tiny">손으로 쓴 뒤 앱에 옮겨 적으면 점검·AI 코칭을 받을 수 있어요.</p>`:""}
         ${s.kind!=="diag"&&s.hints&&s.hints.length?`<details id="hint"><summary>막히면 힌트</summary><ul class="small" id="hintList"></ul></details>`:""}${s.kind==="diag"?`<p class="tiny">진단은 힌트 없이 써요. 제출하면 해설이 열려요.</p>`:""}${s.source?`<p class="tiny">출처: ${esc(s.source)} · 개인 공부용</p>`:""}</section>
       <section data-p="write" style="display:none" id="writeBox"></section>
     </div>`;
