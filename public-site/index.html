@@ -1639,6 +1639,8 @@
     border:1px solid rgba(36,107,254,.4);border-radius:999px;background:rgba(255,255,255,.92);color:var(--blue);
     font-size:13px;font-weight:900;box-shadow:0 8px 22px rgba(16,42,67,.1)}
   #qsReopen[hidden]{display:none}
+  /* 홈에서는 '지금 나는?' 안내만 노출하고 중복된 보기 설정 버튼은 숨깁니다. */
+  #apuda-ui-tools{display:none!important}
   body.qs-on #apuda-ui-tools,body.qs-on #apuda-bot{visibility:hidden}
   body.open #qsSheet,body.open #qsReopen{display:none}
   @media (min-width:1100px){#qsSheet,#qsReopen{display:none!important}}
