@@ -7,7 +7,7 @@
     "code": "7010087",
     "homepage": "https://seocho.sen.hs.kr/"
   },
-  "checked_at": "2026-11-04T08:49:30.645993+00:00",
+  "checked_at": "2026-11-04T15:34:00.339904+00:00",
   "keyed": true,
   "school_year": 2026,
   "grade": 1,
@@ -15,10 +15,6 @@
   "semester": 2,
   "phase": "school",
   "schedule": [
-    {
-      "date": "2026-11-04",
-      "title": "전공주제탐구발표(기초교양)"
-    },
     {
       "date": "2026-11-06",
       "title": "토론한마당 본선"
@@ -865,5 +861,5 @@
     "NEIS": "true",
     "DATA": "false"
   },
-  "last_success_at": "2026-11-04T08:49:30.645993+00:00"
+  "last_success_at": "2026-11-04T15:34:00.339904+00:00"
 }
