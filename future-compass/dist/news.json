@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-11-03T19:17:59.476536+00:00",
-  "last_success_at": "2026-11-03T19:17:59.476536+00:00",
+  "checked_at": "2026-11-04T00:30:02.748846+00:00",
+  "last_success_at": "2026-11-04T00:30:02.748846+00:00",
   "failures": [],
   "articles": [
     {
@@ -60,10 +60,26 @@
       "domain": "ai"
     },
     {
+      "title": "How Cisco defends at machine speed with OpenAI",
+      "url": "https://openai.com/index/cisco-cyber",
+      "source": "OpenAI",
+      "published_at": "2026-11-03T08:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
       "title": "Advancing research and partnering with universities in Singapore",
       "url": "https://blog.google/innovation-and-ai/technology/research/partnering-singapore-advance-scientific-discovery/",
       "source": "Google",
       "published_at": "2026-11-03T04:30:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "OpenAI appoints Jill Hazelbaker as Chief Corporate Affairs Officer",
+      "url": "https://openai.com/index/jill-hazelbaker-chief-corporate-affairs-officer",
+      "source": "OpenAI",
+      "published_at": "2026-11-03T00:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
     },
@@ -226,28 +242,12 @@
       "published_at": "2026-10-29T09:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "How Ropes & Gray is developing AI for transactional diligence",
-      "url": "https://openai.com/index/ropes-gray-ai-diligence",
-      "source": "OpenAI",
-      "published_at": "2026-10-29T07:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Partnering with Singapore to bring frontier AI to public health",
-      "url": "https://blog.google/innovation-and-ai/technology/health/google-for-health-summit-singapore/",
-      "source": "Google",
-      "published_at": "2026-10-29T03:30:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-11-03T19:17:59.476536+00:00",
+    "checked_at": "2026-11-04T00:30:02.748846+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -400,7 +400,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-11-03T19:17:59.476536+00:00",
+    "last_success_at": "2026-11-04T00:30:02.748846+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
