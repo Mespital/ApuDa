@@ -226,7 +226,7 @@ details summary{cursor:pointer;font-weight:600;min-height:32px}
 "use strict";
 /* ===== 설정: 아프다 패밀리 연결 ===== */
 const CFG = {
-  version: "1.9.1",
+  version: "1.10.0",
   api: "api/feedback", // 상대 경로: 루트 배포면 /api/feedback, future.apuda.app/write/ 면 /write/api/feedback
   family: [
     { name: "미래 나침반", url: location.hostname==="future.apuda.app" ? "/" : "https://future.apuda.app/?from=write" },
@@ -312,9 +312,9 @@ function route(){
   const [, name="today", arg] = (CUR || "#/today").split("/");
   const app = $("#app");
   if(!S.profile && name!=="setup"){ go("#/setup", true); return; }
-  const views = { learn:vLearn, library:vLibrary, custom:vCustom, setup:vSetup, today:vToday, train:vTrain, write:vWrite, univ:vUniv, log:vLog, settings:vSettings, view:vView, guardian:vGuardian };
+  const views = { learn:vLearn, library:vLibrary, archive:vArchive, tools:vTools, custom:vCustom, setup:vSetup, today:vToday, train:vTrain, write:vWrite, univ:vUniv, log:vLog, settings:vSettings, view:vView, guardian:vGuardian };
   (views[name] || vToday)(app, arg);
-  const navName = ["write","library","custom","learn"].includes(name) ? "train" : name==="view" ? "log" : name;
+  const navName = ["write","library","custom","learn","archive","tools"].includes(name) ? "train" : name==="view" ? "log" : name;
   document.querySelectorAll("nav.tab a").forEach(a => { if(a.dataset.r===navName) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current"); });
   $("#nav").classList.toggle("hide", name==="setup");
   window.scrollTo(0,0);
@@ -436,6 +436,7 @@ function vTrain(app){
       <p class="small muted" style="margin:4px 0 8px">처음이면 여기부터. 예시 답안을 먼저 보고 '이렇게 쓰는 거구나'를 익혀요.</p>
       <div class="lrn-list">${learnSets().map(x=>`<a class="lrn-card" href="#/learn/${x.id}"><span class="tiny">${esc(x.learn.type)}</span><b>${esc(x.title)}</b></a>`).join("")}</div></div>
     <div class="row" style="margin:4px 0 8px"><a class="btn" style="flex:1;display:inline-flex;align-items:center;justify-content:center" href="#/library">자료실</a><a class="btn" style="flex:1;display:inline-flex;align-items:center;justify-content:center" href="#/custom">내 문제 만들기</a></div>
+    <div class="row" style="margin:0 0 8px"><a class="btn" style="flex:1;display:inline-flex;align-items:center;justify-content:center" href="#/archive">🏛️ 기출 서재</a><a class="btn" style="flex:1;display:inline-flex;align-items:center;justify-content:center" href="#/tools">📘 논술 도구 카드</a></div>
     <p class="muted small">모든 제시문은 앱용 가상 자료예요(대학 기출 아님). <span class="chip warn">검토 전</span> 표시는 지도교사 검토가 끝나지 않은 초안 세트예요.</p>
     ${groups.map(([g,list])=>`<h2>${g}</h2><div class="sheet" style="padding:4px 16px">${list.map(s=>{const a=latest(s.id); const [st,c]=statusOf(a);
       return `<a class="set" href="#/write/${s.id}"><span class="wk">${s.week?`${s.week}주`:"진단"}</span><span class="grow"><span class="t">${esc(s.title)}</span><br><span class="small muted">${esc(s.skill)} · ${s.min}~${s.max}자</span></span>
@@ -475,7 +476,7 @@ function vLearn(app, id){
 /* ===== 자료실 ===== */
 function vLibrary(app){
   const R = window.SSUBODA_RESOURCES || [];
-  app.innerHTML = `<a href="#/train" class="small">← 훈련</a><h1>자료실</h1>
+  app.innerHTML = `<a href="#/train" class="small">← 훈련</a><h1>자료실</h1><div class="row" style="margin:0 0 8px"><a class="btn" style="flex:1;display:inline-flex;align-items:center;justify-content:center" href="#/archive">🏛️ 기출 서재</a><a class="btn" style="flex:1;display:inline-flex;align-items:center;justify-content:center" href="#/tools">📘 논술 도구 카드</a></div>
     <p class="muted small">공식·무료 자료만 모았어요. 자료는 링크로만 연결하고, 지문은 '내 문제 만들기'에 붙여 개인 공부용으로 써요. 입시 자료는 학년도를 꼭 확인해요.</p>
     <div class="sheet" style="background:var(--grid-soft);border-color:var(--grid)"><h3>주간 자료 루틴 (기본 루틴과 별도, 선택)</h3>
       <ul class="small" style="margin:0;padding-left:18px">
@@ -492,6 +493,46 @@ function vLibrary(app){
     <p class="tiny">확인됨 = 2026-11-02 존재 확인. 사이트 개편으로 주소가 바뀔 수 있어요.</p>`;
 }
 
+
+/* ===== 기출 서재 ===== */
+function vArchive(app){
+  const A = window.SSUBODA_ARCHIVE || {items:[],guide:[]};
+  const st = { report:["보고서 확인","ok"], mock:["모의논술 확인","ok"], root:["입학처 주소",""] };
+  app.innerHTML = `<a href="#/train" class="small">← 훈련</a><h1>🏛️ 기출 서재</h1>
+    <p class="muted small">대학이 공개한 진짜 기출을 모았어요. 자료는 대학 사이트에서 열리고, 써보다에서는 붙여 넣어 연습해요. 개인 공부용으로만 써요.</p>
+    <div class="sheet" style="background:var(--grid-soft);border-color:var(--grid)"><h3 style="margin-top:0">선행학습 영향평가 보고서 읽는 법</h3>
+      ${A.guide.map(([h,t],i)=>`<p class="small" style="margin:6px 0"><b>${i+1}. ${esc(h)}</b> ${esc(t)}</p>`).join("")}</div>
+    <h2>대학별 자료</h2><div class="sheet" style="padding:4px 16px">${A.items.map((r,i)=>`
+      <div class="set" style="display:block">
+        <div class="row"><a class="t grow" href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.univ)}${r.year?` · ${r.year}학년도`:""}</a>${r.tag?`<span class="chip warn">${esc(r.tag)}</span>`:""}<span class="chip ${st[r.status][1]}">${st[r.status][0]}</span></div>
+        <p class="small" style="margin:4px 0">${esc(r.what)}</p>
+        <a class="btn ghost small" style="display:inline-flex;align-items:center;min-height:36px;padding:4px 10px" href="#/custom/g${i}">이 대학 기출로 연습하기 →</a></div>`).join("")}</div>
+    <p class="tiny">${esc(A.checked)} 게시글 확인. 입학처 개편으로 주소가 바뀔 수 있어요. 대학별 논술 유형은 해마다 바뀌니 응시 학년도(2029) 요강으로 확인해요.</p>`;
+}
+/* ===== 논술 도구 카드 ===== */
+const toolFor = tag => (window.SSUBODA_TOOLS||[]).find(t=>t.tags.includes(tag));
+function vTools(app, arg){
+  const T = window.SSUBODA_TOOLS || [];
+  const one = T.find(t=>t.id===arg);
+  if(one){
+    const i=T.indexOf(one), nx=T[(i+1)%T.length];
+    app.innerHTML = `<a href="#/tools" class="small">← 도구 카드 목록</a><h1>📘 ${esc(one.title)}</h1>
+      <p class="c-sum">${esc(one.one)}</p>
+      <div class="sheet"><p style="line-height:1.8">${esc(one.body)}</p>
+        <div class="c-card c-fix"><div class="c-h">❌ 이렇게 쓰면 아쉬워요</div><p style="font-family:var(--serif)">${esc(one.bad)}</p></div>
+        <div class="c-card c-good"><div class="c-h">⭕ 이렇게 고쳐요</div><p style="font-family:var(--serif)">${esc(one.good)}</p></div>
+        <div class="c-card c-next"><div class="c-h">✅ 내 글에 확인</div><p><b>${esc(one.check)}</b></p></div></div>
+      <div class="actions"><button class="btn" type="button" id="back">← 돌아가기</button><a class="btn primary" style="display:inline-flex;align-items:center;justify-content:center" href="#/tools/${nx.id}">다음 카드: ${esc(nx.title)}</a></div>
+      <p class="tiny">써보다가 직접 만든 연습용 카드예요.</p>`;
+    $("#back").onclick=()=>history.back();
+    return;
+  }
+  app.innerHTML = `<a href="#/train" class="small">← 훈련</a><h1>📘 논술 도구 카드</h1>
+    <p class="muted small">AI 코칭에서 지적받은 점을 고치는 '도구' 모음이에요. 하루 한 장, 30초면 읽어요.</p>
+    <div class="sheet" style="padding:4px 16px">${T.map(t=>`<a class="set" href="#/tools/${t.id}" style="display:block;text-decoration:none;color:inherit">
+      <div class="row"><b class="grow">${esc(t.title)}</b>${t.tags.map(g=>`<span class="chip">${esc(g)}</span>`).join(" ")}</div>
+      <p class="small muted" style="margin:2px 0 0">${esc(t.one)}</p></a>`).join("")}</div>`;
+}
 /* ===== 내 문제 만들기 ===== */
 const TEMPLATES = {
   "요약": { q:"제시문의 핵심 주장을 찾아 한 문장으로 요약하시오.", min:80, max:120, outline:["핵심어 1","핵심어 2","핵심어 3"] },
@@ -500,8 +541,9 @@ const TEMPLATES = {
   "평가": { q:"제시문 B의 주장을 제시문 A에 근거하여 평가하시오.", min:250, max:350, outline:["B의 주장","A의 근거","평가와 조건"] },
   "기출 그대로": { q:"", min:300, max:600, outline:["문제가 요구하는 것","제시문별 핵심","내 답의 순서"] },
 };
-function vCustom(app){
-  let tpl="요약";
+function vCustom(app, arg){
+  const g = /^g\d+$/.test(arg||"") ? (window.SSUBODA_ARCHIVE||{items:[]}).items[+arg.slice(1)] : null;
+  let tpl = g ? "기출 그대로" : "요약";
   app.innerHTML = `<a href="#/train" class="small">← 훈련</a><h1>내 문제 만들기</h1>
     <p class="muted small">자료실의 기출·지문·통계를 붙여 넣으면 써보다 세트처럼 쓰고 피드백을 받을 수 있어요. 이 기기에만 저장돼요. 기출은 개인 공부용으로만 쓰고 다른 사람과 나누지 않아요.</p>
     <form class="sheet" id="cf">
@@ -519,6 +561,7 @@ function vCustom(app){
     app.querySelectorAll("#tp button").forEach(b=>b.classList.toggle("primary", b.dataset.t===tpl)); };
   app.querySelectorAll("#tp button").forEach(b=>b.onclick=()=>{ tpl=b.dataset.t; apply(); });
   apply();
+  if(g){ $("#cs").value = `${g.univ}${g.year?` ${g.year}학년도`:""} ${g.status==="mock"?"모의논술":"선행학습 영향평가 보고서"}`; $("#ct").placeholder = `예: ${g.univ} 인문 1번`; toast("보고서의 문항카드에서 제시문과 문제를 붙여 넣어요"); }
   $("#cf").onsubmit=e=>{ e.preventDefault();
     const ps=[["A","#pa"],["B","#pb"],["C","#pc"]].map(([l,id])=>({label:l, text:$(id).value.trim().slice(0,1500), kw:[]})).filter(p=>p.text);
     const mn=+$("#cmin").value, mx=+$("#cmax").value;
@@ -703,7 +746,7 @@ function fbHTML(fb, s, isRewrite){
   if(fb.fixes?.length) h += `<h3>${isRewrite?"남은":"먼저"} 고칠 점 ${fb.fixes.length}개</h3>` + fb.fixes.map((f,i)=>`<div class="fix"><p><b>${i+1}. ${esc(f.issue)}</b>${f.tag?` <span class="chip">${esc(f.tag)}</span>`:""}</p>
       ${f.answer_quote?`<div class="quote"><small>내 문장</small>${esc(f.answer_quote)}</div>`:""}
       ${f.passage_quote?`<div class="quote"><small>${lab(f.passage_label)} 근거</small>${esc(f.passage_quote)}</div>`:""}
-      ${f.suggestion?`<p class="small">${esc(f.suggestion)}</p>`:""}</div>`).join("");
+      ${f.suggestion?`<p class="small">${esc(f.suggestion)}</p>`:""}${f.tag&&toolFor(f.tag)?`<a class="small" href="#/tools/${toolFor(f.tag).id}">📘 도구 카드: ${esc(toolFor(f.tag).title)} →</a>`:""}</div>`).join("");
   if(fb.self_question) h += `<h3>고치기 전에 스스로 답해 볼 질문</h3><p>${esc(fb.self_question)}</p>`;
   if(fb.next_action) h += `<h3>다음 행동</h3><p>${esc(fb.next_action)}</p>`;
   if(fb.meta) h += `<p class="tiny">기기 안 규칙 점검이에요(AI 아님). 분량·제시문 표현·단정어·개요만 보고, 내용이 맞는지는 판정하지 않아요.</p>`;
@@ -725,7 +768,8 @@ function coachHTML(fb, s, isRewrite){
       ${f.answer_quote?`<div class="quote"><small>내 문장</small>${esc(f.answer_quote)}</div>`:""}
       ${f.passage_quote?`<div class="quote"><small>${lab(f.passage_label)}에서 찾은 근거</small>${esc(f.passage_quote)}</div><button class="btn ghost small" type="button" style="min-height:36px;padding:4px 10px" data-hl="${esc(f.passage_label)}|${esc(f.passage_quote)}">제시문에서 위치 보기</button>`:""}
       ${f.suggestion?`<p class="c-do">👉 ${esc(f.suggestion)}</p>`:""}
-      ${f.rewrite_hint?`<div class="c-hint"><small>이렇게 고쳐 볼 수 있어요 (예시 한 문장)</small>${esc(f.rewrite_hint)}</div>`:""}</div>`;
+      ${f.rewrite_hint?`<div class="c-hint"><small>이렇게 고쳐 볼 수 있어요 (예시 한 문장)</small>${esc(f.rewrite_hint)}</div>`:""}
+      ${f.tag&&toolFor(f.tag)?`<a class="small" href="#/tools/${toolFor(f.tag).id}">📘 도구 카드: ${esc(toolFor(f.tag).title)} →</a>`:""}</div>`;
   });
   if(fb.spelling?.length) h += `<div class="c-card"><div class="c-h">🔤 맞춤법·띄어쓰기</div><div class="c-sp">${fb.spelling.map(x=>`<span><del>${esc(x.wrong)}</del> → <b>${esc(x.right)}</b></span>`).join("")}</div></div>`;
   if(fb.self_question || fb.next_action) h += `<div class="c-card c-next">${fb.self_question?`<div class="c-h">🤔 고치기 전에 생각해 볼 질문</div><p>${esc(fb.self_question)}</p>`:""}${fb.next_action?`<div class="c-h">⏱️ 지금 5분 과제</div><p><b>${esc(fb.next_action)}</b></p>`:""}
