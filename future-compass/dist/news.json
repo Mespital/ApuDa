@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-11-04T17:51:47.990361+00:00",
-  "last_success_at": "2026-11-04T17:51:47.990361+00:00",
+  "checked_at": "2026-11-04T23:26:55.120478+00:00",
+  "last_success_at": "2026-11-04T23:26:55.120478+00:00",
   "failures": [],
   "articles": [
     {
@@ -20,10 +20,26 @@
       "domain": "ai"
     },
     {
+      "title": "A thousand fewer paths to root",
+      "url": "https://openai.com/index/a-thousand-fewer-paths-to-root",
+      "source": "OpenAI",
+      "published_at": "2026-11-04T08:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
       "title": "Daybreak Red is now available in AWS GovCloud (US-East)",
       "url": "https://openai.com/index/daybreak-red-aws-govcloud",
       "source": "OpenAI",
       "published_at": "2026-11-04T07:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "DevRev delivers autonomous self-service with GPT-6.1 Sol",
+      "url": "https://openai.com/index/devrev-enterprise-self-service",
+      "source": "OpenAI",
+      "published_at": "2026-11-04T00:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
     },
@@ -226,28 +242,12 @@
       "published_at": "2026-10-29T16:15:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Gemini Notebook makes hundreds of textbooks available to help students learn even more.",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-notebook/new-access-textbooks/",
-      "source": "Google",
-      "published_at": "2026-10-29T16:00:00+00:00",
-      "category": "교육·생활",
-      "domain": "education"
-    },
-    {
-      "title": "Equipping healthcare professionals with practical AI skills",
-      "url": "https://blog.google/innovation-and-ai/technology/health/google-ai-for-healthcare-professionals-certificate/",
-      "source": "Google",
-      "published_at": "2026-10-29T13:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-11-04T17:51:47.990361+00:00",
+    "checked_at": "2026-11-04T23:26:55.120478+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -396,7 +396,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-11-04T17:51:47.990361+00:00",
+    "last_success_at": "2026-11-04T23:26:55.120478+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
