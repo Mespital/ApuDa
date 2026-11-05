@@ -44,7 +44,7 @@ export default async function handler(request) {
         id:xmlValue(item,'hpid'),
         name:xmlValue(item,'dutyname')||xmlValue(item,'dutyName'),
         telephone:xmlValue(item,'dutytel3')||xmlValue(item,'dutyTel3'),
-        emergencyBeds:/^-?\\d+$/.test(bedsRaw)?Number(bedsRaw):null,
+        emergencyBeds:/^\d+$/.test(bedsRaw)?Number(bedsRaw):null,
         reportedAt:xmlValue(item,'hvidate'),
         ct:xmlValue(item,'hvctayn'),
         mri:xmlValue(item,'hvmriayn')
