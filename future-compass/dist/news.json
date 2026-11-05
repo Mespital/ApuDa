@@ -1,8 +1,16 @@
 {
-  "checked_at": "2026-11-05T07:28:55.747933+00:00",
-  "last_success_at": "2026-11-05T07:28:55.747933+00:00",
+  "checked_at": "2026-11-05T14:25:38.215134+00:00",
+  "last_success_at": "2026-11-05T14:25:38.215134+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "Setting a new standard for responsible AI infrastructure",
+      "url": "https://openai.com/index/setting-new-standard-responsible-ai-infrastructure",
+      "source": "OpenAI",
+      "published_at": "2026-11-05T02:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "OpenAI to acquire Pierre Computer Company, Inc.",
       "url": "https://openai.com/index/openai-to-acquire-pierre",
@@ -234,20 +242,12 @@
       "published_at": "2026-10-30T00:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "An updated Model Spec for more capable and beneficial AI",
-      "url": "https://openai.com/index/updated-model-spec",
-      "source": "OpenAI",
-      "published_at": "2026-10-29T17:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-11-05T07:28:55.747933+00:00",
+    "checked_at": "2026-11-05T14:25:38.215134+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -396,7 +396,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-11-05T07:28:55.747933+00:00",
+    "last_success_at": "2026-11-05T14:25:38.215134+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
