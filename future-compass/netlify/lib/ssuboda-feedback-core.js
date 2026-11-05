@@ -2,7 +2,7 @@
 // Netlify Edge Function과 Hermes VPS(server.mjs)가 같은 코드를 쓴다.
 // 원칙: 입력은 문제·제시문·루브릭·학생 답안으로 한정 / 인용은 서버에서 실제 존재 여부 검증 / 실패 시 점수를 만들지 않는다.
 
-export const PROMPT_VERSION = "p1.2-2026-11-02";
+export const PROMPT_VERSION = "p1.3-2026-11-05";
 export const RUBRIC_VERSION = "r1.0";
 
 const RUBRIC = [
@@ -25,11 +25,12 @@ export const SYSTEM = `너는 고등학교 1학년 논술 연습 앱 '써보다'
 5. 말투: 해요체. 한 문장은 40자 안팎으로 짧게. 고1이 아는 낱말만 쓰고, 어려운 말(예: 논거, 함의, 상정)은 쉬운 말로 바꾼다. '~습니다'체, 과장 칭찬, 훈계 금지.
 6. summary: 이 글 전체를 한 줄로(60자 이내). 잘한 것 하나 + 가장 큰 과제 하나. 예: "두 제시문을 모두 썼어요. 이제 둘의 차이를 한 문장으로 밝혀 봐요."
 7. strength: 실제로 잘한 점 1개. 반드시 학생 문장(answer_quote)을 붙이고, 왜 좋은지 한 문장으로.
-8. fixes: 최대 2개, 중요한 순서대로. 우선순위: 문제가 시킨 행동 누락 > 제시문 오독·근거 누락 > 근거와 주장 연결 > 결론 범위 > 분량. 맞춤법·띄어쓰기·오탈자는 fixes에 절대 넣지 않는다(spelling으로).
+8. fixes: 최대 2개, 중요한 순서대로. 우선순위: <scoring_points>의 빠진 채점 요소 > 문제가 시킨 행동 누락 > 제시문 오독·근거 누락 > 근거와 주장 연결 > 결론 범위 > 분량. 맞춤법·띄어쓰기·오탈자는 fixes에 절대 넣지 않는다(spelling으로).
    - 하나의 fix에는 문제 하나만. issue는 '무엇이 문제인지' 한 문장.
    - why: 그게 왜 점수에 중요한지 한 문장.
    - suggestion: 학생이 할 행동 하나를 동사로 끝나게. 예: "제시문 B의 '비용이 든다'를 근거로 붙여요."
-   - rewrite_hint: answer_quote 그 한 문장만 고친 예시 한 문장(80자 이내). 학생 답안 전체를 다시 써 주지 않는다. 학생의 생각을 유지하고 연결어·근거만 보탠다.
+   - rewrite_hint: answer_quote 그 한 문장만 고친 예시 한 문장(80자 이내). 학생 답안 전체를 다시 써 주지 않는다. 학생 문장의 구조와 생각을 유지하고 연결어·근거만 보탠다. 학생이 스스로 채울 수 있게 핵심 낱말 한 곳은 빈칸(____)으로 남겨도 된다.
+9-1. points_hit: <scoring_points>가 있으면 요소마다 답안이 그 내용을 담았는지 true/false로, 요소 순서 그대로. 표현이 달라도 뜻이 같으면 true. 없으면 빈 배열.
 9. spelling: 맞춤법·띄어쓰기·오탈자 최대 5개. wrong은 답안에서 그대로 복사, right는 고친 표기. 없으면 빈 배열.
 10. self_question: 고치기 전에 스스로 답할 질문 1개(예/아니오가 아닌 질문).
 11. next_action: 지금 5분 안에 할 일 1개. 구체적으로(어느 문장을, 무엇으로). 예: "2문장 끝에 '왜냐하면 제시문 A에서…'를 붙여 다시 써요."
@@ -42,6 +43,7 @@ export const SYSTEM = `너는 고등학교 1학년 논술 연습 앱 '써보다'
  "strength": {"text": "", "answer_quote": ""},
  "fixes": [{"issue": "", "why": "", "answer_quote": "", "passage_label": "A", "passage_quote": "", "suggestion": "", "rewrite_hint": "", "tag": "근거누락"}],
  "spelling": [{"wrong": "", "right": ""}],
+ "points_hit": [],
  "self_question": "",
  "next_action": "",
  "changes": "",
@@ -80,6 +82,8 @@ export function buildUser(body) {
   const passages = set.passages.map((p) => `[제시문 ${safe(p.label, 3)}]\n${safe(p.text, 1500)}`).join("\n\n");
   const rubric = RUBRIC.map(([k, n, d]) => `- ${k} (${n}, 0~4): ${d}`).join("\n");
   let s = `<task>\n<question>${safe(set.question, 600)}</question>\n<length>${set.min}~${set.max}자</length>\n<passages>\n${passages}\n</passages>\n<rubric>\n${rubric}\n</rubric>\n`;
+  const pts = Array.isArray(set.points) ? set.points.filter((x) => typeof x === "string" && x.trim()).slice(0, 5) : [];
+  if (pts.length) s += `<scoring_points>\n${pts.map((x, i) => `${i + 1}. ${safe(x, 120)}`).join("\n")}\n</scoring_points>\n`;
   if (Array.isArray(outline) && outline.some((x) => x && x.trim())) s += `<student_outline>${outline.map((x, i) => `${i + 1}) ${safe(x, 200)}`).join(" / ")}</student_outline>\n`;
   if (mode === "rewrite" && previous) {
     s += `<previous_draft>${safe(previous.draft, 3000)}</previous_draft>\n<previous_fixes>${(previous.fixes || []).map((f) => safe(f.issue, 200)).join(" / ")}</previous_fixes>\n`;
@@ -121,6 +125,7 @@ export function sanitize(raw, body) {
       };
     }).filter((f) => f.issue),
     spelling: (Array.isArray(raw.spelling) ? raw.spelling : []).filter((x) => x && x.wrong && x.right && x.wrong !== x.right && String(answer).includes(x.wrong)).slice(0, 5).map((x) => ({ wrong: clip(x.wrong, 30), right: clip(x.right, 30) })),
+    points_hit: (() => { const n = Array.isArray(set.points) ? Math.min(set.points.length, 5) : 0; const h = Array.isArray(raw.points_hit) ? raw.points_hit : []; return n && h.length === n && h.every((x) => typeof x === "boolean") ? h : null; })(),
     self_question: clip(raw.self_question, 200),
     next_action: clip(raw.next_action, 200),
     changes: clip(raw.changes, 300),

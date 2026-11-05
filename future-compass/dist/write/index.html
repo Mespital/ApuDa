@@ -140,6 +140,7 @@ mark.hl{background:var(--amber-soft);color:inherit;border-bottom:2px solid var(-
 .c-hint small,.quote small{display:block;font-family:var(--sans);font-size:12px;color:var(--ink3)}
 .c-sp{display:flex;flex-wrap:wrap;gap:8px}.c-sp span{border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-size:14px}.c-sp del{color:var(--red)}.c-sp b{color:var(--grid)}
 .c-next{border-left:5px solid var(--apuda)}.c-next .btn{margin-top:6px}
+.c-hintbox summary{cursor:pointer;min-height:36px;display:flex;align-items:center;color:var(--grid)}
 .c-rub summary{cursor:pointer;min-height:40px;display:flex;align-items:center}
 .quote{font-family:var(--serif);font-size:15px;background:var(--paper);border-radius:var(--radius-s);padding:6px 10px;margin:6px 0}
 .quote small{font-family:var(--sans);display:block;color:var(--ink3);font-size:12px}
@@ -227,7 +228,7 @@ details summary{cursor:pointer;font-weight:600;min-height:32px}
 "use strict";
 /* ===== 설정: 아프다 패밀리 연결 ===== */
 const CFG = {
-  version: "1.11.0",
+  version: "1.12.0",
   api: "api/feedback", // 상대 경로: 루트 배포면 /api/feedback, future.apuda.app/write/ 면 /write/api/feedback
   family: [
     { name: "미래 나침반", url: location.hostname==="future.apuda.app" ? "/" : "https://future.apuda.app/?from=write" },
@@ -504,6 +505,7 @@ function vArchive(app){
     <p class="muted small">대학이 공개한 진짜 기출을 모았어요. 자료는 대학 사이트에서 열리고, 써보다에서는 붙여 넣어 연습해요. 개인 공부용으로만 써요.</p>
     <div class="sheet" style="background:var(--grid-soft);border-color:var(--grid)"><h3 style="margin-top:0">선행학습 영향평가 보고서 읽는 법</h3>
       ${A.guide.map(([h,t],i)=>`<p class="small" style="margin:6px 0"><b>${i+1}. ${esc(h)}</b> ${esc(t)}</p>`).join("")}</div>
+    <div class="sheet"><h3 style="margin-top:0">고1 추천 순서</h3><p class="small" style="margin:4px 0">① 모의논술 약술형(가천·숭실) → ② 보고서의 짧은 문항 → ③ 제시문이 긴 통합 문항. 처음부터 긴 문항을 쓰면 지치기 쉬워요. 분량은 문항에 적힌 대로 넣어요.</p></div>
     <h2>대학별 자료</h2><div class="sheet" style="padding:4px 16px">${A.items.map((r,i)=>`
       <div class="set" style="display:block">
         <div class="row"><a class="t grow" href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.univ)}${r.year?` · ${r.year}학년도`:""}</a>${r.tag?`<span class="chip warn">${esc(r.tag)}</span>`:""}<span class="chip ${st[r.status][1]}">${st[r.status][0]}</span></div>
@@ -543,16 +545,18 @@ function vBg(app, arg){
   if(c){
     const i=B.indexOf(c), nx=B[(i+1)%B.length];
     const done = attemptsOf(c.id).some(a=>a.fb);
+    const T = (window.SSUBODA_BG_TYPES||{})[c.type] || {min:100,max:150};
+    const hide = c.type==="요약" && !done;   // 요약 연습 전에는 입장 라벨을 숨긴다(3차 m-6)
     app.innerHTML = `<a href="#/bg" class="small">← 배경지식 카드</a>
       <p class="tiny" style="margin:8px 0 0">${esc(c.area)} · ${esc(c.unit)} · ${esc(c.id)}</p><h1 style="margin-top:2px">${esc(c.title)}</h1>
       <p class="c-sum">${esc(c.issue)}</p>
       <div class="sheet"><h3 style="margin-top:0">배경</h3><p style="line-height:1.8">${esc(c.bg)}</p></div>
-      <div class="c-card c-good"><div class="c-h">A · ${esc(c.a.who)}</div><p style="font-family:var(--serif);line-height:1.8">${esc(c.a.text)}</p></div>
-      <div class="c-card c-fix" style="background:var(--sheet)"><div class="c-h">B · ${esc(c.b.who)}</div><p style="font-family:var(--serif);line-height:1.8">${esc(c.b.text)}</p></div>
+      <div class="c-card c-good"><div class="c-h">A${hide?" · <span class=\"tiny\">입장은 요약해 본 뒤 공개</span>":` · ${esc(c.a.who)}`}</div><p style="font-family:var(--serif);line-height:1.8">${esc(c.a.text)}</p></div>
+      <div class="c-card c-fix" style="background:var(--sheet)"><div class="c-h">B${hide?"":` · ${esc(c.b.who)}`}</div><p style="font-family:var(--serif);line-height:1.8">${esc(c.b.text)}</p></div>
       <div class="sheet"><h3 style="margin-top:0">핵심 개념</h3>${c.terms.map(([t,d])=>`<p class="small" style="margin:6px 0"><b>${esc(t)}</b> — ${esc(d)}</p>`).join("")}</div>
       <div class="c-card c-next"><div class="c-h">🤔 생각해 볼 질문</div><p><b>${esc(c.q)}</b></p>
-        <a class="btn primary" style="display:inline-flex;align-items:center;justify-content:center;margin-top:6px" href="#/write/${c.id}">✍️ 이 주제로 써 보기 (250~350자)${done?" · 다시":""}</a>
-        <p class="tiny" style="margin-top:6px">읽기는 언제든, 써 보기는 3주 차 이후 권장. 다 쓰면 점검·AI 코칭을 받을 수 있어요.</p>
+        <a class="btn primary" style="display:inline-flex;align-items:center;justify-content:center;margin-top:6px" href="#/write/${c.id}">✍️ ${esc(c.type||"")}형으로 써 보기 (${T.min}~${T.max}자)${done?" · 다시":""}</a>
+        <p class="tiny" style="margin-top:6px">요약형은 언제든, 비교·평가형은 3주 차 이후 권장. 다 쓰면 점검·AI 코칭, 다시 쓰면 예시 답안과 채점 요소가 열려요.</p>
         ${c.rel&&SETMAP[c.rel]?`<p class="small" style="margin:6px 0 0">연결 세트: <a href="#/write/${c.rel}">${esc(SETMAP[c.rel].title)}</a></p>`:""}</div>
       <div class="actions"><a class="btn" style="display:inline-flex;align-items:center;justify-content:center" href="#/tools/compare">📘 비교는 기준부터</a><a class="btn" style="display:inline-flex;align-items:center;justify-content:center" href="#/bg/${nx.id}">다음 카드 →</a></div>
       <p class="tiny">써보다가 만든 연습용 카드예요. 양쪽 입장을 같은 무게로 썼고, 어느 쪽이 정답이라는 뜻은 없어요.</p>`;
@@ -560,12 +564,12 @@ function vBg(app, arg){
   }
   let area = "전체";
   const draw = () => {
-    const list = B.filter(x=>area==="전체"||x.area===area);
+    const list = B.filter(x=>area==="전체"||x.area===area||x.type===area);
     app.innerHTML = `<a href="#/train" class="small">← 훈련</a><h1>🧠 배경지식 카드</h1>
       <p class="muted small">통합사회·통합과학에서 자주 나오는 쟁점이에요. 하루 한 장 읽고, 마음에 드는 주제는 바로 써 봐요.</p>
-      <div class="row" style="margin:8px 0">${["전체","통합사회","통합과학"].map(k=>`<button class="btn ${k===area?"primary":""}" type="button" data-a="${k}" style="min-height:40px;padding:6px 12px">${k}</button>`).join("")}</div>
+      <div class="row" style="margin:8px 0">${["전체","통합사회","통합과학","요약","비교","평가"].map(k=>`<button class="btn ${k===area?"primary":""}" type="button" data-a="${k}" style="min-height:40px;padding:6px 12px">${k}</button>`).join("")}</div>
       <div class="sheet" style="padding:4px 16px">${list.map(x=>{ const d=attemptsOf(x.id).some(a=>a.fb); return `<a class="set" href="#/bg/${x.id}" style="display:block;text-decoration:none;color:inherit">
-        <div class="row"><b class="grow">${esc(x.title)}</b>${d?`<span class="chip ok">써 봄</span>`:""}<span class="chip">${esc(x.unit)}</span></div>
+        <div class="row"><b class="grow">${esc(x.title)}</b>${d?`<span class="chip ok">써 봄</span>`:""}<span class="chip">${esc(x.type||"")}형</span></div>
         <p class="small muted" style="margin:2px 0 0">${esc(x.issue)}</p></a>`; }).join("")}</div>`;
     app.querySelectorAll("[data-a]").forEach(b=>b.onclick=()=>{ area=b.dataset.a; draw(); });
   };
@@ -599,6 +603,9 @@ function vCustom(app, arg){
     app.querySelectorAll("#tp button").forEach(b=>b.classList.toggle("primary", b.dataset.t===tpl)); };
   app.querySelectorAll("#tp button").forEach(b=>b.onclick=()=>{ tpl=b.dataset.t; apply(); });
   apply();
+  ["#pa","#pb","#pc"].forEach(id=>{ const ta=$(id); const c=document.createElement("p"); c.className="tiny"; ta.after(c);
+    const up=()=>{ const n=ta.value.length; c.textContent = n ? `${n}자${n>1500?" · AI는 앞 1,500자만 읽어요. 문제와 관련된 부분만 남겨요.":""}` : ""; c.style.color = n>1500 ? "var(--red)" : ""; };
+    ta.addEventListener("input", up); });
   if(g){ $("#cs").value = `${g.univ}${g.year?` ${g.year}학년도`:""} ${g.status==="mock"?"모의논술":"선행학습 영향평가 보고서"}`; $("#ct").placeholder = `예: ${g.univ} 인문 1번`; toast("보고서의 문항카드에서 제시문과 문제를 붙여 넣어요"); }
   $("#cf").onsubmit=e=>{ e.preventDefault();
     const ps=[["A","#pa"],["B","#pb"],["C","#pc"]].map(([l,id])=>({label:l, text:$(id).value.trim().slice(0,1500), kw:[]})).filter(p=>p.text);
@@ -686,6 +693,14 @@ function vWrite(app, arg){
         <p class="tiny">코드는 이 기기에 저장돼서 다음부터는 안 물어봐요. <a href="#/settings">설정에서 바꾸기</a></p>`
         : `<div class="actions"><button class="btn" type="button" id="ai${stage}">🤖 AI 코칭 받기</button></div>`}</div>`;
   }
+  function pointsBox(){
+    if(!s.points || !s.points.length) return "";
+    const ai=(a.ai2&&a.ai2.points_hit)||null, me=a.ptsSelf||[];
+    return `<div class="sheet"><h3 style="margin-top:0">📋 채점 요소 체크리스트</h3>
+      <p class="small muted">대학 채점처럼, 이 문제에서 꼭 들어가야 할 내용이에요. 내 수정본에 있으면 체크해요.${ai?" 오른쪽은 AI 판단이에요.":""}</p>
+      ${s.points.map((p,i)=>`<label class="row small" style="min-height:40px;flex-wrap:nowrap"><input type="checkbox" data-pt="${i}" ${me[i]?"checked":""}> <span class="grow">${esc(p)}</span>${ai?`<span class="chip ${ai[i]?"ok":"warn"}">${ai[i]?"AI ✓":"AI 빠짐"}</span>`:""}</label>`).join("")}
+      <p class="tiny">요소를 다 담는 게 목표가 아니라, 빠진 걸 확인하는 용도예요. 표현이 달라도 뜻이 같으면 담은 거예요.</p></div>`;
+  }
   function draw(){
     if(!a.fb){
       wb.innerHTML = `<div class="sheet">
@@ -710,11 +725,13 @@ function vWrite(app, arg){
           : `<h3>초안과 수정본 비교</h3>${diffHTML(a.draft,a.rewrite)}`}</div>
         ${a.fb2?`<div class="sheet fb"><h3 style="margin-top:0">수정본 점검</h3>${fbHTML(a.fb2, s, true)}</div>
           ${a.fb2.kind==="self"?checklist("checks2"):""}
+          ${pointsBox()}
           ${aiBox(2)}
           ${s.example?`<details class="sheet"><summary>예시 답안 보기</summary><p style="font-family:var(--serif);line-height:1.85">${esc(s.example)}</p><p class="tiny">앱 연습용 예시예요. 대학 모범답안이 아니고, 근거가 맞으면 다른 구성도 좋은 답이에요.</p></details>`:""}
           <div class="actions"><a class="btn primary" style="display:inline-flex;align-items:center;justify-content:center" href="#/today">오늘 끝 · 처음으로</a><button class="btn" id="again">이 세트 새로 쓰기</button></div>`:""}`;
       if(!a.fb2){ if(!a.rewrite){ a.rewrite=a.draft; } bindEditor("rewrite"); $("#ta").value=a.rewrite; $("#rl").innerHTML=ruler(a.rewrite.length); $("#sub").onclick=()=>submit("rewrite"); }
       else $("#again").onclick=()=>{ const n={ id:uid(), setId, createdAt:Date.now(), updatedAt:Date.now(), outline:["","",""], draft:"", rewrite:"", sec:0 }; S.attempts[n.id]=n; save(); go(`#/write/${setId}?a=${n.id}`); };
+      wb.querySelectorAll("[data-pt]").forEach(c=>c.onchange=()=>{ a.ptsSelf=a.ptsSelf||[]; a.ptsSelf[+c.dataset.pt]=c.checked; save(); });
       wb.querySelectorAll("[data-ck]").forEach(c=>c.onchange=()=>{ const k=c.dataset.ck; a[k]=a[k]||[]; a[k][+c.dataset.i]=c.checked; save(); });
       [1,2].forEach(n=>{ const b=$("#ai"+n); if(b) b.onclick=()=>requestAI(n);
         const sv=$("#acsv"+n); if(sv) sv.onclick=()=>{ const v=($("#acin"+n).value||"").trim(); if(!v){ toast("접속 코드를 입력해 주세요"); return; } S.settings.appCode=v; delete a.aiErr; save(); requestAI(n); }; });
@@ -729,6 +746,7 @@ function vWrite(app, arg){
     if(text.length<10){ toast("10자 이상 써 주세요"); return; }
     if(stage==="rewrite" && text===a.draft.trim()){ toast("고친 곳이 없어요. 고칠 점을 반영해 주세요"); return; }
     const fb = selfReview(s, text, a.outline, stage==="rewrite" ? a.draft : null);
+    if(stage==="rewrite"){ const hints=((a.ai1&&a.ai1.fixes)||[]).map(f=>f.rewrite_hint).filter(Boolean); const cp=copiedHint(text, hints); if(cp){ fb.copied=cp; toast("예시 문장을 거의 그대로 옮겼어요. 내 말로 한 번 바꿔 볼까요?"); } }
     if(stage==="draft"){ a.fb=fb; a.rewrite=a.draft; } else { a.fb2=fb; a.rewriteAt=Date.now(); }
     delete a.pending; a.updatedAt=Date.now(); save();
     toast(stage==="draft"?"점검 완료 · 다시 써 봐요":"수정본 점검 완료");
@@ -741,7 +759,7 @@ function vWrite(app, arg){
     const btn=$("#ai"+n); if(btn){ btn.disabled=true; btn.textContent="AI가 읽는 중… (최대 40초)"; }
     const rid = `${a.id}-ai${n}-${await sha(text).then(h=>h.slice(0,12))}`;
     const body = { request_id:rid, mode: n===1?"first":"rewrite", answer:text, outline:a.outline,
-      set:{ id:s.id, question:s.question, min:s.min, max:s.max, passages:s.passages.map(p=>({label:p.label,text:p.text})) },
+      set:{ id:s.id, question:s.question, min:s.min, max:s.max, passages:s.passages.map(p=>({label:p.label,text:p.text})), points:s.points||[] },
       previous: n===2 ? { draft:a.draft, fixes:(a.ai1||a.fb||{}).fixes||[] } : undefined };
     try{
       let j;
@@ -780,6 +798,7 @@ function fbHTML(fb, s, isRewrite){
   const lab = l => s.passages.length>1 ? `제시문 ${l}` : "제시문";
   let h = "";
   if(isRewrite && fb.changes) h += `<div class="good"><b>달라진 점</b><p>${esc(fb.changes)}</p></div>`;
+  if(fb.copied) h += `<div class="banner">AI 예시 문장을 거의 그대로 옮긴 곳이 있어요. 예시는 방향만 보고, 내 생각과 내 말로 다시 써 봐요.</div>`;
   if(fb.strength?.text) h += `<h3>잘한 점</h3><div class="good"><p>${esc(fb.strength.text)}</p>${fb.strength.answer_quote?`<div class="quote"><small>내 문장</small>${esc(fb.strength.answer_quote)}</div>`:""}</div>`;
   if(fb.fixes?.length) h += `<h3>${isRewrite?"남은":"먼저"} 고칠 점 ${fb.fixes.length}개</h3>` + fb.fixes.map((f,i)=>`<div class="fix"><p><b>${i+1}. ${esc(f.issue)}</b>${f.tag?` <span class="chip">${esc(f.tag)}</span>`:""}</p>
       ${f.answer_quote?`<div class="quote"><small>내 문장</small>${esc(f.answer_quote)}</div>`:""}
@@ -798,6 +817,8 @@ function coachHTML(fb, s, isRewrite){
   let h = "";
   if(fb.insufficient) h += `<div class="banner">AI가 판단 근거를 충분히 찾지 못했어요. 아래 내용만 참고해요.</div>`;
   if(fb.summary) h += `<p class="c-sum">${esc(fb.summary)}</p>`;
+  if(Array.isArray(fb.points_hit) && fb.points_hit.length){ const k=fb.points_hit.filter(Boolean).length, n=fb.points_hit.length;
+    h += `<p class="small" style="margin:-4px 0 10px">📋 채점 요소 <b>${n}개 중 ${k}개</b>를 담았어요${k<n?" — 빠진 요소가 가장 먼저 고칠 점이에요":""}. ${isRewrite?"":"요소 내용은 다시 쓴 뒤에 공개돼요."}</p>`; }
   if(isRewrite && fb.changes) h += `<div class="c-card c-good"><div class="c-h">📈 좋아진 점</div><p>${esc(fb.changes)}</p></div>`;
   if(fb.strength?.text) h += `<div class="c-card c-good"><div class="c-h">👍 잘한 점</div><p>${esc(fb.strength.text)}</p>${fb.strength.answer_quote?`<div class="quote"><small>내 문장</small>${esc(fb.strength.answer_quote)}</div>`:""}</div>`;
   (fb.fixes||[]).forEach((f,i)=>{
@@ -806,7 +827,7 @@ function coachHTML(fb, s, isRewrite){
       ${f.answer_quote?`<div class="quote"><small>내 문장</small>${esc(f.answer_quote)}</div>`:""}
       ${f.passage_quote?`<div class="quote"><small>${lab(f.passage_label)}에서 찾은 근거</small>${esc(f.passage_quote)}</div><button class="btn ghost small" type="button" style="min-height:36px;padding:4px 10px" data-hl="${esc(f.passage_label)}|${esc(f.passage_quote)}">제시문에서 위치 보기</button>`:""}
       ${f.suggestion?`<p class="c-do">👉 ${esc(f.suggestion)}</p>`:""}
-      ${f.rewrite_hint?`<div class="c-hint"><small>이렇게 고쳐 볼 수 있어요 (예시 한 문장)</small>${esc(f.rewrite_hint)}</div>`:""}
+      ${f.rewrite_hint?`<details class="c-hintbox"><summary class="small">💡 막히면 예시 한 문장 보기 (먼저 내 말로 고쳐 봐요)</summary><div class="c-hint">${esc(f.rewrite_hint)}</div></details>`:""}
       ${f.tag&&toolFor(f.tag)?`<a class="small" href="#/tools/${toolFor(f.tag).id}">📘 도구 카드: ${esc(toolFor(f.tag).title)} →</a>`:""}</div>`;
   });
   if(fb.spelling?.length) h += `<div class="c-card"><div class="c-h">🔤 맞춤법·띄어쓰기</div><div class="c-sp">${fb.spelling.map(x=>`<span><del>${esc(x.wrong)}</del> → <b>${esc(x.right)}</b></span>`).join("")}</div></div>`;
@@ -822,6 +843,11 @@ function coachHTML(fb, s, isRewrite){
 }
 // 기기 안 규칙 점검 → 피드백과 같은 모양(잘한 점 1 + 고칠 점 최대 2). 내용의 옳고 그름은 판정하지 않는다.
 const ABS_WORDS=["모든","반드시","항상","절대","무조건"];
+// AI 예시 문장 베끼기 감지: 공백·문장부호를 뺀 글자 bigram 겹침 80% 이상
+function copiedHint(text, hints){
+  const n=x=>String(x||"").replace(/[\s.,!?'"“”‘’·]/g,""); const bg=x=>{ const t=n(x), r=new Set(); for(let i=0;i<t.length-1;i++) r.add(t.slice(i,i+2)); return r; };
+  const T=bg(text); for(const h of hints){ const H=bg(h); if(H.size<8) continue; let k=0; H.forEach(x=>{ if(T.has(x)) k++; }); if(k/H.size>=0.8) return h; } return "";
+}
 function selfReview(s, text, outline, prev){
   const n=text.length, goods=[], fixes=[], name=p=>s.passages.length>1?`제시문 ${p.label}`:"제시문";
   if(n<s.min) fixes.push({issue:`분량이 ${s.min-n}자 모자라요 (${n}자 / 목표 ${s.min}~${s.max}자).`, suggestion:"제시문 근거를 한 문장 더 넣어 채워요.", tag:"분량"});
