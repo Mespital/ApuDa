@@ -7,7 +7,7 @@ const cache = new Map();
 const TTL_MS = 30000;
 function xmlValue(xml, tag) {
   const match = xml.match(new RegExp('<'+tag+'(?:\\s[^>]*)?>([\\s\\S]*?)<\\/'+tag+'>','i'));
-  return match ? match[1].replace(/&(?:amp|lt|gt|quot|apos|#(\\d+));/g, (v, num) => num ? String.fromCodePoint(Number(num)) : ({'&amp;':'&','&lt;':'<','&gt;':'>','&quot;':'"','&apos;':"'"})[v] || v).trim() : '';
+  return match ? match[1].replace(/&(?:amp|lt|gt|quot|apos|#(\d+));/g, (v, num) => num ? String.fromCodePoint(Number(num)) : ({'&amp;':'&','&lt;':'<','&gt;':'>','&quot;':'"','&apos;':"'"})[v] || v).trim() : '';
 }
 function json(value, status=200) {
   return new Response(JSON.stringify(value), {status,headers:{'content-type':'application/json; charset=utf-8','cache-control':'no-store','x-content-type-options':'nosniff'}});
@@ -17,7 +17,7 @@ export default async function handler(request) {
   const params = new URL(request.url).searchParams;
   const stage1 = (params.get('stage1') || '').trim();
   const stage2 = (params.get('stage2') || '').trim();
-  if(!REGION.has(stage1) || !/^[가-힣0-9\\s-]{1,40}$/.test(stage2)) {
+  if(!REGION.has(stage1) || !/^[가-힣0-9\s-]{1,40}$/.test(stage2)) {
     return json({error:'invalid_region',message:'시·도와 시·군·구를 정확히 입력하세요.'},400);
   }
   const key = (process.env.EGEN_API_KEY || '').trim();
@@ -37,7 +37,7 @@ export default async function handler(request) {
     const raw = await response.text();
     if(raw.length>1200000) return json({error:'upstream_invalid'},502);
     if(xmlValue(raw,'resultCode')!=='00') return json({error:'upstream_rejected',message:'공공데이터 인증·호출 한도 또는 조회 조건을 확인해야 합니다.'},502);
-    const hospitals = [...raw.matchAll(/<item(?:\\s[^>]*)?>([\\s\\S]*?)<\\/item>/gi)].slice(0,100).map(m => {
+    const hospitals = [...raw.matchAll(/<item(?:\s[^>]*)?>([\s\S]*?)<\/item>/gi)].slice(0,100).map(m => {
       const item=m[1];
       const bedsRaw=xmlValue(item,'hvec');
       return {
