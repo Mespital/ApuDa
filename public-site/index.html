@@ -636,6 +636,15 @@
   .mini-book-tags{word-break:keep-all}
   @media(max-width:640px){.floor2-library-head{flex-direction:column;align-items:flex-start;gap:5px}}
 </style>
+<style>
+/* Mobile home image: the green "비상구" sign is a drawn element, so overlay only its hit area. */
+#emergencyDoorLink{display:none}
+@media(max-width:860px){
+  #emergencyDoorLink{display:block;position:absolute;z-index:50;left:2%;top:87.2%;width:22%;height:8.1%;border-radius:16px}
+  #emergencyDoorLink:focus-visible{outline:3px solid #1769d4;outline-offset:3px;background:#ffffff40}
+  body.open #emergencyDoorLink{display:none}
+}
+</style>
 <meta name="apuda-release" content="audit-20261019.1">
 <link rel="stylesheet" href="/assets/apuda-cancer-videos.css">
 <link rel="stylesheet" href="/assets/apuda-home-polish.css">
@@ -684,6 +693,7 @@
     <button type="button" class="guide-family qs-fam">일상·반려동물·축산 건강은 <b>ApuDa 패밀리 ›</b></button>
   </aside>
   <div id="frame">
+    <a id="emergencyDoorLink" href="/emergency/" aria-label="비상구 · 응급실 찾기" title="응급실 찾기" onclick="event.stopPropagation()"></a>
     <img id="buildingIdle" class="building-media building-idle" src="assets/image/building-master.png"
          alt="ApuDa 홈 — 1층 암검진·암 신호 확인부터 5층 암 커뮤니티까지 연결하는 5층 환자 케어 빌딩" draggable="false">
     <video id="buildingVideoA" class="building-media building-video" muted playsinline preload="auto"></video>
