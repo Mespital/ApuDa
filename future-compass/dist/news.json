@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-11-04T23:52:17.771216+00:00",
-  "last_success_at": "2026-11-04T23:52:17.771216+00:00",
+  "checked_at": "2026-11-05T05:55:33.345244+00:00",
+  "last_success_at": "2026-11-05T05:55:33.345244+00:00",
   "failures": [],
   "articles": [
     {
@@ -38,6 +38,14 @@
     {
       "title": "DevRev delivers autonomous self-service with GPT-6.1 Sol",
       "url": "https://openai.com/index/devrev-enterprise-self-service",
+      "source": "OpenAI",
+      "published_at": "2026-11-04T00:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Introducing Images 2.6",
+      "url": "https://openai.com/index/introducing-images-2-6",
       "source": "OpenAI",
       "published_at": "2026-11-04T00:00:00+00:00",
       "category": "AI·컴퓨팅",
@@ -234,20 +242,12 @@
       "published_at": "2026-10-29T17:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "You can now generate, preview, and edit documents, PDFs, presentations, spreadsheets, and more directly in Gemini.",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/edit-files-directly/",
-      "source": "Google",
-      "published_at": "2026-10-29T16:15:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-11-04T23:52:17.771216+00:00",
+    "checked_at": "2026-11-05T05:55:33.345244+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -396,7 +396,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-11-04T23:52:17.771216+00:00",
+    "last_success_at": "2026-11-05T05:55:33.345244+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
