@@ -1453,6 +1453,12 @@
       "url": "https://www.cancer.gov/types/liver/hp/bile-duct-treatment-pdq",
       "checkedAt": "2026-10-19",
       "scope": "절제 불가능·전이·재발 담도암 1차 면역·항암 병용의 국제 근거; 국내 허가·급여를 증명하는 자료는 아님"
+    },
+    "rasolute302": {
+      "title": "AJMC · RASolute 302: 이전 치료 전이성 췌장암 RAS 억제제 전체생존 개선(ASCO 2026)",
+      "url": "https://www.ajmc.com/view/rasolute-302-brings-a-transformative-moment-on-pancreatic-cancer-a-60-improvement-in-overall-survival",
+      "checkedAt": "2026-11-06",
+      "scope": "RAS 표적 경구 신약 2차 치료 생존 개선 3상 결과 존재; 국내 미허가"
     }
   }
 }

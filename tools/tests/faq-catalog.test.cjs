@@ -18,7 +18,8 @@ function stable(value) {
   return value;
 }
 const ids = new Set();
-let total = 0, core = 0;
+let total = 0, core = 0, drafts = 0;
+const CORE = 20; // 2026-11-02 독립 AI 사전점검 범위(Q1~Q20). Q21~ 은 2026-11-03 AI 초안(독립 검토 전)
 assert.equal(books.length, 30);
 assert.equal(registry.cancers.length, 30);
 assert.equal(new Set(registry.cancers.map(item => item.slug)).size, 30);
@@ -46,30 +47,40 @@ for (const book of books) {
     if (!book.hasMini) {
       assert.ok(['diagnosis', 'treatment', 'care', 'followup'].includes(item.category));
       assert.ok(item.review.sourceRefs.length > 0, book.slug + ':' + item.n + ': missing evidence');
-      assert.equal(item.review.aiCheck, 'independent-ai-reviewed');
+      const isCore = item.n <= CORE;
+      // 검토 범위 밖 초안이 '독립 검토 완료'로 표시되면 안 된다(정직한 상태 표기)
+      assert.equal(item.review.aiCheck, isCore ? 'independent-ai-reviewed' : 'ai-editorial-draft-not-independently-reviewed', book.slug + ':' + item.n + ': review status');
+      if (!isCore) drafts++;
       for (const id of item.review.sourceRefs) {
         const source = data.sources[id];
         assert.ok(source, book.slug + ':' + item.n + ': unresolved source ' + id);
         assert.equal(new URL(source.url).protocol, 'https:');
-        assert.equal(source.checkedAt, '2026-11-02');
+        if (isCore) assert.equal(source.checkedAt, '2026-11-02');
         assert.ok(source.title && source.scope && source.organization);
       }
     }
   }
   if (!book.hasMini) {
-    core += data.items.length;
+    core += CORE;
     assert.equal(data.name, book.name);
     assert.equal(data.clinicalApproval, 'pending');
-    assert.equal(data.aiReview.status, 'completed');
+    assert.equal(data.aiReview.status, 'partial-ai-draft');
     assert.equal(data.aiReview.independent, true);
-    const payload = { slug: data.slug, name: data.name, items: data.items.map(item => ({ n: item.n, q: item.q, a: item.a, category: item.category, sourceRefs: item.review.sourceRefs, scope: item.review.scope })), sources: data.sources, questionsForVisit: data.questionsForVisit };
+    assert.equal(data.aiReview.additionalFaq.count, data.items.length - CORE);
+    assert.equal(data.aiReview.additionalFaq.independentSourceReview, false);
+    assert.equal(data.aiReview.additionalFaq.clinicalApproval, 'pending');
+    // 독립 검토된 Q1~Q20과 그 출처가 검토 이후 바뀌지 않았는지 해시로 확인
+    const coreItems = data.items.filter(item => item.n <= CORE);
+    const coreRefs = new Set(coreItems.flatMap(item => item.review.sourceRefs));
+    const coreSources = Object.fromEntries(Object.entries(data.sources).filter(([id]) => coreRefs.has(id)));
+    const payload = { slug: data.slug, name: data.name, items: coreItems.map(item => ({ n: item.n, q: item.q, a: item.a, category: item.category, sourceRefs: item.review.sourceRefs, scope: item.review.scope })), sources: coreSources, questionsForVisit: data.questionsForVisit };
     assert.equal(crypto.createHash('sha256').update(JSON.stringify(stable(payload))).digest('hex'), data.aiReview.contentSha256, book.slug + ': content changed after review');
     assert.equal(data.aiReview.reviewedDraftSha256, evidenceLedger.reviewedFiles.find(item => item.slug === book.slug).file_sha256);
     assert.equal(data.questionsForVisit.length, 5);
     assert.equal(review.coreFaq, true);
-    assert.equal(review.checkedAt, data.updated);
-    assert.deepEqual(review.targetedItems, data.items.map(item => item.n));
-    assert.deepEqual(review.sources, data.sources);
+    assert.equal(review.checkedAt, String(data.aiReview.checkedAt).slice(0, 10)); // 독립 검토일 (data.updated는 초안 추가일)
+    assert.deepEqual(review.targetedItems, coreItems.map(item => item.n));
+    for (const [id, source] of Object.entries(review.sources)) assert.deepEqual(source, data.sources[id], book.slug + ': registry source mismatch ' + id);
   } else {
     assert.equal(review.checkedAt, '2026-10-19');
     assert.ok(review.targetedItems.length < data.items.length);
@@ -77,5 +88,6 @@ for (const book of books) {
   total += data.items.length;
 }
 assert.equal(core, 360);
-assert.equal(total, 1560);
-console.log('PASS: 30 FAQ identities, 360 source-linked independently AI-reviewed new questions, 1,200 legacy questions, honest clinical status and resource availability');
+assert.equal(drafts, 1440);
+assert.equal(total, 3000);
+console.log('PASS: 30 FAQ identities, 360 hash-locked independently AI-reviewed questions, 1,440 honestly-labelled AI drafts, 1,200 legacy questions, all clinical approval pending');

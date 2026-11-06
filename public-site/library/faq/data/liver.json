@@ -1449,6 +1449,12 @@
       "url": "https://www.cancer.gov/types/liver/hp/bile-duct-treatment-pdq",
       "checkedAt": "2026-10-19",
       "scope": "절제 불가능·전이·재발 담도암 1차 면역·항암 병용의 국제 근거; 국내 허가·급여를 증명하는 자료는 아님"
+    },
+    "fda-nivoipi-hcc": {
+      "title": "FDA · 절제 불가능·전이성 간세포암 1차 니볼루맙+이필리무맙 승인(2025-04)",
+      "url": "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-nivolumab-ipilimumab-unresectable-or-metastatic-hepatocellular-carcinoma",
+      "checkedAt": "2026-11-06",
+      "scope": "간암 1차 면역+면역 병용에 니볼루맙+이필리무맙 포함; 국내 허가·급여는 별도 확인"
     }
   }
 }
