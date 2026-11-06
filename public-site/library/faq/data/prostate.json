@@ -1967,5 +1967,11 @@
       "checkedAt": "2026-11-06",
       "scope": "들어주기 우선, 대화 의사 묻기, 침묵·곁에 있기, 구체적·작은 실질 도움, 섣부른 조언·치료 권유·'이해해' 피하기. '긍정적으로 생각해'·원인 탓 문구는 직접 다루지 않음"
     }
+  },
+  "editorialApproval": {
+    "status": "approved",
+    "approvedBy": "ApuDa 운영자",
+    "approvedAt": "2026-11-07",
+    "scope": "운영자 편집·게시 승인(AI 감수 반영본). 실제 전문의 임상 검토(clinicalApproval)는 아직 대기 중입니다."
   }
 }

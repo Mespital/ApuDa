@@ -2074,5 +2074,11 @@
       "checkedAt": "2026-11-06",
       "scope": "치료 선택지·목표·효과 판단, 임상시험, 2차 의견, 바로 연락할 부작용, 복용약·보충제 공유 등 진료실 질문 목록. 암종별 병기·유전자 질문은 포함하지 않음"
     }
+  },
+  "editorialApproval": {
+    "status": "approved",
+    "approvedBy": "ApuDa 운영자",
+    "approvedAt": "2026-11-07",
+    "scope": "운영자 편집·게시 승인(AI 감수 반영본). 실제 전문의 임상 검토(clinicalApproval)는 아직 대기 중입니다."
   }
 }
