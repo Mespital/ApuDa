@@ -212,7 +212,9 @@
           if(serial!==active)return;
           if(!response.ok){
             var error=payload.error==='not_configured'?'API 연결 준비 중입니다':'현재 정보를 불러올 수 없습니다';
-            state(error,payload.message||'잠시 후 다시 시도하거나 E-Gen 공식 사이트를 이용하세요.','error');
+            var detail=payload.message||'잠시 후 다시 시도하거나 E-Gen 공식 사이트를 이용하세요.';
+            if(payload.diagnostic)detail+=' · 확인코드: '+payload.diagnostic;
+            state(error,detail,'error');
             return;
           }
           var items=Array.isArray(payload.hospitals)?payload.hospitals:[];
