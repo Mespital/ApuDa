@@ -56,12 +56,14 @@
       "a": "유방초음파는 유방촬영에서 이상이 보였을 때, 만져지는 멍울이 있을 때, 치밀유방일 때, 젊거나 임신 중일 때 주로 써요. 방사선이 없고 물혹(낭종)과 덩어리를 구별하기 좋으며 조직검사 바늘을 안내할 때도 쓰여요. 나에게 어떤 검사 조합이 맞는지는 담당 의료진에게 확인하세요.",
       "review": {
         "id": "faq.breast.004",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v2",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "breast-acs-mammogram"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -361,12 +363,14 @@
       "a": "치료가 끝난 뒤 불안, 재발 걱정, 눈물, 화가 나는 것은 흔하고 자연스러운 반응이에요. 일정한 생활 리듬, 가벼운 운동, 믿을 만한 사람과의 대화, 환자 모임이 도움이 돼요. 고통이 0~10 중 4점 이상이거나 2주 넘게 일상이 무너지면 진료에서 말하고, 스스로를 해치고 싶은 생각이 들면 ☎ 109(24시간)에 연락하세요.",
       "review": {
         "id": "faq.breast.023",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v2",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-anxiety"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -389,12 +393,14 @@
       "a": "체력, 남은 치료 일정, 업무 강도를 함께 고려해 단축근무나 단계적 복귀를 계획하면 좋아요. 피로나 집중력 변화가 남아 있을 수 있어요. 회사에 어디까지 말할지는 본인이 정하면 되고, 복귀 시점과 업무 제한은 담당의에게 확인해 필요하면 소견서를 받으세요.",
       "review": {
         "id": "faq.breast.025",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v2",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-acs-return-work"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -417,12 +423,14 @@
       "a": "방사선 부위는 붉어짐·가려움이 흔하고, 항암 중에는 피부가 건조해지기 쉬워요. 순한 세정제와 보습제를 쓰고, 문지르지 말고, 자외선을 차단하세요. 방사선 부위에 바를 제품은 방사선종양학과에 먼저 확인하고, 물집·진물·열감이 있으면 연락하세요.",
       "review": {
         "id": "faq.breast.027",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v2",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-skin"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -431,12 +439,14 @@
       "a": "항암치료 탈모는 보통 시작 2~3주 뒤 시작되고, 치료가 끝나면 몇 달에 걸쳐 다시 자라요(굵기·곱슬기가 달라질 수 있어요). 미리 짧게 자르고 모자·두건·가발을 준비하면 마음이 편해요. 두피 냉각 같은 방법이 가능한지, 내분비요법 중 모발이 가늘어지면 어떻게 할지 의료진에게 물어보세요.",
       "review": {
         "id": "faq.breast.028",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v2",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-hair"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -445,12 +455,14 @@
       "a": "탁산 계열 등 일부 항암제가 손발의 말초신경을 손상시켜 생겨요(말초신경병증). 대개 서서히 좋아지지만 오래 남기도 해요. 단추 잠그기가 어렵거나 감각이 둔해 넘어질 것 같다면 바로 알리세요. 용량 조절이 필요한지 의료진이 판단하고, 화상·낙상에 주의하세요.",
       "review": {
         "id": "faq.breast.029",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v2",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-nerve"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -459,12 +471,14 @@
       "a": "항암치료 뒤 기억력·집중력이 떨어지는 '케모브레인'(항암 관련 인지 변화)이 생길 수 있고, 피로·수면 부족·불안·호르몬 변화도 영향을 줘요. 대개 시간이 지나며 나아져요. 메모·알림 앱, 한 번에 한 가지 하기, 운동과 수면이 도움이 되며, 일상 지장이 크면 의료진과 다른 원인(빈혈·갑상선 등)도 확인하세요.",
       "review": {
         "id": "faq.breast.030",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v2",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-memory"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -473,12 +487,14 @@
       "a": "불안, 안면홍조, 통증, 일부 약 때문에 잠이 깨기 쉬워요. 같은 시간에 일어나기, 낮잠은 짧게, 오후 카페인과 잠들기 전 화면 줄이기, 낮 시간 활동이 도움이 돼요. 몇 주 넘게 계속되면 의료진과 상의하세요. 불면 인지행동치료 같은 방법이 있고, 수면제는 임의로 먹지 않는 것이 좋아요.",
       "review": {
         "id": "faq.breast.031",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v2",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-sleep"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -568,12 +584,14 @@
       "a": "영양제는 재발 예방 효과 근거가 부족한 경우가 많고, 일부는 항암제·내분비요법과 상호작용하거나 호르몬 성분이 있을 수 있어요. 고용량 항산화제, 식물성 에스트로겐 고농축 제품, 한약 등은 특히 확인이 필요해요. 먹고 있거나 먹으려는 제품 목록을 가져가 의료진·약사와 상의하세요.",
       "review": {
         "id": "faq.breast.037",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v2",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-cam-interactions"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -582,12 +600,15 @@
       "a": "암 관련 피로는 쉬어도 잘 풀리지 않고, 치료가 끝난 뒤 몇 달 이상 이어지기도 해요. 빈혈, 갑상선 기능, 수면 문제, 우울, 약 부작용, 체력 저하가 함께 원인일 수 있어요. 가벼운 운동을 꾸준히 하는 것이 도움이 된다고 알려져 있고, 원인 확인 검사가 필요한지 의료진에게 물어보세요.",
       "review": {
         "id": "faq.breast.038",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v2",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-fatigue",
+          "common-kcic-fatigue-cause"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -819,12 +840,14 @@
       "a": "매년 독감 예방접종(주사형)이 기본이고, 코로나19·폐렴구균·대상포진 백신도 상의해 보세요. 항암치료 중에는 생백신을 피하고, 접종 시기는 항암 일정에 맞춰 정해요. 겨드랑이 수술을 한 쪽 팔보다는 반대쪽 팔에 맞는 것이 좋고, 함께 사는 가족의 접종도 도움이 돼요.",
       "review": {
         "id": "faq.breast.053",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v2",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-acs-vaccines"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -865,12 +888,14 @@
       "a": "진료에 함께 가서 기록하고, 일정·복용약·응급 연락처를 정리해 주는 것이 큰 도움이 돼요. \"왜 검진을 안 받았어\" 같은 말 대신 \"같이 준비하자\"고 말해 주세요. 결정은 환자가 하도록 존중하고, 보호자도 지치지 않도록 쉬고 도움을 나누세요.",
       "review": {
         "id": "faq.breast.056",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v2",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-caregivers"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -879,12 +904,14 @@
       "a": "2주 넘게 기분이 가라앉고, 좋아하던 일에 흥미가 없고, 잠·식욕이 크게 달라져 일상이 무너지면 상담을 받는 것이 좋아요. 고통 점수가 0~10 중 4점 이상이면 다음 진료에서 그대로 말하세요. 스스로를 해치고 싶은 생각이 들면 ☎ 109(24시간) 또는 119에 바로 연락하세요.",
       "review": {
         "id": "faq.breast.057",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v2",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-depression"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -989,12 +1016,14 @@
       "a": "완치 목표는 초기·국소 진행암에서 암을 없애고 재발을 막는 것이에요. 조절 목표는 전이성 암을 오래 관리하며 일상을 이어 가는 것이고, 증상완화는 통증·숨참 등을 줄여 삶의 질을 높이는 것이에요. 이 목표는 함께 갈 수 있고 바뀔 수도 있으니 \"제 치료 목표는 무엇인가요?\"라고 물어보세요.",
       "review": {
         "id": "faq.breast.064",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v2",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "breast-nci-palliative"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1019,12 +1048,14 @@
       "a": "원격전이가 없는 0~3기는 대부분 수술 대상이에요. 다만 피부·흉벽 침범, 염증성 유방암, 림프절 전이가 많은 경우에는 약물치료로 먼저 줄인 뒤 수술을 판단해요. 4기에서는 전신치료가 중심이고 수술은 일부 상황에서만 논의해요. 전신 상태와 동반질환도 함께 보니 담당의에게 기준을 물어보세요.",
       "review": {
         "id": "faq.breast.066",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v2",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "breast-nci-pdq-hp"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1097,12 +1128,14 @@
       "a": "임상시험은 재발·전이 때만이 아니라 치료를 정하는 시점마다 선택지가 될 수 있어요. 시험의 목적과 단계, 지금 표준치료와 무엇이 다른지, 비용·방문 일정, 예상 부작용, 중간에 그만둘 수 있는지 확인하세요. 담당의나 병원 임상시험센터에 내가 참여할 수 있는 시험이 있는지 물어보세요.",
       "review": {
         "id": "faq.breast.071",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v2",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-acs-clinical-trial"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1111,12 +1144,14 @@
       "a": "수술 범위나 수술 전 약물치료처럼 큰 결정을 앞두고 있을 때, 재발·전이로 치료가 바뀔 때, 드문 유형일 때 도움이 돼요. 치료 시작이 너무 늦어지지 않도록 일정은 담당의와 상의하세요. 병리 슬라이드·영상 CD·결과지 사본이 필요하니 대여 방법을 원무과에 확인하세요.",
       "review": {
         "id": "faq.breast.072",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v2",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-acs-second-opinion"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1157,12 +1192,15 @@
       "a": "일반 진통제로 조절되지 않는 중등도 이상의 통증, 특히 뼈 전이 통증 등에서 마약성 진통제를 써요. 의사의 처방대로 쓰면 중독 걱정은 크지 않다고 알려져 있어요. 변비·졸림 같은 부작용은 예방할 수 있으니, 통증을 0~10 점수로 기록해 의료진에게 알리고 참지 마세요.",
       "review": {
         "id": "faq.breast.075",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v2",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-pain",
+          "common-acs-opioids"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1187,12 +1225,14 @@
       "a": "필요량은 체중·활동량·치료 상태에 따라 개인마다 달라요. 일반적으로 단백질은 체중 1kg당 1.0~1.5g 정도, 열량은 체중 1kg당 25~30kcal 정도가 흔히 쓰이는 범위예요. 매 끼니 단백질 음식을 넣고, 체중이 의도치 않게 줄면 영양상담을 요청하세요.",
       "review": {
         "id": "faq.breast.077",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v2",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-espen-targets"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1201,12 +1241,14 @@
       "a": "근감소증은 나이·활동 부족·치료 등으로 근육량과 근력이 줄어든 상태예요. 악액질(cachexia)은 암이 일으키는 염증·대사 변화로 식욕이 떨어지고, 의도치 않게 체중과 근육이 빠지며 영양 보충만으로 잘 회복되지 않는 상태예요. 두 경우 모두 근력운동과 단백질이 기본이고, 체중이 계속 줄면 바로 알리세요.",
       "review": {
         "id": "faq.breast.078",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v2",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-cachexia"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1248,12 +1290,14 @@
       "a": "암 자체, 항암치료, 타목시펜, 수술 후 오래 누워 있기는 혈전(피떡) 위험을 높여요. 다리 혈전은 한쪽 다리가 붓고 아프며, 폐로 가면 흉통·숨참(폐색전)으로 생명이 위험할 수 있어요. 한쪽 다리 부종은 바로 연락하고, 갑작스러운 흉통·숨참이면 119를 부르세요.",
       "review": {
         "id": "faq.breast.081",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v2",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-cdc-clots"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1262,12 +1306,14 @@
       "a": "안트라사이클린 계열 항암제와 트라스투주맙 같은 HER2 표적치료는 심장 기능을 떨어뜨릴 수 있어요. 그래서 시작 전에 심초음파로 기준을 확인하고, 치료 중에도 정해진 간격으로 다시 검사해요(간격은 병원마다 다름). 숨참·다리 부종·두근거림이 생기면 알리고, 심장표지자 검사가 필요한지 물어보세요.",
       "review": {
         "id": "faq.breast.082",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v2",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-acs-cardio-oncology"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1290,12 +1336,14 @@
       "a": "구강점막염은 항암치료로 입안이 헐고 아픈 것이에요. 부드러운 칫솔과 알코올 없는 가글로 자주 헹구고, 맵고 짜고 뜨거운 음식 대신 부드럽고 미지근한 음식을 드세요. 치료 전 치과 점검이 도움이 되며, 통증으로 먹지 못하거나 열이 나면 병원에 연락하세요.",
       "review": {
         "id": "faq.breast.084",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v2",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-mouth"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1304,12 +1352,14 @@
       "a": "메스꺼움은 생기고 나서보다 미리 막는 것이 효과적이어서, 항암제 종류에 맞춰 주사 전후로 예방약을 써요. 세로토닌 수용체 길항제, NK1 수용체 길항제, 스테로이드 등을 조합해요. 처방받은 대로 쓰고, 그래도 구토로 물을 마시지 못하면 바로 연락하세요.",
       "review": {
         "id": "faq.breast.085",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v2",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-nausea"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1318,12 +1368,15 @@
       "a": "하루 4~6회 이상 설사, 어지럼·소변 감소·입마름은 탈수 신호라 바로 연락하세요. 일부 표적치료제와 항암제는 설사를, 진통제·구토 예방약은 변비를 일으킬 수 있어요. 배가 심하게 불러오고 아프면서 방귀·변이 전혀 없고 토한다면 장폐색일 수 있어 응급실로 가세요.",
       "review": {
         "id": "faq.breast.086",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v2",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-diarrhea",
+          "common-nci-constipation"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1364,12 +1417,14 @@
       "a": "치료 일정, 부작용이 심한 날의 패턴, 업무 강도를 보고 정해요. 항암 주사 직후 며칠은 쉬고 나머지 기간에 일하는 식으로 조정하기도 해요. 병가·휴직·유연근무는 회사 규정을 확인하고, 필요한 진단서·소견서는 담당의에게 요청하세요. 회사에 말하는 범위는 본인이 정하면 돼요.",
       "review": {
         "id": "faq.breast.089",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v2",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-acs-return-work"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1408,12 +1463,14 @@
       "a": "\"완치\", \"100% 효과\", \"부작용 없음\"을 내세우거나 제품 판매로 이어지거나 체험담만 있는 정보는 조심하세요. 근거중심 정보는 출처·작성일·전문가 검토가 분명해요. 국가암지식정보센터(www.cancer.go.kr, ☎ 1577-8899)를 참고하고, 궁금한 정보는 담당의에게 확인하세요.",
       "review": {
         "id": "faq.breast.092",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v2",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-trusted-info"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1422,12 +1479,15 @@
       "a": "효과가 검증되지 않은 고농도 보조제·한약·주사, 치료 중 고용량 항산화제, 표준치료를 대신하는 대체요법은 간 손상이나 약물 상호작용 위험이 있어 피하는 것이 좋아요. 명상·요가·마사지 등은 증상 완화에 도움이 될 수 있지만, 무엇이든 시작 전에 의료진과 상의하세요.",
       "review": {
         "id": "faq.breast.093",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v2",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-cam-interactions",
+          "common-cdc-cam"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1436,12 +1496,14 @@
       "a": "독감은 매년 주사형 백신을, 폐렴구균·대상포진·코로나19 백신은 나이와 치료 상태에 맞춰 상의해요. 항암 중에는 생백신을 피하고, 대상포진은 생백신이 아닌 재조합 백신이 선택지가 될 수 있어요. 가능하면 항암 시작 전에 맞고, 치료 중이라면 접종 시점을 담당의와 정하세요.",
       "review": {
         "id": "faq.breast.094",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v2",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-acs-vaccines"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1464,12 +1526,14 @@
       "a": "나이만으로 치료를 정하지 않고, 실제 체력과 기능을 보기 위해서예요. 노쇠도 평가(노인포괄평가)는 걷기·일상생활 능력, 인지, 영양, 동반질환, 복용약을 함께 확인해 항암을 견딜 수 있을지, 방사선 생략 같은 선택이 맞는지 판단하는 데 쓰여요. 평가가 가능한지 담당의에게 물어보세요.",
       "review": {
         "id": "faq.breast.096",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v2",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-acs-geriatric"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1670,6 +1734,202 @@
       "url": "https://www.lst.go.kr/addt/medicalintent.do",
       "checkedAt": "2026-11-06",
       "scope": "19세 이상 등록기관 방문 작성, 언제든 변경·철회, 연명의료계획서 작성 시 효력 관계"
+    },
+    "common-acs-cardio-oncology": {
+      "title": "ACS · What Is Cardio-Oncology?",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/latest-news/what-is-cardio-oncology.html",
+      "checkedAt": "2026-11-06",
+      "scope": "안트라사이클린·HER2 표적·면역관문억제제·흉부 방사선의 심장 영향, 치료 전 심초음파·트로포닌·심전도, 치료 중·후 모니터링, 흉통·두근거림·부종·숨참 보고; 5-FU·VEGF 고혈압은 다루지 않음"
+    },
+    "common-acs-clinical-trial": {
+      "title": "ACS · Being Part of a Clinical Trial",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/making-treatment-decisions/clinical-trials/being-part-of-a-clinical-trial.html",
+      "checkedAt": "2026-11-06",
+      "scope": "동의서에서 확인할 목적·비용·방문·검사, 자발적 참여와 언제든 중단 가능, 이상 증상 보고; 국내 임상시험 검색 경로는 아님"
+    },
+    "common-acs-geriatric": {
+      "title": "ACS · How Geriatric Assessments Can Benefit Older Adults with Cancer",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/latest-news/how-geriatric-assessments-can-benefit-older-adults-with-cancer.html",
+      "checkedAt": "2026-11-06",
+      "scope": "노인포괄평가 영역(기능·낙상·인지·약물·영양·정서·사회지지·동반질환·가치), 나이만으로 결정하지 않음, 부작용·입원 감소와 연관"
+    },
+    "common-acs-opioids": {
+      "title": "ACS · Opioids for Cancer Pain",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/managing-cancer/side-effects/pain/opioid-pain-medicines-for-cancer-pain.html",
+      "checkedAt": "2026-11-06",
+      "scope": "중등도~중증 통증의 마약성 진통제, 변비는 대개 예방·조절 가능, 용량·횟수 임의 변경 금지; 중독이 '드물다'고 단정하지는 않음"
+    },
+    "common-acs-return-work": {
+      "title": "ACS · Returning to Work After Cancer Treatment",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/survivorship/returning-to-work-after-cancer-treatment.html",
+      "checkedAt": "2026-11-06",
+      "scope": "단축·부분 근무로 단계적 복귀, 유연근무 등 조정, 회사에 알릴 범위는 본인이 결정, 복귀 전 의료진 확인, 초기 피로·집중력 저하; 미국 법·제도 기준(국내 병가·휴직 제도 아님)"
+    },
+    "common-acs-second-opinion": {
+      "title": "ACS · Second Opinions for Cancer Treatment",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/making-treatment-decisions/seeking-a-second-opinion.html",
+      "checkedAt": "2026-11-06",
+      "scope": "2차 의견이 필요한 상황(드문 암, 병기 불확실, 여러 선택지), 준비 서류(병리·수술기록·치료계획·약 목록), 기록 요청은 일찍·치료 시작 시점은 담당의와 상의; 슬라이드·영상 언급 없음"
+    },
+    "common-acs-vaccines": {
+      "title": "ACS · Vaccinations During Cancer Treatment",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/side-effects/infections/vaccination-during-cancer-treatment.html",
+      "checkedAt": "2026-11-06",
+      "scope": "매년 불활성화 독감 주사(코 분무형 제외), 폐렴구균 백신, 면역저하 시 생백신 비권장, 대상포진 백신은 생백신 아님, 가족·보호자 접종; 국내 접종 일정·급여는 아님"
+    },
+    "common-cdc-cam": {
+      "title": "CDC · Complementary and Alternative Medicine — Cancer Survivors",
+      "organization": "U.S. Centers for Disease Control and Prevention",
+      "url": "https://www.cdc.gov/cancer-survivors/patients/complementary-alternative-medicine.html",
+      "checkedAt": "2026-11-06",
+      "scope": "보완요법(병행)과 대체요법(대신) 구분, 표준치료 효과를 떨어뜨릴 수 있음, 시작 전 의사와 상의"
+    },
+    "common-cdc-clots": {
+      "title": "CDC · Blood Clots (Deep Vein Thrombosis) — Cancer Survivors",
+      "organization": "U.S. Centers for Disease Control and Prevention",
+      "url": "https://www.cdc.gov/cancer-survivors/patients/blood-clots.html",
+      "checkedAt": "2026-11-06",
+      "scope": "암·항암 중 혈전 위험 증가, DVT(한쪽 팔다리 부종·통증·발적)와 폐색전(호흡곤란·흉통·객혈) 신호와 즉시 진료, 수술 전 예방약 상의, 장기 침상 시 위험"
+    },
+    "common-espen-targets": {
+      "title": "Frontiers in Nutrition 2021 · Nutrition Care Process Model Approach to Surgical Prehabilitation in Oncology (Table 2: ESPEN 권고 인용)",
+      "organization": "Frontiers in Nutrition (PMC 공개)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8264148/",
+      "checkedAt": "2026-11-06",
+      "scope": "ESPEN 암 영양 권고 인용: 에너지 25~30 kcal/kg/일, 단백질 >1~1.5 g/kg/일; ESPEN 원문이 아닌 2차 인용 표이며 개인 목표는 영양사 평가 필요"
+    },
+    "common-kcic-fatigue-cause": {
+      "title": "국가암정보센터 · 암관련 피로의 원인",
+      "organization": "국립암센터 국가암정보센터",
+      "url": "https://cancer.go.kr/lay1/S1T417C419/contents.do",
+      "checkedAt": "2026-11-06",
+      "scope": "피로 원인(치료·통증·빈혈·약물·수면·영양·우울), 원인별 관리, 저강도 운동부터 시작(골전이·발열 시 주의)"
+    },
+    "common-nci-anxiety": {
+      "title": "NCI · Anxiety and Distress (PDQ®) 환자용",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/about-cancer/coping/feelings/anxiety-distress-pdq",
+      "checkedAt": "2026-11-06",
+      "scope": "진단·치료·추적 시기의 불안과 재발 걱정, 전문가 상담 시점, 이완·인지행동치료·지지; 고통척도 4점·국내 위기번호는 없음(1차 lung/thyroid에서 확인된 URL)"
+    },
+    "common-nci-cachexia": {
+      "title": "NCI · Cancer Cachexia",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/cancer-cachexia",
+      "checkedAt": "2026-11-06",
+      "scope": "악액질은 근육·지방이 함께 빠지고 영양 보충만으로 회복이 어려움, 조기 선별·영양·약물·운동 병행; 1차 pancreas에서 확인된 URL"
+    },
+    "common-nci-cam-interactions": {
+      "title": "NCI · Cancer Therapy Interactions with Foods and Dietary Supplements (PDQ®) 환자용",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/about-cancer/treatment/cam/patient/dietary-interactions-pdq",
+      "checkedAt": "2026-11-06",
+      "scope": "세인트존스워트·항산화제 보충제·자몽과 항암치료 상호작용, 치료 전 보완요법 제품을 의료진과 상의; 한약 개별 근거는 아님"
+    },
+    "common-nci-caregivers": {
+      "title": "NCI · Support for Caregivers of Cancer Patients",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/about-cancer/coping/caregiver-support",
+      "checkedAt": "2026-11-06",
+      "scope": "보호자 역할 변화, 도움 요청·역할 분담, 보호자 자신의 휴식·건강·상담; 환자와 대화하는 구체적 표현은 다루지 않음"
+    },
+    "common-nci-constipation": {
+      "title": "NCI · Constipation and Cancer Treatment",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/constipation",
+      "checkedAt": "2026-11-06",
+      "scope": "마약성 진통제·구토억제제 등에 의한 변비, 수분 섭취, 장폐색·분변매복은 즉시 진료가 필요한 상태, 심한 복통·구토 시 연락"
+    },
+    "common-nci-depression": {
+      "title": "NCI · Depression (PDQ®) 환자용",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/about-cancer/coping/feelings/depression-pdq",
+      "checkedAt": "2026-11-06",
+      "scope": "2주 넘게 지속되는 우울 증상, 평가·상담·운동·항우울제 치료, 자살 위험 신호와 위기 연락(미국 988 기준 — 국내 ☎109는 별도 확인)"
+    },
+    "common-nci-diarrhea": {
+      "title": "NCI · Diarrhea and Cancer Treatment",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/diarrhea",
+      "checkedAt": "2026-11-06",
+      "scope": "항암·표적·면역(대장염) 치료의 설사, 중증도와 탈수 위험, 의료진 연락; 1차 매핑(kidney-nci-diarrhea)에서 확인된 URL을 공통 id로 사용"
+    },
+    "common-nci-fatigue": {
+      "title": "NCI · Cancer Fatigue (PDQ®) 환자용",
+      "organization": "National Cancer Institute",
+      "url": "https://cancer.gov/about-cancer/treatment/side-effects/fatigue/fatigue-pdq",
+      "checkedAt": "2026-11-06",
+      "scope": "암 관련 피로의 원인(빈혈·우울·치료), 치료 종료 후 수개월~수년 지속 가능, 운동이 피로 완화에 도움; 갑상선 기능 언급 없음"
+    },
+    "common-nci-hair": {
+      "title": "NCI · Hair Loss (Alopecia) and Cancer Treatment",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/hair-loss",
+      "checkedAt": "2026-11-06",
+      "scope": "항암·방사선 탈모, 재성장 시기(항암 후 2~3개월·방사선 후 3~6개월), 순한 샴푸·부드러운 관리, 자외선 차단; 두피냉각은 관련 링크만"
+    },
+    "common-nci-memory": {
+      "title": "NCI · Memory or Concentration Problems and Cancer Treatment",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/memory",
+      "checkedAt": "2026-11-06",
+      "scope": "항암·뇌 방사선·면역치료 관련 인지 변화, 메모·목록·플래너 활용, 컨디션 좋은 시간에 중요한 일, 운동; 빈혈 언급 없음"
+    },
+    "common-nci-mouth": {
+      "title": "NCI · Mouth and Throat Problems and Cancer Treatment",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/mouth-throat",
+      "checkedAt": "2026-11-06",
+      "scope": "구강점막염: 매우 부드러운 칫솔, 소금·베이킹소다 가글, 맵고 짜고 딱딱한 음식 피하기, 치료 전 치과 점검, 먹기 힘든 통증·38°C 발열 시 연락"
+    },
+    "common-nci-nausea": {
+      "title": "NCI · Nausea and Vomiting and Cancer Treatment",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/nausea-vomiting",
+      "checkedAt": "2026-11-06",
+      "scope": "항암 전 예방 구토억제제 투여, 조절 안 되는 구토의 탈수 위험(어지럼·쇠약)과 연락할 증상 확인; 국내 약제 급여는 아님"
+    },
+    "common-nci-nerve": {
+      "title": "NCI · Nerve Problems (Peripheral Neuropathy) and Cancer Treatment",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/nerve-problems",
+      "checkedAt": "2026-11-06",
+      "scope": "치료 관련 말초신경병증 증상, 조기 보고, 낙상·화상 예방 요령; 특정 약제명·용량 조절은 다루지 않음"
+    },
+    "common-nci-pain": {
+      "title": "NCI · Pain and Cancer",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/pain",
+      "checkedAt": "2026-11-06",
+      "scope": "중등도~중증 암 통증의 마약성 진통제, 처방대로 사용 시 대부분 안전, 변비 부작용, 통증 점수 기록; 1차 매핑(colorectal/stomach-nci-pain)에서 확인된 URL"
+    },
+    "common-nci-skin": {
+      "title": "NCI · Skin and Nail Changes during Cancer Treatment",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/skin-nail-changes",
+      "checkedAt": "2026-11-06",
+      "scope": "방사선 부위 피부 관리, 표적치료 발진(약 임의 중단 금지), 보습·자외선 차단, 수족증후군 등 보고할 증상; EGFR 억제제 개별 관리법은 없음"
+    },
+    "common-nci-sleep": {
+      "title": "NCI · Sleep Problems in People with Cancer",
+      "organization": "National Cancer Institute",
+      "url": "https://cancer.gov/about-cancer/treatment/side-effects/sleep-problems",
+      "checkedAt": "2026-11-06",
+      "scope": "치료·약물·스트레스 관련 수면 문제, 수면 환경·취침 전 화면 줄이기, 인지행동치료·이완요법; 카페인·낮잠 기준은 명시 안 됨"
+    },
+    "common-nci-trusted-info": {
+      "title": "NCI · How to Find Cancer Resources You Can Trust",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/about-cancer/managing-care/using-trusted-resources",
+      "checkedAt": "2026-11-06",
+      "scope": "운영 주체·작성/검토 날짜·근거 출처 확인, 제품 판매·'완치' 주장 경계, 개인 체험담으로 치료 결정 금지, 의료진과 상의"
     }
   }
 }
