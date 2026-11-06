@@ -45,6 +45,18 @@
       "url": "https://ascopost.com/news/december-2024/fda-approves-durvalumab-for-limited-stage-small-cell-lung-cancer/",
       "checkedAt": "2026-11-06",
       "scope": "제한기 소세포폐암에서 항암방사선 뒤 면역항암제 공고요법이 표준 범주에 포함됨; 국내 허가·급여는 별도 확인"
+    },
+    "fda-nivoipi-hcc": {
+      "title": "FDA · 절제 불가능·전이성 간세포암 1차 니볼루맙+이필리무맙 승인(2025-04)",
+      "url": "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-nivolumab-ipilimumab-unresectable-or-metastatic-hepatocellular-carcinoma",
+      "checkedAt": "2026-11-06",
+      "scope": "간암 1차 면역+면역 병용에 니볼루맙+이필리무맙 포함; 국내 허가·급여는 별도 확인"
+    },
+    "rasolute302": {
+      "title": "AJMC · RASolute 302: 이전 치료 전이성 췌장암 RAS 억제제 전체생존 개선(ASCO 2026)",
+      "url": "https://www.ajmc.com/view/rasolute-302-brings-a-transformative-moment-on-pancreatic-cancer-a-60-improvement-in-overall-survival",
+      "checkedAt": "2026-11-06",
+      "scope": "RAS 표적 경구 신약 2차 치료 생존 개선 3상 결과 존재; 국내 미허가"
     }
   },
   "cancers": [
@@ -285,6 +297,7 @@
       "faqItems": 100,
       "targetedItems": [
         2,
+        15,
         18,
         55,
         90
@@ -314,6 +327,12 @@
           "url": "https://www.nhs.uk/conditions/pancreatic-cancer/symptoms/",
           "checkedAt": "2026-10-19",
           "scope": "새 황달은 일반적인 지속 증상 대기 기간과 구별해 신속히 진료; 영국 연락 경로는 한국에 그대로 적용하지 않음"
+        },
+        "rasolute302": {
+          "title": "AJMC · RASolute 302: 이전 치료 전이성 췌장암 RAS 억제제 전체생존 개선(ASCO 2026)",
+          "url": "https://www.ajmc.com/view/rasolute-302-brings-a-transformative-moment-on-pancreatic-cancer-a-60-improvement-in-overall-survival",
+          "checkedAt": "2026-11-06",
+          "scope": "RAS 표적 경구 신약 2차 치료 생존 개선 3상 결과 존재; 국내 미허가"
         }
       }
     },
@@ -381,6 +400,8 @@
       "participantTesting": "not-conducted",
       "faqItems": 100,
       "targetedItems": [
+        13,
+        15,
         55,
         90
       ],
@@ -397,6 +418,12 @@
           "url": "https://www.nhis.or.kr/static/html/wbma/c/wbmac0215.html",
           "checkedAt": "2026-10-19",
           "scope": "확진 후 30일 이내 신청과 30일 경과 후 적용 시작일, 적용 범위·재등록 조건"
+        },
+        "fda-nivoipi-hcc": {
+          "title": "FDA · 절제 불가능·전이성 간세포암 1차 니볼루맙+이필리무맙 승인(2025-04)",
+          "url": "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-nivolumab-ipilimumab-unresectable-or-metastatic-hepatocellular-carcinoma",
+          "checkedAt": "2026-11-06",
+          "scope": "간암 1차 면역+면역 병용에 니볼루맙+이필리무맙 포함; 국내 허가·급여는 별도 확인"
         }
       }
     },
