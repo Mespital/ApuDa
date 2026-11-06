@@ -2030,5 +2030,11 @@
       "checkedAt": "2026-11-06",
       "scope": "혈구 감소 시 지연, 장기 영향 시 용량 감량, 스캔·종양표지자상 반응 부족 시 약제 변경. 치료 중단 결정 자체는 다루지 않음"
     }
+  },
+  "editorialApproval": {
+    "status": "approved",
+    "approvedBy": "ApuDa 운영자",
+    "approvedAt": "2026-11-07",
+    "scope": "운영자 편집·게시 승인(AI 감수 반영본). 실제 전문의 임상 검토(clinicalApproval)는 아직 대기 중입니다."
   }
 }

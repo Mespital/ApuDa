@@ -1904,5 +1904,11 @@
       "editorialUpgrade": "2026-11-06"
     }
   },
-  "additionalDraftCount": 80
+  "additionalDraftCount": 80,
+  "editorialApproval": {
+    "status": "approved",
+    "approvedBy": "ApuDa 운영자",
+    "approvedAt": "2026-11-07",
+    "scope": "운영자 편집·게시 승인(AI 감수 반영본). 실제 전문의 임상 검토(clinicalApproval)는 아직 대기 중입니다."
+  }
 }
