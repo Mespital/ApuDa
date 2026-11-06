@@ -160,12 +160,14 @@
       "a": "간 절제 뒤에는 남은 간이 다시 자라며 기능을 회복하는 시간이 필요해요. 이 기간에 복수, 황달, 출혈, 감염, 담즙 누출 같은 합병증이 생길 수 있어 잘 지켜봐야 해요. 고열, 진해지는 황달, 빠르게 불러오는 배, 조절되지 않는 통증이 있으면 바로 연락하고, 회복 중에는 금주와 처방 외 약 피하기를 지켜 주세요.",
       "review": {
         "id": "faq.liver.010",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S10",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "liver-cruk-resection"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -307,12 +309,14 @@
       "a": "복수는 배 안에 물이 차는 것으로, 간경변으로 간 혈관 압력이 높아지고 알부민(혈액 단백질)이 줄면 생겨요. 치료 뒤 간기능이 일시적으로 떨어지거나 암이 진행해도 생길 수 있어요. 저염식이 특히 중요하고, 이뇨제·복수 천자는 의료진이 정해요. 배가 빠르게 불러오면서 열·복통이 있으면 복수 감염일 수 있어 바로 연락하세요.",
       "review": {
         "id": "faq.liver.019",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S10",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "liver-medlineplus-ascites"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -337,12 +341,15 @@
       "a": "단백질을 스스로 줄이지 않는 것이 첫째예요. 생선·달걀·두부 같은 단백질을 챙기고, 간경변이 있다면 늦은 저녁 간식으로 밤새 굶는 시간을 줄이면 도움이 돼요. 복수가 있으면 저염이 특히 중요하고, 술과 확인되지 않은 즙·한약·건강기능식품은 피하세요. 식사가 어렵다면 영양 상담을 요청하세요.",
       "review": {
         "id": "faq.liver.021",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S10",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "liver-easl-nutrition",
+          "liver-medlineplus-ascites"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -351,12 +358,14 @@
       "a": "간이 단백질을 만들고 저장하는 기능이 떨어지고, 식욕 저하·치료 부작용·활동 감소가 겹치면서 근육이 빠지기 쉬워요. 간경변이 있으면 밤사이 굶는 동안 근육을 에너지로 써 버리기도 해요. 단백질을 충분히 먹고 늦은 저녁 간식을 챙기며, 가능한 범위에서 근력운동을 하는 것이 좋아요. 체중·근력 변화를 진료 때 말해 주세요.",
       "review": {
         "id": "faq.liver.022",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S10",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "liver-easl-nutrition"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -381,12 +390,15 @@
       "a": "감정을 숨기기보다 \"요즘 이런 점이 힘들어\"처럼 내 상태와 필요한 도움을 구체적으로 말하는 것이 좋아요. 간암의 원인을 두고 누구 탓을 하는 대화는 서로 상처만 남기니 피하는 것이 좋아요. 병원 동행, 식사, 약 챙기기처럼 역할을 나누고, 가족의 B형간염 검사·예방접종도 함께 상의해 보세요.",
       "review": {
         "id": "faq.liver.024",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S10",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-family-changes",
+          "common-canceraustralia-family"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -507,12 +519,14 @@
       "a": "점점 심해지는 뼈 통증, 특히 밤에 심해지는 허리·골반·갈비뼈 통증이 대표적이에요. 작은 충격에도 뼈가 부러지거나, 혈액 칼슘이 올라 구역·갈증·혼동이 생기기도 해요. 등 통증과 함께 다리 힘이 빠지거나 대소변 장애가 생기면 척수 압박일 수 있어 바로 응급실에 가세요. 방사선치료로 통증을 줄일 수 있어요.",
       "review": {
         "id": "faq.liver.032",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S10",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-acs-bone-mets"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -682,12 +696,15 @@
       "a": "젊은 나이라도 B형간염 보유자, 특히 출생 무렵 감염된 경우에는 간암이 생길 수 있어요. 드물게 간경변 없이 젊은 성인에게 생기는 섬유층판형 간암 같은 특수한 유형도 있어요. 간염 보유자라면 나이와 관계없이 담당의가 정한 간격으로 검진받고, 오른쪽 윗배 통증·덩어리나 체중 감소가 있으면 진료를 받으세요.",
       "review": {
         "id": "faq.liver.043",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S10",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "liver-nci-flc",
+          "liver-acs-risk"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -855,12 +872,15 @@
       "a": "근육은 간이 다 처리하지 못한 암모니아를 일부 대신 처리하고, 치료를 견디는 체력의 바탕이 돼요. 근감소증이 있으면 치료 부작용이 커지고 간성뇌증, 감염, 회복 지연 위험이 높아질 수 있어요. 단백질을 줄이지 말고 늦은 저녁 간식을 챙기며, 가능한 범위에서 근력운동을 하세요. 체중·악력 변화를 진료 때 말해 주세요.",
       "review": {
         "id": "faq.liver.054",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S10",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "liver-easl-nutrition",
+          "common-espen-cancer-2016"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -917,12 +937,15 @@
       "a": "갑자기 심한 배 통증과 어지럼(간암 파열 가능성), 피를 토하거나 검은 변(정맥류 출혈), 의식이 흐려지거나 헛소리(간성뇌증)는 119 또는 즉시 응급실이에요. 배가 빠르게 불러오며 열·복통, 빠르게 진해지는 황달, 등 통증과 다리 힘 빠짐·대소변 장애도 바로 가야 해요. 직접 운전하지 말고 복용약 목록을 챙기세요.",
       "review": {
         "id": "faq.liver.058",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S10",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "liver-nhs-cirrhosis",
+          "common-acs-bone-mets"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -931,12 +954,15 @@
       "a": "수술·시술·전신치료 뒤 떨어진 체력과 근육을 되찾아야 일상과 다음 치료를 견딜 수 있기 때문이에요. 재활치료는 걷기·근력·균형 운동을 내 상태에 맞게 단계적으로 늘리도록 도와줘요. 근감소증이 있거나 넘어질 위험이 있으면 재활의학과 상담을 요청하고, 정맥류·복수가 있다면 운동 강도를 먼저 확인하세요.",
       "review": {
         "id": "faq.liver.059",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S10",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-acs-rehab",
+          "common-acs-activity"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -977,12 +1003,15 @@
       "a": "수술했다면 종양 크기·개수, 분화도(암세포가 정상과 얼마나 다른지), 미세혈관 침범, 절제면(잘라낸 가장자리)에 암이 남았는지, 주변 간의 간경변·섬유화 정도를 보세요. 미세혈관 침범이 있으면 재발 위험이 더 높을 수 있어요. 영상으로만 진단했다면 병리보고서가 없을 수 있으니 진단 방법부터 확인하세요.",
       "review": {
         "id": "faq.liver.062",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S10",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-pathology",
+          "common-acs-pathology"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1216,15 +1245,17 @@
     {
       "n": 77,
       "q": "간암 환자 영양 목표, 단백질·열량은 어느 정도 필요할까요?",
-      "a": "필요량은 체중·간기능·신장 기능에 따라 개인마다 달라요. 간경변 환자는 대개 일반인보다 단백질과 열량이 더 필요해서, 학회 지침에서는 체중 1kg당 하루 단백질 약 1.2~1.5g, 열량 약 30~35kcal를 제시하기도 해요. 단백질을 스스로 줄이지 말고 하루 여러 번 나눠 먹으며 늦은 저녁 간식을 챙기세요. 내 목표량은 영양사·담당의와 정하세요.",
+      "a": "필요량은 체중·간기능·신장 기능에 따라 개인마다 달라요. 간경변 환자는 대개 일반인보다 단백질과 열량이 더 필요해서, 학회 지침에서는 비만이 아니라면 체중 1kg당 하루 열량 약 35kcal 이상, 단백질 약 1.2~1.5g을 제시하기도 해요(비만이면 목표를 따로 정해요). 단백질을 스스로 줄이지 말고 하루 여러 번 나눠 먹으며 늦은 저녁 간식을 챙기세요. 내 목표량은 영양사·담당의와 정하세요.",
       "review": {
         "id": "faq.liver.077",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3-fix",
         "responsibleRole": "S10",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "liver-easl-nutrition"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1444,12 +1475,14 @@
       "a": "도움이 되는 말은 \"어떤 게 제일 힘들어?\", \"진료에 같이 갈게\"처럼 들어 주고 구체적으로 돕는 말이에요. \"그러니까 술을 끊으라 했잖아\"처럼 원인을 탓하는 말, \"긍정적으로 생각해야 낫는다\" 같은 압박은 피하는 것이 좋아요. 확인되지 않은 민간요법 권유도 삼가고, 궁금한 점은 함께 의료진에게 물어보세요.",
       "review": {
         "id": "faq.liver.091",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S10",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-ics-lost-for-words"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1506,12 +1539,14 @@
       "a": "당뇨·고혈압·심장질환이 있으면 수술 위험, 약 선택, 부작용 관리가 달라져요. 예를 들어 표적치료제는 혈압을 올릴 수 있고, 혈액을 묽게 하는 약은 시술 전 조절이 필요해요. 당뇨는 지방간과도 관련돼 간 건강에 영향을 줘요. 기존 질환과 복용약을 모두 알리고, 각 질환 담당의와 간암 치료팀이 서로 소통하도록 요청하세요.",
       "review": {
         "id": "faq.liver.095",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S10",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-acs-other-health"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1552,12 +1587,15 @@
       "a": "영상과 종양표지자로 본 효과, 부작용의 정도, 간기능 변화, 그리고 내가 원하는 삶의 질을 함께 따져 결정해요. 암이 진행하거나 부작용이 견디기 어렵다면 다른 약으로 바꾸거나 조절하고, 때로는 치료를 쉬고 증상 관리에 집중하는 것도 정당한 선택이에요. \"이 치료를 계속하면 얻는 것과 잃는 것은요?\"를 물어보세요.",
       "review": {
         "id": "faq.liver.098",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S10",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-acs-tx-stop",
+          "common-cruk-chemo-change"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1582,12 +1620,14 @@
       "a": "① 영상 진단인가요, 조직 진단인가요? ② 제 간기능(Child-Pugh·ALBI)은요? ③ 병기(BCLC·mUICC)는요? ④ 절제·이식·소작이 가능한가요? ⑤ TACE·방사선은 어떤가요? ⑥ 전신치료라면 무엇이고 정맥류 내시경이 필요한가요? ⑦ 간염 치료는 어떻게 계속하나요? ⑧ 간경변이 있다면 피해야 할 약은요? ⑨ 바로 연락해야 할 증상은요? ⑩ 임상시험이 있나요? 한 번에 3개씩 골라 가세요.",
       "review": {
         "id": "faq.liver.100",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S10",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-tx-questions"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     }
   ],
@@ -1914,6 +1954,125 @@
       "url": "https://www.cancer.gov/about-cancer/managing-care/using-trusted-resources",
       "checkedAt": "2026-11-06",
       "scope": "운영 주체·작성/검토 날짜·근거 출처 확인, 제품 판매·'완치' 주장 경계, 개인 체험담으로 치료 결정 금지, 의료진과 상의"
+    },
+    "liver-cruk-resection": {
+      "title": "Cancer Research UK · Surgery to remove part of the liver (liver resection)",
+      "organization": "Cancer Research UK",
+      "url": "https://www.cancerresearchuk.org/about-cancer/liver-cancer/treatment/surgery/resection",
+      "checkedAt": "2026-11-06",
+      "scope": "간 절제 후 남은 간 재생, 중환자실 관찰, 출혈·감염·담즙 누출·복수·혈전·간부전·신장 문제 합병증. 귀가 후 연락 기준·금주는 다루지 않음"
+    },
+    "liver-medlineplus-ascites": {
+      "title": "MedlinePlus · Ascites",
+      "organization": "U.S. National Library of Medicine",
+      "url": "https://medlineplus.gov/ency/article/000286.htm",
+      "checkedAt": "2026-11-06",
+      "scope": "복수 원인(문맥압 상승·저알부민), 금주·나트륨 제한(약 1,500mg/일)·이뇨제·천자·TIPS, 간경변 시 NSAIDs 회피, 발열+복통 시 자발성 세균성 복막염 의심·즉시 연락"
+    },
+    "liver-easl-nutrition": {
+      "title": "EASL Clinical Practice Guidelines on nutrition in chronic liver disease (J Hepatol 2019;70:172-193)",
+      "organization": "European Association for the Study of the Liver",
+      "url": "https://easl.eu/publication/guideline-nutrition-in-chronic-liver-disease/",
+      "checkedAt": "2026-11-06",
+      "scope": "간경변 환자 열량 ≥35 kcal/kg(비비만), 단백질 ≥1.2~1.5 g/kg, 늦은 저녁 간식·아침 포함, 근감소·영양불량 평가. 해당 페이지는 지침 안내(본문은 회원/학술지), 권고 문구는 지침 전문으로 확인. 간암 치료 중 개인 목표는 별도"
+    },
+    "common-nci-family-changes": {
+      "title": "NCI · Changes for the Family",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/about-cancer/coping/adjusting-to-cancer/changes-for-family",
+      "checkedAt": "2026-11-06",
+      "scope": "암 진단 후 가족 역할 변화·분담, 도움 요청('약함의 표시가 아님')과 할 일 목록, 가족회의, 대화가 어려울 때 의료진 의뢰"
+    },
+    "common-canceraustralia-family": {
+      "title": "Cancer Australia · Easing the way for family and friends",
+      "organization": "Cancer Australia (Australian Government)",
+      "url": "https://www.canceraustralia.gov.au/impacted-by-cancer/family-and-relationships/easing-the-way-for-family-and-friends",
+      "checkedAt": "2026-11-06",
+      "scope": "환자가 필요한 도움을 구체적으로 말하기, 주변의 다양한 반응, 스스로 고립되지 않기. 진료 동행·상담 서비스는 다루지 않음"
+    },
+    "common-acs-bone-mets": {
+      "title": "ACS · Bone Metastases",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/supportive-care/advanced-cancer/bone-metastases.html",
+      "checkedAt": "2026-11-06",
+      "scope": "뼈 전이 통증(밤에 악화), 병적 골절, 고칼슘혈증, 척수압박(다리 힘 빠짐·대소변 장애 = 응급), 통증 완화 방사선"
+    },
+    "liver-nci-flc": {
+      "title": "NCI · Fibrolamellar Hepatocellular Carcinoma",
+      "organization": "National Cancer Institute (MyPART)",
+      "url": "https://www.cancer.gov/pediatric-adult-rare-tumor/rare-tumors/rare-digestive-system-tumors/fibrolamellar-hepatocellular-carcinoma",
+      "checkedAt": "2026-11-06",
+      "scope": "섬유층판형 간암은 10대~40세 미만의 건강한 간에서 발생, 초기 무증상, 복통·체중 감소·황달 등"
+    },
+    "common-espen-cancer-2016": {
+      "title": "ESPEN guidelines on nutrition in cancer patients (Arends et al., Clin Nutr 2017)",
+      "organization": "European Society for Clinical Nutrition and Metabolism (NIHR Cancer and Nutrition 게시본)",
+      "url": "https://cancerandnutrition.nihr.ac.uk/wp-content/uploads/2017/10/ESPEN-guidelines.pdf",
+      "checkedAt": "2026-11-06",
+      "scope": "암 환자 열량 25~30 kcal/kg/일, 단백질 >1 g/kg(가능하면 1.5 g/kg), 유산소+개별 저항운동 권고, 근육량 감소와 사망·수술합병증·용량제한 독성 연관. 간경변·신장질환 개별 목표는 별도"
+    },
+    "liver-nhs-cirrhosis": {
+      "title": "NHS · Cirrhosis",
+      "organization": "NHS (UK)",
+      "url": "https://www.nhs.uk/conditions/cirrhosis/",
+      "checkedAt": "2026-11-06",
+      "scope": "간경변 증상·합병증(복수·내부 출혈·혼동·간부전), 피 토함·검은 변·갑작스러운 혼동 시 999/응급실, 직접 운전 금지. 간암 파열은 다루지 않음, 영국 연락 경로는 국내 119로 대체"
+    },
+    "common-acs-rehab": {
+      "title": "ACS · Cancer Rehabilitation (Rehab)",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/supportive-care/what-is-cancer-rehabilitation.html",
+      "checkedAt": "2026-11-06",
+      "scope": "암 재활의 목적, 재활의학과·물리·작업·언어치료 등 구성, 피로·근력·균형·보행·신경병증·림프부종 대상, 치료 전 프리햅, 의뢰 방법. 미국 보험 기준이며 국내 암 재활 수가·프로그램은 병원별"
+    },
+    "common-nci-pathology": {
+      "title": "NCI · Pathology Reports (fact sheet)",
+      "organization": "National Cancer Institute",
+      "url": "https://cancer.gov/about-cancer/diagnosis-staging/diagnosis/pathology-reports-fact-sheet",
+      "checkedAt": "2026-11-06",
+      "scope": "병리보고서 구성(육안·현미경 소견, 조직형·등급, 림프절·절제연 상태, 병기, 바이오마커)과 담당의·병리의에게 설명 요청·2차 판독 방법. 암종별 세부 항목(신경·혈관 침범 등)은 다루지 않음"
+    },
+    "common-acs-pathology": {
+      "title": "ACS · Understanding Your Pathology Report",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/diagnosis-staging/tests/biopsy-and-cytology-tests/understanding-your-pathology-report",
+      "checkedAt": "2026-11-06",
+      "scope": "병리보고서 섹션(진단·육안·현미경·요약·추가소견), 조직형·등급·절제연·림프절 상태, 결과 상담·2차 판독. 림프혈관 침범 등 암종별 항목은 개별 확인 필요"
+    },
+    "common-ics-lost-for-words": {
+      "title": "Irish Cancer Society · Lost for Words: How to talk to someone with cancer",
+      "organization": "Irish Cancer Society",
+      "url": "https://www.cancer.ie/sites/default/files/2019-11/lost_for_words_-_how_to_talk_to_someone_with_cancer_2017.pdf",
+      "checkedAt": "2026-11-06",
+      "scope": "들어주기 우선, 대화 의사 묻기, 침묵·곁에 있기, 구체적·작은 실질 도움, 섣부른 조언·치료 권유·'이해해' 피하기. '긍정적으로 생각해'·원인 탓 문구는 직접 다루지 않음"
+    },
+    "common-acs-other-health": {
+      "title": "ACS · When Cancer Isn't Your Only Health Problem",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/making-treatment-decisions/other-health-problems-besides-cancer.html",
+      "checkedAt": "2026-11-06",
+      "scope": "당뇨(스테로이드·항암으로 혈당 상승), 심장질환·고혈압(일부 항암·표적치료 영향), 신장질환(항암 선택·일정 제한), 복용약 목록·주치의 협진. 간기능별 용량 기준은 없음"
+    },
+    "common-acs-tx-stop": {
+      "title": "ACS · If Cancer Treatments Stop Working",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/making-treatment-decisions/if-cancer-treatments-stop-working.html",
+      "checkedAt": "2026-11-06",
+      "scope": "치료 효과가 줄 때 다음 치료·임상시험, 이득과 부작용·삶의 질 비교, 목표 중심 결정, 의료진 질문, 완화의료·호스피스. 국내 연명의료 절차는 별도"
+    },
+    "common-cruk-chemo-change": {
+      "title": "Cancer Research UK · Changing your chemotherapy plan",
+      "organization": "Cancer Research UK",
+      "url": "https://www.cancerresearchuk.org/about-cancer/treatment/chemotherapy/planning/changing-your-plan",
+      "checkedAt": "2026-11-06",
+      "scope": "혈구 감소 시 지연, 장기 영향 시 용량 감량, 스캔·종양표지자상 반응 부족 시 약제 변경. 치료 중단 결정 자체는 다루지 않음"
+    },
+    "common-nci-tx-questions": {
+      "title": "NCI · Questions to Ask Your Doctor about Treatment",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/about-cancer/treatment/questions",
+      "checkedAt": "2026-11-06",
+      "scope": "치료 선택지·목표·효과 판단, 임상시험, 2차 의견, 바로 연락할 부작용, 복용약·보충제 공유 등 진료실 질문 목록. 암종별 병기·유전자 질문은 포함하지 않음"
     }
   }
 }

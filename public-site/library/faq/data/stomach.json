@@ -9,12 +9,14 @@
       "a": "조기위암은 증상이 거의 없는 경우가 많아요. 있더라도 속쓰림, 더부룩함, 소화불량처럼 흔한 위장 증상과 비슷해 구별이 어려워요. 그래서 증상보다 정기 위내시경이 조기 발견에 더 중요해요. 이런 증상이 몇 주 넘게 이어지면 진료를 받아 보세요.",
       "review": {
         "id": "faq.stomach.001",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S03",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "stomach-acs-symptoms"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -23,12 +25,15 @@
       "a": "이유 없는 체중 감소, 계속되는 명치 통증, 삼키기 어려움, 반복 구토, 빈혈, 검은 변(흑색변)이나 피를 토하는 것이 주의할 신호예요. 이런 증상은 위암이 아니어도 원인을 확인해야 해요. 피를 토하거나 짜장 같은 검은 변에 어지럼이 있으면 바로 응급실로 가세요.",
       "review": {
         "id": "faq.stomach.002",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S03",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "stomach-acs-symptoms",
+          "stomach-nhs-vomiting-blood"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -54,12 +59,14 @@
       "a": "내시경에서 궤양, 융기, 색 변화 등 이상 부위가 보이면 조직검사로 암인지, 선종(전암병변)인지, 양성인지 확인해요. 위궤양도 암과 겉모습이 비슷할 수 있어 조직검사를 하는 경우가 많아요. 결과지에 무엇이 적혔는지 담당의에게 쉬운 말로 설명을 들어 보세요.",
       "review": {
         "id": "faq.stomach.004",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S03",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "stomach-acs-tests"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -383,12 +390,15 @@
       "a": "지금 필요한 것과 힘든 점을 구체적으로 말하는 것이 좋아요. 예를 들어 '식사를 조금씩 자주 해야 하니 간식을 챙겨 줘', '검사 날 같이 가 줘'처럼요. 가족도 불안할 수 있으니 서로의 마음을 묻는 시간도 가져 보세요. 대화가 어렵다면 병원 사회복지팀이나 상담 서비스를 이용할 수 있어요.",
       "review": {
         "id": "faq.stomach.024",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S03",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-family-changes",
+          "common-canceraustralia-family"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -413,12 +423,14 @@
       "a": "덤핑에 대비해 소량 간식(크래커, 사탕 등)을 챙기고, 낯선 음식은 조금씩 드세요. 항암 중이라면 사람이 많은 곳에서는 감염에 주의하고, 해외여행은 일정과 예방접종을 미리 담당의와 상의하는 것이 좋아요. 복용약 목록과 진단 요약, 병원 연락처를 가지고 다니세요.",
       "review": {
         "id": "faq.stomach.026",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S03",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-cdc-travel-immuno"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -718,12 +730,14 @@
       "a": "모두 위험한 것은 아니에요. 위 용종은 과형성 용종, 위저선 용종처럼 대부분 양성이지만, 선종은 전암병변이라 내시경 절제를 많이 해요. 선종을 떼어 보니 일부가 암으로 나오는 경우도 있어요. 조직검사 결과와 크기에 따라 절제나 추적 간격을 담당의와 정하세요.",
       "review": {
         "id": "faq.stomach.045",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S03",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "stomach-mayo-polyps"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -748,12 +762,14 @@
       "a": "대부분의 위궤양은 헬리코박터 감염이나 일부 진통소염제 때문에 생기는 양성 질환이에요. 다만 위암도 궤양처럼 보일 수 있어 조직검사를 하고, 치료 후 내시경으로 잘 아물었는지 확인하는 경우가 많아요. 추적 내시경 일정을 담당의에게 꼭 확인하세요.",
       "review": {
         "id": "faq.stomach.047",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S03",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "stomach-nhs-ulcer"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -762,12 +778,15 @@
       "a": "피를 토하거나 짜장 같은 검은 변(흑색변)은 위나 시술 부위 출혈일 수 있어요. 어지럼, 식은땀, 실신, 숨참이 함께 있으면 출혈이 많을 수 있으니 바로 119나 응급실로 가세요. 철분제를 먹으면 변이 검어질 수 있지만, 스스로 구별하기 어려우니 병원에 연락해 확인하세요.",
       "review": {
         "id": "faq.stomach.048",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S03",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "stomach-nhs-vomiting-blood",
+          "stomach-nhs-ulcer"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -776,12 +795,15 @@
       "a": "명치 통증은 대부분 위염, 소화불량, 위궤양, 역류 등 흔한 원인으로 생겨요. 하지만 몇 주 이상 계속되거나 체중 감소, 빈혈, 흑색변, 구토가 함께 있으면 위내시경으로 확인하는 것이 좋아요. 통증이 점점 심해지고 배가 딱딱해지면 바로 응급실로 가세요.",
       "review": {
         "id": "faq.stomach.049",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S03",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "stomach-hse-indigestion",
+          "stomach-acs-symptoms"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -856,12 +878,15 @@
       "a": "근감소증은 근육량과 근력이 줄어든 상태예요. 위암 환자는 식사량 감소와 수술로 근육이 줄기 쉽고, 근감소증이 있으면 수술 회복이 늦고 항암 부작용이 커질 수 있어요. 매끼 단백질 섭취와 근력운동이 예방의 기본이에요. 체중과 근력 변화를 진료 때 알려 주세요.",
       "review": {
         "id": "faq.stomach.054",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S03",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-espen-cancer-2016",
+          "common-acs-activity"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -934,12 +959,14 @@
       "a": "수술과 항암 후에는 근력과 체력이 떨어지고 손발 저림, 피로가 생길 수 있어요. 재활치료는 운동, 호흡, 일상 동작 훈련으로 회복을 돕고 근감소증을 줄이는 데 도움이 돼요. 병원에 재활의학과나 암 재활 프로그램이 있는지 담당의에게 물어보세요.",
       "review": {
         "id": "faq.stomach.059",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S03",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-acs-rehab"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -964,12 +991,14 @@
       "a": "TNM은 T(종양이 위벽에 들어간 깊이), N(림프절 전이 개수), M(원격전이 여부)을 합쳐 병기를 정하는 방식이에요. 1기는 점막·점막하 또는 근육층까지, 2~3기는 더 깊거나 림프절 전이가 있는 경우, 4기는 원격전이가 있는 경우예요. 임상 병기와 수술 후 병리 병기가 다를 수 있으니 둘 다 확인하세요.",
       "review": {
         "id": "faq.stomach.061",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S03",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "stomach-acs-staging"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -994,12 +1023,14 @@
       "a": "다학제 진료는 소화기내과, 외과, 종양내과, 영상의학과, 병리과 등이 함께 치료를 정하는 방식이에요. 수술 전 항암 여부를 정해야 할 때, 복막·간 전이가 의심될 때, 치료 순서가 애매할 때 특히 도움이 돼요. 내 병원에서 다학제 진료가 가능한지 물어보세요.",
       "review": {
         "id": "faq.stomach.063",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S03",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-macmillan-mdt"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1040,12 +1071,15 @@
       "a": "간·복막·먼 림프절 같은 원격전이가 있거나, 주요 혈관이나 주변 장기로 넓게 퍼져 다 떼기 어려우면 수술이 어렵다고 판단해요. 복막 전이는 CT에서 잘 안 보일 수 있어 진단 복강경과 복강 세척 세포검사를 하기도 해요. 전신 상태도 함께 보니, 판단 근거를 담당의에게 확인하세요.",
       "review": {
         "id": "faq.stomach.066",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S03",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "stomach-acs-tests",
+          "stomach-acs-staging"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1071,12 +1105,14 @@
       "a": "반응평가는 치료 전과 같은 방법의 영상(복부 CT 등)이나 내시경으로 종양 크기, 림프절, 전이 병변 변화를 비교해요. '부분관해(줄어듦)', '안정병변(크게 변화 없음)', '진행(커지거나 새로 생김)' 같은 용어가 쓰여요. 판독지 결론의 뜻과 치료를 바꿀지 여부를 담당의에게 물어보세요.",
       "review": {
         "id": "faq.stomach.068",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S03",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-recist11"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1166,12 +1202,14 @@
       "a": "복막 전이는 암세포가 배 안의 막에 퍼진 것이고, 간 전이는 혈액을 타고 간으로 간 것이에요. 둘 다 원격전이로 4기에 해당하며, 보통 전신 항암치료가 중심이에요. 복막 전이는 복수나 장폐색을 일으킬 수 있어요. 전이가 있어도 치료 선택지는 있으니 치료 목표를 담당의와 나눠 보세요.",
       "review": {
         "id": "faq.stomach.074",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S03",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "stomach-acs-staging"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1308,12 +1346,14 @@
       "a": "항암제는 대부분 간이나 신장을 통해 처리되어 몸 밖으로 나가요. 그래서 신장·간 기능이 떨어져 있으면 약이 쌓여 부작용이 커질 수 있어, 의료진이 용량을 조절하거나 다른 약을 고르기도 해요. 치료 전후 혈액검사가 그래서 중요해요. 결과 의미를 담당의에게 물어보세요.",
       "review": {
         "id": "faq.stomach.083",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S03",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-cruk-chemo-tests"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1436,12 +1476,14 @@
       "a": "'힘내'보다 '무엇이 제일 힘들어?', '내가 뭘 해 주면 좋을까?'처럼 묻고 들어 주는 말이 도움이 돼요. '그걸 먹어서 그래', '더 먹어야지'처럼 탓하거나 다그치는 말은 피하는 것이 좋아요. 식사량은 압박보다 함께 기록하고 상의하세요. 보호자도 지치면 상담을 받으세요.",
       "review": {
         "id": "faq.stomach.091",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S03",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-ics-lost-for-words"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1498,12 +1540,14 @@
       "a": "당뇨는 위절제 후 혈당 변화나 덤핑, 일부 항암 보조약(스테로이드)으로 조절이 흔들릴 수 있어요. 고혈압·심장질환은 수술 위험과 일부 약 선택에 영향을 줘요. 항혈전제는 시술 전 중단 여부를 의료진이 정해요. 복용약 전체 목록을 가져가고, 다른 진료과와 정보를 공유해 달라고 요청하세요.",
       "review": {
         "id": "faq.stomach.095",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S03",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-acs-other-health"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1544,12 +1588,15 @@
       "a": "영상에서 암이 커지거나, 부작용이 일상을 크게 해치거나, 몸 상태가 치료를 견디기 어려울 때 약을 바꾸거나 쉬는 것을 고려해요. 치료를 쉬는 것도 하나의 선택이에요. '이 치료로 기대할 수 있는 것', '다른 선택지', '쉬면 어떻게 되는지'를 담당의에게 물어보세요.",
       "review": {
         "id": "faq.stomach.098",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S03",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-acs-tx-stop",
+          "common-cruk-chemo-change"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1908,6 +1955,139 @@
       "url": "https://www.cancer.gov/about-cancer/managing-care/using-trusted-resources",
       "checkedAt": "2026-11-06",
       "scope": "운영 주체·작성/검토 날짜·근거 출처 확인, 제품 판매·'완치' 주장 경계, 개인 체험담으로 치료 결정 금지, 의료진과 상의"
+    },
+    "stomach-acs-symptoms": {
+      "title": "ACS · Signs and Symptoms of Stomach Cancer",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/types/stomach-cancer/detection-diagnosis-staging/signs-symptoms.html",
+      "checkedAt": "2026-11-06",
+      "scope": "초기 무증상 가능, 식욕 저하·체중 감소·명치 통증·조기 포만·속쓰림·구토(혈액)·흑색변·빈혈, 대부분 다른 원인이지만 지속 시 진료"
+    },
+    "stomach-nhs-vomiting-blood": {
+      "title": "NHS · Vomiting blood",
+      "organization": "NHS (UK)",
+      "url": "https://www.nhs.uk/conditions/vomiting-blood/",
+      "checkedAt": "2026-11-06",
+      "scope": "토혈 시 어지럼·창백·식은땀·빠른 호흡·검은 변 동반 시 999/응급실, 직접 운전 금지, 원인(위염·궤양·드물게 위암·항응고제). 철분제 흑변은 다루지 않음"
+    },
+    "stomach-acs-tests": {
+      "title": "ACS · Tests for Stomach Cancer",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/types/stomach-cancer/detection-diagnosis-staging/how-diagnosed.html",
+      "checkedAt": "2026-11-06",
+      "scope": "상부내시경 중 이상 부위 조직검사, 병기 결정 복강경·복강 세척 세포검사(CT·PET에서 안 보이는 복막 전이). 위궤양 감별은 명시 없음"
+    },
+    "common-nci-family-changes": {
+      "title": "NCI · Changes for the Family",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/about-cancer/coping/adjusting-to-cancer/changes-for-family",
+      "checkedAt": "2026-11-06",
+      "scope": "암 진단 후 가족 역할 변화·분담, 도움 요청('약함의 표시가 아님')과 할 일 목록, 가족회의, 대화가 어려울 때 의료진 의뢰"
+    },
+    "common-canceraustralia-family": {
+      "title": "Cancer Australia · Easing the way for family and friends",
+      "organization": "Cancer Australia (Australian Government)",
+      "url": "https://www.canceraustralia.gov.au/impacted-by-cancer/family-and-relationships/easing-the-way-for-family-and-friends",
+      "checkedAt": "2026-11-06",
+      "scope": "환자가 필요한 도움을 구체적으로 말하기, 주변의 다양한 반응, 스스로 고립되지 않기. 진료 동행·상담 서비스는 다루지 않음"
+    },
+    "common-cdc-travel-immuno": {
+      "title": "CDC · Travelers with Weakened Immune Systems",
+      "organization": "Centers for Disease Control and Prevention",
+      "url": "https://wwwnc.cdc.gov/travel/page/weakened-immune-systems",
+      "checkedAt": "2026-11-06",
+      "scope": "출발 4~6주 전 의료진 상담, 항암 중 생백신(황열 등) 금지, 약 넉넉히·접종기록 지참, 손위생·음식 주의. 덤핑·림프부종 등 수술 후 문제는 다루지 않음"
+    },
+    "stomach-mayo-polyps": {
+      "title": "Mayo Clinic · Stomach polyps",
+      "organization": "Mayo Clinic",
+      "url": "https://www.mayoclinic.org/diseases-conditions/stomach-polyps/symptoms-causes/syc-20377992",
+      "checkedAt": "2026-11-06",
+      "scope": "위 용종 종류(과형성·위저선·선종), 선종이 암 전환 가능성 가장 높아 보통 절제, 1cm 넘는 과형성·위저선 용종 위험 증가"
+    },
+    "stomach-nhs-ulcer": {
+      "title": "NHS · Stomach ulcer",
+      "organization": "NHS (UK)",
+      "url": "https://www.nhs.uk/conditions/stomach-ulcer/",
+      "checkedAt": "2026-11-06",
+      "scope": "위궤양 증상, 원인(헬리코박터·NSAIDs), 피 토함·검은 변·심한 복통 시 999, 치료(제균·PPI)와 추적검사, 합병증(출혈·천공·위암 위험). 영국 연락 경로는 국내 119로 대체"
+    },
+    "stomach-hse-indigestion": {
+      "title": "HSE (Ireland) · Indigestion",
+      "organization": "Health Service Executive (Ireland)",
+      "url": "https://www.hse.ie/conditions/indigestion/",
+      "checkedAt": "2026-11-06",
+      "scope": "소화불량·윗배 통증 원인(위산·헬리코박터·궤양·역류·드물게 위암), 55세 이상·체중 감소·삼킴 곤란·반복 구토·빈혈·혈변/토혈 시 진료, 위내시경"
+    },
+    "common-espen-cancer-2016": {
+      "title": "ESPEN guidelines on nutrition in cancer patients (Arends et al., Clin Nutr 2017)",
+      "organization": "European Society for Clinical Nutrition and Metabolism (NIHR Cancer and Nutrition 게시본)",
+      "url": "https://cancerandnutrition.nihr.ac.uk/wp-content/uploads/2017/10/ESPEN-guidelines.pdf",
+      "checkedAt": "2026-11-06",
+      "scope": "암 환자 열량 25~30 kcal/kg/일, 단백질 >1 g/kg(가능하면 1.5 g/kg), 유산소+개별 저항운동 권고, 근육량 감소와 사망·수술합병증·용량제한 독성 연관. 간경변·신장질환 개별 목표는 별도"
+    },
+    "common-acs-rehab": {
+      "title": "ACS · Cancer Rehabilitation (Rehab)",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/supportive-care/what-is-cancer-rehabilitation.html",
+      "checkedAt": "2026-11-06",
+      "scope": "암 재활의 목적, 재활의학과·물리·작업·언어치료 등 구성, 피로·근력·균형·보행·신경병증·림프부종 대상, 치료 전 프리햅, 의뢰 방법. 미국 보험 기준이며 국내 암 재활 수가·프로그램은 병원별"
+    },
+    "stomach-acs-staging": {
+      "title": "ACS · Stomach Cancer Stages",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/types/stomach-cancer/detection-diagnosis-staging/staging.html",
+      "checkedAt": "2026-11-06",
+      "scope": "AJCC TNM(T 위벽 침윤 깊이, N 림프절 수, M 원격전이), 임상 vs 병리 병기, 4기 = 간·폐·복막 등 원격전이"
+    },
+    "common-macmillan-mdt": {
+      "title": "Macmillan Cancer Support · Multidisciplinary team (MDT)",
+      "organization": "Macmillan Cancer Support",
+      "url": "https://www.macmillan.org.uk/cancer-information-and-support/kidney-cancer/mdt",
+      "checkedAt": "2026-11-06",
+      "scope": "다학제팀 구성(외과·종양내과·방사선종양·영상·병리·전문간호사 등)과 병기·전신상태·지침·환자 선호를 함께 검토해 치료계획을 정하는 방식. 영국 NHS 체계 기준이며 국내 다학제 진료 수가·운영은 병원별로 다름"
+    },
+    "common-recist11": {
+      "title": "EORTC/NCI · RECIST 1.1 (Eisenhauer et al., Eur J Cancer 2009)",
+      "organization": "RECIST Working Group (NCI CTEP 게시)",
+      "url": "https://dctd.cancer.gov/research/ctep-trials/for-sites/recist-guidelines-v11.pdf",
+      "checkedAt": "2026-11-06",
+      "scope": "고형암 영상 반응평가 기준: 기준 영상 대비 완전관해·부분관해(≥30% 감소)·진행(≥20% 증가 또는 새 병변)·안정. 전문가용 임상시험 기준이며 면역치료 가성진행·PET 대사반응·담관 스텐트 영향은 다루지 않음"
+    },
+    "common-cruk-chemo-tests": {
+      "title": "Cancer Research UK · Tests before and during chemotherapy",
+      "organization": "Cancer Research UK",
+      "url": "https://www.cancerresearchuk.org/about-cancer/treatment/chemotherapy/planning/chemotherapy-tests",
+      "checkedAt": "2026-11-06",
+      "scope": "항암 전·중 혈액검사로 신장·간 기능 확인, 기능 변화 시 용량 조정. 약제별 감량 기준은 다루지 않음"
+    },
+    "common-ics-lost-for-words": {
+      "title": "Irish Cancer Society · Lost for Words: How to talk to someone with cancer",
+      "organization": "Irish Cancer Society",
+      "url": "https://www.cancer.ie/sites/default/files/2019-11/lost_for_words_-_how_to_talk_to_someone_with_cancer_2017.pdf",
+      "checkedAt": "2026-11-06",
+      "scope": "들어주기 우선, 대화 의사 묻기, 침묵·곁에 있기, 구체적·작은 실질 도움, 섣부른 조언·치료 권유·'이해해' 피하기. '긍정적으로 생각해'·원인 탓 문구는 직접 다루지 않음"
+    },
+    "common-acs-other-health": {
+      "title": "ACS · When Cancer Isn't Your Only Health Problem",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/making-treatment-decisions/other-health-problems-besides-cancer.html",
+      "checkedAt": "2026-11-06",
+      "scope": "당뇨(스테로이드·항암으로 혈당 상승), 심장질환·고혈압(일부 항암·표적치료 영향), 신장질환(항암 선택·일정 제한), 복용약 목록·주치의 협진. 간기능별 용량 기준은 없음"
+    },
+    "common-acs-tx-stop": {
+      "title": "ACS · If Cancer Treatments Stop Working",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/making-treatment-decisions/if-cancer-treatments-stop-working.html",
+      "checkedAt": "2026-11-06",
+      "scope": "치료 효과가 줄 때 다음 치료·임상시험, 이득과 부작용·삶의 질 비교, 목표 중심 결정, 의료진 질문, 완화의료·호스피스. 국내 연명의료 절차는 별도"
+    },
+    "common-cruk-chemo-change": {
+      "title": "Cancer Research UK · Changing your chemotherapy plan",
+      "organization": "Cancer Research UK",
+      "url": "https://www.cancerresearchuk.org/about-cancer/treatment/chemotherapy/planning/changing-your-plan",
+      "checkedAt": "2026-11-06",
+      "scope": "혈구 감소 시 지연, 장기 영향 시 용량 감량, 스캔·종양표지자상 반응 부족 시 약제 변경. 치료 중단 결정 자체는 다루지 않음"
     }
   }
 }
