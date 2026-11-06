@@ -188,15 +188,17 @@
     {
       "n": 14,
       "q": "위암 표적치료, 어떤 치료일까요?",
-      "a": "표적치료는 암세포의 특정 표적을 겨냥하는 약이에요. 위암에서는 HER2 양성이면 HER2 표적(대표 예: 트라스투주맙), Claudin 18.2 양성이면 Claudin 18.2 표적(대표 예: 졸베툭시맙)을 항암과 함께 써요. 2026년 6월 기준 Claudin 18.2 표적치료제는 비급여라 비용을 원무과에 확인하세요.",
+      "a": "표적치료는 암세포의 특정 표적을 겨냥하는 약이에요. 위암에서는 HER2 양성이면 HER2 표적(대표 예: 트라스투주맙), Claudin 18.2 양성이면 Claudin 18.2 표적(대표 예: 졸베툭시맙)을 항암과 함께 써요. Claudin 18.2 표적치료제는 2026년 10월부터 Claudin 18.2 양성·HER2 음성 진행성 위암의 1차 항암 병용에 건강보험 급여가 적용됐어요(보도 기준). 본인의 적용 여부와 비용은 원무과에 확인하세요.",
       "review": {
         "id": "faq.stomach.014",
-        "version": "20261019.1",
+        "version": "20261106.1",
         "responsibleRole": "S03",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "targeted-source-check",
+        "sourceRefs": [
+          "vyloy-reimb-202610"
+        ],
+        "scope": "졸베툭시맙 급여 적용 반영(2026-11-06 2차 검토 R1, 이전 문구: 2026년 6월 기준 비급여)"
       }
     },
     {
@@ -1445,6 +1447,12 @@
       "url": "https://www.cancer.gov/types/liver/hp/bile-duct-treatment-pdq",
       "checkedAt": "2026-10-19",
       "scope": "절제 불가능·전이·재발 담도암 1차 면역·항암 병용의 국제 근거; 국내 허가·급여를 증명하는 자료는 아님"
+    },
+    "vyloy-reimb-202610": {
+      "title": "메디파나뉴스 · 클라우딘18.2 표적치료제 빌로이, 위암 1차 치료 급여 적용(2026-10-01)",
+      "url": "https://www.medipana.com/news/articleView.html?idxno=418613",
+      "checkedAt": "2026-11-06",
+      "scope": "2026-10-01부터 CLDN18.2 양성·HER2 음성 절제 불가능 국소진행·전이성 위선암·위식도접합부선암 1차, 플루오로피리미딘·백금 항암 병용 시 급여(보도 기준)"
     }
   }
 }
