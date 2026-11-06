@@ -1,12 +1,20 @@
 {
-  "checked_at": "2026-11-05T21:50:19.576805+00:00",
-  "last_success_at": "2026-11-05T21:50:19.576805+00:00",
+  "checked_at": "2026-11-06T01:54:35.795330+00:00",
+  "last_success_at": "2026-11-06T01:54:35.795330+00:00",
   "failures": [],
   "articles": [
     {
       "title": "Generate longer AI videos with Omni 1.2 Flash in Google Vids at no cost.",
       "url": "https://blog.google/products-and-platforms/products/workspace/omni-1-2-flash-google-vids/",
       "source": "Google",
+      "published_at": "2026-11-05T20:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Cult.fit builds operational muscle with Codex",
+      "url": "https://openai.com/index/cultfit-builds-with-codex",
+      "source": "OpenAI",
       "published_at": "2026-11-05T20:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
@@ -44,10 +52,34 @@
       "domain": "security"
     },
     {
+      "title": "Merge builds product and business tools with OpenAI technology",
+      "url": "https://openai.com/index/merge-builds-with-openai",
+      "source": "OpenAI",
+      "published_at": "2026-11-05T08:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
       "title": "Setting a new standard for responsible AI infrastructure",
       "url": "https://openai.com/index/setting-new-standard-responsible-ai-infrastructure",
       "source": "OpenAI",
       "published_at": "2026-11-05T02:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Flipsnack grows product signups with conversion optimization",
+      "url": "https://openai.com/ads/customers/flipsnack",
+      "source": "OpenAI",
+      "published_at": "2026-11-05T00:45:15+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Franklin Templeton uses OpenAI to support investment research",
+      "url": "https://openai.com/index/franklin-templeton",
+      "source": "OpenAI",
+      "published_at": "2026-11-05T00:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
     },
@@ -210,44 +242,12 @@
       "published_at": "2026-11-02T15:30:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Introducing the Grid Protectors Program",
-      "url": "https://openai.com/index/grid-protectors-program",
-      "source": "OpenAI",
-      "published_at": "2026-11-02T15:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "LifeVal",
-      "url": "https://openai.com/index/lifeval",
-      "source": "OpenAI",
-      "published_at": "2026-11-02T09:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Qodo builds context into AI code review with Codex",
-      "url": "https://openai.com/index/qodo-codex-plugin",
-      "source": "OpenAI",
-      "published_at": "2026-11-02T00:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "OpenAI appoints Dan Driscoll as Senior Counselor for National Security Modernization",
-      "url": "https://openai.com/index/dan-driscoll-joins-openai",
-      "source": "OpenAI",
-      "published_at": "2026-11-02T00:00:00+00:00",
-      "category": "안전·보안",
-      "domain": "security"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-11-05T21:50:19.576805+00:00",
+    "checked_at": "2026-11-06T01:54:35.795330+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -396,7 +396,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-11-05T21:50:19.576805+00:00",
+    "last_success_at": "2026-11-06T01:54:35.795330+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
