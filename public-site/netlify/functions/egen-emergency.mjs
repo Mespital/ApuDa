@@ -22,7 +22,7 @@ function upstreamFailure(status, body) {
   // Never return raw gateway responses, request URLs or credentials to browsers.
   const code=xmlValue(body,'returnReasonCode') || xmlValue(body,'resultCode');
   const auth=xmlValue(body,'returnAuthMsg') || xmlValue(body,'resultMsg') || '';
-  const diagnostic='UPSTREAM_HTTP_'+status+(/^\\d{1,3}$/.test(code)?'_CODE_'+code:'');
+  const diagnostic='UPSTREAM_HTTP_'+status+(/^\d{1,3}$/.test(code)?'_CODE_'+code:'');
   if(code==='29' || /BLACKLIST_IP_ACCESS_ERROR/.test(auth))
     return {error:'provider_ip_blocked',diagnostic,message:'공공데이터 서비스가 서버 IP의 접근을 차단했습니다. 공공데이터포털 운영기관에 확인이 필요합니다.'};
   if(code==='30'||/SERVICE_KEY_IS_NOT_REGISTERED_ERROR/.test(auth))
