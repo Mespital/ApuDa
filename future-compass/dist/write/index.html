@@ -103,7 +103,7 @@ input[type=text],input[type=url],input[type=date],input[type=number],input[type=
 .tabs button{flex:1;border:0;background:var(--sheet);padding:10px;min-height:44px;font-weight:700;color:var(--ink2)}
 .tabs button[aria-selected=true]{background:var(--ink);color:var(--paper)}
 .wgrid{display:block}
-@media(min-width:900px){.tabs{display:none}.wgrid{display:grid;grid-template-columns:1fr 1.1fr;gap:16px;align-items:start}.wgrid>section{display:block!important}.wgrid .pass{position:sticky;top:72px;max-height:calc(100vh - 90px);overflow:auto}}
+@media(min-width:900px){.peek{display:none}.tabs{display:none}.wgrid{display:grid;grid-template-columns:1fr 1.1fr;gap:16px;align-items:start}.wgrid>section{display:block!important}.wgrid .pass{position:sticky;top:72px;max-height:calc(100vh - 90px);overflow:auto}}
 .passage{font-family:var(--serif);font-size:16.5px;line-height:1.85;margin:0 0 14px}
 .passage b{font-family:var(--sans);display:inline-block;margin-right:6px;color:var(--apuda)}
 .question{border-top:1px solid var(--line);padding-top:12px;font-weight:600}
@@ -204,7 +204,9 @@ nav.tab a[aria-current=page]{color:var(--apuda)}
   #printArea .seg .st{font-family:var(--serif);margin:0}
   #printArea .seg .why{font-size:9pt;color:#444;margin:0}
 }
-.toast{position:fixed;left:50%;bottom:calc(76px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:999px;font-size:14px;z-index:50;max-width:90vw}
+body.nonav .toast{bottom:calc(20px + env(safe-area-inset-bottom))}
+body.nonav main{padding-bottom:32px}
+.toast{pointer-events:none;position:fixed;left:50%;bottom:calc(76px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:999px;font-size:14px;z-index:50;max-width:90vw}
 details summary{cursor:pointer;font-weight:600;min-height:32px}
 .hide{display:none!important}
 </style>
@@ -228,7 +230,7 @@ details summary{cursor:pointer;font-weight:600;min-height:32px}
 "use strict";
 /* ===== 설정: 아프다 패밀리 연결 ===== */
 const CFG = {
-  version: "1.12.0",
+  version: "1.13.0",
   api: "api/feedback", // 상대 경로: 루트 배포면 /api/feedback, future.apuda.app/write/ 면 /write/api/feedback
   family: [
     { name: "미래 나침반", url: location.hostname==="future.apuda.app" ? "/" : "https://future.apuda.app/?from=write" },
@@ -271,7 +273,7 @@ const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt
 const today = () => ymd(new Date());
 function ymd(d){ const z=n=>String(n).padStart(2,"0"); return `${d.getFullYear()}-${z(d.getMonth()+1)}-${z(d.getDate())}`; }
 function weekStart(d=new Date()){ const x=new Date(d); x.setHours(0,0,0,0); const k=(x.getDay()+6)%7; x.setDate(x.getDate()-k); return x; }
-function toast(msg){ const t=document.createElement("div"); t.className="toast"; t.textContent=msg; t.setAttribute("role","status"); document.body.appendChild(t); setTimeout(()=>t.remove(),2600); }
+function toast(msg){ const t=document.createElement("div"); t.className="toast"; t.textContent=msg; t.setAttribute("role","status"); document.body.appendChild(t); setTimeout(()=>t.remove(),1800); }
 function hm(ts){ const d=new Date(ts); return `${String(d.getHours()).padStart(2,"0")}:${String(d.getMinutes()).padStart(2,"0")}`; }
 function inExam(){ const s=S.settings; if(!s.examStart||!s.examEnd) return false; const t=today(); return t>=s.examStart && t<=s.examEnd; }
 function attemptsOf(setId){ return Object.values(S.attempts).filter(a=>a.setId===setId).sort((a,b)=>b.createdAt-a.createdAt); }
@@ -318,7 +320,7 @@ function route(){
   (views[name] || vToday)(app, arg);
   const navName = ["write","library","custom","learn","archive","tools","bg"].includes(name) ? "train" : name==="view" ? "log" : name;
   document.querySelectorAll("nav.tab a").forEach(a => { if(a.dataset.r===navName) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current"); });
-  $("#nav").classList.toggle("hide", name==="setup");
+  $("#nav").classList.toggle("hide", name==="setup"||name==="write"); document.body.classList.toggle("nonav", name==="setup"||name==="write");
   window.scrollTo(0,0);
 }
 function renderFamily(){
@@ -400,7 +402,7 @@ function vToday(app){
         : `<p>아직 복습할 피드백이 없어요. 시험 끝나고 이어서 해요.</p>`}
     </div>`;
   } else {
-    main = `<div class="sheet today-task"><span class="chip">오늘의 20분 · 하나 골라요</span>
+    main = `<div class="sheet today-task"><span class="chip">오늘 할 과제</span>
       ${ns ? `<h2 style="margin-top:10px">새 제시문: ${esc(ns.title)}</h2><div class="q">${esc(ns.question)}</div>
         <p class="tiny">${ns.week}주차 · ${esc(ns.skill)} · ${ns.min}~${ns.max}자</p>` : `<p>준비된 세트를 모두 썼어요. 기록에서 지난 답안을 다시 고쳐 보세요.</p>`}
       <div class="actions">
@@ -440,10 +442,15 @@ function vTrain(app){
     <div class="row" style="margin:4px 0 8px"><a class="btn" style="flex:1;display:inline-flex;align-items:center;justify-content:center" href="#/library">자료실</a><a class="btn" style="flex:1;display:inline-flex;align-items:center;justify-content:center" href="#/custom">내 문제 만들기</a></div>
     <div class="row" style="margin:0 0 8px"><a class="btn" style="flex:1;display:inline-flex;align-items:center;justify-content:center" href="#/archive">🏛️ 기출 서재</a><a class="btn" style="flex:1;display:inline-flex;align-items:center;justify-content:center" href="#/tools">📘 논술 도구 카드</a></div>
     <a class="btn" style="display:flex;align-items:center;justify-content:center;margin:0 0 8px" href="#/bg">🧠 배경지식 카드 30장 (통합사회·통합과학)</a>
-    <p class="muted small">모든 제시문은 앱용 가상 자료예요(대학 기출 아님). <span class="chip warn">검토 전</span> 표시는 지도교사 검토가 끝나지 않은 초안 세트예요.</p>
-    ${groups.map(([g,list])=>`<h2>${g}</h2><div class="sheet" style="padding:4px 16px">${list.map(s=>{const a=latest(s.id); const [st,c]=statusOf(a);
-      return `<a class="set" href="#/write/${s.id}"><span class="wk">${s.week?`${s.week}주`:"진단"}</span><span class="grow"><span class="t">${esc(s.title)}</span><br><span class="small muted">${esc(s.skill)} · ${s.min}~${s.max}자</span></span>
-      <span style="text-align:right">${st!=="안 함"?`<span class="chip ${c}">${st}</span>`:""}${!s.reviewed?`<br><span class="chip warn" style="margin-top:4px">검토 전</span>`:""}</span></a>`;}).join("")}</div>`).join("")}
+    <p class="muted small">모든 제시문은 앱용 가상 자료예요(대학 기출 아님). 세트는 감수단 사전 점검을 거쳤고, 지도교사 최종 검토 중이에요.</p>
+    ${(()=>{ const row=s=>{const a=latest(s.id); const [st,c]=statusOf(a);
+        return `<a class="set" href="#/write/${s.id}"><span class="wk">${s.week?`${s.week}주`:"진단"}</span><span class="grow"><span class="t">${esc(s.title)}</span><br><span class="small muted">${esc(s.skill)} · ${s.min}~${s.max}자</span>${st!=="안 함"?`<br><span class="chip ${c}" style="margin-top:4px">${st}</span>`:""}</span></a>`;};
+      const tr=SETS.filter(x=>x.kind==="train"), weeks=[...new Set(tr.map(x=>x.week))].sort((x,y)=>x-y);
+      const doneOf=x=>!!(latest(x.id)&&latest(x.id).fb2);
+      const cur=weeks.find(w=>tr.filter(x=>x.week===w).some(x=>!doneOf(x))) ?? weeks[weeks.length-1];
+      return `<h2>훈련 세트</h2><p class="tiny" style="margin:-4px 0 8px">'다시 쓰기'까지 끝내면 완료예요. 지금 할 주차가 펼쳐져 있어요.</p>` + weeks.map(w=>{ const L=tr.filter(x=>x.week===w), d=L.filter(doneOf).length;
+        return `<details class="sheet wkbox" style="padding:4px 16px" ${w===cur?"open":""}><summary class="row" style="min-height:48px"><b class="grow">${w}주차</b><span class="chip ${d===L.length?"ok":""}">${d}/${L.length} 완료</span></summary>${L.map(row).join("")}</details>`; }).join("")
+        + `<h2>진단하기 (선택)</h2><div class="sheet" style="padding:4px 16px">${SETS.filter(x=>x.kind==="diag").map(row).join("")}</div>`; })()}
     ${mine.length?`<h2>내 문제</h2><div class="sheet" style="padding:4px 16px">${mine.map(s=>{const a=latest(s.id); const [st,c]=statusOf(a); return `<a class="set" href="#/write/${s.id}"><span class="wk">내 문제</span><span class="grow"><span class="t">${esc(s.title)}</span><br><span class="small muted">${esc(s.skill)} · ${s.min}~${s.max}자${s.source?` · ${esc(s.source)}`:""}</span></span>${st!=="안 함"?`<span class="chip ${c}">${st}</span>`:""}</a>`;}).join("")}</div>`:""}
     <p class="tiny">12주 정규 운영용 48세트는 검토가 끝나는 대로 추가돼요.</p>`;
 }
@@ -629,7 +636,7 @@ function vWrite(app, arg){
   let tab = "pass";
   const passHTML = (hlLabel, hlText) => s.passages.map(p=>{ let t=esc(p.text); if(hlLabel===p.label && hlText){ const e=esc(hlText); t=t.split(e).join(`<mark class="hl">${e}</mark>`);} return `<p class="passage" id="p-${p.label}"><b>${s.passages.length>1?`제시문 ${p.label}`:"제시문"}</b>${t}</p>`; }).join("");
   app.innerHTML = `
-    <div class="wtop"><a href="${s.kind==="bg"?`#/bg/${s.id}`:"#/train"}" class="small">← ${s.kind==="bg"?"배경지식 카드":"훈련"}</a><span class="grow"></span>${s.kind==="custom"?`<span class="chip">내 문제</span>`:s.kind==="bg"?`<span class="chip">배경지식</span>`:!s.reviewed?`<span class="chip warn">검토 전 세트</span>`:""}<span class="timer" id="tm">00:00</span></div>
+    <div class="wtop"><a href="${s.kind==="bg"?`#/bg/${s.id}`:"#/train"}" class="small">← ${s.kind==="bg"?"배경지식 카드":"훈련"}</a><span class="grow"></span>${s.kind==="custom"?`<span class="chip">내 문제</span>`:s.kind==="bg"?`<span class="chip">배경지식</span>`:""}<button class="btn ghost" type="button" id="exam" style="min-height:32px;padding:2px 10px;font-size:13px" aria-pressed="${a.exam?"true":"false"}">${a.exam?"⏱ 실전 중":"⏱ 실전 모드"}</button><span class="timer" id="tm">00:00</span></div>
     <h1>${esc(s.title)}</h1>
     <div class="phase" id="ph" aria-hidden="true">${PHASES.map(([n,m])=>`<i style="--w:${m}" title="${n} ${m}분"></i>`).join("")}</div>
     <p class="tiny" id="phl">${(s.minutes||20)>20?`권장 ${s.minutes}분 · 긴 답안이라 단계별 시간은 참고만`:"읽기 4분 → 개요 4분 → 초안 8분 → 고치기 4분"}</p>
@@ -645,6 +652,8 @@ function vWrite(app, arg){
   const hd=$("#hint"); if(hd){ const fill=()=>{ const h=s.hints; $("#hintList").innerHTML = `<li>${esc(h[0])}</li>` + (h[1] ? ((a.sec||0)>=120 ? `<li>${esc(h[1])}</li>` : `<li class="tiny">다음 힌트는 쓰기 시작 2분 뒤에 열려요.</li>`) : ""); }; fill(); hd.addEventListener("toggle", fill); }
   function setTab(t){ tab=t; app.querySelectorAll(".tabs button").forEach(b=>b.setAttribute("aria-selected", b.dataset.t===t)); app.querySelectorAll(".wgrid>section").forEach(x=>x.style.display = x.dataset.p===t ? "" : "none"); }
   app.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>setTab(b.dataset.t));
+  const exb=$("#exam"), applyExam=()=>{ if(hd) hd.style.display = a.exam ? "none" : ""; exb.textContent = a.exam ? "⏱ 실전 중" : "⏱ 실전 모드"; exb.setAttribute("aria-pressed", a.exam?"true":"false"); };
+  if(exb){ applyExam(); exb.onclick=()=>{ if(a.fb){ toast("실전 모드는 첫 답안을 쓰기 전에 켜요"); return; } a.exam=!a.exam; save(); applyExam(); toast(a.exam?`실전 모드: ${s.minutes||20}분 카운트다운 · 힌트 숨김`:"실전 모드 끔"); }; }
   if(a.draft || a.fb) setTab("write");
 
   // 타이머 + 학습시간 (입력 없이 3분 지나면 멈춤)
@@ -652,7 +661,9 @@ function vWrite(app, arg){
   const tm=$("#tm"), ph=$("#ph");
   tick=setInterval(()=>{
     if(document.visibilityState==="visible" && Date.now()-lastInput<180000){ acc++; a.sec=(a.sec||0)+1; }
-    const t=a.sec||0; tm.textContent=`${String(Math.floor(t/60)).padStart(2,"0")}:${String(t%60).padStart(2,"0")}`;
+    const t=a.sec||0, mm=x=>`${String(Math.floor(x/60)).padStart(2,"0")}:${String(x%60).padStart(2,"0")}`;
+    if(a.exam){ const left=(s.minutes||20)*60 - t; tm.textContent = left>=0 ? `남은 ${mm(left)}` : `+${mm(-left)} 초과`; tm.style.color = left<0 ? "var(--red)" : left<120 ? "var(--amber)" : ""; }
+    else { tm.textContent=mm(t); tm.style.color=""; }
     let m=t/60, k=0; const bars=[...ph.children]; let c=0;
     PHASES.forEach(([n,len],i)=>{ bars[i].className = m>=c+len ? "past" : (m>=c ? "on" : ""); c+=len; });
     if(acc>=30){ addMinutes(acc); acc=0; save(); }
@@ -660,21 +671,22 @@ function vWrite(app, arg){
   const bump=()=>{ lastInput=Date.now(); };
   cleanup=()=>{ clearInterval(tick); if(acc){ addMinutes(acc); acc=0; } a.updatedAt=Date.now(); save(); };
 
-  function ruler(len){
+  function ruler(len, txt){
+    const nows = String(txt||"").replace(/\s/g,"").length;
     const max=Math.max(s.max*1.4, len+10), L=x=>Math.min(100, x/max*100);
     const cls = len>s.max?"over":len>=s.min?"ok":"";
     return `<div class="ruler" aria-label="글자 수 ${len}자, 목표 ${s.min}~${s.max}자"><div class="track"><div class="zone" style="left:${L(s.min)}%;width:${L(s.max)-L(s.min)}%"></div><div class="pin" style="left:${L(len)}%"></div></div>
-      <div class="lab"><span><span class="count ${cls}">${len}</span>자 (공백 포함)</span><span>목표 ${s.min}~${s.max}자</span></div></div>`;
+      <div class="lab"><span><span class="count ${cls}">${len}</span>자 (공백 포함) <span class="tiny">· 공백 제외 ${nows}자</span></span><span>목표 ${s.min}~${s.max}자</span></div></div>`;
   }
   function editor(field, label){
     return `<label class="f" for="ta">${label}</label>
       <div class="manuscript"><textarea id="ta" spellcheck="false" placeholder="여기에 직접 써요. 막히면 개요 1칸부터 채워요.">${esc(a[field])}</textarea></div>
-      <div id="rl">${ruler(a[field].length)}</div>
+      <div id="rl">${ruler(a[field].length, a[field])}</div>
       <div class="save" id="sv">${a.updatedAt?`기기에 저장됨 ${hm(a.updatedAt)}`:""}</div>`;
   }
   function bindEditor(field){
     const ta=$("#ta"); let to;
-    ta.addEventListener("input",()=>{ bump(); a[field]=ta.value; $("#rl").innerHTML=ruler(ta.value.length); $("#sv").textContent="입력 중…"; clearTimeout(to);
+    ta.addEventListener("input",()=>{ bump(); a[field]=ta.value; $("#rl").innerHTML=ruler(ta.value.length, ta.value); $("#sv").textContent="입력 중…"; clearTimeout(to);
       to=setTimeout(()=>{ a.updatedAt=Date.now(); const ok=save(); const sv=$("#sv"); if(sv) sv.textContent = ok ? `기기에 저장됨 ${hm(a.updatedAt)}` : "저장 실패 — 설정에서 내보내기로 백업해 주세요"; },1200); });
   }
 
@@ -701,9 +713,18 @@ function vWrite(app, arg){
       ${s.points.map((p,i)=>`<label class="row small" style="min-height:40px;flex-wrap:nowrap"><input type="checkbox" data-pt="${i}" ${me[i]?"checked":""}> <span class="grow">${esc(p)}</span>${ai?`<span class="chip ${ai[i]?"ok":"warn"}">${ai[i]?"AI ✓":"AI 빠짐"}</span>`:""}</label>`).join("")}
       <p class="tiny">요소를 다 담는 게 목표가 아니라, 빠진 걸 확인하는 용도예요. 표현이 달라도 뜻이 같으면 담은 거예요.</p></div>`;
   }
+  function peek(){
+    return `<details class="sheet peek"><summary class="row" style="min-height:44px"><b class="grow">📄 제시문 펼쳐 보기</b><span class="tiny">쓰면서 확인</span></summary>${passHTML()}</details>
+      <p class="question" style="margin:0 0 12px">${esc(s.question)}</p>`;
+  }
+  function fixSummary(){
+    const src = (a.ai1 && a.ai1.fixes && a.ai1.fixes.length) ? a.ai1.fixes : ((a.fb && a.fb.fixes) || []);
+    if(!src.length) return "";
+    return `<div class="c-card c-fix" style="margin-top:0"><div class="c-h">✏️ 이번에 고칠 점${a.ai1?" (AI 코칭)":""}</div>${src.map((f,i)=>`<p class="small" style="margin:4px 0"><b>${i+1}.</b> ${esc(f.issue)}${f.suggestion?` <span class="muted">→ ${esc(f.suggestion)}</span>`:""}</p>`).join("")}</div>`;
+  }
   function draw(){
     if(!a.fb){
-      wb.innerHTML = `<div class="sheet">
+      wb.innerHTML = `${peek()}<div class="sheet">
         <h3>쓰기 전 개요 3칸</h3><div class="outline">${s.outline.map((o,i)=>`<input type="text" data-o="${i}" placeholder="${esc(o)}" value="${esc(a.outline?.[i]||"")}" aria-label="${esc(o)}">`).join("")}</div>
         ${editor("draft","답안")}
         <div class="actions"><button class="btn primary" id="sub">다 썼어요 · 점검하기</button></div>
@@ -714,12 +735,12 @@ function vWrite(app, arg){
     } else {
       const selfBody = `${fbHTML(a.fb, s)}${CAN_PRINT?`<div class="actions"><button class="btn" type="button" id="pat">내 답안·점검 인쇄</button></div>`:""}`;
       const selfTitle = a.fb.kind==="self"?"자동 점검 결과":"첫 피드백";
-      wb.innerHTML = `${a.ai1&&!a.fb2?aiBox(1):""}
+      wb.innerHTML = `${!a.fb2?`<div class="actions" style="margin:0 0 12px"><button class="btn" type="button" id="gored">✍️ 수정본 쓰러 가기 ↓</button></div>`:""}${a.ai1&&!a.fb2?aiBox(1):""}
         ${a.ai1 ? `<details class="sheet fb"><summary><b>${selfTitle}</b> <span class="tiny">(기기 안 규칙 점검 · 펼쳐 보기)</span></summary>${selfBody}</details>` : `<div class="sheet fb"><h3 style="margin-top:0">${selfTitle}</h3>${selfBody}</div>`}
         ${a.fb.kind==="self"&&!a.fb2&&!a.ai1?checklist("checks1"):""}
         ${!a.fb2&&!a.ai1?aiBox(1):(a.fb2&&a.ai1?aiBox(1):"")}
         ${s.debrief?`<details class="sheet" ${s.kind==="diag"?"open":""}><summary>${s.kind==="diag"?"진단 해설":"문제 해설 (다시 쓰기 전에 참고)"}</summary><ul class="small">${s.debrief.map(d=>`<li>${esc(d)}</li>`).join("")}</ul>${s.kind==="diag"?`<p class="tiny">진단 결과는 점수보다 '어디서 막혔는지'를 보려는 거예요.</p>`:""}</details>`:""}
-        <div class="sheet">${!a.fb2 ? `<h3>다시 쓰기</h3><p class="small muted">고칠 점부터 한 문장씩 고쳐요. 첫 답안은 그대로 보관돼요.</p>${s.check?`<p class="small"><b>제출 전 확인</b> ${esc(s.check)}</p>`:""}
+        <div class="sheet" id="redo">${!a.fb2 ? `<h3>다시 쓰기</h3>${peek()}${fixSummary()}<p class="small muted">고칠 점부터 한 문장씩 고쳐요. 첫 답안은 그대로 보관돼요.</p>${s.check?`<p class="small"><b>제출 전 확인</b> ${esc(s.check)}</p>`:""}
           ${editor("rewrite","수정본")}
           <div class="actions"><button class="btn primary" id="sub">수정본 점검하기</button></div>`
           : `<h3>초안과 수정본 비교</h3>${diffHTML(a.draft,a.rewrite)}`}</div>
@@ -729,13 +750,14 @@ function vWrite(app, arg){
           ${aiBox(2)}
           ${s.example?`<details class="sheet"><summary>예시 답안 보기</summary><p style="font-family:var(--serif);line-height:1.85">${esc(s.example)}</p><p class="tiny">앱 연습용 예시예요. 대학 모범답안이 아니고, 근거가 맞으면 다른 구성도 좋은 답이에요.</p></details>`:""}
           <div class="actions"><a class="btn primary" style="display:inline-flex;align-items:center;justify-content:center" href="#/today">오늘 끝 · 처음으로</a><button class="btn" id="again">이 세트 새로 쓰기</button></div>`:""}`;
-      if(!a.fb2){ if(!a.rewrite){ a.rewrite=a.draft; } bindEditor("rewrite"); $("#ta").value=a.rewrite; $("#rl").innerHTML=ruler(a.rewrite.length); $("#sub").onclick=()=>submit("rewrite"); }
+      if(!a.fb2){ if(!a.rewrite){ a.rewrite=a.draft; } bindEditor("rewrite"); $("#ta").value=a.rewrite; $("#rl").innerHTML=ruler(a.rewrite.length, a.rewrite); $("#sub").onclick=()=>submit("rewrite"); }
       else $("#again").onclick=()=>{ const n={ id:uid(), setId, createdAt:Date.now(), updatedAt:Date.now(), outline:["","",""], draft:"", rewrite:"", sec:0 }; S.attempts[n.id]=n; save(); go(`#/write/${setId}?a=${n.id}`); };
       wb.querySelectorAll("[data-pt]").forEach(c=>c.onchange=()=>{ a.ptsSelf=a.ptsSelf||[]; a.ptsSelf[+c.dataset.pt]=c.checked; save(); });
       wb.querySelectorAll("[data-ck]").forEach(c=>c.onchange=()=>{ const k=c.dataset.ck; a[k]=a[k]||[]; a[k][+c.dataset.i]=c.checked; save(); });
       [1,2].forEach(n=>{ const b=$("#ai"+n); if(b) b.onclick=()=>requestAI(n);
         const sv=$("#acsv"+n); if(sv) sv.onclick=()=>{ const v=($("#acin"+n).value||"").trim(); if(!v){ toast("접속 코드를 입력해 주세요"); return; } S.settings.appCode=v; delete a.aiErr; save(); requestAI(n); }; });
       wb.querySelectorAll("[data-goedit]").forEach(b=>b.onclick=()=>{ const t=$("#ta"); if(t){ t.scrollIntoView({block:"center"}); t.focus(); } });
+      const gr=$("#gored"); if(gr) gr.onclick=()=>{ $("#redo")?.scrollIntoView({block:"start", behavior:"smooth"}); };
       wb.querySelectorAll("[data-hl]").forEach(b=>b.onclick=()=>{ const [l,...t]=b.dataset.hl.split("|"); $("#passBox").innerHTML=passHTML(l,t.join("|"))+`<p class="question">${esc(s.question)}</p>`; setTab("pass"); document.getElementById("p-"+l)?.scrollIntoView({block:"center"}); });
     }
   }
@@ -1049,7 +1071,7 @@ function vLog(app){
       <div class="row" style="justify-content:space-between">${weeks.map(w=>`<span class="tiny">${w.label}</span>`).join("")}</div><p class="tiny">주 목표 ${plan}분</p></div>
     <h2>반복되는 고칠 점</h2><div class="sheet">${tagList.length?tagList.map(([t,n])=>`<span class="chip" style="margin:2px">${esc(t)} ${n}</span>`).join(""):`<p class="muted small">피드백을 받으면 여기에 쌓여요.</p>`}
       ${tagList[0]?`<p class="small" style="margin-top:8px">가장 자주 나온 점: <b>${esc(tagList[0][0])}</b>. 다음 답안에서 이것 하나만 먼저 확인해요.</p>`:""}</div>
-    <h2>지난 답안</h2><div class="sheet" style="padding:4px 16px">${all.map(a=>{const s=SETMAP[a.setId]; const [st,c]=statusOf(a); return `<a class="set" href="#/view/${a.id}"><span class="wk">${new Date(a.createdAt).getMonth()+1}/${new Date(a.createdAt).getDate()}</span><span class="grow"><span class="t">${esc(s?.title||a.setId)}</span><br><span class="small muted">${a.draft.length}자${a.fb2?` → ${a.rewrite.length}자`:""}</span></span><span class="chip ${c}">${st}</span></a>`;}).join("")||`<p class="muted small" style="padding:12px 0">아직 쓴 답안이 없어요. <a href="#/today">오늘의 20분 시작</a></p>`}</div>`;
+    <h2>지난 답안</h2><div class="sheet" style="padding:4px 16px">${all.map(a=>{const s=SETMAP[a.setId]; const [st,c]=statusOf(a); return `<a class="set" href="#/view/${a.id}"><span class="wk">${new Date(a.createdAt).getMonth()+1}/${new Date(a.createdAt).getDate()}</span><span class="grow"><span class="t">${esc(s?.title||a.setId)}</span><br><span class="small muted">${a.draft.length}자${a.fb2?` → ${a.rewrite.length}자`:""}</span><br><span class="chip ${c}" style="margin-top:4px">${st}</span></span></a>`;}).join("")||`<p class="muted small" style="padding:12px 0">아직 쓴 답안이 없어요. <a href="#/today">오늘의 20분 시작</a></p>`}</div>`;
 }
 
 /* ===== 설정 ===== */
