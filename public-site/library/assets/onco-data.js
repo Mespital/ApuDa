@@ -1,4 +1,4 @@
-/* ApuDa Oncology Library data — 환자교육용 요약. 기준일 2026-10-04
+/* ApuDa Oncology Library data — 환자교육용 요약. 기준일 2026-11-06
    - 국내 허가·급여 조건은 적응증·치료단계별로 다르고 수시로 바뀌므로 이 파일은 "국내 승인/급여 여부"를 단정하지 않는다.
    - 실시간 공급부족·뉴스는 /news/ 데이터에서 페이지가 직접 조회해 붙인다. */
 window.APUDA_ONC = (function(){
@@ -96,7 +96,7 @@ d('axitinib','악시티닙','Axitinib','인라이타','target','VEGFR 선택적 
 d('cabozantinib','카보잔티닙','Cabozantinib','카보메틱스','target','MET·VEGFR·AXL 다중표적 억제제',['kidney','liver','thyroid'],[],'신장암(니볼루맙 병용 1차 또는 이후), 간암 2차, 방사성요오드 불응성 갑상선암',['설사','손발바닥 증상','피로','혈압 상승'],'');
 d('lenvatinib','렌바티닙','Lenvatinib','렌비마','target','VEGFR·FGFR 등 다중표적 억제제',['liver','thyroid','kidney'],[],'간암 1차, 방사성요오드 불응성 분화갑상선암, 신장암(펨브롤리주맙 병용)',['혈압 상승','단백뇨','피로','설사','식욕 저하'],'체중에 따라 간암 용량이 달라집니다.');
 d('sorafenib','소라페닙','Sorafenib','넥사바','target','다중 키나제 억제제',['liver','thyroid','kidney'],[],'간암, 방사성요오드 불응성 갑상선암',['손발바닥 피부반응','설사','혈압 상승'],'');
-d('belzutifan','벨주티판','Belzutifan','웰리렉','target','HIF-2α 억제제',['kidney'],['VHL'],'면역항암제·VEGF 억제제 이후 진행성 신장암, VHL 증후군 관련 종양(해외 승인)',['빈혈','피로','저산소증'],'빈혈 수치를 정기적으로 확인합니다.');
+d('belzutifan','벨주티판','Belzutifan','웰리렉','target','HIF-2α 억제제',['kidney'],['VHL'],'VHL 증후군 관련 신장암 등 종양(국내 허가, 2026년 11월 기준 급여 미적용) / 면역항암제·VEGF 억제제 이후 진행성 신장암(해외 승인, 국내 미허가)',['빈혈','피로','저산소증'],'빈혈 수치를 정기적으로 확인합니다.');
 d('rai','방사성요오드(I-131)','Radioactive iodine','','radio','갑상선세포가 요오드를 흡수하는 성질을 이용해 남은 갑상선·암세포를 제거',['thyroid'],['TG'],'갑상선 전절제 후 재발 위험에 따른 잔여조직 제거·보조치료·전이 치료',['침샘 부음·입마름','일시적 미각 변화','구역'],'치료 전 저요오드식과 TSH 상승 준비가 필요하고, 치료 후 일정 기간 가족과 거리두기 수칙이 있습니다.',['방사성요오드','I-131']);
 d('levothyroxine','레보티록신','Levothyroxine','씬지로이드','hormone','갑상선호르몬 보충 및 TSH 억제',['thyroid'],['TG'],'갑상선 절제 후 호르몬 보충, 재발 위험에 따라 TSH를 낮게 유지',['과량 시 두근거림·불면','장기 과량 시 골밀도 감소'],'아침 공복에 일정하게 복용하고, 철분·칼슘제와는 시간 간격을 둡니다.');
 /* ── 전립선 ── */
@@ -122,7 +122,7 @@ d('tisotumab','티소투맙 베도틴','Tisotumab vedotin','티브닥','adc','�
 /* ── 바이오마커 ── */
 var MARKERS = [
  {id:'EGFR',name:'EGFR',full:'표피성장인자수용체 유전자 변이',kind:'target',cancers:['lung'],test:'조직 또는 혈액(액체생검) 유전자검사 — PCR·NGS',why:'비소세포폐암(특히 선암, 비흡연자·아시아인)에서 흔한 "운전자 변이"입니다. 있으면 먹는 표적치료제가 1차 치료가 될 수 있습니다.',result:'엑손19 결손·L858R은 흔한 변이, 엑손20 삽입은 다른 약이 필요합니다. T790M은 내성 변이입니다.',drugs:['osimertinib','lazertinib','amivantamab','gefitinib'],q:'제 EGFR 변이는 정확히 어떤 형인가요? 1차로 단독과 병용 중 어떤 방식을 고려하나요?'},
- {id:'ALK',name:'ALK',full:'ALK 융합 유전자',kind:'target',cancers:['lung','lymphoma'],test:'조직 면역염색(IHC)·FISH·NGS',why:'폐암의 약 3~5%에서 나타나며, 젊은 비흡연 환자에서 상대적으로 많습니다. ALK 억제제는 뇌 전이에도 효과가 좋습니다.',result:'양성이면 ALK 억제제를 1차로 쓰는 경우가 많습니다. (림프종에서는 역형성 대세포림프종 분류에 쓰입니다.)',drugs:['alectinib','lorlatinib','brigatinib','crizotinib'],q:'ALK 양성이면 면역항암제보다 표적치료가 먼저인가요? 뇌 MRI 추적은 어떻게 하나요?'},
+ {id:'ALK',name:'ALK',full:'ALK 융합 유전자',kind:'target',cancers:['lung','lymphoma'],test:'조직 면역염색(IHC)·FISH·NGS',why:'폐암의 약 3~5%에서 나타나며, 젊은 비흡연 환자에서 상대적으로 많습니다. ALK 억제제는 뇌 전이에서도 효과를 보인 연구가 있습니다.',result:'양성이면 ALK 억제제를 1차로 쓰는 경우가 많습니다. (림프종에서는 역형성 대세포림프종 분류에 쓰입니다.)',drugs:['alectinib','lorlatinib','brigatinib','crizotinib'],q:'ALK 양성이면 면역항암제보다 표적치료가 먼저인가요? 뇌 MRI 추적은 어떻게 하나요?'},
  {id:'ROS1',name:'ROS1',full:'ROS1 융합 유전자',kind:'target',cancers:['lung'],test:'NGS·FISH·IHC',why:'폐암의 1~2%로 드물지만, 찾으면 효과 좋은 표적치료가 있습니다.',result:'양성이면 ROS1 억제제를 고려합니다.',drugs:['crizotinib','entrectinib','lorlatinib'],q:'ROS1 검사까지 포함된 패널 검사를 받았나요?'},
  {id:'KRAS',name:'KRAS / RAS',full:'KRAS·NRAS 유전자 변이',kind:'target',cancers:['lung','colorectal','pancreas'],test:'조직·혈액 NGS, 대장암은 RAS 검사',why:'대장암에서는 RAS 변이가 있으면 항EGFR 항체(세툭시맙·파니투무맙)가 효과가 없어 반드시 확인합니다. 폐암·대장암의 KRAS G12C는 전용 표적치료가 있습니다. 췌장암은 대부분 KRAS 변이가 있습니다.',result:'RAS 야생형(정상) → 항EGFR 항체 고려 가능, RAS 변이 → 다른 조합. G12C → 소토라십 등.',drugs:['sotorasib','cetuximab','panitumumab'],q:'제 RAS 결과는 야생형인가요, 변이형인가요? 변이라면 어떤 형(G12C 등)인가요?'},
  {id:'BRAF',name:'BRAF V600E',full:'BRAF 유전자 V600E 변이',kind:'target',cancers:['colorectal','lung','thyroid'],test:'조직 PCR·NGS·IHC',why:'대장암에서 BRAF V600E는 진행이 빠른 편이라 치료 전략이 달라집니다. 폐암·갑상선암(특히 역형성)에서도 표적치료 대상입니다.',result:'양성이면 BRAF 억제제 기반 병용치료를 고려합니다.',drugs:['encorafenib','dabrafenib','cetuximab'],q:'BRAF V600E 양성이면 1차부터 표적 병용을 쓰나요?'},
@@ -134,9 +134,9 @@ var MARKERS = [
  {id:'PIK3CA',name:'PIK3CA',full:'PIK3CA·AKT1·PTEN 변화',kind:'target',cancers:['breast'],test:'조직 또는 혈액 NGS',why:'호르몬양성 전이성 유방암의 약 40%에서 PIK3CA 변이가 있어 경로 억제제를 고려할 수 있습니다.',result:'양성이면 풀베스트란트와 병용하는 PI3K·AKT 억제제를 고려합니다.',drugs:['pi3k'],q:'전이성으로 진행했다면 PIK3CA·ESR1 같은 변이 검사를 다시 해 볼 수 있나요?'},
  {id:'BRCA',name:'BRCA1/2 · HRR',full:'BRCA1·BRCA2 등 상동재조합복구(HRR) 유전자 변이',kind:'target',cancers:['breast','prostate','pancreas'],test:'혈액(생식세포) 유전자검사 + 조직(체세포) NGS',why:'BRCA 변이 암은 DNA 복구가 약해 PARP 억제제·백금계에 반응이 좋을 수 있습니다. 생식세포 변이면 가족도 위험이 높을 수 있습니다.',result:'생식세포 BRCA 양성 → 유전상담·가족검사 권고, PARP 억제제 고려.',drugs:['olaparib','cisplatin'],q:'유전상담을 받아야 하나요? 가족도 검사를 받아야 하나요?'},
  {id:'PDL1',name:'PD-L1',full:'PD-L1 단백 발현(TPS·CPS)',kind:'io',cancers:['lung','stomach','cervical','breast','biliary','liver'],test:'조직 면역염색 — 폐암은 TPS(%), 위암·자궁경부암·유방암은 CPS(점수)',why:'면역항암제 효과를 예측하는 데 쓰입니다. 다만 낮아도 효과가 있을 수 있고, 높아도 반응이 없을 수 있습니다.',result:'폐암 TPS 50% 이상은 면역항암제 단독 고려 가능. 위암·자궁경부암은 CPS 기준으로 병용 여부를 판단합니다.',drugs:['pembrolizumab','nivolumab','atezolizumab','durvalumab'],q:'제 PD-L1 수치(TPS 또는 CPS)는 얼마이고, 면역항암제 사용에 어떤 의미인가요?'},
- {id:'MSI',name:'MSI-H / dMMR',full:'현미부수체 불안정성·불일치복구 결함',kind:'io',cancers:['colorectal','stomach','biliary','pancreas','cervical'],test:'조직 면역염색(MLH1·MSH2·MSH6·PMS2) 또는 PCR·NGS',why:'MSI-H/dMMR 암은 면역항암제에 반응이 매우 좋은 편입니다. 대장암 등에서는 린치증후군(유전성) 확인 단서가 됩니다.',result:'MSI-H/dMMR → 면역항암제 우선 고려(전이성 대장암 1차 등), 일부 국소진행암은 수술 전 면역치료 연구가 활발합니다.',drugs:['pembrolizumab','nivolumab','ipilimumab'],q:'MSI 결과가 나왔나요? 린치증후군 검사가 필요한가요?'},
+ {id:'MSI',name:'MSI-H / dMMR',full:'현미부수체 불안정성·불일치복구 결함',kind:'io',cancers:['colorectal','stomach','biliary','pancreas','cervical'],test:'조직 면역염색(MLH1·MSH2·MSH6·PMS2) 또는 PCR·NGS',why:'MSI-H/dMMR 암은 면역항암제에 반응하는 경우가 많다고 알려져 있습니다. 대장암 등에서는 린치증후군(유전성) 확인 단서가 됩니다.',result:'MSI-H/dMMR → 면역항암제 우선 고려(전이성 대장암 1차 등), 일부 국소진행암은 수술 전 면역치료 연구가 활발합니다.',drugs:['pembrolizumab','nivolumab','ipilimumab'],q:'MSI 결과가 나왔나요? 린치증후군 검사가 필요한가요?'},
  {id:'TMB',name:'TMB-H',full:'종양변이부담 높음',kind:'io',cancers:['lung','colorectal'],test:'조직 NGS(Mb당 변이 수)',why:'변이가 많은 암은 면역계가 알아보기 쉬워 면역항암제 반응 가능성을 참고합니다.',result:'일반적으로 10 mut/Mb 이상을 높음으로 봅니다(해석은 암종별로 다름).',drugs:['pembrolizumab'],q:'NGS 결과에 TMB 수치가 있나요?'},
- {id:'CLDN18',name:'Claudin 18.2',full:'클라우딘 18.2 단백 발현',kind:'target',cancers:['stomach','pancreas'],test:'조직 면역염색(종양세포 75% 이상 중등도~강양성 = 양성)',why:'진행성 위암의 약 1/3에서 양성으로, 전용 항체치료가 생겼습니다.',result:'양성 + HER2 음성이면 1차 항암에 졸베툭시맙 병용을 고려합니다.',drugs:['zolbetuximab'],q:'HER2, PD-L1과 함께 Claudin 18.2 검사도 했나요?'},
+ {id:'CLDN18',name:'Claudin 18.2',full:'클라우딘 18.2 단백 발현',kind:'target',cancers:['stomach'],test:'조직 면역염색(종양세포 75% 이상 중등도~강양성 = 양성)',why:'진행성 위암의 약 1/3에서 양성으로, 전용 항체치료가 생겼습니다.',result:'양성 + HER2 음성이면 1차 항암에 졸베툭시맙 병용을 고려합니다.',drugs:['zolbetuximab'],q:'HER2, PD-L1과 함께 Claudin 18.2 검사도 했나요?'},
  {id:'FGFR2',name:'FGFR2',full:'FGFR2 융합·재배열',kind:'target',cancers:['biliary'],test:'NGS(RNA 포함 권장)',why:'간내 담관암의 약 10~15%에서 나타나는 표적입니다.',result:'양성이면 이후 치료로 FGFR 억제제를 고려합니다.',drugs:['pemigatinib'],q:'담도암 진단 시 NGS 검사를 받을 수 있나요?'},
  {id:'IDH1',name:'IDH1',full:'IDH1 유전자 변이',kind:'target',cancers:['biliary'],test:'NGS',why:'간내 담관암의 약 10~20%에서 나타납니다.',result:'양성이면 IDH1 억제제를 고려할 수 있습니다(국내 사용 조건 확인 필요).',drugs:['ivosidenib'],q:'IDH1 결과가 있나요? 임상시험 기회도 있을까요?'},
  {id:'PSMA',name:'PSMA',full:'전립선특이막항원(영상)',kind:'target',cancers:['prostate'],test:'PSMA PET-CT',why:'전립선암 세포 표면 단백질로, 영상 진단과 방사성리간드 치료의 표적이 됩니다.',result:'PSMA PET 양성이면 루테튬-177 PSMA 치료 대상이 될 수 있습니다.',drugs:['lu177'],q:'PSMA PET 검사가 제 병기 확인이나 치료 선택에 도움이 될까요?'},
@@ -275,6 +275,6 @@ var MAPS = {
   qs:['제 FIGO 병기는요?','수술과 동시항암방사선 중 어떤 치료가 맞나요?','임신·폐경 관련 영향은 어떻게 되나요?']}
 };
 
-var BASIS = '정보 기준: NCCN 환자용 가이드라인·국가암정보센터·각 약제 허가사항(해외 포함)을 환자 눈높이로 요약 · 기준일 2026-10-04';
+var BASIS = '정보 기준: NCCN 환자용 가이드라인·국가암정보센터·각 약제 허가사항(해외 포함)을 환자 눈높이로 요약 · 기준일 2026-11-06';
 return {CANCERS:CANCERS,TYPES:TYPES,DRUGS:DRUGS,MARKERS:MARKERS,MAPS:MAPS,BASIS:BASIS};
 })();
