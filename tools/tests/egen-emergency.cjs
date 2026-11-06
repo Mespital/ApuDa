@@ -28,9 +28,30 @@ const path=require('node:path');
     assert.equal(data.hospitals[0].emergencyBeds,3);
     assert.equal(called.searchParams.get('serviceKey'),'test+secret/=');
     assert.equal(called.searchParams.get('STAGE2'),'강남구');
+    // A copied 'Encoding' key must be decoded once and re-encoded by URLSearchParams.
+    process.env.EGEN_API_KEY='test%2Bsecret%2F%3D';
+    const encoded=await handle(request('서울특별시','서초구'));
+    assert.equal(encoded.status,200);
+    assert.equal(called.searchParams.get('serviceKey'),'test+secret/=');
+    process.env.EGEN_API_KEY='test+secret/=';
+    // Gateway sometimes returns authentication errors as XML with HTTP 403.
+    global.fetch=async function(){
+      return new Response('<OpenAPI_ServiceResponse><cmmMsgHeader><returnReasonCode>30</returnReasonCode><returnAuthMsg>SERVICE_KEY_IS_NOT_REGISTERED_ERROR</returnAuthMsg></cmmMsgHeader></OpenAPI_ServiceResponse>',{status:403});
+    };
+    const denied=await handle(request('서울특별시','송파구'));
+    assert.equal(denied.status,502);
+    const reason=await denied.json();
+    assert.equal(reason.error,'api_key_invalid');
+    assert.equal(reason.diagnostic,'UPSTREAM_HTTP_403_CODE_30');
+    assert(!JSON.stringify(reason).includes('test+secret'),'never expose the API key');
+    // Distinguish a provider outage from a credential problem.
+    global.fetch=async function(){return new Response('temporarily unavailable',{status:503});};
+    const offline=await handle(request('서울특별시','강동구'));
+    assert.equal(offline.status,502);
+    assert.equal((await offline.json()).error,'provider_unavailable');
   }finally{
     global.fetch=oldFetch;
     if(saved===undefined)delete process.env.EGEN_API_KEY;else process.env.EGEN_API_KEY=saved;
   }
-  console.log('PASS: reject bad region, require server key, parse official XML, preserve encoded service key');
+  console.log('PASS: reject bad region, require key, decode encoded key, parse XML, distinguish 403 auth and 503 provider, hide secret');
 })().catch(e=>{console.error(e);process.exitCode=1;});
