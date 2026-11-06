@@ -39,6 +39,12 @@
       "url": "https://www.cancer.gov/types/liver/hp/bile-duct-treatment-pdq",
       "checkedAt": "2026-10-19",
       "scope": "절제 불가능·전이·재발 담도암 1차 면역·항암 병용의 국제 근거; 국내 허가·급여를 증명하는 자료는 아님"
+    },
+    "adriatic-lssclc": {
+      "title": "ASCO Post · FDA, 제한기 소세포폐암 항암방사선 후 더발루맙 공고요법 승인(ADRIATIC, 2024-12)",
+      "url": "https://ascopost.com/news/december-2024/fda-approves-durvalumab-for-limited-stage-small-cell-lung-cancer/",
+      "checkedAt": "2026-11-06",
+      "scope": "제한기 소세포폐암에서 항암방사선 뒤 면역항암제 공고요법이 표준 범주에 포함됨; 국내 허가·급여는 별도 확인"
     }
   },
   "cancers": [
@@ -85,6 +91,7 @@
       "participantTesting": "not-conducted",
       "faqItems": 100,
       "targetedItems": [
+        7,
         55,
         90
       ],
@@ -101,6 +108,12 @@
           "url": "https://www.nhis.or.kr/static/html/wbma/c/wbmac0215.html",
           "checkedAt": "2026-10-19",
           "scope": "확진 후 30일 이내 신청과 30일 경과 후 적용 시작일, 적용 범위·재등록 조건"
+        },
+        "adriatic-lssclc": {
+          "title": "ASCO Post · FDA, 제한기 소세포폐암 항암방사선 후 더발루맙 공고요법 승인(ADRIATIC, 2024-12)",
+          "url": "https://ascopost.com/news/december-2024/fda-approves-durvalumab-for-limited-stage-small-cell-lung-cancer/",
+          "checkedAt": "2026-11-06",
+          "scope": "제한기 소세포폐암에서 항암방사선 뒤 면역항암제 공고요법이 표준 범주에 포함됨; 국내 허가·급여는 별도 확인"
         }
       }
     },
