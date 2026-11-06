@@ -9,12 +9,14 @@
       "a": "췌장은 배 깊숙이 위 뒤쪽에 있어서 작은 종양은 증상이 거의 없거나, 소화불량·막연한 복부 불편감처럼 흔한 증상과 비슷해 지나치기 쉬워요. 그래서 황달이나 체중 감소, 등 통증처럼 뚜렷한 증상이 나타났을 때 발견되는 경우가 많아요. 이유 없는 체중 감소나 새로 생긴 당뇨가 있다면 진료 때 꼭 말씀하세요.",
       "review": {
         "id": "faq.pancreas.001",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-symptoms"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -40,12 +42,15 @@
       "a": "췌장 프로토콜 CT(췌장을 잘 보도록 조영제 시점을 맞춘 CT)는 종양 크기뿐 아니라 주변 큰 혈관과 얼마나 닿아 있는지를 보여 줘요. 이 혈관 관계가 수술 가능 여부, 즉 절제 가능성 4단계를 정하는 핵심이에요. 흉부 CT로 폐 전이도 함께 확인하니, 필요한 영상 검사가 모두 끝났는지 물어보세요.",
       "review": {
         "id": "faq.pancreas.003",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-diagnosis",
+          "pancreas-nci-extent"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -54,12 +59,14 @@
       "a": "내시경초음파(EUS, 위·십이지장 안에서 초음파로 췌장을 가까이 보는 검사)는 CT로 잘 안 보이는 작은 병변을 확인하거나, 바늘로 조직을 얻어 진단을 확정할 때 주로 써요. 췌장 낭종의 모양을 자세히 볼 때도 쓰여요. 진정(수면) 여부와 검사 전 금식·복용약 조절은 병원 안내를 따르세요.",
       "review": {
         "id": "faq.pancreas.004",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-diagnosis"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -68,12 +75,14 @@
       "a": "조직검사는 영상에서 보인 혹이 정말 암인지, 어떤 종류의 암인지 확정하기 위해 필요해요. 특히 수술 전 항암이나 항암치료를 먼저 하려면 조직 진단이 있어야 해요. 다만 조직에서 암세포가 안 보여도 암이 없다는 뜻이 아닐 수 있어, 영상과 맞지 않으면 재검사를 의료진과 논의해요.",
       "review": {
         "id": "faq.pancreas.005",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-diagnosis"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -82,12 +91,15 @@
       "a": "BRCA1·BRCA2는 손상된 DNA를 고치는 유전자로, 타고난(배선) 변이가 있으면 췌장암 위험이 높아질 수 있어요. 이런 암은 백금 계열 항암에 반응이 좋은 편이고, 전이성이면 백금 항암으로 조절된 뒤 PARP 억제제 유지요법을 논의할 수 있어요(국내 허가·급여는 2026년 10월 기준 확인 필요). 가족 유전상담도 함께 물어보세요.",
       "review": {
         "id": "faq.pancreas.006",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-acs-risk",
+          "pancreas-nci-treatment"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -96,12 +108,14 @@
       "a": "절제 가능 췌장암은 종양이 주요 동맥에 닿지 않고, 정맥에는 닿지 않거나 조금만(둘레의 절반 미만) 닿아 수술로 떼어낼 수 있는 상태예요. 보통 수술 → 보조항암(약 6개월 범주) 순서로 가고, CA19-9가 매우 높거나 체중감소·통증이 심하면 수술 전 항암을 먼저 논의해요. 내 경우 어느 순서인지 물어보세요.",
       "review": {
         "id": "faq.pancreas.007",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-extent"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -110,12 +124,15 @@
       "a": "배선 유전검사(타고난 변이)는 모든 췌관선암 환자에게 권고돼요. 결과가 항암 약 선택과 가족의 검사·상담에 쓰이기 때문이에요. 진행·전이성이면 종양 유전자검사(NGS)로 KRAS, 드문 표적 변이(NTRK·NRG1·RET·BRAF 등), MSI(dMMR)를 확인해요. \"유전자검사는 의뢰됐나요?\"를 진료 때 물어보세요.",
       "review": {
         "id": "faq.pancreas.008",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-diagnosis",
+          "pancreas-nci-extent"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -124,12 +141,14 @@
       "a": "췌장 머리 쪽 암은 췌십이지장절제술(휘플 수술), 몸통·꼬리 쪽은 원위부 췌장절제술을 해요. 국내 동의서에는 위를 살리는 유문부 보존 췌십이지장절제술(PPPD)이 자주 나오고, 드물게 췌장 전체를 떼기도 해요. 개복·복강경·로봇 중 무엇이 맞는지는 종양 위치와 병원 경험에 따라 달라 담당 외과의에게 확인하세요.",
       "review": {
         "id": "faq.pancreas.009",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-treatment"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -138,12 +157,14 @@
       "a": "휘플 수술은 췌장 머리, 십이지장, 담낭·담관 일부(때로 위 일부)를 떼어 낸 뒤 췌장·담관·위장을 소장에 다시 잇는 수술이라 범위가 넓어요. 합병증이 10명 중 4명 정도로 흔하지만, 가장 흔한 췌장액 누출은 대개 2~3주 안에 아물어요. 경험 많은 센터에서 받는 것이 합병증을 줄이는 데 중요해요.",
       "review": {
         "id": "faq.pancreas.010",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-treatment"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -152,12 +173,14 @@
       "a": "췌장암은 진단 때 눈에 보이지 않는 작은 암세포가 이미 퍼져 있는 경우가 많아, 수술만으로는 재발 위험이 높아요. 그래서 수술 후 보조항암, 혹은 수술 전 항암으로 전신의 암세포를 줄이는 것이 중요해요. 전이성이라면 항암이 암을 조절하고 증상을 줄이는 중심 치료예요. 내 치료 목표를 함께 확인하세요.",
       "review": {
         "id": "faq.pancreas.011",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-extent"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -166,12 +189,15 @@
       "a": "피로, 메스꺼움·구토, 설사, 입안 염증, 손발 저림, 탈모, 백혈구 감소로 인한 감염 위험이 흔해요. 어떤 약을 쓰느냐에 따라 부작용 양상이 달라요. 항암 중 38°C 이상 발열이나 하루 4~6회 이상 설사는 바로 병원에 연락하세요. 내 항암 약에서 특히 주의할 부작용을 미리 물어 두면 좋아요.",
       "review": {
         "id": "faq.pancreas.012",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "nci-infection",
+          "pancreas-nci-diarrhea"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -180,12 +206,15 @@
       "a": "면역항암제(면역관문억제제)는 췌장암 대부분에서는 효과가 크지 않아요. 다만 종양 유전자검사에서 MSI-H(현미부수체 불안정성 높음)나 dMMR(불일치복구 결함)이 나온 드문 경우에는 쓸 수 있어요. 그래서 MSI 검사를 KRAS 결과와 관계없이 확인해요. 국내 허가·급여는 2026년 10월 기준 담당의·원무과에 확인하세요.",
       "review": {
         "id": "faq.pancreas.013",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-treatment",
+          "pancreas-nci-extent"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -194,12 +223,15 @@
       "a": "표적치료는 암세포의 특정 유전자 변이를 겨냥하는 약이에요. 췌장암에서는 배선 BRCA 변이의 PARP 억제제 유지요법, KRAS 변이가 없을 때 드물게 발견되는 NTRK·NRG1·RET·BRAF 변이에 맞춘 약 등이 해당돼요. 그래서 유전자검사 결과가 먼저 필요해요. 국내 허가·급여 여부는 담당의에게 확인하세요.",
       "review": {
         "id": "faq.pancreas.014",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-treatment",
+          "pancreas-nci-extent"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -269,12 +301,14 @@
       "a": "췌장은 지방·단백질을 소화하는 효소를 만드는데, 수술이나 종양으로 이 기능이 줄면(췌장 외분비 기능부전) 더부룩함, 가스, 기름진 변, 설사가 생길 수 있어요. 휘플 수술 뒤에는 위가 늦게 비는 증상도 있을 수 있어요. 췌장효소제가 도움이 될 수 있으니 변 상태를 기록해 의료진과 상의하세요.",
       "review": {
         "id": "faq.pancreas.019",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-cruk-diet"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -283,12 +317,14 @@
       "a": "처음에는 하루 10~15분 걷기처럼 가볍게 시작해 몸 상태에 맞춰 조금씩 늘리는 것이 좋아요. 익숙해지면 주 150분 중간 강도 유산소와 주 2회 근력운동을 목표로 할 수 있어요. 수술 부위 통증, 어지러움, 심한 피로가 있으면 쉬고, 운동 강도와 금지 동작은 담당 의료진에게 먼저 확인하세요.",
       "review": {
         "id": "faq.pancreas.020",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-acs-activity"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -297,12 +333,14 @@
       "a": "소량씩 하루 5~6번 나눠 먹고, 단백질(생선·달걀·두부·살코기)을 매끼 챙기는 것이 좋아요. 췌장효소제를 처방받았다면 식사·간식과 함께 먹어야 효과가 있어요. 혈당이 오르내릴 수 있어 단 음료는 줄이고, 체중을 주 1회 재 기록하세요. 영양 상담이 필요한지 의료진에게 물어보세요.",
       "review": {
         "id": "faq.pancreas.021",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-cruk-diet"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -311,12 +349,15 @@
       "a": "췌장암은 소화효소 부족으로 영양이 잘 흡수되지 않고, 암 자체가 근육과 지방을 소모시키는 악액질(암으로 인한 체중·근육 소실)이 생기기 쉬워요. 수술 후 식사량 감소, 항암 부작용, 혈당 변화도 겹쳐요. 체중과 근육 유지가 치료를 버티는 힘이니, 체중이 계속 줄면 바로 의료진·영양팀과 상의하세요.",
       "review": {
         "id": "faq.pancreas.022",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-cachexia",
+          "pancreas-cruk-diet"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -367,12 +408,14 @@
       "a": "항암 중이나 직후에는 백혈구가 줄어 감염에 약할 수 있어요. 손 씻기, 사람 많은 곳에서 마스크, 덜 익힌 음식 피하기가 기본이에요. 비장을 뗐다면 일부 세균 감염이 심해질 수 있어 예방접종을 챙기세요. 38°C 이상 열이 나면 해열제를 먹고 기다리지 말고 병원에 먼저 연락하세요.",
       "review": {
         "id": "faq.pancreas.026",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "nci-infection"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -409,12 +452,14 @@
       "a": "옥살리플라틴, 알부민결합 파클리탁셀 같은 항암제는 말초신경을 손상시켜 손발 저림·따끔거림을 일으킬 수 있어요(말초신경병증). 옥살리플라틴은 찬 것에 닿을 때 더 심해질 수 있어 찬 음료·찬 물을 피하는 것이 좋아요. 단추 잠그기가 어렵거나 넘어질 정도면 용량 조절이 필요할 수 있으니 바로 알리세요.",
       "review": {
         "id": "faq.pancreas.029",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-nerve"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -493,12 +538,14 @@
       "a": "술은 췌장에 직접 부담을 줘 췌장염을 일으키거나 악화시킬 수 있어요. 수술 뒤 남은 췌장 기능을 지키고, 혈당 조절과 간 건강, 항암제와의 상호작용 측면에서도 금주가 좋아요. 마시던 양을 줄이기 어렵다면 혼자 애쓰기보다 진료 때 솔직하게 말하고 도움을 받는 것이 좋아요.",
       "review": {
         "id": "faq.pancreas.035",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-acs-risk"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -549,12 +596,14 @@
       "a": "손 씻기, 사람 많은 곳에서 마스크, 음식은 충분히 익혀 먹기가 기본이에요. 의료진과 상의해 독감·폐렴구균 등 예방접종을 맞고, 비장을 뗐다면 수막구균·b형 헤모필루스 인플루엔자 접종도 챙기세요. 담도 스텐트가 있으면 열·오한·황달이 담관염 신호일 수 있어요. 38°C 이상이면 바로 연락하세요.",
       "review": {
         "id": "faq.pancreas.039",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "nci-infection"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -563,12 +612,15 @@
       "a": "전이성 췌장암은 다제병용 항암 또는 젬시타빈+알부민결합 파클리탁셀 같은 전신 항암을 체력에 맞춰 시작하고, 통증·황달·영양 같은 증상 관리를 함께 해요. 유전자검사 결과에 따라 표적치료나 유지요법, 임상시험도 고려해요. 치료 목표는 암을 조절하며 오래, 덜 아프게 사는 것이에요. 내 치료 목표를 꼭 물어보세요.",
       "review": {
         "id": "faq.pancreas.040",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-extent",
+          "pancreas-nci-treatment"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -591,12 +643,14 @@
       "a": "부모·형제자매 같은 1차 가족 중 췌장암 환자가 있으면 위험이 다소 높아지고, 여러 명이면 더 높아져요. BRCA1·2, PALB2, ATM, 린치증후군 같은 유전 변이가 원인인 경우도 있어요. 환자가 배선 유전검사를 받으면 가족이 검사·감시 대상인지 알 수 있으니 유전상담을 요청해 보세요.",
       "review": {
         "id": "faq.pancreas.042",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-acs-risk"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -647,12 +701,14 @@
       "a": "췌장 석회화는 주로 만성 췌장염의 흔적으로 보이고, 석회화 자체가 암을 뜻하지는 않아요. 다만 만성 췌장염은 췌장암 위험을 다소 높일 수 있어 금주·금연과 정기 진료가 좋아요. 석회화와 함께 혹, 췌관 확장, 체중 감소가 있으면 추가 검사가 필요할 수 있으니 소화기내과에서 확인하세요.",
       "review": {
         "id": "faq.pancreas.046",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-acs-risk"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -661,12 +717,14 @@
       "a": "아니에요. 복통과 등 통증은 위염, 담석, 근육·척추 문제 등 훨씬 흔한 원인이 많아요. 다만 명치에서 등으로 뻗치는 통증이 점점 심해지고, 누우면 더 아프며, 체중 감소·황달·새로 생긴 당뇨가 함께 있으면 췌장 검사가 필요할 수 있어요. 몇 주 이상 이어지면 진료를 받아 보세요.",
       "review": {
         "id": "faq.pancreas.047",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-symptoms"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -675,12 +733,15 @@
       "a": "황달은 눈 흰자와 피부가 노래지고 소변이 진해지는 증상으로, 담관이 막히면 생겨요. 통증 없이 서서히 생기는 황달은 췌장 머리 쪽 종양 신호일 수 있어 빨리 진료를 받는 것이 좋아요. 황달에 38°C 이상 열·오한이 함께 있으면 담관염일 수 있으니 해열제를 먹고 기다리지 말고 바로 연락하거나 응급실로 가세요.",
       "review": {
         "id": "faq.pancreas.048",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-symptoms",
+          "nhs-pancreas"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -689,12 +750,14 @@
       "a": "췌장은 등 쪽 깊은 곳에 있어서 종양이 주변 신경을 자극하면 등 가운데 통증이 생길 수 있어요. 특히 명치 통증이 등으로 퍼지거나, 누우면 심해지고 앞으로 숙이면 덜한 양상이 특징이에요. 하지만 등 통증은 근육·척추 원인이 훨씬 흔하니, 체중 감소나 황달이 함께 있는지 살피고 진료를 받아 보세요.",
       "review": {
         "id": "faq.pancreas.049",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-symptoms"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -717,12 +780,14 @@
       "a": "흡연은 췌장암의 가장 확실한 생활습관 위험 요인으로, 흡연자는 비흡연자보다 위험이 약 2배 정도 높다고 알려져 있어요(개인마다 다름). 담배를 끊으면 위험이 시간이 지나며 줄어요. 치료 중 금연은 수술 회복과 감염 예방에도 도움이 돼요. 금연이 어렵다면 보건소 금연클리닉이나 의료진 도움을 받으세요.",
       "review": {
         "id": "faq.pancreas.051",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-acs-risk"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -731,12 +796,15 @@
       "a": "관련이 있어요. 오래된 당뇨는 췌장암 위험을 다소 높이고, 반대로 췌장암이 당뇨를 새로 만들거나 악화시키기도 해요. 그래서 50세 이후 갑자기 생긴 당뇨에 체중 감소가 함께 있으면 확인이 필요해요. 치료 중에는 심한 갈증·잦은 소변이나 식은땀·떨림 같은 혈당 이상 신호를 알아 두고 바로 알리세요.",
       "review": {
         "id": "faq.pancreas.052",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-acs-risk",
+          "pancreas-nci-symptoms"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -817,12 +885,15 @@
       "a": "38°C 이상 발열·오한(특히 황달과 함께), 피를 토하거나 검은 변, 어지러움·의식 혼미, 점점 심해지는 복통이나 계속되는 구토, 한쪽 다리 부종이나 갑작스러운 숨참·흉통, 심한 갈증·의식 저하나 식은땀·떨림은 바로 응급실로 가세요. 치료 병원이 멀면 가까운 응급실에 먼저 가고 응급 카드를 보여 주세요.",
       "review": {
         "id": "faq.pancreas.058",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "nci-infection",
+          "pancreas-cdc-clots"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -859,12 +930,14 @@
       "a": "TNM 병기는 종양 크기·주요 동맥 침범(T), 암이 퍼진 림프절 수(N), 원격 전이(M)로 1~4기를 정해요. 반면 치료 순서를 정할 때는 절제 가능성 4단계(절제 가능·경계성·국소진행·전이성)가 더 직접적으로 쓰여요. 둘은 다른 질문에 답하니, 진료 때 두 가지를 모두 물어 기록해 두세요.",
       "review": {
         "id": "faq.pancreas.061",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-extent"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -901,12 +974,15 @@
       "a": "완치 목표 치료는 수술과 항암으로 암을 없애는 것을 목표로 해요. 조절 목표는 암을 없애기 어려울 때 성장을 늦추며 오래, 덜 아프게 사는 것을 목표로 하고, 증상완화는 통증·황달·식사 문제를 줄여 삶의 질을 지키는 데 집중해요. 세 가지는 함께 갈 수 있어요. \"제 치료 목표는 무엇인가요?\"를 꼭 물어보세요.",
       "review": {
         "id": "faq.pancreas.064",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-extent",
+          "pancreas-acs-palliative"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -915,12 +991,14 @@
       "a": "절제 가능성에 따라 달라요. 절제 가능은 대개 수술 → 보조항암, 경계성은 수술 전 항암(± 방사선) → 재평가 → 수술, 국소진행은 항암 ± 방사선 후 반응이 좋으면 수술 재평가, 전이성은 전신 항암 + 증상 관리가 흔한 순서예요. \"왜 이 순서인가요?\"를 담당의에게 물어보세요.",
       "review": {
         "id": "faq.pancreas.065",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-extent"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -929,12 +1007,15 @@
       "a": "종양이 주요 동맥에 닿지 않고 정맥에는 닿지 않거나 둘레의 절반 미만만 닿으면 절제 가능, 혈관에 일부 닿으면 경계성, 주요 혈관을 많이 감싸면 국소진행(절제 불가), 간·복막·폐 등에 전이가 있으면 전이성으로 봐요. 이 판단은 췌장 프로토콜 CT로 하니, 경험 많은 센터의 판독을 받는 것이 좋아요.",
       "review": {
         "id": "faq.pancreas.066",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-extent",
+          "pancreas-nci-diagnosis"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -943,12 +1024,15 @@
       "a": "방사선치료는 국소진행이나 경계성 절제 가능 췌장암에서 항암과 함께 수술 전에 쓰거나, 종양을 국소적으로 조절할 때 고려해요. 뼈 전이나 종양으로 인한 통증·출혈을 줄이는 데도 도움이 돼요. 효과와 역할은 상황마다 달라, 방사선종양학과와 상의해 내 경우 얻을 이익을 확인하세요.",
       "review": {
         "id": "faq.pancreas.067",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-treatment",
+          "pancreas-nci-extent"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -957,12 +1041,14 @@
       "a": "항암 후 CT에서 종양 크기가 그대로여도 암이 반응하지 않았다는 뜻은 아닐 수 있어요. 췌장암은 치료 후 흉터 조직이 남아 크기만으로 판단하기 어렵기 때문이에요. 그래서 CA19-9 변화, 몸 상태, 필요 시 PET이나 내시경초음파를 함께 봐요. 결과를 \"이전과 비교해 어떤가요?\"로 물어보세요.",
       "review": {
         "id": "faq.pancreas.068",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-diagnosis"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -971,12 +1057,14 @@
       "a": "CA19-9는 혈액 종양표지자로, 치료 전후 추세를 보는 데 쓰여요. 황달이 있으면 높게 나올 수 있고, 인구의 약 5~10%인 루이스 음성 체질은 암이 있어도 잘 오르지 않아요. 한 번의 수치보다 변화 흐름을 영상과 함께 봐요. BRCA·MSI는 수치가 아닌 유전자검사 결과로, 치료 선택에 쓰여요.",
       "review": {
         "id": "faq.pancreas.069",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-diagnosis"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -985,12 +1073,14 @@
       "a": "결과지는 크게 배선(타고난) 검사와 종양(NGS) 검사로 나뉘어요. 배선에서는 BRCA1·2, PALB2 등에 '병적 변이'가 있는지, 종양 검사에서는 KRAS 변이 여부와 MSI-H/dMMR, 드문 표적 변이를 봐요. '의미 불명 변이(VUS)'는 대개 치료 근거로 쓰지 않아요. 결과 요약을 기록지에 적고 설명을 요청하세요.",
       "review": {
         "id": "faq.pancreas.070",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-diagnosis"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -999,12 +1089,14 @@
       "a": "임상시험은 첫 치료부터 고려할 수 있는 선택지예요. 특히 췌장암은 신약 개발이 활발해 2차 치료 이후뿐 아니라 진단 초기에도 물어볼 만해요. 참여 조건, 기존 치료와의 차이, 방문 일정과 비용, 중간에 그만둘 수 있는지를 확인하세요. 국가암지식정보센터(1577-8899)에서도 정보를 얻을 수 있어요.",
       "review": {
         "id": "faq.pancreas.071",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-treatment"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1027,12 +1119,15 @@
       "a": "모두 위험하지만 종류가 달라요. 발열(특히 황달·오한 동반이나 항암 중)은 담관염·패혈증 가능성, 토혈·흑변·어지러움은 출혈, 갑작스러운 숨참·흉통은 혈전(폐색전증) 가능성이 있어요. 셋 다 기다리지 말고 바로 병원에 연락하거나 응급실로 가고, 숨이 많이 차거나 의식이 흐려지면 119를 부르세요.",
       "review": {
         "id": "faq.pancreas.073",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "nci-infection",
+          "pancreas-cdc-clots"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1041,12 +1136,15 @@
       "a": "간이나 복막(배 속 장기를 덮는 막)에 전이가 있으면 전이성(4기)으로 보고, 수술보다 전신 항암이 중심 치료가 돼요. 복막 전이는 CT로 잘 안 보여 진단 복강경으로 확인하기도 하고, 복수나 장 막힘이 생길 수 있어요. 전이가 있어도 치료 선택지는 있으니 치료 목표를 의료진과 함께 정하세요.",
       "review": {
         "id": "faq.pancreas.074",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-diagnosis",
+          "pancreas-nci-extent"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1069,12 +1167,15 @@
       "a": "아니에요. 완화(지지)의료는 마지막 단계의 돌봄이 아니라 진단 시점부터 항암치료와 함께 통증·피로·숨참·불안을 줄이는 치료예요. 증상이 잘 조절되면 치료를 이어 가기도 쉬워져요. 호스피스는 그중 생애 말기 돌봄을 말해요. 증상이 힘들다면 지금 완화의료팀 협진을 요청해 보세요.",
       "review": {
         "id": "faq.pancreas.076",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-acs-palliative",
+          "pancreas-nci-treatment"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1097,12 +1198,14 @@
       "a": "근감소증은 근육량과 근력이 줄어든 상태이고, 악액질(cachexia)은 암이 만드는 염증과 대사 변화로 식욕이 떨어지고 근육과 지방이 함께 빠지는 증후군이에요. 악액질은 잘 먹는 것만으로 회복이 어렵고, 근감소증은 그 일부로 나타날 수 있어요. 체중 감소가 이어지면 일찍 영양·운동 상담을 받는 것이 좋아요.",
       "review": {
         "id": "faq.pancreas.078",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-cachexia"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1111,12 +1214,14 @@
       "a": "유산소운동(걷기·실내 자전거)은 심폐 기능과 피로 개선에, 근력운동(밴드·가벼운 아령·앉았다 일어서기)은 근육 유지에 도움이 돼요. 일반적으로 주 150분 중간 강도 유산소와 주 2회 근력운동이 목표예요. 처음엔 훨씬 적게 시작해 늘리세요. 수술 직후나 혈구 수치가 낮을 때 강도는 의료진과 정하세요.",
       "review": {
         "id": "faq.pancreas.079",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-acs-activity"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1125,12 +1230,14 @@
       "a": "항암 중 38°C 이상 열이 나면 해열제를 먹고 기다리지 말고 바로 병원에 연락하세요. 백혈구가 낮을 때 감염은 빠르게 심해질 수 있어요. 황달·오한이 함께 있으면 스텐트가 막힌 담관염일 수 있어요. 치료 병원이 멀면 가까운 응급실로 가서 응급 카드(항암 약·마지막 투여일·스텐트 정보)를 보여 주세요.",
       "review": {
         "id": "faq.pancreas.080",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "nci-infection"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1139,12 +1246,15 @@
       "a": "췌장암은 혈전(피떡) 위험이 특히 높은 암이에요. 다리 정맥에 혈전이 생기면 한쪽 다리가 붓고 아프며, 이것이 폐로 가면 갑작스러운 숨참·흉통이 생겨 위험할 수 있어요. 한쪽 다리 부종은 빨리 연락하고, 갑작스러운 숨참·흉통은 바로 119나 응급실로 가세요. 항응고제 필요 여부는 의료진이 판단해요.",
       "review": {
         "id": "faq.pancreas.081",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-cdc-clots",
+          "pancreas-nci-symptoms"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1195,12 +1305,14 @@
       "a": "구토 위험이 높은 항암제는 투여 전에 예방약을 미리 써요. 흔히 5-HT3 길항제(온단세트론 등), NK1 길항제, 덱사메타손, 올란자핀 같은 성분을 조합해요. 집에서는 처방대로 시간 맞춰 먹는 것이 중요해요. 하루 넘게 물도 못 마실 만큼 토하면 탈수 위험이 있으니 바로 연락하세요.",
       "review": {
         "id": "faq.pancreas.085",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-nausea"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1209,12 +1321,14 @@
       "a": "하루 4~6회 이상 설사, 소변이 줄고 어지러움, 입마름은 탈수 신호라 바로 연락하세요. 일부 항암제(이리노테칸 등)는 심한 설사를 일으킬 수 있어요. 반대로 마약성 진통제는 변비가 흔해요. 며칠째 가스·변이 안 나오고 배가 불러 오며 계속 토하면 장폐색일 수 있어 응급실로 가세요.",
       "review": {
         "id": "faq.pancreas.086",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-diarrhea"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1365,12 +1479,14 @@
       "a": "재발 후 치료는 이전에 어떤 항암을 썼는지, 효과가 얼마나 오래 갔는지, 어떤 부작용이 남았는지에 따라 달라져요. 보통 1차와 다른 계열의 항암을 고르고, 남은 손발 저림 같은 부작용도 약 선택에 영향을 줘요. 이전 치료 약 이름(성분명)·기간·부작용을 정리해 두고 임상시험도 함께 물어보세요.",
       "review": {
         "id": "faq.pancreas.097",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-extent"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1379,12 +1495,14 @@
       "a": "치료 효과(영상·CA19-9·증상), 독성(부작용으로 생활이 얼마나 힘든지), 삶의 질과 나에게 중요한 것을 함께 저울질해요. 효과가 떨어지면 다른 약으로 바꾸고, 부작용이 심하면 용량 조절이나 휴약을 하며, 치료를 쉬고 증상 관리에 집중하는 것도 선택이에요. 의료진과 솔직하게 우선순위를 나누세요.",
       "review": {
         "id": "faq.pancreas.098",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-treatment"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1393,12 +1511,14 @@
       "a": "사전돌봄계획은 앞으로 받을 치료와 돌봄에 대해 미리 내 뜻을 정하고 가족·의료진과 나누는 과정이에요. 19세 이상이면 등록기관에서 사전연명의료의향서를 쓸 수 있고, 연명의료계획서는 담당의와 함께 작성해요. 언제든 바꿀 수 있어요. 대신 결정해 줄 사람과 나에게 중요한 것을 먼저 이야기해 두세요.",
       "review": {
         "id": "faq.pancreas.099",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-lst-advance"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1459,6 +1579,104 @@
       "url": "https://www.ajmc.com/view/rasolute-302-brings-a-transformative-moment-on-pancreatic-cancer-a-60-improvement-in-overall-survival",
       "checkedAt": "2026-11-06",
       "scope": "RAS 표적 경구 신약 2차 치료 생존 개선 3상 결과 존재; 국내 미허가"
+    },
+    "pancreas-nci-diagnosis": {
+      "title": "NCI · Pancreatic Cancer Testing & Diagnosis",
+      "organization": "미국 국립암연구소(NCI)",
+      "url": "https://www.cancer.gov/types/pancreatic/diagnosis",
+      "checkedAt": "2026-11-06",
+      "scope": "췌장 프로토콜 CT·MRI/MRCP·PET·내시경초음파, 조직검사·ERCP, CA19-9 한계, 진단 복강경, 모든 환자 종양 분자검사·배선 유전검사 권고, 병기·절제 가능성 평가"
+    },
+    "pancreas-nci-symptoms": {
+      "title": "NCI · Pancreatic Cancer Symptoms",
+      "organization": "미국 국립암연구소(NCI)",
+      "url": "https://www.cancer.gov/types/pancreatic/symptoms",
+      "checkedAt": "2026-11-06",
+      "scope": "초기 무증상, 황달(진한 소변·옅은 변·가려움), 체중 감소, 복부·등 통증, 새로 생긴 당뇨, 혈전 등 신호; 증상만으로 진단 불가"
+    },
+    "pancreas-nci-treatment": {
+      "title": "NCI · Pancreatic Cancer Treatment",
+      "organization": "미국 국립암연구소(NCI)",
+      "url": "https://www.cancer.gov/types/pancreatic/patient/pancreatic-treatment-pdq",
+      "checkedAt": "2026-11-06",
+      "scope": "휘플·원위부 절제, 담도·십이지장 스텐트, FOLFIRINOX·젬시타빈+nab-파클리탁셀, SBRT, 표적(올라파립·다락소라십 등)·면역(MSI-H/dMMR), 임상시험·완화의료; 미국 FDA 기준이며 국내 허가·급여 증명 아님"
+    },
+    "pancreas-nci-extent": {
+      "title": "NCI · Pancreatic Cancer Treatment by Extent of Disease",
+      "organization": "미국 국립암연구소(NCI)",
+      "url": "https://www.cancer.gov/types/pancreatic/treatment/by-disease-extent",
+      "checkedAt": "2026-11-06",
+      "scope": "절제 가능·경계성·국소진행·전이성·재발 정의와 치료 순서(수술 전후 항암, 항암방사선, 표적·면역 대상 변이, 전이성 항암 약 6개월); 국내 급여 기준은 다루지 않음"
+    },
+    "pancreas-acs-risk": {
+      "title": "ACS · Pancreatic Cancer Risk Factors",
+      "organization": "미국암학회(ACS)",
+      "url": "https://www.cancer.org/cancer/pancreatic-cancer/causes-risks-prevention/risk-factors.html",
+      "checkedAt": "2026-11-06",
+      "scope": "흡연(약 2배)·비만·당뇨·만성췌장염·나이·가족력, BRCA1/2·PALB2·ATM·린치 등 유전 증후군(최대 약 10%); 음주는 주로 만성췌장염 경유로 기술"
+    },
+    "pancreas-cruk-diet": {
+      "title": "Cancer Research UK · Your diet and pancreatic cancer",
+      "organization": "Cancer Research UK",
+      "url": "https://www.cancerresearchuk.org/about-cancer/pancreatic-cancer/living-with/diet",
+      "checkedAt": "2026-11-06",
+      "scope": "췌장효소제를 모든 식사·간식과 함께 복용, 소량 자주 고단백 식사, 기름진 변·더부룩함·체중 감소, 당뇨 관리, 영양사 상담; 영국 처방 체계 기준"
+    },
+    "pancreas-nci-nausea": {
+      "title": "NCI · Nausea and Vomiting and Cancer Treatment",
+      "organization": "미국 국립암연구소(NCI)",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/nausea-vomiting",
+      "checkedAt": "2026-11-06",
+      "scope": "항암 전 예방 구토억제제(5-HT3·NK1 차단제·덱사메타손·올란자핀 등) 조합, 탈수 위험·생활 요령"
+    },
+    "pancreas-nci-diarrhea": {
+      "title": "NCI · Diarrhea and Cancer Treatment",
+      "organization": "미국 국립암연구소(NCI)",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/diarrhea",
+      "checkedAt": "2026-11-06",
+      "scope": "항암·표적·면역(대장염) 치료의 설사, 중증도와 탈수 위험, 의료진 연락; 특정 횟수 기준은 등급(평소 대비 증가)으로 제시"
+    },
+    "pancreas-nci-nerve": {
+      "title": "NCI · Nerve Problems (Peripheral Neuropathy) and Cancer Treatment",
+      "organization": "미국 국립암연구소(NCI)",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/nerve-problems",
+      "checkedAt": "2026-11-06",
+      "scope": "치료 관련 말초신경병증 증상(저림·감각저하·근력저하), 낙상 예방, 조기 보고; 특정 약제명·냉감 과민·용량 조절은 다루지 않음"
+    },
+    "pancreas-nci-cachexia": {
+      "title": "NCI · Cancer Cachexia",
+      "organization": "미국 국립암연구소(NCI)",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/cancer-cachexia",
+      "checkedAt": "2026-11-06",
+      "scope": "악액질은 근육·지방 동시 소실로 영양 지원만으로 회복 어려움, 조기 영양 선별·약물·영양·물리치료"
+    },
+    "pancreas-acs-palliative": {
+      "title": "ACS · Hospice vs. Palliative Care",
+      "organization": "미국암학회(ACS)",
+      "url": "https://www.cancer.org/cancer/end-of-life-care/hospice-care/hospice-vs-palliative-care.html",
+      "checkedAt": "2026-11-06",
+      "scope": "완화의료는 진단 시점부터 치료와 병행 가능, 호스피스는 생애 말기 돌봄이라는 구분; 국내 호스피스 제도·이용 절차는 다룸 아님"
+    },
+    "pancreas-acs-activity": {
+      "title": "ACS · Physical Activity When You Have Cancer",
+      "organization": "미국암학회(ACS)",
+      "url": "https://www.cancer.org/cancer/supportive-care/nutrition-activity-with-cancer/physical-activity-when-you-have-cancer.html",
+      "checkedAt": "2026-11-06",
+      "scope": "암 생존자 주 150~300분 중간 강도 유산소+주 2회 이상 근력운동, 천천히 시작·뼈 전이 등 주의; 수술 직후·혈구 감소 시 기준은 없음"
+    },
+    "pancreas-cdc-clots": {
+      "title": "CDC · Cancer and Blood Clots Infographic",
+      "organization": "미국 질병통제예방센터(CDC)",
+      "url": "https://www.cdc.gov/blood-clots/toolkit/cancer-infographic.html",
+      "checkedAt": "2026-11-06",
+      "scope": "암 관련 혈전 위험 증가, DVT(한쪽 다리 부종·통증·발적)와 폐색전증(호흡곤란·흉통) 신호와 즉시 진료; 항응고제 선택은 다루지 않음"
+    },
+    "pancreas-lst-advance": {
+      "title": "국립연명의료관리기관 · 사전연명의료의향서란",
+      "organization": "국립연명의료관리기관",
+      "url": "https://www.lst.go.kr/addt/medicalintent.do",
+      "checkedAt": "2026-11-06",
+      "scope": "19세 이상 작성, 보건복지부 지정 등록기관 방문 작성, 언제든 변경·철회 가능; 연명의료계획서 세부 절차는 별도 페이지"
     }
   }
 }
