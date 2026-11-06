@@ -272,12 +272,14 @@
       "a": "췌장암은 재발이 수술 후 첫 2년 안에 많아요. 그래서 보통 2년까지는 3~6개월마다, 그 뒤에는 6~12개월마다 CT(또는 MRI)와 CA19-9를 확인해요. 재발을 일찍 찾으면 치료 선택지를 더 넓게 논의할 수 있어요. 내 검진 일정은 담당 의료진에게 확인하고 빠뜨리지 않는 것이 좋아요.",
       "review": {
         "id": "faq.pancreas.017",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-acs-followup"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -384,12 +386,15 @@
       "a": "서로 괜찮은 척하기보다 \"요즘 이런 게 걱정돼\"처럼 지금 마음을 짧게 나누는 것에서 시작해 보세요. 필요한 도움을 구체적으로(병원 동행, 식사 준비 등) 부탁하면 가족도 덜 막막해해요. 예후 이야기는 듣고 싶은 시점과 범위를 먼저 정해도 괜찮아요. 어렵다면 병원 상담팀의 도움을 받을 수 있어요.",
       "review": {
         "id": "faq.pancreas.024",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-family-changes",
+          "common-canceraustralia-family"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -510,12 +515,14 @@
       "a": "간 전이는 초기에는 증상이 없는 경우가 많아 CT·MRI로 먼저 발견되곤 해요. 진행하면 오른쪽 윗배 통증·불편감, 황달, 피로, 식욕 저하, 체중 감소, 배가 불러 오는 느낌이 생길 수 있어요. 황달과 함께 38°C 이상 열·오한이 있으면 담관염일 수 있어 바로 병원에 연락하세요.",
       "review": {
         "id": "faq.pancreas.032",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-macmillan-liver-mets"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -655,12 +662,14 @@
       "a": "치료가 잘 끝나도 췌장암은 재발이 첫 2년 안에 많아요. 재발을 일찍 찾으면 다시 치료 방향을 넓게 논의할 수 있어요. 보통 2년까지 3~6개월, 이후 6~12개월마다 CT(또는 MRI)와 CA19-9를 확인하고, 혈당·영양 상태도 함께 살펴요. 일정은 담당 의료진과 확인하세요.",
       "review": {
         "id": "faq.pancreas.041",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-acs-followup"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -702,12 +711,15 @@
       "a": "여성과 남성의 췌장암 치료 원칙은 같아요. 다만 BRCA1·2 변이가 있으면 유방암·난소암 위험도 함께 높아질 수 있어 본인과 가족의 유전상담이 중요해요. 젊은 여성이라면 치료 전 생식력 보존 상담도 필요할 수 있어요. 점액성 낭종처럼 여성에게 더 흔한 췌장 낭종도 있으니 진료 때 함께 확인하세요.",
       "review": {
         "id": "faq.pancreas.044",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-nci-brca",
+          "common-nci-fertility-women"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -716,12 +728,14 @@
       "a": "IPMN(췌관내 유두상 점액종양)은 대부분 천천히 자라고 암으로 진행하지 않는 경우가 많아요. 다만 크기가 크거나 주췌관을 침범하거나 낭종 벽에 혹(벽재결절)이 보이면 위험이 높아져 수술을 검토해요. 그 밖에는 정해진 간격으로 MRI나 내시경초음파로 추적해요. 내 낭종의 위험 특징을 물어보세요.",
       "review": {
         "id": "faq.pancreas.045",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-ucsf-ipmn"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -795,12 +809,15 @@
       "a": "일반인을 대상으로 한 췌장암 선별검사는 현재 권고되지 않아요. 다만 가족 중 췌장암이 여럿이거나 BRCA2·PALB2 등 관련 유전 변이가 있는 고위험군은 전문 센터에서 MRI나 내시경초음파로 정기 감시를 고려할 수 있어요. 내가 고위험군인지 유전상담을 통해 확인해 보세요.",
       "review": {
         "id": "faq.pancreas.050",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "pancreas-uspstf-screening",
+          "pancreas-nci-surveillance"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -858,12 +875,15 @@
       "a": "근감소증(근육량과 근력이 줄어드는 상태)이 있으면 항암 부작용이 심해지고 수술 회복이 늦어지며, 치료를 계획대로 이어 가기 어려울 수 있어요. 체중이 그대로여도 근육은 줄 수 있어요. 충분한 단백질 섭취와 근력운동이 기본이니, 악력·체성분 평가와 영양 상담이 필요한지 물어보세요.",
       "review": {
         "id": "faq.pancreas.054",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-espen-cancer-2016",
+          "pancreas-acs-activity"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -937,12 +957,14 @@
       "a": "수술과 항암으로 근육과 체력이 크게 떨어지기 쉬운데, 재활치료는 걷기·근력·균형을 되찾아 일상과 치료를 버티는 힘을 길러 줘요. 수술 후 폐 합병증과 혈전 예방에도 도움이 돼요. 손발 저림으로 걷기가 불안하거나 넘어진 적이 있다면 재활의학과 의뢰가 필요한지 담당의에게 물어보세요.",
       "review": {
         "id": "faq.pancreas.059",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-acs-rehab"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -983,12 +1005,15 @@
       "a": "수술 뒤 병리보고서에서는 조직형(췌관선암 등), 종양 크기, 절제연(R0는 잘린 경계에 암이 없음, R1은 현미경적 잔류), 전이된 림프절 수, 분화도, 신경·혈관·림프관 침범을 봐요. 수술 전 항암을 했다면 치료 반응 정도도 적혀 있어요. 이 항목들이 보조항암 계획에 영향을 주니 하나씩 설명을 요청하세요.",
       "review": {
         "id": "faq.pancreas.062",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-pathology",
+          "common-acs-pathology"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -997,12 +1022,14 @@
       "a": "췌장암은 수술 가능 여부와 순서를 정하는 판단이 어렵기 때문에 진단 초기부터 외과·종양내과·소화기내과·영상의학과·방사선종양학과가 함께 보는 다학제 진료가 특히 중요해요. 경계성 절제 가능이나 국소진행이라면 더 그래요. 이 병원에서 췌장암 다학제 진료를 하는지 물어보세요.",
       "review": {
         "id": "faq.pancreas.063",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-macmillan-mdt"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1307,12 +1334,14 @@
       "a": "췌장암 항암제는 심장독성이 흔하지는 않지만, 플루오로우라실·카페시타빈 계열은 드물게 관상동맥 경련으로 흉통을 일으킬 수 있어요. 기존 심장질환이 있거나 흉통·두근거림·숨참이 생기면 심전도, 심초음파, 심장표지자 검사를 고려해요. 치료 전 심장 병력을 꼭 알리고, 흉통은 바로 연락하세요.",
       "review": {
         "id": "faq.pancreas.082",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-ccs-heart"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1321,12 +1350,14 @@
       "a": "많은 항암제는 신장이나 간을 통해 몸 밖으로 나가요. 이 기능이 떨어지면 약이 몸에 오래 남아 부작용이 커질 수 있어 용량을 줄이거나 다른 약을 고르기도 해요. 황달로 빌리루빈이 높으면 담도 배액으로 먼저 낮춘 뒤 항암을 시작하기도 해요. 혈액검사 결과가 용량에 어떤 영향을 주는지 물어보세요.",
       "review": {
         "id": "faq.pancreas.083",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-cruk-chemo-tests"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1449,12 +1480,14 @@
       "a": "\"힘내\"보다 \"오늘 어때?\", \"내가 뭘 도우면 좋을까?\"처럼 묻고 들어 주는 말이 도움이 돼요. \"뭘 잘못 먹어서 그래\" 같은 탓하는 말, 검증되지 않은 치료 권유, 남의 사례와 비교하는 말은 피하세요. 말없이 곁에 있는 것도 큰 지지예요. 보호자 자신도 지치면 상담을 받는 것이 좋아요.",
       "review": {
         "id": "faq.pancreas.091",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-ics-lost-for-words"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1512,12 +1545,14 @@
       "a": "동반질환은 수술 위험, 항암제 선택과 용량, 부작용 관리에 영향을 줘요. 당뇨는 췌장 수술·항암 중 혈당이 크게 흔들릴 수 있고, 심장질환은 일부 약의 부담을 키울 수 있어요. 고혈압·심장약·당뇨약 목록을 정리해 첫 진료 때 보여 주고, 내과 협진이 필요한지 물어보세요.",
       "review": {
         "id": "faq.pancreas.095",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-acs-other-health"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1590,12 +1625,14 @@
       "a": "한 번에 3개씩 골라 가세요. ① 절제 가능성 4단계 중 어디인가요? ② 병기는요? ③ 수술 먼저인가요, 항암 먼저인가요? ④ 배선·종양 유전자검사 결과는요? ⑤ 황달·스텐트 계획은요? ⑥ 항암 종류와 일정은요? ⑦ 임상시험에 참여할 수 있나요? ⑧ 췌장효소·영양 상담이 필요한가요? ⑨ 바로 연락해야 할 증상은요? ⑩ 치료 목표는 무엇인가요? 보호자가 답을 적어 두면 충분해요.",
       "review": {
         "id": "faq.pancreas.100",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S08",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-tx-questions"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     }
   ],
@@ -1922,6 +1959,132 @@
       "url": "https://www.cancer.gov/about-cancer/managing-care/using-trusted-resources",
       "checkedAt": "2026-11-06",
       "scope": "운영 주체·작성/검토 날짜·근거 출처 확인, 제품 판매·'완치' 주장 경계, 개인 체험담으로 치료 결정 금지, 의료진과 상의"
+    },
+    "pancreas-acs-followup": {
+      "title": "ACS · Living as a Pancreatic Cancer Survivor: Follow-up Care",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/types/pancreatic-cancer/after-treatment/follow-up.html",
+      "checkedAt": "2026-11-06",
+      "scope": "무병 상태 시 첫 2년가량 약 3개월마다, 이후 약 6개월마다 진료·CT·혈액검사, 영양·췌장효소 지원. CA19-9·당뇨는 명시 없음"
+    },
+    "common-nci-family-changes": {
+      "title": "NCI · Changes for the Family",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/about-cancer/coping/adjusting-to-cancer/changes-for-family",
+      "checkedAt": "2026-11-06",
+      "scope": "암 진단 후 가족 역할 변화·분담, 도움 요청('약함의 표시가 아님')과 할 일 목록, 가족회의, 대화가 어려울 때 의료진 의뢰"
+    },
+    "common-canceraustralia-family": {
+      "title": "Cancer Australia · Easing the way for family and friends",
+      "organization": "Cancer Australia (Australian Government)",
+      "url": "https://www.canceraustralia.gov.au/impacted-by-cancer/family-and-relationships/easing-the-way-for-family-and-friends",
+      "checkedAt": "2026-11-06",
+      "scope": "환자가 필요한 도움을 구체적으로 말하기, 주변의 다양한 반응, 스스로 고립되지 않기. 진료 동행·상담 서비스는 다루지 않음"
+    },
+    "common-macmillan-liver-mets": {
+      "title": "Macmillan Cancer Support · Symptoms of secondary cancer in the liver",
+      "organization": "Macmillan Cancer Support",
+      "url": "https://macmillan.org.uk/cancer-information-and-support/secondary-liver-cancer/symptoms-of-secondary-cancer-in-the-liver",
+      "checkedAt": "2026-11-06",
+      "scope": "간 전이는 오래 무증상일 수 있음, 식욕 저하·조기 포만, 체중 감소, 오른쪽 윗배 통증, 발열, 복수, 황달, 증상 시 의료진 확인. 원발암별 차이는 다루지 않음"
+    },
+    "pancreas-nci-brca": {
+      "title": "NCI · BRCA Gene Changes: Cancer Risk and Genetic Testing (fact sheet)",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/about-cancer/causes-prevention/genetics/brca-fact-sheet",
+      "checkedAt": "2026-11-06",
+      "scope": "BRCA1(최대 5%)·BRCA2(5~10%) 변이 시 췌장암 평생위험 증가, 유방·난소암 위험, 혈연 가족과 결과 공유"
+    },
+    "pancreas-ucsf-ipmn": {
+      "title": "UCSF Pancreas and Hepatobiliary Surgery · Intraductal Papillary Mucinous Neoplasms (IPMNs)",
+      "organization": "UCSF Department of Surgery",
+      "url": "https://hpbsurgery.ucsf.edu/condition/intraductal-papillary-mucinous-neoplasms-ipmns",
+      "checkedAt": "2026-11-06",
+      "scope": "분지형 IPMN 상당수 무해, 주췌관형은 고도이형성·암 동반 높아 수술 권고, 3cm 초과·벽재결절·주췌관 확장·증상·성장 시 수술 고려, CT·EUS·MRCP 추적. 국내 지침 간격은 별도"
+    },
+    "pancreas-uspstf-screening": {
+      "title": "USPSTF · Pancreatic Cancer: Screening (Final Recommendation, 2019)",
+      "organization": "U.S. Preventive Services Task Force",
+      "url": "https://uspreventiveservicestaskforce.org/uspstf/recommendation/pancreatic-cancer-screening",
+      "checkedAt": "2026-11-06",
+      "scope": "무증상 일반 성인 췌장암 선별검사 반대(D등급), 유전 증후군·가족성 고위험군에는 적용 안 됨. 미국 기준"
+    },
+    "pancreas-nci-surveillance": {
+      "title": "NCI Cancer Currents · Pancreatic cancer surveillance in high-risk people (2024)",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/news-events/cancer-currents-blog/2024/pancreatic-cancer-surveillance",
+      "checkedAt": "2026-11-06",
+      "scope": "가족력·유전 변이 고위험군 대상 연 1회 MRI/EUS 감시 연구(조기 발견·생존 향상), 위양성·위음성 위험. 특정 유전자명(BRCA2·PALB2)은 명시 없음"
+    },
+    "common-espen-cancer-2016": {
+      "title": "ESPEN guidelines on nutrition in cancer patients (Arends et al., Clin Nutr 2017)",
+      "organization": "European Society for Clinical Nutrition and Metabolism (NIHR Cancer and Nutrition 게시본)",
+      "url": "https://cancerandnutrition.nihr.ac.uk/wp-content/uploads/2017/10/ESPEN-guidelines.pdf",
+      "checkedAt": "2026-11-06",
+      "scope": "암 환자 열량 25~30 kcal/kg/일, 단백질 >1 g/kg(가능하면 1.5 g/kg), 유산소+개별 저항운동 권고, 근육량 감소와 사망·수술합병증·용량제한 독성 연관. 간경변·신장질환 개별 목표는 별도"
+    },
+    "common-acs-rehab": {
+      "title": "ACS · Cancer Rehabilitation (Rehab)",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/supportive-care/what-is-cancer-rehabilitation.html",
+      "checkedAt": "2026-11-06",
+      "scope": "암 재활의 목적, 재활의학과·물리·작업·언어치료 등 구성, 피로·근력·균형·보행·신경병증·림프부종 대상, 치료 전 프리햅, 의뢰 방법. 미국 보험 기준이며 국내 암 재활 수가·프로그램은 병원별"
+    },
+    "common-nci-pathology": {
+      "title": "NCI · Pathology Reports (fact sheet)",
+      "organization": "National Cancer Institute",
+      "url": "https://cancer.gov/about-cancer/diagnosis-staging/diagnosis/pathology-reports-fact-sheet",
+      "checkedAt": "2026-11-06",
+      "scope": "병리보고서 구성(육안·현미경 소견, 조직형·등급, 림프절·절제연 상태, 병기, 바이오마커)과 담당의·병리의에게 설명 요청·2차 판독 방법. 암종별 세부 항목(신경·혈관 침범 등)은 다루지 않음"
+    },
+    "common-acs-pathology": {
+      "title": "ACS · Understanding Your Pathology Report",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/diagnosis-staging/tests/biopsy-and-cytology-tests/understanding-your-pathology-report",
+      "checkedAt": "2026-11-06",
+      "scope": "병리보고서 섹션(진단·육안·현미경·요약·추가소견), 조직형·등급·절제연·림프절 상태, 결과 상담·2차 판독. 림프혈관 침범 등 암종별 항목은 개별 확인 필요"
+    },
+    "common-macmillan-mdt": {
+      "title": "Macmillan Cancer Support · Multidisciplinary team (MDT)",
+      "organization": "Macmillan Cancer Support",
+      "url": "https://www.macmillan.org.uk/cancer-information-and-support/kidney-cancer/mdt",
+      "checkedAt": "2026-11-06",
+      "scope": "다학제팀 구성(외과·종양내과·방사선종양·영상·병리·전문간호사 등)과 병기·전신상태·지침·환자 선호를 함께 검토해 치료계획을 정하는 방식. 영국 NHS 체계 기준이며 국내 다학제 진료 수가·운영은 병원별로 다름"
+    },
+    "common-ccs-heart": {
+      "title": "Canadian Cancer Society · Heart problems (side effects)",
+      "organization": "Canadian Cancer Society",
+      "url": "https://cancer.ca/en/treatments/side-effects/heart-problems",
+      "checkedAt": "2026-11-06",
+      "scope": "심장독성 약제(안트라사이클린·트라스투주맙·5-FU·베바시주맙·수니티닙·소라페닙 등), 표적치료 고혈압, 심초음파(LVEF)·심전도·트로포닌/NT-proBNP, 흉통·숨참·두근거림 보고. 카페시타빈·갑상선호르몬은 명시 없음"
+    },
+    "common-cruk-chemo-tests": {
+      "title": "Cancer Research UK · Tests before and during chemotherapy",
+      "organization": "Cancer Research UK",
+      "url": "https://www.cancerresearchuk.org/about-cancer/treatment/chemotherapy/planning/chemotherapy-tests",
+      "checkedAt": "2026-11-06",
+      "scope": "항암 전·중 혈액검사로 신장·간 기능 확인, 기능 변화 시 용량 조정. 약제별 감량 기준은 다루지 않음"
+    },
+    "common-ics-lost-for-words": {
+      "title": "Irish Cancer Society · Lost for Words: How to talk to someone with cancer",
+      "organization": "Irish Cancer Society",
+      "url": "https://www.cancer.ie/sites/default/files/2019-11/lost_for_words_-_how_to_talk_to_someone_with_cancer_2017.pdf",
+      "checkedAt": "2026-11-06",
+      "scope": "들어주기 우선, 대화 의사 묻기, 침묵·곁에 있기, 구체적·작은 실질 도움, 섣부른 조언·치료 권유·'이해해' 피하기. '긍정적으로 생각해'·원인 탓 문구는 직접 다루지 않음"
+    },
+    "common-acs-other-health": {
+      "title": "ACS · When Cancer Isn't Your Only Health Problem",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/making-treatment-decisions/other-health-problems-besides-cancer.html",
+      "checkedAt": "2026-11-06",
+      "scope": "당뇨(스테로이드·항암으로 혈당 상승), 심장질환·고혈압(일부 항암·표적치료 영향), 신장질환(항암 선택·일정 제한), 복용약 목록·주치의 협진. 간기능별 용량 기준은 없음"
+    },
+    "common-nci-tx-questions": {
+      "title": "NCI · Questions to Ask Your Doctor about Treatment",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/about-cancer/treatment/questions",
+      "checkedAt": "2026-11-06",
+      "scope": "치료 선택지·목표·효과 판단, 임상시험, 2차 의견, 바로 연락할 부작용, 복용약·보충제 공유 등 진료실 질문 목록. 암종별 병기·유전자 질문은 포함하지 않음"
     }
   }
 }

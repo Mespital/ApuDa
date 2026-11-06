@@ -823,12 +823,14 @@
       "a": "붉은 고기·가공육, 고지방 식사, 비만이 위험을 높일 수 있다는 연구가 있지만, 특정 음식 하나가 암을 막거나 일으킨다고 단정하긴 어려워요. 채소·과일·통곡물 중심으로 골고루 먹고 적정 체중을 유지하는 것이 전반적으로 권장돼요. 특정 식품·보조제 효과를 내세우는 광고는 의료진과 상의 후 판단하세요.",
       "review": {
         "id": "faq.prostate.051",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S07",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "prostate-acs-risk"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -837,12 +839,14 @@
       "a": "비만은 전립선암 발생 자체와는 관련이 뚜렷하지 않지만, 더 진행된 암이나 치료 후 경과가 나쁜 것과 관련 있다는 연구가 있어요. 호르몬치료 중에는 체중이 늘기 쉬워 혈당·심혈관 관리도 중요해져요. 근력운동과 식사 조절로 적정 체중을 유지하고, 목표 체중을 의료진과 함께 정해 보세요.",
       "review": {
         "id": "faq.prostate.052",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S07",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "prostate-acs-risk"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -947,12 +951,15 @@
       "a": "수술 후 요실금은 골반저근 재활(케겔운동, 바이오피드백 등)로 회복을 도울 수 있고, 발기 기능은 성재활로 관리해요. 호르몬치료로 줄어드는 근육·뼈는 운동 재활이 도움이 돼요. 재활은 일찍 시작할수록 좋으니 비뇨의학과·재활의학과 연계가 가능한지, 병원 재활 프로그램이 있는지 물어보세요.",
       "review": {
         "id": "faq.prostate.059",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S07",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-acs-rehab",
+          "common-acs-activity"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1009,12 +1016,14 @@
       "a": "수술과 방사선이 모두 가능할 때, 고위험·초고위험이거나 림프절·원격 전이가 있을 때, 치료 순서나 호르몬치료 병용을 두고 고민될 때 특히 필요해요. 비뇨의학과·방사선종양학과·종양내과가 함께 보면 한쪽에 치우치지 않은 선택을 할 수 있어요. 다학제 진료나 양쪽 진료과 상담이 가능한지 요청해 보세요.",
       "review": {
         "id": "faq.prostate.063",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S07",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-macmillan-mdt"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1332,12 +1341,14 @@
       "a": "약은 주로 신장이나 간에서 처리·배출돼서, 기능이 떨어져 있으면 약이 몸에 쌓여 부작용이 커질 수 있어요. 그래서 치료 전과 치료 중에 혈액검사로 신장·간 기능을 확인하고, 필요하면 약 종류나 용량을 조절해요. 일부 약은 간 기능을 정기적으로 봐야 해요. 기존 간·신장 질환과 복용약을 꼭 알리세요.",
       "review": {
         "id": "faq.prostate.083",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S07",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-cruk-chemo-tests"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1459,12 +1470,14 @@
       "a": "'힘들면 언제든 말해줘', '같이 알아볼게'처럼 곁에 있다는 말과 구체적인 도움 제안이 좋아요. '긍정적으로 생각해야 낫지', '왜 검진을 안 받았어' 같은 탓하거나 감정을 누르는 말, 근거 없는 치료 권유는 피하세요. 배뇨·성기능 변화는 환자가 먼저 꺼낼 때 담담히 들어주세요. 보호자도 지치면 도움을 요청하세요.",
       "review": {
         "id": "faq.prostate.091",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S07",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-ics-lost-for-words"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1918,6 +1931,41 @@
       "url": "https://www.cancer.gov/about-cancer/managing-care/using-trusted-resources",
       "checkedAt": "2026-11-06",
       "scope": "운영 주체·작성/검토 날짜·근거 출처 확인, 제품 판매·'완치' 주장 경계, 개인 체험담으로 치료 결정 금지, 의료진과 상의"
+    },
+    "prostate-acs-risk": {
+      "title": "ACS · Prostate Cancer Risk Factors",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/types/prostate-cancer/causes-risks-prevention/risk-factors.html",
+      "checkedAt": "2026-11-06",
+      "scope": "식이(유제품 다량 시 약간 증가 가능, 붉은·가공육 제한 권고)와 비만(전체 위험 증가 없음, 빠르게 자라는 암 위험 증가 가능) 근거"
+    },
+    "common-acs-rehab": {
+      "title": "ACS · Cancer Rehabilitation (Rehab)",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/supportive-care/what-is-cancer-rehabilitation.html",
+      "checkedAt": "2026-11-06",
+      "scope": "암 재활의 목적, 재활의학과·물리·작업·언어치료 등 구성, 피로·근력·균형·보행·신경병증·림프부종 대상, 치료 전 프리햅, 의뢰 방법. 미국 보험 기준이며 국내 암 재활 수가·프로그램은 병원별"
+    },
+    "common-macmillan-mdt": {
+      "title": "Macmillan Cancer Support · Multidisciplinary team (MDT)",
+      "organization": "Macmillan Cancer Support",
+      "url": "https://www.macmillan.org.uk/cancer-information-and-support/kidney-cancer/mdt",
+      "checkedAt": "2026-11-06",
+      "scope": "다학제팀 구성(외과·종양내과·방사선종양·영상·병리·전문간호사 등)과 병기·전신상태·지침·환자 선호를 함께 검토해 치료계획을 정하는 방식. 영국 NHS 체계 기준이며 국내 다학제 진료 수가·운영은 병원별로 다름"
+    },
+    "common-cruk-chemo-tests": {
+      "title": "Cancer Research UK · Tests before and during chemotherapy",
+      "organization": "Cancer Research UK",
+      "url": "https://www.cancerresearchuk.org/about-cancer/treatment/chemotherapy/planning/chemotherapy-tests",
+      "checkedAt": "2026-11-06",
+      "scope": "항암 전·중 혈액검사로 신장·간 기능 확인, 기능 변화 시 용량 조정. 약제별 감량 기준은 다루지 않음"
+    },
+    "common-ics-lost-for-words": {
+      "title": "Irish Cancer Society · Lost for Words: How to talk to someone with cancer",
+      "organization": "Irish Cancer Society",
+      "url": "https://www.cancer.ie/sites/default/files/2019-11/lost_for_words_-_how_to_talk_to_someone_with_cancer_2017.pdf",
+      "checkedAt": "2026-11-06",
+      "scope": "들어주기 우선, 대화 의사 묻기, 침묵·곁에 있기, 구체적·작은 실질 도움, 섣부른 조언·치료 권유·'이해해' 피하기. '긍정적으로 생각해'·원인 탓 문구는 직접 다루지 않음"
     }
   }
 }

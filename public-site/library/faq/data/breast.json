@@ -25,12 +25,14 @@
       "a": "자가검진은 한 달에 한 번, 생리가 끝나고 며칠 뒤(폐경 후에는 매달 같은 날) 하는 것이 좋아요. 거울 앞에서 모양·피부·유두 변화를 보고, 누워서 손가락 세 개의 바닥으로 원을 그리며 유방 전체와 겨드랑이까지 만져 보세요. 자가검진은 정기 검진을 대신하지 못하니 검진도 함께 챙기세요.",
       "review": {
         "id": "faq.breast.002",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "breast-ydp-selfexam"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -379,12 +381,15 @@
       "a": "내 마음과 필요한 도움을 구체적으로 말하면 가족도 돕기 쉬워요(예: \"병원에 같이 가 줘\"). 아이에게는 나이에 맞게 짧고 정직하게, 누구 탓도 아니라고 알려 주세요. 가족도 지칠 수 있으니 역할을 나누고, 병원 상담실·사회복지팀의 도움도 받아 보세요.",
       "review": {
         "id": "faq.breast.024",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-talk-children",
+          "common-nci-family-changes"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -409,12 +414,15 @@
       "a": "약은 여유 있게 챙기고, 진단·치료 요약과 약 목록(해외라면 영문)을 가지고 다니세요. 장시간 이동 때는 자주 일어나 움직이고, 림프부종이 있다면 압박 소매 사용을 의료진과 상의하세요. 백혈구가 낮은 시기에는 사람 많은 곳을 조심하고, 여행 일정은 담당의에게 미리 확인하세요.",
       "review": {
         "id": "faq.breast.026",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-cdc-travel-immuno",
+          "breast-nci-lymphedema"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -826,12 +834,14 @@
       "a": "스트레스가 직접 유방암을 일으킨다는 근거는 확실하지 않아요. 그러니 '내가 스트레스를 받아서 생겼다'고 자책하지 않아도 돼요. 다만 스트레스는 잠·식사·운동을 흐트러뜨려 회복과 삶의 질에 영향을 줄 수 있으니, 힘들면 상담이나 마음 돌봄 도움을 받아 보세요.",
       "review": {
         "id": "faq.breast.052",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-stress"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1002,12 +1012,14 @@
       "a": "다학제 진료는 외과·종양내과·방사선종양학과·영상의학과·병리과 등이 함께 치료를 정하는 방식이에요. 수술 전 약물치료를 고려할 때(HER2 양성·삼중음성의 큰 종양, 림프절 양성), 3기, 재건이나 유전 문제가 얽힐 때, 젊은 나이·임신, 전이·재발 때 특히 도움이 돼요. 병원에서 가능한지 물어보세요.",
       "review": {
         "id": "faq.breast.063",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-macmillan-mdt"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1080,12 +1092,14 @@
       "a": "수술 전 약물치료 중·후에 처음 찍은 기준 영상과 비교해 종양이 얼마나 줄었는지 봐요. MRI는 민감하지만 염증·흉터 때문에 실제보다 크거나 작게 보일 수 있어요. 영상에서 사라져 보여도 최종 판단은 수술 후 병리 결과(남은 암 여부)로 해요. 결과지의 크기 변화와 의미를 담당의에게 물어보세요.",
       "review": {
         "id": "faq.breast.068",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-recist11"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1322,12 +1336,14 @@
       "a": "많은 항암제는 간에서 분해되고 신장으로 빠져나가요. 간·신장 기능이 떨어지면 약이 몸에 쌓여 부작용이 커질 수 있어 용량을 조절하거나 약을 바꾸기도 해요. 그래서 치료 전과 치료 중에 혈액검사를 하니, 먹는 약·한약·건강기능식품을 빠짐없이 알려 주세요.",
       "review": {
         "id": "faq.breast.083",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-cruk-chemo-tests"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1449,12 +1465,14 @@
       "a": "\"같이 준비하자\", \"필요한 거 말해 줘\"처럼 곁에 있다는 말과 조용히 들어 주는 것이 힘이 돼요. \"왜 검진을 안 받았어\", \"마음먹기에 달렸어\", 다른 사람과의 비교, 검증 안 된 요법 권유는 피하세요. 무슨 말을 할지 모르겠다면 \"어떻게 도와주면 좋을까?\"라고 물어보세요.",
       "review": {
         "id": "faq.breast.091",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-ics-lost-for-words"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1512,12 +1530,15 @@
       "a": "동반질환은 약 선택과 용량에 영향을 줘요. 스테로이드는 혈당을 올릴 수 있고, 심장질환이 있으면 안트라사이클린이나 HER2 표적치료를 더 신중히 정해요. 당뇨는 손발 저림을 악화시킬 수 있어요. 치료 전 모든 질환과 약을 알리고, 내과 주치의와 함께 관리하세요.",
       "review": {
         "id": "faq.breast.095",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-acs-other-health",
+          "common-ccs-heart"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1558,12 +1579,15 @@
       "a": "영상·증상으로 본 효과, 일상을 방해하는 부작용, 내가 원하는 삶의 질을 함께 따져요. 암이 진행하면 다음 치료로 바꾸고, 부작용이 크면 용량 조절이나 휴약을 논의해요. 내가 중요하게 여기는 것을 의료진에게 말하고, 치료를 잠시 쉬는 선택도 함께 이야기할 수 있어요.",
       "review": {
         "id": "faq.breast.098",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S01",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-acs-tx-stop",
+          "common-cruk-chemo-change"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1930,6 +1954,97 @@
       "url": "https://www.cancer.gov/about-cancer/managing-care/using-trusted-resources",
       "checkedAt": "2026-11-06",
       "scope": "운영 주체·작성/검토 날짜·근거 출처 확인, 제품 판매·'완치' 주장 경계, 개인 체험담으로 치료 결정 금지, 의료진과 상의"
+    },
+    "breast-ydp-selfexam": {
+      "title": "영등포구 보건소 · 유방 자가검진",
+      "organization": "영등포구 보건소",
+      "url": "https://www.ydp.go.kr/health/contents.do?key=3608",
+      "checkedAt": "2026-11-06",
+      "scope": "월경 후 3~4일 자가검진 시기, 거울 앞 관찰, 손가락 끝으로 원 그리며 촉진, 겨드랑이 멍울 확인. 폐경 후 시기·세 손가락 표현은 없음, 국가검진 대체 아님"
+    },
+    "common-nci-talk-children": {
+      "title": "NCI · Talking to Children about Your Cancer",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/about-cancer/coping/adjusting-to-cancer/talk-to-children",
+      "checkedAt": "2026-11-06",
+      "scope": "자녀에게 정직하게·나이에 맞게 알리기, '네 탓이 아니다' 안심시키기, 청소년·성인 자녀 대화법"
+    },
+    "common-nci-family-changes": {
+      "title": "NCI · Changes for the Family",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/about-cancer/coping/adjusting-to-cancer/changes-for-family",
+      "checkedAt": "2026-11-06",
+      "scope": "암 진단 후 가족 역할 변화·분담, 도움 요청('약함의 표시가 아님')과 할 일 목록, 가족회의, 대화가 어려울 때 의료진 의뢰"
+    },
+    "common-cdc-travel-immuno": {
+      "title": "CDC · Travelers with Weakened Immune Systems",
+      "organization": "Centers for Disease Control and Prevention",
+      "url": "https://wwwnc.cdc.gov/travel/page/weakened-immune-systems",
+      "checkedAt": "2026-11-06",
+      "scope": "출발 4~6주 전 의료진 상담, 항암 중 생백신(황열 등) 금지, 약 넉넉히·접종기록 지참, 손위생·음식 주의. 덤핑·림프부종 등 수술 후 문제는 다루지 않음"
+    },
+    "common-nci-stress": {
+      "title": "NCI · Stress and Cancer (fact sheet)",
+      "organization": "National Cancer Institute",
+      "url": "https://cancer.gov/about-cancer/coping/feelings/stress-fact-sheet",
+      "checkedAt": "2026-11-06",
+      "scope": "스트레스와 암 발생 연관은 불분명(간접 경로 가능), 생존 영향 근거 약함, 사회적 지지·운동·디스트레스 선별·심리치료"
+    },
+    "common-macmillan-mdt": {
+      "title": "Macmillan Cancer Support · Multidisciplinary team (MDT)",
+      "organization": "Macmillan Cancer Support",
+      "url": "https://www.macmillan.org.uk/cancer-information-and-support/kidney-cancer/mdt",
+      "checkedAt": "2026-11-06",
+      "scope": "다학제팀 구성(외과·종양내과·방사선종양·영상·병리·전문간호사 등)과 병기·전신상태·지침·환자 선호를 함께 검토해 치료계획을 정하는 방식. 영국 NHS 체계 기준이며 국내 다학제 진료 수가·운영은 병원별로 다름"
+    },
+    "common-recist11": {
+      "title": "EORTC/NCI · RECIST 1.1 (Eisenhauer et al., Eur J Cancer 2009)",
+      "organization": "RECIST Working Group (NCI CTEP 게시)",
+      "url": "https://dctd.cancer.gov/research/ctep-trials/for-sites/recist-guidelines-v11.pdf",
+      "checkedAt": "2026-11-06",
+      "scope": "고형암 영상 반응평가 기준: 기준 영상 대비 완전관해·부분관해(≥30% 감소)·진행(≥20% 증가 또는 새 병변)·안정. 전문가용 임상시험 기준이며 면역치료 가성진행·PET 대사반응·담관 스텐트 영향은 다루지 않음"
+    },
+    "common-cruk-chemo-tests": {
+      "title": "Cancer Research UK · Tests before and during chemotherapy",
+      "organization": "Cancer Research UK",
+      "url": "https://www.cancerresearchuk.org/about-cancer/treatment/chemotherapy/planning/chemotherapy-tests",
+      "checkedAt": "2026-11-06",
+      "scope": "항암 전·중 혈액검사로 신장·간 기능 확인, 기능 변화 시 용량 조정. 약제별 감량 기준은 다루지 않음"
+    },
+    "common-ics-lost-for-words": {
+      "title": "Irish Cancer Society · Lost for Words: How to talk to someone with cancer",
+      "organization": "Irish Cancer Society",
+      "url": "https://www.cancer.ie/sites/default/files/2019-11/lost_for_words_-_how_to_talk_to_someone_with_cancer_2017.pdf",
+      "checkedAt": "2026-11-06",
+      "scope": "들어주기 우선, 대화 의사 묻기, 침묵·곁에 있기, 구체적·작은 실질 도움, 섣부른 조언·치료 권유·'이해해' 피하기. '긍정적으로 생각해'·원인 탓 문구는 직접 다루지 않음"
+    },
+    "common-acs-other-health": {
+      "title": "ACS · When Cancer Isn't Your Only Health Problem",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/making-treatment-decisions/other-health-problems-besides-cancer.html",
+      "checkedAt": "2026-11-06",
+      "scope": "당뇨(스테로이드·항암으로 혈당 상승), 심장질환·고혈압(일부 항암·표적치료 영향), 신장질환(항암 선택·일정 제한), 복용약 목록·주치의 협진. 간기능별 용량 기준은 없음"
+    },
+    "common-ccs-heart": {
+      "title": "Canadian Cancer Society · Heart problems (side effects)",
+      "organization": "Canadian Cancer Society",
+      "url": "https://cancer.ca/en/treatments/side-effects/heart-problems",
+      "checkedAt": "2026-11-06",
+      "scope": "심장독성 약제(안트라사이클린·트라스투주맙·5-FU·베바시주맙·수니티닙·소라페닙 등), 표적치료 고혈압, 심초음파(LVEF)·심전도·트로포닌/NT-proBNP, 흉통·숨참·두근거림 보고. 카페시타빈·갑상선호르몬은 명시 없음"
+    },
+    "common-acs-tx-stop": {
+      "title": "ACS · If Cancer Treatments Stop Working",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/making-treatment-decisions/if-cancer-treatments-stop-working.html",
+      "checkedAt": "2026-11-06",
+      "scope": "치료 효과가 줄 때 다음 치료·임상시험, 이득과 부작용·삶의 질 비교, 목표 중심 결정, 의료진 질문, 완화의료·호스피스. 국내 연명의료 절차는 별도"
+    },
+    "common-cruk-chemo-change": {
+      "title": "Cancer Research UK · Changing your chemotherapy plan",
+      "organization": "Cancer Research UK",
+      "url": "https://www.cancerresearchuk.org/about-cancer/treatment/chemotherapy/planning/changing-your-plan",
+      "checkedAt": "2026-11-06",
+      "scope": "혈구 감소 시 지연, 장기 영향 시 용량 감량, 스캔·종양표지자상 반응 부족 시 약제 변경. 치료 중단 결정 자체는 다루지 않음"
     }
   }
 }

@@ -438,12 +438,14 @@
       "a": "상처가 완전히 아문 뒤 의료진 안내에 따라 실리콘 겔·시트를 쓰고, 6개월~1년 정도 자외선 차단을 하면 흉터가 덜 도드라지는 데 도움이 돼요. 흉터는 시간이 지나며 대개 옅어지지만, 붉게 솟아오르거나(비후성 흉터·켈로이드) 가렵다면 주사·레이저 치료를 상의할 수 있어요. 언제부터 관리를 시작할지 담당의에게 물어보세요.",
       "review": {
         "id": "faq.thyroid.027",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S05",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "thyroid-ata-incision"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -452,12 +454,15 @@
       "a": "갑상선 수술이나 방사성요오드는 일반 항암제처럼 머리카락이 많이 빠지게 하지는 않아요. 다만 호르몬 수치가 너무 낮거나 높을 때, 수술·진단 스트레스 뒤 몇 달 사이에 일시적으로 빠질 수 있고, 일부 표적치료제도 머리카락이 가늘어지게 해요. 대부분 회복되니, 심하면 TSH 검사와 함께 원인을 의료진과 확인하세요.",
       "review": {
         "id": "faq.thyroid.028",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S05",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "thyroid-btf-hair",
+          "thyroid-ata-hypo"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -483,12 +488,14 @@
       "a": "호르몬제 용량이 맞지 않거나 방사성요오드 준비로 약을 끊은 기간에 생기는 갑상선기능저하는 멍함·건망증을 흔히 일으켜요. 불안, 수면 부족, 수술 회복도 집중력에 영향을 줘요. 대부분 호르몬이 맞춰지면 좋아져요. 오래가면 TSH 수치를 확인하고, 업무에 지장이 크면 일정 조정을 의료진·회사와 상의하세요.",
       "review": {
         "id": "faq.thyroid.030",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S05",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "thyroid-ata-hypo"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -497,12 +504,15 @@
       "a": "불안, 수술 후 목 불편감, 호르몬 수치 변화(많으면 잠이 안 오고, 적으면 낮에 졸림)가 수면을 흔들 수 있어요. 같은 시간에 자고 일어나기, 낮잠 줄이기, 잠들기 전 화면·카페인 줄이기가 기본이에요. 호르몬제를 먹은 뒤 두근거림·불면이 생기면 용량 문제일 수 있으니 TSH를 확인하고, 수면제는 의료진과 상의 후 쓰세요.",
       "review": {
         "id": "faq.thyroid.031",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S05",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "thyroid-ata-hypo",
+          "thyroid-mayo-hyper"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -545,12 +555,14 @@
       "a": "수술 부위가 붓거나 아물면서 피부와 근육 사이가 당기거나 붙어서(유착) 목에 뭔가 걸린 느낌이 흔히 생겨요. 대개 몇 주~몇 달에 걸쳐 줄어들고, 의료진이 알려준 목 스트레칭이 도움이 돼요. 다만 음식이 실제로 걸리거나 삼키기 어렵고, 목소리가 계속 쉬거나 목에 새 멍울이 만져지면 진료 때 꼭 말하세요.",
       "review": {
         "id": "faq.thyroid.034",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S05",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "thyroid-cruk-surgery"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -707,12 +719,14 @@
       "a": "남성은 여성보다 갑상선암이 적지만, 일부 연구에서 진단 때 종양이 크거나 림프절 전이가 있는 경우가 상대적으로 많다고 알려져 있어요. 치료 원칙은 성별과 상관없이 조직형과 재발 위험도로 정해요. 방사성요오드 후에는 약 3개월이 지나 임신을 계획하도록 권하니, 자녀 계획이 있다면 미리 의료진과 상의하세요.",
       "review": {
         "id": "faq.thyroid.044",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S05",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "thyroid-acs-risk"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -785,12 +799,14 @@
       "a": "갑상선암은 대부분 통증이 없어요. 갑상선 부위가 아프고 열이 나면 아급성 갑상선염 같은 염증이 흔한 원인이고, 결절 안 출혈로 갑자기 아프기도 해요. 다만 목 덩이가 빠르게 커지며 아프거나 숨이 차고 삼키기 어렵다면 진행이 빠른 암이나 출혈일 수 있으니 바로 진료를 받고, 숨이 많이 차면 119에 연락하세요.",
       "review": {
         "id": "faq.thyroid.049",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S05",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "thyroid-medlineplus-subacute"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -831,12 +847,14 @@
       "a": "스트레스가 갑상선암을 일으킨다는 근거는 확립되어 있지 않아요. 그러니 ‘내가 스트레스를 받아서 생겼다’고 자책하지 않아도 돼요. 다만 진단 후 스트레스는 수면·식사·회복에 영향을 주므로 돌보는 것이 중요해요. 마음의 고통이 0~10 중 4점 이상이면 다음 진료에서 그대로 말하고, 상담 연결을 요청하세요.",
       "review": {
         "id": "faq.thyroid.052",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S05",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-stress"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -861,12 +879,15 @@
       "a": "갑상선호르몬을 많이 먹어 TSH를 낮게 유지하면 뼈가 약해질 수 있고, 특히 폐경 후 여성에서 골다공증 위험이 커져요. 부갑상선 기능저하로 칼슘 관리가 필요한 경우도 있어요. 그래서 TSH 목표는 위험도에 맞춰 과도한 억제를 피하는 방향으로 정해요. 골밀도 검사가 필요한지, 칼슘·비타민 D가 충분한지 의료진에게 물어보세요.",
       "review": {
         "id": "faq.thyroid.054",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S05",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "thyroid-ata-hypo",
+          "thyroid-mayo-hyper"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -988,12 +1009,15 @@
       "a": "조직형(유두·여포 등과 공격적 아형 여부), 종양 크기와 개수(다발성), 갑상선 밖 침범, 절제연(잘라낸 가장자리에 암이 남았는지), 림프절 전이 개수·크기, 혈관 침범 여부를 확인하세요. 이 항목들로 재발 위험도와 방사성요오드·추가 수술 여부가 정해져요. 결과지 사본을 받아 모르는 단어는 그대로 질문하세요.",
       "review": {
         "id": "faq.thyroid.062",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S05",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-pathology",
+          "common-acs-pathology"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1002,12 +1026,14 @@
       "a": "저위험 분화암은 갑상선 전문 외과·내과 협진으로 충분한 경우가 많아요. 반면 역형성암(몇 주 사이에도 빠르게 커질 수 있음), 수질암, 기관·식도 침범이 있는 진행암, 원격전이나 방사성요오드 불응성 암은 외과·내분비내과·핵의학과·방사선종양학과·종양내과가 함께 보는 다학제 진료가 도움이 돼요. 해당되는지 담당의에게 물어보세요.",
       "review": {
         "id": "faq.thyroid.063",
-        "version": "20261106-source-fix-v1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S05",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-macmillan-mdt"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1229,12 +1255,14 @@
       "a": "수술·방사성요오드 위주의 치료라면 대부분 평소처럼 골고루 먹으면 충분해요. 진행암이나 표적치료로 체중이 줄 때는 일반적인 암 환자 기준으로 체중 1kg당 하루 단백질 약 1~1.5g, 열량 약 25~30kcal가 흔히 쓰이지만 개인마다 달라요. 체중이 한 달에 5% 넘게 줄면 영양상담을 요청하세요. 신장 질환이 있다면 단백질 목표를 따로 확인하세요.",
       "review": {
         "id": "faq.thyroid.077",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S05",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-espen-cancer-2016"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1308,12 +1336,15 @@
       "a": "TSH를 낮게 유지하려고 호르몬을 많이 먹으면 두근거림·심방세동(부정맥) 위험이 커질 수 있고, 일부 표적치료제는 고혈압, 드물게 심장 기능 저하나 심전도 이상(QT 연장)을 일으켜요. 그래서 고령·심장질환이 있거나 표적치료를 시작할 때 심전도·혈압 점검, 필요 시 심초음파를 해요. 두근거림·숨참이 생기면 의료진에게 알리세요.",
       "review": {
         "id": "faq.thyroid.082",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S05",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-ccs-heart",
+          "thyroid-mayo-hyper"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1451,12 +1482,14 @@
       "a": "“어떻게 도와주면 좋을까?”, “걱정되는 게 있으면 말해줘”처럼 환자의 마음을 묻고 들어주는 말이 좋아요. “착한 암이라 별거 아니래”, “다른 사람은 더 힘들어” 같은 말은 감정을 무시하는 것처럼 들릴 수 있어 피하는 것이 좋아요. 원인을 탓하는 말이나 검증되지 않은 치료 권유도 삼가세요. 말보다 동행·집안일 같은 구체적 도움이 힘이 돼요.",
       "review": {
         "id": "faq.thyroid.091",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S05",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-ics-lost-for-words"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1513,12 +1546,14 @@
       "a": "당뇨는 수술 상처 회복과 감염에 영향을 주고, 고혈압은 일부 표적치료제가 혈압을 더 올릴 수 있어 관리가 중요해요. 심장질환이 있으면 TSH를 낮게 유지하는 정도를 완화하는 등 호르몬제 목표를 조정할 수 있어요. 지병과 복용약 목록을 정리해 갑상선 담당의와 원래 주치의가 서로 알 수 있게 공유하세요.",
       "review": {
         "id": "faq.thyroid.095",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S05",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-acs-other-health"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1559,12 +1594,14 @@
       "a": "효과는 영상·종양표지자 추세로, 독성은 부작용이 일상과 다른 장기에 주는 부담으로, 삶의 질은 내가 원하는 생활을 할 수 있는지로 판단해요. 표적치료는 부작용이 있으면 쉬거나 용량을 줄여 이어가기도 해요. 효과보다 부담이 커지면 다른 약으로 바꾸거나 치료를 쉬는 것도 선택지예요. 내 우선순위를 의료진에게 솔직히 말하세요.",
       "review": {
         "id": "faq.thyroid.098",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S05",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-acs-tx-stop"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1590,12 +1627,14 @@
       "a": "한 번에 3개씩 골라 가세요. ① 조직형과 Bethesda 단계는요? ② 크기·위치·림프절·갑상선 밖 침범은요? ③ 제 재발 위험도는 어디에 해당하나요? ④ 적극적 관찰이 가능한가요? ⑤ 엽절제와 전절제 중 무엇을 권하시나요? ⑥ 수술 방법별 장단점은요? ⑦ 방사성요오드가 필요한가요? ⑧ 호르몬제와 TSH 목표는요? ⑨ 임신·수유 계획은 어떻게 맞추나요? ⑩ 바로 연락해야 할 수술 후 증상은요? 보호자가 답을 적어 두면 좋아요.",
       "review": {
         "id": "faq.thyroid.100",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S05",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-tx-questions"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     }
   ],
@@ -1804,6 +1843,118 @@
       "url": "https://www.cancer.gov/about-cancer/managing-care/using-trusted-resources",
       "checkedAt": "2026-11-06",
       "scope": "운영 주체·작성/검토 날짜·근거 출처 확인, 제품 판매·'완치' 주장 경계, 개인 체험담으로 치료 결정 금지, 의료진과 상의"
+    },
+    "thyroid-ata-incision": {
+      "title": "ATA · Care of the Surgical Incision",
+      "organization": "American Thyroid Association",
+      "url": "https://www.thyroid.org/care-surgical-incision/",
+      "checkedAt": "2026-11-06",
+      "scope": "갑상선 수술 흉터 12~18개월 성숙, 자외선 차단, 수술 2주 후 마사지, 실리콘 시트·겔 3~4개월, 붉고 솟은 흉터에 레이저·스테로이드 주사"
+    },
+    "thyroid-btf-hair": {
+      "title": "British Thyroid Foundation · Hair loss and thyroid disorders",
+      "organization": "British Thyroid Foundation",
+      "url": "https://www.btf-thyroid.org/hair-loss-and-thyroid-disorders",
+      "checkedAt": "2026-11-06",
+      "scope": "심하거나 오래된 기능저하·항진 시 전반적 탈모, 큰 수술·질병 후 휴지기 탈모(일시적), 치료 후 수개월에 걸쳐 회복, 고용량 비오틴 검사 간섭. 표적치료제 모발 변화는 다루지 않음"
+    },
+    "thyroid-ata-hypo": {
+      "title": "ATA · Hypothyroidism (patient booklet)",
+      "organization": "American Thyroid Association",
+      "url": "https://www.thyroid.org/wp-content/uploads/patients/brochures/Hypothyroidism_web_booklet.pdf",
+      "checkedAt": "2026-11-06",
+      "scope": "갑상선기능저하 증상(피로·졸림·기억력·사고 둔화·우울·머리카락 가늘어짐·경미한 체중 증가), 갑상선암 TSH 억제 시 골밀도 감시"
+    },
+    "thyroid-mayo-hyper": {
+      "title": "Mayo Clinic · Hyperthyroidism (overactive thyroid)",
+      "organization": "Mayo Clinic",
+      "url": "https://www.mayoclinic.org/diseases-conditions/hyperthyroidism/symptoms-causes/syc-20373659",
+      "checkedAt": "2026-11-06",
+      "scope": "갑상선기능항진 증상(빠르거나 불규칙한 맥박·두근거림·불안·수면 문제), 합병증(심방세동·심부전·골다공증). 호르몬제 과량 복용 원인은 명시 없음"
+    },
+    "thyroid-acs-risk": {
+      "title": "ACS · Thyroid Cancer Risk Factors",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/types/thyroid-cancer/causes-risks-prevention/risk-factors.html",
+      "checkedAt": "2026-11-06",
+      "scope": "갑상선암은 여성에서 약 3배 흔함, 연령 정점 차이. 남성의 진행 양상 차이는 다루지 않음"
+    },
+    "thyroid-medlineplus-subacute": {
+      "title": "MedlinePlus · Subacute thyroiditis",
+      "organization": "U.S. National Library of Medicine",
+      "url": "https://medlineplus.gov/ency/article/000375.htm",
+      "checkedAt": "2026-11-06",
+      "scope": "아급성 갑상선염의 대표 증상인 목 통증(턱·귀 방사), 압통·발열·삼킴 통증. 결절 내 출혈·역형성암은 다루지 않음"
+    },
+    "common-nci-stress": {
+      "title": "NCI · Stress and Cancer (fact sheet)",
+      "organization": "National Cancer Institute",
+      "url": "https://cancer.gov/about-cancer/coping/feelings/stress-fact-sheet",
+      "checkedAt": "2026-11-06",
+      "scope": "스트레스와 암 발생 연관은 불분명(간접 경로 가능), 생존 영향 근거 약함, 사회적 지지·운동·디스트레스 선별·심리치료"
+    },
+    "common-nci-pathology": {
+      "title": "NCI · Pathology Reports (fact sheet)",
+      "organization": "National Cancer Institute",
+      "url": "https://cancer.gov/about-cancer/diagnosis-staging/diagnosis/pathology-reports-fact-sheet",
+      "checkedAt": "2026-11-06",
+      "scope": "병리보고서 구성(육안·현미경 소견, 조직형·등급, 림프절·절제연 상태, 병기, 바이오마커)과 담당의·병리의에게 설명 요청·2차 판독 방법. 암종별 세부 항목(신경·혈관 침범 등)은 다루지 않음"
+    },
+    "common-acs-pathology": {
+      "title": "ACS · Understanding Your Pathology Report",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/diagnosis-staging/tests/biopsy-and-cytology-tests/understanding-your-pathology-report",
+      "checkedAt": "2026-11-06",
+      "scope": "병리보고서 섹션(진단·육안·현미경·요약·추가소견), 조직형·등급·절제연·림프절 상태, 결과 상담·2차 판독. 림프혈관 침범 등 암종별 항목은 개별 확인 필요"
+    },
+    "common-macmillan-mdt": {
+      "title": "Macmillan Cancer Support · Multidisciplinary team (MDT)",
+      "organization": "Macmillan Cancer Support",
+      "url": "https://www.macmillan.org.uk/cancer-information-and-support/kidney-cancer/mdt",
+      "checkedAt": "2026-11-06",
+      "scope": "다학제팀 구성(외과·종양내과·방사선종양·영상·병리·전문간호사 등)과 병기·전신상태·지침·환자 선호를 함께 검토해 치료계획을 정하는 방식. 영국 NHS 체계 기준이며 국내 다학제 진료 수가·운영은 병원별로 다름"
+    },
+    "common-espen-cancer-2016": {
+      "title": "ESPEN guidelines on nutrition in cancer patients (Arends et al., Clin Nutr 2017)",
+      "organization": "European Society for Clinical Nutrition and Metabolism (NIHR Cancer and Nutrition 게시본)",
+      "url": "https://cancerandnutrition.nihr.ac.uk/wp-content/uploads/2017/10/ESPEN-guidelines.pdf",
+      "checkedAt": "2026-11-06",
+      "scope": "암 환자 열량 25~30 kcal/kg/일, 단백질 >1 g/kg(가능하면 1.5 g/kg), 유산소+개별 저항운동 권고, 근육량 감소와 사망·수술합병증·용량제한 독성 연관. 간경변·신장질환 개별 목표는 별도"
+    },
+    "common-ccs-heart": {
+      "title": "Canadian Cancer Society · Heart problems (side effects)",
+      "organization": "Canadian Cancer Society",
+      "url": "https://cancer.ca/en/treatments/side-effects/heart-problems",
+      "checkedAt": "2026-11-06",
+      "scope": "심장독성 약제(안트라사이클린·트라스투주맙·5-FU·베바시주맙·수니티닙·소라페닙 등), 표적치료 고혈압, 심초음파(LVEF)·심전도·트로포닌/NT-proBNP, 흉통·숨참·두근거림 보고. 카페시타빈·갑상선호르몬은 명시 없음"
+    },
+    "common-ics-lost-for-words": {
+      "title": "Irish Cancer Society · Lost for Words: How to talk to someone with cancer",
+      "organization": "Irish Cancer Society",
+      "url": "https://www.cancer.ie/sites/default/files/2019-11/lost_for_words_-_how_to_talk_to_someone_with_cancer_2017.pdf",
+      "checkedAt": "2026-11-06",
+      "scope": "들어주기 우선, 대화 의사 묻기, 침묵·곁에 있기, 구체적·작은 실질 도움, 섣부른 조언·치료 권유·'이해해' 피하기. '긍정적으로 생각해'·원인 탓 문구는 직접 다루지 않음"
+    },
+    "common-acs-other-health": {
+      "title": "ACS · When Cancer Isn't Your Only Health Problem",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/making-treatment-decisions/other-health-problems-besides-cancer.html",
+      "checkedAt": "2026-11-06",
+      "scope": "당뇨(스테로이드·항암으로 혈당 상승), 심장질환·고혈압(일부 항암·표적치료 영향), 신장질환(항암 선택·일정 제한), 복용약 목록·주치의 협진. 간기능별 용량 기준은 없음"
+    },
+    "common-acs-tx-stop": {
+      "title": "ACS · If Cancer Treatments Stop Working",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/making-treatment-decisions/if-cancer-treatments-stop-working.html",
+      "checkedAt": "2026-11-06",
+      "scope": "치료 효과가 줄 때 다음 치료·임상시험, 이득과 부작용·삶의 질 비교, 목표 중심 결정, 의료진 질문, 완화의료·호스피스. 국내 연명의료 절차는 별도"
+    },
+    "common-nci-tx-questions": {
+      "title": "NCI · Questions to Ask Your Doctor about Treatment",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/about-cancer/treatment/questions",
+      "checkedAt": "2026-11-06",
+      "scope": "치료 선택지·목표·효과 판단, 임상시험, 2차 의견, 바로 연락할 부작용, 복용약·보충제 공유 등 진료실 질문 목록. 암종별 병기·유전자 질문은 포함하지 않음"
     }
   }
 }

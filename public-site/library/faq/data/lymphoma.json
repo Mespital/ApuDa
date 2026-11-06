@@ -357,12 +357,14 @@
       "a": "항암 중 식욕 저하·메스꺼움으로 체중이 줄기도 하고, 스테로이드나 활동량 감소로 체중이 늘기도 해요. 근육이 빠지면서 체중은 그대로여도 체력이 떨어질 수 있어요. 원인 모를 급한 체중 감소는 재발 신호일 수도 있으니 체중을 기록하고 변화가 크면 담당의에게 알려 주세요.",
       "review": {
         "id": "faq.lymphoma.022",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S11",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-acs-weight-changes"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -387,12 +389,15 @@
       "a": "치료가 끝나도 몸과 마음의 회복에는 시간이 걸린다는 점을 가족과 솔직하게 나누는 것이 좋아요. “무엇이 힘들고, 어떤 도움이 필요한지”를 구체적으로 말하면 서로 오해가 줄어요. 추적검사 일정과 바로 연락해야 할 증상도 가족과 함께 공유해 두세요.",
       "review": {
         "id": "faq.lymphoma.024",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S11",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-family-changes",
+          "common-canceraustralia-family"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -547,12 +552,14 @@
       "a": "빈혈, 폐렴 같은 감염, 일부 항암제나 가슴 방사선에 의한 폐 손상, 심장 기능 저하, 혈전 등이 원인일 수 있어요. 면역치료 중 숨참·기침은 면역 관련 폐렴일 수도 있어요. 갑자기 숨이 차거나 흉통이 있으면 119를 이용하고, 서서히 심해지면 바로 담당 의료진에게 알려 주세요.",
       "review": {
         "id": "faq.lymphoma.034",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S11",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-cardiopulmonary"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -675,12 +682,14 @@
       "a": "가족 중 림프종이나 혈액암 환자가 있으면 위험이 조금 높아진다는 연구가 있지만, 대부분의 림프종은 유전되는 병이 아니에요. 가족력이 있다고 해서 꼭 림프종이 생기는 것도 아니에요. 걱정된다면 증상이 있을 때 진료를 받고, 일반 건강검진을 꾸준히 받는 것이 좋아요.",
       "review": {
         "id": "faq.lymphoma.042",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S11",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lymphoma-acs-risk"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -689,12 +698,15 @@
       "a": "소아 림프종은 버킷림프종, 림프모구성 림프종 같은 빠르게 자라는 아형이 많고, 치료 반응이 좋은 편이에요. 성장·발달과 늦은 부작용을 고려해 소아청소년 혈액종양 전문팀에서 치료 계획을 세워요. 아이에게 맞는 치료와 장기 추적 계획을 담당 의료진과 상의하세요.",
       "review": {
         "id": "faq.lymphoma.043",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S11",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lymphoma-nci-child-nhl",
+          "lymphoma-acs-children"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -866,12 +878,15 @@
       "a": "근감소증(근육량과 근력이 줄어드는 상태)은 항암 부작용을 키우고 체력·회복을 떨어뜨릴 수 있어요. 치료 중 식욕 저하, 활동량 감소, 스테로이드 사용으로 생기기 쉬워요. 충분한 단백질 섭취와 몸 상태에 맞는 근력운동을 담당 의료진과 상의해 꾸준히 해 보세요.",
       "review": {
         "id": "faq.lymphoma.054",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S11",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-espen-cancer-2016",
+          "common-acs-activity"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -945,12 +960,14 @@
       "a": "치료 중·후에는 근력·체력 저하, 손발 저림, 피로, 관절 통증 등으로 일상 기능이 떨어지기 쉬워요. 재활치료는 운동·작업치료로 이런 기능을 되찾고 일상·직장 복귀를 돕는 역할을 해요. 일상생활이 불편하다면 재활의학과 진료가 가능한지 담당의에게 물어보세요.",
       "review": {
         "id": "faq.lymphoma.059",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S11",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-acs-rehab"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1009,12 +1026,14 @@
       "a": "아형 판정이 애매할 때, 방사선·이식·세포치료처럼 여러 치료를 함께 결정해야 할 때, 재발했거나 첫 치료가 듣지 않을 때 특히 도움이 돼요. 혈액종양내과·방사선종양학과·병리과 등이 함께 보고 치료 순서를 정해요. 다학제 진료가 가능한지 담당의나 병원에 물어보세요.",
       "review": {
         "id": "faq.lymphoma.063",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S11",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-macmillan-mdt"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1461,12 +1480,14 @@
       "a": "“무엇이 필요해?”, “같이 있을게”처럼 환자의 감정과 선택을 존중하는 말이 도움이 돼요. “네가 뭘 잘못해서”, “긍정적으로만 생각해”, 검증되지 않은 치료 권유는 부담이 될 수 있어요. 해결책보다 들어 주는 것이 먼저이고, 보호자 자신의 휴식도 꼭 챙기세요.",
       "review": {
         "id": "faq.lymphoma.091",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S11",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-ics-lost-for-words"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1523,12 +1544,15 @@
       "a": "당뇨는 스테로이드가 포함된 요법에서 혈당을 크게 올릴 수 있고, 심장질환은 안트라사이클린 계열 약 선택과 용량에 영향을 줘요. 고혈압·신장 기능도 약 조정에 고려돼요. 복용 중인 약 목록과 지병을 진료 때 모두 알리고, 내과 진료와 함께 관리하세요.",
       "review": {
         "id": "faq.lymphoma.095",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S11",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-acs-other-health",
+          "common-ccs-heart"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1569,12 +1593,15 @@
       "a": "영상·검사로 본 효과, 감당하기 어려운 부작용, 환자가 원하는 삶의 질을 함께 따져서 판단해요. 효과가 없거나 독성이 크면 다른 요법으로 바꾸거나 쉬는 것도 하나의 선택이에요. “지금 치료를 계속하면 무엇을 얻고 무엇을 감수하나요?”를 담당의에게 물어보세요.",
       "review": {
         "id": "faq.lymphoma.098",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S11",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-acs-tx-stop",
+          "common-cruk-chemo-change"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1600,12 +1627,14 @@
       "a": "① 제 정확한 아형은요? ② 병기와 B증상·큰 덩이 여부는요? ③ 바로 치료인가요, 관찰인가요? ④ 치료 요법과 주기는요? ⑤ B형간염 결과와 예방약은요? ⑥ 가임력 보존 시간이 있나요? ⑦ 중간 PET은 언제 하나요? ⑧ 방사선이 필요한가요? ⑨ 바로 연락해야 할 증상은요? ⑩ 재발하면 CAR-T·이중특이항체 같은 선택지가 있나요? 한 번에 3개씩 골라 가세요.",
       "review": {
         "id": "faq.lymphoma.100",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v3",
         "responsibleRole": "S11",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "common-nci-tx-questions"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     }
   ],
@@ -1933,6 +1962,118 @@
       "url": "https://www.cancer.gov/about-cancer/managing-care/using-trusted-resources",
       "checkedAt": "2026-11-06",
       "scope": "운영 주체·작성/검토 날짜·근거 출처 확인, 제품 판매·'완치' 주장 경계, 개인 체험담으로 치료 결정 금지, 의료진과 상의"
+    },
+    "common-acs-weight-changes": {
+      "title": "ACS · Weight Changes",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/managing-cancer/side-effects/eating-problems/weight-changes.html",
+      "checkedAt": "2026-11-06",
+      "scope": "치료 중 체중 감소(식욕 저하·설사·구토·악액질)와 증가(항암 후 활동 감소·대사 저하·치료 유발 폐경, 스테로이드, 호르몬치료, 체액 저류), 의료진에 알릴 기준(주 1.4kg 이상 감소 등)"
+    },
+    "common-nci-family-changes": {
+      "title": "NCI · Changes for the Family",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/about-cancer/coping/adjusting-to-cancer/changes-for-family",
+      "checkedAt": "2026-11-06",
+      "scope": "암 진단 후 가족 역할 변화·분담, 도움 요청('약함의 표시가 아님')과 할 일 목록, 가족회의, 대화가 어려울 때 의료진 의뢰"
+    },
+    "common-canceraustralia-family": {
+      "title": "Cancer Australia · Easing the way for family and friends",
+      "organization": "Cancer Australia (Australian Government)",
+      "url": "https://www.canceraustralia.gov.au/impacted-by-cancer/family-and-relationships/easing-the-way-for-family-and-friends",
+      "checkedAt": "2026-11-06",
+      "scope": "환자가 필요한 도움을 구체적으로 말하기, 주변의 다양한 반응, 스스로 고립되지 않기. 진료 동행·상담 서비스는 다루지 않음"
+    },
+    "common-nci-cardiopulmonary": {
+      "title": "NCI · Cardiopulmonary Syndromes (PDQ®)–Patient Version",
+      "organization": "National Cancer Institute",
+      "url": "https://cancer.gov/about-cancer/treatment/side-effects/cardiopulmonary-pdq",
+      "checkedAt": "2026-11-06",
+      "scope": "암 환자 호흡곤란 원인(빈혈·감염·방사선/항암/면역치료 폐렴·흉수·심장 문제·폐색전·불안)과 원인별·증상 치료, 오므린 입술 호흡 등"
+    },
+    "lymphoma-acs-risk": {
+      "title": "ACS · Non-Hodgkin Lymphoma Risk Factors",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/types/non-hodgkin-lymphoma/causes-risks-prevention/risk-factors.html",
+      "checkedAt": "2026-11-06",
+      "scope": "1차 친족 NHL 시 위험 증가, 대부분 환자는 뚜렷한 가족력 없음 등 위험인자"
+    },
+    "lymphoma-nci-child-nhl": {
+      "title": "NCI · Childhood Non-Hodgkin Lymphoma Treatment (PDQ®)–Patient Version",
+      "organization": "National Cancer Institute",
+      "url": "https://cancer.gov/types/lymphoma/patient/child-nhl-treatment-pdq",
+      "checkedAt": "2026-11-06",
+      "scope": "소아 NHL 아형(버킷·DLBCL·림프모구성·ALCL), 예후 인자, 소아종양 전문팀, 늦은 부작용(심장·뼈·생식력·이차암)"
+    },
+    "lymphoma-acs-children": {
+      "title": "ACS · Lymphoma in Children",
+      "organization": "American Cancer Society",
+      "url": "https://cancer.org/cancer/types/childhood-non-hodgkin-lymphoma/about.html",
+      "checkedAt": "2026-11-06",
+      "scope": "소아 NHL 아형 분포(버킷 ~40%, 림프모구성 ~20%, DLBCL 15~20%, ALCL ~10%)와 성인과 다른 아형 구성"
+    },
+    "common-espen-cancer-2016": {
+      "title": "ESPEN guidelines on nutrition in cancer patients (Arends et al., Clin Nutr 2017)",
+      "organization": "European Society for Clinical Nutrition and Metabolism (NIHR Cancer and Nutrition 게시본)",
+      "url": "https://cancerandnutrition.nihr.ac.uk/wp-content/uploads/2017/10/ESPEN-guidelines.pdf",
+      "checkedAt": "2026-11-06",
+      "scope": "암 환자 열량 25~30 kcal/kg/일, 단백질 >1 g/kg(가능하면 1.5 g/kg), 유산소+개별 저항운동 권고, 근육량 감소와 사망·수술합병증·용량제한 독성 연관. 간경변·신장질환 개별 목표는 별도"
+    },
+    "common-acs-rehab": {
+      "title": "ACS · Cancer Rehabilitation (Rehab)",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/supportive-care/what-is-cancer-rehabilitation.html",
+      "checkedAt": "2026-11-06",
+      "scope": "암 재활의 목적, 재활의학과·물리·작업·언어치료 등 구성, 피로·근력·균형·보행·신경병증·림프부종 대상, 치료 전 프리햅, 의뢰 방법. 미국 보험 기준이며 국내 암 재활 수가·프로그램은 병원별"
+    },
+    "common-macmillan-mdt": {
+      "title": "Macmillan Cancer Support · Multidisciplinary team (MDT)",
+      "organization": "Macmillan Cancer Support",
+      "url": "https://www.macmillan.org.uk/cancer-information-and-support/kidney-cancer/mdt",
+      "checkedAt": "2026-11-06",
+      "scope": "다학제팀 구성(외과·종양내과·방사선종양·영상·병리·전문간호사 등)과 병기·전신상태·지침·환자 선호를 함께 검토해 치료계획을 정하는 방식. 영국 NHS 체계 기준이며 국내 다학제 진료 수가·운영은 병원별로 다름"
+    },
+    "common-ics-lost-for-words": {
+      "title": "Irish Cancer Society · Lost for Words: How to talk to someone with cancer",
+      "organization": "Irish Cancer Society",
+      "url": "https://www.cancer.ie/sites/default/files/2019-11/lost_for_words_-_how_to_talk_to_someone_with_cancer_2017.pdf",
+      "checkedAt": "2026-11-06",
+      "scope": "들어주기 우선, 대화 의사 묻기, 침묵·곁에 있기, 구체적·작은 실질 도움, 섣부른 조언·치료 권유·'이해해' 피하기. '긍정적으로 생각해'·원인 탓 문구는 직접 다루지 않음"
+    },
+    "common-acs-other-health": {
+      "title": "ACS · When Cancer Isn't Your Only Health Problem",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/making-treatment-decisions/other-health-problems-besides-cancer.html",
+      "checkedAt": "2026-11-06",
+      "scope": "당뇨(스테로이드·항암으로 혈당 상승), 심장질환·고혈압(일부 항암·표적치료 영향), 신장질환(항암 선택·일정 제한), 복용약 목록·주치의 협진. 간기능별 용량 기준은 없음"
+    },
+    "common-ccs-heart": {
+      "title": "Canadian Cancer Society · Heart problems (side effects)",
+      "organization": "Canadian Cancer Society",
+      "url": "https://cancer.ca/en/treatments/side-effects/heart-problems",
+      "checkedAt": "2026-11-06",
+      "scope": "심장독성 약제(안트라사이클린·트라스투주맙·5-FU·베바시주맙·수니티닙·소라페닙 등), 표적치료 고혈압, 심초음파(LVEF)·심전도·트로포닌/NT-proBNP, 흉통·숨참·두근거림 보고. 카페시타빈·갑상선호르몬은 명시 없음"
+    },
+    "common-acs-tx-stop": {
+      "title": "ACS · If Cancer Treatments Stop Working",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/making-treatment-decisions/if-cancer-treatments-stop-working.html",
+      "checkedAt": "2026-11-06",
+      "scope": "치료 효과가 줄 때 다음 치료·임상시험, 이득과 부작용·삶의 질 비교, 목표 중심 결정, 의료진 질문, 완화의료·호스피스. 국내 연명의료 절차는 별도"
+    },
+    "common-cruk-chemo-change": {
+      "title": "Cancer Research UK · Changing your chemotherapy plan",
+      "organization": "Cancer Research UK",
+      "url": "https://www.cancerresearchuk.org/about-cancer/treatment/chemotherapy/planning/changing-your-plan",
+      "checkedAt": "2026-11-06",
+      "scope": "혈구 감소 시 지연, 장기 영향 시 용량 감량, 스캔·종양표지자상 반응 부족 시 약제 변경. 치료 중단 결정 자체는 다루지 않음"
+    },
+    "common-nci-tx-questions": {
+      "title": "NCI · Questions to Ask Your Doctor about Treatment",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/about-cancer/treatment/questions",
+      "checkedAt": "2026-11-06",
+      "scope": "치료 선택지·목표·효과 판단, 임상시험, 2차 의견, 바로 연락할 부작용, 복용약·보충제 공유 등 진료실 질문 목록. 암종별 병기·유전자 질문은 포함하지 않음"
     }
   }
 }
