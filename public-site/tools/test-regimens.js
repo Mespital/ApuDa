@@ -17,7 +17,7 @@ var T=[
 ['젬자 시스플라틴','gemcis'],['젬씨스 임핀지','gemcis'],['방사성요오드','rai'],['고용량 요오드 치료','rai'],
 ['루프린 주사','adt'],['자이티가','arpi'],['키트루다 인라이타','pembro-axi'],['옵디보 여보이','nivo-ipi'],['수텐','sutent'],['카보메틱스','tki-kidney'],
 ['자궁경부암 동시항암방사선','ccrt'],['두경부 동시항암방사선','ccrt-hn'],['직장암 동시항암방사선','crt-rectal'],['젤로다 먹으면서 방사선','crt-rectal'],['항암방사선 젤로다','crt-rectal'],
-['키트루다 5FU 시스플라틴','fp'],['R-CHOP 3차','rchop'],['알칩','rchop'],['리툭시맙 CHOP','rchop'],['폴라이비','rchop'],['벤다무스틴 리툭시맙','br'],
+['키트루다 5FU 시스플라틴','fp'],['파드셉 키트루다','ev-pembro'],['엔포투맙 베도틴','ev-pembro'],['식도암 항암방사선','crt-eso'],['식도암 수술 전 항암방사선','crt-eso'],['R-CHOP 3차','rchop'],['알칩','rchop'],['리툭시맙 CHOP','rchop'],['폴라이비','rchop'],['벤다무스틴 리툭시맙','br'],
 ['acetaminophen 먹었어',null],['brca 검사 결과',null],['brain mri 찍었어',null],['apple watch 샀어',null],['etc 검사',null],['타이레놀 먹었어',null],['백혈구 수치 낮대',null],['카보나라 먹었어',null],['시스템 오류 났어',null],['오늘 폴폭스 맞았어','folfox'],['젤로다 아침저녁 3알','cape'],['옵디보 맞았어','io'],['임핀지 유지','io'],['아바스틴만 맞아요','bev'],['허쥬마','her2'],['캄푸토 5fu 아바스틴','folfiri'],['심벤다','br'],['인라이타 키트루다 맞는 중','pembro-axi'],['리툭산이랑 엔독산 독소루비신','rchop'],['간암 렌비마','tki-liver'],['갑상선암 렌비마','tki-liver'],['직장암 젤로다 방사선','crt-rectal']
 ];
 var bad=0;T.forEach(function(c){var r=R.findSure(c[0],c[2]);var got=r.r?r.r.id:null;var ok=got===c[1];if(!ok){bad++;console.log('✗',JSON.stringify(c[0]),'기대',c[1],'→',got,r.list.map(function(x){return x.r.id+':'+x.score}).join(' '))}});
