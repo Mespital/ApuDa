@@ -9,12 +9,15 @@
       "a": "폐암은 초기에 증상이 거의 없는 경우가 많아요. 증상이 있다면 오래가는 기침, 가래에 피가 섞임, 숨참, 쉰 목소리, 이유 없는 체중 감소처럼 다른 병에서도 흔한 변화로 나타나요. 기침이 3주 넘게 이어지거나 피 섞인 가래가 보이면 진료를 받아 흉부 영상 검사가 필요한지 확인하는 것이 좋아요.",
       "review": {
         "id": "faq.lung.001",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-kncc-nsclc",
+          "lung-nci-nsclc"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -23,12 +26,15 @@
       "a": "눈여겨볼 신호는 낫지 않는 기침이나 기침 양상의 변화, 객혈(피를 뱉음), 숨참, 가슴·어깨 통증, 쉰 목소리, 반복되는 폐렴, 원인 모를 체중 감소예요. 이런 증상이 곧 폐암이라는 뜻은 아니지만, 흡연력이 있거나 증상이 몇 주 이상 계속되면 진료를 받아 보세요. 피를 한 숟가락 이상 뱉거나 갑자기 숨이 심하게 차면 바로 응급실로 가세요.",
       "review": {
         "id": "faq.lung.002",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-nsclc",
+          "lung-kncc-nsclc"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -37,12 +43,14 @@
       "a": "저선량 흉부 CT(일반 CT보다 방사선량을 크게 줄인 CT)는 증상이 없을 때 작은 폐암을 찾아낼 수 있는 검사예요. 고위험 흡연자에서 정기적으로 검사하면 폐암 사망을 줄인다는 대규모 연구 근거가 있어요. 다만 결절이 발견돼도 대부분 암이 아니어서 추가 검사가 필요할 수 있으니, 결과의 뜻과 다음 검사 시기를 의료진에게 확인하세요.",
       "review": {
         "id": "faq.lung.003",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-screening"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -51,12 +59,15 @@
       "a": "흉부 CT는 오래가는 기침·객혈·숨참 같은 증상이 있을 때, 엑스레이에서 이상 음영이 보일 때, 이미 발견된 결절을 추적할 때, 폐암 병기를 정할 때 쓰여요. 증상이 없는 고위험 흡연자는 검진용 저선량 CT를 받기도 해요. 내게 어떤 CT(조영제 사용 여부 포함)가 필요한지는 담당 의료진에게 확인하세요.",
       "review": {
         "id": "faq.lung.004",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-nsclc",
+          "lung-nci-screening"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -65,12 +76,15 @@
       "a": "CT에서 '폐암 의심'은 아직 확진이 아니에요. 확진은 조직(또는 세포)검사로 하고, 이때 얻은 조직으로 조직형과 유전자·PD-L1 검사까지 해서 치료가 정해져요. 기관지내시경이나 EBUS(기관지 내시경 초음파)로 닿기 어려운 결절은 CT를 보며 바늘로 조직을 얻기도 해요(경피적 폐 조직검사). 혈액을 묽게 하는 약은 미리 알리고, 검사 뒤 숨참·흉통이 생기면 바로 연락하세요.",
       "review": {
         "id": "faq.lung.005",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-nsclc",
+          "lung-kncc-nsclc"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -79,12 +93,14 @@
       "a": "EGFR 폐암은 EGFR이라는 유전자에 변이(대표적으로 엑손19 결손, L858R)가 있는 비소세포폐암이에요. 비흡연자와 동아시아 선암에서 흔해 국내 비소세포폐암의 약 30% 안팎에서 발견돼요. 이 변이가 있으면 먹는 표적치료제(예: 오시머티닙, 레이저티닙)가 치료의 중심이 될 수 있어요. 결과지의 세부 표기까지 그대로 적어 두고 담당의에게 내게 맞는 치료를 물어보세요.",
       "review": {
         "id": "faq.lung.006",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-nsclc"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -109,12 +125,14 @@
       "a": "비소세포폐암은 유전자(드라이버 변이)와 PD-L1 결과에 따라 치료가 크게 달라져요. EGFR·ALK·ROS1 등 변이가 있으면 표적치료제를, 없으면 면역치료 중심을 고려하고, 수술 예정인 분도 수술 전후 약물 선택에 영향을 줘요. 결과는 수일~수주 걸리니 'NGS·PD-L1 검사가 의뢰됐는지, 결과는 언제 나오는지' 꼭 확인하세요.",
       "review": {
         "id": "faq.lung.008",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-nsclc"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -123,12 +141,15 @@
       "a": "수술은 주로 1~2기, 일부 3기 비소세포폐암에서 암을 완전히 떼어낼 수 있고 폐 기능과 전신 상태가 수술을 견딜 수 있을 때 고려해요. 대부분 흉강경·로봇으로 하며 폐엽절제가 표준 범위예요. 종격동 림프절 침범 정도, 폐기능 검사 결과가 판단에 중요하니 '제 병기에서 수술이 가능한지, 수술 전후 약물치료가 필요한지' 물어보세요.",
       "review": {
         "id": "faq.lung.009",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-nsclc",
+          "lung-kncc-nsclc"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -151,12 +172,15 @@
       "a": "항암치료는 눈에 보이지 않게 퍼졌을 수 있는 암세포를 줄이거나, 이미 퍼진 암을 조절하기 위해 써요. 수술 전후에는 재발 위험을 낮추고, 3기는 방사선과 함께, 4기는 면역치료 등과 함께 쓰는 경우가 많아요. 내 치료에서 항암치료의 목적이 무엇인지(완치 목표인지, 조절 목표인지) 담당의에게 확인하세요.",
       "review": {
         "id": "faq.lung.011",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-nsclc",
+          "lung-kncc-nsclc"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -165,12 +189,15 @@
       "a": "항암화학요법의 흔한 부작용은 메스꺼움, 백혈구 감소, 피로이고 약에 따라 손발 저림, 입안 염증, 탈모 등이 생길 수 있어요. 대부분 예방약과 관리로 줄일 수 있으니 참지 말고 알리세요. 항암 중 38°C 이상 발열은 감염 신호일 수 있어 해열제보다 먼저 병원에 연락해야 해요.",
       "review": {
         "id": "faq.lung.012",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-side-effects",
+          "nci-infection"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -179,12 +206,14 @@
       "a": "면역항암치료는 암세포가 면역세포를 피하는 '브레이크'(PD-1/PD-L1 등)를 풀어 내 면역이 암을 공격하게 하는 치료예요. PD-L1 결과와 병기에 따라 단독 또는 항암치료와 함께 쓰고, 3기 항암방사선 후 공고요법으로도 써요. 피부·갑상선·장·간·폐 등에 면역 부작용이 몇 달 뒤에도 생길 수 있어, 심한 설사·숨참·흉통이 있으면 바로 연락하세요.",
       "review": {
         "id": "faq.lung.013",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-nsclc"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -193,12 +222,14 @@
       "a": "표적치료는 EGFR·ALK·ROS1 같은 특정 유전자 변화를 겨냥하는 약으로, 대부분 먹는 약이에요. 해당 변이가 있을 때 효과를 기대할 수 있어 유전자검사 결과가 먼저 필요해요. 발진, 손발톱 주위염, 설사, 간수치 상승이 흔하고 드물게 폐렴이 생길 수 있으니 새로운 숨참·기침은 바로 알리세요. 국내 허가·급여 범위는 2026년 10월 기준으로 담당의·원무과에 확인하세요.",
       "review": {
         "id": "faq.lung.014",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-nsclc"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -207,12 +238,14 @@
       "a": "ADC(항체약물접합체)는 암세포 표면의 표적을 찾아가는 항체에 항암제를 붙인 약으로, 항암제를 암세포 쪽으로 더 집중해 전달하려는 치료예요. 폐암에서는 HER2 변이 등 특정 상황이나 이전 치료 후 진행 시에 쓰이거나 연구되고 있어요. 간질성 폐렴 같은 부작용을 살펴야 하고 허가·급여가 자주 바뀌니, 2026년 10월 기준 해당 여부를 담당의에게 확인하세요.",
       "review": {
         "id": "faq.lung.015",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-nsclc"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -221,12 +254,14 @@
       "a": "4기 폐암에서 효과를 본 치료를 계속 이어가는 것은 암이 다시 자라는 것을 최대한 늦추기 위해서예요. 표적치료제는 효과가 있는 동안 계속 먹고, 면역치료나 항암치료도 반응과 부작용을 보며 유지해요. 언제까지 할지는 효과·부작용·삶의 질을 함께 보고 정하니, 정기 평가 때 '계속할지, 쉬거나 바꿀지'를 의료진과 상의하세요.",
       "review": {
         "id": "faq.lung.016",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-nsclc"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -235,12 +270,14 @@
       "a": "수술이나 근치 치료 뒤에는 정기 흉부 CT로 재발이나 새 폐암을 일찍 찾고, 치료 후유증도 확인해요. 재발을 일찍 발견하면 선택할 수 있는 치료가 더 많을 수 있어요. 검사 간격은 병기와 치료에 따라 다르니 내 추적 일정을 적어 두고, 다음 검사 전이라도 새 증상이 생기면 연락하세요.",
       "review": {
         "id": "faq.lung.017",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-nsclc"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -249,12 +286,14 @@
       "a": "새로 생기거나 심해지는 기침, 피 섞인 가래, 숨참, 가슴·뼈 통증, 이유 없는 체중 감소, 심한 두통·어지럼·한쪽 힘 빠짐 같은 신경 증상을 눈여겨보세요. 이런 증상이 모두 재발은 아니지만 2주 넘게 이어지면 예정일 전이라도 진료를 앞당겨 보세요. 많은 객혈, 갑작스러운 숨참, 경련·마비는 바로 119나 응급실로 가세요.",
       "review": {
         "id": "faq.lung.018",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-kncc-nsclc"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -291,12 +330,14 @@
       "a": "단백질(생선·달걀·두부·살코기 등)과 충분한 열량을 골고루 드시는 것이 중요해요. 숨이 차서 많이 못 먹으면 조금씩 자주 먹고, 식사 전 휴식을 취하면 도움이 돼요. 특정 음식이 암을 낫게 한다는 주장보다 체중을 유지하는 것이 우선이며, 체중이 줄면 영양 상담을 요청하세요.",
       "review": {
         "id": "faq.lung.021",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-side-effects"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -305,12 +346,14 @@
       "a": "치료로 인한 입맛 저하·메스꺼움·입안 염증, 숨찬 상태에서 먹기 힘든 점, 숨쉬는 데 드는 에너지 증가, 암 자체가 대사를 바꾸는 영향 등이 겹쳐 체중이 줄 수 있어요. 체중 감소는 치료를 견디는 힘과 회복에 영향을 주니 가볍게 넘기지 마세요. 매주 체중을 기록하고, 줄어들면 담당의나 영양사에게 바로 알리세요.",
       "review": {
         "id": "faq.lung.022",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-side-effects"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -319,12 +362,14 @@
       "a": "검사·결과를 기다리는 불안, 재발 걱정은 흔하고 자연스러운 반응이에요. 걱정을 적어 진료 때 물어보기, 규칙적인 걷기·수면, 믿을 만한 사람과 나누기가 도움이 돼요. 마음의 고통이 0~10 중 4점 이상이거나 2주 넘게 일상이 무너지면 진료 때 말하고 상담을 요청하세요. 스스로를 해치고 싶은 생각이 들면 ☎109(24시간)나 119에 바로 연락하세요.",
       "review": {
         "id": "faq.lung.023",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-anxiety"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -333,12 +378,14 @@
       "a": "걱정을 서로 숨기기보다 지금 느끼는 감정과 필요한 도움을 구체적으로 말하는 것이 좋아요. '병원 동행', '장보기'처럼 역할을 나누면 가족도 도울 방법을 알 수 있어요. 흡연 등 원인을 두고 서로 탓하지 않는 것이 중요하고, 대화가 어렵다면 병원 사회복지팀이나 심리 상담을 함께 이용해 보세요.",
       "review": {
         "id": "faq.lung.024",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-anxiety"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -361,12 +408,14 @@
       "a": "치료 중이나 직후에는 손 씻기, 사람 많은 실내에서 마스크, 감기 환자와의 밀접 접촉 피하기가 기본이에요. 미세먼지가 심한 날은 외출을 줄이고, 외출 후 손을 씻으세요. 특히 항암 중 백혈구가 낮은 시기에는 더 조심해야 하며, 38°C 이상 발열이 나면 해열제보다 먼저 병원에 연락하세요.",
       "review": {
         "id": "faq.lung.026",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "nci-infection"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -375,12 +424,14 @@
       "a": "EGFR 표적치료제 같은 약은 피부 세포에도 영향을 줘 여드름 같은 발진, 건조, 손발톱 주위 염증이 흔하게 생겨요. 면역치료도 면역 반응으로 발진·가려움을 일으킬 수 있어요. 순한 세정제와 보습제, 자외선 차단이 도움이 되고, 발진이 넓게 퍼지거나 물집·진물·통증이 심하면 바로 알려 약 조절 여부를 상의하세요.",
       "review": {
         "id": "faq.lung.027",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-side-effects"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -389,12 +440,14 @@
       "a": "탈모는 일부 항암화학요법에서 생기며, 대부분 치료가 끝난 뒤 몇 달에 걸쳐 다시 자라요. 순한 샴푸, 부드러운 빗, 자외선 차단(모자)이 두피 보호에 도움이 되고, 미리 짧게 자르거나 가발·두건을 준비하는 분도 많아요. 내 약이 탈모를 잘 일으키는지, 두피 냉각 같은 방법이 해당되는지 의료진에게 물어보세요.",
       "review": {
         "id": "faq.lung.028",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-side-effects"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -403,12 +456,14 @@
       "a": "백금 계열이나 탁산 계열 항암제는 말초신경을 손상시켜 손발 저림·따끔거림을 일으킬 수 있어요(말초신경병증). 단추 잠그기가 어렵거나 걸을 때 감각이 둔해지면 넘어질 위험이 있으니 바로 알려 주세요. 증상 정도에 따라 약 조절을 고려하기도 하니, 다음 투약 전에 의료진과 상의하는 것이 좋아요.",
       "review": {
         "id": "faq.lung.029",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-side-effects"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -417,12 +472,14 @@
       "a": "항암치료, 피로, 수면 부족, 불안·우울, 빈혈 등이 겹쳐 기억력·집중력이 떨어질 수 있어요(흔히 '케모 브레인'이라고 해요). 뇌 전이나 뇌 방사선 치료가 영향을 주기도 해요. 메모·일정표 활용과 규칙적인 운동이 도움이 되고, 갑자기 혼동이 심해지거나 말·행동이 평소와 다르면 바로 병원에 연락하세요.",
       "review": {
         "id": "faq.lung.030",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-side-effects"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -431,12 +488,14 @@
       "a": "잠자리에 드는 시간과 일어나는 시간을 일정하게 하고, 낮잠은 짧게, 오후 카페인과 잠들기 전 화면 보기를 줄이는 것이 기본이에요. 기침·통증·숨참·불안이 잠을 방해한다면 그 원인을 치료하는 것이 우선이에요. 2주 넘게 잠을 못 이루면 담당의에게 말해 원인 확인과 상담을 받아 보세요. 수면제는 스스로 시작하지 말고 상의하세요.",
       "review": {
         "id": "faq.lung.031",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-side-effects"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -445,12 +504,14 @@
       "a": "한곳이 계속 아프고 밤에 심해지는 뼈 통증, 가벼운 충격에도 생긴 골절, 갈증·변비·혼동(고칼슘혈증 가능성)을 살펴보세요. 등 통증에 다리 힘 빠짐·감각 저하·소변을 못 보는 증상이 함께 오면 척수 압박일 수 있어 바로 응급실로 가야 해요. 뼈 전이는 방사선, 뼈 보호 약물 등으로 통증과 골절을 관리할 수 있으니 의료진과 상의하세요.",
       "review": {
         "id": "faq.lung.032",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-pain"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -459,12 +520,14 @@
       "a": "암 관련 피로는 치료 자체, 빈혈, 수면 문제, 영양 부족, 근육 감소, 우울감, 갑상선 기능 변화 등이 겹쳐 치료가 끝난 뒤에도 몇 달 이상 이어질 수 있어요. 쉬어도 잘 풀리지 않는 것이 특징이에요. 빈혈·갑상선 같은 고칠 수 있는 원인이 있는지 검사를 요청하고, 가벼운 운동을 꾸준히 하는 것이 도움이 돼요.",
       "review": {
         "id": "faq.lung.033",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-side-effects"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -501,12 +564,14 @@
       "a": "폐암 추적 CT 외에도 다른 암 검진(위·대장 등), 혈압·혈당·콜레스테롤, 뼈 건강, 예방접종을 챙기는 것이 좋아요. 흡연력이 있었다면 심혈관질환과 다른 흡연 관련 암에도 관심이 필요해요. 추적 일정과 일반 검진 일정을 한 곳에 정리하고, 어떤 검사를 어느 병원에서 받을지 담당의에게 확인하세요.",
       "review": {
         "id": "faq.lung.036",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-kncc-screening"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -515,12 +580,14 @@
       "a": "일부 영양제·한약·건강기능식품은 항암제·표적치료제의 효과를 바꾸거나, 간 손상·출혈 위험을 높일 수 있어요(예: 세인트존스워트, 고용량 항산화제 등). 효과가 확인되지 않은 제품에 큰돈을 쓰는 것도 피하는 것이 좋아요. 먹고 있거나 먹고 싶은 제품은 모두 목록으로 만들어 의료진·약사와 상의한 뒤 결정하세요.",
       "review": {
         "id": "faq.lung.037",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-diet-interactions"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -529,12 +596,14 @@
       "a": "피로가 심해도 걷기 같은 가벼운 운동을 꾸준히 하는 것이 피로를 줄이는 데 가장 근거가 있는 방법이에요. 에너지를 많이 쓰는 일을 컨디션 좋은 시간에 배치하고, 낮잠은 짧게 하세요. 빈혈·갑상선 기능 저하·우울 같은 원인이 숨어 있을 수 있으니 혈액검사 등 평가를 담당의에게 요청해 보세요.",
       "review": {
         "id": "faq.lung.038",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-side-effects"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -543,12 +612,14 @@
       "a": "손 씻기, 사람 많은 곳에서 마스크, 구강 위생, 날음식·덜 익힌 음식 주의, 상처 깨끗하게 관리하기가 기본이에요. 독감·폐렴구균 등 예방접종은 시기를 의료진과 맞춰 맞는 것이 좋아요. 항암 중 38°C 이상 발열, 오한, 숨참이 생기면 해열제보다 먼저 병원에 연락하세요.",
       "review": {
         "id": "faq.lung.039",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "nci-infection"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -557,12 +628,14 @@
       "a": "전이성(4기) 폐암은 유전자(드라이버 변이)와 PD-L1 결과에 따라 전신치료를 정해요. 변이가 있으면 해당 표적치료를, 없으면 면역치료 단독 또는 항암 + 면역치료를 주로 쓰고, 통증·뇌 전이·출혈 같은 문제에는 방사선을 함께 써요. 목표는 암을 조절하며 오래, 덜 아프게 지내는 것이니 '제 치료 목표와 1차 치료'를 물어보세요.",
       "review": {
         "id": "faq.lung.040",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-nsclc"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -571,12 +644,14 @@
       "a": "치료가 잘 끝나도 재발이나 새로운 폐암이 생길 수 있어, 일정 기간 정기 흉부 CT로 추적해요. 일찍 발견하면 다시 근치 치료를 할 수 있는 경우도 있어요. 치료 후유증과 흡연 관련 다른 질환도 함께 살필 수 있으니, 추적 간격과 기간을 담당의에게 확인하고 일정을 놓치지 마세요.",
       "review": {
         "id": "faq.lung.041",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-nsclc"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -585,12 +660,14 @@
       "a": "부모·형제 중 폐암 환자가 있으면 위험이 다소 높아진다는 연구가 있어요. 같은 흡연·환경 노출을 공유하는 영향과 유전적 요인이 함께 작용하는 것으로 봐요. 가족력이 있다면 금연이 더 중요하고, 흡연력·나이에 따라 저선량 CT 검진 대상인지 의료진과 상의해 보세요.",
       "review": {
         "id": "faq.lung.042",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-nsclc"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -599,12 +676,14 @@
       "a": "비흡연자 폐암은 간접흡연, 라돈, 요리 연기, 미세먼지·대기오염, 직업적 노출, 유전적 요인 등이 관련된다고 알려져 있어요. 흡연율 감소로 상대적으로 비율이 늘어난 면도 있고, 검진 증가로 더 많이 발견되기도 해요. 대부분은 한 가지 원인을 특정할 수 없고 환자 탓이 아니에요.",
       "review": {
         "id": "faq.lung.043",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-nsclc"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -627,12 +706,14 @@
       "a": "폐결절은 CT에서 보이는 작은 덩어리로, 대부분은 염증 흔적이나 양성 변화이고 암은 일부예요. 크기, 모양, 고형인지 간유리음영(GGO, 뿌옇게 보이는 부분)인지, 시간에 따라 자라는지를 보고 위험도를 판단해요. 결과지에 적힌 크기와 추적 권고 시기를 확인하고, 정해진 날짜에 다시 CT를 받는 것이 중요해요.",
       "review": {
         "id": "faq.lung.045",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-acs-nodules"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -655,12 +736,14 @@
       "a": "폐 음영은 엑스레이·CT에서 보이는 그림자를 넓게 부르는 말로, 폐렴·결핵·흉터·혈관·양성 결절 등 원인이 다양해요. 폐암일 수도 있지만 대부분은 아니에요. 음영의 크기·모양·변화를 보고 추가 CT나 추적이 필요한지 정하니, 다음 검사 시기와 이유를 확인하세요.",
       "review": {
         "id": "faq.lung.047",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-acs-nodules"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -697,12 +780,15 @@
       "a": "국가 폐암 검진은 일정 나이(만 54~74세)의 고위험 흡연자(흡연력 30갑년 이상 등)를 대상으로 2년마다 저선량 흉부 CT를 받는 제도예요. 대상자라면 조기 발견에 도움이 되므로 받는 것이 좋아요. 대상 기준과 본인부담은 바뀔 수 있으니 2026년 10월 기준으로 국민건강보험공단(1577-1000)이나 검진기관에 확인하세요.",
       "review": {
         "id": "faq.lung.050",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-kncc-screening",
+          "lung-nci-screening"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -711,12 +797,14 @@
       "a": "흡연은 폐암의 가장 큰 위험 요인으로, 담배 연기 속 발암물질이 기관지·폐 세포의 유전자를 손상시켜요. 흡연량과 기간이 길수록 위험이 커지고, 끊으면 시간이 지나며 위험이 줄어들어요. 간접흡연도 위험을 높이니 가족 모두 금연하는 것이 좋고, 도움이 필요하면 ☎1544-9030을 이용하세요.",
       "review": {
         "id": "faq.lung.051",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-nsclc"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -725,12 +813,14 @@
       "a": "미세먼지·대기오염은 세계보건기구가 발암물질로 분류했고, 폐암 위험을 높이는 요인으로 알려져 있어요. 다만 흡연보다는 영향이 작고 개인이 원인을 특정하기는 어려워요. 미세먼지가 심한 날은 외출과 실외 운동을 줄이고, 실내 환기·요리 시 환풍기 사용을 챙기세요.",
       "review": {
         "id": "faq.lung.052",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-nsclc"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -797,12 +887,14 @@
       "a": "우울감·불안은 흔한 반응이지만, 2주 넘게 일상이 무너지거나 즐거움이 사라지고 잠·식사가 크게 바뀌면 상담이 필요한 신호예요. 마음의 고통이 0~10 중 4점 이상이면 다음 진료에서 그대로 말하세요. 스스로를 해치고 싶은 생각이 들면 혼자 견디지 말고 ☎109(24시간)나 119에 바로 연락하세요.",
       "review": {
         "id": "faq.lung.057",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-anxiety"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -811,12 +903,14 @@
       "a": "많은 객혈(컵 단위면 즉시 119), 갑자기 심해진 숨참·흉통, 얼굴·목·팔 부종, 등 통증 + 다리 힘 빠짐·소변 못 봄, 갑작스러운 혼동·심한 졸림, 심한 두통·구토·경련·한쪽 마비는 바로 응급실로 가야 해요. 항암 중 38°C 이상 발열도 해열제보다 먼저 연락하세요. 진료실·야간 연락처와 가까운 응급실을 미리 저장해 두세요.",
       "review": {
         "id": "faq.lung.058",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "nci-infection"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -853,12 +947,14 @@
       "a": "병기는 종양 크기·위치(T), 림프절 전이(N), 원격 전이(M)를 합쳐 1~4기로 정해요. 같은 병기 안에서도 세부 단계가 있고, 영상으로 정한 '임상 병기'와 수술 조직으로 확정한 '병리 병기'가 다를 수 있어요. 내 T·N·M과 병기를 적어 두고, 종격동 림프절을 어떻게 확인했는지(PET, EBUS 등) 물어보세요.",
       "review": {
         "id": "faq.lung.061",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-nsclc"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -867,12 +963,14 @@
       "a": "조직형(선암·편평상피세포암·소세포암 등), 종양 크기, 림프절 전이 개수와 위치, 절제면(가장자리)에 암이 남았는지, 흉막 침범 여부를 확인하세요. 비소세포폐암이면 EGFR·ALK 등 유전자 결과와 PD-L1(TPS %)도 중요해요. 결과지는 두 부씩 받아 두고, 모르는 단어는 그대로 진료실에서 물어보세요.",
       "review": {
         "id": "faq.lung.062",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-nsclc"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -895,12 +993,14 @@
       "a": "완치 목표는 수술·근치 방사선 등으로 암을 없애는 것을, 조절 목표는 4기처럼 암을 줄이거나 자라지 않게 하며 오래 지내는 것을 말해요. 증상완화는 통증·숨참 등을 줄여 삶의 질을 높이는 것으로, 어느 단계에서나 함께 해요. 첫 진료에서 '제 치료 목표는 무엇인가요?'를 꼭 물어보세요.",
       "review": {
         "id": "faq.lung.064",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-palliative"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -909,12 +1009,14 @@
       "a": "순서는 병기와 유전자 결과에 따라 달라요. 수술 가능한 경우 수술 + 수술 전·후 약물치료, 절제 불가 3기는 동시 항암방사선 후 공고요법, 4기는 표적·면역·항암 같은 전신치료가 먼저인 경우가 많아요. 내 경우 '왜 이 순서인지'를 확인하는 것이 좋아요.",
       "review": {
         "id": "faq.lung.065",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-nsclc"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -923,12 +1025,14 @@
       "a": "수술 가능성은 암이 한쪽 가슴 안에 국한되어 완전히 떼어낼 수 있는지와 폐기능·전신 상태가 수술을 견딜 수 있는지로 판단해요. 종격동 림프절이 여러 곳 침범됐거나, 주요 혈관·기관을 넓게 침범했거나, 원격 전이가 있으면 수술 대신 다른 치료를 우선하는 경우가 많아요. 기준은 개인마다 달라 다학제 진료에서 판단하니 근거를 물어보세요.",
       "review": {
         "id": "faq.lung.066",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-nsclc"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -937,12 +1041,14 @@
       "a": "방사선은 ① 수술이 어려운 초기 폐암의 근치 치료(SBRT, 보통 3~8회) ② 3기 항암방사선(약 6주) ③ 통증·뇌 전이·출혈 같은 증상 완화에 쓰여요. 흔한 부작용은 피로, 식도염(삼킬 때 통증), 피부 자극, 기침이에요. 치료 후 몇 주~몇 달 뒤 새 기침·숨참·발열이 생기면 방사선 폐렴일 수 있으니 알리세요.",
       "review": {
         "id": "faq.lung.067",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-nsclc"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -993,12 +1099,14 @@
       "a": "표준치료가 정해지기 전, 표준치료 후 진행했을 때, 드문 유전자 변이가 있을 때 임상시험을 고려할 수 있어요. 참여 조건, 시험 약과 비교 대상, 예상 부작용, 방문 횟수·비용, 중간에 그만둘 수 있는지를 확인하세요. '제가 참여할 수 있는 임상시험이 있나요?'라고 담당의에게 물어보는 것이 시작이에요.",
       "review": {
         "id": "faq.lung.071",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-nsclc"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1021,12 +1129,14 @@
       "a": "셋 모두 위험할 수 있고 상황에 따라 달라요. 컵 단위의 많은 객혈이나 갑작스러운 심한 호흡곤란은 생명을 위협할 수 있어 즉시 119를 불러야 해요. 항암 중 38°C 이상 발열도 패혈증으로 빠르게 나빠질 수 있으니 해열제보다 먼저 병원에 연락하세요. 망설여지면 연락해서 판단을 받는 것이 안전해요.",
       "review": {
         "id": "faq.lung.073",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "nci-infection"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1035,12 +1145,14 @@
       "a": "폐암은 뇌·뼈·부신·간 등으로 잘 퍼지며, 원격 전이가 있으면 4기로 분류돼요. 뇌 전이는 두통·구토·마비를, 뼈 전이는 통증·골절을 일으킬 수 있고, 부신 전이는 증상이 없는 경우가 많아요. 전신치료와 함께 방사선·수술 같은 국소치료를 쓰기도 하니, 전이 위치별 치료 계획을 의료진과 상의하세요.",
       "review": {
         "id": "faq.lung.074",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-kncc-nsclc"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1049,12 +1161,14 @@
       "a": "일반 진통제로 조절되지 않는 중등도 이상의 암성 통증이 있으면 마약성 진통제를 쓸 수 있어요. 의료진 지시대로 쓰면 중독 걱정은 크지 않고, 통증을 참는 것이 오히려 식사·수면·회복을 방해해요. 변비·졸림 같은 부작용은 예방할 수 있으니, 통증 정도(0~10)를 기록해 알리고 용량 조절은 의료진과 상의하세요.",
       "review": {
         "id": "faq.lung.075",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-pain"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1063,12 +1177,14 @@
       "a": "아니에요. 완화(지지)의료는 진단 시점부터 항암치료와 함께 통증·피로·숨참·불안을 줄이는 치료예요. 호스피스는 그중 생애 말기 돌봄을 말하는 일부분이에요. 증상으로 힘들다면 치료 단계와 관계없이 완화의료팀 상담이 가능한지 물어보세요.",
       "review": {
         "id": "faq.lung.076",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-palliative"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1091,12 +1207,14 @@
       "a": "근감소증은 근육량·근력이 줄어든 상태이고, 악액질(cachexia)은 암에 따른 염증·대사 변화로 체중과 근육이 함께 빠지며 보통 식사만으로는 잘 회복되지 않는 상태예요. 악액질에서도 근감소가 핵심 문제로 나타나요. 원인과 대처가 달라지니, 체중·식사량·근력 변화를 기록해 영양·재활 상담을 요청하세요.",
       "review": {
         "id": "faq.lung.078",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-side-effects"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1119,12 +1237,14 @@
       "a": "항암 중 38°C 이상 발열은 해열제를 먹기 전에 바로 병원에 연락해야 해요. 백혈구가 낮은 시기의 감염은 빠르게 나빠질 수 있기 때문이에요. 오한, 숨참, 의식 저하가 함께 있거나 연락이 닿지 않으면 바로 응급실로 가세요. 진료실·야간 연락처를 미리 저장해 두세요.",
       "review": {
         "id": "faq.lung.080",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "nci-infection"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1175,12 +1295,14 @@
       "a": "구강점막염은 입안이 헐고 아픈 증상으로, 부드러운 칫솔과 순한 가글(의료진 권고)로 입안을 깨끗하게 유지하는 것이 기본이에요. 맵고 짜고 뜨겁거나 딱딱한 음식은 피하고, 부드럽고 미지근한 음식을 드세요. 통증으로 물·음식을 못 삼키거나 발열이 있으면 바로 연락하세요.",
       "review": {
         "id": "faq.lung.084",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-side-effects"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1189,12 +1311,14 @@
       "a": "메스꺼움·구토는 항암제 종류에 따라 위험도가 달라, 투약 전에 예방약을 미리 쓰고 집에서 먹을 약도 처방받는 경우가 많아요. 처방받은 대로 쓰는 것이 중요하고, 조금씩 자주 먹기, 기름진 음식 피하기가 도움이 돼요. 하루 넘게 물을 못 마시거나 구토가 계속되면 탈수 위험이 있으니 바로 연락하세요.",
       "review": {
         "id": "faq.lung.085",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-side-effects"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1203,12 +1327,14 @@
       "a": "설사는 표적치료제·면역치료·항암제로, 변비는 진통제·구토 예방약 등으로 생길 수 있어요. 하루 여러 번의 물 설사, 피 섞인 변, 어지러움·소변 감소는 탈수 신호이고, 면역치료 중 심한 설사는 장염일 수 있어 바로 알려야 해요. 며칠 변·방귀가 없으면서 배가 부풀고 아프며 토하면 장폐색일 수 있으니 바로 병원에 가세요.",
       "review": {
         "id": "faq.lung.086",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-side-effects"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1217,12 +1343,15 @@
       "a": "항암치료는 생식력에 영향을 줄 수 있어, 아이 계획이 있다면 치료 시작 전에 상담하는 것이 좋아요. 정자 보존은 비교적 빠르게, 난자 보존은 보통 2주 안팎의 준비가 필요해 치료 일정과 맞춰야 해요. 첫 치료 결정 단계에서 '생식력 보존 상담을 받을 수 있는지' 담당의에게 물어보세요.",
       "review": {
         "id": "faq.lung.087",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-fertility-women",
+          "lung-nci-side-effects"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1231,12 +1360,14 @@
       "a": "치료 후 피로, 통증, 질 건조감, 발기부전, 성욕 저하는 흔하고 이야기해도 되는 문제예요. 윤활제, 원인에 맞는 약물, 상담 등으로 도움을 받을 수 있어요. 말하기 어렵다면 메모로 적어 전하고, 담당의나 비뇨의학과·산부인과 상담 연결을 요청해 보세요.",
       "review": {
         "id": "faq.lung.088",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-side-effects"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1303,12 +1434,14 @@
       "a": "일부 한약·고용량 비타민·허브 보조제는 항암제나 표적치료제와 상호작용하거나 간 손상·출혈 위험을 높일 수 있어요. 고가의 검증되지 않은 주사나 치료를 위해 표준치료를 미루거나 중단하는 것은 피하는 것이 좋아요. 명상·가벼운 운동 등 증상 완화를 위한 방법도 포함해, 시작 전 의료진과 상의하세요.",
       "review": {
         "id": "faq.lung.093",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-diet-interactions"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1359,12 +1492,14 @@
       "a": "이전에 어떤 약을 얼마나 썼는지, 효과가 얼마나 지속됐는지, 어떤 부작용이 있었는지에 따라 다음 치료가 달라져요. 재발 부위에서 조직검사나 유전자검사를 다시 해 내성 원인을 찾기도 해요. 치료 이력(약 이름, 기간, 반응, 부작용)을 정리해 두고 새 진료 때 함께 가져가세요.",
       "review": {
         "id": "faq.lung.097",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-nci-nsclc"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1387,12 +1522,14 @@
       "a": "사전돌봄계획은 앞으로 받고 싶은 치료와 원치 않는 치료를 미리 생각하고 가족·의료진과 나누는 과정이에요. 19세 이상이면 등록기관에서 사전연명의료의향서를 작성할 수 있고, 말기에는 담당의와 연명의료계획서를 작성할 수 있어요. 컨디션이 괜찮을 때 가족과 대화를 시작하고, 절차는 병원 완화의료팀이나 사회복지팀에 문의하세요.",
       "review": {
         "id": "faq.lung.099",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S02",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "lung-lst-ad"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1453,6 +1590,90 @@
       "url": "https://ascopost.com/news/december-2024/fda-approves-durvalumab-for-limited-stage-small-cell-lung-cancer/",
       "checkedAt": "2026-11-06",
       "scope": "제한기 소세포폐암에서 항암방사선 뒤 면역항암제 공고요법이 표준 범주에 포함됨; 국내 허가·급여는 별도 확인"
+    },
+    "lung-kncc-nsclc": {
+      "title": "국가암정보센터 · 비소세포폐암",
+      "organization": "국립암센터 국가암정보센터",
+      "url": "https://www.cancer.go.kr/lay1/program/S1T211C223/cancer/view.do?cancer_seq=4061",
+      "checkedAt": "2026-11-06",
+      "scope": "비소세포폐암 정의·종류, 일반 증상(초기 무증상), 진단검사(X선·CT·기관지내시경·조직검사·PET·MRI), 병기별 치료 조합, 재발·전이; 2019-08 최종수정본이라 최신 약제·급여는 미반영"
+    },
+    "lung-nci-nsclc": {
+      "title": "NCI · Non-Small Cell Lung Cancer Treatment (PDQ®)–Patient Version",
+      "organization": "미국 국립암연구소(NCI)",
+      "url": "https://www.cancer.gov/types/lung/patient/non-small-cell-lung-treatment-pdq",
+      "checkedAt": "2026-11-06",
+      "scope": "위험요인(흡연·간접흡연·라돈·대기오염·직업 노출·가족력), 증상, 조직검사·바이오마커 검사, TNM 병기, 수술·SBRT·항암·표적(오시머티닙·레이저티닙·아미반타맙·다토포타맙 등)·면역·유지요법, 병기별·재발 치료, 추적검사, 임상시험; 미국 기준이며 국내 허가·급여 증명 아님"
+    },
+    "lung-nci-screening": {
+      "title": "NCI · Lung Cancer Screening (PDQ®)–Patient Version",
+      "organization": "미국 국립암연구소(NCI)",
+      "url": "https://www.cancer.gov/types/lung/patient/lung-screening-pdq",
+      "checkedAt": "2026-11-06",
+      "scope": "저선량 CT가 고위험 흡연자의 폐암 사망을 줄인 NLST 근거와 위양성·과잉진단·방사선 위해; 국내 검진 대상 기준은 아님"
+    },
+    "lung-kncc-screening": {
+      "title": "국가암정보센터 · 국가암검진 사업",
+      "organization": "국립암센터 국가암정보센터",
+      "url": "https://www.cancer.go.kr/lay1/S1T261C262/contents.do",
+      "checkedAt": "2026-11-06",
+      "scope": "국가 폐암검진 대상(만 54~74세 30갑년 이상 고위험 흡연자)·2년 주기·저선량 CT+금연상담 및 위·간·대장·유방·자궁경부암 검진 항목(2026-08-03 수정); 본인부담 세부와 2026년 이후 확대안은 미반영"
+    },
+    "lung-acs-nodules": {
+      "title": "American Cancer Society · Lung Nodules",
+      "organization": "미국암학회(ACS)",
+      "url": "https://www.cancer.org/cancer/types/lung-cancer/detection-diagnosis-staging/lung-nodules.html",
+      "checkedAt": "2026-11-06",
+      "scope": "CT 폐결절 대부분이 암이 아님(과거 감염·흉터), 크기·모양·고형/간유리 판단, 반복 CT·PET·조직검사 경로; 석회화 양상과 국내 추적 간격 기준은 다루지 않음"
+    },
+    "lung-nci-side-effects": {
+      "title": "NCI · Side Effects of Cancer Treatment",
+      "organization": "미국 국립암연구소(NCI)",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects",
+      "checkedAt": "2026-11-06",
+      "scope": "항암치료 부작용 주제 색인(빈혈·악액질·변비·설사·피로·탈모·구강·오심구토·말초신경병증·영양·수면·기억력·피부·생식력·성건강 등); 개별 관리법은 하위 페이지, 약제별 빈도·국내 지침 아님"
+    },
+    "lung-nci-pain": {
+      "title": "NCI · Cancer Pain (PDQ®)–Patient Version",
+      "organization": "미국 국립암연구소(NCI)",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/pain/pain-pdq",
+      "checkedAt": "2026-11-06",
+      "scope": "0~10 통증 척도, 중등도 이상 통증의 마약성 진통제, 변비 등 부작용 예방, 뼈 전이 통증의 완화 방사선; 일부에서 중독 가능성을 언급(중독 위험 '낮다'는 단정은 없음)"
+    },
+    "lung-nci-palliative": {
+      "title": "NCI · Palliative Care in Cancer (fact sheet)",
+      "organization": "미국 국립암연구소(NCI)",
+      "url": "https://www.cancer.gov/about-cancer/advanced-cancer/care-choices/palliative-care-fact-sheet",
+      "checkedAt": "2026-11-06",
+      "scope": "완화의료는 진단부터 생애말기까지 항암치료와 병행 가능, 호스피스는 완치 목표가 아닐 때의 돌봄; 2021 검토본, 국내 호스피스 제도 아님"
+    },
+    "lung-nci-anxiety": {
+      "title": "NCI · Adjustment to Cancer: Anxiety and Distress (PDQ®)–Patient Version",
+      "organization": "미국 국립암연구소(NCI)",
+      "url": "https://www.cancer.gov/about-cancer/coping/feelings/anxiety-distress-pdq",
+      "checkedAt": "2026-11-06",
+      "scope": "진단·치료·추적 시기 불안과 재발 걱정, 전문가 상담 시점, 이완·인지행동치료·가족 지지 등 대처; 고통척도 4점 기준과 국내 위기상담 번호는 없음"
+    },
+    "lung-nci-diet-interactions": {
+      "title": "NCI · Cancer Therapy Interactions With Foods and Dietary Supplements (PDQ®)–Patient Version",
+      "organization": "미국 국립암연구소(NCI)",
+      "url": "https://www.cancer.gov/about-cancer/treatment/cam/patient/dietary-interactions-pdq",
+      "checkedAt": "2026-11-06",
+      "scope": "세인트존스워트·자몽·항산화제 보충제와 항암치료 상호작용, 치료 전 보완요법 의료진 상의; 한약 개별 근거는 아님"
+    },
+    "lung-nci-fertility-women": {
+      "title": "NCI · Female Fertility and Cancer",
+      "organization": "미국 국립암연구소(NCI)",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/fertility-women",
+      "checkedAt": "2026-11-06",
+      "scope": "치료 시작 전 생식력 보존 상담 권고와 난자·배아 동결 절차; 소요 기간 수치는 없음, 남성 정자 보존은 다루지 않음"
+    },
+    "lung-lst-ad": {
+      "title": "국립연명의료관리기관 · 자주 묻는 질문(FAQ)",
+      "organization": "국립연명의료관리기관",
+      "url": "https://www.lst.go.kr/comm/faq.do",
+      "checkedAt": "2026-11-06",
+      "scope": "사전연명의료의향서는 19세 이상이 등록기관 상담 후 작성; 연명의료계획서 세부 대상은 별도 페이지 확인 필요"
     }
   }
 }

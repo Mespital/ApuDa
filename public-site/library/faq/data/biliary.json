@@ -1,7 +1,7 @@
 {
   "slug": "biliary",
   "name": "담도암·담낭암",
-  "updated": "2026-10-19",
+  "updated": "2026-11-06",
   "items": [
     {
       "n": 1,
@@ -9,12 +9,15 @@
       "a": "담도암은 초기에 증상이 거의 없는 경우가 많아요. 암이 담즙(쓸개즙)이 흐르는 길을 막으면 빠져나가지 못한 빌리루빈(노란 색소)이 혈액에 쌓여 눈·피부가 노래지는 황달이 생겨요. 간 안쪽에 생긴 간내 담관암은 황달 없이 발견되기도 해요. 눈이 노래지거나 소변이 진해지면 미루지 말고 진료를 받으세요.",
       "review": {
         "id": "faq.biliary.001",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "nhs-biliary",
+          "biliary-kcic-summary"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -40,12 +43,14 @@
       "a": "CT·MRI는 암이 담도의 어느 위치(간내·간문부·원위부·담낭)에 있는지, 혈관·림프절·간에 얼마나 퍼졌는지 보여줘요. 위치와 범위에 따라 수술 가능 여부와 수술 방법이 달라지기 때문에 치료 계획의 출발점이 돼요. 흉부·복부(·골반) 다상 CT와 MRI/MRCP 판독지를 받아 '제 암은 어느 위치인가요?'를 물어보세요.",
       "review": {
         "id": "faq.biliary.003",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-acs-diagnosis"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -54,12 +59,14 @@
       "a": "MRCP(담관을 자세히 보는 MRI)는 몸에 관을 넣지 않고 담관이 막힌 위치와 범위를 보는 검사예요. ERCP(내시경 담도 시술)는 내시경으로 담관에 접근해 세포·조직을 채취하거나 스텐트를 넣어 황달을 푸는 시술이에요. 응급 담관염이 아니라면 배액 전에 고해상도 영상을 먼저 찍는 것이 수술 계획에 도움이 될 수 있으니 순서를 담당의에게 확인하세요.",
       "review": {
         "id": "faq.biliary.004",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-acs-diagnosis"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -68,12 +75,14 @@
       "a": "조직검사는 암인지, 어떤 종류의 암인지 확정하고 유전자검사(NGS)에 쓸 검체를 얻기 위해 필요해요. 담도는 좁아서 브러시 세포검사가 음성이어도 암이 배제되지 않을 수 있어요. 경우에 따라 수술로 진단과 치료를 함께 하기도 하니 '수술 전 조직 확진이 꼭 필요한가요?'를 물어보세요.",
       "review": {
         "id": "faq.biliary.005",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-acs-diagnosis"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -82,12 +91,14 @@
       "a": "FGFR2 융합은 암세포의 FGFR2 유전자가 다른 유전자와 붙어 암 성장을 돕는 변화로, 주로 간내 담관암에서 발견돼요. 이 변화가 있으면 FGFR 억제제라는 표적치료를 1차 치료 이후 다음 치료로 검토할 수 있어요. 국내 허가·급여 여부는 바뀔 수 있으니(2026년 10월 기준) 결과가 나오면 사용 가능 여부와 비용, 임상시험을 함께 물어보세요.",
       "review": {
         "id": "faq.biliary.006",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "nci-biliary-treatment"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -96,12 +107,15 @@
       "a": "담도암은 담즙이 흐르는 길 전체에 생기는 암을 말하고, 위치에 따라 간내·간문부·원위부 담관암과 담낭암(쓸개암)으로 나눠요. 담낭암은 담석 때문에 담낭을 뗐다가 우연히 발견되는 경우가 있고, HER2 변화가 상대적으로 많아요. 위치마다 수술 방법이 다르니 내 암이 어디에 생겼는지 먼저 확인하세요.",
       "review": {
         "id": "faq.biliary.007",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-nci-gallbladder-pt",
+          "biliary-kcic-summary"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -110,12 +124,14 @@
       "a": "담도암은 표적치료로 이어질 수 있는 유전자 변화(FGFR2·IDH1·HER2·BRAF·MSI-H 등)가 비교적 많은 암이에요. 절제가 어렵거나 전이가 있다면 1차 치료 시작과 함께 유전자검사(NGS)를 의뢰하는 것이 좋아요. 결과까지 보통 수주가 걸리니 'NGS는 언제 의뢰하나요?'를 물어보고, 수술한 경우 조직 블록 보관 병원도 확인해 두세요.",
       "review": {
         "id": "faq.biliary.008",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-acs-diagnosis"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -124,12 +140,15 @@
       "a": "암을 남김없이 떼어내는 완전 절제(R0)가 가능하고, 먼 곳 전이가 없으며, 수술 후 남을 간이 충분하고 몸 상태가 수술을 견딜 수 있을 때 수술을 검토해요. 위치에 따라 간절제, 간절제+담관절제, 췌십이지장절제술(휘플), 담낭+간 일부 절제 등 방법이 달라요. 남을 간이 작으면 문맥색전술을 먼저 하기도 하니 간담췌 전문 센터에서 평가받으세요.",
       "review": {
         "id": "faq.biliary.009",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-acs-surgery",
+          "biliary-nci-treatment-pt"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -138,12 +157,15 @@
       "a": "암이 담관을 막으면 담즙이 고여 황달·가려움·담관염이 생기고 간 기능이 떨어져 항암치료도 어려워져요. 담도배액술은 내시경(ERCP)으로 스텐트를 넣거나 피부를 통해 관을 넣어(PTBD) 담즙 길을 열어주는 시술이에요. 플라스틱 스텐트는 정기 교체가 필요할 수 있고 금속 스텐트는 제거가 어려우니, 수술 가능성 평가와 함께 종류를 정하는 것이 좋아요.",
       "review": {
         "id": "faq.biliary.010",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-acs-palliative",
+          "biliary-nci-treatment-pt"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -152,12 +174,15 @@
       "a": "항암치료는 수술 후 남아 있을 수 있는 암세포를 줄여 재발 위험을 낮추거나(보조항암), 수술이 어려운 경우 암을 조절하기 위해 써요. 수술 후 보조항암은 먹는 항암제로 약 6개월 범주가 흔하고, 진행·전이성에서는 항암+면역치료 병용이 국제 표준 범주예요. 약 이름과 기간, 본인 부담을 시작 전에 확인하세요.",
       "review": {
         "id": "faq.biliary.011",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "nci-biliary-treatment",
+          "biliary-acs-by-situation"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -166,12 +191,14 @@
       "a": "젬시타빈·시스플라틴 같은 항암제는 피로, 메스꺼움, 혈구 감소로 인한 감염 위험, 손발 저림, 신장 기능 변화, 귀울림 등을 일으킬 수 있어요. 면역치료를 함께 쓰면 피부 발진, 설사, 갑상선·간 기능 변화 같은 면역 관련 부작용이 생길 수 있어요. 증상 일지를 쓰고, 38°C 이상 발열이나 심한 설사·황달은 바로 병원에 알리세요.",
       "review": {
         "id": "faq.biliary.012",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-acs-chemo"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -180,12 +207,15 @@
       "a": "면역항암치료는 암세포가 면역세포를 피하는 '브레이크(면역관문)'를 풀어 내 면역이 암을 공격하게 돕는 치료예요. 담도암에서는 대표적으로 더발루맙·펨브롤리주맙을 젬시타빈+시스플라틴과 함께 1차로 쓰는 방식이 국제 표준 범주예요. 피부·장·갑상선·간·폐에 염증성 부작용이 생길 수 있으니 새 증상은 바로 알리고, 급여 여부(2026년 10월 기준)는 원무과에 확인하세요.",
       "review": {
         "id": "faq.biliary.013",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "nci-biliary-treatment",
+          "biliary-acs-by-situation"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -194,12 +224,14 @@
       "a": "표적치료는 암의 특정 유전자 변화를 겨냥하는 약으로, FGFR2 융합엔 FGFR 억제제, IDH1 변이엔 IDH1 억제제, HER2 과발현엔 항HER2 약제, BRAF V600E엔 BRAF+MEK 억제제를 검토해요. 대부분 1차 항암+면역치료 이후 다음 치료로 고려돼요. 해외 허가 약도 국내에선 비급여이거나 제한될 수 있으니(2026년 10월 기준) 담당 종양내과에 확인하세요.",
       "review": {
         "id": "faq.biliary.014",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "nci-biliary-treatment"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -238,12 +270,14 @@
       "a": "정기검진은 재발을 일찍 찾아 치료 선택지를 넓히고, 치료 후유증과 영양 상태를 확인하기 위해 필요해요. 국내에서는 수술 후 3년까지 3~6개월마다, 5년까지 6개월마다, 그 뒤 해마다 간기능·CA19-9·CEA 피검사와 흉부 사진·복부 CT를 보는 방식이 흔히 소개돼요(병원별 상이). 내 다음 검사 일정을 달력에 적어 두세요.",
       "review": {
         "id": "faq.biliary.017",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-acs-followup"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -269,12 +303,15 @@
       "a": "치료 후 황달은 스텐트·배액관이 막히거나, 수술 연결 부위가 좁아지거나, 재발한 암이 담관을 누르거나, 약 때문에 간 기능이 떨어질 때 다시 생길 수 있어요. 원인에 따라 스텐트 교체나 추가 배액처럼 비교적 간단히 해결되는 경우도 있어요. 황달이 보이면 바로 담당 병원에 알리고, 38°C 이상 발열·오한이 함께 있으면 응급실로 가세요.",
       "review": {
         "id": "faq.biliary.019",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-acs-palliative",
+          "biliary-acs-followup"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -311,12 +348,14 @@
       "a": "수술로 소화기관 구조가 바뀌거나, 담즙·췌장 소화액이 부족하거나, 항암 중 입맛 저하·메스꺼움이 이어지면 체중이 줄 수 있어요. 암 자체가 근육과 지방을 소모시키는 경우도 있어요. 한 달 새 체중이 눈에 띄게 줄거나 계속 빠지면 다음 진료에서 바로 말하고 영양 상담을 받으세요.",
       "review": {
         "id": "faq.biliary.022",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-acs-surgery"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -325,12 +364,14 @@
       "a": "치료가 끝난 뒤 재발이 걱정되고 검사 결과를 기다릴 때 불안해지는 것은 자연스러운 반응이에요. 마음의 고통을 0~10점으로 매겨 4점 이상이면 진료 때 그대로 말하고, 병원 심리상담이나 정신건강의학과 연결을 요청할 수 있어요. 스스로를 해치고 싶은 생각이 들면 혼자 견디지 말고 ☎ 109(24시간)나 119에 연락하세요.",
       "review": {
         "id": "faq.biliary.023",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-acs-followup"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -367,12 +408,15 @@
       "a": "스텐트나 배액관이 있으면 담관염(담관 감염)이 생길 수 있어 38°C 이상 발열·오한, 황달, 복통을 특히 조심해야 해요. 배액관 주변은 안내받은 방법으로 깨끗하게 관리하고, 관이 빠지거나 배액이 갑자기 줄면 바로 연락하세요. 발열이 있으면 해열제보다 먼저 병원에 연락하고 밤이면 응급실로 가세요.",
       "review": {
         "id": "faq.biliary.026",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-acs-palliative",
+          "nci-infection"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -381,12 +425,14 @@
       "a": "담즙이 잘 빠지지 않으면 담즙산이 피부에 쌓여 온몸이 가려울 수 있어요. 항암·면역치료 때문에 피부가 건조해지거나 발진이 생겨 가려운 경우도 있어요. 가려움이 갑자기 심해지면 황달·스텐트 막힘 신호일 수 있으니 참지 말고 알리세요. 배액이 가장 중요한 치료이고 가려움약도 처방받을 수 있어요.",
       "review": {
         "id": "faq.biliary.027",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-acs-palliative"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -409,12 +455,14 @@
       "a": "시스플라틴이나 옥살리플라틴 같은 백금계 항암제는 손발 끝 신경을 손상시켜 저림·찌릿함(말초신경병증)을 일으킬 수 있어요. 대개 치료를 마치면 서서히 나아지지만 오래가는 경우도 있어요. 단추 잠그기가 어렵거나 걷다 넘어질 듯하면 약 조정이 필요할 수 있으니 바로 알리고, 찬 것·뜨거운 것에 다치지 않게 조심하세요.",
       "review": {
         "id": "faq.biliary.029",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-acs-chemo"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -493,12 +541,14 @@
       "a": "술은 간에 부담을 주고, 담도암 환자는 수술·담즙 정체·항암제로 간 기능이 약해져 있는 경우가 많아요. 술은 항암제·진통제와 상호작용하거나 탈수·출혈 위험을 높일 수 있어요. 치료 중과 회복기에는 금주하는 것이 좋고, 끊기 어렵다면 의료진에게 도움을 요청하세요.",
       "review": {
         "id": "faq.biliary.035",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-acs-followup"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -507,12 +557,14 @@
       "a": "재발 추적검사와 별도로 위·대장·유방·자궁경부암 등 다른 암 검진, 혈압·혈당·콜레스테롤, 뼈 건강, 예방접종도 챙기는 것이 좋아요. 수술 후 생긴 당뇨나 소화 문제처럼 치료 후유증도 정기적으로 확인해요. 종양내과와 동네 주치의 중 누가 어떤 검사를 맡을지 정리해 두세요.",
       "review": {
         "id": "faq.biliary.036",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-acs-followup"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -521,12 +573,14 @@
       "a": "영양제·한약·건강기능식품 일부는 간에 부담을 주거나 항암제·면역치료 효과와 간 수치에 영향을 줄 수 있어요. 특히 담도암 환자는 간 기능 변화가 치료 결정에 중요해서, 원인 모를 간 수치 상승이 혼란을 줄 수 있어요. 먹고 있거나 먹으려는 제품은 목록을 만들어 의료진과 상의 후 결정하세요.",
       "review": {
         "id": "faq.biliary.037",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-acs-followup"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -549,12 +603,14 @@
       "a": "손 씻기, 사람 많은 곳에서 마스크, 덜 익힌 음식 피하기, 상처 관리가 기본이에요. 항암 중 백혈구가 낮을 때는 감염이 빠르게 나빠질 수 있어 38°C 이상 발열이면 해열제보다 먼저 병원에 연락해야 해요. 독감 등 필요한 예방접종 시기는 담당의와 상의하세요.",
       "review": {
         "id": "faq.biliary.039",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "nci-infection"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -563,12 +619,15 @@
       "a": "전이성 담도암은 1차로 항암(젬시타빈+시스플라틴)과 면역치료(더발루맙·펨브롤리주맙 등) 병용이 국제 표준 범주이고, 이후 유전자 결과에 따라 표적치료를 검토해요. 황달이 있으면 배액이 먼저이고, 통증 조절 등 완화의료도 처음부터 함께해요. 치료 목표가 '조절하며 오래, 덜 아프게'로 바뀌는 경우가 많으니 '제 치료 목표는 무엇인가요?'를 꼭 물어보세요.",
       "review": {
         "id": "faq.biliary.040",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-acs-by-situation",
+          "nci-biliary-treatment"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -577,12 +636,14 @@
       "a": "완전 절제 후에도 담도암은 재발할 수 있고, 재발은 수술 후 처음 2~3년에 많은 편이에요. 일찍 발견하면 재수술·국소치료·표적치료 등 선택지가 넓어질 수 있어요. 또한 치료 후유증, 영양, 다른 암 검진도 함께 챙길 수 있으니 정해진 일정대로 추적검사를 받는 것이 좋아요.",
       "review": {
         "id": "faq.biliary.041",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-acs-followup"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -591,12 +652,14 @@
       "a": "담도암은 가족력보다 담석, 담관낭종(담관이 주머니처럼 늘어난 선천 이상), 원발성 경화성 담관염(담관에 만성 염증·흉터가 생기는 병), 간흡충 감염 같은 요인과 더 관련이 있어요. 일부 유전 증후군(예: 린치 증후군)에서는 위험이 높아질 수 있어요. 가족 중 담도암이나 여러 암 환자가 있으면 유전상담이 필요한지 의료진에게 물어보세요.",
       "review": {
         "id": "faq.biliary.042",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-acs-risk"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -605,12 +668,14 @@
       "a": "담도암은 대개 60대 이상에서 많지만, 담관낭종, 원발성 경화성 담관염(염증성 장질환과 동반되기도 함), 간흡충 감염 같은 위험요인이 있으면 젊은 나이에도 생길 수 있어요. 젊더라도 이유 없는 황달, 회색 변, 가려움, 체중 감소가 이어지면 검사가 필요해요. 위험요인이 있다면 정기 추적 여부를 담당의와 상의하세요.",
       "review": {
         "id": "faq.biliary.043",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-acs-risk"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -633,12 +698,14 @@
       "a": "아니요. 담도 협착(담관이 좁아짐)은 담석, 만성 췌장염, 수술 후 흉터, 원발성 경화성 담관염, IgG4 관련 질환 같은 양성 원인으로도 생겨요. 다만 암과 구분이 어려운 경우가 있어 MRCP·ERCP·세포검사·추적 영상으로 확인해요. 세포검사가 음성이어도 암이 배제되지 않을 수 있으니 다음 확인 계획을 물어보세요.",
       "review": {
         "id": "faq.biliary.045",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-acs-diagnosis"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -675,12 +742,14 @@
       "a": "회색(흰빛) 변과 콜라색 소변이 함께 나타나면 담즙이 장으로 내려가지 못하고 담관이 막혔다는 신호일 수 있어요. 며칠 이상 이어지거나 황달·가려움이 함께 있으면 빨리 진료를 받으세요. 여기에 38°C 이상 발열·오한이나 심한 복통이 더해지면 담관염일 수 있으니 바로 응급실로 가세요.",
       "review": {
         "id": "faq.biliary.048",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "nhs-biliary"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -703,12 +772,14 @@
       "a": "담도암은 국가 암검진 대상이 아니고, 일반인에게 권하는 확립된 조기검진 방법은 없어요. 다만 큰 담낭 용종, 담관낭종, 원발성 경화성 담관염, 간흡충 감염력 같은 위험요인이 있으면 초음파·MRI로 정기 추적하기도 해요. 내게 위험요인이 있는지, 추적 간격은 어떻게 할지 담당의에게 확인하세요.",
       "review": {
         "id": "faq.biliary.050",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-acs-early-detection"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -717,12 +788,14 @@
       "a": "담석은 담낭암의 대표 위험요인으로, 오래된 담석이나 만성 염증이 있으면 위험이 높아질 수 있어요. 하지만 담석이 있는 사람 대부분은 담낭암에 걸리지 않아요. 담석으로 증상이 반복되거나, 담낭벽이 두꺼워졌거나, 큰 용종이 있으면 담낭 절제를 권하기도 하니 담당의와 상의하세요.",
       "review": {
         "id": "faq.biliary.051",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-nci-gallbladder-pt"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -731,12 +804,14 @@
       "a": "간흡충(간디스토마)은 민물고기를 날로 먹을 때 감염되는 기생충으로, 담관에 오래 살며 만성 염증을 일으켜 담관암 위험을 높이는 것으로 알려져 있어요. 국내에서는 큰 강 유역에서 감염이 더 많이 보고돼요. 민물고기는 익혀 먹고, 날로 먹은 적이 있다면 검사와 치료를 의료진과 상의하세요.",
       "review": {
         "id": "faq.biliary.052",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-acs-risk"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -845,12 +920,14 @@
       "a": "정기 추적검사, 남은 후유증(소화·피로·저림) 관리, 체중·근육 유지, 금주·금연, 다른 암 검진과 만성질환 관리가 장기 생존 관리의 핵심이에요. 스텐트나 수술 후 담관 문제로 담관염이 생길 수 있어 발열·황달 신호도 계속 기억해 두세요. 치료 기록(수술·약·유전자 결과)을 한곳에 정리해 두면 나중에 큰 도움이 돼요.",
       "review": {
         "id": "faq.biliary.060",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-acs-followup"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -859,12 +936,14 @@
       "a": "담도암·담낭암의 병기는 TNM(T: 암의 깊이·크기, N: 림프절 전이, M: 먼 곳 전이)으로 정하고, 간내·간문부·원위부·담낭암마다 기준이 따로 있어요. 실제 치료 결정에는 병기와 함께 '절제 가능 / 경계 / 불가' 판단이 중요해요. 내 병기와 절제 가능성을 '내 담도암 한 장 요약'에 적어 두고 근거를 물어보세요.",
       "review": {
         "id": "faq.biliary.061",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "nci-biliary-treatment"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -901,12 +980,14 @@
       "a": "완치 목표는 수술로 암을 완전히 떼고 보조치료로 재발을 줄이는 것이고, 조절 목표는 항암·면역·표적치료로 암을 오래 자라지 않게 하는 것이에요. 증상완화는 통증·황달·가려움 등을 줄여 삶의 질을 지키는 것으로, 다른 치료와 처음부터 함께할 수 있어요. 첫 진료에서 '제 치료 목표는 무엇인가요?'를 꼭 물어보세요.",
       "review": {
         "id": "faq.biliary.064",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-acs-by-situation"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -915,12 +996,14 @@
       "a": "완전 절제가 가능하면 보통 수술을 먼저 하고 이후 보조항암(약 6개월 범주), 절제면 양성 등에서는 방사선을 상의해요. 황달이 있으면 배액이 먼저이고, 수술이 어려우면 항암+면역치료로 시작하며 유전자검사를 함께 의뢰해요. 순서는 병기와 검사 결과에 따라 달라지니 '왜 이 순서인가요?'를 물어보세요.",
       "review": {
         "id": "faq.biliary.065",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-acs-by-situation"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -929,12 +1012,15 @@
       "a": "먼 곳 전이(간 여러 곳, 폐, 복막, 먼 림프절)가 있거나, 주요 혈관·담관이 양쪽으로 넓게 침범됐거나, 수술 후 남을 간이 부족하거나, 몸 상태가 큰 수술을 견디기 어려우면 절제 불가로 판단하는 경우가 많아요. 경계 상태라면 문맥색전술이나 항암 후 재평가를 하기도 해요. 판단 근거를 묻고, 필요하면 간담췌 전문 센터에서 2차 의견을 받아 보세요.",
       "review": {
         "id": "faq.biliary.066",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-acs-surgery",
+          "biliary-acs-by-situation"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -943,12 +1029,14 @@
       "a": "수술 후 절제면에 암이 남았거나(R1) 림프절 전이가 있을 때 재발을 줄이기 위해 방사선(대개 항암과 함께)을 상의해요. 수술이 어려운 국소 병변에는 정위체부방사선 같은 정밀 방사선을, 뼈 전이 통증 등에는 증상 완화 목적의 방사선을 쓰기도 해요. 내 경우 방사선의 목적과 기대 효과, 부작용을 물어보세요.",
       "review": {
         "id": "faq.biliary.067",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-nci-treatment-pt"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -971,12 +1059,14 @@
       "a": "CA19-9는 피검사 수치라 오르내림을 추적하지만, FGFR2·IDH1·HER2는 조직의 유전자·단백질 결과라 보통 한 번 확인하는 항목이에요. CA19-9는 황달·담관염만으로도 높아질 수 있어 한 번의 수치보다 배액 후의 추세와 영상을 함께 봐요. 수치가 올랐다면 '황달 영향인지, 영상과 맞는지'를 확인하세요.",
       "review": {
         "id": "faq.biliary.069",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-acs-diagnosis"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -985,12 +1075,14 @@
       "a": "FGFR2는 '융합(fusion)', IDH1은 'R132' 같은 변이, HER2는 '과발현/증폭' 여부를 찾아보세요. CA19-9는 유전자 결과가 아닌 혈액 종양표지자예요. '임상적 의미 불확실(VUS)'은 치료 근거가 되지 않는 경우가 많으니, 결과지를 들고 '표적치료로 이어지는 변화가 있나요? 국내 사용 가능 여부와 임상시험은요?'를 물어보세요.",
       "review": {
         "id": "faq.biliary.070",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-acs-diagnosis"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -999,12 +1091,14 @@
       "a": "표준 치료 선택지가 적을 때, 유전자 변화가 있는데 국내에서 약을 쓰기 어려울 때, 1차 치료를 시작할 때부터도 임상시험을 고려할 수 있어요. 참여 조건, 검사·방문 횟수, 비용 부담, 기존 치료와 비교해 무엇이 다른지, 언제든 중단할 수 있는지 확인하세요. '제가 참여할 수 있는 임상시험이 있나요?'를 물어보세요.",
       "review": {
         "id": "faq.biliary.071",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-nci-treatment-pt"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1069,12 +1163,14 @@
       "a": "아니요. 완화(지지)의료는 마지막 단계의 돌봄이 아니라 진단 시점부터 항암치료와 함께 통증·피로·가려움·숨참·불안을 줄이는 치료예요. 일찍 함께하면 치료를 견디는 힘과 삶의 질에 도움이 될 수 있어요. 증상이 힘들다면 '완화의료팀 협진을 받을 수 있나요?'를 물어보세요.",
       "review": {
         "id": "faq.biliary.076",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-nci-palliative"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1125,12 +1221,14 @@
       "a": "치료 중 38°C 이상 발열이 있으면 시간이 밤이든 낮이든 해열제를 먹기 전에 바로 병원에 연락하세요. 항암으로 백혈구가 낮으면 감염이 빠르게 패혈증으로 진행할 수 있고, 스텐트가 있으면 담관염일 수도 있어요. 오한, 황달, 복통, 어지러움이 함께 있거나 연락이 어려우면 바로 응급실로 가세요.",
       "review": {
         "id": "faq.biliary.080",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "nci-infection"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1181,12 +1279,14 @@
       "a": "구강점막염은 항암제 때문에 입안이 헐고 아픈 것으로, 5-FU·카페시타빈에서 비교적 흔해요. 부드러운 칫솔, 알코올 없는 가글이나 소금물 헹굼, 맵고 뜨겁고 딱딱한 음식 피하기, 부드럽고 촉촉한 음식이 도움이 돼요. 통증으로 먹지 못하거나 하얀 막·38°C 이상 발열이 생기면 바로 알리세요.",
       "review": {
         "id": "faq.biliary.084",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-acs-chemo"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1393,12 +1493,14 @@
       "a": "사전돌봄계획은 상태가 나빠졌을 때 받고 싶은 치료와 원치 않는 치료, 대신 결정해 줄 사람을 미리 정해 두는 과정이에요. 19세 이상이면 등록기관에서 사전연명의료의향서를 쓸 수 있고, 담당의와 함께 연명의료계획서를 작성할 수도 있어요. 컨디션이 좋을 때 가족과 이야기하고, 의료진에게 상담을 요청하세요.",
       "review": {
         "id": "faq.biliary.099",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S09",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "biliary-lst-advance-directive"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1453,6 +1555,97 @@
       "url": "https://www.cancer.gov/types/liver/hp/bile-duct-treatment-pdq",
       "checkedAt": "2026-10-19",
       "scope": "절제 불가능·전이·재발 담도암 1차 면역·항암 병용의 국제 근거; 국내 허가·급여를 증명하는 자료는 아님"
+    },
+    "biliary-kcic-summary": {
+      "title": "국가암지식정보센터 · 담도암",
+      "organization": "국립암센터 국가암지식정보센터",
+      "url": "https://www.cancer.go.kr/lay1/program/S1T211C223/cancer/view.do?cancer_seq=3773",
+      "checkedAt": "2026-11-06",
+      "scope": "담도암 정의·부위(상부·중부·하부), 증상(황달·체중 감소 등), 진단 검사(초음파·CT·MRI·ERCP·PTC·EUS·PET·종양표지자), 수술 1차·절제 불가 시 항암/방사선, 추적 필요; 2019-12 수정본이라 면역·표적치료 미반영"
+    },
+    "biliary-nci-treatment-pt": {
+      "title": "NCI · Bile Duct Cancer Treatment (PDQ®) 환자용",
+      "organization": "미국 국립암연구소(NCI)",
+      "url": "https://www.cancer.gov/types/liver/patient/bile-duct-treatment-pdq",
+      "checkedAt": "2026-11-06",
+      "scope": "절제 가능성에 따른 치료, 위치별 수술(담관절제·간절제·휘플), 보조 항암/방사선, 스텐트·PTBD·우회술, 젬시타빈+시스플라틴·면역치료(더발루맙·펨브롤리주맙)·표적치료(이보시데닙·페미가티닙), 간문부 간이식, 임상시험; 국내 허가·급여 증명 아님"
+    },
+    "biliary-nci-gallbladder-pt": {
+      "title": "NCI · Gallbladder Cancer Treatment (PDQ®) 환자용",
+      "organization": "미국 국립암연구소(NCI)",
+      "url": "https://www.cancer.gov/types/gallbladder/patient/gallbladder-treatment-pdq",
+      "checkedAt": "2026-11-06",
+      "scope": "담석이 가장 흔한 위험요인이지만 대부분 암이 되지 않음, 담낭 절제 중 우연 발견, 검사·병기(0~IV)·수술·완화 배액; 성별·용종 기준은 없음"
+    },
+    "biliary-acs-risk": {
+      "title": "ACS · Bile Duct Cancer Risk Factors",
+      "organization": "미국암학회(ACS)",
+      "url": "https://www.cancer.org/cancer/types/bile-duct-cancer/causes-risks-prevention/risk-factors.html",
+      "checkedAt": "2026-11-06",
+      "scope": "원발성 경화성 담관염, 담관낭종, 간흡충, 간경변·B/C형간염, 염증성 장질환, 린치 증후군 등, 60~70대 호발; 한국 지역 유병률 세부는 없음"
+    },
+    "biliary-acs-diagnosis": {
+      "title": "ACS · Bile Duct Cancer Diagnostic Tests",
+      "organization": "미국암학회(ACS)",
+      "url": "https://www.cancer.org/cancer/types/bile-duct-cancer/detection-diagnosis-staging/how-diagnosed.html",
+      "checkedAt": "2026-11-06",
+      "scope": "초음파·CT·MRI/MRCP·EUS, ERCP·PTC, 조직·브러시 세포검사 한계, CA19-9·CEA의 한계와 추적, 바이오마커(FGFR2·IDH1·HER2·BRAF·MSI 등) 검사; 영상으로 흉터와 암 구분이 어려울 수 있음"
+    },
+    "biliary-acs-early-detection": {
+      "title": "ACS · Can Bile Duct Cancer Be Found Early?",
+      "organization": "미국암학회(ACS)",
+      "url": "https://cancer.org/cancer/bile-duct-cancer/detection-diagnosis-staging/detection.html",
+      "checkedAt": "2026-11-06",
+      "scope": "일반인 선별검사로 쓸 검사가 없음; 고위험군 추적 기준은 다루지 않음"
+    },
+    "biliary-acs-by-situation": {
+      "title": "ACS · Bile Duct Cancer Stage and Treatment Options",
+      "organization": "미국암학회(ACS)",
+      "url": "https://www.cancer.org/cancer/types/bile-duct-cancer/treating/based-on-situation.html",
+      "checkedAt": "2026-11-06",
+      "scope": "절제 가능/불가에 따른 치료 목표·순서, 수술 전 배액, 보조·선행 치료, 진행성 1차 젬시타빈+시스플라틴+펨브롤리주맙/더발루맙, 표적치료, 완화의료; 보조 카페시타빈 기간은 없음"
+    },
+    "biliary-acs-chemo": {
+      "title": "ACS · Chemotherapy for Bile Duct Cancer",
+      "organization": "미국암학회(ACS)",
+      "url": "https://www.cancer.org/cancer/types/bile-duct-cancer/treating/chemotherapy.html",
+      "checkedAt": "2026-11-06",
+      "scope": "보조·진행성 항암 개요(젬시타빈+시스플라틴), 말초신경병증·구역·혈구 감소·구내염·신장/간 기능 이상 부작용"
+    },
+    "biliary-acs-palliative": {
+      "title": "ACS · Palliative Therapy for Bile Duct Cancer",
+      "organization": "미국암학회(ACS)",
+      "url": "https://www.cancer.org/cancer/types/bile-duct-cancer/treating/palliative-therapy.html.html",
+      "checkedAt": "2026-11-06",
+      "scope": "스텐트·경피 배액관·우회술, 막힘 시 교체와 감염 위험, 통증·구역·가려움 약; 플라스틱/금속 비교·신경차단술은 없음"
+    },
+    "biliary-acs-surgery": {
+      "title": "ACS · Bile Duct Cancer Surgery",
+      "organization": "미국암학회(ACS)",
+      "url": "https://www.cancer.org/cancer/types/bile-duct-cancer/treating/surgery.html",
+      "checkedAt": "2026-11-06",
+      "scope": "절제 가능성 판단, 진단적 복강경, 간내·간문부·원위부(휘플) 수술 방식, 담즙 누출·감염·간부전·영양 문제 합병증; 문맥색전술은 없음"
+    },
+    "biliary-acs-followup": {
+      "title": "ACS · Living as a Bile Duct Cancer Survivor",
+      "organization": "미국암학회(ACS)",
+      "url": "https://www.cancer.org/cancer/types/bile-duct-cancer/after-treatment/follow-up.html",
+      "checkedAt": "2026-11-06",
+      "scope": "치료 후 추적(미국 기준 첫 2년 약 6개월마다, 이후 연 1회), 수술 후 양성 협착 등 후유증, 금연·절주·운동, 보충제 주의, 다른 암 검진 포함 생존자 계획, 정서 관리; 국내 추적 간격 근거 아님"
+    },
+    "biliary-nci-palliative": {
+      "title": "NCI · Palliative Care in Cancer",
+      "organization": "미국 국립암연구소(NCI)",
+      "url": "https://www.cancer.gov/about-cancer/advanced-cancer/care-choices/palliative-care-fact-sheet",
+      "checkedAt": "2026-11-06",
+      "scope": "완화의료는 진단 시점부터 항암치료와 함께 받을 수 있고 삶의 질을 목표로 함; 국내 제도 세부는 아님"
+    },
+    "biliary-lst-advance-directive": {
+      "title": "국립연명의료관리기관 · 자주 묻는 질문(사전연명의료의향서)",
+      "organization": "국립연명의료관리기관",
+      "url": "https://www.lst.go.kr/comm/faq.do",
+      "checkedAt": "2026-11-06",
+      "scope": "19세 이상 본인 작성, 보건복지부 지정 등록기관, 변경·철회 가능; 연명의료계획서 작성 요건 세부는 이 페이지 본문에 없음"
     }
   }
 }

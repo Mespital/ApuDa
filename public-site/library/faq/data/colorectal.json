@@ -1,7 +1,7 @@
 {
   "slug": "colorectal",
   "name": "대장암",
-  "updated": "2026-10-19",
+  "updated": "2026-11-06",
   "items": [
     {
       "n": 1,
@@ -9,12 +9,14 @@
       "a": "초기 대장암은 증상이 거의 없는 경우가 많아요. 그래서 증상보다 검진으로 먼저 발견되는 일이 흔해요. 변 보는 습관이 몇 주 이상 달라지거나, 변에 피가 묻거나, 이유 없이 빈혈·피로·체중 감소가 생기면 진료를 받아 보는 것이 좋아요. 증상이 없더라도 검진 나이가 되었다면 검진 일정을 챙기세요.",
       "review": {
         "id": "faq.colorectal.001",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-nhs-symptoms"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -23,12 +25,14 @@
       "a": "눈여겨볼 신호는 혈변이나 검은 변, 몇 주 넘게 이어지는 설사·변비, 변이 가늘어짐, 잔변감, 이유 없는 체중 감소, 빈혈과 피로예요. 이런 증상은 치질 등 다른 원인도 많지만 스스로 판단하지 말고 진료를 받아 보세요. 배가 부풀고 방귀·대변이 멈추며 토하거나 피가 많이 나면 바로 응급실로 가세요.",
       "review": {
         "id": "faq.colorectal.002",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-nhs-symptoms"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -37,12 +41,15 @@
       "a": "분변잠혈검사는 눈에 보이지 않는 대변 속 피를 찾아내는 간단한 검사예요. 대장암이나 큰 용종은 조금씩 피가 날 수 있어 증상이 없을 때 이상을 찾아내는 데 도움이 돼요. 양성이면 원인을 확인하기 위해 대장내시경을 받는 것이 좋아요. 음성이어도 혈변 같은 증상이 있으면 따로 진료를 받으세요.",
       "review": {
         "id": "faq.colorectal.003",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-kncc-screening",
+          "colorectal-nci-colon"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -51,12 +58,15 @@
       "a": "분변잠혈검사가 양성일 때, 혈변·배변 습관 변화·빈혈 같은 증상이 있을 때, 대장암 가족력이 있을 때 대장내시경을 권해요. 용종을 뗀 적이 있거나 대장암 수술을 받은 뒤에도 정기적으로 받아요(대개 수술 1년 후, 이후 결과에 따라). 나에게 맞는 검사 시기는 담당의에게 확인하세요.",
       "review": {
         "id": "faq.colorectal.004",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-acs-survivor",
+          "colorectal-kncc-screening"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -79,12 +89,14 @@
       "a": "MSI-H(고빈도 현미부수체 불안정성)는 DNA 복제 오류를 고치는 기능(MMR)이 고장 난 상태(dMMR)를 말해요. 대장암 전체의 약 15% 정도에서 보여요. 면역항암치료가 잘 듣는 경우가 많아 치료 순서가 바뀔 수 있고, 린치증후군 같은 유전 여부를 살피는 단서도 돼요. 치료 시작 전에 결과를 꼭 확인하세요.",
       "review": {
         "id": "faq.colorectal.006",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-nci-colon-hp"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -93,12 +105,14 @@
       "a": "직장암은 대장 끝부분, 대개 항문에서 약 15cm 이내에 생긴 암으로, 대장암의 한 종류예요. 골반 안 좁은 곳에 있어 골반 MRI로 주변 경계를 자세히 보고, 국소진행이면 수술 전에 항암·방사선을 먼저 하는 경우가 많아요. 항문과 가까우면 장루·배변 기능 문제도 미리 상의해요. 내 암이 항문에서 몇 cm인지 물어보세요.",
       "review": {
         "id": "faq.colorectal.007",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-nci-rectal-hp"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -107,12 +121,14 @@
       "a": "MMR/MSI 검사는 모든 대장암 환자에게 권고되며, 치료 순서를 바꾸고 유전(린치증후군) 선별에도 쓰여요. 전이성이라면 RAS(KRAS·NRAS)·BRAF·HER2 결과에 따라 쓸 수 있는 표적치료가 달라져요. 젊은 나이에 진단됐거나 가족력이 있으면 유전상담도 받아 보세요. 어떤 검사를 했고 결과가 언제 나오는지 확인하세요.",
       "review": {
         "id": "faq.colorectal.008",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-nci-colon-hp"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -121,12 +137,15 @@
       "a": "결장암은 대개 암이 있는 결장 부위와 주변 림프절을 함께 떼는 수술을 하고, 복강경·로봇 수술도 많이 해요. 직장암은 괄약근을 살리는 수술, 항문까지 떼고 영구 장루를 만드는 수술, 일부 조기암의 국소절제 등이 있어요. 아주 이른 암은 내시경 절제로 끝나기도 해요. 내 수술 방법과 장루 가능성을 수술 전에 들어 두세요.",
       "review": {
         "id": "faq.colorectal.009",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-kncc-treatment",
+          "colorectal-nci-colon"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -135,12 +154,15 @@
       "a": "장루(배에 만든 대변 출구)는 피부 손상, 새는 것, 탈수 같은 문제를 미리 막아야 일상이 편해져요. 대부분은 임시 회장루로 몇 달 뒤 닫는 수술을 하고, 영구 장루라도 일상·운동·여행이 가능해요. 수술 전에 장루전문간호사와 위치를 표시하고 교육을 받으세요. 배출이 묽고 많아지며 어지럽고 소변이 줄면 바로 연락하세요.",
       "review": {
         "id": "faq.colorectal.010",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-cruk-stoma",
+          "colorectal-kncc-treatment"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -149,12 +171,15 @@
       "a": "항암치료는 수술로 보이는 암을 뗀 뒤 몸에 남았을 수 있는 작은 암세포를 줄여 재발 위험을 낮추거나(보조항암), 수술 전에 암을 줄이거나, 전이암을 조절하는 데 쓰여요. 필요 여부는 병기·림프절·재발 위험·MMR 결과에 따라 달라져요. 내 치료에서 항암의 목적이 무엇인지 담당의에게 물어보세요.",
       "review": {
         "id": "faq.colorectal.011",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-nci-colon",
+          "colorectal-kncc-treatment"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -163,12 +188,14 @@
       "a": "흔한 부작용은 피로, 메스꺼움, 설사, 입안 헐음, 손발 저림(특히 옥살리플라틴), 손발바닥이 붉어지고 벗겨지는 수족증후군, 백혈구 감소예요. 약 조합마다 다르고 대부분 관리 방법이 있어요. 38°C 이상 발열, 하루 4~6회 이상 설사, 흉통, 입안이 심하게 헐어 못 먹을 때는 바로 병원에 연락하세요.",
       "review": {
         "id": "faq.colorectal.012",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "nci-infection"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -177,12 +204,15 @@
       "a": "면역항암치료는 주로 MSI-H/dMMR 대장암에서 효과가 크게 기대돼요. 2026년 현재 국내 급여는 주로 전이성 dMMR 대장암의 1차 치료에 인정되고, 수술 전 면역치료는 임상연구나 개별 판단으로 제한적으로 시행돼요. MSS/pMMR 대장암에서는 단독 효과가 적어요. 2026년 10월 기준이니 적용 여부는 담당의·원무과에 확인하세요.",
       "review": {
         "id": "faq.colorectal.013",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-nci-colon-hp",
+          "colorectal-nci-rectal-hp"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -191,12 +221,15 @@
       "a": "표적치료는 암이 자라는 데 쓰는 특정 신호를 막는 약이에요. 혈관 생성을 막는 항VEGF 항체, RAS 야생형에서 쓰는 항EGFR 항체, BRAF V600E·HER2 같은 변이에 맞춘 약 등이 있어요. 주로 전이성 대장암에서 항암제와 함께 써요. 내 RAS·BRAF·HER2 결과와 급여 여부(2026년 10월 기준)를 담당의·원무과에 확인하세요.",
       "review": {
         "id": "faq.colorectal.014",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-nci-colon",
+          "colorectal-nci-colon-hp"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -205,12 +238,15 @@
       "a": "최근에는 MSI-H/dMMR 대장암의 면역치료가 수술 전으로 넓어지고, BRAF V600E·HER2·KRAS G12C처럼 유전자 변이에 맞춘 표적치료가 늘고 있어요. 혈액으로 종양 DNA를 보는 ctDNA 검사도 연구되고 있지만 아직 모든 환자의 표준검사는 아니에요. 새 약은 허가·급여가 자주 바뀌니 2026년 10월 기준으로 담당의·원무과에 확인하세요.",
       "review": {
         "id": "faq.colorectal.015",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-nci-colon",
+          "colorectal-nci-rectal-hp"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -219,12 +255,14 @@
       "a": "보조항암은 수술 후 눈에 보이지 않게 남았을 수 있는 암세포를 줄여 재발 위험을 낮추려고 해요. 3기 결장암은 재발 위험(T4·N2 여부)과 약 조합에 따라 3개월 또는 6개월로 정할 수 있고, 기간이 짧으면 손발 저림 위험이 줄어요. 2기는 고위험일 때 상의하며, dMMR 2기는 판단이 달라요. 내 경우 기간과 이유를 물어보세요.",
       "review": {
         "id": "faq.colorectal.016",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-nci-colon-hp"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -233,12 +271,14 @@
       "a": "정기검진은 재발이나 새 용종을 일찍 찾아 다시 치료할 기회를 높이려고 해요. 일반적인 예로 진찰·CEA(종양표지자) 검사는 처음 2년 3~6개월마다, 이후 6개월마다 5년까지, CT는 2~3기 이상에서 처음 몇 년간 6~12개월마다, 대장내시경은 수술 1년 후 받아요. 실제 일정은 병기에 따라 다르니 담당의와 정하세요.",
       "review": {
         "id": "faq.colorectal.017",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-acs-survivor"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -247,12 +287,14 @@
       "a": "재발은 증상 없이 추적 CT나 CEA 상승으로 먼저 발견되는 경우가 많아요. 몇 주 넘게 이어지는 복통·배변 변화·혈변, 이유 없는 체중 감소, 계속되는 기침, 뼈 통증, 눈이나 피부가 노래지는 증상이 있으면 다음 예약을 기다리지 말고 알리세요. 정해진 추적검사를 빠지지 않는 것이 가장 중요해요.",
       "review": {
         "id": "faq.colorectal.018",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-acs-survivor"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -261,12 +303,14 @@
       "a": "장의 일부를 떼면 대변을 저장하고 수분을 흡수하는 기능이 달라져서 배변 횟수나 굳기가 바뀔 수 있어요. 직장암 수술 뒤에는 잦은 변·급박변(저위전방절제증후군, LARS)이 생길 수 있어요. 대개 수술 후 6개월쯤 크게 나아지고 2년 정도에 걸쳐 조금씩 더 좋아지지만 일부 불편이 남을 수 있어요. 골반저 재활·식이·약을 상의하세요.",
       "review": {
         "id": "faq.colorectal.019",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-cruk-bowel-changes"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -275,12 +319,14 @@
       "a": "수술 후에는 걷기부터 시작해 조금씩 시간을 늘리는 것이 좋아요. 배에 힘이 많이 들어가는 무거운 물건 들기는 회복 기간 동안 피하고, 시작 시기는 수술팀에 확인하세요. 꾸준한 신체활동은 재발 위험을 낮추는 데 도움이 될 수 있다는 연구가 있어요. 장루가 있다면 탈장 예방 운동을 장루전문간호사와 상의하세요.",
       "review": {
         "id": "faq.colorectal.020",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-acs-survivor"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -289,12 +335,15 @@
       "a": "수술 직후에는 소화가 쉬운 음식을 조금씩 자주 먹고 물을 충분히 마시는 것이 좋아요. 회장루가 있으면 질긴 섬유질 음식이 막힘을 일으킬 수 있어 잘게 씹어 먹어요. 회복 뒤에는 채소·통곡물·단백질을 고루 먹고 가공육·적색육·술은 줄이는 것이 좋아요. 개인 상황에 맞는 식단은 영양사와 상담하세요.",
       "review": {
         "id": "faq.colorectal.021",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-kncc-diet",
+          "colorectal-acs-survivor"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -303,12 +352,14 @@
       "a": "수술 뒤 식사량 감소, 설사, 장루로 인한 수분 손실, 항암 부작용 때문에 체중이 줄 수 있어요. 반대로 활동이 줄거나 일부 약 때문에 늘기도 해요. 체중보다 근육이 빠지는지가 더 중요하니 단백질 섭취와 근력운동을 함께 챙기세요. 한 달에 체중이 눈에 띄게 줄거나 먹기 힘들면 담당의·영양사에게 알리세요.",
       "review": {
         "id": "faq.colorectal.022",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-kncc-diet"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -359,12 +410,15 @@
       "a": "외출할 때는 여분의 파우치·피부보호제·물티슈를 담은 작은 키트를 챙기고, 화장실 위치를 미리 확인해 두면 편해요. 더운 날이나 활동이 많을 때는 물을 충분히 마셔 탈수를 막으세요. 장루 주변 피부가 붉어지거나 자꾸 새면 장루전문간호사와 상의하세요. 배출이 묽고 많아지며 어지럽고 소변이 줄면 바로 연락하세요.",
       "review": {
         "id": "faq.colorectal.026",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-cruk-stoma",
+          "colorectal-kncc-diet"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -401,12 +455,14 @@
       "a": "옥살리플라틴은 손발 저림(말초신경병증)을 일으킬 수 있고, 치료 중에는 찬 것을 만질 때 더 심해지기도 해요. 횟수가 쌓일수록 오래 남을 수 있어서 의료진이 용량이나 기간을 조정하기도 해요. 단추 잠그기나 걷기가 어려워지면 바로 알리세요. 넘어지지 않도록 집 안을 정리하고 뜨거운 물 온도를 확인하세요.",
       "review": {
         "id": "faq.colorectal.029",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-nci-colon-hp"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -471,12 +527,14 @@
       "a": "배변이 잦거나 갑자기 급해질까 걱정돼 외출이 두려워지는 것은 흔한 반응이에요. 배변 일지로 패턴과 음식을 찾고, 외출 전 화장실 위치와 여분 속옷을 챙기면 마음이 편해져요. 골반저 재활과 약으로 좋아질 수 있으니 담당의에게 배변 상태를 구체적으로 말하세요. 장루전문간호사·환우회와 이야기하는 것도 도움이 돼요.",
       "review": {
         "id": "faq.colorectal.034",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-cruk-bowel-changes"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -485,12 +543,15 @@
       "a": "술과 가공육(햄·소시지·베이컨 등)은 대장암 위험을 높이는 요인으로 알려져 있어요. 치료 중에는 술이 간에 부담을 주고 약과 상호작용하거나 설사·탈수를 악화시킬 수 있어요. 치료 후에는 다른 건강 문제까지 생각해 줄이는 것이 좋아요. 술을 얼마나 마셔도 되는지는 내 치료 상황에 맞게 담당의에게 확인하세요.",
       "review": {
         "id": "faq.colorectal.035",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-acs-risk",
+          "colorectal-iarc-meat"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -499,12 +560,15 @@
       "a": "대장암 추적검사 외에도 위암·유방암·자궁경부암 같은 다른 국가암검진, 혈압·혈당·콜레스테롤, 뼈 건강을 챙기는 것이 좋아요. 린치증후군이 확인됐다면 자궁내막암 등 관련 암 검진 계획도 따로 필요해요. 예방접종과 치과 검진도 챙기세요. 어떤 검진을 어디서 받을지 담당의·주치의와 정리해 두세요.",
       "review": {
         "id": "faq.colorectal.036",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-acs-survivor",
+          "colorectal-acs-risk"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -513,12 +577,14 @@
       "a": "영양제는 항암제와 상호작용하거나 간에 부담을 줄 수 있고, 고용량 항산화제는 치료에 영향을 줄 수 있다는 우려가 있어요. 효과가 확인되지 않은 제품이 많으니 광고만 보고 고르지 마세요. 비타민 D처럼 부족할 수 있는 영양소는 검사 후 상의하는 것이 좋아요. 먹는 영양제·한약은 모두 목록으로 만들어 의료진과 상의 후 결정하세요.",
       "review": {
         "id": "faq.colorectal.037",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-acs-survivor"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -541,12 +607,14 @@
       "a": "손을 자주 씻고, 사람이 많은 곳에서는 마스크를 쓰며, 상처와 장루 주변 피부를 깨끗하게 관리하세요. 항암 중 백혈구가 낮은 시기에는 날음식·덜 익힌 음식을 피하는 것이 좋아요. 예방접종은 의료진과 시기를 맞추세요. 38°C 이상 열이 나면 해열제로 버티지 말고 바로 병원에 연락하세요.",
       "review": {
         "id": "faq.colorectal.039",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "nci-infection"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -555,12 +623,15 @@
       "a": "전이성 대장암은 MSI-H/dMMR 여부, RAS·BRAF·HER2 결과, 원발 위치(좌/우)에 따라 항암제 조합에 면역치료나 표적치료를 더해요. 간·폐 전이가 적으면 절제·소작·정위체부방사선(SBRT)으로 완치를 목표로 하는 경우도 있어요. 치료 목표가 무엇인지, 전이 절제 가능성이 있는지 다학제 진료에서 확인하세요.",
       "review": {
         "id": "faq.colorectal.040",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-nci-colon",
+          "colorectal-nci-colon-hp"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -569,12 +640,14 @@
       "a": "수술과 치료가 잘 끝나도 일정 기간은 재발 가능성이 남아 있고, 재발은 대부분 수술 후 처음 몇 년 안에 생겨요. 일찍 찾으면 다시 수술 등으로 치료할 기회가 커져요. 또 남은 대장에 새 용종이나 암이 생길 수 있어 대장내시경도 계속 필요해요. 내 추적 일정표를 받아 두고 빠지지 않게 챙기세요.",
       "review": {
         "id": "faq.colorectal.041",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-acs-survivor"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -583,12 +656,14 @@
       "a": "네, 부모·형제·자녀 같은 1차 가족 중 대장암 환자가 있으면 위험이 대략 2배 정도로 높아진다고 알려져 있어요. 가족이 젊은 나이에 진단됐거나 여러 명이면 더 높고, 린치증후군 같은 유전 질환 가능성도 살펴요. 이런 경우 검진을 더 일찍, 더 자주 시작하기도 해요. 가족력을 정리해 담당의와 검진 시기를 상의하세요.",
       "review": {
         "id": "faq.colorectal.042",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-acs-risk"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -597,12 +672,14 @@
       "a": "50세 미만 대장암이 늘고 있다는 보고가 여러 나라에서 나오고 있지만, 정확한 원인은 아직 밝혀지지 않았어요. 비만, 운동 부족, 가공육·단 음료 위주 식습관, 장내 미생물 변화 등이 거론돼요. 젊다고 혈변이나 배변 변화를 치질로만 넘기지 말고 진료를 받으세요. 젊은 나이 진단이면 유전상담도 받아 보세요.",
       "review": {
         "id": "faq.colorectal.043",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-acs-risk"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -625,12 +702,14 @@
       "a": "아니에요. 과형성 용종처럼 암 위험이 낮은 용종도 많아요. 암으로 변할 수 있는 것은 주로 선종과 일부 톱니모양 용종이고, 이것도 대개 수년 이상 천천히 자라요. 그래서 내시경에서 떼어 조직검사로 종류를 확인해요. 결과지의 용종 종류·크기·개수에 따라 다음 내시경 시기가 정해지니 꼭 물어보세요.",
       "review": {
         "id": "faq.colorectal.045",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-acs-risk"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -639,12 +718,14 @@
       "a": "선종은 시간이 지나면 일부가 대장암으로 변할 수 있는 전암병변이에요. 내시경으로 미리 떼어 내면 대장암이 생기는 것을 막는 데 도움이 돼요. 크기가 크거나 고도이형성처럼 세포 변화가 많을수록 더 주의가 필요해요. 선종을 뗐다면 다음 대장내시경 시기를 담당의에게 확인하세요.",
       "review": {
         "id": "faq.colorectal.046",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-acs-risk"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -653,12 +734,14 @@
       "a": "아니에요. 혈변은 치질이나 항문 열상(찢어짐) 같은 흔한 원인이 더 많아요. 하지만 겉보기로는 구분이 어려워 스스로 판단하지 말고 진료를 받는 것이 좋아요. 특히 피가 변에 섞여 있거나 배변 습관 변화·체중 감소가 함께 있으면 대장내시경을 상의하세요. 피가 많이 나며 어지럽거나 쓰러질 것 같으면 바로 응급실로 가세요.",
       "review": {
         "id": "faq.colorectal.047",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-nhs-symptoms"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -667,12 +750,14 @@
       "a": "변이 가늘어지는 것은 일시적으로 흔히 생길 수 있어요. 다만 몇 주 넘게 계속되거나, 혈변·복통·잔변감·체중 감소가 함께 있으면 진료를 받아 보는 것이 좋아요. 장 안에 혹이 있으면 통로가 좁아져 이런 변화가 생길 수 있기 때문이에요. 언제부터 어떻게 바뀌었는지 적어 가면 진료에 도움이 돼요.",
       "review": {
         "id": "faq.colorectal.048",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-nhs-symptoms"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -681,12 +766,14 @@
       "a": "대부분의 복통은 대장암이 아닌 다른 원인이에요. 다만 대장암이 진행되면 장이 좁아져 배가 더부룩하거나 쥐어짜는 통증이 생길 수 있어요. 몇 주 넘게 이어지거나 배변 변화·혈변·체중 감소가 함께 있으면 진료를 받으세요. 배가 부풀고 방귀·대변이 멈추며 토하거나, 점점 심해지는 복통과 열이 있으면 바로 응급실로 가세요.",
       "review": {
         "id": "faq.colorectal.049",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-nhs-symptoms"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -695,12 +782,14 @@
       "a": "국가 대장암 검진은 증상이 없을 때 대장암을 일찍 찾기 위한 제도로, 받는 것을 권해요. 일반적으로 만 50세 이상은 매년 분변잠혈검사를 받고, 양성이면 대장내시경으로 확인해요. 가족력이나 증상이 있으면 검진 대신 진료를 받는 것이 맞아요. 대상과 비용은 2026년 10월 기준으로 국민건강보험공단(1577-1000)에 확인하세요.",
       "review": {
         "id": "faq.colorectal.050",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-kncc-screening"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -709,12 +798,14 @@
       "a": "세계보건기구 국제암연구소(IARC)는 가공육을 대장암 위험을 높이는 1군 발암물질로 분류했어요. 매일 50g(소시지 1~2개 정도)씩 먹으면 위험이 약 18% 높아진다는 분석이 있어요. 가끔 먹는 것보다 매일 습관이 문제이니 횟수를 줄이고 채소·통곡물을 늘리는 것이 좋아요. 위험도는 개인마다 다르다는 점도 기억하세요.",
       "review": {
         "id": "faq.colorectal.051",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-iarc-meat"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -723,12 +814,14 @@
       "a": "네, 비만, 특히 복부 비만은 대장암 위험을 높이는 요인으로 알려져 있어요. 운동 부족과 함께 장의 염증·인슐린 변화 등이 영향을 주는 것으로 생각돼요. 치료 후에는 무리한 감량보다 근육을 지키면서 건강한 체중을 유지하는 것이 좋아요. 목표 체중과 방법은 담당의·영양사와 상의하세요.",
       "review": {
         "id": "faq.colorectal.052",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-acs-risk"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -809,12 +902,15 @@
       "a": "배가 부풀고 방귀·대변이 멈추며 토할 때, 많은 혈변과 어지럼·실신, 점점 심해지는 복통과 발열, 한쪽 다리 부종이나 갑작스러운 숨참·흉통은 바로 응급실로 가세요. 항암 중 38°C 이상 발열도 바로 연락해야 해요. 장루 배출이 많아지며 어지럽고 소변이 줄면 탈수일 수 있어요. 급하면 119에 연락하세요.",
       "review": {
         "id": "faq.colorectal.058",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-nhs-symptoms",
+          "nci-infection"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -823,12 +919,14 @@
       "a": "재활치료는 수술과 항암으로 떨어진 체력·근력·일상 기능을 되찾는 데 도움이 돼요. 직장암 수술 후 배변 문제에는 골반저 재활이, 손발 저림으로 걷기가 불안할 때는 균형 운동이 도움이 될 수 있어요. 장루가 있다면 탈장 예방 운동도 배워 두세요. 어떤 재활이 가능한지 담당의에게 의뢰를 요청하세요.",
       "review": {
         "id": "faq.colorectal.059",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-cruk-bowel-changes"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -837,12 +935,14 @@
       "a": "정해진 추적검사를 빠지지 않는 것이 기본이에요. 여기에 꾸준한 운동, 균형 잡힌 식사, 금연·절주, 건강한 체중 유지로 전반적인 건강을 챙기세요. 남은 부작용(배변 변화, 손발 저림, 피로)과 마음 건강도 꾸준히 관리하고, 다른 암 검진과 만성질환 관리도 함께해요. 주치의와 암 진료팀이 역할을 나누도록 정리해 두세요.",
       "review": {
         "id": "faq.colorectal.060",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-acs-survivor"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -851,12 +951,15 @@
       "a": "TNM은 암이 장벽을 얼마나 깊이 뚫었는지(T), 림프절 전이(N), 다른 장기 전이(M)로 병기를 정하는 방법이에요. 이를 묶어 1~4기로 나누고, 같은 병기 안에서도 T4·N2, 림프관 침범 같은 항목이 있으면 고위험으로 봐요. 수술 전 임상 병기와 수술 후 병리 병기가 다를 수 있어요. 내 T·N·M과 위험 요인을 물어보세요.",
       "review": {
         "id": "faq.colorectal.061",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-nci-colon-hp",
+          "colorectal-nci-colon"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -865,12 +968,14 @@
       "a": "조직형(선암·점액선암·반지세포암)과 분화도, 장벽 침범 깊이(T), 검사한 림프절 수와 전이 개수(N), 절제면에 암이 없는지, 림프관·혈관·신경 침범, 종양 출아(budding), MMR/MSI 결과를 보세요. 이 항목들이 병기와 보조항암 여부를 정해요. 모르는 용어는 표시해 두었다가 진료실에서 그대로 질문하세요.",
       "review": {
         "id": "faq.colorectal.062",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-nci-colon-hp"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -893,12 +998,14 @@
       "a": "완치 목표는 암을 모두 없애 재발하지 않게 하는 것이고, 조절 목표는 암을 줄이거나 자라지 않게 하며 오래 잘 지내는 것이에요. 증상완화는 통증·피로·숨참 같은 불편을 줄여 삶의 질을 높이는 것으로, 진단 때부터 다른 치료와 함께할 수 있어요. 첫 진료에서 \"제 치료 목표는 무엇인가요?\"를 꼭 물어보세요.",
       "review": {
         "id": "faq.colorectal.064",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-nci-palliative"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -907,12 +1014,15 @@
       "a": "결장암은 대개 수술을 먼저 하고, 3기나 고위험 2기는 이후 보조항암을 해요. 국소진행 직장암은 항암·방사선을 수술 전에 먼저 하는 경우가 많고, 요즘은 전체 선행치료(TNT)도 많이 해요. dMMR이면 면역치료가 먼저 논의될 수 있어요. 순서는 위치·병기·MMR 결과로 정해지니 \"왜 이 순서인가요?\"를 물어보세요.",
       "review": {
         "id": "faq.colorectal.065",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-nci-rectal-hp",
+          "colorectal-nci-colon"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -935,12 +1045,14 @@
       "a": "방사선치료는 주로 국소진행 직장암에서 수술 전에 암을 줄이고 골반 안 재발을 낮추려고 써요. 1주(5회) 단기 방식과 5~6주 장기 방식이 있고, 일부는 방사선 없이 항암만 먼저 하기도 해요. 소수 전이에는 정위체부방사선(SBRT), 통증 완화에도 쓰여요. 골반 방사선 전에는 가임력 보존 상담을 받을 수 있는지 물어보세요.",
       "review": {
         "id": "faq.colorectal.067",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-nci-rectal-hp"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -949,12 +1061,14 @@
       "a": "CT에서는 종양 크기가 줄었는지(관해), 비슷한지(안정), 커지거나 새로 생겼는지(진행)를 비교해요. 직장암은 수술 전 치료 뒤 골반 MRI와 내시경으로 종양이 사라졌는지(임상적 완전관해) 확인해요. 판독지의 작은 결절이나 '불확정' 병변은 전이가 아닐 수 있어 추적으로 확인해요. 이전보다 어떻게 바뀌었는지 설명을 들으세요.",
       "review": {
         "id": "faq.colorectal.068",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-nci-rectal-hp"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -963,12 +1077,15 @@
       "a": "CEA는 추적에 쓰는 종양표지자로, 한 번의 수치보다 여러 번의 변화 흐름이 중요해요. 흡연·염증 등으로도 오를 수 있고, 정상이어도 암이 없다는 뜻은 아니에요. RAS/BRAF·MSI는 수치가 아니라 있고 없음을 보는 유전자 결과로, 치료 선택에 쓰여요. CEA가 계속 오르면 영상검사 계획을 담당의와 상의하세요.",
       "review": {
         "id": "faq.colorectal.069",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-acs-survivor",
+          "colorectal-nci-colon-hp"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -977,12 +1094,14 @@
       "a": "MMR은 네 단백질(MLH1·PMS2·MSH2·MSH6)이 보이면 정상(pMMR), 하나라도 소실되면 dMMR이에요. MSI는 MSI-H(높음)이거나 MSS(안정)로 적혀요. RAS는 '야생형(변이 없음)'이면 항EGFR 항체를 고려할 수 있고, BRAF V600E 변이가 있으면 맞춤 표적치료를 써요. 결과와 함께 유전상담이 필요한지도 물어보세요.",
       "review": {
         "id": "faq.colorectal.070",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-nci-colon-hp"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1019,12 +1138,14 @@
       "a": "모두 위험하지만 항암 중 38°C 이상 발열은 감염이 빠르게 나빠질 수 있어 바로 병원에 연락해야 해요. 많은 혈변과 어지럼·실신, 갑작스러운 숨참·흉통(혈전 가능성)은 바로 응급실로 가거나 119에 연락하세요. 어느 것이 더 위험한지 따지기보다 이런 증상이 나타나면 기다리지 않는 것이 가장 중요해요.",
       "review": {
         "id": "faq.colorectal.073",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "nci-infection"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1047,12 +1168,14 @@
       "a": "일반 진통제로 조절되지 않는 중등도 이상 통증이 있으면 마약성 진통제를 써요. 의료진 지시대로 쓰면 암 통증 치료에서 중독은 흔하지 않아요. 변비 같은 부작용은 예방약으로 함께 관리해요. 통증을 0~10점으로 기록해 알려 주고, 용량·횟수는 혼자 바꾸지 말고 담당의와 상의하세요.",
       "review": {
         "id": "faq.colorectal.075",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-nci-pain"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1061,12 +1184,14 @@
       "a": "아니에요. 완화(지지)의료는 마지막 단계의 돌봄이 아니라 진단 시점부터 항암치료와 함께 통증·피로·숨참·불안을 줄이는 치료예요. 일찍 받을수록 삶의 질을 높이는 데 도움이 될 수 있어요. 호스피스는 그중 생애 말기에 집중하는 돌봄이에요. 증상이 힘들다면 완화의료팀 협진을 요청하세요.",
       "review": {
         "id": "faq.colorectal.076",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-nci-palliative"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1117,12 +1242,14 @@
       "a": "항암 중 38°C 이상 열이 나면 시간대와 상관없이 바로 병원에 연락하거나 응급실로 가세요. 백혈구가 낮을 때는 감염이 빠르게 나빠질 수 있어서예요. 열이 날 때 해열제로 버티지 말고, 오한·어지럼이 있으면 119에 연락하세요. 항암 중임을 알리고, 병원의 야간 연락처를 미리 저장해 두세요.",
       "review": {
         "id": "faq.colorectal.080",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "nci-infection"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1159,12 +1286,14 @@
       "a": "많은 항암제는 신장이나 간에서 처리되기 때문에 기능이 떨어져 있으면 약이 몸에 쌓여 부작용이 커질 수 있어요. 그래서 치료 전과 치료 중에 혈액검사로 신장·간 기능을 확인하고, 의료진이 필요하면 용량이나 약을 조정해요. 일부 약은 대사 효소 이상 여부를 확인하기도 해요. 결과에 따라 조정이 필요한지 물어보세요.",
       "review": {
         "id": "faq.colorectal.083",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-nci-colon-hp"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1229,12 +1358,15 @@
       "a": "직장암 수술이나 골반 방사선 후에는 성교통, 질 건조감, 발기·사정 문제가 생길 수 있고, 치료로 좋아지는 경우가 많아요. 쑥스러워도 진료실에서 직접 말하는 것이 좋고, 비뇨의학과·산부인과 협진을 요청할 수 있어요. 장루가 있어도 성생활은 가능하니 장루전문간호사에게 팁을 물어보세요. 파트너와도 솔직하게 이야기해 보세요.",
       "review": {
         "id": "faq.colorectal.088",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-nci-rectal-hp",
+          "colorectal-cruk-stoma"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1301,12 +1433,14 @@
       "a": "치료 중에는 효과가 확인되지 않은 한약·고용량 영양제·건강기능식품, 고용량 항산화제, 자몽 주스, 세인트존스워트 같은 허브는 항암제와 상호작용할 수 있어 주의가 필요해요. 표준치료를 미루거나 대신하는 요법은 피하세요. 마사지·명상처럼 마음을 편하게 하는 방법은 도움이 될 수 있어요. 시작 전 의료진과 상의 후 결정하세요.",
       "review": {
         "id": "faq.colorectal.093",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-acs-survivor"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     },
     {
@@ -1399,12 +1533,15 @@
       "a": "① 결장암인가요, 직장암인가요? 위치는요? ② 병기와 림프절 상태는요? ③ MMR/MSI 결과는요? 유전상담이 필요한가요? ④ 수술 먼저인가요, 수술 전 치료 먼저인가요? ⑤ 장루 가능성은? 임시인가요, 영구인가요? ⑥ 보조항암은 몇 개월인가요? ⑦ 비수술 추적이 가능한가요? ⑧ 가임력 보존 상담을 받을 수 있나요? ⑨ 바로 연락해야 할 증상은요? ⑩ 전이가 있다면 RAS·BRAF·HER2 결과는요? 한 번에 3개씩 골라 가세요.",
       "review": {
         "id": "faq.colorectal.100",
-        "version": "20261019.1",
+        "version": "20261106-source-map-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
-        "aiCheck": "legacy-text-not-rechecked",
-        "sourceRefs": [],
-        "scope": "기존 MINI v3.2 기반 문항. 문항별 최신 1차 근거 추가 대조 대기."
+        "aiCheck": "ai-topic-source-mapped-not-line-verified",
+        "sourceRefs": [
+          "colorectal-nci-colon-hp",
+          "colorectal-nci-rectal-hp"
+        ],
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
       }
     }
   ],
@@ -1445,6 +1582,104 @@
       "url": "https://www.cancer.gov/types/liver/hp/bile-duct-treatment-pdq",
       "checkedAt": "2026-10-19",
       "scope": "절제 불가능·전이·재발 담도암 1차 면역·항암 병용의 국제 근거; 국내 허가·급여를 증명하는 자료는 아님"
+    },
+    "colorectal-kncc-treatment": {
+      "title": "국가암정보센터 · 대장암 치료방법",
+      "organization": "국립암센터 국가암정보센터",
+      "url": "https://www.cancer.go.kr/lay1/program/S1T211C214/cancer/view.do?cancer_seq=3797&menu_seq=3813",
+      "checkedAt": "2026-11-06",
+      "scope": "내시경 절제, 결장·직장암별 수술(복회음절제 영구 장루, 저위전방절제 시 임시 회장루), 항암, 방사선, 표적치료제, 면역관문억제제. 증상·위험요인·검진 본문은 없음"
+    },
+    "colorectal-kncc-screening": {
+      "title": "국가암정보센터 · 국가암검진 사업",
+      "organization": "국립암센터 국가암정보센터",
+      "url": "https://www.cancer.go.kr/lay1/S1T261C262/contents.do",
+      "checkedAt": "2026-11-06",
+      "scope": "대장암 검진 만 50세 이상 1년 주기 분변잠혈검사, 양성 시 대장내시경·조직진단 비용 공단 부담(전액 또는 일부), 수면·용종 제거 추가비용 본인부담"
+    },
+    "colorectal-kncc-diet": {
+      "title": "국가암정보센터 · 대장(직장)암 환자 식생활",
+      "organization": "국립암센터 국가암정보센터",
+      "url": "https://www.cancer.go.kr/lay1/program/S1T211C223/cancer/view.do?cancer_seq=4997&menu_seq=5019",
+      "checkedAt": "2026-11-06",
+      "scope": "직장 부분 절제 후 잦은 배변과 수분 6~10컵, 설사는 2~3개월 후 호전, 회장루는 묽은 배출로 수분 8~10컵·염분, 잘 씹으면 음식 제한 대개 불필요"
+    },
+    "colorectal-nci-colon": {
+      "title": "NCI · Colon Cancer Treatment (PDQ) 환자용",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/types/colorectal/patient/colon-treatment-pdq",
+      "checkedAt": "2026-11-06",
+      "scope": "증상, 분변잠혈·대장내시경·조직검사, TNM 병기, 용종절제·국소절제·결장절제·장루, 보조항암, 항VEGF·항EGFR·BRAF·KRAS G12C 표적, 면역치료, 간전이 절제·고주파 소작, 추적 CEA. 미국 기준, 국내 급여 증명 아님"
+    },
+    "colorectal-nci-colon-hp": {
+      "title": "NCI · Colon Cancer Treatment (PDQ) 의료인용",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/types/colorectal/hp/colon-treatment-pdq",
+      "checkedAt": "2026-11-06",
+      "scope": "림프절 12개 이상 검사, 2기 고위험 인자, IDEA(저위험 3기 3개월·T4/N2 6개월, 3개월 시 신경병증 감소), KRAS 야생형 항EGFR, BRAF V600E·KRAS G12C, MSI/MMR 검사·린치, dMMR 전이암 1차 면역치료, DPYD 변이, CEA 추적의 한계. 국내 허가·급여 증명 아님"
+    },
+    "colorectal-nci-rectal-hp": {
+      "title": "NCI · Rectal Cancer Treatment (PDQ) 의료인용",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/types/colorectal/hp/rectal-treatment-pdq",
+      "checkedAt": "2026-11-06",
+      "scope": "직장 = 항문연에서 10~15cm, 골반 MRI 병기, 단기(5회) vs 장기 항암방사선, 전체 선행치료(TNT) 선호, 임상적 완전관해 시 비수술 추적, dMMR 도스타를리맙은 소규모 근거(표준 아님), 방사선 후 배변·성기능 장기 영향. 국내 급여 증명 아님"
+    },
+    "colorectal-acs-risk": {
+      "title": "ACS · Colorectal Cancer Risk Factors",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/types/colon-rectal-cancer/causes-risks-prevention/risk-factors.html",
+      "checkedAt": "2026-11-06",
+      "scope": "1차 가족력(50세 미만·여러 명이면 더 높음), 린치증후군, 비만, 적색육·가공육, 음주, 흡연, 50세 미만 발생 증가(원인 불명), 선종 병력. 위험 배수 수치는 제시하지 않음"
+    },
+    "colorectal-acs-survivor": {
+      "title": "ACS · Living as a Colorectal Cancer Survivor",
+      "organization": "American Cancer Society",
+      "url": "https://www.cancer.org/cancer/types/colon-rectal-cancer/after-treatment/living.html",
+      "checkedAt": "2026-11-06",
+      "scope": "추적: 처음 2년 3~6개월, 이후 5년까지 약 6개월, 고위험 CT 6~12개월, 수술 1년 후 대장내시경; CEA 상승 의미, 신체활동과 재발 위험 감소 연관, 식이·절주·금연, 보조제 근거 없음, 이차암 위험"
+    },
+    "colorectal-nhs-symptoms": {
+      "title": "NHS · Symptoms of bowel cancer",
+      "organization": "NHS (UK)",
+      "url": "https://www.nhs.uk/conditions/bowel-cancer/symptoms/",
+      "checkedAt": "2026-11-06",
+      "scope": "배변 습관 변화, 혈변·검은 변, 잔변감, 복통·덩이, 체중 감소, 빈혈 피로; 멈추지 않는 출혈·다량 출혈은 응급. 영국 연락 경로는 한국에 그대로 적용하지 않으며 장폐색 신호는 다루지 않음"
+    },
+    "colorectal-iarc-meat": {
+      "title": "IARC · Q&A on the carcinogenicity of red meat and processed meat (Monographs Vol.114)",
+      "organization": "WHO 국제암연구소(IARC)",
+      "url": "https://www.iarc.who.int/wp-content/uploads/2018/11/Monographs-QA_Vol114.pdf",
+      "checkedAt": "2026-11-06",
+      "scope": "가공육 1군·적색육 2A, 가공육 매일 50g당 대장암 위험 약 18% 증가, 분류는 근거 강도이지 위험 크기가 아님"
+    },
+    "colorectal-cruk-bowel-changes": {
+      "title": "Cancer Research UK · Bowel problems after treatment",
+      "organization": "Cancer Research UK",
+      "url": "https://www.cancerresearchuk.org/about-cancer/bowel-cancer/living-with/bowel-changes-after-treatment",
+      "checkedAt": "2026-11-06",
+      "scope": "직장 수술 후 잦은 변·급박변(LARS)이 약 1년 이어질 수 있고 점차 완화, 일부 장기 지속; 식이 조절, 골반저·괄약근 운동, 지사제·섬유질 보충제(의사 상의)"
+    },
+    "colorectal-cruk-stoma": {
+      "title": "Cancer Research UK · Coping with a stoma",
+      "organization": "Cancer Research UK",
+      "url": "https://www.cancerresearchuk.org/about-cancer/bowel-cancer/living-with/having-stoma",
+      "checkedAt": "2026-11-06",
+      "scope": "임시·영구 장루, 장루전문간호사 교육·지원, 직장·운동·수영 가능, 성생활·관계 고민. 수술 전 위치 표시·탈장 예방은 다루지 않음"
+    },
+    "colorectal-nci-palliative": {
+      "title": "NCI · Palliative Care in Cancer",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/about-cancer/advanced-cancer/care-choices/palliative-care-fact-sheet",
+      "checkedAt": "2026-11-06",
+      "scope": "완화의료는 진단부터 치료와 함께 가능, 호스피스와의 구분, 통증·피로·숨참·불안 등 증상 관리"
+    },
+    "colorectal-nci-pain": {
+      "title": "NCI · Pain and Cancer Treatment",
+      "organization": "National Cancer Institute",
+      "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/pain",
+      "checkedAt": "2026-11-06",
+      "scope": "중등도~중증 암 통증에 마약성 진통제, 처방대로 대부분 안전하게 사용, 변비 부작용, 통증 점수 기록(NCI는 1~10 척도)"
     }
   }
 }
