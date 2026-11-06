@@ -34,4 +34,14 @@ assert(html.indexOf('href="tel:119"')<html.indexOf('class="card nearby"'),'emerg
 assert(html.indexOf('class="card nearby"')<html.indexOf('id="regionSearch"'),'nearby search must precede regional search');
 assert(html.includes('E-Gen이 열리면 위치 사용을 허용'),'location lookup delegated explicitly to E-Gen');
 assert(!html.includes('navigator.geolocation'),'ApuDa must not collect user GPS for an external E-Gen lookup');
-console.log('PASS: ApuDa emergency 119 priority, nearby E-Gen first, collapsed regional lookup, privacy, safe result UI');
+assert(html.includes('--brand:#115faa'),'ApuDa blue should be the central color token');
+assert(html.includes('details.region-card>summary'),'regional summary has a scoped layout');
+assert(html.includes('padding:24px 26px!important'),'desktop region card must have horizontal padding');
+assert(html.includes('padding:19px 18px!important'),'mobile region card must have horizontal padding');
+assert(html.includes('class="region-copy"'),'regional heading uses a shrinkable content cell');
+assert(html.includes('class="region-mark"'),'regional heading uses a fixed-width icon cell');
+assert(html.includes('class="region-arrow"'),'regional summary includes an end-aligned disclosure icon');
+assert(html.includes('grid-template-columns:1fr;gap:16px'),'mobile form uses one column');
+assert(html.includes('width:min(100%,776px)'),'desktop content width remains readable');
+
+console.log('PASS: ApuDa emergency brand blue, responsive region padding, nearby-first, privacy, 119 and API safe UI');
