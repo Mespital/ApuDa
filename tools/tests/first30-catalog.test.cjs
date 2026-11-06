@@ -26,7 +26,10 @@ for (const [index, book] of catalog.books.entries()) {
   assert.equal(book.href, approved.book_href);
   assert.equal(book.hasMini, legacy.has(book.slug));
   assert.equal(book.hasFaq, true);
-  assert.equal(book.faqCount, legacy.has(book.slug) ? 100 : 20);
+  // 2026-11-03 신규 18묶음도 100문항으로 확장됨 — 하드코딩 대신 실제 FAQ 파일과 대조
+  const faqData = JSON.parse(fs.readFileSync(path.join(site, 'library/faq/data', book.slug + '.json'), 'utf8'));
+  assert.equal(book.faqCount, faqData.items.length, book.slug + ': faqCount');
+  assert.equal(book.faqCount, 100);
   assert.equal(catalog.get(book.slug), book);
   assert.ok(Object.isFrozen(book));
   const image = fs.readFileSync(path.join(site, book.cover.split('?')[0]));

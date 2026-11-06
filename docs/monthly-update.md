@@ -43,6 +43,25 @@
 ### E. 암환자 노트 — `public-site/note/`
 - 앱 안의 제도·연락처 문구가 A와 같은지 확인. 코드 변경 시 `note/sw.js`의 캐시 버전을 올린다.
 
+### F. 뉴스 데이터 ↔ FAQ·요법 카드 대조 — `public-site/news/data/oncology-30d.json`
+2026-11-06 검토에서 추가한 항목이다. 사이트 뉴스에 「빌로이 급여 등재」 기사가 이미 있었는데도, FAQ는 「비급여」로 남아 있었던 일이 계기다.
+
+1. 최근 30일 기사 중 제목·요약에 다음 단어가 있는 것을 고른다: `급여`, `등재`, `허가`, `적응증 확대`, `고시`, `승인`.
+2. 기사에 나온 약(성분명·상품명)이 아래 파일에 있는지 검색한다.
+   - `library/faq/data/*.json`
+   - `assets/apuda-regimens.js`
+   - `library/assets/onco-data.js`
+3. 사이트 문구가 기사와 반대인 경우 원칙 2(원문을 열어 확인)를 거친 뒤에만 고친다. 예: 「비급여」 vs 「급여 적용」, 「해외 승인」 vs 「국내 허가」.
+   - 원문은 보도자료·심평원·복지부 고시를 우선하고, 없으면 보도 2건 이상을 교차 확인한다.
+   - 열어 보지 못했으면 「확인 필요」에 적는다.
+4. 상품명은 사이트에 쓰지 않는다(성분명만). 약명 표기는 식약처 허가 품목명을 따른다. 예: 시클로포스파미드, 이포스파마이드.
+5. 바꾼 FAQ 문항은 다음을 함께 처리한다.
+   - 그 파일의 `sources`와 `library/review/registry.json` 양쪽에 출처를 등록한다. 한쪽만 넣으면 `tools/tests/apuda-free-books.cjs`가 실패한다.
+   - `review.aiCheck`를 `targeted-source-check`로, `sourceRefs`와 `scope`를 갱신한다.
+6. 바꾼 뒤 아래 테스트가 전부 통과해야 커밋한다.
+   - `node public-site/tools/test-regimens.js`
+   - `for t in tools/tests/*.cjs; do node "$t"; done`
+
 ## 보고서 형식 (`docs/monthly-updates/YYYY-MM.md`)
 1. 요약(바꾼 항목 수, 확인 필요 수)
 2. 바꾼 것: 파일 · 항목 · 이전 → 이후 · 출처 URL
