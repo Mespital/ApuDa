@@ -1,8 +1,24 @@
 {
-  "checked_at": "2026-11-06T11:56:07.133886+00:00",
-  "last_success_at": "2026-11-06T11:56:07.133886+00:00",
+  "checked_at": "2026-11-06T19:13:20.923220+00:00",
+  "last_success_at": "2026-11-06T19:13:20.923220+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "Partnering with Hacktron to find vulnerabilities in OpenAI’s systems",
+      "url": "https://openai.com/index/partnering-with-hacktron",
+      "source": "OpenAI",
+      "published_at": "2026-11-06T08:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Measuring how AI agents handle everyday wet-lab science",
+      "url": "https://openai.com/index/measuring-how-ai-agents-handle-wet-lab-science",
+      "source": "OpenAI",
+      "published_at": "2026-11-06T00:00:00+00:00",
+      "category": "과학·환경",
+      "domain": "energy"
+    },
     {
       "title": "Generate longer AI videos with Omni 1.2 Flash in Google Vids at no cost.",
       "url": "https://blog.google/products-and-platforms/products/workspace/omni-1-2-flash-google-vids/",
@@ -226,42 +242,14 @@
       "published_at": "2026-11-02T18:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Preparing our next security sprint to harden OpenAI",
-      "url": "https://openai.com/index/preparing-our-next-security-sprint-to-harden-openai",
-      "source": "OpenAI",
-      "published_at": "2026-11-02T18:00:00+00:00",
-      "category": "안전·보안",
-      "domain": "security"
-    },
-    {
-      "title": "The latest AI news we announced in October 2026",
-      "url": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-october-2026/",
-      "source": "Google",
-      "published_at": "2026-11-02T17:45:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-11-06T11:56:07.133886+00:00",
+    "checked_at": "2026-11-06T19:13:20.923220+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
-      {
-        "date": "2026-11-06",
-        "title": "토론한마당 본선"
-      },
-      {
-        "date": "2026-11-06",
-        "title": "생명존중교육"
-      },
-      {
-        "date": "2026-11-06",
-        "title": "양성평등교육"
-      },
       {
         "date": "2026-11-07",
         "title": "토요휴업일"
@@ -396,7 +384,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-11-06T11:56:07.133886+00:00",
+    "last_success_at": "2026-11-06T19:13:20.923220+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
