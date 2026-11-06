@@ -57,6 +57,12 @@
       "url": "https://www.ajmc.com/view/rasolute-302-brings-a-transformative-moment-on-pancreatic-cancer-a-60-improvement-in-overall-survival",
       "checkedAt": "2026-11-06",
       "scope": "RAS 표적 경구 신약 2차 치료 생존 개선 3상 결과 존재; 국내 미허가"
+    },
+    "vyloy-reimb-202610": {
+      "title": "메디파나뉴스 · 클라우딘18.2 표적치료제 빌로이, 위암 1차 치료 급여 적용(2026-10-01)",
+      "url": "https://www.medipana.com/news/articleView.html?idxno=418613",
+      "checkedAt": "2026-11-06",
+      "scope": "2026-10-01부터 CLDN18.2 양성·HER2 음성 절제 불가능 국소진행·전이성 위선암·위식도접합부선암 1차, 플루오로피리미딘·백금 항암 병용 시 급여(보도 기준)"
     }
   },
   "cancers": [
@@ -141,6 +147,7 @@
       "participantTesting": "not-conducted",
       "faqItems": 100,
       "targetedItems": [
+        14,
         55,
         90
       ],
@@ -157,6 +164,12 @@
           "url": "https://www.nhis.or.kr/static/html/wbma/c/wbmac0215.html",
           "checkedAt": "2026-10-19",
           "scope": "확진 후 30일 이내 신청과 30일 경과 후 적용 시작일, 적용 범위·재등록 조건"
+        },
+        "vyloy-reimb-202610": {
+          "title": "메디파나뉴스 · 클라우딘18.2 표적치료제 빌로이, 위암 1차 치료 급여 적용(2026-10-01)",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=418613",
+          "checkedAt": "2026-11-06",
+          "scope": "2026-10-01부터 CLDN18.2 양성·HER2 음성 절제 불가능 국소진행·전이성 위선암·위식도접합부선암 1차, 플루오로피리미딘·백금 항암 병용 시 급여(보도 기준)"
         }
       }
     },
