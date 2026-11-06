@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-11-06T01:54:35.795330+00:00",
-  "last_success_at": "2026-11-06T01:54:35.795330+00:00",
+  "checked_at": "2026-11-06T11:56:07.133886+00:00",
+  "last_success_at": "2026-11-06T11:56:07.133886+00:00",
   "failures": [],
   "articles": [
     {
@@ -39,6 +39,14 @@
       "title": "Transform a quick drawing into a live app with Gemini.",
       "url": "https://blog.google/innovation-and-ai/products/gemini-app/turn-drawings-into-apps-gemini/",
       "source": "Google",
+      "published_at": "2026-11-05T17:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Australian universities are creating AI-native graduates",
+      "url": "https://openai.com/index/australian-universities-ai-native-graduates",
+      "source": "OpenAI",
       "published_at": "2026-11-05T17:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
@@ -234,20 +242,12 @@
       "published_at": "2026-11-02T17:45:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Scaling Git at OpenAI",
-      "url": "https://openai.com/index/scaling-git-at-openai",
-      "source": "OpenAI",
-      "published_at": "2026-11-02T15:30:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-11-06T01:54:35.795330+00:00",
+    "checked_at": "2026-11-06T11:56:07.133886+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -396,7 +396,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-11-06T01:54:35.795330+00:00",
+    "last_success_at": "2026-11-06T11:56:07.133886+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
