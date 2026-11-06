@@ -81,6 +81,25 @@
     .call-link{display:inline-flex;align-items:center;justify-content:center;min-height:46px;border-radius:10px;padding:8px 13px;font-size:15px;font-weight:800;color:var(--brand);border:1px solid #afcde7;text-decoration:none}
     .call-link:hover{background:#eff7ff}
     .result-warning{padding:12px 14px;margin-top:13px;border-radius:12px;background:#fff8e9;color:#6f5426;font-size:13px}
+
+    /* Primary nearby lookup uses E-Gen's location-based official finder.
+       ApuDa's own NMC API only supports STAGE1/STAGE2. */
+    .nearby{border:1px solid #bad5ed;background:linear-gradient(135deg,#eff6ff 0%,#fff 76%)}
+    .nearby-heading{display:flex;align-items:center;gap:12px}
+    .nearby-icon{display:grid;place-items:center;width:46px;height:46px;flex:none;border-radius:14px;background:#dbeafe;color:var(--brand);font-size:24px}
+    .nearby .nearby-caption{font-size:14px;color:var(--sub);margin:10px 0 16px}
+    .nearby .btn-blue{font-size:17px;min-height:58px;justify-content:space-between;padding:14px 18px}
+    .nearby .nearby-foot{font-size:13px;color:var(--sub);margin-top:11px}
+    details.region-card{margin:0;padding:0;border-top:1px solid var(--line);background:#fff}
+    details.region-card>summary{display:flex;align-items:center;justify-content:space-between;gap:16px;cursor:pointer;list-style:none;min-height:70px;color:var(--ink);font-weight:inherit}
+    details.region-card>summary::-webkit-details-marker{display:none}
+    .region-title{display:block;font-size:20px;line-height:1.35;font-weight:850;letter-spacing:-.04em}
+    .region-subtitle{display:block;font-size:13px;font-weight:500;color:var(--sub);margin-top:3px}
+    .region-arrow{font-size:25px;color:var(--brand);transition:transform .16s}
+    details.region-card[open] .region-arrow{transform:rotate(180deg)}
+    .region-content{border-top:1px solid var(--line);padding-top:17px}
+    .region-content .form-help{margin:0 0 18px!important}
+    @media(prefers-reduced-motion:reduce){.region-arrow{transition:none}}
     .official{background:#f9fbfd}
     .official p{font-size:15px;color:var(--sub)}
     .official-link{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:50px;margin-top:18px;padding:10px 15px;border-radius:13px;border:1px solid #bdd3e8;background:white;text-decoration:none;font-weight:800}
@@ -122,9 +141,18 @@
           <a class="textlink" href="https://www.e-gen.or.kr/" target="_blank" rel="noopener noreferrer">E-Gen 공식 응급실 검색 ↗</a>
         </div>
       </section>
-      <section class="card" aria-labelledby="regionTitle">
-        <div class="section-head"><h2 id="regionTitle">지역별 응급실 정보</h2><span class="step">지역 선택</span></div>
-        <p class="form-help">확인하고 싶은 <strong>시·도</strong>와 <strong>시·군·구</strong>를 입력해 주세요. 위치정보를 자동으로 사용하지 않습니다.</p>
+      <section class="card nearby" aria-labelledby="nearbyTitle">
+        <div class="nearby-heading"><span class="nearby-icon" aria-hidden="true">⌖</span><h2 id="nearbyTitle">내 주변 응급실 찾기</h2></div>
+        <p class="nearby-caption">현재 위치를 기준으로 주변 응급실을 찾아보세요. E-Gen 공식 응급의료포털의 위치 기반 검색을 이용합니다.</p>
+        <a class="btn btn-blue" href="https://www.e-gen.or.kr/" target="_blank" rel="noopener noreferrer" aria-label="E-Gen 공식 사이트에서 내 주변 응급실 찾기, 새 창">
+          <span>내 주변 응급실 찾기</span><span aria-hidden="true">↗</span>
+        </a>
+        <p class="nearby-foot">E-Gen이 열리면 위치 사용을 허용하고 '응급실 찾기'를 선택하세요. ApuDa에서는 위치를 수집하거나 저장하지 않습니다.</p>
+      </section>
+      <details class="card region-card" id="regionSearch">
+        <summary><span><span class="region-title">지역으로 찾기</span><span class="region-subtitle">시·도 · 시·군·구별 응급실 병상 정보</span></span><span class="region-arrow" aria-hidden="true">⌄</span></summary>
+        <div class="region-content">
+          <p class="form-help">직접 <strong>시·도</strong>와 <strong>시·군·구</strong>를 선택해 응급실 정보를 확인합니다. GPS가 없어도 이용할 수 있습니다.</p>
         <form id="search">
           <div class="field-grid">
             <div>
@@ -154,7 +182,8 @@
           <div id="status" class="result-state" role="status" aria-live="polite" aria-atomic="true"></div>
           <div id="results"></div>
         </div>
-      </section>
+        </div>
+      </details>
       <section class="card official" aria-labelledby="officialTitle">
         <div class="section-head"><h2 id="officialTitle">공식 사이트로 바로 확인</h2><span class="step">다른 방법</span></div>
         <p>실시간 정보가 조회되지 않거나 내 위치 기반으로 검색하려면 E-Gen 공식 서비스를 이용하세요.</p>
