@@ -56,6 +56,9 @@
     .nearby .nearby-caption{font-size:15px;color:#3c526a;line-height:1.75;margin:12px 0 18px}
     .nearby .btn-blue{justify-content:space-between;min-height:60px;padding:15px 20px;font-size:17px}
     .nearby .nearby-foot{font-size:13px;line-height:1.65;color:var(--sub);margin-top:13px}
+    .hospital .meta{font-size:13px;color:var(--sub);margin:-6px 0 10px;line-height:1.6}
+    .hospital-actions{display:flex;flex-wrap:wrap;gap:8px}
+    .dist-pill{font-size:13px;font-weight:900;color:#fff;background:var(--brand);padding:6px 11px;border-radius:9px}
     /* This rule must override global details/summary defaults; the missing
        horizontal padding in V1 caused the collapsed regional card to look clipped. */
     details.region-card{
@@ -187,11 +190,15 @@
       </section>
       <section class="card nearby" aria-labelledby="nearbyTitle">
         <div class="nearby-heading"><span class="nearby-icon" aria-hidden="true">⌖</span><h2 id="nearbyTitle">내 주변 응급실 찾기</h2></div>
-        <p class="nearby-caption">현재 위치를 기준으로 주변 응급실을 찾아보세요. E-Gen 공식 응급의료포털의 위치 기반 검색을 이용합니다.</p>
-        <a class="btn btn-blue" href="https://www.e-gen.or.kr/" target="_blank" rel="noopener noreferrer" aria-label="E-Gen 공식 사이트에서 내 주변 응급실 찾기, 새 창">
-          <span>내 주변 응급실 찾기</span><span aria-hidden="true">↗</span>
-        </a>
-        <p class="nearby-foot">E-Gen이 열리면 위치 사용을 허용하고 '응급실 찾기'를 선택하세요. ApuDa에서는 위치를 수집하거나 저장하지 않습니다.</p>
+        <p class="nearby-caption">버튼을 누르면 위치 사용 허용을 물어봐요. 허용하면 지금 위치에서 가까운 응급의료기관을 거리순으로 보여 드려요.</p>
+        <button class="btn btn-blue" id="nearbyBtn" type="button" aria-describedby="nearbyPrivacy">
+          <span>내 위치로 주변 응급실 찾기</span><span aria-hidden="true">⌖</span>
+        </button>
+        <p class="nearby-foot" id="nearbyPrivacy">위치는 버튼을 누를 때만 묻고, 약 100m 단위로 줄여 주변 기관 조회에만 사용해요. ApuDa는 위치를 저장하거나 기록하지 않아요. 허용하지 않아도 아래 「지역으로 찾기」나 <a class="textlink" href="https://www.e-gen.or.kr/" target="_blank" rel="noopener noreferrer">E-Gen ↗</a>을 이용할 수 있어요.</p>
+        <div class="result-box" id="nearbyBox" hidden>
+          <div id="nearbyStatus" class="result-state" role="status" aria-live="polite" aria-atomic="true"></div>
+          <div id="nearbyResults"></div>
+        </div>
       </section>
       <section class="card onco" aria-labelledby="oncoTitle">
         <div class="onco-head"><div class="onco-symbol" aria-hidden="true">🌡</div><h2 id="oncoTitle">항암·면역·표적치료 중이라면</h2></div>
@@ -345,6 +352,68 @@
         }finally{
           if(serial===active){btn.disabled=false;btn.replaceChildren(document.createTextNode('응급실 정보 조회하기 '),node('span','→'));}
         }
+      });
+    })();
+  </script>
+  <script>
+    (function(){
+      'use strict';
+      var btn=document.getElementById('nearbyBtn');
+      var box=document.getElementById('nearbyBox');
+      var status=document.getElementById('nearbyStatus');
+      var results=document.getElementById('nearbyResults');
+      var busy=false;
+      function node(tag,text,cls){var e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined&&text!==null)e.textContent=String(text);return e;}
+      function state(title,message,type){status.replaceChildren(node('strong',title),node('p',message));status.dataset.type=type||'info';}
+      function when(v){v=String(v||'');return /^\d{14}$/.test(v)?v.slice(4,6)+'-'+v.slice(6,8)+' '+v.slice(8,10)+':'+v.slice(10,12):(v||'정보 없음');}
+      function done(){busy=false;btn.disabled=false;btn.replaceChildren(node('span','내 위치로 다시 찾기'),node('span','⌖'));btn.lastChild.setAttribute('aria-hidden','true');}
+      function openRegion(){var r=document.getElementById('regionSearch');if(r)r.open=true;}
+      function geoError(err){
+        if(err&&err.code===1){state('위치 사용이 허용되지 않았어요','브라우저 주소창의 자물쇠(또는 설정 › 사이트 권한 › 위치)에서 apuda.app 위치를 허용한 뒤 다시 눌러 주세요. 지금은 아래 「지역으로 찾기」를 열어 두었어요.','error');openRegion();}
+        else if(err&&err.code===3){state('위치 확인이 늦어지고 있어요','실내에서는 위치 확인이 오래 걸릴 수 있어요. 다시 누르거나 아래 「지역으로 찾기」를 이용해 주세요.','error');openRegion();}
+        else{state('위치를 확인할 수 없어요','기기의 위치 서비스가 꺼져 있을 수 있어요. 아래 「지역으로 찾기」를 이용해 주세요.','error');openRegion();}
+        done();
+      }
+      async function lookup(pos){
+        var lat=Math.round(pos.coords.latitude*1000)/1000, lon=Math.round(pos.coords.longitude*1000)/1000;
+        state('주변 응급실을 찾고 있어요','국립중앙의료원 공공데이터에서 가까운 응급의료기관과 병상 지표를 확인합니다.','loading');
+        try{
+          var res=await fetch('/.netlify/functions/egen-emergency?'+new URLSearchParams({mode:'nearby',lat:String(lat),lon:String(lon)}),{cache:'no-store'});
+          var data=await res.json();
+          if(!res.ok){var d=data.message||'잠시 후 다시 시도하거나 E-Gen 공식 사이트를 이용하세요.';if(data.diagnostic)d+=' · 확인코드: '+data.diagnostic;state('주변 응급실을 불러오지 못했어요',d,'error');openRegion();return;}
+          var list=Array.isArray(data.hospitals)?data.hospitals:[];
+          if(!list.length){state('주변에서 조회된 기관이 없어요','아래 「지역으로 찾기」나 E-Gen에서 확인해 주세요.','error');openRegion();return;}
+          var t=data.fetchedAt?new Date(data.fetchedAt):null;
+          state('가까운 응급의료기관 '+list.length+'곳','조회 시각 '+(t&&!isNaN(t.getTime())?t.toLocaleTimeString('ko-KR'):'확인 불가')+' · 거리는 직선거리예요.');
+          var wrap=node('div',null,'hospital-list');
+          list.forEach(function(h){
+            var card=node('article',null,'hospital');
+            card.appendChild(node('h4',h.name||'기관명 미제공'));
+            var meta=[h.level,h.address].filter(Boolean).join(' · ');
+            if(meta)card.appendChild(node('p',meta,'meta'));
+            var row=node('div',null,'hospital-details');
+            if(typeof h.distanceKm==='number'&&isFinite(h.distanceKm))row.appendChild(node('span','약 '+h.distanceKm+'km','dist-pill'));
+            var pill=node('div',null,'data-pill');var ok=Number.isInteger(h.emergencyBeds)&&h.emergencyBeds>=0;
+            pill.append(node('span','응급실 병상 지표: '),node('strong',ok?String(h.emergencyBeds):'확인 필요'));row.appendChild(pill);
+            card.appendChild(row);
+            if(h.reportedAt)card.appendChild(node('p','병상 정보 입력: '+when(h.reportedAt),'time'));
+            var acts=node('div',null,'hospital-actions');
+            var phone=String(h.telephone||'').trim();
+            if(/^[0-9+() -]{7,25}$/.test(phone)){var a=node('a','☎ '+phone,'call-link');a.href='tel:'+phone.replace(/[^0-9+]/g,'');a.setAttribute('aria-label',(h.name||'응급실')+' 전화 연결 '+phone);acts.appendChild(a);}
+            if(typeof h.latitude==='number'&&typeof h.longitude==='number'){var m=node('a','길찾기 ↗','call-link');m.href='https://map.kakao.com/link/to/'+encodeURIComponent(h.name||'응급실')+','+h.latitude+','+h.longitude;m.target='_blank';m.rel='noopener noreferrer';acts.appendChild(m);}
+            card.appendChild(acts);wrap.appendChild(card);
+          });
+          results.replaceChildren(wrap,node('p','거리는 직선거리로 실제 이동 시간과 달라요. 병상 지표는 환자 수용 확정을 뜻하지 않아요. 위급하면 119에 먼저 연락하세요.','result-warning'));
+        }catch(_e){state('네트워크 연결이 원활하지 않아요','위급한 상황이면 119에 연락하세요. 다른 경우 아래 「지역으로 찾기」나 E-Gen을 이용해 주세요.','error');openRegion();}
+        finally{done();}
+      }
+      btn.addEventListener('click',function(){
+        if(busy)return;
+        results.replaceChildren();box.hidden=false;
+        if(!('geolocation' in navigator)){state('이 브라우저는 위치 확인을 지원하지 않아요','아래 「지역으로 찾기」를 이용해 주세요.','error');openRegion();return;}
+        busy=true;btn.disabled=true;btn.replaceChildren(node('span','위치 확인 중…'));
+        state('위치 사용 허용을 확인하고 있어요','화면에 위치 권한 요청이 뜨면 「허용」을 눌러 주세요.','loading');
+        navigator.geolocation.getCurrentPosition(lookup,geoError,{enableHighAccuracy:false,timeout:12000,maximumAge:120000});
       });
     })();
   </script>
