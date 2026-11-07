@@ -109,6 +109,14 @@
     .call-link{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:9px 14px;border:1px solid #b8d2e9;border-radius:11px;color:var(--brand);font-size:14px;font-weight:800;text-decoration:none}
     .call-link:hover{background:var(--brand-soft)}
     .result-warning{padding:13px;margin-top:14px;border-radius:11px;background:#fff7e8;font-size:13px;color:#6e5426}
+.onco{background:#fff;border-color:#c8daeb}
+    .onco h2{margin:0;font-size:19px;line-height:1.35;letter-spacing:-.03em}
+    .onco-head{display:flex;align-items:center;gap:12px}
+    .onco-symbol{width:42px;height:42px;flex:none;display:grid;place-items:center;border-radius:12px;background:var(--brand-soft);color:var(--ink);font-size:20px;font-weight:900}
+    .onco ul{margin:14px 0 0;padding-left:20px;font-size:15px;line-height:1.75}
+    .onco li+li{margin-top:6px}
+    .onco .onco-note{margin:14px 0 0;font-size:13px;color:var(--sub);line-height:1.7}
+    .onco .onco-links{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:14px;font-size:14px;font-weight:800}
     .official{background:#fff}
     .official p{font-size:14px;color:var(--sub);line-height:1.7}
     .section-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
@@ -185,6 +193,19 @@
         </a>
         <p class="nearby-foot">E-Gen이 열리면 위치 사용을 허용하고 '응급실 찾기'를 선택하세요. ApuDa에서는 위치를 수집하거나 저장하지 않습니다.</p>
       </section>
+      <section class="card onco" aria-labelledby="oncoTitle">
+        <div class="onco-head"><div class="onco-symbol" aria-hidden="true">🌡</div><h2 id="oncoTitle">항암·면역·표적치료 중이라면</h2></div>
+        <ul>
+          <li><strong>체온이 38.0℃ 이상</strong>이거나 <strong>몸이 으슬으슬 떨리는 오한</strong>이 있으면, 해열제를 먹기 전에 <strong>밤이든 주말이든 바로 치료병원에 연락</strong>하세요. 연락이 안 되면 응급실로 가세요.</li>
+          <li>응급실에서는 <strong>항암 치료 중</strong>이라는 것과 마지막 치료 날짜, 치료 중인 약 이름을 먼저 알리세요.</li>
+          <li>숨이 차거나 의식이 흐려지는 등 위급하면 기다리지 말고 119에 연락하세요.</li>
+        </ul>
+        <p class="onco-note">근거: 국가암정보센터 「감염」 — 38도 이상의 열이 나면 응급실 방문, 오한 주의 · 미국 CDC — 항암 중 38℃ 이상이면 즉시 연락. 치료별로 연락해야 하는 다른 증상은 담당 의료진 안내를 따르세요.</p>
+        <div class="onco-links">
+          <a class="textlink" href="/note/">암환자 노트 · 체온 기록 →</a>
+          <a class="textlink" href="/library/regimens/">항암 요법별 주의 증상 →</a>
+        </div>
+      </section>
       <details class="card region-card" id="regionSearch">
         <summary>
           <span class="region-mark" aria-hidden="true">▤</span>
@@ -236,7 +257,7 @@
         </details>
       </section>
     </div>
-    <footer class="footer">자료 출처: 국립중앙의료원 · 공공데이터포털<br>이 페이지는 응급진료를 대신하지 않으며, 병원 수용 여부를 보장하지 않습니다.</footer>
+    <footer class="footer">자료 출처: 국립중앙의료원 · 공공데이터포털 · 국가암정보센터<br>이 페이지는 응급진료를 대신하지 않으며, 병원 수용 여부를 보장하지 않습니다.</footer>
   </main>
   <script>
     (function(){
@@ -318,7 +339,7 @@
             }
             list.appendChild(card);
           });
-          results.append(summary,list,node('p','병상 지표는 환자 수용 확정을 뜻하지 않습니다. 반드시 119 또는 해당 의료기관 안내를 확인하세요.','result-warning'));
+          results.append(summary,list,node('p','병상 지표는 환자 수용 확정을 뜻하지 않습니다. 119 또는 해당 의료기관에 먼저 확인하세요.','result-warning'));
         }catch(_error){
           if(serial===active)state('네트워크 연결이 원활하지 않습니다','위급한 상황이면 119에 연락하세요. 다른 경우 E-Gen 공식 사이트에서 다시 확인해 주세요.','error');
         }finally{
