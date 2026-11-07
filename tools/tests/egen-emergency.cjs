@@ -65,6 +65,7 @@ const path=require('node:path');
       const u=new URL(String(url)); seen.push(u);
       if(u.pathname.endsWith('getEgytLcinfoInqire'))
         return new Response('<response><header><resultCode>00</resultCode></header><body><items>'+
+          '<item><hpid>CLINIC</hpid><dutyName>바로앞의원</dutyName><dutyAddr>서울특별시 관악구 바로앞</dutyAddr><latitude>37.4893</latitude><longitude>127.0874</longitude></item>'+
           '<item><hpid>FAR</hpid><dutyName>먼병원</dutyName><dutyAddr>서울특별시 관악구 어딘가</dutyAddr><dutyTel3>02-111-1111</dutyTel3><dutyEmclsName>지역응급의료기관</dutyEmclsName><latitude>37.60</latitude><longitude>127.10</longitude></item>'+
           '<item><hpid>NEAR</hpid><dutyName>가까운병원</dutyName><dutyAddr>서울특별시 관악구 관악로</dutyAddr><dutyTel3>02-222-2222</dutyTel3><dutyEmclsName>권역응급의료센터</dutyEmclsName><latitude>37.4911</latitude><longitude>127.0902</longitude></item>'+
           '</items></body></response>',{status:200});
@@ -74,9 +75,12 @@ const path=require('node:path');
     assert.equal(r.status,200);
     const d=await r.json();
     assert.equal(d.mode,'nearby');
-    assert.deepEqual(d.hospitals.map(h=>h.id),['NEAR','FAR'],'sorted by distance');
+    assert.deepEqual(d.hospitals.map(h=>h.id),['NEAR','CLINIC','FAR'],'ER-confirmed first, then others by distance');
+    assert.equal(d.hospitals[0].erConfirmed,true,'in realtime ER list');
+    assert.equal(d.hospitals[1].erConfirmed,false,'nearest clinic without ER report is not promoted');
+    assert.equal(d.confirmedCount,1);
     assert.equal(d.hospitals[0].emergencyBeds,7,'beds merged by hpid');
-    assert.equal(d.hospitals[1].emergencyBeds,null);
+    assert.equal(d.hospitals[2].emergencyBeds,null);
     assert.ok(d.hospitals[0].distanceKm<1);
     const loc=seen.find(u=>u.pathname.endsWith('getEgytLcinfoInqire'));
     assert.equal(loc.searchParams.get('WGS84_LAT'),'37.488','latitude rounded before upstream');
@@ -88,5 +92,5 @@ const path=require('node:path');
     global.fetch=savedFetch;
     if(savedKey===undefined)delete process.env.EGEN_API_KEY;else process.env.EGEN_API_KEY=savedKey;
   }
-  console.log('PASS: reject bad region, require key, decode encoded key, parse XML, distinguish 403 auth and 503 provider, hide secret, nearby sorted/merged/rounded');
+  console.log('PASS: reject bad region, require key, decode encoded key, parse XML, distinguish 403 auth and 503 provider, hide secret, nearby ER-confirmed/sorted/merged/rounded');
 })().catch(e=>{console.error(e);process.exitCode=1;});
