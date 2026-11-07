@@ -85,9 +85,11 @@ async function nearby(params,key){
       };
     }).filter(h=>h.name);
     list.sort((a,b)=>(a.distanceKm??1e9)-(b.distanceKm??1e9));
-    list=list.slice(0,10);
-    // 실시간 병상 지표는 주소의 시·도/시·군·구로 지역 조회 후 기관 ID로 합친다(최대 3개 지역).
-    const regions=[...new Set(list.map(h=>{const t=h.address.split(/\s+/);const s1=STAGE1_ALIAS[t[0]]||t[0];return REGION.has(s1)&&t[1]?s1+'|'+t[1]:'';}).filter(Boolean))].slice(0,3);
+    list=list.slice(0,20);
+    // 위치 API는 응급실이 없는 의료기관도 돌려줄 수 있다. 후보의 시·도/시·군·구 실시간 응급실 목록(최대 6개 지역)과
+    // 기관 ID로 대조해 '응급실 확인' 여부를 판정하고, 확인된 기관을 먼저 보여 준다.
+    const regions=[...new Set(list.map(h=>{const t=h.address.split(/\s+/);const s1=STAGE1_ALIAS[t[0]]||t[0];return REGION.has(s1)&&t[1]?s1+'|'+t[1]:'';}).filter(Boolean))].slice(0,6);
+    const checked=new Set();
     const beds=new Map();
     await Promise.all(regions.map(async pair=>{
       try{
@@ -104,12 +106,20 @@ async function nearby(params,key){
           if(cache.size>30) cache.clear();
           cache.set(pair,cached);
         }
+        checked.add(pair);
         for(const h of (cached.data&&cached.data.hospitals)||[]) if(h.id) beds.set(h.id,h);
       }catch(_e){}
     }));
-    for(const h of list){ const b=beds.get(h.id); if(b){ h.emergencyBeds=Number.isInteger(b.emergencyBeds)?b.emergencyBeds:null; h.reportedAt=b.reportedAt||''; } }
+    for(const h of list){
+      const b=beds.get(h.id);
+      h.erConfirmed=!!b;
+      if(b){ h.emergencyBeds=Number.isInteger(b.emergencyBeds)?b.emergencyBeds:null; h.reportedAt=b.reportedAt||''; }
+    }
+    const confirmed=list.filter(h=>h.erConfirmed).slice(0,8);
+    const others=list.filter(h=>!h.erConfirmed).slice(0,Math.max(2,10-confirmed.length)).slice(0,5);
+    const out=confirmed.concat(others);
     return json({mode:'nearby',source:'국립중앙의료원 전국 응급의료기관 정보 조회 서비스',fetchedAt:new Date().toISOString(),
-      total:list.length,hospitals:list,notice:'거리는 직선거리이며 실제 이동 시간과 다릅니다. 병상 지표는 환자 수용 확정 정보가 아닙니다. 위급하면 119에 먼저 신고하세요.'});
+      total:out.length,confirmedCount:confirmed.length,regionsChecked:checked.size,hospitals:out,notice:'거리는 직선거리이며 실제 이동 시간과 다릅니다. 병상 지표는 환자 수용 확정 정보가 아닙니다. 위급하면 119에 먼저 신고하세요.'});
   }catch(_error){
     return json({error:'upstream_timeout',message:'공공데이터 조회가 지연되고 있습니다. 119 또는 E-Gen 공식 사이트를 이용해 주세요.'},502);
   }

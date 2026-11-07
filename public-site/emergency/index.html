@@ -384,17 +384,21 @@
           var list=Array.isArray(data.hospitals)?data.hospitals:[];
           if(!list.length){state('주변에서 조회된 기관이 없어요','아래 「지역으로 찾기」나 E-Gen에서 확인해 주세요.','error');openRegion();return;}
           var t=data.fetchedAt?new Date(data.fetchedAt):null;
-          state('가까운 응급의료기관 '+list.length+'곳','조회 시각 '+(t&&!isNaN(t.getTime())?t.toLocaleTimeString('ko-KR'):'확인 불가')+' · 거리는 직선거리예요.');
+          var conf=list.filter(function(h){return h.erConfirmed;}), rest=list.filter(function(h){return !h.erConfirmed;});
+          var when2=t&&!isNaN(t.getTime())?t.toLocaleTimeString('ko-KR'):'확인 불가';
+          if(conf.length)state('응급실 확인 기관 '+conf.length+'곳','가까운 순서예요 · 조회 시각 '+when2+' · 거리는 직선거리예요.');
+          else state('응급실 운영이 확인된 기관을 찾지 못했어요','아래 기관은 응급실 운영 여부를 전화로 확인하세요. 위급하면 119에 먼저 연락하세요.','error');
           var wrap=node('div',null,'hospital-list');
-          list.forEach(function(h){
+          function draw(h){
             var card=node('article',null,'hospital');
             card.appendChild(node('h4',h.name||'기관명 미제공'));
             var meta=[h.level,h.address].filter(Boolean).join(' · ');
             if(meta)card.appendChild(node('p',meta,'meta'));
             var row=node('div',null,'hospital-details');
             if(typeof h.distanceKm==='number'&&isFinite(h.distanceKm))row.appendChild(node('span','약 '+h.distanceKm+'km','dist-pill'));
-            var pill=node('div',null,'data-pill');var ok=Number.isInteger(h.emergencyBeds)&&h.emergencyBeds>=0;
-            pill.append(node('span','응급실 병상 지표: '),node('strong',ok?String(h.emergencyBeds):'확인 필요'));row.appendChild(pill);
+            if(h.erConfirmed){var pill=node('div',null,'data-pill');var ok=Number.isInteger(h.emergencyBeds)&&h.emergencyBeds>=0;
+              pill.append(node('span','응급실 병상 지표: '),node('strong',ok?String(h.emergencyBeds):'확인 필요'));row.appendChild(pill);}
+            else row.appendChild(node('span','응급실 운영 여부 확인 필요','data-pill'));
             card.appendChild(row);
             if(h.reportedAt)card.appendChild(node('p','병상 정보 입력: '+when(h.reportedAt),'time'));
             var acts=node('div',null,'hospital-actions');
@@ -402,7 +406,14 @@
             if(/^[0-9+() -]{7,25}$/.test(phone)){var a=node('a','☎ '+phone,'call-link');a.href='tel:'+phone.replace(/[^0-9+]/g,'');a.setAttribute('aria-label',(h.name||'응급실')+' 전화 연결 '+phone);acts.appendChild(a);}
             if(typeof h.latitude==='number'&&typeof h.longitude==='number'){var m=node('a','길찾기 ↗','call-link');m.href='https://map.kakao.com/link/to/'+encodeURIComponent(h.name||'응급실')+','+h.latitude+','+h.longitude;m.target='_blank';m.rel='noopener noreferrer';acts.appendChild(m);}
             card.appendChild(acts);wrap.appendChild(card);
-          });
+          }
+          conf.forEach(draw);
+          if(rest.length){
+            var sub=node('div',null,'result-summary');
+            sub.append(node('h3','그 밖의 가까운 의료기관'),node('span','응급실 실시간 정보 없음 · 운영 여부는 전화로 확인'));
+            wrap.appendChild(sub);
+            rest.forEach(draw);
+          }
           results.replaceChildren(wrap,node('p','거리는 직선거리로 실제 이동 시간과 달라요. 병상 지표는 환자 수용 확정을 뜻하지 않아요. 위급하면 119에 먼저 연락하세요.','result-warning'));
         }catch(_e){state('네트워크 연결이 원활하지 않아요','위급한 상황이면 119에 연락하세요. 다른 경우 아래 「지역으로 찾기」나 E-Gen을 이용해 주세요.','error');openRegion();}
         finally{done();}

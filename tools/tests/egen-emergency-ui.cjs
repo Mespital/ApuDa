@@ -42,6 +42,7 @@ assert(!/localStorage|sessionStorage|indexedDB/.test(html),'location is never st
 assert(html.includes('저장하거나 기록하지 않아요'),'privacy notice present');
 assert(html.includes('err.code===1') && html.includes('openRegion()'),'denied permission falls back to regional search');
 assert(html.includes('직선거리'),'distance is labelled as straight-line');
+assert(html.includes('h.erConfirmed') && html.includes('응급실 운영 여부 확인 필요'),'unconfirmed facilities are labelled, not shown as ERs');
 assert(html.includes('--brand:#115faa'),'ApuDa blue should be the central color token');
 assert(html.includes('details.region-card>summary'),'regional summary has a scoped layout');
 assert(html.includes('padding:24px 26px!important'),'desktop region card must have horizontal padding');
