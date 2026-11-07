@@ -32,8 +32,16 @@ assert(!/<details[^>]*id="regionSearch"[^>]*\sopen(?:\s|>|=)/.test(html),'region
 assert(html.includes('class="card nearby"'),'nearby search is the primary step');
 assert(html.indexOf('href="tel:119"')<html.indexOf('class="card nearby"'),'emergency call must precede nearby search');
 assert(html.indexOf('class="card nearby"')<html.indexOf('id="regionSearch"'),'nearby search must precede regional search');
-assert(html.includes('E-Gen이 열리면 위치 사용을 허용'),'location lookup delegated explicitly to E-Gen');
-assert(!html.includes('navigator.geolocation'),'ApuDa must not collect user GPS for an external E-Gen lookup');
+// 2026-11-07: 사용자 요청으로 위치 권한 기반 주변 응급실 조회로 전환 — 개인정보 원칙을 계약으로 고정
+assert(html.includes('id="nearbyBtn" type="button"'),'nearby lookup is an explicit button');
+assert(/btn\.addEventListener\('click',[\s\S]*navigator\.geolocation\.getCurrentPosition/.test(html),'location is requested only after a click');
+assert(!/^(?![\s\S]*addEventListener)[\s\S]*getCurrentPosition/.test(html.split('btn.addEventListener')[0]),'no location request on page load');
+assert(!html.includes('watchPosition'),'no continuous tracking');
+assert(html.includes('Math.round(pos.coords.latitude*1000)/1000'),'coordinates rounded to ~100m before leaving the device');
+assert(!/localStorage|sessionStorage|indexedDB/.test(html),'location is never stored in the browser');
+assert(html.includes('저장하거나 기록하지 않아요'),'privacy notice present');
+assert(html.includes('err.code===1') && html.includes('openRegion()'),'denied permission falls back to regional search');
+assert(html.includes('직선거리'),'distance is labelled as straight-line');
 assert(html.includes('--brand:#115faa'),'ApuDa blue should be the central color token');
 assert(html.includes('details.region-card>summary'),'regional summary has a scoped layout');
 assert(html.includes('padding:24px 26px!important'),'desktop region card must have horizontal padding');
@@ -44,4 +52,4 @@ assert(html.includes('class="region-arrow"'),'regional summary includes an end-a
 assert(html.includes('grid-template-columns:1fr;gap:16px'),'mobile form uses one column');
 assert(html.includes('width:min(100%,776px)'),'desktop content width remains readable');
 
-console.log('PASS: ApuDa emergency brand blue, responsive region padding, nearby-first, privacy, 119 and API safe UI');
+console.log('PASS: ApuDa emergency brand blue, responsive region padding, nearby-first (consented geolocation), privacy, 119 and API safe UI');
