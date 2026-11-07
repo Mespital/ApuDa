@@ -91,12 +91,11 @@
 
     var video = hasVideo(slug) ? global.ApuDaCancerVideos.html(slug, { heading: 4 }) : '';
 
-    var more = book.hasMini
-      ? '<a href="/library/treatment-map/?cancer=' + slug + '">🗺️ 치료결정 지도</a>' +
-        '<a href="/library/drugs/?cancer=' + slug + '">💊 관련 항암제</a>' +
-        '<a href="/library/biomarkers/?cancer=' + slug + '">🧬 관련 바이오마커</a>' +
-        '<a href="/library/regimens/?cancer=' + slug + '">💉 항암 요법 가이드</a>'
-      : '<a href="/library/drugs/">💊 항암제 찾기</a><a href="/library/biomarkers/">🧬 바이오마커 찾기</a>';
+    var more =
+      '<a href="/library/treatment-map/?cancer=' + slug + '">🗺️ 치료결정 지도</a>' +
+      '<a href="/library/drugs/?cancer=' + slug + '">💊 관련 항암제</a>' +
+      '<a href="/library/biomarkers/?cancer=' + slug + '">🧬 관련 바이오마커</a>' +
+      '<a href="/library/regimens/?cancer=' + slug + '">💉 항암 요법 가이드</a>';
     more += '<a href="/library/first30/">📚 30종 전체 보기</a>';
 
     return '<section class="bc-card" role="dialog" aria-modal="true" aria-labelledby="bcTitle">' +
