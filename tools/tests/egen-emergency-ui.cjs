@@ -18,7 +18,11 @@ assert(html.includes('api') === false || !html.includes('EGEN_API_KEY'));
 assert(html.includes('/.netlify/functions/egen-emergency?'));
 assert(html.includes("payload.error==='not_configured'"));
 assert(html.includes('function bedPill(beds)'),'bed count rendered through one plain-language helper');
-assert(html.includes('지금 빈 침상') && html.includes('빈 침상 없음') && html.includes('환자가 침상보다'),'plain-language bed states incl. overcrowding');
+assert(html.includes('지금 빈 침상') && html.includes('환자가 침상보다'),'plain-language bed states incl. overcrowding');
+// 신호등: 색 + 글자 신호어를 함께(색약 대비), 범례 제공
+assert(['여유','곧 참','붐빔'].every(w=>html.includes("node('strong','"+w+"')")) && html.includes("node('strong','없음')"),'signal words accompany colors');
+assert(html.includes('--go:#1e8e4e') && html.includes('--stop:#c62f3d') && html.includes('#f0b400'),'green/yellow/red traffic-light tokens');
+assert(html.includes('function bedLegend()') && (html.match(/bedLegend\(\)/g)||[]).length>=4,'legend shown with both result lists');
 assert(!html.includes('병상 지표:'),'jargon label removed from cards');
 assert(html.includes('if(!Number.isInteger(beds))'),'non-integer bed values are shown as unknown');
 // 수용 비보장 안내(2026-11-07 쉬운 말로 변경): 진료가 어려울 수 있음 + 전화 확인 + 119

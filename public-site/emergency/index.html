@@ -108,12 +108,24 @@
     .hospital-details{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px}
     .data-pill{font-size:13px;color:#294762;padding:6px 11px;border-radius:9px;background:#edf5fc;border:1px solid #dceaf7}
     .data-pill strong{font-weight:900;color:var(--brand)}
-    .data-pill.bed[data-level=few]{background:#fff7e8;border-color:#f3dfb4;color:#6e5426}
-    .data-pill.bed[data-level=few] strong{color:#8a5a00}
-    .data-pill.bed[data-level=full]{background:#fff2f1;border-color:#f1c9c5;color:#84302f}
-    .data-pill.bed[data-level=full] strong{color:var(--red)}
-    .dist-note{font-size:12px;color:var(--sub);margin:10px 0 0}
+    /* 신호등: 초록=여유 · 노랑=곧 참 · 빨강=없음/붐빔 · 회색=정보 없음 (색 + 글자 함께) */
+    :root{--go:#1e8e4e;--go-bg:#e9f8ef;--go-line:#bfe8cf;--slow:#b77900;--slow-bg:#fff6e0;--slow-line:#f2dc9e;--stop:#c62f3d;--stop-bg:#fff0f1;--stop-line:#f3c5ca}
+    .data-pill.bed{display:inline-flex;align-items:center;gap:6px;font-weight:700}
+    .data-pill.bed::before{content:"";width:12px;height:12px;flex:none;border-radius:50%;background:#aab4c0;box-shadow:0 0 0 3px rgba(0,0,0,.04)}
+    .data-pill.bed[data-level=ok]{background:var(--go-bg);border-color:var(--go-line);color:#145c34}
+    .data-pill.bed[data-level=ok]::before{background:var(--go)}
+    .data-pill.bed[data-level=ok] strong{color:var(--go)}
+    .data-pill.bed[data-level=few]{background:var(--slow-bg);border-color:var(--slow-line);color:#6b4a00}
+    .data-pill.bed[data-level=few]::before{background:#f0b400}
+    .data-pill.bed[data-level=few] strong{color:var(--slow)}
+    .data-pill.bed[data-level=full]{background:var(--stop-bg);border-color:var(--stop-line);color:#7e2530}
+    .data-pill.bed[data-level=full]::before{background:var(--stop)}
+    .data-pill.bed[data-level=full] strong{color:var(--stop)}
     .data-pill.bed[data-level=unknown]{background:#f3f5f8;border-color:var(--line);color:var(--sub)}
+    .bed-legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin:14px 0 4px;padding:10px 12px;border-radius:11px;background:#f6f9fc;font-size:13px;color:#36526b}
+    .bed-legend b{font-weight:800;margin-right:2px}
+    .bed-legend span{display:inline-flex;align-items:center;gap:6px}
+    .bed-legend i{width:11px;height:11px;border-radius:50%;display:inline-block}
     .hospital .time{font-size:12px;color:var(--sub);margin:9px 0}
     .call-link{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:9px 14px;border:1px solid #b8d2e9;border-radius:11px;color:var(--brand);font-size:14px;font-weight:800;text-decoration:none}
     .call-link:hover{background:var(--brand-soft)}
@@ -266,7 +278,7 @@
         </a>
         <details>
           <summary>「빈 침상」 숫자는 무슨 뜻인가요?</summary>
-          <p>각 응급실이 국립중앙의료원에 알린 <strong>지금 비어 있는 응급실 침대 수</strong>예요. 「빈 침상 없음 · 환자가 침상보다 ○명 많아요」는 침대보다 환자가 많아 기다릴 가능성이 높다는 뜻이에요.</p>
+          <p>각 응급실이 국립중앙의료원에 알린 <strong>지금 비어 있는 응급실 침대 수</strong>예요. 신호등 색으로 보여 드려요: <strong>초록 여유</strong>(빈 침대 3개 이상), <strong>노랑 곧 참</strong>(1~2개), <strong>빨강 없음·붐빔</strong>(0개이거나 침대보다 환자가 많음). 빨강은 기다릴 가능성이 높다는 뜻이에요.</p>
           <p>침상이 비어 있어도 담당 의사, 검사 장비, 다른 환자 상태에 따라 바로 진료받지 못할 수 있어요. 숫자는 참고만 하고 가기 전에 전화로 확인하세요. 위급하면 119가 받을 수 있는 병원으로 안내해 줘요.</p>
         </details>
       </section>
@@ -301,12 +313,18 @@
       // 응급실 '빈 침상'을 환자 언어로: 공공데이터 hvec(응급실 일반 가용 병상, 음수=침상보다 환자 많음)
       function bedPill(beds){
         var p=node('div',null,'data-pill bed');
-        if(!Number.isInteger(beds)){p.dataset.level='unknown';p.append(node('span','빈 침상 정보 없음'));return p;}
-        if(beds>=3){p.dataset.level='ok';p.append(node('span','지금 빈 침상 '),node('strong',beds+'개'));}
-        else if(beds>=1){p.dataset.level='few';p.append(node('span','빈 침상 '),node('strong',beds+'개'),node('span',' · 곧 찰 수 있어요'));}
-        else if(beds===0){p.dataset.level='full';p.append(node('strong','빈 침상 없음'),node('span',' · 기다릴 수 있어요'));}
-        else{p.dataset.level='full';p.append(node('strong','빈 침상 없음'),node('span',' · 환자가 침상보다 '+(-beds)+'명 많아요'));}
+        if(!Number.isInteger(beds)){p.dataset.level='unknown';p.append(node('span','빈 침상 정보 없음 · 전화로 확인'));return p;}
+        if(beds>=3){p.dataset.level='ok';p.append(node('strong','여유'),node('span',' · 지금 빈 침상 '+beds+'개'));}
+        else if(beds>=1){p.dataset.level='few';p.append(node('strong','곧 참'),node('span',' · 빈 침상 '+beds+'개'));}
+        else if(beds===0){p.dataset.level='full';p.append(node('strong','없음'),node('span',' · 빈 침상 0개, 기다릴 수 있어요'));}
+        else{p.dataset.level='full';p.append(node('strong','붐빔'),node('span',' · 환자가 침상보다 '+(-beds)+'명 많아요'));}
         return p;
+      }
+      function bedLegend(){
+        var l=node('div',null,'bed-legend');l.setAttribute('role','note');l.setAttribute('aria-label','빈 침상 색 안내');
+        l.appendChild(node('b','빈 침상'));
+        [['var(--go)','초록 여유'],['#f0b400','노랑 곧 참'],['var(--stop)','빨강 없음·붐빔']].forEach(function(x){var s=node('span');var i=node('i');i.style.background=x[0];i.setAttribute('aria-hidden','true');s.append(i,document.createTextNode(x[1]));l.appendChild(s);});
+        return l;
       }
       function bedHelp(){return node('p','「빈 침상」은 지금 응급실에 비어 있는 침대 수예요. 숫자가 있어도 의사·검사 여건에 따라 바로 진료가 어려울 수 있으니, 가기 전에 전화로 확인하세요. 위급하면 119가 받을 수 있는 병원으로 안내해요.','result-warning');}
       form.addEventListener('submit',async function(event){
@@ -360,7 +378,7 @@
             }
             list.appendChild(card);
           });
-          results.append(summary,list,bedHelp());
+          results.append(summary,bedLegend(),list,bedHelp());
         }catch(_error){
           if(serial===active)state('네트워크 연결이 원활하지 않습니다','위급한 상황이면 119에 연락하세요. 다른 경우 E-Gen 공식 사이트에서 다시 확인해 주세요.','error');
         }finally{
@@ -383,12 +401,18 @@
       // 응급실 '빈 침상'을 환자 언어로: 공공데이터 hvec(응급실 일반 가용 병상, 음수=침상보다 환자 많음)
       function bedPill(beds){
         var p=node('div',null,'data-pill bed');
-        if(!Number.isInteger(beds)){p.dataset.level='unknown';p.append(node('span','빈 침상 정보 없음'));return p;}
-        if(beds>=3){p.dataset.level='ok';p.append(node('span','지금 빈 침상 '),node('strong',beds+'개'));}
-        else if(beds>=1){p.dataset.level='few';p.append(node('span','빈 침상 '),node('strong',beds+'개'),node('span',' · 곧 찰 수 있어요'));}
-        else if(beds===0){p.dataset.level='full';p.append(node('strong','빈 침상 없음'),node('span',' · 기다릴 수 있어요'));}
-        else{p.dataset.level='full';p.append(node('strong','빈 침상 없음'),node('span',' · 환자가 침상보다 '+(-beds)+'명 많아요'));}
+        if(!Number.isInteger(beds)){p.dataset.level='unknown';p.append(node('span','빈 침상 정보 없음 · 전화로 확인'));return p;}
+        if(beds>=3){p.dataset.level='ok';p.append(node('strong','여유'),node('span',' · 지금 빈 침상 '+beds+'개'));}
+        else if(beds>=1){p.dataset.level='few';p.append(node('strong','곧 참'),node('span',' · 빈 침상 '+beds+'개'));}
+        else if(beds===0){p.dataset.level='full';p.append(node('strong','없음'),node('span',' · 빈 침상 0개, 기다릴 수 있어요'));}
+        else{p.dataset.level='full';p.append(node('strong','붐빔'),node('span',' · 환자가 침상보다 '+(-beds)+'명 많아요'));}
         return p;
+      }
+      function bedLegend(){
+        var l=node('div',null,'bed-legend');l.setAttribute('role','note');l.setAttribute('aria-label','빈 침상 색 안내');
+        l.appendChild(node('b','빈 침상'));
+        [['var(--go)','초록 여유'],['#f0b400','노랑 곧 참'],['var(--stop)','빨강 없음·붐빔']].forEach(function(x){var s=node('span');var i=node('i');i.style.background=x[0];i.setAttribute('aria-hidden','true');s.append(i,document.createTextNode(x[1]));l.appendChild(s);});
+        return l;
       }
       function bedHelp(){return node('p','「빈 침상」은 지금 응급실에 비어 있는 침대 수예요. 숫자가 있어도 의사·검사 여건에 따라 바로 진료가 어려울 수 있으니, 가기 전에 전화로 확인하세요. 위급하면 119가 받을 수 있는 병원으로 안내해요.','result-warning');}
       function done(){busy=false;btn.disabled=false;btn.replaceChildren(node('span','내 위치로 다시 찾기'),node('span','⌖'));btn.lastChild.setAttribute('aria-hidden','true');}
@@ -438,7 +462,7 @@
             wrap.appendChild(sub);
             rest.forEach(draw);
           }
-          results.replaceChildren(wrap,bedHelp(),node('p','거리는 직선거리라 실제 이동 시간과 달라요.','dist-note'));
+          results.replaceChildren(bedLegend(),wrap,bedHelp(),node('p','거리는 직선거리라 실제 이동 시간과 달라요.','dist-note'));
         }catch(_e){state('네트워크 연결이 원활하지 않아요','위급한 상황이면 119에 연락하세요. 다른 경우 아래 「지역으로 찾기」나 E-Gen을 이용해 주세요.','error');openRegion();}
         finally{done();}
       }
