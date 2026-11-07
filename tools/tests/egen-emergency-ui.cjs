@@ -17,8 +17,12 @@ assert(html.includes('focus-visible'));
 assert(html.includes('api') === false || !html.includes('EGEN_API_KEY'));
 assert(html.includes('/.netlify/functions/egen-emergency?'));
 assert(html.includes("payload.error==='not_configured'"));
-assert(html.includes("Number.isInteger(beds)&&beds>=0"));
-assert(html.includes('확정') && html.includes('119'));
+assert(html.includes('function bedPill(beds)'),'bed count rendered through one plain-language helper');
+assert(html.includes('지금 빈 침상') && html.includes('빈 침상 없음') && html.includes('환자가 침상보다'),'plain-language bed states incl. overcrowding');
+assert(!html.includes('병상 지표:'),'jargon label removed from cards');
+assert(html.includes('if(!Number.isInteger(beds))'),'non-integer bed values are shown as unknown');
+// 수용 비보장 안내(2026-11-07 쉬운 말로 변경): 진료가 어려울 수 있음 + 전화 확인 + 119
+assert(html.includes('바로 진료가 어려울 수 있으니') && html.includes('전화로 확인') && html.includes('119'));
 assert(html.includes('results.replaceChildren()'));
 assert(!html.includes('.innerHTML='),'API response must never be assigned to HTML');
 const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);

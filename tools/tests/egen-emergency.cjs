@@ -34,6 +34,10 @@ const path=require('node:path');
     assert.equal(encoded.status,200);
     assert.equal(called.searchParams.get('serviceKey'),'test+secret/=');
     process.env.EGEN_API_KEY='test+secret/=';
+    // 음수 hvec(침상보다 환자 많음)는 그대로 전달해야 한다.
+    global.fetch=async function(){return new Response('<response><header><resultCode>00</resultCode></header><body><items><item><hpid>N1</hpid><dutyName>붐비는병원</dutyName><hvec>-2</hvec></item></items></body></response>',{status:200});};
+    const crowded=await (await handle(request('서울특별시','마포구'))).json();
+    assert.equal(crowded.hospitals[0].emergencyBeds,-2,'overcrowding preserved as negative');
     // Gateway sometimes returns authentication errors as XML with HTTP 403.
     global.fetch=async function(){
       return new Response('<OpenAPI_ServiceResponse><cmmMsgHeader><returnReasonCode>30</returnReasonCode><returnAuthMsg>SERVICE_KEY_IS_NOT_REGISTERED_ERROR</returnAuthMsg></cmmMsgHeader></OpenAPI_ServiceResponse>',{status:403});
@@ -92,5 +96,5 @@ const path=require('node:path');
     global.fetch=savedFetch;
     if(savedKey===undefined)delete process.env.EGEN_API_KEY;else process.env.EGEN_API_KEY=savedKey;
   }
-  console.log('PASS: reject bad region, require key, decode encoded key, parse XML, distinguish 403 auth and 503 provider, hide secret, nearby ER-confirmed/sorted/merged/rounded');
+  console.log('PASS: reject bad region, require key, decode encoded key, parse XML, distinguish 403 auth and 503 provider, hide secret, nearby ER-confirmed/sorted/merged/rounded, overcrowding');
 })().catch(e=>{console.error(e);process.exitCode=1;});
