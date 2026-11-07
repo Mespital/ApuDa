@@ -101,7 +101,7 @@ async function nearby(params,key){
           u.searchParams.set('serviceKey',key);u.searchParams.set('STAGE1',s1);u.searchParams.set('STAGE2',s2);
           u.searchParams.set('pageNo','1');u.searchParams.set('numOfRows','100');
           const r=await fetchXml(u); if(r.fail) return;
-          const hospitals=items(r.raw).map(i=>{const b=xmlValue(i,'hvec');return {id:xmlValue(i,'hpid'),name:xmlValue(i,'dutyname')||xmlValue(i,'dutyName'),telephone:xmlValue(i,'dutytel3')||xmlValue(i,'dutyTel3'),emergencyBeds:/^\d+$/.test(b)?Number(b):null,reportedAt:xmlValue(i,'hvidate'),ct:xmlValue(i,'hvctayn'),mri:xmlValue(i,'hvmriayn')};}).filter(h=>h.name);
+          const hospitals=items(r.raw).map(i=>{const b=xmlValue(i,'hvec');return {id:xmlValue(i,'hpid'),name:xmlValue(i,'dutyname')||xmlValue(i,'dutyName'),telephone:xmlValue(i,'dutytel3')||xmlValue(i,'dutyTel3'),emergencyBeds:/^-?\d+$/.test(b)?Number(b):null,reportedAt:xmlValue(i,'hvidate'),ct:xmlValue(i,'hvctayn'),mri:xmlValue(i,'hvmriayn')};}).filter(h=>h.name);
           cached={time:Date.now(),data:{stage1:s1,stage2:s2,source:'국립중앙의료원 전국 응급의료기관 정보 조회 서비스',fetchedAt:new Date().toISOString(),total:Number(xmlValue(r.raw,'totalCount'))||hospitals.length,hospitals,notice:'표시된 병상 수는 환자 수용 확정 정보가 아닙니다. 위급하면 119에 먼저 신고하세요.'}};
           if(cache.size>30) cache.clear();
           cache.set(pair,cached);
@@ -164,7 +164,7 @@ export default async function handler(request) {
         id:xmlValue(item,'hpid'),
         name:xmlValue(item,'dutyname')||xmlValue(item,'dutyName'),
         telephone:xmlValue(item,'dutytel3')||xmlValue(item,'dutyTel3'),
-        emergencyBeds:/^\d+$/.test(bedsRaw)?Number(bedsRaw):null,
+        emergencyBeds:/^-?\d+$/.test(bedsRaw)?Number(bedsRaw):null,
         reportedAt:xmlValue(item,'hvidate'),
         ct:xmlValue(item,'hvctayn'),
         mri:xmlValue(item,'hvmriayn')
