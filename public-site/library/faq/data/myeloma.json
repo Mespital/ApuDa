@@ -1,8 +1,8 @@
 {
   "slug": "myeloma",
   "name": "다발성골수종",
-  "updated": "2026-11-07",
-  "revision": "20261103-faq100-ai-draft-v1",
+  "updated": "2026-11-08",
+  "revision": "20261108-medical-safety-ai-pass-v2",
   "edition": "진단 후 첫 30일 FAQ 100문항 (신규 80문항 AI 편집 초안)",
   "reviewMode": "AI 사전점검(기존20)·AI 확장원고(신규80)",
   "clinicalApproval": "pending",
@@ -1281,16 +1281,17 @@
     {
       "n": 75,
       "q": "면역세포치료 중 고열과 혼돈이 생기면 왜 위험한가요?",
-      "a": "사이토카인방출증후군(CRS)이나 면역세포 관련 신경독성일 수 있어서예요. CRS는 활성화된 면역세포가 염증 물질을 쏟아내 고열, 저혈압, 숨참, 빠른 맥박을 일으키고, 신경독성은 혼동, 말이 어눌함, 글씨가 이상해짐, 경련으로 나타나요. 일찍 치료하면 대개 조절돼요. 치료센터의 응급 연락 기준을 따라 열이 나는 즉시 연락하고, 보호자가 변화를 봐 주세요.",
+      "a": "사이토카인방출증후군(CRS)이나 면역세포 관련 신경독성(ICANS)일 수 있기 때문이에요. CRS는 고열, 저혈압, 호흡곤란, 빠른 맥박을 일으키고, 신경독성은 혼돈, 말이 어눌함, 글씨 변화, 경련, 의식저하로 나타날 수 있어요. CAR-T·이중특이항체 치료 중 발열은 시간과 관계없이 즉시 치료센터에 연락하고, 저혈압·호흡곤란이면 바로 응급실에서 평가받으세요. 새로 혼돈·말이 어눌함·경련·의식저하가 나타나면 지체 없이 119에 신고하고 치료명과 마지막 투여일을 알려 주세요. 가족도 이러한 변화를 알아보도록 교육받으세요.",
       "category": "diagnosis",
       "review": {
         "id": "faq.myeloma.075",
-        "version": "20261106-faq-upgrade-v1",
+        "version": "20261108-medical-safety-ai-pass-v2",
         "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
         "clinicalApproval": "pending",
-        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "aiCheck": "ai-medical-safety-prechecked-20261108",
         "sourceRefs": [
-          "nci-myeloma-patient"
+          "nci-myeloma-patient",
+          "fda-tecvayli-icans"
         ],
         "scope": "AI 초안(2026-11-06 편집 보강: 기존 12암종 FAQ 수준으로 설명·주의 신호·진료 질문 보강). 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
       }
@@ -1722,6 +1723,14 @@
     }
   ],
   "sources": {
+    "fda-tecvayli-icans": {
+      "title": "TECVAYLI — US Prescribing Information (CRS/ICANS)",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/761291s018lbl.pdf",
+      "organization": "US Food and Drug Administration",
+      "scope": "이중특이항체 관련 신경독성·중증 증상에 대한 즉시 대응",
+      "evidenceType": "primary-official-medical-source",
+      "checkedAt": "2026-11-08"
+    },
     "nci-infection": {
       "title": "Infection and Neutropenia during Cancer Treatment",
       "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/infection",

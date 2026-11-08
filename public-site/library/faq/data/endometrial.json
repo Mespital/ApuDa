@@ -1,8 +1,8 @@
 {
   "slug": "endometrial",
   "name": "자궁내막암",
-  "updated": "2026-11-07",
-  "revision": "20261103-faq100-ai-draft-v1",
+  "updated": "2026-11-08",
+  "revision": "20261108-medical-safety-ai-pass-v2",
   "edition": "진단 후 첫 30일 FAQ 100문항 (신규 80문항 AI 편집 초안)",
   "reviewMode": "AI 사전점검(기존20)·AI 확장원고(신규80)",
   "clinicalApproval": "pending",
@@ -963,16 +963,17 @@
     {
       "n": 56,
       "q": "임신을 위한 프로게스틴 치료는 어떻게 감시하나요?",
-      "a": "가임력 보존 치료는 보통 저등급 자궁내막양암이 내막에만 있고(MRI에서 근층 침윤 없음) 자궁 밖 전이가 없는 경우에만 검토해요. 시작 전에 분자분류(p53·MMR) 결과를 확인하고, p53 비정상이면 대개 권하지 않아요. 먹는 프로게스틴이나 호르몬 방출 자궁 내 장치를 쓰고, 보통 3~6개월마다 자궁경·조직검사와 MRI로 반응을 확인해요. 반응이 없거나 진행하면 수술로 전환해요. 생식의학·부인종양 전문팀에서 관리받으세요.",
+      "a": "가임력 보존 치료는 보통 저등급 자궁내막양암이 내막에만 있고(MRI에서 근층 침윤 없음) 자궁 밖 전이가 없는 경우에만 검토해요. 시작 전에 분자분류(p53·MMR) 결과를 확인하고, p53 비정상이면 대개 권하지 않아요. 먹는 프로게스틴이나 호르몬 방출 자궁 내 장치를 쓰고, 보통 3~6개월마다 자궁내막 조직검사(필요시 자궁경)로 치료 반응을 확인해요. MRI는 초기 평가 및 추적 중 필요성에 따라 개별적으로 시행합니다. 반응이 없거나 진행하면 수술로 전환해요. 생식의학·부인종양 전문팀에서 관리받으세요.",
       "category": "treatment",
       "review": {
         "id": "faq.endometrial.056",
-        "version": "20261107-deferred-fix-v1",
+        "version": "20261108-medical-safety-ai-pass-v2",
         "responsibleRole": "추가 전문분야: 부인종양",
         "clinicalApproval": "pending",
-        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "aiCheck": "ai-medical-safety-prechecked-20261108",
         "sourceRefs": [
-          "nci-endometrial-hp"
+          "nci-endometrial-hp",
+          "esgo-fertility-sparing"
         ],
         "scope": "AI 초안(2026-11-06 편집 보강: 기존 12암종 FAQ 수준으로 설명·주의 신호·진료 질문 보강). 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
       }
@@ -1727,6 +1728,14 @@
     }
   ],
   "sources": {
+    "esgo-fertility-sparing": {
+      "title": "ESGO/ESHRE/ESGE Guidelines for Fertility-Sparing Treatment of Endometrial Carcinoma",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10392114/",
+      "organization": "ESGO / ESHRE / ESGE",
+      "scope": "가임력 보존 치료의 3~6개월 조직학적 평가와 필요시 영상",
+      "evidenceType": "primary-official-medical-source",
+      "checkedAt": "2026-11-08"
+    },
     "nci-infection": {
       "title": "NCI · Infection and Neutropenia during Cancer Treatment",
       "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/infection",

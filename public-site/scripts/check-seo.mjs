@@ -43,7 +43,7 @@ for (let n = 1; n <= 30; n++) {
   assert(urls.includes(url), 'Book not in sitemap: ' + number);
   assert(html.includes('<link rel="canonical" href="' + url + '">'), 'Book canonical missing: ' + number);
   assert(html.includes('<meta name="description"'), 'Book description missing: ' + number);
-  assert(html.includes('실제 전문의 검토'), 'Medical review notice removed: ' + number);
+  assert(html.includes('출처를 첨부한 환자교육용 참고정보'), 'Medical reference notice removed: ' + number);
   const slug = bookSlugs.get(number);
   assert(html.includes('class="apuda-faq-shortcut" href="/library/faq/' + slug + '/"'),
     'Related FAQ shortcut missing or mismatched: ' + number);
@@ -65,7 +65,9 @@ for (const file of files) {
   assert(count === 100, record.slug + ' static page does not have 100 questions');
   assert(urls.includes(url), 'FAQ not in sitemap: ' + record.slug);
   assert(html.includes('<link rel="canonical" href="' + url + '">'), 'FAQ canonical missing: ' + record.slug);
-  assert(html.includes('문항별 임상 검토·승인이 완료되지 않았습니다'), 'Clinical disclaimer missing: ' + record.slug);
+  assert(html.includes('출처를 첨부한 환자교육용 참고정보'), 'Patient reference notice missing: ' + record.slug);
+  assert(html.includes('자료 출처·검토 범위'), 'Evidence/transparency link missing: ' + record.slug);
+  assert(!html.includes('전문의 문항별 검토: 대기 중'), 'Draft status label still shown: ' + record.slug);
   const title = html.match(/<title>([^<]+)<\/title>/)?.[1];
   const description = html.match(/<meta name="description" content="([^"]+)">/)?.[1];
   const ogTitle = html.match(/<meta property="og:title" content="([^"]+)">/)?.[1];

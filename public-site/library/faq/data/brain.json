@@ -1,8 +1,8 @@
 {
   "slug": "brain",
   "name": "성인 악성 뇌종양",
-  "updated": "2026-11-06",
-  "revision": "20261103-faq100-ai-draft-v1",
+  "updated": "2026-11-08",
+  "revision": "20261108-medical-safety-ai-pass-v2",
   "edition": "진단 후 첫 30일 FAQ 100문항 (신규 80문항 AI 편집 초안)",
   "reviewMode": "AI 사전점검(기존20)·AI 확장원고(신규80)",
   "clinicalApproval": "pending",
@@ -692,16 +692,17 @@
     {
       "n": 40,
       "q": "항암치료 때 감염 예방약을 받는 환자와 아닌 환자의 차이는 무엇인가요?",
-      "a": "방사선과 테모졸로마이드를 함께 쓰는 동안이나 스테로이드를 오래 쓰면 림프구가 크게 줄어, 폐포자충 폐렴 같은 기회감염 위험이 높아져요. 그래서 이 기간에는 예방 항생제를 함께 처방하는 경우가 많아요. 반면 혈구가 정상이고 스테로이드를 쓰지 않으면 필요 없을 수 있어요. 내가 예방약을 먹는 이유와 기간을 확인하세요. 마른기침·숨참은 바로 알리세요.",
+      "a": "새로 진단된 교모세포종에서 방사선치료와 테모졸로마이드를 동시에 투여하는 기간에는 혈액검사 수치나 스테로이드 복용 여부와 관계없이 폐포자충폐렴(PJP) 예방약을 사용합니다. 림프구감소가 지속되면 회복될 때까지 예방요법을 이어갑니다. 유지항암이나 다른 치료에서는 개인별 감염 위험에 따라 필요성을 판단합니다. 예방약의 종류와 복용 기간을 담당 의료진에게 확인하세요. 새로 발생한 마른기침·숨참은 즉시 알리세요.",
       "category": "care",
       "review": {
         "id": "faq.brain.040",
-        "version": "20261106-faq-upgrade-v1",
+        "version": "20261108-medical-safety-ai-pass-v2",
         "responsibleRole": "추가 전문분야: 신경종양",
         "clinicalApproval": "pending",
-        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "aiCheck": "ai-medical-safety-prechecked-20261108",
         "sourceRefs": [
-          "nci-brain"
+          "nci-brain",
+          "fda-temozolomide-pjp"
         ],
         "scope": "AI 초안(2026-11-06 편집 보강: 기존 12암종 FAQ 수준으로 설명·주의 신호·진료 질문 보강). 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
       }
@@ -1728,6 +1729,14 @@
     }
   ],
   "sources": {
+    "fda-temozolomide-pjp": {
+      "title": "Temozolomide — US Prescribing Information (PJP prophylaxis)",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=046a9011-3911-4d3f-a15f-fbb56d5aad56&type=display",
+      "organization": "FDA / DailyMed",
+      "scope": "신규 교모세포종에서 테모졸로마이드·방사선 병행 중 PJP 예방요법",
+      "evidenceType": "primary-official-medical-source",
+      "checkedAt": "2026-11-08"
+    },
     "cuh-steroids": {
       "title": "Living with a brain tumour: Taking steroids",
       "url": "https://www.cuh.nhs.uk/patient-information/living-with-a-brain-tumour-taking-steroids/",

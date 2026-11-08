@@ -1,8 +1,8 @@
 {
   "slug": "laryngeal",
   "name": "후두암",
-  "updated": "2026-11-07",
-  "revision": "20261103-faq100-ai-draft-v1",
+  "updated": "2026-11-08",
+  "revision": "20261108-medical-safety-ai-pass-v2",
   "edition": "진단 후 첫 30일 FAQ 100문항 (신규 80문항 AI 편집 초안)",
   "reviewMode": "AI 사전점검(기존20)·AI 확장원고(신규80)",
   "clinicalApproval": "pending",
@@ -1210,16 +1210,17 @@
     {
       "n": 71,
       "q": "숨을 쉴 때 갑자기 쌕쌕거리고 목이 막히면요?",
-      "a": "응급이에요. 기공이나 기도 안에 가래가 굳어 막혔거나, 기도가 좁아졌을 수 있어요. 기공이 있다면 먼저 보호 덮개나 HME를 떼고, 배운 대로 가래를 뽑거나 식염수를 넣어 보세요. 기관절개관을 끼고 있다면 배운 대로 내관을 빼서 확인하세요. 관이 빠졌거나 그래도 숨이 차면 즉시 119에 연락하고 '목 숨구멍으로 숨쉬는 환자'라고 분명히 알리세요. 집에 흡인기와 응급 카드를 준비해 두세요.",
+      "a": "갑자기 숨쉬기 어렵거나 기공이 막힌 듯하면 즉시 119에 연락하세요. 후두전절제 환자는 반드시 ‘입·코로 숨을 쉴 수 없고 목 기공으로만 호흡한다’고 알리세요. 구조를 기다리는 동안 미리 교육받은 보호자만 기공 덮개·HME를 제거하고 안내받은 방법으로 흡인하거나 내관을 확인하세요. 식염수 주입이나 관 교체는 개별 응급교육을 받은 경우에만 하며, 처치 때문에 119 신고를 늦추지 마세요.",
       "category": "care",
       "review": {
         "id": "faq.laryngeal.071",
-        "version": "20261106-faq-review-fix-v2",
+        "version": "20261108-medical-safety-ai-pass-v2",
         "responsibleRole": "추가 전문분야: 두경부종양",
         "clinicalApproval": "pending",
-        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "aiCheck": "ai-medical-safety-prechecked-20261108",
         "sourceRefs": [
-          "nci-laryngeal"
+          "nci-laryngeal",
+          "ntsp-laryngectomy-emergency"
         ],
         "scope": "AI 초안(2026-11-06 편집 보강 + AI 다관점 감수단 사전 점검 지적(심각·중대·경미) 반영). 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
       }
@@ -1227,16 +1228,17 @@
     {
       "n": 72,
       "q": "기공에서 피가 나면 어느 정도가 위험한가요?",
-      "a": "가래에 피가 살짝 묻는 건 건조나 자극으로 흔하지만, 반복되거나 양이 늘면 진료가 필요해요. 기공이나 목에서 피가 많이 나오거나, 선홍색 피가 뿜어지듯 나오거나, 숨이 차면 즉시 119를 부르세요. 특히 방사선·수술 뒤 큰 혈관 출혈은 위급할 수 있어요. 작은 출혈이라도 며칠 계속되면 알리세요. 가습을 늘리는 것도 도움이 돼요.",
+      "a": "가래에 실핏줄처럼 소량의 피가 보여도 건조·자극 때문이라고 단정하지 말고 당일 수술·치료팀에 연락해 확인하세요. 특히 기관절개관을 사용하는 수술 초기 환자는 소량 출혈이 큰 출혈에 앞서 나타날 수 있어 긴급 평가가 필요할 수 있습니다. 기공에서 선홍색 피가 계속 나오거나 양이 많거나 뿜어지거나, 숨이 차면 즉시 119에 신고하세요. 최근 수술·방사선치료 여부와 항응고제 복용 사실을 알리세요. 가습은 평소 관리에 도움이 되지만 출혈 평가를 대신하지 못합니다.",
       "category": "care",
       "review": {
         "id": "faq.laryngeal.072",
-        "version": "20261106-faq-upgrade-v1",
+        "version": "20261108-medical-safety-ai-pass-v2",
         "responsibleRole": "추가 전문분야: 두경부종양",
         "clinicalApproval": "pending",
-        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "aiCheck": "ai-medical-safety-prechecked-20261108",
         "sourceRefs": [
-          "nci-laryngeal"
+          "nci-laryngeal",
+          "nhs-laryngectomy-bleeding"
         ],
         "scope": "AI 초안(2026-11-06 편집 보강: 기존 12암종 FAQ 수준으로 설명·주의 신호·진료 질문 보강). 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
       }
@@ -1719,6 +1721,22 @@
     }
   ],
   "sources": {
+    "ntsp-laryngectomy-emergency": {
+      "title": "Emergency Laryngectomy Management Algorithm",
+      "url": "https://tracheostomy.org.uk/e-learning-files/NTSP_01_002-Emergency_Care_lo_pack/pdf/Laryngectomy_Algorithm.pdf",
+      "organization": "National Tracheostomy Safety Project",
+      "scope": "후두전절제 기공 호흡곤란 즉시 구조 요청 및 기공 호흡 경로",
+      "evidenceType": "primary-official-medical-source",
+      "checkedAt": "2026-11-08"
+    },
+    "nhs-laryngectomy-bleeding": {
+      "title": "Caring for My Laryngectomy — Bleeding Advice",
+      "url": "https://www.gloshospitals.nhs.uk/media/documents/Caring_for_my_Laryngectomy_GHPI1819_11_23.pdf",
+      "organization": "Gloucestershire Hospitals NHS",
+      "scope": "기공의 소량 혈흔은 상담, 활동성 선홍색 출혈은 응급 신고",
+      "evidenceType": "primary-official-medical-source",
+      "checkedAt": "2026-11-08"
+    },
     "asha-laryngectomy": {
       "title": "Communication After Total Laryngectomy",
       "url": "https://www.asha.org/practice-portal/clinical-topics/head-and-neck-cancer/communication-after-total-laryngectomy/",

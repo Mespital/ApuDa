@@ -1,8 +1,8 @@
 {
   "slug": "esophageal",
   "name": "식도암",
-  "updated": "2026-11-07",
-  "revision": "20261103-faq100-ai-draft-v1",
+  "updated": "2026-11-08",
+  "revision": "20261108-medical-safety-ai-pass-v2",
   "edition": "진단 후 첫 30일 FAQ 100문항 (신규 80문항 AI 편집 초안)",
   "reviewMode": "AI 사전점검(기존20)·AI 확장원고(신규80)",
   "clinicalApproval": "pending",
@@ -400,16 +400,17 @@
     {
       "n": 23,
       "q": "식도위접합부암은 식도암인가요, 위암인가요?",
-      "a": "종양의 중심이 어디에 있는지로 나눠요. 국제 병기 기준(AJCC 8판)에서는 접합부에 걸친 암의 중심이 접합부에서 위(胃) 쪽으로 2cm 안에 있으면 식도암으로, 그보다 더 아래(위 안쪽)에 있으면 위암으로 분류해요. 분류에 따라 병기 체계와 수술 방법, 항암 조합이 달라질 수 있어요. 내시경·CT로 확인한 정확한 위치와 적용한 분류를 물어보세요.",
+      "a": "국제 병기 기준(AJCC 8판)에서는 식도위접합부를 실제로 침범한 암 중 종양 중심이 접합부에서 위 내부 방향으로 2cm 이내에 있으면 식도암 병기를 적용해요. 같은 범위라도 접합부를 침범하지 않은 위 분문부암은 위암 병기를 적용하고, 종양 중심이 접합부에서 위 내부로 2cm보다 더 떨어져 있어도 위암 병기를 적용해요. 병기 체계에 따라 치료 계획이 달라질 수 있으므로 내시경·CT에서 확인한 위치와 적용한 병기 기준을 담당 의료진에게 물어보세요.",
       "category": "diagnosis",
       "review": {
         "id": "faq.esophageal.023",
-        "version": "20261106-faq-review-fix-v1",
+        "version": "20261108-medical-safety-ai-pass-v2",
         "responsibleRole": "추가 전문분야: 소화기·흉부종양",
         "clinicalApproval": "pending",
-        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "aiCheck": "ai-medical-safety-prechecked-20261108",
         "sourceRefs": [
-          "nci-esophageal-hp"
+          "nci-esophageal-hp",
+          "cap-esophagus-ajcc8"
         ],
         "scope": "AI 초안(2026-11-06 편집 보강 + AI 다관점 감수단 사전 점검 지적 반영). 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
       }
@@ -1725,6 +1726,14 @@
     }
   ],
   "sources": {
+    "cap-esophagus-ajcc8": {
+      "title": "CAP Esophagus Resection Protocol — AJCC 8th Edition",
+      "url": "https://www.cap.org/wp-content/uploads/protocols/Esophagus_4.2.0.1.REL_CAPCP.pdf?download=true",
+      "organization": "College of American Pathologists",
+      "scope": "실제 식도위접합부 침범 여부와 2cm 병기 기준",
+      "evidenceType": "primary-official-medical-source",
+      "checkedAt": "2026-11-08"
+    },
     "nci-infection": {
       "title": "NCI · Infection and Neutropenia during Cancer Treatment",
       "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/infection",

@@ -1,8 +1,8 @@
 {
   "slug": "aml",
   "name": "급성골수성백혈병",
-  "updated": "2026-11-07",
-  "revision": "20261103-faq100-ai-draft-v1",
+  "updated": "2026-11-08",
+  "revision": "20261108-medical-safety-ai-pass-v2",
   "edition": "진단 후 첫 30일 FAQ 100문항 (신규 80문항 AI 편집 초안)",
   "reviewMode": "AI 사전점검(기존20)·AI 확장원고(신규80)",
   "clinicalApproval": "pending",
@@ -522,16 +522,17 @@
     {
       "n": 30,
       "q": "골수형성이상 관련 AML이라는 말은 무엇인가요?",
-      "a": "이전에 골수형성이상증후군(MDS) 같은 혈액질환이 있었거나, 골수 세포 모양에 이상이 있거나, 특정 유전 변이(ASXL1, SRSF2 등. 분류 체계에 따라 RUNX1을 포함하기도 해요)나 염색체 이상이 있는 AML을 가리켜요. 일반 AML보다 항암 반응이 덜하고 재발 위험이 높은 경향이 있어, 특수 항암 조합이나 이식을 적극 검토해요. 국내 허가·급여 범위는 담당의에게 확인하세요. 예전 혈액검사 결과와 진료 기록이 있다면 꼭 가져가세요.",
+      "a": "골수형성이상 관련 급성골수성백혈병(AML-MR)은 과거 골수형성이상증후군(MDS) 또는 MDS/MPN 병력, 특정 유전자 변이, 관련 염색체 이상 등을 근거로 분류합니다. 현재 WHO 분류에서는 골수세포의 모양이 비정상적이라는 사실만으로 AML-MR을 확정하지 않습니다. WHO와 ICC 분류체계의 세부 기준이 다르므로 적용한 분류와 검사 근거를 담당 혈액종양내과에 확인하세요.",
       "category": "diagnosis",
       "review": {
         "id": "faq.aml.030",
-        "version": "20261106-faq-review-fix-v1",
+        "version": "20261108-medical-safety-ai-pass-v2",
         "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
         "clinicalApproval": "pending",
-        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "aiCheck": "ai-medical-safety-prechecked-20261108",
         "sourceRefs": [
-          "nci-aml-patient"
+          "nci-aml-patient",
+          "cap-aml-who-icc"
         ],
         "scope": "AI 초안(2026-11-06 편집 보강 + AI 다관점 감수단 사전 점검 지적 반영). 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
       }
@@ -1440,16 +1441,17 @@
     {
       "n": 84,
       "q": "친구나 가족의 방문은 언제부터 가능한가요?",
-      "a": "혈구가 회복된 시기나 외래 치료 중에는 대개 만날 수 있지만, 백혈구가 아주 낮은 시기나 이식 직후에는 방문이 제한될 수 있어요. 열·기침·콧물·설사 같은 감염 증상이 있는 사람, 최근 생백신을 맞은 아이는 방문을 미루게 하세요. 만날 때는 손 씻기와 마스크를 지키세요. 병원마다 면회 규정이 다르니 현재 단계의 지침을 확인하세요.",
+      "a": "혈구가 회복된 시기나 외래 치료 중에는 만날 수 있지만, 백혈구가 아주 낮은 시기나 이식 직후에는 방문이 제한될 수 있어요. 열·기침·콧물·설사 등 감염 증상이 있는 사람은 방문을 미루세요. 다만 가족이 최근 MMR이나 수두 같은 생백신을 맞았다는 이유만으로 일률적으로 접촉을 제한할 필요는 없습니다. 수두 백신 접종 후 발진이 발생했다면 면역저하 환자와 직접 접촉을 피하고, 조혈모세포이식 직후 보호격리 중이라면 비강 분무형 생독감 백신 접종자와의 접촉 지침을 이식팀에 확인하세요. 만날 때 손 위생과 병원의 면회 규정을 지키세요.",
       "category": "followup",
       "review": {
         "id": "faq.aml.084",
-        "version": "20261106-faq-upgrade-v1",
+        "version": "20261108-medical-safety-ai-pass-v2",
         "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
         "clinicalApproval": "pending",
-        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "aiCheck": "ai-medical-safety-prechecked-20261108",
         "sourceRefs": [
-          "nci-aml-patient"
+          "nci-aml-patient",
+          "cdc-contact-vaccines"
         ],
         "scope": "AI 초안(2026-11-06 편집 보강: 기존 12암종 FAQ 수준으로 설명·주의 신호·진료 질문 보강). 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
       }
@@ -1728,6 +1730,22 @@
     }
   ],
   "sources": {
+    "cap-aml-who-icc": {
+      "title": "What's New in AML Classification — WHO 2022 vs ICC",
+      "url": "https://www.cap.org/article/whats-new-in-aml-classification-who-2022-vs-international-consensus-classification/",
+      "organization": "College of American Pathologists",
+      "scope": "AML-MR에서 형태학적 이형성 단독 기준의 제외",
+      "evidenceType": "primary-official-medical-source",
+      "checkedAt": "2026-11-08"
+    },
+    "cdc-contact-vaccines": {
+      "title": "Altered Immunocompetence — Vaccination of Contacts",
+      "url": "https://www.cdc.gov/vaccines/hcp/imz-best-practices/altered-immunocompetence.html",
+      "organization": "US Centers for Disease Control and Prevention",
+      "scope": "면역저하 환자의 가족 생백신·접촉 예외",
+      "evidenceType": "primary-official-medical-source",
+      "checkedAt": "2026-11-08"
+    },
     "nci-infection": {
       "title": "Infection and Neutropenia during Cancer Treatment",
       "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/infection",

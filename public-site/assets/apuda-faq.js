@@ -35,13 +35,14 @@
   function reviewInfo(item) {
     var review = item.review || {};
     var refs = (review.sourceRefs || []).filter(function (id) { return sources[id] && https(sources[id].url); });
+    var publicScope = /AI\s*초안|검토\s*대기|실제 전문의|승인\s*대기/.test(review.scope || '') ? '' : (review.scope || '');
     return '<details class="src"><summary>근거·출처</summary>' +
-      (review.scope ? '<p>' + esc(review.scope) + '</p>' : '') +
+      (publicScope ? '<p>' + esc(publicScope) + '</p>' : '') +
       '<p>개정 버전 ' + esc(review.version || '') + '</p>' +
       (refs.length ? '<ul>' + refs.map(function (id) {
         var source = sources[id];
         return '<li><a href="' + esc(source.url) + '" target="_blank" rel="noopener">' + esc(source.title) + '</a><br>' + esc(source.scope) + ' · 확인 ' + esc(source.checkedAt) + '</li>';
-      }).join('') + '</ul>' : '<p>기존 ApuDa MINI v3.2를 바탕으로 정리한 답변입니다.</p>') + '</details>';
+      }).join('') + '</ul>' : '<p>이 문항에는 개별 출처 링크가 없습니다. 중요한 진료 판단은 담당 의료진과 확인하세요.</p>') + '</details>';
   }
   function draw() {
     var words = term.toLocaleLowerCase('ko').split(/\s+/).filter(Boolean);
@@ -130,8 +131,8 @@
     document.title = 'ApuDa ' + data.name + ' FAQ ' + items.length + ' — 자주 묻는 질문';
     document.getElementById('title').textContent = data.name + ' FAQ ' + items.length;
     document.getElementById('lead').textContent = data.reviewMode || data.additionalDraftCount ? '진단 후 첫 30일에 확인할 핵심 질문 ' + items.length + '개입니다. 진단·검사, 치료 선택, 치료 중 관리, 생활·추적 순서로 찾아보세요.' : '환자·보호자를 위한 기존 FAQ ' + items.length + '문항입니다. 증상·검사부터 치료, 생활, 비용·돌봄까지 찾아보세요.';
-    document.getElementById('edition').textContent = (data.updated || '') + ' · ' + '공식 근거 기반 환자교육 FAQ';
-    document.getElementById('faqFooter').innerHTML = '이 FAQ는 공식 의료정보와 출처를 바탕으로 정리한 환자교육용 일반 건강 정보입니다. 출처는 참조자료이며 국내 약제 허가·급여와 개인별 치료를 보증하지 않습니다. 개인의 진단·치료·약 복용은 담당 의료진과 결정하세요. 각 문항의 「근거·출처」에서 출처와 확인일을 볼 수 있어요.';
+    document.getElementById('edition').textContent = (data.updated || '') + ' · ' + '출처를 첨부한 환자교육용 참고정보';
+    document.getElementById('faqFooter').innerHTML = '이 FAQ는 환자교육용 참고정보로, 국내 약제 허가·급여와 개인별 치료를 보증하지 않습니다. 진단·치료·약 복용은 담당 의료진과 결정하세요. 각 문항의 「근거·출처」에서 자료와 확인일을 확인할 수 있습니다. <a href="/library/review/?cancer=' + encodeURIComponent(book.slug) + '">자료 출처·검토 범위</a>';
     renderGroups(); draw(); openHash();
     if (!book.hasMini) visitQuestions(data.questionsForVisit, data.name, false);
   }).catch(function () {

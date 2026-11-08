@@ -1,7 +1,7 @@
 {
-  "revision": "20261103-faq3000-ai-draft",
-  "checkedAt": "2026-11-02",
-  "mode": "기존 핵심20 AI 사전점검 + 신규 80 AI 작성 초안 (전문의 승인 대기)",
+  "revision": "20261108-faq-safety-sources-v2",
+  "checkedAt": "2026-11-08",
+  "mode": "FAQ 출처 및 의료안전성 AI 사전점검. 실제 임상 검토와 승인은 별도 기록하며 완료로 간주하지 않음",
   "humanApproval": "pending",
   "sources": {
     "nhis-special": {
@@ -543,8 +543,8 @@
         20
       ],
       "pdfVersion": "MINI PDF 미제공",
-      "webRevision": "20261103-faq100-ai-draft-v1",
-      "checkedAt": "2026-11-02",
+      "webRevision": "20261108-medical-safety-ai-pass-v2",
+      "checkedAt": "2026-11-08",
       "miniAvailable": false,
       "videoAvailable": false,
       "guideHref": "/library/first30/books/13.html",
@@ -637,6 +637,22 @@
           "checkedAt": "2026-11-02",
           "scope": "수술 범위·치료 전후 항암·증상 보고·추적관찰",
           "evidenceType": "official-patient-guidance"
+        },
+        "nci-ovarian-surveillance": {
+          "title": "Ovarian Cancer: Routine CA-125 and CT Surveillance",
+          "url": "https://www.cancer.gov/news-events/cancer-currents-blog/2016/surveillance-tests-ovarian",
+          "organization": "National Cancer Institute",
+          "scope": "CA-125 상승 기반 조기 항암과 정기 CT 검사의 효과 연구는 다름",
+          "evidenceType": "primary-official-medical-source",
+          "checkedAt": "2026-11-08"
+        },
+        "fda-ovarian-kras-2025": {
+          "title": "FDA Accelerated Approval — Avutometinib and Defactinib for KRAS-mutated Recurrent LGSOC",
+          "url": "https://www.fda.gov/drugs/cancer-approvals/fda-grants-accelerated-approval-combination-avutometinib-and-defactinib-kras-mutated-recurrent-low",
+          "organization": "US Food and Drug Administration",
+          "scope": "이전 전신치료한 KRAS 변이 재발성 저등급 장액성 난소암 대상",
+          "evidenceType": "primary-official-medical-source",
+          "checkedAt": "2026-11-08"
         }
       },
       "additionalDraftItems": 80,
@@ -676,8 +692,8 @@
         20
       ],
       "pdfVersion": "MINI PDF 미제공",
-      "webRevision": "20261103-faq100-ai-draft-v1",
-      "checkedAt": "2026-11-02",
+      "webRevision": "20261108-medical-safety-ai-pass-v2",
+      "checkedAt": "2026-11-08",
       "miniAvailable": false,
       "videoAvailable": false,
       "guideHref": "/library/first30/books/14.html",
@@ -796,6 +812,14 @@
           "scope": "많은 출혈·질식 등 생명 위협 응급상황의 응급 평가. 영국 번호는 인용하지 않고 한국 119 경로로 현지화",
           "evidenceType": "official-patient-guidance",
           "sourceUpdated": "2025-11-25"
+        },
+        "esgo-fertility-sparing": {
+          "title": "ESGO/ESHRE/ESGE Guidelines for Fertility-Sparing Treatment of Endometrial Carcinoma",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10392114/",
+          "organization": "ESGO / ESHRE / ESGE",
+          "scope": "가임력 보존 치료의 3~6개월 조직학적 평가와 필요시 영상",
+          "evidenceType": "primary-official-medical-source",
+          "checkedAt": "2026-11-08"
         }
       },
       "additionalDraftItems": 80,
@@ -835,8 +859,8 @@
         20
       ],
       "pdfVersion": "MINI PDF 미제공",
-      "webRevision": "20261103-faq100-ai-draft-v1",
-      "checkedAt": "2026-11-02",
+      "webRevision": "20261108-medical-safety-ai-pass-v2",
+      "checkedAt": "2026-11-08",
       "miniAvailable": false,
       "videoAvailable": false,
       "guideHref": "/library/first30/books/15.html",
@@ -939,6 +963,14 @@
           "checkedAt": "재확인 대기",
           "scope": "신규 FAQ AI 작성 시 참조한 공식 자료. 문항별 근거 적합성·한국 진료 적용 여부 별도 검증 필요.",
           "evidenceType": "official-source-ai-draft"
+        },
+        "cap-esophagus-ajcc8": {
+          "title": "CAP Esophagus Resection Protocol — AJCC 8th Edition",
+          "url": "https://www.cap.org/wp-content/uploads/protocols/Esophagus_4.2.0.1.REL_CAPCP.pdf?download=true",
+          "organization": "College of American Pathologists",
+          "scope": "실제 식도위접합부 침범 여부와 2cm 병기 기준",
+          "evidenceType": "primary-official-medical-source",
+          "checkedAt": "2026-11-08"
         }
       },
       "additionalDraftItems": 80,
@@ -1484,8 +1516,8 @@
         20
       ],
       "pdfVersion": "MINI PDF 미제공",
-      "webRevision": "20261103-faq100-ai-draft-v1",
-      "checkedAt": "2026-11-02",
+      "webRevision": "20261108-medical-safety-ai-pass-v2",
+      "checkedAt": "2026-11-08",
       "miniAvailable": false,
       "videoAvailable": false,
       "guideHref": "/library/first30/books/19.html",
@@ -1546,6 +1578,22 @@
           "scope": "심한 호흡곤란·흉부 압박·갑작스러운 혼돈 등 즉시 평가가 필요한 호흡 관련 증상. 영국 응급번호를 한국에 그대로 적용하지 않음",
           "evidenceType": "official-patient-guidance",
           "checkedAt": "2026-11-02"
+        },
+        "ntsp-laryngectomy-emergency": {
+          "title": "Emergency Laryngectomy Management Algorithm",
+          "url": "https://tracheostomy.org.uk/e-learning-files/NTSP_01_002-Emergency_Care_lo_pack/pdf/Laryngectomy_Algorithm.pdf",
+          "organization": "National Tracheostomy Safety Project",
+          "scope": "후두전절제 기공 호흡곤란 즉시 구조 요청 및 기공 호흡 경로",
+          "evidenceType": "primary-official-medical-source",
+          "checkedAt": "2026-11-08"
+        },
+        "nhs-laryngectomy-bleeding": {
+          "title": "Caring for My Laryngectomy — Bleeding Advice",
+          "url": "https://www.gloshospitals.nhs.uk/media/documents/Caring_for_my_Laryngectomy_GHPI1819_11_23.pdf",
+          "organization": "Gloucestershire Hospitals NHS",
+          "scope": "기공의 소량 혈흔은 상담, 활동성 선홍색 출혈은 응급 신고",
+          "evidenceType": "primary-official-medical-source",
+          "checkedAt": "2026-11-08"
         }
       },
       "additionalDraftItems": 80,
@@ -1811,8 +1859,8 @@
         20
       ],
       "pdfVersion": "MINI PDF 미제공",
-      "webRevision": "20261103-faq100-ai-draft-v1",
-      "checkedAt": "2026-11-02",
+      "webRevision": "20261108-medical-safety-ai-pass-v2",
+      "checkedAt": "2026-11-08",
       "miniAvailable": false,
       "videoAvailable": false,
       "guideHref": "/library/first30/books/22.html",
@@ -1873,6 +1921,22 @@
           "scope": "심한 호흡곤란·흉부 압박·갑작스러운 혼돈 등 즉시 평가가 필요한 호흡 관련 증상. 영국 응급번호를 한국에 그대로 적용하지 않음",
           "evidenceType": "official-patient-guidance",
           "checkedAt": "2026-11-02"
+        },
+        "nci-sarcoma-advanced": {
+          "title": "Adult Soft Tissue Sarcoma Treatment (PDQ) — Health Professional Version",
+          "url": "https://www.cancer.gov/types/soft-tissue-sarcoma/hp/adult-soft-tissue-treatment-pdq",
+          "organization": "National Cancer Institute",
+          "scope": "진행성 연부조직육종 독소루비신 단독 및 병용의 선택 조건",
+          "evidenceType": "primary-official-medical-source",
+          "checkedAt": "2026-11-08"
+        },
+        "fda-asps-atezolizumab": {
+          "title": "FDA Approval — Atezolizumab for Alveolar Soft Part Sarcoma",
+          "url": "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-disco-burst-edition-fda-approvals-tecentriq-atezolizumab-unresectable-or-metastatic-alveolar",
+          "organization": "US Food and Drug Administration",
+          "scope": "절제 불가 또는 전이성 포상연부육종의 미국 승인 사례",
+          "evidenceType": "primary-official-medical-source",
+          "checkedAt": "2026-11-08"
         }
       },
       "additionalDraftItems": 80,
@@ -1912,8 +1976,8 @@
         20
       ],
       "pdfVersion": "MINI PDF 미제공",
-      "webRevision": "20261103-faq100-ai-draft-v1",
-      "checkedAt": "2026-11-02",
+      "webRevision": "20261108-medical-safety-ai-pass-v2",
+      "checkedAt": "2026-11-08",
       "miniAvailable": false,
       "videoAvailable": false,
       "guideHref": "/library/first30/books/23.html",
@@ -1982,6 +2046,14 @@
           "scope": "심한 호흡곤란·흉부 압박·갑작스러운 혼돈 등 즉시 평가가 필요한 호흡 관련 증상. 영국 응급번호를 한국에 그대로 적용하지 않음",
           "evidenceType": "official-patient-guidance",
           "checkedAt": "2026-11-02"
+        },
+        "fda-temozolomide-pjp": {
+          "title": "Temozolomide — US Prescribing Information (PJP prophylaxis)",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=046a9011-3911-4d3f-a15f-fbb56d5aad56&type=display",
+          "organization": "FDA / DailyMed",
+          "scope": "신규 교모세포종에서 테모졸로마이드·방사선 병행 중 PJP 예방요법",
+          "evidenceType": "primary-official-medical-source",
+          "checkedAt": "2026-11-08"
         }
       },
       "additionalDraftItems": 80,
@@ -2021,8 +2093,8 @@
         20
       ],
       "pdfVersion": "MINI PDF 미제공",
-      "webRevision": "20261103-faq100-ai-draft-v1",
-      "checkedAt": "2026-11-02",
+      "webRevision": "20261108-medical-safety-ai-pass-v2",
+      "checkedAt": "2026-11-08",
       "miniAvailable": false,
       "videoAvailable": false,
       "guideHref": "/library/first30/books/24.html",
@@ -2085,6 +2157,14 @@
           "checkedAt": "2026-11-02",
           "scope": "골수종 뼈 약화·골절·고칼슘혈증·척수압박, 뼈와 척추 보호를 위한 개별 치료·활동 상담",
           "evidenceType": "official-patient-guidance"
+        },
+        "fda-tecvayli-icans": {
+          "title": "TECVAYLI — US Prescribing Information (CRS/ICANS)",
+          "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/761291s018lbl.pdf",
+          "organization": "US Food and Drug Administration",
+          "scope": "이중특이항체 관련 신경독성·중증 증상에 대한 즉시 대응",
+          "evidenceType": "primary-official-medical-source",
+          "checkedAt": "2026-11-08"
         }
       },
       "additionalDraftItems": 80,
@@ -2124,8 +2204,8 @@
         20
       ],
       "pdfVersion": "MINI PDF 미제공",
-      "webRevision": "20261103-faq100-ai-draft-v1",
-      "checkedAt": "2026-11-02",
+      "webRevision": "20261108-medical-safety-ai-pass-v2",
+      "checkedAt": "2026-11-08",
       "miniAvailable": false,
       "videoAvailable": false,
       "guideHref": "/library/first30/books/25.html",
@@ -2198,6 +2278,22 @@
           "scope": "APL 의심 단계부터 의료 응급으로 관리하고 진단 확정 전에도 전문팀이 응고 장애 대응·치료를 시작한다는 원칙. 환자가 직접 ATRA·수혈·기타 약을 시작하라는 지시로 옮기지 않음",
           "evidenceType": "professional-clinical-recommendation",
           "sourceUpdated": "2019-02-25"
+        },
+        "cap-aml-who-icc": {
+          "title": "What's New in AML Classification — WHO 2022 vs ICC",
+          "url": "https://www.cap.org/article/whats-new-in-aml-classification-who-2022-vs-international-consensus-classification/",
+          "organization": "College of American Pathologists",
+          "scope": "AML-MR에서 형태학적 이형성 단독 기준의 제외",
+          "evidenceType": "primary-official-medical-source",
+          "checkedAt": "2026-11-08"
+        },
+        "cdc-contact-vaccines": {
+          "title": "Altered Immunocompetence — Vaccination of Contacts",
+          "url": "https://www.cdc.gov/vaccines/hcp/imz-best-practices/altered-immunocompetence.html",
+          "organization": "US Centers for Disease Control and Prevention",
+          "scope": "면역저하 환자의 가족 생백신·접촉 예외",
+          "evidenceType": "primary-official-medical-source",
+          "checkedAt": "2026-11-08"
         }
       },
       "additionalDraftItems": 80,
@@ -2484,8 +2580,8 @@
         20
       ],
       "pdfVersion": "MINI PDF 미제공",
-      "webRevision": "20261103-faq100-ai-draft-v1",
-      "checkedAt": "2026-11-02",
+      "webRevision": "20261108-medical-safety-ai-pass-v2",
+      "checkedAt": "2026-11-08",
       "miniAvailable": false,
       "videoAvailable": false,
       "guideHref": "/library/first30/books/28.html",
@@ -2539,6 +2635,14 @@
           "checkedAt": "2026-11-02",
           "scope": "조직 진단·위험군·PET 반응과 치료 조정, 약제별 심폐·신경 독성 및 장기 영향, 재발 치료; 국제 선택지를 국내 허가·급여와 혼동하지 않음",
           "evidenceType": "official-evidence-summary"
+        },
+        "fda-hodgkin-nivo-2026": {
+          "title": "FDA Approves Nivolumab with AVD for Previously Untreated Hodgkin Lymphoma",
+          "url": "https://www.fda.gov/drugs/cancer-approvals/fda-approves-nivolumab-chemotherapy-previously-untreated-hodgkin-lymphoma",
+          "organization": "US Food and Drug Administration",
+          "scope": "2026-03-20 미국 12세 이상 초치료 III·IV기 고전적 호지킨림프종 승인",
+          "evidenceType": "primary-official-medical-source",
+          "checkedAt": "2026-11-08"
         }
       },
       "additionalDraftItems": 80,
