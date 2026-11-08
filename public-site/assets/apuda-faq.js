@@ -35,15 +35,14 @@
   function reviewInfo(item) {
     var review = item.review || {};
     var refs = (review.sourceRefs || []).filter(function (id) { return sources[id] && https(sources[id].url); });
-    return '<details class="src"><summary>근거·검토정보</summary>' +
-      '<p>' + esc(review.responsibleRole || '암종별 책임 분야 배정 대기') + ' · 실제 전문의 검토 대기</p>' +
-      '<p>' + esc(review.scope || '문항별 근거 추가 대조 대기') + '</p>' +
+    var publicScope = /AI\s*초안|검토\s*대기|실제 전문의|승인\s*대기/.test(review.scope || '') ? '' : (review.scope || '');
+    return '<details class="src"><summary>근거·출처</summary>' +
+      (publicScope ? '<p>' + esc(publicScope) + '</p>' : '') +
       '<p>개정 버전 ' + esc(review.version || '') + '</p>' +
       (refs.length ? '<ul>' + refs.map(function (id) {
         var source = sources[id];
         return '<li><a href="' + esc(source.url) + '" target="_blank" rel="noopener">' + esc(source.title) + '</a><br>' + esc(source.scope) + ' · 확인 ' + esc(source.checkedAt) + '</li>';
-      }).join('') + '</ul>' : '<p>기존 ApuDa MINI v3.2를 바탕으로 정리한 답변입니다. 이 문항 전체의 최신 1차 근거 대조는 아직 완료되지 않았어요.</p>') +
-      '<a href="/library/review/?cancer=' + book.slug + '">이 암종의 자료 검토 상태</a></details>';
+      }).join('') + '</ul>' : '<p>이 문항에는 개별 출처 링크가 없습니다. 중요한 진료 판단은 담당 의료진과 확인하세요.</p>') + '</details>';
   }
   function draw() {
     var words = term.toLocaleLowerCase('ko').split(/\s+/).filter(Boolean);
@@ -131,9 +130,9 @@
     groups = data.reviewMode ? categories.map(function (category) { return { key: category[0], label: category[1] }; }).filter(function (definition) { return items.some(function (item) { return item.category === definition.key; }); }) : legacyGroups.map(function (definition) { return { start: definition[0], end: definition[1], label: definition[0] + '–' + definition[1] + ' ' + definition[2] }; });
     document.title = 'ApuDa ' + data.name + ' FAQ ' + items.length + ' — 자주 묻는 질문';
     document.getElementById('title').textContent = data.name + ' FAQ ' + items.length;
-    document.getElementById('lead').textContent = data.additionalDraftCount ? '총 ' + items.length + '문항입니다. 기존 20문항은 AI 근거 사전점검, 추가 80문항은 AI 신규 작성 초안이며 실제 전문의 승인 전입니다.' : data.reviewMode ? '진단 후 첫 30일에 확인할 핵심 질문 ' + items.length + '개입니다. 진단·검사, 치료 선택, 치료 중 관리, 생활·추적 순서로 찾아보세요.' : '환자·보호자를 위한 기존 FAQ ' + items.length + '문항입니다. 증상·검사부터 치료, 생활, 비용·돌봄까지 찾아보세요.';
-    document.getElementById('edition').textContent = (data.updated || '') + ' · ' + (data.additionalDraftCount ? '신규 80문항 AI 원고 · 실제 전문의 감수 대기' : data.reviewMode ? '공식 근거 기반 AI 사전점검 · 전문의 검토 대기' : '기존 자료 · 문항별 근거 대조 범위 확인');
-    document.getElementById('faqFooter').innerHTML = (data.additionalDraftCount ? '기존 20문항의 공식 근거 AI 사전점검과 별개로, 신규 80문항은 AI 작성 초안입니다. 출처 링크가 개별 답변의 전문의 검증 완료를 뜻하지 않습니다. 임상 감수·최신 한국 허가·급여 확인 후 이용해 주세요.' : data.reviewMode ? '이 핵심 FAQ는 공식 의료정보를 바탕으로 AI가 사전 대조했습니다. 실제 전문의 승인과 환자·보호자 참여 평가는 아직 완료되지 않았습니다.' : '기존 ApuDa MINI v3.2를 바탕으로 정리한 FAQ입니다. 일부 문항의 안전 안내와 근거를 보완했으며, 모든 문항의 최신 근거 대조가 완료된 것은 아닙니다.') + ' 각 문항의 「근거·검토정보」에서 출처·확인일·대조 범위를 확인하세요. 국제 자료가 국내 약제 허가·보험급여를 그대로 뜻하지는 않습니다. 개인의 진단·치료·약 복용은 담당 의료진과 결정하세요. <a href="/library/review/?cancer=' + book.slug + '">이 암종의 자료 검토 상태</a>.';
+    document.getElementById('lead').textContent = data.reviewMode || data.additionalDraftCount ? '진단 후 첫 30일에 확인할 핵심 질문 ' + items.length + '개입니다. 진단·검사, 치료 선택, 치료 중 관리, 생활·추적 순서로 찾아보세요.' : '환자·보호자를 위한 기존 FAQ ' + items.length + '문항입니다. 증상·검사부터 치료, 생활, 비용·돌봄까지 찾아보세요.';
+    document.getElementById('edition').textContent = (data.updated || '') + ' · ' + '출처를 첨부한 환자교육용 참고정보';
+    document.getElementById('faqFooter').innerHTML = '이 FAQ는 환자교육용 참고정보로, 국내 약제 허가·급여와 개인별 치료를 보증하지 않습니다. 진단·치료·약 복용은 담당 의료진과 결정하세요. 각 문항의 「근거·출처」에서 자료와 확인일을 확인할 수 있습니다. <a href="/library/review/?cancer=' + encodeURIComponent(book.slug) + '">자료 출처·검토 범위</a>';
     renderGroups(); draw(); openHash();
     if (!book.hasMini) visitQuestions(data.questionsForVisit, data.name, false);
   }).catch(function () {

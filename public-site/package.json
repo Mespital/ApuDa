@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "seo:build": "node scripts/build-seo.mjs",
-    "seo:check": "node scripts/check-seo.mjs"
+    "seo:check": "node scripts/check-seo.mjs",
+    "faq:safety": "node scripts/check-faq-medical-safety.mjs"
   },
   "engines": {
     "node": ">=22.13.0"

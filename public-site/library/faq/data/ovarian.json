@@ -1,8 +1,8 @@
 {
   "slug": "ovarian",
   "name": "난소암",
-  "updated": "2026-11-06",
-  "revision": "20261103-faq100-ai-draft-v1",
+  "updated": "2026-11-08",
+  "revision": "20261108-medical-safety-ai-pass-v2",
   "edition": "진단 후 첫 30일 FAQ 100문항 (신규 80문항 AI 편집 초안)",
   "reviewMode": "AI 사전점검(기존20)·AI 확장원고(신규80)",
   "clinicalApproval": "pending",
@@ -1283,16 +1283,17 @@
     {
       "n": 75,
       "q": "치료 종료 후 CT를 매번 찍지 않는 이유는 무엇인가요?",
-      "a": "증상이 없을 때 정기적으로 CT를 찍어 재발을 조금 일찍 찾아도, 증상이 생겼을 때 찾아 치료하는 것과 비교해 생존이 크게 늘지 않는다는 연구가 있어서예요. 대신 방사선 노출, 비용, 불안이 늘어요. 그래서 보통 진찰, 증상 확인, CA-125를 정기적으로 하고 이상이 있으면 CT를 찍어요. CA-125가 올랐다는 것만으로 재발이 확정되지는 않아요. 치료 시작 시점은 증상·영상·재수술 가능성을 함께 보고 정해요. 내 추적 계획을 확인하세요.",
+      "a": "치료 후 모든 환자에게 매번 CT를 찍어야 하는지는 재발 위험, 증상, 진찰 결과, CA-125의 신뢰도와 이전 치료에 따라 달라요. CA-125가 먼저 올랐다는 이유만으로 항암치료를 앞당겨도 전체 생존기간이 늘지 않았다는 임상시험이 있지만, 이를 정기 CT 검사 자체의 효과를 비교한 결과로 해석해서는 안 돼요. 증상·진찰·종양표지자에 변화가 있거나, 표지자가 원래 높지 않았거나, 재수술 가능성 평가가 필요하면 영상검사가 중요할 수 있어요. 내 재발 위험과 CT 시행 조건·간격을 담당 의료진과 정하세요.",
       "category": "diagnosis",
       "review": {
         "id": "faq.ovarian.075",
-        "version": "20261106-faq-review-fix-v1",
+        "version": "20261108-medical-safety-ai-pass-v2",
         "responsibleRole": "추가 전문분야: 부인종양",
         "clinicalApproval": "pending",
-        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "aiCheck": "ai-medical-safety-prechecked-20261108",
         "sourceRefs": [
-          "nci-ovarian"
+          "nci-ovarian",
+          "nci-ovarian-surveillance"
         ],
         "scope": "AI 초안(2026-11-06 편집 보강 + AI 다관점 감수단 사전 점검 지적 반영). 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
       }
@@ -1334,16 +1335,17 @@
     {
       "n": 78,
       "q": "저등급 장액성 난소암에서 호르몬 치료를 쓰기도 하나요?",
-      "a": "네, 쓰기도 해요. 저등급 장액성 난소암은 에스트로겐 수용체가 강하게 양성인 경우가 많고 항암제에 반응이 낮은 편이라, 레트로졸 같은 아로마타제 억제제로 호르몬치료를 하거나, 수술과 항암 후 유지치료로 쓰는 경우가 있어요. 재발한 경우 MEK 억제제 계열 표적치료도 연구·승인되고 있으니 국내 허가·급여 범위는 담당의에게 확인하세요. 병리를 다시 확인하고, 이전 치료와 목표를 먼저 검토해 결정해요.",
+      "a": "네, 쓰기도 해요. 저등급 장액성 난소암은 에스트로겐 수용체가 양성인 경우가 많고 항암제에 반응이 낮은 편이라, 레트로졸 같은 아로마타제 억제제로 호르몬치료를 하거나 유지치료로 쓰기도 해요. 재발성 저등급 장액성 난소암에서는 KRAS 변이 등 분자검사 결과와 이전 치료에 따라 표적치료를 검토하기도 해요. 미국 FDA는 2025년 KRAS 변이가 있고 이전 전신치료를 받은 성인 환자에게 아부토메티닙(avutometinib)과 데팍티닙(defactinib) 병용을 신속승인했어요. 모든 환자에게 적용되는 승인은 아니며 국내 허가·급여도 별도로 확인해야 해요. 내 병리 아형과 치료 목표를 전문팀과 검토하세요.",
       "category": "treatment",
       "review": {
         "id": "faq.ovarian.078",
-        "version": "20261106-faq-review-fix-v2",
+        "version": "20261108-medical-safety-ai-pass-v2",
         "responsibleRole": "추가 전문분야: 부인종양",
         "clinicalApproval": "pending",
-        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "aiCheck": "ai-medical-safety-prechecked-20261108",
         "sourceRefs": [
-          "nci-ovarian"
+          "nci-ovarian",
+          "fda-ovarian-kras-2025"
         ],
         "scope": "AI 초안(2026-11-06 편집 보강 + AI 다관점 감수단 사전 점검 지적(심각·중대·경미) 반영). 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
       }
@@ -1724,6 +1726,22 @@
     }
   ],
   "sources": {
+    "nci-ovarian-surveillance": {
+      "title": "Ovarian Cancer: Routine CA-125 and CT Surveillance",
+      "url": "https://www.cancer.gov/news-events/cancer-currents-blog/2016/surveillance-tests-ovarian",
+      "organization": "National Cancer Institute",
+      "scope": "CA-125 상승 기반 조기 항암과 정기 CT 검사의 효과 연구는 다름",
+      "evidenceType": "primary-official-medical-source",
+      "checkedAt": "2026-11-08"
+    },
+    "fda-ovarian-kras-2025": {
+      "title": "FDA Accelerated Approval — Avutometinib and Defactinib for KRAS-mutated Recurrent LGSOC",
+      "url": "https://www.fda.gov/drugs/cancer-approvals/fda-grants-accelerated-approval-combination-avutometinib-and-defactinib-kras-mutated-recurrent-low",
+      "organization": "US Food and Drug Administration",
+      "scope": "이전 전신치료한 KRAS 변이 재발성 저등급 장액성 난소암 대상",
+      "evidenceType": "primary-official-medical-source",
+      "checkedAt": "2026-11-08"
+    },
     "nci-infection": {
       "title": "NCI · Infection and Neutropenia during Cancer Treatment",
       "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/infection",

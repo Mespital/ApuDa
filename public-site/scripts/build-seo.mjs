@@ -84,7 +84,7 @@ function faqPage(record) {
   const seo = faqSeo[record.slug];
   const title = record.name + ' ' + seo.topics + ' FAQ 100문항 | ApuDa';
   const description = record.name + ' 환자·보호자 FAQ 100문항. ' + seo.summary +
-    ' AI 사전검토 자료이며 전문의의 문항별 검토·승인 전입니다.';
+    ' 출처를 첨부한 환자교육용 참고정보이며 진료를 대신하지 않습니다.';
   const breadcrumb = { '@context': 'https://schema.org', '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'ApuDa', item: origin + '/' },
@@ -92,11 +92,9 @@ function faqPage(record) {
       { '@type': 'ListItem', position: 3, name: record.name + ' FAQ', item: url },
     ] };
   const questions = record.items.map((item) => {
-    const reviewed = item.review?.clinicalApproval === 'approved';
     return '<li><details id="q' + Number(item.n) + '"><summary>' + escapeHtml(item.q) + '</summary>' +
       '<div class="answer"><p>' + escapeHtml(item.a) + '</p>' + sourceLinks(item, record) +
-      '<small>' + (reviewed ? '전문의 검토 상태: 승인 기록 있음' : '전문의 문항별 검토: 대기 중') +
-      ' · 구체적인 치료 결정은 담당 의료진과 상의하세요.</small></div></details></li>';
+      '<small>이 정보는 진료·처방을 대신하지 않습니다. 구체적인 치료 결정은 담당 의료진과 상의하세요.</small></div></details></li>';
   }).join('\n');
   return `<!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -129,12 +127,12 @@ small{display:block;font-size:12px;color:#627884}footer{padding-top:30px;color:#
 <nav class="crumb" aria-label="현재 위치"><a href="/">ApuDa</a> › <a href="/library/first30/">암 진단 첫 30일</a> › ${escapeHtml(record.name)} FAQ</nav>
 <h1>${escapeHtml(record.name)} FAQ 100문항</h1>
 <p class="lead">${escapeHtml(seo.summary)} 필요한 질문을 눌러 답변과 참고자료를 읽어보세요.</p>
-<div class="notice">이 자료는 AI 사전검토를 거친 환자교육용 참고자료이며 실제 전문의의 문항별 임상 검토·승인이 완료되지 않았습니다. 국내 허가·급여 기준과 개인 상태에 따라 달라질 수 있으므로, 진단·치료·약물 변경은 반드시 담당 의료진과 상의하세요.</div>
+<div class="notice">출처를 첨부한 환자교육용 참고정보입니다. 출처가 있다고 임상 승인이 완료되었음을 뜻하지 않습니다. 국내 허가·급여 기준과 개인 상태에 따라 달라질 수 있으므로, 진단·치료·약물 변경은 반드시 담당 의료진과 상의하세요. <a href="/library/review/?cancer=${encodeURIComponent(record.slug)}">자료 출처·검토 범위</a></div>
 <p><a href="/library/faq/?cancer=${encodeURIComponent(record.slug)}">검색·주제별 필터가 있는 FAQ 화면으로 이동</a> ·
 <a href="/library/first30/books/${book.number}.html">${escapeHtml(record.name)} 첫 30일 무료 안내서</a></p>
 </div><nav class="nav" aria-label="다른 암종 FAQ">${nav}</nav>
 <h2>질문과 답변</h2><ol>${questions}</ol>
-<footer>마지막 자료 업데이트: ${escapeHtml(record.updated ?? '미확인')} · <a href="/library/review/?cancer=${encodeURIComponent(record.slug)}">자료 검토 상태</a><p>© ApuDa · 이 정보는 의료진의 진단·처방을 대신하지 않습니다.</p></footer>
+<footer>마지막 자료 업데이트: ${escapeHtml(record.updated ?? '미확인')} · <a href="/library/review/?cancer=${encodeURIComponent(record.slug)}">자료 출처·검토 범위</a><p>© ApuDa · 이 정보는 의료진의 진단·처방을 대신하지 않습니다.</p></footer>
 </main></body></html>`;
 }
 

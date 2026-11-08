@@ -82,7 +82,7 @@
 
     var faq = book.hasFaq
       ? item('3', name + ' FAQ ' + book.faqCount + '문항',
-          reviewed ? '환자·보호자가 진료실에서 자주 확인하는 질문' : '진료실에서 자주 확인하는 질문 · 일부 문항 전문의 검토 대기',
+          '환자·보호자가 진료실에서 자주 확인하는 질문',
           '<a href="/library/faq/?cancer=' + slug + '">FAQ 보기</a>')
       : item('3', name + ' FAQ', '제작 중입니다.', SOON, 'soon');
 

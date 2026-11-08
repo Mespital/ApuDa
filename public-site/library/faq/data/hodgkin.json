@@ -1,8 +1,8 @@
 {
   "slug": "hodgkin",
   "name": "호지킨림프종",
-  "updated": "2026-11-07",
-  "revision": "20261103-faq100-ai-draft-v1",
+  "updated": "2026-11-08",
+  "revision": "20261108-medical-safety-ai-pass-v2",
   "edition": "진단 후 첫 30일 FAQ 100문항 (신규 80문항 AI 편집 초안)",
   "reviewMode": "AI 사전점검(기존20)·AI 확장원고(신규80)",
   "clinicalApproval": "pending",
@@ -741,16 +741,17 @@
     {
       "n": 43,
       "q": "PD-1 억제제는 왜 호지킨림프종에서 사용하나요?",
-      "a": "호지킨림프종 종양세포는 PD-L1이라는 단백질을 많이 만들어 면역세포의 공격을 피하는 경우가 많아요. PD-1 억제제는 이 차단을 풀어 면역세포가 다시 공격하게 돕는 약이에요. 주로 재발·불응 때 쓰고, 최근에는 진행기 첫 치료에서 다른 항암제와 함께 쓰는 방법도 연구·승인되고 있어요. 국내 허가·급여 범위와 면역 부작용 감시 계획은 담당의에게 확인하세요.",
+      "a": "호지킨림프종 종양세포는 PD-L1이라는 단백질을 많이 만들어 면역세포의 공격을 피하는 경우가 많아요. PD-1 억제제는 이 차단을 풀어 면역세포의 암 공격을 돕는 약이에요. 재발·불응성 고전적 호지킨림프종에서도 사용해요. 미국 FDA는 2026년 3월 20일 12세 이상 초치료 III·IV기 고전적 호지킨림프종에 니볼루맙(nivolumab)+AVD 요법을 승인했습니다. 미국 승인이 국내 허가·보험 급여를 뜻하지는 않으므로 사용 가능 여부와 면역 관련 부작용 감시 계획을 담당 의료진에게 확인하세요.",
       "category": "treatment",
       "review": {
         "id": "faq.hodgkin.043",
-        "version": "20261106-faq-review-fix-v2",
+        "version": "20261108-medical-safety-ai-pass-v2",
         "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
         "clinicalApproval": "pending",
-        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "aiCheck": "ai-medical-safety-prechecked-20261108",
         "sourceRefs": [
-          "nci-hodgkin-hp"
+          "nci-hodgkin-hp",
+          "fda-hodgkin-nivo-2026"
         ],
         "scope": "AI 초안(2026-11-06 편집 보강 + AI 다관점 감수단 사전 점검 지적(심각·중대·경미) 반영). 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
       }
@@ -1726,6 +1727,14 @@
     }
   ],
   "sources": {
+    "fda-hodgkin-nivo-2026": {
+      "title": "FDA Approves Nivolumab with AVD for Previously Untreated Hodgkin Lymphoma",
+      "url": "https://www.fda.gov/drugs/cancer-approvals/fda-approves-nivolumab-chemotherapy-previously-untreated-hodgkin-lymphoma",
+      "organization": "US Food and Drug Administration",
+      "scope": "2026-03-20 미국 12세 이상 초치료 III·IV기 고전적 호지킨림프종 승인",
+      "evidenceType": "primary-official-medical-source",
+      "checkedAt": "2026-11-08"
+    },
     "nci-infection": {
       "title": "Infection and Neutropenia during Cancer Treatment",
       "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/infection",

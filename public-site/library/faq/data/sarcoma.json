@@ -1,8 +1,8 @@
 {
   "slug": "sarcoma",
   "name": "연부조직육종",
-  "updated": "2026-11-06",
-  "revision": "20261103-faq100-ai-draft-v1",
+  "updated": "2026-11-08",
+  "revision": "20261108-medical-safety-ai-pass-v2",
   "edition": "진단 후 첫 30일 FAQ 100문항 (신규 80문항 AI 편집 초안)",
   "reviewMode": "AI 사전점검(기존20)·AI 확장원고(신규80)",
   "clinicalApproval": "pending",
@@ -662,16 +662,17 @@
     {
       "n": 39,
       "q": "평활근육종과 지방육종은 같은 항암제를 쓰나요?",
-      "a": "꼭 같지 않아요. 육종은 아형마다 약에 대한 반응이 달라서, 예를 들어 평활근육종과 지방육종은 일부 같은 약을 쓰기도 하지만 각각 더 잘 듣는 약이 따로 연구돼 있어요. 첫 치료로는 독소루비신 중심 조합을 흔히 쓰고, 이후에는 아형에 맞춰 골라요. 국내 허가·급여도 아형별로 달라요. 내 아형 기준으로 고른 이유를 물어보세요.",
+      "a": "꼭 같지 않아요. 육종은 평활근육종·지방육종 등 아형에 따라 약에 대한 반응과 치료 선택이 달라요. 진행성 연부조직육종의 1차 약물치료에서는 독소루비신(doxorubicin) 단독요법이 중요한 표준 선택지예요. 종양을 더 많이 줄이는 것이 꼭 필요한 일부 환자에게는 다른 항암제를 병용하지만, 부작용이 더 크고 병용이 항상 생존기간을 늘리는 것은 아니에요. 아형과 이전 치료에 따라 다른 약이나 표적치료를 검토합니다. 국내 허가·급여도 함께 확인하세요.",
       "category": "treatment",
       "review": {
         "id": "faq.sarcoma.039",
-        "version": "20261106-faq-upgrade-v1",
+        "version": "20261108-medical-safety-ai-pass-v2",
         "responsibleRole": "추가 전문분야: 육종",
         "clinicalApproval": "pending",
-        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "aiCheck": "ai-medical-safety-prechecked-20261108",
         "sourceRefs": [
-          "nci-sarcoma"
+          "nci-sarcoma",
+          "nci-sarcoma-advanced"
         ],
         "scope": "AI 초안(2026-11-06 편집 보강: 기존 12암종 FAQ 수준으로 설명·주의 신호·진료 질문 보강). 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
       }
@@ -951,16 +952,17 @@
     {
       "n": 56,
       "q": "면역치료는 모든 육종의 표준인가요?",
-      "a": "아니에요. 면역치료는 연부조직육종 전체의 표준 치료가 아니에요. 포상연부육종이나 일부 미분화 다형성 육종처럼 반응이 연구된 아형에서 고려하고, 상당수는 임상시험 안에서 써요. 면역 관련 부작용도 따져야 해요. 국내 허가·급여는 아형과 상황마다 달라요. 내 아형에서 면역치료 근거가 있는지, 임상시험이 있는지 물어보세요.",
+      "a": "모든 연부조직육종에 면역항암제가 표준인 것은 아니에요. 다만 포상연부육종(ASPS)은 예외로, 미국 FDA에서 절제가 불가능하거나 전이된 환자에게 아테졸리주맙(atezolizumab)을 승인했어요. 일부 다른 육종 아형에서도 면역치료 반응이 연구되고 있지만 효과와 근거 수준은 아형별로 달라요. 미국 승인 사실이 국내 허가·건강보험 급여를 뜻하지는 않으므로, 정확한 병리 아형과 국내 사용 가능 여부, 임상시험 선택지를 육종 전문팀에 확인하세요.",
       "category": "treatment",
       "review": {
         "id": "faq.sarcoma.056",
-        "version": "20261106-faq-upgrade-v1",
+        "version": "20261108-medical-safety-ai-pass-v2",
         "responsibleRole": "추가 전문분야: 육종",
         "clinicalApproval": "pending",
-        "aiCheck": "ai-editorial-draft-not-independently-reviewed",
+        "aiCheck": "ai-medical-safety-prechecked-20261108",
         "sourceRefs": [
-          "nci-sarcoma"
+          "nci-sarcoma",
+          "fda-asps-atezolizumab"
         ],
         "scope": "AI 초안(2026-11-06 편집 보강: 기존 12암종 FAQ 수준으로 설명·주의 신호·진료 질문 보강). 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
       }
@@ -1715,6 +1717,22 @@
     }
   ],
   "sources": {
+    "nci-sarcoma-advanced": {
+      "title": "Adult Soft Tissue Sarcoma Treatment (PDQ) — Health Professional Version",
+      "url": "https://www.cancer.gov/types/soft-tissue-sarcoma/hp/adult-soft-tissue-treatment-pdq",
+      "organization": "National Cancer Institute",
+      "scope": "진행성 연부조직육종 독소루비신 단독 및 병용의 선택 조건",
+      "evidenceType": "primary-official-medical-source",
+      "checkedAt": "2026-11-08"
+    },
+    "fda-asps-atezolizumab": {
+      "title": "FDA Approval — Atezolizumab for Alveolar Soft Part Sarcoma",
+      "url": "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-disco-burst-edition-fda-approvals-tecentriq-atezolizumab-unresectable-or-metastatic-alveolar",
+      "organization": "US Food and Drug Administration",
+      "scope": "절제 불가 또는 전이성 포상연부육종의 미국 승인 사례",
+      "evidenceType": "primary-official-medical-source",
+      "checkedAt": "2026-11-08"
+    },
     "nci-cam": {
       "title": "Complementary and Alternative Medicine",
       "url": "https://www.cancer.gov/about-cancer/treatment/cam",
