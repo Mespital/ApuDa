@@ -29,6 +29,44 @@ for (const file of dataFiles) {
   if (!Array.isArray(record.items) || record.items.length !== 100) throw new Error('Expected 100 questions for ' + record.slug);
   records.push(record);
 }
+
+// Search-intent summaries are editorial navigation aids, not medical advice.
+// Every topic below is represented by questions in the corresponding FAQ.
+const faqSeo = {
+  all: { topics: 'B·T세포 아형·유전자검사', summary: 'B세포형과 T세포형, BCR::ABL1 검사, 병기와 치료 과정에서 궁금한 점을 질문별로 정리했습니다.' },
+  aml: { topics: '골수검사·APL·유전자검사', summary: '진단에 필요한 혈액·골수검사, APL 구분과 유전자검사 결과를 어떻게 이해할지 살펴봅니다.' },
+  biliary: { topics: '황달·CT·ERCP 검사', summary: '황달과 위험 신호, 복부 CT·MRI, ERCP·MRCP 검사에 관한 질문을 모았습니다.' },
+  bladder: { topics: '혈뇨·방광내시경·병기', summary: '혈뇨, 방광내시경, 비근육침윤성과 근육침윤성 구분에 관한 질문을 확인할 수 있습니다.' },
+  brain: { topics: 'MRI·WHO 등급·분자진단', summary: 'MRI와 확진 과정, WHO 등급, IDH·1p/19q 등 분자검사에 관한 질문을 살펴봅니다.' },
+  breast: { topics: '초기 증상·유방촬영·초음파', summary: '유방의 변화, 유방촬영술과 초음파 검사, 진단 후 치료 준비에 관한 질문을 정리했습니다.' },
+  cervical: { topics: 'HPV·세포검사·치료', summary: '자궁경부세포검사와 HPV 검사, 증상과 치료 준비에 관한 자주 묻는 질문을 모았습니다.' },
+  cml: { topics: 'BCR::ABL1·골수검사·병기', summary: 'BCR::ABL1 유전자, 혈액·골수검사, 만성기와 가속기 등의 의미를 질문별로 정리했습니다.' },
+  colorectal: { topics: '분변잠혈·대장내시경·치료', summary: '배변 변화, 분변잠혈검사, 대장내시경과 치료 준비에서 자주 묻는 내용을 살펴봅니다.' },
+  cup: { topics: '원발 부위·병리 재검·면역염색', summary: '처음 발생한 장기를 찾는 과정, 병리 재검과 면역염색, 추가 검사의 필요성을 묻고 답합니다.' },
+  endometrial: { topics: '초음파·MMR·p53·POLE', summary: '자궁내막 초음파와 확진 과정, MMR·p53·POLE 검사, 유전 상담에 관한 질문을 정리했습니다.' },
+  esophageal: { topics: '삼킴곤란·내시경·병기', summary: '삼킴곤란, 내시경·CT·PET 검사, 조직형과 병기 해석에 관한 질문을 다룹니다.' },
+  hodgkin: { topics: '림프절 조직검사·B증상·병기', summary: '림프절 조직검사, B증상의 의미, 병기와 치료 과정에 관한 질문을 모았습니다.' },
+  kidney: { topics: '증상·복부 CT·MRI', summary: '신장암에서 살피는 증상, 복부 CT와 MRI 검사, 치료 준비에 관한 질문을 정리했습니다.' },
+  laryngeal: { topics: '쉰 목소리·성문암·병기', summary: '쉰 목소리, 성문암의 의미, 조직검사와 병기 해석에 관한 질문을 살펴봅니다.' },
+  liver: { topics: '간초음파·AFP·CT·MRI', summary: '간암 증상과 간초음파·AFP, CT·MRI 검사, 치료 준비에 관한 질문을 모았습니다.' },
+  lung: { topics: '초기 증상·저선량 CT·조직검사', summary: '폐암 증상, 저선량 흉부 CT와 조직검사, 진단 후 치료 준비에 관한 질문을 정리했습니다.' },
+  lymphoma: { topics: '림프절 조직검사·PET-CT·병기', summary: '림프절 조직검사, PET-CT, 병기와 치료 준비에 관한 질문을 살펴봅니다.' },
+  melanoma: { topics: '피부 병변·조직검사·병리', summary: '피부 점과 병변의 변화, 조직검사, 병리보고서의 두께와 궤양에 관한 질문을 모았습니다.' },
+  myeloma: { topics: 'MGUS·CRAB·골수검사', summary: 'MGUS와 무증상 골수종, CRAB·SLiM 기준, 골수검사에 관한 질문을 정리했습니다.' },
+  nasopharyngeal: { topics: 'EBV·목 멍울·조직검사', summary: 'EBV 검사, 목의 멍울과 비인두암 진단 과정에 관한 질문을 살펴봅니다.' },
+  oral: { topics: '입안 상처·조직검사·림프절', summary: '낫지 않는 입안 상처, 조직검사, 목 림프절 평가에 관한 질문을 정리했습니다.' },
+  ovarian: { topics: 'CA-125·초음파·유전검사', summary: 'CA-125 수치와 초음파·CT 검사, 유전성 암 검사 상담에 관한 질문을 모았습니다.' },
+  pancreas: { topics: '증상·췌장 CT·내시경초음파', summary: '췌장암 증상, 췌장 CT와 내시경초음파(EUS), 치료 준비에 관한 질문을 정리했습니다.' },
+  pcnsl: { topics: '뇌 MRI·조직검사·스테로이드', summary: '뇌 MRI와 조직검사, 진단 전 스테로이드 사용, 전신 평가에 관한 질문을 살펴봅니다.' },
+  prostate: { topics: 'PSA·전립선 MRI·조직검사', summary: 'PSA 수치와 전립선 MRI·조직검사, 치료 준비에 관한 질문을 모았습니다.' },
+  sarcoma: { topics: '멍울·MRI·조직검사', summary: '연부조직 멍울, MRI와 조직검사, 병리 재검에 관한 질문을 정리했습니다.' },
+  stomach: { topics: '증상·위내시경·조직검사', summary: '위암 증상, 위내시경과 조직검사, 진단 후 치료 준비에 관한 질문을 살펴봅니다.' },
+  testicular: { topics: 'AFP·β-hCG·LDH·병기', summary: '정상피종·비정상피종 구분, AFP·β-hCG·LDH 검사, 수술과 병기 평가를 묻고 답합니다.' },
+  thyroid: { topics: '결절·초음파·세침흡인검사', summary: '갑상선 결절, 초음파와 세침흡인검사(FNA), 치료 준비에 관한 질문을 정리했습니다.' },
+};
+if (Object.keys(faqSeo).length !== 30 || records.some((record) => !faqSeo[record.slug])) {
+  throw new Error('FAQ SEO topics must cover all 30 cancer types');
+}
 const nav = records.map((r) => '<a href="/library/faq/' + encodeURIComponent(r.slug) + '/">' + escapeHtml(r.name) + '</a>').join('');
 
 function sourceLinks(item, record) {
@@ -43,8 +81,10 @@ function sourceLinks(item, record) {
 function faqPage(record) {
   const book = books.get(record.slug);
   const url = canonical('/library/faq/' + record.slug + '/');
-  const title = record.name + ' FAQ 100문항 | 증상·검사·치료·생활 | ApuDa';
-  const description = record.name + ' 환자와 보호자를 위한 질문 100개. 증상·검사·치료와 부작용, 생활·진료 준비를 한곳에서 확인하세요. 실제 의료진의 최종 검토 전 참고용 자료입니다.';
+  const seo = faqSeo[record.slug];
+  const title = record.name + ' ' + seo.topics + ' FAQ 100문항 | ApuDa';
+  const description = record.name + ' 환자·보호자 FAQ 100문항. ' + seo.summary +
+    ' AI 사전검토 자료이며 전문의의 문항별 검토·승인 전입니다.';
   const breadcrumb = { '@context': 'https://schema.org', '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'ApuDa', item: origin + '/' },
@@ -88,7 +128,7 @@ small{display:block;font-size:12px;color:#627884}footer{padding-top:30px;color:#
 <main class="wrap"><div class="hero">
 <nav class="crumb" aria-label="현재 위치"><a href="/">ApuDa</a> › <a href="/library/first30/">암 진단 첫 30일</a> › ${escapeHtml(record.name)} FAQ</nav>
 <h1>${escapeHtml(record.name)} FAQ 100문항</h1>
-<p class="lead">환자·보호자가 자주 묻는 질문을 정리했습니다. 필요한 항목을 눌러 읽어보세요.</p>
+<p class="lead">${escapeHtml(seo.summary)} 필요한 질문을 눌러 답변과 참고자료를 읽어보세요.</p>
 <div class="notice">이 자료는 AI 사전검토를 거친 환자교육용 참고자료이며 실제 전문의의 문항별 임상 검토·승인이 완료되지 않았습니다. 국내 허가·급여 기준과 개인 상태에 따라 달라질 수 있으므로, 진단·치료·약물 변경은 반드시 담당 의료진과 상의하세요.</div>
 <p><a href="/library/faq/?cancer=${encodeURIComponent(record.slug)}">검색·주제별 필터가 있는 FAQ 화면으로 이동</a> ·
 <a href="/library/first30/books/${book.number}.html">${escapeHtml(record.name)} 첫 30일 무료 안내서</a></p>
