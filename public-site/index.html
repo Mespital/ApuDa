@@ -6,18 +6,19 @@
      like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=b04d0899-7698-4262-b7e8-352ee4b2842a
      Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>ApuDa — 환자와 보호자를 위한 암 정보 길잡이</title>
+<title>아프다 ApuDa | 암 정보·진단 첫 30일·암환자 카페</title>
 <link rel="icon" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="description" content="암검진·암 신호 확인부터 진단 첫 30일, 치료·부작용 관리와 커뮤니티까지 한 번에 연결합니다.">
+<meta name="description" content="아프다(ApuDa, 아프지만 다행이다)는 암 환자와 보호자를 위한 정보 길잡이입니다. 암종별 진단 첫 30일 30권, 암 FAQ 3,000문항, 치료 준비와 아프다 카페를 연결합니다.">
 <link rel="canonical" href="https://apuda.app/">
 <meta property="og:url" content="https://apuda.app/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="ApuDa — 환자와 보호자를 돕습니다.">
-<meta property="og:description" content="암검진·암 신호 확인부터 첫 30일, 치료·지원까지 한 번에.">
+<meta property="og:site_name" content="아프다 ApuDa">
+<meta property="og:title" content="아프다 ApuDa | 암 정보와 환자·보호자 길잡이">
+<meta property="og:description" content="아프지만, 다행이다. 암 진단 첫 30일 안내서·FAQ·환자 카페·패밀리 서비스.">
 <meta property="og:image" content="og.jpg">
 <meta name="theme-color" content="#F4F8FF">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"ApuDa 아프다","url":"https://apuda.app/","description":"암 환자와 보호자를 위한 무료 환자교육 및 지원 정보 서비스"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://apuda.app/#website","url":"https://apuda.app/","name":"ApuDa","alternateName":["아프다","아프지만, 다행이다","아프지만다행이다","APUDA"],"inLanguage":"ko"},{"@type":"Organization","@id":"https://apuda.app/#organization","name":"ApuDa","alternateName":["아프다","아프지만, 다행이다"],"url":"https://apuda.app/","description":"암 환자와 보호자를 위한 무료 환자교육 및 지원 정보 서비스","sameAs":["https://cafe.naver.com/2ndpart"]}]}</script>
 <style>
   :root{
     --blue:#246BFE; --blue-700:#1855D8; --navy:#102A43; --ink:#10243A;
@@ -653,6 +654,12 @@
     </div>
     <nav class="guide-services" id="guideServices" aria-label="층별 서비스 바로가기"></nav>
     <button type="button" class="guide-family qs-fam">일상·반려동물·축산 건강은 <b>ApuDa 패밀리 ›</b></button>
+    <nav class="brand-links" aria-label="아프다 브랜드 주요 페이지">
+      <a href="/library/first30/">암 진단 첫 30일</a>
+      <a href="/library/faq/">암종별 FAQ</a>
+      <a href="/community/">아프다 카페</a>
+      <a href="/family/">패밀리 사이트</a>
+    </nav>
   </aside>
   <div id="frame">
     <a id="emergencyDoorLink" href="/emergency/" aria-label="비상구 · 응급실 찾기" title="응급실 찾기" onclick="event.stopPropagation()"></a>
@@ -743,7 +750,7 @@
           <span class="go">써보다 열기 &rsaquo;</span></span>
       </a>
     </div>
-    <p class="foot">ApuDa.Family 도구는 모두 무료이며 로그인 없이 사용할 수 있습니다. My ApuDa 개인 건강기록은 ApuDa ID 로그인이 필요합니다. 각 라인은 정보 제공을 목적으로 하며 진료를 대신하지 않습니다.</p>
+    <p class="foot"><a href="/family/">ApuDa 패밀리 전체 안내</a> · <a href="/community/">아프다 카페 안내</a><br>ApuDa.Family 도구는 모두 무료이며 로그인 없이 사용할 수 있습니다. My ApuDa 개인 건강기록은 ApuDa ID 로그인이 필요합니다. 각 라인은 정보 제공을 목적으로 하며 진료를 대신하지 않습니다.</p>
   </div>
 </div>
 
@@ -1543,6 +1550,9 @@
   .guide-family{margin-top:12px;align-self:flex-start;color:var(--muted);font-size:12.5px;font-weight:700;text-align:left}
   .guide-family b{color:var(--blue)}
   .guide-family:hover b{text-decoration:underline}
+  .brand-links{display:flex;align-self:flex-start;gap:7px;flex-wrap:wrap;margin-top:7px}
+  .brand-links a{color:#245a93;font-size:11px;line-height:1.5;font-weight:800;text-decoration:underline;text-underline-offset:3px}
+  .brand-links a:hover{color:var(--blue)}
   #qsSheet{position:fixed;z-index:85;left:0;right:0;bottom:0;padding:0 10px calc(10px + env(safe-area-inset-bottom))}
   #qsSheet[hidden]{display:none}
   #qsSheet .qs-card{position:relative;max-width:520px;margin:0 auto;padding:18px 16px 12px;border:1px solid var(--line);border-radius:22px;

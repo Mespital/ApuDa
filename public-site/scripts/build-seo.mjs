@@ -155,7 +155,8 @@ for (const [slug, book] of books) {
 // Restrict the sitemap to publicly accessible content. Private/account endpoints
 // and /nonsul/ (which has X-Robots-Tag: noindex) are intentionally excluded.
 const paths = [
-  '/', '/about/', '/risk/', '/checkup/', '/emergency/', '/hospital-information/',
+  '/', '/about/', '/community/', '/family/', '/care/', '/pet/', '/farm/',
+  '/risk/', '/checkup/', '/emergency/', '/hospital-information/',
   '/library/first30/', '/library/faq/', '/library/review/',
   '/library/mini/', '/library/treatment-map/', '/library/drugs/',
   '/library/biomarkers/', '/library/regimens/', '/support/', '/support/v4/',

@@ -7,7 +7,7 @@ const read = (path) => readFile(join(root, path), 'utf8');
 const assert = (condition, message) => { if (!condition) throw new Error(message); };
 const sitemap = await read('sitemap.xml');
 const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-assert(urls.length === 80, 'Expected exactly 80 sitemap URLs');
+assert(urls.length === 85, 'Expected exactly 85 sitemap URLs');
 assert(new Set(urls).size === urls.length, 'Sitemap has duplicate URLs');
 assert(urls.every((url) => url.startsWith('https://apuda.app/')), 'Sitemap has an external URL');
 
@@ -15,6 +15,22 @@ const robots = await read('robots.txt');
 assert(robots.includes('Sitemap: https://apuda.app/sitemap.xml'), 'Root sitemap missing from robots');
 assert(robots.includes('Sitemap: https://apuda.app/farm/sitemap.xml'), 'Farm sitemap was removed');
 assert(!urls.some((url) => url.includes('/nonsul/') || url.includes('/api/')), 'Private or noindex route in sitemap');
+for (const path of ['/community/', '/family/', '/care/', '/pet/', '/farm/']) {
+  assert(urls.includes('https://apuda.app' + path), 'Family or community URL missing from sitemap: ' + path);
+}
+const homepage = await read('index.html');
+assert(homepage.includes('"@type":"WebSite"') && homepage.includes('"alternateName"'), 'Homepage site-name structured data missing');
+assert(homepage.includes('href="/community/"') && homepage.includes('href="/family/"'), 'Homepage family or community link missing');
+for (const path of ['community', 'family']) {
+  const html = await read(path + '/index.html');
+  assert(html.includes('<link rel="canonical" href="https://apuda.app/' + path + '/">'), 'Canonical missing: ' + path);
+}
+const community = await read('community/index.html');
+const family = await read('family/index.html');
+assert(community.includes('href="https://cafe.naver.com/2ndpart"'), 'Naver cafe link missing');
+for (const path of ['/care/', '/pet/', '/farm/']) {
+  assert(family.includes('href="' + path + '"'), 'Family site link missing: ' + path);
+}
 
 for (let n = 1; n <= 30; n++) {
   const number = String(n).padStart(2, '0');
@@ -42,4 +58,4 @@ for (const file of files) {
   questions += count;
 }
 assert(questions === 3000, 'Expected 3,000 original FAQ items');
-console.log('SEO verified: 80 URLs, 30 books, 30 static FAQ pages, 3,000 questions.');
+console.log('SEO verified: 85 URLs, 30 books, 30 static FAQ pages, 3,000 questions, brand and family pages.');
