@@ -55,6 +55,8 @@ const faqDir = join(root, 'library/faq/data');
 const files = (await readdir(faqDir)).filter((name) => name.endsWith('.json'));
 assert(files.length === 30, 'Expected 30 FAQ data files');
 let questions = 0;
+const faqTitles = new Set();
+const faqDescriptions = new Set();
 for (const file of files) {
   const record = JSON.parse(await read('library/faq/data/' + file));
   const url = 'https://apuda.app/library/faq/' + record.slug + '/';
@@ -64,6 +66,17 @@ for (const file of files) {
   assert(urls.includes(url), 'FAQ not in sitemap: ' + record.slug);
   assert(html.includes('<link rel="canonical" href="' + url + '">'), 'FAQ canonical missing: ' + record.slug);
   assert(html.includes('문항별 임상 검토·승인이 완료되지 않았습니다'), 'Clinical disclaimer missing: ' + record.slug);
+  const title = html.match(/<title>([^<]+)<\/title>/)?.[1];
+  const description = html.match(/<meta name="description" content="([^"]+)">/)?.[1];
+  const ogTitle = html.match(/<meta property="og:title" content="([^"]+)">/)?.[1];
+  const ogDescription = html.match(/<meta property="og:description" content="([^"]+)">/)?.[1];
+  assert(title?.startsWith(record.name + ' ') && title.includes('FAQ 100문항'), 'FAQ title not specific: ' + record.slug);
+  assert(description?.startsWith(record.name + ' ') && description.length >= 85 && description.length <= 220,
+    'FAQ description missing or too short/long: ' + record.slug);
+  assert(title === ogTitle && description === ogDescription, 'FAQ social metadata inconsistent: ' + record.slug);
+  assert(!faqTitles.has(title) && !faqDescriptions.has(description), 'Duplicate FAQ SEO metadata: ' + record.slug);
+  faqTitles.add(title);
+  faqDescriptions.add(description);
   questions += count;
 }
 assert(questions === 3000, 'Expected 3,000 original FAQ items');
