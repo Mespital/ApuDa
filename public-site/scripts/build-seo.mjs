@@ -133,6 +133,14 @@ for (const [slug, book] of books) {
   const file = join(booksDir, book.number + '.html');
   let html = await readFile(file, 'utf8');
   html = html.replace(/<!-- APUDA SEO START -->[\s\S]*?<!-- APUDA SEO END -->\s*/g, '');
+  // Keep the related FAQ discoverable in both directions without changing the
+  // printable medical guide. The existing .site-nav is hidden in print/PDF.
+  html = html.replace(/<a class="apuda-faq-shortcut" href="[^"]*">[^<]*<\/a>/g, '');
+  const siteNav = '<div class="site-nav">';
+  if (!html.includes(siteNav)) throw new Error('Missing printable book navigation in ' + file);
+  const faqShortcut = '<a class="apuda-faq-shortcut" href="/library/faq/' +
+    encodeURIComponent(slug) + '/">' + escapeHtml(book.name) + ' FAQ 100문항 보기 →</a>';
+  html = html.replace(siteNav, siteNav + faqShortcut);
   const title = book.name + ' 진단 후 첫 30일 | 검사·치료 준비·진료 질문 | ApuDa';
   const focusMatch = html.match(/지금 가장 중요한 한 가지<\/h3><p>([^<]+)<\/p>/);
   const focus = focusMatch ? focusMatch[1].trim() : '';
@@ -146,7 +154,11 @@ for (const [slug, book] of books) {
     '<link rel="canonical" href="' + url + '">\n' +
     '<meta property="og:type" content="article"><meta property="og:title" content="' + escapeHtml(title) + '">\n' +
     '<meta property="og:description" content="' + escapeHtml(description) + '"><meta property="og:url" content="' + url + '">\n' +
-    '<script type="application/ld+json">' + jsonLd(data) + '</script>\n' + markerEnd;
+    '<script type="application/ld+json">' + jsonLd(data) + '</script>\n' +
+    '<style>.site-nav .apuda-faq-shortcut{display:inline-flex;align-items:center;justify-content:center;' +
+    'min-height:44px;padding:9px 14px;border:1px solid #83cbd2;border-radius:11px;' +
+    'background:#166c7e;color:#fff;font-weight:800;text-align:center}' +
+    '@media(max-width:600px){.site-nav .apuda-faq-shortcut{flex:1}}</style>\n' + markerEnd;
   if (!html.match(/<title>[\s\S]*?<\/title>/)) throw new Error('Missing title in ' + file);
   html = html.replace(/<title>[\s\S]*?<\/title>/, '<title>' + escapeHtml(title) + '</title>\n' + tags);
   await writeFile(file, html, 'utf8');
