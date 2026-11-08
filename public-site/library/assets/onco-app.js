@@ -181,7 +181,7 @@ function pageMarkers(){
     var drugs=m.drugs.map(function(x){return DRUG[x]}).filter(Boolean);
     $('#dview').innerHTML='<div class="detail"><div><section class="panel"><div class="d-head"><div><span class="mk-kind '+m.kind+'">'+KIND[m.kind]+'</span><h2>'+esc(m.name)+'</h2><div class="en">'+esc(m.full)+'</div></div><button class="closebtn" id="dclose">← 목록으로</button></div>'+
       '<div class="sec"><h4>① 어떤 암에서 검사하나요?</h4><div class="tags">'+cancerTags(m.cancers,true)+'</div></div>'+
-      '<div class="sec"><h4>② 어떻게 검사하나요?</h4><p>'+esc(m.test)+'</p></div>'+
+      '<div class="sec"><h4>② 어떻게 검사하나요?</h4><p>'+esc(be&&be.test?be.test:m.test)+'</p></div>'+
       (showDraft?draftBox():'')+'<div class="sec"><h4>③ 왜 검사하나요?'+(be?' ('+esc(C[ctx].name)+')':'')+' <span class="ev guide">가이드라인</span></h4><p>'+esc(be?be.why:m.why)+'</p></div>'+
       '<div class="sec meaning"><b>④ 결과는 치료와 어떻게 연결되나요?</b><p>'+esc(be?be.result:m.result)+'</p></div>'+byList(m,ctx,'why')+
       '<div class="sec"><h4>⑤ 관련 약물</h4>'+(drugs.length?'<div class="grid" style="margin-top:0">'+drugs.map(function(d){return '<a class="card" href="/library/drugs/?id='+d.id+'">'+typeBadge(d.type)+'<div><h3>'+esc(d.ko)+'</h3><span class="en">'+esc(d.en)+'</span></div></a>'}).join('')+'</div>':'<p style="color:var(--muted)">이 지표는 약을 고르는 기준이라기보다 진단·추적에 쓰입니다.</p>')+'</div>'+
