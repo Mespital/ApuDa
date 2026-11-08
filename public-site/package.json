@@ -2,6 +2,10 @@
   "name": "apuda-public-site",
   "version": "1.1.0",
   "private": true,
+  "scripts": {
+    "seo:build": "node scripts/build-seo.mjs",
+    "seo:check": "node scripts/check-seo.mjs"
+  },
   "engines": {
     "node": ">=22.13.0"
   },
