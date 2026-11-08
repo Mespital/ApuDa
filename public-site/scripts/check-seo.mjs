@@ -21,6 +21,10 @@ for (const path of ['/community/', '/family/', '/care/', '/pet/', '/farm/']) {
 const homepage = await read('index.html');
 assert(homepage.includes('"@type":"WebSite"') && homepage.includes('"alternateName"'), 'Homepage site-name structured data missing');
 assert(homepage.includes('href="/community/"') && homepage.includes('href="/family/"'), 'Homepage family or community link missing');
+const catalog = await read('library/first30/index.html');
+const bookSlugs = new Map([...catalog.matchAll(/data-slug="([^"]+)" data-name="[^"]+" href="\/library\/first30\/books\/(\d{2})\.html"/g)]
+  .map(([, slug, number]) => [number, slug]));
+assert(bookSlugs.size === 30, 'Expected 30 cancer-to-book mappings');
 for (const path of ['community', 'family']) {
   const html = await read(path + '/index.html');
   assert(html.includes('<link rel="canonical" href="https://apuda.app/' + path + '/">'), 'Canonical missing: ' + path);
@@ -40,6 +44,11 @@ for (let n = 1; n <= 30; n++) {
   assert(html.includes('<link rel="canonical" href="' + url + '">'), 'Book canonical missing: ' + number);
   assert(html.includes('<meta name="description"'), 'Book description missing: ' + number);
   assert(html.includes('실제 전문의 검토'), 'Medical review notice removed: ' + number);
+  const slug = bookSlugs.get(number);
+  assert(html.includes('class="apuda-faq-shortcut" href="/library/faq/' + slug + '/"'),
+    'Related FAQ shortcut missing or mismatched: ' + number);
+  assert(html.includes('.site-nav,.site-review{display:none!important}'),
+    'Print/PDF navigation hiding changed: ' + number);
 }
 
 const faqDir = join(root, 'library/faq/data');
