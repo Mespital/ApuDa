@@ -13,6 +13,10 @@ function qs(){return new URLSearchParams(location.search)}
 function setQS(obj,push){var p=qs();Object.keys(obj).forEach(function(k){obj[k]?p.set(k,obj[k]):p.delete(k)});var u=location.pathname+(p.toString()?'?'+p:'');(push?history.pushState:history.replaceState).call(history,null,'',u)}
 function norm(s){return String(s||'').toLowerCase().replace(/\s+/g,'')}
 function typeBadge(t){var T=O.TYPES[t];return '<span class="type" style="background:'+T.color+'">'+esc(T.label)+'</span>'}
+function ctxC(){var c=qs().get('cancer');return C[c]?c:''}
+function draftBox(){return '<p class="draft-note">⚠️ '+esc(O.DRAFT_NOTE||'')+'</p>'}
+function isNewOnly(x){return x.cancers.length&&x.cancers.every(function(c){return C[c]&&C[c].draft})}
+function byList(x,ctx,f){if(!x.by)return '';var ks=Object.keys(x.by).sort(function(a,b){return (a===ctx?-1:0)-(b===ctx?-1:0)});return '<div class="sec"><h4>암종별 쓰임 <span class="ev">AI 초안·검토 대기</span></h4>'+ks.map(function(c){var e=x.by[c];return '<div class="bycan'+(c===ctx?' on':'')+'"><b>'+esc(C[c].name)+'</b><p>'+esc(e[f]||'')+'</p>'+(e.note?'<p class="bynote">'+esc(e.note)+'</p>':'')+(e.result&&f!=='result'?'<p class="bynote">결과 의미: '+esc(e.result)+'</p>':'')+'</div>'}).join('')+'</div>'}
 function cancerTags(list,link){return list.map(function(c){return link?'<a class="tag" href="/library/treatment-map/?cancer='+c+'">'+esc(C[c].name)+'</a>':'<span class="tag">'+esc(C[c].name)+'</span>'}).join('')}
 function markerTags(list,link){return list.map(function(m){var x=MK[m];if(!x)return '';return link?'<a class="tag m" href="/library/biomarkers/?id='+encodeURIComponent(m)+'">'+esc(x.name)+'</a>':'<span class="tag m">'+esc(x.name)+'</span>'}).join('')}
 function fmtDate(s){if(!s)return '';var d=new Date(s);if(isNaN(d))return String(s).slice(0,10);return d.getFullYear()+'.'+String(d.getMonth()+1).padStart(2,'0')+'.'+String(d.getDate()).padStart(2,'0')}
@@ -103,20 +107,21 @@ function pageDrugs(){
       if(!q)return true;
       return norm([d.ko,d.en,d.brand,d.moa,d.markers.map(function(m){return MK[m]?MK[m].name:m}).join(' '),d.match.join(' ')].join(' ')).indexOf(q)>=0;
     });
+    if(st.cancer){arr=arr.slice().sort(function(a,b){function sc(d){return (d.by&&d.by[st.cancer])||isNewOnly(d)?0:1}return sc(a)-sc(b)})}
     $('#cnt').textContent=arr.length+'개';
     $('#grid').innerHTML=arr.length?arr.map(function(d){
       return '<button class="card" data-id="'+d.id+'">'+typeBadge(d.type)+'<div><h3>'+esc(d.ko)+'</h3><span class="en">'+esc(d.en)+'</span></div>'+
-        ''+'<p>'+esc(d.moa)+'</p><div class="tags">'+cancerTags(d.cancers)+markerTags(d.markers)+'</div></button>';
+        ''+'<p>'+esc(d.moa)+'</p>'+(st.cancer&&d.by&&d.by[st.cancer]?'<p class="byline"><b>'+esc(C[st.cancer].name)+'에서:</b> '+esc(d.by[st.cancer].use)+'</p>':'')+'<div class="tags">'+cancerTags(d.cancers)+markerTags(d.markers)+'</div></button>';
     }).join(''):'<div class="empty">조건에 맞는 약물이 없습니다. 검색어를 줄이거나 필터를 해제해 보세요.</div>';
   }
   $('#grid').onclick=function(e){var b=e.target.closest('.card');if(!b)return;setQS({id:b.dataset.id},true);route()};
   function detail(d){
-    var dv=$('#dview');
+    var dv=$('#dview'), ctx=ctxC(), be=ctx&&d.by&&d.by[ctx], showDraft=(ctx&&C[ctx].draft)||isNewOnly(d);
     dv.innerHTML='<div class="detail"><div><section class="panel"><div class="d-head"><div>'+typeBadge(d.type)+'<h2>'+esc(d.ko)+'</h2><div class="en">'+esc(d.en)+''+'</div></div><button class="closebtn" id="dclose">← 목록으로</button></div>'+
      '<div class="sec"><h4>기전 <span class="ev">허가사항 요약</span></h4><p>'+esc(d.moa)+'</p><p style="color:var(--muted);font-size:12.5px;margin-top:4px">'+esc(O.TYPES[d.type].label)+' — '+esc(O.TYPES[d.type].desc)+'</p></div>'+
      '<div class="sec"><h4>관련 암종</h4><div class="tags">'+cancerTags(d.cancers,true)+'</div></div>'+
      (d.markers.length?'<div class="sec"><h4>주요 바이오마커</h4><div class="tags">'+markerTags(d.markers,true)+'</div></div>':'')+
-     '<div class="sec"><h4>주로 쓰이는 상황 <span class="ev guide">가이드라인</span></h4><p>'+esc(d.use)+'</p></div>'+
+     (showDraft?draftBox():'')+(be?'<div class="sec"><h4>'+esc(C[ctx].name)+'에서 쓰이는 상황</h4><p>'+esc(be.use)+'</p>'+(be.note?'<p class="bynote">'+esc(be.note)+'</p>':'')+'</div>':'')+'<div class="sec"><h4>'+(be?'다른 암종에서 주로 쓰이는 상황':'주로 쓰이는 상황')+' <span class="ev guide">가이드라인</span></h4><p>'+esc(d.use)+'</p></div>'+byList(d,ctx,'use')+
      '<div class="sec"><h4>흔히 알려진 부작용</h4><ul>'+d.se.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul></div>'+
      '<div class="sec meaning"><b>환자에게 의미</b><p>'+esc(d.note||'같은 약이라도 암종·병기·바이오마커·이전 치료에 따라 사용할 수 있는 조건이 다릅니다.')+'</p></div>'+
      '</section><section class="panel"><div class="sec" style="margin-top:0"><h4>최근 뉴스 <span class="ev press">언론보도</span></h4><div id="dnews"><p style="color:var(--muted);font-size:12.5px">불러오는 중…</p></div></div></section></div>'+
@@ -168,19 +173,20 @@ function pageMarkers(){
     document.querySelectorAll('#cchips .chip').forEach(function(b){b.classList.toggle('on',b.dataset.c===st.cancer)});
     document.querySelectorAll('#kchips .chip').forEach(function(b){b.classList.toggle('on',b.dataset.k===st.kind)});
     var arr=O.MARKERS.filter(function(m){return (!st.cancer||m.cancers.indexOf(st.cancer)>=0)&&(!st.kind||m.kind===st.kind)});
-    $('#grid').innerHTML=arr.map(function(m){return '<button class="card" data-id="'+esc(m.id)+'"><span class="mk-kind '+m.kind+'">'+KIND[m.kind]+'</span><div><h3>'+esc(m.name)+'</h3><span class="en">'+esc(m.full)+'</span></div><p>'+esc(m.why.split('. ')[0].replace(/\.$/,''))+'.</p><div class="tags">'+cancerTags(m.cancers)+'</div></button>'}).join('')||'<div class="empty">해당 조건의 바이오마커가 없습니다.</div>';
+    $('#grid').innerHTML=arr.map(function(m){return '<button class="card" data-id="'+esc(m.id)+'"><span class="mk-kind '+m.kind+'">'+KIND[m.kind]+'</span><div><h3>'+esc(m.name)+'</h3><span class="en">'+esc(m.full)+'</span></div><p>'+esc(((st.cancer&&m.by&&m.by[st.cancer])?m.by[st.cancer].why:m.why).split('. ')[0].replace(/\.$/,''))+'.</p><div class="tags">'+cancerTags(m.cancers)+'</div></button>'}).join('')||'<div class="empty">해당 조건의 바이오마커가 없습니다.</div>';
   }
   $('#grid').onclick=function(e){var b=e.target.closest('.card');if(!b)return;setQS({id:b.dataset.id},true);route()};
   function detail(m){
+    var ctx=ctxC(), be=ctx&&m.by&&m.by[ctx], showDraft=(ctx&&C[ctx].draft)||isNewOnly(m);
     var drugs=m.drugs.map(function(x){return DRUG[x]}).filter(Boolean);
     $('#dview').innerHTML='<div class="detail"><div><section class="panel"><div class="d-head"><div><span class="mk-kind '+m.kind+'">'+KIND[m.kind]+'</span><h2>'+esc(m.name)+'</h2><div class="en">'+esc(m.full)+'</div></div><button class="closebtn" id="dclose">← 목록으로</button></div>'+
       '<div class="sec"><h4>① 어떤 암에서 검사하나요?</h4><div class="tags">'+cancerTags(m.cancers,true)+'</div></div>'+
       '<div class="sec"><h4>② 어떻게 검사하나요?</h4><p>'+esc(m.test)+'</p></div>'+
-      '<div class="sec"><h4>③ 왜 검사하나요? <span class="ev guide">가이드라인</span></h4><p>'+esc(m.why)+'</p></div>'+
-      '<div class="sec meaning"><b>④ 결과는 치료와 어떻게 연결되나요?</b><p>'+esc(m.result)+'</p></div>'+
+      (showDraft?draftBox():'')+'<div class="sec"><h4>③ 왜 검사하나요?'+(be?' ('+esc(C[ctx].name)+')':'')+' <span class="ev guide">가이드라인</span></h4><p>'+esc(be?be.why:m.why)+'</p></div>'+
+      '<div class="sec meaning"><b>④ 결과는 치료와 어떻게 연결되나요?</b><p>'+esc(be?be.result:m.result)+'</p></div>'+byList(m,ctx,'why')+
       '<div class="sec"><h4>⑤ 관련 약물</h4>'+(drugs.length?'<div class="grid" style="margin-top:0">'+drugs.map(function(d){return '<a class="card" href="/library/drugs/?id='+d.id+'">'+typeBadge(d.type)+'<div><h3>'+esc(d.ko)+'</h3><span class="en">'+esc(d.en)+'</span></div></a>'}).join('')+'</div>':'<p style="color:var(--muted)">이 지표는 약을 고르는 기준이라기보다 진단·추적에 쓰입니다.</p>')+'</div>'+
       '</section><section class="panel"><div class="sec" style="margin-top:0"><h4>⑥ 최근 뉴스 <span class="ev press">언론보도</span></h4><div id="dnews"><p style="color:var(--muted);font-size:12.5px">불러오는 중…</p></div></div></section></div>'+
-      '<aside class="side-sticky"><section class="panel"><div class="sec" style="margin-top:0"><h4>진료실에서 이렇게 물어보세요</h4><ol class="qlist"><li>'+esc(m.q)+'</li><li>검사 결과지는 사본으로 받을 수 있나요?</li><li>결과가 나오기 전에 치료를 시작해도 되나요?</li></ol></div>'+
+      '<aside class="side-sticky"><section class="panel"><div class="sec" style="margin-top:0"><h4>진료실에서 이렇게 물어보세요</h4><ol class="qlist"><li>'+esc(be&&be.q?be.q:m.q)+'</li><li>검사 결과지는 사본으로 받을 수 있나요?</li><li>결과가 나오기 전에 치료를 시작해도 되나요?</li></ol></div>'+
       '<div class="sec"><h4>암종별 치료결정 지도에서 보기</h4><div class="mini-links">'+m.cancers.map(function(c){return '<a href="/library/treatment-map/?cancer='+c+'">🗺️ '+esc(C[c].name)+' 치료결정 지도<i>→</i></a>'}).join('')+'</div></div></section></aside></div>';
     $('#dclose').onclick=function(){setQS({id:''},true);route()};
     var keys=[m.name.split(/[\s\/·]/)[0],m.id].concat(m.id==='PDL1'?['PD-L1']:[]).concat(m.id==='MSI'?['MSI-H','dMMR']:[]).concat(m.id==='CLDN18'?['클라우딘','CLDN18']:[]).filter(function(k){return k&&k.length>=3});
@@ -199,22 +205,23 @@ function pageMap(){
   root.innerHTML='<section class="hero"><div><span class="kicker">ApuDa TREATMENT DECISION MAP</span><h1>왜 사람마다 치료가 다를까요?</h1><p>같은 암이라도 <b>종류 → 병기 → 수술 가능성 → 바이오마커 → 이전 치료</b>에 따라 치료의 길이 갈립니다. 암종을 고르면 치료가 결정되는 순서를 한눈에 보여 드립니다.</p>'+
    '<div class="principle">⚖️ <span><b>ApuDa는 “이 약을 쓰세요”라고 결정하지 않습니다.</b> 내 치료가 왜 그렇게 정해졌는지 이해하고, 진료실에서 더 좋은 질문을 하도록 돕습니다.</span></div></div>'+
    '<div class="hero-stats"><div><b>'+ORDER.length+'</b><small>암종</small></div><div><b>단계별</b><small>결정 흐름</small></div></div></section>'+
-   '<div class="cancer-tabs" id="tabs">'+ORDER.map(function(c){return '<button class="ctab" data-c="'+c+'"><i style="--cover:url(\''+coverOf(c)+'\')"></i><span>'+esc(C[c].name)+'</span></button>'}).join('')+'</div><div id="map"></div>';
+   (O.GROUPS?'<label class="pick">내 암 고르기 <select id="pick" aria-label="암종 선택">'+O.GROUPS.map(function(G){return '<optgroup label="'+esc(G[0])+'">'+G[1].filter(function(c){return C[c]}).map(function(c){return '<option value="'+c+'">'+esc(C[c].name)+'</option>'}).join('')+'</optgroup>'}).join('')+'</select></label>':'')+'<div class="cancer-tabs" id="tabs">'+ORDER.map(function(c){return '<button class="ctab" data-c="'+c+'"><i style="--cover:url(\''+coverOf(c)+'\')"></i><span>'+esc(C[c].name)+'</span></button>'}).join('')+'</div><div id="map"></div>';
   $('#tabs').onclick=function(e){var b=e.target.closest('.ctab');if(!b)return;cur=b.dataset.c;setQS({cancer:cur},true);draw(true)};
+  if($('#pick'))$('#pick').onchange=function(){cur=this.value;setQS({cancer:cur},true);draw(true)};
   function draw(scroll){
     var M=O.MAPS[cur], name=C[cur].name;
-    document.querySelectorAll('.ctab').forEach(function(b){b.classList.toggle('on',b.dataset.c===cur)});
+    document.querySelectorAll('.ctab').forEach(function(b){b.classList.toggle('on',b.dataset.c===cur)});if($('#pick'))$('#pick').value=cur;
     var on=document.querySelector('.ctab.on'); if(on&&on.scrollIntoView&&matchMedia('(max-width:640px)').matches) on.scrollIntoView({block:'nearest',inline:'center'});
     var mks=O.MARKERS.filter(function(m){return m.cancers.indexOf(cur)>=0});
     var drugs=O.DRUGS.filter(function(d){return d.cancers.indexOf(cur)>=0});
     var byType={};drugs.forEach(function(d){(byType[d.type]=byType[d.type]||[]).push(d)});
-    $('#map').innerHTML='<div class="map-wrap"><section class="panel"><span class="kicker">'+esc(name)+' 치료결정 지도 · Vol. '+C[cur].vol+'</span>'+(C[cur].draft?'<p class="draft-note">🩺 '+esc(O.DRAFT_NOTE)+'</p>':'')+'<p class="lead">'+esc(M.lead)+'</p>'+
+    $('#map').innerHTML='<div class="map-wrap"><section class="panel"><span class="kicker">'+esc(name)+' 치료결정 지도 · Vol. '+C[cur].vol+'</span>'+(C[cur].draft?draftBox():'')+(window.APUDA_EMERG?APUDA_EMERG.html(cur):'')+'<p class="lead">'+esc(M.lead)+'</p>'+
       '<div class="flowline" style="margin-top:14px">'+M.steps.map(function(s,i){return (i?'<em>→</em>':'')+'<span>'+esc(s.t)+'</span>'}).join('')+'</div>'+
       '<div class="flow">'+M.steps.map(function(s,i){return '<div class="step"><div class="node">'+(i+1)+'</div><div class="step-body"><small>STEP '+(i+1)+' · '+esc(s.t)+'</small><h3>'+esc(s.q)+'</h3><p>'+esc(s.d)+'</p>'+(s.m&&s.m.length?'<div class="tags">'+markerTags(s.m,true)+'</div>':'')+'</div></div>'}).join('')+'</div></section>'+
       '<aside class="side-sticky"><section class="panel"><div class="sec" style="margin-top:0"><h4>치료의 큰 축</h4><div class="axes">'+M.axes.map(function(a){return '<span>'+esc(a)+'</span>'}).join('')+'</div></div>'+
-      '<div class="sec"><h4>진료실 질문 3가지</h4><ol class="qlist">'+M.qs.map(function(q){return '<li>'+esc(q)+'</li>'}).join('')+'</ol></div>'+
+      '<div class="sec"><h4>진료실 질문 3가지</h4><ol class="qlist">'+M.qs.map(function(q){return '<li>'+esc(q)+'</li>'}).join('')+'</ol>'+(O.GOAL_Q?'<p class="goalq">함께 물어보면 좋은 질문: '+esc(O.GOAL_Q)+'</p>':'')+'</div>'+
       '<div class="sec"><h4>관련 바이오마커</h4><div class="tags">'+markerTags(mks.map(function(m){return m.id}),true)+'</div></div>'+
-      '<div class="sec"><h4>관련 약물 <a href="/library/drugs/?cancer='+cur+'" style="margin-left:auto;color:var(--blue);font-size:11px">Drug Hub에서 전체 보기 →</a></h4>'+Object.keys(O.TYPES).filter(function(t){return byType[t]}).map(function(t){return '<div class="drug-group"><b>'+esc(O.TYPES[t].label)+'</b><div class="tags">'+byType[t].map(function(d){return '<a class="tag" href="/library/drugs/?id='+d.id+'">'+esc(d.ko.replace(/\(.*\)/,''))+'</a>'}).join('')+'</div></div>'}).join('')+'</div>'+
+      '<div class="sec"><h4>관련 약물 <a href="/library/drugs/?cancer='+cur+'" style="margin-left:auto;color:var(--blue);font-size:11px">Drug Hub에서 전체 보기 →</a></h4>'+Object.keys(O.TYPES).filter(function(t){return byType[t]}).map(function(t){return '<div class="drug-group"><b>'+esc(O.TYPES[t].label)+'</b><div class="tags">'+byType[t].map(function(d){return '<a class="tag" href="/library/drugs/?cancer='+cur+'&id='+d.id+'">'+esc(d.ko.replace(/\(.*\)/,''))+'</a>'}).join('')+'</div></div>'}).join('')+'</div>'+
       '<div class="sec"><h4>'+esc(name)+' 더 읽기</h4><div class="mini-links"><a href="'+guideOf(cur).href+'">📖 '+esc(name)+' '+guideOf(cur).label+'<i>→</i></a><a href="/library/faq/?cancer='+cur+'">❓ '+esc(name)+' FAQ<i>→</i></a></div></div></section></aside></div>';
     document.title=name+' 치료결정 지도 | ApuDa';
     if(scroll){var t=$('#map').getBoundingClientRect().top+scrollY-130;scrollTo({top:t,behavior:'smooth'})}
