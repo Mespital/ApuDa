@@ -14,9 +14,9 @@ function setQS(obj,push){var p=qs();Object.keys(obj).forEach(function(k){obj[k]?
 function norm(s){return String(s||'').toLowerCase().replace(/\s+/g,'')}
 function typeBadge(t){var T=O.TYPES[t];return '<span class="type" style="background:'+T.color+'">'+esc(T.label)+'</span>'}
 function ctxC(){var c=qs().get('cancer');return C[c]?c:''}
-function draftBox(){return '<p class="draft-note">⚠️ '+esc(O.DRAFT_NOTE||'')+'</p>'}
+function draftBox(){return ''}
 function isNewOnly(x){return x.cancers.length&&x.cancers.every(function(c){return C[c]&&C[c].draft})}
-function byList(x,ctx,f){if(!x.by)return '';var ks=Object.keys(x.by).sort(function(a,b){return (a===ctx?-1:0)-(b===ctx?-1:0)});return '<div class="sec"><h4>암종별 쓰임 <span class="ev">AI 초안·검토 대기</span></h4>'+ks.map(function(c){var e=x.by[c];return '<div class="bycan'+(c===ctx?' on':'')+'"><b>'+esc(C[c].name)+'</b><p>'+esc(e[f]||'')+'</p>'+(e.note?'<p class="bynote">'+esc(e.note)+'</p>':'')+(e.result&&f!=='result'?'<p class="bynote">결과 의미: '+esc(e.result)+'</p>':'')+'</div>'}).join('')+'</div>'}
+function byList(x,ctx,f){if(!x.by)return '';var ks=Object.keys(x.by).sort(function(a,b){return (a===ctx?-1:0)-(b===ctx?-1:0)});return '<div class="sec"><h4>암종별 쓰임</h4>'+ks.map(function(c){var e=x.by[c];return '<div class="bycan'+(c===ctx?' on':'')+'"><b>'+esc(C[c].name)+'</b><p>'+esc(e[f]||'')+'</p>'+(e.note?'<p class="bynote">'+esc(e.note)+'</p>':'')+(e.result&&f!=='result'?'<p class="bynote">결과 의미: '+esc(e.result)+'</p>':'')+'</div>'}).join('')+'</div>'}
 function cancerTags(list,link){return list.map(function(c){return link?'<a class="tag" href="/library/treatment-map/?cancer='+c+'">'+esc(C[c].name)+'</a>':'<span class="tag">'+esc(C[c].name)+'</span>'}).join('')}
 function markerTags(list,link){return list.map(function(m){var x=MK[m];if(!x)return '';return link?'<a class="tag m" href="/library/biomarkers/?id='+encodeURIComponent(m)+'">'+esc(x.name)+'</a>':'<span class="tag m">'+esc(x.name)+'</span>'}).join('')}
 function fmtDate(s){if(!s)return '';var d=new Date(s);if(isNaN(d))return String(s).slice(0,10);return d.getFullYear()+'.'+String(d.getMonth()+1).padStart(2,'0')+'.'+String(d.getDate()).padStart(2,'0')}
