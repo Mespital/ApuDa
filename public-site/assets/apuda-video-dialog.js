@@ -2,7 +2,7 @@
   'use strict';
   if (global.ApuDaVideoDialog) return;
   var current = null, serial = 0, apiPromise = null, cache = {};
-  var names = {breast:'유방암',lung:'폐암',stomach:'위암',colorectal:'대장암',thyroid:'갑상선암',kidney:'신장암',prostate:'전립선암',pancreas:'췌장암',biliary:'담도암',liver:'간암',lymphoma:'림프종',cervical:'자궁경부암',ovarian:'난소암'};
+  var names = {breast:'유방암',lung:'폐암',stomach:'위암',colorectal:'대장암',thyroid:'갑상선암',kidney:'신장암',prostate:'전립선암',pancreas:'췌장암',biliary:'담도암',liver:'간암',lymphoma:'림프종',cervical:'자궁경부암',ovarian:'난소암',bladder:'방광암'};
   function el(tag, cls, text) { var n=document.createElement(tag); if(cls)n.className=cls; if(text!=null)n.textContent=text; return n; }
   function link(label, href, cls) { var a=el('a',cls||'avd-resource',label);a.href=href;return a; }
   function event(opened) { global.dispatchEvent(new CustomEvent('apuda:video-state',{detail:{open:opened}})); }
@@ -57,19 +57,19 @@
     intro.appendChild(el('p','avd-muted','자막이 제공되는 영상은 CC 버튼에서 한국어 자막을 선택할 수 있어요. 아래 FAQ는 같은 암종의 글 자료이며 영상의 대본은 아니에요.'));
     intro.appendChild(link('영상 대신 글로 읽기',base+'faq/?cancer='+slug));
     session.resources.appendChild(intro);
-    var guide=global.ApuDaFirst30Catalog&&global.ApuDaFirst30Catalog.get(slug);var volume=Object.keys(names).indexOf(slug)+1;var guideHref=guide?guide.href:base+'first30/books/'+String(volume).padStart(2,'0')+'.html';
+    var guide=global.ApuDaFirst30Catalog&&global.ApuDaFirst30Catalog.get(slug);var hasMini=!!(guide&&guide.hasMini);var volume=Object.keys(names).indexOf(slug)+1;var guideHref=guide?guide.href:base+'first30/books/'+String(volume).padStart(2,'0')+'.html';
     var book=el('section','avd-book');var cover=el('img');cover.src=guide?guide.cover:'/assets/books/first30/'+slug+'.webp?v=20261102-popup30';cover.alt=names[slug]+' 진단 첫 30일 무료 안내서 표지';cover.loading='lazy';cover.width=120;cover.height=200;book.appendChild(cover);
     var copy=el('div');copy.appendChild(el('span','avd-eyebrow','첫 진단을 위한 핵심 안내서'));copy.appendChild(el('h3','',names[slug]+' 진단 첫 30일'));
-    copy.appendChild(el('p','avd-muted','웹에서 앞부분을 읽고, 전체 MINI PDF도 코드 입력 없이 무료로 받을 수 있어요.'));
-    var actions=el('div','avd-actions');actions.appendChild(link('무료 핵심안내서',guideHref,'avd-primary'));actions.appendChild(link('MINI 읽기',base+'mini/?cancer='+slug,'avd-secondary'));actions.appendChild(link('MINI PDF 받기',base+'mini/?cancer='+slug+'#download','avd-secondary'));copy.appendChild(actions);book.appendChild(copy);session.resources.appendChild(book);
+    copy.appendChild(el('p','avd-muted',hasMini?'웹에서 앞부분을 읽고, 전체 MINI PDF도 코드 입력 없이 무료로 받을 수 있어요.':'핵심안내서는 무료로 바로 읽을 수 있어요. MINI 책자는 현재 준비 중입니다.'));
+    var actions=el('div','avd-actions');actions.appendChild(link('무료 핵심안내서',guideHref,'avd-primary'));if(hasMini){actions.appendChild(link('MINI 읽기',base+'mini/?cancer='+slug,'avd-secondary'));actions.appendChild(link('MINI PDF 받기',base+'mini/?cancer='+slug+'#download','avd-secondary'));}copy.appendChild(actions);book.appendChild(copy);session.resources.appendChild(book);
     var faq=el('section','avd-section');faq.appendChild(el('h3','','자주 묻는 질문'));var faqBody=el('div','avd-faq');faqBody.appendChild(el('p','avd-muted','ApuDa FAQ를 불러오고 있어요…'));faq.appendChild(faqBody);faq.appendChild(link('FAQ 전체 보기',base+'faq/?cancer='+slug));session.resources.appendChild(faq);
     var questions=el('section','avd-section');questions.appendChild(el('h3','','진료 전 확인할 질문'));var qList=el('ul','avd-questions');questions.appendChild(qList);questions.hidden=true;session.resources.appendChild(questions);
     var more=el('section','avd-section');more.appendChild(el('h3','','더 알아보기'));var grid=el('div','avd-more');[['치료결정 지도','treatment-map'],['항암제 정보','drugs'],['검사결과·바이오마커','biomarkers'],['항암 요법 관리','regimens']].forEach(function(x){grid.appendChild(link(x[0],base+x[1]+'/?cancer='+slug));});more.appendChild(grid);session.resources.appendChild(more);
     var help=el('section','avd-section avd-contact');help.appendChild(el('h3','','기다리지 말고 연락할 증상'));help.appendChild(el('p','','암 치료 중 38.0℃ 이상 발열이면 치료병원에 바로 연락하세요. 심하게 떨리는 오한도 38.0℃ 미만이라도 기다리지 말고 연락하세요. 숨쉬기 힘들거나 의식이 처지면 119를 이용하세요.'));help.appendChild(link('병원 연락·응급 안내','/note/#sos'));session.resources.appendChild(help);
     var note=el('p','avd-notice','영상과 자료는 환자교육용입니다. 개인의 치료 선택·약 복용·검사와 증상 대처는 담당 의료진의 안내를 따르세요.');session.resources.appendChild(note);
-    Promise.allSettled([json(base+'mini/data/'+slug+'.json'),json(base+'faq/data/'+slug+'.json')]).then(function(result){
+    Promise.allSettled([hasMini?json(base+'mini/data/'+slug+'.json'):Promise.resolve(null),json(base+'faq/data/'+slug+'.json')]).then(function(result){
       if(current!==session||session.slug!==slug||resourceToken!==session.resourceToken)return;
-      if(result[0].status==='fulfilled'){var mini=result[0].value;if(mini.edition)copy.appendChild(el('p','avd-version','책자 '+mini.edition));(mini.faq||[]).slice(0,3).forEach(function(q){qList.appendChild(el('li','',q));});questions.hidden=!qList.children.length;}
+      if(result[0].status==='fulfilled'&&result[0].value){var mini=result[0].value;if(mini.edition)copy.appendChild(el('p','avd-version','책자 '+mini.edition));(mini.faq||[]).slice(0,3).forEach(function(q){qList.appendChild(el('li','',q));});questions.hidden=!qList.children.length;}
       faqBody.replaceChildren();
       if(result[1].status==='fulfilled'){var data=result[1].value;(data.items||[]).slice(0,3).forEach(function(item){var d=el('details');d.appendChild(el('summary','',item.q));d.appendChild(el('p','',item.a));d.appendChild(link('이 문항의 근거·검토정보',base+'faq/?cancer='+slug+'#q'+item.n));faqBody.appendChild(d);});if(data.updated)faq.appendChild(el('p','avd-version','FAQ 개정 '+data.updated+' · ApuDa 공개 자료'));}
       else faqBody.appendChild(el('p','avd-muted','질문을 불러오지 못했어요. FAQ 전체 보기에서 확인해 주세요.'));
