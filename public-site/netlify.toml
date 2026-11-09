@@ -122,3 +122,10 @@
   [headers.values]
     Cache-Control = "no-store, private"
 
+# ApuDa 하루수첩 V4: 가상 데이터용 시제품, 검색엔진 제외
+[[headers]]
+  for = "/note-v4/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Referrer-Policy = "no-referrer"
+    Cache-Control = "no-store"
