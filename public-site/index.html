@@ -766,6 +766,7 @@
         <a href="/about/#caregiver" data-qs="caregiver"><i aria-hidden="true">🤝</i><span>가족을 돌보고 있어요</span></a>
       </div>
     <div class="qs-foot"><button type="button" id="qsClose">건물 전체 둘러보기</button><button type="button" class="qs-fam">ApuDa 패밀리 ›</button></div>
+    <p class="qs-family-note">일반 질환이 걱정되거나 반려동물이 아프다면 <a href="/family/">ApuDa 패밀리 사이트</a>에서 확인하세요.</p>
   </div>
 </section>
 <button type="button" id="qsReopen" hidden aria-controls="qsSheet">지금 나는? ▾</button>
@@ -1567,6 +1568,8 @@
   .qs-foot button{min-height:44px;padding:0 6px;font-size:14px;font-weight:800}
   #qsClose{color:var(--blue)}
   .qs-foot .qs-fam{color:var(--muted);font-size:13px}
+  #qsSheet .qs-family-note{margin:10px 0 0;padding:10px 12px;border-radius:12px;background:#eef5ff;color:#344d66;font-size:12.5px;line-height:1.55;text-align:center}
+  #qsSheet .qs-family-note a{color:var(--blue);font-weight:800;text-decoration:underline;text-underline-offset:2px}
   #qsReopen{position:fixed;z-index:64;top:max(10px,env(safe-area-inset-top));left:10px;min-height:40px;padding:0 14px;
     border:1px solid rgba(36,107,254,.4);border-radius:999px;background:rgba(255,255,255,.92);color:var(--blue);
     font-size:13px;font-weight:900;box-shadow:0 8px 22px rgba(16,42,67,.1)}
@@ -1629,7 +1632,7 @@
 })();
 </script>
 <link rel="stylesheet" href="/assets/apuda-wayfinding.css?v=20261102-wf1">
-<script src="/assets/apuda-wayfinding.js?v=20261102-wf1"></script>
+<script src="/assets/apuda-wayfinding.js?v=20261109-family-note"></script>
 </body>
 </html>
 
