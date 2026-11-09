@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8f4">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="description" content="ApuDa 하루수첩 V4의 가상자료 기반 체험 시제품. 빠른 상태 기록부터 진료 전 한 장 요약까지.">
+  <title>ApuDa 하루수첩 V4 · 가상 체험판</title>
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    /* ApuDa official primary blue, matched to apuda.app's --blue token. */
+    :root { --apuda-brand-blue: #246BFE; }
+    .brand strong, .mobile-brand b, .brand-text { color: var(--apuda-brand-blue); }
+  </style>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">본문으로 건너뛰기</a>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="주 메뉴">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">✳</span><div><strong>ApuDa</strong><small>당신의 회복 곁에</small></div></div>
+      <span class="sidebar-label">하루수첩 <b>V4</b></span>
+      <nav class="side-nav" aria-label="화면 이동">
+        <button class="nav-item active" data-view="home"><span aria-hidden="true">⌂</span> 오늘의 홈</button>
+        <button class="nav-item" data-view="checkin"><span aria-hidden="true">✎</span> 오늘 기록하기</button>
+        <button class="nav-item" data-view="history"><span aria-hidden="true">▤</span> 지난 기록</button>
+        <button class="nav-item" data-view="visit"><span aria-hidden="true">☷</span> 진료 준비</button>
+        <button class="nav-item" data-view="settings"><span aria-hidden="true">⚙</span> 체험 설정</button>
+      </nav>
+      <div class="side-tip"><span class="tiny-label">안내</span><p>오늘 기록을 다 하지 못해도 괜찮습니다. 몸 상태에 맞춰 천천히 사용하세요.</p></div>
+      <div class="side-foot">© ApuDa · 사용성 시험용 시제품</div>
+    </aside>
+
+    <div class="main-wrap">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-mark small" aria-hidden="true">✳</span><b>ApuDa</b><span>하루수첩</span></div>
+        <div class="topbar-right"><a href="/note/" class="original-notebook-link">기존 환자수첩으로 돌아가기</a><span class="status-pill"><span class="status-dot" aria-hidden="true"></span> 체험 모드</span><button id="help-trigger" class="help-button" type="button">긴급 도움 <span aria-hidden="true">↗</span></button></div>
+      </header>
+      <main id="main-content" tabindex="-1">
+        <div class="demo-banner" role="note"><span class="demo-icon" aria-hidden="true">ⓘ</span><div><strong>실제 환자용 서비스가 아닌 체험판 · 전문의 감수 대기</strong><span>가상의 예시 기록으로 시험하세요. 실명·진료정보를 입력하지 마세요. 기존 ApuDa 환자수첩과 연결되지 않습니다.</span></div></div>
+
+        <section id="view-home" class="view active" aria-labelledby="home-title">
+          <div class="eyebrow">MY DAILY CARE <span aria-hidden="true">·</span> 나를 위한 작은 기록</div>
+          <div class="welcome-line"><div><h1 id="home-title">오늘 몸 상태,<br><em>짧게 남겨 볼까요?</em></h1><p class="intro">완벽하게 적지 않아도 괜찮아요. 오늘의 작은 변화부터 천천히 살펴봐요.</p></div><div class="welcome-art" aria-hidden="true"><div class="art-sun"></div><div class="art-leaf leaf-1"></div><div class="art-leaf leaf-2"></div><div class="art-leaf leaf-3"></div><div class="art-heart">♡</div></div></div>
+          <div class="primary-panel"><div class="panel-content"><span class="panel-eyebrow">오늘의 한 걸음</span><h2>기록은 단 3가지부터</h2><p>체온, 통증, 식사를 먼저 남기고<br>필요한 증상만 더 적을 수 있어요.</p><button id="start-checkin" class="primary-button" type="button">오늘 상태 기록하기 <span aria-hidden="true">→</span></button><small>약 30~45초는 설계 목표이며, 실제 소요시간은 다를 수 있습니다.</small></div><div class="panel-decoration" aria-hidden="true"><div class="deco-circle one"></div><div class="deco-circle two"></div><span>✦</span></div></div>
+          <div class="quick-actions"><button type="button" data-view="visit" class="action-card"><span class="action-icon beige" aria-hidden="true">☷</span><span><strong>진료 준비</strong><small>의료진과 볼 한 장 요약</small></span><span class="action-arrow" aria-hidden="true">↗</span></button><button type="button" data-view="history" class="action-card"><span class="action-icon mint" aria-hidden="true">▥</span><span><strong>지난 기록 보기</strong><small>7일·30일 변화 확인</small></span><span class="action-arrow" aria-hidden="true">↗</span></button></div>
+          <section class="surface recent-surface" aria-labelledby="recent-title"><div class="section-heading"><div><span class="eyebrow muted">RECENT UPDATE</span><h2 id="recent-title">최근 기록</h2></div><button class="text-link" type="button" data-view="history">모두 보기 <span aria-hidden="true">→</span></button></div><div id="home-latest" aria-live="polite"></div></section>
+          <p class="gentle-note"><span aria-hidden="true">✳</span> 기록하지 않은 날은 나쁜 날이 아닙니다. 부담 없이 필요할 때 찾아주세요.</p>
+        </section>
+
+        <section id="view-checkin" class="view" aria-labelledby="checkin-title">
+          <div class="page-head"><div class="eyebrow">QUICK CHECK-IN</div><h1 id="checkin-title">오늘 상태 기록</h1><p>한 번에 하나씩. 대답하기 어려운 질문은 건너뛸 수 있어요.</p></div>
+          <div class="wizard-shell"><div class="wizard-progress"><span id="progress-text">1 / 5 단계</span><div class="progress-track"><div id="progress-bar"></div></div></div><div id="wizard-body" aria-live="polite"></div><div class="wizard-foot"><button id="wizard-back" class="secondary-button" type="button">이전</button><button id="wizard-next" class="primary-button" type="button">다음 <span aria-hidden="true">→</span></button></div></div>
+          <div class="privacy-note">기록은 이 체험 탭 안에서만 임시 보관됩니다. 자동 업로드·의료진 전송은 없습니다.</div>
+        </section>
+
+        <section id="view-history" class="view" aria-labelledby="history-title"><div class="page-head"><div class="eyebrow">MY HEALTH TIMELINE</div><h1 id="history-title">지난 기록 보기</h1><p>빈 날은 비어 있는 그대로 보여 드립니다. 그래프는 진단이나 위험도 판정이 아닙니다.</p></div><div class="segmented"><button id="range-7" class="selected" type="button" aria-pressed="true">최근 7일</button><button id="range-30" type="button" aria-pressed="false">최근 30일</button></div><div class="surface chart-surface"><div class="section-heading"><h2>통증 점수 변화</h2><span class="legend"><i></i> 0~10점 · 입력한 날만</span></div><div id="pain-chart" class="bar-chart" role="img" aria-label="날짜별 통증 점수"></div><p class="chart-help">숫자는 본인이 선택한 통증 점수입니다. 미기록은 0점으로 계산하지 않습니다.</p></div><div id="trend-overview" class="stats-grid"></div><div class="surface"><div class="section-heading"><h2>하루하루의 기록</h2><span id="record-count" class="counter"></span></div><div id="record-list" class="record-list"></div></div></section>
+
+        <section id="view-visit" class="view" aria-labelledby="visit-title"><div class="page-head"><div class="eyebrow">VISIT PREPARATION</div><h1 id="visit-title">진료 전 한 장 요약</h1><p>최근 기록과 궁금한 점을 모아, 진료실에서 필요한 이야기를 놓치지 않도록 도와드려요.</p></div><div class="visit-toolbar"><button id="visit-7" class="filter-chip selected" type="button" aria-pressed="true">7일 요약</button><button id="visit-30" class="filter-chip" type="button" aria-pressed="false">30일 요약</button><button id="print-summary" class="secondary-button print-button" type="button">인쇄 / PDF 저장 <span aria-hidden="true">↗</span></button></div><div class="summary-sheet" id="print-sheet"><div class="sheet-header"><span><b class="brand-text">ApuDa</b> · 하루수첩</span><strong>진료 전 상태 요약</strong><small>환자가 입력한 체험 기록 · 의료 진단 아님</small></div><div id="visit-summary"></div><div class="questions-card"><div class="section-heading"><h3>의료진에게 물어볼 질문</h3><small>최대 3개</small></div><div id="question-list"></div><div class="question-composer"><label for="question-input" class="sr-only">진료 질문 추가</label><input id="question-input" maxlength="120" placeholder="예: 최근 달라진 증상을 어떻게 설명할까요?"><button id="add-question" class="secondary-button" type="button">추가</button></div></div><p class="sheet-disclaimer">이 자료는 환자·보호자가 남긴 체험 기록을 정리한 것이며, 검사·진찰 또는 의료진의 판단을 대신하지 않습니다. 기록이 없다는 것은 증상이 없다는 뜻이 아닙니다.</p></div></section>
+
+        <section id="view-settings" class="view" aria-labelledby="settings-title"><div class="page-head"><div class="eyebrow">ACCESSIBILITY & PRIVACY</div><h1 id="settings-title">체험 설정</h1><p>내게 편한 화면으로 바꾸고, 체험 기록 보관 방식을 확인해 보세요.</p></div><div class="surface setting-card"><div><h2>큰 글씨 모드</h2><p>본문과 선택 버튼의 글씨를 조금 더 크게 보여줍니다.</p></div><button id="large-text-toggle" class="toggle" aria-pressed="false" aria-label="큰 글씨 켜기" type="button"><span></span></button></div><div class="surface setting-card"><div><h2>기록하는 사람</h2><p>보호자가 대신 작성했다면 요약에도 그 사실을 표시합니다.</p><div class="segmented compact"><button id="author-self" class="selected" aria-pressed="true" type="button">본인</button><button id="author-caregiver" aria-pressed="false" type="button">보호자</button></div></div></div><div class="surface setting-card"><div><h2>체험 자료 초기화</h2><p>이 탭의 임시 기록을 지우고 가상의 기본 예시로 되돌립니다. 실제 ApuDa 기록에는 영향을 주지 않습니다.</p></div><button id="reset-demo" class="secondary-button danger-button" type="button">체험 자료 초기화</button></div><div class="privacy-card"><h3>안전 및 개인정보 안내</h3><ul><li>실제 환자 데이터를 입력하지 않는 가상 체험 화면입니다.</li><li>기록은 현재 브라우저 탭의 sessionStorage에만 보관되며 서버로 전송하지 않습니다.</li><li>이 탭을 닫으면 브라우저 정책에 따라 체험 기록이 지워질 수 있습니다.</li><li>응급 상황을 자동 판별하거나 의료진에게 자동 통보하지 않습니다.</li></ul></div></section>
+      </main>
+    </div>
+    <nav class="bottom-nav" aria-label="모바일 메뉴"><button type="button" class="bottom-item active" data-view="home"><span aria-hidden="true">⌂</span>홈</button><button type="button" class="bottom-item" data-view="checkin"><span aria-hidden="true">✎</span>기록</button><button type="button" class="bottom-item" data-view="history"><span aria-hidden="true">▤</span>변화</button><button type="button" class="bottom-item" data-view="visit"><span aria-hidden="true">☷</span>진료</button></nav>
+  </div>
+  <div id="help-modal" class="modal-backdrop" hidden><div class="help-dialog" role="dialog" aria-modal="true" aria-labelledby="help-title"><div class="modal-head"><h2 id="help-title">긴급 도움이 필요하신가요?</h2><button id="help-close" class="close-button" type="button" aria-label="닫기">×</button></div><p>갑작스러운 호흡곤란, 의식 변화, 심한 출혈 등 긴급한 상황이라면 기록을 중단하고 <strong>즉시 119 또는 응급실</strong>에 연락하세요. 치료 중 새로운 증상이나 걱정되는 변화는 담당 의료진과 상담하세요.</p><a class="emergency-button" href="tel:119">119에 전화하기 <span aria-hidden="true">↗</span></a><button id="help-continue" type="button" class="secondary-button full">기록 화면으로 돌아가기</button><small>앱은 증상을 실시간 감시하거나 응급 여부를 판단하지 않습니다.</small></div></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
