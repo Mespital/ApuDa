@@ -1,8 +1,16 @@
 {
-  "checked_at": "2026-11-09T05:32:26.102470+00:00",
-  "last_success_at": "2026-11-09T05:32:26.102470+00:00",
+  "checked_at": "2026-11-09T15:43:10.102531+00:00",
+  "last_success_at": "2026-11-09T15:43:10.102531+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "Our newest TPUs: 8tx and 8i Max, built for the agentic era",
+      "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/tpu-8i-max-and-8tx/",
+      "source": "Google",
+      "published_at": "2026-11-09T13:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "Partnering with Hacktron to find vulnerabilities in OpenAI’s systems",
       "url": "https://openai.com/index/partnering-with-hacktron",
@@ -234,20 +242,12 @@
       "published_at": "2026-11-03T00:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Rewarding defenders with bigger bug bounties",
-      "url": "https://openai.com/index/rewarding-defenders-with-bigger-bug-bounties",
-      "source": "OpenAI",
-      "published_at": "2026-11-02T18:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-11-09T05:32:26.102470+00:00",
+    "checked_at": "2026-11-09T15:43:10.102531+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -385,10 +385,14 @@
       {
         "date": "2027-02-07",
         "title": "설날"
+      },
+      {
+        "date": "2027-02-08",
+        "title": "설날"
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-11-09T05:32:26.102470+00:00",
+    "last_success_at": "2026-11-09T15:43:10.102531+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
