@@ -14,7 +14,8 @@
     liver: [{ name: '간암', id: '-W704eKSUNI' }],
     lymphoma: [{ name: '림프종', id: 'UJe95LBjXgQ' }, { name: '림프종 아형 구분', id: 'C-U62IjZgXQ' }],
     cervical: [{ name: '자궁경부암', id: 'gccIZhC4LW4' }],
-    ovarian: [{ name: '난소암', id: '8Pch-BKNJTE' }]
+    ovarian: [{ name: '난소암', id: '8Pch-BKNJTE' }],
+    bladder: [{ name: '방광암', id: 'xpYwGJ7cM3k' }]
   };
   Object.keys(catalog).forEach(function (slug) {
     catalog[slug].forEach(Object.freeze);
