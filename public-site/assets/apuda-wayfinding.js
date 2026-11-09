@@ -1,6 +1,6 @@
 /* ApuDa 홈 길찾기(v27)
    - 상황 선택(data-qs)을 누르면 페이지를 떠나지 않고 맞는 층을 열고 안내 배너를 띄운다.
-   - 상황 시트(모바일)에 엘리베이터 줄, 시트·데스크톱 안내에 머릿돌을 붙인다.
+   - 상황 시트(모바일)에 엘리베이터 줄을, 데스크톱 안내에 머릿돌을 붙인다.
    - 건물 왼쪽 아래 비상구 표지 → 바로 진료가 필요한 신호 안내.
    층 열기는 index.html의 기존 #floor-N 해시 처리를 그대로 쓴다. 2F 서재·책 데이터는 건드리지 않는다. */
 (function () {
@@ -66,7 +66,7 @@
   }
   addStone(document.getElementById('desktopGuide'));
 
-  /* ── 상황 시트: 엘리베이터 줄 + 머릿돌 ── */
+  /* ── 상황 시트: 엘리베이터 줄 ── */
   var card = document.querySelector('#qsSheet .qs-card');
   if (card) {
     var lift = document.createElement('div');
@@ -78,9 +78,6 @@
       '</span>';
     var foot = card.querySelector('.qs-foot');
     card.insertBefore(lift, foot || null);
-    var mini = document.createElement('p'); mini.className = 'wf-stone wf-stone-mini';
-    mini.innerHTML = '<b>머릿돌</b>&nbsp;출처 표기 · 매월 갱신 · 진단·처방은 의료진과 상의';
-    card.appendChild(mini);
     lift.addEventListener('click', function (e) {
       var b = e.target.closest('[data-wf-floor]');
       if (!b) return;
