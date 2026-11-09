@@ -387,12 +387,12 @@ function callBtns(){var p=state.profile,h='';
   if(p.dayPhone)h+='<a href="'+tel(p.dayPhone)+'" class="danger">📞 평일 낮 상담 '+esc(p.dayPhone)+'</a>';
   if(p.nightPhone)h+='<a href="'+tel(p.nightPhone)+'" class="danger">🌙 밤·주말 응급실 '+esc(p.nightPhone)+'</a>';
   if(!p.dayPhone&&!p.nightPhone)h+='<button type="button" onclick="openSheet(\'settings\')">📞 치료병원 번호 등록</button>';
-  h+='<a href="https://www.e-gen.or.kr/egen/search_emergency_room.do" target="_blank" rel="noopener">🏥 가까운 응급실</a>';
+  h+='<button type="button" onclick="window.ApudaNearbyER&&ApudaNearbyER.open()">📍 주변 응급실 찾기</button>';
   return h+'<a href="tel:119">🚑 119</a>'}
 var DEV={port:{n:'케모포트',t:'케모포트(가슴 중심정맥관)',care:'포트 부위를 깨끗하고 마르게 두세요.',call:'포트 부위가 붓고 빨갛거나 아프고 고름·열이 날 때, 포트 쪽 팔·목·얼굴이 부을 때 — 바로 병원에 연락'},picc:{n:'PICC',t:'PICC(팔 중심정맥관)',care:'정해진 날 소독·관리를 받으세요. 물에 젖지 않게 하세요.',call:'팔이 붓거나 아프고 빨개질 때, 관이 빠지거나 새거나 열이 날 때 — 바로 병원에 연락'},biliary:{n:'담도 스텐트·배액관',t:'담도 스텐트·배액관',care:'교체 날짜를 기록해 두세요. 배액관은 꺾이지 않게 고정하세요.',call:'오한을 동반한 열, 눈·피부가 노래짐, 오른쪽 윗배 통증, 배액이 갑자기 줄거나 막힐 때 — 항암 시기와 상관없이 바로 응급실'},stoma:{n:'장루',t:'장루',care:'배출량과 색을 기록하고, 물을 충분히 드세요.',call:'물 같은 배출이 많아 어지럽거나 소변이 줄 때, 장루가 검붉게 변할 때, 배출이 멈추고 배가 아프며 토할 때 — 바로 병원에 연락'},urinary:{n:'요관 스텐트·신루·소변줄',t:'요관 스텐트·신루·소변줄',care:'소변 색과 양을 확인하고 물을 충분히 드세요.',call:'소변이 안 나오거나 피가 많이 섞일 때, 옆구리 통증과 열이 함께 있을 때 — 바로 병원에 연락'},feeding:{n:'영양관(위루관)',t:'영양관(위루관·비위관)',care:'주입 전후 물로 관을 씻어 주세요(병원 안내대로).',call:'관이 빠지거나 막혔을 때, 주변이 붓고 고름·열이 날 때 — 병원에 연락'}};
 function devList(){return (state.profile.devices||[]).filter(function(k){return DEV[k]})}
 function devFeverTxt(){var d=devList(),h='';if(d.indexOf('biliary')>=0)h+='<br><b>담도 스텐트·배액관이 있어요.</b> 담관염일 수 있으니 오한·황달이 있으면 더 기다리지 말고 응급실로 가세요.';if(d.indexOf('port')>=0||d.indexOf('picc')>=0)h+='<br>포트·관 부위가 붓거나 빨갛다면 함께 알리세요.';return h}
-function routeHTML(noBtn){var lc=lastChemo(),rx=myRx(),cancerTx=rx&&(rx.type==='호르몬'||rx.once)?'암 치료':'항암 치료';return '<div class="route"><b>🧭 어디로 연락하나요?</b><ol><li><b>평일 낮</b> — 치료 병원 항암 상담 전화(외래 간호사)</li><li><b>밤·주말·공휴일</b> — 치료 병원 응급실. <b>치료 병원이 멀면(1시간 이상) 가까운 응급실</b>로 먼저 가세요.</li><li><b>숨이 많이 차거나 가슴이 아프거나 의식이 흐리면</b> — 바로 119. 어디로 가야 할지 모를 때도 119에서 응급 상담을 받을 수 있어요.</li></ol>응급실에서는 "'+cancerTx+' 중이고'+(rx?' 요법은 '+esc(rx.ko)+','+'':'')+(lc?' 마지막 치료는 '+mdTxt(lc):'')+'"이라고 먼저 말하고, 진료요약 화면을 보여 주세요.'+(noBtn?'':'<div class="acts"><a href="https://www.e-gen.or.kr/egen/search_emergency_room.do" target="_blank" rel="noopener">🏥 가까운 응급실 찾기</a><a href="tel:119">🚑 119</a></div>')+'</div>'}
+function routeHTML(noBtn){var lc=lastChemo(),rx=myRx(),cancerTx=rx&&(rx.type==='호르몬'||rx.once)?'암 치료':'항암 치료';return '<div class="route"><b>🧭 어디로 연락하나요?</b><ol><li><b>평일 낮</b> — 치료 병원 항암 상담 전화(외래 간호사)</li><li><b>밤·주말·공휴일</b> — 치료 병원 응급실. <b>치료 병원이 멀면(1시간 이상) 가까운 응급실</b>로 먼저 가세요.</li><li><b>숨이 많이 차거나 가슴이 아프거나 의식이 흐리면</b> — 바로 119. 어디로 가야 할지 모를 때도 119에서 응급 상담을 받을 수 있어요.</li></ol>응급실에서는 "'+cancerTx+' 중이고'+(rx?' 요법은 '+esc(rx.ko)+','+'':'')+(lc?' 마지막 치료는 '+mdTxt(lc):'')+'"이라고 먼저 말하고, 진료요약 화면을 보여 주세요.'+(noBtn?'':'<div class="acts"><button type="button" onclick="window.ApudaNearbyER&&ApudaNearbyER.open()">📍 주변 응급실 찾기</button><a href="tel:119">🚑 119</a></div>')+'</div>'}
 var ALERT={
   fever:['red',function(){return '<b>체온이 38.0℃ 이상이에요.</b><br>항암·면역·표적치료 중이라면 밤이든 주말이든 <b>지금 치료병원에 연락</b>하세요. 해열제로 먼저 내리지 마세요.'+devFeverTxt()+routeHTML(true)+'<div class="acts"><button type="button" onclick="openSheet(\'er\')">📋 응급실에서 보여 줄 화면</button></div>'},true],
   lowAnc:['amber','<b>호중구(백혈구)가 낮다고 기록됐어요.</b> 감염에 특히 약한 시기예요. 손 씻기·사람 많은 곳 피하기, 체온은 하루 2번 이상 재고 <b>38.0℃ 이상이면 해열제 먹기 전에 바로 병원에 연락</b>하세요.',true],
@@ -953,7 +953,8 @@ function renderSOS(){
   var big='style="grid-column:1/-1;min-height:64px;font-size:1.05em"';
   if(p.dayPhone){c+='<a class="btn red" '+big+' href="'+tel(p.dayPhone)+'">📞 치료병원에 전화</a>';c+='<a class="btn red" href="tel:119">🚑 119</a>'}
   else c+='<a class="btn red" '+big+' href="tel:119">🚑 119 (위급할 때)</a>';
-  c+=p.nightPhone?'<a class="btn red" href="'+tel(p.nightPhone)+'">🌙 야간·응급</a>':'<a class="btn line" href="https://www.e-gen.or.kr/egen/search_emergency_room.do" target="_blank" rel="noopener">🏥 가까운 응급실</a>';
+  if(p.nightPhone)c+='<a class="btn red" href="'+tel(p.nightPhone)+'">🌙 야간·응급</a>';
+  c+='<button type="button" class="btn line" onclick="window.ApudaNearbyER&&ApudaNearbyER.open()">📍 주변 응급실 찾기</button>';
   c+='<a class="btn line" href="tel:109">💙 109 마음 위기</a>';
   c+='<button class="btn line" '+(p.dayPhone?'':'')+'onclick="openSheet(\'er\')">📋 응급실용 화면</button>';
 
