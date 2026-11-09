@@ -403,6 +403,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--ink);box-shadow:0 0 0
 <link rel="stylesheet" href="/assets/apuda-ui.css?v=20261019"><script src="/assets/apuda-ui.js?v=20261031"></script>
 <style>.temp-history{margin-top:8px;font-size:14px}.temp-history summary{min-height:44px;cursor:pointer;padding:10px 0}.temp-history li{margin:5px 0}.labtbl td{white-space:normal;overflow-wrap:anywhere}.labform select{width:100%;min-width:0}</style>
 <meta name="apuda-release" content="audit-20261019.1">
+<link rel="stylesheet" href="note-nearby-er.css?v=20261109">
 </head>
 <body>
 <div id="note-read-error" role="alert" hidden style="padding:16px;background:#fff0e8;color:#812d1b;line-height:1.8"><b>기존 기록을 읽지 못했어요.</b> 저장된 원본을 새 기록으로 덮어쓰지 않도록 보호하고 있어요. 원본 파일을 보관한 뒤 올바른 백업으로 복원하거나 도움을 요청하세요. <button class="btn line sm" type="button" onclick="exportData()">기존 원본 파일 받기</button></div>
@@ -539,6 +540,31 @@ input:focus,textarea:focus,select:focus{border-color:var(--ink);box-shadow:0 0 0
   <p class="note-foot">병원이 따로 알려준 기준이 있으면 그 기준이 우선입니다. 해열제로 열을 먼저 내리지 말고 병원에 먼저 연락하세요. 숨쉬기 힘들거나 의식이 처지면 119가 우선입니다. 이 화면은 진단을 대신하지 않습니다.</p>
 </div></div>
 
+<!-- 주변 응급실 찾기: 위치 권한은 요청 버튼을 누를 때만 사용 -->
+<div class="sheet nearby-er-sheet" id="sh-nearer" onclick="if(event.target===this)closeSheet()">
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="nearbyErTitle">
+    <div class="grab"><h2 id="nearbyErTitle">📍 주변 응급실 찾기</h2><button class="tbtn" type="button" onclick="closeSheet()">닫기</button></div>
+    <div class="nearby-er-warning"><b>숨이 많이 차거나 의식이 흐리거나 심한 출혈이 있으면 지도를 찾느라 기다리지 마세요.</b><a href="tel:119">🚑 지금 119에 전화하기</a></div>
+    <div class="nearby-er-box">
+      <h3>① 현재 위치로 검색</h3>
+      <p>버튼을 눌렀을 때만 휴대전화의 위치 권한을 요청해요. 지도에서 응급실 후보를 보여 주지만 진료·병상 가능 여부는 보장하지 않습니다.</p>
+      <button class="btn primary" type="button" id="nearbyErFind">📍 내 위치로 응급실 찾기</button>
+      <p class="nearby-er-status" role="status" aria-live="polite" id="nearbyErStatus">위치 정보는 ApuDa에 저장되거나 전송되지 않습니다.</p>
+      <a class="btn line" id="nearbyErMapLink" href="#" target="_blank" rel="noopener noreferrer" hidden>주변 응급실 지도 열기</a>
+    </div>
+    <div class="nearby-er-box">
+      <h3>② 지역 이름으로 검색</h3>
+      <form id="nearbyErAreaForm"><label for="nearbyErArea">시·군·구·동</label><input id="nearbyErArea" name="nearbyErArea" placeholder="예: 서초구 반포동" maxlength="60" autocomplete="address-level2"><button type="submit" class="btn line">🗺️ 지역명으로 지도 찾기</button></form>
+    </div>
+    <div class="nearby-er-box">
+      <h3>③ 공식 응급실 운영 정보 확인</h3>
+      <p>현재 병상과 진료 가능 여부는 달라질 수 있어요. 중앙응급의료센터 E-Gen의 응급실 현황을 확인하고, 이송·진료 가능 여부는 119 또는 병원에 문의하세요.</p>
+      <a class="btn line" href="https://www.e-gen.or.kr/egen/search_emergency_room.do" target="_blank" rel="noopener noreferrer">🏥 공식 E-Gen 응급실 찾기</a>
+    </div>
+    <p class="nearby-er-disclaimer">지도 검색 결과는 응급실 목록을 참고하도록 돕는 기능이며, 최단 거리·수용 가능·진료 적합성을 보장하지 않습니다. 위치 정보는 버튼을 눌렀을 때만 요청하며 외부 지도 링크를 열면 검색 위치가 해당 지도 서비스로 전달됩니다.</p>
+  </div>
+</div>
+
 <!-- 설정 시트 -->
 <div class="sheet" id="sh-settings" onclick="if(event.target===this)closeSheet()">
 <div class="panel">
@@ -590,6 +616,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--ink);box-shadow:0 0 0
 <script src="note-safety.js?v=20261019"></script>
 <script src="note-storage.js?v=20261019"></script>
 <script src="note-app.js?v=20261019"></script>
+<script src="note-nearby-er.js?v=20261109"></script>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <script src="apuda-backup.js?v=20261019" defer></script>
 <script src="/assets/apuda-bot.js?v=20261019" data-context="note" data-launcher="none" defer></script>
