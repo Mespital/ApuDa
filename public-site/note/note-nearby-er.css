@@ -1,0 +1,14 @@
+/* Isolated emergency-finder styles; does not override ApuDa's existing notebook. */
+.nearby-er-sheet .panel{max-width:640px}
+.nearby-er-sheet .nearby-er-warning{border:1px solid #f0aca6;background:#fff3f1;border-radius:14px;padding:14px;line-height:1.65;margin:6px 0 14px;color:#802723}
+.nearby-er-sheet .nearby-er-warning a{display:flex;align-items:center;justify-content:center;min-height:54px;margin-top:10px;background:#bd332a;color:#fff;border-radius:12px;font-weight:900;text-decoration:none}
+.nearby-er-sheet .nearby-er-box{border:1px solid #d6e1f1;border-radius:15px;padding:16px;margin:12px 0;background:#fff}
+.nearby-er-sheet .nearby-er-box h3{font-size:1rem;margin:0 0 8px;color:#1b427e}
+.nearby-er-sheet .nearby-er-box p{font-size:.9rem;line-height:1.6;margin:6px 0 12px;color:#41516a}
+.nearby-er-sheet .nearby-er-box .btn{width:100%;min-height:50px;margin:8px 0}
+.nearby-er-sheet .nearby-er-box label{display:block;font-weight:800;margin:12px 0 6px}
+.nearby-er-sheet .nearby-er-box input{width:100%;min-height:48px;font-size:16px}
+.nearby-er-sheet .nearby-er-status{padding:10px 12px;border-radius:10px;background:#eef5ff;color:#1c4479;margin-top:10px;line-height:1.55;overflow-wrap:anywhere}
+.nearby-er-sheet .nearby-er-status.nearby-er-error{background:#fff3e8;color:#794020}
+.nearby-er-sheet [hidden]{display:none!important}
+.nearby-er-sheet .nearby-er-disclaimer{font-size:.85rem;line-height:1.7;color:#49576a;margin:12px 4px}
