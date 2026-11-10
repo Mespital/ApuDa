@@ -17,7 +17,9 @@
 - `node --check public-site/note-v4/migration-atomic-lab.js`: **PASS**.
 - `node tools/tests/apuda-note-v4-migration-rehearsal.cjs`: **PASS** (기존 V3/V4 메모리 리허설).
 - `node tools/tests/apuda-note-v4-migration-atomic-mock.cjs`: **8/8 PASS**, 하지만 **모의 IndexedDB**라 실제 브라우저의 트랜잭션 내구성·경합을 증명하지 않음.
-- Netlify Deploy Preview URL `https://deploy-preview-292--apuda-total.netlify.app/note-v4/migration-atomic-lab.html`: 페이지 렌더링과 시험 버튼 확인. **실제 브라우저의 8개 테스트 실행은 미완료** (시험 종료 시 생성한 임시 DB 자동 삭제를 수행하므로 별도 UI 확인 절차 필요).
+- Netlify Deploy Preview URL `https://deploy-preview-292--apuda-total.netlify.app/note-v4/migration-atomic-lab.html`: **실제 Chrome 브라우저 IndexedDB 시험 8/8 PASS, 0 FAIL**, 2026-11-11 KST. 각 항목별 화면의 `통과` 표시를 확인했고, `가상 DB 삭제 확인` 문구도 확인함. 독립된 IndexedDB 연결 2개의 리비전 충돌/자동 중단/재시도 시험.
+- 검증 방법: 클라우드 Chrome에서 직접 시험 버튼 클릭 후 접근성 결과 목록과 브라우저 화면 확인. 사용된 원본은 코드에서 생성된 가상의 V3 JSON이며 실제 환자 계정·기존 `localStorage`는 접근하지 않음.
+- 단, 브라우저 1개 안의 연결 2개를 검증한 것에 한정. 실제 Android/iOS 기기, 별도 탭의 구형 V3 코드와 동시 실행, 기기 간 동기화, 저장 공간 부족·브라우저 비정상 종료·기기 백업 복원 내구성은 여전히 미검증.
 
 ## 검증 조건 8건
 
