@@ -7,6 +7,7 @@
   const dataApi = window.ApuDaNoteStorage;
   const auditApi = window.ApuDaV3Compatibility;
   const archiveApi = window.ApuDaV3LosslessStage;
+  const reconcileApi = window.ApuDaV3V4FieldReconcile;
   let requestId = 0;
 
   function node(tag, className, content) {
@@ -30,13 +31,14 @@
       article.appendChild(details);
     }
     parent.appendChild(article);
+    return article;
   }
   function empty(parent, message='기록 없음') { parent.appendChild(node('p','empty',message)); }
   function reset() {
     requestId++;
     $('choose').value='';
     $('screen').hidden=true;
-    ['summary','daily','questions','meds','labs','plans','others','risks'].forEach((id) => $(id).replaceChildren());
+    ['summary','fieldSummary','fields','daily','questions','meds','labs','plans','others','risks'].forEach((id) => $(id).replaceChildren());
     $('integrity').textContent='';
     $('status').className='status';
     $('status').textContent='가상 기록 버튼을 눌러 시작하세요.';
@@ -74,6 +76,17 @@
     });
     $('integrity').textContent=`검증된 원본 크기: ${integrity.byteLength.toLocaleString('ko-KR')}바이트 · SHA-256: ${integrity.sha256.slice(0,16)}… · V4 이전은 실행되지 않았습니다.`;
   }
+  function fieldCoverage(coverage) {
+    [['원본 필드 구조',coverage.fieldPathCount],['V4 표현 후보',coverage.counts.candidate],['추가 설계 필요',coverage.counts.review],['V4 구조 없음',coverage.counts.unsupported]].forEach(([label,count])=>{
+      const box=node('div','stat');box.appendChild(node('b','',count+'종'));box.appendChild(node('small','',label));$('fieldSummary').appendChild(box);
+    });
+    coverage.fields.forEach((field)=>{
+      const item=entry($('fields'),`${field.path} · ${field.label}`,[
+        `V4 대응: ${field.v4Field} · 원본 등장 ${field.occurrences}회 (값 있음 ${field.nonEmpty}회)`,field.reason
+      ]);
+      item.classList.add('field-'+field.status);
+    });
+  }
   function daily(state,check) {
     const list=state.logs.map((record,i)=>({record,audit:check.days[i]})).sort((a,b)=>b.record.date.localeCompare(a.record.date));
     if(!list.length)return empty($('daily'));
@@ -95,8 +108,8 @@
     const host=$(id);if(!rows.length)return empty(host);
     rows.forEach((row,i)=>entry(host,label(row,i),formatter(row),row));
   }
-  function render(state,check,integrity) {
-    summary(state,check,integrity);daily(state,check);
+  function render(state,check,integrity,coverage) {
+    summary(state,check,integrity);fieldCoverage(coverage);daily(state,check);
     simpleList('questions',state.questions,(q,i)=>`${i+1}번 질문`,(q)=>[
       text(q.question),q.priority?'우선순위: '+q.priority:'',q.answer?'기존 답변: '+q.answer:''
     ]);
@@ -126,8 +139,8 @@
       const archive=await archiveApi.stage(raw);
       const integrity=await archiveApi.verify(archive);
       if(serial!==requestId)return;
-      const state=dataApi.unpack(raw),check=auditApi.inspect(raw);
-      render(state,check,integrity);
+      const state=dataApi.unpack(raw),check=auditApi.inspect(raw),coverage=reconcileApi.compare(raw);
+      render(state,check,integrity,coverage);
       status(`원본 검증 완료 · 건강기록 ${state.logs.length}건 · 질문 ${state.questions.length}건 · V4로 이전하지 않았습니다.`);
     } catch(_) {
       if(serial!==requestId)return;
