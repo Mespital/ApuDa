@@ -90,3 +90,7 @@ const originalText = await ApuDaV4ExtendedDraft.originalJSON(draft);
 - 검토 기록: `docs/apuda-note-v4-extended-ui-review-20261110.md`. 실제 브라우저 320px/200% 확대·화면낭독기·8명 사용성 시험은 **미실시(NT)**이며 출시 승인이 아님.
 
 위의 ‘다음 개발 단계’에서 **합성자료 읽기 렌더러 구현은 완료**했으나, 실브라우저·실기기 검증이 선행되어야 운영 전환 단계를 시작할 수 있다.
+
+### 2026-11-10 보충: 이전 안전장치 모의시험
+
+`v4-migration-rehearsal.js`는 V3 원본·기존 V4 값을 읽기 전용 **메모리 스냅샷**으로 받고, V4 확장 초안을 생성한 뒤 이전·취소·원상복귀를 기록 손실 없이 시험한다. 모든 단계는 실제 저장하지 않으며, 현재 값이 초기 지문 또는 원문과 다르면 중단한다. 실제 저장 용량·멀티탭·복원·영구 백업 위험은 해결되지 않아 P0 그대로다. 세부 검증과 Android/iOS 미시험 항목은 `docs/apuda-note-v4-migration-rehearsal-20261110.md`를 참조한다.
