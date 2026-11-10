@@ -9,7 +9,15 @@
 
 - `public-site/note-v4/migration-atomic-lab.html`: noindex, `connect-src 'none'`, 자가 시험 결과만 표시.
 - `public-site/note-v4/migration-atomic-lab.js`: 합성 V3 백업을 `ApuDaV4MigrationRehearsal.prepare/verify`에 명시적으로 전달. 실사용 데이터 키를 모르는 실행별 임의 이름의 IndexedDB에 보관하고 시험 종료 후 DB 삭제 요청.
+- `tools/tests/apuda-note-v4-migration-atomic-mock.cjs`: 기존 변환기 및 신규 시험 페이지의 실제 JS를 VM에서 실행하고 합성 `IndexedDB` 트랜잭션 모의 구현으로 8개 시나리오 재현. **실제 브라우저 IndexedDB 시험을 대체하지 못함.**
 - 기존 `note-storage.js`는 백업형식 검증기 역할만 함. 기존 데이터로의 직접 접근은 테스트 페이지에 없음.
+
+## 검증 현황
+
+- `node --check public-site/note-v4/migration-atomic-lab.js`: **PASS**.
+- `node tools/tests/apuda-note-v4-migration-rehearsal.cjs`: **PASS** (기존 V3/V4 메모리 리허설).
+- `node tools/tests/apuda-note-v4-migration-atomic-mock.cjs`: **8/8 PASS**, 하지만 **모의 IndexedDB**라 실제 브라우저의 트랜잭션 내구성·경합을 증명하지 않음.
+- Netlify Deploy Preview URL `https://deploy-preview-292--apuda-total.netlify.app/note-v4/migration-atomic-lab.html`: 페이지 렌더링과 시험 버튼 확인. **실제 브라우저의 8개 테스트 실행은 미완료** (시험 종료 시 생성한 임시 DB 자동 삭제를 수행하므로 별도 UI 확인 절차 필요).
 
 ## 검증 조건 8건
 
