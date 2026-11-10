@@ -13,6 +13,18 @@
 
 <section class="brief"><h2>오늘의 핵심 브리핑</h2><p id="briefingText">최신 브리핑을 불러오는 중이에요.</p><div id="briefingRetry"></div></section>
 
+<section id="staticNewsSnapshot" class="static-news-snapshot" aria-labelledby="staticNewsHeading">
+<!-- APUDA_NEWS_SNAPSHOT_START -->
+  <h2 id="staticNewsHeading">마지막 공개 뉴스 브리핑</h2>
+  <p>보고일 <time datetime="2026-11-01">2026-11-01</time> 기준 자료입니다. 최신 기사가 아닐 수 있으므로 변경된 치료·정책 정보는 원문과 의료진을 통해 확인해 주세요.</p>
+  <ol>
+    <li><a href="https://www.bosa.co.kr/news/articleView.html?idxno=3015332" target="_blank" rel="noopener noreferrer">의협 “소아응급실 압수수색, 명백한 진료방해”</a> <small>의학신문</small></li>
+    <li><a href="https://www.medipana.com/news/articleView.html?idxno=420591" target="_blank" rel="noopener noreferrer">[제약공시 책갈피] 10월 5주차 -휴온스·한미약품·대원제약 外</a> <small>메디파나뉴스</small></li>
+  </ol>
+  <a class="archive-link" href="/news/?date=2026-11-01">해당 날짜 브리핑 보기</a>
+<!-- APUDA_NEWS_SNAPSHOT_END -->
+</section>
+
 <section class="section period-section">
   <div class="section-head"><div><h2>핵심 뉴스 한눈에</h2><p>기간을 고르면 중요도와 최신성을 함께 따진 뉴스를 보여드려요.</p></div></div>
   <div class="period-tabs" id="periodTabs" role="group" aria-label="기간 선택">
@@ -217,6 +229,9 @@ function renderMediaHub(outlets){
 }
 function renderDaily(data){
   currentDaily=data;
+  // Server-rendered summary remains useful when JS or JSON fails. Hide only
+  // after a daily JSON response was successfully rendered to avoid duplicate UI.
+  document.getElementById('staticNewsSnapshot').hidden=true;
   const fresh=window.ApuDaNewsFreshness.status(data.report_date);
   latestNewsStale=fresh.stale;
   const historical=latestNewsStale||Boolean(requestedDate);

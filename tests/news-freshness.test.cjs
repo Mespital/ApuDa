@@ -38,6 +38,9 @@ test('news UI loads the freshness guard before its inline renderer', () => {
   assert.ok(guard !== -1 && inline > guard);
   assert.match(html, /id="newsFreshnessNotice"[^>]*role="status"[^>]*hidden/);
   assert.match(html, /latestNewsStale/);
+  assert.match(html, /id="staticNewsSnapshot"/);
+  assert.match(html, /<time datetime="2026-11-01">2026-11-01<\/time>/);
+  assert.match(html, /https:\/\/www\.bosa\.co\.kr\/news\/articleView\.html/);
 });
 
 function renderOffline(reportDate, currentTime) {
@@ -46,7 +49,7 @@ function renderOffline(reportDate, currentTime) {
   const elements = {};
   const doc = {
     title: '',
-    getElementById(id) { return elements[id] ??= { innerHTML: '', textContent: '', hidden: true }; },
+    getElementById(id) { return elements[id] ??= { innerHTML: '', textContent: '', hidden: false }; },
     querySelector(selector) { return elements[selector] ??= { innerHTML: '', textContent: '' }; },
     createElement() { return { innerHTML: '', get value() { return this.innerHTML; } }; }
   };
@@ -76,6 +79,7 @@ test('stale report changes live title and displays warning', () => {
   assert.equal(elements.newsFreshnessNotice.hidden, false);
   assert.match(elements.newsFreshnessNotice.textContent, /2026-11-01/);
   assert.match(elements['#periodTabs [data-period="today"]'].textContent, /마지막 브리핑/);
+  assert.equal(elements.staticNewsSnapshot.hidden, true);
 });
 
 test('current report keeps normal today copy and hides warning', () => {
@@ -83,4 +87,5 @@ test('current report keeps normal today copy and hides warning', () => {
   assert.equal(elements['.hero h1'].textContent, '오늘의 뉴스 브리핑');
   assert.equal(elements.newsFreshnessNotice.hidden, true);
   assert.equal(elements['#periodTabs [data-period="today"]'].textContent, '오늘');
+  assert.equal(elements.staticNewsSnapshot.hidden, true);
 });
