@@ -7,14 +7,24 @@ const read = (path) => readFile(join(root, path), 'utf8');
 const assert = (condition, message) => { if (!condition) throw new Error(message); };
 const sitemap = await read('sitemap.xml');
 const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-assert(urls.length === 85, 'Expected exactly 85 sitemap URLs');
+assert(urls.length === 84, 'Expected exactly 84 sitemap URLs');
 assert(new Set(urls).size === urls.length, 'Sitemap has duplicate URLs');
 assert(urls.every((url) => url.startsWith('https://apuda.app/')), 'Sitemap has an external URL');
 
 const robots = await read('robots.txt');
 assert(robots.includes('Sitemap: https://apuda.app/sitemap.xml'), 'Root sitemap missing from robots');
 assert(robots.includes('Sitemap: https://apuda.app/farm/sitemap.xml'), 'Farm sitemap was removed');
-assert(!urls.some((url) => url.includes('/nonsul/') || url.includes('/api/')), 'Private or noindex route in sitemap');
+assert(!urls.some((url) => url.includes('/nonsul/') || url.includes('/note/') || url.includes('/note-v4/') || url.includes('/api/')),
+  'Private or noindex route in sitemap');
+// A <lastmod> must track a verifiable significant page update; we have no such per-URL source yet.
+assert(!sitemap.includes('<lastmod>'), 'Unverified sitemap lastmod must not be invented');
+const noteHtml = await read('note/index.html');
+const netlify = await read('netlify.toml');
+assert(/<meta name="robots" content="noindex">/.test(noteHtml), 'Patient note app needs noindex HTML fallback');
+assert(/for = "\/note\/"\s+\[headers\.values\]\s+X-Robots-Tag = "noindex"/.test(netlify),
+  'Patient note clean URL must send noindex header');
+assert(/for = "\/note\/index\.html"\s+\[headers\.values\]\s+Cache-Control = "no-cache"\s+X-Robots-Tag = "noindex"/.test(netlify),
+  'Patient note explicit index.html needs noindex without losing cache policy');
 for (const path of ['/community/', '/family/', '/care/', '/pet/', '/farm/']) {
   assert(urls.includes('https://apuda.app' + path), 'Family or community URL missing from sitemap: ' + path);
 }
@@ -104,4 +114,4 @@ for (const file of files) {
   questions += count;
 }
 assert(questions === 3000, 'Expected 3,000 original FAQ items');
-console.log('SEO verified: 85 URLs, 30 books, 30 static FAQ pages, 3,000 questions, brand and family pages.');
+console.log('SEO verified: 84 URLs, 30 books, 30 static FAQ pages, 3,000 questions, note noindex, brand and family pages.');

@@ -206,14 +206,15 @@ for (const [slug, book] of books) {
 }
 
 // Restrict the sitemap to publicly accessible content. Private/account endpoints
-// and /nonsul/ (which has X-Robots-Tag: noindex) are intentionally excluded.
+// and the patient note app shell (/note/, X-Robots-Tag: noindex) are excluded.
+// Do not invent <lastmod>: the generator has no verified per-page meaningful-update dates.
 const paths = [
   '/', '/about/', '/community/', '/family/', '/care/', '/pet/', '/farm/',
   '/risk/', '/checkup/', '/emergency/', '/hospital-information/',
   '/library/first30/', '/library/faq/', '/library/review/',
   '/library/mini/', '/library/treatment-map/', '/library/drugs/',
   '/library/biomarkers/', '/library/regimens/', '/support/', '/support/v4/',
-  '/news/', '/news/oncology/', '/note/', '/watch/',
+  '/news/', '/news/oncology/', '/watch/',
   ...[...books.values()].map((b) => '/library/first30/books/' + b.number + '.html'),
   ...records.map((r) => '/library/faq/' + r.slug + '/'),
 ];
