@@ -28,7 +28,7 @@
 | 검증 | 결과 |
 | --- | --- |
 | Python `test_editorial_quality.py` | 5/5 PASS — 실제 테니스/부고 재현, 정상 정책 기사 보존, 원본 리스트 불변 |
-| Node `test-freshness.cjs` | 7/7 PASS — 당일/익일·경과 9일·오류 날짜·UI 표시 분기 |
+| Node `tests/news-freshness.test.cjs` | 7/7 PASS — 당일/익일·경과 9일·오류 날짜·UI 표시 분기 |
 | Python `py_compile` / HTML inline JavaScript 구문 검사 | PASS |
 | Bash `install-vps.sh` 구문 검사 / `git diff --check` | PASS |
 | 실제 VPS cron 수집·저장·배포/Netlify/운영 브라우저 확인 | **NT(미시험)** — 배포 금지 요청 준수 |

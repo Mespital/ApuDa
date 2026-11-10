@@ -3,7 +3,9 @@ const assert = require('node:assert/strict');
 const { readFileSync } = require('node:fs');
 const { test } = require('node:test');
 const vm = require('node:vm');
-const { status } = require('./freshness.js');
+const path = require('node:path');
+const NEWS_DIR = path.join(__dirname, '../public-site/news');
+const { status } = require(path.join(NEWS_DIR, 'freshness.js'));
 
 function time(value) { return Date.parse(value); }
 
@@ -30,7 +32,7 @@ test('unparseable/future report dates fail closed', () => {
 });
 
 test('news UI loads the freshness guard before its inline renderer', () => {
-  const html = readFileSync(__dirname + '/index.html', 'utf8');
+  const html = readFileSync(path.join(NEWS_DIR, 'index.html'), 'utf8');
   const guard = html.indexOf('<script src="/news/freshness.js"></script>');
   const inline = html.indexOf('<script>', guard);
   assert.ok(guard !== -1 && inline > guard);
@@ -39,7 +41,7 @@ test('news UI loads the freshness guard before its inline renderer', () => {
 });
 
 function renderOffline(reportDate, currentTime) {
-  const html = readFileSync(__dirname + '/index.html', 'utf8');
+  const html = readFileSync(path.join(NEWS_DIR, 'index.html'), 'utf8');
   const inline = html.match(/<script>\s*([\s\S]*?)<\/script>/)[1].replace(/\bload\(\);\s*$/, '');
   const elements = {};
   const doc = {
