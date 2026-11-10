@@ -7,7 +7,7 @@ const read = (path) => readFile(join(root, path), 'utf8');
 const assert = (condition, message) => { if (!condition) throw new Error(message); };
 const sitemap = await read('sitemap.xml');
 const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-assert(urls.length === 84, 'Expected exactly 84 sitemap URLs');
+assert(urls.length === 85, 'Expected exactly 85 sitemap URLs');
 assert(new Set(urls).size === urls.length, 'Sitemap has duplicate URLs');
 assert(urls.every((url) => url.startsWith('https://apuda.app/')), 'Sitemap has an external URL');
 
@@ -19,8 +19,29 @@ assert(!urls.some((url) => url.includes('/nonsul/') || url.includes('/note/') ||
 // A <lastmod> must track a verifiable significant page update; we have no such per-URL source yet.
 assert(!sitemap.includes('<lastmod>'), 'Unverified sitemap lastmod must not be invented');
 const noteHtml = await read('note/index.html');
+const noteGuideHtml = await read('note-guide/index.html');
+const homepage = await read('index.html');
 const netlify = await read('netlify.toml');
 assert(/<meta name="robots" content="noindex">/.test(noteHtml), 'Patient note app needs noindex HTML fallback');
+assert(urls.includes('https://apuda.app/note-guide/'), 'Public note introduction missing from sitemap');
+assert(noteGuideHtml.includes('<link rel="canonical" href="https://apuda.app/note-guide/">'),
+  'Public note introduction must have self canonical');
+assert(noteGuideHtml.includes('<meta name="description"') &&
+  noteGuideHtml.includes('href="/note/"') && !noteGuideHtml.includes('<meta name="robots" content="noindex">'),
+  'Public note introduction must be discoverable with an app link and description');
+assert(!/<form\b|<input\b|<textarea\b/i.test(noteGuideHtml) &&
+  noteGuideHtml.includes('JSON 백업 파일은 암호화되지 않습니다') && noteGuideHtml.includes('자동 동기화되지 않습니다'),
+  'Public intro must not collect patient records or omit backup privacy warnings');
+const noteGuideScripts = [...noteGuideHtml.matchAll(/<script\b[^>]*>/g)].map((match) => match[0]);
+assert(noteGuideScripts.length === 1 && noteGuideScripts[0] === '<script type="application/ld+json">',
+  'Public intro must remain static and free of third-party tracking scripts');
+const noteGuideJsonLd = JSON.parse(noteGuideHtml.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
+assert(noteGuideJsonLd['@type'] === 'BreadcrumbList' &&
+  noteGuideJsonLd.itemListElement[1].item === 'https://apuda.app/note-guide/',
+  'Public intro breadcrumb structured data must match canonical');
+assert(homepage.includes("'암환자 노트 사용법','/note-guide/'"), 'Homepage note introduction link missing');
+const communityHtml = await read('community/index.html');
+assert(communityHtml.includes('href="/note-guide/"'), 'Static community page must link to note intro');
 assert(/for = "\/note\/"\s+\[headers\.values\]\s+X-Robots-Tag = "noindex"/.test(netlify),
   'Patient note clean URL must send noindex header');
 assert(/for = "\/note\/index\.html"\s+\[headers\.values\]\s+Cache-Control = "no-cache"\s+X-Robots-Tag = "noindex"/.test(netlify),
@@ -28,7 +49,6 @@ assert(/for = "\/note\/index\.html"\s+\[headers\.values\]\s+Cache-Control = "no-
 for (const path of ['/community/', '/family/', '/care/', '/pet/', '/farm/']) {
   assert(urls.includes('https://apuda.app' + path), 'Family or community URL missing from sitemap: ' + path);
 }
-const homepage = await read('index.html');
 assert(homepage.includes('"@type":"WebSite"') && homepage.includes('"alternateName"'), 'Homepage site-name structured data missing');
 assert(homepage.includes('href="/community/"') && homepage.includes('href="/family/"'), 'Homepage family or community link missing');
 const catalog = await read('library/first30/index.html');
@@ -114,4 +134,4 @@ for (const file of files) {
   questions += count;
 }
 assert(questions === 3000, 'Expected 3,000 original FAQ items');
-console.log('SEO verified: 84 URLs, 30 books, 30 static FAQ pages, 3,000 questions, note noindex, brand and family pages.');
+console.log('SEO verified: 85 URLs, 30 books, 30 static FAQ pages, 3,000 questions, note intro public and app noindex.');

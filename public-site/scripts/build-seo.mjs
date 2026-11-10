@@ -214,7 +214,7 @@ const paths = [
   '/library/first30/', '/library/faq/', '/library/review/',
   '/library/mini/', '/library/treatment-map/', '/library/drugs/',
   '/library/biomarkers/', '/library/regimens/', '/support/', '/support/v4/',
-  '/news/', '/news/oncology/', '/watch/',
+  '/news/', '/news/oncology/', '/note-guide/', '/watch/',
   ...[...books.values()].map((b) => '/library/first30/books/' + b.number + '.html'),
   ...records.map((r) => '/library/faq/' + r.slug + '/'),
 ];
