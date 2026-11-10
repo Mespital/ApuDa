@@ -47,6 +47,7 @@ async function main(){
     assert.match(await page.locator('#daily').innerText(),/식사량: 0%/);
     assert.match(await page.locator('#labs').innerText(),/단위 미상|unknown/);
     assert.match(await page.locator('#risks').innerText(),/QUESTIONS_OVER_THREE/);
+    assert.match(await page.locator('#fields').innerText(),/tempReadings\[\]\.value/);
     assert.equal(await page.evaluate(()=>localStorage.getItem('apuda_note_v3')),'synthetic-unchanged-marker');
     assert.equal(await page.evaluate(()=>sessionStorage.getItem('essay-private')),'synthetic-unchanged-marker');
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true,'mobile must not overflow horizontally');
