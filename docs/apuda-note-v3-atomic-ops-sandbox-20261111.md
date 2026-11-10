@@ -16,6 +16,9 @@
 
 - `node tools/tests/apuda-note-v3-atomic-ops-sandbox.cjs` — 결정적 **모의 IndexedDB** 두 연결로 저장, 동시 저장 충돌, 오래된 복원 차단, 원본 체크포인트 기록/검증, 되돌리기, abort 롤백, 삭제 표시, 삭제 이후 오래된 저장 차단, 이상 원문 거절, 진짜 DB 이름 접근 거절을 시험.
 - 이 테스트는 모의 트랜잭션을 사용하므로 실제 Chrome·Android·iOS의 처리나 브라우저 강제 종료 내구성을 입증하지 않는다.
+- `public-site/note/v3-atomic-ops-lab.html`, `v3-atomic-ops-lab.js`: 실제 브라우저의 별도 IndexedDB 연결 2개를 여는 **합성 데이터 전용** 11개 시나리오 UI. `noindex`, 제한적 CSP 및 가상 DB 이름 범위 제한을 적용하고 시험 후 DB 삭제를 확인한다.
+- `node tools/tests/apuda-note-v3-atomic-ops-browser.cjs`: 임시 localhost 서버 + 독립 Chromium 프로필(데스크톱 1280×900, 모바일 뷰포트 390×844) 자동 시험. `localStorage`, `sessionStorage` 사용을 차단하고 외부 요청·콘솔 스크립트 오류·합성 DB 정리 여부를 확인한다.
+- 2026-11-11 최초 로컬 실행: 컨테이너 Chromium 프로세스가 OS `socket() failed: Operation not permitted`로 시작되지 않아 **브라우저 통과 여부 미확인**. 모의 IndexedDB 테스트는 PASS. 별도 Deploy Preview에서 UI를 통한 실브라우저 검증 필요.
 
 ## 인수 기준 / 해소하지 못한 P0
 
