@@ -31,8 +31,13 @@
     .top nav a{display:inline-flex;align-items:center;min-height:44px;padding:5px 13px;text-decoration:none;border-radius:10px;color:#314C67;font-weight:650}
     .top nav a:hover{background:var(--soft);color:var(--brand-dark)}
     .wrap{max-width:1100px;margin:0 auto;padding:25px 20px 76px}
-    .crumb{color:#5C6F83;font-size:15px;margin-bottom:19px}
+    .reading-tools{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:19px}
+    .crumb{color:#5C6F83;font-size:15px}
     .crumb a{color:inherit}
+    .text-size{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:44px;border-radius:11px;padding:8px 15px;background:#fff;border:1px solid #B5D0F2;color:#1855D8;font-family:inherit;font-size:16px;font-weight:800;cursor:pointer}
+    .text-size:hover{background:#EAF3FF}
+    .text-size[aria-pressed="true"]{background:#1855D8;color:#fff;border-color:#1855D8}
+    .text-size:focus-visible{outline:3px solid #B46D12;outline-offset:4px}
     .hero{background:radial-gradient(circle at 97% 2%,#CCE2FF 0,transparent 36%),linear-gradient(125deg,#fff 12%,#EDF5FF 100%);border:1px solid #D4E5FB;border-radius:28px;padding:clamp(26px,4.7vw,55px);position:relative;overflow:hidden;box-shadow:0 14px 38px rgba(34,80,149,.055)}
     .hero::before{content:"";position:absolute;top:0;left:0;width:145px;height:6px;background:linear-gradient(90deg,var(--brand) 0 74%,var(--gold) 74%);border-radius:0 0 8px 0}
     .hero-content{position:relative;z-index:1;max-width:820px}
@@ -80,10 +85,18 @@
     .disclaimer strong{display:block;margin-bottom:5px;color:var(--navy);font-size:18px}
     .disclaimer p:last-child{margin-bottom:0}
     footer{font-size:15px;color:#526B82;margin-top:39px;border-top:1px solid var(--line);padding-top:23px}
+    html.large-text body{font-size:22px}
+    html.large-text h1{font-size:clamp(36px,5vw,54px)}
+    html.large-text h2{font-size:clamp(27px,3.6vw,35px)}
+    html.large-text h3{font-size:25px}
+    html.large-text .lead{font-size:23px}
+    html.large-text .note,html.large-text .source,html.large-text .disclaimer,html.large-text .tile .btn,html.large-text footer{font-size:19px}
+    html.large-text .btn{font-size:20px}
+    html.large-text .trust,html.large-text .crumb,html.large-text .kicker,html.large-text .eyebrow,html.large-text .top nav,html.large-text .text-size{font-size:18px}
     @media(max-width:790px){.grid{grid-template-columns:1fr}.two{grid-template-columns:1fr}.tile{min-height:0}.top nav{margin-left:0}.two>.box{margin-top:0}.two>.box:first-child{margin-top:16px}}
-    @media(max-width:480px){.wrap{padding:22px 15px 60px}.top{padding:13px 15px}.top nav{width:100%;gap:2px}.top nav a{padding:6px 10px}.hero{padding:30px 21px}.quick .btn{width:100%}.tile .btn{align-self:stretch}.trust{display:grid;grid-template-columns:1fr;gap:9px}.section{margin-top:41px}.tile{padding:21px}}
+    @media(max-width:480px){.wrap{padding:22px 15px 60px}.top{padding:13px 15px}.top nav{width:100%;gap:2px}.top nav a{padding:6px 10px}.reading-tools{align-items:flex-start}.hero{padding:30px 21px}.quick .btn{width:100%}.tile .btn{align-self:stretch}.trust{display:grid;grid-template-columns:1fr;gap:9px}.section{margin-top:41px}.tile{padding:21px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
-    @media print{body{background:#fff}.top nav,.quick,.tile .btn{display:none}.hero,.tile,.box{box-shadow:none}.wrap{max-width:none}}
+    @media print{body{background:#fff}.top nav,.quick,.tile .btn,.text-size{display:none}.hero,.tile,.box{box-shadow:none}.wrap{max-width:none}}
   </style>
 </head>
 <body>
@@ -93,7 +106,10 @@
     <nav aria-label="주요 메뉴"><a href="/family/">패밀리</a><a href="/about/">소개</a><a href="/library/first30/">암 안내서</a></nav>
   </header>
   <main id="main" class="wrap">
-    <nav class="crumb" aria-label="현재 위치"><a href="/">홈</a> › <a href="/family/">ApuDa 패밀리</a> › 기억·인지건강</nav>
+    <div class="reading-tools">
+      <nav class="crumb" aria-label="현재 위치"><a href="/">홈</a> › <a href="/family/">ApuDa 패밀리</a> › 기억·인지건강</nav>
+      <button class="text-size" id="text-size-toggle" type="button" aria-pressed="false"><span aria-hidden="true">가+</span> 글자 크게 보기</button>
+    </div>
     <section class="hero" aria-labelledby="page-title">
       <div class="hero-content">
         <div class="eyebrow">APUDA MEMORY · FAMILY CARE</div>
@@ -180,5 +196,14 @@
     <aside class="disclaimer" aria-label="중요 안내"><strong>중요한 안내</strong><p>ApuDa Memory는 일반적인 환자·가족 교육과 공식 서비스 연결을 위한 안내 페이지입니다. 개인의 치매 여부를 평가·진단하거나 치료를 처방하지 않습니다. 의학적 판단은 의료진과 상의하세요. 이 페이지에서는 증상·검사결과·건강정보를 입력받거나 저장하지 않습니다.</p></aside>
     <footer>© ApuDa · <a href="/family/">ApuDa 패밀리</a> · <a href="/about/">서비스 소개</a><p>정보 확인일: 2026-11-10 · 관련 정책과 서비스 제공 범위는 변경될 수 있으므로 공식기관의 최신 안내를 확인하세요.</p></footer>
   </main>
+  <script>
+    (() => {
+      const button = document.getElementById('text-size-toggle');
+      button.addEventListener('click', () => {
+        const large = document.documentElement.classList.toggle('large-text');
+        button.setAttribute('aria-pressed', String(large));
+      });
+    })();
+  </script>
 </body>
 </html>
