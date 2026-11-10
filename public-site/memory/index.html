@@ -208,6 +208,7 @@
         </fieldset>
         <div class="progress" aria-hidden="true"><span id="habit-progress"></span></div>
         <p id="habit-status" role="status" aria-live="polite"><strong>0 / 3개 실천</strong> · 오늘 가능한 것부터 시작해 보세요.</p>
+        <div class="result is-visible" style="margin-top:19px" aria-label="오늘의 활동 제안"><strong>오늘의 5분 활동 제안</strong><p id="activity-suggestion" role="status" aria-live="polite">가까운 사람과 최근 즐거웠던 일 한 가지를 이야기해 보세요. 대화가 어렵다면 편안히 듣는 것만으로도 좋습니다.</p><button class="btn secondary" type="button" id="activity-next">다른 활동 제안 보기</button></div>
         <p class="subnote">이 도구는 훈련 효과를 측정하거나 개별 치매 예방 효과를 보장하지 않습니다. 건강 상태에 맞는 활동을 의료진과 상의하세요.</p>
       </div>
     </section>
@@ -262,7 +263,7 @@
         </ol>
         <p class="source">출처: <a href="https://www.nid.or.kr/" target="_blank" rel="noopener noreferrer">중앙치매센터</a> 및 공식 치매안심센터 안내</p>
       </div>
-      <div class="callout" role="note"><h3>갑자기 혼란이 심해졌거나 급격한 변화가 있다면</h3><p>평소와 다른 의식·언어·행동의 급격한 변화는 단순한 기억력 문제로 넘기지 마세요. 앱 검사를 기다리지 말고 즉시 의료기관의 평가를 받으세요. 응급 상황은 119에 연락하세요.</p><a class="btn" href="tel:119">긴급 도움 119</a></div>
+      <div class="callout" role="note"><h3>갑자기 혼란이 심해졌거나 급격한 변화가 있다면</h3><p>평소와 다른 의식·언어·행동의 급격한 변화는 단순한 기억력 문제로 넘기지 마세요. 자가 체크를 기다리지 말고 즉시 의료기관의 평가를 받으세요. 응급 상황은 119에 연락하세요.</p><a class="btn" href="tel:119">긴급 도움 119</a></div>
     </section>
 
     <section id="family" class="section" aria-labelledby="family-title">
@@ -351,6 +352,17 @@
         $('safety-status').textContent = `${safety} / 4개 준비 · 이 체크 내용은 저장되지 않습니다.`;
       }
       [...habitInputs, ...safetyInputs].forEach(input => input.addEventListener('change', updateChecklist));
+      const activities = [
+        '가까운 사람과 최근 즐거웠던 일 한 가지를 이야기해 보세요. 대화가 어렵다면 편안히 듣는 것만으로도 좋습니다.',
+        '좋아하는 노래 한 곡을 듣고 떠오르는 장소나 추억을 자유롭게 이야기해 보세요.',
+        '익숙한 사진을 한 장 보며 그때의 일상을 천천히 떠올려 보세요. 잘 기억나지 않아도 괜찮습니다.',
+        '짧은 글을 함께 읽거나 들어보고 마음에 남는 문장 하나를 나누어 보세요.'
+      ];
+      let activityIndex = 0;
+      $('activity-next').addEventListener('click', () => {
+        activityIndex = (activityIndex + 1) % activities.length;
+        $('activity-suggestion').textContent = activities[activityIndex];
+      });
 
       const diaryKey = 'apuda-memory-care-diary-v1';
       const diaryForm = $('diary-form');
