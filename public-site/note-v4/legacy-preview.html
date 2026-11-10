@@ -10,6 +10,7 @@
   <script defer src="../note/note-storage.js"></script>
   <script defer src="v3-compat-audit.js"></script>
   <script defer src="v3-lossless-stage.js"></script>
+  <script defer src="v3-v4-field-reconcile.js"></script>
   <script defer src="legacy-preview.js"></script>
 </head>
 <body>
@@ -28,6 +29,7 @@
     <p id="status" class="status" role="status" aria-live="polite">가상 기록 버튼을 눌러 시작하세요.</p>
     <div id="screen" hidden>
       <section class="block" aria-labelledby="summary-title"><h2 id="summary-title">한눈에 보는 기록</h2><div id="summary" class="stat-grid"></div><p id="integrity" class="integrity"></p></section>
+      <section class="block" aria-labelledby="fields-title"><h2 id="fields-title">V3 → V4 필드별 대조표</h2><p class="description">원본에 실제로 등장한 필드 구조를 세어 V4에서 표현할 수 있는 후보와 설계가 필요한 항목을 구분합니다. 표현 후보도 자동 이전 승인이라는 뜻은 아닙니다.</p><div id="fieldSummary" class="stat-grid"></div><div id="fields" class="stack field-list"></div></section>
       <section class="block" aria-labelledby="daily-title"><h2 id="daily-title">날짜별 건강 기록</h2><p class="description">체온은 최근 측정값과 하루 최고 측정값을 구분합니다. 통증 0점과 미기록도 구별합니다.</p><div id="daily" class="stack"></div></section>
       <section class="block" aria-labelledby="questions-title"><h2 id="questions-title">진료 질문 전체</h2><p class="description">세 개를 넘는 질문도 지우거나 누락하지 않습니다.</p><div id="questions" class="stack"></div></section>
       <section class="block" aria-labelledby="meds-title"><h2 id="meds-title">등록된 약</h2><div id="meds" class="stack"></div></section>
