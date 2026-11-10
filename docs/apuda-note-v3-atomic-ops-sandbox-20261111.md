@@ -19,6 +19,7 @@
 - `public-site/note/v3-atomic-ops-lab.html`, `v3-atomic-ops-lab.js`: 실제 브라우저의 별도 IndexedDB 연결 2개를 여는 **합성 데이터 전용** 11개 시나리오 UI. `noindex`, 제한적 CSP 및 가상 DB 이름 범위 제한을 적용하고 시험 후 DB 삭제를 확인한다.
 - `node tools/tests/apuda-note-v3-atomic-ops-browser.cjs`: 임시 localhost 서버 + 독립 Chromium 프로필(데스크톱 1280×900, 모바일 뷰포트 390×844) 자동 시험. `localStorage`, `sessionStorage` 사용을 차단하고 외부 요청·콘솔 스크립트 오류·합성 DB 정리 여부를 확인한다.
 - 2026-11-11 최초 로컬 실행: 컨테이너 Chromium 프로세스가 OS `socket() failed: Operation not permitted`로 시작되지 않아 **브라우저 통과 여부 미확인**. 모의 IndexedDB 테스트는 PASS. 별도 Deploy Preview에서 UI를 통한 실브라우저 검증 필요.
+- **별도 실브라우저 검증 완료(2026-11-11 KST):** Netlify PR #294의 격리 미리보기 `https://deploy-preview-294--apuda-total.netlify.app/note/v3-atomic-ops-lab.html`을 Chrome에서 열고 버튼을 직접 실행. 결과 **11/11 PASS, 0 FAIL, 합성 DB 삭제 확인**. 두 별도 DB 연결의 동시 저장 1승·1충돌, 원문 확장 필드, 구버전 복원/복구 차단, SHA-256 체크포인트, 검증된 복구, abort 롤백, 삭제 tombstone, 삭제 후 오래된 저장 거부, 잘못된 DB명·입력 거부를 확인. **자동화 스크립트의 로컬 Chromium 실행 제한은 별개로 미해결**이고 실제 모바일 화면·기기 종료·저장 공간 부족 상황은 아직 미검증.
 
 ## 인수 기준 / 해소하지 못한 P0
 
