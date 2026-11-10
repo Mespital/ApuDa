@@ -33,7 +33,7 @@
       ['가상 쓰기 시도',s.writeAttempts+'회'],
       ['가상 질문',data.questionCount+'개 (잘라내지 않음)']
     ].forEach(function(pair){var box=doc.createElement('div');add(box,'dt',pair[0]);add(box,'dd',pair[1]);indicators.appendChild(box);});
-    status.className='status';status.textContent='가상 '+o.label+' · 운영 기록에는 접근하지 않았습니다.';
+    status.className='status';status.textContent=o.label+' · 가상 데이터만 사용했고 운영 기록에는 접근하지 않았습니다.';
   }
   button.addEventListener('click',async function(){
     button.disabled=true;status.className='status';status.textContent='가상 시나리오를 검사하는 중입니다.';
