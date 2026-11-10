@@ -16,10 +16,11 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"아프다 ApuDa","item":"https://apuda.app/"},{"@type":"ListItem","position":2,"name":"암환자 노트 이용 안내","item":"https://apuda.app/note-guide/"}]}</script>
 <style>
 :root{font-family:system-ui,-apple-system,"Noto Sans KR","Malgun Gothic",sans-serif;color:#173451;background:#f3f8fe}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;line-height:1.75}a{color:#145ab5}a:focus-visible{outline:3px solid #efad48;outline-offset:4px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;line-height:1.75;overflow-wrap:break-word}a{color:#145ab5}a:focus-visible,summary:focus-visible{outline:3px solid #efad48;outline-offset:4px}
+.skip{position:absolute;top:8px;left:8px;z-index:10;background:#fff;color:#173451;padding:10px 16px;border:2px solid #145ab5;border-radius:10px;transform:translateY(-160%)}.skip:focus{transform:none}
 .top{background:#fff;border-bottom:1px solid #dbe7f5;padding:14px max(18px,calc((100vw - 1040px)/2));display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-.top a{text-decoration:none;font-weight:800}.brand{font-size:21px}.top nav{margin-left:auto;display:flex;gap:16px;font-size:14px}
-.wrap{max-width:1040px;margin:auto;padding:26px 18px 70px}.crumb{font-size:13px;color:#657e94;margin-bottom:16px}.crumb a{color:inherit}
+.top a{text-decoration:none;font-weight:800}.brand{font-size:21px;display:inline-flex;align-items:center;min-height:44px}.top nav{margin-left:auto;display:flex;gap:16px;flex-wrap:wrap;font-size:14px}.top nav a{display:inline-flex;align-items:center;min-height:44px}
+.wrap{max-width:1040px;margin:auto;padding:26px 18px 70px}.crumb{font-size:13px;color:#4b667d;margin-bottom:16px}.crumb a{color:inherit;display:inline-flex;align-items:center;min-height:44px}
 .hero{background:linear-gradient(130deg,#fff 4%,#e5f1ff);border:1px solid #d5e7fb;border-radius:25px;padding:clamp(25px,5vw,56px)}
 .eyebrow{font-size:12px;font-weight:850;letter-spacing:.1em;color:#1668cf}h1{font-size:clamp(30px,5vw,48px);line-height:1.27;letter-spacing:-.045em;margin:10px 0 15px}h2{font-size:clamp(23px,3vw,28px);letter-spacing:-.03em;margin:0 0 14px}h3{font-size:19px;letter-spacing:-.025em;margin:0 0 9px}
 .lead{color:#4c667f;font-size:clamp(16px,2vw,19px);max-width:760px;margin:0 0 25px}.actions{display:flex;gap:11px;flex-wrap:wrap}
@@ -31,16 +32,17 @@
 .steps li{counter-increment:step;background:#fff;border:1px solid #dae7f4;border-radius:18px;padding:20px}.steps li:before{content:counter(step);display:grid;place-items:center;width:31px;height:31px;border-radius:50%;background:#eaf2ff;color:#145ab5;font-weight:900;margin-bottom:10px}
 .steps p{margin:0;color:#536d83}.notice{background:#fffaf0;border:1px solid #f1dfb5;border-left:5px solid #d49a24;border-radius:14px;padding:20px 23px;margin-top:24px}.notice p{margin:6px 0 0;color:#674e21}
 .privacy{background:#eaf4ff;border:1px solid #cbdff6;border-radius:20px;padding:24px}.privacy ul{padding-left:22px;margin:10px 0 0}.privacy li{margin:8px 0}
-.faq details{background:#fff;border:1px solid #dbe7f4;border-radius:14px;padding:14px 18px;margin:11px 0}.faq summary{font-weight:800;cursor:pointer;min-height:34px}.faq p{margin:8px 0 2px;color:#4e6880}
-.related{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}.related a{font-weight:750}
-footer{border-top:1px solid #d7e4f1;margin-top:38px;padding-top:20px;font-size:13px;color:#58768a}
+.faq details{background:#fff;border:1px solid #dbe7f4;border-radius:14px;padding:14px 18px;margin:11px 0}.faq summary{font-weight:800;cursor:pointer;min-height:44px;padding:8px 0}.faq p{margin:8px 0 2px;color:#4e6880}
+.privacy a,.related a,footer a{display:inline-flex;align-items:center;min-height:44px}.related{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}.related a{font-weight:750}
+footer{border-top:1px solid #d7e4f1;margin-top:38px;padding-top:20px;font-size:13px;color:#4e6c81}
 @media(max-width:720px){.grid,.steps{grid-template-columns:1fr}.top nav{margin-left:0;gap:14px}.hero{padding:26px 21px}.card{padding:20px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
+<a class="skip" href="#main-content">본문으로 바로가기</a>
 <header class="top"><a class="brand" href="/">아프다 ApuDa</a><nav aria-label="주요 메뉴"><a href="/library/first30/">암 안내서</a><a href="/library/faq/">암 FAQ</a><a href="/community/">아프다 카페</a></nav></header>
-<main class="wrap">
+<main class="wrap" id="main-content" tabindex="-1">
   <nav class="crumb" aria-label="현재 위치"><a href="/">홈</a> › 암환자 노트 이용 안내</nav>
   <section class="hero" aria-labelledby="hero-title">
     <div class="eyebrow">APUDA NOTE · 무료 기록 도구</div>

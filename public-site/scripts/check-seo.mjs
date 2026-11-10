@@ -32,6 +32,30 @@ assert(noteGuideHtml.includes('<meta name="description"') &&
 assert(!/<form\b|<input\b|<textarea\b/i.test(noteGuideHtml) &&
   noteGuideHtml.includes('JSON 백업 파일은 암호화되지 않습니다') && noteGuideHtml.includes('자동 동기화되지 않습니다'),
   'Public intro must not collect patient records or omit backup privacy warnings');
+assert(noteGuideHtml.includes('<a class="skip" href="#main-content">본문으로 바로가기</a>') &&
+  noteGuideHtml.includes('<main class="wrap" id="main-content" tabindex="-1">') &&
+  noteGuideHtml.includes('.skip:focus{transform:none}') &&
+  noteGuideHtml.includes('summary:focus-visible'),
+  'Public intro must retain keyboard skip navigation and visible FAQ focus');
+assert(noteGuideHtml.includes('.top nav a{display:inline-flex;align-items:center;min-height:44px}') &&
+  noteGuideHtml.includes('.faq summary{font-weight:800;cursor:pointer;min-height:44px') &&
+  noteGuideHtml.includes('.privacy a,.related a,footer a{display:inline-flex;align-items:center;min-height:44px}'),
+  'Public intro must retain 44px mobile tap targets for small controls');
+const luminance = (hex) => {
+  const rgb = hex.slice(1).match(/../g).map((part) => parseInt(part, 16) / 255);
+  const [r, g, b] = rgb.map((channel) => channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4);
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+};
+const contrast = (foreground, background) => {
+  const values = [luminance(foreground), luminance(background)].sort((a, b) => b - a);
+  return (values[0] + 0.05) / (values[1] + 0.05);
+};
+const surfaceColor = noteGuideHtml.match(/:root\{[^}]*background:(#[0-9a-f]{6})/i)?.[1];
+const breadcrumbColor = noteGuideHtml.match(/\.crumb\{[^}]*color:(#[0-9a-f]{6})/i)?.[1];
+const footerColor = noteGuideHtml.match(/footer\{[^}]*color:(#[0-9a-f]{6})/i)?.[1];
+assert(surfaceColor && breadcrumbColor && footerColor &&
+  contrast(breadcrumbColor, surfaceColor) >= 4.5 && contrast(footerColor, surfaceColor) >= 4.5,
+  'Public intro small secondary text must retain WCAG 4.5:1 contrast');
 const noteGuideScripts = [...noteGuideHtml.matchAll(/<script\b[^>]*>/g)].map((match) => match[0]);
 assert(noteGuideScripts.length === 1 && noteGuideScripts[0] === '<script type="application/ld+json">',
   'Public intro must remain static and free of third-party tracking scripts');
