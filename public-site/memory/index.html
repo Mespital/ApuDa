@@ -229,7 +229,7 @@
         <div class="divider"></div>
         <h3>내 기기에 저장된 기록 <span id="diary-count" class="feature-badge">0건</span></h3>
         <div id="diary-list" class="entry-list"></div>
-        <p class="subnote" style="margin-top:16px">최근 최대 20건까지 저장합니다. 중요한 기록은 수시로 백업하세요. 동일 브라우저라도 시크릿 모드나 기기 변경 시 내용이 공유되지 않습니다.</p>
+        <p class="subnote" style="margin-top:16px">최대 20건까지 저장하며 <strong>기존 기록을 자동 삭제하지 않습니다.</strong> 한도에 도달하면 백업 후 불필요한 기록을 직접 정리하세요. 시크릿 모드나 다른 기기로 기록이 자동 공유되지 않습니다.</p>
       </div>
     </section>
 
@@ -373,10 +373,16 @@
       function readEntries() {
         try {
           const saved = JSON.parse(localStorage.getItem(diaryKey) || '[]');
-          if (Array.isArray(saved)) entries = saved.filter(item => item && typeof item.id === 'string' && typeof item.date === 'string' && typeof item.text === 'string').slice(0,20);
+          if (Array.isArray(saved) && saved.every(item => item && typeof item.id === 'string' && typeof item.date === 'string' && typeof item.text === 'string')) {
+            entries = saved;
+            storageAvailable = true;
+          } else {
+            storageAvailable = false;
+            diaryStatus.textContent = '저장된 기록 형식을 읽을 수 없습니다. 기존 데이터를 보호하기 위해 새 기록 저장을 중단했습니다.';
+          }
         } catch (error) {
           storageAvailable = false;
-          diaryStatus.textContent = '브라우저 저장소를 읽을 수 없습니다. 이 환경에서는 기록 저장 기능을 이용할 수 없습니다.';
+          diaryStatus.textContent = '브라우저 저장소를 읽을 수 없거나 기록이 손상되었습니다. 데이터 보호를 위해 새 기록 저장을 중단했습니다.';
         }
       }
       function persistEntries() {
@@ -414,6 +420,8 @@
           remove.setAttribute('aria-label', `${item.date} 기록 삭제`);
           remove.addEventListener('click', () => {
             if (!window.confirm('이 기기에서 해당 기록을 삭제할까요? 삭제한 기록은 복구할 수 없습니다.')) return;
+            readEntries();
+            if (!storageAvailable) return;
             const next = entries.filter(entry => entry.id !== item.id);
             const before = entries;
             entries = next;
@@ -437,6 +445,12 @@
           diaryStatus.textContent = '현재 브라우저에서 저장소를 사용할 수 없습니다. 다른 브라우저에서 다시 시도하세요.';
           return;
         }
+        readEntries();
+        if (!storageAvailable) return;
+        if (entries.length >= 20) {
+          diaryStatus.textContent = '기록이 20건에 도달했습니다. 기존 기록은 자동 삭제하지 않습니다. 먼저 텍스트 백업을 받은 후 불필요한 기록을 직접 삭제해 주세요.';
+          return;
+        }
         const date = $('diary-date').value;
         const note = $('diary-text').value.trim();
         if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || !note || note.length > 1000) {
@@ -445,7 +459,7 @@
         }
         const item = {id:`${Date.now()}-${Math.random().toString(36).slice(2,9)}`,date,text:note};
         const before = entries;
-        entries = [item, ...entries].slice(0,20);
+        entries = [item, ...entries];
         if (!persistEntries()) { entries = before; return; }
         renderEntries();
         $('diary-text').value = '';
@@ -453,6 +467,8 @@
         diaryStatus.textContent = '기록을 현재 브라우저에 저장했습니다. 다른 기기와 동기화되지 않습니다.';
       });
       $('diary-export').addEventListener('click', () => {
+        readEntries();
+        if (!storageAvailable) return;
         if (!entries.length) {diaryStatus.textContent = '백업할 저장 기록이 없습니다.';return;}
         const content = ['ApuDa Memory 돌봄 기록 - 개인 기기 백업','민감정보가 포함될 수 있으므로 파일 보관에 주의하세요.','',...entries.flatMap(item => [`[${item.date}]`,item.text,''])].join('\n');
         const url = URL.createObjectURL(new Blob([content],{type:'text/plain;charset=utf-8'}));
@@ -462,6 +478,12 @@
         anchor.click();
         setTimeout(() => URL.revokeObjectURL(url), 1000);
         diaryStatus.textContent = '텍스트 백업 파일 다운로드를 요청했습니다. 저장된 파일은 다른 사람이 볼 수 있으니 안전하게 보관하세요.';
+      });
+      window.addEventListener('storage', (event) => {
+        if (event.key !== diaryKey && event.key !== null) return;
+        readEntries();
+        renderEntries();
+        if (storageAvailable) diaryStatus.textContent = '다른 탭에서 돌봄 기록이 변경되어 최신 목록을 다시 불러왔습니다.';
       });
     })();
   </script>
