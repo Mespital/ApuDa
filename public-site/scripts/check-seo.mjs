@@ -43,6 +43,22 @@ for (let n = 1; n <= 30; n++) {
   assert(urls.includes(url), 'Book not in sitemap: ' + number);
   assert(html.includes('<link rel="canonical" href="' + url + '">'), 'Book canonical missing: ' + number);
   assert(html.includes('<meta name="description"'), 'Book description missing: ' + number);
+  const articleMatch = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+  assert(articleMatch, 'Book Article JSON-LD missing: ' + number);
+  const article = JSON.parse(articleMatch[1]);
+  const metaDescription = html.match(/<meta name="description" content="([^"]+)">/)?.[1];
+  const htmlEscaped = String(article.description ?? '').replaceAll('&', '&amp;').replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;');
+  assert(article['@type'] === 'Article' && article.mainEntityOfPage === url,
+    'Book JSON-LD article identity mismatch: ' + number);
+  assert(article.author?.['@type'] === 'Organization' && article.author.name === 'ApuDa' &&
+    article.publisher?.name === 'ApuDa', 'Book JSON-LD organization attribution mismatch: ' + number);
+  assert(article.description && article.isAccessibleForFree === true &&
+    article.articleSection === '환자교육', 'Book JSON-LD patient guide attributes missing: ' + number);
+  assert(metaDescription === htmlEscaped,
+    'Book JSON-LD description differs from the visible SEO description: ' + number);
+  assert(!article.datePublished && !article.dateModified && !article.reviewedBy,
+    'Book JSON-LD must not invent unverified dates or clinical reviewers: ' + number);
   assert(html.includes('출처를 첨부한 환자교육용 참고정보'), 'Medical reference notice removed: ' + number);
   const slug = bookSlugs.get(number);
   assert(html.includes('class="apuda-faq-shortcut" href="/library/faq/' + slug + '/"'),
@@ -52,6 +68,12 @@ for (let n = 1; n <= 30; n++) {
 }
 
 const faqDir = join(root, 'library/faq/data');
+const faqIndex = await read('library/faq/index.html');
+const faqIndexCanonicals = [...faqIndex.matchAll(/<link rel="canonical" href="([^"]+)">/g)];
+assert(faqIndexCanonicals.length === 1 && faqIndexCanonicals[0][1] === 'https://apuda.app/library/faq/',
+  'Interactive FAQ index must retain one server-delivered self canonical');
+assert(!faqIndex.includes('APUDA SEO CANONICAL') && !faqIndex.includes('link[rel=canonical]'),
+  'Interactive FAQ index must not rewrite canonical using JavaScript');
 const files = (await readdir(faqDir)).filter((name) => name.endsWith('.json'));
 assert(files.length === 30, 'Expected 30 FAQ data files');
 let questions = 0;
