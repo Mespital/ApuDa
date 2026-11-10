@@ -41,7 +41,7 @@
     .hero{background:radial-gradient(circle at 97% 2%,#CCE2FF 0,transparent 36%),linear-gradient(125deg,#fff 12%,#EDF5FF 100%);border:1px solid #D4E5FB;border-radius:28px;padding:clamp(26px,4.7vw,55px);position:relative;overflow:hidden;box-shadow:0 14px 38px rgba(34,80,149,.055)}
     .hero::before{content:"";position:absolute;top:0;left:0;width:145px;height:6px;background:linear-gradient(90deg,var(--brand) 0 74%,var(--gold) 74%);border-radius:0 0 8px 0}
     .hero-content{position:relative;z-index:1;max-width:820px}
-    .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:14px;color:#1855D8;font-weight:850;letter-spacing:.08em;background:#E1EEFF;padding:7px 12px;border-radius:999px}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:14px;color:#1855D8;font-weight:850;letter-spacing:.08em;background:#E1EEFF;padding:7px 12px;border-radius:999px;max-width:100%;min-width:0}
     .eyebrow::before{content:"";width:7px;height:7px;background:var(--gold);border-radius:50%}
     h1{font-size:clamp(32px,4.4vw,49px);line-height:1.28;letter-spacing:-.055em;margin:19px 0 18px;color:var(--navy);font-weight:880;word-break:keep-all}
     h2{font-size:clamp(24px,3vw,31px);line-height:1.4;letter-spacing:-.035em;margin:0 0 13px;color:var(--navy);word-break:keep-all}
@@ -114,6 +114,8 @@
     .backup-tools .field input[type="file"]{padding:10px;background:#fff;font-size:16px;min-width:0}
     .backup-tools .field input[type="file"]::file-selector-button{min-height:40px;margin-right:10px;border:1px solid #A7BFE1;border-radius:9px;background:#EAF3FF;color:#1855D8;font:inherit;font-weight:750;padding:6px 12px;cursor:pointer}
     .backup-tools .subnote{margin-top:10px}
+    .backup-status{min-height:24px;border-left:3px solid var(--brand);padding-left:11px;overflow-wrap:anywhere}
+    .backup-status:empty{min-height:0;margin:0;padding-left:0;border-left:0}
     .entry-list{display:grid;gap:12px;margin-top:15px}
     .entry{border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:#F9FBFF}
     .entry time{font-weight:800;color:var(--navy)}
@@ -135,7 +137,7 @@
     html.large-text .btn{font-size:20px}
     html.large-text .trust,html.large-text .crumb,html.large-text .kicker,html.large-text .eyebrow,html.large-text .top nav,html.large-text .text-size{font-size:18px}
     @media(max-width:790px){.grid,.choices{grid-template-columns:1fr}.two{grid-template-columns:1fr}.tile{min-height:0}.top nav{margin-left:0}.two>.box{margin-top:0}.two>.box:first-child{margin-top:16px}}
-    @media(max-width:480px){.wrap{padding:22px 15px 60px}.top{padding:13px 15px}.top nav{width:100%;gap:2px}.top nav a{padding:6px 10px}.reading-tools{align-items:flex-start}.hero{padding:30px 21px}.quick .btn,.action-row .btn{width:100%}.tile .btn{align-self:stretch}.trust{display:grid;grid-template-columns:1fr;gap:9px}.section{margin-top:41px}.tile{padding:21px}.backup-tools{padding:7px 12px 17px}}
+    @media(max-width:480px){.wrap{padding:22px 15px 60px}.top{padding:13px 15px}.top nav{width:100%;gap:2px}.top nav a{padding:6px 10px}.reading-tools{align-items:flex-start}.hero{padding:30px 21px}.eyebrow .mobile-optional{display:none}.quick .btn,.action-row .btn{width:100%}.tile .btn{align-self:stretch}.trust{display:grid;grid-template-columns:1fr;gap:9px}.section{margin-top:41px}.tile{padding:21px}.backup-tools{padding:7px 12px 17px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
     @media print{body{background:#fff}.top nav,.quick,.tile .btn,.text-size,.action-row,.entry button{display:none}.hero,.tile,.box{box-shadow:none}.wrap{max-width:none}}
   </style>
@@ -153,7 +155,7 @@
     </div>
     <section class="hero" aria-labelledby="page-title">
       <div class="hero-content">
-        <div class="eyebrow">APUDA MEMORY · FAMILY CARE</div>
+        <div class="eyebrow">APUDA MEMORY<span class="mobile-optional"> · FAMILY CARE</span></div>
         <h1 id="page-title">기억이 걱정될 때,<br>가족이 함께 챙기는 하루</h1>
         <p class="lead">기억 변화가 궁금할 때, 뇌 건강을 챙기고 싶을 때, 가족 돌봄이 필요할 때. 아프다 안에서 네 가지 실용 도구를 바로 이용해 보세요.</p>
         <div class="quick">
@@ -239,6 +241,7 @@
           <div class="field"><label for="diary-import-file">복원할 JSON 백업 파일 선택</label><input id="diary-import-file" type="file" accept=".json,application/json" aria-describedby="diary-import-hint"></div>
           <p class="subnote" id="diary-import-hint">복원은 새 기록만 <strong>추가</strong>하며 기존 기록은 덮어쓰거나 삭제하지 않습니다. 같은 기록 ID는 건너뛰고 전체 20건을 초과하면 복원하지 않습니다.</p>
           <div class="action-row"><button class="btn secondary" type="button" id="diary-import">선택한 기록 추가 복원</button></div>
+          <p id="diary-backup-status" class="subnote backup-status" role="status" aria-live="polite" aria-atomic="true"></p>
           <p class="subnote"><strong>보안 유의:</strong> JSON·TXT 파일은 암호화되지 않습니다. 다른 사람이 볼 수 있는 공유 폴더·메신저에 저장하지 마세요. 파일 내용은 이 브라우저에서 처리하며 ApuDa 서버로 전송되지 않습니다.</p>
         </details>
         <div class="divider"></div>
@@ -489,20 +492,24 @@
         document.body.append(anchor);
         anchor.click();
         anchor.remove();
-        setTimeout(() => URL.revokeObjectURL(url), 1000);
+        setTimeout(() => URL.revokeObjectURL(url), 60000);
+      }
+      function reportBackupStatus(message) {
+        diaryStatus.textContent = '';
+        $('diary-backup-status').textContent = message;
       }
       $('diary-export').addEventListener('click', () => {
         readEntries();
-        if (!storageAvailable) return;
-        if (!entries.length) {diaryStatus.textContent = '백업할 저장 기록이 없습니다.';return;}
+        if (!storageAvailable) {reportBackupStatus(diaryStatus.textContent);return;}
+        if (!entries.length) {reportBackupStatus('백업할 저장 기록이 없습니다.');return;}
         const content = ['ApuDa Memory 돌봄 기록 - 개인 기기 백업','민감정보가 포함될 수 있으므로 파일 보관에 주의하세요.','',...entries.flatMap(item => [`[${item.date}]`,item.text,''])].join('\n');
         downloadDiaryFile(content, `apuda-memory-diary-${localDate}.txt`, 'text/plain;charset=utf-8');
-        diaryStatus.textContent = '읽기용 TXT 파일 다운로드를 요청했습니다. TXT는 앱으로 복원할 수 없으니 JSON 백업도 보관하세요.';
+        reportBackupStatus('읽기용 TXT 파일 다운로드를 요청했습니다. TXT는 앱으로 복원할 수 없으니 JSON 백업도 보관하세요.');
       });
       $('diary-export-json').addEventListener('click', () => {
         readEntries();
-        if (!storageAvailable) return;
-        if (!entries.length) {diaryStatus.textContent = '백업할 저장 기록이 없습니다.';return;}
+        if (!storageAvailable) {reportBackupStatus(diaryStatus.textContent);return;}
+        if (!entries.length) {reportBackupStatus('백업할 저장 기록이 없습니다.');return;}
         const payload = {
           format:'apuda-memory-care-diary',
           version:1,
@@ -510,7 +517,7 @@
           entries:entries.map(({id,date,text}) => ({id,date,text}))
         };
         downloadDiaryFile(JSON.stringify(payload, null, 2), `apuda-memory-diary-${localDate}.json`, 'application/json;charset=utf-8');
-        diaryStatus.textContent = `현재 기록 ${entries.length}건의 JSON 백업 다운로드를 요청했습니다. 실제 파일이 저장되었는지 확인하고 안전하게 보관하세요.`;
+        reportBackupStatus(`현재 기록 ${entries.length}건의 JSON 백업 다운로드를 요청했습니다. 실제 파일이 저장되었는지 확인하고 안전하게 보관하세요.`);
       });
       function validDiaryDate(value) {
         if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
@@ -533,58 +540,58 @@
       }
       $('diary-import').addEventListener('click', async () => {
         const file = $('diary-import-file').files[0];
-        if (!file) {diaryStatus.textContent = '먼저 JSON 백업 파일을 선택해 주세요.';return;}
+        if (!file) {reportBackupStatus('먼저 JSON 백업 파일을 선택해 주세요.');return;}
         if (!file.name.toLowerCase().endsWith('.json') || file.size > 256 * 1024 || !file.size) {
-          diaryStatus.textContent = '확장자가 .json인 256KB 이하의 백업 파일을 선택해 주세요. 기존 기록은 변경되지 않았습니다.';
+          reportBackupStatus('확장자가 .json인 256KB 이하의 백업 파일을 선택해 주세요. 기존 기록은 변경되지 않았습니다.');
           return;
         }
         let imported;
         try {
           imported = validateDiaryBackup(JSON.parse(await file.text()));
         } catch (error) {
-          diaryStatus.textContent = '파일을 읽거나 JSON 내용을 해석하지 못했습니다. 기존 기록은 변경되지 않았습니다.';
+          reportBackupStatus('파일을 읽거나 JSON 내용을 해석하지 못했습니다. 기존 기록은 변경되지 않았습니다.');
           return;
         }
         if (!imported) {
-          diaryStatus.textContent = 'ApuDa Memory의 올바른 JSON 백업 형식이 아닙니다. 날짜·메모 길이·중복 여부를 확인해 주세요. 기존 기록은 변경되지 않았습니다.';
+          reportBackupStatus('ApuDa Memory의 올바른 JSON 백업 형식이 아닙니다. 날짜·메모 길이·중복 여부를 확인해 주세요. 기존 기록은 변경되지 않았습니다.');
           return;
         }
         readEntries();
-        if (!storageAvailable) return;
+        if (!storageAvailable) {reportBackupStatus(diaryStatus.textContent);return;}
         let existingIds = new Set(entries.map(item => item.id));
         let additions = imported.filter(item => !existingIds.has(item.id));
         if (!additions.length) {
-          diaryStatus.textContent = '선택한 파일에 새 기록이 없습니다. 이미 저장된 기록은 그대로 유지됩니다.';
+          reportBackupStatus('선택한 파일에 새 기록이 없습니다. 이미 저장된 기록은 그대로 유지됩니다.');
           return;
         }
         if (entries.length + additions.length > 20) {
-          diaryStatus.textContent = `현재 ${entries.length}건과 추가 예정 ${additions.length}건이 20건 한도를 초과하여 복원하지 않았습니다. 기존 기록은 그대로 유지됩니다.`;
+          reportBackupStatus(`현재 ${entries.length}건과 추가 예정 ${additions.length}건이 20건 한도를 초과하여 복원하지 않았습니다. 기존 기록은 그대로 유지됩니다.`);
           return;
         }
         if (!window.confirm(`새 기록 ${additions.length}건을 이 기기에 추가할까요? 기존 ${entries.length}건은 변경하지 않습니다. JSON 파일은 암호화되지 않았으니 보관에 주의하세요.`)) {
-          diaryStatus.textContent = '복원을 취소했습니다. 기존 기록은 변경되지 않았습니다.';
+          reportBackupStatus('복원을 취소했습니다. 기존 기록은 변경되지 않았습니다.');
           return;
         }
         // 승인 뒤 최신 저장소를 다시 읽어 다른 탭의 변경을 가능한 한 보호합니다.
         readEntries();
-        if (!storageAvailable) return;
+        if (!storageAvailable) {reportBackupStatus(diaryStatus.textContent);return;}
         existingIds = new Set(entries.map(item => item.id));
         additions = imported.filter(item => !existingIds.has(item.id));
         if (entries.length + additions.length > 20) {
-          diaryStatus.textContent = '복원 확인 중 다른 탭에서 기록이 추가되어 20건 한도를 초과했습니다. 복원하지 않았습니다.';
+          reportBackupStatus('복원 확인 중 다른 탭에서 기록이 추가되어 20건 한도를 초과했습니다. 복원하지 않았습니다.');
           return;
         }
         if (!additions.length) {
-          diaryStatus.textContent = '복원 확인 중 이미 동일한 기록들이 발견되어 추가하지 않았습니다.';
+          reportBackupStatus('복원 확인 중 이미 동일한 기록들이 발견되어 추가하지 않았습니다.');
           return;
         }
         const skipped = imported.length - additions.length;
         const before = entries;
         entries = [...additions, ...entries];
-        if (!persistEntries()) { entries = before;return; }
+        if (!persistEntries()) {entries = before;reportBackupStatus(diaryStatus.textContent);return;}
         renderEntries();
         $('diary-import-file').value = '';
-        diaryStatus.textContent = `새 기록 ${additions.length}건을 추가 복원했습니다. 기존 ${before.length}건은 유지했고 중복 ${skipped}건은 건너뛰었습니다. 이 브라우저에서 목록을 확인해 주세요.`;
+        reportBackupStatus(`새 기록 ${additions.length}건을 추가 복원했습니다. 기존 ${before.length}건은 유지했고 중복 ${skipped}건은 건너뛰었습니다. 이 브라우저에서 목록을 확인해 주세요.`);
       });
       window.addEventListener('storage', (event) => {
         if (event.key !== diaryKey && event.key !== null) return;
