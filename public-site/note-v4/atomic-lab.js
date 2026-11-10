@@ -22,9 +22,11 @@
   function read(db){
     return new Promise(function(resolve,reject){
       var transaction=db.transaction(STORE,'readonly');
+      var value=null;
       var request=transaction.objectStore(STORE).get(KEY);
-      request.onsuccess=function(){resolve(request.result||null);};
+      request.onsuccess=function(){value=request.result||null;};
       request.onerror=function(){reject(request.error||new Error('read-failed'));};
+      transaction.oncomplete=function(){resolve(value);};
       transaction.onabort=function(){reject(transaction.error||new Error('read-aborted'));};
     });
   }
@@ -58,10 +60,13 @@
   function deleteDb(name){
     return new Promise(function(resolve){
       var request=indexedDB.deleteDatabase(name),settled=false;
-      function done(ok){if(!settled){settled=true;resolve(ok);}}
+      var timer=setTimeout(function(){done(false);},4000);
+      function done(ok){if(!settled){settled=true;clearTimeout(timer);resolve(ok);}}
       request.onsuccess=function(){done(true);};
       request.onerror=function(){done(false);};
-      request.onblocked=function(){done(false);};
+      // `blocked` is not necessarily terminal: a closing read transaction
+      // may release its connection and allow deletion moments later.
+      request.onblocked=function(){};
     });
   }
   function showCase(number,label,ok,detail){
