@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'none'; font-src 'none'; object-src 'none'; form-action 'none'; base-uri 'none'">
+  <title>ApuDa | 기존 환자 수첩 읽기 전용 미리보기</title>
+  <link rel="stylesheet" href="legacy-preview.css">
+  <script defer src="../note/note-storage.js"></script>
+  <script defer src="v3-compat-audit.js"></script>
+  <script defer src="v3-lossless-stage.js"></script>
+  <script defer src="legacy-preview.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">본문 바로가기</a>
+  <header class="top"><div class="wrap brand"><span class="wordmark">ApuDa</span><span class="stage">V3 → V4 전환 준비 · 시험용</span></div></header>
+  <main class="wrap" id="main">
+    <section class="hero" aria-labelledby="title">
+      <p class="eyebrow">내 기록 그대로, 확인부터</p>
+      <h1 id="title">기존 환자 수첩<br>읽기 전용 미리보기</h1>
+      <p class="lead">체온·통증·식사량·진료 질문·약·검사·일정을 원본에 가깝게 확인하는 <strong>별도 시험 화면</strong>입니다. 아직 V4로 기록을 옮기거나 저장하지 않습니다.</p>
+      <div class="caution"><strong>실제 환자 정보는 아직 사용하지 마세요.</strong> 아래 가상 기록이나 개인정보가 없는 시험 JSON 파일로만 검증해 주세요.</div>
+      <div class="actions"><button type="button" id="sample" class="primary">가상 기록 미리보기</button><label for="choose" class="file-label"><input id="choose" type="file" accept=".json,application/json">시험 JSON 파일 선택</label><button id="clear" type="button" class="secondary">화면 비우기</button></div>
+      <p class="privacy">파일은 이 브라우저 화면의 메모리에서만 읽습니다. 서버 전송·자동 저장·기존 수첩 덮어쓰기를 하지 않습니다. 화면을 닫으면 미리보기 데이터가 사라집니다.</p>
+    </section>
+
+    <p id="status" class="status" role="status" aria-live="polite">가상 기록 버튼을 눌러 시작하세요.</p>
+    <div id="screen" hidden>
+      <section class="block" aria-labelledby="summary-title"><h2 id="summary-title">한눈에 보는 기록</h2><div id="summary" class="stat-grid"></div><p id="integrity" class="integrity"></p></section>
+      <section class="block" aria-labelledby="daily-title"><h2 id="daily-title">날짜별 건강 기록</h2><p class="description">체온은 최근 측정값과 하루 최고 측정값을 구분합니다. 통증 0점과 미기록도 구별합니다.</p><div id="daily" class="stack"></div></section>
+      <section class="block" aria-labelledby="questions-title"><h2 id="questions-title">진료 질문 전체</h2><p class="description">세 개를 넘는 질문도 지우거나 누락하지 않습니다.</p><div id="questions" class="stack"></div></section>
+      <section class="block" aria-labelledby="meds-title"><h2 id="meds-title">등록된 약</h2><div id="meds" class="stack"></div></section>
+      <section class="block" aria-labelledby="labs-title"><h2 id="labs-title">검사 결과</h2><p class="description">숫자와 단위는 원문 그대로 보여 줍니다. 단위를 추정하지 않습니다.</p><div id="labs" class="stack"></div></section>
+      <section class="block" aria-labelledby="plans-title"><h2 id="plans-title">진료·치료 일정</h2><div id="plans" class="stack"></div></section>
+      <section class="block" aria-labelledby="others-title"><h2 id="others-title">그 밖의 원본 기록</h2><div id="others" class="stack"></div></section>
+      <section class="block risks" aria-labelledby="risks-title"><h2 id="risks-title">아직 V4로 옮길 수 없는 항목</h2><p class="description">이 목록은 자동 이전을 금지해야 하는 이유입니다. 원본이 이미 손실됐다는 뜻이 아닙니다.</p><div id="risks" class="stack"></div></section>
+    </div>
+  </main>
+  <footer class="wrap foot">ApuDa 환자교육·기록 도구 · 정식 V4 아님 · 의학적 판단 및 응급 분류 기능 없음</footer>
+</body>
+</html>
