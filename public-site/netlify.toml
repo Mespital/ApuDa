@@ -4,15 +4,17 @@
     X-Frame-Options = "SAMEORIGIN"
     X-Content-Type-Options = "nosniff"
 
+# Unversioned media paths must be revalidated by browsers after content updates.
+# Netlify CDN independently invalidates changed static assets on deploy.
 [[headers]]
   for = "/assets/video/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=86400, must-revalidate"
 
 [[headers]]
   for = "/assets/image/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=86400, must-revalidate"
 
 [[redirects]]
   from = "/farm/*"
