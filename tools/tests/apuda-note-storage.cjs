@@ -23,5 +23,25 @@ class Storage{constructor(raw){this.map=new Map(raw==null?[]:[[KEY,raw]]);this.f
   const old=undo.arm(a,b),latest=undo.arm(b,d);assert.equal(undo.take(old,d,d),null,'an old message cannot undo a newer save');assert.equal(undo.take(latest,d,d),b);assert.equal(undo.take(latest,d,d),null,'one use only');
   const token=undo.arm(a,b);assert.equal(undo.take(token,b,d),null,'cross-tab changes block undo');undo.invalidate();assert.equal(undo.take(token,b,b),null);
   const bad=new Storage('{broken-original'),app={localStorage:bad,NOTE_KB:{TOPICS:[]},ApuDaNoteStorage:api,toast(){},console};app.window=app;vm.createContext(app);const appSrc=fs.readFileSync(path.join(root,'note/note-app.js'),'utf8');vm.runInContext(appSrc.slice(0,appSrc.indexOf('/* ── 화면 전환')),app);app.toast=function(){};assert.equal(app.noteLoadError,true);assert.throws(()=>app.save(),/unreadable-local-note/);assert.equal(bad.getItem(KEY),'{broken-original','unreadable existing local notes cannot be overwritten by a new empty note');
-  console.log('PASS: real legacy/modern backups; malformed, foreign, future, null rows and dates rejected; verified checkpoint; quota/race abort; recovery blocks later edits; exact last-save undo');
+  // Run the real SOS handler, not a mock of its persistence code. Emergency
+  // guidance must render even when the original note is damaged or storage fails.
+  const boxes=[{value:'red-fever',checked:true}],result={className:'',innerHTML:'',textContent:'',scrollIntoView(){this.scrolled=true}};
+  app.document={querySelectorAll(selector){return selector==='#sh-sos [data-level]'?boxes:[]},querySelector(selector){return selector==='#triageResult'?result:null}};
+  app.renderAll=function(){};app.noteUndo=null;app.undoToken='';
+  const start=appSrc.indexOf('function triage(silent){'),end=appSrc.indexOf("\n$('#sh-sos').addEventListener",start);
+  assert.ok(start>=0&&end>start,'SOS handler source is present');
+  vm.runInContext(appSrc.slice(start,end),app);
+  assert.doesNotThrow(()=>app.triage(false));
+  assert.equal(bad.getItem(KEY),'{broken-original','SOS check must not overwrite unreadable patient notes');
+  assert.equal(result.className,'result red','urgent guidance must stay visible even when save fails');
+  assert.match(result.innerHTML,/119/);
+  const healthy=new Storage(raw);app.localStorage=healthy;vm.runInContext('state=load()',app);
+  app.triage(false);
+  assert.deepEqual(JSON.parse(healthy.getItem(KEY)).triage.items,['red-fever'],'SOS selections persist via the guarded save path');
+  const beforeSilent=healthy.getItem(KEY);app.triage(true);assert.equal(healthy.getItem(KEY),beforeSilent,'render-only SOS must not write');
+  healthy.fail=k=>k===KEY;
+  assert.doesNotThrow(()=>app.triage(false));
+  assert.equal(healthy.getItem(KEY),beforeSilent,'failed SOS write preserves the original data');
+  assert.equal(result.className,'result red','urgent guidance must stay visible after quota failure');
+  console.log('PASS: real legacy/modern backups; malformed, foreign, future, null rows and dates rejected; verified checkpoint; quota/race abort; recovery blocks later edits; exact last-save undo; SOS corrupted-note and quota protection with visible emergency guidance');
 })().catch(e=>{console.error(e);process.exitCode=1;});
