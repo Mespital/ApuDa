@@ -121,3 +121,11 @@ P0는 **V4 자동 전환 출시 차단 사유**이지, 현재 운영 사이트�
 - 접근성 정적 검사: 한국어·건너뛰기·알림·버튼 포커스·반응형 규칙·대비 조합 6개(각 4.5:1 이상). `tools/tests/apuda-note-v4-extended-a11y-static.cjs` 통과. **실브라우저·화면낭독기·실기기 통과 판정 아님**.
 - 320px/390px·200% 확대·저장소 불변을 시험할 `tools/tests/apuda-note-v4-extended-browser.cjs`를 추가했으나 Playwright Chromium 실행 제약으로 실제 시험은 NT.
 - 세부 보고서: `docs/apuda-note-v4-migration-rehearsal-20261110.md`. **메모리 스냅샷은 영구 백업이 아니며, 실제 환자 기록 저장·복원·운영 전환은 계속 차단(P0)**.
+
+## 2026-11-10 추가: 격리형 저장소의 체크포인트 장애 주입
+
+- 새 실험 모듈: `public-site/note-v4/v4-sandbox-checkpoint.js`, 가상 저장소 테스트: `tools/tests/apuda-note-v4-sandbox-checkpoint.cjs`.
+- 실사용자가 연결된 브라우저 저장소가 아니라 내부 `Map`만 이용. 체크포인트 우선 쓰기→재조회→V4 후보 쓰기→재조회→원상복귀 순서를 시험.
+- 합성 시험: 체크포인트/후보 쓰기 실패·용량 초과·읽기값 손상·쓰기 직후 중단·복구 재시도·동시 V3/V4 변경. 원본을 덮어쓰지 않는 조건과 복구 거부 조건을 확인.
+- 손상된 후보가 남으면 자동 복구를 거부한다. 실제 기기 종료·영구 백업·복원은 테스트하지 않았으므로 **실제 이전 가능 승인 아님**.
+- 상세 자료: `docs/apuda-note-v4-sandbox-checkpoint-20261110.md`. 기존 V3/논술·V4 데모 로딩 변경 없음, 운영 `main`·Netlify 비변경.
