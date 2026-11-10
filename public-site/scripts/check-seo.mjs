@@ -34,6 +34,7 @@ assert(!/<form\b|<input\b|<textarea\b/i.test(noteGuideHtml) &&
   'Public intro must not collect patient records or omit backup privacy warnings');
 assert(noteGuideHtml.includes('<a class="skip" href="#main-content">본문으로 바로가기</a>') &&
   noteGuideHtml.includes('<main class="wrap" id="main-content" tabindex="-1">') &&
+  noteGuideHtml.includes('.skip{position:fixed;') &&
   noteGuideHtml.includes('.skip:focus{transform:none}') &&
   noteGuideHtml.includes('summary:focus-visible'),
   'Public intro must retain keyboard skip navigation and visible FAQ focus');
