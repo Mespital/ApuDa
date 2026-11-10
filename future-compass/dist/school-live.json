@@ -1,8 +1,8 @@
 {
  "school": "서초고등학교",
- "updated": "2026-11-10T00:02:36.104Z",
+ "updated": "2026-11-10T09:29:52.879Z",
  "eval": {
-  "checked": "2026-11-10T00:02:37.324Z",
+  "checked": "2026-11-10T09:29:54.431Z",
   "fetched": "2026-11-09T05:33:07.361Z",
   "shl": "5c571812-c664-4495-be26-6b9fb997a233",
   "round": "(3차) 2026년 09월",
@@ -6953,7 +6953,7 @@
   "unreadable": []
  },
  "news": {
-  "checked": "2026-11-10T00:02:40.054Z",
+  "checked": "2026-11-10T09:29:57.173Z",
   "boards": [
    {
     "name": "공지사항",
@@ -7018,7 +7018,7 @@
   ]
  },
  "programs": {
-  "checked": "2026-11-10T00:02:48.588Z",
+  "checked": "2026-11-10T09:30:06.036Z",
   "items": [
    {
     "id": "P0656",
@@ -7030,6 +7030,17 @@
     "apply": "2026-09-29 (18:00) ~ 2026-12-04 (18:00)",
     "applyEnd": "2026-12-04",
     "url": "https://seochoedu.or.kr/user/prgrm/seocho/BD_selectPrgrm.do?q_prgrmId=P0656"
+   },
+   {
+    "id": "P0688",
+    "center": "서초",
+    "status": "모집중",
+    "title": "[학부모] 불안한 엄마에서 지혜로운 엄마로 〈학부모를 위한 그림책 하브루타〉",
+    "target": "학부모",
+    "period": "2026-12-08 (10:00) ~ 2026-12-17 (12:00)",
+    "apply": "2026-11-10 (17:00) ~ 2026-12-07 (17:00)",
+    "applyEnd": "2026-12-07",
+    "url": "https://seochoedu.or.kr/user/prgrm/seocho/BD_selectPrgrm.do?q_prgrmId=P0688"
    },
    {
     "id": "P0681",
@@ -7099,7 +7110,7 @@
   "office": "https://gnscedu.sen.go.kr/CMS/about/about03/index.html"
  },
  "exams": {
-  "checked": "2026-11-10T00:02:44.073Z",
+  "checked": "2026-11-10T09:30:01.619Z",
   "mid": {
    "scope": {
     "id": "27502687",

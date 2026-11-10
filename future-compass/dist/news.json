@@ -1,8 +1,16 @@
 {
-  "checked_at": "2026-11-10T00:02:17.329513+00:00",
-  "last_success_at": "2026-11-10T00:02:17.329513+00:00",
+  "checked_at": "2026-11-10T09:29:31.147918+00:00",
+  "last_success_at": "2026-11-10T09:29:31.147918+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "Closing the AI guidance gap in education",
+      "url": "https://openai.com/index/closing-ai-guidance-gap-education",
+      "source": "OpenAI",
+      "published_at": "2026-11-10T09:00:00+00:00",
+      "category": "교육·생활",
+      "domain": "education"
+    },
     {
       "title": "ChatGPT Enterprise now available in AWS Marketplace",
       "url": "https://openai.com/index/chatgpt-enterprise-aws-marketplace",
@@ -234,20 +242,12 @@
       "published_at": "2026-11-03T14:00:00+00:00",
       "category": "교육·생활",
       "domain": "education"
-    },
-    {
-      "title": "Expanding AI educator training to new countries",
-      "url": "https://blog.google/products-and-platforms/products/education/google-ai-educator-series-global-expansion-november-2026/",
-      "source": "Google",
-      "published_at": "2026-11-03T14:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-11-10T00:02:17.329513+00:00",
+    "checked_at": "2026-11-10T09:29:31.147918+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -392,7 +392,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-11-10T00:02:17.329513+00:00",
+    "last_success_at": "2026-11-10T09:29:31.147918+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
