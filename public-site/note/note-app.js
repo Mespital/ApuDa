@@ -963,7 +963,10 @@ function renderSOS(){
 function triage(silent){
   var boxes=[].slice.call(document.querySelectorAll('#sh-sos [data-level]'));
   var items=boxes.filter(function(x){return x.checked}).map(function(x){return x.value});
-  if(!silent){state.triage={items:items,at:items.length?Date.now():0};localStorage.setItem(KEY,JSON.stringify(state))}
+  if(!silent){
+    state.triage={items:items,at:items.length?Date.now():0};
+    try{save()}catch(e){/* Keep emergency guidance visible even when records cannot be saved. */}
+  }
   var red=items.filter(function(v){return v.indexOf('red')===0}).length,amb=items.length-red,el=$('#triageResult');
   if(red&&!silent)el.scrollIntoView({block:'nearest',behavior:'smooth'});if(red){el.className='result red';el.innerHTML='<b>지금 바로 치료병원 또는 응급실에 연락하세요.</b><br>혼자 운전해서 가지 말고, 숨쉬기 힘들거나 의식이 처지면 119를 부르세요. 연락할 때 체온·증상 시작 시각·마지막 치료 날짜를 함께 말하면 빨라요.'}
   else if(amb){el.className='result amber';el.innerHTML='<b>오늘 안에 치료병원에 상담하세요.</b><br>증상이 빠르게 나빠지면 바로 연락하거나 응급실로 가세요.'}
