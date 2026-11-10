@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2f9f5">
+  <title>기억·인지건강 길잡이 | ApuDa Memory</title>
+  <meta name="description" content="기억력이 걱정되거나 가족의 치매 돌봄을 준비할 때. 공식 치매체크 앱, 치매안심센터, 가족 돌봄 준비와 건강 습관을 차근차근 안내합니다.">
+  <link rel="canonical" href="https://apuda.app/memory/">
+  <link rel="icon" href="/favicon-32.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="아프다 ApuDa">
+  <meta property="og:title" content="ApuDa Memory | 기억이 걱정될 때, 가족이 함께">
+  <meta property="og:description" content="공식 치매 지원서비스 안내부터 가족 돌봄과 인지건강 습관까지.">
+  <meta property="og:url" content="https://apuda.app/memory/">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"아프다 ApuDa","item":"https://apuda.app/"},{"@type":"ListItem","position":2,"name":"ApuDa 패밀리","item":"https://apuda.app/family/"},{"@type":"ListItem","position":3,"name":"기억·인지건강","item":"https://apuda.app/memory/"}]}</script>
+  <style>
+    :root{font-family:system-ui,"Noto Sans KR","Malgun Gothic",sans-serif;color:#183c39;background:#f4f9f6;color-scheme:light}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;line-height:1.75;font-size:18px}
+    a{color:#17635c;text-underline-offset:3px}
+    a:focus-visible{outline:3px solid #e6a64d;outline-offset:4px;border-radius:4px}
+    .skip{position:absolute;top:-100px;left:12px;background:#fff;padding:10px 16px;z-index:10}
+    .skip:focus{top:12px}
+    .top{background:#fff;border-bottom:1px solid #d7e8de;padding:13px max(18px,calc((100vw - 1080px)/2));display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+    .brand{font-size:22px;font-weight:850;color:#17554c;text-decoration:none}
+    .top nav{display:flex;gap:17px;flex-wrap:wrap;margin-left:auto;font-size:15px}
+    .wrap{max-width:1080px;margin:0 auto;padding:25px 18px 72px}
+    .crumb{color:#5f7d76;font-size:14px;margin-bottom:17px}
+    .crumb a{color:inherit}
+    .hero{background:linear-gradient(135deg,#ffffff 4%,#e3f4e9 100%);border:1px solid #d1e7d8;border-radius:26px;padding:clamp(26px,5vw,55px);position:relative;overflow:hidden}
+    .eyebrow{font-size:13px;color:#277b67;font-weight:850;letter-spacing:.11em}
+    h1{font-size:clamp(30px,5vw,48px);line-height:1.24;letter-spacing:-.045em;margin:10px 0 18px}
+    h2{font-size:clamp(23px,3vw,30px);line-height:1.35;letter-spacing:-.03em;margin:0 0 13px}
+    h3{font-size:21px;line-height:1.4;margin:0 0 10px}
+    p{margin:0 0 13px;word-break:keep-all}
+    .lead{max-width:750px;color:#43685c;font-size:clamp(18px,2vw,21px)}
+    .note{font-size:15px;color:#5a786f}
+    .quick{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 17px;min-height:50px;border-radius:13px;border:1px solid #a9d4bc;background:#e8f7ee;color:#155b4a;text-decoration:none;font-size:17px;font-weight:780;line-height:1.4}
+    .btn.primary{background:#176b56;color:#fff;border-color:#176b56}
+    .btn:hover{filter:brightness(.96)}
+    .section{margin-top:44px;scroll-margin-top:22px}
+    .kicker{color:#267f66;font-size:13px;letter-spacing:.1em;font-weight:900;margin-bottom:7px}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin-top:20px}
+    .tile{background:#fff;border:1px solid #d7e7df;border-radius:20px;padding:23px;display:flex;flex-direction:column;gap:8px}
+    .tile .emoji{font-size:29px;line-height:1.1}
+    .tile p{color:#587268;flex:1}
+    .tile .btn{align-self:flex-start;font-size:16px}
+    .box{background:#fff;border:1px solid #d7e7df;border-radius:20px;padding:clamp(19px,3vw,29px);margin-top:18px}
+    .steps{margin:12px 0 0;padding-left:27px}
+    .steps li{padding:0 0 15px 6px}
+    .steps li:last-child{padding-bottom:0}
+    .steps strong{color:#155e51}
+    .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}
+    .callout{padding:21px;border:1px solid #f0d3ad;background:#fff8ed;border-radius:18px;margin-top:20px}
+    .callout h3{color:#87531c}
+    .callout p{color:#74552e}
+    .source{font-size:15px;color:#5d796e;margin-top:11px}
+    .divider{height:1px;background:#dce8e0;margin:26px 0}
+    .disclaimer{border-left:5px solid #2c7665;padding:18px 22px;background:#eaf5ef;border-radius:0 14px 14px 0;margin-top:36px;font-size:16px}
+    .disclaimer p:last-child{margin-bottom:0}
+    footer{font-size:14px;color:#607d72;margin-top:37px;border-top:1px solid #dce8e0;padding-top:20px}
+    @media(max-width:790px){.grid{grid-template-columns:1fr}.two{grid-template-columns:1fr}.tile{min-height:0}.top nav{margin-left:0}}
+    @media(max-width:420px){.wrap{padding-left:15px;padding-right:15px}.top{padding:14px 16px}.hero{padding:27px 22px}.quick .btn{width:100%}.tile .btn{align-self:stretch}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">본문으로 건너뛰기</a>
+  <header class="top">
+    <a class="brand" href="/">아프다 ApuDa</a>
+    <nav aria-label="주요 메뉴"><a href="/family/">패밀리</a><a href="/about/">소개</a><a href="/library/first30/">암 안내서</a></nav>
+  </header>
+  <main id="main" class="wrap">
+    <nav class="crumb" aria-label="현재 위치"><a href="/">홈</a> › <a href="/family/">ApuDa 패밀리</a> › 기억·인지건강</nav>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="eyebrow">APUDA MEMORY · FAMILY CARE</div>
+      <h1 id="page-title">기억이 걱정될 때,<br>가족이 함께 챙기는 하루</h1>
+      <p class="lead">기억의 변화가 궁금하신가요? 부모님을 돌보고 계신가요? 공식 치매 지원서비스와 생활 속 준비 방법을 한곳에서 안내합니다.</p>
+      <div class="quick">
+        <a class="btn primary" href="#start">내 상황에 맞게 시작하기</a>
+        <a class="btn" href="tel:1899-9988">치매상담콜센터 1899-9988</a>
+      </div>
+      <p class="note" style="margin-top:17px">모든 안내는 무료이며 로그인 없이 볼 수 있습니다. 이 페이지는 검사·진단·치료를 제공하지 않습니다.</p>
+    </section>
+
+    <section id="start" class="section" aria-labelledby="start-title">
+      <div class="kicker">STEP 01 · 지금 내 상황은?</div>
+      <h2 id="start-title">가장 필요한 정보부터 살펴보세요</h2>
+      <div class="grid">
+        <article class="tile"><span class="emoji" aria-hidden="true">🧠</span><h3>기억력이 걱정돼요</h3><p>최근 기억·판단·일상생활의 변화가 느껴질 때, 어디서 확인하고 도움받는지 살펴봅니다.</p><a class="btn" href="#check">검사·상담 안내 보기</a></article>
+        <article class="tile"><span class="emoji" aria-hidden="true">🤝</span><h3>가족을 돌보고 있어요</h3><p>약, 진료 일정, 질문과 실종예방 준비 등 보호자가 놓치기 쉬운 내용을 확인합니다.</p><a class="btn" href="#family">가족 돌봄 준비 보기</a></article>
+        <article class="tile"><span class="emoji" aria-hidden="true">🌿</span><h3>뇌 건강을 챙기고 싶어요</h3><p>걷기와 운동, 금연, 식사, 혈압·혈당 관리처럼 일상에서 실천할 수 있는 습관을 알아봅니다.</p><a class="btn" href="#habits">인지건강 습관 보기</a></article>
+      </div>
+    </section>
+
+    <section id="check" class="section" aria-labelledby="check-title">
+      <div class="kicker">STEP 02 · 공식 검사·상담 경로</div>
+      <h2 id="check-title">기억의 변화가 걱정된다면</h2>
+      <div class="box">
+        <ol class="steps">
+          <li><strong>변화를 적어보세요.</strong> 언제부터 시작되었는지, 약속·금전관리·길 찾기 등 일상에 영향이 있는지 구체적인 예를 남겨보세요.</li>
+          <li><strong>공식 ‘치매체크’ 앱을 확인하세요.</strong> 보건복지부·중앙치매센터가 제공하는 자가점검과 치매 관련 정보를 이용할 수 있습니다. 앱의 결과는 진단이 아닙니다.</li>
+          <li><strong>가까운 치매안심센터에 문의하세요.</strong> 공식 인지선별검사(CIST)와 이후 검사·상담 경로를 안내받을 수 있습니다.</li>
+          <li><strong>의료진과 상의하세요.</strong> 증상이 지속되거나 일상생활에 영향을 준다면 자가점검 결과와 관계없이 전문적인 평가를 받는 것이 좋습니다.</li>
+        </ol>
+        <div class="divider"></div>
+        <h3>치매체크 공식 앱 내려받기</h3>
+        <p class="note">아래 버튼은 ApuDa가 아닌 공식 앱스토어로 이동합니다. 앱의 제공 기능은 운영기관의 정책에 따라 달라질 수 있습니다.</p>
+        <div class="quick" style="margin-top:12px">
+          <a class="btn primary" href="https://play.google.com/store/apps/details?id=kr.co.inergy.selftest" target="_blank" rel="noopener noreferrer">Android · Google Play</a>
+          <a class="btn" href="https://apps.apple.com/kr/app/id664587531" target="_blank" rel="noopener noreferrer">iPhone · App Store</a>
+        </div>
+        <p class="source">출처: <a href="https://www.nid.or.kr/" target="_blank" rel="noopener noreferrer">중앙치매센터</a>, 각 공식 앱스토어 · 확인 2026-11-10</p>
+      </div>
+      <div class="callout" role="note"><h3>갑자기 혼란이 심해졌거나 급격한 변화가 있다면</h3><p>평소와 다른 의식·언어·행동의 급격한 변화는 단순한 기억력 문제로 넘기지 마세요. 앱 검사를 기다리지 말고 즉시 의료기관의 평가를 받으세요. 응급 상황은 119에 연락하세요.</p><a class="btn" href="tel:119">긴급 도움 119</a></div>
+    </section>
+
+    <section id="family" class="section" aria-labelledby="family-title">
+      <div class="kicker">STEP 03 · 보호자를 위한 준비</div>
+      <h2 id="family-title">가족이 함께 확인하면 좋은 4가지</h2>
+      <div class="two">
+        <article class="box"><h3>💊 약과 진료 일정</h3><p>현재 복용 중인 약·용법을 처방전과 대조하고, 진료·검사 일정과 동행할 사람을 정하세요. 임의로 약을 중단하거나 변경하지 마세요.</p></article>
+        <article class="box"><h3>📝 의료진에게 물을 질문</h3><p>기억 변화의 시작 시점, 수면·기분·생활 변화, 복용 약, 일상 기능의 어려움을 간단히 정리해 상담에 가져가세요.</p></article>
+        <article class="box"><h3>🏡 일상과 안전</h3><p>길 찾기, 가스·전기, 금전 관리 등 걱정되는 상황을 가족과 공유하고 실제 생활환경에 맞춰 안전을 점검하세요.</p></article>
+        <article class="box"><h3>📍 배회·실종예방</h3><p>실종 위험이 있다면 치매안심센터에서 인식표·배회감지기 등 가능한 지원을 확인하세요. 배회감지의 이용 조건은 공식 기관에 문의하세요.</p></article>
+      </div>
+      <div class="callout"><h3>가족이 실종되었다면 기다리지 마세요</h3><p>즉시 경찰에 신고하고 최근 사진, 복장, 마지막 확인 장소·시각 등 도움이 되는 정보를 준비하세요. ApuDa는 위치추적 서비스를 직접 제공하지 않습니다.</p><a class="btn" href="tel:112">실종 신고 112</a></div>
+      <p class="source">참고: <a href="https://www.nid.or.kr/" target="_blank" rel="noopener noreferrer">중앙치매센터의 치매환자 지원·실종 대응 안내</a></p>
+    </section>
+
+    <section id="habits" class="section" aria-labelledby="habits-title">
+      <div class="kicker">STEP 04 · 나의 생활습관</div>
+      <h2 id="habits-title">뇌 건강을 위한 일상 실천</h2>
+      <div class="box">
+        <ul class="steps">
+          <li><strong>규칙적으로 몸을 움직이기:</strong> 본인의 건강 상태와 체력에 맞는 운동을 꾸준히 실천합니다.</li>
+          <li><strong>금연하고 해로운 음주 피하기:</strong> 담배와 과도한 음주는 전반적인 건강에도 위험합니다.</li>
+          <li><strong>균형 잡힌 식사:</strong> 한 가지 보조제보다 전체 식습관을 개선하는 것이 중요합니다.</li>
+          <li><strong>혈압·혈당·콜레스테롤 관리:</strong> 정기적으로 확인하고 필요한 치료는 의료진과 상의합니다.</li>
+          <li><strong>사회·인지활동 이어가기:</strong> 즐겁고 지속 가능한 활동을 선택하되, 특정 게임만으로 치매를 예방한다고 단정하지 않습니다.</li>
+        </ul>
+        <p class="source">근거: <a href="https://www.who.int/publications/i/item/9789241550543" target="_blank" rel="noopener noreferrer">WHO 인지저하·치매 위험 감소 가이드라인(2019)</a> · 확인 2026-11-10</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="help-title">
+      <div class="kicker">OFFICIAL HELP · 도움이 필요할 때</div>
+      <h2 id="help-title">검사와 돌봄은 공식기관과 연결합니다</h2>
+      <div class="two">
+        <article class="tile"><h3>중앙치매센터</h3><p>치매안심센터, 검사, 예방, 가족 돌봄과 지원제도 정보를 확인하세요.</p><a class="btn" href="https://www.nid.or.kr/" target="_blank" rel="noopener noreferrer">공식 홈페이지 열기</a></article>
+        <article class="tile"><h3>치매상담콜센터</h3><p>인지건강 정보와 가족 돌봄에 관해 상담할 수 있습니다.</p><a class="btn" href="tel:1899-9988">1899-9988 전화하기</a></article>
+      </div>
+    </section>
+
+    <aside class="disclaimer" aria-label="중요 안내"><strong>중요한 안내</strong><p>ApuDa Memory는 일반적인 환자·가족 교육과 공식 서비스 연결을 위한 안내 페이지입니다. 개인의 치매 여부를 평가·진단하거나 치료를 처방하지 않습니다. 의학적 판단은 의료진과 상의하세요. 이 페이지에서는 증상·검사결과·건강정보를 입력받거나 저장하지 않습니다.</p></aside>
+    <footer>© ApuDa · <a href="/family/">ApuDa 패밀리</a> · <a href="/about/">서비스 소개</a><p>정보 확인일: 2026-11-10 · 관련 정책과 서비스 제공 범위는 변경될 수 있으므로 공식기관의 최신 안내를 확인하세요.</p></footer>
+  </main>
+</body>
+</html>
