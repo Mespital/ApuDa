@@ -51,7 +51,7 @@
     .btn.primary:hover{background:var(--brand-dark);border-color:var(--brand-dark)}
     .trust{display:flex;gap:9px 18px;flex-wrap:wrap;list-style:none;padding:0;margin:24px 0 0;font-size:15px;font-weight:720;color:#385A7B}
     .trust li{display:flex;align-items:center;gap:7px}
-    .trust li::before{content:"✓";display:inline-flex;align-items:center;justify-content:center;width:21px;height:21px;border-radius:50%;background:#D8E9FF;color:#1855D8;font-size:13px;font-weight:900}
+    .trust .check{display:inline-flex;align-items:center;justify-content:center;flex:none;width:21px;height:21px;border-radius:50%;background:#D8E9FF;color:#1855D8;font-size:13px;font-weight:900}
     .section{margin-top:51px;scroll-margin-top:22px}
     .kicker{color:var(--brand-dark);font-size:14px;letter-spacing:.07em;font-weight:850;margin-bottom:9px}
     .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:21px}
@@ -103,7 +103,7 @@
           <a class="btn primary" href="#start">내 상황에 맞게 시작하기 ↓</a>
           <a class="btn" href="tel:1899-9988">치매상담콜센터 1899-9988</a>
         </div>
-        <ul class="trust" aria-label="이용 안내"><li>공식기관 정보 안내</li><li>로그인 없이 무료 이용</li><li>건강정보 입력·저장 없음</li></ul>
+        <ul class="trust" aria-label="이용 안내"><li><span class="check" aria-hidden="true">✓</span>공식기관 정보 안내</li><li><span class="check" aria-hidden="true">✓</span>로그인 없이 무료 이용</li><li><span class="check" aria-hidden="true">✓</span>건강정보 입력·저장 없음</li></ul>
         <p class="note" style="margin-top:15px">이 페이지는 검사·진단·치료를 제공하지 않습니다.</p>
       </div>
     </section>
