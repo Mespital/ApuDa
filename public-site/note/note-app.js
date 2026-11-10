@@ -1020,9 +1020,9 @@ window.importData=async function(input){
 window.recoverBeforeRestore=async function(){
   if(!confirm('가장 최근 복원 직전 기록으로 되돌릴까요? 복원 후 새로 쓴 기록이 있으면 덮어쓰지 않고 중단해요.'))return;
   try{await NOTE_STORAGE.recover(localStorage,KEY);invalidateUndo();state=load();renderAll();backupStatus();toast('복원 직전 기록으로 되돌렸어요')}
-  catch(e){toast('복원 후 기록이 바뀌어 자동으로 되돌리지 않았어요. 직전 사본을 파일로 받아 별도로 보관해 주세요.')}
+  catch(e){toast(e.message==='legacy-checkpoint-review-required'?'이전 방식의 직전 사본은 무결성을 확인할 수 없어 자동 복구하지 않았어요. 사본을 파일로 내려받아 내용을 검토해 주세요.':'직전 사본이나 현재 기록을 안전하게 검증하지 못해 자동 복구하지 않았어요. 직전 사본을 파일로 받아 보관하고 기록을 확인해 주세요.')}
 };
-window.downloadBeforeRestore=function(){var c=NOTE_STORAGE.checkpoint(localStorage,KEY);if(!c||c.before===null){toast('보관된 직전 기록이 없어요');return}downloadNoteBlob(c.before,'ApuDa_복원직전_기록.json');toast('직전 사본 다운로드를 요청했어요. 파일 앱에서 확인해 주세요.')};
+window.downloadBeforeRestore=function(){var c=NOTE_STORAGE.checkpoint(localStorage,KEY);if(!c||c.before===null){toast('보관된 직전 기록이 없어요');return}if(c.schemaVersion===1&&!confirm('이전 방식의 사본은 손상 여부를 확인할 수 없어요. 원본을 보존하기 위해 파일로 내려받고 내용을 검토하시겠어요?'))return;downloadNoteBlob(c.before,'ApuDa_복원직전_기록.json');toast('직전 사본 다운로드를 요청했어요. 파일 앱에서 확인해 주세요.')};
 window.resetAll=function(){
   if(!confirm('이 기기의 건강기록·대화·복원 직전 사본을 모두 지울까요? 되돌릴 수 없어요. 내려받은 파일과 구글 드라이브 사본은 따로 삭제해야 합니다.'))return;
   localStorage.removeItem(KEY);localStorage.removeItem(CHAT_KEY);localStorage.removeItem(NOTE_STORAGE.recoveryKey(KEY));localStorage.removeItem(KEY+'_corrupt');invalidateUndo();location.reload();
