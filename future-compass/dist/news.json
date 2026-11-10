@@ -1,8 +1,48 @@
 {
-  "checked_at": "2026-11-10T09:29:31.147918+00:00",
-  "last_success_at": "2026-11-10T09:29:31.147918+00:00",
+  "checked_at": "2026-11-10T17:35:19.771322+00:00",
+  "last_success_at": "2026-11-10T17:35:19.771322+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "Gemini 4 Carbon is now available for developers.",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-4-carbon-developers/",
+      "source": "Google",
+      "published_at": "2026-11-10T16:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Introducing the Multimodal Knowledge Agent benchmark",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/multimodal-knowledge-agent-benchmark/",
+      "source": "Google",
+      "published_at": "2026-11-10T16:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Gemini 4 Carbon is now available",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/",
+      "source": "Google",
+      "published_at": "2026-11-10T16:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Google Cloud launches Gemini for healthcare.",
+      "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/gemini-for-healthcare/",
+      "source": "Google",
+      "published_at": "2026-11-10T13:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Helping caregivers use AI in everyday life",
+      "url": "https://openai.com/index/helping-caregivers-use-ai-in-everyday-life",
+      "source": "OpenAI",
+      "published_at": "2026-11-10T12:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "Closing the AI guidance gap in education",
       "url": "https://openai.com/index/closing-ai-guidance-gap-education",
@@ -10,6 +50,14 @@
       "published_at": "2026-11-10T09:00:00+00:00",
       "category": "교육·생활",
       "domain": "education"
+    },
+    {
+      "title": "Work at the Frontier: AI’s effect on freelance work",
+      "url": "https://openai.com/index/ai-effect-on-freelance-work",
+      "source": "OpenAI",
+      "published_at": "2026-11-10T07:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
     },
     {
       "title": "ChatGPT Enterprise now available in AWS Marketplace",
@@ -194,60 +242,12 @@
       "published_at": "2026-11-04T07:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "DevRev delivers autonomous self-service with GPT-6.1 Sol",
-      "url": "https://openai.com/index/devrev-enterprise-self-service",
-      "source": "OpenAI",
-      "published_at": "2026-11-04T00:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Introducing Images 2.6",
-      "url": "https://openai.com/index/introducing-images-2-6",
-      "source": "OpenAI",
-      "published_at": "2026-11-04T00:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "New research shows how Guided Learning supports students",
-      "url": "https://blog.google/products-and-platforms/products/education/guided-learning-uk-japan/",
-      "source": "Google",
-      "published_at": "2026-11-03T14:00:00+00:00",
-      "category": "교육·생활",
-      "domain": "education"
-    },
-    {
-      "title": "We’re providing funding for organizations building AI for teachers.",
-      "url": "https://blog.google/products-and-platforms/products/education/google-org-funding-ai-education/",
-      "source": "Google",
-      "published_at": "2026-11-03T14:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "AI in the learning era",
-      "url": "https://blog.google/products-and-platforms/products/education/ai-learning-era-2026/",
-      "source": "Google",
-      "published_at": "2026-11-03T14:00:00+00:00",
-      "category": "교육·생활",
-      "domain": "education"
-    },
-    {
-      "title": "Designing responsible AI for learning",
-      "url": "https://blog.google/products-and-platforms/products/education/ai-learning-era-updates-2026/",
-      "source": "Google",
-      "published_at": "2026-11-03T14:00:00+00:00",
-      "category": "교육·생활",
-      "domain": "education"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-11-10T09:29:31.147918+00:00",
+    "checked_at": "2026-11-10T17:35:19.771322+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -389,10 +389,14 @@
       {
         "date": "2027-02-08",
         "title": "설날"
+      },
+      {
+        "date": "2027-02-09",
+        "title": "대체공휴일"
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-11-10T09:29:31.147918+00:00",
+    "last_success_at": "2026-11-10T17:35:19.771322+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
