@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'none'; font-src 'none'; object-src 'none'; form-action 'none'; base-uri 'none'">
+  <title>ApuDa | V4 확장 수첩 화면 (가상 기록)</title>
+  <link rel="stylesheet" href="extended-preview.css">
+  <script defer src="../note/note-storage.js"></script>
+  <script defer src="v3-compat-audit.js"></script>
+  <script defer src="v3-lossless-stage.js"></script>
+  <script defer src="v4-extended-draft.js"></script>
+  <script defer src="extended-preview.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">본문 바로가기</a>
+  <header class="top"><div class="wrap brand"><span class="logo">ApuDa</span><span class="top-label">환자 수첩 V4 확장 · 시험용</span></div></header>
+  <main id="main" class="wrap">
+    <section class="hero" aria-labelledby="title">
+      <p class="eyebrow">하루를 기록하고, 진료를 준비하는 곳</p>
+      <h1 id="title">하루수첩 <span>확장 미리보기</span></h1>
+      <p class="lead">기존 V3 기록의 세부 내용을 빠뜨리지 않고 어떻게 보여줄지 검증하는 <strong>읽기 전용 가상 화면</strong>입니다.</p>
+      <div class="alert" role="note"><strong>실제 환자 기록은 사용하지 않습니다.</strong> 아래 버튼은 코드에 포함된 가상 환자 자료만 불러옵니다. 저장·복원·치료 판단 기능은 없습니다.</div>
+      <div class="actions"><button id="load" class="primary" type="button">가상 기록 화면 보기</button><button id="clear" type="button">화면 비우기</button></div>
+      <p class="privacy">기존 수첩 데이터·로그인·브라우저 저장소에 접근하지 않으며 외부 전송도 하지 않습니다.</p>
+    </section>
+    <p id="status" class="status" role="status" aria-live="polite">가상 기록 화면 보기 버튼을 눌러 주세요.</p>
+    <div id="content" hidden>
+      <section class="panel" aria-labelledby="summary-title">
+        <div class="heading"><h2 id="summary-title">기록 한눈에 보기</h2><span class="pill">가상 기록</span></div>
+        <div id="summary" class="stats"></div>
+        <p id="check" class="integrity"></p>
+      </section>
+      <nav class="jump" aria-label="수첩 항목 바로가기"><a href="#daily">날짜별 기록</a><a href="#questions">진료 질문</a><a href="#meds">약·검사</a><a href="#plans">예약·돌봄</a></nav>
+      <section class="panel" id="daily" aria-labelledby="daily-title">
+        <h2 id="daily-title">날짜별 건강 기록</h2>
+        <p class="hint">같은 날짜에 여러 번 기록해도 각각 표시합니다. 체온은 최근값과 하루 최고값을 구분합니다.</p>
+        <div id="day-items" class="stack"></div>
+      </section>
+      <section class="panel" id="questions" aria-labelledby="questions-title">
+        <h2 id="questions-title">진료실에서 물어볼 질문</h2>
+        <p class="hint">기존 질문과 답변·우선순위가 있으면 모두 표시합니다. 질문을 3개로 자르지 않습니다.</p>
+        <div id="question-items" class="stack"></div>
+      </section>
+      <section class="panel" id="meds" aria-labelledby="meds-title">
+        <h2 id="meds-title">약과 검사 결과</h2>
+        <p class="hint">기존 기록의 값과 단위만 표시하며 복용 변경이나 검사 해석을 안내하지 않습니다.</p>
+        <h3>등록된 약</h3><div id="med-items" class="stack"></div>
+        <h3>검사 결과</h3><div id="lab-items" class="stack"></div>
+      </section>
+      <section class="panel" id="plans" aria-labelledby="plans-title">
+        <h2 id="plans-title">예약·돌봄 기록</h2>
+        <p class="hint">기존에 입력된 일정과 기타 기록입니다. 실제 예약 여부는 확인되지 않았습니다.</p>
+        <div id="plan-items" class="stack"></div>
+        <h3>그 밖의 기록</h3><div id="other-items" class="stack"></div>
+      </section>
+    </div>
+  </main>
+  <footer class="wrap footer">ApuDa · 합성 데이터 기술 검증용 · 환자 기록 저장·응급 판단·의료진 감수 완료 화면이 아닙니다.</footer>
+</body>
+</html>
