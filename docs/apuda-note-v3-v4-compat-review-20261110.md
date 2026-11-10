@@ -111,3 +111,13 @@ P0는 **V4 자동 전환 출시 차단 사유**이지, 현재 운영 사이트�
 - 전체 기록 표현: 같은 날 2건을 합치지 않음, 여러 체온의 마지막 입력값 36.8℃/최고값 37.2℃, 통증·식사 0과 미기록 구분, 진료 질문 4개·답변·우선순위, 약력·미상 검사 단위·예정 일정·확장 필드 등 표시.
 - `connect-src 'none'`·`noindex` 및 `textContent` 기반 문자열 출력, 비동기 검증 중 화면 비우기 처리. 새 VM UI 시험 및 이전 5개 검증을 모두 통과했으나 브라우저 권한 문제로 실제 Chromium·320px/200% 확대·스크린리더 시험은 **NT**.
 - 30인 감수 역할 틀의 AI 사전점검 결과와 미해결 P0/NT는 `docs/apuda-note-v4-extended-ui-review-20261110.md`에 기록. 실제 전문가·환자 참여, 실제 임상 검증, 운영 전환 승인은 **없음**.
+
+## 2026-11-10 추가: V3→V4 이전·취소·롤백 메모리 모의시험
+
+- 모듈: `public-site/note-v4/v4-migration-rehearsal.js`. 전용 시험: `tools/tests/apuda-note-v4-migration-rehearsal.cjs`.
+- 명시적으로 제공된 **합성** V3 JSON과 기존 V4 문자열/부재(`null`)를 각각 원문·SHA-256·바이트 크기 단위로 붙잡아 둠. 이전 후보는 `v4-extended-draft.js`를 거친 비운영 초안만 허용.
+- `simulateForward` / `simulateCancel` / `simulateRollback`은 **새로운 문자열을 반환할 뿐**, 로컬 스토리지·서버에 아무것도 쓰지 않음. 중간에 이전 자료나 대상 자료가 1바이트라도 달라지면 충돌로 중단.
+- 검사 통과: 원문 UTF-8 완전 왕복, 기존 대상 `null`과 빈 문자열 구분, 원본/후보/개수 변조 거절, 단계 취소와 되돌리기, 실제 V3/V4/논술 코드에서 모듈 미로딩.
+- 접근성 정적 검사: 한국어·건너뛰기·알림·버튼 포커스·반응형 규칙·대비 조합 6개(각 4.5:1 이상). `tools/tests/apuda-note-v4-extended-a11y-static.cjs` 통과. **실브라우저·화면낭독기·실기기 통과 판정 아님**.
+- 320px/390px·200% 확대·저장소 불변을 시험할 `tools/tests/apuda-note-v4-extended-browser.cjs`를 추가했으나 Playwright Chromium 실행 제약으로 실제 시험은 NT.
+- 세부 보고서: `docs/apuda-note-v4-migration-rehearsal-20261110.md`. **메모리 스냅샷은 영구 백업이 아니며, 실제 환자 기록 저장·복원·운영 전환은 계속 차단(P0)**.
