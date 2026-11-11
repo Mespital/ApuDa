@@ -703,6 +703,7 @@
       });
       $('diary-undo-button').addEventListener('click', () => {
         if (!pendingUndo) return;
+        if (editingId && $('diary-text').value.trim() && !window.confirm('진행 중인 수정 입력을 취소하고 이전 작업을 되돌릴까요? 아직 저장하지 않은 수정 내용은 사라집니다.')) return;
         readEntries();
         if (!storageAvailable) return;
         const action = pendingUndo;
@@ -723,7 +724,16 @@
         } else return;
         if (!persistEntries()) {entries = before;return;}
         clearUndo();
-        clearEditMode();
+        if (editingId) {
+          clearEditMode();
+          $('diary-date').value = localDate;
+          $('diary-text').value = '';
+          $('diary-question').value = '';
+          $('diary-sleep').value = '';
+          $('diary-meal').value = '';
+          $('diary-medication').value = '';
+          $('diary-consent').checked = false;
+        }
         for (const id of ['diary-search','diary-from','diary-to']) $(id).value = '';
         renderEntries();
         renderConsultSummary();
