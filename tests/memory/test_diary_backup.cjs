@@ -13,15 +13,20 @@ const scriptMatch = html.match(/<script>\s*([\s\S]*?)\s*<\/script>/);
 assert.ok(scriptMatch, 'main inline script present');
 new vm.Script(scriptMatch[1]);
 
+const constants = scriptMatch[1].slice(
+  scriptMatch[1].indexOf('const diaryOptionLabels ='),
+  scriptMatch[1].indexOf('let entries = []')
+);
 const functions = scriptMatch[1].slice(
   scriptMatch[1].indexOf('function validDiaryDate(value)'),
-  scriptMatch[1].indexOf("$('diary-import').addEventListener")
+  scriptMatch[1].indexOf("$('consult-period').addEventListener")
 );
 const sandbox = {};
 vm.createContext(sandbox);
-vm.runInContext(functions, sandbox);
+vm.runInContext(constants + functions, sandbox);
 const validate = sandbox.validateDiaryBackup;
 const date = sandbox.validDiaryDate;
+const summarize = sandbox.buildConsultSummary;
 
 const item = (id, text='하루의 메모', day='2026-11-11') => ({id, date:day, text});
 const data = (entries, format='apuda-memory-care-diary', version=1) => ({format,version,entries});
@@ -32,7 +37,12 @@ assert.equal(date('2026-13-01'), false, 'invalid month rejected');
 assert.equal(date('not-a-date'), false);
 assert.equal(validate(data([item('rec-1')])).length, 1, 'valid JSON accepted');
 assert.equal(validate(data([item('rec-1')], 'wrong-format')), null, 'foreign app rejected');
-assert.equal(validate(data([item('rec-1')], 'apuda-memory-care-diary', 2)), null, 'future schema rejected');
+assert.equal(validate(data([item('rec-1')], 'apuda-memory-care-diary', 3)), null, 'future schema rejected');
+assert.equal(validate(data([item('rec-1')], 'apuda-memory-care-diary', 2)).length,1, 'new v2 JSON accepted');
+assert.equal(validate(data([{...item('rec-1'),sleep:'나쁨'}])),null,'v1 format cannot silently lose v2 fields');
+assert.equal(validate(data([{...item('rec-1'),sleep:'나쁨',meal:'부족',medicationCheck:'확인 필요',question:'수면 변화에 관해 질문'},], 'apuda-memory-care-diary', 2)).length,1,'structured observations and clinician question preserved');
+assert.equal(validate(data([{...item('rec-1'),sleep:'심각'}], 'apuda-memory-care-diary', 2)),null,'unknown observations rejected');
+assert.equal(validate(data([{...item('rec-1'),question:'a'.repeat(301)}], 'apuda-memory-care-diary', 2)),null,'oversized clinician question rejected');
 assert.equal(validate(data(Array.from({length:21}, (_,i) => item(`id-${i}`)))), null, '21 entries rejected');
 assert.equal(validate(data([item('same'),item('same')])), null, 'duplicate IDs rejected');
 assert.equal(validate(data([item('id-1','')])) ,null, 'empty note rejected');
@@ -41,7 +51,7 @@ assert.equal(validate(data([item('id-1','note','2026-02-30')])), null, 'invalid 
 assert.equal(validate(data([{id:23,date:'2026-11-11',text:'note'}])), null, 'non-string ID rejected');
 assert.equal(validate(data([{id:'rec-1',date:'2026-11-11',text:'<script>alert(1)</script>'}])).length,1,'content treated as text');
 
-for (const id of ['diary-export','diary-export-json','diary-import','diary-import-file','diary-status','diary-backup-status','diary-import-selection','diary-list-title','text-size-label']) {
+for (const id of ['diary-export','diary-export-json','diary-import','diary-import-file','diary-status','diary-backup-status','diary-import-selection','diary-list-title','text-size-label','diary-sleep','diary-meal','diary-medication','diary-question','consult-period','consult-output','consult-copy','consult-print']) {
   assert.ok(html.includes(`id="${id}"`), `${id} present`);
 }
 assert.ok(html.includes('aria-describedby="diary-import-hint diary-import-selection"'), 'file chooser is associated with guidance and selection status');
@@ -112,13 +122,13 @@ async function scenario(current, incoming, shouldConfirm=true, options={}) {
     $:id=>id==='diary-import-file'?state.fileInput:{addEventListener:(event,fn)=>{state.handler=fn}}
   };
   vm.createContext(state);
-  vm.runInContext(`let entries=[];function readEntries(){
+  vm.runInContext(`${constants}\nlet entries=[];function readEntries(){
     if (readFails) { storageAvailable=false;diaryStatus.textContent='저장소를 읽을 수 없습니다.';return; }
     entries=backing.map(x=>({...x}));storageAvailable=true;
   }\nfunction persistEntries(){
     if (persistFails) {storageAvailable=false;diaryStatus.textContent='저장 공간이 부족합니다.';return false;}
     backing=entries.map(x=>({...x}));writes++;return true;
-  }\nfunction renderEntries(){}\nfunction reportBackupStatus(message){diaryStatus.textContent='';backupStatus.textContent=message;}\n${functions}\n${restoreHandler}`,Object.assign(state,{readFails:!!options.readFails,persistFails:!!options.persistFails}));
+  }\nfunction renderEntries(){}\nfunction reportBackupStatus(message){diaryStatus.textContent='';backupStatus.textContent=message;}\n${functions}\nfunction renderConsultSummary(){}\n${restoreHandler}`,Object.assign(state,{readFails:!!options.readFails,persistFails:!!options.persistFails}));
   await state.handler();
   return state;
 }
@@ -127,8 +137,9 @@ async function scenario(current, incoming, shouldConfirm=true, options={}) {
   const prior = item('rec-1','원래 기록');
 
   // The JSON generated by the actual export handler must pass the actual restore validator.
+  const enriched = {...item('rec-2','새로 복원'), sleep:'나쁨',meal:'부족',medicationCheck:'문의 사항 있음',question:'수면 검사가 필요한가요?'};
   const exporter = {
-    entries:[prior,item('rec-2','새로 복원')], storageAvailable:true,
+    entries:[prior,enriched], storageAvailable:true,
     diaryStatus:{textContent:''}, handler:null, exported:null,
     localDate:'2026-11-11',
     readEntries(){},
@@ -137,14 +148,18 @@ async function scenario(current, incoming, shouldConfirm=true, options={}) {
     $:()=>({addEventListener:(event,fn)=>{exporter.handler=fn}})
   };
   vm.createContext(exporter);
-  vm.runInContext(exportHandler,exporter);
+  vm.runInContext(constants + functions + exportHandler,exporter);
   exporter.handler();
   assert.equal(exporter.exported.filename,'apuda-memory-diary-2026-11-11.json');
   assert.equal(exporter.exported.mime,'application/json;charset=utf-8');
   const roundTripBackup = JSON.parse(exporter.exported.content);
+  assert.equal(roundTripBackup.version,2,'new backup is v2 and avoids silent downgrade');
+  assert.equal(roundTripBackup.entries[1].question,'수면 검사가 필요한가요?','question survives export');
   assert.equal(validate(roundTripBackup).length,2,'actual exported JSON accepted by validator');
   const restored = await scenario([],roundTripBackup);
   assert.equal(restored.backing.length,2,'roundtrip restores both records');
+  assert.equal(restored.backing.find(x=>x.id==='rec-2').sleep,'나쁨','structured field survives restore');
+  assert.equal(restored.backing.find(x=>x.id==='rec-2').medicationCheck,'문의 사항 있음','medication check survives restore');
   const duplicateRoundTrip = await scenario(restored.backing,roundTripBackup);
   assert.equal(duplicateRoundTrip.writes,0,'same backup twice is idempotent');
 
@@ -206,9 +221,29 @@ async function scenario(current, incoming, shouldConfirm=true, options={}) {
   exporterFailure.$ = ()=>({addEventListener:(event,fn)=>{exporterFailure.handler=fn}});
   exporterFailure.reportBackupStatus = message=>{exporterFailure.lastMessage=message};
   vm.createContext(exporterFailure);
-  vm.runInContext(exportHandler,exporterFailure);
+  vm.runInContext(constants + functions + exportHandler,exporterFailure);
   exporterFailure.handler();
   assert.match(exporterFailure.lastMessage,/JSON 다운로드를 시작하지 못했습니다/,'download errors reported without false success');
 
-  console.log('PASS: export→restore, safe merge, file/schema/quota errors, concurrent-tab checks, download errors, file selection announcements, font toggle, deletion focus marker');
+  // 7/30-day report counts saved observations only; missing days are never treated as normal.
+  const summaries = [
+    {...item('today','오늘','2026-11-11'),sleep:'나쁨',meal:'부족',question:'진료 질문'},
+    {...item('yesterday','어제','2026-11-10'),sleep:'좋음'},
+    {...item('eight-days','지난주','2026-11-04'),meal:'보통'},
+    {...item('future','미래','2026-11-12'),sleep:'나쁨'},
+    {...item('old','오래전','2026-10-10'),sleep:'나쁨'}
+  ];
+  const seven = summarize(summaries,7,'2026-11-11');
+  assert.match(seven,/2026-11-05 ~ 2026-11-11 \(7일\)/);
+  assert.match(seven,/저장된 기록 2건/);
+  assert.match(seven,/수면 관찰: 2건 기록/);
+  assert.doesNotMatch(seven,/지난주|미래|오래전/,'outside period excluded');
+  assert.match(seven,/기록이 없는 날짜의 상태는 알 수 없습니다/,'missing dates not interpreted');
+  const thirty = summarize(summaries,30,'2026-11-11');
+  assert.match(thirty,/2026-10-13 ~ 2026-11-11 \(30일\)/);
+  assert.match(thirty,/저장된 기록 3건/);
+  assert.match(thirty,/지난주/);
+  assert.doesNotMatch(thirty,/미래|오래전/);
+
+  console.log('PASS: legacy/v2 export→restore, safe merge, validation/quota errors, concurrent-tab checks, 7/30-day summaries, download/selection/font/accessibility checks');
 })().catch(error=>{console.error(error);process.exitCode=1});
