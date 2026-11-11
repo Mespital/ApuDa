@@ -1,13 +1,13 @@
 name: ApuDa SEO and note contrast
 
-# Read-only source check for PRs touching the static public site.
+# Read-only source check for all PRs targeting main.
+# Do not add paths filters: required status checks must run on docs-only PRs too.
 # No deployment, VPS access, patient data, or repository secrets are needed.
 on:
   pull_request:
     branches: [main]
-    paths:
-      - '.github/workflows/apuda-seo-contrast.yml'
-      - 'public-site/**'
+  # Supports a future merge queue without enabling one.
+  merge_group:
 
 permissions:
   contents: read
