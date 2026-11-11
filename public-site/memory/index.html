@@ -471,8 +471,8 @@
         }
         const date = $('diary-date').value;
         const note = $('diary-text').value.trim();
-        if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || !note || note.length > 1000) {
-          diaryStatus.textContent = '날짜와 1,000자 이내의 메모를 확인해 주세요.';
+        if (!validDiaryDate(date) || !note || note.length > 1000) {
+          diaryStatus.textContent = '실제 달력에 있는 날짜와 1,000자 이내의 메모를 확인해 주세요.';
           return;
         }
         const item = {id:`${Date.now()}-${Math.random().toString(36).slice(2,9)}`,date,text:note};
@@ -503,7 +503,12 @@
         if (!storageAvailable) {reportBackupStatus(diaryStatus.textContent);return;}
         if (!entries.length) {reportBackupStatus('백업할 저장 기록이 없습니다.');return;}
         const content = ['ApuDa Memory 돌봄 기록 - 개인 기기 백업','민감정보가 포함될 수 있으므로 파일 보관에 주의하세요.','',...entries.flatMap(item => [`[${item.date}]`,item.text,''])].join('\n');
-        downloadDiaryFile(content, `apuda-memory-diary-${localDate}.txt`, 'text/plain;charset=utf-8');
+        try {
+          downloadDiaryFile(content, `apuda-memory-diary-${localDate}.txt`, 'text/plain;charset=utf-8');
+        } catch (error) {
+          reportBackupStatus('TXT 다운로드를 시작하지 못했습니다. 브라우저의 다운로드 설정을 확인해 주세요. 기존 기록은 그대로 유지됩니다.');
+          return;
+        }
         reportBackupStatus('읽기용 TXT 파일 다운로드를 요청했습니다. TXT는 앱으로 복원할 수 없으니 JSON 백업도 보관하세요.');
       });
       $('diary-export-json').addEventListener('click', () => {
@@ -516,7 +521,12 @@
           exportedAt:new Date().toISOString(),
           entries:entries.map(({id,date,text}) => ({id,date,text}))
         };
-        downloadDiaryFile(JSON.stringify(payload, null, 2), `apuda-memory-diary-${localDate}.json`, 'application/json;charset=utf-8');
+        try {
+          downloadDiaryFile(JSON.stringify(payload, null, 2), `apuda-memory-diary-${localDate}.json`, 'application/json;charset=utf-8');
+        } catch (error) {
+          reportBackupStatus('JSON 다운로드를 시작하지 못했습니다. 브라우저의 다운로드 설정을 확인해 주세요. 기존 기록은 그대로 유지됩니다.');
+          return;
+        }
         reportBackupStatus(`현재 기록 ${entries.length}건의 JSON 백업 다운로드를 요청했습니다. 실제 파일이 저장되었는지 확인하고 안전하게 보관하세요.`);
       });
       function validDiaryDate(value) {
