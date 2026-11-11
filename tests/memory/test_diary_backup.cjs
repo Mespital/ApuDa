@@ -41,9 +41,47 @@ assert.equal(validate(data([item('id-1','note','2026-02-30')])), null, 'invalid 
 assert.equal(validate(data([{id:23,date:'2026-11-11',text:'note'}])), null, 'non-string ID rejected');
 assert.equal(validate(data([{id:'rec-1',date:'2026-11-11',text:'<script>alert(1)</script>'}])).length,1,'content treated as text');
 
-for (const id of ['diary-export','diary-export-json','diary-import','diary-import-file','diary-status','diary-backup-status']) {
+for (const id of ['diary-export','diary-export-json','diary-import','diary-import-file','diary-status','diary-backup-status','diary-import-selection','diary-list-title','text-size-label']) {
   assert.ok(html.includes(`id="${id}"`), `${id} present`);
 }
+assert.ok(html.includes('aria-describedby="diary-import-hint diary-import-selection"'), 'file chooser is associated with guidance and selection status');
+assert.ok(html.includes("$('diary-list-title').focus();"), 'deleted button focus transfers to record heading');
+assert.ok(html.includes('`${item.date} ${index + 1}번째 기록 삭제`'), 'repeated dates have distinguishable delete labels');
+
+const selectionStart = scriptMatch[1].indexOf("$('diary-import-file').addEventListener('change', (event) => {");
+const selectionEnd = scriptMatch[1].indexOf("\n      $('diary-export').addEventListener", selectionStart);
+assert.ok(selectionStart > 0 && selectionEnd > selectionStart, 'selection change handler present');
+const selectionHandler = scriptMatch[1].slice(selectionStart, selectionEnd);
+function selectedFile(files) {
+  const statuses = {'diary-backup-status':{textContent:'이전 메시지'},'diary-import-selection':{textContent:''}};
+  const state = {$:id=>({addEventListener:(type,handler)=>{state.handler=handler}}),handler:null};
+  state.$ = id=>statuses[id] || {addEventListener:(type,handler)=>{state.handler=handler}};
+  vm.createContext(state);
+  vm.runInContext(selectionHandler,state);
+  state.handler({target:{files}});
+  return statuses;
+}
+const selectedValid = selectedFile([{name:'backup.json',size:1024}]);
+assert.match(selectedValid['diary-import-selection'].textContent,/아직 기록을 복원하지 않았습니다/,'file selection is not mistaken for restore');
+assert.equal(selectedValid['diary-backup-status'].textContent,'','old restore result cleared on new file selection');
+assert.match(selectedFile([{name:'wrong.txt',size:1024}])['diary-import-selection'].textContent,/256KB 이하/,'incorrect extension warned before restore');
+assert.match(selectedFile([])['diary-import-selection'].textContent,/취소되었습니다/,'cancel selection announced');
+
+const fontStart = scriptMatch[1].indexOf("const button = $('text-size-toggle');");
+const fontEnd = scriptMatch[1].indexOf('\n      const observationForm =',fontStart);
+assert.ok(fontStart > 0 && fontEnd > fontStart,'text-size handler present');
+const fontLabel={textContent:'글자 크게 보기'};
+let largeFont=false;
+const fontButton={onClick:null,attrs:{},addEventListener:(type,handler)=>{fontButton.onClick=handler},setAttribute:(name,value)=>{fontButton.attrs[name]=value}};
+const fontState={document:{documentElement:{classList:{toggle:()=>{largeFont=!largeFont;return largeFont}}}},$:id=>id==='text-size-toggle'?fontButton:fontLabel};
+vm.createContext(fontState);
+vm.runInContext(scriptMatch[1].slice(fontStart,fontEnd),fontState);
+fontButton.onClick();
+assert.equal(fontLabel.textContent,'기본 글자 크기로','large mode has reversible button name');
+assert.equal(fontButton.attrs['aria-pressed'],'true');
+fontButton.onClick();
+assert.equal(fontLabel.textContent,'글자 크게 보기');
+assert.equal(fontButton.attrs['aria-pressed'],'false');
 
 const restoreStart = scriptMatch[1].indexOf("$('diary-import').addEventListener('click', async () => {");
 const restoreEnd = scriptMatch[1].indexOf("\n      window.addEventListener('storage'", restoreStart);
@@ -172,5 +210,5 @@ async function scenario(current, incoming, shouldConfirm=true, options={}) {
   exporterFailure.handler();
   assert.match(exporterFailure.lastMessage,/JSON 다운로드를 시작하지 못했습니다/,'download errors reported without false success');
 
-  console.log('PASS: export→restore roundtrip, idempotency, calendar/schema, merge, 20-record limit, bad/oversized/unreadable files, quota failures, concurrent-tab rechecks, download failure, UI controls');
+  console.log('PASS: export→restore, safe merge, file/schema/quota errors, concurrent-tab checks, download errors, file selection announcements, font toggle, deletion focus marker');
 })().catch(error=>{console.error(error);process.exitCode=1});
