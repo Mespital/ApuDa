@@ -47,6 +47,11 @@
 
 # ApuDa 암환자 노트 v3 — public-site/note/ 에서 직접 서비스 (기존 외부 프록시 제거)
 [[headers]]
+  for = "/note/"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+
+[[headers]]
   for = "/note/sw.js"
   [headers.values]
     Cache-Control = "no-cache"
@@ -55,6 +60,7 @@
   for = "/note/index.html"
   [headers.values]
     Cache-Control = "no-cache"
+    X-Robots-Tag = "noindex"
 
 [[headers]]
   for = "/assets/books/*"
