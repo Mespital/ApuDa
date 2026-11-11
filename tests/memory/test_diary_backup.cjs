@@ -28,6 +28,8 @@ const validate = sandbox.validateDiaryBackup;
 const date = sandbox.validDiaryDate;
 const summarize = sandbox.buildConsultSummary;
 const filterEntries = sandbox.filterDiaryEntries;
+const timeline = sandbox.buildDailyObservationTimeline;
+const caregiverBrief = sandbox.buildCaregiverBrief;
 
 const item = (id, text='하루의 메모', day='2026-11-11') => ({id, date:day, text});
 const data = (entries, format='apuda-memory-care-diary', version=1) => ({format,version,entries});
@@ -52,7 +54,7 @@ assert.equal(validate(data([item('id-1','note','2026-02-30')])), null, 'invalid 
 assert.equal(validate(data([{id:23,date:'2026-11-11',text:'note'}])), null, 'non-string ID rejected');
 assert.equal(validate(data([{id:'rec-1',date:'2026-11-11',text:'<script>alert(1)</script>'}])).length,1,'content treated as text');
 
-for (const id of ['diary-export','diary-export-json','diary-import','diary-import-file','diary-status','diary-backup-status','diary-import-selection','diary-list-title','text-size-label','diary-sleep','diary-meal','diary-medication','diary-question','consult-period','consult-output','consult-copy','consult-print','diary-search','diary-from','diary-to','diary-filter-reset','diary-filter-status','consult-days','consult-records','consult-question-count','consult-questions']) {
+for (const id of ['diary-export','diary-export-json','diary-import','diary-import-file','diary-status','diary-backup-status','diary-import-selection','diary-list-title','text-size-label','diary-sleep','diary-meal','diary-medication','diary-question','consult-period','consult-output','consult-copy','consult-print','diary-search','diary-from','diary-to','diary-filter-reset','diary-filter-status','consult-days','consult-records','consult-question-count','consult-missing-days','consult-questions','consult-timeline-recent','consult-timeline-older','consult-timeline-older-list','consult-brief-output','consult-brief-copy']) {
   assert.ok(html.includes(`id="${id}"`), `${id} present`);
 }
 assert.ok(html.includes('aria-describedby="diary-import-hint diary-import-selection"'), 'file chooser is associated with guidance and selection status');
@@ -247,6 +249,43 @@ async function scenario(current, incoming, shouldConfirm=true, options={}) {
   assert.doesNotMatch(thirty,/미래|오래전/);
   assert.match(seven,/기록된 날짜 2일/,'distinct recording days calculated');
   assert.match(seven,/먼저 물어볼 질문[\s\S]*진료 질문/,'clinician questions surfaced near top');
+  assert.match(seven,/날짜 기록 없음 5일/,'7-day missing dates counted without medical inference');
+  assert.match(thirty,/날짜 기록 없음 27일/,'30-day missing dates counted');
+
+  // A date with no entry is distinct from a saved entry with an unselected field.
+  // Two entries on the same date are not averaged or chosen as the single truth.
+  const changeHistory = [
+    {...item('same-1','첫 관찰','2026-11-11'),sleep:'나쁨',meal:'부족'},
+    {...item('same-2','둘째 관찰','2026-11-11'),sleep:'좋음',question:'다른 수면 상태 질문'},
+    {...item('previous','기록은 했지만 상태 미선택','2026-11-10'),medicationCheck:'확인 필요'},
+    {...item('out','범위 밖','2026-11-03'),sleep:'좋음'},
+    {...item('future-two','미래','2026-11-12'),meal:'좋음'}
+  ];
+  const historySnapshot = JSON.stringify(changeHistory);
+  const days7 = timeline(changeHistory,7,'2026-11-11');
+  assert.equal(days7.length,7,'every calendar date shown even when unrecorded');
+  assert.equal(days7[0].date,'2026-11-11','newest date first');
+  assert.equal(days7[0].recordCount,2,'multiple entries on one day counted separately');
+  assert.match(days7[0].fields.sleep.label,/복수 관찰: 평소보다 어려움 \/ 평소와 비슷함/,'conflicting saved values disclosed, not collapsed');
+  assert.match(days7[0].fields.meal.label,/식사량이 줄었음 · 1건 항목 미기록/,'partially missing observation on the same date is disclosed');
+  assert.equal(days7[0].fields.medicationCheck.kind,'field-missing','saved day with omitted medication check is unselected');
+  assert.equal(days7[1].fields.sleep.label,'항목 미기록','saved day with no sleep data stays unknown');
+  assert.equal(days7[1].fields.medicationCheck.label,'확인이 필요함','saved medication observation preserved');
+  assert.equal(days7[2].recordCount,0,'unrecorded day has zero saved entries');
+  assert.equal(days7[2].fields.sleep.label,'날짜 기록 없음','missing entire date not shown as normal');
+  assert.equal(days7[6].date,'2026-11-05','7-day inclusive start');
+  assert.equal(timeline(changeHistory,30,'2026-11-11').length,30,'full 30 calendar days available in expanded view');
+  assert.equal(timeline([],30,'2026-11-11').every(day => day.fields.meal.kind === 'day-missing'),true,'empty storage never inferred normal');
+  assert.equal(timeline([],7,'2024-03-01')[1].date,'2024-02-29','leap year date math correct');
+  const brief = caregiverBrief(changeHistory,7,'2026-11-11');
+  assert.match(brief,/보호자용 진료 준비 메모/);
+  assert.match(brief,/기록된 날짜 2일 · 저장 기록 3건 · 날짜 기록 없음 5일/);
+  assert.match(brief,/먼저 물어볼 질문[\s\S]*다른 수면 상태 질문/);
+  assert.match(brief,/수면 관찰: 2건 기록/);
+  assert.doesNotMatch(brief,/첫 관찰|범위 밖|미래/,'brief excludes free text and records outside selected days');
+  assert.equal(JSON.stringify(changeHistory),historySnapshot,'timeline and brief summaries never mutate saved entries');
+  assert.match(html,/둘 다 상태가 정상이라는 의미는 아닙니다/,'unknown versus observed distinction explained');
+  assert.match(html,/body\.print-summary \.consult-brief/,'brief hidden when printing detailed summary');
 
   const searchable = [
     {...item('rec-sleep','오늘 잠을 설쳤음','2026-11-11'),sleep:'나쁨',question:'밤중 각성을 상담하고 싶음'},
@@ -267,5 +306,5 @@ async function scenario(current, incoming, shouldConfirm=true, options={}) {
   assert.equal(JSON.stringify(searchable),originalSnapshot,'search never mutates underlying records');
   assert.match(html,/위 기록 검색·날짜 필터와 관계없이/,'summary independent of list filters');
 
-  console.log('PASS: legacy/v2 backup, safe merge, date/word/field search, nonmutation, 7/30-day summaries, questions, quota/errors, font/accessibility checks');
+  console.log('PASS: legacy/v2 backup, safe merge, search, 7/30-day timeline, missing vs unselected, multi-entry observations, caregiver brief, nonmutation, quota/errors, accessibility structure');
 })().catch(error=>{console.error(error);process.exitCode=1});
