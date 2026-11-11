@@ -115,12 +115,12 @@ assert.equal(state.backing.length,1,'only selected record removed');
 assert.equal(state.backing[0].text,older.text,'other record preserved on deletion');
 assert.equal(state.elements['diary-next'].hidden,true,'save next links hidden after deletion');
 assert.equal(state.elements['diary-list-title'].focused,true,'focus returns to records after deletion');
+assert.match(state.elements['diary-status'].textContent,/1건을 삭제했습니다/,'delete confirms count');
 assert.equal(state.elements['diary-undo'].hidden,false,'delete undo available in active page');
 state.elements['diary-undo-button'].handlers.click();
 assert.equal(state.backing.length,2,'last deletion can be undone');
 assert.equal(state.backing.find(e=>e.id===older.id).text,older.text,'original restored and unrelated record intact');
 assert.equal(state.elements['diary-undo'].hidden,true,'undo cleared after successful restore');
-assert.match(state.elements['diary-status'].textContent,/1건을 삭제했습니다/,'delete confirms count');
 
 const full=boot(Array.from({length:20},(_,i)=>({id:`old-${i}`,date:'2026-11-10',text:'기존 기록'})));
 fillNewRecord(full);
