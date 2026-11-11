@@ -1,0 +1,32 @@
+name: ApuDa SEO and note contrast
+
+# Read-only source check for PRs touching the static public site.
+# No deployment, VPS access, patient data, or repository secrets are needed.
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/apuda-seo-contrast.yml'
+      - 'public-site/**'
+
+permissions:
+  contents: read
+
+jobs:
+  static-seo-and-contrast:
+    name: Static SEO and contrast
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout PR merge snapshot
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check JavaScript syntax
+        run: node --check public-site/scripts/check-seo.mjs
+      - name: Verify SEO, FAQ counts, and note-guide contrast
+        run: node public-site/scripts/check-seo.mjs
