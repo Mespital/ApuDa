@@ -1,8 +1,14 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
+const path = require('node:path');
 
-const html = fs.readFileSync(`${__dirname}/index.html`, 'utf8');
+const htmlPath = [
+  path.join(__dirname,'index.html'),
+  path.join(__dirname,'../../public-site/memory/index.html')
+].find(candidate=>fs.existsSync(candidate));
+assert.ok(htmlPath,'ApuDa Memory HTML source found');
+const html = fs.readFileSync(htmlPath, 'utf8');
 const scriptMatch = html.match(/<script>\s*([\s\S]*?)\s*<\/script>/);
 assert.ok(scriptMatch, 'main inline script present');
 new vm.Script(scriptMatch[1]);
