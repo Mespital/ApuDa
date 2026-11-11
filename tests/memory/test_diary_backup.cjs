@@ -54,12 +54,19 @@ assert.equal(validate(data([item('id-1','note','2026-02-30')])), null, 'invalid 
 assert.equal(validate(data([{id:23,date:'2026-11-11',text:'note'}])), null, 'non-string ID rejected');
 assert.equal(validate(data([{id:'rec-1',date:'2026-11-11',text:'<script>alert(1)</script>'}])).length,1,'content treated as text');
 
-for (const id of ['diary-export','diary-export-json','diary-import','diary-import-file','diary-status','diary-backup-status','diary-import-selection','diary-list-title','text-size-label','diary-sleep','diary-meal','diary-medication','diary-question','consult-period','consult-output','consult-copy','consult-print','diary-search','diary-from','diary-to','diary-filter-reset','diary-filter-status','consult-days','consult-records','consult-question-count','consult-missing-days','consult-questions','consult-timeline-recent','consult-timeline-older','consult-timeline-older-list','consult-brief-output','consult-brief-copy']) {
+for (const id of ['diary-export','diary-export-json','diary-import','diary-import-file','diary-status','diary-backup-status','diary-import-selection','diary-list-title','text-size-label','diary-sleep','diary-meal','diary-medication','diary-question','consult-period','consult-output','consult-copy','consult-print','diary-search','diary-from','diary-to','diary-filter-reset','diary-filter-status','consult-days','consult-records','consult-question-count','consult-missing-days','consult-questions','consult-timeline-recent','consult-timeline-older','consult-timeline-older-list','consult-brief-output','consult-brief-copy','consult-brief-status']) {
   assert.ok(html.includes(`id="${id}"`), `${id} present`);
 }
 assert.ok(html.includes('aria-describedby="diary-import-hint diary-import-selection"'), 'file chooser is associated with guidance and selection status');
 assert.ok(html.includes("$('diary-list-title').focus();"), 'deleted button focus transfers to record heading');
 assert.ok(html.includes('`${item.date} ${index + 1}번째 기록 삭제`'), 'repeated dates have distinguishable delete labels');
+const summaryPanel = html.slice(html.indexOf('<section id="consult-summary"'),html.indexOf('</section>\n      </div>\n    </section>',html.indexOf('<section id="consult-summary"')));
+assert.ok(summaryPanel.indexOf('class="consult-question-preview"') < summaryPanel.indexOf('class="consult-brief"'), 'clinician questions precede caregiver memo');
+assert.ok(summaryPanel.indexOf('class="consult-brief"') < summaryPanel.indexOf('class="consult-timeline"'), 'caregiver memo precedes long daily timeline');
+assert.match(html,/html\.large-text \.timeline-field strong/,'large-text mode expands small timeline values');
+assert.match(html,/@media\s*\(max-width:360px\)/,'narrow mobile layout specifically addressed');
+assert.match(html,/@page\s*\{size:A4;margin:16mm\}/,'print page and margins defined');
+assert.match(html,/role="status" aria-live="polite" aria-atomic="true"><\/p>/,'copy feedback is live-announced');
 
 const selectionStart = scriptMatch[1].indexOf("$('diary-import-file').addEventListener('change', (event) => {");
 const selectionEnd = scriptMatch[1].indexOf("\n      $('diary-export').addEventListener", selectionStart);
@@ -251,6 +258,47 @@ async function scenario(current, incoming, shouldConfirm=true, options={}) {
   assert.match(seven,/먼저 물어볼 질문[\s\S]*진료 질문/,'clinician questions surfaced near top');
   assert.match(seven,/날짜 기록 없음 5일/,'7-day missing dates counted without medical inference');
   assert.match(thirty,/날짜 기록 없음 27일/,'30-day missing dates counted');
+  assert.match(seven,/인쇄물·PDF·복사한 내용에는 개인 건강정보/,'printable summary contains privacy warning');
+  assert.match(caregiverBrief(summaries,7,'2026-11-11'),/인쇄물·PDF·복사한 내용에는 개인 건강정보/,'copied caregiver memo contains privacy warning');
+
+  // Brief copy feedback must appear next to the initiating button, even when clipboard permission fails.
+  const copyStart = scriptMatch[1].indexOf('async function copyConsultText(');
+  const copyEnd = scriptMatch[1].indexOf("$('consult-print').addEventListener", copyStart);
+  assert.ok(copyStart > 0 && copyEnd > copyStart,'copy handlers can be isolated for UI regression checks');
+  async function copyCase(clipboardAvailable) {
+    const elements={};
+    for (const id of ['consult-brief-copy','consult-copy','consult-brief-output','consult-output','consult-brief-status','consult-status']) {
+      elements[id]={textContent:id.endsWith('output')?`개인 기록 ${id}`:'',handler:null,focused:false,
+        focus(){this.focused=true},addEventListener(_event,fn){this.handler=fn}};
+    }
+    const copied=[];
+    const state={
+      $:id=>elements[id],
+      navigator:{clipboard:clipboardAvailable?{writeText:async value=>copied.push(value)}:undefined}
+    };
+    vm.createContext(state);
+    vm.runInContext(scriptMatch[1].slice(copyStart,copyEnd),state);
+    await elements['consult-brief-copy'].handler();
+    assert.equal(elements['consult-status'].textContent,'','brief button does not announce result far away');
+    if (clipboardAvailable) {
+      assert.equal(copied.length,1,'brief copy writes exactly once');
+      assert.match(elements['consult-brief-status'].textContent,/보호자용 짧은 메모를 복사했습니다/);
+      assert.match(elements['consult-brief-status'].textContent,/수신자를 확인/);
+    } else {
+      assert.equal(elements['consult-brief-output'].focused,true,'failed brief copy focuses selectable memo');
+      assert.match(elements['consult-brief-status'].textContent,/직접 선택·복사/);
+    }
+    await elements['consult-copy'].handler();
+    if (clipboardAvailable) {
+      assert.equal(copied.length,2,'full copy writes once after brief');
+      assert.match(elements['consult-status'].textContent,/진료 요약을 복사했습니다/);
+    } else {
+      assert.equal(elements['consult-output'].focused,true,'failed full copy focuses selectable summary');
+      assert.match(elements['consult-status'].textContent,/직접 선택·복사/);
+    }
+  }
+  await copyCase(true);
+  await copyCase(false);
 
   // A date with no entry is distinct from a saved entry with an unselected field.
   // Two entries on the same date are not averaged or chosen as the single truth.
