@@ -148,13 +148,10 @@ for (const record of records) {
 const indexPath = join(faqDir, 'index.html');
 let faqIndex = await readFile(indexPath, 'utf8');
 faqIndex = faqIndex.replace(/<!-- APUDA SEO FAQ LINKS START -->[\s\S]*?<!-- APUDA SEO FAQ LINKS END -->\s*/g, '');
+// Remove the legacy JS canonical override. The interactive /library/faq/
+// remains a filterable index with one server-delivered self canonical; the 30
+// substantive static FAQ pages retain their own self canonicals.
 faqIndex = faqIndex.replace(/<!-- APUDA SEO CANONICAL START -->[\s\S]*?<!-- APUDA SEO CANONICAL END -->\s*/g, '');
-const canonicalScript = '<!-- APUDA SEO CANONICAL START -->\n<script>' +
-  '(function(){const slug=new URLSearchParams(location.search).get("cancer");' +
-  'if(' + JSON.stringify(records.map((r) => r.slug)) + '.includes(slug))' +
-  'document.querySelector("link[rel=canonical]").href="https://apuda.app/library/faq/"+slug+"/";' +
-  '})();</script>\n<!-- APUDA SEO CANONICAL END -->\n';
-faqIndex = faqIndex.replace('</head>', canonicalScript + '</head>');
 const staticNav = '<!-- APUDA SEO FAQ LINKS START -->\n' +
   '<details class="sec" style="padding:16px;border:1px solid #dce8f5;border-radius:14px;background:#fff">' +
   '<summary style="cursor:pointer;font-weight:850">암종별 FAQ 30종 전체 보기</summary>' +
@@ -185,8 +182,14 @@ for (const [slug, book] of books) {
   const description = (book.name + ' 진단 후 첫 30일 무료 안내서. ' + focus +
     ' 검사·치료 준비와 진료 질문을 정리한 환자·보호자용 자료입니다.').slice(0, 175);
   const url = canonical('/library/first30/books/' + book.number + '.html');
+  // The educational guide is published under the ApuDa brand. Do not invent a
+  // physician author, clinical reviewer, publication date, or dateModified.
+  // Per-book dates may be added only when editorial records verify them.
+  const organization = { '@type': 'Organization', name: 'ApuDa', url: origin + '/' };
   const data = { '@context': 'https://schema.org', '@type': 'Article', headline: title,
-    mainEntityOfPage: url, inLanguage: 'ko', publisher: { '@type': 'Organization', name: 'ApuDa', url: origin + '/' } };
+    description, mainEntityOfPage: url, inLanguage: 'ko',
+    author: organization, publisher: organization, isAccessibleForFree: true,
+    articleSection: '환자교육' };
   const tags = markerStart + '\n' +
     '<meta name="description" content="' + escapeHtml(description) + '">\n' +
     '<link rel="canonical" href="' + url + '">\n' +
@@ -203,14 +206,15 @@ for (const [slug, book] of books) {
 }
 
 // Restrict the sitemap to publicly accessible content. Private/account endpoints
-// and /nonsul/ (which has X-Robots-Tag: noindex) are intentionally excluded.
+// and the patient note app shell (/note/, X-Robots-Tag: noindex) are excluded.
+// Do not invent <lastmod>: the generator has no verified per-page meaningful-update dates.
 const paths = [
   '/', '/about/', '/community/', '/family/', '/care/', '/pet/', '/farm/',
   '/risk/', '/checkup/', '/emergency/', '/hospital-information/',
   '/library/first30/', '/library/faq/', '/library/review/',
   '/library/mini/', '/library/treatment-map/', '/library/drugs/',
   '/library/biomarkers/', '/library/regimens/', '/support/', '/support/v4/',
-  '/news/', '/news/oncology/', '/note/', '/watch/',
+  '/news/', '/news/oncology/', '/note-guide/', '/watch/',
   ...[...books.values()].map((b) => '/library/first30/books/' + b.number + '.html'),
   ...records.map((r) => '/library/faq/' + r.slug + '/'),
 ];

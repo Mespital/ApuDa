@@ -9,6 +9,7 @@ import requests
 from bs4 import BeautifulSoup
 from dateutil import parser as dtparser
 from zoneinfo import ZoneInfo
+from editorial_quality import curated_top_articles, excluded_from_top, keyword_mentioned
 
 UA = "ApuDaNewsBot/1.0 (+https://apuda.app/news/)"
 TIME_META_KEYS = {
@@ -142,16 +143,14 @@ def score_article(a, cfg):
     body=(a.body_excerpt or "").lower()
     score=0
     cats=[]
-    body_hits=[]
     for k,v in cfg["priority_keywords"].items():
         kl=k.lower()
-        if kl in lead:
+        if keyword_mentioned(kl, lead):
             score += int(v)
             cats.append(k)
-        elif kl in body:
+        elif keyword_mentioned(kl, body):
             # Body-only mentions are weaker evidence of the article's main topic.
             score += max(1,round(int(v)*0.30))
-            body_hits.append(k)
     for k,v in cfg["downrank_keywords"].items():
         kl=k.lower()
         if kl in lead: score += int(v)
@@ -160,7 +159,8 @@ def score_article(a, cfg):
     if any(x in lead for x in ["억원","억달러","조원","환자","개월","%","hr ","os ","pfs "]): score += 4
     elif any(x in body for x in ["억원","억달러","조원","환자","개월","%","hr ","os ","pfs "]): score += 1
     a.score=score
-    a.categories=list(dict.fromkeys(cats or body_hits))[:6] or ["산업"]
+    # An incidental body mention must not become a headline category.
+    a.categories=list(dict.fromkeys(cats))[:6] or ["산업"]
     return a
 
 def _oncology_signal(text):
@@ -420,7 +420,9 @@ def make_oncology_archive(merged, outdir, end, tz, days=30):
     }
 
 def make_report(items,cfg,start,end):
-    top=sorted(items,key=lambda x:(x.score,x.published_at or ""),reverse=True)[:cfg["top_n"]]
+    # Only exclude obviously unrelated event/condolence articles from the
+    # editorial TOP; retain them in the source archive for auditability.
+    top=curated_top_articles(items,cfg["top_n"])
     top_news=[article_to_news(a,rank=i) for i,a in enumerate(top,1)]
     trends=derive_period_trends(top_news,4) if top_news else []
 
@@ -527,6 +529,10 @@ def build_period_highlights(outdir,end,tz):
             continue
         report_date=d.get("report_date") or p.stem
         for n in d.get("top_news",[]):
+            # Historical reports are immutable. Do not recirculate a known
+            # event/obituary from an old daily TOP into a new 7/30-day digest.
+            if excluded_from_top(n.get("title")):
+                continue
             item=dict(n)
             item["report_date"]=report_date
             dt=_news_date(item,tz)

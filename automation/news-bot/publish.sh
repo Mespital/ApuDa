@@ -55,7 +55,11 @@ for attempt in 1 2 3; do
     cp -a "$SNAPSHOT_DIR/$path" "$path"
   done
 
-  git add -- "${CHANGED_FILES[@]}"
+  # Regenerate the fenced /news/ HTML from the replayed JSON and the latest
+  # main HTML, so concurrent unrelated page changes are never overwritten.
+  "$SCRIPT_DIR/.venv/bin/python" "$SCRIPT_DIR/build_static_briefing.py" --repo-root "$APUDA_REPO_DIR"
+
+  git add -- "${CHANGED_FILES[@]}" public-site/news/index.html
   if git diff --cached --quiet; then
     echo "Generated data is already current on origin/$APUDA_NEWS_BRANCH."
     exit 0
