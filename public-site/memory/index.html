@@ -145,6 +145,13 @@
     .consult-question-preview ul{margin:0;padding-left:22px;overflow-wrap:anywhere}
     .consult-question-preview li+li{margin-top:7px}
     .diary-consent{margin-top:15px}
+    .diary-workflow{margin:18px 0;padding:16px 18px;border:1px solid #D1E2F6;background:#F9FCFF;border-radius:14px}
+    .diary-workflow p{margin:0 0 9px;color:#26476A}
+    .diary-workflow ol{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+    .diary-workflow a,.diary-next a{display:inline-flex;align-items:center;min-height:44px;padding:8px 12px;border:1px solid #BDD6F0;border-radius:10px;background:#fff;color:#1855D8;font-weight:780;text-decoration:underline;text-underline-offset:3px}
+    .diary-workflow a:focus-visible,.diary-next a:focus-visible{outline:3px solid #B46D12;outline-offset:3px}
+    .diary-next{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin:11px 0 4px}
+    .diary-next[hidden]{display:none}
     .backup-tools{margin-top:22px;border:1px solid #B8D2F3;border-radius:16px;background:#F5F9FF;padding:7px 17px 18px}
     .backup-tools summary{display:flex;align-items:center;min-height:52px;color:var(--navy);font-size:18px;font-weight:850;cursor:pointer}
     .backup-tools summary:focus-visible{outline:3px solid #B46D12;outline-offset:3px;border-radius:6px}
@@ -273,6 +280,10 @@
       <div class="box feature">
         <div class="feature-head"><span class="symbol" aria-hidden="true">📝</span><div><h3>오늘의 돌봄 메모</h3><p>복약 문의, 진료에서 물어볼 내용, 생활 중 관찰한 사항을 간단히 기록해 보세요.</p></div><span class="feature-badge">선택적 기기 내 저장</span></div>
         <div class="privacy"><strong>개인정보 보호:</strong> 저장에 동의하면 기록은 <strong>현재 기기의 브라우저 저장소(localStorage)</strong>에만 남습니다. ApuDa 서버에 전송·동기화되지 않으며 비밀번호 보호·암호화 기능도 없습니다. 공용 기기를 피하고 주민등록번호·실명 등 민감한 개인정보 입력은 삼가세요. 브라우저 데이터 삭제 시 기록이 사라질 수 있습니다.</div>
+        <nav class="diary-workflow" aria-label="진료 준비를 위한 3단계">
+          <p><strong>진료 전 3단계</strong> · 기록을 저장한 뒤 확인하고, 질문을 모아 진료에 활용하세요.</p>
+          <ol><li><a href="#diary-date">① 돌봄 기록 작성</a></li><li><a href="#diary-list-title">② 저장 기록 확인</a></li><li><a href="#consult-summary">③ 진료 메모 준비</a></li></ol>
+        </nav>
         <form id="diary-form">
           <div class="field"><label for="diary-date">기록 날짜</label><input id="diary-date" type="date" required></div>
           <div class="diary-structured" aria-label="오늘의 돌봄 관찰 항목">
@@ -287,6 +298,7 @@
           <div class="action-row"><button class="btn primary" type="submit">이 기기에 기록 저장</button></div>
         </form>
         <p id="diary-status" class="subnote" role="status" aria-live="polite" style="margin-top:13px"></p>
+        <div id="diary-next" class="diary-next" aria-label="저장 후 다음 단계" hidden><a href="#diary-list-title">저장된 기록 확인하기</a><a href="#consult-summary">진료용 메모 만들기</a></div>
         <details class="backup-tools">
           <summary>기록 백업·복원 (선택)</summary>
           <p>기기를 바꾸거나 브라우저 데이터를 정리하기 전, 먼저 <strong>JSON 백업</strong>을 받으세요. JSON은 이 화면에서 다시 복원할 수 있습니다. TXT는 읽기용으로만 사용합니다.</p>
@@ -564,9 +576,10 @@
           const remove = document.createElement('button');
           remove.type = 'button';
           remove.textContent = '이 기록 삭제';
-          remove.setAttribute('aria-label', `${item.date} ${index + 1}번째 기록 삭제`);
+          const preview = item.text.replace(/\s+/g,' ').slice(0,40);
+          remove.setAttribute('aria-label', `${item.date} ${index + 1}번째 기록 삭제 · ${preview}`);
           remove.addEventListener('click', () => {
-            if (!window.confirm('이 기기에서 해당 기록을 삭제할까요? 삭제한 기록은 복구할 수 없습니다.')) return;
+            if (!window.confirm(`다음 돌봄 기록 1건을 이 기기에서 삭제할까요?\n날짜: ${item.date}\n메모: ${preview}${item.text.length > 40 ? '…' : ''}\n\n이 화면에서는 삭제를 되돌릴 수 없습니다. 별도 JSON 백업이 없다면 복구할 수 없으니 삭제 전 확인하세요.`)) return;
             readEntries();
             if (!storageAvailable) return;
             const next = entries.filter(entry => entry.id !== item.id);
@@ -576,7 +589,8 @@
             renderEntries();
             renderConsultSummary();
             $('diary-list-title').focus();
-            diaryStatus.textContent = '선택한 기록을 이 기기에서 삭제했습니다.';
+            $('diary-next').hidden = true;
+            diaryStatus.textContent = `${item.date} 돌봄 기록 1건을 삭제했습니다. 저장 기록은 ${entries.length}건 남았습니다.`;
           });
           article.append(date, details, note, remove);
           diaryList.append(article);
@@ -599,6 +613,7 @@
       renderConsultSummary();
       diaryForm.addEventListener('submit', (event) => {
         event.preventDefault();
+        $('diary-next').hidden = true;
         if (!diaryForm.reportValidity()) return;
         if (!storageAvailable) {
           diaryStatus.textContent = '현재 브라우저에서 저장소를 사용할 수 없습니다. 다른 브라우저에서 다시 시도하세요.';
@@ -634,6 +649,8 @@
         const before = entries;
         entries = [item, ...entries];
         if (!persistEntries()) { entries = before; return; }
+        const hadFilters = ['diary-search','diary-from','diary-to'].some(id => $(id).value);
+        for (const id of ['diary-search','diary-from','diary-to']) $(id).value = '';
         renderEntries();
         renderConsultSummary();
         $('diary-text').value = '';
@@ -642,7 +659,10 @@
         $('diary-meal').value = '';
         $('diary-medication').value = '';
         $('diary-consent').checked = false;
-        diaryStatus.textContent = '기록을 현재 브라우저에 저장했습니다. 다른 기기와 동기화되지 않습니다.';
+        diaryStatus.textContent = hadFilters
+          ? '기록 1건을 현재 브라우저에 저장했습니다. 새 기록을 바로 확인하도록 기존 검색·날짜 필터를 초기화했습니다. 다른 기기와 동기화되지 않습니다.'
+          : '기록 1건을 현재 브라우저에 저장했습니다. 아래에서 기록을 확인하거나 진료용 메모를 준비하세요. 다른 기기와 동기화되지 않습니다.';
+        $('diary-next').hidden = false;
       });
       function downloadDiaryFile(content, filename, mime) {
         const url = URL.createObjectURL(new Blob([content], {type:mime}));
