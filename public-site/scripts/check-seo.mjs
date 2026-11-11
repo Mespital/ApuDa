@@ -57,6 +57,73 @@ const footerColor = noteGuideHtml.match(/footer\{[^}]*color:(#[0-9a-f]{6})/i)?.[
 assert(surfaceColor && breadcrumbColor && footerColor &&
   contrast(breadcrumbColor, surfaceColor) >= 4.5 && contrast(footerColor, surfaceColor) >= 4.5,
   'Public intro small secondary text must retain WCAG 4.5:1 contrast');
+
+// SEO-10: fail closed if a documented foreground, surface, or focus token changes.
+// Static palette check, not a claim of full WCAG/browser/assistive-technology conformance.
+const noteCss = noteGuideHtml.match(/<style>([\s\S]*?)<\/style>/)?.[1];
+assert(noteCss, 'Public intro inline stylesheet missing');
+const cssRules = [...noteCss.matchAll(/([^{}]+)\{([^{}]*)\}/g)].map(([, selectors, block]) => ({
+  selectors: selectors.split(',').map((selector) => selector.trim()),
+  declarations: new Map(block.split(';').map((entry) => {
+    const colon = entry.indexOf(':');
+    return colon < 0 ? [] : [entry.slice(0, colon).trim(), entry.slice(colon + 1).trim()];
+  }).filter((entry) => entry.length === 2)),
+}));
+const declaration = (selector, property) => {
+  const matched = cssRules.filter((rule) => rule.selectors.includes(selector) && rule.declarations.has(property));
+  assert(matched.length > 0, `Note guide CSS ${selector} ${property} missing`);
+  return matched.at(-1).declarations.get(property);
+};
+const cssHex = (value) => {
+  assert(/^#(?:[0-9a-f]{6}|[0-9a-f]{3})$/i.test(value), `Unsupported CSS color: ${value}`);
+  const color = value.toLowerCase();
+  return color.length === 4 ? '#' + [...color.slice(1)].map((digit) => digit + digit).join('') : color;
+};
+const token = (selector, property = 'color') => cssHex(declaration(selector, property));
+const gradient = declaration('.hero', 'background');
+assert(gradient.startsWith('linear-gradient('), 'Note guide hero gradient needs manual contrast review');
+const heroColors = gradient.match(/#(?:[0-9a-f]{6}|[0-9a-f]{3})\b/gi)?.map(cssHex);
+assert(heroColors?.length === 2, 'Note guide gradient endpoints need manual contrast review');
+const [heroLight, heroDark] = heroColors;
+const white = token('.top', 'background');
+const page = token(':root', 'background');
+const pageText = token(':root');
+const textPairs = [
+  ['body', pageText, page],
+  ['link on white', token('a'), white],
+  ['link on page', token('a'), page],
+  ['breadcrumb', token('.crumb'), page],
+  ['eyebrow on white', token('.eyebrow'), heroLight],
+  ['eyebrow on blue', token('.eyebrow'), heroDark],
+  ['hero lead on white', token('.lead'), heroLight],
+  ['hero lead on blue', token('.lead'), heroDark],
+  ['primary button', token('.btn.primary'), token('.btn.primary', 'background')],
+  ['card description', token('.card p'), token('.card', 'background')],
+  ['card label', token('.tag'), token('.card', 'background')],
+  ['step number', token('.steps li:before'), token('.steps li:before', 'background')],
+  ['step description', token('.steps p'), token('.steps li', 'background')],
+  ['medical notice', token('.notice p'), token('.notice', 'background')],
+  ['privacy text', pageText, token('.privacy', 'background')],
+  ['FAQ answer', token('.faq p'), token('.faq details', 'background')],
+  ['footer', token('footer'), page],
+];
+const textFailures = textPairs.filter(([, foreground, background]) => contrast(foreground, background) < 4.5);
+assert(textFailures.length === 0,
+  'Note guide WCAG AA text contrast < 4.5:1: ' + textFailures.map(([name, foreground, background]) =>
+    `${name} ${contrast(foreground, background).toFixed(2)}:1`).join(', '));
+const outline = declaration('a:focus-visible', 'outline');
+assert(declaration('summary:focus-visible', 'outline') === outline,
+  'Note guide links and FAQ need the same visible focus indicator');
+const focusMatch = outline.match(/^(\d+(?:\.\d+)?)px solid (#[0-9a-f]{3,6})$/i);
+assert(focusMatch && Number(focusMatch[1]) >= 2, 'Note guide focus outline needs manual review');
+const focusColor = cssHex(focusMatch[2]);
+const focusSurfaces = [white, page, heroLight, heroDark, token('.privacy', 'background'), token('.notice', 'background')];
+const focusFailures = focusSurfaces.filter((background) => contrast(focusColor, background) < 3);
+assert(focusFailures.length === 0,
+  'Note guide WCAG AA non-text focus contrast < 3:1 on: ' + focusFailures.join(', '));
+// Self-check the thresholds, so accidentally inverted comparisons fail this script.
+assert(contrast('#efad48', '#ffffff') < 3 && contrast('#a8cdf0', '#ffffff') < 4.5,
+  'Note guide contrast regression guard sanity check failed');
 const noteGuideScripts = [...noteGuideHtml.matchAll(/<script\b[^>]*>/g)].map((match) => match[0]);
 assert(noteGuideScripts.length === 1 && noteGuideScripts[0] === '<script type="application/ld+json">',
   'Public intro must remain static and free of third-party tracking scripts');
@@ -159,4 +226,5 @@ for (const file of files) {
   questions += count;
 }
 assert(questions === 3000, 'Expected 3,000 original FAQ items');
+console.log(`Note guide static contrast: ${textPairs.length}/${textPairs.length} text and ${focusSurfaces.length}/${focusSurfaces.length} focus surfaces PASS (WCAG 2.2 AA thresholds).`);
 console.log('SEO verified: 85 URLs, 30 books, 30 static FAQ pages, 3,000 questions, note intro public and app noindex.');
