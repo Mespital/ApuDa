@@ -115,6 +115,13 @@
     .consult-tools .action-row{margin-top:12px}
     .consult-output{margin-top:17px;border:1px solid #CDDFF0;border-radius:12px;padding:15px 17px;background:#fff;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.65}
     .consult-output:focus{outline:3px solid #B46D12;outline-offset:3px}
+    .consult-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0}
+    .consult-metrics>div{border-radius:12px;background:#EAF3FF;padding:12px 14px;color:#34516E}
+    .consult-metrics strong{display:block;font-size:24px;line-height:1.3;color:var(--brand-dark)}
+    .consult-question-preview{border-left:4px solid #D69C39;background:#FFF9EB;padding:13px 17px;border-radius:0 12px 12px 0;margin-top:13px}
+    .consult-question-preview h4{margin:0 0 8px;color:#704D13;font-size:17px}
+    .consult-question-preview ul{margin:0;padding-left:22px;overflow-wrap:anywhere}
+    .consult-question-preview li+li{margin-top:7px}
     .diary-consent{margin-top:15px}
     .backup-tools{margin-top:22px;border:1px solid #B8D2F3;border-radius:16px;background:#F5F9FF;padding:7px 17px 18px}
     .backup-tools summary{display:flex;align-items:center;min-height:52px;color:var(--navy);font-size:18px;font-weight:850;cursor:pointer}
@@ -129,6 +136,10 @@
     .entry time{font-weight:800;color:var(--navy)}
     .entry p{white-space:pre-wrap;overflow-wrap:anywhere;margin:7px 0 12px}
     .entry button{font:inherit;color:#8D2A20;background:#fff;border:1px solid #E2B3AE;border-radius:9px;padding:7px 13px;min-height:44px;cursor:pointer}
+    .diary-filters{margin-top:18px;border:1px solid #D3E2F0;border-radius:15px;background:#FAFCFF;padding:15px 18px 19px}
+    .diary-filters h4{color:var(--navy);font-size:18px;margin:0 0 3px}
+    .filter-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:0 13px}
+    .filter-status{font-size:15px;color:#395773;margin:10px 0 0}
     .privacy{border-left:4px solid var(--brand);background:#F1F7FF;padding:14px 17px;border-radius:0 11px 11px 0;margin-top:17px;color:#395773;font-size:16px}
     .warm{background:#FFF8EB;border-color:#EBC891}
     .divider{height:1px;background:var(--line);margin:27px 0}
@@ -144,10 +155,10 @@
     html.large-text .note,html.large-text .source,html.large-text .disclaimer,html.large-text .tile .btn,html.large-text footer,html.large-text .subnote,html.large-text .privacy{font-size:19px}
     html.large-text .btn{font-size:20px}
     html.large-text .trust,html.large-text .crumb,html.large-text .kicker,html.large-text .eyebrow,html.large-text .top nav,html.large-text .text-size{font-size:18px}
-    @media(max-width:790px){.grid,.choices,.diary-structured{grid-template-columns:1fr}.two{grid-template-columns:1fr}.tile{min-height:0}.top nav{margin-left:0}.two>.box{margin-top:0}.two>.box:first-child{margin-top:16px}}
+    @media(max-width:790px){.grid,.choices,.diary-structured,.filter-grid,.consult-metrics{grid-template-columns:1fr}.two{grid-template-columns:1fr}.tile{min-height:0}.top nav{margin-left:0}.two>.box{margin-top:0}.two>.box:first-child{margin-top:16px}}
     @media(max-width:480px){.wrap{padding:22px 15px 60px}.top{padding:13px 15px}.top nav{width:100%;gap:2px}.top nav a{padding:6px 10px}.reading-tools{align-items:flex-start}.hero{padding:30px 21px}.eyebrow .mobile-optional{display:none}.quick .btn,.action-row .btn{width:100%}.tile .btn{align-self:stretch}.trust{display:grid;grid-template-columns:1fr;gap:9px}.section{margin-top:41px}.tile{padding:21px}.backup-tools{padding:7px 12px 17px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
-    @media print{body{background:#fff}.top nav,.quick,.tile .btn,.text-size,.action-row,.entry button{display:none}.hero,.tile,.box{box-shadow:none}.wrap{max-width:none}body.print-summary .top,body.print-summary main>:not(#care-diary),body.print-summary #care-diary .feature>:not(#consult-summary){display:none!important}body.print-summary .wrap{padding:0}body.print-summary .feature,body.print-summary #consult-summary{margin:0;border:0;padding:0;background:#fff}body.print-summary #consult-summary .subnote,body.print-summary #consult-summary .field,body.print-summary #consult-summary .action-row,body.print-summary #consult-summary #consult-status{display:none!important}body.print-summary .consult-output{border:0;padding:0;white-space:pre-wrap}}
+    @media print{body{background:#fff}.top nav,.quick,.tile .btn,.text-size,.action-row,.entry button{display:none}.hero,.tile,.box{box-shadow:none}.wrap{max-width:none}body.print-summary .top,body.print-summary main>:not(#care-diary),body.print-summary #care-diary .feature>:not(#consult-summary){display:none!important}body.print-summary .wrap{padding:0}body.print-summary .feature,body.print-summary #consult-summary{margin:0;border:0;padding:0;background:#fff}body.print-summary #consult-summary .subnote,body.print-summary #consult-summary .field,body.print-summary #consult-summary .action-row,body.print-summary #consult-summary #consult-status,body.print-summary .consult-metrics,body.print-summary .consult-question-preview{display:none!important}body.print-summary .consult-output{border:0;padding:0;white-space:pre-wrap}}
   </style>
 </head>
 <body>
@@ -262,12 +273,33 @@
         </details>
         <div class="divider"></div>
         <h3 id="diary-list-title" tabindex="-1">내 기기에 저장된 기록 <span id="diary-count" class="feature-badge">0건</span></h3>
+        <div class="diary-filters" aria-label="저장 기록 검색과 날짜 필터">
+          <h4>기록 찾기</h4>
+          <p class="subnote" style="margin:0">검색은 이 기기 안에서만 이루어지며 기록을 수정하거나 삭제하지 않습니다.</p>
+          <div class="filter-grid">
+            <div class="field"><label for="diary-search">메모·질문·관찰 내용 검색</label><input id="diary-search" type="search" maxlength="100" autocomplete="off" placeholder="예: 수면, 약, 병원"></div>
+            <div class="field"><label for="diary-from">시작 날짜 (선택)</label><input id="diary-from" type="date"></div>
+            <div class="field"><label for="diary-to">종료 날짜 (선택)</label><input id="diary-to" type="date"></div>
+          </div>
+          <div class="action-row"><button class="btn secondary" id="diary-filter-reset" type="button">검색·날짜 초기화</button></div>
+          <p class="filter-status" id="diary-filter-status" role="status" aria-live="polite" aria-atomic="true"></p>
+        </div>
         <div id="diary-list" class="entry-list"></div>
         <p class="subnote" style="margin-top:16px">최대 20건까지 저장하며 <strong>기존 기록을 자동 삭제하지 않습니다.</strong> 한도에 도달하면 JSON 백업을 받은 후 불필요한 기록을 직접 정리하세요. 시크릿 모드나 다른 기기로 기록이 자동 공유되지 않습니다.</p>
         <section id="consult-summary" class="consult-tools" aria-labelledby="consult-title">
           <h3 id="consult-title">진료 준비용 기록 요약</h3>
           <p>저장된 기록만 날짜별로 모아봅니다. 선택한 기간 중 기록이 없는 날은 알 수 없으며, 항목별 개수는 질병·위험도 점수가 아닙니다.</p>
           <div class="field"><label for="consult-period">요약할 기간</label><select id="consult-period"><option value="7">최근 7일</option><option value="30">최근 30일</option></select></div>
+          <p class="subnote">위 기록 검색·날짜 필터와 관계없이, 이 요약은 여기서 선택한 기간의 전체 저장 기록을 기준으로 작성합니다.</p>
+          <div class="consult-metrics" aria-label="선택 기간 기록 현황">
+            <div>기록된 날짜 <strong id="consult-days">0일</strong></div>
+            <div>저장된 기록 <strong id="consult-records">0건</strong></div>
+            <div>작성한 진료 질문 <strong id="consult-question-count">0개</strong></div>
+          </div>
+          <div class="consult-question-preview" aria-labelledby="consult-questions-title">
+            <h4 id="consult-questions-title">진료 때 먼저 물어볼 질문</h4>
+            <ul id="consult-questions"><li>선택한 기간에 작성된 질문이 없습니다.</li></ul>
+          </div>
           <div class="action-row"><button class="btn secondary" type="button" id="consult-copy">요약 복사</button><button class="btn secondary" type="button" id="consult-print">진료 요약 인쇄·PDF</button></div>
           <div id="consult-output" class="consult-output" tabindex="0" aria-label="진료 준비용 요약 결과"></div>
           <p id="consult-status" class="subnote" role="status" aria-live="polite" aria-atomic="true"></p>
@@ -449,14 +481,20 @@
       function renderEntries() {
         diaryList.replaceChildren();
         $('diary-count').textContent = `${entries.length}건`;
-        if (!entries.length) {
+        const filtered = filterDiaryEntries(entries, $('diary-search').value, $('diary-from').value, $('diary-to').value);
+        if (filtered === null) {
+          $('diary-filter-status').textContent = '시작 날짜가 종료 날짜보다 늦거나 날짜가 올바르지 않습니다. 범위를 다시 확인해 주세요. 저장된 기록은 그대로 유지됩니다.';
+          return;
+        }
+        $('diary-filter-status').textContent = `전체 ${entries.length}건 중 ${filtered.length}건 표시 · 검색은 저장 기록을 변경하지 않습니다.`;
+        if (!filtered.length) {
           const empty = document.createElement('p');
           empty.className = 'note';
-          empty.textContent = '아직 저장된 기록이 없습니다.';
+          empty.textContent = entries.length ? '검색 조건에 맞는 기록이 없습니다. 검색어나 날짜를 바꿔보세요.' : '아직 저장된 기록이 없습니다.';
           diaryList.append(empty);
           return;
         }
-        entries.forEach((item, index) => {
+        filtered.forEach((item, index) => {
           const article = document.createElement('article');
           article.className = 'entry';
           const date = document.createElement('time');
@@ -502,6 +540,15 @@
       const today = new Date();
       const localDate = new Date(today.getTime() - today.getTimezoneOffset()*60000).toISOString().slice(0,10);
       $('diary-date').value = localDate;
+      for (const id of ['diary-search','diary-from','diary-to']) {
+        $(id).addEventListener('input', renderEntries);
+        $(id).addEventListener('change', renderEntries);
+      }
+      $('diary-filter-reset').addEventListener('click', () => {
+        for (const id of ['diary-search','diary-from','diary-to']) $(id).value = '';
+        renderEntries();
+        $('diary-search').focus();
+      });
       readEntries();
       renderEntries();
       renderConsultSummary();
@@ -622,6 +669,20 @@
         const date = new Date(`${value}T00:00:00Z`);
         return Number.isFinite(date.getTime()) && date.toISOString().slice(0,10) === value;
       }
+      function filterDiaryEntries(records, query, fromDate, toDate) {
+        if ((fromDate && !validDiaryDate(fromDate)) || (toDate && !validDiaryDate(toDate))
+          || (fromDate && toDate && fromDate > toDate)) return null;
+        const terms = (query || '').normalize('NFKC').toLocaleLowerCase('ko-KR').trim().split(/\s+/).filter(Boolean);
+        return records.filter(item => {
+          if (fromDate && item.date < fromDate) return false;
+          if (toDate && item.date > toDate) return false;
+          if (!terms.length) return true;
+          const text = [item.date,item.text,item.question || '',...Object.keys(diaryOptionLabels).map(key =>
+            diaryOptionLabels[key][item[key]] ? `${diaryFieldNames[key]} ${diaryOptionLabels[key][item[key]]}` : '')]
+            .join(' ').normalize('NFKC').toLocaleLowerCase('ko-KR');
+          return terms.every(term => text.includes(term));
+        });
+      }
       function serializeDiaryEntry(item) {
         const clean = {id:item.id,date:item.date,text:item.text};
         for (const key of Object.keys(diaryOptionLabels)) {
@@ -649,14 +710,26 @@
         }
         return data.entries.map(serializeDiaryEntry);
       }
+      function selectConsultRecords(records, periodDays, endDate) {
+        const days = periodDays === 30 ? 30 : 7;
+        const end = new Date(`${endDate}T00:00:00Z`);
+        const start = new Date(end.getTime() - (days - 1)*86400000).toISOString().slice(0,10);
+        return records.filter(item => validDiaryDate(item.date) && item.date >= start && item.date <= endDate)
+          .slice().sort((a,b) => b.date.localeCompare(a.date));
+      }
       function buildConsultSummary(records, periodDays, endDate) {
         const days = periodDays === 30 ? 30 : 7;
         const end = new Date(`${endDate}T00:00:00Z`);
         const start = new Date(end.getTime() - (days - 1)*86400000).toISOString().slice(0,10);
-        const selected = records.filter(item => validDiaryDate(item.date) && item.date >= start && item.date <= endDate)
-          .slice().sort((a,b) => b.date.localeCompare(a.date));
+        const selected = selectConsultRecords(records,days,endDate);
+        const questions = selected.filter(item => typeof item.question === 'string' && item.question.trim());
         const result = [`ApuDa Memory | 진료 준비 기록 요약`,`기간: ${start} ~ ${endDate} (${days}일)`,
-          `저장된 기록 ${selected.length}건 / 최대 20건 보관`,`※ 기록이 없는 날짜의 상태는 알 수 없습니다. 이 요약은 진단·위험도 평가가 아닙니다.`];
+          `기록된 날짜 ${new Set(selected.map(item => item.date)).size}일 / 저장된 기록 ${selected.length}건 / 진료 질문 ${questions.length}개 (최대 20건 보관)`,
+          `※ 기록이 없는 날짜의 상태는 알 수 없습니다. 이 요약은 진단·위험도 평가가 아닙니다.`,
+          '', '먼저 물어볼 질문'];
+        if (!questions.length) result.push('작성된 질문이 없습니다.');
+        questions.forEach(item => result.push(`- ${item.date}: ${item.question}`));
+        result.push('', '관찰 항목별 기록 건수');
         for (const field of Object.keys(diaryOptionLabels)) {
           const observed = selected.filter(item => diaryOptionLabels[field][item[field]]);
           const counts = Object.keys(diaryOptionLabels[field]).map(value => {
@@ -679,7 +752,26 @@
         return result.join('\n');
       }
       function renderConsultSummary() {
-        $('consult-output').textContent = buildConsultSummary(entries, Number($('consult-period').value), localDate);
+        const days = Number($('consult-period').value);
+        const selected = selectConsultRecords(entries, days, localDate);
+        const questions = selected.filter(item => typeof item.question === 'string' && item.question.trim());
+        $('consult-days').textContent = `${new Set(selected.map(item => item.date)).size}일`;
+        $('consult-records').textContent = `${selected.length}건`;
+        $('consult-question-count').textContent = `${questions.length}개`;
+        const questionList = $('consult-questions');
+        questionList.replaceChildren();
+        if (!questions.length) {
+          const empty = document.createElement('li');
+          empty.textContent = '선택한 기간에 작성된 질문이 없습니다.';
+          questionList.append(empty);
+        } else {
+          questions.forEach(item => {
+            const row = document.createElement('li');
+            row.textContent = `${item.date} · ${item.question}`;
+            questionList.append(row);
+          });
+        }
+        $('consult-output').textContent = buildConsultSummary(entries, days, localDate);
         $('consult-status').textContent = '';
       }
       $('consult-period').addEventListener('change', renderConsultSummary);
