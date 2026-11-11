@@ -118,7 +118,7 @@
     .consult-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0}
     .consult-metrics>div{border-radius:12px;background:#EAF3FF;padding:12px 14px;color:#34516E}
     .consult-metrics strong{display:block;font-size:24px;line-height:1.3;color:var(--brand-dark)}
-    .consult-timeline{margin:21px 0 18px}
+    .consult-timeline{margin:24px 0 18px}
     .consult-timeline h4{color:var(--navy);font-size:19px;margin:0 0 7px}
     .timeline-list{display:grid;gap:9px;margin:14px 0}
     .timeline-day{background:#fff;border:1px solid #CEDFEE;border-radius:12px;padding:12px 14px}
@@ -138,6 +138,8 @@
     .consult-brief{margin:18px 0 0;border:1px solid #BBD5ED;background:#F5FAFF;border-radius:13px;padding:14px 16px}
     .consult-brief h4{font-size:18px;color:var(--navy);margin:0 0 5px}
     .consult-brief-output{white-space:pre-wrap;overflow-wrap:anywhere;font-size:16px;line-height:1.65;margin:12px 0}
+    .copy-feedback{min-height:1.5em;margin:8px 0 0;color:#245371;font-size:15px;overflow-wrap:anywhere}
+    .copy-feedback:empty{min-height:0;margin:0}
     .consult-question-preview{border-left:4px solid #D69C39;background:#FFF9EB;padding:13px 17px;border-radius:0 12px 12px 0;margin-top:13px}
     .consult-question-preview h4{margin:0 0 8px;color:#704D13;font-size:17px}
     .consult-question-preview ul{margin:0;padding-left:22px;overflow-wrap:anywhere}
@@ -175,11 +177,15 @@
     html.large-text .note,html.large-text .source,html.large-text .disclaimer,html.large-text .tile .btn,html.large-text footer,html.large-text .subnote,html.large-text .privacy{font-size:19px}
     html.large-text .btn{font-size:20px}
     html.large-text .trust,html.large-text .crumb,html.large-text .kicker,html.large-text .eyebrow,html.large-text .top nav,html.large-text .text-size{font-size:18px}
+    html.large-text .timeline-day-head span,html.large-text .timeline-field span,html.large-text .copy-feedback,html.large-text .filter-status,html.large-text .entry-details{font-size:18px}
+    html.large-text .timeline-field strong,html.large-text .consult-timeline h4,html.large-text .consult-brief h4,html.large-text .timeline-more summary{font-size:20px}
+    html.large-text .consult-brief-output{font-size:20px}
     @media(max-width:790px){.grid,.choices,.diary-structured,.filter-grid{grid-template-columns:1fr}.consult-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.two{grid-template-columns:1fr}.tile{min-height:0}.top nav{margin-left:0}.two>.box{margin-top:0}.two>.box:first-child{margin-top:16px}}
     @media(max-width:560px){.timeline-fields{grid-template-columns:1fr}.timeline-field{display:flex;align-items:baseline;gap:8px}.timeline-field span{min-width:78px;flex:none}}
     @media(max-width:480px){.wrap{padding:22px 15px 60px}.top{padding:13px 15px}.top nav{width:100%;gap:2px}.top nav a{padding:6px 10px}.reading-tools{align-items:flex-start}.hero{padding:30px 21px}.eyebrow .mobile-optional{display:none}.quick .btn,.action-row .btn{width:100%}.tile .btn{align-self:stretch}.trust{display:grid;grid-template-columns:1fr;gap:9px}.section{margin-top:41px}.tile{padding:21px}.backup-tools{padding:7px 12px 17px}}
+    @media(max-width:360px){.consult-tools{padding:14px 11px}.consult-metrics{grid-template-columns:1fr}.consult-metrics>div{padding:10px 12px}.timeline-day{padding:10px}.timeline-field{padding:7px 8px}.timeline-field span{min-width:70px}.consult-brief{padding:12px}.top nav a{overflow-wrap:anywhere;white-space:normal}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
-    @media print{body{background:#fff}.top nav,.quick,.tile .btn,.text-size,.action-row,.entry button{display:none}.hero,.tile,.box{box-shadow:none}.wrap{max-width:none}body.print-summary .top,body.print-summary main>:not(#care-diary),body.print-summary #care-diary .feature>:not(#consult-summary){display:none!important}body.print-summary .wrap{padding:0}body.print-summary .feature,body.print-summary #consult-summary{margin:0;border:0;padding:0;background:#fff}body.print-summary #consult-summary .subnote,body.print-summary #consult-summary .field,body.print-summary #consult-summary .action-row,body.print-summary #consult-summary #consult-status,body.print-summary .consult-metrics,body.print-summary .consult-question-preview,body.print-summary .consult-timeline,body.print-summary .consult-brief{display:none!important}body.print-summary .consult-output{border:0;padding:0;white-space:pre-wrap}}
+    @media print{@page{size:A4;margin:16mm}body{background:#fff}.top nav,.quick,.tile .btn,.text-size,.action-row,.entry button{display:none}.hero,.tile,.box{box-shadow:none}.wrap{max-width:none}body.print-summary .top,body.print-summary main>:not(#care-diary),body.print-summary #care-diary .feature>:not(#consult-summary){display:none!important}body.print-summary .wrap{padding:0}body.print-summary .feature,body.print-summary #consult-summary{margin:0;border:0;padding:0;background:#fff}body.print-summary #consult-title,body.print-summary #consult-summary .subnote,body.print-summary #consult-summary .field,body.print-summary #consult-summary .action-row,body.print-summary #consult-summary #consult-status,body.print-summary .consult-metrics,body.print-summary .consult-question-preview,body.print-summary .consult-timeline,body.print-summary .consult-brief{display:none!important}body.print-summary .consult-output{border:0;padding:0;white-space:pre-wrap;font-size:11pt;line-height:1.6;overflow-wrap:anywhere;color:#000}body.print-summary .consult-output::first-line{font-weight:bold}}
   </style>
 </head>
 <body>
@@ -318,6 +324,17 @@
             <div>작성한 진료 질문 <strong id="consult-question-count">0개</strong></div>
             <div>기록이 없는 날짜 <strong id="consult-missing-days">0일</strong></div>
           </div>
+          <div class="consult-question-preview" aria-labelledby="consult-questions-title">
+            <h4 id="consult-questions-title">진료 때 먼저 물어볼 질문</h4>
+            <ul id="consult-questions"><li>선택한 기간에 작성된 질문이 없습니다.</li></ul>
+          </div>
+          <div class="consult-brief" aria-labelledby="consult-brief-title">
+            <h4 id="consult-brief-title">보호자용 짧은 진료 메모</h4>
+            <p class="subnote">질문과 기록 건수만 간단히 정리합니다. 진료 때는 원본 기록이나 전체 상세 요약도 함께 확인하세요.</p>
+            <div id="consult-brief-output" class="consult-brief-output" tabindex="0" aria-label="보호자용 짧은 진료 메모 결과"></div>
+            <div class="action-row"><button class="btn secondary" type="button" id="consult-brief-copy">짧은 메모 복사</button></div>
+            <p id="consult-brief-status" class="copy-feedback" role="status" aria-live="polite" aria-atomic="true"></p>
+          </div>
           <section class="consult-timeline" aria-labelledby="consult-timeline-title">
             <h4 id="consult-timeline-title">날짜별 관찰 한눈에 보기</h4>
             <p class="subnote">각 날짜의 수면·식사·처방 확인 기록을 나란히 봅니다. <strong>날짜 기록 없음</strong>은 그날 아무 기록도 저장되지 않았다는 뜻이고, <strong>항목 미기록</strong>은 메모는 있지만 해당 항목을 선택하지 않았다는 뜻입니다. 둘 다 상태가 정상이라는 의미는 아닙니다.</p>
@@ -328,20 +345,10 @@
               <div id="consult-timeline-older-list" class="timeline-list" role="list" aria-label="이전 23일 날짜별 관찰"></div>
             </details>
           </section>
-          <div class="consult-question-preview" aria-labelledby="consult-questions-title">
-            <h4 id="consult-questions-title">진료 때 먼저 물어볼 질문</h4>
-            <ul id="consult-questions"><li>선택한 기간에 작성된 질문이 없습니다.</li></ul>
-          </div>
-          <div class="consult-brief" aria-labelledby="consult-brief-title">
-            <h4 id="consult-brief-title">보호자용 짧은 진료 메모</h4>
-            <p class="subnote">질문과 기록 건수만 간단히 정리합니다. 진료 때는 원본 기록이나 전체 상세 요약도 함께 확인하세요.</p>
-            <div id="consult-brief-output" class="consult-brief-output" tabindex="0" aria-label="보호자용 짧은 진료 메모 결과"></div>
-            <div class="action-row"><button class="btn secondary" type="button" id="consult-brief-copy">짧은 메모 복사</button></div>
-          </div>
           <div class="action-row"><button class="btn secondary" type="button" id="consult-copy">전체 상세 요약 복사</button><button class="btn secondary" type="button" id="consult-print">진료 요약 인쇄·PDF</button></div>
           <div id="consult-output" class="consult-output" tabindex="0" aria-label="진료 준비용 요약 결과"></div>
           <p id="consult-status" class="subnote" role="status" aria-live="polite" aria-atomic="true"></p>
-          <p class="subnote">요약은 현재 브라우저에서만 계산합니다. 복사·인쇄·PDF 저장 시 개인 건강정보가 외부에 노출되지 않도록 기기와 파일을 확인하세요. 약의 변경·중단은 담당 의료진과 상의하세요.</p>
+          <p class="subnote"><strong>공유 전 확인:</strong> 복사한 내용은 클립보드에 남아 다른 앱에 붙여넣을 수 있습니다. 출력·PDF 저장 전에 대상 기기와 파일 보관 장소를 확인하고, 타인에게 보내기 전 수신자를 다시 확인하세요. 이 요약은 현재 브라우저에서만 계산하며 약의 변경·중단은 담당 의료진과 상의하세요.</p>
         </section>
       </div>
     </section>
@@ -807,6 +814,7 @@
         lines.push('', '관찰 기록 현황');
         for (const field of Object.keys(diaryOptionLabels)) lines.push(observationCountLine(selected,field));
         lines.push('', '이 메모는 저장된 최대 20건의 부분 기록만 요약하며 진단·복약 지시가 아닙니다. 필요하면 상세 기록을 함께 확인하세요.');
+        lines.push('※ 인쇄물·PDF·복사한 내용에는 개인 건강정보가 있을 수 있습니다. 안전하게 보관하고 공유 대상을 확인하세요.');
         return lines.join('\n');
       }
       function buildConsultSummary(records, periodDays, endDate) {
@@ -835,6 +843,7 @@
           if (item.question) result.push(`- 의료진 질문: ${item.question}`);
         });
         result.push('', '처방 변경·중단은 담당 의료진과 상의하세요. 이 요약에는 보관된 일부 기록만 포함될 수 있습니다.');
+        result.push('※ 인쇄물·PDF·복사한 내용에는 개인 건강정보가 있을 수 있습니다. 안전하게 보관하고 공유 대상을 확인하세요.');
         return result.join('\n');
       }
       function renderObservationTimeline(rows) {
@@ -899,26 +908,34 @@
         $('consult-output').textContent = buildConsultSummary(entries, days, localDate);
         $('consult-brief-output').textContent = buildCaregiverBrief(entries, days, localDate);
         $('consult-status').textContent = '';
+        $('consult-brief-status').textContent = '';
       }
       $('consult-period').addEventListener('change', renderConsultSummary);
-      async function copyConsultText(text, success) {
+      async function copyConsultText(text, success, feedbackId, fallbackId) {
+        const feedback = $(feedbackId);
+        feedback.textContent = '';
         try {
           if (!navigator.clipboard || !navigator.clipboard.writeText) throw new Error('clipboard unavailable');
           await navigator.clipboard.writeText(text);
-          $('consult-status').textContent = `${success} 개인 건강정보 공유에 주의하세요.`;
+          feedback.textContent = `${success} 다른 앱에 붙여넣기 전 내용과 수신자를 확인하세요.`;
         } catch (error) {
-          $('consult-status').textContent = '자동 복사가 지원되지 않습니다. 메모 또는 요약 영역의 글을 길게 눌러 직접 선택·복사해 주세요.';
+          $(fallbackId).focus();
+          feedback.textContent = '자동 복사가 지원되지 않습니다. 위 메모 또는 요약 영역의 글을 길게 눌러 직접 선택·복사해 주세요.';
         }
       }
       $('consult-brief-copy').addEventListener('click', async () => {
-        await copyConsultText($('consult-brief-output').textContent,'보호자용 짧은 메모를 복사했습니다.');
+        await copyConsultText($('consult-brief-output').textContent,'보호자용 짧은 메모를 복사했습니다.','consult-brief-status','consult-brief-output');
       });
       $('consult-copy').addEventListener('click', async () => {
-        await copyConsultText($('consult-output').textContent,'진료 요약을 복사했습니다.');
+        await copyConsultText($('consult-output').textContent,'진료 요약을 복사했습니다.','consult-status','consult-output');
       });
       $('consult-print').addEventListener('click', () => {
         document.body.classList.add('print-summary');
-        window.print();
+        try {window.print();}
+        catch (error) {
+          document.body.classList.remove('print-summary');
+          $('consult-status').textContent = '이 브라우저에서 인쇄 창을 열지 못했습니다. 브라우저 메뉴의 인쇄 기능을 이용해 주세요.';
+        }
       });
       window.addEventListener('afterprint', () => document.body.classList.remove('print-summary'));
       $('diary-import').addEventListener('click', async () => {
