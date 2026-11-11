@@ -115,9 +115,29 @@
     .consult-tools .action-row{margin-top:12px}
     .consult-output{margin-top:17px;border:1px solid #CDDFF0;border-radius:12px;padding:15px 17px;background:#fff;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.65}
     .consult-output:focus{outline:3px solid #B46D12;outline-offset:3px}
-    .consult-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0}
+    .consult-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0}
     .consult-metrics>div{border-radius:12px;background:#EAF3FF;padding:12px 14px;color:#34516E}
     .consult-metrics strong{display:block;font-size:24px;line-height:1.3;color:var(--brand-dark)}
+    .consult-timeline{margin:21px 0 18px}
+    .consult-timeline h4{color:var(--navy);font-size:19px;margin:0 0 7px}
+    .timeline-list{display:grid;gap:9px;margin:14px 0}
+    .timeline-day{background:#fff;border:1px solid #CEDFEE;border-radius:12px;padding:12px 14px}
+    .timeline-day.missing-day{background:#F6F8FB;border-style:dashed}
+    .timeline-day-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px 12px;margin-bottom:9px}
+    .timeline-day-head time{font-weight:840;color:var(--navy)}
+    .timeline-day-head span{font-size:14px;color:#52677D}
+    .timeline-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+    .timeline-field{background:#F3F7FC;border-radius:9px;padding:7px 10px;min-width:0;overflow-wrap:anywhere}
+    .timeline-field span{display:block;font-size:14px;color:#53677D}
+    .timeline-field strong{display:block;font-size:15px;line-height:1.45;font-weight:750;color:#183F62}
+    .timeline-field.unknown{background:#F1F2F5}
+    .timeline-field.unknown strong{color:#626E79}
+    .timeline-more{border:1px solid #B9D0E9;border-radius:11px;padding:0 12px;background:#F9FBFF}
+    .timeline-more summary{cursor:pointer;color:#1855D8;font-weight:780;min-height:48px;display:flex;align-items:center}
+    .timeline-more summary:focus-visible{outline:3px solid #B46D12;outline-offset:3px}
+    .consult-brief{margin:18px 0 0;border:1px solid #BBD5ED;background:#F5FAFF;border-radius:13px;padding:14px 16px}
+    .consult-brief h4{font-size:18px;color:var(--navy);margin:0 0 5px}
+    .consult-brief-output{white-space:pre-wrap;overflow-wrap:anywhere;font-size:16px;line-height:1.65;margin:12px 0}
     .consult-question-preview{border-left:4px solid #D69C39;background:#FFF9EB;padding:13px 17px;border-radius:0 12px 12px 0;margin-top:13px}
     .consult-question-preview h4{margin:0 0 8px;color:#704D13;font-size:17px}
     .consult-question-preview ul{margin:0;padding-left:22px;overflow-wrap:anywhere}
@@ -155,10 +175,11 @@
     html.large-text .note,html.large-text .source,html.large-text .disclaimer,html.large-text .tile .btn,html.large-text footer,html.large-text .subnote,html.large-text .privacy{font-size:19px}
     html.large-text .btn{font-size:20px}
     html.large-text .trust,html.large-text .crumb,html.large-text .kicker,html.large-text .eyebrow,html.large-text .top nav,html.large-text .text-size{font-size:18px}
-    @media(max-width:790px){.grid,.choices,.diary-structured,.filter-grid,.consult-metrics{grid-template-columns:1fr}.two{grid-template-columns:1fr}.tile{min-height:0}.top nav{margin-left:0}.two>.box{margin-top:0}.two>.box:first-child{margin-top:16px}}
+    @media(max-width:790px){.grid,.choices,.diary-structured,.filter-grid{grid-template-columns:1fr}.consult-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.two{grid-template-columns:1fr}.tile{min-height:0}.top nav{margin-left:0}.two>.box{margin-top:0}.two>.box:first-child{margin-top:16px}}
+    @media(max-width:560px){.timeline-fields{grid-template-columns:1fr}.timeline-field{display:flex;align-items:baseline;gap:8px}.timeline-field span{min-width:78px;flex:none}}
     @media(max-width:480px){.wrap{padding:22px 15px 60px}.top{padding:13px 15px}.top nav{width:100%;gap:2px}.top nav a{padding:6px 10px}.reading-tools{align-items:flex-start}.hero{padding:30px 21px}.eyebrow .mobile-optional{display:none}.quick .btn,.action-row .btn{width:100%}.tile .btn{align-self:stretch}.trust{display:grid;grid-template-columns:1fr;gap:9px}.section{margin-top:41px}.tile{padding:21px}.backup-tools{padding:7px 12px 17px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
-    @media print{body{background:#fff}.top nav,.quick,.tile .btn,.text-size,.action-row,.entry button{display:none}.hero,.tile,.box{box-shadow:none}.wrap{max-width:none}body.print-summary .top,body.print-summary main>:not(#care-diary),body.print-summary #care-diary .feature>:not(#consult-summary){display:none!important}body.print-summary .wrap{padding:0}body.print-summary .feature,body.print-summary #consult-summary{margin:0;border:0;padding:0;background:#fff}body.print-summary #consult-summary .subnote,body.print-summary #consult-summary .field,body.print-summary #consult-summary .action-row,body.print-summary #consult-summary #consult-status,body.print-summary .consult-metrics,body.print-summary .consult-question-preview{display:none!important}body.print-summary .consult-output{border:0;padding:0;white-space:pre-wrap}}
+    @media print{body{background:#fff}.top nav,.quick,.tile .btn,.text-size,.action-row,.entry button{display:none}.hero,.tile,.box{box-shadow:none}.wrap{max-width:none}body.print-summary .top,body.print-summary main>:not(#care-diary),body.print-summary #care-diary .feature>:not(#consult-summary){display:none!important}body.print-summary .wrap{padding:0}body.print-summary .feature,body.print-summary #consult-summary{margin:0;border:0;padding:0;background:#fff}body.print-summary #consult-summary .subnote,body.print-summary #consult-summary .field,body.print-summary #consult-summary .action-row,body.print-summary #consult-summary #consult-status,body.print-summary .consult-metrics,body.print-summary .consult-question-preview,body.print-summary .consult-timeline,body.print-summary .consult-brief{display:none!important}body.print-summary .consult-output{border:0;padding:0;white-space:pre-wrap}}
   </style>
 </head>
 <body>
@@ -295,12 +316,29 @@
             <div>기록된 날짜 <strong id="consult-days">0일</strong></div>
             <div>저장된 기록 <strong id="consult-records">0건</strong></div>
             <div>작성한 진료 질문 <strong id="consult-question-count">0개</strong></div>
+            <div>기록이 없는 날짜 <strong id="consult-missing-days">0일</strong></div>
           </div>
+          <section class="consult-timeline" aria-labelledby="consult-timeline-title">
+            <h4 id="consult-timeline-title">날짜별 관찰 한눈에 보기</h4>
+            <p class="subnote">각 날짜의 수면·식사·처방 확인 기록을 나란히 봅니다. <strong>날짜 기록 없음</strong>은 그날 아무 기록도 저장되지 않았다는 뜻이고, <strong>항목 미기록</strong>은 메모는 있지만 해당 항목을 선택하지 않았다는 뜻입니다. 둘 다 상태가 정상이라는 의미는 아닙니다.</p>
+            <p class="subnote">같은 날짜에 서로 다른 관찰이 저장되면 하나를 임의로 선택하지 않고 모두 표시합니다. 이 표는 변화 추이를 관찰하기 위한 기록이며 임상 평가 점수가 아닙니다.</p>
+            <div id="consult-timeline-recent" class="timeline-list" role="list" aria-label="최신 7일 이내 날짜별 관찰"></div>
+            <details class="timeline-more" id="consult-timeline-older" hidden>
+              <summary>이전 23일 기록 펼쳐 보기</summary>
+              <div id="consult-timeline-older-list" class="timeline-list" role="list" aria-label="이전 23일 날짜별 관찰"></div>
+            </details>
+          </section>
           <div class="consult-question-preview" aria-labelledby="consult-questions-title">
             <h4 id="consult-questions-title">진료 때 먼저 물어볼 질문</h4>
             <ul id="consult-questions"><li>선택한 기간에 작성된 질문이 없습니다.</li></ul>
           </div>
-          <div class="action-row"><button class="btn secondary" type="button" id="consult-copy">요약 복사</button><button class="btn secondary" type="button" id="consult-print">진료 요약 인쇄·PDF</button></div>
+          <div class="consult-brief" aria-labelledby="consult-brief-title">
+            <h4 id="consult-brief-title">보호자용 짧은 진료 메모</h4>
+            <p class="subnote">질문과 기록 건수만 간단히 정리합니다. 진료 때는 원본 기록이나 전체 상세 요약도 함께 확인하세요.</p>
+            <div id="consult-brief-output" class="consult-brief-output" tabindex="0" aria-label="보호자용 짧은 진료 메모 결과"></div>
+            <div class="action-row"><button class="btn secondary" type="button" id="consult-brief-copy">짧은 메모 복사</button></div>
+          </div>
+          <div class="action-row"><button class="btn secondary" type="button" id="consult-copy">전체 상세 요약 복사</button><button class="btn secondary" type="button" id="consult-print">진료 요약 인쇄·PDF</button></div>
           <div id="consult-output" class="consult-output" tabindex="0" aria-label="진료 준비용 요약 결과"></div>
           <p id="consult-status" class="subnote" role="status" aria-live="polite" aria-atomic="true"></p>
           <p class="subnote">요약은 현재 브라우저에서만 계산합니다. 복사·인쇄·PDF 저장 시 개인 건강정보가 외부에 노출되지 않도록 기기와 파일을 확인하세요. 약의 변경·중단은 담당 의료진과 상의하세요.</p>
@@ -717,27 +755,75 @@
         return records.filter(item => validDiaryDate(item.date) && item.date >= start && item.date <= endDate)
           .slice().sort((a,b) => b.date.localeCompare(a.date));
       }
+      function observationCountLine(records, field) {
+        const observed = records.filter(item => diaryOptionLabels[field][item[field]]);
+        const counts = Object.keys(diaryOptionLabels[field]).map(value => {
+          const count = observed.filter(item => item[field] === value).length;
+          return count ? `${diaryOptionLabels[field][value]} ${count}건` : null;
+        }).filter(Boolean);
+        return `${diaryFieldNames[field]} 관찰: ${observed.length}건 기록${counts.length ? ` (${counts.join(', ')})` : ''}`;
+      }
+      function buildDailyObservationTimeline(records, periodDays, endDate) {
+        const days = periodDays === 30 ? 30 : 7;
+        const selected = selectConsultRecords(records, days, endDate);
+        const byDay = new Map();
+        for (const item of selected) {
+          if (!byDay.has(item.date)) byDay.set(item.date, []);
+          byDay.get(item.date).push(item);
+        }
+        const end = new Date(`${endDate}T00:00:00Z`);
+        return Array.from({length:days}, (_,offset) => {
+          const date = new Date(end.getTime() - offset*86400000).toISOString().slice(0,10);
+          const dayEntries = byDay.get(date) || [];
+          const fields = {};
+          for (const field of Object.keys(diaryOptionLabels)) {
+            if (!dayEntries.length) {
+              fields[field] = {kind:'day-missing', label:'날짜 기록 없음'};
+              continue;
+            }
+            const observed = [...new Set(dayEntries.map(item => item[field]).filter(value => diaryOptionLabels[field][value]))];
+            const labels = observed.map(value => diaryOptionLabels[field][value]);
+            const unselected = dayEntries.filter(item => !diaryOptionLabels[field][item[field]]).length;
+            fields[field] = labels.length
+              ? {kind:'observed',label:`${labels.length === 1 ? labels[0] : `복수 관찰: ${labels.join(' / ')}`}${unselected ? ` · ${unselected}건 항목 미기록` : ''}`}
+              : {kind:'field-missing',label:'항목 미기록'};
+          }
+          return {date,recordCount:dayEntries.length,fields};
+        });
+      }
+      function buildCaregiverBrief(records, periodDays, endDate) {
+        const days = periodDays === 30 ? 30 : 7;
+        const end = new Date(`${endDate}T00:00:00Z`);
+        const start = new Date(end.getTime() - (days - 1)*86400000).toISOString().slice(0,10);
+        const selected = selectConsultRecords(records,days,endDate);
+        const recordedDays = new Set(selected.map(item => item.date)).size;
+        const questions = selected.filter(item => typeof item.question === 'string' && item.question.trim());
+        const lines = ['ApuDa Memory | 보호자용 진료 준비 메모',`기간: ${start} ~ ${endDate} (${days}일)`,
+          `기록된 날짜 ${recordedDays}일 · 저장 기록 ${selected.length}건 · 날짜 기록 없음 ${days-recordedDays}일`,
+          '※ 기록 없는 날짜와 선택하지 않은 항목은 상태를 알 수 없습니다.',
+          '', '진료 때 먼저 물어볼 질문'];
+        if (!questions.length) lines.push('작성된 질문이 없습니다.');
+        questions.forEach(item => lines.push(`- ${item.date}: ${item.question}`));
+        lines.push('', '관찰 기록 현황');
+        for (const field of Object.keys(diaryOptionLabels)) lines.push(observationCountLine(selected,field));
+        lines.push('', '이 메모는 저장된 최대 20건의 부분 기록만 요약하며 진단·복약 지시가 아닙니다. 필요하면 상세 기록을 함께 확인하세요.');
+        return lines.join('\n');
+      }
       function buildConsultSummary(records, periodDays, endDate) {
         const days = periodDays === 30 ? 30 : 7;
         const end = new Date(`${endDate}T00:00:00Z`);
         const start = new Date(end.getTime() - (days - 1)*86400000).toISOString().slice(0,10);
         const selected = selectConsultRecords(records,days,endDate);
+        const recordedDays = new Set(selected.map(item => item.date)).size;
         const questions = selected.filter(item => typeof item.question === 'string' && item.question.trim());
         const result = [`ApuDa Memory | 진료 준비 기록 요약`,`기간: ${start} ~ ${endDate} (${days}일)`,
-          `기록된 날짜 ${new Set(selected.map(item => item.date)).size}일 / 저장된 기록 ${selected.length}건 / 진료 질문 ${questions.length}개 (최대 20건 보관)`,
+          `기록된 날짜 ${recordedDays}일 / 저장된 기록 ${selected.length}건 / 진료 질문 ${questions.length}개 / 날짜 기록 없음 ${days-recordedDays}일 (최대 20건 보관)`,
           `※ 기록이 없는 날짜의 상태는 알 수 없습니다. 이 요약은 진단·위험도 평가가 아닙니다.`,
           '', '먼저 물어볼 질문'];
         if (!questions.length) result.push('작성된 질문이 없습니다.');
         questions.forEach(item => result.push(`- ${item.date}: ${item.question}`));
         result.push('', '관찰 항목별 기록 건수');
-        for (const field of Object.keys(diaryOptionLabels)) {
-          const observed = selected.filter(item => diaryOptionLabels[field][item[field]]);
-          const counts = Object.keys(diaryOptionLabels[field]).map(value => {
-            const count = observed.filter(item => item[field] === value).length;
-            return count ? `${diaryOptionLabels[field][value]} ${count}건` : null;
-          }).filter(Boolean);
-          result.push(`${diaryFieldNames[field]} 관찰: ${observed.length}건 기록${counts.length ? ` (${counts.join(', ')})` : ''}`);
-        }
+        for (const field of Object.keys(diaryOptionLabels)) result.push(observationCountLine(selected,field));
         result.push('', '날짜별 메모·질문');
         if (!selected.length) result.push('선택한 기간에 보관된 기록이 없습니다.');
         selected.forEach(item => {
@@ -751,13 +837,52 @@
         result.push('', '처방 변경·중단은 담당 의료진과 상의하세요. 이 요약에는 보관된 일부 기록만 포함될 수 있습니다.');
         return result.join('\n');
       }
+      function renderObservationTimeline(rows) {
+        const recent = $('consult-timeline-recent');
+        const older = $('consult-timeline-older-list');
+        recent.replaceChildren();
+        older.replaceChildren();
+        const olderDetails = $('consult-timeline-older');
+        olderDetails.hidden = rows.length <= 7;
+        if (olderDetails.hidden) olderDetails.open = false;
+        rows.forEach((item,index) => {
+          const card = document.createElement('div');
+          card.className = `timeline-day${item.recordCount ? '' : ' missing-day'}`;
+          card.setAttribute('role','listitem');
+          const head = document.createElement('div');
+          head.className = 'timeline-day-head';
+          const date = document.createElement('time');
+          date.dateTime = item.date;
+          date.textContent = item.date;
+          const count = document.createElement('span');
+          count.textContent = item.recordCount ? `저장된 기록 ${item.recordCount}건` : '이 날짜에 저장된 기록 없음';
+          head.append(date,count);
+          const fields = document.createElement('div');
+          fields.className = 'timeline-fields';
+          for (const field of Object.keys(diaryOptionLabels)) {
+            const cell = document.createElement('div');
+            cell.className = `timeline-field${item.fields[field].kind === 'observed' ? '' : ' unknown'}`;
+            const label = document.createElement('span');
+            label.textContent = diaryFieldNames[field];
+            const value = document.createElement('strong');
+            value.textContent = item.fields[field].label;
+            cell.append(label,value);
+            fields.append(cell);
+          }
+          card.append(head,fields);
+          (index < 7 ? recent : older).append(card);
+        });
+      }
       function renderConsultSummary() {
         const days = Number($('consult-period').value);
         const selected = selectConsultRecords(entries, days, localDate);
         const questions = selected.filter(item => typeof item.question === 'string' && item.question.trim());
-        $('consult-days').textContent = `${new Set(selected.map(item => item.date)).size}일`;
+        const recordedDays = new Set(selected.map(item => item.date)).size;
+        $('consult-days').textContent = `${recordedDays}일`;
         $('consult-records').textContent = `${selected.length}건`;
         $('consult-question-count').textContent = `${questions.length}개`;
+        $('consult-missing-days').textContent = `${(days === 30 ? 30 : 7)-recordedDays}일`;
+        renderObservationTimeline(buildDailyObservationTimeline(entries,days,localDate));
         const questionList = $('consult-questions');
         questionList.replaceChildren();
         if (!questions.length) {
@@ -772,19 +897,24 @@
           });
         }
         $('consult-output').textContent = buildConsultSummary(entries, days, localDate);
+        $('consult-brief-output').textContent = buildCaregiverBrief(entries, days, localDate);
         $('consult-status').textContent = '';
       }
       $('consult-period').addEventListener('change', renderConsultSummary);
-      $('consult-copy').addEventListener('click', async () => {
-        const content = $('consult-output').textContent;
+      async function copyConsultText(text, success) {
         try {
           if (!navigator.clipboard || !navigator.clipboard.writeText) throw new Error('clipboard unavailable');
-          await navigator.clipboard.writeText(content);
-          $('consult-status').textContent = '진료 요약을 복사했습니다. 개인 건강정보 공유에 주의하세요.';
+          await navigator.clipboard.writeText(text);
+          $('consult-status').textContent = `${success} 개인 건강정보 공유에 주의하세요.`;
         } catch (error) {
-          $('consult-output').focus();
-          $('consult-status').textContent = '자동 복사가 지원되지 않습니다. 요약 영역의 글을 길게 눌러 직접 선택·복사해 주세요.';
+          $('consult-status').textContent = '자동 복사가 지원되지 않습니다. 메모 또는 요약 영역의 글을 길게 눌러 직접 선택·복사해 주세요.';
         }
+      }
+      $('consult-brief-copy').addEventListener('click', async () => {
+        await copyConsultText($('consult-brief-output').textContent,'보호자용 짧은 메모를 복사했습니다.');
+      });
+      $('consult-copy').addEventListener('click', async () => {
+        await copyConsultText($('consult-output').textContent,'진료 요약을 복사했습니다.');
       });
       $('consult-print').addEventListener('click', () => {
         document.body.classList.add('print-summary');
