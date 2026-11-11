@@ -151,7 +151,7 @@
   <main id="main" class="wrap">
     <div class="reading-tools">
       <nav class="crumb" aria-label="현재 위치"><a href="/">홈</a> › <a href="/family/">ApuDa 패밀리</a> › 기억·인지건강</nav>
-      <button class="text-size" id="text-size-toggle" type="button" aria-pressed="false"><span aria-hidden="true">가+</span> 글자 크게 보기</button>
+      <button class="text-size" id="text-size-toggle" type="button" aria-pressed="false"><span aria-hidden="true">가+</span> <span id="text-size-label">글자 크게 보기</span></button>
     </div>
     <section class="hero" aria-labelledby="page-title">
       <div class="hero-content">
@@ -238,14 +238,15 @@
           <summary>기록 백업·복원 (선택)</summary>
           <p>기기를 바꾸거나 브라우저 데이터를 정리하기 전, 먼저 <strong>JSON 백업</strong>을 받으세요. JSON은 이 화면에서 다시 복원할 수 있습니다. TXT는 읽기용으로만 사용합니다.</p>
           <div class="action-row"><button class="btn secondary" type="button" id="diary-export-json">JSON 백업 받기</button><button class="btn secondary" type="button" id="diary-export">TXT로 읽기용 백업</button></div>
-          <div class="field"><label for="diary-import-file">복원할 JSON 백업 파일 선택</label><input id="diary-import-file" type="file" accept=".json,application/json" aria-describedby="diary-import-hint"></div>
+          <div class="field"><label for="diary-import-file">복원할 JSON 백업 파일 선택</label><input id="diary-import-file" type="file" accept=".json,application/json" aria-describedby="diary-import-hint diary-import-selection"></div>
           <p class="subnote" id="diary-import-hint">복원은 새 기록만 <strong>추가</strong>하며 기존 기록은 덮어쓰거나 삭제하지 않습니다. 같은 기록 ID는 건너뛰고 전체 20건을 초과하면 복원하지 않습니다.</p>
+          <p id="diary-import-selection" class="subnote backup-status" role="status" aria-live="polite" aria-atomic="true"></p>
           <div class="action-row"><button class="btn secondary" type="button" id="diary-import">선택한 기록 추가 복원</button></div>
           <p id="diary-backup-status" class="subnote backup-status" role="status" aria-live="polite" aria-atomic="true"></p>
           <p class="subnote"><strong>보안 유의:</strong> JSON·TXT 파일은 암호화되지 않습니다. 다른 사람이 볼 수 있는 공유 폴더·메신저에 저장하지 마세요. 파일 내용은 이 브라우저에서 처리하며 ApuDa 서버로 전송되지 않습니다.</p>
         </details>
         <div class="divider"></div>
-        <h3>내 기기에 저장된 기록 <span id="diary-count" class="feature-badge">0건</span></h3>
+        <h3 id="diary-list-title" tabindex="-1">내 기기에 저장된 기록 <span id="diary-count" class="feature-badge">0건</span></h3>
         <div id="diary-list" class="entry-list"></div>
         <p class="subnote" style="margin-top:16px">최대 20건까지 저장하며 <strong>기존 기록을 자동 삭제하지 않습니다.</strong> 한도에 도달하면 JSON 백업을 받은 후 불필요한 기록을 직접 정리하세요. 시크릿 모드나 다른 기기로 기록이 자동 공유되지 않습니다.</p>
       </div>
@@ -331,6 +332,7 @@
       button.addEventListener('click', () => {
         const large = document.documentElement.classList.toggle('large-text');
         button.setAttribute('aria-pressed', String(large));
+        $('text-size-label').textContent = large ? '기본 글자 크기로' : '글자 크게 보기';
       });
 
       const observationForm = $('observation-form');
@@ -424,7 +426,7 @@
           diaryList.append(empty);
           return;
         }
-        entries.forEach(item => {
+        entries.forEach((item, index) => {
           const article = document.createElement('article');
           article.className = 'entry';
           const date = document.createElement('time');
@@ -435,7 +437,7 @@
           const remove = document.createElement('button');
           remove.type = 'button';
           remove.textContent = '이 기록 삭제';
-          remove.setAttribute('aria-label', `${item.date} 기록 삭제`);
+          remove.setAttribute('aria-label', `${item.date} ${index + 1}번째 기록 삭제`);
           remove.addEventListener('click', () => {
             if (!window.confirm('이 기기에서 해당 기록을 삭제할까요? 삭제한 기록은 복구할 수 없습니다.')) return;
             readEntries();
@@ -445,6 +447,7 @@
             entries = next;
             if (!persistEntries()) { entries = before; return; }
             renderEntries();
+            $('diary-list-title').focus();
             diaryStatus.textContent = '선택한 기록을 이 기기에서 삭제했습니다.';
           });
           article.append(date, note, remove);
@@ -498,6 +501,20 @@
         diaryStatus.textContent = '';
         $('diary-backup-status').textContent = message;
       }
+      $('diary-import-file').addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        $('diary-backup-status').textContent = '';
+        if (!file) {
+          $('diary-import-selection').textContent = '파일 선택이 취소되었습니다. 기존 기록은 변경되지 않았습니다.';
+          return;
+        }
+        const size = Math.ceil(file.size / 1024);
+        if (!file.name.toLowerCase().endsWith('.json') || !file.size || file.size > 256 * 1024) {
+          $('diary-import-selection').textContent = `선택한 파일: ${file.name} (${size}KB). .json 형식의 256KB 이하 백업을 선택해 주세요.`;
+          return;
+        }
+        $('diary-import-selection').textContent = `선택한 파일: ${file.name} (${size}KB). 아직 기록을 복원하지 않았습니다. 아래 '선택한 기록 추가 복원' 버튼을 눌러 계속하세요.`;
+      });
       $('diary-export').addEventListener('click', () => {
         readEntries();
         if (!storageAvailable) {reportBackupStatus(diaryStatus.textContent);return;}
@@ -601,6 +618,7 @@
         if (!persistEntries()) {entries = before;reportBackupStatus(diaryStatus.textContent);return;}
         renderEntries();
         $('diary-import-file').value = '';
+        $('diary-import-selection').textContent = '';
         reportBackupStatus(`새 기록 ${additions.length}건을 추가 복원했습니다. 기존 ${before.length}건은 유지했고 중복 ${skipped}건은 건너뛰었습니다. 이 브라우저에서 목록을 확인해 주세요.`);
       });
       window.addEventListener('storage', (event) => {
