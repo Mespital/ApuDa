@@ -7,7 +7,7 @@ const read = (path) => readFile(join(root, path), 'utf8');
 const assert = (condition, message) => { if (!condition) throw new Error(message); };
 const sitemap = await read('sitemap.xml');
 const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-assert(urls.length === 85, 'Expected exactly 85 sitemap URLs');
+assert(urls.length === 86, 'Expected exactly 86 sitemap URLs');
 assert(new Set(urls).size === urls.length, 'Sitemap has duplicate URLs');
 assert(urls.every((url) => url.startsWith('https://apuda.app/')), 'Sitemap has an external URL');
 
@@ -15,7 +15,7 @@ const robots = await read('robots.txt');
 assert(robots.includes('Sitemap: https://apuda.app/sitemap.xml'), 'Root sitemap missing from robots');
 assert(robots.includes('Sitemap: https://apuda.app/farm/sitemap.xml'), 'Farm sitemap was removed');
 assert(!urls.some((url) => url.includes('/nonsul/') || url.includes('/api/')), 'Private or noindex route in sitemap');
-for (const path of ['/community/', '/family/', '/care/', '/pet/', '/farm/']) {
+for (const path of ['/community/', '/family/', '/memory/', '/care/', '/pet/', '/farm/']) {
   assert(urls.includes('https://apuda.app' + path), 'Family or community URL missing from sitemap: ' + path);
 }
 const homepage = await read('index.html');
@@ -25,14 +25,14 @@ const catalog = await read('library/first30/index.html');
 const bookSlugs = new Map([...catalog.matchAll(/data-slug="([^"]+)" data-name="[^"]+" href="\/library\/first30\/books\/(\d{2})\.html"/g)]
   .map(([, slug, number]) => [number, slug]));
 assert(bookSlugs.size === 30, 'Expected 30 cancer-to-book mappings');
-for (const path of ['community', 'family']) {
+for (const path of ['community', 'family', 'memory']) {
   const html = await read(path + '/index.html');
   assert(html.includes('<link rel="canonical" href="https://apuda.app/' + path + '/">'), 'Canonical missing: ' + path);
 }
 const community = await read('community/index.html');
 const family = await read('family/index.html');
 assert(community.includes('href="https://cafe.naver.com/2ndpart"'), 'Naver cafe link missing');
-for (const path of ['/care/', '/pet/', '/farm/']) {
+for (const path of ['/memory/', '/care/', '/pet/', '/farm/']) {
   assert(family.includes('href="' + path + '"'), 'Family site link missing: ' + path);
 }
 
@@ -82,4 +82,4 @@ for (const file of files) {
   questions += count;
 }
 assert(questions === 3000, 'Expected 3,000 original FAQ items');
-console.log('SEO verified: 85 URLs, 30 books, 30 static FAQ pages, 3,000 questions, brand and family pages.');
+console.log('SEO verified: 86 URLs, 30 books, 30 static FAQ pages, 3,000 questions, brand and family pages.');
