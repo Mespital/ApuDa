@@ -20,7 +20,7 @@
     html{scroll-behavior:smooth}
     body{margin:0;line-height:1.72;font-size:18px;letter-spacing:-.012em}
     a{color:var(--brand-dark);text-underline-offset:4px}
-    a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #B46D12;outline-offset:4px;border-radius:6px}
+    a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #B46D12;outline-offset:4px;border-radius:6px}
     .skip{position:absolute;top:-100px;left:12px;background:#fff;padding:10px 16px;z-index:20;font-weight:800;border:2px solid var(--brand)}
     .skip:focus{top:12px}
     .top{background:#fff;border-bottom:1px solid var(--line);padding:12px max(20px,calc((100vw - 1100px)/2));display:flex;align-items:center;gap:14px 25px;flex-wrap:wrap}
@@ -105,8 +105,16 @@
     .subnote{font-size:15px;color:var(--muted)}
     .field{display:flex;flex-direction:column;gap:7px;margin-top:16px}
     .field label{font-weight:780;color:var(--navy)}
-    .field input,.field textarea{width:100%;min-height:48px;border:1px solid #A9C2DD;border-radius:12px;background:#fff;padding:12px 14px;color:var(--ink);font:inherit}
+    .field input,.field textarea,.field select{width:100%;min-height:48px;border:1px solid #A9C2DD;border-radius:12px;background:#fff;padding:12px 14px;color:var(--ink);font:inherit}
     .field textarea{min-height:130px;resize:vertical;line-height:1.55}
+    .diary-structured{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 15px}
+    .entry-details{display:flex;flex-wrap:wrap;gap:6px 10px;margin:8px 0;color:#395773;font-size:15px}
+    .entry-details span{border:1px solid #D3E1F1;background:#EFF6FF;border-radius:9px;padding:3px 8px}
+    .consult-tools{margin-top:23px;padding:20px;border:1px solid #BDD6EF;border-radius:16px;background:#F8FBFF}
+    .consult-tools h3{margin:0 0 9px}
+    .consult-tools .action-row{margin-top:12px}
+    .consult-output{margin-top:17px;border:1px solid #CDDFF0;border-radius:12px;padding:15px 17px;background:#fff;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.65}
+    .consult-output:focus{outline:3px solid #B46D12;outline-offset:3px}
     .diary-consent{margin-top:15px}
     .backup-tools{margin-top:22px;border:1px solid #B8D2F3;border-radius:16px;background:#F5F9FF;padding:7px 17px 18px}
     .backup-tools summary{display:flex;align-items:center;min-height:52px;color:var(--navy);font-size:18px;font-weight:850;cursor:pointer}
@@ -136,10 +144,10 @@
     html.large-text .note,html.large-text .source,html.large-text .disclaimer,html.large-text .tile .btn,html.large-text footer,html.large-text .subnote,html.large-text .privacy{font-size:19px}
     html.large-text .btn{font-size:20px}
     html.large-text .trust,html.large-text .crumb,html.large-text .kicker,html.large-text .eyebrow,html.large-text .top nav,html.large-text .text-size{font-size:18px}
-    @media(max-width:790px){.grid,.choices{grid-template-columns:1fr}.two{grid-template-columns:1fr}.tile{min-height:0}.top nav{margin-left:0}.two>.box{margin-top:0}.two>.box:first-child{margin-top:16px}}
+    @media(max-width:790px){.grid,.choices,.diary-structured{grid-template-columns:1fr}.two{grid-template-columns:1fr}.tile{min-height:0}.top nav{margin-left:0}.two>.box{margin-top:0}.two>.box:first-child{margin-top:16px}}
     @media(max-width:480px){.wrap{padding:22px 15px 60px}.top{padding:13px 15px}.top nav{width:100%;gap:2px}.top nav a{padding:6px 10px}.reading-tools{align-items:flex-start}.hero{padding:30px 21px}.eyebrow .mobile-optional{display:none}.quick .btn,.action-row .btn{width:100%}.tile .btn{align-self:stretch}.trust{display:grid;grid-template-columns:1fr;gap:9px}.section{margin-top:41px}.tile{padding:21px}.backup-tools{padding:7px 12px 17px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
-    @media print{body{background:#fff}.top nav,.quick,.tile .btn,.text-size,.action-row,.entry button{display:none}.hero,.tile,.box{box-shadow:none}.wrap{max-width:none}}
+    @media print{body{background:#fff}.top nav,.quick,.tile .btn,.text-size,.action-row,.entry button{display:none}.hero,.tile,.box{box-shadow:none}.wrap{max-width:none}body.print-summary .top,body.print-summary main>:not(#care-diary),body.print-summary #care-diary .feature>:not(#consult-summary){display:none!important}body.print-summary .wrap{padding:0}body.print-summary .feature,body.print-summary #consult-summary{margin:0;border:0;padding:0;background:#fff}body.print-summary #consult-summary .subnote,body.print-summary #consult-summary .field,body.print-summary #consult-summary .action-row,body.print-summary #consult-summary #consult-status{display:none!important}body.print-summary .consult-output{border:0;padding:0;white-space:pre-wrap}}
   </style>
 </head>
 <body>
@@ -229,7 +237,14 @@
         <div class="privacy"><strong>개인정보 보호:</strong> 저장에 동의하면 기록은 <strong>현재 기기의 브라우저 저장소(localStorage)</strong>에만 남습니다. ApuDa 서버에 전송·동기화되지 않으며 비밀번호 보호·암호화 기능도 없습니다. 공용 기기를 피하고 주민등록번호·실명 등 민감한 개인정보 입력은 삼가세요. 브라우저 데이터 삭제 시 기록이 사라질 수 있습니다.</div>
         <form id="diary-form">
           <div class="field"><label for="diary-date">기록 날짜</label><input id="diary-date" type="date" required></div>
+          <div class="diary-structured" aria-label="오늘의 돌봄 관찰 항목">
+            <div class="field"><label for="diary-sleep">수면 상태 (선택)</label><select id="diary-sleep"><option value="">미기록</option><option value="좋음">평소와 비슷함</option><option value="보통">약간 달라짐</option><option value="나쁨">평소보다 어려움</option></select></div>
+            <div class="field"><label for="diary-meal">식사 상태 (선택)</label><select id="diary-meal"><option value="">미기록</option><option value="좋음">평소와 비슷함</option><option value="보통">약간 달라짐</option><option value="부족">식사량이 줄었음</option></select></div>
+            <div class="field"><label for="diary-medication">처방·복약 확인 (선택)</label><select id="diary-medication"><option value="">미기록</option><option value="확인함">처방 내용 확인함</option><option value="확인 필요">확인이 필요함</option><option value="문의 사항 있음">의료진에게 질문 있음</option></select></div>
+          </div>
+          <p class="subnote">수면·식사는 평소와 비교한 주관적 관찰입니다. 복약 확인은 약을 조정하거나 복용 여부를 판정하는 기능이 아닙니다.</p>
           <div class="field"><label for="diary-text">돌봄 메모 (최대 1,000자)</label><textarea id="diary-text" maxlength="1000" required placeholder="예: 다음 진료에서 수면 변화에 관해 질문하기. 실명이나 주민번호는 입력하지 마세요."></textarea></div>
+          <div class="field"><label for="diary-question">의료진에게 물어볼 질문 (선택·최대 300자)</label><textarea id="diary-question" maxlength="300" placeholder="예: 며칠째 잠드는 데 어려움이 있는데 어떤 점을 확인하면 좋을까요?"></textarea></div>
           <label class="choice diary-consent"><input type="checkbox" id="diary-consent" required><span><strong>이 기기에 저장하는 데 동의합니다.</strong> 다른 사람이 이 브라우저를 사용하면 기록을 볼 수 있음을 이해했습니다.</span></label>
           <div class="action-row"><button class="btn primary" type="submit">이 기기에 기록 저장</button></div>
         </form>
@@ -249,6 +264,15 @@
         <h3 id="diary-list-title" tabindex="-1">내 기기에 저장된 기록 <span id="diary-count" class="feature-badge">0건</span></h3>
         <div id="diary-list" class="entry-list"></div>
         <p class="subnote" style="margin-top:16px">최대 20건까지 저장하며 <strong>기존 기록을 자동 삭제하지 않습니다.</strong> 한도에 도달하면 JSON 백업을 받은 후 불필요한 기록을 직접 정리하세요. 시크릿 모드나 다른 기기로 기록이 자동 공유되지 않습니다.</p>
+        <section id="consult-summary" class="consult-tools" aria-labelledby="consult-title">
+          <h3 id="consult-title">진료 준비용 기록 요약</h3>
+          <p>저장된 기록만 날짜별로 모아봅니다. 선택한 기간 중 기록이 없는 날은 알 수 없으며, 항목별 개수는 질병·위험도 점수가 아닙니다.</p>
+          <div class="field"><label for="consult-period">요약할 기간</label><select id="consult-period"><option value="7">최근 7일</option><option value="30">최근 30일</option></select></div>
+          <div class="action-row"><button class="btn secondary" type="button" id="consult-copy">요약 복사</button><button class="btn secondary" type="button" id="consult-print">진료 요약 인쇄·PDF</button></div>
+          <div id="consult-output" class="consult-output" tabindex="0" aria-label="진료 준비용 요약 결과"></div>
+          <p id="consult-status" class="subnote" role="status" aria-live="polite" aria-atomic="true"></p>
+          <p class="subnote">요약은 현재 브라우저에서만 계산합니다. 복사·인쇄·PDF 저장 시 개인 건강정보가 외부에 노출되지 않도록 기기와 파일을 확인하세요. 약의 변경·중단은 담당 의료진과 상의하세요.</p>
+        </section>
       </div>
     </section>
 
@@ -388,6 +412,12 @@
       const diaryForm = $('diary-form');
       const diaryStatus = $('diary-status');
       const diaryList = $('diary-list');
+      const diaryOptionLabels = {
+        sleep:{'좋음':'평소와 비슷함','보통':'약간 달라짐','나쁨':'평소보다 어려움'},
+        meal:{'좋음':'평소와 비슷함','보통':'약간 달라짐','부족':'식사량이 줄었음'},
+        medicationCheck:{'확인함':'처방 내용 확인함','확인 필요':'확인이 필요함','문의 사항 있음':'의료진에게 질문 있음'}
+      };
+      const diaryFieldNames = {sleep:'수면',meal:'식사',medicationCheck:'처방·복약 확인'};
       let entries = [];
       let storageAvailable = true;
       function readEntries() {
@@ -434,6 +464,20 @@
           date.textContent = item.date;
           const note = document.createElement('p');
           note.textContent = item.text;
+          const details = document.createElement('div');
+          details.className = 'entry-details';
+          for (const key of Object.keys(diaryOptionLabels)) {
+            if (diaryOptionLabels[key][item[key]]) {
+              const tag = document.createElement('span');
+              tag.textContent = `${diaryFieldNames[key]}: ${diaryOptionLabels[key][item[key]]}`;
+              details.append(tag);
+            }
+          }
+          if (typeof item.question === 'string' && item.question.trim()) {
+            const question = document.createElement('p');
+            question.textContent = `의료진 질문: ${item.question}`;
+            details.append(question);
+          }
           const remove = document.createElement('button');
           remove.type = 'button';
           remove.textContent = '이 기록 삭제';
@@ -447,10 +491,11 @@
             entries = next;
             if (!persistEntries()) { entries = before; return; }
             renderEntries();
+            renderConsultSummary();
             $('diary-list-title').focus();
             diaryStatus.textContent = '선택한 기록을 이 기기에서 삭제했습니다.';
           });
-          article.append(date, note, remove);
+          article.append(date, details, note, remove);
           diaryList.append(article);
         });
       }
@@ -459,6 +504,7 @@
       $('diary-date').value = localDate;
       readEntries();
       renderEntries();
+      renderConsultSummary();
       diaryForm.addEventListener('submit', (event) => {
         event.preventDefault();
         if (!diaryForm.reportValidity()) return;
@@ -474,16 +520,35 @@
         }
         const date = $('diary-date').value;
         const note = $('diary-text').value.trim();
+        const question = $('diary-question').value.trim();
         if (!validDiaryDate(date) || !note || note.length > 1000) {
           diaryStatus.textContent = '실제 달력에 있는 날짜와 1,000자 이내의 메모를 확인해 주세요.';
           return;
         }
+        if (question.length > 300) {
+          diaryStatus.textContent = '의료진에게 물을 질문은 300자 이내로 적어 주세요.';
+          return;
+        }
         const item = {id:`${Date.now()}-${Math.random().toString(36).slice(2,9)}`,date,text:note};
+        for (const [field, inputId] of [['sleep','diary-sleep'],['meal','diary-meal'],['medicationCheck','diary-medication']]) {
+          const value = $(inputId).value;
+          if (value && !diaryOptionLabels[field][value]) {
+            diaryStatus.textContent = '돌봄 관찰 선택값을 다시 확인해 주세요.';
+            return;
+          }
+          if (value) item[field] = value;
+        }
+        if (question) item.question = question;
         const before = entries;
         entries = [item, ...entries];
         if (!persistEntries()) { entries = before; return; }
         renderEntries();
+        renderConsultSummary();
         $('diary-text').value = '';
+        $('diary-question').value = '';
+        $('diary-sleep').value = '';
+        $('diary-meal').value = '';
+        $('diary-medication').value = '';
         $('diary-consent').checked = false;
         diaryStatus.textContent = '기록을 현재 브라우저에 저장했습니다. 다른 기기와 동기화되지 않습니다.';
       });
@@ -519,7 +584,13 @@
         readEntries();
         if (!storageAvailable) {reportBackupStatus(diaryStatus.textContent);return;}
         if (!entries.length) {reportBackupStatus('백업할 저장 기록이 없습니다.');return;}
-        const content = ['ApuDa Memory 돌봄 기록 - 개인 기기 백업','민감정보가 포함될 수 있으므로 파일 보관에 주의하세요.','',...entries.flatMap(item => [`[${item.date}]`,item.text,''])].join('\n');
+        const content = ['ApuDa Memory 돌봄 기록 - 개인 기기 백업','민감정보가 포함될 수 있으므로 파일 보관에 주의하세요.','',...entries.flatMap(item => [
+          `[${item.date}]`,
+          ...Object.keys(diaryOptionLabels).filter(key => diaryOptionLabels[key][item[key]]).map(key => `${diaryFieldNames[key]}: ${diaryOptionLabels[key][item[key]]}`),
+          item.text,
+          ...(item.question ? [`의료진 질문: ${item.question}`] : []),
+          ''
+        ])].join('\n');
         try {
           downloadDiaryFile(content, `apuda-memory-diary-${localDate}.txt`, 'text/plain;charset=utf-8');
         } catch (error) {
@@ -534,9 +605,9 @@
         if (!entries.length) {reportBackupStatus('백업할 저장 기록이 없습니다.');return;}
         const payload = {
           format:'apuda-memory-care-diary',
-          version:1,
+          version:2,
           exportedAt:new Date().toISOString(),
-          entries:entries.map(({id,date,text}) => ({id,date,text}))
+          entries:entries.map(serializeDiaryEntry)
         };
         try {
           downloadDiaryFile(JSON.stringify(payload, null, 2), `apuda-memory-diary-${localDate}.json`, 'application/json;charset=utf-8');
@@ -551,9 +622,17 @@
         const date = new Date(`${value}T00:00:00Z`);
         return Number.isFinite(date.getTime()) && date.toISOString().slice(0,10) === value;
       }
+      function serializeDiaryEntry(item) {
+        const clean = {id:item.id,date:item.date,text:item.text};
+        for (const key of Object.keys(diaryOptionLabels)) {
+          if (diaryOptionLabels[key][item[key]]) clean[key] = item[key];
+        }
+        if (typeof item.question === 'string' && item.question.trim() && item.question.length <= 300) clean.question = item.question;
+        return clean;
+      }
       function validateDiaryBackup(data) {
         if (!data || typeof data !== 'object' || Array.isArray(data)
-          || data.format !== 'apuda-memory-care-diary' || data.version !== 1
+          || data.format !== 'apuda-memory-care-diary' || ![1,2].includes(data.version)
           || !Array.isArray(data.entries) || data.entries.length > 20) return null;
         const ids = new Set();
         for (const item of data.entries) {
@@ -561,10 +640,65 @@
             || typeof item.id !== 'string' || item.id.length < 1 || item.id.length > 100
             || !validDiaryDate(item.date) || typeof item.text !== 'string'
             || !item.text.trim() || item.text.length > 1000 || ids.has(item.id)) return null;
+          if (data.version === 1 && (['sleep','meal','medicationCheck','question'].some(key => key in item))) return null;
+          for (const key of Object.keys(diaryOptionLabels)) {
+            if (key in item && (typeof item[key] !== 'string' || !diaryOptionLabels[key][item[key]])) return null;
+          }
+          if ('question' in item && (typeof item.question !== 'string' || !item.question.trim() || item.question.length > 300)) return null;
           ids.add(item.id);
         }
-        return data.entries.map(({id,date,text}) => ({id,date,text}));
+        return data.entries.map(serializeDiaryEntry);
       }
+      function buildConsultSummary(records, periodDays, endDate) {
+        const days = periodDays === 30 ? 30 : 7;
+        const end = new Date(`${endDate}T00:00:00Z`);
+        const start = new Date(end.getTime() - (days - 1)*86400000).toISOString().slice(0,10);
+        const selected = records.filter(item => validDiaryDate(item.date) && item.date >= start && item.date <= endDate)
+          .slice().sort((a,b) => b.date.localeCompare(a.date));
+        const result = [`ApuDa Memory | 진료 준비 기록 요약`,`기간: ${start} ~ ${endDate} (${days}일)`,
+          `저장된 기록 ${selected.length}건 / 최대 20건 보관`,`※ 기록이 없는 날짜의 상태는 알 수 없습니다. 이 요약은 진단·위험도 평가가 아닙니다.`];
+        for (const field of Object.keys(diaryOptionLabels)) {
+          const observed = selected.filter(item => diaryOptionLabels[field][item[field]]);
+          const counts = Object.keys(diaryOptionLabels[field]).map(value => {
+            const count = observed.filter(item => item[field] === value).length;
+            return count ? `${diaryOptionLabels[field][value]} ${count}건` : null;
+          }).filter(Boolean);
+          result.push(`${diaryFieldNames[field]} 관찰: ${observed.length}건 기록${counts.length ? ` (${counts.join(', ')})` : ''}`);
+        }
+        result.push('', '날짜별 메모·질문');
+        if (!selected.length) result.push('선택한 기간에 보관된 기록이 없습니다.');
+        selected.forEach(item => {
+          result.push(`[${item.date}]`);
+          for (const field of Object.keys(diaryOptionLabels)) {
+            if (diaryOptionLabels[field][item[field]]) result.push(`- ${diaryFieldNames[field]}: ${diaryOptionLabels[field][item[field]]}`);
+          }
+          result.push(`- 관찰 메모: ${item.text}`);
+          if (item.question) result.push(`- 의료진 질문: ${item.question}`);
+        });
+        result.push('', '처방 변경·중단은 담당 의료진과 상의하세요. 이 요약에는 보관된 일부 기록만 포함될 수 있습니다.');
+        return result.join('\n');
+      }
+      function renderConsultSummary() {
+        $('consult-output').textContent = buildConsultSummary(entries, Number($('consult-period').value), localDate);
+        $('consult-status').textContent = '';
+      }
+      $('consult-period').addEventListener('change', renderConsultSummary);
+      $('consult-copy').addEventListener('click', async () => {
+        const content = $('consult-output').textContent;
+        try {
+          if (!navigator.clipboard || !navigator.clipboard.writeText) throw new Error('clipboard unavailable');
+          await navigator.clipboard.writeText(content);
+          $('consult-status').textContent = '진료 요약을 복사했습니다. 개인 건강정보 공유에 주의하세요.';
+        } catch (error) {
+          $('consult-output').focus();
+          $('consult-status').textContent = '자동 복사가 지원되지 않습니다. 요약 영역의 글을 길게 눌러 직접 선택·복사해 주세요.';
+        }
+      });
+      $('consult-print').addEventListener('click', () => {
+        document.body.classList.add('print-summary');
+        window.print();
+      });
+      window.addEventListener('afterprint', () => document.body.classList.remove('print-summary'));
       $('diary-import').addEventListener('click', async () => {
         const file = $('diary-import-file').files[0];
         if (!file) {reportBackupStatus('먼저 JSON 백업 파일을 선택해 주세요.');return;}
@@ -617,6 +751,7 @@
         entries = [...additions, ...entries];
         if (!persistEntries()) {entries = before;reportBackupStatus(diaryStatus.textContent);return;}
         renderEntries();
+        renderConsultSummary();
         $('diary-import-file').value = '';
         $('diary-import-selection').textContent = '';
         reportBackupStatus(`새 기록 ${additions.length}건을 추가 복원했습니다. 기존 ${before.length}건은 유지했고 중복 ${skipped}건은 건너뛰었습니다. 이 브라우저에서 목록을 확인해 주세요.`);
@@ -625,6 +760,7 @@
         if (event.key !== diaryKey && event.key !== null) return;
         readEntries();
         renderEntries();
+        renderConsultSummary();
         if (storageAvailable) diaryStatus.textContent = '다른 탭에서 돌봄 기록이 변경되어 최신 목록을 다시 불러왔습니다.';
       });
     })();
