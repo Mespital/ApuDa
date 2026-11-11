@@ -152,6 +152,15 @@
     .diary-workflow a:focus-visible,.diary-next a:focus-visible{outline:3px solid #B46D12;outline-offset:3px}
     .diary-next{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin:11px 0 4px}
     .diary-next[hidden]{display:none}
+    .entry-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:12px}
+    .entry-actions button{font:inherit;min-height:44px;padding:7px 13px;border-radius:9px;cursor:pointer}
+    .entry-actions .edit-record{background:#EFF6FF;color:#1855D8;border:1px solid #A9C5E6}
+    .entry-actions .delete-record{background:#fff;color:#8D2A20;border:1px solid #E2B3AE}
+    .diary-edit-state,.diary-undo{padding:13px 16px;border-radius:12px;margin:14px 0;background:#EAF3FF;border:1px solid #BDD6F0;color:#173E65}
+    .diary-undo{background:#FFF8EA;border-color:#E6C99A}
+    .diary-edit-state[hidden],.diary-undo[hidden],#diary-cancel-edit[hidden]{display:none}
+    .diary-undo button{font:inherit;min-height:48px;border:1px solid #A9C5E6;border-radius:10px;background:#fff;color:#1855D8;font-weight:800;padding:9px 14px;cursor:pointer}
+    .diary-capacity{margin:7px 0 14px;color:#53677D;font-size:16px}
     .backup-tools{margin-top:22px;border:1px solid #B8D2F3;border-radius:16px;background:#F5F9FF;padding:7px 17px 18px}
     .backup-tools summary{display:flex;align-items:center;min-height:52px;color:var(--navy);font-size:18px;font-weight:850;cursor:pointer}
     .backup-tools summary:focus-visible{outline:3px solid #B46D12;outline-offset:3px;border-radius:6px}
@@ -284,6 +293,7 @@
           <p><strong>진료 전 3단계</strong> · 기록을 저장한 뒤 확인하고, 질문을 모아 진료에 활용하세요.</p>
           <ol><li><a href="#diary-date">① 돌봄 기록 작성</a></li><li><a href="#diary-list-title">② 저장 기록 확인</a></li><li><a href="#consult-summary">③ 진료 메모 준비</a></li></ol>
         </nav>
+        <div id="diary-edit-state" class="diary-edit-state" role="status" aria-live="polite" hidden><strong id="diary-edit-label">기록 수정 중</strong><p class="subnote">수정할 내용을 확인하고 저장에 다시 동의해 주세요. 기존 기록 ID를 유지합니다.</p></div>
         <form id="diary-form">
           <div class="field"><label for="diary-date">기록 날짜</label><input id="diary-date" type="date" required></div>
           <div class="diary-structured" aria-label="오늘의 돌봄 관찰 항목">
@@ -295,9 +305,10 @@
           <div class="field"><label for="diary-text">돌봄 메모 (최대 1,000자)</label><textarea id="diary-text" maxlength="1000" required placeholder="예: 다음 진료에서 수면 변화에 관해 질문하기. 실명이나 주민번호는 입력하지 마세요."></textarea></div>
           <div class="field"><label for="diary-question">의료진에게 물어볼 질문 (선택·최대 300자)</label><textarea id="diary-question" maxlength="300" placeholder="예: 며칠째 잠드는 데 어려움이 있는데 어떤 점을 확인하면 좋을까요?"></textarea></div>
           <label class="choice diary-consent"><input type="checkbox" id="diary-consent" required><span><strong>이 기기에 저장하는 데 동의합니다.</strong> 다른 사람이 이 브라우저를 사용하면 기록을 볼 수 있음을 이해했습니다.</span></label>
-          <div class="action-row"><button class="btn primary" type="submit">이 기기에 기록 저장</button></div>
+          <div class="action-row"><button class="btn primary" type="submit" id="diary-submit">이 기기에 기록 저장</button><button class="btn secondary" type="button" id="diary-cancel-edit" hidden>수정 취소</button></div>
         </form>
         <p id="diary-status" class="subnote" role="status" aria-live="polite" style="margin-top:13px"></p>
+        <div id="diary-undo" class="diary-undo" hidden><p id="diary-undo-label" role="status" aria-live="polite"></p><button id="diary-undo-button" type="button">마지막 수정·삭제 되돌리기</button><p class="subnote">현재 페이지에서 마지막 수정 또는 삭제 1건만 되돌릴 수 있습니다. 페이지를 닫거나 다른 저장 작업을 하면 되돌리기 정보가 사라집니다.</p></div>
         <div id="diary-next" class="diary-next" aria-label="저장 후 다음 단계" hidden><a href="#diary-list-title">저장된 기록 확인하기</a><a href="#consult-summary">진료용 메모 만들기</a></div>
         <details class="backup-tools">
           <summary>기록 백업·복원 (선택)</summary>
@@ -312,6 +323,7 @@
         </details>
         <div class="divider"></div>
         <h3 id="diary-list-title" tabindex="-1">내 기기에 저장된 기록 <span id="diary-count" class="feature-badge">0건</span></h3>
+        <p id="diary-capacity-status" class="diary-capacity" role="status" aria-live="polite"></p>
         <div class="diary-filters" aria-label="저장 기록 검색과 날짜 필터">
           <h4>기록 찾기</h4>
           <p class="subnote" style="margin:0">검색은 이 기기 안에서만 이루어지며 기록을 수정하거나 삭제하지 않습니다.</p>
@@ -324,7 +336,7 @@
           <p class="filter-status" id="diary-filter-status" role="status" aria-live="polite" aria-atomic="true"></p>
         </div>
         <div id="diary-list" class="entry-list"></div>
-        <p class="subnote" style="margin-top:16px">최대 20건까지 저장하며 <strong>기존 기록을 자동 삭제하지 않습니다.</strong> 한도에 도달하면 JSON 백업을 받은 후 불필요한 기록을 직접 정리하세요. 시크릿 모드나 다른 기기로 기록이 자동 공유되지 않습니다.</p>
+        <p class="subnote" style="margin-top:16px">최대 20건까지 저장하며 <strong>기존 기록을 자동 삭제하지 않습니다.</strong> 15건 이상이면 JSON 백업을 권장합니다. 20건 도달 후에는 <strong>백업 파일이 실제 저장됐는지 확인한 다음</strong> 불필요한 기록을 직접 정리해 주세요. 기록 수정은 새 건수를 차지하지 않습니다. 백업은 암호화되지 않으며 시크릿 모드·다른 기기와 자동 공유되지 않습니다.</p>
         <section id="consult-summary" class="consult-tools" aria-labelledby="consult-title">
           <h3 id="consult-title">진료 준비용 기록 요약</h3>
           <p>저장된 기록만 날짜별로 모아봅니다. 선택한 기간 중 기록이 없는 날은 알 수 없으며, 항목별 개수는 질병·위험도 점수가 아닙니다.</p>
@@ -509,6 +521,9 @@
       const diaryFieldNames = {sleep:'수면',meal:'식사',medicationCheck:'처방·복약 확인'};
       let entries = [];
       let storageAvailable = true;
+      let editingId = null;
+      let editingSnapshot = null;
+      let pendingUndo = null; // Last action only, in memory. Never duplicated in localStorage.
       function readEntries() {
         try {
           const saved = JSON.parse(localStorage.getItem(diaryKey) || '[]');
@@ -535,9 +550,55 @@
           return false;
         }
       }
+      function clearUndo() {
+        pendingUndo = null;
+        $('diary-undo').hidden = true;
+        $('diary-undo-label').textContent = '';
+      }
+      function offerUndo(action, message) {
+        pendingUndo = action;
+        $('diary-undo-label').textContent = message;
+        $('diary-undo').hidden = false;
+      }
+      function clearEditMode() {
+        editingId = null;
+        editingSnapshot = null;
+        $('diary-edit-state').hidden = true;
+        $('diary-cancel-edit').hidden = true;
+        $('diary-submit').textContent = '이 기기에 기록 저장';
+      }
+      function startEdit(item) {
+        if ($('diary-text').value.trim() && !window.confirm('작성 중인 입력 내용을 현재 기록으로 바꿀까요? 저장하지 않은 내용은 사라집니다.')) return;
+        readEntries();
+        if (!storageAvailable) return;
+        const current = entries.find(entry => entry.id === item.id);
+        if (!current || JSON.stringify(current) !== JSON.stringify(item)) {
+          diaryStatus.textContent = '다른 탭에서 이 기록이 변경되었을 수 있습니다. 목록을 새로 확인해 주세요.';
+          renderEntries();
+          return;
+        }
+        editingId = current.id;
+        editingSnapshot = JSON.stringify(current);
+        $('diary-date').value = current.date;
+        $('diary-text').value = current.text;
+        $('diary-question').value = current.question || '';
+        $('diary-sleep').value = current.sleep || '';
+        $('diary-meal').value = current.meal || '';
+        $('diary-medication').value = current.medicationCheck || '';
+        $('diary-consent').checked = false;
+        $('diary-edit-label').textContent = current.date + ' 기록 수정 중';
+        $('diary-edit-state').hidden = false;
+        $('diary-cancel-edit').hidden = false;
+        $('diary-submit').textContent = '이 기록 수정 저장';
+        $('diary-next').hidden = true;
+        diaryStatus.textContent = '기존 기록을 수정하는 중입니다. 저장 전에 동의를 다시 선택하세요.';
+        $('diary-text').focus();
+      }
       function renderEntries() {
         diaryList.replaceChildren();
         $('diary-count').textContent = `${entries.length}건`;
+        const cap = $('diary-capacity-status');
+        if (cap) cap.textContent = entries.length >= 20 ? '20 / 20건 · 추가 저장 불가. 실제 JSON 백업을 확인한 뒤 직접 정리하세요.' : entries.length >= 15 ? `${entries.length} / 20건 · 여유 ${20-entries.length}건. JSON 백업을 권장합니다.` : `${entries.length} / 20건 · 여유 ${20-entries.length}건`;
         const filtered = filterDiaryEntries(entries, $('diary-search').value, $('diary-from').value, $('diary-to').value);
         if (filtered === null) {
           $('diary-filter-status').textContent = '시작 날짜가 종료 날짜보다 늦거나 날짜가 올바르지 않습니다. 범위를 다시 확인해 주세요. 저장된 기록은 그대로 유지됩니다.';
@@ -573,8 +634,15 @@
             question.textContent = `의료진 질문: ${item.question}`;
             details.append(question);
           }
+          const edit = document.createElement('button');
+          edit.type = 'button';
+          edit.className = 'edit-record';
+          edit.textContent = '이 기록 수정';
+          edit.setAttribute('aria-label', `${item.date} ${index + 1}번째 기록 수정`);
+          edit.addEventListener('click', () => startEdit(item));
           const remove = document.createElement('button');
           remove.type = 'button';
+          remove.className = 'delete-record';
           remove.textContent = '이 기록 삭제';
           const preview = item.text.replace(/\s+/g,' ').slice(0,40);
           remove.setAttribute('aria-label', `${item.date} ${index + 1}번째 기록 삭제 · ${preview}`);
@@ -582,17 +650,28 @@
             if (!window.confirm(`다음 돌봄 기록 1건을 이 기기에서 삭제할까요?\n날짜: ${item.date}\n메모: ${preview}${item.text.length > 40 ? '…' : ''}\n\n이 화면에서는 삭제를 되돌릴 수 없습니다. 별도 JSON 백업이 없다면 복구할 수 없으니 삭제 전 확인하세요.`)) return;
             readEntries();
             if (!storageAvailable) return;
+            const found = entries.find(entry => entry.id === item.id);
+            if (!found || JSON.stringify(found) !== JSON.stringify(item)) {
+              diaryStatus.textContent = '대상 기록이 변경되어 삭제하지 않았습니다. 목록을 다시 확인해 주세요.';
+              renderEntries();
+              return;
+            }
             const next = entries.filter(entry => entry.id !== item.id);
             const before = entries;
             entries = next;
             if (!persistEntries()) { entries = before; return; }
+            if (editingId === item.id) clearEditMode();
+            offerUndo({kind:'delete',previous:{...found}}, '방금 삭제한 기록 1건을 현재 페이지에서 되돌릴 수 있습니다.');
             renderEntries();
             renderConsultSummary();
             $('diary-list-title').focus();
             $('diary-next').hidden = true;
-            diaryStatus.textContent = `${item.date} 돌봄 기록 1건을 삭제했습니다. 저장 기록은 ${entries.length}건 남았습니다.`;
+            diaryStatus.textContent = `${item.date} 돌봄 기록 1건을 삭제했습니다. 저장 기록은 ${entries.length}건 남았습니다. 필요하면 아래 되돌리기를 누르세요.`;
           });
-          article.append(date, details, note, remove);
+          const actions = document.createElement('div');
+          actions.className = 'entry-actions';
+          actions.append(edit,remove);
+          article.append(date, details, note, actions);
           diaryList.append(article);
         });
       }
@@ -611,6 +690,46 @@
       readEntries();
       renderEntries();
       renderConsultSummary();
+      $('diary-cancel-edit').addEventListener('click', () => {
+        clearEditMode();
+        $('diary-date').value = localDate;
+        $('diary-text').value = '';
+        $('diary-question').value = '';
+        $('diary-sleep').value = '';
+        $('diary-meal').value = '';
+        $('diary-medication').value = '';
+        $('diary-consent').checked = false;
+        diaryStatus.textContent = '기록 수정을 취소했습니다. 저장된 기록은 변경하지 않았습니다.';
+      });
+      $('diary-undo-button').addEventListener('click', () => {
+        if (!pendingUndo) return;
+        readEntries();
+        if (!storageAvailable) return;
+        const action = pendingUndo;
+        const before = entries;
+        if (action.kind === 'delete') {
+          if (entries.length >= 20 || entries.some(item => item.id === action.previous.id)) {
+            diaryStatus.textContent = '20건 한도에 도달했거나 같은 기록 ID가 존재해 되돌릴 수 없습니다. 기존 기록은 그대로 유지됩니다.';
+            return;
+          }
+          entries = [{...action.previous},...entries];
+        } else if (action.kind === 'edit') {
+          const current = entries.find(item => item.id === action.expected.id);
+          if (!current || JSON.stringify(current) !== JSON.stringify(action.expected)) {
+            diaryStatus.textContent = '기록이 다른 탭에서 변경되어 수정을 되돌릴 수 없습니다. 기존 기록은 변경하지 않았습니다.';
+            return;
+          }
+          entries = entries.map(item => item.id === action.expected.id ? {...action.previous} : item);
+        } else return;
+        if (!persistEntries()) {entries = before;return;}
+        clearUndo();
+        clearEditMode();
+        for (const id of ['diary-search','diary-from','diary-to']) $(id).value = '';
+        renderEntries();
+        renderConsultSummary();
+        $('diary-list-title').focus();
+        diaryStatus.textContent = '마지막 수정·삭제 작업 1건을 되돌렸습니다. 목록을 확인해 주세요.';
+      });
       diaryForm.addEventListener('submit', (event) => {
         event.preventDefault();
         $('diary-next').hidden = true;
@@ -621,7 +740,12 @@
         }
         readEntries();
         if (!storageAvailable) return;
-        if (entries.length >= 20) {
+        const editingRecord = editingId ? entries.find(entry => entry.id === editingId) : null;
+        if (editingId && (!editingRecord || JSON.stringify(editingRecord) !== editingSnapshot)) {
+          diaryStatus.textContent = '수정하려는 기록이 다른 탭에서 변경되었거나 삭제되었습니다. 덮어쓰지 않았습니다. 내용을 복사해 보관하고 목록을 다시 확인해 주세요.';
+          return;
+        }
+        if (!editingId && entries.length >= 20) {
           diaryStatus.textContent = '기록이 20건에 도달했습니다. 기존 기록은 자동 삭제하지 않습니다. 먼저 JSON 백업을 받은 후 불필요한 기록을 직접 삭제해 주세요.';
           return;
         }
@@ -636,7 +760,7 @@
           diaryStatus.textContent = '의료진에게 물을 질문은 300자 이내로 적어 주세요.';
           return;
         }
-        const item = {id:`${Date.now()}-${Math.random().toString(36).slice(2,9)}`,date,text:note};
+        const item = editingRecord ? {...editingRecord,date,text:note} : {id:`${Date.now()}-${Math.random().toString(36).slice(2,9)}`,date,text:note};
         for (const [field, inputId] of [['sleep','diary-sleep'],['meal','diary-meal'],['medicationCheck','diary-medication']]) {
           const value = $(inputId).value;
           if (value && !diaryOptionLabels[field][value]) {
@@ -644,11 +768,16 @@
             return;
           }
           if (value) item[field] = value;
+          else delete item[field];
         }
         if (question) item.question = question;
+        else delete item.question;
         const before = entries;
-        entries = [item, ...entries];
+        entries = editingRecord ? entries.map(entry => entry.id === editingId ? item : entry) : [item, ...entries];
         if (!persistEntries()) { entries = before; return; }
+        if (editingRecord) offerUndo({kind:'edit',previous:{...editingRecord},expected:{...item}}, '방금 수정한 기록을 현재 페이지에서 되돌릴 수 있습니다.');
+        else clearUndo();
+        clearEditMode();
         const hadFilters = ['diary-search','diary-from','diary-to'].some(id => $(id).value);
         for (const id of ['diary-search','diary-from','diary-to']) $(id).value = '';
         renderEntries();
@@ -659,7 +788,7 @@
         $('diary-meal').value = '';
         $('diary-medication').value = '';
         $('diary-consent').checked = false;
-        diaryStatus.textContent = hadFilters
+        diaryStatus.textContent = editingRecord ? '기록 1건을 수정했습니다. 저장 기록 수는 그대로이며, 필요하면 마지막 수정 되돌리기를 이용하세요.' : hadFilters
           ? '기록 1건을 현재 브라우저에 저장했습니다. 새 기록을 바로 확인하도록 기존 검색·날짜 필터를 초기화했습니다. 다른 기기와 동기화되지 않습니다.'
           : '기록 1건을 현재 브라우저에 저장했습니다. 아래에서 기록을 확인하거나 진료용 메모를 준비하세요. 다른 기기와 동기화되지 않습니다.';
         $('diary-next').hidden = false;
