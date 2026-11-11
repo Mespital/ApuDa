@@ -59,7 +59,7 @@ for (const id of ['diary-export','diary-export-json','diary-import','diary-impor
 }
 assert.ok(html.includes('aria-describedby="diary-import-hint diary-import-selection"'), 'file chooser is associated with guidance and selection status');
 assert.ok(html.includes("$('diary-list-title').focus();"), 'deleted button focus transfers to record heading');
-assert.ok(html.includes('`${item.date} ${index + 1}번째 기록 삭제`'), 'repeated dates have distinguishable delete labels');
+assert.ok(html.includes('`${item.date} ${index + 1}번째 기록 삭제 · ${preview}`'), 'repeated dates have distinguishable delete labels and a note preview');
 const summaryPanel = html.slice(html.indexOf('<section id="consult-summary"'),html.indexOf('</section>\n      </div>\n    </section>',html.indexOf('<section id="consult-summary"')));
 assert.ok(summaryPanel.indexOf('class="consult-question-preview"') < summaryPanel.indexOf('class="consult-brief"'), 'clinician questions precede caregiver memo');
 assert.ok(summaryPanel.indexOf('class="consult-brief"') < summaryPanel.indexOf('class="consult-timeline"'), 'caregiver memo precedes long daily timeline');
