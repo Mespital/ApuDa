@@ -16,8 +16,8 @@ function between(start,end) {
 }
 const constants = between('const diaryOptionLabels =','let entries = []');
 const filterFns = between('function validDiaryDate(value)','function serializeDiaryEntry(item)');
-const renderFn = between('function renderEntries()','const today = new Date()');
-const submitHandler = between("diaryForm.addEventListener('submit', (event) => {",'function downloadDiaryFile(');
+const renderFn = between('function clearUndo()','const today = new Date()');
+const submitHandler = between("$('diary-cancel-edit').addEventListener('click'",'function downloadDiaryFile(');
 
 function uiElement(tag='div') {
   return {
@@ -34,7 +34,8 @@ function uiElement(tag='div') {
 function boot(backing=[],persistFails=false) {
   const ids=['diary-form','diary-status','diary-list','diary-count','diary-filter-status',
     'diary-search','diary-from','diary-to','diary-date','diary-text','diary-question','diary-sleep',
-    'diary-meal','diary-medication','diary-consent','diary-next','diary-list-title'];
+    'diary-meal','diary-medication','diary-consent','diary-next','diary-list-title',
+    'diary-edit-state','diary-edit-label','diary-cancel-edit','diary-submit','diary-undo','diary-undo-label','diary-undo-button','diary-capacity-status'];
   const elements=Object.fromEntries(ids.map(id=>[id,uiElement()]));
   Object.assign(elements['diary-date'],{value:'2026-11-11'});
   const state={
@@ -46,7 +47,8 @@ function boot(backing=[],persistFails=false) {
     elements
   };
   const bootstrap=`${constants}
-    let entries=[]; let storageAvailable=true;
+    const localDate='2026-11-11'; let entries=[]; let storageAvailable=true;
+    let editingId=null; let editingSnapshot=null; let pendingUndo=null;
     const diaryForm=$('diary-form'); const diaryStatus=$('diary-status'); const diaryList=$('diary-list');
     function readEntries(){entries=backing.map(x=>({...x}));storageAvailable=true;}
     function persistEntries(){if(persistFails){diaryStatus.textContent='저장 실패';return false;}
@@ -96,9 +98,9 @@ assert.equal(state.elements['diary-text'].value,'','note input cleared after suc
 assert.equal(state.summaryRefreshes,1,'clinician summary refreshed after save');
 
 // A deletion of a same-day record must identify its note before the irreversible action.
-const newestButton=state.elements['diary-list'].children[0].children.find(c=>c.tag==='button');
+const newestButton=state.elements['diary-list'].children[0].children.at(-1).children.find(c=>c.tag==='button' && c.textContent==='이 기록 삭제');
 assert.ok(newestButton.attrs['aria-label'].includes('진료 전 가상 메모'),'delete button names actual note');
-const sameDateOldButton=state.elements['diary-list'].children[1].children.find(c=>c.tag==='button');
+const sameDateOldButton=state.elements['diary-list'].children[1].children.at(-1).children.find(c=>c.tag==='button' && c.textContent==='이 기록 삭제');
 assert.notEqual(newestButton.attrs['aria-label'],sameDateOldButton.attrs['aria-label'],'two same-date delete controls remain distinguishable');
 state.confirmChoice=false;
 newestButton.handlers.click();
@@ -113,6 +115,11 @@ assert.equal(state.backing.length,1,'only selected record removed');
 assert.equal(state.backing[0].text,older.text,'other record preserved on deletion');
 assert.equal(state.elements['diary-next'].hidden,true,'save next links hidden after deletion');
 assert.equal(state.elements['diary-list-title'].focused,true,'focus returns to records after deletion');
+assert.equal(state.elements['diary-undo'].hidden,false,'delete undo available in active page');
+state.elements['diary-undo-button'].handlers.click();
+assert.equal(state.backing.length,2,'last deletion can be undone');
+assert.equal(state.backing.find(e=>e.id===older.id).text,older.text,'original restored and unrelated record intact');
+assert.equal(state.elements['diary-undo'].hidden,true,'undo cleared after successful restore');
 assert.match(state.elements['diary-status'].textContent,/1건을 삭제했습니다/,'delete confirms count');
 
 const full=boot(Array.from({length:20},(_,i)=>({id:`old-${i}`,date:'2026-11-10',text:'기존 기록'})));
@@ -138,6 +145,37 @@ for (const id of ['diary-date','diary-list-title','consult-summary']) {
   assert.ok(html.includes(`href="#${id}"`),`${id} is linked in guided flow`);
 }
 assert.match(html,/id="diary-next"[^>]*hidden/,'post-save navigation hidden until actual successful save');
+assert.match(html,/id="diary-undo"[^>]*hidden/,'undo panel initially hidden');
+assert.match(html,/id="diary-cancel-edit" hidden/,'edit cancel initially hidden');
+assert.match(html,/기록 수정은 새 건수를 차지하지 않습니다/,'capacity guidance is explicit');
 assert.match(html,/\.diary-next\[hidden\]\{display:none\}/,'hidden next links not visible by CSS override');
+
+
+const modify=boot([{...older}]);
+const editButton=modify.elements['diary-list'].children[0].children.at(-1).children.find(c=>c.textContent==='이 기록 수정');
+editButton.handlers.click();
+assert.equal(modify.elements['diary-text'].value,older.text,'edit pre-fills original memo');
+assert.equal(modify.elements['diary-submit'].textContent,'이 기록 수정 저장','submit button indicates edit mode');
+assert.equal(modify.elements['diary-consent'].checked,false,'edit requires renewed explicit consent');
+modify.elements['diary-text'].value='수정한 가상 메모';
+modify.elements['diary-consent'].checked=true;
+modify.elements['diary-form'].handlers.submit({preventDefault(){}});
+assert.equal(modify.backing.length,1,'edit keeps the entry count');
+assert.equal(modify.backing[0].id,older.id,'edit keeps original stable id');
+assert.equal(modify.backing[0].text,'수정한 가상 메모','updated memo saved');
+assert.equal(modify.elements['diary-undo'].hidden,false,'edit undo offered');
+modify.elements['diary-undo-button'].handlers.click();
+assert.equal(modify.backing[0].text,older.text,'undo edit restores previous content');
+assert.equal(modify.elements['diary-undo'].hidden,true,'undo is single-use');
+
+const stale=boot([{...older}]);
+stale.elements['diary-list'].children[0].children.at(-1).children.find(c=>c.textContent==='이 기록 수정').handlers.click();
+stale.backing[0].text='다른 탭의 변경';
+stale.elements['diary-text'].value='이전 입력으로 덮어쓰기';
+stale.elements['diary-consent'].checked=true;
+stale.elements['diary-form'].handlers.submit({preventDefault(){}});
+assert.equal(stale.backing[0].text,'다른 탭의 변경','stale edit never overwrites concurrent change');
+assert.equal(stale.writes,0,'stale edit blocked before persistence');
+assert.match(stale.elements['diary-status'].textContent,/덮어쓰지 않았습니다/);
 
 console.log('PASS: synthetic diary submit, filter-reset visibility, post-save navigation, same-day delete confirmation/cancel, cap, storage failure, nonmutation');
