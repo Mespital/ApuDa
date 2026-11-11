@@ -27,6 +27,7 @@ vm.runInContext(constants + functions, sandbox);
 const validate = sandbox.validateDiaryBackup;
 const date = sandbox.validDiaryDate;
 const summarize = sandbox.buildConsultSummary;
+const filterEntries = sandbox.filterDiaryEntries;
 
 const item = (id, text='하루의 메모', day='2026-11-11') => ({id, date:day, text});
 const data = (entries, format='apuda-memory-care-diary', version=1) => ({format,version,entries});
@@ -51,7 +52,7 @@ assert.equal(validate(data([item('id-1','note','2026-02-30')])), null, 'invalid 
 assert.equal(validate(data([{id:23,date:'2026-11-11',text:'note'}])), null, 'non-string ID rejected');
 assert.equal(validate(data([{id:'rec-1',date:'2026-11-11',text:'<script>alert(1)</script>'}])).length,1,'content treated as text');
 
-for (const id of ['diary-export','diary-export-json','diary-import','diary-import-file','diary-status','diary-backup-status','diary-import-selection','diary-list-title','text-size-label','diary-sleep','diary-meal','diary-medication','diary-question','consult-period','consult-output','consult-copy','consult-print']) {
+for (const id of ['diary-export','diary-export-json','diary-import','diary-import-file','diary-status','diary-backup-status','diary-import-selection','diary-list-title','text-size-label','diary-sleep','diary-meal','diary-medication','diary-question','consult-period','consult-output','consult-copy','consult-print','diary-search','diary-from','diary-to','diary-filter-reset','diary-filter-status','consult-days','consult-records','consult-question-count','consult-questions']) {
   assert.ok(html.includes(`id="${id}"`), `${id} present`);
 }
 assert.ok(html.includes('aria-describedby="diary-import-hint diary-import-selection"'), 'file chooser is associated with guidance and selection status');
@@ -244,6 +245,27 @@ async function scenario(current, incoming, shouldConfirm=true, options={}) {
   assert.match(thirty,/저장된 기록 3건/);
   assert.match(thirty,/지난주/);
   assert.doesNotMatch(thirty,/미래|오래전/);
+  assert.match(seven,/기록된 날짜 2일/,'distinct recording days calculated');
+  assert.match(seven,/먼저 물어볼 질문[\s\S]*진료 질문/,'clinician questions surfaced near top');
 
-  console.log('PASS: legacy/v2 export→restore, safe merge, validation/quota errors, concurrent-tab checks, 7/30-day summaries, download/selection/font/accessibility checks');
+  const searchable = [
+    {...item('rec-sleep','오늘 잠을 설쳤음','2026-11-11'),sleep:'나쁨',question:'밤중 각성을 상담하고 싶음'},
+    {...item('rec-meal','식사 메모','2026-11-08'),meal:'부족'},
+    {...item('rec-plain','병원 방문','2026-11-03')}
+  ];
+  const originalSnapshot = JSON.stringify(searchable);
+  assert.equal(filterEntries(searchable,'밤중','','').length,1,'search includes clinician question');
+  assert.equal(filterEntries(searchable,'수면','','').length,1,'field-name search does not match records with missing observations');
+  assert.equal(filterEntries(searchable,'식사','','').length,1,'search includes structured meal observations');
+  assert.equal(filterEntries(searchable,'오늘 각성','','').length,1,'multiple words combined AND');
+  assert.equal(filterEntries(searchable,'병원','','').length,1,'memo search');
+  assert.equal(filterEntries(searchable,'','2026-11-08','2026-11-11').length,2,'date bounds inclusive');
+  assert.equal(filterEntries(searchable,'','2026-11-08','2026-11-08').length,1,'same day valid');
+  assert.equal(filterEntries(searchable,'','2026-11-12','').length,0,'open-ended start filter');
+  assert.equal(filterEntries(searchable,'','2026-11-12','2026-11-01'),null,'reversed dates rejected');
+  assert.equal(filterEntries(searchable,'','2026-02-30',''),null,'invalid date rejected');
+  assert.equal(JSON.stringify(searchable),originalSnapshot,'search never mutates underlying records');
+  assert.match(html,/위 기록 검색·날짜 필터와 관계없이/,'summary independent of list filters');
+
+  console.log('PASS: legacy/v2 backup, safe merge, date/word/field search, nonmutation, 7/30-day summaries, questions, quota/errors, font/accessibility checks');
 })().catch(error=>{console.error(error);process.exitCode=1});
