@@ -321,4 +321,45 @@ const xml = '<?xml version="1.0" encoding="UTF-8"?>\n' +
     (faqLastmod.has(p) ? '<lastmod>' + faqLastmod.get(p) + '</lastmod>' : '') + '</url>').join('\n') +
   '\n</urlset>\n';
 await writeFile(join(root, 'sitemap.xml'), xml, 'utf8');
+
+// llms.txt: an optional, exploratory plain-text guide for AI search tools. It is not a
+// substitute for robots.txt, the XML sitemap, or the pages themselves, and it only lists
+// URLs that are already in the sitemap. It states the review status as it actually is.
+const mdLink = (label, path) => '- [' + label + '](' + canonical(path) + ')';
+const llms = [
+  '# 아프다 ApuDa',
+  '',
+  '> 암 환자와 보호자를 위한 무료 환자교육 정보 사이트입니다. 암종별 「암 진단 후 첫 30일」 안내서 ' +
+    books.size + '권과 암종별 FAQ ' + records.reduce((sum, r) => sum + r.items.length, 0).toLocaleString('en-US') +
+    '문항을 한국어로 제공합니다.',
+  '',
+  '이 사이트의 의학 정보는 출처를 첨부한 환자교육용 참고정보입니다. 문항별 전문의 검토는 완료되지 않았으며, ' +
+    '진단·처방·개인별 치료 결정을 대신하지 않습니다. 국내 허가·급여 기준은 따로 확인해야 합니다. ' +
+    '인용할 때는 각 페이지에 표시된 "마지막 자료 업데이트" 날짜와 참고 자료 링크를 함께 확인해 주세요.',
+  '',
+  '## 안내',
+  mdLink('자료 출처·검토 범위', '/library/review/'),
+  mdLink('ApuDa 소개', '/about/'),
+  mdLink('응급 상황 안내', '/emergency/'),
+  '',
+  '## 암종별 FAQ (각 100문항)',
+  ...records.map((r) => mdLink(r.name + ' FAQ', '/library/faq/' + r.slug + '/') +
+    (faqLastmod.has('/library/faq/' + r.slug + '/') ? ': 자료 업데이트 ' + r.updated : '')),
+  '',
+  ...(topicPaths.length ? ['## FAQ 주제별 묶음',
+    ...records.flatMap((r) => (topicMaps.get(r.slug) ?? []).map((t) =>
+      mdLink(r.name + ' ' + t.title, topicPath(r, t)) + ': ' + t.items.length + '문항')), ''] : []),
+  '## 암 진단 후 첫 30일 안내서',
+  mdLink('안내서 ' + books.size + '권 목록', '/library/first30/'),
+  ...[...books.values()].sort((x, y) => x.number.localeCompare(y.number))
+    .map((b) => mdLink(b.name + ' 진단 후 첫 30일', '/library/first30/books/' + b.number + '.html')),
+  '',
+  '## Optional',
+  mdLink('맞춤 건강검진 선택 도구', '/checkup/'),
+  mdLink('암환자 지원 정보', '/support/'),
+  mdLink('영상과 암종별 안내', '/watch/'),
+  mdLink('아프다 카페·커뮤니티', '/community/'),
+  '',
+].join('\n');
+await writeFile(join(root, 'llms.txt'), llms, 'utf8');
 console.log('SEO: ' + books.size + ' books, ' + records.length + ' FAQ pages, ' + topicPaths.length + ' FAQ topic pages, ' + paths.length + ' sitemap URLs');
