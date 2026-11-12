@@ -111,19 +111,32 @@ try:
               a.locator("#note-unsaved-banner").is_hidden() and
               b.locator("#note-unsaved-banner").is_hidden())
 
-        # Real UI route for the first save: settings => profile form => Save.
+        # Both actual forms are edited. Tab B starts typing BEFORE tab A
+        # writes. The external storage event must NOT silently rebase B's form.
+        b.locator('button[aria-label="내 정보와 설정"]').click()
+        b.locator('#profileForm input[name="name"]').fill("가상 탭 B 미저장 수정")
         a.locator('button[aria-label="내 정보와 설정"]').click()
         a.locator('#profileForm input[name="name"]').fill("가상 탭 A 최신 기록")
         a.locator("#profileForm button").click()
         check("real profile form saves via V3 save()", 
               json_storage(a, "apuda_cancer_care_v1")["profile"]["name"] == "가상 탭 A 최신 기록")
 
-        stale = pause_outcome(b, "가상 탭 B 미저장 수정")
-        check("stale tab save raises conflict", stale.get("failed") and
-              stale.get("code") == "records-changed")
+        b.wait_for_function("() => noteWritesPaused && ApuDaNoteUnsavedDraft.count() > 0", timeout=10000)
+        check("dirty form receives a blocked external storage event",
+              b.evaluate("noteWritesPaused && chatWritesPaused"))
+        check("still-visible form retains typed input",
+              b.locator('#profileForm input[name="name"]').input_value() == "가상 탭 B 미저장 수정")
+        # Attempting to submit must fail closed, without rewriting tab A's data.
+        b.locator("#profileForm button").click()
+        stale = b.evaluate("""() => ({
+            pause:noteWritesPaused&&chatWritesPaused,
+            warning:!document.getElementById('note-unsaved-banner').hidden,
+            held:ApuDaNoteUnsavedDraft.count()
+          })""")
+        check("stale tab write is blocked", stale.get("pause") and stale.get("warning"))
         check("failure freezes note and chat writes", stale.get("pause"))
         check("visible persistent warning in real V3 DOM", stale.get("warning"))
-        check("real V3 keeps attempted unsaved note in memory", stale.get("held") == 1)
+        check("real V3 keeps attempted unsaved note in memory", stale.get("held", 0) >= 1)
         check("latest saved note is never overwritten by stale tab",
               json_storage(b, "apuda_cancer_care_v1")["profile"]["name"] == "가상 탭 A 최신 기록")
 
@@ -144,7 +157,7 @@ try:
                   json.loads(exported["items"][0]["raw"])["profile"]["name"] == "가상 탭 B 미저장 수정")
 
         check("download does not automatically erase memory",
-              b.evaluate("window.ApuDaNoteUnsavedDraft.count()") == 1)
+              b.evaluate("window.ApuDaNoteUnsavedDraft.count()") == stale["held"])
         b.evaluate("window.resetAll()")
         check("whole-note deletion blocked with unsaved draft",
               json_storage(b, "apuda_cancer_care_v1")["profile"]["name"] == "가상 탭 A 최신 기록")

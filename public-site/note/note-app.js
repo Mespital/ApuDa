@@ -1083,7 +1083,39 @@ window.resetAll=function(){
   if(!confirm('이 기기의 건강기록·대화·복원 직전 사본을 모두 지울까요? 되돌릴 수 없어요. 내려받은 파일과 구글 드라이브 사본은 따로 삭제해야 합니다.'))return;
   localStorage.removeItem(KEY);localStorage.removeItem(CHAT_KEY);localStorage.removeItem(NOTE_STORAGE.recoveryKey(KEY));localStorage.removeItem(KEY+'_corrupt');invalidateUndo();location.reload();
 };
-window.addEventListener('storage',function(e){if(e.key===KEY){invalidateUndo();state=load();renderAll();backupStatus();toast('다른 창에서 변경한 기록을 불러왔어요')}});
+/* Detect a live profile edit BEFORE accepting another tab's storage event.
+ * A dirty form must not be silently rebased onto a different saved note.
+ * Keep the user's exact field values in the review-only draft vault, not Drive.
+ */
+function pendingProfileRaw(){
+  var sheet=$('#sh-settings'),form=$('#profileForm');
+  if(!sheet||!sheet.classList.contains('open')||!form)return null;
+  var pending=clone(state),dirty=false;
+  Object.keys(defaultState.profile).forEach(function(k){
+    var control=form[k];
+    if(control&&!Array.isArray(defaultState.profile[k])&&typeof control.value==='string'){
+      var value=control.value.trim();
+      if(value!==String(state.profile[k]||''))dirty=true;
+      pending.profile[k]=value;
+    }
+  });
+  var devices=[].filter.call(form.querySelectorAll('[name=dev]'),function(x){return x.checked;}).map(function(x){return x.value;});
+  if(JSON.stringify(devices)!==JSON.stringify(state.profile.devices||[]))dirty=true;
+  pending.profile.devices=devices;
+  return dirty?JSON.stringify(pending):null;
+}
+window.addEventListener('storage',function(e){
+  if(e.key!==KEY)return;
+  var pending=pendingProfileRaw();
+  if(pending){
+    holdUnsaved('note',pending,new Error('records-changed'));
+    toast('다른 창의 변경이 감지됐어요. 입력 중인 내용을 따로 보관했으니 파일로 내려받아 확인해 주세요.');
+    return;
+  }
+  if(hasUnsavedDraft())return;
+  invalidateUndo();state=load();renderAll();backupStatus();
+  toast('다른 창에서 변경한 기록을 불러왔어요');
+});
 
 function renderAll(){backupStatus();renderHome();renderPlan();renderLog();renderSummary();renderSOS()}
 
