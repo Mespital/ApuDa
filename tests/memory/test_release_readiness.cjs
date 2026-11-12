@@ -46,6 +46,10 @@ assert.equal(manifest.releaseDecision,ready?'GO':'NO_GO',
   'release decision must match all blocking evidence and explicit authorization');
 
 assert.ok(html.includes("const diaryKey = 'apuda-memory-care-diary-v1'"),'legacy browser key retained');
+assert.ok(html.includes('현재 대상자별 기록 분리를 지원하지 않습니다.'),
+  'mixed-patient risk warning must remain visible on the diary');
+assert.ok(html.includes('여러 사람의 기록이 섞여 있다면 요약을 진료용으로 사용하지 마세요.'),
+  'the clinical summary must warn against mixing multiple people');
 assert.ok(!html.includes('secure-archive.mjs'),'prototype encryption must remain disconnected');
 assert.ok(!html.includes('indexeddb-migration.mjs'),'prototype database must remain disconnected');
 assert.ok(html.includes('기록은 <strong>현재 기기의 브라우저 저장소(localStorage)'),
