@@ -21,3 +21,19 @@
 V3 `localStorage`의 비원자적 비교/쓰기, 오래된 탭·Service Worker 캐시, 원본 백업·복구의 원자적 전환, 나머지 24개 호출부, 실제 Android/iOS 사용자 시험, Drive 자동 업로드/prune 검증이 남는다. 새 코드의 환자정보·질문 경로만 비동기 실행 완료를 기다릴 준비가 된 것이다.
 
 **Draft 유지, PR 병합/운영 배포 금지. AI 기술 사전점검일 뿐 전문가 감수·환자 참여 시험 완료가 아니다.**
+
+## 2026-11-12 KST — 실브라우저 CI 검증 결과
+
+검증된 코드 SHA: `858cf6e84d5a8bd384b9436830887f9c7f696743`.  
+GitHub Actions 실행: https://github.com/Mespital/ApuDa/actions/runs/43144842020
+
+- **실제 V3 `index.html` 전체 화면:** `RESULT 52/52 PASS` (초기 27건 + 새 비동기 환자정보·질문 흐름 및 대기 중 두 탭 경합 시험).
+- **격리형 IndexedDB 비동기 포트:** `RESULT 21/21 PASS`.
+- 합계 **73개 자동검사 통과, 0건 실패**. Chromium은 Ubuntu 24.04 / Python Playwright 1.56에서 실행했다.
+- 테스트는 가상 환자/대화 기록을 localhost만 사용하는 새 브라우저 프로필에 넣고, 외부 네트워크/Google Drive를 차단한 상태에서 실행했다.
+- 실운영 화면의 기본 저장은 여전히 `save()` → V3 `localStorage`이다. 테스트에서 `window.save`를 인위적으로 지연/거절하는 Promise로 바꾸었지만, 이는 **실제 IndexedDB 쓰기 통합 시험이 아니다**.
+- 저장 대기 중 다른 탭이 수정하면 보류된 프로필 입력 원문을 메모리 임시 사본에 기록하고, 해당 탭의 저장 성공 표시 없이 쓰기를 거절함을 실브라우저에서 검증했다.
+- 입력 동결 및 접근성: 제출 중 `aria-busy` 적용, 입력·버튼 잠금, 성공/실패 후 원래 상태 복원 확인.
+- GitHub Actions 결과는 회귀 시험 기준일 뿐이며, P0(구형 탭과 `localStorage` TOCTOU)을 해제하지 않는다.
+
+**출시 판정: Draft·미병합 유지 / 운영 배포 금지.** 실제 환자/논술 기록 및 Google Drive를 읽거나 수정하지 않았고, 의료진·환자 참여 감수도 수행하지 않았다.
