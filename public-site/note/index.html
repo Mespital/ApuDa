@@ -407,10 +407,10 @@ input:focus,textarea:focus,select:focus{border-color:var(--ink);box-shadow:0 0 0
 </head>
 <body>
 <div id="note-read-error" role="alert" hidden style="padding:16px;background:#fff0e8;color:#812d1b;line-height:1.8"><b>기존 기록을 읽지 못했어요.</b> 저장된 원본을 새 기록으로 덮어쓰지 않도록 보호하고 있어요. 원본 파일을 보관한 뒤 올바른 백업으로 복원하거나 도움을 요청하세요. <button class="btn line sm" type="button" onclick="exportData()">기존 원본 파일 받기</button></div>
-<div id="note-unsaved-banner" role="alert" hidden style="max-width:680px;margin:8px auto;padding:14px;border:2px solid #b54708;border-radius:12px;background:#fff7e6;color:#6b380b;line-height:1.6">
+<div id="note-unsaved-banner" role="alert" hidden style="position:fixed;z-index:90;top:max(12px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);width:min(96vw,680px);max-height:55dvh;overflow:auto;padding:14px;border:2px solid #b54708;border-radius:12px;background:#fff7e6;color:#6b380b;box-shadow:0 15px 40px rgba(10,22,40,.25);line-height:1.6">
   <strong>저장하지 못한 수정이 있습니다.</strong>
   <p id="note-unsaved-summary" style="margin:6px 0"></p>
-  <button type="button" class="btn line sm" id="note-unsaved-export" onclick="downloadUnsavedDraft()">미저장 내용 JSON 내려받기</button>
+  <button type="button" class="btn line sm" style="min-height:48px" id="note-unsaved-export" onclick="downloadUnsavedDraft()">미저장 내용 JSON 내려받기</button>
   <p class="small" style="margin:7px 0 0">개인 건강정보가 포함된 암호화되지 않은 파일입니다. 일반 백업 복원용이 아니므로 자동 가져오지 마세요.</p>
 </div>
 <div class="app">
