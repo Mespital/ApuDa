@@ -4,6 +4,8 @@ Run: python tools/tests/apuda-note-v3-unsaved-browser.py
 """
 from pathlib import Path
 import json
+import os
+import shutil
 from playwright.sync_api import sync_playwright
 
 root=Path(__file__).resolve().parents[2]/'public-site'/'note'
@@ -18,7 +20,10 @@ def check(name, predicate):
     print('PASS',len(checks),name)
 
 with sync_playwright() as p:
-    browser=p.chromium.launch(headless=True,args=['--no-sandbox','--disable-dev-shm-usage'])
+    installed_browser=os.environ.get('APUDA_CHROMIUM_PATH') or shutil.which('chromium') or shutil.which('google-chrome')
+    options={'headless':True,'args':['--no-sandbox','--disable-dev-shm-usage']}
+    if installed_browser: options['executable_path']=installed_browser
+    browser=p.chromium.launch(**options)
     context=browser.new_context(accept_downloads=True)
     def page():
         tab=context.new_page()
