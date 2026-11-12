@@ -27,3 +27,19 @@
 **P0 데이터 손실 위험 유지.** 구형 V3 탭은 개정 저장 규칙을 모르고 `localStorage` 쓰기를 계속할 수 있다. 나머지 직접 저장 호출부, 파일 복원·복원 취소·삭제·자동 Drive 백업과 캐시, 모바일 실기기 검증, 실제 환자/보호자 사용성 시험을 완료하기 전 운영 배포를 금지한다.
 
 GitHub Actions 신규 테스트 결과는 커밋 SHA와 실제 로그로 확인한 뒤 기재한다. PR은 Draft·미병합, 운영 `main` 미변경. 기존 환자 기록·논술 기록·Google Drive 계정에 접근하지 않음.
+
+## 실제 Chromium 검증 · 2026-11-12 KST
+
+- [GitHub Actions Run #43154190442](https://github.com/Mespital/ApuDa/actions/runs/43154190442)
+- **테스트 코드와 V3 수정 기능의 검증 SHA:** `ce5ea309574aa4875b2451b012f73ae3d8bf7dd3`.
+- `RESULT 84/84 PASS; synthetic localhost full V3 UI`: 실제 V3 HTML/JS 화면에서 환자정보·진료질문·치료일정·복용약·혈액검사 폼의 저장 지연, 성공 시점, 실패 시 가상 원본 보존, 입력 활성화 복구, 저장 중 외부 변경을 검증.
+- `RESULT 21/21 PASS — Chromium synthetic V3 async UI port`: 별도 IndexedDB 비동기 상태 변환과 수정번호 충돌, 복원·삭제 차단, 가상 DB 삭제 확인.
+- 합계 **105개 검사 통과 / 실패 0**. Ubuntu 24.04, Playwright 1.56, 격리된 Chromium, `127.0.0.1` 로컬 웹 서버와 합성 데이터만 사용. 사용자 브라우저·Google Drive에 접근하지 않았다.
+- CI 중간 실패 2건을 그대로 보관: Playwright `wait_for_function`의 인자 전달 위치 오류(테스트 오류), 검토용 JSON에서 문자열이 이스케이프돼 검색되지 않는 비교 오류(테스트 오류).
+- 수정 과정에서 **복용약 파싱이 입력 원문을 정규화하여 일부 자유 입력 문구가 미저장 원문 JSON에서 빠질 가능성**을 발견했다. 이를 위해 `reviewFormSnapshot()`으로 입력 필드명·값·체크 상태를 **자동 복원 불가 검토용 사본**으로 별도 기록하게 보완하였다. 이후 동일 시나리오의 실브라우저 시험을 통과했다.
+
+### 실제 서비스에 적용하지 않은 부분
+
+V3 `save()`는 여전히 `localStorage`의 비원자적 원문 비교 후 쓰기이며, 테스트가 가상 Promise를 주입한 이유는 *미래의 IndexedDB 비동기 인터페이스 연결 대비*다. 자동 업로드·Drive 보관 사본 정리, 구형 탭의 이전 코드, 실사용 기록 이전, Android/iOS 실기기 및 환자/보호자 참여 시험은 미검증이다.
+
+**출시 판정: P0 OPEN / Draft 유지 / 운영 배포·병합 금지.** 기존 환자 및 학생 학습 기록과 실제 Drive 파일에는 접근하거나 변경하지 않았다.
