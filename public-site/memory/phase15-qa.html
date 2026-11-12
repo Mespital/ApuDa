@@ -1,0 +1,75 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>ApuDa Memory 15단계 QA</title><style>
+body{font:18px/1.6 system-ui,sans-serif;max-width:760px;margin:auto;padding:24px;color:#173755}
+section{border:1px solid #b7cfe3;padding:18px;border-radius:14px;margin:14px 0}
+button{min-height:48px;padding:10px 18px;font:inherit;color:white;background:#2058ba;border:0;border-radius:9px}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#eef4fb;padding:14px;font-size:14px}
+</style></head><body><main>
+<h1>15단계 — 가상 기록 무손실·롤백 시험</h1>
+<section><strong>실제 환자 정보를 입력하지 마세요.</strong><p>기존 돌봄 기록이나 localStorage를 읽지 않습니다. 테스트 전용 임시 IndexedDB만 생성하며 끝나면 삭제를 요청합니다.</p></section>
+<button id="start" type="button" disabled>가상 데이터 검사 준비 중</button><p id="status" role="status" aria-live="polite"></p><pre id="out">아직 테스트하지 않았습니다.</pre>
+<script type="module">
+import {emptyProfileVault,addAnonymousProfile,appendScopedRecord,scopedRecords} from './profile-scope.mjs';
+import {prepareLegacyStaging} from './legacy-staging.mjs';
+import {openProfileVaultQaDatabase,readQaVault,commitLegacyQaStage} from './profile-vault-idb-qa.mjs';
+const $=id=>document.getElementById(id);
+const allowed=/^deploy-preview-\d+--apuda-total\.netlify\.app$/.test(location.hostname)||
+  ['localhost','127.0.0.1'].includes(location.hostname);
+const button=$('start'),status=$('status'),out=$('out');
+async function expectFail(fn){try{await fn();return false}catch{return true}}
+if(!allowed){status.textContent='QA는 개발 미리보기 또는 localhost에서만 가능합니다.'}
+else if(!indexedDB){status.textContent='IndexedDB 지원 브라우저가 아닙니다.'}
+else {
+  button.disabled=false;button.textContent='가상 기록 15단계 QA 실행';
+  button.addEventListener('click',async()=>{
+    button.disabled=true;status.textContent='QA IndexedDB 시험 실행 중';
+    const label='apuda-memory-qa-vault-browser-'+crypto.randomUUID().slice(0,8);
+    const checks=[];let db=null;
+    const ok=(yes,name)=>{if(!yes)throw Error(name+' 실패');checks.push(name)};
+    const result={status:'FAIL',checks,qaName:label};
+    try{
+      const A='e4ad61f3-4cf2-40a8-a38c-1d098c91d643';
+      const B='e3c55b7d-26ba-4d56-9c78-2875b04f9079';
+      const entry=(id,text)=>({id,date:'2026-11-12',text});
+      let v=addAnonymousProfile(addAnonymousProfile(emptyProfileVault(),A),B);
+      v=appendScopedRecord(v,A,entry('A-1','A의 가상 기록'));
+      v={...v,unassigned:[entry('old-1','미분류 가상 기록')]};
+      const backup={format:'apuda-memory-care-diary',version:2,
+        entries:[entry('new-1','가상 기록 1'),entry('new-2','가상 기록 2')]};
+      const original=JSON.stringify(v),plan=prepareLegacyStaging(v,backup);
+      ok(plan.ready&&plan.wouldAdd===2,'미분류 사전검사');
+      db=await openProfileVaultQaDatabase(indexedDB,label);
+      ok((await readQaVault(db)).vault===null,'빈 QA DB 확인');
+      ok(await expectFail(()=>commitLegacyQaStage(db,v,backup,plan)),'승인 없는 배정 거부');
+      ok(await expectFail(()=>commitLegacyQaStage(db,v,backup,plan,{confirmed:true,forceAbort:true})),'강제 Abort');
+      ok((await readQaVault(db)).vault===null,'Abort 후 기록 없음');
+      ok(await expectFail(()=>commitLegacyQaStage(db,v,backup,plan,{confirmed:true,injectDuplicate:true})),'중복 키 오류');
+      ok((await readQaVault(db)).marker===null,'중복 키 후 검증표시 없음');
+      const committed=await commitLegacyQaStage(db,v,backup,plan,{confirmed:true});
+      ok(committed.committed&&committed.added===2,'원자적 저장');
+      const current=await readQaVault(db);
+      ok(current.marker?.verified&&current.vault?.unassigned.length===3,'저장 내용 검증');
+      ok(scopedRecords(current.vault,A).length===1&&scopedRecords(current.vault,B).length===0,'A/B 분리');
+      ok(JSON.stringify(v)===original,'원본 불변');
+      const repeat=await commitLegacyQaStage(db,v,backup,plan,{confirmed:true});
+      ok(!repeat.committed&&repeat.reason==='already-staged','중복 실행 방지');
+      db.close();db=null;
+      db=await openProfileVaultQaDatabase(indexedDB,label);
+      ok((await readQaVault(db)).vault?.unassigned.length===3,'재개방 뒤 보존');
+      result.status='PASS';
+    }catch(e){result.error=String(e)}
+    finally{
+      if(db){db.close();db=null}
+      try{result.cleanup=await new Promise((resolve,reject)=>{
+        const req=indexedDB.deleteDatabase(label);
+        req.onsuccess=()=>resolve('QA DB 삭제 완료');
+        req.onerror=()=>reject(req.error||Error('삭제 실패'));
+        req.onblocked=()=>reject(Error('삭제 대기'));
+      })}catch(e){result.status='FAIL';result.cleanup=String(e)}
+      result.passCount=checks.length;
+      out.textContent=JSON.stringify(result,null,2);
+      status.textContent=result.status==='PASS'?'QA '+checks.length+'항목 통과':'QA 오류 확인 필요';
+      button.disabled=false;
+    }
+  });
+}
+</script></main></body></html>
