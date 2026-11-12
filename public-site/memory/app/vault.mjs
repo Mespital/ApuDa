@@ -47,8 +47,9 @@ function checkData(v){
   assert(uuid.test(e.id)&&uuid.test(e.profileId)&&pids.has(e.profileId),'기록 ID 또는 돌봄 대상 오류');
   assert(!recordIds.has(e.id),'기록 ID 중복');recordIds.add(e.id);
   assert(checkDate(e.date),'기록 날짜 오류');
-  assert(typeof e.text==='string'&&e.text.trim().length>0&&e.text.length<=1500,'돌봄 메모 길이/내용 오류');
+  assert(typeof e.text==='string'&&e.text.length<=1500,'돌봄 메모 길이 오류');
   assert(typeof e.question==='string'&&e.question.length<=400,'진료 질문 글자 수 초과');
+  assert(Boolean(e.text.trim()||e.question.trim()),'돌봄 메모 또는 진료 질문을 입력해 주세요');
   for(const [k,items] of Object.entries(choices))assert(items.includes(e[k]),'관찰 선택지 오류: '+k);
  }
  return true;
