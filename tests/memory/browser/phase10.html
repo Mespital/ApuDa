@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ApuDa Memory 10단계 브라우저 QA (가상 기록 전용)</title>
+<style>body{font-family:system-ui,'Noto Sans KR',sans-serif;max-width:800px;margin:2rem auto;padding:1rem;line-height:1.6}button{padding:14px 20px;min-height:48px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f6fa;padding:16px;border-radius:10px}</style>
+</head><body>
+<h1>ApuDa Memory — 브라우저 QA</h1>
+<p>가상 기록만 사용하는 독립 테스트입니다. 실제 돌봄 기록·개인정보는 입력하지 마세요. 기존 localStorage를 읽거나 수정하지 않습니다. QA 전용 임시 IndexedDB만 사용하며 테스트 후 삭제합니다.</p>
+<button id="run" type="button" disabled>검증 모듈 불러오는 중</button>
+<p id="status" role="status" aria-live="polite">모듈을 불러오고 있습니다.</p>
+<pre id="result" aria-label="테스트 결과"></pre>
+<script type="module">
+import {openQaDatabase,readQaRecords,readQaMarker,migrateQaSnapshot} from '../../../public-site/memory/indexeddb-migration.mjs';
+import {encryptArchive,decryptArchive} from '../../../public-site/memory/secure-archive.mjs';
+const run=document.getElementById('run');
+const status=document.getElementById('status');
+const out=document.getElementById('result');
+run.disabled=false;run.textContent='가상 데이터로 10단계 검증 시작';
+status.textContent='준비 완료. 테스트 버튼을 누르면 독립 QA DB만 생성됩니다.';
+run.addEventListener('click',async()=>{
+ run.disabled=true;status.textContent='가상 데이터 검증 진행 중';
+ const name='apuda-memory-qa-browser-'+Math.floor(Math.random()*1e9).toString(36).padStart(6,'0');
+ const logs=[];let db;
+ const yes=(test,label)=>{if(!test)throw new Error('실패: '+label);logs.push(label)};
+ const raw={format:'apuda-memory-care-diary',version:2,entries:[
+  {id:'qa-1',date:'2026-11-11',text:'가상 기록 1',sleep:'좋음'},
+  {id:'qa-2',date:'2026-11-12',text:'가상 기록 2',question:'테스트 질문'}]};
+ const result={status:'FAIL',environment:{userAgent:navigator.userAgent,secure:isSecureContext,hasIndexedDB:!!indexedDB,hasWebCrypto:!!crypto.subtle},checks:logs};
+ try{
+  yes(isSecureContext && !!crypto.subtle && !!indexedDB,'보안 컨텍스트·IndexedDB·Web Crypto 지원');
+  let blocked=false;try{await openQaDatabase(indexedDB,'apuda-memory-v2')}catch{blocked=true}
+  yes(blocked,'실서비스 DB 이름 차단');
+  db=await openQaDatabase(indexedDB,name);
+  yes((await readQaRecords(db)).length===0,'격리 QA DB 초기 상태 0건');
+  const first=await migrateQaSnapshot(db,raw);
+  yes(first.committed && first.added===2 && first.verified,'실제 IndexedDB 2건 원자적 커밋');
+  yes((await readQaRecords(db)).length===2,'커밋 후 2건 조회');
+  yes((await readQaMarker(db))?.verified===true,'메타데이터 검증 마커');
+  const repeat=await migrateQaSnapshot(db,raw);
+  yes(!repeat.committed && repeat.alreadyPresent===2,'재실행 멱등성: 중복 건너뛰기');
+  const conflict={...raw,entries:[{...raw.entries[0],text:'변경된 기록'}]};
+  blocked=false;try{await migrateQaSnapshot(db,conflict)}catch(e){blocked=/동일 기록 ID/.test(e.message)}
+  yes(blocked && (await readQaRecords(db)).length===2,'동일 ID·다른 내용 충돌 시 보존');
+  const incoming={...raw,entries:[{id:'qa-3',date:'2026-11-12',text:'가상 기록 3'}]};
+  blocked=false;try{await migrateQaSnapshot(db,incoming,{forceAbortAfterQueue:true})}catch{blocked=true}
+  yes(blocked && (await readQaRecords(db)).length===2,'강제 Abort 전체 롤백');
+  blocked=false;try{await migrateQaSnapshot(db,incoming,{injectConstraintError:true})}catch(e){blocked=e.name==='ConstraintError'}
+  yes(blocked && (await readQaRecords(db)).length===2,'ConstraintError 발생 시 전체 롤백');
+  yes((await readQaMarker(db))?.sourceCount===2,'오류 후 이전 메타데이터 보존');
+  yes((await migrateQaSnapshot(db,incoming)).added===1,'오류 이후 1건 정상 추가');
+  db.close();db=null;
+  db=await openQaDatabase(indexedDB,name);
+  yes((await readQaRecords(db)).length===3,'DB 재개방 후 기록 유지');
+  const pass='가상 테스트 비밀 문장 암호 2026, 실제 정보 아님';
+  const t0=performance.now(), encrypted=await encryptArchive(raw,pass);
+  result.encryptMs=Math.round(performance.now()-t0);
+  const t1=performance.now(), decrypted=await decryptArchive(encrypted,pass);
+  result.decryptMs=Math.round(performance.now()-t1);
+  yes(JSON.stringify(decrypted)===JSON.stringify(raw),'Web Crypto AES-256-GCM 암호화·복호화');
+  yes(!JSON.stringify(encrypted).includes('가상 기록 1'),'암호화 결과에 평문 노출 없음');
+  blocked=false;try{await decryptArchive(encrypted,'틀린 비밀번호 2026 테스트 아니에요')}catch{blocked=true}
+  yes(blocked,'잘못된 비밀번호 거부');
+  const tampered={...encrypted,ciphertext:(encrypted.ciphertext[0]==='A'?'B':'A')+encrypted.ciphertext.slice(1)};
+  blocked=false;try{await decryptArchive(tampered,pass)}catch{blocked=true}
+  yes(blocked,'변조된 암호문 거부');
+  result.status='PASS';
+ }catch(e){result.error=String(e)}
+ finally{
+  if(db){db.close();db=null}
+  try{
+   result.cleanup=await new Promise((resolve,reject)=>{
+    const req=indexedDB.deleteDatabase(name);
+    req.onsuccess=()=>resolve('QA DB 삭제 완료');
+    req.onerror=()=>reject(req.error);
+    req.onblocked=()=>reject(new Error('다른 연결로 삭제 대기'));
+   });
+  }catch(e){result.cleanup='실패: '+String(e);result.status='FAIL'}
+  result.passed=logs.length;
+  out.textContent=JSON.stringify(result,null,2);
+  status.textContent=result.status==='PASS'?'검증 통과: '+logs.length+'개 항목':'검증 미완료·실패: 아래 오류를 확인하세요';
+  run.disabled=false;
+ }
+});
+</script></body></html>
