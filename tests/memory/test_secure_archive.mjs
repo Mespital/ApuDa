@@ -15,7 +15,7 @@ assert.ok(!JSON.stringify(encrypted).includes('가상의 테스트 문장'));
 const restored=await decryptArchive(encrypted,passphrase,options);
 assert.deepEqual(restored,backup);
 await assert.rejects(decryptArchive(encrypted,'wrong passphrase but long',options),/암호가 틀리거나/);
-const tampered={...encrypted,ciphertext:'A'+encrypted.ciphertext.slice(1)};
+const tampered={...encrypted,ciphertext:(encrypted.ciphertext[0] === 'A' ? 'B' : 'A') + encrypted.ciphertext.slice(1)};
 await assert.rejects(decryptArchive(tampered,passphrase,options),/암호가 틀리거나/);
 const badHeader={...encrypted,iterations:10000};
 await assert.rejects(decryptArchive(badHeader,passphrase,options),/지원하지 않거나/);
