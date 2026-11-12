@@ -1,8 +1,16 @@
 {
-  "checked_at": "2026-11-12T02:46:17.941985+00:00",
-  "last_success_at": "2026-11-12T02:46:17.941985+00:00",
+  "checked_at": "2026-11-12T12:23:17.540992+00:00",
+  "last_success_at": "2026-11-12T12:23:17.540992+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "Holiday Extras is rethinking what it can build with Codex",
+      "url": "https://openai.com/business/customer-stories/holidays-extras-codex",
+      "source": "OpenAI",
+      "published_at": "2026-11-12T09:30:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "Gilbert + Tobin rethinks the business of law with AI",
       "url": "https://openai.com/index/gilbert-tobin-sam-nickless",
@@ -10,6 +18,14 @@
       "published_at": "2026-11-12T00:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
+    },
+    {
+      "title": "Supporting research on AI and children’s safety",
+      "url": "https://openai.com/index/children-first-declaration",
+      "source": "OpenAI",
+      "published_at": "2026-11-12T00:00:00+00:00",
+      "category": "안전·보안",
+      "domain": "security"
     },
     {
       "title": "Gemini Decisions API: Fast, calibrated multimodal decisions",
@@ -226,28 +242,12 @@
       "published_at": "2026-11-06T00:00:00+00:00",
       "category": "과학·환경",
       "domain": "energy"
-    },
-    {
-      "title": "Generate longer AI videos with Omni 1.2 Flash in Google Vids at no cost.",
-      "url": "https://blog.google/products-and-platforms/products/workspace/omni-1-2-flash-google-vids/",
-      "source": "Google",
-      "published_at": "2026-11-05T20:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Cult.fit builds operational muscle with Codex",
-      "url": "https://openai.com/index/cultfit-builds-with-codex",
-      "source": "OpenAI",
-      "published_at": "2026-11-05T20:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-11-12T02:46:17.941985+00:00",
+    "checked_at": "2026-11-12T12:23:17.540992+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -396,7 +396,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-11-12T02:46:17.941985+00:00",
+    "last_success_at": "2026-11-12T12:23:17.540992+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
