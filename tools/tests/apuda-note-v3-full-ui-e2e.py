@@ -383,10 +383,10 @@ try:
             check(label+" rejected writer restores controls",
                   not failform.locator('button').is_disabled() and
                   failform.get_attribute('aria-busy') is None)
+            exported_items=json.loads(rejected_entry.evaluate("ApuDaNoteUnsavedDraft.exportText()"))["items"]
             check(label+" rejected data survives in export",
-                  '"'+value+' 실패"' in rejected_entry.evaluate("ApuDaNoteUnsavedDraft.exportText()")
-                  if field!="wbc" else
-                  '"6300"' in rejected_entry.evaluate("ApuDaNoteUnsavedDraft.exportText()"))
+                  any((value+" 실패" if field!="wbc" else "6300") in item["raw"]
+                      for item in exported_items))
 
         # A writer may resolve a conflict instead of rejecting the Promise.
         # The UI must refuse non-saved status rather than showing "saved".
