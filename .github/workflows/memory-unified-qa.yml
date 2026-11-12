@@ -6,11 +6,13 @@ on:
     paths:
       - "public-site/memory/app/**"
       - "tests/memory/test_complete_app_*"
+      - "tests/memory/test_simple_caregiver_ui.cjs"
       - ".github/workflows/memory-unified-qa.yml"
   pull_request:
     paths:
       - "public-site/memory/app/**"
       - "tests/memory/test_complete_app_*"
+      - "tests/memory/test_simple_caregiver_ui.cjs"
       - ".github/workflows/memory-unified-qa.yml"
 permissions:
   contents: read
@@ -30,3 +32,5 @@ jobs:
         run: node tests/memory/test_complete_app_static.cjs
       - name: Run encrypted IndexedDB vault integration regression
         run: node tests/memory/test_complete_app_vault.mjs
+      - name: Exercise simple 3-tab caregiver app
+        run: node tests/memory/test_simple_caregiver_ui.cjs
