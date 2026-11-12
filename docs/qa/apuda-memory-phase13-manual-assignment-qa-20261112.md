@@ -97,3 +97,12 @@
 - QA UI: https://github.com/Mespital/ApuDa/blob/feat/apuda-memory-p0-20261110/public-site/memory/profile-qa.html
 - 단위 테스트: https://github.com/Mespital/ApuDa/blob/feat/apuda-memory-p0-20261110/tests/memory/test_reviewed_assignment.mjs
 - UI 회귀: https://github.com/Mespital/ApuDa/blob/feat/apuda-memory-p0-20261110/tests/memory/test_profile_qa_ui.cjs
+
+## 8. 추가 안전 보완 및 검증 (2026-11-12)
+
+- 배정 확인창에 **가상 기록의 날짜·메모·진료 질문을 모두 표기**하도록 개선했다. 대상자만 묻는 확인창에 비해, 보호자가 잘못된 가상 기록을 고를 위험을 줄이려는 조치다.
+- "가상 기록 초기 상태로 다시 시작"에도 명시적 확인을 추가했다. 취소하면 현재 QA 화면 상태를 변경하지 않는다.
+- tests/memory/test_profile_qa_ui.cjs의 확인창 메모 표기·초기화 취소 사례를 추가했고, 가상 DOM 재검사를 PASS로 확인했다.
+- tests/memory/test_reviewed_assignment.mjs의 명시적 동의·원본 스냅샷 불일치·대상자별 조회 격리·Undo·원본 불변성을 독립 재검사하여 PASS로 확인했다.
+- **남은 사용성 개선 과제:** 현재 QA 화면의 하나의 체크박스는 모든 미분류 카드에 공통이므로, 실제 사용자 기능으로 연결할 때는 레코드별 검토/동의 상태를 별도로 요구하고, 마지막 확인에서 대상자·기록 내용·요약 변경 사항을 재확인하도록 고도화할 필요가 있다.
+- 위 보완은 가상 QA 화면에만 적용하며, 실제 사용자 기록을 자동 분류·복원하거나 암호화하지 않는다. **P0 위험 완전 해결 아님, 출시 NO_GO 유지.**
