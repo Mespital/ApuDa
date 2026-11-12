@@ -54,6 +54,9 @@ assert.ok(!html.includes('secure-archive.mjs'),'prototype encryption must remain
 assert.ok(!html.includes('indexeddb-migration.mjs'),'prototype database must remain disconnected');
 assert.ok(!html.includes('profile-summary.mjs'),'profile summary QA must remain disconnected from the live UI');
 assert.ok(!html.includes('profile-workflow.mjs'),'Phase 14 profile workflow must not connect to the live UI before approval');
+assert.ok(!html.includes('legacy-staging.mjs'),'Phase 15 preflight must remain disconnected from live diary');
+assert.ok(!html.includes('profile-vault-idb-qa.mjs'),'QA-only IndexedDB must not be in live diary');
+assert.ok(!html.includes('phase15-qa.html'),'do not expose experimental QA from the live diary');
 assert.ok(!html.includes('profile-scope.mjs'),'manual assignment profile prototype must remain disconnected from the live diary');
 assert.ok(!html.includes('profile-qa.html'),'profile QA should not be linked from the live user interface');
 assert.ok(html.includes('기록은 <strong>현재 기기의 브라우저 저장소(localStorage)'),
