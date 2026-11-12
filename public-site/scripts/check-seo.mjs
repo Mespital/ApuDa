@@ -16,8 +16,12 @@ assert(robots.includes('Sitemap: https://apuda.app/sitemap.xml'), 'Root sitemap 
 assert(robots.includes('Sitemap: https://apuda.app/farm/sitemap.xml'), 'Farm sitemap was removed');
 assert(!urls.some((url) => url.includes('/nonsul/') || url.includes('/note/') || url.includes('/note-v4/') || url.includes('/api/')),
   'Private or noindex route in sitemap');
-// A <lastmod> must track a verifiable significant page update; we have no such per-URL source yet.
-assert(!sitemap.includes('<lastmod>'), 'Unverified sitemap lastmod must not be invented');
+// A <lastmod> must track a verifiable page update. Only FAQ pages may carry one, and it
+// must equal the FAQ record's own `updated` date (checked per record below).
+const lastmods = new Map([...sitemap.matchAll(/<loc>([^<]+)<\/loc><lastmod>([^<]+)<\/lastmod>/g)].map((m) => [m[1], m[2]]));
+assert([...sitemap.matchAll(/<lastmod>/g)].length === lastmods.size, 'Malformed sitemap lastmod');
+assert([...lastmods.keys()].every((url) => /^https:\/\/apuda\.app\/library\/faq\/[a-z]+\/$/.test(url)),
+  'Unverified sitemap lastmod must not be invented outside FAQ pages');
 const noteHtml = await read('note/index.html');
 const noteGuideHtml = await read('note-guide/index.html');
 const homepage = await read('index.html');
@@ -141,6 +145,8 @@ assert(/for = "\/note\/index\.html"\s+\[headers\.values\]\s+Cache-Control = "no-
 for (const path of ['/community/', '/family/', '/care/', '/pet/', '/farm/']) {
   assert(urls.includes('https://apuda.app' + path), 'Family or community URL missing from sitemap: ' + path);
 }
+assert(homepage.includes('<meta property="og:image" content="https://apuda.app/og.jpg">'),
+  'Homepage share image must be an absolute URL');
 assert(homepage.includes('"@type":"WebSite"') && homepage.includes('"alternateName"'), 'Homepage site-name structured data missing');
 assert(homepage.includes('href="/community/"') && homepage.includes('href="/family/"'), 'Homepage family or community link missing');
 const catalog = await read('library/first30/index.html');
@@ -207,6 +213,12 @@ for (const file of files) {
   const html = await read('library/faq/' + record.slug + '/index.html');
   const count = [...html.matchAll(/<li><details id="q\d+">/g)].length;
   assert(count === 100, record.slug + ' static page does not have 100 questions');
+  assert([...html.matchAll(/<summary><h3>[^<]+<\/h3><\/summary>/g)].length === 100,
+    record.slug + ' questions must be marked up as headings');
+  assert(html.includes('<meta property="og:image" content="https://apuda.app/og.jpg">'),
+    'FAQ share image must be an absolute URL: ' + record.slug);
+  assert(lastmods.get(url) === (/^\d{4}-\d{2}-\d{2}$/.test(record.updated ?? '') ? record.updated : undefined),
+    'FAQ sitemap lastmod must equal the record updated date: ' + record.slug);
   assert(urls.includes(url), 'FAQ not in sitemap: ' + record.slug);
   assert(html.includes('<link rel="canonical" href="' + url + '">'), 'FAQ canonical missing: ' + record.slug);
   assert(html.includes('출처를 첨부한 환자교육용 참고정보'), 'Patient reference notice missing: ' + record.slug);

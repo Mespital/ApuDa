@@ -13,6 +13,8 @@ const escapeHtml = (s) => String(s ?? '').replaceAll('&', '&amp;').replaceAll('<
   .replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;');
 const jsonLd = (value) => JSON.stringify(value).replaceAll('<', '\\u003c');
 const canonical = (path) => origin + path;
+// Link previews (KakaoTalk, Threads, Instagram) need an absolute image URL.
+const shareImage = origin + '/og.jpg';
 
 const catalog = await readFile(join(root, 'library/first30/index.html'), 'utf8');
 const catalogMatches = [...catalog.matchAll(/data-slug="([^"]+)" data-name="([^"]+)" href="\/library\/first30\/books\/(\d{2})\.html"/g)];
@@ -92,7 +94,7 @@ function faqPage(record) {
       { '@type': 'ListItem', position: 3, name: record.name + ' FAQ', item: url },
     ] };
   const questions = record.items.map((item) => {
-    return '<li><details id="q' + Number(item.n) + '"><summary>' + escapeHtml(item.q) + '</summary>' +
+    return '<li><details id="q' + Number(item.n) + '"><summary><h3>' + escapeHtml(item.q) + '</h3></summary>' +
       '<div class="answer"><p>' + escapeHtml(item.a) + '</p>' + sourceLinks(item, record) +
       '<small>이 정보는 진료·처방을 대신하지 않습니다. 구체적인 치료 결정은 담당 의료진과 상의하세요.</small></div></details></li>';
   }).join('\n');
@@ -103,6 +105,8 @@ function faqPage(record) {
 <link rel="canonical" href="${url}">
 <meta property="og:type" content="article"><meta property="og:title" content="${escapeHtml(title)}">
 <meta property="og:description" content="${escapeHtml(description)}"><meta property="og:url" content="${url}">
+<meta property="og:image" content="${shareImage}"><meta property="og:site_name" content="아프다 ApuDa">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#f1f7fc">
 <script type="application/ld+json">${jsonLd(breadcrumb)}</script>
 <style>
@@ -117,6 +121,7 @@ h1{font-size:clamp(27px,4.4vw,42px);line-height:1.25;margin:8px 0 12px}h2{font-s
 .nav{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}.nav a{font-size:13px;text-decoration:none;padding:5px 10px;background:#fff;border:1px solid #d4e6ed;border-radius:20px}
 ol{list-style:none;padding:0;display:grid;gap:10px}li{margin:0}details{background:#fff;border:1px solid #d9e8ef;border-radius:12px;overflow:hidden}
 summary{cursor:pointer;padding:17px 18px;font-weight:740;line-height:1.5;min-height:48px}
+summary h3{display:inline;margin:0;font:inherit}
 .answer{padding:0 18px 19px;border-top:1px solid #e9f0f4}.answer p{white-space:pre-line}
 .sources{color:#536d7b;font-size:13px;margin:12px 0}.sources a{display:inline-block;margin:4px 6px 4px 0}
 small{display:block;font-size:12px;color:#627884}footer{padding-top:30px;color:#536d7b;font-size:13px}
@@ -195,6 +200,7 @@ for (const [slug, book] of books) {
     '<link rel="canonical" href="' + url + '">\n' +
     '<meta property="og:type" content="article"><meta property="og:title" content="' + escapeHtml(title) + '">\n' +
     '<meta property="og:description" content="' + escapeHtml(description) + '"><meta property="og:url" content="' + url + '">\n' +
+    '<meta property="og:image" content="' + shareImage + '"><meta name="twitter:card" content="summary_large_image">\n' +
     '<script type="application/ld+json">' + jsonLd(data) + '</script>\n' +
     '<style>.site-nav .apuda-faq-shortcut{display:inline-flex;align-items:center;justify-content:center;' +
     'min-height:44px;padding:9px 14px;border:1px solid #83cbd2;border-radius:11px;' +
@@ -207,7 +213,11 @@ for (const [slug, book] of books) {
 
 // Restrict the sitemap to publicly accessible content. Private/account endpoints
 // and the patient note app shell (/note/, X-Robots-Tag: noindex) are excluded.
-// Do not invent <lastmod>: the generator has no verified per-page meaningful-update dates.
+// Do not invent <lastmod>. Only the 30 FAQ pages carry one: it is the record's own
+// `updated` date, the same value printed on the page as "마지막 자료 업데이트".
+const faqLastmod = new Map(records
+  .filter((r) => /^\d{4}-\d{2}-\d{2}$/.test(r.updated ?? ''))
+  .map((r) => ['/library/faq/' + r.slug + '/', r.updated]));
 const paths = [
   '/', '/about/', '/community/', '/family/', '/care/', '/pet/', '/farm/',
   '/risk/', '/checkup/', '/emergency/', '/hospital-information/',
@@ -221,7 +231,8 @@ const paths = [
 if (new Set(paths).size !== paths.length) throw new Error('Duplicate URLs in sitemap');
 const xml = '<?xml version="1.0" encoding="UTF-8"?>\n' +
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-  paths.map((p) => '  <url><loc>' + canonical(p) + '</loc></url>').join('\n') +
+  paths.map((p) => '  <url><loc>' + canonical(p) + '</loc>' +
+    (faqLastmod.has(p) ? '<lastmod>' + faqLastmod.get(p) + '</lastmod>' : '') + '</url>').join('\n') +
   '\n</urlset>\n';
 await writeFile(join(root, 'sitemap.xml'), xml, 'utf8');
 console.log('SEO: ' + books.size + ' books, ' + records.length + ' FAQ pages, ' + paths.length + ' sitemap URLs');
