@@ -31,3 +31,15 @@
 **중요:** 테스트가 통과하더라도 실운영 V3와 V4의 원자적 전환이나 구형 탭 동기화를 보장하지 않는다. 실제 V3 사용자 저장소/Drive/모바일 기기를 테스트하지 않으며, 환자·보호자/임상전문의 감수는 미진행. P0(구형 탭 덮어쓰기) 유지.
 
 **Do not merge or deploy.**
+
+## 2026-11-12 KST 실제 Chrome 검증 결과
+
+- GitHub Actions: https://github.com/Mespital/ApuDa/actions/runs/43138277002
+- 최초 커밋: `3c3b9ebd275e64cd9b4c40a92a1d1cf6c3755668`
+- 테스트 환경: Ubuntu 24.04 / Python 3.12 / Playwright 1.56 / Chromium, 임시 localhost Origin, 외부 네트워크 차단, Service Worker 비활성화.
+- **실측 결과: `RESULT 15/15 PASS`, 실패 0.** GitHub Actions의 실제 작업 로그에서 15개 항목을 모두 확인했다.
+- 검증한 V3 본문·대화는 모두 **합성 데이터**이고, 임시 IndexedDB 3개를 전부 삭제했다.
+- 이번 테스트는 **V3 실사용 앱의 저장 함수 호출을 검증하지 않는다**. 가상 데이터의 shadow stage에 대한 동작 테스트이며 실제 환자 원문/Google Drive로 접속하지 않았다.
+- 브라우저가 새 초안의 `readyForProduction`을 영구 `false`로 유지하는 것과 실제 구형 탭 쓰기를 차단하는 것은 다르다. 구형 탭은 이 모듈을 몰라 변경할 수 있으며, 완료 직후 구형 탭이 수정하면 새 단계는 이를 원자적으로 감시할 방법이 없다.
+
+**출시 판정: P0 미해결 / 운영 반영 불허 / Draft 유지.**
