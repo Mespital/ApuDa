@@ -57,6 +57,8 @@ assert.ok(!html.includes('profile-workflow.mjs'),'Phase 14 profile workflow must
 assert.ok(!html.includes('legacy-staging.mjs'),'Phase 15 preflight must remain disconnected from live diary');
 assert.ok(!html.includes('profile-vault-idb-qa.mjs'),'QA-only IndexedDB must not be in live diary');
 assert.ok(!html.includes('phase15-qa.html'),'do not expose experimental QA from the live diary');
+assert.ok(!html.includes('phase16-qa.html'),'Phase 16 multi-connection QA must stay off live diary');
+assert.ok(!html.includes('test_phase16_qa_ui'),'Phase 16 test-only code must not ship in live diary');
 assert.ok(!html.includes('profile-scope.mjs'),'manual assignment profile prototype must remain disconnected from the live diary');
 assert.ok(!html.includes('profile-qa.html'),'profile QA should not be linked from the live user interface');
 assert.ok(html.includes('기록은 <strong>현재 기기의 브라우저 저장소(localStorage)'),
