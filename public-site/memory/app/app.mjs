@@ -155,6 +155,7 @@ function collectRecord(){
 }
 async function init(){
  $('recordDate').value=localToday();
+ $('recordDate').max=localToday();
  if(!globalThis.isSecureContext || !crypto?.subtle || !globalThis.indexedDB){
   status('vaultStatus','이 브라우저에서 보안 저장 기능이 지원되지 않습니다. HTTPS 환경의 최신 브라우저를 사용해 주세요.',true);
   $('vault-loading').textContent='암호화 저장소를 이용할 수 없습니다.';
@@ -273,6 +274,7 @@ $('observeClear').addEventListener('click',()=>{
  toggle('observeResult',false);
 });
 window.addEventListener('pagehide',()=>{
+ if(session)lock('페이지를 떠나 보관함을 자동으로 잠갔습니다.');
  if(downloadLink){URL.revokeObjectURL(downloadLink);downloadLink=null}
 });
 init();
