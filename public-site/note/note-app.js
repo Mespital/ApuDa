@@ -10,6 +10,7 @@ var defaultState={profile:{name:'',cancer:'',stage:'',treatment:'',goal:'',cycle
 function clone(o){return JSON.parse(JSON.stringify(o))}
 var NOTE_STORAGE=window.ApuDaNoteStorage;
 var NOTE_WRITE_FENCE=window.ApuDaNoteV3WriteFence;
+var NOTE_DRAFT=window.ApuDaNoteUnsavedDraft;
 function validBackup(d){return !!NOTE_STORAGE&&NOTE_STORAGE.validState(d)}
 window.validBackup=validBackup;
 var noteLoadError=false;
@@ -24,16 +25,44 @@ function load(){
 }
 
 var noteExpectedRaw=null;
+var noteWritesPaused=false,chatWritesPaused=false,unsavedCaptureFailed=false;
 var state=load();
 function invalidateUndo(){
   if(noteUndo)noteUndo.invalidate();undoToken='';
   if(typeof document!=='undefined')document.querySelectorAll('.undo').forEach(function(b){b.remove()});
 }
+function hasUnsavedDraft(){return unsavedCaptureFailed || (NOTE_DRAFT && NOTE_DRAFT.count()>0)}
+function updateUnsavedWarning(){
+  var box=document.getElementById('note-unsaved-banner');
+  if(!box)return;
+  var count=NOTE_DRAFT?NOTE_DRAFT.count():0;
+  box.hidden=!count&&!unsavedCaptureFailed;
+  var summary=document.getElementById('note-unsaved-summary');
+  if(summary)summary.textContent='저장하지 못한 수정 '+count+'건이 이 탭 메모리에만 남아 있습니다. 새로고침·화면 종료 전 파일 앱에 별도 보관해 주세요.'+(unsavedCaptureFailed?' 일부 내용은 임시 보관 공간 제한으로 저장하지 못했습니다. 화면의 입력 내용을 직접 복사해 주세요.':'');
+  var button=document.getElementById('note-unsaved-export');
+  if(button)button.hidden=count===0;
+}
+function holdUnsaved(kind,raw,e){
+  noteWritesPaused=true;chatWritesPaused=true;
+  var copied=false;
+  try{if(typeof raw==='string'&&NOTE_DRAFT)copied=NOTE_DRAFT.capture(kind,raw,e&&e.message)}catch(ignore){}
+  if(!copied)unsavedCaptureFailed=true;
+  updateUnsavedWarning();
+  return copied;
+}
 function save(){
-  if(noteLoadError){state=load();toast('기존 기록을 읽지 못해 새 기록으로 덮어쓰지 않았어요. 원본 파일을 먼저 받아 보관해 주세요.');throw new Error('unreadable-local-note');}
+  if(noteLoadError){toast('기존 기록을 읽지 못해 새 기록으로 덮어쓰지 않았어요. 원본 파일을 먼저 받아 보관해 주세요.');throw new Error('unreadable-local-note');}
   invalidateUndo();
-  try{var raw=JSON.stringify(state);noteExpectedRaw=NOTE_WRITE_FENCE.write(localStorage,KEY,noteExpectedRaw,raw)}
-  catch(e){state=load();renderAll();toast(e.message==='records-changed'?'다른 창에서 기록이 수정돼 덮어쓰지 않았어요. 최신 기록을 확인해 주세요.':'저장 공간이 부족하거나 저장이 차단됐어요. 기록은 저장되지 않았어요. 백업 후 기기 설정을 확인해 주세요.');throw e}
+  var raw;
+  try{
+    raw=JSON.stringify(state);
+    if(noteWritesPaused)throw new Error('writes-paused');
+    noteExpectedRaw=NOTE_WRITE_FENCE.write(localStorage,KEY,noteExpectedRaw,raw);
+  }catch(e){
+    holdUnsaved('note',raw,e);
+    toast('저장하지 못한 기록이 있습니다. 화면을 닫지 말고 임시 사본을 파일로 내려받으세요.');
+    throw e;
+  }
   renderAll();
 }
 function $(s){return document.querySelector(s)}
@@ -384,10 +413,16 @@ var noteUndo=NOTE_STORAGE&&NOTE_STORAGE.createUndo(),undoToken='';
 function armUndo(before){undoToken=noteUndo.arm(before,JSON.stringify(state))}
 function saveChat(){
   chat=chat.slice(-60);
-  try{chatExpectedRaw=NOTE_WRITE_FENCE.write(localStorage,CHAT_KEY,chatExpectedRaw,JSON.stringify(chat));return true}
-  catch(e){
-    try{chatExpectedRaw=localStorage.getItem(CHAT_KEY);chat=JSON.parse(chatExpectedRaw||'[]')}catch(ignore){chat=[]}
-    toast(e.message==='records-changed'?'다른 창에서 대화 기록이 변경돼 덮어쓰지 않았어요. 화면을 다시 열어 확인해 주세요.':'대화를 저장하지 못했어요. 백업과 기기의 저장 공간을 확인해 주세요.');return false;
+  var raw;
+  try{
+    raw=JSON.stringify(chat);
+    if(noteWritesPaused||chatWritesPaused)throw new Error('writes-paused');
+    chatExpectedRaw=NOTE_WRITE_FENCE.write(localStorage,CHAT_KEY,chatExpectedRaw,raw);
+    return true;
+  }catch(e){
+    holdUnsaved('chat',raw,e);
+    toast('대화 기록을 저장하지 못했습니다. 임시 사본을 파일로 내려받아 확인해 주세요.');
+    return false;
   }
 }
 function scrollBottom(){window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})}
@@ -995,7 +1030,16 @@ function backupStatus(){
   var confirmButton=$('#confirm-backup-file');if(confirmButton)confirmButton.hidden=!m.lastFileRequested;
   var recovery=$('#note-recovery');if(recovery)recovery.hidden=!NOTE_STORAGE.checkpoint(localStorage,KEY);
 }
+window.downloadUnsavedDraft=function(){
+  if(!NOTE_DRAFT||!NOTE_DRAFT.count()){toast('다운로드할 임시 사본이 없습니다. 화면 입력을 직접 확인해 주세요.');return;}
+  try{
+    downloadNoteBlob(NOTE_DRAFT.exportText(),'ApuDa_저장실패_검토용_'+today()+'.json');
+    toast('임시 사본 다운로드를 요청했습니다. 파일 앱에서 확인해 주세요. 일반 백업 복원 파일은 아닙니다.');
+  }catch(e){toast('임시 사본을 다운로드하지 못했습니다. 화면을 닫지 말고 도움을 요청해 주세요.');}
+};
+window.addEventListener('beforeunload',function(e){if(hasUnsavedDraft()){e.preventDefault();e.returnValue='';}});
 window.exportData=function(){
+  if(hasUnsavedDraft()){window.downloadUnsavedDraft();return;}
   if(noteLoadError){downloadNoteBlob(localStorage.getItem(KEY)||'', 'ApuDa_확인필요_원본기록.json');toast('기존 원본 파일 다운로드를 요청했어요. 이 파일을 보관하고 도움을 요청해 주세요.');return;}
   try{
     var now=new Date().toISOString(),fileState=clone(state);fileState.meta=fileState.meta||{};fileState.meta.lastFileRequested=now;
@@ -1013,6 +1057,7 @@ window.confirmNoteRestore=function(incoming,source){
   return confirm((source||'백업 파일')+'을 확인해 주세요.\n이름: '+n.name+' / 암종: '+n.cancer+'\n기록 '+n.total+'건'+(n.from?' ('+n.from+' ~ '+n.to+')':'')+'\n현재 기기 기록: '+(noteLoadError?'읽기 오류가 있어 건수 확인 불가':c.total+'건')+'\n\n'+(n.empty?'빈 백업이에요. 복원하면 현재 기록이 비게 됩니다.\n':'')+'복원하면 현재 기록을 선택한 백업 내용으로 교체해요. 복원 직전 사본을 이 기기에 먼저 보관합니다. 계속할까요?');
 };
 window.importData=async function(input){
+  if(hasUnsavedDraft()){toast('저장 실패한 임시 기록을 먼저 파일로 보관하고 화면을 다시 확인해 주세요.');input.value='';return;}
   var file=input.files&&input.files[0];if(!file)return;
   var before=localStorage.getItem(KEY);
   try{
@@ -1027,12 +1072,14 @@ window.importData=async function(input){
   finally{input.value=''}
 };
 window.recoverBeforeRestore=async function(){
+  if(hasUnsavedDraft()){toast('미저장 기록이 있어 되돌리기를 중단했습니다. 임시 사본을 내려받으세요.');return;}
   if(!confirm('가장 최근 복원 직전 기록으로 되돌릴까요? 복원 후 새로 쓴 기록이 있으면 덮어쓰지 않고 중단해요.'))return;
   try{await NOTE_STORAGE.recover(localStorage,KEY);invalidateUndo();state=load();renderAll();backupStatus();toast('복원 직전 기록으로 되돌렸어요')}
   catch(e){toast(e.message==='legacy-checkpoint-review-required'?'이전 방식의 직전 사본은 무결성을 확인할 수 없어 자동 복구하지 않았어요. 사본을 파일로 내려받아 내용을 검토해 주세요.':'직전 사본이나 현재 기록을 안전하게 검증하지 못해 자동 복구하지 않았어요. 직전 사본을 파일로 받아 보관하고 기록을 확인해 주세요.')}
 };
 window.downloadBeforeRestore=function(){var c=NOTE_STORAGE.checkpoint(localStorage,KEY);if(!c||c.before===null){toast('보관된 직전 기록이 없어요');return}if(c.schemaVersion===1&&!confirm('이전 방식의 사본은 손상 여부를 확인할 수 없어요. 원본을 보존하기 위해 파일로 내려받고 내용을 검토하시겠어요?'))return;downloadNoteBlob(c.before,'ApuDa_복원직전_기록.json');toast('직전 사본 다운로드를 요청했어요. 파일 앱에서 확인해 주세요.')};
 window.resetAll=function(){
+  if(hasUnsavedDraft()){toast('미저장 기록이 있어 전체 삭제를 중단했습니다. 임시 사본을 내려받으세요.');return;}
   if(!confirm('이 기기의 건강기록·대화·복원 직전 사본을 모두 지울까요? 되돌릴 수 없어요. 내려받은 파일과 구글 드라이브 사본은 따로 삭제해야 합니다.'))return;
   localStorage.removeItem(KEY);localStorage.removeItem(CHAT_KEY);localStorage.removeItem(NOTE_STORAGE.recoveryKey(KEY));localStorage.removeItem(KEY+'_corrupt');invalidateUndo();location.reload();
 };

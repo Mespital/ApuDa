@@ -407,6 +407,12 @@ input:focus,textarea:focus,select:focus{border-color:var(--ink);box-shadow:0 0 0
 </head>
 <body>
 <div id="note-read-error" role="alert" hidden style="padding:16px;background:#fff0e8;color:#812d1b;line-height:1.8"><b>기존 기록을 읽지 못했어요.</b> 저장된 원본을 새 기록으로 덮어쓰지 않도록 보호하고 있어요. 원본 파일을 보관한 뒤 올바른 백업으로 복원하거나 도움을 요청하세요. <button class="btn line sm" type="button" onclick="exportData()">기존 원본 파일 받기</button></div>
+<div id="note-unsaved-banner" role="alert" hidden style="max-width:680px;margin:8px auto;padding:14px;border:2px solid #b54708;border-radius:12px;background:#fff7e6;color:#6b380b;line-height:1.6">
+  <strong>저장하지 못한 수정이 있습니다.</strong>
+  <p id="note-unsaved-summary" style="margin:6px 0"></p>
+  <button type="button" class="btn line sm" id="note-unsaved-export" onclick="downloadUnsavedDraft()">미저장 내용 JSON 내려받기</button>
+  <p class="small" style="margin:7px 0 0">개인 건강정보가 포함된 암호화되지 않은 파일입니다. 일반 백업 복원용이 아니므로 자동 가져오지 마세요.</p>
+</div>
 <div class="app">
 <header class="top">
   <div class="logo"><a href="/" class="home" aria-label="ApuDa.app 홈으로" title="ApuDa.app 홈으로"><i>A</i></a><div><b>암환자 노트</b><small>ApuDa · 말하듯 쓰면 정리돼요</small></div></div>
@@ -616,6 +622,7 @@ input:focus,textarea:focus,select:focus{border-color:var(--ink);box-shadow:0 0 0
 <script src="note-safety.js?v=20261019"></script>
 <script src="note-storage.js?v=20261019"></script>
 <script src="note-write-fence.js?v=20261112" ></script>
+<script src="note-unsaved-draft.js?v=20261112" ></script>
 <script src="note-app.js?v=20261019"></script>
 <script src="note-nearby-er.js?v=20261109"></script>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
