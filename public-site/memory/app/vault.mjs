@@ -153,7 +153,7 @@ async function getDb(){
 }
 function dbRead(db){
  return new Promise((resolve,reject)=>{
-  const tx=db.transaction(DB_STORE,'readonly');
+  const tx=db.transaction([DB_STORE],'readonly');
   let doc=null;tx.objectStore(DB_STORE).get('primary').onsuccess=e=>{doc=e.target.result||null};
   tx.oncomplete=()=>resolve(doc);tx.onabort=()=>reject(tx.error||Error('보관소 조회 실패'));
  });
@@ -169,7 +169,7 @@ export async function createVault(pass){
   iterations:KDF_ITERATIONS,revision:1,salt:b64(salt),iv:b64(iv),ciphertext:await encryptData(data,key,iv)};
  const db=await getDb();
  try{await new Promise((resolve,reject)=>{
-  const tx=db.transaction(DB_STORE,'readwrite');
+  const tx=db.transaction([DB_STORE],'readwrite');
   tx.objectStore(DB_STORE).add(doc);tx.oncomplete=resolve;
   tx.onabort=()=>reject(tx.error||Error('기존 보관함이 있거나 생성에 실패했습니다'));
  });return {data,key,revision:1,document:doc};}
@@ -193,7 +193,7 @@ export async function commitVault(session,nextData){
  const replacement={...session.document,iv:b64(iv),ciphertext:encrypted,revision:session.revision+1};
  const db=await getDb();
  try{await new Promise((resolve,reject)=>{
-  const tx=db.transaction(DB_STORE,'readwrite');
+  const tx=db.transaction([DB_STORE],'readwrite');
   const req=tx.objectStore(DB_STORE).get('primary');
   req.onsuccess=()=>{
    const prev=req.result;
