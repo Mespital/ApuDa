@@ -91,6 +91,15 @@ assert.equal(otherConflict.ready,false,'cannot import record already owned by B'
 assert.throws(()=>planProfileImport(dest,A,{...aBackup,entries:[{...aBackup.entries[0],rogue:'must-not-drop'}]}),/허용하지 않은/);
 assert.throws(()=>planProfileImport(dest,A,{...aBackup,entries:[...aBackup.entries,...aBackup.entries]}),/중복/);
 assert.throws(()=>planProfileImport(dest,A,{...aBackup,entries:[{...aBackup.entries[0],date:'2026-02-30'}]}),/달력/);
+let full=empty;
+for(let i=0;i<20;i++)full=appendScopedRecord(full,B,entry('B-full-'+i,'다른 대상자의 가상 기록'));
+const atCapacity=planProfileImport(full,A,aBackup);
+assert.equal(atCapacity.capExceeded,true);
+assert.equal(atCapacity.ready,false);
+assert.throws(()=>commitProfileImport(full,A,aBackup,atCapacity,true),/사전검사/);
+assert.equal(scopedRecords(full,B).length,20);
+assert.equal(scopedRecords(full,A).length,0);
+assert.throws(()=>planProfileImport(dest,A,{...aBackup,entries:[{...aBackup.entries[0],sleep:'나쁨',extra:'silent drop'}]}),/허용하지 않은/);
 const textA=createProfileConsultText(vault,A,7,date),textB=createProfileConsultText(vault,B,7,date);
 assert.match(textA,/A 가족 질문/);
 assert.doesNotMatch(textA,/B 보호자 질문|미분류 기록/);
