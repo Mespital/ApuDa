@@ -288,7 +288,7 @@
       <h2 id="care-diary-title">돌봄 다이어리</h2>
       <div class="box feature">
         <div class="feature-head"><span class="symbol" aria-hidden="true">📝</span><div><h3>오늘의 돌봄 메모</h3><p>복약 문의, 진료에서 물어볼 내용, 생활 중 관찰한 사항을 간단히 기록해 보세요.</p></div><span class="feature-badge">선택적 기기 내 저장</span></div>
-        <div class="privacy"><strong>개인정보 보호:</strong> 저장에 동의하면 기록은 <strong>현재 기기의 브라우저 저장소(localStorage)</strong>에만 남습니다. ApuDa 서버에 전송·동기화되지 않으며 비밀번호 보호·암호화 기능도 없습니다. 공용 기기를 피하고 주민등록번호·실명 등 민감한 개인정보 입력은 삼가세요. 브라우저 데이터 삭제 시 기록이 사라질 수 있습니다.</div>
+        <div class="privacy"><strong>개인정보 보호:</strong> 저장에 동의하면 기록은 <strong>현재 기기의 브라우저 저장소(localStorage)</strong>에만 남습니다. ApuDa 서버에 전송·동기화되지 않으며 비밀번호 보호·암호화 기능도 없습니다. 공용 기기를 피하고 주민등록번호·실명 등 민감한 개인정보 입력은 삼가세요. 브라우저 데이터 삭제 시 기록이 사라질 수 있습니다. <strong>현재 대상자별 기록 분리를 지원하지 않습니다.</strong> 여러 사람의 기록을 함께 저장하면 진료 요약에 서로 다른 사람의 내용이 섞일 수 있습니다. 한 사람의 기록만 입력하고, 기존 기록의 소속이 불분명하면 요약을 공유하기 전에 반드시 내용을 확인하세요.</div>
         <nav class="diary-workflow" aria-label="진료 준비를 위한 3단계">
           <p><strong>진료 전 3단계</strong> · 기록을 저장한 뒤 확인하고, 질문을 모아 진료에 활용하세요.</p>
           <ol><li><a href="#diary-date">① 돌봄 기록 작성</a></li><li><a href="#diary-list-title">② 저장 기록 확인</a></li><li><a href="#consult-summary">③ 진료 메모 준비</a></li></ol>
@@ -339,7 +339,7 @@
         <p class="subnote" style="margin-top:16px">최대 20건까지 저장하며 <strong>기존 기록을 자동 삭제하지 않습니다.</strong> 15건 이상이면 JSON 백업을 권장합니다. 20건 도달 후에는 <strong>백업 파일이 실제 저장됐는지 확인한 다음</strong> 불필요한 기록을 직접 정리해 주세요. 기록 수정은 새 건수를 차지하지 않습니다. 백업은 암호화되지 않으며 시크릿 모드·다른 기기와 자동 공유되지 않습니다.</p>
         <section id="consult-summary" class="consult-tools" aria-labelledby="consult-title">
           <h3 id="consult-title">진료 준비용 기록 요약</h3>
-          <p>저장된 기록만 날짜별로 모아봅니다. 선택한 기간 중 기록이 없는 날은 알 수 없으며, 항목별 개수는 질병·위험도 점수가 아닙니다.</p>
+          <p>저장된 기록만 날짜별로 모아봅니다. <strong>이 화면은 대상자를 자동 구분하지 않으므로, 여러 사람의 기록이 섞여 있다면 요약을 진료용으로 사용하지 마세요.</strong> 선택한 기간 중 기록이 없는 날은 알 수 없으며, 항목별 개수는 질병·위험도 점수가 아닙니다.</p>
           <div class="field"><label for="consult-period">요약할 기간</label><select id="consult-period"><option value="7">최근 7일</option><option value="30">최근 30일</option></select></div>
           <p class="subnote">위 기록 검색·날짜 필터와 관계없이, 이 요약은 여기서 선택한 기간의 전체 저장 기록을 기준으로 작성합니다.</p>
           <div class="consult-metrics" aria-label="선택 기간 기록 현황">
