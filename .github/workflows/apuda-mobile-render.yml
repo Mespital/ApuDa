@@ -1,0 +1,54 @@
+name: ApuDa public mobile render (development QA)
+
+# PR-only quality check. Never deploy, modify Netlify/VPS or access user records.
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/apuda-mobile-render.yml'
+      - 'tools/qa/apuda_mobile_render.py'
+      - 'public-site/note-guide/**'
+      - 'public-site/library/faq/**'
+      - 'public-site/library/first30/**'
+      - 'public-site/assets/**'
+
+permissions:
+  contents: read
+
+jobs:
+  mobile-public-render:
+    name: Chromium mobile public pages
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Check out PR code without credentials
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned Playwright and Chromium
+        run: |
+          python -m pip install --disable-pip-version-check playwright==1.57.0
+          python -m playwright install --with-deps chromium
+      - name: Syntax check
+        run: python -m py_compile tools/qa/apuda_mobile_render.py
+      - name: Gate PR HTML/CSS snapshot (12 render conditions)
+        run: |
+          python tools/qa/apuda_mobile_render.py \
+            --site-root public-site --out mobile-artifacts/source
+      - name: Compare public production pages (read-only, informational)
+        continue-on-error: true
+        run: |
+          python tools/qa/apuda_mobile_render.py \
+            --base-url https://apuda.app --out mobile-artifacts/production-reference
+      - name: Upload screenshots, measurements, and failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: apuda-mobile-render
+          path: mobile-artifacts/
+          if-no-files-found: warn
+          retention-days: 7
