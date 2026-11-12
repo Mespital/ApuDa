@@ -120,9 +120,9 @@ function fakeIndexedDB() {
  const output=JSON.parse(demo.elements.out.textContent);
  assert.equal(output.status,'PASS');
  assert.equal(output.cleanup,'QA DB 삭제 완료');
- assert.equal(output.checks.length,12);
- assert.equal(output.passCount,12);
+ assert.equal(output.checks.length,13);
+ assert.equal(output.passCount,13);
  assert.equal(demo.elements.start.disabled,false);
- assert.match(demo.elements.status.textContent,/12항목 통과/);
+ assert.match(demo.elements.status.textContent,/13항목 통과/);
  console.log('PASS: preview-only QA UI runs synthetic atomic staging/rollback and cleans temporary QA DB; non-preview host stays disabled');
 })().catch(error=>{console.error(error);process.exitCode=1});
