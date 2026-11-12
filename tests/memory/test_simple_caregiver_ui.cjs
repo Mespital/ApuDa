@@ -81,6 +81,12 @@ class Element{
  };
  for(let i=0;i<12;i++)await Promise.resolve();
  assert.equal(elements.createForm.hidden,false,'new family should see a simple start screen');
+ await execute('servicesShortcut','click');
+ assert.equal(elements.allServices.open,true,'support information should be public without passphrase');
+ elements.memoryChecks.checkedNodes=[{value:'가상 기억 변화 관찰'}];
+ await execute('memoryToDiary','click');
+ assert.match(elements.serviceStatus.textContent,/먼저 위에서 가족 보관함을 열어/);
+ assert.equal(saved,null,'locked family must not silently create or overwrite a vault');
  elements.newPass.value='synthetic-password-2026';
  elements.repeatPass.value='synthetic-password-2026';
  elements.safetyCheck.checked=true;
