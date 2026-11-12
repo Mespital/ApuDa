@@ -36,7 +36,7 @@ dt{color:var(--muted);font-size:14px;font-weight:700}
 dd{margin:0;overflow-wrap:anywhere;font-size:16px}
 details{margin-top:15px}
 summary{font-weight:750;color:#1646ac;cursor:pointer;padding:8px 0}
-pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f7faff;border-radius:10px;padding:17px;font:16px/1.7 inherit}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f7faff;border-radius:10px;padding:17px;font-size:16px;line-height:1.7;font-family:inherit}
 ul{padding-left:1.3em}
 li{margin:6px 0}
 .tag{display:inline-block;border:1px solid #f0c18d;background:#fff5e6;border-radius:30px;padding:3px 10px;font-size:14px}
@@ -123,7 +123,7 @@ import {emptyProfileVault,addAnonymousProfile,appendScopedRecord} from './profil
 import {buildProfileSummary,buildProfileConsultText,FIELD_TITLES} from './profile-summary.mjs';
 
 const $=id=>document.getElementById(id);
-const allowedHost=location.hostname.startsWith('deploy-preview-') ||
+const allowedHost=/^deploy-preview-\d+--apuda-total\.netlify\.app$/.test(location.hostname) ||
   ['localhost','127.0.0.1'].includes(location.hostname);
 const A='e4ad61f3-4cf2-40a8-a38c-1d098c91d643';
 const B='e3c55b7d-26ba-4d56-9c78-2875b04f9079';
