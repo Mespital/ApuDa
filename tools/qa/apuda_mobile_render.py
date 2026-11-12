@@ -23,6 +23,29 @@ ROUTES = {
     "book_01": ("/library/first30/books/01.html", None),
 }
 WIDTHS = (320, 360, 390, 768)
+FULL_WIDTHS = (320, 390)
+
+
+def routes_for_scope(scope, site_root):
+    """Discover all 30 book and 30 static FAQ URLs from the checked-out sitemap."""
+    if scope == "sample":
+        return ROUTES, WIDTHS
+    if site_root is None:
+        raise ValueError("Full scope only supports checked-out local public HTML")
+    text = (site_root / "sitemap.xml").read_text(encoding="utf-8")
+    books = re.findall(r"<loc>https://apuda\\.app/library/first30/books/(\\d{2})\\.html</loc>", text)
+    faqs = re.findall(r"<loc>https://apuda\\.app/library/faq/([a-z0-9-]+)/</loc>", text)
+    expected_books = [f"{i:02d}" for i in range(1, 31)]
+    if sorted(books) != expected_books or len(books) != 30:
+        raise ValueError(f"Sitemap must contain 30 unique ordered books (found {len(books)})")
+    if len(faqs) != 30 or len(set(faqs)) != 30:
+        raise ValueError(f"Sitemap must contain 30 distinct FAQ paths (found {len(faqs)})")
+    full = {"guide": ROUTES["guide"]}
+    full.update({f"book_{n}": (f"/library/first30/books/{n}.html", None) for n in books})
+    full.update({f"faq_{slug}": (f"/library/faq/{slug}/", 100) for slug in sorted(faqs)})
+    if len(full) != 61:
+        raise ValueError(f"Expected exactly 61 public pages, found {len(full)}")
+    return full, FULL_WIDTHS
 
 
 def dimensions(page):
@@ -68,7 +91,7 @@ def small_targets(page):
        .filter(el => el.height < 44).slice(0, 15)""")
 
 
-def run(origin, out, site_root=None):
+def run(origin, out, site_root=None, scope="sample"):
     out.mkdir(parents=True, exist_ok=True)
     if site_root is None:
         parsed = urlparse(origin)
@@ -81,6 +104,7 @@ def run(origin, out, site_root=None):
         site_root = site_root.resolve()
         allowed_host = None
 
+    pages, widths = routes_for_scope(scope, site_root)
     rows = []
     with sync_playwright() as pw:
         browser = pw.chromium.launch(
@@ -95,8 +119,8 @@ def run(origin, out, site_root=None):
             return route.continue_() if allowed_host is not None and host == allowed_host else route.abort()
         context.route("**/*", local_or_public)
 
-        for name, (path, detail_count) in ROUTES.items():
-            for width in WIDTHS:
+        for name, (path, detail_count) in pages.items():
+            for width in widths:
                 page = context.new_page()
                 page.set_viewport_size({"width": width, "height": 844})
                 row = {"page": name, "route": path, "viewport_css_px": width,
@@ -160,14 +184,20 @@ def run(origin, out, site_root=None):
                         row["expanded"] = dimensions(page)
                         if row["expanded"]["overflowPx"] > 1:
                             row["errors"].append("Horizontal overflow after FAQ expansion")
-                    page.screenshot(path=str(out / f"{name}_{width}.png"), full_page=True)
-                    if width in (320, 390):
+                    # Keep CI artifacts modest: representative screens plus every failure.
+                    if scope == "sample" or name in ROUTES or row["errors"]:
+                        page.screenshot(path=str(out / f"{name}_{width}.png"), full_page=True)
+                    if scope == "sample" and width in (320, 390):
                         # Diagnostic only: CSS zoom 2 is not equivalent to native 200% browser zoom.
                         page.add_style_tag(content="html { zoom: 2 !important; }")
                         row["css_zoom_200_diagnostic"] = dimensions(page)
                         page.screenshot(path=str(out / f"{name}_{width}_csszoom200.png"), full_page=True)
                 except Exception as exc:
                     row["errors"].append(f"{type(exc).__name__}: {str(exc)[:260]}")
+                    try:
+                        page.screenshot(path=str(out / f"{name}_{width}_error.png"), full_page=True)
+                    except Exception:
+                        pass
                 rows.append(row)
                 page.close()
         context.close()
@@ -179,7 +209,7 @@ def run(origin, out, site_root=None):
         "# ApuDa 모바일 Chromium 검사",
         "", f"- UTC: {dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds')}",
         "- Source: " + (str(site_root) if site_root else origin),
-        "- 12 render conditions: 3 public pages × 320/360/390/768 CSS px",
+        f"- {len(rows)} render conditions: {len(pages)} public pages × {list(widths)} CSS px (scope={scope})",
         "- 200% CSS zoom is diagnostic only, not real browser zoom or WCAG certification",
         "- No private /note/, /nonsul/, login, VPS, database or user records are accessed",
         "- 44px controls are logged as warnings, not test failures",
@@ -211,8 +241,9 @@ def main():
     mode.add_argument("--site-root", type=Path)
     mode.add_argument("--base-url")
     parser.add_argument("--out", type=Path, default=Path("mobile-artifacts"))
+    parser.add_argument("--scope", choices=("sample", "full"), default="sample")
     args = parser.parse_args()
-    raise SystemExit(run(args.base_url or "offline-source", args.out, args.site_root))
+    raise SystemExit(run(args.base_url or "offline-source", args.out, args.site_root, args.scope))
 
 
 if __name__ == "__main__":
