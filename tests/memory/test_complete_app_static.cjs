@@ -1,0 +1,57 @@
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
+const root=path.resolve(__dirname,'../..');
+const read=p=>fs.readFileSync(path.join(root,p),'utf8');
+const page=read('public-site/memory/app/index.html');
+const ui=read('public-site/memory/app/app.mjs');
+const store=read('public-site/memory/app/vault.mjs');
+const original=read('public-site/memory/index.html');
+const gate=JSON.parse(read('docs/qa/apuda-memory-release-gates.json'));
+assert.match(page,/<html lang="ko">/);
+assert.match(page,/치매·인지건강 가족 돌봄 통합 앱/);
+assert.match(page,/noindex,nofollow,noarchive/);
+assert.match(page,/script type="module" src="\.\/app\.mjs"/);
+assert.match(ui,/from '\.\/vault\.mjs'/);
+const ids=[...page.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
+assert.equal(ids.length,new Set(ids).size,'duplicate IDs are not accessible');
+for(const [,id] of ui.matchAll(/\$\('([^']+)'\)/g))
+  assert.ok(ids.includes(id),'UI references a missing HTML element: '+id);
+for(const [,id] of page.matchAll(/href="#([^"]+)"/g))
+  assert.ok(ids.includes(id),'navigation references a missing section: '+id);
+for(const p of ['home','observe','diary','consult','living','privacy','unlock-area'])
+  assert.ok(ids.includes(p),'must have visible section '+p);
+for(const p of ['vault-create','vault-unlock','vault-open','profileForm','recordForm','consult-app','summaryText','printSheet','exportBackup'])
+  assert.ok(ids.includes(p),'required workflow '+p);
+assert.match(page,/1899-9988/);
+assert.match(page,/tel:112/);
+assert.match(page,/tel:119/);
+assert.match(page,/치매를 판정하지 않으며/);
+assert.match(page,/기존 기록을 자동 이전하거나 삭제하지 않습니다/);
+assert.match(page,/암호화되지 않은 상태/);
+assert.match(page,/다른 탭에서 충돌/);
+assert.match(ui,/commitVault\(session,next\)/);
+assert.match(ui,/profileEntries\(session\.data,profileId\)/);
+assert.match(ui,/formatSummaryText\(session\.data,profileId/);
+assert.match(ui,/encryptedBackup\(session\)/);
+assert.match(ui,/deleteEntry\(session\.data,profileId/);
+assert.match(ui,/summaryText'\)\.value/);
+assert.match(ui,/printSheet'\)\.textContent/);
+assert.match(ui,/setBusy\(false\)/);
+assert.match(store,/DB_NAME='apuda-memory-secure-v3'/);
+assert.match(store,/KDF_ITERATIONS=600000/);
+assert.match(store,/AES-GCM/);
+assert.match(store,/new Uint8Array\(12\)/);
+assert.match(store,/session\.document/);
+assert.match(store,/tx\.abort\(\)/);
+assert.match(store,/tx\.oncomplete=resolve/);
+assert.match(store,/encryptedBackup/);
+assert.doesNotMatch(store,/\blocalStorage\b|\bsessionStorage\b|\bfetch\s*\(|\bXMLHttpRequest\b/);
+assert.doesNotMatch(ui,/\blocalStorage\s*[.[]|\bsessionStorage\s*[.[]|\bfetch\s*\(|\bXMLHttpRequest\b/);
+assert.doesNotMatch(ui,/\binnerHTML\s*=/);
+assert.match(original,/const diaryKey = 'apuda-memory-care-diary-v1'/);
+assert.ok(!original.includes('app/vault.mjs'),'old diary not connected to new storage');
+assert.ok(!original.includes('apuda-memory-secure-v3'));
+assert.equal(gate.releaseDecision,'NO_GO');
+assert.equal(gate.productionDeploymentAuthorized,false);
+console.log('PASS: unified dementia app routes, accessibility anchors, strict profile flows, no legacy mutation, encrypted-vault isolation, no-go release');
