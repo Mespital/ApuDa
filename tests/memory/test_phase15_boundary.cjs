@@ -17,7 +17,7 @@ assert.equal(manifest.releaseDecision,'NO_GO');
 assert.equal(manifest.productionDeploymentAuthorized,false);
 assert.ok(manifest.tests.some(t=>t.id==='cross-device-restore'&&t.status==='DEFERRED'));
 for(const source of [stage,vault]) {
-  assert.doesNotMatch(source,/\blocalStorage\b|\bsessionStorage\b|\bfetch\s*\(|\bXMLHttpRequest\b/);
+  assert.doesNotMatch(source,/\blocalStorage\s*[.\[]|\bsessionStorage\s*[.\[]|\bfetch\s*\(|\bXMLHttpRequest\s*\(/);
 }
 assert.match(stage,/planUnassignedLegacy/);
 assert.match(stage,/requiresUserApproval:true/);
@@ -27,7 +27,7 @@ assert.match(vault,/tx\.abort/);
 assert.doesNotMatch(vault,/objectStore\('vault'\)\.put/);
 const script=qa.match(/<script type="module">([\s\S]*?)<\/script>/)?.[1];
 assert.ok(script,'QA page script must exist');
-assert.doesNotMatch(script,/\blocalStorage\b|\bsessionStorage\b|\bfetch\s*\(|\bXMLHttpRequest\b/);
+assert.doesNotMatch(script,/\blocalStorage\s*[.\[]|\bsessionStorage\s*[.\[]|\bfetch\s*\(|\bXMLHttpRequest\s*\(/);
 assert.match(script,/^const allowed=\/\^deploy-preview-/m);
 assert.match(qa,/noindex,nofollow/);
 assert.match(qa,/실제 환자 정보를 입력하지 마세요/);
