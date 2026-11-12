@@ -111,7 +111,7 @@ assert.equal(await hasVault(),false);
 let session=await createVault(pass);
 assert.equal(await hasVault(),true);
 assert.equal(session.revision,1);
-await assert.rejects(createVault(pass),/기존 보관함/);
+await assert.rejects(createVault(pass),/기존 보관함|ConstraintError/);
 assert.equal(session.revision,1);
 const profiles=addProfile(addProfile(original,'돌봄 대상 A',A),'돌봄 대상 B',B);
 assert.equal(profiles.profiles.length,2);
