@@ -100,7 +100,7 @@ const savedSource=JSON.stringify(original),savedBackup=JSON.stringify(backup);
 assert.equal(plan.ready,true);
 const db=await openProfileVaultQaDatabase(factory,'apuda-memory-qa-vault-test0001');
 assert.deepEqual(await readQaVault(db),{vault:null,marker:null});
-await assert.rejects(commitLegacyQaStage(db,original,backup,plan),
+assert.throws(()=>commitLegacyQaStage(db,original,backup,plan),
   /별도 명시적 확인/);
 assert.deepEqual(await readQaVault(db),{vault:null,marker:null},
   'missing approval never starts a write');
@@ -140,7 +140,7 @@ await assert.rejects(commitLegacyQaStage(db,original,newBackup,planNew,{confirme
   /다른 기록이나 미검증 표시/);
 assert.deepEqual(await readQaVault(db),checked,'conflicting re-stage leaves DB intact');
 const tampered={...backup,entries:[syntheticRecord('legacy-new-1','변경된 기록')]};
-await assert.rejects(commitLegacyQaStage(db,original,tampered,plan,{confirmed:true}),
+assert.throws(()=>commitLegacyQaStage(db,original,tampered,plan,{confirmed:true}),
   /사전검사 이후/);
 assert.deepEqual(await readQaVault(db),checked);
 db.close();
