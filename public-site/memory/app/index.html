@@ -1,333 +1,193 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#133c57">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0F625F">
 <meta name="robots" content="noindex,nofollow,noarchive">
-<title>ApuDa Memory — 치매·인지건강 가족 돌봄 앱</title>
-<meta name="description" content="기억 변화 관찰, 치매 가족 돌봄일지, 진료 질문, 7·30일 요약, 생활·실종 예방과 암호화 백업을 한곳에서 이용하는 ApuDa Memory 개발 미리보기.">
+<title>ApuDa Memory | 우리 가족 돌봄 수첩</title>
+<meta name="description" content="치매 환자 가족을 위한 간단한 돌봄 수첩. 오늘 기록하고, 지난 기록을 보고, 병원에 보여주세요.">
 <link rel="icon" href="/favicon-32.png">
 <style>
-:root{--navy:#133c57;--ink:#203c50;--muted:#5a7180;--teal:#087d7a;--teal-dark:#066763;--sky:#e9f4fb;--edge:#d9e6ed;--gold:#edba63;--paper:#fff;--base:#f4f8fb;--ring:#d39a43;color-scheme:light;font-family:system-ui,-apple-system,"Noto Sans KR","Apple SD Gothic Neo",sans-serif}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:116px}
-body{margin:0;background:var(--base);color:var(--ink);font-size:17px;line-height:1.67}
-a{color:#0b5f8c;text-underline-offset:3px}
-a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--ring);outline-offset:3px}
-button,input,textarea,select{font:inherit}
-button{cursor:pointer}
+:root{font-family:system-ui,-apple-system,"Noto Sans KR","Apple SD Gothic Neo",sans-serif;color:#203c45;background:#f5f8f7;--primary:#116d68;--dark:#0e4c4a;--line:#d6e3df;--muted:#51686d;--warning:#864a20;color-scheme:light}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:100px}body{margin:0;font-size:18px;line-height:1.65}
+a{color:var(--primary);text-underline-offset:3px}
+button,input,select,textarea{font:inherit}button{cursor:pointer}
+:focus-visible{outline:3px solid #db902e;outline-offset:3px}
 [hidden]{display:none!important}
-.skip{position:absolute;left:10px;top:-110px;z-index:100;background:white;padding:13px 19px;border:2px solid var(--teal)}
-.skip:focus{top:8px}
-.app-head{background:var(--paper);border-bottom:1px solid var(--edge);position:sticky;top:0;z-index:30;box-shadow:0 6px 20px #193e5810}
-.head-inner{max-width:1180px;margin:auto;padding:14px 22px 10px;display:flex;justify-content:space-between;align-items:center;gap:12px}
-.logo{display:flex;align-items:center;gap:10px;color:var(--navy);font-size:23px;font-weight:850;letter-spacing:-.04em;text-decoration:none}
-.logo-symbol{height:35px;width:35px;display:grid;place-items:center;border-radius:12px;color:white;background:var(--teal);font-size:23px}
-.logo small{font-size:13px;color:var(--teal);letter-spacing:0}
-.head-right{font-size:13px;color:var(--muted);display:flex;gap:12px;align-items:center}
-.header-pill{font-weight:700;color:var(--teal);border:1px solid #abd6d2;background:#e8f8f6;border-radius:99px;padding:4px 10px}
-.tabs{max-width:1180px;margin:auto;padding:0 18px 10px;display:flex;gap:4px;overflow-x:auto;scrollbar-width:thin}
-.tabs a{white-space:nowrap;padding:9px 13px;border-radius:10px;color:#416071;font-weight:700;text-decoration:none;font-size:15px}
-.tabs a:hover{background:#edf5f8;color:var(--teal-dark)}
-.shell{max-width:1180px;margin:auto;padding:24px 22px 80px}
-.hero{background:linear-gradient(122deg,#163f58 3%,#087d79 96%);border-radius:27px;color:#fff;padding:clamp(28px,5vw,56px);position:relative;overflow:hidden;min-height:280px}
-.hero:before{content:"";position:absolute;width:380px;height:380px;border:1px solid #ffffff32;border-radius:50%;right:-110px;top:-170px;box-shadow:0 0 0 50px #ffffff08,0 0 0 110px #ffffff09}
-.hero *{position:relative}
-.eyebrow{display:inline-block;color:#d6efed;border-radius:99px;border:1px solid #ffffff5c;padding:5px 12px;font-weight:750;font-size:13px;letter-spacing:.03em}
-h1{font-size:clamp(30px,4.5vw,48px);line-height:1.25;letter-spacing:-.055em;margin:18px 0}
-.hero p{color:#e7f8f6;max-width:730px;font-size:19px}
-.hero-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:11px 17px;border-radius:12px;border:1px solid #abd6d7;background:#fff;color:var(--teal-dark);font-weight:750;text-decoration:none;gap:7px}
-.btn:hover{filter:brightness(.96)}
-.btn.primary{background:var(--teal);color:#fff;border-color:var(--teal)}
-.hero .btn.primary{background:#fff;color:var(--teal-dark);border-color:#fff}
-.hero .btn.ghost{background:#ffffff0b;color:#fff;border-color:#ffffff70}
+.skip{position:absolute;top:-120px;left:12px;background:white;padding:10px 15px;z-index:99}.skip:focus{top:8px}
+header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:20}
+.header-wrap{max-width:800px;margin:auto;padding:10px 17px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.logo{text-decoration:none;color:var(--dark);font-weight:900;font-size:22px;letter-spacing:-.04em}
+.logo span{font-size:12px;font-weight:750;display:block;letter-spacing:0;color:var(--muted)}
+header nav{display:flex;gap:3px;max-width:800px;margin:auto;padding:0 12px 8px;justify-content:space-around;overflow-x:auto}
+header nav a{font-size:15px;font-weight:800;text-decoration:none;padding:9px 12px;border-radius:9px;white-space:nowrap}
+header nav a:hover{background:#e4f3ef}
+main{max-width:800px;margin:auto;padding:22px 15px 70px}
+h1{font-size:clamp(29px,5vw,40px);line-height:1.26;margin:0 0 13px;letter-spacing:-.035em;color:var(--dark)}
+h2{font-size:clamp(23px,4vw,28px);line-height:1.4;margin:0 0 10px;color:var(--dark);letter-spacing:-.02em}
+h3{font-size:20px;line-height:1.4;margin:0 0 10px;color:var(--dark)}
+p{margin:0 0 12px}small,.small{font-size:14px;color:var(--muted)}
+.intro{background:linear-gradient(125deg,#135852,#0c7d73);color:white;border-radius:19px;padding:25px 23px;margin-bottom:17px}
+.intro h1{color:#fff}.intro p{color:#eafaf7;margin:0;font-size:18px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;margin:18px 0}
+.panel h2{margin-bottom:7px}
+.section{scroll-margin-top:110px}
+.section-title{font-weight:850;color:var(--dark);font-size:16px;margin-bottom:5px}
+.step{display:inline-block;font-size:14px;font-weight:850;color:var(--primary);background:#e8f5f1;border-radius:99px;padding:3px 10px;margin-bottom:7px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:11px 18px;border:1px solid var(--primary);border-radius:11px;background:#fff;color:var(--primary);font-weight:800;text-decoration:none}
+.btn.primary{background:var(--primary);color:#fff}
+.btn.danger{color:#9a3f28;border-color:#e0b39d}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}
+.field{display:flex;flex-direction:column;gap:5px;margin-top:15px}
+.field label{font-weight:800;color:var(--dark)}
+.field input,.field textarea,.field select{min-height:51px;width:100%;border:1px solid #a5c5bf;border-radius:11px;background:#fff;padding:11px 13px;color:#1b393a}
+.field textarea{min-height:96px;line-height:1.6;resize:vertical}
+.field small{font-size:14px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
 .note{font-size:14px;color:var(--muted)}
-.section{margin-top:38px;scroll-margin-top:116px}
-.section-top{display:flex;align-items:end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:15px}
-.kicker{font-size:13px;font-weight:850;color:var(--teal);letter-spacing:.04em;margin:0 0 7px}
-h2{font-size:clamp(23px,2.8vw,30px);letter-spacing:-.04em;line-height:1.35;color:var(--navy);margin:0 0 8px}
-h3{font-size:20px;color:var(--navy);line-height:1.4;margin:0 0 10px}
-h4{font-size:17px;margin:0 0 5px}
-p{margin:0 0 12px}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
-.card{background:#fff;border:1px solid var(--edge);border-radius:20px;padding:24px;box-shadow:0 6px 22px #193e5808;min-width:0}
-.card.filled{background:#e9f5f4;border-color:#c4e2df}
-.card.warm{background:#fffaf0;border-color:#efdfbc}
-.card p:last-child{margin-bottom:0}
-.card-icon{display:inline-grid;place-items:center;border-radius:15px;background:#e4f3f4;color:var(--teal-dark);font-size:25px;width:53px;height:53px;margin-bottom:14px}
-.statrow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
-.stat{padding:18px;border:1px solid var(--edge);background:#fff;border-radius:15px}
-.stat strong{font-size:27px;font-weight:830;color:var(--teal-dark);display:block;font-variant-numeric:tabular-nums}
-.stat span{font-size:13px;color:var(--muted)}
-.notice{background:#fff7e8;border:1px solid #e8d2a6;border-left:5px solid #d7a04c;border-radius:14px;padding:17px 20px;margin-top:17px}
-.notice p{margin:0;color:#654d2d}
-.content-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:17px}
-.field{display:flex;flex-direction:column;gap:6px;margin:14px 0}
-.field label{font-weight:750;color:var(--navy)}
-.field input,.field textarea,.field select{width:100%;min-height:49px;border:1px solid #acc6d5;border-radius:11px;padding:11px 13px;background:#fff;color:var(--ink)}
-.field textarea{min-height:114px;line-height:1.6;resize:vertical}
-.field small{font-size:13px;color:var(--muted)}
-.fieldset{border:0;margin:0;padding:0}
-fieldset legend{font-weight:800;color:var(--navy);padding:0;margin-bottom:10px}
-.check-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
-.check{display:flex;align-items:flex-start;gap:10px;padding:12px;border:1px solid var(--edge);border-radius:11px;background:#fafcfd;cursor:pointer;min-height:55px}
-.check input{flex:none;width:22px;height:22px;margin:2px 0 0;accent-color:var(--teal)}
-.check span{flex:1}
-.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:15px;align-items:center}
-.small-btn{border:1px solid #b5d4dc;color:#136d72;background:#f3fafb;border-radius:9px;padding:7px 10px;font-size:14px;font-weight:750;min-height:38px}
-.small-btn.warn-btn{border-color:#e8c8a3;color:#884c22;background:#fff8f1}
-.note-danger{color:#994128;font-size:14px}
-ul{padding-left:20px;margin:8px 0 13px}
-li{margin-bottom:7px}
-.statusline{color:#136b64;font-weight:750;min-height:25px;margin-top:10px}
-.statusline.error{color:#aa3f27}
-.entry-list{display:grid;gap:12px;margin-top:17px}
-.entry{border:1px solid var(--edge);border-radius:14px;padding:16px;background:#fff}
-.entry-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
-.entry-head time{font-weight:850;color:var(--navy)}
-.entry p{white-space:pre-wrap;overflow-wrap:anywhere}
-.entry-meta{color:var(--muted);font-size:14px;margin:7px 0 11px}
-.empty{background:#f7fafc;border:1px dashed #bfcedc;border-radius:13px;padding:21px;color:var(--muted)}
-.pills{display:flex;flex-wrap:wrap;gap:8px}
-.pill{background:#e9f5f4;border:1px solid #c6e0dd;border-radius:50px;padding:4px 10px;font-size:13px;font-weight:760;color:#23655f}
-.summary-box{white-space:pre-wrap;overflow-wrap:anywhere;padding:20px;border:1px solid var(--edge);border-radius:13px;background:#f9fbfd;font:16px/1.7 system-ui,sans-serif;min-height:190px;width:100%;resize:vertical}
-.day-list{display:grid;gap:8px;margin-top:15px}
-.day{padding:12px 15px;background:#f8fbfd;border-radius:11px;border:1px solid var(--edge)}
-.day.missing{border-style:dashed;background:#f3f5f7}
-.day time{font-weight:750}
-.day small{color:var(--muted)}
-.step{display:flex;gap:14px;align-items:flex-start;margin:15px 0}
-.step-no{background:#e8f5f3;color:var(--teal-dark);border-radius:12px;width:34px;height:34px;flex:none;display:grid;place-items:center;font-weight:850}
-.linkrow{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
-.linkrow a{display:inline-flex;align-items:center;min-height:46px;text-decoration:none;padding:8px 14px;border-radius:10px;background:#eaf3fa;font-weight:760}
-.footer{margin-top:48px;padding:26px 0;border-top:1px solid var(--edge);font-size:13px;color:var(--muted)}
-.footer a{color:inherit}
-button:disabled{opacity:.58;cursor:not-allowed}
+.note-warn{background:#fff8ec;border:1px solid #eed3a5;border-radius:11px;padding:13px 15px;color:#765021;font-size:15px;margin:14px 0}
+.note-warn strong{color:#754019}
+.status{font-size:15px;min-height:24px;margin-top:10px;color:var(--primary);font-weight:750;overflow-wrap:anywhere}
+.status.error{color:#a34830}
+.subtle{background:#f4f8f7;border:1px solid var(--line);padding:16px;border-radius:12px}
+#profile-controls{padding:14px;background:#e8f5f1;border-radius:12px;margin-bottom:16px}
+#profileSelect{width:100%;min-height:49px;border:1px solid #8cbdb4;border-radius:10px;background:#fff;padding:8px;font-weight:750}
+#profileForm{border-top:1px solid #c8e1d9;margin-top:13px;padding-top:12px}
+#profileForm .field{margin-top:6px}
+details summary{cursor:pointer;font-weight:800;min-height:47px;display:flex;align-items:center;color:var(--primary)}
+details summary:focus-visible{outline:3px solid #db902e;outline-offset:3px}
+.list{display:grid;gap:11px;margin-top:17px}
+.entry{border:1px solid var(--line);border-radius:12px;padding:15px;background:#fff}
+.entry-head{display:flex;justify-content:space-between;gap:9px;flex-wrap:wrap}
+.entry-head time{font-weight:850;color:var(--dark)}
+.entry p{white-space:pre-wrap;overflow-wrap:anywhere;margin:7px 0 0}
+.entry-meta{font-size:14px;color:var(--muted);margin-top:7px}
+.small-btn{min-height:42px;border-radius:9px;border:1px solid #b5d7cf;background:#f3faf8;color:#125d59;font-weight:750;padding:6px 14px;font-size:15px}
+.small-btn.warn-btn{border-color:#e9cbbb;color:#984126;background:#fff9f5}
+.empty{padding:18px;background:#f6faf8;border:1px dashed #b9d5ce;border-radius:11px;color:var(--muted)}
+#summaryText{display:block;width:100%;min-height:245px;resize:vertical;background:#f7faf9;border:1px solid var(--line);border-radius:11px;padding:15px;white-space:pre-wrap;font:16px/1.65 system-ui,sans-serif;color:#1e4447}
+.counts{display:flex;gap:9px;flex-wrap:wrap;padding:7px 0 13px}
+.counts span{background:#eaf4f1;border-radius:9px;padding:7px 11px;color:#165f5a;font-weight:750;font-size:15px}
+.day-list{margin-top:14px;display:grid;gap:7px}
+.day{padding:9px 13px;border-radius:10px;border:1px solid var(--line)}
+.day.missing{border-style:dashed;background:#f7f8f8;color:#62737a}
+.day time{font-weight:800}.day small{display:block}
+.help-links{display:flex;gap:10px;flex-wrap:wrap}
+.help-links a{font-weight:850;text-decoration:none;border-radius:12px;min-height:55px;padding:12px 18px;display:inline-flex;align-items:center;color:white;background:#af4935}
+.help-links a:last-child{background:#135e6b}
+#settings{margin-top:24px}
 #printSheet{display:none}
-.download a{display:inline-flex}
-.locked-content{border:1px dashed #b9cddd;border-radius:16px;padding:21px;background:#f8fbfd;color:#4b6374}
-.onboarding{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
-#profile-controls{background:#ecf7f5;border-radius:14px;padding:17px;border:1px solid #c9e3de;margin-bottom:17px}
-#profile-controls .actions{margin-top:0}
-#profileSelect{width:100%;max-width:320px;min-height:48px;border:1px solid #a9c7d2;border-radius:10px;background:white;padding:9px;font-weight:700}
-#vaultStatus{min-height:24px}
-#recordForm{max-width:100%}
-.wraprow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 13px}
-.divider{border:0;border-top:1px solid var(--edge);margin:20px 0}
-.info{display:inline-flex;align-items:center;gap:8px}
-label,.note,p,h2,h3,li{word-break:keep-all}
-@media(max-width:920px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.content-grid,.onboarding{grid-template-columns:1fr}.statrow{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:600px){
- body{font-size:16px}.head-inner{padding:11px 14px}.logo{font-size:20px}.head-right a{display:none}.tabs{padding:0 8px 8px}.tabs a{font-size:14px;padding:8px 12px}
- .shell{padding:15px 12px 80px}.hero{padding:29px 23px;min-height:auto;border-radius:20px}.hero p{font-size:17px}.hero-links .btn{width:100%}
- .grid,.statrow{grid-template-columns:1fr 1fr}.card{padding:19px}.grid>.card{grid-column:span 2}.wraprow,.check-grid{grid-template-columns:1fr}
- .section{margin-top:30px}.actions .btn{flex:1 1 130px}.stat strong{font-size:24px}
-}
+footer{font-size:13px;color:var(--muted);padding:10px 0 20px;text-align:center}
+@media(max-width:550px){body{font-size:17px}.panel{padding:18px 15px}main{padding:16px 12px 60px}.two{grid-template-columns:1fr}.actions .btn{flex:1 1 135px}.help-links a{flex:1}.intro{padding:22px 19px}header nav a{font-size:14px;padding:9px 8px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-@media print{body{background:white;color:#111}body>.app-head,body>main{display:none!important}#printSheet{display:block!important;margin:0;padding:16mm;white-space:pre-wrap;overflow-wrap:anywhere;font:12pt/1.65 system-ui,sans-serif}}
+@media print{body{background:#fff;color:#111}body>*:not(#printSheet){display:none!important}#printSheet{display:block!important;white-space:pre-wrap;overflow-wrap:anywhere;padding:10mm;font:12pt/1.6 system-ui,sans-serif}}
 </style>
 </head>
 <body>
-<a class="skip" href="#main">본문 바로가기</a>
-<header class="app-head">
- <div class="head-inner">
-  <a class="logo" href="#home"><span class="logo-symbol" aria-hidden="true">✦</span><span>ApuDa <small>MEMORY</small></span></a>
-  <div class="head-right"><span class="header-pill">암호화 개인 보관함</span><a href="/memory/">기존 기억건강 안내</a></div>
- </div>
- <nav class="tabs" aria-label="앱 주요 메뉴">
-  <a href="#home">홈</a><a href="#observe">기억 변화</a><a href="#diary">돌봄 일지</a>
-  <a href="#consult">진료 준비</a><a href="#living">생활·안전</a><a href="#privacy">백업·설정</a>
- </nav>
+<a href="#main" class="skip">본문 바로가기</a>
+<header>
+ <div class="header-wrap"><a href="#main" class="logo">ApuDa Memory<span>우리 가족 돌봄 수첩</span></a><span class="small">가족이 함께 기록하는 하루</span></div>
+ <nav aria-label="주요 기능"><a href="#diary">오늘 기록</a><a href="#records">지난 기록</a><a href="#consult">병원 갈 때</a><a href="#help">도움받기</a></nav>
 </header>
-<main id="main" class="shell">
-<section id="home" class="hero" aria-labelledby="hero-title">
- <span class="eyebrow">치매·인지건강 가족 돌봄 통합 앱</span>
- <h1 id="hero-title">기억이 걱정될 때,<br>혼자가 아닌 함께.</h1>
- <p>변화를 살피고, 하루를 기록하고, 진료 때 필요한 질문을 준비하세요. ApuDa Memory는 환자와 가족의 일상을 돕는 기록 도구입니다.</p>
- <div class="hero-links">
-  <a class="btn primary" href="#diary">오늘 돌봄 기록하기</a>
-  <a class="btn ghost" href="#observe">기억 변화 살펴보기</a>
- </div>
-</section>
-<div class="notice" role="note"><p><strong>의료 안내:</strong> 이 앱은 치매 진단·선별검사 또는 의약품 복용 지시를 제공하지 않습니다. 갑작스러운 혼돈, 의식 변화 등 응급상황은 119에 연락하세요. 실종 시에는 112로 신고하세요.</p></div>
-<section class="section" aria-labelledby="today-title">
- <div class="section-top"><div><p class="kicker">TODAY</p><h2 id="today-title">오늘의 돌봄 한눈에</h2></div><span class="note">입력한 기록만 집계합니다</span></div>
- <div class="statrow">
-  <div class="stat"><strong id="statProfiles">0명</strong><span>등록한 돌봄 대상</span></div>
-  <div class="stat"><strong id="statToday">0건</strong><span>오늘 기록</span></div>
-  <div class="stat"><strong id="statWeek">0일</strong><span>최근 7일 기록한 날</span></div>
-  <div class="stat"><strong id="statQuestions">0개</strong><span>최근 7일 진료 질문</span></div>
- </div>
- <p class="note" style="margin-top:12px">새 보관함은 기존 ApuDa 돌봄일지와 별도로 관리되며, 기존 기록을 자동 이전하거나 삭제하지 않습니다.</p>
-</section>
-<section id="unlock-area" class="section" aria-labelledby="vault-title">
- <div class="section-top"><div><p class="kicker">PRIVATE NOTEBOOK</p><h2 id="vault-title">나만의 암호화 돌봄 보관함</h2></div></div>
- <div class="onboarding">
- <div class="card">
-  <div id="vault-loading" role="status" aria-live="polite">보관함 상태를 확인하고 있습니다.</div>
+<main id="main">
+ <div class="intro"><h1>오늘 하루,<br>어떠셨나요?</h1><p>하루를 적고, 지난 기록을 보고, 병원에 보여주세요.</p></div>
+
+ <section id="unlock-area" class="panel section" aria-labelledby="vaultTitle">
+  <h2 id="vaultTitle">우리 가족 돌봄 수첩 열기</h2>
+  <p id="vault-loading" class="note" role="status">보관함을 확인하고 있습니다.</p>
   <form id="vault-create" hidden>
-   <h3>처음 사용하시나요? 보관함 만들기</h3>
-   <p>돌봄 기록은 이 기기의 브라우저 안에 <strong>AES-256-GCM으로 암호화</strong>하여 보관합니다. 계정 가입이나 서버 업로드는 필요하지 않습니다.</p>
-   <div class="field"><label for="newPassword">보관함 비밀번호 (12자 이상)</label><input type="password" id="newPassword" required minlength="12" maxlength="128" autocomplete="new-password"><small>길고 기억할 수 있는 문장을 권장합니다. 암호를 잊으면 기록을 열 수 없습니다.</small></div>
-   <div class="field"><label for="confirmPassword">비밀번호 다시 입력</label><input type="password" id="confirmPassword" required minlength="12" maxlength="128" autocomplete="new-password"></div>
-   <label class="check"><input type="checkbox" id="vaultConsent" required><span>암호를 분실하면 복구할 수 없고, 브라우저 데이터를 지우면 기록도 사라질 수 있음을 이해했습니다.</span></label>
-   <div class="actions"><button type="submit" class="btn primary">안전한 보관함 만들기</button></div>
+   <p>처음 한 번만 비밀번호를 정하면 됩니다.</p>
+   <div class="field"><label for="newPassword">비밀번호 (12자 이상)</label><input id="newPassword" type="password" minlength="12" maxlength="128" autocomplete="new-password" required></div>
+   <div class="field"><label for="confirmPassword">비밀번호 확인</label><input id="confirmPassword" type="password" minlength="12" maxlength="128" autocomplete="new-password" required></div>
+   <label class="field" style="flex-direction:row;align-items:flex-start;gap:10px"><input id="vaultConsent" type="checkbox" required style="width:23px;height:23px;flex:none;margin-top:5px"><span>비밀번호를 잊거나 브라우저 데이터를 삭제하면 기록을 복구하지 못할 수 있음을 이해했습니다.</span></label>
+   <div class="actions"><button class="btn primary" type="submit">내 수첩 만들기</button></div>
   </form>
   <form id="vault-unlock" hidden>
-   <h3>보관함 잠금 해제</h3>
-   <p>이 기기의 암호화된 돌봄 기록을 열려면 설정한 비밀번호를 입력하세요.</p>
-   <div class="field"><label for="unlockPassword">보관함 비밀번호</label><input id="unlockPassword" type="password" autocomplete="current-password" required minlength="12"></div>
-   <div class="actions"><button type="submit" class="btn primary">내 돌봄 기록 열기</button></div>
+   <div class="field"><label for="unlockPassword">비밀번호</label><input type="password" id="unlockPassword" autocomplete="current-password" minlength="12" required></div>
+   <div class="actions"><button class="btn primary" type="submit">수첩 열기</button></div>
   </form>
-  <div id="vault-open" hidden>
-   <h3>보관함이 열렸습니다</h3>
-   <p>선택한 대상자별로 기록을 작성할 수 있습니다. 기록은 저장할 때마다 기기 내부에서 다시 암호화됩니다.</p>
-   <div class="actions"><button class="btn" type="button" id="lockButton">보관함 잠그기</button></div>
-  </div>
-  <p id="vaultStatus" role="status" aria-live="polite" class="statusline"></p>
- </div>
- <aside class="card filled">
-  <h3>기록 보관 전 알아두세요</h3>
-  <ul><li>같은 기기·같은 브라우저에서만 기록을 볼 수 있습니다.</li><li>공용 기기와 사생활 보호 모드에서는 저장을 권장하지 않습니다.</li><li>열려 있는 화면이나 복사된 글은 암호화로 보호되지 않습니다.</li><li>중요한 기록은 암호화 백업 파일을 별도로 보관하세요.</li></ul>
-  <p class="note">현재 버전은 옛 기록을 자동 가져오지 않으며, 별도 기기 복원은 아직 지원하지 않습니다.</p>
- </aside>
- </div>
-</section>
-<section id="observe" class="section" aria-labelledby="observe-title">
- <div class="section-top"><div><p class="kicker">REMEMBER</p><h2 id="observe-title">기억 변화 살펴보기</h2></div></div>
- <div class="content-grid">
-  <div class="card">
-   <h3>최근 달라진 모습이 있나요?</h3>
-   <p>아래 항목은 <strong>대화를 시작하기 위한 비표준 관찰표</strong>입니다. 점수로 치매를 판정하지 않으며, 선택값은 기록함에 저장하지 않습니다.</p>
-   <fieldset id="observeChecks" class="fieldset">
-    <legend>해당되는 변화를 선택해 보세요</legend>
-    <div class="check-grid">
-     <label class="check"><input type="checkbox" value="최근 약속이나 대화를 반복해서 잊음"><span>최근 대화나 약속을 자주 잊어요</span></label>
-     <label class="check"><input type="checkbox" value="익숙한 길을 찾기 어려워함"><span>익숙한 길에서 길 찾기가 어려워요</span></label>
-     <label class="check"><input type="checkbox" value="익숙한 일상 과제에 어려움"><span>익숙했던 일을 하기가 어려워요</span></label>
-     <label class="check"><input type="checkbox" value="시간과 장소를 혼동"><span>날짜나 장소를 자주 혼동해요</span></label>
-     <label class="check"><input type="checkbox" value="언어 사용이나 이해가 달라짐"><span>단어를 찾거나 대화를 이해하기 어려워요</span></label>
-     <label class="check"><input type="checkbox" value="감정·행동 변화가 두드러짐"><span>감정이나 행동 변화가 두드러져요</span></label>
+  <div id="vault-open" hidden><p>수첩이 열려 있습니다. 기록을 마치면 잠가 주세요.</p><button id="lockButton" class="btn" type="button">수첩 잠그기</button></div>
+  <p id="vaultStatus" class="status" role="status" aria-live="polite"></p>
+ </section>
+
+ <section id="diary" class="panel section" aria-labelledby="diaryTitle">
+  <span class="step">1 · 매일 1분</span>
+  <h2 id="diaryTitle">오늘 기록하기</h2>
+  <div id="diary-locked" class="subtle">먼저 위에서 <a href="#unlock-area">수첩을 열어 주세요.</a></div>
+  <div id="diary-app" hidden>
+   <div id="profile-controls">
+    <label for="profileSelect" class="section-title">누구의 기록인가요?</label>
+    <select id="profileSelect"></select>
+    <details id="profileDetails">
+     <summary>다른 가족도 기록하기</summary>
+     <form id="profileForm">
+      <div class="field"><label for="profileName">돌봄 대상 별칭</label><input id="profileName" maxlength="30" required placeholder="예: 돌봄 대상 2"></div>
+      <div class="actions"><button type="submit" class="btn">대상 추가</button></div>
+      <p class="note">여러 사람의 기록은 각각 구분해서 저장됩니다.</p>
+     </form>
+    </details>
+   </div>
+   <h3 id="recordTitle" tabindex="-1">하루 한 줄 기록</h3>
+   <form id="recordForm">
+    <div class="field"><label for="recordDate">날짜</label><input type="date" id="recordDate" required></div>
+    <div class="two">
+     <div class="field"><label for="sleep">잠은 어떠셨나요?</label><select id="sleep"><option value="">기록 안 함</option><option>좋음</option><option>보통</option><option>나쁨</option></select></div>
+     <div class="field"><label for="meal">식사는 어떠셨나요?</label><select id="meal"><option value="">기록 안 함</option><option>좋음</option><option>보통</option><option>부족</option></select></div>
     </div>
-   </fieldset>
-   <div class="actions"><button class="btn primary" id="observeButton" type="button">관찰 결과 안내 보기</button><button class="btn" id="observeClear" type="button">선택 초기화</button></div>
-   <div id="observeResult" class="notice" hidden role="status" aria-live="polite"></div>
-  </div>
-  <aside class="card warm">
-   <h3>기억 변화가 걱정될 때</h3>
-   <div class="step"><span class="step-no">1</span><div><strong>구체적인 상황을 기록</strong><p>언제부터, 얼마나 자주, 어떤 일이 있었는지 적어 둡니다.</p></div></div>
-   <div class="step"><span class="step-no">2</span><div><strong>일상 기능 변화를 확인</strong><p>식사·약 관리·길 찾기·금전 관리 등 생활에 영향을 주는지 살핍니다.</p></div></div>
-   <div class="step"><span class="step-no">3</span><div><strong>의료진 또는 치매안심센터 상담</strong><p>지속되거나 악화되는 변화는 전문가 평가를 받습니다.</p></div></div>
-   <p class="note">갑자기 나타난 심한 혼란은 일반적인 기억 저하로 단정하지 말고 신속히 진료받아야 합니다.</p>
-  </aside>
- </div>
-</section>
-<section id="diary" class="section" aria-labelledby="diary-title">
- <div class="section-top"><div><p class="kicker">DAILY CARE</p><h2 id="diary-title">돌봄 일지</h2></div><span class="note">기록은 돌봄 대상별로 분리됩니다</span></div>
- <div id="diary-locked" class="locked-content">기록을 작성하려면 위의 <a href="#unlock-area">암호화 보관함</a>을 만들거나 잠금을 해제해 주세요.</div>
- <div id="diary-app" hidden>
-  <div id="profile-controls">
-   <h3>기록할 돌봄 대상 선택</h3>
-   <div class="actions"><label for="profileSelect" class="info"><strong>현재 대상</strong></label><select id="profileSelect" aria-label="돌봄 대상 선택"></select></div>
-   <form id="profileForm" class="actions">
-    <label for="profileName" class="note">새 대상 별칭</label><input id="profileName" maxlength="30" placeholder="예: 돌봄 대상 2" style="min-height:47px;border:1px solid #abc5d3;border-radius:10px;padding:8px 12px;max-width:250px" required>
-    <button type="submit" class="btn">+ 대상 추가</button>
+    <div class="field"><label for="medicationCheck">약·처방 확인 (선택)</label><select id="medicationCheck"><option value="">기록 안 함</option><option>확인함</option><option>확인 필요</option><option>문의 사항 있음</option></select><small>‘확인함’은 실제 복용 완료를 뜻하지 않습니다.</small></div>
+    <div class="field"><label for="recordText">오늘 있었던 일</label><textarea id="recordText" maxlength="1500" placeholder="예: 오전에 물건을 찾기 어려워하셨어요."></textarea></div>
+    <details><summary>병원에 물어볼 질문도 적기 (선택)</summary><div class="field"><label for="recordQuestion">의사에게 물어볼 말</label><textarea id="recordQuestion" maxlength="400" placeholder="예: 잠을 잘 못 주무시는데 어떻게 해야 하나요?"></textarea></div></details>
+    <div class="actions"><button id="saveRecord" class="btn primary" type="submit">저장하기</button><button id="cancelEdit" class="btn" type="button" hidden>수정 취소</button></div>
    </form>
-   <p class="note">실명 대신 ‘돌봄 대상 1’ 같은 별칭을 권장합니다. 여러 사람의 내용을 한 기록으로 합치지 마세요.</p>
+   <p id="recordStatus" class="status" role="status" aria-live="polite"></p>
   </div>
-  <div class="content-grid">
-   <div class="card">
-    <h3 id="recordTitle">오늘의 기록 남기기</h3>
-    <form id="recordForm">
-     <div class="field"><label for="recordDate">날짜</label><input id="recordDate" type="date" required></div>
-     <div class="wraprow">
-      <div class="field"><label for="sleep">수면 관찰</label><select id="sleep"><option value="">선택 안 함</option><option>좋음</option><option>보통</option><option>나쁨</option></select></div>
-      <div class="field"><label for="meal">식사 관찰</label><select id="meal"><option value="">선택 안 함</option><option>좋음</option><option>보통</option><option>부족</option></select></div>
-     </div>
-     <div class="field"><label for="medicationCheck">처방·약 관련 확인</label><select id="medicationCheck"><option value="">선택 안 함</option><option>확인함</option><option>확인 필요</option><option>문의 사항 있음</option></select><small>‘확인함’은 처방·약 내용을 확인했다는 뜻이며, 실제 복용 완료를 의미하지 않습니다.</small></div>
-     <div class="field"><label for="recordText">관찰 메모</label><textarea id="recordText" maxlength="1500" placeholder="예: 오전에 익숙한 물건을 찾는 데 시간이 걸림"></textarea></div>
-     <div class="field"><label for="recordQuestion">진료 때 물어볼 질문</label><textarea id="recordQuestion" maxlength="400" placeholder="예: 최근 수면 변화에 대해 진료 때 확인할 내용" style="min-height:85px"></textarea><small>메모 또는 진료 질문 중 하나만 입력해도 저장할 수 있습니다.</small></div>
-     <div class="actions"><button type="submit" id="saveRecord" class="btn primary">암호화하여 저장</button><button type="button" class="btn" id="cancelEdit" hidden>수정 취소</button></div>
-    </form>
-    <p id="recordStatus" role="status" aria-live="polite" class="statusline"></p>
-   </div>
-   <aside class="card">
-    <h3>최근 기록</h3>
-    <div class="field"><label for="searchRecords">기록 검색</label><input id="searchRecords" type="search" maxlength="80" placeholder="메모·질문 검색"></div>
-    <div class="entry-list" id="recordList" aria-live="polite"></div>
-    <button type="button" id="showAllRecords" class="btn" hidden>기록 더 보기</button>
-   </aside>
+ </section>
+
+ <section id="records" class="panel section" aria-labelledby="recordsTitle">
+  <span class="step">2 · 언제든지</span><h2 id="recordsTitle">지난 기록 보기</h2>
+  <p class="note">현재 선택한 가족의 기록만 보입니다.</p>
+  <div class="field"><label for="searchRecords">찾고 싶은 기록 검색</label><input id="searchRecords" type="search" maxlength="80" placeholder="예: 잠, 식사, 기억 변화"></div>
+  <div id="recordList" class="list" aria-live="polite"><p class="empty">수첩을 열면 지난 기록이 보입니다.</p></div>
+  <div class="actions"><button id="showAllRecords" class="btn" type="button" hidden>기록 더 보기</button></div>
+ </section>
+
+ <section id="consult" class="panel section" aria-labelledby="consultTitle">
+  <span class="step">3 · 진료 전</span><h2 id="consultTitle">병원에 보여주기</h2>
+  <p>그동안 적은 내용을 날짜별로 모아 드립니다.</p>
+  <div id="consult-locked" class="subtle">먼저 <a href="#unlock-area">수첩을 열어 주세요.</a></div>
+  <div id="consult-app" hidden>
+   <h3 id="consultProfile">선택 대상자</h3>
+   <div class="field"><label for="summaryPeriod">어느 기간을 볼까요?</label><select id="summaryPeriod"><option value="7">최근 7일</option><option value="30">최근 30일</option></select></div>
+   <div class="counts"><span>기록 <b id="sumCount">0</b>건</span><span>기록한 날 <b id="sumDays">0</b>일</span><span>미기록 <b id="sumMissing">0</b>일</span><span>질문 <b id="sumQuestions">0</b>개</span></div>
+   <textarea id="summaryText" readonly aria-label="진료용 기록 요약"></textarea>
+   <div class="actions"><button id="copySummary" type="button" class="btn primary">복사하기</button><button id="printSummary" type="button" class="btn">PDF·인쇄</button></div>
+   <p id="consultStatus" class="status" role="status" aria-live="polite"></p>
+   <details><summary>날짜별 관찰 내역 보기</summary><div id="timeline" class="day-list"></div></details>
+   <p class="note">기록이 없는 날은 증상이 없었다는 뜻이 아닙니다. 이 요약은 진단이나 처방이 아닙니다.</p>
   </div>
- </div>
-</section>
-<section id="consult" class="section" aria-labelledby="consult-title">
- <div class="section-top"><div><p class="kicker">DOCTOR VISIT</p><h2 id="consult-title">진료 준비 요약</h2></div></div>
- <div id="consult-locked" class="locked-content">요약은 내 기록을 바탕으로 만들어집니다. 먼저 <a href="#unlock-area">보관함을 잠금 해제</a>하세요.</div>
- <div id="consult-app" hidden>
-  <div class="card">
-   <div class="actions" style="margin-top:0"><strong id="consultProfile">선택 대상자</strong><label for="summaryPeriod" style="margin-left:auto">기간 선택</label><select id="summaryPeriod" style="min-height:46px;padding:8px;border:1px solid var(--edge);border-radius:10px"><option value="7">최근 7일</option><option value="30">최근 30일</option></select></div>
-   <div class="statrow" style="margin-top:18px">
-    <div class="stat"><strong id="sumCount">0</strong><span>해당 기간 기록 수</span></div>
-    <div class="stat"><strong id="sumDays">0</strong><span>기록된 날짜</span></div>
-    <div class="stat"><strong id="sumMissing">7</strong><span>기록이 없는 날짜</span></div>
-    <div class="stat"><strong id="sumQuestions">0</strong><span>의료진 질문</span></div>
-   </div>
-   <p class="note" style="margin-top:14px">기록이 없는 날짜는 정상이라는 뜻이 아닙니다. 이 요약은 관찰 메모이며 진단 점수나 복약 확인서가 아닙니다.</p>
-   <h3 style="margin-top:22px">진료 때 보여 줄 메모</h3>
-   <textarea readonly id="summaryText" class="summary-box" aria-label="선택한 대상자의 진료 요약"></textarea>
-   <div class="actions"><button type="button" id="copySummary" class="btn primary">진료 메모 복사</button><button type="button" id="printSummary" class="btn">인쇄·PDF로 저장</button></div>
-   <p id="consultStatus" role="status" aria-live="polite" class="statusline"></p>
-   <h3 style="margin-top:20px">최근 날짜별 기록</h3><div id="timeline" class="day-list"></div>
+ </section>
+
+ <section id="help" class="panel section" aria-labelledby="helpTitle">
+  <h2 id="helpTitle">급할 때 도움받기</h2>
+  <p><strong>가족이 실종되었거나 위험한 상황이면 즉시 신고하세요.</strong> 갑작스러운 의식 변화·심한 혼란 등 응급상황은 119에 연락하세요.</p>
+  <div class="help-links"><a href="tel:112">실종 신고 112</a><a href="tel:119">응급 신고 119</a></div>
+  <p style="margin-top:14px">치매 관련 상담: <a href="tel:18999988"><strong>1899-9988</strong></a> · <a href="https://www.nid.or.kr/" target="_blank" rel="noopener noreferrer">중앙치매센터</a></p>
+ </section>
+
+ <details class="panel" id="settings">
+  <summary>설정 · 암호화 백업</summary>
+  <p class="note">새 기록은 이 기기 브라우저의 암호화 보관함에 저장됩니다. 기존 ApuDa 기록은 자동으로 가져오거나 삭제하지 않습니다.</p>
+  <div id="backup-locked" class="subtle">먼저 수첩을 열어 주세요.</div>
+  <div id="backup-open" hidden>
+   <button id="exportBackup" class="btn" type="button">암호화 백업 파일 받기</button>
+   <p id="backupStatus" class="status" role="status" aria-live="polite"></p>
   </div>
- </div>
-</section>
-<section id="living" class="section" aria-labelledby="living-title">
- <div class="section-top"><div><p class="kicker">EVERYDAY LIFE</p><h2 id="living-title">생활 관리와 안전한 돌봄</h2></div></div>
- <div class="grid">
-  <div class="card"><span class="card-icon" aria-hidden="true">☀</span><h3>익숙한 하루 만들기</h3><p>가능한 범위에서 일정한 수면·식사 시간, 안전한 산책, 가벼운 활동을 유지하세요. 무리한 운동보다 지속 가능한 생활이 중요합니다.</p></div>
-  <div class="card"><span class="card-icon" aria-hidden="true">♡</span><h3>대화와 감정 살피기</h3><p>천천히 한 번에 한 가지 질문을 하고, 이해할 시간을 충분히 주세요. 불안·통증·수면 문제 등 행동 변화의 원인을 살펴보세요.</p></div>
-  <div class="card"><span class="card-icon" aria-hidden="true">⌂</span><h3>집 안 안전 점검</h3><p>넘어질 수 있는 물건·미끄러운 바닥·조명·화재 위험을 확인하고, 이동 시 보호자가 안내할 수 있도록 환경을 정돈하세요.</p></div>
- </div>
- <div class="content-grid" style="margin-top:17px">
- <div class="card warm">
-  <h3>배회·실종에 대비하기</h3>
-  <ul><li>최근 사진과 보호자 연락처, 자주 가는 장소를 안전하게 정리합니다.</li><li>치매안심센터에 배회가능 어르신 인식표와 지문 사전등록 등 지원을 문의합니다.</li><li>실종이 발생하면 지체하지 말고 경찰 112에 신고합니다.</li></ul>
-  <div class="linkrow"><a href="tel:112">실종 신고 112</a><a href="tel:119">응급 신고 119</a></div>
- </div>
- <div class="card">
-  <h3>공식 상담·지원</h3>
-  <p>치매상담콜센터 <strong>1899-9988</strong> (중앙치매센터, 오전 7시~오후 10시)에서 치매 관련 정보와 돌봄 상담을 받을 수 있습니다.</p>
-  <div class="linkrow"><a href="tel:18999988">1899-9988 전화</a><a href="https://www.nid.or.kr/" target="_blank" rel="noopener noreferrer">중앙치매센터</a></div>
-  <p class="note">지역별 치매안심센터에서는 상담·검진 연계·가족 지원·실종 예방 사업 등을 안내받을 수 있습니다.</p>
- </div>
- </div>
-</section>
-<section id="privacy" class="section" aria-labelledby="privacy-title">
- <div class="section-top"><div><p class="kicker">DATA & PRIVACY</p><h2 id="privacy-title">암호화 백업과 개인정보</h2></div></div>
- <div class="content-grid">
-  <div class="card">
-   <h3>내 기록의 암호화 백업</h3>
-   <p>현재 기기에서 암호화된 보관함 파일을 내려받아 별도로 보관할 수 있습니다. 파일 안의 돌봄 기록은 암호화되어 있으며, 파일을 열려면 보관함 비밀번호가 필요합니다.</p>
-   <div id="backup-locked" class="locked-content">먼저 보관함 잠금을 해제해 주세요.</div>
-   <div id="backup-open" hidden>
-    <button type="button" class="btn primary" id="exportBackup">암호화 백업 파일 만들기</button>
-    <p id="backupStatus" role="status" aria-live="polite" class="statusline"></p>
-    <p class="note">파일 저장은 브라우저 다운로드 목록에서 직접 확인해 주세요. 보관함 자동 동기화·새 기기 복원은 현재 제공되지 않습니다.</p>
-   </div>
-  </div>
-  <div class="card">
-   <h3>데이터 보호 원칙</h3>
-   <ul><li>새 앱 기록은 <strong>AES-256-GCM 암호화</strong> 후 이 브라우저의 IndexedDB에 저장합니다.</li><li>기록·비밀번호를 앱 서버로 자동 전송하지 않습니다.</li><li>기기 분실·브라우저 데이터 삭제·암호 분실 시 복구할 수 없을 수 있습니다.</li><li>보관함을 열어 놓은 동안 화면·클립보드·인쇄물은 별도로 보호해야 합니다.</li><li>동시 탭에서 충돌이 발견되면 덮어쓰지 않고 저장을 중단합니다.</li></ul>
-   <p class="note">기존 돌봄 기록은 <a href="/memory/#care-diary">종전 기록함</a>에 그대로 남아 있으며 자동으로 이 보관함에 이전하지 않습니다. 종전 기록함은 암호화되지 않은 상태로 저장되어 있으므로 공용 기기에서 열지 마세요. 공개 배포 전 모바일 실기기·보안 검증이 필요합니다.</p>
-  </div>
- </div>
-</section>
-<footer class="footer">
- <p><strong>ApuDa Memory</strong> · 치매·인지건강 가족 돌봄 도우미 · 개발 미리보기</p>
- <p>환자교육·돌봄 기록용 정보입니다. 개인의 진단과 치료는 담당 의료진과 상의하세요. 공식 근거: <a href="https://www.nmc.or.kr/nmc/contents/nid_activities" target="_blank" rel="noopener noreferrer">국립중앙의료원 중앙치매센터 안내</a> · <a href="https://www.nid.or.kr/" target="_blank" rel="noopener noreferrer">중앙치매센터</a>.</p>
- <p>© ApuDa. 암호화된 개인 보관함의 데이터는 서비스 서버에 전송되지 않습니다.</p>
-</footer>
+  <p class="note-warn"><strong>중요:</strong> 비밀번호를 잊거나 브라우저 데이터를 삭제하면 복구하지 못할 수 있습니다. 백업은 다운로드 후 기기 파일 목록에서 확인하세요. 새 기기 복원은 아직 지원하지 않습니다.</p>
+  <p class="note">이전 버전에서 작성한 기록은 <a href="/memory/#care-diary">기존 돌봄일지</a>에서 확인할 수 있습니다. 이전 기록은 암호화되지 않았으므로 공용 기기에서는 열지 마세요.</p>
+ </details>
+ <footer>ApuDa Memory · 보호자 기록용 도구, 치매 진단·치료를 대체하지 않습니다. <strong>개발 미리보기</strong></footer>
 </main>
 <pre id="printSheet" aria-label="인쇄용 진료 요약"></pre>
 <script type="module" src="./app.mjs"></script>
