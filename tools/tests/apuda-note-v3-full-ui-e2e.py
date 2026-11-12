@@ -359,7 +359,7 @@ try:
             tab_entry.wait_for_function(
                 """([key,count]) => !entrySavePending &&
                   JSON.parse(localStorage.getItem('apuda_cancer_care_v1'))[key].length===count+1""",
-                [saved_key,before_count],timeout=10000)
+                arg=[saved_key,before_count],timeout=10000)
             check(label+" persists and then reports success",
                   len(json_storage(tab_entry,"apuda_cancer_care_v1")[saved_key])==before_count+1 and
                   tab_entry.locator('#toast').inner_text()==message)
