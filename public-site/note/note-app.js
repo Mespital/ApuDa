@@ -9,19 +9,21 @@ var defaultState={profile:{name:'',cancer:'',stage:'',treatment:'',goal:'',cycle
   roadmap:[],meds:[],logs:[],labs:[],questions:[],supports:[],distress:[],triage:{items:[],at:0},distressValue:0,meta:{lastBackup:''}};
 function clone(o){return JSON.parse(JSON.stringify(o))}
 var NOTE_STORAGE=window.ApuDaNoteStorage;
+var NOTE_WRITE_FENCE=window.ApuDaNoteV3WriteFence;
 function validBackup(d){return !!NOTE_STORAGE&&NOTE_STORAGE.validState(d)}
 window.validBackup=validBackup;
 var noteLoadError=false;
 function load(){
   noteLoadError=false;
   try{
-    var raw=localStorage.getItem(KEY);if(!raw)return clone(defaultState);
+    var raw=localStorage.getItem(KEY);noteExpectedRaw=raw;if(!raw)return clone(defaultState);
     var x=JSON.parse(raw);if(!validBackup(x))throw new Error('invalid-local-note');
     var s=Object.assign(clone(defaultState),x);s.profile=Object.assign(clone(defaultState.profile),x.profile||{});
     if(!s.triage||!Array.isArray(s.triage.items))s.triage={items:[],at:0};if(!Array.isArray(s.labs))s.labs=[];if(!s.checks||typeof s.checks!=='object')s.checks={};['devices','rxCombo','rxPlan'].forEach(function(k){if(!Array.isArray(s.profile[k]))s.profile[k]=[]});return s;
   }catch(e){noteLoadError=true;return clone(defaultState);}
 }
 
+var noteExpectedRaw=null;
 var state=load();
 function invalidateUndo(){
   if(noteUndo)noteUndo.invalidate();undoToken='';
@@ -30,8 +32,8 @@ function invalidateUndo(){
 function save(){
   if(noteLoadError){state=load();toast('기존 기록을 읽지 못해 새 기록으로 덮어쓰지 않았어요. 원본 파일을 먼저 받아 보관해 주세요.');throw new Error('unreadable-local-note');}
   invalidateUndo();
-  try{var raw=JSON.stringify(state);localStorage.setItem(KEY,raw);if(localStorage.getItem(KEY)!==raw)throw new Error('not-saved')}
-  catch(e){state=load();renderAll();toast('저장 공간이 부족하거나 저장이 차단됐어요. 기록은 저장되지 않았어요. 백업 후 기기 설정을 확인해 주세요.');throw e}
+  try{var raw=JSON.stringify(state);noteExpectedRaw=NOTE_WRITE_FENCE.write(localStorage,KEY,noteExpectedRaw,raw)}
+  catch(e){state=load();renderAll();toast(e.message==='records-changed'?'다른 창에서 기록이 수정돼 덮어쓰지 않았어요. 최신 기록을 확인해 주세요.':'저장 공간이 부족하거나 저장이 차단됐어요. 기록은 저장되지 않았어요. 백업 후 기기 설정을 확인해 주세요.');throw e}
   renderAll();
 }
 function $(s){return document.querySelector(s)}
@@ -377,10 +379,17 @@ function findTopic(text){
 }
 
 /* ═════════ 대화 렌더 ═════════ */
-var chat=[];try{chat=JSON.parse(localStorage.getItem(CHAT_KEY)||'[]')}catch(e){chat=[]}
+var chat=[],chatExpectedRaw=null;try{chatExpectedRaw=localStorage.getItem(CHAT_KEY);chat=JSON.parse(chatExpectedRaw||'[]')}catch(e){chat=[]}
 var noteUndo=NOTE_STORAGE&&NOTE_STORAGE.createUndo(),undoToken='';
 function armUndo(before){undoToken=noteUndo.arm(before,JSON.stringify(state))}
-function saveChat(){chat=chat.slice(-60);try{localStorage.setItem(CHAT_KEY,JSON.stringify(chat))}catch(e){}}
+function saveChat(){
+  chat=chat.slice(-60);
+  try{chatExpectedRaw=NOTE_WRITE_FENCE.write(localStorage,CHAT_KEY,chatExpectedRaw,JSON.stringify(chat));return true}
+  catch(e){
+    try{chatExpectedRaw=localStorage.getItem(CHAT_KEY);chat=JSON.parse(chatExpectedRaw||'[]')}catch(ignore){chat=[]}
+    toast(e.message==='records-changed'?'다른 창에서 대화 기록이 변경돼 덮어쓰지 않았어요. 화면을 다시 열어 확인해 주세요.':'대화를 저장하지 못했어요. 백업과 기기의 저장 공간을 확인해 주세요.');return false;
+  }
+}
 function scrollBottom(){window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})}
 function linkBtns(links){return (links||[]).map(function(l){return '<button type="button" onclick="'+esc(l[1])+'">'+esc(l[0])+'</button>'}).join('')}
 function callBtns(){var p=state.profile,h='';
@@ -963,7 +972,7 @@ function renderSOS(){
 function triage(silent){
   var boxes=[].slice.call(document.querySelectorAll('#sh-sos [data-level]'));
   var items=boxes.filter(function(x){return x.checked}).map(function(x){return x.value});
-  if(!silent){state.triage={items:items,at:items.length?Date.now():0};localStorage.setItem(KEY,JSON.stringify(state))}
+  if(!silent){state.triage={items:items,at:items.length?Date.now():0};save()}
   var red=items.filter(function(v){return v.indexOf('red')===0}).length,amb=items.length-red,el=$('#triageResult');
   if(red&&!silent)el.scrollIntoView({block:'nearest',behavior:'smooth'});if(red){el.className='result red';el.innerHTML='<b>지금 바로 치료병원 또는 응급실에 연락하세요.</b><br>혼자 운전해서 가지 말고, 숨쉬기 힘들거나 의식이 처지면 119를 부르세요. 연락할 때 체온·증상 시작 시각·마지막 치료 날짜를 함께 말하면 빨라요.'}
   else if(amb){el.className='result amber';el.innerHTML='<b>오늘 안에 치료병원에 상담하세요.</b><br>증상이 빠르게 나빠지면 바로 연락하거나 응급실로 가세요.'}
