@@ -26,6 +26,7 @@ function load(){
 
 var noteExpectedRaw=null;
 var noteWritesPaused=false,chatWritesPaused=false,unsavedCaptureFailed=false;
+var profileSavePending=false,profilePendingRaw=null,questionSavePending=false;
 var state=load();
 function invalidateUndo(){
   if(noteUndo)noteUndo.invalidate();undoToken='';
@@ -905,7 +906,32 @@ function qItem(q){return '<div class="item'+(q.answer?' done':'')+'"><div class=
   '<div class="addline" style="margin-top:6px"><input placeholder="들은 답변 메모" value="'+esc(q.answer||'')+'" onchange="answerQ(\''+q.id+'\',this.value)"><span></span></div></div>'}
 window.addSched=function(e){e.preventDefault();var f=e.target;state.roadmap.push({id:uid(),date:f.date.value,time:'',type:/항암|방사선|수술|주사/.test(f.title.value)?'치료':/CT|MRI|PET|검사|채혈|내시경/i.test(f.title.value)?'검사':'일정',title:f.title.value.trim(),memo:'',status:'planned',createdAt:Date.now()});save();toast('일정을 추가했어요')};
 window.addMed=function(e){e.preventDefault();var v=e.target.t.value.trim();var o=interpret('약: '+v);if(!o.saved.length){state.meds.unshift({id:uid(),name:v,dose:'',schedule:'',purpose:'',type:'기타',active:'yes',memo:today()+' 시작',createdAt:Date.now()})}save();toast('약을 추가했어요')};
-window.addQ=function(e){e.preventDefault();state.questions.unshift({id:uid(),question:e.target.t.value.trim(),priority:'mid',answer:'',createdAt:Date.now()});save();toast('질문을 추가했어요')};
+window.addQ=async function(e){
+  e.preventDefault();
+  if(questionSavePending)return;
+  if(noteLoadError||noteWritesPaused||hasUnsavedDraft()){
+    toast('저장되지 않은 기록이 있어 질문을 추가하지 않았어요. 임시 사본을 확인하세요.');return;
+  }
+  var form=e.target,question=String(form.t&&form.t.value||'').trim();
+  if(!question)return;
+  var controls=[].slice.call(form.querySelectorAll('input,button'));
+  var priorDisabled=controls.map(function(c){return c.disabled;});
+  questionSavePending=true;form.setAttribute('aria-busy','true');
+  controls.forEach(function(c){c.disabled=true;});
+  state.questions.unshift({id:uid(),question:question,priority:'mid',answer:'',createdAt:Date.now()});
+  var attempted=JSON.stringify(state);
+  try{
+    await Promise.resolve(save());
+    if(noteWritesPaused||hasUnsavedDraft())throw new Error('records-changed');
+    toast('질문을 추가했어요');
+  }catch(err){
+    if(!hasUnsavedDraft())holdUnsaved('note',attempted,err);
+    toast('질문을 저장하지 못했습니다. 입력 내용을 임시 사본에 보관했어요.');
+  }finally{
+    questionSavePending=false;form.removeAttribute('aria-busy');
+    controls.forEach(function(c,i){c.disabled=priorDisabled[i];});
+  }
+};
 window.toggleSched=function(id){var x=state.roadmap.find(function(r){return r.id===id});if(x){x.status=x.status==='done'?'planned':'done';save()}};
 window.toggleMed=function(id){var x=state.meds.find(function(r){return r.id===id});if(x){x.active=x.active==='yes'?'no':'yes';x.memo=[x.memo,today()+(x.active==='yes'?' 재개':' 중단')].filter(Boolean).join(' · ');save()}};
 window.starQ=function(id){var x=state.questions.find(function(r){return r.id===id});if(x){x.priority='high';save()}};
@@ -1017,7 +1043,43 @@ $('#sh-sos').addEventListener('change',function(e){if(e.target.matches('[data-le
 
 /* ═════════ 설정 ═════════ */
 function fillProfile(){var f=$('#profileForm');Object.keys(defaultState.profile).forEach(function(k){if(f[k]&&!Array.isArray(defaultState.profile[k]))f[k].value=state.profile[k]||''});[].forEach.call(f.querySelectorAll('[name=dev]'),function(b){b.checked=(state.profile.devices||[]).indexOf(b.value)>=0})}
-$('#profileForm').addEventListener('submit',function(e){e.preventDefault();var f=e.target;Object.keys(defaultState.profile).forEach(function(k){if(f[k]&&!Array.isArray(defaultState.profile[k])&&typeof f[k].value==='string')state.profile[k]=f[k].value.trim()});state.profile.devices=[].filter.call(f.querySelectorAll('[name=dev]'),function(b){return b.checked}).map(function(b){return b.value});save();closeSheet();toast('내 정보를 저장했어요')});
+/* First staged async UI conversion: the existing V3 writer remains sync.
+ * Only show success when a future Promise-based writer has actually settled.
+ */
+$('#profileForm').addEventListener('submit',async function(e){
+  e.preventDefault();
+  if(profileSavePending)return;
+  if(noteLoadError||noteWritesPaused||hasUnsavedDraft()){
+    toast('저장되지 않은 수정이 있어 추가 저장을 멈췄습니다. 먼저 임시 사본을 보관하세요.');
+    return;
+  }
+  var form=e.target;
+  var controls=[].slice.call(form.querySelectorAll('input,button'));
+  var priorDisabled=controls.map(function(c){return c.disabled;});
+  var next=clone(state);
+  Object.keys(defaultState.profile).forEach(function(k){
+    if(form[k]&&!Array.isArray(defaultState.profile[k])&&typeof form[k].value==='string')
+      next.profile[k]=form[k].value.trim();
+  });
+  next.profile.devices=[].filter.call(form.querySelectorAll('[name=dev]'),function(b){return b.checked}).map(function(b){return b.value});
+  profilePendingRaw=JSON.stringify(next);
+  profileSavePending=true;form.setAttribute('aria-busy','true');
+  controls.forEach(function(c){c.disabled=true;});
+  try{
+    state=next;
+    await Promise.resolve(save());
+    if(noteWritesPaused||hasUnsavedDraft())throw new Error('records-changed');
+    closeSheet();toast('내 정보를 저장했어요');
+  }catch(err){
+    // Existing save() captures failed raw writes itself. Future async adapters
+    // must also preserve the attempted form when a Promise rejects.
+    if(!hasUnsavedDraft())holdUnsaved('note',profilePendingRaw,err);
+    toast('환자정보를 저장하지 못했습니다. 입력값을 보존했으니 임시 사본을 내려받아 확인하세요.');
+  }finally{
+    profileSavePending=false;profilePendingRaw=null;form.removeAttribute('aria-busy');
+    controls.forEach(function(c,i){c.disabled=priorDisabled[i];});
+  }
+});
 window.snooze=function(k){var o={};try{o=JSON.parse(localStorage.getItem('apuda_note_nudge')||'{}')}catch(e){}o[k]=Date.now();try{localStorage.setItem('apuda_note_nudge',JSON.stringify(o))}catch(e){}renderHome()};
 function downloadNoteBlob(content,name){
   var u=URL.createObjectURL(new Blob([content],{type:'application/json'})),a=document.createElement('a');
@@ -1088,6 +1150,9 @@ window.resetAll=function(){
  * Keep the user's exact field values in the review-only draft vault, not Drive.
  */
 function pendingProfileRaw(){
+  // The submitted state already matches form controls while an async commit
+  // is pending. Do not silently rebase that pending submission.
+  if(profileSavePending&&profilePendingRaw)return profilePendingRaw;
   var sheet=$('#sh-settings'),form=$('#profileForm');
   if(!sheet||!sheet.classList.contains('open')||!form)return null;
   var pending=clone(state),dirty=false;
@@ -1106,6 +1171,11 @@ function pendingProfileRaw(){
 }
 window.addEventListener('storage',function(e){
   if(e.key!==KEY)return;
+  if(questionSavePending){
+    holdUnsaved('note',JSON.stringify(state),new Error('records-changed'));
+    toast('다른 탭의 변경과 질문 저장이 겹쳤습니다. 임시 사본을 확인해 주세요.');
+    return;
+  }
   var pending=pendingProfileRaw();
   if(pending){
     holdUnsaved('note',pending,new Error('records-changed'));

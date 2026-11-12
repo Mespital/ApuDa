@@ -203,6 +203,92 @@ try:
 
         # No user data at any point: localhost-only, new profile, all synthetic.
         check("test runs only against localhost", urlparse(a.url).hostname == "127.0.0.1")
+
+        # First staged async UI call sites: real profile and question forms.
+        # Mock writer returns a delayed Promise. No actual writes occur until
+        # the test explicitly releases the synthetic commit gate.
+        ack_context = browser.new_context(accept_downloads=True,service_workers="block",locale="ko-KR")
+        ack_context.add_init_script(script=seed_script)
+        ack_context.route("**/*", local_only)
+        ack = new_tab(ack_context)
+        ack.evaluate("""() => {
+            const legacySave=window.save;
+            window.save=()=>new Promise((resolve,reject)=>{
+                window.__ackResolve=()=>{try{resolve(legacySave());}catch(err){reject(err);}};
+                window.__ackReject=()=>reject(new Error('synthetic async reject'));
+            });
+        }""")
+        ack.locator('button[aria-label="내 정보와 설정"]').click()
+        ack.locator('#profileForm input[name="name"]').fill("가상 지연 저장 정보")
+        ack.locator('#profileForm button').click()
+        ack.wait_for_function("() => profileSavePending && typeof __ackResolve==='function'")
+        check("profile submit waits for async commit",ack.evaluate("profileSavePending") and
+              ack.locator('#sh-settings').evaluate("(x)=>x.classList.contains('open')"))
+        check("profile submit disables controls and indicates busy",ack.locator('#profileForm input[name="name"]').is_disabled() and
+              ack.locator('#profileForm button').is_disabled() and
+              ack.locator('#profileForm').get_attribute('aria-busy')=='true')
+        check("pending commit has not written record",
+              json_storage(ack, "apuda_cancer_care_v1")["profile"]["name"] == "가상 초기 기록")
+        check("no premature success toast",ack.locator('#toast').inner_text()!='내 정보를 저장했어요')
+        ack.evaluate("window.__ackResolve()")
+        ack.wait_for_function("() => !profileSavePending && localStorage.getItem('apuda_cancer_care_v1').includes('가상 지연 저장 정보')")
+        check("profile success follows commit",json_storage(ack,"apuda_cancer_care_v1")["profile"]["name"]=="가상 지연 저장 정보" and
+              ack.locator('#toast').inner_text()=='내 정보를 저장했어요' and
+              not ack.locator('#sh-settings').evaluate("(x)=>x.classList.contains('open')"))
+
+        # Rejected asynchronous profile save: keep form, raw draft and warning.
+        fail= new_tab(ack_context)
+        fail.evaluate("""() => {window.save=()=>Promise.reject(new Error('synthetic async rejected'));}""")
+        fail.locator('button[aria-label="내 정보와 설정"]').click()
+        fail.locator('#profileForm input[name="name"]').fill("가상 실패한 정보")
+        fail.locator('#profileForm button').click()
+        fail.wait_for_function("() => !profileSavePending && ApuDaNoteUnsavedDraft.count()>0")
+        check("async profile failure preserves form and draft",fail.locator('#sh-settings').evaluate("(x)=>x.classList.contains('open')") and
+              fail.locator('#note-unsaved-banner').is_visible() and
+              json.loads(fail.evaluate("ApuDaNoteUnsavedDraft.exportText()"))['items'][0]['raw'].find('가상 실패한 정보')!=-1)
+        check("async profile failure re-enables controls",not fail.locator('#profileForm button').is_disabled() and
+              not fail.locator('#profileForm input[name="name"]').is_disabled() and
+              fail.locator('#profileForm').get_attribute('aria-busy') is None)
+        check("rejected profile save leaves confirmed record unchanged",
+              json_storage(fail, "apuda_cancer_care_v1")["profile"]["name"] == "가상 지연 저장 정보" and
+              fail.locator('#toast').inner_text()!='내 정보를 저장했어요')
+
+        # Real dynamic question form on plan tab (not a toy stand-in).
+        q= new_tab(ack_context)
+        q.evaluate("""() => {planTab='qs';renderPlan();tab('plan');
+            const legacySave=window.save;
+            window.save=()=>new Promise((resolve,reject)=>{
+                window.__ackResolve=()=>{try{resolve(legacySave());}catch(err){reject(err);}};
+                window.__ackReject=()=>reject(new Error('synthetic async reject'));
+            });
+        }""")
+        question_form=q.locator('#v-plan form[onsubmit*="addQ"]')
+        question_form.locator('input[name="t"]').fill("가상 비동기 진료 질문")
+        question_form.locator('button').click()
+        q.wait_for_function("() => questionSavePending && typeof __ackResolve==='function'")
+        check("question submit waits for async writer",q.evaluate("questionSavePending") and
+              question_form.get_attribute('aria-busy')=='true' and question_form.locator('button').is_disabled())
+        check("question write not yet confirmed",len(json_storage(q,'apuda_cancer_care_v1')['questions'])==1)
+        check("question has no premature success toast",q.locator('#toast').inner_text()!='질문을 추가했어요')
+        q.evaluate("window.__ackResolve()")
+        q.wait_for_function("() => !questionSavePending && JSON.parse(localStorage.getItem('apuda_cancer_care_v1')).questions.length===2")
+        check("question success appears after commit",json_storage(q,'apuda_cancer_care_v1')['questions'][0]['question']=='가상 비동기 진료 질문' and
+              q.locator('#toast').inner_text()=='질문을 추가했어요')
+
+        rejected_q=new_tab(ack_context)
+        rejected_q.evaluate("""() => {planTab='qs';renderPlan();tab('plan'); window.save=()=>Promise.reject(new Error('synthetic async rejected'));}""")
+        qform=rejected_q.locator('#v-plan form[onsubmit*="addQ"]')
+        qform.locator('input[name="t"]').fill("가상 저장 실패 질문")
+        qform.locator('button').click()
+        rejected_q.wait_for_function("() => !questionSavePending && ApuDaNoteUnsavedDraft.count()>0")
+        check("rejected question is captured and displayed",
+              rejected_q.locator('#note-unsaved-banner').is_visible() and
+              '가상 저장 실패 질문' in rejected_q.evaluate('ApuDaNoteUnsavedDraft.exportText()'))
+        check("rejected question is not in persisted note",
+              len(json_storage(rejected_q,'apuda_cancer_care_v1')['questions'])==2 and
+              rejected_q.locator('#toast').inner_text()!='질문을 추가했어요')
+        ack_context.close()
+
         context.close()
         browser.close()
 finally:
