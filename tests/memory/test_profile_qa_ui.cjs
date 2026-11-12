@@ -41,7 +41,7 @@ function boot(hostname){
     createElement:tag=>new Element(tag)
   };
   const ctx={document,location:{hostname},navigator:{clipboard:{writeText:async s=>{copied.push(s)}}},
-    window:{print:()=>printer.count++,confirm:()=>confirmState.accepted},Date,console};
+    window:{print:()=>printer.count++,confirm:message=>{confirmState.lastMessage=message;return confirmState.accepted}},Date,console};
   vm.createContext(ctx);
   new vm.Script(program).runInContext(ctx);
   return {els,copied,printer,ctx,confirmState};
@@ -104,6 +104,7 @@ function textContentOfList(el){return el.children.map(c=>c.textContent).join(' |
   app.els['assignment-consent'].checked=true;
   app.confirmState.accepted=false;
   assignCurrent();
+  assert.match(app.confirmState.lastMessage,/미분류 가상 기록/,'confirmation shows exact note preview');
   assert.equal(app.els['record-count'].textContent,'3건','confirm cancel preserves A records');
   assert.equal(app.els['unassigned-count'].textContent,'1건','confirm cancel preserves unassigned record');
   app.confirmState.accepted=true;
@@ -124,6 +125,10 @@ function textContentOfList(el){return el.children.map(c=>c.textContent).join(' |
   assert.equal(app.els['assignment-undo'].hidden,true,'undo is one-use');
   assert.doesNotMatch(app.els['report'].textContent,/미분류 가상 기록/,'undo removes previously assigned record from summary');
   app.els['assignment-consent'].checked=true;
+  app.confirmState.accepted=false;
+  click(app,'assignment-reset');
+  assert.equal(app.els['assignment-consent'].checked,true,'canceling reset preserves review consent');
+  app.confirmState.accepted=true;
   click(app,'assignment-reset');
   assert.equal(app.els['assignment-consent'].checked,false,'reset cancels pending consent');
   assert.equal(app.els['record-count'].textContent,'3건','reset restores demo state');
