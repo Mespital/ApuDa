@@ -31,7 +31,7 @@ assert.throws(()=>scopedRecords(withBoth),/임의 프로필 ID/);
 assert.throws(()=>scopedRecords(withBoth,'e4ad61f3-4cf2-40a8-a38c-1d098c91d644'),/프로필을 찾을 수 없습니다/);
 assert.throws(()=>updateScopedRecord(withBoth,alpha,item('beta-1')),/다른 대상자/);
 assert.throws(()=>removeScopedRecord(withBoth,alpha,'beta-1'),/다른 대상자/);
-assert.throws(()=>appendScopedRecord(withBoth,alpha,item('beta-1')),/중복 기록 ID/);
+assert.throws(()=>appendScopedRecord(withBoth,alpha,item('beta-1')),/기록 ID 중복/);
 const updated=updateScopedRecord(withBoth,alpha,item('alpha-1','2026-11-12','수정된 가상 기록'));
 assert.equal(scopedRecords(updated,alpha)[0].text,'수정된 가상 기록');
 assert.equal(scopedRecords(withBoth,alpha)[0].text,'합성 관찰 기록');
