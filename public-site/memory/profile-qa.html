@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>ApuDa Memory | 가상 대상자 분리 테스트</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;--navy:#12304c;--blue:#225fd4;--line:#d6e2f0;--bg:#f6f9ff;--muted:#4d6379;color:var(--navy);background:var(--bg)}
+*{box-sizing:border-box}
+body{margin:0;font-size:18px;line-height:1.65}
+main{width:min(980px,100%);margin:auto;padding:22px 18px 70px}
+a{color:#1646ac}
+header{padding:22px 0 10px}
+header a{font-weight:700}
+h1{font-size:clamp(26px,4vw,36px);line-height:1.35;margin:12px 0}
+h2{font-size:23px;margin:0 0 12px}
+h3{font-size:19px;margin:0 0 8px}
+p{margin:8px 0 12px}
+small,.note{color:var(--muted);font-size:15px}
+.alert{background:#fff5e6;border:1px solid #e6bc81;border-radius:14px;padding:16px;margin:14px 0 23px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:17px;padding:22px;margin:18px 0}
+.switches{display:flex;flex-wrap:wrap;gap:10px}
+button{font:inherit;min-height:48px;cursor:pointer;border:1px solid #98b5de;background:#f4f8ff;color:#1646ac;border-radius:11px;padding:10px 18px;font-weight:750}
+button[aria-pressed="true"]{background:#225fd4;color:#fff;border-color:#225fd4}
+button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #bd6c10;outline-offset:4px}
+.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}
+.metric{border:1px solid var(--line);border-radius:12px;padding:15px;background:#f9fbff}
+.metric strong{display:block;font-size:28px;font-variant-numeric:tabular-nums}
+.day{border:1px solid var(--line);border-radius:12px;padding:12px;margin:8px 0}
+.day-missing{background:#fafafa;color:#4b5b68}
+.day header{padding:0;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.day dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0 0}
+.day dl div{padding:8px;background:#f7faff;border-radius:8px}
+dt{color:var(--muted);font-size:14px;font-weight:700}
+dd{margin:0;overflow-wrap:anywhere;font-size:16px}
+details{margin-top:15px}
+summary{font-weight:750;color:#1646ac;cursor:pointer;padding:8px 0}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f7faff;border-radius:10px;padding:17px;font:16px/1.7 inherit}
+ul{padding-left:1.3em}
+li{margin:6px 0}
+.tag{display:inline-block;border:1px solid #f0c18d;background:#fff5e6;border-radius:30px;padding:3px 10px;font-size:14px}
+#qa-status{min-height:30px;font-weight:700;color:#194c90}
+#qa-controls[hidden],#qa-results[hidden]{display:none}
+@media(max-width:650px){body{font-size:17px}main{padding:16px 12px 40px}.panel{padding:17px 13px}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.day dl{grid-template-columns:1fr}.switches button{flex:1 1 42%}}
+@media(max-width:360px){.metrics{grid-template-columns:1fr}button{width:100%}}
+@media print{
+@page{size:A4;margin:16mm}
+body{background:white;color:#111}
+header,.alert,#qa-controls,.metrics,#questions,#timeline,.note,.action-row{display:none!important}
+main{padding:0;width:auto}
+.panel{border:none;margin:0;padding:0}
+#report{background:white;border:none;padding:0;font-size:11pt;white-space:pre-wrap}
+}
+</style>
+</head>
+<body>
+<main>
+<header><a href="/memory/">ApuDa Memory로 돌아가기</a><p class="note">PR #293 전용 · 프로필 분리 QA 화면</p></header>
+<h1>돌봄 대상자별 진료 요약 테스트</h1>
+<div class="alert">
+  <span class="tag">가상 데이터 전용</span>
+  <p><strong>실제 환자정보를 입력하지 마세요.</strong> 이 화면은 대상자별 기록 분리의 시험용 미리보기입니다. 기록을 저장하거나 기존 JSON을 읽지 않으며, ApuDa 서버로 건강정보를 전송하지 않습니다. 실서비스의 기존 돌봄 기록과는 연결되지 않습니다.</p>
+  <p class="note">실제 ApuDa Memory는 아직 대상자별 분리를 제공하지 않습니다. 여기서 생성한 진료 메모는 의료진에게 제출할 자료가 아닙니다.</p>
+</div>
+<p id="qa-status" role="status" aria-live="polite">QA 화면 사용 가능 여부를 확인하고 있습니다.</p>
+<div id="qa-controls" hidden>
+  <section class="panel" aria-labelledby="select-title">
+    <h2 id="select-title">1. 가상 대상자 선택</h2>
+    <p>선택한 사람의 기록만 표시됩니다. 실제 환자의 실명·생년월일을 요구하지 않습니다.</p>
+    <div class="switches" role="group" aria-label="가상 대상자 선택">
+      <button id="choose-a" type="button" aria-pressed="true">돌봄 대상 A</button>
+      <button id="choose-b" type="button" aria-pressed="false">돌봄 대상 B</button>
+    </div>
+    <p class="note">미분류 기존 기록 예시: <strong id="unassigned-count">0건</strong> — 대상 A·B에 자동 배정하거나 요약에 포함하지 않습니다.</p>
+  </section>
+  <section class="panel" aria-labelledby="period-title">
+    <h2 id="period-title">2. 요약할 기간 선택</h2>
+    <div class="switches" role="group" aria-label="요약 기간">
+      <button id="period-7" type="button" aria-pressed="true">최근 7일</button>
+      <button id="period-30" type="button" aria-pressed="false">최근 30일</button>
+    </div>
+  </section>
+</div>
+<div id="qa-results" hidden>
+  <section class="panel" aria-labelledby="summary-title">
+    <h2 id="summary-title" tabindex="-1">돌봄 대상 A · 최근 7일 요약</h2>
+    <p id="period-range" class="note"></p>
+    <div class="metrics">
+      <div class="metric">기록된 날짜<strong id="observed-days">0일</strong></div>
+      <div class="metric">저장된 기록<strong id="record-count">0건</strong></div>
+      <div class="metric">날짜 기록 없음<strong id="missing-days">0일</strong></div>
+      <div class="metric">진료 질문<strong id="question-count">0개</strong></div>
+    </div>
+    <p class="note">기록이 없는 날짜는 정상 상태라는 뜻이 아닙니다. 기간 중 관찰이 일부 누락될 수 있으며 20건 전체 보관 한도 때문에 완전한 30일 기록이 아닐 수 있습니다.</p>
+  </section>
+  <section id="questions" class="panel" aria-labelledby="questions-title">
+    <h2 id="questions-title">3. 선택한 대상자의 진료 질문</h2>
+    <ul id="question-list"></ul>
+  </section>
+  <section id="timeline" class="panel" aria-labelledby="timeline-title">
+    <h2 id="timeline-title">4. 날짜별 수면·식사·복약 관찰</h2>
+    <div id="recent-days" role="list" aria-label="최근 7일 날짜별 관찰"></div>
+    <details id="older-days-wrap" hidden>
+      <summary>이전 23일 보기</summary>
+      <div id="older-days" role="list" aria-label="이전 날짜별 관찰"></div>
+    </details>
+  </section>
+  <section class="panel" aria-labelledby="report-title">
+    <h2 id="report-title">5. 선택한 대상자의 진료 요약 텍스트</h2>
+    <p>이 화면의 가상 요약만 복사하거나 인쇄할 수 있습니다. 실제 기기 기록은 접근하지 않습니다.</p>
+    <div class="action-row switches">
+      <button id="copy-report" type="button">가상 요약 복사</button>
+      <button id="print-report" type="button">가상 요약 인쇄·PDF</button>
+    </div>
+    <p id="copy-status" role="status" aria-live="polite"></p>
+    <pre id="report" tabindex="0"></pre>
+  </section>
+</div>
+</main>
+<script type="module">
+import {emptyProfileVault,addAnonymousProfile,appendScopedRecord} from './profile-scope.mjs';
+import {buildProfileSummary,buildProfileConsultText,FIELD_TITLES} from './profile-summary.mjs';
+
+const $=id=>document.getElementById(id);
+const allowedHost=location.hostname.startsWith('deploy-preview-') ||
+  ['localhost','127.0.0.1'].includes(location.hostname);
+const A='e4ad61f3-4cf2-40a8-a38c-1d098c91d643';
+const B='e3c55b7d-26ba-4d56-9c78-2875b04f9079';
+let selected=A,days=7,vault,localDate;
+function dateShift(date,offset){
+  const d=new Date(date+'T00:00:00Z');
+  d.setUTCDate(d.getUTCDate()+offset);
+  return d.toISOString().slice(0,10);
+}
+function makeDemo(){
+  const now=new Date(),y=now.getFullYear(),m=String(now.getMonth()+1).padStart(2,'0'),d=String(now.getDate()).padStart(2,'0');
+  localDate=y+'-'+m+'-'+d;
+  vault=addAnonymousProfile(addAnonymousProfile(emptyProfileVault(),A),B);
+  const r=(id,offset,text,fields={})=>({id,date:dateShift(localDate,offset),text,...fields});
+  vault=appendScopedRecord(vault,A,r('qa-a-1',0,'A의 가상 수면 관찰 첫째',{sleep:'나쁨',meal:'부족',question:'가상 A 질문: 수면 상태를 상담하려면?'}));
+  vault=appendScopedRecord(vault,A,r('qa-a-2',0,'A의 가상 수면 관찰 둘째',{sleep:'좋음'}));
+  vault=appendScopedRecord(vault,A,r('qa-a-3',-1,'A의 가상 식사 관찰',{meal:'보통'}));
+  vault=appendScopedRecord(vault,A,r('qa-a-4',-12,'A의 30일 내 가상 관찰',{medicationCheck:'확인 필요'}));
+  vault=appendScopedRecord(vault,B,r('qa-b-1',0,'B의 가상 활동 기록',{sleep:'보통',question:'가상 B 질문: 진료 요약을 보여주는 방법은?'}));
+  vault=appendScopedRecord(vault,B,r('qa-b-2',-18,'B의 30일 내 가상 식사 기록',{meal:'부족'}));
+  vault=appendScopedRecord(vault,B,r('qa-b-3',-40,'30일 전보다 오래된 B 기록',{meal:'좋음'}));
+  vault={...vault,unassigned:[r('qa-unknown',-3,'미분류 가상 기록, 누구에게도 자동 배정하지 않음')]};
+}
+function mark(buttons,chosen){
+  for(const id of buttons)$(id).setAttribute('aria-pressed',String(id===chosen));
+}
+function buildDayCard(item){
+  const card=document.createElement('article');
+  card.className='day'+(item.recordCount?'':' day-missing');
+  card.setAttribute('role','listitem');
+  const head=document.createElement('header');
+  const date=document.createElement('strong');date.textContent=item.date;
+  const count=document.createElement('span');
+  count.textContent=item.recordCount?item.recordCount+'건 기록':'날짜 기록 없음';
+  head.append(date,count);
+  const dl=document.createElement('dl');
+  for(const [key,title] of Object.entries(FIELD_TITLES)){
+    const field=document.createElement('div');
+    const dt=document.createElement('dt');dt.textContent=title;
+    const dd=document.createElement('dd');dd.textContent=item.fields[key].label;
+    field.append(dt,dd);dl.append(field);
+  }
+  card.append(head,dl);
+  return card;
+}
+function render(){
+  const result=buildProfileSummary(vault,selected,days,localDate);
+  const label=selected===A?'A':'B';
+  $('summary-title').textContent='돌봄 대상 '+label+' · 최근 '+days+'일 요약';
+  $('period-range').textContent='가상 기간: '+result.startDate+' ~ '+result.endDate;
+  $('observed-days').textContent=result.observedDays+'일';
+  $('record-count').textContent=result.storedCount+'건';
+  $('missing-days').textContent=result.missingDays+'일';
+  $('question-count').textContent=result.questionCount+'개';
+  const qList=$('question-list');
+  qList.replaceChildren();
+  if(result.questions.length===0){
+    const li=document.createElement('li');li.textContent='작성된 질문이 없습니다.';qList.append(li);
+  }else for(const q of result.questions){
+    const li=document.createElement('li');li.textContent=q.date+' · '+q.text;qList.append(li);
+  }
+  $('recent-days').replaceChildren(...result.daily.slice(0,7).map(buildDayCard));
+  const older=$('older-days-wrap');
+  older.hidden=days!==30;
+  if(older.hidden)older.open=false;
+  $('older-days').replaceChildren(...result.daily.slice(7).map(buildDayCard));
+  $('report').textContent=buildProfileConsultText(vault,selected,days,localDate);
+  $('copy-status').textContent='';
+  mark(['choose-a','choose-b'],selected===A?'choose-a':'choose-b');
+  mark(['period-7','period-30'],days===7?'period-7':'period-30');
+  $('qa-status').textContent='가상 돌봄 대상 '+label+'의 최근 '+days+'일 기록만 화면에 표시 중입니다.';
+}
+if(!allowedHost){
+  $('qa-status').textContent='이 테스트 페이지는 개발 미리보기 또는 로컬 개발 환경에서만 실행할 수 있습니다.';
+}else{
+  makeDemo();
+  $('unassigned-count').textContent=vault.unassigned.length+'건';
+  $('qa-controls').hidden=false;
+  $('qa-results').hidden=false;
+  render();
+  for(const [id,which] of [['choose-a',A],['choose-b',B]]){
+    $(id).addEventListener('click',()=>{
+      selected=which;
+      render();
+      $('summary-title').focus();
+    });
+  }
+  for(const [id,period] of [['period-7',7],['period-30',30]]){
+    $(id).addEventListener('click',()=>{
+      days=period;
+      render();
+      $('summary-title').focus();
+    });
+  }
+  $('copy-report').addEventListener('click',async()=>{
+    try{
+      if(!navigator.clipboard?.writeText)throw Error('clipboard unavailable');
+      await navigator.clipboard.writeText($('report').textContent);
+      $('copy-status').textContent='현재 선택된 가상 대상자 요약만 복사했습니다.';
+    }catch{
+      $('report').focus();
+      $('copy-status').textContent='자동 복사가 지원되지 않습니다. 아래 가상 요약을 선택해 직접 복사하세요.';
+    }
+  });
+  $('print-report').addEventListener('click',()=>window.print());
+}
+</script>
+</body>
+</html>
