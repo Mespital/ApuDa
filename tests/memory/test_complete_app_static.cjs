@@ -27,6 +27,33 @@ for(const id of ['main','createForm','unlockForm','app','profileSelect',
 assert.equal([...page.matchAll(/data-view="(?:today|history|doctor)"/g)].length,3,
  'only 3 primary actions for caregivers');
 assert.ok(!page.includes('id="observeChecks"'),'diagnostic checklist removed from primary flow');
+
+assert.equal([...page.matchAll(/class="service-card"/g)].length,6,
+ 'All six dementia support service groups must appear in the optional hub');
+for(const id of ['allServices','servicesShortcut','servicesNav','serviceStatus','memoryChecks','memoryReview',
+ 'memoryToDiary','memoryResult','routineChecks','routineToDiary','activitySelect','activityGuide',
+ 'activityToDiary','safetyChecks','safetyToDiary','supportTitle','familyTitle']){
+ assert.ok(ids.includes(id),'Full dementia service missing: '+id);
+}
+assert.match(page,/기억·행동 변화 확인/);
+assert.match(page,/하루 생활·약 관리/);
+assert.match(page,/짧고 편안한 인지·대화 활동/);
+assert.match(page,/집 안 안전·배회·실종 예방/);
+assert.match(page,/진료·검사·복지 지원 서비스/);
+assert.match(page,/보호자·가족 지원/);
+assert.match(page,/https:\/\/www\.nid\.or\.kr\//);
+assert.match(page,/https:\/\/www\.longtermcare\.or\.kr\//);
+assert.match(page,/tel:15771000/);
+assert.match(page,/치매 위험 점수가 아닙니다|공식 치매 선별검사가 아니며/);
+assert.match(ui,/function moveToDiary/);
+assert.match(ui,/setStatus\('saveStatus','선택한 내용을 일지에 옮겼습니다/);
+assert.match(ui,/if\(!session\|\|!profileId\)/);
+assert.match(ui,/checkedServices\('memoryChecks'\)/);
+assert.match(ui,/checkedServices\('routineChecks'\)/);
+assert.match(ui,/checkedServices\('safetyChecks'\)/);
+assert.match(ui,/activityToDiary'\)\.addEventListener/);
+assert.doesNotMatch(ui,/\bfetch\s*\(|\bXMLHttpRequest\s*\(/);
+
 assert.match(page,/tel:112/);
 assert.match(page,/tel:119/);
 assert.match(page,/tel:18999988/);
