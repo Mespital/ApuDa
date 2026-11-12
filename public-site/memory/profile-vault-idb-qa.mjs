@@ -50,7 +50,7 @@ export function readQaVault(db) {
  * Injected failures are QA-only and must never be linked to the user UI.
  */
 export function commitLegacyQaStage(db,sourceVault,legacyBackup,plan,{
-  confirmed=false,forceAbort=false,injectDuplicate=false
+  confirmed=false,forceAbort=false,injectDuplicate=false,injectQuotaAbort=false
 }={}) {
   const staged=applyLegacyStaging(sourceVault,legacyBackup,plan,confirmed);
   const candidate=clone(staged.vault);
@@ -65,10 +65,10 @@ export function commitLegacyQaStage(db,sourceVault,legacyBackup,plan,{
     const tx=db.transaction(['vault','audit'],'readwrite');
     const vault=tx.objectStore('vault'),audit=tx.objectStore('audit');
     let outcome=null,why=null;
-    const abort=message=>{why=Error(message);try{tx.abort()}catch{/* already aborted */}};
+    const abort=(message,name='Error')=>{why=Error(message);why.name=name;try{tx.abort()}catch{/* already aborted */}};
     tx.onabort=()=>reject(why||tx.error||Error('QA 트랜잭션 롤백'));
     tx.onerror=()=>{}; // Let request errors abort atomically.
-    tx.oncomplete=()=>resolve(outcome);
+    tx.oncomplete=()=>{if(!outcome)reject(Error('검증 결과가 없어 QA 트랜잭션을 성공으로 처리하지 않았습니다.'));else resolve(outcome)};
 
     const current=vault.get('current');
     current.onsuccess=()=>{
@@ -76,7 +76,7 @@ export function commitLegacyQaStage(db,sourceVault,legacyBackup,plan,{
         const existing=current.result.snapshot;
         const markerRequest=audit.get('staged');
         markerRequest.onsuccess=()=>{
-          if(eq(existing,candidate)&&markerRequest.result?.verified===true){
+          if(eq(existing,candidate)&&eq(markerRequest.result,marker)){
             outcome={committed:false,reason:'already-staged',totalCount:marker.totalCount};
           }else abort('QA 저장소에 다른 기록이나 미검증 표시가 있어 덮어쓰지 않았습니다.');
         };
@@ -85,6 +85,7 @@ export function commitLegacyQaStage(db,sourceVault,legacyBackup,plan,{
       vault.add({key:'current',snapshot:candidate});
       if(injectDuplicate)vault.add({key:'current',snapshot:candidate});
       if(forceAbort){abort('QA 강제 중단으로 전체 롤백');return;}
+      if(injectQuotaAbort){abort('QA 저장 공간 부족 오류 주입: 전체 롤백','QuotaExceededError');return;}
       const verify=vault.get('current');
       verify.onsuccess=()=>{
         if(!verify.result||!eq(verify.result.snapshot,candidate)){
