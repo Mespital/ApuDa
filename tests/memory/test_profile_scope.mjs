@@ -43,7 +43,7 @@ assert.equal(scopedRecords(updated,alpha).length,1);
 const extracted=scopedRecords(withBoth,alpha);
 extracted[0].text='외부 변조';
 assert.equal(scopedRecords(withBoth,alpha)[0].text,'합성 관찰 기록','read results are deep copies');
-assert.throws(()=>addAnonymousProfile(withBoth,alpha),/중복 프로필/);
+assert.throws(()=>addAnonymousProfile(withBoth,alpha),/프로필 중복/);
 assert.throws(()=>appendScopedRecord(withBoth,beta,{...item('bad'),date:'2026-02-30'}),/달력/);
 assert.throws(()=>appendScopedRecord(withBoth,beta,{...item('bad'),rogue:'unknown'}),/알 수 없는/);
 assert.throws(()=>appendScopedRecord(withBoth,beta,{...item('bad'),sleep:'판정'}),/선택값/);
