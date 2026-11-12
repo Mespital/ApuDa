@@ -18,7 +18,7 @@ permissions:
 jobs:
   mobile-public-render:
     name: Chromium mobile public pages
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 12
     steps:
       - name: Check out PR code without credentials
