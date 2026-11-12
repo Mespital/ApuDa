@@ -6,6 +6,8 @@ on:
       - 'public-site/note/**'
       - 'tools/tests/apuda-note-v3-full-ui-e2e.py'
       - 'tools/tests/apuda-note-v3-async-port-browser.py'
+      - 'tools/tests/apuda-note-v3-mutations-browser.py'
+      - 'tools/tests/apuda-note-v3-chat-ack-audit.cjs'
       - '.github/workflows/apuda-note-v3-full-ui.yml'
 permissions:
   contents: read
@@ -30,3 +32,7 @@ jobs:
         run: python tools/tests/apuda-note-v3-full-ui-e2e.py
       - name: Test V3 async write port with synthetic data
         run: python tools/tests/apuda-note-v3-async-port-browser.py
+      - name: Test V3 edit and delete buttons with synthetic data
+        run: python tools/tests/apuda-note-v3-mutations-browser.py
+      - name: Audit incomplete chat acknowledgement paths
+        run: node tools/tests/apuda-note-v3-chat-ack-audit.cjs

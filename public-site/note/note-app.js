@@ -28,6 +28,7 @@ var noteExpectedRaw=null;
 var noteWritesPaused=false,chatWritesPaused=false,unsavedCaptureFailed=false;
 var profileSavePending=false,profilePendingRaw=null,questionSavePending=false;
 var entrySavePending=false,entryPendingRaw=null,entryPendingFormRaw=null;
+var noteMutationPending=false,noteMutationInvoking=false,noteMutationPendingRaw=null;
 var state=load();
 function invalidateUndo(){
   if(noteUndo)noteUndo.invalidate();undoToken='';
@@ -58,6 +59,7 @@ function save(){
   var raw;
   try{
     raw=JSON.stringify(state);
+    if(noteMutationPending&&!noteMutationInvoking)throw new Error('writes-pending');
     if(noteWritesPaused)throw new Error('writes-paused');
     noteExpectedRaw=NOTE_WRITE_FENCE.write(localStorage,KEY,noteExpectedRaw,raw);
   }catch(e){
@@ -927,7 +929,7 @@ function holdEntryFormInput(reason){
  * The existing save() is still synchronous localStorage; no migration occurs.
  */
 async function saveEntryForm(form,apply,success,fail,afterSave){
-  if(entrySavePending||profileSavePending||questionSavePending)return false;
+  if(entrySavePending||profileSavePending||questionSavePending||noteMutationPending)return false;
   if(noteLoadError||noteWritesPaused||hasUnsavedDraft()){
     toast('저장되지 않은 기록이 있어 추가 저장을 멈췄습니다. 먼저 임시 사본을 확인하세요.');return false;
   }
@@ -978,7 +980,7 @@ window.addMed=async function(e){
 };
 window.addQ=async function(e){
   e.preventDefault();
-  if(questionSavePending||entrySavePending)return;
+  if(questionSavePending||entrySavePending||noteMutationPending)return;
   if(noteLoadError||noteWritesPaused||hasUnsavedDraft()){
     toast('저장되지 않은 기록이 있어 질문을 추가하지 않았어요. 임시 사본을 확인하세요.');return;
   }
@@ -1002,11 +1004,81 @@ window.addQ=async function(e){
     controls.forEach(function(c,i){c.disabled=priorDisabled[i];});
   }
 };
-window.toggleSched=function(id){var x=state.roadmap.find(function(r){return r.id===id});if(x){x.status=x.status==='done'?'planned':'done';save()}};
-window.toggleMed=function(id){var x=state.meds.find(function(r){return r.id===id});if(x){x.active=x.active==='yes'?'no':'yes';x.memo=[x.memo,today()+(x.active==='yes'?' 재개':' 중단')].filter(Boolean).join(' · ');save()}};
-window.starQ=function(id){var x=state.questions.find(function(r){return r.id===id});if(x){x.priority='high';save()}};
-window.answerQ=function(id,v){var x=state.questions.find(function(r){return r.id===id});if(x){x.answer=v.trim();save();toast('답변을 저장했어요')}};
-window.delItem=function(type,id){if(!confirm('삭제할까요?'))return;state[type]=state[type].filter(function(x){return x.id!==id});save()};
+/* Phase 3: edit/delete UI routes keep the attempted record in a review-only
+ * draft on failed or concurrent writes. V3 save() remains synchronous for now.
+ */
+async function commitNoteMutation(label,change,success){
+  if(noteMutationPending||profileSavePending||questionSavePending||entrySavePending||
+     noteLoadError||noteWritesPaused||hasUnsavedDraft()){
+    toast('저장 중이거나 미저장 기록이 있어 수정하지 않았어요. 먼저 확인해 주세요.');
+    return false;
+  }
+  var proposal=clone(state);
+  if(change(proposal)===false)return false;
+  noteMutationPendingRaw=JSON.stringify(proposal);
+  noteMutationPending=true;
+  state=proposal;
+  try{
+    var pending;
+    noteMutationInvoking=true;
+    try{pending=save()}finally{noteMutationInvoking=false;}
+    var ack=await Promise.resolve(pending);
+    if(ack===false||(ack&&typeof ack==='object'&&ack.status&&ack.status!=='saved'))
+      throw new Error('commit-not-confirmed');
+    if(noteWritesPaused||hasUnsavedDraft())throw new Error('records-changed');
+    if(success)toast(success);
+    return true;
+  }catch(error){
+    if(!hasUnsavedDraft())holdUnsaved('note',noteMutationPendingRaw,error);
+    toast(label+'을(를) 저장하지 못했습니다. 미저장 사본을 확인해 주세요.');
+    return false;
+  }finally{
+    noteMutationInvoking=false;noteMutationPending=false;noteMutationPendingRaw=null;
+  }
+}
+window.toggleSched=function(id){
+  return commitNoteMutation('일정 변경',function(next){
+    var x=next.roadmap.find(function(r){return r.id===id});
+    if(!x)return false;
+    x.status=x.status==='done'?'planned':'done';
+  },'일정 변경을 저장했어요');
+};
+window.toggleMed=function(id){
+  return commitNoteMutation('복용약 변경',function(next){
+    var x=next.meds.find(function(r){return r.id===id});
+    if(!x)return false;
+    x.active=x.active==='yes'?'no':'yes';
+    x.memo=[x.memo,today()+(x.active==='yes'?' 재개':' 중단')].filter(Boolean).join(' · ');
+  },'복용 상태 변경을 저장했어요');
+};
+window.starQ=function(id){
+  return commitNoteMutation('질문 중요 표시',function(next){
+    var x=next.questions.find(function(r){return r.id===id});
+    if(!x)return false;
+    x.priority='high';
+  },'중요 질문 표시를 저장했어요');
+};
+window.answerQ=function(id,v){
+  var raw=String(v||'').trim();
+  return commitNoteMutation('진료 답변',function(next){
+    var x=next.questions.find(function(r){return r.id===id});
+    if(!x)return false;
+    x.answer=raw;
+  },'답변을 저장했어요');
+};
+window.delItem=function(type,id){
+  if(['roadmap','meds','questions','logs','labs'].indexOf(type)<0)return Promise.resolve(false);
+  if(noteMutationPending||profileSavePending||questionSavePending||entrySavePending||
+     noteLoadError||noteWritesPaused||hasUnsavedDraft()){
+    toast('저장 중이거나 미저장 기록이 있어 삭제하지 않았어요.');return Promise.resolve(false);
+  }
+  if(!confirm('삭제할까요?'))return Promise.resolve(false);
+  return commitNoteMutation('기록 삭제',function(next){
+    var list=next[type],previous=list.length;
+    next[type]=list.filter(function(x){return x.id!==id});
+    return next[type].length<previous;
+  },'기록 삭제를 저장했어요');
+};
 
 function renderLog(){
   var days=[];for(var i=13;i>=0;i--){var d=new Date();d.setDate(d.getDate()-i);days.push(ymd(d))}
@@ -1137,7 +1209,7 @@ function fillProfile(){var f=$('#profileForm');Object.keys(defaultState.profile)
  */
 $('#profileForm').addEventListener('submit',async function(e){
   e.preventDefault();
-  if(profileSavePending||entrySavePending)return;
+  if(profileSavePending||entrySavePending||noteMutationPending)return;
   if(noteLoadError||noteWritesPaused||hasUnsavedDraft()){
     toast('저장되지 않은 수정이 있어 추가 저장을 멈췄습니다. 먼저 임시 사본을 보관하세요.');
     return;
@@ -1260,6 +1332,11 @@ function pendingProfileRaw(){
 }
 window.addEventListener('storage',function(e){
   if(e.key!==KEY)return;
+  if(noteMutationPending){
+    holdUnsaved('note',noteMutationPendingRaw||JSON.stringify(state),new Error('records-changed'));
+    toast('다른 탭에서 변경이 감지돼 수정 중인 내용을 따로 보관했어요.');
+    return;
+  }
   if(entrySavePending){
     holdUnsaved('note',entryPendingRaw||JSON.stringify(state),new Error('records-changed'));
     holdEntryFormInput('records-changed');
