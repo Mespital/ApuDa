@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>ApuDa Memory 18단계 | 보호자를 위한 백업 안전성 연습</title>
+<style>
+:root{color-scheme:light;--ink:#153958;--blue:#1f53b1;--line:#cfdded;--muted:#50667b;--bg:#f6f9fe}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:19px/1.65 system-ui,-apple-system,"Noto Sans KR",sans-serif}
+main{max-width:820px;margin:auto;padding:18px 16px 72px}
+h1{font-size:clamp(28px,4vw,36px);line-height:1.3;margin:12px 0}
+h2{font-size:24px;line-height:1.4}
+p{margin:9px 0 15px}
+a{color:#164ca6}
+.note{font-size:16px;color:var(--muted)}
+.panel{border:1px solid var(--line);border-radius:17px;background:#fff;padding:22px;margin:20px 0}
+.warn{background:#fff6e8;border-color:#dbb77e}
+.steps{font-size:16px;font-weight:800;color:#1d4f98}
+label.choice{display:flex;align-items:flex-start;gap:12px;padding:13px;margin:12px 0;border-radius:12px;background:#f5f9ff;border:1px solid var(--line);cursor:pointer}
+label.choice input{flex:none;width:26px;height:26px;accent-color:var(--blue);margin:4px 0 0}
+button,.buttonlike{font:inherit;font-weight:750;display:inline-block;min-height:52px;padding:11px 19px;border-radius:10px;border:1px solid var(--blue);background:var(--blue);color:white;cursor:pointer;text-decoration:none}
+button:disabled{opacity:.55;cursor:not-allowed}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #bf7410;outline-offset:4px}
+button.secondary{background:white;color:var(--blue)}
+#result[hidden],#downloadArea[hidden]{display:none}
+#result{border-left:4px solid #267151;background:#eff9f0;padding:16px;border-radius:9px}
+pre{background:#f0f5fd;padding:14px;border-radius:11px;white-space:pre-wrap;overflow-wrap:anywhere;font:15px/1.6 ui-monospace,monospace}
+.status{min-height:34px;font-weight:700}
+ul{padding-left:1.35em}
+@media(max-width:480px){body{font-size:18px}main{padding:10px 12px 44px}.panel{padding:17px 15px}button,.buttonlike{width:100%;text-align:center}}
+@media print{.panel.warn,.status,.buttonlike,button{display:none}}
+</style></head><body><main>
+<p class="note"><a href="./phase17-qa.html">17단계 암호화 기술 QA</a> · <a href="./profile-qa.html">가상 대상 A/B 화면</a></p>
+<h1>보호자용 안전한 백업 연습</h1>
+<p>어려운 용어보다 <strong>무엇이 저장되고 무엇이 아직 보호되지 않는지</strong>를 먼저 확인합니다.</p>
+<section class="panel warn" aria-labelledby="warningTitle">
+<h2 id="warningTitle">연습 화면입니다</h2>
+<p><strong>실제 환자 정보나 평소 사용하는 비밀번호는 입력하지 마세요.</strong> 이름·진단·전화번호·실제 처방을 입력하는 기능이 없습니다.</p>
+<p>현재 ApuDa Memory의 실제 기록은 <strong>기기 브라우저에 암호화되지 않은 상태</strong>로 저장됩니다. 이 연습이 실제 기록을 암호화하거나 이전하지는 않습니다.</p>
+<p class="note">Netlify 개발 미리보기 전용 · 서버로 건강기록을 보내지 않음 · 기존 기록을 열거나 수정하지 않음</p>
+</section>
+<section class="panel" id="ackSection" aria-labelledby="step1">
+<p class="steps">1 / 3 · 주의사항 읽기</p>
+<h2 id="step1">백업 전 꼭 알아야 할 세 가지</h2>
+<label class="choice" for="risk-device"><input id="risk-device" type="checkbox"><span><strong>공용 기기는 피합니다.</strong> 현재 서비스의 기존 기록은 브라우저에서 암호화되지 않습니다.</span></label>
+<label class="choice" for="risk-password"><input id="risk-password" type="checkbox"><span><strong>백업 암호를 잊으면 복구할 수 없습니다.</strong> 연습용 암호는 코드 안의 가상 문자열이며, 개인 암호를 입력하지 않습니다.</span></label>
+<label class="choice" for="risk-download"><input id="risk-download" type="checkbox"><span><strong>다운로드 요청과 저장 확인은 다릅니다.</strong> 실제 파일이 기기에 저장됐는지는 사용자가 파일 목록에서 직접 확인해야 합니다.</span></label>
+<button id="practice" type="button" disabled>세 가지를 확인하면 연습 시작</button>
+<p id="status" class="status" role="status" aria-live="polite">가상 데이터 테스트 준비 중입니다.</p>
+</section>
+<section class="panel" id="resultSection" hidden aria-labelledby="step2">
+<p class="steps">2 / 3 · 가상 기록 보호 확인</p>
+<h2 id="step2" tabindex="-1">암호화 검증 결과</h2>
+<div id="result" role="status" aria-live="polite" hidden></div>
+<pre id="technical" aria-label="기술 검증 세부 결과">실행 전</pre>
+<p class="note">실제 AES-GCM을 실행할 수 있으면 기기의 소요시간(ms)을 기록합니다. 이 결과는 현재 기록함의 암호화나 외부 보안 인증을 의미하지 않습니다.</p>
+</section>
+<section class="panel" id="downloadArea" hidden aria-labelledby="step3">
+<p class="steps">3 / 3 · 백업 파일 구별하기</p>
+<h2 id="step3">가상 암호화 파일 저장 연습</h2>
+<p>아래 파일에는 <strong>실제 환자정보가 전혀 없는 가상 기록 2건</strong>만 들어 있습니다. 실제 백업 파일을 이 화면에 올리지 마세요.</p>
+<a id="sampleDownload" class="buttonlike" download="apuda-memory-SYNTHETIC-ONLY-qa.json" href="#">가상 암호화 파일 다운로드 요청</a>
+<p id="downloadStatus" class="status" role="status" aria-live="polite">아직 다운로드를 요청하지 않았습니다.</p>
+<p class="note">이 페이지는 기기에 파일이 실제 저장됐는지 확인할 수 없습니다. 저장 여부는 다운로드 목록에서 <strong>SYNTHETIC-ONLY</strong> 파일을 직접 찾아 확인하세요. 연습 후 이 파일을 삭제해도 기존 기록에는 영향이 없습니다.</p>
+</section>
+</main>
+<script type="module">
+import {emptyProfileVault,addAnonymousProfile,appendScopedRecord} from './profile-scope.mjs';
+import {exportProfileBackup} from './profile-workflow.mjs';
+import {encryptScopedBackup,decryptScopedBackup} from './scoped-secure-archive.mjs';
+
+const $=id=>document.getElementById(id);
+const allowed=/^deploy-preview-\d+--apuda-total\.netlify\.app$/.test(location.hostname) ||
+  ['localhost','127.0.0.1'].includes(location.hostname);
+const checks=['risk-device','risk-password','risk-download'];
+const button=$('practice'),status=$('status');
+const QA_PROFILE='e4ad61f3-4cf2-40a8-a38c-1d098c91d643';
+const OTHER_PROFILE='e3c55b7d-26ba-4d56-9c78-2875b04f9079';
+const QA_PASSWORD='ApuDa synthetic-only demo passphrase 2026. Not a real password.';
+let busy=false,downloadUrl=null;
+function readiness(){
+  const ready=allowed && !!crypto?.subtle && !!crypto?.getRandomValues &&
+    isSecureContext && checks.every(id=>$(id).checked) && !busy;
+  button.disabled=!ready;
+  button.textContent=ready?'가상 기록 암호화 연습 시작':'세 가지를 확인하면 연습 시작';
+}
+function clearSample(){
+  if(downloadUrl){URL.revokeObjectURL(downloadUrl);downloadUrl=null}
+  $('sampleDownload').removeAttribute('href');
+  $('downloadArea').hidden=true;
+}
+function sample(){
+  let vault=addAnonymousProfile(addAnonymousProfile(emptyProfileVault(),QA_PROFILE),OTHER_PROFILE);
+  vault=appendScopedRecord(vault,QA_PROFILE,{id:'phase18-a-1',date:'2026-11-12',text:'가상 대상 A의 합성 메모',
+    question:'가상의 진료 질문입니다.',sleep:'보통'});
+  vault=appendScopedRecord(vault,QA_PROFILE,{id:'phase18-a-2',date:'2026-11-11',text:'두 번째 합성 메모',
+    meal:'좋음'});
+  vault=appendScopedRecord(vault,OTHER_PROFILE,{id:'phase18-b-1',date:'2026-11-12',text:'B 전용 합성 메모'});
+  return {vault,backup:exportProfileBackup(vault,QA_PROFILE)};
+}
+function rejected(fn){return fn().then(()=>false,()=>true)}
+if(!allowed)status.textContent='이 안전 연습은 ApuDa 개발 미리보기 또는 localhost에서만 실행할 수 있습니다.';
+else if(!isSecureContext||!crypto?.subtle||!crypto?.getRandomValues)
+  status.textContent='이 브라우저에서는 HTTPS Web Crypto를 사용할 수 없습니다.';
+else{
+  status.textContent='세 가지 개인정보 주의사항을 확인해 주세요.';
+  for(const id of checks)$(id).addEventListener('change',readiness);
+  readiness();
+  button.addEventListener('click',async()=>{
+    if(button.disabled || busy || !checks.every(id=>$(id).checked))return;
+    busy=true;readiness();clearSample();
+    $('resultSection').hidden=false;
+    $('result').hidden=true;
+    $('technical').textContent='가상 기록만 암호화·검증 중입니다.';
+    status.textContent='가상 기록을 확인하고 암호화하고 있습니다.';
+    const results=[];
+    const pass=(condition,name)=>{if(!condition)throw Error('검증 실패: '+name);results.push(name)};
+    const metrics={};let outcome={status:'FAIL',results,metrics};
+    try{
+      const {vault,backup}=sample();
+      const before=JSON.stringify(vault);
+      pass(backup.entries.length===2,'가상 대상 A 2건만 선택');
+      pass(!JSON.stringify(backup).includes('B 전용 합성 메모'),'가상 대상 B 정보 제외');
+      const t1=performance.now();
+      const encrypted=await encryptScopedBackup(backup,QA_PASSWORD);
+      metrics.encryptMs=Math.round(performance.now()-t1);
+      pass(!JSON.stringify(encrypted).includes('가상 대상 A의 합성 메모'),'파일 외부에 메모 평문 없음');
+      pass(!JSON.stringify(encrypted).includes(QA_PROFILE),'파일 외부에 프로필 ID 없음');
+      const t2=performance.now();
+      const decrypted=await decryptScopedBackup(encrypted,QA_PASSWORD,QA_PROFILE);
+      metrics.decryptMs=Math.round(performance.now()-t2);
+      pass(JSON.stringify(decrypted)===JSON.stringify(backup),'복호화한 가상 기록 2건 일치');
+      pass(await rejected(()=>decryptScopedBackup(encrypted,QA_PASSWORD,OTHER_PROFILE)),'다른 대상자 선택 거부');
+      pass(await rejected(()=>decryptScopedBackup(encrypted,'incorrect synthetic password 2026',QA_PROFILE)),'잘못된 암호 거부');
+      const tampered={...encrypted,ciphertext:(encrypted.ciphertext[0]==='A'?'B':'A')+encrypted.ciphertext.slice(1)};
+      pass(await rejected(()=>decryptScopedBackup(tampered,QA_PASSWORD,QA_PROFILE)),'암호문 변조 거부');
+      pass(JSON.stringify(vault)===before,'원본 가상 기록 보존');
+      const data=new Blob([JSON.stringify(encrypted,null,2)],{type:'application/json'});
+      downloadUrl=URL.createObjectURL(data);
+      $('sampleDownload').href=downloadUrl;
+      $('downloadArea').hidden=false;
+      $('downloadStatus').textContent='가상 파일만 준비됐습니다. 아직 다운로드를 요청하지 않았습니다.';
+      outcome.status='PASS';
+      $('result').textContent='가상 기록 암호화·검증 '+results.length+'개 항목 통과. 실제 기록은 변경되지 않았습니다.';
+      $('result').hidden=false;
+      status.textContent='가상 암호화 검증 완료. 파일 저장은 별도로 확인해야 합니다.';
+    }catch(error){
+      outcome.error=String(error);
+      $('result').textContent='검증을 완료하지 못했습니다. 실제 데이터를 사용하지 마세요.';
+      $('result').hidden=false;
+      status.textContent='검증 실패: 아래 결과를 확인하세요.';
+    }finally{
+      $('technical').textContent=JSON.stringify(outcome,null,2);
+      busy=false;readiness();
+      $('step2').focus();
+    }
+  });
+  $('sampleDownload').addEventListener('click',event=>{
+    if(!downloadUrl){event.preventDefault();return}
+    $('downloadStatus').textContent='다운로드를 요청했습니다. 실제 저장 성공 여부는 확인되지 않았습니다. 기기 파일 목록을 확인하세요.';
+  });
+  window.addEventListener('pagehide',clearSample);
+}
+</script></body></html>
