@@ -34,3 +34,16 @@
 - 운영 main 병합/Netlify 운영 배포, 실제 환자·논술 기록·Drive 접근 및 변경 금지.
 
 **Draft 유지 / P0 OPEN / NOT RELEASED.**
+
+## 2026-11-12 KST 실브라우저·CI 검증 결과
+
+- 검증한 코드 커밋: `28cb7a059e2a62de836f081f106b6291d96e6e75`
+- GitHub Actions: https://github.com/Mespital/ApuDa/actions/runs/43156963393
+- **실제 V3 전체 화면 회귀시험:** `RESULT 84/84 PASS`.
+- **IndexedDB 비동기 저장 포트 시험:** `RESULT 21/21 PASS`.
+- **신규 V3 기록 수정·삭제 5개 경로:** `RESULT 78/78 PASS`.
+- 합계 **183개 브라우저 검증 항목 통과 / 실패 0**. Chromium은 별도 임시 localhost Origin에서 합성 데이터만 사용. Google Drive/API/실제 사용자 기록 접근 없음.
+- 정적 대화 감사: `PASS: chat audit — 2 sync call sites, 1 writer definition`. **대화 저장 완료가 아니라 비동기 전환 전 남은 두 호출부의 위험을 확인한 결과**다.
+- 새 시험은 가상 지연/거부되는 저장 함수를 주입하여 정상 저장·오류·동시성 경로를 검증한다. 실제 V3 `save()`가 IndexedDB에 기록한 결과가 아니며, 구형 탭과의 완전한 격리를 보장하지 않는다.
+
+**최종 판정: P0 미해결 / Draft·미병합 유지 / 운영 배포 금지.** 실제 환자·논술 기록 및 Drive 백업에 접근하거나 변경하지 않았고, 임상의·환자·보호자 실참여 감수는 수행하지 않았다.
