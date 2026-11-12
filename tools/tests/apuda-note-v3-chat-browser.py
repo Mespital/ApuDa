@@ -158,8 +158,9 @@ try:
     ctx=context();undo,erru=open_page(ctx)
     undo.evaluate("sendText('메모: 가상 기록 취소 테스트')")
     undo.wait_for_function("() => chatWritesInFlight===0")
+    undo.evaluate("tab('today')")
     button=undo.locator("#thread button.undo")
-    check("real V3 note undo button rendered",button.count()>0)
+    check("real V3 note undo button rendered",button.count()>0 and button.first.is_visible())
     undo.evaluate("""() => {
       const actual=window.commitChatRaw;
       window.__releaseUndoChat=null;
