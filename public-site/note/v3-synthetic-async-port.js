@@ -36,6 +36,16 @@ function make(db,vault){
     return {status:'blocked-review-required',held:held,revision:current.revision,
       readyForProduction:false};
   }
+  function holdResult(kind,raw,message){
+    if(kind!=='bundle')return hold(kind==='chat'?'chat':'note',raw,message);
+    paused=true;
+    var heldNote=false,heldChat=false;
+    try{heldNote=vault.capture('note',raw&&raw.note,message);}catch(ignore){}
+    try{heldChat=vault.capture('chat',raw&&raw.chat,message);}catch(ignore){}
+    return {status:'blocked-review-required',held:heldNote&&heldChat,
+      heldNote:heldNote,heldChat:heldChat,revision:current.revision,
+      readyForProduction:false};
+  }
   async function commit(kind,raw,config){
     if(!mustReady())return {status:'blocked-review-required',held:vault.count()>0,
       revision:current.revision,readyForProduction:false};
@@ -50,20 +60,21 @@ function make(db,vault){
     try{
       if(kind==='note')result=await engine.saveNote(db,expected,raw,!!confirm.injectAbort);
       else if(kind==='chat')result=await engine.saveChat(db,expected,raw,!!confirm.injectAbort);
+      else if(kind==='bundle')result=await engine.saveBundle(db,expected,raw.note,raw.chat,!!confirm.injectAbort);
       else if(kind==='restore')result=await engine.restore(db,expected,raw,!!confirm.injectAbort);
       else if(kind==='recover')result=await engine.recover(db,expected,!!confirm.injectAbort);
       else if(kind==='delete')result=await engine.removeAll(db,expected,!!confirm.injectAbort);
       else throw new Error('unknown-operation');
-    }catch(error){return hold(kind==='chat'?'chat':'note',raw,error&&error.message);}
+    }catch(error){return holdResult(kind,raw,error&&error.message);}
     if(!result||result.status!=='saved')
-      return hold(kind==='chat'?'chat':'note',raw,result&&result.status==='conflict'?'records-changed':'not-saved');
+      return holdResult(kind,raw,result&&result.status==='conflict'?'records-changed':'not-saved');
     var observed;
     try{observed=await engine.read(db);}
-    catch(error){return hold(kind==='chat'?'chat':'note',raw,'readback-failed');}
+    catch(error){return holdResult(kind,raw,'readback-failed');}
     // Other approved tabs might save again immediately. Never claim that
     // the UI's committed snapshot still matches what was just written.
     if(!observed||observed.revision!==result.revision)
-      return hold(kind==='chat'?'chat':'note',raw,'records-changed');
+      return holdResult(kind,raw,'records-changed');
     current=observed;attempts++;
     return Object.freeze({status:'saved',revision:current.revision,
       note:current.note,chat:current.chat,deleted:!!current.deleted,
@@ -75,6 +86,9 @@ function make(db,vault){
     initialize:initialize,view:view,diagnostics:diagnostics,
     saveNote:function(raw,opt){return commit('note',raw,opt);},
     saveChat:function(raw,opt){return commit('chat',raw,opt);},
+    saveBundle:function(noteRaw,chatRaw,opt){
+      return commit('bundle',{note:noteRaw,chat:chatRaw},opt);
+    },
     restore:function(raw,opt){return commit('restore',raw,opt);},
     recover:function(opt){return commit('recover',null,opt);},
     removeAll:function(opt){return commit('delete',null,opt);}

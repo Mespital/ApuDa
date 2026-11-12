@@ -111,6 +111,16 @@
     verifyChat(nextChat);
     return commit(db,'chat-save',expected,{note:expected.note,chat:nextChat},null,!!injectAbort);
   }
+  /* Bundle save is a single ACID IDB transaction: note+chat either both
+   * commit with the SAME revision, or neither changes.
+   * IMPORTANT: synthetic DB ONLY — never wired into legacy V3 localStorage.
+   */
+  async function saveBundle(db,expected,nextNote,nextChat,injectAbort){
+    verifyNote(nextNote);
+    verifyChat(nextChat);
+    return commit(db,'bundle-save',expected,
+      {note:nextNote,chat:nextChat},null,!!injectAbort);
+  }
   async function restore(db,expected,nextNote,injectAbort){
     verifyNote(nextNote);
     if(expected.note!==null)verifyNote(expected.note);
@@ -155,6 +165,6 @@
       pruneAllowed:false,autoMigrationAllowed:false});
   }
   global.ApuDaV3UnifiedContractSandbox=Object.freeze({PREFIX:PREFIX,STORE:STORE,
-    expectedState:expectedState,read:read,saveNote:saveNote,saveChat:saveChat,
+    expectedState:expectedState,read:read,saveNote:saveNote,saveChat:saveChat,saveBundle:saveBundle,
     restore:restore,recover:recover,removeAll:removeAll,planBackup:planBackup});
 })(typeof window!=='undefined'?window:globalThis);

@@ -8,6 +8,9 @@ on:
       - 'public-site/note-v4/v4-migration-rehearsal.js'
       - 'tools/tests/apuda-note-v3-v4-handoff-browser.py'
       - 'tools/tests/apuda-note-v3-v4-integration-browser.py'
+      - 'tools/tests/apuda-note-v3-bundle-browser.py'
+      - 'public-site/note/v3-unified-contract-sandbox.js'
+      - 'public-site/note/v3-synthetic-async-port.js'
       - 'public-site/note/index.html'
       - 'public-site/note/note-app.js'
       - '.github/workflows/apuda-v3-v4-handoff.yml'
@@ -34,3 +37,5 @@ jobs:
         run: python tools/tests/apuda-note-v3-v4-handoff-browser.py
       - name: Verify merged V3 and V4 share no data mutations
         run: python tools/tests/apuda-note-v3-v4-integration-browser.py
+      - name: Verify atomic note and chat bundle and rollback
+        run: python tools/tests/apuda-note-v3-bundle-browser.py
