@@ -33,8 +33,8 @@ def routes_for_scope(scope, site_root):
     if site_root is None:
         raise ValueError("Full scope only supports checked-out local public HTML")
     text = (site_root / "sitemap.xml").read_text(encoding="utf-8")
-    books = re.findall(r"<loc>https://apuda\\.app/library/first30/books/(\\d{2})\\.html</loc>", text)
-    faqs = re.findall(r"<loc>https://apuda\\.app/library/faq/([a-z0-9-]+)/</loc>", text)
+    books = re.findall(r"<loc>https://apuda\.app/library/first30/books/(\d{2})\.html</loc>", text)
+    faqs = re.findall(r"<loc>https://apuda\.app/library/faq/([a-z0-9-]+)/</loc>", text)
     expected_books = [f"{i:02d}" for i in range(1, 31)]
     if sorted(books) != expected_books or len(books) != 30:
         raise ValueError(f"Sitemap must contain 30 unique ordered books (found {len(books)})")
