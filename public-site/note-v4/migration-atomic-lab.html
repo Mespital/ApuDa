@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; img-src 'none'; connect-src 'none'; form-action 'none'; base-uri 'none'">
+  <title>ApuDa V4 | 무손실 이전 원자성 시험실</title>
+  <style>
+    :root{font-family:system-ui,'Malgun Gothic',sans-serif;background:#f2f8f6;color:#193d3b;color-scheme:light}
+    *{box-sizing:border-box}body{margin:0;padding:clamp(16px,4vw,40px)}main{max-width:860px;margin:auto}
+    .tag{display:inline-block;border-radius:30px;padding:6px 13px;background:#dff1e9;color:#09564d;font-size:.85rem;font-weight:800}
+    h1{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.3}p{line-height:1.65}
+    .warning{border-left:5px solid #b57814;border-radius:10px;background:#fff5dd;padding:13px 17px}
+    button{min-height:48px;border:0;border-radius:12px;padding:12px 20px;background:#086b60;color:white;font-weight:750;font-size:1rem;cursor:pointer}
+    button:focus-visible{outline:3px solid #b57814;outline-offset:3px}button:disabled{opacity:.6;cursor:wait}
+    #results{display:grid;gap:11px;margin-top:18px}.case{border:1px solid #c5dad3;border-radius:12px;padding:13px 16px;background:#fff}
+    .case h2{font-size:1.02rem;margin:0 0 6px}.case p{margin:0}.pass{color:#087348;font-weight:800}.fail{color:#aa2020;font-weight:800}
+    #summary{font-weight:750}small{color:#47645d}
+  </style>
+</head>
+<body>
+<main>
+  <span class="tag">개발 전용 · 합성 기록</span>
+  <h1>V3 → V4 무손실 이전 안전성 시험</h1>
+  <p>실제 V3 백업 검증기와 V4 변환 초안 생성기를 이용해 <strong>가상 원문 보존·중복 이전·동시 변경 충돌·실패 시 전체 취소</strong>를 점검합니다.</p>
+  <p class="warning"><strong>실제 기록과 연결되지 않습니다.</strong> 버튼을 누를 때에만 무작위 이름의 시험용 IndexedDB를 새로 만들고 시험 종료 후 삭제합니다. 기존 수첩의 <code>localStorage</code>, 로그인, 가족·학습 기록, 서버에는 접근하지 않습니다. V4 운영 전환을 실행하는 버튼이 아닙니다.</p>
+  <button id="run" type="button">가상 이전 안전성 8건 시험</button>
+  <p id="summary" role="status" aria-live="polite">시험 전 · 실행 버튼을 눌러 주세요.</p>
+  <div id="results" aria-label="이전 안전성 항목별 결과"></div>
+  <p><small>본 시험은 한 브라우저의 별도 IndexedDB 연결 2개만 사용합니다. 기기 간 동기화, 모바일 강제 종료, 저장공간 부족, 실제 기존 V3 탭과 혼용, 실환자 데이터의 무손실 이전은 검증 대상이 아닙니다.</small></p>
+</main>
+<script defer src="../note/note-storage.js"></script>
+<script defer src="v3-compat-audit.js"></script>
+<script defer src="v3-lossless-stage.js"></script>
+<script defer src="v4-extended-draft.js"></script>
+<script defer src="v4-migration-rehearsal.js"></script>
+<script defer src="migration-atomic-lab.js"></script>
+</body>
+</html>

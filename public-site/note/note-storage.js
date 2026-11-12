@@ -73,36 +73,66 @@
     if (!global.crypto || !global.crypto.subtle) return Promise.reject(new Error('secure-context-required'));
     return global.crypto.subtle.digest('SHA-256',new TextEncoder().encode(raw)).then(function (buf) { return Array.from(new Uint8Array(buf)).map(function (b) { return b.toString(16).padStart(2,'0'); }).join(''); });
   }
+  function byteSize(raw) { return new TextEncoder().encode(raw).length; }
   function recoveryKey(key) { return key + '_before_restore_v2'; }
   async function replace(storage, key, s, reason) {
     if (!validState(s)) throw new Error('invalid-backup');
-    var next = JSON.stringify(s), before = storage.getItem(key), afterHash = await fingerprint(next);
+    var next = JSON.stringify(s), before = storage.getItem(key), recovery = recoveryKey(key);
+    // A newly confirmed restore updates the most recent undo point. The note
+    // itself must still match the bytes read before any checkpoint write.
+    var beforeHash = await fingerprint(before === null ? '' : before), afterHash = await fingerprint(next);
     if (storage.getItem(key) !== before) throw new Error('records-changed');
     // Never overwrite the current note unless the exact previous bytes have
     // been preserved and verified. Quota failures abort before the main write.
-    var checkpoint = {format:'apuda.note.checkpoint',schemaVersion:1,savedAt:new Date().toISOString(),reason:reason || 'restore',before:before,afterHash:afterHash};
+    var checkpoint = {format:'apuda.note.checkpoint',schemaVersion:2,savedAt:new Date().toISOString(),reason:reason || 'restore',before:before,beforeExists:before !== null,beforeBytes:byteSize(before === null ? '' : before),beforeHash:beforeHash,afterBytes:byteSize(next),afterHash:afterHash};
     var encoded = JSON.stringify(checkpoint);
-    storage.setItem(recoveryKey(key),encoded);
-    if (storage.getItem(recoveryKey(key)) !== encoded) throw new Error('checkpoint-not-saved');
+    storage.setItem(recovery,encoded);
+    if (storage.getItem(recovery) !== encoded) throw new Error('checkpoint-not-saved');
     try {
       if (storage.getItem(key) !== before) throw new Error('records-changed');
+      if (storage.getItem(recovery) !== encoded) throw new Error('checkpoint-changed');
       storage.setItem(key,next);
       if (storage.getItem(key) !== next) throw new Error('restore-not-saved');
     } catch (e) {
-      if (storage.getItem(key) === next) { if (before === null) storage.removeItem(key); else storage.setItem(key,before); }
+      if (storage.getItem(key) === next) {
+        try {
+          if (before === null) storage.removeItem(key); else storage.setItem(key,before);
+          if (storage.getItem(key) !== before) throw new Error('rollback-not-saved');
+        } catch (rollbackError) { throw new Error('rollback-not-saved'); }
+      }
       throw e;
     }
     return summary(s);
   }
   function checkpoint(storage,key) {
-    try { var c=JSON.parse(storage.getItem(recoveryKey(key))); return c && c.format==='apuda.note.checkpoint' && c.schemaVersion===1 && (c.before===null || typeof c.before==='string') && typeof c.afterHash==='string' ? c : null; } catch (e) { return null; }
+    try {
+      var c=JSON.parse(storage.getItem(recoveryKey(key)));
+      if (!c || c.format !== 'apuda.note.checkpoint' || (c.before !== null && typeof c.before !== 'string') || !/^[a-f0-9]{64}$/.test(c.afterHash)) return null;
+      if (c.schemaVersion === 1) return c; // legacy snapshot remains downloadable, not automatically trusted
+      if (c.schemaVersion !== 2 || typeof c.beforeExists !== 'boolean' || c.beforeExists !== (c.before !== null) || !/^[a-f0-9]{64}$/.test(c.beforeHash)) return null;
+      if (!Number.isSafeInteger(c.beforeBytes) || c.beforeBytes < 0 || !Number.isSafeInteger(c.afterBytes) || c.afterBytes < 0) return null;
+      return c;
+    } catch (e) { return null; }
   }
   async function recover(storage,key) {
     var c=checkpoint(storage,key); if (!c) throw new Error('no-checkpoint');
+    // V1 never recorded the original bytes' digest. Keep it available for
+    // manual export/review, but fail closed rather than writing unverified data.
+    if (c.schemaVersion === 1) throw new Error('legacy-checkpoint-review-required');
+    var recovery=recoveryKey(key), savedCheckpoint=storage.getItem(recovery);
+    var beforeRaw=c.before === null ? '' : c.before;
+    if (byteSize(beforeRaw) !== c.beforeBytes || await fingerprint(beforeRaw) !== c.beforeHash) throw new Error('checkpoint-corrupted');
     var current=storage.getItem(key);
-    if (await fingerprint(current || '') !== c.afterHash || storage.getItem(key)!==current) throw new Error('records-changed');
+    if (current === null || byteSize(current) !== c.afterBytes || await fingerprint(current) !== c.afterHash || storage.getItem(key)!==current) throw new Error('records-changed');
+    if (storage.getItem(recovery) !== savedCheckpoint || storage.getItem(key) !== current) throw new Error('records-changed');
     if (c.before === null) storage.removeItem(key); else storage.setItem(key,c.before);
-    storage.removeItem(recoveryKey(key));
+    var restored=storage.getItem(key);
+    // A failed or silently ignored write must retain the checkpoint. Only
+    // remove it after exact read-back of the previous bytes and its digest.
+    if (restored !== c.before || byteSize(restored === null ? '' : restored) !== c.beforeBytes || await fingerprint(restored === null ? '' : restored) !== c.beforeHash) throw new Error('restore-not-saved');
+    if (storage.getItem(recovery) !== savedCheckpoint) throw new Error('checkpoint-changed');
+    storage.removeItem(recovery);
+    if (storage.getItem(recovery) !== null) throw new Error('checkpoint-not-cleared');
     return true;
   }
   function createUndo() {
