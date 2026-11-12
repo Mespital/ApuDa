@@ -52,6 +52,8 @@ assert.ok(html.includes('여러 사람의 기록이 섞여 있다면 요약을 �
   'the clinical summary must warn against mixing multiple people');
 assert.ok(!html.includes('secure-archive.mjs'),'prototype encryption must remain disconnected');
 assert.ok(!html.includes('indexeddb-migration.mjs'),'prototype database must remain disconnected');
+assert.ok(!html.includes('profile-summary.mjs'),'profile summary QA must remain disconnected from the live UI');
+assert.ok(!html.includes('profile-qa.html'),'profile QA should not be linked from the live user interface');
 assert.ok(html.includes('기록은 <strong>현재 기기의 브라우저 저장소(localStorage)'),
   'plain localStorage privacy explanation is still shown');
 assert.ok(html.includes('다른 기기와 동기화되지 않습니다.'),
