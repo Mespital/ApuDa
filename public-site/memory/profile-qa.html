@@ -215,7 +215,7 @@ function renderUnassigned(){
         return;
       }
       const target=selected===A?'돌봄 대상 A':'돌봄 대상 B';
-      if(!window.confirm(item.date+'의 가상 미분류 기록을 '+target+'에게 배정할까요? 이 작업은 실제 기록에는 영향을 주지 않습니다.'))return;
+      if(!window.confirm('가상 미분류 기록 1건을 '+target+'에게 배정할까요?\n날짜: '+item.date+'\n메모: '+item.text+'\n'+(item.question?'질문: '+item.question+'\n':'')+'\n확인한 기록과 대상자가 일치해야 합니다. 실제 기록에는 영향을 주지 않습니다.'))return;
       try{
         const result=assignReviewedUnassignedRecord(vault,selected,item.id,item,true);
         vault=result.vault;
@@ -293,6 +293,7 @@ if(!allowedHost){
     }catch(error){$('assignment-status').textContent=error.message}
   });
   $('assignment-reset').addEventListener('click',()=>{
+    if(!window.confirm('이 화면에서만 변경한 가상 배정 결과를 초기화할까요? 실제 기록은 변경되지 않습니다.'))return;
     makeDemo();
     selected=A;days=7;pendingAssignment=null;
     $('assignment-undo').hidden=true;
