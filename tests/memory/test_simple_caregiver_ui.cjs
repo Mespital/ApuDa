@@ -183,5 +183,4 @@ class Element{
  assert.match(elements.entryMemo.value,/좋아하는 음악 듣기/);
  assert.equal(saved.data.entries.length,savedBeforeTransfer+1,'activity is not silently saved');
  console.log('PASS: easy onboarding, automatic first profile, diary CRUD, clinic summary, 6 unified services, checklist-to-diary explicit save, profile isolation and lock/unlock');
-, automatic first profile, daily note, history edit/delete, 7-day doctor summary, copy/print, profile separation and lock/unlock');
 })().catch(error=>{console.error(error);process.exitCode=1});
