@@ -8,6 +8,7 @@ on:
       - 'tools/tests/apuda-note-v3-async-port-browser.py'
       - 'tools/tests/apuda-note-v3-mutations-browser.py'
       - 'tools/tests/apuda-note-v3-chat-ack-audit.cjs'
+      - 'tools/tests/apuda-note-v3-chat-browser.py'
       - '.github/workflows/apuda-note-v3-full-ui.yml'
 permissions:
   contents: read
@@ -34,5 +35,7 @@ jobs:
         run: python tools/tests/apuda-note-v3-async-port-browser.py
       - name: Test V3 edit and delete buttons with synthetic data
         run: python tools/tests/apuda-note-v3-mutations-browser.py
-      - name: Audit incomplete chat acknowledgement paths
+      - name: Verify ordered chat acknowledgments in actual V3 UI
+        run: python tools/tests/apuda-note-v3-chat-browser.py
+      - name: Audit chat acknowledgement call paths
         run: node tools/tests/apuda-note-v3-chat-ack-audit.cjs

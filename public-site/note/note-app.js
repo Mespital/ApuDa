@@ -415,19 +415,62 @@ function findTopic(text){
 var chat=[],chatExpectedRaw=null;try{chatExpectedRaw=localStorage.getItem(CHAT_KEY);chat=JSON.parse(chatExpectedRaw||'[]')}catch(e){chat=[]}
 var noteUndo=NOTE_STORAGE&&NOTE_STORAGE.createUndo(),undoToken='';
 function armUndo(before){undoToken=noteUndo.arm(before,JSON.stringify(state))}
-function saveChat(){
-  chat=chat.slice(-60);
-  var raw;
-  try{
-    raw=JSON.stringify(chat);
-    if(noteWritesPaused||chatWritesPaused)throw new Error('writes-paused');
-    chatExpectedRaw=NOTE_WRITE_FENCE.write(localStorage,CHAT_KEY,chatExpectedRaw,raw);
-    return true;
-  }catch(e){
-    holdUnsaved('chat',raw,e);
-    toast('대화 기록을 저장하지 못했습니다. 임시 사본을 파일로 내려받아 확인해 주세요.');
-    return false;
+/* Phase 4 — serialized, acknowledged chat writes. This still uses V3
+ * localStorage, NOT an IndexedDB migration. Old noncooperating tabs remain P0.
+ */
+var chatWriteTail=Promise.resolve(),chatWritesInFlight=0,chatUndoPending=false;
+function setChatSaveStatus(key,status){
+  if(!key)return;
+  var el=[].find.call(document.querySelectorAll('#thread .msg[data-chat-at]'),function(node){
+    return node.dataset.chatAt===key;
+  });
+  if(!el)return;
+  el.dataset.chatSave=status;
+  var marker=el.querySelector('.chat-save-indicator');
+  if(!marker){
+    marker=document.createElement('span');
+    marker.className='chat-save-indicator';marker.setAttribute('role','status');
+    el.appendChild(marker);
   }
+  marker.textContent=status==='saved'?'저장됨':status==='failed'?'저장 실패 · 사본 확인':'저장 중';
+}
+function failedChatIndicators(){
+  [].forEach.call(document.querySelectorAll('#thread .msg[data-chat-save="pending"]'),function(node){
+    setChatSaveStatus(node.dataset.chatAt,'failed');
+  });
+}
+function cleanChatHTML(el){
+  var copy=el.cloneNode(true);
+  [].forEach.call(copy.querySelectorAll('.chat-save-indicator'),function(marker){marker.remove()});
+  return copy.innerHTML;
+}
+function commitChatRaw(raw){
+  return NOTE_WRITE_FENCE.write(localStorage,CHAT_KEY,chatExpectedRaw,raw);
+}
+function saveChat(messageKey){
+  chat=chat.slice(-60);
+  var raw=JSON.stringify(chat);
+  if(messageKey)setChatSaveStatus(messageKey,'pending');
+  chatWritesInFlight++;
+  var task=chatWriteTail.then(async function(){
+    if(noteWritesPaused||chatWritesPaused)throw new Error('writes-paused');
+    var result=await Promise.resolve(commitChatRaw(raw));
+    if(result===false||(result&&typeof result==='object'&&result.status&&result.status!=='saved'))
+      throw new Error('commit-not-confirmed');
+    if(noteWritesPaused||chatWritesPaused)throw new Error('records-changed');
+    chatExpectedRaw=raw;
+    if(messageKey)setChatSaveStatus(messageKey,'saved');
+    return {status:'saved',key:messageKey||null};
+  }).catch(function(error){
+    holdUnsaved('chat',JSON.stringify(chat),error);
+    failedChatIndicators();
+    toast('대화 저장이 확인되지 않았습니다. 화면의 임시 사본을 내려받아 보관하세요.');
+    return {status:'blocked-review-required',key:messageKey||null};
+  }).finally(function(){chatWritesInFlight--;});
+  // Returning a settled result keeps a failed message from halting the queue;
+  // all later items then fail closed on the shared write-paused state.
+  chatWriteTail=task;
+  return task;
 }
 function scrollBottom(){window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})}
 function linkBtns(links){return (links||[]).map(function(l){return '<button type="button" onclick="'+esc(l[1])+'">'+esc(l[0])+'</button>'}).join('')}
@@ -498,12 +541,23 @@ function botHTML(o,raw){
   return parts.sort(function(a,b){return (a.cls==='red'?0:1)-(b.cls==='red'?0:1)});
 }
 function addMsg(who,html,cls,store){
-  var el=document.createElement('div');el.className='msg '+who+(cls?' '+cls:'');el.innerHTML=html;$('#thread').appendChild(el);
-  if(store!==false){el.dataset.chatAt=String(Date.now())+'_'+uid();chat.push({w:who,h:html,c:cls||'',at:Date.now(),key:el.dataset.chatAt});saveChat()}
+  var el=document.createElement('div');el.className='msg '+who+(cls?' '+cls:'');
+  el.innerHTML=html;$('#thread').appendChild(el);
+  if(store!==false){
+    el.dataset.chatAt=String(Date.now())+'_'+uid();
+    chat.push({w:who,h:html,c:cls||'',at:Date.now(),key:el.dataset.chatAt});
+    // Render immediately for usability, but never label as saved before
+    // the ordered writer acknowledges persistence.
+    saveChat(el.dataset.chatAt);
+  }
   return el;
 }
 function sendText(text){
   text=String(text||'').trim();if(!text)return;
+  if(noteWritesPaused||chatWritesPaused||hasUnsavedDraft()){
+    toast('저장 실패한 대화가 있어 새 메시지를 기록하지 않았어요. 임시 사본을 먼저 보관해 주세요.');
+    return;
+  }
   addMsg('me',esc(text));
   var snap=JSON.stringify(state);
   var o=interpret(text);
@@ -512,13 +566,36 @@ function sendText(text){
   renderHome();scrollBottom();
 }
 window.sendText=sendText;
-function undoLast(btn){
+async function undoLast(btn){
+  if(chatUndoPending||noteWritesPaused||chatWritesPaused||hasUnsavedDraft()){
+    toast('저장 중이거나 미저장 내용이 있어 기록 취소를 중단했습니다.');return false;
+  }
   var before=noteUndo&&noteUndo.take(btn.dataset.undoToken,JSON.stringify(state),localStorage.getItem(KEY));
-  if(before===null||before===undefined){toast('새 기록이 있거나 취소할 수 있는 마지막 기록이 아니에요');return}
-  var msg=btn.closest('.msg'),chatKey=msg&&msg.dataset.chatAt;
-  state=JSON.parse(before);save();
-  if(msg){var title=msg.querySelector('b');if(title)title.textContent='마지막 기록을 취소했어요 ↩';var row=chat.find(function(m){return m.key===chatKey});if(row){row.h=msg.innerHTML;saveChat()}}
-  toast('방금 기록을 취소했어요');
+  if(before===null||before===undefined){toast('새 기록이 있거나 취소할 수 있는 마지막 기록이 아니에요');return false;}
+  var msg=btn.closest('.msg'),chatKey=msg&&msg.dataset.chatAt,attempted=null;
+  chatUndoPending=true;
+  try{
+    state=JSON.parse(before);
+    attempted=JSON.stringify(state);
+    var noteAck=await Promise.resolve(save());
+    if(noteAck===false||(noteAck&&noteAck.status&&noteAck.status!=='saved')||noteWritesPaused)
+      throw new Error('note-save-not-confirmed');
+    if(msg){
+      var title=msg.querySelector('b');
+      if(title)title.textContent='마지막 기록을 취소했어요 ↩';
+      var row=chat.find(function(m){return m.key===chatKey});
+      if(row){
+        row.h=cleanChatHTML(msg);
+        var ack=await saveChat(chatKey);
+        if(!ack||ack.status!=='saved')throw new Error('chat-save-not-confirmed');
+      }
+    }
+    toast('방금 기록을 취소했어요');return true;
+  }catch(error){
+    if(!hasUnsavedDraft())holdUnsaved('note',attempted||JSON.stringify(state),error);
+    toast('기록 취소의 모든 변경을 저장하지 못했습니다. 임시 사본을 확인해 주세요.');
+    return false;
+  }finally{chatUndoPending=false;}
 }
 window.undoLast=undoLast;
 window.showTopic=function(id){var tp=KB.TOPICS.find(function(x){return x.id===id});if(!tp)return;addMsg('bot','<b>'+esc(tp.q||tp.title)+'</b><div>'+tp.body+'</div><div class="acts">'+linkBtns(tp.links)+'</div>'+NS()+'','',true);scrollBottom()};
@@ -535,6 +612,9 @@ window.prefill=prefill;window.tab=tab;window.openSheet=openSheet;window.closeShe
  * 버튼은 파서가 이미 이해하는 문장을 만들어 interpret()로 보낸다 → 손으로 쓴 기록과 같은 형식으로 저장된다. */
 function sendBatch(list,label,fx){
   list=list.filter(Boolean);if(!list.length)return;
+  if(noteWritesPaused||chatWritesPaused||hasUnsavedDraft()){
+    toast('미저장 대화가 있어 새 기록을 중단했습니다. 임시 사본을 먼저 확인해 주세요.');return;
+  }
   addMsg('me',esc(label||list.join(' · ')));
   var snap=JSON.stringify(state);(fx||[]).forEach(function(f){f()});var M={saved:[],notes:[],alerts:[],cards:[],undo:false},seen={},tl=[];
   list.forEach(function(s){var o=interpret(s);
@@ -1331,6 +1411,12 @@ function pendingProfileRaw(){
   return dirty?JSON.stringify(pending):null;
 }
 window.addEventListener('storage',function(e){
+  if(e.key===CHAT_KEY&&chatWritesInFlight>0&&e.newValue!==chatExpectedRaw){
+    holdUnsaved('chat',JSON.stringify(chat),new Error('records-changed'));
+    failedChatIndicators();
+    toast('다른 탭이 대화를 변경했습니다. 이 탭의 미저장 대화를 보관하고 확인하세요.');
+    return;
+  }
   if(e.key!==KEY)return;
   if(noteMutationPending){
     holdUnsaved('note',noteMutationPendingRaw||JSON.stringify(state),new Error('records-changed'));

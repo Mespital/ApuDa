@@ -169,12 +169,12 @@ try:
           chat.push({w:'me',h:'가상 탭 C 최신 대화',c:'',at:2,key:'chat-c'});
           return saveChat();
         }""")
-        check("first tab can save chat through real V3 function", first_chat is True)
+        check("first tab can save chat through real V3 async function", first_chat.get('status')=='saved')
         second_chat = d.evaluate("""() => {
           chat.push({w:'me',h:'가상 탭 D 미저장 대화',c:'',at:3,key:'chat-d'});
           return saveChat();
         }""")
-        check("stale chat write is refused", second_chat is False)
+        check("stale chat write is refused", second_chat.get('status')=='blocked-review-required')
         check("latest saved chat remains intact",
               json_storage(d, "apuda_note_chat_v1")[-1]["h"] == "가상 탭 C 최신 대화")
         check("unsaved chat draft and warning are present",

@@ -89,6 +89,12 @@ table.kv{width:100%;border-collapse:collapse;margin-top:10px;font-size:.86em}tab
 .msg.me{align-self:flex-end;background:var(--blue);color:#fff;border-bottom-right-radius:6px}
 .msg.bot{align-self:flex-start;background:#fff;border:1px solid var(--line);border-bottom-left-radius:6px}
 .msg.bot.red{background:var(--redbg);border-color:#fecaca}.msg.bot.amber{background:var(--amberbg);border-color:#fde3a7}
+.msg .chat-save-indicator{display:block;margin-top:7px;font-size:.75rem;font-weight:700;letter-spacing:.01em}
+.msg[data-chat-save="pending"] .chat-save-indicator{opacity:.8}
+.msg[data-chat-save="saved"] .chat-save-indicator{opacity:.78}
+.msg[data-chat-save="failed"]{outline:2px solid #b54708;outline-offset:2px}
+.msg[data-chat-save="failed"] .chat-save-indicator{font-weight:900;text-decoration:underline}
+.msg.bot[data-chat-save="failed"] .chat-save-indicator{color:#8a3406}
 .msg ul,.msg ol{margin:6px 0 2px;padding-left:20px}.msg p{margin:6px 0}
 .msg .saved{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
 .msg .saved span{padding:3px 8px;border-radius:8px;background:var(--greenbg);color:var(--green);font-size:.8em;font-weight:900}
