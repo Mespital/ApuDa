@@ -12,7 +12,12 @@ function status(id,message,error=false){
  const node=$(id);node.textContent=message;node.classList.toggle('error',error);
 }
 function toggle(id,visible){$(id).hidden=!visible}
-function setBusy(working){busy=working;for(const id of ['saveRecord','exportBackup','lockButton'])if($(id))$(id).disabled=working}
+function setBusy(working){
+ busy=working;
+ for(const id of ['saveRecord','exportBackup','lockButton'])if($(id))$(id).disabled=working;
+ // Restore all form controls after a successful save, including first profile creation.
+ $('recordForm').querySelectorAll('input,textarea,select,button').forEach(x=>x.disabled=working||!profileId);
+}
 function stopEditing(){
  editId=null;$('recordTitle').textContent='오늘의 기록 남기기';
  $('saveRecord').textContent='암호화하여 저장';toggle('cancelEdit',false);
