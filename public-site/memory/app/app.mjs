@@ -19,8 +19,9 @@ function setBusy(working){
  $('recordForm').querySelectorAll('input,textarea,select,button').forEach(x=>x.disabled=working||!profileId);
 }
 function stopEditing(){
- editId=null;$('recordTitle').textContent='오늘의 기록 남기기';
- $('saveRecord').textContent='암호화하여 저장';toggle('cancelEdit',false);
+ editId=null;$('recordTitle').textContent='하루 한 줄 기록';
+ $('saveRecord').textContent='저장하기';toggle('cancelEdit',false);
+ if($('questionDetails'))$('questionDetails').open=false;
  $('recordForm').reset();$('recordDate').value=localToday();
 }
 function lock(message='보관함을 잠갔습니다.'){
@@ -33,7 +34,9 @@ function lock(message='보관함을 잠갔습니다.'){
  toggle('consult-locked',true);toggle('consult-app',false);
  toggle('backup-locked',true);toggle('backup-open',false);
  for(const id of ['recordList','timeline','profileSelect'])$(id).replaceChildren();
- $('summaryText').value='';$('printSheet').textContent='';stopEditing();renderStats();
+ $('summaryText').value='';$('printSheet').textContent='';stopEditing();
+ $('recordList').append(node('p','수첩을 열면 지난 기록이 보입니다.','empty'));
+ if($('profileDetails'))$('profileDetails').open=false;
  status('vaultStatus',message);
 }
 function showUnlocked(){
@@ -44,7 +47,8 @@ function showUnlocked(){
  $('newPassword').value='';$('confirmPassword').value='';$('unlockPassword').value='';
  profileId=session.data.profiles.some(p=>p.id===profileId)?profileId:session.data.profiles[0]?.id||null;
  stopEditing();renderAll();
- status('vaultStatus','기기에 암호화된 돌봄 기록을 안전하게 열었습니다.');
+ if(!session.data.profiles.length && $('profileDetails'))$('profileDetails').open=true;
+ status('vaultStatus','돌봄 수첩이 열렸습니다. 오늘 기록을 남겨 보세요.');
 }
 async function update(next,success,targetStatus='recordStatus'){
  if(busy)return false;
@@ -73,19 +77,6 @@ function renderProfiles(){
  $('summaryPeriod').disabled=!profileId;
  $('copySummary').disabled=!profileId;
  $('printSummary').disabled=!profileId;
-}
-function renderStats(){
- const data=session?.data;
- const profile=data?.profiles.find(p=>p.id===profileId);
- $('statProfiles').textContent=(data?.profiles.length||0)+'명';
- if(!profile){
-  $('statToday').textContent='0건';$('statWeek').textContent='0일';$('statQuestions').textContent='0개';return;
- }
- const selected=profileEntries(data,profileId),today=localToday();
- const summary=getSummary(data,profileId,7,today);
- $('statToday').textContent=selected.filter(x=>x.date===today).length+'건';
- $('statWeek').textContent=summary.observedDays+'일';
- $('statQuestions').textContent=summary.questions.length+'개';
 }
 function node(tag,text,cls){
  const elem=document.createElement(tag);
@@ -147,7 +138,7 @@ function renderSummary(){
   const older=node('div',null,'day-list');s.daily.slice(7).forEach(d=>addDay(d,older));details.append(older);timeline.append(details);
  }
 }
-function renderAll(){if(!session){renderStats();return}renderProfiles();renderStats();renderRecords();renderSummary()}
+function renderAll(){if(!session)return;renderProfiles();renderRecords();renderSummary()}
 function collectRecord(){
  return {date:$('recordDate').value,text:$('recordText').value.trim(),
   question:$('recordQuestion').value.trim(),sleep:$('sleep').value,meal:$('meal').value,
@@ -173,8 +164,14 @@ $('vault-create').addEventListener('submit',async e=>{
  if(pass!==$('confirmPassword').value){status('vaultStatus','비밀번호가 일치하지 않습니다.',true);return}
  if(!$('vaultConsent').checked){status('vaultStatus','보관 위험을 먼저 확인해 주세요.',true);return}
  setBusy(true);
- try{session=await createVault(pass);profileId=null;showUnlocked();
-  $('profileName').focus();status('vaultStatus','새 암호화 보관함이 만들어졌습니다. 돌봄 대상의 별칭을 추가해 주세요.');
+ try{
+  session=await createVault(pass);
+  const first=addProfile(session.data,'돌봄 대상 1');
+  await commitVault(session,first);
+  profileId=first.profiles[0].id;
+  showUnlocked();
+  $('recordText').focus();
+  status('vaultStatus','수첩을 만들었습니다. 바로 오늘 기록을 남겨 보세요.');
  }catch(error){status('vaultStatus',error.message,true)}finally{setBusy(false)}
 });
 $('vault-unlock').addEventListener('submit',async e=>{
@@ -192,7 +189,7 @@ $('profileForm').addEventListener('submit',async e=>{
   const next=addProfile(session.data,label);
   const newId=next.profiles.at(-1).id;
   if(await update(next,'돌봄 대상이 추가되었습니다.','recordStatus')){
-   profileId=newId;$('profileName').value='';stopEditing();renderAll();$('profileSelect').focus();
+   profileId=newId;$('profileName').value='';$('profileDetails').open=false;stopEditing();renderAll();$('profileSelect').focus();
   }
  }catch(error){status('recordStatus',error.message,true)}
 });
@@ -223,6 +220,7 @@ $('recordList').addEventListener('click',async e=>{
   $('saveRecord').textContent='수정 후 암호화 저장';toggle('cancelEdit',true);
   for(const [id,value] of Object.entries({recordDate:rec.date,recordText:rec.text,recordQuestion:rec.question,
    sleep:rec.sleep,meal:rec.meal,medicationCheck:rec.medicationCheck}))$(id).value=value;
+  if($('questionDetails'))$('questionDetails').open=Boolean(rec.question);
   location.hash='#diary';$('recordTitle').focus();
  }else if(button.dataset.action==='remove'){
   if(!confirm(rec.date+'의 선택한 대상자 기록 1건을 삭제할까요?\n삭제 후에는 되돌릴 수 없습니다.'))return;
@@ -261,17 +259,6 @@ $('exportBackup').addEventListener('click',async()=>{
   status('backupStatus','암호화 백업 파일 다운로드를 요청했습니다. 파일 목록에서 실제 저장 여부를 확인하세요.');
  }catch(e){status('backupStatus',e.message,true)}
  finally{setBusy(false)}
-});
-$('observeButton').addEventListener('click',()=>{
- const values=[...$('observeChecks').querySelectorAll('input:checked')].map(x=>x.value);
- toggle('observeResult',true);
- $('observeResult').textContent=values.length?
-  '변화 '+values.length+'개를 선택했습니다. 이 숫자는 치매 진단 점수가 아닙니다. 관찰된 변화가 지속·악화되거나 생활에 영향을 준다면 의료진 또는 치매안심센터에 상담하세요. 진료 시에는 언제부터 어떤 변화가 있었는지 구체적으로 설명하는 것이 좋습니다.':
-  '선택한 변화가 없더라도 치매를 배제할 수는 없습니다. 걱정되는 증상이 있다면 전문 상담을 받아 보세요.';
-});
-$('observeClear').addEventListener('click',()=>{
- for(const box of $('observeChecks').querySelectorAll('input'))box.checked=false;
- toggle('observeResult',false);
 });
 window.addEventListener('pagehide',()=>{
  if(session)lock('페이지를 떠나 보관함을 자동으로 잠갔습니다.');
