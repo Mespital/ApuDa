@@ -9,7 +9,7 @@ assert.ok(script,'the phase18 controller must exist');
 const source=script.replace(/^import .*;$/gm,'');
 new vm.Script(source,{filename:'phase18-qa.js'});
 assert.match(doc,/noindex,nofollow,noarchive/);
-assert.match(doc,/실제 환자정보·개인 비밀번호를 입력하지 마세요/);
+assert.match(doc,/실제 환자 정보나 평소 사용하는 비밀번호는 입력하지 마세요/);
 assert.match(doc,/role="status" aria-live="polite"/);
 assert.match(doc,/min-height:52px/);
 assert.match(doc,/button:focus-visible/);
