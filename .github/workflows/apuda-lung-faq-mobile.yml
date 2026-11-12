@@ -1,0 +1,83 @@
+name: ApuDa lung FAQ mobile overflow regression
+
+# Only for PR changes to the public lung FAQ or its regression check.
+# Never deploys, authenticates, uses secrets, or modifies patient/school data.
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'public-site/library/faq/lung/index.html'
+      - '.github/workflows/apuda-lung-faq-mobile.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  lung-mobile:
+    name: Lung FAQ 320px and 390px
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Chromium
+        run: |
+          python -m pip install --disable-pip-version-check playwright==1.57.0
+          python -m playwright install --with-deps chromium
+      - name: Reproduce mobile render from checked-out public HTML
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+
+          source = Path('public-site/library/faq/lung/index.html').read_text(encoding='utf-8')
+          output = Path('mobile-lung-artifacts')
+          output.mkdir(exist_ok=True)
+          results = []
+          failed = False
+
+          with sync_playwright() as pw:
+              browser = pw.chromium.launch(headless=True)
+              context = browser.new_context(locale='ko-KR', service_workers='block')
+              context.route('**/*', lambda route: route.abort())
+              for width in (320, 390):
+                  page = context.new_page(viewport={'width': width, 'height': 844})
+                  page.set_content(source, wait_until='domcontentloaded')
+                  count = page.locator('details > summary').count()
+                  if count:
+                      page.locator('details > summary').first.click()
+                  metrics = page.evaluate("""() => ({
+                     viewport: document.documentElement.clientWidth,
+                     htmlScroll: document.documentElement.scrollWidth,
+                     bodyScroll: document.body.scrollWidth,
+                     opened: !!document.querySelector('details')?.open
+                  })""")
+                  overflow = max(metrics['htmlScroll'], metrics['bodyScroll']) - metrics['viewport']
+                  ok = overflow <= 1 and count == 100 and metrics['opened']
+                  results.append({'width': width, 'overflowPx': overflow,
+                                  'faqCount': count, 'expanded': metrics['opened'],
+                                  'pass': ok})
+                  page.screenshot(path=str(output / f'lung_{width}.png'), full_page=True)
+                  print(f"lung FAQ {width}px: overflow={overflow}px, questions={count}, expanded={metrics['opened']}, pass={ok}")
+                  failed = failed or not ok
+                  page.close()
+              context.close()
+              browser.close()
+
+          (output / 'results.json').write_text(json.dumps(results, indent=2), encoding='utf-8')
+          if failed:
+              raise SystemExit(1)
+          PY
+      - name: Store render evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lung-faq-mobile-evidence
+          path: mobile-lung-artifacts/
+          if-no-files-found: warn
+          retention-days: 7
