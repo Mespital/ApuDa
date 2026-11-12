@@ -69,6 +69,28 @@ const faqSeo = {
 if (Object.keys(faqSeo).length !== 30 || records.some((record) => !faqSeo[record.slug])) {
   throw new Error('FAQ SEO topics must cover all 30 cancer types');
 }
+// Optional editorial topic maps (scripts/faq-topics/<slug>.json). A map only groups
+// existing question numbers under a navigational title; it adds no medical text.
+const topicDir = join(root, 'scripts/faq-topics');
+const topicMaps = new Map();
+for (const file of (await readdir(topicDir).catch(() => [])).filter((name) => name.endsWith('.json')).sort()) {
+  const map = JSON.parse(await readFile(join(topicDir, file), 'utf8'));
+  const record = records.find((r) => r.slug === map.slug);
+  if (!record || file !== map.slug + '.json') throw new Error('FAQ topic map has no matching cancer: ' + file);
+  const seen = new Set();
+  for (const topic of map.topics) {
+    if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(topic.slug) || !topic.title || !topic.summary) throw new Error('Invalid FAQ topic: ' + file);
+    for (const n of topic.items) {
+      if (!record.items.some((item) => Number(item.n) === n)) throw new Error('Unknown question ' + n + ' in ' + file);
+      if (seen.has(n)) throw new Error('Question ' + n + ' is in two topics in ' + file);
+      seen.add(n);
+    }
+  }
+  if (seen.size !== record.items.length) throw new Error('Topic map must place every question exactly once: ' + file);
+  if (new Set(map.topics.map((t) => t.slug)).size !== map.topics.length) throw new Error('Duplicate topic slug in ' + file);
+  topicMaps.set(map.slug, map.topics);
+}
+const topicPath = (record, topic) => '/library/faq/' + record.slug + '/' + topic.slug + '/';
 const nav = records.map((r) => '<a href="/library/faq/' + encodeURIComponent(r.slug) + '/">' + escapeHtml(r.name) + '</a>').join('');
 
 function sourceLinks(item, record) {
@@ -78,6 +100,33 @@ function sourceLinks(item, record) {
     .slice(0, 4).map((src) => '<a href="' + escapeHtml(src.url) + '" rel="noopener noreferrer" target="_blank">' +
       escapeHtml(src.title) + '</a>');
   return links.length ? '<div class="sources"><b>참고 자료</b>' + links.join(' · ') + '</div>' : '';
+}
+
+const pageStyle = `<style>
+:root{color-scheme:light;font-family:system-ui,"Noto Sans KR","Malgun Gothic",sans-serif;color:#193a4d}
+*{box-sizing:border-box}body{margin:0;background:#f1f7fa;line-height:1.7}
+a{color:#086c86}a:focus-visible,summary:focus-visible{outline:3px solid #e3aa27;outline-offset:3px}
+.top{padding:16px max(18px,calc((100vw - 980px)/2));background:#0f3a53;color:#fff;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.top a{color:#fff;font-weight:750;text-decoration:none}.wrap{max-width:980px;margin:auto;padding:26px 18px 70px}
+.crumb{font-size:14px;color:#527086}.hero{padding:28px;background:white;border-radius:18px;border:1px solid #d8e6ee}
+h1{font-size:clamp(27px,4.4vw,42px);line-height:1.25;margin:8px 0 12px}h2{font-size:21px}
+.lead{margin:0;color:#49677c}.notice{margin-top:17px;border-left:5px solid #d6a33d;background:#fff8e7;padding:12px 15px;font-size:14px}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}.nav a[aria-current]{background:#0f3a53;color:#fff;border-color:#0f3a53}.nav a{font-size:13px;text-decoration:none;padding:5px 10px;background:#fff;border:1px solid #d4e6ed;border-radius:20px}
+ol{list-style:none;padding:0;display:grid;gap:10px}li{margin:0}details{background:#fff;border:1px solid #d9e8ef;border-radius:12px;overflow:hidden}
+summary{cursor:pointer;padding:17px 18px;font-weight:740;line-height:1.5;min-height:48px}
+summary h3{display:inline;margin:0;font:inherit}
+.answer{padding:0 18px 19px;border-top:1px solid #e9f0f4}.answer p{white-space:pre-line}
+.sources{color:#536d7b;font-size:13px;margin:12px 0}.sources a{display:inline-block;margin:4px 6px 4px 0}
+small{display:block;font-size:12px;color:#627884}footer{padding-top:30px;color:#536d7b;font-size:13px}
+@media(max-width:600px){.wrap{padding:14px 12px 50px}.hero{padding:18px}summary{padding:14px}}
+</style>`;
+
+function renderQuestions(items, record) {
+  return items.map((item) => {
+    return '<li><details id="q' + Number(item.n) + '"><summary><h3>' + escapeHtml(item.q) + '</h3></summary>' +
+      '<div class="answer"><p>' + escapeHtml(item.a) + '</p>' + sourceLinks(item, record) +
+      '<small>이 정보는 진료·처방을 대신하지 않습니다. 구체적인 치료 결정은 담당 의료진과 상의하세요.</small></div></details></li>';
+  }).join('\n');
 }
 
 function faqPage(record) {
@@ -93,11 +142,11 @@ function faqPage(record) {
       { '@type': 'ListItem', position: 2, name: '암 진단 첫 30일', item: origin + '/library/first30/' },
       { '@type': 'ListItem', position: 3, name: record.name + ' FAQ', item: url },
     ] };
-  const questions = record.items.map((item) => {
-    return '<li><details id="q' + Number(item.n) + '"><summary><h3>' + escapeHtml(item.q) + '</h3></summary>' +
-      '<div class="answer"><p>' + escapeHtml(item.a) + '</p>' + sourceLinks(item, record) +
-      '<small>이 정보는 진료·처방을 대신하지 않습니다. 구체적인 치료 결정은 담당 의료진과 상의하세요.</small></div></details></li>';
-  }).join('\n');
+  const questions = renderQuestions(record.items, record);
+  const topics = topicMaps.get(record.slug) ?? [];
+  const topicNav = topics.length ? '<h2>주제별로 보기</h2><nav class="nav" aria-label="' + escapeHtml(record.name) +
+    ' FAQ 주제">' + topics.map((t) => '<a href="' + topicPath(record, t) + '">' + escapeHtml(t.title) +
+    ' (' + t.items.length + ')</a>').join('') + '</nav>' : '';
   return `<!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${escapeHtml(title)}</title>
@@ -109,24 +158,7 @@ function faqPage(record) {
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#f1f7fc">
 <script type="application/ld+json">${jsonLd(breadcrumb)}</script>
-<style>
-:root{color-scheme:light;font-family:system-ui,"Noto Sans KR","Malgun Gothic",sans-serif;color:#193a4d}
-*{box-sizing:border-box}body{margin:0;background:#f1f7fa;line-height:1.7}
-a{color:#086c86}a:focus-visible,summary:focus-visible{outline:3px solid #e3aa27;outline-offset:3px}
-.top{padding:16px max(18px,calc((100vw - 980px)/2));background:#0f3a53;color:#fff;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
-.top a{color:#fff;font-weight:750;text-decoration:none}.wrap{max-width:980px;margin:auto;padding:26px 18px 70px}
-.crumb{font-size:14px;color:#527086}.hero{padding:28px;background:white;border-radius:18px;border:1px solid #d8e6ee}
-h1{font-size:clamp(27px,4.4vw,42px);line-height:1.25;margin:8px 0 12px}h2{font-size:21px}
-.lead{margin:0;color:#49677c}.notice{margin-top:17px;border-left:5px solid #d6a33d;background:#fff8e7;padding:12px 15px;font-size:14px}
-.nav{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}.nav a{font-size:13px;text-decoration:none;padding:5px 10px;background:#fff;border:1px solid #d4e6ed;border-radius:20px}
-ol{list-style:none;padding:0;display:grid;gap:10px}li{margin:0}details{background:#fff;border:1px solid #d9e8ef;border-radius:12px;overflow:hidden}
-summary{cursor:pointer;padding:17px 18px;font-weight:740;line-height:1.5;min-height:48px}
-summary h3{display:inline;margin:0;font:inherit}
-.answer{padding:0 18px 19px;border-top:1px solid #e9f0f4}.answer p{white-space:pre-line}
-.sources{color:#536d7b;font-size:13px;margin:12px 0}.sources a{display:inline-block;margin:4px 6px 4px 0}
-small{display:block;font-size:12px;color:#627884}footer{padding-top:30px;color:#536d7b;font-size:13px}
-@media(max-width:600px){.wrap{padding:14px 12px 50px}.hero{padding:18px}summary{padding:14px}}
-</style></head><body>
+${pageStyle}</head><body>
 <header class="top"><a href="/">ApuDa · 아프지만, 다행이다</a><a href="/library/first30/">암종별 안내서 30권</a></header>
 <main class="wrap"><div class="hero">
 <nav class="crumb" aria-label="현재 위치"><a href="/">ApuDa</a> › <a href="/library/first30/">암 진단 첫 30일</a> › ${escapeHtml(record.name)} FAQ</nav>
@@ -135,8 +167,53 @@ small{display:block;font-size:12px;color:#627884}footer{padding-top:30px;color:#
 <div class="notice">출처를 첨부한 환자교육용 참고정보입니다. 출처가 있다고 임상 승인이 완료되었음을 뜻하지 않습니다. 국내 허가·급여 기준과 개인 상태에 따라 달라질 수 있으므로, 진단·치료·약물 변경은 반드시 담당 의료진과 상의하세요. <a href="/library/review/?cancer=${encodeURIComponent(record.slug)}">자료 출처·검토 범위</a></div>
 <p><a href="/library/faq/?cancer=${encodeURIComponent(record.slug)}">검색·주제별 필터가 있는 FAQ 화면으로 이동</a> ·
 <a href="/library/first30/books/${book.number}.html">${escapeHtml(record.name)} 첫 30일 무료 안내서</a></p>
-</div><nav class="nav" aria-label="다른 암종 FAQ">${nav}</nav>
+</div>${topicNav}<nav class="nav" aria-label="다른 암종 FAQ">${nav}</nav>
 <h2>질문과 답변</h2><ol>${questions}</ol>
+<footer>마지막 자료 업데이트: ${escapeHtml(record.updated ?? '미확인')} · <a href="/library/review/?cancer=${encodeURIComponent(record.slug)}">자료 출처·검토 범위</a><p>© ApuDa · 이 정보는 의료진의 진단·처방을 대신하지 않습니다.</p></footer>
+</main></body></html>`;
+}
+
+function topicPage(record, topic, topics) {
+  const book = books.get(record.slug);
+  const url = canonical(topicPath(record, topic));
+  const parent = '/library/faq/' + record.slug + '/';
+  const items = topic.items.map((n) => record.items.find((item) => Number(item.n) === n));
+  const heading = record.name + ' ' + topic.title;
+  const title = heading + ' FAQ ' + items.length + '문항 | ApuDa';
+  const description = heading + ' 관련 질문 ' + items.length + '개와 답변. ' + topic.summary +
+    ' 출처를 첨부한 환자교육용 참고정보이며 진료를 대신하지 않습니다.';
+  const breadcrumb = { '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'ApuDa', item: origin + '/' },
+      { '@type': 'ListItem', position: 2, name: '암 진단 첫 30일', item: origin + '/library/first30/' },
+      { '@type': 'ListItem', position: 3, name: record.name + ' FAQ', item: canonical(parent) },
+      { '@type': 'ListItem', position: 4, name: topic.title, item: url },
+    ] };
+  const siblings = topics.map((t) => t.slug === topic.slug
+    ? '<a aria-current="page" href="' + topicPath(record, t) + '">' + escapeHtml(t.title) + '</a>'
+    : '<a href="' + topicPath(record, t) + '">' + escapeHtml(t.title) + '</a>').join('');
+  return `<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${escapeHtml(title)}</title>
+<meta name="description" content="${escapeHtml(description)}">
+<link rel="canonical" href="${url}">
+<meta property="og:type" content="article"><meta property="og:title" content="${escapeHtml(title)}">
+<meta property="og:description" content="${escapeHtml(description)}"><meta property="og:url" content="${url}">
+<meta property="og:image" content="${shareImage}"><meta property="og:site_name" content="아프다 ApuDa">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f1f7fc">
+<script type="application/ld+json">${jsonLd(breadcrumb)}</script>
+${pageStyle}</head><body>
+<header class="top"><a href="/">ApuDa · 아프지만, 다행이다</a><a href="/library/first30/">암종별 안내서 30권</a></header>
+<main class="wrap"><div class="hero">
+<nav class="crumb" aria-label="현재 위치"><a href="/">ApuDa</a> › <a href="/library/first30/">암 진단 첫 30일</a> › <a href="${parent}">${escapeHtml(record.name)} FAQ</a> › ${escapeHtml(topic.title)}</nav>
+<h1>${escapeHtml(heading)} FAQ</h1>
+<p class="lead">${escapeHtml(topic.summary)} 필요한 질문을 눌러 답변과 참고자료를 읽어보세요.</p>
+<div class="notice">출처를 첨부한 환자교육용 참고정보입니다. 출처가 있다고 임상 승인이 완료되었음을 뜻하지 않습니다. 국내 허가·급여 기준과 개인 상태에 따라 달라질 수 있으므로, 진단·치료·약물 변경은 반드시 담당 의료진과 상의하세요. <a href="/library/review/?cancer=${encodeURIComponent(record.slug)}">자료 출처·검토 범위</a></div>
+<p><a href="${parent}">${escapeHtml(record.name)} FAQ 100문항 전체 보기</a> ·
+<a href="/library/first30/books/${book.number}.html">${escapeHtml(record.name)} 첫 30일 무료 안내서</a></p>
+</div><nav class="nav" aria-label="${escapeHtml(record.name)} FAQ 주제">${siblings}</nav>
+<h2>질문과 답변</h2><ol>${renderQuestions(items, record)}</ol>
 <footer>마지막 자료 업데이트: ${escapeHtml(record.updated ?? '미확인')} · <a href="/library/review/?cancer=${encodeURIComponent(record.slug)}">자료 출처·검토 범위</a><p>© ApuDa · 이 정보는 의료진의 진단·처방을 대신하지 않습니다.</p></footer>
 </main></body></html>`;
 }
@@ -146,6 +223,12 @@ for (const record of records) {
   const output = join(faqDir, record.slug, 'index.html');
   await mkdir(dirname(output), { recursive: true });
   await writeFile(output, faqPage(record), 'utf8');
+  const topics = topicMaps.get(record.slug) ?? [];
+  for (const topic of topics) {
+    const topicOutput = join(faqDir, record.slug, topic.slug, 'index.html');
+    await mkdir(dirname(topicOutput), { recursive: true });
+    await writeFile(topicOutput, topicPage(record, topic, topics), 'utf8');
+  }
 }
 
 // Make those static pages discoverable through ordinary HTML links, while
@@ -217,7 +300,9 @@ for (const [slug, book] of books) {
 // `updated` date, the same value printed on the page as "마지막 자료 업데이트".
 const faqLastmod = new Map(records
   .filter((r) => /^\d{4}-\d{2}-\d{2}$/.test(r.updated ?? ''))
-  .map((r) => ['/library/faq/' + r.slug + '/', r.updated]));
+  .flatMap((r) => [['/library/faq/' + r.slug + '/', r.updated],
+    ...(topicMaps.get(r.slug) ?? []).map((t) => [topicPath(r, t), r.updated])]));
+const topicPaths = records.flatMap((r) => (topicMaps.get(r.slug) ?? []).map((t) => topicPath(r, t)));
 const paths = [
   '/', '/about/', '/community/', '/family/', '/care/', '/pet/', '/farm/',
   '/risk/', '/checkup/', '/emergency/', '/hospital-information/',
@@ -227,6 +312,7 @@ const paths = [
   '/news/', '/news/oncology/', '/note-guide/', '/watch/',
   ...[...books.values()].map((b) => '/library/first30/books/' + b.number + '.html'),
   ...records.map((r) => '/library/faq/' + r.slug + '/'),
+  ...topicPaths,
 ];
 if (new Set(paths).size !== paths.length) throw new Error('Duplicate URLs in sitemap');
 const xml = '<?xml version="1.0" encoding="UTF-8"?>\n' +
@@ -235,4 +321,4 @@ const xml = '<?xml version="1.0" encoding="UTF-8"?>\n' +
     (faqLastmod.has(p) ? '<lastmod>' + faqLastmod.get(p) + '</lastmod>' : '') + '</url>').join('\n') +
   '\n</urlset>\n';
 await writeFile(join(root, 'sitemap.xml'), xml, 'utf8');
-console.log('SEO: ' + books.size + ' books, ' + records.length + ' FAQ pages, ' + paths.length + ' sitemap URLs');
+console.log('SEO: ' + books.size + ' books, ' + records.length + ' FAQ pages, ' + topicPaths.length + ' FAQ topic pages, ' + paths.length + ' sitemap URLs');
