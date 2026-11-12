@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "project": "ApuDa Memory",
+  "repository": "Mespital/ApuDa",
+  "pullRequest": 293,
+  "branch": "feat/apuda-memory-p0-20261110",
+  "asOf": "2026-11-12",
+  "environment": "preview-only",
+  "productionDeploymentAuthorized": false,
+  "releaseDecision": "NO_GO",
+  "privacy": "Use fictitious test records only; never copy, delete, or migrate existing personal records.",
+  "tests": [
+    {
+      "id": "source-isolation",
+      "title": "기존 저장소·화면 분리",
+      "status": "PASS",
+      "blocking": true,
+      "evidence": "public-site/memory/index.html still uses apuda-memory-care-diary-v1; secure-archive.mjs and indexeddb-migration.mjs are not imported by the live UI"
+    },
+    {
+      "id": "github-draft",
+      "title": "GitHub PR이 미병합 Draft 상태",
+      "status": "PASS",
+      "blocking": true,
+      "evidence": "GitHub PR #293 inspected on 2026-11-12: open, draft, not merged"
+    },
+    {
+      "id": "android-chrome",
+      "title": "Android Chrome 실제 단말 입력·수정·삭제·되돌리기",
+      "status": "PENDING",
+      "blocking": true,
+      "evidence": null
+    },
+    {
+      "id": "ios-safari",
+      "title": "iPhone Safari 실제 단말 입력·수정·삭제·되돌리기",
+      "status": "PENDING",
+      "blocking": true,
+      "evidence": null
+    },
+    {
+      "id": "android-accessibility",
+      "title": "320px 상당 화면·200% 글자 확대·TalkBack·키보드 접근성",
+      "status": "PENDING",
+      "blocking": true,
+      "evidence": null
+    },
+    {
+      "id": "ios-accessibility",
+      "title": "200% 확대·VoiceOver·초점 순서",
+      "status": "PENDING",
+      "blocking": true,
+      "evidence": null
+    },
+    {
+      "id": "copies-print",
+      "title": "진료 요약 복사 실패 안내·A4 PDF 인쇄·클립보드 개인정보 안내",
+      "status": "PENDING",
+      "blocking": true,
+      "evidence": null
+    },
+    {
+      "id": "real-idb",
+      "title": "실제 Chrome/Safari IndexedDB 커밋·rollback·quota·2탭 충돌",
+      "status": "PENDING",
+      "blocking": true,
+      "evidence": null
+    },
+    {
+      "id": "encrypted-backup-mobile",
+      "title": "모바일 Web Crypto 암복호화 시간·암호분실 UX·취약점 검토",
+      "status": "PENDING",
+      "blocking": true,
+      "evidence": null
+    },
+    {
+      "id": "cross-device-restore",
+      "title": "실제 기기 JSON 복원",
+      "status": "DEFERRED",
+      "blocking": true,
+      "evidence": null,
+      "note": "User expressly deferred this until later. No testing or existing record mutation."
+    },
+    {
+      "id": "privacy-review",
+      "title": "개인정보 위험평가·독립 보안 검토·동의/보유/파기 고지",
+      "status": "PENDING",
+      "blocking": true,
+      "evidence": null
+    },
+    {
+      "id": "clinical-review",
+      "title": "실제 인지·돌봄 의료 전문가 안전 표현 검토",
+      "status": "PENDING",
+      "blocking": true,
+      "evidence": null
+    },
+    {
+      "id": "caregiver-usability",
+      "title": "실제 보호자 참여 사용성 검증",
+      "status": "PENDING",
+      "blocking": true,
+      "evidence": null
+    },
+    {
+      "id": "rollback-runbook",
+      "title": "운영 배포 복구·백업·데이터 일치성 절차 검증",
+      "status": "PENDING",
+      "blocking": true,
+      "evidence": null
+    },
+    {
+      "id": "explicit-approval",
+      "title": "사용자의 운영 배포 명시적 승인",
+      "status": "PENDING",
+      "blocking": true,
+      "evidence": null
+    }
+  ]
+}
