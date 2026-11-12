@@ -59,6 +59,7 @@ assert.ok(!html.includes('profile-vault-idb-qa.mjs'),'QA-only IndexedDB must not
 assert.ok(!html.includes('phase15-qa.html'),'do not expose experimental QA from the live diary');
 assert.ok(!html.includes('phase16-qa.html'),'Phase 16 multi-connection QA must stay off live diary');
 assert.ok(!html.includes('phase17-qa.html'),'Phase 17 secure-backup QA must stay off live diary');
+assert.ok(!html.includes('phase18-caregiver-qa.html'),'Phase 18 caregiver UX must stay off live diary until user research');
 assert.ok(!html.includes('scoped-secure-archive.mjs'),'Phase 17 profile encryption must stay off live diary until verified');
 assert.ok(!html.includes('test_phase16_qa_ui'),'Phase 16 test-only code must not ship in live diary');
 assert.ok(!html.includes('profile-scope.mjs'),'manual assignment profile prototype must remain disconnected from the live diary');
