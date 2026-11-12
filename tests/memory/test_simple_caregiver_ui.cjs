@@ -16,6 +16,8 @@ class Element{
   this.classList={toggle(){}};
  }
  addEventListener(type,cb){this.handlers[type]=cb}
+ querySelectorAll(selector){return selector==='input[type="checkbox"]:checked'?(this.checkedNodes||[]):[]}
+ scrollIntoView(){this.scrolled=true}
  replaceChildren(...children){this.children=children}
  append(...children){this.children.push(...children)}
  setAttribute(name,value){this[name]=value}
@@ -152,5 +154,34 @@ class Element{
  await execute('unlockForm');
  assert.equal(elements.app.hidden,false);
  assert.equal(saved.data.entries.length,1);
- console.log('PASS: easy onboarding, automatic first profile, daily note, history edit/delete, 7-day doctor summary, copy/print, profile separation and lock/unlock');
+ // All dementia care services are reachable in one place, even when locked.
+ await execute('servicesShortcut','click');
+ assert.equal(elements.allServices.open,true);
+ elements.memoryChecks.checkedNodes=[{value:'최근 대화를 반복해서 잊음'}];
+ await execute('memoryReview','click');
+ assert.match(elements.memoryResult.textContent,/치매 위험 점수가 아닙니다/);
+ const savedBeforeTransfer=saved.data.entries.length;
+ await execute('memoryToDiary','click');
+ assert.equal(elements.viewToday.hidden,false);
+ assert.match(elements.entryMemo.value,/최근 대화를 반복해서 잊음/);
+ assert.equal(saved.data.entries.length,savedBeforeTransfer,'checklist must not silently save');
+ await execute('diaryForm');
+ assert.equal(saved.data.entries.length,savedBeforeTransfer+1);
+ assert.equal(imported.profileEntries(saved.data,saved.data.profiles[0].id).length,2);
+ assert.equal(imported.profileEntries(saved.data,saved.data.profiles[1].id).length,0);
+ elements.routineChecks.checkedNodes=[{value:'수면과 휴식 관찰'}];
+ await execute('routineToDiary','click');
+ assert.match(elements.entryMemo.value,/수면과 휴식 관찰/);
+ elements.safetyChecks.checkedNodes=[{value:'실내 조명·화장실 동선 확인'}];
+ await execute('safetyToDiary','click');
+ assert.match(elements.entryMemo.value,/실내 조명·화장실 동선 확인/);
+ assert.equal(saved.data.entries.length,savedBeforeTransfer+1,'routine and safety are not automatically persisted');
+ elements.activitySelect.value='music';
+ await execute('activitySelect','change');
+ assert.match(elements.activityGuide.textContent,/편안한 음악/);
+ await execute('activityToDiary','click');
+ assert.match(elements.entryMemo.value,/좋아하는 음악 듣기/);
+ assert.equal(saved.data.entries.length,savedBeforeTransfer+1,'activity is not silently saved');
+ console.log('PASS: easy onboarding, automatic first profile, diary CRUD, clinic summary, 6 unified services, checklist-to-diary explicit save, profile isolation and lock/unlock');
+, automatic first profile, daily note, history edit/delete, 7-day doctor summary, copy/print, profile separation and lock/unlock');
 })().catch(error=>{console.error(error);process.exitCode=1});
