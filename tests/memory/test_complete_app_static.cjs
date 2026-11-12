@@ -29,7 +29,7 @@ assert.match(page,/tel:119/);
 assert.match(page,/치매를 판정하지 않으며/);
 assert.match(page,/기존 기록을 자동 이전하거나 삭제하지 않습니다/);
 assert.match(page,/암호화되지 않은 상태/);
-assert.match(page,/다른 탭에서 충돌/);
+assert.match(page,/동시 탭에서 충돌/);
 assert.match(ui,/commitVault\(session,next\)/);
 assert.match(ui,/profileEntries\(session\.data,profileId\)/);
 assert.match(ui,/formatSummaryText\(session\.data,profileId/);
