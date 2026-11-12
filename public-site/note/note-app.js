@@ -27,7 +27,7 @@ function load(){
 var noteExpectedRaw=null;
 var noteWritesPaused=false,chatWritesPaused=false,unsavedCaptureFailed=false;
 var profileSavePending=false,profilePendingRaw=null,questionSavePending=false;
-var entrySavePending=false,entryPendingRaw=null;
+var entrySavePending=false,entryPendingRaw=null,entryPendingFormRaw=null;
 var state=load();
 function invalidateUndo(){
   if(noteUndo)noteUndo.invalidate();undoToken='';
@@ -905,6 +905,24 @@ function schedItem(x){var done=x.status==='done';return '<div class="item'+(done
 function medItem(m){var on=m.active==='yes';return '<div class="item"><div class="row between"><span class="pill '+(on?'green':'gray')+'">'+esc(m.type||'약')+' · '+(on?'복용 중':'중단')+'</span><span class="row" style="gap:6px"><button class="btn soft sm" onclick="toggleMed(\''+m.id+'\')">'+(on?'중단':'다시 복용')+'</button><button class="btn line sm" onclick="delItem(\'meds\',\''+m.id+'\')">삭제</button></span></div><h4>'+esc(m.name)+' '+esc(m.dose||'')+'</h4><div class="meta">'+esc(m.schedule||'복용 시간 미입력')+(m.memo?' · '+esc(m.memo):'')+'</div></div>'}
 function qItem(q){return '<div class="item'+(q.answer?' done':'')+'"><div class="row between"><span class="pill '+(q.priority==='high'?'red':q.answer?'green':'')+'">'+(q.answer?'답변 받음':q.priority==='high'?'꼭 질문':'질문')+'</span><span class="row" style="gap:6px">'+(q.priority!=='high'&&!q.answer?'<button class="btn soft sm" onclick="starQ(\''+q.id+'\')">★ 꼭</button>':'')+'<button class="btn line sm" onclick="delItem(\'questions\',\''+q.id+'\')">삭제</button></span></div><h4 style="text-decoration:none;color:inherit">'+esc(q.question)+'</h4>'+
   '<div class="addline" style="margin-top:6px"><input placeholder="들은 답변 메모" value="'+esc(q.answer||'')+'" onchange="answerQ(\''+q.id+'\',this.value)"><span></span></div></div>'}
+/* Record what the user actually typed, separately from normalized state.
+ * Review-only envelope is NEVER fed into the automatic V3 restore parser.
+ */
+function reviewFormSnapshot(form){
+  return JSON.stringify({format:'apuda.note.unsaved-form-review.v1',reviewOnly:true,
+    formAction:form.getAttribute('onsubmit')||'',
+    fields:[].map.call(form.querySelectorAll('input,select,textarea'),function(el){
+      return {name:el.name||'',type:el.type||'',value:el.value,checked:!!el.checked};
+    })});
+}
+function holdEntryFormInput(reason){
+  if(!entryPendingFormRaw||!NOTE_DRAFT)return;
+  try{
+    if(!NOTE_DRAFT.capture('note',entryPendingFormRaw,reason))unsavedCaptureFailed=true;
+  }catch(ignore){unsavedCaptureFailed=true;}
+  updateUnsavedWarning();
+}
+
 /* Phase 2: schedule, medicine, laboratory forms wait for future async writes.
  * The existing save() is still synchronous localStorage; no migration occurs.
  */
@@ -915,6 +933,7 @@ async function saveEntryForm(form,apply,success,fail,afterSave){
   }
   var controls=[].slice.call(form.querySelectorAll('input,select,textarea,button'));
   var prior=controls.map(function(el){return el.disabled;});
+  entryPendingFormRaw=reviewFormSnapshot(form);
   entrySavePending=true;form.setAttribute('aria-busy','true');
   controls.forEach(function(el){el.disabled=true;});
   try{
@@ -929,10 +948,11 @@ async function saveEntryForm(form,apply,success,fail,afterSave){
     return true;
   }catch(error){
     if(!hasUnsavedDraft())holdUnsaved('note',entryPendingRaw||JSON.stringify(state),error);
+    holdEntryFormInput(error&&error.message);
     toast(fail);
     return false;
   }finally{
-    entrySavePending=false;entryPendingRaw=null;form.removeAttribute('aria-busy');
+    entrySavePending=false;entryPendingRaw=null;entryPendingFormRaw=null;form.removeAttribute('aria-busy');
     controls.forEach(function(el,i){el.disabled=prior[i];});
   }
 }
@@ -1242,6 +1262,7 @@ window.addEventListener('storage',function(e){
   if(e.key!==KEY)return;
   if(entrySavePending){
     holdUnsaved('note',entryPendingRaw||JSON.stringify(state),new Error('records-changed'));
+    holdEntryFormInput('records-changed');
     toast('다른 탭이 기록을 변경해 저장 중인 내용을 따로 보관했습니다. 임시 사본을 확인해 주세요.');
     return;
   }
