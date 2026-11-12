@@ -27,6 +27,13 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #bd
 .metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}
 .metric{border:1px solid var(--line);border-radius:12px;padding:15px;background:#f9fbff}
 .metric strong{display:block;font-size:28px;font-variant-numeric:tabular-nums}
+.assignment-card{padding:14px;margin:11px 0;border:1px solid var(--line);border-radius:12px;background:#f9fbff}
+.assignment-card .note{overflow-wrap:anywhere}
+.assignment-card button{margin-top:6px}
+.assignment-consent{display:flex;align-items:flex-start;gap:10px;font-weight:650}
+.assignment-consent input{width:23px;height:23px;flex:none;margin-top:5px}
+#assignment-status{font-weight:700;color:#194c90}
+#assignment-undo[hidden]{display:none}
 .day{border:1px solid var(--line);border-radius:12px;padding:12px;margin:8px 0}
 .day-missing{background:#fafafa;color:#4b5b68}
 .day header{padding:0;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
@@ -81,6 +88,18 @@ main{padding:0;width:auto}
       <button id="period-30" type="button" aria-pressed="false">최근 30일</button>
     </div>
   </section>
+  <section class="panel" aria-labelledby="unassigned-title">
+    <h2 id="unassigned-title">3. 미분류 가상 기록 확인·배정</h2>
+    <p>누구의 기록인지 알 수 없는 상태로 보존되어 있습니다. 아래 기록을 먼저 읽고, <strong>위에서 선택한 가상 대상자에게만</strong> 명시적으로 배정하세요. 자동 분류하지 않습니다.</p>
+    <div id="unassigned-list" aria-label="미분류 가상 기록 목록"></div>
+    <label class="assignment-consent" for="assignment-consent"><input type="checkbox" id="assignment-consent"><span>미분류 기록 내용을 확인했으며, <strong id="assignment-target-label">돌봄 대상 A</strong>에게 선택한 가상 기록을 배정할 것을 이해했습니다.</span></label>
+    <p id="assignment-status" role="status" aria-live="polite">배정 전에는 기록이 대상자별 요약에 포함되지 않습니다.</p>
+    <div class="switches">
+      <button id="assignment-undo" type="button" hidden>마지막 가상 배정 되돌리기</button>
+      <button id="assignment-reset" type="button">가상 기록 초기 상태로 다시 시작</button>
+    </div>
+    <p class="note">되돌리기는 이 페이지에서 마지막 배정 1건만 가능합니다. 기존 브라우저 기록·백업·실제 환자정보는 읽거나 수정하지 않습니다.</p>
+  </section>
 </div>
 <div id="qa-results" hidden>
   <section class="panel" aria-labelledby="summary-title">
@@ -119,7 +138,7 @@ main{padding:0;width:auto}
 </div>
 </main>
 <script type="module">
-import {emptyProfileVault,addAnonymousProfile,appendScopedRecord} from './profile-scope.mjs';
+import {emptyProfileVault,addAnonymousProfile,appendScopedRecord,listUnassignedRecords,assignReviewedUnassignedRecord,undoReviewedAssignment} from './profile-scope.mjs';
 import {buildProfileSummary,buildProfileConsultText,FIELD_TITLES} from './profile-summary.mjs';
 
 const $=id=>document.getElementById(id);
@@ -127,7 +146,7 @@ const allowedHost=/^deploy-preview-\d+--apuda-total\.netlify\.app$/.test(locatio
   ['localhost','127.0.0.1'].includes(location.hostname);
 const A='e4ad61f3-4cf2-40a8-a38c-1d098c91d643';
 const B='e3c55b7d-26ba-4d56-9c78-2875b04f9079';
-let selected=A,days=7,vault,localDate;
+let selected=A,days=7,vault,localDate,pendingAssignment=null;
 function dateShift(date,offset){
   const d=new Date(date+'T00:00:00Z');
   d.setUTCDate(d.getUTCDate()+offset);
@@ -169,6 +188,47 @@ function buildDayCard(item){
   card.append(head,dl);
   return card;
 }
+function renderUnassigned(){
+  const items=listUnassignedRecords(vault);
+  $('unassigned-count').textContent=items.length+'건';
+  $('assignment-target-label').textContent=selected===A?'돌봄 대상 A':'돌봄 대상 B';
+  const root=$('unassigned-list');
+  root.replaceChildren();
+  if(!items.length){
+    const p=document.createElement('p');
+    p.textContent='미분류 가상 기록이 없습니다. 기존 실제 기록은 여전히 변경되지 않았습니다.';
+    root.append(p);
+    return;
+  }
+  for(const item of items){
+    const article=document.createElement('article');article.className='assignment-card';
+    const head=document.createElement('strong');head.textContent=item.date+' · 미분류 기록';
+    const body=document.createElement('p');body.textContent=item.text;
+    const question=document.createElement('p');question.className='note';
+    question.textContent=item.question?'가상 진료 질문: '+item.question:'진료 질문 없음';
+    const button=document.createElement('button');button.type='button';
+    button.textContent='이 기록을 현재 선택한 대상에게 배정';
+    button.setAttribute('aria-label',item.date+' 미분류 가상 기록을 현재 선택한 대상에게 배정');
+    button.addEventListener('click',()=>{
+      if(!$('assignment-consent').checked){
+        $('assignment-status').textContent='미분류 기록을 읽고 위 확인란에 동의한 다음 배정하세요.';
+        return;
+      }
+      const target=selected===A?'돌봄 대상 A':'돌봄 대상 B';
+      if(!window.confirm(item.date+'의 가상 미분류 기록을 '+target+'에게 배정할까요? 이 작업은 실제 기록에는 영향을 주지 않습니다.'))return;
+      try{
+        const result=assignReviewedUnassignedRecord(vault,selected,item.id,item,true);
+        vault=result.vault;
+        pendingAssignment=result.undoToken;
+        $('assignment-consent').checked=false;
+        $('assignment-undo').hidden=false;
+        render();
+        $('assignment-status').textContent='가상 기록 1건을 '+target+'에게 배정했습니다. 필요하면 마지막 배정 되돌리기를 누르세요.';
+      }catch(error){$('assignment-status').textContent=error.message}
+    });
+    article.append(head,body,question,button);root.append(article);
+  }
+}
 function render(){
   const result=buildProfileSummary(vault,selected,days,localDate);
   const label=selected===A?'A':'B';
@@ -192,6 +252,7 @@ function render(){
   $('older-days').replaceChildren(...result.daily.slice(7).map(buildDayCard));
   $('report').textContent=buildProfileConsultText(vault,selected,days,localDate);
   $('copy-status').textContent='';
+  renderUnassigned();
   mark(['choose-a','choose-b'],selected===A?'choose-a':'choose-b');
   mark(['period-7','period-30'],days===7?'period-7':'period-30');
   $('qa-status').textContent='가상 돌봄 대상 '+label+'의 최근 '+days+'일 기록만 화면에 표시 중입니다.';
@@ -207,6 +268,8 @@ if(!allowedHost){
   for(const [id,which] of [['choose-a',A],['choose-b',B]]){
     $(id).addEventListener('click',()=>{
       selected=which;
+      $('assignment-consent').checked=false;
+      $('assignment-status').textContent='선택한 대상자가 변경되었습니다. 배정 전에 기록 내용을 다시 확인해 주세요.';
       render();
       $('summary-title').focus();
     });
@@ -218,6 +281,25 @@ if(!allowedHost){
       $('summary-title').focus();
     });
   }
+  $('assignment-undo').addEventListener('click',()=>{
+    if(!pendingAssignment)return;
+    try{
+      vault=undoReviewedAssignment(vault,pendingAssignment);
+      pendingAssignment=null;
+      $('assignment-undo').hidden=true;
+      $('assignment-consent').checked=false;
+      render();
+      $('assignment-status').textContent='마지막 가상 배정 1건을 되돌렸습니다. 미분류 목록에 다시 표시됩니다.';
+    }catch(error){$('assignment-status').textContent=error.message}
+  });
+  $('assignment-reset').addEventListener('click',()=>{
+    makeDemo();
+    selected=A;days=7;pendingAssignment=null;
+    $('assignment-undo').hidden=true;
+    $('assignment-consent').checked=false;
+    render();
+    $('assignment-status').textContent='가상 기록만 초기 상태로 복원했습니다. 실제 데이터는 변경하지 않았습니다.';
+  });
   $('copy-report').addEventListener('click',async()=>{
     try{
       if(!navigator.clipboard?.writeText)throw Error('clipboard unavailable');
