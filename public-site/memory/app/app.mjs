@@ -33,7 +33,7 @@ function lock(message='보관함을 잠갔습니다.'){
  toggle('consult-locked',true);toggle('consult-app',false);
  toggle('backup-locked',true);toggle('backup-open',false);
  for(const id of ['recordList','timeline','profileSelect'])$(id).replaceChildren();
- $('summaryText').value='';stopEditing();renderStats();
+ $('summaryText').value='';$('printSheet').textContent='';stopEditing();renderStats();
  status('vaultStatus',message);
 }
 function showUnlocked(){
@@ -243,10 +243,8 @@ $('copySummary').addEventListener('click',async()=>{
 });
 $('printSummary').addEventListener('click',()=>{
  if(!session||!profileId)return;
- const style=document.createElement('style');style.id='temporary-print-style';
- style.textContent='@media print{body *{visibility:hidden!important}#summaryText,#summaryText *{visibility:visible!important}#summaryText{position:absolute!important;left:0;top:0;width:100%;height:auto;min-height:90vh;overflow:visible!important;border:0!important;color:#111!important}}';
- document.head.append(style);
- window.print();setTimeout(()=>style.remove(),1200);
+ $('printSheet').textContent=$('summaryText').value;
+ window.print();
  status('consultStatus','인쇄 또는 PDF 저장을 요청했습니다. 저장 성공 여부는 기기에서 직접 확인하세요.');
 });
 $('exportBackup').addEventListener('click',async()=>{
