@@ -7,7 +7,7 @@
     "code": "7010087",
     "homepage": "https://seocho.sen.hs.kr/"
   },
-  "checked_at": "2026-11-12T12:23:19.264570+00:00",
+  "checked_at": "2026-11-12T21:22:40.291307+00:00",
   "keyed": true,
   "school_year": 2026,
   "grade": 1,
@@ -285,17 +285,17 @@
         "깍두기",
         "샤인머스캣"
       ],
-      "kcal": "974.7 Kcal",
+      "kcal": "771.2 Kcal",
       "ntr": {
-        "carb": 132.6,
-        "protein": 54.8,
-        "fat": 23.6,
-        "vitA": 151.5,
-        "thiamin": 1.6,
-        "ribo": 0.8,
-        "vitC": 25.9,
-        "ca": 179.9,
-        "fe": 4.1
+        "carb": 103.3,
+        "protein": 50.2,
+        "fat": 15.8,
+        "vitA": 51.9,
+        "thiamin": 1.4,
+        "ribo": 0.4,
+        "vitC": 25.5,
+        "ca": 143.5,
+        "fe": 2.9
       }
     },
     {
@@ -310,17 +310,17 @@
         "배추김치",
         "행운의금메달(초콜릿)"
       ],
-      "kcal": "977.6 Kcal",
+      "kcal": "838.1 Kcal",
       "ntr": {
-        "carb": 119.0,
-        "protein": 44.2,
-        "fat": 34.2,
-        "vitA": 94.0,
-        "thiamin": 0.7,
-        "ribo": 0.7,
-        "vitC": 13.4,
-        "ca": 202.7,
-        "fe": 5.3
+        "carb": 99.6,
+        "protein": 41.4,
+        "fat": 28.9,
+        "vitA": 82.3,
+        "thiamin": 0.6,
+        "ribo": 0.5,
+        "vitC": 9.8,
+        "ca": 177.0,
+        "fe": 4.7
       }
     },
     {
@@ -335,17 +335,17 @@
         "배추김치",
         "요구르트"
       ],
-      "kcal": "645.5 Kcal",
+      "kcal": "736.7 Kcal",
       "ntr": {
-        "carb": 117.5,
-        "protein": 21.4,
-        "fat": 9.3,
+        "carb": 134.3,
+        "protein": 22.4,
+        "fat": 11.5,
         "vitA": 125.2,
-        "thiamin": 0.5,
+        "thiamin": 0.6,
         "ribo": 0.5,
         "vitC": 8.8,
-        "ca": 228.7,
-        "fe": 3.4
+        "ca": 237.6,
+        "fe": 3.6
       }
     }
   ],
@@ -804,5 +804,5 @@
     "NEIS": "true",
     "DATA": "false"
   },
-  "last_success_at": "2026-11-12T12:23:19.264570+00:00"
+  "last_success_at": "2026-11-12T21:22:40.291307+00:00"
 }
