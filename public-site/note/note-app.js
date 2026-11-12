@@ -9,29 +9,64 @@ var defaultState={profile:{name:'',cancer:'',stage:'',treatment:'',goal:'',cycle
   roadmap:[],meds:[],logs:[],labs:[],questions:[],supports:[],distress:[],triage:{items:[],at:0},distressValue:0,meta:{lastBackup:''}};
 function clone(o){return JSON.parse(JSON.stringify(o))}
 var NOTE_STORAGE=window.ApuDaNoteStorage;
+var NOTE_WRITE_FENCE=window.ApuDaNoteV3WriteFence;
+var NOTE_DRAFT=window.ApuDaNoteUnsavedDraft;
 function validBackup(d){return !!NOTE_STORAGE&&NOTE_STORAGE.validState(d)}
 window.validBackup=validBackup;
 var noteLoadError=false;
 function load(){
   noteLoadError=false;
   try{
-    var raw=localStorage.getItem(KEY);if(!raw)return clone(defaultState);
+    var raw=localStorage.getItem(KEY);noteExpectedRaw=raw;if(!raw)return clone(defaultState);
     var x=JSON.parse(raw);if(!validBackup(x))throw new Error('invalid-local-note');
     var s=Object.assign(clone(defaultState),x);s.profile=Object.assign(clone(defaultState.profile),x.profile||{});
     if(!s.triage||!Array.isArray(s.triage.items))s.triage={items:[],at:0};if(!Array.isArray(s.labs))s.labs=[];if(!s.checks||typeof s.checks!=='object')s.checks={};['devices','rxCombo','rxPlan'].forEach(function(k){if(!Array.isArray(s.profile[k]))s.profile[k]=[]});return s;
   }catch(e){noteLoadError=true;return clone(defaultState);}
 }
 
+var noteExpectedRaw=null;
+var noteWritesPaused=false,chatWritesPaused=false,unsavedCaptureFailed=false;
+var profileSavePending=false,profilePendingRaw=null,questionSavePending=false;
+var entrySavePending=false,entryPendingRaw=null,entryPendingFormRaw=null;
+var noteMutationPending=false,noteMutationInvoking=false,noteMutationPendingRaw=null;
 var state=load();
 function invalidateUndo(){
   if(noteUndo)noteUndo.invalidate();undoToken='';
   if(typeof document!=='undefined')document.querySelectorAll('.undo').forEach(function(b){b.remove()});
 }
+function hasUnsavedDraft(){return unsavedCaptureFailed || (NOTE_DRAFT && NOTE_DRAFT.count()>0)}
+function updateUnsavedWarning(){
+  var box=document.getElementById('note-unsaved-banner');
+  if(!box)return;
+  var count=NOTE_DRAFT?NOTE_DRAFT.count():0;
+  box.hidden=!count&&!unsavedCaptureFailed;
+  var summary=document.getElementById('note-unsaved-summary');
+  if(summary)summary.textContent='저장하지 못한 수정 '+count+'건이 이 탭 메모리에만 남아 있습니다. 새로고침·화면 종료 전 파일 앱에 별도 보관해 주세요.'+(unsavedCaptureFailed?' 일부 내용은 임시 보관 공간 제한으로 저장하지 못했습니다. 화면의 입력 내용을 직접 복사해 주세요.':'');
+  var button=document.getElementById('note-unsaved-export');
+  if(button)button.hidden=count===0;
+}
+function holdUnsaved(kind,raw,e){
+  noteWritesPaused=true;chatWritesPaused=true;
+  var copied=false;
+  try{if(typeof raw==='string'&&NOTE_DRAFT)copied=NOTE_DRAFT.capture(kind,raw,e&&e.message)}catch(ignore){}
+  if(!copied)unsavedCaptureFailed=true;
+  updateUnsavedWarning();
+  return copied;
+}
 function save(){
-  if(noteLoadError){state=load();toast('기존 기록을 읽지 못해 새 기록으로 덮어쓰지 않았어요. 원본 파일을 먼저 받아 보관해 주세요.');throw new Error('unreadable-local-note');}
+  if(noteLoadError){toast('기존 기록을 읽지 못해 새 기록으로 덮어쓰지 않았어요. 원본 파일을 먼저 받아 보관해 주세요.');throw new Error('unreadable-local-note');}
   invalidateUndo();
-  try{var raw=JSON.stringify(state);localStorage.setItem(KEY,raw);if(localStorage.getItem(KEY)!==raw)throw new Error('not-saved')}
-  catch(e){state=load();renderAll();toast('저장 공간이 부족하거나 저장이 차단됐어요. 기록은 저장되지 않았어요. 백업 후 기기 설정을 확인해 주세요.');throw e}
+  var raw;
+  try{
+    raw=JSON.stringify(state);
+    if(noteMutationPending&&!noteMutationInvoking)throw new Error('writes-pending');
+    if(noteWritesPaused)throw new Error('writes-paused');
+    noteExpectedRaw=NOTE_WRITE_FENCE.write(localStorage,KEY,noteExpectedRaw,raw);
+  }catch(e){
+    holdUnsaved('note',raw,e);
+    toast('저장하지 못한 기록이 있습니다. 화면을 닫지 말고 임시 사본을 파일로 내려받으세요.');
+    throw e;
+  }
   renderAll();
 }
 function $(s){return document.querySelector(s)}
@@ -377,10 +412,66 @@ function findTopic(text){
 }
 
 /* ═════════ 대화 렌더 ═════════ */
-var chat=[];try{chat=JSON.parse(localStorage.getItem(CHAT_KEY)||'[]')}catch(e){chat=[]}
+var chat=[],chatExpectedRaw=null;try{chatExpectedRaw=localStorage.getItem(CHAT_KEY);chat=JSON.parse(chatExpectedRaw||'[]')}catch(e){chat=[]}
 var noteUndo=NOTE_STORAGE&&NOTE_STORAGE.createUndo(),undoToken='';
 function armUndo(before){undoToken=noteUndo.arm(before,JSON.stringify(state))}
-function saveChat(){chat=chat.slice(-60);try{localStorage.setItem(CHAT_KEY,JSON.stringify(chat))}catch(e){}}
+/* Phase 4 — serialized, acknowledged chat writes. This still uses V3
+ * localStorage, NOT an IndexedDB migration. Old noncooperating tabs remain P0.
+ */
+var chatWriteTail=Promise.resolve(),chatWritesInFlight=0,chatUndoPending=false;
+function setChatSaveStatus(key,status){
+  if(!key)return;
+  var el=[].find.call(document.querySelectorAll('#thread .msg[data-chat-at]'),function(node){
+    return node.dataset.chatAt===key;
+  });
+  if(!el)return;
+  el.dataset.chatSave=status;
+  var marker=el.querySelector('.chat-save-indicator');
+  if(!marker){
+    marker=document.createElement('span');
+    marker.className='chat-save-indicator';marker.setAttribute('role','status');
+    el.appendChild(marker);
+  }
+  marker.textContent=status==='saved'?'저장됨':status==='failed'?'저장 실패 · 사본 확인':'저장 중';
+}
+function failedChatIndicators(){
+  [].forEach.call(document.querySelectorAll('#thread .msg[data-chat-save="pending"]'),function(node){
+    setChatSaveStatus(node.dataset.chatAt,'failed');
+  });
+}
+function cleanChatHTML(el){
+  var copy=el.cloneNode(true);
+  [].forEach.call(copy.querySelectorAll('.chat-save-indicator'),function(marker){marker.remove()});
+  return copy.innerHTML;
+}
+function commitChatRaw(raw){
+  return NOTE_WRITE_FENCE.write(localStorage,CHAT_KEY,chatExpectedRaw,raw);
+}
+function saveChat(messageKey){
+  chat=chat.slice(-60);
+  var raw=JSON.stringify(chat);
+  if(messageKey)setChatSaveStatus(messageKey,'pending');
+  chatWritesInFlight++;
+  var task=chatWriteTail.then(async function(){
+    if(noteWritesPaused||chatWritesPaused)throw new Error('writes-paused');
+    var result=await Promise.resolve(commitChatRaw(raw));
+    if(result===false||(result&&typeof result==='object'&&result.status&&result.status!=='saved'))
+      throw new Error('commit-not-confirmed');
+    if(noteWritesPaused||chatWritesPaused)throw new Error('records-changed');
+    chatExpectedRaw=raw;
+    if(messageKey)setChatSaveStatus(messageKey,'saved');
+    return {status:'saved',key:messageKey||null};
+  }).catch(function(error){
+    holdUnsaved('chat',JSON.stringify(chat),error);
+    failedChatIndicators();
+    toast('대화 저장이 확인되지 않았습니다. 화면의 임시 사본을 내려받아 보관하세요.');
+    return {status:'blocked-review-required',key:messageKey||null};
+  }).finally(function(){chatWritesInFlight--;});
+  // Returning a settled result keeps a failed message from halting the queue;
+  // all later items then fail closed on the shared write-paused state.
+  chatWriteTail=task;
+  return task;
+}
 function scrollBottom(){window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})}
 function linkBtns(links){return (links||[]).map(function(l){return '<button type="button" onclick="'+esc(l[1])+'">'+esc(l[0])+'</button>'}).join('')}
 function callBtns(){var p=state.profile,h='';
@@ -450,12 +541,23 @@ function botHTML(o,raw){
   return parts.sort(function(a,b){return (a.cls==='red'?0:1)-(b.cls==='red'?0:1)});
 }
 function addMsg(who,html,cls,store){
-  var el=document.createElement('div');el.className='msg '+who+(cls?' '+cls:'');el.innerHTML=html;$('#thread').appendChild(el);
-  if(store!==false){el.dataset.chatAt=String(Date.now())+'_'+uid();chat.push({w:who,h:html,c:cls||'',at:Date.now(),key:el.dataset.chatAt});saveChat()}
+  var el=document.createElement('div');el.className='msg '+who+(cls?' '+cls:'');
+  el.innerHTML=html;$('#thread').appendChild(el);
+  if(store!==false){
+    el.dataset.chatAt=String(Date.now())+'_'+uid();
+    chat.push({w:who,h:html,c:cls||'',at:Date.now(),key:el.dataset.chatAt});
+    // Render immediately for usability, but never label as saved before
+    // the ordered writer acknowledges persistence.
+    saveChat(el.dataset.chatAt);
+  }
   return el;
 }
 function sendText(text){
   text=String(text||'').trim();if(!text)return;
+  if(noteWritesPaused||chatWritesPaused||hasUnsavedDraft()){
+    toast('저장 실패한 대화가 있어 새 메시지를 기록하지 않았어요. 임시 사본을 먼저 보관해 주세요.');
+    return;
+  }
   addMsg('me',esc(text));
   var snap=JSON.stringify(state);
   var o=interpret(text);
@@ -464,13 +566,36 @@ function sendText(text){
   renderHome();scrollBottom();
 }
 window.sendText=sendText;
-function undoLast(btn){
+async function undoLast(btn){
+  if(chatUndoPending||noteWritesPaused||chatWritesPaused||hasUnsavedDraft()){
+    toast('저장 중이거나 미저장 내용이 있어 기록 취소를 중단했습니다.');return false;
+  }
   var before=noteUndo&&noteUndo.take(btn.dataset.undoToken,JSON.stringify(state),localStorage.getItem(KEY));
-  if(before===null||before===undefined){toast('새 기록이 있거나 취소할 수 있는 마지막 기록이 아니에요');return}
-  var msg=btn.closest('.msg'),chatKey=msg&&msg.dataset.chatAt;
-  state=JSON.parse(before);save();
-  if(msg){var title=msg.querySelector('b');if(title)title.textContent='마지막 기록을 취소했어요 ↩';var row=chat.find(function(m){return m.key===chatKey});if(row){row.h=msg.innerHTML;saveChat()}}
-  toast('방금 기록을 취소했어요');
+  if(before===null||before===undefined){toast('새 기록이 있거나 취소할 수 있는 마지막 기록이 아니에요');return false;}
+  var msg=btn.closest('.msg'),chatKey=msg&&msg.dataset.chatAt,attempted=null;
+  chatUndoPending=true;
+  try{
+    state=JSON.parse(before);
+    attempted=JSON.stringify(state);
+    var noteAck=await Promise.resolve(save());
+    if(noteAck===false||(noteAck&&noteAck.status&&noteAck.status!=='saved')||noteWritesPaused)
+      throw new Error('note-save-not-confirmed');
+    if(msg){
+      var title=msg.querySelector('b');
+      if(title)title.textContent='마지막 기록을 취소했어요 ↩';
+      var row=chat.find(function(m){return m.key===chatKey});
+      if(row){
+        row.h=cleanChatHTML(msg);
+        var ack=await saveChat(chatKey);
+        if(!ack||ack.status!=='saved')throw new Error('chat-save-not-confirmed');
+      }
+    }
+    toast('방금 기록을 취소했어요');return true;
+  }catch(error){
+    if(!hasUnsavedDraft())holdUnsaved('note',attempted||JSON.stringify(state),error);
+    toast('기록 취소의 모든 변경을 저장하지 못했습니다. 임시 사본을 확인해 주세요.');
+    return false;
+  }finally{chatUndoPending=false;}
 }
 window.undoLast=undoLast;
 window.showTopic=function(id){var tp=KB.TOPICS.find(function(x){return x.id===id});if(!tp)return;addMsg('bot','<b>'+esc(tp.q||tp.title)+'</b><div>'+tp.body+'</div><div class="acts">'+linkBtns(tp.links)+'</div>'+NS()+'','',true);scrollBottom()};
@@ -487,6 +612,9 @@ window.prefill=prefill;window.tab=tab;window.openSheet=openSheet;window.closeShe
  * 버튼은 파서가 이미 이해하는 문장을 만들어 interpret()로 보낸다 → 손으로 쓴 기록과 같은 형식으로 저장된다. */
 function sendBatch(list,label,fx){
   list=list.filter(Boolean);if(!list.length)return;
+  if(noteWritesPaused||chatWritesPaused||hasUnsavedDraft()){
+    toast('미저장 대화가 있어 새 기록을 중단했습니다. 임시 사본을 먼저 확인해 주세요.');return;
+  }
   addMsg('me',esc(label||list.join(' · ')));
   var snap=JSON.stringify(state);(fx||[]).forEach(function(f){f()});var M={saved:[],notes:[],alerts:[],cards:[],undo:false},seen={},tl=[];
   list.forEach(function(s){var o=interpret(s);
@@ -859,14 +987,178 @@ function schedItem(x){var done=x.status==='done';return '<div class="item'+(done
 function medItem(m){var on=m.active==='yes';return '<div class="item"><div class="row between"><span class="pill '+(on?'green':'gray')+'">'+esc(m.type||'약')+' · '+(on?'복용 중':'중단')+'</span><span class="row" style="gap:6px"><button class="btn soft sm" onclick="toggleMed(\''+m.id+'\')">'+(on?'중단':'다시 복용')+'</button><button class="btn line sm" onclick="delItem(\'meds\',\''+m.id+'\')">삭제</button></span></div><h4>'+esc(m.name)+' '+esc(m.dose||'')+'</h4><div class="meta">'+esc(m.schedule||'복용 시간 미입력')+(m.memo?' · '+esc(m.memo):'')+'</div></div>'}
 function qItem(q){return '<div class="item'+(q.answer?' done':'')+'"><div class="row between"><span class="pill '+(q.priority==='high'?'red':q.answer?'green':'')+'">'+(q.answer?'답변 받음':q.priority==='high'?'꼭 질문':'질문')+'</span><span class="row" style="gap:6px">'+(q.priority!=='high'&&!q.answer?'<button class="btn soft sm" onclick="starQ(\''+q.id+'\')">★ 꼭</button>':'')+'<button class="btn line sm" onclick="delItem(\'questions\',\''+q.id+'\')">삭제</button></span></div><h4 style="text-decoration:none;color:inherit">'+esc(q.question)+'</h4>'+
   '<div class="addline" style="margin-top:6px"><input placeholder="들은 답변 메모" value="'+esc(q.answer||'')+'" onchange="answerQ(\''+q.id+'\',this.value)"><span></span></div></div>'}
-window.addSched=function(e){e.preventDefault();var f=e.target;state.roadmap.push({id:uid(),date:f.date.value,time:'',type:/항암|방사선|수술|주사/.test(f.title.value)?'치료':/CT|MRI|PET|검사|채혈|내시경/i.test(f.title.value)?'검사':'일정',title:f.title.value.trim(),memo:'',status:'planned',createdAt:Date.now()});save();toast('일정을 추가했어요')};
-window.addMed=function(e){e.preventDefault();var v=e.target.t.value.trim();var o=interpret('약: '+v);if(!o.saved.length){state.meds.unshift({id:uid(),name:v,dose:'',schedule:'',purpose:'',type:'기타',active:'yes',memo:today()+' 시작',createdAt:Date.now()})}save();toast('약을 추가했어요')};
-window.addQ=function(e){e.preventDefault();state.questions.unshift({id:uid(),question:e.target.t.value.trim(),priority:'mid',answer:'',createdAt:Date.now()});save();toast('질문을 추가했어요')};
-window.toggleSched=function(id){var x=state.roadmap.find(function(r){return r.id===id});if(x){x.status=x.status==='done'?'planned':'done';save()}};
-window.toggleMed=function(id){var x=state.meds.find(function(r){return r.id===id});if(x){x.active=x.active==='yes'?'no':'yes';x.memo=[x.memo,today()+(x.active==='yes'?' 재개':' 중단')].filter(Boolean).join(' · ');save()}};
-window.starQ=function(id){var x=state.questions.find(function(r){return r.id===id});if(x){x.priority='high';save()}};
-window.answerQ=function(id,v){var x=state.questions.find(function(r){return r.id===id});if(x){x.answer=v.trim();save();toast('답변을 저장했어요')}};
-window.delItem=function(type,id){if(!confirm('삭제할까요?'))return;state[type]=state[type].filter(function(x){return x.id!==id});save()};
+/* Record what the user actually typed, separately from normalized state.
+ * Review-only envelope is NEVER fed into the automatic V3 restore parser.
+ */
+function reviewFormSnapshot(form){
+  return JSON.stringify({format:'apuda.note.unsaved-form-review.v1',reviewOnly:true,
+    formAction:form.getAttribute('onsubmit')||'',
+    fields:[].map.call(form.querySelectorAll('input,select,textarea'),function(el){
+      return {name:el.name||'',type:el.type||'',value:el.value,checked:!!el.checked};
+    })});
+}
+function holdEntryFormInput(reason){
+  if(!entryPendingFormRaw||!NOTE_DRAFT)return;
+  try{
+    if(!NOTE_DRAFT.capture('note',entryPendingFormRaw,reason))unsavedCaptureFailed=true;
+  }catch(ignore){unsavedCaptureFailed=true;}
+  updateUnsavedWarning();
+}
+
+/* Phase 2: schedule, medicine, laboratory forms wait for future async writes.
+ * The existing save() is still synchronous localStorage; no migration occurs.
+ */
+async function saveEntryForm(form,apply,success,fail,afterSave){
+  if(entrySavePending||profileSavePending||questionSavePending||noteMutationPending)return false;
+  if(noteLoadError||noteWritesPaused||hasUnsavedDraft()){
+    toast('저장되지 않은 기록이 있어 추가 저장을 멈췄습니다. 먼저 임시 사본을 확인하세요.');return false;
+  }
+  var controls=[].slice.call(form.querySelectorAll('input,select,textarea,button'));
+  var prior=controls.map(function(el){return el.disabled;});
+  entryPendingFormRaw=reviewFormSnapshot(form);
+  entrySavePending=true;form.setAttribute('aria-busy','true');
+  controls.forEach(function(el){el.disabled=true;});
+  try{
+    apply();
+    entryPendingRaw=JSON.stringify(state);
+    var ack=await Promise.resolve(save());
+    if(ack===false||(ack&&typeof ack==='object'&&ack.status&&ack.status!=='saved'))
+      throw new Error('commit-not-confirmed');
+    if(noteWritesPaused||hasUnsavedDraft())throw new Error('records-changed');
+    toast(success);
+    if(afterSave)afterSave();
+    return true;
+  }catch(error){
+    if(!hasUnsavedDraft())holdUnsaved('note',entryPendingRaw||JSON.stringify(state),error);
+    holdEntryFormInput(error&&error.message);
+    toast(fail);
+    return false;
+  }finally{
+    entrySavePending=false;entryPendingRaw=null;entryPendingFormRaw=null;form.removeAttribute('aria-busy');
+    controls.forEach(function(el,i){el.disabled=prior[i];});
+  }
+}
+window.addSched=async function(e){
+  e.preventDefault();var form=e.target,day=form.date.value,title=form.title.value.trim();
+  if(!day||!title)return false;
+  return saveEntryForm(form,function(){
+    state.roadmap.push({id:uid(),date:day,time:'',
+      type:/항암|방사선|수술|주사/.test(title)?'치료':/CT|MRI|PET|검사|채혈|내시경/i.test(title)?'검사':'일정',
+      title:title,memo:'',status:'planned',createdAt:Date.now()});
+  },'일정을 추가했어요','일정을 저장하지 못했습니다. 입력 내용을 임시 사본에서 확인해 주세요.');
+};
+window.addMed=async function(e){
+  e.preventDefault();var form=e.target,value=String(form.t&&form.t.value||'').trim();
+  if(!value)return false;
+  return saveEntryForm(form,function(){
+    var outcome=interpret('약: '+value);
+    if(!outcome.saved.length){
+      state.meds.unshift({id:uid(),name:value,dose:'',schedule:'',purpose:'',type:'기타',active:'yes',
+        memo:today()+' 시작',createdAt:Date.now()});
+    }
+  },'약을 추가했어요','복용약을 저장하지 못했습니다. 입력 내용을 임시 사본에서 확인해 주세요.');
+};
+window.addQ=async function(e){
+  e.preventDefault();
+  if(questionSavePending||entrySavePending||noteMutationPending)return;
+  if(noteLoadError||noteWritesPaused||hasUnsavedDraft()){
+    toast('저장되지 않은 기록이 있어 질문을 추가하지 않았어요. 임시 사본을 확인하세요.');return;
+  }
+  var form=e.target,question=String(form.t&&form.t.value||'').trim();
+  if(!question)return;
+  var controls=[].slice.call(form.querySelectorAll('input,button'));
+  var priorDisabled=controls.map(function(c){return c.disabled;});
+  questionSavePending=true;form.setAttribute('aria-busy','true');
+  controls.forEach(function(c){c.disabled=true;});
+  state.questions.unshift({id:uid(),question:question,priority:'mid',answer:'',createdAt:Date.now()});
+  var attempted=JSON.stringify(state);
+  try{
+    await Promise.resolve(save());
+    if(noteWritesPaused||hasUnsavedDraft())throw new Error('records-changed');
+    toast('질문을 추가했어요');
+  }catch(err){
+    if(!hasUnsavedDraft())holdUnsaved('note',attempted,err);
+    toast('질문을 저장하지 못했습니다. 입력 내용을 임시 사본에 보관했어요.');
+  }finally{
+    questionSavePending=false;form.removeAttribute('aria-busy');
+    controls.forEach(function(c,i){c.disabled=priorDisabled[i];});
+  }
+};
+/* Phase 3: edit/delete UI routes keep the attempted record in a review-only
+ * draft on failed or concurrent writes. V3 save() remains synchronous for now.
+ */
+async function commitNoteMutation(label,change,success){
+  if(noteMutationPending||profileSavePending||questionSavePending||entrySavePending||
+     noteLoadError||noteWritesPaused||hasUnsavedDraft()){
+    toast('저장 중이거나 미저장 기록이 있어 수정하지 않았어요. 먼저 확인해 주세요.');
+    return false;
+  }
+  var proposal=clone(state);
+  if(change(proposal)===false)return false;
+  noteMutationPendingRaw=JSON.stringify(proposal);
+  noteMutationPending=true;
+  state=proposal;
+  try{
+    var pending;
+    noteMutationInvoking=true;
+    try{pending=save()}finally{noteMutationInvoking=false;}
+    var ack=await Promise.resolve(pending);
+    if(ack===false||(ack&&typeof ack==='object'&&ack.status&&ack.status!=='saved'))
+      throw new Error('commit-not-confirmed');
+    if(noteWritesPaused||hasUnsavedDraft())throw new Error('records-changed');
+    if(success)toast(success);
+    return true;
+  }catch(error){
+    if(!hasUnsavedDraft())holdUnsaved('note',noteMutationPendingRaw,error);
+    toast(label+'을(를) 저장하지 못했습니다. 미저장 사본을 확인해 주세요.');
+    return false;
+  }finally{
+    noteMutationInvoking=false;noteMutationPending=false;noteMutationPendingRaw=null;
+  }
+}
+window.toggleSched=function(id){
+  return commitNoteMutation('일정 변경',function(next){
+    var x=next.roadmap.find(function(r){return r.id===id});
+    if(!x)return false;
+    x.status=x.status==='done'?'planned':'done';
+  },'일정 변경을 저장했어요');
+};
+window.toggleMed=function(id){
+  return commitNoteMutation('복용약 변경',function(next){
+    var x=next.meds.find(function(r){return r.id===id});
+    if(!x)return false;
+    x.active=x.active==='yes'?'no':'yes';
+    x.memo=[x.memo,today()+(x.active==='yes'?' 재개':' 중단')].filter(Boolean).join(' · ');
+  },'복용 상태 변경을 저장했어요');
+};
+window.starQ=function(id){
+  return commitNoteMutation('질문 중요 표시',function(next){
+    var x=next.questions.find(function(r){return r.id===id});
+    if(!x)return false;
+    x.priority='high';
+  },'중요 질문 표시를 저장했어요');
+};
+window.answerQ=function(id,v){
+  var raw=String(v||'').trim();
+  return commitNoteMutation('진료 답변',function(next){
+    var x=next.questions.find(function(r){return r.id===id});
+    if(!x)return false;
+    x.answer=raw;
+  },'답변을 저장했어요');
+};
+window.delItem=function(type,id){
+  if(['roadmap','meds','questions','logs','labs'].indexOf(type)<0)return Promise.resolve(false);
+  if(noteMutationPending||profileSavePending||questionSavePending||entrySavePending||
+     noteLoadError||noteWritesPaused||hasUnsavedDraft()){
+    toast('저장 중이거나 미저장 기록이 있어 삭제하지 않았어요.');return Promise.resolve(false);
+  }
+  if(!confirm('삭제할까요?'))return Promise.resolve(false);
+  return commitNoteMutation('기록 삭제',function(next){
+    var list=next[type],previous=list.length;
+    next[type]=list.filter(function(x){return x.id!==id});
+    return next[type].length<previous;
+  },'기록 삭제를 저장했어요');
+};
 
 function renderLog(){
   var days=[];for(var i=13;i>=0;i--){var d=new Date();d.setDate(d.getDate()-i);days.push(ymd(d))}
@@ -900,11 +1192,30 @@ function labLabel(row,key){if(row[key]===''||row[key]==null)return '-';var u=SAF
 function labTable(arr,del){if(!arr.length)return '<div class="empty">아직 수치 기록이 없어요.</div>';
   return '<table class="labtbl"><tr><th>날짜</th><th>백혈구</th><th>호중구</th><th>혈색소</th><th>혈소판</th>'+(del?'<th></th>':'')+'</tr>'+arr.map(function(x){
     return '<tr><td style="white-space:nowrap">'+(+x.date.slice(5,7))+'/'+(+x.date.slice(8))+(dTag(x.date)?'<br><span class="small muted">'+esc(dTag(x.date))+'</span>':'')+'</td>'+['wbc','anc','hb','plt'].map(function(k){var value=SAFETY.labValue(x,k),low=value!=null&&(k==='anc'&&value<1000||k==='plt'&&value<50000);return '<td'+(low?' class="lo"':'')+'>'+esc(labLabel(x,k))+'</td>';}).join('')+(del?'<td><button class="btn line sm" aria-label="검사 기록 삭제" onclick="delItem(\'labs\',\''+x.id+'\')">✕</button></td>':'')+'</tr>'+(x.note?'<tr><td colspan="'+(del?6:5)+'" class="small muted">'+esc(x.note)+'</td></tr>':'');}).join('')+'</table>';}
-window.addLab=function(e){e.preventDefault();var f=e.target,unit=f.countUnit.value;var row={id:uid(),date:f.date.value||today(),units:{},rawValues:{},note:f.note.value.trim()};
-  ['wbc','anc','hb','plt'].forEach(function(k){var raw=f[k].value.trim(),num=Number(raw.replace(/,/g,''));row[k]='';if(!raw||!/^\d+(?:\.\d+)?$/.test(raw.replace(/,/g,''))||!isFinite(num))return;row.units[k]=k==='hb'?'g/dL':(unit==='thousand'?'/µL':unit);row.rawValues[k]=raw+(k==='hb'?' g/dL':unit==='unknown'?'':unit==='thousand'?' ×10³/µL':' /µL');row[k]=String(k!=='hb'&&unit==='thousand'?num*1000:num);});
-  if(['wbc','anc','hb','plt'].every(function(k){return row[k]==='';})&&!row.note){toast('수치를 하나 이상 적어 주세요');return;}
-  state.labs.unshift(row);state.labs.sort(function(a,b){return b.date.localeCompare(a.date);});save();toast(unit==='unknown'?'숫자를 그대로 저장했어요. 검사 단위를 확인해 주세요.':'검사 수치를 저장했어요');
-  var anc=SAFETY.labValue(row,'anc'),plt=SAFETY.labValue(row,'plt');if(anc!=null&&anc<1000||plt!=null&&plt<50000)toast('낮은 수치예요. 발열·출혈에 특히 주의하고 병원 안내를 따르세요');
+window.addLab=async function(e){
+  e.preventDefault();var form=e.target,unit=form.countUnit.value;
+  var row={id:uid(),date:form.date.value||today(),units:{},rawValues:{},note:form.note.value.trim()};
+  ['wbc','anc','hb','plt'].forEach(function(k){
+    var raw=form[k].value.trim(),num=Number(raw.replace(/,/g,''));
+    row[k]='';
+    if(!raw||!/^\d+(?:\.\d+)?$/.test(raw.replace(/,/g,''))||!isFinite(num))return;
+    row.units[k]=k==='hb'?'g/dL':(unit==='thousand'?'/µL':unit);
+    row.rawValues[k]=raw+(k==='hb'?' g/dL':unit==='unknown'?'':unit==='thousand'?' ×10³/µL':' /µL');
+    row[k]=String(k!=='hb'&&unit==='thousand'?num*1000:num);
+  });
+  if(['wbc','anc','hb','plt'].every(function(k){return row[k]==='';})&&!row.note){
+    toast('수치를 하나 이상 적어 주세요');return false;
+  }
+  return saveEntryForm(form,function(){
+    state.labs.unshift(row);
+    state.labs.sort(function(a,b){return b.date.localeCompare(a.date);});
+  },unit==='unknown'?'숫자를 그대로 저장했어요. 검사 단위를 확인해 주세요.':'검사 수치를 저장했어요',
+    '검사 결과를 저장하지 못했습니다. 입력 내용을 임시 사본에서 확인해 주세요.',
+    function(){
+      var anc=SAFETY.labValue(row,'anc'),plt=SAFETY.labValue(row,'plt');
+      if(anc!=null&&anc<1000||plt!=null&&plt<50000)
+        toast('낮은 수치예요. 발열·출혈에 특히 주의하고 병원 안내를 따르세요');
+    });
 };
 function renderSummary(){
   var p=state.profile,up=upcoming().slice(0,4),act=state.meds.filter(function(m){return m.active==='yes'});
@@ -963,7 +1274,7 @@ function renderSOS(){
 function triage(silent){
   var boxes=[].slice.call(document.querySelectorAll('#sh-sos [data-level]'));
   var items=boxes.filter(function(x){return x.checked}).map(function(x){return x.value});
-  if(!silent){state.triage={items:items,at:items.length?Date.now():0};localStorage.setItem(KEY,JSON.stringify(state))}
+  if(!silent){state.triage={items:items,at:items.length?Date.now():0};save()}
   var red=items.filter(function(v){return v.indexOf('red')===0}).length,amb=items.length-red,el=$('#triageResult');
   if(red&&!silent)el.scrollIntoView({block:'nearest',behavior:'smooth'});if(red){el.className='result red';el.innerHTML='<b>지금 바로 치료병원 또는 응급실에 연락하세요.</b><br>혼자 운전해서 가지 말고, 숨쉬기 힘들거나 의식이 처지면 119를 부르세요. 연락할 때 체온·증상 시작 시각·마지막 치료 날짜를 함께 말하면 빨라요.'}
   else if(amb){el.className='result amber';el.innerHTML='<b>오늘 안에 치료병원에 상담하세요.</b><br>증상이 빠르게 나빠지면 바로 연락하거나 응급실로 가세요.'}
@@ -973,7 +1284,43 @@ $('#sh-sos').addEventListener('change',function(e){if(e.target.matches('[data-le
 
 /* ═════════ 설정 ═════════ */
 function fillProfile(){var f=$('#profileForm');Object.keys(defaultState.profile).forEach(function(k){if(f[k]&&!Array.isArray(defaultState.profile[k]))f[k].value=state.profile[k]||''});[].forEach.call(f.querySelectorAll('[name=dev]'),function(b){b.checked=(state.profile.devices||[]).indexOf(b.value)>=0})}
-$('#profileForm').addEventListener('submit',function(e){e.preventDefault();var f=e.target;Object.keys(defaultState.profile).forEach(function(k){if(f[k]&&!Array.isArray(defaultState.profile[k])&&typeof f[k].value==='string')state.profile[k]=f[k].value.trim()});state.profile.devices=[].filter.call(f.querySelectorAll('[name=dev]'),function(b){return b.checked}).map(function(b){return b.value});save();closeSheet();toast('내 정보를 저장했어요')});
+/* First staged async UI conversion: the existing V3 writer remains sync.
+ * Only show success when a future Promise-based writer has actually settled.
+ */
+$('#profileForm').addEventListener('submit',async function(e){
+  e.preventDefault();
+  if(profileSavePending||entrySavePending||noteMutationPending)return;
+  if(noteLoadError||noteWritesPaused||hasUnsavedDraft()){
+    toast('저장되지 않은 수정이 있어 추가 저장을 멈췄습니다. 먼저 임시 사본을 보관하세요.');
+    return;
+  }
+  var form=e.target;
+  var controls=[].slice.call(form.querySelectorAll('input,button'));
+  var priorDisabled=controls.map(function(c){return c.disabled;});
+  var next=clone(state);
+  Object.keys(defaultState.profile).forEach(function(k){
+    if(form[k]&&!Array.isArray(defaultState.profile[k])&&typeof form[k].value==='string')
+      next.profile[k]=form[k].value.trim();
+  });
+  next.profile.devices=[].filter.call(form.querySelectorAll('[name=dev]'),function(b){return b.checked}).map(function(b){return b.value});
+  profilePendingRaw=JSON.stringify(next);
+  profileSavePending=true;form.setAttribute('aria-busy','true');
+  controls.forEach(function(c){c.disabled=true;});
+  try{
+    state=next;
+    await Promise.resolve(save());
+    if(noteWritesPaused||hasUnsavedDraft())throw new Error('records-changed');
+    closeSheet();toast('내 정보를 저장했어요');
+  }catch(err){
+    // Existing save() captures failed raw writes itself. Future async adapters
+    // must also preserve the attempted form when a Promise rejects.
+    if(!hasUnsavedDraft())holdUnsaved('note',profilePendingRaw,err);
+    toast('환자정보를 저장하지 못했습니다. 입력값을 보존했으니 임시 사본을 내려받아 확인하세요.');
+  }finally{
+    profileSavePending=false;profilePendingRaw=null;form.removeAttribute('aria-busy');
+    controls.forEach(function(c,i){c.disabled=priorDisabled[i];});
+  }
+});
 window.snooze=function(k){var o={};try{o=JSON.parse(localStorage.getItem('apuda_note_nudge')||'{}')}catch(e){}o[k]=Date.now();try{localStorage.setItem('apuda_note_nudge',JSON.stringify(o))}catch(e){}renderHome()};
 function downloadNoteBlob(content,name){
   var u=URL.createObjectURL(new Blob([content],{type:'application/json'})),a=document.createElement('a');
@@ -986,7 +1333,16 @@ function backupStatus(){
   var confirmButton=$('#confirm-backup-file');if(confirmButton)confirmButton.hidden=!m.lastFileRequested;
   var recovery=$('#note-recovery');if(recovery)recovery.hidden=!NOTE_STORAGE.checkpoint(localStorage,KEY);
 }
+window.downloadUnsavedDraft=function(){
+  if(!NOTE_DRAFT||!NOTE_DRAFT.count()){toast('다운로드할 임시 사본이 없습니다. 화면 입력을 직접 확인해 주세요.');return;}
+  try{
+    downloadNoteBlob(NOTE_DRAFT.exportText(),'ApuDa_저장실패_검토용_'+today()+'.json');
+    toast('임시 사본 다운로드를 요청했습니다. 파일 앱에서 확인해 주세요. 일반 백업 복원 파일은 아닙니다.');
+  }catch(e){toast('임시 사본을 다운로드하지 못했습니다. 화면을 닫지 말고 도움을 요청해 주세요.');}
+};
+window.addEventListener('beforeunload',function(e){if(hasUnsavedDraft()){e.preventDefault();e.returnValue='';}});
 window.exportData=function(){
+  if(hasUnsavedDraft()){window.downloadUnsavedDraft();return;}
   if(noteLoadError){downloadNoteBlob(localStorage.getItem(KEY)||'', 'ApuDa_확인필요_원본기록.json');toast('기존 원본 파일 다운로드를 요청했어요. 이 파일을 보관하고 도움을 요청해 주세요.');return;}
   try{
     var now=new Date().toISOString(),fileState=clone(state);fileState.meta=fileState.meta||{};fileState.meta.lastFileRequested=now;
@@ -1004,6 +1360,7 @@ window.confirmNoteRestore=function(incoming,source){
   return confirm((source||'백업 파일')+'을 확인해 주세요.\n이름: '+n.name+' / 암종: '+n.cancer+'\n기록 '+n.total+'건'+(n.from?' ('+n.from+' ~ '+n.to+')':'')+'\n현재 기기 기록: '+(noteLoadError?'읽기 오류가 있어 건수 확인 불가':c.total+'건')+'\n\n'+(n.empty?'빈 백업이에요. 복원하면 현재 기록이 비게 됩니다.\n':'')+'복원하면 현재 기록을 선택한 백업 내용으로 교체해요. 복원 직전 사본을 이 기기에 먼저 보관합니다. 계속할까요?');
 };
 window.importData=async function(input){
+  if(hasUnsavedDraft()){toast('저장 실패한 임시 기록을 먼저 파일로 보관하고 화면을 다시 확인해 주세요.');input.value='';return;}
   var file=input.files&&input.files[0];if(!file)return;
   var before=localStorage.getItem(KEY);
   try{
@@ -1018,16 +1375,75 @@ window.importData=async function(input){
   finally{input.value=''}
 };
 window.recoverBeforeRestore=async function(){
+  if(hasUnsavedDraft()){toast('미저장 기록이 있어 되돌리기를 중단했습니다. 임시 사본을 내려받으세요.');return;}
   if(!confirm('가장 최근 복원 직전 기록으로 되돌릴까요? 복원 후 새로 쓴 기록이 있으면 덮어쓰지 않고 중단해요.'))return;
   try{await NOTE_STORAGE.recover(localStorage,KEY);invalidateUndo();state=load();renderAll();backupStatus();toast('복원 직전 기록으로 되돌렸어요')}
-  catch(e){toast('복원 후 기록이 바뀌어 자동으로 되돌리지 않았어요. 직전 사본을 파일로 받아 별도로 보관해 주세요.')}
+  catch(e){toast(e.message==='legacy-checkpoint-review-required'?'이전 방식의 직전 사본은 무결성을 확인할 수 없어 자동 복구하지 않았어요. 사본을 파일로 내려받아 내용을 검토해 주세요.':'직전 사본이나 현재 기록을 안전하게 검증하지 못해 자동 복구하지 않았어요. 직전 사본을 파일로 받아 보관하고 기록을 확인해 주세요.')}
 };
-window.downloadBeforeRestore=function(){var c=NOTE_STORAGE.checkpoint(localStorage,KEY);if(!c||c.before===null){toast('보관된 직전 기록이 없어요');return}downloadNoteBlob(c.before,'ApuDa_복원직전_기록.json');toast('직전 사본 다운로드를 요청했어요. 파일 앱에서 확인해 주세요.')};
+window.downloadBeforeRestore=function(){var c=NOTE_STORAGE.checkpoint(localStorage,KEY);if(!c||c.before===null){toast('보관된 직전 기록이 없어요');return}if(c.schemaVersion===1&&!confirm('이전 방식의 사본은 손상 여부를 확인할 수 없어요. 원본을 보존하기 위해 파일로 내려받고 내용을 검토하시겠어요?'))return;downloadNoteBlob(c.before,'ApuDa_복원직전_기록.json');toast('직전 사본 다운로드를 요청했어요. 파일 앱에서 확인해 주세요.')};
 window.resetAll=function(){
+  if(hasUnsavedDraft()){toast('미저장 기록이 있어 전체 삭제를 중단했습니다. 임시 사본을 내려받으세요.');return;}
   if(!confirm('이 기기의 건강기록·대화·복원 직전 사본을 모두 지울까요? 되돌릴 수 없어요. 내려받은 파일과 구글 드라이브 사본은 따로 삭제해야 합니다.'))return;
   localStorage.removeItem(KEY);localStorage.removeItem(CHAT_KEY);localStorage.removeItem(NOTE_STORAGE.recoveryKey(KEY));localStorage.removeItem(KEY+'_corrupt');invalidateUndo();location.reload();
 };
-window.addEventListener('storage',function(e){if(e.key===KEY){invalidateUndo();state=load();renderAll();backupStatus();toast('다른 창에서 변경한 기록을 불러왔어요')}});
+/* Detect a live profile edit BEFORE accepting another tab's storage event.
+ * A dirty form must not be silently rebased onto a different saved note.
+ * Keep the user's exact field values in the review-only draft vault, not Drive.
+ */
+function pendingProfileRaw(){
+  // The submitted state already matches form controls while an async commit
+  // is pending. Do not silently rebase that pending submission.
+  if(profileSavePending&&profilePendingRaw)return profilePendingRaw;
+  var sheet=$('#sh-settings'),form=$('#profileForm');
+  if(!sheet||!sheet.classList.contains('open')||!form)return null;
+  var pending=clone(state),dirty=false;
+  Object.keys(defaultState.profile).forEach(function(k){
+    var control=form[k];
+    if(control&&!Array.isArray(defaultState.profile[k])&&typeof control.value==='string'){
+      var value=control.value.trim();
+      if(value!==String(state.profile[k]||''))dirty=true;
+      pending.profile[k]=value;
+    }
+  });
+  var devices=[].filter.call(form.querySelectorAll('[name=dev]'),function(x){return x.checked;}).map(function(x){return x.value;});
+  if(JSON.stringify(devices)!==JSON.stringify(state.profile.devices||[]))dirty=true;
+  pending.profile.devices=devices;
+  return dirty?JSON.stringify(pending):null;
+}
+window.addEventListener('storage',function(e){
+  if(e.key===CHAT_KEY&&chatWritesInFlight>0&&e.newValue!==chatExpectedRaw){
+    holdUnsaved('chat',JSON.stringify(chat),new Error('records-changed'));
+    failedChatIndicators();
+    toast('다른 탭이 대화를 변경했습니다. 이 탭의 미저장 대화를 보관하고 확인하세요.');
+    return;
+  }
+  if(e.key!==KEY)return;
+  if(noteMutationPending){
+    holdUnsaved('note',noteMutationPendingRaw||JSON.stringify(state),new Error('records-changed'));
+    toast('다른 탭에서 변경이 감지돼 수정 중인 내용을 따로 보관했어요.');
+    return;
+  }
+  if(entrySavePending){
+    holdUnsaved('note',entryPendingRaw||JSON.stringify(state),new Error('records-changed'));
+    holdEntryFormInput('records-changed');
+    toast('다른 탭이 기록을 변경해 저장 중인 내용을 따로 보관했습니다. 임시 사본을 확인해 주세요.');
+    return;
+  }
+  if(questionSavePending){
+    holdUnsaved('note',JSON.stringify(state),new Error('records-changed'));
+    toast('다른 탭의 변경과 질문 저장이 겹쳤습니다. 임시 사본을 확인해 주세요.');
+    return;
+  }
+  var pending=pendingProfileRaw();
+  if(pending){
+    holdUnsaved('note',pending,new Error('records-changed'));
+    toast('다른 창의 변경이 감지됐어요. 입력 중인 내용을 따로 보관했으니 파일로 내려받아 확인해 주세요.');
+    return;
+  }
+  if(hasUnsavedDraft())return;
+  invalidateUndo();state=load();renderAll();backupStatus();
+  toast('다른 창에서 변경한 기록을 불러왔어요');
+});
 
 function renderAll(){backupStatus();renderHome();renderPlan();renderLog();renderSummary();renderSOS()}
 

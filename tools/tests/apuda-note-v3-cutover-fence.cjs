@@ -1,0 +1,38 @@
+'use strict';
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const vm=require('node:vm');
+const src=fs.readFileSync(require('node:path').resolve(__dirname,'../../public-site/note/v3-cutover-fence-sandbox.js'),'utf8');
+const sandbox={}; sandbox.window=sandbox;vm.createContext(sandbox);vm.runInContext(src,sandbox);
+const fence=sandbox.ApuDaV3CutoverFenceSandbox;
+const orig={note:'{ "sample":"A" }', chat:'[{"text":"Q"}]', checkpoint:null};
+const init=fence.start(orig,orig);
+const green={legacy:orig,target:orig,legacyTabsClosed:true,serviceWorkerVersionVerified:true,pendingDriveJobsCleared:true,independentBackupVerified:true,userReviewedBothBranches:true};
+function run(label,values,reason,fields=[]){
+  const result=fence.assess(init,{...green,...values});
+  assert.equal(result.status,'blocked');
+  assert.equal(result.reason,reason,label);
+  assert.deepEqual([...result.legacyDrift.fields,...result.targetDrift.fields],fields,label);
+  for(const key of ['allowAutomaticMigration','allowLegacyOverwrite','allowDriveUpload','allowDrivePrune','allowLegacyCleanup','allowProductionWrites'])assert.equal(result[key],false,label);
+  assert.equal(result.requireIndependentExport,true);
+  assert.equal(result.requireManualResolution,true);
+  assert.equal(JSON.stringify(result).includes('"sample"'),false,'must not leak patient-like values');
+  console.log('PASS:',label);
+}
+run('all checkboxes passed is still sandbox-only',{},'prototype-not-integrated');
+run('legacy note wrote late',{legacy:{...orig,note:'{ "sample":"B" }'}},'legacy-drift',['note']);
+run('legacy chat wrote late',{legacy:{...orig,chat:'[{"text":"changed"}]'}},'legacy-drift',['chat']);
+run('recovery checkpoint changed',{legacy:{...orig,checkpoint:'{legacy:1}'}},'legacy-drift',['checkpoint']);
+run('new V4 branch changed',{target:{...orig,note:'{"v4":"changed"}'}},'target-drift',['note']);
+run('both branch drift',{legacy:{...orig,note:'legacy'},target:{...orig,chat:'target'}},'legacy-drift',['note','chat']);
+run('unknown old tabs',{legacyTabsClosed:'unknown'},'legacy-tabs-unverified');
+run('offline service worker uncertain',{serviceWorkerVersionVerified:false},'stale-cache-unverified');
+run('pending Drive upload',{pendingDriveJobsCleared:false},'drive-queue-unverified');
+run('independent backup unverified',{independentBackupVerified:false},'independent-backup-unverified');
+run('human unresolved',{userReviewedBothBranches:false},'human-review-required');
+assert.throws(()=>fence.start({note:null,chat:null},orig),/missing-checkpoint/);
+assert.throws(()=>fence.start({...orig,note:undefined},orig),/invalid-note/);
+assert.throws(()=>fence.assess({},green),/synthetic-session-required/);
+assert.doesNotMatch(src,/\b(?:localStorage|sessionStorage|indexedDB)\s*[.(]/);
+assert.doesNotMatch(src,/\b(?:fetch|XMLHttpRequest|WebSocket)\s*\(/);
+console.log('PASS: malformed input and storage/network isolation');
