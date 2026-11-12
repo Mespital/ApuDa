@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>ApuDa Memory 17단계 | 대상자별 암호화 QA</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f6f9fd;color:#193a55;font:17px/1.65 system-ui,-apple-system,"Noto Sans KR",sans-serif}
+main{max-width:790px;margin:auto;padding:24px 16px 64px}
+h1{font-size:clamp(25px,4vw,34px);line-height:1.3}
+a{color:#1556b3}
+.panel{border:1px solid #c7dbef;border-radius:15px;padding:20px;margin:16px 0;background:white}
+.caution{border-color:#e3c394;background:#fff8ee}
+button{font:inherit;font-weight:750;min-height:50px;padding:10px 18px;border:0;border-radius:10px;background:#225ec5;color:#fff;cursor:pointer}
+button:disabled{opacity:.65;cursor:default}
+button:focus-visible{outline:3px solid #c77716;outline-offset:3px}
+.note{font-size:15px;color:#49647d}
+pre{padding:15px;white-space:pre-wrap;overflow-wrap:anywhere;background:#eef5fd;border-radius:9px;font-size:14px}
+</style>
+</head>
+<body><main>
+<p class="note"><a href="./profile-qa.html">가상 대상 A·B 화면</a> · <a href="./phase16-qa.html">16단계 데이터 저장 QA</a></p>
+<h1>17단계 · 대상자별 암호화 백업 검증</h1>
+<section class="panel caution">
+<p><strong>실제 환자정보·개인 비밀번호를 입력하지 마세요.</strong> 이 페이지는 코드에 정의된 가상 기록만 사용합니다. 실제 기록함, 브라우저 저장소, 백업 파일이나 네트워크에는 접근하지 않습니다.</p>
+<p class="note">대상자 ID는 파일 내부 암호문에만 포함됩니다. 이 기능은 테스트용이며 실제 Memory 기록함의 암호화 저장이나 기기 간 복원을 제공하지 않습니다.</p>
+</section>
+<section class="panel">
+<h2>Web Crypto 기기 검증</h2>
+<p>가상 대상 A의 기록 19건을 AES-256-GCM으로 암호화하고 다시 복호화합니다. 대상 B의 기록 혼입과 비밀번호 오류·파일 변조를 확인합니다.</p>
+<button id="run" type="button" disabled>암호화 QA 준비 중</button>
+<p id="status" role="status" aria-live="polite"></p>
+<pre id="out" aria-label="17단계 진단 결과">아직 테스트하지 않았습니다.</pre>
+<p class="note">암호화 시간은 브라우저/기기마다 다릅니다. 1회 측정값은 실사용 성능 보장이 아닙니다. 암호를 잊으면 파일을 복호화할 수 없습니다.</p>
+</section>
+<script type="module">
+import {emptyProfileVault,addAnonymousProfile,appendScopedRecord} from './profile-scope.mjs';
+import {exportProfileBackup} from './profile-workflow.mjs';
+import {encryptScopedBackup,decryptScopedBackup} from './scoped-secure-archive.mjs';
+
+const $=id=>document.getElementById(id);
+const allowed=/^deploy-preview-\d+--apuda-total\.netlify\.app$/.test(location.hostname)||
+  ['localhost','127.0.0.1'].includes(location.hostname);
+const run=$('run'),status=$('status'),out=$('out');
+const A='e4ad61f3-4cf2-40a8-a38c-1d098c91d643';
+const B='e3c55b7d-26ba-4d56-9c78-2875b04f9079';
+const secret='ApuDa Memory synthetic test only 2026. Do not reuse.';
+const checkFail=async(fn)=>{try{await fn();return false}catch{return true}};
+if(!allowed)status.textContent='개발 미리보기 또는 로컬 테스트 주소에서만 사용 가능합니다.';
+else if(!isSecureContext||!crypto?.subtle||!crypto?.getRandomValues)
+  status.textContent='HTTPS Web Crypto가 지원되지 않는 환경입니다.';
+else{
+ run.disabled=false;run.textContent='가상 기록 19건 AES-GCM QA 실행';
+ status.textContent='실제 사용자 기록 없이 가상 데이터로 시험할 수 있습니다.';
+ run.addEventListener('click',async()=>{
+  run.disabled=true;status.textContent='실제 브라우저 Web Crypto 검증 진행 중';
+  const checks=[],metrics={};
+  const yes=(condition,label)=>{if(!condition)throw Error(label+' 실패');checks.push(label)};
+  const result={status:'FAIL',checks,metrics,environment:{
+    userAgent:navigator.userAgent,isSecureContext
+  }};
+  try{
+    let vault=addAnonymousProfile(addAnonymousProfile(emptyProfileVault(),A),B);
+    for(let i=0;i<20;i++){
+      vault=appendScopedRecord(vault,i===0?B:A,{
+        id:'phase17-test-'+i,date:'2026-11-12',
+        text:i===0?'B 전용 합성 기록 (노출 금지)':'A 전용 가상 건강 메모 '+i,
+        question:i===0?'B 가족의 비공개 가상 질문':'A 가족의 가상 진료 질문 '+i,
+        sleep:'보통',meal:'좋음'
+      });
+    }
+    const source=JSON.stringify(vault);
+    const backup=exportProfileBackup(vault,A);
+    yes(backup.entries.length===19,'선택 대상자 A 19건만 백업');
+    yes(!JSON.stringify(backup).includes('B 전용 합성 기록'),
+      '백업 대상자 B의 기록이 제외됨');
+    const start=performance.now();
+    const ciphertext=await encryptScopedBackup(backup,secret);
+    metrics.encryptMs=Math.round(performance.now()-start);
+    const wrapper=JSON.stringify(ciphertext);
+    yes(!wrapper.includes('A 전용 가상 건강 메모'),'암호화 파일 외부에 메모 평문 없음');
+    yes(!wrapper.includes(A),'암호화 파일 외부에 대상자 ID 없음');
+    const decryptStart=performance.now();
+    const restored=await decryptScopedBackup(ciphertext,secret,A);
+    metrics.decryptMs=Math.round(performance.now()-decryptStart);
+    yes(JSON.stringify(restored)===JSON.stringify(backup),'선택한 대상 A의 19건 정확히 복호화');
+    yes(await checkFail(()=>decryptScopedBackup(ciphertext,secret,B)),
+      '다른 대상자 B로 복호화 결과 사용 거부');
+    yes(await checkFail(()=>decryptScopedBackup(ciphertext,'Wrong password for QA only 123')),
+      '복호화 대상 선택 생략 거부');
+    yes(await checkFail(()=>decryptScopedBackup(ciphertext,'Wrong password for QA only 123',A)),
+      '잘못된 암호 거부');
+    const tampered={...ciphertext,ciphertext:(ciphertext.ciphertext[0]==='A'?'B':'A')+
+      ciphertext.ciphertext.slice(1)};
+    yes(await checkFail(()=>decryptScopedBackup(tampered,secret,A)),
+      '암호문 변조 감지');
+    const header={...ciphertext,iterations:1000};
+    yes(await checkFail(()=>decryptScopedBackup(header,secret,A)),
+      '암호화 반복 횟수 변조 거부');
+    yes(JSON.stringify(vault)===source,'원본 가상 기록 불변');
+    result.status='PASS';
+  }catch(error){result.error=String(error)}
+  finally{
+    result.count=checks.length;
+    out.textContent=JSON.stringify(result,null,2);
+    status.textContent=result.status==='PASS'?
+      '가상 암호화 QA '+checks.length+'개 항목 통과':
+      '검증 실패 또는 미완료 — 오류를 확인하세요';
+    run.disabled=false;
+  }
+ });
+}
+</script>
+</main></body></html>
