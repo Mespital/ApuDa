@@ -108,6 +108,12 @@ await assert.rejects(commitLegacyQaStage(db,original,backup,plan,
   {confirmed:true,forceAbort:true}),/강제 중단/);
 assert.deepEqual(await readQaVault(db),{vault:null,marker:null},
   'abort rolls back both snapshot and marker');
+const quotaFailure=await commitLegacyQaStage(db,original,backup,plan,
+  {confirmed:true,injectQuotaAbort:true}).then(
+    ()=>null,error=>error);
+assert.equal(quotaFailure?.name,'QuotaExceededError','QA quota injection reports an accurate failure category');
+assert.deepEqual(await readQaVault(db),{vault:null,marker:null},
+  'simulated quota failure rolls back both vault and marker');
 await assert.rejects(commitLegacyQaStage(db,original,backup,plan,
   {confirmed:true,injectDuplicate:true}),/ConstraintError/);
 assert.deepEqual(await readQaVault(db),{vault:null,marker:null},
@@ -143,5 +149,22 @@ const tampered={...backup,entries:[syntheticRecord('legacy-new-1','변경된 기
 assert.throws(()=>commitLegacyQaStage(db,original,tampered,plan,{confirmed:true}),
   /사전검사 이후/);
 assert.deepEqual(await readQaVault(db),checked);
+const editAudit=async (marker)=>{
+  const tx=db.transaction(['audit'],'readwrite');
+  tx.objectStore('audit').put(marker);
+  await new Promise((resolve,reject)=>{
+    tx.oncomplete=resolve;
+    tx.onabort=()=>reject(tx.error||Error('QA marker write failed'));
+  });
+};
+await editAudit({...checked.marker,sourceCount:999});
+const altered=await readQaVault(db);
+assert.equal(altered.vault.unassigned.length,3);
+assert.equal(altered.marker.sourceCount,999,'tampered audit marker is test-only');
+await assert.rejects(commitLegacyQaStage(db,original,backup,plan,{confirmed:true}),
+  /다른 기록이나 미검증 표시/);
+assert.deepEqual(await readQaVault(db),altered,'mismatched marker must be preserved and not silently overwritten');
+await editAudit(checked.marker);
+assert.deepEqual(await readQaVault(db),checked,'restored marker makes QA database consistent again');
 db.close();
 console.log('PASS: QA-only DB, explicit approval, legacy UNASSIGNED scope, atomic commit/marker, forced abort and constraint rollback, replay, conflicting restage protection and original preservation');
