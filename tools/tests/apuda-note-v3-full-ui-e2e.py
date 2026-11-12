@@ -322,6 +322,123 @@ try:
               not slow.locator('#profileForm input[name="name"]').is_disabled() and
               slow.locator('#profileForm input[name="name"]').input_value() == "가상 저장대기 중 수정")
 
+
+        # The actual schedule / medication / laboratory forms now await the
+        # writer. Simulate an asynchronous IndexedDB adapter without touching
+        # persistent production storage. Each trial opens a new V3 page.
+        entry_flows=[
+            ("schedule","sched","plan",'#v-plan form[onsubmit*="addSched"]',"title",
+             "가상 비동기 CT 일정","roadmap","일정을 추가했어요"),
+            ("medication","meds","plan",'#v-plan form[onsubmit*="addMed"]',"t",
+             "가상 비동기 테스트약","meds","약을 추가했어요"),
+            ("laboratory",None,"log",'form.labform[onsubmit*="addLab"]',"wbc",
+             "5300","labs","숫자를 그대로 저장했어요. 검사 단위를 확인해 주세요.")
+        ]
+        for label,mode,view,selector,field,value,saved_key,message in entry_flows:
+            tab_entry=new_tab(ack_context)
+            tab_entry.evaluate("""([mode,view]) => {
+                if(mode)planTab=mode;
+                if(mode)renderPlan();
+                tab(view);
+                const writer=window.save;
+                window.save=()=>new Promise((resolve,reject)=>{
+                    window.__ackResolve=()=>{try{resolve(writer());}catch(error){reject(error);}};
+                });
+            }""",[mode,view])
+            form_entry=tab_entry.locator(selector)
+            form_entry.locator(f'[name="{field}"]').fill(value)
+            before_count=len(json_storage(tab_entry,"apuda_cancer_care_v1")[saved_key])
+            form_entry.locator('button').click()
+            tab_entry.wait_for_function("() => entrySavePending && typeof __ackResolve==='function'")
+            check(label+" awaits deferred writer",tab_entry.evaluate("entrySavePending") and
+                  form_entry.get_attribute('aria-busy')=='true' and form_entry.locator('button').is_disabled())
+            check(label+" does not show premature success",
+                  len(json_storage(tab_entry,"apuda_cancer_care_v1")[saved_key])==before_count and
+                  tab_entry.locator('#toast').inner_text()!=message)
+            tab_entry.evaluate("window.__ackResolve()")
+            tab_entry.wait_for_function(
+                """([key,count]) => !entrySavePending &&
+                  JSON.parse(localStorage.getItem('apuda_cancer_care_v1'))[key].length===count+1""",
+                [saved_key,before_count],timeout=10000)
+            check(label+" persists and then reports success",
+                  len(json_storage(tab_entry,"apuda_cancer_care_v1")[saved_key])==before_count+1 and
+                  tab_entry.locator('#toast').inner_text()==message)
+
+            rejected_entry=new_tab(ack_context)
+            rejected_entry.evaluate("""([mode,view]) => {
+                if(mode)planTab=mode;
+                if(mode)renderPlan();
+                tab(view);
+                window.save=()=>Promise.reject(new Error('synthetic async reject'));
+            }""",[mode,view])
+            failform=rejected_entry.locator(selector)
+            failform.locator(f'[name="{field}"]').fill(value+" 실패" if field!="wbc" else "6300")
+            prior_count=len(json_storage(rejected_entry,"apuda_cancer_care_v1")[saved_key])
+            failform.locator('button').click()
+            rejected_entry.wait_for_function("() => !entrySavePending && ApuDaNoteUnsavedDraft.count()>0")
+            check(label+" rejected writer keeps draft and warning",
+                  rejected_entry.locator('#note-unsaved-banner').is_visible() and
+                  rejected_entry.locator('#toast').inner_text()!=message and
+                  len(json_storage(rejected_entry,"apuda_cancer_care_v1")[saved_key])==prior_count)
+            check(label+" rejected writer restores controls",
+                  not failform.locator('button').is_disabled() and
+                  failform.get_attribute('aria-busy') is None)
+            check(label+" rejected data survives in export",
+                  '"'+value+' 실패"' in rejected_entry.evaluate("ApuDaNoteUnsavedDraft.exportText()")
+                  if field!="wbc" else
+                  '"6300"' in rejected_entry.evaluate("ApuDaNoteUnsavedDraft.exportText()"))
+
+        # A writer may resolve a conflict instead of rejecting the Promise.
+        # The UI must refuse non-saved status rather than showing "saved".
+        noncommitted=new_tab(ack_context)
+        noncommitted.evaluate("""() => {
+            planTab='sched';renderPlan();tab('plan');
+            window.save=()=>Promise.resolve({status:'conflict'});
+        }""")
+        noncommitted_form=noncommitted.locator('#v-plan form[onsubmit*="addSched"]')
+        noncommitted_form.locator('input[name="title"]').fill('가상 상태 충돌 일정')
+        noncommitted_form.locator('button').click()
+        noncommitted.wait_for_function("() => !entrySavePending && ApuDaNoteUnsavedDraft.count()>0")
+        check("non-saved status cannot show schedule success",
+              noncommitted.locator('#note-unsaved-banner').is_visible() and
+              noncommitted.locator('#toast').inner_text()!='일정을 추가했어요')
+
+        # With an entry form pending, another actual V3 tab commits first.
+        # The pending entry must not rebase or overwrite the winner.
+        waiting=new_tab(ack_context)
+        winner=new_tab(ack_context)
+        waiting.evaluate("""() => {
+            planTab='sched';renderPlan();tab('plan');
+            const original=window.save;
+            window.save=()=>new Promise((resolve,reject)=>{
+                window.__ackResolve=()=>{try{resolve(original());}catch(error){reject(error);}};
+            });
+        }""")
+        pending_form=waiting.locator('#v-plan form[onsubmit*="addSched"]')
+        pending_form.locator('input[name="title"]').fill('가상 대기 중 일정')
+        pending_form.locator('button').click()
+        waiting.wait_for_function("() => entrySavePending && typeof __ackResolve==='function'")
+        winner.evaluate("""() => {
+            planTab='sched';renderPlan();tab('plan');
+        }""")
+        winform=winner.locator('#v-plan form[onsubmit*="addSched"]')
+        winform.locator('input[name="title"]').fill('가상 먼저 저장된 일정')
+        winform.locator('button').click()
+        waiting.wait_for_function("() => noteWritesPaused && ApuDaNoteUnsavedDraft.count()>0")
+        check("inflight schedule detects external change",
+              waiting.evaluate("entrySavePending && noteWritesPaused && chatWritesPaused"))
+        check("inflight schedule preserves attempted raw",
+              '가상 대기 중 일정' in waiting.evaluate('ApuDaNoteUnsavedDraft.exportText()'))
+        waiting.evaluate("window.__ackResolve()")
+        waiting.wait_for_function("() => !entrySavePending")
+        final_rows=json_storage(waiting,"apuda_cancer_care_v1")['roadmap']
+        check("inflight schedule cannot overwrite winner",
+              any(row['title']=='가상 먼저 저장된 일정' for row in final_rows) and
+              not any(row['title']=='가상 대기 중 일정' for row in final_rows))
+        check("inflight schedule does not show false success",
+              waiting.locator('#toast').inner_text()!='일정을 추가했어요' and
+              waiting.locator('#note-unsaved-banner').is_visible())
+
         ack_context.close()
 
         context.close()

@@ -27,6 +27,7 @@ function load(){
 var noteExpectedRaw=null;
 var noteWritesPaused=false,chatWritesPaused=false,unsavedCaptureFailed=false;
 var profileSavePending=false,profilePendingRaw=null,questionSavePending=false;
+var entrySavePending=false,entryPendingRaw=null;
 var state=load();
 function invalidateUndo(){
   if(noteUndo)noteUndo.invalidate();undoToken='';
@@ -904,11 +905,60 @@ function schedItem(x){var done=x.status==='done';return '<div class="item'+(done
 function medItem(m){var on=m.active==='yes';return '<div class="item"><div class="row between"><span class="pill '+(on?'green':'gray')+'">'+esc(m.type||'약')+' · '+(on?'복용 중':'중단')+'</span><span class="row" style="gap:6px"><button class="btn soft sm" onclick="toggleMed(\''+m.id+'\')">'+(on?'중단':'다시 복용')+'</button><button class="btn line sm" onclick="delItem(\'meds\',\''+m.id+'\')">삭제</button></span></div><h4>'+esc(m.name)+' '+esc(m.dose||'')+'</h4><div class="meta">'+esc(m.schedule||'복용 시간 미입력')+(m.memo?' · '+esc(m.memo):'')+'</div></div>'}
 function qItem(q){return '<div class="item'+(q.answer?' done':'')+'"><div class="row between"><span class="pill '+(q.priority==='high'?'red':q.answer?'green':'')+'">'+(q.answer?'답변 받음':q.priority==='high'?'꼭 질문':'질문')+'</span><span class="row" style="gap:6px">'+(q.priority!=='high'&&!q.answer?'<button class="btn soft sm" onclick="starQ(\''+q.id+'\')">★ 꼭</button>':'')+'<button class="btn line sm" onclick="delItem(\'questions\',\''+q.id+'\')">삭제</button></span></div><h4 style="text-decoration:none;color:inherit">'+esc(q.question)+'</h4>'+
   '<div class="addline" style="margin-top:6px"><input placeholder="들은 답변 메모" value="'+esc(q.answer||'')+'" onchange="answerQ(\''+q.id+'\',this.value)"><span></span></div></div>'}
-window.addSched=function(e){e.preventDefault();var f=e.target;state.roadmap.push({id:uid(),date:f.date.value,time:'',type:/항암|방사선|수술|주사/.test(f.title.value)?'치료':/CT|MRI|PET|검사|채혈|내시경/i.test(f.title.value)?'검사':'일정',title:f.title.value.trim(),memo:'',status:'planned',createdAt:Date.now()});save();toast('일정을 추가했어요')};
-window.addMed=function(e){e.preventDefault();var v=e.target.t.value.trim();var o=interpret('약: '+v);if(!o.saved.length){state.meds.unshift({id:uid(),name:v,dose:'',schedule:'',purpose:'',type:'기타',active:'yes',memo:today()+' 시작',createdAt:Date.now()})}save();toast('약을 추가했어요')};
+/* Phase 2: schedule, medicine, laboratory forms wait for future async writes.
+ * The existing save() is still synchronous localStorage; no migration occurs.
+ */
+async function saveEntryForm(form,apply,success,fail,afterSave){
+  if(entrySavePending||profileSavePending||questionSavePending)return false;
+  if(noteLoadError||noteWritesPaused||hasUnsavedDraft()){
+    toast('저장되지 않은 기록이 있어 추가 저장을 멈췄습니다. 먼저 임시 사본을 확인하세요.');return false;
+  }
+  var controls=[].slice.call(form.querySelectorAll('input,select,textarea,button'));
+  var prior=controls.map(function(el){return el.disabled;});
+  entrySavePending=true;form.setAttribute('aria-busy','true');
+  controls.forEach(function(el){el.disabled=true;});
+  try{
+    apply();
+    entryPendingRaw=JSON.stringify(state);
+    var ack=await Promise.resolve(save());
+    if(ack===false||(ack&&typeof ack==='object'&&ack.status&&ack.status!=='saved'))
+      throw new Error('commit-not-confirmed');
+    if(noteWritesPaused||hasUnsavedDraft())throw new Error('records-changed');
+    toast(success);
+    if(afterSave)afterSave();
+    return true;
+  }catch(error){
+    if(!hasUnsavedDraft())holdUnsaved('note',entryPendingRaw||JSON.stringify(state),error);
+    toast(fail);
+    return false;
+  }finally{
+    entrySavePending=false;entryPendingRaw=null;form.removeAttribute('aria-busy');
+    controls.forEach(function(el,i){el.disabled=prior[i];});
+  }
+}
+window.addSched=async function(e){
+  e.preventDefault();var form=e.target,day=form.date.value,title=form.title.value.trim();
+  if(!day||!title)return false;
+  return saveEntryForm(form,function(){
+    state.roadmap.push({id:uid(),date:day,time:'',
+      type:/항암|방사선|수술|주사/.test(title)?'치료':/CT|MRI|PET|검사|채혈|내시경/i.test(title)?'검사':'일정',
+      title:title,memo:'',status:'planned',createdAt:Date.now()});
+  },'일정을 추가했어요','일정을 저장하지 못했습니다. 입력 내용을 임시 사본에서 확인해 주세요.');
+};
+window.addMed=async function(e){
+  e.preventDefault();var form=e.target,value=String(form.t&&form.t.value||'').trim();
+  if(!value)return false;
+  return saveEntryForm(form,function(){
+    var outcome=interpret('약: '+value);
+    if(!outcome.saved.length){
+      state.meds.unshift({id:uid(),name:value,dose:'',schedule:'',purpose:'',type:'기타',active:'yes',
+        memo:today()+' 시작',createdAt:Date.now()});
+    }
+  },'약을 추가했어요','복용약을 저장하지 못했습니다. 입력 내용을 임시 사본에서 확인해 주세요.');
+};
 window.addQ=async function(e){
   e.preventDefault();
-  if(questionSavePending)return;
+  if(questionSavePending||entrySavePending)return;
   if(noteLoadError||noteWritesPaused||hasUnsavedDraft()){
     toast('저장되지 않은 기록이 있어 질문을 추가하지 않았어요. 임시 사본을 확인하세요.');return;
   }
@@ -970,11 +1020,30 @@ function labLabel(row,key){if(row[key]===''||row[key]==null)return '-';var u=SAF
 function labTable(arr,del){if(!arr.length)return '<div class="empty">아직 수치 기록이 없어요.</div>';
   return '<table class="labtbl"><tr><th>날짜</th><th>백혈구</th><th>호중구</th><th>혈색소</th><th>혈소판</th>'+(del?'<th></th>':'')+'</tr>'+arr.map(function(x){
     return '<tr><td style="white-space:nowrap">'+(+x.date.slice(5,7))+'/'+(+x.date.slice(8))+(dTag(x.date)?'<br><span class="small muted">'+esc(dTag(x.date))+'</span>':'')+'</td>'+['wbc','anc','hb','plt'].map(function(k){var value=SAFETY.labValue(x,k),low=value!=null&&(k==='anc'&&value<1000||k==='plt'&&value<50000);return '<td'+(low?' class="lo"':'')+'>'+esc(labLabel(x,k))+'</td>';}).join('')+(del?'<td><button class="btn line sm" aria-label="검사 기록 삭제" onclick="delItem(\'labs\',\''+x.id+'\')">✕</button></td>':'')+'</tr>'+(x.note?'<tr><td colspan="'+(del?6:5)+'" class="small muted">'+esc(x.note)+'</td></tr>':'');}).join('')+'</table>';}
-window.addLab=function(e){e.preventDefault();var f=e.target,unit=f.countUnit.value;var row={id:uid(),date:f.date.value||today(),units:{},rawValues:{},note:f.note.value.trim()};
-  ['wbc','anc','hb','plt'].forEach(function(k){var raw=f[k].value.trim(),num=Number(raw.replace(/,/g,''));row[k]='';if(!raw||!/^\d+(?:\.\d+)?$/.test(raw.replace(/,/g,''))||!isFinite(num))return;row.units[k]=k==='hb'?'g/dL':(unit==='thousand'?'/µL':unit);row.rawValues[k]=raw+(k==='hb'?' g/dL':unit==='unknown'?'':unit==='thousand'?' ×10³/µL':' /µL');row[k]=String(k!=='hb'&&unit==='thousand'?num*1000:num);});
-  if(['wbc','anc','hb','plt'].every(function(k){return row[k]==='';})&&!row.note){toast('수치를 하나 이상 적어 주세요');return;}
-  state.labs.unshift(row);state.labs.sort(function(a,b){return b.date.localeCompare(a.date);});save();toast(unit==='unknown'?'숫자를 그대로 저장했어요. 검사 단위를 확인해 주세요.':'검사 수치를 저장했어요');
-  var anc=SAFETY.labValue(row,'anc'),plt=SAFETY.labValue(row,'plt');if(anc!=null&&anc<1000||plt!=null&&plt<50000)toast('낮은 수치예요. 발열·출혈에 특히 주의하고 병원 안내를 따르세요');
+window.addLab=async function(e){
+  e.preventDefault();var form=e.target,unit=form.countUnit.value;
+  var row={id:uid(),date:form.date.value||today(),units:{},rawValues:{},note:form.note.value.trim()};
+  ['wbc','anc','hb','plt'].forEach(function(k){
+    var raw=form[k].value.trim(),num=Number(raw.replace(/,/g,''));
+    row[k]='';
+    if(!raw||!/^\d+(?:\.\d+)?$/.test(raw.replace(/,/g,''))||!isFinite(num))return;
+    row.units[k]=k==='hb'?'g/dL':(unit==='thousand'?'/µL':unit);
+    row.rawValues[k]=raw+(k==='hb'?' g/dL':unit==='unknown'?'':unit==='thousand'?' ×10³/µL':' /µL');
+    row[k]=String(k!=='hb'&&unit==='thousand'?num*1000:num);
+  });
+  if(['wbc','anc','hb','plt'].every(function(k){return row[k]==='';})&&!row.note){
+    toast('수치를 하나 이상 적어 주세요');return false;
+  }
+  return saveEntryForm(form,function(){
+    state.labs.unshift(row);
+    state.labs.sort(function(a,b){return b.date.localeCompare(a.date);});
+  },unit==='unknown'?'숫자를 그대로 저장했어요. 검사 단위를 확인해 주세요.':'검사 수치를 저장했어요',
+    '검사 결과를 저장하지 못했습니다. 입력 내용을 임시 사본에서 확인해 주세요.',
+    function(){
+      var anc=SAFETY.labValue(row,'anc'),plt=SAFETY.labValue(row,'plt');
+      if(anc!=null&&anc<1000||plt!=null&&plt<50000)
+        toast('낮은 수치예요. 발열·출혈에 특히 주의하고 병원 안내를 따르세요');
+    });
 };
 function renderSummary(){
   var p=state.profile,up=upcoming().slice(0,4),act=state.meds.filter(function(m){return m.active==='yes'});
@@ -1048,7 +1117,7 @@ function fillProfile(){var f=$('#profileForm');Object.keys(defaultState.profile)
  */
 $('#profileForm').addEventListener('submit',async function(e){
   e.preventDefault();
-  if(profileSavePending)return;
+  if(profileSavePending||entrySavePending)return;
   if(noteLoadError||noteWritesPaused||hasUnsavedDraft()){
     toast('저장되지 않은 수정이 있어 추가 저장을 멈췄습니다. 먼저 임시 사본을 보관하세요.');
     return;
@@ -1171,6 +1240,11 @@ function pendingProfileRaw(){
 }
 window.addEventListener('storage',function(e){
   if(e.key!==KEY)return;
+  if(entrySavePending){
+    holdUnsaved('note',entryPendingRaw||JSON.stringify(state),new Error('records-changed'));
+    toast('다른 탭이 기록을 변경해 저장 중인 내용을 따로 보관했습니다. 임시 사본을 확인해 주세요.');
+    return;
+  }
   if(questionSavePending){
     holdUnsaved('note',JSON.stringify(state),new Error('records-changed'));
     toast('다른 탭의 변경과 질문 저장이 겹쳤습니다. 임시 사본을 확인해 주세요.');
