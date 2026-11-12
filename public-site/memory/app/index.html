@@ -104,6 +104,7 @@ li{margin-bottom:7px}
 .footer{margin-top:48px;padding:26px 0;border-top:1px solid var(--edge);font-size:13px;color:var(--muted)}
 .footer a{color:inherit}
 button:disabled{opacity:.58;cursor:not-allowed}
+#printSheet{display:none}
 .download a{display:inline-flex}
 .locked-content{border:1px dashed #b9cddd;border-radius:16px;padding:21px;background:#f8fbfd;color:#4b6374}
 .onboarding{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
@@ -124,7 +125,7 @@ label,.note,p,h2,h3,li{word-break:keep-all}
  .section{margin-top:30px}.actions .btn{flex:1 1 130px}.stat strong{font-size:24px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-@media print{.app-head,.hero,.notice,.actions,.footer,#unlock-area,#privacy{display:none!important}body{background:white}.section{margin-top:12px}.card{box-shadow:none}#consult{display:block!important}}
+@media print{body{background:white;color:#111}body>.app-head,body>main{display:none!important}#printSheet{display:block!important;margin:0;padding:16mm;white-space:pre-wrap;overflow-wrap:anywhere;font:12pt/1.65 system-ui,sans-serif}}
 </style>
 </head>
 <body>
@@ -328,5 +329,6 @@ label,.note,p,h2,h3,li{word-break:keep-all}
  <p>© ApuDa. 암호화된 개인 보관함의 데이터는 서비스 서버에 전송되지 않습니다.</p>
 </footer>
 </main>
+<pre id="printSheet" aria-label="인쇄용 진료 요약"></pre>
 <script type="module" src="./app.mjs"></script>
 </body></html>
