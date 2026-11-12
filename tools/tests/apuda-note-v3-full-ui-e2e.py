@@ -287,6 +287,41 @@ try:
         check("rejected question is not in persisted note",
               len(json_storage(rejected_q,'apuda_cancer_care_v1')['questions'])==2 and
               rejected_q.locator('#toast').inner_text()!='질문을 추가했어요')
+
+        # While B's asynchronous form commit is still pending, A commits a
+        # different update. B must capture its submitted raw input, then reject.
+        slow=new_tab(ack_context)
+        fast=new_tab(ack_context)
+        slow.evaluate("""() => {
+            const old=window.save;
+            window.save=()=>new Promise((resolve,reject)=>{
+                window.__ackResolve=()=>{try{resolve(old());}catch(err){reject(err);}};
+            });
+        }""")
+        slow.locator('button[aria-label="내 정보와 설정"]').click()
+        slow.locator('#profileForm input[name="name"]').fill("가상 저장대기 중 수정")
+        slow.locator('#profileForm button').click()
+        slow.wait_for_function("() => profileSavePending && typeof __ackResolve==='function'")
+        fast.locator('button[aria-label="내 정보와 설정"]').click()
+        fast.locator('#profileForm input[name="name"]').fill("가상 다른 탭 최신 기록")
+        fast.locator('#profileForm button').click()
+        slow.wait_for_function("() => noteWritesPaused && ApuDaNoteUnsavedDraft.count()>0")
+        check("inflight profile save notices external tab change",
+              slow.evaluate("profileSavePending && noteWritesPaused && chatWritesPaused"))
+        check("inflight attempted raw is preserved",any(
+              '가상 저장대기 중 수정' in item.get('raw','')
+              for item in json.loads(slow.evaluate("ApuDaNoteUnsavedDraft.exportText()"))['items']))
+        slow.evaluate("window.__ackResolve()")
+        slow.wait_for_function("() => !profileSavePending")
+        check("inflight conflicting save never reports success",
+              slow.locator('#toast').inner_text() != '내 정보를 저장했어요' and
+              slow.locator('#note-unsaved-banner').is_visible())
+        check("latest other-tab commit is preserved after slow rejection",
+              json_storage(slow,"apuda_cancer_care_v1")["profile"]["name"] == "가상 다른 탭 최신 기록")
+        check("blocked profile form is usable for manual review",
+              not slow.locator('#profileForm input[name="name"]').is_disabled() and
+              slow.locator('#profileForm input[name="name"]').input_value() == "가상 저장대기 중 수정")
+
         ack_context.close()
 
         context.close()
