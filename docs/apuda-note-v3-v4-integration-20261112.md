@@ -35,3 +35,14 @@
 - 기존 V3 전체 화면·복원·대화·수정 UI 회귀 테스트도 모두 통과해야 다음 단계로 진행한다.
 
 최종 통과 건수는 각 커밋의 실제 GitHub Actions 실행 결과를 확인한 후 작성한다.
+
+## 실측 CI 결과 (2026-11-12 KST)
+
+테스트 커밋: `f69924c1a9f77c05750b07b8acc1b5eddd157abd`. 테스트는 Ubuntu 24.04 / Playwright Chromium / localhost / 합성 데이터로 수행했다.
+
+- [V3 전체 화면 + 합성 비동기 포트 CI](https://github.com/Mespital/ApuDa/actions/runs/43224973874): 전체 V3 UI `84/84 PASS`, IndexedDB 비동기 포트 `21/21 PASS`, 기록 수정·삭제 `78/78 PASS`, 대화 순서·미저장 보존 `37/37 PASS`. **합계 220/220 PASS**. 대화 정적 검사도 15개 항목 통과.
+- [V4 및 실제 V3→V4 교차 인계 CI](https://github.com/Mespital/ApuDa/actions/runs/43224974258): V4 원자적 합성 인계 `15/15 PASS`, 실제 V3 화면 원문·대화의 V4 합성 IndexedDB 인계 `21/21 PASS`. **합계 36/36 PASS**.
+- **브라우저 검사 합계 256/256 PASS**, 별도 정적 감사 15건 통과. 이는 개발 합성 환경 검증이며 실제 환자 데이터 이전 승인이나 운영 호환성 증명이 아니다.
+
+### 미해결 P0
+실운영 V3는 `localStorage`에 기록과 대화를 독립 키로 저장한다. 이전 탭/Service Worker/Drive 자동 백업은 새 트랜잭션과 통일되어 있지 않다. 인계 이후 오래된 탭이 수정하는 것을 강제로 막지 못한다. 실제 IndexedDB 전환·구형 버전 차단·독립 백업 확인·모바일 및 환자 검증 전 **Draft에서 main으로 병합하지 않는다**.
