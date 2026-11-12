@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'none'; font-src 'none'; object-src 'none'; form-action 'none'; base-uri 'none'">
+  <title>ApuDa | V4 백업 사전검사 (합성 데이터)</title>
+  <link rel="stylesheet" href="extended-preview.css">
+  <link rel="stylesheet" href="rollback-lab.css">
+  <script defer src="../note/note-storage.js"></script>
+  <script defer src="v3-compat-audit.js"></script>
+  <script defer src="v3-lossless-stage.js"></script>
+  <script defer src="v4-extended-draft.js"></script>
+  <script defer src="v4-migration-rehearsal.js"></script>
+  <script defer src="v4-backup-preflight.js"></script>
+  <script defer src="backup-preflight-demo.js"></script>
+  <script defer src="backup-preflight-ui.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">본문 바로가기</a>
+  <header class="top"><div class="wrap brand"><span class="logo">ApuDa</span><span class="top-label">환자 수첩 V4 · 백업 사전검사</span></div></header>
+  <main id="main" class="wrap">
+    <section class="hero" aria-labelledby="title">
+      <p class="eyebrow">합성 데이터 100% · 실제 기록 0건</p>
+      <h1 id="title">백업 무결성 <span>사전검사</span></h1>
+      <p class="lead">복원하기 전에 <strong>원본과 대상값의 일치 여부, 백업 목록의 SHA-256 해시, 저장 공간 추정치</strong>를 가상으로 검사합니다.</p>
+      <div class="alert" role="note"><strong>실제 환자 기록과 연결되지 않습니다.</strong> 값은 코드에 고정된 가상 기록만 사용합니다. 사전검사 통과는 실제 저장 성공·복구 성공을 보장하지 않습니다. 해시(SHA-256)는 손상 확인용이며 암호화·전자서명이 아닙니다.</div>
+    </section>
+    <section class="panel" aria-labelledby="scenario-title">
+      <h2 id="scenario-title">1. 검증 상황 선택</h2>
+      <label for="scenario" class="field-label">가상 상황</label>
+      <select id="scenario">
+        <option value="pass">원본·용량 사전검사 통과</option>
+        <option value="source-changed">V3 원본이 중간에 수정됨</option>
+        <option value="target-changed">기존 V4 대상이 수정됨</option>
+        <option value="quota">예상 여유 공간 부족</option>
+        <option value="unknown">여유 공간을 확인할 수 없음</option>
+        <option value="tamper">백업 목록(Manifest) 변조</option>
+      </select>
+      <p class="hint field-hint">사전검사(Preflight)는 복구를 시작하기 전에 위험을 찾아내는 절차입니다.</p>
+      <div class="actions"><button id="run" class="primary" type="button">가상 사전검사 실행</button><button id="reset" type="button">결과 지우기</button></div>
+    </section>
+    <p id="status" class="status" role="status" aria-live="polite">상황을 선택하고 검사를 시작해 주세요.</p>
+    <section id="result" class="panel" aria-labelledby="result-title" hidden>
+      <h2 id="result-title">2. 사전검사 결과</h2>
+      <p id="outcome" class="outcome"></p>
+      <p id="explanation"></p>
+      <dl id="indicators" class="indicators"></dl>
+      <p class="privacy">여유 공간 계산은 보수적인 모의 추정치입니다. 기기별 저장 한도를 확인하거나 실제 복구를 실행하지 않습니다.</p>
+    </section>
+    <p class="hint"><a href="rollback-lab.html">가상 오류 발생 후 복원 시험실로 이동</a></p>
+  </main>
+  <footer class="wrap footer">ApuDa AI 기술 사전점검 · 전문가·환자 실제 검증 전 · 운영 전환 불가</footer>
+</body>
+</html>
