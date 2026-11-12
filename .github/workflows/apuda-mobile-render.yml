@@ -19,7 +19,7 @@ jobs:
   mobile-public-render:
     name: Chromium mobile public pages
     runs-on: ubuntu-24.04
-    timeout-minutes: 12
+    timeout-minutes: 20
     steps:
       - name: Check out PR code without credentials
         uses: actions/checkout@v4
@@ -35,10 +35,14 @@ jobs:
           python -m playwright install --with-deps chromium
       - name: Syntax check
         run: python -m py_compile tools/qa/apuda_mobile_render.py
-      - name: Gate PR HTML/CSS snapshot (12 render conditions)
+      - name: Gate all 30 books and 30 FAQ pages at 320/390px (122 renders)
         run: |
           python tools/qa/apuda_mobile_render.py \
-            --site-root public-site --out mobile-artifacts/source
+            --site-root public-site --scope full --out mobile-artifacts/source-full
+      - name: Gate representative pages at 320/360/390/768px (12 renders)
+        run: |
+          python tools/qa/apuda_mobile_render.py \
+            --site-root public-site --scope sample --out mobile-artifacts/source
       - name: Compare public production pages (read-only, informational)
         continue-on-error: true
         run: |
