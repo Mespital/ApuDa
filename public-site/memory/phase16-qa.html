@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>ApuDa Memory 16단계 · 다중 연결·용량 오류·암호화 QA</title>
+<style>
+*{box-sizing:border-box}
+body{font-family:system-ui,-apple-system,'Noto Sans KR',sans-serif;font-size:17px;line-height:1.6;color:#153754;background:#f6f9fe;margin:0}
+main{max-width:850px;margin:auto;padding:22px}
+h1{font-size:clamp(25px,4vw,34px);line-height:1.3}
+.panel{border:1px solid #bed3e8;border-radius:16px;background:white;margin:15px 0;padding:20px}
+.warning{border-color:#ddbb80;background:#fff9ec}
+.note{font-size:15px;color:#475e73}
+button{font:inherit;background:#1655bc;color:white;padding:11px 18px;border:1px solid #1655bc;border-radius:9px;min-height:48px;font-weight:700;cursor:pointer}
+button:disabled{opacity:.6;cursor:not-allowed}
+button:focus-visible{outline:3px solid #b87314;outline-offset:3px}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f0f5fc;padding:15px;border-radius:10px;font-size:14px}
+@media(max-width:450px){main{padding:12px}.panel{padding:14px}button{width:100%}}
+</style></head>
+<body><main>
+<p class="note"><a href="./phase15-qa.html">15단계 무손실 QA</a> · <a href="./profile-qa.html">가상 대상자 A/B 화면</a></p>
+<h1>16단계 · 저장 충돌·오류 복구·암호화 QA</h1>
+<section class="panel warning">
+<strong>가상 기록 전용 · 실제 환자 정보를 입력하지 마세요.</strong>
+<p>이 페이지는 기존 ApuDa 기록을 읽거나 이전하지 않고, 테스트 전용 IndexedDB에 가상 기록만 생성합니다. 두 개의 데이터베이스 연결로 동시 저장을 시험하고, 오류 시 기록 보존을 확인합니다.</p>
+<p class="note">저장 공간 부족은 실제 용량을 채우지 않고 <strong>가상 QuotaExceededError를 주입</strong>합니다. 실제 브라우저 저장 용량 초과 및 강제 종료는 별도로 확인해야 합니다.</p>
+</section>
+<section class="panel">
+<h2>기기 내 검증</h2>
+<button id="run" type="button" disabled>검증 모듈 준비 중</button>
+<p id="status" role="status" aria-live="polite">테스트 준비 중입니다.</p>
+<pre id="result" tabindex="0">아직 실행되지 않았습니다.</pre>
+<p class="note">검증 정보는 이 화면에만 표시되며 서버로 전송하지 않습니다. 테스트 성공은 의료·보안 인증을 뜻하지 않습니다. 브라우저가 도중 종료되면 임시 QA DB가 남을 수 있습니다.</p>
+</section>
+</main>
+<script type="module">
+import {emptyProfileVault,addAnonymousProfile,appendScopedRecord,scopedRecords} from './profile-scope.mjs';
+import {prepareLegacyStaging} from './legacy-staging.mjs';
+import {openProfileVaultQaDatabase,readQaVault,commitLegacyQaStage} from './profile-vault-idb-qa.mjs';
+import {encryptArchive,decryptArchive} from './secure-archive.mjs';
+
+const $=id=>document.getElementById(id);
+const allowed=/^deploy-preview-\d+--apuda-total\.netlify\.app$/.test(location.hostname) ||
+  ['localhost','127.0.0.1'].includes(location.hostname);
+const button=$('run'),status=$('status'),output=$('result');
+const A='e4ad61f3-4cf2-40a8-a38c-1d098c91d643';
+const B='e3c55b7d-26ba-4d56-9c78-2875b04f9079';
+const note=(id,text)=>({id,date:'2026-11-12',text});
+const backup=id=>({format:'apuda-memory-care-diary',version:2,entries:[note(id,'가상 자료 '+id)]});
+const waitFailure=async (work,name)=>{try{await work();throw Error(name+'가 성공해 버렸습니다.')}catch(e){if(e.message.includes('성공해 버렸'))throw e;return e;}};
+
+if(!allowed) status.textContent='개발 미리보기와 localhost에서만 QA를 실행할 수 있습니다.';
+else if(!indexedDB || !crypto?.subtle || !crypto?.randomUUID)
+  status.textContent='이 환경에서 IndexedDB 또는 HTTPS Web Crypto가 지원되지 않습니다.';
+else {
+  button.disabled=false;
+  button.textContent='가상 기록 QA 실행 (동시 저장·암호화)';
+  button.addEventListener('click',async()=>{
+    button.disabled=true;status.textContent='가상 기록만으로 QA를 수행하고 있습니다.';
+    const dbName='apuda-memory-qa-vault-p16-'+crypto.randomUUID().slice(0,12);
+    const checks=[],metrics={};
+    const ok=(test,label)=>{if(!test)throw Error('실패: '+label);checks.push(label)};
+    const result={status:'FAIL',checks,metrics,dbName,environment:{userAgent:navigator.userAgent,secureContext:isSecureContext}};
+    let left=null,right=null;
+    try{
+      ok(isSecureContext,'HTTPS 보안 컨텍스트');
+      let v=addAnonymousProfile(addAnonymousProfile(emptyProfileVault(),A),B);
+      v=appendScopedRecord(v,A,note('qa-original-a','A의 가상 원본'));
+      v={...v,unassigned:[note('qa-unassigned','기존 미분류 가상 기록')]};
+      const initial=JSON.stringify(v);
+      const one=backup('qa-concurrent-one'),two=backup('qa-concurrent-two');
+      const planOne=prepareLegacyStaging(v,one),planTwo=prepareLegacyStaging(v,two);
+      left=await openProfileVaultQaDatabase(indexedDB,dbName);
+      right=await openProfileVaultQaDatabase(indexedDB,dbName);
+      ok((await readQaVault(left)).vault===null,'독립 QA DB 초기 상태 0건');
+      const quota=await waitFailure(
+        ()=>commitLegacyQaStage(left,v,one,planOne,{confirmed:true,injectQuotaAbort:true}),
+        '저장 용량 부족 시뮬레이션');
+      ok(quota.name==='QuotaExceededError','QuotaExceededError 주입 응답');
+      ok((await readQaVault(right)).vault===null,'용량 오류 뒤 기록·마커 롤백');
+      const race=await Promise.allSettled([
+        commitLegacyQaStage(left,v,one,planOne,{confirmed:true}),
+        commitLegacyQaStage(right,v,two,planTwo,{confirmed:true})
+      ]);
+      const successes=race.map((x,i)=>x.status==='fulfilled'?i:-1).filter(i=>i>=0);
+      const failures=race.filter(x=>x.status==='rejected');
+      ok(successes.length===1&&failures.length===1,'2개 연결 경쟁 저장: 1건 커밋·1건 충돌 차단');
+      const winning=successes[0]===0?one:two;
+      const winningPlan=successes[0]===0?planOne:planTwo;
+      const stored=await readQaVault(right);
+      ok(stored.marker?.verified===true&&stored.vault?.unassigned.length===2,
+         '경쟁 처리 후 미분류 2건·검증 마커 일치');
+      ok(scopedRecords(stored.vault,A).length===1&&scopedRecords(stored.vault,B).length===0,
+         '경쟁 저장에서도 기존 A/B 분리 보존');
+      ok(stored.vault.unassigned.some(x=>x.id===winning.entries[0].id) &&
+        !stored.vault.unassigned.some(x=>x.id===(winning===one?two:one).entries[0].id),
+         '상대 연결의 내용이 섞이거나 덮어써지지 않음');
+      ok(JSON.stringify(v)===initial,'메모리 원본 불변');
+      const replay=await commitLegacyQaStage(left,v,winning,winningPlan,{confirmed:true});
+      ok(replay.committed===false&&replay.reason==='already-staged','동일 백업 재실행 멱등성');
+      right.close();right=null;
+      left.close();left=null;
+      left=await openProfileVaultQaDatabase(indexedDB,dbName);
+      ok((await readQaVault(left)).vault?.unassigned.length===2,'브라우저 DB 재개방 기록 보존');
+
+      const synthetic={format:'apuda-memory-care-diary',version:2,
+        entries:Array.from({length:20},(_,i)=>({
+          id:'qa-benchmark-'+i,date:'2026-11-12',
+          text:'가상 수면·식사 관찰 '+i,question:'테스트 진료 질문 '+i,
+          sleep:'보통',meal:'좋음',medicationCheck:'확인 필요'
+        }))};
+      const passphrase='가상 데이터 전용 긴 검사 암호 2026! Never use personal secrets.';
+      const t1=performance.now();
+      const encrypted=await encryptArchive(synthetic,passphrase);
+      metrics.encryptMs=Math.round(performance.now()-t1);
+      ok(!JSON.stringify(encrypted).includes('가상 수면'), '암호문에서 평문 메모를 노출하지 않음');
+      const t2=performance.now();
+      const recovered=await decryptArchive(encrypted,passphrase);
+      metrics.decryptMs=Math.round(performance.now()-t2);
+      ok(JSON.stringify(recovered)===JSON.stringify(synthetic),'20건 AES-256-GCM 암복호화 왕복');
+      const wrong=await waitFailure(()=>decryptArchive(encrypted,'잘못된 테스트 비밀번호 2026'), '잘못된 암호');
+      ok(!!wrong,'잘못된 비밀번호 거부');
+      const tampered={...encrypted,ciphertext:(encrypted.ciphertext[0]==='A'?'B':'A')+encrypted.ciphertext.slice(1)};
+      const altered=await waitFailure(()=>decryptArchive(tampered,passphrase),'변조된 파일');
+      ok(!!altered,'변조된 암호문 거부');
+      if(navigator.storage?.estimate){
+        const estimate=await navigator.storage.estimate();
+        // This is read-only storage *metadata*. No private record data is inspected.
+        metrics.quotaBytesApprox=estimate.quota??null;
+      }
+      result.status='PASS';
+    }catch(error){result.error=String(error)}
+    finally{
+      if(left){left.close();left=null}
+      if(right){right.close();right=null}
+      try{
+        result.cleanup=await new Promise((resolve,reject)=>{
+          const request=indexedDB.deleteDatabase(dbName);
+          request.onsuccess=()=>resolve('QA 임시 데이터베이스 삭제 완료');
+          request.onerror=()=>reject(request.error||Error('QA DB 삭제 오류'));
+          request.onblocked=()=>reject(Error('QA DB 삭제가 다른 탭에서 차단됨'));
+        });
+      }catch(error){result.cleanup='실패: '+String(error);result.status='FAIL'}
+      result.passCount=checks.length;
+      output.textContent=JSON.stringify(result,null,2);
+      status.textContent=result.status==='PASS'
+        ?'QA '+checks.length+'항목 통과 · 임시 DB 삭제 확인'
+        :'QA 실패 또는 미검증 · 아래 오류/정리 상태 확인 필요';
+      button.disabled=false;
+    }
+  });
+}
+</script></body></html>
