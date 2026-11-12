@@ -7,7 +7,15 @@ const read = (path) => readFile(join(root, path), 'utf8');
 const assert = (condition, message) => { if (!condition) throw new Error(message); };
 const sitemap = await read('sitemap.xml');
 const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-assert(urls.length === 85, 'Expected exactly 85 sitemap URLs');
+// 85 base URLs plus one URL per editorial FAQ topic page (scripts/faq-topics/*.json).
+const topicMapFiles = (await readdir(join(root, 'scripts/faq-topics')).catch(() => [])).filter((name) => name.endsWith('.json'));
+const topicMaps = new Map();
+for (const file of topicMapFiles) {
+  const map = JSON.parse(await read('scripts/faq-topics/' + file));
+  topicMaps.set(map.slug, map.topics);
+}
+const topicPageCount = [...topicMaps.values()].reduce((sum, topics) => sum + topics.length, 0);
+assert(urls.length === 85 + topicPageCount, 'Expected exactly 85 base sitemap URLs plus FAQ topic pages');
 assert(new Set(urls).size === urls.length, 'Sitemap has duplicate URLs');
 assert(urls.every((url) => url.startsWith('https://apuda.app/')), 'Sitemap has an external URL');
 
@@ -20,7 +28,7 @@ assert(!urls.some((url) => url.includes('/nonsul/') || url.includes('/note/') ||
 // must equal the FAQ record's own `updated` date (checked per record below).
 const lastmods = new Map([...sitemap.matchAll(/<loc>([^<]+)<\/loc><lastmod>([^<]+)<\/lastmod>/g)].map((m) => [m[1], m[2]]));
 assert([...sitemap.matchAll(/<lastmod>/g)].length === lastmods.size, 'Malformed sitemap lastmod');
-assert([...lastmods.keys()].every((url) => /^https:\/\/apuda\.app\/library\/faq\/[a-z]+\/$/.test(url)),
+assert([...lastmods.keys()].every((url) => /^https:\/\/apuda\.app\/library\/faq\/[a-z]+\/([a-z0-9-]+\/)?$/.test(url)),
   'Unverified sitemap lastmod must not be invented outside FAQ pages');
 const noteHtml = await read('note/index.html');
 const noteGuideHtml = await read('note-guide/index.html');
@@ -236,7 +244,34 @@ for (const file of files) {
   faqTitles.add(title);
   faqDescriptions.add(description);
   questions += count;
+  // Topic pages: curated subsets of the same reviewed items, never new medical text.
+  const topics = topicMaps.get(record.slug) ?? [];
+  const placed = topics.flatMap((topic) => topic.items);
+  assert(topics.length === 0 || (placed.length === 100 && new Set(placed).size === 100),
+    'FAQ topic map must place each question exactly once: ' + record.slug);
+  for (const topic of topics) {
+    const topicUrl = url + topic.slug + '/';
+    const topicHtml = await read('library/faq/' + record.slug + '/' + topic.slug + '/index.html');
+    const ids = [...topicHtml.matchAll(/<li><details id="q(\d+)">/g)].map((match) => Number(match[1]));
+    assert(JSON.stringify(ids) === JSON.stringify(topic.items), 'FAQ topic page questions differ from its map: ' + topicUrl);
+    for (const n of topic.items) {
+      const block = html.match(new RegExp('<li><details id="q' + n + '">[\\s\\S]*?</details></li>'))?.[0];
+      assert(block && topicHtml.includes(block), 'FAQ topic page altered a reviewed answer: ' + topicUrl + '#q' + n);
+    }
+    assert(urls.includes(topicUrl) && lastmods.get(topicUrl) === lastmods.get(url), 'FAQ topic page sitemap entry mismatch: ' + topicUrl);
+    assert(topicHtml.includes('<link rel="canonical" href="' + topicUrl + '">'), 'FAQ topic canonical missing: ' + topicUrl);
+    assert(topicHtml.includes('출처를 첨부한 환자교육용 참고정보') && topicHtml.includes('자료 출처·검토 범위') &&
+      !/검토 대기|AI 초안|전문의 감수 완료/.test(topicHtml), 'FAQ topic page notice or transparency link missing: ' + topicUrl);
+    assert(html.includes('href="/library/faq/' + record.slug + '/' + topic.slug + '/"'), 'FAQ hub does not link its topic page: ' + topicUrl);
+    const topicTitle = topicHtml.match(/<title>([^<]+)<\/title>/)?.[1];
+    const topicDescription = topicHtml.match(/<meta name="description" content="([^"]+)">/)?.[1];
+    assert(topicTitle?.startsWith(record.name + ' ') && topicDescription?.length >= 60 && topicDescription.length <= 220,
+      'FAQ topic metadata missing or out of range: ' + topicUrl);
+    assert(!faqTitles.has(topicTitle) && !faqDescriptions.has(topicDescription), 'Duplicate FAQ topic metadata: ' + topicUrl);
+    faqTitles.add(topicTitle);
+    faqDescriptions.add(topicDescription);
+  }
 }
 assert(questions === 3000, 'Expected 3,000 original FAQ items');
 console.log(`Note guide static contrast: ${textPairs.length}/${textPairs.length} text and ${focusSurfaces.length}/${focusSurfaces.length} focus surfaces PASS (WCAG 2.2 AA thresholds).`);
-console.log('SEO verified: 85 URLs, 30 books, 30 static FAQ pages, 3,000 questions, note intro public and app noindex.');
+console.log('SEO verified: ' + urls.length + ' URLs (' + topicPageCount + ' FAQ topic pages), 30 books, 30 static FAQ pages, 3,000 questions, note intro public and app noindex.');
