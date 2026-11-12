@@ -35,16 +35,16 @@ function boot(hostname){
   const ids=[...page.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
   const els=Object.fromEntries(ids.map(id=>[id,new Element()]));
   els['qa-controls'].hidden=true;els['qa-results'].hidden=true;
-  const copied=[],printer={count:0};
+  const copied=[],printer={count:0},confirmState={accepted:true};
   const document={
     getElementById:id=>els[id] || (()=>{throw Error('Missing UI element '+id)})(),
     createElement:tag=>new Element(tag)
   };
   const ctx={document,location:{hostname},navigator:{clipboard:{writeText:async s=>{copied.push(s)}}},
-    window:{print:()=>printer.count++},Date,console};
+    window:{print:()=>printer.count++,confirm:()=>confirmState.accepted},Date,console};
   vm.createContext(ctx);
   new vm.Script(program).runInContext(ctx);
-  return {els,copied,printer,ctx};
+  return {els,copied,printer,ctx,confirmState};
 }
 function click(app,id){
   assert.equal(typeof app.els[id].handlers.click,'function',id+' has click event');
@@ -96,5 +96,38 @@ function textContentOfList(el){return el.children.map(c=>c.textContent).join(' |
   assert.equal(app.els['older-days-wrap'].hidden,true);
   click(app,'print-report');
   assert.equal(app.printer.count,1);
-  console.log('PASS: synthetic A/B QA screen, 7/30-day switch, strict no cross-person summary/copy leakage, missing-day distinction, accessibility labels, isolated preview-only host');
+  const assignCurrent=()=>app.els['unassigned-list'].children[0].children.at(-1).handlers.click();
+  assert.equal(app.els['unassigned-list'].children.length,1,'one unassigned demo record');
+  assignCurrent();
+  assert.equal(app.els['unassigned-count'].textContent,'1건','no assignment without consent');
+  assert.match(app.els['assignment-status'].textContent,/확인란/);
+  app.els['assignment-consent'].checked=true;
+  app.confirmState.accepted=false;
+  assignCurrent();
+  assert.equal(app.els['record-count'].textContent,'3건','confirm cancel preserves A records');
+  assert.equal(app.els['unassigned-count'].textContent,'1건','confirm cancel preserves unassigned record');
+  app.confirmState.accepted=true;
+  assignCurrent();
+  assert.equal(app.els['record-count'].textContent,'4건','A7 includes explicitly assigned record');
+  assert.equal(app.els['unassigned-count'].textContent,'0건','unassigned goes down');
+  assert.equal(app.els['assignment-consent'].checked,false,'checkbox reset after assignment');
+  assert.equal(app.els['assignment-undo'].hidden,false,'undo available');
+  assert.match(app.els['report'].textContent,/미분류 가상 기록/,'new assigned record shown for A');
+  click(app,'choose-b');
+  assert.equal(app.els['record-count'].textContent,'1건','B unchanged after A assignment');
+  assert.doesNotMatch(app.els['report'].textContent,/미분류 가상 기록/,'new assigned A record never appears for B');
+  assert.equal(app.els['assignment-consent'].checked,false,'switch resets consent');
+  click(app,'choose-a');
+  click(app,'assignment-undo');
+  assert.equal(app.els['record-count'].textContent,'3건','undo restores A7 to previous count');
+  assert.equal(app.els['unassigned-count'].textContent,'1건','undo restores exact unassigned item');
+  assert.equal(app.els['assignment-undo'].hidden,true,'undo is one-use');
+  assert.doesNotMatch(app.els['report'].textContent,/미분류 가상 기록/,'undo removes previously assigned record from summary');
+  app.els['assignment-consent'].checked=true;
+  click(app,'assignment-reset');
+  assert.equal(app.els['assignment-consent'].checked,false,'reset cancels pending consent');
+  assert.equal(app.els['record-count'].textContent,'3건','reset restores demo state');
+  assert.equal(app.els['unassigned-count'].textContent,'1건','reset keeps unassigned sample');
+  assert.equal(app.els['assignment-undo'].hidden,true);
+  console.log('PASS: synthetic A/B UI, 7/30 day isolation, explicit assignment/confirm cancel/undo/reset, no cross-person copying');
 })().catch(e=>{console.error(e);process.exitCode=1});
