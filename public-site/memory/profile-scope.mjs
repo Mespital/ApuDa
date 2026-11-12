@@ -118,3 +118,73 @@ export function planUnassignedLegacy(source,backup) {
     sourceCount:backup.entries.length,possibleAdd:candidates.length,
     exceedsCurrentCap:exceeds,conflictIds,ready:!exceeds&&conflictIds.length===0,candidates};
 }
+
+/**
+ * Phase 13: list only legacy/unassigned records. This never guesses a patient
+ * and never reads localStorage. Returns copies, not source references.
+ */
+export function listUnassignedRecords(source) {
+  validateVault(source);
+  return clone(source.unassigned);
+}
+/**
+ * User must review the EXACT unassigned snapshot and explicitly confirm a
+ * target profile. No auto-assignment, persistence, or background migration.
+ */
+export function assignReviewedUnassignedRecord(source, profileId, recordId, expectedOriginal, confirmed=false) {
+  validateVault(source);
+  profileId=assertProfile(source,profileId);
+  if(confirmed!==true)throw Error('돌봄 대상자 배정에 대한 명시적 확인이 필요합니다.');
+  validateRecord(expectedOriginal,false);
+  if(typeof recordId!=='string'||expectedOriginal.id!==recordId)throw Error('선택한 기록과 확인한 원본이 일치하지 않습니다.');
+  const index=source.unassigned.findIndex(r=>r.id===recordId);
+  if(index<0)throw Error('미분류 기록이 없거나 이미 다른 대상으로 배정되었습니다.');
+  const current=source.unassigned[index];
+  if(JSON.stringify(current)!==JSON.stringify(expectedOriginal))
+    throw Error('미분류 기록이 확인 이후 변경되었습니다. 배정을 중단합니다.');
+  if(source.records.some(r=>r.id===recordId))throw Error('이미 분류된 기록 ID가 있습니다.');
+  const result=clone(source);
+  result.unassigned.splice(index,1);
+  const scoped={...clone(current),profileId};
+  result.records.push(scoped);
+  validateVault(result);
+  return {
+    vault:result,
+    undoToken:{
+      kind:'assign-unassigned-v1',
+      recordId,
+      profileId,
+      originalIndex:index,
+      original:clone(current),
+      assigned:clone(scoped)
+    }
+  };
+}
+/**
+ * In-memory last-action Undo. If an assigned record was edited or moved after
+ * assignment, refuse to silently overwrite those changes.
+ */
+export function undoReviewedAssignment(source, token) {
+  validateVault(source);
+  if(!isPlain(token)||token.kind!=='assign-unassigned-v1'
+     ||typeof token.recordId!=='string'
+     ||!Number.isInteger(token.originalIndex)||token.originalIndex<0
+     ||token.originalIndex>source.unassigned.length)
+    throw Error('되돌리기 정보가 유효하지 않습니다.');
+  const pid=assertProfile(source,token.profileId);
+  validateRecord(token.original,false);
+  validateRecord(token.assigned,true);
+  if(token.recordId!==token.original.id||token.recordId!==token.assigned.id
+     ||token.assigned.profileId!==pid)
+    throw Error('되돌릴 대상자·기록 ID가 일치하지 않습니다.');
+  const scoped=source.records.find(r=>r.id===token.recordId);
+  if(!scoped || scoped.profileId!==pid ||
+     JSON.stringify(scoped)!==JSON.stringify(token.assigned))
+    throw Error('배정 이후 기록이 변경되어 안전하게 되돌릴 수 없습니다.');
+  if(source.unassigned.some(r=>r.id===token.recordId))throw Error('미분류 목록에 같은 기록 ID가 있습니다.');
+  const result=clone(source);
+  result.records=result.records.filter(r=>r.id!==token.recordId);
+  result.unassigned.splice(token.originalIndex,0,clone(token.original));
+  validateVault(result);
+  return result;
+}
