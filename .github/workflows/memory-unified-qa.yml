@@ -1,0 +1,32 @@
+name: ApuDa Memory Unified App QA
+on:
+  push:
+    branches:
+      - feat/apuda-memory-p0-20261110
+    paths:
+      - "public-site/memory/app/**"
+      - "tests/memory/test_complete_app_*"
+      - ".github/workflows/memory-unified-qa.yml"
+  pull_request:
+    paths:
+      - "public-site/memory/app/**"
+      - "tests/memory/test_complete_app_*"
+      - ".github/workflows/memory-unified-qa.yml"
+permissions:
+  contents: read
+jobs:
+  node-qa:
+    name: Dementia integrated app static + real WebCrypto tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Verify app UI and separation from legacy data
+        run: node tests/memory/test_complete_app_static.cjs
+      - name: Run encrypted IndexedDB vault integration regression
+        run: node tests/memory/test_complete_app_vault.mjs
