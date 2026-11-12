@@ -5,7 +5,7 @@ import {
  hasVault,createVault,unlockVault,commitVault,encryptedBackup,formatSummaryText
 } from '../../public-site/memory/app/vault.mjs';
 
-globalThis.crypto=webcrypto;
+Object.defineProperty(globalThis,'crypto',{value:webcrypto,configurable:true,writable:true});
 globalThis.indexedDB=queuedFakeIDB();
 
 function queuedFakeIDB(){
