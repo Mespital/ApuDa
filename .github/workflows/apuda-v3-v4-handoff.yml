@@ -7,6 +7,9 @@ on:
       - 'public-site/note-v4/v3-v4-*.html'
       - 'public-site/note-v4/v4-migration-rehearsal.js'
       - 'tools/tests/apuda-note-v3-v4-handoff-browser.py'
+      - 'tools/tests/apuda-note-v3-v4-integration-browser.py'
+      - 'public-site/note/index.html'
+      - 'public-site/note/note-app.js'
       - '.github/workflows/apuda-v3-v4-handoff.yml'
 permissions:
   contents: read
@@ -29,3 +32,5 @@ jobs:
           python -m playwright install --with-deps chromium
       - name: Verify atomic shadow handoff with synthetic V3 record
         run: python tools/tests/apuda-note-v3-v4-handoff-browser.py
+      - name: Verify merged V3 and V4 share no data mutations
+        run: python tools/tests/apuda-note-v3-v4-integration-browser.py
