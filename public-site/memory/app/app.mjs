@@ -281,6 +281,75 @@ $('backupButton').addEventListener('click',async()=>{
  }catch(error){setStatus('backupStatus',error.message,true)}
  finally{buttonBusy(false)}
 });
+// Optional dementia-service hub: public information can be viewed without unlocking.
+// Checklists are temporary. They are NEVER silently imported into encrypted records.
+for(const id of ['servicesNav','servicesShortcut']){
+ $(id).addEventListener('click',()=>{
+  $('allServices').open=true;
+ });
+}
+function checkedServices(group){
+ return [...$(group).querySelectorAll('input[type="checkbox"]:checked')].map(node=>node.value);
+}
+function moveToDiary(label,items){
+ if(!items.length){
+  setStatus('serviceStatus','옮길 내용을 먼저 선택해 주세요.',true);
+  return;
+ }
+ if(!session||!profileId){
+  setStatus('serviceStatus','일지에 남기려면 먼저 위에서 가족 보관함을 열어 주세요.',true);
+  $('setup').scrollIntoView({block:'start'});
+  return;
+ }
+ if(editingId){
+  if(!confirm('현재 다른 기록을 수정 중입니다. 수정을 취소하고 새로운 일지를 시작할까요?'))return;
+  resetDiary();
+ }
+ const memo='['+label+']\n'+items.map(x=>'• '+x).join('\n');
+ const existing=$('entryMemo').value.trim();
+ const appended=existing?existing+'\n\n'+memo:memo;
+ if(appended.length>1500){
+  setStatus('serviceStatus','메모가 1,500자를 초과합니다. 일지를 먼저 저장하거나 내용을 줄여 주세요.',true);
+  return;
+ }
+ $('entryMemo').value=appended;
+ switchView('today',false);
+ $('viewToday').scrollIntoView({block:'start'});
+ $('titleToday').focus();
+ setStatus('saveStatus','선택한 내용을 일지에 옮겼습니다. 아래 ‘기록 저장하기’를 눌러야 저장됩니다.');
+ setStatus('serviceStatus','일지 입력란으로 옮겼습니다. 아직 저장되지는 않았습니다.');
+}
+$('memoryReview').addEventListener('click',()=>{
+ const items=checkedServices('memoryChecks');
+ show('memoryResult',true);
+ $('memoryResult').textContent=items.length?
+  '관찰된 변화 '+items.length+'개를 선택했습니다. 개수는 치매 위험 점수가 아닙니다.\n' +
+  '변화가 언제부터, 얼마나 자주 일어났는지 기록하여 의료진이나 치매안심센터에 상담하세요.':
+  '선택한 항목이 없더라도 치매를 배제할 수 없습니다. 생활에 영향을 주는 변화가 있다면 상담하세요.';
+ setStatus('serviceStatus','관찰 안내를 확인했습니다.');
+});
+$('memoryToDiary').addEventListener('click',()=>{
+ moveToDiary('기억·행동 변화 관찰',checkedServices('memoryChecks'));
+});
+$('routineToDiary').addEventListener('click',()=>{
+ moveToDiary('하루 생활 점검',checkedServices('routineChecks'));
+});
+$('safetyToDiary').addEventListener('click',()=>{
+ moveToDiary('생활·실종 예방 안전 점검',checkedServices('safetyChecks'));
+});
+const activities={
+ album:{label:'가족 사진 보며 이야기하기',guide:'사진을 한 장 골라 “이때 어디에 있었나요?”처럼 편안하게 이야기해 보세요. 답을 맞히도록 압박하지 않습니다.'},
+ music:{label:'좋아하는 음악 듣기',guide:'익숙하고 편안한 음악을 함께 듣거나 가볍게 흥얼거려 보세요. 불편해하면 즉시 멈춥니다.'},
+ objects:{label:'익숙한 물건 이야기하기',guide:'평소 쓰던 물건 한 가지를 함께 보고 사용했던 추억을 편안하게 이야기해 보세요.'},
+ walk:{label:'안전하게 짧은 산책하기',guide:'현재 몸 상태와 의료진 안내를 확인하고, 넘어짐·길 잃음 위험이 없도록 동행하며 짧게 걸어 보세요.'}
+};
+$('activitySelect').addEventListener('change',()=>{
+ $('activityGuide').textContent=activities[$('activitySelect').value].guide;
+});
+$('activityToDiary').addEventListener('click',()=>{
+ const activity=activities[$('activitySelect').value];
+ moveToDiary('인지·대화 활동',[activity.label+' (함께 해볼 활동)']);
+});
 window.addEventListener('pagehide',()=>{
  clearDownload();
  if(session)lock('앱을 나가 보관함을 잠갔습니다.');
