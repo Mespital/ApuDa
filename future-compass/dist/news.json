@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-11-12T21:22:38.681460+00:00",
-  "last_success_at": "2026-11-12T21:22:38.681460+00:00",
+  "checked_at": "2026-11-13T02:28:50.081596+00:00",
+  "last_success_at": "2026-11-13T02:28:50.081596+00:00",
   "failures": [],
   "articles": [
     {
@@ -14,6 +14,14 @@
     {
       "title": "How Amplitude ships product improvements in 1–2 days with OpenAI",
       "url": "https://openai.com/index/amplitude",
+      "source": "OpenAI",
+      "published_at": "2026-11-12T20:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "How Amplitude ships product improvements in 1–2 days with OpenAI",
+      "url": "https://openai.com/business/customer-stories/amplitude",
       "source": "OpenAI",
       "published_at": "2026-11-12T20:00:00+00:00",
       "category": "AI·컴퓨팅",
@@ -80,6 +88,14 @@
       "url": "https://blog.google/innovation-and-ai/technology/xr-ar/google-intelligent-eyewear-collections-pre-order/",
       "source": "Google",
       "published_at": "2026-11-12T14:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Gondola doubles revenue as its team builds more with Codex",
+      "url": "https://openai.com/business/customer-stories/gondola",
+      "source": "OpenAI",
+      "published_at": "2026-11-12T12:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
     },
@@ -226,28 +242,12 @@
       "published_at": "2026-11-10T10:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Closing the AI guidance gap in education",
-      "url": "https://openai.com/index/closing-ai-guidance-gap-education",
-      "source": "OpenAI",
-      "published_at": "2026-11-10T09:00:00+00:00",
-      "category": "교육·생활",
-      "domain": "education"
-    },
-    {
-      "title": "Singapore Airlines elevates travel & work with OpenAI technology",
-      "url": "https://openai.com/index/singapore-airlines-travel-work",
-      "source": "OpenAI",
-      "published_at": "2026-11-10T08:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-11-12T21:22:38.681460+00:00",
+    "checked_at": "2026-11-13T02:28:50.081596+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -396,7 +396,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-11-12T21:22:38.681460+00:00",
+    "last_success_at": "2026-11-13T02:28:50.081596+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
