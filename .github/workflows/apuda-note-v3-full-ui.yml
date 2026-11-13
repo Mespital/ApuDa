@@ -1,0 +1,41 @@
+name: ApuDa V3 synthetic two-tab full UI
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'public-site/note/**'
+      - 'tools/tests/apuda-note-v3-full-ui-e2e.py'
+      - 'tools/tests/apuda-note-v3-async-port-browser.py'
+      - 'tools/tests/apuda-note-v3-mutations-browser.py'
+      - 'tools/tests/apuda-note-v3-chat-ack-audit.cjs'
+      - 'tools/tests/apuda-note-v3-chat-browser.py'
+      - '.github/workflows/apuda-note-v3-full-ui.yml'
+permissions:
+  contents: read
+jobs:
+  v3-two-tab:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out PR code without credentials
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install isolated browser test dependencies
+        run: |
+          python -m pip install --disable-pip-version-check playwright==1.56.0
+          python -m playwright install --with-deps chromium
+      - name: Test real V3 UI with two synthetic tabs
+        run: python tools/tests/apuda-note-v3-full-ui-e2e.py
+      - name: Test V3 async write port with synthetic data
+        run: python tools/tests/apuda-note-v3-async-port-browser.py
+      - name: Test V3 edit and delete buttons with synthetic data
+        run: python tools/tests/apuda-note-v3-mutations-browser.py
+      - name: Verify ordered chat acknowledgments in actual V3 UI
+        run: python tools/tests/apuda-note-v3-chat-browser.py
+      - name: Audit chat acknowledgement call paths
+        run: node tools/tests/apuda-note-v3-chat-ack-audit.cjs
