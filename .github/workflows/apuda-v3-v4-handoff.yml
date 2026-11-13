@@ -1,0 +1,31 @@
+name: ApuDa V3 V4 synthetic atomic handoff
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'public-site/note-v4/v3-v4-*.js'
+      - 'public-site/note-v4/v3-v4-*.html'
+      - 'public-site/note-v4/v4-migration-rehearsal.js'
+      - 'tools/tests/apuda-note-v3-v4-handoff-browser.py'
+      - '.github/workflows/apuda-v3-v4-handoff.yml'
+permissions:
+  contents: read
+jobs:
+  synthetic-handoff:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out PR code without credentials
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install isolated Playwright Chromium
+        run: |
+          python -m pip install --disable-pip-version-check playwright==1.56.0
+          python -m playwright install --with-deps chromium
+      - name: Verify atomic shadow handoff with synthetic V3 record
+        run: python tools/tests/apuda-note-v3-v4-handoff-browser.py
