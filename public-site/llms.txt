@@ -1,0 +1,92 @@
+# 아프다 ApuDa
+
+> 암 환자와 보호자를 위한 무료 환자교육 정보 사이트입니다. 암종별 「암 진단 후 첫 30일」 안내서 30권과 암종별 FAQ 3,000문항을 한국어로 제공합니다.
+
+이 사이트의 의학 정보는 출처를 첨부한 환자교육용 참고정보입니다. 문항별 전문의 검토는 완료되지 않았으며, 진단·처방·개인별 치료 결정을 대신하지 않습니다. 국내 허가·급여 기준은 따로 확인해야 합니다. 인용할 때는 각 페이지에 표시된 "마지막 자료 업데이트" 날짜와 참고 자료 링크를 함께 확인해 주세요.
+
+## 안내
+- [자료 출처·검토 범위](https://apuda.app/library/review/)
+- [ApuDa 소개](https://apuda.app/about/)
+- [응급 상황 안내](https://apuda.app/emergency/)
+
+## 암종별 FAQ (각 100문항)
+- [급성림프모구백혈병 FAQ](https://apuda.app/library/faq/all/): 자료 업데이트 2026-11-07
+- [급성골수성백혈병 FAQ](https://apuda.app/library/faq/aml/): 자료 업데이트 2026-11-08
+- [담도암·담낭암 FAQ](https://apuda.app/library/faq/biliary/): 자료 업데이트 2026-11-06
+- [방광암 FAQ](https://apuda.app/library/faq/bladder/): 자료 업데이트 2026-11-07
+- [성인 악성 뇌종양 FAQ](https://apuda.app/library/faq/brain/): 자료 업데이트 2026-11-08
+- [유방암 FAQ](https://apuda.app/library/faq/breast/): 자료 업데이트 2026-11-06
+- [자궁경부암 FAQ](https://apuda.app/library/faq/cervical/): 자료 업데이트 2026-11-06
+- [만성골수성백혈병 FAQ](https://apuda.app/library/faq/cml/): 자료 업데이트 2026-11-06
+- [대장암 FAQ](https://apuda.app/library/faq/colorectal/): 자료 업데이트 2026-11-06
+- [원발불명암 FAQ](https://apuda.app/library/faq/cup/): 자료 업데이트 2026-11-07
+- [자궁내막암 FAQ](https://apuda.app/library/faq/endometrial/): 자료 업데이트 2026-11-08
+- [식도암 FAQ](https://apuda.app/library/faq/esophageal/): 자료 업데이트 2026-11-08
+- [호지킨림프종 FAQ](https://apuda.app/library/faq/hodgkin/): 자료 업데이트 2026-11-08
+- [신장암 FAQ](https://apuda.app/library/faq/kidney/): 자료 업데이트 2026-11-06
+- [후두암 FAQ](https://apuda.app/library/faq/laryngeal/): 자료 업데이트 2026-11-08
+- [간암 FAQ](https://apuda.app/library/faq/liver/): 자료 업데이트 2026-11-06
+- [폐암 FAQ](https://apuda.app/library/faq/lung/): 자료 업데이트 2026-11-06
+- [림프종 FAQ](https://apuda.app/library/faq/lymphoma/): 자료 업데이트 2026-11-06
+- [악성 흑색종 FAQ](https://apuda.app/library/faq/melanoma/): 자료 업데이트 2026-11-06
+- [다발성골수종 FAQ](https://apuda.app/library/faq/myeloma/): 자료 업데이트 2026-11-08
+- [비인두암 FAQ](https://apuda.app/library/faq/nasopharyngeal/): 자료 업데이트 2026-11-06
+- [구강암 FAQ](https://apuda.app/library/faq/oral/): 자료 업데이트 2026-11-06
+- [난소암 FAQ](https://apuda.app/library/faq/ovarian/): 자료 업데이트 2026-11-08
+- [췌장암 FAQ](https://apuda.app/library/faq/pancreas/): 자료 업데이트 2026-11-06
+- [원발성 중추신경계 림프종 FAQ](https://apuda.app/library/faq/pcnsl/): 자료 업데이트 2026-11-06
+- [전립선암 FAQ](https://apuda.app/library/faq/prostate/): 자료 업데이트 2026-11-06
+- [연부조직육종 FAQ](https://apuda.app/library/faq/sarcoma/): 자료 업데이트 2026-11-08
+- [위암 FAQ](https://apuda.app/library/faq/stomach/): 자료 업데이트 2026-11-06
+- [고환암 FAQ](https://apuda.app/library/faq/testicular/): 자료 업데이트 2026-11-07
+- [갑상선암 FAQ](https://apuda.app/library/faq/thyroid/): 자료 업데이트 2026-11-06
+
+## FAQ 주제별 묶음
+- [방광암 혈뇨·방광내시경·진단 검사](https://apuda.app/library/faq/bladder/hematuria-tests/): 8문항
+- [방광암 병기·등급·병리 결과](https://apuda.app/library/faq/bladder/stage-pathology/): 13문항
+- [방광암 BCG 방광 내 치료](https://apuda.app/library/faq/bladder/bcg/): 9문항
+- [방광암 방광절제술·수술 전후 준비](https://apuda.app/library/faq/bladder/cystectomy/): 15문항
+- [방광암 요루·신방광·요로전환 관리](https://apuda.app/library/faq/bladder/urinary-diversion/): 14문항
+- [방광암 방광보존·방사선 치료](https://apuda.app/library/faq/bladder/bladder-preservation/): 9문항
+- [방광암 진행성 단계 검사·면역·표적치료](https://apuda.app/library/faq/bladder/advanced-treatment/): 13문항
+- [방광암 치료 중 바로 알릴 증상·부작용](https://apuda.app/library/faq/bladder/warning-signs/): 6문항
+- [방광암 추적검사·생활·성생활·생식 상담](https://apuda.app/library/faq/bladder/follow-up-life/): 13문항
+
+## 암 진단 후 첫 30일 안내서
+- [안내서 30권 목록](https://apuda.app/library/first30/)
+- [유방암 진단 후 첫 30일](https://apuda.app/library/first30/books/01.html)
+- [폐암 진단 후 첫 30일](https://apuda.app/library/first30/books/02.html)
+- [위암 진단 후 첫 30일](https://apuda.app/library/first30/books/03.html)
+- [대장암 진단 후 첫 30일](https://apuda.app/library/first30/books/04.html)
+- [갑상선암 진단 후 첫 30일](https://apuda.app/library/first30/books/05.html)
+- [신장암 진단 후 첫 30일](https://apuda.app/library/first30/books/06.html)
+- [전립선암 진단 후 첫 30일](https://apuda.app/library/first30/books/07.html)
+- [췌장암 진단 후 첫 30일](https://apuda.app/library/first30/books/08.html)
+- [담도암 진단 후 첫 30일](https://apuda.app/library/first30/books/09.html)
+- [간암 진단 후 첫 30일](https://apuda.app/library/first30/books/10.html)
+- [림프종 진단 후 첫 30일](https://apuda.app/library/first30/books/11.html)
+- [자궁경부암 진단 후 첫 30일](https://apuda.app/library/first30/books/12.html)
+- [난소암 진단 후 첫 30일](https://apuda.app/library/first30/books/13.html)
+- [자궁내막암 진단 후 첫 30일](https://apuda.app/library/first30/books/14.html)
+- [식도암 진단 후 첫 30일](https://apuda.app/library/first30/books/15.html)
+- [방광암 진단 후 첫 30일](https://apuda.app/library/first30/books/16.html)
+- [고환암 진단 후 첫 30일](https://apuda.app/library/first30/books/17.html)
+- [구강암 진단 후 첫 30일](https://apuda.app/library/first30/books/18.html)
+- [후두암 진단 후 첫 30일](https://apuda.app/library/first30/books/19.html)
+- [비인두암 진단 후 첫 30일](https://apuda.app/library/first30/books/20.html)
+- [악성 흑색종 진단 후 첫 30일](https://apuda.app/library/first30/books/21.html)
+- [연부조직육종 진단 후 첫 30일](https://apuda.app/library/first30/books/22.html)
+- [성인 악성 뇌종양 진단 후 첫 30일](https://apuda.app/library/first30/books/23.html)
+- [다발성골수종 진단 후 첫 30일](https://apuda.app/library/first30/books/24.html)
+- [급성골수성백혈병 진단 후 첫 30일](https://apuda.app/library/first30/books/25.html)
+- [급성림프모구백혈병 진단 후 첫 30일](https://apuda.app/library/first30/books/26.html)
+- [만성골수성백혈병 진단 후 첫 30일](https://apuda.app/library/first30/books/27.html)
+- [호지킨림프종 진단 후 첫 30일](https://apuda.app/library/first30/books/28.html)
+- [원발성 중추신경계 림프종 진단 후 첫 30일](https://apuda.app/library/first30/books/29.html)
+- [원발불명암 진단 후 첫 30일](https://apuda.app/library/first30/books/30.html)
+
+## Optional
+- [맞춤 건강검진 선택 도구](https://apuda.app/checkup/)
+- [암환자 지원 정보](https://apuda.app/support/)
+- [영상과 암종별 안내](https://apuda.app/watch/)
+- [아프다 카페·커뮤니티](https://apuda.app/community/)

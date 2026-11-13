@@ -30,6 +30,15 @@ const lastmods = new Map([...sitemap.matchAll(/<loc>([^<]+)<\/loc><lastmod>([^<]
 assert([...sitemap.matchAll(/<lastmod>/g)].length === lastmods.size, 'Malformed sitemap lastmod');
 assert([...lastmods.keys()].every((url) => /^https:\/\/apuda\.app\/library\/faq\/[a-z]+\/([a-z0-9-]+\/)?$/.test(url)),
   'Unverified sitemap lastmod must not be invented outside FAQ pages');
+// llms.txt is exploratory metadata: it may only point at sitemap URLs and must not
+// overstate the medical review status.
+const llms = await read('llms.txt');
+const llmsUrls = [...llms.matchAll(/\]\((https:\/\/[^)\s]+)\)/g)].map((match) => match[1]);
+assert(llms.startsWith('# 아프다 ApuDa\n') && llmsUrls.length >= 60, 'llms.txt missing or incomplete');
+assert(llmsUrls.every((url) => urls.includes(url)), 'llms.txt lists a URL that is not in the sitemap');
+assert(new Set(llmsUrls).size === llmsUrls.length, 'llms.txt has duplicate URLs');
+assert(llms.includes('전문의 검토는 완료되지 않았으며') && llms.includes('진단·처방·개인별 치료 결정을 대신하지 않습니다') &&
+  !/전문의 감수 완료|검증된 의학 정보/.test(llms), 'llms.txt must state the real review status');
 const noteHtml = await read('note/index.html');
 const noteGuideHtml = await read('note-guide/index.html');
 const homepage = await read('index.html');
