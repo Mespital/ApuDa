@@ -33,3 +33,18 @@
 - 최신 main 변경 28개 파일을 다른 코드 경로와 겹침 없이 통합 브랜치에 반영했고, 운영 main SHA 4bd7a09a1134af88ca82863d41a5d18e9fd1f2af 는 변경하지 않았다.
 
 **최종 상태: 통합 Draft PR #304 유지 / P0 미해결 / 운영 main 병합 및 배포 금지.**
+## 2026-11-14 KST — 합성 IndexedDB 부팅 복구·복원·삭제 안전성 추가
+
+본 개발 브리지는 실제 V3 index.html에서 로드하지 않는다. 실사용 데이터 자동 이동 기능도 없다.
+
+- legacyBaseline: 최초 합성 건강기록·대화 원문을 IndexedDB의 불변 기준값으로 보존하고, 다음 저장에서도 그대로 유지한다. 전체 삭제 tombstone에서는 이 기준값까지 제거한다.
+- install(db): 새로고침 후 기존 IndexedDB를 읽고 현재의 구형 localStorage 원문과 최초 legacyBaseline이 정확히 일치할 때만 IDB 원문을 V3 화면/이전 대화에 재구성한다. 다르면 쓰기를 멈추고 오류를 반환한다.
+- 저장 요청마다 localStorage 원문의 변화를 확인한다. 다만 구형 탭이 확인 직후에 쓰는 TOCTOU 경합까지 해결되는 것은 아니다.
+- restoreSynthetic / recoverSynthetic / deleteSynthetic: 개발 브리지의 합성 컨트롤러에서만 동작한다. 명시적 승인과 독립 백업 확인 플래그가 부족하면 거부한다. 해당 플래그는 **진짜 독립 백업의 존재를 검증하지 않는다**.
+- 삭제는 note/chat/legacyBaseline을 null로 만들고 revision을 증가시키는 tombstone을 사용한다. 새로고침 후에도 legacy 원문을 자동으로 살리지 않고 화면을 비운 상태로 쓰기를 동결한다.
+- 실제 V3의 resetAll / importData / recoverBeforeRestore는 합성 브리지 활성 시험에서만 차단한다. 나머지 우회 경로·Service Worker·Drive 처리 완료를 뜻하지 않는다.
+
+### 새 Chrome 테스트
+tools/tests/apuda-note-v3-live-bridge-browser.py에 새로고침 후 IDB 부팅 재구성, 원문 보존, 승인 없는 복원/삭제 거부, 복원 후 되돌리기, 삭제 표식 후 새로고침, 구형 저장소 변경으로 인한 재접속 실패를 추가했다. 실제 GitHub Actions 실행 결과 확인 전에는 PASS라고 표시하지 않는다.
+
+**P0 OPEN: 운영용 이전/부팅/복원/삭제 배포 불가. PR #304 Draft 유지, main 병합·운영 배포 금지. 실제 환자/학생/Drive 기록 접근 없음.**

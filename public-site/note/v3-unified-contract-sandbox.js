@@ -81,8 +81,15 @@
           JSON.stringify(prior.checkpoint)!==JSON.stringify(checkpoint))){
           outcome={status:'conflict',revision:prevRevision};return;
         }
+        // Keep the ORIGINAL synthetic legacy source as a stable migration
+        // fence across reloads. Never replace it with later IDB revisions.
+        // Tombstone intentionally wipes all source content including baseline.
+        var baseline=kind==='delete'?null:(prior?prior.legacyBaseline||null:
+          kind==='bundle-save'&&prevRevision===0?
+            {note:next.note,chat:next.chat}:null);
         var nextRow={key:KEY,revision:prevRevision+1,note:next.note,chat:next.chat,
           deleted:kind==='delete',checkpoint:kind==='restore'?checkpoint:null,
+          legacyBaseline:baseline,
           backupState:'frozen',lastMutation:kind,
           kind:'apuda.synthetic.v3.unified'};
         var put=tx.objectStore(STORE).put(nextRow);

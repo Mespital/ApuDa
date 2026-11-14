@@ -21,6 +21,41 @@ function assertTestEnvironment(db){
     typeof global.save!=='function'||typeof global.commitChatRaw!=='function')
     throw new Error('v3-not-ready');
 }
+function hydrateSynthetic(snapshot){
+  if(!snapshot||!Number.isSafeInteger(snapshot.revision)||snapshot.revision<1)
+    throw new Error('synthetic-snapshot-required');
+  // A tombstone must NEVER reload the legacy localStorage record.
+  if(snapshot.deleted){
+    global.state=global.clone(global.defaultState);
+    global.chat=[];
+    global.noteWritesPaused=true;global.chatWritesPaused=true;
+  }else{
+    if(typeof snapshot.note!=='string'||typeof snapshot.chat!=='string')
+      throw new Error('synthetic-snapshot-raw-required');
+    const parsed=global.ApuDaNoteStorage.unpack(snapshot.note);
+    const c=JSON.parse(snapshot.chat);
+    if(!Array.isArray(c))throw new Error('invalid-synthetic-chat');
+    global.state=Object.assign(global.clone(global.defaultState),parsed);
+    global.state.profile=Object.assign(global.clone(global.defaultState.profile),parsed.profile||{});
+    global.chat=c;
+  }
+  if(typeof global.renderAll==='function')global.renderAll();
+  const thread=global.document&&global.document.querySelector('#thread');
+  if(thread){
+    thread.replaceChildren();
+    global.chat.slice(-30).forEach(function(message){
+      const el=global.addMsg(message.w,message.h,message.c,false);
+      el.querySelectorAll('.undo,.qr button').forEach(function(button){button.remove();});
+    });
+    if(global.chat.length){
+      const separator=global.document.createElement('div');
+      separator.className='small muted';separator.style.textAlign='center';
+      separator.textContent='— 이전 대화 —';thread.appendChild(separator);
+    }
+    if(typeof global.greet==='function')global.greet();
+  }
+}
+
 async function install(db){
   assertTestEnvironment(db);
   if(global.__APUDA_V3_SYNTHETIC_BRIDGE_ACTIVE__)throw new Error('already-installed');
@@ -29,13 +64,32 @@ async function install(db){
   const legacyNote=global.localStorage.getItem(NOTE);
   const legacyChat=global.localStorage.getItem(CHAT);
   if(typeof legacyNote!=='string'||typeof legacyChat!=='string')throw new Error('synthetic-seed-missing');
+  const engine=global.ApuDaV3UnifiedContractSandbox;
+  let legacyDrift=false,attempts=0;
   if(snapshot.revision===0){
     const seeded=await port.saveBundle(legacyNote,legacyChat);
     if(!seeded||seeded.status!=='saved')throw new Error('synthetic-stage-rejected');
-  }else if(snapshot.note!==legacyNote||snapshot.chat!==legacyChat){
-    throw new Error('synthetic-baseline-drift');
+    const source=await engine.read(db);
+    if(!source||!source.legacyBaseline||source.legacyBaseline.note!==legacyNote||
+      source.legacyBaseline.chat!==legacyChat)throw new Error('synthetic-baseline-unavailable');
+  }else{
+    const source=await engine.read(db);
+    if(!source||source.revision!==snapshot.revision)throw new Error('synthetic-readback-mismatch');
+    if(!source.deleted&&(!source.legacyBaseline||
+      source.legacyBaseline.note!==legacyNote||source.legacyBaseline.chat!==legacyChat)){
+      // Never fall through to legacy localStorage writer after resume fails.
+      global.noteWritesPaused=true;global.chatWritesPaused=true;
+      if(typeof global.holdUnsaved==='function')
+        global.holdUnsaved('note',JSON.stringify(global.state),new Error('synthetic-baseline-drift'));
+      throw new Error('synthetic-baseline-drift');
+    }
+    hydrateSynthetic(snapshot);
   }
-  let legacyDrift=false,attempts=0;
+  if(global.localStorage.getItem(NOTE)!==legacyNote||
+     global.localStorage.getItem(CHAT)!==legacyChat){
+    global.noteWritesPaused=true;global.chatWritesPaused=true;
+    throw new Error('synthetic-baseline-drift-during-install');
+  }
   function protect(kind,raw,reason){
     legacyDrift=true;
     global.noteWritesPaused=true;global.chatWritesPaused=true;
@@ -56,7 +110,12 @@ async function install(db){
   global.addEventListener('storage',onStorage,true);
   function safeSnapshot(){
     const value=port.view();
-    if(value.paused||legacyDrift||global.noteWritesPaused||global.chatWritesPaused)
+    if(global.localStorage.getItem(NOTE)!==legacyNote||
+       global.localStorage.getItem(CHAT)!==legacyChat){
+      protect('note',JSON.stringify(global.state),'legacy-localstorage-changed');
+      return null;
+    }
+    if(value.paused||value.deleted||legacyDrift||global.noteWritesPaused||global.chatWritesPaused)
       return null;
     return value;
   }
@@ -85,15 +144,32 @@ async function install(db){
     if(result.status!=='saved')return refuse('chat',raw,result.status);
     return result;
   };
-  // Prevent accidental use of the old direct storage deletion path during
-  // a synthetic bridge demonstration. Explicit user approval is NOT a
-  // substitute for the real future migration/backup gate.
-  if(typeof global.resetAll==='function')global.resetAll=function(){
-    throw new Error('synthetic-live-reset-forbidden');
-  };
+  // Synthetic explicit requests are NOT production UI controls and consent
+  // flags are not a verification of a real independent patient backup.
+  async function syntheticAction(kind,raw,confirm){
+    const snap=safeSnapshot();
+    if(!snap)return refuse('note',JSON.stringify(global.state),'write-paused');
+    let result;
+    if(kind==='restore')result=await port.restore(raw,confirm);
+    else if(kind==='recover')result=await port.recover(confirm);
+    else if(kind==='delete')result=await port.removeAll(confirm);
+    else throw new Error('unknown-synthetic-action');
+    if(result&&result.status==='saved')hydrateSynthetic(result);
+    return result;
+  }
+  // Disable all existing V3 legacy localStorage restore/delete entry points
+  // in this synthetic session, even if a UI button is accidentally pressed.
+  ['resetAll','importData','recoverBeforeRestore'].forEach(function(name){
+    if(typeof global[name]==='function')global[name]=function(){
+      throw new Error('synthetic-legacy-mutation-forbidden');
+    };
+  });
   global.__APUDA_V3_SYNTHETIC_BRIDGE_ACTIVE__=true;
   return Object.freeze({
     current:()=>port.view(),
+    restoreSynthetic:(raw,confirm)=>syntheticAction('restore',raw,confirm),
+    recoverSynthetic:(confirm)=>syntheticAction('recover',null,confirm),
+    deleteSynthetic:(confirm)=>syntheticAction('delete',null,confirm),
     diagnostics:()=>Object.freeze({syntheticOnly:true,legacyDrift,
       attemptedWrites:attempts,readyForProduction:false,
       backupUploadAllowed:false,backupPruneAllowed:false}),

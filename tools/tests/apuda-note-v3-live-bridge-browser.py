@@ -177,7 +177,104 @@ try:
     verify('chat save indicators show acknowledged commits only',
            ch.locator('#thread .msg[data-chat-save="saved"]').count()==2)
     verify('chat scenario has no uncaught page errors',not errChat)
+    # Reload the REAL V3 page. The legacy V3 loader initially sees the old
+    # localStorage seed; test-only install must then replace state and chat
+    # with the confirmed IDB snapshot, not re-import the old seed.
+    original_chat_commit=crow['chat']
+    ch.reload(wait_until='domcontentloaded')
+    ch.wait_for_function("() => typeof window.commitChatRaw==='function'")
+    for module in MODULES:
+        ch.add_script_tag(url=origin+'/note/'+module)
+    resumed=attach(ch,chatname)
+    verify('reload resumes existing IDB revision instead of reseeding',resumed['revision']==3)
+    verify('reload restores exact committed V3 chat JSON',ch.evaluate('JSON.stringify(chat)')==original_chat_commit)
+    verify('reload restores chat bubbles from IDB source',
+           ch.locator('#thread .msg').filter(has_text='가상 메시지 A').count()==1 and
+           ch.locator('#thread .msg').filter(has_text='가상 안내 B').count()==1)
+    verify('reload retains original V3 profile from IDB',ch.evaluate("state.profile.name")=='가상 원본')
+    verify('reload never overwrites legacy localStorage',local(ch)['note']==rawNote and local(ch)['chat']==rawChat)
+
+    # Explicit sandbox-only restore and recovery require an approval flag.
+    restored_note=json.loads(rawNote)
+    restored_note['profile']['name']='가상 복원된 기록'
+    restored_raw=json.dumps(restored_note,ensure_ascii=False,separators=(',',':'))
+    denied=ch.evaluate("""raw=>__bridge.restoreSynthetic(raw,{
+      userConfirmed:true,independentBackupVerified:false})""",restored_raw)
+    verify('restore without independent-backup flag refused',
+           denied['status']=='explicit-confirmation-and-backup-required' and row(ch)['revision']==3)
+    restored=ch.evaluate("""raw=>__bridge.restoreSynthetic(raw,{
+      userConfirmed:true,independentBackupVerified:true})""",restored_raw)
+    verify('sandbox restore confirms one atomic revision',
+           restored['status']=='saved' and restored['revision']==4 and row(ch)['note']==restored_raw)
+    verify('restore retains chat and updates visible profile',
+           row(ch)['chat']==original_chat_commit and ch.evaluate('state.profile.name')=='가상 복원된 기록')
+    denied_recover=ch.evaluate("() => __bridge.recoverSynthetic({userConfirmed:false})")
+    verify('undo restore without confirmation denied',
+           denied_recover['status']=='explicit-confirmation-required')
+    recovered=ch.evaluate("() => __bridge.recoverSynthetic({userConfirmed:true})")
+    verify('confirmed recovery restores previous note and chat together',
+           recovered['status']=='saved' and recovered['revision']==5 and
+           row(ch)['note']==rawNote and row(ch)['chat']==original_chat_commit)
+    verify('recovery updates visible V3 profile',
+           ch.evaluate('state.profile.name')=='가상 원본')
+    denied_delete=ch.evaluate("""() =>__bridge.deleteSynthetic({
+       userConfirmed:true,independentBackupVerified:false})""")
+    verify('sandbox deletion denied without backup flag',
+           denied_delete['status']=='explicit-confirmation-and-backup-required' and row(ch)['revision']==5)
+    deleted=ch.evaluate("""() =>__bridge.deleteSynthetic({
+       userConfirmed:true,independentBackupVerified:true})""")
+    deleted_row=row(ch)
+    verify('synthetic tombstone removes note/chat in one revision',
+           deleted['status']=='saved' and deleted['revision']==6 and
+           deleted_row['deleted'] is True and deleted_row['note'] is None and deleted_row['chat'] is None)
+    verify('tombstone removes original baseline raw too',
+           deleted_row['legacyBaseline'] is None)
+    verify('tombstone hides stale legacy profile and pauses all future writes',
+           ch.evaluate("state.profile.name==='' && chat.length===0 && noteWritesPaused && chatWritesPaused"))
+    verify('tombstone does not erase legacy source',
+           local(ch)['note']==rawNote and local(ch)['chat']==rawChat)
+    # A reload after tombstone must not resurrect the old legacy source.
+    ch.reload(wait_until='domcontentloaded')
+    ch.wait_for_function("() => typeof window.commitChatRaw==='function'")
+    for module in MODULES:
+        ch.add_script_tag(url=origin+'/note/'+module)
+    tomb=attach(ch,chatname)
+    verify('reboot after tombstone reads deleted state, not legacy record',
+           tomb['deleted'] is True and ch.evaluate("state.profile.name==='' && chat.length===0"))
+    verify('reboot after tombstone is read-only',
+           ch.evaluate("noteWritesPaused && chatWritesPaused"))
     verify('second synthetic IDB cleanup',cleanup(chatctx,[ch],chatname))
+
+    # A separate test origin explicitly simulates drift BEFORE a reload.
+    driftctx=context()
+    drift,errDrift=page(driftctx)
+    driftname='apuda-v3-synthetic-unified-drift-20261114'
+    attach(drift,driftname)
+    drift.evaluate("""() => {
+      const note=JSON.parse(localStorage.getItem('apuda_cancer_care_v1'));
+      note.profile.name='가상 구형 저장 변경';
+      localStorage.setItem('apuda_cancer_care_v1',JSON.stringify(note));
+    }""")
+    drift.reload(wait_until='domcontentloaded')
+    drift.wait_for_function("() => typeof window.commitChatRaw==='function'")
+    for module in MODULES:
+        drift.add_script_tag(url=origin+'/note/'+module)
+    refused=drift.evaluate("""async (name)=>{
+      window.__APUDA_V3_SYNTHETIC_BRIDGE_OPT_IN__=true;
+      window.__bridgeDbName=name;
+      window.__bridgeDb=await new Promise((resolve,reject)=>{
+        const r=indexedDB.open(name,1);
+        r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);
+      });
+      try{await ApuDaV3SyntheticLiveBridge.install(window.__bridgeDb);
+        return {blocked:false};}
+      catch(e){return {blocked:e.message==='synthetic-baseline-drift',
+        paused:noteWritesPaused && chatWritesPaused};}
+    }""",driftname)
+    verify('changed legacy source blocks IDB resume',refused['blocked'] and refused['paused'])
+    verify('legacy change never updates existing IDB revision',row(drift)['revision']==1)
+    verify('drift scenario has no uncaught page errors',not errDrift)
+    verify('third synthetic IDB cleanup',cleanup(driftctx,[drift],driftname))
     browser.close()
 finally:
  server.shutdown()
