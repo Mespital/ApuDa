@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'none'; font-src 'none'; object-src 'none'; form-action 'none'; base-uri 'none'">
+  <title>ApuDa | V4 복원 안전성 시험실 (가상 데이터)</title>
+  <link rel="stylesheet" href="extended-preview.css">
+  <link rel="stylesheet" href="rollback-lab.css">
+  <script defer src="../note/note-storage.js"></script>
+  <script defer src="v3-compat-audit.js"></script>
+  <script defer src="v3-lossless-stage.js"></script>
+  <script defer src="v4-extended-draft.js"></script>
+  <script defer src="v4-migration-rehearsal.js"></script>
+  <script defer src="v4-sandbox-checkpoint.js"></script>
+  <script defer src="rollback-lab-core.js"></script>
+  <script defer src="rollback-lab.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">본문 바로가기</a>
+  <header class="top"><div class="wrap brand"><span class="logo">ApuDa</span><span class="top-label">환자 수첩 V4 · 복구 시험용</span></div></header>
+  <main id="main" class="wrap">
+    <section class="hero" aria-labelledby="title">
+      <p class="eyebrow">가상 기록 100% · 실제 기록 0건</p>
+      <h1 id="title">복원 안전성 <span>시험실</span></h1>
+      <p class="lead">V3 기록을 V4 화면으로 옮기다 오류가 난 상황을 가정하고, <strong>원본을 지키는지</strong> 직접 확인하는 개발용 시뮬레이션입니다.</p>
+      <div class="alert" role="note"><strong>실제 환자 기록을 불러오거나 저장하지 않습니다.</strong> 시험 데이터는 코드에 고정된 가상 기록뿐입니다. 브라우저 저장소·로그인·파일·서버에는 접근하지 않습니다. 시험 성공이 실제 복원 안전성을 보증하지 않습니다.</div>
+    </section>
+    <section class="panel" aria-labelledby="scenario-title">
+      <h2 id="scenario-title">1. 어떤 상황을 시험할까요?</h2>
+      <label for="scenario" class="field-label">가상 장애 상황</label>
+      <select id="scenario" aria-describedby="scenario-help">
+        <option value="normal">정상 이전 후 원복</option>
+        <option value="interruption">저장 직후 중단</option>
+        <option value="candidate-failure">후보 저장 실패</option>
+        <option value="quota">저장 공간 부족</option>
+        <option value="concurrent">다른 탭에서 수정</option>
+        <option value="corruption">저장한 후보 손상</option>
+      </select>
+      <p id="scenario-help" class="hint field-hint">복구 정보(Checkpoint)를 먼저 쓰고, 오류가 나면 안전하게 중단하는지 검사합니다.</p>
+      <div class="actions"><button id="run" class="primary" type="button">가상 복구 시험 실행</button><button id="reset" type="button">결과 지우기</button></div>
+    </section>
+    <p id="status" class="status" role="status" aria-live="polite">상황을 선택하고 시험 실행 버튼을 눌러 주세요.</p>
+    <section id="result" class="panel" aria-labelledby="result-title" hidden>
+      <h2 id="result-title">2. 시험 결과</h2>
+      <p id="outcome" class="outcome"></p>
+      <p id="explanation"></p>
+      <h3>가상 작업 순서</h3><ol id="events" class="events"></ol>
+      <h3>원본 보존 점검</h3><dl id="indicators" class="indicators"></dl>
+      <p class="privacy">표시된 모든 결과는 브라우저 메모리에서만 실행한 가상 시험 결과입니다.</p>
+    </section>
+    <p class="hint"><a href="backup-preflight.html">복구 시작 전 백업 무결성 사전검사로 이동</a></p>
+  </main>
+  <footer class="wrap footer">ApuDa AI 기술 사전점검 · 환자/보호자 실제 시험과 전문의 승인 전 · 운영 전환 불가</footer>
+</body>
+</html>
