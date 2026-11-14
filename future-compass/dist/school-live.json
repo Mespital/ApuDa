@@ -1,8 +1,8 @@
 {
  "school": "서초고등학교",
- "updated": "2026-11-14T00:48:01.031Z",
+ "updated": "2026-11-14T08:46:53.538Z",
  "eval": {
-  "checked": "2026-11-14T00:48:02.279Z",
+  "checked": "2026-11-14T08:46:54.687Z",
   "fetched": "2026-11-09T05:33:07.361Z",
   "shl": "5c571812-c664-4495-be26-6b9fb997a233",
   "round": "(3차) 2026년 09월",
@@ -6953,7 +6953,7 @@
   "unreadable": []
  },
  "news": {
-  "checked": "2026-11-14T00:48:05.438Z",
+  "checked": "2026-11-14T08:46:57.041Z",
   "boards": [
    {
     "name": "공지사항",
@@ -6988,7 +6988,7 @@
   ]
  },
  "programs": {
-  "checked": "2026-11-14T00:48:16.187Z",
+  "checked": "2026-11-14T08:47:04.897Z",
   "items": [
    {
     "id": "P0656",
@@ -7011,6 +7011,17 @@
     "apply": "2026-11-10 (17:00) ~ 2026-12-07 (17:00)",
     "applyEnd": "2026-12-07",
     "url": "https://seochoedu.or.kr/user/prgrm/seocho/BD_selectPrgrm.do?q_prgrmId=P0688"
+   },
+   {
+    "id": "P0691",
+    "center": "서초",
+    "status": "모집예정",
+    "title": "[학부모] 자녀의 진학 포트폴리오 설계 〈2기〉 12월 과정",
+    "target": "초·중등 학부모",
+    "period": "2026-12-08 (10:00) ~ 2026-12-17 (12:00)",
+    "apply": "2026-12-01 (16:00) ~ 2026-12-07 (18:00)",
+    "applyEnd": "2026-12-07",
+    "url": "https://seochoedu.or.kr/user/prgrm/seocho/BD_selectPrgrm.do?q_prgrmId=P0691"
    },
    {
     "id": "P0681",
@@ -7080,7 +7091,7 @@
   "office": "https://gnscedu.sen.go.kr/CMS/about/about03/index.html"
  },
  "exams": {
-  "checked": "2026-11-14T00:48:12.086Z",
+  "checked": "2026-11-14T08:47:00.636Z",
   "mid": {
    "scope": {
     "id": "27502687",
