@@ -48,3 +48,14 @@
 tools/tests/apuda-note-v3-live-bridge-browser.py에 새로고침 후 IDB 부팅 재구성, 원문 보존, 승인 없는 복원/삭제 거부, 복원 후 되돌리기, 삭제 표식 후 새로고침, 구형 저장소 변경으로 인한 재접속 실패를 추가했다. 실제 GitHub Actions 실행 결과 확인 전에는 PASS라고 표시하지 않는다.
 
 **P0 OPEN: 운영용 이전/부팅/복원/삭제 배포 불가. PR #304 Draft 유지, main 병합·운영 배포 금지. 실제 환자/학생/Drive 기록 접근 없음.**
+
+## 2026-11-14 KST — GitHub Actions 실제 통과 결과
+
+- 테스트된 기능 커밋: `f8cf94c2a3a9066169c750b66fb6a992967470b5`.
+- V3 전체 화면 84/84, V3 합성 비동기 포트 21/21, 기록 수정·삭제 78/78, 대화 큐 37/37: https://github.com/Mespital/ApuDa/actions/runs/43538659023
+- V4 원자적 인계 15/15, V3-V4 원문 격리 15/15, note/chat 원자적 bundle 20/20, 새 실제 V3 화면 합성 IDB 부팅·복원 시험 **50/50**: https://github.com/Mespital/ApuDa/actions/runs/43538659044
+- 합계 **Chromium 320/320건 통과**, 별도 대화 큐 정적 검사 15건 통과. 모든 시험은 합성 데이터, loopback localhost와 새 격리 브라우저 컨텍스트로 실시했고 시험용 IndexedDB를 삭제했다.
+- 신규 추가 검증: 새로고침 후 최신 대화 2건 복원, 원본 localStorage 원문 불변, 백업 확인 없는 restore/delete 거부, 승인 플래그가 있는 합성 복원·복원 취소, tombstone 기록·대화·기준값 삭제, 삭제 후 재부팅 차단, 구형 저장소가 변경됐을 때 재부팅 거부.
+- **중요:** 수동 승인 및 백업 확인 플래그는 실제 사용자의 동의나 독립 백업의 존재를 인증하지 않는다. 구형 탭/Drive/SW와의 동시 처리, Android/iOS 실기기 검증 및 임상·환자 사용성 시험은 미실시다.
+
+**P0 데이터 손실 위험 미해결. PR #304 Draft 유지, `main` 병합·운영 배포 금지.**
