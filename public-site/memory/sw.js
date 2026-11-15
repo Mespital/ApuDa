@@ -1,6 +1,6 @@
 // ApuDa 기억돌봄 — 오프라인에서도 앱 화면이 열리도록 캐시
 // 경로는 모두 이 파일 위치 기준(상대 경로)이라 memory.apuda.app 과 apuda.app/memory/ 어디서든 동작한다.
-const CACHE = 'memorycare-v2';
+const CACHE = 'memorycare-v3';
 const ASSETS = ['./', './index.html', './manifest.webmanifest', './favicon.png', './icons/icon-192.png', './icons/icon-512.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS))); self.skipWaiting(); });
 self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE).map(k => caches.delete(k))))); self.clients.claim(); });
