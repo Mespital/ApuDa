@@ -1185,7 +1185,14 @@ function renderLog(){
 function distressUI(){var s=+$('#distress').value;$('#distressOut').textContent=s;var el=$('#distressAdvice');
   el.innerHTML=s>=7?'<span style="color:var(--red);font-weight:900">부담이 큰 상태예요. 당신 잘못이 아니에요.</span> 오늘 의료진·심리상담·의료사회복지사에게 알려 주세요. 혼자 견디기 어렵다면 <a href="tel:109">109</a>(24시간 무료).':s>=4?'<span style="color:var(--amber);font-weight:900">도움이 필요할 수 있는 수준이에요.</span> 진료 때 이 점수를 알려 주세요.':'<span class="muted">변화가 있을 때마다 기록해 두세요.</span>'}
 $('#distress').addEventListener('input',distressUI);
-window.saveDistress=function(){var s=+$('#distress').value;state.distress.unshift({id:uid(),date:today(),score:s});state.distressValue=s;save();toast('마음 온도계 '+s+'점 기록')};
+window.saveDistress=function(){
+  var score=+$('#distress').value;
+  if(!Number.isFinite(score)||score<0||score>10)return Promise.resolve(false);
+  return commitNoteMutation('마음 온도계',function(next){
+    next.distress.unshift({id:uid(),date:today(),score:score});
+    next.distressValue=score;
+  },'마음 온도계 '+score+'점 기록');
+};
 
 function nf(v){return v===''||v==null?'-':(+v).toLocaleString('ko-KR')}
 function labLabel(row,key){if(row[key]===''||row[key]==null)return '-';var u=SAFETY.labUnit(row,key);return nf(row[key])+' '+(u==='unknown'?'(단위 확인 필요)':u);}
@@ -1271,14 +1278,35 @@ function renderSOS(){
 
   $('#sosCalls').innerHTML=c+'<span></span>'+routeHTML(true)+(p.dayPhone?'':'<button class="btn soft" style="grid-column:1/-1" onclick="openSheet(\'settings\')">📞 치료병원 번호 등록하기</button>');$('#redList').innerHTML=chkHTML(RED,'red');$('#amberList').innerHTML=chkHTML(AMB,'amber');triage(true);
 }
-function triage(silent){
+async function triage(silent){
   var boxes=[].slice.call(document.querySelectorAll('#sh-sos [data-level]'));
   var items=boxes.filter(function(x){return x.checked}).map(function(x){return x.value});
-  if(!silent){state.triage={items:items,at:items.length?Date.now():0};save()}
   var red=items.filter(function(v){return v.indexOf('red')===0}).length,amb=items.length-red,el=$('#triageResult');
-  if(red&&!silent)el.scrollIntoView({block:'nearest',behavior:'smooth'});if(red){el.className='result red';el.innerHTML='<b>지금 바로 치료병원 또는 응급실에 연락하세요.</b><br>혼자 운전해서 가지 말고, 숨쉬기 힘들거나 의식이 처지면 119를 부르세요. 연락할 때 체온·증상 시작 시각·마지막 치료 날짜를 함께 말하면 빨라요.'}
-  else if(amb){el.className='result amber';el.innerHTML='<b>오늘 안에 치료병원에 상담하세요.</b><br>증상이 빠르게 나빠지면 바로 연락하거나 응급실로 가세요.'}
-  else{el.className='result none';el.textContent='해당하는 항목이 없으면 기록을 이어가고, 변화가 생기면 다시 확인하세요.'}
+  // Never make emergency advice dependent on any storage operation. Render
+  // first, including during a quota error, conflict, or rejected IDB Promise.
+  if(red&&!silent)el.scrollIntoView({block:'nearest',behavior:'smooth'});
+  if(red){el.className='result red';el.setAttribute('role','alert');el.setAttribute('aria-live','assertive');
+    el.innerHTML='<b>지금 바로 치료병원 또는 응급실에 연락하세요.</b><br>혼자 운전해서 가지 말고, 숨쉬기 힘들거나 의식이 처지면 119를 부르세요. 연락할 때 체온·증상 시작 시각·마지막 치료 날짜를 함께 말하면 빨라요.';}
+  else if(amb){el.className='result amber';el.setAttribute('role','status');el.setAttribute('aria-live','polite');
+    el.innerHTML='<b>오늘 안에 치료병원에 상담하세요.</b><br>증상이 빠르게 나빠지면 바로 연락하거나 응급실로 가세요.';}
+  else{el.className='result none';el.setAttribute('role','status');el.setAttribute('aria-live','polite');
+    el.textContent='해당하는 항목이 없으면 기록을 이어가고, 변화가 생기면 다시 확인하세요.';}
+  if(silent)return;
+  if(noteLoadError||noteWritesPaused||hasUnsavedDraft()){
+    toast('증상 안내는 확인할 수 있지만 기록 저장은 중단됐습니다. 미저장 사본을 확인하세요.');
+    return;
+  }
+  state.triage={items:items,at:items.length?Date.now():0};
+  var pendingRaw=JSON.stringify(state);
+  try{
+    var result=await Promise.resolve(save());
+    if(result===false||(result&&typeof result==='object'&&result.status&&result.status!=='saved')||
+       noteWritesPaused||hasUnsavedDraft())throw new Error('triage-not-saved');
+  }catch(error){
+    if(!hasUnsavedDraft())holdUnsaved('note',pendingRaw,error);
+    // Do not rerender or remove the urgent warning on failed persistence.
+    toast('증상 안내는 유지됩니다. 기록은 저장하지 못했으니 미저장 사본을 내려받아 확인하세요.');
+  }
 }
 $('#sh-sos').addEventListener('change',function(e){if(e.target.matches('[data-level]'))triage()});
 
