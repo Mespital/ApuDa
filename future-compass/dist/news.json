@@ -1,8 +1,24 @@
 {
-  "checked_at": "2026-11-15T19:38:19.456930+00:00",
-  "last_success_at": "2026-11-15T19:38:19.456930+00:00",
+  "checked_at": "2026-11-15T23:51:46.007577+00:00",
+  "last_success_at": "2026-11-15T23:51:46.007577+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "A step toward defining the Standard Model on a lattice",
+      "url": "https://openai.com/index/step-toward-defining-the-standard-model",
+      "source": "OpenAI",
+      "published_at": "2026-11-15T22:00:01+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Our new blog for science",
+      "url": "https://openai.com/index/our-new-blog-for-science",
+      "source": "OpenAI",
+      "published_at": "2026-11-15T22:00:00+00:00",
+      "category": "과학·환경",
+      "domain": "energy"
+    },
     {
       "title": "Claim your Google Cloud Credits in Google AI Studio",
       "url": "https://blog.google/innovation-and-ai/technology/developers-tools/google-cloud-credits-gdp-ai-studio/",
@@ -226,28 +242,12 @@
       "published_at": "2026-11-10T19:00:00+00:00",
       "category": "로봇·기기",
       "domain": "robots"
-    },
-    {
-      "title": "Gemini 4 Carbon is now available for developers.",
-      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-4-carbon-developers/",
-      "source": "Google",
-      "published_at": "2026-11-10T16:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Introducing the Multimodal Knowledge Agent benchmark",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/multimodal-knowledge-agent-benchmark/",
-      "source": "Google",
-      "published_at": "2026-11-10T16:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-11-15T19:38:19.456930+00:00",
+    "checked_at": "2026-11-15T23:51:46.007577+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -392,7 +392,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-11-15T19:38:19.456930+00:00",
+    "last_success_at": "2026-11-15T23:51:46.007577+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
