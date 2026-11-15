@@ -135,3 +135,28 @@
     X-Robots-Tag = "noindex, nofollow"
     Referrer-Policy = "no-referrer"
     Cache-Control = "no-store"
+
+# ApuDa 기억돌봄(치매·기억 돌봄) — public-site/memory/ 에서 직접 서비스
+# 개인 돌봄 기록을 기기에 저장하는 앱이라 /note/ 처럼 검색엔진에서 제외한다(의료 감수 전).
+[[headers]]
+  for = "/memory/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/memory/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+[[headers]]
+  for = "/memory/index.html"
+  [headers.values]
+    Cache-Control = "no-cache"
+    X-Robots-Tag = "noindex"
+
+[[headers]]
+  for = "/memory/icons/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

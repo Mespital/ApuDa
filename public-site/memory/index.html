@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ApuDa 기억돌봄</title>
+<meta name="description" content="치매가 걱정될 때 쓰는 ApuDa 기억돌봄. 기억 변화 자가 체크, 치매예방수칙 3·3·3, 돌봄 기록과 진료 준비를 한곳에서. 진단이나 처방을 하지 않아요.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0B5FA5">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="기억돌봄">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ApuDa 기억돌봄">
+<meta property="og:description" content="기억 변화 자가 체크 · 치매 예방 · 돌봄 기록">
+<meta property="og:image" content="https://apuda.app/memory/og.png">
+<meta property="og:url" content="https://apuda.app/memory/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--p:#0B5FA5;--ph:#094E88;--soft:#E6F0FA;--cv:#F2F6FA;--sf:#FFFFFF;--tx:#16304A;--t2:#475B70;--bd:#D5E1EC;--nt:#5E7186;--ok:#1F6B4C;--okbg:#E7F3EC;--wn:#8A5600;--wnbg:#FFF4D1;--dg:#B42318;--dgbg:#FDECEA;--gold:#F5B301}
+*{box-sizing:border-box}
+html{font-size:16px;-webkit-text-size-adjust:100%}
+html.fs1{font-size:18px}html.fs2{font-size:20px}
+body{margin:0;background:#D9E4EE;font-family:'IBM Plex Sans KR','Noto Sans KR',system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;color:var(--tx);word-break:keep-all;overflow-wrap:break-word;line-height:1.5}
+#app{max-width:440px;margin:0 auto;min-height:100vh;min-height:100dvh;background:var(--cv);position:relative;box-shadow:0 0 40px rgba(31,45,61,.10);display:flex;flex-direction:column}
+a{color:var(--p)}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--p);outline-offset:2px}
+svg{flex-shrink:0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* top bar */
+.top{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:8px;padding:10px 16px;background:rgba(250,248,244,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--bd)}
+.brand{display:inline-flex;align-items:center;gap:6px;text-decoration:none;min-height:44px;padding:0 4px;border-radius:12px}
+.brand b{font-size:20px;font-weight:700;color:var(--p);letter-spacing:-.01em}
+.brand i{width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.brand span{font-size:15px;font-weight:500;color:var(--t2)}
+.top .sp{flex:1}
+.chip{display:inline-flex;align-items:center;gap:4px;min-height:44px;padding:6px 12px;border-radius:999px;border:1px solid var(--bd);background:var(--sf);font-size:14px;font-weight:700;color:var(--p);text-decoration:none;white-space:nowrap}
+.iconbtn{font-size:16px;display:inline-flex;align-items:center;justify-content:center;gap:2px;min-width:48px;min-height:44px;padding:6px 10px;border-radius:999px;border:1px solid var(--bd);background:var(--sf);font-weight:700;color:var(--tx)}
+
+/* main */
+main{flex:1;padding:16px 16px 24px;display:flex;flex-direction:column;gap:16px}
+main.withtabs{padding-bottom:104px}
+h1{margin:0;font-size:1.625rem;line-height:1.35}
+h2{margin:0;font-size:1.25rem;line-height:1.4}
+h3{margin:0;font-size:1.125rem;line-height:1.4}
+p{margin:0}
+.muted{color:var(--t2)}
+.small{font-size:.9375rem}
+.sec{display:flex;flex-direction:column;gap:10px}
+.sec-h{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:20px;box-shadow:0 2px 10px rgba(31,45,61,.05);padding:18px;display:flex;flex-direction:column;gap:12px}
+.row{display:flex;align-items:center;gap:10px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+
+/* hero */
+.hero{border-radius:24px;padding:20px;background:var(--soft);display:flex;flex-direction:column;gap:4px}
+.core{border-radius:24px;padding:22px 20px;background:var(--p);color:#fff;display:flex;flex-direction:column;gap:12px;box-shadow:0 8px 24px rgba(11,95,165,.25)}
+.core .eyebrow{display:inline-flex;align-self:flex-start;align-items:center;gap:6px;padding:4px 12px;border-radius:999px;background:rgba(255,255,255,.16);font-size:.875rem;font-weight:700}
+.core h2{font-size:1.5rem;color:#fff}
+.core p{color:#fff}
+.core .last{font-size:.9375rem;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.12)}
+
+/* buttons */
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:56px;padding:12px 20px;border-radius:18px;border:2px solid var(--p);background:var(--p);color:#fff;font-weight:700;font-size:1.0625rem;line-height:1.35;text-align:center;text-decoration:none;box-shadow:0 4px 12px rgba(11,95,165,.20);width:100%}
+.btn:active{background:var(--ph)}
+.btn.s{background:var(--sf);color:var(--p);box-shadow:none}
+.btn.g{background:var(--gold);border-color:var(--gold);color:var(--tx);box-shadow:none}
+.btn.d{background:var(--dg);border-color:var(--dg);box-shadow:none}
+.btn.do{background:var(--sf);color:var(--dg);border-color:var(--dg);box-shadow:none}
+.btn.sm{min-height:52px;font-size:1rem;padding:10px 14px}
+.btn[disabled]{background:#E8EDF3;border-color:#E8EDF3;color:#5B6878;box-shadow:none;cursor:default}
+.btns{display:flex;flex-direction:column;gap:10px}
+.btns.h{flex-direction:row}
+.btns.h>*{flex:1 1 0;min-width:0}
+.link{display:inline-flex;align-items:center;gap:6px;min-height:52px;background:none;border:0;padding:0;color:var(--p);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+
+/* tiles */
+.tile{display:flex;align-items:center;gap:14px;padding:16px;border-radius:20px;background:var(--sf);border:1px solid var(--bd);box-shadow:0 2px 10px rgba(31,45,61,.05);text-decoration:none;color:var(--tx);text-align:left;width:100%}
+.tile .ic{display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:16px;background:var(--soft)}
+.tile .tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.tile .tx b{font-size:1.0625rem}
+.tile .tx span{font-size:.9375rem;color:var(--t2)}
+
+/* metric */
+.metric{display:flex;flex-direction:column;gap:6px;padding:12px;border-radius:18px;background:var(--sf);border:1px solid var(--nt);text-align:left;min-height:136px}
+.metric .top2{display:flex;justify-content:space-between;align-items:center}
+.metric b{font-size:1.0625rem}
+.metric .st{font-size:.9375rem;color:var(--t2)}
+.metric .st.ok{color:var(--ok)}.metric .st.wn{color:var(--wn)}
+.metric .go{font-size:.9375rem;font-weight:700;color:var(--p);margin-top:auto}
+
+/* options */
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{display:flex;align-items:center;gap:12px;width:100%;min-height:56px;padding:12px 14px;border-radius:16px;border:1px solid var(--nt);background:var(--sf);text-align:left;font-weight:500;font-size:1.0625rem;line-height:1.4}
+.opt .rd{display:flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;border:2px solid var(--nt)}
+.opt .rd i{width:12px;height:12px;border-radius:50%;background:var(--p);display:none}
+.opt .lb{flex:1;min-width:0}
+.opt .mk{display:none;align-items:center;gap:4px;font-size:.875rem;font-weight:700;color:var(--p);white-space:nowrap}
+.opt[aria-pressed=true]{background:var(--soft);border:2px solid var(--p);font-weight:700}
+.opt[aria-pressed=true] .rd{border-color:var(--p)}
+.opt[aria-pressed=true] .rd i{display:block}
+.opt[aria-pressed=true] .mk{display:inline-flex}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg button{flex:1 1 0;min-width:72px;display:flex;align-items:center;justify-content:center;gap:4px;min-height:52px;padding:8px;border-radius:14px;border:1px solid var(--nt);background:var(--sf);font-weight:700}
+.seg button[aria-pressed=true]{background:var(--p);border-color:var(--p);color:#fff}
+.seg button .ck{display:none}
+.seg button[aria-pressed=true] .ck{display:inline-flex}
+
+/* answer buttons (check kit) */
+.ans{display:flex;flex-direction:column;gap:10px}
+.ans button{min-height:64px;padding:14px 18px;border-radius:18px;border:2px solid var(--p);background:var(--sf);color:var(--p);font-size:1.1875rem;font-weight:700;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.ans button[aria-pressed=true]{background:var(--p);color:#fff}
+.ans button.q{border-color:var(--nt);color:var(--tx);font-weight:500}
+.ans button.q[aria-pressed=true]{background:var(--nt);color:#fff}
+.prog{height:10px;border-radius:999px;background:var(--bd);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--p);border-radius:999px;transition:width .2s}
+.qtext{font-size:1.5rem;font-weight:700;line-height:1.45}
+
+/* tags, banners */
+.tag{display:inline-flex;align-self:flex-start;align-items:center;gap:4px;padding:3px 10px;border-radius:999px;font-size:.875rem;font-weight:700;border:1px solid currentColor;white-space:nowrap}
+.tag.p{color:var(--p);background:var(--soft)}
+.tag.ok{color:var(--ok);background:var(--okbg)}
+.tag.wn{color:var(--wn);background:var(--wnbg)}
+.tag.dg{color:var(--dg);background:var(--dgbg)}
+.tag.nt{color:var(--nt);background:var(--sf)}
+.banner{display:flex;gap:12px;padding:14px 16px;border-radius:16px;background:var(--soft);border:1px solid var(--p);font-size:.9375rem;line-height:1.55}
+.banner.urgent{background:var(--sf);border:2px solid var(--dg)}
+.banner.warn{background:var(--wnbg);border-color:var(--wn)}
+.banner.ok{background:var(--okbg);border-color:var(--ok)}
+
+/* list */
+.list{display:flex;flex-direction:column;gap:10px}
+.item{display:flex;flex-direction:column;gap:6px;padding:14px 16px;border-radius:18px;background:var(--sf);border:1px solid var(--bd)}
+.item.dash{border:2px dashed var(--wn)}
+.item .meta{font-size:.875rem;color:var(--t2)}
+.lrow{display:flex;align-items:center;gap:12px;width:100%;min-height:64px;padding:12px 16px;border-radius:18px;background:var(--sf);border:1px solid var(--bd);text-align:left;text-decoration:none;color:var(--tx)}
+.lrow .tx{flex:1;min-width:0;display:flex;flex-direction:column}
+.lrow .tx b{font-size:1.0625rem}
+.lrow .tx span{font-size:.875rem;color:var(--t2)}
+.ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+.ul li{display:flex;gap:10px;align-items:flex-start}
+
+/* fields */
+label.f{display:flex;flex-direction:column;gap:6px;font-weight:500;font-size:1rem}
+.in,textarea.in,select.in{min-height:56px;padding:12px 14px;border-radius:14px;border:1px solid var(--nt);background:var(--sf);font-size:1.0625rem;width:100%}
+textarea.in{min-height:96px;resize:vertical;line-height:1.5}
+.in::placeholder{color:var(--t2);opacity:1}
+.help{font-size:.875rem;color:var(--t2)}
+
+/* switch */
+.sw{display:flex;align-items:center;gap:12px;width:100%;min-height:64px;padding:12px 16px;border-radius:18px;background:var(--sf);border:1px solid var(--bd);text-align:left}
+.sw .tx{flex:1;min-width:0;display:flex;flex-direction:column}
+.sw .tx span{font-size:.875rem;color:var(--t2)}
+.sw .st{font-size:.9375rem;font-weight:700;color:var(--t2);white-space:nowrap}
+.sw .tr{display:flex;align-items:center;width:56px;height:32px;padding:4px;border-radius:999px;border:2px solid var(--nt);background:var(--sf)}
+.sw .tr i{width:20px;height:20px;border-radius:50%;background:var(--nt)}
+.sw[aria-checked=true] .st{color:var(--p)}
+.sw[aria-checked=true] .tr{justify-content:flex-end;background:var(--p);border-color:var(--p)}
+.sw[aria-checked=true] .tr i{background:#fff}
+
+/* habits */
+.habit{display:flex;align-items:center;gap:12px;width:100%;min-height:56px;padding:10px 14px;border-radius:16px;border:1px solid var(--bd);background:var(--sf);text-align:left;font-size:1.0625rem;font-weight:500}
+.habit .bx{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;border:2px solid var(--nt);background:var(--sf)}
+.habit .bx svg{display:none}
+.habit[aria-pressed=true]{background:var(--okbg);border-color:var(--ok)}
+.habit[aria-pressed=true] .bx{background:var(--ok);border-color:var(--ok)}
+.habit[aria-pressed=true] .bx svg{display:block}
+.habit .done{display:none;font-size:.875rem;font-weight:700;color:var(--ok);white-space:nowrap}
+.habit[aria-pressed=true] .done{display:inline}
+
+/* patient */
+.big{display:flex;align-items:center;gap:16px;padding:20px;min-height:112px;border-radius:24px;border:2px solid var(--p);background:var(--sf);box-shadow:0 4px 14px rgba(11,95,165,.10);text-align:left;color:var(--tx);text-decoration:none;width:100%}
+.big .ic{display:flex;align-items:center;justify-content:center;width:68px;height:68px;border-radius:20px;background:var(--soft)}
+.big b{display:block;font-size:1.375rem}
+.big span{display:block;font-size:1.125rem;color:var(--t2)}
+.pt .qtext{font-size:1.625rem}
+
+/* steps */
+.step{display:flex;gap:14px}
+.step .n{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:var(--p);color:#fff;font-weight:700;flex-shrink:0}
+.cmp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.cmp>div{padding:14px;border-radius:16px;display:flex;flex-direction:column;gap:8px;font-size:.9375rem}
+.cmp .a{background:var(--soft)}.cmp .b{background:var(--wnbg)}
+
+/* footer */
+.foot{margin-top:8px;display:flex;flex-direction:column;align-items:center;gap:8px;padding:22px 16px;border-radius:22px;background:var(--sf);border:1px solid var(--bd);text-align:center}
+.foot .wm{display:inline-flex;align-items:center;gap:6px}
+.foot .wm b{font-size:1.5rem;color:var(--p)}
+.foot .wm i{width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.foot .tag2{font-weight:500;color:var(--t2)}
+.foot .note{font-size:.8125rem;color:var(--t2)}
+
+/* tabs */
+.tabs{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:440px;z-index:20;display:flex;padding:6px 6px calc(10px + env(safe-area-inset-bottom));background:var(--sf);border-top:1px solid var(--bd)}
+.tabs a{flex:1 1 0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:64px;text-decoration:none;color:var(--t2);font-size:13px;font-weight:500;white-space:nowrap;min-width:0}
+.tabs a .pill{display:flex;padding:4px 16px;border-radius:999px}
+.tabs a .bar{width:28px;height:3px;border-radius:2px;background:transparent}
+.tabs a[aria-current=page]{color:var(--p);font-weight:700}
+.tabs a[aria-current=page] .pill{background:var(--soft)}
+.tabs a[aria-current=page] .bar{background:var(--gold)}
+
+/* dialog, toast, sheet */
+.ov{position:fixed;inset:0;z-index:50;background:rgba(31,45,61,.55);display:flex;align-items:center;justify-content:center;padding:20px}
+.ov[hidden]{display:none}
+.dlg{width:100%;max-width:380px;max-height:86vh;overflow:auto;background:var(--sf);border-radius:22px;padding:22px;display:flex;flex-direction:column;gap:14px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:96px;z-index:60;width:calc(100% - 32px);max-width:400px;display:flex;align-items:center;gap:10px;padding:12px 16px;min-height:56px;border-radius:16px;background:var(--tx);color:#fff;font-weight:500;box-shadow:0 8px 24px rgba(0,0,0,.2)}
+.toast[hidden]{display:none}
+pre.txt{margin:0;white-space:pre-wrap;font-family:inherit;font-size:.9375rem;line-height:1.6;background:var(--cv);border:1px solid var(--bd);border-radius:14px;padding:14px;max-height:46vh;overflow:auto}
+@media (prefers-reduced-motion:no-preference){main{animation:fade .18s ease-out}@keyframes fade{from{opacity:.5;transform:translateY(4px)}to{opacity:1;transform:none}}}
+/* ===== ApuDa brand layer ===== */
+h1{font-family:'Gowun Batang','Noto Serif KR',serif;font-weight:700;letter-spacing:-.01em}
+.top{background:var(--p);border-bottom:0;backdrop-filter:none}
+.top .brand b{color:#fff}.top .brand span{color:rgba(255,255,255,.86)}
+.top .chip,.top .iconbtn{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
+.top .chip.sos{background:#fff;color:var(--dg);border-color:#fff;font-size:17px;min-height:52px;padding:8px 16px}
+.canopy{margin:-16px -16px 2px;padding:10px 20px 28px;background:var(--p);color:#fff;border-radius:0 0 30px 30px;display:flex;flex-direction:column;gap:8px}
+.canopy h1{color:#fff;font-size:1.875rem;line-height:1.3}
+.canopy p{color:rgba(255,255,255,.9)}
+.canopy .cn-row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.canopy .chip{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.45)}
+.canopy .tag.p{background:rgba(255,255,255,.16);color:#fff;border-color:rgba(255,255,255,.5)}
+.canopy .ask{margin-top:10px;padding:18px;border-radius:22px;background:#fff;color:var(--tx);display:flex;flex-direction:column;gap:10px}
+.canopy .ask .tag.p{background:var(--soft);color:var(--p);border-color:var(--p)}
+.canopy .ask h2{font-size:1.3125rem;color:var(--tx)}
+.canopy .ask p{color:var(--t2)}
+.canopy .ask .last{font-size:.9375rem;color:var(--p);font-weight:700}
+.core{background:var(--sf);color:var(--tx);border:2px solid var(--p);box-shadow:none}
+.core .eyebrow{background:var(--soft);color:var(--p)}
+.core h2{color:var(--tx)}.core p{color:var(--t2)}
+.core .last{background:var(--soft);color:var(--p)}
+.card,.tile,.item,.lrow,.sw,.habit{box-shadow:none}
+.metric{border-color:var(--bd)}
+.group{background:var(--sf);border:1px solid var(--bd);border-radius:22px;overflow:hidden;display:flex;flex-direction:column}
+.group>.tile,.group>.lrow{border:0;border-radius:0;border-top:1px solid var(--bd)}
+.group>:first-child{border-top:0}
+.btn{border-radius:16px;box-shadow:none}
+.btn.s{border-width:1.5px}
+.btn.g{color:#16304A}
+.foot{margin:12px -16px -24px;padding:30px 20px 36px;border:0;border-radius:30px 30px 0 0;background:var(--p);color:#fff}
+main.withtabs .foot{margin-bottom:-104px;padding-bottom:132px}
+.foot .wm b{color:#fff}.foot .tag2{color:rgba(255,255,255,.92)}.foot .note{color:rgba(255,255,255,.85)}
+.foot .btn.s{background:#fff;color:var(--p);border-color:#fff}
+.tabs{box-shadow:0 -4px 16px rgba(22,48,74,.06)}
+</style>
+</head>
+<body>
+<div id="app">
+  <header class="top" id="top"></header>
+  <main id="view" tabindex="-1"></main>
+  <nav class="tabs" id="tabs" aria-label="주요 메뉴"></nav>
+</div>
+<div class="ov" id="ov" hidden><div class="dlg" id="dlg" role="dialog" aria-modal="true" aria-labelledby="dlgT"></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+(function(){
+'use strict';
+/* ---------- icons ---------- */
+const PATHS={
+ cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+ phone:'<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>',
+ pill:'<rect x="3" y="8" width="18" height="8" rx="4"/><path d="M12 8v8"/>',
+ meal:'<path d="M3 11h18a9 9 0 0 1-18 0z"/><path d="M8 4v3M12 3v4M16 4v3"/>',
+ sleep:'<path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/>',
+ pencil:'<path d="M4 20l1-4L16 5l3 3L8 19l-4 1z"/><path d="M14 7l3 3"/>',
+ help:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 1-1 1.7"/><path d="M12 17h.01"/>',
+ home:'<path d="M4 11l8-7 8 7v8a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><path d="M10 20v-6h4v6"/>',
+ rec:'<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/>',
+ clinic:'<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 8v8M8 12h8"/>',
+ brain:'<path d="M9 4a3 3 0 0 0-3 3 3 3 0 0 0-2 5 3 3 0 0 0 2 5 3 3 0 0 0 3 3h0a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3z"/><path d="M15 4a3 3 0 0 1 3 3 3 3 0 0 1 2 5 3 3 0 0 1-2 5 3 3 0 0 1-3 3h0a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3z"/>',
+ check:'<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+ family:'<circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.5a5 5 0 0 1 5 5.5"/>',
+ person:'<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+ warn:'<path d="M12 4l9 16H3z"/><path d="M12 10v4M12 17h.01"/>',
+ info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>',
+ done:'<circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5-6"/>',
+ not:'<circle cx="12" cy="12" r="9"/><path d="M8 12h8"/>',
+ dash:'<circle cx="12" cy="12" r="9" stroke-dasharray="3 3"/>',
+ right:'<path d="M9 6l6 6-6 6"/>',
+ left:'<path d="M15 6l-6 6 6 6"/>',
+ ext:'<path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/>',
+ building:'<rect x="4" y="3" width="16" height="18" rx="1"/><path d="M9 8h2M13 8h2M9 12h2M13 12h2M10 21v-4h4v4"/>',
+ shield:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>',
+ walk:'<circle cx="13" cy="4" r="2"/><path d="M10 21l2-6 3 3v3M9 12l2-4 4 2 2 3M11 8l-3 2-1 3"/>',
+ book:'<path d="M12 6c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-13c-3-.5-6 0-8 1.5z"/><path d="M12 6v13"/>',
+ trash:'<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>',
+ up:'<path d="M6 15l6-6 6 6"/>',down:'<path d="M6 9l6 6 6-6"/>',
+ plus:'<path d="M12 5v14M5 12h14"/>',copy:'<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/>',
+ share:'<path d="M12 15V4M7 8l5-5 5 5"/><path d="M5 12v7a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-7"/>',
+ heart:'<path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/>'
+};
+function I(n,s,c){s=s||24;return '<svg aria-hidden="true" width="'+s+'" height="'+s+'" viewBox="0 0 24 24" fill="none" stroke="'+(c||'currentColor')+'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+PATHS[n]+'</svg>';}
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const P='#0B5FA5';
+
+/* ---------- state ---------- */
+const KEY='apuda-memorycare-v1';
+const DEF={onboarded:false,role:'caregiver',subject:'돌봄 대상 A',fs:0,records:{},events:[],checks:[],prevent:{},appt:{},questions:[],meds:[],contacts:[],
+ schedule:[{id:'s1',time:'오전 9시',title:'아침 식사'},{id:'s2',time:'오후 2시',title:'가족과 통화'}],sched:{}};
+let S;
+try{S=Object.assign({},DEF,JSON.parse(localStorage.getItem(KEY)||'{}'));}catch(e){S=Object.assign({},DEF);}
+let canSave=true;
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){canSave=false;}}
+const uid=()=>Math.random().toString(36).slice(2,9);
+
+/* ---------- dates ---------- */
+const DOW=['일','월','화','수','목','금','토'];
+function key(d){d=d||new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+function parse(k){const a=k.split('-').map(Number);return new Date(a[0],a[1]-1,a[2]);}
+function fmt(k,dow){const d=parse(k);return (d.getMonth()+1)+'월 '+d.getDate()+'일'+(dow===false?'':' '+DOW[d.getDay()]+'요일');}
+function daysBack(n){const out=[];const d=new Date();for(let i=0;i<n;i++){const x=new Date(d);x.setDate(d.getDate()-i);out.push(key(x));}return out;}
+const TODAY=()=>key();
+
+/* ---------- labels ---------- */
+const MED={confirmed:['복용한 것을 확인했어요','done','ok','복용 확인'],not_taken:['복용하지 않았어요','not','tx','복용 안 함'],unknown:['복용했는지 확인하지 못했어요','help','nt','확인 못 함'],none:['아직 기록하지 않았어요','dash','nt','기록 안 됨']};
+const MS={same:['평소와 비슷했어요','done','ok','평소와 비슷'],diff:['평소와 달랐어요','warn','wn','평소와 달랐음'],unk:['확인하기 어려웠어요','help','nt','확인 어려움'],none:['아직 기록하지 않았어요','dash','nt','기록 안 됨']};
+const EVK=['넘어졌어요','혼자 나가서 걱정됐어요','갑자기 평소와 많이 달라졌어요','다른 일이 있었어요'];
+const HABITS=[
+ ['3권 · 즐길 것',[['walk','일주일에 3번 이상 걷기'],['fish','생선과 채소 골고루 먹기'],['read','부지런히 읽고 쓰기']]],
+ ['3금 · 참을 것',[['alc','술은 한 번에 3잔보다 적게'],['smoke','담배 피우지 않기'],['head','머리 다치지 않게 조심하기']]],
+ ['3행 · 챙길 것',[['bp','혈압·혈당·콜레스테롤 확인하기'],['talk','가족·친구와 연락하고 만나기'],['exam','해마다 치매안심센터 검진 받기']]]];
+const Q=[
+ ['최근에 있었던 일이나 나눈 대화가 잘 기억나지 않아요.','최근에 있었던 일이나 나눈 대화를 잘 기억하지 못해요.'],
+ ['같은 질문이나 이야기를 반복한다는 말을 들어요.','같은 질문이나 이야기를 반복해요.'],
+ ['약속이나 해야 할 일을 잊는 일이 늘었어요.','약속이나 해야 할 일을 잊는 일이 늘었어요.'],
+ ['물건을 둔 곳을 찾지 못하는 일이 잦아졌어요.','물건을 둔 곳을 찾지 못하는 일이 잦아졌어요.'],
+ ['하고 싶은 말이나 단어가 잘 떠오르지 않아요.','말할 때 단어가 잘 떠오르지 않아 머뭇거려요.'],
+ ['오늘이 며칠인지, 무슨 요일인지 헷갈려요.','오늘이 며칠인지, 무슨 요일인지 헷갈려해요.'],
+ ['익숙한 길이나 장소에서 헤맨 적이 있어요.','익숙한 길이나 장소에서 헤맨 적이 있어요.'],
+ ['돈 계산이나 공과금 내기가 예전보다 어려워요.','돈 계산이나 공과금 내기를 예전보다 어려워해요.'],
+ ['휴대폰이나 가전제품 쓰는 것이 예전보다 서툴러졌어요.','휴대폰이나 가전제품 쓰는 것이 예전보다 서툴러졌어요.'],
+ ['요리, 장보기처럼 익숙하던 일을 하기 어려워졌어요.','요리, 장보기처럼 익숙하던 일을 어려워해요.'],
+ ['성격이나 기분이 예전과 달라졌다는 말을 들어요.','성격이나 기분이 예전과 달라졌어요.'],
+ ['모임이나 취미에 대한 관심이 줄었어요.','모임이나 취미에 대한 관심이 줄었어요.']];
+const ANS=[['아니에요',0],['조금 그래요',1],['많이 그래요',2],['잘 모르겠어요',-1]];
+
+/* ---------- shell ---------- */
+const $=s=>document.querySelector(s);
+const view=$('#view'),top=$('#top'),tabs=$('#tabs');
+function applyFs(){document.documentElement.className=S.fs===1?'fs1':S.fs===2?'fs2':'';}
+const TABS=[['home','홈','home'],['check','치매 체크','brain'],['record','돌봄 기록','rec'],['clinic','진료 준비','clinic'],['help','도움','help']];
+const TABOF={home:'home',check:'check','check-run':'check','check-result':'check',screening:'check',forget:'check',prevent:'check',record:'record',event:'record',clinic:'clinic',summary:'clinic',help:'help',settings:'help'};
+function topCaregiver(){return '<a class="brand" href="https://apuda.app" rel="noopener" aria-label="ApuDa 기억돌봄 — apuda.app 열기"><b>ApuDa</b><i></i><span>기억돌봄</span></a><span class="sp"></span><button class="iconbtn" data-act="fs" aria-label="글자 크기 바꾸기, 지금 '+['기본','크게','아주 크게'][S.fs]+'">가'+I('plus',16)+'</button><a class="chip" href="https://apuda.app" rel="noopener">apuda.app'+I('ext',16)+'</a>';}
+function topPatient(){return '<span class="brand" aria-label="ApuDa 기억돌봄"><b>ApuDa</b><i></i><span>기억돌봄</span></span><span class="sp"></span><a class="chip sos" href="#p-help">'+I('help',22,'#B42318')+' 도움</a>';}
+function foot(link){return '<footer class="foot"><span class="wm"><b>ApuDa</b><i></i></span><span class="tag2">아프지만, 다행이다.</span>'+(link?'<a class="btn s sm" style="width:auto;padding:10px 22px" href="https://apuda.app" rel="noopener">apuda.app에서 건강 정보 더 보기 '+I('ext',18)+'</a>':'')+'<span class="note">기억돌봄은 정보를 안내하고 기록을 돕는 앱이에요. 진단이나 처방을 하지 않아요.</span></footer>';}
+function hdr(title,back,sub){return '<div class="canopy"><div class="cn-row"><div style="display:flex;flex-direction:column;gap:4px"><h1>'+esc(title)+'</h1>'+(sub?'<p>'+esc(sub)+'</p>':'')+'</div>'+(back?'<a class="chip" href="#'+back+'">'+I('left',18)+' 이전</a>':'')+'</div></div>';}
+function banner(kind,html,ic){return '<div class="banner '+(kind||'')+'">'+I(ic||(kind==='urgent'?'warn':'info'),22,kind==='urgent'?'#B42318':kind==='warn'?'#8A5600':kind==='ok'?'#1F6B4C':P)+'<div>'+html+'</div></div>';}
+function opt(group,val,label,on,icon){return '<button type="button" class="opt" data-opt="'+group+'" data-val="'+val+'" aria-pressed="'+(on?'true':'false')+'">'+(icon?I(icon[0],26,icon[1]):'<span class="rd"><i></i></span>')+'<span class="lb">'+esc(label)+'</span><span class="mk">'+I('check',18)+'선택됨</span></button>';}
+function sw(id,title,desc,on){return '<button type="button" class="sw" role="switch" data-sw="'+id+'" aria-checked="'+(on?'true':'false')+'"><span class="tx"><b>'+esc(title)+'</b>'+(desc?'<span>'+esc(desc)+'</span>':'')+'</span><span class="st">'+(on?'켜짐':'꺼짐')+'</span><span class="tr"><i></i></span></button>';}
+function tile(href,ic,t,d){return '<a class="tile" href="'+href+'"><span class="ic">'+I(ic,28,P)+'</span><span class="tx"><b>'+esc(t)+'</b><span>'+esc(d)+'</span></span>'+I('right',22)+'</a>';}
+function tel(num,label,kind){return '<a class="btn '+(kind||'d')+'" style="min-height:64px;font-size:1.1875rem" href="tel:'+num.replace(/-/g,'')+'">'+I('phone',26)+'<span>'+esc(label)+'<br><span style="font-size:1rem;font-weight:500">'+num+'</span></span></a>';}
+function COLOR(c){return {ok:'#1F6B4C',wn:'#8A5600',nt:'#5F6E7E',tx:'#1F2D3D'}[c];}
+const COLORc=COLOR;
+
+/* ---------- toast & dialog ---------- */
+let tT;
+function toast(msg){const t=$('#toast');t.innerHTML=I('done',22,'#fff')+'<span>'+esc(msg)+'</span>';t.hidden=false;clearTimeout(tT);tT=setTimeout(()=>{t.hidden=true;},2600);}
+let dlgOk=null,lastFocus=null;
+function dialog(title,body,ok,cb,kind,cancel){lastFocus=document.activeElement;dlgOk=cb;$('#dlg').innerHTML='<h2 id="dlgT" tabindex="-1">'+esc(title)+'</h2>'+(body?'<div class="muted" style="display:flex;flex-direction:column;gap:10px">'+body+'</div>':'')+'<div class="btns">'+(ok?'<button type="button" class="btn '+(kind||'')+'" data-act="dlg-ok">'+esc(ok)+'</button>':'')+'<button type="button" class="btn s" data-act="dlg-x">'+esc(cancel||'취소')+'</button></div>';$('#ov').hidden=false;$('#dlgT').focus();}
+function closeDlg(){$('#ov').hidden=true;dlgOk=null;if(lastFocus&&lastFocus.focus)lastFocus.focus();}
+$('#ov').addEventListener('click',e=>{if(e.target.id==='ov')closeDlg();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#ov').hidden)closeDlg();});
+function copyText(txt){const done=()=>toast('복사했어요. 원하는 곳에 붙여 넣으세요.');try{navigator.clipboard.writeText(txt).then(done,()=>manual(txt));}catch(e){manual(txt);}}
+function manual(txt){dialog('직접 복사해 주세요','<p>이 화면에서는 자동 복사가 되지 않아요. 아래 글을 길게 눌러 복사하세요.</p><pre class="txt">'+esc(txt)+'</pre>',null,null,null,'닫기');}
+
+/* ---------- views ---------- */
+const V={};
+let check=null,resultId=null,editDay=null,period=7,shareOpt={alias:true,opinion:false},recFilter='all';
+
+V.welcome=()=>'<div style="display:flex;flex-direction:column;gap:18px">'+
+ '<div class="canopy" style="padding-top:20px;padding-bottom:32px"><span class="tag p">'+I('brain',18)+' 치매 예방과 돌봄</span><h1 style="margin-top:6px;font-size:2rem">환자는 더 편안하게,<br>가족은 덜 불안하게.</h1><p>기억 변화 체크, 예방 습관, 돌봄 기록과 진료 준비를 한곳에서 해요.</p></div>'+
+ '<h2>어떻게 쓰실 건가요?</h2>'+
+ '<button type="button" class="big" data-act="start" data-role="check"><span class="ic">'+I('brain',36,P)+'</span><span><b>기억이 걱정돼요</b><span>3분 기억 변화 체크부터 할게요</span></span></button>'+
+ '<button type="button" class="big" data-act="start" data-role="caregiver"><span class="ic">'+I('family',36,P)+'</span><span><b>가족을 돌보고 있어요</b><span>돌봄 기록과 진료 준비를 할게요</span></span></button>'+
+ '<button type="button" class="big" data-act="start" data-role="patient"><span class="ic">'+I('person',36,P)+'</span><span><b>제가 직접 쓸게요</b><span>오늘 할 일과 가족 연락을 크게 볼게요</span></span></button>'+
+ banner('','기록은 이 기기의 브라우저에만 저장돼요. 이 앱은 치매를 진단하지 않아요.')+foot(true)+'</div>';
+
+function lastCheck(){return S.checks.length?S.checks[S.checks.length-1]:null;}
+function changed(c){return c.answers.filter(a=>a>=1).length;}
+V.home=()=>{
+ const t=TODAY(),r=S.records[t]||{},lc=lastCheck();
+ const ms=(k,m,map)=>{const v=r[k]||'none',d=map[v];return '<a class="metric" href="#record" style="text-decoration:none;color:inherit"><span class="top2">'+I(m,28,P)+I(d[1],24,COLOR(d[2]))+'</span><b>'+({med:'약',meal:'식사',sleep:'수면'}[k])+'</b><span class="st '+(d[2]==='ok'?'ok':d[2]==='wn'?'wn':'')+'">'+d[3]+'</span><span class="go">'+(v==='none'?'기록하기':'고치기')+'</span></a>';};
+ const done=(S.prevent[t]||[]).length;
+ return '<div class="canopy"><p>'+fmt(t)+'</p><h1>'+esc(S.subject)+'의 오늘</h1>'+
+ '<section class="ask" aria-labelledby="coreT"><span class="tag p">'+I('brain',16)+' 기억 변화 자가 체크</span><h2 id="coreT">1년 전보다 기억이 달라진 것 같나요?</h2><p>12문항, 3분이면 끝나요. 결과에 따라 치매안심센터 선별검사를 안내해 드려요.</p>'+
+ (lc?'<p class="last">마지막 체크 '+fmt(lc.date,false)+', 달라진 점 '+changed(lc)+'가지</p>':'')+
+ '<div class="btns h"><button type="button" class="btn g" data-act="kit" data-who="self">내가 체크</button><button type="button" class="btn g" data-act="kit" data-who="family">가족 대신 체크</button></div></section></div>'+
+ '<section class="sec"><div class="sec-h"><h2>오늘 돌봄 기록</h2><a class="link" href="#record">기록하기</a></div><div class="grid3">'+ms('med','pill',MED)+ms('meal','meal',MS)+ms('sleep','sleep',MS)+'</div><p class="small muted">‘기록 안 됨’은 아직 기록하지 않았다는 뜻이에요.</p></section>'+
+ '<section class="card"><div class="sec-h"><h2>오늘의 예방 습관</h2><span class="tag ok">'+done+'가지 실천</span></div><p class="muted">보건복지부·중앙치매센터 「치매예방수칙 3·3·3」을 오늘 얼마나 지켰는지 표시해요.</p><a class="btn s sm" href="#prevent">예방 습관 체크하기</a></section>'+
+ '<section class="sec"><h2>치매 바로 알기</h2><div class="group">'+tile('#forget','help','건망증과 치매, 무엇이 다른가요','헷갈리기 쉬운 차이를 정리했어요')+tile('#screening','clinic','치매 검진은 이렇게 받아요','선별검사 → 진단검사 → 감별검사')+tile('#prevent','heart','치매예방수칙 3·3·3','즐길 것, 참을 것, 챙길 것')+'</div></section>'+
+ '<section class="card"><div class="row">'+I('cal',24,P)+'<h2>다음 진료</h2></div><p class="muted">'+(S.appt.date?esc(fmt(S.appt.date))+(S.appt.place?' · '+esc(S.appt.place):''):'다음 진료일이 등록되지 않았어요.')+'</p><a class="btn s sm" href="#clinic">진료 준비하기</a></section>'+
+ '<a class="lrow" href="#help">'+I('phone',24,'#B42318')+'<span class="tx"><b>도움이 필요할 때</b><span>119 · 112 · 치매상담콜센터 1899-9988</span></span>'+I('right',22)+'</a>'+
+ '<button type="button" class="btn s" data-act="patient">'+I('person',22)+' 환자 화면 열기</button>'+foot(true);};
+
+/* --- check kit --- */
+V.check=()=>{
+ const list=S.checks.slice().reverse();
+ return hdr('치매 체크',null,'기억 변화를 살피고, 검진과 예방을 안내해요')+
+ '<section class="core"><span class="eyebrow">'+I('brain',18,P)+' 기억 변화 자가 체크 · 12문항</span><h2>누가 체크하나요?</h2><p>1년 전과 비교해서 답해 주세요. 정답은 없어요.</p><div class="btns"><button type="button" class="btn g" data-act="kit" data-who="self">'+I('person',22)+' 내 기억을 체크해요</button><button type="button" class="btn g" data-act="kit" data-who="family">'+I('family',22)+' 가족을 대신 체크해요</button></div></section>'+
+ banner('','이 체크는 <b>진단 도구가 아니에요.</b> 점수로 치매 여부를 판단하지 않고, 검사가 필요한지 생각해 볼 수 있게 돕는 질문이에요. 표준화된 검사는 치매안심센터와 병원에서 받아요.')+
+ (list.length?'<section class="sec"><h2>지난 체크</h2><div class="list">'+list.map(c=>'<button type="button" class="lrow" data-act="result" data-id="'+c.id+'"><span class="tx"><b>'+fmt(c.date)+'</b><span>'+(c.who==='self'?'본인':'가족이 대신')+' · 달라진 점 '+changed(c)+'가지'+(c.red==='yes'?' · 갑작스러운 변화 있음':'')+'</span></span>'+I('right',22)+'</button>').join('')+'</div><p class="small muted">같은 체크를 몇 달 간격으로 해 두면 진료 때 변화를 설명하기 쉬워요.</p></section>':'')+
+ '<section class="sec"><h2>더 알아보기</h2><div class="group">'+tile('#screening','clinic','치매 검진·진단 절차','어디서, 어떤 순서로 받는지')+tile('#forget','help','건망증과 치매의 차이','“깜빡했다”와 무엇이 다른가요')+tile('#prevent','heart','치매예방수칙 3·3·3','오늘의 예방 습관 체크')+'</div></section>'+
+ '<section class="card"><div class="row">'+I('building',24,P)+'<h2>가까운 치매안심센터</h2></div><p class="muted">선별검사, 상담, 예방 프로그램을 안내받을 수 있어요. 중앙치매센터 누리집에서 지역 센터를 찾거나 치매상담콜센터에 물어보세요.</p><a class="btn s sm" href="https://www.nid.or.kr" rel="noopener">중앙치매센터 누리집 '+I('ext',18)+'</a>'+tel('1899-9988','치매상담콜센터','s')+'</section>'+foot(true);};
+
+V['check-run']=()=>{
+ if(!check)return V.check();
+ const n=Q.length,i=check.i,fam=check.who==='family',subj=fam?esc(S.subject)+'에 대해':'나에 대해';
+ if(i<n){const cur=check.answers[i];
+  return '<div class="sec-h"><span class="tag p">'+(fam?'가족 대신 체크':'내 기억 체크')+'</span><button type="button" class="chip" style="color:var(--tx)" data-act="kit-quit">그만하기</button></div>'+
+  '<div class="sec"><p class="muted" aria-live="polite">'+(i+1)+' / '+n+' · '+subj+'</p><div class="prog" role="progressbar" aria-valuemin="0" aria-valuemax="'+(n+1)+'" aria-valuenow="'+(i+1)+'"><i style="width:'+((i+1)/(n+1)*100)+'%"></i></div></div>'+
+  '<p class="small muted">1년 전과 비교해 주세요.</p><p class="qtext" id="qt" tabindex="-1">'+esc(Q[i][fam?1:0])+'</p>'+
+  '<div class="ans" role="group" aria-labelledby="qt">'+ANS.map(a=>'<button type="button" class="'+(a[1]<0?'q':'')+'" data-act="ans" data-v="'+a[1]+'" aria-pressed="'+(cur===a[1]?'true':'false')+'">'+a[0]+(cur===a[1]?I('check',22):'')+'</button>').join('')+'</div>'+
+  (i>0?'<button type="button" class="link" data-act="kit-prev">'+I('left',20)+' 이전 질문</button>':'');}
+ return '<div class="sec-h"><span class="tag p">마지막 질문</span><button type="button" class="chip" style="color:var(--tx)" data-act="kit-quit">그만하기</button></div>'+
+  '<div class="prog"><i style="width:100%"></i></div>'+
+  '<p class="qtext" id="qt" tabindex="-1">최근 며칠~몇 주 사이에 <u>갑자기</u> 심하게 혼란스러워하거나, 말이 어눌해지거나, 깨어 있기 힘들어 보인 적이 있나요?</p>'+
+  '<p class="small muted">천천히 생기는 기억 변화와 달리, 갑자기 생긴 변화는 다른 원인일 수 있어 따로 여쭤요.</p>'+
+  '<div class="ans" role="group" aria-labelledby="qt"><button type="button" data-act="red" data-v="yes">네, 있었어요</button><button type="button" data-act="red" data-v="no">아니요</button><button type="button" class="q" data-act="red" data-v="unk">잘 모르겠어요</button></div>'+
+  '<button type="button" class="link" data-act="kit-prev">'+I('left',20)+' 이전 질문</button>';};
+
+V['check-result']=()=>{
+ const c=S.checks.find(x=>x.id===resultId);if(!c)return V.check();
+ const fam=c.who==='family',ch=[];c.answers.forEach((a,i)=>{if(a>=1)ch.push([i,a]);});const unk=c.answers.filter(a=>a<0).length;
+ let h=hdr('체크 결과','check',fmt(c.date)+' · '+(fam?'가족이 대신 체크':'본인이 체크'));
+ if(c.red==='yes')h+=banner('urgent','<b>갑자기 생긴 변화는 바로 진료를 받아 보세요.</b><br>치매가 아닌 다른 원인일 수 있어 빨리 확인하는 것이 중요해요. 의식이 흐려지거나 숨쉬기 힘들어하는 등 위급하면 <b>119</b>에 연락하세요.');
+ h+=ch.length?'<section class="card" style="border:2px solid var(--wn)"><span class="tag wn">'+I('warn',16)+' 살펴볼 변화가 있어요</span><h2>1년 전과 달라진 점 '+ch.length+'가지</h2><p>치매안심센터에서 <b>선별검사</b>를 받아 보시길 권해요. 기억 변화는 우울감, 잠, 복용 중인 약처럼 치매가 아닌 이유로도 생길 수 있어서 검사로 확인하는 것이 중요해요.</p></section>'
+ :'<section class="card" style="border:2px solid var(--ok)"><span class="tag ok">'+I('done',16)+' 해당하는 변화가 없었어요</span><h2>지금 체크에서는 달라진 점이 없었어요</h2><p>걱정되는 변화가 생기면 언제든 다시 체크해 보세요. 「치매예방수칙 3·3·3」은 해마다 치매안심센터에서 검진받기를 권해요.</p></section>';
+ if(ch.length)h+='<section class="sec"><h2>달라졌다고 답한 항목</h2><div class="list">'+ch.map(x=>'<div class="item"><span class="tag '+(x[1]===2?'wn':'p')+'">'+(x[1]===2?'많이 그래요':'조금 그래요')+'</span><p>'+esc(Q[x[0]][fam?1:0])+'</p></div>').join('')+'</div></section>';
+ if(unk)h+='<p class="muted small">‘잘 모르겠어요’ '+unk+'개는 달라진 점에 넣지 않았어요. 함께 지내는 가족에게 물어보면 도움이 돼요.</p>';
+ h+='<section class="sec"><h2>다음에 할 일</h2>'+
+  '<div class="step"><span class="n">1</span><div><h3>치매안심센터에 문의하기</h3><p class="muted">사는 곳의 치매안심센터에서 선별검사를 안내받을 수 있어요.</p></div></div>'+
+  '<div class="step"><span class="n">2</span><div><h3>이 결과를 진료 준비에 남기기</h3><p class="muted">달라진 점을 적어 가면 설명하기 쉬워요.</p></div></div></section>'+
+  '<div class="btns"><button type="button" class="btn" data-act="toq">'+I('plus',22)+' 진료 질문에 추가</button><a class="btn s" href="https://www.nid.or.kr" rel="noopener">치매안심센터 찾기 '+I('ext',18)+'</a><button type="button" class="btn s" data-act="copyres">'+I('copy',22)+' 결과 요약 복사</button><a class="btn s" href="#screening">검진 절차 보기</a></div>'+
+  banner('','이 결과는 진단이 아니에요. 같은 체크를 해도 치매 여부는 검사와 전문의 진료로만 알 수 있어요.')+
+  '<button type="button" class="link" style="color:var(--dg)" data-act="delcheck">이 결과 지우기</button>'+foot(true);
+ return h;};
+
+V.screening=()=>hdr('치매 검진·진단 절차','check','보건복지부 치매조기검진사업 안내')+
+ '<p>치매 조기검진은 세 단계로 진행돼요.</p>'+
+ [['선별검사','치매안심센터','인지선별검사로 더 자세한 검사가 필요한지 살펴봐요. 치매나 경도인지장애로 진단받지 않은 주민이 받을 수 있어요.'],['진단검사','연계 병원','신경인지검사와 전문의 진료를 받아요.'],['감별검사','연계 병원','혈액검사, 뇌 영상 촬영 등으로 원인을 살펴봐요.']].map((s,i)=>'<div class="card"><div class="step"><span class="n">'+(i+1)+'</span><div style="display:flex;flex-direction:column;gap:6px"><h3>'+(i+1)+'단계 '+s[0]+'</h3><span class="tag p">'+s[1]+'</span><p class="muted">'+s[2]+'</p></div></div></div>').join('')+
+ banner('','검사비 지원 대상과 금액은 소득·지역에 따라 달라요. 사는 곳의 치매안심센터에 확인하세요.')+
+ '<section class="card"><h2>검사 전에 준비하면 좋은 것</h2><ul class="ul">'+['언제부터 어떤 변화가 있었는지 적은 메모','복용 중인 약 목록','함께 지내는 가족의 동행'].map(x=>'<li>'+I('check',22,P)+'<span>'+x+'</span></li>').join('')+'</ul><a class="btn s sm" href="#clinic">진료 준비에 정리하기</a></section>'+
+ '<div class="btns"><a class="btn" href="https://www.nid.or.kr" rel="noopener">치매안심센터 찾기 '+I('ext',18)+'</a>'+tel('1899-9988','치매상담콜센터','s')+'</div>'+
+ '<p class="small muted">출처: 보건복지부 치매조기검진사업, 중앙치매센터</p>'+foot(true);
+
+V.forget=()=>hdr('건망증과 치매','check','헷갈리기 쉬운 차이')+
+ '<p>나이가 들면 깜빡하는 일이 늘 수 있어요. 일반적으로 아래처럼 구분해서 이야기해요.</p>'+
+ '<div class="cmp"><div class="a"><span class="tag p">흔한 건망증</span><p><b>일부를 잊어요</b><br>힌트를 들으면 떠올리는 경우가 많아요.</p><p><b>잊었다는 걸 알아요</b><br>메모로 보완할 수 있어요.</p><p><b>일상은 그대로예요</b><br>혼자 하던 일은 계속 해요.</p></div>'+
+ '<div class="b"><span class="tag wn">살펴볼 변화</span><p><b>경험 전체를 잊어요</b><br>힌트를 들어도 떠오르지 않을 수 있어요.</p><p><b>잊은 것을 모르기도 해요</b><br>같은 질문을 반복해요.</p><p><b>일상이 어려워져요</b><br>계산, 길 찾기, 집안일이 서툴러요.</p></div></div>'+
+ banner('warn','이 표로 스스로 판단하지 마세요. 차이는 검사로 확인해요. 걱정되면 기억 변화 체크를 해 보고 치매안심센터에 문의하세요.')+
+ '<div class="btns"><button type="button" class="btn" data-act="kit" data-who="self">기억 변화 체크하기</button><a class="btn s" href="#screening">검진 절차 보기</a></div>'+foot(true);
+
+V.prevent=()=>{const t=TODAY(),on=S.prevent[t]||[];
+ const wk=daysBack(7).filter(k=>(S.prevent[k]||[]).length).length;
+ return hdr('치매예방수칙 3·3·3','check','보건복지부·중앙치매센터')+
+ '<div class="hero"><p class="muted">'+fmt(t)+'</p><h2>오늘 실천한 것을 눌러 표시해요</h2><p class="muted small">이번 주 '+wk+'일 기록했어요. 못 한 날이 있어도 괜찮아요.</p></div>'+
+ HABITS.map(g=>'<section class="sec"><h2>'+g[0]+'</h2>'+g[1].map(h=>'<button type="button" class="habit" data-act="habit" data-id="'+h[0]+'" aria-pressed="'+(on.indexOf(h[0])>=0?'true':'false')+'"><span class="bx">'+I('check',20,'#fff')+'</span><span style="flex:1">'+h[1]+'</span><span class="done">실천</span></button>').join('')+'</section>').join('')+
+ banner('','예방수칙은 생활습관 안내예요. 지킨다고 치매가 생기지 않는다는 뜻은 아니에요.')+
+ '<p class="small muted">출처: 보건복지부·중앙치매센터 「치매예방수칙 3·3·3」</p>'+foot(true);};
+
+/* --- record --- */
+function recSum(r){const a=[];if(r.med&&r.med!=='none')a.push('약: '+MED[r.med][3]);if(r.meal&&r.meal!=='none')a.push('식사: '+MS[r.meal][3]);if(r.sleep&&r.sleep!=='none')a.push('수면: '+MS[r.sleep][3]);return a.join(' · ')||'선택한 항목 없음';}
+V.record=()=>{
+ const d=editDay||TODAY(),r=Object.assign({med:'none',meal:'none',sleep:'none',note:'',opinion:''},S.records[d]||{}),isToday=d===TODAY();
+ const g=(k,map,ic,title,keys)=>'<section class="card"><div class="row">'+I(ic,24,P)+'<h2>'+title+'</h2></div><div class="opts" role="group" aria-label="'+title+'">'+keys.map(v=>opt(k,v,map[v][0],r[k]===v,v==='none'?null:null)).join('')+'</div>'+(k==='med'?banner('','처방과 복용 관련 문제는 의료진·약사에게 확인하세요.'):'')+'</section>';
+ let h=hdr('돌봄 기록',null,esc(S.subject)+' · '+fmt(d));
+ if(!isToday)h+=banner('warn','<b>'+fmt(d)+' 기록을 고치는 중이에요.</b> 고쳐도 이전 내용은 정정 이력으로 남아요. <button type="button" class="link" data-act="today" style="min-height:44px">오늘 기록으로</button>');
+ h+='<p class="small muted">아는 것만 골라도 돼요. 고르지 않은 항목은 ‘아직 기록하지 않았어요’로 남아요.</p>';
+ h+=g('med',MED,'pill','약 확인',['confirmed','not_taken','unknown','none'])+g('meal',MS,'meal','식사',['same','diff','unk','none'])+g('sleep',MS,'sleep','수면',['same','diff','unk','none']);
+ h+='<section class="card"><div class="row">'+I('pencil',24,P)+'<h2>오늘 달랐던 점</h2></div><label class="f">본 것 (사실)<textarea class="in" id="note" placeholder="예: 저녁에 평소보다 일찍 잠들었어요">'+esc(r.note)+'</textarea></label><label class="f">내 생각 (선택)<textarea class="in" id="opinion" placeholder="예: 낮에 많이 걸어서 그런 것 같아요">'+esc(r.opinion)+'</textarea><span class="help">짐작이나 느낌은 여기에 따로 적어요. 진료 요약에서 사실과 나눠서 보여 드려요.</span></label></section>';
+ h+='<div class="btns"><button type="button" class="btn" data-act="saverec">기록 저장</button><a class="btn s" href="#event">'+I('warn',22)+' 특별한 일 기록 (넘어짐 등)</a></div>';
+ const days=Object.keys(S.records).sort().reverse(),evs=S.events.slice().reverse();
+ h+='<section class="sec"><h2>지난 기록</h2><div class="seg" role="group" aria-label="기록 종류">'+[['all','전체'],['med','복약'],['ms','식사·수면'],['ev','특별한 일']].map(f=>'<button type="button" data-act="recf" data-f="'+f[0]+'" aria-pressed="'+(recFilter===f[0]?'true':'false')+'"><span class="ck">'+I('check',18)+'</span>'+f[1]+'</button>').join('')+'</div>';
+ let items=[];
+ if(recFilter!=='ev')days.forEach(k=>{const x=S.records[k];if(recFilter==='med'&&(!x.med||x.med==='none'))return;if(recFilter==='ms'&&(!x.meal||x.meal==='none')&&(!x.sleep||x.sleep==='none'))return;items.push([k,'<button type="button" class="item" style="text-align:left" data-act="editday" data-k="'+k+'"><span class="row" style="justify-content:space-between"><b>'+fmt(k)+'</b>'+((x.history||[]).length?'<span class="tag p">정정됨</span>':'')+'</span><span>'+esc(recSum(x))+'</span>'+(x.note?'<span class="muted small">본 것: '+esc(x.note)+'</span>':'')+'<span class="meta">고치려면 누르세요</span></button>']);});
+ if(recFilter==='all'||recFilter==='ev')evs.forEach(e=>items.push([e.date,'<div class="item dash"><span class="row" style="justify-content:space-between"><b>'+fmt(e.date)+'</b><span class="tag wn">특별한 일</span></span><span>'+esc(e.kind)+'</span>'+(e.text?'<span class="muted small">'+esc(e.text)+'</span>':'')+'</div>']));
+ items.sort((a,b)=>a[0]<b[0]?1:-1);
+ h+=items.length?'<div class="list">'+items.map(x=>x[1]).join('')+'</div>':'<div class="card" style="border-style:dashed;align-items:center;text-align:center">'+I('rec',40,P)+'<p><b>아직 기록이 없어요.</b><br>오늘부터 조금씩 기록해 보세요.</p></div>';
+ return h+'</section>'+foot(true);};
+
+V.event=()=>hdr('특별한 일 기록','record','본 그대로 적어 주세요. 판단은 의료진과 함께해요.')+
+ '<section class="card"><h2>어떤 일이었나요?</h2><div class="opts">'+EVK.map((k,i)=>opt('evk',i,k,i===0)).join('')+'</div></section>'+
+ '<section class="card"><label class="f">날짜<input class="in" type="date" id="evd" value="'+TODAY()+'"></label><label class="f">본 내용<textarea class="in" id="evt" placeholder="예: 거실에서 미끄러져 앉았어요"></textarea></label></section>'+
+ banner('urgent','갑자기 심하게 혼란스러워하거나, 숨쉬기 힘들어하거나, 크게 다쳤다면 <b>119</b>에 연락하세요.')+
+ '<div class="btns"><button type="button" class="btn" data-act="saveev">기록 저장</button><a class="btn s" href="#record">취소</a></div>'+foot(false);
+
+/* --- clinic --- */
+V.clinic=()=>{const a=S.appt||{};
+ let h=hdr('진료 준비',null,'다음 진료에 들고 갈 것을 정리해요');
+ h+='<section class="card"><div class="row">'+I('cal',24,P)+'<h2>다음 진료</h2></div><label class="f">날짜<input class="in" type="date" id="ad" value="'+esc(a.date||'')+'"></label><label class="f">기관<input class="in" id="ap" value="'+esc(a.place||'')+'" placeholder="예: 다니는 병원 이름"></label><label class="f">진료과<input class="in" id="adep" value="'+esc(a.dept||'')+'" placeholder="예: 신경과"></label><label class="f">메모<input class="in" id="am" value="'+esc(a.memo||'')+'" placeholder="예: 가족 1이 함께 가기로 함"></label><button type="button" class="btn s sm" data-act="saveappt">진료 일정 저장</button></section>';
+ h+='<section class="card"><div class="row">'+I('pencil',24,P)+'<h2>물어볼 질문</h2></div><div class="row"><label class="sr" for="qn">새 질문</label><input class="in" id="qn" placeholder="예: 밤에 자주 깨는 것도 관련이 있나요?" style="flex:1"><button type="button" class="iconbtn" style="min-height:56px;min-width:56px;border-radius:14px;background:var(--p);color:#fff;border-color:var(--p)" data-act="addq" aria-label="질문 추가">'+I('plus',24)+'</button></div>'+
+  (S.questions.length?'<div class="list">'+S.questions.map((q,i)=>'<div class="item" style="'+(q.done?'opacity:.75':'')+'"><p style="'+(q.done?'text-decoration:line-through':'')+'"><b>'+(i+1)+'.</b> '+esc(q.text)+'</p><div class="btns h" style="gap:6px"><button type="button" class="btn s sm" data-act="qup" data-i="'+i+'" aria-label="위로">'+I('up',20)+'</button><button type="button" class="btn s sm" data-act="qdn" data-i="'+i+'" aria-label="아래로">'+I('down',20)+'</button><button type="button" class="btn s sm" data-act="qdone" data-i="'+i+'">'+(q.done?'되돌리기':'물어봤어요')+'</button><button type="button" class="btn do sm" data-act="qdel" data-i="'+i+'" aria-label="지우기">'+I('trash',20)+'</button></div></div>').join('')+'</div>':'<p class="muted">등록한 질문이 없어요. 위에서부터 진료 요약에 들어가요.</p>')+'</section>';
+ h+='<section class="card"><div class="row">'+I('pill',24,P)+'<h2>복용 약 수첩</h2></div>'+banner('','적어 두는 수첩이에요. 약을 바꾸거나 양을 정하는 일은 의료진·약사와 해요.')+
+  '<label class="f">약 이름<input class="in" id="mn" placeholder="처방전에 적힌 이름 그대로"></label><label class="f">복용 시각<input class="in" id="mt" placeholder="예: 아침 식사 후"></label><button type="button" class="btn s sm" data-act="addmed">'+I('plus',20)+' 수첩에 추가</button>'+
+  (S.meds.length?'<div class="list">'+S.meds.map((m,i)=>'<div class="lrow"><span class="tx"><b>'+esc(m.name)+'</b><span>'+esc(m.time||'복용 시각 미기록')+'</span></span><button type="button" class="iconbtn" data-act="delmed" data-i="'+i+'" aria-label="'+esc(m.name)+' 지우기">'+I('trash',20,'#B42318')+'</button></div>').join('')+'</div>':'')+'</section>';
+ h+='<section class="core"><span class="eyebrow">'+I('rec',18,P)+' 진료용 요약</span><h2>기록을 모아 한 장으로</h2><p>관찰한 사실과 가족의 의견을 나눠서 정리해요.</p><a class="btn" href="#summary">요약 만들기</a></section>';
+ return h+foot(true);};
+
+function buildSummary(){
+ const ks=daysBack(period),rs=ks.map(k=>S.records[k]).filter(Boolean),c={confirmed:0,not_taken:0,unknown:0};let md=0,sd=0;
+ rs.forEach(r=>{if(c[r.med]!==undefined)c[r.med]++;if(r.meal==='diff')md++;if(r.sleep==='diff')sd++;});
+ const recDays=rs.length,medNone=period-c.confirmed-c.not_taken-c.unknown;
+ const notes=ks.slice().reverse().filter(k=>S.records[k]&&S.records[k].note).map(k=>fmt(k,false)+' — '+S.records[k].note);
+ const ops=ks.slice().reverse().filter(k=>S.records[k]&&S.records[k].opinion).map(k=>fmt(k,false)+' — '+S.records[k].opinion);
+ const evs=S.events.filter(e=>ks.indexOf(e.date)>=0).map(e=>fmt(e.date,false)+' — '+e.kind+(e.text?': '+e.text:''));
+ const chs=S.checks.filter(x=>ks.indexOf(x.date)>=0).map(x=>fmt(x.date,false)+' — 기억 변화 체크('+(x.who==='self'?'본인':'가족')+'), 달라진 점 '+changed(x)+'가지'+(x.red==='yes'?', 갑작스러운 변화 있음':''));
+ const qs=S.questions.filter(q=>!q.done).map((q,i)=>(i+1)+'. '+q.text);
+ return {recDays,c,medNone,md,sd,notes,ops,evs,chs,qs,from:ks[ks.length-1],to:ks[0]};}
+function sumText(s){const name=shareOpt.alias?'돌봄 대상 A':S.subject;const L=[];
+ L.push('[진료용 요약] '+name+' · '+fmt(s.from,false)+' ~ '+fmt(s.to,false)+' ('+period+'일)','');
+ L.push('■ 관찰한 사실','- 기록한 날 '+s.recDays+'일 / 기록하지 않은 날 '+(period-s.recDays)+'일');
+ L.push('- 약 확인: 복용 확인 '+s.c.confirmed+'일, 복용하지 않음 '+s.c.not_taken+'일, 확인 못 함 '+s.c.unknown+'일, 기록 없음 '+s.medNone+'일','  (기록 없음은 복용하지 않았다는 뜻이 아님)');
+ L.push('- 식사가 평소와 달랐던 날 '+s.md+'일 / 수면이 평소와 달랐던 날 '+s.sd+'일');
+ s.notes.forEach(n=>L.push('- '+n));
+ L.push('','■ 특별한 일');if(s.evs.length)s.evs.forEach(n=>L.push('- '+n));else L.push('- 기록된 일이 없어요');
+ L.push('','■ 기억 변화 자가 체크 (진단 아님)');if(s.chs.length)s.chs.forEach(n=>L.push('- '+n));else L.push('- 이 기간에 한 체크가 없어요');
+ if(shareOpt.opinion){L.push('','■ 가족의 의견·추정');if(s.ops.length)s.ops.forEach(n=>L.push('- '+n));else L.push('- 적은 내용이 없어요');}
+ L.push('','■ 진료 때 물어볼 것');if(s.qs.length)s.qs.forEach(n=>L.push(n));else L.push('- 등록한 질문이 없어요');
+ L.push('','ApuDa 기억돌봄에서 정리한 가족 기록이에요. 의료적 판단을 담고 있지 않아요.');return L.join('\n');}
+V.summary=()=>{const s=buildSummary();
+ const sec=(kind,title,body)=>'<section class="item'+(kind==='op'?' dash':'')+'"><span class="tag '+(kind==='op'?'wn':'p')+'">'+(kind==='op'?'가족의 의견·추정':'관찰한 사실')+'</span><h3>'+title+'</h3>'+body+'</section>';
+ const lines=a=>a.length?'<ul class="ul">'+a.map(x=>'<li>'+I('right',18,P)+'<span>'+esc(x)+'</span></li>').join('')+'</ul>':'<p class="muted">이 기간에 기록된 내용이 없어요.</p>';
+ return hdr('진료용 요약','clinic',esc(S.subject))+
+ '<div class="seg" role="group" aria-label="요약 기간">'+[7,14,30].map(p=>'<button type="button" data-act="period" data-p="'+p+'" aria-pressed="'+(period===p?'true':'false')+'"><span class="ck">'+I('check',18)+'</span>'+p+'일</button>').join('')+'</div>'+
+ '<p class="small muted">'+fmt(s.from,false)+' ~ '+fmt(s.to,false)+'에 남긴 기록이에요.</p>'+
+ sec('f','기록한 날','<p>기록한 날 '+s.recDays+'일 · 기록하지 않은 날 '+(period-s.recDays)+'일</p>')+
+ sec('f','약 확인 기록','<div class="grid2"><p>'+I('done',20,'#1F6B4C')+' 복용 확인 '+s.c.confirmed+'일</p><p>'+I('not',20)+' 복용 안 함 '+s.c.not_taken+'일</p><p>'+I('help',20,'#5F6E7E')+' 확인 못 함 '+s.c.unknown+'일</p><p>'+I('dash',20,'#5F6E7E')+' 기록 없음 '+s.medNone+'일</p></div><p class="small muted">기록 없음은 복용하지 않았다는 뜻이 아니에요.</p>')+
+ sec('f','식사·수면','<p>식사가 평소와 달랐던 날 '+s.md+'일 · 수면이 달랐던 날 '+s.sd+'일</p>')+
+ sec('f','관찰한 변화',lines(s.notes))+sec('f','특별한 일',lines(s.evs))+sec('f','기억 변화 자가 체크',lines(s.chs))+sec('op','가족이 느낀 점',lines(s.ops))+
+ '<section class="item"><span class="tag p">진료 때 물어볼 것</span>'+lines(s.qs)+'</section>'+
+ banner('','의료진에게 보여주기 전에 내용을 확인해 주세요.')+
+ '<button type="button" class="btn" data-act="share">'+I('share',22)+' 공유 전 미리보기</button>'+foot(true);};
+
+/* --- help & settings --- */
+V.help=()=>hdr('도움',null,'급할 때와 막막할 때 연락할 곳')+
+ banner('urgent','<b>위급할 때는 앱보다 119·112 등 공식 도움 경로를 먼저 이용하세요.</b>')+
+ '<section class="sec"><h2>다치거나 갑자기 상태가 달라졌을 때</h2>'+tel('119','119에 전화하기')+'<p class="small">갑자기 심하게 혼란스러워함, 의식 변화, 숨쉬기 힘듦, 크게 넘어짐은 바로 확인이 필요할 수 있어요.</p></section>'+
+ '<section class="sec"><h2>찾을 수 없을 때</h2>'+tel('112','112에 전화하기')+'<p class="small">마지막으로 본 곳과 시간, 옷차림을 알려 주세요. 이 앱은 위치를 추적하거나 자동으로 신고하지 않아요.</p></section>'+
+ '<section class="card"><div class="row">'+I('phone',24,P)+'<h2>치매 상담</h2></div><p class="muted">보건복지부가 만들고 중앙치매센터가 운영하는 치매 전문 상담 전화예요. 가까운 치매안심센터도 안내받을 수 있어요.</p>'+tel('1899-9988','치매상담콜센터','s')+'</section>'+
+ '<section class="sec"><h2>공공 지원</h2><div class="group">'+
+ '<a class="lrow" href="https://www.nid.or.kr" rel="noopener">'+I('building',26,P)+'<span class="tx"><b>치매안심센터 찾기</b><span>중앙치매센터 누리집 · 검진, 상담, 예방 프로그램</span></span>'+I('ext',20)+'</a>'+
+ '<div class="lrow">'+I('shield',26,P)+'<span class="tx"><b>실종 예방 서비스</b><span>인식표, 지문 사전등록 등은 치매안심센터에서 안내받아요</span></span></div>'+
+ '<a class="lrow" href="tel:15771000">'+I('family',26,P)+'<span class="tx"><b>장기요양보험 문의</b><span>국민건강보험공단 1577-1000</span></span>'+I('phone',20)+'</a></div></section>'+
+ '<section class="sec"><h2>설정</h2><div class="group"><a class="lrow" href="#settings">'+I('person',26,P)+'<span class="tx"><b>설정과 가족 연락처</b><span>돌봄 대상 이름, 글자 크기, 환자 화면 일정</span></span>'+I('right',22)+'</a><button type="button" class="lrow" data-act="patient">'+I('home',26,P)+'<span class="tx"><b>환자 화면 열기</b><span>큰 글씨, 단순한 화면</span></span>'+I('right',22)+'</button></div></section>'+
+ '<p class="small muted">전화 연결은 휴대폰에서만 돼요. 번호는 화면에 그대로 적어 두었어요.</p>'+foot(true);
+
+V.settings=()=>hdr('설정','help')+
+ '<section class="card"><label class="f">돌봄 대상을 부르는 이름<input class="in" id="subj" value="'+esc(S.subject)+'" placeholder="예: 우리 엄마"></label><span class="help">실명이 아니어도 돼요.</span><button type="button" class="btn s sm" data-act="savesubj">저장</button></section>'+
+ '<section class="card"><h2>글자 크기</h2><div class="seg" role="group" aria-label="글자 크기">'+['기본','크게','아주 크게'].map((l,i)=>'<button type="button" data-act="setfs" data-v="'+i+'" aria-pressed="'+(S.fs===i?'true':'false')+'"><span class="ck">'+I('check',18)+'</span>'+l+'</button>').join('')+'</div></section>'+
+ '<section class="card"><h2>가족 연락처</h2><p class="muted small">환자 화면의 ‘가족에게 연락’에 보여요.</p><label class="f">이름<input class="in" id="cn" placeholder="예: 큰딸"></label><label class="f">전화번호<input class="in" id="cp" inputmode="tel" placeholder="010-0000-0000"></label><button type="button" class="btn s sm" data-act="addc">'+I('plus',20)+' 연락처 추가</button>'+
+ (S.contacts.length?'<div class="list">'+S.contacts.map((c,i)=>'<div class="lrow"><span class="tx"><b>'+esc(c.name)+'</b><span>'+esc(c.phone)+'</span></span><button type="button" class="iconbtn" data-act="delc" data-i="'+i+'" aria-label="'+esc(c.name)+' 지우기">'+I('trash',20,'#B42318')+'</button></div>').join('')+'</div>':'')+'</section>'+
+ '<section class="card"><h2>환자 화면의 오늘 할 일</h2><div class="row"><input class="in" id="stime" placeholder="오전 9시" style="flex:0 0 38%" aria-label="시간"><input class="in" id="stitle" placeholder="아침 식사" style="flex:1" aria-label="할 일"></div><button type="button" class="btn s sm" data-act="adds">'+I('plus',20)+' 할 일 추가</button>'+
+ '<div class="list">'+S.schedule.map((s,i)=>'<div class="lrow"><span class="tx"><b>'+esc(s.title)+'</b><span>'+esc(s.time)+'</span></span><button type="button" class="iconbtn" data-act="dels" data-i="'+i+'" aria-label="'+esc(s.title)+' 지우기">'+I('trash',20,'#B42318')+'</button></div>').join('')+'</div></section>'+
+ '<section class="card"><h2>개인정보</h2><p class="muted">기록은 이 기기의 브라우저에만 저장되고 서버로 보내지 않아요. 브라우저 데이터를 지우면 함께 지워져요.'+(canSave?'':' <b>지금은 저장할 수 없는 환경이라 화면을 닫으면 사라져요.</b>')+'</p><button type="button" class="btn do sm" data-act="wipe">모든 기록 지우기</button></section>'+foot(true);
+
+/* --- patient --- */
+V.patient=()=>{const t=TODAY(),hd=S.prevent[t]||[];
+ return '<div class="pt" style="display:flex;flex-direction:column;gap:16px"><div class="canopy" style="padding-bottom:30px"><p style="font-size:1.125rem">오늘은</p><h1 style="font-size:2.125rem">'+fmt(t)+'</h1><p style="font-size:1.25rem">좋은 하루 보내세요.</p></div>'+
+ '<a class="big" href="#p-today"><span class="ic">'+I('cal',38,P)+'</span><span><b>오늘 할 일</b><span>오늘의 일정을 확인해요</span></span></a>'+
+ '<a class="big" href="#p-call"><span class="ic">'+I('phone',38,P)+'</span><span><b>가족에게 연락</b><span>등록한 가족과 연락해요</span></span></a>'+
+ '<a class="big" href="#p-habit"><span class="ic">'+I('heart',38,P)+'</span><span><b>오늘의 건강 습관</b><span>'+(hd.length?hd.length+'가지 했어요':'걷기, 읽기, 연락하기')+'</span></span></a>'+
+ '<button type="button" class="btn s" style="min-height:64px;font-size:1.25rem" data-act="fs">'+I('plus',24)+' 글자 크게</button>'+
+ '<button type="button" class="link" style="align-self:center" data-act="caregiver">보호자 화면으로</button>'+foot(false)+'</div>';};
+V['p-today']=()=>{const t=TODAY(),st=S.sched[t]||{};
+ return '<div class="pt" style="display:flex;flex-direction:column;gap:16px">'+hdr('오늘 할 일','patient',fmt(t))+
+ (S.schedule.length?S.schedule.map(s=>{const v=st[s.id];return '<section class="card" style="border:2px solid '+(v==='done'?'var(--ok)':'var(--p)')+';'+(v==='done'?'background:var(--okbg)':'')+'"><p style="font-size:1.25rem" class="muted">'+esc(s.time)+'</p><h2 style="font-size:1.75rem">'+esc(s.title)+'</h2>'+
+  (v==='done'?'<p style="font-size:1.25rem;font-weight:700;color:var(--ok)" class="row">'+I('done',28,'#1F6B4C')+' 했어요</p><button type="button" class="btn s" data-act="sched" data-id="'+s.id+'" data-v="">아직 안 했어요</button>':
+  (v==='later'?'<p style="font-size:1.125rem" class="muted">나중에 하기로 했어요</p>':'')+'<div class="btns h"><button type="button" class="btn" style="min-height:64px;font-size:1.25rem" data-act="sched" data-id="'+s.id+'" data-v="done">했어요</button>'+(v==='later'?'':'<button type="button" class="btn s" style="min-height:64px;font-size:1.25rem" data-act="sched" data-id="'+s.id+'" data-v="later">나중에</button>')+'</div>')+'</section>';}).join(''):'<div class="card" style="text-align:center;align-items:center">'+I('cal',44,P)+'<p style="font-size:1.25rem">오늘 등록된 일정이 없어요.</p></div>')+
+ '<a class="btn s" style="min-height:64px;font-size:1.25rem" href="#patient">처음으로</a></div>';};
+V['p-call']=()=>'<div class="pt" style="display:flex;flex-direction:column;gap:16px">'+hdr('가족에게 연락','patient','전화할 가족을 골라 주세요')+
+ (S.contacts.length?S.contacts.map((c,i)=>'<section class="card" style="border:2px solid var(--p);align-items:stretch;text-align:center"><span style="align-self:center;display:flex;align-items:center;justify-content:center;width:88px;height:88px;border-radius:50%;background:var(--soft)">'+I('person',48,P)+'</span><h2 style="font-size:1.75rem">'+esc(c.name)+'</h2><button type="button" class="btn" style="min-height:68px;font-size:1.25rem" data-act="call" data-i="'+i+'">'+I('phone',28)+' '+esc(c.name)+'에게 전화하기</button></section>').join(''):
+ '<section class="card" style="border:2px dashed var(--nt);text-align:center;align-items:center">'+I('person',48,'#5F6E7E')+'<p style="font-size:1.25rem">가족 연락처를 등록해 주세요.</p><p class="muted">보호자가 설정에서 넣어 줄 수 있어요.</p></section>')+
+ '<a class="btn s" style="min-height:64px;font-size:1.25rem" href="#patient">처음으로</a></div>';
+V['p-habit']=()=>{const t=TODAY(),on=S.prevent[t]||[];const hs=[['walk','walk','걷기'],['read','book','책 읽기, 글쓰기'],['fish','meal','생선과 채소 먹기'],['talk','phone','가족·친구와 연락하기']];
+ return '<div class="pt" style="display:flex;flex-direction:column;gap:16px">'+hdr('오늘의 건강 습관','patient','한 것을 눌러 주세요')+
+ hs.map(h=>'<button type="button" class="habit" style="min-height:76px;font-size:1.375rem;border-radius:22px" data-act="habit" data-id="'+h[0]+'" aria-pressed="'+(on.indexOf(h[0])>=0?'true':'false')+'"><span class="bx" style="width:36px;height:36px">'+I('check',24,'#fff')+'</span>'+I(h[1],30,P)+'<span style="flex:1">'+h[2]+'</span><span class="done" style="font-size:1rem">했어요</span></button>').join('')+
+ '<p style="font-size:1.125rem" class="muted">못 한 것이 있어도 괜찮아요.</p><a class="btn s" style="min-height:64px;font-size:1.25rem" href="#patient">처음으로</a></div>';};
+V['p-help']=()=>'<div class="pt" style="display:flex;flex-direction:column;gap:16px">'+hdr('도움이 필요해요','patient')+
+ (S.contacts[0]?'<button type="button" class="btn" style="min-height:76px;font-size:1.375rem" data-act="call" data-i="0">'+I('phone',30)+' '+esc(S.contacts[0].name)+'에게 전화하기</button>':'<p style="font-size:1.25rem">등록된 가족 연락처가 없어요.</p>')+
+ banner('urgent','<span style="font-size:1.125rem">긴급한 도움이 필요하면 <b>119</b>에 연락하세요.</span>')+tel('119','119에 전화하기')+
+ '<a class="btn s" style="min-height:64px;font-size:1.25rem" href="#patient">처음으로</a></div>';
+
+/* ---------- router ---------- */
+const PT={patient:1,'p-today':1,'p-call':1,'p-habit':1,'p-help':1};
+function route(){let h=(location.hash||'').slice(1);
+ if(!S.onboarded&&h!=='welcome')h='welcome';
+ if(!V[h])h=S.onboarded?(S.role==='patient'?'patient':'home'):'welcome';
+ if(h==='check-run'&&!check)h='check';
+ const pt=!!PT[h],wel=h==='welcome';
+ top.innerHTML=pt?topPatient():topCaregiver();
+ const tb=TABOF[h];
+ tabs.hidden=pt||wel||h==='check-run';
+ tabs.innerHTML=TABS.map(t=>'<a href="#'+t[0]+'"'+(tb===t[0]?' aria-current="page"':'')+'><span class="pill">'+I(t[2],24)+'</span><span>'+t[1]+'</span><span class="bar"></span></a>').join('');
+ view.className=tabs.hidden?'':'withtabs';
+ view.innerHTML=V[h]();
+ document.title=({home:'홈',check:'치매 체크','check-run':'기억 변화 체크','check-result':'체크 결과',screening:'검진 절차',forget:'건망증과 치매',prevent:'예방수칙',record:'돌봄 기록',event:'특별한 일',clinic:'진료 준비',summary:'진료용 요약',help:'도움',settings:'설정',patient:'환자 화면','p-today':'오늘 할 일','p-call':'가족에게 연락','p-habit':'건강 습관','p-help':'도움',welcome:'시작'}[h]||'')+' · ApuDa 기억돌봄';
+ window.scrollTo(0,0);
+ const q=document.getElementById('qt');if(q)q.focus();}
+function go(h){if(location.hash==='#'+h)route();else location.hash=h;}
+addEventListener('hashchange',route);
+
+/* ---------- actions ---------- */
+function val(id){const e=document.getElementById(id);return e?e.value.trim():'';}
+document.addEventListener('click',e=>{
+ const o=e.target.closest('button[data-opt]');
+ if(o){[...o.parentElement.querySelectorAll('button[data-opt="'+o.dataset.opt+'"]')].forEach(b=>b.setAttribute('aria-pressed','false'));o.setAttribute('aria-pressed','true');return;}
+ const s=e.target.closest('button[data-sw]');
+ if(s){const on=s.getAttribute('aria-checked')!=='true';s.setAttribute('aria-checked',on?'true':'false');s.querySelector('.st').textContent=on?'켜짐':'꺼짐';shareOpt[s.dataset.sw]=on;const p=document.getElementById('sharepre');if(p)p.textContent=sumText(buildSummary());return;}
+ const b=e.target.closest('[data-act]');if(!b)return;const a=b.dataset.act,d=b.dataset;
+ switch(a){
+ case 'dlg-ok':{const f=dlgOk;closeDlg();if(f)f();break;}
+ case 'dlg-x':closeDlg();break;
+ case 'start':S.onboarded=true;S.role=d.role==='patient'?'patient':'caregiver';save();if(d.role==='check'){check={who:'self',i:0,answers:[]};go('check-run');}else go(d.role==='patient'?'patient':'home');break;
+ case 'fs':S.fs=(S.fs+1)%3;save();applyFs();toast('글자 크기: '+['기본','크게','아주 크게'][S.fs]);route();break;
+ case 'setfs':S.fs=+d.v;save();applyFs();route();break;
+ case 'patient':S.role='patient';save();go('patient');break;
+ case 'caregiver':S.role='caregiver';save();go('home');break;
+ case 'kit':check={who:d.who,i:0,answers:[]};go('check-run');break;
+ case 'kit-quit':dialog('체크를 그만할까요?','<p>지금까지 답한 내용은 저장되지 않아요.</p>','그만하기',()=>{check=null;go('check');});break;
+ case 'kit-prev':if(check.i>0){check.i--;route();}break;
+ case 'ans':check.answers[check.i]=+d.v;check.i++;route();break;
+ case 'red':{const c={id:uid(),date:TODAY(),who:check.who,answers:check.answers.slice(0,Q.length),red:d.v};S.checks.push(c);save();check=null;resultId=c.id;go('check-result');break;}
+ case 'result':resultId=d.id;go('check-result');break;
+ case 'delcheck':dialog('이 결과를 지울까요?','<p>지운 결과는 되돌릴 수 없어요.</p>','지우기',()=>{S.checks=S.checks.filter(x=>x.id!==resultId);save();toast('결과를 지웠어요.');go('check');},'d');break;
+ case 'toq':{const c=S.checks.find(x=>x.id===resultId);const n=c?changed(c):0;S.questions.push({id:uid(),text:'기억 변화 자가 체크('+fmt(c.date,false)+')에서 달라진 점이 '+n+'가지 있었어요. 검사가 필요할까요?',done:false});save();toast('진료 질문에 추가했어요.');break;}
+ case 'copyres':{const c=S.checks.find(x=>x.id===resultId);if(!c)break;const fam=c.who==='family';const L=['[기억 변화 자가 체크] '+fmt(c.date)+' · '+(fam?'가족이 대신 체크':'본인 체크'),'1년 전과 달라진 점 '+changed(c)+'가지'];c.answers.forEach((x,i)=>{if(x>=1)L.push('- '+Q[i][fam?1:0]+' ('+(x===2?'많이':'조금')+')');});if(c.red==='yes')L.push('* 최근 갑작스러운 변화가 있었다고 답함');L.push('','진단이 아닌 자가 체크예요. — ApuDa 기억돌봄');copyText(L.join('\n'));break;}
+ case 'habit':{const t=TODAY(),arr=S.prevent[t]||(S.prevent[t]=[]);const i=arr.indexOf(d.id);if(i>=0)arr.splice(i,1);else arr.push(d.id);save();b.setAttribute('aria-pressed',i>=0?'false':'true');break;}
+ case 'saverec':{const dd=editDay||TODAY();const get=k=>{const x=document.querySelector('button[data-opt="'+k+'"][aria-pressed="true"]');return x?x.dataset.val:'none';};
+  const prev=S.records[dd];const nr={med:get('med'),meal:get('meal'),sleep:get('sleep'),note:val('note'),opinion:val('opinion'),at:Date.now(),history:prev?(prev.history||[]):[]};
+  if(prev&&(prev.med!==nr.med||prev.meal!==nr.meal||prev.sleep!==nr.sleep||(prev.note||'')!==nr.note))nr.history=nr.history.concat([{at:Date.now(),med:prev.med,meal:prev.meal,sleep:prev.sleep,note:prev.note}]);
+  S.records[dd]=nr;save();toast(prev?'고친 내용을 저장했어요. 이전 기록도 남겨 두었어요.':'기록했어요.');editDay=null;route();break;}
+ case 'editday':editDay=d.k===TODAY()?null:d.k;route();break;
+ case 'today':editDay=null;route();break;
+ case 'recf':recFilter=d.f;route();break;
+ case 'saveev':{const x=document.querySelector('button[data-opt="evk"][aria-pressed="true"]');S.events.push({id:uid(),date:val('evd')||TODAY(),kind:EVK[x?+x.dataset.val:3],text:val('evt')});save();toast('특별한 일을 기록했어요.');recFilter='all';go('record');break;}
+ case 'saveappt':S.appt={date:val('ad'),place:val('ap'),dept:val('adep'),memo:val('am')};save();toast('진료 일정을 저장했어요.');break;
+ case 'addq':{const t=val('qn');if(!t){document.getElementById('qn').focus();break;}S.questions.push({id:uid(),text:t,done:false});save();route();break;}
+ case 'qup':{const i=+d.i;if(i>0){const q=S.questions;[q[i-1],q[i]]=[q[i],q[i-1]];save();route();}break;}
+ case 'qdn':{const i=+d.i,q=S.questions;if(i<q.length-1){[q[i+1],q[i]]=[q[i],q[i+1]];save();route();}break;}
+ case 'qdone':S.questions[+d.i].done=!S.questions[+d.i].done;save();route();break;
+ case 'qdel':dialog('이 질문을 지울까요?','<p>'+esc(S.questions[+d.i].text)+'</p>','지우기',()=>{S.questions.splice(+d.i,1);save();route();},'d');break;
+ case 'addmed':{const n=val('mn');if(!n){document.getElementById('mn').focus();break;}S.meds.push({id:uid(),name:n,time:val('mt')});save();route();break;}
+ case 'delmed':dialog('수첩에서 지울까요?','<p>'+esc(S.meds[+d.i].name)+'</p>','지우기',()=>{S.meds.splice(+d.i,1);save();route();},'d');break;
+ case 'period':period=+d.p;route();break;
+ case 'share':{dialog('공유하기 전에 확인해 주세요',sw('alias','이름 대신 별칭 쓰기','“돌봄 대상 A”로 표시돼요',shareOpt.alias)+sw('opinion','가족의 의견 포함','끄면 관찰한 사실만 들어가요',shareOpt.opinion)+'<pre class="txt" id="sharepre">'+esc(sumText(buildSummary()))+'</pre>','복사하기',()=>copyText(sumText(buildSummary())),null,'닫기');break;}
+ case 'savesubj':S.subject=val('subj')||'돌봄 대상 A';save();toast('저장했어요.');route();break;
+ case 'addc':{const n=val('cn'),p=val('cp');if(!n||!p){toast('이름과 전화번호를 모두 적어 주세요.');break;}S.contacts.push({id:uid(),name:n,phone:p});save();route();break;}
+ case 'delc':dialog('연락처를 지울까요?','<p>'+esc(S.contacts[+d.i].name)+'</p>','지우기',()=>{S.contacts.splice(+d.i,1);save();route();},'d');break;
+ case 'adds':{const t=val('stitle');if(!t)break;S.schedule.push({id:uid(),time:val('stime'),title:t});save();route();break;}
+ case 'dels':S.schedule.splice(+d.i,1);save();route();break;
+ case 'wipe':dialog('모든 기록을 지울까요?','<p>돌봄 기록, 체크 결과, 질문, 연락처가 모두 지워지고 되돌릴 수 없어요.</p>','모두 지우기',()=>{try{localStorage.removeItem(KEY);}catch(e){}S=JSON.parse(JSON.stringify(DEF));applyFs();go('welcome');},'d');break;
+ case 'sched':{const t=TODAY(),m=S.sched[t]||(S.sched[t]={});if(d.v)m[d.id]=d.v;else delete m[d.id];save();route();break;}
+ case 'call':{const c=S.contacts[+d.i];if(!c)break;dialog('전화를 걸까요?','<p style="font-size:1.25rem"><b>'+esc(c.name)+'</b><br>'+esc(c.phone)+'</p>',null,null,null,'취소');
+  $('#dlg .btns').insertAdjacentHTML('afterbegin','<a class="btn" style="min-height:64px;font-size:1.25rem" href="tel:'+esc(c.phone.replace(/[^0-9+]/g,''))+'">'+I('phone',26)+' 전화하기</a>');break;}
+ }});
+
+applyFs();
+if(!location.hash&&S.onboarded)location.hash=S.role==='patient'?'patient':'home';
+route();
+})();
+</script>
+<script>if("serviceWorker" in navigator){addEventListener("load",()=>{navigator.serviceWorker.register("./sw.js").catch(()=>{})})}</script>
+</body>
+</html>

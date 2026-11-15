@@ -1,0 +1,16 @@
+{
+  "name": "ApuDa 기억돌봄",
+  "short_name": "기억돌봄",
+  "description": "기억 변화 자가 체크, 치매 예방, 돌봄 기록과 진료 준비",
+  "lang": "ko",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F2F6FA",
+  "theme_color": "#0B5FA5",
+  "icons": [
+    {"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}
