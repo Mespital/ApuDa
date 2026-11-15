@@ -133,7 +133,11 @@ try:
       tab('log');
       const real=window.save;
       window.save=()=>new Promise((resolve,reject)=>{
-        window.__release=()=>{try{resolve(real());}catch(e){reject(e);}};
+        window.__release=()=>{
+          noteMutationInvoking=true;
+          try{resolve(real());}catch(e){reject(e);}
+          finally{noteMutationInvoking=false;}
+        };
       });
       const slider=document.getElementById('distress');
       slider.value='8';slider.dispatchEvent(new Event('input',{bubbles:true}));
