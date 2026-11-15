@@ -248,6 +248,64 @@ main.withtabs .foot{margin-bottom:-104px;padding-bottom:132px}
 .foot .wm b{color:#fff}.foot .tag2{color:rgba(255,255,255,.92)}.foot .note{color:rgba(255,255,255,.85)}
 .foot .btn.s{background:#fff;color:var(--p);border-color:#fff}
 .tabs{box-shadow:0 -4px 16px rgba(22,48,74,.06)}
+
+/* ===== Responsive: devices ===== */
+.tabs[hidden]{display:none}
+#app{max-width:var(--appw,440px)}
+.tabs{max-width:var(--appw,440px)}
+.toast{max-width:calc(var(--appw,440px) - 32px)}
+/* short phones (Galaxy S22 with browser bar, iPhone SE): fit the check kit without scrolling */
+@media (max-height:760px){
+  .qtext{font-size:1.3125rem;line-height:1.42}
+  .ans{gap:8px}
+  .ans button{min-height:56px;padding:10px 16px;font-size:1.0625rem}
+  main.run{gap:10px;padding-top:12px}
+  main.run .prog{height:8px}
+  .canopy{padding-bottom:22px}
+  .canopy h1{font-size:1.625rem}
+  .tabs a{min-height:56px}
+  main.withtabs{padding-bottom:92px}
+  main.withtabs .foot{margin-bottom:-92px;padding-bottom:120px}
+}
+/* very narrow screens (Galaxy Fold cover, 280–340px) */
+@media (max-width:350px){
+  .canopy .cn-row{flex-wrap:wrap}
+  .canopy .cn-row>div{min-width:0}
+  main{padding-left:12px;padding-right:12px}
+  .canopy{margin-left:-12px;margin-right:-12px;padding-left:16px;padding-right:16px}
+  .foot{margin-left:-12px;margin-right:-12px}
+  .top{padding:8px 10px;gap:6px}
+  .top .brand span{display:none}
+  .top .chip .cl{display:none}
+  .grid3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .btns.h{flex-direction:column}
+  .tabs a{font-size:12px}
+  .tabs a .pill{padding:4px 10px}
+  .cmp{grid-template-columns:1fr}
+}
+/* large phones & small tablets */
+@media (min-width:600px){
+  :root{--appw:640px}
+  main{padding:20px 24px 28px}
+  .canopy{margin:-20px -24px 4px;padding:14px 28px 32px}
+  .foot{margin-left:-24px;margin-right:-24px}
+  main.withtabs .foot{margin-bottom:-104px}
+  .grid2.wide,.list.wide{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+/* tablets & desktop */
+@media (min-width:900px){
+  :root{--appw:760px}
+  body{padding:0}
+  .canopy h1{font-size:2.125rem}
+}
+/* landscape phones: keep the bottom bar slim */
+@media (max-height:480px) and (orientation:landscape){
+  .tabs a{min-height:48px;flex-direction:row;gap:6px}
+  .tabs a .bar{display:none}
+  main.withtabs{padding-bottom:76px}
+  main.withtabs .foot{margin-bottom:-76px;padding-bottom:100px}
+  .top{position:static}
+}
 </style>
 </head>
 <body>
@@ -347,7 +405,7 @@ const view=$('#view'),top=$('#top'),tabs=$('#tabs');
 function applyFs(){document.documentElement.className=S.fs===1?'fs1':S.fs===2?'fs2':'';}
 const TABS=[['home','홈','home'],['check','치매 체크','brain'],['record','돌봄 기록','rec'],['clinic','진료 준비','clinic'],['help','도움','help']];
 const TABOF={home:'home',check:'check','check-run':'check','check-result':'check',screening:'check',forget:'check',prevent:'check',record:'record',event:'record',clinic:'clinic',summary:'clinic',help:'help',settings:'help'};
-function topCaregiver(){return '<a class="brand" href="https://apuda.app" rel="noopener" aria-label="ApuDa 기억돌봄 — apuda.app 열기"><b>ApuDa</b><i></i><span>기억돌봄</span></a><span class="sp"></span><button class="iconbtn" data-act="fs" aria-label="글자 크기 바꾸기, 지금 '+['기본','크게','아주 크게'][S.fs]+'">가'+I('plus',16)+'</button><a class="chip" href="https://apuda.app" rel="noopener">apuda.app'+I('ext',16)+'</a>';}
+function topCaregiver(){return '<a class="brand" href="https://apuda.app" rel="noopener" aria-label="ApuDa 기억돌봄 — apuda.app 열기"><b>ApuDa</b><i></i><span>기억돌봄</span></a><span class="sp"></span><button class="iconbtn" data-act="fs" aria-label="글자 크기 바꾸기, 지금 '+['기본','크게','아주 크게'][S.fs]+'">가'+I('plus',16)+'</button><a class="chip" href="https://apuda.app" rel="noopener" aria-label="apuda.app 열기"><span class="cl">apuda.app</span>'+I('ext',16)+'</a>';}
 function topPatient(){return '<span class="brand" aria-label="ApuDa 기억돌봄"><b>ApuDa</b><i></i><span>기억돌봄</span></span><span class="sp"></span><a class="chip sos" href="#p-help">'+I('help',22,'#B42318')+' 도움</a>';}
 function foot(link){return '<footer class="foot"><span class="wm"><b>ApuDa</b><i></i></span><span class="tag2">아프지만, 다행이다.</span>'+(link?'<a class="btn s sm" style="width:auto;padding:10px 22px" href="https://apuda.app" rel="noopener">apuda.app에서 건강 정보 더 보기 '+I('ext',18)+'</a>':'')+'<span class="note">기억돌봄은 정보를 안내하고 기록을 돕는 앱이에요. 진단이나 처방을 하지 않아요.</span></footer>';}
 function hdr(title,back,sub){return '<div class="canopy"><div class="cn-row"><div style="display:flex;flex-direction:column;gap:4px"><h1>'+esc(title)+'</h1>'+(sub?'<p>'+esc(sub)+'</p>':'')+'</div>'+(back?'<a class="chip" href="#'+back+'">'+I('left',18)+' 이전</a>':'')+'</div></div>';}
@@ -598,7 +656,7 @@ function route(){let h=(location.hash||'').slice(1);
  const tb=TABOF[h];
  tabs.hidden=pt||wel||h==='check-run';
  tabs.innerHTML=TABS.map(t=>'<a href="#'+t[0]+'"'+(tb===t[0]?' aria-current="page"':'')+'><span class="pill">'+I(t[2],24)+'</span><span>'+t[1]+'</span><span class="bar"></span></a>').join('');
- view.className=tabs.hidden?'':'withtabs';
+ view.className=(tabs.hidden?'':'withtabs')+(h==='check-run'?' run':'');
  view.innerHTML=V[h]();
  document.title=({home:'홈',check:'치매 체크','check-run':'기억 변화 체크','check-result':'체크 결과',screening:'검진 절차',forget:'건망증과 치매',prevent:'예방수칙',record:'돌봄 기록',event:'특별한 일',clinic:'진료 준비',summary:'진료용 요약',help:'도움',settings:'설정',patient:'환자 화면','p-today':'오늘 할 일','p-call':'가족에게 연락','p-habit':'건강 습관','p-help':'도움',welcome:'시작'}[h]||'')+' · ApuDa 기억돌봄';
  window.scrollTo(0,0);
