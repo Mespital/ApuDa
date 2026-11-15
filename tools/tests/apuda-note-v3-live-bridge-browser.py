@@ -7,6 +7,7 @@ from pathlib import Path
 from threading import Thread
 from playwright.sync_api import sync_playwright
 import json
+import tempfile
 
 SITE=Path(__file__).resolve().parents[2]/'public-site'
 class Handler(SimpleHTTPRequestHandler):
@@ -44,7 +45,7 @@ try:
  with sync_playwright() as p:
     browser=p.chromium.launch(headless=True,args=['--no-sandbox','--disable-dev-shm-usage'])
     def context():
-        ctx=browser.new_context(locale='ko-KR',service_workers='block')
+        ctx=browser.new_context(locale='ko-KR',service_workers='block',accept_downloads=True)
         ctx.add_init_script(script=seed)
         ctx.route('**/*',lambda route:route.continue_() if route.request.url.startswith(origin+'/') else route.abort())
         return ctx
@@ -79,6 +80,35 @@ try:
           note:localStorage.getItem('apuda_cancer_care_v1'),
           chat:localStorage.getItem('apuda_note_chat_v1')
         })""")
+    def reviewed_backup_roundtrip(t):
+        """Simulate actual downloaded disk file and user re-upload (not durable backup proof)."""
+        t.evaluate("""() => {
+          if(!document.querySelector('#synthetic-backup-trigger')){
+            const button=document.createElement('button');
+            button.id='synthetic-backup-trigger';
+            button.textContent='가상 백업 JSON 내보내기';
+            button.onclick=()=>__bridge.downloadSyntheticBackup();
+            document.body.appendChild(button);
+          }
+          if(!document.querySelector('#synthetic-backup-file')){
+            const input=document.createElement('input');
+            input.id='synthetic-backup-file';input.type='file';input.accept='.json';
+            document.body.appendChild(input);
+          }
+        }""")
+        with t.expect_download(timeout=10000) as event:
+            t.locator('#synthetic-backup-trigger').click()
+        with tempfile.TemporaryDirectory(prefix='apuda-synthetic-review-') as folder:
+            filename=Path(folder)/'synthetic-review.json'
+            event.value.save_as(str(filename))
+            stored=json.loads(filename.read_text(encoding='utf-8'))
+            assert stored['reviewOnly'] is True and stored['readyForProduction'] is False
+            assert stored['payload']['format']=='apuda.synthetic.note-file-review.v1'
+            assert len(stored['sha256'])==64
+            t.locator('#synthetic-backup-file').set_input_files(str(filename))
+            outcome=t.evaluate("""async()=>__bridge.verifySyntheticBackupFile(
+                document.querySelector('#synthetic-backup-file').files[0])""")
+            return outcome,stored
     def cleanup(ctx,pages,name):
         for t in pages:
             try:t.evaluate("() => window.__bridgeDb?.close()")
@@ -202,6 +232,29 @@ try:
       userConfirmed:true,independentBackupVerified:false})""",restored_raw)
     verify('restore without independent-backup flag refused',
            denied['status']=='explicit-confirmation-and-backup-required' and row(ch)['revision']==3)
+    denied_file=ch.evaluate("""raw=>__bridge.restoreSynthetic(raw,{
+      userConfirmed:true,independentBackupVerified:true})""",restored_raw)
+    verify('approval flags alone cannot authorize restore',
+           denied_file['status']=='verified-review-file-required' and row(ch)['revision']==3)
+    verified,backed_up=reviewed_backup_roundtrip(ch)
+    verify('real JSON downloaded, reselected and validated for restore',
+           verified['status']=='verified' and verified['revision']==3 and
+           verified['independentDurabilityProven'] is False)
+    # A tampered file with a stale checksum must invalidate any prior proof.
+    changed=json.loads(json.dumps(backed_up,ensure_ascii=False))
+    changed['payload']['note']=changed['payload']['note'].replace('가상 원본','가상 조작')
+    ch.locator('#synthetic-backup-file').set_input_files({
+      'name':'tampered.json','mimeType':'application/json',
+      'buffer':json.dumps(changed,ensure_ascii=False).encode('utf-8')})
+    tampered=ch.evaluate("""async()=>__bridge.verifySyntheticBackupFile(
+        document.querySelector('#synthetic-backup-file').files[0])""")
+    verify('tampered JSON checksum is rejected',tampered['status']=='integrity-mismatch')
+    after_bad=ch.evaluate("""raw=>__bridge.restoreSynthetic(raw,{
+      userConfirmed:true,independentBackupVerified:true})""",restored_raw)
+    verify('tampered file invalidates previous approval',after_bad['status']=='verified-review-file-required')
+    verified,_=reviewed_backup_roundtrip(ch)
+    verify('new good file clears rejected proof state',
+           verified['status']=='verified' and verified['revision']==3)
     restored=ch.evaluate("""raw=>__bridge.restoreSynthetic(raw,{
       userConfirmed:true,independentBackupVerified:true})""",restored_raw)
     verify('sandbox restore confirms one atomic revision',
@@ -211,6 +264,20 @@ try:
     denied_recover=ch.evaluate("() => __bridge.recoverSynthetic({userConfirmed:false})")
     verify('undo restore without confirmation denied',
            denied_recover['status']=='explicit-confirmation-required')
+    deny_without_new_file=ch.evaluate("() => __bridge.recoverSynthetic({userConfirmed:true})")
+    verify('previously used proof cannot authorize recovery',
+           deny_without_new_file['status']=='verified-review-file-required' and row(ch)['revision']==4)
+    # The original file from revision 3 must not authorize an action at 4.
+    ch.locator('#synthetic-backup-file').set_input_files({
+      'name':'old-revision.json','mimeType':'application/json',
+      'buffer':json.dumps(backed_up,ensure_ascii=False).encode('utf-8')})
+    stale_file=ch.evaluate("""async()=>__bridge.verifySyntheticBackupFile(
+        document.querySelector('#synthetic-backup-file').files[0])""")
+    verify('old-revision file is rejected after restore',
+           stale_file['status']=='snapshot-mismatch')
+    verified,_=reviewed_backup_roundtrip(ch)
+    verify('new revision backup verified for recovery',
+           verified['status']=='verified' and verified['revision']==4)
     recovered=ch.evaluate("() => __bridge.recoverSynthetic({userConfirmed:true})")
     verify('confirmed recovery restores previous note and chat together',
            recovered['status']=='saved' and recovered['revision']==5 and
@@ -221,6 +288,13 @@ try:
        userConfirmed:true,independentBackupVerified:false})""")
     verify('sandbox deletion denied without backup flag',
            denied_delete['status']=='explicit-confirmation-and-backup-required' and row(ch)['revision']==5)
+    no_file_delete=ch.evaluate("""() =>__bridge.deleteSynthetic({
+       userConfirmed:true,independentBackupVerified:true})""")
+    verify('delete requires a fresh verified file even with approval flags',
+           no_file_delete['status']=='verified-review-file-required' and row(ch)['revision']==5)
+    verified,_=reviewed_backup_roundtrip(ch)
+    verify('fresh file verified against current IDB revision before delete',
+           verified['status']=='verified' and verified['revision']==5)
     deleted=ch.evaluate("""() =>__bridge.deleteSynthetic({
        userConfirmed:true,independentBackupVerified:true})""")
     deleted_row=row(ch)
@@ -233,6 +307,11 @@ try:
            ch.evaluate("state.profile.name==='' && chat.length===0 && noteWritesPaused && chatWritesPaused"))
     verify('tombstone does not erase legacy source',
            local(ch)['note']==rawNote and local(ch)['chat']==rawChat)
+    no_tomb_backup=ch.evaluate("""async()=>{
+      try{await __bridge.downloadSyntheticBackup();return false}
+      catch(e){return e.message==='synthetic-backup-unavailable'}
+    }""")
+    verify('deleted snapshot cannot produce new review backup',no_tomb_backup)
     # A reload after tombstone must not resurrect the old legacy source.
     ch.reload(wait_until='domcontentloaded')
     ch.wait_for_function("() => typeof window.commitChatRaw==='function'")
