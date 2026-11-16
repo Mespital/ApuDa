@@ -7,7 +7,7 @@
     "code": "7010087",
     "homepage": "https://seocho.sen.hs.kr/"
   },
-  "checked_at": "2026-11-16T05:41:55.711643+00:00",
+  "checked_at": "2026-11-16T15:17:36.894823+00:00",
   "keyed": true,
   "school_year": 2026,
   "grade": 1,
@@ -15,10 +15,6 @@
   "semester": 2,
   "phase": "school",
   "schedule": [
-    {
-      "date": "2026-11-16",
-      "title": "목요일수업"
-    },
     {
       "date": "2026-11-19",
       "title": "재량휴업일",
@@ -790,5 +786,5 @@
     "NEIS": "true",
     "DATA": "false"
   },
-  "last_success_at": "2026-11-16T05:41:55.711643+00:00"
+  "last_success_at": "2026-11-16T15:17:36.894823+00:00"
 }

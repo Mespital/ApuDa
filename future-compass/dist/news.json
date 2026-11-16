@@ -1,8 +1,48 @@
 {
-  "checked_at": "2026-11-16T05:41:53.868001+00:00",
-  "last_success_at": "2026-11-16T05:41:53.868001+00:00",
+  "checked_at": "2026-11-16T15:17:35.103935+00:00",
+  "last_success_at": "2026-11-16T15:17:35.103935+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "LVMH’s Media Division announces strategic partnership with OpenAI",
+      "url": "https://openai.com/index/lvmh-media-division-partnership",
+      "source": "OpenAI",
+      "published_at": "2026-11-16T09:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "What teenagers really think about online safety and AI",
+      "url": "https://blog.google/company-news/inside-google/around-the-globe/google-europe/united-kingdom/what-teenagers-really-think-about-online-safety-and-ai/",
+      "source": "Google",
+      "published_at": "2026-11-16T08:00:00+00:00",
+      "category": "안전·보안",
+      "domain": "security"
+    },
+    {
+      "title": "Advancing computer-use agents for healthcare teams",
+      "url": "https://openai.com/index/advancing-computer-use-for-healthcare-teams",
+      "source": "OpenAI",
+      "published_at": "2026-11-16T06:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "More ways to move care forward with ChatGPT for Healthcare",
+      "url": "https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare",
+      "source": "OpenAI",
+      "published_at": "2026-11-16T06:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "The King’s Trust and OpenAI launch £1m partnership",
+      "url": "https://openai.com/index/the-kings-trust-and-openai",
+      "source": "OpenAI",
+      "published_at": "2026-11-16T00:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "A step toward defining the Standard Model on a lattice",
       "url": "https://openai.com/index/step-toward-defining-the-standard-model",
@@ -202,58 +242,14 @@
       "published_at": "2026-11-11T17:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Try Tabletop: Customizable, collaborative spaces for groups to plan, play and do more together.",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/tabletop/",
-      "source": "Google",
-      "published_at": "2026-11-11T16:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "ChatGPT Plus for veterans and servicemembers",
-      "url": "https://openai.com/index/chatgpt-plus-for-veterans",
-      "source": "OpenAI",
-      "published_at": "2026-11-11T08:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "JioStar’s chief architect on AI discovery at 500M-user scale",
-      "url": "https://openai.com/index/jiostar-vijay-seshadri",
-      "source": "OpenAI",
-      "published_at": "2026-11-11T00:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Gemini Intelligence: New features, on more devices",
-      "url": "https://blog.google/products-and-platforms/platforms/android/gemini-intelligence-november-features-devices/",
-      "source": "Google",
-      "published_at": "2026-11-10T19:00:00+00:00",
-      "category": "로봇·기기",
-      "domain": "robots"
-    },
-    {
-      "title": "Pixel 10 with Gemini Intelligence, custom widgets, and more in our November Pixel Drop",
-      "url": "https://blog.google/products-and-platforms/devices/pixel/november-2026-pixel-drop/",
-      "source": "Google",
-      "published_at": "2026-11-10T19:00:00+00:00",
-      "category": "로봇·기기",
-      "domain": "robots"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-11-16T05:41:53.868001+00:00",
+    "checked_at": "2026-11-16T15:17:35.103935+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
-      {
-        "date": "2026-11-16",
-        "title": "목요일수업"
-      },
       {
         "date": "2026-11-19",
         "title": "재량휴업일"
@@ -392,7 +388,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-11-16T05:41:53.868001+00:00",
+    "last_success_at": "2026-11-16T15:17:35.103935+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
