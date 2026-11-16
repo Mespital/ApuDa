@@ -184,6 +184,9 @@ textarea.in{min-height:96px;resize:vertical;line-height:1.5}
 
 /* steps */
 .step{display:flex;gap:14px}
+.ill{display:block;width:100%;height:auto;aspect-ratio:3/2;border-radius:20px;background:var(--soft);object-fit:cover}
+.ill.sq{aspect-ratio:1/1;width:min(100%,220px);margin:0 auto 4px;border-radius:18px}
+.canopy+.ill{margin-top:-4px}
 .step .n{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:var(--p);color:#fff;font-weight:700;flex-shrink:0}
 .cmp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
 .cmp>div{padding:14px;border-radius:16px;display:flex;flex-direction:column;gap:8px;font-size:.9375rem}
@@ -434,12 +437,14 @@ let check=null,resultId=null,editDay=null,period=7,shareOpt={alias:true,opinion:
 
 V.welcome=()=>'<div style="display:flex;flex-direction:column;gap:18px">'+
  '<div class="canopy" style="padding-top:20px;padding-bottom:32px"><span class="tag p">'+I('brain',18)+' 치매 예방과 돌봄</span><h1 style="margin-top:6px;font-size:2rem">환자는 더 편안하게,<br>가족은 덜 불안하게.</h1><p>기억 변화 체크, 예방 습관, 돌봄 기록과 진료 준비를 한곳에서 해요.</p></div>'+
+ ill('welcome','소파에 나란히 앉아 사진첩을 보며 웃는 어머니와 딸',0,1)+
  '<h2>어떻게 쓰실 건가요?</h2>'+
  '<button type="button" class="big" data-act="start" data-role="check"><span class="ic">'+I('brain',36,P)+'</span><span><b>기억이 걱정돼요</b><span>3분 기억 변화 체크부터 할게요</span></span></button>'+
  '<button type="button" class="big" data-act="start" data-role="caregiver"><span class="ic">'+I('family',36,P)+'</span><span><b>가족을 돌보고 있어요</b><span>돌봄 기록과 진료 준비를 할게요</span></span></button>'+
  '<button type="button" class="big" data-act="start" data-role="patient"><span class="ic">'+I('person',36,P)+'</span><span><b>제가 직접 쓸게요</b><span>오늘 할 일과 가족 연락을 크게 볼게요</span></span></button>'+
  banner('','기록은 이 기기의 브라우저에만 저장돼요. 이 앱은 치매를 진단하지 않아요.')+foot(true)+'</div>';
 
+function ill(src,alt,sq,eager){return '<img class="ill'+(sq?' sq':'')+'" src="img/'+src+'.webp" alt="'+alt+'" width="'+(sq?720:1200)+'" height="'+(sq?720:800)+'" decoding="async"'+(eager?' fetchpriority="high"':' loading="lazy"')+'>';}
 function lastCheck(){return S.checks.length?S.checks[S.checks.length-1]:null;}
 function changed(c){return c.answers.filter(a=>a>=1).length;}
 V.home=()=>{
@@ -461,6 +466,7 @@ V.home=()=>{
 V.check=()=>{
  const list=S.checks.slice().reverse();
  return hdr('치매 체크',null,'기억 변화를 살피고, 검진과 예방을 안내해요')+
+ ill('check-start','차를 곁에 두고 수첩을 펼친 채 무언가를 떠올리는 어르신',0,1)+
  '<section class="core"><span class="eyebrow">'+I('brain',18,P)+' 기억 변화 자가 체크 · 12문항</span><h2>누가 체크하나요?</h2><p>1년 전과 비교해서 답해 주세요. 정답은 없어요.</p><div class="btns"><button type="button" class="btn g" data-act="kit" data-who="self">'+I('person',22)+' 내 기억을 체크해요</button><button type="button" class="btn g" data-act="kit" data-who="family">'+I('family',22)+' 가족을 대신 체크해요</button></div></section>'+
  banner('','이 체크는 <b>진단 도구가 아니에요.</b> 점수로 치매 여부를 판단하지 않고, 검사가 필요한지 생각해 볼 수 있게 돕는 질문이에요. 표준화된 검사는 치매안심센터와 병원에서 받아요.')+
  (list.length?'<section class="sec"><h2>지난 체크</h2><div class="list">'+list.map(c=>'<button type="button" class="lrow" data-act="result" data-id="'+c.id+'"><span class="tx"><b>'+fmt(c.date)+'</b><span>'+(c.who==='self'?'본인':'가족이 대신')+' · 달라진 점 '+changed(c)+'가지'+(c.red==='yes'?' · 갑작스러운 변화 있음':'')+'</span></span>'+I('right',22)+'</button>').join('')+'</div><p class="small muted">같은 체크를 몇 달 간격으로 해 두면 진료 때 변화를 설명하기 쉬워요.</p></section>':'')+
@@ -492,7 +498,7 @@ V['check-result']=()=>{
  :'<section class="card" style="border:2px solid var(--ok)"><span class="tag ok">'+I('done',16)+' 해당하는 변화가 없었어요</span><h2>지금 체크에서는 달라진 점이 없었어요</h2><p>걱정되는 변화가 생기면 언제든 다시 체크해 보세요. 「치매예방수칙 3·3·3」은 해마다 치매안심센터에서 검진받기를 권해요.</p></section>';
  if(ch.length)h+='<section class="sec"><h2>달라졌다고 답한 항목</h2><div class="list">'+ch.map(x=>'<div class="item"><span class="tag '+(x[1]===2?'wn':'p')+'">'+(x[1]===2?'많이 그래요':'조금 그래요')+'</span><p>'+esc(Q[x[0]][fam?1:0])+'</p></div>').join('')+'</div></section>';
  if(unk)h+='<p class="muted small">‘잘 모르겠어요’ '+unk+'개는 달라진 점에 넣지 않았어요. 함께 지내는 가족에게 물어보면 도움이 돼요.</p>';
- h+='<section class="sec"><h2>다음에 할 일</h2>'+
+ h+='<section class="sec"><h2>다음에 할 일</h2>'+ill('consult','치매안심센터 상담사와 이야기 나누는 어머니와 딸')+
   '<div class="step"><span class="n">1</span><div><h3>치매안심센터에 문의하기</h3><p class="muted">사는 곳의 치매안심센터에서 선별검사를 안내받을 수 있어요.</p></div></div>'+
   '<div class="step"><span class="n">2</span><div><h3>이 결과를 진료 준비에 남기기</h3><p class="muted">달라진 점을 적어 가면 설명하기 쉬워요.</p></div></div></section>'+
   '<div class="btns"><button type="button" class="btn" data-act="toq">'+I('plus',22)+' 진료 질문에 추가</button><a class="btn s" href="https://www.nid.or.kr" rel="noopener">치매안심센터 찾기 '+I('ext',18)+'</a><button type="button" class="btn s" data-act="copyres">'+I('copy',22)+' 결과 요약 복사</button><a class="btn s" href="#screening">검진 절차 보기</a></div>'+
@@ -502,7 +508,7 @@ V['check-result']=()=>{
 
 V.screening=()=>hdr('치매 검진·진단 절차','check','보건복지부 치매조기검진사업 안내')+
  '<p>치매 조기검진은 세 단계로 진행돼요.</p>'+
- [['선별검사','치매안심센터','인지선별검사로 더 자세한 검사가 필요한지 살펴봐요. 치매나 경도인지장애로 진단받지 않은 주민이 받을 수 있어요.'],['진단검사','연계 병원','신경인지검사와 전문의 진료를 받아요.'],['감별검사','연계 병원','혈액검사, 뇌 영상 촬영 등으로 원인을 살펴봐요.']].map((s,i)=>'<div class="card"><div class="step"><span class="n">'+(i+1)+'</span><div style="display:flex;flex-direction:column;gap:6px"><h3>'+(i+1)+'단계 '+s[0]+'</h3><span class="tag p">'+s[1]+'</span><p class="muted">'+s[2]+'</p></div></div></div>').join('')+
+ [['선별검사','치매안심센터','인지선별검사로 더 자세한 검사가 필요한지 살펴봐요. 치매나 경도인지장애로 진단받지 않은 주민이 받을 수 있어요.'],['진단검사','연계 병원','신경인지검사와 전문의 진료를 받아요.'],['감별검사','연계 병원','혈액검사, 뇌 영상 촬영 등으로 원인을 살펴봐요.']].map((s,i)=>'<div class="card">'+ill('screen-'+(i+1),['치매안심센터에서 상담사 옆에서 선별검사지를 작성하는 어르신','병원 진료실에서 전문의 설명을 듣는 어머니와 딸','방사선사의 안내를 받으며 뇌 영상 촬영을 준비하는 어르신'][i],1)+'<div class="step"><span class="n">'+(i+1)+'</span><div style="display:flex;flex-direction:column;gap:6px"><h3>'+(i+1)+'단계 '+s[0]+'</h3><span class="tag p">'+s[1]+'</span><p class="muted">'+s[2]+'</p></div></div></div>').join('')+
  banner('','검사비 지원 대상과 금액은 소득·지역에 따라 달라요. 사는 곳의 치매안심센터에 확인하세요.')+
  '<section class="card"><h2>검사 전에 준비하면 좋은 것</h2><ul class="ul">'+['언제부터 어떤 변화가 있었는지 적은 메모','복용 중인 약 목록','함께 지내는 가족의 동행'].map(x=>'<li>'+I('check',22,P)+'<span>'+x+'</span></li>').join('')+'</ul><a class="btn s sm" href="#clinic">진료 준비에 정리하기</a></section>'+
  '<div class="btns"><a class="btn" href="https://www.nid.or.kr" rel="noopener">치매안심센터 찾기 '+I('ext',18)+'</a>'+tel('1899-9988','치매상담콜센터','s')+'</div>'+

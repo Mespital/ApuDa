@@ -160,3 +160,8 @@
   for = "/memory/icons/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/memory/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
