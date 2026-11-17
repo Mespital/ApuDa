@@ -86,7 +86,7 @@
       "checkedAt": "2026-10-19",
       "miniAvailable": true,
       "videoAvailable": true,
-      "guideHref": "/library/first30/books/01.html",
+      "guideHref": "/library/first30/books/01",
       "coreFaq": false,
       "sources": {
         "nhis-special": {
@@ -134,7 +134,7 @@
       "checkedAt": "2026-10-19",
       "miniAvailable": true,
       "videoAvailable": true,
-      "guideHref": "/library/first30/books/02.html",
+      "guideHref": "/library/first30/books/02",
       "coreFaq": false,
       "sources": {
         "nhis-special": {
@@ -196,7 +196,7 @@
       "checkedAt": "2026-10-19",
       "miniAvailable": true,
       "videoAvailable": true,
-      "guideHref": "/library/first30/books/03.html",
+      "guideHref": "/library/first30/books/03",
       "coreFaq": false,
       "sources": {
         "nhis-special": {
@@ -257,7 +257,7 @@
       "checkedAt": "2026-10-19",
       "miniAvailable": true,
       "videoAvailable": true,
-      "guideHref": "/library/first30/books/04.html",
+      "guideHref": "/library/first30/books/04",
       "coreFaq": false,
       "sources": {
         "nhis-special": {
@@ -312,7 +312,7 @@
       "checkedAt": "2026-10-19",
       "miniAvailable": true,
       "videoAvailable": true,
-      "guideHref": "/library/first30/books/05.html",
+      "guideHref": "/library/first30/books/05",
       "coreFaq": false,
       "sources": {
         "nhis-special": {
@@ -367,7 +367,7 @@
       "checkedAt": "2026-10-19",
       "miniAvailable": true,
       "videoAvailable": true,
-      "guideHref": "/library/first30/books/06.html",
+      "guideHref": "/library/first30/books/06",
       "coreFaq": false,
       "sources": {
         "nhis-special": {
@@ -422,7 +422,7 @@
       "checkedAt": "2026-10-19",
       "miniAvailable": true,
       "videoAvailable": true,
-      "guideHref": "/library/first30/books/07.html",
+      "guideHref": "/library/first30/books/07",
       "coreFaq": false,
       "sources": {
         "nhis-special": {
@@ -472,7 +472,7 @@
       "checkedAt": "2026-10-19",
       "miniAvailable": true,
       "videoAvailable": true,
-      "guideHref": "/library/first30/books/08.html",
+      "guideHref": "/library/first30/books/08",
       "coreFaq": false,
       "sources": {
         "nhis-special": {
@@ -540,7 +540,7 @@
       "checkedAt": "2026-10-19",
       "miniAvailable": true,
       "videoAvailable": true,
-      "guideHref": "/library/first30/books/09.html",
+      "guideHref": "/library/first30/books/09",
       "coreFaq": false,
       "sources": {
         "nhis-special": {
@@ -607,7 +607,7 @@
       "checkedAt": "2026-10-19",
       "miniAvailable": true,
       "videoAvailable": true,
-      "guideHref": "/library/first30/books/10.html",
+      "guideHref": "/library/first30/books/10",
       "coreFaq": false,
       "sources": {
         "nhis-special": {
@@ -661,7 +661,7 @@
       "checkedAt": "2026-10-19",
       "miniAvailable": true,
       "videoAvailable": true,
-      "guideHref": "/library/first30/books/11.html",
+      "guideHref": "/library/first30/books/11",
       "coreFaq": false,
       "sources": {
         "nhis-special": {
@@ -714,7 +714,7 @@
       "checkedAt": "2026-10-19",
       "miniAvailable": true,
       "videoAvailable": true,
-      "guideHref": "/library/first30/books/12.html",
+      "guideHref": "/library/first30/books/12",
       "coreFaq": false,
       "sources": {
         "nhis-special": {
@@ -779,7 +779,7 @@
       "checkedAt": "2026-11-08",
       "miniAvailable": false,
       "videoAvailable": false,
-      "guideHref": "/library/first30/books/13.html",
+      "guideHref": "/library/first30/books/13",
       "coreFaq": true,
       "sources": {
         "nci-infection": {
@@ -936,7 +936,7 @@
       "checkedAt": "2026-11-08",
       "miniAvailable": false,
       "videoAvailable": false,
-      "guideHref": "/library/first30/books/14.html",
+      "guideHref": "/library/first30/books/14",
       "coreFaq": true,
       "sources": {
         "nci-infection": {
@@ -1103,7 +1103,7 @@
       "checkedAt": "2026-11-08",
       "miniAvailable": false,
       "videoAvailable": false,
-      "guideHref": "/library/first30/books/15.html",
+      "guideHref": "/library/first30/books/15",
       "coreFaq": true,
       "sources": {
         "nci-infection": {
@@ -1270,7 +1270,7 @@
       "checkedAt": "2026-11-02",
       "miniAvailable": false,
       "videoAvailable": false,
-      "guideHref": "/library/first30/books/16.html",
+      "guideHref": "/library/first30/books/16",
       "coreFaq": true,
       "sources": {
         "nci-infection": {
@@ -1491,7 +1491,7 @@
       "checkedAt": "2026-11-02",
       "miniAvailable": false,
       "videoAvailable": false,
-      "guideHref": "/library/first30/books/17.html",
+      "guideHref": "/library/first30/books/17",
       "coreFaq": true,
       "sources": {
         "nci-infection": {
@@ -1650,7 +1650,7 @@
       "checkedAt": "2026-11-02",
       "miniAvailable": false,
       "videoAvailable": false,
-      "guideHref": "/library/first30/books/18.html",
+      "guideHref": "/library/first30/books/18",
       "coreFaq": true,
       "sources": {
         "nci-infection": {
@@ -1816,7 +1816,7 @@
       "checkedAt": "2026-11-08",
       "miniAvailable": false,
       "videoAvailable": false,
-      "guideHref": "/library/first30/books/19.html",
+      "guideHref": "/library/first30/books/19",
       "coreFaq": true,
       "sources": {
         "asha-laryngectomy": {
@@ -1949,7 +1949,7 @@
       "checkedAt": "2026-11-02",
       "miniAvailable": false,
       "videoAvailable": false,
-      "guideHref": "/library/first30/books/20.html",
+      "guideHref": "/library/first30/books/20",
       "coreFaq": true,
       "sources": {
         "nci-cam": {
@@ -2058,7 +2058,7 @@
       "checkedAt": "2026-11-02",
       "miniAvailable": false,
       "videoAvailable": false,
-      "guideHref": "/library/first30/books/21.html",
+      "guideHref": "/library/first30/books/21",
       "coreFaq": true,
       "sources": {
         "nci-cam": {
@@ -2183,7 +2183,7 @@
       "checkedAt": "2026-11-08",
       "miniAvailable": false,
       "videoAvailable": false,
-      "guideHref": "/library/first30/books/22.html",
+      "guideHref": "/library/first30/books/22",
       "coreFaq": true,
       "sources": {
         "nci-cam": {
@@ -2308,7 +2308,7 @@
       "checkedAt": "2026-11-08",
       "miniAvailable": false,
       "videoAvailable": false,
-      "guideHref": "/library/first30/books/23.html",
+      "guideHref": "/library/first30/books/23",
       "coreFaq": true,
       "sources": {
         "cuh-steroids": {
@@ -2425,7 +2425,7 @@
       "checkedAt": "2026-11-08",
       "miniAvailable": false,
       "videoAvailable": false,
-      "guideHref": "/library/first30/books/24.html",
+      "guideHref": "/library/first30/books/24",
       "coreFaq": true,
       "sources": {
         "nci-infection": {
@@ -2544,7 +2544,7 @@
       "checkedAt": "2026-11-08",
       "miniAvailable": false,
       "videoAvailable": false,
-      "guideHref": "/library/first30/books/25.html",
+      "guideHref": "/library/first30/books/25",
       "coreFaq": true,
       "sources": {
         "nci-infection": {
@@ -2689,7 +2689,7 @@
       "checkedAt": "2026-11-02",
       "miniAvailable": false,
       "videoAvailable": false,
-      "guideHref": "/library/first30/books/26.html",
+      "guideHref": "/library/first30/books/26",
       "coreFaq": true,
       "sources": {
         "nci-infection": {
@@ -2832,7 +2832,7 @@
       "checkedAt": "2026-11-02",
       "miniAvailable": false,
       "videoAvailable": false,
-      "guideHref": "/library/first30/books/27.html",
+      "guideHref": "/library/first30/books/27",
       "coreFaq": true,
       "sources": {
         "nci-infection": {
@@ -2968,7 +2968,7 @@
       "checkedAt": "2026-11-08",
       "miniAvailable": false,
       "videoAvailable": false,
-      "guideHref": "/library/first30/books/28.html",
+      "guideHref": "/library/first30/books/28",
       "coreFaq": true,
       "sources": {
         "nci-infection": {
@@ -3078,7 +3078,7 @@
       "checkedAt": "2026-11-02",
       "miniAvailable": false,
       "videoAvailable": false,
-      "guideHref": "/library/first30/books/29.html",
+      "guideHref": "/library/first30/books/29",
       "coreFaq": true,
       "sources": {
         "nci-infection": {
@@ -3205,7 +3205,7 @@
       "checkedAt": "2026-11-02",
       "miniAvailable": false,
       "videoAvailable": false,
-      "guideHref": "/library/first30/books/30.html",
+      "guideHref": "/library/first30/books/30",
       "coreFaq": true,
       "sources": {
         "nci-cam": {

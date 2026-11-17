@@ -17,7 +17,7 @@ const canonical = (path) => origin + path;
 const shareImage = origin + '/og.jpg';
 
 const catalog = await readFile(join(root, 'library/first30/index.html'), 'utf8');
-const catalogMatches = [...catalog.matchAll(/data-slug="([^"]+)" data-name="([^"]+)" href="\/library\/first30\/books\/(\d{2})\.html"/g)];
+const catalogMatches = [...catalog.matchAll(/data-slug="([^"]+)" data-name="([^"]+)" href="\/library\/first30\/books\/(\d{2})(?:\.html)?"/g)];
 if (catalogMatches.length !== 30) throw new Error('Expected exactly 30 book entries');
 const books = new Map(catalogMatches.map(([, slug, name, number]) => [slug, { name, number }]));
 
@@ -166,7 +166,7 @@ ${pageStyle}</head><body>
 <p class="lead">${escapeHtml(seo.summary)} 필요한 질문을 눌러 답변과 참고자료를 읽어보세요.</p>
 <div class="notice">출처를 첨부한 환자교육용 참고정보입니다. 출처가 있다고 임상 승인이 완료되었음을 뜻하지 않습니다. 국내 허가·급여 기준과 개인 상태에 따라 달라질 수 있으므로, 진단·치료·약물 변경은 반드시 담당 의료진과 상의하세요. <a href="/library/review/?cancer=${encodeURIComponent(record.slug)}">자료 출처·검토 범위</a></div>
 <p><a href="/library/faq/?cancer=${encodeURIComponent(record.slug)}">검색·주제별 필터가 있는 FAQ 화면으로 이동</a> ·
-<a href="/library/first30/books/${book.number}.html">${escapeHtml(record.name)} 첫 30일 무료 안내서</a></p>
+<a href="/library/first30/books/${book.number}">${escapeHtml(record.name)} 첫 30일 무료 안내서</a></p>
 </div>${topicNav}<nav class="nav" aria-label="다른 암종 FAQ">${nav}</nav>
 <h2>질문과 답변</h2><ol>${questions}</ol>
 <footer>마지막 자료 업데이트: ${escapeHtml(record.updated ?? '미확인')} · <a href="/library/review/?cancer=${encodeURIComponent(record.slug)}">자료 출처·검토 범위</a><p>© ApuDa · 이 정보는 의료진의 진단·처방을 대신하지 않습니다.</p></footer>
@@ -211,7 +211,7 @@ ${pageStyle}</head><body>
 <p class="lead">${escapeHtml(topic.summary)} 필요한 질문을 눌러 답변과 참고자료를 읽어보세요.</p>
 <div class="notice">출처를 첨부한 환자교육용 참고정보입니다. 출처가 있다고 임상 승인이 완료되었음을 뜻하지 않습니다. 국내 허가·급여 기준과 개인 상태에 따라 달라질 수 있으므로, 진단·치료·약물 변경은 반드시 담당 의료진과 상의하세요. <a href="/library/review/?cancer=${encodeURIComponent(record.slug)}">자료 출처·검토 범위</a></div>
 <p><a href="${parent}">${escapeHtml(record.name)} FAQ 100문항 전체 보기</a> ·
-<a href="/library/first30/books/${book.number}.html">${escapeHtml(record.name)} 첫 30일 무료 안내서</a></p>
+<a href="/library/first30/books/${book.number}">${escapeHtml(record.name)} 첫 30일 무료 안내서</a></p>
 </div><nav class="nav" aria-label="${escapeHtml(record.name)} FAQ 주제">${siblings}</nav>
 <h2>질문과 답변</h2><ol>${renderQuestions(items, record)}</ol>
 <footer>마지막 자료 업데이트: ${escapeHtml(record.updated ?? '미확인')} · <a href="/library/review/?cancer=${encodeURIComponent(record.slug)}">자료 출처·검토 범위</a><p>© ApuDa · 이 정보는 의료진의 진단·처방을 대신하지 않습니다.</p></footer>
@@ -269,7 +269,8 @@ for (const [slug, book] of books) {
   const focus = focusMatch ? focusMatch[1].trim() : '';
   const description = (book.name + ' 진단 후 첫 30일 무료 안내서. ' + focus +
     ' 검사·치료 준비와 진료 질문을 정리한 환자·보호자용 자료입니다.').slice(0, 175);
-  const url = canonical('/library/first30/books/' + book.number + '.html');
+  // Netlify serves and links books without .html; keep canonical, sitemap and links on that form.
+  const url = canonical('/library/first30/books/' + book.number);
   // The educational guide is published under the ApuDa brand. Do not invent a
   // physician author, clinical reviewer, publication date, or dateModified.
   // Per-book dates may be added only when editorial records verify them.
@@ -310,7 +311,7 @@ const paths = [
   '/library/mini/', '/library/treatment-map/', '/library/drugs/',
   '/library/biomarkers/', '/library/regimens/', '/support/', '/support/v4/',
   '/news/', '/news/oncology/', '/note-guide/', '/watch/',
-  ...[...books.values()].map((b) => '/library/first30/books/' + b.number + '.html'),
+  ...[...books.values()].map((b) => '/library/first30/books/' + b.number),
   ...records.map((r) => '/library/faq/' + r.slug + '/'),
   ...topicPaths,
 ];
@@ -352,7 +353,7 @@ const llms = [
   '## 암 진단 후 첫 30일 안내서',
   mdLink('안내서 ' + books.size + '권 목록', '/library/first30/'),
   ...[...books.values()].sort((x, y) => x.number.localeCompare(y.number))
-    .map((b) => mdLink(b.name + ' 진단 후 첫 30일', '/library/first30/books/' + b.number + '.html')),
+    .map((b) => mdLink(b.name + ' 진단 후 첫 30일', '/library/first30/books/' + b.number)),
   '',
   '## Optional',
   mdLink('맞춤 건강검진 선택 도구', '/checkup/'),

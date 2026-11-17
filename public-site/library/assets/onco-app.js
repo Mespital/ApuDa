@@ -3,7 +3,7 @@
 var O=window.APUDA_ONC, C=O.CANCERS, PAGE=document.body.dataset.page;
 var ORDER=Object.keys(C).sort(function(a,b){return C[a].vol-C[b].vol});
 function coverOf(c){return '/assets/books/first30/'+c+'.webp?v=20261105-landscape-v2'}
-function guideOf(c){return C[c].vol<=12?{href:'/library/mini/?cancer='+c,label:'진단 첫 30일 MINI (무료)'}:{href:'/library/first30/books/'+String(C[c].vol).padStart(2,'0')+'.html',label:'진단 첫 30일 핵심안내 (무료)'}}
+function guideOf(c){return C[c].vol<=12?{href:'/library/mini/?cancer='+c,label:'진단 첫 30일 MINI (무료)'}:{href:'/library/first30/books/'+String(C[c].vol).padStart(2,'0'),label:'진단 첫 30일 핵심안내 (무료)'}}
 var DRUG=Object.fromEntries(O.DRUGS.map(function(d){return [d.id,d]}));
 var MK=Object.fromEntries(O.MARKERS.map(function(m){return [m.id,m]}));
 var KIND={target:'표적치료 연결',io:'면역항암 연결',hormone:'호르몬치료 연결',monitor:'추적·진단 지표'};

@@ -8,7 +8,7 @@
     "slug": "breast",
     "name": "유방암",
     "cover": "/assets/books/first30/breast.webp?v=20261105-landscape-v2",
-    "href": "/library/first30/books/01.html",
+    "href": "/library/first30/books/01",
     "hasMini": true,
     "hasFaq": true,
     "faqCount": 100
@@ -18,7 +18,7 @@
     "slug": "lung",
     "name": "폐암",
     "cover": "/assets/books/first30/lung.webp?v=20261105-landscape-v2",
-    "href": "/library/first30/books/02.html",
+    "href": "/library/first30/books/02",
     "hasMini": true,
     "hasFaq": true,
     "faqCount": 100
@@ -28,7 +28,7 @@
     "slug": "stomach",
     "name": "위암",
     "cover": "/assets/books/first30/stomach.webp?v=20261105-landscape-v2",
-    "href": "/library/first30/books/03.html",
+    "href": "/library/first30/books/03",
     "hasMini": true,
     "hasFaq": true,
     "faqCount": 100
@@ -38,7 +38,7 @@
     "slug": "colorectal",
     "name": "대장암",
     "cover": "/assets/books/first30/colorectal.webp?v=20261105-landscape-v2",
-    "href": "/library/first30/books/04.html",
+    "href": "/library/first30/books/04",
     "hasMini": true,
     "hasFaq": true,
     "faqCount": 100
@@ -48,7 +48,7 @@
     "slug": "thyroid",
     "name": "갑상선암",
     "cover": "/assets/books/first30/thyroid.webp?v=20261105-landscape-v2",
-    "href": "/library/first30/books/05.html",
+    "href": "/library/first30/books/05",
     "hasMini": true,
     "hasFaq": true,
     "faqCount": 100
@@ -58,7 +58,7 @@
     "slug": "kidney",
     "name": "신장암",
     "cover": "/assets/books/first30/kidney.webp?v=20261105-landscape-v2",
-    "href": "/library/first30/books/06.html",
+    "href": "/library/first30/books/06",
     "hasMini": true,
     "hasFaq": true,
     "faqCount": 100
@@ -68,7 +68,7 @@
     "slug": "prostate",
     "name": "전립선암",
     "cover": "/assets/books/first30/prostate.webp?v=20261105-landscape-v2",
-    "href": "/library/first30/books/07.html",
+    "href": "/library/first30/books/07",
     "hasMini": true,
     "hasFaq": true,
     "faqCount": 100
@@ -78,7 +78,7 @@
     "slug": "pancreas",
     "name": "췌장암",
     "cover": "/assets/books/first30/pancreas.webp?v=20261105-landscape-v2",
-    "href": "/library/first30/books/08.html",
+    "href": "/library/first30/books/08",
     "hasMini": true,
     "hasFaq": true,
     "faqCount": 100
@@ -88,7 +88,7 @@
     "slug": "biliary",
     "name": "담도암",
     "cover": "/assets/books/first30/biliary.webp?v=20261105-landscape-v2",
-    "href": "/library/first30/books/09.html",
+    "href": "/library/first30/books/09",
     "hasMini": true,
     "hasFaq": true,
     "faqCount": 100
@@ -98,7 +98,7 @@
     "slug": "liver",
     "name": "간암",
     "cover": "/assets/books/first30/liver.webp?v=20261105-landscape-v2",
-    "href": "/library/first30/books/10.html",
+    "href": "/library/first30/books/10",
     "hasMini": true,
     "hasFaq": true,
     "faqCount": 100
@@ -108,7 +108,7 @@
     "slug": "lymphoma",
     "name": "림프종",
     "cover": "/assets/books/first30/lymphoma.webp?v=20261105-landscape-v2",
-    "href": "/library/first30/books/11.html",
+    "href": "/library/first30/books/11",
     "hasMini": true,
     "hasFaq": true,
     "faqCount": 100
@@ -118,7 +118,7 @@
     "slug": "cervical",
     "name": "자궁경부암",
     "cover": "/assets/books/first30/cervical.webp?v=20261105-landscape-v2",
-    "href": "/library/first30/books/12.html",
+    "href": "/library/first30/books/12",
     "hasMini": true,
     "hasFaq": true,
     "faqCount": 100
@@ -128,7 +128,7 @@
     "slug": "ovarian",
     "name": "난소암",
     "cover": "/assets/books/first30/ovarian.webp?v=20261105-landscape-v2",
-    "href": "/library/first30/books/13.html",
+    "href": "/library/first30/books/13",
     "hasMini": false,
     "hasFaq": true,
     "faqCount": 100
@@ -138,7 +138,7 @@
     "slug": "endometrial",
     "name": "자궁내막암",
     "cover": "/assets/books/first30/endometrial.webp?v=20261105-landscape-v2",
-    "href": "/library/first30/books/14.html",
+    "href": "/library/first30/books/14",
     "hasMini": false,
     "hasFaq": true,
     "faqCount": 100
@@ -148,7 +148,7 @@
     "slug": "esophageal",
     "name": "식도암",
     "cover": "/assets/books/first30/esophageal.webp?v=20261105-landscape-v2",
-    "href": "/library/first30/books/15.html",
+    "href": "/library/first30/books/15",
     "hasMini": false,
     "hasFaq": true,
     "faqCount": 100
@@ -158,7 +158,7 @@
     "slug": "bladder",
     "name": "방광암",
     "cover": "/assets/books/first30/bladder.webp?v=20261105-landscape-v2",
-    "href": "/library/first30/books/16.html",
+    "href": "/library/first30/books/16",
     "hasMini": false,
     "hasFaq": true,
     "faqCount": 100
@@ -168,7 +168,7 @@
     "slug": "testicular",
     "name": "고환암",
     "cover": "/assets/books/first30/testicular.webp?v=20261105-landscape-v2",
-    "href": "/library/first30/books/17.html",
+    "href": "/library/first30/books/17",
     "hasMini": false,
     "hasFaq": true,
     "faqCount": 100
@@ -178,7 +178,7 @@
     "slug": "oral",
     "name": "구강암",
     "cover": "/assets/books/first30/oral.webp?v=20261105-landscape-v2",
-    "href": "/library/first30/books/18.html",
+    "href": "/library/first30/books/18",
     "hasMini": false,
     "hasFaq": true,
     "faqCount": 100
@@ -188,7 +188,7 @@
     "slug": "laryngeal",
     "name": "후두암",
     "cover": "/assets/books/first30/laryngeal.webp?v=20261105-landscape-v2",
-    "href": "/library/first30/books/19.html",
+    "href": "/library/first30/books/19",
     "hasMini": false,
     "hasFaq": true,
     "faqCount": 100
@@ -198,7 +198,7 @@
     "slug": "nasopharyngeal",
     "name": "비인두암",
     "cover": "/assets/books/first30/nasopharyngeal.webp?v=20261105-landscape-v2",
-    "href": "/library/first30/books/20.html",
+    "href": "/library/first30/books/20",
     "hasMini": false,
     "hasFaq": true,
     "faqCount": 100
@@ -208,7 +208,7 @@
     "slug": "melanoma",
     "name": "악성 흑색종",
     "cover": "/assets/books/first30/melanoma.webp?v=20261105-landscape-v2",
-    "href": "/library/first30/books/21.html",
+    "href": "/library/first30/books/21",
     "hasMini": false,
     "hasFaq": true,
     "faqCount": 100
@@ -218,7 +218,7 @@
     "slug": "sarcoma",
     "name": "연부조직육종",
     "cover": "/assets/books/first30/sarcoma.webp?v=20261105-landscape-v2",
-    "href": "/library/first30/books/22.html",
+    "href": "/library/first30/books/22",
     "hasMini": false,
     "hasFaq": true,
     "faqCount": 100
@@ -228,7 +228,7 @@
     "slug": "brain",
     "name": "성인 악성 뇌종양",
     "cover": "/assets/books/first30/brain.webp?v=20261105-landscape-v2",
-    "href": "/library/first30/books/23.html",
+    "href": "/library/first30/books/23",
     "hasMini": false,
     "hasFaq": true,
     "faqCount": 100
@@ -238,7 +238,7 @@
     "slug": "myeloma",
     "name": "다발성골수종",
     "cover": "/assets/books/first30/myeloma.webp?v=20261105-landscape-v2",
-    "href": "/library/first30/books/24.html",
+    "href": "/library/first30/books/24",
     "hasMini": false,
     "hasFaq": true,
     "faqCount": 100
@@ -248,7 +248,7 @@
     "slug": "aml",
     "name": "급성골수성백혈병",
     "cover": "/assets/books/first30/aml.webp?v=20261105-landscape-v2",
-    "href": "/library/first30/books/25.html",
+    "href": "/library/first30/books/25",
     "hasMini": false,
     "hasFaq": true,
     "faqCount": 100
@@ -258,7 +258,7 @@
     "slug": "all",
     "name": "급성림프모구백혈병",
     "cover": "/assets/books/first30/all.webp?v=20261105-landscape-v2",
-    "href": "/library/first30/books/26.html",
+    "href": "/library/first30/books/26",
     "hasMini": false,
     "hasFaq": true,
     "faqCount": 100
@@ -268,7 +268,7 @@
     "slug": "cml",
     "name": "만성골수성백혈병",
     "cover": "/assets/books/first30/cml.webp?v=20261105-landscape-v2",
-    "href": "/library/first30/books/27.html",
+    "href": "/library/first30/books/27",
     "hasMini": false,
     "hasFaq": true,
     "faqCount": 100
@@ -278,7 +278,7 @@
     "slug": "hodgkin",
     "name": "호지킨림프종",
     "cover": "/assets/books/first30/hodgkin.webp?v=20261105-landscape-v2",
-    "href": "/library/first30/books/28.html",
+    "href": "/library/first30/books/28",
     "hasMini": false,
     "hasFaq": true,
     "faqCount": 100
@@ -288,7 +288,7 @@
     "slug": "pcnsl",
     "name": "원발성 중추신경계 림프종",
     "cover": "/assets/books/first30/pcnsl.webp?v=20261105-landscape-v2",
-    "href": "/library/first30/books/29.html",
+    "href": "/library/first30/books/29",
     "hasMini": false,
     "hasFaq": true,
     "faqCount": 100
@@ -298,7 +298,7 @@
     "slug": "cup",
     "name": "원발불명암",
     "cover": "/assets/books/first30/cup.webp?v=20261105-landscape-v2",
-    "href": "/library/first30/books/30.html",
+    "href": "/library/first30/books/30",
     "hasMini": false,
     "hasFaq": true,
     "faqCount": 100

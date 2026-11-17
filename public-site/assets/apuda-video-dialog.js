@@ -57,7 +57,7 @@
     intro.appendChild(el('p','avd-muted','자막이 제공되는 영상은 CC 버튼에서 한국어 자막을 선택할 수 있어요. 아래 FAQ는 같은 암종의 글 자료이며 영상의 대본은 아니에요.'));
     intro.appendChild(link('영상 대신 글로 읽기',base+'faq/?cancer='+slug));
     session.resources.appendChild(intro);
-    var guide=global.ApuDaFirst30Catalog&&global.ApuDaFirst30Catalog.get(slug);var hasMini=!!(guide&&guide.hasMini);var volume=Object.keys(names).indexOf(slug)+1;var guideHref=guide?guide.href:base+'first30/books/'+String(volume).padStart(2,'0')+'.html';
+    var guide=global.ApuDaFirst30Catalog&&global.ApuDaFirst30Catalog.get(slug);var hasMini=!!(guide&&guide.hasMini);var volume=Object.keys(names).indexOf(slug)+1;var guideHref=guide?guide.href:base+'first30/books/'+String(volume).padStart(2,'0');
     var book=el('section','avd-book');var cover=el('img');cover.src=guide?guide.cover:'/assets/books/first30/'+slug+'.webp?v=20261102-popup30';cover.alt=names[slug]+' 진단 첫 30일 무료 안내서 표지';cover.loading='lazy';cover.width=120;cover.height=200;book.appendChild(cover);
     var copy=el('div');copy.appendChild(el('span','avd-eyebrow','첫 진단을 위한 핵심 안내서'));copy.appendChild(el('h3','',names[slug]+' 진단 첫 30일'));
     copy.appendChild(el('p','avd-muted',hasMini?'웹에서 앞부분을 읽고, 전체 MINI PDF도 코드 입력 없이 무료로 받을 수 있어요.':'핵심안내서는 무료로 바로 읽을 수 있어요. MINI 책자는 현재 준비 중입니다.'));
