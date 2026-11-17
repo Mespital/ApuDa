@@ -1,8 +1,16 @@
 {
-  "checked_at": "2026-11-17T00:04:25.448460+00:00",
-  "last_success_at": "2026-11-17T00:04:25.448460+00:00",
+  "checked_at": "2026-11-17T10:25:14.917089+00:00",
+  "last_success_at": "2026-11-17T10:25:14.917089+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "Strengthening NATO and allied cyber defenses with AI",
+      "url": "https://openai.com/index/strengthening-nato-allied-cyber-defences-ai",
+      "source": "OpenAI",
+      "published_at": "2026-11-17T00:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "Regional voices are rolling out in the Gemini app.",
       "url": "https://blog.google/innovation-and-ai/products/gemini-app/regional-voices/",
@@ -66,6 +74,14 @@
       "published_at": "2026-11-16T12:00:00+00:00",
       "category": "과학·환경",
       "domain": "energy"
+    },
+    {
+      "title": "How Revolut raises ambition without lowering the bar",
+      "url": "https://openai.com/business/customer-stories/revolut",
+      "source": "OpenAI",
+      "published_at": "2026-11-16T09:30:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
     },
     {
       "title": "LVMH’s Media Division announces strategic partnership with OpenAI",
@@ -226,28 +242,12 @@
       "published_at": "2026-11-12T17:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "We're launching a $10 million Energy Impact Program in West Virginia.",
-      "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/energy-impact-program-west-virginia/",
-      "source": "Google",
-      "published_at": "2026-11-12T17:00:00+00:00",
-      "category": "과학·환경",
-      "domain": "energy"
-    },
-    {
-      "title": "Get quick answers from Gemini on any website.",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/research-with-gemini-in-chrome/",
-      "source": "Google",
-      "published_at": "2026-11-12T17:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-11-17T00:04:25.448460+00:00",
+    "checked_at": "2026-11-17T10:25:14.917089+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -388,7 +388,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-11-17T00:04:25.448460+00:00",
+    "last_success_at": "2026-11-17T10:25:14.917089+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
