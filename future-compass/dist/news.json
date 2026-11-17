@@ -1,8 +1,72 @@
 {
-  "checked_at": "2026-11-16T15:17:35.103935+00:00",
-  "last_success_at": "2026-11-16T15:17:35.103935+00:00",
+  "checked_at": "2026-11-17T00:04:25.448460+00:00",
+  "last_success_at": "2026-11-17T00:04:25.448460+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "Regional voices are rolling out in the Gemini app.",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/regional-voices/",
+      "source": "Google",
+      "published_at": "2026-11-16T18:45:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "The era of autonomous attacks has arrived.",
+      "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/gtig-ai-threat-tracker-q4-2026/",
+      "source": "Google",
+      "published_at": "2026-11-16T18:30:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "New Google AdMob AI tools help app creators build, fix, and grow faster",
+      "url": "https://blog.google/products/publisher-connections/new-google-admob-tools/",
+      "source": "Google",
+      "published_at": "2026-11-16T17:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Broadening access to AI for scientists",
+      "url": "https://openai.com/index/expanding-chatgpt-for-academic-researchers",
+      "source": "OpenAI",
+      "published_at": "2026-11-16T17:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Strengthening the fight against online child sexual abuse with new tools and support",
+      "url": "https://openai.com/index/strengthening-online-child-safety",
+      "source": "OpenAI",
+      "published_at": "2026-11-16T17:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "New AI training performance benchmarks for Google TPUs",
+      "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/training-performance-benchmarks-tpus/",
+      "source": "Google",
+      "published_at": "2026-11-16T16:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Transform notes, research, and sources into interactive sites with Gemini Notebook.",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-notebook/interactive-sites/",
+      "source": "Google",
+      "published_at": "2026-11-16T16:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Science at the Frontier: How scientists use ChatGPT",
+      "url": "https://openai.com/index/science-at-the-frontier",
+      "source": "OpenAI",
+      "published_at": "2026-11-16T12:00:00+00:00",
+      "category": "과학·환경",
+      "domain": "energy"
+    },
     {
       "title": "LVMH’s Media Division announces strategic partnership with OpenAI",
       "url": "https://openai.com/index/lvmh-media-division-partnership",
@@ -18,6 +82,14 @@
       "published_at": "2026-11-16T08:00:00+00:00",
       "category": "안전·보안",
       "domain": "security"
+    },
+    {
+      "title": "Our first phase of embedded assessments",
+      "url": "https://openai.com/index/our-first-phase-of-embedded-assessments",
+      "source": "OpenAI",
+      "published_at": "2026-11-16T08:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
     },
     {
       "title": "Advancing computer-use agents for healthcare teams",
@@ -38,6 +110,14 @@
     {
       "title": "The King’s Trust and OpenAI launch £1m partnership",
       "url": "https://openai.com/index/the-kings-trust-and-openai",
+      "source": "OpenAI",
+      "published_at": "2026-11-16T00:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "At Holiday Extras, dots get to work before anyone asks",
+      "url": "https://openai.com/business/customer-stories/holiday-extras-dots",
       "source": "OpenAI",
       "published_at": "2026-11-16T00:00:00+00:00",
       "category": "AI·컴퓨팅",
@@ -162,92 +242,12 @@
       "published_at": "2026-11-12T17:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Designing for privacy on intelligent eyewear",
-      "url": "https://blog.google/innovation-and-ai/technology/safety-security/intelligent-eyewear-privacy-protections/",
-      "source": "Google",
-      "published_at": "2026-11-12T14:00:00+00:00",
-      "category": "안전·보안",
-      "domain": "security"
-    },
-    {
-      "title": "See our intelligent eyewear lineup and pre-order your pair",
-      "url": "https://blog.google/innovation-and-ai/technology/xr-ar/google-intelligent-eyewear-collections-pre-order/",
-      "source": "Google",
-      "published_at": "2026-11-12T14:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Gondola doubles revenue as its team builds more with Codex",
-      "url": "https://openai.com/business/customer-stories/gondola",
-      "source": "OpenAI",
-      "published_at": "2026-11-12T12:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Holiday Extras is rethinking what it can build with Codex",
-      "url": "https://openai.com/business/customer-stories/holidays-extras-codex",
-      "source": "OpenAI",
-      "published_at": "2026-11-12T09:30:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Gilbert + Tobin rethinks the business of law with AI",
-      "url": "https://openai.com/index/gilbert-tobin-sam-nickless",
-      "source": "OpenAI",
-      "published_at": "2026-11-12T00:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Supporting research on AI and children’s safety",
-      "url": "https://openai.com/index/children-first-declaration",
-      "source": "OpenAI",
-      "published_at": "2026-11-12T00:00:00+00:00",
-      "category": "안전·보안",
-      "domain": "security"
-    },
-    {
-      "title": "Gemini Decisions API: Fast, calibrated multimodal decisions",
-      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/",
-      "source": "Google",
-      "published_at": "2026-11-11T18:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Talk it through with Gemini, now on Apple CarPlay",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-on-apple-carplay/",
-      "source": "Google",
-      "published_at": "2026-11-11T17:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Google Cloud leaders share what to expect in cybersecurity for 2027.",
-      "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/cybersecurity-2027/",
-      "source": "Google",
-      "published_at": "2026-11-11T17:00:00+00:00",
-      "category": "안전·보안",
-      "domain": "security"
-    },
-    {
-      "title": "Get certified as a Google Cloud Professional Agentic Architect.",
-      "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/professional-agentic-architect/",
-      "source": "Google",
-      "published_at": "2026-11-11T17:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-11-16T15:17:35.103935+00:00",
+    "checked_at": "2026-11-17T00:04:25.448460+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -388,7 +388,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-11-16T15:17:35.103935+00:00",
+    "last_success_at": "2026-11-17T00:04:25.448460+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
