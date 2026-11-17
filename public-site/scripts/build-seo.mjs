@@ -363,4 +363,22 @@ const llms = [
   '',
 ].join('\n');
 await writeFile(join(root, 'llms.txt'), llms, 'utf8');
+
+// rss.xml: for Naver Search Advisor's RSS submission. Only pages with a verified
+// update date (FAQ pages and their topic pages, dated by the record's `updated`).
+const rfc822 = (date) => new Date(date + 'T00:00:00+09:00').toUTCString();
+const rssItems = records.filter((r) => faqLastmod.has('/library/faq/' + r.slug + '/')).flatMap((r) => [
+  { title: r.name + ' FAQ 100문항', path: '/library/faq/' + r.slug + '/', date: r.updated,
+    description: r.name + ' 환자·보호자가 자주 묻는 질문 100개와 출처를 첨부한 답변' },
+  ...(topicMaps.get(r.slug) ?? []).map((t) => ({ title: r.name + ' ' + t.title + ' FAQ', path: topicPath(r, t),
+    date: r.updated, description: t.summary })),
+]).sort((x, y) => y.date.localeCompare(x.date) || x.path.localeCompare(y.path));
+const rss = '<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel>\n' +
+  '<title>아프다 ApuDa 암 정보 업데이트</title><link>' + origin + '/</link>\n' +
+  '<description>암 환자와 보호자를 위한 출처 첨부 환자교육 정보. 진료를 대신하지 않습니다.</description><language>ko</language>\n' +
+  rssItems.map((item) => '<item><title>' + escapeHtml(item.title) + '</title><link>' + canonical(item.path) +
+    '</link><guid>' + canonical(item.path) + '#' + item.date + '</guid><pubDate>' + rfc822(item.date) +
+    '</pubDate><description>' + escapeHtml(item.description) + '</description></item>').join('\n') +
+  '\n</channel></rss>\n';
+await writeFile(join(root, 'rss.xml'), rss, 'utf8');
 console.log('SEO: ' + books.size + ' books, ' + records.length + ' FAQ pages, ' + topicPaths.length + ' FAQ topic pages, ' + paths.length + ' sitemap URLs');

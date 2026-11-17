@@ -1,0 +1,51 @@
+name: IndexNow submit (manual)
+
+# Tells IndexNow search engines (Naver, Bing and the others that share
+# submissions) that apuda.app pages changed. Manual only: no schedule, no
+# secrets. The key is public by design and lives at
+# https://apuda.app/fd5ef28698343267bd19b9e588a950be.txt
+# Run it from the Actions tab after a deploy that changed many pages.
+on:
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: 'Space-separated URLs to submit. Leave empty to submit every sitemap URL.'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Submit URLs
+        env:
+          INPUT_URLS: ${{ github.event.inputs.urls }}
+        run: |
+          python3 - <<'PY'
+          import json, os, re, urllib.request
+          key = 'fd5ef28698343267bd19b9e588a950be'
+          host = 'apuda.app'
+          given = os.environ.get('INPUT_URLS', '').split()
+          if given:
+              urls = given
+          else:
+              sitemap = open('public-site/sitemap.xml', encoding='utf-8').read()
+              urls = re.findall(r'<loc>([^<]+)</loc>', sitemap)
+          urls = [u for u in urls if u.startswith('https://' + host + '/')]
+          if not urls:
+              raise SystemExit('No apuda.app URLs to submit')
+          body = json.dumps({'host': host, 'key': key,
+                             'keyLocation': f'https://{host}/{key}.txt',
+                             'urlList': urls}).encode('utf-8')
+          request = urllib.request.Request('https://api.indexnow.org/indexnow', data=body,
+              headers={'Content-Type': 'application/json; charset=utf-8'}, method='POST')
+          with urllib.request.urlopen(request, timeout=30) as response:
+              print('IndexNow HTTP', response.status, 'for', len(urls), 'URLs')
+          PY
