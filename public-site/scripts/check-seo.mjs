@@ -7,7 +7,8 @@ const read = (path) => readFile(join(root, path), 'utf8');
 const assert = (condition, message) => { if (!condition) throw new Error(message); };
 const sitemap = await read('sitemap.xml');
 const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-// 85 base URLs plus one URL per editorial FAQ topic page (scripts/faq-topics/*.json).
+// 84 base URLs (85 before /emergency/, which is noindex, left the sitemap) plus one URL per
+// editorial FAQ topic page (scripts/faq-topics/*.json).
 const topicMapFiles = (await readdir(join(root, 'scripts/faq-topics')).catch(() => [])).filter((name) => name.endsWith('.json'));
 const topicMaps = new Map();
 for (const file of topicMapFiles) {
@@ -15,7 +16,7 @@ for (const file of topicMapFiles) {
   topicMaps.set(map.slug, map.topics);
 }
 const topicPageCount = [...topicMaps.values()].reduce((sum, topics) => sum + topics.length, 0);
-assert(urls.length === 85 + topicPageCount, 'Expected exactly 85 base sitemap URLs plus FAQ topic pages');
+assert(urls.length === 84 + topicPageCount, 'Expected exactly 84 base sitemap URLs plus FAQ topic pages');
 assert(new Set(urls).size === urls.length, 'Sitemap has duplicate URLs');
 assert(urls.every((url) => url.startsWith('https://apuda.app/')), 'Sitemap has an external URL');
 
@@ -49,6 +50,17 @@ for (const file of ['library/first30/index.html', 'assets/apuda-first30-catalog.
   assert(!/first30\/books\/\d{2}\.html/.test(await read(file)), 'Book link with .html in ' + file);
 }
 assert(!sitemap.includes('.html'), 'Sitemap must use extensionless book URLs');
+// Every sitemap page served from this folder must declare itself canonical and be indexable.
+// Paths proxied to other Netlify sites (risk, care, pet, farm, support/v4) are checked there.
+for (const url of urls) {
+  const path = url.replace('https://apuda.app/', '');
+  const file = path === '' ? 'index.html' : path.endsWith('/') ? path + 'index.html' : path + '.html';
+  let html;
+  try { html = await read(file); } catch { continue; }
+  assert(html.includes('<link rel="canonical" href="' + url + '">'), 'Sitemap page canonical missing or different: ' + url);
+  assert(!/<meta name="robots" content="[^"]*noindex/.test(html), 'Sitemap lists a noindex page: ' + url);
+  assert(/<meta name="description" content="[^"]{20,}"/.test(html), 'Sitemap page description missing: ' + url);
+}
 const noteHtml = await read('note/index.html');
 const noteGuideHtml = await read('note-guide/index.html');
 const homepage = await read('index.html');

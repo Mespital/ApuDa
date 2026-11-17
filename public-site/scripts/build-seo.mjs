@@ -306,7 +306,8 @@ const faqLastmod = new Map(records
 const topicPaths = records.flatMap((r) => (topicMaps.get(r.slug) ?? []).map((t) => topicPath(r, t)));
 const paths = [
   '/', '/about/', '/community/', '/family/', '/care/', '/pet/', '/farm/',
-  '/risk/', '/checkup/', '/emergency/', '/hospital-information/',
+  // /emergency/ is deliberately noindex, so it stays out of the sitemap and llms.txt.
+  '/risk/', '/checkup/', '/hospital-information/',
   '/library/first30/', '/library/faq/', '/library/review/',
   '/library/mini/', '/library/treatment-map/', '/library/drugs/',
   '/library/biomarkers/', '/library/regimens/', '/support/', '/support/v4/',
@@ -341,7 +342,6 @@ const llms = [
   '## 안내',
   mdLink('자료 출처·검토 범위', '/library/review/'),
   mdLink('ApuDa 소개', '/about/'),
-  mdLink('응급 상황 안내', '/emergency/'),
   '',
   '## 암종별 FAQ (각 100문항)',
   ...records.map((r) => mdLink(r.name + ' FAQ', '/library/faq/' + r.slug + '/') +

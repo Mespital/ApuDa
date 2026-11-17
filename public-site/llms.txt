@@ -7,7 +7,6 @@
 ## 안내
 - [자료 출처·검토 범위](https://apuda.app/library/review/)
 - [ApuDa 소개](https://apuda.app/about/)
-- [응급 상황 안내](https://apuda.app/emergency/)
 
 ## 암종별 FAQ (각 100문항)
 - [급성림프모구백혈병 FAQ](https://apuda.app/library/faq/all/): 자료 업데이트 2026-11-17
