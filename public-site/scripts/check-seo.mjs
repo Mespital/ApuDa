@@ -39,6 +39,10 @@ assert(llmsUrls.every((url) => urls.includes(url)), 'llms.txt lists a URL that i
 assert(new Set(llmsUrls).size === llmsUrls.length, 'llms.txt has duplicate URLs');
 assert(llms.includes('전문의 검토는 완료되지 않았으며') && llms.includes('진단·처방·개인별 치료 결정을 대신하지 않습니다') &&
   !/전문의 감수 완료|검증된 의학 정보/.test(llms), 'llms.txt must state the real review status');
+// 30 FAQ pages link to /library/review/?cancer=<slug>; without a canonical each query
+// variant looks like a separate duplicate page to search engines.
+assert((await read('library/review/index.html')).includes('<link rel="canonical" href="https://apuda.app/library/review/">'),
+  'Review page canonical missing (query-string variants would be indexed as duplicates)');
 const noteHtml = await read('note/index.html');
 const noteGuideHtml = await read('note-guide/index.html');
 const homepage = await read('index.html');
