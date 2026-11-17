@@ -43,6 +43,12 @@ assert(llms.includes('전문의 검토는 완료되지 않았으며') && llms.in
 // variant looks like a separate duplicate page to search engines.
 assert((await read('library/review/index.html')).includes('<link rel="canonical" href="https://apuda.app/library/review/">'),
   'Review page canonical missing (query-string variants would be indexed as duplicates)');
+// Book URLs are extensionless everywhere (Netlify rewrites links that way); a stray
+// .html link would split signals between two URLs for the same page.
+for (const file of ['library/first30/index.html', 'assets/apuda-first30-catalog.js', 'library/review/registry.json', 'llms.txt']) {
+  assert(!/first30\/books\/\d{2}\.html/.test(await read(file)), 'Book link with .html in ' + file);
+}
+assert(!sitemap.includes('.html'), 'Sitemap must use extensionless book URLs');
 const noteHtml = await read('note/index.html');
 const noteGuideHtml = await read('note-guide/index.html');
 const homepage = await read('index.html');
@@ -171,7 +177,7 @@ assert(homepage.includes('<meta property="og:image" content="https://apuda.app/o
 assert(homepage.includes('"@type":"WebSite"') && homepage.includes('"alternateName"'), 'Homepage site-name structured data missing');
 assert(homepage.includes('href="/community/"') && homepage.includes('href="/family/"'), 'Homepage family or community link missing');
 const catalog = await read('library/first30/index.html');
-const bookSlugs = new Map([...catalog.matchAll(/data-slug="([^"]+)" data-name="[^"]+" href="\/library\/first30\/books\/(\d{2})\.html"/g)]
+const bookSlugs = new Map([...catalog.matchAll(/data-slug="([^"]+)" data-name="[^"]+" href="\/library\/first30\/books\/(\d{2})(?:\.html)?"/g)]
   .map(([, slug, number]) => [number, slug]));
 assert(bookSlugs.size === 30, 'Expected 30 cancer-to-book mappings');
 for (const path of ['community', 'family']) {
@@ -187,7 +193,7 @@ for (const path of ['/care/', '/pet/', '/farm/']) {
 
 for (let n = 1; n <= 30; n++) {
   const number = String(n).padStart(2, '0');
-  const url = 'https://apuda.app/library/first30/books/' + number + '.html';
+  const url = 'https://apuda.app/library/first30/books/' + number;
   const html = await read('library/first30/books/' + number + '.html');
   assert(urls.includes(url), 'Book not in sitemap: ' + number);
   assert(html.includes('<link rel="canonical" href="' + url + '">'), 'Book canonical missing: ' + number);
