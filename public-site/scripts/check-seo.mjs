@@ -61,6 +61,16 @@ for (const url of urls) {
   assert(!/<meta name="robots" content="[^"]*noindex/.test(html), 'Sitemap lists a noindex page: ' + url);
   assert(/<meta name="description" content="[^"]{20,}"/.test(html), 'Sitemap page description missing: ' + url);
 }
+// rss.xml (Naver RSS submission) may only point at sitemap URLs and must carry dates.
+const rss = await read('rss.xml');
+const rssLinks = [...rss.matchAll(/<link>([^<]+)<\/link>/g)].map((match) => match[1]).slice(1);
+assert(rss.startsWith('<?xml') && rssLinks.length >= 30, 'rss.xml missing or incomplete');
+assert(rssLinks.every((url) => urls.includes(url)), 'rss.xml lists a URL that is not in the sitemap');
+assert([...rss.matchAll(/<pubDate>/g)].length === rssLinks.length, 'Every rss.xml item needs a pubDate');
+// IndexNow key file: name and content must match (Naver and Bing verify it).
+const indexNowKeys = (await readdir(root)).filter((name) => /^[0-9a-f]{32}\.txt$/.test(name));
+assert(indexNowKeys.length === 1 && (await read(indexNowKeys[0])).trim() === indexNowKeys[0].slice(0, 32),
+  'IndexNow key file missing or mismatched');
 const noteHtml = await read('note/index.html');
 const noteGuideHtml = await read('note-guide/index.html');
 const homepage = await read('index.html');
