@@ -1,7 +1,7 @@
 {
   "slug": "nasopharyngeal",
   "name": "비인두암",
-  "updated": "2026-11-06",
+  "updated": "2026-11-17",
   "revision": "20261103-faq100-ai-draft-v1",
   "edition": "진단 후 첫 30일 FAQ 100문항 (신규 80문항 AI 편집 초안)",
   "reviewMode": "AI 사전점검(기존20)·AI 확장원고(신규80)",
@@ -1543,14 +1543,15 @@
       "category": "treatment",
       "review": {
         "id": "faq.nasopharyngeal.090",
-        "version": "20261106-faq-upgrade-v1",
+        "version": "20261117-kr-source-v1",
         "responsibleRole": "추가 전문분야: 두경부종양",
         "clinicalApproval": "pending",
         "aiCheck": "ai-editorial-draft-not-independently-reviewed",
         "sourceRefs": [
-          "nci-nasopharyngeal"
+          "nci-nasopharyngeal",
+          "khepi-quitline"
         ],
-        "scope": "AI 초안(2026-11-06 편집 보강: 기존 12암종 FAQ 수준으로 설명·주의 신호·진료 질문 보강). 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+        "scope": "AI 초안(2026-11-06 편집 보강: 기존 12암종 FAQ 수준으로 설명·주의 신호·진료 질문 보강). 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다. 2026-11-17: 국내 제도·상담전화 문장에 국내 공공기관 출처 추가(khepi-quitline). 문장은 바꾸지 않았고 실제 전문의 검토는 여전히 대기 중입니다."
       }
     },
     {
@@ -1780,6 +1781,14 @@
       "scope": "심한 호흡곤란·흉부 압박·갑작스러운 혼돈 등 즉시 평가가 필요한 호흡 관련 증상. 영국 응급번호를 한국에 그대로 적용하지 않음",
       "evidenceType": "official-patient-guidance",
       "checkedAt": "2026-11-02"
+    },
+    "khepi-quitline": {
+      "title": "금연길라잡이 · 금연상담전화(1544-9030)",
+      "url": "https://www.nosmokeguide.go.kr/helpness/counsel",
+      "organization": "보건복지부·한국건강증진개발원",
+      "checkedAt": "2026-11-17",
+      "scope": "금연상담전화 1544-9030 무료 맞춤 금연상담(전화·카카오톡 채팅)",
+      "evidenceType": "primary-official-medical-source"
     }
   },
   "questionsForVisit": [

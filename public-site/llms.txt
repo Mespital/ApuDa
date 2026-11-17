@@ -10,36 +10,36 @@
 - [응급 상황 안내](https://apuda.app/emergency/)
 
 ## 암종별 FAQ (각 100문항)
-- [급성림프모구백혈병 FAQ](https://apuda.app/library/faq/all/): 자료 업데이트 2026-11-07
-- [급성골수성백혈병 FAQ](https://apuda.app/library/faq/aml/): 자료 업데이트 2026-11-08
-- [담도암·담낭암 FAQ](https://apuda.app/library/faq/biliary/): 자료 업데이트 2026-11-06
+- [급성림프모구백혈병 FAQ](https://apuda.app/library/faq/all/): 자료 업데이트 2026-11-17
+- [급성골수성백혈병 FAQ](https://apuda.app/library/faq/aml/): 자료 업데이트 2026-11-17
+- [담도암·담낭암 FAQ](https://apuda.app/library/faq/biliary/): 자료 업데이트 2026-11-17
 - [방광암 FAQ](https://apuda.app/library/faq/bladder/): 자료 업데이트 2026-11-17
 - [성인 악성 뇌종양 FAQ](https://apuda.app/library/faq/brain/): 자료 업데이트 2026-11-08
-- [유방암 FAQ](https://apuda.app/library/faq/breast/): 자료 업데이트 2026-11-06
-- [자궁경부암 FAQ](https://apuda.app/library/faq/cervical/): 자료 업데이트 2026-11-06
-- [만성골수성백혈병 FAQ](https://apuda.app/library/faq/cml/): 자료 업데이트 2026-11-06
-- [대장암 FAQ](https://apuda.app/library/faq/colorectal/): 자료 업데이트 2026-11-06
-- [원발불명암 FAQ](https://apuda.app/library/faq/cup/): 자료 업데이트 2026-11-07
+- [유방암 FAQ](https://apuda.app/library/faq/breast/): 자료 업데이트 2026-11-17
+- [자궁경부암 FAQ](https://apuda.app/library/faq/cervical/): 자료 업데이트 2026-11-17
+- [만성골수성백혈병 FAQ](https://apuda.app/library/faq/cml/): 자료 업데이트 2026-11-17
+- [대장암 FAQ](https://apuda.app/library/faq/colorectal/): 자료 업데이트 2026-11-17
+- [원발불명암 FAQ](https://apuda.app/library/faq/cup/): 자료 업데이트 2026-11-17
 - [자궁내막암 FAQ](https://apuda.app/library/faq/endometrial/): 자료 업데이트 2026-11-08
-- [식도암 FAQ](https://apuda.app/library/faq/esophageal/): 자료 업데이트 2026-11-08
-- [호지킨림프종 FAQ](https://apuda.app/library/faq/hodgkin/): 자료 업데이트 2026-11-08
-- [신장암 FAQ](https://apuda.app/library/faq/kidney/): 자료 업데이트 2026-11-06
+- [식도암 FAQ](https://apuda.app/library/faq/esophageal/): 자료 업데이트 2026-11-17
+- [호지킨림프종 FAQ](https://apuda.app/library/faq/hodgkin/): 자료 업데이트 2026-11-17
+- [신장암 FAQ](https://apuda.app/library/faq/kidney/): 자료 업데이트 2026-11-17
 - [후두암 FAQ](https://apuda.app/library/faq/laryngeal/): 자료 업데이트 2026-11-17
-- [간암 FAQ](https://apuda.app/library/faq/liver/): 자료 업데이트 2026-11-06
-- [폐암 FAQ](https://apuda.app/library/faq/lung/): 자료 업데이트 2026-11-06
-- [림프종 FAQ](https://apuda.app/library/faq/lymphoma/): 자료 업데이트 2026-11-06
+- [간암 FAQ](https://apuda.app/library/faq/liver/): 자료 업데이트 2026-11-17
+- [폐암 FAQ](https://apuda.app/library/faq/lung/): 자료 업데이트 2026-11-17
+- [림프종 FAQ](https://apuda.app/library/faq/lymphoma/): 자료 업데이트 2026-11-17
 - [악성 흑색종 FAQ](https://apuda.app/library/faq/melanoma/): 자료 업데이트 2026-11-06
-- [다발성골수종 FAQ](https://apuda.app/library/faq/myeloma/): 자료 업데이트 2026-11-08
-- [비인두암 FAQ](https://apuda.app/library/faq/nasopharyngeal/): 자료 업데이트 2026-11-06
-- [구강암 FAQ](https://apuda.app/library/faq/oral/): 자료 업데이트 2026-11-06
-- [난소암 FAQ](https://apuda.app/library/faq/ovarian/): 자료 업데이트 2026-11-08
-- [췌장암 FAQ](https://apuda.app/library/faq/pancreas/): 자료 업데이트 2026-11-06
-- [원발성 중추신경계 림프종 FAQ](https://apuda.app/library/faq/pcnsl/): 자료 업데이트 2026-11-06
-- [전립선암 FAQ](https://apuda.app/library/faq/prostate/): 자료 업데이트 2026-11-06
+- [다발성골수종 FAQ](https://apuda.app/library/faq/myeloma/): 자료 업데이트 2026-11-17
+- [비인두암 FAQ](https://apuda.app/library/faq/nasopharyngeal/): 자료 업데이트 2026-11-17
+- [구강암 FAQ](https://apuda.app/library/faq/oral/): 자료 업데이트 2026-11-17
+- [난소암 FAQ](https://apuda.app/library/faq/ovarian/): 자료 업데이트 2026-11-17
+- [췌장암 FAQ](https://apuda.app/library/faq/pancreas/): 자료 업데이트 2026-11-17
+- [원발성 중추신경계 림프종 FAQ](https://apuda.app/library/faq/pcnsl/): 자료 업데이트 2026-11-17
+- [전립선암 FAQ](https://apuda.app/library/faq/prostate/): 자료 업데이트 2026-11-17
 - [연부조직육종 FAQ](https://apuda.app/library/faq/sarcoma/): 자료 업데이트 2026-11-17
-- [위암 FAQ](https://apuda.app/library/faq/stomach/): 자료 업데이트 2026-11-06
-- [고환암 FAQ](https://apuda.app/library/faq/testicular/): 자료 업데이트 2026-11-07
-- [갑상선암 FAQ](https://apuda.app/library/faq/thyroid/): 자료 업데이트 2026-11-06
+- [위암 FAQ](https://apuda.app/library/faq/stomach/): 자료 업데이트 2026-11-17
+- [고환암 FAQ](https://apuda.app/library/faq/testicular/): 자료 업데이트 2026-11-17
+- [갑상선암 FAQ](https://apuda.app/library/faq/thyroid/): 자료 업데이트 2026-11-17
 
 ## FAQ 주제별 묶음
 - [방광암 혈뇨·방광내시경·진단 검사](https://apuda.app/library/faq/bladder/hematuria-tests/): 8문항

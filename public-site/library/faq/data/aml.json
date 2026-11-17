@@ -1,7 +1,7 @@
 {
   "slug": "aml",
   "name": "급성골수성백혈병",
-  "updated": "2026-11-08",
+  "updated": "2026-11-17",
   "revision": "20261108-medical-safety-ai-pass-v2",
   "edition": "진단 후 첫 30일 FAQ 100문항 (신규 80문항 AI 편집 초안)",
   "reviewMode": "AI 사전점검(기존20)·AI 확장원고(신규80)",
@@ -1684,14 +1684,15 @@
       "category": "followup",
       "review": {
         "id": "faq.aml.098",
-        "version": "20261106-faq-review-fix-v1",
+        "version": "20261117-kr-source-v1",
         "responsibleRole": "S11 교차 검토 필요 · 혈액종양(질환별 책임자 배정 대기)",
         "clinicalApproval": "pending",
         "aiCheck": "ai-editorial-draft-not-independently-reviewed",
         "sourceRefs": [
-          "nci-aml-patient"
+          "nci-aml-patient",
+          "nhis-cancer-copay-special"
         ],
-        "scope": "AI 초안(2026-11-06 편집 보강 + AI 다관점 감수단 사전 점검 지적 반영). 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+        "scope": "AI 초안(2026-11-06 편집 보강 + AI 다관점 감수단 사전 점검 지적 반영). 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다. 2026-11-17: 국내 제도·상담전화 문장에 국내 공공기관 출처 추가(nhis-cancer-copay-special). 문장은 바꾸지 않았고 실제 전문의 검토는 여전히 대기 중입니다."
       }
     },
     {
@@ -1813,6 +1814,14 @@
       "scope": "APL 의심 단계부터 의료 응급으로 관리하고 진단 확정 전에도 전문팀이 응고 장애 대응·치료를 시작한다는 원칙. 환자가 직접 ATRA·수혈·기타 약을 시작하라는 지시로 옮기지 않음",
       "evidenceType": "professional-clinical-recommendation",
       "sourceUpdated": "2019-02-25"
+    },
+    "nhis-cancer-copay-special": {
+      "title": "국민건강보험공단 · 본인일부부담금 산정특례 제도",
+      "url": "https://www.nhis.or.kr/nhis/minwon/wbhapa01000m01.do?mode=view&articleNo=10946880",
+      "organization": "국민건강보험공단",
+      "checkedAt": "2026-11-17",
+      "scope": "암 산정특례: 급여 진료 본인부담률 5%, 적용기간 5년, 비급여 미적용, 확진일부터 30일 이내 신청 시 확진일부터 적용, 기간 종료 시 계속 치료 중이면 재등록",
+      "evidenceType": "primary-official-medical-source"
     }
   },
   "questionsForVisit": [
