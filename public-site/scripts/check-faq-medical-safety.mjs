@@ -98,6 +98,17 @@ for (const [slug, faq] of faqs) {
     }
   }
 }
+// Single-item Korean facts checked against Korean agency pages on 2026-11-17.
+for (const [slug, number, id] of [
+  ['bladder', 89, 'khepi-smoking-clinic'], ['stomach', 14, 'mohw-cancer-drug-coverage-202610'],
+  ['thyroid', 9, 'ncc-thyroid-treatment'], ['all', 97, 'ncc-pediatric-cancer-support'],
+  ['aml', 98, 'mohw-sickness-benefit-pilot'], ['colorectal', 71, 'mfds-clinical-trial-search'],
+]) {
+  const item = faqs.get(slug).items.find((entry) => entry.n === number);
+  assert(item?.review.sourceRefs.includes(id) && /\.go\.kr\//.test(faqs.get(slug).sources[id]?.url ?? ''),
+    `${slug} #${number}: Korean agency source ${id} missing`);
+}
+assert(!faqs.get('stomach').items.find((entry) => entry.n === 14).a.includes('보도 기준'), 'Stomach #14 must cite the official announcement');
 const bcg = faqs.get('bladder').items.find((entry) => entry.n === 37);
 assert(bcg?.a.includes('38.0℃') && !bcg.a.includes('38.5'), 'Bladder BCG fever threshold regressed');
 
