@@ -226,6 +226,14 @@
           "checkedAt": "2026-11-17",
           "scope": "국가암지식정보센터 암정보 전화상담 1577-8899와 누리집 www.cancer.go.kr",
           "evidenceType": "primary-official-medical-source"
+        },
+        "mohw-cancer-drug-coverage-202610": {
+          "title": "보건복지부 보도자료 · 10월부터 암 치료제 건강보험 적용 확대(2026-09-30)",
+          "url": "https://mohw.go.kr/board.es?act=view&bid=0027&list_no=1492089&mid=a10503010100&nPage=2&tag=",
+          "organization": "보건복지부",
+          "checkedAt": "2026-11-17",
+          "scope": "2026년 10월 1일부터 절제 불가능한 진행성·전이성 위암 치료제 빌로이주(졸베툭시맙) 건강보험 적용",
+          "evidenceType": "primary-official-medical-source"
         }
       }
     },
@@ -273,6 +281,14 @@
           "checkedAt": "2026-11-17",
           "scope": "국가암지식정보센터 암정보 전화상담 1577-8899와 누리집 www.cancer.go.kr",
           "evidenceType": "primary-official-medical-source"
+        },
+        "mfds-clinical-trial-search": {
+          "title": "의약품안전나라(식약처) · 임상시험정보검색",
+          "url": "https://nedrug.mfds.go.kr/searchClinic",
+          "organization": "식품의약품안전처",
+          "checkedAt": "2026-11-17",
+          "scope": "식약처 승인 임상시험을 모집 상태·시험 단계·실시기관 지역으로 검색",
+          "evidenceType": "primary-official-medical-source"
         }
       }
     },
@@ -319,6 +335,14 @@
           "organization": "국립암센터 국가암지식정보센터",
           "checkedAt": "2026-11-17",
           "scope": "국가암지식정보센터 암정보 전화상담 1577-8899와 누리집 www.cancer.go.kr",
+          "evidenceType": "primary-official-medical-source"
+        },
+        "ncc-thyroid-treatment": {
+          "title": "국가암지식정보센터 · 갑상선암 치료방법",
+          "url": "https://www.cancer.go.kr/lay1/program/S1T211C212/cancer/view.do?cancer_seq=3341&menu_seq=3357",
+          "organization": "국립암센터 국가암지식정보센터",
+          "checkedAt": "2026-11-17",
+          "scope": "갑상선암 로봇수술: 아직 건강보험 급여 적용이 되지 않아 비용이 많이 듦",
           "evidenceType": "primary-official-medical-source"
         }
       }
@@ -1415,6 +1439,14 @@
           "organization": "보건복지부·한국건강증진개발원",
           "checkedAt": "2026-11-17",
           "scope": "금연상담전화 1544-9030 무료 맞춤 금연상담(전화·카카오톡 채팅)",
+          "evidenceType": "primary-official-medical-source"
+        },
+        "khepi-smoking-clinic": {
+          "title": "금연길라잡이 · 보건소 금연클리닉",
+          "url": "https://www.nosmokeguide.go.kr/helpness/clinic",
+          "organization": "보건복지부·한국건강증진개발원",
+          "checkedAt": "2026-11-17",
+          "scope": "전국 보건소 금연클리닉: 무료, 6개월 금연상담과 니코틴 보조제(12주) 제공",
           "evidenceType": "primary-official-medical-source"
         }
       },
@@ -2606,6 +2638,14 @@
           "checkedAt": "2026-11-17",
           "scope": "암 산정특례: 급여 진료 본인부담률 5%, 적용기간 5년, 비급여 미적용, 확진일부터 30일 이내 신청 시 확진일부터 적용, 기간 종료 시 계속 치료 중이면 재등록",
           "evidenceType": "primary-official-medical-source"
+        },
+        "mohw-sickness-benefit-pilot": {
+          "title": "보건복지부 · 상병수당 시범사업",
+          "url": "https://www.mohw.go.kr/menu.es?mid=a10705020300",
+          "organization": "보건복지부",
+          "checkedAt": "2026-11-17",
+          "scope": "상병수당은 일부 지역에서 시범사업으로 운영(지역·취업자·소득 기준), 업무 외 질병·부상으로 일하지 못할 때 소득 지원",
+          "evidenceType": "primary-official-medical-source"
         }
       },
       "additionalDraftItems": 80,
@@ -2740,6 +2780,14 @@
           "organization": "국민건강보험공단",
           "checkedAt": "2026-11-17",
           "scope": "암 산정특례: 급여 진료 본인부담률 5%, 적용기간 5년, 비급여 미적용, 확진일부터 30일 이내 신청 시 확진일부터 적용, 기간 종료 시 계속 치료 중이면 재등록",
+          "evidenceType": "primary-official-medical-source"
+        },
+        "ncc-pediatric-cancer-support": {
+          "title": "국가암지식정보센터 · 암환자의료비지원사업(소아암환자)",
+          "url": "https://www.cancer.go.kr/lay1/S1T559C561/contents.do",
+          "organization": "국립암센터 국가암지식정보센터",
+          "checkedAt": "2026-11-17",
+          "scope": "18세 미만 소아 암환자 의료비 지원(의료급여·차상위 당연 선정, 건강보험가입자는 소득·재산 기준), 주소지 보건소 신청",
           "evidenceType": "primary-official-medical-source"
         }
       },

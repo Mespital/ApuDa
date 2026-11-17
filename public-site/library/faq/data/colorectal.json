@@ -1151,14 +1151,15 @@
       "a": "임상시험은 표준치료가 끝났을 때만이 아니라 진단 초기에도 고려할 수 있어요. 시험의 목적, 기존 치료와 무엇이 다른지, 위약 사용 여부, 방문 횟수·비용, 예상 부작용, 언제든 그만둘 수 있는지를 확인하세요. 담당의에게 참여할 만한 시험이 있는지 물어보고, 식약처 임상시험 정보에서 국내 시험을 찾아볼 수 있어요.",
       "review": {
         "id": "faq.colorectal.071",
-        "version": "20261106-source-map-v2",
+        "version": "20261117-kr-source-v1",
         "responsibleRole": "S04",
         "clinicalApproval": "pending",
         "aiCheck": "ai-topic-source-mapped-not-line-verified",
         "sourceRefs": [
-          "common-acs-clinical-trial"
+          "common-acs-clinical-trial",
+          "mfds-clinical-trial-search"
         ],
-        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다). 2026-11-17: 국내 제도 문장에 국내 공공기관 출처 추가(mfds-clinical-trial-search). 실제 전문의 검토는 여전히 대기 중입니다."
       }
     },
     {
@@ -2050,6 +2051,14 @@
       "organization": "국립암센터 국가암지식정보센터",
       "checkedAt": "2026-11-17",
       "scope": "국가암지식정보센터 암정보 전화상담 1577-8899와 누리집 www.cancer.go.kr",
+      "evidenceType": "primary-official-medical-source"
+    },
+    "mfds-clinical-trial-search": {
+      "title": "의약품안전나라(식약처) · 임상시험정보검색",
+      "url": "https://nedrug.mfds.go.kr/searchClinic",
+      "organization": "식품의약품안전처",
+      "checkedAt": "2026-11-17",
+      "scope": "식약처 승인 임상시험을 모집 상태·시험 단계·실시기관 지역으로 검색",
       "evidenceType": "primary-official-medical-source"
     }
   },

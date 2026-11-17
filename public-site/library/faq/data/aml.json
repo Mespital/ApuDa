@@ -1690,9 +1690,10 @@
         "aiCheck": "ai-editorial-draft-not-independently-reviewed",
         "sourceRefs": [
           "nci-aml-patient",
-          "nhis-cancer-copay-special"
+          "nhis-cancer-copay-special",
+          "mohw-sickness-benefit-pilot"
         ],
-        "scope": "AI 초안(2026-11-06 편집 보강 + AI 다관점 감수단 사전 점검 지적 반영). 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다. 2026-11-17: 국내 제도·상담전화 문장에 국내 공공기관 출처 추가(nhis-cancer-copay-special). 문장은 바꾸지 않았고 실제 전문의 검토는 여전히 대기 중입니다."
+        "scope": "AI 초안(2026-11-06 편집 보강 + AI 다관점 감수단 사전 점검 지적 반영). 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다. 2026-11-17: 국내 제도·상담전화 문장에 국내 공공기관 출처 추가(nhis-cancer-copay-special). 문장은 바꾸지 않았고 실제 전문의 검토는 여전히 대기 중입니다. 2026-11-17: 국내 제도 문장에 국내 공공기관 출처 추가(mohw-sickness-benefit-pilot). 실제 전문의 검토는 여전히 대기 중입니다."
       }
     },
     {
@@ -1821,6 +1822,14 @@
       "organization": "국민건강보험공단",
       "checkedAt": "2026-11-17",
       "scope": "암 산정특례: 급여 진료 본인부담률 5%, 적용기간 5년, 비급여 미적용, 확진일부터 30일 이내 신청 시 확진일부터 적용, 기간 종료 시 계속 치료 중이면 재등록",
+      "evidenceType": "primary-official-medical-source"
+    },
+    "mohw-sickness-benefit-pilot": {
+      "title": "보건복지부 · 상병수당 시범사업",
+      "url": "https://www.mohw.go.kr/menu.es?mid=a10705020300",
+      "organization": "보건복지부",
+      "checkedAt": "2026-11-17",
+      "scope": "상병수당은 일부 지역에서 시범사업으로 운영(지역·취업자·소득 기준), 업무 외 질병·부상으로 일하지 못할 때 소득 지원",
       "evidenceType": "primary-official-medical-source"
     }
   },

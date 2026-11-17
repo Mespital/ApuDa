@@ -222,17 +222,18 @@
     {
       "n": 14,
       "q": "위암 표적치료, 어떤 치료일까요?",
-      "a": "표적치료는 암세포의 특정 표적을 겨냥하는 약이에요. 위암에서는 HER2 양성이면 HER2 표적(대표 예: 트라스투주맙), Claudin 18.2 양성이면 Claudin 18.2 표적(대표 예: 졸베툭시맙)을 항암과 함께 써요. Claudin 18.2 표적치료제는 2026년 10월부터 Claudin 18.2 양성·HER2 음성 진행성 위암의 1차 항암 병용에 건강보험 급여가 적용됐어요(보도 기준). 본인의 적용 여부와 비용은 원무과에 확인하세요.",
+      "a": "표적치료는 암세포의 특정 표적을 겨냥하는 약이에요. 위암에서는 HER2 양성이면 HER2 표적(대표 예: 트라스투주맙), Claudin 18.2 양성이면 Claudin 18.2 표적(대표 예: 졸베툭시맙)을 항암과 함께 써요. Claudin 18.2 표적치료제는 2026년 10월부터 Claudin 18.2 양성·HER2 음성 진행성 위암의 1차 항암 병용에 건강보험 급여가 적용됐어요(보건복지부 발표 기준). 본인의 적용 여부와 비용은 원무과에 확인하세요.",
       "review": {
         "id": "faq.stomach.014",
-        "version": "20261106.1",
+        "version": "20261117-kr-source-v1",
         "responsibleRole": "S03",
         "clinicalApproval": "pending",
         "aiCheck": "targeted-source-check",
         "sourceRefs": [
-          "vyloy-reimb-202610"
+          "vyloy-reimb-202610",
+          "mohw-cancer-drug-coverage-202610"
         ],
-        "scope": "졸베툭시맙 급여 적용 반영(2026-11-06 2차 검토 R1, 이전 문구: 2026년 6월 기준 비급여)"
+        "scope": "졸베툭시맙 급여 적용 반영(2026-11-06 2차 검토 R1, 이전 문구: 2026년 6월 기준 비급여) 2026-11-17: 국내 제도 문장에 국내 공공기관 출처 추가(mohw-cancer-drug-coverage-202610). \"보도 기준\"을 공식 발표 출처로 교체. 실제 전문의 검토는 여전히 대기 중입니다."
       }
     },
     {
@@ -2106,6 +2107,14 @@
       "organization": "국립암센터 국가암지식정보센터",
       "checkedAt": "2026-11-17",
       "scope": "국가암지식정보센터 암정보 전화상담 1577-8899와 누리집 www.cancer.go.kr",
+      "evidenceType": "primary-official-medical-source"
+    },
+    "mohw-cancer-drug-coverage-202610": {
+      "title": "보건복지부 보도자료 · 10월부터 암 치료제 건강보험 적용 확대(2026-09-30)",
+      "url": "https://mohw.go.kr/board.es?act=view&bid=0027&list_no=1492089&mid=a10503010100&nPage=2&tag=",
+      "organization": "보건복지부",
+      "checkedAt": "2026-11-17",
+      "scope": "2026년 10월 1일부터 절제 불가능한 진행성·전이성 위암 치료제 빌로이주(졸베툭시맙) 건강보험 적용",
       "evidenceType": "primary-official-medical-source"
     }
   },
