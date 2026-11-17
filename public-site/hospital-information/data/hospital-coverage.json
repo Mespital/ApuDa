@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-16T02:38:09+00:00",
+  "checked_at": "2026-11-17T04:59:13+00:00",
   "registered_hospitals": 30,
   "hospitals_with_matched_doctors": 8,
   "matched_doctors": 488,
@@ -314,7 +314,7 @@
       "matched_doctors": 0,
       "source_status": "REVIEW_REQUIRED",
       "directory_http": null,
-      "diagnostic": "SSLError",
+      "diagnostic": "robots-unverified-406",
       "candidate_links": []
     },
     {
@@ -326,7 +326,7 @@
       "matched_doctors": 0,
       "source_status": "REVIEW_REQUIRED",
       "directory_http": null,
-      "diagnostic": "SSLError",
+      "diagnostic": "robots-unverified-406",
       "candidate_links": []
     },
     {
