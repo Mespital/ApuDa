@@ -1,11 +1,67 @@
 {
-  "checked_at": "2026-11-17T10:25:14.917089+00:00",
-  "last_success_at": "2026-11-17T10:25:14.917089+00:00",
+  "checked_at": "2026-11-17T20:39:42.230872+00:00",
+  "last_success_at": "2026-11-17T20:39:42.230872+00:00",
   "failures": [],
   "articles": [
     {
+      "title": "Introducing GPT-6.2 Astra and Sol",
+      "url": "https://openai.com/index/introducing-gpt-6-2-astra-sol",
+      "source": "OpenAI",
+      "published_at": "2026-11-17T17:45:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Read the EmbeddingGemma 2 technical report.",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2-technical-report/",
+      "source": "Google",
+      "published_at": "2026-11-17T17:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Put Gemini to work for you",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features/",
+      "source": "Google",
+      "published_at": "2026-11-17T17:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "10 states team up with Google on free AI training",
+      "url": "https://blog.google/company-news/outreach-and-initiatives/grow-with-google/ai-training-state-partnerships/",
+      "source": "Google",
+      "published_at": "2026-11-17T17:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Temporary threads are now available in AI Mode in Search.",
+      "url": "https://blog.google/products-and-platforms/products/search/temporary-threads-ai-mode/",
+      "source": "Google",
+      "published_at": "2026-11-17T17:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
       "title": "Strengthening NATO and allied cyber defenses with AI",
       "url": "https://openai.com/index/strengthening-nato-allied-cyber-defences-ai",
+      "source": "OpenAI",
+      "published_at": "2026-11-17T00:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Introducing OpenAI for Chile",
+      "url": "https://openai.com/index/introducing-openai-for-chile",
+      "source": "OpenAI",
+      "published_at": "2026-11-17T00:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Astra for Law leads in legal intelligence",
+      "url": "https://openai.com/index/astra-law-6-2",
       "source": "OpenAI",
       "published_at": "2026-11-17T00:00:00+00:00",
       "category": "AI·컴퓨팅",
@@ -20,12 +76,12 @@
       "domain": "ai"
     },
     {
-      "title": "The era of autonomous attacks has arrived.",
+      "title": "Outpace automated cyber threats with security built for nonstop defense.",
       "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/gtig-ai-threat-tracker-q4-2026/",
       "source": "Google",
       "published_at": "2026-11-16T18:30:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
+      "category": "안전·보안",
+      "domain": "security"
     },
     {
       "title": "New Google AdMob AI tools help app creators build, fix, and grow faster",
@@ -186,68 +242,12 @@
       "published_at": "2026-11-13T08:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "5 new Google Flow Tools designed by visual artists",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/new-google-flow-tools/",
-      "source": "Google",
-      "published_at": "2026-11-12T20:30:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "How Amplitude ships product improvements in 1–2 days with OpenAI",
-      "url": "https://openai.com/index/amplitude",
-      "source": "OpenAI",
-      "published_at": "2026-11-12T20:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "How Amplitude ships product improvements in 1–2 days with OpenAI",
-      "url": "https://openai.com/business/customer-stories/amplitude",
-      "source": "OpenAI",
-      "published_at": "2026-11-12T20:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Google Search gets a major upgrade with Gemini 4 Hydrogen",
-      "url": "https://blog.google/products-and-platforms/products/search/gemini-4-hydrogen-search-upgrade/",
-      "source": "Google",
-      "published_at": "2026-11-12T18:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Gemini 4 Hydrogen: everyday coding and agentic workflows for developers",
-      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-hydrogen/",
-      "source": "Google",
-      "published_at": "2026-11-12T18:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Introducing Gemini 4 Hydrogen",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/",
-      "source": "Google",
-      "published_at": "2026-11-12T18:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Scientists are using Google AI to help restore giant kelp forests.",
-      "url": "https://blog.google/company-news/outreach-and-initiatives/sustainability/saving-giant-kelp-australia/",
-      "source": "Google",
-      "published_at": "2026-11-12T17:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-11-17T10:25:14.917089+00:00",
+    "checked_at": "2026-11-17T20:39:42.230872+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -388,7 +388,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-11-17T10:25:14.917089+00:00",
+    "last_success_at": "2026-11-17T20:39:42.230872+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
