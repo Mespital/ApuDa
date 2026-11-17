@@ -1,7 +1,7 @@
 {
   "slug": "stomach",
   "name": "위암",
-  "updated": "2026-11-06",
+  "updated": "2026-11-17",
   "items": [
     {
       "n": 1,
@@ -895,14 +895,15 @@
       "a": "산정특례는 암 확진일부터 30일 이내(토요일·공휴일 포함) 신청하면 확진일부터, 30일이 지난 뒤 신청하면 신청한 날부터 적용돼요. 늦었다고 신청을 포기하지 말고 병원 원무과에 지금 확인하세요. 등록 대상 암의 관련 건강보험 급여 진료는 통상 본인부담 5%이며, 비급여·전액 본인부담·선별급여 등은 다를 수 있어요. 적용 기간은 보통 5년이고, 재등록은 잔존암·전이·재발 및 치료 등 요건을 다시 확인해야 해요. 국민건강보험공단과 원무과에서 본인의 적용 범위·시작일을 확인하세요.",
       "review": {
         "id": "faq.stomach.055",
-        "version": "20261019.1",
+        "version": "20261117-kr-source-v1",
         "responsibleRole": "S03",
         "clinicalApproval": "pending",
         "aiCheck": "targeted-source-check",
         "sourceRefs": [
-          "nhis-special"
+          "nhis-special",
+          "nhis-cancer-copay-special"
         ],
-        "scope": "산정특례 신청 시점·적용 범위·재등록 조건"
+        "scope": "산정특례 신청 시점·적용 범위·재등록 조건 2026-11-17: 국내 제도·상담전화 문장에 국내 공공기관 출처 추가(nhis-cancer-copay-special). 문장은 바꾸지 않았고 실제 전문의 검토는 여전히 대기 중입니다."
       }
     },
     {
@@ -1460,14 +1461,15 @@
       "a": "산정특례는 암 확진일부터 30일 이내(토요일·공휴일 포함) 신청하면 확진일부터, 30일이 지난 뒤 신청하면 신청한 날부터 적용돼요. 늦었다고 신청을 포기하지 말고 병원 원무과에 지금 확인하세요. 등록 대상 암의 관련 건강보험 급여 진료는 통상 본인부담 5%이며, 비급여·전액 본인부담·선별급여 등은 다를 수 있어요. 적용 기간은 보통 5년이고, 재등록은 잔존암·전이·재발 및 치료 등 요건을 다시 확인해야 해요. 국민건강보험공단과 원무과에서 본인의 적용 범위·시작일을 확인하세요. 다른 의료비 지원은 소득·재산·진료비 등 요건이 별도로 있어 병원 사회복지팀에 확인하세요.",
       "review": {
         "id": "faq.stomach.090",
-        "version": "20261019.1",
+        "version": "20261117-kr-source-v1",
         "responsibleRole": "S03",
         "clinicalApproval": "pending",
         "aiCheck": "targeted-source-check",
         "sourceRefs": [
-          "nhis-special"
+          "nhis-special",
+          "nhis-cancer-copay-special"
         ],
-        "scope": "산정특례 신청 시점·적용 범위·재등록 조건"
+        "scope": "산정특례 신청 시점·적용 범위·재등록 조건 2026-11-17: 국내 제도·상담전화 문장에 국내 공공기관 출처 추가(nhis-cancer-copay-special). 문장은 바꾸지 않았고 실제 전문의 검토는 여전히 대기 중입니다."
       }
     },
     {
@@ -1492,14 +1494,15 @@
       "a": "'완치 보장', '부작용 없음', '병원이 숨기는 비법', 제품 판매 링크가 있으면 의심하세요. 근거중심 정보는 출처(국가암지식정보센터, 학회, 병원)와 작성일이 분명하고, 한계와 개인차를 함께 설명해요. 궁금한 정보는 출력해서 담당의에게 보여 주거나 ☎1577-8899(국가암지식정보센터)에 상담해 보세요.",
       "review": {
         "id": "faq.stomach.092",
-        "version": "20261106-source-map-v2",
+        "version": "20261117-kr-source-v1",
         "responsibleRole": "S03",
         "clinicalApproval": "pending",
         "aiCheck": "ai-topic-source-mapped-not-line-verified",
         "sourceRefs": [
-          "common-nci-trusted-info"
+          "common-nci-trusted-info",
+          "ncc-cancer-info-line"
         ],
-        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다)."
+        "scope": "기존 MINI v3.2 기반 문항. 2026-11-06 AI가 공식 자료와 주제를 대조하고 내용 충돌 여부를 점검했습니다(문장 단위 검증·최신 국내 허가·급여 확인·실제 전문의 검토는 아직 완료되지 않았습니다). 2026-11-17: 국내 제도·상담전화 문장에 국내 공공기관 출처 추가(ncc-cancer-info-line). 문장은 바꾸지 않았고 실제 전문의 검토는 여전히 대기 중입니다."
       }
     },
     {
@@ -2088,6 +2091,22 @@
       "url": "https://www.cancerresearchuk.org/about-cancer/treatment/chemotherapy/planning/changing-your-plan",
       "checkedAt": "2026-11-06",
       "scope": "혈구 감소 시 지연, 장기 영향 시 용량 감량, 스캔·종양표지자상 반응 부족 시 약제 변경. 치료 중단 결정 자체는 다루지 않음"
+    },
+    "nhis-cancer-copay-special": {
+      "title": "국민건강보험공단 · 본인일부부담금 산정특례 제도",
+      "url": "https://www.nhis.or.kr/nhis/minwon/wbhapa01000m01.do?mode=view&articleNo=10946880",
+      "organization": "국민건강보험공단",
+      "checkedAt": "2026-11-17",
+      "scope": "암 산정특례: 급여 진료 본인부담률 5%, 적용기간 5년, 비급여 미적용, 확진일부터 30일 이내 신청 시 확진일부터 적용, 기간 종료 시 계속 치료 중이면 재등록",
+      "evidenceType": "primary-official-medical-source"
+    },
+    "ncc-cancer-info-line": {
+      "title": "국가암지식정보센터 · 센터 주요사업(1577-8899 전화상담)",
+      "url": "https://www.cancer.go.kr/lay1/S1T587C594/contents.do",
+      "organization": "국립암센터 국가암지식정보센터",
+      "checkedAt": "2026-11-17",
+      "scope": "국가암지식정보센터 암정보 전화상담 1577-8899와 누리집 www.cancer.go.kr",
+      "evidenceType": "primary-official-medical-source"
     }
   },
   "editorialApproval": {

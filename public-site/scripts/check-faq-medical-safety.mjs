@@ -83,6 +83,21 @@ for (const [slug, number] of [['bladder', 93], ['laryngeal', 90], ['sarcoma', 96
     faqs.get(slug).sources['mohw-disability-registration']?.url.startsWith('https://www.mohw.go.kr/'),
     `${slug} #${number}: Korean disability registration source missing`);
 }
+// Concrete Korean public-service facts must cite the Korean agency that runs them.
+const koreanServiceSources = [
+  ['nhis-cancer-copay-special', (answer) => /산정특례/.test(answer) && /5\s?%/.test(answer), 'https://www.nhis.or.kr/'],
+  ['ncc-cancer-info-line', (answer) => /1577-8899/.test(answer), 'https://www.cancer.go.kr/'],
+  ['khepi-quitline', (answer) => /1544-9030/.test(answer), 'https://www.nosmokeguide.go.kr/'],
+];
+for (const [slug, faq] of faqs) {
+  for (const item of faq.items) {
+    for (const [id, mentions, host] of koreanServiceSources) {
+      if (!mentions(item.a)) continue;
+      assert(item.review.sourceRefs.includes(id) && faq.sources[id]?.url.startsWith(host),
+        `${slug} #${item.n}: Korean public-service fact needs source ${id}`);
+    }
+  }
+}
 const bcg = faqs.get('bladder').items.find((entry) => entry.n === 37);
 assert(bcg?.a.includes('38.0℃') && !bcg.a.includes('38.5'), 'Bladder BCG fever threshold regressed');
 
