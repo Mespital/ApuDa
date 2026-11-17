@@ -74,6 +74,15 @@ for (const [slug, number, needles] of cases) {
   assert(item.review.version === '20261108-medical-safety-ai-pass-v2', `${slug} #${number}: safety review version regressed`);
   assert(item.review.sourceRefs.length >= 1, `${slug} #${number}: no supporting sources`);
 }
+// Korean disability-registration statements must cite the Korean government source,
+// not an overseas page that does not cover Korean registration.
+for (const [slug, number] of [['bladder', 93], ['laryngeal', 90], ['sarcoma', 96]]) {
+  const item = faqs.get(slug).items.find((entry) => entry.n === number);
+  assert(item && /장애/.test(item.a), `${slug} #${number}: disability registration answer missing`);
+  assert(item.review.sourceRefs.includes('mohw-disability-registration') &&
+    faqs.get(slug).sources['mohw-disability-registration']?.url.startsWith('https://www.mohw.go.kr/'),
+    `${slug} #${number}: Korean disability registration source missing`);
+}
 const bcg = faqs.get('bladder').items.find((entry) => entry.n === 37);
 assert(bcg?.a.includes('38.0℃') && !bcg.a.includes('38.5'), 'Bladder BCG fever threshold regressed');
 

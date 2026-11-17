@@ -1,7 +1,7 @@
 {
   "slug": "laryngeal",
   "name": "후두암",
-  "updated": "2026-11-08",
+  "updated": "2026-11-17",
   "revision": "20261108-medical-safety-ai-pass-v2",
   "edition": "진단 후 첫 30일 FAQ 100문항 (신규 80문항 AI 편집 초안)",
   "reviewMode": "AI 사전점검(기존20)·AI 확장원고(신규80)",
@@ -1539,14 +1539,15 @@
       "category": "followup",
       "review": {
         "id": "faq.laryngeal.090",
-        "version": "20261106-faq-upgrade-v1",
+        "version": "20261117-kr-disability-source-v1",
         "responsibleRole": "추가 전문분야: 두경부종양",
         "clinicalApproval": "pending",
         "aiCheck": "ai-editorial-draft-not-independently-reviewed",
         "sourceRefs": [
-          "nci-laryngeal"
+          "nci-laryngeal",
+          "mohw-disability-registration"
         ],
-        "scope": "AI 초안(2026-11-06 편집 보강: 기존 12암종 FAQ 수준으로 설명·주의 신호·진료 질문 보강). 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다."
+        "scope": "AI 초안(2026-11-06 편집 보강: 기존 12암종 FAQ 수준으로 설명·주의 신호·진료 질문 보강). 해당 문항의 근거 일치, 최신 국내 진료지침·약제 허가·급여 및 실제 전문의 검토는 아직 완료되지 않았습니다. 2026-11-17: 국내 장애인 등록 관련 문장에 보건복지부 출처를 추가(기존 해외 출처는 이 문장을 뒷받침하지 않음). 실제 전문의 검토는 여전히 대기 중입니다."
       }
     },
     {
@@ -1792,6 +1793,14 @@
       "scope": "심한 호흡곤란·흉부 압박·갑작스러운 혼돈 등 즉시 평가가 필요한 호흡 관련 증상. 영국 응급번호를 한국에 그대로 적용하지 않음",
       "evidenceType": "official-patient-guidance",
       "checkedAt": "2026-11-02"
+    },
+    "mohw-disability-registration": {
+      "title": "보건복지부 · 장애인등록/장애정도 심사제도",
+      "url": "https://www.mohw.go.kr/menu.es?mid=a10710010900",
+      "organization": "보건복지부",
+      "checkedAt": "2026-11-17",
+      "scope": "국내 장애인 등록 유형(언어장애·지체장애·장루·요루장애 등)과 장애진단 전문의, 주민센터 신청·국민연금공단 심사 절차",
+      "evidenceType": "primary-official-medical-source"
     }
   },
   "questionsForVisit": [

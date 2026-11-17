@@ -1168,6 +1168,14 @@
           "checkedAt": "재확인 대기",
           "scope": "신규 FAQ AI 작성 시 참조한 공식 자료. 문항별 근거 적합성·한국 진료 적용 여부 별도 검증 필요.",
           "evidenceType": "official-source-ai-draft"
+        },
+        "mohw-disability-registration": {
+          "title": "보건복지부 · 장애인등록/장애정도 심사제도",
+          "url": "https://www.mohw.go.kr/menu.es?mid=a10710010900",
+          "organization": "보건복지부",
+          "checkedAt": "2026-11-17",
+          "scope": "국내 장애인 등록 유형(언어장애·지체장애·장루·요루장애 등)과 장애진단 전문의, 주민센터 신청·국민연금공단 심사 절차",
+          "evidenceType": "primary-official-medical-source"
         }
       },
       "additionalDraftItems": 80,
@@ -1594,6 +1602,14 @@
           "scope": "기공의 소량 혈흔은 상담, 활동성 선홍색 출혈은 응급 신고",
           "evidenceType": "primary-official-medical-source",
           "checkedAt": "2026-11-08"
+        },
+        "mohw-disability-registration": {
+          "title": "보건복지부 · 장애인등록/장애정도 심사제도",
+          "url": "https://www.mohw.go.kr/menu.es?mid=a10710010900",
+          "organization": "보건복지부",
+          "checkedAt": "2026-11-17",
+          "scope": "국내 장애인 등록 유형(언어장애·지체장애·장루·요루장애 등)과 장애진단 전문의, 주민센터 신청·국민연금공단 심사 절차",
+          "evidenceType": "primary-official-medical-source"
         }
       },
       "additionalDraftItems": 80,
@@ -1937,6 +1953,14 @@
           "scope": "절제 불가 또는 전이성 포상연부육종의 미국 승인 사례",
           "evidenceType": "primary-official-medical-source",
           "checkedAt": "2026-11-08"
+        },
+        "mohw-disability-registration": {
+          "title": "보건복지부 · 장애인등록/장애정도 심사제도",
+          "url": "https://www.mohw.go.kr/menu.es?mid=a10710010900",
+          "organization": "보건복지부",
+          "checkedAt": "2026-11-17",
+          "scope": "국내 장애인 등록 유형(언어장애·지체장애·장루·요루장애 등)과 장애진단 전문의, 주민센터 신청·국민연금공단 심사 절차",
+          "evidenceType": "primary-official-medical-source"
         }
       },
       "additionalDraftItems": 80,
