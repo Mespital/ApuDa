@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>ApuDa | V3 복원 무결성 시험실 (합성 데이터)</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, 'Malgun Gothic', sans-serif; background:#f4f9f8; color:#173d3c; }
+    * { box-sizing: border-box; }
+    body { margin:0; padding:clamp(16px,4vw,40px); }
+    main { max-width:860px; margin:auto; }
+    .tag { display:inline-block; border:1px solid #14776a; background:#e1f3ee; padding:6px 12px; border-radius:30px; font-size:14px; font-weight:700; }
+    h1 { font-size:clamp(1.6rem,4vw,2.35rem); line-height:1.25; }
+    p { line-height:1.7; }
+    .warning { padding:16px; background:#fff8e5; border-left:5px solid #af7e17; border-radius:10px; }
+    button { display:inline-block; min-height:46px; padding:12px 20px; border:0; border-radius:12px; background:#086a61; color:#fff; font-size:1rem; font-weight:700; cursor:pointer; }
+    button:focus-visible { outline:3px solid #df9000; outline-offset:3px; }
+    button:disabled { opacity:.6; cursor:wait; }
+    .board { display:grid; gap:12px; margin:22px 0; }
+    .case { background:#fff; border:1px solid #d7e5e2; border-radius:12px; padding:16px; }
+    .case h2 { font-size:1.05rem; margin:0 0 8px; }
+    .case p { margin:6px 0; color:#48625e; }
+    .status { font-weight:800; }
+    .pass { color:#086a46; }
+    .fail { color:#a12121; }
+    .pending { color:#5f6a68; }
+    small { color:#566965; }
+  </style>
+</head>
+<body>
+  <main>
+    <span class="tag">DEV ONLY · 합성 데이터</span>
+    <h1>V3 복원 무결성 시험실</h1>
+    <p>PR #294의 실제 <code>note-storage.js</code>를 사용해 이전 기록 검증과 구형 V1 차단을 브라우저에서 확인합니다.</p>
+    <p class="warning"><strong>환자 기록과 완전히 분리된 시험입니다.</strong> 가상의 데이터와 메모리 내 임시 저장소(Map)만 사용합니다. 브라우저의 실제 저장 공간(localStorage), 계정, 서버 기록을 읽거나 변경하지 않습니다.</p>
+    <button type="button" id="run-tests">6개 안전성 시나리오 실행</button>
+    <p role="status" aria-live="polite" id="summary">시험 전 · 실행 버튼을 눌러 주세요.</p>
+    <div id="results" class="board" aria-label="안전성 시험 결과"></div>
+    <p><small>범위: 브라우저에서 복원 엔진의 합성 시나리오만 검증합니다. 실제 앱의 파일 선택창·모바일 기기·환자 데이터에 대한 검증 또는 전문의 승인으로 해석하지 않습니다.</small></p>
+  </main>
+  <script src="./note-storage.js"></script>
+  <script src="./restore-integrity-lab.js"></script>
+</body>
+</html>
