@@ -57,7 +57,9 @@
 
   function load() { try { return JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { return {}; } }
   function save(s) { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {} }
-  var S = load(); if (!S.cmd || !find(S.cmd)) S.cmd = '/handwritten'; if (S.lvl == null) S.lvl = true;
+  var S = load(); if (!S.cmd || !find(S.cmd)) S.cmd = '/handwritten'; if (S.lvl == null) S.lvl = true; if (!S.uses || typeof S.uses !== 'object') S.uses = {};
+  function used(c) { S.uses[c] = (S.uses[c] || 0) + 1; save(S); }
+  function top() { return Object.keys(S.uses).filter(function (c) { return find(c) && S.uses[c] > 0; }).sort(function (a, b) { return S.uses[b] - S.uses[a]; }).slice(0, 4); }
   function e(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   var SUBJ = (typeof subjectNames !== 'undefined' && subjectNames.length) ? subjectNames : ['국어', '영어', '수학', '한국사', '통합사회', '통합과학', '과학탐구실험', '정보'];
 
@@ -85,9 +87,11 @@
     var it = find(S.cmd), p = build();
     var h = '<details class="card sc-card" id="study-commands"' + (S.open ? ' open' : '') + '><summary>⚡ 공부 명령어 — ChatGPT한테 이렇게 가르쳐 달라고 하기</summary>';
     h += '<p class="small">주제 앞에 명령어 한 단어만 붙이면 ChatGPT가 쉬운 설명·그림·예상 문제·질문식 수업으로 바꿔서 가르쳐 줘. <span class="muted">(ChatGPT 공식 기능은 아니고, 단어 뜻을 읽고 그 방식으로 답하는 거야.)</span></p>';
-    h += '<div class="sc-route"><b>처음이면 이 순서로</b><ol>' + ROUTE.map(function (r) {
+    var fav = top();
+    if (fav.length) h += '<div class="sc-fav"><p class="sc-gname">⭐ 내가 자주 쓰는 명령어</p><div class="sc-chips">' + fav.map(function (c) { return '<button type="button" class="sc-mini' + (c === S.cmd ? ' on' : '') + '" data-sc-cmd="' + e(c) + '">' + e(c) + ' <small>' + S.uses[c] + '회</small></button>'; }).join('') + '</div></div>';
+    h += '<details class="sc-route-d"' + (fav.length ? '' : ' open') + '><summary>처음이면 이 순서로</summary><div class="sc-route"><ol>' + ROUTE.map(function (r) {
       return '<li><span>' + e(r[1]) + '</span>' + r.slice(2).map(function (c) { return '<button type="button" class="sc-mini" data-sc-cmd="' + e(c) + '">' + e(c) + '</button>'; }).join('') + '</li>';
-    }).join('') + '</ol></div>';
+    }).join('') + '</ol></div></details>';
     h += '<div class="sc-form"><label>과목<select data-sc-subj><option value="">선택 안 함</option>' + SUBJ.map(function (s) { return '<option' + (S.subj === s ? ' selected' : '') + '>' + e(s) + '</option>'; }).join('') + '</select></label>';
     h += '<label>오늘 공부할 주제<input type="text" data-sc-topic maxlength="300" value="' + e(S.topic || '') + '" placeholder="예: ' + e(it[2]) + '"></label></div>';
     h += GROUPS.map(function (g) {
@@ -136,8 +140,8 @@
     var t = ev.target.closest && ev.target.closest('#study-commands [data-sc-cmd],#study-commands [data-sc-copy],#study-commands [data-sc-go],#study-commands [data-sc-f]');
     if (!t) return;
     if (t.hasAttribute('data-sc-cmd')) { S.cmd = t.getAttribute('data-sc-cmd'); save(S); refresh(root); var c = root.querySelector('.sc-out'); if (c && c.scrollIntoView) c.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); return; }
-    if (t.hasAttribute('data-sc-copy')) { copy(build(), '복사했어. ChatGPT에 붙여넣어 📋'); return; }
-    if (t.hasAttribute('data-sc-go')) { copy(build(), 'ChatGPT를 열게. 입력창이 비어 있으면 붙여넣기 💬'); return; }
+    if (t.hasAttribute('data-sc-copy')) { used(S.cmd); copy(build(), '복사했어. ChatGPT에 붙여넣어 📋'); refresh(root); return; }
+    if (t.hasAttribute('data-sc-go')) { used(S.cmd); setTimeout(function () { refresh(root); }, 800); copy(build(), 'ChatGPT를 열게. 입력창이 비어 있으면 붙여넣기 💬'); return; }
     if (t.hasAttribute('data-sc-f')) { copy(t.getAttribute('data-sc-f'), '복사했어. 같은 채팅에 붙여넣어 📋'); }
   });
   document.addEventListener('input', function (ev) {
@@ -166,12 +170,20 @@
     '#study-commands .sc-chip{display:flex;flex-direction:column;align-items:flex-start;text-align:left;padding:8px 10px;border-radius:12px;border:1px solid rgba(119,100,239,.25);background:transparent;max-width:100%;flex:1 1 140px;min-height:44px}' +
     '#study-commands .sc-chip b{font-size:.88em;word-break:break-all}#study-commands .sc-chip small{opacity:.75;font-size:.78em;margin-top:2px}' +
     '#study-commands .sc-chip.on{background:#7764ef;color:#fff;border-color:#7764ef}#study-commands .sc-chip.on small{opacity:.9}' +
+    '#study-commands .sc-mini.on{background:#7764ef;color:#fff}#study-commands .sc-mini small{opacity:.7;font-size:.85em}#study-commands .sc-route-d{margin:10px 0}#study-commands .sc-route-d>summary{font-weight:700;cursor:pointer}#study-commands .sc-route-d .sc-route{margin-top:6px}' +
     '#study-commands .sc-mini{padding:4px 10px;border-radius:999px;font-size:.82em;min-height:32px}' +
     '#study-commands .sc-lvl{display:flex;gap:6px;align-items:center;margin:12px 0 0;font-size:.9em}' +
     '#study-commands .sc-out textarea{width:100%;box-sizing:border-box;font-size:.92em}' +
     '#study-commands .sc-out .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}' +
     '#study-commands .sc-tips{margin-top:12px}#study-commands .sc-tips ul{padding-left:18px;margin:6px 0}#study-commands .sc-tips li{margin:4px 0;font-size:.9em}';
   var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
+
+  window.FC_STUDY_CMD = { open: function (cmd) {
+    if (cmd && find(cmd)) { S.cmd = cmd; }
+    S.open = true; save(S);
+    var root = document.getElementById('content'), el = root && root.querySelector('#study-commands');
+    if (el) { refresh(root); el = root.querySelector('#study-commands'); el.open = true; var i = el.querySelector('[data-sc-topic]'); if (i && !i.value) setTimeout(function () { try { i.focus({ preventScroll: true }); } catch (er) {} }, 300); }
+  } };
 
   if (typeof tab !== 'undefined' && tab === 'review') render();
 })();
