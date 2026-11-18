@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-11-18T21:44:50.236006+00:00",
-  "last_success_at": "2026-11-18T21:44:50.236006+00:00",
+  "checked_at": "2026-11-18T23:47:06.569568+00:00",
+  "last_success_at": "2026-11-18T23:47:06.569568+00:00",
   "failures": [],
   "articles": [
     {
@@ -54,6 +54,14 @@
     {
       "title": "Inside the Codex sandbox",
       "url": "https://openai.com/index/inside-the-codex-sandbox",
+      "source": "OpenAI",
+      "published_at": "2026-11-18T08:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Research acceleration: The jagged frontier",
+      "url": "https://openai.com/index/research-acceleration-jagged-frontier",
       "source": "OpenAI",
       "published_at": "2026-11-18T08:00:00+00:00",
       "category": "AI·컴퓨팅",
@@ -234,20 +242,12 @@
       "published_at": "2026-11-16T12:00:00+00:00",
       "category": "과학·환경",
       "domain": "energy"
-    },
-    {
-      "title": "How Revolut raises ambition without lowering the bar",
-      "url": "https://openai.com/business/customer-stories/revolut",
-      "source": "OpenAI",
-      "published_at": "2026-11-16T09:30:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-11-18T21:44:50.236006+00:00",
+    "checked_at": "2026-11-18T23:47:06.569568+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -388,7 +388,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-11-18T21:44:50.236006+00:00",
+    "last_success_at": "2026-11-18T23:47:06.569568+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
