@@ -32,7 +32,7 @@
   var RV_OPEN = 'fc-review-more';
   function foldReview(root) {
     if (root.querySelector('.rv-more')) return;
-    var keep = /^(rh-today|tn-list)$/;
+    var keep = /^(rh-today|tn-list|study-commands)$/;  // ⚡ 공부 명령어는 위에 둔다 (2026-11-19)
     var out = [].slice.call(root.children).filter(function (el) { return !el.matches('header,.lt-head,.rv-more') && !keep.test(el.id || '') && !(el.id === 'study-chat-drive' && el.querySelector('.cd-job')) && el.matches('section,details,div,.card'); });  // 진행 중인 채팅·Drive 전달은 위에 둔다
     if (out.length < 2) return;
     var names = [];
