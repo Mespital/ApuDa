@@ -1,6 +1,6 @@
 {
  "school": "서초고등학교",
- "updated": "2026-11-18T12:49:31.384Z",
+ "updated": "2026-11-18T21:45:13.699Z",
  "eval": {
   "checked": "2026-11-18T12:49:32.504Z",
   "fetched": "2026-11-16T05:42:40.256Z",
@@ -6953,7 +6953,7 @@
   "unreadable": []
  },
  "news": {
-  "checked": "2026-11-18T12:49:35.165Z",
+  "checked": "2026-11-18T21:45:27.904Z",
   "boards": [
    {
     "name": "공지사항",
@@ -7012,7 +7012,7 @@
   ]
  },
  "programs": {
-  "checked": "2026-11-18T12:49:41.598Z",
+  "checked": "2026-11-18T21:45:39.977Z",
   "items": [
    {
     "id": "P0656",
@@ -7115,7 +7115,7 @@
   "office": "https://gnscedu.sen.go.kr/CMS/about/about03/index.html"
  },
  "exams": {
-  "checked": "2026-11-18T12:49:38.079Z",
+  "checked": "2026-11-18T21:45:32.954Z",
   "mid": {
    "scope": {
     "id": "27502687",
