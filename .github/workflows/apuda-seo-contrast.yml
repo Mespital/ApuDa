@@ -27,6 +27,10 @@ jobs:
         with:
           node-version: '22'
       - name: Check JavaScript syntax
-        run: node --check public-site/scripts/check-seo.mjs
+        run: |
+          node --check public-site/scripts/check-seo.mjs
+          node --check public-site/netlify/edge-functions/news-access.js
+      - name: Test news access controls
+        run: node public-site/scripts/test-news-access.mjs
       - name: Verify SEO, FAQ counts, and note-guide contrast
         run: node public-site/scripts/check-seo.mjs
