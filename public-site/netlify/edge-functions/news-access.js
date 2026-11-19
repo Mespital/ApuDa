@@ -105,9 +105,15 @@ export default async function handler(request, context) {
     return new Response(page(errors.join(' / '), '/news/', true),{status:503,headers:gateHeaders});
 
   if(path==='/news/unlock') {
-    if(request.method!=='POST') return Response.redirect(new URL('/news/',url),303);
+    if(request.method!=='POST') return new Response(null,{status:303,headers:{Location:'/news/','Cache-Control':'no-store'}});
     const origin=request.headers.get('origin');
-    if((origin && origin!==url.origin) || request.headers.get('sec-fetch-site')==='cross-site')
+    const fetchSite=(request.headers.get('sec-fetch-site')||'').toLowerCase();
+    // Some edge proxies use an internal host for request.url even when the browser
+    // submits a same-origin form from https://apuda.app. Browser Fetch Metadata
+    // takes precedence; do not reject a verified same-origin browser submission.
+    const knownOrigin=origin===url.origin || origin==='https://apuda.app';
+    if(fetchSite==='cross-site' || fetchSite==='same-site' ||
+       (fetchSite!=='same-origin' && origin && !knownOrigin))
       return new Response('Forbidden',{status:403,headers:{'Cache-Control':'no-store'}});
     const type=request.headers.get('content-type')||'';
     if(!type.toLowerCase().startsWith('application/x-www-form-urlencoded'))
@@ -122,7 +128,7 @@ export default async function handler(request, context) {
     const expires=String(Date.now()+SESSION_MS);
     const token=expires+'.'+await sign('v1.'+expires+'.'+pin,secret);
     return new Response(null,{status:303,headers:{
-      'Location':new URL(next,url).toString(),
+      'Location':next,
       'Set-Cookie':COOKIE_NAME+'='+token+'; Path=/news/; HttpOnly; Secure; SameSite=Lax; Max-Age='+(SESSION_MS/1000),
       'Cache-Control':'private, no-store'
     }});
