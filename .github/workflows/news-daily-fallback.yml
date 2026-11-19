@@ -53,10 +53,14 @@ jobs:
           end = now.replace(hour=9, minute=0, second=0, microsecond=0)
           if now < end:
               end -= timedelta(days=1)
-          expected = end.date().isoformat()
           latest = json.loads((root/'latest.json').read_text(encoding='utf-8'))
-          report = json.loads((root/f'{expected}.json').read_text(encoding='utf-8'))
           run = json.loads((root/'last-run.json').read_text(encoding='utf-8'))
+          run_end = datetime.fromisoformat(run['window']['end']).astimezone(ZoneInfo('Asia/Seoul'))
+          expected = run_end.date().isoformat()
+          report = json.loads((root/f'{expected}.json').read_text(encoding='utf-8'))
+          # An initial run can start before 09:00 KST and cross the boundary while crawling.
+          if not (timedelta(0) <= end-run_end <= timedelta(days=1)):
+              raise SystemExit('Collector report is older than one scheduled collection window')
           if latest.get('latest') != expected or report.get('report_date') != expected:
               raise SystemExit(f'Expected {expected}, got {latest.get("latest")}')
           if latest.get('path') != f'/news/data/{expected}.json':
@@ -66,7 +70,7 @@ jobs:
           if set(sources) != expected_sources:
               raise SystemExit('Missing source statistics')
           verified = sum(int((x or {}).get('in_window_verified') or 0) for x in sources.values())
-          if verified == 0 and end.weekday() < 5:
+          if verified == 0 and run_end.weekday() < 5:
               raise SystemExit('No source provided a verified article on a weekday; refusing an empty fresh-looking report')
           for item in report.get('top_news', []):
               if not item.get('published_at') or not item.get('source_urls'):
