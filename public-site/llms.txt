@@ -41,6 +41,17 @@
 - [갑상선암 FAQ](https://apuda.app/library/faq/thyroid/): 자료 업데이트 2026-11-17
 
 ## FAQ 주제별 묶음
+- [담도암·담낭암 증상·진단 검사·의심 소견](https://apuda.app/library/faq/biliary/symptoms-tests/): 11문항
+- [담도암·담낭암 종류·병기·병리·유전자 검사](https://apuda.app/library/faq/biliary/stage-pathology/): 10문항
+- [담도암·담낭암 치료 계획·수술·방사선](https://apuda.app/library/faq/biliary/treatment-plan/): 11문항
+- [담도암·담낭암 항암·면역·표적치료](https://apuda.app/library/faq/biliary/drug-therapy/): 9문항
+- [담도암·담낭암 치료 중·후 증상과 부작용](https://apuda.app/library/faq/biliary/side-effects/): 13문항
+- [담도암·담낭암 응급 증상·발열·감염 예방](https://apuda.app/library/faq/biliary/warning-signs/): 8문항
+- [담도암·담낭암 식사·영양·운동·재활](https://apuda.app/library/faq/biliary/nutrition-exercise/): 8문항
+- [담도암·담낭암 추적검사·재발·장기 생존](https://apuda.app/library/faq/biliary/follow-up/): 6문항
+- [담도암·담낭암 위험 요인·가족력·생활습관](https://apuda.app/library/faq/biliary/risk-factors/): 6문항
+- [담도암·담낭암 마음·가족·일상·치료비](https://apuda.app/library/faq/biliary/life-support/): 13문항
+- [담도암·담낭암 통증·완화의료·치료 전환](https://apuda.app/library/faq/biliary/palliative-care/): 5문항
 - [방광암 혈뇨·방광내시경·진단 검사](https://apuda.app/library/faq/bladder/hematuria-tests/): 8문항
 - [방광암 병기·등급·병리 결과](https://apuda.app/library/faq/bladder/stage-pathology/): 13문항
 - [방광암 BCG 방광 내 치료](https://apuda.app/library/faq/bladder/bcg/): 9문항
@@ -50,6 +61,127 @@
 - [방광암 진행성 단계 검사·면역·표적치료](https://apuda.app/library/faq/bladder/advanced-treatment/): 13문항
 - [방광암 치료 중 바로 알릴 증상·부작용](https://apuda.app/library/faq/bladder/warning-signs/): 6문항
 - [방광암 추적검사·생활·성생활·생식 상담](https://apuda.app/library/faq/bladder/follow-up-life/): 13문항
+- [유방암 증상·진단 검사·의심 소견](https://apuda.app/library/faq/breast/symptoms-tests/): 11문항
+- [유방암 종류·병기·병리·유전자 검사](https://apuda.app/library/faq/breast/stage-pathology/): 9문항
+- [유방암 치료 계획·수술·방사선](https://apuda.app/library/faq/breast/treatment-plan/): 11문항
+- [유방암 항암·면역·표적치료](https://apuda.app/library/faq/breast/drug-therapy/): 9문항
+- [유방암 치료 중·후 증상과 부작용](https://apuda.app/library/faq/breast/side-effects/): 12문항
+- [유방암 응급 증상·발열·감염 예방](https://apuda.app/library/faq/breast/warning-signs/): 8문항
+- [유방암 식사·영양·운동·재활](https://apuda.app/library/faq/breast/nutrition-exercise/): 9문항
+- [유방암 추적검사·재발·장기 생존](https://apuda.app/library/faq/breast/follow-up/): 6문항
+- [유방암 위험 요인·가족력·생활습관](https://apuda.app/library/faq/breast/risk-factors/): 5문항
+- [유방암 마음·가족·일상·치료비](https://apuda.app/library/faq/breast/life-support/): 15문항
+- [유방암 통증·완화의료·치료 전환](https://apuda.app/library/faq/breast/palliative-care/): 5문항
+- [자궁경부암 증상·진단 검사·의심 소견](https://apuda.app/library/faq/cervical/symptoms-tests/): 11문항
+- [자궁경부암 종류·병기·병리·유전자 검사](https://apuda.app/library/faq/cervical/stage-pathology/): 9문항
+- [자궁경부암 치료 계획·수술·방사선](https://apuda.app/library/faq/cervical/treatment-plan/): 11문항
+- [자궁경부암 항암·면역·표적치료](https://apuda.app/library/faq/cervical/drug-therapy/): 9문항
+- [자궁경부암 치료 중·후 증상과 부작용](https://apuda.app/library/faq/cervical/side-effects/): 13문항
+- [자궁경부암 응급 증상·발열·감염 예방](https://apuda.app/library/faq/cervical/warning-signs/): 8문항
+- [자궁경부암 식사·영양·운동·재활](https://apuda.app/library/faq/cervical/nutrition-exercise/): 8문항
+- [자궁경부암 추적검사·재발·장기 생존](https://apuda.app/library/faq/cervical/follow-up/): 6문항
+- [자궁경부암 위험 요인·가족력·생활습관](https://apuda.app/library/faq/cervical/risk-factors/): 5문항
+- [자궁경부암 마음·가족·일상·치료비](https://apuda.app/library/faq/cervical/life-support/): 15문항
+- [자궁경부암 통증·완화의료·치료 전환](https://apuda.app/library/faq/cervical/palliative-care/): 5문항
+- [대장암 증상·진단 검사·의심 소견](https://apuda.app/library/faq/colorectal/symptoms-tests/): 11문항
+- [대장암 종류·병기·병리·유전자 검사](https://apuda.app/library/faq/colorectal/stage-pathology/): 10문항
+- [대장암 치료 계획·수술·방사선](https://apuda.app/library/faq/colorectal/treatment-plan/): 11문항
+- [대장암 항암·면역·표적치료](https://apuda.app/library/faq/colorectal/drug-therapy/): 9문항
+- [대장암 치료 중·후 증상과 부작용](https://apuda.app/library/faq/colorectal/side-effects/): 13문항
+- [대장암 응급 증상·발열·감염 예방](https://apuda.app/library/faq/colorectal/warning-signs/): 8문항
+- [대장암 식사·영양·운동·재활](https://apuda.app/library/faq/colorectal/nutrition-exercise/): 8문항
+- [대장암 추적검사·재발·장기 생존](https://apuda.app/library/faq/colorectal/follow-up/): 6문항
+- [대장암 위험 요인·가족력·생활습관](https://apuda.app/library/faq/colorectal/risk-factors/): 6문항
+- [대장암 마음·가족·일상·치료비](https://apuda.app/library/faq/colorectal/life-support/): 13문항
+- [대장암 통증·완화의료·치료 전환](https://apuda.app/library/faq/colorectal/palliative-care/): 5문항
+- [신장암 증상·진단 검사·의심 소견](https://apuda.app/library/faq/kidney/symptoms-tests/): 11문항
+- [신장암 종류·병기·병리·유전자 검사](https://apuda.app/library/faq/kidney/stage-pathology/): 10문항
+- [신장암 치료 계획·수술·방사선](https://apuda.app/library/faq/kidney/treatment-plan/): 11문항
+- [신장암 항암·면역·표적치료](https://apuda.app/library/faq/kidney/drug-therapy/): 9문항
+- [신장암 치료 중·후 증상과 부작용](https://apuda.app/library/faq/kidney/side-effects/): 13문항
+- [신장암 응급 증상·발열·감염 예방](https://apuda.app/library/faq/kidney/warning-signs/): 8문항
+- [신장암 식사·영양·운동·재활](https://apuda.app/library/faq/kidney/nutrition-exercise/): 8문항
+- [신장암 추적검사·재발·장기 생존](https://apuda.app/library/faq/kidney/follow-up/): 6문항
+- [신장암 위험 요인·가족력·생활습관](https://apuda.app/library/faq/kidney/risk-factors/): 6문항
+- [신장암 마음·가족·일상·치료비](https://apuda.app/library/faq/kidney/life-support/): 13문항
+- [신장암 통증·완화의료·치료 전환](https://apuda.app/library/faq/kidney/palliative-care/): 5문항
+- [간암 증상·진단 검사·의심 소견](https://apuda.app/library/faq/liver/symptoms-tests/): 11문항
+- [간암 종류·병기·병리·유전자 검사](https://apuda.app/library/faq/liver/stage-pathology/): 10문항
+- [간암 치료 계획·수술·방사선](https://apuda.app/library/faq/liver/treatment-plan/): 11문항
+- [간암 항암·면역·표적치료](https://apuda.app/library/faq/liver/drug-therapy/): 9문항
+- [간암 치료 중·후 증상과 부작용](https://apuda.app/library/faq/liver/side-effects/): 13문항
+- [간암 응급 증상·발열·감염 예방](https://apuda.app/library/faq/liver/warning-signs/): 8문항
+- [간암 식사·영양·운동·재활](https://apuda.app/library/faq/liver/nutrition-exercise/): 8문항
+- [간암 추적검사·재발·장기 생존](https://apuda.app/library/faq/liver/follow-up/): 6문항
+- [간암 위험 요인·가족력·생활습관](https://apuda.app/library/faq/liver/risk-factors/): 6문항
+- [간암 마음·가족·일상·치료비](https://apuda.app/library/faq/liver/life-support/): 13문항
+- [간암 통증·완화의료·치료 전환](https://apuda.app/library/faq/liver/palliative-care/): 5문항
+- [폐암 증상·진단 검사·의심 소견](https://apuda.app/library/faq/lung/symptoms-tests/): 11문항
+- [폐암 종류·병기·병리·유전자 검사](https://apuda.app/library/faq/lung/stage-pathology/): 10문항
+- [폐암 치료 계획·수술·방사선](https://apuda.app/library/faq/lung/treatment-plan/): 11문항
+- [폐암 항암·면역·표적치료](https://apuda.app/library/faq/lung/drug-therapy/): 9문항
+- [폐암 치료 중·후 증상과 부작용](https://apuda.app/library/faq/lung/side-effects/): 13문항
+- [폐암 응급 증상·발열·감염 예방](https://apuda.app/library/faq/lung/warning-signs/): 8문항
+- [폐암 식사·영양·운동·재활](https://apuda.app/library/faq/lung/nutrition-exercise/): 8문항
+- [폐암 추적검사·재발·장기 생존](https://apuda.app/library/faq/lung/follow-up/): 6문항
+- [폐암 위험 요인·가족력·생활습관](https://apuda.app/library/faq/lung/risk-factors/): 6문항
+- [폐암 마음·가족·일상·치료비](https://apuda.app/library/faq/lung/life-support/): 13문항
+- [폐암 통증·완화의료·치료 전환](https://apuda.app/library/faq/lung/palliative-care/): 5문항
+- [림프종 증상·진단 검사·의심 소견](https://apuda.app/library/faq/lymphoma/symptoms-tests/): 11문항
+- [림프종 종류·병기·병리·유전자 검사](https://apuda.app/library/faq/lymphoma/stage-pathology/): 10문항
+- [림프종 치료 계획·방사선·조혈모세포이식](https://apuda.app/library/faq/lymphoma/treatment-plan/): 11문항
+- [림프종 항암·면역·표적치료](https://apuda.app/library/faq/lymphoma/drug-therapy/): 9문항
+- [림프종 치료 중·후 증상과 부작용](https://apuda.app/library/faq/lymphoma/side-effects/): 13문항
+- [림프종 응급 증상·발열·감염 예방](https://apuda.app/library/faq/lymphoma/warning-signs/): 9문항
+- [림프종 식사·영양·운동·재활](https://apuda.app/library/faq/lymphoma/nutrition-exercise/): 8문항
+- [림프종 추적검사·재발·장기 생존](https://apuda.app/library/faq/lymphoma/follow-up/): 6문항
+- [림프종 위험 요인·가족력·생활습관](https://apuda.app/library/faq/lymphoma/risk-factors/): 5문항
+- [림프종 마음·가족·일상·치료비](https://apuda.app/library/faq/lymphoma/life-support/): 13문항
+- [림프종 통증·완화의료·치료 전환](https://apuda.app/library/faq/lymphoma/palliative-care/): 5문항
+- [췌장암 증상·진단 검사·의심 소견](https://apuda.app/library/faq/pancreas/symptoms-tests/): 11문항
+- [췌장암 종류·병기·병리·유전자 검사](https://apuda.app/library/faq/pancreas/stage-pathology/): 10문항
+- [췌장암 치료 계획·수술·방사선](https://apuda.app/library/faq/pancreas/treatment-plan/): 11문항
+- [췌장암 항암·면역·표적치료](https://apuda.app/library/faq/pancreas/drug-therapy/): 9문항
+- [췌장암 치료 중·후 증상과 부작용](https://apuda.app/library/faq/pancreas/side-effects/): 13문항
+- [췌장암 응급 증상·발열·감염 예방](https://apuda.app/library/faq/pancreas/warning-signs/): 8문항
+- [췌장암 식사·영양·운동·재활](https://apuda.app/library/faq/pancreas/nutrition-exercise/): 8문항
+- [췌장암 추적검사·재발·장기 생존](https://apuda.app/library/faq/pancreas/follow-up/): 6문항
+- [췌장암 위험 요인·가족력·생활습관](https://apuda.app/library/faq/pancreas/risk-factors/): 6문항
+- [췌장암 마음·가족·일상·치료비](https://apuda.app/library/faq/pancreas/life-support/): 13문항
+- [췌장암 통증·완화의료·치료 전환](https://apuda.app/library/faq/pancreas/palliative-care/): 5문항
+- [전립선암 증상·진단 검사·의심 소견](https://apuda.app/library/faq/prostate/symptoms-tests/): 11문항
+- [전립선암 종류·병기·병리·유전자 검사](https://apuda.app/library/faq/prostate/stage-pathology/): 10문항
+- [전립선암 치료 계획·수술·방사선](https://apuda.app/library/faq/prostate/treatment-plan/): 11문항
+- [전립선암 항암·면역·표적치료](https://apuda.app/library/faq/prostate/drug-therapy/): 9문항
+- [전립선암 치료 중·후 증상과 부작용](https://apuda.app/library/faq/prostate/side-effects/): 12문항
+- [전립선암 응급 증상·발열·감염 예방](https://apuda.app/library/faq/prostate/warning-signs/): 8문항
+- [전립선암 식사·영양·운동·재활](https://apuda.app/library/faq/prostate/nutrition-exercise/): 9문항
+- [전립선암 추적검사·재발·장기 생존](https://apuda.app/library/faq/prostate/follow-up/): 6문항
+- [전립선암 위험 요인·가족력·생활습관](https://apuda.app/library/faq/prostate/risk-factors/): 5문항
+- [전립선암 마음·가족·일상·치료비](https://apuda.app/library/faq/prostate/life-support/): 14문항
+- [전립선암 통증·완화의료·치료 전환](https://apuda.app/library/faq/prostate/palliative-care/): 5문항
+- [위암 증상·진단 검사·의심 소견](https://apuda.app/library/faq/stomach/symptoms-tests/): 11문항
+- [위암 종류·병기·병리·유전자 검사](https://apuda.app/library/faq/stomach/stage-pathology/): 9문항
+- [위암 치료 계획·수술·방사선](https://apuda.app/library/faq/stomach/treatment-plan/): 11문항
+- [위암 항암·면역·표적치료](https://apuda.app/library/faq/stomach/drug-therapy/): 9문항
+- [위암 치료 중·후 증상과 부작용](https://apuda.app/library/faq/stomach/side-effects/): 13문항
+- [위암 응급 증상·발열·감염 예방](https://apuda.app/library/faq/stomach/warning-signs/): 8문항
+- [위암 식사·영양·운동·재활](https://apuda.app/library/faq/stomach/nutrition-exercise/): 9문항
+- [위암 추적검사·재발·장기 생존](https://apuda.app/library/faq/stomach/follow-up/): 6문항
+- [위암 위험 요인·가족력·생활습관](https://apuda.app/library/faq/stomach/risk-factors/): 6문항
+- [위암 마음·가족·일상·치료비](https://apuda.app/library/faq/stomach/life-support/): 13문항
+- [위암 통증·완화의료·치료 전환](https://apuda.app/library/faq/stomach/palliative-care/): 5문항
+- [갑상선암 증상·진단 검사·의심 소견](https://apuda.app/library/faq/thyroid/symptoms-tests/): 11문항
+- [갑상선암 종류·병기·병리·유전자 검사](https://apuda.app/library/faq/thyroid/stage-pathology/): 10문항
+- [갑상선암 치료 계획·수술·방사선](https://apuda.app/library/faq/thyroid/treatment-plan/): 11문항
+- [갑상선암 항암·면역·표적치료](https://apuda.app/library/faq/thyroid/drug-therapy/): 9문항
+- [갑상선암 치료 중·후 증상과 부작용](https://apuda.app/library/faq/thyroid/side-effects/): 13문항
+- [갑상선암 응급 증상·발열·감염 예방](https://apuda.app/library/faq/thyroid/warning-signs/): 8문항
+- [갑상선암 식사·영양·운동·재활](https://apuda.app/library/faq/thyroid/nutrition-exercise/): 8문항
+- [갑상선암 추적검사·재발·장기 생존](https://apuda.app/library/faq/thyroid/follow-up/): 6문항
+- [갑상선암 위험 요인·가족력·생활습관](https://apuda.app/library/faq/thyroid/risk-factors/): 6문항
+- [갑상선암 마음·가족·일상·치료비](https://apuda.app/library/faq/thyroid/life-support/): 13문항
+- [갑상선암 통증·완화의료·치료 전환](https://apuda.app/library/faq/thyroid/palliative-care/): 5문항
 
 ## 암 진단 후 첫 30일 안내서
 - [안내서 30권 목록](https://apuda.app/library/first30/)
