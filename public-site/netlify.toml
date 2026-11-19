@@ -1,3 +1,8 @@
+# Known false positive: the four-digit 5F news access PIN coincides with
+# ordinary numeric data in the public MFDS CSV. Do not disable other secret scans.
+[build.environment]
+  SECRETS_SCAN_OMIT_KEYS = "APUDA_NEWS_PIN"
+
 [[headers]]
   for = "/*"
   [headers.values]
