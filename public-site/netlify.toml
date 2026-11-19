@@ -165,3 +165,13 @@
   for = "/memory/icons/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# 5F industry news gate: static page and downloads; patient oncology and shared datasets stay public.
+[[edge_functions]]
+  function = "news-access"
+  path = "/news"
+
+[[edge_functions]]
+  function = "news-access"
+  path = "/news/*"
+
