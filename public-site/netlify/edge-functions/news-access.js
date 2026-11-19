@@ -90,10 +90,19 @@ export default async function handler(request, context) {
   const path=url.pathname;
   if(!restrictedPath(path) || isPublicPath(path)) return context.next();
 
-  const pin=Netlify.env.get('APUDA_NEWS_PIN');
-  const secret=Netlify.env.get('APUDA_NEWS_SESSION_SECRET');
-  if(!pin || !/^\d{4}$/.test(pin) || !secret || secret.length<32)
-    return new Response(page('', '/news/', true),{status:503,headers:gateHeaders});
+  // Keep sensitive values on the server; only configuration status is shown.
+  // Trim accidental whitespace from values entered through the Netlify dashboard.
+  const rawPin=Netlify.env.get('APUDA_NEWS_PIN');
+  const rawSecret=Netlify.env.get('APUDA_NEWS_SESSION_SECRET');
+  const pin=typeof rawPin==='string'?rawPin.trim():'';
+  const secret=typeof rawSecret==='string'?rawSecret.trim():'';
+  const errors=[];
+  if(!pin) errors.push('APUDA_NEWS_PIN: Production 값이 전달되지 않았습니다.');
+  else if(!/^\d{4}$/.test(pin)) errors.push('APUDA_NEWS_PIN: 4자리 숫자 형식이 아닙니다.');
+  if(!secret) errors.push('APUDA_NEWS_SESSION_SECRET: Production 값이 전달되지 않았습니다.');
+  else if(secret.length<32) errors.push('APUDA_NEWS_SESSION_SECRET: 보안키는 32자 이상이어야 합니다.');
+  if(errors.length)
+    return new Response(page(errors.join(' / '), '/news/', true),{status:503,headers:gateHeaders});
 
   if(path==='/news/unlock') {
     if(request.method!=='POST') return Response.redirect(new URL('/news/',url),303);
