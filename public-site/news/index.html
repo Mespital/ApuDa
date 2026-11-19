@@ -208,18 +208,24 @@ function renderMediaHub(outlets){
     const o=byName[name]||{};
     const home=o.homepage_url||OUTLET_HOME[name];
     const count=(o.items||[]).length;
-    const sub=(!dailyFailed&&count)?'오늘 주요 기사 '+count+'건':'사이트로 이동';
+    const sub=(!dailyFailed&&count)?'해당일 주요 기사 '+count+'건':'사이트로 이동';
     return '<a class="media-card" href="'+esc(home)+'" target="_blank" rel="noopener noreferrer"><span class="media-icon" aria-hidden="true">📰</span><span><b>'+esc(name)+'</b><small>'+sub+'</small></span><em aria-hidden="true">↗</em></a>';
   }).join('');
 }
 function renderDaily(data){
   currentDaily=data;
   document.title='ApuDa 오늘의 뉴스 브리핑 '+(data.report_date||'');
+  const kstNow=new Date(Date.now()+9*60*60*1000);
+  const expectedKst=new Date(kstNow);
+  if(kstNow.getUTCHours()<9) expectedKst.setUTCDate(expectedKst.getUTCDate()-1);
+  const expectedReportDate=expectedKst.toISOString().slice(0,10);
+  const isStale=!requestedDate && (!data.report_date || data.report_date<expectedReportDate);
   document.getElementById('briefingMeta').innerHTML=
     '<span class="chip">보고일 '+esc(data.report_date?formatDateOnly(data.report_date+'T00:00:00'):'')+'</span>'+
-    '<span class="chip">전날 09:00부터 오늘 09:00까지</span>'+
+    (isStale?'<span class="chip">갱신 지연 · 과거 기사</span>':'')+
+    '<span class="chip">보고일 기준 전날 09:00 ~ 당일 09:00</span>'+
     '<span class="chip">'+esc((data.sources||[]).join(' · '))+'</span>';
-  document.getElementById('briefingText').textContent=data.briefing||'';
+  document.getElementById('briefingText').textContent=(isStale?'뉴스 자동 갱신이 지연되고 있습니다. 아래 내용은 '+data.report_date+' 기준의 과거 브리핑이며, 오늘의 최신 뉴스가 아닙니다.\n\n':'')+(data.briefing||'');
 
   const outlets=data.outlet_status||[];
   renderMediaHub(outlets);
