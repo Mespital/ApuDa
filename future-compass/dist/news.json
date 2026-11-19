@@ -1,8 +1,96 @@
 {
-  "checked_at": "2026-11-19T12:39:29.541544+00:00",
-  "last_success_at": "2026-11-19T12:39:29.541544+00:00",
+  "checked_at": "2026-11-19T22:01:27.149282+00:00",
+  "last_success_at": "2026-11-19T22:01:27.149282+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "ICYMI: Transfer your history from other AI apps into Gemini.",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/switch-ai-assistants-transfer-history/",
+      "source": "Google",
+      "published_at": "2026-11-19T20:30:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "How we’re putting one of quantum mechanics’ deepest features to the test at scale.",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/quantum-computing/putting-one-of-quantum-mechanics-deepest-features-to-test-at-scale/",
+      "source": "Google",
+      "published_at": "2026-11-19T19:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Introducing Tool Retrieval in the Gemini API",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tool-retrieval/",
+      "source": "Google",
+      "published_at": "2026-11-19T18:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Walter Isaacson on curiosity and creativity in the AI age.",
+      "url": "https://blog.google/innovation-and-ai/technology/ai/dialogues-walter-isaacson/",
+      "source": "Google",
+      "published_at": "2026-11-19T17:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Small businesses, big results: How teams scale with AI",
+      "url": "https://blog.google/products-and-platforms/products/workspace/google-workspace-gemini-small-business-stories/",
+      "source": "Google",
+      "published_at": "2026-11-19T17:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Genie 4 is now available on the Gemini API.",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/genie-4-in-gemini-api/",
+      "source": "Google",
+      "published_at": "2026-11-19T17:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Let Gemini tackle repetitive chores on your Mac",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/computer-use-mac/",
+      "source": "Google",
+      "published_at": "2026-11-19T17:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "See some of the work from Google Flow and Flow Music Sessions artists",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/flow-and-flow-music-session-artists/",
+      "source": "Google",
+      "published_at": "2026-11-19T16:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Building the right way: Lessons from 20 years in The Dalles",
+      "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/the-dalles-data-center-20-years/",
+      "source": "Google",
+      "published_at": "2026-11-19T15:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "We’re partnering with Blue Origin on our first heavy-lift Project Suncatcher launch.",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-research/blue-origin-project-suncatcher-partnership/",
+      "source": "Google",
+      "published_at": "2026-11-19T13:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "How OpenAI’s Performance Factory keeps ChatGPT fast",
+      "url": "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast",
+      "source": "OpenAI",
+      "published_at": "2026-11-19T08:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "Introducing Gemini 4 Neon",
       "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/",
@@ -154,106 +242,14 @@
       "published_at": "2026-11-17T17:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Introducing ChatGPT for Sales",
-      "url": "https://openai.com/index/introducing-chatgpt-for-sales",
-      "source": "OpenAI",
-      "published_at": "2026-11-17T08:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Strengthening NATO and allied cyber defenses with AI",
-      "url": "https://openai.com/index/strengthening-nato-allied-cyber-defences-ai",
-      "source": "OpenAI",
-      "published_at": "2026-11-17T00:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Introducing OpenAI for Chile",
-      "url": "https://openai.com/index/introducing-openai-for-chile",
-      "source": "OpenAI",
-      "published_at": "2026-11-17T00:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Astra for Law leads in legal intelligence",
-      "url": "https://openai.com/index/astra-law-6-2",
-      "source": "OpenAI",
-      "published_at": "2026-11-17T00:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Regional voices are rolling out in the Gemini app.",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/regional-voices/",
-      "source": "Google",
-      "published_at": "2026-11-16T18:45:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Outpace automated cyber threats with security built for nonstop defense.",
-      "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/gtig-ai-threat-tracker-q4-2026/",
-      "source": "Google",
-      "published_at": "2026-11-16T18:30:00+00:00",
-      "category": "안전·보안",
-      "domain": "security"
-    },
-    {
-      "title": "New Google AdMob AI tools help app creators build, fix, and grow faster",
-      "url": "https://blog.google/products/publisher-connections/new-google-admob-tools/",
-      "source": "Google",
-      "published_at": "2026-11-16T17:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Broadening access to AI for scientists",
-      "url": "https://openai.com/index/expanding-chatgpt-for-academic-researchers",
-      "source": "OpenAI",
-      "published_at": "2026-11-16T17:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Strengthening the fight against online child sexual abuse with new tools and support",
-      "url": "https://openai.com/index/strengthening-online-child-safety",
-      "source": "OpenAI",
-      "published_at": "2026-11-16T17:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "New AI training performance benchmarks for Google TPUs",
-      "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/training-performance-benchmarks-tpus/",
-      "source": "Google",
-      "published_at": "2026-11-16T16:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Transform notes, research, and sources into interactive sites with Gemini Notebook.",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-notebook/interactive-sites/",
-      "source": "Google",
-      "published_at": "2026-11-16T16:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-11-19T12:39:29.541544+00:00",
+    "checked_at": "2026-11-19T22:01:27.149282+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
-      {
-        "date": "2026-11-19",
-        "title": "재량휴업일"
-      },
       {
         "date": "2026-11-21",
         "title": "토요휴업일"
@@ -388,7 +384,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-11-19T12:39:29.541544+00:00",
+    "last_success_at": "2026-11-19T22:01:27.149282+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
