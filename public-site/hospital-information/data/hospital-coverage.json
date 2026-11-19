@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-18T04:04:25+00:00",
+  "checked_at": "2026-11-19T04:00:42+00:00",
   "registered_hospitals": 30,
   "hospitals_with_matched_doctors": 8,
-  "matched_doctors": 488,
+  "matched_doctors": 489,
   "hospitals": [
     {
       "slug": "amc",
@@ -169,8 +169,8 @@
       "official_staff_url": null,
       "matched_doctors": 0,
       "source_status": "REVIEW_REQUIRED",
-      "directory_http": 200,
-      "diagnostic": "no-public-static-doctor-links-found",
+      "directory_http": null,
+      "diagnostic": "ConnectTimeout",
       "candidate_links": []
     },
     {
@@ -347,7 +347,7 @@
       "region": "전남",
       "official_url": "https://www.cnuhh.com",
       "official_staff_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor",
-      "matched_doctors": 57,
+      "matched_doctors": 58,
       "source_status": "VERIFIED_MATCHES",
       "directory_http": 200,
       "diagnostic": null,
