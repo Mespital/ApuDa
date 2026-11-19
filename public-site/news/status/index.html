@@ -35,7 +35,12 @@ async function load(){
    get('/news/data/official-notices.json'),get('/news/data/hira-updates.json'),get('/news/data/nccn-monitor.json')
  ]);
  const cards=[];
- cards.push(card('오늘의 브리핑',latest?'정상':'확인 필요',latest?('최신 보고일 '+latest.latest):'latest.json 없음',run?.generated_at,'/news/'));
+ const kstNow=new Date(Date.now()+9*60*60*1000);
+ const expectedKst=new Date(kstNow);
+ if(kstNow.getUTCHours()<9) expectedKst.setUTCDate(expectedKst.getUTCDate()-1);
+ const expectedReportDate=expectedKst.toISOString().slice(0,10);
+ const briefingFresh=!!(latest?.latest && latest.latest>=expectedReportDate);
+ cards.push(card('오늘의 브리핑',briefingFresh?'정상':'확인 필요',latest?('최신 보고일 '+latest.latest+(briefingFresh?'':' · 자동 갱신 지연')):'latest.json 없음',run?.generated_at,'/news/'));
  const offSources=official?.sources||[];
  const mfdsApproval=offSources.find(x=>x.id==='mfds_drug_approval');
  const mfdsSupply=offSources.find(x=>x.id==='mfds_supply_shortage');
@@ -53,6 +58,9 @@ async function load(){
  document.getElementById('statusGrid').innerHTML=cards.join('');
 
  const actions=[];
+ if(latest && !briefingFresh){
+   actions.push('<div class="row"><b>뉴스 브리핑 갱신 지연</b><span>마지막 보고일 '+esc(latest.latest)+' · 현재 필요한 보고일 '+esc(expectedReportDate)+'입니다. VPS 수집 일정과 GitHub Actions 백업 작업을 확인하세요. 과거 기사를 오늘 기사로 해석하지 마세요.</span></div>');
+ }
  if(mfdsApproval?.status==='auth_error'){
    actions.push('<div class="row"><b>식약처 허가 API</b><span>현재 공용 키는 VPS까지 전달됐지만 이 활용신청에서 등록된 키로 인정되지 않습니다. 공공데이터포털에서 이 승인 건에 연결된 키를 확인한 뒤 GitHub Secret <b>MFDS_APPROVAL_SERVICE_KEY</b>로 별도 등록하면 공급부족용 키와 분리해 사용할 수 있습니다.</span></div>');
  }
