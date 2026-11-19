@@ -1,0 +1,393 @@
+{
+  "version": "1.2",
+  "report_date": "2026-11-19",
+  "collection_window": {
+    "start": "2026-11-18T09:00:00+09:00",
+    "end": "2026-11-19T09:00:00+09:00",
+    "timezone": "Asia/Seoul"
+  },
+  "sources": [
+    "데일리팜",
+    "의학신문",
+    "메디파나뉴스",
+    "약사공론"
+  ],
+  "briefing": "복지부, 의료기관 운영 AI도 성과보상 검토...“효과 확인되면 신속 지급”가 오늘 가장 중요한 이슈로 부각됐습니다. 이어 의료급여 9천억 미지급 사태 약국도 발동동…정부 복안은?도 주요 변화로 확인됐습니다. 전체적으로는 디지털헬스 · 정책·급여 흐름이 두드러집니다.",
+  "top_news": [
+    {
+      "rank": 1,
+      "canonical_issue": "복지부, 의료기관 운영 AI도 성과보상 검토...“효과 확인되면 신속 지급” - 의학신문",
+      "title": "복지부, 의료기관 운영 AI도 성과보상 검토...“효과 확인되면 신속 지급”",
+      "category": [
+        "복지부",
+        "ai"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-11-18T12:28:43+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=이재원 기자] 정부가 의료 인공지능(AI)의 성과 기반 보상체계를 마련하면서 식품의약품안전처가 의료기기로 분류하지 않는 의료기관 운영 최적화",
+        "[의학신문·일간보사=이재원 기자] 정부가 의료 인공지능(AI)의 성과 기반 보상체계를 마련하면서 식품의약품안전처가 의료기기로 분류하지 않는 의료기관 운영 최적화 등 AI 서비스까지 보상 대상으로 포함하는 방안을 검토하고 있다.",
+        "다만 의료기관의 단순한 경영 효율화가 아닌 환자 편익 개선이 입증돼야 한다는 조건을 제시했다."
+      ],
+      "importance": "의료기관·약국 현장의 변화는 진료 흐름과 환자 경험, 의약품 사용 환경에 직접 영향을 줍니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3016746"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016746"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3016746_417643_2538.jpg",
+      "score": 63,
+      "oncology": null
+    },
+    {
+      "rank": 2,
+      "canonical_issue": "의료급여 9천억 미지급 사태 약국도 발동동…정부 복안은? - 약사공론",
+      "title": "의료급여 9천억 미지급 사태 약국도 발동동…정부 복안은?",
+      "category": [
+        "급여",
+        "약국"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-11-19T05:53:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "의료급여 진료비 지급 지연으로 약국 경영 부담이 커지는 가운데 정부가 미지급된 9000억원 가운데 5800억원은 내년도 예산안에 반영하고, 나머지 3000억원 가",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=549329"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549329"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202611/549329_453544_3619.png",
+      "score": 44,
+      "oncology": null
+    },
+    {
+      "rank": 3,
+      "canonical_issue": "인하대병원, 구글 워크스페이스·제미나이 전사 도입 - 의학신문",
+      "title": "인하대병원, 구글 워크스페이스·제미나이 전사 도입",
+      "category": [
+        "합병",
+        "병원",
+        "ai"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-11-18T12:02:56+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=이재원 기자] 인하대병원이 국내 상급종합병원 최초로 구글의 클라우드 기반 협업 플랫폼과 생성형 인공지능(AI)을 전사적으로 도입한다. 병원 내",
+        "[의학신문·일간보사=이재원 기자] 인하대병원이 국내 상급종합병원 최초로 구글의 클라우드 기반 협업 플랫폼과 생성형 인공지능(AI)을 전사적으로 도입한다.",
+        "병원 내 행정업무와 부서 간 협업에 AI를 적용하고, 향후 진료 서비스 영역까지 활용 범위를 확대한다는 계획이다."
+      ],
+      "importance": "사업개발·구조개편은 파이프라인 가치와 자본 배분, 기업 경쟁구도에 직접 영향을 주는 변화입니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3016743"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016743"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3016743_417641_5659.jpg",
+      "score": 37,
+      "oncology": null
+    },
+    {
+      "rank": 4,
+      "canonical_issue": "식약처 \"연말 CDMO 法 맞춰 규제·지원 가동…원료인증제 신설\" - 메디파나뉴스",
+      "title": "식약처 \"연말 CDMO 法 맞춰 규제·지원 가동…원료인증제 신설\"",
+      "category": [
+        "식약처"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-11-19T06:01:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "식품의약품안전처가 바이오의약품 위탁개발생산(CDMO) 산업을 위한 별도의 규제지원 체계를 마련하고 올해 말부터 운영에 들어간다. 수출제조업 등록제 신설과 의약품 제조·품질관리기준(GMP) 적합인증 법제화를 통해 해외 수주를 지원하는 한편, 국산 원료물질 인증제 도입과 디지털융합의약품 통합심사 등도 추진한",
+        "복사하기 식품의약품안전처 전경 사진을 이용해 AI로 생성한 이미지(ChatGPT) 식품의약품안전처가 바이오의약품 위탁개발생산(CDMO) 산업을 위한 별도의 규제지원 체계를 마련하고 올해 말부터 운영에 들어간다.",
+        "수출제조업 등록제 신설과 의약품 제조·품질관리기준(GMP) 적합인증 법제화를 통해 해외 수주를 지원하는 한편, 국산 원료물질 인증제 도입과 디지털융합의약품 통합심사 등도 추진한다."
+      ],
+      "importance": "생산·투자 확대는 공급망 안정성과 글로벌 사업 확장, 중장기 생산능력 경쟁과 연결됩니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=422178"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=422178"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202611/422178_330191_3613.png",
+      "score": 33,
+      "oncology": null
+    },
+    {
+      "rank": 5,
+      "canonical_issue": "CDMO 규제지원 새 시대 열린다…해외 수주에 식약처 인증 뒷받침 - 약사공론",
+      "title": "CDMO 규제지원 새 시대 열린다…해외 수주에 식약처 인증 뒷받침",
+      "category": [
+        "식약처"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-11-19T05:51:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "식품의약품안전처가 바이오의약품 위탁개발생산(CDMO) 산업을 위한 별도의 규제지원 체계를 마련하고 올해 말부터 본격적인 운영에 들어간다. 수출제조업 등록제를 신설",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "생산·투자 확대는 공급망 안정성과 글로벌 사업 확장, 중장기 생산능력 경쟁과 연결됩니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=549324"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549324"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202611/549324_453542_2519.jpg",
+      "score": 33,
+      "oncology": null
+    }
+  ],
+  "trends": [
+    {
+      "title": "디지털헬스",
+      "count": 5,
+      "change": "5건의 주요 이슈에서 반복적으로 확인",
+      "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
+      "examples": [
+        "복지부, 의료기관 운영 AI도 성과보상 검토...“효과 확인되면 신속 지급”",
+        "의료급여 9천억 미지급 사태 약국도 발동동…정부 복안은?"
+      ]
+    },
+    {
+      "title": "정책·급여",
+      "count": 4,
+      "change": "4건의 주요 이슈에서 반복적으로 확인",
+      "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
+      "examples": [
+        "복지부, 의료기관 운영 AI도 성과보상 검토...“효과 확인되면 신속 지급”",
+        "의료급여 9천억 미지급 사태 약국도 발동동…정부 복안은?"
+      ]
+    },
+    {
+      "title": "의료현장",
+      "count": 3,
+      "change": "3건의 주요 이슈에서 반복적으로 확인",
+      "implication": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름",
+      "examples": [
+        "복지부, 의료기관 운영 AI도 성과보상 검토...“효과 확인되면 신속 지급”",
+        "의료급여 9천억 미지급 사태 약국도 발동동…정부 복안은?"
+      ]
+    },
+    {
+      "title": "투자·사업개발",
+      "count": 1,
+      "change": "1건의 주요 이슈에서 반복적으로 확인",
+      "implication": "자본과 파이프라인 확보 경쟁이 사업전략의 핵심이 되는 흐름",
+      "examples": [
+        "인하대병원, 구글 워크스페이스·제미나이 전사 도입"
+      ]
+    }
+  ],
+  "outlet_status": [
+    {
+      "publisher": "데일리팜",
+      "homepage_url": "https://www.dailypharm.com/",
+      "items": []
+    },
+    {
+      "publisher": "의학신문",
+      "homepage_url": "https://www.bosa.co.kr/",
+      "items": [
+        {
+          "title": "복지부, 의료기관 운영 AI도 성과보상 검토...“효과 확인되면 신속 지급”",
+          "published_at": "2026-11-18T12:28:43+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016746"
+        },
+        {
+          "title": "인하대병원, 구글 워크스페이스·제미나이 전사 도입",
+          "published_at": "2026-11-18T12:02:56+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016743"
+        },
+        {
+          "title": "주요 의료AI 기업, 3분기 ‘외형 성장·적자 축소’",
+          "published_at": "2026-11-19T05:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016787"
+        },
+        {
+          "title": "제네릭 중심 제약기업 경쟁력 강화 모색",
+          "published_at": "2026-11-18T14:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016738"
+        },
+        {
+          "title": "비만약 해외 반입 허용에 '처방 확인·불법유통 관리 강화' 필요",
+          "published_at": "2026-11-18T12:03:59+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016744"
+        },
+        {
+          "title": "“약물안전 사각지대는 병원 밖”…지역약국 역할 확대 필요",
+          "published_at": "2026-11-18T13:07:43+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016748"
+        },
+        {
+          "title": "심평원, '병원별 표준화 사망비' 공개 의결...사망비 높은 병원도 포함",
+          "published_at": "2026-11-19T06:05:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016781"
+        },
+        {
+          "title": "서울시의사회 황규석 회장, 건보공단 특사경법 폐기 촉구",
+          "published_at": "2026-11-18T12:28:07+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016747"
+        }
+      ]
+    },
+    {
+      "publisher": "메디파나뉴스",
+      "homepage_url": "https://www.medipana.com/",
+      "items": [
+        {
+          "title": "식약처 \"연말 CDMO 法 맞춰 규제·지원 가동…원료인증제 신설\"",
+          "published_at": "2026-11-19T06:01:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422178"
+        },
+        {
+          "title": "알엑스미, '쥬베클샷' 공급 소진…약국 스킨케어 시장 공략",
+          "published_at": "2026-11-18T13:46:43+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422132"
+        },
+        {
+          "title": "GC녹십자, '알리글로' 수직계열화…美 수익성 개선",
+          "published_at": "2026-11-19T06:03:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422180"
+        },
+        {
+          "title": "AI가 내 감정까지 해석하는 시대…'자기판단'의 변화",
+          "published_at": "2026-11-19T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422141"
+        },
+        {
+          "title": "박희철 삼성서울병원 커뮤니케이션실장 모친상",
+          "published_at": "2026-11-18T14:54:35+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422140"
+        },
+        {
+          "title": "유광하 건국대병원장 부친상",
+          "published_at": "2026-11-18T13:47:14+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422133"
+        },
+        {
+          "title": "제약사 50곳 재고 3600억 늘었는데…웃고 운 기업들",
+          "published_at": "2026-11-19T06:04:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422103"
+        },
+        {
+          "title": "직접 만든 약보다 남의 약이 더 잘 팔린다?…제약사 매출의 두 얼굴",
+          "published_at": "2026-11-18T12:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422022"
+        }
+      ]
+    },
+    {
+      "publisher": "약사공론",
+      "homepage_url": "https://www.kpanews.co.kr/",
+      "items": [
+        {
+          "title": "의료급여 9천억 미지급 사태 약국도 발동동…정부 복안은?",
+          "published_at": "2026-11-19T05:53:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549329"
+        },
+        {
+          "title": "CDMO 규제지원 새 시대 열린다…해외 수주에 식약처 인증 뒷받침",
+          "published_at": "2026-11-19T05:51:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549324"
+        },
+        {
+          "title": "약가유연계약 선택한 약제 52품목으로 확대…매월 10개 꼴로 증가",
+          "published_at": "2026-11-19T05:51:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549223"
+        },
+        {
+          "title": "약국 순위 매기는 특허 등장…​대체조제·처방확인 하면 '감점'?",
+          "published_at": "2026-11-19T05:53:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549320"
+        },
+        {
+          "title": "[인터뷰] \"톡신 하나로 세계를 두드렸다…이젠 글로벌 에스테틱 플랫폼 기업\"",
+          "published_at": "2026-11-19T05:51:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549308"
+        },
+        {
+          "title": "계단식 약가재평가 결과 사전열람 예고…제약사 291곳 이틀간 확인해야",
+          "published_at": "2026-11-19T05:51:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549331"
+        },
+        {
+          "title": "\"편의점약 확대보다 공공심야약국\"…약사회, 국회 앞에서 정부 압박",
+          "published_at": "2026-11-19T05:55:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549341"
+        },
+        {
+          "title": "[영상] 제40회 약의 날 \"신뢰받는 K-의약품으로\"",
+          "published_at": "2026-11-18T21:15:47+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549334"
+        }
+      ]
+    }
+  ],
+  "insight": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름 동시에 정책·급여 흐름도 함께 확인돼 단일 이슈보다 복합적인 산업 변화로 보는 것이 적절합니다.",
+  "infographic": {
+    "image_path": null,
+    "generated_at": null,
+    "template_version": "news-card-v1"
+  }
+}
