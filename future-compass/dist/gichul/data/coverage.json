@@ -1,0 +1,340 @@
+{
+  "updatedAt": "2026-11-20",
+  "curriculumYear": 2027,
+  "domainCount": 8,
+  "courseCount": 41,
+  "authoredCount": 130,
+  "verifiedPastCount": 10,
+  "conceptCount": 148,
+  "courses": [
+    {
+      "id": "korean-common",
+      "label": "공통: 독서·문학",
+      "domain": "국어",
+      "scopeYear": 2027,
+      "common": true,
+      "authoredCount": 2
+    },
+    {
+      "id": "korean-speech",
+      "label": "화법과 작문",
+      "domain": "국어",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 4
+    },
+    {
+      "id": "korean-language",
+      "label": "언어와 매체",
+      "domain": "국어",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 4
+    },
+    {
+      "id": "math-common",
+      "label": "공통: 수학Ⅰ·수학Ⅱ",
+      "domain": "수학",
+      "scopeYear": 2027,
+      "common": true,
+      "authoredCount": 0
+    },
+    {
+      "id": "math-statistics",
+      "label": "확률과 통계",
+      "domain": "수학",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 0
+    },
+    {
+      "id": "math-calculus",
+      "label": "미적분",
+      "domain": "수학",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 0
+    },
+    {
+      "id": "math-geometry",
+      "label": "기하",
+      "domain": "수학",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 0
+    },
+    {
+      "id": "english",
+      "label": "영어",
+      "domain": "영어",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 2
+    },
+    {
+      "id": "korean-history",
+      "label": "한국사",
+      "domain": "한국사",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 4
+    },
+    {
+      "id": "social-life-ethics",
+      "label": "생활과 윤리",
+      "domain": "사회탐구",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 4
+    },
+    {
+      "id": "social-ethics",
+      "label": "윤리와 사상",
+      "domain": "사회탐구",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 4
+    },
+    {
+      "id": "social-korea-geography",
+      "label": "한국지리",
+      "domain": "사회탐구",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 4
+    },
+    {
+      "id": "social-world-geography",
+      "label": "세계지리",
+      "domain": "사회탐구",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 4
+    },
+    {
+      "id": "social-east-history",
+      "label": "동아시아사",
+      "domain": "사회탐구",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 4
+    },
+    {
+      "id": "social-world-history",
+      "label": "세계사",
+      "domain": "사회탐구",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 4
+    },
+    {
+      "id": "social-economics",
+      "label": "경제",
+      "domain": "사회탐구",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 4
+    },
+    {
+      "id": "social-politics",
+      "label": "정치와 법",
+      "domain": "사회탐구",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 4
+    },
+    {
+      "id": "social-culture",
+      "label": "사회·문화",
+      "domain": "사회탐구",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 4
+    },
+    {
+      "id": "science-physics1",
+      "label": "물리학Ⅰ",
+      "domain": "과학탐구",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 3
+    },
+    {
+      "id": "science-chemistry1",
+      "label": "화학Ⅰ",
+      "domain": "과학탐구",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 3
+    },
+    {
+      "id": "science-biology1",
+      "label": "생명과학Ⅰ",
+      "domain": "과학탐구",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 3
+    },
+    {
+      "id": "science-earth1",
+      "label": "지구과학Ⅰ",
+      "domain": "과학탐구",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 3
+    },
+    {
+      "id": "science-physics2",
+      "label": "물리학Ⅱ",
+      "domain": "과학탐구",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 3
+    },
+    {
+      "id": "science-chemistry2",
+      "label": "화학Ⅱ",
+      "domain": "과학탐구",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 3
+    },
+    {
+      "id": "science-biology2",
+      "label": "생명과학Ⅱ",
+      "domain": "과학탐구",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 3
+    },
+    {
+      "id": "science-earth2",
+      "label": "지구과학Ⅱ",
+      "domain": "과학탐구",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 3
+    },
+    {
+      "id": "vocation-career",
+      "label": "성공적인 직업생활",
+      "domain": "직업탐구",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 3
+    },
+    {
+      "id": "vocation-agriculture",
+      "label": "농업 기초 기술",
+      "domain": "직업탐구",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 3
+    },
+    {
+      "id": "vocation-industry",
+      "label": "공업 일반",
+      "domain": "직업탐구",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 3
+    },
+    {
+      "id": "vocation-commerce",
+      "label": "상업 경제",
+      "domain": "직업탐구",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 3
+    },
+    {
+      "id": "vocation-marine",
+      "label": "수산·해운 산업 기초",
+      "domain": "직업탐구",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 3
+    },
+    {
+      "id": "vocation-development",
+      "label": "인간 발달",
+      "domain": "직업탐구",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 3
+    },
+    {
+      "id": "language-german",
+      "label": "독일어Ⅰ",
+      "domain": "제2외국어/한문",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 4
+    },
+    {
+      "id": "language-french",
+      "label": "프랑스어Ⅰ",
+      "domain": "제2외국어/한문",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 4
+    },
+    {
+      "id": "language-spanish",
+      "label": "스페인어Ⅰ",
+      "domain": "제2외국어/한문",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 4
+    },
+    {
+      "id": "language-chinese",
+      "label": "중국어Ⅰ",
+      "domain": "제2외국어/한문",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 4
+    },
+    {
+      "id": "language-japanese",
+      "label": "일본어Ⅰ",
+      "domain": "제2외국어/한문",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 4
+    },
+    {
+      "id": "language-russian",
+      "label": "러시아어Ⅰ",
+      "domain": "제2외국어/한문",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 4
+    },
+    {
+      "id": "language-arabic",
+      "label": "아랍어Ⅰ",
+      "domain": "제2외국어/한문",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 4
+    },
+    {
+      "id": "language-vietnamese",
+      "label": "베트남어Ⅰ",
+      "domain": "제2외국어/한문",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 4
+    },
+    {
+      "id": "language-hanmun",
+      "label": "한문Ⅰ",
+      "domain": "제2외국어/한문",
+      "scopeYear": 2027,
+      "common": false,
+      "authoredCount": 4
+    }
+  ],
+  "limitations": "자체 구성은 과목별 기본 개념 일부를 다룹니다. 공식 기출 상세 해설은 수학 10문항입니다."
+}

@@ -1,0 +1,2722 @@
+{
+  "topics": [
+    {
+      "id": "language-german-verb",
+      "courseId": "language-german",
+      "label": "인칭에 따른 동사 변화",
+      "description": "독일어 현재형 동사는 주어의 인칭과 수에 맞게 어미가 바뀝니다",
+      "concept": "독일어 현재형 동사는 주어의 인칭과 수에 맞게 어미가 바뀝니다. 규칙동사 lernen은 ich와 함께 lerne가 됩니다.",
+      "formula": ""
+    },
+    {
+      "id": "language-german-request",
+      "courseId": "language-german",
+      "label": "정중한 길 묻기",
+      "description": "길을 물을 때는 목적지를 제시하는 질문과 방향·위치를 알려 주는 답을 연결합니다",
+      "concept": "길을 물을 때는 목적지를 제시하는 질문과 방향·위치를 알려 주는 답을 연결합니다. 질문의 핵심 명사와 대답의 정보를 함께 확인하세요.",
+      "formula": ""
+    },
+    {
+      "id": "language-german-notice",
+      "courseId": "language-german",
+      "label": "운영 시간 안내 읽기",
+      "description": "독일어 안내문에서 요일과 시간 범위를 대응시킵니다",
+      "concept": "독일어 안내문에서 요일과 시간 범위를 대응시킵니다. bis는 시간의 끝을 나타내며 geschlossen은 문을 닫았다는 뜻입니다.",
+      "formula": ""
+    },
+    {
+      "id": "language-german-vocabulary",
+      "courseId": "language-german",
+      "label": "장소와 활동 어휘",
+      "description": "장소 어휘는 그곳에서 하는 활동과 함께 기억하면 의미를 파악하기 쉽습니다",
+      "concept": "장소 어휘는 그곳에서 하는 활동과 함께 기억하면 의미를 파악하기 쉽습니다. Bibliothek은 책을 읽거나 빌리는 도서관을 뜻합니다.",
+      "formula": ""
+    },
+    {
+      "id": "language-french-polite-order",
+      "courseId": "language-french",
+      "label": "정중한 주문 표현",
+      "description": "프랑스어에서 Je voudrais는 원하는 것을 정중하게 요청할 때 자주 사용합니다",
+      "concept": "프랑스어에서 Je voudrais는 원하는 것을 정중하게 요청할 때 자주 사용합니다. 요청 내용과 목적어를 함께 읽으세요.",
+      "formula": ""
+    },
+    {
+      "id": "language-french-plural",
+      "courseId": "language-french",
+      "label": "수량과 명사의 복수형",
+      "description": "프랑스어 명사는 둘 이상일 때 일반적으로 복수형을 사용합니다",
+      "concept": "프랑스어 명사는 둘 이상일 때 일반적으로 복수형을 사용합니다. livre의 복수형은 livres이며 단수와 복수의 표기가 다릅니다.",
+      "formula": ""
+    },
+    {
+      "id": "language-french-reading",
+      "courseId": "language-french",
+      "label": "짧은 일정 읽기",
+      "description": "프랑스어 글에서 à 뒤의 시각과 jusqu’à 뒤의 종료 시점을 구분합니다",
+      "concept": "프랑스어 글에서 à 뒤의 시각과 jusqu’à 뒤의 종료 시점을 구분합니다. 인물의 여러 활동을 시간 순서로 정리하세요.",
+      "formula": ""
+    },
+    {
+      "id": "language-french-weather",
+      "courseId": "language-french",
+      "label": "날씨와 물건 연결",
+      "description": "날씨 표현과 그 상황에 필요한 사물을 연결합니다",
+      "concept": "날씨 표현과 그 상황에 필요한 사물을 연결합니다. Il pleut는 비가 온다는 뜻이고 parapluie는 우산입니다.",
+      "formula": ""
+    },
+    {
+      "id": "language-spanish-ser",
+      "courseId": "language-spanish",
+      "label": "주어와 ser 동사",
+      "description": "스페인어 ser 동사의 현재형은 주어에 따라 달라집니다",
+      "concept": "스페인어 ser 동사의 현재형은 주어에 따라 달라집니다. yo와 함께 쓰는 형태는 soy입니다.",
+      "formula": ""
+    },
+    {
+      "id": "language-spanish-direction",
+      "courseId": "language-spanish",
+      "label": "위치 질문과 응답",
+      "description": "Dónde는 장소를 묻는 의문사입니다",
+      "concept": "Dónde는 장소를 묻는 의문사입니다. 장소 질문에는 위치나 길을 설명하는 대답을 연결하세요.",
+      "formula": ""
+    },
+    {
+      "id": "language-spanish-schedule",
+      "courseId": "language-spanish",
+      "label": "요일과 약속 읽기",
+      "description": "스페인어의 요일과 시각을 활동에 대응시켜 읽습니다",
+      "concept": "스페인어의 요일과 시각을 활동에 대응시켜 읽습니다. 전치사 a 뒤의 시각과 요일 명사를 따로 확인하세요.",
+      "formula": ""
+    },
+    {
+      "id": "language-spanish-meal",
+      "courseId": "language-spanish",
+      "label": "식사 어휘 구분",
+      "description": "desayuno는 아침 식사를 뜻합니다",
+      "concept": "desayuno는 아침 식사를 뜻합니다. 일상 어휘는 시간·활동의 문맥과 함께 확인합니다.",
+      "formula": ""
+    },
+    {
+      "id": "language-chinese-classifier",
+      "courseId": "language-chinese",
+      "label": "수량사와 명사",
+      "description": "중국어에서 명사의 수량을 말할 때 수사와 명사 사이에 양사를 사용합니다",
+      "concept": "중국어에서 명사의 수량을 말할 때 수사와 명사 사이에 양사를 사용합니다. 책을 세는 대표적인 양사는 本입니다.",
+      "formula": ""
+    },
+    {
+      "id": "language-chinese-time",
+      "courseId": "language-chinese",
+      "label": "시각을 묻고 답하기",
+      "description": "중국어에서 几点는 몇 시인지 묻는 말이고 半은 30분을 나타냅니다",
+      "concept": "중국어에서 几点는 몇 시인지 묻는 말이고 半은 30분을 나타냅니다. 六点半은 여섯 시 삼십 분입니다.",
+      "formula": ""
+    },
+    {
+      "id": "language-chinese-reading",
+      "courseId": "language-chinese",
+      "label": "이동 일정 읽기",
+      "description": "중국어 글에서 요일·시각·동작을 서로 대응시켜 읽습니다",
+      "concept": "중국어 글에서 요일·시각·동작을 서로 대응시켜 읽습니다. 去는 가다, 回家는 집으로 돌아가다라는 뜻입니다.",
+      "formula": ""
+    },
+    {
+      "id": "language-chinese-antonym",
+      "courseId": "language-chinese",
+      "label": "기본 형용사와 반의어",
+      "description": "중국어 형용사는 반대 의미의 단어를 짝지어 익히면 뜻을 구분하기 쉽습니다",
+      "concept": "중국어 형용사는 반대 의미의 단어를 짝지어 익히면 뜻을 구분하기 쉽습니다. 大는 크다, 小는 작다를 뜻합니다.",
+      "formula": ""
+    },
+    {
+      "id": "language-japanese-particle",
+      "courseId": "language-japanese",
+      "label": "정확한 시각과 조사 に",
+      "description": "일본어에서 정확한 시각을 나타내는 말 뒤에 조사 に를 붙여 동작이 일어나는 때를 나타낼 수 있습니다",
+      "concept": "일본어에서 정확한 시각을 나타내는 말 뒤에 조사 に를 붙여 동작이 일어나는 때를 나타낼 수 있습니다. 동작 장소의 で와 구분하세요.",
+      "formula": ""
+    },
+    {
+      "id": "language-japanese-direction",
+      "courseId": "language-japanese",
+      "label": "길 묻기에 응답하기",
+      "description": "どこ는 장소를 묻는 말입니다",
+      "concept": "どこ는 장소를 묻는 말입니다. 길 안내 대화에서는 목적지의 방향이나 위치를 알려 주는 응답을 고릅니다.",
+      "formula": ""
+    },
+    {
+      "id": "language-japanese-notice",
+      "courseId": "language-japanese",
+      "label": "휴관일 안내 읽기",
+      "description": "일본어 안내문에서 開館은 개관, 休み는 쉬는 날을 나타냅니다",
+      "concept": "일본어 안내문에서 開館은 개관, 休み는 쉬는 날을 나타냅니다. 요일 한자를 활동 정보와 함께 읽으세요.",
+      "formula": ""
+    },
+    {
+      "id": "language-japanese-permission",
+      "courseId": "language-japanese",
+      "label": "허락을 구하는 표현",
+      "description": "동사의 て형 뒤에 もいいですか를 붙이면 행동을 해도 되는지 허락을 구할 수 있습니다",
+      "concept": "동사의 て형 뒤에 もいいですか를 붙이면 행동을 해도 되는지 허락을 구할 수 있습니다. 요청이나 금지 표현과 구분하세요.",
+      "formula": ""
+    },
+    {
+      "id": "language-russian-verb",
+      "courseId": "language-russian",
+      "label": "현재형의 인칭 일치",
+      "description": "러시아어 현재형 동사는 주어의 인칭과 수에 맞게 변화합니다",
+      "concept": "러시아어 현재형 동사는 주어의 인칭과 수에 맞게 변화합니다. изучать는 공부하다라는 뜻이며 я와 함께 изучаю로 씁니다.",
+      "formula": ""
+    },
+    {
+      "id": "language-russian-location",
+      "courseId": "language-russian",
+      "label": "장소 질문과 응답",
+      "description": "Где는 어디에라는 뜻으로 위치를 묻습니다",
+      "concept": "Где는 어디에라는 뜻으로 위치를 묻습니다. рядом с는 ~옆에라는 뜻이므로 장소 질문과 연결할 수 있습니다.",
+      "formula": ""
+    },
+    {
+      "id": "language-russian-reading",
+      "courseId": "language-russian",
+      "label": "시간 안내문 읽기",
+      "description": "러시아어 안내문에서 с는 시작, до는 끝나는 시점을 나타낼 수 있습니다",
+      "concept": "러시아어 안내문에서 с는 시작, до는 끝나는 시점을 나타낼 수 있습니다. работает는 운영한다, закрыта는 문을 닫았다는 뜻입니다.",
+      "formula": ""
+    },
+    {
+      "id": "language-russian-vocabulary",
+      "courseId": "language-russian",
+      "label": "학습 활동 어휘",
+      "description": "러시아어에서 грамматика는 문법을 뜻합니다",
+      "concept": "러시아어에서 грамматика는 문법을 뜻합니다. 동사 повторять의 목적어가 되면 문장 안에서 грамматику 형태로 쓰일 수 있습니다.",
+      "formula": ""
+    },
+    {
+      "id": "language-arabic-demonstrative",
+      "courseId": "language-arabic",
+      "label": "지시사와 명사의 성",
+      "description": "표준 아랍어의 가까운 대상을 가리키는 단수 지시사는 명사의 성에 맞춥니다",
+      "concept": "표준 아랍어의 가까운 대상을 가리키는 단수 지시사는 명사의 성에 맞춥니다. 남성 단수 명사 كتاب에는 هذا를 사용합니다.",
+      "formula": ""
+    },
+    {
+      "id": "language-arabic-location",
+      "courseId": "language-arabic",
+      "label": "장소를 묻는 أين",
+      "description": "أين는 어디에라는 장소 의문사입니다",
+      "concept": "أين는 어디에라는 장소 의문사입니다. 위치 질문에는 장소나 방향 정보를 제공하는 대답이 어울립니다.",
+      "formula": ""
+    },
+    {
+      "id": "language-arabic-reading",
+      "courseId": "language-arabic",
+      "label": "요일과 활동 읽기",
+      "description": "아랍어 요일 이름과 활동을 각각 대응시켜 읽습니다",
+      "concept": "아랍어 요일 이름과 활동을 각각 대응시켜 읽습니다. الأحد는 일요일이고 الاثنين은 월요일입니다.",
+      "formula": ""
+    },
+    {
+      "id": "language-arabic-vocabulary",
+      "courseId": "language-arabic",
+      "label": "장소 명사 이해",
+      "description": "아랍어 장소 명사는 그곳에서 하는 행동과 함께 익힙니다",
+      "concept": "아랍어 장소 명사는 그곳에서 하는 행동과 함께 익힙니다. المكتبة는 도서관이며 읽기를 뜻하는 أقرأ와 연결해 이해할 수 있습니다.",
+      "formula": ""
+    },
+    {
+      "id": "language-vietnamese-request",
+      "courseId": "language-vietnamese",
+      "label": "원하는 것을 말하기",
+      "description": "베트남어에서 muốn은 원하다라는 뜻입니다",
+      "concept": "베트남어에서 muốn은 원하다라는 뜻입니다. Tôi muốn 뒤에 원하는 대상을 이어 말할 수 있습니다.",
+      "formula": ""
+    },
+    {
+      "id": "language-vietnamese-aspect",
+      "courseId": "language-vietnamese",
+      "label": "이미 일어난 행동과 đã",
+      "description": "베트남어는 동사의 형태를 인칭에 따라 바꾸지 않고 시간·상황 표현으로 의미를 구체화할 수 있습니다",
+      "concept": "베트남어는 동사의 형태를 인칭에 따라 바꾸지 않고 시간·상황 표현으로 의미를 구체화할 수 있습니다. đã는 이미 이루어진 행동을 나타내는 데 쓰입니다.",
+      "formula": ""
+    },
+    {
+      "id": "language-vietnamese-reading",
+      "courseId": "language-vietnamese",
+      "label": "요일별 활동 읽기",
+      "description": "베트남어에서 thứ Hai는 월요일, thứ Tư는 수요일입니다",
+      "concept": "베트남어에서 thứ Hai는 월요일, thứ Tư는 수요일입니다. 활동을 나타내는 동사와 그 활동의 요일을 함께 읽으세요.",
+      "formula": ""
+    },
+    {
+      "id": "language-vietnamese-vocabulary",
+      "courseId": "language-vietnamese",
+      "label": "생활 장소 어휘",
+      "description": "베트남어 장소 어휘를 활동과 연결해 읽습니다",
+      "concept": "베트남어 장소 어휘를 활동과 연결해 읽습니다. thư viện은 도서관이고 sách는 책입니다.",
+      "formula": ""
+    },
+    {
+      "id": "language-hanmun-character",
+      "courseId": "language-hanmun",
+      "label": "한자의 구성과 뜻",
+      "description": "木은 나무를 뜻하고 林은 나무 木 두 개가 결합한 글자로 수풀을 뜻합니다",
+      "concept": "木은 나무를 뜻하고 林은 나무 木 두 개가 결합한 글자로 수풀을 뜻합니다. 글자의 구성을 살피되 모든 한자의 뜻을 모양만으로 단정하지는 않습니다.",
+      "formula": ""
+    },
+    {
+      "id": "language-hanmun-word-order",
+      "courseId": "language-hanmun",
+      "label": "한문 문장의 기본 어순",
+      "description": "기본적인 한문 문장은 주어·서술어·목적어 순서로 이해할 수 있습니다",
+      "concept": "기본적인 한문 문장은 주어·서술어·목적어 순서로 이해할 수 있습니다. 서술어가 무엇이고 그 동작의 대상이 무엇인지 구분하세요.",
+      "formula": ""
+    },
+    {
+      "id": "language-hanmun-idiom",
+      "courseId": "language-hanmun",
+      "label": "성어의 의미와 학습",
+      "description": "溫故知新은 이미 배운 것을 되새겨 새로운 깨달음을 얻는다는 뜻입니다",
+      "concept": "溫故知新은 이미 배운 것을 되새겨 새로운 깨달음을 얻는다는 뜻입니다. 글자 하나의 일상적 뜻만으로 성어 전체를 해석하지 마세요.",
+      "formula": ""
+    },
+    {
+      "id": "language-hanmun-negation",
+      "courseId": "language-hanmun",
+      "label": "부정어 不의 기능",
+      "description": "한문에서 不는 서술어 앞에 놓여 그 내용을 부정할 수 있습니다",
+      "concept": "한문에서 不는 서술어 앞에 놓여 그 내용을 부정할 수 있습니다. 不知는 알지 못하다라는 뜻입니다.",
+      "formula": ""
+    }
+  ],
+  "questions": [
+    {
+      "id": "authored-language-german-verb",
+      "courseId": "language-german",
+      "topicId": "language-german-verb",
+      "domain": "제2외국어/한문",
+      "subject": "독일어Ⅰ",
+      "topic": "인칭에 따른 동사 변화",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "빈칸에 들어갈 동사의 현재형으로 알맞은 것을 고르세요.",
+      "passage": "Ich ___ Deutsch.",
+      "options": [
+        "lerne",
+        "lernst",
+        "lernt",
+        "lernen",
+        "lerntest"
+      ],
+      "answerIndex": 0,
+      "hint": "Ich에 맞는 현재형 어미를 떠올려 보세요.",
+      "solutionSteps": [
+        "주어 Ich가 나를 뜻하는 1인칭 단수임을 확인합니다.",
+        "lernen의 규칙 현재형에서 ich에 맞는 어미는 -e입니다.",
+        "따라서 Ich lerne Deutsch가 되어 나는 독일어를 배운다는 뜻입니다."
+      ],
+      "commonMistakes": [
+        "Ich와 du의 동사 어미를 혼동하지 마세요.",
+        "사전에 나오는 부정형 lernen을 그대로 빈칸에 넣지 마세요."
+      ],
+      "optionAnalysis": [
+        "ich는 1인칭 단수이므로 lernen의 현재형 lerne가 알맞습니다.",
+        "lernst는 2인칭 단수 du에 맞는 형태입니다.",
+        "lernt는 주로 er/sie/es 또는 ihr에 맞는 형태입니다.",
+        "lernen은 부정형이거나 wir/sie/Sie에 맞는 형태여서 ich와 맞지 않습니다.",
+        "lerntest는 du에 맞는 과거형으로 주어와 시제가 모두 다릅니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "완성 문장: 나는 독일어를 배운다.",
+      "vocabulary": [
+        [
+          "ich",
+          "나"
+        ],
+        [
+          "lernen",
+          "배우다"
+        ],
+        [
+          "Deutsch",
+          "독일어"
+        ]
+      ],
+      "languageCode": "de",
+      "sourceRefs": [
+        "https://lernen.goethe.de/deutschonline/A1/PDF/EN/A1_deutschonline_course_vocabulary_1-18.pdf"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다."
+    },
+    {
+      "id": "authored-language-german-request",
+      "courseId": "language-german",
+      "topicId": "language-german-request",
+      "domain": "제2외국어/한문",
+      "subject": "독일어Ⅰ",
+      "topic": "정중한 길 묻기",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "다음 질문에 대한 응답으로 가장 적절한 것을 고르세요.",
+      "passage": "A: Entschuldigung, wo ist der Bahnhof?\nB: ___",
+      "options": [
+        "Guten Appetit!",
+        "Gehen Sie geradeaus.",
+        "Ich heiße Anna.",
+        "Es ist Montag.",
+        "Ich bin sechzehn Jahre alt."
+      ],
+      "answerIndex": 1,
+      "hint": "위치를 묻는 말에는 방향을 안내하는 말이 어울립니다.",
+      "solutionSteps": [
+        "wo ist가 어디에 있느냐는 위치 질문임을 확인합니다.",
+        "Bahnhof는 기차역이므로 방향을 안내하는 대답을 찾습니다.",
+        "Gehen Sie geradeaus는 곧장 가세요라는 뜻으로 질문에 답합니다."
+      ],
+      "commonMistakes": [
+        "질문에 나오는 Bahnhof를 시각을 뜻하는 Uhr와 혼동하지 마세요.",
+        "문법적으로 완성된 문장이어도 대화 목적에 맞아야 합니다."
+      ],
+      "optionAnalysis": [
+        "맛있게 드세요라는 식사 인사로 길 묻기에 대한 답이 아닙니다.",
+        "곧장 가세요라는 방향 안내이므로 역이 어디인지 묻는 질문에 적절합니다.",
+        "제 이름은 안나입니다라는 자기소개여서 방향 안내가 아닙니다.",
+        "월요일입니다라는 요일 정보는 역의 위치를 알려 주지 않습니다.",
+        "저는 열여섯 살입니다라는 나이 정보는 질문과 맞지 않습니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "A: 실례합니다. 기차역은 어디에 있나요?\nB: 곧장 가세요.",
+      "vocabulary": [
+        [
+          "Entschuldigung",
+          "실례합니다"
+        ],
+        [
+          "wo",
+          "어디"
+        ],
+        [
+          "der Bahnhof",
+          "기차역"
+        ],
+        [
+          "geradeaus",
+          "곧장"
+        ]
+      ],
+      "languageCode": "de",
+      "sourceRefs": [
+        "https://lernen.goethe.de/deutschonline/A1/PDF/EN/A1_deutschonline_course_vocabulary_1-18.pdf"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다."
+    },
+    {
+      "id": "authored-language-german-notice",
+      "courseId": "language-german",
+      "topicId": "language-german-notice",
+      "domain": "제2외국어/한문",
+      "subject": "독일어Ⅰ",
+      "topic": "운영 시간 안내 읽기",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "안내문에 따르면 토요일에는 몇 시에 문을 닫나요?",
+      "passage": "Bibliothek\nMontag bis Freitag: 9–18 Uhr\nSamstag: 10–14 Uhr\nSonntag: geschlossen",
+      "options": [
+        "18 Uhr",
+        "20 Uhr",
+        "14 Uhr",
+        "9 Uhr",
+        "10 Uhr"
+      ],
+      "answerIndex": 2,
+      "hint": "Samstag 줄의 뒤쪽 시간을 보세요.",
+      "solutionSteps": [
+        "토요일을 뜻하는 Samstag가 있는 줄을 찾습니다.",
+        "10–14 Uhr에서 앞은 시작 시각, 뒤는 끝나는 시각입니다.",
+        "따라서 토요일 폐관 시각은 14 Uhr입니다."
+      ],
+      "commonMistakes": [
+        "평일 운영 시간과 토요일 운영 시간을 섞지 마세요.",
+        "개관 시간 10시와 폐관 시간 14시를 구분하세요."
+      ],
+      "optionAnalysis": [
+        "18시는 평일 폐관 시간으로 토요일과 다릅니다.",
+        "20시는 안내문에 제시되어 있지 않습니다.",
+        "Samstag의 운영 시간은 10–14 Uhr이므로 14시에 문을 닫습니다.",
+        "9시는 월요일부터 금요일까지의 개관 시간입니다.",
+        "10시는 토요일의 개관 시간이며 폐관 시간이 아닙니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "도서관\n월요일~금요일: 9~18시\n토요일: 10~14시\n일요일: 휴관",
+      "vocabulary": [
+        [
+          "Bibliothek",
+          "도서관"
+        ],
+        [
+          "Samstag",
+          "토요일"
+        ],
+        [
+          "Sonntag",
+          "일요일"
+        ],
+        [
+          "geschlossen",
+          "닫은, 휴관인"
+        ]
+      ],
+      "languageCode": "de",
+      "sourceRefs": [
+        "https://lernen.goethe.de/deutschonline/A1/PDF/EN/A1_deutschonline_course_vocabulary_1-18.pdf"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다."
+    },
+    {
+      "id": "authored-language-german-vocabulary",
+      "courseId": "language-german",
+      "topicId": "language-german-vocabulary",
+      "domain": "제2외국어/한문",
+      "subject": "독일어Ⅰ",
+      "topic": "장소와 활동 어휘",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "다음 설명에 가장 잘 맞는 장소를 고르세요.",
+      "passage": "Hier kann man Bücher lesen und ausleihen.",
+      "options": [
+        "Bahnhof",
+        "Schwimmbad",
+        "Flughafen",
+        "Bibliothek",
+        "Bäckerei"
+      ],
+      "answerIndex": 3,
+      "hint": "Bücher와 ausleihen을 함께 생각해 보세요.",
+      "solutionSteps": [
+        "Bücher는 책들을 뜻합니다.",
+        "lesen은 읽다, ausleihen은 빌리다 또는 빌려주다의 의미로 쓰입니다.",
+        "책을 읽고 빌릴 수 있는 장소인 Bibliothek을 고릅니다."
+      ],
+      "commonMistakes": [
+        "책을 파는 서점과 책을 빌리는 도서관을 구분하세요.",
+        "익숙한 장소 이름을 고르기보다 활동 동사를 먼저 확인하세요."
+      ],
+      "optionAnalysis": [
+        "Bahnhof는 기차역으로 기차를 이용하는 장소입니다.",
+        "Schwimmbad는 수영장으로 수영하는 장소입니다.",
+        "Flughafen은 공항으로 비행기를 이용하는 장소입니다.",
+        "책을 읽고 빌리는 장소는 도서관인 Bibliothek입니다.",
+        "Bäckerei는 빵집으로 빵을 사는 장소입니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "여기에서는 책을 읽고 빌릴 수 있다.",
+      "vocabulary": [
+        [
+          "Bücher",
+          "책들"
+        ],
+        [
+          "lesen",
+          "읽다"
+        ],
+        [
+          "ausleihen",
+          "빌리다, 빌려주다"
+        ],
+        [
+          "Bibliothek",
+          "도서관"
+        ]
+      ],
+      "languageCode": "de",
+      "sourceRefs": [
+        "https://lernen.goethe.de/deutschonline/A1/PDF/EN/A1_deutschonline_course_vocabulary_1-18.pdf"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다."
+    },
+    {
+      "id": "authored-language-french-polite-order",
+      "courseId": "language-french",
+      "topicId": "language-french-polite-order",
+      "domain": "제2외국어/한문",
+      "subject": "프랑스어Ⅰ",
+      "topic": "정중한 주문 표현",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "빵집에서 빵 하나를 정중하게 주문하는 말로 가장 적절한 것을 고르세요.",
+      "passage": "상황: 손님이 빵 하나를 주문하려고 한다.",
+      "options": [
+        "Je suis à la bibliothèque.",
+        "Il est huit heures.",
+        "J’ai quinze ans.",
+        "Nous sommes mardi.",
+        "Je voudrais un pain, s’il vous plaît."
+      ],
+      "answerIndex": 4,
+      "hint": "원하는 것을 정중하게 말하는 Je voudrais를 찾으세요.",
+      "solutionSteps": [
+        "상황에서 필요한 발화는 주문이라는 점을 확인합니다.",
+        "Je voudrais 뒤에는 원하는 대상을 놓을 수 있습니다.",
+        "un pain과 s’il vous plaît가 들어간 보기가 빵 하나를 정중하게 요청합니다."
+      ],
+      "commonMistakes": [
+        "Je suis는 나는 ~이다라는 표현으로 Je voudrais와 용법이 다릅니다.",
+        "빵을 주문하는 내용이 없는 인사나 정보 전달을 고르지 마세요."
+      ],
+      "optionAnalysis": [
+        "저는 도서관에 있습니다라는 위치 설명입니다.",
+        "여덟 시입니다라는 시각 설명으로 주문이 아닙니다.",
+        "저는 열다섯 살입니다라는 나이 소개입니다.",
+        "오늘은 화요일입니다라는 요일 설명입니다.",
+        "빵 하나를 부탁합니다라는 정중한 주문이므로 상황에 적절합니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "정답 문장: 빵 하나를 부탁합니다.",
+      "vocabulary": [
+        [
+          "Je voudrais",
+          "저는 ~을 원합니다, ~을 부탁합니다"
+        ],
+        [
+          "un pain",
+          "빵 하나"
+        ],
+        [
+          "s’il vous plaît",
+          "부탁합니다"
+        ]
+      ],
+      "languageCode": "fr",
+      "sourceRefs": [
+        "https://apprendre.tv5monde.com/fr/aides/grammaire"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다."
+    },
+    {
+      "id": "authored-language-french-plural",
+      "courseId": "language-french",
+      "topicId": "language-french-plural",
+      "domain": "제2외국어/한문",
+      "subject": "프랑스어Ⅰ",
+      "topic": "수량과 명사의 복수형",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "빈칸에 들어갈 말로 알맞은 것을 고르세요.",
+      "passage": "J’ai deux ___.",
+      "options": [
+        "livres",
+        "livre",
+        "livreses",
+        "livrex",
+        "livrent"
+      ],
+      "answerIndex": 0,
+      "hint": "수량 deux에 맞는 명사의 복수형을 고르세요.",
+      "solutionSteps": [
+        "deux가 수량 2를 나타냄을 확인합니다.",
+        "명사 livre는 이 경우 복수형에 -s를 붙입니다.",
+        "J’ai deux livres는 나는 책 두 권을 가지고 있다는 뜻입니다."
+      ],
+      "commonMistakes": [
+        "복수형 -s가 발음되지 않는 경우라도 철자에는 적어야 합니다.",
+        "명사의 복수형과 동사의 어미를 혼동하지 마세요."
+      ],
+      "optionAnalysis": [
+        "deux는 둘을 뜻하므로 명사 livre의 복수형 livres가 알맞습니다.",
+        "livre는 단수형이므로 deux 뒤에서 알맞지 않습니다.",
+        "livreses는 livre의 올바른 복수형이 아닙니다.",
+        "livrex는 livre의 올바른 복수형이 아닙니다.",
+        "livrent는 여기서 필요한 명사의 복수형이 아닙니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "완성 문장: 나는 책 두 권을 가지고 있다.",
+      "vocabulary": [
+        [
+          "J’ai",
+          "나는 가지고 있다"
+        ],
+        [
+          "deux",
+          "둘"
+        ],
+        [
+          "un livre",
+          "책 한 권"
+        ],
+        [
+          "des livres",
+          "책들"
+        ]
+      ],
+      "languageCode": "fr",
+      "sourceRefs": [
+        "https://apprendre.tv5monde.com/fr/aides/grammaire"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다."
+    },
+    {
+      "id": "authored-language-french-reading",
+      "courseId": "language-french",
+      "topicId": "language-french-reading",
+      "domain": "제2외국어/한문",
+      "subject": "프랑스어Ⅰ",
+      "topic": "짧은 일정 읽기",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "다음 글에서 Léa가 도서관에 머무르는 마지막 시각을 고르세요.",
+      "passage": "Léa finit les cours à 16 heures. Ensuite, elle va à la bibliothèque. Elle y reste jusqu’à 17 h 30.",
+      "options": [
+        "19 h 30",
+        "17 h 30",
+        "16 heures",
+        "15 heures",
+        "18 heures"
+      ],
+      "answerIndex": 1,
+      "hint": "jusqu’à는 ~까지라는 뜻입니다.",
+      "solutionSteps": [
+        "첫 문장의 16시는 수업 종료 시각임을 구분합니다.",
+        "elle y reste에서 y는 앞에 나온 도서관을 가리킵니다.",
+        "jusqu’à 17 h 30에 따라 도서관에 머무르는 마지막 시각은 17시 30분입니다."
+      ],
+      "commonMistakes": [
+        "서로 다른 활동에 연결된 시간을 섞지 마세요.",
+        "17 h 30을 17시 3분으로 읽지 마세요."
+      ],
+      "optionAnalysis": [
+        "19시 30분은 글의 시각과 다릅니다.",
+        "jusqu’à 17 h 30가 17시 30분까지 머문다는 뜻입니다.",
+        "16시는 수업이 끝나는 시각으로 도서관 체류 종료 시각이 아닙니다.",
+        "15시는 글에 제시되지 않았습니다.",
+        "18시는 글에 제시되지 않았습니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "레아는 16시에 수업을 마친다. 그다음 도서관에 간다. 그녀는 그곳에 17시 30분까지 머문다.",
+      "vocabulary": [
+        [
+          "finir",
+          "마치다"
+        ],
+        [
+          "ensuite",
+          "그다음"
+        ],
+        [
+          "la bibliothèque",
+          "도서관"
+        ],
+        [
+          "jusqu’à",
+          "~까지"
+        ]
+      ],
+      "languageCode": "fr",
+      "sourceRefs": [
+        "https://apprendre.tv5monde.com/fr/aides/grammaire"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다."
+    },
+    {
+      "id": "authored-language-french-weather",
+      "courseId": "language-french",
+      "topicId": "language-french-weather",
+      "domain": "제2외국어/한문",
+      "subject": "프랑스어Ⅰ",
+      "topic": "날씨와 물건 연결",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "다음 상황에서 비를 피하기 위해 필요한 물건으로 가장 적절한 것을 고르세요.",
+      "passage": "Il pleut. Marie veut sortir sans se mouiller.",
+      "options": [
+        "une clé",
+        "un cahier",
+        "un parapluie",
+        "une fourchette",
+        "un oreiller"
+      ],
+      "answerIndex": 2,
+      "hint": "비를 막는 물건의 이름을 떠올려 보세요.",
+      "solutionSteps": [
+        "Il pleut에서 비가 오는 상황임을 파악합니다.",
+        "sans se mouiller는 몸이 젖지 않고라는 뜻입니다.",
+        "따라서 비를 막는 물건인 un parapluie가 알맞습니다."
+      ],
+      "commonMistakes": [
+        "pleut를 맑은 날씨를 뜻하는 표현으로 오해하지 마세요.",
+        "단어의 성·관사만 보지 말고 사물의 의미도 확인하세요."
+      ],
+      "optionAnalysis": [
+        "clé는 열쇠로 비를 막는 물건이 아닙니다.",
+        "cahier는 공책으로 비에 젖지 않기 위한 적절한 물건이 아닙니다.",
+        "비에 젖지 않기 위해 필요한 물건은 우산인 parapluie입니다.",
+        "fourchette는 포크로 비를 막는 물건이 아닙니다.",
+        "oreiller는 베개로 외출할 때 비를 막는 물건이 아닙니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "비가 온다. 마리는 몸이 젖지 않고 밖에 나가고 싶어 한다.",
+      "vocabulary": [
+        [
+          "Il pleut",
+          "비가 온다"
+        ],
+        [
+          "sortir",
+          "외출하다"
+        ],
+        [
+          "sans",
+          "~없이"
+        ],
+        [
+          "un parapluie",
+          "우산 하나"
+        ]
+      ],
+      "languageCode": "fr",
+      "sourceRefs": [
+        "https://apprendre.tv5monde.com/fr/aides/grammaire"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다."
+    },
+    {
+      "id": "authored-language-spanish-ser",
+      "courseId": "language-spanish",
+      "topicId": "language-spanish-ser",
+      "domain": "제2외국어/한문",
+      "subject": "스페인어Ⅰ",
+      "topic": "주어와 ser 동사",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "빈칸에 들어갈 말로 가장 알맞은 것을 고르세요.",
+      "passage": "Yo ___ estudiante.",
+      "options": [
+        "es",
+        "somos",
+        "son",
+        "soy",
+        "eres"
+      ],
+      "answerIndex": 3,
+      "hint": "yo와 ser의 현재형을 연결해 보세요.",
+      "solutionSteps": [
+        "주어 Yo가 나를 뜻함을 확인합니다.",
+        "ser의 현재형에서 1인칭 단수는 soy입니다.",
+        "Yo soy estudiante는 나는 학생이라는 뜻입니다."
+      ],
+      "commonMistakes": [
+        "tú에 쓰는 eres를 yo와 함께 쓰지 마세요.",
+        "복수형 somos·son을 단수 주어와 연결하지 마세요."
+      ],
+      "optionAnalysis": [
+        "es는 él/ella/usted 등에 맞는 단수 형태입니다.",
+        "somos는 1인칭 복수 nosotros/nosotras에 맞는 형태입니다.",
+        "son은 ellos/ellas/ustedes에 맞는 복수 형태입니다.",
+        "yo는 1인칭 단수이므로 ser의 현재형 soy가 맞습니다.",
+        "eres는 2인칭 단수 tú에 맞는 형태입니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "완성 문장: 나는 학생이다.",
+      "vocabulary": [
+        [
+          "yo",
+          "나"
+        ],
+        [
+          "ser",
+          "~이다"
+        ],
+        [
+          "soy",
+          "나는 ~이다"
+        ],
+        [
+          "estudiante",
+          "학생"
+        ]
+      ],
+      "languageCode": "es",
+      "sourceRefs": [
+        "https://dle.rae.es/ser"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다."
+    },
+    {
+      "id": "authored-language-spanish-direction",
+      "courseId": "language-spanish",
+      "topicId": "language-spanish-direction",
+      "domain": "제2외국어/한문",
+      "subject": "스페인어Ⅰ",
+      "topic": "위치 질문과 응답",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "다음 질문에 대한 응답으로 가장 적절한 것을 고르세요.",
+      "passage": "A: ¿Dónde está la estación?\nB: ___",
+      "options": [
+        "Tengo dieciséis años.",
+        "Me llamo Ana.",
+        "Son las tres.",
+        "Hoy es miércoles.",
+        "Está al lado del banco."
+      ],
+      "answerIndex": 4,
+      "hint": "장소를 묻는 질문에 장소 정보가 있는 답을 찾으세요.",
+      "solutionSteps": [
+        "Dónde가 어디라는 뜻의 장소 의문사임을 확인합니다.",
+        "estación은 역이므로 위치를 안내하는 응답을 찾습니다.",
+        "al lado del banco는 은행 옆에라는 뜻으로 질문에 답합니다."
+      ],
+      "commonMistakes": [
+        "Dónde와 언제라는 뜻의 Cuándo를 혼동하지 마세요.",
+        "문장 자체가 자연스러워도 질문의 정보 범주와 맞아야 합니다."
+      ],
+      "optionAnalysis": [
+        "나는 열여섯 살입니다라는 나이 설명입니다.",
+        "내 이름은 아나입니다라는 자기소개입니다.",
+        "세 시입니다라는 시각 설명입니다.",
+        "오늘은 수요일입니다라는 요일 설명입니다.",
+        "은행 옆에 있습니다라는 위치 설명이므로 역의 위치 질문에 적절합니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "A: 역은 어디에 있나요?\nB: 은행 옆에 있어요.",
+      "vocabulary": [
+        [
+          "dónde",
+          "어디"
+        ],
+        [
+          "la estación",
+          "역"
+        ],
+        [
+          "al lado de",
+          "~옆에"
+        ],
+        [
+          "el banco",
+          "은행"
+        ]
+      ],
+      "languageCode": "es",
+      "sourceRefs": [
+        "https://dle.rae.es/ser"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다."
+    },
+    {
+      "id": "authored-language-spanish-schedule",
+      "courseId": "language-spanish",
+      "topicId": "language-spanish-schedule",
+      "domain": "제2외국어/한문",
+      "subject": "스페인어Ⅰ",
+      "topic": "요일과 약속 읽기",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "다음 글에 따르면 회의가 있는 요일은 언제인가요?",
+      "passage": "El martes hay una reunión a las cinco de la tarde. El jueves, Ana estudia en casa.",
+      "options": [
+        "el martes",
+        "el lunes",
+        "el miércoles",
+        "el jueves",
+        "el viernes"
+      ],
+      "answerIndex": 0,
+      "hint": "reunión과 같은 문장에 있는 요일을 찾으세요.",
+      "solutionSteps": [
+        "회의를 뜻하는 reunión이 있는 문장을 찾습니다.",
+        "El martes가 해당 문장의 요일입니다.",
+        "martes는 화요일이므로 화요일을 고릅니다."
+      ],
+      "commonMistakes": [
+        "화요일 martes와 수요일 miércoles를 혼동하지 마세요.",
+        "목요일은 공부하는 날로 회의 날과 다릅니다."
+      ],
+      "optionAnalysis": [
+        "첫 문장에서 회의가 화요일에 있다고 제시합니다.",
+        "lunes는 월요일이며 글에 제시된 회의 요일이 아닙니다.",
+        "miércoles는 수요일로 martes와 다릅니다.",
+        "jueves는 아나가 집에서 공부하는 목요일입니다.",
+        "viernes는 금요일이며 글에 제시되지 않았습니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "화요일 오후 다섯 시에 회의가 있다. 목요일에 아나는 집에서 공부한다.",
+      "vocabulary": [
+        [
+          "el martes",
+          "화요일"
+        ],
+        [
+          "una reunión",
+          "회의 하나"
+        ],
+        [
+          "las cinco de la tarde",
+          "오후 다섯 시"
+        ],
+        [
+          "el jueves",
+          "목요일"
+        ]
+      ],
+      "languageCode": "es",
+      "sourceRefs": [
+        "https://dle.rae.es/ser"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다."
+    },
+    {
+      "id": "authored-language-spanish-meal",
+      "courseId": "language-spanish",
+      "topicId": "language-spanish-meal",
+      "domain": "제2외국어/한문",
+      "subject": "스페인어Ⅰ",
+      "topic": "식사 어휘 구분",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "밑의 문장에서 desayuno의 뜻으로 가장 적절한 것을 고르세요.",
+      "passage": "Antes de ir a la escuela, tomo el desayuno a las siete.",
+      "options": [
+        "숙제",
+        "아침 식사",
+        "저녁 식사",
+        "도서관",
+        "기차표"
+      ],
+      "answerIndex": 1,
+      "hint": "아침 등교 전에 먹는 식사를 떠올려 보세요.",
+      "solutionSteps": [
+        "등교 전에 먹는다는 상황을 확인합니다.",
+        "desayuno는 아침 식사를 가리키는 명사입니다.",
+        "따라서 일곱 시에 아침 식사를 한다는 문장입니다."
+      ],
+      "commonMistakes": [
+        "아침·점심·저녁의 식사 명칭을 구분하세요.",
+        "학교 관련 문장이라는 이유만으로 숙제를 고르지 마세요."
+      ],
+      "optionAnalysis": [
+        "숙제는 deberes 또는 tarea로 식사를 뜻하지 않습니다.",
+        "desayuno는 아침에 하는 식사를 뜻하며 등교 전 7시라는 문맥과도 맞습니다.",
+        "저녁 식사는 보통 cena라고 하며 desayuno와 뜻이 다릅니다.",
+        "도서관은 biblioteca로 식사 어휘가 아닙니다.",
+        "기차표는 billete de tren 등으로 표현하며 desayuno와 다릅니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "나는 학교에 가기 전에 일곱 시에 아침 식사를 한다.",
+      "vocabulary": [
+        [
+          "antes de",
+          "~전에"
+        ],
+        [
+          "ir a la escuela",
+          "학교에 가다"
+        ],
+        [
+          "desayuno",
+          "아침 식사"
+        ],
+        [
+          "a las siete",
+          "일곱 시에"
+        ]
+      ],
+      "languageCode": "es",
+      "sourceRefs": [
+        "https://dle.rae.es/desayuno"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다."
+    },
+    {
+      "id": "authored-language-chinese-classifier",
+      "courseId": "language-chinese",
+      "topicId": "language-chinese-classifier",
+      "domain": "제2외국어/한문",
+      "subject": "중국어Ⅰ",
+      "topic": "수량사와 명사",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "책 두 권이라는 뜻이 되도록 빈칸에 들어갈 말을 고르세요.",
+      "passage": "我有两___书。",
+      "options": [
+        "件",
+        "只",
+        "本",
+        "张",
+        "杯"
+      ],
+      "answerIndex": 2,
+      "hint": "书와 자주 함께 쓰는 양사를 떠올려 보세요.",
+      "solutionSteps": [
+        "문장에서 세려는 명사가 书, 곧 책임을 확인합니다.",
+        "책의 권수를 셀 때는 양사 本을 사용합니다.",
+        "따라서 我有两本书는 나는 책 두 권을 가지고 있다는 뜻입니다."
+      ],
+      "commonMistakes": [
+        "수사 两와 명사 书 사이의 양사를 생략하지 마세요.",
+        "모든 명사에 같은 양사를 사용할 수 있는 것은 아닙니다."
+      ],
+      "optionAnalysis": [
+        "件은 옷이나 일 등의 대상을 세는 데 쓰이며 이 문장의 책 권수와 맞지 않습니다.",
+        "只는 일부 동물이나 짝을 이룬 물건의 한쪽 등을 세는 말로 이 문장의 책과 맞지 않습니다.",
+        "本은 책이나 공책 등의 권수를 세는 양사입니다.",
+        "张은 종이·표 등 납작한 대상을 세는 양사로 책의 권수를 세는 데 맞지 않습니다.",
+        "杯는 컵에 담긴 음료의 양을 세는 말입니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "완성 문장: 나는 책 두 권을 가지고 있다.",
+      "vocabulary": [
+        [
+          "我",
+          "나"
+        ],
+        [
+          "有",
+          "가지고 있다"
+        ],
+        [
+          "两",
+          "둘"
+        ],
+        [
+          "本",
+          "책·공책의 권수를 세는 양사"
+        ],
+        [
+          "书",
+          "책"
+        ]
+      ],
+      "languageCode": "zh",
+      "sourceRefs": [
+        "https://dict.revised.moe.edu.tw/dictView.jsp?ID=269&la=0&powerMode=0"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다."
+    },
+    {
+      "id": "authored-language-chinese-time",
+      "courseId": "language-chinese",
+      "topicId": "language-chinese-time",
+      "domain": "제2외국어/한문",
+      "subject": "중국어Ⅰ",
+      "topic": "시각을 묻고 답하기",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "대화에 따르면 B가 일어나는 시각을 고르세요.",
+      "passage": "A：你几点起床？\nB：我早上六点半起床。",
+      "options": [
+        "오전 6시",
+        "오전 7시",
+        "오전 7시 30분",
+        "오전 6시 30분",
+        "오전 5시 30분"
+      ],
+      "answerIndex": 3,
+      "hint": "半은 반 시간인 30분입니다.",
+      "solutionSteps": [
+        "几点起床은 몇 시에 일어나는지를 묻습니다.",
+        "답의 六点은 6시, 半은 30분입니다.",
+        "따라서 B가 일어나는 시각은 6시 30분입니다."
+      ],
+      "commonMistakes": [
+        "半을 15분으로 해석하지 마세요.",
+        "六와 七의 숫자를 구분하세요."
+      ],
+      "optionAnalysis": [
+        "半이 있으므로 정각 6시가 아닙니다.",
+        "일곱 시는 七点으로 제시된 六点半과 다릅니다.",
+        "七点半이어야 하며 제시된 대답은 六点半입니다.",
+        "六点半은 여섯 시 삼십 분이며 起床은 잠자리에서 일어나다라는 뜻입니다.",
+        "다섯 시는 五点으로 六点과 다릅니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "A: 너는 몇 시에 일어나니?\nB: 나는 아침 여섯 시 반에 일어나.",
+      "vocabulary": [
+        [
+          "几点",
+          "몇 시"
+        ],
+        [
+          "起床",
+          "잠자리에서 일어나다"
+        ],
+        [
+          "六点",
+          "여섯 시"
+        ],
+        [
+          "半",
+          "반, 30분"
+        ]
+      ],
+      "languageCode": "zh",
+      "sourceRefs": [
+        "https://dict.revised.moe.edu.tw/dictView.jsp?ID=269&la=0&powerMode=0"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다."
+    },
+    {
+      "id": "authored-language-chinese-reading",
+      "courseId": "language-chinese",
+      "topicId": "language-chinese-reading",
+      "domain": "제2외국어/한문",
+      "subject": "중국어Ⅰ",
+      "topic": "이동 일정 읽기",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "다음 글에 따르면 小王이 집으로 돌아가는 시각을 고르세요.",
+      "passage": "小王星期三下午三点去图书馆，四点回家。",
+      "options": [
+        "오전 3시",
+        "오후 2시",
+        "오후 3시",
+        "오후 5시",
+        "오후 4시"
+      ],
+      "answerIndex": 4,
+      "hint": "回家 바로 앞의 시각을 찾으세요.",
+      "solutionSteps": [
+        "回家가 집으로 돌아가다라는 뜻임을 확인합니다.",
+        "回家 앞의 四点이 귀가 시각입니다.",
+        "앞에서 下午가 제시되었으므로 오후 네 시로 해석합니다."
+      ],
+      "commonMistakes": [
+        "도서관에 가는 시각과 집으로 돌아가는 시각을 바꾸어 읽지 마세요.",
+        "요일 星期三과 시각 三点은 서로 다른 정보입니다."
+      ],
+      "optionAnalysis": [
+        "下午는 오후를 뜻하므로 오전이 아니며, 三点은 도서관에 가는 시각입니다.",
+        "오후 두 시라는 정보는 지문에 없습니다.",
+        "오후 세 시는 도서관에 가는 시각입니다.",
+        "오후 다섯 시라는 정보는 지문에 없습니다.",
+        "四点回家에서 오후 네 시에 집으로 돌아간다고 했습니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "샤오왕은 수요일 오후 세 시에 도서관에 가고, 네 시에 집으로 돌아온다.",
+      "vocabulary": [
+        [
+          "星期三",
+          "수요일"
+        ],
+        [
+          "下午",
+          "오후"
+        ],
+        [
+          "图书馆",
+          "도서관"
+        ],
+        [
+          "回家",
+          "집으로 돌아가다"
+        ]
+      ],
+      "languageCode": "zh",
+      "sourceRefs": [
+        "https://dict.revised.moe.edu.tw/dictView.jsp?ID=269&la=0&powerMode=0"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다."
+    },
+    {
+      "id": "authored-language-chinese-antonym",
+      "courseId": "language-chinese",
+      "topicId": "language-chinese-antonym",
+      "domain": "제2외국어/한문",
+      "subject": "중국어Ⅰ",
+      "topic": "기본 형용사와 반의어",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "형용사 大의 반대 뜻을 가진 말을 고르세요.",
+      "passage": "大",
+      "options": [
+        "小",
+        "多",
+        "好",
+        "热",
+        "快"
+      ],
+      "answerIndex": 0,
+      "hint": "크다와 작다의 의미 관계를 생각하세요.",
+      "solutionSteps": [
+        "大의 기본 의미가 크다임을 확인합니다.",
+        "반대 의미는 작다입니다.",
+        "작다를 뜻하는 小가 정답입니다."
+      ],
+      "commonMistakes": [
+        "크기와 수량이 많고 적음을 혼동하지 마세요.",
+        "발음이 익숙한 단어보다 의미의 짝을 확인하세요."
+      ],
+      "optionAnalysis": [
+        "小는 작다라는 뜻으로 크다를 뜻하는 大의 반의어입니다.",
+        "多는 많다라는 수량의 의미로 大의 직접적인 반의어가 아닙니다.",
+        "好는 좋다라는 뜻입니다.",
+        "热는 덥다 또는 뜨겁다라는 뜻입니다.",
+        "快는 빠르다라는 뜻입니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "大: 크다 / 정답 小: 작다",
+      "vocabulary": [
+        [
+          "大",
+          "크다"
+        ],
+        [
+          "小",
+          "작다"
+        ],
+        [
+          "多",
+          "많다"
+        ],
+        [
+          "热",
+          "덥다, 뜨겁다"
+        ]
+      ],
+      "languageCode": "zh",
+      "sourceRefs": [
+        "https://dict.revised.moe.edu.tw/dictView.jsp?ID=269&la=0&powerMode=0"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다."
+    },
+    {
+      "id": "authored-language-japanese-particle",
+      "courseId": "language-japanese",
+      "topicId": "language-japanese-particle",
+      "domain": "제2외국어/한문",
+      "subject": "일본어Ⅰ",
+      "topic": "정확한 시각과 조사 に",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "오전 일곱 시에 일어난다는 뜻이 되도록 빈칸에 들어갈 조사를 고르세요.",
+      "passage": "毎朝七時___起きます。",
+      "options": [
+        "と",
+        "に",
+        "を",
+        "で",
+        "が"
+      ],
+      "answerIndex": 1,
+      "hint": "정확한 시각 뒤에 붙는 조사를 떠올려 보세요.",
+      "solutionSteps": [
+        "七時가 정확한 시각을 나타냄을 확인합니다.",
+        "그 시각에 동작이 일어남을 나타내려면 に를 사용합니다.",
+        "毎朝七時に起きます는 매일 아침 일곱 시에 일어난다는 뜻입니다."
+      ],
+      "commonMistakes": [
+        "시간의 に와 장소의 で를 혼동하지 마세요.",
+        "毎朝 자체에 조사를 붙이는 경우와 七時에 붙이는 경우를 구분하세요."
+      ],
+      "optionAnalysis": [
+        "と는 함께하는 상대나 인용 등의 기능을 하며 이 문장의 시각 표시와 맞지 않습니다.",
+        "정확한 시각 七時 뒤에서 때를 나타내는 조사 に가 알맞습니다.",
+        "を는 주로 동작의 목적어 등을 나타내며 이 문장에서 시각을 나타내지 않습니다.",
+        "で는 동작의 장소·수단 등에 쓰이며 제시된 정확한 시각과 맞지 않습니다.",
+        "が는 주어 등을 표시하는 조사로 일어나는 시각을 나타내는 자리에 맞지 않습니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "완성 문장: 매일 아침 일곱 시에 일어난다.",
+      "vocabulary": [
+        [
+          "毎朝",
+          "매일 아침"
+        ],
+        [
+          "七時",
+          "일곱 시"
+        ],
+        [
+          "に",
+          "~에"
+        ],
+        [
+          "起きます",
+          "일어납니다"
+        ]
+      ],
+      "languageCode": "ja",
+      "sourceRefs": [
+        "https://www.irodori.jpf.go.jp/assets/data/Grammar_all.pdf"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다."
+    },
+    {
+      "id": "authored-language-japanese-direction",
+      "courseId": "language-japanese",
+      "topicId": "language-japanese-direction",
+      "domain": "제2외국어/한문",
+      "subject": "일본어Ⅰ",
+      "topic": "길 묻기에 응답하기",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "다음 질문에 대한 응답으로 가장 적절한 것을 고르세요.",
+      "passage": "A：すみません。駅はどこですか。\nB：___",
+      "options": [
+        "りんごが好きです。",
+        "今、八時です。",
+        "この道をまっすぐ行ってください。",
+        "私は高校生です。",
+        "今日は水曜日です。"
+      ],
+      "answerIndex": 2,
+      "hint": "まっすぐ는 똑바로라는 뜻입니다.",
+      "solutionSteps": [
+        "駅はどこですか가 역이 어디인지 묻는 질문임을 파악합니다.",
+        "대답에는 길이나 위치 정보가 필요합니다.",
+        "この道をまっすぐ行ってください가 똑바로 가라는 방향 안내입니다."
+      ],
+      "commonMistakes": [
+        "どこ를 언제라는 뜻으로 해석하지 마세요.",
+        "공손한 말투만으로 정답을 고르지 말고 내용의 연결을 확인하세요."
+      ],
+      "optionAnalysis": [
+        "사과를 좋아합니다라는 기호 표현입니다.",
+        "지금 여덟 시입니다라는 시각 정보입니다.",
+        "이 길을 똑바로 가세요라는 길 안내로 역의 위치를 묻는 말에 적절합니다.",
+        "저는 고등학생입니다라는 자기소개로 위치를 안내하지 않습니다.",
+        "오늘은 수요일입니다라는 요일 정보입니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "A: 실례합니다. 역은 어디인가요?\nB: 이 길을 똑바로 가세요.",
+      "vocabulary": [
+        [
+          "すみません",
+          "실례합니다"
+        ],
+        [
+          "駅",
+          "역"
+        ],
+        [
+          "この道",
+          "이 길"
+        ],
+        [
+          "まっすぐ",
+          "똑바로"
+        ]
+      ],
+      "languageCode": "ja",
+      "sourceRefs": [
+        "https://www.irodori.jpf.go.jp/assets/data/Grammar_all.pdf"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다."
+    },
+    {
+      "id": "authored-language-japanese-notice",
+      "courseId": "language-japanese",
+      "topicId": "language-japanese-notice",
+      "domain": "제2외국어/한문",
+      "subject": "일본어Ⅰ",
+      "topic": "휴관일 안내 읽기",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "안내문에 따르면 도서관이 쉬는 요일은 언제인가요?",
+      "passage": "図書館\n開館時間：午前九時〜午後六時\n休み：木曜日",
+      "options": [
+        "화요일",
+        "수요일",
+        "금요일",
+        "목요일",
+        "월요일"
+      ],
+      "answerIndex": 3,
+      "hint": "休み 옆의 요일 한자를 확인하세요.",
+      "solutionSteps": [
+        "쉬는 날을 뜻하는 休み가 있는 줄을 찾습니다.",
+        "해당 줄의 木曜日를 확인합니다.",
+        "木曜日는 목요일이므로 정답은 목요일입니다."
+      ],
+      "commonMistakes": [
+        "木와 水의 글자 모양을 혼동하지 마세요.",
+        "운영 시간의 午前·午後를 휴관 요일과 혼동하지 마세요."
+      ],
+      "optionAnalysis": [
+        "화요일은 火曜日로 제시된 휴관일이 아닙니다.",
+        "수요일은 水曜日로 木曜日와 다릅니다.",
+        "금요일은 金曜日이며 안내문의 휴관일이 아닙니다.",
+        "木曜日는 목요일이며 休み 옆에 제시되어 있습니다.",
+        "월요일은 月曜日로 木曜日와 다릅니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "도서관\n개관 시간: 오전 아홉 시~오후 여섯 시\n휴관일: 목요일",
+      "vocabulary": [
+        [
+          "図書館",
+          "도서관"
+        ],
+        [
+          "開館時間",
+          "개관 시간"
+        ],
+        [
+          "休み",
+          "쉬는 날, 휴관"
+        ],
+        [
+          "木曜日",
+          "목요일"
+        ]
+      ],
+      "languageCode": "ja",
+      "sourceRefs": [
+        "https://www.irodori.jpf.go.jp/assets/data/Grammar_all.pdf"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다."
+    },
+    {
+      "id": "authored-language-japanese-permission",
+      "courseId": "language-japanese",
+      "topicId": "language-japanese-permission",
+      "domain": "제2외국어/한문",
+      "subject": "일본어Ⅰ",
+      "topic": "허락을 구하는 표현",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "다음 문장의 뜻으로 가장 적절한 것을 고르세요.",
+      "passage": "この本を借りてもいいですか。",
+      "options": [
+        "이 책을 빌리지 마세요.",
+        "이 책을 어제 샀어요.",
+        "이 책은 어디에 있나요?",
+        "이 책을 읽을 수 없어요.",
+        "이 책을 빌려도 되나요?"
+      ],
+      "answerIndex": 4,
+      "hint": "てもいいですか는 ~해도 괜찮은가요라는 뜻입니다.",
+      "solutionSteps": [
+        "借りる가 빌리다라는 동사임을 확인합니다.",
+        "てもいいですか가 ~해도 되나요라는 허락 표현임을 파악합니다.",
+        "この本을 목적어로 연결하면 이 책을 빌려도 되나요가 됩니다."
+      ],
+      "commonMistakes": [
+        "借りる와 사다를 뜻하는 買う를 혼동하지 마세요.",
+        "허락을 묻는 표현을 상대에게 금지하는 표현으로 읽지 마세요."
+      ],
+      "optionAnalysis": [
+        "금지 표현은 借りないでください 등으로 나타내며 제시 문장과 다릅니다.",
+        "어제 샀다는 과거의 구매 내용은 문장에 없습니다.",
+        "장소를 묻는 どこ가 없으며 이 문장은 허락을 묻습니다.",
+        "읽을 수 없다는 가능 부정의 내용이 아닙니다.",
+        "借りてもいいですか는 빌려도 괜찮은지를 묻는 허락 요청입니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "이 책을 빌려도 되나요?",
+      "vocabulary": [
+        [
+          "この本",
+          "이 책"
+        ],
+        [
+          "借りる",
+          "빌리다"
+        ],
+        [
+          "てもいいですか",
+          "~해도 되나요"
+        ]
+      ],
+      "languageCode": "ja",
+      "sourceRefs": [
+        "https://www.irodori.jpf.go.jp/assets/data/Grammar_all.pdf"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다."
+    },
+    {
+      "id": "authored-language-russian-verb",
+      "courseId": "language-russian",
+      "topicId": "language-russian-verb",
+      "domain": "제2외국어/한문",
+      "subject": "러시아어Ⅰ",
+      "topic": "현재형의 인칭 일치",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "빈칸에 들어갈 현재형으로 알맞은 것을 고르세요.",
+      "passage": "Я ___ русский язык.",
+      "options": [
+        "изучаю",
+        "изучаешь",
+        "изучает",
+        "изучаем",
+        "изучают"
+      ],
+      "answerIndex": 0,
+      "hint": "Я에 맞는 현재형 어미를 찾으세요.",
+      "solutionSteps": [
+        "주어 Я가 나를 뜻하는 1인칭 단수임을 확인합니다.",
+        "изучать의 현재형에서 я에 맞는 형태는 изучаю입니다.",
+        "Я изучаю русский язык는 나는 러시아어를 공부한다는 뜻입니다."
+      ],
+      "commonMistakes": [
+        "주어가 단수인지 복수인지 먼저 구분하세요.",
+        "2인칭 어미 -ешь를 1인칭과 연결하지 마세요."
+      ],
+      "optionAnalysis": [
+        "я는 1인칭 단수이므로 изучаю가 맞습니다.",
+        "изучаешь는 2인칭 단수 ты에 대응합니다.",
+        "изучает는 3인칭 단수 он/она/оно에 대응합니다.",
+        "изучаем은 1인칭 복수 мы에 대응합니다.",
+        "изучают는 3인칭 복수 они에 대응합니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "완성 문장: 나는 러시아어를 공부한다.",
+      "vocabulary": [
+        [
+          "я",
+          "나"
+        ],
+        [
+          "изучать",
+          "공부하다"
+        ],
+        [
+          "русский язык",
+          "러시아어"
+        ]
+      ],
+      "languageCode": "ru",
+      "sourceRefs": [
+        "https://catalogue.irlc.msu.ru/media-texts-catalogue/all/texts/a2/podruga-i-grammatika"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다."
+    },
+    {
+      "id": "authored-language-russian-location",
+      "courseId": "language-russian",
+      "topicId": "language-russian-location",
+      "domain": "제2외국어/한문",
+      "subject": "러시아어Ⅰ",
+      "topic": "장소 질문과 응답",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "다음 질문에 대한 응답으로 가장 적절한 것을 고르세요.",
+      "passage": "A: Где библиотека?\nB: ___",
+      "options": [
+        "Я люблю музыку.",
+        "Рядом со школой.",
+        "Меня зовут Анна.",
+        "Мне шестнадцать лет.",
+        "Сегодня вторник."
+      ],
+      "answerIndex": 1,
+      "hint": "Рядом은 가까이, 옆에라는 뜻입니다.",
+      "solutionSteps": [
+        "Где가 위치를 묻는 의문사임을 확인합니다.",
+        "библиотека는 도서관입니다.",
+        "Рядом со школой는 학교 옆에라는 뜻이므로 질문에 답합니다."
+      ],
+      "commonMistakes": [
+        "위치를 묻는 Где와 방향을 묻는 Куда를 구분해 익히세요.",
+        "대답의 문법적 완성도뿐 아니라 정보의 종류가 맞는지도 확인하세요."
+      ],
+      "optionAnalysis": [
+        "저는 음악을 좋아합니다라는 기호 표현입니다.",
+        "학교 옆에라는 위치 설명이므로 도서관의 위치 질문에 맞습니다.",
+        "제 이름은 안나입니다라는 자기소개입니다.",
+        "저는 열여섯 살입니다라는 나이 정보입니다.",
+        "오늘은 화요일입니다라는 요일 정보입니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "A: 도서관은 어디에 있나요?\nB: 학교 옆에 있어요.",
+      "vocabulary": [
+        [
+          "где",
+          "어디에"
+        ],
+        [
+          "библиотека",
+          "도서관"
+        ],
+        [
+          "рядом со",
+          "~옆에"
+        ],
+        [
+          "школа",
+          "학교"
+        ]
+      ],
+      "languageCode": "ru",
+      "sourceRefs": [
+        "https://catalogue.irlc.msu.ru/media-texts-catalogue/all/texts/a2/podruga-i-grammatika"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다."
+    },
+    {
+      "id": "authored-language-russian-reading",
+      "courseId": "language-russian",
+      "topicId": "language-russian-reading",
+      "domain": "제2외국어/한문",
+      "subject": "러시아어Ⅰ",
+      "topic": "시간 안내문 읽기",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "안내문에 따르면 토요일의 폐관 시각을 고르세요.",
+      "passage": "Библиотека работает с понедельника по пятницу с 9 до 18 часов. В субботу — с 10 до 14 часов. В воскресенье закрыта.",
+      "options": [
+        "18시",
+        "20시",
+        "14시",
+        "9시",
+        "10시"
+      ],
+      "answerIndex": 2,
+      "hint": "В субботу와 до 뒤의 시각을 보세요.",
+      "solutionSteps": [
+        "토요일을 나타내는 В субботу가 있는 부분을 찾습니다.",
+        "с 10 до 14 часов는 10시부터 14시까지라는 뜻입니다.",
+        "따라서 토요일 폐관 시각은 14시입니다."
+      ],
+      "commonMistakes": [
+        "평일과 토요일의 운영 시간을 섞지 마세요.",
+        "с 뒤의 시작 시각과 до 뒤의 종료 시각을 구분하세요."
+      ],
+      "optionAnalysis": [
+        "18시는 평일의 폐관 시각입니다.",
+        "20시라는 정보는 안내문에 없습니다.",
+        "토요일인 В субботу 뒤에 до 14 часов가 있어 14시에 문을 닫습니다.",
+        "9시는 평일의 개관 시각입니다.",
+        "10시는 토요일의 개관 시각입니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "도서관은 월요일부터 금요일까지 9시부터 18시까지 운영한다. 토요일에는 10시부터 14시까지 운영한다. 일요일에는 문을 닫는다.",
+      "vocabulary": [
+        [
+          "работать",
+          "일하다, 운영하다"
+        ],
+        [
+          "в субботу",
+          "토요일에"
+        ],
+        [
+          "до",
+          "~까지"
+        ],
+        [
+          "закрыта",
+          "닫혀 있는"
+        ]
+      ],
+      "languageCode": "ru",
+      "sourceRefs": [
+        "https://catalogue.irlc.msu.ru/media-texts-catalogue/all/texts/a2/podruga-i-grammatika"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다."
+    },
+    {
+      "id": "authored-language-russian-vocabulary",
+      "courseId": "language-russian",
+      "topicId": "language-russian-vocabulary",
+      "domain": "제2외국어/한문",
+      "subject": "러시아어Ⅰ",
+      "topic": "학습 활동 어휘",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "다음 문장에서 грамматику의 뜻으로 가장 적절한 것을 고르세요.",
+      "passage": "После урока я повторяю грамматику.",
+      "options": [
+        "가격",
+        "요일",
+        "음식",
+        "문법",
+        "기차역"
+      ],
+      "answerIndex": 3,
+      "hint": "복습하는 대상이 무엇인지 확인하세요.",
+      "solutionSteps": [
+        "문장에서 повторяю는 복습한다는 뜻입니다.",
+        "그 목적어 грамматику는 문법을 뜻하는 грамматика의 형태입니다.",
+        "전체 문장은 수업 후 나는 문법을 복습한다로 풀이합니다."
+      ],
+      "commonMistakes": [
+        "사전의 기본형과 문장 안에서 쓰인 격변화 형태가 다를 수 있음을 확인하세요.",
+        "학습을 뜻하는 동사와 그 대상을 함께 연결하세요."
+      ],
+      "optionAnalysis": [
+        "가격은 цена로 제시된 어휘와 다릅니다.",
+        "요일은 день недели로 나타내며 грамматику의 뜻이 아닙니다.",
+        "음식은 еда 등으로 나타내며 문장에 제시된 학습 대상이 아닙니다.",
+        "грамматика는 문법이며 이 문장에서는 동사의 목적어 형태인 грамматику로 쓰였습니다.",
+        "기차역은 вокзал로 제시된 어휘와 다릅니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "수업 후 나는 문법을 복습한다.",
+      "vocabulary": [
+        [
+          "после урока",
+          "수업 후에"
+        ],
+        [
+          "повторять",
+          "복습하다, 반복하다"
+        ],
+        [
+          "грамматика",
+          "문법"
+        ]
+      ],
+      "languageCode": "ru",
+      "sourceRefs": [
+        "https://catalogue.irlc.msu.ru/media-texts-catalogue/all/texts/a2/podruga-i-grammatika"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다."
+    },
+    {
+      "id": "authored-language-arabic-demonstrative",
+      "courseId": "language-arabic",
+      "topicId": "language-arabic-demonstrative",
+      "domain": "제2외국어/한문",
+      "subject": "아랍어Ⅰ",
+      "topic": "지시사와 명사의 성",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "이것은 책이다라는 뜻이 되도록 빈칸에 들어갈 지시사를 고르세요.",
+      "passage": "___ كتاب.",
+      "options": [
+        "هذه",
+        "هؤلاء",
+        "هي",
+        "نحن",
+        "هذا"
+      ],
+      "answerIndex": 4,
+      "hint": "كتاب에 맞는 남성 단수 지시사를 고르세요.",
+      "solutionSteps": [
+        "كتاب이 책이라는 뜻의 남성 단수 명사임을 확인합니다.",
+        "가까운 남성 단수 대상을 가리키는 지시사는 هذا입니다.",
+        "هذا كتاب은 이것은 책이다라는 뜻의 명사문입니다."
+      ],
+      "commonMistakes": [
+        "문법적 성과 실제 사물의 생물학적 성별을 같은 것으로 생각하지 마세요.",
+        "지시사와 인칭대명사를 구분하세요."
+      ],
+      "optionAnalysis": [
+        "هذه는 가까운 여성 단수 대상을 가리키는 형태입니다.",
+        "هؤلاء는 가까운 복수 대상을 가리키는 형태로 단수 كتاب과 맞지 않습니다.",
+        "هي는 그녀 또는 그것을 뜻하는 여성 단수 인칭대명사로 요구한 지시사가 아닙니다.",
+        "نحن은 우리를 뜻하는 1인칭 복수 인칭대명사입니다.",
+        "هذا는 가까운 남성 단수 대상을 가리키므로 남성 단수 명사 كتاب과 맞습니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "완성 문장: 이것은 책이다.",
+      "vocabulary": [
+        [
+          "هذا",
+          "이것은, 이(남성 단수)"
+        ],
+        [
+          "هذه",
+          "이것은, 이(여성 단수)"
+        ],
+        [
+          "كتاب",
+          "책"
+        ]
+      ],
+      "languageCode": "ar",
+      "sourceRefs": [
+        "https://learning.aljazeera.net/en/lessons/level/beginner"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다.",
+      "textDirection": "rtl"
+    },
+    {
+      "id": "authored-language-arabic-location",
+      "courseId": "language-arabic",
+      "topicId": "language-arabic-location",
+      "domain": "제2외국어/한문",
+      "subject": "아랍어Ⅰ",
+      "topic": "장소를 묻는 أين",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "다음 질문에 대한 응답으로 가장 적절한 것을 고르세요.",
+      "passage": "أ: أين المكتبة؟\nب: ___",
+      "options": [
+        "المكتبة بجانب المدرسة.",
+        "اسمي سامر.",
+        "أنا طالب.",
+        "اليوم الأحد.",
+        "أحب القراءة."
+      ],
+      "answerIndex": 0,
+      "hint": "بجانب은 ~옆에라는 뜻입니다.",
+      "solutionSteps": [
+        "أين가 장소를 묻는 의문사임을 확인합니다.",
+        "المكتبة가 도서관이라는 뜻입니다.",
+        "بجانب المدرسة는 학교 옆에라는 위치 정보이므로 정답입니다."
+      ],
+      "commonMistakes": [
+        "장소 의문사 أين와 시각을 묻는 의문사를 혼동하지 마세요.",
+        "질문에 나온 명사가 대답에 반복되어도 위치 정보가 있는지 확인하세요."
+      ],
+      "optionAnalysis": [
+        "도서관은 학교 옆에 있다는 위치 설명이므로 질문에 적절합니다.",
+        "내 이름은 사메르입니다라는 자기소개입니다.",
+        "나는 학생입니다라는 신분 소개입니다.",
+        "오늘은 일요일입니다라는 요일 정보입니다.",
+        "나는 독서를 좋아합니다라는 기호 표현입니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "A: 도서관은 어디에 있나요?\nB: 도서관은 학교 옆에 있어요.",
+      "vocabulary": [
+        [
+          "أين",
+          "어디에"
+        ],
+        [
+          "المكتبة",
+          "도서관"
+        ],
+        [
+          "بجانب",
+          "~옆에"
+        ],
+        [
+          "المدرسة",
+          "학교"
+        ]
+      ],
+      "languageCode": "ar",
+      "sourceRefs": [
+        "https://learning.aljazeera.net/en/lessons/level/beginner"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다.",
+      "textDirection": "rtl"
+    },
+    {
+      "id": "authored-language-arabic-reading",
+      "courseId": "language-arabic",
+      "topicId": "language-arabic-reading",
+      "domain": "제2외국어/한문",
+      "subject": "아랍어Ⅰ",
+      "topic": "요일과 활동 읽기",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "다음 글에 따르면 사메르가 도서관에 가는 요일은 언제인가요?",
+      "passage": "يذهب سامر إلى المدرسة يوم الأحد. ويذهب إلى المكتبة يوم الاثنين.",
+      "options": [
+        "목요일",
+        "월요일",
+        "일요일",
+        "화요일",
+        "수요일"
+      ],
+      "answerIndex": 1,
+      "hint": "المكتبة와 같은 문장에 있는 요일을 찾으세요.",
+      "solutionSteps": [
+        "도서관을 뜻하는 المكتبة가 있는 문장을 찾습니다.",
+        "그 문장에서 요일은 يوم الاثنين입니다.",
+        "الاثنين은 월요일이므로 월요일이 정답입니다."
+      ],
+      "commonMistakes": [
+        "학교 المدرسة와 도서관 المكتبة를 구분하세요.",
+        "첫 문장과 둘째 문장의 요일을 바꾸어 연결하지 마세요."
+      ],
+      "optionAnalysis": [
+        "목요일에 도서관에 간다는 정보는 없습니다.",
+        "도서관 المكتبة와 연결된 요일은 الاثنين, 곧 월요일입니다.",
+        "일요일 الأحد는 학교에 가는 날로 제시되었습니다.",
+        "화요일에 도서관에 간다는 정보는 없습니다.",
+        "수요일에 도서관에 간다는 정보는 없습니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "사메르는 일요일에 학교에 간다. 그리고 월요일에 도서관에 간다.",
+      "vocabulary": [
+        [
+          "يذهب",
+          "그는 간다"
+        ],
+        [
+          "إلى",
+          "~로"
+        ],
+        [
+          "الأحد",
+          "일요일"
+        ],
+        [
+          "الاثنين",
+          "월요일"
+        ]
+      ],
+      "languageCode": "ar",
+      "sourceRefs": [
+        "https://learning.aljazeera.net/en/lessons/level/beginner"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다.",
+      "textDirection": "rtl"
+    },
+    {
+      "id": "authored-language-arabic-vocabulary",
+      "courseId": "language-arabic",
+      "topicId": "language-arabic-vocabulary",
+      "domain": "제2외국어/한문",
+      "subject": "아랍어Ⅰ",
+      "topic": "장소 명사 이해",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "다음 문장에서 화자가 책을 읽는 장소를 고르세요.",
+      "passage": "أنا أقرأ كتابًا في المكتبة.",
+      "options": [
+        "수영장",
+        "식당",
+        "도서관",
+        "공항",
+        "시장"
+      ],
+      "answerIndex": 2,
+      "hint": "في 뒤에 나온 장소 명사를 확인하세요.",
+      "solutionSteps": [
+        "أقرأ كتابًا는 책을 읽는다는 뜻입니다.",
+        "전치사 في 뒤의 المكتبة가 동작이 일어나는 장소입니다.",
+        "따라서 장소는 도서관입니다."
+      ],
+      "commonMistakes": [
+        "كتاب은 책이고 المكتبة는 장소를 뜻한다는 차이를 확인하세요.",
+        "전치사 في 뒤의 장소 정보를 놓치지 마세요."
+      ],
+      "optionAnalysis": [
+        "수영장을 뜻하는 말은 제시되지 않았습니다.",
+        "식당 المطعم이라는 말은 제시되지 않았습니다.",
+        "في المكتبة는 도서관에서라는 뜻입니다.",
+        "공항을 뜻하는 المطار라는 말은 제시되지 않았습니다.",
+        "시장 السوق라는 말은 제시되지 않았습니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "나는 도서관에서 책을 읽는다.",
+      "vocabulary": [
+        [
+          "أنا",
+          "나"
+        ],
+        [
+          "أقرأ",
+          "나는 읽는다"
+        ],
+        [
+          "كتاب",
+          "책"
+        ],
+        [
+          "في المكتبة",
+          "도서관에서"
+        ]
+      ],
+      "languageCode": "ar",
+      "sourceRefs": [
+        "https://learning.aljazeera.net/en/lessons/level/beginner"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다.",
+      "textDirection": "rtl"
+    },
+    {
+      "id": "authored-language-vietnamese-request",
+      "courseId": "language-vietnamese",
+      "topicId": "language-vietnamese-request",
+      "domain": "제2외국어/한문",
+      "subject": "베트남어Ⅰ",
+      "topic": "원하는 것을 말하기",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "물 한 잔을 원한다는 뜻의 문장을 고르세요.",
+      "passage": "카페에서 물 한 잔을 요청하려고 한다.",
+      "options": [
+        "Hôm nay là thứ Hai.",
+        "Tôi đến từ Hàn Quốc.",
+        "Tôi thích đọc sách.",
+        "Tôi muốn một cốc nước.",
+        "Tôi là học sinh."
+      ],
+      "answerIndex": 3,
+      "hint": "muốn 뒤에 물 한 잔을 나타내는 말이 있는지 확인하세요.",
+      "solutionSteps": [
+        "원하는 것을 말하는 동사 muốn을 찾습니다.",
+        "một cốc nước는 물 한 잔이라는 뜻입니다.",
+        "Tôi muốn một cốc nước가 제시된 요청 내용과 일치합니다."
+      ],
+      "commonMistakes": [
+        "원하다라는 muốn과 좋아하다라는 thích를 구분하세요.",
+        "cốc의 성조·철자를 다른 단어와 혼동하지 마세요."
+      ],
+      "optionAnalysis": [
+        "오늘은 월요일입니다라는 요일 정보입니다.",
+        "나는 한국에서 왔습니다라는 출신 정보입니다.",
+        "나는 책 읽기를 좋아합니다라는 기호 표현입니다.",
+        "나는 물 한 잔을 원합니다라는 뜻이므로 요청 내용과 맞습니다.",
+        "나는 학생입니다라는 신분 소개입니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "정답 문장: 나는 물 한 잔을 원합니다.",
+      "vocabulary": [
+        [
+          "tôi",
+          "나"
+        ],
+        [
+          "muốn",
+          "원하다"
+        ],
+        [
+          "một",
+          "하나"
+        ],
+        [
+          "một cốc nước",
+          "물 한 잔"
+        ]
+      ],
+      "languageCode": "vi",
+      "sourceRefs": [
+        "https://vov.vn/ko-KR/ibe-chagchag-butneun-beteunameo/51hoe-da-chua-haessseubnikka-2356804.vov"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다."
+    },
+    {
+      "id": "authored-language-vietnamese-aspect",
+      "courseId": "language-vietnamese",
+      "topicId": "language-vietnamese-aspect",
+      "domain": "제2외국어/한문",
+      "subject": "베트남어Ⅰ",
+      "topic": "이미 일어난 행동과 đã",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "어제 이미 도서관에 갔다는 뜻을 나타내도록 빈칸에 들어갈 말을 고르세요.",
+      "passage": "Hôm qua tôi ___ đến thư viện.",
+      "options": [
+        "đang",
+        "sẽ",
+        "rất",
+        "và",
+        "đã"
+      ],
+      "answerIndex": 4,
+      "hint": "완료된 행동을 나타내는 đã를 떠올려 보세요.",
+      "solutionSteps": [
+        "Hôm qua가 어제라는 시간 표현임을 확인합니다.",
+        "문제는 행동이 이미 이루어졌음을 나타내는 말을 요구합니다.",
+        "đã를 넣으면 어제 나는 도서관에 갔다라는 뜻이 됩니다."
+      ],
+      "commonMistakes": [
+        "đã·đang·sẽ를 모두 같은 시제 표지처럼 섞어 쓰지 마세요.",
+        "베트남어에서는 시간 표현만으로도 과거를 나타낼 수 있지만 이 문항은 이미 이루어짐을 나타내는 말을 묻습니다."
+      ],
+      "optionAnalysis": [
+        "đang은 진행 중인 행동을 나타내므로 여기서 요구한 이미 이루어진 행동과 다릅니다.",
+        "sẽ는 미래의 일을 나타내므로 어제 이미 갔다는 뜻과 맞지 않습니다.",
+        "rất는 매우라는 정도 표현으로 이 위치에서 이미 갔다는 뜻을 만들지 않습니다.",
+        "và는 그리고라는 접속 표현으로 제시된 문장에 맞지 않습니다.",
+        "đã는 이미 일어난 행동을 나타내어 Hôm qua라는 어제의 상황과 맞습니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "완성 문장: 어제 나는 도서관에 갔다.",
+      "vocabulary": [
+        [
+          "hôm qua",
+          "어제"
+        ],
+        [
+          "đã",
+          "이미 이루어진 행동을 나타내는 말"
+        ],
+        [
+          "đến",
+          "도착하다, 가다"
+        ],
+        [
+          "thư viện",
+          "도서관"
+        ]
+      ],
+      "languageCode": "vi",
+      "sourceRefs": [
+        "https://vov.vn/ko-KR/ibe-chagchag-butneun-beteunameo/51hoe-da-chua-haessseubnikka-2356804.vov"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다."
+    },
+    {
+      "id": "authored-language-vietnamese-reading",
+      "courseId": "language-vietnamese",
+      "topicId": "language-vietnamese-reading",
+      "domain": "제2외국어/한문",
+      "subject": "베트남어Ⅰ",
+      "topic": "요일별 활동 읽기",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "다음 글에 따르면 란이 베트남어를 공부하는 요일을 고르세요.",
+      "passage": "Lan học tiếng Việt vào thứ Hai và thứ Tư. Thứ Sáu, Lan chơi cầu lông.",
+      "options": [
+        "월요일과 수요일",
+        "월요일과 금요일",
+        "화요일과 목요일",
+        "수요일과 토요일",
+        "금요일과 일요일"
+      ],
+      "answerIndex": 0,
+      "hint": "học tiếng Việt와 연결된 두 요일을 찾으세요.",
+      "solutionSteps": [
+        "học tiếng Việt가 베트남어를 공부한다는 뜻임을 확인합니다.",
+        "그 활동의 요일이 thứ Hai và thứ Tư입니다.",
+        "각각 월요일과 수요일이므로 두 요일을 함께 고릅니다."
+      ],
+      "commonMistakes": [
+        "베트남어 요일의 숫자 순서를 한국어 요일과 단순히 일대일로 연결하지 마세요.",
+        "다른 활동인 배드민턴의 금요일을 학습일로 넣지 마세요."
+      ],
+      "optionAnalysis": [
+        "tiếng Việt를 공부하는 날이 thứ Hai와 thứ Tư로 제시되었습니다.",
+        "금요일은 배드민턴을 하는 날로 제시되었습니다.",
+        "화요일과 목요일은 제시된 학습 요일이 아닙니다.",
+        "토요일이라는 학습 정보는 없습니다.",
+        "금요일은 배드민턴, 일요일은 글에 없는 정보입니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "란은 월요일과 수요일에 베트남어를 공부한다. 금요일에 란은 배드민턴을 친다.",
+      "vocabulary": [
+        [
+          "học tiếng Việt",
+          "베트남어를 공부하다"
+        ],
+        [
+          "thứ Hai",
+          "월요일"
+        ],
+        [
+          "thứ Tư",
+          "수요일"
+        ],
+        [
+          "thứ Sáu",
+          "금요일"
+        ],
+        [
+          "chơi cầu lông",
+          "배드민턴을 치다"
+        ]
+      ],
+      "languageCode": "vi",
+      "sourceRefs": [
+        "https://vov.vn/ko-KR/ibe-chagchag-butneun-beteunameo/51hoe-da-chua-haessseubnikka-2356804.vov"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다."
+    },
+    {
+      "id": "authored-language-vietnamese-vocabulary",
+      "courseId": "language-vietnamese",
+      "topicId": "language-vietnamese-vocabulary",
+      "domain": "제2외국어/한문",
+      "subject": "베트남어Ⅰ",
+      "topic": "생활 장소 어휘",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "다음 설명에 가장 잘 맞는 장소를 고르세요.",
+      "passage": "Ở đây, bạn có thể đọc và mượn sách.",
+      "options": [
+        "bệnh viện",
+        "thư viện",
+        "nhà ga",
+        "sân bay",
+        "nhà hàng"
+      ],
+      "answerIndex": 1,
+      "hint": "읽다·빌리다·책이라는 정보를 함께 연결하세요.",
+      "solutionSteps": [
+        "đọc는 읽다, mượn은 빌리다라는 뜻입니다.",
+        "sách는 책이므로 책을 읽고 빌리는 장소를 찾습니다.",
+        "그 장소는 도서관인 thư viện입니다."
+      ],
+      "commonMistakes": [
+        "도서관 thư viện과 병원 bệnh viện에 공통으로 viện이 있다고 같은 뜻으로 보지 마세요.",
+        "책이라는 목적어와 읽고 빌리는 두 동작을 함께 확인하세요."
+      ],
+      "optionAnalysis": [
+        "bệnh viện은 병원입니다.",
+        "책을 읽고 빌릴 수 있는 도서관을 뜻합니다.",
+        "nhà ga는 기차역입니다.",
+        "sân bay는 공항입니다.",
+        "nhà hàng은 음식점입니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "여기에서 당신은 책을 읽고 빌릴 수 있다.",
+      "vocabulary": [
+        [
+          "ở đây",
+          "여기에서"
+        ],
+        [
+          "đọc",
+          "읽다"
+        ],
+        [
+          "mượn",
+          "빌리다"
+        ],
+        [
+          "sách",
+          "책"
+        ],
+        [
+          "thư viện",
+          "도서관"
+        ]
+      ],
+      "languageCode": "vi",
+      "sourceRefs": [
+        "https://vov.vn/ko-KR/ibe-chagchag-butneun-beteunameo/51hoe-da-chua-haessseubnikka-2356804.vov"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다."
+    },
+    {
+      "id": "authored-language-hanmun-character",
+      "courseId": "language-hanmun",
+      "topicId": "language-hanmun-character",
+      "domain": "제2외국어/한문",
+      "subject": "한문Ⅰ",
+      "topic": "한자의 구성과 뜻",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "나무 木 두 개가 결합하여 수풀을 뜻하는 한자를 고르세요.",
+      "passage": "木 + 木",
+      "options": [
+        "信",
+        "好",
+        "林",
+        "明",
+        "休"
+      ],
+      "answerIndex": 2,
+      "hint": "木의 개수가 두 개인 글자를 찾으세요.",
+      "solutionSteps": [
+        "제시된 구성 요소가 나무 木 두 개임을 확인합니다.",
+        "木을 좌우로 결합한 글자는 林입니다.",
+        "林은 수풀 림으로 제시된 뜻과도 일치합니다."
+      ],
+      "commonMistakes": [
+        "木이 세 개 결합한 森과 木 두 개의 林을 구분하세요.",
+        "자형의 일부가 닮았다고 같은 구성의 글자로 보지 마세요."
+      ],
+      "optionAnalysis": [
+        "信은 亻과 言으로 이루어진 믿을 신입니다.",
+        "好는 女와 子로 이루어진 좋을 호입니다.",
+        "林은 木 두 개로 이루어지며 수풀 림입니다.",
+        "明은 日과 月로 이루어진 밝을 명입니다.",
+        "休는 사람을 나타내는 亻과 木으로 이루어진 쉴 휴입니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "木: 나무 목 / 林: 수풀 림",
+      "vocabulary": [
+        [
+          "木",
+          "나무 목"
+        ],
+        [
+          "林",
+          "수풀 림"
+        ],
+        [
+          "森",
+          "수풀 삼"
+        ],
+        [
+          "明",
+          "밝을 명"
+        ]
+      ],
+      "languageCode": "lzh",
+      "sourceRefs": [
+        "https://dict.revised.moe.edu.tw/dictView.jsp?ID=3634&word=%3D%E6%9E%97"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다.",
+      "readingLanguage": "ko"
+    },
+    {
+      "id": "authored-language-hanmun-word-order",
+      "courseId": "language-hanmun",
+      "topicId": "language-hanmun-word-order",
+      "domain": "제2외국어/한문",
+      "subject": "한문Ⅰ",
+      "topic": "한문 문장의 기본 어순",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "다음 자체 구성 한문 문장의 뜻으로 가장 적절한 것을 고르세요.",
+      "passage": "人讀書。",
+      "options": [
+        "사람이 책을 쓴다.",
+        "사람이 책을 버린다.",
+        "책이 사람에게 말한다.",
+        "사람이 책을 읽는다.",
+        "책이 사람을 읽는다."
+      ],
+      "answerIndex": 3,
+      "hint": "읽는 사람과 읽는 대상을 나누어 보세요.",
+      "solutionSteps": [
+        "人이 사람을 뜻하며 문장의 주어임을 확인합니다.",
+        "讀은 읽다이고 書는 그 읽는 대상인 책입니다.",
+        "따라서 사람이 책을 읽는다로 풀이합니다."
+      ],
+      "commonMistakes": [
+        "한국어 어순대로 앞뒤 글자만 기계적으로 바꾸지 마세요.",
+        "書는 문맥에 따라 쓰다라는 뜻도 있으나 여기에서는 讀의 목적어인 책으로 읽습니다."
+      ],
+      "optionAnalysis": [
+        "讀은 읽다이며 쓰다라는 동사가 아닙니다.",
+        "버린다는 뜻을 나타내는 글자가 제시되지 않았습니다.",
+        "서술어 讀을 말하다로 바꾸고 주어도 뒤바꾸었습니다.",
+        "人이 주어, 讀이 서술어, 書가 목적어이므로 사람이 책을 읽는다입니다.",
+        "人과 書의 주어·목적어 관계를 뒤바꾸었습니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "사람이 책을 읽는다.",
+      "vocabulary": [
+        [
+          "人",
+          "사람 인"
+        ],
+        [
+          "讀",
+          "읽을 독"
+        ],
+        [
+          "書",
+          "글 서, 책"
+        ]
+      ],
+      "languageCode": "lzh",
+      "sourceRefs": [
+        "https://dict.concised.moe.edu.tw/dictView.jsp?ID=43818&la=0&powerMode=0"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다.",
+      "readingLanguage": "ko"
+    },
+    {
+      "id": "authored-language-hanmun-idiom",
+      "courseId": "language-hanmun",
+      "topicId": "language-hanmun-idiom",
+      "domain": "제2외국어/한문",
+      "subject": "한문Ⅰ",
+      "topic": "성어의 의미와 학습",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "다음 성어의 뜻으로 가장 적절한 것을 고르세요.",
+      "passage": "溫故知新",
+      "options": [
+        "새로운 것만 배우고 이전 것은 모두 버린다.",
+        "다른 사람의 잘못을 찾아 비난한다.",
+        "따뜻한 날씨가 되면 새 옷을 입는다.",
+        "아는 것을 숨기고 아무 말도 하지 않는다.",
+        "배운 것을 되새겨 새로운 깨달음을 얻는다."
+      ],
+      "answerIndex": 4,
+      "hint": "옛것과 새것의 연결을 생각하세요.",
+      "solutionSteps": [
+        "故는 이미 배운 옛것, 新은 새로운 것을 가리킵니다.",
+        "溫故는 옛 배움을 다시 익히고 되새기는 뜻입니다.",
+        "전체적으로 복습을 통해 새로운 깨달음을 얻는다는 의미입니다."
+      ],
+      "commonMistakes": [
+        "溫을 따뜻하다라는 일상적 뜻으로만 읽지 마세요.",
+        "故를 사고나 잘못으로 해석하면 성어의 의미를 놓칩니다."
+      ],
+      "optionAnalysis": [
+        "옛 배움을 되새긴다는 溫故의 의미와 반대입니다.",
+        "비난이나 잘못 찾기를 뜻하는 성어가 아닙니다.",
+        "溫을 기온만으로, 新을 새 옷으로 해석한 것으로 문맥상 맞지 않습니다.",
+        "지식을 숨기거나 침묵한다는 뜻이 아닙니다.",
+        "故를 옛것, 新을 새것으로 연결하면 기존 배움에서 새로운 앎을 얻는다는 뜻입니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "온고지신: 이미 배운 것을 되새겨 새로운 깨달음을 얻음.",
+      "vocabulary": [
+        [
+          "溫",
+          "익힐 온, 따뜻할 온"
+        ],
+        [
+          "故",
+          "옛 고"
+        ],
+        [
+          "知",
+          "알 지"
+        ],
+        [
+          "新",
+          "새 신"
+        ]
+      ],
+      "languageCode": "lzh",
+      "sourceRefs": [
+        "https://dict.concised.moe.edu.tw/dictView.jsp?ID=43818&la=0&powerMode=0"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다.",
+      "readingLanguage": "ko"
+    },
+    {
+      "id": "authored-language-hanmun-negation",
+      "courseId": "language-hanmun",
+      "topicId": "language-hanmun-negation",
+      "domain": "제2외국어/한문",
+      "subject": "한문Ⅰ",
+      "topic": "부정어 不의 기능",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "다음 자체 구성 문장에서 不의 기능으로 가장 적절한 것을 고르세요.",
+      "passage": "我不知。",
+      "options": [
+        "뒤의 知를 부정한다.",
+        "문장의 주어 我를 나타낸다.",
+        "두 대상을 나란히 연결한다.",
+        "과거의 시점만을 나타낸다.",
+        "질문을 끝맺는 의문 어조사이다."
+      ],
+      "answerIndex": 0,
+      "hint": "不 뒤의 서술어 知와 연결해 보세요.",
+      "solutionSteps": [
+        "我는 나, 知는 알다라는 뜻임을 확인합니다.",
+        "知 앞의 不가 알다라는 서술 내용을 부정합니다.",
+        "문장 전체는 나는 알지 못한다로 풀이합니다."
+      ],
+      "commonMistakes": [
+        "不를 시제 표시로 생각하지 마세요.",
+        "부정의 대상이 뒤에 오는 서술어라는 점을 확인하세요."
+      ],
+      "optionAnalysis": [
+        "不는 知 앞에서 알다를 부정하여 알지 못하다라는 뜻을 만듭니다.",
+        "주어는 我이며 不가 주어를 대신하는 것은 아닙니다.",
+        "연결 기능이 아니라 뒤 서술 내용을 부정하는 기능입니다.",
+        "不 자체가 과거 시점을 표시하는 말은 아닙니다.",
+        "이 문장의 不는 의문 어조사가 아니라 부정어입니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 기초 언어 연습",
+      "generationBasis": "기초 언어 연습",
+      "verified": false,
+      "translation": "나는 알지 못한다.",
+      "vocabulary": [
+        [
+          "我",
+          "나 아"
+        ],
+        [
+          "不",
+          "아니 불"
+        ],
+        [
+          "知",
+          "알 지"
+        ]
+      ],
+      "languageCode": "lzh",
+      "sourceRefs": [
+        "https://dict.concised.moe.edu.tw/dictView.jsp?ID=43818&la=0&powerMode=0"
+      ],
+      "contentNote": "문장·지문·선택지와 해설은 학습용으로 자체 작성했습니다. 실제 수능 기출 문항이나 출제 기관의 공식 해설이 아닙니다.",
+      "readingLanguage": "ko"
+    }
+  ],
+  "sources": [
+    {
+      "title": "괴테 인스티투트 Deutsch Online A1 어휘집",
+      "url": "https://lernen.goethe.de/deutschonline/A1/PDF/EN/A1_deutschonline_course_vocabulary_1-18.pdf",
+      "scope": "독일어 A1 기초 어휘와 의사소통 범위 참고. 문항 지문·보기는 자체 작성."
+    },
+    {
+      "title": "TV5MONDE 프랑스어 문법 학습",
+      "url": "https://apprendre.tv5monde.com/fr/aides/grammaire",
+      "scope": "프랑스어 초급 문법과 생활 표현 참고. 원문 연습문제를 복제하지 않음."
+    },
+    {
+      "title": "스페인 왕립학술원 RAE: ser",
+      "url": "https://dle.rae.es/ser",
+      "scope": "ser의 뜻과 활용 정보 참고."
+    },
+    {
+      "title": "스페인 왕립학술원 RAE: desayuno",
+      "url": "https://dle.rae.es/desayuno",
+      "scope": "desayuno의 기초 의미 확인."
+    },
+    {
+      "title": "대만 교육부 중편국어사전: 本",
+      "url": "https://dict.revised.moe.edu.tw/dictView.jsp?ID=269&la=0&powerMode=0",
+      "scope": "本이 책·공책의 수량을 세는 양사라는 설명 참고."
+    },
+    {
+      "title": "일본국제교류기금 이로도리 문법 노트",
+      "url": "https://www.irodori.jpf.go.jp/assets/data/Grammar_all.pdf",
+      "scope": "정확한 시간과 조사 に, 위치·허락 표현 등 초급 문법 참고."
+    },
+    {
+      "title": "모스크바국립대학교 러시아어문화연구소 학습 자료",
+      "url": "https://catalogue.irlc.msu.ru/media-texts-catalogue/all/texts/a2/podruga-i-grammatika",
+      "scope": "Я изучаю русский язык 문형과 초급 독해 학습 범위 참고. 글 전체는 복제하지 않음."
+    },
+    {
+      "title": "알자지라 아랍어 교육: Beginner",
+      "url": "https://learning.aljazeera.net/en/lessons/level/beginner",
+      "scope": "표준 아랍어 초급 일상 의사소통 학습 범위 참고."
+    },
+    {
+      "title": "베트남국영방송 VOV: Đã ~ chưa 표현 학습",
+      "url": "https://vov.vn/ko-KR/ibe-chagchag-butneun-beteunameo/51hoe-da-chua-haessseubnikka-2356804.vov",
+      "scope": "đã의 이미 이루어진 행동 표현과 기초 요일·수량 표현 참고."
+    },
+    {
+      "title": "대만 교육부 중편국어사전: 林",
+      "url": "https://dict.revised.moe.edu.tw/dictView.jsp?ID=3634&word=%3D%E6%9E%97",
+      "scope": "林의 자형과 수풀이라는 뜻 확인."
+    },
+    {
+      "title": "대만 교육부 국어사전: 溫故知新",
+      "url": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=43818&la=0&powerMode=0",
+      "scope": "온고지신의 고전적 의미 확인. 성어 자체는 공공영역의 고전 표현."
+    }
+  ],
+  "limitations": [
+    "모든 문항은 자체 구성한 기초 언어·한문 개념 연습이며 실제 수능 기출이 아닙니다.",
+    "각 과목 4개 개념의 입문 범위입니다. 듣기 음원·발음 평가·해당 과목의 전 교육과정은 포함하지 않습니다.",
+    "각 지문과 상황은 문항 안에서 가정한 정보이며 실제 기관의 운영 시간·정책이 아닙니다."
+  ],
+  "verifiedAt": "2026-11-20",
+  "verificationMethod": "기초 언어 사실은 언어교육 기관·공식 사전·대학 학습 자료를 참고하고 각 보기와 정답의 일치, 완성 문장, 한국어 풀이를 직접 대조했습니다. 외부 전문 감수 완료를 뜻하지 않습니다."
+}

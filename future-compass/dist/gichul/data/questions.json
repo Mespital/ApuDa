@@ -1,0 +1,868 @@
+{
+  "schemaVersion": "1.0",
+  "title": "평가원 공식 자료 대조 수학 기출 10문항",
+  "scope": {
+    "years": [
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "count": 10,
+    "questionsPerYear": [
+      1,
+      2
+    ],
+    "form": "홀수형",
+    "domain": "수학 공통",
+    "sampleOnly": true
+  },
+  "verificationMethod": [
+    "평가원 수능 기출문제 공식 목록에서 문제·정답 파일의 링크 확인",
+    "문제지 1쪽의 학년도·형·문항번호·식·보기 화면 대조",
+    "공식 홀수형 정답표 1쪽 대조",
+    "별도의 산술 계산으로 정답 보기와 일치 확인"
+  ],
+  "limitations": [
+    "최근 10년 전수 데이터가 아닌 5개 학년도 10문항의 검증된 제한 표본입니다.",
+    "이 표본은 기본 지수법칙과 미분·극한에 편중되어 있으므로 수학 전체 출제 빈도·난도·향후 출제확률을 추정할 수 없습니다.",
+    "이 자료의 기초 분류와 풀이·오답 설명은 학습용 편집이며 공식 평가원 해설 또는 공식 난도 통계가 아닙니다."
+  ],
+  "reuseNote": "짧은 수학식 중심의 제한된 사례입니다. 원문 전체와 PDF는 앱에 재배포하지 않고 공식 자료 링크로 연결합니다.",
+  "answerIndexConvention": "0-based; answerNumber is 1-based",
+  "problems": [
+    {
+      "id": "csat-2022-math-odd-01",
+      "kind": "past",
+      "type": "past",
+      "exam": "대학수학능력시험",
+      "year": 2022,
+      "academicYear": 2022,
+      "domain": "수학",
+      "subject": "공통",
+      "curriculumSubject": "수학Ⅰ",
+      "topic": "지수법칙",
+      "questionNumber": 1,
+      "form": "홀수형",
+      "points": 2,
+      "difficulty": "기초",
+      "difficultyBasis": "학습용 분류이며 공식 난도 통계가 아닙니다.",
+      "statement": "다음 식의 값을 구하세요.",
+      "formula": "(2^(√3) × 4)^(√3−2)",
+      "latex": "\\left(2^{\\sqrt{3}}\\times4\\right)^{\\sqrt{3}-2}",
+      "options": [
+        "1/4",
+        "1/2",
+        "1",
+        "2",
+        "4"
+      ],
+      "optionLatex": [
+        "\\frac14",
+        "\\frac12",
+        "1",
+        "2",
+        "4"
+      ],
+      "answerIndex": 1,
+      "answerNumber": 2,
+      "answer": "1/2",
+      "hint": "4를 밑이 2인 거듭제곱으로 바꾼 뒤 합과 차의 곱을 사용하세요.",
+      "solutionSteps": [
+        "4를 2²으로 바꾸면 괄호 안은 2^(√3+2)입니다.",
+        "거듭제곱을 다시 거듭제곱하면 지수를 곱합니다. 전체 지수는 (√3+2)(√3−2)입니다.",
+        "합과 차의 곱 (a+b)(a−b)=a²−b²을 쓰면 지수는 3−4=−1입니다.",
+        "따라서 2^(-1)=1/2이므로 정답은 ②입니다."
+      ],
+      "commonMistakes": [
+        "2^(√3)은 2×√3과 다릅니다. √3은 곱하는 수가 아니라 지수입니다.",
+        "(√3+2)(√3−2)는 4−3이 아니라 3−4입니다.",
+        "음의 지수는 음수 값을 뜻하지 않습니다. 2^(-1)=1/2입니다."
+      ],
+      "optionAnalysis": [
+        "① 1/4: 계산 결과는 1/2이므로 이 보기와 일치하지 않습니다.",
+        "② 1/2: 정답입니다. 따라서 2^(-1)=1/2이므로 정답은 ②입니다.",
+        "③ 1: 계산 결과는 1/2이므로 이 보기와 일치하지 않습니다.",
+        "④ 2: 계산 결과는 1/2이므로 이 보기와 일치하지 않습니다.",
+        "⑤ 4: 계산 결과는 1/2이므로 이 보기와 일치하지 않습니다."
+      ],
+      "sourceUrl": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=8d1400b002e2a9ab76bc8a45da9ac67a",
+      "sourceAnswerUrl": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=17370fa9d479f61bd4fee34e3a6b5153",
+      "sourcePublisher": "한국교육과정평가원",
+      "sourceLabel": "2022학년도 수능 수학 홀수형 1번",
+      "verified": true,
+      "verification": {
+        "questionSourceSha256": "10d68db0fa02c2c2d72c967e16ea19b648fa8d8357045f87fd79951b0a4ec54a",
+        "answerSourceSha256": "b381a8509dee4f6984f33b6e91e09c80eb6c18bb59abc568816d9e4ccae52b97",
+        "questionPage": 1,
+        "answerPage": 1,
+        "questionSourceFile": "2교시_수학영역_문제지.zip",
+        "questionZipMember": "수학영역_홀수형.pdf",
+        "visualCheck": "공식 문제지 1쪽의 식·보기·문항번호·홀수형을 확인하고 공식 정답표 1쪽과 대조함",
+        "calculationValue": 0.4999999999999999,
+        "calculationMatchesOfficialAnswer": true,
+        "officialAnswerNumber": 2,
+        "retrievedDate": "2026-11-20",
+        "dateTimezone": "Asia/Seoul"
+      },
+      "contentNote": "수학식과 보기는 공식 문제를 확인하여 옮겼습니다. 안내 문구·힌트·풀이·오답 설명은 학습용으로 새로 작성했습니다. 오답 설명은 출제 기관이 공개한 선택지별 의도가 아닙니다.",
+      "mathLatex": "\\left(2^{\\sqrt{3}}\\times4\\right)^{\\sqrt{3}-2}"
+    },
+    {
+      "id": "csat-2022-math-odd-02",
+      "kind": "past",
+      "type": "past",
+      "exam": "대학수학능력시험",
+      "year": 2022,
+      "academicYear": 2022,
+      "domain": "수학",
+      "subject": "공통",
+      "curriculumSubject": "수학Ⅱ",
+      "topic": "다항함수의 미분",
+      "questionNumber": 2,
+      "form": "홀수형",
+      "points": 2,
+      "difficulty": "기초",
+      "difficultyBasis": "학습용 분류이며 공식 난도 통계가 아닙니다.",
+      "statement": "f(x)=x³+3x²+x−1일 때 f′(1)의 값을 구하세요.",
+      "formula": "f′(1),  f(x)=x³+3x²+x−1",
+      "latex": "f(x)=x^3+3x^2+x-1,\\quad f\\prime(1)=?",
+      "options": [
+        "6",
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "optionLatex": [
+        "6",
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "answerIndex": 4,
+      "answerNumber": 5,
+      "answer": "10",
+      "hint": "먼저 도함수 f′(x)를 구하고 마지막에 x=1을 대입하세요.",
+      "solutionSteps": [
+        "f′(1)은 x=1에서의 순간변화율, 즉 접선의 기울기입니다.",
+        "다항식의 각 항을 미분하면 f′(x)=3x²+6x+1입니다. 상수 −1의 미분은 0입니다.",
+        "x=1을 대입하면 f′(1)=3+6+1=10입니다.",
+        "따라서 정답은 ⑤ 10입니다."
+      ],
+      "commonMistakes": [
+        "3x²을 미분하면 6x입니다. 계수 3을 유지한 채 지수 2도 곱해야 합니다.",
+        "x의 미분은 1입니다. 마지막 +1을 빠뜨리지 마세요.",
+        "문제는 f(1)이 아닌 f′(1)을 묻습니다. 함수값과 접선의 기울기를 구별하세요."
+      ],
+      "optionAnalysis": [
+        "① 6: 계산 결과는 10이므로 이 보기와 일치하지 않습니다.",
+        "② 7: 계산 결과는 10이므로 이 보기와 일치하지 않습니다.",
+        "③ 8: 계산 결과는 10이므로 이 보기와 일치하지 않습니다.",
+        "④ 9: 계산 결과는 10이므로 이 보기와 일치하지 않습니다.",
+        "⑤ 10: 정답입니다. 따라서 정답은 ⑤ 10입니다."
+      ],
+      "sourceUrl": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=8d1400b002e2a9ab76bc8a45da9ac67a",
+      "sourceAnswerUrl": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=17370fa9d479f61bd4fee34e3a6b5153",
+      "sourcePublisher": "한국교육과정평가원",
+      "sourceLabel": "2022학년도 수능 수학 홀수형 2번",
+      "verified": true,
+      "verification": {
+        "questionSourceSha256": "10d68db0fa02c2c2d72c967e16ea19b648fa8d8357045f87fd79951b0a4ec54a",
+        "answerSourceSha256": "b381a8509dee4f6984f33b6e91e09c80eb6c18bb59abc568816d9e4ccae52b97",
+        "questionPage": 1,
+        "answerPage": 1,
+        "questionSourceFile": "2교시_수학영역_문제지.zip",
+        "questionZipMember": "수학영역_홀수형.pdf",
+        "visualCheck": "공식 문제지 1쪽의 식·보기·문항번호·홀수형을 확인하고 공식 정답표 1쪽과 대조함",
+        "calculationValue": 10,
+        "calculationMatchesOfficialAnswer": true,
+        "officialAnswerNumber": 5,
+        "retrievedDate": "2026-11-20",
+        "dateTimezone": "Asia/Seoul"
+      },
+      "contentNote": "수학식과 보기는 공식 문제를 확인하여 옮겼습니다. 안내 문구·힌트·풀이·오답 설명은 학습용으로 새로 작성했습니다. 오답 설명은 출제 기관이 공개한 선택지별 의도가 아닙니다.",
+      "mathLatex": "f(x)=x^3+3x^2+x-1,\\quad f\\prime(1)=?"
+    },
+    {
+      "id": "csat-2023-math-odd-01",
+      "kind": "past",
+      "type": "past",
+      "exam": "대학수학능력시험",
+      "year": 2023,
+      "academicYear": 2023,
+      "domain": "수학",
+      "subject": "공통",
+      "curriculumSubject": "수학Ⅰ",
+      "topic": "지수법칙",
+      "questionNumber": 1,
+      "form": "홀수형",
+      "points": 2,
+      "difficulty": "기초",
+      "difficultyBasis": "학습용 분류이며 공식 난도 통계가 아닙니다.",
+      "statement": "다음 식의 값을 구하세요.",
+      "formula": "(4 / 2^(√2))^(2+√2)",
+      "latex": "\\left(\\frac{4}{2^{\\sqrt{2}}}\\right)^{2+\\sqrt{2}}",
+      "options": [
+        "1/4",
+        "1/2",
+        "1",
+        "2",
+        "4"
+      ],
+      "optionLatex": [
+        "\\frac14",
+        "\\frac12",
+        "1",
+        "2",
+        "4"
+      ],
+      "answerIndex": 4,
+      "answerNumber": 5,
+      "answer": "4",
+      "hint": "밑을 2로 통일하면 (2−√2)(2+√2)가 나타납니다.",
+      "solutionSteps": [
+        "4=2²이므로 괄호 안은 2^(2−√2)입니다. 같은 밑의 나눗셈에서는 지수를 뺍니다.",
+        "전체는 2^((2−√2)(2+√2))로 정리됩니다.",
+        "합과 차의 곱을 계산하면 (2−√2)(2+√2)=4−2=2입니다.",
+        "따라서 2²=4이므로 정답은 ⑤입니다."
+      ],
+      "commonMistakes": [
+        "나눗셈의 지수는 분자의 지수에서 분모의 지수를 뺍니다. √2−2로 뒤집지 마세요.",
+        "(√2)²은 2입니다. 근호가 사라지는 값을 정확히 계산하세요.",
+        "거듭제곱의 거듭제곱은 지수끼리 더하는 것이 아니라 곱하는 것입니다."
+      ],
+      "optionAnalysis": [
+        "① 1/4: 계산 결과는 4이므로 이 보기와 일치하지 않습니다.",
+        "② 1/2: 계산 결과는 4이므로 이 보기와 일치하지 않습니다.",
+        "③ 1: 계산 결과는 4이므로 이 보기와 일치하지 않습니다.",
+        "④ 2: 계산 결과는 4이므로 이 보기와 일치하지 않습니다.",
+        "⑤ 4: 정답입니다. 따라서 2²=4이므로 정답은 ⑤입니다."
+      ],
+      "sourceUrl": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=4dee411efbfef1ab1b44fde9dc8f9378",
+      "sourceAnswerUrl": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=7ed981af9e08428db993999c50a8ce3c",
+      "sourcePublisher": "한국교육과정평가원",
+      "sourceLabel": "2023학년도 수능 수학 홀수형 1번",
+      "verified": true,
+      "verification": {
+        "questionSourceSha256": "c941a18844905dbc455e9dbe1ac057adb1718c2d2daa6c5608f224fc8c29d576",
+        "answerSourceSha256": "95163099ce6f6cfef0efafeb34fd1907f7aa12c2400e75dfb03f527c6fffc9e6",
+        "questionPage": 1,
+        "answerPage": 1,
+        "questionSourceFile": "2교시_수학영역_문제지.pdf",
+        "questionZipMember": null,
+        "visualCheck": "공식 문제지 1쪽의 식·보기·문항번호·홀수형을 확인하고 공식 정답표 1쪽과 대조함",
+        "calculationValue": 4.0,
+        "calculationMatchesOfficialAnswer": true,
+        "officialAnswerNumber": 5,
+        "retrievedDate": "2026-11-20",
+        "dateTimezone": "Asia/Seoul"
+      },
+      "contentNote": "수학식과 보기는 공식 문제를 확인하여 옮겼습니다. 안내 문구·힌트·풀이·오답 설명은 학습용으로 새로 작성했습니다. 오답 설명은 출제 기관이 공개한 선택지별 의도가 아닙니다.",
+      "mathLatex": "\\left(\\frac{4}{2^{\\sqrt{2}}}\\right)^{2+\\sqrt{2}}"
+    },
+    {
+      "id": "csat-2023-math-odd-02",
+      "kind": "past",
+      "type": "past",
+      "exam": "대학수학능력시험",
+      "year": 2023,
+      "academicYear": 2023,
+      "domain": "수학",
+      "subject": "공통",
+      "curriculumSubject": "수학Ⅱ",
+      "topic": "무한대에서의 극한",
+      "questionNumber": 2,
+      "form": "홀수형",
+      "points": 2,
+      "difficulty": "기초",
+      "difficultyBasis": "학습용 분류이며 공식 난도 통계가 아닙니다.",
+      "statement": "다음 극한값을 구하세요.",
+      "formula": "lim(x→∞) [√(x²−2)+3x]/(x+5)",
+      "latex": "\\lim_{x\\to\\infty}\\frac{\\sqrt{x^2-2}+3x}{x+5}",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "optionLatex": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "answerIndex": 3,
+      "answerNumber": 4,
+      "answer": "4",
+      "hint": "분자와 분모를 x로 나누어 보세요. √(x²−2)/x도 함께 정리합니다.",
+      "solutionSteps": [
+        "분자와 분모를 각각 x로 나눕니다. x는 양의 무한대로 가므로 충분히 큰 x는 양수입니다.",
+        "분자는 √(1−2/x²)+3, 분모는 1+5/x로 바뀝니다.",
+        "x→∞일 때 2/x²→0, 5/x→0이므로 분자는 1+3=4, 분모는 1이 됩니다.",
+        "따라서 극한값은 4/1=4이므로 정답은 ④입니다."
+      ],
+      "commonMistakes": [
+        "근호 안에는 x²−2만 들어갑니다. +3x까지 근호 안에 넣으면 다른 식이 됩니다.",
+        "분모의 +5는 x로 나누면 5/x가 되어 0으로 갑니다. 분모 전체가 5로 가는 것이 아닙니다.",
+        "∞를 숫자처럼 직접 대입하여 ∞/∞로 계산하지 마세요. 최고차항을 기준으로 식을 정리해야 합니다."
+      ],
+      "optionAnalysis": [
+        "① 1: 계산 결과는 4이므로 이 보기와 일치하지 않습니다.",
+        "② 2: 계산 결과는 4이므로 이 보기와 일치하지 않습니다.",
+        "③ 3: 계산 결과는 4이므로 이 보기와 일치하지 않습니다.",
+        "④ 4: 정답입니다. 따라서 극한값은 4/1=4이므로 정답은 ④입니다.",
+        "⑤ 5: 계산 결과는 4이므로 이 보기와 일치하지 않습니다."
+      ],
+      "sourceUrl": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=4dee411efbfef1ab1b44fde9dc8f9378",
+      "sourceAnswerUrl": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=7ed981af9e08428db993999c50a8ce3c",
+      "sourcePublisher": "한국교육과정평가원",
+      "sourceLabel": "2023학년도 수능 수학 홀수형 2번",
+      "verified": true,
+      "verification": {
+        "questionSourceSha256": "c941a18844905dbc455e9dbe1ac057adb1718c2d2daa6c5608f224fc8c29d576",
+        "answerSourceSha256": "95163099ce6f6cfef0efafeb34fd1907f7aa12c2400e75dfb03f527c6fffc9e6",
+        "questionPage": 1,
+        "answerPage": 1,
+        "questionSourceFile": "2교시_수학영역_문제지.pdf",
+        "questionZipMember": null,
+        "visualCheck": "공식 문제지 1쪽의 식·보기·문항번호·홀수형을 확인하고 공식 정답표 1쪽과 대조함",
+        "calculationValue": 4,
+        "calculationMatchesOfficialAnswer": true,
+        "officialAnswerNumber": 4,
+        "retrievedDate": "2026-11-20",
+        "dateTimezone": "Asia/Seoul"
+      },
+      "contentNote": "수학식과 보기는 공식 문제를 확인하여 옮겼습니다. 안내 문구·힌트·풀이·오답 설명은 학습용으로 새로 작성했습니다. 오답 설명은 출제 기관이 공개한 선택지별 의도가 아닙니다.",
+      "mathLatex": "\\lim_{x\\to\\infty}\\frac{\\sqrt{x^2-2}+3x}{x+5}"
+    },
+    {
+      "id": "csat-2024-math-odd-01",
+      "kind": "past",
+      "type": "past",
+      "exam": "대학수학능력시험",
+      "year": 2024,
+      "academicYear": 2024,
+      "domain": "수학",
+      "subject": "공통",
+      "curriculumSubject": "수학Ⅰ",
+      "topic": "유리수 지수와 거듭제곱근",
+      "questionNumber": 1,
+      "form": "홀수형",
+      "points": 2,
+      "difficulty": "기초",
+      "difficultyBasis": "학습용 분류이며 공식 난도 통계가 아닙니다.",
+      "statement": "다음 식의 값을 구하세요.",
+      "formula": "∛24 × 3^(2/3)",
+      "latex": "\\sqrt[3]{24}\\times3^{\\frac23}",
+      "options": [
+        "6",
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "optionLatex": [
+        "6",
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "answerIndex": 0,
+      "answerNumber": 1,
+      "answer": "6",
+      "hint": "3^(2/3)을 ∛9로 바꾼 뒤 하나의 세제곱근으로 묶어 보세요.",
+      "solutionSteps": [
+        "3^(2/3)은 ∛(3²)=∛9와 같습니다. 분모 3은 세제곱근을 뜻합니다.",
+        "세제곱근끼리 곱하면 ∛24×∛9=∛(24×9)입니다.",
+        "24×9=216이고 6³=216입니다.",
+        "따라서 ∛216=6이므로 정답은 ①입니다."
+      ],
+      "commonMistakes": [
+        "3^(2/3)은 3²을 3으로 나눈 수가 아닙니다. 3²의 세제곱근입니다.",
+        "∛24×∛9에서는 근호 안의 수를 곱합니다. 24+9로 더하지 마세요.",
+        "세제곱근은 세 번 곱해서 원래 수가 되는 값을 찾습니다. 6³=216을 확인하세요."
+      ],
+      "optionAnalysis": [
+        "① 6: 정답입니다. 따라서 ∛216=6이므로 정답은 ①입니다.",
+        "② 7: 계산 결과는 6이므로 이 보기와 일치하지 않습니다.",
+        "③ 8: 계산 결과는 6이므로 이 보기와 일치하지 않습니다.",
+        "④ 9: 계산 결과는 6이므로 이 보기와 일치하지 않습니다.",
+        "⑤ 10: 계산 결과는 6이므로 이 보기와 일치하지 않습니다."
+      ],
+      "sourceUrl": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=23bed50b6f952ec50a0e40f376fdb358",
+      "sourceAnswerUrl": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=bf6151b8e027981a7e251b8243ed9e39",
+      "sourcePublisher": "한국교육과정평가원",
+      "sourceLabel": "2024학년도 수능 수학 홀수형 1번",
+      "verified": true,
+      "verification": {
+        "questionSourceSha256": "6d36e565a709078b3c35b750c3d5019c416da2f7bc1b96b64092b43805c193b0",
+        "answerSourceSha256": "9a716aa25add06fdef36da441ba14cc22ab79ef68e8c00ee7d43400c33cab1c5",
+        "questionPage": 1,
+        "answerPage": 1,
+        "questionSourceFile": "수학영역_문제지.pdf",
+        "questionZipMember": null,
+        "visualCheck": "공식 문제지 1쪽의 식·보기·문항번호·홀수형을 확인하고 공식 정답표 1쪽과 대조함",
+        "calculationValue": 6.0,
+        "calculationMatchesOfficialAnswer": true,
+        "officialAnswerNumber": 1,
+        "retrievedDate": "2026-11-20",
+        "dateTimezone": "Asia/Seoul"
+      },
+      "contentNote": "수학식과 보기는 공식 문제를 확인하여 옮겼습니다. 안내 문구·힌트·풀이·오답 설명은 학습용으로 새로 작성했습니다. 오답 설명은 출제 기관이 공개한 선택지별 의도가 아닙니다.",
+      "mathLatex": "\\sqrt[3]{24}\\times3^{\\frac23}"
+    },
+    {
+      "id": "csat-2024-math-odd-02",
+      "kind": "past",
+      "type": "past",
+      "exam": "대학수학능력시험",
+      "year": 2024,
+      "academicYear": 2024,
+      "domain": "수학",
+      "subject": "공통",
+      "curriculumSubject": "수학Ⅱ",
+      "topic": "미분계수의 정의",
+      "questionNumber": 2,
+      "form": "홀수형",
+      "points": 2,
+      "difficulty": "기초",
+      "difficultyBasis": "학습용 분류이며 공식 난도 통계가 아닙니다.",
+      "statement": "f(x)=2x³−5x²+3일 때 다음 극한값을 구하세요.",
+      "formula": "lim(h→0) [f(2+h)−f(2)]/h",
+      "latex": "f(x)=2x^3-5x^2+3,\\quad\\lim_{h\\to0}\\frac{f(2+h)-f(2)}{h}",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "optionLatex": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "answerIndex": 3,
+      "answerNumber": 4,
+      "answer": "4",
+      "hint": "lim(h→0)[f(a+h)−f(a)]/h=f′(a)를 떠올려 보세요.",
+      "solutionSteps": [
+        "주어진 극한은 미분계수의 정의에 따라 f′(2)입니다. x=2에서 접선의 기울기를 묻습니다.",
+        "각 항을 미분하면 f′(x)=6x²−10x입니다. 상수 3의 미분은 0입니다.",
+        "x=2를 대입하면 f′(2)=6×4−10×2=24−20=4입니다.",
+        "따라서 정답은 ④ 4입니다."
+      ],
+      "commonMistakes": [
+        "h=0을 바로 대입하면 0/0이 됩니다. 0/0은 답이 아니며 식의 구조를 이용해 극한을 구해야 합니다.",
+        "−5x²의 미분은 −10x입니다. 음의 부호와 지수 2의 곱을 모두 유지하세요.",
+        "문제는 f(2)가 아니라 f′(2)입니다. 함수값을 계산하는 것으로 끝내지 마세요."
+      ],
+      "optionAnalysis": [
+        "① 1: 계산 결과는 4이므로 이 보기와 일치하지 않습니다.",
+        "② 2: 계산 결과는 4이므로 이 보기와 일치하지 않습니다.",
+        "③ 3: 계산 결과는 4이므로 이 보기와 일치하지 않습니다.",
+        "④ 4: 정답입니다. 따라서 정답은 ④ 4입니다.",
+        "⑤ 5: 계산 결과는 4이므로 이 보기와 일치하지 않습니다."
+      ],
+      "sourceUrl": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=23bed50b6f952ec50a0e40f376fdb358",
+      "sourceAnswerUrl": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=bf6151b8e027981a7e251b8243ed9e39",
+      "sourcePublisher": "한국교육과정평가원",
+      "sourceLabel": "2024학년도 수능 수학 홀수형 2번",
+      "verified": true,
+      "verification": {
+        "questionSourceSha256": "6d36e565a709078b3c35b750c3d5019c416da2f7bc1b96b64092b43805c193b0",
+        "answerSourceSha256": "9a716aa25add06fdef36da441ba14cc22ab79ef68e8c00ee7d43400c33cab1c5",
+        "questionPage": 1,
+        "answerPage": 1,
+        "questionSourceFile": "수학영역_문제지.pdf",
+        "questionZipMember": null,
+        "visualCheck": "공식 문제지 1쪽의 식·보기·문항번호·홀수형을 확인하고 공식 정답표 1쪽과 대조함",
+        "calculationValue": 4,
+        "calculationMatchesOfficialAnswer": true,
+        "officialAnswerNumber": 4,
+        "retrievedDate": "2026-11-20",
+        "dateTimezone": "Asia/Seoul"
+      },
+      "contentNote": "수학식과 보기는 공식 문제를 확인하여 옮겼습니다. 안내 문구·힌트·풀이·오답 설명은 학습용으로 새로 작성했습니다. 오답 설명은 출제 기관이 공개한 선택지별 의도가 아닙니다.",
+      "mathLatex": "f(x)=2x^3-5x^2+3,\\quad\\lim_{h\\to0}\\frac{f(2+h)-f(2)}{h}"
+    },
+    {
+      "id": "csat-2025-math-odd-01",
+      "kind": "past",
+      "type": "past",
+      "exam": "대학수학능력시험",
+      "year": 2025,
+      "academicYear": 2025,
+      "domain": "수학",
+      "subject": "공통",
+      "curriculumSubject": "수학Ⅰ",
+      "topic": "유리수 지수와 거듭제곱근",
+      "questionNumber": 1,
+      "form": "홀수형",
+      "points": 2,
+      "difficulty": "기초",
+      "difficultyBasis": "학습용 분류이며 공식 난도 통계가 아닙니다.",
+      "statement": "다음 식의 값을 구하세요.",
+      "formula": "∛5 × 25^(1/3)",
+      "latex": "\\sqrt[3]{5}\\times25^{\\frac13}",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "optionLatex": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "answerIndex": 4,
+      "answerNumber": 5,
+      "answer": "5",
+      "hint": "두 수를 모두 세제곱근으로 표현해 하나로 묶어 보세요.",
+      "solutionSteps": [
+        "25^(1/3)은 ∛25입니다.",
+        "세제곱근끼리 곱하면 ∛5×∛25=∛(5×25)=∛125입니다.",
+        "5³=125이므로 ∛125=5입니다.",
+        "따라서 정답은 ⑤ 5입니다."
+      ],
+      "commonMistakes": [
+        "a^(1/3)은 a를 3으로 나눈 값이 아니라 a의 세제곱근입니다.",
+        "∛5×∛25에서는 근호 안을 곱합니다. 5와 25를 더하면 안 됩니다.",
+        "밑을 5로 통일해도 됩니다. 5^(1/3)×5^(2/3)=5^1이며 지수의 합은 1입니다."
+      ],
+      "optionAnalysis": [
+        "① 1: 계산 결과는 5이므로 이 보기와 일치하지 않습니다.",
+        "② 2: 계산 결과는 5이므로 이 보기와 일치하지 않습니다.",
+        "③ 3: 계산 결과는 5이므로 이 보기와 일치하지 않습니다.",
+        "④ 4: 계산 결과는 5이므로 이 보기와 일치하지 않습니다.",
+        "⑤ 5: 정답입니다. 따라서 정답은 ⑤ 5입니다."
+      ],
+      "sourceUrl": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=20b8f2daf89db9ff668b257f6b51ea75",
+      "sourceAnswerUrl": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=e6db150eafd49585cea94f1770b59326",
+      "sourcePublisher": "한국교육과정평가원",
+      "sourceLabel": "2025학년도 수능 수학 홀수형 1번",
+      "verified": true,
+      "verification": {
+        "questionSourceSha256": "ad13d3f1858b880e79384e65fffd6bcb762e52b3bacd3be0a1e0c879675abe86",
+        "answerSourceSha256": "987fa768dc669042df4e018a157535407583e5564cd540cac7ddd2fd414b5e9e",
+        "questionPage": 1,
+        "answerPage": 1,
+        "questionSourceFile": "수학영역_문제지_홀수형.pdf",
+        "questionZipMember": null,
+        "visualCheck": "공식 문제지 1쪽의 식·보기·문항번호·홀수형을 확인하고 공식 정답표 1쪽과 대조함",
+        "calculationValue": 4.999999999999999,
+        "calculationMatchesOfficialAnswer": true,
+        "officialAnswerNumber": 5,
+        "retrievedDate": "2026-11-20",
+        "dateTimezone": "Asia/Seoul"
+      },
+      "contentNote": "수학식과 보기는 공식 문제를 확인하여 옮겼습니다. 안내 문구·힌트·풀이·오답 설명은 학습용으로 새로 작성했습니다. 오답 설명은 출제 기관이 공개한 선택지별 의도가 아닙니다.",
+      "mathLatex": "\\sqrt[3]{5}\\times25^{\\frac13}"
+    },
+    {
+      "id": "csat-2025-math-odd-02",
+      "kind": "past",
+      "type": "past",
+      "exam": "대학수학능력시험",
+      "year": 2025,
+      "academicYear": 2025,
+      "domain": "수학",
+      "subject": "공통",
+      "curriculumSubject": "수학Ⅱ",
+      "topic": "미분계수의 정의",
+      "questionNumber": 2,
+      "form": "홀수형",
+      "points": 2,
+      "difficulty": "기초",
+      "difficultyBasis": "학습용 분류이며 공식 난도 통계가 아닙니다.",
+      "statement": "f(x)=x³−8x+7일 때 다음 극한값을 구하세요.",
+      "formula": "lim(h→0) [f(2+h)−f(2)]/h",
+      "latex": "f(x)=x^3-8x+7,\\quad\\lim_{h\\to0}\\frac{f(2+h)-f(2)}{h}",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "optionLatex": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "answerIndex": 3,
+      "answerNumber": 4,
+      "answer": "4",
+      "hint": "극한식이 미분계수의 정의와 같은 모양인지 확인하세요.",
+      "solutionSteps": [
+        "주어진 극한은 x=2에서의 미분계수 f′(2)입니다.",
+        "f(x)=x³−8x+7을 미분하면 f′(x)=3x²−8입니다.",
+        "x=2를 대입하면 f′(2)=3×4−8=4입니다.",
+        "따라서 정답은 ④ 4입니다."
+      ],
+      "commonMistakes": [
+        "−8x의 미분은 −8입니다. x가 사라진다고 그 항 전체가 0이 되지는 않습니다.",
+        "상수 7의 미분은 0입니다. 도함수에 +7을 남기지 마세요.",
+        "f(2)=−1과 f′(2)=4는 서로 다른 값입니다. 차분몫의 극한은 f′(2)입니다."
+      ],
+      "optionAnalysis": [
+        "① 1: 계산 결과는 4이므로 이 보기와 일치하지 않습니다.",
+        "② 2: 계산 결과는 4이므로 이 보기와 일치하지 않습니다.",
+        "③ 3: 계산 결과는 4이므로 이 보기와 일치하지 않습니다.",
+        "④ 4: 정답입니다. 따라서 정답은 ④ 4입니다.",
+        "⑤ 5: 계산 결과는 4이므로 이 보기와 일치하지 않습니다."
+      ],
+      "sourceUrl": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=20b8f2daf89db9ff668b257f6b51ea75",
+      "sourceAnswerUrl": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=e6db150eafd49585cea94f1770b59326",
+      "sourcePublisher": "한국교육과정평가원",
+      "sourceLabel": "2025학년도 수능 수학 홀수형 2번",
+      "verified": true,
+      "verification": {
+        "questionSourceSha256": "ad13d3f1858b880e79384e65fffd6bcb762e52b3bacd3be0a1e0c879675abe86",
+        "answerSourceSha256": "987fa768dc669042df4e018a157535407583e5564cd540cac7ddd2fd414b5e9e",
+        "questionPage": 1,
+        "answerPage": 1,
+        "questionSourceFile": "수학영역_문제지_홀수형.pdf",
+        "questionZipMember": null,
+        "visualCheck": "공식 문제지 1쪽의 식·보기·문항번호·홀수형을 확인하고 공식 정답표 1쪽과 대조함",
+        "calculationValue": 4,
+        "calculationMatchesOfficialAnswer": true,
+        "officialAnswerNumber": 4,
+        "retrievedDate": "2026-11-20",
+        "dateTimezone": "Asia/Seoul"
+      },
+      "contentNote": "수학식과 보기는 공식 문제를 확인하여 옮겼습니다. 안내 문구·힌트·풀이·오답 설명은 학습용으로 새로 작성했습니다. 오답 설명은 출제 기관이 공개한 선택지별 의도가 아닙니다.",
+      "mathLatex": "f(x)=x^3-8x+7,\\quad\\lim_{h\\to0}\\frac{f(2+h)-f(2)}{h}"
+    },
+    {
+      "id": "csat-2026-math-odd-01",
+      "kind": "past",
+      "type": "past",
+      "exam": "대학수학능력시험",
+      "year": 2026,
+      "academicYear": 2026,
+      "domain": "수학",
+      "subject": "공통",
+      "curriculumSubject": "수학Ⅰ",
+      "topic": "지수법칙",
+      "questionNumber": 1,
+      "form": "홀수형",
+      "points": 2,
+      "difficulty": "기초",
+      "difficultyBasis": "학습용 분류이며 공식 난도 통계가 아닙니다.",
+      "statement": "다음 식의 값을 구하세요.",
+      "formula": "9^(1/4) × 3^(−1/2)",
+      "latex": "9^{\\frac14}\\times3^{-\\frac12}",
+      "options": [
+        "1",
+        "√3",
+        "3",
+        "3√3",
+        "9"
+      ],
+      "optionLatex": [
+        "1",
+        "\\sqrt3",
+        "3",
+        "3\\sqrt3",
+        "9"
+      ],
+      "answerIndex": 0,
+      "answerNumber": 1,
+      "answer": "1",
+      "hint": "9=3²을 이용해 밑을 3으로 통일하세요.",
+      "solutionSteps": [
+        "9를 3²으로 바꾸면 9^(1/4)=(3²)^(1/4)=3^(1/2)입니다.",
+        "밑이 같은 거듭제곱을 곱할 때는 지수를 더합니다. 1/2+(−1/2)=0입니다.",
+        "따라서 식은 3^0=1이 됩니다.",
+        "정답은 ① 1입니다."
+      ],
+      "commonMistakes": [
+        "9^(1/4)은 9/4가 아니라 9의 네제곱근입니다.",
+        "3^(−1/2)은 −√3이 아니라 1/√3입니다. 음의 지수는 역수를 뜻합니다.",
+        "같은 밑을 곱할 때 지수를 곱하지 마세요. 지수끼리 더하면 0입니다."
+      ],
+      "optionAnalysis": [
+        "① 1: 정답입니다. 정답은 ① 1입니다.",
+        "② √3: 계산 결과는 1이므로 이 보기와 일치하지 않습니다.",
+        "③ 3: 계산 결과는 1이므로 이 보기와 일치하지 않습니다.",
+        "④ 3√3: 계산 결과는 1이므로 이 보기와 일치하지 않습니다.",
+        "⑤ 9: 계산 결과는 1이므로 이 보기와 일치하지 않습니다."
+      ],
+      "sourceUrl": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=f9055b3484e9176cea7c74b9819a7d2c",
+      "sourceAnswerUrl": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=970fb683af8df94b36d29efe00741532",
+      "sourcePublisher": "한국교육과정평가원",
+      "sourceLabel": "2026학년도 수능 수학 홀수형 1번",
+      "verified": true,
+      "verification": {
+        "questionSourceSha256": "74e7e4a614559c3a94618e568d00b0392b12e25b6f5caa5e86334768f080d850",
+        "answerSourceSha256": "4a6482e853d2674cb79232abcf30d302197c374dd4b18aa9c80427660aec4f53",
+        "questionPage": 1,
+        "answerPage": 1,
+        "questionSourceFile": "수학영역_문제지.pdf",
+        "questionZipMember": null,
+        "visualCheck": "공식 문제지 1쪽의 식·보기·문항번호·홀수형을 확인하고 공식 정답표 1쪽과 대조함",
+        "calculationValue": 0.9999999999999999,
+        "calculationMatchesOfficialAnswer": true,
+        "officialAnswerNumber": 1,
+        "retrievedDate": "2026-11-20",
+        "dateTimezone": "Asia/Seoul"
+      },
+      "contentNote": "수학식과 보기는 공식 문제를 확인하여 옮겼습니다. 안내 문구·힌트·풀이·오답 설명은 학습용으로 새로 작성했습니다. 오답 설명은 출제 기관이 공개한 선택지별 의도가 아닙니다.",
+      "mathLatex": "9^{\\frac14}\\times3^{-\\frac12}"
+    },
+    {
+      "id": "csat-2026-math-odd-02",
+      "kind": "past",
+      "type": "past",
+      "exam": "대학수학능력시험",
+      "year": 2026,
+      "academicYear": 2026,
+      "domain": "수학",
+      "subject": "공통",
+      "curriculumSubject": "수학Ⅱ",
+      "topic": "미분계수의 정의",
+      "questionNumber": 2,
+      "form": "홀수형",
+      "points": 2,
+      "difficulty": "기초",
+      "difficultyBasis": "학습용 분류이며 공식 난도 통계가 아닙니다.",
+      "statement": "f(x)=3x³+4x+1일 때 다음 극한값을 구하세요.",
+      "formula": "lim(h→0) [f(1+h)−f(1)]/h",
+      "latex": "f(x)=3x^3+4x+1,\\quad\\lim_{h\\to0}\\frac{f(1+h)-f(1)}{h}",
+      "options": [
+        "7",
+        "9",
+        "11",
+        "13",
+        "15"
+      ],
+      "optionLatex": [
+        "7",
+        "9",
+        "11",
+        "13",
+        "15"
+      ],
+      "answerIndex": 3,
+      "answerNumber": 4,
+      "answer": "13",
+      "hint": "극한을 f′(1)로 바꾼 뒤 다항식 미분법을 적용하세요.",
+      "solutionSteps": [
+        "주어진 극한은 미분계수의 정의에 따라 f′(1)입니다.",
+        "3x³의 미분은 9x², 4x의 미분은 4, 상수 1의 미분은 0입니다. 따라서 f′(x)=9x²+4입니다.",
+        "x=1을 대입하면 f′(1)=9×1²+4=13입니다.",
+        "따라서 정답은 ④ 13입니다."
+      ],
+      "commonMistakes": [
+        "3x³을 미분할 때 원래 계수 3과 지수 3을 곱해야 합니다. 3x²이 아니라 9x²입니다.",
+        "4x를 미분하면 4입니다. 도함수에서 4x를 그대로 두지 마세요.",
+        "f(1)=8은 함수값입니다. 이 극한은 순간변화율 f′(1)=13을 묻습니다."
+      ],
+      "optionAnalysis": [
+        "① 7: 계산 결과는 13이므로 이 보기와 일치하지 않습니다.",
+        "② 9: 계산 결과는 13이므로 이 보기와 일치하지 않습니다.",
+        "③ 11: 계산 결과는 13이므로 이 보기와 일치하지 않습니다.",
+        "④ 13: 정답입니다. 따라서 정답은 ④ 13입니다.",
+        "⑤ 15: 계산 결과는 13이므로 이 보기와 일치하지 않습니다."
+      ],
+      "sourceUrl": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=f9055b3484e9176cea7c74b9819a7d2c",
+      "sourceAnswerUrl": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=970fb683af8df94b36d29efe00741532",
+      "sourcePublisher": "한국교육과정평가원",
+      "sourceLabel": "2026학년도 수능 수학 홀수형 2번",
+      "verified": true,
+      "verification": {
+        "questionSourceSha256": "74e7e4a614559c3a94618e568d00b0392b12e25b6f5caa5e86334768f080d850",
+        "answerSourceSha256": "4a6482e853d2674cb79232abcf30d302197c374dd4b18aa9c80427660aec4f53",
+        "questionPage": 1,
+        "answerPage": 1,
+        "questionSourceFile": "수학영역_문제지.pdf",
+        "questionZipMember": null,
+        "visualCheck": "공식 문제지 1쪽의 식·보기·문항번호·홀수형을 확인하고 공식 정답표 1쪽과 대조함",
+        "calculationValue": 13,
+        "calculationMatchesOfficialAnswer": true,
+        "officialAnswerNumber": 4,
+        "retrievedDate": "2026-11-20",
+        "dateTimezone": "Asia/Seoul"
+      },
+      "contentNote": "수학식과 보기는 공식 문제를 확인하여 옮겼습니다. 안내 문구·힌트·풀이·오답 설명은 학습용으로 새로 작성했습니다. 오답 설명은 출제 기관이 공개한 선택지별 의도가 아닙니다.",
+      "mathLatex": "f(x)=3x^3+4x+1,\\quad\\lim_{h\\to0}\\frac{f(1+h)-f(1)}{h}"
+    }
+  ],
+  "sources": [
+    {
+      "academic_year": 2022,
+      "name": "2교시_수학영역_문제지.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=8d1400b002e2a9ab76bc8a45da9ac67a",
+      "sha256": "10d68db0fa02c2c2d72c967e16ea19b648fa8d8357045f87fd79951b0a4ec54a"
+    },
+    {
+      "academic_year": 2022,
+      "name": "2교시_수학영역_정답표.pdf",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=17370fa9d479f61bd4fee34e3a6b5153",
+      "sha256": "b381a8509dee4f6984f33b6e91e09c80eb6c18bb59abc568816d9e4ccae52b97"
+    },
+    {
+      "academic_year": 2023,
+      "name": "2교시_수학영역_문제지.pdf",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=4dee411efbfef1ab1b44fde9dc8f9378",
+      "sha256": "c941a18844905dbc455e9dbe1ac057adb1718c2d2daa6c5608f224fc8c29d576"
+    },
+    {
+      "academic_year": 2023,
+      "name": "2교시_수학영역_정답표.pdf",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=7ed981af9e08428db993999c50a8ce3c",
+      "sha256": "95163099ce6f6cfef0efafeb34fd1907f7aa12c2400e75dfb03f527c6fffc9e6"
+    },
+    {
+      "academic_year": 2024,
+      "name": "수학영역_문제지.pdf",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=23bed50b6f952ec50a0e40f376fdb358",
+      "sha256": "6d36e565a709078b3c35b750c3d5019c416da2f7bc1b96b64092b43805c193b0"
+    },
+    {
+      "academic_year": 2024,
+      "name": "수학영역_정답표.pdf",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=bf6151b8e027981a7e251b8243ed9e39",
+      "sha256": "9a716aa25add06fdef36da441ba14cc22ab79ef68e8c00ee7d43400c33cab1c5"
+    },
+    {
+      "academic_year": 2025,
+      "name": "수학영역_문제지_홀수형.pdf",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=20b8f2daf89db9ff668b257f6b51ea75",
+      "sha256": "ad13d3f1858b880e79384e65fffd6bcb762e52b3bacd3be0a1e0c879675abe86"
+    },
+    {
+      "academic_year": 2025,
+      "name": "수학영역_정답표.pdf",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=e6db150eafd49585cea94f1770b59326",
+      "sha256": "987fa768dc669042df4e018a157535407583e5564cd540cac7ddd2fd414b5e9e"
+    },
+    {
+      "academic_year": 2026,
+      "name": "수학영역_문제지.pdf",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=f9055b3484e9176cea7c74b9819a7d2c",
+      "sha256": "74e7e4a614559c3a94618e568d00b0392b12e25b6f5caa5e86334768f080d850"
+    },
+    {
+      "academic_year": 2026,
+      "name": "수학영역_정답표.pdf",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=970fb683af8df94b36d29efe00741532",
+      "sha256": "4a6482e853d2674cb79232abcf30d302197c374dd4b18aa9c80427660aec4f53"
+    }
+  ]
+}

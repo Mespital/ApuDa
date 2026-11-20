@@ -1,0 +1,698 @@
+{
+  "topics": [
+    {
+      "id": "korean-common-poetic-personification",
+      "courseId": "korean-common",
+      "label": "시적 표현과 의인",
+      "description": "앉는 행동을 누가 하고 있는지 보세요.",
+      "concept": "의인(personification)은 사람이 아닌 대상에 사람의 행동이나 성질을 부여하는 표현입니다. 표현의 효과는 실제 시구를 근거로 해석합니다.",
+      "formula": ""
+    },
+    {
+      "id": "korean-common-narrator",
+      "courseId": "korean-common",
+      "label": "서술자와 시점",
+      "description": "나가 이야기의 중심인지, 남을 지켜보는 인물인지 구분하세요.",
+      "concept": "1인칭 주인공 시점은 이야기의 중심인 내가 자신의 경험과 내면을 직접 서술합니다. 등장인물을 관찰만 하는 1인칭 관찰자와 구분합니다.",
+      "formula": ""
+    },
+    {
+      "id": "korean-speech-audience",
+      "courseId": "korean-speech",
+      "label": "청중을 고려한 발표",
+      "description": "발표 목표와 청중의 배경지식을 함께 보세요.",
+      "concept": "발표는 청중의 배경지식과 관심, 상황에 맞게 용어와 사례를 조정해야 합니다. 전문 용어가 꼭 필요하면 쉬운 설명을 함께 제공합니다.",
+      "formula": ""
+    },
+    {
+      "id": "korean-speech-negotiation",
+      "courseId": "korean-speech",
+      "label": "협상과 공동의 이익",
+      "description": "양쪽이 조정할 수 있다고 밝힌 조건을 활용하세요.",
+      "concept": "협상은 각자의 요구 이면에 있는 관심을 파악하고 수용 가능한 대안을 찾는 과정입니다. 일방적인 양보 강요보다 공동의 이익을 검토합니다.",
+      "formula": ""
+    },
+    {
+      "id": "korean-speech-survey",
+      "courseId": "korean-speech",
+      "label": "자료의 대표성과 일반화",
+      "description": "누가 어떤 방식으로 응답했는지 확인하세요.",
+      "concept": "표본의 대표성은 모집단의 특성을 적절히 반영하는지를 뜻합니다. 자발적 응답 자료를 모든 사람의 의견으로 일반화할 때는 선택 편향을 점검합니다.",
+      "formula": ""
+    },
+    {
+      "id": "korean-speech-revision",
+      "courseId": "korean-speech",
+      "label": "주장과 근거를 연결하는 고쳐쓰기",
+      "description": "제시한 해결책이 모든 원인에 대응하는지 살펴보세요.",
+      "concept": "주장하는 해결책이 실제 문제의 원인에 대응하는지 확인합니다. 새로운 자료를 넣을 때는 결론을 뒷받침하는지 검토합니다.",
+      "formula": ""
+    },
+    {
+      "id": "korean-language-nasalization",
+      "courseId": "korean-language",
+      "label": "비음화와 음운 교체",
+      "description": "어느 자음이 무엇으로 바뀌었는지 비교하세요.",
+      "concept": "받침 ㄱ·ㄷ·ㅂ이 뒤의 ㄴ·ㅁ 앞에서 각각 ㅇ·ㄴ·ㅁ으로 바뀌는 비음화는 음운 교체의 예입니다.",
+      "formula": ""
+    },
+    {
+      "id": "korean-language-sentence-role",
+      "courseId": "korean-language",
+      "label": "문장 성분과 부사어",
+      "description": "동작의 주체·대상·장소를 나누어 보세요.",
+      "concept": "부사어는 용언이나 문장 전체 등을 수식합니다. 동작이 이루어지는 장소를 나타내는 말도 부사어가 될 수 있습니다.",
+      "formula": ""
+    },
+    {
+      "id": "korean-language-word-class",
+      "courseId": "korean-language",
+      "label": "관형사와 부사",
+      "description": "두 말이 각각 무엇을 꾸미는지 확인하세요.",
+      "concept": "관형사는 체언을 수식하고 부사는 주로 용언 등을 수식합니다. 문장 성분과 품사를 구분하고 실제로 꾸미는 말을 확인합니다.",
+      "formula": ""
+    },
+    {
+      "id": "korean-language-media-check",
+      "courseId": "korean-language",
+      "label": "매체 정보의 신뢰성",
+      "description": "숫자의 출처와 비교 기준을 먼저 확인하세요.",
+      "concept": "매체 정보는 원자료·작성 시점·작성 주체·자료 수집 방법을 함께 확인합니다. 조회 수나 공유 횟수만으로 정확성을 판단할 수 없습니다.",
+      "formula": ""
+    },
+    {
+      "id": "english-agreement",
+      "courseId": "english",
+      "label": "주어와 동사의 수 일치",
+      "description": "of 뒤 명사보다 문장의 중심 주어를 찾으세요.",
+      "concept": "Each of + 복수 명사에서 중심 주어 each는 단수로 취급합니다. 가까이에 있는 복수 명사에 끌려 동사를 고르지 마세요.",
+      "formula": ""
+    },
+    {
+      "id": "english-notice",
+      "courseId": "english",
+      "label": "안내문 조건 읽기",
+      "description": "optional과 must include의 차이를 확인하세요.",
+      "concept": "안내문은 기한·필수 조건·선택 조건을 구분해 읽습니다. optional은 선택 사항, required는 필수 사항입니다.",
+      "formula": ""
+    }
+  ],
+  "questions": [
+    {
+      "id": "authored-korean-common-poetic-personification",
+      "courseId": "korean-common",
+      "topicId": "korean-common-poetic-personification",
+      "domain": "국어",
+      "subject": "공통: 독서·문학",
+      "topic": "시적 표현과 의인",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "다음 시구의 표현 방법에 대한 설명으로 가장 적절한 것을 고르세요.",
+      "passage": "낡은 의자 하나 / 창가에 남겨 둔 오후 / 빈자리로 빛이 앉는다.",
+      "options": [
+        "빛에 사람의 행동을 부여해 장면을 생동감 있게 표현했다.",
+        "동일한 의문문을 반복해 대답을 요구했다.",
+        "서로 모순되는 의미를 직접 결합해 역설을 만들었다.",
+        "실제 소리를 그대로 흉내 내어 청각을 강조했다.",
+        "비교 대상 없이 수치로 객관적인 밝기를 측정했다."
+      ],
+      "answerIndex": 0,
+      "hint": "앉는 행동을 누가 하고 있는지 보세요.",
+      "solutionSteps": [
+        "핵심 표현은 빛이 앉는다는 구절입니다.",
+        "앉는 행동의 주체가 사람이 아닌 빛임을 확인합니다.",
+        "사물에 사람의 행동을 부여했으므로 의인적 표현입니다."
+      ],
+      "commonMistakes": [
+        "질문 형식의 문장이나 반복되는 의문문이 없습니다.",
+        "빈자리에 빛이 앉는 표현이 논리적 모순을 직접 진술한 것은 아닙니다."
+      ],
+      "optionAnalysis": [
+        "앉는다는 사람의 행동을 빛에 부여한 의인입니다.",
+        "질문 형식의 문장이나 반복되는 의문문이 없습니다.",
+        "빈자리에 빛이 앉는 표현이 논리적 모순을 직접 진술한 것은 아닙니다.",
+        "소리를 흉내 내는 의성어가 없습니다.",
+        "빛의 밝기를 측정하는 수치가 제시되지 않았습니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 개념 연습",
+      "generationBasis": "교과 개념 연습",
+      "verified": false,
+      "sourceRefs": [
+        "https://cdn2.kice.re.kr/27dae-suneung/index.html"
+      ]
+    },
+    {
+      "id": "authored-korean-common-narrator",
+      "courseId": "korean-common",
+      "topicId": "korean-common-narrator",
+      "domain": "국어",
+      "subject": "공통: 독서·문학",
+      "topic": "서술자와 시점",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "다음 글의 서술 방식으로 가장 적절한 것을 고르세요.",
+      "passage": "나는 결승선을 앞두고 걸음을 멈췄다. 실패할까 두려웠지만, 여기까지 온 내 선택을 후회하고 싶지는 않았다. 나는 다시 달리기 시작했다.",
+      "options": [
+        "이야기의 중심인 내가 자신의 행동과 내면을 직접 서술한다.",
+        "이야기 밖의 서술자가 모든 인물의 속마음을 알고 서술한다.",
+        "나는 주변 인물의 행동을 관찰할 뿐 내 행동은 전혀 서술하지 않는다.",
+        "서술자는 인물의 마음을 배제하고 겉으로 보이는 행동만 기록한다.",
+        "여러 인물이 차례로 등장해 서로의 과거를 편지로 서술한다."
+      ],
+      "answerIndex": 0,
+      "hint": "나가 이야기의 중심인지, 남을 지켜보는 인물인지 구분하세요.",
+      "solutionSteps": [
+        "서술자가 나라는 1인칭인지 확인합니다.",
+        "이야기의 주요 행동과 갈등이 나에게 집중됩니다.",
+        "자신의 내면도 직접 드러내므로 1인칭 주인공 서술입니다."
+      ],
+      "commonMistakes": [
+        "이야기 밖 서술자가 아니라 이야기 안의 내가 서술합니다.",
+        "내가 멈추고 다시 달리는 행동이 중심입니다."
+      ],
+      "optionAnalysis": [
+        "나는 자신의 선택과 두려움을 이야기의 중심에서 서술합니다.",
+        "이야기 밖 서술자가 아니라 이야기 안의 내가 서술합니다.",
+        "내가 멈추고 다시 달리는 행동이 중심입니다.",
+        "두려움과 후회에 대한 내면이 드러납니다.",
+        "여러 편지나 교대 서술 구조가 없습니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 개념 연습",
+      "generationBasis": "교과 개념 연습",
+      "verified": false,
+      "sourceRefs": [
+        "https://cdn2.kice.re.kr/27dae-suneung/index.html"
+      ]
+    },
+    {
+      "id": "authored-korean-speech-audience",
+      "courseId": "korean-speech",
+      "topicId": "korean-speech-audience",
+      "domain": "국어",
+      "subject": "화법과 작문",
+      "topic": "청중을 고려한 발표",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "다음 상황에서 가장 적절한 발표 전략을 고르세요.",
+      "passage": "학생이 스마트폰 사용에 익숙하지 않은 지역 주민에게 도서관 전자책 이용 방법을 안내하려 한다.",
+      "options": [
+        "어려운 용어를 풀어 설명하고 실제 화면의 이용 순서를 시범 보인다.",
+        "기술 전문가용 약어를 설명 없이 사용한다.",
+        "주민의 질문은 발표 흐름을 방해하므로 받지 않는다.",
+        "전자책과 관련 없는 기기 사양만 길게 나열한다.",
+        "청중의 이해 여부와 상관없이 최대한 빠르게 말한다."
+      ],
+      "answerIndex": 0,
+      "hint": "발표 목표와 청중의 배경지식을 함께 보세요.",
+      "solutionSteps": [
+        "발표 목표는 전자책을 실제로 이용하도록 돕는 것입니다.",
+        "청중은 스마트폰 이용 경험이 적습니다.",
+        "쉬운 용어와 단계별 시범이 목표와 청중 모두에 맞습니다."
+      ],
+      "commonMistakes": [
+        "설명 없는 약어는 청중의 이해를 어렵게 합니다.",
+        "질문은 이해 정도를 확인하는 데 도움이 됩니다."
+      ],
+      "optionAnalysis": [
+        "배경지식이 적은 청중에게 쉬운 설명과 시범이 적합합니다.",
+        "설명 없는 약어는 청중의 이해를 어렵게 합니다.",
+        "질문은 이해 정도를 확인하는 데 도움이 됩니다.",
+        "목표는 이용 안내이므로 사양 나열은 핵심에서 벗어납니다.",
+        "이해 여부를 확인하며 속도를 조절해야 합니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 개념 연습",
+      "generationBasis": "교과 개념 연습",
+      "verified": false,
+      "sourceRefs": [
+        "https://cdn2.kice.re.kr/27dae-suneung/index.html"
+      ]
+    },
+    {
+      "id": "authored-korean-speech-negotiation",
+      "courseId": "korean-speech",
+      "topicId": "korean-speech-negotiation",
+      "domain": "국어",
+      "subject": "화법과 작문",
+      "topic": "협상과 공동의 이익",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "두 집단의 관심을 함께 고려한 대안으로 가장 적절한 것을 고르세요.",
+      "passage": "독서 모임은 교실을 빌려 토론하고 싶어 한다. 자율학습 모임은 같은 교실에서 조용히 공부하고 싶어 한다. 두 모임은 모두 이용 시간 조정이 가능하다고 밝혔다.",
+      "options": [
+        "서로 다른 이용 시간을 정하고 다음 이용자를 위한 정리 규칙을 합의한다.",
+        "독서 모임은 앞으로 활동을 모두 중단한다.",
+        "자율학습 모임의 의견은 듣지 않고 토론을 계속한다.",
+        "같은 시간에 토론과 자율학습을 하되 소음 문제는 논의하지 않는다.",
+        "이용 시간 조정 가능성은 무시하고 상대방의 책임만 따진다."
+      ],
+      "answerIndex": 0,
+      "hint": "양쪽이 조정할 수 있다고 밝힌 조건을 활용하세요.",
+      "solutionSteps": [
+        "토론 모임의 핵심 관심은 말하며 활동할 공간입니다.",
+        "자율학습 모임은 조용한 학습 공간이 필요합니다.",
+        "두 집단이 시간을 조정할 수 있으므로 시간 분리가 적절합니다."
+      ],
+      "commonMistakes": [
+        "한쪽의 활동을 전면 중단하는 일방적 대안입니다.",
+        "다른 쪽의 관심을 고려하지 않습니다."
+      ],
+      "optionAnalysis": [
+        "시간을 분리하면 토론과 조용한 학습의 관심을 함께 충족합니다.",
+        "한쪽의 활동을 전면 중단하는 일방적 대안입니다.",
+        "다른 쪽의 관심을 고려하지 않습니다.",
+        "같은 공간의 소음이라는 갈등 원인을 해결하지 않습니다.",
+        "시간 조정이라는 협상 가능성을 활용하지 못합니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 개념 연습",
+      "generationBasis": "교과 개념 연습",
+      "verified": false,
+      "sourceRefs": [
+        "https://cdn2.kice.re.kr/27dae-suneung/index.html"
+      ]
+    },
+    {
+      "id": "authored-korean-speech-survey",
+      "courseId": "korean-speech",
+      "topicId": "korean-speech-survey",
+      "domain": "국어",
+      "subject": "화법과 작문",
+      "topic": "자료의 대표성과 일반화",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "다음 자료를 글에 활용할 때 가장 적절한 태도를 고르세요.",
+      "passage": "학교 도서관 이용 만족도를 조사했는데, 도서관 독서 동아리 가입자 중 자발적으로 응답한 학생 30명의 결과만 모였다.",
+      "options": [
+        "응답자의 특성과 모집 방식의 한계를 밝히고 전체 학생으로의 일반화를 신중히 한다.",
+        "30명이 응답했으므로 전교생의 의견과 반드시 같다고 단정한다.",
+        "불만족 응답은 조사 목적에 맞지 않으므로 모두 삭제한다.",
+        "도서관 이용 경험이 많은 집단이라는 사실은 숨긴다.",
+        "만족도와 성적의 인과관계가 입증되었다고 주장한다."
+      ],
+      "answerIndex": 0,
+      "hint": "누가 어떤 방식으로 응답했는지 확인하세요.",
+      "solutionSteps": [
+        "조사 대상은 전체 학생이 아니라 독서 동아리 가입자입니다.",
+        "응답도 자발적이어서 특정 성향이 더 반영될 수 있습니다.",
+        "표본의 한계를 밝히고 전체 학생으로 일반화하는 데 주의합니다."
+      ],
+      "commonMistakes": [
+        "일부 동아리 자발적 응답만으로 전교생과 동일하다고 할 수 없습니다.",
+        "불만족 응답을 임의 삭제하면 결과가 왜곡됩니다."
+      ],
+      "optionAnalysis": [
+        "모집 방식과 응답자 집단의 특성 때문에 대표성에 한계가 있습니다.",
+        "일부 동아리 자발적 응답만으로 전교생과 동일하다고 할 수 없습니다.",
+        "불만족 응답을 임의 삭제하면 결과가 왜곡됩니다.",
+        "응답자 특성은 해석에 필요한 정보입니다.",
+        "성적 변인을 조사하지도 않았고 인과관계도 검증하지 않았습니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 개념 연습",
+      "generationBasis": "교과 개념 연습",
+      "verified": false,
+      "sourceRefs": [
+        "https://cdn2.kice.re.kr/27dae-suneung/index.html"
+      ]
+    },
+    {
+      "id": "authored-korean-speech-revision",
+      "courseId": "korean-speech",
+      "topicId": "korean-speech-revision",
+      "domain": "국어",
+      "subject": "화법과 작문",
+      "topic": "주장과 근거를 연결하는 고쳐쓰기",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "다음 초고를 보완할 내용으로 가장 적절한 것을 고르세요.",
+      "passage": "초고: 운동장 분리배출함을 늘려야 한다. 기존 배출함은 자주 넘치고 수거 시각도 불규칙하다. 배출함을 늘리면 모든 문제가 해결될 것이다.",
+      "options": [
+        "배출함 추가와 함께 정기 수거 계획을 제시하고 해결 효과의 단정을 완화한다.",
+        "수거가 불규칙하다는 근거는 결론과 상관없으므로 감춘다.",
+        "분리배출과 무관한 운동 경기 결과를 결론의 근거로 넣는다.",
+        "모든 문제라는 표현을 예외 없이 모든 문제로 더 강화한다.",
+        "배출함 추가에 필요한 공간 조건은 확인하지 않도록 한다."
+      ],
+      "answerIndex": 0,
+      "hint": "제시한 해결책이 모든 원인에 대응하는지 살펴보세요.",
+      "solutionSteps": [
+        "초고에 드러난 원인은 용량 부족과 수거 불규칙성입니다.",
+        "배출함 추가만으로는 수거 문제를 직접 해결하지 못합니다.",
+        "수거 계획을 추가하고 효과를 과장한 표현을 조정하는 것이 적절합니다."
+      ],
+      "commonMistakes": [
+        "수거 문제는 핵심 원인이므로 검토해야 합니다.",
+        "운동 경기 결과는 대안의 효과와 관련이 없습니다."
+      ],
+      "optionAnalysis": [
+        "용량뿐 아니라 수거 불규칙성에도 대응해야 근거와 대안이 연결됩니다.",
+        "수거 문제는 핵심 원인이므로 검토해야 합니다.",
+        "운동 경기 결과는 대안의 효과와 관련이 없습니다.",
+        "충분한 근거 없는 단정을 더 강화하면 안 됩니다.",
+        "실행 조건도 해결책의 타당성에 영향을 줍니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 개념 연습",
+      "generationBasis": "교과 개념 연습",
+      "verified": false,
+      "sourceRefs": [
+        "https://cdn2.kice.re.kr/27dae-suneung/index.html"
+      ]
+    },
+    {
+      "id": "authored-korean-language-nasalization",
+      "courseId": "korean-language",
+      "topicId": "korean-language-nasalization",
+      "domain": "국어",
+      "subject": "언어와 매체",
+      "topic": "비음화와 음운 교체",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "국물의 표준 발음이 [궁물]인 현상에 대한 설명으로 옳은 것을 고르세요.",
+      "passage": "국물 → [궁물]",
+      "options": [
+        "뒤의 ㅁ의 영향으로 받침 ㄱ이 비음 ㅇ으로 바뀌었다.",
+        "받침 ㄱ과 뒤의 ㅁ이 모두 탈락했다.",
+        "두 음운 ㄱ과 ㅁ이 하나의 ㄲ으로 합쳐졌다.",
+        "원래 없던 ㄴ이 두 음절 사이에 첨가되었다.",
+        "모음 ㅜ가 모두 ㅗ로 바뀌었다."
+      ],
+      "answerIndex": 0,
+      "hint": "어느 자음이 무엇으로 바뀌었는지 비교하세요.",
+      "solutionSteps": [
+        "바뀐 소리는 첫 음절 끝의 ㄱ입니다.",
+        "뒤 음절의 ㅁ은 비음이며 ㄱ을 ㅇ으로 바꾸는 환경이 됩니다.",
+        "비음으로 바뀌었으므로 비음화이며 음운의 수는 유지됩니다."
+      ],
+      "commonMistakes": [
+        "ㄱ은 ㅇ으로 바뀌고 ㅁ은 유지됩니다.",
+        "하나의 된소리로 축약된 것이 아닙니다."
+      ],
+      "optionAnalysis": [
+        "비음 ㅁ 앞에서 ㄱ이 비음 ㅇ으로 교체됩니다.",
+        "ㄱ은 ㅇ으로 바뀌고 ㅁ은 유지됩니다.",
+        "하나의 된소리로 축약된 것이 아닙니다.",
+        "새 ㄴ이 첨가되는 현상이 아닙니다.",
+        "모음 ㅜ는 그대로 유지됩니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 개념 연습",
+      "generationBasis": "교과 개념 연습",
+      "verified": false,
+      "sourceRefs": [
+        "https://korean.go.kr/kornorms/m/m_regltn.do?regltn_code=0002"
+      ]
+    },
+    {
+      "id": "authored-korean-language-sentence-role",
+      "courseId": "korean-language",
+      "topicId": "korean-language-sentence-role",
+      "domain": "국어",
+      "subject": "언어와 매체",
+      "topic": "문장 성분과 부사어",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "다음 문장에서 운동장에서의 문장 성분을 고르세요.",
+      "passage": "민수가 운동장에서 공을 찼다.",
+      "options": [
+        "부사어",
+        "주어",
+        "목적어",
+        "관형어",
+        "서술어"
+      ],
+      "answerIndex": 0,
+      "hint": "동작의 주체·대상·장소를 나누어 보세요.",
+      "solutionSteps": [
+        "서술어 찼다가 요구하는 행위와 대상을 확인합니다.",
+        "운동장에서는 차는 동작이 이루어진 장소를 나타냅니다.",
+        "용언을 수식하는 장소 표현이므로 부사어입니다."
+      ],
+      "commonMistakes": [
+        "누가 찼는지 나타내는 주어는 민수가입니다.",
+        "차는 대상인 목적어는 공을입니다."
+      ],
+      "optionAnalysis": [
+        "운동장에서는 동작이 이루어지는 장소를 나타내며 찼다를 수식합니다.",
+        "누가 찼는지 나타내는 주어는 민수가입니다.",
+        "차는 대상인 목적어는 공을입니다.",
+        "체언을 꾸미는 관형어가 아니라 동작의 장소를 나타냅니다.",
+        "동작을 서술하는 서술어는 찼다입니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 개념 연습",
+      "generationBasis": "교과 개념 연습",
+      "verified": false,
+      "sourceRefs": [
+        "https://cdn2.kice.re.kr/27dae-suneung/index.html"
+      ]
+    },
+    {
+      "id": "authored-korean-language-word-class",
+      "courseId": "korean-language",
+      "topicId": "korean-language-word-class",
+      "domain": "국어",
+      "subject": "언어와 매체",
+      "topic": "관형사와 부사",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "다음 문장에서 새와 매우의 품사를 차례로 바르게 짝지은 것을 고르세요.",
+      "passage": "나는 새 책의 표지가 매우 예쁘다고 생각했다.",
+      "options": [
+        "관형사, 부사",
+        "명사, 조사",
+        "부사, 관형사",
+        "동사, 형용사",
+        "조사, 대명사"
+      ],
+      "answerIndex": 0,
+      "hint": "두 말이 각각 무엇을 꾸미는지 확인하세요.",
+      "solutionSteps": [
+        "새가 꾸미는 대상은 명사 책입니다.",
+        "매우가 꾸미는 대상은 형용사 예쁘다입니다.",
+        "따라서 새는 관형사, 매우는 부사입니다."
+      ],
+      "commonMistakes": [
+        "새는 여기서 새라는 동물을 가리키는 명사가 아니며 매우는 조사가 아닙니다.",
+        "두 품사의 순서가 뒤바뀌었습니다."
+      ],
+      "optionAnalysis": [
+        "새는 책이라는 명사를 꾸미는 관형사이고 매우는 예쁘다의 정도를 꾸미는 부사입니다.",
+        "새는 여기서 새라는 동물을 가리키는 명사가 아니며 매우는 조사가 아닙니다.",
+        "두 품사의 순서가 뒤바뀌었습니다.",
+        "새와 매우는 활용하는 동사나 형용사가 아닙니다.",
+        "새는 조사, 매우는 대명사로 쓰이지 않았습니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 개념 연습",
+      "generationBasis": "교과 개념 연습",
+      "verified": false,
+      "sourceRefs": [
+        "https://cdn2.kice.re.kr/27dae-suneung/index.html"
+      ]
+    },
+    {
+      "id": "authored-korean-language-media-check",
+      "courseId": "korean-language",
+      "topicId": "korean-language-media-check",
+      "domain": "국어",
+      "subject": "언어와 매체",
+      "topic": "매체 정보의 신뢰성",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "다음 상황에서 정보를 검증하는 방법으로 가장 적절한 것을 고르세요.",
+      "passage": "한 게시물이 출처와 조사 시점 없이 지역 도서관 이용자가 두 배 늘었다고 주장한다.",
+      "options": [
+        "도서관의 원자료와 조사 기간·집계 기준을 확인한다.",
+        "공유 횟수가 많으면 사실로 확정한다.",
+        "작성자가 자신 있게 말하면 출처는 확인하지 않는다.",
+        "같은 게시물을 복사한 글만 여러 개 찾아 독립된 증거로 센다.",
+        "자신의 예상과 맞는 수치이므로 그대로 인용한다."
+      ],
+      "answerIndex": 0,
+      "hint": "숫자의 출처와 비교 기준을 먼저 확인하세요.",
+      "solutionSteps": [
+        "게시물에는 비교 시점과 집계 기준이 빠져 있습니다.",
+        "이용자 수인지 방문 횟수인지에 따라서도 수치 의미가 다릅니다.",
+        "원자료를 찾아 동일 기준의 비교인지 확인해야 합니다."
+      ],
+      "commonMistakes": [
+        "공유량은 정보의 사실 여부를 직접 증명하지 않습니다.",
+        "말투의 확신은 자료의 정확성과 별개입니다."
+      ],
+      "optionAnalysis": [
+        "원자료와 기간·기준을 확인해야 두 배라는 비교의 타당성을 판단할 수 있습니다.",
+        "공유량은 정보의 사실 여부를 직접 증명하지 않습니다.",
+        "말투의 확신은 자료의 정확성과 별개입니다.",
+        "동일 게시물을 복제한 글은 독립적인 자료가 아닙니다.",
+        "기존 생각과 일치한다는 이유만으로 검증을 생략하면 안 됩니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 개념 연습",
+      "generationBasis": "교과 개념 연습",
+      "verified": false,
+      "sourceRefs": [
+        "https://cdn2.kice.re.kr/27dae-suneung/index.html"
+      ]
+    },
+    {
+      "id": "authored-english-agreement",
+      "courseId": "english",
+      "topicId": "english-agreement",
+      "domain": "영어",
+      "subject": "영어",
+      "topic": "주어와 동사의 수 일치",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "빈칸에 들어갈 말로 가장 적절한 것을 고르세요.",
+      "passage": "Each of the students ___ a notebook.",
+      "options": [
+        "has",
+        "have",
+        "are having been",
+        "were",
+        "have been"
+      ],
+      "answerIndex": 0,
+      "hint": "of 뒤 명사보다 문장의 중심 주어를 찾으세요.",
+      "solutionSteps": [
+        "전치사구 of the students를 제외하면 중심 주어는 Each입니다.",
+        "Each는 여기서 단수 주어로 취급됩니다.",
+        "노트를 가지고 있다는 현재 상태에는 has가 적절합니다."
+      ],
+      "commonMistakes": [
+        "have는 이 문장에서 단수 주어 Each와 수가 맞지 않습니다.",
+        "are having been은 이 문장에 맞는 동사 형태가 아닙니다."
+      ],
+      "optionAnalysis": [
+        "중심 주어 Each가 단수이므로 단수 현재형 has가 알맞습니다.",
+        "have는 이 문장에서 단수 주어 Each와 수가 맞지 않습니다.",
+        "are having been은 이 문장에 맞는 동사 형태가 아닙니다.",
+        "were는 복수 과거형이며 a notebook을 목적어로 취하는 뜻도 맞지 않습니다.",
+        "have been은 단수 주어에 맞지 않고 문장 의미도 성립하지 않습니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 개념 연습",
+      "generationBasis": "교과 개념 연습",
+      "verified": false,
+      "sourceRefs": [
+        "https://cdn2.kice.re.kr/27dae-suneung/index.html"
+      ],
+      "translation": "각 학생은 공책을 한 권 가지고 있다.",
+      "vocabulary": [
+        [
+          "each",
+          "각각, 각자"
+        ],
+        [
+          "student",
+          "학생"
+        ],
+        [
+          "notebook",
+          "공책"
+        ],
+        [
+          "have / has",
+          "가지고 있다"
+        ]
+      ],
+      "languageCode": "en"
+    },
+    {
+      "id": "authored-english-notice",
+      "courseId": "english",
+      "topicId": "english-notice",
+      "domain": "영어",
+      "subject": "영어",
+      "topic": "안내문 조건 읽기",
+      "kind": "authored",
+      "type": "authored",
+      "statement": "다음 안내문의 내용과 일치하는 것을 고르세요.",
+      "passage": "Submit your reading report by 5 p.m. on Friday. Late reports will not be accepted. Illustrations are optional, but the report must include the book title and your own opinion.",
+      "options": [
+        "Students may submit a report without illustrations.",
+        "Late reports are accepted until Sunday.",
+        "The book title can be omitted.",
+        "Students must include at least three illustrations.",
+        "Only a summary is required; personal opinions are unnecessary."
+      ],
+      "answerIndex": 0,
+      "hint": "optional과 must include의 차이를 확인하세요.",
+      "solutionSteps": [
+        "기한은 금요일 오후 5시이고 늦은 제출은 받지 않습니다.",
+        "책 제목과 자신의 의견은 반드시 포함해야 합니다.",
+        "그림은 선택 사항이므로 그림 없이 제출할 수 있습니다."
+      ],
+      "commonMistakes": [
+        "늦은 보고서는 받지 않는다고 명시했습니다.",
+        "책 제목은 must include로 제시된 필수 요소입니다."
+      ],
+      "optionAnalysis": [
+        "Illustrations are optional은 그림이 선택 사항이라는 뜻입니다.",
+        "늦은 보고서는 받지 않는다고 명시했습니다.",
+        "책 제목은 must include로 제시된 필수 요소입니다.",
+        "그림은 선택 사항이며 최소 개수 조건도 없습니다.",
+        "자신의 의견은 필수 요소입니다."
+      ],
+      "difficulty": "기본",
+      "points": 2,
+      "sourceLabel": "자체 구성 개념 연습",
+      "generationBasis": "교과 개념 연습",
+      "verified": false,
+      "sourceRefs": [
+        "https://cdn2.kice.re.kr/27dae-suneung/index.html"
+      ],
+      "translation": "독서 보고서를 금요일 오후 5시까지 제출하세요. 늦게 낸 보고서는 받지 않습니다. 그림은 선택 사항이지만 보고서에는 책 제목과 자신의 의견이 포함되어야 합니다.",
+      "vocabulary": [
+        [
+          "submit",
+          "제출하다"
+        ],
+        [
+          "accept",
+          "받아들이다, 접수하다"
+        ],
+        [
+          "illustration",
+          "그림, 삽화"
+        ],
+        [
+          "optional",
+          "선택 사항인"
+        ],
+        [
+          "opinion",
+          "의견"
+        ]
+      ],
+      "languageCode": "en"
+    }
+  ],
+  "sources": [
+    {
+      "title": "2027학년도 수능 공식 과목 범위",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/index.html",
+      "scope": "과목 범위 확인. 자체 문항의 정답 근거는 각 문항에 제시한 조건과 풀이."
+    },
+    {
+      "title": "국립국어원 표준 발음법",
+      "url": "https://korean.go.kr/kornorms/m/m_regltn.do?regltn_code=0002",
+      "scope": "비음화의 기본 원리 확인."
+    }
+  ]
+}
