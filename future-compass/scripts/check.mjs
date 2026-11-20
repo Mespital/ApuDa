@@ -64,3 +64,5 @@ for(const f of fs.readdirSync(path.join(root,'dist')).filter(f=>f.endsWith('.js'
 await import('./check-csat.mjs');
 
 await import('./check-csat-papers.mjs');
+
+await import('./check-csat-analysis.mjs');
