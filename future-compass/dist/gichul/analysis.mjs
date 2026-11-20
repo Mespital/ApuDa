@@ -1,6 +1,10 @@
 import {TOPICS,inferTopic} from './engine.mjs';
-import {courseById} from './catalog.mjs';
+import {COURSES,courseById} from './catalog.mjs';
+export const ANALYSIS_COURSES=[...COURSES,{id:'math-legacy-ga',label:'수학 가형 · 2018~2021',domain:'수학',legacy:true},{id:'math-legacy-na',label:'수학 나형 · 2018~2021',domain:'수학',legacy:true}];
+export const analysisCourseById=id=>ANALYSIS_COURSES.find(c=>c.id===id);
+export function mergeTypeData(english={},math={}){return {...english,records:[...(english.records||[]),...(math.records||[])],types:{...(english.types||{}),...(math.types||{})},papers:[...(english.papers||[]),...(math.papers||[])],mathScope:math.scope||null,_mathLoadError:!!math._loadError};}
 const englishPractice={'english-main':'en-read-main','english-blank':'en-read-blank','english-agreement':'en-read-grammar','english-notice':'en-read-notice'};
+const mathPractice={'probability':'math-statistics-probability','math-statistics-combinations':'math-statistics-counting','math-statistics-binomial':'math-statistics-binomial','math-statistics-normal':'math-statistics-normal','math-calculus-exponential':'math-calculus-differentiation','math-calculus-integral':'math-calculus-integration','math-calculus-geometric':'math-calculus-series','math-geometry-dot':'math-geometry-vectors','math-geometry-parabola':'math-geometry-conics','math-geometry-ellipse':'math-geometry-conics'};
 const methods={'국어':'표현·문장·지문 근거 대조','수학':'조건을 식으로 바꾸고 계산','영어':'문맥·구조·어휘 대조','한국사':'사료 단서와 시대 맥락 연결','사회탐구':'개념·관점·자료 비교','과학탐구':'모형·조건·수량 관계 적용','직업탐구':'업무 상황과 적용 기준 확인','제2외국어/한문':'문법·어휘·상황의 의미 대조'};
 function topicUnit(t){
  const id=t.id;
@@ -19,16 +23,17 @@ function topicUnit(t){
  if(/^science-earth/.test(id))return /stellar|kepler/.test(id)?'천체':'지질';
  return t.label;
 }
-function topicType(t){return {id:englishPractice[t.id]||(['exponents','derivative','limit','sequence','probability'].includes(t.id)?'math-'+t.id:'topic-'+t.id),label:t.label,unit:topicUnit(t),courseId:t.courseId,method:methods[courseById(t.courseId)?.domain]||'개념과 조건 대조',practiceTopicId:t.id,concept:t.concept};}
+function topicType(t){return {id:englishPractice[t.id]||mathPractice[t.id]||(['exponents','derivative','limit','sequence'].includes(t.id)?'math-'+t.id:'topic-'+t.id),label:t.label,unit:topicUnit(t),courseId:t.courseId,method:methods[courseById(t.courseId)?.domain]||'개념과 조건 대조',practiceTopicId:t.id,concept:t.concept};}
 export function buildTypeCatalog(data={}){
- const types=new Map(Object.entries(data.types||{}).map(([id,m])=>[id,{...m,id,courseId:'english'}]));
+ const types=new Map(Object.entries(data.types||{}).map(([id,m])=>[id,{...m,id,courseId:m.courseId||'english'}]));
  for(const t of TOPICS){const m=topicType(t),old=types.get(m.id);types.set(m.id,old?{...m,...old,practiceTopicId:t.id,concept:t.concept}:m)}
  return types;
 }
 export function officialTypeRecords(data,pasts){
- const rows=(data?.records||[]).map(r=>({...r,sourceKind:'prompt',domain:courseById(r.courseId)?.domain}));
- for(const q of pasts||[]){const topic=TOPICS.find(t=>t.id===inferTopic(q));if(!topic)continue;const m=topicType(topic);rows.push({id:q.id,questionId:q.id,year:q.year,courseId:topic.courseId,domain:q.domain,questionNumber:q.questionNumber,typeId:m.id,unit:m.unit,form:'odd',sourceKind:'verified-solver',basis:'공식 문제·정답 대조 표본'})}
- const unique=new Map();for(const r of rows)unique.set([r.year,r.courseId,r.form,r.questionNumber].join('|'),r);return [...unique.values()];
+ const key=r=>[r.year,r.courseId,r.form,r.questionNumber].join('|'),unique=new Map();
+ for(const r of data?.records||[])unique.set(key(r),{...r,sourceKind:'source-classification',domain:analysisCourseById(r.courseId)?.domain});
+ for(const q of pasts||[]){const topic=TOPICS.find(t=>t.id===inferTopic(q));if(!topic)continue;const m=topicType(topic),r={id:q.id,questionId:q.id,year:q.year,courseId:topic.courseId,domain:q.domain,questionNumber:q.questionNumber,typeId:m.id,unit:m.unit,form:'odd',sourceKind:'verified-solver',basis:'공식 문제·정답 대조 표본'},old=unique.get(key(r));unique.set(key(r),old?{...old,questionId:q.id}:r)}
+ return [...unique.values()];
 }
 const selected=(r,f)=> (!f.domain||r.domain===f.domain)&&(!f.courseId||r.courseId===f.courseId)&&(!f.year||r.year===Number(f.year))&&(!f.unit||r.unit===f.unit);
 export function officialTypeAnalysis(data,pasts,filters={}){
@@ -42,7 +47,7 @@ export function officialTypeAnalysis(data,pasts,filters={}){
 export function learningTypeAnalysis(db,pasts,authored,filters={},data={}){
  const qmap=new Map([...(pasts||[]),...(authored||[]),...Object.values(db.questions||{})].map(q=>[q.id,q])),types=buildTypeCatalog(data),latest=new Map();
  const attempts=[...(db.attempts||[])].filter(a=>!a.assisted&&Number.isInteger(a.selected)&&a.selected>=0&&a.selected<5&&Number.isFinite(Date.parse(a.time))).sort((a,b)=>Date.parse(a.time)-Date.parse(b.time));
- for(const a of attempts){const q=qmap.get(a.qid);if(!q)continue;const t=TOPICS.find(t=>t.id===inferTopic(q));if(!t)continue;const m=topicType(t),domain=courseById(t.courseId)?.domain,r={id:q.originId||q.id,qid:q.id,courseId:t.courseId,domain,typeId:m.id,unit:m.unit,correct:a.selected===q.answerIndex,unresolved:a.selected!==q.answerIndex&&!db.resolved?.[q.id],time:a.time,sourceKind:q.kind==='past'?'기출':q.originId||q.kind==='authored'?'자체 개념':'유형 변형'};latest.set(r.id,r)}
+ for(const a of attempts){const q=qmap.get(a.qid);if(!q)continue;const t=TOPICS.find(t=>t.id===inferTopic(q));if(!t)continue;const basic=topicType(t),m=types.get(basic.id)||basic,domain=courseById(t.courseId)?.domain,r={id:q.originId||q.id,qid:q.id,courseId:t.courseId,domain,typeId:m.id,unit:m.unit,correct:a.selected===q.answerIndex,unresolved:a.selected!==q.answerIndex&&!db.resolved?.[q.id],time:a.time,sourceKind:q.kind==='past'?'기출':q.originId||q.kind==='authored'?'자체 개념':'유형 변형'};latest.set(r.id,r)}
  const rows=[...latest.values()].filter(r=>selected(r,filters)&&(!filters.typeId||r.typeId===filters.typeId)),groups=new Map();
  for(const r of rows){const meta=types.get(r.typeId),g=groups.get(r.typeId)||{...meta,count:0,correct:0,wrong:0,unresolved:0,qids:[],sourceCounts:{}};g.count++;g.correct+=Number(r.correct);g.wrong+=Number(!r.correct);g.unresolved+=Number(r.unresolved);g.qids.push(r.qid);g.sourceCounts[r.sourceKind]=(g.sourceCounts[r.sourceKind]||0)+1;groups.set(r.typeId,g)}
  const frequencies=[...groups.values()].map(g=>({...g,wrongRate:g.count?100*g.wrong/g.count:null,accuracy:g.count?100*g.correct/g.count:null,smallSample:g.count<3})).sort((a,b)=>b.unresolved-a.unresolved||b.wrong-a.wrong||b.count-a.count);
