@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-19T04:00:42+00:00",
+  "checked_at": "2026-11-20T03:54:20+00:00",
   "registered_hospitals": 30,
   "hospitals_with_matched_doctors": 8,
   "matched_doctors": 489,
@@ -11,7 +11,7 @@
       "region": "서울",
       "official_url": "https://www.amc.seoul.kr/asan/main.do",
       "official_staff_url": "https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoList.do",
-      "matched_doctors": 147,
+      "matched_doctors": 148,
       "source_status": "VERIFIED_MATCHES",
       "directory_http": 200,
       "diagnostic": null,
@@ -169,8 +169,8 @@
       "official_staff_url": null,
       "matched_doctors": 0,
       "source_status": "REVIEW_REQUIRED",
-      "directory_http": null,
-      "diagnostic": "ConnectTimeout",
+      "directory_http": 200,
+      "diagnostic": "no-public-static-doctor-links-found",
       "candidate_links": []
     },
     {
@@ -347,7 +347,7 @@
       "region": "전남",
       "official_url": "https://www.cnuhh.com",
       "official_staff_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor",
-      "matched_doctors": 58,
+      "matched_doctors": 57,
       "source_status": "VERIFIED_MATCHES",
       "directory_http": 200,
       "diagnostic": null,
