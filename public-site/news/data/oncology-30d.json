@@ -1,9 +1,9 @@
 {
   "version": "1.0",
-  "generated_at": "2026-11-20T08:57:30.584974+09:00",
+  "generated_at": "2026-11-20T16:31:15.871812+09:00",
   "window": {
-    "start": "2026-10-20T09:00:00+09:00",
-    "end": "2026-11-19T09:00:00+09:00",
+    "start": "2026-10-21T09:00:00+09:00",
+    "end": "2026-11-20T09:00:00+09:00",
     "days": 30,
     "timezone": "Asia/Seoul"
   },
@@ -89,7 +89,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 24
+      "age_days": 25
     },
     {
       "rank": 4,
@@ -156,41 +156,42 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 24
+      "age_days": 25
     },
     {
-      "rank": null,
-      "canonical_issue": "간학회 임영석 이사장 “간염 조기치료, 급여기준 개선해야” - 의학신문",
-      "title": "간학회 임영석 이사장 “간염 조기치료, 급여기준 개선해야”",
+      "rank": 2,
+      "canonical_issue": "머크, 27억달러엔 산 혈액암 후보물질 3상 실패 발표...릴리와 '대조' - 메디파나뉴스",
+      "title": "머크, 27억달러엔 산 혈액암 후보물질 3상 실패 발표...릴리와 '대조'",
       "category": [
-        "급여"
+        "허가",
+        "3상"
       ],
       "publishers": [
-        "의학신문"
+        "메디파나뉴스"
       ],
-      "published_at": "2026-10-20T19:08:08+09:00",
+      "published_at": "2026-11-19T12:00:00+09:00",
       "published_at_verified": true,
       "summary": [
-        "[의학신문·일간보사=정광성 기자] 만성 바이러스 간염의 조기치료와 간암 예방을 위해 개정된 진료지침에 맞춰 건강보험 급여기준을 개선해야 한다는 전문가의 제언이 나",
-        "[의학신문·일간보사=정광성 기자] 만성 바이러스 간염의 조기치료와 간암 예방을 위해 개정된 진료지침에 맞춰 건강보험 급여기준을 개선해야 한다는 전문가의 제언이 나왔다.",
-        "대한간학회와 한국간재단은 20일 ‘한국 간질환의 새로운 도약: 만성 간염 극복과 간암 예방’을 주제로 ‘제27회 간의 날 기념식 및 토론회’를 개최했다."
+        "미국 머크(MSD)가 그간 연구해온 혈액암 치료쪽의 BTK 억제제가 지난 18일 전면 3상 임상시험을 중단했다. 효능보다 안전성 우려가 제기된 우려 때문이다. 반면에 경쟁사였던 일라이 릴리는 지난 23년 같은 BTK 계열 혈액암(구체적으론 외투세포림프종) 치료제 '제이피르카(Jaypirca)'을 FDA로",
+        "복사하기 사진=AI 생성 이미지 미국 머크(MSD)가 그간 연구해온 혈액암 치료쪽의 BTK 억제제가 지난 18일 전면 3상 임상시험을 중단했다.",
+        "반면에 경쟁사였던 일라이 릴리는 지난 23년 같은 BTK 계열 혈액암(구체적으론 외투세포림프종) 치료제 '제이피르카(Jaypirca)'을 FDA로부터 시판허가를 받아 현재 시판중이다."
       ],
-      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "importance": "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다.",
       "source_urls": [
-        "https://www.bosa.co.kr/news/articleView.html?idxno=3014397"
+        "https://www.medipana.com/news/articleView.html?idxno=422226"
       ],
       "source_links": [
         {
-          "publisher": "의학신문",
-          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014397"
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=422226"
         }
       ],
-      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3014397_415312_5955.jpg",
-      "score": 31,
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202611/422226_330243_5539.png",
+      "score": 51,
       "oncology": {
         "is_oncology": true,
         "cancer_types": [
-          "간암"
+          "림프종"
         ],
         "drug_generic": [],
         "drug_brand": [],
@@ -198,7 +199,7 @@
         "mechanism": [],
         "biomarkers": [],
         "trial_name": null,
-        "phase": null,
+        "phase": "3",
         "line_of_therapy": null,
         "endpoints": {
           "orr": null,
@@ -207,19 +208,19 @@
           "hr": null,
           "grade3plus_ae": null
         },
-        "approval_status": null,
-        "reimbursement_status": "급여 관련",
-        "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
-        "patient_relevance_score": 72,
+        "approval_status": "허가 관련",
+        "reimbursement_status": null,
+        "patient_summary": "치료제의 허가 범위나 사용 가능성과 관련된 소식입니다. 국내 실제 사용은 식약처 허가사항을 확인해야 합니다.",
+        "patient_relevance_score": 70,
         "patient_relevance_labels": [
-          "급여·접근성",
-          "가이드라인",
-          "지원제도"
+          "허가",
+          "안전성",
+          "임상결과"
         ],
         "industry_summary": null
       },
-      "freshness": "30d",
-      "age_days": 30
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -282,7 +283,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 24
+      "age_days": 25
     },
     {
       "rank": null,
@@ -345,7 +346,72 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 22
+      "age_days": 23
+    },
+    {
+      "rank": null,
+      "canonical_issue": "화이자, 중국 CAR-T 기술에 최대 26억달러…자가면역 신약 승부수 - 메디파나뉴스",
+      "title": "화이자, 중국 CAR-T 기술에 최대 26억달러…자가면역 신약 승부수",
+      "category": [
+        "허가",
+        "라이선스",
+        "공급",
+        "ai"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-11-20T08:14:08+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "미국 제약기업 화이자가 중국 바이오기업의 차세대 CAR-T 기술을 도입하며 자가면역질환 신약 개발에 나섰다. 환자의 면역세포를 몸 밖에서 가공하는 기존 방식과 달리 체내에서 직접 CAR-T 세포를 생성하는 기술로, 치료제 제조 과정의 복잡성을 줄이고 적용 범위를 넓히려는 전략이다. 화이자는 18일(현지시",
+        "복사하기 AI 생성 이미지 미국 제약기업 화이자가 중국 바이오기업의 차세대 CAR-T 기술을 도입하며 자가면역질환 신약 개발에 나섰다.",
+        "환자의 면역세포를 몸 밖에서 가공하는 기존 방식과 달리 체내에서 직접 CAR-T 세포를 생성하는 기술로, 치료제 제조 과정의 복잡성을 줄이고 적용 범위를 넓히려는 전략이다."
+      ],
+      "importance": "기사에서 사업개발·투자 변화가 함께 확인돼 기업 포트폴리오와 경쟁구도 영향을 살펴볼 필요가 있습니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=422290"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=422290"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202611/422290_330316_1342.jpg",
+      "score": 20,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [
+          "CAR-T"
+        ],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": "허가 관련",
+        "reimbursement_status": null,
+        "patient_summary": "치료제의 허가 범위나 사용 가능성과 관련된 소식입니다. 국내 실제 사용은 식약처 허가사항을 확인해야 합니다.",
+        "patient_relevance_score": 58,
+        "patient_relevance_labels": [
+          "허가",
+          "안전성"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "today",
+      "age_days": 0
     },
     {
       "rank": null,
@@ -407,7 +473,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 20
+      "age_days": 21
     },
     {
       "rank": null,
@@ -472,7 +538,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 20
+      "age_days": 21
     },
     {
       "rank": null,
@@ -536,195 +602,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 29
-    },
-    {
-      "rank": 5,
-      "canonical_issue": "B형간염 진료지침, 치료 대상 넓혔지만…건보 급여는 '제자리' - 메디파나뉴스",
-      "title": "B형간염 진료지침, 치료 대상 넓혔지만…건보 급여는 '제자리'",
-      "category": [
-        "급여"
-      ],
-      "publishers": [
-        "메디파나뉴스"
-      ],
-      "published_at": "2026-10-21T06:02:00+09:00",
-      "published_at_verified": true,
-      "summary": [
-        "만성 B형간염 치료의 기준이 달라졌다. 그동안 간수치(ALT) 상승 여부가 항바이러스 치료를 결정하는 주요 기준이었다면, 이제는 B형간염 바이러스의 증식 정도와 간암 발생 위험을 중심으로 치료 시점을 판단하는 방향으로 전환됐다. 대한간학회가 개정한 '2026 만성 B형간염 진료가이드라인'은 이러한 변화를",
-        "대한간학회 의료정책위원회 최광현 간사, 대한간학회 임영석 이사장.",
-        "사진=박으뜸 기자 만성 B형간염 치료의 기준이 달라졌다."
-      ],
-      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
-      "source_urls": [
-        "https://www.medipana.com/news/articleView.html?idxno=419706"
-      ],
-      "source_links": [
-        {
-          "publisher": "메디파나뉴스",
-          "url": "https://www.medipana.com/news/articleView.html?idxno=419706"
-        }
-      ],
-      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419706_327243_2231.jpg",
-      "score": 37,
-      "oncology": {
-        "is_oncology": true,
-        "cancer_types": [
-          "간암"
-        ],
-        "drug_generic": [],
-        "drug_brand": [],
-        "targets": [],
-        "mechanism": [],
-        "biomarkers": [],
-        "trial_name": null,
-        "phase": null,
-        "line_of_therapy": null,
-        "endpoints": {
-          "orr": null,
-          "pfs": null,
-          "os": null,
-          "hr": null,
-          "grade3plus_ae": null
-        },
-        "approval_status": null,
-        "reimbursement_status": "급여 관련",
-        "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
-        "patient_relevance_score": 54,
-        "patient_relevance_labels": [
-          "급여·접근성",
-          "가이드라인"
-        ],
-        "industry_summary": null
-      },
-      "freshness": "30d",
-      "age_days": 29
-    },
-    {
-      "rank": null,
-      "canonical_issue": "간암 생존율 높아졌다…이제는 '맞춤 치료'가 관건 - 메디파나뉴스",
-      "title": "간암 생존율 높아졌다…이제는 '맞춤 치료'가 관건",
-      "category": [
-        "급여"
-      ],
-      "publishers": [
-        "메디파나뉴스"
-      ],
-      "published_at": "2026-10-21T06:01:00+09:00",
-      "published_at_verified": true,
-      "summary": [
-        "간암 치료의 성적이 달라지고 있다. 과거에는 진행성 간암으로 진단되면 치료 선택지가 제한적이었지만, 면역항암제 도입 이후 장기 생존을 기대할 수 있는 환자가 늘고 있다. 그러나 치료법이 다양해진 만큼 새로운 과제도 생겼다. 어떤 환자에게 어떤 약제가 효과적일지 예측하기 어려운 데다, 첫 치료 선택에 따라",
-        "과거에는 진행성 간암으로 진단되면 치료 선택지가 제한적이었지만, 면역항암제 도입 이후 장기 생존을 기대할 수 있는 환자가 늘고 있다.",
-        "어떤 환자에게 어떤 약제가 효과적일지 예측하기 어려운 데다, 첫 치료 선택에 따라 후속 항암제의 건강보험 급여 범위가 달라진다."
-      ],
-      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
-      "source_urls": [
-        "https://www.medipana.com/news/articleView.html?idxno=419707"
-      ],
-      "source_links": [
-        {
-          "publisher": "메디파나뉴스",
-          "url": "https://www.medipana.com/news/articleView.html?idxno=419707"
-        }
-      ],
-      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419707_327242_5834.jpg",
-      "score": 29,
-      "oncology": {
-        "is_oncology": true,
-        "cancer_types": [
-          "간암"
-        ],
-        "drug_generic": [],
-        "drug_brand": [],
-        "targets": [],
-        "mechanism": [],
-        "biomarkers": [],
-        "trial_name": null,
-        "phase": null,
-        "line_of_therapy": null,
-        "endpoints": {
-          "orr": null,
-          "pfs": null,
-          "os": null,
-          "hr": null,
-          "grade3plus_ae": null
-        },
-        "approval_status": null,
-        "reimbursement_status": "급여 관련",
-        "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
-        "patient_relevance_score": 54,
-        "patient_relevance_labels": [
-          "급여·접근성",
-          "가이드라인"
-        ],
-        "industry_summary": null
-      },
-      "freshness": "30d",
-      "age_days": 29
-    },
-    {
-      "rank": null,
-      "canonical_issue": "간학회, B형간염 치료 확대·간암 정밀 치료로 새 패러다임 제시 - 의학신문",
-      "title": "간학회, B형간염 치료 확대·간암 정밀 치료로 새 패러다임 제시",
-      "category": [
-        "정책",
-        "급여",
-        "병원"
-      ],
-      "publishers": [
-        "의학신문"
-      ],
-      "published_at": "2026-10-21T06:00:00+09:00",
-      "published_at_verified": true,
-      "summary": [
-        "[의학신문·일간보사=정광성 기자] 대한간학회가 B형간염의 치료 기회를 넓히고 간암 환자의 장기 생존을 높이기 위한 새로운 간질환 관리 방향을 제시했다.한국간재단과",
-        "[의학신문·일간보사=정광성 기자] 대한간학회가 B형간염의 치료 기회를 넓히고 간암 환자의 장기 생존을 높이기 위한 새로운 간질환 관리 방향을 제시했다.",
-        "한국간재단과 대한간학회는 지난 20일 웨스틴조선서울에서 ‘제27회 간의 날 기념식 및 토론회’를 열고, ‘한국 간질환의 새로운 도약: 만성 간염 극복과 간암 예방’을 주제로 논의했다."
-      ],
-      "importance": "기사에서 급여·약가 이슈가 함께 확인돼 시장 접근성과 환자 부담 변화를 후속 확인할 필요가 있습니다.",
-      "source_urls": [
-        "https://www.bosa.co.kr/news/articleView.html?idxno=3014411"
-      ],
-      "source_links": [
-        {
-          "publisher": "의학신문",
-          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014411"
-        }
-      ],
-      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3014411_415332_5228.jpg",
-      "score": 22,
-      "oncology": {
-        "is_oncology": true,
-        "cancer_types": [
-          "간암"
-        ],
-        "drug_generic": [],
-        "drug_brand": [],
-        "targets": [],
-        "mechanism": [],
-        "biomarkers": [],
-        "trial_name": null,
-        "phase": null,
-        "line_of_therapy": null,
-        "endpoints": {
-          "orr": null,
-          "pfs": null,
-          "os": null,
-          "hr": null,
-          "grade3plus_ae": null
-        },
-        "approval_status": null,
-        "reimbursement_status": "급여 관련",
-        "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
-        "patient_relevance_score": 54,
-        "patient_relevance_labels": [
-          "급여·접근성",
-          "가이드라인"
-        ],
-        "industry_summary": null
-      },
-      "freshness": "30d",
-      "age_days": 29
+      "age_days": 30
     },
     {
       "rank": null,
@@ -785,7 +663,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 27
+      "age_days": 28
     },
     {
       "rank": null,
@@ -845,7 +723,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 23
+      "age_days": 24
     },
     {
       "rank": null,
@@ -906,7 +784,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 19
+      "age_days": 20
     },
     {
       "rank": null,
@@ -968,7 +846,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 20
+      "age_days": 21
     },
     {
       "rank": null,
@@ -1033,7 +911,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 21
+      "age_days": 22
     },
     {
       "rank": null,
@@ -1095,7 +973,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 23
+      "age_days": 24
     },
     {
       "rank": null,
@@ -1155,7 +1033,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 27
+      "age_days": 28
     },
     {
       "rank": null,
@@ -1216,7 +1094,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 27
+      "age_days": 28
     },
     {
       "rank": null,
@@ -1278,7 +1156,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 28
+      "age_days": 29
     },
     {
       "rank": null,
@@ -1340,68 +1218,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 28
-    },
-    {
-      "rank": null,
-      "canonical_issue": "AI가 주목한 'ESMO 2026' 항암 연구 다섯 - 메디파나뉴스",
-      "title": "AI가 주목한 'ESMO 2026' 항암 연구 다섯",
-      "category": [
-        "ai"
-      ],
-      "publishers": [
-        "메디파나뉴스"
-      ],
-      "published_at": "2026-10-20T12:05:13+09:00",
-      "published_at_verified": true,
-      "summary": [
-        "맞춤형 mRNA 치료부터 기존 약물과 직접 경쟁하는 차세대 표적치료제, 새로운 표적을 활용한 항체약물접합체(ADC)까지 항암 치료의 선택지를 넓히는 연구들이 '2026 유럽종양학회 연례학술대회(ESMO 2026)'에서 공개된다. ESMO 2026은 전 세계 종양학계 전문가들이 한자리에 모여 지식을 공유하",
-        "사진=ESMO 2026 홈페이지 갈무리 맞춤형 mRNA 치료부터 기존 약물과 직접 경쟁하는 차세대 표적치료제, 새로운 표적을 활용한 항체약물접합체(ADC)까지 항암 치료의 선택지를 넓히는 연구들이 '2026 유럽종양학회 연례학술대회(ESMO 2026)'에서 공개된다.",
-        "ESMO 2026은 전 세계 종양학계 전문가들이 한자리에 모여 지식을 공유하고, 아이디어를 교환하며, 암 치료의 미래를 탐구하는 자리로, 오는 23일부터 27일까지 스페인 마드리드에서 개최된다."
-      ],
-      "importance": "시장·정책·연구개발 흐름을 보여주는 주요 산업 이슈로 후속 정책과 사업 변화 확인이 필요합니다.",
-      "source_urls": [
-        "https://www.medipana.com/news/articleView.html?idxno=419681"
-      ],
-      "source_links": [
-        {
-          "publisher": "메디파나뉴스",
-          "url": "https://www.medipana.com/news/articleView.html?idxno=419681"
-        }
-      ],
-      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419681_327206_241.png",
-      "score": 15,
-      "oncology": {
-        "is_oncology": true,
-        "cancer_types": [],
-        "drug_generic": [],
-        "drug_brand": [],
-        "targets": [],
-        "mechanism": [
-          "ADC"
-        ],
-        "biomarkers": [],
-        "trial_name": null,
-        "phase": "3",
-        "line_of_therapy": null,
-        "endpoints": {
-          "orr": null,
-          "pfs": null,
-          "os": null,
-          "hr": null,
-          "grade3plus_ae": null
-        },
-        "approval_status": null,
-        "reimbursement_status": null,
-        "patient_summary": "향후 치료 선택이나 표준치료 논의에 영향을 줄 수 있는 임상 결과입니다.",
-        "patient_relevance_score": 28,
-        "patient_relevance_labels": [
-          "임상결과"
-        ],
-        "industry_summary": null
-      },
-      "freshness": "30d",
-      "age_days": 30
+      "age_days": 29
     },
     {
       "rank": null,
@@ -1462,7 +1279,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 27
+      "age_days": 28
     },
     {
       "rank": null,
@@ -1519,7 +1336,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
     },
     {
       "rank": null,
@@ -1576,7 +1393,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 29
+      "age_days": 30
     },
     {
       "rank": null,
@@ -1633,67 +1450,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 20
-    },
-    {
-      "rank": null,
-      "canonical_issue": "유한양행, 주가 저점서 상승세 반등…신약 '렉라자' 성장 주목 - 메디파나뉴스",
-      "title": "유한양행, 주가 저점서 상승세 반등…신약 '렉라자' 성장 주목",
-      "category": [
-        "라이선스",
-        "공급"
-      ],
-      "publishers": [
-        "메디파나뉴스"
-      ],
-      "published_at": "2026-10-21T06:03:00+09:00",
-      "published_at_verified": true,
-      "summary": [
-        "유한양행 주가가 장기간 하락세를 벗어나 최근 3개월 저점에서 반등하는 흐름을 보이고 있다. 폐암 신약 '렉라자' 글로벌 판매 성장과 상반기 실적 개선, 대규모 자사주 소각 등 기업가치를 뒷받침할 요인도 이어지고 있다. 7월 말 대비 22% 반등…J&J 실적 발표 이후 상승 가속 20일 한국거래소에 따르면",
-        "사진=이정수 기자 유한양행 주가가 장기간 하락세를 벗어나 최근 3개월 저점에서 반등하는 흐름을 보이고 있다.",
-        "폐암 신약 '렉라자' 글로벌 판매 성장과 상반기 실적 개선, 대규모 자사주 소각 등 기업가치를 뒷받침할 요인도 이어지고 있다."
-      ],
-      "importance": "기사에서 사업개발·투자 변화가 함께 확인돼 기업 포트폴리오와 경쟁구도 영향을 살펴볼 필요가 있습니다.",
-      "source_urls": [
-        "https://www.medipana.com/news/articleView.html?idxno=419704"
-      ],
-      "source_links": [
-        {
-          "publisher": "메디파나뉴스",
-          "url": "https://www.medipana.com/news/articleView.html?idxno=419704"
-        }
-      ],
-      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419704_327230_5832.png",
-      "score": 12,
-      "oncology": {
-        "is_oncology": true,
-        "cancer_types": [
-          "폐암"
-        ],
-        "drug_generic": [],
-        "drug_brand": [],
-        "targets": [],
-        "mechanism": [],
-        "biomarkers": [],
-        "trial_name": null,
-        "phase": null,
-        "line_of_therapy": null,
-        "endpoints": {
-          "orr": null,
-          "pfs": null,
-          "os": null,
-          "hr": null,
-          "grade3plus_ae": null
-        },
-        "approval_status": null,
-        "reimbursement_status": null,
-        "patient_summary": "치료와 직접 관련된 정보인지 기사 원문과 공식 자료를 함께 확인해 주세요.",
-        "patient_relevance_score": 0,
-        "patient_relevance_labels": [],
-        "industry_summary": null
-      },
-      "freshness": "30d",
-      "age_days": 29
+      "age_days": 21
     }
   ]
 }

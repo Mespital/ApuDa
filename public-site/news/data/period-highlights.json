@@ -1,7 +1,7 @@
 {
   "version": "1.1",
-  "generated_at": "2026-11-20T08:57:30.602964+09:00",
-  "as_of": "2026-11-19T09:00:00+09:00",
+  "generated_at": "2026-11-20T16:31:15.888118+09:00",
+  "as_of": "2026-11-20T09:00:00+09:00",
   "periods": {
     "today": {
       "label": "오늘",
@@ -9,40 +9,165 @@
       "items": [
         {
           "rank": 1,
-          "canonical_issue": "복지부, 의료기관 운영 AI도 성과보상 검토...“효과 확인되면 신속 지급” - 의학신문",
-          "title": "복지부, 의료기관 운영 AI도 성과보상 검토...“효과 확인되면 신속 지급”",
+          "canonical_issue": "[특별기고] 심평의학을 넘어 ‘공산의학’으로 가는 대한민국 - 의학신문",
+          "title": "[특별기고] 심평의학을 넘어 ‘공산의학’으로 가는 대한민국",
           "category": [
-            "복지부",
-            "ai"
+            "정책",
+            "급여"
           ],
           "publishers": [
             "의학신문"
           ],
-          "published_at": "2026-11-18T12:28:43+09:00",
+          "published_at": "2026-11-19T09:11:07+09:00",
           "published_at_verified": true,
           "summary": [
-            "[의학신문·일간보사=이재원 기자] 정부가 의료 인공지능(AI)의 성과 기반 보상체계를 마련하면서 식품의약품안전처가 의료기기로 분류하지 않는 의료기관 운영 최적화",
-            "[의학신문·일간보사=이재원 기자] 정부가 의료 인공지능(AI)의 성과 기반 보상체계를 마련하면서 식품의약품안전처가 의료기기로 분류하지 않는 의료기관 운영 최적화 등 AI 서비스까지 보상 대상으로 포함하는 방안을 검토하고 있다.",
-            "다만 의료기관의 단순한 경영 효율화가 아닌 환자 편익 개선이 입증돼야 한다는 조건을 제시했다."
+            "[의학신문·일간보사] 대한민국 의료정책이 통제의 방향으로 치닫고 있다. 건강보험 진료는 이미 촘촘한 심사기준 아래 놓여 있다. 이제 비급여 진료의 가격과 지침을",
+            "[의학신문·일간보사] 대한민국 의료정책이 통제의 방향으로 치닫고 있다.",
+            "건강보험 진료는 이미 촘촘한 심사기준 아래 놓여 있다."
           ],
-          "importance": "의료기관·약국 현장의 변화는 진료 흐름과 환자 경험, 의약품 사용 환경에 직접 영향을 줍니다.",
+          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
           "source_urls": [
-            "https://www.bosa.co.kr/news/articleView.html?idxno=3016746"
+            "https://www.bosa.co.kr/news/articleView.html?idxno=3016801"
           ],
           "source_links": [
             {
               "publisher": "의학신문",
-              "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016746"
+              "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016801"
             }
           ],
-          "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3016746_417643_2538.jpg",
-          "score": 63,
+          "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3016801_417705_1312.jpg",
+          "score": 54,
           "oncology": null
         },
         {
           "rank": 2,
-          "canonical_issue": "의료급여 9천억 미지급 사태 약국도 발동동…정부 복안은? - 약사공론",
-          "title": "의료급여 9천억 미지급 사태 약국도 발동동…정부 복안은?",
+          "canonical_issue": "머크, 27억달러엔 산 혈액암 후보물질 3상 실패 발표...릴리와 '대조' - 메디파나뉴스",
+          "title": "머크, 27억달러엔 산 혈액암 후보물질 3상 실패 발표...릴리와 '대조'",
+          "category": [
+            "허가",
+            "3상"
+          ],
+          "publishers": [
+            "메디파나뉴스"
+          ],
+          "published_at": "2026-11-19T12:00:00+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "미국 머크(MSD)가 그간 연구해온 혈액암 치료쪽의 BTK 억제제가 지난 18일 전면 3상 임상시험을 중단했다. 효능보다 안전성 우려가 제기된 우려 때문이다. 반면에 경쟁사였던 일라이 릴리는 지난 23년 같은 BTK 계열 혈액암(구체적으론 외투세포림프종) 치료제 '제이피르카(Jaypirca)'을 FDA로",
+            "복사하기 사진=AI 생성 이미지 미국 머크(MSD)가 그간 연구해온 혈액암 치료쪽의 BTK 억제제가 지난 18일 전면 3상 임상시험을 중단했다.",
+            "반면에 경쟁사였던 일라이 릴리는 지난 23년 같은 BTK 계열 혈액암(구체적으론 외투세포림프종) 치료제 '제이피르카(Jaypirca)'을 FDA로부터 시판허가를 받아 현재 시판중이다."
+          ],
+          "importance": "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다.",
+          "source_urls": [
+            "https://www.medipana.com/news/articleView.html?idxno=422226"
+          ],
+          "source_links": [
+            {
+              "publisher": "메디파나뉴스",
+              "url": "https://www.medipana.com/news/articleView.html?idxno=422226"
+            }
+          ],
+          "thumbnail_url": "https://cdn.medipana.com/news/photo/202611/422226_330243_5539.png",
+          "score": 51,
+          "oncology": {
+            "is_oncology": true,
+            "cancer_types": [
+              "림프종"
+            ],
+            "drug_generic": [],
+            "drug_brand": [],
+            "targets": [],
+            "mechanism": [],
+            "biomarkers": [],
+            "trial_name": null,
+            "phase": "3",
+            "line_of_therapy": null,
+            "endpoints": {
+              "orr": null,
+              "pfs": null,
+              "os": null,
+              "hr": null,
+              "grade3plus_ae": null
+            },
+            "approval_status": "허가 관련",
+            "reimbursement_status": null,
+            "patient_summary": "치료제의 허가 범위나 사용 가능성과 관련된 소식입니다. 국내 실제 사용은 식약처 허가사항을 확인해야 합니다.",
+            "patient_relevance_score": 70,
+            "patient_relevance_labels": [
+              "허가",
+              "안전성",
+              "임상결과"
+            ],
+            "industry_summary": null
+          }
+        },
+        {
+          "rank": 3,
+          "canonical_issue": "국가필수약 지정 확대·퇴방약 지원 강화...반복된 공급중단, 이번엔 다를까 - 의학신문",
+          "title": "국가필수약 지정 확대·퇴방약 지원 강화...반복된 공급중단, 이번엔 다를까",
+          "category": [
+            "약가",
+            "공급"
+          ],
+          "publishers": [
+            "의학신문"
+          ],
+          "published_at": "2026-11-20T06:00:00+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "[의학신문·일간보사=이재원 기자] 정부가 국가필수의약품 지정 확대와 퇴장방지의약품 약가 지원 강화, 민관 공급안정 협의체 개편을 잇달아 추진하면서 반복되는 필수의",
+            "[의학신문·일간보사=이재원 기자] 정부가 국가필수의약품 지정 확대와 퇴장방지의약품 약가 지원 강화, 민관 공급안정 협의체 개편을 잇달아 추진하면서 반복되는 필수의약품 공급중단 문제를 해결할 수 있을지 관심이 쏠린다.",
+            "최근 식품의약품안전처의 요청에 따라 안과·종양내과 등 전문학회들이 임상현장에서 안정적인 공급이 필요한 의약품을 국가필수의약품으로 지정해 달라고 요청하고 있으며, 감염·내분비 분야에서도 추가 의견 제출이 추진되고 있다."
+          ],
+          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+          "source_urls": [
+            "https://www.bosa.co.kr/news/articleView.html?idxno=3016890"
+          ],
+          "source_links": [
+            {
+              "publisher": "의학신문",
+              "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016890"
+            }
+          ],
+          "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3016890_417794_2440.jpeg",
+          "score": 50,
+          "oncology": null
+        },
+        {
+          "rank": 4,
+          "canonical_issue": "정부의 백내장 포괄수가 5~10% 인하 논란...\"비용분석 표본 의원 1곳뿐\" - 의학신문",
+          "title": "정부의 백내장 포괄수가 5~10% 인하 논란...\"비용분석 표본 의원 1곳뿐\"",
+          "category": [
+            "수가"
+          ],
+          "publishers": [
+            "의학신문"
+          ],
+          "published_at": "2026-11-19T20:57:11+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "[의학신문·일간보사=이재원 기자] 정부가 7개 질병군 포괄수가제 개편 과정에서 백내장 수술 수가를 현행 대비 5~10% 인하하는 방안을 논의하고 있는 가운데, 대",
+            "[의학신문·일간보사=이재원 기자] 정부가 7개 질병군 포괄수가제 개편 과정에서 백내장 수술 수가를 현행 대비 5~10% 인하하는 방안을 논의하고 있는 가운데, 대한의사협회가 의료비용분석의 표본 대표성과 수가 조정의 형평성을 문제 삼으며 반대 입장을 밝혔다.",
+            "특히 정부가 수가 인하의 근거로 활용하는 2023 회계연도 의료비용분석에 포함된 안과 의원이 단 1곳에 불과하다는 점을 지적하며, 충분한 표본 확보와 분석 방법론 개선 이후 수가 조정을 재논의해야 한다고 요구했다."
+          ],
+          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+          "source_urls": [
+            "https://www.bosa.co.kr/news/articleView.html?idxno=3016899"
+          ],
+          "source_links": [
+            {
+              "publisher": "의학신문",
+              "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016899"
+            }
+          ],
+          "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3016899_417798_5456.jpg",
+          "score": 49,
+          "oncology": null
+        },
+        {
+          "rank": 5,
+          "canonical_issue": "의료급여 지급 지연…약국가 도매 결제 부담에 우려 커져 - 약사공론",
+          "title": "의료급여 지급 지연…약국가 도매 결제 부담에 우려 커져",
           "category": [
             "급여",
             "약국"
@@ -50,161 +175,67 @@
           "publishers": [
             "약사공론"
           ],
-          "published_at": "2026-11-19T05:53:00+09:00",
+          "published_at": "2026-11-20T05:58:00+09:00",
           "published_at_verified": true,
           "summary": [
-            "의료급여 진료비 지급 지연으로 약국 경영 부담이 커지는 가운데 정부가 미지급된 9000억원 가운데 5800억원은 내년도 예산안에 반영하고, 나머지 3000억원 가",
+            "연말 의료급여 지급이 늦어질 수 있다는 우려가 나온다. 이미 조제를 마친 약국에 의료급여 비용이 제때 들어오지 않으면, 다음 달 도매 약값 결제부터 부담이 생길",
             "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
             "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
           ],
           "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
           "source_urls": [
-            "https://www.kpanews.co.kr/news/articleView.html?idxno=549329"
+            "https://www.kpanews.co.kr/news/articleView.html?idxno=549414"
           ],
           "source_links": [
             {
               "publisher": "약사공론",
-              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549329"
+              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549414"
             }
           ],
-          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202611/549329_453544_3619.png",
-          "score": 44,
-          "oncology": null
-        },
-        {
-          "rank": 3,
-          "canonical_issue": "인하대병원, 구글 워크스페이스·제미나이 전사 도입 - 의학신문",
-          "title": "인하대병원, 구글 워크스페이스·제미나이 전사 도입",
-          "category": [
-            "합병",
-            "병원",
-            "ai"
-          ],
-          "publishers": [
-            "의학신문"
-          ],
-          "published_at": "2026-11-18T12:02:56+09:00",
-          "published_at_verified": true,
-          "summary": [
-            "[의학신문·일간보사=이재원 기자] 인하대병원이 국내 상급종합병원 최초로 구글의 클라우드 기반 협업 플랫폼과 생성형 인공지능(AI)을 전사적으로 도입한다. 병원 내",
-            "[의학신문·일간보사=이재원 기자] 인하대병원이 국내 상급종합병원 최초로 구글의 클라우드 기반 협업 플랫폼과 생성형 인공지능(AI)을 전사적으로 도입한다.",
-            "병원 내 행정업무와 부서 간 협업에 AI를 적용하고, 향후 진료 서비스 영역까지 활용 범위를 확대한다는 계획이다."
-          ],
-          "importance": "사업개발·구조개편은 파이프라인 가치와 자본 배분, 기업 경쟁구도에 직접 영향을 주는 변화입니다.",
-          "source_urls": [
-            "https://www.bosa.co.kr/news/articleView.html?idxno=3016743"
-          ],
-          "source_links": [
-            {
-              "publisher": "의학신문",
-              "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016743"
-            }
-          ],
-          "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3016743_417641_5659.jpg",
-          "score": 37,
-          "oncology": null
-        },
-        {
-          "rank": 4,
-          "canonical_issue": "식약처 \"연말 CDMO 法 맞춰 규제·지원 가동…원료인증제 신설\" - 메디파나뉴스",
-          "title": "식약처 \"연말 CDMO 法 맞춰 규제·지원 가동…원료인증제 신설\"",
-          "category": [
-            "식약처"
-          ],
-          "publishers": [
-            "메디파나뉴스"
-          ],
-          "published_at": "2026-11-19T06:01:00+09:00",
-          "published_at_verified": true,
-          "summary": [
-            "식품의약품안전처가 바이오의약품 위탁개발생산(CDMO) 산업을 위한 별도의 규제지원 체계를 마련하고 올해 말부터 운영에 들어간다. 수출제조업 등록제 신설과 의약품 제조·품질관리기준(GMP) 적합인증 법제화를 통해 해외 수주를 지원하는 한편, 국산 원료물질 인증제 도입과 디지털융합의약품 통합심사 등도 추진한",
-            "복사하기 식품의약품안전처 전경 사진을 이용해 AI로 생성한 이미지(ChatGPT) 식품의약품안전처가 바이오의약품 위탁개발생산(CDMO) 산업을 위한 별도의 규제지원 체계를 마련하고 올해 말부터 운영에 들어간다.",
-            "수출제조업 등록제 신설과 의약품 제조·품질관리기준(GMP) 적합인증 법제화를 통해 해외 수주를 지원하는 한편, 국산 원료물질 인증제 도입과 디지털융합의약품 통합심사 등도 추진한다."
-          ],
-          "importance": "생산·투자 확대는 공급망 안정성과 글로벌 사업 확장, 중장기 생산능력 경쟁과 연결됩니다.",
-          "source_urls": [
-            "https://www.medipana.com/news/articleView.html?idxno=422178"
-          ],
-          "source_links": [
-            {
-              "publisher": "메디파나뉴스",
-              "url": "https://www.medipana.com/news/articleView.html?idxno=422178"
-            }
-          ],
-          "thumbnail_url": "https://cdn.medipana.com/news/photo/202611/422178_330191_3613.png",
-          "score": 33,
-          "oncology": null
-        },
-        {
-          "rank": 5,
-          "canonical_issue": "CDMO 규제지원 새 시대 열린다…해외 수주에 식약처 인증 뒷받침 - 약사공론",
-          "title": "CDMO 규제지원 새 시대 열린다…해외 수주에 식약처 인증 뒷받침",
-          "category": [
-            "식약처"
-          ],
-          "publishers": [
-            "약사공론"
-          ],
-          "published_at": "2026-11-19T05:51:00+09:00",
-          "published_at_verified": true,
-          "summary": [
-            "식품의약품안전처가 바이오의약품 위탁개발생산(CDMO) 산업을 위한 별도의 규제지원 체계를 마련하고 올해 말부터 본격적인 운영에 들어간다. 수출제조업 등록제를 신설",
-            "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
-            "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
-          ],
-          "importance": "생산·투자 확대는 공급망 안정성과 글로벌 사업 확장, 중장기 생산능력 경쟁과 연결됩니다.",
-          "source_urls": [
-            "https://www.kpanews.co.kr/news/articleView.html?idxno=549324"
-          ],
-          "source_links": [
-            {
-              "publisher": "약사공론",
-              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549324"
-            }
-          ],
-          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202611/549324_453542_2519.jpg",
-          "score": 33,
+          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202611/549414_453630_5449.jpg",
+          "score": 48,
           "oncology": null
         }
       ],
       "trends": [
-        {
-          "title": "디지털헬스",
-          "count": 5,
-          "change": "5건의 주요 이슈에서 반복적으로 확인",
-          "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
-          "examples": [
-            "복지부, 의료기관 운영 AI도 성과보상 검토...“효과 확인되면 신속 지급”",
-            "의료급여 9천억 미지급 사태 약국도 발동동…정부 복안은?"
-          ]
-        },
         {
           "title": "정책·급여",
           "count": 4,
           "change": "4건의 주요 이슈에서 반복적으로 확인",
           "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
           "examples": [
-            "복지부, 의료기관 운영 AI도 성과보상 검토...“효과 확인되면 신속 지급”",
-            "의료급여 9천억 미지급 사태 약국도 발동동…정부 복안은?"
+            "[특별기고] 심평의학을 넘어 ‘공산의학’으로 가는 대한민국",
+            "국가필수약 지정 확대·퇴방약 지원 강화...반복된 공급중단, 이번엔 다를까"
           ]
         },
         {
-          "title": "의료현장",
-          "count": 3,
-          "change": "3건의 주요 이슈에서 반복적으로 확인",
-          "implication": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름",
+          "title": "신약·임상",
+          "count": 2,
+          "change": "2건의 주요 이슈에서 반복적으로 확인",
+          "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
           "examples": [
-            "복지부, 의료기관 운영 AI도 성과보상 검토...“효과 확인되면 신속 지급”",
-            "의료급여 9천억 미지급 사태 약국도 발동동…정부 복안은?"
+            "머크, 27억달러엔 산 혈액암 후보물질 3상 실패 발표...릴리와 '대조'",
+            "국가필수약 지정 확대·퇴방약 지원 강화...반복된 공급중단, 이번엔 다를까"
           ]
         },
         {
-          "title": "투자·사업개발",
-          "count": 1,
-          "change": "1건의 주요 이슈에서 반복적으로 확인",
-          "implication": "자본과 파이프라인 확보 경쟁이 사업전략의 핵심이 되는 흐름",
+          "title": "항암·정밀의료",
+          "count": 2,
+          "change": "2건의 주요 이슈에서 반복적으로 확인",
+          "implication": "바이오마커·기전 중심 정밀의료 경쟁이 치료전략을 세분화하는 흐름",
           "examples": [
-            "인하대병원, 구글 워크스페이스·제미나이 전사 도입"
+            "머크, 27억달러엔 산 혈액암 후보물질 3상 실패 발표...릴리와 '대조'",
+            "국가필수약 지정 확대·퇴방약 지원 강화...반복된 공급중단, 이번엔 다를까"
+          ]
+        },
+        {
+          "title": "디지털헬스",
+          "count": 2,
+          "change": "2건의 주요 이슈에서 반복적으로 확인",
+          "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
+          "examples": [
+            "머크, 27억달러엔 산 혈액암 후보물질 3상 실패 발표...릴리와 '대조'",
+            "의료급여 지급 지연…약국가 도매 결제 부담에 우려 커져"
           ]
         }
       ]
@@ -248,6 +279,104 @@
           "period_rank": 1
         },
         {
+          "rank": 1,
+          "canonical_issue": "[특별기고] 심평의학을 넘어 ‘공산의학’으로 가는 대한민국 - 의학신문",
+          "title": "[특별기고] 심평의학을 넘어 ‘공산의학’으로 가는 대한민국",
+          "category": [
+            "정책",
+            "급여"
+          ],
+          "publishers": [
+            "의학신문"
+          ],
+          "published_at": "2026-11-19T09:11:07+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "[의학신문·일간보사] 대한민국 의료정책이 통제의 방향으로 치닫고 있다. 건강보험 진료는 이미 촘촘한 심사기준 아래 놓여 있다. 이제 비급여 진료의 가격과 지침을",
+            "[의학신문·일간보사] 대한민국 의료정책이 통제의 방향으로 치닫고 있다.",
+            "건강보험 진료는 이미 촘촘한 심사기준 아래 놓여 있다."
+          ],
+          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+          "source_urls": [
+            "https://www.bosa.co.kr/news/articleView.html?idxno=3016801"
+          ],
+          "source_links": [
+            {
+              "publisher": "의학신문",
+              "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016801"
+            }
+          ],
+          "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3016801_417705_1312.jpg",
+          "score": 54,
+          "oncology": null,
+          "report_date": "2026-11-20",
+          "period_rank": 2
+        },
+        {
+          "rank": 2,
+          "canonical_issue": "머크, 27억달러엔 산 혈액암 후보물질 3상 실패 발표...릴리와 '대조' - 메디파나뉴스",
+          "title": "머크, 27억달러엔 산 혈액암 후보물질 3상 실패 발표...릴리와 '대조'",
+          "category": [
+            "허가",
+            "3상"
+          ],
+          "publishers": [
+            "메디파나뉴스"
+          ],
+          "published_at": "2026-11-19T12:00:00+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "미국 머크(MSD)가 그간 연구해온 혈액암 치료쪽의 BTK 억제제가 지난 18일 전면 3상 임상시험을 중단했다. 효능보다 안전성 우려가 제기된 우려 때문이다. 반면에 경쟁사였던 일라이 릴리는 지난 23년 같은 BTK 계열 혈액암(구체적으론 외투세포림프종) 치료제 '제이피르카(Jaypirca)'을 FDA로",
+            "복사하기 사진=AI 생성 이미지 미국 머크(MSD)가 그간 연구해온 혈액암 치료쪽의 BTK 억제제가 지난 18일 전면 3상 임상시험을 중단했다.",
+            "반면에 경쟁사였던 일라이 릴리는 지난 23년 같은 BTK 계열 혈액암(구체적으론 외투세포림프종) 치료제 '제이피르카(Jaypirca)'을 FDA로부터 시판허가를 받아 현재 시판중이다."
+          ],
+          "importance": "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다.",
+          "source_urls": [
+            "https://www.medipana.com/news/articleView.html?idxno=422226"
+          ],
+          "source_links": [
+            {
+              "publisher": "메디파나뉴스",
+              "url": "https://www.medipana.com/news/articleView.html?idxno=422226"
+            }
+          ],
+          "thumbnail_url": "https://cdn.medipana.com/news/photo/202611/422226_330243_5539.png",
+          "score": 51,
+          "oncology": {
+            "is_oncology": true,
+            "cancer_types": [
+              "림프종"
+            ],
+            "drug_generic": [],
+            "drug_brand": [],
+            "targets": [],
+            "mechanism": [],
+            "biomarkers": [],
+            "trial_name": null,
+            "phase": "3",
+            "line_of_therapy": null,
+            "endpoints": {
+              "orr": null,
+              "pfs": null,
+              "os": null,
+              "hr": null,
+              "grade3plus_ae": null
+            },
+            "approval_status": "허가 관련",
+            "reimbursement_status": null,
+            "patient_summary": "치료제의 허가 범위나 사용 가능성과 관련된 소식입니다. 국내 실제 사용은 식약처 허가사항을 확인해야 합니다.",
+            "patient_relevance_score": 70,
+            "patient_relevance_labels": [
+              "허가",
+              "안전성",
+              "임상결과"
+            ],
+            "industry_summary": null
+          },
+          "report_date": "2026-11-20",
+          "period_rank": 3
+        },
+        {
           "rank": 2,
           "canonical_issue": "의료급여 9천억 미지급 사태 약국도 발동동…정부 복안은? - 약사공론",
           "title": "의료급여 9천억 미지급 사태 약국도 발동동…정부 복안은?",
@@ -279,121 +408,44 @@
           "score": 44,
           "oncology": null,
           "report_date": "2026-11-19",
-          "period_rank": 2
+          "period_rank": 4
         },
         {
           "rank": 3,
-          "canonical_issue": "인하대병원, 구글 워크스페이스·제미나이 전사 도입 - 의학신문",
-          "title": "인하대병원, 구글 워크스페이스·제미나이 전사 도입",
+          "canonical_issue": "국가필수약 지정 확대·퇴방약 지원 강화...반복된 공급중단, 이번엔 다를까 - 의학신문",
+          "title": "국가필수약 지정 확대·퇴방약 지원 강화...반복된 공급중단, 이번엔 다를까",
           "category": [
-            "합병",
-            "병원",
-            "ai"
+            "약가",
+            "공급"
           ],
           "publishers": [
             "의학신문"
           ],
-          "published_at": "2026-11-18T12:02:56+09:00",
+          "published_at": "2026-11-20T06:00:00+09:00",
           "published_at_verified": true,
           "summary": [
-            "[의학신문·일간보사=이재원 기자] 인하대병원이 국내 상급종합병원 최초로 구글의 클라우드 기반 협업 플랫폼과 생성형 인공지능(AI)을 전사적으로 도입한다. 병원 내",
-            "[의학신문·일간보사=이재원 기자] 인하대병원이 국내 상급종합병원 최초로 구글의 클라우드 기반 협업 플랫폼과 생성형 인공지능(AI)을 전사적으로 도입한다.",
-            "병원 내 행정업무와 부서 간 협업에 AI를 적용하고, 향후 진료 서비스 영역까지 활용 범위를 확대한다는 계획이다."
+            "[의학신문·일간보사=이재원 기자] 정부가 국가필수의약품 지정 확대와 퇴장방지의약품 약가 지원 강화, 민관 공급안정 협의체 개편을 잇달아 추진하면서 반복되는 필수의",
+            "[의학신문·일간보사=이재원 기자] 정부가 국가필수의약품 지정 확대와 퇴장방지의약품 약가 지원 강화, 민관 공급안정 협의체 개편을 잇달아 추진하면서 반복되는 필수의약품 공급중단 문제를 해결할 수 있을지 관심이 쏠린다.",
+            "최근 식품의약품안전처의 요청에 따라 안과·종양내과 등 전문학회들이 임상현장에서 안정적인 공급이 필요한 의약품을 국가필수의약품으로 지정해 달라고 요청하고 있으며, 감염·내분비 분야에서도 추가 의견 제출이 추진되고 있다."
           ],
-          "importance": "사업개발·구조개편은 파이프라인 가치와 자본 배분, 기업 경쟁구도에 직접 영향을 주는 변화입니다.",
+          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
           "source_urls": [
-            "https://www.bosa.co.kr/news/articleView.html?idxno=3016743"
+            "https://www.bosa.co.kr/news/articleView.html?idxno=3016890"
           ],
           "source_links": [
             {
               "publisher": "의학신문",
-              "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016743"
+              "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016890"
             }
           ],
-          "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3016743_417641_5659.jpg",
-          "score": 37,
+          "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3016890_417794_2440.jpeg",
+          "score": 50,
           "oncology": null,
-          "report_date": "2026-11-19",
-          "period_rank": 3
-        },
-        {
-          "rank": 4,
-          "canonical_issue": "식약처 \"연말 CDMO 法 맞춰 규제·지원 가동…원료인증제 신설\" - 메디파나뉴스",
-          "title": "식약처 \"연말 CDMO 法 맞춰 규제·지원 가동…원료인증제 신설\"",
-          "category": [
-            "식약처"
-          ],
-          "publishers": [
-            "메디파나뉴스"
-          ],
-          "published_at": "2026-11-19T06:01:00+09:00",
-          "published_at_verified": true,
-          "summary": [
-            "식품의약품안전처가 바이오의약품 위탁개발생산(CDMO) 산업을 위한 별도의 규제지원 체계를 마련하고 올해 말부터 운영에 들어간다. 수출제조업 등록제 신설과 의약품 제조·품질관리기준(GMP) 적합인증 법제화를 통해 해외 수주를 지원하는 한편, 국산 원료물질 인증제 도입과 디지털융합의약품 통합심사 등도 추진한",
-            "복사하기 식품의약품안전처 전경 사진을 이용해 AI로 생성한 이미지(ChatGPT) 식품의약품안전처가 바이오의약품 위탁개발생산(CDMO) 산업을 위한 별도의 규제지원 체계를 마련하고 올해 말부터 운영에 들어간다.",
-            "수출제조업 등록제 신설과 의약품 제조·품질관리기준(GMP) 적합인증 법제화를 통해 해외 수주를 지원하는 한편, 국산 원료물질 인증제 도입과 디지털융합의약품 통합심사 등도 추진한다."
-          ],
-          "importance": "생산·투자 확대는 공급망 안정성과 글로벌 사업 확장, 중장기 생산능력 경쟁과 연결됩니다.",
-          "source_urls": [
-            "https://www.medipana.com/news/articleView.html?idxno=422178"
-          ],
-          "source_links": [
-            {
-              "publisher": "메디파나뉴스",
-              "url": "https://www.medipana.com/news/articleView.html?idxno=422178"
-            }
-          ],
-          "thumbnail_url": "https://cdn.medipana.com/news/photo/202611/422178_330191_3613.png",
-          "score": 33,
-          "oncology": null,
-          "report_date": "2026-11-19",
-          "period_rank": 4
-        },
-        {
-          "rank": 5,
-          "canonical_issue": "CDMO 규제지원 새 시대 열린다…해외 수주에 식약처 인증 뒷받침 - 약사공론",
-          "title": "CDMO 규제지원 새 시대 열린다…해외 수주에 식약처 인증 뒷받침",
-          "category": [
-            "식약처"
-          ],
-          "publishers": [
-            "약사공론"
-          ],
-          "published_at": "2026-11-19T05:51:00+09:00",
-          "published_at_verified": true,
-          "summary": [
-            "식품의약품안전처가 바이오의약품 위탁개발생산(CDMO) 산업을 위한 별도의 규제지원 체계를 마련하고 올해 말부터 본격적인 운영에 들어간다. 수출제조업 등록제를 신설",
-            "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
-            "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
-          ],
-          "importance": "생산·투자 확대는 공급망 안정성과 글로벌 사업 확장, 중장기 생산능력 경쟁과 연결됩니다.",
-          "source_urls": [
-            "https://www.kpanews.co.kr/news/articleView.html?idxno=549324"
-          ],
-          "source_links": [
-            {
-              "publisher": "약사공론",
-              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549324"
-            }
-          ],
-          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202611/549324_453542_2519.jpg",
-          "score": 33,
-          "oncology": null,
-          "report_date": "2026-11-19",
+          "report_date": "2026-11-20",
           "period_rank": 5
         }
       ],
       "trends": [
-        {
-          "title": "디지털헬스",
-          "count": 5,
-          "change": "5건의 주요 이슈에서 반복적으로 확인",
-          "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
-          "examples": [
-            "복지부, 의료기관 운영 AI도 성과보상 검토...“효과 확인되면 신속 지급”",
-            "의료급여 9천억 미지급 사태 약국도 발동동…정부 복안은?"
-          ]
-        },
         {
           "title": "정책·급여",
           "count": 4,
@@ -401,13 +453,23 @@
           "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
           "examples": [
             "복지부, 의료기관 운영 AI도 성과보상 검토...“효과 확인되면 신속 지급”",
-            "의료급여 9천억 미지급 사태 약국도 발동동…정부 복안은?"
+            "[특별기고] 심평의학을 넘어 ‘공산의학’으로 가는 대한민국"
+          ]
+        },
+        {
+          "title": "디지털헬스",
+          "count": 3,
+          "change": "3건의 주요 이슈에서 반복적으로 확인",
+          "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
+          "examples": [
+            "복지부, 의료기관 운영 AI도 성과보상 검토...“효과 확인되면 신속 지급”",
+            "머크, 27억달러엔 산 혈액암 후보물질 3상 실패 발표...릴리와 '대조'"
           ]
         },
         {
           "title": "의료현장",
-          "count": 3,
-          "change": "3건의 주요 이슈에서 반복적으로 확인",
+          "count": 2,
+          "change": "2건의 주요 이슈에서 반복적으로 확인",
           "implication": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름",
           "examples": [
             "복지부, 의료기관 운영 AI도 성과보상 검토...“효과 확인되면 신속 지급”",
@@ -415,12 +477,13 @@
           ]
         },
         {
-          "title": "투자·사업개발",
-          "count": 1,
-          "change": "1건의 주요 이슈에서 반복적으로 확인",
-          "implication": "자본과 파이프라인 확보 경쟁이 사업전략의 핵심이 되는 흐름",
+          "title": "신약·임상",
+          "count": 2,
+          "change": "2건의 주요 이슈에서 반복적으로 확인",
+          "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
           "examples": [
-            "인하대병원, 구글 워크스페이스·제미나이 전사 도입"
+            "머크, 27억달러엔 산 혈액암 후보물질 3상 실패 발표...릴리와 '대조'",
+            "국가필수약 지정 확대·퇴방약 지원 강화...반복된 공급중단, 이번엔 다를까"
           ]
         }
       ]
@@ -571,6 +634,40 @@
         },
         {
           "rank": 1,
+          "canonical_issue": "[특별기고] 심평의학을 넘어 ‘공산의학’으로 가는 대한민국 - 의학신문",
+          "title": "[특별기고] 심평의학을 넘어 ‘공산의학’으로 가는 대한민국",
+          "category": [
+            "정책",
+            "급여"
+          ],
+          "publishers": [
+            "의학신문"
+          ],
+          "published_at": "2026-11-19T09:11:07+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "[의학신문·일간보사] 대한민국 의료정책이 통제의 방향으로 치닫고 있다. 건강보험 진료는 이미 촘촘한 심사기준 아래 놓여 있다. 이제 비급여 진료의 가격과 지침을",
+            "[의학신문·일간보사] 대한민국 의료정책이 통제의 방향으로 치닫고 있다.",
+            "건강보험 진료는 이미 촘촘한 심사기준 아래 놓여 있다."
+          ],
+          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+          "source_urls": [
+            "https://www.bosa.co.kr/news/articleView.html?idxno=3016801"
+          ],
+          "source_links": [
+            {
+              "publisher": "의학신문",
+              "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016801"
+            }
+          ],
+          "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3016801_417705_1312.jpg",
+          "score": 54,
+          "oncology": null,
+          "report_date": "2026-11-20",
+          "period_rank": 5
+        },
+        {
+          "rank": 1,
           "canonical_issue": "대원제약 파도프라잔, 임상 3상 성공 연내 허가 신청 가시화 - 약사공론",
           "title": "대원제약 파도프라잔, 임상 3상 성공 연내 허가 신청 가시화",
           "category": [
@@ -602,42 +699,6 @@
           "score": 73,
           "oncology": null,
           "report_date": "2026-10-30",
-          "period_rank": 5
-        },
-        {
-          "rank": 1,
-          "canonical_issue": "종근당, 토피라메이트 100mg 허가…뇌전증 시장 공략 본격화 - 약사공론",
-          "title": "종근당, 토피라메이트 100mg 허가…뇌전증 시장 공략 본격화",
-          "category": [
-            "급여",
-            "허가",
-            "합병",
-            "병원"
-          ],
-          "publishers": [
-            "약사공론"
-          ],
-          "published_at": "2026-10-27T05:53:00+09:00",
-          "published_at_verified": true,
-          "summary": [
-            "종근당이 토피라메이트 서방정 100mg 품목허가를 확보하면서 종합병원 뇌전증 치료제 시장 공략을 강화하는 모습이다. 기존 25mg과 50mg의 건강보험 급여 등재",
-            "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
-            "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
-          ],
-          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
-          "source_urls": [
-            "https://www.kpanews.co.kr/news/articleView.html?idxno=547308"
-          ],
-          "source_links": [
-            {
-              "publisher": "약사공론",
-              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=547308"
-            }
-          ],
-          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/547308_451970_2042.jpg",
-          "score": 73,
-          "oncology": null,
-          "report_date": "2026-10-27",
           "period_rank": 6
         }
       ],
@@ -654,8 +715,8 @@
         },
         {
           "title": "신약·임상",
-          "count": 3,
-          "change": "3건의 주요 이슈에서 반복적으로 확인",
+          "count": 2,
+          "change": "2건의 주요 이슈에서 반복적으로 확인",
           "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
           "examples": [
             "[종합] 약가 인하부터 미프진까지…국감이 짚은 제약 정책",
@@ -664,8 +725,8 @@
         },
         {
           "title": "의료현장",
-          "count": 3,
-          "change": "3건의 주요 이슈에서 반복적으로 확인",
+          "count": 2,
+          "change": "2건의 주요 이슈에서 반복적으로 확인",
           "implication": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름",
           "examples": [
             "복지부, 의료기관 운영 AI도 성과보상 검토...“효과 확인되면 신속 지급”",
@@ -674,8 +735,8 @@
         },
         {
           "title": "디지털헬스",
-          "count": 3,
-          "change": "3건의 주요 이슈에서 반복적으로 확인",
+          "count": 2,
+          "change": "2건의 주요 이슈에서 반복적으로 확인",
           "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
           "examples": [
             "복지부, 의료기관 운영 AI도 성과보상 검토...“효과 확인되면 신속 지급”",
@@ -684,12 +745,11 @@
         },
         {
           "title": "투자·사업개발",
-          "count": 2,
-          "change": "2건의 주요 이슈에서 반복적으로 확인",
+          "count": 1,
+          "change": "1건의 주요 이슈에서 반복적으로 확인",
           "implication": "자본과 파이프라인 확보 경쟁이 사업전략의 핵심이 되는 흐름",
           "examples": [
-            "국내 제약업계, 규모의 경제로 살 길 찾는다",
-            "종근당, 토피라메이트 100mg 허가…뇌전증 시장 공략 본격화"
+            "국내 제약업계, 규모의 경제로 살 길 찾는다"
           ]
         }
       ]

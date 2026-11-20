@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-11-20T08:57:30.604226+09:00",
+  "generated_at": "2026-11-20T16:31:15.889123+09:00",
   "window": {
-    "start": "2026-11-18T09:00:00+09:00",
-    "end": "2026-11-19T09:00:00+09:00"
+    "start": "2026-11-19T09:00:00+09:00",
+    "end": "2026-11-20T09:00:00+09:00"
   },
   "sources": {
     "데일리팜": {
@@ -11,7 +11,7 @@
     },
     "의학신문": {
       "candidates": 80,
-      "in_window_verified": 11
+      "in_window_verified": 16
     },
     "메디파나뉴스": {
       "candidates": 80,
@@ -19,12 +19,12 @@
     },
     "약사공론": {
       "candidates": 80,
-      "in_window_verified": 10
+      "in_window_verified": 19
     }
   },
-  "merged_count": 34,
+  "merged_count": 48,
   "top_count": 5,
-  "oncology_30d_count": 27,
+  "oncology_30d_count": 23,
   "week_highlight_count": 5,
   "month_highlight_count": 6
 }
