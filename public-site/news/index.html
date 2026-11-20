@@ -11,7 +11,7 @@
   <div class="meta" id="briefingMeta"><span class="chip">불러오는 중</span></div>
 </section>
 
-<section class="brief"><h2>오늘의 핵심 브리핑</h2><p id="briefingText">최신 브리핑을 불러오는 중이에요.</p><div id="briefingRetry"></div></section>
+<section class="brief"><h2>핵심 브리핑</h2><p id="briefingText">최신 브리핑을 불러오는 중이에요.</p><div id="briefingRetry"></div></section>
 
 <section class="section period-section">
   <div class="section-head"><div><h2>핵심 뉴스 한눈에</h2><p>기간을 고르면 중요도와 최신성을 함께 따진 뉴스를 보여드려요.</p></div></div>
@@ -215,17 +215,11 @@ function renderMediaHub(outlets){
 function renderDaily(data){
   currentDaily=data;
   document.title='ApuDa 오늘의 뉴스 브리핑 '+(data.report_date||'');
-  const kstNow=new Date(Date.now()+9*60*60*1000);
-  const expectedKst=new Date(kstNow);
-  if(kstNow.getUTCHours()<9) expectedKst.setUTCDate(expectedKst.getUTCDate()-1);
-  const expectedReportDate=expectedKst.toISOString().slice(0,10);
-  const isStale=!requestedDate && (!data.report_date || data.report_date<expectedReportDate);
+  // News readers see the report date and editorial content only.
+  // Operational freshness diagnostics belong on /news/status/, not this page.
   document.getElementById('briefingMeta').innerHTML=
-    '<span class="chip">보고일 '+esc(data.report_date?formatDateOnly(data.report_date+'T00:00:00'):'')+'</span>'+
-    (isStale?'<span class="chip">갱신 지연 · 과거 기사</span>':'')+
-    '<span class="chip">보고일 기준 전날 09:00 ~ 당일 09:00</span>'+
-    '<span class="chip">'+esc((data.sources||[]).join(' · '))+'</span>';
-  document.getElementById('briefingText').textContent=(isStale?'뉴스 자동 갱신이 지연되고 있습니다. 아래 내용은 '+data.report_date+' 기준의 과거 브리핑이며, 오늘의 최신 뉴스가 아닙니다.\n\n':'')+(data.briefing||'');
+    '<span class="chip">'+esc(data.report_date?formatDateOnly(data.report_date+'T00:00:00'):'')+' 뉴스</span>';
+  document.getElementById('briefingText').textContent=data.briefing||'';
 
   const outlets=data.outlet_status||[];
   renderMediaHub(outlets);
