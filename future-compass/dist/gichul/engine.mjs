@@ -1,0 +1,105 @@
+import {COURSES,courseById,courseForDomain,SUBJECT_GROUPS} from './catalog.mjs';
+import {EXTRA_TOPICS,AUTHORED_QUESTIONS,CONTENT_SOURCES} from './content.mjs';
+export {AUTHORED_QUESTIONS,CONTENT_SOURCES};
+const BASE_TOPICS=[
+ ['exponents','수학','지수와 거듭제곱근','밑을 통일하고 지수법칙으로 식을 정리합니다.','기출 변형','a^m a^n=a^{m+n},\\quad a^m/a^n=a^{m-n}','곱할 때는 지수를 더하고, 나눌 때는 뺍니다. 거듭제곱을 다시 거듭제곱하면 지수를 곱합니다. 음의 지수는 역수를 뜻합니다.'],
+ ['derivative','수학','미분계수와 도함수','극한의 의미를 한 점에서의 변화율로 연결합니다.','기출 변형','f\\prime(a)=\\lim_{h\\to0}\\frac{f(a+h)-f(a)}h','미분계수(derivative at a point)는 한 점에서의 순간 변화율입니다. 다항함수는 항별로 미분한 뒤 해당 x값을 대입합니다. f(a)와 f′(a)를 구분하세요.'],
+ ['limit','수학','무한대에서의 극한','최고차항과 제곱근의 크기를 비교합니다.','기출 변형','\\lim_{x\\to\\infty}\\frac{\\sqrt{Ax^2+B}+Cx}{Dx+E}=\\frac{\\sqrt A+C}D','A>0, D≠0인 경우입니다. 양의 무한대로 갈 때 분자와 분모를 x로 나눕니다. 제곱근 안은 x²으로 나누어야 합니다. √(x²)=|x|이므로 음의 무한대에서는 부호를 별도로 확인하세요.'],
+ ['sequence','수학','등차수열의 합','첫째항·공차·항의 수를 식으로 연결합니다.','교과 개념 확장','a_n=a_1+(n-1)d,\\quad S_n=\\frac{n(a_1+a_n)}2','등차수열의 공차(common difference)는 일정합니다. 첫째항과 마지막 항의 평균에 항의 수를 곱하면 합이 됩니다. 제n항에서는 공차를 n−1번 더합니다.'],
+ ['probability','수학','경우의 수와 확률','가능한 경우와 원하는 경우를 구분합니다.','교과 개념 확장','P(A)=\\frac{n(A)}{n(S)},\\quad {}_nC_2=\\frac{n(n-1)}2','각 경우가 일어날 가능성이 같을 때 적용합니다. 동시에 공 2개를 고르면 순서를 구분하지 않습니다. 꺼낸 공을 다시 넣는 복원 추출인지도 확인하세요.'],
+ ['english-main','영어','주장과 요지','예시를 넘어 글 전체의 중심 생각을 찾습니다.','독해 유형 연습','','요지(main idea)는 글의 대상에 대한 필자의 핵심 생각입니다. 일부 사례에만 맞는 보기와 always·never·only처럼 주장을 과도하게 키운 보기를 구분하세요.'],
+ ['english-blank','영어','빈칸 추론','앞뒤 문장의 논리로 빈칸을 채웁니다.','독해 유형 연습','','빈칸 앞뒤의 인과·대조·예시 관계를 먼저 찾습니다. 익숙한 단어보다 논리적 방향이 중요합니다. 방법을 바꾸는 것과 목표를 포기하는 것을 구분하세요.'],
+ ['korean-main','국어','주장과 근거','글의 핵심 주장과 근거를 구분합니다.','독서 유형 연습','','“따라서”, “그러나” 뒤의 문장과 마지막 문장을 함께 확인하세요. 기존 기준을 보완하자는 주장과 그 기준을 폐기하자는 주장을 구분합니다.'],
+ ['korean-infer','국어','조건과 추론','지문에 주어진 조건 안에서 결론을 이끌어 냅니다.','독서 유형 연습','A\\Rightarrow B\\quad\\Longleftrightarrow\\quad\\neg B\\Rightarrow\\neg A','“A이면 B”와 논리적으로 같은 것은 대우 “B가 아니면 A가 아니다”입니다. 역 “B이면 A”는 별도의 근거가 필요합니다. 지문에 없는 사실까지 결론을 확대하지 마세요.']
+].map(([id,subject,label,description,basis,formula,concept])=>({id,subject,label,description,basis,formula,concept,courseId:subject==='국어'?'korean-common':subject==='영어'?'english':id==='probability'?'math-statistics':'math-common',dynamic:true}));
+const MATH_TOPICS=[
+ ['math-statistics-combinations','math-statistics','조합과 경우의 수','서로 다른 대상에서 순서 없이 고릅니다.','{}_nC_2=\\frac{n(n-1)}2','조합(combination)은 뽑는 순서를 구분하지 않습니다. 서로 다른 n개에서 2개를 고르면 순서를 고려한 n(n−1)을 2로 나눕니다.'],
+ ['math-statistics-binomial','math-statistics','이항분포의 평균','독립시행의 성공 횟수의 평균을 구합니다.','X\\sim B(n,p)\\quad\\Rightarrow\\quad E(X)=np','성공 확률이 p로 일정한 독립시행을 n번 할 때 성공 횟수 X의 평균은 np입니다. 평균과 특정 횟수가 나올 확률을 구분합니다.'],
+ ['math-statistics-normal','math-statistics','정규분포의 표준화','평균에서 몇 표준편차 떨어졌는지 계산합니다.','Z=\\frac{X-\\mu}{\\sigma}','표준화는 원래 값에서 평균을 빼고 표준편차로 나눕니다. 표준편차와 분산 σ²을 혼동하지 마세요.'],
+ ['math-calculus-exponential','math-calculus','지수함수의 미분','합성함수의 미분에서 안쪽 변화율을 반영합니다.','\\frac{d}{dx}Ae^{kx}=Ak e^{kx}','자연지수함수 eˣ의 도함수는 eˣ입니다. 안쪽 함수가 kx이면 연쇄법칙(chain rule)에 따라 k를 곱합니다.'],
+ ['math-calculus-integral','math-calculus','정적분 계산','원시함수에 양 끝 값을 대입해 뺍니다.','\\int_a^b f(x)\\,dx=F(b)-F(a)','연속함수 f의 원시함수 F를 구해 위끝 값과 아래끝 값의 차를 계산합니다. 양 끝 값을 반대로 빼지 마세요.'],
+ ['math-calculus-geometric','math-calculus','등비급수의 합','공비의 절댓값을 먼저 확인합니다.','\\sum_{n=1}^{\\infty}a r^{n-1}=\\frac{a}{1-r}\\quad (|r|<1)','무한등비급수는 공비의 절댓값이 1보다 작을 때 수렴합니다. 분모는 1+r이 아니라 1−r입니다.'],
+ ['math-geometry-dot','math-geometry','평면벡터의 내적','같은 위치의 성분을 곱해 더합니다.','(a,b)\\cdot(c,d)=ac+bd','벡터의 내적(dot product)은 수입니다. 첫 번째 성분끼리, 두 번째 성분끼리 곱한 결과를 더합니다.'],
+ ['math-geometry-parabola','math-geometry','포물선의 초점','표준형의 계수와 초점 거리를 연결합니다.','y^2=4px\\quad\\Rightarrow\\quad F(p,0)','원점이 꼭짓점이고 x축 방향인 포물선 y²=4px의 초점은 (p,0)입니다. x의 계수 전체를 p로 읽지 마세요.'],
+ ['math-geometry-ellipse','math-geometry','타원의 정의','한 점에서 두 초점까지 거리의 합을 봅니다.','\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1\\quad(a>b>0),\\quad PF_1+PF_2=2a','타원 위 한 점에서 두 초점까지 거리의 합은 장축의 길이 2a입니다. 분모 a² 자체나 짧은 축의 길이 2b와 구분합니다.']
+].map(([id,courseId,label,description,formula,concept])=>({id,courseId,subject:'수학',label,description,formula,concept,basis:'교과 개념 변형',dynamic:true}));
+export const TOPICS=[...BASE_TOPICS,...MATH_TOPICS,...EXTRA_TOPICS.map(t=>({...t,subject:courseById(t.courseId)?.domain,basis:t.basis||'자체 구성 개념 연습',dynamic:false}))];
+export const topicsForCourse=id=>TOPICS.filter(t=>t.courseId===id);
+export function practiceInfo(courseId,topicId='mixed'){const topics=topicsForCourse(courseId).filter(t=>topicId==='mixed'||t.id===topicId),dynamic=topics.some(t=>t.dynamic),bank=AUTHORED_QUESTIONS.filter(q=>q.courseId===courseId&&(topicId==='mixed'||q.topicId===topicId));return {dynamic,bankCount:bank.length,capacity:dynamic?Infinity:bank.length,counts:dynamic?[5,10,20]:[...new Set([1,Math.min(3,bank.length),bank.length])].filter(n=>n>0).sort((a,b)=>a-b)};}
+export function hashString(s){let h=2166136261;for(const c of String(s)){h^=c.charCodeAt(0);h=Math.imul(h,16777619);}return h>>>0;}
+export function seededRandom(seed){let a=hashString(seed);return()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return ((t^t>>>14)>>>0)/4294967296;};}
+const int=(r,a,b)=>a+Math.floor(r()*(b-a+1)),pick=(r,a)=>a[int(r,0,a.length-1)];
+const shuffle=(r,a)=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=int(r,0,i);[a[i],a[j]]=[a[j],a[i]];}return a;};
+const gcd=(a,b)=>b?gcd(b,a%b):Math.abs(a);
+function frac(a,b){const g=gcd(a,b);a/=g;b/=g;return {text:b===1?String(a):`${a}/${b}`,tex:b===1?String(a):`\\frac{${a}}{${b}}`,value:a/b};}
+function poly(a,b,c,d){return [[a,3],[b,2],[c,1],[d,0]].filter(([v])=>v!==0).map(([v,p],i)=>`${v<0?'-':i?'+':''}${Math.abs(v)===1&&p?'':Math.abs(v)}${p?`x${p>1?'^{'+p+'}':''}`:''}`).join('')||'0';}
+function base(t,level,id){return {id,kind:'generated',type:'generated',domain:t.subject,subject:t.subject,topic:t.label,topicId:t.id,difficulty:['기본','응용','심화'][level-1],points:t.subject==='수학'?3:2,generationBasis:t.basis,sourceLabel:'기출 유형을 바탕으로 자체 구성한 연습문제',verified:false};}
+function maths(t,level,r,id){const q=base(t,level,id);let answer;
+ if(t.id==='exponents'){
+  const b=pick(r,[5,7,11,13]),a=int(r,2,5),c=int(r,1,4),d=int(r,1,Math.min(a+c-1,5));answer=b**(a+c-d);
+  q.statement='다음 식의 값을 구하세요.';q.mathLatex=level===3?`\\frac{(${b}^2)^{\\frac{${a}}2}\\times ${b}^{${c}}}{${b}^{${d}}}`:`\\frac{${b}^{${a}}\\times ${b}^{${c}}}{${b}^{${d}}}`;
+  q.hint='같은 밑끼리 곱하면 지수를 더하고, 나누면 지수를 뺍니다.';
+  q.solutionSteps=[`밑이 모두 ${b}가 되도록 정리합니다.${level===3?` 거듭제곱의 거듭제곱은 (${b}²)^(${a}/2)=${b}^${a}입니다.`:''}`,`분자의 지수는 ${a}+${c}=${a+c}입니다.`,`분모의 지수를 빼면 ${a+c}−${d}=${a+c-d}입니다.`,`따라서 ${b}^${a+c-d}=${answer}입니다.`];q.commonMistakes=['곱셈에서 지수를 곱하지 않고 더합니다.','분모에 있는 지수는 빼야 합니다.'];q.verification={parameters:{b,a,c,d},expectedValue:answer};
+ }else if(t.id==='derivative'){
+  const A=level===1?0:int(r,1,5),B=int(r,1,6),C=int(r,-6,6),D=int(r,-7,7),x=int(r,1,3);answer=3*A*x*x+2*B*x+C;
+  q.statement=level===1?'다음 함수에서 물은 미분계수를 구하세요.':'다음 함수에 대한 극한값을 구하세요.';q.mathLatex=`f(x)=${poly(A,B,C,D)},\\quad `+(level===1?`f\\prime(${x})=?`:`\\lim_{h\\to0}\\frac{f(${x}+h)-f(${x})}h`);
+  q.hint='분수의 극한이 미분계수의 정의인지 먼저 확인하세요.';q.solutionSteps=[`구하려는 값은 x=${x}에서의 미분계수 f′(${x})입니다.`,`항별로 미분하면 f′(x)=${3*A}x²+${2*B}x+(${C})입니다.`,`대입하면 ${3*A}×${x}²+${2*B}×${x}+(${C})=${answer}입니다.`];q.commonMistakes=['f(a)와 f′(a)는 다른 값입니다.','상수항을 미분하면 0입니다.'];q.verification={parameters:{A,B,C,D,x},expectedValue:answer};
+ }else if(t.id==='limit'){
+  const s=int(r,2,7),den=int(r,1,3),value=int(r,s+1,s+4),b=den*value-s,e=int(r,1,7),c=int(r,1,9);answer=value;
+  q.statement='다음 극한값을 구하세요.';q.mathLatex=`\\lim_{x\\to\\infty}\\frac{\\sqrt{${s*s}x^2-${e}}+${b}x}{${den}x+${c}}`;q.hint='양의 무한대로 가므로 분자와 분모를 x로 나눕니다.';q.solutionSteps=['x가 양수일 때 √(x²)=x입니다.',`분자와 분모를 x로 나누면 (√(${s*s}−${e}/x²)+${b})/(${den}+${c}/x)입니다.`,`1/x와 1/x²은 0으로 갑니다.`,`극한값은 (${s}+${b})/${den}=${answer}입니다.`];q.commonMistakes=['제곱근 안에서는 x²으로 나누어야 합니다.','√(x²)=|x|이므로 x의 부호를 먼저 확인하세요.'];q.verification={parameters:{s,den,b,e,c},expectedValue:answer};
+ }else if(t.id==='sequence'){
+  const a=int(r,2,12),d=int(r,1,6),n=int(r,5,level===3?22:12);answer=n*(2*a+(n-1)*d)/2;
+  q.statement=`첫째항이 ${a}, 공차가 ${d}인 등차수열의 첫째항부터 제${n}항까지의 합을 구하세요.`;q.mathLatex=`a_1=${a},\\quad d=${d},\\quad S_{${n}}=?`;q.hint='첫째항과 마지막 항의 평균에 항의 수를 곱하세요.';q.solutionSteps=[`제${n}항은 ${a}+(${n}−1)×${d}=${a+(n-1)*d}입니다.`,`합은 항의 수×(첫째항+마지막 항)/2입니다.`,`따라서 ${n}×(${a}+${a+(n-1)*d})/2=${answer}입니다.`];q.commonMistakes=['제n항은 공차를 n−1번 더합니다.','합 공식에서 2로 나누는 단계를 놓치지 마세요.'];q.verification={parameters:{a,d,n},expectedValue:answer};
+ }else{
+  const red=int(r,2,7),blue=int(r,2,7),total=red+blue,right=frac(red*(red-1),total*(total-1));
+  const vals=new Map([[right.text,right]]);for(const f of [frac(red*red,total*total),frac(red,total),frac(blue*(blue-1),total*(total-1)),frac(2*red*blue,total*(total-1)),frac(red*(red-1)+1,total*(total-1))])vals.set(f.text,f);let j=1;while(vals.size<5){const f=frac(j++,total*(total-1)+1);vals.set(f.text,f);}const choices=shuffle(r,[right,...[...vals.values()].filter(f=>f.text!==right.text).slice(0,4)]);
+  q.statement=`크기와 모양이 같은 빨간 공 ${red}개와 파란 공 ${blue}개가 든 주머니에서 공 2개를 동시에 임의로 꺼냅니다. 두 공이 모두 빨간 공일 확률을 구하세요.`;q.hint='전체 공에서 2개, 빨간 공에서 2개를 고르는 경우를 비교하세요.';q.options=choices.map(f=>f.text);q.optionLatex=choices.map(f=>f.tex);q.answerIndex=choices.findIndex(f=>f.text===right.text);q.solutionSteps=[`전체 경우의 수는 ${total}×${total-1}/2=${total*(total-1)/2}입니다.`,`빨간 공 2개인 경우는 ${red}×${red-1}/2=${red*(red-1)/2}입니다.`,`따라서 확률은 ${right.text}입니다.`];q.commonMistakes=['동시에 꺼내므로 순서를 구분하지 않습니다.','공을 다시 넣지 않으므로 두 번째 선택의 전체 공 수는 1 줄어듭니다.'];q.verification={parameters:{red,blue,total},expectedValue:right.value};
+ }
+ if(!q.options){const options=shuffle(r,[answer,answer-2,answer-1,answer+1,answer+2]);q.options=options.map(String);q.optionLatex=q.options;q.answerIndex=options.indexOf(answer);}
+ q.optionAnalysis=q.options.map((v,i)=>i===q.answerIndex?'정답입니다. 위 풀이의 계산 결과와 일치합니다.':`${v}는 올바른 계산 결과와 다릅니다. 식의 변형과 대입 단계를 다시 확인하세요.`);return q;
+}
+function verbal(t,level,r,id){const q=base(t,level,id),name=pick(r,['Mina','Daniel','Sora','Jin','Hana','Alex','Yuna','Leo']),place=pick(r,['a library','a school club','a community center','a museum']),weeks=int(r,2,24),kp=pick(r,['도서관','청소년 센터','마을 학습실','학교 자료실','지역 문화관','시민 학습관','주민 교육관','마을 독서실']),time=pick(r,['한 달','두 달','한 학기','여섯 주','세 달','여덟 주','열 주','두 학기']);let right,wrong;
+ if(t.id==='english-main'){
+  q.statement='다음 글의 요지로 가장 적절한 것을 고르세요.';q.passage=`${name} helped organize activities at ${place}. At first, the team measured success only by the number of visitors. But a crowded event did not always help anyone learn. The team began asking visitors what they had understood and what they still needed. Attendance still mattered, but it was no longer the only measure. A useful activity should be judged by what people gain from it, not simply by how many people appear.`;
+  q.translation=`${name}라는 학생은 ${({'a library':'도서관','a school club':'학교 동아리','a community center':'지역 공동체 센터','a museum':'박물관'})[place]}에서 활동을 준비하는 일을 도왔다. 처음에 팀은 방문자 수만으로 성공을 평가했다. 그러나 사람이 많이 모인 행사가 항상 누군가의 학습에 도움이 되는 것은 아니었다. 팀은 방문자들에게 무엇을 이해했고 아직 무엇이 필요한지 묻기 시작했다. 참가자 수는 여전히 중요했지만 더 이상 유일한 척도는 아니었다. 유익한 활동은 단순히 몇 명이 왔는지가 아니라 사람들이 무엇을 얻었는지로 평가해야 한다.`;
+  q.vocabulary=[['measure','평가하다; 척도'],['attendance','참가자 수, 출석'],['judge A by B','B를 기준으로 A를 판단하다'],['gain','얻다']];right='An activity should be evaluated by its benefit to participants as well as attendance.';wrong=['An event with more visitors always provides a better learning experience.','Visitor numbers should never be recorded under any circumstances.','Activities are useful only when every participant learns the same thing.','The best way to improve an event is to stop collecting feedback.'];q.hint='마지막 두 문장이 사례를 어떤 원칙으로 정리하는지 보세요.';q.solutionSteps=['처음에는 방문자 수만으로 성공을 평가했습니다.','많은 사람이 와도 학습 효과가 없을 수 있어 참가자가 실제로 얻은 것을 확인합니다.','따라서 참가자 수와 실질적인 도움을 함께 평가해야 한다는 보기가 핵심입니다.'];q.commonMistakes=['attendance still mattered는 참가자 수 역시 중요하다는 뜻입니다.','글의 일부 사례를 always·only 같은 표현으로 확대하지 마세요.'];
+ }else if(t.id==='english-blank'){
+  q.statement='다음 글의 빈칸에 들어갈 말로 가장 적절한 것을 고르세요.';q.passage=`For ${weeks} weeks, ${name} believed a study plan had to be followed exactly. When the plan failed, ${name} simply repeated it. A teacher suggested a different approach: keep a record of what each strategy actually achieves. A plan is a tool for learning, not a rule that must remain unchanged. When evidence shows that a method is not helping, the sensible response is to ______. Changing a method can show commitment to a goal rather than a lack of commitment.`;
+  q.translation=`${weeks}주 동안 ${name}라는 학생은 학습 계획을 정확히 따라야 한다고 생각했다. 계획이 효과가 없을 때도 그 학생은 그저 그것을 반복했다. 한 교사는 다른 접근법을 제안했다. 각 전략이 실제로 어떤 성과를 내는지 기록하라는 것이었다. 계획은 학습을 위한 도구이지 그대로 유지해야 하는 규칙이 아니다. 어떤 방법이 도움이 되지 않는다는 증거가 있을 때 합리적인 대응은 결과를 검토하고 방법을 조정하는 것이다. 방법을 바꾸는 것은 목표에 대한 의지가 부족하다는 뜻이 아니라 목표에 대한 헌신을 보여 줄 수 있다.`;
+  q.vocabulary=[['approach','접근법'],['strategy','전략'],['evidence','증거, 근거'],['commitment','헌신, 목표를 지키려는 의지'],['rather than','~라기보다, ~대신에']];right='review the results and adjust the method';wrong=['ignore the evidence and repeat the same steps','give up the goal before trying another method','judge every method only by how familiar it feels','avoid recording any result that is disappointing'];q.hint='evidence와 changing a method를 연결하세요.';q.solutionSteps=['계획을 고집하는 태도와 결과를 살펴 개선하는 태도를 대비합니다.','방법이 효과가 없다는 증거가 제시되었습니다.','결과를 검토하고 방법을 조정한다는 보기가 적절합니다.'];q.commonMistakes=['방법을 바꾸는 것과 목표를 포기하는 것을 구분하세요.','익숙한 단어보다 앞뒤 논리를 확인하세요.'];
+ }else if(t.id==='korean-main'){
+  q.statement='다음 글의 중심 주장으로 가장 적절한 것을 고르세요.';q.passage=`${time} 동안 이루어진 ${kp}의 운영을 평가할 때 방문자 수는 유용한 자료가 될 수 있다. 그러나 방문자 수만으로 이용자가 얻은 도움까지 알 수 있는 것은 아니다. 같은 횟수로 방문했더라도 어떤 이용자는 필요한 정보를 찾고 다른 이용자는 그렇지 못할 수 있기 때문이다. 따라서 운영을 개선하려면 방문 횟수와 함께 이용 목적의 달성 여부도 살펴야 한다. 이는 방문자 수를 버리자는 뜻이 아니라 평가에 필요한 관점을 보완하자는 뜻이다.`;right='방문자 수와 이용 목적의 달성 여부를 함께 고려해 운영을 평가해야 한다.';wrong=['방문자 수는 어떤 경우에도 운영 평가에 도움이 되지 않는다.','이용 목적이 다르면 모든 운영 평가를 포기해야 한다.','방문 횟수가 같으면 이용자가 얻는 도움도 반드시 같다.','운영을 개선하려면 이용자의 의견보다 방문자 수만 보아야 한다.'];q.hint='따라서 뒤의 주장과 마지막 문장을 함께 보세요.';q.solutionSteps=['방문자 수가 유용하지만 충분한 기준은 아니라고 설명합니다.','이용 목적 달성 여부도 살펴야 한다고 주장합니다.','기존 지표를 폐기하는 것이 아니라 보완하는 보기가 정답입니다.'];q.commonMistakes=['충분하지 않다는 말은 전혀 쓸모없다는 뜻이 아닙니다.','같은 횟수라도 결과가 다를 수 있다는 사례를 반대로 읽지 마세요.'];
+ }else{
+  q.statement='다음 글에서 논리적으로 도출할 수 있는 것을 고르세요.';q.passage=`어느 ${kp}에서는 ${time} 동안 모든 예약 이용 기록을 조사했다. 조사 규칙에 따르면 예약이 승인된 이용자는 모두 확인 문자를 받는다. 확인 문자를 받지 못한 사람의 예약은 승인되지 않은 것으로 처리한다. 민수는 예약 신청을 했지만 확인 문자를 받지 못했다. 다만 확인 문자를 받은 사람 모두가 실제로 시설을 이용했는지는 이 기록만으로 알 수 없다.`;right='민수의 예약은 승인되지 않은 것으로 처리된다.';wrong=['확인 문자를 받은 사람은 모두 실제로 시설을 이용했다.','예약이 승인되지 않은 사람은 모두 신청 자체를 하지 않았다.','확인 문자를 받은 사람은 예약이 승인되지 않았다.','민수는 확인 문자를 받았지만 시설 이용을 포기했다.'];q.hint='승인 → 문자 수신이라는 조건에서 문자를 받지 못한 경우를 보세요.';q.solutionSteps=['예약 승인 → 확인 문자 수신이라는 조건이 주어졌습니다.','민수는 문자를 받지 못했으므로 예약은 승인되지 않은 것으로 처리됩니다.','실제 시설 이용 여부까지 결론을 넓힐 근거는 없습니다.'];q.commonMistakes=['A이면 B라는 조건을 B이면 A로 바꾸지 마세요.','예약 승인과 실제 이용은 다른 사실입니다.'];
+ }
+ q.options=shuffle(r,[right,...wrong]);q.answerIndex=q.options.indexOf(right);q.optionAnalysis=q.options.map((s,i)=>i===q.answerIndex?'글 전체의 흐름 또는 지문의 조건과 일치합니다.':'지문의 핵심과 다른 방향을 제시하거나, 지문에 없는 사실을 덧붙인 보기입니다.');return q;
+}
+export function inferTopic(q){return q.topicId||(/미분/.test(q.topic)?'derivative':/무한대|극한/.test(q.topic)?'limit':/지수|거듭제곱근/.test(q.topic)?'exponents':null);}
+function extendedMath(t,r,id){const q=base(t,1,id);let answer,p,steps;
+ if(t.id.endsWith('-combinations')){const n=int(r,4,45);answer=n*(n-1)/2;p={n};q.statement=`서로 다른 ${n}명 중에서 순서와 역할을 구별하지 않고 대표 2명을 뽑는 경우의 수를 구하세요.`;q.mathLatex=`{}_{${n}}C_2`;steps=[`첫 번째와 두 번째를 구별하면 ${n}×${n-1}가지입니다.`,`대표 두 명의 순서는 구별하지 않으므로 2로 나눕니다.`,`경우의 수는 ${n}×${n-1}/2=${answer}입니다.`];
+ }else if(t.id.endsWith('-binomial')){const den=int(r,2,6),k=int(r,2,10),n=den*k;answer=k;p={n,den};q.statement=`한 번의 시행에서 성공할 확률이 1/${den}인 독립시행을 ${n}번 합니다. 성공 횟수 X의 평균 E(X)를 구하세요.`;q.mathLatex=`X\\sim B\\left(${n},\\frac1{${den}}\\right),\\quad E(X)=?`;steps=[`X는 시행 횟수 n=${n}, 성공 확률 p=1/${den}인 이항분포를 따릅니다.`,'이항분포의 평균은 np입니다.',`따라서 평균은 ${n}×(1/${den})=${answer}입니다.`];
+ }else if(t.id.endsWith('-normal')){const mu=int(r,40,80),sigma=int(r,2,8),z=int(r,-3,3),x=mu+z*sigma;answer=z;p={mu,sigma,x};q.statement=`평균이 ${mu}, 표준편차가 ${sigma}인 정규분포에서 관측값 ${x}를 표준화한 값을 구하세요.`;q.mathLatex=`Z=\\frac{X-\\mu}{\\sigma},\\quad X=${x}`;steps=[`관측값과 평균의 차는 ${x}−${mu}=${x-mu}입니다.`,`이를 표준편차 ${sigma}로 나눕니다.`,`표준화 값은 (${x}−${mu})/${sigma}=${answer}입니다.`];
+ }else if(t.id.endsWith('-exponential')){const A=int(r,2,15),k=int(r,2,8);answer=A*k;p={A,k};q.statement='다음 함수의 x=0에서의 미분계수를 구하세요.';q.mathLatex=`f(x)=${A}e^{${k}x},\\quad f\\prime(0)=?`;steps=[`e^(${k}x)를 미분할 때 안쪽 함수의 도함수 ${k}를 곱합니다.`,`f′(x)=${A}×${k}×e^(${k}x)입니다.`,`x=0을 대입하면 e⁰=1이므로 f′(0)=${answer}입니다.`];
+ }else if(t.id.endsWith('-integral')){const a=int(r,1,12),b=int(r,1,9);answer=a*b**3;p={a,b};q.statement='다음 정적분의 값을 구하세요.';q.mathLatex=`\\int_0^{${b}}${3*a}x^2\\,dx`;steps=[`원시함수는 ${a}x³입니다.`,`위끝 ${b}와 아래끝 0을 대입한 차를 계산합니다.`,`정적분 값은 ${a}×${b}³−0=${answer}입니다.`];
+ }else if(t.id.endsWith('-geometric')){const d=int(r,2,10),a=int(r,2,30);answer=a*d;p={a,d};q.statement=`첫째항이 ${a}, 공비가 (${d}−1)/${d}인 무한등비급수의 합을 구하세요.`;q.mathLatex=`\\sum_{n=1}^{\\infty}${a}\\left(\\frac{${d-1}}{${d}}\\right)^{n-1}`;steps=[`공비 ${d-1}/${d}는 절댓값이 1보다 작으므로 수렴합니다.`,'합 공식은 첫째항/(1−공비)입니다.',`합은 ${a}/(1−${d-1}/${d})=${a}×${d}=${answer}입니다.`];
+ }else if(t.id.endsWith('-dot')){const a=int(r,-6,8),b=int(r,1,8),c=int(r,1,9),d=int(r,-5,8);answer=a*c+b*d;p={a,b,c,d};q.statement='두 평면벡터의 내적을 구하세요.';q.mathLatex=`\\vec u=(${a},${b}),\\quad\\vec v=(${c},${d}),\\quad\\vec u\\cdot\\vec v=?`;steps=[`첫 번째 성분끼리 곱하면 ${a}×${c}=${a*c}입니다.`,`두 번째 성분끼리 곱하면 ${b}×${d}=${b*d}입니다.`,`두 값을 더한 내적은 ${a*c}+(${b*d})=${answer}입니다.`];
+ }else if(t.id.endsWith('-parabola')){const p0=int(r,2,50);answer=p0;p={p:p0};q.statement='다음 포물선의 초점의 x좌표를 구하세요.';q.mathLatex=`y^2=${4*p0}x`;steps=['표준형 y²=4px와 비교합니다.',`4p=${4*p0}이므로 p=${p0}입니다.`,`초점은 (${p0},0)이므로 x좌표는 ${answer}입니다.`];
+ }else{const a=int(r,3,40),b=int(r,1,a-1);answer=2*a;p={a,b};q.statement='다음 타원 위 한 점에서 두 초점까지의 거리의 합을 구하세요.';q.mathLatex=`\\frac{x^2}{${a*a}}+\\frac{y^2}{${b*b}}=1`;steps=[`큰 분모 ${a*a}의 제곱근은 a=${a}입니다.`,'타원의 정의에 따라 두 초점까지 거리의 합은 장축의 길이 2a입니다.',`따라서 거리의 합은 2×${a}=${answer}입니다.`];}
+ q.hint=t.description;q.solutionSteps=steps;q.commonMistakes=[t.concept,'계산에 쓰는 값이 문제의 조건과 같은지 확인하세요.'];const vals=shuffle(r,[answer,answer-2,answer-1,answer+1,answer+2]);q.options=vals.map(String);q.optionLatex=q.options;q.answerIndex=vals.indexOf(answer);q.optionAnalysis=q.options.map((v,i)=>i===q.answerIndex?`정답입니다. ${steps.at(-1)}`:`${v}는 주어진 조건의 계산 결과와 다릅니다. ${steps[0]}`);q.verification={parameters:p,expectedValue:answer};return q;
+}
+export function generatePractice({subject,courseId,topicId='mixed',level=1,count=5,seed=Date.now(),pastQuestions=[]}={}){
+ if(!Number.isInteger(count)||count<1||count>20)throw new Error('1~20문항을 선택하세요.');
+ const topicCourse=topicId==='mixed'?null:courseById(TOPICS.find(t=>t.id===topicId)?.courseId),course=courseId?courseById(courseId):topicCourse||COURSES.find(c=>c.label===subject)||courseForDomain(subject||'수학');
+ if(!course||subject&&subject!==course.domain&&subject!==course.label)throw new Error('과목과 유형이 일치하지 않습니다.');
+ const selected=topicsForCourse(course.id).filter(t=>topicId==='mixed'||t.id===topicId);if(!selected.length)throw new Error('선택한 과목의 유형을 찾지 못했습니다.');
+ const info=practiceInfo(course.id,topicId),actualCount=Math.min(count,info.capacity);if(!actualCount)throw new Error('현재 이 유형에 등록된 연습문제가 없습니다.');
+ level=course.id==='math-common'?Math.min(3,Math.max(1,Number(level)||1)):1;
+ const rng=seededRandom(seed),seen=new Set(),questions=[];
+ for(let i=0;i<actualCount;i++){let q,found=false;for(let tries=0;tries<200;tries++){
+  const t=selected[(i+tries)%selected.length],id=`new-${hashString(seed)}-${i+1}`;
+  if(t.dynamic){q=MATH_TOPICS.some(x=>x.id===t.id)?extendedMath(t,rng,id):t.subject==='수학'?maths(t,level,rng,id):verbal(t,level,rng,id);}
+  else{const available=AUTHORED_QUESTIONS.filter(p=>p.topicId===t.id&&!seen.has(`origin:${p.id}`));if(!available.length)continue;const original=pick(rng,available);q={...structuredClone(original),id,originId:original.id,kind:'generated',type:'generated'};}
+  const signature=JSON.stringify([q.statement,q.mathLatex,q.passage]);if(seen.has(signature))continue;seen.add(signature);if(q.originId)seen.add(`origin:${q.originId}`);Object.assign(q,{courseId:course.id,courseName:course.label,domain:course.domain,subject:course.label,relatedPastIds:pastQuestions.filter(p=>inferTopic(p)===t.id).map(p=>p.id)});found=true;break;
+ }if(!found)throw new Error('새 문항을 구성하지 못했습니다. 문제 수를 줄여 주세요.');questions.push(q);}
+ return {id:`practice-${hashString(seed)}`,seed:String(seed),createdAt:new Date().toISOString(),subject:course.domain,courseId:course.id,courseName:course.label,topicId,level,requestedCount:count,questions,mode:info.dynamic?'variation':'authored-bank',availableCount:info.bankCount};
+}

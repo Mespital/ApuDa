@@ -1,0 +1,10 @@
+import fs from 'node:fs';import path from 'node:path';import {COURSES} from '../dist/gichul/catalog.mjs';
+const root=path.resolve(path.dirname(new URL(import.meta.url).pathname),'..');
+const files=['core','social_history','science_vocation','languages'];const topics=[],questions=[],sources=[];
+for(const name of files){const file=path.join(root,'content/csat',name+'.json');const d=JSON.parse(fs.readFileSync(file,'utf8'));topics.push(...d.topics);questions.push(...d.questions);sources.push(...d.sources);}
+for(const q of questions){const c=COURSES.find(c=>c.id===q.courseId);if(!c||q.domain!==c.domain)throw new Error('Unknown course '+q.id);q.courseName=c.label;q.subject=c.label;q.contentNote||='실제 기출과 구분되는 자체 구성 기본 개념 연습입니다. 참고 출처는 과목 범위 또는 개념 확인용입니다.';if(!Array.isArray(q.sourceRefs)||!q.sourceRefs.every(u=>/^https?:\/\//.test(u)))throw new Error('Invalid sources '+q.id);if(q.options.length!==5||new Set(q.options).size!==5||!Number.isInteger(q.answerIndex)||q.answerIndex<0||q.answerIndex>4)throw new Error('Invalid question '+q.id);}
+if(new Set(topics.map(t=>t.id)).size!==topics.length||new Set(questions.map(q=>q.id)).size!==questions.length)throw new Error('Duplicate content ids');
+const uniqueSources=[...new Map(sources.map(s=>[s.url+'|'+s.scope,s])).values()];
+fs.writeFileSync(path.join(root,'dist/gichul/content.mjs'),'// 자체 구성 기본 연습. 원문 기출과 구분합니다.\nexport const EXTRA_TOPICS='+JSON.stringify(topics,null,2)+';\nexport const AUTHORED_QUESTIONS='+JSON.stringify(questions,null,2)+';\nexport const CONTENT_SOURCES='+JSON.stringify(uniqueSources,null,2)+';\n');
+fs.writeFileSync(path.join(root,'dist/gichul/data/coverage.json'),JSON.stringify({updatedAt:'2026-11-20',curriculumYear:2027,domainCount:8,courseCount:COURSES.length,authoredCount:questions.length,verifiedPastCount:10,conceptCount:topics.length+18,courses:COURSES.map(c=>({...c,authoredCount:questions.filter(q=>q.courseId===c.id).length})),limitations:'자체 구성은 과목별 기본 개념 일부를 다룹니다. 공식 기출 상세 해설은 수학 10문항입니다.'},null,2));
+console.log({topics:topics.length,authored:questions.length,courses:COURSES.length,sources:uniqueSources.length});
