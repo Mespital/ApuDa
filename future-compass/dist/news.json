@@ -1,8 +1,32 @@
 {
-  "checked_at": "2026-11-20T16:50:25.073084+00:00",
-  "last_success_at": "2026-11-20T16:50:25.073084+00:00",
+  "checked_at": "2026-11-20T20:18:36.979771+00:00",
+  "last_success_at": "2026-11-20T20:18:36.979771+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "How Watch Duty is using Gemini to get wildfire alerts out faster",
+      "url": "https://blog.google/company-news/outreach-and-initiatives/google-org/watch-duty-gemini-tool/",
+      "source": "Google",
+      "published_at": "2026-11-20T17:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Combatting adversarial distillation",
+      "url": "https://openai.com/index/combatting-adversarial-distillation",
+      "source": "OpenAI",
+      "published_at": "2026-11-20T10:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Can AI help scientists identify promising drug candidates?",
+      "url": "https://openai.com/index/introducing-medchembench",
+      "source": "OpenAI",
+      "published_at": "2026-11-20T00:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "ICYMI: Transfer your history from other AI apps into Gemini.",
       "url": "https://blog.google/innovation-and-ai/products/gemini-app/switch-ai-assistants-transfer-history/",
@@ -218,36 +242,12 @@
       "published_at": "2026-11-18T00:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "How genome mapping can help researchers better understand disease",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/alphagenome-disease-research/",
-      "source": "Google",
-      "published_at": "2026-11-17T22:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "See what 5 builders are making with Gemini 4 Carbon",
-      "url": "https://blog.google/products-and-platforms/products/gemini/gemini-4-carbon-builders/",
-      "source": "Google",
-      "published_at": "2026-11-17T21:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Introducing GPT-6.2 Astra and Sol",
-      "url": "https://openai.com/index/introducing-gpt-6-2-astra-sol",
-      "source": "OpenAI",
-      "published_at": "2026-11-17T17:45:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-11-20T16:50:25.073084+00:00",
+    "checked_at": "2026-11-20T20:18:36.979771+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -384,7 +384,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-11-20T16:50:25.073084+00:00",
+    "last_success_at": "2026-11-20T20:18:36.979771+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
