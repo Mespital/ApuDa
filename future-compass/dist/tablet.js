@@ -22,7 +22,7 @@
       var h = x[0]; if (h === '#group') return;
       if (main.some(function (m) { return m[0] === h; })) return;
       if (/#(path|career|courses|school|grades|examplan)$/.test(h) || /^\.\/$|future|know-me/.test(h)) career.push(x);
-      else if (/^study\.html#/.test(h) && !/#settings$/.test(h)) study.push(x);
+      else if (/^gichul\//.test(h) || /^study\.html#/.test(h) && !/#settings$/.test(h)) study.push(x);
       else etc.push(x);
     });
     return [['공부', main.concat(study)], ['진로·학교', career], ['더 보기', etc]];

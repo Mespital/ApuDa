@@ -1,0 +1,1719 @@
+{
+  "checkedAt": "2026-11-20",
+  "years": [
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025,
+    2026,
+    2027
+  ],
+  "resourceCount": 112,
+  "successCount": 112,
+  "pdfCount": 408,
+  "resources": [
+    {
+      "id": "KICE-2027-27DaeSuneung_43_1.pdf",
+      "year": 2027,
+      "domain": "과학탐구",
+      "name": "물리학Ⅰ 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_43_1.pdf",
+      "bytes": 1398462,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_43_5.pdf",
+      "year": 2027,
+      "domain": "과학탐구",
+      "name": "물리학Ⅱ 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_43_5.pdf",
+      "bytes": 1528815,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_43_3.pdf",
+      "year": 2027,
+      "domain": "과학탐구",
+      "name": "생명과학Ⅰ 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_43_3.pdf",
+      "bytes": 1362405,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_43_7.pdf",
+      "year": 2027,
+      "domain": "과학탐구",
+      "name": "생명과학Ⅱ 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_43_7.pdf",
+      "bytes": 965419,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_43_4.pdf",
+      "year": 2027,
+      "domain": "과학탐구",
+      "name": "지구과학Ⅰ 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_43_4.pdf",
+      "bytes": 2180376,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_43_8.pdf",
+      "year": 2027,
+      "domain": "과학탐구",
+      "name": "지구과학Ⅱ 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_43_8.pdf",
+      "bytes": 3632516,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_43_2.pdf",
+      "year": 2027,
+      "domain": "과학탐구",
+      "name": "화학Ⅰ 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_43_2.pdf",
+      "bytes": 1021749,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_43_6.pdf",
+      "year": 2027,
+      "domain": "과학탐구",
+      "name": "화학Ⅱ 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_43_6.pdf",
+      "bytes": 915532,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_1.pdf",
+      "year": 2027,
+      "domain": "국어",
+      "name": "국어 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_1.pdf",
+      "bytes": 3284093,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_42_7.pdf",
+      "year": 2027,
+      "domain": "사회탐구",
+      "name": "경제 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_42_7.pdf",
+      "bytes": 1362367,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_42_5.pdf",
+      "year": 2027,
+      "domain": "사회탐구",
+      "name": "동아시아사 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_42_5.pdf",
+      "bytes": 2062673,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_42_9.pdf",
+      "year": 2027,
+      "domain": "사회탐구",
+      "name": "사회·문화 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_42_9.pdf",
+      "bytes": 2217067,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_42_1.pdf",
+      "year": 2027,
+      "domain": "사회탐구",
+      "name": "생활과 윤리 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_42_1.pdf",
+      "bytes": 1140199,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_42_6.pdf",
+      "year": 2027,
+      "domain": "사회탐구",
+      "name": "세계사 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_42_6.pdf",
+      "bytes": 2132473,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_42_4.pdf",
+      "year": 2027,
+      "domain": "사회탐구",
+      "name": "세계지리 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_42_4.pdf",
+      "bytes": 1869505,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_42_2.pdf",
+      "year": 2027,
+      "domain": "사회탐구",
+      "name": "윤리와 사상 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_42_2.pdf",
+      "bytes": 1939672,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_42_8.pdf",
+      "year": 2027,
+      "domain": "사회탐구",
+      "name": "정치와 법 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_42_8.pdf",
+      "bytes": 741673,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_42_3.pdf",
+      "year": 2027,
+      "domain": "사회탐구",
+      "name": "한국지리 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_42_3.pdf",
+      "bytes": 3483880,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_2.pdf",
+      "year": 2027,
+      "domain": "수학",
+      "name": "수학 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_2.pdf",
+      "bytes": 1221296,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_3.pdf",
+      "year": 2027,
+      "domain": "영어",
+      "name": "영어 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_3.pdf",
+      "bytes": 1481135,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_5_1.pdf",
+      "year": 2027,
+      "domain": "제2외국어/한문",
+      "name": "독일어Ⅰ 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_5_1.pdf",
+      "bytes": 2947802,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_5_6.pdf",
+      "year": 2027,
+      "domain": "제2외국어/한문",
+      "name": "러시아어Ⅰ 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_5_6.pdf",
+      "bytes": 4416826,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_5_8.pdf",
+      "year": 2027,
+      "domain": "제2외국어/한문",
+      "name": "베트남어Ⅰ 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_5_8.pdf",
+      "bytes": 1600605,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_5_3.pdf",
+      "year": 2027,
+      "domain": "제2외국어/한문",
+      "name": "스페인어Ⅰ 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_5_3.pdf",
+      "bytes": 3279099,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_5_7.pdf",
+      "year": 2027,
+      "domain": "제2외국어/한문",
+      "name": "아랍어Ⅰ 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_5_7.pdf",
+      "bytes": 2045198,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_5_5.pdf",
+      "year": 2027,
+      "domain": "제2외국어/한문",
+      "name": "일본어Ⅰ 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_5_5.pdf",
+      "bytes": 4364008,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_5_4.pdf",
+      "year": 2027,
+      "domain": "제2외국어/한문",
+      "name": "중국어Ⅰ 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_5_4.pdf",
+      "bytes": 1426706,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_5_2.pdf",
+      "year": 2027,
+      "domain": "제2외국어/한문",
+      "name": "프랑스어Ⅰ 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_5_2.pdf",
+      "bytes": 1406815,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_5_9.pdf",
+      "year": 2027,
+      "domain": "제2외국어/한문",
+      "name": "한문Ⅰ 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_5_9.pdf",
+      "bytes": 2601008,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_44_3.pdf",
+      "year": 2027,
+      "domain": "직업탐구",
+      "name": "공업 일반 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_44_3.pdf",
+      "bytes": 3735812,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_44_2.pdf",
+      "year": 2027,
+      "domain": "직업탐구",
+      "name": "농업 기초 기술 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_44_2.pdf",
+      "bytes": 3455899,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_44_4.pdf",
+      "year": 2027,
+      "domain": "직업탐구",
+      "name": "상업 경제 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_44_4.pdf",
+      "bytes": 2108105,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_44_1.pdf",
+      "year": 2027,
+      "domain": "직업탐구",
+      "name": "성공적인 직업생활 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_44_1.pdf",
+      "bytes": 2584841,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_44_5.pdf",
+      "year": 2027,
+      "domain": "직업탐구",
+      "name": "수산·해운 산업 기초 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_44_5.pdf",
+      "bytes": 1736750,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_44_6.pdf",
+      "year": 2027,
+      "domain": "직업탐구",
+      "name": "인간 발달 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_44_6.pdf",
+      "bytes": 2851614,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-2027-27DaeSuneung_41.pdf",
+      "year": 2027,
+      "domain": "한국사",
+      "name": "한국사 문제 PDF",
+      "url": "https://cdn2.kice.re.kr/27dae-suneung/27DaeSuneung_41.pdf",
+      "bytes": 2356475,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-3eb2b916e21717d5c40d43235d93aad0",
+      "year": 2026,
+      "domain": "과학탐구",
+      "name": "과학탐구영역_문제지.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=3eb2b916e21717d5c40d43235d93aad0",
+      "bytes": 10207960,
+      "format": "zip",
+      "pdfCount": 8,
+      "papers": [
+        "01 물리학Ⅰ_문제.pdf",
+        "02 화학Ⅰ_문제.pdf",
+        "03 생명과학Ⅰ_문제.pdf",
+        "04 지구과학Ⅰ_문제.pdf",
+        "05 물리학Ⅱ_문제.pdf",
+        "06 화학Ⅱ_문제.pdf",
+        "07 생명과학Ⅱ_문제.pdf",
+        "08 지구과학Ⅱ_문제.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-60defdef6d83db1b756f841089563c5a",
+      "year": 2026,
+      "domain": "국어",
+      "name": "국어영역_문제지.pdf",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=60defdef6d83db1b756f841089563c5a",
+      "bytes": 4135202,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-a5ffc663f52f11f8dd633837c03ac84a",
+      "year": 2026,
+      "domain": "사회탐구",
+      "name": "사회탐구영역_문제지.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=a5ffc663f52f11f8dd633837c03ac84a",
+      "bytes": 18790829,
+      "format": "zip",
+      "pdfCount": 9,
+      "papers": [
+        "01 생활과 윤리_문제.pdf",
+        "02 윤리와 사상_문제.pdf",
+        "03 한국지리_문제.pdf",
+        "04 세계지리_문제.pdf",
+        "05 동아시아사_문제.pdf",
+        "06 세계사_문제.pdf",
+        "07 경제_문제.pdf",
+        "08 정치와 법_문제.pdf",
+        "09 사회·문화_문제.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-f9055b3484e9176cea7c74b9819a7d2c",
+      "year": 2026,
+      "domain": "수학",
+      "name": "수학영역_문제지.pdf",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=f9055b3484e9176cea7c74b9819a7d2c",
+      "bytes": 2485943,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-e0431cad0731556faee928fd38c81241",
+      "year": 2026,
+      "domain": "영어",
+      "name": "영어영역_문제지.pdf",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=e0431cad0731556faee928fd38c81241",
+      "bytes": 2252492,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-371b19ce3ad7d8991ef06e3f36fdceed",
+      "year": 2026,
+      "domain": "제2외국어/한문",
+      "name": "제2외국어한문영역_문제지.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=371b19ce3ad7d8991ef06e3f36fdceed",
+      "bytes": 18396765,
+      "format": "zip",
+      "pdfCount": 9,
+      "papers": [
+        "01 독일어Ⅰ_문제.pdf",
+        "02 프랑스어Ⅰ_문제.pdf",
+        "03 스페인어Ⅰ_문제.pdf",
+        "04 중국어Ⅰ_문제.pdf",
+        "05 일본어Ⅰ_문제.pdf",
+        "06 러시아어Ⅰ_문제.pdf",
+        "07 아랍어Ⅰ_문제.pdf",
+        "08 베트남어Ⅰ_문제.pdf",
+        "09 한문Ⅰ_문제.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-4433f1f3034118bd6b0759531be90924",
+      "year": 2026,
+      "domain": "직업탐구",
+      "name": "직업탐구영역_문제지.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=4433f1f3034118bd6b0759531be90924",
+      "bytes": 15469336,
+      "format": "zip",
+      "pdfCount": 6,
+      "papers": [
+        "01 성공적인 직업생활_문제.pdf",
+        "02 농업 기초 기술_문제.pdf",
+        "03 공업 일반_문제.pdf",
+        "04 상업 경제_문제.pdf",
+        "05 수산·해운 산업 기초_문제.pdf",
+        "06 인간 발달_문제.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-10b6d784275a07a82efa90ddcb8fbd22",
+      "year": 2026,
+      "domain": "한국사",
+      "name": "한국사영역_문제지.pdf",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=10b6d784275a07a82efa90ddcb8fbd22",
+      "bytes": 3688416,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-015fa8c285be911a34bb4236da7077fc",
+      "year": 2025,
+      "domain": "과학탐구",
+      "name": "과학탐구영역_문제지.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=015fa8c285be911a34bb4236da7077fc",
+      "bytes": 11737085,
+      "format": "zip",
+      "pdfCount": 8,
+      "papers": [
+        "01 물리학Ⅰ_문제지.pdf",
+        "02 화학Ⅰ_문제지.pdf",
+        "03 생명과학Ⅰ_문제지.pdf",
+        "04 지구과학Ⅰ_문제지.pdf",
+        "05 물리학Ⅱ_문제지.pdf",
+        "06 화학Ⅱ_문제지.pdf",
+        "07 생명과학Ⅱ_문제지.pdf",
+        "08 지구과학Ⅱ_문제지.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-867ff0deeffeb1b953c6ac52db1eb8fd",
+      "year": 2025,
+      "domain": "국어",
+      "name": "국어영역_문제지_짝수형.pdf",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=867ff0deeffeb1b953c6ac52db1eb8fd",
+      "bytes": 4725652,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-f69d814736f441f73178e9fadbdbd309",
+      "year": 2025,
+      "domain": "국어",
+      "name": "국어영역_문제지_홀수형.pdf",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=f69d814736f441f73178e9fadbdbd309",
+      "bytes": 4706719,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-a3b68fda9c52b64519e135def6a6137c",
+      "year": 2025,
+      "domain": "사회탐구",
+      "name": "사회탐구영역_문제지.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=a3b68fda9c52b64519e135def6a6137c",
+      "bytes": 15579206,
+      "format": "zip",
+      "pdfCount": 9,
+      "papers": [
+        "01 생활과 윤리_문제지.pdf",
+        "02 윤리와 사상_문제지.pdf",
+        "03 한국지리_문제지.pdf",
+        "04 세계지리_문제지.pdf",
+        "05 동아시아사_문제지.pdf",
+        "06 세계사_문제지.pdf",
+        "07 경제_문제지.pdf",
+        "08 정치와 법_문제지.pdf",
+        "09 사회·문화_문제지.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-0ed7f01b9cddf9ee2f50e97bba888e03",
+      "year": 2025,
+      "domain": "수학",
+      "name": "수학영역_문제지_짝수형.pdf",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=0ed7f01b9cddf9ee2f50e97bba888e03",
+      "bytes": 1109269,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-20b8f2daf89db9ff668b257f6b51ea75",
+      "year": 2025,
+      "domain": "수학",
+      "name": "수학영역_문제지_홀수형.pdf",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=20b8f2daf89db9ff668b257f6b51ea75",
+      "bytes": 1090050,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-af60127a230094fd9f6855f4a18563a5",
+      "year": 2025,
+      "domain": "영어",
+      "name": "영어영역_문제지_짝수형.pdf",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=af60127a230094fd9f6855f4a18563a5",
+      "bytes": 1895877,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-1050e33a51398273bdb891bd1d4cc2e4",
+      "year": 2025,
+      "domain": "영어",
+      "name": "영어영역_문제지_홀수형.pdf",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=1050e33a51398273bdb891bd1d4cc2e4",
+      "bytes": 1889278,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-36087ca59c454adae20f119ca37d5494",
+      "year": 2025,
+      "domain": "제2외국어/한문",
+      "name": "제2외국어한문영역_문제지.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=36087ca59c454adae20f119ca37d5494",
+      "bytes": 16065732,
+      "format": "zip",
+      "pdfCount": 9,
+      "papers": [
+        "01 독일어Ⅰ_문제지.pdf",
+        "02 프랑스어Ⅰ_문제지.pdf",
+        "03 스페인어Ⅰ_문제지.pdf",
+        "04 중국어Ⅰ_문제지.pdf",
+        "05 일본어Ⅰ_문제지.pdf",
+        "06 러시아어Ⅰ_문제지.pdf",
+        "07 아랍어Ⅰ_문제지.pdf",
+        "08 베트남어Ⅰ_문제지.pdf",
+        "09 한문Ⅰ_문제지.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-3c087966e91f08276b7f7e2ec51000e1",
+      "year": 2025,
+      "domain": "직업탐구",
+      "name": "직업탐구영역_문제지.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=3c087966e91f08276b7f7e2ec51000e1",
+      "bytes": 9833955,
+      "format": "zip",
+      "pdfCount": 6,
+      "papers": [
+        "01 성공적인 직업생활_문제지.pdf",
+        "02 농업 기초 기술_문제지.pdf",
+        "03 공업 일반_문제지.pdf",
+        "04 상업 경제_문제지.pdf",
+        "05 수산·해운 산업 기초_문제지.pdf",
+        "06 인간 발달_문제지.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-f3e30d89fc87093ad3d96ceb29ca097d",
+      "year": 2025,
+      "domain": "한국사",
+      "name": "한국사영역_문제지_짝수형.pdf",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=f3e30d89fc87093ad3d96ceb29ca097d",
+      "bytes": 1664268,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-99b4fed2bc7d41f749537668ce66d665",
+      "year": 2025,
+      "domain": "한국사",
+      "name": "한국사영역_문제지_홀수형.pdf",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=99b4fed2bc7d41f749537668ce66d665",
+      "bytes": 1661244,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-5b4a832bfff0c33e38eb6a6a47e3ca8c",
+      "year": 2024,
+      "domain": "과학탐구",
+      "name": "과학탐구영역_문제지.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=5b4a832bfff0c33e38eb6a6a47e3ca8c",
+      "bytes": 10926805,
+      "format": "zip",
+      "pdfCount": 8,
+      "papers": [
+        "01 물리학Ⅰ_문제.pdf",
+        "02 화학Ⅰ_문제.pdf",
+        "03 생명과학Ⅰ_문제.pdf",
+        "04 지구과학Ⅰ_문제.pdf",
+        "05 물리학Ⅱ_문제.pdf",
+        "06 화학Ⅱ_문제.pdf",
+        "07 생명과학Ⅱ_문제.pdf",
+        "08 지구과학Ⅱ_문제.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-c1f3da477e825b2f8b16762fbd0e8d74",
+      "year": 2024,
+      "domain": "국어",
+      "name": "국어영역_문제지.pdf",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=c1f3da477e825b2f8b16762fbd0e8d74",
+      "bytes": 2964444,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-7a3d9e0ba25bcc30acdbfb18a34ae224",
+      "year": 2024,
+      "domain": "사회탐구",
+      "name": "사회탐구영역_문제지.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=7a3d9e0ba25bcc30acdbfb18a34ae224",
+      "bytes": 15486933,
+      "format": "zip",
+      "pdfCount": 9,
+      "papers": [
+        "01 생활과 윤리_문제.pdf",
+        "02 윤리와 사상_문제.pdf",
+        "03 한국지리_문제.pdf",
+        "04 세계지리_문제.pdf",
+        "05 동아시아사_문제.pdf",
+        "06 세계사_문제.pdf",
+        "07 경제_문제.pdf",
+        "08 정치와 법_문제.pdf",
+        "09 사회·문화_문제.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-23bed50b6f952ec50a0e40f376fdb358",
+      "year": 2024,
+      "domain": "수학",
+      "name": "수학영역_문제지.pdf",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=23bed50b6f952ec50a0e40f376fdb358",
+      "bytes": 774697,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-418f1c9f0e56c9e89355131d8862bee8",
+      "year": 2024,
+      "domain": "영어",
+      "name": "영어영역_문제지.pdf",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=418f1c9f0e56c9e89355131d8862bee8",
+      "bytes": 1759764,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-59ce25bfffdfc630ae6ceff7062e3b7e",
+      "year": 2024,
+      "domain": "제2외국어/한문",
+      "name": "제2외국어한문영역_문제지.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=59ce25bfffdfc630ae6ceff7062e3b7e",
+      "bytes": 24656799,
+      "format": "zip",
+      "pdfCount": 9,
+      "papers": [
+        "01 독일어Ⅰ_문제.pdf",
+        "02 프랑스어Ⅰ_문제.pdf",
+        "03 스페인어Ⅰ_문제.pdf",
+        "04 중국어Ⅰ_문제.pdf",
+        "05 일본어Ⅰ_문제.pdf",
+        "06 러시아어Ⅰ_문제.pdf",
+        "07 아랍어Ⅰ_문제.pdf",
+        "08 베트남어Ⅰ_문제.pdf",
+        "09 한문Ⅰ_문제.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-303c1a982c5ed306c22bde9f49b539da",
+      "year": 2024,
+      "domain": "직업탐구",
+      "name": "직업탐구영역_문제지.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=303c1a982c5ed306c22bde9f49b539da",
+      "bytes": 12255802,
+      "format": "zip",
+      "pdfCount": 6,
+      "papers": [
+        "01 성공적인 직업생활_문제.pdf",
+        "02 농업 기초 기술_문제.pdf",
+        "03 공업 일반_문제.pdf",
+        "04 상업 경제_문제.pdf",
+        "05 수산·해운 산업 기초_문제.pdf",
+        "06 인간 발달_문제.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-f4a39bbe2dcd36b4d55de9a7404d1dba",
+      "year": 2024,
+      "domain": "한국사",
+      "name": "한국사영역_문제지.pdf",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=f4a39bbe2dcd36b4d55de9a7404d1dba",
+      "bytes": 3684282,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-eb7b894185b964a50e9d950cf1cb15ae",
+      "year": 2023,
+      "domain": "과학탐구",
+      "name": "4교시_과학탐구영역_문제지.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=eb7b894185b964a50e9d950cf1cb15ae",
+      "bytes": 9299699,
+      "format": "zip",
+      "pdfCount": 8,
+      "papers": [
+        "01 물리학Ⅰ.pdf",
+        "02 화학Ⅰ.pdf",
+        "03 생명과학Ⅰ.pdf",
+        "04 지구과학Ⅰ.pdf",
+        "05 물리학Ⅱ.pdf",
+        "06 화학Ⅱ.pdf",
+        "07 생명과학Ⅱ.pdf",
+        "08 지구과학Ⅱ.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-e55bd7816384388ffe786eb80d114589",
+      "year": 2023,
+      "domain": "국어",
+      "name": "1교시_국어영역_문제지.pdf",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=e55bd7816384388ffe786eb80d114589",
+      "bytes": 4633741,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-5f485d6391a97c28b98e07a6ec4900eb",
+      "year": 2023,
+      "domain": "사회탐구",
+      "name": "4교시_사회탐구영역_문제지.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=5f485d6391a97c28b98e07a6ec4900eb",
+      "bytes": 17168237,
+      "format": "zip",
+      "pdfCount": 9,
+      "papers": [
+        "01 생활과 윤리.pdf",
+        "02 윤리와 사상.pdf",
+        "03 한국지리.pdf",
+        "04 세계지리.pdf",
+        "05 동아시아사.pdf",
+        "06 세계사.pdf",
+        "07 경제.pdf",
+        "08 정치와 법.pdf",
+        "09 사회·문화.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-4dee411efbfef1ab1b44fde9dc8f9378",
+      "year": 2023,
+      "domain": "수학",
+      "name": "2교시_수학영역_문제지.pdf",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=4dee411efbfef1ab1b44fde9dc8f9378",
+      "bytes": 1061368,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-d29076435d48720e174b6b456202c538",
+      "year": 2023,
+      "domain": "영어",
+      "name": "3교시_영어영역_문제지.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=d29076435d48720e174b6b456202c538",
+      "bytes": 2624402,
+      "format": "zip",
+      "pdfCount": 1,
+      "papers": [
+        "3교시_영어영역_문제지.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-d8964daa90085a3706dd951b10d38d07",
+      "year": 2023,
+      "domain": "제2외국어/한문",
+      "name": "5교시_제2외국어한문영역_문제지.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=d8964daa90085a3706dd951b10d38d07",
+      "bytes": 28858879,
+      "format": "zip",
+      "pdfCount": 9,
+      "papers": [
+        "01 독일어Ⅰ.pdf",
+        "02 프랑스어Ⅰ.pdf",
+        "03 스페인어Ⅰ.pdf",
+        "04 중국어Ⅰ.pdf",
+        "05 일본어Ⅰ.pdf",
+        "06 러시아어Ⅰ.pdf",
+        "07 아랍어Ⅰ.pdf",
+        "08 베트남어Ⅰ.pdf",
+        "09 한문Ⅰ.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-ac023993684d663e8e589d44512e7899",
+      "year": 2023,
+      "domain": "직업탐구",
+      "name": "4교시_직업탐구영역_문제지.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=ac023993684d663e8e589d44512e7899",
+      "bytes": 9917332,
+      "format": "zip",
+      "pdfCount": 6,
+      "papers": [
+        "01 농업 기초 기술.pdf",
+        "02 공업 일반.pdf",
+        "03 상업 경제.pdf",
+        "04 수산·해운 산업 기초.pdf",
+        "05 인간 발달.pdf",
+        "06 성공적인 직업생활.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-7902468171b4766ae4f0557d8b62cabe",
+      "year": 2023,
+      "domain": "한국사",
+      "name": "4교시_한국사영역_문제지.pdf",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=7902468171b4766ae4f0557d8b62cabe",
+      "bytes": 3569412,
+      "format": "pdf",
+      "pdfCount": 1,
+      "ok": true
+    },
+    {
+      "id": "KICE-a40cb12d0633adbf38f879c0ba9dbd85",
+      "year": 2022,
+      "domain": "과학탐구",
+      "name": "4교시_과학탐구영역_문제지.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=a40cb12d0633adbf38f879c0ba9dbd85",
+      "bytes": 9152596,
+      "format": "zip",
+      "pdfCount": 8,
+      "papers": [
+        "01 과탐(물리학 I).pdf",
+        "02 과탐(화학 I).pdf",
+        "03 과탐(생명과학 I).pdf",
+        "04 과탐(지구과학 I).pdf",
+        "05 과탐(물리학 II).pdf",
+        "06 과탐(화학 II).pdf",
+        "07 과탐(생명과학 II).pdf",
+        "08 과탐(지구과학 II).pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-86d6f3be90d0815c863d5fe7c6d1d68c",
+      "year": 2022,
+      "domain": "국어",
+      "name": "1교시_국어영역_문제지.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=86d6f3be90d0815c863d5fe7c6d1d68c",
+      "bytes": 7451634,
+      "format": "zip",
+      "pdfCount": 2,
+      "papers": [
+        "국어영역_짝수형.pdf",
+        "국어영역_홀수형.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-5e702d9247c694e011afb5a966429b7e",
+      "year": 2022,
+      "domain": "사회탐구",
+      "name": "4교시_사회탐구영역_문제지.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=5e702d9247c694e011afb5a966429b7e",
+      "bytes": 25865058,
+      "format": "zip",
+      "pdfCount": 9,
+      "papers": [
+        "01 사탐(생활과 윤리).pdf",
+        "02 사탐(윤리와 사상).pdf",
+        "03 사탐(한국지리).pdf",
+        "04 사탐(세계지리).pdf",
+        "05 사탐(동아시아사).pdf",
+        "06 사탐(세계사).pdf",
+        "07 사탐(경제).pdf",
+        "08 사탐(정치와 법).pdf",
+        "09 사탐(사회·문화).pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-8d1400b002e2a9ab76bc8a45da9ac67a",
+      "year": 2022,
+      "domain": "수학",
+      "name": "2교시_수학영역_문제지.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=8d1400b002e2a9ab76bc8a45da9ac67a",
+      "bytes": 1884795,
+      "format": "zip",
+      "pdfCount": 2,
+      "papers": [
+        "수학영역_짝수형.pdf",
+        "수학영역_홀수형.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-d1f6021c40bf24f50414a3c3899ddfa3",
+      "year": 2022,
+      "domain": "영어",
+      "name": "3교시_영어영역_문제지.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=d1f6021c40bf24f50414a3c3899ddfa3",
+      "bytes": 3563409,
+      "format": "zip",
+      "pdfCount": 2,
+      "papers": [
+        "영어영역_짝수형.pdf",
+        "영어영역_홀수형.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-faeacd586920f0dcce6919e16cd6f026",
+      "year": 2022,
+      "domain": "제2외국어/한문",
+      "name": "5교시_제2외국어한문영역_문제지.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=faeacd586920f0dcce6919e16cd6f026",
+      "bytes": 46710995,
+      "format": "zip",
+      "pdfCount": 9,
+      "papers": [
+        "01 독일어Ⅰ.pdf",
+        "02 프랑스어Ⅰ.pdf",
+        "03 스페인어Ⅰ.pdf",
+        "04 중국어Ⅰ.pdf",
+        "05 일본어Ⅰ.pdf",
+        "06 러시아Ⅰ.pdf",
+        "07 아랍어Ⅰ.pdf",
+        "08 베트남어Ⅰ.pdf",
+        "09 한문Ⅰ.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-1d68baafe4f71c619ce490fdc7250c6f",
+      "year": 2022,
+      "domain": "직업탐구",
+      "name": "4교시_직업탐구영역_문제지.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=1d68baafe4f71c619ce490fdc7250c6f",
+      "bytes": 13041221,
+      "format": "zip",
+      "pdfCount": 6,
+      "papers": [
+        "01 직탐(성공적인 직업생활).pdf",
+        "02 직탐(농업 기초 기술).pdf",
+        "03 직탐(공업 일반).pdf",
+        "04 직탐(상업 경제).pdf",
+        "05 직탐(수산·해운 산업 기초).pdf",
+        "06 직탐(인간 발달).pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-d9e332d27661e811357b2a7945417552",
+      "year": 2022,
+      "domain": "한국사",
+      "name": "4교시_한국사영역_문제지.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=d9e332d27661e811357b2a7945417552",
+      "bytes": 12270757,
+      "format": "zip",
+      "pdfCount": 2,
+      "papers": [
+        "01 한국사(짝수).pdf",
+        "01 한국사(홀수).pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-898103ef1a3d85e1988396d5964c3291",
+      "year": 2021,
+      "domain": "과학탐구",
+      "name": "4교시_과학탐구영역.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=898103ef1a3d85e1988396d5964c3291",
+      "bytes": 9772118,
+      "format": "zip",
+      "pdfCount": 8,
+      "papers": [
+        "01 과탐(물리학 I).pdf",
+        "02 과탐(화학 I).pdf",
+        "03 과탐(생명과학 I).pdf",
+        "04 과탐(지구과학 I).pdf",
+        "05 과탐(물리학 II).pdf",
+        "06 과탐(화학 II).pdf",
+        "07 과탐(생명과학 II).pdf",
+        "08 과탐(지구과학 II).pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-c7ee9e67af649ecc4d45a7efc2979554",
+      "year": 2021,
+      "domain": "국어",
+      "name": "1교시_국어영역.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=c7ee9e67af649ecc4d45a7efc2979554",
+      "bytes": 5015912,
+      "format": "zip",
+      "pdfCount": 2,
+      "papers": [
+        "1교시_국어영역_짝.pdf",
+        "1교시_국어영역_홀.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-a3a87239884dd152dc74928cd7665b96",
+      "year": 2021,
+      "domain": "사회탐구",
+      "name": "4교시_사회탐구영역.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=a3a87239884dd152dc74928cd7665b96",
+      "bytes": 27235106,
+      "format": "zip",
+      "pdfCount": 9,
+      "papers": [
+        "01 사탐(생활과 윤리).pdf",
+        "02 사탐(윤리와 사상).pdf",
+        "03 사탐(한국지리).pdf",
+        "04 사탐(세계지리).pdf",
+        "05 사탐(동아시아사).pdf",
+        "06 사탐(세계사).pdf",
+        "07 사탐(경제).pdf",
+        "08 사탐(정치와 법).pdf",
+        "09 사탐(사회·문화).pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-f5325111f2fe0e289d26b0cf444b1401",
+      "year": 2021,
+      "domain": "수학",
+      "name": "2교시_수학영역.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=f5325111f2fe0e289d26b0cf444b1401",
+      "bytes": 2007336,
+      "format": "zip",
+      "pdfCount": 4,
+      "papers": [
+        "2교시_수학영역_가형_짝.pdf",
+        "2교시_수학영역_가형_홀.pdf",
+        "2교시_수학영역_나형_짝.pdf",
+        "2교시_수학영역_나형_홀.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-dd04299654dfbff58bf1a6e12c0d5592",
+      "year": 2021,
+      "domain": "영어",
+      "name": "3교시_영어영역.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=dd04299654dfbff58bf1a6e12c0d5592",
+      "bytes": 2988752,
+      "format": "zip",
+      "pdfCount": 2,
+      "papers": [
+        "3교시_영어영역_짝.pdf",
+        "3교시_영어영역_홀.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-6c2ce7afcd8b2d6637b5070512592781",
+      "year": 2021,
+      "domain": "제2외국어/한문",
+      "name": "5교시_제2외국어한문영역.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=6c2ce7afcd8b2d6637b5070512592781",
+      "bytes": 38332802,
+      "format": "zip",
+      "pdfCount": 9,
+      "papers": [
+        "01 독일어Ⅰ.pdf",
+        "02 프랑스어Ⅰ.pdf",
+        "03 스페인어Ⅰ.pdf",
+        "04 중국어Ⅰ.pdf",
+        "05 일본어Ⅰ.pdf",
+        "06 러시아어Ⅰ.pdf",
+        "07 아랍어Ⅰ.pdf",
+        "08 베트남어Ⅰ.pdf",
+        "09 한문Ⅰ.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-44f46485120c39b032333ef5230c7424",
+      "year": 2021,
+      "domain": "직업탐구",
+      "name": "4교시_직업탐구영역.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=44f46485120c39b032333ef5230c7424",
+      "bytes": 18873518,
+      "format": "zip",
+      "pdfCount": 10,
+      "papers": [
+        "01 직탐(농업 이해).pdf",
+        "02 직탐(농업 기초 기술).pdf",
+        "03 직탐(공업 일반).pdf",
+        "04 직탐(기초 제도).pdf",
+        "05 직탐(상업 경제).pdf",
+        "06 직탐(회계 원리).pdf",
+        "07 직탐(해양의 이해).pdf",
+        "08 직탐(수산·해운 산업 기초).pdf",
+        "09 직탐(인간 발달).pdf",
+        "10 직탐(생활 서비스 산업의 이해).pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-821cea3badc71236d3a8457fa982bb26",
+      "year": 2021,
+      "domain": "한국사",
+      "name": "4교시_한국사영역.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=821cea3badc71236d3a8457fa982bb26",
+      "bytes": 11043997,
+      "format": "zip",
+      "pdfCount": 2,
+      "papers": [
+        "01 한국사(짝수).pdf",
+        "01 한국사(홀수).pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-a13e9083a3e7057289d1eda5fb5ad422",
+      "year": 2020,
+      "domain": "과학탐구",
+      "name": "과학탐구.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=a13e9083a3e7057289d1eda5fb5ad422",
+      "bytes": 12726813,
+      "format": "zip",
+      "pdfCount": 8,
+      "papers": [
+        "01 과탐(물리 I).pdf",
+        "02 과탐(화학 I).pdf",
+        "03 과탐(생명 과학 I).pdf",
+        "04 과탐(지구 과학 I).pdf",
+        "05 과탐(물리 II).pdf",
+        "06 과탐(화학 II).pdf",
+        "07 과탐(생명 과학 II).pdf",
+        "08 과탐(지구 과학 II).pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-09774bbd708c3ea06c6063b0d07c6268",
+      "year": 2020,
+      "domain": "국어",
+      "name": "국어.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=09774bbd708c3ea06c6063b0d07c6268",
+      "bytes": 3640026,
+      "format": "zip",
+      "pdfCount": 2,
+      "papers": [
+        "국어_짝.pdf",
+        "국어_홀.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-52f987782f23e05fd708eede0b08660b",
+      "year": 2020,
+      "domain": "사회탐구",
+      "name": "사회탐구.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=52f987782f23e05fd708eede0b08660b",
+      "bytes": 23061940,
+      "format": "zip",
+      "pdfCount": 9,
+      "papers": [
+        "01 사탐(생활과 윤리).pdf",
+        "02 사탐(윤리와 사상).pdf",
+        "03 사탐(한국 지리).pdf",
+        "04 사탐(세계 지리).pdf",
+        "05 사탐(동아시아사).pdf",
+        "06 사탐(세계사).pdf",
+        "07 사탐(법과 정치).pdf",
+        "08 사탐(경제).pdf",
+        "09 사탐(사회·문화).pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-96bd784674f047d6767cce15b7ffb5e4",
+      "year": 2020,
+      "domain": "수학",
+      "name": "수학.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=96bd784674f047d6767cce15b7ffb5e4",
+      "bytes": 1967465,
+      "format": "zip",
+      "pdfCount": 4,
+      "papers": [
+        "수학(가형)_짝.pdf",
+        "수학(가형)_홀.pdf",
+        "수학(나형)_짝.pdf",
+        "수학(나형)_홀.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-b8cc879f115f67b90ace7b59c57641a8",
+      "year": 2020,
+      "domain": "영어",
+      "name": "영어.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=b8cc879f115f67b90ace7b59c57641a8",
+      "bytes": 3336138,
+      "format": "zip",
+      "pdfCount": 2,
+      "papers": [
+        "영어_짝.pdf",
+        "영어_홀.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-8c15fc63927d87fe1a5e5c969dfb9df3",
+      "year": 2020,
+      "domain": "제2외국어/한문",
+      "name": "제2외국어_한문.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=8c15fc63927d87fe1a5e5c969dfb9df3",
+      "bytes": 37639719,
+      "format": "zip",
+      "pdfCount": 9,
+      "papers": [
+        "01 독일어Ⅰ.pdf",
+        "02 프랑스어Ⅰ.pdf",
+        "03 스페인어Ⅰ.pdf",
+        "04 중국어Ⅰ.pdf",
+        "05 일본어Ⅰ.pdf",
+        "06 러시아어Ⅰ.pdf",
+        "07 아랍어Ⅰ.pdf",
+        "08 베트남어Ⅰ.pdf",
+        "09 한문Ⅰ.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-55684ee4c0a72fb9c7b28999eb46938d",
+      "year": 2020,
+      "domain": "직업탐구",
+      "name": "직업탐구.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=55684ee4c0a72fb9c7b28999eb46938d",
+      "bytes": 17038181,
+      "format": "zip",
+      "pdfCount": 10,
+      "papers": [
+        "01 직탐(농업 이해).pdf",
+        "02 직탐(농업 기초 기술).pdf",
+        "03 직탐(공업 일반).pdf",
+        "04 직탐(기초 제도).pdf",
+        "05 직탐(상업 경제).pdf",
+        "06 직탐(회계 원리).pdf",
+        "07 직탐(해양의 이해).pdf",
+        "08 직탐(수산·해운 산업 기초).pdf",
+        "09 직탐(인간 발달).pdf",
+        "10 직탐(생활 서비스 산업의 이해).pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-321737274ce716bb047efcd9afdd5b72",
+      "year": 2020,
+      "domain": "한국사",
+      "name": "한국사.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=321737274ce716bb047efcd9afdd5b72",
+      "bytes": 10712030,
+      "format": "zip",
+      "pdfCount": 2,
+      "papers": [
+        "01 한국사(짝수).pdf",
+        "01 한국사(홀수).pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-42e9a1e1b356ac4d621fc806eb793bfa",
+      "year": 2019,
+      "domain": "과학탐구",
+      "name": "과학탐구영역.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=42e9a1e1b356ac4d621fc806eb793bfa",
+      "bytes": 15773395,
+      "format": "zip",
+      "pdfCount": 8,
+      "papers": [
+        "01 과탐(물리 I).pdf",
+        "02 과탐(화학 I).pdf",
+        "03 과탐(생명 과학 I).pdf",
+        "04 과탐(지구 과학 I).pdf",
+        "05 과탐(물리 II).pdf",
+        "06 과탐(화학 II).pdf",
+        "07 과탐(생명 과학 II).pdf",
+        "08 과탐(지구 과학 II).pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-43c44a90c7d9fcbce72b442d1c5ab2f6",
+      "year": 2019,
+      "domain": "국어",
+      "name": "국어영역.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=43c44a90c7d9fcbce72b442d1c5ab2f6",
+      "bytes": 3297654,
+      "format": "zip",
+      "pdfCount": 2,
+      "papers": [
+        "국어_짝.pdf",
+        "국어_홀.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-c412272cd748c63731e5152c94d82e59",
+      "year": 2019,
+      "domain": "사회탐구",
+      "name": "사회탐구영역.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=c412272cd748c63731e5152c94d82e59",
+      "bytes": 34954203,
+      "format": "zip",
+      "pdfCount": 9,
+      "papers": [
+        "01 사탐(생활과 윤리).pdf",
+        "02 사탐(윤리와 사상).pdf",
+        "03 사탐(한국 지리).pdf",
+        "04 사탐(세계 지리).pdf",
+        "05 사탐(동아시아사).pdf",
+        "06 사탐(세계사).pdf",
+        "07 사탐(법과 정치).pdf",
+        "08 사탐(경제).pdf",
+        "09 사탐(사회·문화).pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-4553b864eb3fde8ee1278518054792e2",
+      "year": 2019,
+      "domain": "수학",
+      "name": "수학영역.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=4553b864eb3fde8ee1278518054792e2",
+      "bytes": 2151225,
+      "format": "zip",
+      "pdfCount": 4,
+      "papers": [
+        "수학(가형)_짝.pdf",
+        "수학(가형)_홀.pdf",
+        "수학(나형)_짝.pdf",
+        "수학(나형)_홀.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-0649c5a08c5eb2c43db74485c1b30a05",
+      "year": 2019,
+      "domain": "영어",
+      "name": "영어.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=0649c5a08c5eb2c43db74485c1b30a05",
+      "bytes": 4245482,
+      "format": "zip",
+      "pdfCount": 2,
+      "papers": [
+        "영어_짝.pdf",
+        "영어_홀.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-c59370dab49bbc32cf924c059c3a0dff",
+      "year": 2019,
+      "domain": "제2외국어/한문",
+      "name": "제2외국어_한문.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=c59370dab49bbc32cf924c059c3a0dff",
+      "bytes": 46900906,
+      "format": "zip",
+      "pdfCount": 9,
+      "papers": [
+        "01 독일어Ⅰ.pdf",
+        "02 프랑스어Ⅰ.pdf",
+        "03 스페인어Ⅰ.pdf",
+        "04 중국어Ⅰ.pdf",
+        "05 일본어Ⅰ.pdf",
+        "06 러시아어Ⅰ.pdf",
+        "07 아랍어Ⅰ.pdf",
+        "08 베트남어Ⅰ.pdf",
+        "09 한문Ⅰ.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-9df11e7ebc3bc403967859d8f0c8d39f",
+      "year": 2019,
+      "domain": "직업탐구",
+      "name": "직업탐구영역.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=9df11e7ebc3bc403967859d8f0c8d39f",
+      "bytes": 25560272,
+      "format": "zip",
+      "pdfCount": 10,
+      "papers": [
+        "01 직탐(농업 이해).pdf",
+        "02 직탐(농업 기초 기술).pdf",
+        "03 직탐(공업 일반).pdf",
+        "04 직탐(기초제도).pdf",
+        "05 직탐(상업 경제).pdf",
+        "06 직탐(회계 원리).pdf",
+        "07 직탐(해양의 이해).pdf",
+        "08 직탐(수산해운 산업기초).pdf",
+        "09 직탐(인간발달).pdf",
+        "10 직탐(생활 서비스 산업의 이해).pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-fe8235958097bd461d9160757909d49a",
+      "year": 2019,
+      "domain": "한국사",
+      "name": "한국사영역.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=fe8235958097bd461d9160757909d49a",
+      "bytes": 15434213,
+      "format": "zip",
+      "pdfCount": 2,
+      "papers": [
+        "01 한국사(짝수).pdf",
+        "01 한국사(홀수).pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-75deb0a5e28eb058b55740e0483d1085",
+      "year": 2018,
+      "domain": "과학탐구",
+      "name": "과학탐구영역.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=75deb0a5e28eb058b55740e0483d1085",
+      "bytes": 7118320,
+      "format": "zip",
+      "pdfCount": 8,
+      "papers": [
+        "04 지구 과학I.pdf",
+        "05 물리II.pdf",
+        "06 화학II.pdf",
+        "07 생명 과학II.pdf",
+        "08 지구 과학II.pdf",
+        "01 물리I.PDF",
+        "02 화학I.pdf",
+        "03 생명 과학I.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-385e41cc2c1f55e0cfd901388a7674df",
+      "year": 2018,
+      "domain": "국어",
+      "name": "국어.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=385e41cc2c1f55e0cfd901388a7674df",
+      "bytes": 3453814,
+      "format": "zip",
+      "pdfCount": 2,
+      "papers": [
+        "국어_짝.pdf",
+        "국어_홀.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-e893d63166f67cc94f6504cc5051b251",
+      "year": 2018,
+      "domain": "사회탐구",
+      "name": "사회탐구영역.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=e893d63166f67cc94f6504cc5051b251",
+      "bytes": 20438335,
+      "format": "zip",
+      "pdfCount": 9,
+      "papers": [
+        "04 세계 지리.pdf",
+        "05 동아시아사.pdf",
+        "06 세계사.pdf",
+        "07 법과 정치.pdf",
+        "08 경제.pdf",
+        "09 사회문화.pdf",
+        "01 생활과 윤리.pdf",
+        "02 윤리와 사상.pdf",
+        "03 한국 지리.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-23796a8ae718563729ef7122e17631b7",
+      "year": 2018,
+      "domain": "수학",
+      "name": "수학.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=23796a8ae718563729ef7122e17631b7",
+      "bytes": 2340001,
+      "format": "zip",
+      "pdfCount": 4,
+      "papers": [
+        "수학(가형)_짝.pdf",
+        "수학(가형)_홀.pdf",
+        "수학(나형)_짝.pdf",
+        "수학(나형)_홀.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-c8bbf22a0a83f51af321a6e3200ae3bf",
+      "year": 2018,
+      "domain": "영어",
+      "name": "영어.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=c8bbf22a0a83f51af321a6e3200ae3bf",
+      "bytes": 4213517,
+      "format": "zip",
+      "pdfCount": 2,
+      "papers": [
+        "영어_짝.pdf",
+        "영어_홀.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-7a9491ffbbed66a91608dfbf0d959f27",
+      "year": 2018,
+      "domain": "제2외국어/한문",
+      "name": "제2외국어_한문.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=7a9491ffbbed66a91608dfbf0d959f27",
+      "bytes": 49381302,
+      "format": "zip",
+      "pdfCount": 9,
+      "papers": [
+        "01 독일어Ⅰ.pdf",
+        "02 프랑스어Ⅰ.pdf",
+        "03 스페인어Ⅰ.pdf",
+        "04 중국어Ⅰ.pdf",
+        "05 일본어Ⅰ.pdf",
+        "06 러시아어Ⅰ.pdf",
+        "07 아랍어Ⅰ.pdf",
+        "08 베트남어Ⅰ.pdf",
+        "09 한문Ⅰ.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-d051ed9ca3a793badfff89117c405081",
+      "year": 2018,
+      "domain": "한국사",
+      "name": "한국사영역.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=d051ed9ca3a793badfff89117c405081",
+      "bytes": 6028967,
+      "format": "zip",
+      "pdfCount": 2,
+      "papers": [
+        "한국사(짝수형).pdf",
+        "한국사(홀수형).pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "KICE-050c554d649790b1aba85eaa23bfc527",
+      "year": 2018,
+      "domain": "직업탐구",
+      "name": "직업탐구영역.zip",
+      "url": "https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq=050c554d649790b1aba85eaa23bfc527",
+      "bytes": 14230097,
+      "format": "zip",
+      "pdfCount": 10,
+      "papers": [
+        "01 농업 이해.pdf",
+        "02 농업 기초 기술.pdf",
+        "03 공업 일반.pdf",
+        "04 기초 제도.pdf",
+        "05 상업 경제.pdf",
+        "06 회계 원리.pdf",
+        "07 해양의 이해.pdf",
+        "08 수산 해운 산업 기초.pdf",
+        "09 인간 발달.pdf",
+        "10 생활 서비스 산업의 이해.pdf"
+      ],
+      "ok": true
+    }
+  ]
+}
