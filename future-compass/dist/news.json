@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-11-19T22:01:27.149282+00:00",
-  "last_success_at": "2026-11-19T22:01:27.149282+00:00",
+  "checked_at": "2026-11-20T04:01:53.022076+00:00",
+  "last_success_at": "2026-11-20T04:01:53.022076+00:00",
   "failures": [],
   "articles": [
     {
@@ -88,6 +88,38 @@
       "url": "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast",
       "source": "OpenAI",
       "published_at": "2026-11-19T08:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Deploying Daybreak Red",
+      "url": "https://openai.com/business/learn/deploying-daybreak-red",
+      "source": "OpenAI",
+      "published_at": "2026-11-19T00:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "See PR scans in action",
+      "url": "https://openai.com/business/learn/pr-scans-demo",
+      "source": "OpenAI",
+      "published_at": "2026-11-19T00:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Explore the Codex Security Plugin",
+      "url": "https://openai.com/business/learn/codex-security-plugin-demo",
+      "source": "OpenAI",
+      "published_at": "2026-11-19T00:00:00+00:00",
+      "category": "안전·보안",
+      "domain": "security"
+    },
+    {
+      "title": "Get started with Daybreak Blue",
+      "url": "https://openai.com/business/learn/daybreak-blue-onboarding-demo",
+      "source": "OpenAI",
+      "published_at": "2026-11-19T00:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
     },
@@ -210,44 +242,12 @@
       "published_at": "2026-11-17T17:45:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Read the EmbeddingGemma 2 technical report.",
-      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2-technical-report/",
-      "source": "Google",
-      "published_at": "2026-11-17T17:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Put Gemini to work for you",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features/",
-      "source": "Google",
-      "published_at": "2026-11-17T17:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "10 states team up with Google on free AI training",
-      "url": "https://blog.google/company-news/outreach-and-initiatives/grow-with-google/ai-training-state-partnerships/",
-      "source": "Google",
-      "published_at": "2026-11-17T17:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Temporary threads are now available in AI Mode in Search.",
-      "url": "https://blog.google/products-and-platforms/products/search/temporary-threads-ai-mode/",
-      "source": "Google",
-      "published_at": "2026-11-17T17:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-11-19T22:01:27.149282+00:00",
+    "checked_at": "2026-11-20T04:01:53.022076+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -384,7 +384,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-11-19T22:01:27.149282+00:00",
+    "last_success_at": "2026-11-20T04:01:53.022076+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
