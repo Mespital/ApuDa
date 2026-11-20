@@ -1,0 +1,1393 @@
+{
+  "reviewedAt": "2026-11-21",
+  "reviewMethod": "홀수형 발문·사료·이미지 단서를 대조한 학습용 분류. OCR은 보조로 사용하고 누락된 이미지 자료는 원문으로 확인. 대표 시대·주제·발문 형식 각 1개.",
+  "periodDefinitions": {
+    "prehistory": {
+      "label": "선사·고조선"
+    },
+    "ancient": {
+      "label": "고대"
+    },
+    "goryeo": {
+      "label": "고려"
+    },
+    "joseon": {
+      "label": "조선"
+    },
+    "opening": {
+      "label": "개항기·대한제국"
+    },
+    "colonial": {
+      "label": "일제강점기"
+    },
+    "modern": {
+      "label": "현대"
+    }
+  },
+  "themeDefinitions": {
+    "life": {
+      "label": "생활·경제·사회",
+      "method": "생산·수취·신분·상업 제도를 시대의 특징과 연결하고, 다른 시대의 제도와 구별합니다."
+    },
+    "state": {
+      "label": "국가·통치체제",
+      "method": "국가·왕·정부를 특정할 수 있는 단서를 찾고, 통치 제도와 정책을 해당 시기의 변화와 연결합니다."
+    },
+    "relations": {
+      "label": "대외관계·전쟁",
+      "method": "대외 세력과 전쟁·외교의 주체를 특정하고, 배경·전개·결과를 시간 순서로 정리합니다."
+    },
+    "culture": {
+      "label": "문화·사상·교육",
+      "method": "사상·저술·문화재·교육 제도의 단서에서 시대와 주체를 확인하고, 관련 업적을 비교합니다."
+    },
+    "reform": {
+      "label": "개항·개혁·국권 침탈",
+      "method": "개항과 근대 개혁 및 국권 침탈의 사건을 특정하고, 조약·제도 변화의 선후와 영향을 확인합니다."
+    },
+    "movement": {
+      "label": "민족·독립·사회운동",
+      "method": "운동·단체의 활동 주체와 목표·거점을 확인하고, 성립 배경과 주요 활동을 연결합니다."
+    },
+    "rule": {
+      "label": "식민통치·경제 수탈",
+      "method": "식민 통치 방식의 변화와 수탈 정책을 구분하고, 정책의 시기·목적·영향을 자료에 대조합니다."
+    },
+    "formation": {
+      "label": "해방·정부수립·전쟁",
+      "method": "해방 이후의 정부 수립 과정과 전쟁의 주요 사건을 정리하고, 주체와 사건의 순서를 대조합니다."
+    },
+    "democracy": {
+      "label": "민주화·정치변동",
+      "method": "정치 체제와 민주화 운동의 계기·요구·결과를 구분하고, 개헌과 정권 변화의 맥락을 연결합니다."
+    },
+    "development": {
+      "label": "경제·사회발전",
+      "method": "경제 정책·산업화·생활 변화의 시기와 정부를 확인하고, 정책 목표와 결과를 구별합니다."
+    },
+    "interkorean": {
+      "label": "남북관계·통일",
+      "method": "남북 대화와 통일·외교 정책의 시기를 구분하고, 공동 성명·합의서·선언의 내용을 연결합니다."
+    }
+  },
+  "styleDefinitions": {
+    "source": {
+      "label": "자료·단서 해석"
+    },
+    "person": {
+      "label": "인물·단체·조직 파악"
+    },
+    "time": {
+      "label": "연표·시기 판단"
+    },
+    "cause": {
+      "label": "원인·결과·영향"
+    },
+    "map": {
+      "label": "지도·지역 자료 해석"
+    },
+    "heritage": {
+      "label": "유물·유적 해석"
+    },
+    "inquiry": {
+      "label": "탐구 주제·활동 선택"
+    },
+    "context": {
+      "label": "생활상·경제상황 판단"
+    }
+  },
+  "papers": [
+    {
+      "year": 2018,
+      "resourceId": "KICE-d051ed9ca3a793badfff89117c405081",
+      "fileId": "41cf7dbdc84083aa49b45a73",
+      "fileName": "한국사(홀수형).pdf",
+      "pdfSha256": "8c439be496535f5947d5c14db28bf47f782fe9c9763bb2d3c853200ecadc4b2a"
+    },
+    {
+      "year": 2019,
+      "resourceId": "KICE-fe8235958097bd461d9160757909d49a",
+      "fileId": "44ff20c3766e4d0c8268148d",
+      "fileName": "01 한국사(홀수).pdf",
+      "pdfSha256": "bc239691ec30b85a0b9b7e93991a7d7728f56c7d5e790482d72c4e5cff9fab27"
+    },
+    {
+      "year": 2020,
+      "resourceId": "KICE-321737274ce716bb047efcd9afdd5b72",
+      "fileId": "b439cf7c8f9c29096df7a9c0",
+      "fileName": "01 한국사(홀수).pdf",
+      "pdfSha256": "54626ac5d088b45b3d3d1eedc57242b2e025f686d3c44dd2b892058c25a4925f"
+    },
+    {
+      "year": 2021,
+      "resourceId": "KICE-821cea3badc71236d3a8457fa982bb26",
+      "fileId": "c65aa2623c06142cb0918bd3",
+      "fileName": "01 한국사(홀수).pdf",
+      "pdfSha256": "6b5349f0e5043a62d04307b4d7371b04bc11edfefa2e8a96c82c3a01bd6d868f"
+    },
+    {
+      "year": 2022,
+      "resourceId": "KICE-d9e332d27661e811357b2a7945417552",
+      "fileId": "aba15b8378b952865bace1d4",
+      "fileName": "01 한국사(홀수).pdf",
+      "pdfSha256": "5c771f5926f258ce15008edf5cd2b318dd734b5aa873f62f8e3d587dbae5451e"
+    },
+    {
+      "year": 2023,
+      "resourceId": "KICE-7902468171b4766ae4f0557d8b62cabe",
+      "fileId": "paper",
+      "fileName": "4교시_한국사영역_문제지.pdf",
+      "pdfSha256": "ff1adff8b30e1dfc7ea3efe67201226831b2c1aed4a07690ade50b1c50cfc5ca"
+    },
+    {
+      "year": 2024,
+      "resourceId": "KICE-f4a39bbe2dcd36b4d55de9a7404d1dba",
+      "fileId": "paper",
+      "fileName": "한국사영역_문제지.pdf",
+      "pdfSha256": "abc484bced5dff442c860476484167ac7cc30294817ba731167163f12553e3c7"
+    },
+    {
+      "year": 2025,
+      "resourceId": "KICE-99b4fed2bc7d41f749537668ce66d665",
+      "fileId": "paper",
+      "fileName": "한국사영역_문제지_홀수형.pdf",
+      "pdfSha256": "be4597a5a9c8227b97d53b551f801081f5d15bfb2ca88bfa752c683d569b8ed0"
+    },
+    {
+      "year": 2026,
+      "resourceId": "KICE-10b6d784275a07a82efa90ddcb8fbd22",
+      "fileId": "paper",
+      "fileName": "한국사영역_문제지.pdf",
+      "pdfSha256": "6514462bb41121eafdc65cde09ccc750933ac47b3d031eebd0503e3152500e9a"
+    },
+    {
+      "year": 2027,
+      "resourceId": "KICE-2027-27DaeSuneung_41.pdf",
+      "fileId": "paper",
+      "fileName": "한국사 문제 PDF",
+      "pdfSha256": "d1f8e1fea1ae2fd2d52caf531fd4a0ac55b4220a386c4f405edd52298664ede8"
+    }
+  ],
+  "labels": {
+    "2018": {
+      "1": {
+        "period": "prehistory",
+        "theme": "life",
+        "style": "inquiry",
+        "topic": "청동기사회"
+      },
+      "2": {
+        "period": "ancient",
+        "theme": "state",
+        "style": "source",
+        "topic": "고구려의발전"
+      },
+      "3": {
+        "period": "ancient",
+        "theme": "culture",
+        "style": "person",
+        "topic": "원효의불교"
+      },
+      "4": {
+        "period": "goryeo",
+        "theme": "state",
+        "style": "cause",
+        "topic": "성종의지방통치"
+      },
+      "5": {
+        "period": "goryeo",
+        "theme": "life",
+        "style": "source",
+        "topic": "향부곡소"
+      },
+      "6": {
+        "period": "goryeo",
+        "theme": "culture",
+        "style": "source",
+        "topic": "고려역사서"
+      },
+      "7": {
+        "period": "joseon",
+        "theme": "state",
+        "style": "person",
+        "topic": "세종의정책"
+      },
+      "8": {
+        "period": "joseon",
+        "theme": "relations",
+        "style": "source",
+        "topic": "임진왜란"
+      },
+      "9": {
+        "period": "joseon",
+        "theme": "life",
+        "style": "context",
+        "topic": "조선후기상업"
+      },
+      "10": {
+        "period": "joseon",
+        "theme": "culture",
+        "style": "source",
+        "topic": "북학사상"
+      },
+      "11": {
+        "period": "opening",
+        "theme": "reform",
+        "style": "context",
+        "topic": "개화정책"
+      },
+      "12": {
+        "period": "opening",
+        "theme": "movement",
+        "style": "map",
+        "topic": "동학농민운동"
+      },
+      "13": {
+        "period": "opening",
+        "theme": "life",
+        "style": "cause",
+        "topic": "개항기상권"
+      },
+      "14": {
+        "period": "colonial",
+        "theme": "movement",
+        "style": "cause",
+        "topic": "3·1운동"
+      },
+      "15": {
+        "period": "colonial",
+        "theme": "rule",
+        "style": "cause",
+        "topic": "산미증식계획"
+      },
+      "16": {
+        "period": "colonial",
+        "theme": "movement",
+        "style": "person",
+        "topic": "신간회"
+      },
+      "17": {
+        "period": "colonial",
+        "theme": "movement",
+        "style": "person",
+        "topic": "한국광복군"
+      },
+      "18": {
+        "period": "modern",
+        "theme": "development",
+        "style": "context",
+        "topic": "경제개발"
+      },
+      "19": {
+        "period": "modern",
+        "theme": "formation",
+        "style": "person",
+        "topic": "좌우합작"
+      },
+      "20": {
+        "period": "modern",
+        "theme": "democracy",
+        "style": "source",
+        "topic": "6월민주항쟁"
+      }
+    },
+    "2019": {
+      "1": {
+        "period": "prehistory",
+        "theme": "life",
+        "style": "context",
+        "topic": "구석기생활"
+      },
+      "2": {
+        "period": "ancient",
+        "theme": "relations",
+        "style": "inquiry",
+        "topic": "나당전쟁"
+      },
+      "3": {
+        "period": "ancient",
+        "theme": "state",
+        "style": "source",
+        "topic": "발해의발전"
+      },
+      "4": {
+        "period": "goryeo",
+        "theme": "life",
+        "style": "source",
+        "topic": "고려경제제도"
+      },
+      "5": {
+        "period": "goryeo",
+        "theme": "culture",
+        "style": "person",
+        "topic": "의천"
+      },
+      "6": {
+        "period": "goryeo",
+        "theme": "state",
+        "style": "source",
+        "topic": "공민왕개혁"
+      },
+      "7": {
+        "period": "joseon",
+        "theme": "state",
+        "style": "person",
+        "topic": "세종"
+      },
+      "8": {
+        "period": "joseon",
+        "theme": "state",
+        "style": "person",
+        "topic": "조광조"
+      },
+      "9": {
+        "period": "joseon",
+        "theme": "state",
+        "style": "person",
+        "topic": "영조"
+      },
+      "10": {
+        "period": "joseon",
+        "theme": "culture",
+        "style": "context",
+        "topic": "조선후기문화"
+      },
+      "11": {
+        "period": "opening",
+        "theme": "relations",
+        "style": "time",
+        "topic": "신미양요"
+      },
+      "12": {
+        "period": "colonial",
+        "theme": "movement",
+        "style": "inquiry",
+        "topic": "근우회"
+      },
+      "13": {
+        "period": "opening",
+        "theme": "movement",
+        "style": "source",
+        "topic": "국채보상운동"
+      },
+      "14": {
+        "period": "opening",
+        "theme": "movement",
+        "style": "person",
+        "topic": "독립협회"
+      },
+      "15": {
+        "period": "colonial",
+        "theme": "movement",
+        "style": "source",
+        "topic": "3·1운동"
+      },
+      "16": {
+        "period": "colonial",
+        "theme": "movement",
+        "style": "person",
+        "topic": "의열단"
+      },
+      "17": {
+        "period": "modern",
+        "theme": "formation",
+        "style": "time",
+        "topic": "5·10총선거"
+      },
+      "18": {
+        "period": "modern",
+        "theme": "democracy",
+        "style": "inquiry",
+        "topic": "5·18민주화운동"
+      },
+      "19": {
+        "period": "colonial",
+        "theme": "rule",
+        "style": "context",
+        "topic": "무단통치"
+      },
+      "20": {
+        "period": "modern",
+        "theme": "interkorean",
+        "style": "source",
+        "topic": "남북기본합의서"
+      }
+    },
+    "2020": {
+      "1": {
+        "period": "prehistory",
+        "theme": "life",
+        "style": "context",
+        "topic": "신석기생활"
+      },
+      "2": {
+        "period": "ancient",
+        "theme": "relations",
+        "style": "time",
+        "topic": "삼국의영토경쟁"
+      },
+      "3": {
+        "period": "ancient",
+        "theme": "state",
+        "style": "source",
+        "topic": "신라의신분교육"
+      },
+      "4": {
+        "period": "goryeo",
+        "theme": "state",
+        "style": "source",
+        "topic": "고려태조"
+      },
+      "5": {
+        "period": "goryeo",
+        "theme": "state",
+        "style": "time",
+        "topic": "무신정변"
+      },
+      "6": {
+        "period": "goryeo",
+        "theme": "life",
+        "style": "source",
+        "topic": "고려상업화폐"
+      },
+      "7": {
+        "period": "joseon",
+        "theme": "relations",
+        "style": "map",
+        "topic": "조선대외관계"
+      },
+      "8": {
+        "period": "joseon",
+        "theme": "state",
+        "style": "person",
+        "topic": "세종"
+      },
+      "9": {
+        "period": "joseon",
+        "theme": "life",
+        "style": "cause",
+        "topic": "임술농민봉기"
+      },
+      "10": {
+        "period": "joseon",
+        "theme": "culture",
+        "style": "person",
+        "topic": "박제가"
+      },
+      "11": {
+        "period": "opening",
+        "theme": "life",
+        "style": "cause",
+        "topic": "개항기상권"
+      },
+      "12": {
+        "period": "opening",
+        "theme": "reform",
+        "style": "time",
+        "topic": "국권침탈"
+      },
+      "13": {
+        "period": "opening",
+        "theme": "reform",
+        "style": "cause",
+        "topic": "아관파천"
+      },
+      "14": {
+        "period": "modern",
+        "theme": "formation",
+        "style": "time",
+        "topic": "6·25전쟁"
+      },
+      "15": {
+        "period": "colonial",
+        "theme": "movement",
+        "style": "person",
+        "topic": "대한민국임시정부"
+      },
+      "16": {
+        "period": "colonial",
+        "theme": "movement",
+        "style": "source",
+        "topic": "광주학생항일운동"
+      },
+      "17": {
+        "period": "colonial",
+        "theme": "rule",
+        "style": "time",
+        "topic": "전시동원체제"
+      },
+      "18": {
+        "period": "colonial",
+        "theme": "movement",
+        "style": "inquiry",
+        "topic": "봉오동전투"
+      },
+      "19": {
+        "period": "modern",
+        "theme": "democracy",
+        "style": "source",
+        "topic": "4·19혁명"
+      },
+      "20": {
+        "period": "modern",
+        "theme": "interkorean",
+        "style": "time",
+        "topic": "남북대화"
+      }
+    },
+    "2021": {
+      "1": {
+        "period": "prehistory",
+        "theme": "life",
+        "style": "heritage",
+        "topic": "구석기유물"
+      },
+      "2": {
+        "period": "ancient",
+        "theme": "relations",
+        "style": "cause",
+        "topic": "백제의천도"
+      },
+      "3": {
+        "period": "ancient",
+        "theme": "state",
+        "style": "source",
+        "topic": "발해의통치"
+      },
+      "4": {
+        "period": "goryeo",
+        "theme": "state",
+        "style": "person",
+        "topic": "고려태조"
+      },
+      "5": {
+        "period": "goryeo",
+        "theme": "culture",
+        "style": "source",
+        "topic": "고려역사서"
+      },
+      "6": {
+        "period": "goryeo",
+        "theme": "state",
+        "style": "person",
+        "topic": "공민왕"
+      },
+      "7": {
+        "period": "joseon",
+        "theme": "state",
+        "style": "person",
+        "topic": "세종"
+      },
+      "8": {
+        "period": "joseon",
+        "theme": "life",
+        "style": "source",
+        "topic": "대동법"
+      },
+      "9": {
+        "period": "joseon",
+        "theme": "life",
+        "style": "inquiry",
+        "topic": "임술농민봉기"
+      },
+      "10": {
+        "period": "joseon",
+        "theme": "life",
+        "style": "context",
+        "topic": "조선후기상업문화"
+      },
+      "11": {
+        "period": "opening",
+        "theme": "movement",
+        "style": "person",
+        "topic": "동학농민군"
+      },
+      "12": {
+        "period": "opening",
+        "theme": "movement",
+        "style": "source",
+        "topic": "국채보상운동"
+      },
+      "13": {
+        "period": "opening",
+        "theme": "reform",
+        "style": "time",
+        "topic": "을사늑약"
+      },
+      "14": {
+        "period": "colonial",
+        "theme": "movement",
+        "style": "source",
+        "topic": "3·1운동"
+      },
+      "15": {
+        "period": "colonial",
+        "theme": "movement",
+        "style": "time",
+        "topic": "신간회"
+      },
+      "16": {
+        "period": "colonial",
+        "theme": "movement",
+        "style": "person",
+        "topic": "한인애국단"
+      },
+      "17": {
+        "period": "colonial",
+        "theme": "rule",
+        "style": "time",
+        "topic": "민족말살통치"
+      },
+      "18": {
+        "period": "modern",
+        "theme": "formation",
+        "style": "source",
+        "topic": "모스크바3국외상회의"
+      },
+      "19": {
+        "period": "modern",
+        "theme": "democracy",
+        "style": "time",
+        "topic": "5·18민주화운동"
+      },
+      "20": {
+        "period": "modern",
+        "theme": "interkorean",
+        "style": "source",
+        "topic": "남북기본합의서"
+      }
+    },
+    "2022": {
+      "1": {
+        "period": "prehistory",
+        "theme": "life",
+        "style": "context",
+        "topic": "구석기생활"
+      },
+      "2": {
+        "period": "ancient",
+        "theme": "state",
+        "style": "heritage",
+        "topic": "백제의발전"
+      },
+      "3": {
+        "period": "ancient",
+        "theme": "state",
+        "style": "source",
+        "topic": "신문왕"
+      },
+      "4": {
+        "period": "goryeo",
+        "theme": "state",
+        "style": "inquiry",
+        "topic": "무신정변"
+      },
+      "5": {
+        "period": "goryeo",
+        "theme": "relations",
+        "style": "context",
+        "topic": "원간섭기"
+      },
+      "6": {
+        "period": "goryeo",
+        "theme": "state",
+        "style": "person",
+        "topic": "고려성종"
+      },
+      "7": {
+        "period": "joseon",
+        "theme": "life",
+        "style": "context",
+        "topic": "조선후기경제"
+      },
+      "8": {
+        "period": "joseon",
+        "theme": "state",
+        "style": "person",
+        "topic": "성종"
+      },
+      "9": {
+        "period": "joseon",
+        "theme": "relations",
+        "style": "source",
+        "topic": "임진왜란"
+      },
+      "10": {
+        "period": "joseon",
+        "theme": "culture",
+        "style": "inquiry",
+        "topic": "북학사상"
+      },
+      "11": {
+        "period": "opening",
+        "theme": "reform",
+        "style": "source",
+        "topic": "조미수호통상조약"
+      },
+      "12": {
+        "period": "opening",
+        "theme": "movement",
+        "style": "inquiry",
+        "topic": "동학농민운동"
+      },
+      "13": {
+        "period": "opening",
+        "theme": "movement",
+        "style": "person",
+        "topic": "신민회"
+      },
+      "14": {
+        "period": "colonial",
+        "theme": "movement",
+        "style": "person",
+        "topic": "신간회"
+      },
+      "15": {
+        "period": "colonial",
+        "theme": "movement",
+        "style": "cause",
+        "topic": "3·1운동"
+      },
+      "16": {
+        "period": "colonial",
+        "theme": "rule",
+        "style": "context",
+        "topic": "무단통치"
+      },
+      "17": {
+        "period": "colonial",
+        "theme": "movement",
+        "style": "person",
+        "topic": "한국광복군"
+      },
+      "18": {
+        "period": "modern",
+        "theme": "democracy",
+        "style": "cause",
+        "topic": "4·19혁명"
+      },
+      "19": {
+        "period": "modern",
+        "theme": "formation",
+        "style": "source",
+        "topic": "미소공동위원회"
+      },
+      "20": {
+        "period": "modern",
+        "theme": "interkorean",
+        "style": "time",
+        "topic": "북방외교와남북대화"
+      }
+    },
+    "2023": {
+      "1": {
+        "period": "prehistory",
+        "theme": "life",
+        "style": "source",
+        "topic": "신석기생활"
+      },
+      "2": {
+        "period": "goryeo",
+        "theme": "relations",
+        "style": "cause",
+        "topic": "몽골침략"
+      },
+      "3": {
+        "period": "ancient",
+        "theme": "state",
+        "style": "source",
+        "topic": "발해"
+      },
+      "4": {
+        "period": "goryeo",
+        "theme": "state",
+        "style": "person",
+        "topic": "광종"
+      },
+      "5": {
+        "period": "joseon",
+        "theme": "state",
+        "style": "time",
+        "topic": "붕당정치"
+      },
+      "6": {
+        "period": "joseon",
+        "theme": "life",
+        "style": "context",
+        "topic": "조선후기경제"
+      },
+      "7": {
+        "period": "opening",
+        "theme": "reform",
+        "style": "person",
+        "topic": "흥선대원군"
+      },
+      "8": {
+        "period": "opening",
+        "theme": "reform",
+        "style": "source",
+        "topic": "위정척사운동"
+      },
+      "9": {
+        "period": "opening",
+        "theme": "reform",
+        "style": "cause",
+        "topic": "갑신정변"
+      },
+      "10": {
+        "period": "opening",
+        "theme": "movement",
+        "style": "source",
+        "topic": "국채보상운동"
+      },
+      "11": {
+        "period": "colonial",
+        "theme": "rule",
+        "style": "time",
+        "topic": "문화통치"
+      },
+      "12": {
+        "period": "opening",
+        "theme": "reform",
+        "style": "source",
+        "topic": "을사늑약"
+      },
+      "13": {
+        "period": "colonial",
+        "theme": "movement",
+        "style": "person",
+        "topic": "의열단"
+      },
+      "14": {
+        "period": "colonial",
+        "theme": "movement",
+        "style": "source",
+        "topic": "3·1운동"
+      },
+      "15": {
+        "period": "modern",
+        "theme": "formation",
+        "style": "time",
+        "topic": "광복과정부수립"
+      },
+      "16": {
+        "period": "colonial",
+        "theme": "movement",
+        "style": "person",
+        "topic": "소년운동"
+      },
+      "17": {
+        "period": "colonial",
+        "theme": "rule",
+        "style": "context",
+        "topic": "민족말살통치"
+      },
+      "18": {
+        "period": "modern",
+        "theme": "democracy",
+        "style": "time",
+        "topic": "유신체제"
+      },
+      "19": {
+        "period": "modern",
+        "theme": "democracy",
+        "style": "source",
+        "topic": "4·19혁명"
+      },
+      "20": {
+        "period": "modern",
+        "theme": "interkorean",
+        "style": "time",
+        "topic": "6·15남북공동선언"
+      }
+    },
+    "2024": {
+      "1": {
+        "period": "prehistory",
+        "theme": "life",
+        "style": "source",
+        "topic": "청동기사회"
+      },
+      "2": {
+        "period": "ancient",
+        "theme": "state",
+        "style": "source",
+        "topic": "발해"
+      },
+      "3": {
+        "period": "goryeo",
+        "theme": "state",
+        "style": "time",
+        "topic": "고려후기정치"
+      },
+      "4": {
+        "period": "goryeo",
+        "theme": "state",
+        "style": "person",
+        "topic": "고려태조"
+      },
+      "5": {
+        "period": "joseon",
+        "theme": "state",
+        "style": "person",
+        "topic": "성종"
+      },
+      "6": {
+        "period": "joseon",
+        "theme": "state",
+        "style": "person",
+        "topic": "정조"
+      },
+      "7": {
+        "period": "opening",
+        "theme": "reform",
+        "style": "cause",
+        "topic": "강화도조약"
+      },
+      "8": {
+        "period": "opening",
+        "theme": "reform",
+        "style": "inquiry",
+        "topic": "임오군란"
+      },
+      "9": {
+        "period": "opening",
+        "theme": "movement",
+        "style": "source",
+        "topic": "동학농민운동"
+      },
+      "10": {
+        "period": "colonial",
+        "theme": "rule",
+        "style": "time",
+        "topic": "전시동원체제"
+      },
+      "11": {
+        "period": "opening",
+        "theme": "movement",
+        "style": "cause",
+        "topic": "보안회"
+      },
+      "12": {
+        "period": "colonial",
+        "theme": "movement",
+        "style": "inquiry",
+        "topic": "형평운동"
+      },
+      "13": {
+        "period": "colonial",
+        "theme": "movement",
+        "style": "person",
+        "topic": "대한인국민회"
+      },
+      "14": {
+        "period": "opening",
+        "theme": "reform",
+        "style": "source",
+        "topic": "을사늑약"
+      },
+      "15": {
+        "period": "colonial",
+        "theme": "movement",
+        "style": "source",
+        "topic": "3·1운동"
+      },
+      "16": {
+        "period": "colonial",
+        "theme": "movement",
+        "style": "person",
+        "topic": "한국광복군"
+      },
+      "17": {
+        "period": "modern",
+        "theme": "formation",
+        "style": "source",
+        "topic": "5·10총선거"
+      },
+      "18": {
+        "period": "modern",
+        "theme": "development",
+        "style": "source",
+        "topic": "김영삼정부경제"
+      },
+      "19": {
+        "period": "modern",
+        "theme": "democracy",
+        "style": "source",
+        "topic": "4·19혁명"
+      },
+      "20": {
+        "period": "modern",
+        "theme": "interkorean",
+        "style": "time",
+        "topic": "7·4남북공동성명"
+      }
+    },
+    "2025": {
+      "1": {
+        "period": "prehistory",
+        "theme": "life",
+        "style": "source",
+        "topic": "구석기생활"
+      },
+      "2": {
+        "period": "goryeo",
+        "theme": "culture",
+        "style": "source",
+        "topic": "고려교육역사서"
+      },
+      "3": {
+        "period": "ancient",
+        "theme": "relations",
+        "style": "source",
+        "topic": "고구려대외관계"
+      },
+      "4": {
+        "period": "goryeo",
+        "theme": "state",
+        "style": "time",
+        "topic": "무신집권기"
+      },
+      "5": {
+        "period": "joseon",
+        "theme": "state",
+        "style": "person",
+        "topic": "정조"
+      },
+      "6": {
+        "period": "joseon",
+        "theme": "state",
+        "style": "person",
+        "topic": "조선건국"
+      },
+      "7": {
+        "period": "opening",
+        "theme": "reform",
+        "style": "cause",
+        "topic": "임오군란"
+      },
+      "8": {
+        "period": "opening",
+        "theme": "reform",
+        "style": "source",
+        "topic": "을사늑약"
+      },
+      "9": {
+        "period": "colonial",
+        "theme": "movement",
+        "style": "source",
+        "topic": "광주학생항일운동"
+      },
+      "10": {
+        "period": "colonial",
+        "theme": "rule",
+        "style": "time",
+        "topic": "무단통치"
+      },
+      "11": {
+        "period": "opening",
+        "theme": "reform",
+        "style": "time",
+        "topic": "갑오을미개혁기"
+      },
+      "12": {
+        "period": "opening",
+        "theme": "movement",
+        "style": "person",
+        "topic": "대한매일신보"
+      },
+      "13": {
+        "period": "colonial",
+        "theme": "movement",
+        "style": "map",
+        "topic": "연해주독립운동"
+      },
+      "14": {
+        "period": "opening",
+        "theme": "relations",
+        "style": "inquiry",
+        "topic": "신미양요"
+      },
+      "15": {
+        "period": "colonial",
+        "theme": "movement",
+        "style": "person",
+        "topic": "한국광복군"
+      },
+      "16": {
+        "period": "colonial",
+        "theme": "rule",
+        "style": "context",
+        "topic": "전시동원체제"
+      },
+      "17": {
+        "period": "modern",
+        "theme": "democracy",
+        "style": "cause",
+        "topic": "6월민주항쟁"
+      },
+      "18": {
+        "period": "modern",
+        "theme": "state",
+        "style": "time",
+        "topic": "노태우정부"
+      },
+      "19": {
+        "period": "modern",
+        "theme": "formation",
+        "style": "time",
+        "topic": "남북협상"
+      },
+      "20": {
+        "period": "modern",
+        "theme": "development",
+        "style": "inquiry",
+        "topic": "외환위기극복"
+      }
+    },
+    "2026": {
+      "1": {
+        "period": "prehistory",
+        "theme": "life",
+        "style": "source",
+        "topic": "구석기생활"
+      },
+      "2": {
+        "period": "ancient",
+        "theme": "state",
+        "style": "source",
+        "topic": "발해"
+      },
+      "3": {
+        "period": "goryeo",
+        "theme": "state",
+        "style": "person",
+        "topic": "고려태조"
+      },
+      "4": {
+        "period": "goryeo",
+        "theme": "state",
+        "style": "time",
+        "topic": "공민왕반원정책"
+      },
+      "5": {
+        "period": "joseon",
+        "theme": "state",
+        "style": "person",
+        "topic": "조선건국"
+      },
+      "6": {
+        "period": "joseon",
+        "theme": "life",
+        "style": "time",
+        "topic": "대동법과상업"
+      },
+      "7": {
+        "period": "opening",
+        "theme": "reform",
+        "style": "time",
+        "topic": "임오군란갑신정변"
+      },
+      "8": {
+        "period": "opening",
+        "theme": "relations",
+        "style": "cause",
+        "topic": "신미양요"
+      },
+      "9": {
+        "period": "opening",
+        "theme": "reform",
+        "style": "source",
+        "topic": "갑오개혁"
+      },
+      "10": {
+        "period": "opening",
+        "theme": "reform",
+        "style": "cause",
+        "topic": "을사늑약"
+      },
+      "11": {
+        "period": "colonial",
+        "theme": "rule",
+        "style": "time",
+        "topic": "문화통치"
+      },
+      "12": {
+        "period": "opening",
+        "theme": "movement",
+        "style": "inquiry",
+        "topic": "보안회"
+      },
+      "13": {
+        "period": "colonial",
+        "theme": "movement",
+        "style": "person",
+        "topic": "대한민국임시정부"
+      },
+      "14": {
+        "period": "colonial",
+        "theme": "movement",
+        "style": "source",
+        "topic": "민립대학설립운동"
+      },
+      "15": {
+        "period": "colonial",
+        "theme": "rule",
+        "style": "context",
+        "topic": "전시동원체제"
+      },
+      "16": {
+        "period": "colonial",
+        "theme": "movement",
+        "style": "person",
+        "topic": "근우회"
+      },
+      "17": {
+        "period": "modern",
+        "theme": "formation",
+        "style": "source",
+        "topic": "5·10총선거"
+      },
+      "18": {
+        "period": "modern",
+        "theme": "development",
+        "style": "time",
+        "topic": "경제개발"
+      },
+      "19": {
+        "period": "modern",
+        "theme": "democracy",
+        "style": "inquiry",
+        "topic": "4·19혁명"
+      },
+      "20": {
+        "period": "modern",
+        "theme": "interkorean",
+        "style": "time",
+        "topic": "남북유엔동시가입"
+      }
+    },
+    "2027": {
+      "1": {
+        "period": "prehistory",
+        "theme": "life",
+        "style": "source",
+        "topic": "구석기생활"
+      },
+      "2": {
+        "period": "ancient",
+        "theme": "state",
+        "style": "source",
+        "topic": "고구려"
+      },
+      "3": {
+        "period": "goryeo",
+        "theme": "relations",
+        "style": "source",
+        "topic": "거란침입"
+      },
+      "4": {
+        "period": "joseon",
+        "theme": "state",
+        "style": "person",
+        "topic": "조선건국"
+      },
+      "5": {
+        "period": "goryeo",
+        "theme": "life",
+        "style": "time",
+        "topic": "원간섭기경제사회"
+      },
+      "6": {
+        "period": "joseon",
+        "theme": "life",
+        "style": "context",
+        "topic": "대동법과상업"
+      },
+      "7": {
+        "period": "opening",
+        "theme": "relations",
+        "style": "cause",
+        "topic": "병인양요"
+      },
+      "8": {
+        "period": "opening",
+        "theme": "reform",
+        "style": "cause",
+        "topic": "임오군란"
+      },
+      "9": {
+        "period": "opening",
+        "theme": "movement",
+        "style": "source",
+        "topic": "동학농민운동"
+      },
+      "10": {
+        "period": "opening",
+        "theme": "movement",
+        "style": "person",
+        "topic": "13도창의군"
+      },
+      "11": {
+        "period": "colonial",
+        "theme": "movement",
+        "style": "person",
+        "topic": "의열단"
+      },
+      "12": {
+        "period": "colonial",
+        "theme": "movement",
+        "style": "source",
+        "topic": "3·1운동"
+      },
+      "13": {
+        "period": "opening",
+        "theme": "reform",
+        "style": "context",
+        "topic": "대한제국수립"
+      },
+      "14": {
+        "period": "colonial",
+        "theme": "movement",
+        "style": "inquiry",
+        "topic": "대한광복회"
+      },
+      "15": {
+        "period": "colonial",
+        "theme": "rule",
+        "style": "context",
+        "topic": "산미증식계획"
+      },
+      "16": {
+        "period": "colonial",
+        "theme": "rule",
+        "style": "time",
+        "topic": "전시동원체제"
+      },
+      "17": {
+        "period": "modern",
+        "theme": "democracy",
+        "style": "cause",
+        "topic": "6월민주항쟁"
+      },
+      "18": {
+        "period": "modern",
+        "theme": "development",
+        "style": "time",
+        "topic": "박정희정부경제"
+      },
+      "19": {
+        "period": "modern",
+        "theme": "formation",
+        "style": "time",
+        "topic": "남북협상"
+      },
+      "20": {
+        "period": "modern",
+        "theme": "interkorean",
+        "style": "time",
+        "topic": "6·15남북공동선언"
+      }
+    }
+  }
+}
