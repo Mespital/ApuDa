@@ -1,9 +1,9 @@
 {
   "version": "1.0",
-  "generated_at": "2026-11-20T16:31:15.871812+09:00",
+  "generated_at": "2026-11-21T16:27:08.920316+09:00",
   "window": {
-    "start": "2026-10-21T09:00:00+09:00",
-    "end": "2026-11-20T09:00:00+09:00",
+    "start": "2026-10-22T09:00:00+09:00",
+    "end": "2026-11-21T09:00:00+09:00",
     "days": 30,
     "timezone": "Asia/Seoul"
   },
@@ -89,7 +89,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 25
+      "age_days": 26
     },
     {
       "rank": 4,
@@ -156,7 +156,205 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 25
+      "age_days": 26
+    },
+    {
+      "rank": 1,
+      "canonical_issue": "큐로셀 '림카토', 급여가격 2.8억 확정…내달부터 건보 적용 - 메디파나뉴스",
+      "title": "큐로셀 '림카토', 급여가격 2.8억 확정…내달부터 건보 적용",
+      "category": [
+        "정책",
+        "급여",
+        "약가",
+        "복지부"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-11-20T17:32:51+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "CAR-T 치료제 전문 기업 큐로셀은 자사의 CD19 CAR-T 치료제 '림카토(RIMQARTO, 성분명 안발캅타젠오토류셀)'가 국민건강보험공단과의 약가 협상을 마치고 보건복지부 건강보험정책심의위원회(건정심)에 상정됐다고 20일 밝혔다. 림카토의 1회 투여당 상한금액은 2억8001만6050원으로 확정됐으",
+        "제공=큐로셀 CAR-T 치료제 전문 기업 큐로셀은 자사의 CD19 CAR-T 치료제 '림카토(RIMQARTO, 성분명 안발캅타젠오토류셀)'가 국민건강보험공단과의 약가 협상을 마치고 보건복지부 건강보험정책심의위원회(건정심)에 상정됐다고 20일 밝혔다.",
+        "림카토의 1회 투여당 상한금액은 2억8001만6050원으로 확정됐으며, 오는 12월 1일부터 건강보험 급여가 적용될 예정이다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=422331"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=422331"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202611/422331_330361_3213.jpg",
+      "score": 121,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "림프종"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [
+          "CAR-T"
+        ],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": "3",
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": "허가 관련",
+        "reimbursement_status": "급여 관련",
+        "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
+        "patient_relevance_score": 90,
+        "patient_relevance_labels": [
+          "급여·접근성",
+          "허가",
+          "임상결과",
+          "지원제도"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "7d",
+      "age_days": 1
+    },
+    {
+      "rank": 2,
+      "canonical_issue": "신약 허가부터 급여 제한까지…혈액암 치료의 '이중 장벽' - 메디파나뉴스",
+      "title": "신약 허가부터 급여 제한까지…혈액암 치료의 '이중 장벽'",
+      "category": [
+        "급여",
+        "허가"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-11-21T06:02:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "혈액암과 희귀혈액질환의 치료 환경이 빠르게 변화하고 있다. CAR-T 세포치료제와 이중특이항체, 표적치료제 등 새로운 치료법이 등장하면서 과거에는 선택지가 제한적이었던 환자에게도 생존 가능성을 높일 기회가 열리고 있다. 하지만 의학적 발전이 곧바로 환자의 치료 접근성 확대로 연결되는 것은 아니다. 신약이",
+        "복사하기 (왼쪽부터) 대한혈액학회 문영철 총무이사, 임호영 재무이사, 김대식 보험이사.",
+        "사진=박으뜸 기자 혈액암과 희귀혈액질환의 치료 환경이 빠르게 변화하고 있다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=422330"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=422330"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202611/422330_330363_2638.jpg",
+      "score": 66,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [
+          "CAR-T"
+        ],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": "3",
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": "허가 관련",
+        "reimbursement_status": "급여 관련",
+        "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
+        "patient_relevance_score": 80,
+        "patient_relevance_labels": [
+          "급여·접근성",
+          "허가",
+          "임상결과"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "today",
+      "age_days": 0
+    },
+    {
+      "rank": 5,
+      "canonical_issue": "혈액암 신약 급여 사각지대 여전...소아 백혈병·희귀질환 치료 접근성 제한 - 의학신문",
+      "title": "혈액암 신약 급여 사각지대 여전...소아 백혈병·희귀질환 치료 접근성 제한",
+      "category": [
+        "급여"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-11-20T18:01:44+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=이재원 기자] 혈액암과 희귀 혈액질환 치료에 새로운 표적치료제와 면역항암제, 유전자치료제 등이 등장하고 있지만, 국내 건강보험 급여기준이 실제",
+        "[의학신문·일간보사=이재원 기자] 혈액암과 희귀 혈액질환 치료에 새로운 표적치료제와 면역항암제, 유전자치료제 등이 등장하고 있지만, 국내 건강보험 급여기준이 실제 임상적 필요를 충분히 반영하지 못하면서 환자의 치료 접근성이 제한되고 있다는 지적이 나왔다.",
+        "특히 같은 질환에 같은 치료제를 사용하더라도 성인과 소아의 급여기준이 달라 소아 환자들이 고액의 약제비를 부담하거나 기존 항암치료에 추가로 실패해야 신약을 사용할 수 있는 문제가 제기됐다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3016974"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016974"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3016974_417873_01.jpg",
+      "score": 49,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "백혈병"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [
+          "CAR-T"
+        ],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": "3",
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": "허가 관련",
+        "reimbursement_status": "급여 관련",
+        "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
+        "patient_relevance_score": 80,
+        "patient_relevance_labels": [
+          "급여·접근성",
+          "허가",
+          "임상결과"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": 2,
@@ -220,7 +418,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
     },
     {
       "rank": null,
@@ -283,7 +481,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 25
+      "age_days": 26
     },
     {
       "rank": null,
@@ -346,7 +544,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 23
+      "age_days": 24
     },
     {
       "rank": null,
@@ -410,8 +608,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "today",
-      "age_days": 0
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -473,7 +671,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 21
+      "age_days": 22
     },
     {
       "rank": null,
@@ -538,71 +736,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 21
-    },
-    {
-      "rank": null,
-      "canonical_issue": "ESMO 앞둔 K바이오, 에이비엘·유한·HLB 임상 성과 주목 - 약사공론",
-      "title": "ESMO 앞둔 K바이오, 에이비엘·유한·HLB 임상 성과 주목",
-      "category": [
-        "3상",
-        "ai"
-      ],
-      "publishers": [
-        "약사공론"
-      ],
-      "published_at": "2026-10-21T12:00:00+09:00",
-      "published_at_verified": true,
-      "summary": [
-        "세계 최대 규모의 종양학 학술행사 중 하나인 유럽종양학회(ESMO 2026)가 개막을 앞두면서 국내 제약·바이오기업들의 항암 신약 개발 성과에 관심이 집중되고 있",
-        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
-        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
-      ],
-      "importance": "시장·정책·연구개발 흐름을 보여주는 주요 산업 이슈로 후속 정책과 사업 변화 확인이 필요합니다.",
-      "source_urls": [
-        "https://www.kpanews.co.kr/news/articleView.html?idxno=546869"
-      ],
-      "source_links": [
-        {
-          "publisher": "약사공론",
-          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=546869"
-        }
-      ],
-      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202610/546869_451636_5652.png",
-      "score": -6,
-      "oncology": {
-        "is_oncology": true,
-        "cancer_types": [
-          "폐암",
-          "담도암"
-        ],
-        "drug_generic": [],
-        "drug_brand": [],
-        "targets": [],
-        "mechanism": [],
-        "biomarkers": [],
-        "trial_name": null,
-        "phase": "3",
-        "line_of_therapy": null,
-        "endpoints": {
-          "orr": null,
-          "pfs": null,
-          "os": null,
-          "hr": null,
-          "grade3plus_ae": null
-        },
-        "approval_status": null,
-        "reimbursement_status": null,
-        "patient_summary": "치료 중 안전성과 관련된 정보입니다. 복용·투여 변경은 담당 의료진과 상의해야 합니다.",
-        "patient_relevance_score": 54,
-        "patient_relevance_labels": [
-          "안전성",
-          "임상결과"
-        ],
-        "industry_summary": null
-      },
-      "freshness": "30d",
-      "age_days": 30
+      "age_days": 22
     },
     {
       "rank": null,
@@ -663,7 +797,197 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 28
+      "age_days": 29
+    },
+    {
+      "rank": 4,
+      "canonical_issue": "필수 항암제 품절에 긴급도입…비급여에 환자 부담 '100배' - 메디파나뉴스",
+      "title": "필수 항암제 품절에 긴급도입…비급여에 환자 부담 '100배'",
+      "category": [
+        "급여",
+        "품절",
+        "공급"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-11-21T06:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "혈액암 치료에서 수십 년간 사용돼 온 항암제들이 잇따라 품절되면서 환자의 치료 일정에 차질이 발생하고 있다. 새로운 혈액암 치료제가 속속 등장하고 있지만, 백혈병과 림프종 치료의 근간을 이루는 기존 약제들은 낮은 수익성과 취약한 공급망으로 안정적인 공급이 어려운 상황이다. 공급이 중단된 항암제를 해외에서",
+        "복사하기 대한혈액학회 김대식 보험이사(고려의대 혈액내과).",
+        "사진=박으뜸 기자 혈액암 치료에서 수십 년간 사용돼 온 항암제들이 잇따라 품절되면서 환자의 치료 일정에 차질이 발생하고 있다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=422329"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=422329"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202611/422329_330362_4618.jpg",
+      "score": 53,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "림프종",
+          "백혈병"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": "급여 관련",
+        "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
+        "patient_relevance_score": 36,
+        "patient_relevance_labels": [
+          "급여·접근성"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "today",
+      "age_days": 0
+    },
+    {
+      "rank": null,
+      "canonical_issue": "림카토주 단독요법 급여기준 신설 추진… 킴리아 투여대상 세부 손질 - 약사공론",
+      "title": "림카토주 단독요법 급여기준 신설 추진… 킴리아 투여대상 세부 손질",
+      "category": [
+        "급여"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-11-21T05:51:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "국산 1호 CAR-T 세포치료제 림카토주(안발캅타진 오토류셀)의 급여기준이 신설되고, 킴리아주(티사젠렉류셀)의 급여기준도 투여대상과 주석 내용이 변경된다. 두 약",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=549510"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549510"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202611/549510_453694_5817.png",
+      "score": 25,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "림프종",
+          "백혈병"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [
+          "CAR-T"
+        ],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": "급여 관련",
+        "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
+        "patient_relevance_score": 36,
+        "patient_relevance_labels": [
+          "급여·접근성"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "today",
+      "age_days": 0
+    },
+    {
+      "rank": null,
+      "canonical_issue": "혈액암 필수 항암제 8종 이상 공급 차질...국가필수약 지정만으론 역부족 - 의학신문",
+      "title": "혈액암 필수 항암제 8종 이상 공급 차질...국가필수약 지정만으론 역부족",
+      "category": [
+        "공급"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-11-20T17:35:26+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=이재원 기자] 백혈병과 림프종 치료에 필수적인 저가 항암제들의 공급중단 사태가 반복되면서 대한혈액학회가 국가필수의약품 지정과 퇴장방지의약품 제",
+        "[의학신문·일간보사=이재원 기자] 백혈병과 림프종 치료에 필수적인 저가 항암제들의 공급중단 사태가 반복되면서 대한혈액학회가 국가필수의약품 지정과 퇴장방지의약품 제도의 연계, 약가 현실화, 필수 항암제 국가 비축 등 근본적인 대책 마련을 촉구했다.",
+        "특히 올해에만 8종 이상의 필수 항암제에서 품절이나 공급불안이 발생한 가운데, 한국유나이티드제약과 부광약품, 한국화이자제약, 클리니젠코리아 등이 공급하는 핵심 치료제들이 잇따라 공급 차질을 겪었다."
+      ],
+      "importance": "공급 변화는 의약품 접근성과 의료현장 재고 운영, 대체치료 준비에 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3016973"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016973"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3016973_417872_2642.jpg",
+      "score": 31,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "림프종",
+          "백혈병"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": "급여 관련",
+        "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
+        "patient_relevance_score": 36,
+        "patient_relevance_labels": [
+          "급여·접근성"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -723,7 +1047,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 24
+      "age_days": 25
     },
     {
       "rank": null,
@@ -784,7 +1108,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 20
+      "age_days": 21
     },
     {
       "rank": null,
@@ -846,7 +1170,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 21
+      "age_days": 22
     },
     {
       "rank": null,
@@ -911,7 +1235,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 22
+      "age_days": 23
     },
     {
       "rank": null,
@@ -973,7 +1297,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 24
+      "age_days": 25
     },
     {
       "rank": null,
@@ -1033,7 +1357,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 28
+      "age_days": 29
     },
     {
       "rank": null,
@@ -1094,7 +1418,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 28
+      "age_days": 29
     },
     {
       "rank": null,
@@ -1156,43 +1480,40 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 29
+      "age_days": 30
     },
     {
       "rank": null,
-      "canonical_issue": "“양적 경쟁 넘어 삶의 질 아우르는 ‘가치 기반 암 치료’ 새 지평 열 것” - 의학신문",
-      "title": "“양적 경쟁 넘어 삶의 질 아우르는 ‘가치 기반 암 치료’ 새 지평 열 것”",
+      "canonical_issue": "국가 주문 필수약 3종 '단독 수의계약'…센터, 계약 절차·매각 금액 공개 추진 - 약사공론",
+      "title": "국가 주문 필수약 3종 '단독 수의계약'…센터, 계약 절차·매각 금액 공개 추진",
       "category": [
-        "병원"
+        "공급"
       ],
       "publishers": [
-        "의학신문"
+        "약사공론"
       ],
-      "published_at": "2026-10-22T05:50:00+09:00",
+      "published_at": "2026-11-21T05:51:00+09:00",
       "published_at_verified": true,
       "summary": [
-        "[의학신문·일간보사=오인규 기자] 한국 의료가 세계적인 수준으로 도약하며 글로벌 유수 병원들과 어깨를 나란히 하고 있다. 삼성서울병원 암병원은 전체 암 환자 5년",
-        "[의학신문·일간보사=오인규 기자] 한국 의료가 세계적인 수준으로 도약하며 글로벌 유수 병원들과 어깨를 나란히 하고 있다.",
-        "삼성서울병원 암병원은 전체 암 환자 5년 생존율 75.4%를 기록하고, 최근 미국 뉴스위크가 발표한 ‘월드 베스트 전문병원 2027’에서 암 분야 세계 5위·국내 1위에 오르며 탁월한 역량을 입증했다."
+        "국가가 안정적인 공급을 위해 주문제조를 지원한 필수 항암제와 항생제 3개 품목의 유통업체가 확정된 가운데, 한국희귀필수의약품센터가 수의계약의 절차와 결과를 담은",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
       ],
-      "importance": "의료기관·약국 현장의 변화는 진료 흐름과 환자 경험, 의약품 사용 환경에 직접 영향을 줍니다.",
+      "importance": "공급 변화는 의약품 접근성과 의료현장 재고 운영, 대체치료 준비에 영향을 줄 수 있습니다.",
       "source_urls": [
-        "https://www.bosa.co.kr/news/articleView.html?idxno=3014452"
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=549508"
       ],
       "source_links": [
         {
-          "publisher": "의학신문",
-          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3014452"
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549508"
         }
       ],
-      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202610/3014452_415377_5646.jpg",
-      "score": 10,
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202611/549508_453689_1912.jpg",
+      "score": 12,
       "oncology": {
         "is_oncology": true,
-        "cancer_types": [
-          "유방암",
-          "폐암"
-        ],
+        "cancer_types": [],
         "drug_generic": [],
         "drug_brand": [],
         "targets": [],
@@ -1210,15 +1531,15 @@
         },
         "approval_status": null,
         "reimbursement_status": null,
-        "patient_summary": "향후 치료 선택이나 표준치료 논의에 영향을 줄 수 있는 임상 결과입니다.",
-        "patient_relevance_score": 28,
+        "patient_summary": "환자 부담이나 지원제도와 관련된 정보입니다. 대상 조건을 공식 안내에서 확인해야 합니다.",
+        "patient_relevance_score": 26,
         "patient_relevance_labels": [
-          "임상결과"
+          "지원제도"
         ],
         "industry_summary": null
       },
-      "freshness": "30d",
-      "age_days": 29
+      "freshness": "today",
+      "age_days": 0
     },
     {
       "rank": null,
@@ -1279,7 +1600,66 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 28
+      "age_days": 29
+    },
+    {
+      "rank": null,
+      "canonical_issue": "GC녹십자, 인비보 CAR-T부터 암 백신까지 연구분야 확장 - 의학신문",
+      "title": "GC녹십자, 인비보 CAR-T부터 암 백신까지 연구분야 확장",
+      "category": [
+        "산업"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-11-20T16:27:41+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=김정일 기자] GC녹십자가 차세대 RNA 및 LNP 플랫폼을 기반으로 in vivo CAR-T부터 암 백신까지 연구분야를 확장하고 있다.GC녹",
+        "[의학신문·일간보사=김정일 기자] GC녹십자가 차세대 RNA 및 LNP 플랫폼을 기반으로 in vivo CAR-T부터 암 백신까지 연구분야를 확장하고 있다.",
+        "GC녹십자(대표 허은철)는 지난 10-12일 인천에서 개최된 ‘제2회 세계 RNA 기반 치료제 및 백신 서밋 한국’에서 자체 개발한 차세대 RNA 기술 및 지질나노입자(LNP) 플랫폼 연구 성과를 발표했다고 20일 밝혔다."
+      ],
+      "importance": "시장·정책·연구개발 흐름을 보여주는 주요 산업 이슈로 후속 정책과 사업 변화 확인이 필요합니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3016969"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016969"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3016969_417867_245.png",
+      "score": 1,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [
+          "CAR-T"
+        ],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": "치료와 직접 관련된 정보인지 기사 원문과 공식 자료를 함께 확인해 주세요.",
+        "patient_relevance_score": 8,
+        "patient_relevance_labels": [],
+        "industry_summary": null
+      },
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -1336,37 +1716,39 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 2
+      "age_days": 3
     },
     {
       "rank": null,
-      "canonical_issue": "국립암센터 낙상사고 35% 증가…인증 사후관리 실효성 논란 - 메디파나뉴스",
-      "title": "국립암센터 낙상사고 35% 증가…인증 사후관리 실효성 논란",
+      "canonical_issue": "의료분쟁법의 역설…혈액암 의사에겐 '상시 분쟁' 우려 - 메디파나뉴스",
+      "title": "의료분쟁법의 역설…혈액암 의사에겐 '상시 분쟁' 우려",
       "category": [
-        "산업"
+        "정책",
+        "합병",
+        "병원"
       ],
       "publishers": [
         "메디파나뉴스"
       ],
-      "published_at": "2026-10-21T10:27:35+09:00",
+      "published_at": "2026-11-20T16:00:00+09:00",
       "published_at_verified": true,
       "summary": [
-        "국립암센터의 입원환자 규모는 줄었지만 낙상사고는 오히려 증가한 것으로 나타났다. 환자안전사고 예방대책을 시행하고도 낙상 발생률이 높아지면서 기존 관리체계의 실효성에 의문이 제기됐다. 더 큰 쟁점은 의료기관평가인증원의 사후관리다. 인증원이 낙상사고 증가를 중간현장조사에서 확인했음에도 구체적으로 어떤 개선조",
-        "제공=이소희 의원실 국립암센터의 입원환자 규모는 줄었지만 낙상사고는 오히려 증가한 것으로 나타났다.",
-        "환자안전사고 예방대책을 시행하고도 낙상 발생률이 높아지면서 기존 관리체계의 실효성에 의문이 제기됐다."
+        "고위험 필수의료를 담당하는 의료진의 법적 부담을 완화하기 위해 의료분쟁조정법이 개정됐지만, 중증 혈액암 환자를 치료하는 의료현장에서는 오히려 분쟁에 대한 불안이 커질 수 있다는 우려가 제기됐다. 형사처벌 부담을 줄이기 위한 특례가 마련됐음에도 혈액암 진료의 특수성이 충분히 반영되지 않으면 의료진 보호라는",
+        "복사하기 대한혈액학회 김경하 정책기획이사(순천향의대 종양혈액내과), 대한혈액학회 강형진 이사장(서울의대 소아청소년과).",
+        "사진=박으뜸 기자 고위험 필수의료를 담당하는 의료진의 법적 부담을 완화하기 위해 의료분쟁조정법이 개정됐지만, 중증 혈액암 환자를 치료하는 의료현장에서는 오히려 분쟁에 대한 불안이 커질 수 있다는 우려가 제기됐다."
       ],
-      "importance": "의료기관·약국 현장의 변화는 진료 흐름과 환자 경험, 의약품 사용 환경에 직접 영향을 줍니다.",
+      "importance": "기사에서 사업개발·투자 변화가 함께 확인돼 기업 포트폴리오와 경쟁구도 영향을 살펴볼 필요가 있습니다.",
       "source_urls": [
-        "https://www.medipana.com/news/articleView.html?idxno=419740"
+        "https://www.medipana.com/news/articleView.html?idxno=422324"
       ],
       "source_links": [
         {
           "publisher": "메디파나뉴스",
-          "url": "https://www.medipana.com/news/articleView.html?idxno=419740"
+          "url": "https://www.medipana.com/news/articleView.html?idxno=422324"
         }
       ],
-      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419740_327277_2618.jpg",
-      "score": 4,
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202611/422324_330356_5928.jpg",
+      "score": 20,
       "oncology": {
         "is_oncology": true,
         "cancer_types": [],
@@ -1388,12 +1770,71 @@
         "approval_status": null,
         "reimbursement_status": null,
         "patient_summary": "치료와 직접 관련된 정보인지 기사 원문과 공식 자료를 함께 확인해 주세요.",
-        "patient_relevance_score": 8,
+        "patient_relevance_score": 0,
         "patient_relevance_labels": [],
         "industry_summary": null
       },
-      "freshness": "30d",
-      "age_days": 30
+      "freshness": "7d",
+      "age_days": 1
+    },
+    {
+      "rank": null,
+      "canonical_issue": "지씨지놈, 핵심 검사 성장 가속…美 진출 기대감 확대 - 메디파나뉴스",
+      "title": "지씨지놈, 핵심 검사 성장 가속…美 진출 기대감 확대",
+      "category": [
+        "ai"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-11-20T11:59:40+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "GC그룹 계열사 유전체 분석기업 지씨지놈이 산전 선별검사와 AI 기반 다중암 조기진단 검사에서 검진 건수를 빠르게 늘리고 있다. 국내 검사사업 성장과 일본 시장 진출 성과를 바탕으로 미국 시장까지 사업을 확대하면서 중장기 성장동력을 확보할 것이란 전망이 나온다. 핵심 검사 건수 급증…일부 매출 지연에도 ",
+        "제공=GC녹십자 GC그룹 계열사 유전체 분석기업 지씨지놈이 산전 선별검사와 AI 기반 다중암 조기진단 검사에서 검진 건수를 빠르게 늘리고 있다.",
+        "국내 검사사업 성장과 일본 시장 진출 성과를 바탕으로 미국 시장까지 사업을 확대하면서 중장기 성장동력을 확보할 것이란 전망이 나온다."
+      ],
+      "importance": "기사에서 급여·약가 이슈가 함께 확인돼 시장 접근성과 환자 부담 변화를 후속 확인할 필요가 있습니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=422308"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=422308"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202611/422308_330335_4637.jpg",
+      "score": 16,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "췌장암"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": "치료와 직접 관련된 정보인지 기사 원문과 공식 자료를 함께 확인해 주세요.",
+        "patient_relevance_score": 0,
+        "patient_relevance_labels": [],
+        "industry_summary": null
+      },
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -1450,7 +1891,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 21
+      "age_days": 22
     }
   ]
 }

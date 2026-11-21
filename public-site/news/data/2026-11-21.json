@@ -1,0 +1,527 @@
+{
+  "version": "1.2",
+  "report_date": "2026-11-21",
+  "collection_window": {
+    "start": "2026-11-20T09:00:00+09:00",
+    "end": "2026-11-21T09:00:00+09:00",
+    "timezone": "Asia/Seoul"
+  },
+  "sources": [
+    "데일리팜",
+    "의학신문",
+    "메디파나뉴스",
+    "약사공론"
+  ],
+  "briefing": "큐로셀 '림카토', 급여가격 2.8억 확정…내달부터 건보 적용가 오늘 가장 중요한 이슈로 부각됐습니다. 이어 신약 허가부터 급여 제한까지…혈액암 치료의 '이중 장벽'도 주요 변화로 확인됐습니다. 전체적으로는 정책·급여 · 항암·정밀의료 흐름이 두드러집니다.",
+  "top_news": [
+    {
+      "rank": 1,
+      "canonical_issue": "큐로셀 '림카토', 급여가격 2.8억 확정…내달부터 건보 적용 - 메디파나뉴스",
+      "title": "큐로셀 '림카토', 급여가격 2.8억 확정…내달부터 건보 적용",
+      "category": [
+        "정책",
+        "급여",
+        "약가",
+        "복지부"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-11-20T17:32:51+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "CAR-T 치료제 전문 기업 큐로셀은 자사의 CD19 CAR-T 치료제 '림카토(RIMQARTO, 성분명 안발캅타젠오토류셀)'가 국민건강보험공단과의 약가 협상을 마치고 보건복지부 건강보험정책심의위원회(건정심)에 상정됐다고 20일 밝혔다. 림카토의 1회 투여당 상한금액은 2억8001만6050원으로 확정됐으",
+        "제공=큐로셀 CAR-T 치료제 전문 기업 큐로셀은 자사의 CD19 CAR-T 치료제 '림카토(RIMQARTO, 성분명 안발캅타젠오토류셀)'가 국민건강보험공단과의 약가 협상을 마치고 보건복지부 건강보험정책심의위원회(건정심)에 상정됐다고 20일 밝혔다.",
+        "림카토의 1회 투여당 상한금액은 2억8001만6050원으로 확정됐으며, 오는 12월 1일부터 건강보험 급여가 적용될 예정이다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=422331"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=422331"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202611/422331_330361_3213.jpg",
+      "score": 121,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "림프종"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [
+          "CAR-T"
+        ],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": "3",
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": "허가 관련",
+        "reimbursement_status": "급여 관련",
+        "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
+        "patient_relevance_score": 90,
+        "patient_relevance_labels": [
+          "급여·접근성",
+          "허가",
+          "임상결과",
+          "지원제도"
+        ],
+        "industry_summary": null
+      }
+    },
+    {
+      "rank": 2,
+      "canonical_issue": "신약 허가부터 급여 제한까지…혈액암 치료의 '이중 장벽' - 메디파나뉴스",
+      "title": "신약 허가부터 급여 제한까지…혈액암 치료의 '이중 장벽'",
+      "category": [
+        "급여",
+        "허가"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-11-21T06:02:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "혈액암과 희귀혈액질환의 치료 환경이 빠르게 변화하고 있다. CAR-T 세포치료제와 이중특이항체, 표적치료제 등 새로운 치료법이 등장하면서 과거에는 선택지가 제한적이었던 환자에게도 생존 가능성을 높일 기회가 열리고 있다. 하지만 의학적 발전이 곧바로 환자의 치료 접근성 확대로 연결되는 것은 아니다. 신약이",
+        "복사하기 (왼쪽부터) 대한혈액학회 문영철 총무이사, 임호영 재무이사, 김대식 보험이사.",
+        "사진=박으뜸 기자 혈액암과 희귀혈액질환의 치료 환경이 빠르게 변화하고 있다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=422330"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=422330"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202611/422330_330363_2638.jpg",
+      "score": 66,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [
+          "CAR-T"
+        ],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": "3",
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": "허가 관련",
+        "reimbursement_status": "급여 관련",
+        "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
+        "patient_relevance_score": 80,
+        "patient_relevance_labels": [
+          "급여·접근성",
+          "허가",
+          "임상결과"
+        ],
+        "industry_summary": null
+      }
+    },
+    {
+      "rank": 3,
+      "canonical_issue": "아리바이오, 알츠하이머 신약 글로벌 3상 성과…K-바이오 새 이정표 - 약사공론",
+      "title": "아리바이오, 알츠하이머 신약 글로벌 3상 성과…K-바이오 새 이정표",
+      "category": [
+        "3상",
+        "임상 3상"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-11-20T13:59:31+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "글로벌 제약사들도 개발에 어려움을 겪는 알츠하이머병 치료제 분야에서 국내 바이오기업 아리바이오가 글로벌 임상 3상에서 유효성을 확인하며 국내 신약개발의 새로운 가",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "주요 임상 결과는 향후 허가·가이드라인·표준치료 변화 가능성을 평가하는 근거가 됩니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=549471"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549471"
+        }
+      ],
+      "thumbnail_url": "https://www.kpanews.co.kr/image/logo/snslogotrans_20250903011014.png",
+      "score": 55,
+      "oncology": null
+    },
+    {
+      "rank": 4,
+      "canonical_issue": "필수 항암제 품절에 긴급도입…비급여에 환자 부담 '100배' - 메디파나뉴스",
+      "title": "필수 항암제 품절에 긴급도입…비급여에 환자 부담 '100배'",
+      "category": [
+        "급여",
+        "품절",
+        "공급"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-11-21T06:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "혈액암 치료에서 수십 년간 사용돼 온 항암제들이 잇따라 품절되면서 환자의 치료 일정에 차질이 발생하고 있다. 새로운 혈액암 치료제가 속속 등장하고 있지만, 백혈병과 림프종 치료의 근간을 이루는 기존 약제들은 낮은 수익성과 취약한 공급망으로 안정적인 공급이 어려운 상황이다. 공급이 중단된 항암제를 해외에서",
+        "복사하기 대한혈액학회 김대식 보험이사(고려의대 혈액내과).",
+        "사진=박으뜸 기자 혈액암 치료에서 수십 년간 사용돼 온 항암제들이 잇따라 품절되면서 환자의 치료 일정에 차질이 발생하고 있다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=422329"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=422329"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202611/422329_330362_4618.jpg",
+      "score": 53,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "림프종",
+          "백혈병"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": "급여 관련",
+        "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
+        "patient_relevance_score": 36,
+        "patient_relevance_labels": [
+          "급여·접근성"
+        ],
+        "industry_summary": null
+      }
+    },
+    {
+      "rank": 5,
+      "canonical_issue": "혈액암 신약 급여 사각지대 여전...소아 백혈병·희귀질환 치료 접근성 제한 - 의학신문",
+      "title": "혈액암 신약 급여 사각지대 여전...소아 백혈병·희귀질환 치료 접근성 제한",
+      "category": [
+        "급여"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-11-20T18:01:44+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=이재원 기자] 혈액암과 희귀 혈액질환 치료에 새로운 표적치료제와 면역항암제, 유전자치료제 등이 등장하고 있지만, 국내 건강보험 급여기준이 실제",
+        "[의학신문·일간보사=이재원 기자] 혈액암과 희귀 혈액질환 치료에 새로운 표적치료제와 면역항암제, 유전자치료제 등이 등장하고 있지만, 국내 건강보험 급여기준이 실제 임상적 필요를 충분히 반영하지 못하면서 환자의 치료 접근성이 제한되고 있다는 지적이 나왔다.",
+        "특히 같은 질환에 같은 치료제를 사용하더라도 성인과 소아의 급여기준이 달라 소아 환자들이 고액의 약제비를 부담하거나 기존 항암치료에 추가로 실패해야 신약을 사용할 수 있는 문제가 제기됐다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3016974"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016974"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3016974_417873_01.jpg",
+      "score": 49,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "백혈병"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [
+          "CAR-T"
+        ],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": "3",
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": "허가 관련",
+        "reimbursement_status": "급여 관련",
+        "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
+        "patient_relevance_score": 80,
+        "patient_relevance_labels": [
+          "급여·접근성",
+          "허가",
+          "임상결과"
+        ],
+        "industry_summary": null
+      }
+    }
+  ],
+  "trends": [
+    {
+      "title": "정책·급여",
+      "count": 4,
+      "change": "4건의 주요 이슈에서 반복적으로 확인",
+      "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
+      "examples": [
+        "큐로셀 '림카토', 급여가격 2.8억 확정…내달부터 건보 적용",
+        "신약 허가부터 급여 제한까지…혈액암 치료의 '이중 장벽'"
+      ]
+    },
+    {
+      "title": "항암·정밀의료",
+      "count": 4,
+      "change": "4건의 주요 이슈에서 반복적으로 확인",
+      "implication": "바이오마커·기전 중심 정밀의료 경쟁이 치료전략을 세분화하는 흐름",
+      "examples": [
+        "큐로셀 '림카토', 급여가격 2.8억 확정…내달부터 건보 적용",
+        "신약 허가부터 급여 제한까지…혈액암 치료의 '이중 장벽'"
+      ]
+    },
+    {
+      "title": "신약·임상",
+      "count": 3,
+      "change": "3건의 주요 이슈에서 반복적으로 확인",
+      "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
+      "examples": [
+        "신약 허가부터 급여 제한까지…혈액암 치료의 '이중 장벽'",
+        "아리바이오, 알츠하이머 신약 글로벌 3상 성과…K-바이오 새 이정표"
+      ]
+    },
+    {
+      "title": "디지털헬스",
+      "count": 1,
+      "change": "1건의 주요 이슈에서 반복적으로 확인",
+      "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
+      "examples": [
+        "아리바이오, 알츠하이머 신약 글로벌 3상 성과…K-바이오 새 이정표"
+      ]
+    }
+  ],
+  "outlet_status": [
+    {
+      "publisher": "데일리팜",
+      "homepage_url": "https://www.dailypharm.com/",
+      "items": [
+        {
+          "title": "[데일리팜]로수젯 겨냥 구강붕해정 48품목 내달 등재…8천억 시장 공략",
+          "published_at": "2026-11-21T06:00:59+09:00",
+          "verified": true,
+          "source_url": "https://www.dailypharm.com/user/news/344851"
+        }
+      ]
+    },
+    {
+      "publisher": "의학신문",
+      "homepage_url": "https://www.bosa.co.kr/",
+      "items": [
+        {
+          "title": "혈액암 신약 급여 사각지대 여전...소아 백혈병·희귀질환 치료 접근성 제한",
+          "published_at": "2026-11-20T18:01:44+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016974"
+        },
+        {
+          "title": "분당서울대병원 김연욱 교수, 김진복암연구상 수상",
+          "published_at": "2026-11-20T15:46:38+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016967"
+        },
+        {
+          "title": "혈액암 필수 항암제 8종 이상 공급 차질...국가필수약 지정만으론 역부족",
+          "published_at": "2026-11-20T17:35:26+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016973"
+        },
+        {
+          "title": "제주형 건강주치의, 국가 일차의료 시범사업 모델로 검토",
+          "published_at": "2026-11-20T13:55:50+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016963"
+        },
+        {
+          "title": "계명대 동산병원 ‘뇌동맥류 패스트트랙’ 본격 가동",
+          "published_at": "2026-11-20T16:54:21+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016970"
+        },
+        {
+          "title": "상계백병원 심장내과팀, 이상지질혈증 초기 병용치료 LDL 조절 효과 규명",
+          "published_at": "2026-11-20T15:55:42+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016932"
+        },
+        {
+          "title": "의료분쟁조정법, 혈액암 고위험 진료 특수성 반영해야...학회, 개선 촉구",
+          "published_at": "2026-11-20T18:10:59+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016975"
+        },
+        {
+          "title": "“응급실은 환자의 성역” 의료계 후속 대책 압박",
+          "published_at": "2026-11-20T10:44:50+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016927"
+        }
+      ]
+    },
+    {
+      "publisher": "메디파나뉴스",
+      "homepage_url": "https://www.medipana.com/",
+      "items": [
+        {
+          "title": "큐로셀 '림카토', 급여가격 2.8억 확정…내달부터 건보 적용",
+          "published_at": "2026-11-20T17:32:51+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422331"
+        },
+        {
+          "title": "신약 허가부터 급여 제한까지…혈액암 치료의 '이중 장벽'",
+          "published_at": "2026-11-21T06:02:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422330"
+        },
+        {
+          "title": "필수 항암제 품절에 긴급도입…비급여에 환자 부담 '100배'",
+          "published_at": "2026-11-21T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422329"
+        },
+        {
+          "title": "美 자본으로 中 신약 키우는 '뉴코 모델'…美 의회 자문위 경고",
+          "published_at": "2026-11-20T12:11:41+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422315"
+        },
+        {
+          "title": "의료분쟁법의 역설…혈액암 의사에겐 '상시 분쟁' 우려",
+          "published_at": "2026-11-20T16:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422324"
+        },
+        {
+          "title": "제약사 60곳 설비투자 24.6% 줄었는데…33곳은 오히려 늘렸다",
+          "published_at": "2026-11-21T06:04:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422314"
+        },
+        {
+          "title": "지씨지놈, 핵심 검사 성장 가속…美 진출 기대감 확대",
+          "published_at": "2026-11-20T11:59:40+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422308"
+        },
+        {
+          "title": "\"'팬옵틱스 프로', 초기 빛 번짐·중간거리 시력 강점\"",
+          "published_at": "2026-11-20T11:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422265"
+        }
+      ]
+    },
+    {
+      "publisher": "약사공론",
+      "homepage_url": "https://www.kpanews.co.kr/",
+      "items": [
+        {
+          "title": "아리바이오, 알츠하이머 신약 글로벌 3상 성과…K-바이오 새 이정표",
+          "published_at": "2026-11-20T13:59:31+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549471"
+        },
+        {
+          "title": "[약국에서 바로 쓰는 AI] 이 증상, 혹시 약 때문일까? ver.2",
+          "published_at": "2026-11-21T05:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549396"
+        },
+        {
+          "title": "비아트리스티올라 내달 등재…림토카, 고가약 관리 대상 포함",
+          "published_at": "2026-11-20T12:23:01+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549463"
+        },
+        {
+          "title": "박혜경 전 의약품정책연구소장 부친",
+          "published_at": "2026-11-20T16:33:07+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549485"
+        },
+        {
+          "title": "덱사메타손 5품목에 '패혈증' 추가…중앙약심서 3명 반대",
+          "published_at": "2026-11-20T12:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549457"
+        },
+        {
+          "title": "림카토주 단독요법 급여기준 신설 추진… 킴리아 투여대상 세부 손질",
+          "published_at": "2026-11-21T05:51:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549510"
+        },
+        {
+          "title": "방문돌봄 환자에 약사가 직접 약 전달…약사법 개정 추진",
+          "published_at": "2026-11-20T09:41:53+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549442"
+        },
+        {
+          "title": "[릴레이집회-429일차]\"국민이 원하는 건 편의점약 아닌 공공심야약국\"",
+          "published_at": "2026-11-21T05:54:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549512"
+        }
+      ]
+    }
+  ],
+  "insight": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름 동시에 항암·정밀의료 흐름도 함께 확인돼 단일 이슈보다 복합적인 산업 변화로 보는 것이 적절합니다.",
+  "infographic": {
+    "image_path": null,
+    "generated_at": null,
+    "template_version": "news-card-v1"
+  }
+}
