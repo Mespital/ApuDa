@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "updated": "2026-11-21T09:54:13Z",
+ "updated": "2026-11-21T10:25:39Z",
  "wip_limit": {
   "claude_text": 2,
   "chatgpt_art": 2
@@ -294,15 +294,25 @@
      "date": "2026-11-21",
      "event": "S2 진행",
      "detail": "volumes/05TC/S2_원고_v0.1.md — 골든샘플 1·7·11장 + EP01·05·07. 3/30장. 30mCi·관찰 진행률·임신 연기 기간 등 수치 삭제. 다음: 2~6장"
+    },
+    {
+     "date": "2026-11-21",
+     "event": "S2 진행",
+     "detail": "volumes/05TC/S2_원고_v0.2.md — 2~6장 + EP02·EP03·EP11·EP12·EP04. 8/30장. 다음: 8~10·12~13장"
     }
    ],
    "s2_progress": {
     "done": [
      1,
+     2,
+     3,
+     4,
+     5,
+     6,
      7,
      11
     ],
-    "file": "volumes/05TC/S2_원고_v0.1.md"
+    "file": "volumes/05TC/S2_원고_v0.2.md"
    }
   },
   {
@@ -327,8 +337,21 @@
      "date": "2026-11-21",
      "event": "G1 승인",
      "detail": "대표가 Claude 채팅에서 목차 일괄 승인(결재함 문서 미기재) → S2 진행"
+    },
+    {
+     "date": "2026-11-21",
+     "event": "S2 시작",
+     "detail": "volumes/06RCC/S2_원고_v0.1.md — 골든샘플 1·8·21장 + EP01·EP05·EP19. 3/30장. 다음: 2~7장"
     }
-   ]
+   ],
+   "s2_progress": {
+    "done": [
+     1,
+     8,
+     21
+    ],
+    "file": "volumes/06RCC/S2_원고_v0.1.md"
+   }
   },
   {
    "no": 7,
@@ -753,7 +776,7 @@
  ],
  "inbox": {
   "last_line": "[결재 기록]",
-  "last_review_time": "2026-11-21T09:54:13Z"
+  "last_review_time": "2026-11-21T10:25:39Z"
  },
  "drive": {
   "root": "1i1XGW6O_c1HGmeF7lyrTkVKB_zq8jVgP",
