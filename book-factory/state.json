@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "updated": "2026-11-21T22:47:00Z",
+ "updated": "2026-11-21T23:58:00Z",
  "wip_limit": {
   "claude_text": 2,
   "chatgpt_art": 10,
@@ -696,9 +696,9 @@
    "no": 9,
    "code": "BTC",
    "name": "담낭·담도암",
-   "stage": "S2",
-   "status": "ready",
-   "note": "S2 27/30장. 다음 28~30장 → S3",
+   "stage": "S3",
+   "status": "waiting",
+   "note": "S3 지시 발행(오토파일럿). ChatGPT 만화 80컷 대기",
    "history": [
     {
      "date": "2026-11-21",
@@ -739,6 +739,16 @@
      "date": "2026-11-22",
      "event": "S2 진행",
      "detail": "volumes/09BTC/S2_원고_v0.5.md — 22장 항암·면역치료 자기 관리 · 23장 추적 · 24장 마음·예후 + EP10 · 25장 보호자·움직이기·금연금주 · PART 5 26장 산정특례 · 27장 보험·회사 서류(우연 발견 담낭암 진단일) + 심화 EP20. 27/30장, EP 20편 완비. 원천 완전판 재판독. 설사 \"4~6회\"·추적 간격·산정특례 30일/5%/5년·돌봄휴직 90일·주 150분·소멸시효 3년 등 삭제. 다음: 28~30장"
+    },
+    {
+     "date": "2026-11-22",
+     "event": "S2 완료",
+     "detail": "volumes/09BTC/S2_원고_v0.6.md — 28장 직장과 일상·복귀 / PART 6 29장 질문 모음·대화법·한 장 요약·응급 카드(스텐트·배액관) / 30장 가상 사례 3(경자·병철·수경). 30/30장. 원천 완전판 재판독. \"현금 흐름 3개월\"·\"100%\"·사례 나이·\"T1b\"·\"몇 주 뒤\" 삭제, 수경 씨 FGFR2 앞뒤 모순 수정, EP10 대사 '4점 넘으면'→'점수 높은 날은' 원고에도 반영 → stage=S3"
+    },
+    {
+     "date": "2026-11-22",
+     "event": "S3 지시 발행",
+     "detail": "volumes/09BTC/S3_ChatGPT지시.md + Drive 01 Google Doc(1AIZpBtSwtTrnYvG19sMhSuH5p4H31mbY5x5NScafsB8) — CS + EP01~20 4컷(오토파일럿 큐 12단계 + ⛔G). 반영: EP10 수치 제거, EP14 재확인 CT, EP15 빛 구슬·해설 완화, EP20 산정특례 30일 제거, EP04 해설 효능 단정 완화, 화자 고정, 보조 인물(완화의료 간호사·원무과 직원) 추가"
     }
    ],
    "s2_progress": {
@@ -769,10 +779,19 @@
      24,
      25,
      26,
-     27
+     27,
+     28,
+     29,
+     30
     ],
-    "file": "volumes/09BTC/S2_원고_v0.5.md"
-   }
+    "file": "volumes/09BTC/S2_원고_v0.6.md"
+   },
+   "s3": {
+    "file": "volumes/09BTC/S3_ChatGPT지시.md",
+    "drive_doc": "1AIZpBtSwtTrnYvG19sMhSuH5p4H31mbY5x5NScafsB8"
+   },
+   "waiting_on": "대표: Drive 01의 「⑨ BTC 담낭·담도암 — S3 만화 지시」를 ChatGPT 새 채팅에 붙여넣고 '계속' → ⛔에서 결재함 '완료 BTC' + 그림을 Claude 채팅에 올려 '검수'",
+   "waiting_since": "2026-11-21T23:58:00Z"
   },
   {
    "no": 10,
@@ -780,7 +799,7 @@
    "name": "간암",
    "stage": "S2",
    "status": "ready",
-   "note": "S2 8/30장(1~7·19장). 다음 8~13장",
+   "note": "S2 14/30장(1~13·19장). 다음 14~18장",
    "history": [
     {
      "date": "2026-11-21",
@@ -806,6 +825,11 @@
      "date": "2026-11-22",
      "event": "S2 진행",
      "detail": "volumes/10HCC/S2_원고_v0.2.md — 1장 세 갈래 구분 + EP01 · 2장 72시간 + EP02 · 3장 영상 진단(LI-RADS 개념) + EP03 · 5장 BCLC·mUICC + 심화 EP11 · 6장 AFP·PIVKA-II + 심화 EP12. PART 1 완료, 8/30장. 원천 완전판 재판독. mUICC 크기 기준·AFP/PIVKA-II 기준값·산정특례 30일·PET 금식 시간 삭제. 다음: 8~13장(EP06·EP13·EP14·EP07·EP08·EP15)"
+    },
+    {
+     "date": "2026-11-22",
+     "event": "S2 진행",
+     "detail": "volumes/10HCC/S2_원고_v0.3.md — PART 2 8장 치료 경로 지도(EP06) · 9장 간절제(심화 EP13) · 10장 간이식(심화 EP14) · 11장 소작(EP07) · 12장 TACE·TARE·시술 후 신호등(EP08) · 13장 방사선 SBRT·양성자(심화 EP15). 14/30장. 원천 완전판 재판독. 소작 \"3cm·3~5cm\", TARE \"2020년 말 급여\", TACE 불응 \"6개월 두 번\", 간이식 \"2024년 약 4분의 3\" 삭제, '고열'→38.0°C. 다음: 14~18장(심화 EP16·EP17·PART 3)"
     }
    ],
    "s2_progress": {
@@ -817,9 +841,15 @@
      5,
      6,
      7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
      19
     ],
-    "file": "volumes/10HCC/S2_원고_v0.2.md"
+    "file": "volumes/10HCC/S2_원고_v0.3.md"
    }
   },
   {
