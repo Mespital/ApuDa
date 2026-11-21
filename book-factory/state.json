@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "updated": "2026-11-21T10:25:39Z",
+ "updated": "2026-11-21T10:44:53Z",
  "wip_limit": {
   "claude_text": 2,
   "chatgpt_art": 2
@@ -299,6 +299,11 @@
      "date": "2026-11-21",
      "event": "S2 진행",
      "detail": "volumes/05TC/S2_원고_v0.2.md — 2~6장 + EP02·EP03·EP11·EP12·EP04. 8/30장. 다음: 8~10·12~13장"
+    },
+    {
+     "date": "2026-11-21",
+     "event": "S2 진행",
+     "detail": "volumes/05TC/S2_원고_v0.3.md — 8·9·10·12·13장 + EP06·13·14·15·16. 13/30장. 부갑상선 1~2%·저요오드 1~2주·호르몬 중단 4주·가족 수칙 1주일·임신 연기 기간 미기재. 다음: 14~19장"
     }
    ],
    "s2_progress": {
@@ -310,9 +315,14 @@
      5,
      6,
      7,
-     11
+     8,
+     9,
+     10,
+     11,
+     12,
+     13
     ],
-    "file": "volumes/05TC/S2_원고_v0.2.md"
+    "file": "volumes/05TC/S2_원고_v0.3.md"
    }
   },
   {
@@ -776,7 +786,7 @@
  ],
  "inbox": {
   "last_line": "[결재 기록]",
-  "last_review_time": "2026-11-21T10:25:39Z"
+  "last_review_time": "2026-11-21T10:44:53Z"
  },
  "drive": {
   "root": "1i1XGW6O_c1HGmeF7lyrTkVKB_zq8jVgP",
