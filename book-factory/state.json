@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "updated": "2026-11-21T08:52:00Z",
+ "updated": "2026-11-21T09:54:13Z",
  "wip_limit": {
   "claude_text": 2,
   "chatgpt_art": 2
@@ -89,9 +89,9 @@
    "no": 3,
    "code": "GC",
    "name": "위암",
-   "stage": "S2",
+   "stage": "S3",
    "status": "ready",
-   "note": "기존 원고, 상태 실측 필요",
+   "note": "S2 30/30장 완료. S3 지시 발행은 ChatGPT 슬롯(BC·LC 사용 중) 빌 때",
    "history": [
     {
      "date": "2026-11-21",
@@ -132,6 +132,11 @@
      "date": "2026-11-21",
      "event": "S2 진행",
      "detail": "volumes/03GC/S2_원고_v0.5.md — 22~27장 + EP19·EP10·EP20. 27/30장. 다음: 28~30장 → S3"
+    },
+    {
+     "date": "2026-11-21",
+     "event": "S2 완료",
+     "detail": "volumes/03GC/S2_원고_v0.6.md — 28~30장(직장·복귀 / 진료실 도구·한 장 요약 / 가상 사례 3). 30/30장 → stage=S3(ChatGPT 슬롯 대기)"
     }
    ],
    "s2_progress": {
@@ -162,18 +167,22 @@
      24,
      25,
      26,
-     27
+     27,
+     28,
+     29,
+     30
     ],
-    "file": "volumes/03GC/S2_원고_v0.5.md"
-   }
+    "file": "volumes/03GC/S2_원고_v0.6.md"
+   },
+   "waiting_on": null
   },
   {
    "no": 4,
    "code": "CRC",
    "name": "대장암",
-   "stage": "S2",
+   "stage": "S3",
    "status": "ready",
-   "note": "기존 원고",
+   "note": "S2 30/30장 완료. S3 지시 발행은 ChatGPT 슬롯(BC·LC 사용 중) 빌 때",
    "history": [
     {
      "date": "2026-11-21",
@@ -214,6 +223,11 @@
      "date": "2026-11-21",
      "event": "S2 진행",
      "detail": "volumes/04CRC/S2_원고_v0.5.md — 22~27장 + EP19·EP10·EP20. 27/30장. 다음: 28~30장 → S3"
+    },
+    {
+     "date": "2026-11-21",
+     "event": "S2 완료",
+     "detail": "volumes/04CRC/S2_원고_v0.6.md — 28~30장(직장·복귀 / 진료실 도구·한 장 요약 / 가상 사례 3). 30/30장 → stage=S3(ChatGPT 슬롯 대기)"
     }
    ],
    "s2_progress": {
@@ -244,10 +258,14 @@
      24,
      25,
      26,
-     27
+     27,
+     28,
+     29,
+     30
     ],
-    "file": "volumes/04CRC/S2_원고_v0.5.md"
-   }
+    "file": "volumes/04CRC/S2_원고_v0.6.md"
+   },
+   "waiting_on": null
   },
   {
    "no": 5,
@@ -271,8 +289,21 @@
      "date": "2026-11-21",
      "event": "G1 승인",
      "detail": "대표가 Claude 채팅에서 목차 일괄 승인(결재함 문서 미기재) → S2 진행"
+    },
+    {
+     "date": "2026-11-21",
+     "event": "S2 진행",
+     "detail": "volumes/05TC/S2_원고_v0.1.md — 골든샘플 1·7·11장 + EP01·05·07. 3/30장. 30mCi·관찰 진행률·임신 연기 기간 등 수치 삭제. 다음: 2~6장"
     }
-   ]
+   ],
+   "s2_progress": {
+    "done": [
+     1,
+     7,
+     11
+    ],
+    "file": "volumes/05TC/S2_원고_v0.1.md"
+   }
   },
   {
    "no": 6,
@@ -722,7 +753,7 @@
  ],
  "inbox": {
   "last_line": "[결재 기록]",
-  "last_review_time": "2026-11-21T08:52:00Z"
+  "last_review_time": "2026-11-21T09:54:13Z"
  },
  "drive": {
   "root": "1i1XGW6O_c1HGmeF7lyrTkVKB_zq8jVgP",
