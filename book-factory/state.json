@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "updated": "2026-11-21T08:02:16Z",
+ "updated": "2026-11-21T08:52:00Z",
  "wip_limit": {
   "claude_text": 2,
   "chatgpt_art": 2
@@ -127,6 +127,11 @@
      "date": "2026-11-21",
      "event": "S2 진행",
      "detail": "volumes/03GC/S2_원고_v0.4.md — 15~19·21장 + EP08·EP18. 21/30장. 다음: 22~27장"
+    },
+    {
+     "date": "2026-11-21",
+     "event": "S2 진행",
+     "detail": "volumes/03GC/S2_원고_v0.5.md — 22~27장 + EP19·EP10·EP20. 27/30장. 다음: 28~30장 → S3"
     }
    ],
    "s2_progress": {
@@ -151,9 +156,15 @@
      18,
      19,
      20,
-     21
+     21,
+     22,
+     23,
+     24,
+     25,
+     26,
+     27
     ],
-    "file": "volumes/03GC/S2_원고_v0.4.md"
+    "file": "volumes/03GC/S2_원고_v0.5.md"
    }
   },
   {
@@ -198,6 +209,11 @@
      "date": "2026-11-21",
      "event": "S2 진행",
      "detail": "volumes/04CRC/S2_원고_v0.4.md — 15~19·21장 + EP08·EP18. 21/30장. 다음: 22~27장"
+    },
+    {
+     "date": "2026-11-21",
+     "event": "S2 진행",
+     "detail": "volumes/04CRC/S2_원고_v0.5.md — 22~27장 + EP19·EP10·EP20. 27/30장. 다음: 28~30장 → S3"
     }
    ],
    "s2_progress": {
@@ -222,9 +238,15 @@
      18,
      19,
      20,
-     21
+     21,
+     22,
+     23,
+     24,
+     25,
+     26,
+     27
     ],
-    "file": "volumes/04CRC/S2_원고_v0.4.md"
+    "file": "volumes/04CRC/S2_원고_v0.5.md"
    }
   },
   {
@@ -700,7 +722,7 @@
  ],
  "inbox": {
   "last_line": "[결재 기록]",
-  "last_review_time": "2026-11-21T08:02:16Z"
+  "last_review_time": "2026-11-21T08:52:00Z"
  },
  "drive": {
   "root": "1i1XGW6O_c1HGmeF7lyrTkVKB_zq8jVgP",
