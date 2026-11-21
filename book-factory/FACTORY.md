@@ -14,6 +14,10 @@
 1. `git clone` 후 `book-factory` 브랜치로 체크아웃(없으면 main에서 만들기).
 2. `book-factory/state.json`이 없으면 **부트스트랩**: Drive 09_시스템 폴더의 파일(파일명 접두어 `kit__`, 이중 밑줄 `__`는 폴더 구분 `/`)을 내려받아 `book-factory/` 아래 같은 경로로 복원.
 3. `state.json`, `standards/01_총괄작업지시서.md`, `standards/02_ChatGPT_오토파일럿.md`를 읽는다.
+4. **중복 실행 잠금** (2026-11-21 16시대에 두 실행이 같은 장을 동시에 써서 추가):
+   - `book-factory/RUNNING.json`이 있고 `started`가 50분 이내면 → 다른 실행이 진행 중. 작업하지 말고 `reports/daily/`에 "중복 실행 건너뜀" 한 줄 보고만 남기고 끝낸다.
+   - 없거나 50분이 지났으면 → `{"started": "<UTC 시각>", "session": "<세션 id>"}`로 만들어 **즉시 커밋·push**(작업 시작 전). push가 거절되면 fetch 후 다시 판정.
+   - 작업을 마치는 마지막 커밋에서 `RUNNING.json`을 지운다. 글 작업 직전과 push 직전에 `git fetch`로 원격이 앞섰는지 확인하고, 앞섰으면 원격을 따르고 이미 된 작업은 다시 하지 않는다.
 
 ## 2. 입력 수집
 1. **결재함**: 결재함 문서를 텍스트로 내려받아 `[결재 기록]` 아래 줄 중 `state.json`의 `inbox.last_line` 이후 새 줄만 처리. 명령:
