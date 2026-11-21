@@ -31,7 +31,7 @@
 3. 처리 후 `inbox.last_line`, `inbox.last_review_time` 갱신.
 
 ## 3. 작업 (한 실행의 작업량 상한)
-`order` 순서로 훑어 status=ready인 권을 처리한다. 동시 진행 상한: Claude 글 작업 2권, ChatGPT 대기 2권.
+`order` 순서로 훑어 status=ready인 권을 처리한다. 동시 진행 상한: Claude 글 작업 2권, ChatGPT 대기 `state.json`의 `wip_limit.chatgpt_art`(2026-11-22 대표 지시로 10). S3에 도착한 권은 상한 안에서 바로 S3 지시를 발행한다(S1 §3 캐릭터 + §4 EP 장면 + S2 편집 메모의 대사 수정 반영).
 
 | 단계 | 담당 | 이번 실행에서 할 일 | 산출물 (book-factory/volumes/{NN}{코드}/) |
 |---|---|---|---|

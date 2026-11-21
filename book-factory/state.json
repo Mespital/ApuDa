@@ -1,9 +1,10 @@
 {
   "schema": 1,
-  "updated": "2026-11-21T15:31:00Z",
+  "updated": "2026-11-21T15:47:00Z",
   "wip_limit": {
     "claude_text": 2,
-    "chatgpt_art": 2
+    "chatgpt_art": 10,
+    "note": "2026-11-22 대표 지시 \"다음 지시 오토로\" → ChatGPT 대기 상한 2→10"
   },
   "stages": {
     "S1": "지시 블록 발행(목차·EP20 주제)",
@@ -90,8 +91,8 @@
       "code": "GC",
       "name": "위암",
       "stage": "S3",
-      "status": "ready",
-      "note": "S2 30/30장 완료. S3 지시 발행은 ChatGPT 슬롯(BC·LC 사용 중) 빌 때",
+      "status": "waiting",
+      "note": "S3 지시 발행(오토파일럿). ChatGPT 만화 80컷 대기",
       "history": [
         {
           "date": "2026-11-21",
@@ -137,6 +138,11 @@
           "date": "2026-11-21",
           "event": "S2 완료",
           "detail": "volumes/03GC/S2_원고_v0.6.md — 28~30장(직장·복귀 / 진료실 도구·한 장 요약 / 가상 사례 3). 30/30장 → stage=S3(ChatGPT 슬롯 대기)"
+        },
+        {
+          "date": "2026-11-22",
+          "event": "S3 지시 발행",
+          "detail": "volumes/03GC/S3_ChatGPT지시.md + Drive 01 Google Doc(1PpCGaolzfinOeVMIzjpHV8mwge1_m2gwSH7UsccP9nU) — CS + EP01~20 4컷(오토파일럿 큐 12단계 + ⛔G). S2 편집 메모의 대사·장면 수정 반영. 대표 지시 \"다음 지시 오토로\"로 ChatGPT 상한 해제"
         }
       ],
       "s2_progress": {
@@ -174,15 +180,20 @@
         ],
         "file": "volumes/03GC/S2_원고_v0.6.md"
       },
-      "waiting_on": null
+      "waiting_on": "대표: Drive 01의 「위암 — S3 만화 지시」를 ChatGPT 새 채팅에 붙여넣고 '계속' → ⛔에서 결재함 '완료 GC' + 그림을 Claude 채팅에 올려 '검수'",
+      "waiting_since": "2026-11-21T15:47:00Z",
+      "s3": {
+        "file": "volumes/03GC/S3_ChatGPT지시.md",
+        "drive_doc": "1PpCGaolzfinOeVMIzjpHV8mwge1_m2gwSH7UsccP9nU"
+      }
     },
     {
       "no": 4,
       "code": "CRC",
       "name": "대장암",
       "stage": "S3",
-      "status": "ready",
-      "note": "S2 30/30장 완료. S3 지시 발행은 ChatGPT 슬롯(BC·LC 사용 중) 빌 때",
+      "status": "waiting",
+      "note": "S3 지시 발행(오토파일럿). ChatGPT 만화 80컷 대기",
       "history": [
         {
           "date": "2026-11-21",
@@ -228,6 +239,11 @@
           "date": "2026-11-21",
           "event": "S2 완료",
           "detail": "volumes/04CRC/S2_원고_v0.6.md — 28~30장(직장·복귀 / 진료실 도구·한 장 요약 / 가상 사례 3). 30/30장 → stage=S3(ChatGPT 슬롯 대기)"
+        },
+        {
+          "date": "2026-11-22",
+          "event": "S3 지시 발행",
+          "detail": "volumes/04CRC/S3_ChatGPT지시.md + Drive 01 Google Doc(1vZfLQScGFXMz2Q--OTphZQjYhkwX363Z_q88CPP8M2M) — CS + EP01~20 4컷(오토파일럿 큐 12단계 + ⛔G). S2 편집 메모의 대사·장면 수정 반영. 대표 지시 \"다음 지시 오토로\"로 ChatGPT 상한 해제"
         }
       ],
       "s2_progress": {
@@ -265,15 +281,20 @@
         ],
         "file": "volumes/04CRC/S2_원고_v0.6.md"
       },
-      "waiting_on": null
+      "waiting_on": "대표: Drive 01의 「대장암 — S3 만화 지시」를 ChatGPT 새 채팅에 붙여넣고 '계속' → ⛔에서 결재함 '완료 CRC' + 그림을 Claude 채팅에 올려 '검수'",
+      "waiting_since": "2026-11-21T15:47:00Z",
+      "s3": {
+        "file": "volumes/04CRC/S3_ChatGPT지시.md",
+        "drive_doc": "1vZfLQScGFXMz2Q--OTphZQjYhkwX363Z_q88CPP8M2M"
+      }
     },
     {
       "no": 5,
       "code": "TC",
       "name": "갑상선암",
       "stage": "S3",
-      "status": "ready",
-      "note": "S2 30/30장 완료. S3 지시 발행은 ChatGPT 슬롯(BC·LC 사용 중) 빌 때",
+      "status": "waiting",
+      "note": "S3 지시 발행(오토파일럿). ChatGPT 만화 80컷 대기",
       "history": [
         {
           "date": "2026-11-21",
@@ -319,6 +340,11 @@
           "date": "2026-11-21",
           "event": "S2 완료",
           "detail": "volumes/05TC/S2_원고_v0.6.md — 26~30장(산정특례 / 유사암·소액암 보험 / 직장 복귀 / 진료실 도구·한 장 요약 / 가상 사례 3) + EP20. 30/30장 → stage=S3(ChatGPT 슬롯 대기). 이번 장은 원천 PDF 재대조 안 함 → S4 대조"
+        },
+        {
+          "date": "2026-11-22",
+          "event": "S3 지시 발행",
+          "detail": "volumes/05TC/S3_ChatGPT지시.md + Drive 01 Google Doc(1832YRzGbcqpq74boNwJ81p672PdskLVXk2nlUPRhaYw) — CS + EP01~20 4컷(오토파일럿 큐 12단계 + ⛔G). S2 편집 메모의 대사·장면 수정 반영. 대표 지시 \"다음 지시 오토로\"로 ChatGPT 상한 해제"
         }
       ],
       "s2_progress": {
@@ -355,6 +381,12 @@
           30
         ],
         "file": "volumes/05TC/S2_원고_v0.6.md"
+      },
+      "waiting_since": "2026-11-21T15:47:00Z",
+      "waiting_on": "대표: Drive 01의 「갑상선암 — S3 만화 지시」를 ChatGPT 새 채팅에 붙여넣고 '계속' → ⛔에서 결재함 '완료 TC' + 그림을 Claude 채팅에 올려 '검수'",
+      "s3": {
+        "file": "volumes/05TC/S3_ChatGPT지시.md",
+        "drive_doc": "1832YRzGbcqpq74boNwJ81p672PdskLVXk2nlUPRhaYw"
       }
     },
     {
@@ -362,8 +394,8 @@
       "code": "RCC",
       "name": "신장암",
       "stage": "S3",
-      "status": "ready",
-      "note": "S2 30/30장 완료. S3 지시 발행은 ChatGPT 슬롯(BC·LC 사용 중) 빌 때",
+      "status": "waiting",
+      "note": "S3 지시 발행(오토파일럿). ChatGPT 만화 80컷 대기",
       "history": [
         {
           "date": "2026-11-21",
@@ -409,6 +441,11 @@
           "date": "2026-11-21",
           "event": "S2 완료",
           "detail": "volumes/06RCC/S2_원고_v0.6.md — 28~30장(직장·복귀 / 진료실 도구·한 장 요약 / 가상 사례 3). 30/30장 → stage=S3(ChatGPT 슬롯 대기). 들기·운전 재개 기간·휴직 일수 미기재. 원천 PDF 재대조 안 함 → S4 대조"
+        },
+        {
+          "date": "2026-11-22",
+          "event": "S3 지시 발행",
+          "detail": "volumes/06RCC/S3_ChatGPT지시.md + Drive 01 Google Doc(1jZGYlhLA2WUymzx1oXj6T4rpXRgfiScuH89ffNgqB6g) — CS + EP01~20 4컷(오토파일럿 큐 12단계 + ⛔G). S2 편집 메모의 대사·장면 수정 반영. 대표 지시 \"다음 지시 오토로\"로 ChatGPT 상한 해제"
         }
       ],
       "s2_progress": {
@@ -445,6 +482,12 @@
           30
         ],
         "file": "volumes/06RCC/S2_원고_v0.6.md"
+      },
+      "waiting_since": "2026-11-21T15:47:00Z",
+      "waiting_on": "대표: Drive 01의 「신장암 — S3 만화 지시」를 ChatGPT 새 채팅에 붙여넣고 '계속' → ⛔에서 결재함 '완료 RCC' + 그림을 Claude 채팅에 올려 '검수'",
+      "s3": {
+        "file": "volumes/06RCC/S3_ChatGPT지시.md",
+        "drive_doc": "1jZGYlhLA2WUymzx1oXj6T4rpXRgfiScuH89ffNgqB6g"
       }
     },
     {
@@ -644,13 +687,18 @@
       "name": "방광·요로상피암",
       "stage": "S3",
       "status": "ready",
-      "note": "원고 v0.2.1",
+      "note": "원고 v0.2.1 · S3 지시 보류: 저장소·Drive에 원고 v0.2.x·EP 장면 설계 없음 → 원고 위치 확인 또는 S1급 EP 장면 설계 필요",
       "waiting_on": null,
       "history": [
         {
           "date": "2026-11-21",
           "event": "공장 등록",
           "detail": "원고 v0.2.1"
+        },
+        {
+          "date": "2026-11-22",
+          "event": "S3 지시 보류",
+          "detail": "원고 v0.2.x와 EP 20편 장면 설명을 저장소·Drive에서 찾지 못함. 대표에게 원고 위치 확인 요청. 못 찾으면 다음 실행에서 S1급 EP 장면 설계부터"
         }
       ]
     },
@@ -660,13 +708,18 @@
       "name": "난소암",
       "stage": "S3",
       "status": "ready",
-      "note": "원고 v0.2.1",
+      "note": "원고 v0.2.1 · S3 지시 보류: 저장소·Drive에 원고 v0.2.x·EP 장면 설계 없음 → 원고 위치 확인 또는 S1급 EP 장면 설계 필요",
       "waiting_on": null,
       "history": [
         {
           "date": "2026-11-21",
           "event": "공장 등록",
           "detail": "원고 v0.2.1"
+        },
+        {
+          "date": "2026-11-22",
+          "event": "S3 지시 보류",
+          "detail": "원고 v0.2.x와 EP 20편 장면 설명을 저장소·Drive에서 찾지 못함. 대표에게 원고 위치 확인 요청. 못 찾으면 다음 실행에서 S1급 EP 장면 설계부터"
         }
       ]
     },
@@ -852,13 +905,18 @@
       "name": "보호자편",
       "stage": "S3",
       "status": "ready",
-      "note": "원고 v0.2.2",
+      "note": "원고 v0.2.2 · S3 지시 보류: 저장소·Drive에 원고 v0.2.x·EP 장면 설계 없음 → 원고 위치 확인 또는 S1급 EP 장면 설계 필요",
       "waiting_on": null,
       "history": [
         {
           "date": "2026-11-21",
           "event": "공장 등록",
           "detail": "원고 v0.2.2"
+        },
+        {
+          "date": "2026-11-22",
+          "event": "S3 지시 보류",
+          "detail": "원고 v0.2.x와 EP 20편 장면 설명을 저장소·Drive에서 찾지 못함. 대표에게 원고 위치 확인 요청. 못 찾으면 다음 실행에서 S1급 EP 장면 설계부터"
         }
       ]
     },
@@ -868,13 +926,18 @@
       "name": "재발 진단 첫 30일",
       "stage": "S3",
       "status": "ready",
-      "note": "원고 v0.2.2",
+      "note": "원고 v0.2.2 · S3 지시 보류: 저장소·Drive에 원고 v0.2.x·EP 장면 설계 없음 → 원고 위치 확인 또는 S1급 EP 장면 설계 필요",
       "waiting_on": null,
       "history": [
         {
           "date": "2026-11-21",
           "event": "공장 등록",
           "detail": "원고 v0.2.2"
+        },
+        {
+          "date": "2026-11-22",
+          "event": "S3 지시 보류",
+          "detail": "원고 v0.2.x와 EP 20편 장면 설명을 저장소·Drive에서 찾지 못함. 대표에게 원고 위치 확인 요청. 못 찾으면 다음 실행에서 S1급 EP 장면 설계부터"
         }
       ]
     },
