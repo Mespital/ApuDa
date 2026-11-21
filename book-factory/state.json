@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "updated": "2026-11-21T06:12:12Z",
+ "updated": "2026-11-21T06:21:13Z",
  "wip_limit": {
   "claude_text": 2,
   "chatgpt_art": 2
@@ -221,33 +221,45 @@
    "no": 9,
    "code": "BTC",
    "name": "담낭·담도암",
-   "stage": "S1",
-   "status": "ready",
+   "stage": "G1",
+   "status": "waiting",
    "note": "기존 원고",
-   "waiting_on": null,
+   "waiting_on": "대표: 결재함에 'G1 승인 BTC' 또는 'G1 수정 BTC: …'",
    "history": [
     {
      "date": "2026-11-21",
      "event": "공장 등록",
      "detail": "기존 원고"
+    },
+    {
+     "date": "2026-11-21",
+     "event": "S1 완료",
+     "detail": "volumes/09BTC/S1_지시서.md 발행(6부 30장·EP20·4컷 80칸·FAQ100·캐릭터 덕수·말순). 기존 09 완전판(2026.10) 재사용"
     }
-   ]
+   ],
+   "waiting_since": "2026-11-21T06:21:13Z"
   },
   {
    "no": 10,
    "code": "HCC",
    "name": "간암",
-   "stage": "S1",
-   "status": "ready",
+   "stage": "G1",
+   "status": "waiting",
    "note": "기존 원고",
-   "waiting_on": null,
+   "waiting_on": "대표: 결재함에 'G1 승인 HCC' 또는 'G1 수정 HCC: …'",
    "history": [
     {
      "date": "2026-11-21",
      "event": "공장 등록",
      "detail": "기존 원고"
+    },
+    {
+     "date": "2026-11-21",
+     "event": "S1 완료",
+     "detail": "volumes/10HCC/S1_지시서.md 발행(6부 30장·EP20·4컷 80칸·FAQ100·캐릭터 상철·혜경). 기존 10 완전판(2026.10) 재사용"
     }
-   ]
+   ],
+   "waiting_since": "2026-11-21T06:21:13Z"
   },
   {
    "no": 11,
@@ -572,7 +584,7 @@
  ],
  "inbox": {
   "last_line": "[결재 기록]",
-  "last_review_time": "2026-11-21T06:12:12Z"
+  "last_review_time": "2026-11-21T06:21:13Z"
  },
  "drive": {
   "root": "1i1XGW6O_c1HGmeF7lyrTkVKB_zq8jVgP",
