@@ -1,0 +1,584 @@
+{
+ "schema": 1,
+ "updated": "2026-11-21T06:12:12Z",
+ "wip_limit": {
+  "claude_text": 2,
+  "chatgpt_art": 2
+ },
+ "stages": {
+  "S1": "지시 블록 발행(목차·EP20 주제)",
+  "G1": "대표 승인: 목차",
+  "S2": "본문 원고",
+  "S3": "만화 20편(ChatGPT)",
+  "S4": "AI 감수단",
+  "G2": "대표 승인: 원고+만화",
+  "S5": "FAQ100·용어·워크북·부록",
+  "S6": "조판 PDF + 자동 QC",
+  "G3": "대표 승인 → 실제 전문의 감수",
+  "S7_fix": "QC 지적 수정판",
+  "DONE": "판매본 완료"
+ },
+ "order": [
+  2,
+  1,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  26,
+  13,
+  14,
+  27,
+  15,
+  17,
+  16,
+  18,
+  19,
+  20,
+  28,
+  29,
+  21,
+  22,
+  23,
+  24,
+  25,
+  30
+ ],
+ "volumes": [
+  {
+   "no": 1,
+   "code": "BC",
+   "name": "유방암",
+   "stage": "S7_fix",
+   "status": "waiting",
+   "note": "v29만화+v1.6본책 합본 284쪽 → BC v2.0 통합본 + 만화 23컷 재생성",
+   "waiting_on": "chatgpt: outbox/chatgpt/2026-11-21_BC_LC_다음지시.md + standards/03 실행 후 PDF를 inbox에",
+   "history": [
+    {
+     "date": "2026-11-21",
+     "event": "공장 등록",
+     "detail": "v29만화+v1.6본책 합본 284쪽 → BC v2.0 통합본 + 만화 23컷 재생성"
+    }
+   ],
+   "waiting_since": "2026-11-21T05:39:00Z"
+  },
+  {
+   "no": 2,
+   "code": "LC",
+   "name": "폐암",
+   "stage": "S7_fix",
+   "status": "waiting",
+   "note": "v22 220쪽 → v23 (HTML태그·심화 만화 정리·만화 13컷 재생성)",
+   "waiting_on": "chatgpt: outbox/chatgpt/2026-11-21_BC_LC_다음지시.md + standards/03 실행 후 PDF를 inbox에",
+   "history": [
+    {
+     "date": "2026-11-21",
+     "event": "공장 등록",
+     "detail": "v22 220쪽 → v23 (HTML태그·심화 만화 정리·만화 13컷 재생성)"
+    }
+   ],
+   "waiting_since": "2026-11-21T05:39:00Z"
+  },
+  {
+   "no": 3,
+   "code": "GC",
+   "name": "위암",
+   "stage": "G1",
+   "status": "waiting",
+   "note": "기존 원고, 상태 실측 필요",
+   "waiting_on": "대표: 결재함에 'G1 승인 GC' 또는 'G1 수정 GC: …'",
+   "history": [
+    {
+     "date": "2026-11-21",
+     "event": "공장 등록",
+     "detail": "기존 원고, 상태 실측 필요"
+    },
+    {
+     "date": "2026-11-21",
+     "event": "S1 완료",
+     "detail": "volumes/03GC/S1_지시서.md 발행(6부 30장·EP20·4컷 80칸·FAQ100·캐릭터 고정). 기존 완전판(2026.10) 재사용"
+    }
+   ],
+   "waiting_since": "2026-11-21T05:45:12Z"
+  },
+  {
+   "no": 4,
+   "code": "CRC",
+   "name": "대장암",
+   "stage": "G1",
+   "status": "waiting",
+   "note": "기존 원고",
+   "waiting_on": "대표: 결재함에 'G1 승인 CRC' 또는 'G1 수정 CRC: …'",
+   "history": [
+    {
+     "date": "2026-11-21",
+     "event": "공장 등록",
+     "detail": "기존 원고"
+    },
+    {
+     "date": "2026-11-21",
+     "event": "S1 완료",
+     "detail": "volumes/04CRC/S1_지시서.md 발행(6부 30장·EP20·4컷 80칸·FAQ100·캐릭터 고정). 기존 완전판(2026.10) 재사용"
+    }
+   ],
+   "waiting_since": "2026-11-21T05:45:12Z"
+  },
+  {
+   "no": 5,
+   "code": "TC",
+   "name": "갑상선암",
+   "stage": "G1",
+   "status": "waiting",
+   "note": "기존 원고",
+   "waiting_on": "대표: 결재함에 'G1 승인 TC' 또는 'G1 수정 TC: …'",
+   "history": [
+    {
+     "date": "2026-11-21",
+     "event": "공장 등록",
+     "detail": "기존 원고"
+    },
+    {
+     "date": "2026-11-21",
+     "event": "S1 완료",
+     "detail": "volumes/05TC/S1_지시서.md 발행. 기존 완전판(2026.10) 재사용"
+    }
+   ],
+   "waiting_since": "2026-11-21T05:56:01Z"
+  },
+  {
+   "no": 6,
+   "code": "RCC",
+   "name": "신장암",
+   "stage": "G1",
+   "status": "waiting",
+   "note": "기존 원고",
+   "waiting_on": "대표: 결재함에 'G1 승인 RCC' 또는 'G1 수정 RCC: …'",
+   "history": [
+    {
+     "date": "2026-11-21",
+     "event": "공장 등록",
+     "detail": "기존 원고"
+    },
+    {
+     "date": "2026-11-21",
+     "event": "S1 완료",
+     "detail": "volumes/06RCC/S1_지시서.md 발행. 기존 완전판(2026.10) 재사용"
+    }
+   ],
+   "waiting_since": "2026-11-21T05:56:01Z"
+  },
+  {
+   "no": 7,
+   "code": "PRC",
+   "name": "전립선암",
+   "stage": "G1",
+   "status": "waiting",
+   "note": "기존 원고",
+   "waiting_on": "대표: 결재함에 'G1 승인 PRC' 또는 'G1 수정 PRC: …'",
+   "history": [
+    {
+     "date": "2026-11-21",
+     "event": "공장 등록",
+     "detail": "기존 원고"
+    },
+    {
+     "date": "2026-11-21",
+     "event": "S1 완료",
+     "detail": "volumes/07PRC/S1_지시서.md 발행(6부 30장·EP20·4컷 80칸·FAQ100·캐릭터 고정). 기존 완전판(2026.10) 재사용"
+    }
+   ],
+   "waiting_since": "2026-11-21T06:12:12Z"
+  },
+  {
+   "no": 8,
+   "code": "PC",
+   "name": "췌장암",
+   "stage": "G1",
+   "status": "waiting",
+   "note": "v1.1 국판 조판",
+   "waiting_on": "대표: 결재함에 'G1 승인 PC' 또는 'G1 수정 PC: …'",
+   "history": [
+    {
+     "date": "2026-11-21",
+     "event": "공장 등록",
+     "detail": "v1.1 국판 조판"
+    },
+    {
+     "date": "2026-11-21",
+     "event": "S1 완료",
+     "detail": "volumes/08PC/S1_지시서.md 발행(6부 30장·EP20·4컷 80칸·FAQ100·캐릭터 고정). 기존 완전판(2026.10) 재사용 · v1.1 국판 파일 위치 확인 필요"
+    }
+   ],
+   "waiting_since": "2026-11-21T06:12:12Z"
+  },
+  {
+   "no": 9,
+   "code": "BTC",
+   "name": "담낭·담도암",
+   "stage": "S1",
+   "status": "ready",
+   "note": "기존 원고",
+   "waiting_on": null,
+   "history": [
+    {
+     "date": "2026-11-21",
+     "event": "공장 등록",
+     "detail": "기존 원고"
+    }
+   ]
+  },
+  {
+   "no": 10,
+   "code": "HCC",
+   "name": "간암",
+   "stage": "S1",
+   "status": "ready",
+   "note": "기존 원고",
+   "waiting_on": null,
+   "history": [
+    {
+     "date": "2026-11-21",
+     "event": "공장 등록",
+     "detail": "기존 원고"
+    }
+   ]
+  },
+  {
+   "no": 11,
+   "code": "LYM",
+   "name": "림프종",
+   "stage": "S1",
+   "status": "ready",
+   "note": "기존 원고",
+   "waiting_on": null,
+   "history": [
+    {
+     "date": "2026-11-21",
+     "event": "공장 등록",
+     "detail": "기존 원고"
+    }
+   ]
+  },
+  {
+   "no": 12,
+   "code": "CXC",
+   "name": "자궁경부암·자궁내막암",
+   "stage": "S1",
+   "status": "ready",
+   "note": "기존 원고",
+   "waiting_on": null,
+   "history": [
+    {
+     "date": "2026-11-21",
+     "event": "공장 등록",
+     "detail": "기존 원고"
+    }
+   ]
+  },
+  {
+   "no": 13,
+   "code": "BLC",
+   "name": "방광·요로상피암",
+   "stage": "S3",
+   "status": "ready",
+   "note": "원고 v0.2.1",
+   "waiting_on": null,
+   "history": [
+    {
+     "date": "2026-11-21",
+     "event": "공장 등록",
+     "detail": "원고 v0.2.1"
+    }
+   ]
+  },
+  {
+   "no": 14,
+   "code": "OVC",
+   "name": "난소암",
+   "stage": "S3",
+   "status": "ready",
+   "note": "원고 v0.2.1",
+   "waiting_on": null,
+   "history": [
+    {
+     "date": "2026-11-21",
+     "event": "공장 등록",
+     "detail": "원고 v0.2.1"
+    }
+   ]
+  },
+  {
+   "no": 15,
+   "code": "LEU",
+   "name": "백혈병",
+   "stage": "S2",
+   "status": "ready",
+   "note": "골든샘플·목차",
+   "waiting_on": null,
+   "history": [
+    {
+     "date": "2026-11-21",
+     "event": "공장 등록",
+     "detail": "골든샘플·목차"
+    }
+   ]
+  },
+  {
+   "no": 16,
+   "code": "MM",
+   "name": "다발골수종",
+   "stage": "S1",
+   "status": "ready",
+   "note": "미착수",
+   "waiting_on": null,
+   "history": [
+    {
+     "date": "2026-11-21",
+     "event": "공장 등록",
+     "detail": "미착수"
+    }
+   ]
+  },
+  {
+   "no": 17,
+   "code": "EC",
+   "name": "식도암",
+   "stage": "S2",
+   "status": "ready",
+   "note": "골든샘플·목차",
+   "waiting_on": null,
+   "history": [
+    {
+     "date": "2026-11-21",
+     "event": "공장 등록",
+     "detail": "골든샘플·목차"
+    }
+   ]
+  },
+  {
+   "no": 18,
+   "code": "HNC",
+   "name": "두경부암",
+   "stage": "S1",
+   "status": "ready",
+   "note": "미착수",
+   "waiting_on": null,
+   "history": [
+    {
+     "date": "2026-11-21",
+     "event": "공장 등록",
+     "detail": "미착수"
+    }
+   ]
+  },
+  {
+   "no": 19,
+   "code": "BT",
+   "name": "뇌종양",
+   "stage": "S1",
+   "status": "ready",
+   "note": "미착수",
+   "waiting_on": null,
+   "history": [
+    {
+     "date": "2026-11-21",
+     "event": "공장 등록",
+     "detail": "미착수"
+    }
+   ]
+  },
+  {
+   "no": 20,
+   "code": "MEL",
+   "name": "흑색종",
+   "stage": "S1",
+   "status": "ready",
+   "note": "미착수",
+   "waiting_on": null,
+   "history": [
+    {
+     "date": "2026-11-21",
+     "event": "공장 등록",
+     "detail": "미착수"
+    }
+   ]
+  },
+  {
+   "no": 21,
+   "code": "SAR",
+   "name": "육종",
+   "stage": "S1",
+   "status": "ready",
+   "note": "미착수·구조 재설계",
+   "waiting_on": null,
+   "history": [
+    {
+     "date": "2026-11-21",
+     "event": "공장 등록",
+     "detail": "미착수·구조 재설계"
+    }
+   ]
+  },
+  {
+   "no": 22,
+   "code": "NET",
+   "name": "신경내분비종양",
+   "stage": "S1",
+   "status": "ready",
+   "note": "미착수·구조 재설계",
+   "waiting_on": null,
+   "history": [
+    {
+     "date": "2026-11-21",
+     "event": "공장 등록",
+     "detail": "미착수·구조 재설계"
+    }
+   ]
+  },
+  {
+   "no": 23,
+   "code": "PED",
+   "name": "소아암",
+   "stage": "S1",
+   "status": "ready",
+   "note": "미착수·구조 재설계",
+   "waiting_on": null,
+   "history": [
+    {
+     "date": "2026-11-21",
+     "event": "공장 등록",
+     "detail": "미착수·구조 재설계"
+    }
+   ]
+  },
+  {
+   "no": 24,
+   "code": "CUP",
+   "name": "원발불명암",
+   "stage": "S1",
+   "status": "ready",
+   "note": "미착수·구조 재설계",
+   "waiting_on": null,
+   "history": [
+    {
+     "date": "2026-11-21",
+     "event": "공장 등록",
+     "detail": "미착수·구조 재설계"
+    }
+   ]
+  },
+  {
+   "no": 25,
+   "code": "MET",
+   "name": "전이암",
+   "stage": "S1",
+   "status": "ready",
+   "note": "미착수·구조 재설계",
+   "waiting_on": null,
+   "history": [
+    {
+     "date": "2026-11-21",
+     "event": "공장 등록",
+     "detail": "미착수·구조 재설계"
+    }
+   ]
+  },
+  {
+   "no": 26,
+   "code": "CG",
+   "name": "보호자편",
+   "stage": "S3",
+   "status": "ready",
+   "note": "원고 v0.2.2",
+   "waiting_on": null,
+   "history": [
+    {
+     "date": "2026-11-21",
+     "event": "공장 등록",
+     "detail": "원고 v0.2.2"
+    }
+   ]
+  },
+  {
+   "no": 27,
+   "code": "REC",
+   "name": "재발 진단 첫 30일",
+   "stage": "S3",
+   "status": "ready",
+   "note": "원고 v0.2.2",
+   "waiting_on": null,
+   "history": [
+    {
+     "date": "2026-11-21",
+     "event": "공장 등록",
+     "detail": "원고 v0.2.2"
+    }
+   ]
+  },
+  {
+   "no": 28,
+   "code": "GER",
+   "name": "고령 환자편",
+   "stage": "S1",
+   "status": "ready",
+   "note": "미착수",
+   "waiting_on": null,
+   "history": [
+    {
+     "date": "2026-11-21",
+     "event": "공장 등록",
+     "detail": "미착수"
+    }
+   ]
+  },
+  {
+   "no": 29,
+   "code": "AYA",
+   "name": "AYA(청년)편",
+   "stage": "S1",
+   "status": "ready",
+   "note": "미착수",
+   "waiting_on": null,
+   "history": [
+    {
+     "date": "2026-11-21",
+     "event": "공장 등록",
+     "detail": "미착수"
+    }
+   ]
+  },
+  {
+   "no": 30,
+   "code": "PAL",
+   "name": "완화의료편",
+   "stage": "S1",
+   "status": "ready",
+   "note": "미착수·구조 재설계",
+   "waiting_on": null,
+   "history": [
+    {
+     "date": "2026-11-21",
+     "event": "공장 등록",
+     "detail": "미착수·구조 재설계"
+    }
+   ]
+  }
+ ],
+ "inbox": {
+  "last_line": "[결재 기록]",
+  "last_review_time": "2026-11-21T06:12:12Z"
+ },
+ "drive": {
+  "root": "1i1XGW6O_c1HGmeF7lyrTkVKB_zq8jVgP",
+  "approvals_doc": "1KUAvCsDzkv-NJGvPFDIIZSB8mG8vK-uBsrAiUgCvDBA",
+  "outbox": "1jh71Nz5h59q2og4pby5z1kNhlB45hRki",
+  "reports": "1R7vLBniPej2QngoVcK3nLL2M1gZwVih2",
+  "system": "1zkZn7jNNBRBGTTSCke5zsd4QVFvZyo3q"
+ }
+}
