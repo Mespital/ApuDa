@@ -76,9 +76,9 @@ test('12 Korean practice topics use the reviewed type units, exclude assisted at
  assert.equal(JSON.stringify(db),before);
 });
 
-test('all 44 analysis scopes render safely, identify pending subjects and preserve historical Korean archive targets',()=>{
+test('all 49 analysis scopes render safely, identify pending subjects and preserve historical Korean archive targets',()=>{
  const db=emptyRecords(),base={analysisMode:'official',analysisDomain:'국어',analysisCourse:'korean-common',analysisYear:'',analysisUnit:'',analysisType:'',analysisPage:1};
- assert.equal(ANALYSIS_COURSES.length,44);
+ assert.equal(ANALYSIS_COURSES.length,49);
  for(const c of ANALYSIS_COURSES)for(const mode of ['official','learning']){
   const html=analysisView({data,pasts,authored:AUTHORED_QUESTIONS,db,ui:{...base,analysisMode:mode,analysisDomain:c.domain,analysisCourse:c.id}});
   assert.doesNotMatch(html,/undefined|NaN|Infinity/);

@@ -1,0 +1,282 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-21",
+  "status": "pass-with-extraction-limitations",
+  "scope": {
+    "mode": "공식 PDF 출처·좌표·배점의 제한된 표본 대조",
+    "sourceManifestCount": 336,
+    "newAuditQuestionCounts": {
+      "social": 1400,
+      "science": 1600,
+      "vocation": 1520,
+      "languages": 2700
+    },
+    "samplePapers": 12,
+    "sampleQuestionPositions": 280,
+    "sampleSha256Matches": 12,
+    "visualPdfPagesInspected": 13,
+    "targetedCropsInspected": 3
+  },
+  "checks": [
+    "Recomputed SHA-256, opened every page, and checked page counts for all 12 sampled PDFs.",
+    "Checked all 280 sample question numbers at native PDF boxes, clip/page bounds, sequence, and course-year/file identity.",
+    "Paired each native [1점] or [3점] word with the preceding question heading in its page column, independently of stored text slices; all 280 audit scores match.",
+    "Each sampled social/science/vocation paper has ten 2-point and ten 3-point items; each sampled language paper has ten marked 1-point and twenty unmarked 2-point items; each totals 50.",
+    "Native text scan across all 336 PDFs found no 홀수형 or 짝수형 tag and no differing extractable first-page 학년도; all 12 visual samples support single-form labeling.",
+    "Verified original Arabic right-to-left, Russian Cyrillic, Chinese and Japanese glyphs in rendered pages; intended blank squares remain identifiable.",
+    "Visually checked shared-prompt rectangles for 2018 social-ethics 11–12 and 2018 language-arabic 22–23; both include their full passage and correct question range.",
+    "Historical vocational coverage: 5 legacy course IDs each exist only in 2018–2021 (20 papers/400 questions); vocation-career exists only in 2022–2027 (6 papers/120 questions)."
+  ],
+  "targetedCases": [
+    {
+      "key": "2027:vocation-agriculture:11",
+      "page": 3,
+      "box": [
+        90.18,
+        160.15,
+        405.36,
+        173.44
+      ],
+      "clip": [
+        72.9,
+        158.15,
+        421.0,
+        473.09
+      ],
+      "points": 3,
+      "status": "pass",
+      "note": "Slightly indented heading is retained; rendered crop includes number, prompt, all choices and [3점]."
+    },
+    {
+      "key": "2018:language-arabic:22–23",
+      "page": 3,
+      "sharedRect": [
+        421.0,
+        565.02,
+        812.0,
+        693.62
+      ],
+      "status": "pass",
+      "note": "Rendered shared rectangle contains the Arabic dialogue; native shared text contains only the range heading because dialogue is an image."
+    },
+    {
+      "key": "2018:social-ethics:11–12",
+      "page": 3,
+      "status": "pass",
+      "note": "Shared prompt is above both questions; stored common range and rendered rectangle match."
+    },
+    {
+      "keys": [
+        "2018–2020:science-physics1",
+        "2018–2020:science-physics2",
+        "2018–2020:social-politics"
+      ],
+      "status": "pass",
+      "note": "Native headers use historical names 물리Ⅰ/Ⅱ and 법과 정치; these are naming changes, not wrong-course files."
+    }
+  ],
+  "mismatches": [],
+  "limitations": [
+    "This is representative source/layout QA, not a semantic taxonomy or answer-key review.",
+    "Arabic 2018–2027 first-page year/course headers are not native searchable text; the 2018 sampled header was verified visually. Foreign-language course headers also frequently use outlines/images.",
+    "Native text can omit image-based dialogue, diagrams and font-shaped glyphs. Correct source page/rect does not mean a complete text transcription; use original PDF rendering or OCR for content review.",
+    "All 336 source form/year scans are native-text checks; comprehensive visual review was limited to the 12 selected papers. Parent builder separately revalidates all 316 new paper SHA/ranges/50-point totals.",
+    "Manifest URLs and file identities were retained; official remote files were not redownloaded in this bounded local QA."
+  ],
+  "samples": [
+    {
+      "key": "2018:social-ethics",
+      "sha256Match": true,
+      "pdfPageCount": 4,
+      "questionCount": 20,
+      "nativeScoreMarkers": 10,
+      "pointDistribution": {
+        "2": 10,
+        "3": 10
+      },
+      "totalPoints": 50,
+      "visualPages": [
+        3
+      ],
+      "status": "pass"
+    },
+    {
+      "key": "2027:social-world-geography",
+      "sha256Match": true,
+      "pdfPageCount": 4,
+      "questionCount": 20,
+      "nativeScoreMarkers": 10,
+      "pointDistribution": {
+        "2": 10,
+        "3": 10
+      },
+      "totalPoints": 50,
+      "visualPages": [
+        1
+      ],
+      "status": "pass"
+    },
+    {
+      "key": "2018:science-biology1",
+      "sha256Match": true,
+      "pdfPageCount": 4,
+      "questionCount": 20,
+      "nativeScoreMarkers": 10,
+      "pointDistribution": {
+        "3": 10,
+        "2": 10
+      },
+      "totalPoints": 50,
+      "visualPages": [
+        1
+      ],
+      "status": "pass"
+    },
+    {
+      "key": "2027:science-physics2",
+      "sha256Match": true,
+      "pdfPageCount": 4,
+      "questionCount": 20,
+      "nativeScoreMarkers": 10,
+      "pointDistribution": {
+        "2": 10,
+        "3": 10
+      },
+      "totalPoints": 50,
+      "visualPages": [
+        1
+      ],
+      "status": "pass"
+    },
+    {
+      "key": "2018:vocation-legacy-drafting",
+      "sha256Match": true,
+      "pdfPageCount": 4,
+      "questionCount": 20,
+      "nativeScoreMarkers": 10,
+      "pointDistribution": {
+        "2": 10,
+        "3": 10
+      },
+      "totalPoints": 50,
+      "visualPages": [
+        1
+      ],
+      "status": "pass"
+    },
+    {
+      "key": "2021:vocation-legacy-service",
+      "sha256Match": true,
+      "pdfPageCount": 4,
+      "questionCount": 20,
+      "nativeScoreMarkers": 10,
+      "pointDistribution": {
+        "2": 10,
+        "3": 10
+      },
+      "totalPoints": 50,
+      "visualPages": [
+        1
+      ],
+      "status": "pass"
+    },
+    {
+      "key": "2022:vocation-career",
+      "sha256Match": true,
+      "pdfPageCount": 4,
+      "questionCount": 20,
+      "nativeScoreMarkers": 10,
+      "pointDistribution": {
+        "2": 10,
+        "3": 10
+      },
+      "totalPoints": 50,
+      "visualPages": [
+        1
+      ],
+      "status": "pass"
+    },
+    {
+      "key": "2027:vocation-agriculture",
+      "sha256Match": true,
+      "pdfPageCount": 4,
+      "questionCount": 20,
+      "nativeScoreMarkers": 10,
+      "pointDistribution": {
+        "2": 10,
+        "3": 10
+      },
+      "totalPoints": 50,
+      "visualPages": [
+        3
+      ],
+      "status": "pass"
+    },
+    {
+      "key": "2018:language-arabic",
+      "sha256Match": true,
+      "pdfPageCount": 4,
+      "questionCount": 30,
+      "nativeScoreMarkers": 10,
+      "pointDistribution": {
+        "1": 10,
+        "2": 20
+      },
+      "totalPoints": 50,
+      "visualPages": [
+        1,
+        3
+      ],
+      "status": "pass"
+    },
+    {
+      "key": "2018:language-russian",
+      "sha256Match": true,
+      "pdfPageCount": 4,
+      "questionCount": 30,
+      "nativeScoreMarkers": 10,
+      "pointDistribution": {
+        "1": 10,
+        "2": 20
+      },
+      "totalPoints": 50,
+      "visualPages": [
+        1
+      ],
+      "status": "pass"
+    },
+    {
+      "key": "2027:language-chinese",
+      "sha256Match": true,
+      "pdfPageCount": 4,
+      "questionCount": 30,
+      "nativeScoreMarkers": 10,
+      "pointDistribution": {
+        "1": 10,
+        "2": 20
+      },
+      "totalPoints": 50,
+      "visualPages": [
+        1
+      ],
+      "status": "pass"
+    },
+    {
+      "key": "2027:language-japanese",
+      "sha256Match": true,
+      "pdfPageCount": 4,
+      "questionCount": 30,
+      "nativeScoreMarkers": 10,
+      "pointDistribution": {
+        "1": 10,
+        "2": 20
+      },
+      "totalPoints": 50,
+      "visualPages": [
+        1
+      ],
+      "status": "pass"
+    }
+  ],
+  "sourceReference": "한국교육과정평가원 등록 자료 ID 및 SHA-256 기반 원문; 표본 12개 PDF·280개 문항 위치"
+}
