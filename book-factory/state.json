@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "updated": "2026-11-21T06:38:55Z",
+ "updated": "2026-11-21T06:51:06Z",
  "wip_limit": {
   "claude_text": 2,
   "chatgpt_art": 2
@@ -112,15 +112,26 @@
      "date": "2026-11-21",
      "event": "S2 진행",
      "detail": "volumes/03GC/S2_원고_v0.1.md — 골든샘플 1·8·20장 + EP01·06·09 핵심 설명 쪽. 3/30장. 다음: 2~7장"
+    },
+    {
+     "date": "2026-11-21",
+     "event": "S2 진행",
+     "detail": "volumes/03GC/S2_원고_v0.2.md — 2~7장 + EP02·03·04·11·12·05 핵심 설명 쪽. 9/30장. 다음: 9~14장"
     }
    ],
    "s2_progress": {
     "done": [
      1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
      8,
      20
     ],
-    "file": "volumes/03GC/S2_원고_v0.1.md"
+    "file": "volumes/03GC/S2_원고_v0.2.md"
    }
   },
   {
@@ -150,15 +161,26 @@
      "date": "2026-11-21",
      "event": "S2 진행",
      "detail": "volumes/04CRC/S2_원고_v0.1.md — 골든샘플 1·10·20장 + EP01·07·09 핵심 설명 쪽. 3/30장. 다음: 2~7장"
+    },
+    {
+     "date": "2026-11-21",
+     "event": "S2 진행",
+     "detail": "volumes/04CRC/S2_원고_v0.2.md — 2~7장 + EP02·03·04·11·05·12 핵심 설명 쪽. 9/30장. 다음: 8·9·11~14장"
     }
    ],
    "s2_progress": {
     "done": [
      1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
      10,
      20
     ],
-    "file": "volumes/04CRC/S2_원고_v0.1.md"
+    "file": "volumes/04CRC/S2_원고_v0.2.md"
    }
   },
   {
@@ -634,7 +656,7 @@
  ],
  "inbox": {
   "last_line": "[결재 기록]",
-  "last_review_time": "2026-11-21T06:21:13Z"
+  "last_review_time": "2026-11-21T06:51:06Z"
  },
  "drive": {
   "root": "1i1XGW6O_c1HGmeF7lyrTkVKB_zq8jVgP",
