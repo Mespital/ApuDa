@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "updated": "2026-11-21T07:48:41Z",
+ "updated": "2026-11-21T08:02:16Z",
  "wip_limit": {
   "claude_text": 2,
   "chatgpt_art": 2
@@ -122,6 +122,11 @@
      "date": "2026-11-21",
      "event": "S2 진행",
      "detail": "volumes/03GC/S2_원고_v0.3.md — 9~14장 + EP13·07·14·15·16·17. 15/30장. 다음: 15~19·21장"
+    },
+    {
+     "date": "2026-11-21",
+     "event": "S2 진행",
+     "detail": "volumes/03GC/S2_원고_v0.4.md — 15~19·21장 + EP08·EP18. 21/30장. 다음: 22~27장"
     }
    ],
    "s2_progress": {
@@ -140,9 +145,15 @@
      12,
      13,
      14,
-     20
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21
     ],
-    "file": "volumes/03GC/S2_원고_v0.3.md"
+    "file": "volumes/03GC/S2_원고_v0.4.md"
    }
   },
   {
@@ -182,6 +193,11 @@
      "date": "2026-11-21",
      "event": "S2 진행",
      "detail": "volumes/04CRC/S2_원고_v0.3.md — 8·9·11~14장 + EP06·13·14·15·16·17. 9장 손발 저림 점검표 정상 표로 재작성. 15/30장. 다음: 15~19·21장"
+    },
+    {
+     "date": "2026-11-21",
+     "event": "S2 진행",
+     "detail": "volumes/04CRC/S2_원고_v0.4.md — 15~19·21장 + EP08·EP18. 21/30장. 다음: 22~27장"
     }
    ],
    "s2_progress": {
@@ -200,9 +216,15 @@
      12,
      13,
      14,
-     20
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21
     ],
-    "file": "volumes/04CRC/S2_원고_v0.3.md"
+    "file": "volumes/04CRC/S2_원고_v0.4.md"
    }
   },
   {
@@ -678,7 +700,7 @@
  ],
  "inbox": {
   "last_line": "[결재 기록]",
-  "last_review_time": "2026-11-21T07:48:41Z"
+  "last_review_time": "2026-11-21T08:02:16Z"
  },
  "drive": {
   "root": "1i1XGW6O_c1HGmeF7lyrTkVKB_zq8jVgP",
