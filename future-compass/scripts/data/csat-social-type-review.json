@@ -1,0 +1,2549 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-21",
+  "courses": {
+    "social-culture": {
+      "courseId": "social-culture",
+      "unitOrder": [
+        "사회·문화 현상의 탐구",
+        "개인과 사회 구조",
+        "문화와 일상생활",
+        "사회 계층과 불평등",
+        "현대 사회의 변동"
+      ],
+      "types": {
+        "social-culture-phenomena": {
+          "label": "자연 현상과 사회·문화 현상",
+          "unit": "사회·문화 현상의 탐구",
+          "method": "인간의 가치 개입 여부와 보편성·특수성, 확률적 규칙성을 사례의 실제 행위와 구분합니다.",
+          "courseId": "social-culture"
+        },
+        "social-culture-perspectives": {
+          "label": "사회·문화 현상을 보는 관점",
+          "unit": "사회·문화 현상의 탐구",
+          "method": "기능론·갈등론·상징적 상호 작용론의 설명 단위와 질서·변동·의미에 대한 전제를 대조합니다.",
+          "courseId": "social-culture"
+        },
+        "social-culture-research-design": {
+          "label": "연구 설계와 가설 검증",
+          "unit": "사회·문화 현상의 탐구",
+          "method": "가설의 독립·종속 변수, 조작적 정의와 표집, 실험·통제 집단을 확인한 뒤 결과가 가설을 지지하는지 판단합니다.",
+          "courseId": "social-culture"
+        },
+        "social-culture-collection": {
+          "label": "자료 수집 방법",
+          "unit": "사회·문화 현상의 탐구",
+          "method": "질문지·면접·실험·참여 관찰·문헌 연구를 실제 자료 수집 행위에 연결하고 일반적 장단점을 구분합니다.",
+          "courseId": "social-culture"
+        },
+        "social-culture-research-attitudes": {
+          "label": "연구 태도와 연구 윤리",
+          "unit": "사회·문화 현상의 탐구",
+          "method": "가치 중립성과 객관성, 동의·익명성·자료 조작 금지를 연구 단계별 행위와 대조합니다.",
+          "courseId": "social-culture"
+        },
+        "social-culture-data-reading": {
+          "label": "사회 조사 자료의 해석 범위",
+          "unit": "사회·문화 현상의 탐구",
+          "method": "표에 제시된 수치와 제시되지 않은 분모·기간을 구분하고, 자료만으로 판단 가능한 진술인지 확인합니다.",
+          "courseId": "social-culture"
+        },
+        "social-culture-socialization": {
+          "label": "사회화·지위·역할",
+          "unit": "개인과 사회 구조",
+          "method": "사회화 기관의 기준, 귀속·성취 지위, 역할·역할 행동을 나누고 서로 다른 지위의 요구가 충돌하는지 확인합니다.",
+          "courseId": "social-culture"
+        },
+        "social-culture-individual-society": {
+          "label": "개인과 사회의 관계",
+          "unit": "개인과 사회 구조",
+          "method": "사회 실재론과 사회 명목론을 개인 외부의 구속력, 개인으로의 환원 가능성, 사회 형성의 설명으로 구분합니다.",
+          "courseId": "social-culture"
+        },
+        "social-culture-groups": {
+          "label": "사회 집단과 사회 조직",
+          "unit": "개인과 사회 구조",
+          "method": "공동·이익 사회, 1·2차 집단, 공식·비공식 조직, 자발적 결사체의 기준을 각각 적용합니다. 사회화 기관과 혼동하지 않습니다.",
+          "courseId": "social-culture"
+        },
+        "social-culture-organization": {
+          "label": "관료제와 탈관료제",
+          "unit": "개인과 사회 구조",
+          "method": "위계·문서화·전문화와 분권화·유연성을 비교하고 효율성, 재량권, 목적 전치의 조건을 확인합니다.",
+          "courseId": "social-culture"
+        },
+        "social-culture-deviance": {
+          "label": "일탈 행동과 일탈 이론",
+          "unit": "개인과 사회 구조",
+          "method": "규범 혼란, 목표·수단의 괴리, 학습, 낙인 중 어느 인과 기제가 일탈을 설명하는지 구분합니다.",
+          "courseId": "social-culture"
+        },
+        "social-culture-family": {
+          "label": "가족 형태와 사회 제도",
+          "unit": "개인과 사회 구조",
+          "method": "핵가족·확대 가족과 세대 수의 분류 기준을 구분하고 전체 가구 수 변화까지 반영해 비교합니다.",
+          "courseId": "social-culture"
+        },
+        "social-culture-culture-properties": {
+          "label": "문화의 의미와 속성",
+          "unit": "문화와 일상생활",
+          "method": "넓은·좁은 의미와 물질·비물질 문화를 구분하고 공유성·학습성·축적성·전체성·변동성의 근거를 찾습니다.",
+          "courseId": "social-culture"
+        },
+        "social-culture-culture-attitudes": {
+          "label": "문화 이해의 관점과 태도",
+          "unit": "문화와 일상생활",
+          "method": "총체적·비교적·상대론적 관점과 자문화 중심주의·문화 사대주의·문화 상대주의를 기준과 평가 방식으로 구분합니다.",
+          "courseId": "social-culture"
+        },
+        "social-culture-culture-types": {
+          "label": "주류 문화·하위문화·반문화",
+          "unit": "문화와 일상생활",
+          "method": "향유 집단의 범위와 지배적 가치에 대한 저항 여부를 나누고 시대에 따른 문화의 지위 변화를 확인합니다.",
+          "courseId": "social-culture"
+        },
+        "social-culture-culture-change": {
+          "label": "문화 변동과 문화 접변",
+          "unit": "문화와 일상생활",
+          "method": "발견·발명과 직접·간접·자극 전파의 경로를 찾고 병존·융합·동화, 문화 지체를 구분합니다.",
+          "courseId": "social-culture"
+        },
+        "social-culture-media": {
+          "label": "대중 매체의 특징",
+          "unit": "문화와 일상생활",
+          "method": "인쇄·음성·영상·뉴 미디어의 전달 방향, 감각 정보, 시공간 제약과 생산·수용 관계를 대조합니다.",
+          "courseId": "social-culture"
+        },
+        "social-culture-inequality-theories": {
+          "label": "사회 불평등과 계층화 이론",
+          "unit": "사회 계층과 불평등",
+          "method": "계급·계층 이론의 분류 기준과 기능론·갈등론의 차등 분배 설명을 구분합니다.",
+          "courseId": "social-culture"
+        },
+        "social-culture-inequality-discrimination": {
+          "label": "성 불평등·사회적 소수자·차별",
+          "unit": "사회 계층과 불평등",
+          "method": "차별의 기준과 권력 관계, 중첩된 소수자 지위를 확인합니다. 임금·교육 지수는 각 분모와 비교 대상을 먼저 정합니다.",
+          "courseId": "social-culture"
+        },
+        "social-culture-mobility": {
+          "label": "계층 구조와 사회 이동",
+          "unit": "사회 계층과 불평등",
+          "method": "세대 간·세대 내 이동의 비교 시점을 나누고 계층 구성비, 대물림·상승·하강 이동의 분모를 일치시킵니다.",
+          "courseId": "social-culture"
+        },
+        "social-culture-poverty": {
+          "label": "절대적 빈곤과 상대적 빈곤",
+          "unit": "사회 계층과 불평등",
+          "method": "최저 생활 유지와 사회의 일반적 생활 수준이라는 기준을 나누고 두 빈곤 집단의 중복 가능성을 확인합니다.",
+          "courseId": "social-culture"
+        },
+        "social-culture-welfare": {
+          "label": "사회 보장 제도와 수급 자료",
+          "unit": "사회 계층과 불평등",
+          "method": "사회 보험·공공 부조·사회 서비스의 재원과 수혜 기준을 구분한 뒤 중복 수급과 인구 비율을 계산합니다.",
+          "courseId": "social-culture"
+        },
+        "social-culture-population": {
+          "label": "인구 구조와 저출산·고령화",
+          "unit": "현대 사회의 변동",
+          "method": "유소년·부양·노년 인구를 분리하고 총부양비·노령화 지수의 분자와 분모를 맞춰 시점별 변화를 계산합니다.",
+          "courseId": "social-culture"
+        },
+        "social-culture-society-types": {
+          "label": "농업·산업·정보 사회",
+          "unit": "현대 사회의 변동",
+          "method": "산업 구조, 가정·일터의 관계, 접촉 방식과 의사 결정 구조를 같은 비교 기준으로 정렬합니다.",
+          "courseId": "social-culture"
+        },
+        "social-culture-social-change": {
+          "label": "사회 변동과 근대화 이론",
+          "unit": "현대 사회의 변동",
+          "method": "진화론·순환론의 변동 방향과 현대화론·종속 이론의 발전 조건을 글의 인과 설명과 연결합니다.",
+          "courseId": "social-culture"
+        },
+        "social-culture-social-movements": {
+          "label": "사회 운동과 집합 행동",
+          "unit": "현대 사회의 변동",
+          "method": "지속성·조직성·목표를 근거로 사회 운동을 구분하고 개혁·변혁, 세계 시민 의식과 해결 수단을 대조합니다.",
+          "courseId": "social-culture"
+        },
+        "social-culture-global-information": {
+          "label": "정보화·세계화와 지구촌 문제",
+          "unit": "현대 사회의 변동",
+          "method": "정보의 비판적 수용, 사생활·권리, 다국적 기업과 자원 갈등의 영향을 자료가 드러내는 문제와 연결합니다.",
+          "courseId": "social-culture"
+        }
+      },
+      "labels": {
+        "2018": {
+          "1": {
+            "typeId": "social-culture-phenomena",
+            "questionStyle": "개념·사례 판단",
+            "topic": "자연 현상과 사회·문화 현상"
+          },
+          "2": {
+            "typeId": "social-culture-research-attitudes",
+            "questionStyle": "주장·비판 추론",
+            "topic": "연구 태도와 연구 윤리"
+          },
+          "3": {
+            "typeId": "social-culture-deviance",
+            "questionStyle": "관점·이론 비교",
+            "topic": "일탈 행동과 일탈 이론"
+          },
+          "4": {
+            "typeId": "social-culture-welfare",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "사회 보장 제도와 수급 자료"
+          },
+          "5": {
+            "typeId": "social-culture-collection",
+            "questionStyle": "도식·분류 체계",
+            "topic": "자료 수집 방법"
+          },
+          "6": {
+            "typeId": "social-culture-inequality-theories",
+            "questionStyle": "관점·이론 비교",
+            "topic": "사회 불평등과 계층화 이론"
+          },
+          "7": {
+            "typeId": "social-culture-perspectives",
+            "questionStyle": "관점·이론 비교",
+            "topic": "사회·문화 현상을 보는 관점"
+          },
+          "8": {
+            "typeId": "social-culture-research-design",
+            "questionStyle": "연구 설계·가설 검증",
+            "topic": "연구 설계와 가설 검증"
+          },
+          "9": {
+            "typeId": "social-culture-culture-types",
+            "questionStyle": "도식·분류 체계",
+            "topic": "주류 문화·하위문화·반문화"
+          },
+          "10": {
+            "typeId": "social-culture-research-design",
+            "questionStyle": "연구 설계·가설 검증",
+            "topic": "연구 설계와 가설 검증"
+          },
+          "11": {
+            "typeId": "social-culture-media",
+            "questionStyle": "도식·분류 체계",
+            "topic": "대중 매체의 특징"
+          },
+          "12": {
+            "typeId": "social-culture-culture-change",
+            "questionStyle": "도식·분류 체계",
+            "topic": "문화 변동과 문화 접변"
+          },
+          "13": {
+            "typeId": "social-culture-groups",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "사회 집단과 사회 조직"
+          },
+          "14": {
+            "typeId": "social-culture-culture-attitudes",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "문화 이해의 관점과 태도"
+          },
+          "15": {
+            "typeId": "social-culture-data-reading",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "사회 조사 자료의 해석 범위"
+          },
+          "16": {
+            "typeId": "social-culture-socialization",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "사회화·지위·역할"
+          },
+          "17": {
+            "typeId": "social-culture-individual-society",
+            "questionStyle": "관점·이론 비교",
+            "topic": "개인과 사회의 관계"
+          },
+          "18": {
+            "typeId": "social-culture-society-types",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "농업·산업·정보 사회"
+          },
+          "19": {
+            "typeId": "social-culture-social-change",
+            "questionStyle": "관점·이론 비교",
+            "topic": "사회 변동과 근대화 이론"
+          },
+          "20": {
+            "typeId": "social-culture-mobility",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "계층 구조와 사회 이동"
+          }
+        },
+        "2019": {
+          "1": {
+            "typeId": "social-culture-phenomena",
+            "questionStyle": "개념·사례 판단",
+            "topic": "자연 현상과 사회·문화 현상"
+          },
+          "2": {
+            "typeId": "social-culture-media",
+            "questionStyle": "개념·사례 판단",
+            "topic": "대중 매체의 특징"
+          },
+          "3": {
+            "typeId": "social-culture-social-change",
+            "questionStyle": "도식·분류 체계",
+            "topic": "사회 변동과 근대화 이론"
+          },
+          "4": {
+            "typeId": "social-culture-perspectives",
+            "questionStyle": "주장·비판 추론",
+            "topic": "사회·문화 현상을 보는 관점"
+          },
+          "5": {
+            "typeId": "social-culture-research-design",
+            "questionStyle": "연구 설계·가설 검증",
+            "topic": "연구 설계와 가설 검증"
+          },
+          "6": {
+            "typeId": "social-culture-socialization",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "사회화·지위·역할"
+          },
+          "7": {
+            "typeId": "social-culture-collection",
+            "questionStyle": "도식·분류 체계",
+            "topic": "자료 수집 방법"
+          },
+          "8": {
+            "typeId": "social-culture-inequality-theories",
+            "questionStyle": "도식·분류 체계",
+            "topic": "사회 불평등과 계층화 이론"
+          },
+          "9": {
+            "typeId": "social-culture-family",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "가족 형태와 사회 제도"
+          },
+          "10": {
+            "typeId": "social-culture-culture-attitudes",
+            "questionStyle": "관점·이론 비교",
+            "topic": "문화 이해의 관점과 태도"
+          },
+          "11": {
+            "typeId": "social-culture-culture-properties",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "문화의 의미와 속성"
+          },
+          "12": {
+            "typeId": "social-culture-deviance",
+            "questionStyle": "관점·이론 비교",
+            "topic": "일탈 행동과 일탈 이론"
+          },
+          "13": {
+            "typeId": "social-culture-culture-change",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "문화 변동과 문화 접변"
+          },
+          "14": {
+            "typeId": "social-culture-inequality-theories",
+            "questionStyle": "관점·이론 비교",
+            "topic": "사회 불평등과 계층화 이론"
+          },
+          "15": {
+            "typeId": "social-culture-welfare",
+            "questionStyle": "도식·분류 체계",
+            "topic": "사회 보장 제도와 수급 자료"
+          },
+          "16": {
+            "typeId": "social-culture-groups",
+            "questionStyle": "도식·분류 체계",
+            "topic": "사회 집단과 사회 조직"
+          },
+          "17": {
+            "typeId": "social-culture-perspectives",
+            "questionStyle": "답변·채점 결과 분석",
+            "topic": "사회·문화 현상을 보는 관점"
+          },
+          "18": {
+            "typeId": "social-culture-society-types",
+            "questionStyle": "관점·이론 비교",
+            "topic": "농업·산업·정보 사회"
+          },
+          "19": {
+            "typeId": "social-culture-individual-society",
+            "questionStyle": "주장·비판 추론",
+            "topic": "개인과 사회의 관계"
+          },
+          "20": {
+            "typeId": "social-culture-mobility",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "계층 구조와 사회 이동"
+          }
+        },
+        "2020": {
+          "1": {
+            "typeId": "social-culture-phenomena",
+            "questionStyle": "개념·사례 판단",
+            "topic": "자연 현상과 사회·문화 현상"
+          },
+          "2": {
+            "typeId": "social-culture-individual-society",
+            "questionStyle": "주장·비판 추론",
+            "topic": "개인과 사회의 관계"
+          },
+          "3": {
+            "typeId": "social-culture-socialization",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "사회화·지위·역할"
+          },
+          "4": {
+            "typeId": "social-culture-perspectives",
+            "questionStyle": "도식·분류 체계",
+            "topic": "사회·문화 현상을 보는 관점"
+          },
+          "5": {
+            "typeId": "social-culture-research-design",
+            "questionStyle": "연구 설계·가설 검증",
+            "topic": "연구 설계와 가설 검증"
+          },
+          "6": {
+            "typeId": "social-culture-collection",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "자료 수집 방법"
+          },
+          "7": {
+            "typeId": "social-culture-groups",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "사회 집단과 사회 조직"
+          },
+          "8": {
+            "typeId": "social-culture-culture-properties",
+            "questionStyle": "개념·사례 판단",
+            "topic": "문화의 의미와 속성"
+          },
+          "9": {
+            "typeId": "social-culture-culture-types",
+            "questionStyle": "개념·사례 판단",
+            "topic": "주류 문화·하위문화·반문화"
+          },
+          "10": {
+            "typeId": "social-culture-deviance",
+            "questionStyle": "답변·채점 결과 분석",
+            "topic": "일탈 행동과 일탈 이론"
+          },
+          "11": {
+            "typeId": "social-culture-inequality-theories",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "사회 불평등과 계층화 이론"
+          },
+          "12": {
+            "typeId": "social-culture-poverty",
+            "questionStyle": "도식·분류 체계",
+            "topic": "절대적 빈곤과 상대적 빈곤"
+          },
+          "13": {
+            "typeId": "social-culture-culture-change",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "문화 변동과 문화 접변"
+          },
+          "14": {
+            "typeId": "social-culture-culture-attitudes",
+            "questionStyle": "도식·분류 체계",
+            "topic": "문화 이해의 관점과 태도"
+          },
+          "15": {
+            "typeId": "social-culture-welfare",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "사회 보장 제도와 수급 자료"
+          },
+          "16": {
+            "typeId": "social-culture-perspectives",
+            "questionStyle": "답변·채점 결과 분석",
+            "topic": "사회·문화 현상을 보는 관점"
+          },
+          "17": {
+            "typeId": "social-culture-media",
+            "questionStyle": "답변·채점 결과 분석",
+            "topic": "대중 매체의 특징"
+          },
+          "18": {
+            "typeId": "social-culture-social-change",
+            "questionStyle": "답변·채점 결과 분석",
+            "topic": "사회 변동과 근대화 이론"
+          },
+          "19": {
+            "typeId": "social-culture-society-types",
+            "questionStyle": "답변·채점 결과 분석",
+            "topic": "농업·산업·정보 사회"
+          },
+          "20": {
+            "typeId": "social-culture-mobility",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "계층 구조와 사회 이동"
+          }
+        },
+        "2021": {
+          "1": {
+            "typeId": "social-culture-phenomena",
+            "questionStyle": "개념·사례 판단",
+            "topic": "자연 현상과 사회·문화 현상"
+          },
+          "2": {
+            "typeId": "social-culture-global-information",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "정보화·세계화와 지구촌 문제"
+          },
+          "3": {
+            "typeId": "social-culture-social-movements",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "사회 운동과 집합 행동"
+          },
+          "4": {
+            "typeId": "social-culture-culture-attitudes",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "문화 이해의 관점과 태도"
+          },
+          "5": {
+            "typeId": "social-culture-research-design",
+            "questionStyle": "연구 설계·가설 검증",
+            "topic": "연구 설계와 가설 검증"
+          },
+          "6": {
+            "typeId": "social-culture-individual-society",
+            "questionStyle": "관점·이론 비교",
+            "topic": "개인과 사회의 관계"
+          },
+          "7": {
+            "typeId": "social-culture-deviance",
+            "questionStyle": "관점·이론 비교",
+            "topic": "일탈 행동과 일탈 이론"
+          },
+          "8": {
+            "typeId": "social-culture-culture-properties",
+            "questionStyle": "개념·사례 판단",
+            "topic": "문화의 의미와 속성"
+          },
+          "9": {
+            "typeId": "social-culture-culture-types",
+            "questionStyle": "답변·채점 결과 분석",
+            "topic": "주류 문화·하위문화·반문화"
+          },
+          "10": {
+            "typeId": "social-culture-inequality-theories",
+            "questionStyle": "답변·채점 결과 분석",
+            "topic": "사회 불평등과 계층화 이론"
+          },
+          "11": {
+            "typeId": "social-culture-collection",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "자료 수집 방법"
+          },
+          "12": {
+            "typeId": "social-culture-socialization",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "사회화·지위·역할"
+          },
+          "13": {
+            "typeId": "social-culture-research-attitudes",
+            "questionStyle": "주장·비판 추론",
+            "topic": "연구 태도와 연구 윤리"
+          },
+          "14": {
+            "typeId": "social-culture-perspectives",
+            "questionStyle": "관점·이론 비교",
+            "topic": "사회·문화 현상을 보는 관점"
+          },
+          "15": {
+            "typeId": "social-culture-welfare",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "사회 보장 제도와 수급 자료"
+          },
+          "16": {
+            "typeId": "social-culture-culture-change",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "문화 변동과 문화 접변"
+          },
+          "17": {
+            "typeId": "social-culture-social-change",
+            "questionStyle": "관점·이론 비교",
+            "topic": "사회 변동과 근대화 이론"
+          },
+          "18": {
+            "typeId": "social-culture-population",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "인구 구조와 저출산·고령화"
+          },
+          "19": {
+            "typeId": "social-culture-groups",
+            "questionStyle": "도식·분류 체계",
+            "topic": "사회 집단과 사회 조직"
+          },
+          "20": {
+            "typeId": "social-culture-inequality-discrimination",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "성 불평등·사회적 소수자·차별"
+          }
+        },
+        "2022": {
+          "1": {
+            "typeId": "social-culture-phenomena",
+            "questionStyle": "개념·사례 판단",
+            "topic": "자연 현상과 사회·문화 현상"
+          },
+          "2": {
+            "typeId": "social-culture-deviance",
+            "questionStyle": "관점·이론 비교",
+            "topic": "일탈 행동과 일탈 이론"
+          },
+          "3": {
+            "typeId": "social-culture-perspectives",
+            "questionStyle": "도식·분류 체계",
+            "topic": "사회·문화 현상을 보는 관점"
+          },
+          "4": {
+            "typeId": "social-culture-research-design",
+            "questionStyle": "연구 설계·가설 검증",
+            "topic": "연구 설계와 가설 검증"
+          },
+          "5": {
+            "typeId": "social-culture-culture-properties",
+            "questionStyle": "개념·사례 판단",
+            "topic": "문화의 의미와 속성"
+          },
+          "6": {
+            "typeId": "social-culture-socialization",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "사회화·지위·역할"
+          },
+          "7": {
+            "typeId": "social-culture-inequality-discrimination",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "성 불평등·사회적 소수자·차별"
+          },
+          "8": {
+            "typeId": "social-culture-collection",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "자료 수집 방법"
+          },
+          "9": {
+            "typeId": "social-culture-poverty",
+            "questionStyle": "개념·사례 판단",
+            "topic": "절대적 빈곤과 상대적 빈곤"
+          },
+          "10": {
+            "typeId": "social-culture-culture-types",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "주류 문화·하위문화·반문화"
+          },
+          "11": {
+            "typeId": "social-culture-society-types",
+            "questionStyle": "도식·분류 체계",
+            "topic": "농업·산업·정보 사회"
+          },
+          "12": {
+            "typeId": "social-culture-individual-society",
+            "questionStyle": "주장·비판 추론",
+            "topic": "개인과 사회의 관계"
+          },
+          "13": {
+            "typeId": "social-culture-social-change",
+            "questionStyle": "관점·이론 비교",
+            "topic": "사회 변동과 근대화 이론"
+          },
+          "14": {
+            "typeId": "social-culture-culture-attitudes",
+            "questionStyle": "답변·채점 결과 분석",
+            "topic": "문화 이해의 관점과 태도"
+          },
+          "15": {
+            "typeId": "social-culture-welfare",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "사회 보장 제도와 수급 자료"
+          },
+          "16": {
+            "typeId": "social-culture-mobility",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "계층 구조와 사회 이동"
+          },
+          "17": {
+            "typeId": "social-culture-culture-change",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "문화 변동과 문화 접변"
+          },
+          "18": {
+            "typeId": "social-culture-groups",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "사회 집단과 사회 조직"
+          },
+          "19": {
+            "typeId": "social-culture-inequality-discrimination",
+            "questionStyle": "답변·채점 결과 분석",
+            "topic": "성 불평등·사회적 소수자·차별"
+          },
+          "20": {
+            "typeId": "social-culture-population",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "인구 구조와 저출산·고령화"
+          }
+        },
+        "2023": {
+          "1": {
+            "typeId": "social-culture-phenomena",
+            "questionStyle": "개념·사례 판단",
+            "topic": "자연 현상과 사회·문화 현상"
+          },
+          "2": {
+            "typeId": "social-culture-research-design",
+            "questionStyle": "연구 설계·가설 검증",
+            "topic": "연구 설계와 가설 검증"
+          },
+          "3": {
+            "typeId": "social-culture-perspectives",
+            "questionStyle": "주장·비판 추론",
+            "topic": "사회·문화 현상을 보는 관점"
+          },
+          "4": {
+            "typeId": "social-culture-culture-change",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "문화 변동과 문화 접변"
+          },
+          "5": {
+            "typeId": "social-culture-groups",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "사회 집단과 사회 조직"
+          },
+          "6": {
+            "typeId": "social-culture-collection",
+            "questionStyle": "도식·분류 체계",
+            "topic": "자료 수집 방법"
+          },
+          "7": {
+            "typeId": "social-culture-deviance",
+            "questionStyle": "관점·이론 비교",
+            "topic": "일탈 행동과 일탈 이론"
+          },
+          "8": {
+            "typeId": "social-culture-individual-society",
+            "questionStyle": "주장·비판 추론",
+            "topic": "개인과 사회의 관계"
+          },
+          "9": {
+            "typeId": "social-culture-poverty",
+            "questionStyle": "개념·사례 판단",
+            "topic": "절대적 빈곤과 상대적 빈곤"
+          },
+          "10": {
+            "typeId": "social-culture-inequality-discrimination",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "성 불평등·사회적 소수자·차별"
+          },
+          "11": {
+            "typeId": "social-culture-culture-attitudes",
+            "questionStyle": "답변·채점 결과 분석",
+            "topic": "문화 이해의 관점과 태도"
+          },
+          "12": {
+            "typeId": "social-culture-mobility",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "계층 구조와 사회 이동"
+          },
+          "13": {
+            "typeId": "social-culture-culture-types",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "주류 문화·하위문화·반문화"
+          },
+          "14": {
+            "typeId": "social-culture-organization",
+            "questionStyle": "관점·이론 비교",
+            "topic": "관료제와 탈관료제"
+          },
+          "15": {
+            "typeId": "social-culture-welfare",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "사회 보장 제도와 수급 자료"
+          },
+          "16": {
+            "typeId": "social-culture-culture-properties",
+            "questionStyle": "개념·사례 판단",
+            "topic": "문화의 의미와 속성"
+          },
+          "17": {
+            "typeId": "social-culture-social-change",
+            "questionStyle": "주장·비판 추론",
+            "topic": "사회 변동과 근대화 이론"
+          },
+          "18": {
+            "typeId": "social-culture-social-movements",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "사회 운동과 집합 행동"
+          },
+          "19": {
+            "typeId": "social-culture-inequality-discrimination",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "성 불평등·사회적 소수자·차별"
+          },
+          "20": {
+            "typeId": "social-culture-population",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "인구 구조와 저출산·고령화"
+          }
+        },
+        "2024": {
+          "1": {
+            "typeId": "social-culture-phenomena",
+            "questionStyle": "개념·사례 판단",
+            "topic": "자연 현상과 사회·문화 현상"
+          },
+          "2": {
+            "typeId": "social-culture-individual-society",
+            "questionStyle": "주장·비판 추론",
+            "topic": "개인과 사회의 관계"
+          },
+          "3": {
+            "typeId": "social-culture-collection",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "자료 수집 방법"
+          },
+          "4": {
+            "typeId": "social-culture-perspectives",
+            "questionStyle": "답변·채점 결과 분석",
+            "topic": "사회·문화 현상을 보는 관점"
+          },
+          "5": {
+            "typeId": "social-culture-research-design",
+            "questionStyle": "연구 설계·가설 검증",
+            "topic": "연구 설계와 가설 검증"
+          },
+          "6": {
+            "typeId": "social-culture-culture-properties",
+            "questionStyle": "답변·채점 결과 분석",
+            "topic": "문화의 의미와 속성"
+          },
+          "7": {
+            "typeId": "social-culture-groups",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "사회 집단과 사회 조직"
+          },
+          "8": {
+            "typeId": "social-culture-inequality-discrimination",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "성 불평등·사회적 소수자·차별"
+          },
+          "9": {
+            "typeId": "social-culture-culture-types",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "주류 문화·하위문화·반문화"
+          },
+          "10": {
+            "typeId": "social-culture-mobility",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "계층 구조와 사회 이동"
+          },
+          "11": {
+            "typeId": "social-culture-deviance",
+            "questionStyle": "관점·이론 비교",
+            "topic": "일탈 행동과 일탈 이론"
+          },
+          "12": {
+            "typeId": "social-culture-organization",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "관료제와 탈관료제"
+          },
+          "13": {
+            "typeId": "social-culture-social-change",
+            "questionStyle": "관점·이론 비교",
+            "topic": "사회 변동과 근대화 이론"
+          },
+          "14": {
+            "typeId": "social-culture-culture-change",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "문화 변동과 문화 접변"
+          },
+          "15": {
+            "typeId": "social-culture-welfare",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "사회 보장 제도와 수급 자료"
+          },
+          "16": {
+            "typeId": "social-culture-culture-attitudes",
+            "questionStyle": "관점·이론 비교",
+            "topic": "문화 이해의 관점과 태도"
+          },
+          "17": {
+            "typeId": "social-culture-poverty",
+            "questionStyle": "개념·사례 판단",
+            "topic": "절대적 빈곤과 상대적 빈곤"
+          },
+          "18": {
+            "typeId": "social-culture-social-movements",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "사회 운동과 집합 행동"
+          },
+          "19": {
+            "typeId": "social-culture-society-types",
+            "questionStyle": "답변·채점 결과 분석",
+            "topic": "농업·산업·정보 사회"
+          },
+          "20": {
+            "typeId": "social-culture-population",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "인구 구조와 저출산·고령화"
+          }
+        },
+        "2025": {
+          "1": {
+            "typeId": "social-culture-phenomena",
+            "questionStyle": "개념·사례 판단",
+            "topic": "자연 현상과 사회·문화 현상"
+          },
+          "2": {
+            "typeId": "social-culture-perspectives",
+            "questionStyle": "주장·비판 추론",
+            "topic": "사회·문화 현상을 보는 관점"
+          },
+          "3": {
+            "typeId": "social-culture-organization",
+            "questionStyle": "관점·이론 비교",
+            "topic": "관료제와 탈관료제"
+          },
+          "4": {
+            "typeId": "social-culture-groups",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "사회 집단과 사회 조직"
+          },
+          "5": {
+            "typeId": "social-culture-research-design",
+            "questionStyle": "연구 설계·가설 검증",
+            "topic": "연구 설계와 가설 검증"
+          },
+          "6": {
+            "typeId": "social-culture-culture-types",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "주류 문화·하위문화·반문화"
+          },
+          "7": {
+            "typeId": "social-culture-global-information",
+            "questionStyle": "주장·비판 추론",
+            "topic": "정보화·세계화와 지구촌 문제"
+          },
+          "8": {
+            "typeId": "social-culture-social-movements",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "사회 운동과 집합 행동"
+          },
+          "9": {
+            "typeId": "social-culture-culture-properties",
+            "questionStyle": "답변·채점 결과 분석",
+            "topic": "문화의 의미와 속성"
+          },
+          "10": {
+            "typeId": "social-culture-mobility",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "계층 구조와 사회 이동"
+          },
+          "11": {
+            "typeId": "social-culture-culture-attitudes",
+            "questionStyle": "개념·사례 판단",
+            "topic": "문화 이해의 관점과 태도"
+          },
+          "12": {
+            "typeId": "social-culture-individual-society",
+            "questionStyle": "주장·비판 추론",
+            "topic": "개인과 사회의 관계"
+          },
+          "13": {
+            "typeId": "social-culture-collection",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "자료 수집 방법"
+          },
+          "14": {
+            "typeId": "social-culture-deviance",
+            "questionStyle": "답변·채점 결과 분석",
+            "topic": "일탈 행동과 일탈 이론"
+          },
+          "15": {
+            "typeId": "social-culture-welfare",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "사회 보장 제도와 수급 자료"
+          },
+          "16": {
+            "typeId": "social-culture-inequality-theories",
+            "questionStyle": "답변·채점 결과 분석",
+            "topic": "사회 불평등과 계층화 이론"
+          },
+          "17": {
+            "typeId": "social-culture-inequality-discrimination",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "성 불평등·사회적 소수자·차별"
+          },
+          "18": {
+            "typeId": "social-culture-social-change",
+            "questionStyle": "주장·비판 추론",
+            "topic": "사회 변동과 근대화 이론"
+          },
+          "19": {
+            "typeId": "social-culture-culture-change",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "문화 변동과 문화 접변"
+          },
+          "20": {
+            "typeId": "social-culture-population",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "인구 구조와 저출산·고령화"
+          }
+        },
+        "2026": {
+          "1": {
+            "typeId": "social-culture-phenomena",
+            "questionStyle": "개념·사례 판단",
+            "topic": "자연 현상과 사회·문화 현상"
+          },
+          "2": {
+            "typeId": "social-culture-individual-society",
+            "questionStyle": "주장·비판 추론",
+            "topic": "개인과 사회의 관계"
+          },
+          "3": {
+            "typeId": "social-culture-culture-types",
+            "questionStyle": "개념·사례 판단",
+            "topic": "주류 문화·하위문화·반문화"
+          },
+          "4": {
+            "typeId": "social-culture-culture-properties",
+            "questionStyle": "도식·분류 체계",
+            "topic": "문화의 의미와 속성"
+          },
+          "5": {
+            "typeId": "social-culture-research-design",
+            "questionStyle": "연구 설계·가설 검증",
+            "topic": "연구 설계와 가설 검증"
+          },
+          "6": {
+            "typeId": "social-culture-culture-attitudes",
+            "questionStyle": "관점·이론 비교",
+            "topic": "문화 이해의 관점과 태도"
+          },
+          "7": {
+            "typeId": "social-culture-culture-change",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "문화 변동과 문화 접변"
+          },
+          "8": {
+            "typeId": "social-culture-groups",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "사회 집단과 사회 조직"
+          },
+          "9": {
+            "typeId": "social-culture-deviance",
+            "questionStyle": "답변·채점 결과 분석",
+            "topic": "일탈 행동과 일탈 이론"
+          },
+          "10": {
+            "typeId": "social-culture-mobility",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "계층 구조와 사회 이동"
+          },
+          "11": {
+            "typeId": "social-culture-global-information",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "정보화·세계화와 지구촌 문제"
+          },
+          "12": {
+            "typeId": "social-culture-social-change",
+            "questionStyle": "주장·비판 추론",
+            "topic": "사회 변동과 근대화 이론"
+          },
+          "13": {
+            "typeId": "social-culture-organization",
+            "questionStyle": "관점·이론 비교",
+            "topic": "관료제와 탈관료제"
+          },
+          "14": {
+            "typeId": "social-culture-collection",
+            "questionStyle": "답변·채점 결과 분석",
+            "topic": "자료 수집 방법"
+          },
+          "15": {
+            "typeId": "social-culture-welfare",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "사회 보장 제도와 수급 자료"
+          },
+          "16": {
+            "typeId": "social-culture-poverty",
+            "questionStyle": "개념·사례 판단",
+            "topic": "절대적 빈곤과 상대적 빈곤"
+          },
+          "17": {
+            "typeId": "social-culture-inequality-discrimination",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "성 불평등·사회적 소수자·차별"
+          },
+          "18": {
+            "typeId": "social-culture-perspectives",
+            "questionStyle": "주장·비판 추론",
+            "topic": "사회·문화 현상을 보는 관점"
+          },
+          "19": {
+            "typeId": "social-culture-social-movements",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "사회 운동과 집합 행동"
+          },
+          "20": {
+            "typeId": "social-culture-population",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "인구 구조와 저출산·고령화"
+          }
+        },
+        "2027": {
+          "1": {
+            "typeId": "social-culture-phenomena",
+            "questionStyle": "개념·사례 판단",
+            "topic": "자연 현상과 사회·문화 현상"
+          },
+          "2": {
+            "typeId": "social-culture-individual-society",
+            "questionStyle": "주장·비판 추론",
+            "topic": "개인과 사회의 관계"
+          },
+          "3": {
+            "typeId": "social-culture-organization",
+            "questionStyle": "관점·이론 비교",
+            "topic": "관료제와 탈관료제"
+          },
+          "4": {
+            "typeId": "social-culture-deviance",
+            "questionStyle": "관점·이론 비교",
+            "topic": "일탈 행동과 일탈 이론"
+          },
+          "5": {
+            "typeId": "social-culture-research-design",
+            "questionStyle": "연구 설계·가설 검증",
+            "topic": "연구 설계와 가설 검증"
+          },
+          "6": {
+            "typeId": "social-culture-culture-attitudes",
+            "questionStyle": "관점·이론 비교",
+            "topic": "문화 이해의 관점과 태도"
+          },
+          "7": {
+            "typeId": "social-culture-culture-properties",
+            "questionStyle": "개념·사례 판단",
+            "topic": "문화의 의미와 속성"
+          },
+          "8": {
+            "typeId": "social-culture-culture-types",
+            "questionStyle": "개념·사례 판단",
+            "topic": "주류 문화·하위문화·반문화"
+          },
+          "9": {
+            "typeId": "social-culture-collection",
+            "questionStyle": "답변·채점 결과 분석",
+            "topic": "자료 수집 방법"
+          },
+          "10": {
+            "typeId": "social-culture-mobility",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "계층 구조와 사회 이동"
+          },
+          "11": {
+            "typeId": "social-culture-global-information",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "정보화·세계화와 지구촌 문제"
+          },
+          "12": {
+            "typeId": "social-culture-perspectives",
+            "questionStyle": "주장·비판 추론",
+            "topic": "사회·문화 현상을 보는 관점"
+          },
+          "13": {
+            "typeId": "social-culture-poverty",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "절대적 빈곤과 상대적 빈곤"
+          },
+          "14": {
+            "typeId": "social-culture-groups",
+            "questionStyle": "도식·분류 체계",
+            "topic": "사회 집단과 사회 조직"
+          },
+          "15": {
+            "typeId": "social-culture-welfare",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "사회 보장 제도와 수급 자료"
+          },
+          "16": {
+            "typeId": "social-culture-culture-change",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "문화 변동과 문화 접변"
+          },
+          "17": {
+            "typeId": "social-culture-social-change",
+            "questionStyle": "주장·비판 추론",
+            "topic": "사회 변동과 근대화 이론"
+          },
+          "18": {
+            "typeId": "social-culture-global-information",
+            "questionStyle": "주장·비판 추론",
+            "topic": "정보화·세계화와 지구촌 문제"
+          },
+          "19": {
+            "typeId": "social-culture-inequality-discrimination",
+            "questionStyle": "사례 적용·의미 추론",
+            "topic": "성 불평등·사회적 소수자·차별"
+          },
+          "20": {
+            "typeId": "social-culture-population",
+            "questionStyle": "표·수치 자료 해석",
+            "topic": "인구 구조와 저출산·고령화"
+          }
+        }
+      },
+      "reviewNotes": [
+        "10개 학년도 200문항의 발문·자료·선택지를 읽고 분류했다. 이미지에 포함된 글은 문항 단위 OCR로 보완하고 모호한 도해를 원문 이미지로 확인했다. 번호에 따른 고정 유형표를 사용하지 않았다.",
+        "복합 문항은 대표 학습 주제 하나만 부여한다. 사회화·지위·역할은 하나의 유형으로 묶고, 사회 집단 분류와 기관 개수를 함께 묻는 문항은 사회 집단과 사회 조직으로 분류한다.",
+        "2018 15번은 교육비와 계층을 소재로 하지만 핵심 발문이 자료로 진위를 판단할 수 있는지를 묻기 때문에 사회 조사 자료의 해석 범위로 분류했다.",
+        "2019 9번은 가족 형태·세대 구분을 전제로 한 가구 비율 계산이다. 2021 20번, 2022 7번, 2023 10번은 성별 임금·교육 격차의 수치 자료이며 사회적 소수자와 같은 불평등·차별 주제에 묶었다.",
+        "2023 16번은 문화 변동 서사 속 문화의 의미·속성을 함께 판단하는 문항이다. 2025 6번은 손 씻기 문화를 통한 하위·주류·반문화의 지위 변화이고 2026 3번은 토착어의 문화적 성격·다양성을 묻는 복합 문항으로 주류·하위문화 범주에 넣었다.",
+        "2025 8번과 2026 19번은 지구촌 문제를 배경으로 하지만 집단행동의 목표·조직성과 해결 방안을 평가하므로 사회 운동을 대표 주제로 삼았다. 2027 11번은 만평에 나타난 국가 간 자원 갈등을 직접 확인했다.",
+        "단원은 서로 다른 교육과정의 문항을 학습하기 위한 5개 묶음이며 평가원의 공식 단원 코드나 공식 유형 통계가 아니다. 발문 형식은 주제와 별도로 부여한다."
+      ]
+    },
+    "social-life-ethics": {
+      "courseId": "social-life-ethics",
+      "unitOrder": [
+        "현대의 삶과 윤리",
+        "생명과 인간관계의 윤리",
+        "사회와 정의의 윤리",
+        "과학·정보와 환경 윤리",
+        "문화와 생활의 윤리",
+        "평화와 공존의 윤리"
+      ],
+      "types": {
+        "social-life-ethics-practical-ethics": {
+          "label": "윤리학의 성격과 탐구",
+          "unit": "현대의 삶과 윤리",
+          "method": "이론·실천 규범 윤리학, 메타 윤리학, 기술 윤리학의 탐구 대상과 가치 판단 여부를 구분한다.",
+          "courseId": "social-life-ethics"
+        },
+        "social-life-ethics-moral-theories": {
+          "label": "윤리적 판단과 기본 사상",
+          "unit": "현대의 삶과 윤리",
+          "method": "의무론(deontology), 공리주의(utilitarianism), 덕·배려·담론 윤리 및 동양 윤리의 기본 판단 기준을 구별하고 사례에 적용한다.",
+          "courseId": "social-life-ethics"
+        },
+        "social-life-ethics-life-death": {
+          "label": "삶과 죽음의 의미",
+          "unit": "생명과 인간관계의 윤리",
+          "method": "동서양의 죽음 이해와 자살에 관한 논거를 비교하여 삶의 태도, 유한성, 자기 생명 존중의 의미를 검토한다.",
+          "courseId": "social-life-ethics"
+        },
+        "social-life-ethics-bio-medical": {
+          "label": "생명·의료 윤리",
+          "unit": "생명과 인간관계의 윤리",
+          "method": "죽음 판정, 장기 이식, 생명 공학 등에서 생명 존중·자율성·해악·공익의 충돌을 검토한다.",
+          "courseId": "social-life-ethics"
+        },
+        "social-life-ethics-relationships": {
+          "label": "성·사랑과 가족·친구 윤리",
+          "unit": "생명과 인간관계의 윤리",
+          "method": "성의 정당화 조건, 사랑과 인격 존중, 가족·친구 사이의 역할과 상호 책임을 구별한다.",
+          "courseId": "social-life-ethics"
+        },
+        "social-life-ethics-work-ethics": {
+          "label": "직업·노동과 공직 윤리",
+          "unit": "사회와 정의의 윤리",
+          "method": "노동의 의미와 소외, 직업 소명, 기업·근로자·공직자의 역할 및 책임을 비교한다.",
+          "courseId": "social-life-ethics"
+        },
+        "social-life-ethics-state-citizen": {
+          "label": "국가·시민과 사회정의",
+          "unit": "사회와 정의의 윤리",
+          "method": "국가 권위와 시민의 권리·의무, 개인과 집단의 도덕성 및 공적 소통의 조건을 검토한다.",
+          "courseId": "social-life-ethics"
+        },
+        "social-life-ethics-distributive-justice": {
+          "label": "분배정의와 공정성",
+          "unit": "사회와 정의의 윤리",
+          "method": "롤스(Rawls)의 정의 원칙을 노직·마르크스 등과 비교하고 절차·권리·자원 분배의 정당성을 판단한다.",
+          "courseId": "social-life-ethics"
+        },
+        "social-life-ethics-punishment": {
+          "label": "형벌과 사형의 정당화",
+          "unit": "사회와 정의의 윤리",
+          "method": "응보·예방·교화의 목적과 사회계약을 구분하여 형벌 및 사형의 정당화 논거를 비교한다.",
+          "courseId": "social-life-ethics"
+        },
+        "social-life-ethics-civil-disobedience": {
+          "label": "시민불복종의 조건",
+          "unit": "사회와 정의의 윤리",
+          "method": "공개성·비폭력·최후 수단·정의감 호소와 체제 충실성 등 시민불복종의 조건을 비교한다.",
+          "courseId": "social-life-ethics"
+        },
+        "social-life-ethics-science-responsibility": {
+          "label": "과학기술과 책임 윤리",
+          "unit": "과학·정보와 환경 윤리",
+          "method": "과학의 합리성, 기술의 본질·가치 중립성·사회적 영향, 연구 윤리와 미래 세대에 대한 사전적 책임을 구별한다.",
+          "courseId": "social-life-ethics"
+        },
+        "social-life-ethics-information-ethics": {
+          "label": "정보사회와 매체 윤리",
+          "unit": "과학·정보와 환경 윤리",
+          "method": "표현의 자유, 정보 접근·소유·사생활과 정보기술의 사회적 영향을 대조한다.",
+          "courseId": "social-life-ethics"
+        },
+        "social-life-ethics-animal-rights": {
+          "label": "동물의 도덕적 지위와 동물실험",
+          "unit": "과학·정보와 환경 윤리",
+          "method": "싱어(Singer)의 쾌고 감수 능력·이익 평등 고려와 동물권 논거를 동물실험 등 개별 쟁점에 적용한다.",
+          "courseId": "social-life-ethics"
+        },
+        "social-life-ethics-environmental-ethics": {
+          "label": "환경 윤리와 자연의 가치",
+          "unit": "과학·정보와 환경 윤리",
+          "method": "인간·동물·생명·생태 중심 관점을 비교한다. 싱어의 동물 고려는 다른 자연관과 비교하는 문항에서도 구분한다.",
+          "courseId": "social-life-ethics"
+        },
+        "social-life-ethics-art-ethics": {
+          "label": "예술·대중문화와 도덕",
+          "unit": "문화와 생활의 윤리",
+          "method": "도덕주의·심미주의, 예술의 자율성과 사회적 기능, 대중문화의 상품화와 수용을 비교한다.",
+          "courseId": "social-life-ethics"
+        },
+        "social-life-ethics-religion": {
+          "label": "종교의 의미와 종교 간 관계",
+          "unit": "문화와 생활의 윤리",
+          "method": "성스러움의 체험, 종교와 과학의 관계 및 종교 간 관용·대화의 조건을 구별한다.",
+          "courseId": "social-life-ethics"
+        },
+        "social-life-ethics-multiculturalism": {
+          "label": "다문화와 문화 다양성",
+          "unit": "문화와 생활의 윤리",
+          "method": "동화·다문화 정책, 문화 정체성 및 보편적 인권을 기준으로 문화 수용의 조건을 판단한다.",
+          "courseId": "social-life-ethics"
+        },
+        "social-life-ethics-consumption-housing": {
+          "label": "소비·주거와 생활 윤리",
+          "unit": "문화와 생활의 윤리",
+          "method": "합리적·윤리적 소비와 과시 소비, 거주와 공간의 의미를 사회·환경적 책임과 연결한다.",
+          "courseId": "social-life-ethics"
+        },
+        "social-life-ethics-peace-war": {
+          "label": "평화와 전쟁의 윤리",
+          "unit": "평화와 공존의 윤리",
+          "method": "현실주의·평화주의·정의 전쟁론, 영구 평화와 적극적 평화의 성립 조건을 비교한다.",
+          "courseId": "social-life-ethics"
+        },
+        "social-life-ethics-unification": {
+          "label": "통일과 남북 관계의 윤리",
+          "unit": "평화와 공존의 윤리",
+          "method": "평화적 통일의 가치·절차·비용과 편익, 남북 교류 및 보편적 인권을 함께 검토한다.",
+          "courseId": "social-life-ethics"
+        },
+        "social-life-ethics-global-aid": {
+          "label": "해외원조와 국제적 책임",
+          "unit": "평화와 공존의 윤리",
+          "method": "싱어와 롤스 등의 원조 목적·대상·범위·중단 조건을 구분하고 국제적 책임을 비교한다.",
+          "courseId": "social-life-ethics"
+        }
+      },
+      "labels": {
+        "2018": {
+          "1": {
+            "typeId": "social-life-ethics-practical-ethics",
+            "questionStyle": "비판·빈칸 추론",
+            "topic": "실천 규범 윤리학과 기술 윤리학의 과제"
+          },
+          "2": {
+            "typeId": "social-life-ethics-relationships",
+            "questionStyle": "가상 편지·개념 판별",
+            "topic": "유교의 부부 관계와 상호 공경"
+          },
+          "3": {
+            "typeId": "social-life-ethics-civil-disobedience",
+            "questionStyle": "단일 사상·부정형 질문",
+            "topic": "롤스의 공공적 시민불복종 조건"
+          },
+          "4": {
+            "typeId": "social-life-ethics-life-death",
+            "questionStyle": "사상 비교·보기 판별",
+            "topic": "도가와 불교의 생사관"
+          },
+          "5": {
+            "typeId": "social-life-ethics-moral-theories",
+            "questionStyle": "입장 비교·선지 판별",
+            "topic": "규칙 공리주의와 담론 윤리의 규범 정당화"
+          },
+          "6": {
+            "typeId": "social-life-ethics-art-ethics",
+            "questionStyle": "단일 사상·보기 판별",
+            "topic": "플라톤의 예술과 선의 관계"
+          },
+          "7": {
+            "typeId": "social-life-ethics-peace-war",
+            "questionStyle": "강연·입장 판별",
+            "topic": "정의 전쟁의 개시·수행·종결 기준"
+          },
+          "8": {
+            "typeId": "social-life-ethics-relationships",
+            "questionStyle": "입장 비교·선지 판별",
+            "topic": "결혼과 사랑에 따른 성의 정당화"
+          },
+          "9": {
+            "typeId": "social-life-ethics-distributive-justice",
+            "questionStyle": "도식 탐구·질문 판별",
+            "topic": "아리스토텔레스·롤스·노직의 분배정의"
+          },
+          "10": {
+            "typeId": "social-life-ethics-moral-theories",
+            "questionStyle": "윤리 이론·사례 조언",
+            "topic": "벤담의 공리 원리를 사이버 괴롭힘에 적용"
+          },
+          "11": {
+            "typeId": "social-life-ethics-environmental-ethics",
+            "questionStyle": "도식 분류·입장 비교",
+            "topic": "싱어·테일러·레오폴드의 도덕적 고려 범위"
+          },
+          "12": {
+            "typeId": "social-life-ethics-work-ethics",
+            "questionStyle": "평가 답안·오류 판별",
+            "topic": "맹자와 마르크스의 분업·노동관"
+          },
+          "13": {
+            "typeId": "social-life-ethics-moral-theories",
+            "questionStyle": "사상 비교·선지 판별",
+            "topic": "칸트의 선의지와 니부어의 사회정의"
+          },
+          "14": {
+            "typeId": "social-life-ethics-science-responsibility",
+            "questionStyle": "단일 사상·부정형 선지",
+            "topic": "요나스의 미래 책임과 공포의 발견술"
+          },
+          "15": {
+            "typeId": "social-life-ethics-consumption-housing",
+            "questionStyle": "단일 사상·선지 판별",
+            "topic": "볼노브의 진정한 거주와 인간의 본질"
+          },
+          "16": {
+            "typeId": "social-life-ethics-religion",
+            "questionStyle": "입장 비교·부정형 선지",
+            "topic": "종교적 체험과 과학적 인식의 관계"
+          },
+          "17": {
+            "typeId": "social-life-ethics-punishment",
+            "questionStyle": "사상 비교·공통 부정 질문",
+            "topic": "루소와 칸트의 사형 정당화"
+          },
+          "18": {
+            "typeId": "social-life-ethics-global-aid",
+            "questionStyle": "사상 비교·선지 판별",
+            "topic": "싱어와 롤스의 원조 목적과 대상"
+          },
+          "19": {
+            "typeId": "social-life-ethics-animal-rights",
+            "questionStyle": "토론·핵심 쟁점",
+            "topic": "동물의 기본권과 동물실험의 정당성"
+          },
+          "20": {
+            "typeId": "social-life-ethics-state-citizen",
+            "questionStyle": "입장 비교·질문 판별",
+            "topic": "자유권과 사회적 권리를 둘러싼 인권 범위"
+          }
+        },
+        "2019": {
+          "1": {
+            "typeId": "social-life-ethics-practical-ethics",
+            "questionStyle": "입장 비교·선지 판별",
+            "topic": "이론 규범 윤리학과 실천 규범 윤리학"
+          },
+          "2": {
+            "typeId": "social-life-ethics-moral-theories",
+            "questionStyle": "사상 비교·반론 추론",
+            "topic": "공동체 덕 윤리와 밀의 공리주의"
+          },
+          "3": {
+            "typeId": "social-life-ethics-state-citizen",
+            "questionStyle": "단일 사상·보기 판별",
+            "topic": "니부어의 집단 이기심과 사회정의"
+          },
+          "4": {
+            "typeId": "social-life-ethics-state-citizen",
+            "questionStyle": "강연·입장 판별",
+            "topic": "밀의 소수 의견과 토론의 자유"
+          },
+          "5": {
+            "typeId": "social-life-ethics-art-ethics",
+            "questionStyle": "사상 비교·사례 조언",
+            "topic": "플라톤과 와일드의 예술관을 창작에 적용"
+          },
+          "6": {
+            "typeId": "social-life-ethics-bio-medical",
+            "questionStyle": "입장 해석·질문 판별",
+            "topic": "뇌사 인정과 장기 이식의 공익"
+          },
+          "7": {
+            "typeId": "social-life-ethics-religion",
+            "questionStyle": "단일 사상·부정형 선지",
+            "topic": "엘리아데의 성현과 세속적 인간"
+          },
+          "8": {
+            "typeId": "social-life-ethics-life-death",
+            "questionStyle": "사상 비교·부정형 선지",
+            "topic": "에피쿠로스와 하이데거의 죽음 이해"
+          },
+          "9": {
+            "typeId": "social-life-ethics-environmental-ethics",
+            "questionStyle": "도식 분류·입장 비교",
+            "topic": "칸트·레건·레오폴드의 자연관"
+          },
+          "10": {
+            "typeId": "social-life-ethics-information-ethics",
+            "questionStyle": "대화·입장 비교",
+            "topic": "혐오표현 규제와 정보 생산·유통의 자유"
+          },
+          "11": {
+            "typeId": "social-life-ethics-relationships",
+            "questionStyle": "가상 편지·입장 판별",
+            "topic": "부모의 뜻을 헤아리고 봉양하는 효"
+          },
+          "12": {
+            "typeId": "social-life-ethics-punishment",
+            "questionStyle": "사상 비교·선지 판별",
+            "topic": "칸트와 베카리아의 사형·종신 노역형"
+          },
+          "13": {
+            "typeId": "social-life-ethics-work-ethics",
+            "questionStyle": "사상 비교·부정형 선지",
+            "topic": "마르크스의 노동 소외와 베버의 직업 소명"
+          },
+          "14": {
+            "typeId": "social-life-ethics-distributive-justice",
+            "questionStyle": "도식 탐구·질문 판별",
+            "topic": "마르크스·롤스·노직의 소유와 분배"
+          },
+          "15": {
+            "typeId": "social-life-ethics-science-responsibility",
+            "questionStyle": "토론·핵심 쟁점",
+            "topic": "과학자의 내적 책임과 사회적 책임"
+          },
+          "16": {
+            "typeId": "social-life-ethics-peace-war",
+            "questionStyle": "사상 비교·선지 판별",
+            "topic": "왈처의 정의 전쟁과 칸트의 영구 평화"
+          },
+          "17": {
+            "typeId": "social-life-ethics-global-aid",
+            "questionStyle": "사상 비교·선지 판별",
+            "topic": "롤스와 싱어의 원조 목적·부담 범위"
+          },
+          "18": {
+            "typeId": "social-life-ethics-civil-disobedience",
+            "questionStyle": "단일 사상·보기 판별",
+            "topic": "롤스의 정의감 호소와 합법적 체제의 개혁"
+          },
+          "19": {
+            "typeId": "social-life-ethics-relationships",
+            "questionStyle": "대화·입장 판별",
+            "topic": "친구 사이의 권면과 인격 수양"
+          },
+          "20": {
+            "typeId": "social-life-ethics-multiculturalism",
+            "questionStyle": "신문 칼럼·입장 판별",
+            "topic": "이주민 정체성과 문화적 특수성 보장"
+          }
+        },
+        "2020": {
+          "1": {
+            "typeId": "social-life-ethics-practical-ethics",
+            "questionStyle": "입장 비교·선지 판별",
+            "topic": "실천 윤리학과 기술 윤리학의 탐구 목표"
+          },
+          "2": {
+            "typeId": "social-life-ethics-religion",
+            "questionStyle": "단일 사상·선지 판별",
+            "topic": "엘리아데의 성현과 종교적 인간"
+          },
+          "3": {
+            "typeId": "social-life-ethics-peace-war",
+            "questionStyle": "사상 비교·선지 판별",
+            "topic": "모겐소와 왈처의 전쟁·인도주의 개입"
+          },
+          "4": {
+            "typeId": "social-life-ethics-art-ethics",
+            "questionStyle": "사상 비교·보기 판별",
+            "topic": "유교와 묵자의 음악·예악 평가"
+          },
+          "5": {
+            "typeId": "social-life-ethics-moral-theories",
+            "questionStyle": "윤리 이론·사례 조언",
+            "topic": "벤담의 공리 원리를 기부 결정에 적용"
+          },
+          "6": {
+            "typeId": "social-life-ethics-bio-medical",
+            "questionStyle": "토론·핵심 쟁점",
+            "topic": "신체의 소유와 자발적 장기 기증"
+          },
+          "7": {
+            "typeId": "social-life-ethics-work-ethics",
+            "questionStyle": "신문 칼럼·입장 판별",
+            "topic": "기업 내부 고발과 근로자의 공적 책임"
+          },
+          "8": {
+            "typeId": "social-life-ethics-multiculturalism",
+            "questionStyle": "대화·입장 비교",
+            "topic": "동화주의와 다문화주의의 통합 방식"
+          },
+          "9": {
+            "typeId": "social-life-ethics-work-ethics",
+            "questionStyle": "제시문 해석·부정형 선지",
+            "topic": "정약용의 공직 설치와 민생에 대한 책임"
+          },
+          "10": {
+            "typeId": "social-life-ethics-distributive-justice",
+            "questionStyle": "사상 비교·선지 판별",
+            "topic": "롤스의 우연성 조정과 노직의 소유 권리"
+          },
+          "11": {
+            "typeId": "social-life-ethics-consumption-housing",
+            "questionStyle": "빈칸 추론·보기 판별",
+            "topic": "생산·유통·폐기까지 고려하는 윤리적 소비"
+          },
+          "12": {
+            "typeId": "social-life-ethics-state-citizen",
+            "questionStyle": "단일 사상·부정형 선지",
+            "topic": "니부어의 집단 갈등과 강제력"
+          },
+          "13": {
+            "typeId": "social-life-ethics-information-ethics",
+            "questionStyle": "입장 비교·보기 판별",
+            "topic": "정보 감시와 사이버 정치 참여"
+          },
+          "14": {
+            "typeId": "social-life-ethics-punishment",
+            "questionStyle": "도식 탐구·질문 판별",
+            "topic": "베카리아와 칸트의 형벌 목적"
+          },
+          "15": {
+            "typeId": "social-life-ethics-global-aid",
+            "questionStyle": "사상 비교·보기 판별",
+            "topic": "싱어와 롤스의 원조 부담·제도 형성"
+          },
+          "16": {
+            "typeId": "social-life-ethics-environmental-ethics",
+            "questionStyle": "도식 비교·상호 비판",
+            "topic": "레건·테일러·칸트의 도덕적 지위"
+          },
+          "17": {
+            "typeId": "social-life-ethics-unification",
+            "questionStyle": "강연·입장 판별",
+            "topic": "단계적 평화 통일과 보편적 가치"
+          },
+          "18": {
+            "typeId": "social-life-ethics-civil-disobedience",
+            "questionStyle": "단일 사상·선지 판별",
+            "topic": "롤스의 법 준수 의무와 정당한 불복종"
+          },
+          "19": {
+            "typeId": "social-life-ethics-science-responsibility",
+            "questionStyle": "사상 비교·선지 판별",
+            "topic": "베이컨의 자연 지배와 하이데거의 기술 성찰"
+          },
+          "20": {
+            "typeId": "social-life-ethics-relationships",
+            "questionStyle": "가상 편지·부정형 선지",
+            "topic": "군자와 소인의 우정·상호 권면"
+          }
+        },
+        "2021": {
+          "1": {
+            "typeId": "social-life-ethics-practical-ethics",
+            "questionStyle": "비판·빈칸 추론",
+            "topic": "메타 윤리학과 실천 윤리학의 과제"
+          },
+          "2": {
+            "typeId": "social-life-ethics-relationships",
+            "questionStyle": "입장 비교·선지 판별",
+            "topic": "성적 보수주의와 자유주의의 정당화 조건"
+          },
+          "3": {
+            "typeId": "social-life-ethics-moral-theories",
+            "questionStyle": "단일 사상·선지 판별",
+            "topic": "하버마스의 합리적 담론 참여 조건"
+          },
+          "4": {
+            "typeId": "social-life-ethics-global-aid",
+            "questionStyle": "사상 비교·보기 판별",
+            "topic": "롤스와 싱어의 원조 의무·대상·경제력"
+          },
+          "5": {
+            "typeId": "social-life-ethics-art-ethics",
+            "questionStyle": "평가 답안·오류 판별",
+            "topic": "플라톤과 칸트의 미·도덕 관계"
+          },
+          "6": {
+            "typeId": "social-life-ethics-bio-medical",
+            "questionStyle": "입장 비교·차이 질문",
+            "topic": "유전자 교정과 인간의 존엄·가치 판단"
+          },
+          "7": {
+            "typeId": "social-life-ethics-moral-theories",
+            "questionStyle": "사상 비교·비판 추론",
+            "topic": "매킨타이어의 공동체와 벤담의 공리"
+          },
+          "8": {
+            "typeId": "social-life-ethics-relationships",
+            "questionStyle": "제시문 해석·부정형 선지",
+            "topic": "유교의 부부 역할·상호 공경과 효"
+          },
+          "9": {
+            "typeId": "social-life-ethics-work-ethics",
+            "questionStyle": "사상 비교·공통 입장",
+            "topic": "공자와 플라톤의 직분·덕목·역할 분담"
+          },
+          "10": {
+            "typeId": "social-life-ethics-distributive-justice",
+            "questionStyle": "도식 탐구·질문 판별",
+            "topic": "노직과 롤스의 소유권·공리주의 비판"
+          },
+          "11": {
+            "typeId": "social-life-ethics-science-responsibility",
+            "questionStyle": "단일 사상·보기 판별",
+            "topic": "요나스의 권력에 따른 미래 책임"
+          },
+          "12": {
+            "typeId": "social-life-ethics-civil-disobedience",
+            "questionStyle": "사상 비교·부정형 선지",
+            "topic": "싱어의 효용과 롤스의 정의관에 따른 불복종"
+          },
+          "13": {
+            "typeId": "social-life-ethics-unification",
+            "questionStyle": "토론·핵심 쟁점",
+            "topic": "대북 인도적 지원의 조건과 남북 교류"
+          },
+          "14": {
+            "typeId": "social-life-ethics-peace-war",
+            "questionStyle": "입장 비교·보기 판별",
+            "topic": "현실주의와 이상주의의 분쟁 원인"
+          },
+          "15": {
+            "typeId": "social-life-ethics-environmental-ethics",
+            "questionStyle": "도식 분류·입장 비교",
+            "topic": "싱어·칸트·레오폴드의 자연에 대한 의무"
+          },
+          "16": {
+            "typeId": "social-life-ethics-life-death",
+            "questionStyle": "사상 비교·부정형 선지",
+            "topic": "유교·도가·불교의 삶과 죽음"
+          },
+          "17": {
+            "typeId": "social-life-ethics-consumption-housing",
+            "questionStyle": "강연·질문 판별",
+            "topic": "베블런의 과시 소비와 지위 경쟁"
+          },
+          "18": {
+            "typeId": "social-life-ethics-multiculturalism",
+            "questionStyle": "좌표 도식·상대적 특징",
+            "topic": "동화주의와 다문화주의의 통합 기준"
+          },
+          "19": {
+            "typeId": "social-life-ethics-punishment",
+            "questionStyle": "도식 비교·상호 비판",
+            "topic": "칸트·베카리아·루소의 사형 근거"
+          },
+          "20": {
+            "typeId": "social-life-ethics-moral-theories",
+            "questionStyle": "윤리 이론·사례 조언",
+            "topic": "소크라테스의 성찰을 명령 복종에 적용"
+          }
+        },
+        "2022": {
+          "1": {
+            "typeId": "social-life-ethics-practical-ethics",
+            "questionStyle": "비판·빈칸 추론",
+            "topic": "실천 윤리학의 메타 윤리학 비판"
+          },
+          "2": {
+            "typeId": "social-life-ethics-moral-theories",
+            "questionStyle": "사상 비교·선지 판별",
+            "topic": "공자의 정명·서와 노자의 무위"
+          },
+          "3": {
+            "typeId": "social-life-ethics-civil-disobedience",
+            "questionStyle": "단일 사상·선지 판별",
+            "topic": "롤스의 헌법 원칙과 다수의 정의감"
+          },
+          "4": {
+            "typeId": "social-life-ethics-peace-war",
+            "questionStyle": "사상 비교·보기 판별",
+            "topic": "모겐소의 권력 정치와 칸트의 국제 연맹"
+          },
+          "5": {
+            "typeId": "social-life-ethics-moral-theories",
+            "questionStyle": "윤리 이론·그림 사례 조언",
+            "topic": "행위 공리주의를 자율주행차 딜레마에 적용"
+          },
+          "6": {
+            "typeId": "social-life-ethics-life-death",
+            "questionStyle": "단일 사상·보기 판별",
+            "topic": "장자의 기의 모임과 흩어짐·생사 변화"
+          },
+          "7": {
+            "typeId": "social-life-ethics-relationships",
+            "questionStyle": "좌표 도식·상대적 특징",
+            "topic": "성적 자유주의와 보수주의의 책임 조건"
+          },
+          "8": {
+            "typeId": "social-life-ethics-work-ethics",
+            "questionStyle": "단일 사상·부정형 선지",
+            "topic": "정약용의 청렴·절용·애민"
+          },
+          "9": {
+            "typeId": "social-life-ethics-punishment",
+            "questionStyle": "도식 탐구·질문 판별",
+            "topic": "칸트·베카리아·루소의 형벌과 사회계약"
+          },
+          "10": {
+            "typeId": "social-life-ethics-distributive-justice",
+            "questionStyle": "사상 비교·보기 판별",
+            "topic": "노직의 소유 원리와 롤스의 차등 원칙"
+          },
+          "11": {
+            "typeId": "social-life-ethics-bio-medical",
+            "questionStyle": "단일 사상·보기 판별",
+            "topic": "하버마스의 자유주의적 우생학 비판"
+          },
+          "12": {
+            "typeId": "social-life-ethics-science-responsibility",
+            "questionStyle": "단일 사상·부정형 질문",
+            "topic": "요나스의 기술 권력과 책임 범위"
+          },
+          "13": {
+            "typeId": "social-life-ethics-information-ethics",
+            "questionStyle": "신문 칼럼·부정형 선지",
+            "topic": "허위 정보 유통과 매체 문해력"
+          },
+          "14": {
+            "typeId": "social-life-ethics-environmental-ethics",
+            "questionStyle": "도식 분류·입장 비교",
+            "topic": "테일러·칸트·레건의 자연과 도덕적 지위"
+          },
+          "15": {
+            "typeId": "social-life-ethics-state-citizen",
+            "questionStyle": "평가 답안·오류 판별",
+            "topic": "홉스와 로크의 자연 상태·국가 권력"
+          },
+          "16": {
+            "typeId": "social-life-ethics-consumption-housing",
+            "questionStyle": "단일 사상·부정형 선지",
+            "topic": "볼노브의 거주와 안전한 체험 공간"
+          },
+          "17": {
+            "typeId": "social-life-ethics-religion",
+            "questionStyle": "단일 사상·부정형 선지",
+            "topic": "엘리아데의 성현과 자연물의 성스러움"
+          },
+          "18": {
+            "typeId": "social-life-ethics-art-ethics",
+            "questionStyle": "가상 편지·비판 빈칸",
+            "topic": "묵자의 음악 비판과 사회적 실익"
+          },
+          "19": {
+            "typeId": "social-life-ethics-global-aid",
+            "questionStyle": "도식 비교·상호 비판",
+            "topic": "롤스·싱어·노직의 원조와 자선"
+          },
+          "20": {
+            "typeId": "social-life-ethics-unification",
+            "questionStyle": "토론·핵심 쟁점",
+            "topic": "종전 선언의 상호주의 조건"
+          }
+        },
+        "2023": {
+          "1": {
+            "typeId": "social-life-ethics-practical-ethics",
+            "questionStyle": "비판·빈칸 추론",
+            "topic": "실천 윤리학과 기술 윤리학의 목표"
+          },
+          "2": {
+            "typeId": "social-life-ethics-moral-theories",
+            "questionStyle": "사상 비교·선지 판별",
+            "topic": "장자의 자유와 불교의 연기·무아"
+          },
+          "3": {
+            "typeId": "social-life-ethics-information-ethics",
+            "questionStyle": "신문 칼럼·입장 판별",
+            "topic": "아동·청소년의 정보 자기 결정권과 잊힐 권리"
+          },
+          "4": {
+            "typeId": "social-life-ethics-moral-theories",
+            "questionStyle": "윤리 이론·사례 조언",
+            "topic": "아리스토텔레스의 중용·습관과 인성교육"
+          },
+          "5": {
+            "typeId": "social-life-ethics-bio-medical",
+            "questionStyle": "토론·핵심 쟁점",
+            "topic": "자녀 능력 향상을 위한 부모의 유전적 개입"
+          },
+          "6": {
+            "typeId": "social-life-ethics-life-death",
+            "questionStyle": "사상 비교·선지 판별",
+            "topic": "플라톤과 에피쿠로스의 죽음과 두려움"
+          },
+          "7": {
+            "typeId": "social-life-ethics-science-responsibility",
+            "questionStyle": "사상 비교·비판 추론",
+            "topic": "야스퍼스와 하이데거의 기술 중립성"
+          },
+          "8": {
+            "typeId": "social-life-ethics-multiculturalism",
+            "questionStyle": "가상 편지·입장 판별",
+            "topic": "문화의 고유성·공존과 보편적 가치"
+          },
+          "9": {
+            "typeId": "social-life-ethics-distributive-justice",
+            "questionStyle": "사상 비교·보기 판별",
+            "topic": "롤스의 기회·차등 원칙과 노직의 역사적 소유"
+          },
+          "10": {
+            "typeId": "social-life-ethics-environmental-ethics",
+            "questionStyle": "도식 분류·입장 비교",
+            "topic": "테일러·칸트·싱어의 도덕적 의무 범위"
+          },
+          "11": {
+            "typeId": "social-life-ethics-art-ethics",
+            "questionStyle": "사상 비교·선지 판별",
+            "topic": "묵자의 실익과 순자의 음악 교화"
+          },
+          "12": {
+            "typeId": "social-life-ethics-state-citizen",
+            "questionStyle": "사상 비교·보기 판별",
+            "topic": "로크와 홉스의 자연 상태·처벌권·저항권"
+          },
+          "13": {
+            "typeId": "social-life-ethics-peace-war",
+            "questionStyle": "사상 비교·보기 판별",
+            "topic": "모겐소의 세력 균형과 칸트의 평화 연맹"
+          },
+          "14": {
+            "typeId": "social-life-ethics-civil-disobedience",
+            "questionStyle": "도식 탐구·질문 판별",
+            "topic": "롤스와 싱어의 불복종 정당화 기준"
+          },
+          "15": {
+            "typeId": "social-life-ethics-consumption-housing",
+            "questionStyle": "가상 대담·입장 판별",
+            "topic": "보드리야르의 기호 소비와 차이 드러내기"
+          },
+          "16": {
+            "typeId": "social-life-ethics-work-ethics",
+            "questionStyle": "단일 사상·부정형 선지",
+            "topic": "정약용의 검약·청렴과 곤궁한 이들에 대한 배려"
+          },
+          "17": {
+            "typeId": "social-life-ethics-relationships",
+            "questionStyle": "강연·입장 판별",
+            "topic": "프롬의 사랑·존경과 상대방의 고유성"
+          },
+          "18": {
+            "typeId": "social-life-ethics-global-aid",
+            "questionStyle": "사상 비교·보기 판별",
+            "topic": "롤스와 싱어의 원조 목적·자율성·중단"
+          },
+          "19": {
+            "typeId": "social-life-ethics-punishment",
+            "questionStyle": "도식 비교·상호 비판",
+            "topic": "베카리아·루소·칸트의 사형 근거"
+          },
+          "20": {
+            "typeId": "social-life-ethics-unification",
+            "questionStyle": "좌표 도식·상대적 특징",
+            "topic": "통일의 경제 성장·평화·사회 안전망 가치"
+          }
+        },
+        "2024": {
+          "1": {
+            "typeId": "social-life-ethics-practical-ethics",
+            "questionStyle": "입장 비교·핵심 과제",
+            "topic": "규범 윤리학과 메타 윤리학의 과제"
+          },
+          "2": {
+            "typeId": "social-life-ethics-moral-theories",
+            "questionStyle": "윤리 이론·사례 조언",
+            "topic": "벤담의 쾌락 계산법을 기부 결정에 적용"
+          },
+          "3": {
+            "typeId": "social-life-ethics-moral-theories",
+            "questionStyle": "단일 사상·선지 판별",
+            "topic": "하버마스의 오류 가능성과 합리적 담론"
+          },
+          "4": {
+            "typeId": "social-life-ethics-bio-medical",
+            "questionStyle": "논증 도식·전제 반론",
+            "topic": "인간 배아의 도덕적 지위와 배아 복제"
+          },
+          "5": {
+            "typeId": "social-life-ethics-information-ethics",
+            "questionStyle": "토론·핵심 쟁점",
+            "topic": "SNS 광고의 규제와 전면 금지"
+          },
+          "6": {
+            "typeId": "social-life-ethics-moral-theories",
+            "questionStyle": "사상 비교·선지 판별",
+            "topic": "맹자의 본성·수양과 불교의 연기·자비"
+          },
+          "7": {
+            "typeId": "social-life-ethics-state-citizen",
+            "questionStyle": "도식 탐구·질문 판별",
+            "topic": "홉스와 로크의 국가 권력과 저항권"
+          },
+          "8": {
+            "typeId": "social-life-ethics-moral-theories",
+            "questionStyle": "윤리 이론·사례 조언",
+            "topic": "아리스토텔레스의 중용·절제를 식습관에 적용"
+          },
+          "9": {
+            "typeId": "social-life-ethics-civil-disobedience",
+            "questionStyle": "단일 사상·보기 판별",
+            "topic": "롤스의 법 충실성과 공통된 정의감"
+          },
+          "10": {
+            "typeId": "social-life-ethics-art-ethics",
+            "questionStyle": "단일 사상·선지 판별",
+            "topic": "칸트의 미적 판단과 도덕성 고양"
+          },
+          "11": {
+            "typeId": "social-life-ethics-punishment",
+            "questionStyle": "사상 비교·보기 판별",
+            "topic": "베카리아와 루소의 사형·사회계약"
+          },
+          "12": {
+            "typeId": "social-life-ethics-work-ethics",
+            "questionStyle": "단일 사상·부정형 선지",
+            "topic": "정약용의 공적 재산·절용·청렴"
+          },
+          "13": {
+            "typeId": "social-life-ethics-relationships",
+            "questionStyle": "대화·입장 비교",
+            "topic": "성적 보수주의와 중도주의의 사랑·결혼 조건"
+          },
+          "14": {
+            "typeId": "social-life-ethics-distributive-justice",
+            "questionStyle": "사상 비교·보기 판별",
+            "topic": "롤스와 노직의 분배·취득·재산권"
+          },
+          "15": {
+            "typeId": "social-life-ethics-environmental-ethics",
+            "questionStyle": "도식 분류·입장 비교",
+            "topic": "칸트·싱어·레오폴드의 자연과 동물 고려"
+          },
+          "16": {
+            "typeId": "social-life-ethics-peace-war",
+            "questionStyle": "사상 비교·부정형 선지",
+            "topic": "칸트의 환대권과 모겐소의 세력 균형"
+          },
+          "17": {
+            "typeId": "social-life-ethics-life-death",
+            "questionStyle": "사상 비교·선지 판별",
+            "topic": "공자와 장자의 죽음·도와 자연스러운 변화"
+          },
+          "18": {
+            "typeId": "social-life-ethics-science-responsibility",
+            "questionStyle": "단일 사상·선지 판별",
+            "topic": "요나스의 기술 권력과 책임 범위 확대"
+          },
+          "19": {
+            "typeId": "social-life-ethics-global-aid",
+            "questionStyle": "사상 비교·보기 판별",
+            "topic": "롤스의 정치 문화 개선과 싱어의 고통 감소"
+          },
+          "20": {
+            "typeId": "social-life-ethics-religion",
+            "questionStyle": "강연·입장 판별",
+            "topic": "큉의 종교 간 대화·관용과 세계 윤리"
+          }
+        },
+        "2025": {
+          "1": {
+            "typeId": "social-life-ethics-practical-ethics",
+            "questionStyle": "입장 비교·핵심 과제",
+            "topic": "메타 윤리학과 실천 윤리학의 과제"
+          },
+          "2": {
+            "typeId": "social-life-ethics-bio-medical",
+            "questionStyle": "토론·핵심 쟁점",
+            "topic": "생명과학적 이타심 강화와 도덕적 자율성"
+          },
+          "3": {
+            "typeId": "social-life-ethics-art-ethics",
+            "questionStyle": "강연·입장 판별",
+            "topic": "아리스토텔레스의 예술 모방과 개연성"
+          },
+          "4": {
+            "typeId": "social-life-ethics-life-death",
+            "questionStyle": "사상 비교·선지 판별",
+            "topic": "장자와 불교의 생사 변화·해탈"
+          },
+          "5": {
+            "typeId": "social-life-ethics-religion",
+            "questionStyle": "단일 사상·선지 판별",
+            "topic": "엘리아데의 우주적 성현과 세속 공간"
+          },
+          "6": {
+            "typeId": "social-life-ethics-science-responsibility",
+            "questionStyle": "단일 사상·보기 판별",
+            "topic": "요나스의 비호혜적 미래 책임과 자연"
+          },
+          "7": {
+            "typeId": "social-life-ethics-science-responsibility",
+            "questionStyle": "논증 도식·전제 반론",
+            "topic": "인공지능의 일자리 영향과 법적 규제"
+          },
+          "8": {
+            "typeId": "social-life-ethics-work-ethics",
+            "questionStyle": "사상 비교·보기 판별",
+            "topic": "칼뱅의 소명과 순자의 직분·노동 이익"
+          },
+          "9": {
+            "typeId": "social-life-ethics-environmental-ethics",
+            "questionStyle": "도식 분류·입장 비교",
+            "topic": "칸트·레오폴드·싱어의 도덕적 고려"
+          },
+          "10": {
+            "typeId": "social-life-ethics-state-citizen",
+            "questionStyle": "사상 비교·보기 판별",
+            "topic": "홉스와 로크의 사회계약·자연권"
+          },
+          "11": {
+            "typeId": "social-life-ethics-moral-theories",
+            "questionStyle": "사상 비교·부정형 선지",
+            "topic": "맹자와 노자의 도·본성·수양"
+          },
+          "12": {
+            "typeId": "social-life-ethics-art-ethics",
+            "questionStyle": "단일 사상·선지 판별",
+            "topic": "아도르노의 문화 산업과 표준화된 대중문화"
+          },
+          "13": {
+            "typeId": "social-life-ethics-science-responsibility",
+            "questionStyle": "신문 칼럼·입장 판별",
+            "topic": "포퍼의 비판적 합리주의와 과학의 반증 가능성"
+          },
+          "14": {
+            "typeId": "social-life-ethics-global-aid",
+            "questionStyle": "도식 탐구·질문 판별",
+            "topic": "싱어와 롤스의 원조 의무·필요·중단"
+          },
+          "15": {
+            "typeId": "social-life-ethics-distributive-justice",
+            "questionStyle": "사상 비교·보기 판별",
+            "topic": "롤스의 원초적 입장과 노직의 최소 국가"
+          },
+          "16": {
+            "typeId": "social-life-ethics-punishment",
+            "questionStyle": "도식 비교·상호 비판",
+            "topic": "칸트·루소·베카리아의 사형 정당성"
+          },
+          "17": {
+            "typeId": "social-life-ethics-moral-theories",
+            "questionStyle": "윤리 이론·사례 조언",
+            "topic": "칸트의 선의지·인격 존중과 거짓 약속"
+          },
+          "18": {
+            "typeId": "social-life-ethics-civil-disobedience",
+            "questionStyle": "단일 사상·선지 판별",
+            "topic": "롤스의 공공적 정의관과 불복종 대상"
+          },
+          "19": {
+            "typeId": "social-life-ethics-peace-war",
+            "questionStyle": "단일 사상·선지 판별",
+            "topic": "칸트의 시민법·국제법·세계 시민법과 영구 평화"
+          },
+          "20": {
+            "typeId": "social-life-ethics-unification",
+            "questionStyle": "대화·입장 비교",
+            "topic": "통일의 당위와 비용·편익·분단 비용"
+          }
+        },
+        "2026": {
+          "1": {
+            "typeId": "social-life-ethics-practical-ethics",
+            "questionStyle": "입장 비교·핵심 과제",
+            "topic": "실천 윤리학과 기술 윤리학의 과제"
+          },
+          "2": {
+            "typeId": "social-life-ethics-distributive-justice",
+            "questionStyle": "토론·핵심 쟁점",
+            "topic": "사회적 약자 우대 정책과 기회의 공정성"
+          },
+          "3": {
+            "typeId": "social-life-ethics-art-ethics",
+            "questionStyle": "강연·입장 판별",
+            "topic": "톨스토이의 감정 교류와 예술의 보편적 역할"
+          },
+          "4": {
+            "typeId": "social-life-ethics-life-death",
+            "questionStyle": "사상 비교·선지 판별",
+            "topic": "불교와 장자의 생사 고통·순환과 수행"
+          },
+          "5": {
+            "typeId": "social-life-ethics-relationships",
+            "questionStyle": "단일 사상·선지 판별",
+            "topic": "프롬의 사랑과 성적 욕망·육체적 결합"
+          },
+          "6": {
+            "typeId": "social-life-ethics-life-death",
+            "questionStyle": "가상 편지·입장 판별",
+            "topic": "칸트의 자살 비판과 자기 인격 보존 의무"
+          },
+          "7": {
+            "typeId": "social-life-ethics-environmental-ethics",
+            "questionStyle": "도식 비교·상호 비판",
+            "topic": "레오폴드와 칸트의 대지·인간에 대한 의무"
+          },
+          "8": {
+            "typeId": "social-life-ethics-work-ethics",
+            "questionStyle": "사상 비교·선지 판별",
+            "topic": "칼뱅의 직업 소명과 순자의 능력·직분"
+          },
+          "9": {
+            "typeId": "social-life-ethics-civil-disobedience",
+            "questionStyle": "단일 사상·선지 판별",
+            "topic": "롤스의 비폭력·공개성·법 충실성"
+          },
+          "10": {
+            "typeId": "social-life-ethics-moral-theories",
+            "questionStyle": "단일 사상·선지 판별",
+            "topic": "하버마스의 도구적 행위와 의사소통적 행위"
+          },
+          "11": {
+            "typeId": "social-life-ethics-punishment",
+            "questionStyle": "사상 비교·보기 판별",
+            "topic": "칸트의 응보와 베카리아의 지속적 예방 효과"
+          },
+          "12": {
+            "typeId": "social-life-ethics-science-responsibility",
+            "questionStyle": "단일 사상·보기 판별",
+            "topic": "요나스의 예견적 지식 한계와 책임"
+          },
+          "13": {
+            "typeId": "social-life-ethics-state-citizen",
+            "questionStyle": "가상 대화·입장 비교",
+            "topic": "루소와 로크의 권리 양도·입법권·정부 교체"
+          },
+          "14": {
+            "typeId": "social-life-ethics-moral-theories",
+            "questionStyle": "단일 사상·선지 판별",
+            "topic": "공자의 인·의·예와 덕치"
+          },
+          "15": {
+            "typeId": "social-life-ethics-distributive-justice",
+            "questionStyle": "사상 비교·선지 판별",
+            "topic": "노직의 정당한 소유와 롤스의 원초적 입장"
+          },
+          "16": {
+            "typeId": "social-life-ethics-state-citizen",
+            "questionStyle": "신문 칼럼·입장 판별",
+            "topic": "밀의 개별성·해악 원칙과 여론의 횡포"
+          },
+          "17": {
+            "typeId": "social-life-ethics-moral-theories",
+            "questionStyle": "사상 비교·선지 판별",
+            "topic": "매킨타이어의 실천적 덕과 벤담의 공리"
+          },
+          "18": {
+            "typeId": "social-life-ethics-peace-war",
+            "questionStyle": "단일 사상·선지 판별",
+            "topic": "칸트의 세계 공화국 이념과 평화 연맹"
+          },
+          "19": {
+            "typeId": "social-life-ethics-global-aid",
+            "questionStyle": "도식 탐구·질문 판별",
+            "topic": "싱어와 노직의 원조 의무·자선·소유권"
+          },
+          "20": {
+            "typeId": "social-life-ethics-animal-rights",
+            "questionStyle": "윤리 이론·사례 조언",
+            "topic": "싱어의 이익 평등 고려와 화장품 동물실험"
+          }
+        },
+        "2027": {
+          "1": {
+            "typeId": "social-life-ethics-practical-ethics",
+            "questionStyle": "입장 비교·핵심 과제",
+            "topic": "실천 윤리학과 기술 윤리학의 과제"
+          },
+          "2": {
+            "typeId": "social-life-ethics-information-ethics",
+            "questionStyle": "토론·핵심 쟁점",
+            "topic": "공익적 개인 정보 활용과 당사자 동의"
+          },
+          "3": {
+            "typeId": "social-life-ethics-art-ethics",
+            "questionStyle": "강연·입장 판별",
+            "topic": "칸트의 무관심적 미적 판단과 보편성"
+          },
+          "4": {
+            "typeId": "social-life-ethics-moral-theories",
+            "questionStyle": "사상 비교·선지 판별",
+            "topic": "장자의 제물과 불교의 연기·자비"
+          },
+          "5": {
+            "typeId": "social-life-ethics-moral-theories",
+            "questionStyle": "단일 사상·선지 판별",
+            "topic": "하버마스의 의사소통과 타당성 주장"
+          },
+          "6": {
+            "typeId": "social-life-ethics-global-aid",
+            "questionStyle": "가상 편지·입장 판별",
+            "topic": "싱어의 효과적 이타주의와 기부 의무"
+          },
+          "7": {
+            "typeId": "social-life-ethics-distributive-justice",
+            "questionStyle": "도식 탐구·질문 판별",
+            "topic": "노직의 최소 국가와 롤스의 공정한 합의"
+          },
+          "8": {
+            "typeId": "social-life-ethics-animal-rights",
+            "questionStyle": "단일 사상·선지 판별",
+            "topic": "싱어의 동물실험 정당화와 고통 경감"
+          },
+          "9": {
+            "typeId": "social-life-ethics-work-ethics",
+            "questionStyle": "단일 사상·선지 판별",
+            "topic": "맹자의 항산·항심과 직업적 생계 보장"
+          },
+          "10": {
+            "typeId": "social-life-ethics-peace-war",
+            "questionStyle": "사상 비교·선지 판별",
+            "topic": "칸트의 영구 평화와 모겐소의 현실주의"
+          },
+          "11": {
+            "typeId": "social-life-ethics-environmental-ethics",
+            "questionStyle": "도식 분류·입장 비교",
+            "topic": "칸트·레오폴드·테일러의 의무와 자연의 가치"
+          },
+          "12": {
+            "typeId": "social-life-ethics-religion",
+            "questionStyle": "단일 사상·선지 판별",
+            "topic": "엘리아데의 종교적 인간·성현·의례"
+          },
+          "13": {
+            "typeId": "social-life-ethics-life-death",
+            "questionStyle": "가상 대화·입장 비교",
+            "topic": "공자와 장자의 죽음에 대한 앎과 순응"
+          },
+          "14": {
+            "typeId": "social-life-ethics-science-responsibility",
+            "questionStyle": "단일 사상·선지 판별",
+            "topic": "요나스의 기술 비판과 부작위의 책임"
+          },
+          "15": {
+            "typeId": "social-life-ethics-punishment",
+            "questionStyle": "단일 사상·선지 판별",
+            "topic": "베카리아의 사형·생명권·필요와 유용성"
+          },
+          "16": {
+            "typeId": "social-life-ethics-relationships",
+            "questionStyle": "신문 칼럼·입장 판별",
+            "topic": "성적 자기 결정권과 타인의 권리·책임"
+          },
+          "17": {
+            "typeId": "social-life-ethics-state-citizen",
+            "questionStyle": "단일 사상·선지 판별",
+            "topic": "로크의 정치 권력·동의·재산 보존"
+          },
+          "18": {
+            "typeId": "social-life-ethics-moral-theories",
+            "questionStyle": "윤리 이론·사례 조언",
+            "topic": "벤담의 양적 공리주의를 여가·봉사에 적용"
+          },
+          "19": {
+            "typeId": "social-life-ethics-civil-disobedience",
+            "questionStyle": "사상 비교·부정형 선지",
+            "topic": "소로·롤스·싱어의 양심·정의·결과 기준"
+          },
+          "20": {
+            "typeId": "social-life-ethics-consumption-housing",
+            "questionStyle": "단일 사상·선지 판별",
+            "topic": "베블런의 과시 소비와 유한계급의 명성"
+          }
+        }
+      },
+      "reviewNotes": [
+        "한국교육과정평가원 문제지 2018~2027학년도 생활과 윤리 각 20문항, 총 200문항의 발문·자료·선택지를 대조한 학습용 분류이다. 공식 세부 출제 분류 또는 공식 정답 분석을 뜻하지 않는다.",
+        "주제 유형 1개와 발문 형식(questionStyle)을 별도로 기록했다. 같은 사상가라도 문항이 다루는 주제에 따라 분배정의·형벌·시민불복종·환경·해외원조 등으로 구분했다.",
+        "네이티브 PDF 문자 추출에서 누락되는 편지·강연·평가 답안·좌표 도식은 렌더링한 문항 이미지로 확인했다. 결과에는 원문 지문이나 선택지 전문을 복제하지 않았다.",
+        "2018 10번, 2020 5번, 2022 5번, 2024 2·8번, 2025 17번, 2027 18번은 사이버 괴롭힘·기부·자율주행·식습관·약속·봉사라는 소재보다 발문이 요구하는 기본 윤리 이론의 적용을 기준으로 moral-theories에 배정했다.",
+        "2018 13번은 칸트의 선의지와 니부어의 사회정의가 교차한다. 두 사상가의 선의지 역할을 비교하는 문항이어서 moral-theories로 정했고, 니부어 단독의 집단 이기심·정의 실현 문항인 2019 3번과 2020 12번은 state-citizen으로 정했다.",
+        "2019 4번과 2026 16번은 토론·온라인 여론이 소재이지만 밀의 자유·개별성·여론의 강제를 묻는 내용이어서 state-citizen으로 정했다. 정보 생산·유통·개인 정보 자체의 규범을 묻는 문항은 information-ethics로 분리했다.",
+        "2021 3번, 2024 3번, 2026 10번, 2027 5번은 담론·의사소통 윤리의 기본 원리를 묻기 때문에 moral-theories이다. 2022 11번의 하버마스는 유전적 간섭·우생학을 묻기 때문에 bio-medical이다.",
+        "2018 19번, 2026 20번, 2027 8번은 동물실험의 정당화에 초점을 두어 animal-rights로 분리했다. 동물·생명·대지·인간 중심 관점의 도덕적 고려 범위를 함께 비교하는 문항은 environmental-ethics이다. 싱어가 등장한다는 이유만으로 모두 동물실험이나 해외원조에 배정하지 않았다.",
+        "2024 5번은 윤리적 소비도 언급하지만 핵심 쟁점이 SNS 광고의 매체 규제 범위이므로 information-ethics로 정했다. 2025 12번은 소비도 다루지만 문화 산업의 표준화·상품화 비판에 초점을 두어 art-ethics로 정했다.",
+        "2025 2번은 자율성과 결과라는 도덕 판단 기준을 포함하지만 생명과학적 인간 강화의 도덕성을 묻는 생명 윤리 사례이므로 bio-medical이다. 2025 7번은 노동권 일반보다 인공지능 기술의 사회적 영향과 규제 논증을 다루므로 science-responsibility이다.",
+        "2026 6번은 칸트의 의무론을 사용하지만 자살과 자기 인격 보존을 다루는 편지여서 life-death로 배정했다. 2027 9번은 군주의 역할도 다루지만 항산·항심과 직업 활동을 통한 생계 기반을 중심으로 work-ethics에 배정했다.",
+        "가족과 친구, 성과 사랑은 하나의 인간관계 유형으로 묶었고, 소비와 주거는 생활 윤리 유형으로 묶었다. 학습 단원 6개는 탐색을 위한 재구성이며 교육과정의 공식 단원명·편제와 동일하다고 주장하지 않는다.",
+        "문항별 실제 정답, 정답률, 오답률, 난도 또는 교사·전문의의 검토 여부는 이 분류에서 생성하거나 추정하지 않았다."
+      ]
+    }
+  },
+  "papers": [
+    {
+      "year": 2018,
+      "courseId": "social-culture",
+      "resourceId": "KICE-e893d63166f67cc94f6504cc5051b251",
+      "fileId": "42a3d1ecd939bbcb6fde3d63",
+      "fileName": "09 사회문화.pdf",
+      "pdfSha256": "846b139cb9eb20f0a1ff7ddb3b2c40b52b30fcb59adb92461daa41ce123f59d9"
+    },
+    {
+      "year": 2018,
+      "courseId": "social-life-ethics",
+      "resourceId": "KICE-e893d63166f67cc94f6504cc5051b251",
+      "fileId": "20bf52b304dd4e504315e4b5",
+      "fileName": "01 생활과 윤리.pdf",
+      "pdfSha256": "2d45126179272ac864a097178d77505782cae569343c8ddac1fd872e05861138"
+    },
+    {
+      "year": 2019,
+      "courseId": "social-life-ethics",
+      "resourceId": "KICE-c412272cd748c63731e5152c94d82e59",
+      "fileId": "41760e2aa7278694b30f05bd",
+      "fileName": "01 사탐(생활과 윤리).pdf",
+      "pdfSha256": "2efda2dc6922ba7c762877ef0b94187b0474bcdb3eb87d0628adfba424a2cc01"
+    },
+    {
+      "year": 2019,
+      "courseId": "social-culture",
+      "resourceId": "KICE-c412272cd748c63731e5152c94d82e59",
+      "fileId": "f0b1a0c431404ca25d3e0800",
+      "fileName": "09 사탐(사회·문화).pdf",
+      "pdfSha256": "a08a6ba46bc3fa8c73444768fbf3dc356c3816f5a216a74379f1c75141d2a176"
+    },
+    {
+      "year": 2020,
+      "courseId": "social-life-ethics",
+      "resourceId": "KICE-52f987782f23e05fd708eede0b08660b",
+      "fileId": "345d64ec8c8d3070eaba4f15",
+      "fileName": "01 사탐(생활과 윤리).pdf",
+      "pdfSha256": "ed61b4b365851a65563cda6395a381953431b039fdd3102e8a6a8f029043d0f1"
+    },
+    {
+      "year": 2020,
+      "courseId": "social-culture",
+      "resourceId": "KICE-52f987782f23e05fd708eede0b08660b",
+      "fileId": "db5f4531c613d5def66234f3",
+      "fileName": "09 사탐(사회·문화).pdf",
+      "pdfSha256": "612769a77c63d7147fb9dfe567c923593cc69bd6ec539d04bb9e3417ae795e30"
+    },
+    {
+      "year": 2021,
+      "courseId": "social-life-ethics",
+      "resourceId": "KICE-a3a87239884dd152dc74928cd7665b96",
+      "fileId": "d16bc876f7304640466a9954",
+      "fileName": "01 사탐(생활과 윤리).pdf",
+      "pdfSha256": "1028ef2b242461a79f7b5b87465ccbbb4cf4221f3def1219c0d61af646714b0c"
+    },
+    {
+      "year": 2021,
+      "courseId": "social-culture",
+      "resourceId": "KICE-a3a87239884dd152dc74928cd7665b96",
+      "fileId": "cbc3dbc4b537009d3da134e6",
+      "fileName": "09 사탐(사회·문화).pdf",
+      "pdfSha256": "93a47804ab72cac539b5b898dc1196c3375ff413df10f24bb477cd9840556005"
+    },
+    {
+      "year": 2022,
+      "courseId": "social-life-ethics",
+      "resourceId": "KICE-5e702d9247c694e011afb5a966429b7e",
+      "fileId": "ebb521ab686ff0f5fda35ed5",
+      "fileName": "01 사탐(생활과 윤리).pdf",
+      "pdfSha256": "68ea0c71d917c0084ed65f52c85f57e24a1961f8c07ea2b90e20d2083b5033c7"
+    },
+    {
+      "year": 2022,
+      "courseId": "social-culture",
+      "resourceId": "KICE-5e702d9247c694e011afb5a966429b7e",
+      "fileId": "8bda819252a263cc9bb0a2ff",
+      "fileName": "09 사탐(사회·문화).pdf",
+      "pdfSha256": "d9777d36b7f18833d81f9247ed6d3712131c21858b5bdca23f333fba6ffd7839"
+    },
+    {
+      "year": 2023,
+      "courseId": "social-life-ethics",
+      "resourceId": "KICE-5f485d6391a97c28b98e07a6ec4900eb",
+      "fileId": "6f196a800349d2b81217b8d4",
+      "fileName": "01 생활과 윤리.pdf",
+      "pdfSha256": "5d4b27c5fad1deb9ebeccf64ce323368139968fd41f33baa50e8a01598ecce91"
+    },
+    {
+      "year": 2023,
+      "courseId": "social-culture",
+      "resourceId": "KICE-5f485d6391a97c28b98e07a6ec4900eb",
+      "fileId": "f119b142048c0b67e9868f6b",
+      "fileName": "09 사회·문화.pdf",
+      "pdfSha256": "17f0b59a507edbb058f79b9053273b47bceea497eac8cdad8c22604b5b327873"
+    },
+    {
+      "year": 2024,
+      "courseId": "social-life-ethics",
+      "resourceId": "KICE-7a3d9e0ba25bcc30acdbfb18a34ae224",
+      "fileId": "c169ef350cdd2e6891747b44",
+      "fileName": "01 생활과 윤리_문제.pdf",
+      "pdfSha256": "088da90d8d8c1d1c9253d77f67a0af18ad7e82ca75a1682d44e10cf5cdd345d5"
+    },
+    {
+      "year": 2024,
+      "courseId": "social-culture",
+      "resourceId": "KICE-7a3d9e0ba25bcc30acdbfb18a34ae224",
+      "fileId": "6c4de978e33175876749342a",
+      "fileName": "09 사회·문화_문제.pdf",
+      "pdfSha256": "709ef21f1986d9b66bb31ac122cdd42d1f10a4e5a004aa3865c8ea55cc3abbf9"
+    },
+    {
+      "year": 2025,
+      "courseId": "social-life-ethics",
+      "resourceId": "KICE-a3b68fda9c52b64519e135def6a6137c",
+      "fileId": "80a69a078c476639d08b0967",
+      "fileName": "4교시1_사회탐구/01 생활과 윤리_문제지.pdf",
+      "pdfSha256": "256b741a4e29e27c1ca4d0b63c5df1c9a98f1fc23f1eb0a33b0929d785d3688f"
+    },
+    {
+      "year": 2025,
+      "courseId": "social-culture",
+      "resourceId": "KICE-a3b68fda9c52b64519e135def6a6137c",
+      "fileId": "aafcfdc94418d548ec8c7f02",
+      "fileName": "4교시1_사회탐구/09 사회·문화_문제지.pdf",
+      "pdfSha256": "0c7062f838d1e67f4110a2669c81391cd32b7272af29eae1939ed5246b57ff55"
+    },
+    {
+      "year": 2026,
+      "courseId": "social-life-ethics",
+      "resourceId": "KICE-a5ffc663f52f11f8dd633837c03ac84a",
+      "fileId": "22237ca392280c11c1d21255",
+      "fileName": "01 생활과 윤리_문제.pdf",
+      "pdfSha256": "952bf5db3e39b2b28ce4a3c0c8ec3a5d24a3c52bba9775e7d8ecef19ffcfe92c"
+    },
+    {
+      "year": 2026,
+      "courseId": "social-culture",
+      "resourceId": "KICE-a5ffc663f52f11f8dd633837c03ac84a",
+      "fileId": "3007394e78f3c3869c46f032",
+      "fileName": "09 사회·문화_문제.pdf",
+      "pdfSha256": "ecb7d0fab7d14d3f54be4e98b3c210c58cd2e220a92f1bb1ad60e79cea304c73"
+    },
+    {
+      "year": 2027,
+      "courseId": "social-culture",
+      "resourceId": "KICE-2027-27DaeSuneung_42_9.pdf",
+      "fileId": "paper",
+      "fileName": "사회·문화 문제 PDF",
+      "pdfSha256": "af8e6af1873eb6bb3cd96658a5c694253aa6283bb88c0ec3cd0d7bc463621b36"
+    },
+    {
+      "year": 2027,
+      "courseId": "social-life-ethics",
+      "resourceId": "KICE-2027-27DaeSuneung_42_1.pdf",
+      "fileId": "paper",
+      "fileName": "생활과 윤리 문제 PDF",
+      "pdfSha256": "05368742acddf5a5602bcd373c57dc035ec47a8202285268bc9ab69af85ff4d6"
+    }
+  ]
+}
