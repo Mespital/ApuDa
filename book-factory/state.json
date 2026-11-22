@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "updated": "2026-11-22T05:56:00Z",
+ "updated": "2026-11-22T06:57:00Z",
  "wip_limit": {
   "claude_text": 2,
   "chatgpt_art": 10,
@@ -996,17 +996,23 @@
    "no": 15,
    "code": "LEU",
    "name": "백혈병",
-   "stage": "S2",
-   "status": "ready",
-   "note": "골든샘플·목차",
-   "waiting_on": null,
+   "stage": "G1",
+   "status": "waiting",
+   "note": "골든샘플·목차 미발견 → S1 새로 설계(성인 급성백혈병 AML·ALL·APL 중심 + CML·CLL 15장, 6부 30장·EP20·FAQ100, aml/all/cml.json 뼈대)",
+   "waiting_on": "대표: volumes/15LEU/S1_지시서.md 확인 후 결재함에 'G1 승인 LEU' 또는 'G1 수정 LEU: …' (골든샘플·목차 위치 알면 메모, 표지 없음)",
    "history": [
     {
      "date": "2026-11-21",
      "event": "공장 등록",
      "detail": "골든샘플·목차"
+    },
+    {
+     "date": "2026-11-22",
+     "event": "S1 지시서 발행 → G1",
+     "detail": "골든샘플·목차 미발견(Drive 백혈병 폴더는 사진뿐) → aml·all·cml.json 300문항에서 FAQ 100 선별. 주인공 기훈(AML 강한 관해유도→관해→공고→이식 상의, 남동생 기범 HLA)·아내 보람·아들 준서 + 보조 점순(고령 저강도, EP17)·유진(Ph+ ALL·생식력, EP13·16)·상우(APL, EP12)·길수(CML, EP19). 골든샘플 예정 8·20·3장"
     }
-   ]
+   ],
+   "waiting_since": "2026-11-22T06:57:00Z"
   },
   {
    "no": 16,
@@ -1028,17 +1034,23 @@
    "no": 17,
    "code": "EC",
    "name": "식도암",
-   "stage": "S2",
-   "status": "ready",
-   "note": "골든샘플·목차",
-   "waiting_on": null,
+   "stage": "G1",
+   "status": "waiting",
+   "note": "골든샘플·목차 미발견 → S1 새로 설계(편평세포암 중심, 내시경·수술 전 치료→수술·근치적 항암방사선·전신치료, 6부 30장·EP20·FAQ100, esophageal.json 뼈대)",
+   "waiting_on": "대표: volumes/17EC/S1_지시서.md 확인 후 결재함에 'G1 승인 EC' 또는 'G1 수정 EC: …' (골든샘플·목차 위치 알면 메모)",
    "history": [
     {
      "date": "2026-11-21",
      "event": "공장 등록",
      "detail": "골든샘플·목차"
+    },
+    {
+     "date": "2026-11-22",
+     "event": "S1 지시서 발행 → G1",
+     "detail": "골든샘플·목차 미발견(Drive 식도암 폴더는 사진 13장뿐) → esophageal.json 100문항 뼈대로 새로 설계. 주인공 병구(국소진행 편평세포암·수술 전 항암방사선→식도절제술·공장루)·아내 귀남·딸 소라 + 보조 재근(근치적 항암방사선, EP17)·경희(초기 ESD, EP12). 골든샘플 예정 8·4·21장"
     }
-   ]
+   ],
+   "waiting_since": "2026-11-22T06:57:00Z"
   },
   {
    "no": 18,
