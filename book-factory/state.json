@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "updated": "2026-11-22T13:58:00Z",
+ "updated": "2026-11-22T14:57:14Z",
  "wip_limit": {
   "claude_text": 2,
   "chatgpt_art": 10,
@@ -67,7 +67,8 @@
      "detail": "v29만화+v1.6본책 합본 284쪽 → BC v2.0 통합본 + 만화 23컷 재생성"
     }
    ],
-   "waiting_since": "2026-11-21T05:39:00Z"
+   "waiting_since": "2026-11-21T05:39:00Z",
+   "draft_complete": false
   },
   {
    "no": 2,
@@ -84,7 +85,8 @@
      "detail": "v22 220쪽 → v23 (HTML태그·심화 만화 정리·만화 13컷 재생성)"
     }
    ],
-   "waiting_since": "2026-11-21T05:39:00Z"
+   "waiting_since": "2026-11-21T05:39:00Z",
+   "draft_complete": false
   },
   {
    "no": 3,
@@ -185,7 +187,8 @@
    "s3": {
     "file": "volumes/03GC/S3_ChatGPT지시.md",
     "drive_doc": "1PpCGaolzfinOeVMIzjpHV8mwge1_m2gwSH7UsccP9nU"
-   }
+   },
+   "draft_complete": false
   },
   {
    "no": 4,
@@ -286,7 +289,8 @@
    "s3": {
     "file": "volumes/04CRC/S3_ChatGPT지시.md",
     "drive_doc": "1vZfLQScGFXMz2Q--OTphZQjYhkwX363Z_q88CPP8M2M"
-   }
+   },
+   "draft_complete": false
   },
   {
    "no": 5,
@@ -387,7 +391,8 @@
    "s3": {
     "file": "volumes/05TC/S3_ChatGPT지시.md",
     "drive_doc": "1832YRzGbcqpq74boNwJ81p672PdskLVXk2nlUPRhaYw"
-   }
+   },
+   "draft_complete": false
   },
   {
    "no": 6,
@@ -488,7 +493,8 @@
    "s3": {
     "file": "volumes/06RCC/S3_ChatGPT지시.md",
     "drive_doc": "1jZGYlhLA2WUymzx1oXj6T4rpXRgfiScuH89ffNgqB6g"
-   }
+   },
+   "draft_complete": false
   },
   {
    "no": 7,
@@ -589,7 +595,8 @@
     "drive_doc": "1SKvKaQ_pBthbvSzETG1SuKxmVYL2bMprZP43eErY-y8"
    },
    "waiting_on": "대표: Drive 01의 「⑦ PRC 전립선암 — S3 만화 지시」를 ChatGPT 새 채팅에 붙여넣고 '계속' → ⛔에서 결재함 '완료 PRC' + 그림을 Claude 채팅에 올려 '검수'",
-   "waiting_since": "2026-11-21T17:54:00Z"
+   "waiting_since": "2026-11-21T17:54:00Z",
+   "draft_complete": false
   },
   {
    "no": 8,
@@ -690,7 +697,8 @@
     "drive_doc": "10-hFZ5F8qKc_HSMeLU4alyKGaPC4C3MdMYUmFmomE5g"
    },
    "waiting_on": "대표: Drive 01의 「⑧ PC 췌장암 — S3 만화 지시」를 ChatGPT 새 채팅에 붙여넣고 '계속' → ⛔에서 결재함 '완료 PC' + 그림을 Claude 채팅에 올려 '검수'",
-   "waiting_since": "2026-11-21T20:56:00Z"
+   "waiting_since": "2026-11-21T20:56:00Z",
+   "draft_complete": false
   },
   {
    "no": 9,
@@ -791,7 +799,8 @@
     "drive_doc": "1AIZpBtSwtTrnYvG19sMhSuH5p4H31mbY5x5NScafsB8"
    },
    "waiting_on": "대표: Drive 01의 「⑨ BTC 담낭·담도암 — S3 만화 지시」를 ChatGPT 새 채팅에 붙여넣고 '계속' → ⛔에서 결재함 '완료 BTC' + 그림을 Claude 채팅에 올려 '검수'",
-   "waiting_since": "2026-11-21T23:58:00Z"
+   "waiting_since": "2026-11-21T23:58:00Z",
+   "draft_complete": false
   },
   {
    "no": 10,
@@ -892,16 +901,17 @@
     "file": "volumes/10HCC/S3_ChatGPT지시.md",
     "drive_doc": "1QbCgronS6-YQPZYGl-bSCQvJkqlsWhMmqYzfcSXodI4"
    },
-   "waiting_since": "2026-11-22T02:52:00Z"
+   "waiting_since": "2026-11-22T02:52:00Z",
+   "draft_complete": false
   },
   {
    "no": 11,
    "code": "LYM",
    "name": "림프종",
-   "stage": "G1",
-   "status": "waiting",
+   "stage": "S2",
+   "status": "ready",
    "note": "S1 지시서 발행(6부 30장·EP20·4컷 80칸·FAQ100·캐릭터 재원·소연). 기존 11 완전판(2026.10) 재사용",
-   "waiting_on": "대표: volumes/11LYM/S1_지시서.md 확인 후 결재함에 'G1 승인 LYM' 또는 'G1 수정 LYM: …'",
+   "waiting_on": null,
    "history": [
     {
      "date": "2026-11-21",
@@ -912,18 +922,24 @@
      "date": "2026-11-22",
      "event": "S1 완료",
      "detail": "volumes/11LYM/S1_지시서.md 발행(6부 30장·EP20·4컷 80칸·FAQ100·캐릭터 재원·소연·딸 하은 + 보조 기철(관찰)·서윤(호지킨)). 기존 11 완전판(2026.10, Drive 1qLBAoaw1MmXeUD3qIxEtsV9N3zYnJO0W) 재사용. 고칠 것: 38.0°C, 주기 수·이식 나이 기준·유지요법 기간·제도 수치 삭제, 사례 명숙→영자(HCC 겹침)·MALT 제균 경로로, 판권 실제 전문의 서면감수 전. 범위: SLL/CLL→LEU권, PCNSL 별도 상담"
+    },
+    {
+     "date": "2026-11-22",
+     "event": "초고 완성 모드 → S2",
+     "detail": "대표 지시(FACTORY §3, 2026-11-22 14:50 UTC): G1 결재를 기다리지 않고 S2 원고 착수 대기(G1은 사후 검토). 다음 실행부터 order 순서로 2권씩 골든샘플 3장 먼저"
     }
    ],
-   "waiting_since": "2026-11-22T03:56:00Z"
+   "waiting_since": "2026-11-22T03:56:00Z",
+   "draft_complete": false
   },
   {
    "no": 12,
    "code": "CXC",
    "name": "자궁경부암·자궁내막암",
-   "stage": "G1",
-   "status": "waiting",
+   "stage": "S2",
+   "status": "ready",
    "note": "S1 지시서 발행(자궁경부암 단권안). 자궁내막암 처리 결재 필요",
-   "waiting_on": "대표: volumes/12CXC/S1_지시서.md 확인 후 결재함에 'G1 승인 CXC'(자궁경부암 단권) 또는 'G1 수정 CXC: 내막암 합본'",
+   "waiting_on": null,
    "history": [
     {
      "date": "2026-11-21",
@@ -934,18 +950,24 @@
      "date": "2026-11-22",
      "event": "S1 완료",
      "detail": "volumes/12CXC/S1_지시서.md 발행(6부 30장·EP20·4컷 80칸·FAQ100·캐릭터 윤희·태호·딸 서아·동생 윤정 + 보조 다인(수술·가임력)·경미/가람(병기 변화·재발·완화)). 기존 12 자궁경부암 완전판(2026.10, Drive 17825TqND2utPP_Qq7iR9TfMz3XkcFDo7) 재사용. 자궁내막암 원고는 저장소·Drive에 없음 → (가) 경부암 단권 + 내막암 별권/부인암 묶음 vs (나) 합본을 G1에서 결재. 고칠 것: 38.0°C, 재발률 5~20% 등 예후 수치 삭제, 항암 회차·투여 간격 삭제, 사례 지은→다인(TC 겹침)·미선→IB2 수술 후 방사선 사례로"
+    },
+    {
+     "date": "2026-11-22",
+     "event": "초고 완성 모드 → S2",
+     "detail": "대표 지시(FACTORY §3, 2026-11-22 14:50 UTC): G1 결재를 기다리지 않고 S2 원고 착수 대기(G1은 사후 검토). 다음 실행부터 order 순서로 2권씩 골든샘플 3장 먼저"
     }
    ],
-   "waiting_since": "2026-11-22T03:56:00Z"
+   "waiting_since": "2026-11-22T03:56:00Z",
+   "draft_complete": false
   },
   {
    "no": 13,
    "code": "BLC",
    "name": "방광·요로상피암",
-   "stage": "G1",
-   "status": "waiting",
+   "stage": "S2",
+   "status": "ready",
    "note": "원고 v0.2.1 미발견 → S1 새로 설계(방광 + 상부요로상피암 안내, 6부 30장·EP20·FAQ100, bladder.json 뼈대)",
-   "waiting_on": "대표: volumes/13BLC/S1_지시서.md 확인 후 결재함에 'G1 승인 BLC' 또는 'G1 수정 BLC: …' (원고 v0.2.1 위치 알면 메모)",
+   "waiting_on": null,
    "history": [
     {
      "date": "2026-11-21",
@@ -961,18 +983,24 @@
      "date": "2026-11-22",
      "event": "S1 지시서 발행 → G1",
      "detail": "원고 v0.2.1 미발견 → bladder.json 100문항·FAQ 주제 9개를 뼈대로 새로 설계. 주인공 영식(비근육침윤성 T1 고등급→재절제→BCG)·현주(근육침윤성→선행항암→방광절제·요루)·만복(방광보존 삼중요법)·정민(신방광). 골든샘플 예정 4·10·22장"
+    },
+    {
+     "date": "2026-11-22",
+     "event": "초고 완성 모드 → S2",
+     "detail": "대표 지시(FACTORY §3, 2026-11-22 14:50 UTC): G1 결재를 기다리지 않고 S2 원고 착수 대기(G1은 사후 검토). 다음 실행부터 order 순서로 2권씩 골든샘플 3장 먼저"
     }
    ],
-   "waiting_since": "2026-11-22T04:55:00Z"
+   "waiting_since": "2026-11-22T04:55:00Z",
+   "draft_complete": false
   },
   {
    "no": 14,
    "code": "OVC",
    "name": "난소암",
-   "stage": "G1",
-   "status": "waiting",
+   "stage": "S2",
+   "status": "ready",
    "note": "원고 v0.2.1 미발견 → S1 새로 설계(상피성 난소암·난관암·복막암, 6부 30장·EP20·FAQ100, ovarian.json 뼈대)",
-   "waiting_on": "대표: volumes/14OVC/S1_지시서.md 확인 후 결재함에 'G1 승인 OVC' 또는 'G1 수정 OVC: …' (원고 v0.2.1 위치 알면 메모)",
+   "waiting_on": null,
    "history": [
     {
      "date": "2026-11-21",
@@ -988,18 +1016,24 @@
      "date": "2026-11-22",
      "event": "S1 지시서 발행 → G1",
      "detail": "원고 v0.2.1 미발견(Drive '난소암' 폴더는 사진 5장뿐) → ovarian.json 100문항 뼈대로 새로 설계. 주인공 미란(고등급 장액성·수술 먼저·생식세포 BRCA)·남편 동욱·딸 예린·언니 미정 + 보조 금자(선행항암·고령, EP17)·다솜(생식력 보존, EP16). 골든샘플 예정 7·8·22장"
+    },
+    {
+     "date": "2026-11-22",
+     "event": "초고 완성 모드 → S2",
+     "detail": "대표 지시(FACTORY §3, 2026-11-22 14:50 UTC): G1 결재를 기다리지 않고 S2 원고 착수 대기(G1은 사후 검토). 다음 실행부터 order 순서로 2권씩 골든샘플 3장 먼저"
     }
    ],
-   "waiting_since": "2026-11-22T05:56:00Z"
+   "waiting_since": "2026-11-22T05:56:00Z",
+   "draft_complete": false
   },
   {
    "no": 15,
    "code": "LEU",
    "name": "백혈병",
-   "stage": "G1",
-   "status": "waiting",
+   "stage": "S2",
+   "status": "ready",
    "note": "골든샘플·목차 미발견 → S1 새로 설계(성인 급성백혈병 AML·ALL·APL 중심 + CML·CLL 15장, 6부 30장·EP20·FAQ100, aml/all/cml.json 뼈대)",
-   "waiting_on": "대표: volumes/15LEU/S1_지시서.md 확인 후 결재함에 'G1 승인 LEU' 또는 'G1 수정 LEU: …' (골든샘플·목차 위치 알면 메모, 표지 없음)",
+   "waiting_on": null,
    "history": [
     {
      "date": "2026-11-21",
@@ -1010,18 +1044,24 @@
      "date": "2026-11-22",
      "event": "S1 지시서 발행 → G1",
      "detail": "골든샘플·목차 미발견(Drive 백혈병 폴더는 사진뿐) → aml·all·cml.json 300문항에서 FAQ 100 선별. 주인공 기훈(AML 강한 관해유도→관해→공고→이식 상의, 남동생 기범 HLA)·아내 보람·아들 준서 + 보조 점순(고령 저강도, EP17)·유진(Ph+ ALL·생식력, EP13·16)·상우(APL, EP12)·길수(CML, EP19). 골든샘플 예정 8·20·3장"
+    },
+    {
+     "date": "2026-11-22",
+     "event": "초고 완성 모드 → S2",
+     "detail": "대표 지시(FACTORY §3, 2026-11-22 14:50 UTC): G1 결재를 기다리지 않고 S2 원고 착수 대기(G1은 사후 검토). 다음 실행부터 order 순서로 2권씩 골든샘플 3장 먼저"
     }
    ],
-   "waiting_since": "2026-11-22T06:57:00Z"
+   "waiting_since": "2026-11-22T06:57:00Z",
+   "draft_complete": false
   },
   {
    "no": 16,
    "code": "MM",
    "name": "다발골수종",
-   "stage": "G1",
-   "status": "waiting",
+   "stage": "S2",
+   "status": "ready",
    "note": "미착수 → S1 새로 설계(증상성 골수종, 이식 적합 경로 주인공·이식 비적합 같은 무게, MGUS·스몰더링 관찰, 6부 30장·EP20·FAQ100, myeloma.json 뼈대)",
-   "waiting_on": "대표: volumes/16MM/S1_지시서.md 확인 후 결재함에 'G1 승인 MM' 또는 'G1 수정 MM: …'",
+   "waiting_on": null,
    "history": [
     {
      "date": "2026-11-21",
@@ -1032,18 +1072,24 @@
      "date": "2026-11-22",
      "event": "S1 지시서 발행 → G1",
      "detail": "myeloma.json 100문항 뼈대로 새로 설계(Drive 다발성골수종 폴더는 사진 폴더). 주인공 창호(61세 버스기사, 압박골절·빈혈→유도치료→자가이식→유지)·아내 정순·딸 은비 + 보조 복례(이식 없이, EP17)·선희(스몰더링 관찰, EP12). 골든샘플 예정 8·4·22장"
+    },
+    {
+     "date": "2026-11-22",
+     "event": "초고 완성 모드 → S2",
+     "detail": "대표 지시(FACTORY §3, 2026-11-22 14:50 UTC): G1 결재를 기다리지 않고 S2 원고 착수 대기(G1은 사후 검토). 다음 실행부터 order 순서로 2권씩 골든샘플 3장 먼저"
     }
    ],
-   "waiting_since": "2026-11-22T07:56:00Z"
+   "waiting_since": "2026-11-22T07:56:00Z",
+   "draft_complete": false
   },
   {
    "no": 17,
    "code": "EC",
    "name": "식도암",
-   "stage": "G1",
-   "status": "waiting",
+   "stage": "S2",
+   "status": "ready",
    "note": "골든샘플·목차 미발견 → S1 새로 설계(편평세포암 중심, 내시경·수술 전 치료→수술·근치적 항암방사선·전신치료, 6부 30장·EP20·FAQ100, esophageal.json 뼈대)",
-   "waiting_on": "대표: volumes/17EC/S1_지시서.md 확인 후 결재함에 'G1 승인 EC' 또는 'G1 수정 EC: …' (골든샘플·목차 위치 알면 메모)",
+   "waiting_on": null,
    "history": [
     {
      "date": "2026-11-21",
@@ -1054,18 +1100,24 @@
      "date": "2026-11-22",
      "event": "S1 지시서 발행 → G1",
      "detail": "골든샘플·목차 미발견(Drive 식도암 폴더는 사진 13장뿐) → esophageal.json 100문항 뼈대로 새로 설계. 주인공 병구(국소진행 편평세포암·수술 전 항암방사선→식도절제술·공장루)·아내 귀남·딸 소라 + 보조 재근(근치적 항암방사선, EP17)·경희(초기 ESD, EP12). 골든샘플 예정 8·4·21장"
+    },
+    {
+     "date": "2026-11-22",
+     "event": "초고 완성 모드 → S2",
+     "detail": "대표 지시(FACTORY §3, 2026-11-22 14:50 UTC): G1 결재를 기다리지 않고 S2 원고 착수 대기(G1은 사후 검토). 다음 실행부터 order 순서로 2권씩 골든샘플 3장 먼저"
     }
    ],
-   "waiting_since": "2026-11-22T06:57:00Z"
+   "waiting_since": "2026-11-22T06:57:00Z",
+   "draft_complete": false
   },
   {
    "no": 18,
    "code": "HNC",
    "name": "두경부암",
-   "stage": "G1",
-   "status": "waiting",
+   "stage": "S2",
+   "status": "ready",
    "note": "미착수 → S1 새로 설계(두경부 편평세포암 공통 줄기: 구강·구인두·후두·하인두, 비인두·침샘·비강은 15장, 6부 30장·EP20·FAQ100, oral·laryngeal·nasopharyngeal.json 300문항에서 선별)",
-   "waiting_on": "대표: volumes/18HNC/S1_지시서.md 확인 후 결재함에 'G1 승인 HNC' 또는 'G1 수정 HNC: …' (통합 표지 필요 여부 메모)",
+   "waiting_on": null,
    "history": [
     {
      "date": "2026-11-21",
@@ -1076,18 +1128,24 @@
      "date": "2026-11-22",
      "event": "S1 지시서 발행 → G1",
      "detail": "oral·laryngeal·nasopharyngeal.json 300문항에서 FAQ 100 선별(부위 표지). 주인공 태석(58세 중식당 주방장, 혀 구강암·림프절 전이→수술+유리피판 재건+일시 기관절개→수술 뒤 항암방사선·코위관)·아내 연화·아들 민혁 + 보조 재형(HPV 양성 구인두암 항암방사선, EP12)·춘식(후두전절제·새 목소리, EP17). 골든샘플 예정 8·4·21장"
+    },
+    {
+     "date": "2026-11-22",
+     "event": "초고 완성 모드 → S2",
+     "detail": "대표 지시(FACTORY §3, 2026-11-22 14:50 UTC): G1 결재를 기다리지 않고 S2 원고 착수 대기(G1은 사후 검토). 다음 실행부터 order 순서로 2권씩 골든샘플 3장 먼저"
     }
    ],
-   "waiting_since": "2026-11-22T07:56:00Z"
+   "waiting_since": "2026-11-22T07:56:00Z",
+   "draft_complete": false
   },
   {
    "no": 19,
    "code": "BT",
    "name": "뇌종양",
-   "stage": "G1",
-   "status": "waiting",
+   "stage": "S2",
+   "status": "ready",
    "note": "미착수 → S1 새로 설계(성인 원발성 악성 교종 중심: 교모세포종 주인공 + IDH 변이 교종·고령 보조, PCNSL·양성·뇌전이는 15장, 6부 30장·EP20 4컷 80칸·FAQ100, brain.json 뼈대)",
-   "waiting_on": "대표: volumes/19BT/S1_지시서.md 확인 후 결재함에 'G1 승인 BT' 또는 'G1 수정 BT: …' (표지 brain.webp 재사용 여부 메모)",
+   "waiting_on": null,
    "history": [
     {
      "date": "2026-11-21",
@@ -1098,18 +1156,24 @@
      "date": "2026-11-22",
      "event": "S1 지시서 발행 → G1",
      "detail": "brain.json 100문항 뼈대(+† 6문항). 주인공 혜란(48세 꽃집 사장, 첫 발작 → 최대 안전 절제 → 교모세포종 IDH 야생형 → 항암방사선 → 유지 항암 → 첫 추적 MRI 진해짐) · 남편 승철 · 딸 하진 + 보조 태민(IDH 변이 교종 각성수술·추적, EP12·14·16)·정례(77세 고령 교모세포종 짧은 치료, EP17). 골든샘플 예정 8·4·22장"
+    },
+    {
+     "date": "2026-11-22",
+     "event": "초고 완성 모드 → S2",
+     "detail": "대표 지시(FACTORY §3, 2026-11-22 14:50 UTC): G1 결재를 기다리지 않고 S2 원고 착수 대기(G1은 사후 검토). 다음 실행부터 order 순서로 2권씩 골든샘플 3장 먼저"
     }
    ],
-   "waiting_since": "2026-11-22T13:22:00Z"
+   "waiting_since": "2026-11-22T13:22:00Z",
+   "draft_complete": false
   },
   {
    "no": 20,
    "code": "MEL",
    "name": "흑색종",
-   "stage": "G1",
-   "status": "waiting",
+   "stage": "S2",
+   "status": "ready",
    "note": "미착수 → S1 새로 설계(성인 피부 흑색종: 말단(발바닥) 주인공 + 얇은 흑색종 추적·처음부터 전이 보조, 점막·안구는 15장, 6부 30장·EP20 4컷 80칸·FAQ100, melanoma.json 뼈대)",
-   "waiting_on": "대표: volumes/20MEL/S1_지시서.md 확인 후 결재함에 'G1 승인 MEL' 또는 'G1 수정 MEL: …' (표지 melanoma.webp 재사용 여부 메모)",
+   "waiting_on": null,
    "history": [
     {
      "date": "2026-11-21",
@@ -1120,15 +1184,21 @@
      "date": "2026-11-22",
      "event": "S1 지시서 발행 → G1",
      "detail": "melanoma.json 100문항 뼈대(+† 6문항). 주인공 용수(59세 수산물 가게 사장, 발바닥 말단 흑색종 → 넓은 절제+피부이식 → 감시림프절 양성 → 보조 면역치료 → 장염 부작용 조절) · 아내 영애 · 아들 한결 + 보조 수아(36세 등의 얇은 흑색종 추적, EP13)·봉수(68세 처음부터 전이, 표적·면역 부작용, EP16·17). 골든샘플 예정 8·4·20장"
+    },
+    {
+     "date": "2026-11-22",
+     "event": "초고 완성 모드 → S2",
+     "detail": "대표 지시(FACTORY §3, 2026-11-22 14:50 UTC): G1 결재를 기다리지 않고 S2 원고 착수 대기(G1은 사후 검토). 다음 실행부터 order 순서로 2권씩 골든샘플 3장 먼저"
     }
    ],
-   "waiting_since": "2026-11-22T13:22:00Z"
+   "waiting_since": "2026-11-22T13:22:00Z",
+   "draft_complete": false
   },
   {
    "no": 21,
    "code": "SAR",
    "name": "육종",
-   "stage": "S1",
+   "stage": "S2",
    "status": "ready",
    "note": "미착수·구조 재설계",
    "waiting_on": null,
@@ -1137,14 +1207,25 @@
      "date": "2026-11-21",
      "event": "공장 등록",
      "detail": "미착수·구조 재설계"
+    },
+    {
+     "date": "2026-11-22",
+     "event": "S1 지시서 발행 → G1",
+     "detail": "원고·웹 FAQ 외 자료 없음 → sarcoma.json 100문항 뼈대(중복 13쌍 통합·†13 신규). 주인공 동훈(46세 체육교사, 허벅지 고등급 연부조직육종 → 육종 다학제 의뢰 → 수술 전 방사선 → 사지보존 광범위 절제 → 재활)·아내 미영·딸 수빈 + 보조 순덕(66세 후복막 지방육종 큰 수술, EP16)·현우(32세, 먼저 뗀 뒤 육종 → 폐 전이 절제·항암·임상시험, EP08·12·14·17). GIST·데스모이드·자궁·뼈 육종은 15장 안내. 골든샘플 예정 8·4·21장"
+    },
+    {
+     "date": "2026-11-22",
+     "event": "초고 완성 모드 → S2",
+     "detail": "대표 지시(FACTORY §3, 2026-11-22 14:50 UTC): G1 결재를 기다리지 않고 S2 원고 착수 대기(G1은 사후 검토). 다음 실행부터 order 순서로 2권씩 골든샘플 3장 먼저"
     }
-   ]
+   ],
+   "draft_complete": false
   },
   {
    "no": 22,
    "code": "NET",
    "name": "신경내분비종양",
-   "stage": "S1",
+   "stage": "S2",
    "status": "ready",
    "note": "미착수·구조 재설계",
    "waiting_on": null,
@@ -1153,8 +1234,19 @@
      "date": "2026-11-21",
      "event": "공장 등록",
      "detail": "미착수·구조 재설계"
+    },
+    {
+     "date": "2026-11-22",
+     "event": "S1 지시서 발행 → G1",
+     "detail": "원고·웹 FAQ·표지 모두 없음 → FAQ 100 신규. 주인공 은숙(54세 미용실 원장, 홍조·설사 → 간 결절 → 고분화 NET·소장 원발 → 소마토스타틴 유사체 주사 → 원발 수술·간 국소치료 상의 → 장기 관리)·남편 기석·딸 유나 + 보조 상훈(45세, 검진 직장의 작은 NET 내시경 절제·보험 분류, EP12)·명자(63세, 우연히 발견된 췌장 NET 수술·유전상담, EP16). NEC는 15장 안내. 골든샘플 예정 8·4·20장"
+    },
+    {
+     "date": "2026-11-22",
+     "event": "초고 완성 모드 → S2",
+     "detail": "대표 지시(FACTORY §3, 2026-11-22 14:50 UTC): G1 결재를 기다리지 않고 S2 원고 착수 대기(G1은 사후 검토). 다음 실행부터 order 순서로 2권씩 골든샘플 3장 먼저"
     }
-   ]
+   ],
+   "draft_complete": false
   },
   {
    "no": 23,
@@ -1170,7 +1262,8 @@
      "event": "공장 등록",
      "detail": "미착수·구조 재설계"
     }
-   ]
+   ],
+   "draft_complete": false
   },
   {
    "no": 24,
@@ -1186,7 +1279,8 @@
      "event": "공장 등록",
      "detail": "미착수·구조 재설계"
     }
-   ]
+   ],
+   "draft_complete": false
   },
   {
    "no": 25,
@@ -1202,16 +1296,17 @@
      "event": "공장 등록",
      "detail": "미착수·구조 재설계"
     }
-   ]
+   ],
+   "draft_complete": false
   },
   {
    "no": 26,
    "code": "CG",
    "name": "보호자편",
-   "stage": "G1",
-   "status": "waiting",
+   "stage": "S2",
+   "status": "ready",
    "note": "원고 v0.2.2 미발견 → S1 새로 설계(보호자 공통편, 6부 30장·EP20·FAQ100)",
-   "waiting_on": "대표: volumes/26CG/S1_지시서.md 확인 후 결재함에 'G1 승인 CG' 또는 'G1 수정 CG: …' (원고 v0.2.2 위치 알면 메모)",
+   "waiting_on": null,
    "history": [
     {
      "date": "2026-11-21",
@@ -1227,18 +1322,24 @@
      "date": "2026-11-22",
      "event": "S1 지시서 발행 → G1",
      "detail": "원고 v0.2.2를 저장소·Drive에서 못 찾아 새로 설계. 주인공 맏딸 보호자 선영(아버지 종구, 암종 미표시)·배우자 보호자 경태·청년 보호자 나래·멀리 사는 동생 선우. 골든샘플 예정 2·9·18장. 보호자편 표지 없음"
+    },
+    {
+     "date": "2026-11-22",
+     "event": "초고 완성 모드 → S2",
+     "detail": "대표 지시(FACTORY §3, 2026-11-22 14:50 UTC): G1 결재를 기다리지 않고 S2 원고 착수 대기(G1은 사후 검토). 다음 실행부터 order 순서로 2권씩 골든샘플 3장 먼저"
     }
    ],
-   "waiting_since": "2026-11-22T04:55:00Z"
+   "waiting_since": "2026-11-22T04:55:00Z",
+   "draft_complete": false
   },
   {
    "no": 27,
    "code": "REC",
    "name": "재발 진단 첫 30일",
-   "stage": "G1",
-   "status": "waiting",
+   "stage": "S2",
+   "status": "ready",
    "note": "원고 v0.2.2 미발견 → S1 새로 설계(암종 공통 재발편, 약 이름 미기재 원칙, 6부 30장·EP20·FAQ100 신규)",
-   "waiting_on": "대표: volumes/27REC/S1_지시서.md 확인 후 결재함에 'G1 승인 REC' 또는 'G1 수정 REC: …' (원고 v0.2.2 위치 알면 메모)",
+   "waiting_on": null,
    "history": [
     {
      "date": "2026-11-21",
@@ -1254,18 +1355,24 @@
      "date": "2026-11-22",
      "event": "S1 지시서 발행 → G1",
      "detail": "원고 v0.2.2 미발견 → 새로 설계. 주인공 형석(암종 미표시, 첫 치료 후 폐 결절 소수 재발→조직 확인→국소치료 상의)·아내 인숙·아들 시우 + 보조 경란(오래 관리하는 재발, EP11·16)·도윤(2차 소견·임상시험, EP07·15)·순례(편안함 먼저, EP17·18). 골든샘플 예정 3·8·16장"
+    },
+    {
+     "date": "2026-11-22",
+     "event": "초고 완성 모드 → S2",
+     "detail": "대표 지시(FACTORY §3, 2026-11-22 14:50 UTC): G1 결재를 기다리지 않고 S2 원고 착수 대기(G1은 사후 검토). 다음 실행부터 order 순서로 2권씩 골든샘플 3장 먼저"
     }
    ],
-   "waiting_since": "2026-11-22T05:56:00Z"
+   "waiting_since": "2026-11-22T05:56:00Z",
+   "draft_complete": false
   },
   {
    "no": 28,
    "code": "GER",
    "name": "고령 환자편",
-   "stage": "G1",
-   "status": "waiting",
+   "stage": "S2",
+   "status": "ready",
    "note": "미착수 → S1 새로 설계(암종 공통 고령편: 나이 숫자보다 몸의 나이 · 노인포괄평가 · 본인 결정권 · 다약제·섬망·낙상·영양, 6부 30장·EP20 4컷 80칸·FAQ100 신규)",
-   "waiting_on": "대표: volumes/28GER/S1_지시서.md 확인 후 결재함에 'G1 승인 GER' 또는 'G1 수정 GER: …' (고령편 표지 없음 — 새 표지 필요 여부 메모)",
+   "waiting_on": null,
    "history": [
     {
      "date": "2026-11-21",
@@ -1276,18 +1383,24 @@
      "date": "2026-11-22",
      "event": "S1 지시서 발행 → G1",
      "detail": "웹 FAQ·원고 없음 → FAQ 100 신규. 주인공 한수(80세 은퇴 가구 목수, 노인포괄평가 → 약 정리·수술 전 몸 만들기 → 수술 → 섬망 회복) · 아내 덕희 · 딸 은영 · 아들 경수 + 보조 호철(74세 표준 강도 그대로, EP05·15)·화자(86세 독거, 관찰·증상 조절·장기요양, EP16·19·20). 골든샘플 예정 5·8·13장"
+    },
+    {
+     "date": "2026-11-22",
+     "event": "초고 완성 모드 → S2",
+     "detail": "대표 지시(FACTORY §3, 2026-11-22 14:50 UTC): G1 결재를 기다리지 않고 S2 원고 착수 대기(G1은 사후 검토). 다음 실행부터 order 순서로 2권씩 골든샘플 3장 먼저"
     }
    ],
-   "waiting_since": "2026-11-22T13:58:00Z"
+   "waiting_since": "2026-11-22T13:58:00Z",
+   "draft_complete": false
   },
   {
    "no": 29,
    "code": "AYA",
    "name": "AYA(청년)편",
-   "stage": "G1",
-   "status": "waiting",
+   "stage": "S2",
+   "status": "ready",
    "note": "미착수 → S1 새로 설계(성인 청년 암종 공통편: 첫 치료 전 가임력 보존 상담 · 성인 결정권 · 학업·일·돈·병역 · 후기 효과·치료 요약지, 미성년은 ㉓ PED, 6부 30장·EP20 4컷 80칸·FAQ100 신규)",
-   "waiting_on": "대표: volumes/29AYA/S1_지시서.md 확인 후 결재함에 'G1 승인 AYA' 또는 'G1 수정 AYA: …' (AYA편 표지 없음 — 새 표지 필요 여부 메모)",
+   "waiting_on": null,
    "history": [
     {
      "date": "2026-11-21",
@@ -1298,9 +1411,15 @@
      "date": "2026-11-22",
      "event": "S1 지시서 발행 → G1",
      "detail": "testicular·hodgkin 등 웹 FAQ 가임력 문항 대조, FAQ 100 신규. 주인공 채원(28세 UX 디자이너 자취, 난자 동결 후 항암 · 탈모 · 휴직 상의) · 엄마 혜옥 · 남자친구 도현 + 보조 규민(23세 대학생 고환암, 정자 보존·휴학·병역, EP10·12·15)·소희(35세 4세 딸 엄마 유방암, 육아·일, EP17·18). 골든샘플 예정 4·8·24장"
+    },
+    {
+     "date": "2026-11-22",
+     "event": "초고 완성 모드 → S2",
+     "detail": "대표 지시(FACTORY §3, 2026-11-22 14:50 UTC): G1 결재를 기다리지 않고 S2 원고 착수 대기(G1은 사후 검토). 다음 실행부터 order 순서로 2권씩 골든샘플 3장 먼저"
     }
    ],
-   "waiting_since": "2026-11-22T13:58:00Z"
+   "waiting_since": "2026-11-22T13:58:00Z",
+   "draft_complete": false
   },
   {
    "no": 30,
@@ -1316,7 +1435,8 @@
      "event": "공장 등록",
      "detail": "미착수·구조 재설계"
     }
-   ]
+   ],
+   "draft_complete": false
   }
  ],
  "inbox": {
@@ -1329,5 +1449,10 @@
   "outbox": "1jh71Nz5h59q2og4pby5z1kNhlB45hRki",
   "reports": "1R7vLBniPej2QngoVcK3nLL2M1gZwVih2",
   "system": "1zkZn7jNNBRBGTTSCke5zsd4QVFvZyo3q"
+ },
+ "mode": {
+  "name": "초고 30권 완성 모드",
+  "since": "2026-11-22T14:50:08Z",
+  "note": "G1 대기 없이 S2 진행, standards/04 근거확인·감수 기준"
  }
 }
