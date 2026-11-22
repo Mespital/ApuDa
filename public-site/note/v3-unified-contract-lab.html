@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; connect-src 'none'; img-src 'none'; form-action 'none'; base-uri 'none'">
+<title>ApuDa V3 통합 저장 계약 가상 시험</title>
+<style>
+:root{font-family:system-ui,'Malgun Gothic',sans-serif;color:#1b3a38;background:#f3f8f6;color-scheme:light}
+*{box-sizing:border-box}body{margin:0;padding:clamp(16px,4vw,40px)}main{max-width:800px;margin:auto}
+h1{font-size:clamp(1.5rem,3.4vw,2.2rem)}p{line-height:1.65}.tag{display:inline-block;background:#dff2eb;color:#076052;border-radius:20px;padding:7px 12px;font-size:.85rem;font-weight:700}
+.warning{background:#fff6e1;border-left:5px solid #ac7b18;border-radius:9px;padding:14px 17px}
+button{background:#086d5f;color:#fff;border:0;border-radius:12px;padding:13px 20px;min-height:48px;font-weight:700;font-size:1rem;cursor:pointer}
+button:focus-visible{outline:3px solid #b67716;outline-offset:3px}button:disabled{opacity:.6;cursor:wait}
+#summary{font-weight:750}#results{display:grid;gap:10px;margin:17px 0}.case{padding:12px 15px;border:1px solid #c9dbd3;background:#fff;border-radius:10px}.case h2{margin:0 0 5px;font-size:1.04rem}.case p{margin:0}.pass{color:#067448;font-weight:700}.fail{color:#b02020;font-weight:700}small{color:#546b63}
+</style>
+</head>
+<body>
+<main>
+<span class="tag">개발용 · 가상 데이터 · 운영 병합 금지</span>
+<h1>ApuDa V3 통합 저장·복원·대화 시험</h1>
+<p>기본 기록과 대화 기록을 하나의 IndexedDB(기기 내 데이터베이스) 트랜잭션으로 다루고, 여러 탭의 동시 수정과 복원 충돌을 확인합니다.</p>
+<p class="warning"><strong>환자 수첩과 독립된 시험실입니다.</strong> 실행할 때마다 이름에 <code>apuda-v3-synthetic-unified-</code>가 붙은 가상 DB를 만들고 제거합니다. 현재 기록·논술 데이터·Google Drive에 접근하지 않습니다. 결과는 운영 버전 안전성을 증명하지 않습니다.</p>
+<button id="run" type="button">가상 안전성 12건 실행</button>
+<p id="summary" role="status" aria-live="polite">시작 전 · 버튼을 눌러 시험하세요.</p>
+<div id="results" aria-label="시험별 통과 결과"></div>
+<p><small>오프라인으로 캐시된 이전 V3 탭의 localStorage 쓰기나 기존 Drive 자동 백업은 이 시제품이 막을 수 없습니다. 실제 환자·보호자 시험은 실시하지 않았습니다.</small></p>
+</main>
+<script src="./note-storage.js" defer></script>
+<script src="./v3-unified-contract-sandbox.js" defer></script>
+<script src="./v3-unified-contract-lab.js" defer></script>
+</body>
+</html>
