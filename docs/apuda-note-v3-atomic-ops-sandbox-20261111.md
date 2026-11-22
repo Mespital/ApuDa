@@ -1,0 +1,32 @@
+# ApuDa V3 다중 탭 경합 — 통합 저장·복원·삭제 원자성 초안
+
+- AI 사전점검: 2026-11-11 KST. 책임 관점: D05 개발·품질, D06 개인정보·보안, D04 접근성.
+- 위치: Draft PR #294, **개발·합성 시험 전용**, `main` 병합/운영 배포 금지.
+- 대상: 실제 V3 `localStorage`의 마지막 조회와 쓰기 사이 동시 탭 쓰기 경합. `tools/tests/apuda-note-v3-cross-tab-race-diagnostic.cjs`에서 `replace`, `recover` 2/2 위험 재현.
+
+## 추가된 실험 모듈
+
+- `public-site/note/v3-atomic-ops-sandbox.js` — 동일 IndexedDB 객체 저장소의 `readwrite` 트랜잭션에서 **revision(수정 번호) + 예상 원문 문자열**을 확인한 뒤에만 기록을 변경하는 개발용 API.
+- DB 이름은 `apuda-v3-synthetic-ops-lab-`로 시작해야 하고, 키는 `synthetic-only`만 허용. 실제 환자·논술 기록, 계정, `localStorage` 키에 접근하지 않음. 운영 `note-app.js`에서 이 모듈을 로드하지 않음.
+- `save`(저장), `restore`(백업 복원), `recover`(복원 취소), `remove`(삭제 요청) **네 가지 경로가 같은 원자적 갱신 규약**을 사용.
+- 복원 요청은 SHA-256 체크포인트 원문·후속값을 함께 생성하며, 되돌리기는 트랜잭션 시작 전에 지문을 검증하고 같은 트랜잭션 안에서 리비전 및 체크포인트 변경 여부를 재확인.
+- 삭제 요청은 내용과 체크포인트를 모두 비우고 리비전만 남기는 tombstone(삭제 표시)로 처리. 예전 탭의 오래된 쓰기는 충돌로 거절된다. 실제 저장소나 개인정보 삭제 의미를 보증하지 않는 합성 DB 실험에 한함.
+
+## 테스트 증거
+
+- `node tools/tests/apuda-note-v3-atomic-ops-sandbox.cjs` — 결정적 **모의 IndexedDB** 두 연결로 저장, 동시 저장 충돌, 오래된 복원 차단, 원본 체크포인트 기록/검증, 되돌리기, abort 롤백, 삭제 표시, 삭제 이후 오래된 저장 차단, 이상 원문 거절, 진짜 DB 이름 접근 거절을 시험.
+- 이 테스트는 모의 트랜잭션을 사용하므로 실제 Chrome·Android·iOS의 처리나 브라우저 강제 종료 내구성을 입증하지 않는다.
+- `public-site/note/v3-atomic-ops-lab.html`, `v3-atomic-ops-lab.js`: 실제 브라우저의 별도 IndexedDB 연결 2개를 여는 **합성 데이터 전용** 11개 시나리오 UI. `noindex`, 제한적 CSP 및 가상 DB 이름 범위 제한을 적용하고 시험 후 DB 삭제를 확인한다.
+- `node tools/tests/apuda-note-v3-atomic-ops-browser.cjs`: 임시 localhost 서버 + 독립 Chromium 프로필(데스크톱 1280×900, 모바일 뷰포트 390×844) 자동 시험. `localStorage`, `sessionStorage` 사용을 차단하고 외부 요청·콘솔 스크립트 오류·합성 DB 정리 여부를 확인한다.
+- 2026-11-11 최초 로컬 실행: 컨테이너 Chromium 프로세스가 OS `socket() failed: Operation not permitted`로 시작되지 않아 **브라우저 통과 여부 미확인**. 모의 IndexedDB 테스트는 PASS. 별도 Deploy Preview에서 UI를 통한 실브라우저 검증 필요.
+- **별도 실브라우저 검증 완료(2026-11-11 KST):** Netlify PR #294의 격리 미리보기 `https://deploy-preview-294--apuda-total.netlify.app/note/v3-atomic-ops-lab.html`을 Chrome에서 열고 버튼을 직접 실행. 결과 **11/11 PASS, 0 FAIL, 합성 DB 삭제 확인**. 두 별도 DB 연결의 동시 저장 1승·1충돌, 원문 확장 필드, 구버전 복원/복구 차단, SHA-256 체크포인트, 검증된 복구, abort 롤백, 삭제 tombstone, 삭제 후 오래된 저장 거부, 잘못된 DB명·입력 거부를 확인. **자동화 스크립트의 로컬 Chromium 실행 제한은 별개로 미해결**이고 실제 모바일 화면·기기 종료·저장 공간 부족 상황은 아직 미검증.
+
+## 인수 기준 / 해소하지 못한 P0
+
+1. **기존 배포 V3 코드는 `localStorage` 직접 쓰기를 여전히 사용.** 본 모듈은 실제 `note-app.js`에 연결되지 않아 사용자 기록 손실 위험을 고치지 않는다.
+2. 같은 저장 규칙을 사용하는 새 탭끼리만 직렬화된다. 구형 페이지가 `localStorage`에 직접 쓰면 새 규칙을 우회할 수 있어, 구형·신형 혼용 감지/전환·백업/동의 단계가 필요하다.
+3. 실제 V3에는 일반 저장·실행취소·파일 복원·복원 취소·항목 삭제·전체 삭제·보조 키가 분산되어 있다. 전체 목록을 확보하고 단일 소유 저장소로 전환하기 전까지 운영 병합 금지.
+4. DB 내 데이터는 여전히 브라우저 저장소 비우기·기기 분실·동기화 부재 등에 취약하므로 별도 수동 백업과 복구가 필요하다.
+5. 임상·환자·보호자 실제 승인 기록 없음. ApuDa 30인 프레임워크는 역할별 AI 사전점검에만 사용.
+
+기술 근거: [W3C Indexed Database API 3.0](https://www.w3.org/TR/IndexedDB/), 트랜잭션의 겹치는 객체 저장소 `readwrite` 직렬화 및 abort시 원자적 롤백.
