@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "updated": "2026-11-22T14:57:14Z",
+ "updated": "2026-11-22T15:53:55Z",
  "wip_limit": {
   "claude_text": 2,
   "chatgpt_art": 10,
@@ -927,10 +927,27 @@
      "date": "2026-11-22",
      "event": "초고 완성 모드 → S2",
      "detail": "대표 지시(FACTORY §3, 2026-11-22 14:50 UTC): G1 결재를 기다리지 않고 S2 원고 착수 대기(G1은 사후 검토). 다음 실행부터 order 순서로 2권씩 골든샘플 3장 먼저"
+    },
+    {
+     "date": "2026-11-23",
+     "event": "S2 골든샘플 3장",
+     "detail": "volumes/11LYM/S2_원고_v0.1.md 골든샘플 7·11·19장 + EP05·07·08 핵심 설명. S2_근거표(확인·교차 13 / 확인 필요 6)·S2_감수단·S2_감수메모 신설. 19장은 국내 1순위 출처 미대조 → unverified"
     }
    ],
    "waiting_since": "2026-11-22T03:56:00Z",
-   "draft_complete": false
+   "draft_complete": false,
+   "s2_progress": {
+    "version": "v0.1",
+    "chapters": [
+     7,
+     11,
+     19
+    ],
+    "count": 3,
+    "unverified": [
+     19
+    ]
+   }
   },
   {
    "no": 12,
@@ -955,10 +972,25 @@
      "date": "2026-11-22",
      "event": "초고 완성 모드 → S2",
      "detail": "대표 지시(FACTORY §3, 2026-11-22 14:50 UTC): G1 결재를 기다리지 않고 S2 원고 착수 대기(G1은 사후 검토). 다음 실행부터 order 순서로 2권씩 골든샘플 3장 먼저"
+    },
+    {
+     "date": "2026-11-23",
+     "event": "S2 골든샘플 3장",
+     "detail": "volumes/12CXC/S2_원고_v0.1.md 골든샘플 6·11·12장 + EP04·06·07 핵심 설명(자궁경부암 단권안 전제). S2_근거표(확인·교차 14 / 확인 필요 7)·S2_감수단·S2_감수메모 신설. 7~8주 원칙 NCCN 환자판 2025·BC Cancer로 출처 확보"
     }
    ],
    "waiting_since": "2026-11-22T03:56:00Z",
-   "draft_complete": false
+   "draft_complete": false,
+   "s2_progress": {
+    "version": "v0.1",
+    "chapters": [
+     6,
+     11,
+     12
+    ],
+    "count": 3,
+    "unverified": []
+   }
   },
   {
    "no": 13,
