@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "updated": "2026-11-22T02:55:00Z",
+ "updated": "2026-11-22T03:56:00Z",
  "wip_limit": {
   "claude_text": 2,
   "chatgpt_art": 10,
@@ -898,33 +898,45 @@
    "no": 11,
    "code": "LYM",
    "name": "림프종",
-   "stage": "S1",
-   "status": "ready",
-   "note": "기존 원고",
-   "waiting_on": null,
+   "stage": "G1",
+   "status": "waiting",
+   "note": "S1 지시서 발행(6부 30장·EP20·4컷 80칸·FAQ100·캐릭터 재원·소연). 기존 11 완전판(2026.10) 재사용",
+   "waiting_on": "대표: volumes/11LYM/S1_지시서.md 확인 후 결재함에 'G1 승인 LYM' 또는 'G1 수정 LYM: …'",
    "history": [
     {
      "date": "2026-11-21",
      "event": "공장 등록",
      "detail": "기존 원고"
+    },
+    {
+     "date": "2026-11-22",
+     "event": "S1 완료",
+     "detail": "volumes/11LYM/S1_지시서.md 발행(6부 30장·EP20·4컷 80칸·FAQ100·캐릭터 재원·소연·딸 하은 + 보조 기철(관찰)·서윤(호지킨)). 기존 11 완전판(2026.10, Drive 1qLBAoaw1MmXeUD3qIxEtsV9N3zYnJO0W) 재사용. 고칠 것: 38.0°C, 주기 수·이식 나이 기준·유지요법 기간·제도 수치 삭제, 사례 명숙→영자(HCC 겹침)·MALT 제균 경로로, 판권 실제 전문의 서면감수 전. 범위: SLL/CLL→LEU권, PCNSL 별도 상담"
     }
-   ]
+   ],
+   "waiting_since": "2026-11-22T03:56:00Z"
   },
   {
    "no": 12,
    "code": "CXC",
    "name": "자궁경부암·자궁내막암",
-   "stage": "S1",
-   "status": "ready",
-   "note": "기존 원고",
-   "waiting_on": null,
+   "stage": "G1",
+   "status": "waiting",
+   "note": "S1 지시서 발행(자궁경부암 단권안). 자궁내막암 처리 결재 필요",
+   "waiting_on": "대표: volumes/12CXC/S1_지시서.md 확인 후 결재함에 'G1 승인 CXC'(자궁경부암 단권) 또는 'G1 수정 CXC: 내막암 합본'",
    "history": [
     {
      "date": "2026-11-21",
      "event": "공장 등록",
      "detail": "기존 원고"
+    },
+    {
+     "date": "2026-11-22",
+     "event": "S1 완료",
+     "detail": "volumes/12CXC/S1_지시서.md 발행(6부 30장·EP20·4컷 80칸·FAQ100·캐릭터 윤희·태호·딸 서아·동생 윤정 + 보조 다인(수술·가임력)·경미/가람(병기 변화·재발·완화)). 기존 12 자궁경부암 완전판(2026.10, Drive 17825TqND2utPP_Qq7iR9TfMz3XkcFDo7) 재사용. 자궁내막암 원고는 저장소·Drive에 없음 → (가) 경부암 단권 + 내막암 별권/부인암 묶음 vs (나) 합본을 G1에서 결재. 고칠 것: 38.0°C, 재발률 5~20% 등 예후 수치 삭제, 항암 회차·투여 간격 삭제, 사례 지은→다인(TC 겹침)·미선→IB2 수술 후 방사선 사례로"
     }
-   ]
+   ],
+   "waiting_since": "2026-11-22T03:56:00Z"
   },
   {
    "no": 13,
