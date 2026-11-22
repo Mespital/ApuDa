@@ -3,3 +3,4 @@ Allow: /
 
 Sitemap: https://apuda.app/sitemap.xml
 Sitemap: https://apuda.app/farm/sitemap.xml
+Sitemap: https://apuda.app/news/sitemap.xml

@@ -314,5 +314,19 @@ for (const file of files) {
   }
 }
 assert(questions === 3000, 'Expected 3,000 original FAQ items');
+// Daily news briefing pages (automation/news-bot/build_news_pages.py) use their own
+// sitemap so the daily publisher never rewrites the main sitemap.
+assert(robots.includes('Sitemap: https://apuda.app/news/sitemap.xml'), 'News sitemap missing from robots');
+const newsSitemap = await read('news/sitemap.xml');
+const newsUrls = [...newsSitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+assert(newsUrls.length >= 1 && newsUrls.every((u) => /^https:\/\/apuda\.app\/news\/daily\/(\d{4}-\d{2}-\d{2}\/)?$/.test(u)), 'News sitemap URL pattern');
+assert(!newsUrls.some((u) => urls.includes(u)), 'News pages must not be duplicated in the main sitemap');
+for (const u of newsUrls) {
+  const html = await read(u.replace('https://apuda.app/', '') + 'index.html');
+  assert(html.includes('<link rel="canonical" href="' + u + '">'), 'News page canonical: ' + u);
+  assert(/<meta name="description" content="[^"]{20,}"/.test(html), 'News page description: ' + u);
+  assert(!/<meta name="robots" content="[^"]*noindex/.test(html), 'News page noindex: ' + u);
+}
+
 console.log(`Note guide static contrast: ${textPairs.length}/${textPairs.length} text and ${focusSurfaces.length}/${focusSurfaces.length} focus surfaces PASS (WCAG 2.2 AA thresholds).`);
-console.log('SEO verified: ' + urls.length + ' URLs (' + topicPageCount + ' FAQ topic pages), 30 books, 30 static FAQ pages, 3,000 questions, note intro public and app noindex.');
+console.log('SEO verified: ' + urls.length + ' URLs (' + topicPageCount + ' FAQ topic pages), 30 books, 30 static FAQ pages, 3,000 questions, note intro public and app noindex, ' + newsUrls.length + ' news briefing URLs.');
