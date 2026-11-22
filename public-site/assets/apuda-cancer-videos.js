@@ -15,7 +15,9 @@
     lymphoma: [{ name: '림프종', id: 'UJe95LBjXgQ' }, { name: '림프종 아형 구분', id: 'C-U62IjZgXQ' }],
     cervical: [{ name: '자궁경부암', id: 'gccIZhC4LW4' }],
     ovarian: [{ name: '난소암', id: '8Pch-BKNJTE' }],
-    bladder: [{ name: '방광암', id: 'xpYwGJ7cM3k' }]
+    esophageal: [{ name: '식도암', id: 'hyuAJ9720E8' }],
+    bladder: [{ name: '방광암', id: 'xpYwGJ7cM3k' }],
+    sarcoma: [{ name: '연부조직육종', id: 'SYprL4loILs' }]
   };
   Object.keys(catalog).forEach(function (slug) {
     catalog[slug].forEach(Object.freeze);
