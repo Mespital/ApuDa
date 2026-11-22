@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; img-src 'none'; connect-src 'none'; form-action 'none'; base-uri 'none'">
+  <title>ApuDa V3 · 원자적 작업 합성 시험실</title>
+  <style>
+    :root{font-family:system-ui,'Malgun Gothic',sans-serif;color:#183c3a;background:#f3f8f7;color-scheme:light}
+    *{box-sizing:border-box}body{margin:0;padding:clamp(16px,4vw,40px)}main{max-width:840px;margin:auto}
+    h1{font-size:clamp(1.5rem,3.5vw,2.25rem);line-height:1.3}p{line-height:1.65}
+    .tag{display:inline-block;padding:6px 12px;border-radius:20px;background:#dff2eb;color:#076052;font-size:.88rem;font-weight:750}
+    .warning{background:#fff5dc;border-left:5px solid #ae7b19;padding:14px 17px;border-radius:8px}
+    button{min-height:48px;padding:13px 18px;border:0;border-radius:12px;background:#076b60;color:white;font-weight:750;font-size:1rem;cursor:pointer}
+    button:focus-visible{outline:3px solid #c0871d;outline-offset:3px}button:disabled{opacity:.65;cursor:wait}
+    #summary{font-weight:750}#results{display:grid;gap:10px;margin:18px 0}
+    .case{background:white;border:1px solid #cbdeda;border-radius:11px;padding:12px 16px}
+    .case h2{font-size:1.04rem;margin:0 0 5px}.case p{margin:0}.pass{color:#08724d;font-weight:750}.fail{color:#af2424;font-weight:750}
+    small{color:#546660}
+  </style>
+</head>
+<body>
+<main>
+  <span class="tag">DEV ONLY · 합성 데이터 · 병합 금지</span>
+  <h1>V3 저장·복원·삭제 동시성 시험실</h1>
+  <p>IndexedDB(브라우저 내부 데이터베이스)의 원자적 트랜잭션과 revision(수정번호) 검사를 실제 브라우저에서 검증합니다.</p>
+  <p class="warning"><strong>실제 환자 수첩과 연결되지 않습니다.</strong> 매 실행마다 새 가상 DB를 만들고 종료 시 삭제합니다. 기존 환자 기록, 논술 기록, 계정, localStorage 또는 서버 API에는 접근하지 않습니다. 검증 통과는 운영 배포 승인과 무관합니다.</p>
+  <button id="run" type="button">합성 안전성 11건 실행</button>
+  <p id="summary" role="status" aria-live="polite">시험 전 · 실행 버튼을 눌러 주세요.</p>
+  <div id="results" aria-label="항목별 검증 결과"></div>
+  <p><small>동일 브라우저에서 별도 IndexedDB 연결 두 개를 사용합니다. 구형 V3의 직접 localStorage 쓰기, 다른 기기의 데이터 동기화, 전원 차단·저장소 부족·실제 모바일 다중 창은 이 시험에 포함되지 않습니다.</small></p>
+</main>
+<script src="./note-storage.js" defer></script>
+<script src="./v3-atomic-ops-sandbox.js" defer></script>
+<script src="./v3-atomic-ops-lab.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+/* ApuDa V3 unsaved draft storage-failure regression; synthetic only. */
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
+const dir=path.resolve(__dirname,'../../public-site/note');
+const get=name=>fs.readFileSync(path.join(dir,name),'utf8');
+const source=get('note-unsaved-draft.js'),app=get('note-app.js'),html=get('index.html'),storage=get('note-storage.js');
+const scope={TextEncoder,Date};scope.window=scope;vm.createContext(scope);
+vm.runInContext(source,scope);const vault=scope.ApuDaNoteUnsavedDraft;
+let passed=0;function ok(label,callback){callback();passed++;console.log('PASS',label);}
+const draftNote='{"profile":{"name":"가상 검사"},"logs":[]}',draftChat='[{"w":"me","h":"가상 대화"}]';
+ok('empty draft vault refuses export',()=>assert.throws(()=>vault.exportText(),/no-unsaved-draft/));
+ok('capture unsaved note',()=>assert.equal(vault.capture('note',draftNote,'records-changed'),true));
+ok('capture unsaved chat',()=>assert.equal(vault.capture('chat',draftChat,'not-saved'),true));
+ok('exact bytes kept',()=>{const e=JSON.parse(vault.exportText());assert.equal(e.items[0].raw,draftNote);assert.equal(e.items[1].raw,draftChat);});
+ok('export is review-only and not normal import',()=>{const e=JSON.parse(vault.exportText());assert.equal(e.reviewOnly,true);assert.notEqual(e.format,'apuda.note.backup');const sc={window:{}};vm.createContext(sc);vm.runInContext(storage,sc);assert.throws(()=>sc.window.ApuDaNoteStorage.unpack(vault.exportText()),/unsupported-backup-version/);});
+ok('duplicate consecutive item is not appended',()=>{const n=vault.count();vault.capture('chat',draftChat,'not-saved');assert.equal(vault.count(),n);});
+ok('untrusted message is never exported as error reason',()=>{vault.capture('note','{"x":2}','sensitive details');const e=JSON.parse(vault.exportText());assert.equal(e.items[e.items.length-1].reason,'write-failed');});
+ok('bad input rejected',()=>{assert.throws(()=>vault.capture('other','x'),/invalid-draft-kind/);assert.throws(()=>vault.capture('note',null),/raw-string-required/);});
+ok('oversize refused without discarding prior drafts',()=>{const n=vault.count();assert.equal(vault.capture('note','x'.repeat(16*1024*1024+1)),false);assert.equal(vault.count(),n);});
+ok('export does not erase in-memory source',()=>{const n=vault.count();vault.exportText();assert.equal(vault.count(),n);});
+ok('maximum count fail closed',()=>{while(vault.count()<8)vault.capture('chat','new'+vault.count());assert.equal(vault.capture('note','new'),false);});
+ok('no storage/network calls in vault',()=>{assert.doesNotMatch(source,/\b(?:localStorage|sessionStorage|indexedDB)\s*[.(]/);assert.doesNotMatch(source,/\b(?:fetch|XMLHttpRequest|WebSocket)\s*\(/);});
+ok('app script syntax valid',()=>{new Function(app);});
+ok('note failure preserves unsaved copy rather than reloading',()=>{const s=app.slice(app.indexOf('function save(){'),app.indexOf('function $(s)'));assert.match(s,/holdUnsaved\('note',raw,e\)/);assert.doesNotMatch(s,/state=load\(\)/);});
+ok('chat failure preserves unsaved copy rather than reloading',()=>{const s=app.slice(app.indexOf('function saveChat(){'),app.indexOf('function scrollBottom'));assert.match(s,/holdUnsaved\('chat',raw,e\)/);assert.doesNotMatch(s,/chatExpectedRaw=localStorage\.getItem/);});
+ok('both write routes paused after failure',()=>assert.match(app,/noteWritesPaused=true;chatWritesPaused=true/));
+ok('restore undo delete are blocked with draft',()=>{assert.match(app,/window.importData=async function\(input\)\{\s*if\(hasUnsavedDraft\(\)\)/);assert.match(app,/window.recoverBeforeRestore=async function\(\)\{\s*if\(hasUnsavedDraft\(\)\)/);assert.match(app,/window.resetAll=function\(\)\{\s*if\(hasUnsavedDraft\(\)\)/);});
+ok('export is manual-only and dialog remains',()=>{assert.match(app,/window.downloadUnsavedDraft=function\(\)/);assert.match(html,/id="note-unsaved-banner" role="alert"/);assert.match(html,/onclick="downloadUnsavedDraft\(\)"/);});
+ok('draft script loaded before app',()=>assert.ok(html.indexOf('note-unsaved-draft.js')>=0&&html.indexOf('note-unsaved-draft.js')<html.indexOf('note-app.js')));
+ok('beforeunload attempted, no guarantee on mobile',()=>assert.match(app,/addEventListener\('beforeunload'/));
+console.log('RESULT '+passed+'/'+passed+' PASS — isolated Node regression; not a browser two-tab test.');
