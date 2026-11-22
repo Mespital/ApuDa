@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-11-01T18:06:24.739618+09:00",
+  "generated_at": "2026-11-22T22:01:12.679781+09:00",
   "window_days": 30,
   "items": [
     {
@@ -44,56 +44,6 @@
         }
       ],
       "source_list_url": "https://www.mfds.go.kr/brd/m_207/list.do"
-    },
-    {
-      "agency": "식품의약품안전처",
-      "document_type": "행정예고",
-      "category": "행정예고",
-      "title": "「희귀의약품 지정에 관한 규정」 일부개정고시(안)(공고 제2026-522호, 2026.10.29.)",
-      "published_at": "2026-10-29T00:00:00+09:00",
-      "url": "https://www.mfds.go.kr/brd/m_209/view.do?seq=44307&srchFr=&srchTo=&srchWord=&srchTp=&itm_seq_1=0&itm_seq_2=0&multi_itm_seq=0&company_cd=&company_nm=&Data_stts_gubun=C9999&page=1",
-      "attachments": [
-        {
-          "label": "다운받기",
-          "url": "https://www.mfds.go.kr/brd/m_209/down.do?brd_id=data0009&seq=44307&data_tp=A&file_seq=1"
-        },
-        {
-          "label": "다운받기",
-          "url": "https://www.mfds.go.kr/brd/m_209/down.do?brd_id=data0009&seq=44307&data_tp=A&file_seq=2"
-        },
-        {
-          "label": "다운받기",
-          "url": "https://www.mfds.go.kr/brd/m_209/down.do?brd_id=data0009&seq=44307&data_tp=A&file_seq=3"
-        },
-        {
-          "label": "다운받기",
-          "url": "https://www.mfds.go.kr/brd/m_209/down.do?brd_id=data0009&seq=44307&data_tp=A&file_seq=4"
-        }
-      ],
-      "source_list_url": "https://www.mfds.go.kr/brd/m_209/list.do?Data_stts_gubun=C9999"
-    },
-    {
-      "agency": "식품의약품안전처",
-      "document_type": "행정예고",
-      "category": "안전성",
-      "title": "「유전자변형식품등의 안전성 심사 등에 관한 규정」 일부개정고시(안) 행정예고(공고 제2026-519호, 2026.10.28)",
-      "published_at": "2026-10-28T00:00:00+09:00",
-      "url": "https://www.mfds.go.kr/brd/m_209/view.do?seq=44306&srchFr=&srchTo=&srchWord=&srchTp=&itm_seq_1=0&itm_seq_2=0&multi_itm_seq=0&company_cd=&company_nm=&Data_stts_gubun=C9999&page=1",
-      "attachments": [
-        {
-          "label": "다운받기",
-          "url": "https://www.mfds.go.kr/brd/m_209/down.do?brd_id=data0009&seq=44306&data_tp=A&file_seq=4"
-        },
-        {
-          "label": "다운받기",
-          "url": "https://www.mfds.go.kr/brd/m_209/down.do?brd_id=data0009&seq=44306&data_tp=A&file_seq=5"
-        },
-        {
-          "label": "다운받기",
-          "url": "https://www.mfds.go.kr/brd/m_209/down.do?brd_id=data0009&seq=44306&data_tp=A&file_seq=6"
-        }
-      ],
-      "source_list_url": "https://www.mfds.go.kr/brd/m_209/list.do?Data_stts_gubun=C9999"
     },
     {
       "agency": "식품의약품안전처",
