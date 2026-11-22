@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "updated": "2026-11-22T23:51:00Z",
+ "updated": "2026-11-22T23:56:00Z",
  "wip_limit": {
   "claude_text": 2,
   "chatgpt_art": 10,
@@ -1027,7 +1027,7 @@
    "name": "자궁경부암·자궁내막암",
    "stage": "S2",
    "status": "ready",
-   "note": "G1 수정: 자궁내막암 합본(대표 2026-11-23). S1 v1.1 재발행 후 기존 25장 재편",
+   "note": "합본 v0.9 재배치 완료(S1 v1.1). 다음: 26·27·28장",
    "waiting_on": null,
    "history": [
     {
@@ -1092,13 +1092,17 @@
      "at": "2026-11-22T23:40:00Z",
      "event": "S1 v1.1 발행(합본)",
      "detail": "volumes/12CXC/S1_지시서_v1.1.md — 경부·내막 두 갈래 30장 대응표, EP05·19 보강·EP07·11·12 내막 교체, 미옥(내막) 추가, FAQ 경부70·내막20·공통10, 근거 NCCN 환자판 Uterine 2021 원문 전체(오래된 판 — FIGO 2023·분자 분류 확인 필요). 다음 CXC 블록: S2 v0.9 재배치"
+    },
+    {
+     "at": "2026-11-22T23:56:00Z",
+     "event": "S2 v0.9 합본 재배치: 11+12 통합·새 12·13장(내막 수술·보조치료)·13+14→14장(재발 2단·드문 상황·육종)·1~8·16~25장 내막 상자·EP07·11·12 교체. FIGO 2023(JGO 원문)·MSD 한국어·ACS 한국어 소책자·UT2021 대조. 1차 면역 병용·내막암 뒤 호르몬제·질 근접 부작용은 확인 필요. 다음: 26·27·28장"
     }
    ],
    "waiting_since": "2026-11-22T03:56:00Z",
    "draft_complete": false,
    "s2_progress": {
-    "version": "v0.8",
-    "file": "volumes/12CXC/S2_원고_v0.8.md",
+    "version": "v0.9",
+    "file": "volumes/12CXC/S2_원고_v0.9.md",
     "chapters": [
      1,
      2,
@@ -1127,8 +1131,7 @@
      25
     ],
     "count": 25,
-    "unverified": [],
-    "restructure_pending": "v0.8 → v0.9 재배치(11+12 통합, 13+14 압축, 새 12·13장 내막암, 공통 장 2단 상자) 먼저"
+    "unverified": []
    },
    "g1": {
     "status": "revise",
