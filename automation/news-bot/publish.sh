@@ -20,13 +20,14 @@ git checkout "$APUDA_NEWS_BRANCH"
 git reset --hard "origin/$APUDA_NEWS_BRANCH"
 
 "$SCRIPT_DIR/.venv/bin/python" "$SCRIPT_DIR/news_bot.py" --repo-root "$APUDA_REPO_DIR"
+"$SCRIPT_DIR/.venv/bin/python" "$SCRIPT_DIR/build_news_pages.py" --repo-root "$APUDA_REPO_DIR"
 "$SCRIPT_DIR/.venv/bin/python" "$SCRIPT_DIR/official_data.py"
 "$SCRIPT_DIR/.venv/bin/python" "$SCRIPT_DIR/official_notices.py"
 "$SCRIPT_DIR/.venv/bin/python" "$SCRIPT_DIR/hira_updates.py"
 "$SCRIPT_DIR/.venv/bin/python" "$SCRIPT_DIR/nccn_monitor.py"
 "$SCRIPT_DIR/.venv/bin/python" "$SCRIPT_DIR/drug_archive.py"
 
-mapfile -t CHANGED_FILES < <(git status --porcelain -- public-site/news/data public-site/news/downloads | awk '{print substr($0,4)}')
+mapfile -t CHANGED_FILES < <(git status --porcelain --untracked-files=all -- public-site/news/data public-site/news/downloads public-site/news/daily public-site/news/sitemap.xml | awk '{print substr($0,4)}')
 if [ "${#CHANGED_FILES[@]}" -eq 0 ]; then
   echo "No news data changes."
   exit 0
