@@ -1,0 +1,434 @@
+{
+  "version": "1.2",
+  "report_date": "2026-11-23",
+  "collection_window": {
+    "start": "2026-11-22T09:00:00+09:00",
+    "end": "2026-11-23T09:00:00+09:00",
+    "timezone": "Asia/Seoul"
+  },
+  "sources": [
+    "데일리팜",
+    "의학신문",
+    "메디파나뉴스",
+    "약사공론"
+  ],
+  "briefing": "인하대병원 개방형실험실, 산·학·연·병 협력으로 기술사업화 날개...27일 성과 공유가 오늘 가장 중요한 이슈로 부각됐습니다. 이어 [기자의창]난소암 치료의 새 희망, 환자에게 닿지 못한 신약도 주요 변화로 확인됐습니다. 전체적으로는 신약·임상 · 디지털헬스 흐름이 두드러집니다.",
+  "top_news": [
+    {
+      "rank": 1,
+      "canonical_issue": "인하대병원 개방형실험실, 산·학·연·병 협력으로 기술사업화 날개...27일 성과 공유 - 의학신문",
+      "title": "인하대병원 개방형실험실, 산·학·연·병 협력으로 기술사업화 날개...27일 성과 공유",
+      "category": [
+        "허가",
+        "투자",
+        "병원"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-11-23T06:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=이재원 기자] 병원의 임상 전문성과 기업의 혁신기술을 결합해 연구개발부터 기술 실증, 인허가, 투자유치, 사업화까지 연결하는 인하대병원 개방형",
+        "[의학신문·일간보사=이재원 기자] 병원의 임상 전문성과 기업의 혁신기술을 결합해 연구개발부터 기술 실증, 인허가, 투자유치, 사업화까지 연결하는 인하대병원 개방형실험실이 산·학·연·병 협력 기반의 바이오헬스 혁신 플랫폼으로 역할을 확대하고 있다.",
+        "지난해 개소 이후 참여기업에 대한 맞춤형 지원체계를 구축한 데 이어, 올해에는 기업 간 교류와 투자 연계, 지역 바이오헬스 산업계와의 협력, 의료데이터 기반 공동연구 등으로 사업 영역을 넓히며 병원 중심의 기술사업화 생태계 조성에 속도를 내고 있다."
+      ],
+      "importance": "생산·투자 확대는 공급망 안정성과 글로벌 사업 확장, 중장기 생산능력 경쟁과 연결됩니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3016678"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016678"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3016678_417677_1019.jpg",
+      "score": 59,
+      "oncology": null
+    },
+    {
+      "rank": 2,
+      "canonical_issue": "[기자의창]난소암 치료의 새 희망, 환자에게 닿지 못한 신약 - 약사공론",
+      "title": "[기자의창]난소암 치료의 새 희망, 환자에게 닿지 못한 신약",
+      "category": [
+        "급여",
+        "허가"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-11-23T05:52:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "신약이 개발되고 허가를 받았다는 소식은 환자에게 새로운 희망이 된다. 하지만 그 희망이 실제 치료로 이어지기까지는 넘어야 할 문턱이 있다. 건강보험 급여와 검사",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=549520"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549520"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202611/549520_453700_1530.jpg",
+      "score": 56,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "난소암"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [
+          "BRCA"
+        ],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": "허가 관련",
+        "reimbursement_status": "급여 관련",
+        "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
+        "patient_relevance_score": 80,
+        "patient_relevance_labels": [
+          "급여·접근성",
+          "허가",
+          "바이오마커"
+        ],
+        "industry_summary": null
+      }
+    },
+    {
+      "rank": 3,
+      "canonical_issue": "성인 예방접종 권고 대폭 개편...RSV 신설·대상포진 재조합백신 접종 강화 - 의학신문",
+      "title": "성인 예방접종 권고 대폭 개편...RSV 신설·대상포진 재조합백신 접종 강화",
+      "category": [
+        "정책"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-11-23T06:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "성인 예방접종 사각지대 해소될까…학회 권고 개정에 정책 변화 주목고령화와 만성질환 증가로 성인 예방접종의 중요성이 커지는 가운데, 대한감염학회가 2019년 이후",
+        "성인 예방접종 사각지대 해소될까…학회 권고 개정에 정책 변화 주목 고령화와 만성질환 증가로 성인 예방접종의 중요성이 커지는 가운데, 대한감염학회가 2019년 이후 축적된 임상근거와 새로운 백신 도입을 반영해 성인 예방접종 권고 제4판 개정을 추진하고 있다.",
+        "대상포진과 RSV 등 고위험군의 접종 권고가 강화되는 반면, 국가예방접종사업(NIP)의 지원 범위는 여전히 제한적이어서 의학적 필요성과 실제 접종 접근성 사이의 간극이 커지고 있다."
+      ],
+      "importance": "기사에서 사업개발·투자 변화가 함께 확인돼 기업 포트폴리오와 경쟁구도 영향을 살펴볼 필요가 있습니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3016997"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016997"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3016997_417891_3239.jpg",
+      "score": 43,
+      "oncology": null
+    },
+    {
+      "rank": 4,
+      "canonical_issue": "\"신약 기술수출, 과학만으론 부족\"…산업약사 BD·투자 전략 공유 - 약사공론",
+      "title": "\"신약 기술수출, 과학만으론 부족\"…산업약사 BD·투자 전략 공유",
+      "category": [
+        "기술수출",
+        "투자"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-11-23T05:51:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "국내 제약·바이오산업의 기술수출 경쟁력을 높이기 위해서는 신약 후보물질의 과학적 우수성뿐 아니라 시장 수요를 반영한 사업개발(BD) 전략과 투자 역량을 함께 확보",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "사업개발·구조개편은 파이프라인 가치와 자본 배분, 기업 경쟁구도에 직접 영향을 주는 변화입니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=549518"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549518"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202611/549518_453699_3022.jpg",
+      "score": 43,
+      "oncology": null
+    },
+    {
+      "rank": 5,
+      "canonical_issue": "[데일리팜]국내 제약 5곳 중 3곳 R&amp;D 지출↑…약가개편 의식했나",
+      "title": "[데일리팜]국내 제약 5곳 중 3곳 R&amp;D 지출↑…약가개편 의식했나",
+      "category": [
+        "약가",
+        "투자"
+      ],
+      "publishers": [
+        "데일리팜"
+      ],
+      "published_at": "2026-11-23T06:00:59+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "국내 주요 전통제약사 50곳 중 28곳이 올해 연구개발(R&D) 비용 지출을 늘린 것으로 나타났다. 또한 50곳 중 24곳은 매출액 대비 R&D 투자 비중이 전년동기 대비 높아졌다. 업계에선 제약사들의 R&D 투자 확대 배경 중 하나로 정부의 약가제도 개편이 거론된다. 전통제약사 50곳 중 28곳 R&D",
+        "[데일리팜=김진구 기자] 국내 주요 전통제약사 50곳 중 28곳이 올해 연구개발(R&D) 비용 지출을 늘린 것으로 나타났다.",
+        "또한 50곳 중 24곳은 매출액 대비 R&D 투자 비중이 전년동기 대비 높아졌다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.dailypharm.com/user/news/344866"
+      ],
+      "source_links": [
+        {
+          "publisher": "데일리팜",
+          "url": "https://www.dailypharm.com/user/news/344866"
+        }
+      ],
+      "thumbnail_url": "https://vod.dailypharm.com/new_dailypharm/news/thumbnail/2026/11/22/a0ff2b2a-0191-4b46-b832-899b209e8a56.jpg",
+      "score": 42,
+      "oncology": null
+    }
+  ],
+  "trends": [
+    {
+      "title": "신약·임상",
+      "count": 4,
+      "change": "4건의 주요 이슈에서 반복적으로 확인",
+      "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
+      "examples": [
+        "인하대병원 개방형실험실, 산·학·연·병 협력으로 기술사업화 날개...27일 성과 공유",
+        "[기자의창]난소암 치료의 새 희망, 환자에게 닿지 못한 신약"
+      ]
+    },
+    {
+      "title": "디지털헬스",
+      "count": 3,
+      "change": "3건의 주요 이슈에서 반복적으로 확인",
+      "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
+      "examples": [
+        "인하대병원 개방형실험실, 산·학·연·병 협력으로 기술사업화 날개...27일 성과 공유",
+        "[기자의창]난소암 치료의 새 희망, 환자에게 닿지 못한 신약"
+      ]
+    },
+    {
+      "title": "투자·사업개발",
+      "count": 3,
+      "change": "3건의 주요 이슈에서 반복적으로 확인",
+      "implication": "자본과 파이프라인 확보 경쟁이 사업전략의 핵심이 되는 흐름",
+      "examples": [
+        "인하대병원 개방형실험실, 산·학·연·병 협력으로 기술사업화 날개...27일 성과 공유",
+        "\"신약 기술수출, 과학만으론 부족\"…산업약사 BD·투자 전략 공유"
+      ]
+    },
+    {
+      "title": "정책·급여",
+      "count": 3,
+      "change": "3건의 주요 이슈에서 반복적으로 확인",
+      "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
+      "examples": [
+        "[기자의창]난소암 치료의 새 희망, 환자에게 닿지 못한 신약",
+        "성인 예방접종 권고 대폭 개편...RSV 신설·대상포진 재조합백신 접종 강화"
+      ]
+    }
+  ],
+  "outlet_status": [
+    {
+      "publisher": "데일리팜",
+      "homepage_url": "https://www.dailypharm.com/",
+      "items": [
+        {
+          "title": "[데일리팜]국내 제약 5곳 중 3곳 R&amp;D 지출↑…약가개편 의식했나",
+          "published_at": "2026-11-23T06:00:59+09:00",
+          "verified": true,
+          "source_url": "https://www.dailypharm.com/user/news/344866"
+        }
+      ]
+    },
+    {
+      "publisher": "의학신문",
+      "homepage_url": "https://www.bosa.co.kr/",
+      "items": [
+        {
+          "title": "인하대병원 개방형실험실, 산·학·연·병 협력으로 기술사업화 날개...27일 성과 공유",
+          "published_at": "2026-11-23T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016678"
+        },
+        {
+          "title": "성인 예방접종 권고 대폭 개편...RSV 신설·대상포진 재조합백신 접종 강화",
+          "published_at": "2026-11-23T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016997"
+        },
+        {
+          "title": "조혈모세포이식 환자 대상포진 위험 높지만...예방효과 입증된 백신 NIP 제외",
+          "published_at": "2026-11-23T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016998"
+        },
+        {
+          "title": "검체검사 위·수탁 계약신고 23일 시작...미신고 시 급여비 지급 차질 우려",
+          "published_at": "2026-11-23T05:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017018"
+        },
+        {
+          "title": "복지부·건보공단·데이터처, 희귀질환 코드·산정특례 놓고 '책임 전가'",
+          "published_at": "2026-11-23T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016977"
+        },
+        {
+          "title": "에스포항병원, 건보공단 '간호·간병통합서비스 우수기관' 선정",
+          "published_at": "2026-11-23T06:37:15+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016971"
+        },
+        {
+          "title": "중국 NMPA, 3등급 의료기기 임상 사전상담 전면 확대…“인허가 전략 재정비 시점”",
+          "published_at": "2026-11-23T05:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3016940"
+        },
+        {
+          "title": "서울성모병원 간암 진료 30년…난치성 간암을 “치료 가능한 영역으로”",
+          "published_at": "2026-11-23T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017015"
+        }
+      ]
+    },
+    {
+      "publisher": "메디파나뉴스",
+      "homepage_url": "https://www.medipana.com/",
+      "items": [
+        {
+          "title": "의약품유통협회장 선거, 박호영-남상규 하마평…재대결 관심",
+          "published_at": "2026-11-23T06:01:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422351"
+        },
+        {
+          "title": "[PSK칼럼] 제약산업 산책 - 임상의 두 가지 윤리",
+          "published_at": "2026-11-23T05:59:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422341"
+        },
+        {
+          "title": "\"그럴듯한 답 아닌 근거 갖춘 설계로\"…AI 신약개발 수상팀 포부",
+          "published_at": "2026-11-23T06:02:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422333"
+        },
+        {
+          "title": "김종환 약사공론 사장 딸 (12/19)",
+          "published_at": "2026-11-22T17:23:33+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422350"
+        },
+        {
+          "title": "[수첩] 기술의 발달, 뒤늦은 대비의 대가",
+          "published_at": "2026-11-23T06:03:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422359"
+        },
+        {
+          "title": "'80년 노력' 서울시간호사회, '간호 중심 통합돌봄' 시대 연다",
+          "published_at": "2026-11-23T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422358"
+        },
+        {
+          "title": "제약사 이자상환 여력 개선…수익성 회복에 재무체력도 달라졌다",
+          "published_at": "2026-11-23T06:03:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422349"
+        },
+        {
+          "title": "제약사 CSO 관리책임 강화 논의…재위탁 검증체계 정비 과제",
+          "published_at": "2026-11-23T06:04:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422352"
+        }
+      ]
+    },
+    {
+      "publisher": "약사공론",
+      "homepage_url": "https://www.kpanews.co.kr/",
+      "items": [
+        {
+          "title": "[기자의창]난소암 치료의 새 희망, 환자에게 닿지 못한 신약",
+          "published_at": "2026-11-23T05:52:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549520"
+        },
+        {
+          "title": "\"신약 기술수출, 과학만으론 부족\"…산업약사 BD·투자 전략 공유",
+          "published_at": "2026-11-23T05:51:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549518"
+        },
+        {
+          "title": "의료급여 지급 지연 현실화…내년 1월 해소 전망",
+          "published_at": "2026-11-23T05:53:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549515"
+        },
+        {
+          "title": "고가약 관리 대상 확대…투여 후 반응평가·장기추적 의무화",
+          "published_at": "2026-11-23T05:52:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549509"
+        },
+        {
+          "title": "박호영·남상규, 차기 유통협회장 재대결 성사?",
+          "published_at": "2026-11-23T05:51:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549517"
+        },
+        {
+          "title": "[일반의약품] 복약지도로 예방하는 구강질환 vs. 약물 유발을 의심하기 어려운 구강질환",
+          "published_at": "2026-11-23T05:52:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549416"
+        },
+        {
+          "title": "[한약제제] 임플란트·발치 후 상담, 진통제만 주고 끝낼까?",
+          "published_at": "2026-11-23T05:51:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549408"
+        },
+        {
+          "title": "[근거기반 한약제제의 최신임상동향] 노년기 재발하는 흡인성 폐렴에 대한 청폐탕의 임상효과",
+          "published_at": "2026-11-23T05:47:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549410"
+        }
+      ]
+    }
+  ],
+  "insight": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름 동시에 디지털헬스 흐름도 함께 확인돼 단일 이슈보다 복합적인 산업 변화로 보는 것이 적절합니다.",
+  "infographic": {
+    "image_path": null,
+    "generated_at": null,
+    "template_version": "news-card-v1"
+  }
+}
