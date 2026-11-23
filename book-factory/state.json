@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "updated": "2026-11-23T14:03:50Z",
+ "updated": "2026-11-23T14:05:07Z",
  "wip_limit": {
   "claude_text": 2,
   "chatgpt_art": 10,
@@ -2007,7 +2007,7 @@
  ],
  "inbox": {
   "last_line": "[결재 기록]",
-  "last_review_time": "2026-11-22T21:00:00Z"
+  "last_review_time": "2026-11-23T14:05:07Z"
  },
  "drive": {
   "root": "1i1XGW6O_c1HGmeF7lyrTkVKB_zq8jVgP",
