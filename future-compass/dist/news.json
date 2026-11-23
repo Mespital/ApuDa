@@ -1,8 +1,32 @@
 {
-  "checked_at": "2026-11-23T06:45:29.558591+00:00",
-  "last_success_at": "2026-11-23T06:45:29.558591+00:00",
+  "checked_at": "2026-11-23T19:59:07.329769+00:00",
+  "last_success_at": "2026-11-23T19:59:07.329769+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "Here are 4 things you didn’t know you could do with Gemini Canvas.",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-canvas-tasks/",
+      "source": "Google",
+      "published_at": "2026-11-23T18:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Introducing file slicing controls in the Gemini API",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/file-slicing-controls/",
+      "source": "Google",
+      "published_at": "2026-11-23T16:12:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Connected intelligence for in-house legal",
+      "url": "https://openai.com/business/learn/connected-intelligence-for-in-house-legal",
+      "source": "OpenAI",
+      "published_at": "2026-11-23T08:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "Perplexity and Intelligence",
       "url": "https://openai.com/index/perplexity-and-intelligence",
@@ -218,36 +242,12 @@
       "published_at": "2026-11-18T08:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Research acceleration: The jagged frontier",
-      "url": "https://openai.com/index/research-acceleration-jagged-frontier",
-      "source": "OpenAI",
-      "published_at": "2026-11-18T08:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "How Sumitomo Life’s leaders helped teams adopt ChatGPT Enterprise",
-      "url": "https://openai.com/business/customer-stories/sumitomo-life",
-      "source": "OpenAI",
-      "published_at": "2026-11-18T08:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Managing frontier AI risk: From training to deployment",
-      "url": "https://openai.com/index/managing-frontier-ai-risk",
-      "source": "OpenAI",
-      "published_at": "2026-11-18T06:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-11-23T06:45:29.558591+00:00",
+    "checked_at": "2026-11-23T19:59:07.329769+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -384,7 +384,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-11-23T06:45:29.558591+00:00",
+    "last_success_at": "2026-11-23T19:59:07.329769+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
