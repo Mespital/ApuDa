@@ -17,7 +17,8 @@
     ovarian: [{ name: '난소암', id: '8Pch-BKNJTE' }],
     esophageal: [{ name: '식도암', id: 'hyuAJ9720E8' }],
     bladder: [{ name: '방광암', id: 'xpYwGJ7cM3k' }],
-    sarcoma: [{ name: '육종암 치료의 모든 것', id: '6QqAzcoATJ4' }]
+    sarcoma: [{ name: '육종암 치료의 모든 것', id: '6QqAzcoATJ4' }],
+    melanoma: [{ name: '흑색종 치료의 결정 통합편', id: 'uQMww0h7paU' }]
   };
   Object.keys(catalog).forEach(function (slug) {
     catalog[slug].forEach(Object.freeze);
