@@ -1,8 +1,16 @@
 {
-  "checked_at": "2026-11-24T15:55:08.844748+00:00",
-  "last_success_at": "2026-11-24T15:55:08.844748+00:00",
+  "checked_at": "2026-11-24T17:16:30.547341+00:00",
+  "last_success_at": "2026-11-24T17:16:30.547341+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "How Gemini is changing the game for Golden State's organization and fans.",
+      "url": "https://blog.google/products-and-platforms/products/gemini/gemini-golden-state/",
+      "source": "Google",
+      "published_at": "2026-11-24T16:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "Independent filmmakers in India bring big-screen stories to life with Google Flow.",
       "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/women-in-film-india-google-flow/",
@@ -234,20 +242,12 @@
       "published_at": "2026-11-18T18:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Introducing Stitch Loop: A new way to build and evolve products",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-loop/",
-      "source": "Google",
-      "published_at": "2026-11-18T17:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-11-24T15:55:08.844748+00:00",
+    "checked_at": "2026-11-24T17:16:30.547341+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -384,7 +384,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-11-24T15:55:08.844748+00:00",
+    "last_success_at": "2026-11-24T17:16:30.547341+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
