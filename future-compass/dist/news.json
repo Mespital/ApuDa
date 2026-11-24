@@ -1,11 +1,27 @@
 {
-  "checked_at": "2026-11-24T17:16:30.547341+00:00",
-  "last_success_at": "2026-11-24T17:16:30.547341+00:00",
+  "checked_at": "2026-11-24T22:10:02.028722+00:00",
+  "last_success_at": "2026-11-24T22:10:02.028722+00:00",
   "failures": [],
   "articles": [
     {
+      "title": "We’re launching Humanity’s First Exam and a Kaggle hackathon to test LLM reliability.",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/humanitys-first-exam/",
+      "source": "Google",
+      "published_at": "2026-11-24T19:30:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
       "title": "How Gemini is changing the game for Golden State's organization and fans.",
       "url": "https://blog.google/products-and-platforms/products/gemini/gemini-golden-state/",
+      "source": "Google",
+      "published_at": "2026-11-24T16:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "See what 5 builders are making with Gemini 4 Neon",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-neon-builders/",
       "source": "Google",
       "published_at": "2026-11-24T16:00:00+00:00",
       "category": "AI·컴퓨팅",
@@ -16,6 +32,38 @@
       "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/women-in-film-india-google-flow/",
       "source": "Google",
       "published_at": "2026-11-24T14:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "GPT-6 models demonstrate intrinsic protein-design capabilities",
+      "url": "https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities",
+      "source": "OpenAI",
+      "published_at": "2026-11-24T13:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Searching for distant planets with Astra",
+      "url": "https://openai.com/index/searching-for-distant-planets-with-astra",
+      "source": "OpenAI",
+      "published_at": "2026-11-24T11:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "How Intentful uses dots to make more time for growth",
+      "url": "https://openai.com/business/customer-stories/intentful-dots",
+      "source": "OpenAI",
+      "published_at": "2026-11-24T00:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "How iFood scales coding agents across 15,000 repositories",
+      "url": "https://openai.com/business/customer-stories/ifood",
+      "source": "OpenAI",
+      "published_at": "2026-11-24T00:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
     },
@@ -194,60 +242,12 @@
       "published_at": "2026-11-19T08:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "Deploying Daybreak Red",
-      "url": "https://openai.com/business/learn/deploying-daybreak-red",
-      "source": "OpenAI",
-      "published_at": "2026-11-19T00:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "See PR scans in action",
-      "url": "https://openai.com/business/learn/pr-scans-demo",
-      "source": "OpenAI",
-      "published_at": "2026-11-19T00:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Explore the Codex Security Plugin",
-      "url": "https://openai.com/business/learn/codex-security-plugin-demo",
-      "source": "OpenAI",
-      "published_at": "2026-11-19T00:00:00+00:00",
-      "category": "안전·보안",
-      "domain": "security"
-    },
-    {
-      "title": "Get started with Daybreak Blue",
-      "url": "https://openai.com/business/learn/daybreak-blue-onboarding-demo",
-      "source": "OpenAI",
-      "published_at": "2026-11-19T00:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Introducing Gemini 4 Neon",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/",
-      "source": "Google",
-      "published_at": "2026-11-18T21:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
-    },
-    {
-      "title": "Genie 4 is now available",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/genie-4-now-available-project-genie/",
-      "source": "Google",
-      "published_at": "2026-11-18T18:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-11-24T17:16:30.547341+00:00",
+    "checked_at": "2026-11-24T22:10:02.028722+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -384,7 +384,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-11-24T17:16:30.547341+00:00",
+    "last_success_at": "2026-11-24T22:10:02.028722+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
