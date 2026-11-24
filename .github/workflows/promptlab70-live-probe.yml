@@ -1,0 +1,57 @@
+name: Verify PromptLab 70 live production
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'future-compass/dist/promptlab70.html'
+      - 'future-compass/dist/app-nav.js'
+      - 'future-compass/dist/sw.js'
+      - '.github/workflows/promptlab70-live-probe.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  live-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Verify production site and both menu links
+        shell: bash
+        run: |
+          set -euo pipefail
+          base="https://future.apuda.app"
+          echo "Checking live production at ${base}"
+          ok=0
+          for i in $(seq 1 12); do
+            if curl --silent --show-error --fail --location --max-time 12 --header 'Cache-Control: no-cache' "${base}/promptlab70.html?probe=${GITHUB_SHA}" -o /tmp/promptlab70.html; then
+              if grep -q "PromptLab 70" /tmp/promptlab70.html && grep -q "pin-gate.js" /tmp/promptlab70.html; then
+                echo "PASS: PromptLab 70 HTML served on production (attempt ${i})"
+                ok=1
+                break
+              fi
+              echo "Attempt ${i}: HTML served but expected app marker missing"
+            else
+              echo "Attempt ${i}: production did not serve the new page"
+            fi
+            sleep 10
+          done
+          if [ "$ok" -ne 1 ]; then
+            echo "::error::PromptLab 70 not available on production"
+            exit 1
+          fi
+          curl --fail --silent --show-error --location --max-time 15 "${base}/app-nav.js?probe=${GITHUB_SHA}" -o /tmp/app-nav.js
+          grep -q "promptlab70.html" /tmp/app-nav.js || { echo "::error::Menu missing PromptLab 70"; exit 1; }
+          grep -q "studylab.html" /tmp/app-nav.js || { echo "::error::Original StudyLab menu missing"; exit 1; }
+          echo "PASS: Both 20-command StudyLab and PromptLab 70 links present"
+          echo "Production URL: ${base}/promptlab70.html" >> "$GITHUB_STEP_SUMMARY"
+      - name: Netlify direct deploy credential presence (boolean only)
+        if: always()
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.FUTURE_NETLIFY_SITE_ID }}
+        run: |
+          if [ -n "$NETLIFY_AUTH_TOKEN" ] && [ -n "$NETLIFY_SITE_ID" ]; then
+            echo "Netlify direct CLI credentials configured: yes" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Netlify direct CLI credentials configured: no; Git integration must handle deployment" >> "$GITHUB_STEP_SUMMARY"
+          fi
