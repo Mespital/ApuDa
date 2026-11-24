@@ -86,7 +86,7 @@
   function view() {
     var it = find(S.cmd), p = build();
     var h = '<details class="card sc-card" id="study-commands"' + (S.open ? ' open' : '') + '><summary>⚡ 공부 명령어 — ChatGPT한테 이렇게 가르쳐 달라고 하기</summary>';
-    h += '<p class="small"><a href="studylab.html" class="button-link" style="display:inline-block;padding:8px 12px;margin:3px 0 10px;border:1px solid #7764ef;border-radius:10px;font-weight:800">AI 학습실에서 70개 프롬프트 찾아보기 →</a></p>';
+    h += '<p class="small"><a href="promptlab70.html" class="button-link" style="display:inline-block;padding:8px 12px;margin:3px 0 10px;border:1px solid #7764ef;border-radius:10px;font-weight:800">AI 학습실에서 70개 프롬프트 찾아보기 →</a></p>';
     h += '<p class="small">주제 앞에 명령어 한 단어만 붙이면 ChatGPT가 쉬운 설명·그림·예상 문제·질문식 수업으로 바꿔서 가르쳐 줘. <span class="muted">(ChatGPT 공식 기능은 아니고, 단어 뜻을 읽고 그 방식으로 답하는 거야.)</span></p>';
     var fav = top();
     if (fav.length) h += '<div class="sc-fav"><p class="sc-gname">⭐ 내가 자주 쓰는 명령어</p><div class="sc-chips">' + fav.map(function (c) { return '<button type="button" class="sc-mini' + (c === S.cmd ? ' on' : '') + '" data-sc-cmd="' + e(c) + '">' + e(c) + ' <small>' + S.uses[c] + '회</small></button>'; }).join('') + '</div></div>';
