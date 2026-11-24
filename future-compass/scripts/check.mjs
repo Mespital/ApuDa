@@ -61,6 +61,8 @@ await import('./check-watch-recovery.mjs');
 for(const f of fs.readdirSync(path.join(root,'dist')).filter(f=>f.endsWith('.js')))new vm.Script(fs.readFileSync(path.join(root,'dist',f),'utf8'),{filename:f});
 {const sw=fs.readFileSync(path.join(root,'dist/sw.js'),'utf8');const list=JSON.parse(sw.match(/const ASSETS=(\[[\s\S]*?\]);/)[1]);for(const a of list)if(a!=='./')assert.ok(fs.existsSync(path.join(root,'dist',a)),'sw asset missing: '+a);for(const f of ['grades.js','course-helper.js','school-live.js'])assert.ok(list.includes(f),'sw missing '+f);console.log('PASS: dist scripts parse, sw assets exist ('+list.length+')');}
 
+await import('./check-studylab.mjs');
+
 await import('./check-csat.mjs');
 
 await import('./check-csat-papers.mjs');
