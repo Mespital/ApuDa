@@ -1,8 +1,16 @@
 {
-  "checked_at": "2026-11-24T04:42:34.468227+00:00",
-  "last_success_at": "2026-11-24T04:42:34.468227+00:00",
+  "checked_at": "2026-11-24T15:55:08.844748+00:00",
+  "last_success_at": "2026-11-24T15:55:08.844748+00:00",
   "failures": [],
   "articles": [
+    {
+      "title": "Independent filmmakers in India bring big-screen stories to life with Google Flow.",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/women-in-film-india-google-flow/",
+      "source": "Google",
+      "published_at": "2026-11-24T14:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
     {
       "title": "OpenAI and Cisco introduce Shirudo",
       "url": "https://openai.com/index/introducing-shirudo",
@@ -234,20 +242,12 @@
       "published_at": "2026-11-18T17:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "The Gemini app is now available on lower-memory Android devices.",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-lower-memory-devices/",
-      "source": "Google",
-      "published_at": "2026-11-18T17:00:00+00:00",
-      "category": "로봇·기기",
-      "domain": "robots"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-11-24T04:42:34.468227+00:00",
+    "checked_at": "2026-11-24T15:55:08.844748+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -384,7 +384,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-11-24T04:42:34.468227+00:00",
+    "last_success_at": "2026-11-24T15:55:08.844748+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
