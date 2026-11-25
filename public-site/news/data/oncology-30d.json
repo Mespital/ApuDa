@@ -1,9 +1,9 @@
 {
   "version": "1.0",
-  "generated_at": "2026-11-24T09:04:50.154433+09:00",
+  "generated_at": "2026-11-25T09:04:49.508811+09:00",
   "window": {
-    "start": "2026-10-25T09:00:00+09:00",
-    "end": "2026-11-24T09:00:00+09:00",
+    "start": "2026-10-26T09:00:00+09:00",
+    "end": "2026-11-25T09:00:00+09:00",
     "days": 30,
     "timezone": "Asia/Seoul"
   },
@@ -23,104 +23,34 @@
   ],
   "items": [
     {
-      "rank": 3,
-      "canonical_issue": "종근당 국내 판권 '테도피', 폐암 병용 2상서 생존 개선 신호 - 메디파나뉴스",
-      "title": "종근당 국내 판권 '테도피', 폐암 병용 2상서 생존 개선 신호",
+      "rank": null,
+      "canonical_issue": "[초점] 유방암 신약 하나로 치료 전 과정 공략…로슈의 승부수 - 메디파나뉴스",
+      "title": "[초점] 유방암 신약 하나로 치료 전 과정 공략…로슈의 승부수",
       "category": [
-        "임상 2상",
-        "2상"
+        "약국"
       ],
       "publishers": [
         "메디파나뉴스"
       ],
-      "published_at": "2026-10-26T07:45:26+09:00",
+      "published_at": "2026-11-24T11:50:00+09:00",
       "published_at_verified": true,
       "summary": [
-        "종근당이 국내 판권을 보유한 치료용 암백신 후보물질 '테도피'(Tedopi·OSE2101)가 전이성 비소세포폐암 병용 임상에서 생존 개선 가능성을 보였다. 항암화학요법 또는 면역항암제와 병용한 환자군에서 도세탁셀 단독군보다 수치상 높은 1년 생존율이 관찰됐다. 프랑스 바이오기업 OSE 이뮤노테라퓨틱스는 ",
-        "복사하기 종근당 충정로 본사 사옥 전경 사진을 AI 도움을 받아 생성한 이미지 종근당이 국내 판권을 보유한 치료용 암백신 후보물질 '테도피'(Tedopi·OSE2101)가 전이성 비소세포폐암 병용 임상에서 생존 개선 가능성을 보였다.",
-        "항암화학요법 또는 면역항암제와 병용한 환자군에서 도세탁셀 단독군보다"
+        "스위스 제약기업 로슈가 하나의 신약을 중심으로 유방암 치료제 시장에서 새로운 성장 기반을 구축하고 있다. 경구용 호르몬 치료제 '윌서들리'(Wilserdly, 성분명 기레데스트란트)가 일주일 사이 미국 식품의약국(FDA)으로부터 두 차례 승인을 받으면서 초기 유방암부터 진행성·전이성 유방암까지 치료 영역",
+        "복사하기 AI 생성 이미지 스위스 제약기업 로슈가 하나의 신약을 중심으로 유방암 치료제 시장에서 새로운 성장 기반을 구축하고 있다.",
+        "경구용 호르몬 치료제 '윌서들리'(Wilserdly, 성분명 기레데스트란트)가 일주일 사이 미국 식품의약국(FDA)으로부터 두 차례 승인을 받으면서 초기 유방암부터 진행성·전이성 유방암까지 치료 영역을 넓혔다."
       ],
-      "importance": "주요 임상 결과는 향후 허가·가이드라인·표준치료 변화 가능성을 평가하는 근거가 됩니다.",
+      "importance": "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다.",
       "source_urls": [
-        "https://www.medipana.com/news/articleView.html?idxno=420029"
+        "https://www.medipana.com/news/articleView.html?idxno=422456"
       ],
       "source_links": [
         {
           "publisher": "메디파나뉴스",
-          "url": "https://www.medipana.com/news/articleView.html?idxno=420029"
+          "url": "https://www.medipana.com/news/articleView.html?idxno=422456"
         }
       ],
-      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/420029_327652_3910.png",
-      "score": 57,
-      "oncology": {
-        "is_oncology": true,
-        "cancer_types": [
-          "폐암"
-        ],
-        "drug_generic": [],
-        "drug_brand": [],
-        "targets": [],
-        "mechanism": [],
-        "biomarkers": [
-          "EGFR",
-          "ALK",
-          "ROS1"
-        ],
-        "trial_name": null,
-        "phase": "3",
-        "line_of_therapy": null,
-        "endpoints": {
-          "orr": null,
-          "pfs": null,
-          "os": null,
-          "hr": null,
-          "grade3plus_ae": null
-        },
-        "approval_status": "허가 관련",
-        "reimbursement_status": null,
-        "patient_summary": "치료제의 허가 범위나 사용 가능성과 관련된 소식입니다. 국내 실제 사용은 식약처 허가사항을 확인해야 합니다.",
-        "patient_relevance_score": 98,
-        "patient_relevance_labels": [
-          "허가",
-          "안전성",
-          "임상결과",
-          "바이오마커"
-        ],
-        "industry_summary": null
-      },
-      "freshness": "30d",
-      "age_days": 29
-    },
-    {
-      "rank": 4,
-      "canonical_issue": "'퍼제타' 8년째 비급여…'사회적 편익' 논의에 환자들 기대감 - 메디파나뉴스",
-      "title": "'퍼제타' 8년째 비급여…'사회적 편익' 논의에 환자들 기대감",
-      "category": [
-        "급여",
-        "허가"
-      ],
-      "publishers": [
-        "메디파나뉴스"
-      ],
-      "published_at": "2026-10-26T06:02:00+09:00",
-      "published_at_verified": true,
-      "summary": [
-        "HER2 양성 조기 유방암 치료제 '퍼제타(퍼투주맙)'의 수술 후 보조요법이 국내 허가 이후 8년째 건강보험을 적용받지 못하고 있다. 재발 위험을 낮추고 완치를 목표로 하는 치료지만, 환자들은 여전히 약제비 전액을 부담해야 하는 상황이다. 이러한 가운데 국정감사에서 신약의 경제성 평가에 환자의 경제활동 ",
-        "복사하기 유방암 치료제의 건강보험 급여 평가에 환자의 사회 복귀와 가족의 돌봄 부담 감소 등 사회적 편익을 반영해야 한다는 논의가 제기되고 있다.",
-        "사진=AI 생성 이미지 HER2 양성 조기 유방암 치료제 '퍼제타(퍼투주맙)'의 수술 후 보조요법이 국내 허가 이후 8년째 건강보험을 적용받지 못하고 있다."
-      ],
-      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
-      "source_urls": [
-        "https://www.medipana.com/news/articleView.html?idxno=419973"
-      ],
-      "source_links": [
-        {
-          "publisher": "메디파나뉴스",
-          "url": "https://www.medipana.com/news/articleView.html?idxno=419973"
-        }
-      ],
-      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419973_327583_4618.jpg",
-      "score": 55,
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202611/422456_330523_818.jpg",
+      "score": 25,
       "oncology": {
         "is_oncology": true,
         "cancer_types": [
@@ -134,7 +64,7 @@
           "HER2"
         ],
         "trial_name": null,
-        "phase": null,
+        "phase": "3",
         "line_of_therapy": null,
         "endpoints": {
           "orr": null,
@@ -143,20 +73,20 @@
           "hr": null,
           "grade3plus_ae": null
         },
-        "approval_status": "허가 관련",
-        "reimbursement_status": "급여 관련",
-        "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
-        "patient_relevance_score": 98,
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": "치료제의 허가 범위나 사용 가능성과 관련된 소식입니다. 국내 실제 사용은 식약처 허가사항을 확인해야 합니다.",
+        "patient_relevance_score": 90,
         "patient_relevance_labels": [
-          "급여·접근성",
           "허가",
+          "임상결과",
           "바이오마커",
-          "가이드라인"
+          "지원제도"
         ],
         "industry_summary": null
       },
-      "freshness": "30d",
-      "age_days": 29
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": 1,
@@ -225,7 +155,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": 2,
@@ -291,7 +221,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
     },
     {
       "rank": 2,
@@ -355,7 +285,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     },
     {
       "rank": 5,
@@ -420,7 +350,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": 2,
@@ -484,70 +414,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
-    },
-    {
-      "rank": null,
-      "canonical_issue": "큐리언트, 혈액암 전주기 신약 개발 전략 집중…연말 성과 주목 - 메디파나뉴스",
-      "title": "큐리언트, 혈액암 전주기 신약 개발 전략 집중…연말 성과 주목",
-      "category": [
-        "합병"
-      ],
-      "publishers": [
-        "메디파나뉴스"
-      ],
-      "published_at": "2026-10-26T06:00:00+09:00",
-      "published_at_verified": true,
-      "summary": [
-        "동구바이오제약이 최대주주로 있는 큐리언트가 신약 후보물질 '아드릭세티닙(Q702)' 개발에서 급성 골수성 백혈병(AML)과 만성 이식편대숙주질환(cGvHD)에 무게를 두고 임상 전략을 구체화하고 있다. 백혈병 치료와 조혈모세포 이식 이후 발생하는 합병증을 연계하는 한편, 고형암에서는 바이오마커 발굴을 우",
-        "복사하기 사진=AI 생성 이미지 동구바이오제약이 최대주주로 있는 큐리언트가 신약 후보물질 '아드릭세티닙(Q702)' 개발에서 급성 골수성 백혈병(AML)과 만성 이식편대숙주질환(cGvHD)에 무게를 두고 임상 전략을 구체화하고 있다.",
-        "백혈병 치료와 조혈모세포 이식 이후 발생하는 합병증을 연계하는 한편, 고형암에서는 바이오마커 발굴을 우선하며 적응증별 개발 방향을 구분하고 있다."
-      ],
-      "importance": "사업개발·구조개편은 파이프라인 가치와 자본 배분, 기업 경쟁구도에 직접 영향을 주는 변화입니다.",
-      "source_urls": [
-        "https://www.medipana.com/news/articleView.html?idxno=419971"
-      ],
-      "source_links": [
-        {
-          "publisher": "메디파나뉴스",
-          "url": "https://www.medipana.com/news/articleView.html?idxno=419971"
-        }
-      ],
-      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/419971_327580_2652.png",
-      "score": 35,
-      "oncology": {
-        "is_oncology": true,
-        "cancer_types": [
-          "백혈병"
-        ],
-        "drug_generic": [],
-        "drug_brand": [],
-        "targets": [],
-        "mechanism": [],
-        "biomarkers": [],
-        "trial_name": null,
-        "phase": "2",
-        "line_of_therapy": null,
-        "endpoints": {
-          "orr": null,
-          "pfs": null,
-          "os": null,
-          "hr": null,
-          "grade3plus_ae": null
-        },
-        "approval_status": "허가 관련",
-        "reimbursement_status": null,
-        "patient_summary": "치료제의 허가 범위나 사용 가능성과 관련된 소식입니다. 국내 실제 사용은 식약처 허가사항을 확인해야 합니다.",
-        "patient_relevance_score": 70,
-        "patient_relevance_labels": [
-          "허가",
-          "안전성",
-          "바이오마커"
-        ],
-        "industry_summary": null
-      },
-      "freshness": "30d",
-      "age_days": 29
+      "age_days": 6
     },
     {
       "rank": null,
@@ -610,8 +477,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "today",
-      "age_days": 0
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -674,7 +541,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 27
+      "age_days": 28
     },
     {
       "rank": null,
@@ -739,7 +606,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": null,
@@ -801,7 +668,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 25
+      "age_days": 26
     },
     {
       "rank": null,
@@ -864,6 +731,68 @@
         "patient_relevance_labels": [
           "급여·접근성",
           "바이오마커"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "7d",
+      "age_days": 1
+    },
+    {
+      "rank": null,
+      "canonical_issue": "큐라클·맵틱스·피노바이오, 항체·ADC 기반 신약 공동개발 - 의학신문",
+      "title": "큐라클·맵틱스·피노바이오, 항체·ADC 기반 신약 공동개발",
+      "category": [
+        "ai"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-11-25T06:20:43+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=김정일 기자] 큐라클(대표 유재현)은 맵틱스 및 피노바이오와 지난 23일 ADC 및 항체 기반 신약개발을 위한 공동 연구개발 업무협약을 체결했",
+        "[의학신문·일간보사=김정일 기자] 큐라클(대표 유재현)은 맵틱스 및 피노바이오와 지난 23일 ADC 및 항체 기반 신약개발을 위한 공동 연구개발 업무협약을 체결했다고 밝혔다.",
+        "왼쪽부터 큐라클 유재현 대표, 맵틱스 이남경 대표, 피노바이오 정두영 대표."
+      ],
+      "importance": "시장·정책·연구개발 흐름을 보여주는 주요 산업 이슈로 후속 정책과 사업 변화 확인이 필요합니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3017237"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017237"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3017237_418101_5039.jpg",
+      "score": 2,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [
+          "ADC"
+        ],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": "치료 중 안전성과 관련된 정보입니다. 복용·투여 변경은 담당 의료진과 상의해야 합니다.",
+        "patient_relevance_score": 54,
+        "patient_relevance_labels": [
+          "안전성",
+          "임상결과"
         ],
         "industry_summary": null
       },
@@ -931,8 +860,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "today",
-      "age_days": 0
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -994,7 +923,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
     },
     {
       "rank": null,
@@ -1059,7 +988,71 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 25
+      "age_days": 26
+    },
+    {
+      "rank": null,
+      "canonical_issue": "리가켐바이오, 독자 페이로드 개발로 ADC 플랫폼 고도화 - 메디파나뉴스",
+      "title": "리가켐바이오, 독자 페이로드 개발로 ADC 플랫폼 고도화",
+      "category": [
+        "2상"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-11-25T06:03:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "리가켐바이오가 자체 링커와 접합 기술을 기반으로 페이로드 개발 역량을 확대하며 항체-약물접합체(ADC) 플랫폼을 고도화하고 있다. 기존 약물과 차별화된 페이로드를 개발하는 한편, 항체당 약물 결합 수를 줄인 DAR1 기술을 적용해 ADC의 효능과 안전성 개선을 추진한다. 24일 리가켐바이오의 4분기 기업",
+        "제공=리가켐바이오 리가켐바이오가 자체 링커와 접합 기술을 기반으로 페이로드 개발 역량을 확대하며 항체-약물접합체(ADC) 플랫폼을 고도화하고 있다.",
+        "기존 약물과 차별화된 페이로드를 개발하는 한편, 항체당 약물 결합 수를 줄인 DAR1 기술을 적용해 ADC의 효능과 안전성 개선을 추진한다."
+      ],
+      "importance": "시장·정책·연구개발 흐름을 보여주는 주요 산업 이슈로 후속 정책과 사업 변화 확인이 필요합니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=422577"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=422577"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202611/422577_330686_734.jpg",
+      "score": 4,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [
+          "ADC"
+        ],
+        "biomarkers": [
+          "CLDN18.2"
+        ],
+        "trial_name": null,
+        "phase": "2",
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": "치료 중 안전성과 관련된 정보입니다. 복용·투여 변경은 담당 의료진과 상의해야 합니다.",
+        "patient_relevance_score": 46,
+        "patient_relevance_labels": [
+          "안전성",
+          "바이오마커"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "today",
+      "age_days": 0
     },
     {
       "rank": 4,
@@ -1123,7 +1116,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     },
     {
       "rank": null,
@@ -1187,7 +1180,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     },
     {
       "rank": null,
@@ -1249,7 +1242,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": null,
@@ -1309,7 +1302,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 28
+      "age_days": 29
     },
     {
       "rank": null,
@@ -1370,7 +1363,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 24
+      "age_days": 25
     },
     {
       "rank": null,
@@ -1432,7 +1425,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 25
+      "age_days": 26
     },
     {
       "rank": null,
@@ -1497,7 +1490,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 26
+      "age_days": 27
     },
     {
       "rank": null,
@@ -1559,7 +1552,66 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 28
+      "age_days": 29
+    },
+    {
+      "rank": null,
+      "canonical_issue": "국가 주문 필수약 3종, 매각액 11억3125만원…수의계약 내역 공개 - 약사공론",
+      "title": "국가 주문 필수약 3종, 매각액 11억3125만원…수의계약 내역 공개",
+      "category": [
+        "공급"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-11-25T05:51:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "국가가 안정적인 공급을 위해 주문제조를 지원한 필수 항암제와 항생제 3개 품목의 매각 규모와 계약 절차가 공개됐다. 한국희귀필수의약품센터가 비앤씨메디칼과 체결한",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "공급 변화는 의약품 접근성과 의료현장 재고 운영, 대체치료 준비에 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=549815"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549815"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202611/549815_453876_559.jpg",
+      "score": 13,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": "환자 부담이나 지원제도와 관련된 정보입니다. 대상 조건을 공식 안내에서 확인해야 합니다.",
+        "patient_relevance_score": 26,
+        "patient_relevance_labels": [
+          "지원제도"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "today",
+      "age_days": 0
     },
     {
       "rank": null,
@@ -1618,7 +1670,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 3
+      "age_days": 4
     },
     {
       "rank": null,
@@ -1677,7 +1729,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
     },
     {
       "rank": null,
@@ -1736,7 +1788,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": null,
@@ -1793,7 +1845,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 6
+      "age_days": 7
     },
     {
       "rank": null,
@@ -1852,7 +1904,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": null,
@@ -1911,7 +1963,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": null,
@@ -1968,7 +2020,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 25
+      "age_days": 26
     }
   ]
 }

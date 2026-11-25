@@ -1,9 +1,39 @@
 {
   "version": "1.1",
-  "generated_at": "2026-11-24T09:05:02.566151+09:00",
+  "generated_at": "2026-11-25T09:05:01.766108+09:00",
   "window_days": 30,
   "status": "ok",
   "items": [
+    {
+      "agency": "건강보험심사평가원",
+      "document_type": "공식 고시·공지",
+      "category": "건강보험 기준",
+      "department": "디지털의료기술등재",
+      "title": "[행위] 고시 제2026-236호「건강보험 행위 급여ㆍ비급여 목록표 및 급여 상대가치점수」일부개정 새글",
+      "published_at": "2026-11-24T00:00:00+09:00",
+      "url": "https://www.hira.or.kr/bbsDummy.do?brdBltNo=12355&brdScnBltNo=4&pgmid=HIRAA020002000100",
+      "detail_link_verified": true,
+      "attachments": [],
+      "summary": "﻿ 「 국민건강보험법 시행령 」 제 21 조제 2 항ㆍ제 3 항 및 「 국민건강보험 요양급여의 기준에 관한 규칙 」 제 8 조제 2 항부터 제 5 항까지 , 제 9 조제 1 항 , 제 11 조제 1 항 , 제 12 조제 2 항 및 제 13 조 제 1 항 · 제 3 항에 의한 「 건강보험 행위 급여ㆍ비급여 목록표 및 급여 상대가치점수 」 ( 보건복지부 고시 제 2026-228 호 , 2026.10.30.) 를 다음과 같이 개정ㆍ발령합니다 .",
+      "oncology_related": false,
+      "source_list_url": "https://www.hira.or.kr/bbsDummy.do?pgmid=HIRAA020002000100",
+      "criteria_url": "https://www.hira.or.kr/rc/insu/insuadtcrtr/InsuAdtCrtrList.do?pgmid=HIRAA030069000400"
+    },
+    {
+      "agency": "건강보험심사평가원",
+      "document_type": "공식 고시·공지",
+      "category": "건강보험 기준",
+      "department": "의료행위등재부",
+      "title": "[행위] 고시 제2026-238호 「건강보험 행위 급여·비급여 목록표 및 급여 상대가치점수」 일부개정 새글",
+      "published_at": "2026-11-24T00:00:00+09:00",
+      "url": "https://www.hira.or.kr/bbsDummy.do?brdBltNo=12354&brdScnBltNo=4&pgmid=HIRAA020002000100",
+      "detail_link_verified": true,
+      "attachments": [],
+      "summary": "「 국민건강보험법 시행령 」 제 21 조제 2 항 ·3 항 및 「 국민건강보험 요양급여의 기준에 관한 규칙 」 제 8 조제 2 항부터 제 5 항까지 , 제 9 조제 1 항 , 제 11 조제 1 항 , 제 12 조제 2 항 및 제 13 조 제 1 항 · 제 3 항에 의한 「 건강보험 행위 급여 · 비급여 목록표 및 급여 상대가치점수 」 를 다음과 같이 개정 · 발령합니다 .",
+      "oncology_related": false,
+      "source_list_url": "https://www.hira.or.kr/bbsDummy.do?pgmid=HIRAA020002000100",
+      "criteria_url": "https://www.hira.or.kr/rc/insu/insuadtcrtr/InsuAdtCrtrList.do?pgmid=HIRAA030069000400"
+    },
     {
       "agency": "건강보험심사평가원",
       "document_type": "공식 고시·공지",
