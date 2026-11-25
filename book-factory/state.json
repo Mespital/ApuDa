@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated": "2026-11-25T21:23:31Z",
+  "updated": "2026-11-25T21:24:41Z",
   "wip_limit": {
     "claude_text": 2,
     "chatgpt_art": 10,
@@ -2294,5 +2294,11 @@
     "name": "초고 30권 완성 모드",
     "since": "2026-11-22T14:50:08Z",
     "note": "G1 대기 없이 S2 진행, standards/04 근거확인·감수 기준"
+  },
+  "reports": {
+    "last": {
+      "file": "reports/daily/2026-11-26_0500.md",
+      "drive_doc": "1WpSKUz8hSwOPqO8TinZdGBm-g4GHnTret5CIVwEBmuo"
+    }
   }
 }
