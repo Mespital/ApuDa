@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated": "2026-11-25T18:00:27Z",
+  "updated": "2026-11-25T18:05:20Z",
   "wip_limit": {
     "claude_text": 2,
     "chatgpt_art": 10,
@@ -1590,7 +1590,7 @@
       "name": "식도암",
       "stage": "S2",
       "status": "ready",
-      "note": "골든샘플·목차 미발견 → S1 새로 설계(편평세포암 중심, 내시경·수술 전 치료→수술·근치적 항암방사선·전신치료, 6부 30장·EP20·FAQ100, esophageal.json 뼈대)",
+      "note": "S2 v0.1 2/30(골든샘플 4·8장). 다음: 21장(골든샘플 — NCCN EC pp.45-72 원문 열람 필요) → 1·2·3장. 국가암정보센터 식도암 쪽 S4 전 열람",
       "waiting_on": null,
       "history": [
         {
@@ -1612,6 +1612,10 @@
           "at": "2026-11-22T23:30:00Z",
           "event": "G1 승인",
           "detail": "대표가 Claude 채팅에서 \"모두 승인\" — 목차 일괄 승인(결재함 문서 미기재). 다음 판본부터 판권·머리말의 \"대표 목차 승인 전 초고\" 줄 삭제"
+        },
+        {
+          "at": "2026-11-25T18:05:20Z",
+          "event": "S2 착수 v0.1: 골든샘플 4·8장 + EP04·05 오른쪽 쪽, 감수단 고정, NCCN EC 2024(v2.2024) pp.1-44 열람, 근거 27문장/확인 필요 8, 장 단위 감수 중대1 반영"
         }
       ],
       "waiting_since": "2026-11-22T06:57:00Z",
@@ -1620,6 +1624,16 @@
         "status": "approved",
         "at": "2026-11-22T23:30:00Z",
         "by": "대표(Claude 채팅, 결재함 문서 미기재)"
+      },
+      "s2_progress": {
+        "version": "v0.1",
+        "file": "volumes/17EC/S2_원고_v0.1.md",
+        "chapters": [
+          4,
+          8
+        ],
+        "count": 2,
+        "unverified": []
       }
     },
     {
@@ -2190,7 +2204,7 @@
   ],
   "inbox": {
     "last_line": "[결재 기록]",
-    "last_review_time": "2026-11-25T17:01:09Z"
+    "last_review_time": "2026-11-25T18:05:20Z"
   },
   "drive": {
     "root": "1i1XGW6O_c1HGmeF7lyrTkVKB_zq8jVgP",
