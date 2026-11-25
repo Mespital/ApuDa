@@ -25,7 +25,7 @@ const MATH_TOPICS=[
 ].map(([id,courseId,label,description,formula,concept])=>({id,courseId,subject:'수학',label,description,formula,concept,basis:'교과 개념 변형',dynamic:true}));
 export const TOPICS=[...BASE_TOPICS,...MATH_TOPICS,...EXTRA_TOPICS.map(t=>({...t,subject:courseById(t.courseId)?.domain,basis:t.basis||'자체 구성 개념 연습',dynamic:false}))];
 export const topicsForCourse=id=>TOPICS.filter(t=>t.courseId===id);
-export function practiceInfo(courseId,topicId='mixed'){const topics=topicsForCourse(courseId).filter(t=>topicId==='mixed'||t.id===topicId),dynamic=topics.some(t=>t.dynamic),bank=AUTHORED_QUESTIONS.filter(q=>q.courseId===courseId&&(topicId==='mixed'||q.topicId===topicId));return {dynamic,bankCount:bank.length,capacity:dynamic?Infinity:bank.length,counts:dynamic?[5,10,20]:[...new Set([1,Math.min(3,bank.length),bank.length])].filter(n=>n>0).sort((a,b)=>a-b)};}
+export function practiceInfo(courseId,topicId='mixed',practiceMode='standard'){if(!['standard','applied'].includes(practiceMode))throw new Error('연습 구성 방식을 확인해 주세요.');const topics=topicsForCourse(courseId).filter(t=>topicId==='mixed'||t.id===topicId),dynamic=practiceMode==='standard'&&topics.some(t=>t.dynamic),bank=AUTHORED_QUESTIONS.filter(q=>q.courseId===courseId&&(topicId==='mixed'||q.topicId===topicId)&&(practiceMode!=='applied'||q.practiceSet==='type-linked'));return {dynamic,practiceMode,bankCount:bank.length,capacity:dynamic?Infinity:bank.length,counts:dynamic?[5,10,20]:[...new Set([1,Math.min(3,bank.length),bank.length])].filter(n=>n>0).sort((a,b)=>a-b)};}
 export function hashString(s){let h=2166136261;for(const c of String(s)){h^=c.charCodeAt(0);h=Math.imul(h,16777619);}return h>>>0;}
 export function seededRandom(seed){let a=hashString(seed);return()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return ((t^t>>>14)>>>0)/4294967296;};}
 const int=(r,a,b)=>a+Math.floor(r()*(b-a+1)),pick=(r,a)=>a[int(r,0,a.length-1)];
@@ -87,19 +87,19 @@ function extendedMath(t,r,id){const q=base(t,1,id);let answer,p,steps;
  }else{const a=int(r,3,40),b=int(r,1,a-1);answer=2*a;p={a,b};q.statement='다음 타원 위 한 점에서 두 초점까지의 거리의 합을 구하세요.';q.mathLatex=`\\frac{x^2}{${a*a}}+\\frac{y^2}{${b*b}}=1`;steps=[`큰 분모 ${a*a}의 제곱근은 a=${a}입니다.`,'타원의 정의에 따라 두 초점까지 거리의 합은 장축의 길이 2a입니다.',`따라서 거리의 합은 2×${a}=${answer}입니다.`];}
  q.hint=t.description;q.solutionSteps=steps;q.commonMistakes=[t.concept,'계산에 쓰는 값이 문제의 조건과 같은지 확인하세요.'];const vals=shuffle(r,[answer,answer-2,answer-1,answer+1,answer+2]);q.options=vals.map(String);q.optionLatex=q.options;q.answerIndex=vals.indexOf(answer);q.optionAnalysis=q.options.map((v,i)=>i===q.answerIndex?`정답입니다. ${steps.at(-1)}`:`${v}는 주어진 조건의 계산 결과와 다릅니다. ${steps[0]}`);q.verification={parameters:p,expectedValue:answer};return q;
 }
-export function generatePractice({subject,courseId,topicId='mixed',level=1,count=5,seed=Date.now(),pastQuestions=[]}={}){
+export function generatePractice({subject,courseId,topicId='mixed',level=1,count=5,seed=Date.now(),pastQuestions=[],practiceMode='standard'}={}){
  if(!Number.isInteger(count)||count<1||count>20)throw new Error('1~20문항을 선택하세요.');
  const topicCourse=topicId==='mixed'?null:courseById(TOPICS.find(t=>t.id===topicId)?.courseId),course=courseId?courseById(courseId):topicCourse||COURSES.find(c=>c.label===subject)||courseForDomain(subject||'수학');
  if(!course||subject&&subject!==course.domain&&subject!==course.label)throw new Error('과목과 유형이 일치하지 않습니다.');
  const selected=topicsForCourse(course.id).filter(t=>topicId==='mixed'||t.id===topicId);if(!selected.length)throw new Error('선택한 과목의 유형을 찾지 못했습니다.');
- const info=practiceInfo(course.id,topicId),actualCount=Math.min(count,info.capacity);if(!actualCount)throw new Error('현재 이 유형에 등록된 연습문제가 없습니다.');
- level=course.id==='math-common'?Math.min(3,Math.max(1,Number(level)||1)):1;
+ const info=practiceInfo(course.id,topicId,practiceMode),actualCount=Math.min(count,info.capacity);if(!actualCount)throw new Error('현재 이 유형에 등록된 연습문제가 없습니다.');
+ level=practiceMode==='applied'?2:course.id==='math-common'?Math.min(3,Math.max(1,Number(level)||1)):1;
  const rng=seededRandom(seed),seen=new Set(),questions=[];
  for(let i=0;i<actualCount;i++){let q,found=false;for(let tries=0;tries<200;tries++){
   const t=selected[(i+tries)%selected.length],id=`new-${hashString(seed)}-${i+1}`;
-  if(t.dynamic){q=MATH_TOPICS.some(x=>x.id===t.id)?extendedMath(t,rng,id):t.subject==='수학'?maths(t,level,rng,id):verbal(t,level,rng,id);}
-  else{const available=AUTHORED_QUESTIONS.filter(p=>p.topicId===t.id&&!seen.has(`origin:${p.id}`));if(!available.length)continue;const original=pick(rng,available);q={...structuredClone(original),id,originId:original.id,kind:'generated',type:'generated'};}
+  if(t.dynamic&&practiceMode==='standard'){q=MATH_TOPICS.some(x=>x.id===t.id)?extendedMath(t,rng,id):t.subject==='수학'?maths(t,level,rng,id):verbal(t,level,rng,id);}
+  else{const available=AUTHORED_QUESTIONS.filter(p=>p.topicId===t.id&&(practiceMode!=='applied'||p.practiceSet==='type-linked')&&!seen.has(`origin:${p.id}`));if(!available.length)continue;const original=pick(rng,available);q={...structuredClone(original),id,originId:original.id,kind:'generated',type:'generated'};}
   const signature=JSON.stringify([q.statement,q.mathLatex,q.passage]);if(seen.has(signature))continue;seen.add(signature);if(q.originId)seen.add(`origin:${q.originId}`);Object.assign(q,{courseId:course.id,courseName:course.label,domain:course.domain,subject:course.label,relatedPastIds:pastQuestions.filter(p=>inferTopic(p)===t.id).map(p=>p.id)});found=true;break;
  }if(!found)throw new Error('새 문항을 구성하지 못했습니다. 문제 수를 줄여 주세요.');questions.push(q);}
- return {id:`practice-${hashString(seed)}`,seed:String(seed),createdAt:new Date().toISOString(),subject:course.domain,courseId:course.id,courseName:course.label,topicId,level,requestedCount:count,questions,mode:info.dynamic?'variation':'authored-bank',availableCount:info.bankCount};
+ return {id:`practice-${hashString(seed)}`,seed:String(seed),createdAt:new Date().toISOString(),subject:course.domain,courseId:course.id,courseName:course.label,topicId,level,requestedCount:count,questions,practiceMode,mode:practiceMode==='applied'?'type-linked':info.dynamic?'variation':'authored-bank',availableCount:info.bankCount};
 }
