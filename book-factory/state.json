@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated": "2026-11-25T15:58:46Z",
+  "updated": "2026-11-25T16:07:51Z",
   "wip_limit": {
     "claude_text": 2,
     "chatgpt_art": 10,
@@ -1469,7 +1469,7 @@
       "name": "백혈병",
       "stage": "S2",
       "status": "ready",
-      "note": "S2 v0.1 6/30(골든샘플 8·20·3 + 1·2·4). 다음: 5·6·7장~",
+      "note": "S2 v0.2 9/30(1~8·20). 다음: 7장 근거 재확인(NCCN ALL) → 9·10·11·12장",
       "waiting_on": null,
       "history": [
         {
@@ -1496,6 +1496,11 @@
           "at": "2026-11-23T19:08:30Z",
           "event": "S2 v0.1 (6/30)",
           "detail": "감수단 고정(전문의7·간호사3·환자5+보호자1·편집2·심리1). 골든샘플 8·20·3장 + 1·2·4장 + 바로 시작 0-1~0-4 + EP01·02·03·04·05·08 오른쪽 쪽. 근거 98문장(NCCN 환자판 AML 2025·ALL 2023·CML 2023, 국가암정보센터 AML·ALL·CML)/확인 필요 20(본문 단정 0), 가상 감수 심각1·중대17 반영·경미7. 국가암정보센터 AML 하위 쪽 일부 CLL 내용 반환 → S4 재열람. S3 제안: EP03 컷2·EP14 컷4 근거 확인"
+        },
+        {
+          "at": "2026-11-25T16:07:51Z",
+          "event": "S2 v0.2 (9/30)",
+          "detail": "5·6·7장 + EP11·12·13 오른쪽 쪽. 웹 열람 권한 막힘(NCCN·cancer.go.kr·cancer.gov) → v0.1 열람분(쪽수 확인) 재사용 25문장, 새 출처 0, 확인 필요 4. 7장 뇌척수액 검사 방법 미확인 → unverified [7]"
         }
       ],
       "waiting_since": "2026-11-22T06:57:00Z",
@@ -1506,18 +1511,23 @@
         "by": "대표(Claude 채팅, 결재함 문서 미기재)"
       },
       "s2_progress": {
-        "version": "v0.1",
-        "file": "volumes/15LEU/S2_원고_v0.1.md",
+        "version": "v0.2",
+        "file": "volumes/15LEU/S2_원고_v0.2.md",
         "chapters": [
           1,
           2,
           3,
           4,
+          5,
+          6,
+          7,
           8,
           20
         ],
-        "count": 6,
-        "unverified": []
+        "count": 9,
+        "unverified": [
+          7
+        ]
       }
     },
     {
@@ -2158,7 +2168,7 @@
   ],
   "inbox": {
     "last_line": "[결재 기록]",
-    "last_review_time": "2026-11-23T16:09:07Z"
+    "last_review_time": "2026-11-25T16:07:51Z"
   },
   "drive": {
     "root": "1i1XGW6O_c1HGmeF7lyrTkVKB_zq8jVgP",
