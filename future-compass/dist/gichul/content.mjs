@@ -1,3 +1,4 @@
+import {APPLIED_QUESTIONS} from './applied-content.mjs';
 // 자체 구성 기본 연습. 원문 기출과 구분합니다.
 export const EXTRA_TOPICS=[
   {
@@ -1041,7 +1042,7 @@ export const EXTRA_TOPICS=[
     "formula": ""
   }
 ];
-export const AUTHORED_QUESTIONS=[
+const BASE_AUTHORED_QUESTIONS=[
   {
     "id": "authored-korean-common-poetic-personification",
     "courseId": "korean-common",
@@ -8136,6 +8137,7 @@ export const AUTHORED_QUESTIONS=[
     "courseName": "한문Ⅰ"
   }
 ];
+export const AUTHORED_QUESTIONS=[...BASE_AUTHORED_QUESTIONS,...APPLIED_QUESTIONS];
 export const CONTENT_SOURCES=[
   {
     "title": "2027학년도 수능 공식 과목 범위",

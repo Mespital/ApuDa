@@ -34,6 +34,7 @@ function topicUnit(t){
  return t.label;
 }
 function topicType(t,data={}){return {id:data.practiceLinks?.[t.id]||englishPractice[t.id]||mathPractice[t.id]||koreanPractice[t.id]||historyPractice[t.id]||socialPractice[t.id]||(['exponents','derivative','limit','sequence'].includes(t.id)?'math-'+t.id:'topic-'+t.id),label:t.label,unit:topicUnit(t),courseId:t.courseId,method:methods[courseById(t.courseId)?.domain]||'개념과 조건 대조',practiceTopicId:t.id,concept:t.concept};}
+export function practiceTypeId(topicId,data={}){const topic=TOPICS.find(t=>t.id===topicId);return topic?topicType(topic,data).id:null;}
 export function buildTypeCatalog(data={}){
  const types=new Map(Object.entries(data.types||{}).map(([id,m])=>[id,{...m,id,courseId:m.courseId||'english'}]));
  for(const t of TOPICS){const m=topicType(t,data),old=types.get(m.id);types.set(m.id,old?{...m,...old,practiceTopicId:t.id,concept:t.concept}:m)}
