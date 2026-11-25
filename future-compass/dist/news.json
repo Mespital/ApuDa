@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-11-24T22:13:00.591939+00:00",
-  "last_success_at": "2026-11-24T22:13:00.591939+00:00",
+  "checked_at": "2026-11-25T01:50:20.498539+00:00",
+  "last_success_at": "2026-11-25T01:50:20.498539+00:00",
   "failures": [],
   "articles": [
     {
@@ -62,6 +62,14 @@
     {
       "title": "How iFood scales coding agents across 15,000 repositories",
       "url": "https://openai.com/business/customer-stories/ifood",
+      "source": "OpenAI",
+      "published_at": "2026-11-24T00:00:00+00:00",
+      "category": "AI·컴퓨팅",
+      "domain": "ai"
+    },
+    {
+      "title": "Clay helps sales teams win with Codex and ChatGPT",
+      "url": "https://openai.com/business/customer-stories/clay-plugins-openai",
       "source": "OpenAI",
       "published_at": "2026-11-24T00:00:00+00:00",
       "category": "AI·컴퓨팅",
@@ -234,20 +242,12 @@
       "published_at": "2026-11-19T13:00:00+00:00",
       "category": "AI·컴퓨팅",
       "domain": "ai"
-    },
-    {
-      "title": "How OpenAI’s Performance Factory keeps ChatGPT fast",
-      "url": "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast",
-      "source": "OpenAI",
-      "published_at": "2026-11-19T08:00:00+00:00",
-      "category": "AI·컴퓨팅",
-      "domain": "ai"
     }
   ],
   "school": {
     "name": "서초고등학교",
     "grade": 1,
-    "checked_at": "2026-11-24T22:13:00.591939+00:00",
+    "checked_at": "2026-11-25T01:50:20.498539+00:00",
     "homepage": "https://seocho.sen.hs.kr/",
     "events": [
       {
@@ -384,7 +384,7 @@
       }
     ],
     "status": "ok",
-    "last_success_at": "2026-11-24T22:13:00.591939+00:00",
+    "last_success_at": "2026-11-25T01:50:20.498539+00:00",
     "message": "나이스 공개 학사일정 중 1학년 대상 일정입니다. 최종 일정은 학교 공지를 확인하세요."
   }
 }
