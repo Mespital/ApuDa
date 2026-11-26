@@ -55,3 +55,17 @@
   .shiro-panel.shiro-typing .shiro-head small,
   .shiro-panel.shiro-typing .shiro-quick{display:none!important}
 }
+
+/* Chat-like layout for Shiro: conversation replaces the introductory card on typing. */
+.shiro-panel .shiro-messages{display:flex;flex-direction:column;align-items:stretch;gap:12px}
+.shiro-panel .shiro-bubble{align-self:flex-start;max-width:88%;width:fit-content;box-sizing:border-box;margin:0;border-radius:17px 17px 17px 5px;background:var(--u-soft);line-height:1.55;overflow-wrap:anywhere}
+.shiro-panel .shiro-bubble.shiro-user{align-self:flex-end;margin:0;background:var(--accent);color:var(--u-on-solid);border-radius:17px 17px 5px 17px}
+.shiro-panel .shiro-scroll{min-height:0;background:var(--u-surface)}
+.shiro-panel.shiro-chatting .shiro-quick{display:none!important}
+.shiro-panel .shiro-ai-handoff{display:flex;flex-wrap:wrap;margin-top:12px}
+.shiro-panel .shiro-ai-handoff a{font-size:13px}
+@media(max-width:600px){
+ .shiro-panel .shiro-scroll{min-height:0!important;padding:12px}
+ .shiro-panel .shiro-bubble{max-width:90%;padding:11px 13px}
+ .shiro-panel.shiro-chatting .shiro-quick{display:none!important}
+}
