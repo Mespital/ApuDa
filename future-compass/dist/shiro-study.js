@@ -154,7 +154,45 @@ window.SHIRO_STUDY = (function () {
     }
     return { text: '🏫 ' + label(d) + '에는 학원 수업이 등록되어 있지 않아.\n설정에서 반복 일정이나 휴강 여부를 확인해 줘.', links: ['s_set'] };
   }
+  // 날짜가 있는 학교 시험 질문은 중간고사 문서의 유사도 검색보다 학사일정 우선.
+  function upcomingExamAnswer(text) {
+    var n = String(text || '').replace(/\s/g, '');
+    if (!/(?:시험|기말|중간고사|정기고사|지필)/.test(n)) return null;
+    if (!/(?:기말|중간고사|시험일정|시험시간표|시험날짜|시험기간|시험언제|시험며칠|시험범위|시험은|시험까지|다음시험|다가오는시험|정기고사|지필고사|고사일정|고사언제|고사기간)/.test(n)) return null;
+    if (!/기말|다음/.test(n) && /지난|옛날|10월|중간고사|1학기/.test(n))
+      return { text: '지난 시험 기록을 찾고 있어?\n현재 날짜 기준으로는 2학기 기말고사가 다음 정기시험이야. 중간고사 자료는 지난 시험 자료로 분리해서 봐 줘.', links: ['s_dates'] };
+    var t = typeof today === 'function' ? today() : new Date(Date.now() + 9 * 3600000).toISOString().slice(0, 10);
+    var days = [], i, d, ev;
+    if (window.FC_CAL && typeof FC_CAL.schoolEvents === 'function') {
+      for (i = 0; i <= 65; i++) {
+        d = addD(t, i);
+        ev = FC_CAL.schoolEvents(d);
+        if (ev.some(function (x) { return /기말고사/.test(x) && /(1학년|1·2학년|1,2학년)/.test(x); }))
+          days.push(d);
+      }
+    }
+    // 나이스 school.json(2026-11-26 검증) 기반 초기 대체값. 해당 기간 이후 재사용하지 않음.
+    if (!days.length && t >= '2026-11-01' && t <= '2026-12-15')
+      days = ['2026-12-09','2026-12-10','2026-12-11','2026-12-12','2026-12-13','2026-12-14','2026-12-15'].filter(function (x) { return x >= t; });
+    if (!days.length) return { text: '현재 등록된 학교 학사일정에서 앞으로 예정된 1학년 기말고사를 찾지 못했어.\n학교 공지와 시험·과제 탭을 확인해 줘. 지난 중간고사 시간표를 대신 보여주지는 않을게.', links: ['s_dates','s_set'] };
+    var first = days[0], last = days[days.length - 1];
+    var start = first;
+    // 이미 시험 기간이 시작한 경우 첫날 보존.
+    if (first >= '2026-12-09' && first <= '2026-12-15' && t >= '2026-12-09' && t <= '2026-12-15') start = '2026-12-09';
+    var dd = Math.round((Date.parse(start + 'T12:00:00Z') - Date.parse(t + 'T12:00:00Z')) / 86400000);
+    var when = function (iso) { return Number(iso.slice(5,7)) + '/' + Number(iso.slice(8)) + '(' + DN[new Date(iso+'T12:00:00Z').getUTCDay()] + ')'; };
+    var heading = dd > 0 ? '기말고사 시작 D-' + dd : '기말고사 기간';
+    var msg = '📝 서초고 1학년 2학기 ' + heading + '\n\n' +
+      '• 학교 학사일정: ' + when(start) + ' ~ ' + when(last) + '\n' +
+      '• 11월 26일 기준으로 10월 중간고사는 종료됐어.\n\n' +
+      '과목별 시험 순서와 확정 시험 범위는 학교 최신 가정통신문·담당 선생님 안내로 확인해야 해. ' +
+      '학사일정의 기간에는 주말이 포함될 수 있어. 실제 시험 과목을 주말에 치른다는 뜻은 아니야.\n\n' +
+      '지금은 기말고사에 대비해 과목별 범위를 확인하고 매일 복습·문제풀이 시간을 정해 보자.\n📎 출처: 서초고 학사일정(나이스)';
+    return { text: msg, links: ['s_dates','s_today'] };
+  }
   function dynamic(text) {
+    var exam = upcomingExamAnswer(text);
+    if (exam) return exam;
     var academy = academyAnswer(text);
     if (academy) return academy;
     if (!has()) return null;
