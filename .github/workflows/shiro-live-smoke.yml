@@ -6,7 +6,7 @@ on:
     paths:
       - '.github/workflows/shiro-live-smoke.yml'
 permissions:
-  contents: read
+  contents: write
 jobs:
   smoke:
     runs-on: ubuntu-latest
@@ -16,5 +16,24 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Check live study UI and AI endpoint
+      - name: Check live study UI and Gemini endpoint
+        id: smoke
+        continue-on-error: true
         run: node future-compass/scripts/shiro-live-smoke.mjs
+      - name: Save public-only result to separate branch
+        if: always()
+        run: |
+          if test -f shiro-smoke.md; then
+            mkdir -p /tmp/shiro-smoke
+            cp shiro-smoke.md /tmp/shiro-smoke/
+            cd /tmp/shiro-smoke
+            git init -q -b shiro-smoke-results
+            git config user.name future-compass-smoke
+            git config user.email future-compass-smoke@users.noreply.github.com
+            git add shiro-smoke.md
+            git commit -qm "Shiro production smoke result"
+            git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" shiro-smoke-results
+          fi
+      - name: Fail job on failed checks
+        if: steps.smoke.outcome == 'failure'
+        run: exit 1
