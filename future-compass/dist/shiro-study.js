@@ -119,20 +119,23 @@ window.SHIRO_STUDY = (function () {
       return Number(iso.slice(5, 7)) + '/' + Number(iso.slice(8)) + '(' + DN[w] + ')';
     };
     var tomorrow = /내일/.test(q), nextDay = /모레/.test(q),
-        week = /이번주|주간|일주일|한주|이번주간/.test(q),
+        week = /이번주|다음주|주간|일주일|한주|이번주간/.test(q),
         homeworkOnly = /숙제|과제/.test(q) && !/일정|시간|언제|몇시/.test(q);
     var d = addD(t, tomorrow ? 1 : nextDay ? 2 : 0);
+    var specific = q.match(/[일월화수목금토]요일/);
+    if(specific && !week){var want=DN.indexOf(specific[0][0]),w=new Date(t+'T12:00:00Z').getUTCDay();d=addD(t,(want-w+7)%7);}
     var items = A.forDay(d);
     if (week) {
       var days = [], due = [];
       for (var i = 0; i < 7; i++) {
-        var iso = addD(t, i), events = A.forDay(iso);
+        var weekDay = new Date(t + 'T12:00:00Z').getUTCDay(), monday = addD(t, (weekDay === 0 ? -6 : 1 - weekDay) + (/다음주/.test(q) ? 7 : 0));
+        var iso = addD(monday, i), events = A.forDay(iso);
         if (events.length) {
           days.push(label(iso) + '\n' + events.map(fmt).join('\n'));
           due.push.apply(due, events.filter(function (x) { return x.homework && !x.hwDone; }));
         }
       }
-      return { text: days.length ? '🏫 앞으로 7일 학원 일정\n\n' + days.join('\n\n') : '앞으로 7일 동안 등록된 학원 수업이 없어.', links: ['s_set', 's_today'] };
+      return { text: days.length ? '🏫 ' + (/다음주/.test(q) ? '다음 주' : '이번 주') + ' 학원 일정\n\n' + days.join('\n\n') : (/다음주/.test(q) ? '다음 주' : '이번 주') + '에 등록된 학원 수업이 없어.', links: ['s_set', 's_today'] };
     }
     if (homeworkOnly) {
       var upcoming = [], seen = {};
@@ -209,10 +212,10 @@ window.SHIRO_STUDY = (function () {
       var d=/모레/.test(s)?addD(t,2):/내일/.test(s)?addD(t,1):t;
       var m=s.match(/[월화수목금토일]요일/);
       if(m){var target=DN.indexOf(m[0][0]),w=new Date(t+'T12:00:00Z').getUTCDay();d=addD(t,(target-w+7)%7);}
-      if(/이번주|주간|일주일/.test(s)){
-        var lines=[],w0=new Date(t+'T12:00:00Z').getUTCDay(),mon=addD(t,w0===0?-6:1-w0);
+      if(/이번주|다음주|주간|일주일/.test(s)){
+        var lines=[],w0=new Date(t+'T12:00:00Z').getUTCDay(),mon=addD(t,(w0===0?-6:1-w0)+(/다음주/.test(s)?7:0));
         for(var i=0;i<5;i++)lines.push('• '+dayLine(addD(mon,i)));
-        return {topic:'timetable',text:'🗓️ 이번 주 학교 시간표\n\n'+lines.join('\n')+'\n\n📎 출처: 공부방 등록 시간표',links:['s_table']};
+        return {topic:'timetable',text:'🗓️ '+(/다음주/.test(s)?'다음 주':'이번 주')+' 학교 시간표\n\n'+lines.join('\n')+'\n\n📎 출처: 공부방 등록 시간표',links:['s_table']};
       }
       var line=dayLine(d),extra='';
       if(/내일/.test(s)&&/(?:쉬는 날|토요일|일요일|휴업일)/.test(line)&&window.FC_CAL&&FC_CAL.nextSchoolDay){
