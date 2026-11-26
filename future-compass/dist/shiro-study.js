@@ -248,7 +248,12 @@ window.SHIRO_STUDY = (function () {
     if (/학사일정|학교일정|학교행사|재량휴업|휴업일|방학언제|개학언제/.test(n0) && !/설정|등록|바꾸/.test(n0)) {
       var start=typeof today==='function'?today():new Date(Date.now()+9*3600000).toISOString().slice(0,10),events=[];
       if(window.FC_CAL&&typeof FC_CAL.schoolEvents==='function')for(var i=0;i<31;i++){
-        var d=addD(start,i),titles=FC_CAL.schoolEvents(d).filter(function(x){return x&&!/기말고사\(1학년\)/.test(x);});
+        var d=addD(start,i),titles=FC_CAL.schoolEvents(d).filter(function(x){return !!x;});
+        if(titles.some(function(x){return /기말고사\(1학년\)/.test(x);})){
+          var already=events.some(function(x){return /기말고사 기간 시작/.test(x);});
+          titles=titles.filter(function(x){return !/기말고사\(1학년\)/.test(x);});
+          if(!already)titles.unshift('기말고사 기간 시작(1학년)');
+        }
         if(titles.length)events.push('• '+Number(d.slice(5,7))+'/'+Number(d.slice(8))+'('+DN[new Date(d+'T12:00:00Z').getUTCDay()]+') '+titles.join(' · '));
       }
       return {text:events.length?'🗓️ 앞으로 30일 학교 학사일정\n\n'+events.slice(0,10).join('\n')+'\n\n📎 출처: 나이스 학교 학사일정':
