@@ -158,7 +158,7 @@ window.SHIRO_STUDY = (function () {
   function upcomingExamAnswer(text) {
     var n = String(text || '').replace(/\s/g, '');
     if (!/(?:시험|기말|중간고사|정기고사|지필)/.test(n)) return null;
-    if (!/(?:기말|중간고사|시험일정|시험시간표|시험날짜|시험기간|시험언제|시험며칠|시험범위|시험은|시험까지|다음시험|다가오는시험|정기고사|지필고사|고사일정|고사언제|고사기간)/.test(n)) return null;
+    if (!/(?:기말|중간고사|시험일정|시험시간표|시험날짜|시험기간|시험언제|시험며칠|시험범위|시험준비|시험공부|시험은|시험까지|다음시험|다가오는시험|정기고사|지필고사|고사일정|고사언제|고사기간)/.test(n)) return null;
     if (!/기말|다음/.test(n) && /지난|옛날|10월|중간고사|1학기/.test(n))
       return { text: '지난 시험 기록을 찾고 있어?\n현재 날짜 기준으로는 2학기 기말고사가 다음 정기시험이야. 중간고사 자료는 지난 시험 자료로 분리해서 봐 줘.', links: ['s_dates'] };
     var t = typeof today === 'function' ? today() : new Date(Date.now() + 9 * 3600000).toISOString().slice(0, 10);
@@ -188,9 +188,58 @@ window.SHIRO_STUDY = (function () {
       '과목별 시험 순서와 확정 시험 범위는 학교 최신 가정통신문·담당 선생님 안내로 확인해야 해. ' +
       '학사일정의 기간에는 주말이 포함될 수 있어. 실제 시험 과목을 주말에 치른다는 뜻은 아니야.\n\n' +
       '지금은 기말고사에 대비해 과목별 범위를 확인하고 매일 복습·문제풀이 시간을 정해 보자.\n📎 출처: 서초고 학사일정(나이스)';
+    if (/시험준비|시험공부|어떻게준비|시험까지뭐/.test(n)) msg+='\n\n오늘의 준비: ① 과목별 확정 범위 확인 ② 헷갈리는 단원 25분 복습 ③ 기출·교과서 문제 20분 풀기. 이는 추천 공부법이지 학교 공지나 개인 할 일은 아니야.';
     return { text: msg, links: ['s_dates','s_today'] };
   }
+  // 짧은 후속 질문은 같은 세션에서 직전 주제를 최대 3분만 유지.
+  var lastTopic='',lastTopicAt=0;
+  function saveTopic(s){lastTopic=s;lastTopicAt=Date.now();}
+  function followup(q){
+    var s=String(q||'').replace(/\s/g,'').replace(/[?!~.]/g,'');
+    if(!lastTopic||Date.now()-lastTopicAt>180000||s.length>13||
+       !/^(?:그럼|그러면|근데)?(?:내일|모레|오늘|이번주|다음주|숙제|범위|준비|언제|몇시|그다음)(?:은|는|요|어때|알려줘)?$/.test(s))return q;
+    if(lastTopic==='exam'&&/준비|범위/.test(s))return '시험'+(s.includes('범위')?'범위':'준비')+' 알려줘';
+    var noun={academy:' 학원',exam:' 시험',timetable:' 시간표',tasks:' 할 일',life:' 일정'}[lastTopic];
+    return noun?q+noun:q;
+  }
+  function smartSchedule(q){
+    var s=String(q||'').replace(/\s/g,''),t=typeof today==='function'?today():new Date(Date.now()+9*3600000).toISOString().slice(0,10);
+    if(/시간표|교시|오늘수업|내일수업/.test(s)&&!/바꾸|설정|수정|등록|입력|편집|어떻게/.test(s)){
+      if(!has()||!state.table)return {topic:'timetable',text:'등록된 학교 시간표를 아직 불러오지 못했어. 설정 → 시간표를 확인해 줘.',links:['s_set','s_table']};
+      var d=/모레/.test(s)?addD(t,2):/내일/.test(s)?addD(t,1):t;
+      var m=s.match(/[월화수목금토일]요일/);
+      if(m){var target=DN.indexOf(m[0][0]),w=new Date(t+'T12:00:00Z').getUTCDay();d=addD(t,(target-w+7)%7);}
+      if(/이번주|주간|일주일/.test(s)){
+        var lines=[],w0=new Date(t+'T12:00:00Z').getUTCDay(),mon=addD(t,w0===0?-6:1-w0);
+        for(var i=0;i<5;i++)lines.push('• '+dayLine(addD(mon,i)));
+        return {topic:'timetable',text:'🗓️ 이번 주 학교 시간표\n\n'+lines.join('\n')+'\n\n📎 출처: 공부방 등록 시간표',links:['s_table']};
+      }
+      var line=dayLine(d),extra='';
+      if(/내일/.test(s)&&/(?:쉬는 날|토요일|일요일|휴업일)/.test(line)&&window.FC_CAL&&FC_CAL.nextSchoolDay){
+        var nd=FC_CAL.nextSchoolDay(d);extra='\n\n다음 등교일: '+dayLine(nd);
+      }
+      return {topic:'timetable',text:'🗓️ 학교 시간표\n\n'+line+extra+'\n\n📎 출처: 공부방 등록 시간표·학교 학사일정',links:['s_table']};
+    }
+    if(/오늘(?:할일|해야할|공부|숙제)|할일은|할일뭐|뭐부터|뭘해야|해야할거|공부계획|오늘계획/.test(s)&&!/설정|등록|바꾸|추가방법|어떻게/.test(s)){
+      if(!has())return {topic:'tasks',text:'플래너 자료가 아직 준비되지 않았어. 오늘 탭에서 확인해 줘.',links:['s_today']};
+      var todo=FC_PLANNER.todays().filter(function(x){return !x.t.done;}).slice(0,5);
+      return {topic:'tasks',text:todo.length?
+        '☀️ 오늘 남은 할 일\n\n'+todo.map(function(x){return '• '+x.label+' '+x.t.title+' ('+FC_PLANNER.est(x.t.id)+'분)';}).join('\n')+
+          '\n\n우선순위가 높은 것부터 시작해 보자.\n📎 출처: 공부방 플래너':
+        '☀️ 오늘 등록된 미완료 할 일이 없어.\n\n시험이 다가오면 과목별 범위를 확인한 뒤 복습할 일 한 가지를 등록해 봐.\n📎 출처: 공부방 플래너',
+        links:['s_today','s_dates']};
+    }
+    if(/오늘일정|내일일정|오늘약속|내일약속/.test(s)&&!/설정|등록|수정/.test(s)){
+      if(!window.FC_LIFE||typeof FC_LIFE.forDay!=='function')return {topic:'life',text:'생활 일정 자료가 아직 준비되지 않았어. 오늘 탭에서 확인해 줘.',links:['s_today']};
+      var d=/내일/.test(s)?addD(t,1):t,items=FC_LIFE.forDay(d);
+      return {topic:'life',text:'📅 '+(/내일/.test(s)?'내일':'오늘')+' 일정\n\n'+(items.length?items.map(function(x){return '• '+(x.start||'시간 미정')+(x.end?'~'+x.end:'')+' '+x.title;}).join('\n'):'등록된 생활 일정이 없어.')+'\n📎 출처: 공부방 등록 일정',links:['s_today']};
+    }
+    return null;
+  }
   function dynamic(text) {
+    text=followup(text);
+    var smart=smartSchedule(text);
+    if(smart){saveTopic(smart.topic);return smart;}
     // 학교가 기말고사 확정 범위를 새로 올리면 최신 자료를 우선한다.
     var question = String(text || '').replace(/\s/g, '');
     if (/시험|기말|고사/.test(question) && /범위|배점|서술형/.test(question) &&
@@ -199,9 +248,9 @@ window.SHIRO_STUDY = (function () {
       if (currentScope) return { text: currentScope, links: ['s_dates'] };
     }
     var exam = upcomingExamAnswer(text);
-    if (exam) return exam;
+    if (exam) {saveTopic('exam');return exam;}
     var academy = academyAnswer(text);
-    if (academy) return academy;
+    if (academy) {saveTopic('academy');return academy;}
     if (!has()) return null;
     var n = text.replace(/\s/g, ''), t = today();
     if (/시험/.test(n) && /뭐부터|어떻게|며칠|일남|일인데|준비|까지/.test(n)) {
