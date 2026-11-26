@@ -238,6 +238,33 @@ window.SHIRO_STUDY = (function () {
   }
   function dynamic(text) {
     text=followup(text);
+    // 다른 주제로 바뀌면 오래된 대화 맥락을 다음 질문에 오용하지 않는다.
+    lastTopic='';lastTopicAt=0;
+    var n0=String(text||'').replace(/\s/g,'');
+    if (/급식|점심|중식|밥뭐/.test(n0) && !/뜻|의미|개념/.test(n0)) {
+      var lunch=window.SHIRO_AI&&typeof window.SHIRO_AI.kb==='function' ? window.SHIRO_AI.kb(text):null;
+      return {text:lunch||'급식 자료를 불러오는 중이거나 해당 날짜 급식표가 아직 수집되지 않았어.\n잠시 뒤 다시 확인하거나 학교 급식표에서 확인해 줘.',links:['s_today']};
+    }
+    if (/학사일정|학교일정|학교행사|재량휴업|휴업일|방학언제|개학언제/.test(n0) && !/설정|등록|바꾸/.test(n0)) {
+      var start=typeof today==='function'?today():new Date(Date.now()+9*3600000).toISOString().slice(0,10),events=[];
+      if(window.FC_CAL&&typeof FC_CAL.schoolEvents==='function')for(var i=0;i<31;i++){
+        var d=addD(start,i),titles=FC_CAL.schoolEvents(d).filter(function(x){return x&&!/기말고사\(1학년\)/.test(x);});
+        if(titles.length)events.push('• '+Number(d.slice(5,7))+'/'+Number(d.slice(8))+'('+DN[new Date(d+'T12:00:00Z').getUTCDay()]+') '+titles.join(' · '));
+      }
+      return {text:events.length?'🗓️ 앞으로 30일 학교 학사일정\n\n'+events.slice(0,10).join('\n')+'\n\n📎 출처: 나이스 학교 학사일정':
+        '앞으로 30일의 학교 행사 자료를 찾지 못했어.\n일정 자료가 아직 로딩 중이거나 등록되지 않았을 수 있어. 학교 공지를 확인해 줘.',
+        links:['s_dates','s_today']};
+    }
+    if (/수행평가/.test(n0) && /이번주|다음|남은|예정|언제|일정|마감/.test(n0) &&
+        !/채점기준|만점기준|평가방법|어떻게/.test(n0)) {
+      var day=typeof today==='function'?today():new Date(Date.now()+9*3600000).toISOString().slice(0,10);
+      var future=(typeof state!=='undefined'&&Array.isArray(state.dates)?state.dates:[]).filter(function(x){
+        return x&&!x.done&&x.date>=day&&(/수행/.test(x.kind||'')||/수행/.test(x.title||''));
+      }).sort(function(x,y){return x.date.localeCompare(y.date);}).slice(0,5);
+      return {text:future.length?'📝 등록된 수행평가 예정\n\n'+future.map(function(x){return '• '+x.date.slice(5)+' '+x.title;}).join('\n')+'\n\n📎 출처: 공부방 등록 시험·과제':
+        '공부방에 등록된 앞으로의 수행평가 마감 일정이 없어.\n학교 평가계획에 적힌 월별 시기는 실제 제출일과 다를 수 있으니 담당 선생님 공지를 확인해 줘.',
+        links:['s_dates']};
+    }
     var smart=smartSchedule(text);
     if(smart){saveTopic(smart.topic);return smart;}
     // 학교가 기말고사 확정 범위를 새로 올리면 최신 자료를 우선한다.
