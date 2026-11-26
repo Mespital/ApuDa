@@ -103,6 +103,8 @@ function sourceLinks(item, record) {
 }
 
 const pageStyle = `<style>
+.toc{background:#fff;border:1px solid #dce8f5;border-radius:14px;padding:4px 18px 10px;margin:18px 0}.toc ol{margin:0;padding-left:22px}.toc li{margin:4px 0}
+.cards{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}.card{display:block;background:#fff;border:1px solid #dce8f5;border-radius:14px;padding:14px 16px;text-decoration:none}.card strong{display:block;color:#086c86}.card span{display:block;color:#476172;font-size:.92em;margin-top:4px}
 :root{color-scheme:light;font-family:system-ui,"Noto Sans KR","Malgun Gothic",sans-serif;color:#193a4d}
 *{box-sizing:border-box}body{margin:0;background:#f1f7fa;line-height:1.7}
 a{color:#086c86}a:focus-visible,summary:focus-visible{outline:3px solid #e3aa27;outline-offset:3px}
@@ -173,6 +175,27 @@ ${pageStyle}</head><body>
 </main></body></html>`;
 }
 
+// Topic-page-only navigation: the next topic in this cancer and the same topic
+// in other cancers. Gives each topic page content the 100-question hub lacks.
+function topicRelated(record, topic, topics) {
+  const i = topics.findIndex((t) => t.slug === topic.slug);
+  const next = topics[(i + 1) % topics.length];
+  const prev = topics[(i - 1 + topics.length) % topics.length];
+  const card = (rec, t) => '<a class="card" href="' + topicPath(rec, t) + '"><strong>' + escapeHtml(rec.name + ' ' + t.title) +
+    '</strong><span>' + escapeHtml(t.summary) + '</span></a>';
+  const others = records.filter((r) => r.slug !== record.slug)
+    .map((r) => [r, (topicMaps.get(r.slug) ?? []).find((t) => t.slug === topic.slug)])
+    .filter(([, t]) => t);
+  let html = '<section class="related" aria-labelledby="next-h"><h2 id="next-h">이어서 읽을 주제</h2><div class="cards">' +
+    card(record, next) + (prev.slug !== next.slug ? card(record, prev) : '') + '</div></section>';
+  if (others.length) {
+    html += '<section class="related" aria-labelledby="same-h"><h2 id="same-h">다른 암종의 같은 주제</h2><nav class="nav" aria-label="다른 암종 ' +
+      escapeHtml(topic.title) + '">' + others.map(([r, t]) => '<a href="' + topicPath(r, t) + '">' + escapeHtml(r.name + ' · ' + t.title) +
+      '</a>').join('') + '</nav></section>';
+  }
+  return html;
+}
+
 function topicPage(record, topic, topics) {
   const book = books.get(record.slug);
   const url = canonical(topicPath(record, topic));
@@ -213,7 +236,10 @@ ${pageStyle}</head><body>
 <p><a href="${parent}">${escapeHtml(record.name)} FAQ 100문항 전체 보기</a> ·
 <a href="/library/first30/books/${book.number}">${escapeHtml(record.name)} 첫 30일 무료 안내서</a></p>
 </div><nav class="nav" aria-label="${escapeHtml(record.name)} FAQ 주제">${siblings}</nav>
+<section class="toc" aria-labelledby="toc-h"><h2 id="toc-h">이 주제에서 답하는 질문 ${items.length}가지</h2>
+<ol>${items.map((item) => '<li><a href="#q' + Number(item.n) + '">' + escapeHtml(item.q) + '</a></li>').join('')}</ol></section>
 <h2>질문과 답변</h2><ol>${renderQuestions(items, record)}</ol>
+${topicRelated(record, topic, topics)}
 <footer>마지막 자료 업데이트: ${escapeHtml(record.updated ?? '미확인')} · <a href="/library/review/?cancer=${encodeURIComponent(record.slug)}">자료 출처·검토 범위</a><p>© ApuDa · 이 정보는 의료진의 진단·처방을 대신하지 않습니다.</p></footer>
 </main></body></html>`;
 }

@@ -301,6 +301,8 @@ for (const file of files) {
     }
     assert(urls.includes(topicUrl) && lastmods.get(topicUrl) === lastmods.get(url), 'FAQ topic page sitemap entry mismatch: ' + topicUrl);
     assert(topicHtml.includes('<link rel="canonical" href="' + topicUrl + '">'), 'FAQ topic canonical missing: ' + topicUrl);
+    assert(topicHtml.includes('이 주제에서 답하는 질문') && topicHtml.includes('이어서 읽을 주제') &&
+      topic.items.every((n) => topicHtml.includes('<a href="#q' + n + '">')), 'FAQ topic page lacks its question index or related topics: ' + topicUrl);
     assert(topicHtml.includes('출처를 첨부한 환자교육용 참고정보') && topicHtml.includes('자료 출처·검토 범위') &&
       !/검토 대기|AI 초안|전문의 감수 완료/.test(topicHtml), 'FAQ topic page notice or transparency link missing: ' + topicUrl);
     assert(html.includes('href="/library/faq/' + record.slug + '/' + topic.slug + '/"'), 'FAQ hub does not link its topic page: ' + topicUrl);
