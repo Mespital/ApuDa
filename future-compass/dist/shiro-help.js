@@ -118,13 +118,13 @@ function addStudyActions(b,q){
 }
 function chatGPTLinks(b,text){addStudyActions(b,text)}
 
-function ask(text){
+function ask(text,fromQuick=false){
   beginChat();
   feedback.hidden=true;compose.hidden=false;
   add(text,true);
   if(/개선사항|건의|오류|버그|이메일|운영자|문의/.test(text)&&!/엄마|아빠|부탁/.test(text)){showFeedback();return}
   const result=answer(text),AI=window.SHIRO_AI;
-  const act=S&&S.actions&&S.actions[text];
+  const act=fromQuick&&S&&S.actions&&S.actions[text];
   if(act){add(result.text.split('\n')[0]);setTimeout(()=>{close(false);try{act()}catch(e){}},500);return}
   if(result.dyn){const bubble=add(result.text,false,result.links||[]);if(AI&&AI.study&&AI.study(text))addStudyActions(bubble,text);return}
   if(/^(안녕|안녕하세요|하이|ㅎㅇ)[!?.~\s]*$/.test(text)){add('안녕! 궁금한 것을 짧게 물어봐. 어려운 문제는 ChatGPT로 이어서 풀 수 있어.');return}
@@ -163,7 +163,7 @@ function ask(text){
     chatGPTLinks(b,text);
   }).finally(()=>{clearTimeout(timer);b.classList.remove('shiro-think');scroll.scrollTop=scroll.scrollHeight});
 }
-(S?S.chips:['처음 사용법','나 알아보기','직업 비교','미래의 변화','뉴스·학교 소식','공부방·시간표','백업 저장','AI 질문 정리','오답 재도전','수행평가','과목별 공부 시작','공부 준비','저장·기록','설명과 근거','앱 설치']).forEach(text=>{const b=document.createElement('button');b.type='button';b.className='shiro-chip';b.textContent=text;b.onclick=()=>ask(text);quick.append(b)});const fb=document.createElement('button');fb.type='button';fb.className='shiro-chip';fb.textContent='💌 질문·개선사항 보내기';fb.onclick=showFeedback;quick.append(fb);
+(S?S.chips:['처음 사용법','나 알아보기','직업 비교','미래의 변화','뉴스·학교 소식','공부방·시간표','백업 저장','AI 질문 정리','오답 재도전','수행평가','과목별 공부 시작','공부 준비','저장·기록','설명과 근거','앱 설치']).forEach(text=>{const b=document.createElement('button');b.type='button';b.className='shiro-chip';b.textContent=text;b.onclick=()=>ask(text,true);quick.append(b)});const fb=document.createElement('button');fb.type='button';fb.className='shiro-chip';fb.textContent='💌 질문·개선사항 보내기';fb.onclick=showFeedback;quick.append(fb);
 if(S){let w='';try{w=localStorage.getItem('fc-who-v1')||''}catch{}welcomeBubble=add(S.intro(w),false,['s_today','s_set'])};if(S&&S.examples){let pi=0;setInterval(()=>{const inp=compose.querySelector('input');if(inp&&!inp.value&&!panel.hidden){pi=(pi+1)%S.examples.length;inp.placeholder='예: '+S.examples[pi]}},3000)}else welcomeBubble=add('안녕, 승준아! 🐾\n어디부터 볼지 고민이면 내가 도와줄게. 아래 버튼을 고르거나 사용법을 물어봐!',false,['quiz','explore']);
 compose.querySelector('input').addEventListener('input',e=>{if(e.target.value.trim())beginChat()});
 const toast=document.createElement('div');toast.className='shiro-toast';toast.setAttribute('role','status');toast.setAttribute('aria-live','polite');toast.hidden=true;document.body.append(toast);let toastTimer;
