@@ -37,4 +37,5 @@ if(status?.provider==='gemini'&&status?.ai===true&&!status?.code_required){
 row('authenticated-shiro-chat','skip','Family token required; cannot send a real Shiro chat question without an authenticated session.');
 const summary='## 흰둥이 실서비스 연결 점검\n\n'+out.map(x=>'| '+x.name+' | '+x.status+' | '+x.details.replaceAll('|','\\|').replaceAll('\n',' ')+' |').join('\n')+'\n';
 if(process.env.GITHUB_STEP_SUMMARY){const fs=await import('node:fs');fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,'|항목|상태|세부 결과|\n|---|---|---|\n'+summary.split('\n').slice(2).join('\n'));}
+{const fs=await import('node:fs');fs.writeFileSync('shiro-smoke.md','# 흰둥이 실서비스 검사 결과\n\n'+new Date().toISOString()+'\n\n| 항목 | 상태 | 상세 결과 |\n|---|---|---|\n'+out.map(x=>'| '+x.name+' | '+x.status+' | '+x.details.replaceAll('|','/').replaceAll('\\n',' ')+' |').join('\\n')+'\\n');}
 if(out.some(x=>x.status==='fail'))process.exitCode=1;
