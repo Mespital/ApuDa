@@ -1,14 +1,35 @@
 #!/usr/bin/env node
 // Public, non-personal production smoke test for Shiro. Never uses family credentials or API keys.
+import { readFileSync } from 'node:fs';
 const base = 'https://future.apuda.app';
 const out = [];
 const row = (name, status, details='') => { const r={name,status,details};out.push(r);console.log(status.toUpperCase()+' '+name+' '+details); };
 async function get(path,timeout=15000) { const t=Date.now(); const r=await fetch(base+path,{signal:AbortSignal.timeout(timeout),headers:{'cache-control':'no-cache'}});return {r,ms:Date.now()-t};}
-try {
-  const {r,ms}=await get('/sw.js');
-  const s=await r.text();
-  row('service-worker',r.ok&&s.includes('v150-shiro-smart-router')?'pass':'fail','HTTP '+r.status+' / '+ms+'ms / V150 '+s.includes('v150-shiro-smart-router'));
-} catch(e){row('service-worker','fail',e.name+': '+e.message);}
+// A push-triggered smoke test can run before Netlify publishes the new service worker.
+// Read the expected cache version from the checked-out source to avoid hardcoded version drift.
+const swSource = readFileSync(new URL('../dist/sw.js', import.meta.url), 'utf8');
+const swVersion = swSource.match(/const CACHE\\s*=\\s*['"]([^'"]+)['"]/);
+const expectedSWCache = swVersion ? swVersion[1] : null;
+let swPassed = false;
+let swDetails = '';
+for (let attempt = 1; attempt <= 5; attempt++) {
+  try {
+    // The unique query parameter also bypasses stale intermediary caches.
+    const {r,ms} = await get('/sw.js?shiro_smoke=' + Date.now() + '-' + attempt);
+    const s = await r.text();
+    const matches = Boolean(expectedSWCache && s.includes(expectedSWCache));
+    swPassed = r.ok && matches;
+    swDetails = 'HTTP ' + r.status + ' / ' + ms + 'ms / expected=' + (expectedSWCache || 'not-found') + ' / match=' + matches + ' / attempt ' + attempt + '/5';
+  } catch(e) {
+    swDetails = e.name + ': ' + e.message + ' / attempt ' + attempt + '/5';
+  }
+  if (swPassed) break;
+  if (attempt < 5) {
+    console.log('RETRY service-worker ' + swDetails + ' / next check in 20 seconds');
+    await new Promise(resolve => setTimeout(resolve, 20000));
+  }
+}
+row('service-worker', swPassed ? 'pass' : 'fail', swDetails);
 try {
   const {r,ms}=await get('/shiro-help.js');const s=await r.text();
   const ok=r.ok&&s.includes("action:'chat-fast'")&&s.includes('function beginChat()')&&s.includes('function studyCodes(q)')&&s.includes('formatShiroReply(j.text)');
