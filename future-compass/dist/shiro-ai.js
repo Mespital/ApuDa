@@ -233,6 +233,13 @@
     else if(/내일/.test(raw))d=addDate(d,1);
     var day=raw.match(/([월화수목금토일])요일/);
     if(day){var target=['일','월','화','수','목','금','토'].indexOf(day[1]);d=addDate(todayISO,(target-wd+7)%7);}
+    var specified=raw.match(/(?:(\d{4})[-./])?(\d{1,2})\s*(?:\/|\.|월)\s*(\d{1,2})\s*(?:일)?/);
+    if(specified){
+      var y=Number(specified[1]||todayISO.slice(0,4));
+      var month=Number(specified[2]),date=Number(specified[3]);
+      var candidate=y+'-'+String(month).padStart(2,'0')+'-'+String(date).padStart(2,'0');
+      if(new Date(candidate+'T12:00:00Z').toISOString().slice(0,10)===candidate)d=candidate;
+    }
     var entries=KBC.map(function(x){return x.c;}).filter(function(x){return /급식/.test(x.title);}).map(function(x){
       var m=x.title.match(/(\d{1,2})\/(\d{1,2})/);if(!m||!kbYear)return null;
       var iso=kbYear+'-'+String(m[1]).padStart(2,'0')+'-'+String(m[2]).padStart(2,'0');
