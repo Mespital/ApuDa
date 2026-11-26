@@ -137,6 +137,41 @@ export default async (req) => {
   if (b.action === 'pull') return json({ data, pv: cfg.pv, live: await live() });
   if (b.action === 'live') return json({ ok: true, live: await live() });
 
+
+  // Fast, concise help: authenticated family-only Gemini proxy. Never expose API keys to client.
+  if (b.action === 'chat-fast') {
+    const key = env('GEMINI_API_KEY') || env('GOOGLE_API_KEY');
+    if (!key) return json({ error: 'no_ai' }, 503);
+    const q = typeof b.q === 'string' ? b.q.trim() : '';
+    if (q.length < 2 || q.length > 500) return json({ error: 'bad_q' }, 400);
+    const past = Array.isArray(b.history) ? b.history.slice(-6).filter(x => x && (x.r === 'u' || x.r === 'a') && typeof x.t === 'string').map(x => ({
+      role: x.r === 'a' ? 'model' : 'user',
+      parts: [{ text: x.t.slice(0, 500) }]
+    })) : [];
+    const log = ((await store.get('chat-fast-rate', { type: 'json' })) || []).filter(t => now - t < 86400000);
+    if (log.length >= 300 || log.filter(t => now - t < 3600000).length >= 80) return json({ error: 'rate' }, 429);
+    await store.setJSON('chat-fast-rate', [...log, now]);
+    const configured = env('FC_GEMINI_MODEL') || 'gemini-3.1-flash-lite';
+    const model = /^gemini-[a-z0-9.-]{3,55}$/i.test(configured) ? configured : 'gemini-3.1-flash-lite';
+    try {
+      const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/' + model + ':generateContent', {
+        method: 'POST',
+        headers: { 'x-goog-api-key': key, 'content-type': 'application/json' },
+        body: JSON.stringify({
+          systemInstruction: { parts: [{ text: '너는 고등학교 1학년 학생을 돕는 친절하고 정확한 한국어 학습 도우미 흰둥이야. 2022 개정 교육과정 수준에서 질문에 2~5문장으로 간결히 답해. 핵심 결론을 먼저 알려주고 필요한 경우 예시를 하나 들어. 헷갈리는 사실, 최신 학교 공지, 교과서의 정확한 페이지 번호는 지어내지 말고 확인이 필요하다고 밝혀. 복잡한 풀이·서술형·장문 요청은 ChatGPT 연결을 안내하고 답을 억지로 완성하지 마. 학생의 개인 정보를 요청하지 마.' }] },
+          contents: past.concat([{ role: 'user', parts: [{ text: q }] }]),
+          generationConfig: { temperature: 0.3, maxOutputTokens: 500 }
+        }),
+        signal: AbortSignal.timeout(7500)
+      });
+      if (!response.ok) return json({ error: 'gemini', status: response.status }, 502);
+      const responseBody = await response.json();
+      const answer = (responseBody.candidates?.[0]?.content?.parts || []).map(p => p.text || '').join('').trim();
+      if (!answer) return json({ error: 'empty_ai' }, 502);
+      return json({ ok: true, text: answer.slice(0, 1400), provider: 'gemini' });
+    } catch { return json({ error: 'gemini' }, 502); }
+  }
+
   if (b.action === 'organize') {
     if (!env('ANTHROPIC_API_KEY') && !env('OPENAI_API_KEY')) return json({ error: 'no_ai' }, 503);
     const text = String(b.text || '').trim(); if (text.length < 15) return json({ error: 'short' }, 400);
