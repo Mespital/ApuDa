@@ -44,3 +44,14 @@
 .shiro-quick{flex-wrap:nowrap!important;overflow-x:auto;overflow-y:hidden;flex-shrink:0;max-height:none;padding:10px 12px!important;gap:8px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
 .shiro-quick .shiro-chip{white-space:nowrap;flex-shrink:0}
 .shiro-scroll{min-height:120px}
+
+/* Mobile keyboard: keep the question field directly beneath the title. */
+@media (max-width:600px){
+  .shiro-panel .shiro-head{order:0}
+  .shiro-panel .shiro-compose{order:1;border-top:0;border-bottom:1px solid var(--u-line);padding:10px 12px;}
+  .shiro-panel .shiro-quick{order:2}
+  .shiro-panel .shiro-scroll{order:3;min-height:0;min-width:0;}
+  .shiro-panel.shiro-typing .shiro-head{padding:8px 12px}
+  .shiro-panel.shiro-typing .shiro-head small,
+  .shiro-panel.shiro-typing .shiro-quick{display:none!important}
+}
