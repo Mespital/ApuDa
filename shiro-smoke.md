@@ -1,0 +1,7 @@
+# 흰둥이 실서비스 검사 결과
+
+2026-11-26T21:58:54.546Z
+
+| 항목 | 상태 | 상세 결과 |
+|---|---|---|
+| service-worker | fail | HTTP 200 / 208ms / expected=not-found / match=false / attempt 5/5 |\n| shiro-client | pass | HTTP 200 / 85ms / Gemini routing true |\n| mobile-chat-height | pass | HTTP 200 / 84ms / fullscreen override true |\n| academy-grounded-answers | pass | HTTP 200 / 116ms / schedule-first routing true |\n| current-final-exam-routing | pass | HTTP 200 / 21ms / forward-only final schedule true |\n| stale-midterm-filter | pass | HTTP 200 / 80ms / KB historic filtering true |\n| smart-personal-routing | pass | HTTP 200 / 20ms / contextual study answers true |\n| fresh-school-sources | pass | HTTP 200 / 20ms / date-based cafeteria and freshness true |\n| typed-question-not-navigation | pass | HTTP 200 / 21ms / text question stays a reply true |\n| study-page | pass | HTTP 200 / 85ms / shiro loaded true |\n| gemini-env-status | pass | HTTP 200 / 330ms / provider=gemini / ai=true / code_required=true |\n| real-gemini-answer | skip | Requires Gemini configured and public no-code test; did not bypass authentication. |\n| authenticated-shiro-chat | skip | Family token required; cannot send a real Shiro chat question without an authenticated session. |\n
