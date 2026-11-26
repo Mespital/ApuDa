@@ -1,0 +1,437 @@
+{
+  "version": "1.2",
+  "report_date": "2026-11-26",
+  "collection_window": {
+    "start": "2026-11-25T09:00:00+09:00",
+    "end": "2026-11-26T09:00:00+09:00",
+    "timezone": "Asia/Seoul"
+  },
+  "sources": [
+    "데일리팜",
+    "의학신문",
+    "메디파나뉴스",
+    "약사공론"
+  ],
+  "briefing": "약가제 개편 후 개량신약 가산 연장 첫 적용…R&D 유인 주목가 오늘 가장 중요한 이슈로 부각됐습니다. 이어 대원제약, 약가 인하-계절 영향으로 3분기 매출·수익 감소도 주요 변화로 확인됐습니다. 전체적으로는 정책·급여 · 투자·사업개발 흐름이 두드러집니다.",
+  "top_news": [
+    {
+      "rank": 1,
+      "canonical_issue": "약가제 개편 후 개량신약 가산 연장 첫 적용…R&D 유인 주목 - 메디파나뉴스",
+      "title": "약가제 개편 후 개량신약 가산 연장 첫 적용…R&D 유인 주목",
+      "category": [
+        "급여",
+        "약가",
+        "복지부",
+        "투자"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-11-26T06:03:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "약가제도 개편에 따른 개량신약 약가 가산기간 연장 첫 사례가 확인된다. 제네릭과 달리 기존 가산 약가 수준을 유지하면서 가산기간도 늘어난 사례다. 다만 한시적 약가 보상이 개량신약 연구개발(R&D) 투자 유인으로 작용할 수 있을지는 확인해야 할 과제다. 개량신약 약가 가산 연장, '트루셋'·'코대원플러스",
+        "복사하기 사진=게티이미지 약가제도 개편에 따른 개량신약 약가 가산기간 연장 첫 사례가 확인된다.",
+        "제네릭과 달리 기존 가산 약가 수준을 유지하면서 가산기간도 늘어난 사례다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=422673"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=422673"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202611/422673_330804_4646.jpg",
+      "score": 77,
+      "oncology": null
+    },
+    {
+      "rank": 2,
+      "canonical_issue": "대원제약, 약가 인하-계절 영향으로 3분기 매출·수익 감소 - 메디파나뉴스",
+      "title": "대원제약, 약가 인하-계절 영향으로 3분기 매출·수익 감소",
+      "category": [
+        "약가",
+        "투자"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-11-25T12:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "대원제약이 정부 약가인하와 호흡기 수요 둔화로 올 3분기 매출액이 3.2% 줄어들고 영업손실 약 41억원을 기록했다. DS투자증권에 따르면, 회사 대표제품인 펠루비정 약가가 5월 1일부로 180원에서 96원(-46%)으로, 펠루비 서방정 약가가 304원에서 234원(-23%)으로 인하되며 올 3분기에 약",
+        "복사하기 대원제약 사옥 전경 대원제약이 정부 약가인하와 호흡기 수요 둔화로 올 3분기 매출액이 3.2% 줄어들고 영업손실 약 41억원을 기록했다.",
+        "DS투자증권에 따르면, 회사 대표제품인 펠루비정 약가가 5월 1일부로 180원에서 96원(-46%)으로, 펠루비 서방정 약가가 304원에서 234원(-23%)으로 인하되며 올 3분기에 약가 인하 영향이 가시화됐다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=422628"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=422628"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202611/422628_330753_1023.png",
+      "score": 65,
+      "oncology": null
+    },
+    {
+      "rank": 3,
+      "canonical_issue": "수가협상 넘어 가격결정체계 개편…환산지수 '역할 재정립' - 메디파나뉴스",
+      "title": "수가협상 넘어 가격결정체계 개편…환산지수 '역할 재정립'",
+      "category": [
+        "정책",
+        "수가",
+        "공급"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-11-25T11:45:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "매년 건강보험 수가협상에서 의료공급자와 보험자 간 견해차가 발생하는 가운데, '환산지수'에 부여된 상충하는 역할을 재검토해야 한다는 제언이 나왔다. 의료기관의 운영비용 상승을 보전하면서도 건강보험 진료비 증가를 억제해야 하는 만큼, 하나의 가격 요소로 서로 다른 정책적 목표를 달성하는 데 한계가 있다는 ",
+        "복사하기 의료행위의 적정 보상과 건강보험 재정의 지속가능성을 확보하기 위한 중장기 과제로 환산지수와 상대가치점수의 역할 재정립이 제시됐다.",
+        "사진=AI 생성 이미지 매년 건강보험 수가협상에서 의료공급자와 보험자 간 견해차가 발생하는 가운데, '환산지수'에 부여된 상충하는 역할을 재검토해야 한다는 제언이 나왔다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=422603"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=422603"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202611/422603_330725_5255.jpg",
+      "score": 63,
+      "oncology": null
+    },
+    {
+      "rank": 4,
+      "canonical_issue": "항암신약 급여까지 평균 46개월…조건부 급여 확대해야 - 의학신문",
+      "title": "항암신약 급여까지 평균 46개월…조건부 급여 확대해야",
+      "category": [
+        "급여"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-11-25T15:56:58+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=정광성 기자] 항암신약의 급여 공백을 줄이기 위해 임상적 필요성이 큰 약제에 조건부로 건강보험을 조기 적용해야 한다는 전문가의 제언이 나왔다.",
+        "대한종양내과학회 김동완 이사장 / 사진= 의학신문 정광성 기자 대한종양내과학회는 25일 서울성모병원 성의회관에서 열린 ‘제9회 항암치료의 날’ 기자간담회에서 항암신약 접근성 개선을 위한 5대 제언을 발표했다.",
+        "김동완 이사장은 “비용 문제 때문에 좋은 항암제 치료를 빨리 받지 못하는 경우가 있다”며 치료 접근성을 높일 방안을 마련하게 된 배경을 설명했다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3017330"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017330"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3017330_418184_1444.jpg",
+      "score": 53,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "유방암",
+          "대장암"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [
+          "HER2"
+        ],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": "허가 관련",
+        "reimbursement_status": "급여 관련",
+        "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
+        "patient_relevance_score": 80,
+        "patient_relevance_labels": [
+          "급여·접근성",
+          "허가",
+          "바이오마커"
+        ],
+        "industry_summary": null
+      }
+    },
+    {
+      "rank": 5,
+      "canonical_issue": "약가인하 파고 속 중견제약…적자에도 신약·설비 투자는 계속 - 메디파나뉴스",
+      "title": "약가인하 파고 속 중견제약…적자에도 신약·설비 투자는 계속",
+      "category": [
+        "약가",
+        "투자"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-11-26T06:04:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "내년 4월 기등재 의약품 1차 재평가에 따른 약가인하를 앞두고 국내 중견제약사들의 경영 부담이 커지고 있다. 인하 품목이 많은 상장제약사 13곳 가운데 5곳은 올해 3분기까지 영업손실을 내거나 손익분기점에 머물렀다. 이들 기업의 재평가 대상 품목 중 39~62%는 내년 실제 약가가 내려간다. 어려운 경영",
+        "복사하기 사진=AI 생성 이미지 내년 4월 기등재 의약품 1차 재평가에 따른 약가인하를 앞두고 국내 중견제약사들의 경영 부담이 커지고 있다.",
+        "인하 품목이 많은 상장제약사 13곳 가운데 5곳은 올해 3분기까지 영업손실을 내거나 손익분기점에 머물렀다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=422645"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=422645"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202611/422645_330772_3921.jpg",
+      "score": 50,
+      "oncology": null
+    }
+  ],
+  "trends": [
+    {
+      "title": "정책·급여",
+      "count": 5,
+      "change": "5건의 주요 이슈에서 반복적으로 확인",
+      "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
+      "examples": [
+        "약가제 개편 후 개량신약 가산 연장 첫 적용…R&D 유인 주목",
+        "대원제약, 약가 인하-계절 영향으로 3분기 매출·수익 감소"
+      ]
+    },
+    {
+      "title": "투자·사업개발",
+      "count": 3,
+      "change": "3건의 주요 이슈에서 반복적으로 확인",
+      "implication": "자본과 파이프라인 확보 경쟁이 사업전략의 핵심이 되는 흐름",
+      "examples": [
+        "약가제 개편 후 개량신약 가산 연장 첫 적용…R&D 유인 주목",
+        "대원제약, 약가 인하-계절 영향으로 3분기 매출·수익 감소"
+      ]
+    },
+    {
+      "title": "신약·임상",
+      "count": 3,
+      "change": "3건의 주요 이슈에서 반복적으로 확인",
+      "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
+      "examples": [
+        "약가제 개편 후 개량신약 가산 연장 첫 적용…R&D 유인 주목",
+        "항암신약 급여까지 평균 46개월…조건부 급여 확대해야"
+      ]
+    },
+    {
+      "title": "의료현장",
+      "count": 2,
+      "change": "2건의 주요 이슈에서 반복적으로 확인",
+      "implication": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름",
+      "examples": [
+        "수가협상 넘어 가격결정체계 개편…환산지수 '역할 재정립'",
+        "항암신약 급여까지 평균 46개월…조건부 급여 확대해야"
+      ]
+    }
+  ],
+  "outlet_status": [
+    {
+      "publisher": "데일리팜",
+      "homepage_url": "https://www.dailypharm.com/",
+      "items": [
+        {
+          "title": "[데일리팜]무약촌 슈퍼·마트도 상비약 판매 허용…이젠 품목 확대 촉각",
+          "published_at": "2026-11-26T06:00:59+09:00",
+          "verified": true,
+          "source_url": "https://www.dailypharm.com/user/news/345045"
+        }
+      ]
+    },
+    {
+      "publisher": "의학신문",
+      "homepage_url": "https://www.bosa.co.kr/",
+      "items": [
+        {
+          "title": "항암신약 급여까지 평균 46개월…조건부 급여 확대해야",
+          "published_at": "2026-11-25T15:56:58+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017330"
+        },
+        {
+          "title": "안과의사회 “안연고 수급 불안…약가 조정 서둘러야”",
+          "published_at": "2026-11-25T14:36:35+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017322"
+        },
+        {
+          "title": "“불타는 지역의료, 묘목보다 진화가 먼저”",
+          "published_at": "2026-11-26T05:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017362"
+        },
+        {
+          "title": "영남대병원 민호기 교수, ‘무심폐기 관상동맥우회술’ 500례 돌파",
+          "published_at": "2026-11-26T06:18:18+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017364"
+        },
+        {
+          "title": "릭시아나, 특허 만료에도 국공립병원 입찰시장서 '건재'",
+          "published_at": "2026-11-26T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017135"
+        },
+        {
+          "title": "노인 폐렴구균 단백결합백신 NIP 전환 추진...20·21가 백신 경쟁 주목",
+          "published_at": "2026-11-26T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017366"
+        },
+        {
+          "title": "‘AI바이오 메디시티대구’ 중국 의료시장 진출 본격화",
+          "published_at": "2026-11-26T08:14:07+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017379"
+        },
+        {
+          "title": "혈액종양내과 미래, 항암 진료 수가 현실화에 달렸다",
+          "published_at": "2026-11-26T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017354"
+        }
+      ]
+    },
+    {
+      "publisher": "메디파나뉴스",
+      "homepage_url": "https://www.medipana.com/",
+      "items": [
+        {
+          "title": "약가제 개편 후 개량신약 가산 연장 첫 적용…R&D 유인 주목",
+          "published_at": "2026-11-26T06:03:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422673"
+        },
+        {
+          "title": "대원제약, 약가 인하-계절 영향으로 3분기 매출·수익 감소",
+          "published_at": "2026-11-25T12:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422628"
+        },
+        {
+          "title": "수가협상 넘어 가격결정체계 개편…환산지수 '역할 재정립'",
+          "published_at": "2026-11-25T11:45:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422603"
+        },
+        {
+          "title": "약가인하 파고 속 중견제약…적자에도 신약·설비 투자는 계속",
+          "published_at": "2026-11-26T06:04:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422645"
+        },
+        {
+          "title": "무약촌에 상비약이면 충분?…공공약국·공중보건약사 제안",
+          "published_at": "2026-11-26T06:01:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422681"
+        },
+        {
+          "title": "비만약까지 원정 쇼핑…다시 꺼내 든 '급여' 카드",
+          "published_at": "2026-11-26T06:02:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422663"
+        },
+        {
+          "title": "최인영 한미약품 부사장, 국민훈장 목련장 수훈",
+          "published_at": "2026-11-25T11:04:18+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422625"
+        },
+        {
+          "title": "위고비·마운자로부터 펙수클루까지…식약처, 572개 품목 특허정보 공개",
+          "published_at": "2026-11-25T12:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549849"
+        }
+      ]
+    },
+    {
+      "publisher": "약사공론",
+      "homepage_url": "https://www.kpanews.co.kr/",
+      "items": [
+        {
+          "title": "복지부, 일반약 품목별 차등관리 필요성 공감",
+          "published_at": "2026-11-25T12:41:54+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549874"
+        },
+        {
+          "title": "'창고형' 대신 '창ㅇ형'?…복지부, 약국 변형·유사 광고도 제동",
+          "published_at": "2026-11-26T05:55:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549934"
+        },
+        {
+          "title": "일반약도 차등 관리?…어떤 약이 대상될까",
+          "published_at": "2026-11-26T05:53:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549938"
+        },
+        {
+          "title": "위고비·마운자로부터 펙수클루까지…식약처, 572개 품목 특허정보 공개",
+          "published_at": "2026-11-25T12:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549849"
+        },
+        {
+          "title": "GLP-1 비만약 '되팔이'…출입국·결제 이력까지 본다",
+          "published_at": "2026-11-26T05:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549895"
+        },
+        {
+          "title": "약사 등 보건의료인 면허증 재발급 절차 통합 추진",
+          "published_at": "2026-11-25T11:06:18+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549856"
+        },
+        {
+          "title": "유방암 CDK4/6 억제제 경쟁, 치료 영역 확장으로 새 국면",
+          "published_at": "2026-11-26T05:52:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549925"
+        },
+        {
+          "title": "본인부담환급 이중지급, 야간진료 지원 의무화 논의결과 '주목'",
+          "published_at": "2026-11-25T12:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549870"
+        }
+      ]
+    }
+  ],
+  "insight": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름 동시에 투자·사업개발 흐름도 함께 확인돼 단일 이슈보다 복합적인 산업 변화로 보는 것이 적절합니다.",
+  "infographic": {
+    "image_path": null,
+    "generated_at": null,
+    "template_version": "news-card-v1"
+  }
+}

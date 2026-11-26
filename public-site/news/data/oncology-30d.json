@@ -1,9 +1,9 @@
 {
   "version": "1.0",
-  "generated_at": "2026-11-25T09:04:49.508811+09:00",
+  "generated_at": "2026-11-26T09:04:50.252797+09:00",
   "window": {
-    "start": "2026-10-26T09:00:00+09:00",
-    "end": "2026-11-25T09:00:00+09:00",
+    "start": "2026-10-27T09:00:00+09:00",
+    "end": "2026-11-26T09:00:00+09:00",
     "days": 30,
     "timezone": "Asia/Seoul"
   },
@@ -22,6 +22,75 @@
     "자궁경부암"
   ],
   "items": [
+    {
+      "rank": null,
+      "canonical_issue": "유방암 CDK4/6 억제제 경쟁, 치료 영역 확장으로 새 국면 - 약사공론",
+      "title": "유방암 CDK4/6 억제제 경쟁, 치료 영역 확장으로 새 국면",
+      "category": [
+        "약가",
+        "허가",
+        "3상",
+        "ai"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-11-26T05:52:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "CDK4/6 억제제를 둘러싼 유방암 치료제 경쟁이 이어지고 있다. 기존 호르몬수용체 양성·HER2 음성 유방암을 중심으로 형성된 시장이 조기 유방암과 HER2 양",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "기사에서 급여·약가 이슈가 함께 확인돼 시장 접근성과 환자 부담 변화를 후속 확인할 필요가 있습니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=549925"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549925"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202611/549925_453968_5532.png",
+      "score": 22,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "유방암"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [
+          "HER2"
+        ],
+        "trial_name": null,
+        "phase": "3",
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": "허가 관련",
+        "reimbursement_status": null,
+        "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
+        "patient_relevance_score": 100,
+        "patient_relevance_labels": [
+          "급여·접근성",
+          "허가",
+          "임상결과",
+          "바이오마커"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "today",
+      "age_days": 0
+    },
     {
       "rank": null,
       "canonical_issue": "[초점] 유방암 신약 하나로 치료 전 과정 공략…로슈의 승부수 - 메디파나뉴스",
@@ -86,7 +155,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
     },
     {
       "rank": 1,
@@ -155,7 +224,73 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
+    },
+    {
+      "rank": 4,
+      "canonical_issue": "항암신약 급여까지 평균 46개월…조건부 급여 확대해야 - 의학신문",
+      "title": "항암신약 급여까지 평균 46개월…조건부 급여 확대해야",
+      "category": [
+        "급여"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-11-25T15:56:58+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=정광성 기자] 항암신약의 급여 공백을 줄이기 위해 임상적 필요성이 큰 약제에 조건부로 건강보험을 조기 적용해야 한다는 전문가의 제언이 나왔다.",
+        "대한종양내과학회 김동완 이사장 / 사진= 의학신문 정광성 기자 대한종양내과학회는 25일 서울성모병원 성의회관에서 열린 ‘제9회 항암치료의 날’ 기자간담회에서 항암신약 접근성 개선을 위한 5대 제언을 발표했다.",
+        "김동완 이사장은 “비용 문제 때문에 좋은 항암제 치료를 빨리 받지 못하는 경우가 있다”며 치료 접근성을 높일 방안을 마련하게 된 배경을 설명했다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3017330"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017330"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3017330_418184_1444.jpg",
+      "score": 53,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [
+          "유방암",
+          "대장암"
+        ],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [
+          "HER2"
+        ],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": "허가 관련",
+        "reimbursement_status": "급여 관련",
+        "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
+        "patient_relevance_score": 80,
+        "patient_relevance_labels": [
+          "급여·접근성",
+          "허가",
+          "바이오마커"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": 2,
@@ -221,7 +356,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 2
+      "age_days": 3
     },
     {
       "rank": 2,
@@ -285,7 +420,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": 5,
@@ -350,7 +485,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": 2,
@@ -414,7 +549,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 6
+      "age_days": 7
     },
     {
       "rank": null,
@@ -478,7 +613,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
     },
     {
       "rank": null,
@@ -541,7 +676,70 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 28
+      "age_days": 29
+    },
+    {
+      "rank": null,
+      "canonical_issue": "위산분비억제제는 NDMA, 항암제는 유연물질…기준 초과 우려에 잇단 회수 - 약사공론",
+      "title": "위산분비억제제는 NDMA, 항암제는 유연물질…기준 초과 우려에 잇단 회수",
+      "category": [
+        "수가",
+        "식약처",
+        "약국",
+        "ai"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-11-25T12:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "식품의약품안전처가 에이치엘비제약의 '틴자정150밀리그램(니자티딘)'과 보령의 '알림타액상주25밀리그램/밀리리터(페메트렉시드이나트륨염칠수화물)' 일부 제품에 대해",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "기사에서 급여·약가 이슈가 함께 확인돼 시장 접근성과 환자 부담 변화를 후속 확인할 필요가 있습니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=549863"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549863"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202611/549863_453913_209.png",
+      "score": 19,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": "치료제의 허가 범위나 사용 가능성과 관련된 소식입니다. 국내 실제 사용은 식약처 허가사항을 확인해야 합니다.",
+        "patient_relevance_score": 58,
+        "patient_relevance_labels": [
+          "허가",
+          "안전성"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -606,7 +804,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": null,
@@ -668,7 +866,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 26
+      "age_days": 27
     },
     {
       "rank": null,
@@ -735,7 +933,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
     },
     {
       "rank": null,
@@ -796,8 +994,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "today",
-      "age_days": 0
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -861,7 +1059,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 1
+      "age_days": 2
     },
     {
       "rank": null,
@@ -923,7 +1121,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 2
+      "age_days": 3
     },
     {
       "rank": null,
@@ -988,7 +1186,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 26
+      "age_days": 27
     },
     {
       "rank": null,
@@ -1051,8 +1249,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "today",
-      "age_days": 0
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": 4,
@@ -1116,7 +1314,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": null,
@@ -1180,7 +1378,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": null,
@@ -1242,67 +1440,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
-    },
-    {
-      "rank": null,
-      "canonical_issue": "'에페' 출시 초기 암초…비만약 단속에 개원가 위축 '불똥' - 메디파나뉴스",
-      "title": "'에페' 출시 초기 암초…비만약 단속에 개원가 위축 '불똥'",
-      "category": [
-        "복지부",
-        "공급"
-      ],
-      "publishers": [
-        "메디파나뉴스"
-      ],
-      "published_at": "2026-10-27T06:03:00+09:00",
-      "published_at_verified": true,
-      "summary": [
-        "한미약품 국산 비만신약 '에페'가 출시 초반 예상 밖 암초를 만났다. 초도 물량을 병의원에만 공급하는 가운데, 정부가 비만치료제 불법 원내판매 단속을 발표하면서다. 개원가 원내 취급 부담이 커지면서 주문을 취소하는 사례도 확인된다. 첫 출하일, 정부 단속 발표…개원가 주문 취소 사례도 26일 메디파나뉴스",
-        "사진=한미약품 한미약품 국산 비만신약 '에페'가 출시 초반 예상 밖 암초를 만났다.",
-        "초도 물량을 병의원에만 공급하는 가운데, 정부가 비만치료제 불법 원내판매 단속을 발표하면서다."
-      ],
-      "importance": "공급 변화는 의약품 접근성과 의료현장 재고 운영, 대체치료 준비에 영향을 줄 수 있습니다.",
-      "source_urls": [
-        "https://www.medipana.com/news/articleView.html?idxno=420107"
-      ],
-      "source_links": [
-        {
-          "publisher": "메디파나뉴스",
-          "url": "https://www.medipana.com/news/articleView.html?idxno=420107"
-        }
-      ],
-      "thumbnail_url": "https://cdn.medipana.com/news/photo/202610/420107_327733_4031.jpg",
-      "score": 36,
-      "oncology": {
-        "is_oncology": true,
-        "cancer_types": [],
-        "drug_generic": [],
-        "drug_brand": [],
-        "targets": [],
-        "mechanism": [],
-        "biomarkers": [],
-        "trial_name": null,
-        "phase": null,
-        "line_of_therapy": null,
-        "endpoints": {
-          "orr": null,
-          "pfs": null,
-          "os": null,
-          "hr": null,
-          "grade3plus_ae": null
-        },
-        "approval_status": "허가 관련",
-        "reimbursement_status": null,
-        "patient_summary": "치료제의 허가 범위나 사용 가능성과 관련된 소식입니다. 국내 실제 사용은 식약처 허가사항을 확인해야 합니다.",
-        "patient_relevance_score": 32,
-        "patient_relevance_labels": [
-          "허가"
-        ],
-        "industry_summary": null
-      },
-      "freshness": "30d",
-      "age_days": 29
+      "age_days": 6
     },
     {
       "rank": null,
@@ -1363,7 +1501,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 25
+      "age_days": 26
     },
     {
       "rank": null,
@@ -1425,7 +1563,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 26
+      "age_days": 27
     },
     {
       "rank": null,
@@ -1490,7 +1628,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 27
+      "age_days": 28
     },
     {
       "rank": null,
@@ -1552,7 +1690,66 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 29
+      "age_days": 30
+    },
+    {
+      "rank": null,
+      "canonical_issue": "혈액종양내과 미래, 항암 진료 수가 현실화에 달렸다 - 의학신문",
+      "title": "혈액종양내과 미래, 항암 진료 수가 현실화에 달렸다",
+      "category": [
+        "수가"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-11-26T06:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=정광성 기자] 내과 전공의들이 혈액종양내과를 진로로 택할 수 있도록 항암 진료 수가부터 현실화해야 한다는 제언이 나왔다.대한종양내과학회 김동완",
+        "[의학신문·일간보사=정광성 기자] 내과 전공의들이 혈액종양내과를 진로로 택할 수 있도록 항암 진료 수가부터 현실화해야 한다는 제언이 나왔다.",
+        "대한종양내과학회 김동완 이사장 / 사진= 의학신문 정광성 기자 대한종양내과학회 김동완 이사장(서울대병원 혈액종양내과)은 지난 25일 서울성모병원 성의회관에서 열린 ‘제9회 항암치료의 날’ 기자간담회에서 후속 세대 양성을 학회의 주요 현안으로 꼽았다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3017354"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017354"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3017354_418205_87.jpg",
+      "score": 25,
+      "oncology": {
+        "is_oncology": true,
+        "cancer_types": [],
+        "drug_generic": [],
+        "drug_brand": [],
+        "targets": [],
+        "mechanism": [],
+        "biomarkers": [],
+        "trial_name": null,
+        "phase": null,
+        "line_of_therapy": null,
+        "endpoints": {
+          "orr": null,
+          "pfs": null,
+          "os": null,
+          "hr": null,
+          "grade3plus_ae": null
+        },
+        "approval_status": null,
+        "reimbursement_status": null,
+        "patient_summary": "환자 부담이나 지원제도와 관련된 정보입니다. 대상 조건을 공식 안내에서 확인해야 합니다.",
+        "patient_relevance_score": 26,
+        "patient_relevance_labels": [
+          "지원제도"
+        ],
+        "industry_summary": null
+      },
+      "freshness": "today",
+      "age_days": 0
     },
     {
       "rank": null,
@@ -1610,8 +1807,8 @@
         ],
         "industry_summary": null
       },
-      "freshness": "today",
-      "age_days": 0
+      "freshness": "7d",
+      "age_days": 1
     },
     {
       "rank": null,
@@ -1670,7 +1867,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 4
+      "age_days": 5
     },
     {
       "rank": null,
@@ -1729,7 +1926,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 2
+      "age_days": 3
     },
     {
       "rank": null,
@@ -1788,7 +1985,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": null,
@@ -1844,8 +2041,8 @@
         "patient_relevance_labels": [],
         "industry_summary": null
       },
-      "freshness": "7d",
-      "age_days": 7
+      "freshness": "30d",
+      "age_days": 8
     },
     {
       "rank": null,
@@ -1904,7 +2101,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": null,
@@ -1963,7 +2160,7 @@
         "industry_summary": null
       },
       "freshness": "7d",
-      "age_days": 5
+      "age_days": 6
     },
     {
       "rank": null,
@@ -2020,7 +2217,7 @@
         "industry_summary": null
       },
       "freshness": "30d",
-      "age_days": 26
+      "age_days": 27
     }
   ]
 }

@@ -1,9 +1,24 @@
 {
   "version": "1.1",
-  "generated_at": "2026-11-25T09:05:01.766108+09:00",
+  "generated_at": "2026-11-26T09:05:01.869761+09:00",
   "window_days": 30,
   "status": "ok",
   "items": [
+    {
+      "agency": "건강보험심사평가원",
+      "document_type": "공식 고시·공지",
+      "category": "항암 급여",
+      "department": "평가운영실 중증질환평가부",
+      "title": "「2주기 3차 암 적정성 평가」 온라인 의견수렴 안내 새글",
+      "published_at": "2026-11-25T00:00:00+09:00",
+      "url": "https://www.hira.or.kr/bbsDummy.do?brdBltNo=12357&brdScnBltNo=4&pgmid=HIRAA020002000100",
+      "detail_link_verified": true,
+      "attachments": [],
+      "summary": "",
+      "oncology_related": true,
+      "source_list_url": "https://www.hira.or.kr/bbsDummy.do?pgmid=HIRAA020002000100",
+      "criteria_url": "https://www.hira.or.kr/rc/insu/insuadtcrtr/InsuAdtCrtrList.do?pgmid=HIRAA030069000400"
+    },
     {
       "agency": "건강보험심사평가원",
       "document_type": "공식 고시·공지",
@@ -39,7 +54,7 @@
       "document_type": "공식 고시·공지",
       "category": "약제·급여",
       "department": "약제평가부",
-      "title": "약제 상한금액 재평가 결과 사전열람 일정 안내 새글",
+      "title": "약제 상한금액 재평가 결과 사전열람 일정 안내",
       "published_at": "2026-11-18T00:00:00+09:00",
       "url": "https://www.hira.or.kr/bbsDummy.do?brdBltNo=12351&brdScnBltNo=4&pgmid=HIRAA020002000100",
       "detail_link_verified": true,
