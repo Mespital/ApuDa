@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/shiro-live-smoke.yml'
+      - 'future-compass/scripts/shiro-live-smoke.mjs'
 permissions:
   contents: write
 jobs:
