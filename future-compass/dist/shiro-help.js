@@ -43,25 +43,81 @@ function rememberTalk(question,response){
   recentTalk.push({r:'u',t:String(question).slice(0,350)},{r:'a',t:String(response).slice(0,500)});
   if(recentTalk.length>12)recentTalk.splice(0,recentTalk.length-12);
 }
-function add(text,user=false,links=[]){const box=document.createElement('div');box.className='shiro-bubble'+(user?' shiro-user':'');const copy=document.createElement('div');copy.textContent=text;box.append(copy);if(links.length){const wrap=document.createElement('div');wrap.className='shiro-links';links.forEach(k=>{const a=document.createElement('a');a.className='shiro-link';a.href=menus[k][1];a.textContent=menus[k][0]+' →';wrap.append(a)});box.append(wrap)}messages.append(box);while(messages.children.length>60)messages.firstElementChild.remove();scroll.scrollTop=scroll.scrollHeight;return box}
+
+function formatShiroReply(value){
+  const raw=String(value||'').trim().replace(/\*\*([^*]+)\*\*/g,'$1');
+  if(!raw||raw.includes('\n'))return raw.replace(/\n{3,}/g,'\n\n');
+  const parts=(raw.match(/[^.!?。！？]+(?:[.!?。！？]+(?=\s|$)|$)/g)||[raw]).map(x=>x.trim()).filter(Boolean);
+  if(raw.length<125||parts.length<3)return raw;
+  const paragraphs=[];
+  for(let i=0;i<parts.length;i+=2)paragraphs.push(parts.slice(i,i+2).join(' '));
+  return paragraphs.join('\n\n');
+}
+
+function add(text,user=false,links=[]){const box=document.createElement('div');box.className='shiro-bubble'+(user?' shiro-user':'');const copy=document.createElement('div');copy.textContent=user?text:formatShiroReply(text);box.append(copy);if(links.length){const wrap=document.createElement('div');wrap.className='shiro-links';links.forEach(k=>{const a=document.createElement('a');a.className='shiro-link';a.href=menus[k][1];a.textContent=menus[k][0]+' →';wrap.append(a)});box.append(wrap)}messages.append(box);while(messages.children.length>60)messages.firstElementChild.remove();scroll.scrollTop=scroll.scrollHeight;return box}
 function isComplexQuestion(text){
   const q=String(text||'');
   return q.length>110||/풀어\s*줘|풀어줘|풀이|해설|정답|증명|유도|검산|서술형|논술|기출|모의고사|수능|문제\s*(?:[0-9０-９]+|풀이)|예상\s*문제|연습\s*문제|단계별|차근차근|심화|자세히|장문|긴\s*글|보고서|발표문|수행평가\s*(?:작성|만들|도와)|비교\s*분석|분석해/.test(q);
 }
-function chatGPTLinks(b,text){
-  const AI=window.SHIRO_AI;
-  const web=AI&&AI.gpt?AI.gpt(text):'https://chatgpt.com/?q='+encodeURIComponent(text);
-  const app=AI&&AI.gptHref?AI.gptHref(text):web;
-  const chrome=/Android/i.test(navigator.userAgent||'')&&web.startsWith('https://')
-    ?'intent://'+web.slice(8)+'#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url='+encodeURIComponent(web)+';end':web;
-  const wrap=document.createElement('div');wrap.className='shiro-links shiro-ai-handoff';
-  [['ChatGPT 앱에서 이어서',app],['Chrome에서 ChatGPT 열기',chrome]].forEach(([title,href])=>{
-    const a=document.createElement('a');a.className='shiro-link';a.href=href;a.target='_blank';a.rel='noopener noreferrer';a.textContent=title;
-    if(AI&&AI.gptCopy)a.addEventListener('click',()=>AI.gptCopy(text));
-    wrap.append(a);
-  });
-  b.append(wrap);scroll.scrollTop=scroll.scrollHeight;
+function studyCodes(q){
+  if(/한국사|역사|고려|무신|조선|삼국|발해|신라|고구려|백제|광복|정중부|민주화|일제|왕권/.test(q))
+    return [['/TIMELINEVIEW','원인·전개·결과'],['/QUESTIONPREDICTOR','고1 내신 예상문제']];
+  if(/수학|계산|방정식|함수|부등식|풀어|풀이|증명|인수분해|x[²^=]/.test(q))
+    return [['SOCRATES','한 단계씩 풀이'],['/QUIZME','비슷한 문제 연습']];
+  if(/차이|비교|공통점|반면|vs/.test(q))
+    return [['CONTRASTMODE','차이 비교'],['/QUESTIONPREDICTOR','시험 예상문제']];
+  return [['ELI10','쉽고 자세히'],['/QUESTIONPREDICTOR','시험 예상문제']];
 }
+function studySubject(q){
+  if(/한국사|역사|고려|무신|조선|삼국|광복|신라|왕권/.test(q))return '한국사';
+  if(/수학|방정식|함수|수식|부등식/.test(q))return '공통수학';
+  if(/영어|문법|영작|관계대명사/.test(q))return '공통영어';
+  if(/과학|산화|환원|세포|생물|광합성/.test(q))return '통합과학';
+  if(/사회|경제|인권|헌법|시장/.test(q))return '통합사회';
+  return '교과';
+}
+function studyPrompt(q,code){
+  const extras={
+    '/TIMELINEVIEW':'사건의 배경·원인·전개·결과·영향을 연표와 짧은 설명으로 정리하고, 고1 내신 오답 포인트 3개를 제시해 줘.',
+    '/QUESTIONPREDICTOR':'고1 학교 시험 수준의 객관식 3문항과 서술형 2문항을 출제해 줘. 먼저 문제만 내고 내가 답하면 해설과 채점 기준을 알려 줘.',
+    'SOCRATES':'정답을 먼저 말하지 말고 한 번에 질문 하나로 생각하도록 도와줘. 막히면 첫 단계 힌트만 알려줘.',
+    '/QUIZME':'내 답을 기다리며 한 문제씩 퀴즈를 내 줘. 풀이를 제출하면 오답 원인을 설명해 줘.',
+    'CONTRASTMODE':'헷갈리기 쉬운 개념의 공통점과 차이점을 표로 비교하고 예시를 제시해 줘.',
+    'ELI10':'아주 쉽게 이해하도록 비유와 예시로 먼저 설명한 다음, 고1 교과서 용어와 시험 포인트를 알려 줘.'
+  };
+  return code+'\n[고등학교 1학년 · 2022 개정 교육과정 · '+studySubject(q)+']\n'
+    +(extras[code]||extras.ELI10)
+    +'\n핵심 개념, 쉬운 예시, 교과서 핵심 용어, 시험 포인트를 포함해 줘. 확인되지 않은 사실은 지어내지 마. 이 학습 코드는 ChatGPT의 공식 명령어가 아니라 답변 방식에 대한 지시야.\n\n질문: '+String(q).slice(0,450);
+}
+function addStudyActions(b,q){
+  if(!b||b.querySelector('.shiro-study-tools'))return;
+  const AI=window.SHIRO_AI,choices=studyCodes(q);
+  const box=document.createElement('div');box.className='shiro-study-tools';
+  const title=document.createElement('div');title.className='shiro-study-title';title.textContent='더 깊게 공부하기 · ChatGPT';
+  const explain=document.createElement('div');explain.className='shiro-study-caption';
+  explain.textContent='학습 코드를 누르면 질문을 준비하고 ChatGPT 앱을 열어.';
+  const options=document.createElement('div');options.className='shiro-study-options';
+  for(const [code,label] of choices){
+    const prompt=studyPrompt(q,code);
+    const a=document.createElement('a');a.className='shiro-study-link';
+    a.textContent=code+' · '+label;a.href=AI&&AI.rawHref?AI.rawHref(prompt):'https://chatgpt.com/?q='+encodeURIComponent(prompt);
+    a.target='_blank';a.rel='noopener noreferrer';
+    if(AI&&AI.rawCopy)a.addEventListener('click',()=>AI.rawCopy(prompt));
+    options.append(a);
+  }
+  const prompt=studyPrompt(q,choices[0][0]),foot=document.createElement('div');foot.className='shiro-study-foot';
+  const copy=document.createElement('button');copy.type='button';copy.className='shiro-study-copy';copy.textContent='질문 복사';
+  copy.onclick=()=>{if(AI&&AI.rawCopy)AI.rawCopy(prompt,'학습 질문을 복사했어. ChatGPT에 붙여넣어 줘.');else if(navigator.clipboard)navigator.clipboard.writeText(prompt)};
+  const chrome=document.createElement('a');chrome.className='shiro-study-browser';chrome.textContent='Chrome으로 열기';
+  const web='https://chatgpt.com/?q='+encodeURIComponent(prompt);
+  chrome.href=/Android/i.test(navigator.userAgent||'')?'intent://'+web.slice(8)+'#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url='+encodeURIComponent(web)+';end':web;
+  chrome.target='_blank';chrome.rel='noopener noreferrer';
+  if(AI&&AI.rawCopy)chrome.addEventListener('click',()=>AI.rawCopy(prompt));
+  foot.append(copy,chrome);box.append(title,explain,options,foot);b.append(box);
+  scroll.scrollTop=scroll.scrollHeight;
+}
+function chatGPTLinks(b,text){addStudyActions(b,text)}
+
 function ask(text){
   beginChat();
   feedback.hidden=true;compose.hidden=false;
@@ -70,17 +126,17 @@ function ask(text){
   const result=answer(text),AI=window.SHIRO_AI;
   const act=S&&S.actions&&S.actions[text];
   if(act){add(result.text.split('\n')[0]);setTimeout(()=>{close(false);try{act()}catch(e){}},500);return}
-  if(result.dyn){add(result.text,false,result.links||[]);return}
+  if(result.dyn){const bubble=add(result.text,false,result.links||[]);if(AI&&AI.study&&AI.study(text))addStudyActions(bubble,text);return}
   if(/^(안녕|안녕하세요|하이|ㅎㅇ)[!?.~\s]*$/.test(text)){add('안녕! 궁금한 것을 짧게 물어봐. 어려운 문제는 ChatGPT로 이어서 풀 수 있어.');return}
   if(/^(고마워|감사해|감사합니다)[!?.~\s]*$/.test(text)){add('천만에! 더 궁금한 것도 물어봐.');return}
   const kb=AI&&AI.kb&&AI.kb(text);
-  if(kb){add(kb);return}
+  if(kb){const bubble=add(kb);if(AI&&AI.study&&AI.study(text))addStudyActions(bubble,text);return}
   if(isComplexQuestion(text)){
     const b=add('이 질문은 풀이 과정과 긴 설명이 필요해. 아래에서 ChatGPT로 이어서 질문해 줘. 고1 수준의 개념과 힌트부터 설명하도록 질문이 준비돼 있어.');
     chatGPTLinks(b,text);return;
   }
   if(!result.weak&&(!AI||!AI.prefer||!AI.prefer(text))){
-    add(result.text,false,result.links||[]);return;
+    const bubble=add(result.text,false,result.links||[]);if(AI&&AI.study&&AI.study(text))addStudyActions(bubble,text);return;
   }
   const b=add('🐾 짧게 답을 정리하는 중…');
   b.classList.add('shiro-think');
@@ -96,8 +152,9 @@ function ask(text){
     deadline
   ]).then(j=>{
     if(!j||!j._ok||!j.text)throw new Error(j&&j.error||'unavailable');
-    b.firstChild.textContent=j.text;
+    b.firstChild.textContent=formatShiroReply(j.text);
     rememberTalk(text,j.text);
+    if(AI&&AI.study&&AI.study(text))addStudyActions(b,text);
   }).catch(e=>{
     b.firstChild.textContent=e.message==='no_ai'
       ?'빠른 AI 답변이 아직 연결되지 않았어. 운영자가 서버에 Gemini API 키를 설정하면 사용할 수 있어. 지금은 ChatGPT에서 물어봐.'
