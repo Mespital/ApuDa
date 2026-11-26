@@ -7,7 +7,7 @@ async function get(path,timeout=15000) { const t=Date.now(); const r=await fetch
 try {
   const {r,ms}=await get('/sw.js');
   const s=await r.text();
-  row('service-worker',r.ok&&s.includes('v148-shiro-academy-context')?'pass':'fail','HTTP '+r.status+' / '+ms+'ms / V148 '+s.includes('v148-shiro-academy-context'));
+  row('service-worker',r.ok&&s.includes('v149-final-exam-priority')?'pass':'fail','HTTP '+r.status+' / '+ms+'ms / V149 '+s.includes('v149-final-exam-priority'));
 } catch(e){row('service-worker','fail',e.name+': '+e.message);}
 try {
   const {r,ms}=await get('/shiro-help.js');const s=await r.text();
@@ -25,6 +25,16 @@ try {
   const ok=r.ok&&s.includes("function academyAnswer(text)")&&s.includes("var academy = academyAnswer(text)");
   row('academy-grounded-answers',ok?'pass':'fail','HTTP '+r.status+' / '+ms+'ms / schedule-first routing '+ok);
 } catch(e){row('academy-grounded-answers','fail',e.name+': '+e.message);}
+try {
+  const {r,ms}=await get('/shiro-study.js');const s=await r.text();
+  const ok=r.ok&&s.includes('function upcomingExamAnswer(text)')&&s.includes('학교 학사일정')&&s.includes('12/9(수)');
+  row('current-final-exam-routing',ok?'pass':'fail','HTTP '+r.status+' / '+ms+'ms / forward-only final schedule '+ok);
+} catch(e){row('current-final-exam-routing','fail',e.name+': '+e.message);}
+try {
+  const {r,ms}=await get('/shiro-ai.js');const s=await r.text();
+  const ok=r.ok&&s.includes('function currentExamKB(q)')&&s.includes('중간고사 범위를 대신 보여주지 않을게');
+  row('stale-midterm-filter',ok?'pass':'fail','HTTP '+r.status+' / '+ms+'ms / KB historic filtering '+ok);
+} catch(e){row('stale-midterm-filter','fail',e.name+': '+e.message);}
 try {
   const {r,ms}=await get('/study.html');const s=await r.text();
   row('study-page',r.ok&&s.includes('shiro-help.js')?'pass':'fail','HTTP '+r.status+' / '+ms+'ms / shiro loaded '+s.includes('shiro-help.js'));
