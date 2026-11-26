@@ -184,13 +184,20 @@ window.SHIRO_STUDY = (function () {
     var heading = dd > 0 ? '기말고사 시작 D-' + dd : '기말고사 기간';
     var msg = '📝 서초고 1학년 2학기 ' + heading + '\n\n' +
       '• 학교 학사일정: ' + when(start) + ' ~ ' + when(last) + '\n' +
-      '• 11월 26일 기준으로 10월 중간고사는 종료됐어.\n\n' +
+      '• 10월 중간고사는 이미 종료됐어.\n\n' +
       '과목별 시험 순서와 확정 시험 범위는 학교 최신 가정통신문·담당 선생님 안내로 확인해야 해. ' +
       '학사일정의 기간에는 주말이 포함될 수 있어. 실제 시험 과목을 주말에 치른다는 뜻은 아니야.\n\n' +
       '지금은 기말고사에 대비해 과목별 범위를 확인하고 매일 복습·문제풀이 시간을 정해 보자.\n📎 출처: 서초고 학사일정(나이스)';
     return { text: msg, links: ['s_dates','s_today'] };
   }
   function dynamic(text) {
+    // 학교가 기말고사 확정 범위를 새로 올리면 최신 자료를 우선한다.
+    var question = String(text || '').replace(/\s/g, '');
+    if (/시험|기말|고사/.test(question) && /범위|배점|서술형/.test(question) &&
+        !/중간고사|지난시험/.test(question) && window.SHIRO_AI && typeof window.SHIRO_AI.kb === 'function') {
+      var currentScope = window.SHIRO_AI.kb(text);
+      if (currentScope) return { text: currentScope, links: ['s_dates'] };
+    }
     var exam = upcomingExamAnswer(text);
     if (exam) return exam;
     var academy = academyAnswer(text);
