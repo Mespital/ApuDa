@@ -31,10 +31,84 @@ const launch=document.createElement('button');launch.className='shiro-launch';la
 const hint=document.createElement('div');hint.className='shiro-hint';hint.textContent='궁금한 건 나에게 물어봐! 🐾';hint.hidden=true;document.body.append(hint);let hintTimer;try{const hc=Number(localStorage.getItem('shiro-hint-count')||0);if(hc<3&&!sessionStorage.getItem('shiro-hint-seen')){hintTimer=setTimeout(()=>{if(panel.hidden){hint.hidden=false;setTimeout(()=>{hint.hidden=true},3500)}sessionStorage.setItem('shiro-hint-seen','1');localStorage.setItem('shiro-hint-count',String(hc+1))},2600)}}catch{}
 const panel=document.createElement('section');panel.id='shiro-panel';panel.className='shiro-panel';panel.hidden=true;panel.setAttribute('role','dialog');panel.setAttribute('aria-label','흰둥이 도움말');panel.innerHTML='<div class="shiro-head"><img src="shiro-letter.jpg" alt="편지를 물고 온 흰둥이"><div><strong>🐶 흰둥이 도우미</strong><small>사용법 · 메뉴 안내 · 의견 보내기</small></div><button type="button" aria-label="흰둥이 도움말 닫기">×</button></div><div class="shiro-quick" aria-label="빠른 도움말"></div><div class="shiro-scroll"><div class="shiro-messages" role="log" aria-live="polite" aria-label="흰둥이 대화"></div><div class="shiro-feedback" hidden></div></div><form class="shiro-compose"><input aria-label="흰둥이에게 물어볼 사용법" maxlength="200" placeholder="'+(S?S.placeholder:'직업 비교는 어떻게 해?')+'"><button type="submit">묻기</button></form>';document.body.append(panel);
 const quick=panel.querySelector('.shiro-quick'),messages=panel.querySelector('.shiro-messages'),feedback=panel.querySelector('.shiro-feedback'),scroll=panel.querySelector('.shiro-scroll'),compose=panel.querySelector('.shiro-compose');
-function add(text,user=false,links=[]){const box=document.createElement('div');box.className='shiro-bubble'+(user?' shiro-user':'');const copy=document.createElement('div');copy.textContent=text;box.append(copy);if(links.length){const wrap=document.createElement('div');wrap.className='shiro-links';links.forEach(k=>{const a=document.createElement('a');a.className='shiro-link';a.href=menus[k][1];a.textContent=menus[k][0]+' →';wrap.append(a)});box.append(wrap)}messages.append(box);while(messages.children.length>12)messages.firstElementChild.remove();scroll.scrollTop=scroll.scrollHeight;return box}
-function ask(text){feedback.hidden=true;compose.hidden=false;add(text,true);if(/개선사항|건의|오류|버그|이메일|운영자|문의/.test(text)&&!/엄마|아빠|부탁/.test(text)){showFeedback();return}const result=answer(text);const act=S&&S.actions&&S.actions[text];if(act){add(result.text.split('\n')[0],false,[]);setTimeout(()=>{close(false);try{act()}catch(e){}},500);return}const AI=window.SHIRO_AI;const kbA=!result.dyn&&AI&&AI.kb&&AI.kb(text);if(kbA){add(kbA);return}const study=!result.dyn&&AI&&AI.gpt&&AI.study(text);const gpt=b=>{if(!study)return b;const a=document.createElement('a');a.className='shiro-link shiro-gpt';a.href=AI.gptHref?AI.gptHref(text):AI.gpt(text);a.target='_blank';a.rel='noopener';a.addEventListener('click',()=>{AI.gptCopy&&AI.gptCopy(text)});a.textContent='💬 ChatGPT 앱에서 물어보기';const w=document.createElement('div');w.className='shiro-links';w.append(a);b.append(w);scroll.scrollTop=scroll.scrollHeight;return b};if(AI&&AI.on()&&!result.dyn&&(result.weak||AI.prefer(text))){const b=add('🐾 생각하는 중…');b.classList.add('shiro-think');AI.ask(text).then(t=>{b.firstChild.textContent='🧠 '+t;b.classList.remove('shiro-think');gpt(b);scroll.scrollTop=scroll.scrollHeight}).catch(()=>{b.remove();study?gpt(add('이건 ChatGPT가 더 잘 알려줄 거야. 눌러서 물어봐 🐾\n(질문이 고1 수준·힌트 먼저 규칙과 함께 들어가)')):add(result.text,false,result.links||[])});return}if(study){gpt(add('이건 ChatGPT가 더 잘 알려줄 거야. 눌러서 물어봐 🐾\n(질문이 고1 수준·힌트 먼저 규칙과 함께 들어가)'));return}add(result.text,false,result.links||[])}
+let welcomeBubble=null,conversationStarted=false;
+const recentTalk=[];
+function beginChat(){
+  if(conversationStarted)return;
+  conversationStarted=true;panel.classList.add('shiro-chatting');
+  if(welcomeBubble){welcomeBubble.remove();welcomeBubble=null}
+  scroll.scrollTop=scroll.scrollHeight;
+}
+function rememberTalk(question,response){
+  recentTalk.push({r:'u',t:String(question).slice(0,350)},{r:'a',t:String(response).slice(0,500)});
+  if(recentTalk.length>12)recentTalk.splice(0,recentTalk.length-12);
+}
+function add(text,user=false,links=[]){const box=document.createElement('div');box.className='shiro-bubble'+(user?' shiro-user':'');const copy=document.createElement('div');copy.textContent=text;box.append(copy);if(links.length){const wrap=document.createElement('div');wrap.className='shiro-links';links.forEach(k=>{const a=document.createElement('a');a.className='shiro-link';a.href=menus[k][1];a.textContent=menus[k][0]+' →';wrap.append(a)});box.append(wrap)}messages.append(box);while(messages.children.length>60)messages.firstElementChild.remove();scroll.scrollTop=scroll.scrollHeight;return box}
+function isComplexQuestion(text){
+  const q=String(text||'');
+  return q.length>110||/풀어\s*줘|풀어줘|풀이|해설|정답|증명|유도|검산|서술형|논술|기출|모의고사|수능|문제\s*(?:[0-9０-９]+|풀이)|예상\s*문제|연습\s*문제|단계별|차근차근|심화|자세히|장문|긴\s*글|보고서|발표문|수행평가\s*(?:작성|만들|도와)|비교\s*분석|분석해/.test(q);
+}
+function chatGPTLinks(b,text){
+  const AI=window.SHIRO_AI;
+  const web=AI&&AI.gpt?AI.gpt(text):'https://chatgpt.com/?q='+encodeURIComponent(text);
+  const app=AI&&AI.gptHref?AI.gptHref(text):web;
+  const chrome=/Android/i.test(navigator.userAgent||'')&&web.startsWith('https://')
+    ?'intent://'+web.slice(8)+'#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url='+encodeURIComponent(web)+';end':web;
+  const wrap=document.createElement('div');wrap.className='shiro-links shiro-ai-handoff';
+  [['ChatGPT 앱에서 이어서',app],['Chrome에서 ChatGPT 열기',chrome]].forEach(([title,href])=>{
+    const a=document.createElement('a');a.className='shiro-link';a.href=href;a.target='_blank';a.rel='noopener noreferrer';a.textContent=title;
+    if(AI&&AI.gptCopy)a.addEventListener('click',()=>AI.gptCopy(text));
+    wrap.append(a);
+  });
+  b.append(wrap);scroll.scrollTop=scroll.scrollHeight;
+}
+function ask(text){
+  beginChat();
+  feedback.hidden=true;compose.hidden=false;
+  add(text,true);
+  if(/개선사항|건의|오류|버그|이메일|운영자|문의/.test(text)&&!/엄마|아빠|부탁/.test(text)){showFeedback();return}
+  const result=answer(text),AI=window.SHIRO_AI;
+  const act=S&&S.actions&&S.actions[text];
+  if(act){add(result.text.split('\n')[0]);setTimeout(()=>{close(false);try{act()}catch(e){}},500);return}
+  if(result.dyn){add(result.text,false,result.links||[]);return}
+  if(/^(안녕|안녕하세요|하이|ㅎㅇ)[!?.~\s]*$/.test(text)){add('안녕! 궁금한 것을 짧게 물어봐. 어려운 문제는 ChatGPT로 이어서 풀 수 있어.');return}
+  if(/^(고마워|감사해|감사합니다)[!?.~\s]*$/.test(text)){add('천만에! 더 궁금한 것도 물어봐.');return}
+  const kb=AI&&AI.kb&&AI.kb(text);
+  if(kb){add(kb);return}
+  if(isComplexQuestion(text)){
+    const b=add('이 질문은 풀이 과정과 긴 설명이 필요해. 아래에서 ChatGPT로 이어서 질문해 줘. 고1 수준의 개념과 힌트부터 설명하도록 질문이 준비돼 있어.');
+    chatGPTLinks(b,text);return;
+  }
+  if(!result.weak&&(!AI||!AI.prefer||!AI.prefer(text))){
+    add(result.text,false,result.links||[]);return;
+  }
+  const b=add('🐾 짧게 답을 정리하는 중…');
+  b.classList.add('shiro-think');
+  const F=window.FamilySync;
+  if(!F||!F.joined||!F.joined()){
+    b.firstChild.textContent='지금은 가족 공유에 연결되지 않아 AI 질문을 보낼 수 없어. ChatGPT로 이어서 물어볼 수 있어.';
+    b.classList.remove('shiro-think');chatGPTLinks(b,text);return;
+  }
+  let timer;
+  const deadline=new Promise((_,reject)=>{timer=setTimeout(()=>reject(new Error('timeout')),8500)});
+  Promise.race([
+    F.call({action:'chat-fast',q:text,history:recentTalk.slice(-6),role:typeof PinGate!=='undefined'&&PinGate.who()==='parent'?'parent':'child'}),
+    deadline
+  ]).then(j=>{
+    if(!j||!j._ok||!j.text)throw new Error(j&&j.error||'unavailable');
+    b.firstChild.textContent=j.text;
+    rememberTalk(text,j.text);
+  }).catch(e=>{
+    b.firstChild.textContent=e.message==='no_ai'
+      ?'빠른 AI 답변이 아직 연결되지 않았어. 운영자가 서버에 Gemini API 키를 설정하면 사용할 수 있어. 지금은 ChatGPT에서 물어봐.'
+      :e.message==='rate'?'잠깐 질문이 많아 제한됐어. ChatGPT에서 이어서 물어봐.'
+      :'지금 빠른 AI 답변을 가져오지 못했어. ChatGPT에서 이어서 물어봐.';
+    chatGPTLinks(b,text);
+  }).finally(()=>{clearTimeout(timer);b.classList.remove('shiro-think');scroll.scrollTop=scroll.scrollHeight});
+}
 (S?S.chips:['처음 사용법','나 알아보기','직업 비교','미래의 변화','뉴스·학교 소식','공부방·시간표','백업 저장','AI 질문 정리','오답 재도전','수행평가','과목별 공부 시작','공부 준비','저장·기록','설명과 근거','앱 설치']).forEach(text=>{const b=document.createElement('button');b.type='button';b.className='shiro-chip';b.textContent=text;b.onclick=()=>ask(text);quick.append(b)});const fb=document.createElement('button');fb.type='button';fb.className='shiro-chip';fb.textContent='💌 질문·개선사항 보내기';fb.onclick=showFeedback;quick.append(fb);
-if(S){let w='';try{w=localStorage.getItem('fc-who-v1')||''}catch{}add(S.intro(w),false,['s_today','s_set'])};if(S&&S.examples){let pi=0;setInterval(()=>{const inp=compose.querySelector('input');if(inp&&!inp.value&&!panel.hidden){pi=(pi+1)%S.examples.length;inp.placeholder='예: '+S.examples[pi]}},3000)}else add('안녕, 승준아! 🐾\n어디부터 볼지 고민이면 내가 도와줄게. 아래 버튼을 고르거나 사용법을 물어봐!',false,['quiz','explore']);
+if(S){let w='';try{w=localStorage.getItem('fc-who-v1')||''}catch{}welcomeBubble=add(S.intro(w),false,['s_today','s_set'])};if(S&&S.examples){let pi=0;setInterval(()=>{const inp=compose.querySelector('input');if(inp&&!inp.value&&!panel.hidden){pi=(pi+1)%S.examples.length;inp.placeholder='예: '+S.examples[pi]}},3000)}else welcomeBubble=add('안녕, 승준아! 🐾\n어디부터 볼지 고민이면 내가 도와줄게. 아래 버튼을 고르거나 사용법을 물어봐!',false,['quiz','explore']);
+compose.querySelector('input').addEventListener('input',e=>{if(e.target.value.trim())beginChat()});
 const toast=document.createElement('div');toast.className='shiro-toast';toast.setAttribute('role','status');toast.setAttribute('aria-live','polite');toast.hidden=true;document.body.append(toast);let toastTimer;
 function notifySuccess(text){clearTimeout(toastTimer);toast.textContent=text;toast.hidden=false;toastTimer=setTimeout(()=>{toast.hidden=true},4500)}
 function updateViewport(){const viewport=window.visualViewport;panel.style.setProperty('--shiro-view-height',(viewport?viewport.height:window.innerHeight)+'px');panel.style.setProperty('--shiro-view-top',(viewport?viewport.offsetTop:0)+'px')}
