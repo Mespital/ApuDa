@@ -1,0 +1,40 @@
+name: Future history comic production smoke
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'future-compass/dist/history/**'
+      - 'future-compass/dist/app-nav.js'
+      - '.github/workflows/future-history-smoke.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Confirm published Korean history app and student/parent menu
+        shell: bash
+        run: |
+          set -euo pipefail
+          base="https://future.apuda.app"
+          ok=0
+          for attempt in $(seq 1 16); do
+            if curl -fsSL --max-time 15 --header 'Cache-Control: no-cache' "${base}/history/?probe=${GITHUB_SHA}" -o /tmp/seungjun-history.html; then
+              if grep -q '승준 공부방 · 만화 한국사 V11' /tmp/seungjun-history.html && grep -q 'V11_CLINIC' /tmp/seungjun-history.html; then
+                echo "PASS: history app V11 served on production"
+                ok=1
+                break
+              fi
+            fi
+            echo "Not yet V11 on production (attempt ${attempt})"
+            sleep 9
+          done
+          test "$ok" -eq 1 || { echo "::error::History V11 is not live"; exit 1; }
+          curl -fsSL --max-time 15 --header 'Cache-Control: no-cache' "${base}/app-nav.js?probe=${GITHUB_SHA}" -o /tmp/seungjun-app-nav.js
+          test "$(grep -oF "['/history/', '📜', '만화 한국사 · 내신 대비']" /tmp/seungjun-app-nav.js | wc -l)" -eq 2 || { echo "::error::Student and parent history menu both required"; exit 1; }
+          grep -q 'promptlab70.html' /tmp/seungjun-app-nav.js || exit 1
+          grep -q 'studylab.html' /tmp/seungjun-app-nav.js || exit 1
+          echo "PASS: both menu links and original StudyLab/PromptLab preserved"
+          echo "Production URL: ${base}/history/" >> "$GITHUB_STEP_SUMMARY"
