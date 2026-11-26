@@ -8,7 +8,7 @@ async function get(path,timeout=15000) { const t=Date.now(); const r=await fetch
 // A push-triggered smoke test can run before Netlify publishes the new service worker.
 // Read the expected cache version from the checked-out source to avoid hardcoded version drift.
 const swSource = readFileSync(new URL('../dist/sw.js', import.meta.url), 'utf8');
-const swVersion = swSource.match(/const CACHE\\s*=\\s*['"]([^'"]+)['"]/);
+const swVersion = swSource.match(/const CACHE\s*=\s*['"]([^'"]+)['"]/);
 const expectedSWCache = swVersion ? swVersion[1] : null;
 let swPassed = false;
 let swDetails = '';
