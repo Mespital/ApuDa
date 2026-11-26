@@ -7,13 +7,19 @@ async function get(path,timeout=15000) { const t=Date.now(); const r=await fetch
 try {
   const {r,ms}=await get('/sw.js');
   const s=await r.text();
-  row('service-worker',r.ok&&s.includes('v146-shiro-chat-gemini')?'pass':'fail','HTTP '+r.status+' / '+ms+'ms / V146 '+s.includes('v146-shiro-chat-gemini'));
+  row('service-worker',r.ok&&s.includes('v147-shiro-fullchat-study')?'pass':'fail','HTTP '+r.status+' / '+ms+'ms / V147 '+s.includes('v147-shiro-fullchat-study'));
 } catch(e){row('service-worker','fail',e.name+': '+e.message);}
 try {
   const {r,ms}=await get('/shiro-help.js');const s=await r.text();
-  const ok=r.ok&&s.includes("action:'chat-fast'")&&s.includes('function beginChat()');
+  const ok=r.ok&&s.includes("action:'chat-fast'")&&s.includes('function beginChat()')&&s.includes('function studyCodes(q)')&&s.includes('formatShiroReply(j.text)');
   row('shiro-client',ok?'pass':'fail','HTTP '+r.status+' / '+ms+'ms / Gemini routing '+ok);
 } catch(e){row('shiro-client','fail',e.name+': '+e.message);}
+try {
+  const {r,ms}=await get('/shiro-help.css');
+  const s=await r.text();
+  const ok=r.ok&&s.includes('V147: fix legacy 590px cap')&&s.includes('height:calc(var(--shiro-view-height,100dvh) - 12px)');
+  row('mobile-chat-height',ok?'pass':'fail','HTTP '+r.status+' / '+ms+'ms / fullscreen override '+ok);
+} catch(e){row('mobile-chat-height','fail',e.name+': '+e.message);}
 try {
   const {r,ms}=await get('/study.html');const s=await r.text();
   row('study-page',r.ok&&s.includes('shiro-help.js')?'pass':'fail','HTTP '+r.status+' / '+ms+'ms / shiro loaded '+s.includes('shiro-help.js'));
