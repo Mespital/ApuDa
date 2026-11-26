@@ -192,8 +192,40 @@
     return pool.map(function (x) { var sc = 0; qb.forEach(function (k) { if (x.g[k]) sc += Math.log(1 + N / (df[k] || 1)) * (x.t[k] ? 1.5 : 1); }); return { sc: sc / max, c: x.c }; }).sort(function (a, b) { return b.sc - a.sc; });
   }
   function foot(src) { var d = KBU ? new Date(Date.parse(KBU) + 9 * 3600e3) : null; return '\n\n최종은 학교 공지와 선생님 말씀이 기준이야.\n📎 출처: ' + src + (d ? ' (' + (d.getUTCMonth() + 1) + '/' + d.getUTCDate() + ' 아침 기준)' : ''); }
+  // 기말고사·앞으로의 시험 질문은 지난 중간고사 가정통신문을 검색 결과에서 제외한다.
+  function currentExamKB(q) {
+    var normalized = String(q || '').replace(/\s/g, '');
+    if (!/시험|고사|기말/.test(normalized) || /중간고사|지난시험|10월시험/.test(normalized)) return null;
+    var scope = /범위|배점|서술형/.test(normalized);
+    var schedule = /기말|시험일정|시험날짜|시험언제|시험시간표|시험기간|다음시험|다가오는시험|고사일정|고사언제/.test(normalized);
+    if (!scope && !schedule) return null;
+    if (scope) {
+      var docs = KBC.map(function (x) { return x.c; }).filter(function (x) {
+        return /2학기 기말고사 시험 범위/.test(x.title) && !/아직 안내 전/.test(x.title);
+      });
+      var matched = docs.find(function (x) {
+        var subj = String(x.subject || x.title.replace(/^.*범위:\s*/, '')).replace(/[12]$/, '');
+        return subj && normalized.indexOf(subj) >= 0;
+      });
+      if (matched) return '📝 ' + matched.title + '\n' + matched.text + foot(matched.src);
+      if (docs.length) return '📝 기말고사 범위 자료가 새로 확인됐어.\n현재 확인된 과목: ' + docs.map(function (x) { return x.subject || x.title.replace(/^.*범위:\s*/, ''); }).join(' · ') + '\n과목 이름을 붙여 다시 물어봐. 아직 확인되지 않은 과목은 추측하지 않을게.' + foot(docs[0].src);
+      var pending = KBC.map(function (x) { return x.c; }).find(function (x) { return /기말고사 시험 범위: 아직 안내 전/.test(x.title); });
+      return '📝 기말고사 과목별 확정 범위는 현재 수집된 자료에서 확인되지 않았어.\n중간고사 범위를 대신 보여주지 않을게. 학교 최신 가정통신문을 확인해 줘.' + (pending ? foot(pending.src) : '');
+    }
+    var calendar = KBC.map(function (x) { return x.c; }).find(function (x) { return /서초고 12월 학사일정/.test(x.title); });
+    if (!calendar) return '학교 자료에서 앞으로의 시험 일정을 찾지 못했어. 지난 중간고사 시간표를 대신 보여주지는 않을게.';
+    var days = [], found, re = /12\/(\d{1,2})\s*기말고사\(1학년\)/g;
+    while ((found = re.exec(calendar.text))) days.push('2026-12-' + String(found[1]).padStart(2,'0'));
+    var todayISO = new Date(Date.now() + 9 * 3600000).toISOString().slice(0,10);
+    if (!days.length || todayISO > days[days.length - 1]) return '학교 자료에서 지금 이후의 1학년 기말고사 일정은 확인되지 않았어.\n지난 중간고사 정보는 안내하지 않을게.';
+    var dday = Math.max(0, Math.round((Date.parse(days[0]+'T12:00:00Z') - Date.parse(todayISO+'T12:00:00Z'))/86400000));
+    return '📝 서초고 1학년 2학기 기말고사\n• 일정: 12/9(수)~12/15(화)\n• ' + (dday>0 ? '첫 시험까지 D-'+dday : '기말고사 기간') +
+      '\n\n과목별 시간표·확정 시험 범위는 학교 최신 안내를 확인해야 해. 이 기간은 학사일정에 표기된 기간이며 주말을 포함해.' + foot(calendar.src);
+  }
   function kbAnswer(q) {
     if (!KBC || !KBC.length || !FACT.test(q) || NOTFACT.test(q)) return null;
+    var examReply = currentExamKB(q);
+    if (examReply) return examReply;
     var k = KIND.find(function (x) { return x[0].test(q); }); if (!k) return null;
     var pool = KBC.filter(function (x) { return k[1].test(x.c.title); }); if (!pool.length) return null;
     // 이번 주 급식 → 전부, 오늘·내일·요일이면 그날 것
