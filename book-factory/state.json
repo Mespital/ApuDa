@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated": "2026-11-26T00:06:23Z",
+  "updated": "2026-11-26T04:59:07Z",
   "wip_limit": {
     "claude_text": 2,
     "chatgpt_art": 10,
@@ -2367,8 +2367,8 @@
   },
   "reports": {
     "last": {
-      "file": "reports/daily/2026-11-26_0700.md",
-      "drive_doc": "1PFKQpBZdLBzSt2pJ43weMMS4rw15TzZWtRSSN38Si6w"
+      "file": "reports/daily/2026-11-26_0800.md",
+      "drive_doc": "1kM53HVnq3MPjQ1vcKkyWqQN-2fTWfJQ2U565asUufxw"
     }
   }
 }
