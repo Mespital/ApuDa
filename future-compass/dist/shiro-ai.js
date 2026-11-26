@@ -238,7 +238,7 @@
       var y=Number(specified[1]||todayISO.slice(0,4));
       var month=Number(specified[2]),date=Number(specified[3]);
       var candidate=y+'-'+String(month).padStart(2,'0')+'-'+String(date).padStart(2,'0');
-      if(new Date(candidate+'T12:00:00Z').toISOString().slice(0,10)===candidate)d=candidate;
+      if(Number.isFinite(Date.parse(candidate+'T12:00:00Z'))&&new Date(candidate+'T12:00:00Z').toISOString().slice(0,10)===candidate)d=candidate;
     }
     var entries=KBC.map(function(x){return x.c;}).filter(function(x){return /급식/.test(x.title);}).map(function(x){
       var m=x.title.match(/(\d{1,2})\/(\d{1,2})/);if(!m||!kbYear)return null;
