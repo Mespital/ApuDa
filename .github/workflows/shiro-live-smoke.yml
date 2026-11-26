@@ -6,6 +6,12 @@ on:
     paths:
       - '.github/workflows/shiro-live-smoke.yml'
       - 'future-compass/scripts/shiro-live-smoke.mjs'
+      - 'future-compass/dist/shiro-help.js'
+      - 'future-compass/dist/shiro-study.js'
+      - 'future-compass/dist/shiro-ai.js'
+      - 'future-compass/dist/shiro-help.css'
+      - 'future-compass/dist/sw.js'
+      - 'future-compass/netlify/functions/family.mjs'
 permissions:
   contents: write
 jobs:
