@@ -99,7 +99,64 @@ window.SHIRO_STUDY = (function () {
     var r = (state.table[w - 1] || []).filter(Boolean);
     return Number(d.slice(5, 7)) + '/' + Number(d.slice(8)) + '(' + DN[w] + ') 수업: ' + (r.length ? r.map(function (x, i) { return (i + 1) + ' ' + x; }).join(', ') : '시간표가 아직 없어');
   }
+  // 공부방 질문은 학원 용어 설명이 아니라 실제 등록된 일정을 우선 조회한다.
+  function academyAnswer(text) {
+    var q = String(text || '').replace(/\s/g, '');
+    if (!/학원/.test(q) || /학원(?:이란|뜻|정의|의미|개념)|학원이라는(?:말|단어)/.test(q)) return null;
+    var A = window.FC_ACADEMY;
+    if (!A || typeof A.forDay !== 'function' || typeof A.list !== 'function')
+      return { text: '학원 일정을 아직 불러오지 못했어.\n공부방을 다시 연 뒤 확인해 줘.', links: ['s_set'] };
+    var t = typeof today === 'function' ? today() : new Date(Date.now() + 9 * 3600000).toISOString().slice(0, 10);
+    var all = A.list();
+    if (!all.length) return { text: '아직 등록된 학원 일정이 없어.\n⚙️ 설정 → 학원에서 요일과 시간을 입력해 줘.', links: ['s_set'] };
+    var fmt = function (a) {
+      return '• ' + (a.start || '시간 미정') + (a.end ? '~' + a.end : '') + ' ' +
+        (a.name || a.subject || '학원') +
+        (a.homework && !a.hwDone ? '\n  숙제: ' + a.homework : '');
+    };
+    var label = function (iso) {
+      var w = new Date(iso + 'T12:00:00Z').getUTCDay();
+      return Number(iso.slice(5, 7)) + '/' + Number(iso.slice(8)) + '(' + DN[w] + ')';
+    };
+    var tomorrow = /내일/.test(q), nextDay = /모레/.test(q),
+        week = /이번주|주간|일주일|한주|이번주간/.test(q),
+        homeworkOnly = /숙제|과제/.test(q) && !/일정|시간|언제|몇시/.test(q);
+    var d = addD(t, tomorrow ? 1 : nextDay ? 2 : 0);
+    var items = A.forDay(d);
+    if (week) {
+      var days = [], due = [];
+      for (var i = 0; i < 7; i++) {
+        var iso = addD(t, i), events = A.forDay(iso);
+        if (events.length) {
+          days.push(label(iso) + '\n' + events.map(fmt).join('\n'));
+          due.push.apply(due, events.filter(function (x) { return x.homework && !x.hwDone; }));
+        }
+      }
+      return { text: days.length ? '🏫 앞으로 7일 학원 일정\n\n' + days.join('\n\n') : '앞으로 7일 동안 등록된 학원 수업이 없어.', links: ['s_set', 's_today'] };
+    }
+    if (homeworkOnly) {
+      var upcoming = [], seen = {};
+      for (var j = 0; j < 7; j++) {
+        A.forDay(addD(t, j)).forEach(function (a) {
+          if (!a.homework || a.hwDone) return;
+          var key = (a.id || a.name) + ':' + a.homework;
+          if (seen[key]) return;
+          seen[key] = true;
+          upcoming.push(label(addD(t, j)) + ' ' + (a.name || a.subject || '학원') + '\n  • ' + a.homework);
+        });
+      }
+      return { text: upcoming.length ? '📝 등록된 학원 숙제\n\n' + upcoming.slice(0, 8).join('\n\n') : '앞으로 7일 일정에 미완료로 표시된 학원 숙제가 없어.\n숙제 등록 여부도 확인해 줘.', links: ['s_today', 's_set'] };
+    }
+    if (items.length) return { text: '🏫 ' + label(d) + ' 학원 일정\n\n' + items.map(fmt).join('\n\n'), links: ['s_today', 's_set'] };
+    for (var k = 1; k <= 7; k++) {
+      var nd = addD(d, k), upcomingItems = A.forDay(nd);
+      if (upcomingItems.length) return { text: '🏫 ' + label(d) + '에는 등록된 학원 수업이 없어.\n\n다음 학원: ' + label(nd) + '\n' + upcomingItems.map(fmt).join('\n'), links: ['s_today', 's_set'] };
+    }
+    return { text: '🏫 ' + label(d) + '에는 학원 수업이 등록되어 있지 않아.\n설정에서 반복 일정이나 휴강 여부를 확인해 줘.', links: ['s_set'] };
+  }
   function dynamic(text) {
+    var academy = academyAnswer(text);
+    if (academy) return academy;
     if (!has()) return null;
     var n = text.replace(/\s/g, ''), t = today();
     if (/시험/.test(n) && /뭐부터|어떻게|며칠|일남|일인데|준비|까지/.test(n)) {
@@ -126,7 +183,6 @@ window.SHIRO_STUDY = (function () {
     }
     if (/내일/.test(n) && /시간표|수업|뭐있/.test(n)) { var nd = window.FC_CAL ? FC_CAL.nextSchoolDay(t) : addD(t, 1); return { text: '🗓️ ' + dayLine(addD(t, 1)) + (nd !== addD(t, 1) ? '\n다음 등교일 ' + dayLine(nd) : ''), links: ['s_table'] }; }
     if (/오늘/.test(n) && /시간표|수업/.test(n)) return { text: '🗓️ ' + dayLine(t), links: ['s_table'] };
-    if (/학원/.test(n) && /오늘|언제|몇시/.test(n) && window.FC_ACADEMY) { var a = FC_ACADEMY.forDay(t); return { text: a.length ? '🏫 오늘 학원: ' + a.map(function (x) { return (x.start || '') + ' ' + x.name + (x.homework && !x.hwDone ? ' (숙제: ' + x.homework + ')' : ''); }).join(', ') : '🏫 오늘은 학원이 없어.', links: ['s_today'] }; }
     return null;
   }
   function intro(who) {
