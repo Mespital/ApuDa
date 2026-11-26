@@ -7,7 +7,7 @@ async function get(path,timeout=15000) { const t=Date.now(); const r=await fetch
 try {
   const {r,ms}=await get('/sw.js');
   const s=await r.text();
-  row('service-worker',r.ok&&s.includes('v149-final-exam-priority')?'pass':'fail','HTTP '+r.status+' / '+ms+'ms / V149 '+s.includes('v149-final-exam-priority'));
+  row('service-worker',r.ok&&s.includes('v150-shiro-smart-router')?'pass':'fail','HTTP '+r.status+' / '+ms+'ms / V150 '+s.includes('v150-shiro-smart-router'));
 } catch(e){row('service-worker','fail',e.name+': '+e.message);}
 try {
   const {r,ms}=await get('/shiro-help.js');const s=await r.text();
@@ -35,6 +35,21 @@ try {
   const ok=r.ok&&s.includes('function currentExamKB(q)')&&s.includes('중간고사 범위를 대신 보여주지 않을게');
   row('stale-midterm-filter',ok?'pass':'fail','HTTP '+r.status+' / '+ms+'ms / KB historic filtering '+ok);
 } catch(e){row('stale-midterm-filter','fail',e.name+': '+e.message);}
+try {
+  const {r,ms}=await get('/shiro-study.js');const s=await r.text();
+  const ok=r.ok&&s.includes('function followup(q)')&&s.includes('function smartSchedule(q)')&&s.includes('앞으로 30일 학교 학사일정')&&s.includes('등록된 수행평가 예정');
+  row('smart-personal-routing',ok?'pass':'fail','HTTP '+r.status+' / '+ms+'ms / contextual study answers '+ok);
+} catch(e){row('smart-personal-routing','fail',e.name+': '+e.message);}
+try {
+  const {r,ms}=await get('/shiro-ai.js');const s=await r.text();
+  const ok=r.ok&&s.includes('function datedMealKB(q)')&&s.includes('var specified=raw.match')&&s.includes('자료 갱신 ');
+  row('fresh-school-sources',ok?'pass':'fail','HTTP '+r.status+' / '+ms+'ms / date-based cafeteria and freshness '+ok);
+} catch(e){row('fresh-school-sources','fail',e.name+': '+e.message);}
+try {
+  const {r,ms}=await get('/shiro-help.js');const s=await r.text();
+  const ok=r.ok&&s.includes('const act=fromQuick&&S&&S.actions&&S.actions[text]');
+  row('typed-question-not-navigation',ok?'pass':'fail','HTTP '+r.status+' / '+ms+'ms / text question stays a reply '+ok);
+} catch(e){row('typed-question-not-navigation','fail',e.name+': '+e.message);}
 try {
   const {r,ms}=await get('/study.html');const s=await r.text();
   row('study-page',r.ok&&s.includes('shiro-help.js')?'pass':'fail','HTTP '+r.status+' / '+ms+'ms / shiro loaded '+s.includes('shiro-help.js'));
