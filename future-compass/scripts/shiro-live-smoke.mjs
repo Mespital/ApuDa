@@ -27,7 +27,7 @@ try {
 } catch(e){row('academy-grounded-answers','fail',e.name+': '+e.message);}
 try {
   const {r,ms}=await get('/shiro-study.js');const s=await r.text();
-  const ok=r.ok&&s.includes('function upcomingExamAnswer(text)')&&s.includes('학교 학사일정')&&s.includes('12/9(수)');
+  const ok=r.ok&&s.includes('function upcomingExamAnswer(text)')&&s.includes('학교 학사일정')&&s.includes('2026-12-09');
   row('current-final-exam-routing',ok?'pass':'fail','HTTP '+r.status+' / '+ms+'ms / forward-only final schedule '+ok);
 } catch(e){row('current-final-exam-routing','fail',e.name+': '+e.message);}
 try {
