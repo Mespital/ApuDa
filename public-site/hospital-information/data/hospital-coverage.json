@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-25T05:17:41+00:00",
+  "checked_at": "2026-11-26T04:45:23+00:00",
   "registered_hospitals": 30,
   "hospitals_with_matched_doctors": 8,
   "matched_doctors": 489,
@@ -349,8 +349,8 @@
       "official_staff_url": "https://www.cnuhh.com/medical/info/dept.cs?mode=doctor",
       "matched_doctors": 57,
       "source_status": "VERIFIED_MATCHES",
-      "directory_http": 200,
-      "diagnostic": null,
+      "directory_http": null,
+      "diagnostic": "ReadTimeout",
       "candidate_links": []
     },
     {
