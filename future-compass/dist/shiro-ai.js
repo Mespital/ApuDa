@@ -191,7 +191,7 @@
     var N = pool.length, max = qb.reduce(function (s, k) { return s + Math.log(1 + N / (1 + (df[k] || 0))); }, 0) || 1;
     return pool.map(function (x) { var sc = 0; qb.forEach(function (k) { if (x.g[k]) sc += Math.log(1 + N / (df[k] || 1)) * (x.t[k] ? 1.5 : 1); }); return { sc: sc / max, c: x.c }; }).sort(function (a, b) { return b.sc - a.sc; });
   }
-  function foot(src) { var d = KBU ? new Date(Date.parse(KBU) + 9 * 3600e3) : null; return '\n\n최종은 학교 공지와 선생님 말씀이 기준이야.\n📎 출처: ' + src + (d ? ' (' + (d.getUTCMonth() + 1) + '/' + d.getUTCDate() + ' 아침 기준)' : ''); }
+  function foot(src) { var stamp=KBU?Date.parse(KBU):NaN, d=Number.isFinite(stamp)?new Date(stamp+9*3600e3):null; var age=Number.isFinite(stamp)?Math.max(0,Math.floor((Date.now()-stamp)/86400000)):0; return '\n\n최종은 학교 공지와 선생님 말씀이 기준이야.\n📎 출처: '+src+(d?' (자료 갱신 '+d.toISOString().slice(0,10)+' KST)':'')+(age>2?'\n※ 수집 후 '+age+'일 경과. 최신 여부 재확인 필요.':''); }
   // 기말고사·앞으로의 시험 질문은 지난 중간고사 가정통신문을 검색 결과에서 제외한다.
   function currentExamKB(q) {
     var normalized = String(q || '').replace(/\s/g, '');
@@ -222,8 +222,34 @@
     return '📝 서초고 1학년 2학기 기말고사\n• 일정: 12/9(수)~12/15(화)\n• ' + (dday>0 ? '첫 시험까지 D-'+dday : '기말고사 기간') +
       '\n\n과목별 시간표·확정 시험 범위는 학교 최신 안내를 확인해야 해. 이 기간은 학사일정에 표기된 기간이며 주말을 포함해.' + foot(calendar.src);
   }
+  // 급식·점심은 11/26 같은 제목 문자열이 아니라 조회 날짜와 원본 갱신 연도를 비교한다.
+  function datedMealKB(q){
+    var raw=String(q||''),now=new Date(Date.now()+9*3600000),todayISO=now.toISOString().slice(0,10);
+    if(!/급식|점심|중식|밥\s*(?:뭐|무엇)/.test(raw))return null;
+    var kbDate=/^\d{4}-\d{2}-\d{2}/.exec(KBU||''),kbYear=kbDate?Number(kbDate[0].slice(0,4)):0;
+    var wd=new Date(todayISO+'T12:00:00Z').getUTCDay(),d=todayISO;
+    var addDate=function(iso,n){return new Date(Date.parse(iso+'T12:00:00Z')+n*86400000).toISOString().slice(0,10)};
+    if(/모레/.test(raw))d=addDate(d,2);
+    else if(/내일/.test(raw))d=addDate(d,1);
+    var day=raw.match(/([월화수목금토일])요일/);
+    if(day){var target=['일','월','화','수','목','금','토'].indexOf(day[1]);d=addDate(todayISO,(target-wd+7)%7);}
+    var entries=KBC.map(function(x){return x.c;}).filter(function(x){return /급식/.test(x.title);}).map(function(x){
+      var m=x.title.match(/(\d{1,2})\/(\d{1,2})/);if(!m||!kbYear)return null;
+      var iso=kbYear+'-'+String(m[1]).padStart(2,'0')+'-'+String(m[2]).padStart(2,'0');
+      return {iso:iso,c:x};
+    }).filter(Boolean);
+    var many=/이번주|이번 주|일주일|주간|이번주간/.test(raw);
+    var found=many?entries.filter(function(x){return x.iso>=todayISO&&x.iso<=addDate(todayISO,6);}).sort(function(a,b){return a.iso.localeCompare(b.iso);}):entries.filter(function(x){return x.iso===d;});
+    if(!found.length){
+      var dayTitle=Number(d.slice(5,7))+'/'+Number(d.slice(8));
+      return '🍱 '+dayTitle+' 급식 정보는 현재 수집된 자료에서 확인되지 않았어.\n이전에 등록된 급식을 오늘 메뉴처럼 보여주지 않을게. 학교 급식표를 확인해 줘.'+foot('나이스 급식·공부방 최신 자료');
+    }
+    return '🍱 '+(many?'앞으로 7일 중 확인된 급식':'학교 급식')+'\n\n'+found.map(function(x){return '• '+x.c.text;}).join('\n\n')+foot(found[0].c.src);
+  }
   function kbAnswer(q) {
     if (!KBC || !KBC.length || !FACT.test(q) || NOTFACT.test(q)) return null;
+    var mealReply=datedMealKB(q);
+    if(mealReply)return mealReply;
     var examReply = currentExamKB(q);
     if (examReply) return examReply;
     var k = KIND.find(function (x) { return x[0].test(q); }); if (!k) return null;
