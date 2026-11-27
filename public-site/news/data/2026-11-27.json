@@ -1,0 +1,407 @@
+{
+  "version": "1.2",
+  "report_date": "2026-11-27",
+  "collection_window": {
+    "start": "2026-11-26T09:00:00+09:00",
+    "end": "2026-11-27T09:00:00+09:00",
+    "timezone": "Asia/Seoul"
+  },
+  "sources": [
+    "데일리팜",
+    "의학신문",
+    "메디파나뉴스",
+    "약사공론"
+  ],
+  "briefing": "'K바이오 뭉치면 산다' 지금이 M&A 적기 이유는?가 오늘 가장 중요한 이슈로 부각됐습니다. 이어 [영상] \"마운자로까지 현금 거래\"…약국 밖 '무허가약' 상시 유통망 덜미도 주요 변화로 확인됐습니다. 전체적으로는 정책·급여 · 투자·사업개발 흐름이 두드러집니다.",
+  "top_news": [
+    {
+      "rank": 1,
+      "canonical_issue": "'K바이오 뭉치면 산다' 지금이 M&A 적기 이유는? - 약사공론",
+      "title": "'K바이오 뭉치면 산다' 지금이 M&A 적기 이유는?",
+      "category": [
+        "m&a",
+        "인수"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-11-26T12:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "국내 제약·바이오 기업이 유망 바이오텍을 인수하기에 지금이 적기라는 분석이 나왔다. 중소형 바이오텍 주가가 하락해 인수 부담은 낮아진 반면, 글로벌 기술이전과 상",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "사업개발·구조개편은 파이프라인 가치와 자본 배분, 기업 경쟁구도에 직접 영향을 주는 변화입니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=549985"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549985"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202611/549985_454033_448.png",
+      "score": 60,
+      "oncology": null
+    },
+    {
+      "rank": 2,
+      "canonical_issue": "[영상] \"마운자로까지 현금 거래\"…약국 밖 '무허가약' 상시 유통망 덜미 - 약사공론",
+      "title": "[영상] \"마운자로까지 현금 거래\"…약국 밖 '무허가약' 상시 유통망 덜미",
+      "category": [
+        "허가",
+        "약국",
+        "공급"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-11-26T12:33:04+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "전통시장 수입상가에서 발견된 무허가 의약품을 추적한 결과, 6년간 27억 원 상당의 불법 제품을 국내에 유통한 대규모 공급망의 실체가 드러났다. 그동안 보따리상을",
+        "전통시장 수입상가에서 발견된 무허가 의약품을 추적한 결과, 6년간 27억 원 상당의 불법 제품을 국내에 유통한 대규모 공급망의 실체가 드러났다.",
+        "그동안 보따리상을 통한 소규모 거래로 여겨졌던 전통시장 내 무허가 의약품 유통이 실제로는 해외 밀반입자와 중간 판매업자, 소매상을 거치는 상시적인 공급 구조를 갖추고 있었던 것이다."
+      ],
+      "importance": "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=549987",
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=549973"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549987"
+        },
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549973"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202611/549987_454035_3141.jpg",
+      "score": 51,
+      "oncology": null
+    },
+    {
+      "rank": 3,
+      "canonical_issue": "[데일리팜]전통제약, 올 시설투자 6%↑…글로벌·신사업서 돌파구 모색",
+      "title": "[데일리팜]전통제약, 올 시설투자 6%↑…글로벌·신사업서 돌파구 모색",
+      "category": [
+        "약가",
+        "투자"
+      ],
+      "publishers": [
+        "데일리팜"
+      ],
+      "published_at": "2026-11-27T06:00:59+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "국내 주요 전통제약사들의 올해 시설투자 규모가 전년보다 6% 가까이 늘었다. 최근 5년 중 가장 큰 규모다. 원가 상승과 약가인하 우려로 경영환경 악화가 예상되는 가운데서도 대규모 시설투자를 이어가는 모습이다. 주목할 점은 투자 대상이다. 주요 제약사들이 그동안 성장을 견인했던 내수 전문의약품 사업을 넘",
+        "[데일리팜=김진구 기자] 국내 주요 전통제약사들의 올해 시설투자 규모가 전년보다",
+        "원가 상승과 약가인하 우려로 경영환경 악화가 예상되는 가운데서도 대규모 시설투자를 이어가는 모습이다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.dailypharm.com/user/news/345089"
+      ],
+      "source_links": [
+        {
+          "publisher": "데일리팜",
+          "url": "https://www.dailypharm.com/user/news/345089"
+        }
+      ],
+      "thumbnail_url": "https://vod.dailypharm.com/new_dailypharm/news/thumbnail/2026/11/26/8eba2c8a-f2b6-4776-b3fd-5808cc2712b9.jpg",
+      "score": 45,
+      "oncology": null
+    },
+    {
+      "rank": 4,
+      "canonical_issue": "수십개 제약사 얽힌 당뇨약 급여체계 개편, 마운자로 급여시 약가 변수로 - 의학신문",
+      "title": "수십개 제약사 얽힌 당뇨약 급여체계 개편, 마운자로 급여시 약가 변수로",
+      "category": [
+        "급여",
+        "약가"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-11-27T06:00:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=이재원 기자] 당뇨병용제 급여 일반원칙 개정에 수십곳의 제약사가 얽혀 개정 완료 시점이 불투명한 가운데, 한국릴리의 당뇨병 치료제 마운자로(성",
+        "[의학신문·일간보사=이재원 기자] 당뇨병용제 급여 일반원칙 개정에 수십곳의 제약사가 얽혀 개정 완료 시점이 불투명한 가운데, 한국릴리의 당뇨병 치료제 마운자로(성분명 터제파타이드)에 대한 경제성평가가 별도로 진행되면서 기존 치료제의 급여체계 개편과 신약 등재 간 선후관계가 변수로 떠오르고 있다.",
+        "일반원칙 개정에 따른 기존 치료제의 약가 인하가 마운자로의 경제성평가에 영향을 미칠 수 있는 반면, 일반원칙 선개정이 마운자로의 급여기준 설정에는 긍정적일 수 있다는 학회 측 견해도 나온다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3017495"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017495"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3017495_418327_4137.png",
+      "score": 45,
+      "oncology": null
+    },
+    {
+      "rank": 5,
+      "canonical_issue": "온열치료·신경성형술 관리급여 재검토...페라미비르·성장호르몬제 가격 공개 추진 - 의학신문",
+      "title": "온열치료·신경성형술 관리급여 재검토...페라미비르·성장호르몬제 가격 공개 추진",
+      "category": [
+        "급여"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-11-26T20:40:51+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=이재원 기자] 정부가 지난해 관리급여 전환 검토 대상으로 논의했던 방사선 온열치료와 경피적 경막외강 신경성형술에 대한 전환 적절성을 재검토했다",
+        "[의학신문·일간보사=이재원 기자] 정부가 지난해 관리급여 전환 검토 대상으로 논의했던 방사선 온열치료와 경피적 경막외강 신경성형술에 대한 전환 적절성을 재검토했다.",
+        "이와 함께 비급여 이용 증가와 의료비 부담 등의 문제가 제기돼 온 정맥주사형 독감치료제 페라미비르와 성장호르몬제에 대한 의료기관별 가격 공개도 추진한다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3017494"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017494"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3017494_418326_3734.jpg",
+      "score": 44,
+      "oncology": null
+    }
+  ],
+  "trends": [
+    {
+      "title": "정책·급여",
+      "count": 3,
+      "change": "3건의 주요 이슈에서 반복적으로 확인",
+      "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
+      "examples": [
+        "[데일리팜]전통제약, 올 시설투자 6%↑…글로벌·신사업서 돌파구 모색",
+        "수십개 제약사 얽힌 당뇨약 급여체계 개편, 마운자로 급여시 약가 변수로"
+      ]
+    },
+    {
+      "title": "투자·사업개발",
+      "count": 2,
+      "change": "2건의 주요 이슈에서 반복적으로 확인",
+      "implication": "자본과 파이프라인 확보 경쟁이 사업전략의 핵심이 되는 흐름",
+      "examples": [
+        "'K바이오 뭉치면 산다' 지금이 M&A 적기 이유는?",
+        "[데일리팜]전통제약, 올 시설투자 6%↑…글로벌·신사업서 돌파구 모색"
+      ]
+    },
+    {
+      "title": "신약·임상",
+      "count": 2,
+      "change": "2건의 주요 이슈에서 반복적으로 확인",
+      "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
+      "examples": [
+        "[영상] \"마운자로까지 현금 거래\"…약국 밖 '무허가약' 상시 유통망 덜미",
+        "수십개 제약사 얽힌 당뇨약 급여체계 개편, 마운자로 급여시 약가 변수로"
+      ]
+    },
+    {
+      "title": "의료현장",
+      "count": 2,
+      "change": "2건의 주요 이슈에서 반복적으로 확인",
+      "implication": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름",
+      "examples": [
+        "[영상] \"마운자로까지 현금 거래\"…약국 밖 '무허가약' 상시 유통망 덜미",
+        "온열치료·신경성형술 관리급여 재검토...페라미비르·성장호르몬제 가격 공개 추진"
+      ]
+    }
+  ],
+  "outlet_status": [
+    {
+      "publisher": "데일리팜",
+      "homepage_url": "https://www.dailypharm.com/",
+      "items": [
+        {
+          "title": "[데일리팜]전통제약, 올 시설투자 6%↑…글로벌·신사업서 돌파구 모색",
+          "published_at": "2026-11-27T06:00:59+09:00",
+          "verified": true,
+          "source_url": "https://www.dailypharm.com/user/news/345089"
+        }
+      ]
+    },
+    {
+      "publisher": "의학신문",
+      "homepage_url": "https://www.bosa.co.kr/",
+      "items": [
+        {
+          "title": "수십개 제약사 얽힌 당뇨약 급여체계 개편, 마운자로 급여시 약가 변수로",
+          "published_at": "2026-11-27T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017495"
+        },
+        {
+          "title": "온열치료·신경성형술 관리급여 재검토...페라미비르·성장호르몬제 가격 공개 추진",
+          "published_at": "2026-11-26T20:40:51+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017494"
+        },
+        {
+          "title": "지역·필수의료 위기 '공적 투자‧지원 부족'이 원인",
+          "published_at": "2026-11-26T14:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017409"
+        },
+        {
+          "title": "보험은 아직 병실에 머물러 있다",
+          "published_at": "2026-11-27T08:54:44+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017504"
+        },
+        {
+          "title": "뉴메코, 보툴리눔 톡신 ‘뉴럭스’ 콜롬비아 품목허가",
+          "published_at": "2026-11-27T06:12:53+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017418"
+        },
+        {
+          "title": "[진단] 융복합 의료제품 품목분류 혼선? 대조기기 정합성 요구가 부른 '재생' 문구의 역설",
+          "published_at": "2026-11-26T12:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017394"
+        },
+        {
+          "title": "전남대병원, ‘2026 MIND 심포지엄’ 개최… 송호천 교수 퇴임 기념",
+          "published_at": "2026-11-27T06:12:53+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017470"
+        },
+        {
+          "title": "전북대병원, 도내 최초 ‘플루빅토’ 치료 도입… 12월 1일 첫 시행",
+          "published_at": "2026-11-27T06:12:53+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017473"
+        }
+      ]
+    },
+    {
+      "publisher": "메디파나뉴스",
+      "homepage_url": "https://www.medipana.com/",
+      "items": [
+        {
+          "title": "치료는 진화하는데…신경과 진료 가로막는 '제도의 간극'",
+          "published_at": "2026-11-26T14:35:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422746"
+        },
+        {
+          "title": "응급실 압수수색의 여파…망설이는 의사, 불안한 환자",
+          "published_at": "2026-11-27T06:02:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422764"
+        },
+        {
+          "title": "뇌전증 응급치료제, 제형 다양화 필요…\"병원 밖 투여도 중요\"",
+          "published_at": "2026-11-27T06:01:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422779"
+        },
+        {
+          "title": "신경계 신약 시대…'약값'만으로 풀 수 없는 '급여' 문제",
+          "published_at": "2026-11-27T06:03:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422755"
+        },
+        {
+          "title": "학회서 맞붙은 동일 성분…콜린알포세레이트·브리바라세탐 경쟁",
+          "published_at": "2026-11-26T12:00:01+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422732"
+        },
+        {
+          "title": "첫 숨부터 고령·고위험군까지…'아브리스보'로 RSV 예방",
+          "published_at": "2026-11-27T06:01:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422783"
+        },
+        {
+          "title": "사무장병원 근절 해법…의협, 특사경 대신 '수사 공조'",
+          "published_at": "2026-11-26T10:37:15+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422722"
+        },
+        {
+          "title": "혁신형 제약기업 신규 인증 발표 초읽기…政, 내달 최종 발표",
+          "published_at": "2026-11-27T06:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422774"
+        }
+      ]
+    },
+    {
+      "publisher": "약사공론",
+      "homepage_url": "https://www.kpanews.co.kr/",
+      "items": [
+        {
+          "title": "'K바이오 뭉치면 산다' 지금이 M&A 적기 이유는?",
+          "published_at": "2026-11-26T12:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549985"
+        },
+        {
+          "title": "[영상] \"마운자로까지 현금 거래\"…약국 밖 '무허가약' 상시 유통망 덜미",
+          "published_at": "2026-11-26T12:33:04+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549987"
+        },
+        {
+          "title": "2027년 의약품 허가·심사 무엇이 달라지나…식약처 '청사진' 공개",
+          "published_at": "2026-11-27T05:53:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=550035"
+        },
+        {
+          "title": "복지부, 보건의료 국시 34개 전 직종 전수조사…10년치 추가 검증",
+          "published_at": "2026-11-26T17:11:12+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=550014"
+        },
+        {
+          "title": "에이피알, 3900억원에 '닥터멜락신' 인수…글로벌 뷰티시장 공략 강화",
+          "published_at": "2026-11-26T17:52:04+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=550029"
+        },
+        {
+          "title": "아산사회복지재단 병원장급 인사발령(2027년 1/1)",
+          "published_at": "2026-11-26T14:09:13+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549996"
+        },
+        {
+          "title": "‘기적의 비만약’ GLP-1, 안전성 경고는 어떻게 변해왔나",
+          "published_at": "2026-11-26T12:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549802"
+        },
+        {
+          "title": "[릴레이집회-435일차] \"편의점약 확대보다 공공심야약국 확충 우선\"",
+          "published_at": "2026-11-27T05:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=550013"
+        }
+      ]
+    }
+  ],
+  "insight": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름 동시에 투자·사업개발 흐름도 함께 확인돼 단일 이슈보다 복합적인 산업 변화로 보는 것이 적절합니다.",
+  "infographic": {
+    "image_path": null,
+    "generated_at": null,
+    "template_version": "news-card-v1"
+  }
+}
