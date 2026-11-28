@@ -1,0 +1,400 @@
+{
+  "version": "1.2",
+  "report_date": "2026-11-28",
+  "collection_window": {
+    "start": "2026-11-27T09:00:00+09:00",
+    "end": "2026-11-28T09:00:00+09:00",
+    "timezone": "Asia/Seoul"
+  },
+  "sources": [
+    "데일리팜",
+    "의학신문",
+    "메디파나뉴스",
+    "약사공론"
+  ],
+  "briefing": "비대면진료 수가, 30% 가산 없애고 야간·공휴일 가산 적용가 오늘 가장 중요한 이슈로 부각됐습니다. 이어 비대면진료 30% 가산 폐지...도수치료 관리급여 인정횟수 확대도 주요 변화로 확인됐습니다. 전체적으로는 정책·급여 · 디지털헬스 흐름이 두드러집니다.",
+  "top_news": [
+    {
+      "rank": 1,
+      "canonical_issue": "비대면진료 수가, 30% 가산 없애고 야간·공휴일 가산 적용 - 약사공론",
+      "title": "비대면진료 수가, 30% 가산 없애고 야간·공휴일 가산 적용",
+      "category": [
+        "수가",
+        "복지부"
+      ],
+      "publishers": [
+        "약사공론"
+      ],
+      "published_at": "2026-11-27T16:27:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "보건복지부가 비대면 진료 제도화에 맞춰 기존 시범사업에서 적용하던 일률적인 30% 가산을 폐지하고, 대면 진찰료 체계에 적용하는 야간·공휴일·토요일·소아 가산 등",
+        "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+        "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.kpanews.co.kr/news/articleView.html?idxno=550060"
+      ],
+      "source_links": [
+        {
+          "publisher": "약사공론",
+          "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=550060"
+        }
+      ],
+      "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202611/550060_454084_959.jpg",
+      "score": 66,
+      "oncology": null
+    },
+    {
+      "rank": 2,
+      "canonical_issue": "비대면진료 30% 가산 폐지...도수치료 관리급여 인정횟수 확대 - 의학신문",
+      "title": "비대면진료 30% 가산 폐지...도수치료 관리급여 인정횟수 확대",
+      "category": [
+        "급여",
+        "수가"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-11-27T16:50:00+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=이재원 기자] 내년 1월부터 비대면진료 시범사업에 적용됐던 일률적인 30% 수가 가산이 폐지되고 본 수가 체계로 전환된다.지난 7월 관리급여로",
+        "[의학신문·일간보사=이재원 기자] 내년 1월부터 비대면진료 시범사업에 적용됐던 일률적인 30% 수가 가산이 폐지되고 본 수가 체계로 전환된다.",
+        "지난 7월 관리급여로 전환된 도수치료는 새로운 수술이나 골절로 추가 치료가 필요한 경우 연간 인정횟수를 재산정할 수 있도록 급여기준이 개선된다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3017547"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017547"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3017547_418374_3942.jpg",
+      "score": 65,
+      "oncology": null
+    },
+    {
+      "rank": 3,
+      "canonical_issue": "필수의료 유지 자체에 건보 보상...공공정책급여 내년 도입 - 의학신문",
+      "title": "필수의료 유지 자체에 건보 보상...공공정책급여 내년 도입",
+      "category": [
+        "정책",
+        "급여"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-11-27T12:12:33+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=이재원 기자] 정부가 진료행위뿐만 아니라 필수의료 제공에 필요한 인력·시설·장비를 확보하고 진료체계를 유지하는 것 자체에 건강보험 재정을 투입",
+        "[의학신문·일간보사=이재원 기자] 정부가 진료행위뿐만 아니라 필수의료 제공에 필요한 인력·시설·장비를 확보하고 진료체계를 유지하는 것 자체에 건강보험 재정을 투입하는 공공정책급여 제도를 내년부터 도입한다.",
+        "지역별·요양기관별 요양급여비용 차등 지급은 성과 평가를 기반으로 하는 것을 원칙으로 한다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3017550"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017550"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3017550_418376_1058.jpg",
+      "score": 64,
+      "oncology": null
+    },
+    {
+      "rank": 4,
+      "canonical_issue": "백내장 수술 포괄수가 결국 10% 인하...안과계 반발에도 정부안 관철 - 의학신문",
+      "title": "백내장 수술 포괄수가 결국 10% 인하...안과계 반발에도 정부안 관철",
+      "category": [
+        "수가"
+      ],
+      "publishers": [
+        "의학신문"
+      ],
+      "published_at": "2026-11-27T21:40:28+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "[의학신문·일간보사=이재원 기자] 정부가 백내장 수술(수정체 수술) 포괄수가를 10% 인하한다. 안과계가 수가 인하의 근거가 된 의료비용분석의 대표성과 신뢰성에",
+        "[의학신문·일간보사=이재원 기자] 정부가 백내장 수술(수정체 수술) 포괄수가를 10% 인하한다.",
+        "안과계가 수가 인하의 근거가 된 의료비용분석의 대표성과 신뢰성에 문제를 제기하고 공동 검증을 요구했으나, 당초 정부가 제시한 인하 방안 중 최대 인하폭이 적용되는 것이다."
+      ],
+      "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+      "source_urls": [
+        "https://www.bosa.co.kr/news/articleView.html?idxno=3017588"
+      ],
+      "source_links": [
+        {
+          "publisher": "의학신문",
+          "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017588"
+        }
+      ],
+      "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3017588_418423_3824.png",
+      "score": 61,
+      "oncology": null
+    },
+    {
+      "rank": 5,
+      "canonical_issue": "한미약품, 기술수출 3건 이어…내년엔 잔트루타이드 2상 주목 - 메디파나뉴스",
+      "title": "한미약품, 기술수출 3건 이어…내년엔 잔트루타이드 2상 주목",
+      "category": [
+        "기술수출",
+        "임상 2상",
+        "2상"
+      ],
+      "publishers": [
+        "메디파나뉴스"
+      ],
+      "published_at": "2026-11-27T11:35:44+09:00",
+      "published_at_verified": true,
+      "summary": [
+        "올해 기술수출 계약 3건을 체결한 한미약품이 내년에는 비만 치료 삼중작용제 '잔트루타이드'의 미국 임상 2상 결과 공개를 앞두고 있다. 하반기로 예상되는 결과 발표에서 유의미한 성과가 확인되면 후속 기술수출 가능성이 열릴 수 있다는 분석이 나왔다. 비만 삼중작용제 잔트루타이드…내년 하반기 2상 결과 주목",
+        "사진=이정수 기자 올해 기술수출 계약 3건을 체결한 한미약품이 내년에는 비만 치료 삼중작용제 '잔트루타이드'의 미국 임상 2상 결과 공개를 앞두고 있다.",
+        "하반기로 예상되는 결과 발표에서 유의미한 성과가 확인되면 후속 기술수출 가능성이 열릴 수 있다는 분석이 나왔다."
+      ],
+      "importance": "사업개발·구조개편은 파이프라인 가치와 자본 배분, 기업 경쟁구도에 직접 영향을 주는 변화입니다.",
+      "source_urls": [
+        "https://www.medipana.com/news/articleView.html?idxno=422824"
+      ],
+      "source_links": [
+        {
+          "publisher": "메디파나뉴스",
+          "url": "https://www.medipana.com/news/articleView.html?idxno=422824"
+        }
+      ],
+      "thumbnail_url": "https://cdn.medipana.com/news/photo/202611/422824_330989_2858.jpg",
+      "score": 59,
+      "oncology": null
+    }
+  ],
+  "trends": [
+    {
+      "title": "정책·급여",
+      "count": 4,
+      "change": "4건의 주요 이슈에서 반복적으로 확인",
+      "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
+      "examples": [
+        "비대면진료 수가, 30% 가산 없애고 야간·공휴일 가산 적용",
+        "비대면진료 30% 가산 폐지...도수치료 관리급여 인정횟수 확대"
+      ]
+    },
+    {
+      "title": "디지털헬스",
+      "count": 2,
+      "change": "2건의 주요 이슈에서 반복적으로 확인",
+      "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
+      "examples": [
+        "비대면진료 수가, 30% 가산 없애고 야간·공휴일 가산 적용",
+        "비대면진료 30% 가산 폐지...도수치료 관리급여 인정횟수 확대"
+      ]
+    },
+    {
+      "title": "신약·임상",
+      "count": 1,
+      "change": "1건의 주요 이슈에서 반복적으로 확인",
+      "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
+      "examples": [
+        "한미약품, 기술수출 3건 이어…내년엔 잔트루타이드 2상 주목"
+      ]
+    },
+    {
+      "title": "투자·사업개발",
+      "count": 1,
+      "change": "1건의 주요 이슈에서 반복적으로 확인",
+      "implication": "자본과 파이프라인 확보 경쟁이 사업전략의 핵심이 되는 흐름",
+      "examples": [
+        "한미약품, 기술수출 3건 이어…내년엔 잔트루타이드 2상 주목"
+      ]
+    }
+  ],
+  "outlet_status": [
+    {
+      "publisher": "데일리팜",
+      "homepage_url": "https://www.dailypharm.com/",
+      "items": [
+        {
+          "title": "[데일리팜]&#039;씨투스&#039; 처방 방어 총력전…제형 개발에 상표권 행사까지",
+          "published_at": "2026-11-28T06:00:59+09:00",
+          "verified": true,
+          "source_url": "https://www.dailypharm.com/user/news/345135"
+        }
+      ]
+    },
+    {
+      "publisher": "의학신문",
+      "homepage_url": "https://www.bosa.co.kr/",
+      "items": [
+        {
+          "title": "비대면진료 30% 가산 폐지...도수치료 관리급여 인정횟수 확대",
+          "published_at": "2026-11-27T16:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017547"
+        },
+        {
+          "title": "필수의료 유지 자체에 건보 보상...공공정책급여 내년 도입",
+          "published_at": "2026-11-27T12:12:33+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017550"
+        },
+        {
+          "title": "백내장 수술 포괄수가 결국 10% 인하...안과계 반발에도 정부안 관철",
+          "published_at": "2026-11-27T21:40:28+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017588"
+        },
+        {
+          "title": "'국가필수의약품 안정공급' 민관 힘 모은다",
+          "published_at": "2026-11-27T15:26:11+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017563"
+        },
+        {
+          "title": "7개 질병군 포괄수가 6년 만에 전면 개편...연 1132억원 추가 투입",
+          "published_at": "2026-11-27T16:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017545"
+        },
+        {
+          "title": "류승민 서울의료원 과장, 보건의료기술진흥 유공 복지부 장관 표창",
+          "published_at": "2026-11-27T21:43:43+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017589"
+        },
+        {
+          "title": "키트루다, 두경부암 치료 20년 만에 변화 이끌었다",
+          "published_at": "2026-11-27T09:00:17+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017501"
+        },
+        {
+          "title": "복지부 산하 5개 공공기관, 자체감사 역량 강화 업무협약",
+          "published_at": "2026-11-27T18:30:33+09:00",
+          "verified": true,
+          "source_url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017581"
+        }
+      ]
+    },
+    {
+      "publisher": "메디파나뉴스",
+      "homepage_url": "https://www.medipana.com/",
+      "items": [
+        {
+          "title": "한미약품, 기술수출 3건 이어…내년엔 잔트루타이드 2상 주목",
+          "published_at": "2026-11-27T11:35:44+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422824"
+        },
+        {
+          "title": "같은 약가인하, 달랐던 14년…대형·중소제약의 엇갈린 행보",
+          "published_at": "2026-11-27T13:44:34+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422831"
+        },
+        {
+          "title": "바이엘, 본국 독일서 '케렌디아' 철수…세계 최저가에 등 돌렸다",
+          "published_at": "2026-11-27T09:00:15+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422799"
+        },
+        {
+          "title": "R&D 1.2조 쓴 전통제약 12곳…개발비 자산화 '온도차'",
+          "published_at": "2026-11-27T11:55:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422823"
+        },
+        {
+          "title": "제약 R&D 공시, 현황 넘어 이력으로 변화…3분기 개시",
+          "published_at": "2026-11-28T06:04:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422855"
+        },
+        {
+          "title": "韓 비만 환자 CT로 본 '위고비' 효과…내장지방 면적 25.4%↓",
+          "published_at": "2026-11-28T06:01:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422861"
+        },
+        {
+          "title": "박소영 한국병원약사회 부의장 시부상",
+          "published_at": "2026-11-27T22:28:26+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422858"
+        },
+        {
+          "title": "알츠하이머 치료, 20년 만의 패러다임 전환 '레켐비'",
+          "published_at": "2026-11-27T11:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.medipana.com/news/articleView.html?idxno=422818"
+        }
+      ]
+    },
+    {
+      "publisher": "약사공론",
+      "homepage_url": "https://www.kpanews.co.kr/",
+      "items": [
+        {
+          "title": "비대면진료 수가, 30% 가산 없애고 야간·공휴일 가산 적용",
+          "published_at": "2026-11-27T16:27:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=550060"
+        },
+        {
+          "title": "하임파지, 혈우병 A·B형 급여기준 확정…비아트리스티올라도 급여 진입",
+          "published_at": "2026-11-27T12:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=550068"
+        },
+        {
+          "title": "국가필수약 공급망 전반 민·관 협력체계 가동…환자단체도 참여",
+          "published_at": "2026-11-27T16:41:22+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=550103"
+        },
+        {
+          "title": "공단 특사경 도입, 법사위서 '발목'…내달 국회 처리 동력 이어질까",
+          "published_at": "2026-11-27T12:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=550076"
+        },
+        {
+          "title": "한국 약사 보수, 물가 반영하니 일본의 1.8배…미국의 74%",
+          "published_at": "2026-11-28T05:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=550122"
+        },
+        {
+          "title": "‘K-바이오시밀러’의 역설… 자가주사제 약국엔 대체조제권이 없다",
+          "published_at": "2026-11-28T05:50:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=550118"
+        },
+        {
+          "title": "‘에페+에피데이’ 앞세운 한미, 세계 첫 디지털융합의약품 도전",
+          "published_at": "2026-11-27T10:21:30+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=550058"
+        },
+        {
+          "title": "\"불필요한 규제 줄이고, 유통질서는 강화\"…약사법 개정 추진",
+          "published_at": "2026-11-27T12:00:00+09:00",
+          "verified": true,
+          "source_url": "https://www.kpanews.co.kr/news/articleView.html?idxno=550051"
+        }
+      ]
+    }
+  ],
+  "insight": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름 동시에 디지털헬스 흐름도 함께 확인돼 단일 이슈보다 복합적인 산업 변화로 보는 것이 적절합니다.",
+  "infographic": {
+    "image_path": null,
+    "generated_at": null,
+    "template_version": "news-card-v1"
+  }
+}

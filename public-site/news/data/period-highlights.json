@@ -1,7 +1,7 @@
 {
   "version": "1.1",
-  "generated_at": "2026-11-27T09:04:44.183472+09:00",
-  "as_of": "2026-11-27T09:00:00+09:00",
+  "generated_at": "2026-11-28T09:04:42.098194+09:00",
+  "as_of": "2026-11-28T09:00:00+09:00",
   "periods": {
     "today": {
       "label": "오늘",
@@ -9,209 +9,202 @@
       "items": [
         {
           "rank": 1,
-          "canonical_issue": "'K바이오 뭉치면 산다' 지금이 M&A 적기 이유는? - 약사공론",
-          "title": "'K바이오 뭉치면 산다' 지금이 M&A 적기 이유는?",
+          "canonical_issue": "비대면진료 수가, 30% 가산 없애고 야간·공휴일 가산 적용 - 약사공론",
+          "title": "비대면진료 수가, 30% 가산 없애고 야간·공휴일 가산 적용",
           "category": [
-            "m&a",
-            "인수"
+            "수가",
+            "복지부"
           ],
           "publishers": [
             "약사공론"
           ],
-          "published_at": "2026-11-26T12:00:00+09:00",
+          "published_at": "2026-11-27T16:27:00+09:00",
           "published_at_verified": true,
           "summary": [
-            "국내 제약·바이오 기업이 유망 바이오텍을 인수하기에 지금이 적기라는 분석이 나왔다. 중소형 바이오텍 주가가 하락해 인수 부담은 낮아진 반면, 글로벌 기술이전과 상",
+            "보건복지부가 비대면 진료 제도화에 맞춰 기존 시범사업에서 적용하던 일률적인 30% 가산을 폐지하고, 대면 진찰료 체계에 적용하는 야간·공휴일·토요일·소아 가산 등",
             "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
             "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
           ],
-          "importance": "사업개발·구조개편은 파이프라인 가치와 자본 배분, 기업 경쟁구도에 직접 영향을 주는 변화입니다.",
+          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
           "source_urls": [
-            "https://www.kpanews.co.kr/news/articleView.html?idxno=549985"
+            "https://www.kpanews.co.kr/news/articleView.html?idxno=550060"
           ],
           "source_links": [
             {
               "publisher": "약사공론",
-              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549985"
+              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=550060"
             }
           ],
-          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202611/549985_454033_448.png",
-          "score": 60,
+          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202611/550060_454084_959.jpg",
+          "score": 66,
           "oncology": null
         },
         {
           "rank": 2,
-          "canonical_issue": "[영상] \"마운자로까지 현금 거래\"…약국 밖 '무허가약' 상시 유통망 덜미 - 약사공론",
-          "title": "[영상] \"마운자로까지 현금 거래\"…약국 밖 '무허가약' 상시 유통망 덜미",
-          "category": [
-            "허가",
-            "약국",
-            "공급"
-          ],
-          "publishers": [
-            "약사공론"
-          ],
-          "published_at": "2026-11-26T12:33:04+09:00",
-          "published_at_verified": true,
-          "summary": [
-            "전통시장 수입상가에서 발견된 무허가 의약품을 추적한 결과, 6년간 27억 원 상당의 불법 제품을 국내에 유통한 대규모 공급망의 실체가 드러났다. 그동안 보따리상을",
-            "전통시장 수입상가에서 발견된 무허가 의약품을 추적한 결과, 6년간 27억 원 상당의 불법 제품을 국내에 유통한 대규모 공급망의 실체가 드러났다.",
-            "그동안 보따리상을 통한 소규모 거래로 여겨졌던 전통시장 내 무허가 의약품 유통이 실제로는 해외 밀반입자와 중간 판매업자, 소매상을 거치는 상시적인 공급 구조를 갖추고 있었던 것이다."
-          ],
-          "importance": "허가·규제 변화는 치료 선택지와 제품 출시 시점, 시장 경쟁구도를 바꾸는 핵심 변수입니다.",
-          "source_urls": [
-            "https://www.kpanews.co.kr/news/articleView.html?idxno=549987",
-            "https://www.kpanews.co.kr/news/articleView.html?idxno=549973"
-          ],
-          "source_links": [
-            {
-              "publisher": "약사공론",
-              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549987"
-            },
-            {
-              "publisher": "약사공론",
-              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549973"
-            }
-          ],
-          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202611/549987_454035_3141.jpg",
-          "score": 51,
-          "oncology": null
-        },
-        {
-          "rank": 3,
-          "canonical_issue": "[데일리팜]전통제약, 올 시설투자 6%↑…글로벌·신사업서 돌파구 모색",
-          "title": "[데일리팜]전통제약, 올 시설투자 6%↑…글로벌·신사업서 돌파구 모색",
-          "category": [
-            "약가",
-            "투자"
-          ],
-          "publishers": [
-            "데일리팜"
-          ],
-          "published_at": "2026-11-27T06:00:59+09:00",
-          "published_at_verified": true,
-          "summary": [
-            "국내 주요 전통제약사들의 올해 시설투자 규모가 전년보다 6% 가까이 늘었다. 최근 5년 중 가장 큰 규모다. 원가 상승과 약가인하 우려로 경영환경 악화가 예상되는 가운데서도 대규모 시설투자를 이어가는 모습이다. 주목할 점은 투자 대상이다. 주요 제약사들이 그동안 성장을 견인했던 내수 전문의약품 사업을 넘",
-            "[데일리팜=김진구 기자] 국내 주요 전통제약사들의 올해 시설투자 규모가 전년보다",
-            "원가 상승과 약가인하 우려로 경영환경 악화가 예상되는 가운데서도 대규모 시설투자를 이어가는 모습이다."
-          ],
-          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
-          "source_urls": [
-            "https://www.dailypharm.com/user/news/345089"
-          ],
-          "source_links": [
-            {
-              "publisher": "데일리팜",
-              "url": "https://www.dailypharm.com/user/news/345089"
-            }
-          ],
-          "thumbnail_url": "https://vod.dailypharm.com/new_dailypharm/news/thumbnail/2026/11/26/8eba2c8a-f2b6-4776-b3fd-5808cc2712b9.jpg",
-          "score": 45,
-          "oncology": null
-        },
-        {
-          "rank": 4,
-          "canonical_issue": "수십개 제약사 얽힌 당뇨약 급여체계 개편, 마운자로 급여시 약가 변수로 - 의학신문",
-          "title": "수십개 제약사 얽힌 당뇨약 급여체계 개편, 마운자로 급여시 약가 변수로",
+          "canonical_issue": "비대면진료 30% 가산 폐지...도수치료 관리급여 인정횟수 확대 - 의학신문",
+          "title": "비대면진료 30% 가산 폐지...도수치료 관리급여 인정횟수 확대",
           "category": [
             "급여",
-            "약가"
+            "수가"
           ],
           "publishers": [
             "의학신문"
           ],
-          "published_at": "2026-11-27T06:00:00+09:00",
+          "published_at": "2026-11-27T16:50:00+09:00",
           "published_at_verified": true,
           "summary": [
-            "[의학신문·일간보사=이재원 기자] 당뇨병용제 급여 일반원칙 개정에 수십곳의 제약사가 얽혀 개정 완료 시점이 불투명한 가운데, 한국릴리의 당뇨병 치료제 마운자로(성",
-            "[의학신문·일간보사=이재원 기자] 당뇨병용제 급여 일반원칙 개정에 수십곳의 제약사가 얽혀 개정 완료 시점이 불투명한 가운데, 한국릴리의 당뇨병 치료제 마운자로(성분명 터제파타이드)에 대한 경제성평가가 별도로 진행되면서 기존 치료제의 급여체계 개편과 신약 등재 간 선후관계가 변수로 떠오르고 있다.",
-            "일반원칙 개정에 따른 기존 치료제의 약가 인하가 마운자로의 경제성평가에 영향을 미칠 수 있는 반면, 일반원칙 선개정이 마운자로의 급여기준 설정에는 긍정적일 수 있다는 학회 측 견해도 나온다."
+            "[의학신문·일간보사=이재원 기자] 내년 1월부터 비대면진료 시범사업에 적용됐던 일률적인 30% 수가 가산이 폐지되고 본 수가 체계로 전환된다.지난 7월 관리급여로",
+            "[의학신문·일간보사=이재원 기자] 내년 1월부터 비대면진료 시범사업에 적용됐던 일률적인 30% 수가 가산이 폐지되고 본 수가 체계로 전환된다.",
+            "지난 7월 관리급여로 전환된 도수치료는 새로운 수술이나 골절로 추가 치료가 필요한 경우 연간 인정횟수를 재산정할 수 있도록 급여기준이 개선된다."
           ],
           "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
           "source_urls": [
-            "https://www.bosa.co.kr/news/articleView.html?idxno=3017495"
+            "https://www.bosa.co.kr/news/articleView.html?idxno=3017547"
           ],
           "source_links": [
             {
               "publisher": "의학신문",
-              "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017495"
+              "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017547"
             }
           ],
-          "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3017495_418327_4137.png",
-          "score": 45,
+          "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3017547_418374_3942.jpg",
+          "score": 65,
           "oncology": null
         },
         {
-          "rank": 5,
-          "canonical_issue": "온열치료·신경성형술 관리급여 재검토...페라미비르·성장호르몬제 가격 공개 추진 - 의학신문",
-          "title": "온열치료·신경성형술 관리급여 재검토...페라미비르·성장호르몬제 가격 공개 추진",
+          "rank": 3,
+          "canonical_issue": "필수의료 유지 자체에 건보 보상...공공정책급여 내년 도입 - 의학신문",
+          "title": "필수의료 유지 자체에 건보 보상...공공정책급여 내년 도입",
           "category": [
+            "정책",
             "급여"
           ],
           "publishers": [
             "의학신문"
           ],
-          "published_at": "2026-11-26T20:40:51+09:00",
+          "published_at": "2026-11-27T12:12:33+09:00",
           "published_at_verified": true,
           "summary": [
-            "[의학신문·일간보사=이재원 기자] 정부가 지난해 관리급여 전환 검토 대상으로 논의했던 방사선 온열치료와 경피적 경막외강 신경성형술에 대한 전환 적절성을 재검토했다",
-            "[의학신문·일간보사=이재원 기자] 정부가 지난해 관리급여 전환 검토 대상으로 논의했던 방사선 온열치료와 경피적 경막외강 신경성형술에 대한 전환 적절성을 재검토했다.",
-            "이와 함께 비급여 이용 증가와 의료비 부담 등의 문제가 제기돼 온 정맥주사형 독감치료제 페라미비르와 성장호르몬제에 대한 의료기관별 가격 공개도 추진한다."
+            "[의학신문·일간보사=이재원 기자] 정부가 진료행위뿐만 아니라 필수의료 제공에 필요한 인력·시설·장비를 확보하고 진료체계를 유지하는 것 자체에 건강보험 재정을 투입",
+            "[의학신문·일간보사=이재원 기자] 정부가 진료행위뿐만 아니라 필수의료 제공에 필요한 인력·시설·장비를 확보하고 진료체계를 유지하는 것 자체에 건강보험 재정을 투입하는 공공정책급여 제도를 내년부터 도입한다.",
+            "지역별·요양기관별 요양급여비용 차등 지급은 성과 평가를 기반으로 하는 것을 원칙으로 한다."
           ],
           "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
           "source_urls": [
-            "https://www.bosa.co.kr/news/articleView.html?idxno=3017494"
+            "https://www.bosa.co.kr/news/articleView.html?idxno=3017550"
           ],
           "source_links": [
             {
               "publisher": "의학신문",
-              "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017494"
+              "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017550"
             }
           ],
-          "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3017494_418326_3734.jpg",
-          "score": 44,
+          "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3017550_418376_1058.jpg",
+          "score": 64,
+          "oncology": null
+        },
+        {
+          "rank": 4,
+          "canonical_issue": "백내장 수술 포괄수가 결국 10% 인하...안과계 반발에도 정부안 관철 - 의학신문",
+          "title": "백내장 수술 포괄수가 결국 10% 인하...안과계 반발에도 정부안 관철",
+          "category": [
+            "수가"
+          ],
+          "publishers": [
+            "의학신문"
+          ],
+          "published_at": "2026-11-27T21:40:28+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "[의학신문·일간보사=이재원 기자] 정부가 백내장 수술(수정체 수술) 포괄수가를 10% 인하한다. 안과계가 수가 인하의 근거가 된 의료비용분석의 대표성과 신뢰성에",
+            "[의학신문·일간보사=이재원 기자] 정부가 백내장 수술(수정체 수술) 포괄수가를 10% 인하한다.",
+            "안과계가 수가 인하의 근거가 된 의료비용분석의 대표성과 신뢰성에 문제를 제기하고 공동 검증을 요구했으나, 당초 정부가 제시한 인하 방안 중 최대 인하폭이 적용되는 것이다."
+          ],
+          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+          "source_urls": [
+            "https://www.bosa.co.kr/news/articleView.html?idxno=3017588"
+          ],
+          "source_links": [
+            {
+              "publisher": "의학신문",
+              "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017588"
+            }
+          ],
+          "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3017588_418423_3824.png",
+          "score": 61,
+          "oncology": null
+        },
+        {
+          "rank": 5,
+          "canonical_issue": "한미약품, 기술수출 3건 이어…내년엔 잔트루타이드 2상 주목 - 메디파나뉴스",
+          "title": "한미약품, 기술수출 3건 이어…내년엔 잔트루타이드 2상 주목",
+          "category": [
+            "기술수출",
+            "임상 2상",
+            "2상"
+          ],
+          "publishers": [
+            "메디파나뉴스"
+          ],
+          "published_at": "2026-11-27T11:35:44+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "올해 기술수출 계약 3건을 체결한 한미약품이 내년에는 비만 치료 삼중작용제 '잔트루타이드'의 미국 임상 2상 결과 공개를 앞두고 있다. 하반기로 예상되는 결과 발표에서 유의미한 성과가 확인되면 후속 기술수출 가능성이 열릴 수 있다는 분석이 나왔다. 비만 삼중작용제 잔트루타이드…내년 하반기 2상 결과 주목",
+            "사진=이정수 기자 올해 기술수출 계약 3건을 체결한 한미약품이 내년에는 비만 치료 삼중작용제 '잔트루타이드'의 미국 임상 2상 결과 공개를 앞두고 있다.",
+            "하반기로 예상되는 결과 발표에서 유의미한 성과가 확인되면 후속 기술수출 가능성이 열릴 수 있다는 분석이 나왔다."
+          ],
+          "importance": "사업개발·구조개편은 파이프라인 가치와 자본 배분, 기업 경쟁구도에 직접 영향을 주는 변화입니다.",
+          "source_urls": [
+            "https://www.medipana.com/news/articleView.html?idxno=422824"
+          ],
+          "source_links": [
+            {
+              "publisher": "메디파나뉴스",
+              "url": "https://www.medipana.com/news/articleView.html?idxno=422824"
+            }
+          ],
+          "thumbnail_url": "https://cdn.medipana.com/news/photo/202611/422824_330989_2858.jpg",
+          "score": 59,
           "oncology": null
         }
       ],
       "trends": [
         {
           "title": "정책·급여",
-          "count": 3,
-          "change": "3건의 주요 이슈에서 반복적으로 확인",
+          "count": 4,
+          "change": "4건의 주요 이슈에서 반복적으로 확인",
           "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
           "examples": [
-            "[데일리팜]전통제약, 올 시설투자 6%↑…글로벌·신사업서 돌파구 모색",
-            "수십개 제약사 얽힌 당뇨약 급여체계 개편, 마운자로 급여시 약가 변수로"
+            "비대면진료 수가, 30% 가산 없애고 야간·공휴일 가산 적용",
+            "비대면진료 30% 가산 폐지...도수치료 관리급여 인정횟수 확대"
           ]
         },
         {
-          "title": "투자·사업개발",
+          "title": "디지털헬스",
           "count": 2,
           "change": "2건의 주요 이슈에서 반복적으로 확인",
-          "implication": "자본과 파이프라인 확보 경쟁이 사업전략의 핵심이 되는 흐름",
+          "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
           "examples": [
-            "'K바이오 뭉치면 산다' 지금이 M&A 적기 이유는?",
-            "[데일리팜]전통제약, 올 시설투자 6%↑…글로벌·신사업서 돌파구 모색"
+            "비대면진료 수가, 30% 가산 없애고 야간·공휴일 가산 적용",
+            "비대면진료 30% 가산 폐지...도수치료 관리급여 인정횟수 확대"
           ]
         },
         {
           "title": "신약·임상",
-          "count": 2,
-          "change": "2건의 주요 이슈에서 반복적으로 확인",
+          "count": 1,
+          "change": "1건의 주요 이슈에서 반복적으로 확인",
           "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
           "examples": [
-            "[영상] \"마운자로까지 현금 거래\"…약국 밖 '무허가약' 상시 유통망 덜미",
-            "수십개 제약사 얽힌 당뇨약 급여체계 개편, 마운자로 급여시 약가 변수로"
+            "한미약품, 기술수출 3건 이어…내년엔 잔트루타이드 2상 주목"
           ]
         },
         {
-          "title": "의료현장",
-          "count": 2,
-          "change": "2건의 주요 이슈에서 반복적으로 확인",
-          "implication": "병원·약국의 운영 변화가 환자 경험과 전달체계에 반영되는 흐름",
+          "title": "투자·사업개발",
+          "count": 1,
+          "change": "1건의 주요 이슈에서 반복적으로 확인",
+          "implication": "자본과 파이프라인 확보 경쟁이 사업전략의 핵심이 되는 흐름",
           "examples": [
-            "[영상] \"마운자로까지 현금 거래\"…약국 밖 '무허가약' 상시 유통망 덜미",
-            "온열치료·신경성형술 관리급여 재검토...페라미비르·성장호르몬제 가격 공개 추진"
+            "한미약품, 기술수출 3건 이어…내년엔 잔트루타이드 2상 주목"
           ]
         }
       ]
@@ -220,75 +213,6 @@
       "label": "최근 7일",
       "description": "최근 7일 핵심 이슈",
       "items": [
-        {
-          "rank": 1,
-          "canonical_issue": "큐로셀 '림카토', 급여가격 2.8억 확정…내달부터 건보 적용 - 메디파나뉴스",
-          "title": "큐로셀 '림카토', 급여가격 2.8억 확정…내달부터 건보 적용",
-          "category": [
-            "정책",
-            "급여",
-            "약가",
-            "복지부"
-          ],
-          "publishers": [
-            "메디파나뉴스"
-          ],
-          "published_at": "2026-11-20T17:32:51+09:00",
-          "published_at_verified": true,
-          "summary": [
-            "CAR-T 치료제 전문 기업 큐로셀은 자사의 CD19 CAR-T 치료제 '림카토(RIMQARTO, 성분명 안발캅타젠오토류셀)'가 국민건강보험공단과의 약가 협상을 마치고 보건복지부 건강보험정책심의위원회(건정심)에 상정됐다고 20일 밝혔다. 림카토의 1회 투여당 상한금액은 2억8001만6050원으로 확정됐으",
-            "제공=큐로셀 CAR-T 치료제 전문 기업 큐로셀은 자사의 CD19 CAR-T 치료제 '림카토(RIMQARTO, 성분명 안발캅타젠오토류셀)'가 국민건강보험공단과의 약가 협상을 마치고 보건복지부 건강보험정책심의위원회(건정심)에 상정됐다고 20일 밝혔다.",
-            "림카토의 1회 투여당 상한금액은 2억8001만6050원으로 확정됐으며, 오는 12월 1일부터 건강보험 급여가 적용될 예정이다."
-          ],
-          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
-          "source_urls": [
-            "https://www.medipana.com/news/articleView.html?idxno=422331"
-          ],
-          "source_links": [
-            {
-              "publisher": "메디파나뉴스",
-              "url": "https://www.medipana.com/news/articleView.html?idxno=422331"
-            }
-          ],
-          "thumbnail_url": "https://cdn.medipana.com/news/photo/202611/422331_330361_3213.jpg",
-          "score": 121,
-          "oncology": {
-            "is_oncology": true,
-            "cancer_types": [
-              "림프종"
-            ],
-            "drug_generic": [],
-            "drug_brand": [],
-            "targets": [],
-            "mechanism": [
-              "CAR-T"
-            ],
-            "biomarkers": [],
-            "trial_name": null,
-            "phase": "3",
-            "line_of_therapy": null,
-            "endpoints": {
-              "orr": null,
-              "pfs": null,
-              "os": null,
-              "hr": null,
-              "grade3plus_ae": null
-            },
-            "approval_status": "허가 관련",
-            "reimbursement_status": "급여 관련",
-            "patient_summary": "보험 적용이나 치료 접근성과 관련된 변화입니다. 실제 적용 여부는 세부 급여기준을 확인해야 합니다.",
-            "patient_relevance_score": 90,
-            "patient_relevance_labels": [
-              "급여·접근성",
-              "허가",
-              "임상결과",
-              "지원제도"
-            ],
-            "industry_summary": null
-          },
-          "report_date": "2026-11-21",
-          "period_rank": 1
-        },
         {
           "rank": 1,
           "canonical_issue": "약가제 개편 후 개량신약 가산 연장 첫 적용…R&D 유인 주목 - 메디파나뉴스",
@@ -323,7 +247,7 @@
           "score": 77,
           "oncology": null,
           "report_date": "2026-11-26",
-          "period_rank": 2
+          "period_rank": 1
         },
         {
           "rank": 1,
@@ -359,6 +283,40 @@
           "score": 79,
           "oncology": null,
           "report_date": "2026-11-24",
+          "period_rank": 2
+        },
+        {
+          "rank": 1,
+          "canonical_issue": "비대면진료 수가, 30% 가산 없애고 야간·공휴일 가산 적용 - 약사공론",
+          "title": "비대면진료 수가, 30% 가산 없애고 야간·공휴일 가산 적용",
+          "category": [
+            "수가",
+            "복지부"
+          ],
+          "publishers": [
+            "약사공론"
+          ],
+          "published_at": "2026-11-27T16:27:00+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "보건복지부가 비대면 진료 제도화에 맞춰 기존 시범사업에서 적용하던 일률적인 30% 가산을 폐지하고, 대면 진찰료 체계에 적용하는 야간·공휴일·토요일·소아 가산 등",
+            "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+            "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+          ],
+          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+          "source_urls": [
+            "https://www.kpanews.co.kr/news/articleView.html?idxno=550060"
+          ],
+          "source_links": [
+            {
+              "publisher": "약사공론",
+              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=550060"
+            }
+          ],
+          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202611/550060_454084_959.jpg",
+          "score": 66,
+          "oncology": null,
+          "report_date": "2026-11-28",
           "period_rank": 3
         },
         {
@@ -432,16 +390,6 @@
       ],
       "trends": [
         {
-          "title": "정책·급여",
-          "count": 3,
-          "change": "3건의 주요 이슈에서 반복적으로 확인",
-          "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
-          "examples": [
-            "큐로셀 '림카토', 급여가격 2.8억 확정…내달부터 건보 적용",
-            "약가제 개편 후 개량신약 가산 연장 첫 적용…R&D 유인 주목"
-          ]
-        },
-        {
           "title": "신약·임상",
           "count": 3,
           "change": "3건의 주요 이슈에서 반복적으로 확인",
@@ -452,6 +400,26 @@
           ]
         },
         {
+          "title": "정책·급여",
+          "count": 3,
+          "change": "3건의 주요 이슈에서 반복적으로 확인",
+          "implication": "제도 변화가 시장 접근성과 현장 운영에 직접 영향을 주는 흐름",
+          "examples": [
+            "약가제 개편 후 개량신약 가산 연장 첫 적용…R&D 유인 주목",
+            "비대면진료 수가, 30% 가산 없애고 야간·공휴일 가산 적용"
+          ]
+        },
+        {
+          "title": "디지털헬스",
+          "count": 3,
+          "change": "3건의 주요 이슈에서 반복적으로 확인",
+          "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
+          "examples": [
+            "비대면진료 수가, 30% 가산 없애고 야간·공휴일 가산 적용",
+            "'K바이오 뭉치면 산다' 지금이 M&A 적기 이유는?"
+          ]
+        },
+        {
           "title": "투자·사업개발",
           "count": 2,
           "change": "2건의 주요 이슈에서 반복적으로 확인",
@@ -459,16 +427,6 @@
           "examples": [
             "약가제 개편 후 개량신약 가산 연장 첫 적용…R&D 유인 주목",
             "'K바이오 뭉치면 산다' 지금이 M&A 적기 이유는?"
-          ]
-        },
-        {
-          "title": "디지털헬스",
-          "count": 2,
-          "change": "2건의 주요 이슈에서 반복적으로 확인",
-          "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
-          "examples": [
-            "'K바이오 뭉치면 산다' 지금이 M&A 적기 이유는?",
-            "정제서 성공한 씨투스 제네릭, 건조시럽서도 통할까"
           ]
         }
       ]
@@ -620,6 +578,40 @@
         },
         {
           "rank": 1,
+          "canonical_issue": "비대면진료 수가, 30% 가산 없애고 야간·공휴일 가산 적용 - 약사공론",
+          "title": "비대면진료 수가, 30% 가산 없애고 야간·공휴일 가산 적용",
+          "category": [
+            "수가",
+            "복지부"
+          ],
+          "publishers": [
+            "약사공론"
+          ],
+          "published_at": "2026-11-27T16:27:00+09:00",
+          "published_at_verified": true,
+          "summary": [
+            "보건복지부가 비대면 진료 제도화에 맞춰 기존 시범사업에서 적용하던 일률적인 30% 가산을 폐지하고, 대면 진찰료 체계에 적용하는 야간·공휴일·토요일·소아 가산 등",
+            "요약 AI기자 요약봇 요약 정보 인공지능이 자동으로 줄인 '세 줄 요약' 기술을 사용합니다.",
+            "전체 내용을 이해하기 위해서는 기사 본문과 함께 읽어야 합니다."
+          ],
+          "importance": "급여·약가 변화는 환자 접근성과 의료현장 사용량, 제약사의 시장전략에 직접 영향을 줄 수 있습니다.",
+          "source_urls": [
+            "https://www.kpanews.co.kr/news/articleView.html?idxno=550060"
+          ],
+          "source_links": [
+            {
+              "publisher": "약사공론",
+              "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=550060"
+            }
+          ],
+          "thumbnail_url": "https://cdn.kpanews.co.kr/news/photo/202611/550060_454084_959.jpg",
+          "score": 66,
+          "oncology": null,
+          "report_date": "2026-11-28",
+          "period_rank": 4
+        },
+        {
+          "rank": 1,
           "canonical_issue": "'K바이오 뭉치면 산다' 지금이 M&A 적기 이유는? - 약사공론",
           "title": "'K바이오 뭉치면 산다' 지금이 M&A 적기 이유는?",
           "category": [
@@ -650,7 +642,7 @@
           "score": 60,
           "oncology": null,
           "report_date": "2026-11-27",
-          "period_rank": 4
+          "period_rank": 5
         },
         {
           "rank": 1,
@@ -684,41 +676,6 @@
           "score": 61,
           "oncology": null,
           "report_date": "2026-11-25",
-          "period_rank": 5
-        },
-        {
-          "rank": 2,
-          "canonical_issue": "대상포진 등 백신 건보 지원될까...질병청·복지부, 재원 분담 본격 검토 - 의학신문",
-          "title": "대상포진 등 백신 건보 지원될까...질병청·복지부, 재원 분담 본격 검토",
-          "category": [
-            "정책",
-            "복지부",
-            "질병청"
-          ],
-          "publishers": [
-            "의학신문"
-          ],
-          "published_at": "2026-11-23T12:00:00+09:00",
-          "published_at_verified": true,
-          "summary": [
-            "성인 예방접종 사각지대 해소될까…학회 권고 개정에 정책 변화 주목고령화와 만성질환 증가로 성인 예방접종의 중요성이 커지는 가운데, 대한감염학회가 2019년 이후",
-            "성인 예방접종 사각지대 해소될까…학회 권고 개정에 정책 변화 주목 고령화와 만성질환 증가로 성인 예방접종의 중요성이 커지는 가운데, 대한감염학회가 2019년 이후 축적된 임상근거와 새로운 백신 도입을 반영해 성인 예방접종 권고 제4판 개정을 추진하고 있다.",
-            "대상포진과 RSV 등 고위험군의 접종 권고가 강화되는 반면, 국가예방접종사업(NIP)의 지원 범위는 여전히 제한적이어서 의학적 필요성과 실제 접종 접근성 사이의 간극이 커지고 있다."
-          ],
-          "importance": "기사에서 급여·약가 이슈가 함께 확인돼 시장 접근성과 환자 부담 변화를 후속 확인할 필요가 있습니다.",
-          "source_urls": [
-            "https://www.bosa.co.kr/news/articleView.html?idxno=3017000"
-          ],
-          "source_links": [
-            {
-              "publisher": "의학신문",
-              "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017000"
-            }
-          ],
-          "thumbnail_url": "https://cdn.bosa.co.kr/news/photo/202611/3017000_417899_223.jpg",
-          "score": 73,
-          "oncology": null,
-          "report_date": "2026-11-24",
           "period_rank": 6
         }
       ],
@@ -735,12 +692,22 @@
         },
         {
           "title": "신약·임상",
-          "count": 4,
-          "change": "4건의 주요 이슈에서 반복적으로 확인",
+          "count": 3,
+          "change": "3건의 주요 이슈에서 반복적으로 확인",
           "implication": "허가·임상 성과가 치료 선택지와 경쟁구도를 바꾸는 흐름",
           "examples": [
             "약가제 개편 후 개량신약 가산 연장 첫 적용…R&D 유인 주목",
             "아리바이오 \"'AR1001', 내년 하반기 美 허가 신청\""
+          ]
+        },
+        {
+          "title": "디지털헬스",
+          "count": 3,
+          "change": "3건의 주요 이슈에서 반복적으로 확인",
+          "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
+          "examples": [
+            "비대면진료 수가, 30% 가산 없애고 야간·공휴일 가산 적용",
+            "'K바이오 뭉치면 산다' 지금이 M&A 적기 이유는?"
           ]
         },
         {
@@ -751,16 +718,6 @@
           "examples": [
             "약가제 개편 후 개량신약 가산 연장 첫 적용…R&D 유인 주목",
             "'K바이오 뭉치면 산다' 지금이 M&A 적기 이유는?"
-          ]
-        },
-        {
-          "title": "디지털헬스",
-          "count": 2,
-          "change": "2건의 주요 이슈에서 반복적으로 확인",
-          "implication": "AI·플랫폼 기반 의료서비스가 제도와 사업모델 변화로 이어지는 흐름",
-          "examples": [
-            "'K바이오 뭉치면 산다' 지금이 M&A 적기 이유는?",
-            "정제서 성공한 씨투스 제네릭, 건조시럽서도 통할까"
           ]
         },
         {
